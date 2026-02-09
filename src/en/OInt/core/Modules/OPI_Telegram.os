@@ -79,9 +79,9 @@ EndFunction
 // Method at API documentation: [getUpdates](@core.telegram.org/bots/api#getupdates)
 //
 // Parameters:
-// Token - String - Bot token - token
-// Timeout - Number - Waiting time for new events - timeout
-// Offset - Number - Offset in the list of received messages - offset
+// Token   - String - Bot token                               - token
+// Timeout - Number - Waiting time for new events             - timeout
+// Offset  - Number - Offset in the list of received messages - offset
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -107,8 +107,8 @@ EndFunction
 // Method at API documentation: [setWebhook](@core.telegram.org/bots/api#setwebhook)
 //
 // Parameters:
-// Token - String - Bot token - token
-// URL - String - Request handling address from Telegram (with https:) - url
+// Token - String - Bot token                                            - token
+// URL   - String - Request handling address from Telegram (with https:) - url
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -155,7 +155,7 @@ EndFunction
 // Method at API documentation: [getFile](@core.telegram.org/bots/api#getfile)
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String - Token                   - token
 // FileID - String - File ID for downloading - fileid
 //
 // Returns:
@@ -211,7 +211,7 @@ EndFunction
 //
 // Parameters:
 // DataString - String - query from Telegram.WebApp.initData - datastring
-// Token - String - Bot token - token
+// Token      - String - Bot token                           - token
 //
 // Returns:
 // Map of String - Map of data with the result of verification in the passed field
@@ -298,12 +298,12 @@ EndFunction
 // Method at API documentation: [sendMessage](@core.telegram.org/bots/api#sendmessage)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
-// RepliedID - String, Number - Reply to message ID - reply
+// Token     - String                           - Bot token                                         - token
+// ChatID    - String, Number                   - Target chat ID or ChatID*TopicID                  - chat
+// Text      - String                           - Message text                                      - text
+// Keyboard  - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup    - String                           - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// RepliedID - String, Number                   - Reply to message ID                               - reply
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -341,12 +341,12 @@ EndFunction
 // Method at API documentation: [sendPhoto](@core.telegram.org/bots/api#sendphoto)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// Image - BinaryData, String - Image file - picture
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token    - String                           - Bot token                                         - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID                  - chat
+// Text     - String                           - Message text                                      - text
+// Image    - BinaryData, String               - Image file                                        - picture
+// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup   - String                           - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -368,12 +368,12 @@ EndFunction
 // Method at API documentation: [sendVideo](@core.telegram.org/bots/api#sendvideo)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// Video - BinaryData, String - Video file - video
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token    - String                           - Bot token                                         - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID                  - chat
+// Text     - String                           - Message text                                      - text
+// Video    - BinaryData, String               - Video file                                        - video
+// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup   - String                           - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -395,12 +395,12 @@ EndFunction
 // Method at API documentation: [sendAudio](@core.telegram.org/bots/api#sendaudio)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// Audio - BinaryData, String - Audio file - audio
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token    - String                           - Bot token                                         - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID                  - chat
+// Text     - String                           - Message text                                      - text
+// Audio    - BinaryData, String               - Audio file                                        - audio
+// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup   - String                           - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -422,13 +422,13 @@ EndFunction
 // Method at API documentation: [sendDocument](@core.telegram.org/bots/api#senddocument)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// Document - BinaryData, String - Document file - doc
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
-// FileName - String - Custom displayed file name with extension, if necessary - filename
+// Token    - String                           - Bot token                                               - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID                        - chat
+// Text     - String                           - Message text                                            - text
+// Document - BinaryData, String               - Document file                                           - doc
+// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray               - keyboard
+// Markup   - String                           - Text processing type (HTML, Markdown, MarkdownV2)       - parsemode
+// FileName - String                           - Custom displayed file name with extension, if necessary - filename
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -451,12 +451,12 @@ EndFunction
 // Method at API documentation: [sendAnimation](@core.telegram.org/bots/api#sendanimation)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// GIF - BinaryData, String - GIF file - gif
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token    - String                           - Bot token                                         - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID                  - chat
+// Text     - String                           - Message text                                      - text
+// GIF      - BinaryData, String               - GIF file                                          - gif
+// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup   - String                           - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -478,12 +478,12 @@ EndFunction
 // Method at API documentation: [sendMediaGroup](@core.telegram.org/bots/api#sendmediagroup)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Text - String - Message text - text
-// FileMapping - Map of KeyAndValue - File collection: Key > File, Value > Media Type - media
-// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token       - String             - Bot token                                         - token
+// ChatID      - String, Number     - Target chat ID or ChatID*TopicID                  - chat
+// Text        - String             - Message text                                      - text
+// FileMapping - Map of KeyAndValue - File collection: Key > File, Value > Media Type   - media
+// Keyboard    - String             - Keyboard. See FormKeyboardFromButtonArray         - keyboard
+// Markup      - String             - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -532,11 +532,11 @@ EndFunction
 // Method at API documentation: [sendLocation](@core.telegram.org/bots/api#sendlocation)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Latitude - String, Number - Geographic latitude - lat
-// Longitude - String, Number - Geographic longitude - long
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
+// Token     - String                           - Bot token                                 - token
+// ChatID    - String, Number                   - Target chat ID or ChatID*TopicID          - chat
+// Latitude  - String, Number                   - Geographic latitude                       - lat
+// Longitude - String, Number                   - Geographic longitude                      - long
+// Keyboard  - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -569,11 +569,11 @@ EndFunction
 // Method at API documentation: [sendContact](@core.telegram.org/bots/api#sendcontact)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Name - String - Contact name - name
-// LastName - String - Contact last name - surname
-// Phone - String - Contact phone number - phone
+// Token    - String                           - Bot token                                 - token
+// ChatID   - String, Number                   - Target chat ID or ChatID*TopicID          - chat
+// Name     - String                           - Contact name                              - name
+// LastName - String                           - Contact last name                         - surname
+// Phone    - String                           - Contact phone number                      - phone
 // Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
 //
 // Returns:
@@ -608,11 +608,11 @@ EndFunction
 // Method at API documentation: [sendPoll](@core.telegram.org/bots/api#sendpoll)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Question - String - Poll question - question
-// AnswersArray - Array of String - Array of answer options - options
-// Anonymous - Boolean - Survey anonymity flag - anonymous
+// Token        - String          - Bot token                        - token
+// ChatID       - String, Number  - Target chat ID or ChatID*TopicID - chat
+// Question     - String          - Poll question                    - question
+// AnswersArray - Array of String - Array of answer options          - options
+// Anonymous    - Boolean         - Survey anonymity flag            - anonymous
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -647,10 +647,10 @@ EndFunction
 // Method at API documentation: [forwardMessage](@core.telegram.org/bots/api#forwardmessage)
 //
 // Parameters:
-// Token - String - Bot token - token
-// OriginalID - String, Number - Original message ID - message
-// FromID - String, Number - Chat ID of the original message - from
-// ToID - String, Number - Target chat ID or ChatID*TopicID - to
+// Token      - String         - Bot token                        - token
+// OriginalID - String, Number - Original message ID              - message
+// FromID     - String, Number - Chat ID of the original message  - from
+// ToID       - String, Number - Target chat ID or ChatID*TopicID - to
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -682,8 +682,8 @@ EndFunction
 // Method at API documentation: [deleteMessage](@core.telegram.org/bots/api#deletemessage)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Target chat ID - chat
+// Token     - String         - Token                   - token
+// ChatID    - String, Number - Target chat ID          - chat
 // MessageID - String, Number - ID of message to delete - message
 //
 // Returns:
@@ -710,10 +710,10 @@ EndFunction
 // Method at API documentation: [editMessageReplyMarkup](@core.telegram.org/bots/api#editmessagereplymarkup)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Target chat ID - chat
-// MessageID - String, Number - ID of message to delete - message
-// Keyboard - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
+// Token     - String                           - Token                                     - token
+// ChatID    - String, Number                   - Target chat ID                            - chat
+// MessageID - String, Number                   - ID of message to delete                   - message
+// Keyboard  - String, Structure Of KeyAndValue - Keyboard. See FormKeyboardFromButtonArray - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -741,11 +741,11 @@ EndFunction
 // Method at API documentation: [editMessageText](@core.telegram.org/bots/api#editmessagetext)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Target chat ID - chat
-// MessageID - String, Number - ID of message to delete - message
-// Text - String - New message text - text
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token     - String         - Token                                             - token
+// ChatID    - String, Number - Target chat ID                                    - chat
+// MessageID - String, Number - ID of message to delete                           - message
+// Text      - String         - New message text                                  - text
+// Markup    - String         - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -783,11 +783,11 @@ EndFunction
 // Method at API documentation: [editMessageCaption](@core.telegram.org/bots/api#editmessagecaption)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Target chat ID - chat
-// MessageID - String, Number - ID of message to delete - message
-// Description - String - New message description - caption
-// Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// Token       - String         - Token                                             - token
+// ChatID      - String, Number - Target chat ID                                    - chat
+// MessageID   - String, Number - ID of message to delete                           - message
+// Description - String         - New message description                           - caption
+// Markup      - String         - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -825,9 +825,9 @@ EndFunction
 // About keyboards in the API documentation: [InlineKeyboardMarkup](@core.telegram.org/bots/api#inlinekeyboardmarkup)
 //
 // Parameters:
-// ButtonArray - Array of String - Array of buttons - buttons
-// UnderMessage - Boolean - Keyboard under the message or on the bottom panel - under
-// OneByOne - Boolean - True > buttons are displayed in a column, False > in a row - column
+// ButtonArray  - Array of String - Array of buttons                                           - buttons
+// UnderMessage - Boolean         - Keyboard under the message or on the bottom panel          - under
+// OneByOne     - Boolean         - True > buttons are displayed in a column, False > in a row - column
 //
 // Returns:
 // String - Keyboard JSON
@@ -868,9 +868,9 @@ EndFunction
 // Method at API documentation: [banChatMember](@core.telegram.org/bots/api#banchatmember)
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String         - Bot token                        - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// UserID - String, Number - Target user ID - user
+// UserID - String, Number - Target user ID                   - user
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -899,9 +899,9 @@ EndFunction
 // Method at API documentation: [unbanChatMember](@core.telegram.org/bots/api#unbanchatmember)
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String         - Bot token                        - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// UserID - String, Number - Target user ID - user
+// UserID - String, Number - Target user ID                   - user
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -931,11 +931,11 @@ EndFunction
 // Method at API documentation: [createChatInviteLink](@core.telegram.org/bots/api#createchatinvitelink)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
-// Title - String - Invitation title - title
-// ExpirationDate - Date - Link expiration date (permanent if not specified) - expire
-// UserLimit - Number - User limit (infinite if not specified) - limit
+// Token          - String         - Bot token                                         - token
+// ChatID         - String, Number - Target chat ID or ChatID*TopicID                  - chat
+// Title          - String         - Invitation title                                  - title
+// ExpirationDate - Date           - Link expiration date (permanent if not specified) - expire
+// UserLimit      - Number         - User limit (infinite if not specified)            - limit
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -970,8 +970,8 @@ EndFunction
 // Method at API documentation: [pinChatMessage](@core.telegram.org/bots/api#pinchatmessage)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Target chat ID - chat
+// Token     - String         - Token             - token
+// ChatID    - String, Number - Target chat ID    - chat
 // MessageID - String, Number - Target message ID - message
 //
 // Returns:
@@ -1002,8 +1002,8 @@ EndFunction
 // Method at API documentation: [unpinChatMessage](@core.telegram.org/bots/api#unpinchatmessage)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Target chat ID - chat
+// Token     - String         - Bot token         - token
+// ChatID    - String, Number - Target chat ID    - chat
 // MessageID - String, Number - Target message ID - message
 //
 // Returns:
@@ -1033,7 +1033,7 @@ EndFunction
 // Method at API documentation: [getChatMemberCount](@core.telegram.org/bots/api#getchatmembercount)
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String         - Bot token      - token
 // ChatID - String, Number - Target chat ID - chat
 //
 // Returns:
@@ -1099,10 +1099,10 @@ EndFunction
 // Method at API documentation: [createForumTopic](@core.telegram.org/bots/api#createforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String         - Token                  - token
 // ChatID - String, Number - Topic creation chat ID - forum
-// Title - String - Topic title - title
-// IconID - String - See GetAvatarIconList - icon
+// Title  - String         - Topic title            - title
+// IconID - String         - See GetAvatarIconList  - icon
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1119,11 +1119,11 @@ EndFunction
 // Method at API documentation: [editForumTopic](@core.telegram.org/bots/api#editforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic creation chat ID - forum
-// TopicID - String, Number - Topic ID - topic
-// Title - String - New title - title
-// IconID - String - See GetAvatarIconList - icon
+// Token   - String         - Token                  - token
+// ChatID  - String, Number - Topic creation chat ID - forum
+// TopicID - String, Number - Topic ID               - topic
+// Title   - String         - New title              - title
+// IconID  - String         - See GetAvatarIconList  - icon
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1143,9 +1143,9 @@ EndFunction
 // Method at API documentation: [closeForumTopic](@core.telegram.org/bots/api#closeforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic chat ID - forum
-// TopicID - String, Number - Topic ID - topic
+// Token   - String         - Token         - token
+// ChatID  - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID      - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1162,9 +1162,9 @@ EndFunction
 // Method at API documentation: [reopenForumTopic](@core.telegram.org/bots/api#reopenforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic chat ID - forum
-// TopicID - String, Number - Topic ID - topic
+// Token   - String         - Token         - token
+// ChatID  - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID      - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1181,9 +1181,9 @@ EndFunction
 // Method at API documentation: [deleteForumTopic](@core.telegram.org/bots/api#deleteforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic chat ID - forum
-// TopicID - String, Number - Topic ID - topic
+// Token   - String         - Token         - token
+// ChatID  - String, Number - Topic chat ID - forum
+// TopicID - String, Number - Topic ID      - topic
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1200,7 +1200,7 @@ EndFunction
 // Method at API documentation: [hideGeneralForumTopic](@core.telegram.org/bots/api#hidegeneralforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String         - Token         - token
 // ChatID - String, Number - Topic chat ID - forum
 //
 // Returns:
@@ -1218,7 +1218,7 @@ EndFunction
 // Method at API documentation: [unhideGeneralForumTopic](@core.telegram.org/bots/api#unhidegeneralforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String         - Token         - token
 // ChatID - String, Number - Topic chat ID - forum
 //
 // Returns:
@@ -1236,9 +1236,9 @@ EndFunction
 // Method at API documentation: [editGeneralForumTopic](@core.telegram.org/bots/api#editgeneralforumtopic)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic chat ID - forum
-// Title - String - New main topic name - title
+// Token  - String         - Token               - token
+// ChatID - String, Number - Topic chat ID       - forum
+// Title  - String         - New main topic name - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -1265,8 +1265,8 @@ EndFunction
 // Method at API documentation: [unpinAllForumTopicMessages](@core.telegram.org/bots/api#unpinallforumtopicmessages)
 //
 // Parameters:
-// Token - String - Token - token
-// ChatID - String, Number - Topic chat ID - forum
+// Token   - String         - Token                        - token
+// ChatID  - String, Number - Topic chat ID                - forum
 // TopicID - String, Number - Topic ID. Main if not filled - topic
 //
 // Returns:
@@ -1618,163 +1618,163 @@ EndProcedure
 #Region Alternate
 
 Function ПолучитьИнформациюБота(Val Токен) Export
-	Return GetBotInformation(Токен);
+    Return GetBotInformation(Токен);
 EndFunction
 
 Function ПолучитьОбновления(Val Токен, Val Таймаут = 0, Val Смещение = "") Export
-	Return GetUpdates(Токен, Таймаут, Смещение);
+    Return GetUpdates(Токен, Таймаут, Смещение);
 EndFunction
 
 Function УстановитьWebhook(Val Токен, Val URL) Export
-	Return SetWebhook(Токен, URL);
+    Return SetWebhook(Токен, URL);
 EndFunction
 
 Function УдалитьWebhook(Val Токен) Export
-	Return DeleteWebhook(Токен);
+    Return DeleteWebhook(Токен);
 EndFunction
 
 Function СкачатьФайл(Val Токен, Val IDФайла) Export
-	Return DownloadFile(Токен, IDФайла);
+    Return DownloadFile(Токен, IDФайла);
 EndFunction
 
 Function ОбработатьДанныеTMA(Val СтрокаДанных, Val Токен) Export
-	Return ProcessTMAData(СтрокаДанных, Токен);
+    Return ProcessTMAData(СтрокаДанных, Токен);
 EndFunction
 
 Function ОтправитьТекстовоеСообщение(Val Токен, Val IDЧата, Val Текст, Val Клавиатура = "", Val Разметка = "Markdown", Val IDВходящего = 0) Export
-	Return SendTextMessage(Токен, IDЧата, Текст, Клавиатура, Разметка, IDВходящего);
+    Return SendTextMessage(Токен, IDЧата, Текст, Клавиатура, Разметка, IDВходящего);
 EndFunction
 
 Function ОтправитьКартинку(Val Токен, Val IDЧата, Val Текст, Val Картинка, Val Клавиатура = "", Val Разметка = "Markdown") Export
-	Return SendImage(Токен, IDЧата, Текст, Картинка, Клавиатура, Разметка);
+    Return SendImage(Токен, IDЧата, Текст, Картинка, Клавиатура, Разметка);
 EndFunction
 
 Function ОтправитьВидео(Val Токен, Val IDЧата, Val Текст, Val Видео, Val Клавиатура = "", Val Разметка = "Markdown") Export
-	Return SendVideo(Токен, IDЧата, Текст, Видео, Клавиатура, Разметка);
+    Return SendVideo(Токен, IDЧата, Текст, Видео, Клавиатура, Разметка);
 EndFunction
 
 Function ОтправитьАудио(Val Токен, Val IDЧата, Val Текст, Val Аудио, Val Клавиатура = "", Val Разметка = "Markdown") Export
-	Return SendAudio(Токен, IDЧата, Текст, Аудио, Клавиатура, Разметка);
+    Return SendAudio(Токен, IDЧата, Текст, Аудио, Клавиатура, Разметка);
 EndFunction
 
 Function ОтправитьДокумент(Val Токен, Val IDЧата, Val Текст, Val Документ, Val Клавиатура = "", Val Разметка = "Markdown", Val ИмяФайла = "") Export
-	Return SendDocument(Токен, IDЧата, Текст, Документ, Клавиатура, Разметка, ИмяФайла);
+    Return SendDocument(Токен, IDЧата, Текст, Документ, Клавиатура, Разметка, ИмяФайла);
 EndFunction
 
 Function ОтправитьГифку(Val Токен, Val IDЧата, Val Текст, Val Гифка, Val Клавиатура = "", Val Разметка = "Markdown") Export
-	Return SendGif(Токен, IDЧата, Текст, Гифка, Клавиатура, Разметка);
+    Return SendGif(Токен, IDЧата, Текст, Гифка, Клавиатура, Разметка);
 EndFunction
 
 Function ОтправитьМедиагруппу(Val Токен, Val IDЧата, Val Текст, Val СоответствиеФайлов, Val Клавиатура = "", Val Разметка = "Markdown") Export
-	Return SendMediaGroup(Токен, IDЧата, Текст, СоответствиеФайлов, Клавиатура, Разметка);
+    Return SendMediaGroup(Токен, IDЧата, Текст, СоответствиеФайлов, Клавиатура, Разметка);
 EndFunction
 
 Function ОтправитьМестоположение(Val Токен, Val IDЧата, Val Широта, Val Долгота, Val Клавиатура = "") Export
-	Return SendLocation(Токен, IDЧата, Широта, Долгота, Клавиатура);
+    Return SendLocation(Токен, IDЧата, Широта, Долгота, Клавиатура);
 EndFunction
 
 Function ОтправитьКонтакт(Val Токен, Val IDЧата, Val Имя, Val Фамилия, Val Телефон, Val Клавиатура = "") Export
-	Return SendContact(Токен, IDЧата, Имя, Фамилия, Телефон, Клавиатура);
+    Return SendContact(Токен, IDЧата, Имя, Фамилия, Телефон, Клавиатура);
 EndFunction
 
 Function ОтправитьОпрос(Val Токен, Val IDЧата, Val Вопрос, Val МассивОтветов, Val Анонимный = True) Export
-	Return SendPoll(Токен, IDЧата, Вопрос, МассивОтветов, Анонимный);
+    Return SendPoll(Токен, IDЧата, Вопрос, МассивОтветов, Анонимный);
 EndFunction
 
 Function ПереслатьСообщение(Val Токен, Val IDОригинала, Val ОткудаID, Val КудаID) Export
-	Return ForwardMessage(Токен, IDОригинала, ОткудаID, КудаID);
+    Return ForwardMessage(Токен, IDОригинала, ОткудаID, КудаID);
 EndFunction
 
 Function УдалитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
-	Return DeleteMessage(Токен, IDЧата, IDСообщения);
+    Return DeleteMessage(Токен, IDЧата, IDСообщения);
 EndFunction
 
 Function ЗаменитьКлавиатуруСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Клавиатура) Export
-	Return ReplaceMessageKeyboard(Токен, IDЧата, IDСообщения, Клавиатура);
+    Return ReplaceMessageKeyboard(Токен, IDЧата, IDСообщения, Клавиатура);
 EndFunction
 
 Function ЗаменитьТекстСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Текст, Val Разметка = "") Export
-	Return ReplaceMessageText(Токен, IDЧата, IDСообщения, Текст, Разметка);
+    Return ReplaceMessageText(Токен, IDЧата, IDСообщения, Текст, Разметка);
 EndFunction
 
 Function ЗаменитьОписаниеСообщения(Val Токен, Val IDЧата, Val IDСообщения, Val Описание, Val Разметка = "") Export
-	Return ReplaceMessageCaption(Токен, IDЧата, IDСообщения, Описание, Разметка);
+    Return ReplaceMessageCaption(Токен, IDЧата, IDСообщения, Описание, Разметка);
 EndFunction
 
 Function СформироватьКлавиатуруПоМассивуКнопок(Val МассивКнопок, Val ПодСообщением = False, Val ОднаПодОдной = True) Export
-	Return FormKeyboardFromButtonArray(МассивКнопок, ПодСообщением, ОднаПодОдной);
+    Return FormKeyboardFromButtonArray(МассивКнопок, ПодСообщением, ОднаПодОдной);
 EndFunction
 
 Function Бан(Val Токен, Val IDЧата, Val IDПользователя) Export
-	Return Ban(Токен, IDЧата, IDПользователя);
+    Return Ban(Токен, IDЧата, IDПользователя);
 EndFunction
 
 Function Разбан(Val Токен, Val IDЧата, Val IDПользователя) Export
-	Return Unban(Токен, IDЧата, IDПользователя);
+    Return Unban(Токен, IDЧата, IDПользователя);
 EndFunction
 
 Function СоздатьСсылкуПриглашение(Val Токен, Val IDЧата, Val Заголовок = "", Val ДатаИстечения = "", Val ЛимитПользователей = 0) Export
-	Return CreateInvitationLink(Токен, IDЧата, Заголовок, ДатаИстечения, ЛимитПользователей);
+    Return CreateInvitationLink(Токен, IDЧата, Заголовок, ДатаИстечения, ЛимитПользователей);
 EndFunction
 
 Function ЗакрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
-	Return PinMessage(Токен, IDЧата, IDСообщения);
+    Return PinMessage(Токен, IDЧата, IDСообщения);
 EndFunction
 
 Function ОткрепитьСообщение(Val Токен, Val IDЧата, Val IDСообщения) Export
-	Return UnpinMessage(Токен, IDЧата, IDСообщения);
+    Return UnpinMessage(Токен, IDЧата, IDСообщения);
 EndFunction
 
 Function ПолучитьЧислоУчастников(Val Токен, Val IDЧата) Export
-	Return GetParticipantCount(Токен, IDЧата);
+    Return GetParticipantCount(Токен, IDЧата);
 EndFunction
 
 Function ПолучитьСписокИконокАватаров(Val Токен) Export
-	Return GetAvatarIconList(Токен);
+    Return GetAvatarIconList(Токен);
 EndFunction
 
 Function СоздатьТемуФорума(Val Токен, Val IDЧата, Val Заголовок, Val IDИконки = "") Export
-	Return CreateForumTopic(Токен, IDЧата, Заголовок, IDИконки);
+    Return CreateForumTopic(Токен, IDЧата, Заголовок, IDИконки);
 EndFunction
 
 Function ИзменитьТемуФорума(Val Токен, Val IDЧата, Val IDТемы, Val Заголовок = Undefined, Val IDИконки = Undefined) Export
-	Return EditForumTopic(Токен, IDЧата, IDТемы, Заголовок, IDИконки);
+    Return EditForumTopic(Токен, IDЧата, IDТемы, Заголовок, IDИконки);
 EndFunction
 
 Function ЗакрытьТемуФорума(Val Токен, Val IDЧата, Val IDТемы = "") Export
-	Return CloseForumTopic(Токен, IDЧата, IDТемы);
+    Return CloseForumTopic(Токен, IDЧата, IDТемы);
 EndFunction
 
 Function ОткрытьТемуФорума(Val Токен, Val IDЧата, Val IDТемы = "") Export
-	Return OpenForumTopic(Токен, IDЧата, IDТемы);
+    Return OpenForumTopic(Токен, IDЧата, IDТемы);
 EndFunction
 
 Function УдалитьТемуФорума(Val Токен, Val IDЧата, Val IDТемы) Export
-	Return DeleteForumTopic(Токен, IDЧата, IDТемы);
+    Return DeleteForumTopic(Токен, IDЧата, IDТемы);
 EndFunction
 
 Function СкрытьГлавнуюТемуФорума(Val Токен, Val IDЧата) Export
-	Return HideMainForumTopic(Токен, IDЧата);
+    Return HideMainForumTopic(Токен, IDЧата);
 EndFunction
 
 Function ПоказатьГлавнуюТемуФорума(Val Токен, Val IDЧата) Export
-	Return ShowMainForumTopic(Токен, IDЧата);
+    Return ShowMainForumTopic(Токен, IDЧата);
 EndFunction
 
 Function ИзменитьИмяГлавнойТемыФорума(Val Токен, Val IDЧата, Val Заголовок) Export
-	Return EditMainForumTopicName(Токен, IDЧата, Заголовок);
+    Return EditMainForumTopicName(Токен, IDЧата, Заголовок);
 EndFunction
 
 Function ОчиститьСписокЗакрепленныхСообщенийТемы(Val Токен, Val IDЧата, Val IDТемы = "") Export
-	Return ClearTopicPinnedMessagesList(Токен, IDЧата, IDТемы);
+    Return ClearTopicPinnedMessagesList(Токен, IDЧата, IDТемы);
 EndFunction
 
 Procedure ПодготовитьСтроку(Текст, Разметка = "Markdown") Export
-	PrepareString(Текст, Разметка);
+    PrepareString(Текст, Разметка);
 EndProcedure
 
 Procedure ЗаменитьСпецСимволы(Текст, Разметка) Export
-	ReplaceSpecialCharacters(Текст, Разметка);
+    ReplaceSpecialCharacters(Текст, Разметка);
 EndProcedure
 
 #EndRegion

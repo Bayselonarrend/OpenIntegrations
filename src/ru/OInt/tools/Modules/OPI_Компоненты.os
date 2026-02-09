@@ -336,35 +336,35 @@
 #Region Alternate
 
 Function GetAddIn(Val AddInName, Val Class = "Main") Export
-	Return ПолучитьКомпоненту(AddInName, Class);
+    Return ПолучитьКомпоненту(AddInName, Class);
 EndFunction
 
 Function IsAddIn(Val Value) Export
-	Return ЭтоКомпонента(Value);
+    Return ЭтоКомпонента(Value);
 EndFunction
 
 Function FileTransferRequired() Export
-	Return ТребуетсяПередачаЧерезФайл();
+    Return ТребуетсяПередачаЧерезФайл();
 EndFunction
 
 Function SetTls(Val AddIn, Val Tls) Export
-	Return УстановитьTls(AddIn, Tls);
+    Return УстановитьTls(AddIn, Tls);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
 EndFunction
 
 Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
-	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+    Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
 EndFunction
 
 Function PutData(Val AddIn, Val Value) Export
-	Return ПоместитьДанные(AddIn, Value);
+    Return ПоместитьДанные(AddIn, Value);
 EndFunction
 
 Function AddInsFolderOS() Export
-	Return КаталогКомпонентOS();
+    Return КаталогКомпонентOS();
 EndFunction
 
 #EndRegion

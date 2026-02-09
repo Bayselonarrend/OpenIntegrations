@@ -27868,11 +27868,11 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
 
         Last = Counter = 4;
 
-        If Counter     = 0 Then
-            Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
-            CurrentSend   = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
+        If Counter      = 0 Then
+            Request     = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+            CurrentSend = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
         Else
-            CurrentSend   = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
+            CurrentSend = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
         EndIf;
 
         If Not CurrentSend["result"] Then

@@ -159,9 +159,9 @@
 // Получает структуру произвольного сообщения для списка сообщений запроса
 //
 // Параметры:
-//  Роль   - Строка  - Источник сообщения: system, user, assistant и др. - role
-//  Текст  - Строка  - Текст сообщения                                   - text
-//  Имя    - Строка  - Имя участника разговора                           - name
+//  Роль  - Строка - Источник сообщения: system, user, assistant и др. - role
+//  Текст - Строка - Текст сообщения                                   - text
+//  Имя   - Строка - Имя участника разговора                           - name
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -185,8 +185,8 @@
 // Является краткой формой функции `ПолучитьСтруктуруСообщения`
 //
 // Параметры:
-//  Текст  - Строка  - Текст сообщения         - text
-//  Имя    - Строка  - Имя участника разговора - name
+//  Текст - Строка - Текст сообщения         - text
+//  Имя   - Строка - Имя участника разговора - name
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -201,7 +201,7 @@
 // Является краткой формой функции `ПолучитьСтруктуруСообщения`
 //
 // Параметры:
-//  Текст  - Строка  - Текст сообщения - text
+//  Текст - Строка - Текст сообщения - text
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -216,7 +216,7 @@
 // Является краткой формой функции `ПолучитьСтруктуруСообщения`
 //
 // Параметры:
-//  Текст  - Строка  - Текст сообщения - text
+//  Текст - Строка - Текст сообщения - text
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -228,9 +228,9 @@
 // Получает структура сообщения на основе изображения для списка сообщений запроса
 //
 // Параметры:
-//  Роль     - Строка - Источник сообщения: system, user, developer  - role
-//  IDФайла  - Строка - ID файла картинки. См. ЗагрузитьФайл         - file
-//  Текст    - Строка - Вводный текст запроса для обработки картинки - prompt
+//  Роль    - Строка - Источник сообщения: system, user, developer  - role
+//  IDФайла - Строка - ID файла картинки. См. ЗагрузитьФайл         - file
+//  Текст   - Строка - Вводный текст запроса для обработки картинки - prompt
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -301,11 +301,11 @@
 // Метод в документации API: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
 //
 // Параметры:
-//  URL          - Строка                        - URL сервера OpenAI                           - url
-//  Токен        - Строка                        - Токен авторизации OpenAI                     - token
-//  Количество   - Число                         - Максимальное число возвращаемых ассистентов  - limit
-//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо      - options
-//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо      - headers
+//  URL          - Строка                        - URL сервера OpenAI                          - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                    - token
+//  Количество   - Число                         - Максимальное число возвращаемых ассистентов - limit
+//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо     - options
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо     - headers
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -341,13 +341,13 @@
 // Метод в документации API: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
 //
 // Параметры:
-//  URL          - Строка                        - URL сервера OpenAI                       - url
-//  Токен        - Строка                        - Токен авторизации OpenAI                 - token
-//  Модель       - Строка                        - Имя модели                               - model
-//  Имя          - Строка                        - Имя ассистента                           - name
-//  Инструкция   - Строка                        - Системная инструкция для ассистента      - inst
-//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо  - options
-//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо  - headers
+//  URL          - Строка                        - URL сервера OpenAI                      - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                - token
+//  Модель       - Строка                        - Имя модели                              - model
+//  Имя          - Строка                        - Имя ассистента                          - name
+//  Инструкция   - Строка                        - Системная инструкция для ассистента     - inst
+//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо - options
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо - headers
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -442,11 +442,11 @@
 // Метод в документации API: [List files](@platform.openai.com/docs/api-reference/files/list)
 //
 // Параметры:
-//  URL          - Строка                        - URL сервера OpenAI                           - url
-//  Токен        - Строка                        - Токен авторизации OpenAI                     - token
-//  Количество   - Число                         - Максимальное число возвращаемых ассистентов  - limit
-//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо      - options
-//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо      - headers
+//  URL          - Строка                        - URL сервера OpenAI                          - url
+//  Токен        - Строка                        - Токен авторизации OpenAI                    - token
+//  Количество   - Число                         - Максимальное число возвращаемых ассистентов - limit
+//  ДопПараметры - Структура Из КлючИЗначение    - Доп. параметры запроса, если необходимо     - options
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо     - headers
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -484,7 +484,7 @@
 // Параметры:
 //  URL          - Строка                        - URL сервера OpenAI                                            - url
 //  Токен        - Строка                        - Токен авторизации OpenAI                                      - token
-//  ИмяФайла     - Строка                        - Имя файла с расширением                                        - name
+//  ИмяФайла     - Строка                        - Имя файла с расширением                                       - name
 //  Данные       - Строка, ДвоичныеДанные        - Путь к файлу или данные                                       - data
 //  Назначение   - Строка                        - Назначение файла: assistants, batch, vision, user_data, evals - purpose
 //  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп. заголовки запроса, если необходимо                       - headers
@@ -779,87 +779,87 @@
 #Region Alternate
 
 Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьОтвет(URL, Token, Model, Messages, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetImages(Val URL, Val Token, Val Model, Val Description, Val AdditionalHeaders = "") Export
-	Return ПолучитьКартинки(URL, Token, Model, Description, AdditionalHeaders);
+    Return ПолучитьКартинки(URL, Token, Model, Description, AdditionalHeaders);
 EndFunction
 
 Function GetEmbeddings(Val URL, Val Token, Val Model, Val Text, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьПредставления(URL, Token, Model, Text, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetMessageStructure(Val Role, Val Text, Val Name = "") Export
-	Return ПолучитьСтруктуруСообщения(Role, Text, Name);
+    Return ПолучитьСтруктуруСообщения(Role, Text, Name);
 EndFunction
 
 Function GetUserMessage(Val Text, Val Name = "") Export
-	Return ПолучитьСообщениеПользователя(Text, Name);
+    Return ПолучитьСообщениеПользователя(Text, Name);
 EndFunction
 
 Function GetAssistantMessage(Val Text) Export
-	Return ПолучитьСообщениеАссистента(Text);
+    Return ПолучитьСообщениеАссистента(Text);
 EndFunction
 
 Function GetSystemMessage(Val Text) Export
-	Return ПолучитьСообщениеСистемы(Text);
+    Return ПолучитьСообщениеСистемы(Text);
 EndFunction
 
 Function GetImageMessageStructure(Val Role, Val FileID, Val Text = "") Export
-	Return ПолучитьСтруктуруСообщенияКартинки(Role, FileID, Text);
+    Return ПолучитьСтруктуруСообщенияКартинки(Role, FileID, Text);
 EndFunction
 
 Function GetImageDescriptionStructure(Val Prompt, Val Count, Val Background = "", Val Size = "", Val AdditionalParameters = "") Export
-	Return ПолучитьСтруктуруОписанияКартинок(Prompt, Count, Background, Size, AdditionalParameters);
+    Return ПолучитьСтруктуруОписанияКартинок(Prompt, Count, Background, Size, AdditionalParameters);
 EndFunction
 
 Function GetAssistantsList(Val URL, Val Token, Val Count = 20, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокАссистентов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьСписокАссистентов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function CreateAssistant(Val URL, Val Token, Val Model, Val Name = "", Val Instruction = "", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return СоздатьАссистента(URL, Token, Model, Name, Instruction, AdditionalParameters, AdditionalHeaders);
+    Return СоздатьАссистента(URL, Token, Model, Name, Instruction, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function RetrieveAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
-	Return ПолучитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+    Return ПолучитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
 EndFunction
 
 Function DeleteAssistant(Val URL, Val Token, Val AssistantID, Val AdditionalHeaders = "") Export
-	Return УдалитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
+    Return УдалитьАссистента(URL, Token, AssistantID, AdditionalHeaders);
 EndFunction
 
 Function GetFilesList(Val URL, Val Token, Val Count = 10000, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокФайлов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьСписокФайлов(URL, Token, Count, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function UploadFile(Val URL, Val Token, Val FileName, Val Data, Val Destination, Val AdditionalHeaders = "") Export
-	Return ЗагрузитьФайл(URL, Token, FileName, Data, Destination, AdditionalHeaders);
+    Return ЗагрузитьФайл(URL, Token, FileName, Data, Destination, AdditionalHeaders);
 EndFunction
 
 Function GetFileInformation(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return ПолучитьИнформациюОФайле(URL, Token, FileID, AdditionalHeaders);
+    Return ПолучитьИнформациюОФайле(URL, Token, FileID, AdditionalHeaders);
 EndFunction
 
 Function DownloadFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return СкачатьФайл(URL, Token, FileID, AdditionalHeaders);
+    Return СкачатьФайл(URL, Token, FileID, AdditionalHeaders);
 EndFunction
 
 Function DeleteFile(Val URL, Val Token, Val FileID, Val AdditionalHeaders = "") Export
-	Return УдалитьФайл(URL, Token, FileID, AdditionalHeaders);
+    Return УдалитьФайл(URL, Token, FileID, AdditionalHeaders);
 EndFunction
 
 Function GenerateSpeech(Val URL, Val Token, Val Model, Val Text, Val Voice = "alloy", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return СгенерироватьРечь(URL, Token, Model, Text, Voice, AdditionalParameters, AdditionalHeaders);
+    Return СгенерироватьРечь(URL, Token, Model, Text, Voice, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function CreateTranscription(Val URL, Val Token, Val Model, Val Audio, Val MIME = "audio/mpeg", Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return СоздатьТранскрипцию(URL, Token, Model, Audio, MIME, AdditionalParameters, AdditionalHeaders);
+    Return СоздатьТранскрипцию(URL, Token, Model, Audio, MIME, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetModelList(Val URL, Val Token, Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокМоделей(URL, Token, AdditionalHeaders);
+    Return ПолучитьСписокМоделей(URL, Token, AdditionalHeaders);
 EndFunction
 
 #EndRegion

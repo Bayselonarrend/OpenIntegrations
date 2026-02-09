@@ -43,10 +43,10 @@
 // Returns URL for browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID - String  - Client ID                   - id
 // Calendar - Boolean - Calendar methods permission - calendar
-// Drive - Boolean - Drive methods permission - drive
-// Sheets - Boolean - Sheets methods permission - sheets
+// Drive    - Boolean - Drive methods permission    - drive
+// Sheets   - Boolean - Sheets methods permission   - sheets
 //
 // Returns:
 // String - Code retrieval link
@@ -79,9 +79,9 @@ EndFunction
 // Gets token by code from browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
-// ClientSecret - String - Client secret - secret
-// Code - String - Code from browser - code
+// ClientID     - String - Client ID         - id
+// ClientSecret - String - Client secret     - secret
+// Code         - String - Code from browser - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -110,7 +110,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID     - String - Client ID     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -143,9 +143,9 @@ EndFunction
 // List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
 //
 // Parameters:
-// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
-// Scope - Array Of String - Scope or array of scopes - scope
-// Expire - Number - Token lifetime in seconds - exp
+// Data   - Arbitrary       - JSON authorization data as a file, collection or binary data - auth
+// Scope  - Array Of String - Scope or array of scopes                                     - scope
+// Expire - Number          - Token lifetime in seconds                                    - exp
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -247,23 +247,23 @@ EndFunction
 #Region Alternate
 
 Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
-	Return FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
+    Return FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
 EndFunction
 
 Function ПолучитьТокенПоКоду(Val ClientID, Val ClientSecret, Val Code) Export
-	Return GetTokenByCode(ClientID, ClientSecret, Code);
+    Return GetTokenByCode(ClientID, ClientSecret, Code);
 EndFunction
 
 Function ОбновитьТокен(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-	Return RefreshToken(ClientID, ClientSecret, RefreshToken);
+    Return RefreshToken(ClientID, ClientSecret, RefreshToken);
 EndFunction
 
 Function ПолучитьТокенServiceАккаунта(Val Данные, Val ОбластиДействия, Val ВремяЖизни = 3600) Export
-	Return GetServiceAccountToken(Данные, ОбластиДействия, ВремяЖизни);
+    Return GetServiceAccountToken(Данные, ОбластиДействия, ВремяЖизни);
 EndFunction
 
 Function ПолучитьЗаголовокАвторизации(Val Токен) Export
-	Return GetAuthorizationHeader(Токен);
+    Return GetAuthorizationHeader(Токен);
 EndFunction
 
 #EndRegion

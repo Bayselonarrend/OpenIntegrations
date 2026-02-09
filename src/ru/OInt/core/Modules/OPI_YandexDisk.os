@@ -84,9 +84,9 @@
 // Обновляет токен по Refresh token
 //
 // Параметры:
-//  ClientId     - Строка - Client id      - id
-//  ClientSecret - Строка - Client secret  - secret
-//  RefreshToken - Строка - Refresh token  - refresh
+//  ClientId     - Строка - Client id     - id
+//  ClientSecret - Строка - Client secret - secret
+//  RefreshToken - Строка - Refresh token - refresh
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -122,8 +122,8 @@
 // Создает каталог на диске
 //
 // Параметры:
-//  Токен - Строка - Токен                     - token
-//  Путь  - Строка - Путь к создаваемой папке   - path
+//  Токен - Строка - Токен                    - token
+//  Путь  - Строка - Путь к создаваемой папке - path
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -177,9 +177,9 @@
 // Удаляет объект по заданному пути
 //
 // Параметры:
-//  Токен    - Строка - Токен                              - token
-//  Путь     - Строка - Путь к удаляемой папке или файлу   - path
-//  ВКорзину - Булево - В корзину                          - can
+//  Токен    - Строка - Токен                            - token
+//  Путь     - Строка - Путь к удаляемой папке или файлу - path
+//  ВКорзину - Булево - В корзину                        - can
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -203,10 +203,10 @@
 // Создает копию объекта по заданному пути и пути к оригиналу
 //
 // Параметры:
-//  Токен          - Строка - Токен                                                   - token
-//  Оригинал       - Строка - Путь к оригинальному файлу или каталогу                 - from
-//  Путь           - Строка - Путь назначения для копии                               - to
-//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует  - rewrite
+//  Токен          - Строка - Токен                                                  - token
+//  Оригинал       - Строка - Путь к оригинальному файлу или каталогу                - from
+//  Путь           - Строка - Путь назначения для копии                              - to
+//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует - rewrite
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -240,8 +240,8 @@
 // Получает ссылку для скачивания файла
 //
 // Параметры:
-//  Токен - Строка - Токен                         - token
-//  Путь  - Строка  - Путь к файлу для скачивания  - path
+//  Токен - Строка - Токен                       - token
+//  Путь  - Строка - Путь к файлу для скачивания - path
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -262,9 +262,9 @@
 // Получает ссылку для ручной загрузки файла на Диск
 //
 // Параметры:
-//  Токен          - Строка - Токен                                                   - token
-//  Путь           - Строка - Путь для сохранение файла на Диске                      - path
-//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует  - rewrite
+//  Токен          - Строка - Токен                                                  - token
+//  Путь           - Строка - Путь для сохранение файла на Диске                     - path
+//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует - rewrite
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -289,9 +289,9 @@
 // Скачивает файл по указанному пути
 //
 // Параметры:
-//  Токен          - Строка - Токен                        - token
-//  Путь           - Строка - Путь к файлу для скачивания  - path
-//  ПутьСохранения - Строка - Путь сохранения файла        - out
+//  Токен          - Строка - Токен                       - token
+//  Путь           - Строка - Путь к файлу для скачивания - path
+//  ПутьСохранения - Строка - Путь сохранения файла       - out
 //
 // Возвращаемое значение:
 //  ДвоичныеДанные,Строка - Двоичные данные или путь к файлу при указании параметра ПутьСохранения
@@ -319,11 +319,11 @@
 //                         mage, settings, spreadsheet, text, unknown, video, web
 //
 // Параметры:
-//  Токен             - Строка       - Токен                                                - token
-//  Количество        - Число,Строка - Количество возвращаемых объектов                     - amount
-//  СмещениеОтНачала  - Число        - Смещение для получение объектов не из начала списка  - offset
-//  ОтборПоТипу       - Строка       - Отбор по типу файла                                  - type
-//  СортироватьПоДате - Булево       - Истина > сортировать по дате, Ложь > по алфавиту     - datesort
+//  Токен             - Строка        - Токен                                               - token
+//  Количество        - Число, Строка - Количество возвращаемых объектов                    - amount
+//  СмещениеОтНачала  - Число         - Смещение для получение объектов не из начала списка - offset
+//  ОтборПоТипу       - Строка        - Отбор по типу файла                                 - type
+//  СортироватьПоДате - Булево        - Истина > сортировать по дате, Ложь > по алфавиту    - datesort
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -370,10 +370,10 @@
 // Перемещает объект по заданному пути и пути к оригиналу
 //
 // Параметры:
-//  Токен          - Строка - Токен                                                   - token
-//  Оригинал       - Строка - Путь к оригинальному файлу или папке                    - from
-//  Путь           - Строка - Путь назначение для перемещения                         - to
-//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует  - rewrite
+//  Токен          - Строка - Токен                                                  - token
+//  Оригинал       - Строка - Путь к оригинальному файлу или папке                   - from
+//  Путь           - Строка - Путь назначение для перемещения                        - to
+//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует - rewrite
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -410,10 +410,10 @@
 // Загружает файл на диск по заданному пути
 //
 // Параметры:
-//  Токен          - Строка                - Токен                                                      - token
-//  Путь           - Строка                - Путь для сохранение файла на Диске                         - path
-//  Файл           - Строка,ДвоичныеДанные - Файл для загрузки                                          - file
-//  Перезаписывать - Булево                - Перезаписывать, если файл с таким именем уже существует    - rewrite
+//  Токен          - Строка                 - Токен                                                   - token
+//  Путь           - Строка                 - Путь для сохранение файла на Диске                      - path
+//  Файл           - Строка, ДвоичныеДанные - Файл для загрузки                                       - file
+//  Перезаписывать - Булево                 - Перезаписывать, если файл с таким именем уже существует - rewrite
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -441,11 +441,11 @@
 // Загружает файл на диск по заданному пути частями
 //
 // Параметры:
-//  Токен          - Строка                - Токен                                                      - token
-//  Путь           - Строка                - Путь для сохранение файла на Диске                         - path
-//  Файл           - Строка,ДвоичныеДанные - Файл для загрузки                                          - file
-//  РазмерЧасти    - Число                 - Размер одной части при загрузке                            - psize
-//  Перезаписывать - Булево                - Перезаписывать, если файл с таким именем уже существует    - rewrite
+//  Токен          - Строка                 - Токен                                                   - token
+//  Путь           - Строка                 - Путь для сохранение файла на Диске                      - path
+//  Файл           - Строка, ДвоичныеДанные - Файл для загрузки                                       - file
+//  РазмерЧасти    - Число                  - Размер одной части при загрузке                         - psize
+//  Перезаписывать - Булево                 - Перезаписывать, если файл с таким именем уже существует - rewrite
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -497,9 +497,9 @@
 // Загружает файл на диск, забирая его по заданному URL
 //
 // Параметры:
-//  Токен - Строка - Токен                               - token
-//  Путь  - Строка - Путь помещения загруженного файла   - path
-//  Адрес - Строка - URL файла                           - url
+//  Токен - Строка - Токен                             - token
+//  Путь  - Строка - Путь помещения загруженного файла - path
+//  Адрес - Строка - URL файла                         - url
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -530,8 +530,8 @@
 // Публикует объект диска в публичный доступ
 //
 // Параметры:
-//  Токен - Строка - Токен                        - token
-//  Путь  - Строка - Путь к публикуемому объекту  - path
+//  Токен - Строка - Токен                       - token
+//  Путь  - Строка - Путь к публикуемому объекту - path
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -545,8 +545,8 @@
 // Отменяет публикацию ранее опубликованного объекта
 //
 // Параметры:
-//  Токен - Строка - Токен                                  - token
-//  Путь  - Строка - Путь к опубликованному ранее объекту   - path
+//  Токен - Строка - Токен                                - token
+//  Путь  - Строка - Путь к опубликованному ранее объекту - path
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -593,10 +593,10 @@
 // Получает информацию об опубликованном объекте по его URL
 //
 // Параметры:
-//  Токен            - Строка - Токен                                                           - token
-//  URL              - Строка - Адрес объекта                                                   - url
-//  Количество       - Число  - Количество возвращаемых вложенных объектов (для каталога)       - amount
-//  СмещениеОтНачала - Число  - Смещение для получение вложенных объектов не из начала списка   - offset
+//  Токен            - Строка - Токен                                                         - token
+//  URL              - Строка - Адрес объекта                                                 - url
+//  Количество       - Число  - Количество возвращаемых вложенных объектов (для каталога)     - amount
+//  СмещениеОтНачала - Число  - Смещение для получение вложенных объектов не из начала списка - offset
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -661,10 +661,10 @@
 // Сохраняет публичный объект на ваш диск
 //
 // Параметры:
-//  Токен  - Строка - Токен                                               - token
-//  URL    - Строка - Адрес объекта                                       - url
-//  Откуда - Строка - Путь внутри публичного каталога (только для папок)  - from
-//  Куда   - Строка - Путь сохранения файла                               - to
+//  Токен  - Строка - Токен                                              - token
+//  URL    - Строка - Адрес объекта                                      - url
+//  Откуда - Строка - Путь внутри публичного каталога (только для папок) - from
+//  Куда   - Строка - Путь сохранения файла                              - to
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
@@ -744,91 +744,91 @@
 #Region Alternate
 
 Function GetConfirmationCode(Val ClientId) Export
-	Return ПолучитьКодПодтверждения(ClientId);
+    Return ПолучитьКодПодтверждения(ClientId);
 EndFunction
 
 Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
-	Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
+    Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
 EndFunction
 
 Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
+    Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
 EndFunction
 
 Function GetDiskInformation(Val Token) Export
-	Return ПолучитьИнформациюОДиске(Token);
+    Return ПолучитьИнформациюОДиске(Token);
 EndFunction
 
 Function CreateFolder(Val Token, Val Path) Export
-	Return СоздатьПапку(Token, Path);
+    Return СоздатьПапку(Token, Path);
 EndFunction
 
 Function GetObject(Val Token, Val Path) Export
-	Return ПолучитьОбъект(Token, Path);
+    Return ПолучитьОбъект(Token, Path);
 EndFunction
 
 Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
-	Return УдалитьОбъект(Token, Path, ToCart);
+    Return УдалитьОбъект(Token, Path, ToCart);
 EndFunction
 
 Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
-	Return СоздатьКопиюОбъекта(Token, Original, Path, Overwrite);
+    Return СоздатьКопиюОбъекта(Token, Original, Path, Overwrite);
 EndFunction
 
 Function GetDownloadLink(Val Token, Val Path) Export
-	Return ПолучитьСсылкуДляСкачивания(Token, Path);
+    Return ПолучитьСсылкуДляСкачивания(Token, Path);
 EndFunction
 
 Function GetFileUploadLink(Val Token, Val Path, Val Overwrite = False) Export
-	Return ПолучитьСсылкуЗагрузкиФайла(Token, Path, Overwrite);
+    Return ПолучитьСсылкуЗагрузкиФайла(Token, Path, Overwrite);
 EndFunction
 
 Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
-	Return СкачатьФайл(Token, Path, SavePath);
+    Return СкачатьФайл(Token, Path, SavePath);
 EndFunction
 
 Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export
-	Return ПолучитьСписокФайлов(Token, Count, OffsetFromStart, FilterByType, SortByDate);
+    Return ПолучитьСписокФайлов(Token, Count, OffsetFromStart, FilterByType, SortByDate);
 EndFunction
 
 Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
-	Return ПереместитьОбъект(Token, Original, Path, Overwrite);
+    Return ПереместитьОбъект(Token, Original, Path, Overwrite);
 EndFunction
 
 Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
-	Return ЗагрузитьФайл(Token, Path, File, Overwrite);
+    Return ЗагрузитьФайл(Token, Path, File, Overwrite);
 EndFunction
 
 Function UploadFileInParts(Val Token, Val Path, Val File, Val ChunkSize = 33554432, Val Overwrite = False) Export
-	Return ЗагрузитьФайлЧастями(Token, Path, File, ChunkSize, Overwrite);
+    Return ЗагрузитьФайлЧастями(Token, Path, File, ChunkSize, Overwrite);
 EndFunction
 
 Function UploadFileByURL(Val Token, Val Path, Val Address) Export
-	Return ЗагрузитьФайлПоURL(Token, Path, Address);
+    Return ЗагрузитьФайлПоURL(Token, Path, Address);
 EndFunction
 
 Function PublishObject(Val Token, Val Path) Export
-	Return ОпубликоватьОбъект(Token, Path);
+    Return ОпубликоватьОбъект(Token, Path);
 EndFunction
 
 Function CancelObjectPublication(Val Token, Val Path) Export
-	Return ОтменитьПубликациюОбъекта(Token, Path);
+    Return ОтменитьПубликациюОбъекта(Token, Path);
 EndFunction
 
 Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
-	Return ПолучитьСписокОпубликованныхОбъектов(Token, Count, OffsetFromStart);
+    Return ПолучитьСписокОпубликованныхОбъектов(Token, Count, OffsetFromStart);
 EndFunction
 
 Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
-	Return ПолучитьПубличныйОбъект(Token, URL, Count, OffsetFromStart);
+    Return ПолучитьПубличныйОбъект(Token, URL, Count, OffsetFromStart);
 EndFunction
 
 Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
-	Return ПолучитьСсылкуСкачиванияПубличногоОбъекта(Token, URL, Path);
+    Return ПолучитьСсылкуСкачиванияПубличногоОбъекта(Token, URL, Path);
 EndFunction
 
 Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
-	Return СохранитьПубличныйОбъектНаДиск(Token, URL, From, Target);
+    Return СохранитьПубличныйОбъектНаДиск(Token, URL, From, Target);
 EndFunction
 
 #EndRegion

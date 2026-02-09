@@ -67,9 +67,9 @@ EndFunction
 // Converts the code to a token after entering the code when executing GetConfirmationCode
 //
 // Parameters:
-// ClientId - String - Client id - id
-// ClientSecret - String - Client secret - secret
-// DeviceCode - String - device_code from GetConfirmationCode - device
+// ClientId     - String - Client id                            - id
+// ClientSecret - String - Client secret                        - secret
+// DeviceCode   - String - device_code from GetConfirmationCode - device
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -84,7 +84,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientId - String - Client id - id
+// ClientId     - String - Client id     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -122,8 +122,8 @@ EndFunction
 // Creates a directory on the disk
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the created folder - path
+// Token - String - Token                      - token
+// Path  - String - Path to the created folder - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -155,8 +155,8 @@ EndFunction
 // Gets information about a disk object at the specified path
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to folder or file - path
+// Token - String - Token                  - token
+// Path  - String - Path to folder or file - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -177,9 +177,9 @@ EndFunction
 // Deletes an object at the specified path
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the folder or file to be deleted - path
-// ToCart - Boolean - To cart - can
+// Token  - String  - Token                                    - token
+// Path   - String  - Path to the folder or file to be deleted - path
+// ToCart - Boolean - To cart                                  - can
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -203,9 +203,9 @@ EndFunction
 // Creates a copy of the object at the specified path and path to the original
 //
 // Parameters:
-// Token - String - Token - token
-// Original - String - Path to the original file or directory - from
-// Path - String - Destination path for the copy - to
+// Token     - String  - Token                                                 - token
+// Original  - String  - Path to the original file or directory                - from
+// Path      - String  - Destination path for the copy                         - to
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 //
 // Returns:
@@ -240,8 +240,8 @@ EndFunction
 // Gets a download link for the file
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the file for downloading - path
+// Token - String - Token                            - token
+// Path  - String - Path to the file for downloading - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -262,8 +262,8 @@ EndFunction
 // Gets a link for manual file upload to Disk
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path for saving the file to disk - path
+// Token     - String  - Token                                                 - token
+// Path      - String  - Path for saving the file to disk                      - path
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 //
 // Returns:
@@ -289,9 +289,9 @@ EndFunction
 // Downloads a file at the specified path
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the file for downloading - path
-// SavePath - String - File save path - out
+// Token    - String - Token                            - token
+// Path     - String - Path to the file for downloading - path
+// SavePath - String - File save path                   - out
 //
 // Returns:
 // BinaryData,String - Binary data or file path when SavePath parameter is specified
@@ -319,11 +319,11 @@ EndFunction
 // mage, settings, spreadsheet, text, unknown, video, web
 //
 // Parameters:
-// Token - String - Token - token
-// Count - Number, String - Number of returned objects - amount
-// OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
-// FilterByType - String - Filter by file type - type
-// SortByDate - Boolean - True > sort by date, False > alphabetically - datesort
+// Token           - String         - Token                                                         - token
+// Count           - Number, String - Number of returned objects                                    - amount
+// OffsetFromStart - Number         - Offset for getting objects not from the beginning of the list - offset
+// FilterByType    - String         - Filter by file type                                           - type
+// SortByDate      - Boolean        - True > sort by date, False > alphabetically                   - datesort
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -370,9 +370,9 @@ EndFunction
 // Moves the object to the specified path and path to the original
 //
 // Parameters:
-// Token - String - Token - token
-// Original - String - Path to the original file or folder - from
-// Path - String - Destination path for moving - to
+// Token     - String  - Token                                                 - token
+// Original  - String  - Path to the original file or folder                   - from
+// Path      - String  - Destination path for moving                           - to
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 //
 // Returns:
@@ -410,10 +410,10 @@ EndFunction
 // Uploads a file to disk at the specified path
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path for saving the file to disk - path
-// File - String, BinaryData - File for upload - file
-// Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
+// Token     - String             - Token                                                 - token
+// Path      - String             - Path for saving the file to disk                      - path
+// File      - String, BinaryData - File for upload                                       - file
+// Overwrite - Boolean            - Overwrite if a file with the same name already exists - rewrite
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -441,11 +441,11 @@ EndFunction
 // Uploads a file to disk at the specified path in parts
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path for saving the file to disk - path
-// File - String, BinaryData - File for upload - file
-// ChunkSize - Number - Part size when uploading - psize
-// Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
+// Token     - String             - Token                                                 - token
+// Path      - String             - Path for saving the file to disk                      - path
+// File      - String, BinaryData - File for upload                                       - file
+// ChunkSize - Number             - Part size when uploading                              - psize
+// Overwrite - Boolean            - Overwrite if a file with the same name already exists - rewrite
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -497,9 +497,9 @@ EndFunction
 // Downloads a file to disk from the specified URL
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to place the downloaded file - path
-// Address - String - File URL - url
+// Token   - String - Token                             - token
+// Path    - String - Path to place the downloaded file - path
+// Address - String - File URL                          - url
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -530,8 +530,8 @@ EndFunction
 // Publishes the disk object for public access
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object to be published - path
+// Token - String - Token                              - token
+// Path  - String - Path to the object to be published - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -545,8 +545,8 @@ EndFunction
 // Unpublishes a previously published object
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the previously published object - path
+// Token - String - Token                                   - token
+// Path  - String - Path to the previously published object - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -560,8 +560,8 @@ EndFunction
 // Gets a list of published objects
 //
 // Parameters:
-// Token - String - Token - token
-// Count - Number - Number of returned objects - amount
+// Token           - String - Token                                                         - token
+// Count           - Number - Number of returned objects                                    - amount
 // OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
 //
 // Returns:
@@ -593,9 +593,9 @@ EndFunction
 // Gets information about the published object by its URL
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - Object address - url
-// Count - Number - Number of returned nested objects (for catalog) - amount
+// Token           - String - Token                                                                - token
+// URL             - String - Object address                                                       - url
+// Count           - Number - Number of returned nested objects (for catalog)                      - amount
 // OffsetFromStart - Number - Offset for getting nested objects not from the beginning of the list - offset
 //
 // Returns:
@@ -630,9 +630,9 @@ EndFunction
 // Gets a direct link to download the public object
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - Object address - url
-// Path - String - Path inside the object - path
+// Token - String - Token                  - token
+// URL   - String - Object address         - url
+// Path  - String - Path inside the object - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -661,10 +661,10 @@ EndFunction
 // Saves the public object to your disk
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - Object address - url
-// From - String - Path within public catalog (folders only) - from
-// Target - String - File save path - to
+// Token  - String - Token                                     - token
+// URL    - String - Object address                            - url
+// From   - String - Path within public catalog (folders only) - from
+// Target - String - File save path                            - to
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -744,91 +744,91 @@ EndFunction
 #Region Alternate
 
 Function ПолучитьКодПодтверждения(Val ClientId) Export
-	Return GetConfirmationCode(ClientId);
+    Return GetConfirmationCode(ClientId);
 EndFunction
 
 Function ПреобразоватьКодВТокен(Val ClientId, Val ClientSecret, Val КодУстройства) Export
-	Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
+    Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
 EndFunction
 
 Function ОбновитьТокен(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return RefreshToken(ClientId, ClientSecret, RefreshToken);
+    Return RefreshToken(ClientId, ClientSecret, RefreshToken);
 EndFunction
 
 Function ПолучитьИнформациюОДиске(Val Токен) Export
-	Return GetDiskInformation(Токен);
+    Return GetDiskInformation(Токен);
 EndFunction
 
 Function СоздатьПапку(Val Токен, Val Путь) Export
-	Return CreateFolder(Токен, Путь);
+    Return CreateFolder(Токен, Путь);
 EndFunction
 
 Function ПолучитьОбъект(Val Токен, Val Путь) Export
-	Return GetObject(Токен, Путь);
+    Return GetObject(Токен, Путь);
 EndFunction
 
 Function УдалитьОбъект(Val Токен, Val Путь, Val ВКорзину = True) Export
-	Return DeleteObject(Токен, Путь, ВКорзину);
+    Return DeleteObject(Токен, Путь, ВКорзину);
 EndFunction
 
 Function СоздатьКопиюОбъекта(Val Токен, Val Оригинал, Val Путь, Val Перезаписывать = False) Export
-	Return CreateObjectCopy(Токен, Оригинал, Путь, Перезаписывать);
+    Return CreateObjectCopy(Токен, Оригинал, Путь, Перезаписывать);
 EndFunction
 
 Function ПолучитьСсылкуДляСкачивания(Val Токен, Val Путь) Export
-	Return GetDownloadLink(Токен, Путь);
+    Return GetDownloadLink(Токен, Путь);
 EndFunction
 
 Function ПолучитьСсылкуЗагрузкиФайла(Val Токен, Val Путь, Val Перезаписывать = False) Export
-	Return GetFileUploadLink(Токен, Путь, Перезаписывать);
+    Return GetFileUploadLink(Токен, Путь, Перезаписывать);
 EndFunction
 
 Function СкачатьФайл(Val Токен, Val Путь, Val ПутьСохранения = "") Export
-	Return DownloadFile(Токен, Путь, ПутьСохранения);
+    Return DownloadFile(Токен, Путь, ПутьСохранения);
 EndFunction
 
 Function ПолучитьСписокФайлов(Val Токен, Val Количество = 0, Val СмещениеОтНачала = 0, Val ОтборПоТипу = "", Val СортироватьПоДате = False) Export
-	Return GetFilesList(Токен, Количество, СмещениеОтНачала, ОтборПоТипу, СортироватьПоДате);
+    Return GetFilesList(Токен, Количество, СмещениеОтНачала, ОтборПоТипу, СортироватьПоДате);
 EndFunction
 
 Function ПереместитьОбъект(Val Токен, Val Оригинал, Val Путь, Val Перезаписывать = False) Export
-	Return MoveObject(Токен, Оригинал, Путь, Перезаписывать);
+    Return MoveObject(Токен, Оригинал, Путь, Перезаписывать);
 EndFunction
 
 Function ЗагрузитьФайл(Val Токен, Val Путь, Val Файл, Val Перезаписывать = False) Export
-	Return UploadFile(Токен, Путь, Файл, Перезаписывать);
+    Return UploadFile(Токен, Путь, Файл, Перезаписывать);
 EndFunction
 
 Function ЗагрузитьФайлЧастями(Val Токен, Val Путь, Val Файл, Val РазмерЧасти = 33554432, Val Перезаписывать = False) Export
-	Return UploadFileInParts(Токен, Путь, Файл, РазмерЧасти, Перезаписывать);
+    Return UploadFileInParts(Токен, Путь, Файл, РазмерЧасти, Перезаписывать);
 EndFunction
 
 Function ЗагрузитьФайлПоURL(Val Токен, Val Путь, Val Адрес) Export
-	Return UploadFileByURL(Токен, Путь, Адрес);
+    Return UploadFileByURL(Токен, Путь, Адрес);
 EndFunction
 
 Function ОпубликоватьОбъект(Val Токен, Val Путь) Export
-	Return PublishObject(Токен, Путь);
+    Return PublishObject(Токен, Путь);
 EndFunction
 
 Function ОтменитьПубликациюОбъекта(Val Токен, Val Путь) Export
-	Return CancelObjectPublication(Токен, Путь);
+    Return CancelObjectPublication(Токен, Путь);
 EndFunction
 
 Function ПолучитьСписокОпубликованныхОбъектов(Val Токен, Val Количество = 0, Val СмещениеОтНачала = 0) Export
-	Return GetPublishedObjectsList(Токен, Количество, СмещениеОтНачала);
+    Return GetPublishedObjectsList(Токен, Количество, СмещениеОтНачала);
 EndFunction
 
 Function ПолучитьПубличныйОбъект(Val Токен, Val URL, Val Количество = 0, Val СмещениеОтНачала = 0) Export
-	Return GetPublicObject(Токен, URL, Количество, СмещениеОтНачала);
+    Return GetPublicObject(Токен, URL, Количество, СмещениеОтНачала);
 EndFunction
 
 Function ПолучитьСсылкуСкачиванияПубличногоОбъекта(Val Токен, Val URL, Val Путь = "") Export
-	Return GetDownloadLinkForPublicObject(Токен, URL, Путь);
+    Return GetDownloadLinkForPublicObject(Токен, URL, Путь);
 EndFunction
 
 Function СохранитьПубличныйОбъектНаДиск(Val Токен, Val URL, Откуда = "", Куда = "") Export
-	Return SavePublicObjectToDisk(Токен, URL, Откуда, Куда);
+    Return SavePublicObjectToDisk(Токен, URL, Откуда, Куда);
 EndFunction
 
 #EndRegion

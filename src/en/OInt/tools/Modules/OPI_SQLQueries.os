@@ -2013,79 +2013,79 @@ EndProcedure
 #Region Alternate
 
 Function СоздатьБазуДанных(Val Модуль, Val База, Val Соединение = "", Val Tls = Undefined) Export
-	Return CreateDatabase(Модуль, База, Соединение, Tls);
+    Return CreateDatabase(Модуль, База, Соединение, Tls);
 EndFunction
 
 Function УдалитьБазуДанных(Val Модуль, Val База, Val Соединение = "", Val Tls = Undefined) Export
-	Return DeleteDatabase(Модуль, База, Соединение, Tls);
+    Return DeleteDatabase(Модуль, База, Соединение, Tls);
 EndFunction
 
 Function СоздатьТаблицу(Val Модуль, Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = Undefined) Export
-	Return CreateTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
+    Return CreateTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
 EndFunction
 
 Function ДобавитьКолонкуТаблицы(Val Модуль, Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "", Val Tls = Undefined) Export
-	Return AddTableColumn(Модуль, Таблица, Имя, ТипДанных, Соединение, Tls);
+    Return AddTableColumn(Модуль, Таблица, Имя, ТипДанных, Соединение, Tls);
 EndFunction
 
 Function УдалитьКолонкуТаблицы(Val Модуль, Val Таблица, Val Имя, Val Соединение = "", Val Tls = Undefined) Export
-	Return DeleteTableColumn(Модуль, Таблица, Имя, Соединение, Tls);
+    Return DeleteTableColumn(Модуль, Таблица, Имя, Соединение, Tls);
 EndFunction
 
 Function ГарантироватьТаблицу(Val Модуль, Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = Undefined) Export
-	Return EnsureTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
+    Return EnsureTable(Модуль, Таблица, СтруктураКолонок, Соединение, Tls);
 EndFunction
 
 Function ДобавитьЗаписи(Val Модуль, Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = Undefined) Export
-	Return AddRecords(Модуль, Таблица, МассивДанных, Транзакция, Соединение, Tls);
+    Return AddRecords(Модуль, Таблица, МассивДанных, Транзакция, Соединение, Tls);
 EndFunction
 
 Function ПолучитьЗаписи(Val Модуль, Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = Undefined) Export
-	Return GetRecords(Модуль, Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
+    Return GetRecords(Модуль, Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
 EndFunction
 
 Function ОбновитьЗаписи(Val Модуль, Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "", Val Tls = Undefined) Export
-	Return UpdateRecords(Модуль, Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
+    Return UpdateRecords(Модуль, Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
 EndFunction
 
 Function ГарантироватьЗаписи(Val Модуль, Val Таблица, Val МассивДанных, Val КлючевыеПоля = "", Val Транзакция = True, Val Соединение = "", Val Tls = Undefined) Export
-	Return EnsureRecords(Модуль, Таблица, МассивДанных, КлючевыеПоля, Транзакция, Соединение, Tls);
+    Return EnsureRecords(Модуль, Таблица, МассивДанных, КлючевыеПоля, Транзакция, Соединение, Tls);
 EndFunction
 
 Function УдалитьЗаписи(Val Модуль, Val Таблица, Val Фильтры = "", Val Соединение = "", Val Tls = Undefined) Export
-	Return DeleteRecords(Модуль, Таблица, Фильтры, Соединение, Tls);
+    Return DeleteRecords(Модуль, Таблица, Фильтры, Соединение, Tls);
 EndFunction
 
 Function УдалитьТаблицу(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
-	Return DeleteTable(Модуль, Таблица, Соединение, Tls);
+    Return DeleteTable(Модуль, Таблица, Соединение, Tls);
 EndFunction
 
 Function ОчиститьТаблицу(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
-	Return ClearTable(Модуль, Таблица, Соединение, Tls);
+    Return ClearTable(Модуль, Таблица, Соединение, Tls);
 EndFunction
 
 Function ПолучитьСтруктуруТаблицы(Val Модуль, Val Таблица, Val Соединение = "", Val Tls = Undefined) Export
-	Return GetTableStructure(Модуль, Таблица, Соединение, Tls);
+    Return GetTableStructure(Модуль, Таблица, Соединение, Tls);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
-	Return GetRecordsFilterStructure(Пустая);
+    Return GetRecordsFilterStructure(Пустая);
 EndFunction
 
 Function ВыполнитьЗапросСОбработкой(Коннектор, Val ТекстЗапроса, Val ФорсироватьРезультат, Val Параметры) Export
-	Return ExecuteQueryWithProcessing(Коннектор, ТекстЗапроса, ФорсироватьРезультат, Параметры);
+    Return ExecuteQueryWithProcessing(Коннектор, ТекстЗапроса, ФорсироватьРезультат, Параметры);
 EndFunction
 
 Function ОбработатьПараметры(Val Компонента, Val Параметры, Val СтруктураТипов) Export
-	Return ProcessParameters(Компонента, Параметры, СтруктураТипов);
+    Return ProcessParameters(Компонента, Параметры, СтруктураТипов);
 EndFunction
 
 Procedure ДобавитьКолонку(Схема, Val Имя, Val Тип) Export
-	AddColoumn(Схема, Имя, Тип);
+    AddColoumn(Схема, Имя, Тип);
 EndProcedure
 
 Procedure ДобавитьПоле(Схема, Val Имя) Export
-	AddField(Схема, Имя);
+    AddField(Схема, Имя);
 EndProcedure
 
 #EndRegion

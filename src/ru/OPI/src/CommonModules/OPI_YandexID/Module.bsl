@@ -88,9 +88,9 @@
 // Обновляет токен по Refresh token
 //
 // Параметры:
-//  ClientId     - Строка - Client id      - id
-//  ClientSecret - Строка - Client secret  - secret
-//  RefreshToken - Строка - Refresh token  - refresh
+//  ClientId     - Строка - Client id     - id
+//  ClientSecret - Строка - Client secret - secret
+//  RefreshToken - Строка - Refresh token - refresh
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex

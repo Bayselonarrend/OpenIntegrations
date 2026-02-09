@@ -82,10 +82,10 @@
 // Отправляет простой http запрос без тела
 //
 // Параметры:
-//  Метод             - Строка                        - HTTP метод                                                           - method
-//  ОсновныеДанные    - Структура Из КлючИЗначение    - Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных  - basic
-//  ОжидаютсяДвоичные - Булево                        - Отключает попытку преобразования ответа в JSON                       - binary
-//  Заголовки         - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо                    - headers
+//  Метод             - Строка                        - HTTP метод                                                          - method
+//  ОсновныеДанные    - Структура Из КлючИЗначение    - Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных - basic
+//  ОжидаютсяДвоичные - Булево                        - Отключает попытку преобразования ответа в JSON                      - binary
+//  Заголовки         - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо                   - headers
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
@@ -103,11 +103,11 @@
 // Отправляет http запрос с телом
 //
 // Параметры:
-//  Метод             - Строка                        - HTTP метод                                                           - method
-//  ОсновныеДанные    - Структура Из КлючИЗначение    - Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных  - basic
-//  Тело              - Строка, ДвоичныеДанные        - Двоичное тело запроса или путь к файлу                               - body
-//  ОжидаютсяДвоичные - Булево                        - Отключает попытку преобразования ответа в JSON                       - binary
-//  Заголовки         - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо                    - headers
+//  Метод             - Строка                        - HTTP метод                                                          - method
+//  ОсновныеДанные    - Структура Из КлючИЗначение    - Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных - basic
+//  Тело              - Строка, ДвоичныеДанные        - Двоичное тело запроса или путь к файлу                              - body
+//  ОжидаютсяДвоичные - Булево                        - Отключает попытку преобразования ответа в JSON                      - binary
+//  Заголовки         - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо                   - headers
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
@@ -677,13 +677,13 @@
 // Это служебный метод. Для простого сценария загрузки файлов предназначен единый метод `ЗагрузитьОбъект`
 //
 // Параметры:
-//  Наименование   - Строка                        - Наименование объекта в бакете                              - name
-//  Бакет          - Строка                        - Имя бакета для загрузки объекта                            - bucket
-//  ОсновныеДанные - Структура Из КлючИЗначение    - Основные данные запроса. См. ПолучитьСтруктуруДанных       - basic
-//  IDЗагрузки     - Строка                        - ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями - upload
-//  НомерЧасти     - Число, Строка                 - Порядковый номер части объекта от 1 до 10000               - part
-//  Данные         - ДвоичныеДанные, Строка        - Данные части для загрузки                                  - content
-//  Каталог        - Булево                        - Истина > Path style URL, Ложь > Virtual hosted style URL   - dir
+//  Наименование   - Строка                     - Наименование объекта в бакете                              - name
+//  Бакет          - Строка                     - Имя бакета для загрузки объекта                            - bucket
+//  ОсновныеДанные - Структура Из КлючИЗначение - Основные данные запроса. См. ПолучитьСтруктуруДанных       - basic
+//  IDЗагрузки     - Строка                     - ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями - upload
+//  НомерЧасти     - Число, Строка              - Порядковый номер части объекта от 1 до 10000               - part
+//  Данные         - ДвоичныеДанные, Строка     - Данные части для загрузки                                  - content
+//  Каталог        - Булево                     - Истина > Path style URL, Ложь > Virtual hosted style URL   - dir
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
@@ -955,12 +955,12 @@
 // Метод в документации AWS: [CopyObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
 //
 // Параметры:
-//  ПутьИсточник   - Строка                        - Путь (имя) в бакете источнике                        - sname
-//  БакетИсточник  - Строка                        - Бакет источник объекта                               - sbucket
-//  ПутьПриемник   - Строка                        - Путь (имя) объекта в бакете приемнике                - name
-//  БакетПриемник  - Строка                        - Имя бакета приемника                                 - bucket
-//  ОсновныеДанные - Структура Из КлючИЗначение    - Основные данные запроса. См. ПолучитьСтруктуруДанных - basic
-//  Заголовки      - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо    - headers
+//  ПутьИсточник   - Строка                        - Путь (имя) в бакете источнике                            - sname
+//  БакетИсточник  - Строка                        - Бакет источник объекта                                   - sbucket
+//  ПутьПриемник   - Строка                        - Путь (имя) объекта в бакете приемнике                    - name
+//  БакетПриемник  - Строка                        - Имя бакета приемника                                     - bucket
+//  ОсновныеДанные - Структура Из КлючИЗначение    - Основные данные запроса. См. ПолучитьСтруктуруДанных     - basic
+//  Заголовки      - Соответствие Из КлючИЗначение - Дополнительные заголовки запроса, если необходимо        - headers
 //  Каталог        - Булево                        - Истина > Path style URL, Ложь > Virtual hosted style URL - dir
 //
 // Возвращаемое значение:
@@ -1977,131 +1977,131 @@
 #Region Alternate
 
 Function GetBasicDataStructure(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
-	Return ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region, Service);
+    Return ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region, Service);
 EndFunction
 
 Function SendRequestWithoutBody(Val Method, Val BasicData, Val ExpectedBinary = False, Val Headers = Undefined) Export
-	Return ОтправитьЗапросБезТела(Method, BasicData, ExpectedBinary, Headers);
+    Return ОтправитьЗапросБезТела(Method, BasicData, ExpectedBinary, Headers);
 EndFunction
 
 Function SendRequestWithBody(Val Method, Val BasicData, Val Body, Val ExpectedBinary = False, Val Headers = Undefined) Export
-	Return ОтправитьЗапросСТелом(Method, BasicData, Body, ExpectedBinary, Headers);
+    Return ОтправитьЗапросСТелом(Method, BasicData, Body, ExpectedBinary, Headers);
 EndFunction
 
 Function CreateBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return СоздатьБакет(Name, BasicData, Directory, Headers);
+    Return СоздатьБакет(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function DeleteBucket(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return УдалитьБакет(Name, BasicData, Directory, Headers);
+    Return УдалитьБакет(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function HeadBucket(Val Name, Val BasicData, Val Directory = False, Val AccountID = "", Val Headers = Undefined) Export
-	Return ПроверитьДоступностьБакета(Name, BasicData, Directory, AccountID, Headers);
+    Return ПроверитьДоступностьБакета(Name, BasicData, Directory, AccountID, Headers);
 EndFunction
 
 Function PutBucketEncryption(Val Name, Val BasicData, Val XmlConfig, Val Directory = False, Val Headers = Undefined) Export
-	Return УстановитьШифрованиеБакета(Name, BasicData, XmlConfig, Directory, Headers);
+    Return УстановитьШифрованиеБакета(Name, BasicData, XmlConfig, Directory, Headers);
 EndFunction
 
 Function GetBucketEncryption(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return ПолучитьШифрованиеБакета(Name, BasicData, Directory, Headers);
+    Return ПолучитьШифрованиеБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function DeleteBucketEncryption(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return УдалитьШифрованиеБакета(Name, BasicData, Directory, Headers);
+    Return УдалитьШифрованиеБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function PutBucketTagging(Val Name, Val BasicData, Val Tags, Val Directory = False, Val Headers = Undefined) Export
-	Return УстановитьТегиБакета(Name, BasicData, Tags, Directory, Headers);
+    Return УстановитьТегиБакета(Name, BasicData, Tags, Directory, Headers);
 EndFunction
 
 Function GetBucketTagging(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return ПолучитьТегиБакета(Name, BasicData, Directory, Headers);
+    Return ПолучитьТегиБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function DeleteBucketTagging(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return УдалитьТегиБакета(Name, BasicData, Directory, Headers);
+    Return УдалитьТегиБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Val MFADelete = Undefined, Val Directory = False, Val Headers = Undefined) Export
-	Return УстановитьНастройкиВерсионированияБакета(Name, BasicData, Status, MFADelete, Directory, Headers);
+    Return УстановитьНастройкиВерсионированияБакета(Name, BasicData, Status, MFADelete, Directory, Headers);
 EndFunction
 
 Function GetBucketVersioning(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return ПолучитьНастройкиВерсионированияБакета(Name, BasicData, Directory, Headers);
+    Return ПолучитьНастройкиВерсионированияБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function ListBuckets(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export
-	Return ПолучитьСписокБакетов(BasicData, Prefix, Region, PageToken, Headers);
+    Return ПолучитьСписокБакетов(BasicData, Prefix, Region, PageToken, Headers);
 EndFunction
 
 Function PutObject(Val Name, Val Bucket, Val Entity, Val BasicData, Val Headers = Undefined, Val Directory = False) Export
-	Return ЗагрузитьОбъект(Name, Bucket, Entity, BasicData, Headers, Directory);
+    Return ЗагрузитьОбъект(Name, Bucket, Entity, BasicData, Headers, Directory);
 EndFunction
 
 Function UploadFullObject(Val Name, Val Bucket, Val Entity, Val BasicData, Val Headers = Undefined, Val Directory = False) Export
-	Return ЗагрузитьОбъектЦеликом(Name, Bucket, Entity, BasicData, Headers, Directory);
+    Return ЗагрузитьОбъектЦеликом(Name, Bucket, Entity, BasicData, Headers, Directory);
 EndFunction
 
 Function InitPartsUpload(Val Name, Val Bucket, Val BasicData, Val Headers = Undefined, Val Directory = False) Export
-	Return ИнициализироватьЗагрузкуЧастями(Name, Bucket, BasicData, Headers, Directory);
+    Return ИнициализироватьЗагрузкуЧастями(Name, Bucket, BasicData, Headers, Directory);
 EndFunction
 
 Function UploadObjectPart(Val Name, Val Bucket, Val BasicData, Val UploadID, Val PartNumber, Val Data, Val Directory = False) Export
-	Return ЗагрузитьЧастьОбъекта(Name, Bucket, BasicData, UploadID, PartNumber, Data, Directory);
+    Return ЗагрузитьЧастьОбъекта(Name, Bucket, BasicData, UploadID, PartNumber, Data, Directory);
 EndFunction
 
 Function FinishPartsUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val TagsArray, Val Headers = Undefined, Val Directory = False) Export
-	Return ЗавершитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, TagsArray, Headers, Directory);
+    Return ЗавершитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, TagsArray, Headers, Directory);
 EndFunction
 
 Function AbortMultipartUpload(Val Name, Val Bucket, Val BasicData, Val UploadID, Val Headers = Undefined, Val Directory = False) Export
-	Return ОтменитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, Headers, Directory);
+    Return ОтменитьЗагрузкуЧастями(Name, Bucket, BasicData, UploadID, Headers, Directory);
 EndFunction
 
 Function HeadObject(Val Name, Val Bucket, Val BasicData, Val Version = Undefined, Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьОписаниеОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
+    Return ПолучитьОписаниеОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
 EndFunction
 
 Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "", Val Directory = False) Export
-	Return ПолучитьОбъект(Name, Bucket, BasicData, Version, Headers, SavePath, Directory);
+    Return ПолучитьОбъект(Name, Bucket, BasicData, Version, Headers, SavePath, Directory);
 EndFunction
 
 Function DeleteObject(Val Name, Val Bucket, Val BasicData, Val Version = Undefined, Val Headers = Undefined, Val Directory = False) Export
-	Return УдалитьОбъект(Name, Bucket, BasicData, Version, Headers, Directory);
+    Return УдалитьОбъект(Name, Bucket, BasicData, Version, Headers, Directory);
 EndFunction
 
 Function CopyObject(Val SourcePath, Val DestinationBucket, Val DestinationPath, Val SourceBucket, Val BasicData, Val Headers = Undefined, Val Directory = False) Export
-	Return КопироватьОбъект(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, Headers, Directory);
+    Return КопироватьОбъект(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, Headers, Directory);
 EndFunction
 
 Function PutObjectTagging(Val Name, Val Bucket, Val BasicData, Val Tags, Val Headers = Undefined, Val Directory = False) Export
-	Return УстановитьТегиОбъекта(Name, Bucket, BasicData, Tags, Headers, Directory);
+    Return УстановитьТегиОбъекта(Name, Bucket, BasicData, Tags, Headers, Directory);
 EndFunction
 
 Function GetObjectTagging(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
+    Return ПолучитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
 EndFunction
 
 Function DeleteObjectTagging(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val Directory = False) Export
-	Return УдалитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
+    Return УдалитьТегиОбъекта(Name, Bucket, BasicData, Version, Headers, Directory);
 EndFunction
 
 Function ListObjects(Val Bucket, Val BasicData, Val Prefix = "", Val PageToken = "", Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьСписокОбъектов(Bucket, BasicData, Prefix, PageToken, Headers, Directory);
+    Return ПолучитьСписокОбъектов(Bucket, BasicData, Prefix, PageToken, Headers, Directory);
 EndFunction
 
 Function ListObjectVersions(Val Bucket, Val BasicData, Val Prefix = "", Val Version = "", Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьСписокВерсийОбъектов(Bucket, BasicData, Prefix, Version, Headers, Directory);
+    Return ПолучитьСписокВерсийОбъектов(Bucket, BasicData, Prefix, Version, Headers, Directory);
 EndFunction
 
 Function GetObjectDownloadLink(Val Name, Val Bucket, Val BasicData, Val Expire = 3600, Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьСсылкуСкачиванияОбъекта(Name, Bucket, BasicData, Expire, Headers, Directory);
+    Return ПолучитьСсылкуСкачиванияОбъекта(Name, Bucket, BasicData, Expire, Headers, Directory);
 EndFunction
 
 Function GetObjectUploadLink(Val Name, Val Bucket, Val BasicData, Val Expire = 3600, Val Headers = Undefined, Val Directory = False) Export
-	Return ПолучитьСсылкуЗагрузкиОбъекта(Name, Bucket, BasicData, Expire, Headers, Directory);
+    Return ПолучитьСсылкуЗагрузкиОбъекта(Name, Bucket, BasicData, Expire, Headers, Directory);
 EndFunction
 
 #EndRegion

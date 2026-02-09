@@ -58,10 +58,10 @@
 // More details in the API documentation: [Get access parameters to instance](@green-api.com/v3/docs/before-start/#parameters)
 //
 // Parameters:
-// ApiUrl - String - API host link - api
-// MediaUrl - String - Link to host API for sending files - media
-// IdInstance - String - Unique instance number - id
-// ApiTokenInstance - String - Instance access key - token
+// ApiUrl           - String - API host link                      - api
+// MediaUrl         - String - Link to host API for sending files - media
+// IdInstance       - String - Unique instance number             - id
+// ApiTokenInstance - String - Instance access key                - token
 //
 // Returns:
 // Structure - Structure of access parameters
@@ -126,8 +126,8 @@ EndFunction
 // Method at API documentation: [SetSettings](@green-api.com/v3/docs/api/account/SetSettings/)
 //
 // Parameters:
-// Settings - Structure Of KeyAndValue - Instance settings. See GetInstanceSettingsStructure - settings
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Settings         - Structure Of KeyAndValue - Instance settings. See GetInstanceSettingsStructure - settings
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters         - access
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -150,7 +150,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// PhoneNumber - String, Number - Phone number without + - phone
+// PhoneNumber      - String, Number           - Phone number without +                      - phone
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -178,7 +178,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// AuthCode - String - Authorization code - code
+// AuthCode         - String                   - Authorization code                          - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -223,7 +223,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Image - BinaryData, String - Profile picture - picture
+// Image            - BinaryData, String       - Profile picture                             - picture
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -288,9 +288,9 @@ EndFunction
 // Method at API documentation: [CheckAccount](@green-api.com/v3/docs/api/service/CheckAccount/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// PhoneNumber - String, Number - Phone number for verification without + - phone
-// IgnoreCache - Boolean - Ignore cache on repeated verification request - force
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters   - access
+// PhoneNumber      - String, Number           - Phone number for verification without +       - phone
+// IgnoreCache      - Boolean                  - Ignore cache on repeated verification request - force
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -318,8 +318,8 @@ EndFunction
 // Method at API documentation: [GetContacts](@green-api.com/v3/docs/api/service/GetContacts/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Count - Number - Contact count to retrieve. All if not specified - count
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters     - access
+// Count            - Number                   - Contact count to retrieve. All if not specified - count
 //
 // Returns:
 // Array Of Map - serialized JSON response from Green API
@@ -343,7 +343,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat identifier - chat
+// ChatID           - String                   - Chat identifier                             - chat
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -387,7 +387,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat identifier - chat
+// ChatID           - String                   - Chat identifier                             - chat
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -449,8 +449,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Name - String - Group name - name
-// Members - Array Of String, String - Array of group member IDs or a single ID - members
+// Name             - String                   - Group name                                  - name
+// Members          - Array Of String, String  - Array of group member IDs or a single ID    - members
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -480,7 +480,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
+// ChatID           - String                   - Group chat ID                               - chat
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -504,8 +504,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// Name - String - New chat name - name
+// ChatID           - String                   - Group chat ID                               - chat
+// Name             - String                   - New chat name                               - name
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -530,8 +530,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// Image - String, BinaryData - Image in jpg format - picture
+// ChatID           - String                   - Group chat ID                               - chat
+// Image            - String, BinaryData       - Image in jpg format                         - picture
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -559,9 +559,9 @@ EndFunction
 // Method at API documentation: [UpdateGroupSettings](@green-api.com/v3/docs/api/groups/UpdateGroupSettings/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// Settings - Structure Of KeyAndValue - Group chat settings. See GetGroupSettingsStructure - set
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters        - access
+// ChatID           - String                   - Group chat ID                                      - chat
+// Settings         - Structure Of KeyAndValue - Group chat settings. See GetGroupSettingsStructure - set
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -591,8 +591,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// MemberID - String - Member ID for addition - member
+// ChatID           - String                   - Group chat ID                               - chat
+// MemberID         - String                   - Member ID for addition                      - member
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -617,8 +617,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// MemberID - String - Member ID for removal - member
+// ChatID           - String                   - Group chat ID                               - chat
+// MemberID         - String                   - Member ID for removal                       - member
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -643,8 +643,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// MemberID - String - Member ID - member
+// ChatID           - String                   - Group chat ID                               - chat
+// MemberID         - String                   - Member ID                                   - member
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -669,8 +669,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
-// MemberID - String - Member ID - member
+// ChatID           - String                   - Group chat ID                               - chat
+// MemberID         - String                   - Member ID                                   - member
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -695,7 +695,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Group chat ID - chat
+// ChatID           - String                   - Group chat ID                               - chat
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -716,7 +716,7 @@ EndFunction
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns settings fields as a mapping - map
+// AsMap - Boolean - True > returns settings fields as a mapping                              - map
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -755,10 +755,10 @@ EndFunction
 // Method at API documentation: [SendMessage](@green-api.com/v3/docs/api/sending/SendMessage/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat identifier - chat
-// Text - String - Message text - text
-// TypingTime - Number - Time to show the typing indicator before sending (in ms.) - typing
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters               - access
+// ChatID           - String                   - Chat identifier                                           - chat
+// Text             - String                   - Message text                                              - text
+// TypingTime       - Number                   - Time to show the typing indicator before sending (in ms.) - typing
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -785,13 +785,13 @@ EndFunction
 // Method at API documentation: [SendFileByUpload](@green-api.com/v3/docs/api/sending/SendFileByUpload/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat identifier - chat
-// File - String, BinaryData - File data or filepath - file
-// FileName - String - Name of the file with the extension - filename
-// Description - String - Message text below the file - caption
-// TypingTime - Number - Time to show typing indicator before sending (in ms.) - typing
-// TypingType - String - Typing type: text, recording, video, image, file - ttype
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters           - access
+// ChatID           - String                   - Chat identifier                                       - chat
+// File             - String, BinaryData       - File data or filepath                                 - file
+// FileName         - String                   - Name of the file with the extension                   - filename
+// Description      - String                   - Message text below the file                           - caption
+// TypingTime       - Number                   - Time to show typing indicator before sending (in ms.) - typing
+// TypingType       - String                   - Typing type: text, recording, video, image, file      - ttype
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -834,13 +834,13 @@ EndFunction
 // Method at API documentation: [SendFileByUrl](@green-api.com/v3/docs/api/sending/SendFileByUrl/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat identifier - chat
-// FileURL - String - File URL - url
-// FileName - String - Name of the file with the extension - filename
-// Description - String - Message text below the file - caption
-// TypingTime - Number - Time to show typing indicator before sending (in ms.) - typing
-// TypingType - String - Typing type: text, recording, video, image, file - ttype
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters           - access
+// ChatID           - String                   - Chat identifier                                       - chat
+// FileURL          - String                   - File URL                                              - url
+// FileName         - String                   - Name of the file with the extension                   - filename
+// Description      - String                   - Message text below the file                           - caption
+// TypingTime       - Number                   - Time to show typing indicator before sending (in ms.) - typing
+// TypingType       - String                   - Typing type: text, recording, video, image, file      - ttype
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -884,9 +884,9 @@ EndFunction
 // Method at API documentation: [ReceiveNotification](@green-api.com/v3/docs/api/receiving/technology-http-api/ReceiveNotification/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Timeout - Number - Timeout for waiting for a notification if the queue is empty - timeout
-// Delete - Boolean - Delete notification from the queue after retrieval - del
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters                  - access
+// Timeout          - Number                   - Timeout for waiting for a notification if the queue is empty - timeout
+// Delete           - Boolean                  - Delete notification from the queue after retrieval           - del
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -923,7 +923,7 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// NotificationID - Number - Notification ID - id
+// NotificationID   - Number                   - Notification ID                             - id
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -952,8 +952,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat ID - chat
-// Count - Number - Number of messages to receive - count
+// ChatID           - String                   - Chat ID                                     - chat
+// Count            - Number                   - Number of messages to receive               - count
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -979,8 +979,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat ID - chat
-// MessageID - String - Message ID - message
+// ChatID           - String                   - Chat ID                                     - chat
+// MessageID        - String                   - Message ID                                  - message
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -1005,8 +1005,8 @@ EndFunction
 // Method at API documentation: [LastIncomingMessages](@green-api.com/v3/docs/api/journals/LastIncomingMessages/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Period - Number - Time in minutes for which messages need to be received - span
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters            - access
+// Period           - Number                   - Time in minutes for which messages need to be received - span
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -1030,8 +1030,8 @@ EndFunction
 // Method at API documentation: [LastOutgoingMessages](@green-api.com/v3/docs/api/journals/LastOutgoingMessages/)
 //
 // Parameters:
-// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// Period - Number - Time in minutes for which messages need to be received - span
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters            - access
+// Period           - Number                   - Time in minutes for which messages need to be received - span
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -1057,8 +1057,8 @@ EndFunction
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
-// ChatID - String - Chat ID - chat
-// MessageID - String - Message ID. All messages, unless specified - message
+// ChatID           - String                   - Chat ID                                     - chat
+// MessageID        - String                   - Message ID. All messages, unless specified  - message
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Green API
@@ -1226,171 +1226,171 @@ EndFunction
 #Region Alternate
 
 Function СформироватьПараметрыДоступа(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
-	Return FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Return FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 EndFunction
 
 Function ПолучитьИнформациюОбАккаунте(Val ПараметрыДоступа) Export
-	Return GetAccountInformation(ПараметрыДоступа);
+    Return GetAccountInformation(ПараметрыДоступа);
 EndFunction
 
 Function ПолучитьНастройкиИнстанса(Val ПараметрыДоступа) Export
-	Return GetInstanceSettings(ПараметрыДоступа);
+    Return GetInstanceSettings(ПараметрыДоступа);
 EndFunction
 
 Function УстановитьНастройкиИнстанса(Val Настройки, Val ПараметрыДоступа) Export
-	Return SetInstanceSettings(Настройки, ПараметрыДоступа);
+    Return SetInstanceSettings(Настройки, ПараметрыДоступа);
 EndFunction
 
 Function ПолучитьКодАвторизации(Val ПараметрыДоступа, Val НомерТелефона) Export
-	Return GetAuthorizationCode(ПараметрыДоступа, НомерТелефона);
+    Return GetAuthorizationCode(ПараметрыДоступа, НомерТелефона);
 EndFunction
 
 Function ОтправитьКодАвторизации(Val ПараметрыДоступа, Val КодАвторизации) Export
-	Return SendAuthorizationCode(ПараметрыДоступа, КодАвторизации);
+    Return SendAuthorizationCode(ПараметрыДоступа, КодАвторизации);
 EndFunction
 
 Function ПолучитьСостояниеИнстанса(Val ПараметрыДоступа) Export
-	Return GetInstanceStatus(ПараметрыДоступа);
+    Return GetInstanceStatus(ПараметрыДоступа);
 EndFunction
 
 Function УстановитьКартинкуПрофиля(Val ПараметрыДоступа, Val Картинка) Export
-	Return SetProfilePicture(ПараметрыДоступа, Картинка);
+    Return SetProfilePicture(ПараметрыДоступа, Картинка);
 EndFunction
 
 Function РазлогинитьИнстанс(Val ПараметрыДоступа) Export
-	Return LogoutInstance(ПараметрыДоступа);
+    Return LogoutInstance(ПараметрыДоступа);
 EndFunction
 
 Function ПерезапуститьИнстанс(Val ПараметрыДоступа) Export
-	Return RebootInstance(ПараметрыДоступа);
+    Return RebootInstance(ПараметрыДоступа);
 EndFunction
 
 Function ПроверитьАккаунт(Val ПараметрыДоступа, Val НомерТелефона, Val ИгнорироватьКэш = False) Export
-	Return CheckAccount(ПараметрыДоступа, НомерТелефона, ИгнорироватьКэш);
+    Return CheckAccount(ПараметрыДоступа, НомерТелефона, ИгнорироватьКэш);
 EndFunction
 
 Function ПолучитьСписокКонтактов(Val ПараметрыДоступа, Val Количество = Undefined) Export
-	Return GetContactList(ПараметрыДоступа, Количество);
+    Return GetContactList(ПараметрыДоступа, Количество);
 EndFunction
 
 Function ПолучитьИнформациюОКонтакте(Val ПараметрыДоступа, Val IDЧата) Export
-	Return GetContactInformation(ПараметрыДоступа, IDЧата);
+    Return GetContactInformation(ПараметрыДоступа, IDЧата);
 EndFunction
 
 Function ПолучитьСписокЧатов(Val ПараметрыДоступа) Export
-	Return GetChatList(ПараметрыДоступа);
+    Return GetChatList(ПараметрыДоступа);
 EndFunction
 
 Function ПолучитьАватарЧата(Val ПараметрыДоступа, Val IDЧата) Export
-	Return GetChatAvatar(ПараметрыДоступа, IDЧата);
+    Return GetChatAvatar(ПараметрыДоступа, IDЧата);
 EndFunction
 
 Function ПолучитьСтруктуруНастроекИнстанса(Val Пустая = False) Export
-	Return GetInstanceSettingsStructure(Пустая);
+    Return GetInstanceSettingsStructure(Пустая);
 EndFunction
 
 Function СоздатьГруппу(Val ПараметрыДоступа, Val Наименование, Val Участники) Export
-	Return CreateGroup(ПараметрыДоступа, Наименование, Участники);
+    Return CreateGroup(ПараметрыДоступа, Наименование, Участники);
 EndFunction
 
 Function ПолучитьИнформациюОГруппе(Val ПараметрыДоступа, Val IDЧата) Export
-	Return GetGroupInformation(ПараметрыДоступа, IDЧата);
+    Return GetGroupInformation(ПараметрыДоступа, IDЧата);
 EndFunction
 
 Function ИзменитьИмяГруппы(Val ПараметрыДоступа, Val IDЧата, Val Наименование) Export
-	Return UpdateGroupName(ПараметрыДоступа, IDЧата, Наименование);
+    Return UpdateGroupName(ПараметрыДоступа, IDЧата, Наименование);
 EndFunction
 
 Function УстановитьКартинкуГруппы(Val ПараметрыДоступа, Val IDЧата, Val Картинка) Export
-	Return SetGroupPicture(ПараметрыДоступа, IDЧата, Картинка);
+    Return SetGroupPicture(ПараметрыДоступа, IDЧата, Картинка);
 EndFunction
 
 Function ИзменитьНастройкиГруппы(Val ПараметрыДоступа, Val IDЧата, Val Настройки) Export
-	Return ChangeGroupSettings(ПараметрыДоступа, IDЧата, Настройки);
+    Return ChangeGroupSettings(ПараметрыДоступа, IDЧата, Настройки);
 EndFunction
 
 Function ДобавитьУчастникаГруппы(Val ПараметрыДоступа, Val IDЧата, Val IDУчастника) Export
-	Return AddGroupMember(ПараметрыДоступа, IDЧата, IDУчастника);
+    Return AddGroupMember(ПараметрыДоступа, IDЧата, IDУчастника);
 EndFunction
 
 Function УдалитьУчастникаГруппы(Val ПараметрыДоступа, Val IDЧата, Val IDУчастника) Export
-	Return RemoveGroupMember(ПараметрыДоступа, IDЧата, IDУчастника);
+    Return RemoveGroupMember(ПараметрыДоступа, IDЧата, IDУчастника);
 EndFunction
 
 Function НазначитьПраваАдминистратора(Val ПараметрыДоступа, Val IDЧата, Val IDУчастника) Export
-	Return SetAdminRights(ПараметрыДоступа, IDЧата, IDУчастника);
+    Return SetAdminRights(ПараметрыДоступа, IDЧата, IDУчастника);
 EndFunction
 
 Function ОтозватьПраваАдминистратора(Val ПараметрыДоступа, Val IDЧата, Val IDУчастника) Export
-	Return RevokeAdminRights(ПараметрыДоступа, IDЧата, IDУчастника);
+    Return RevokeAdminRights(ПараметрыДоступа, IDЧата, IDУчастника);
 EndFunction
 
 Function ВыйтиИзГруппы(Val ПараметрыДоступа, Val IDЧата) Export
-	Return LeaveGroup(ПараметрыДоступа, IDЧата);
+    Return LeaveGroup(ПараметрыДоступа, IDЧата);
 EndFunction
 
 Function ПолучитьСтруктуруНастроекГруппы(Val Пустая = False, Val КакСоответствие = False) Export
-	Return GetGroupSettingsStructure(Пустая, КакСоответствие);
+    Return GetGroupSettingsStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ОтправитьТекстовоеСообщение(Val ПараметрыДоступа, Val IDЧата, Val Текст, Val ВремяНабора = 0) Export
-	Return SendTextMessage(ПараметрыДоступа, IDЧата, Текст, ВремяНабора);
+    Return SendTextMessage(ПараметрыДоступа, IDЧата, Текст, ВремяНабора);
 EndFunction
 
 Function ОтправитьФайл(Val ПараметрыДоступа, Val IDЧата, Val Файл, Val ИмяФайла, Val Описание = "", Val ВремяНабора = 0, Val ТипНабора = "file") Export
-	Return SendFile(ПараметрыДоступа, IDЧата, Файл, ИмяФайла, Описание, ВремяНабора, ТипНабора);
+    Return SendFile(ПараметрыДоступа, IDЧата, Файл, ИмяФайла, Описание, ВремяНабора, ТипНабора);
 EndFunction
 
 Function ОтправитьФайлПоURL(Val ПараметрыДоступа, Val IDЧата, Val URLФайла, Val ИмяФайла, Val Описание = "", Val ВремяНабора = 0, Val ТипНабора = "file") Export
-	Return SendFileByURL(ПараметрыДоступа, IDЧата, URLФайла, ИмяФайла, Описание, ВремяНабора, ТипНабора);
+    Return SendFileByURL(ПараметрыДоступа, IDЧата, URLФайла, ИмяФайла, Описание, ВремяНабора, ТипНабора);
 EndFunction
 
 Function ПолучитьУведомление(Val ПараметрыДоступа, Val Таймаут = 5, Val Удалять = False) Export
-	Return GetNotification(ПараметрыДоступа, Таймаут, Удалять);
+    Return GetNotification(ПараметрыДоступа, Таймаут, Удалять);
 EndFunction
 
 Function УдалитьУведомление(Val ПараметрыДоступа, Val IDУведомления) Export
-	Return DeleteNotification(ПараметрыДоступа, IDУведомления);
+    Return DeleteNotification(ПараметрыДоступа, IDУведомления);
 EndFunction
 
 Function ПолучитьИсториюСообщенийЧата(Val ПараметрыДоступа, Val IDЧата, Val Количество = 100) Export
-	Return GetChatMessageHistory(ПараметрыДоступа, IDЧата, Количество);
+    Return GetChatMessageHistory(ПараметрыДоступа, IDЧата, Количество);
 EndFunction
 
 Function ПолучитьСообщениеЧата(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения) Export
-	Return GetChatMessage(ПараметрыДоступа, IDЧата, IDСообщения);
+    Return GetChatMessage(ПараметрыДоступа, IDЧата, IDСообщения);
 EndFunction
 
 Function ПолучитьЖурналВходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
-	Return GetIncomingMessageLog(ПараметрыДоступа, Период);
+    Return GetIncomingMessageLog(ПараметрыДоступа, Период);
 EndFunction
 
 Function ПолучитьЖурналИсходящихСообщений(Val ПараметрыДоступа, Val Период = 1440) Export
-	Return GetOutgoingMessageLog(ПараметрыДоступа, Период);
+    Return GetOutgoingMessageLog(ПараметрыДоступа, Период);
 EndFunction
 
 Function ОтметитьСообщенияКакПрочитанные(Val ПараметрыДоступа, Val IDЧата, Val IDСообщения = "") Export
-	Return MarkMessagesAsRead(ПараметрыДоступа, IDЧата, IDСообщения);
+    Return MarkMessagesAsRead(ПараметрыДоступа, IDЧата, IDСообщения);
 EndFunction
 
 Function ПолучитьКоличествоСообщенийКОтправке(Val ПараметрыДоступа) Export
-	Return GetOutgoingMessageCount(ПараметрыДоступа);
+    Return GetOutgoingMessageCount(ПараметрыДоступа);
 EndFunction
 
 Function ПолучитьОчередьСообщенийКОтправке(Val ПараметрыДоступа) Export
-	Return GetOutgoingMessageQueue(ПараметрыДоступа);
+    Return GetOutgoingMessageQueue(ПараметрыДоступа);
 EndFunction
 
 Function ОчиститьОчередьСообщенийКОтправке(Val ПараметрыДоступа) Export
-	Return ClearOutgoingMessageQueue(ПараметрыДоступа);
+    Return ClearOutgoingMessageQueue(ПараметрыДоступа);
 EndFunction
 
 Function ПолучитьКоличествоВходящихУведомлений(Val ПараметрыДоступа) Export
-	Return GetIncomingNotificationCount(ПараметрыДоступа);
+    Return GetIncomingNotificationCount(ПараметрыДоступа);
 EndFunction
 
 Function ОчиститьОчередьВходящихУведомлений(Val ПараметрыДоступа) Export
-	Return ClearIncomingNotificationQueue(ПараметрыДоступа);
+    Return ClearIncomingNotificationQueue(ПараметрыДоступа);
 EndFunction
 
 #EndRegion

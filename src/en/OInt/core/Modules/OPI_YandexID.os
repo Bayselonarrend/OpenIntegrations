@@ -60,9 +60,9 @@ EndFunction
 // Converts the code to a token after entering the code when executing GetConfirmationCode
 //
 // Parameters:
-// ClientId - String - Client id - id
-// ClientSecret - String - Client secret - secret
-// DeviceCode - String - device_code from GetConfirmationCode() - device
+// ClientId     - String - Client id                              - id
+// ClientSecret - String - Client secret                          - secret
+// DeviceCode   - String - device_code from GetConfirmationCode() - device
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -88,7 +88,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientId - String - Client id - id
+// ClientId     - String - Client id     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -132,19 +132,19 @@ EndFunction
 #Region Alternate
 
 Function ПолучитьКодПодтверждения(Val ClientId) Export
-	Return GetConfirmationCode(ClientId);
+    Return GetConfirmationCode(ClientId);
 EndFunction
 
 Function ПреобразоватьКодВТокен(Val ClientId, Val ClientSecret, Val КодУстройства) Export
-	Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
+    Return ConvertCodeToToken(ClientId, ClientSecret, КодУстройства);
 EndFunction
 
 Function ОбновитьТокен(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-	Return RefreshToken(ClientId, ClientSecret, RefreshToken);
+    Return RefreshToken(ClientId, ClientSecret, RefreshToken);
 EndFunction
 
 Function ПолучитьЗаголовокАвторизации(Val Токен) Export
-	Return GetAuthorizationHeader(Токен);
+    Return GetAuthorizationHeader(Токен);
 EndFunction
 
 #EndRegion

@@ -375,10 +375,10 @@
 // Метод в документации API: [Create a Model](@github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
 //
 // Параметры:
-//  URL          - Строка                        - URL сервера Ollama                                     - url
-//  Модель       - Строка                        - Имя модели                                             - model
-//  Настройки    - Структура Из КлючИЗначение    - Настройки модели. См. ПолучитьСтруктуруНастроекМодели  - settings
-//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп заголовки запроса, если необходимо                 - headers
+//  URL          - Строка                        - URL сервера Ollama                                    - url
+//  Модель       - Строка                        - Имя модели                                            - model
+//  Настройки    - Структура Из КлючИЗначение    - Настройки модели. См. ПолучитьСтруктуруНастроекМодели - settings
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп заголовки запроса, если необходимо                - headers
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -469,10 +469,10 @@
 // Метод в документации API: [Load a model](@github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
 //
 // Параметры:
-//  URL          - Строка  - URL сервера Ollama                                           - url
-//  Модель       - Строка  - Имя модели                                                   - model
-//  Период       - Число   - Время удержания модели в памяти в секундах                   - keep
-//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп заголовки запроса, если необходимо - headers
+//  URL          - Строка                        - URL сервера Ollama                         - url
+//  Модель       - Строка                        - Имя модели                                 - model
+//  Период       - Число                         - Время удержания модели в памяти в секундах - keep
+//  ДопЗаголовки - Соответствие Из КлючИЗначение - Доп заголовки запроса, если необходимо     - headers
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -738,87 +738,87 @@
 #Region Alternate
 
 Function GetVersion(Val URL, Val AdditionalHeaders = "") Export
-	Return ПолучитьВерсию(URL, AdditionalHeaders);
+    Return ПолучитьВерсию(URL, AdditionalHeaders);
 EndFunction
 
 Function GetResponse(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьОтвет(URL, Model, Question, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьОтвет(URL, Model, Question, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetContextResponse(Val URL, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьОтветВКонтексте(URL, Model, Messages, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьОтветВКонтексте(URL, Model, Messages, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetEmbeddings(Val URL, Val Model, Val Question, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export
-	Return ПолучитьПредставления(URL, Model, Question, AdditionalParameters, AdditionalHeaders);
+    Return ПолучитьПредставления(URL, Model, Question, AdditionalParameters, AdditionalHeaders);
 EndFunction
 
 Function GetRequestParameterStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруПараметровЗапроса(Clear);
+    Return ПолучитьСтруктуруПараметровЗапроса(Clear);
 EndFunction
 
 Function GetEmbeddingsParameterStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруПараметровПредставлений(Clear);
+    Return ПолучитьСтруктуруПараметровПредставлений(Clear);
 EndFunction
 
 Function GetContextParameterStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруПараметровВКонтексте(Clear);
+    Return ПолучитьСтруктуруПараметровВКонтексте(Clear);
 EndFunction
 
 Function GetContextMessageStructure(Val Role, Val Text, Val Pictures = "", Val Tools = "") Export
-	Return ПолучитьСтруктуруСообщенияКонтекста(Role, Text, Pictures, Tools);
+    Return ПолучитьСтруктуруСообщенияКонтекста(Role, Text, Pictures, Tools);
 EndFunction
 
 Function GetModelList(Val URL, Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокМоделей(URL, AdditionalHeaders);
+    Return ПолучитьСписокМоделей(URL, AdditionalHeaders);
 EndFunction
 
 Function ListRunningModels(Val URL, Val AdditionalHeaders = "") Export
-	Return ПолучитьСписокЗапущенныхМоделей(URL, AdditionalHeaders);
+    Return ПолучитьСписокЗапущенныхМоделей(URL, AdditionalHeaders);
 EndFunction
 
 Function GetModelInformation(Val URL, Val Model, Val Detailed = True, Val AdditionalHeaders = "") Export
-	Return ПолучитьИнформациюОМодели(URL, Model, Detailed, AdditionalHeaders);
+    Return ПолучитьИнформациюОМодели(URL, Model, Detailed, AdditionalHeaders);
 EndFunction
 
 Function CreateModel(Val URL, Val Model, Val Settings, Val AdditionalHeaders = "") Export
-	Return СоздатьМодель(URL, Model, Settings, AdditionalHeaders);
+    Return СоздатьМодель(URL, Model, Settings, AdditionalHeaders);
 EndFunction
 
 Function CopyModel(Val URL, Val Model, Val Name, Val AdditionalHeaders = "") Export
-	Return КопироватьМодель(URL, Model, Name, AdditionalHeaders);
+    Return КопироватьМодель(URL, Model, Name, AdditionalHeaders);
 EndFunction
 
 Function DeleteModel(Val URL, Val Model, Val AdditionalHeaders = "") Export
-	Return УдалитьМодель(URL, Model, AdditionalHeaders);
+    Return УдалитьМодель(URL, Model, AdditionalHeaders);
 EndFunction
 
 Function LoadModelToMemory(Val URL, Val Model, Val Period = 300, Val AdditionalHeaders = "") Export
-	Return ЗагрузитьМодельВПамять(URL, Model, Period, AdditionalHeaders);
+    Return ЗагрузитьМодельВПамять(URL, Model, Period, AdditionalHeaders);
 EndFunction
 
 Function UnloadModelFromMemory(Val URL, Val Model, Val AdditionalHeaders = "") Export
-	Return ВыгрузитьМодельИзПамяти(URL, Model, AdditionalHeaders);
+    Return ВыгрузитьМодельИзПамяти(URL, Model, AdditionalHeaders);
 EndFunction
 
 Function PushModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export
-	Return ОтправитьМодель(URL, Model, Insecure, AdditionalHeaders);
+    Return ОтправитьМодель(URL, Model, Insecure, AdditionalHeaders);
 EndFunction
 
 Function PullModel(Val URL, Val Model, Val Insecure = False, Val AdditionalHeaders = "") Export
-	Return СкачатьМодель(URL, Model, Insecure, AdditionalHeaders);
+    Return СкачатьМодель(URL, Model, Insecure, AdditionalHeaders);
 EndFunction
 
 Function GetModelSettingsStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруНастроекМодели(Clear);
+    Return ПолучитьСтруктуруНастроекМодели(Clear);
 EndFunction
 
 Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
-	Return ОтправитьBlob(URL, Data, AdditionalHeaders);
+    Return ОтправитьBlob(URL, Data, AdditionalHeaders);
 EndFunction
 
 Function CheckBlob(Val URL, Val SHA256, Val AdditionalHeaders = "") Export
-	Return ПроверитьBlob(URL, SHA256, AdditionalHeaders);
+    Return ПроверитьBlob(URL, SHA256, AdditionalHeaders);
 EndFunction
 
 #EndRegion

@@ -57,8 +57,8 @@
 // `ПолучитьНастройкиПриватныйКлюч`, `ПолучитьНастройкиЧерезАгента`
 //
 // Параметры:
-//  НастройкиSSH - Структура Из КлючИЗначение -  Структура настроек соединения              - set
-//  Прокси       - Структура Из КлючИЗначение -  Структура настроек прокси, если необходимо - proxy
+//  НастройкиSSH - Структура Из КлючИЗначение - Структура настроек соединения              - set
+//  Прокси       - Структура Из КлючИЗначение - Структура настроек прокси, если необходимо - proxy
 //
 // Возвращаемое значение:
 //  Произвольный, Соответствие Из КлючИЗначение -  Открыть соединение
@@ -183,12 +183,12 @@
 // Получает настройки соединения с авторизацией через приватный ключ
 //
 // Параметры:
-//  Хост       - Строка - Хост SSH                             - host
-//  Порт       - Число  - Порт SSH                             - port
-//  Логин      - Строка - Имя пользователя SSH                 - user
-//  Приватный  - Строка - Путь к файлу приватного ключа        - key
-//  Публичный  - Строка - Путь к файлу публичного ключ         - pub
-//  Пароль     - Строка - Пароль (passphrase) приватного ключа - pass
+//  Хост      - Строка - Хост SSH                             - host
+//  Порт      - Число  - Порт SSH                             - port
+//  Логин     - Строка - Имя пользователя SSH                 - user
+//  Приватный - Строка - Путь к файлу приватного ключа        - key
+//  Публичный - Строка - Путь к файлу публичного ключ         - pub
+//  Пароль    - Строка - Пароль (passphrase) приватного ключа - pass
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение -  Конфигурация соединения
@@ -207,9 +207,9 @@
 // Получает настройки соединения с авторизацией через SSH Agent
 //
 // Параметры:
-//  Хост       - Строка - Хост SSH                             - host
-//  Порт       - Число  - Порт SSH                             - port
-//  Логин      - Строка - Имя пользователя SSH                 - user
+//  Хост  - Строка - Хост SSH             - host
+//  Порт  - Число  - Порт SSH             - port
+//  Логин - Строка - Имя пользователя SSH - user
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение -  Конфигурация соединения
@@ -253,9 +253,9 @@
 // Команда FTP: `LIST`
 //
 // Параметры:
-//  Соединение - Произвольный - Существующее соединение или конфигурация соединения       - conn
-//  Путь       - Строка       - Путь к директории поиска                                  - path
-//  Рекурсивно - Булево       - Получать информацию об объектах во вложенных директориях  - rcv
+//  Соединение - Произвольный - Существующее соединение или конфигурация соединения      - conn
+//  Путь       - Строка       - Путь к директории поиска                                 - path
+//  Рекурсивно - Булево       - Получать информацию об объектах во вложенных директориях - rcv
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -457,8 +457,8 @@
 // Удаляет файл с сервера
 //
 // Параметры:
-//  Соединение - Произвольный           - Существующее соединение или конфигурация соединения - conn
-//  Путь       - Строка                 - Путь файла на сервере                               - path
+//  Соединение - Произвольный - Существующее соединение или конфигурация соединения - conn
+//  Путь       - Строка       - Путь файла на сервере                               - path
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -489,9 +489,9 @@
 // Сохраняет файл с сервера по указанному пути
 //
 // Параметры:
-//  Соединение - Произвольный  - Существующее соединение или конфигурация соединения - conn
-//  Путь       - Строка        - Путь файла на сервере                               - path
-//  ИмяФайла   - Строка        - Путь для сохранения файла на диске                  - file
+//  Соединение - Произвольный - Существующее соединение или конфигурация соединения - conn
+//  Путь       - Строка       - Путь файла на сервере                               - path
+//  ИмяФайла   - Строка       - Путь для сохранения файла на диске                  - file
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -746,75 +746,75 @@
 #Region Alternate
 
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
-	Return ОткрытьСоединение(SSHSettings, Proxy);
+    Return ОткрытьСоединение(SSHSettings, Proxy);
 EndFunction
 
 Function GetConnectionConfiguration(Val SSHSettings, Val Proxy = Undefined) Export
-	Return ПолучитьКонфигурациюСоединения(SSHSettings, Proxy);
+    Return ПолучитьКонфигурациюСоединения(SSHSettings, Proxy);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function UpdatePath(Val Connection, Val Path, Val NewPath, Val Overwrite = False) Export
-	Return ИзменитьПуть(Connection, Path, NewPath, Overwrite);
+    Return ИзменитьПуть(Connection, Path, NewPath, Overwrite);
 EndFunction
 
 Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
+    Return ЭтоКоннектор(Value);
 EndFunction
 
 Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
-	Return ПолучитьНастройкиЛогинПароль(Host, Port, Login, Password);
+    Return ПолучитьНастройкиЛогинПароль(Host, Port, Login, Password);
 EndFunction
 
 Function GetSettingsPrivateKey(Val Host, Val Port, Val Login, Val Private, Val Public = "", Val Password = "") Export
-	Return ПолучитьНастройкиПриватныйКлюч(Host, Port, Login, Private, Public, Password);
+    Return ПолучитьНастройкиПриватныйКлюч(Host, Port, Login, Private, Public, Password);
 EndFunction
 
 Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
-	Return ПолучитьНастройкиЧерезАгента(Host, Port, Login);
+    Return ПолучитьНастройкиЧерезАгента(Host, Port, Login);
 EndFunction
 
 Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
-	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+    Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
 EndFunction
 
 Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export
-	Return ПолучитьСписокОбъектов(Connection, Path, Recursively);
+    Return ПолучитьСписокОбъектов(Connection, Path, Recursively);
 EndFunction
 
 Function CreateNewDirectory(Val Connection, Val Path, Val Permissions = 700) Export
-	Return СоздатьНовуюДиректорию(Connection, Path, Permissions);
+    Return СоздатьНовуюДиректорию(Connection, Path, Permissions);
 EndFunction
 
 Function DeleteDirectory(Val Connection, Val Path) Export
-	Return УдалитьДиректорию(Connection, Path);
+    Return УдалитьДиректорию(Connection, Path);
 EndFunction
 
 Function GetCurrentDirectory(Val Connection) Export
-	Return ПолучитьТекущийКаталог(Connection);
+    Return ПолучитьТекущийКаталог(Connection);
 EndFunction
 
 Function UploadFile(Val Connection, Val File, Val Path) Export
-	Return ЗагрузитьФайл(Connection, File, Path);
+    Return ЗагрузитьФайл(Connection, File, Path);
 EndFunction
 
 Function DeleteFile(Val Connection, Val Path) Export
-	Return УдалитьФайл(Connection, Path);
+    Return УдалитьФайл(Connection, Path);
 EndFunction
 
 Function SaveFile(Val Connection, Val Path, Val FileName) Export
-	Return СохранитьФайл(Connection, Path, FileName);
+    Return СохранитьФайл(Connection, Path, FileName);
 EndFunction
 
 Function GetFileData(Val Connection, Val Path) Export
-	Return ПолучитьДанныеФайла(Connection, Path);
+    Return ПолучитьДанныеФайла(Connection, Path);
 EndFunction
 
 Function GetFileInformation(Val Connection, Val Path) Export
-	Return ПолучитьИнформациюОФайле(Connection, Path);
+    Return ПолучитьИнформациюОФайле(Connection, Path);
 EndFunction
 
 #EndRegion

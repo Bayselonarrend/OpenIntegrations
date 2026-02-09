@@ -56,7 +56,7 @@
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token   - String - Auth token                                                   - token
 // Website - String - Site name (login) for information. Current, if not filled in - sitename
 //
 // Returns:
@@ -83,7 +83,7 @@ EndFunction
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Login - String - Users login - login
+// Login    - String - Users login    - login
 // Password - String - Users password - password
 //
 // Returns:
@@ -130,9 +130,9 @@ EndFunction
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Token - String - Auth token - token
-// Path - String - File path on Neocities - path
-// Data - String, BinaryData - URL, path or file data - file
+// Token - String             - Auth token             - token
+// Path  - String             - File path on Neocities - path
+// Data  - String, BinaryData - URL, path or file data - file
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Neocities
@@ -160,9 +160,9 @@ EndFunction
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token       - String             - Auth token                                        - token
 // FileMapping - Map Of KeyAndValue - Files: Key > destination path on NC, Value > file - files
-// Singly - Boolean - True > sends files in separate requests - singly
+// Singly      - Boolean            - True > sends files in separate requests           - singly
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Neocities
@@ -219,7 +219,7 @@ EndFunction
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token - String                  - Auth token                                        - token
 // Paths - String, Array of String - Path or multiple paths of the files to be deleted - paths
 //
 // Returns:
@@ -255,8 +255,8 @@ EndFunction
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
-// Token - String - Auth token - token
-// Path - String - Selection of files by catalog. All if not filled in - path
+// Token - String - Auth token                                          - token
+// Path  - String - Selection of files by catalog. All if not filled in - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Neocities
@@ -282,8 +282,8 @@ EndFunction
 // The method deletes files on the server if they do not exist in the local directory
 //
 // Parameters:
-// Token - String - Auth token - token
-// LocalFolder - String - Local source catalog - local
+// Token        - String - Auth token                               - token
+// LocalFolder  - String - Local source catalog                     - local
 // RemoteFolder - String - Remote receiver catalog. Root by default - remote
 //
 // Returns:

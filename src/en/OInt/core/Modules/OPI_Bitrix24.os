@@ -52,8 +52,8 @@
 // Forms a link for authorization via the browser
 //
 // Parameters:
-// Domain - String - Current Bitrix URL (like 'portal.bitrix24.com') - domain
-// ClientID - String - Client ID from app settings - clientid
+// Domain   - String - Current Bitrix URL (like 'portal.bitrix24.com') - domain
+// ClientID - String - Client ID from app settings                     - clientid
 //
 // Returns:
 // String - URL for browser transition
@@ -80,9 +80,9 @@ EndFunction
 // Get token by auth code
 //
 // Parameters:
-// ClientID - String - Client ID from app settings - clientid
+// ClientID     - String - Client ID from app settings     - clientid
 // ClientSecret - String - Client secret from app settings - clientsecret
-// Code - String - Code from browser auth page - code
+// Code         - String - Code from browser auth page     - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -107,9 +107,9 @@ EndFunction
 // Update token by refresh token
 //
 // Parameters:
-// ClientID - String - Client ID from app settings - clientid
+// ClientID     - String - Client ID from app settings     - clientid
 // ClientSecret - String - Client secret from app settings - clientsecret
-// Refresh - String - Refresh token - refresh
+// Refresh      - String - Refresh token                   - refresh
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -137,8 +137,8 @@ EndFunction
 // Method at API documentation: [server_time](@dev.1c-bitrix.ru/rest_help/general/server_time.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -162,13 +162,13 @@ EndFunction
 // Method at API documentation: [log.blogpost.add](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Text - String - Text of post - text
-// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
-// Title - String - Post title - title
-// Important - Boolean - Mark post as important - important
-// Token - String - Access token, when app auth method used - token
+// URL        - String             - URL of webhook or a Bitrix24 domain, when token used                          - url
+// Text       - String             - Text of post                                                                  - text
+// Visibility - String             - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
+// Files      - Map Of KeyAndValue - Key > file name, value > path or binary data                                  - files
+// Title      - String             - Post title                                                                    - title
+// Important  - Boolean            - Mark post as important                                                        - important
+// Token      - String             - Access token, when app auth method used                                       - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -215,13 +215,13 @@ EndFunction
 // Method at API documentation: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Post ID - postid
-// Text - String - Text of post - text
-// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
-// Title - String - Post title - title
-// Token - String - Access token, when app auth method used - token
+// URL        - String             - URL of webhook or a Bitrix24 domain, when token used                          - url
+// PostID     - String, Number     - Post ID                                                                       - postid
+// Text       - String             - Text of post                                                                  - text
+// Visibility - String             - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
+// Files      - Map Of KeyAndValue - Key > file name, value > path or binary data                                  - files
+// Title      - String             - Post title                                                                    - title
+// Token      - String             - Access token, when app auth method used                                       - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -266,9 +266,9 @@ EndFunction
 // Method at API documentation: [log.blogpost.delete](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Id of post to remove - postid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// PostID - String, Number - Id of post to remove                                 - postid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -290,9 +290,9 @@ EndFunction
 // Method at API documentation: [log.blogpost.getusers.important](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Id of important post - postid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// PostID - String, Number - Id of important post                                 - postid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -314,10 +314,10 @@ EndFunction
 // Method at API documentation: [log.blogpost.get](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Id of important post - postid
-// Filter - String - Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group - sel
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used                            - url
+// PostID - String, Number - Id of important post                                                            - postid
+// Filter - String         - Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group - sel
+// Token  - String         - Access token, when app auth method used                                         - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -341,10 +341,10 @@ EndFunction
 // Method at API documentation: [log.blogcomment.add](@dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Post ID - postid
-// Text - String - Comment text - text
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// PostID - String, Number - Post ID                                              - postid
+// Text   - String         - Comment text                                         - text
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -368,10 +368,10 @@ EndFunction
 // Method at API documentation: [log.blogpost.share](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// PostID - String, Number - Post ID - postid
-// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Token - String - Access token, when app auth method used - token
+// URL        - String         - URL of webhook or a Bitrix24 domain, when token used                          - url
+// PostID     - String, Number - Post ID                                                                       - postid
+// Visibility - String         - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
+// Token      - String         - Access token, when app auth method used                                       - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -399,9 +399,9 @@ EndFunction
 // Method at API documentation: [tasks.task.get](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -419,11 +419,11 @@ EndFunction
 // Method at API documentation: [tasks.task.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure - filter
-// Indent - Number, String - Offset of tasks list - offset
-// Token - String - Access token, when app auth method used - token
-// Fields - String, Array of String - A list of task fields in the response. All non calculable by default - select
+// URL    - String                   - URL of webhook or a Bitrix24 domain, when token used                 - url
+// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure                    - filter
+// Indent - Number, String           - Offset of tasks list                                                 - offset
+// Token  - String                   - Access token, when app auth method used                              - token
+// Fields - String, Array of String  - A list of task fields in the response. All non calculable by default - select
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -447,9 +447,9 @@ EndFunction
 // Method at API documentation: [tasks.task.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Task fields structure. See GetTaskFieldsStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - Task fields structure. See GetTaskFieldsStructure    - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -471,10 +471,10 @@ EndFunction
 // Method at API documentation: [tasks.task.update](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// FieldsStructure - Structure Of KeyAndValue - Task fields structure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID          - Number, String           - Task ID                                              - task
+// FieldsStructure - Structure Of KeyAndValue - Task fields structure                                - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -497,9 +497,9 @@ EndFunction
 // Method at API documentation: [tasks.task.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -517,10 +517,10 @@ EndFunction
 // Method at API documentation: [tasks.task.files.attach](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// FileID - Number, String - File ID - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// FileID - Number, String - File ID                                              - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -543,9 +543,9 @@ EndFunction
 // Method at API documentation: [tasks.task.approve](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -563,9 +563,9 @@ EndFunction
 // Method at API documentation: [tasks.task.disapprove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_disapprove.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -583,9 +583,9 @@ EndFunction
 // Method at API documentation: [tasks.task.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_complete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -603,9 +603,9 @@ EndFunction
 // Method at API documentation: [tasks.task.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -623,9 +623,9 @@ EndFunction
 // Method at API documentation: [tasks.task.defer](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_defer.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -643,9 +643,9 @@ EndFunction
 // Method at API documentation: [tasks.task.pause](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_pause.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -663,9 +663,9 @@ EndFunction
 // Method at API documentation: [tasks.task.start](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_start.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -683,9 +683,9 @@ EndFunction
 // Method at API documentation: [tasks.task.startwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_startwatch.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -703,9 +703,9 @@ EndFunction
 // Method at API documentation: [tasks.task.stopwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_stopwatch.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -723,10 +723,10 @@ EndFunction
 // Method at API documentation: [tasks.task.delegate](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delegate.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// UserID - Number, String - ID of responsible user - user
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// UserID - Number, String - ID of responsible user                               - user
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -749,9 +749,9 @@ EndFunction
 // Method at API documentation: [tasks.task.favorite.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -769,9 +769,9 @@ EndFunction
 // Method at API documentation: [tasks.task.favorite.remove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_remove.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -789,9 +789,9 @@ EndFunction
 // Method at API documentation: [tasks.task.history.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -809,10 +809,10 @@ EndFunction
 // Method at API documentation: [tasks.task.getaccess](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Users - Array of String - User IDs for access checking - users
-// Token - String - Access token, when app auth method used - token
+// URL    - String          - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String  - Task ID                                              - task
+// Users  - Array of String - User IDs for access checking                         - users
+// Token  - String          - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -835,9 +835,9 @@ EndFunction
 // Method at API documentation: [tasks.task.mute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -855,9 +855,9 @@ EndFunction
 // Method at API documentation: [tasks.task.unmute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -875,11 +875,11 @@ EndFunction
 // Method at API documentation: [task.dependence.add](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FromID - String, Number - From task ID - taskfrom
-// DestinationID - String, Number - To task ID - taskto
-// LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
-// Token - String - Access token, when app auth method used - token
+// URL           - String         - URL of webhook or a Bitrix24 domain, when token used                      - url
+// FromID        - String, Number - From task ID                                                              - taskfrom
+// DestinationID - String, Number - To task ID                                                                - taskto
+// LinkType      - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
+// Token         - String         - Access token, when app auth method used                                   - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -907,11 +907,11 @@ EndFunction
 // Method at API documentation: [task.dependence.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FromID - String, Number - From task ID - taskfrom
-// DestinationID - String, Number - To task ID - taskto
-// LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
-// Token - String - Access token, when app auth method used - token
+// URL           - String         - URL of webhook or a Bitrix24 domain, when token used                      - url
+// FromID        - String, Number - From task ID                                                              - taskfrom
+// DestinationID - String, Number - To task ID                                                                - taskto
+// LinkType      - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
+// Token         - String         - Access token, when app auth method used                                   - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -939,8 +939,8 @@ EndFunction
 // Method at API documentation: [task.planner.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/planner/getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -961,8 +961,8 @@ EndFunction
 // Method at API documentation: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -984,7 +984,7 @@ EndFunction
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns the filter fields as a map - map
+// AsMap - Boolean - True > returns the filter fields as a map                                - map
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -1050,8 +1050,8 @@ EndFunction
 // Method at API documentation: [task.item.userfield.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1072,13 +1072,13 @@ EndFunction
 // Method at API documentation: [task.item.userfield.add](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Type - String - Field type: string, double, date, boolean - type
-// Name - String - Text identifier (name) of the field - fieldname
-// ExternalID - String - Text identifier for external integration - externalid
-// Title - String - Field title - title
-// Signature - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
-// Token - String - Access token, when app auth method used - token
+// URL        - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// Type       - String                   - Field type: string, double, date, boolean            - type
+// Name       - String                   - Text identifier (name) of the field                  - fieldname
+// ExternalID - String                   - Text identifier for external integration             - externalid
+// Title      - String                   - Field title                                          - title
+// Signature  - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text         - label
+// Token      - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1116,12 +1116,12 @@ EndFunction
 // Method at API documentation: [task.item.userfield.update](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldID - String, Number - Field ID for updating - fieldid
-// ExternalID - String - Text identifier for external integration - externalid
-// Title - String - Field title - title
-// Signature - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
-// Token - String - Access token, when app auth method used - token
+// URL        - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID    - String, Number           - Field ID for updating                                - fieldid
+// ExternalID - String                   - Text identifier for external integration             - externalid
+// Title      - String                   - Field title                                          - title
+// Signature  - Structure Of KeyAndValue - Form label. Key: en or ru, Value: Lable text         - label
+// Token      - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1157,9 +1157,9 @@ EndFunction
 // Method at API documentation: [task.item.userfield.get](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldID - String, Number - Field ID for retrieval - fieldid
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID - String, Number - Field ID for retrieval                               - fieldid
+// Token   - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1182,9 +1182,9 @@ EndFunction
 // Method at API documentation: [task.item.userfield.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldID - String, Number - Field ID for deletion - fieldid
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID - String, Number - Field ID for deletion                                - fieldid
+// Token   - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1211,11 +1211,11 @@ EndFunction
 // Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Text - String - Text (title) of checklist element - text
-// Completed - Boolean - Mark as completed - complete
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// Text      - String         - Text (title) of checklist element                    - text
+// Completed - Boolean        - Mark as completed                                    - complete
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1247,11 +1247,11 @@ EndFunction
 // Method at API documentation: [task.checklistitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// ElementID - Number, String - Checklist element ID - element
-// Text - String - Text (title) of checklist element - text
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// ElementID - Number, String - Checklist element ID                                 - element
+// Text      - String         - Text (title) of checklist element                    - text
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1281,10 +1281,10 @@ EndFunction
 // Method at API documentation: [task.checklistitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// ElementID - Number, String - ID of deleted element - element
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// ElementID - Number, String - ID of deleted element                                - element
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1303,9 +1303,9 @@ EndFunction
 // Method at API documentation: [task.checklistitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1328,10 +1328,10 @@ EndFunction
 // Method at API documentation: [task.checklistitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// ElementID - Number, String - Element ID - element
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// ElementID - Number, String - Element ID                                           - element
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1350,10 +1350,10 @@ EndFunction
 // Method at API documentation: [task.checklistitem.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/complete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// ElementID - Number, String - Element ID - element
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// ElementID - Number, String - Element ID                                           - element
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1372,10 +1372,10 @@ EndFunction
 // Method at API documentation: [task.checklistitem.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/renew.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// ElementID - Number, String - Element ID - element
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// ElementID - Number, String - Element ID                                           - element
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1398,9 +1398,9 @@ EndFunction
 // Method at API documentation: [task.commentitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1418,10 +1418,10 @@ EndFunction
 // Method at API documentation: [task.commentitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// CommentID - Number, String - CommentID                                            - comment
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1444,10 +1444,10 @@ EndFunction
 // Method at API documentation: [task.commentitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Text - String - Comment text - text
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Text   - String         - Comment text                                         - text
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1474,11 +1474,11 @@ EndFunction
 // Method at API documentation: [task.commentitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// CommentID - Number, String - CommentID - comment
-// Text - String - Comment text - text
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// CommentID - Number, String - CommentID                                            - comment
+// Text      - String         - Comment text                                         - text
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1508,10 +1508,10 @@ EndFunction
 // Method at API documentation: [task.commentitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// CommentID - Number, String - ID of comment to remove - comment
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - Number, String - Task ID                                              - task
+// CommentID - Number, String - ID of comment to remove                              - comment
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1535,9 +1535,9 @@ EndFunction
 // Method at API documentation: [tasks.task.result.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result.list.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1555,9 +1555,9 @@ EndFunction
 // Method at API documentation: [tasks.task.result.addFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_addFromComment.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// CommentID - Number, String - CommentID                                            - comment
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1579,9 +1579,9 @@ EndFunction
 // Method at API documentation: [tasks.task.result.deleteFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_deleteFromComment.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// CommentID - Number, String - CommentID                                            - comment
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1641,13 +1641,13 @@ EndFunction
 // Method at API documentation: [task.stages.add](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Name - String - New stage name - title
-// Color - String - HEX of new stage color - color
+// URL         - String         - URL of webhook or a Bitrix24 domain, when token used                                      - url
+// Name        - String         - New stage name                                                                            - title
+// Color       - String         - HEX of new stage color                                                                    - color
 // PrevStageID - String, Number - ID of the stage after which a new stage should be inserted (at the beginning by default.) - prevstage
-// EntityID - String, Number - ID of kanban owner (group or user) - entityid
-// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when app auth method used - token
+// EntityID    - String, Number - ID of kanban owner (group or user)                                                        - entityid
+// AsAdmin     - Boolean        - Allows you to add stages without checking permissions (for administrators)                - admin
+// Token       - String         - Access token, when app auth method used                                                   - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1687,13 +1687,13 @@ EndFunction
 // Method at API documentation: [task.stages.update](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Name - String - New stages name - title
-// StageID - String, Number - Stage ID for change - stage
-// Color - String - HEX of new stage color - color
-// PrevStageID - String, Number - Stage ID, after which the selected stage should be inserted - prevstage
-// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when app auth method used - token
+// URL         - String         - URL of webhook or a Bitrix24 domain, when token used                       - url
+// Name        - String         - New stages name                                                            - title
+// StageID     - String, Number - Stage ID for change                                                        - stage
+// Color       - String         - HEX of new stage color                                                     - color
+// PrevStageID - String, Number - Stage ID, after which the selected stage should be inserted                - prevstage
+// AsAdmin     - Boolean        - Allows you to add stages without checking permissions (for administrators) - admin
+// Token       - String         - Access token, when app auth method used                                    - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1731,10 +1731,10 @@ EndFunction
 // Method at API documentation: [task.stages.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StageID - String, Number - ID of stage to dele - stage
-// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used                       - url
+// StageID - String, Number - ID of stage to dele                                                        - stage
+// AsAdmin - Boolean        - Allows you to add stages without checking permissions (for administrators) - admin
+// Token   - String         - Access token, when app auth method used                                    - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1760,10 +1760,10 @@ EndFunction
 // Method at API documentation: [task.stages.get](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EntityID - String, Number - ID of kanban owner (group or user) - entityid
-// AsAdmin - Boolean - Allows you to get stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used                       - url
+// EntityID - String, Number - ID of kanban owner (group or user)                                         - entityid
+// AsAdmin  - Boolean        - Allows you to get stages without checking permissions (for administrators) - admin
+// Token    - String         - Access token, when app auth method used                                    - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1790,12 +1790,12 @@ EndFunction
 // Method at API documentation: [task.stages.movetask](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - ID of task to move - task
-// StageID - String, Number - Stage ID - stage
-// Prev - String, Number - ID of the task to put the selected one in front of (if After not filled) - before
-// After - String, Number - ID of the task to be followed by the selected (if Prev not filled) - after
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used                     - url
+// TaskID  - String, Number - ID of task to move                                                       - task
+// StageID - String, Number - Stage ID                                                                 - stage
+// Prev    - String, Number - ID of the task to put the selected one in front of (if After not filled) - before
+// After   - String, Number - ID of the task to be followed by the selected (if Prev not filled)       - after
+// Token   - String         - Access token, when app auth method used                                  - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1841,13 +1841,13 @@ EndFunction
 // Method at API documentation: [task.elapseditem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - ID of task for time accounting - task
-// Time - String, Number - Time spent in seconds - amount
-// UserID - String, Number - ID of user for time accounting - user
-// Text - String - Comment text - text
-// SetupDate - String - Date the record was set - date
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - String, Number - ID of task for time accounting                       - task
+// Time      - String, Number - Time spent in seconds                                - amount
+// UserID    - String, Number - ID of user for time accounting                       - user
+// Text      - String         - Comment text                                         - text
+// SetupDate - String         - Date the record was set                              - date
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1885,10 +1885,10 @@ EndFunction
 // Method at API documentation: [task.elapseditem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - ID of task for time accounting - task
-// RecordID - String, Number - Time record ID - record
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID   - String, Number - ID of task for time accounting                       - task
+// RecordID - String, Number - Time record ID                                       - record
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1912,9 +1912,9 @@ EndFunction
 // Method at API documentation: [task.elapseditem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - Task ID - task
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - Task ID                                              - task
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1937,10 +1937,10 @@ EndFunction
 // Method at API documentation: [task.elapseditem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - Task ID - task
-// RecordID - String, Number - Time record ID - record
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID   - String, Number - Task ID                                              - task
+// RecordID - String, Number - Time record ID                                       - record
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1964,13 +1964,13 @@ EndFunction
 // Method at API documentation: [task.elapseditem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - String, Number - Task ID - task
-// RecordID - String, Number - Time record ID - record
-// Time - String, Number - Time spent in seconds - amount
-// Text - String - Comment text - text
-// SetupDate - String - Date the record was set - date
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID    - String, Number - Task ID                                              - task
+// RecordID  - String, Number - Time record ID                                       - record
+// Time      - String, Number - Time spent in seconds                                - amount
+// Text      - String         - Comment text                                         - text
+// SetupDate - String         - Date the record was set                              - date
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2008,11 +2008,11 @@ EndFunction
 // Method at API documentation: [timeman.open](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_open.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - Users ID. Current by default - userid
-// Time - Date - Start time. The date must match the current. Current time by default. - time
-// Report - String - Reason for change. Required when Time is specified and free schedule is disabled - report
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used                             - url
+// UserID - String, Number - Users ID. Current by default                                                     - userid
+// Time   - Date           - Start time. The date must match the current. Current time by default.            - time
+// Report - String         - Reason for change. Required when Time is specified and free schedule is disabled - report
+// Token  - String         - Access token, when app auth method used                                          - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2041,11 +2041,11 @@ EndFunction
 // Method at API documentation: [timeman.close](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_close.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - Users ID. Current by default - userid
-// Time - Date - Stop time. The date must match the current. Current time by default. - time
-// Report - String - Reason for change. Required when Time is specified and free schedule is disabled - report
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used                             - url
+// UserID - String, Number - Users ID. Current by default                                                     - userid
+// Time   - Date           - Stop time. The date must match the current. Current time by default.             - time
+// Report - String         - Reason for change. Required when Time is specified and free schedule is disabled - report
+// Token  - String         - Access token, when app auth method used                                          - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2074,9 +2074,9 @@ EndFunction
 // Method at API documentation: [timeman.pause](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_pause.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - Users ID. Current by default - userid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default                         - userid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2099,9 +2099,9 @@ EndFunction
 // Method at API documentation: [timeman.status](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_status.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - Users ID. Current by default - userid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default                         - userid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2124,9 +2124,9 @@ EndFunction
 // Method at API documentation: [timeman.settings](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_settings.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - Users ID. Current by default - userid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default                         - userid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2153,8 +2153,8 @@ EndFunction
 // Method at API documentation: [disk.storage.getlist](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getlist.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2174,8 +2174,8 @@ EndFunction
 // Method at API documentation: [disk.storage.getforapp](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getforapp.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2195,9 +2195,9 @@ EndFunction
 // Method at API documentation: [disk.storage.get](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StorageID - String, Number - Storage ID - storageid
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID                                           - storageid
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2215,10 +2215,10 @@ EndFunction
 // Method at API documentation: [disk.storage.rename](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_rename.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StorageID - String, Number - Storage ID - storageid
-// Name - String - New storage name - title
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID                                           - storageid
+// Name      - String         - New storage name                                     - title
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2242,9 +2242,9 @@ EndFunction
 // Method at API documentation: [disk.storage.getchildren](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getchildren.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StorageID - String, Number - Storage ID - storageid
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID                                           - storageid
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2262,10 +2262,10 @@ EndFunction
 // Method at API documentation: [disk.storage.addfolder](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_addfolder.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StorageID - String - Storage ID - storageid
-// Name - String - Folder name - title
-// Token - String - Access token, when app auth method used - token
+// URL       - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String - Storage ID                                           - storageid
+// Name      - String - Folder name                                          - title
+// Token     - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2297,9 +2297,9 @@ EndFunction
 // Method at API documentation: [disk.folder.get](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier                                    - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2317,10 +2317,10 @@ EndFunction
 // Method at API documentation: [disk.folder.addsubfolder](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_addsubfolder.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Parent folder identifier - folderid
-// Name - String - Name of new folder - title
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Parent folder identifier                             - folderid
+// Name     - String         - Name of new folder                                   - title
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2348,10 +2348,10 @@ EndFunction
 // Method at API documentation: [disk.folder.copyto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_copyto.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when app auth method used - token
+// URL           - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID      - String, Number - Folder identifier                                    - folderid
+// DestinationID - String, Number - ID of target folder                                  - tagetid
+// Token         - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2375,10 +2375,10 @@ EndFunction
 // Method at API documentation: [disk.folder.moveto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_moveto.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when app auth method used - token
+// URL           - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID      - String, Number - Folder identifier                                    - folderid
+// DestinationID - String, Number - ID of target folder                                  - tagetid
+// Token         - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2402,9 +2402,9 @@ EndFunction
 // Method at API documentation: [disk.folder.deletetree](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_deletetree.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - ID of folder to be deleted - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - ID of folder to be deleted                           - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2422,9 +2422,9 @@ EndFunction
 // Method at API documentation: [disk.folder.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getexternallink.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier                                    - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2442,10 +2442,10 @@ EndFunction
 // Method at API documentation: [disk.folder.getchildren](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getchildren.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Filter - Structure of KeyAndValue - Items filter. See GetFolderFilterStructure - filter
-// Token - String - Access token, when app auth method used - token
+// URL      - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number           - Folder identifier                                    - folderid
+// Filter   - Structure of KeyAndValue - Items filter. See GetFolderFilterStructure           - filter
+// Token    - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2468,9 +2468,9 @@ EndFunction
 // Method at API documentation: [disk.folder.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_markdeleted.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier                                    - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2488,9 +2488,9 @@ EndFunction
 // Method at API documentation: [disk.folder.restore](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_restore.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier                                    - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2508,10 +2508,10 @@ EndFunction
 // Method at API documentation: [disk.folder.rename](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_rename.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Name - String - New folders name - title
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier                                    - folderid
+// Name     - String         - New folders name                                     - title
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2535,9 +2535,9 @@ EndFunction
 // Method at API documentation: [disk.folder.getfields](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getfields.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// URL   - String  - URL of webhook or a Bitrix24 domain, when token used              - url
 // Clear - Boolean - True > structure with empty values, False > field types at values - empty
-// Token - String - Access token, when app auth method used - token
+// Token - String  - Access token, when app auth method used                           - token
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -2578,12 +2578,12 @@ EndFunction
 // Method at API documentation: [disk.storage.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_uploadfile.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Name - String - File name with extension - title
-// File - String, BinaryData - File for upload - file
-// StorageID - String - Storage id - storageid
-// Rights - String - Rights array if required - rights
-// Token - String - Access token, when app auth method used - token
+// URL       - String             - URL of webhook or a Bitrix24 domain, when token used - url
+// Name      - String             - File name with extension                             - title
+// File      - String, BinaryData - File for upload                                      - file
+// StorageID - String             - Storage id                                           - storageid
+// Rights    - String             - Rights array if required                             - rights
+// Token     - String             - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2627,11 +2627,11 @@ EndFunction
 // Method at API documentation: [disk.folder.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_uploadfile.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Name - String - File name with extension - title
-// File - String, BinaryData - File for upload - file
-// FolderID - String - Folder identifier - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String             - URL of webhook or a Bitrix24 domain, when token used - url
+// Name     - String             - File name with extension                             - title
+// File     - String, BinaryData - File for upload                                      - file
+// FolderID - String             - Folder identifier                                    - folderid
+// Token    - String             - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2677,9 +2677,9 @@ EndFunction
 // Method at API documentation: [disk.file.get](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier                                      - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2697,9 +2697,9 @@ EndFunction
 // Method at API documentation: [disk.file.delete](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - ID of removing file - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - ID of removing file                                  - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2718,9 +2718,9 @@ EndFunction
 // Method at API documentation: [disk.file.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_getexternallink.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier                                      - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2738,9 +2738,9 @@ EndFunction
 // Method at API documentation: [disk.file.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_markdeleted.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier                                      - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2758,9 +2758,9 @@ EndFunction
 // Method at API documentation: [disk.file.restore](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_restore.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier                                      - fileid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2778,10 +2778,10 @@ EndFunction
 // Method at API documentation: [disk.file.copyto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_copyto.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - Original file ID - fileid
-// FolderID - String, Number - ID of copy destination folder - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID   - String, Number - Original file ID                                     - fileid
+// FolderID - String, Number - ID of copy destination folder                        - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2805,10 +2805,10 @@ EndFunction
 // Method at API documentation: [disk.file.moveto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_moveto.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File ID - fileid
-// FolderID - String, Number - ID of new destination folder - folderid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID   - String, Number - File ID                                              - fileid
+// FolderID - String, Number - ID of new destination folder                         - folderid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2832,10 +2832,10 @@ EndFunction
 // Method at API documentation: [disk.file.rename](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_rename.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - File identifier - fileid
-// Name - String - New folders name - title
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier                                      - fileid
+// Name   - String         - New folders name                                     - title
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2863,9 +2863,9 @@ EndFunction
 // Method at API documentation: [im.chat.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12093)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatStructure - Structure Of KeyAndValue - Chat fields structure. See GetChatStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL           - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatStructure - Structure Of KeyAndValue - Chat fields structure. See GetChatStructure          - fields
+// Token         - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2892,9 +2892,9 @@ EndFunction
 // Method at API documentation: [im.chat.user.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12095)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2912,9 +2912,9 @@ EndFunction
 // Method at API documentation: [im.chat.leave](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12101)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2932,9 +2932,9 @@ EndFunction
 // Method at API documentation: [im.user.list.get ](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11493)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserIDs - Array of String, Number - Usesr ID or array of users IDs - users
-// Token - String - Access token, when app auth method used - token
+// URL     - String                  - URL of webhook or a Bitrix24 domain, when token used - url
+// UserIDs - Array of String, Number - Usesr ID or array of users IDs                       - users
+// Token   - String                  - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2957,11 +2957,11 @@ EndFunction
 // Method at API documentation: [im.chat.user.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12097)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// UserIDs - Array of string, number - New members IDs - users
-// HideHistory - Boolean - Hide old messages from new members - hide
-// Token - String - Access token, when app auth method used - token
+// URL         - String                  - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID      - String, Number          - Chat ID                                              - chat
+// UserIDs     - Array of string, number - New members IDs                                      - users
+// HideHistory - Boolean                 - Hide old messages from new members                   - hide
+// Token       - String                  - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2992,10 +2992,10 @@ EndFunction
 // Method at API documentation: [im.chat.user.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12099)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// UserID - String, Number - User ID - user
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// UserID - String, Number - User ID                                              - user
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3019,10 +3019,10 @@ EndFunction
 // Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Title - String - New title - title
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Title  - String         - New title                                            - title
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3047,10 +3047,10 @@ EndFunction
 // Available colours: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, MARENGO, GRAY, GRAPHITE
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Color - String - New chat color - color
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Color  - String         - New chat color                                       - color
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3074,10 +3074,10 @@ EndFunction
 // Method at API documentation: [im.chat.updateAvatar](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12109)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Image - String, BinaryData - Picture data - picture
-// Token - String - Access token, when app auth method used - token
+// URL    - String             - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number     - Chat ID                                              - chat
+// Image  - String, BinaryData - Picture data                                         - picture
+// Token  - String             - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3104,10 +3104,10 @@ EndFunction
 // Method at API documentation: [im.chat.setOwner](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12111)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// UserID - String, Number - User ID - user
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// UserID - String, Number - User ID                                              - user
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3131,9 +3131,9 @@ EndFunction
 // Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3151,9 +3151,9 @@ EndFunction
 // Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3171,11 +3171,11 @@ EndFunction
 // Method at API documentation: [im.dialog.messages.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11479)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// LastID - String, Number - Id of last message - last
-// FirstID - String, Number - ID of first message - first
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID  - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// LastID  - String, Number - Id of last message                                   - last
+// FirstID - String, Number - ID of first message                                  - first
+// Token   - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3209,9 +3209,9 @@ EndFunction
 // Method at API documentation: [im.dialog.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12886)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3234,9 +3234,9 @@ EndFunction
 // Method at API documentation: [im.dialog.users.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23800)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3259,9 +3259,9 @@ EndFunction
 // Method at API documentation: [im.dialog.writing](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23802)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3284,8 +3284,8 @@ EndFunction
 // Method at API documentation: [im.user.status.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11497)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3306,9 +3306,9 @@ EndFunction
 // Method at API documentation: [im.user.status.set](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11499)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Status - String, Number - Status value: online, dnd, away - status
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// Status - String, Number - Status value: online, dnd, away                      - status
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3331,8 +3331,8 @@ EndFunction
 // Method at API documentation: [im.dialog.read.all](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23804)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3352,9 +3352,9 @@ EndFunction
 // Method at API documentation: [im.disk.folder.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11483)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID                                              - chat
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3409,11 +3409,11 @@ EndFunction
 // Method at API documentation: [im.message.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12115)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Text - String - Message text - text
-// Attachments - Array of Structure - Array of attachments - blocks
-// Token - String - Access token, when app auth method used - token
+// URL         - String             - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID      - String, Number     - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// Text        - String             - Message text                                         - text
+// Attachments - Array of Structure - Array of attachments                                 - blocks
+// Token       - String             - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3438,11 +3438,11 @@ EndFunction
 // Method at API documentation: [im.message.update](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12117)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// MessageID - String, Number - ID of the message to be edited - message
-// Text - String - New message text - text
-// Attachments - Array of Structure - New blocks array - blocks
-// Token - String - Access token, when app auth method used - token
+// URL         - String             - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID   - String, Number     - ID of the message to be edited                       - message
+// Text        - String             - New message text                                     - text
+// Attachments - Array of Structure - New blocks array                                     - blocks
+// Token       - String             - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3467,9 +3467,9 @@ EndFunction
 // Method at API documentation: [im.message.like](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12121)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// MessageID - String, Number - Message ID - message
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID - String, Number - Message ID                                           - message
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3492,9 +3492,9 @@ EndFunction
 // Method at API documentation: [im.message.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12119)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// MessageID - String, Number - ID of the message to be deleted - message
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID - String, Number - ID of the message to be deleted                      - message
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3517,11 +3517,11 @@ EndFunction
 // Method at API documentation: [im.disk.file.commit](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11485)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// FileID - String, Number - File ID from UploadFileToFolder method - fileid
-// Description - String - File description - description
-// Token - String - Access token, when app auth method used - token
+// URL         - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID      - String, Number - Chat ID                                              - chat
+// FileID      - String, Number - File ID from UploadFileToFolder method               - fileid
+// Description - String         - File description                                     - description
+// Token       - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3548,10 +3548,10 @@ EndFunction
 // Method at API documentation: [im.dialog.read](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12053)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// MessageID - String, Number - Id of last readed message - message
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID    - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// MessageID - String, Number - Id of last readed message                            - message
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3575,10 +3575,10 @@ EndFunction
 // Method at API documentation: [im.dialog.unread](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12055)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// MessageID - String, Number - ID of last unreaded message - message
-// Token - String - Access token, when app auth method used - token
+// URL       - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID    - String, Number - Chat ID (as chatXXX) or User ID (as XXX)             - chat
+// MessageID - String, Number - ID of last unreaded message                          - message
+// Token     - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3602,8 +3602,8 @@ EndFunction
 // Blocks at API documentation: [Link](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
 //
 // Parameters:
-// Name - String - Picture name - title
-// URL - String - URL of sending picture - url
+// Name - String - Picture name           - title
+// URL  - String - URL of sending picture - url
 //
 // Returns:
 // Structure - PictureBlock
@@ -3626,7 +3626,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - Picture name - title
-// URL - String - File URL - url
+// URL  - String - File URL     - url
 //
 // Returns:
 // Structure - FileBlock
@@ -3652,12 +3652,12 @@ EndFunction
 // Method at API documentation: [im.notify.personal.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12129)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - User ID for sending the notification - user
-// Text - String - Notification text - text
-// Tag - String - Uniqueness Tag. If already exist, other notif. will be deleted - tag
-// Attachments - Array of Structure - Array of attachments - blocks
-// Token - String - Access token, when app auth method used - token
+// URL         - String             - URL of webhook or a Bitrix24 domain, when token used           - url
+// UserID      - String, Number     - User ID for sending the notification                           - user
+// Text        - String             - Notification text                                              - text
+// Tag         - String             - Uniqueness Tag. If already exist, other notif. will be deleted - tag
+// Attachments - Array of Structure - Array of attachments                                           - blocks
+// Token       - String             - Access token, when app auth method used                        - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3690,12 +3690,12 @@ EndFunction
 // Method at API documentation: [im.notify.system.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12131)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - User ID for sending the notification - user
-// Text - String - Notification text - text
-// Tag - String - Uniqueness Tag. If already exist, other notif. will be deleted - tag
-// Attachments - Array of Structure - Array of attachments - blocks
-// Token - String - Access token, when app auth method used - token
+// URL         - String             - URL of webhook or a Bitrix24 domain, when token used           - url
+// UserID      - String, Number     - User ID for sending the notification                           - user
+// Text        - String             - Notification text                                              - text
+// Tag         - String             - Uniqueness Tag. If already exist, other notif. will be deleted - tag
+// Attachments - Array of Structure - Array of attachments                                           - blocks
+// Token       - String             - Access token, when app auth method used                        - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3728,9 +3728,9 @@ EndFunction
 // Method at API documentation: [im.notify.delete](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12133)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// NotificationID - String, Number - Notification ID - notif
-// Token - String - Access token, when app auth method used - token
+// URL            - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// NotificationID - String, Number - Notification ID                                      - notif
+// Token          - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3757,11 +3757,11 @@ EndFunction
 // Method at API documentation: [department.add](@dev.1c-bitrix.ru/rest_help/departments/department_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Name - String - Department name - title
-// ParentID - String, Number - ID of parent department - parentid
-// HeadID - String, Number - ID of department manager - headid
-// Token - String - Access token, when app auth method used - token
+// URL      - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// Name     - String         - Department name                                      - title
+// ParentID - String, Number - ID of parent department                              - parentid
+// HeadID   - String, Number - ID of department manager                             - headid
+// Token    - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3792,12 +3792,12 @@ EndFunction
 // Method at API documentation: [department.update](@dev.1c-bitrix.ru/rest_help/departments/department_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DepartmentID - String, Number - Department ID - depid
-// Name - String - Department name - title
-// ParentID - String, Number - ID of parent department - parentid
-// HeadID - String, Number - ID of department manager - headid
-// Token - String - Access token, when app auth method used - token
+// URL          - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Department ID                                        - depid
+// Name         - String         - Department name                                      - title
+// ParentID     - String, Number - ID of parent department                              - parentid
+// HeadID       - String, Number - ID of department manager                             - headid
+// Token        - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3830,12 +3830,12 @@ EndFunction
 // Method at API documentation: [department.get](@dev.1c-bitrix.ru/rest_help/departments/department_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DepartmentID - String, Number - Selection by department ID - depid
-// Name - String - Filter by name - title
-// ParentID - String, Number - Filter by parent ID - parentid
-// HeadID - String, Number - Filter by manager ID - headid
-// Token - String - Access token, when app auth method used - token
+// URL          - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Selection by department ID                           - depid
+// Name         - String         - Filter by name                                       - title
+// ParentID     - String, Number - Filter by parent ID                                  - parentid
+// HeadID       - String, Number - Filter by manager ID                                 - headid
+// Token        - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3868,9 +3868,9 @@ EndFunction
 // Method at API documentation: [department.delete](@dev.1c-bitrix.ru/rest_help/departments/department_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DepartmentID - String, Number - Department ID for deletion - depid
-// Token - String - Access token, when app auth method used - token
+// URL          - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Department ID for deletion                           - depid
+// Token        - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3897,8 +3897,8 @@ EndFunction
 // Method at API documentation: [user.current](@dev.1c-bitrix.ru/rest_help/users/user_current.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3919,9 +3919,9 @@ EndFunction
 // Method at API documentation: [user.get](@dev.1c-bitrix.ru/rest_help/users/user_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - User ID - userid
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID                                              - userid
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3946,9 +3946,9 @@ EndFunction
 // If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure           - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3975,10 +3975,10 @@ EndFunction
 // Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - User ID - userid
-// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID          - String, Number           - User ID                                              - userid
+// FieldsStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure           - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4004,10 +4004,10 @@ EndFunction
 // Activates or deactivates (fire) the selected user
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// UserID - String, Number - User ID - userid
-// Fire - Boolean - True > Deactivation, False > Activation - fire
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID                                              - userid
+// Fire   - Boolean        - True > Deactivation, False > Activation              - fire
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4034,9 +4034,9 @@ EndFunction
 // Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FilterStructure - Structure Of KeyAndValue - Filter. See GetUserFilterStructure - filter
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FilterStructure - Structure Of KeyAndValue - Filter. See GetUserFilterStructure                   - filter
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4059,8 +4059,8 @@ EndFunction
 // Method at API documentation: [user.fields](@dev.1c-bitrix.ru/rest_help/users/user_fields.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4115,9 +4115,9 @@ EndFunction
 // Method at API documentation: [crm.lead.add](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Lead fields structure. See GetLeadStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - Lead fields structure. See GetLeadStructure          - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4140,9 +4140,9 @@ EndFunction
 // Method at API documentation: [crm.lead.delete](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// LeadID - Number, String - Lead ID - lead
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID - Number, String - Lead ID                                              - lead
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4160,9 +4160,9 @@ EndFunction
 // Method at API documentation: [crm.lead.get](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// LeadID - Number, String - Lead ID - lead
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID - Number, String - Lead ID                                              - lead
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4180,10 +4180,10 @@ EndFunction
 // Method at API documentation: [crm.lead.list](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure - filter
-// Indent - Number, String - Offset from the beginning of the list to get leads > 50 recursively - offset
-// Token - String - Access token, when app auth method used - token
+// URL    - String                   - URL of webhook or a Bitrix24 domain, when token used                - url
+// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure                   - filter
+// Indent - Number, String           - Offset from the beginning of the list to get leads > 50 recursively - offset
+// Token  - String                   - Access token, when app auth method used                             - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4207,10 +4207,10 @@ EndFunction
 // Method at API documentation: [crm.lead.update](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// LeadID - Number, String - Lead ID - lead
-// FieldsStructure - Structure Of KeyAndValue - Structure of lead fields - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID          - Number, String           - Lead ID                                              - lead
+// FieldsStructure - Structure Of KeyAndValue - Structure of lead fields                             - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4234,8 +4234,8 @@ EndFunction
 // Method at API documentation: [crm.lead.fields](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_fields.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4308,9 +4308,9 @@ EndFunction
 // Method at API documentation: [crm.deal.add](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_add.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure         - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4333,9 +4333,9 @@ EndFunction
 // Method at API documentation: [crm.deal.delete](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_delete.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DealID - Number, String - Deal ID - deal
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID - Number, String - Deal ID                                              - deal
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4353,9 +4353,9 @@ EndFunction
 // Method at API documentation: [crm.deal.get](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_get.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DealID - Number, String - Deal ID - deal
-// Token - String - Access token, when app auth method used - token
+// URL    - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID - Number, String - Deal ID                                              - deal
+// Token  - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4373,10 +4373,10 @@ EndFunction
 // Method at API documentation: [crm.deal.list](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_list.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Deals filter structure. See GetDealsFilterStructure - filter
-// Indent - Number, String - Offset from the beginning of the list to retrieve deals > 50 pcs recursively - offset
-// Token - String - Access token, when app auth method used - token
+// URL    - String                   - URL of webhook or a Bitrix24 domain, when token used                         - url
+// Filter - Structure of KeyAndValue - Deals filter structure. See GetDealsFilterStructure                          - filter
+// Indent - Number, String           - Offset from the beginning of the list to retrieve deals > 50 pcs recursively - offset
+// Token  - String                   - Access token, when app auth method used                                      - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4400,10 +4400,10 @@ EndFunction
 // Method at API documentation: [crm.deal.update](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// DealID - Number, String - Deal ID - deal
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID          - Number, String           - Deal ID                                              - deal
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure                                - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4427,8 +4427,8 @@ EndFunction
 // Method at API documentation: [crm.deal.fields](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_fields.php)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4505,10 +4505,10 @@ EndFunction
 // Method at API documentation: [calendar.section.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// OwnerID - String, Number - Calendar owner ID - owner
-// Type - String - Calendar type: user, group, company_calendar, location, etc. - type
-// Token - String - Access token, when app auth method used - token
+// URL     - String         - URL of webhook or a Bitrix24 domain, when token used         - url
+// OwnerID - String, Number - Calendar owner ID                                            - owner
+// Type    - String         - Calendar type: user, group, company_calendar, location, etc. - type
+// Token   - String         - Access token, when app auth method used                      - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4532,9 +4532,9 @@ EndFunction
 // Method at API documentation: [calendar.section.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-add.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Calendar fields structure. See GetCalendarStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure Of KeyAndValue - Calendar fields structure. See GetCalendarStructure  - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4561,10 +4561,10 @@ EndFunction
 // Method at API documentation: [calendar.section.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-update.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// CalendarID - String, Number - Calendar ID - calendar
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL             - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// CalendarID      - String, Number           - Calendar ID                                          - calendar
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure         - fields
+// Token           - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4593,11 +4593,11 @@ EndFunction
 // Method at API documentation: [calendar.section.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-delete.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// CalendarID - String, Number - Calendar ID - calendar
-// OwnerID - String, Number - Calendar owner ID - owner
-// Type - String - Calendar type: user, group - type
-// Token - String - Access token, when app auth method used - token
+// URL        - String         - URL of webhook or a Bitrix24 domain, when token used - url
+// CalendarID - String, Number - Calendar ID                                          - calendar
+// OwnerID    - String, Number - Calendar owner ID                                    - owner
+// Type       - String         - Calendar type: user, group                           - type
+// Token      - String         - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4624,11 +4624,11 @@ EndFunction
 // Method at API documentation: [calendar.accessibility.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-accessibility-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Users - Number, Array Of Number - IDs of users or a single user - users
-// StartDate - Date - Start date of the period - from
-// EndDate - Date - End date of the period - to
-// Token - String - Access token, when app auth method used - token
+// URL       - String                  - URL of webhook or a Bitrix24 domain, when token used - url
+// Users     - Number, Array Of Number - IDs of users or a single user                        - users
+// StartDate - Date                    - Start date of the period                             - from
+// EndDate   - Date                    - End date of the period                               - to
+// Token     - String                  - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4656,8 +4656,8 @@ EndFunction
 // Method at API documentation: [calendar.user.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4677,9 +4677,9 @@ EndFunction
 // Method at API documentation: [calendar.user.settings.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-set.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// URL               - String                   - URL of webhook or a Bitrix24 domain, when token used       - url
 // SettingsStructure - Structure Of KeyAndValue - Settings structure. See GetCalednarCustomSettingsStructure - settings
-// Token - String - Access token, when app auth method used - token
+// Token             - String                   - Access token, when app auth method used                    - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4702,8 +4702,8 @@ EndFunction
 // Method at API documentation: [calendar.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-settings-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when app auth method used - token
+// URL   - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4815,9 +4815,9 @@ EndFunction
 // Method at API documentation: [calendar.event.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-add.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL              - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure    - fields
+// Token            - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4844,10 +4844,10 @@ EndFunction
 // Method at API documentation: [calendar.event.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-update.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventID - Number - Calednar event ID - event
-// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure - fields
-// Token - String - Access token, when app auth method used - token
+// URL              - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID          - Number                   - Calednar event ID                                    - event
+// EventDescription - Structure Of KeyAndValue - Event description. See GetCalendarEventsStructure    - fields
+// Token            - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4875,9 +4875,9 @@ EndFunction
 // Method at API documentation: [calendar.event.getbyid](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get-by-id.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventID - Number - Event ID to retrieve - event
-// Token - String - Access token, when app auth method used - token
+// URL     - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Event ID to retrieve                                 - event
+// Token   - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4895,11 +4895,11 @@ EndFunction
 // Method at API documentation: [calendar.event.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// OwnerID - String, Number - Calendar owner ID - owner
-// Type - String - Calendar type: user, group, company_calendar - type
-// Filter - Structure Of KeyAndValue - Events filter. See GetCalendarEventsFilterStructure - filter
-// Token - String - Access token, when app auth method used - token
+// URL     - String                   - URL of webhook or a Bitrix24 domain, when token used - url
+// OwnerID - String, Number           - Calendar owner ID                                    - owner
+// Type    - String                   - Calendar type: user, group, company_calendar         - type
+// Filter  - Structure Of KeyAndValue - Events filter. See GetCalendarEventsFilterStructure  - filter
+// Token   - String                   - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4953,9 +4953,9 @@ EndFunction
 // Method at API documentation: [calendar.event.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-delete.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventID - Number - ID of the event to be deleted - event
-// Token - String - Access token, when app auth method used - token
+// URL     - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - ID of the event to be deleted                        - event
+// Token   - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4973,9 +4973,9 @@ EndFunction
 // Method at API documentation: [calendar.meeting.status.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-get.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventID - Number - Calednar event ID - event
-// Token - String - Access token, when app auth method used - token
+// URL     - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EventID - Number - Calednar event ID                                    - event
+// Token   - String - Access token, when app auth method used              - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -4993,10 +4993,10 @@ EndFunction
 // Method at API documentation: [calendar.meeting.status.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-set.html)
 //
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// EventID - Number - Calednar event ID - event
-// Status - String - Participation status: Y (agreed), N (refused), Q (did not answer) - status
-// Token - String - Access token, when app auth method used - token
+// URL     - String - URL of webhook or a Bitrix24 domain, when token used              - url
+// EventID - Number - Calednar event ID                                                 - event
+// Status  - String - Participation status: Y (agreed), N (refused), Q (did not answer) - status
+// Token   - String - Access token, when app auth method used                           - token
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -5242,719 +5242,719 @@ EndFunction
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизацииПриложения(Val Домен, Val ClientID) Export
-	Return GetAppAuthLink(Домен, ClientID);
+    Return GetAppAuthLink(Домен, ClientID);
 EndFunction
 
 Function ПолучитьТокен(Val ClientID, Val ClientSecret, Val Code) Export
-	Return GetToken(ClientID, ClientSecret, Code);
+    Return GetToken(ClientID, ClientSecret, Code);
 EndFunction
 
 Function ОбновитьТокен(Val ClientID, Val ClientSecret, Val Refresh) Export
-	Return RefreshToken(ClientID, ClientSecret, Refresh);
+    Return RefreshToken(ClientID, ClientSecret, Refresh);
 EndFunction
 
 Function СерверноеВремя(Val URL, Val Токен = "") Export
-	Return ServerTime(URL, Токен);
+    Return ServerTime(URL, Токен);
 EndFunction
 
 Function СоздатьНовость(Val URL, Val Текст, Val Видимость = "UA", Val Файлы = "", Val Заголовок = "", Val Важное = False, Val Токен = "") Export
-	Return CreatePost(URL, Текст, Видимость, Файлы, Заголовок, Важное, Токен);
+    Return CreatePost(URL, Текст, Видимость, Файлы, Заголовок, Важное, Токен);
 EndFunction
 
 Function ИзменитьНовость(Val URL, Val IDНовости, Val Текст, Val Видимость = "UA", Val Файлы = "", Val Заголовок = "", Val Токен = "") Export
-	Return UpdatePost(URL, IDНовости, Текст, Видимость, Файлы, Заголовок, Токен);
+    Return UpdatePost(URL, IDНовости, Текст, Видимость, Файлы, Заголовок, Токен);
 EndFunction
 
 Function УдалитьНовость(Val URL, Val IDНовости, Val Токен = "") Export
-	Return DeletePost(URL, IDНовости, Токен);
+    Return DeletePost(URL, IDНовости, Токен);
 EndFunction
 
 Function ПолучитьСписокПросмотревшихВажное(Val URL, Val IDНовости, Val Токен = "") Export
-	Return GetImportantPostViewers(URL, IDНовости, Токен);
+    Return GetImportantPostViewers(URL, IDНовости, Токен);
 EndFunction
 
 Function ПолучитьНовости(Val URL, Val IDНовости = "", Val Отбор = "UA", Val Токен = "") Export
-	Return GetPosts(URL, IDНовости, Отбор, Токен);
+    Return GetPosts(URL, IDНовости, Отбор, Токен);
 EndFunction
 
 Function ДобавитьКомментарийНовости(Val URL, Val IDНовости, Val Текст, Val Токен = "") Export
-	Return AddPostComment(URL, IDНовости, Текст, Токен);
+    Return AddPostComment(URL, IDНовости, Текст, Токен);
 EndFunction
 
 Function ДобавитьПолучателейКНовости(Val URL, Val IDНовости, Val Видимость, Val Токен = "") Export
-	Return AddPostRecipients(URL, IDНовости, Видимость, Токен);
+    Return AddPostRecipients(URL, IDНовости, Видимость, Токен);
 EndFunction
 
 Function ПолучитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetTask(URL, IDЗадачи, Токен);
+    Return GetTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПолучитьСписокЗадач(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "", Val Поля = "") Export
-	Return GetTasksList(URL, Фильтр, Отступ, Токен, Поля);
+    Return GetTasksList(URL, Фильтр, Отступ, Токен, Поля);
 EndFunction
 
 Function СоздатьЗадачу(Val URL, Val СтруктураПолей, Val Токен = "") Export
-	Return CreateTask(URL, СтруктураПолей, Токен);
+    Return CreateTask(URL, СтруктураПолей, Токен);
 EndFunction
 
 Function ИзменитьЗадачу(Val URL, Val IDЗадачи, Val СтруктураПолей, Val Токен = "") Export
-	Return UpdateTask(URL, IDЗадачи, СтруктураПолей, Токен);
+    Return UpdateTask(URL, IDЗадачи, СтруктураПолей, Токен);
 EndFunction
 
 Function УдалитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return DeleteTask(URL, IDЗадачи, Токен);
+    Return DeleteTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ДобавитьФайлВЗадачу(Val URL, Val IDЗадачи, Val IDФайла, Val Токен = "") Export
-	Return AttachFileToTopic(URL, IDЗадачи, IDФайла, Токен);
+    Return AttachFileToTopic(URL, IDЗадачи, IDФайла, Токен);
 EndFunction
 
 Function ПринятьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return ApproveTask(URL, IDЗадачи, Токен);
+    Return ApproveTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ОтклонитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return DisapproveTask(URL, IDЗадачи, Токен);
+    Return DisapproveTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ЗавершитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return CompleteTask(URL, IDЗадачи, Токен);
+    Return CompleteTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ВозобновитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return RenewTask(URL, IDЗадачи, Токен);
+    Return RenewTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ОтложитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return DeferTask(URL, IDЗадачи, Токен);
+    Return DeferTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПриостановитьЗадачу(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return PauseTask(URL, IDЗадачи, Токен);
+    Return PauseTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function НачатьВыполнениеЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return StartTask(URL, IDЗадачи, Токен);
+    Return StartTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function НачатьНаблюдатьЗаЗадачей(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return StartWatchingTask(URL, IDЗадачи, Токен);
+    Return StartWatchingTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПрекратитьНаблюдатьЗаЗадачей(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return StopWatchingTask(URL, IDЗадачи, Токен);
+    Return StopWatchingTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ДелегироватьЗадачу(Val URL, Val IDЗадачи, Val IDПользователя, Val Токен = "") Export
-	Return DelegateTask(URL, IDЗадачи, IDПользователя, Токен);
+    Return DelegateTask(URL, IDЗадачи, IDПользователя, Токен);
 EndFunction
 
 Function ДобавитьЗадачуВИзбранное(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return AddTaskToFavorites(URL, IDЗадачи, Токен);
+    Return AddTaskToFavorites(URL, IDЗадачи, Токен);
 EndFunction
 
 Function УбратьЗадачуИзИзбранного(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return RemoveTaskFromFavorites(URL, IDЗадачи, Токен);
+    Return RemoveTaskFromFavorites(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПолучитьИсториюЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetTaskHistory(URL, IDЗадачи, Токен);
+    Return GetTaskHistory(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПроверитьДоступКЗадаче(Val URL, Val IDЗадачи, Val Пользователи = "", Val Токен = "") Export
-	Return CheckTaskAccesses(URL, IDЗадачи, Пользователи, Токен);
+    Return CheckTaskAccesses(URL, IDЗадачи, Пользователи, Токен);
 EndFunction
 
 Function ОтключитьЗвукЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return MuteTask(URL, IDЗадачи, Токен);
+    Return MuteTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ВключитьЗвукЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return UnmuteTask(URL, IDЗадачи, Токен);
+    Return UnmuteTask(URL, IDЗадачи, Токен);
 EndFunction
 
 Function СоздатьЗависимостьЗадач(Val URL, Val IDИсточника, Val IDПриемника, Val ТипСвязи, Val Токен = "") Export
-	Return CreateTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
+    Return CreateTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 EndFunction
 
 Function УдалитьЗависимостьЗадач(Val URL, Val IDИсточника, Val IDПриемника, Val ТипСвязи, Val Токен = "") Export
-	Return DeleteTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
+    Return DeleteTasksDependencies(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 EndFunction
 
 Function ПолучитьПланЗадачНаДень(Val URL, Val Токен = "") Export
-	Return GetDailyPlan(URL, Токен);
+    Return GetDailyPlan(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруЗадачи(Val URL, Val Токен = "") Export
-	Return GetTaskFieldsStructure(URL, Токен);
+    Return GetTaskFieldsStructure(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗадач(Val Пустая = False, Val КакСоответствие = False) Export
-	Return GetTasksFilterStructure(Пустая, КакСоответствие);
+    Return GetTasksFilterStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСписокПользовательскихПолейЗадачи(Val URL, Val Токен = "") Export
-	Return GetCustomTaskFieldsList(URL, Токен);
+    Return GetCustomTaskFieldsList(URL, Токен);
 EndFunction
 
 Function ДобавитьПользовательскоеПолеЗадачи(Val URL, Val Тип, Val Имя, Val ВнешнийКод = "", Val Заголовок = "", Val Подпись = "", Val Токен = "") Export
-	Return AddCustomTaskField(URL, Тип, Имя, ВнешнийКод, Заголовок, Подпись, Токен);
+    Return AddCustomTaskField(URL, Тип, Имя, ВнешнийКод, Заголовок, Подпись, Токен);
 EndFunction
 
 Function ИзменитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val ВнешнийКод = "", Val Заголовок = "", Val Подпись = "", Val Токен = "") Export
-	Return UpdateCustomTaskField(URL, IDПоля, ВнешнийКод, Заголовок, Подпись, Токен);
+    Return UpdateCustomTaskField(URL, IDПоля, ВнешнийКод, Заголовок, Подпись, Токен);
 EndFunction
 
 Function ПолучитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val Токен = "") Export
-	Return GetCustomTaskField(URL, IDПоля, Токен);
+    Return GetCustomTaskField(URL, IDПоля, Токен);
 EndFunction
 
 Function УдалитьПользовательскоеПолеЗадачи(Val URL, Val IDПоля, Val Токен = "") Export
-	Return DeleteCustomTaskField(URL, IDПоля, Токен);
+    Return DeleteCustomTaskField(URL, IDПоля, Токен);
 EndFunction
 
 Function ДобавитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val Текст, Val Выполнен = False, Токен = "") Export
-	Return AddTasksChecklistElement(URL, IDЗадачи, Текст, Выполнен, Токен);
+    Return AddTasksChecklistElement(URL, IDЗадачи, Текст, Выполнен, Токен);
 EndFunction
 
 Function ИзменитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Текст, Val Токен = "") Export
-	Return UpdateTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Текст, Токен);
+    Return UpdateTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Текст, Токен);
 EndFunction
 
 Function УдалитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
-	Return DeleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+    Return DeleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
 EndFunction
 
 Function ПолучитьЧеклистЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetTasksChecklist(URL, IDЗадачи, Токен);
+    Return GetTasksChecklist(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПолучитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
-	Return GetTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+    Return GetTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
 EndFunction
 
 Function ВыполнитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
-	Return CompleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+    Return CompleteTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
 EndFunction
 
 Function ВозобновитьЭлементЧеклистаЗадачи(Val URL, Val IDЗадачи, Val IDЭлемента, Val Токен = "") Export
-	Return RenewTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
+    Return RenewTasksChecklistElement(URL, IDЗадачи, IDЭлемента, Токен);
 EndFunction
 
 Function ПолучитьСписокКомментариевЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetTaskCommentsList(URL, IDЗадачи, Токен);
+    Return GetTaskCommentsList(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПолучитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
-	Return GetTaskComment(URL, IDЗадачи, IDКомментария, Токен);
+    Return GetTaskComment(URL, IDЗадачи, IDКомментария, Токен);
 EndFunction
 
 Function ДобавитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val Текст, Val Токен = "") Export
-	Return AddTaskComment(URL, IDЗадачи, Текст, Токен);
+    Return AddTaskComment(URL, IDЗадачи, Текст, Токен);
 EndFunction
 
 Function ИзменитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Текст, Val Токен = "") Export
-	Return UpdateTaskComment(URL, IDЗадачи, IDКомментария, Текст, Токен);
+    Return UpdateTaskComment(URL, IDЗадачи, IDКомментария, Текст, Токен);
 EndFunction
 
 Function УдалитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
-	Return DeleteTaskComment(URL, IDЗадачи, IDКомментария, Токен);
+    Return DeleteTaskComment(URL, IDЗадачи, IDКомментария, Токен);
 EndFunction
 
 Function ПолучитьСписокРезультатов(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetResultsList(URL, IDЗадачи, Токен);
+    Return GetResultsList(URL, IDЗадачи, Токен);
 EndFunction
 
 Function СоздатьРезультатИзКомментария(Val URL, Val IDКомментария, Val Токен = "") Export
-	Return CreateResultFromComment(URL, IDКомментария, Токен);
+    Return CreateResultFromComment(URL, IDКомментария, Токен);
 EndFunction
 
 Function УдалитьРезультатИзКомментария(Val URL, Val IDКомментария, Val Токен = "") Export
-	Return DeleteResultFromComment(URL, IDКомментария, Токен);
+    Return DeleteResultFromComment(URL, IDКомментария, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруКомментария(Val Пустая = False) Export
-	Return GetCommentStructure(Пустая);
+    Return GetCommentStructure(Пустая);
 EndFunction
 
 Function ДобавитьСтадиюКанбана(Val URL, Val Наименование, Val Цвет = "FFD800", Val IDПредыдущей = 0, Val IDСущности = 0, Val КакАдминистратор = False, Val Токен = "") Export
-	Return AddKanbanStage(URL, Наименование, Цвет, IDПредыдущей, IDСущности, КакАдминистратор, Токен);
+    Return AddKanbanStage(URL, Наименование, Цвет, IDПредыдущей, IDСущности, КакАдминистратор, Токен);
 EndFunction
 
 Function ИзменитьСтадиюКанбана(Val URL, Val Наименование, Val IDСтадии, Val Цвет = "", Val IDПредыдущей = 0, Val КакАдминистратор = False, Val Токен = "") Export
-	Return UpdateKanbansStage(URL, Наименование, IDСтадии, Цвет, IDПредыдущей, КакАдминистратор, Токен);
+    Return UpdateKanbansStage(URL, Наименование, IDСтадии, Цвет, IDПредыдущей, КакАдминистратор, Токен);
 EndFunction
 
 Function УдалитьСтадиюКанбана(Val URL, Val IDСтадии, Val КакАдминистратор = False, Val Токен = "") Export
-	Return DeleteKanbanStage(URL, IDСтадии, КакАдминистратор, Токен);
+    Return DeleteKanbanStage(URL, IDСтадии, КакАдминистратор, Токен);
 EndFunction
 
 Function ПолучитьСтадииКанбана(Val URL, Val IDСущности = 0, Val КакАдминистратор = False, Val Токен = "") Export
-	Return GetKanbanStages(URL, IDСущности, КакАдминистратор, Токен);
+    Return GetKanbanStages(URL, IDСущности, КакАдминистратор, Токен);
 EndFunction
 
 Function ПеренестиЗадачуВСтадиюКанбана(Val URL, Val IDЗадачи, Val IDСтадии, Val Перед = 0, Val После = 0, Val Токен = "") Export
-	Return MoveTaskToKanbanStage(URL, IDЗадачи, IDСтадии, Перед, После, Токен);
+    Return MoveTaskToKanbanStage(URL, IDЗадачи, IDСтадии, Перед, После, Токен);
 EndFunction
 
 Function ДобавитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val Время, Val IDПользователя = "", Val Текст = "", Val ДатаУстановки = "", Val Токен = "") Export
-	Return AddTaskTimeAccounting(URL, IDЗадачи, Время, IDПользователя, Текст, ДатаУстановки, Токен);
+    Return AddTaskTimeAccounting(URL, IDЗадачи, Время, IDПользователя, Текст, ДатаУстановки, Токен);
 EndFunction
 
 Function УдалитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Токен = "") Export
-	Return DeleteTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
+    Return DeleteTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
 EndFunction
 
 Function ПолучитьСписокТрудозатратЗадачи(Val URL, Val IDЗадачи, Val Токен = "") Export
-	Return GetTaskTimeAccountingList(URL, IDЗадачи, Токен);
+    Return GetTaskTimeAccountingList(URL, IDЗадачи, Токен);
 EndFunction
 
 Function ПолучитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Токен = "") Export
-	Return GetTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
+    Return GetTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Токен);
 EndFunction
 
 Function ИзменитьТрудозатратыЗадачи(Val URL, Val IDЗадачи, Val IDЗаписи, Val Время, Val Текст = "", Val ДатаУстановки = "", Val Токен = "") Export
-	Return UpdateTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Время, Текст, ДатаУстановки, Токен);
+    Return UpdateTaskTimeAccounting(URL, IDЗадачи, IDЗаписи, Время, Текст, ДатаУстановки, Токен);
 EndFunction
 
 Function НачатьУчетВремени(Val URL, Val IDПользователя = "", Val Время = "", Val Отчет = "", Val Токен = "") Export
-	Return StartTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
+    Return StartTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
 EndFunction
 
 Function ЗавершитьУчетВремени(Val URL, Val IDПользователя = "", Val Время = "", Val Отчет = "", Val Токен = "") Export
-	Return StopTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
+    Return StopTimekeeping(URL, IDПользователя, Время, Отчет, Токен);
 EndFunction
 
 Function ПриостановитьУчетВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
-	Return PauseTimekeeping(URL, IDПользователя, Токен);
+    Return PauseTimekeeping(URL, IDПользователя, Токен);
 EndFunction
 
 Function ПолучитьСтатусУчетаВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
-	Return GetTimekeepingStatus(URL, IDПользователя, Токен);
+    Return GetTimekeepingStatus(URL, IDПользователя, Токен);
 EndFunction
 
 Function ПолучитьНастройкиУчетаВремени(Val URL, Val IDПользователя = "", Val Токен = "") Export
-	Return GetTimekeepingSettings(URL, IDПользователя, Токен);
+    Return GetTimekeepingSettings(URL, IDПользователя, Токен);
 EndFunction
 
 Function ПолучитьСписокХранилищ(Val URL, Val Токен = "") Export
-	Return GetStoragesList(URL, Токен);
+    Return GetStoragesList(URL, Токен);
 EndFunction
 
 Function ПолучитьХранилищеПриложения(Val URL, Val Токен = "") Export
-	Return GetAppStorage(URL, Токен);
+    Return GetAppStorage(URL, Токен);
 EndFunction
 
 Function ПолучитьХранилище(Val URL, Val IDХранилища, Val Токен = "") Export
-	Return GetStorage(URL, IDХранилища, Токен);
+    Return GetStorage(URL, IDХранилища, Токен);
 EndFunction
 
 Function ПереименоватьХранилище(Val URL, Val IDХранилища, Val Наименование, Val Токен = "") Export
-	Return RenameStorage(URL, IDХранилища, Наименование, Токен);
+    Return RenameStorage(URL, IDХранилища, Наименование, Токен);
 EndFunction
 
 Function ПолучитьСодержимоеХранилища(Val URL, Val IDХранилища, Val Токен = "") Export
-	Return GetStorageObjects(URL, IDХранилища, Токен);
+    Return GetStorageObjects(URL, IDХранилища, Токен);
 EndFunction
 
 Function СоздатьКаталогВХранилище(Val URL, Val IDХранилища, Val Наименование, Val Токен = "") Export
-	Return CreateStorageFolder(URL, IDХранилища, Наименование, Токен);
+    Return CreateStorageFolder(URL, IDХранилища, Наименование, Токен);
 EndFunction
 
 Function ПолучитьИнформациюОКаталоге(Val URL, Val IDКаталога, Val Токен = "") Export
-	Return GetFolderInformation(URL, IDКаталога, Токен);
+    Return GetFolderInformation(URL, IDКаталога, Токен);
 EndFunction
 
 Function СоздатьПодкаталог(Val URL, Val IDКаталога, Val Наименование, Val Токен = "") Export
-	Return CreateSubfolder(URL, IDКаталога, Наименование, Токен);
+    Return CreateSubfolder(URL, IDКаталога, Наименование, Токен);
 EndFunction
 
 Function СкопироватьКаталог(Val URL, Val IDКаталога, Val IDПриемника, Val Токен = "") Export
-	Return MakeFolderCopy(URL, IDКаталога, IDПриемника, Токен);
+    Return MakeFolderCopy(URL, IDКаталога, IDПриемника, Токен);
 EndFunction
 
 Function ПереместитьКаталог(Val URL, Val IDКаталога, Val IDПриемника, Val Токен = "") Export
-	Return MoveFolder(URL, IDКаталога, IDПриемника, Токен);
+    Return MoveFolder(URL, IDКаталога, IDПриемника, Токен);
 EndFunction
 
 Function УдалитьКаталог(Val URL, Val IDКаталога, Val Токен = "") Export
-	Return DeleteFolder(URL, IDКаталога, Токен);
+    Return DeleteFolder(URL, IDКаталога, Токен);
 EndFunction
 
 Function ПолучитьВнешнююСсылкуКаталога(Val URL, Val IDКаталога, Val Токен = "") Export
-	Return GetFolderExternalLink(URL, IDКаталога, Токен);
+    Return GetFolderExternalLink(URL, IDКаталога, Токен);
 EndFunction
 
 Function ПолучитьДочерниеЭлементыКаталога(Val URL, Val IDКаталога, Val Фильтр = "", Val Токен = "") Export
-	Return GetFolderItems(URL, IDКаталога, Фильтр, Токен);
+    Return GetFolderItems(URL, IDКаталога, Фильтр, Токен);
 EndFunction
 
 Function ПоместитьКаталогВКорзину(Val URL, Val IDКаталога, Val Токен = "") Export
-	Return MarkFolderAsDeleted(URL, IDКаталога, Токен);
+    Return MarkFolderAsDeleted(URL, IDКаталога, Токен);
 EndFunction
 
 Function ВосстановитьКаталог(Val URL, Val IDКаталога, Val Токен = "") Export
-	Return RestoreFolder(URL, IDКаталога, Токен);
+    Return RestoreFolder(URL, IDКаталога, Токен);
 EndFunction
 
 Function ПереименоватьКаталог(Val URL, Val IDКаталога, Val Наименование, Val Токен = "") Export
-	Return RenameFolder(URL, IDКаталога, Наименование, Токен);
+    Return RenameFolder(URL, IDКаталога, Наименование, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраКаталога(Val URL, Val Пустая = False, Val Токен = "") Export
-	Return GetFolderFilterStructure(URL, Пустая, Токен);
+    Return GetFolderFilterStructure(URL, Пустая, Токен);
 EndFunction
 
 Function ЗагрузитьФайлВХранилище(Val URL, Val Наименование, Val Файл, Val IDХранилища, Val Доступы = "", Val Токен = "") Export
-	Return UploadFileToStorage(URL, Наименование, Файл, IDХранилища, Доступы, Токен);
+    Return UploadFileToStorage(URL, Наименование, Файл, IDХранилища, Доступы, Токен);
 EndFunction
 
 Function ЗагрузитьФайлВКаталог(Val URL, Val Наименование, Val Файл, Val IDКаталога, Val Токен = "") Export
-	Return UploadFileToFolder(URL, Наименование, Файл, IDКаталога, Токен);
+    Return UploadFileToFolder(URL, Наименование, Файл, IDКаталога, Токен);
 EndFunction
 
 Function ПолучитьИнформациюОФайле(Val URL, Val IDФайла, Val Токен = "") Export
-	Return GetFileInformation(URL, IDФайла, Токен);
+    Return GetFileInformation(URL, IDФайла, Токен);
 EndFunction
 
 Function УдалитьФайл(Val URL, Val IDФайла, Val Токен = "") Export
-	Return DeleteFile(URL, IDФайла, Токен);
+    Return DeleteFile(URL, IDФайла, Токен);
 EndFunction
 
 Function ПолучитьВнешнююСсылкуФайла(Val URL, Val IDФайла, Val Токен = "") Export
-	Return GetFileExternalLink(URL, IDФайла, Токен);
+    Return GetFileExternalLink(URL, IDФайла, Токен);
 EndFunction
 
 Function ПоместитьФайлВКорзину(Val URL, Val IDФайла, Val Токен = "") Export
-	Return MarkFileAsDeleted(URL, IDФайла, Токен);
+    Return MarkFileAsDeleted(URL, IDФайла, Токен);
 EndFunction
 
 Function ВосстановитьФайл(Val URL, Val IDФайла, Val Токен = "") Export
-	Return RestoreFile(URL, IDФайла, Токен);
+    Return RestoreFile(URL, IDФайла, Токен);
 EndFunction
 
 Function СкопироватьФайл(Val URL, Val IDФайла, Val IDКаталога, Val Токен = "") Export
-	Return MakeFileCopy(URL, IDФайла, IDКаталога, Токен);
+    Return MakeFileCopy(URL, IDФайла, IDКаталога, Токен);
 EndFunction
 
 Function ПереместитьФайлВКаталог(Val URL, Val IDФайла, Val IDКаталога, Val Токен = "") Export
-	Return MoveFileToFolder(URL, IDФайла, IDКаталога, Токен);
+    Return MoveFileToFolder(URL, IDФайла, IDКаталога, Токен);
 EndFunction
 
 Function ПереименоватьФайл(Val URL, Val IDФайла, Val Наименование, Val Токен = "") Export
-	Return RenameFile(URL, IDФайла, Наименование, Токен);
+    Return RenameFile(URL, IDФайла, Наименование, Токен);
 EndFunction
 
 Function СоздатьЧат(Val URL, Val СтруктураЧата, Val Токен = "") Export
-	Return CreateChat(URL, СтруктураЧата, Токен);
+    Return CreateChat(URL, СтруктураЧата, Токен);
 EndFunction
 
 Function ПолучитьСписокПользователейЧата(Val URL, Val IDЧата, Val Токен = "") Export
-	Return GetChatUsers(URL, IDЧата, Токен);
+    Return GetChatUsers(URL, IDЧата, Токен);
 EndFunction
 
 Function ПокинутьЧат(Val URL, Val IDЧата, Val Токен = "") Export
-	Return LeaveChat(URL, IDЧата, Токен);
+    Return LeaveChat(URL, IDЧата, Токен);
 EndFunction
 
 Function ПолучитьПользователей(Val URL, Val IDПользователей, Val Токен = "") Export
-	Return GetUsers(URL, IDПользователей, Токен);
+    Return GetUsers(URL, IDПользователей, Токен);
 EndFunction
 
 Function ДобавитьПользователейВЧат(Val URL, Val IDЧата, Val IDПользователей, Val СкрытьИсторию = False, Val Токен = "") Export
-	Return AddUsersToChat(URL, IDЧата, IDПользователей, СкрытьИсторию, Токен);
+    Return AddUsersToChat(URL, IDЧата, IDПользователей, СкрытьИсторию, Токен);
 EndFunction
 
 Function ИсключитьПользователяИзЧата(Val URL, Val IDЧата, Val IDПользователя, Val Токен = "") Export
-	Return DeleteUserFromChat(URL, IDЧата, IDПользователя, Токен);
+    Return DeleteUserFromChat(URL, IDЧата, IDПользователя, Токен);
 EndFunction
 
 Function ИзменитьЗаголовокЧата(Val URL, Val IDЧата, Val Заголовок, Val Токен = "") Export
-	Return ChangeChatTitle(URL, IDЧата, Заголовок, Токен);
+    Return ChangeChatTitle(URL, IDЧата, Заголовок, Токен);
 EndFunction
 
 Function ИзменитьЦветЧата(Val URL, Val IDЧата, Val Цвет, Val Токен = "") Export
-	Return ChangeChatColor(URL, IDЧата, Цвет, Токен);
+    Return ChangeChatColor(URL, IDЧата, Цвет, Токен);
 EndFunction
 
 Function ИзменитьКартинкуЧата(Val URL, Val IDЧата, Val Картинка, Val Токен = "") Export
-	Return ChangeChatPicture(URL, IDЧата, Картинка, Токен);
+    Return ChangeChatPicture(URL, IDЧата, Картинка, Токен);
 EndFunction
 
 Function СменитьВладельцаЧата(Val URL, Val IDЧата, Val IDПользователя, Val Токен = "") Export
-	Return ChangeChatOwner(URL, IDЧата, IDПользователя, Токен);
+    Return ChangeChatOwner(URL, IDЧата, IDПользователя, Токен);
 EndFunction
 
 Function ОтключитьУведомленияЧата(Val URL, Val IDЧата, Val Токен = "") Export
-	Return DisableChatNotifications(URL, IDЧата, Токен);
+    Return DisableChatNotifications(URL, IDЧата, Токен);
 EndFunction
 
 Function ВключитьУведомленияЧата(Val URL, Val IDЧата, Val Токен = "") Export
-	Return EnableChatNotifications(URL, IDЧата, Токен);
+    Return EnableChatNotifications(URL, IDЧата, Токен);
 EndFunction
 
 Function ПолучитьСписокСообщенийЧата(Val URL, Val IDЧата, Val IDПоследнего = "", Val IDПервого = "", Val Токен = "") Export
-	Return GetChatMessagesList(URL, IDЧата, IDПоследнего, IDПервого, Токен);
+    Return GetChatMessagesList(URL, IDЧата, IDПоследнего, IDПервого, Токен);
 EndFunction
 
 Function ПолучитьДиалог(Val URL, Val IDЧата, Val Токен = "") Export
-	Return GetDialog(URL, IDЧата, Токен);
+    Return GetDialog(URL, IDЧата, Токен);
 EndFunction
 
 Function ПолучитьСписокПользователейДиалога(Val URL, Val IDЧата, Val Токен = "") Export
-	Return GetChatMembersList(URL, IDЧата, Токен);
+    Return GetChatMembersList(URL, IDЧата, Токен);
 EndFunction
 
 Function ОтправитьУведомлениеОВводе(Val URL, Val IDЧата, Val Токен = "") Export
-	Return SendWritingNotification(URL, IDЧата, Токен);
+    Return SendWritingNotification(URL, IDЧата, Токен);
 EndFunction
 
 Function ПолучитьСтатусПользователя(Val URL, Val Токен = "") Export
-	Return GetUserStatus(URL, Токен);
+    Return GetUserStatus(URL, Токен);
 EndFunction
 
 Function УстановитьСтатусПользователя(Val URL, Val Статус, Val Токен = "") Export
-	Return SetUserStatus(URL, Статус, Токен);
+    Return SetUserStatus(URL, Статус, Токен);
 EndFunction
 
 Function ПрочитатьВсе(Val URL, Val Токен = "") Export
-	Return ReadAll(URL, Токен);
+    Return ReadAll(URL, Токен);
 EndFunction
 
 Function ПолучитьКаталогФайловЧата(Val URL, Val IDЧата, Val Токен = "") Export
-	Return GetChatFilesFolder(URL, IDЧата, Токен);
+    Return GetChatFilesFolder(URL, IDЧата, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруЧата(Val Пустая = False) Export
-	Return GetChatStructure(Пустая);
+    Return GetChatStructure(Пустая);
 EndFunction
 
 Function ОтправитьСообщение(Val URL, Val IDЧата, Val Текст, Val Вложения = "", Val Токен = "") Export
-	Return SendMessage(URL, IDЧата, Текст, Вложения, Токен);
+    Return SendMessage(URL, IDЧата, Текст, Вложения, Токен);
 EndFunction
 
 Function ИзменитьСообщение(Val URL, Val IDСообщения, Val Текст = "", Val Вложения = "", Val Токен = "") Export
-	Return EditMessage(URL, IDСообщения, Текст, Вложения, Токен);
+    Return EditMessage(URL, IDСообщения, Текст, Вложения, Токен);
 EndFunction
 
 Function УстановитьРеакциюНаСообщение(Val URL, Val IDСообщения, Val Токен = "") Export
-	Return SetMessageReaction(URL, IDСообщения, Токен);
+    Return SetMessageReaction(URL, IDСообщения, Токен);
 EndFunction
 
 Function УдалитьСообщение(Val URL, Val IDСообщения, Val Токен = "") Export
-	Return DeleteMessage(URL, IDСообщения, Токен);
+    Return DeleteMessage(URL, IDСообщения, Токен);
 EndFunction
 
 Function ОтправитьФайл(Val URL, Val IDЧата, Val IDФайла, Val Описание = "", Val Токен = "") Export
-	Return SendFile(URL, IDЧата, IDФайла, Описание, Токен);
+    Return SendFile(URL, IDЧата, IDФайла, Описание, Токен);
 EndFunction
 
 Function ОтметитьСообщениеКакПрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
-	Return MarkMessageAsReaded(URL, IDЧата, IDСообщения, Токен);
+    Return MarkMessageAsReaded(URL, IDЧата, IDСообщения, Токен);
 EndFunction
 
 Function ОтметитьСообщениеКакНепрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
-	Return MarkMessageAsUnreaded(URL, IDЧата, IDСообщения, Токен);
+    Return MarkMessageAsUnreaded(URL, IDЧата, IDСообщения, Токен);
 EndFunction
 
 Function ПолучитьБлокКартинки(Val Наименование, Val URL) Export
-	Return GetPictureBlock(Наименование, URL);
+    Return GetPictureBlock(Наименование, URL);
 EndFunction
 
 Function ПолучитьБлокФайла(Val Наименование, Val URL) Export
-	Return GetFileBlock(Наименование, URL);
+    Return GetFileBlock(Наименование, URL);
 EndFunction
 
 Function СоздатьПерсональноеУведомление(Val URL, Val IDПользователя, Val Текст, Val Тег = "", Val Вложения = "", Val Токен = "") Export
-	Return CreatePersonalNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
+    Return CreatePersonalNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
 EndFunction
 
 Function СоздатьСистемноеУведомление(Val URL, Val IDПользователя, Val Текст, Val Тег = "", Val Вложения = "", Val Токен = "") Export
-	Return CreateSystemNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
+    Return CreateSystemNotification(URL, IDПользователя, Текст, Тег, Вложения, Токен);
 EndFunction
 
 Function УдалитьУведомление(Val URL, Val IDУведомления, Val Токен = "") Export
-	Return DeleteNotification(URL, IDУведомления, Токен);
+    Return DeleteNotification(URL, IDУведомления, Токен);
 EndFunction
 
 Function СоздатьПодразделение(Val URL, Val Наименование, Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
-	Return CreateDepartment(URL, Наименование, IDРодителя, IDРуководителя, Токен);
+    Return CreateDepartment(URL, Наименование, IDРодителя, IDРуководителя, Токен);
 EndFunction
 
 Function ИзменитьПодразделение(Val URL, Val IDПодразделения, Val Наименование = "", Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
-	Return UpdateDepartment(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
+    Return UpdateDepartment(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
 EndFunction
 
 Function ПолучитьПодразделения(Val URL, Val IDПодразделения = "", Val Наименование = "", Val IDРодителя = "", Val IDРуководителя = "", Val Токен = "") Export
-	Return GetDepartments(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
+    Return GetDepartments(URL, IDПодразделения, Наименование, IDРодителя, IDРуководителя, Токен);
 EndFunction
 
 Function УдалитьПодразделение(Val URL, Val IDПодразделения, Val Токен = "") Export
-	Return DeleteDepartment(URL, IDПодразделения, Токен);
+    Return DeleteDepartment(URL, IDПодразделения, Токен);
 EndFunction
 
 Function ПолучитьТекущегоПользователя(Val URL, Val Токен = "") Export
-	Return GetCurrentUser(URL, Токен);
+    Return GetCurrentUser(URL, Токен);
 EndFunction
 
 Function ПолучитьПользователя(Val URL, Val IDПользователя, Val Токен = "") Export
-	Return GetUser(URL, IDПользователя, Токен);
+    Return GetUser(URL, IDПользователя, Токен);
 EndFunction
 
 Function СоздатьПользователя(Val URL, Val СтруктураПолей, Val Токен = "") Export
-	Return CreateUser(URL, СтруктураПолей, Токен);
+    Return CreateUser(URL, СтруктураПолей, Токен);
 EndFunction
 
 Function ИзменитьПользователя(Val URL, Val IDПользователя, Val СтруктураПолей, Val Токен = "") Export
-	Return UpdateUser(URL, IDПользователя, СтруктураПолей, Токен);
+    Return UpdateUser(URL, IDПользователя, СтруктураПолей, Токен);
 EndFunction
 
 Function ИзменитьСтатусПользователя(Val URL, Val IDПользователя, Val Уволить = True, Val Токен = "") Export
-	Return ChangeUserStatus(URL, IDПользователя, Уволить, Токен);
+    Return ChangeUserStatus(URL, IDПользователя, Уволить, Токен);
 EndFunction
 
 Function НайтиПользователей(Val URL, Val СтруктураФильтра, Val Токен = "") Export
-	Return FindUsers(URL, СтруктураФильтра, Токен);
+    Return FindUsers(URL, СтруктураФильтра, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруПользователя(Val URL, Val Токен = "") Export
-	Return GetUserFieldsStructure(URL, Токен);
+    Return GetUserFieldsStructure(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраПользователей(Val Пустая = False) Export
-	Return GetUserFilterStructure(Пустая);
+    Return GetUserFilterStructure(Пустая);
 EndFunction
 
 Function СоздатьЛид(Val URL, Val СтруктураПолей, Val Токен = "") Export
-	Return CreateLead(URL, СтруктураПолей, Токен);
+    Return CreateLead(URL, СтруктураПолей, Токен);
 EndFunction
 
 Function УдалитьЛид(Val URL, Val IDЛида, Val Токен = "") Export
-	Return DeleteLead(URL, IDЛида, Токен);
+    Return DeleteLead(URL, IDЛида, Токен);
 EndFunction
 
 Function ПолучитьЛид(Val URL, Val IDЛида, Val Токен = "") Export
-	Return GetLead(URL, IDЛида, Токен);
+    Return GetLead(URL, IDЛида, Токен);
 EndFunction
 
 Function ПолучитьСписокЛидов(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "") Export
-	Return GetLeadsList(URL, Фильтр, Отступ, Токен);
+    Return GetLeadsList(URL, Фильтр, Отступ, Токен);
 EndFunction
 
 Function ИзменитьЛид(Val URL, Val IDЛида, Val СтруктураПолей, Val Токен = "") Export
-	Return UpdateLead(URL, IDЛида, СтруктураПолей, Токен);
+    Return UpdateLead(URL, IDЛида, СтруктураПолей, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруЛида(Val URL, Val Токен = "") Export
-	Return GetLeadStructure(URL, Токен);
+    Return GetLeadStructure(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЛидов(Val Пустая = False) Export
-	Return GetLeadFilterStructure(Пустая);
+    Return GetLeadFilterStructure(Пустая);
 EndFunction
 
 Function СоздатьСделку(Val URL, Val СтруктураПолей, Val Токен = "") Export
-	Return CreateDeal(URL, СтруктураПолей, Токен);
+    Return CreateDeal(URL, СтруктураПолей, Токен);
 EndFunction
 
 Function УдалитьСделку(Val URL, Val IDСделки, Val Токен = "") Export
-	Return DeleteDeal(URL, IDСделки, Токен);
+    Return DeleteDeal(URL, IDСделки, Токен);
 EndFunction
 
 Function ПолучитьСделку(Val URL, Val IDСделки, Val Токен = "") Export
-	Return GetDeal(URL, IDСделки, Токен);
+    Return GetDeal(URL, IDСделки, Токен);
 EndFunction
 
 Function ПолучитьСписокСделок(Val URL, Val Фильтр = "", Val Отступ = 0, Val Токен = "") Export
-	Return GetDealsList(URL, Фильтр, Отступ, Токен);
+    Return GetDealsList(URL, Фильтр, Отступ, Токен);
 EndFunction
 
 Function ИзменитьСделку(Val URL, Val IDСделки, Val СтруктураПолей, Val Токен = "") Export
-	Return UpdateDeal(URL, IDСделки, СтруктураПолей, Токен);
+    Return UpdateDeal(URL, IDСделки, СтруктураПолей, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруСделки(Val URL, Val Токен = "") Export
-	Return GetDealStructure(URL, Токен);
+    Return GetDealStructure(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраСделок(Val Пустая = False) Export
-	Return GetDealsFilterStructure(Пустая);
+    Return GetDealsFilterStructure(Пустая);
 EndFunction
 
 Function ПолучитьСписокКалендарей(Val URL, Val IDВладельца, Val Тип, Val Токен = "") Export
-	Return GetCalendarList(URL, IDВладельца, Тип, Токен);
+    Return GetCalendarList(URL, IDВладельца, Тип, Токен);
 EndFunction
 
 Function СоздатьКалендарь(Val URL, Val СтруктураПолей, Val Токен = "") Export
-	Return CreateCalendar(URL, СтруктураПолей, Токен);
+    Return CreateCalendar(URL, СтруктураПолей, Токен);
 EndFunction
 
 Function ИзменитьКалендарь(Val URL, Val IDКалендаря, Val СтруктураПолей, Val Токен = "") Export
-	Return UpdateCalendar(URL, IDКалендаря, СтруктураПолей, Токен);
+    Return UpdateCalendar(URL, IDКалендаря, СтруктураПолей, Токен);
 EndFunction
 
 Function УдалитьКалендарь(Val URL, Val IDКалендаря, Val IDВладельца, Val Тип, Val Токен = "") Export
-	Return DeleteCalendar(URL, IDКалендаря, IDВладельца, Тип, Токен);
+    Return DeleteCalendar(URL, IDКалендаря, IDВладельца, Тип, Токен);
 EndFunction
 
 Function ПолучитьЗанятостьПользователей(Val URL, Val Пользователи, Val ДатаНачала, Val ДатаОкончания, Val Токен = "") Export
-	Return GetUserBusy(URL, Пользователи, ДатаНачала, ДатаОкончания, Токен);
+    Return GetUserBusy(URL, Пользователи, ДатаНачала, ДатаОкончания, Токен);
 EndFunction
 
 Function ПолучитьПользовательскиеНастройкиКалендаря(Val URL, Val Токен = "") Export
-	Return GetCustomCalendarSettings(URL, Токен);
+    Return GetCustomCalendarSettings(URL, Токен);
 EndFunction
 
 Function УстановитьПользовательскиеНастройкиКалендаря(Val URL, Val СтруктураНастроек, Val Токен = "") Export
-	Return SetCustomCalendarSettings(URL, СтруктураНастроек, Токен);
+    Return SetCustomCalendarSettings(URL, СтруктураНастроек, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруНастроекКалендаря(Val URL, Val Токен = "") Export
-	Return GetCalendarSettingsStructure(URL, Токен);
+    Return GetCalendarSettingsStructure(URL, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруПользовательскихНастроекКалендаря(Val Пустая = False) Export
-	Return GetCalednarCustomSettingsStructure(Пустая);
+    Return GetCalednarCustomSettingsStructure(Пустая);
 EndFunction
 
 Function ПолучитьСтруктуруКалендаря(Val Пустая = False) Export
-	Return GetCalendarStructure(Пустая);
+    Return GetCalendarStructure(Пустая);
 EndFunction
 
 Function СоздатьСобытиеКалендаря(Val URL, Val ОписаниеСобытия, Val Токен = "") Export
-	Return CreateCalendarEvent(URL, ОписаниеСобытия, Токен);
+    Return CreateCalendarEvent(URL, ОписаниеСобытия, Токен);
 EndFunction
 
 Function ИзменитьСобытиеКалендаря(Val URL, Val IDСобытия, Val ОписаниеСобытия, Val Токен = "") Export
-	Return UpdateCalendarEvent(URL, IDСобытия, ОписаниеСобытия, Токен);
+    Return UpdateCalendarEvent(URL, IDСобытия, ОписаниеСобытия, Токен);
 EndFunction
 
 Function ПолучитьСобытиеКалендаря(Val URL, Val IDСобытия, Val Токен = "") Export
-	Return GetCalendarEvent(URL, IDСобытия, Токен);
+    Return GetCalendarEvent(URL, IDСобытия, Токен);
 EndFunction
 
 Function ПолучитьСобытияКалендарей(Val URL, Val IDВладельца, Val Тип, Val Фильтр = "", Val Токен = "") Export
-	Return GetCalendarEvents(URL, IDВладельца, Тип, Фильтр, Токен);
+    Return GetCalendarEvents(URL, IDВладельца, Тип, Фильтр, Токен);
 EndFunction
 
 Function УдалитьСобытиеКалендаря(Val URL, Val IDСобытия, Val Токен = "") Export
-	Return DeleteCalendarEvent(URL, IDСобытия, Токен);
+    Return DeleteCalendarEvent(URL, IDСобытия, Токен);
 EndFunction
 
 Function ПолучитьСтатусУчастияПользователя(Val URL, Val IDСобытия, Val Токен = "") Export
-	Return GetUserParticipationStatus(URL, IDСобытия, Токен);
+    Return GetUserParticipationStatus(URL, IDСобытия, Токен);
 EndFunction
 
 Function УстановитьСтатусУчастияПользователя(Val URL, Val IDСобытия, Val Статус, Val Токен = "") Export
-	Return SetUserParticipationStatus(URL, IDСобытия, Статус, Токен);
+    Return SetUserParticipationStatus(URL, IDСобытия, Статус, Токен);
 EndFunction
 
 Function ПолучитьСтруктуруСобытияКалендаря(Val Пустая = False) Export
-	Return GetCalendarEventsStructure(Пустая);
+    Return GetCalendarEventsStructure(Пустая);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраСобытийКалендарей(Val Пустая = False) Export
-	Return GetCalendarEventsFilterStructure(Пустая);
+    Return GetCalendarEventsFilterStructure(Пустая);
 EndFunction
 
 #EndRegion
