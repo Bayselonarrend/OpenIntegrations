@@ -1,0 +1,53 @@
+---
+sidebar_position: 7
+description: Complete GRPC sending  and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Complete GRPC sending 
+ Closes the sending channel in a client or bidirectional stream
+
+
+
+`Function CompleteGRPCSending(Val Connection, Val StreamID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | Connection object |
+  | StreamID | - | String | &#x2714; | Stream Identifier |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+```
+ 
+
+
+
+
