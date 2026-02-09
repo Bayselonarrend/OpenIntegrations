@@ -7228,5 +7228,35 @@
 		"lib": "ClickHouse",
 		"name": "GetTlsSettings",
 		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "OpenGRPCStream",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "OpenGRPCStream",
+		"variant": "Final"
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "SendGRPCMessage",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "GetGRPCMessage",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "CompleteGRPCSending",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "CloseGRPCStream",
+		"variant": ""
 	}
 ]
