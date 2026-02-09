@@ -128,11 +128,11 @@ EndFunction
 // When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
 //
 // Parameters:
-// QueryText - String - Database query text - sql
-// Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
-// ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
-// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
-// Extensions - Map Of KeyAndValue - Extensions: Key > filepath or extension data, Value > entry point - exts
+// QueryText   - String             - Database query text                                                    - sql
+// Parameters  - Array Of Arbitrary - Array of positional parameters of the request                          - params
+// ForceResult - Boolean            - Includes an attempt to retrieve the result, even for nonSELECT queries - force
+// Connection  - String, Arbitrary  - Existing connection or path to the base. In memory, if not filled      - db
+// Extensions  - Map Of KeyAndValue - Extensions: Key > filepath or extension data, Value > entry point      - exts
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -192,9 +192,9 @@ EndFunction
 // Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQuery` function
 //
 // Parameters:
-// Extension - String, BinaryData - Extension data or filepath - ext
-// EntryPoint - String - Expansion entry point, if required - point
-// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+// Extension  - String, BinaryData - Extension data or filepath                                        - ext
+// EntryPoint - String             - Expansion entry point, if required                                - point
+// Connection - String, Arbitrary  - Existing connection or path to the base. In memory, if not filled - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of extension connecting
@@ -241,7 +241,7 @@ EndFunction
 // Gets information about the table
 //
 // Parameters:
-// Table - String - Table name - table
+// Table      - String            - Table name                           - table
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
@@ -257,9 +257,9 @@ EndFunction
 // Creates an empty table in the database
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                      - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection     - String, Arbitrary        - Existing connection or database path            - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -274,9 +274,9 @@ EndFunction
 // Adds a new column to an existing table
 //
 // Parameters:
-// Table - String - Table name - table
-// Name - String - Column name - name
-// DataType - String - Column data type - type
+// Table      - String            - Table name                           - table
+// Name       - String            - Column name                          - name
+// DataType   - String            - Column data type                     - type
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
@@ -292,8 +292,8 @@ EndFunction
 // Deletes a column from the table
 //
 // Parameters:
-// Table - String - Table name - table
-// Name - String - Column name - name
+// Table      - String            - Table name                           - table
+// Name       - String            - Column name                          - name
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
@@ -314,9 +314,9 @@ EndFunction
 // This function does not update the data type of existing columns
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                      - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Connection     - String, Arbitrary        - Existing connection or database path            - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -334,10 +334,10 @@ EndFunction
 // Binary data can also be transferred as a structure `{'blob':File path}`
 //
 // Parameters:
-// Table - String - Table name - table
-// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
-// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Table       - String             - Table name                                                           - table
+// DataArray   - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean            - True > adding records to transactions with rollback on error         - trn
+// Connection  - String, Arbitrary  - Existing connection or database path                                 - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -352,10 +352,10 @@ EndFunction
 // Updates the value of records by selected criteria
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                         - table
 // ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Filters        - Array of Structure       - Filters array. See GetRecordsFilterStructure       - filter
+// Connection     - String, Arbitrary        - Existing connection or database path               - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -374,11 +374,11 @@ EndFunction
 // If fields are not specified, uniqueness is determined by all suitable fields
 //
 // Parameters:
-// Table - String - Table name - table
-// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
-// KeyFields - Array Of String - Name or names of key table fields for uniqueness validation - unique
-// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Table       - String             - Table name                                                           - table
+// DataArray   - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// KeyFields   - Array Of String    - Name or names of key table fields for uniqueness validation          - unique
+// Transaction - Boolean            - True > adding records to transactions with rollback on error         - trn
+// Connection  - String, Arbitrary  - Existing connection or database path                                 - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -406,12 +406,12 @@ EndFunction
 // Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
 //
 // Parameters:
-// Table - String - Table name - table
-// Fields - Array Of String - Fields for selection - fields
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
-// Count - Number - Limiting the number of received strings - limit
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Table      - String                   - Table name                                               - table
+// Fields     - Array Of String          - Fields for selection                                     - fields
+// Filters    - Array of Structure       - Filters array. See GetRecordsFilterStructure             - filter
+// Sort       - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
+// Count      - Number                   - Limiting the number of received strings                  - limit
+// Connection - String, Arbitrary        - Existing connection or database path                     - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -431,9 +431,9 @@ EndFunction
 // Deletes records from the table
 //
 // Parameters:
-// Table - String - Table name - table
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Existing connection or database path - db
+// Table      - String             - Table name                                   - table
+// Filters    - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
+// Connection - String, Arbitrary  - Existing connection or database path         - db
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -448,7 +448,7 @@ EndFunction
 // Deletes a table from the database
 //
 // Parameters:
-// Table - String - Table name - table
+// Table      - String            - Table name                           - table
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
@@ -464,7 +464,7 @@ EndFunction
 // Clears the database table
 //
 // Parameters:
-// Table - String - Table name - table
+// Table      - String            - Table name                           - table
 // Connection - String, Arbitrary - Existing connection or database path - db
 //
 // Returns:
@@ -539,83 +539,83 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val База = "") Export
-	Return CreateConnection(База);
+    Return CreateConnection(База);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ВыполнитьЗапросSQL(Val ТекстЗапроса, Val Параметры = "", Val ФорсироватьРезультат = False, Val Соединение = "", Val Расширения = Undefined) Export
-	Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Расширения);
+    Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Расширения);
 EndFunction
 
 Function ПодключитьРасширение(Val Расширение, Val ТочкаВхода = "", Val Соединение = "") Export
-	Return ConnectExtension(Расширение, ТочкаВхода, Соединение);
+    Return ConnectExtension(Расширение, ТочкаВхода, Соединение);
 EndFunction
 
 Function ПолучитьИнформациюОТаблице(Val Таблица, Val Соединение = "") Export
-	Return GetTableInformation(Таблица, Соединение);
+    Return GetTableInformation(Таблица, Соединение);
 EndFunction
 
 Function СоздатьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "") Export
-	Return CreateTable(Таблица, СтруктураКолонок, Соединение);
+    Return CreateTable(Таблица, СтруктураКолонок, Соединение);
 EndFunction
 
 Function ДобавитьКолонкуТаблицы(Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "") Export
-	Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение);
+    Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение);
 EndFunction
 
 Function УдалитьКолонкуТаблицы(Val Таблица, Val Имя, Val Соединение = "") Export
-	Return DeleteTableColumn(Таблица, Имя, Соединение);
+    Return DeleteTableColumn(Таблица, Имя, Соединение);
 EndFunction
 
 Function ГарантироватьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "") Export
-	Return EnsureTable(Таблица, СтруктураКолонок, Соединение);
+    Return EnsureTable(Таблица, СтруктураКолонок, Соединение);
 EndFunction
 
 Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "") Export
-	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
+    Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
 EndFunction
 
 Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "") Export
-	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение);
+    Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение);
 EndFunction
 
 Function ГарантироватьЗаписи(Val Таблица, Val МассивДанных, Val КлючевыеПоля = "", Val Транзакция = True, Val Соединение = "") Export
-	Return EnsureRecords(Таблица, МассивДанных, КлючевыеПоля, Транзакция, Соединение);
+    Return EnsureRecords(Таблица, МассивДанных, КлючевыеПоля, Транзакция, Соединение);
 EndFunction
 
 Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "") Export
-	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
+    Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
 EndFunction
 
 Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "") Export
-	Return DeleteRecords(Таблица, Фильтры, Соединение);
+    Return DeleteRecords(Таблица, Фильтры, Соединение);
 EndFunction
 
 Function УдалитьТаблицу(Val Таблица, Val Соединение = "") Export
-	Return DeleteTable(Таблица, Соединение);
+    Return DeleteTable(Таблица, Соединение);
 EndFunction
 
 Function ОчиститьТаблицу(Val Таблица, Val Соединение = "") Export
-	Return ClearTable(Таблица, Соединение);
+    Return ClearTable(Таблица, Соединение);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
-	Return GetRecordsFilterStructure(Пустая);
+    Return GetRecordsFilterStructure(Пустая);
 EndFunction
 
 Function ПолучитьОсобенности() Export
-	Return GetFeatures();
+    Return GetFeatures();
 EndFunction
 
 Function ПолучитьСтруктуруТипов() Export
-	Return GetTypesStructure();
+    Return GetTypesStructure();
 EndFunction
 
 #EndRegion

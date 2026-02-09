@@ -53,9 +53,9 @@
 // Creates an FTP connection with the specified settings
 //
 // Parameters:
-// FTPSettings - Structure Of KeyAndValue - FTP settings. See GetConnectionSettings - set
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// FTPSettings - Structure Of KeyAndValue - FTP settings. See GetConnectionSettings           - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
 //
 // Returns:
 // Arbitrary - Client object or map with error information
@@ -104,9 +104,9 @@ EndFunction
 // This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
 //
 // Parameters:
-// FTPSettings - Structure Of KeyAndValue - FTP settings. See GetConnectionSettings - set
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// FTPSettings - Structure Of KeyAndValue - FTP settings. See GetConnectionSettings           - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -239,8 +239,8 @@ EndFunction
 // FTP Command: `SITE`
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// CommandText - String - Text of the executed command - cmd
+// Connection  - Arbitrary - Existing connection or connection configuration - conn
+// CommandText - String    - Text of the executed command                    - cmd
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -271,8 +271,8 @@ EndFunction
 // Sends an arbitrary text request to the server for processing
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// CommandText - String - Text of the executed command - cmd
+// Connection  - Arbitrary - Existing connection or connection configuration - conn
+// CommandText - String    - Text of the executed command                    - cmd
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -307,7 +307,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to the object - path
+// Path       - String    - Path to the object                              - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -343,8 +343,8 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Current path to object - old
-// NewPath - String - New path to object - new
+// Path       - String    - Current path to object                          - old
+// NewPath    - String    - New path to object                              - new
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -396,14 +396,14 @@ EndFunction
 // from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
 //
 // Parameters:
-// Host - String - Host address - host
-// Port - Number - Server port - port
-// Login - String, Undefined - Username for authorization, if required - login
-// Password - String, Undefined - User password for authorization, if required - pass
-// Passive - Boolean - Passive connection mode - passive
-// ReadTimeout - Number - Read timeout - rtout
-// WriteTimeout - Number - Write timeout - wtout
-// IPResolve - Boolean - Advanced passive mode address resolution - ipresl
+// Host         - String            - Host address                                 - host
+// Port         - Number            - Server port                                  - port
+// Login        - String, Undefined - Username for authorization, if required      - login
+// Password     - String, Undefined - User password for authorization, if required - pass
+// Passive      - Boolean           - Passive connection mode                      - passive
+// ReadTimeout  - Number            - Read timeout                                 - rtout
+// WriteTimeout - Number            - Write timeout                                - wtout
+// IPResolve    - Boolean           - Advanced passive mode address resolution     - ipresl
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -447,10 +447,10 @@ EndFunction
 // Creates a structure of proxy server settings for the connection
 //
 // Parameters:
-// Address - String - Proxy address - addr
-// Port - Number - Proxy port - port
-// View - String - Proxy type: socks5, socks4, http - type
-// Login - String, Undefined - Authorization login, if required - login
+// Address  - String            - Proxy address                       - addr
+// Port     - Number            - Proxy port                          - port
+// View     - String            - Proxy type: socks5, socks4, http    - type
+// Login    - String, Undefined - Authorization login, if required    - login
 // Password - String, Undefined - Authorization password, if required - pass
 //
 // Returns:
@@ -474,8 +474,8 @@ EndFunction
 // or implicit, when passing settings
 //
 // Parameters:
-// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
@@ -496,9 +496,9 @@ EndFunction
 // FTP Command: `LIST`
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to search directory - path
-// Recursively - Boolean - Get information about objects in nested directories - rcv
+// Connection  - Arbitrary - Existing connection or connection configuration     - conn
+// Path        - String    - Path to search directory                            - path
+// Recursively - Boolean   - Get information about objects in nested directories - rcv
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -546,7 +546,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to new directory - path
+// Path       - String    - Path to new directory                           - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -581,7 +581,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to directory to delete - path
+// Path       - String    - Path to directory to delete                     - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -596,7 +596,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to the directory to be cleaned - path
+// Path       - String    - Path to the directory to be cleaned             - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -644,7 +644,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to new directory - path
+// Path       - String    - Path to new directory                           - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -682,9 +682,9 @@ EndFunction
 // FTP Command: `STOR`
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// File - String, BinaryData - File on disk or file data - file
-// Path - String - Path to save file on server - path
+// Connection - Arbitrary          - Existing connection or connection configuration - conn
+// File       - String, BinaryData - File on disk or file data                       - file
+// Path       - String             - Path to save file on server                     - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -756,7 +756,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
+// Path       - String    - Path to file on server                          - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -791,8 +791,8 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
-// FileName - String - Path to save file on disk - file
+// Path       - String    - Path to file on server                          - path
+// FileName   - String    - Path to save file on disk                       - file
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -830,7 +830,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
+// Path       - String    - Path to file on server                          - path
 //
 // Returns:
 // Map Of KeyAndValue, BinaryData - File data or error information
@@ -1149,99 +1149,99 @@ EndProcedure
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
-	Return CreateConnection(НастройкиFTP, Прокси, Tls);
+    Return CreateConnection(НастройкиFTP, Прокси, Tls);
 EndFunction
 
 Function ПолучитьКонфигурациюСоединения(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
-	Return GetConnectionConfiguration(НастройкиFTP, Прокси, Tls);
+    Return GetConnectionConfiguration(НастройкиFTP, Прокси, Tls);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ПолучитьПриветственноеСообщение(Val Соединение) Export
-	Return GetWelcomeMessage(Соединение);
+    Return GetWelcomeMessage(Соединение);
 EndFunction
 
 Function ПолучитьСписокРасширенийПротокола(Val Соединение) Export
-	Return GetProtocolFeatureList(Соединение);
+    Return GetProtocolFeatureList(Соединение);
 EndFunction
 
 Function Пинг(Val Соединение) Export
-	Return Ping(Соединение);
+    Return Ping(Соединение);
 EndFunction
 
 Function ВыполнитьНестандартнуюКоманду(Val Соединение, Val ТекстКоманды) Export
-	Return ExecuteCustomCommand(Соединение, ТекстКоманды);
+    Return ExecuteCustomCommand(Соединение, ТекстКоманды);
 EndFunction
 
 Function ВыполнитьПроизвольнуюКоманду(Val Соединение, Val ТекстКоманды) Export
-	Return ExecuteArbitraryCommand(Соединение, ТекстКоманды);
+    Return ExecuteArbitraryCommand(Соединение, ТекстКоманды);
 EndFunction
 
 Function ПолучитьРазмерОбъекта(Val Соединение, Val Путь) Export
-	Return GetObjectSize(Соединение, Путь);
+    Return GetObjectSize(Соединение, Путь);
 EndFunction
 
 Function ИзменитьПуть(Val Соединение, Val Путь, Val НовыйПуть) Export
-	Return UpdatePath(Соединение, Путь, НовыйПуть);
+    Return UpdatePath(Соединение, Путь, НовыйПуть);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ПолучитьНастройкиСоединения(Val Хост, Val Порт = 21, Val Логин = Undefined, Val Пароль = Undefined, Val Пассивный = True, Val ТаймаутЧтения = 120, Val ТаймаутЗаписи = 120, Val РазрешениеIP = True) Export
-	Return GetConnectionSettings(Хост, Порт, Логин, Пароль, Пассивный, ТаймаутЧтения, ТаймаутЗаписи, РазрешениеIP);
+    Return GetConnectionSettings(Хост, Порт, Логин, Пароль, Пассивный, ТаймаутЧтения, ТаймаутЗаписи, РазрешениеIP);
 EndFunction
 
 Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
-	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
+    Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
-	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+    Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
 EndFunction
 
 Function ПолучитьСписокОбъектов(Val Соединение, Val Путь = "", Val Рекурсивно = False) Export
-	Return ListObjects(Соединение, Путь, Рекурсивно);
+    Return ListObjects(Соединение, Путь, Рекурсивно);
 EndFunction
 
 Function СоздатьНовуюДиректорию(Val Соединение, Val Путь) Export
-	Return CreateNewDirectory(Соединение, Путь);
+    Return CreateNewDirectory(Соединение, Путь);
 EndFunction
 
 Function УдалитьДиректорию(Val Соединение, Val Путь) Export
-	Return DeleteDirectory(Соединение, Путь);
+    Return DeleteDirectory(Соединение, Путь);
 EndFunction
 
 Function ОчиститьДиректорию(Val Соединение, Val Путь) Export
-	Return ClearDirectory(Соединение, Путь);
+    Return ClearDirectory(Соединение, Путь);
 EndFunction
 
 Function ПолучитьТекущийКаталог(Val Соединение) Export
-	Return GetCurrentDirectory(Соединение);
+    Return GetCurrentDirectory(Соединение);
 EndFunction
 
 Function ИзменитьТекущийКаталог(Val Соединение, Val Путь) Export
-	Return ChangeCurrentDirectory(Соединение, Путь);
+    Return ChangeCurrentDirectory(Соединение, Путь);
 EndFunction
 
 Function ЗагрузитьФайл(Val Соединение, Val Файл, Val Путь) Export
-	Return UploadFile(Соединение, Файл, Путь);
+    Return UploadFile(Соединение, Файл, Путь);
 EndFunction
 
 Function УдалитьФайл(Val Соединение, Val Путь) Export
-	Return DeleteFile(Соединение, Путь);
+    Return DeleteFile(Соединение, Путь);
 EndFunction
 
 Function СохранитьФайл(Val Соединение, Val Путь, Val ИмяФайла) Export
-	Return SaveFile(Соединение, Путь, ИмяФайла);
+    Return SaveFile(Соединение, Путь, ИмяФайла);
 EndFunction
 
 Function ПолучитьДанныеФайла(Val Соединение, Val Путь) Export
-	Return GetFileData(Соединение, Путь);
+    Return GetFileData(Соединение, Путь);
 EndFunction
 
 #EndRegion

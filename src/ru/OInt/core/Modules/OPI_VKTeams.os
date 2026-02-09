@@ -104,8 +104,8 @@
 // Метод в документации API: [GET /files/getInfo](@teams.vk.com/botapi/#/files/get_files_getInfo)
 //
 // Параметры:
-//  Токен    - Строка        - Токен бота - token
-//  IDФайла  - Строка, Число - ID Файла   - fileid
+//  Токен   - Строка        - Токен бота - token
+//  IDФайла - Строка, Число - ID Файла   - fileid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -277,11 +277,11 @@
 // Метод в документации API: [GET /messages/editText](@teams.vk.com/botapi/#/messages/get_messages_editText)
 //
 // Параметры:
-//  Токен       - Строка         - Токен бота                                             - token
-//  IDЧата      - Строка, Число  - ID чата для отправки сообщения                         - chatid
-//  IDСообщения - Строка, Число  - ID сообщения для редактирования                        - messageid
-//  Текст       - Строка         - Новый текст сообщения                                  - text
-//  Разметка    - Строка         - Вид разметки для текста сообщения: MarkdownV2 или HTML - parsemod
+//  Токен       - Строка        - Токен бота                                             - token
+//  IDЧата      - Строка, Число - ID чата для отправки сообщения                         - chatid
+//  IDСообщения - Строка, Число - ID сообщения для редактирования                        - messageid
+//  Текст       - Строка        - Новый текст сообщения                                  - text
+//  Разметка    - Строка        - Вид разметки для текста сообщения: MarkdownV2 или HTML - parsemod
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -314,9 +314,9 @@
 // Метод в документации API: [GET /messages/deleteMessages](@teams.vk.com/botapi/#/messages/get_messages_deleteMessages)
 //
 // Параметры:
-//  Токен       - Строка         - Токен бота                      - token
-//  IDЧата      - Строка, Число  - ID чата для отправки сообщения  - chatid
-//  IDСообщения - Строка, Число  - ID сообщения для редактирования - messageid
+//  Токен       - Строка        - Токен бота                      - token
+//  IDЧата      - Строка, Число - ID чата для отправки сообщения  - chatid
+//  IDСообщения - Строка, Число - ID сообщения для редактирования - messageid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -378,9 +378,9 @@
 // Метод в документации API: [GET /messages/sendVoice](@teams.vk.com/botapi/#/messages/get_messages_sendVoice)
 //
 // Параметры:
-//  Токен    - Строка        - Токен бота                    - token
-//  IDЧата   - Строка, Число - ID чата для отправки файла    - chatid
-//  IDФайла  - Строка, Число - ID Файла голосового сообщения - fileid
+//  Токен   - Строка        - Токен бота                    - token
+//  IDЧата  - Строка, Число - ID чата для отправки файла    - chatid
+//  IDФайла - Строка, Число - ID Файла голосового сообщения - fileid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -641,8 +641,8 @@
 // Метод в документации API: [GET /chats/getInfo](@teams.vk.com/botapi/#/chats/get_chats_getInfo)
 //
 // Параметры:
-//  Токен  - Строка        - Токен бота    - token
-//  IDЧата - Строка, Число - ID чата       - chatid
+//  Токен  - Строка        - Токен бота - token
+//  IDЧата - Строка, Число - ID чата    - chatid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -662,8 +662,8 @@
 // Метод в документации API: [GET /chats/getAdmins](@teams.vk.com/botapi/#/chats/get_chats_getAdmins)
 //
 // Параметры:
-//  Токен  - Строка        - Токен бота    - token
-//  IDЧата - Строка, Число - ID чата       - chatid
+//  Токен  - Строка        - Токен бота - token
+//  IDЧата - Строка, Число - ID чата    - chatid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -855,9 +855,9 @@
 // Метод в документации API: [GET ​​/chats/setTitle](@teams.vk.com/botapi/#/chats/get_chats_setTitle)
 //
 // Параметры:
-//  Токен   - Строка        - Токен бота      - token
-//  IDЧата  - Строка, Число - ID чата         - chatid
-//  Текст   - Строка        - Текст заголовка - text
+//  Токен  - Строка        - Токен бота      - token
+//  IDЧата - Строка, Число - ID чата         - chatid
+//  Текст  - Строка        - Текст заголовка - text
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -877,9 +877,9 @@
 // Метод в документации API: [GET ​​/chats/setAbout](@teams.vk.com/botapi/#/chats/get_chats_setAbout)
 //
 // Параметры:
-//  Токен   - Строка        - Токен бота     - token
-//  IDЧата  - Строка, Число - ID чата        - chatid
-//  Текст   - Строка        - Текст описания - text
+//  Токен  - Строка        - Токен бота     - token
+//  IDЧата - Строка, Число - ID чата        - chatid
+//  Текст  - Строка        - Текст описания - text
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -899,9 +899,9 @@
 // Метод в документации API: [GET /chats/setRules](@teams.vk.com/botapi/#/chats/get_chats_setRules)
 //
 // Параметры:
-//  Токен   - Строка        - Токен бота     - token
-//  IDЧата  - Строка, Число - ID чата        - chatid
-//  Текст   - Строка        - Текст правил   - text
+//  Токен  - Строка        - Токен бота   - token
+//  IDЧата - Строка, Число - ID чата      - chatid
+//  Текст  - Строка        - Текст правил - text
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK Teams
@@ -982,119 +982,119 @@
 #Region Alternate
 
 Function CheckToken(Val Token) Export
-	Return ПроверитьТокен(Token);
+    Return ПроверитьТокен(Token);
 EndFunction
 
 Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
-	Return ПолучитьСобытия(Token, LastID, Timeout);
+    Return ПолучитьСобытия(Token, LastID, Timeout);
 EndFunction
 
 Function GetFileInformation(Val Token, Val FileID) Export
-	Return ПолучитьИнформациюОФайле(Token, FileID);
+    Return ПолучитьИнформациюОФайле(Token, FileID);
 EndFunction
 
 Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val Keyboard = "", Val Markup = "MarkdownV2") Export
-	Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, ReplyID, Keyboard, Markup);
+    Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, ReplyID, Keyboard, Markup);
 EndFunction
 
 Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2", Val ContentType = "image/jpeg") Export
-	Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup, ContentType);
+    Return ОтправитьФайл(Token, ChatID, File, Text, FileName, Markup, ContentType);
 EndFunction
 
 Function SendVoice(Val Token, Val ChatID, Val File, Val FileType = "m4a", Val ReplyID = 0, Val Keyboard = "") Export
-	Return ОтправитьГолосовоеСообщение(Token, ChatID, File, FileType, ReplyID, Keyboard);
+    Return ОтправитьГолосовоеСообщение(Token, ChatID, File, FileType, ReplyID, Keyboard);
 EndFunction
 
 Function EditMessageText(Val Token, Val ChatID, Val MessageID, Val Text, Val Markup = "MarkdownV2") Export
-	Return ИзменитьТекстСообщения(Token, ChatID, MessageID, Text, Markup);
+    Return ИзменитьТекстСообщения(Token, ChatID, MessageID, Text, Markup);
 EndFunction
 
 Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
-	Return УдалитьСообщение(Token, ChatID, MessageID);
+    Return УдалитьСообщение(Token, ChatID, MessageID);
 EndFunction
 
 Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val Markup = "MarkdownV2") Export
-	Return ПереслатьФайл(Token, ChatID, FileID, Text, Markup);
+    Return ПереслатьФайл(Token, ChatID, FileID, Text, Markup);
 EndFunction
 
 Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
-	Return ПереслатьГолосовоеСообщение(Token, ChatID, FileID);
+    Return ПереслатьГолосовоеСообщение(Token, ChatID, FileID);
 EndFunction
 
 Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
-	Return ПереслатьСообщение(Token, MessageID, FromChatID, ChatID, Text);
+    Return ПереслатьСообщение(Token, MessageID, FromChatID, ChatID, Text);
 EndFunction
 
 Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
-	Return ЗакрепитьСообщение(Token, ChatID, MessageID);
+    Return ЗакрепитьСообщение(Token, ChatID, MessageID);
 EndFunction
 
 Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
-	Return ОткрепитьСообщение(Token, ChatID, MessageID);
+    Return ОткрепитьСообщение(Token, ChatID, MessageID);
 EndFunction
 
 Function AnswerButtonEvent(Val Token, Val EventID, Val Text = "", Val URL = "", Val AsAlert = False) Export
-	Return ОтветитьНаСобытиеКлавиатуры(Token, EventID, Text, URL, AsAlert);
+    Return ОтветитьНаСобытиеКлавиатуры(Token, EventID, Text, URL, AsAlert);
 EndFunction
 
 Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export
-	Return СформироватьКнопкуДействия(Text, Value, URL, Style);
+    Return СформироватьКнопкуДействия(Text, Value, URL, Style);
 EndFunction
 
 Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
-	Return ИсключитьПользователейЧата(Token, ChatID, Users);
+    Return ИсключитьПользователейЧата(Token, ChatID, Users);
 EndFunction
 
 Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
-	Return ИзменитьАватарЧата(Token, ChatID, File);
+    Return ИзменитьАватарЧата(Token, ChatID, File);
 EndFunction
 
 Function GetChatInfo(Val Token, Val ChatID) Export
-	Return ПолучитьИнформациюОЧате(Token, ChatID);
+    Return ПолучитьИнформациюОЧате(Token, ChatID);
 EndFunction
 
 Function GetChatAdmins(Val Token, Val ChatID) Export
-	Return ПолучитьАдминистраторовЧата(Token, ChatID);
+    Return ПолучитьАдминистраторовЧата(Token, ChatID);
 EndFunction
 
 Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
-	Return ПолучитьПользователейЧата(Token, ChatID, Cursor);
+    Return ПолучитьПользователейЧата(Token, ChatID, Cursor);
 EndFunction
 
 Function GetChatBlockedUsers(Val Token, Val ChatID) Export
-	Return ПолучитьЗаблокированныхПользователейЧата(Token, ChatID);
+    Return ПолучитьЗаблокированныхПользователейЧата(Token, ChatID);
 EndFunction
 
 Function GetChatJoinRequests(Val Token, Val ChatID) Export
-	Return ПолучитьЗапросыВступленияЧата(Token, ChatID);
+    Return ПолучитьЗапросыВступленияЧата(Token, ChatID);
 EndFunction
 
 Function BlockChatUser(Val Token, Val ChatID, Val UserID, Val DeleteLastMessages = False) Export
-	Return ЗаблокироватьПользователяЧата(Token, ChatID, UserID, DeleteLastMessages);
+    Return ЗаблокироватьПользователяЧата(Token, ChatID, UserID, DeleteLastMessages);
 EndFunction
 
 Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
-	Return РазблокироватьПользователяЧата(Token, ChatID, UserID);
+    Return РазблокироватьПользователяЧата(Token, ChatID, UserID);
 EndFunction
 
 Function ApprovePending(Val Token, Val ChatID, Val UserID = "") Export
-	Return ОдобритьЗаявкуНаВступление(Token, ChatID, UserID);
+    Return ОдобритьЗаявкуНаВступление(Token, ChatID, UserID);
 EndFunction
 
 Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
-	Return ОтклонитьЗаявкуНаВступление(Token, ChatID, UserID);
+    Return ОтклонитьЗаявкуНаВступление(Token, ChatID, UserID);
 EndFunction
 
 Function SetChatTitle(Val Token, Val ChatID, Val Text) Export
-	Return УстановитьЗаголовокЧата(Token, ChatID, Text);
+    Return УстановитьЗаголовокЧата(Token, ChatID, Text);
 EndFunction
 
 Function SetChatDescription(Val Token, Val ChatID, Val Text) Export
-	Return УстановитьОписаниеЧата(Token, ChatID, Text);
+    Return УстановитьОписаниеЧата(Token, ChatID, Text);
 EndFunction
 
 Function SetChatRules(Val Token, Val ChatID, Val Text) Export
-	Return УстановитьПравилаЧата(Token, ChatID, Text);
+    Return УстановитьПравилаЧата(Token, ChatID, Text);
 EndFunction
 
 #EndRegion

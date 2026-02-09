@@ -565,63 +565,63 @@
 #Region Alternate
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
-	ПолучитьДвоичныеДанные(Value, Force, TryB64);
+    ПолучитьДвоичныеДанные(Value, Force, TryB64);
 EndProcedure
 
 Procedure GetBinaryOrStream(Value) Export
-	ПолучитьДвоичныеИлиПоток(Value);
+    ПолучитьДвоичныеИлиПоток(Value);
 EndProcedure
 
 Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
-	ПолучитьКоллекцию(Value, ByNetwork, Success);
+    ПолучитьКоллекцию(Value, ByNetwork, Success);
 EndProcedure
 
 Procedure GetKeyValueCollection(Value, Val ErrorText = "The specified value is not a valid collection!") Export
-	ПолучитьКоллекциюКлючИЗначение(Value, ErrorText);
+    ПолучитьКоллекциюКлючИЗначение(Value, ErrorText);
 EndProcedure
 
 Procedure GetArray(Value) Export
-	ПолучитьМассив(Value);
+    ПолучитьМассив(Value);
 EndProcedure
 
 Procedure GetBoolean(Value) Export
-	ПолучитьБулево(Value);
+    ПолучитьБулево(Value);
 EndProcedure
 
 Procedure GetLine(Value, Val FromSource = False) Export
-	ПолучитьСтроку(Value, FromSource);
+    ПолучитьСтроку(Value, FromSource);
 EndProcedure
 
 Procedure GetDate(Value) Export
-	ПолучитьДату(Value);
+    ПолучитьДату(Value);
 EndProcedure
 
 Procedure GetNumber(Value) Export
-	ПолучитьЧисло(Value);
+    ПолучитьЧисло(Value);
 EndProcedure
 
 Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
-	ПолучитьФайлНаДиске(Value, Extension);
+    ПолучитьФайлНаДиске(Value, Extension);
 EndProcedure
 
 Procedure RestoreEscapeSequences(Text) Export
-	ВернутьУправляющиеПоследовательности(Text);
+    ВернутьУправляющиеПоследовательности(Text);
 EndProcedure
 
 Procedure ReplaceEscapeSequences(Text) Export
-	ЗаменитьУправляющиеПоследовательности(Text);
+    ЗаменитьУправляющиеПоследовательности(Text);
 EndProcedure
 
 Procedure ValueToArray(Value) Export
-	ЗначениеВМассив(Value);
+    ЗначениеВМассив(Value);
 EndProcedure
 
 Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
-	Return JSONСтрокой(Data, Escaping, LineBreaks, DoubleQuotes);
+    Return JSONСтрокой(Data, Escaping, LineBreaks, DoubleQuotes);
 EndFunction
 
 Function NumberToString(Val Value) Export
-	Return ЧислоВСтроку(Value);
+    Return ЧислоВСтроку(Value);
 EndFunction
 
 #EndRegion

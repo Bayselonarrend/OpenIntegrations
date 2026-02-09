@@ -107,11 +107,11 @@
 // Отправляет сообщение в выбранный час
 //
 // Параметры:
-//  Токен        - Строка - Токен бота                              - token
-//  Канал        - Строка - Идентификатор канала                    - channel
-//  Текст        - Строка - Текст сообщения                         - text
-//  ДатаОтправки - Дата   - Дата отправки для отложенного сообщения - date
-//  Блоки        - Массив Из Структура - Массив описаний блоков     - blocks - JSON массива описаний блоков
+//  Токен        - Строка              - Токен бота                              - token
+//  Канал        - Строка              - Идентификатор канала                    - channel
+//  Текст        - Строка              - Текст сообщения                         - text
+//  ДатаОтправки - Дата                - Дата отправки для отложенного сообщения - date
+//  Блоки        - Массив Из Структура - Массив описаний блоков                  - blocks
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -148,11 +148,11 @@
 // только конкретному пользователю
 //
 // Параметры:
-//  Токен        - Строка - Токен бота                              - token
-//  Канал        - Строка - Идентификатор канала                    - channel
-//  Текст        - Строка - Текст сообщения                         - text
-//  Пользователь - Строка - ID пользователя                         - user
-//  Блоки        - Массив Из Структура - Массив описаний блоков     - blocks - JSON массива описаний блоков
+//  Токен        - Строка              - Токен бота             - token
+//  Канал        - Строка              - Идентификатор канала   - channel
+//  Текст        - Строка              - Текст сообщения        - text
+//  Пользователь - Строка              - ID пользователя        - user
+//  Блоки        - Массив Из Структура - Массив описаний блоков - blocks
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -184,11 +184,11 @@
 // Изменяет состав существующего сообщения
 //
 // Параметры:
-//  Токен        - Строка - Токен бота                          - token
-//  Канал        - Строка - Идентификатор канала                - channel
-//  Отметка      - Строка - Временная отметка сообщения         - stamp
-//  Текст        - Строка - Новый текст сообщения               - text
-//  МассивБлоков - Массив Из Структура - Массив описаний блоков - blocks - JSON массива описаний блоков
+//  Токен        - Строка              - Токен бота                  - token
+//  Канал        - Строка              - Идентификатор канала        - channel
+//  Отметка      - Строка              - Временная отметка сообщения - stamp
+//  Текст        - Строка              - Новый текст сообщения       - text
+//  МассивБлоков - Массив Из Структура - Массив описаний блоков      - blocks
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -274,9 +274,9 @@
 // Получает постоянный UTL к сообщению канала
 //
 // Параметры:
-//  Токен         - Строка - Токен бота                             - token
-//  Канал         - Строка - Идентификатор канала                   - channel
-//  Отметка       - Строка - Временная отметка или ID сообщения     - stamp
+//  Токен   - Строка - Токен бота                         - token
+//  Канал   - Строка - Идентификатор канала               - channel
+//  Отметка - Строка - Временная отметка или ID сообщения - stamp
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -299,10 +299,10 @@
 // Получает массив сообщений, которые являются ответом на указанное
 //
 // Параметры:
-//  Токен         - Строка - Токен бота                                                    - token
-//  Канал         - Строка - Идентификатор канала                                          - channel
-//  Отметка       - Строка - Временная отметка или ID сообщения                            - stamp
-//  Курсор        - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+//  Токен   - Строка - Токен бота                                                    - token
+//  Канал   - Строка - Идентификатор канала                                          - channel
+//  Отметка - Строка - Временная отметка или ID сообщения                            - stamp
+//  Курсор  - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -356,9 +356,9 @@
 // Получает список пользователей указанного канала
 //
 // Параметры:
-//  Токен         - Строка - Токен бота                                                    - token
-//  Канал         - Строка - Идентификатор канала                                          - channel
-//  Курсор        - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+//  Токен  - Строка - Токен бота                                                    - token
+//  Канал  - Строка - Идентификатор канала                                          - channel
+//  Курсор - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -594,9 +594,9 @@
 // Изменяет название канала
 //
 // Параметры:
-//  Токен     - Строка - Токен бота            - token
-//  Канал     - Строка - ID канала             - channel
-//  Название  - Строка - Новое название канала - title
+//  Токен    - Строка - Токен бота            - token
+//  Канал    - Строка - ID канала             - channel
+//  Название - Строка - Новое название канала - title
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -670,9 +670,9 @@
 // Получает список файлов бота или канала
 //
 // Параметры:
-//  Токен          - Строка        - Токен бота       - token
-//  Канал          - Строка        - Канал для отбора - channel
-//  НомерСтраницы  - Число, Строка - Номер страницы   - page
+//  Токен         - Строка        - Токен бота       - token
+//  Канал         - Строка        - Канал для отбора - channel
+//  НомерСтраницы - Число, Строка - Номер страницы   - page
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -695,11 +695,11 @@
 // Загружает файл на сервера Slack
 //
 // Параметры:
-//  Токен     - Строка                - Токен бота              - token
-//  Файл      - Строка,ДвоичныеДанные - Файл для загрузки       - file
-//  ИмяФайла  - Строка                - Имя файла с расширением - filename
-//  Заголовок - Строка                - Имя файла в Slack       - title
-//  Канал     - Строка                - ID канала               - channel
+//  Токен     - Строка                 - Токен бота              - token
+//  Файл      - Строка, ДвоичныеДанные - Файл для загрузки       - file
+//  ИмяФайла  - Строка                 - Имя файла с расширением - filename
+//  Заголовок - Строка                 - Имя файла в Slack       - title
+//  Канал     - Строка                 - ID канала               - channel
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
@@ -947,8 +947,8 @@
 // Формирует блок с картинкой для добавления в массив блоков сообщения
 //
 // Параметры:
-//  URL                 - Строка - URL картинки                   - picture
-//  АльтернативныйТекст - Строка - Альтернативный текст картинки  - alt
+//  URL                 - Строка - URL картинки                  - picture
+//  АльтернативныйТекст - Строка - Альтернативный текст картинки - alt
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение -  Блок картинки
@@ -1048,151 +1048,151 @@
 #Region Alternate
 
 Function GetBotInformation(Val Token) Export
-	Return ПолучитьИнформациюОБоте(Token);
+    Return ПолучитьИнформациюОБоте(Token);
 EndFunction
 
 Function GetWorkspaceList(Val Token, Val Cursor = "") Export
-	Return ПолучитьСписокРабочихОбластей(Token, Cursor);
+    Return ПолучитьСписокРабочихОбластей(Token, Cursor);
 EndFunction
 
 Function GetUserList(Val Token, Val Cursor = "") Export
-	Return ПолучитьСписокПользователей(Token, Cursor);
+    Return ПолучитьСписокПользователей(Token, Cursor);
 EndFunction
 
 Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = "", Val Blocks = "") Export
-	Return ОтправитьСообщение(Token, Channel, Text, SendingDate, Blocks);
+    Return ОтправитьСообщение(Token, Channel, Text, SendingDate, Blocks);
 EndFunction
 
 Function SendEphemeralMessage(Val Token, Val Channel, Val Text = "", Val User = "", Val Blocks = "") Export
-	Return ОтправитьЭфемерноеСообщение(Token, Channel, Text, User, Blocks);
+    Return ОтправитьЭфемерноеСообщение(Token, Channel, Text, User, Blocks);
 EndFunction
 
 Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export
-	Return ИзменитьСообщение(Token, Channel, Timestamp, Text, BlockArray);
+    Return ИзменитьСообщение(Token, Channel, Timestamp, Text, BlockArray);
 EndFunction
 
 Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export
-	Return УдалитьСообщение(Token, Channel, Timestamp, IsDelayed);
+    Return УдалитьСообщение(Token, Channel, Timestamp, IsDelayed);
 EndFunction
 
 Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
-	Return ПолучитьСписокОтложенныхСообщений(Token, Channel, Cursor);
+    Return ПолучитьСписокОтложенныхСообщений(Token, Channel, Cursor);
 EndFunction
 
 Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
-	Return ПолучитьСсылкуНаСообщение(Token, Channel, Timestamp);
+    Return ПолучитьСсылкуНаСообщение(Token, Channel, Timestamp);
 EndFunction
 
 Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export
-	Return ПолучитьСписокОтветовНаСообщение(Token, Channel, Timestamp, Cursor);
+    Return ПолучитьСписокОтветовНаСообщение(Token, Channel, Timestamp, Cursor);
 EndFunction
 
 Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export
-	Return ПолучитьСписокКаналов(Token, ExcludeArchived, Cursor);
+    Return ПолучитьСписокКаналов(Token, ExcludeArchived, Cursor);
 EndFunction
 
 Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
-	Return ПолучитьСписокПользователейКанала(Token, Channel, Cursor);
+    Return ПолучитьСписокПользователейКанала(Token, Channel, Cursor);
 EndFunction
 
 Function CreateChannel(Val Token, Val Name, Val Private = False) Export
-	Return СоздатьКанал(Token, Name, Private);
+    Return СоздатьКанал(Token, Name, Private);
 EndFunction
 
 Function ArchiveChannel(Val Token, Val Channel) Export
-	Return АрхивироватьКанал(Token, Channel);
+    Return АрхивироватьКанал(Token, Channel);
 EndFunction
 
 Function GetChannel(Val Token, Val Channel) Export
-	Return ПолучитьКанал(Token, Channel);
+    Return ПолучитьКанал(Token, Channel);
 EndFunction
 
 Function GetChannelHistory(Val Token, Val Channel) Export
-	Return ПолучитьИсториюКанала(Token, Channel);
+    Return ПолучитьИсториюКанала(Token, Channel);
 EndFunction
 
 Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
-	Return ПригласитьПользователейВКанал(Token, Channel, ArrayOfUsers);
+    Return ПригласитьПользователейВКанал(Token, Channel, ArrayOfUsers);
 EndFunction
 
 Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
-	Return ВыгнатьПользователяИзКанала(Token, Channel, User);
+    Return ВыгнатьПользователяИзКанала(Token, Channel, User);
 EndFunction
 
 Function JoinChannel(Val Token, Val Channel) Export
-	Return ВступитьВКанал(Token, Channel);
+    Return ВступитьВКанал(Token, Channel);
 EndFunction
 
 Function LeaveChannel(Val Token, Val Channel) Export
-	Return ПокинутьКанал(Token, Channel);
+    Return ПокинутьКанал(Token, Channel);
 EndFunction
 
 Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
-	Return УстановитьТемуКанала(Token, Channel, Topic);
+    Return УстановитьТемуКанала(Token, Channel, Topic);
 EndFunction
 
 Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
-	Return УстановитьЦельКанала(Token, Channel, Purpose);
+    Return УстановитьЦельКанала(Token, Channel, Purpose);
 EndFunction
 
 Function RenameChannel(Val Token, Val Channel, Val Name) Export
-	Return ПереименоватьКанал(Token, Channel, Name);
+    Return ПереименоватьКанал(Token, Channel, Name);
 EndFunction
 
 Function OpenDialog(Val Token, Val ArrayOfUsers) Export
-	Return ОткрытьДиалог(Token, ArrayOfUsers);
+    Return ОткрытьДиалог(Token, ArrayOfUsers);
 EndFunction
 
 Function CloseDialog(Val Token, Val Dialog) Export
-	Return ЗакрытьДиалог(Token, Dialog);
+    Return ЗакрытьДиалог(Token, Dialog);
 EndFunction
 
 Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
-	Return ПолучитьСписокФайлов(Token, Channel, PageNumber);
+    Return ПолучитьСписокФайлов(Token, Channel, PageNumber);
 EndFunction
 
 Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export
-	Return ЗагрузитьФайл(Token, File, FileName, Title, Channel);
+    Return ЗагрузитьФайл(Token, File, FileName, Title, Channel);
 EndFunction
 
 Function GetFileData(Val Token, Val FileID) Export
-	Return ПолучитьДанныеФайла(Token, FileID);
+    Return ПолучитьДанныеФайла(Token, FileID);
 EndFunction
 
 Function DeleteFile(Val Token, Val FileID) Export
-	Return УдалитьФайл(Token, FileID);
+    Return УдалитьФайл(Token, FileID);
 EndFunction
 
 Function MakeFilePublic(Val Token, Val FileID) Export
-	Return СделатьФайлПубличным(Token, FileID);
+    Return СделатьФайлПубличным(Token, FileID);
 EndFunction
 
 Function MakeFilePrivate(Val Token, Val FileID) Export
-	Return СделатьФайлПриватным(Token, FileID);
+    Return СделатьФайлПриватным(Token, FileID);
 EndFunction
 
 Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export
-	Return ПолучитьСписокВнешнихФайлов(Token, Channel, Cursor);
+    Return ПолучитьСписокВнешнихФайлов(Token, Channel, Cursor);
 EndFunction
 
 Function GetExternalFile(Val Token, Val FileID) Export
-	Return ПолучитьВнешнийФайл(Token, FileID);
+    Return ПолучитьВнешнийФайл(Token, FileID);
 EndFunction
 
 Function AddExternalFile(Val Token, Val URL, Val Title) Export
-	Return ДобавитьВнешнийФайл(Token, URL, Title);
+    Return ДобавитьВнешнийФайл(Token, URL, Title);
 EndFunction
 
 Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
-	Return ОтправитьВнешнийФайл(Token, FileID, ChannelArray);
+    Return ОтправитьВнешнийФайл(Token, FileID, ChannelArray);
 EndFunction
 
 Function DeleteExternalFile(Val Token, Val FileID) Export
-	Return УдалитьВнешнийФайл(Token, FileID);
+    Return УдалитьВнешнийФайл(Token, FileID);
 EndFunction
 
 Function GenerateImageBlock(Val URL, Val AlternateText = "") Export
-	Return СформироватьБлокКартинку(URL, AlternateText);
+    Return СформироватьБлокКартинку(URL, AlternateText);
 EndFunction
 
 #EndRegion

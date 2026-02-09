@@ -43,10 +43,10 @@
 // Возвращает URL для авторизации в браузере
 //
 // Параметры:
-//  ClientID - Строка - Client ID                      - id
-//  Calendar - Булево - разрешение на методы Calendar  - calendar
-//  Drive    - Булево - разрешение на методы Drive     - drive
-//  Sheets   - Булево - разрешение на методы Sheets    - sheets
+//  ClientID - Строка - Client ID                     - id
+//  Calendar - Булево - разрешение на методы Calendar - calendar
+//  Drive    - Булево - разрешение на методы Drive    - drive
+//  Sheets   - Булево - разрешение на методы Sheets   - sheets
 //
 // Возвращаемое значение:
 //  Строка - Ссылка получения кода
@@ -247,23 +247,23 @@
 #Region Alternate
 
 Function FormCodeRetrievalLink(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
-	Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
+    Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
 EndFunction
 
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
-	Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
+    Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
 EndFunction
 
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
+    Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
 EndFunction
 
 Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
-	Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
+    Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
 EndFunction
 
 Function GetAuthorizationHeader(Val Token) Export
-	Return ПолучитьЗаголовокАвторизации(Token);
+    Return ПолучитьЗаголовокАвторизации(Token);
 EndFunction
 
 #EndRegion

@@ -122,10 +122,10 @@ EndFunction
 // Forms a MongoDB connection string
 //
 // Parameters:
-// Address - String - Host IP address with port or URL - addr
-// Base - String - Database, if necessary - db
-// Login - String - Username for authorization - usr
-// Password - String - Password for authorization - pwd
+// Address    - String                              - Host IP address with port or URL - addr
+// Base       - String                              - Database, if necessary           - db
+// Login      - String                              - Username for authorization       - usr
+// Password   - String                              - Password for authorization       - pwd
 // Parameters - Structure Of KeyAndValue, Undefined - Additional connection parameters - params
 //
 // Returns:
@@ -192,11 +192,11 @@ EndFunction
 // Executes the command according to its description
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Command - String - Command name to execute - comm
-// Argument - Arbitrary - Command argument - arg
-// Base - String - Database in which the operation needs to be performed - db
-// Data - Structure Of KeyAndValue - Main data fields for performing the operation - data
+// Connection - String, Arbitrary        - Connection or connection string                       - dbc
+// Command    - String                   - Command name to execute                               - comm
+// Argument   - Arbitrary                - Command argument                                      - arg
+// Base       - String                   - Database in which the operation needs to be performed - db
+// Data       - Structure Of KeyAndValue - Main data fields for performing the operation         - data
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -272,8 +272,8 @@ EndFunction
 // Gets information about the database
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Base - String - Database name. Current database if not specified - db
+// Connection - String, Arbitrary - Connection or connection string                  - dbc
+// Base       - String            - Database name. Current database if not specified - db
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -292,8 +292,8 @@ EndFunction
 // Deletes the database
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Base - String - Database name. Current database if not specified - db
+// Connection - String, Arbitrary - Connection or connection string                  - dbc
+// Base       - String            - Database name. Current database if not specified - db
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -316,8 +316,8 @@ EndFunction
 // Gets a list of database collections
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Base - String - Database name. Current database if not specified - db
+// Connection - String, Arbitrary - Connection or connection string                  - dbc
+// Base       - String            - Database name. Current database if not specified - db
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -336,10 +336,10 @@ EndFunction
 // Creates a new collection with the specified parameters
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Collection name - name
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional creation parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Name       - String                   - Collection name                                  - name
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional creation parameters                   - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -367,9 +367,9 @@ EndFunction
 // Deletes the selected database collection
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Base - String - Database name. Current database if not specified - db
+// Connection - String, Arbitrary - Connection or connection string                  - dbc
+// Collection - String            - Collection name                                  - coll
+// Base       - String            - Database name. Current database if not specified - db
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -394,11 +394,11 @@ EndFunction
 // Inserts new documents into the collection
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Values - Array Of Arbitrary - Array of docs objects - docs
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional insert options - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Collection - String                   - Collection name                                  - coll
+// Values     - Array Of Arbitrary       - Array of docs objects                            - docs
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options                        - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -443,11 +443,11 @@ EndFunction
 // Updates document data in the collection
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Updates - Array of Structure - Update array. See GetDocumentUpdateStructure - updates
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional insert options - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Collection - String                   - Collection name                                  - coll
+// Updates    - Array of Structure       - Update array. See GetDocumentUpdateStructure     - updates
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options                        - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -492,12 +492,12 @@ EndFunction
 // Gets collection documents
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Base - String - Database name. Current database if not specified - db
-// Filter - Structure Of KeyAndValue - Document filter - query
-// Sort - Structure Of KeyAndValue - Selection sorting - sort
-// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Collection - String                   - Collection name                                  - coll
+// Base       - String                   - Database name. Current database if not specified - db
+// Filter     - Structure Of KeyAndValue - Document filter                                  - query
+// Sort       - Structure Of KeyAndValue - Selection sorting                                - sort
+// Parameters - Structure Of KeyAndValue - Additional retrieval parameters                  - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -571,11 +571,11 @@ EndFunction
 // Deletes collection documents
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Deletions - Array of Structure - Deletion array. See GetDocumentDeletionStructure - deletes
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional insert options - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Collection - String                   - Collection name                                  - coll
+// Deletions  - Array of Structure       - Deletion array. See GetDocumentDeletionStructure - deletes
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options                        - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -620,12 +620,12 @@ EndFunction
 // Gets a cursor for batch retrieval of collection documents
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// Base - String - Database name. Current database if not specified - db
-// Filter - Structure Of KeyAndValue - Document filter - query
-// Sort - Structure Of KeyAndValue - Selection sorting - sort
-// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Collection - String                   - Collection name                                  - coll
+// Base       - String                   - Database name. Current database if not specified - db
+// Filter     - Structure Of KeyAndValue - Document filter                                  - query
+// Sort       - Structure Of KeyAndValue - Selection sorting                                - sort
+// Parameters - Structure Of KeyAndValue - Additional retrieval parameters                  - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -661,12 +661,12 @@ EndFunction
 // Gets the next batch of cursor documents
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
-// CursorID - Number - Cursor ID - cursor
-// Base - String - Database name. Current database if not specified - db
-// BatchSize - Number - Amount of records in the batch - limit
-// Waiting - Number - Maximum lock time during awaitData (in ms.) - time
+// Connection - String, Arbitrary - Connection or connection string                  - dbc
+// Collection - String            - Collection name                                  - coll
+// CursorID   - Number            - Cursor ID                                        - cursor
+// Base       - String            - Database name. Current database if not specified - db
+// BatchSize  - Number            - Amount of records in the batch                   - limit
+// Waiting    - Number            - Maximum lock time during awaitData (in ms.)      - time
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -698,11 +698,11 @@ EndFunction
 // Forms data structure for updating documents
 //
 // Parameters:
-// Filter - Structure Of KeyAndValue - Document filter - query
-// Data - Structure Of KeyAndValue - New document data for update - data
-// UpdateAll - Boolean - True > updates all documents by filter, False > only one - multi
-// Insert - Boolean - Insert a new document if no document was found - upsert
-// Collation - Structure Of KeyAndValue - Special field comparison rules - cltn
+// Filter    - Structure Of KeyAndValue - Document filter                                          - query
+// Data      - Structure Of KeyAndValue - New document data for update                             - data
+// UpdateAll - Boolean                  - True > updates all documents by filter, False > only one - multi
+// Insert    - Boolean                  - Insert a new document if no document was found           - upsert
+// Collation - Structure Of KeyAndValue - Special field comparison rules                           - cltn
 //
 // Returns:
 // Structure Of KeyAndValue - Result of connection termination
@@ -728,9 +728,9 @@ EndFunction
 // Forms data structure for update
 //
 // Parameters:
-// Filter - Structure Of KeyAndValue - Document filter - query
-// Count - Number - Deletion limit: 1 > first document, 0 > all documents - limit
-// Collation - Structure Of KeyAndValue - Special field comparison rules - cltn
+// Filter    - Structure Of KeyAndValue - Document filter                                       - query
+// Count     - Number                   - Deletion limit: 1 > first document, 0 > all documents - limit
+// Collation - Structure Of KeyAndValue - Special field comparison rules                        - cltn
 //
 // Returns:
 // Structure - Get document deletion structure
@@ -761,12 +761,12 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Users name - name
-// UserRoles - Array Of Arbitrary - Array of roles as strings or structures specifying the DB - roles
-// Base - String - Database name. Current database if not specified - db
-// Password - String - Users password - pwd
-// Parameters - Structure Of KeyAndValue - Additional creation parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                           - dbc
+// Name       - String                   - Users name                                                - name
+// UserRoles  - Array Of Arbitrary       - Array of roles as strings or structures specifying the DB - roles
+// Base       - String                   - Database name. Current database if not specified          - db
+// Password   - String                   - Users password                                            - pwd
+// Parameters - Structure Of KeyAndValue - Additional creation parameters                            - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -791,12 +791,12 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Users name - name
-// UserRoles - Array Of Arbitrary - Array of roles as strings or structures specifying the DB - roles
-// Base - String - Database name. Current database if not specified - db
-// Password - String - Users password - pwd
-// Parameters - Structure Of KeyAndValue - Additional parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                           - dbc
+// Name       - String                   - Users name                                                - name
+// UserRoles  - Array Of Arbitrary       - Array of roles as strings or structures specifying the DB - roles
+// Base       - String                   - Database name. Current database if not specified          - db
+// Password   - String                   - Users password                                            - pwd
+// Parameters - Structure Of KeyAndValue - Additional parameters                                     - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -821,11 +821,11 @@ EndFunction
 // Array: `[ { user: <name>, db: <database> }, { user: <name>, db: <database> }, ... ]`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Users - Arbitrary - Username, structure, or array of user structures - usrs
-// Base - String - Database name. Current database if not specified - db
-// GetPassword - Boolean - Adds user password hash to the returned data - spwd
-// GetPrivileges - Boolean - Adds a list of user privileges to the returned data - sprv
+// Connection    - String, Arbitrary - Connection or connection string                     - dbc
+// Users         - Arbitrary         - Username, structure, or array of user structures    - usrs
+// Base          - String            - Database name. Current database if not specified    - db
+// GetPassword   - Boolean           - Adds user password hash to the returned data        - spwd
+// GetPrivileges - Boolean           - Adds a list of user privileges to the returned data - sprv
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -858,10 +858,10 @@ EndFunction
 // Gets information about all database users
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Base - String - Database name. Current database if not specified - db
-// GetPassword - Boolean - Adds user password hash to the returned data - spwd
-// GetPrivileges - Boolean - Adds a list of user privileges to the returned data - sprv
+// Connection    - String, Arbitrary - Connection or connection string                     - dbc
+// Base          - String            - Database name. Current database if not specified    - db
+// GetPassword   - Boolean           - Adds user password hash to the returned data        - spwd
+// GetPrivileges - Boolean           - Adds a list of user privileges to the returned data - sprv
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -878,10 +878,10 @@ EndFunction
 // Deletes user by name
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Users name - name
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Name       - String                   - Users name                                       - name
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters                   - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -917,12 +917,12 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Role name - name
-// Base - String - Database name. Current database if not specified - db
-// PrivilegesArray - Array of Structure - Array of privileges. See GetRolePrivilegeStructure - prvl - prvl
-// RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection      - String, Arbitrary        - Connection or connection string                                       - dbc
+// Name            - String                   - Role name                                                             - name
+// Base            - String                   - Database name. Current database if not specified                      - db
+// PrivilegesArray - Array of Structure       - Array of privileges. See GetRolePrivilegeStructure                    - prvl
+// RoleArray       - Array Of Arbitrary       - Array of roles based on strings or structures specifying the database - roles
+// Parameters      - Structure Of KeyAndValue - Additional deletion parameters                                        - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -947,12 +947,12 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Role name - name
-// Base - String - Database name. Current database if not specified - db
-// PrivilegesArray - Array of Structure - Array of privileges. See GetRolePrivilegeStructure - prvl
-// RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection      - String, Arbitrary        - Connection or connection string                                       - dbc
+// Name            - String                   - Role name                                                             - name
+// Base            - String                   - Database name. Current database if not specified                      - db
+// PrivilegesArray - Array of Structure       - Array of privileges. See GetRolePrivilegeStructure                    - prvl
+// RoleArray       - Array Of Arbitrary       - Array of roles based on strings or structures specifying the database - roles
+// Parameters      - Structure Of KeyAndValue - Additional deletion parameters                                        - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -971,10 +971,10 @@ EndFunction
 // Gets information about the specified fields
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// RoleArray - Arbitrary - Role or list of roles - roles
-// Base - String - Database name. Current database if not specified - db
-// GetPrivileges - Boolean - Adds a list of role privileges to the returned data - sprv
+// Connection    - String, Arbitrary - Connection or connection string                     - dbc
+// RoleArray     - Arbitrary         - Role or list of roles                               - roles
+// Base          - String            - Database name. Current database if not specified    - db
+// GetPrivileges - Boolean           - Adds a list of role privileges to the returned data - sprv
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -1005,10 +1005,10 @@ EndFunction
 // Deletes an existing role
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Name - String - Role name - name
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// Name       - String                   - Role name                                        - name
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters                   - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -1040,11 +1040,11 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// User - String - Users name - user
-// RoleArray - Array Of Arbitrary - Role or role array - roles
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// User       - String                   - Users name                                       - user
+// RoleArray  - Array Of Arbitrary       - Role or role array                               - roles
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters                   - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -1067,11 +1067,11 @@ EndFunction
 // String: `role name`
 //
 // Parameters:
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// User - String - Users name - user
-// RoleArray - Array Of Arbitrary - Role or role array - roles
-// Base - String - Database name. Current database if not specified - db
-// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+// Connection - String, Arbitrary        - Connection or connection string                  - dbc
+// User       - String                   - Users name                                       - user
+// RoleArray  - Array Of Arbitrary       - Role or role array                               - roles
+// Base       - String                   - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters                   - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
@@ -1094,8 +1094,8 @@ EndFunction
 // Structure for cluster: `{ cluster : true }`
 //
 // Parameters:
-// Resource - Structure Of KeyAndValue - Privilege resource - res
-// ActionsArray - Array Of String - Array of available privilege actions - act
+// Resource     - Structure Of KeyAndValue - Privilege resource                   - res
+// ActionsArray - Array Of String          - Array of available privilege actions - act
 //
 // Returns:
 // Structure - Privilege structure
@@ -1314,127 +1314,127 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val СтрокаПодключения) Export
-	Return CreateConnection(СтрокаПодключения);
+    Return CreateConnection(СтрокаПодключения);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function СформироватьСтрокуПодключения(Val Адрес, Val База = "", Val Логин = "", Val Пароль = "", Val Параметры = Undefined) Export
-	Return GenerateConnectionString(Адрес, База, Логин, Пароль, Параметры);
+    Return GenerateConnectionString(Адрес, База, Логин, Пароль, Параметры);
 EndFunction
 
 Function ВыполнитьКоманду(Val Соединение, Val Команда, Val Аргумент = 1, Val База = Undefined, Val Данные = Undefined) Export
-	Return ExecuteCommand(Соединение, Команда, Аргумент, База, Данные);
+    Return ExecuteCommand(Соединение, Команда, Аргумент, База, Данные);
 EndFunction
 
 Function ПолучитьСписокБаз(Val Соединение) Export
-	Return GetListOfBases(Соединение);
+    Return GetListOfBases(Соединение);
 EndFunction
 
 Function ПолучитьБазуДанных(Val Соединение, Val База = Undefined) Export
-	Return GetDatabase(Соединение, База);
+    Return GetDatabase(Соединение, База);
 EndFunction
 
 Function УдалитьБазуДанных(Val Соединение, Val База = Undefined) Export
-	Return DeleteDatabase(Соединение, База);
+    Return DeleteDatabase(Соединение, База);
 EndFunction
 
 Function ПолучитьСписокКоллекций(Val Соединение, Val База = Undefined) Export
-	Return GetCollectionList(Соединение, База);
+    Return GetCollectionList(Соединение, База);
 EndFunction
 
 Function СоздатьКоллекцию(Val Соединение, Val Наименование, Val База = Undefined, Val Параметры = Undefined) Export
-	Return CreateCollection(Соединение, Наименование, База, Параметры);
+    Return CreateCollection(Соединение, Наименование, База, Параметры);
 EndFunction
 
 Function УдалитьКоллекцию(Val Соединение, Val Коллекция, Val База = Undefined) Export
-	Return DeleteCollection(Соединение, Коллекция, База);
+    Return DeleteCollection(Соединение, Коллекция, База);
 EndFunction
 
 Function ВставитьДокументы(Val Соединение, Val Коллекция, Val Значения, Val База = Undefined, Val Параметры = Undefined) Export
-	Return InsertDocuments(Соединение, Коллекция, Значения, База, Параметры);
+    Return InsertDocuments(Соединение, Коллекция, Значения, База, Параметры);
 EndFunction
 
 Function ОбновитьДокументы(Val Соединение, Val Коллекция, Val Обновления, Val База = Undefined, Val Параметры = Undefined) Export
-	Return UpdateDocuments(Соединение, Коллекция, Обновления, База, Параметры);
+    Return UpdateDocuments(Соединение, Коллекция, Обновления, База, Параметры);
 EndFunction
 
 Function ПолучитьДокументы(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
-	Return GetDocuments(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
+    Return GetDocuments(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
 EndFunction
 
 Function УдалитьДокументы(Val Соединение, Val Коллекция, Val Удаления, Val База = Undefined, Val Параметры = Undefined) Export
-	Return DeleteDocuments(Соединение, Коллекция, Удаления, База, Параметры);
+    Return DeleteDocuments(Соединение, Коллекция, Удаления, База, Параметры);
 EndFunction
 
 Function ПолучитьКурсор(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
-	Return GetCursor(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
+    Return GetCursor(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
 EndFunction
 
 Function ПолучитьПакетДокументов(Val Соединение, Val Коллекция, Val IDКурсора, Val База = Undefined, Val РазмерПакета = Undefined, Val Ожидание = Undefined) Export
-	Return GetDocumentBatch(Соединение, Коллекция, IDКурсора, База, РазмерПакета, Ожидание);
+    Return GetDocumentBatch(Соединение, Коллекция, IDКурсора, База, РазмерПакета, Ожидание);
 EndFunction
 
 Function ПолучитьСтруктуруОбновленияДокументов(Val Фильтр, Val Данные, Val ОбновитьВсе = True, Val Вставлять = False, Val Сопоставление = Undefined) Export
-	Return GetDocumentUpdateStructure(Фильтр, Данные, ОбновитьВсе, Вставлять, Сопоставление);
+    Return GetDocumentUpdateStructure(Фильтр, Данные, ОбновитьВсе, Вставлять, Сопоставление);
 EndFunction
 
 Function ПолучитьСтруктуруУдаленияДокументов(Val Фильтр, Val Количество = 0, Сопоставление = Undefined) Export
-	Return GetDocumentDeletionStructure(Фильтр, Количество, Сопоставление);
+    Return GetDocumentDeletionStructure(Фильтр, Количество, Сопоставление);
 EndFunction
 
 Function СоздатьПользователя(Val Соединение, Val Имя, Val РолиПользователя, Val База = Undefined, Val Пароль = Undefined, Val Параметры = Undefined) Export
-	Return CreateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
+    Return CreateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
 EndFunction
 
 Function ИзменитьПользователя(Val Соединение, Val Имя, Val РолиПользователя = Undefined, Val База = Undefined, Val Пароль = Undefined, Val Параметры = Undefined) Export
-	Return UpdateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
+    Return UpdateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
 EndFunction
 
 Function ПолучитьПользователей(Val Соединение, Val Пользователи, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривилегии = False) Export
-	Return GetUsers(Соединение, Пользователи, База, ПолучатьПароль, ПолучатьПривилегии);
+    Return GetUsers(Соединение, Пользователи, База, ПолучатьПароль, ПолучатьПривилегии);
 EndFunction
 
 Function ПолучитьПользователейБазы(Val Соединение, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривилегии = False) Export
-	Return GetDatabaseUsers(Соединение, База, ПолучатьПароль, ПолучатьПривилегии);
+    Return GetDatabaseUsers(Соединение, База, ПолучатьПароль, ПолучатьПривилегии);
 EndFunction
 
 Function УдалитьПользователя(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
-	Return DeleteUser(Соединение, Имя, База, Параметры);
+    Return DeleteUser(Соединение, Имя, База, Параметры);
 EndFunction
 
 Function СоздатьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривилегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
-	Return CreateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
+    Return CreateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
 EndFunction
 
 Function ИзменитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривилегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
-	Return UpdateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
+    Return UpdateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
 EndFunction
 
 Function ПолучитьРоли(Val Соединение, Val МассивРолей, Val База = Undefined, Val ПолучатьПривилегии = False) Export
-	Return GetRoles(Соединение, МассивРолей, База, ПолучатьПривилегии);
+    Return GetRoles(Соединение, МассивРолей, База, ПолучатьПривилегии);
 EndFunction
 
 Function УдалитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
-	Return DeleteRole(Соединение, Имя, База, Параметры);
+    Return DeleteRole(Соединение, Имя, База, Параметры);
 EndFunction
 
 Function НазначитьРоли(Val Соединение, Val Пользователь, Val МассивРолей, Val База = Undefined, Val Параметры = Undefined) Export
-	Return GrantRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
+    Return GrantRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
 EndFunction
 
 Function СнятьРоли(Val Соединение, Val Пользователь, Val МассивРолей, Val База = Undefined, Val Параметры = Undefined) Export
-	Return RevokeRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
+    Return RevokeRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
 EndFunction
 
 Function ПолучитьСтруктуруПривилегииРоли(Val Ресурс, Val МассивДействий) Export
-	Return GetRolePrivilegeStructure(Ресурс, МассивДействий);
+    Return GetRolePrivilegeStructure(Ресурс, МассивДействий);
 EndFunction
 
 #EndRegion

@@ -331,8 +331,8 @@
 // Удаляет объект с облачного диска
 //
 // Параметры:
-//  Токен        - Строка - Токен                                        - token
-//  Путь         - Строка - Путь к объекту удаления                      - path
+//  Токен        - Строка - Токен                                         - token
+//  Путь         - Строка - Путь к объекту удаления                       - path
 //  БезВозвратно - Строка - Удалить объект без возможности восстановления - permanently
 //
 // Возвращаемое значение:
@@ -488,8 +488,8 @@
 // Восстанавливает состояние объекта к необходимой версии (ревизии)
 //
 // Параметры:
-//  Токен  - Строка - Токен                                 - token
-//  Путь   - Строка - Путь к объекту                        - path
+//  Токен  - Строка - Токен                                  - token
+//  Путь   - Строка - Путь к объекту                         - path
 //  Версия - Строка - ID версии (ревизии) для восстановления - rev
 //
 // Возвращаемое значение:
@@ -671,10 +671,10 @@
 // Предоставляет стороннии пользователям доступ к каталогу
 //
 // Параметры:
-//  Токен          - Строка - Токен                                                            - token
-//  IDПапки        - Строка - ID публичного каталога (shared folder ID)                        - folder
-//  АдресаПочты    - Строка, Массив Из Строка - Список адресов почты добавляемых пользователей - emails
-//  ТолькоПросмотр - Булево - Запрещает редактирование файла для стороннего пользователя       - readonly
+//  Токен          - Строка                   - Токен                                                      - token
+//  IDПапки        - Строка                   - ID публичного каталога (shared folder ID)                  - folder
+//  АдресаПочты    - Строка, Массив Из Строка - Список адресов почты добавляемых пользователей             - emails
+//  ТолькоПросмотр - Булево                   - Запрещает редактирование файла для стороннего пользователя - readonly
 //
 // Возвращаемое значение:
 //  Неопределено - пустой ответ
@@ -741,8 +741,8 @@
 // Запрещает доступ к файлу для внешних пользователей
 //
 // Параметры:
-//  Токен    - Строка - Токен                                       - token
-//  IDФайла  - Строка - ID файла, к которому предоставляется доступ - fileid
+//  Токен   - Строка - Токен                                       - token
+//  IDФайла - Строка - ID файла, к которому предоставляется доступ - fileid
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
@@ -994,115 +994,115 @@
 #Region Alternate
 
 Function GetAuthorizationLink(Val AppKey) Export
-	Return ПолучитьСсылкуАвторизации(AppKey);
+    Return ПолучитьСсылкуАвторизации(AppKey);
 EndFunction
 
 Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
-	Return ПолучитьТокен(AppKey, AppSecret, Code);
+    Return ПолучитьТокен(AppKey, AppSecret, Code);
 EndFunction
 
 Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(AppKey, AppSecret, RefreshToken);
+    Return ОбновитьТокен(AppKey, AppSecret, RefreshToken);
 EndFunction
 
 Function GetAccountInformation(Val Token, Val Account = "") Export
-	Return ПолучитьИнформациюОбАккаунте(Token, Account);
+    Return ПолучитьИнформациюОбАккаунте(Token, Account);
 EndFunction
 
 Function GetSpaceUsageData(Val Token) Export
-	Return ПолучитьДанныеИспользованияПространства(Token);
+    Return ПолучитьДанныеИспользованияПространства(Token);
 EndFunction
 
 Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export
-	Return ПолучитьИнформациюОбОбъекте(Token, Path, Detailed);
+    Return ПолучитьИнформациюОбОбъекте(Token, Path, Detailed);
 EndFunction
 
 Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export
-	Return ПолучитьСписокФайловПапки(Token, Path, Detailed, Cursor);
+    Return ПолучитьСписокФайловПапки(Token, Path, Detailed, Cursor);
 EndFunction
 
 Function GetPreview(Val Token, Val Path) Export
-	Return ПолучитьПревью(Token, Path);
+    Return ПолучитьПревью(Token, Path);
 EndFunction
 
 Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
-	Return ЗагрузитьФайл(Token, File, Path, Overwrite);
+    Return ЗагрузитьФайл(Token, File, Path, Overwrite);
 EndFunction
 
 Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export
-	Return ЗагрузитьФайлПоURL(Token, FileURL, Path);
+    Return ЗагрузитьФайлПоURL(Token, FileURL, Path);
 EndFunction
 
 Function GetUploadStatusByURL(Val Token, Val JobID) Export
-	Return ПолучитьСтатусЗагрузкиПоURL(Token, JobID);
+    Return ПолучитьСтатусЗагрузкиПоURL(Token, JobID);
 EndFunction
 
 Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export
-	Return УдалитьОбъект(Token, Path, Irrecoverable);
+    Return УдалитьОбъект(Token, Path, Irrecoverable);
 EndFunction
 
 Function CopyObject(Val Token, Val From, Val Target) Export
-	Return КопироватьОбъект(Token, From, Target);
+    Return КопироватьОбъект(Token, From, Target);
 EndFunction
 
 Function MoveObject(Val Token, Val From, Val Target) Export
-	Return ПереместитьОбъект(Token, From, Target);
+    Return ПереместитьОбъект(Token, From, Target);
 EndFunction
 
 Function CreateFolder(Val Token, Val Path) Export
-	Return СоздатьПапку(Token, Path);
+    Return СоздатьПапку(Token, Path);
 EndFunction
 
 Function DownloadFile(Val Token, Val Path) Export
-	Return СкачатьФайл(Token, Path);
+    Return СкачатьФайл(Token, Path);
 EndFunction
 
 Function DownloadFolder(Val Token, Val Path) Export
-	Return СкачатьПапку(Token, Path);
+    Return СкачатьПапку(Token, Path);
 EndFunction
 
 Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export
-	Return ПолучитьСписокВерсийОбъекта(Token, Path, Count);
+    Return ПолучитьСписокВерсийОбъекта(Token, Path, Count);
 EndFunction
 
 Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export
-	Return ВосстановитьОбъектКВерсии(Token, Path, Version);
+    Return ВосстановитьОбъектКВерсии(Token, Path, Version);
 EndFunction
 
 Function GetTagList(Val Token, Val Paths) Export
-	Return ПолучитьСписокТегов(Token, Paths);
+    Return ПолучитьСписокТегов(Token, Paths);
 EndFunction
 
 Function AddTag(Val Token, Val Path, Val Tag) Export
-	Return ДобавитьТег(Token, Path, Tag);
+    Return ДобавитьТег(Token, Path, Tag);
 EndFunction
 
 Function DeleteTag(Val Token, Val Path, Val Tag) Export
-	Return УдалитьТег(Token, Path, Tag);
+    Return УдалитьТег(Token, Path, Tag);
 EndFunction
 
 Function PublishFolder(Val Token, Val Path) Export
-	Return ОпубликоватьПапку(Token, Path);
+    Return ОпубликоватьПапку(Token, Path);
 EndFunction
 
 Function CancelFolderPublication(Val Token, Val FolderID) Export
-	Return ОтменитьПубликациюПапки(Token, FolderID);
+    Return ОтменитьПубликациюПапки(Token, FolderID);
 EndFunction
 
 Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export
-	Return ДобавитьПользователейКФайлу(Token, FileID, EmailAddresses, ViewOnly);
+    Return ДобавитьПользователейКФайлу(Token, FileID, EmailAddresses, ViewOnly);
 EndFunction
 
 Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewOnly = True) Export
-	Return ДобавитьПользователейКПапке(Token, FolderID, EmailAddresses, ViewOnly);
+    Return ДобавитьПользователейКПапке(Token, FolderID, EmailAddresses, ViewOnly);
 EndFunction
 
 Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export
-	Return ПолучитьСтатусАсинхронногоИзменения(Token, JobID);
+    Return ПолучитьСтатусАсинхронногоИзменения(Token, JobID);
 EndFunction
 
 Function CancelFilePublication(Val Token, Val FileID) Export
-	Return ОтменитьПубликациюФайла(Token, FileID);
+    Return ОтменитьПубликациюФайла(Token, FileID);
 EndFunction
 
 #EndRegion

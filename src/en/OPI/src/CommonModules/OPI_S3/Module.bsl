@@ -55,11 +55,11 @@
 // Returns the basic data for request in structured form
 //
 // Parameters:
-// URL - String - URL: domain for common methods or full URL with parameters for direct request sending - url
-// AccessKey - String - Access key for authorization - access
-// SecretKey - String - Secret key for authorization - secret
-// Region - String - Service region - region
-// Service - String - Type of service, if different from s3 - service
+// URL       - String - URL: domain for common methods or full URL with parameters for direct request sending - url
+// AccessKey - String - Access key for authorization                                                          - access
+// SecretKey - String - Secret key for authorization                                                          - secret
+// Region    - String - Service region                                                                        - region
+// Service   - String - Type of service, if different from s3                                                 - service
 //
 // Returns:
 // Structure Of KeyAndValue - Basic request data structure
@@ -82,10 +82,10 @@ EndFunction
 // Sends a simple http request without a body
 //
 // Parameters:
-// Method - String - HTTP method - method
-// BasicData - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
-// ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Method         - String                   - HTTP method                                                   - method
+// BasicData      - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
+// ExpectedBinary - Boolean                  - Disables an attempt to convert the response to JSON           - binary
+// Headers        - Map Of KeyAndValue       - Additional request headers, if necessary                      - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -103,11 +103,11 @@ EndFunction
 // Send http request with body
 //
 // Parameters:
-// Method - String - HTTP method - method
-// BasicData - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
-// Body - String, BinaryData - Binary data or file of request body data - body
-// ExpectedBinary - Boolean - Disables an attempt to convert the response to JSON - binary
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Method         - String                   - HTTP method                                                   - method
+// BasicData      - Structure Of KeyAndValue - Basic request data (with full URL). See GetBasicDataStructure - basic
+// Body           - String, BinaryData       - Binary data or file of request body data                      - body
+// ExpectedBinary - Boolean                  - Disables an attempt to convert the response to JSON           - binary
+// Headers        - Map Of KeyAndValue       - Additional request headers, if necessary                      - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -133,10 +133,10 @@ EndFunction
 // Method at AWS documentation: [CreateBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -154,10 +154,10 @@ EndFunction
 // Method at AWS documentation: [DeleteBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -175,11 +175,11 @@ EndFunction
 // Method at AWS documentation: [HeadBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// AccountID - String - Account ID to verify that hes the bucket owner - account
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// AccountID - String                   - Account ID to verify that hes the bucket owner          - account
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -209,11 +209,11 @@ EndFunction
 // Method at AWS documentation: [PutBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// XmlConfig - String - XML string or file of encryption configuration - conf
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// XmlConfig - String                   - XML string or file of encryption configuration          - conf
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -247,10 +247,10 @@ EndFunction
 // Method at AWS documentation: [GetBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -281,10 +281,10 @@ EndFunction
 // Method at AWS documentation: [DeleteBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -316,11 +316,11 @@ EndFunction
 // Method at AWS documentation: [PutBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Tags - Structure Of KeyAndValue - Set of tags (key and value) - tagset
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Tags      - Structure Of KeyAndValue - Set of tags (key and value)                             - tagset
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -355,10 +355,10 @@ EndFunction
 // Method at AWS documentation: [GetBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -388,10 +388,10 @@ EndFunction
 // Method at AWS documentation: [DeleteBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -421,12 +421,12 @@ EndFunction
 // Method at AWS documentation: [PutBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Status - Boolean - Enable and disable versioning, if necessary - status
-// MFADelete - Boolean - Enable and disable MFA deletion, if necessary - mfad
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Status    - Boolean                  - Enable and disable versioning, if necessary             - status
+// MFADelete - Boolean                  - Enable and disable MFA deletion, if necessary           - mfad
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -462,10 +462,10 @@ EndFunction
 // Method at AWS documentation: [GetBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
 //
 // Parameters:
-// Name - String - Bucket name - name
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Name      - String                   - Bucket name                                             - name
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -496,10 +496,10 @@ EndFunction
 //
 // Parameters:
 // BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Prefix - String - Filtering by prefix, if necessary - prefix
-// Region - String - Selection by bucket region, if necessary - region
-// PageToken - String - Page token if pagination is used - ctoken
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// Prefix    - String                   - Filtering by prefix, if necessary             - prefix
+// Region    - String                   - Selection by bucket region, if necessary      - region
+// PageToken - String                   - Page token if pagination is used              - ctoken
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -545,12 +545,12 @@ EndFunction
 // Chunk upload is used for large files. Default `ChunkSize` - 20971520 bytes (20 MB)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// Entity - String, BinaryData - File path or binary data of the object - data
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// Entity    - String, BinaryData       - File path or binary data of the object                  - data
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -608,12 +608,12 @@ EndFunction
 // Using this method for large files may cause errors
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// Entity - String, BinaryData - File path or binary data of the object - data
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// Entity    - String, BinaryData       - File path or binary data of the object                  - data
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -643,11 +643,11 @@ EndFunction
 // Using multipart upload for files < 5 MB or when the size of a single chunk is < 5 MB will result in an error
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -677,13 +677,13 @@ EndFunction
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// UploadID - String - Upload ID. See InitPartsUpload - upload
-// PartNumber - Number, String - Number of the object part from 1 to 10000 - part
-// Data - BinaryData, String - Part content for uploading - content
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name       - String                   - Name of the object in the bucket                        - name
+// Bucket     - String                   - Name of the bucket to put the object                    - bucket
+// BasicData  - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// UploadID   - String                   - Upload ID. See InitPartsUpload                          - upload
+// PartNumber - Number, String           - Number of the object part from 1 to 10000               - part
+// Data       - BinaryData, String       - Part content for uploading                              - content
+// Directory  - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -721,13 +721,13 @@ EndFunction
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// UploadID - String - Upload ID. See InitPartsUpload - upload
-// TagsArray - Array Of String - An array of tags (Etag) from the uploads responses of each part - tags
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                                - name
+// Bucket    - String                   - Name of the bucket to put the object                            - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure                   - basic
+// UploadID  - String                   - Upload ID. See InitPartsUpload                                  - upload
+// TagsArray - Array Of String          - An array of tags (Etag) from the uploads responses of each part - tags
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                        - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL         - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -776,12 +776,12 @@ EndFunction
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// UploadID - String - Upload ID. See InitPartsUpload - upload
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// UploadID  - String                   - Upload ID. See InitPartsUpload                          - upload
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -812,12 +812,12 @@ EndFunction
 // Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket in which the object is stored - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Version - String - Token for receiving a specific version of an object - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket in which the object is stored        - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Version   - String                   - Token for receiving a specific version of an object     - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -848,13 +848,13 @@ EndFunction
 // Chunk upload is used for large files. Default `ChunkSize` - 20971520 bytes (20 MB)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket in which the object is stored - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Version - String - Token for receiving a specific version of an object - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// SavePath - String - Path to directly write a file to disk - out
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket in which the object is stored        - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Version   - String                   - Token for receiving a specific version of an object     - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// SavePath  - String                   - Path to directly write a file to disk                   - out
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // BinaryData, String - object content or file path, if a save path is specified
@@ -909,12 +909,12 @@ EndFunction
 // Method at AWS documentation: [DeleteObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Version - String - Token for deleting a specific version of an object - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Version   - String                   - Token for deleting a specific version of an object      - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -955,13 +955,13 @@ EndFunction
 // Method at AWS documentation: [CopyObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
 //
 // Parameters:
-// SourcePath - String - Path (name) in the source bucket - sname
-// DestinationBucket - String - Source bucket name - sbucket
-// DestinationPath - String - Path (name) in the destination bucket - name
-// SourceBucket - String - Destination bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// SourcePath        - String                   - Path (name) in the source bucket                        - sname
+// DestinationBucket - String                   - Source bucket name                                      - sbucket
+// DestinationPath   - String                   - Path (name) in the destination bucket                   - name
+// SourceBucket      - String                   - Destination bucket name                                 - bucket
+// BasicData         - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Headers           - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory         - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -999,12 +999,12 @@ EndFunction
 // Method at AWS documentation: [PutObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
 //
 // Parameters:
-// Name - String - Object name - name
-// Bucket - String - Bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Tags - Structure Of KeyAndValue - Set of tags (key and value) - tagset
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Object name                                             - name
+// Bucket    - String                   - Bucket name                                             - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Tags      - Structure Of KeyAndValue - Set of tags (key and value)                             - tagset
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1042,12 +1042,12 @@ EndFunction
 // Method at AWS documentation: [GetObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
 //
 // Parameters:
-// Name - String - Object name - name
-// Bucket - String - Bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Version - String - Token for retrieving data of a specific version of an object - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Object name                                                  - name
+// Bucket    - String                   - Bucket name                                                  - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure                - basic
+// Version   - String                   - Token for retrieving data of a specific version of an object - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                     - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL      - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1086,12 +1086,12 @@ EndFunction
 // Method at AWS documentation: [DeleteObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html)
 //
 // Parameters:
-// Name - String - Object name - name
-// Bucket - String - Bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Version - String - Token for deleting data of a specific version of an object - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Object name                                                - name
+// Bucket    - String                   - Bucket name                                                - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure              - basic
+// Version   - String                   - Token for deleting data of a specific version of an object - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                   - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL    - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1130,12 +1130,12 @@ EndFunction
 // Method at AWS documentation: [ListObjectsV2](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
 //
 // Parameters:
-// Bucket - String - Bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Prefix - String - Filtering by prefix, if necessary - prefix
-// PageToken - String - Page token if pagination is used - ctoken
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Bucket    - String                   - Bucket name                                             - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Prefix    - String                   - Filtering by prefix, if necessary                       - prefix
+// PageToken - String                   - Page token if pagination is used                        - ctoken
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1175,12 +1175,12 @@ EndFunction
 // Method at AWS documentation: [ListObjectVersions](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html)
 //
 // Parameters:
-// Bucket - String - Bucket name - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Prefix - String - Filtering by prefix, if necessary - prefix
-// Version - String - Version ID for the beginning of the list - ver
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Bucket    - String                   - Bucket name                                             - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Prefix    - String                   - Filtering by prefix, if necessary                       - prefix
+// Version   - String                   - Version ID for the beginning of the list                - ver
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // Structure Of KeyAndValue - serialized JSON response from storage
@@ -1221,12 +1221,12 @@ EndFunction
 // Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Expire    - String, Number           - Link lifetime in seconds. 604800 max.                   - expires
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // String - URL for object retrieving
@@ -1257,12 +1257,12 @@ EndFunction
 // Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
 //
 // Parameters:
-// Name - String - Name of the object in the bucket - name
-// Bucket - String - Name of the bucket to put the object - bucket
-// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure - basic
-// Expire - String, Number - Link lifetime in seconds. 604800 max. - expires
-// Headers - Map Of KeyAndValue - Additional request headers, if necessary - headers
-// Directory - Boolean - True > Path style URL, False > Virtual hosted style URL - dir
+// Name      - String                   - Name of the object in the bucket                        - name
+// Bucket    - String                   - Name of the bucket to put the object                    - bucket
+// BasicData - Structure Of KeyAndValue - Basic request data. See GetBasicDataStructure           - basic
+// Expire    - String, Number           - Link lifetime in seconds. 604800 max.                   - expires
+// Headers   - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
+// Directory - Boolean                  - True > Path style URL, False > Virtual hosted style URL - dir
 //
 // Returns:
 // String - URL for object retrieving

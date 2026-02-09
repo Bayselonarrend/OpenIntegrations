@@ -289,7 +289,7 @@
 // или неявного, при передаче настроек
 //
 // Параметры:
-//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными   - trust
+//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными  - trust
 //  ПутьКСертификату              - Строка - Путь к корневому PEM файлу сертификата, если его нет в системном хранилище - cert
 //
 // Возвращаемое значение:
@@ -422,11 +422,11 @@
 // Инициализирует новый серверный поток
 //
 // Параметры:
-//  Соединение - Произвольный               - Объект соединения           - conn
-//  Сервис     - Строка                     - Имя сервиса                 - service
-//  Метод      - Строка                     - Имя метода                  - method
-//  Запрос     - Структура Из КлючИЗначение - Данные клиентского запроса  - data
-//  Таймаут    - Число                      - Таймаут (в мс)              - tout
+//  Соединение - Произвольный               - Объект соединения          - conn
+//  Сервис     - Строка                     - Имя сервиса                - service
+//  Метод      - Строка                     - Имя метода                 - method
+//  Запрос     - Структура Из КлючИЗначение - Данные клиентского запроса - data
+//  Таймаут    - Число                      - Таймаут (в мс)             - tout
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -464,10 +464,10 @@
 // Инициализирует новый двунаправленный поток
 //
 // Параметры:
-//  Соединение - Произвольный - Объект соединения  - conn
-//  Сервис     - Строка       - Имя сервиса        - service
-//  Метод      - Строка       - Имя метода         - method
-//  Таймаут    - Число        - Таймаут (в мс)     - tout
+//  Соединение - Произвольный - Объект соединения - conn
+//  Сервис     - Строка       - Имя сервиса       - service
+//  Метод      - Строка       - Имя метода        - method
+//  Таймаут    - Число        - Таймаут (в мс)    - tout
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -702,12 +702,12 @@
 // Инициализирует клиентский поток, передает массив сообщений и получает финальный ответ
 //
 // Параметры:
-//  Соединение     - Произвольный               - Существующее соединение или параметры соединения               - conn
-//  Сервис         - Строка                     - Имя сервиса                                                    - service
-//  Метод          - Строка                     - Имя метода                                                     - method
-//  Запросы        - Массив Из Структура        - Массив запросов или одиночный запрос                           - data
-//  Таймаут        - Число                      - Таймаут выполнения отдельной операции (в мс)                   - tout
-//  Tls            - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls       - tls
+//  Соединение - Произвольный               - Существующее соединение или параметры соединения         - conn
+//  Сервис     - Строка                     - Имя сервиса                                              - service
+//  Метод      - Строка                     - Имя метода                                               - method
+//  Запросы    - Массив Из Структура        - Массив запросов или одиночный запрос                     - data
+//  Таймаут    - Число                      - Таймаут выполнения отдельной операции (в мс)             - tout
+//  Tls        - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls - tls
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -786,13 +786,13 @@
 // ПорядокОбмена: `[{Сообщение1}, {Сообщение2}, null, {Сообщение3}, ... {СообщениеN}, null, null, null, null, null]`
 //
 // Параметры:
-//  Соединение          - Произвольный               - Существующее соединение или параметры соединения                         - conn
-//  Сервис              - Строка                     - Имя сервиса                                                              - service
-//  Метод               - Строка                     - Имя метода                                                               - method
-//  ПорядокОбмена       - Массив Из Произвольный     - Массив из данных запросов и Неопределено там, где необходимо получение   - exch
-//  Таймаут             - Число                      - Таймаут выполнения отдельной операции (в мс)                             - tout
-//  Tls                 - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls                 - tls
-//  ПродолжатьПолучение - Булево                     - Продолжать получение после обработки порядка обмена                      - cnt
+//  Соединение          - Произвольный               - Существующее соединение или параметры соединения                       - conn
+//  Сервис              - Строка                     - Имя сервиса                                                            - service
+//  Метод               - Строка                     - Имя метода                                                             - method
+//  ПорядокОбмена       - Массив Из Произвольный     - Массив из данных запросов и Неопределено там, где необходимо получение - exch
+//  Таймаут             - Число                      - Таймаут выполнения отдельной операции (в мс)                           - tout
+//  Tls                 - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls               - tls
+//  ПродолжатьПолучение - Булево                     - Продолжать получение после обработки порядка обмена                    - cnt
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -1069,83 +1069,83 @@
 #Region Alternate
 
 Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
-	Return ОткрытьСоединение(Parameters, Tls);
+    Return ОткрытьСоединение(Parameters, Tls);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function SetMetadata(Val Connection, Val Metadata) Export
-	Return УстановитьМетаданные(Connection, Metadata);
+    Return УстановитьМетаданные(Connection, Metadata);
 EndFunction
 
 Function ExecuteMethod(Val Connection, Val Service, Val Method, Val Request = Undefined, Val Timeout = 10000, Val Tls = Undefined) Export
-	Return ВызватьМетод(Connection, Service, Method, Request, Timeout, Tls);
+    Return ВызватьМетод(Connection, Service, Method, Request, Timeout, Tls);
 EndFunction
 
 Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
+    Return ЭтоКоннектор(Value);
 EndFunction
 
 Function GetConnectionParameters(Val Address, Val Proto = Undefined, Val Metadata = Undefined) Export
-	Return ПолучитьПараметрыСоединения(Address, Proto, Metadata);
+    Return ПолучитьПараметрыСоединения(Address, Proto, Metadata);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
 EndFunction
 
 Function GetServiceList(Val Connection, Val Tls = Undefined) Export
-	Return ПолучитьСписокСервисов(Connection, Tls);
+    Return ПолучитьСписокСервисов(Connection, Tls);
 EndFunction
 
 Function GetMethodList(Val Connection, Val Service, Val Tls = Undefined) Export
-	Return ПолучитьСписокМетодов(Connection, Service, Tls);
+    Return ПолучитьСписокМетодов(Connection, Service, Tls);
 EndFunction
 
 Function GetMethod(Val Connection, Val Service, Val Method, Val Tls = Undefined) Export
-	Return ПолучитьМетод(Connection, Service, Method, Tls);
+    Return ПолучитьМетод(Connection, Service, Method, Tls);
 EndFunction
 
 Function InitializeServerStream(Val Connection, Val Service, Val Method, Val Request, Val Timeout = 10000) Export
-	Return ИнициализироватьСерверныйПоток(Connection, Service, Method, Request, Timeout);
+    Return ИнициализироватьСерверныйПоток(Connection, Service, Method, Request, Timeout);
 EndFunction
 
 Function InitializeClientStream(Val Connection, Val Service, Val Method, Val Timeout = 10000) Export
-	Return ИнициализироватьКлиентскийПоток(Connection, Service, Method, Timeout);
+    Return ИнициализироватьКлиентскийПоток(Connection, Service, Method, Timeout);
 EndFunction
 
 Function InitializeBidirectionalStream(Val Connection, Val Service, Val Method, Val Timeout = 10000) Export
-	Return ИнициализироватьДвунаправленныйПоток(Connection, Service, Method, Timeout);
+    Return ИнициализироватьДвунаправленныйПоток(Connection, Service, Method, Timeout);
 EndFunction
 
 Function SendMessage(Val Connection, Val StreamID, Val Request) Export
-	Return ОтправитьСообщение(Connection, StreamID, Request);
+    Return ОтправитьСообщение(Connection, StreamID, Request);
 EndFunction
 
 Function GetMessage(Val Connection, Val StreamID) Export
-	Return ПолучитьСообщение(Connection, StreamID);
+    Return ПолучитьСообщение(Connection, StreamID);
 EndFunction
 
 Function CompleteSend(Val Connection, Val StreamID) Export
-	Return ЗавершитьОтправку(Connection, StreamID);
+    Return ЗавершитьОтправку(Connection, StreamID);
 EndFunction
 
 Function CloseStream(Val Connection, Val StreamID) Export
-	Return ЗакрытьПоток(Connection, StreamID);
+    Return ЗакрытьПоток(Connection, StreamID);
 EndFunction
 
 Function ProcessServerStream(Val Connection, Val Service, Val Method, Val Request, Val Timeout = 10000, Val Tls = Undefined, Val MessageCount = Undefined) Export
-	Return ОбработатьСерверныйПоток(Connection, Service, Method, Request, Timeout, Tls, MessageCount);
+    Return ОбработатьСерверныйПоток(Connection, Service, Method, Request, Timeout, Tls, MessageCount);
 EndFunction
 
 Function ProcessClientStream(Val Connection, Val Service, Val Method, Val Requests, Val Timeout = 10000, Val Tls = Undefined) Export
-	Return ОбработатьКлиентскийПоток(Connection, Service, Method, Requests, Timeout, Tls);
+    Return ОбработатьКлиентскийПоток(Connection, Service, Method, Requests, Timeout, Tls);
 EndFunction
 
 Function ProcessBidirectionalStream(Val Connection, Val Service, Val Method, Val ExchangeOrder, Val Timeout = 10000, Val Tls = Undefined, Val ContinueReceiving = True) Export
-	Return ОбработатьДвунаправленныйПоток(Connection, Service, Method, ExchangeOrder, Timeout, Tls, ContinueReceiving);
+    Return ОбработатьДвунаправленныйПоток(Connection, Service, Method, ExchangeOrder, Timeout, Tls, ContinueReceiving);
 EndFunction
 
 #EndRegion

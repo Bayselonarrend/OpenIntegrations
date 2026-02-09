@@ -58,7 +58,7 @@
 // Method at API documentation: [Version](@github.com/ollama/ollama/blob/main/docs/api.md#version)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -82,11 +82,11 @@ EndFunction
 // Method at API documentation: [Generate a completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Question - String - Request text - prompt
+// URL                  - String                   - Ollama server URL                                        - url
+// Model                - String                   - Models name                                              - model
+// Question             - String                   - Request text                                             - prompt
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                 - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -117,11 +117,11 @@ EndFunction
 // Method at API documentation: [Generate a chat completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Messages - Array of Structure - Messages log. See GetContextMessageStructure - msgs
+// URL                  - String                   - Ollama server URL                                        - url
+// Model                - String                   - Models name                                              - model
+// Messages             - Array of Structure       - Messages log. See GetContextMessageStructure             - msgs
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                 - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -151,11 +151,11 @@ EndFunction
 // Method at API documentation: [Generate Embeddings](@github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Question - Array Of String - String or array of request strings - input
+// URL                  - String                   - Ollama server URL                                          - url
+// Model                - String                   - Models name                                                - model
+// Question             - Array Of String          - String or array of request strings                         - input
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetEmbeddingsParameterStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                   - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -265,10 +265,10 @@ EndFunction
 // Gets the message structure for a list of request messages in context
 //
 // Parameters:
-// Role - String - Message source: system, user, assistant, tool - role
-// Text - String - Message text - text
+// Role     - String          - Message source: system, user, assistant, tool                        - role
+// Text     - String          - Message text                                                         - text
 // Pictures - Array Of String - List of pictures in Base64 format (for multimodal models like llava) - images
-// Tools - Array Of String - List of tools in JSON format that the model should use - tools
+// Tools    - Array Of String - List of tools in JSON format that the model should use               - tools
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -296,7 +296,7 @@ EndFunction
 // Method at API documentation: [List Local Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-local-models)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -320,7 +320,7 @@ EndFunction
 // Method at API documentation: [List Running Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-running-models)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -344,9 +344,9 @@ EndFunction
 // Method at API documentation: [Show Model Information](@github.com/ollama/ollama/blob/main/docs/api.md#show-model-information)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Detailed - Boolean - Return full model information - verbose
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
+// Detailed          - Boolean            - Return full model information            - verbose
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -375,10 +375,10 @@ EndFunction
 // Method at API documentation: [Create a Model](@github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Settings - Structure Of KeyAndValue - Model settings. See GetModelSettingsStructure - settings
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String                   - Ollama server URL                             - url
+// Model             - String                   - Models name                                   - model
+// Settings          - Structure Of KeyAndValue - Model settings. See GetModelSettingsStructure - settings
+// AdditionalHeaders - Map Of KeyAndValue       - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -407,9 +407,9 @@ EndFunction
 // Method at API documentation: [Copy a Model](@github.com/ollama/ollama/blob/main/docs/api.md#copy-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Name of existing model - model
-// Name - String - The name of the new model - name
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Name of existing model                   - model
+// Name              - String             - The name of the new model                - name
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -439,8 +439,8 @@ EndFunction
 // Method at API documentation: [Delete a Model](@github.com/ollama/ollama/blob/main/docs/api.md#delete-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -469,9 +469,9 @@ EndFunction
 // Method at API documentation: [Load a model](@github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Period - Number - Model hold time in seconds - keep
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
+// Period            - Number             - Model hold time in seconds               - keep
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -499,8 +499,8 @@ EndFunction
 // Method at API documentation: [Unload a model](@github.com/ollama/ollama/blob/main/docs/api.md#unload-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -531,10 +531,10 @@ EndFunction
 // Registration on ollama.ai and adding a public key is required.
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Insecure - Boolean - Allows an unsecured connection to the library - insecure
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String             - Ollama server URL                             - url
+// Model             - String             - Models name                                   - model
+// Insecure          - Boolean            - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -563,10 +563,10 @@ EndFunction
 // Method at API documentation: [Pull a Model](@github.com/ollama/ollama/blob/main/docs/api.md#pull-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Insecure - Boolean - Allows an unsecured connection to the library - insecure
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String             - Ollama server URL                             - url
+// Model             - String             - Models name                                   - model
+// Insecure          - Boolean            - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -631,8 +631,8 @@ EndFunction
 // Method at API documentation: [Push a Blob](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-blob)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Data - String, BinaryData - File data or filepath - data
+// URL               - String             - Ollama server URL                        - url
+// Data              - String, BinaryData - File data or filepath                    - data
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -669,8 +669,8 @@ EndFunction
 // Method at API documentation: [Check if a Blob Exists](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// SHA256 - String - SHA256 BLOB digest - digest
+// URL               - String             - Ollama server URL                        - url
+// SHA256            - String             - SHA256 BLOB digest                       - digest
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
