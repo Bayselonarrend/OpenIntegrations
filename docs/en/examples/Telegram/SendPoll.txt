@@ -9,6 +9,20 @@
     AnswersArray.Add("Green");
     AnswersArray.Add("Blue");
 
-    Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chat"     , ChatID);
+    Options.Insert("question" , Question);
+    Options.Insert("options"  , AnswersArray);
+    Options.Insert("anonymous", False);
 
-    Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chat"     , ChannelID);
+    Options.Insert("question" , Question);
+    Options.Insert("options"  , AnswersArray);
+    Options.Insert("anonymous", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);

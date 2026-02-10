@@ -36,7 +36,11 @@ import TabItem from '@theme/TabItem';
 
     Authorization = New Structure(Login, Password);
 
-    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+
+    ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
     Timeout = 10000;

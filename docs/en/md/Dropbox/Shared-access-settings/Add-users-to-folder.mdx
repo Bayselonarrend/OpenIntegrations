@@ -31,7 +31,13 @@ import TabItem from '@theme/TabItem';
     Email  = "h5bk6ft62s@privaterelay.appleid.com";
     Folder = "13163859169"; // shared_folder_id
 
-    Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("folder"  , Folder);
+    Options.Insert("emails"  , Email);
+    Options.Insert("readonly", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
 ```
  
 

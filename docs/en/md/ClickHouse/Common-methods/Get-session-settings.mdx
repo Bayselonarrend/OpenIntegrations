@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Check     = True;
     Timeout   = 120;
 
-    Result = OPI_ClickHouse.GetSessionSettings(SessionID, Check, Timeout);
+    Options = New Structure;
+    Options.Insert("id"     , SessionID);
+    Options.Insert("check"  , Check);
+    Options.Insert("timeout", Timeout);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetSessionSettings", Options);
 ```
  
 

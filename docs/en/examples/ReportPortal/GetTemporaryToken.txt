@@ -2,4 +2,9 @@
     Login    = "superadmin";
     Password = "Rit2...";
 
-    Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetTemporaryToken", Options);

@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Calendar = "f70efec034ef36b040f12b5d8938e54fc399d73cd37b8e765bdd86ebc4a67e4a@group.calendar.google.com";
     Event    = "l6kkhcjgt4n0a3qdonan09tv30";
 
-    Result = OPI_GoogleCalendar.DeleteEvent(Token, Calendar, Event);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("event"   , Event);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteEvent", Options);
 ```
  
 

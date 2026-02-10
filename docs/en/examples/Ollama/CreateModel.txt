@@ -8,4 +8,10 @@
 
     Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
 
-    Result = OPI_Ollama.CreateModel(URL, Model, Settings, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("model"   , Model);
+    Options.Insert("settings", Settings);
+    Options.Insert("headers" , AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CreateModel", Options);

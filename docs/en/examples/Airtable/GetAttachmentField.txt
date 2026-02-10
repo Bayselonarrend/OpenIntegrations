@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetAttachmentField("Attachment");
+    Options = New Structure;
+    Options.Insert("title", "Attachment");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetAttachmentField", Options);

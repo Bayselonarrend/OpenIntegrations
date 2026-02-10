@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     AppSecret = "tk2oewn...";
     Code      = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
 
-    Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
+    Options = New Structure;
+    Options.Insert("appkey"   , AppKey);
+    Options.Insert("appsecret", AppSecret);
+    Options.Insert("code"     , Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetToken", Options);
 ```
  
 

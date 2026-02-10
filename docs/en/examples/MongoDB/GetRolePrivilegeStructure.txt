@@ -6,4 +6,8 @@
     Actions.Add("insert");
     Actions.Add("update");
 
-    Result = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+    Options = New Structure;
+    Options.Insert("res", Resource);
+    Options.Insert("act", Actions);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetRolePrivilegeStructure", Options);

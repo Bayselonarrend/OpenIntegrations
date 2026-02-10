@@ -35,7 +35,13 @@ import TabItem from '@theme/TabItem';
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+    Options = New Structure;
+    Options.Insert("host" , Host);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -46,18 +52,31 @@ import TabItem from '@theme/TabItem';
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        TLSSettings = OPI_FTP.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetWelcomeMessage(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;

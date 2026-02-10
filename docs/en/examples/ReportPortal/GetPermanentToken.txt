@@ -3,4 +3,10 @@
     UserID  = "1";
     KeyName = "test_key";
 
-    Result = OPI_ReportPortal.GetPermanentToken(URL, Token, UserID, KeyName);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+    Options.Insert("user" , UserID);
+    Options.Insert("name" , KeyName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetPermanentToken", Options);

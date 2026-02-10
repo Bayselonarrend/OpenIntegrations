@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetPhoneField("Phone");
+    Options = New Structure;
+    Options.Insert("title", "Phone");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetPhoneField", Options);

@@ -2,9 +2,17 @@
     Directory = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
     Image     = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
 
-    Clear       = False;
-    Description = OPI_GoogleDrive.GetFileDescription(Clear);
+    Clear   = False;
+    Options = New Structure;
+    Options.Insert("empty", Clear);
+
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
 
     Description.Insert("Parent", Directory);
 
-    Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("file" , Image);
+    Options.Insert("props", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);

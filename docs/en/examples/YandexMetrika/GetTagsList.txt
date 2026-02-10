@@ -1,3 +1,6 @@
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
 
-    Result = OPI_YandexMetrika.GetTagsList(Token);
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTagsList", Options);

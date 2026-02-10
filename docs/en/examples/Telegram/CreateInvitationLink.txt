@@ -7,4 +7,11 @@
     Expiration     = CurrentDate + Day;
     UnixExpiration = OPI_Tools.UNIXTime(Expiration);
 
-    Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chat"  , ChannelID);
+    Options.Insert("title" , Title);
+    Options.Insert("expire", Expiration);
+    Options.Insert("limit" , 200);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateInvitationLink", Options);

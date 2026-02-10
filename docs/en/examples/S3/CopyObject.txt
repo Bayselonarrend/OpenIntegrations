@@ -3,7 +3,13 @@
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     SourcePath        = "picture.jpg";
@@ -11,4 +17,12 @@
 
     DestinationPath = "new_picture.jpg";
     SourceBucket    = "w567hjy1";
-    Result = OPI_S3.CopyObject(SourcePath, DestinationBucket, DestinationPath, SourceBucket, BasicData, , Directory);
+    Options = New Structure;
+    Options.Insert("sname"  , SourcePath);
+    Options.Insert("sbucket", DestinationBucket);
+    Options.Insert("name"   , DestinationPath);
+    Options.Insert("bucket" , SourceBucket);
+    Options.Insert("basic"  , BasicData);
+    Options.Insert("dir"    , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CopyObject", Options);

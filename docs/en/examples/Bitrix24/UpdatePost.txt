@@ -8,10 +8,25 @@
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("postid", PostID);
+    Options.Insert("text"  , Text);
+    Options.Insert("files" , Files);
+    Options.Insert("title" , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     PostID = "3324";
 
-    Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("postid", PostID);
+    Options.Insert("text"  , Text);
+    Options.Insert("files" , Files);
+    Options.Insert("title" , Title);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);

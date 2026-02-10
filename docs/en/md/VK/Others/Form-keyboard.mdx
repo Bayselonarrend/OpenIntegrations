@@ -28,7 +28,10 @@ import TabItem from '@theme/TabItem';
     ButtonArray.Add("Button 1");
     ButtonArray.Add("Button 2");
 
-    Result = OPI_VK.FormKeyboard(ButtonArray);
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "FormKeyboard", Options);
 ```
  
 

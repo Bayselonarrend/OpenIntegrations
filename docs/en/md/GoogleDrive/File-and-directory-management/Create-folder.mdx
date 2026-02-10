@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Directory = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
     Name      = "TestFolder";
 
-    Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("title"  , Name);
+    Options.Insert("catalog", Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 ```
  
 

@@ -37,10 +37,20 @@ import TabItem from '@theme/TabItem';
 
     TLS = True;
     Port = 5432;
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -53,11 +63,23 @@ import TabItem from '@theme/TabItem';
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("dbc", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     // Filter, selected fields, limit and sorting
 
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, "test_data", Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , "test_data");
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -89,13 +111,16 @@ import TabItem from '@theme/TabItem';
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Result = OPI_PostgreSQL.GetRecords(Table
-        , Fields
-        , Filters
-        , Sort
-        , Count
-        , ConnectionString
-        , TLSSettings);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("fields", Fields);
+    Options.Insert("filter", Filters);
+    Options.Insert("order" , Sort);
+    Options.Insert("limit" , Count);
+    Options.Insert("dbc"   , ConnectionString);
+    Options.Insert("tls"   , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 ```
  
 

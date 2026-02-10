@@ -7,4 +7,9 @@
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
+    Options = New Structure;
+    Options.Insert("files", ImageArray);
+    Options.Insert("type" , "tweet_image");
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);

@@ -774,6 +774,7 @@ Function GetLibraryDirectory() Export
     PartsArray.Delete(PartsArray.UBound());
     PartsArray.Delete(PartsArray.UBound());
     PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
 
     Path = StrConcat(PartsArray, "/");
 

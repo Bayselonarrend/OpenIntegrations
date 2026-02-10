@@ -1,4 +1,9 @@
-    Host   = "172.33.0.13";
-    Port   = "2222";
-    Login  = "bayselonarrend";
-    Result = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+    Host    = "172.33.0.13";
+    Port    = "2222";
+    Login   = "bayselonarrend";
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsViaAgent", Options);

@@ -3,4 +3,10 @@
     FileID = "f7ey3o4dcncSTDBRC7c3fM6904a4ed1bd";
     Text   = "File caption";
 
-    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("fileid", FileID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendFile", Options);

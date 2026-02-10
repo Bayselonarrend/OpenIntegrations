@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     ClientSecret = "GOCSPX-v--MJyEjtV...";
     RefreshToken = "1//09J8_kLVO7HENCgYIARAAGAkSNwF-L9IrtySthNY3OrNP5Qu...";
 
-    Result = OPI_GoogleCalendar.RefreshToken(ClientID, ClientSecret, RefreshToken);
+    Options = New Structure;
+    Options.Insert("id"     , ClientID);
+    Options.Insert("secret" , ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "RefreshToken", Options);
 ```
  
 

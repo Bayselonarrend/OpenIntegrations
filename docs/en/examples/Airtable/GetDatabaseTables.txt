@@ -1,4 +1,8 @@
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
     Base  = "appJiRrCJhRhnaVAo";
 
-    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("base" , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDatabaseTables", Options);

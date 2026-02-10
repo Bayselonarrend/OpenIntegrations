@@ -2,4 +2,9 @@
     ChatID = "689203963@chat.agent";
     Text   = "New description";
 
-    Result = OPI_VKTeams.SetChatDescription(Token, ChatID, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatDescription", Options);

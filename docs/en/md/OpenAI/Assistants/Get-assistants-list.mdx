@@ -38,7 +38,13 @@ Method at API documentation: [List assistants](https://platform.openai.com/docs/
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");
 
-    Result = OPI_OpenAI.GetAssistantsList(URL, Token, Count, AdditionalParameters);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("token"  , Token);
+    Options.Insert("limit"  , Count);
+    Options.Insert("options", AdditionalParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantsList", Options);
 ```
  
 

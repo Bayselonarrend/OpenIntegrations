@@ -4,4 +4,10 @@
     Option   = "8944";
     Value    = "New variant name";
 
-    Result = OPI_VK.EditProductPropertyVariant(Value, Property, Option, Parameters);
+    Options = New Structure;
+    Options.Insert("value" , Value);
+    Options.Insert("prop"  , Property);
+    Options.Insert("option", Option);
+    Options.Insert("auth"  , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductPropertyVariant", Options);

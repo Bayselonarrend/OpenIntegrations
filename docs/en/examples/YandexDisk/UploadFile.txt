@@ -7,6 +7,18 @@
     TFN = GetTempFileName("png"); // Path
     CopyFile(Image, TFN);
 
-    Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("path"   , Path1);
+    Options.Insert("file"   , Image);
+    Options.Insert("rewrite", True);
 
-    Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("path"   , Path2);
+    Options.Insert("file"   , TFN);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);

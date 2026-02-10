@@ -36,7 +36,12 @@ Method at API documentation: [GET ​​/chats/unblockUser](https://teams.vk.com
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Result = OPI_VKTeams.UnblockChatUser(Token, ChatID, User);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("userid", User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnblockChatUser", Options);
 ```
  
 

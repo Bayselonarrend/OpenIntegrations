@@ -36,8 +36,18 @@ Method at API documentation: [SendAuthorizationCode](https://green-api.com/v3/do
 
     AuthCode = 123456;
 
-    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenMax.SendAuthorizationCode(AccessParameters, AuthCode);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("code"  , AuthCode);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendAuthorizationCode", Options);
 ```
  
 

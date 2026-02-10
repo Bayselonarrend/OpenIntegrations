@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetCheckboxField("Checkbox");
+    Options = New Structure;
+    Options.Insert("title", "Checkbox");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetCheckboxField", Options);

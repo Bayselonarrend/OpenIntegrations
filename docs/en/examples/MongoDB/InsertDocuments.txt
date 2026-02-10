@@ -4,7 +4,13 @@
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "new_collection";
@@ -68,4 +74,10 @@
 
     DocsArray.Add(DocumentStructure);
 
-    Result = OPI_MongoDB.InsertDocuments(Connection, Collection, DocsArray, Base);
+    Options = New Structure;
+    Options.Insert("dbc" , Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("docs", DocsArray);
+    Options.Insert("db"  , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "InsertDocuments", Options);

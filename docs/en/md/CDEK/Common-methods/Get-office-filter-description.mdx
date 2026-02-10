@@ -30,7 +30,9 @@ Field descriptions in the documentation: [List of pickup points](https://api-doc
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_CDEK.GetOfficeFilterDescription();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 ```
  
 

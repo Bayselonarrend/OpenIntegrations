@@ -1,3 +1,6 @@
     Parameters = GetVKParameters();
 
-    Result = OPI_VK.GetAdvertisingCategoryList(Parameters);
+    Options = New Structure;
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetAdvertisingCategoryList", Options);

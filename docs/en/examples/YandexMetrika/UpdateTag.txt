@@ -2,4 +2,9 @@
     TagID = "320569";
     Name  = "New tag title";
 
-    Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("label", TagID);
+    Options.Insert("title", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateTag", Options);

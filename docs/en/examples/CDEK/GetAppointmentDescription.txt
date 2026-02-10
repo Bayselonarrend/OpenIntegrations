@@ -1,1 +1,3 @@
-    Result = OPI_CDEK.GetAppointmentDescription();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);

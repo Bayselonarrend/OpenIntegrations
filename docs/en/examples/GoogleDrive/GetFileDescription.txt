@@ -1,1 +1,3 @@
-    Result = OPI_GoogleDrive.GetFileDescription();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);

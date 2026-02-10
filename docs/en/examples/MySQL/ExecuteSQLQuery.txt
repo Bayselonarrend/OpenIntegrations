@@ -8,10 +8,20 @@
 
     TLS = True;
     Port = 3306;
-    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -33,7 +43,11 @@
                    |data MEDIUMBLOB
                    |);";
 
-    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     // INSERT with parameters
 
@@ -51,18 +65,31 @@
     ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
     ParameterArray.Add(New Structure("BYTES" , Image));
 
-    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+    Options = New Structure;
+    Options.Insert("sql"   , QueryText);
+    Options.Insert("params", ParameterArray);
+    Options.Insert("dbc"   , Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     // SELECT (The result of this query is shown in the Result block)
 
     QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
 
-    Result = OPI_MySQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     // SQL query from file
 
     SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"; // Binary Data, URL or path to file
 
-    Result = OPI_MySQL.ExecuteSQLQuery(SQLFile, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", SQLFile);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     Closing = OPI_MySQL.CloseConnection(Connection);

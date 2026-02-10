@@ -48,16 +48,42 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     DocumentDD = New BinaryData(DocumentPath);
 
     // In chat, by URL
-    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChatID);
+    Options.Insert("text", Text);
+    Options.Insert("doc", Document);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     // In chat, by URL, with file name
-    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChatID);
+    Options.Insert("text", Text);
+    Options.Insert("doc", Document);
+    Options.Insert("filename", "customname.docx");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     // To channel, on disk
-    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChannelID);
+    Options.Insert("text", Text);
+    Options.Insert("doc", DocumentPath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     // To channel, from binary data, with file name
-    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChannelID);
+    Options.Insert("text", Text);
+    Options.Insert("doc", DocumentDD);
+    Options.Insert("filename", "customname.docx");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 ```
  
 

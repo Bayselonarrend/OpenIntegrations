@@ -34,7 +34,13 @@ Method at API documentation: [SetSettings](https://green-api.com/docs/api/accoun
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     SettingsStructure = New Structure;
     SettingsStructure.Insert("pollMessageWebhook"       , "yes");
@@ -44,7 +50,11 @@ Method at API documentation: [SetSettings](https://green-api.com/docs/api/accoun
     SettingsStructure.Insert("deletedMessageWebhook"    , "yes");
     SettingsStructure.Insert("outgoingAPIMessageWebhook", "yes");
 
-    Result = OPI_GreenAPI.SetInstanceSettings(SettingsStructure, AccessParameters);
+    Options = New Structure;
+    Options.Insert("settings", SettingsStructure);
+    Options.Insert("access"  , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetInstanceSettings", Options);
 ```
  
 

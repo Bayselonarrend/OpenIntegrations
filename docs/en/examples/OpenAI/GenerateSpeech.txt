@@ -6,4 +6,11 @@
 
     AdditionalParameters = New Structure("response_format", "wav");
 
-    Result = OPI_OpenAI.GenerateSpeech(URL, Token, Model, Text, , AdditionalParameters);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("token"  , Token);
+    Options.Insert("model"  , Model);
+    Options.Insert("input"  , Text);
+    Options.Insert("options", AdditionalParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GenerateSpeech", Options);

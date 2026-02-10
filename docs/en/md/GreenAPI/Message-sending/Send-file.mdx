@@ -45,8 +45,21 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     ChatID      = "120363410406221140@g.us";
     Description = "File description";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.SendFile(AccessParameters, ChatID, File, FileName, Description);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access"  , AccessParameters);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("file"    , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption" , Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
 ```
  
 

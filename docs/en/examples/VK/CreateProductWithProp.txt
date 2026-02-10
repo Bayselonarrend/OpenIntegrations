@@ -27,4 +27,8 @@
     Product.Insert("AvailableBalance" , "10");
     Product.Insert("PropertyValues"   , PropVariant1);
 
-    Result = OPI_VK.AddProduct(Product, , Parameters);
+    Options = New Structure;
+    Options.Insert("product", Product);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);

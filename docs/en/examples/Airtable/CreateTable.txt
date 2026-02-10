@@ -14,4 +14,11 @@
     Name        = "TestTable2";
     Description = "NewTable";
 
-    Result = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("base"       , Base);
+    Options.Insert("title"      , Name);
+    Options.Insert("fieldsdata" , FieldArray);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateTable", Options);

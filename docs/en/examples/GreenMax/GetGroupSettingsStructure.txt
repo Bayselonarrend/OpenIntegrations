@@ -1,1 +1,3 @@
-    Result = OPI_GreenMax.GetGroupSettingsStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetGroupSettingsStructure", Options);

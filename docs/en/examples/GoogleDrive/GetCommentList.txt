@@ -1,4 +1,8 @@
     Token      = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     Identifier = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
 
-    Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("object", Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetCommentList", Options);

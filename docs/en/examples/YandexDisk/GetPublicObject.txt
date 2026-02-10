@@ -1,4 +1,8 @@
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     URL   = "https://yadi.sk/d/n0QfpfP48V7piQ";
 
-    Result = OPI_YandexDisk.GetPublicObject(Token, URL);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublicObject", Options);

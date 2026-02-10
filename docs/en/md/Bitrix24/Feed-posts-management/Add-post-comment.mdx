@@ -35,13 +35,24 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
     PostID = "3326";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("postid", PostID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
 
     Text  = "Another comment";
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("postid", PostID);
+    Options.Insert("text"  , Text);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
 ```
  
 

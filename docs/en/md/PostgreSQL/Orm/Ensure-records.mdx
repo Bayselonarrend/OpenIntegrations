@@ -40,10 +40,20 @@ UNIQUE and PRIMARY KEY fields can be specified as key fields
 
     TLS = True;
     Port = 5432;
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -70,7 +80,14 @@ UNIQUE and PRIMARY KEY fields can be specified as key fields
     KeyFields = New Array;
     KeyFields.Add("id");
 
-    Result = OPI_PostgreSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("rows"  , DataArray);
+    Options.Insert("unique", KeyFields);
+    Options.Insert("db"    , ConnectionString);
+    Options.Insert("tls"   , TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureRecords", Options);
 ```
  
 

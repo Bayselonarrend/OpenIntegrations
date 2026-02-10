@@ -4,4 +4,10 @@
     Text  = "What is 1C:Enterprise?";
     Model = "arcee-ai_afm-4.5b";
 
-    Result = OPI_OpenAI.GetEmbeddings(URL, Token, Model, Text);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+    Options.Insert("model", Model);
+    Options.Insert("input", Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetEmbeddings", Options);

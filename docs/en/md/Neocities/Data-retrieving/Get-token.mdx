@@ -32,7 +32,11 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
     Login    = "2athenaeum";
     Password = "Rit...";
 
-    Result = OPI_Neocities.GetToken(Login, Password);
+    Options = New Structure;
+    Options.Insert("login"   , Login);
+    Options.Insert("password", Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetToken", Options);
 ```
  
 

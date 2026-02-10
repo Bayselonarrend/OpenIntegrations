@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Name        = "AlbumFromAutoTest";
     Description = "NewAlbumFromAutoTest";
 
-    Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
+    Options = New Structure;
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+    Options.Insert("auth"       , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAlbum", Options);
 ```
  
 

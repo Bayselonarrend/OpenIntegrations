@@ -5,6 +5,20 @@
     LastName  = "Петров";
     Phone     = "88005553535";
 
-    Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("name"   , Name);
+    Options.Insert("surname", LastName);
+    Options.Insert("phone"  , Phone);
 
-    Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendContact", Options);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chat"   , ChannelID);
+    Options.Insert("name"   , Name);
+    Options.Insert("surname", LastName);
+    Options.Insert("phone"  , Phone);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendContact", Options);

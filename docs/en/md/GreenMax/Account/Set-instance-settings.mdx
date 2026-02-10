@@ -34,14 +34,24 @@ Method at API documentation: [SetSettings](https://green-api.com/v3/docs/api/acc
     IdInstance       = "31003...";
     ApiTokenInstance = "17915d8e0b4b4975a183478da...";
 
-    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
 
     SettingsStructure = New Structure;
     SettingsStructure.Insert("markIncomingMessagesReaded" , "no");
     SettingsStructure.Insert("outgoingWebhook"            , "no");
     SettingsStructure.Insert("outgoingAPIMessageWebhook"  , "yes");
 
-    Result = OPI_GreenMax.SetInstanceSettings(SettingsStructure, AccessParameters);
+    Options = New Structure;
+    Options.Insert("settings", SettingsStructure);
+    Options.Insert("access"  , AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SetInstanceSettings", Options);
 ```
  
 

@@ -2,7 +2,10 @@
 
     QueryText = "SELECT 1";
 
-    Result = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
     // Full request
 
@@ -15,15 +18,22 @@
     AdditionalSettings.Insert("max_threads", "4");
 
     ColoumnsStruct = New Structure("id,name", "UInt64", "String");
-    ExternalTable  = OPI_ClickHouse.GetExternalTableStructure("ext", ColoumnsStruct);
+    Options        = New Structure;
+    Options.Insert("name", "ext");
+    Options.Insert("cols", ColoumnsStruct);
+
+    ExternalTable = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
 
     TableArray = New Array;
     TableArray.Add(ExternalTable);
 
-    Result = OPI_ClickHouse.GetRequestSettings(QueryText
-        , Database
-        , RequestID
-        , Data
-        , ResponseFormat
-        , TableArray
-        , AdditionalSettings);
+    Options = New Structure;
+    Options.Insert("query"   , QueryText);
+    Options.Insert("db"      , Database);
+    Options.Insert("id"      , RequestID);
+    Options.Insert("data"    , Data);
+    Options.Insert("format"  , ResponseFormat);
+    Options.Insert("ext"     , TableArray);
+    Options.Insert("settings", AdditionalSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);

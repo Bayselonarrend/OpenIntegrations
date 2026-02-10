@@ -28,4 +28,9 @@
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStructure1);
 
-    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("rows" , DataArray);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);

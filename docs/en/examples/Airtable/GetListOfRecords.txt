@@ -2,4 +2,9 @@
     Base  = "appJiRrCJhRhnaVAo";
     Table = "tblFGmvh2eldM8MuJ";
 
-    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("base" , Base);
+    Options.Insert("table", Table);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfRecords", Options);

@@ -41,7 +41,12 @@ The model name must follow the format &lt;namespace&gt;/&lt;model&gt;:&lt;tag&gt
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.PushModel(URL, Model, , AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushModel", Options);
 ```
  
 

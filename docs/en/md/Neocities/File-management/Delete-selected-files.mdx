@@ -36,7 +36,11 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
     Paths.Add("/test/gif.gif");
     Paths.Add("/pic2.png");
 
-    Result = OPI_Neocities.DeleteSelectedFiles(Token, Paths);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("paths", Paths);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 ```
  
 

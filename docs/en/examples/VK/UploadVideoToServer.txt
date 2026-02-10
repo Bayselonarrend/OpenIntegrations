@@ -4,4 +4,10 @@
     Name        = "NewVideo";
     Description = "Video description";
 
-    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
+    Options = New Structure;
+    Options.Insert("file"       , Video);
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+    Options.Insert("auth"       , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);

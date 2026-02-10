@@ -8,5 +8,15 @@
     ButtonArray.Add("Button 1");
     ButtonArray.Add("Button 2");
 
-    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
-    Result   = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "FormKeyboard", Options);
+    Options  = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("user"    , UserID);
+    Options.Insert("ct"      , Communitytoken);
+    Options.Insert("keyboard", Keyboard);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteMessage", Options);

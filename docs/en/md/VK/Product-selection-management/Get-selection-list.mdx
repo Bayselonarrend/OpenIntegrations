@@ -25,7 +25,10 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
-    Result     = OPI_VK.GetSelectionList(Parameters);
+    Options    = New Structure;
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionList", Options);
 ```
  
 

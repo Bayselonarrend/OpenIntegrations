@@ -1,2 +1,5 @@
     Parameters = GetTwitterAuthData();
-    Result     = OPI_Twitter.RefreshToken(Parameters);
+    Options    = New Structure;
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "RefreshToken", Options);

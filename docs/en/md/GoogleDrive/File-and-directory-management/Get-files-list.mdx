@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Directory    = "root";
     NameContains = "data";
 
-    Result = OPI_GoogleDrive.GetFilesList(Token, NameContains, Directory);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("query"  , NameContains);
+    Options.Insert("catalog", Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
 ```
  
 

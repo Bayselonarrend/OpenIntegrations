@@ -45,7 +45,13 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -71,7 +77,14 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr" , ProxyAddress);
+        Options.Insert("port" , ProxyPort);
+        Options.Insert("type" , ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass" , ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 

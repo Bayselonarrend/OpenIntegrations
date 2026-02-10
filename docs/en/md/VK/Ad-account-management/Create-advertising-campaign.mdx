@@ -31,7 +31,12 @@ import TabItem from '@theme/TabItem';
     AccountID = "1607951446";
     Name      = "New campaign";
 
-    Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
+    Options = New Structure;
+    Options.Insert("cabinet", AccountID);
+    Options.Insert("title"  , Name);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAdvertisingCampaign", Options);
 ```
  
 

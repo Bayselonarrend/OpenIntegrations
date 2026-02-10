@@ -30,8 +30,16 @@ import TabItem from '@theme/TabItem';
     Login    = "SA";
     Password = "12we...";
 
-    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options     = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Base = "testbase1";
 
@@ -39,7 +47,12 @@ import TabItem from '@theme/TabItem';
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_MSSQL.CreateDatabase(Base, ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("base", Base);
+    Options.Insert("dbc", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateDatabase", Options);
 ```
  
 

@@ -5,4 +5,9 @@
     SheetArray.Add("Sheet1");
     SheetArray.Add("Sheet2");
 
-    Result = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, SheetArray);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("title" , Name);
+    Options.Insert("sheets", SheetArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);

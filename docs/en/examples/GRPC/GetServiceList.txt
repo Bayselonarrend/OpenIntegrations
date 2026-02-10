@@ -1,8 +1,18 @@
     Address = "https://grpcb.in:9001";
     Scheme  = "https://hut.openintegrations.dev/test_data/grpcbin.proto"; // String, path to file or URL
 
-    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
-    Tls        = OPI_GRPC.GetTlsSettings(True);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options    = New Structure;
+    Options.Insert("trust", True);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
     Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
-    Result     = OPI_GRPC.GetServiceList(Connection);
+    Options    = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetServiceList", Options);

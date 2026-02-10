@@ -36,7 +36,13 @@ Method at API documentation: [forwardMessage](https://core.telegram.org/bots/api
     ChannelID = "@testsichee";
     MessageID = "22536";
 
-    Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("message", MessageID);
+    Options.Insert("from"   , ChannelID);
+    Options.Insert("to"     , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ForwardMessage", Options);
 ```
  
 

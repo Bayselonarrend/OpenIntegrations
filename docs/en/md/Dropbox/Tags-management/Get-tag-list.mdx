@@ -31,7 +31,11 @@ import TabItem from '@theme/TabItem';
     PathsArray.Add("/New/Dogs.mp3");
     PathsArray.Add("/New/mydoc.docx");
 
-    Result = OPI_Dropbox.GetTagList(Token, PathsArray);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("paths", PathsArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
 ```
  
 

@@ -1,3 +1,6 @@
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
 
-    Result = OPI_Airtable.GetListOfBases(Token);
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfBases", Options);

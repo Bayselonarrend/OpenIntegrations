@@ -41,10 +41,20 @@ The list of available types is described on the initial page of the PostgreSQL l
 
     TLS = True;
     Port = 5432;
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -94,7 +104,14 @@ The list of available types is described on the initial page of the PostgreSQL l
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_PostgreSQL.AddRecords(Table, RecordsArray, True, ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("rows", RecordsArray);
+    Options.Insert("trn", True);
+    Options.Insert("dbc", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddRecords", Options);
 ```
  
 

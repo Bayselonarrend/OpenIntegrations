@@ -3,4 +3,10 @@
     MessageID = "17744";
 
     Description = "New picture description";
-    Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);
+    Options     = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("message", MessageID);
+    Options.Insert("caption", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageCaption", Options);

@@ -10,10 +10,28 @@
     VideoDD = New BinaryData(VideoPath);
 
     // In chat, by URL
-    Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChatID);
+    Options.Insert("text", Text);
+    Options.Insert("video", Video);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
     // To channel, on disk
-    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChannelID);
+    Options.Insert("text", Text);
+    Options.Insert("video", VideoPath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
     // To channel, from binary data
-    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChannelID);
+    Options.Insert("text", Text);
+    Options.Insert("video", VideoDD);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
