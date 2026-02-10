@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/internal/OPI_ТестыCLI.os
+ // OneScript: ./OInt/tests/Modules/OPI_ТестыCLI.os
 
 // MIT License
 

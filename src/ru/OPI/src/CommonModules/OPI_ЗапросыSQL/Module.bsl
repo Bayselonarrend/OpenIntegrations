@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
+// OneScript: ./OInt/tools/main/Modules/OPI_ЗапросыSQL.os
 
 // MIT License
 
@@ -42,8 +42,7 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+//#Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 
