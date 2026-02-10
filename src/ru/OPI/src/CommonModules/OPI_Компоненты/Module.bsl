@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_Компоненты.os
+// OneScript: ./OInt/tools/main/Modules/OPI_Компоненты.os
 
 // MIT License
 
@@ -42,8 +42,7 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+//#Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 

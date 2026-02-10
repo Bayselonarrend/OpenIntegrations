@@ -46,6 +46,9 @@
 //@skip-check method-too-many-params
 //@skip-check bsl-legacy-check-string-literal
 
+//#Использовать "../../tools/main"
+//#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область Аккаунт

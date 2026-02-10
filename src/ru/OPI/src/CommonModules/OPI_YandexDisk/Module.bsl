@@ -44,6 +44,9 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+//#Использовать "../../tools/main"
+//#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область Авторизация
