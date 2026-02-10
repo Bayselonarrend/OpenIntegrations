@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_TestDataRetrieval.os
+// OneScript: ./OInt/tests/Modules/internal/Modules/OPI_TestDataRetrieval.os
 
 // MIT License
 
@@ -58,9 +58,10 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check bsl-legacy-check-expression-type
 
-// Uncomment if OneScript is executed
-// #Use "./internal"
-// #Use asserts
+//#Use "../../../../tools/main"
+//#Use "../../../../tools/http"
+//#Use "../../../../core"
+//#Use asserts
 
 #Region Internal
 
@@ -13327,8 +13328,8 @@ Function Check_ClickHouse_OpenGRPCStream(Val Result, Option)
         ExpectsThat(TypeOf(Data)).Равно(Type("Array"));
         ExpectsThat(Data.Count()).Равно(5);
 
-        For Counter      = 0 To 4 Do
-            Record = Data[Counter];
+        For Counter = 0 To 4 Do
+            Record  = Data[Counter];
             ExpectsThat(Record["id"]).Равно(String(Counter + 1));
             ExpectsThat(Record["user_id"]).Равно(100 + Counter);
             ExpectsThat(Record["event_type"]).Равно("stream_test");

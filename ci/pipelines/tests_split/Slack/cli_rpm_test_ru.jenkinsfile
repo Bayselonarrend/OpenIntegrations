@@ -69,7 +69,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -84,12 +84,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ПолучитьИнформацию'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОтправитьУдалитьСообщение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_СоздатьАрхивироватьКанал'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОткрытьЗакрытьДиалог'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьФайл'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьВФ'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_ПолучитьИнформацию'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_ОтправитьУдалитьСообщение'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_СоздатьАрхивироватьКанал'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_ОткрытьЗакрытьДиалог'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьВФ'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

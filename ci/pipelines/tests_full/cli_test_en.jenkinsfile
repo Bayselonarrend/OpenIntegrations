@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,28 +164,28 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetBotInfo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetUpdates'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SetWebhook'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendTextMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendImage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendVideo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendAudio'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendDocument'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendGIF'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendMediaGroup'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendLocation'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendContact'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendPoll'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_ForwardMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_BanUnban'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_CreateInvitationLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_PinUnpinMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetMemberCount'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetForumAvatarsList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_CreateDeleteForumTopic'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_ChangeMainTopicName'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_HideShowMainTopic'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetBotInfo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetUpdates'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SetWebhook'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendTextMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendImage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendVideo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendAudio'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendDocument'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendGIF'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendMediaGroup'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendLocation'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendContact'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendPoll'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_ForwardMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_BanUnban'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_CreateInvitationLink'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_PinUnpinMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetMemberCount'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetForumAvatarsList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_CreateDeleteForumTopic'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_ChangeMainTopicName'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_HideShowMainTopic'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -202,26 +202,26 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateTokenLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateDeletePost'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateCompositePost'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreatePoll'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SaveDeleteImage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateStory'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_DiscussionMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_LikeRepostComment'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetStatistics'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPostStatistics'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateAdCampaign'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SendMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductCategories'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductSelection'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductWithProperties'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetSelectionList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPropertyList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetOrderList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_UploadVideo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateTokenLink'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateDeletePost'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateCompositePost'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreatePoll'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_SaveDeleteImage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateStory'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_DiscussionMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_LikeRepostComment'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetStatistics'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetPostStatistics'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateAdCampaign'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_SendMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetProductCategories'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateProductSelection'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateProductWithProperties'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetProductList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetSelectionList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetPropertyList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetOrderList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_UploadVideo'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -238,8 +238,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Viber_DataRetrieval'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Viber_MessagesSending'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Viber_DataRetrieval'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Viber_MessagesSending'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -256,8 +256,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TwitterAPI_AccountData'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TwitterAPI_Tweets'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TwitterAPI_AccountData'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TwitterAPI_Tweets'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -274,9 +274,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'FT_DirecotryManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'FT_FileOperations'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'FT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'FT_DirecotryManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'FT_FileOperations'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'FT_CommonMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -293,7 +293,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SShell_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SShell_CommonMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -310,9 +310,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SF_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SF_DirectoryManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SF_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SF_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SF_DirectoryManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SF_FileManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -329,8 +329,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Postgres_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Postgres_ORM'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Postgres_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Postgres_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -347,8 +347,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'MYS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'MYS_ORM'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'MYS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'MYS_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -365,8 +365,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'MSS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'MSS_ORM'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'MSS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'MSS_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -383,8 +383,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SQLL_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SQLL_ORM'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SQLL_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SQLL_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -401,12 +401,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mong_DatabaseManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_CollectionManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_DocumentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_UserManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_RoleManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mongo_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mong_DatabaseManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mongo_CollectionManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mongo_DocumentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mongo_UserManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Mongo_RoleManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -423,7 +423,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'RC_CommandsExecution'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RC_CommandsExecution'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -440,17 +440,17 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetDiskInfo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_CreateFolder'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_UploadByUrlAndGetObject'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_CreateObjectCopy'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetDownloadLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetFileList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_MoveObject'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_PublicObjectActions'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetPublishedList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_GetDiskInfo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_UploadByUrlAndGetObject'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_CreateObjectCopy'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_GetDownloadLink'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_GetFileList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_MoveObject'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_PublicObjectActions'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YDisk_GetPublishedList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -467,7 +467,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GW_Auth'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -484,10 +484,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_GetCalendarList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_CreateDeleteCalendar'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_CreateDeleteEvent'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GC_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GC_GetCalendarList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GC_CreateDeleteCalendar'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GC_CreateDeleteEvent'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -504,11 +504,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_GetCatalogList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_CreateDeleteComment'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_CreateCatalog'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GD_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GD_GetCatalogList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GD_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GD_CreateDeleteComment'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GD_CreateCatalog'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -525,9 +525,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_CreateTable'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_FillClearCells'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GT_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GT_CreateTable'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GT_FillClearCells'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -544,10 +544,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NotionAPI_CreatePage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NotionAPI_CreateUpdateBase'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NotionAPI_CreateDeleteBlock'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NotionAPI_GetUsers'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NotionAPI_CreatePage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NotionAPI_CreateUpdateBase'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NotionAPI_CreateDeleteBlock'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NotionAPI_GetUsers'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -564,12 +564,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SlackGetData'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_SendDeleteMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_CreateArchiveChannel'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_OpenCloseDialog'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_UploadDeleteExternalFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SlackGetData'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_SendDeleteMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_CreateArchiveChannel'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_OpenCloseDialog'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_UploadDeleteExternalFile'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -586,10 +586,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AT_CreateDatabase'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AT_CreateTable'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AT_CreateField'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AT_CreateDeleteRecords'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AT_CreateDatabase'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AT_CreateTable'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AT_CreateField'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AT_CreateDeleteRecords'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -606,14 +606,14 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_GetUpdateToken'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_UploadFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_UploadFileByURL'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_CreateFolder'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_CreateDeleteTag'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_GetAccount'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_AccessManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'DropboxAPI_GetFolderFileList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_GetUpdateToken'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_UploadFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_UploadFileByURL'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_CreateDeleteTag'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_GetAccount'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_AccessManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'DropboxAPI_GetFolderFileList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -630,22 +630,22 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TokenManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ServerTime'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_PostsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TaskManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CommentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_WorkingWithDrive'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Kanban'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Timekeeping'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ChatManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_NotificationsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TasksFieldsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DepartmentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B2_UsersManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_LeadsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DealsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CalendarsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TokenManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_ServerTime'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_PostsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TaskManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_CommentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_WorkingWithDrive'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_Kanban'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_Timekeeping'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_ChatManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_NotificationsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TasksFieldsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_DepartmentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B2_UsersManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_LeadsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_DealsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_CalendarsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -662,9 +662,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKT_MessagesSending'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKT_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKT_ChatManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKT_MessagesSending'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKT_ChatManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -681,8 +681,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NC_FilesManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'NC_DataRetrieving'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NC_FilesManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'NC_DataRetrieving'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -699,9 +699,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CdekAPI_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CDEKAPI_OrdersManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CdekAPI_CourierInvitationsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CdekAPI_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CDEKAPI_OrdersManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CdekAPI_CourierInvitationsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -718,9 +718,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YaMetrika_TagsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YaMetrika_CountersManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YaMetrika_ActionsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YaMetrika_TagsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YaMetrika_CountersManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'YaMetrika_ActionsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -737,9 +737,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AWS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AWS_BucketsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'AWS_ObjectsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AWS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AWS_BucketsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'AWS_ObjectsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -756,7 +756,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TC_Client'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TC_Client'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -773,12 +773,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_GroupManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageSending'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_NotificationsReceiving'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageQueue'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageLogs'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_Account'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_GroupManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_MessageSending'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_NotificationsReceiving'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_MessageQueue'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_MessageLogs'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GAPI_Account'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -795,12 +795,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_GroupManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_MessageSending'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_Notifications'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_MessageHistory'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_Queues'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GMax_Account'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_GroupManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_MessageSending'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_Notifications'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_MessageHistory'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_Queues'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GMax_Account'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -817,9 +817,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OLLM_RequestsProcessing'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OLLM_ModelsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OLLM_WorkingWithBlob'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OLLM_RequestsProcessing'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OLLM_ModelsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OLLM_WorkingWithBlob'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -836,13 +836,13 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Initialization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_BodySet'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Settings'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_HeadersSetting'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_RequestProcessing'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_ResponseReceiving'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Initialization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_BodySet'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Settings'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_HeadersSetting'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_RequestProcessing'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_ResponseReceiving'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -859,11 +859,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OAI_RequestsProcessing'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OAI_Assistants'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OAI_FileManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OAI_AudioProcessing'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'OAI_ModelsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OAI_RequestsProcessing'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OAI_Assistants'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OAI_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OAI_AudioProcessing'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'OAI_ModelsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -880,7 +880,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'RPortal_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RPortal_Authorization'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -897,9 +897,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_Introspection'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_Streaming'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GR_Introspection'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'GR_Streaming'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -916,8 +916,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CH_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CH_GRPC'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CH_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CH_GRPC'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

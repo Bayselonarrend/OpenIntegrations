@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,12 +164,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_РаботаСГруппами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_ОтправкаСообщений'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Уведомления'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_ИсторияСообщений'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Очереди'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Аккаунт'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_РаботаСГруппами'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_ОтправкаСообщений'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_Уведомления'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_ИсторияСообщений'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_Очереди'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'GMax_Аккаунт'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

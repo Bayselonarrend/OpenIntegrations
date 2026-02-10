@@ -47,6 +47,9 @@
 //@skip-check constructor-function-return-section
 //@skip-check bsl-legacy-check-expression-type
 
+#Use "../../tools/main"
+#Use "../../tools/http"
+
 #Region Public
 
 #Region CommonMethods

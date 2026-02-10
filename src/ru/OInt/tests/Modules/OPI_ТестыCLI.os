@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/internal/OPI_ТестыCLI.os
+ // OneScript: ./OInt/tests/Modules/OPI_Тесты.os
 
 // MIT License
 
@@ -65,7 +65,6 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// Раскомментировать, если выполняется OneScript
 #Использовать "../../../tools"
 #Использовать "../../../core"
 #Использовать asserts
@@ -36896,8 +36895,6 @@
     НастройкиСоединения = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("clickhouse", "ПолучитьНастройкиСоединенияGRPC", Опции);
     Соединение          = OPI_ClickHouse.ОткрытьСоединениеGRPC(НастройкиСоединения);
 
-    // Создание таблицы для теста
-
     ТекстСозданияТаблицы = "CREATE TABLE IF NOT EXISTS events_stream_test (
     |    id UInt64,
     |    timestamp DateTime,
@@ -36907,8 +36904,15 @@
     |) ENGINE            = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса("DROP TABLE IF EXISTS events_stream_test"); // SKIP
-    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);                                  // SKIP
+    Опции = Новый Структура;
+    Опции.Вставить("query", "DROP TABLE IF EXISTS events_stream_test");
+
+    Запрос = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("clickhouse", "ПолучитьНастройкиЗапроса", Опции);
+    Опции = Новый Структура;
+    Опции.Вставить("conn", Соединение);
+    Опции.Вставить("req", Запрос);
+
+    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("clickhouse", "ВыполнитьЗапрос", Опции);
 
     Опции = Новый Структура;
     Опции.Вставить("query", ТекстСозданияТаблицы);
@@ -36919,8 +36923,6 @@
     Опции.Вставить("req", Запрос);
 
     Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("clickhouse", "ВыполнитьЗапрос", Опции);
-
-    // Открытие потока и вставка данных
 
     Результат = OPI_ClickHouse.ОткрытьПотокGRPC(Соединение);
 

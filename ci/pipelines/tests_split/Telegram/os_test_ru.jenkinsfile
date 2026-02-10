@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,28 +91,28 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ПолучитьИнформациюБота'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ПолучитьОбновления'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_УстановитьWebhook'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьТекстовоеСообщение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьКартинку'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьВидео'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьАудио'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьДокумент'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьГифку'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьМедиагруппу'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьМестоположение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьКонтакт'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ОтправитьОпрос'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ПереслатьСообщение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_БанРазбан'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_СоздатьСсылкуПриглашение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ЗакрепитьОткрепитьСообщение'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ПолучитьЧислоУчастников'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ПолучитьСписокАватаровФорума'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_СоздатьУдалитьТемуФорума'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_ИзменитьИмяГлавнойТемы'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Телеграм_СкрытьПоказатьГлавнуюТему'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ПолучитьИнформациюБота'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ПолучитьОбновления'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_УстановитьWebhook'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьТекстовоеСообщение'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьКартинку'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьВидео'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьАудио'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьДокумент'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьГифку'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьМедиагруппу'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьМестоположение'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьКонтакт'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ОтправитьОпрос'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ПереслатьСообщение'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_БанРазбан'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_СоздатьСсылкуПриглашение'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ЗакрепитьОткрепитьСообщение'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ПолучитьЧислоУчастников'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ПолучитьСписокАватаровФорума'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_СоздатьУдалитьТемуФорума'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_ИзменитьИмяГлавнойТемы'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'Телеграм_СкрытьПоказатьГлавнуюТему'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

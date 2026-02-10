@@ -48,6 +48,9 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
+#Use "../../tools/main"
+#Use "../../tools/http"
+
 #Region Public
 
 #Region CommonMethods

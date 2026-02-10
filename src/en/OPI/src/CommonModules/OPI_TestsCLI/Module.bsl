@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/internal/OPI_TestsCLI.os
+ // OneScript: ./OInt/tests/Modules/OPI_Tests.os
 
 // MIT License
 
@@ -65,7 +65,6 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// Uncomment if OneScript is executed
 // #Use "../../../tools"
 // #Use "../../../core"
 // #Use asserts
@@ -36896,8 +36895,6 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    // Create tables for test
-
     TableCreationText = "CREATE TABLE IF NOT EXISTS events_stream_test (
     |    id UInt64,
     |    timestamp DateTime,
@@ -36907,8 +36904,15 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     |) ENGINE         = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE IF EXISTS events_stream_test"); // SKIP
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
+    Options = New Structure;
+    Options.Insert("query", "DROP TABLE IF EXISTS events_stream_test");
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     Options = New Structure;
     Options.Insert("query", TableCreationText);
@@ -36919,8 +36923,6 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     Options.Insert("req", Request);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
-
-    // Open stream and insert data
 
     Result = OPI_ClickHouse.OpenGRPCStream(Connection);
 

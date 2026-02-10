@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,11 +91,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_GetCatalogList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_CreateDeleteComment'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_CreateCatalog'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_GetCatalogList'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_CreateDeleteComment'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_CreateCatalog'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

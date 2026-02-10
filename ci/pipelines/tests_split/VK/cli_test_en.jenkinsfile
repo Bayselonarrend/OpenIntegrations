@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,26 +164,26 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateTokenLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateDeletePost'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateCompositePost'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreatePoll'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SaveDeleteImage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateStory'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_DiscussionMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_LikeRepostComment'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetStatistics'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPostStatistics'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateAdCampaign'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SendMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductCategories'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductSelection'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductWithProperties'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetSelectionList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPropertyList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetOrderList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_UploadVideo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateTokenLink'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateDeletePost'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateCompositePost'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreatePoll'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_SaveDeleteImage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateStory'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_DiscussionMethods'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_LikeRepostComment'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetStatistics'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetPostStatistics'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateAdCampaign'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_SendMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetProductCategories'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateProductSelection'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_CreateProductWithProperties'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetProductList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetSelectionList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetPropertyList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_GetOrderList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'VKAPI_UploadVideo'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

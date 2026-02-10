@@ -79,7 +79,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -94,14 +94,14 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_ПолучитьОбновитьТокен'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_ЗагрузитьФайл'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_ЗагрузитьФайлПоURL'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_СоздатьКаталог'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_СоздатьУдалитьТег'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_ПолучитьАккаунт'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_РаботаСДоступами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ДропБокс_ПолучитьСписокФайловПапки'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_ПолучитьОбновитьТокен'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_ЗагрузитьФайл'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_ЗагрузитьФайлПоURL'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_СоздатьКаталог'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_СоздатьУдалитьТег'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_ПолучитьАккаунт'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_РаботаСДоступами'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'ДропБокс_ПолучитьСписокФайловПапки'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

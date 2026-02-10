@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,8 +164,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НС_РаботаСФайлами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НС_ПолучениеДанных'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НС_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НС_ПолучениеДанных'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

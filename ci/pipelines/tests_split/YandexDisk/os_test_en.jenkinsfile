@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,17 +91,17 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_GetDiskInfo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_CreateFolder'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_UploadByUrlAndGetObject'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_CreateObjectCopy'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_GetDownloadLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_GetFileList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_MoveObject'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_PublicObjectActions'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'YDisk_GetPublishedList'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetDiskInfo'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_UploadByUrlAndGetObject'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_CreateObjectCopy'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetDownloadLink'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetFileList'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_MoveObject'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_PublicObjectActions'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetPublishedList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

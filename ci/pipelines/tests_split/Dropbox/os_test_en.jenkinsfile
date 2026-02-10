@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,14 +91,14 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_GetUpdateToken'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_UploadFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_UploadFileByURL'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_CreateFolder'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_CreateDeleteTag'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_GetAccount'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_AccessManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'DropboxAPI_GetFolderFileList'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetUpdateToken'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_UploadFile'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_UploadFileByURL'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_CreateDeleteTag'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetAccount'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_AccessManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetFolderFileList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

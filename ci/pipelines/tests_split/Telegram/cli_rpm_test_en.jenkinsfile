@@ -69,7 +69,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -84,28 +84,28 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetBotInfo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetUpdates'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SetWebhook'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendTextMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendImage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendVideo'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendAudio'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendDocument'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendGIF'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendMediaGroup'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendLocation'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendContact'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_SendPoll'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_ForwardMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_BanUnban'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_CreateInvitationLink'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_PinUnpinMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetMemberCount'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_GetForumAvatarsList'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_CreateDeleteForumTopic'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_ChangeMainTopicName'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'TelegramAPI_HideShowMainTopic'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetBotInfo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetUpdates'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SetWebhook'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendTextMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendImage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendVideo'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendAudio'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendDocument'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendGIF'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendMediaGroup'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendLocation'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendContact'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_SendPoll'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_ForwardMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_BanUnban'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_CreateInvitationLink'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_PinUnpinMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetMemberCount'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_GetForumAvatarsList'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_CreateDeleteForumTopic'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_ChangeMainTopicName'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'TelegramAPI_HideShowMainTopic'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

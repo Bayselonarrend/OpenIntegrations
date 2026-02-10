@@ -45,6 +45,9 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
+#Use "../../tools/main"
+#Use "../../tools/http"
+
 #Region Public
 
 #Region CommonMethods
