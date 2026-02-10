@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPКлиент.os
+// OneScript: ./OInt/tools/http/Modules/internal/Classes/OPI_HTTPКлиент.os
 // Lib: HTTP
 // CLI: none
 // Keywords: http, https

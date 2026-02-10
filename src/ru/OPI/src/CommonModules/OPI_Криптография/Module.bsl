@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Криптография.os
+// OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_Криптография.os
 
 // MIT License
 
@@ -34,8 +34,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+//#Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 
