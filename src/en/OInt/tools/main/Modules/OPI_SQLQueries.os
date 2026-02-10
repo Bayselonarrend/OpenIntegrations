@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_SQLQueries.os
+// OneScript: ./OInt/tools/main/Modules/OPI_SQLQueries.os
 
 // MIT License
 
@@ -42,7 +42,6 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-// Uncomment if OneScript is executed
 #Use "./internal"
 
 #Region Internal

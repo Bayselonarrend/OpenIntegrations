@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,10 +164,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьСтраницу'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьИзменитьБазу'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьУдалитьБлок'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_ПолучитьПользователей'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьСтраницу'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьИзменитьБазу'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьУдалитьБлок'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'НоушнАпи_ПолучитьПользователей'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

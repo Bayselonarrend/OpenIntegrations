@@ -45,6 +45,9 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
+#Использовать "../../tools/main"
+#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область ОсновныеМетоды
