@@ -29,7 +29,12 @@ import TabItem from '@theme/TabItem';
     Name  = "TestFolder";
     Token = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
 
-    Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("query", Name);
+    Options.Insert("depth", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetDirectoriesList", Options);
 ```
  
 

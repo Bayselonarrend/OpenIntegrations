@@ -2,4 +2,9 @@
     Table = "test";
     Name  = "new_col";
 
-    Result = OPI_SQLite.DeleteTableColumn(Table, Name, Base);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTableColumn", Options);

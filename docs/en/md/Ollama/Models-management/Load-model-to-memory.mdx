@@ -40,7 +40,13 @@ Method at API documentation: [Load a model](https://github.com/ollama/ollama/blo
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.LoadModelToMemory(URL, Model, Period, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("keep"   , Period);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "LoadModelToMemory", Options);
 ```
  
 

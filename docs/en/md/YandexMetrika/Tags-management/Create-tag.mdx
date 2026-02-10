@@ -32,7 +32,11 @@ Method at API documentation: [Creating a tag](https://yandex.ru/dev/metrika/en/m
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     Name  = "New tag";
 
-    Result = OPI_YandexMetrika.CreateTag(Token, Name);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("title", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateTag", Options);
 ```
  
 

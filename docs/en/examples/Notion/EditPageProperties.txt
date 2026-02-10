@@ -8,4 +8,12 @@
     Properties.Insert("Active", False);
     Properties.Insert("Email" , "vector@mail.ru");
 
-    Result = OPI_Notion.EditPageProperties(Token, Page, Properties, Icon, Cover, Archive);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("page"   , Page);
+    Options.Insert("data"   , Properties);
+    Options.Insert("icon"   , Icon);
+    Options.Insert("cover"  , Cover);
+    Options.Insert("archive", Archive);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditPageProperties", Options);

@@ -1,1 +1,4 @@
-    Result = OPI_MSSQL.GetTLSSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);

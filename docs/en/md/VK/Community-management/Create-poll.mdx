@@ -40,13 +40,25 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     OptionArray.Add("Yellow");
     OptionArray.Add("Green");
 
-    Result = OPI_VK.CreatePoll(Question, OptionArray, , "Post text", Parameters);
+    Options = New Structure;
+    Options.Insert("question", Question);
+    Options.Insert("options" , OptionArray);
+    Options.Insert("text"    , "Post text");
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 
     // With picture
 
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
 
-    Result = OPI_VK.CreatePoll(Question, OptionArray, Image, , Parameters);
+    Options = New Structure;
+    Options.Insert("question", Question);
+    Options.Insert("options" , OptionArray);
+    Options.Insert("picture" , Image);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 ```
  
 

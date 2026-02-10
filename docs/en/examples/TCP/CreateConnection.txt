@@ -4,14 +4,27 @@
     OPI_TCP.CloseConnection(Connection);
 
     Address = "tcpbin.com:4243";
-    Tls     = OPI_TCP.GetTLSSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
 
     ProxtUser     = "proxyuser";
     ProxyPassword = "12we...";
     ProxyAddress  = "127.0.0.1";
     ProxyPort     = "1080";
 
-    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
-    Tls   = OPI_TCP.GetTLSSettings(True);
+    Options = New Structure;
+    Options.Insert("addr" , ProxyAddress);
+    Options.Insert("port" , ProxyPort);
+    Options.Insert("type" , "socks5");
+    Options.Insert("login", ProxtUser);
+    Options.Insert("pass" , ProxyPassword);
+
+    Proxy   = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetProxySettings", Options);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
 
     Connection = OPI_TCP.CreateConnection(Address, TLS, Proxy);

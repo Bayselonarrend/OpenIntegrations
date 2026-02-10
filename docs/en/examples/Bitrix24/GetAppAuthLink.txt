@@ -1,4 +1,8 @@
     Domain   = "b24-ar17wx.bitrix24.by";
     ClientID = "local.6667fc928a50a9.70414732";
 
-    Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
+    Options = New Structure;
+    Options.Insert("domain"  , Domain);
+    Options.Insert("clientid", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);

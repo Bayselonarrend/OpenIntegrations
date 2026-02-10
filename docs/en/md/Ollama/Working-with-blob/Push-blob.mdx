@@ -40,7 +40,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.PushBlob(URL, Image, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("data"   , Image);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushBlob", Options);
 ```
  
 

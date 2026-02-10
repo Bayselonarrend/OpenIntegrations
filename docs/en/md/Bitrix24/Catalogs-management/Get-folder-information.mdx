@@ -33,12 +33,21 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     FolderID = "46678";
 
-    Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("folderid", FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID, Token);
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("folderid", FolderID);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
 ```
  
 

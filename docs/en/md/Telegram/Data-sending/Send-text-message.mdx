@@ -43,11 +43,26 @@ Method at API documentation: [sendMessage](https://core.telegram.org/bots/api#se
     KeyboardButtonsArray.Add("Button2");
 
     // With keyboard, in chat
-    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(KeyboardButtonsArray, True);
-    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
+    Options = New Structure;
+    Options.Insert("buttons", KeyboardButtonsArray);
+    Options.Insert("under", True);
+
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
+    Options  = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("chat"    , ChatID);
+    Options.Insert("text"    , Text);
+    Options.Insert("keyboard", Keyboard);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     // Simple, to channel
-    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat", ChannelID);
+    Options.Insert("text", Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 ```
  
 

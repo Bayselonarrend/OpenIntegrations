@@ -39,7 +39,14 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Main   = True;
     Hidden = False;
 
-    Result = OPI_VK.CreateProductCollection(Name, Image, Main, Hidden, Parameters);
+    Options = New Structure;
+    Options.Insert("title"  , Name);
+    Options.Insert("picture", Image);
+    Options.Insert("main"   , Main);
+    Options.Insert("hidden" , Hidden);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductCollection", Options);
 ```
  
 

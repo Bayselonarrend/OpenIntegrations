@@ -1,4 +1,8 @@
     Token  = "xoxb-6965308400114-696804637...";
     FileID = "F09Q1MWDPKN";
 
-    Result = OPI_Slack.DeleteFile(Token, FileID);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("fileid", FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteFile", Options);

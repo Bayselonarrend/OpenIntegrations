@@ -1,1 +1,4 @@
-    Result = OPI_OpenAI.GetAssistantMessage("What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("text", "What is 1C:Enterprise?");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantMessage", Options);

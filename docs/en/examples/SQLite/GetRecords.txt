@@ -28,4 +28,12 @@
     Sort  = New Structure("created_at", "DESC");
     Count = 1;
 
-    Result = OPI_SQLite.GetRecords(Table, Fields, Filters, Sort, Count, Base);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("fields", Fields);
+    Options.Insert("filter", Filters);
+    Options.Insert("order" , Sort);
+    Options.Insert("limit" , Count);
+    Options.Insert("db"    , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);

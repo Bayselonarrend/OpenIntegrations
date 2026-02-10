@@ -9,12 +9,29 @@
     ButtonArray.Add("Button 2");
     ButtonArray.Add("Button 3");
 
-    Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
 
-    Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("text"     , Text);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("keyboard" , Keyboard);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
     UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
     Token            = "523b58ba82afffaa-7ef3b426...";
     SendingToChannel = True;
 
-    Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("text"     , Text);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("keyboard" , Keyboard);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);

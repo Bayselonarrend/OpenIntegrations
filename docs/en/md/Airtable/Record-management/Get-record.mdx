@@ -32,7 +32,13 @@ import TabItem from '@theme/TabItem';
     Table  = "tblFGmvh2eldM8MuJ";
     Record = "recuJsvpt9DG2SuEk";
 
-    Result = OPI_Airtable.GetRecord(Token, Base, Table, Record);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("base"  , Base);
+    Options.Insert("table" , Table);
+    Options.Insert("record", Record);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetRecord", Options);
 ```
  
 

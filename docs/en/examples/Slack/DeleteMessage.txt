@@ -2,4 +2,9 @@
     Channel   = "C06UFNUTKUL";
     Timestamp = "1761911197.970569";
 
-    Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteMessage", Options);

@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetLinkField("Link");
+    Options = New Structure;
+    Options.Insert("title", "Link");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetLinkField", Options);

@@ -30,13 +30,24 @@ import TabItem from '@theme/TabItem';
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     UserID = "2958";
 
-    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("userid", UserID);
+    Options.Insert("fire"  , True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeUserStatus", Options);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     UserID = "2960";
 
-    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("userid", UserID);
+    Options.Insert("fire"  , True);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeUserStatus", Options);
 ```
  
 

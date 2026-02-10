@@ -36,7 +36,12 @@ import TabItem from '@theme/TabItem';
     Данные = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
     Путь   = "testfolder/test_pic.png";
 
-    Результат = OPI_Neocities.ЗагрузитьФайл(Токен, Путь, Данные);
+    Опции = Новый Структура;
+    Опции.Вставить("token", Токен);
+    Опции.Вставить("path" , Путь);
+    Опции.Вставить("file" , Данные);
+
+    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "ЗагрузитьФайл", Опции);
 ```
     
 

@@ -9,7 +9,12 @@
     CopyFile(Image, TFN);
 
     ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
-    VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
+    Options     = New Structure;
+    Options.Insert("file" , Video);
+    Options.Insert("title", "NewVideo");
+    Options.Insert("auth" , Parameters);
+
+    VideoUpload = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);
 
     ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);
     VideoOwner = OPI_Tools.NumberToString(VideoUpload["owner_id"]);
@@ -21,4 +26,11 @@
     AttachmentsArray.Add("photo" + ImageOwner + "_" + ImageID);
     AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
 
-    Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
+    Options = New Structure;
+    Options.Insert("text"   , Text);
+    Options.Insert("objects", AttachmentsArray);
+    Options.Insert("ad"     , False);
+    Options.Insert("url"    , URL);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateCompositePost", Options);

@@ -40,7 +40,13 @@ Method at AWS documentation: [PutObjectTagging](https://docs.aws.amazon.com/Amaz
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -51,7 +57,14 @@ Method at AWS documentation: [PutObjectTagging](https://docs.aws.amazon.com/Amaz
     TagStructure.Insert("MyTag1", "SomeValue");
     TagStructure.Insert("MyTag2", "AnotherOne");
 
-    Result = OPI_S3.PutObjectTagging(Name, Bucket, BasicData, TagStructure, , Directory);
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("tagset", TagStructure);
+    Options.Insert("dir"   , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObjectTagging", Options);
 ```
  
 

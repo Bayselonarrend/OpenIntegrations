@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Name       = "Discussing: Which color is better??";
     Message    = "Red, yellow, blue, or some other??";
 
-    Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
+    Options = New Structure;
+    Options.Insert("title", Name);
+    Options.Insert("text" , Message);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateDiscussion", Options);
 ```
  
 

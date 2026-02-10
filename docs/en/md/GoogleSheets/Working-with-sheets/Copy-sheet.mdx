@@ -32,7 +32,13 @@ import TabItem from '@theme/TabItem';
     Target = "1jzbqwoCfQ3ZCWonv_IqV8RlFrI9tP-z0uglFWdBgpvE";
     Sheet  = "767360097";
 
-    Result = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("from" , From);
+    Options.Insert("to"   , Target);
+    Options.Insert("sheet", Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CopySheet", Options);
 ```
  
 

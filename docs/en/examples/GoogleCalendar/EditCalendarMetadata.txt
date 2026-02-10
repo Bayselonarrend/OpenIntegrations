@@ -3,4 +3,10 @@
     Name        = "New name";
     Description = "New description";
 
-    Result = OPI_GoogleCalendar.EditCalendarMetadata(Token, Calendar, Name, Description);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("calendar"   , Calendar);
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditCalendarMetadata", Options);

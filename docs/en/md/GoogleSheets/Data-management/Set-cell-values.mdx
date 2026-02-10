@@ -42,7 +42,13 @@ import TabItem from '@theme/TabItem';
     ValueMapping.Insert("B1", "ThisIsB1");
     ValueMapping.Insert("B4", "ThisIsB4");
 
-    Result = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("data"       , ValueMapping);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "SetCellValues", Options);
 ```
  
 

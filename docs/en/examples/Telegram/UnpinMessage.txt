@@ -2,4 +2,9 @@
     ChannelID = "@testsichee";
     MessageID = "22536";
 
-    Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chat"   , ChannelID);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "UnpinMessage", Options);

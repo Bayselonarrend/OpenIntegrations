@@ -28,7 +28,11 @@ import TabItem from '@theme/TabItem';
     Token      = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     Identifier = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
 
-    Result = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("object", Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetObjectInformation", Options);
 ```
  
 

@@ -2,4 +2,10 @@
     Original = "/5bb78325-64e6-4133-a369-c3a275f745cb.png";
     Path     = "/" + String(New UUID) + ".png";
 
-    Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("from"   , Original);
+    Options.Insert("to"     , Path);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "MoveObject", Options);

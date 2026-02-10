@@ -1,4 +1,8 @@
     Token  = "523b58ba82afffaa-7ef3b426...";
     UserID = "tMNGhftyUPrB3r1lD+bT4g==";
 
-    Result = OPI_Viber.GetOnlineUsers(Token, UserID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("users", UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetOnlineUsers", Options);

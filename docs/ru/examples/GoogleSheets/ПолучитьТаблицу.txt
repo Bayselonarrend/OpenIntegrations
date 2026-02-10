@@ -1,4 +1,8 @@
     Токен = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     Книга = "1hAKnTEvhiX-_-fYfXXYthJ3xq6Ub4SrlLPaIg0Tb9fs";
 
-    Результат = OPI_GoogleSheets.ПолучитьКнигу(Токен, Книга);
+    Опции = Новый Структура;
+    Опции.Вставить("token"      , Токен);
+    Опции.Вставить("spreadsheet", Книга);
+
+    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "ПолучитьКнигу", Опции);

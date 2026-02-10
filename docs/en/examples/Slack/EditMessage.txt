@@ -4,4 +4,10 @@
 
     Text = "TestMessage2";
 
-    Result = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "EditMessage", Options);

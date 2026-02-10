@@ -5,5 +5,15 @@
 
     ReceiptID = "1";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.DeleteNotificationFromQueue(AccessParameters, ReceiptID);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("receipt", ReceiptID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "DeleteNotificationFromQueue", Options);

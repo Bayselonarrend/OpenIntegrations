@@ -1,4 +1,8 @@
     Base  = "/tmp/vnnmoosn.qqb.sqlite";
     Table = "test";
 
-    Result = OPI_SQLite.ClearTable(Table, Base);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ClearTable", Options);

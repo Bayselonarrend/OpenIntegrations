@@ -7,7 +7,13 @@
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, , AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("prompt" , Prompt);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
     // With paramether
 
@@ -32,4 +38,11 @@
 
     AdditionalParameters = New Structure("format", Format);
 
-    Result = OPI_Ollama.GetResponse(URL, Model, Prompt, AdditionalParameters, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("prompt" , Prompt);
+    Options.Insert("options", AdditionalParameters);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);

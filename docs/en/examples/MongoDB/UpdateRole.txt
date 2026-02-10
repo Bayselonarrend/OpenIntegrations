@@ -4,7 +4,13 @@
     Base     = "admin";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     RoleArray = New Array;
@@ -17,11 +23,22 @@
     Actions.Add("find");
     Actions.Add("insert");
 
-    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+    Options = New Structure;
+    Options.Insert("res", Resource);
+    Options.Insert("act", Actions);
+
+    Privilege = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetRolePrivilegeStructure", Options);
 
     PrivilegesArray = New Array;
     PrivilegesArray.Add(Privilege);
 
     RoleName = "newrole";
 
-    Result = OPI_MongoDB.UpdateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+    Options = New Structure;
+    Options.Insert("dbc"  , Connection);
+    Options.Insert("name" , RoleName);
+    Options.Insert("db"   , Base);
+    Options.Insert("prvl" , PrivilegesArray);
+    Options.Insert("roles", RoleArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateRole", Options);

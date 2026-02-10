@@ -1,1 +1,3 @@
-    Result = OPI_Ollama.GetEmbeddingsParameterStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);

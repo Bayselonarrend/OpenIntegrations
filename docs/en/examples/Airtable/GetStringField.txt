@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetStringField("String");
+    Options = New Structure;
+    Options.Insert("title", "String");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetStringField", Options);

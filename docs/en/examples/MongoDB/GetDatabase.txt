@@ -4,9 +4,20 @@
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("db"    , Base);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Base = "test_db";
 
-    Result = OPI_MongoDB.GetDatabase(Connection, Base);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("db" , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDatabase", Options);

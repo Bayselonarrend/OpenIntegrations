@@ -1,2 +1,5 @@
-    Clear  = False;
-    Result = OPI_VK.GetProductDescription(Clear);
+    Clear   = False;
+    Options = New Structure;
+    Options.Insert("empty", Clear);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductDescription", Options);

@@ -43,13 +43,26 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
     StartDate = CurrentDate;
     EndDate   = CurrentDate + Week;
 
-    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("users", User);
+    Options.Insert("from" , StartDate);
+    Options.Insert("to"   , EndDate);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserBusy", Options);
 
     URL        = "b24-ar17wx.bitrix24.by";
     Token      = "a5b00469006e9f06006b12e400000001000...";
     CalendarID = "1650";
 
-    Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("users", User);
+    Options.Insert("from" , StartDate);
+    Options.Insert("to"   , EndDate);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserBusy", Options);
 ```
  
 

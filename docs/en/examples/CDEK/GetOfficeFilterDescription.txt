@@ -1,1 +1,3 @@
-    Result = OPI_CDEK.GetOfficeFilterDescription();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);

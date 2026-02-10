@@ -40,10 +40,20 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     ImageArray.Add(Image);
     ImageArray.Add(Image2);
 
-    Result = OPI_Twitter.CreateImageTweet(Text, ImageArray, Parameters);
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("pictures", ImageArray);
+    Options.Insert("auth"    , Parameters);
 
-    Text   = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
+
+    Text    = "TestTweet" + String(New UUID);
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("pictures", Image);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 ```
  
 

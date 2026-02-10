@@ -37,8 +37,18 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
 
     ChatID = "120363410406221140@g.us";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.GetChatHistory(AccessParameters, ChatID);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat"  , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetChatHistory", Options);
 ```
  
 

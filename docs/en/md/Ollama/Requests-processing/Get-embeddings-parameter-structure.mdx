@@ -24,7 +24,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_Ollama.GetEmbeddingsParameterStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 ```
  
 
