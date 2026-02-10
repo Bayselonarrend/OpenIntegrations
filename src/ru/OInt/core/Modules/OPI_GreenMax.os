@@ -47,6 +47,9 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check doc-comment-collection-item-type
 
+#Использовать "../../tools/main"
+#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область Аккаунт

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_TypeConversion.os
+// OneScript: ./OInt/tools/main/Modules/internal/Modules/internal/Modules/OPI_TypeConversion.os
 
 // MIT License
 
@@ -139,7 +139,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://")) Then
 
-                Value = OPI_HTTPRequests.Get(ValueES);
+                Value = DownloadFile(ValueES);
 
             Else
 
@@ -250,7 +250,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             ElsIf StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-                Value = OPI_HTTPRequests.Get(ValueES);
+                Value = DownloadFile(ValueES);
                 GetLine(Value);
 
             Else
@@ -530,7 +530,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
     ElsIf StrStartsWith(TrimL(ValueES), "http://")
         Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-        Value = OPI_HTTPRequests.Get(ValueES);
+        Value = DownloadFile(ValueES);
 
     Else
 
@@ -559,6 +559,26 @@ Procedure ConvertSourceToValue(Value, TryB64)
     EndIf;
 
 EndProcedure
+
+#Region HTTP
+
+Function DownloadFile(Val URL)
+
+    TFN = GetTempFileName();
+    CopyFile(URL, TFN);
+
+    Data = New BinaryData(TFN);
+
+    //@skip-check empty-except-statement
+    Try
+        DeleteFiles(TFN);
+    Except EndTry;
+
+    Return Data;
+
+EndFunction
+
+#EndRegion
 
 #EndRegion
 

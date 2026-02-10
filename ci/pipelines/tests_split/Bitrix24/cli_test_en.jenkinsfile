@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,22 +164,22 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TokenManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ServerTime'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_PostsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TaskManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CommentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_WorkingWithDrive'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Kanban'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Timekeeping'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ChatManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_NotificationsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TasksFieldsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DepartmentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B2_UsersManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_LeadsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DealsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CalendarsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TokenManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_ServerTime'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_PostsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TaskManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_CommentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_WorkingWithDrive'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_Kanban'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_Timekeeping'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_ChatManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_NotificationsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_TasksFieldsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_DepartmentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B2_UsersManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_LeadsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_DealsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'B24_CalendarsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

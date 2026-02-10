@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,12 +91,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_GroupManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_MessageSending'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_NotificationsReceiving'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_MessageQueue'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_MessageLogs'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GAPI_Account'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_GroupManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageSending'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_NotificationsReceiving'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageQueue'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageLogs'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_Account'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

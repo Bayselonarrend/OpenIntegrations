@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,12 +91,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_CommonMethods'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mong_DatabaseManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_CollectionManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_DocumentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_UserManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_RoleManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mong_DatabaseManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_CollectionManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_DocumentsManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_UserManagement'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_RoleManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

@@ -37,6 +37,9 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+//#Use "../../tools/main"
+//#Use "../../tools/http"
+
 #Region Public
 
 // Generate code retrieval link

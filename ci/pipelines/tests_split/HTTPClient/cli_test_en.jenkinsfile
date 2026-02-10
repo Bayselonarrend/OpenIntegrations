@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,13 +164,13 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Initialization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_BodySet'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Settings'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_HeadersSetting'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_Authorization'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_RequestProcessing'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'HTTP_ResponseReceiving'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Initialization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_BodySet'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Settings'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_HeadersSetting'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_RequestProcessing'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'HTTP_ResponseReceiving'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

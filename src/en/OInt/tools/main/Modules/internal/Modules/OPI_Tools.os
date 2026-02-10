@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Tools.os
+// OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_Tools.os
 
 // MIT License
 
@@ -40,7 +40,6 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
-// Uncomment if OneScript is executed
 #Use "./internal"
 
 #Region Internal

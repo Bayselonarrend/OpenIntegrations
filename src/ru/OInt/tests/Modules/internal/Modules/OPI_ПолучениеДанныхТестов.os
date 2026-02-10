@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+// OneScript: ./OInt/tests/Modules/internal/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
@@ -58,12 +58,10 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check bsl-legacy-check-expression-type
 
-// Раскомментировать, если выполняется OneScript
-
-#Использовать asserts
 #Использовать "../../../../tools/main"
 #Использовать "../../../../tools/http"
 #Использовать "../../../../core"
+#Использовать asserts
 
 #Область СлужебныйПрограммныйИнтерфейс
 

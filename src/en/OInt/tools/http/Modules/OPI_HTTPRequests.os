@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_HTTPRequests.os
+// OneScript: ./OInt/tools/http/Modules/OPI_HTTPRequests.os
 
 // MIT License
 
@@ -39,8 +39,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
-// Uncomment if OneScript is executed
 #Use "./internal"
+#Use "../../main"
 
 #Region Public
 

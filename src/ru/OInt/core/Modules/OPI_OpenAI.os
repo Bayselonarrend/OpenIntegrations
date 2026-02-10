@@ -47,6 +47,9 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
+#Использовать "../../tools/main"
+#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область ОбработкаЗапросов
