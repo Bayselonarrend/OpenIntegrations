@@ -1,5 +1,5 @@
 #Использовать osparser
-#Использовать "../../../../src/ru/OInt/tools/"
+#Использовать "../../../../src/ru/OInt/tests/Modules/internal"
 #Использовать "./internal"
 
 Перем МодульТестов;
