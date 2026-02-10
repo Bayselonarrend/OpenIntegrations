@@ -47,6 +47,9 @@
 //@skip-check constructor-function-return-section
 //@skip-check bsl-legacy-check-expression-type
 
+//#Использовать "../../tools/main"
+//#Использовать "../../tools/http"
+
 #Область ПрограммныйИнтерфейс
 
 #Область ОбщиеМетоды

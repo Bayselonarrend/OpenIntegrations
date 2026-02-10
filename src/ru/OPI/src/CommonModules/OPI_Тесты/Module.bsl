@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+ // OneScript: ./OInt/tests/Modules/OPI_Тесты.os
 
 // MIT License
 
@@ -65,9 +65,8 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать oint
-// #Использовать asserts
+//#Использовать oint
+//#Использовать asserts
 
 #Область СлужебныйПрограммныйИнтерфейс
 
