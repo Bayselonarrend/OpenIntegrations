@@ -263,7 +263,7 @@
        },
        "testsDataModule": {
         "description": "Test data module path",
-        "value": "./src/ru/OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os"
+        "value": "./src/ru/OInt/tests/Modules/internal/Modules/OPI_ПолучениеДанныхТестов.os"
        },
        "testsTableMethod": {
         "description": "Test table retrieve method",
@@ -291,11 +291,11 @@
        },
        "testsModulePath": {
         "description": "Main tests module path",
-        "value": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os"
+        "value": "./src/ru/OInt/tests/Modules/OPI_Тесты.os"
        },
        "testsCliModulePath": {
         "description": "CLI test module path",
-        "value": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os"
+        "value": "./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os"
        },
        "testsRegionName": {
         "description": "Atomic test retrieve method",
@@ -375,7 +375,7 @@
        },
        "testsDataModule": {
         "description": "Test data module path",
-        "value": "./src/en/OInt/tools/Modules/OPI_TestDataRetrieval.os"
+        "value": "./src/en/OInt/tests/Modules/internal/Modules/OPI_TestDataRetrieval.os"
        },
        "testsTableMethod": {
         "description": "Test table retrieve method",
@@ -403,11 +403,11 @@
        },
        "testsModulePath": {
         "description": "Main tests module path",
-        "value": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os"
+        "value": "./src/en/OInt/tests/Modules/OPI_Tests.os"
        },
        "testsCliModulePath": {
         "description": "CLI test module path",
-        "value": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os"
+        "value": "./src/en/OInt/tests/Modules/OPI_TestsCLI.os"
        },
        "testsRegionName": {
         "description": "Atomic test retrieve method",
