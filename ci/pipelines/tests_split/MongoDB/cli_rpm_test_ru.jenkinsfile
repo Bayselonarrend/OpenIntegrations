@@ -69,7 +69,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -84,12 +84,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_ОсновныеМетоды'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСБазами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСКоллекциями'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСДокументами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеПользователями'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеРолями'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_РаботаСБазами'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_РаботаСКоллекциями'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_РаботаСДокументами'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_УправлениеПользователями'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'Mongo_УправлениеРолями'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

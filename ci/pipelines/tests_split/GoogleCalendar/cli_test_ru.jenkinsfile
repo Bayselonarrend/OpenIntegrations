@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,10 +164,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_Авторизация'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_ПолучитьСписокКалендарей'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьКалендарь'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьСобытие'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ГК_Авторизация'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ГК_ПолучитьСписокКалендарей'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьКалендарь'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьСобытие'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

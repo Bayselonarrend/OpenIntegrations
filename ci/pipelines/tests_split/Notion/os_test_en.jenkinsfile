@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,10 +91,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'NotionAPI_CreatePage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'NotionAPI_CreateUpdateBase'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'NotionAPI_CreateDeleteBlock'],
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'NotionAPI_GetUsers'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreatePage'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreateUpdateBase'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreateDeleteBlock'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_GetUsers'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

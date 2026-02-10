@@ -47,6 +47,9 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check doc-comment-collection-item-type
 
+#Use "../../tools/main"
+#Use "../../tools/http"
+
 #Region Public
 
 #Region Account

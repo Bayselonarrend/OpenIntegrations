@@ -149,7 +149,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -164,12 +164,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'SlackGetData'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_SendDeleteMessage'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_CreateArchiveChannel'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_OpenCloseDialog'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Slack_UploadDeleteExternalFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'SlackGetData'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_SendDeleteMessage'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_CreateArchiveChannel'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_OpenCloseDialog'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'Slack_UploadDeleteExternalFile'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

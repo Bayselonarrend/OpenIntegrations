@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+ // OneScript: ./OInt/tests/Modules/OPI_Тесты.os
 
 // MIT License
 
@@ -65,7 +65,6 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// Раскомментировать, если выполняется OneScript
 #Использовать oint
 #Использовать asserts
 
@@ -27841,8 +27840,6 @@
     НастройкиСоединения = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация);
     Соединение          = OPI_ClickHouse.ОткрытьСоединениеGRPC(НастройкиСоединения);
 
-    // Создание таблицы для теста
-
     ТекстСозданияТаблицы = "CREATE TABLE IF NOT EXISTS events_stream_test (
     |    id UInt64,
     |    timestamp DateTime,
@@ -27852,13 +27849,11 @@
     |) ENGINE            = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса("DROP TABLE IF EXISTS events_stream_test"); // SKIP
-    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);                                  // SKIP
+    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса("DROP TABLE IF EXISTS events_stream_test");
+    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);
 
     Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса(ТекстСозданияТаблицы);
     Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);
-
-    // Открытие потока и вставка данных
 
     Результат = OPI_ClickHouse.ОткрытьПотокGRPC(Соединение);
 
