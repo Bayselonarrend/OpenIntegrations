@@ -35,13 +35,24 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
     TaskID    = "8722";
     CommentID = "20224";
 
-    Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
 
     URL       = "b24-ar17wx.bitrix24.by";
     Token     = "a5b00469006e9f06006b12e400000001000...";
     CommentID = "20226";
 
-    Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
 ```
  
 

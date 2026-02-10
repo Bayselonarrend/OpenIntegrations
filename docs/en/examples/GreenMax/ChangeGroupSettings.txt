@@ -9,5 +9,16 @@
     Settings.Insert("allowParticipantsPinMessages"       , False);
     Settings.Insert("allowParticipantsAddMembers"        , False);
 
-    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenMax.ChangeGroupSettings(AccessParameters, ChatID, Settings);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat"  , ChatID);
+    Options.Insert("set"   , Settings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "ChangeGroupSettings", Options);

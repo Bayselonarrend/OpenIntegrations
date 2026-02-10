@@ -41,18 +41,36 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
     Bucket = "w567hjy1";
-    Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , , Directory);
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("dir"   , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     TempFile = GetTempFileName();
     BasicData.Insert("ChunkSize", 200000);
 
-    Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , TempFile);
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("out"   , TempFile);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 ```
  
 

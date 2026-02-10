@@ -3,9 +3,22 @@
     MessageID = "7567354422724936211";
     Text      = "New message text";
 
-    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("text"     , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
     Text   = "<b>New bold message text</b>";
     Markup = "HTML";
 
-    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text, Markup);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("text"     , Text);
+    Options.Insert("parsemod" , Markup);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);

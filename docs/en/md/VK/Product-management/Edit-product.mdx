@@ -34,7 +34,12 @@ import TabItem from '@theme/TabItem';
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");
 
-    Result = OPI_VK.EditProduct(Product, ProductDescription, , Parameters);
+    Options = New Structure;
+    Options.Insert("item"   , Product);
+    Options.Insert("product", ProductDescription);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProduct", Options);
 ```
  
 

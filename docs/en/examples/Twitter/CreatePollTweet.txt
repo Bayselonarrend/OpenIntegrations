@@ -5,4 +5,10 @@
     AnswersArray.Add("Option 1");
     AnswersArray.Add("Option 2");
 
-    Result = OPI_Twitter.CreatePollTweet(Text, AnswersArray, 60, Parameters);
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("options" , AnswersArray);
+    Options.Insert("duration", 60);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreatePollTweet", Options);

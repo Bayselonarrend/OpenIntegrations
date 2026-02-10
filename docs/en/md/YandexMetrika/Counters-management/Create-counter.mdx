@@ -74,7 +74,11 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
 
     CounterStructure.Insert("site2", DomainStructure);
 
-    Result = OPI_YandexMetrika.CreateCounter(Token, CounterStructure);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("fields", CounterStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateCounter", Options);
 ```
  
 

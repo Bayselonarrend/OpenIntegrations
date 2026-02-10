@@ -3,4 +3,9 @@
     Name      = "EditedCollection";
     Selection = "144";
 
-    Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
+    Options = New Structure;
+    Options.Insert("title", Name);
+    Options.Insert("sel"  , Selection);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductCollection", Options);

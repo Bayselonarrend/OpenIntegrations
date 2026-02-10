@@ -1,7 +1,10 @@
     URL = "http://localhost:9101";
     // No authorization
 
-    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL);
+    Options = New Structure;
+    Options.Insert("url", URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
     // With basic authorization
 
@@ -10,23 +13,44 @@
 
     Authorization = New Structure(Login, Password);
 
-    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
     // With JWT authorization
 
     JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
 
-    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, JWT);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", JWT);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
     // With metadata
 
     Meta = New Map;
     Meta.Insert("custom-meta", "value");
 
-    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, Meta);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+    Options.Insert("meta", Meta);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
     // With TLS settings
 
-    Tls = OPI_ClickHouse.GetTlsSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", True);
 
-    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, , Tls);
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetTlsSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+    Options.Insert("tls" , Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);

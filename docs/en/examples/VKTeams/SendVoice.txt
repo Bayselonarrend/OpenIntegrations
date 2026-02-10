@@ -9,8 +9,24 @@
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , File);
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, , ReplyID);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, FileBD);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , FilePath);
+    Options.Insert("reply" , ReplyID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , FileBD);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);

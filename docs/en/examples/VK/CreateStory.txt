@@ -6,4 +6,9 @@
     CopyFile(Image, TFN);
     Image = New BinaryData(TFN);
 
-    Result = OPI_VK.CreateStory(Image, URL, Parameters);
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("url"    , URL);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);

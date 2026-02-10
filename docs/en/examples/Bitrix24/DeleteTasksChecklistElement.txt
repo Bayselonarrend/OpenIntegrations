@@ -2,7 +2,12 @@
     TaskID    = "8718";
     ElementID = "6160";
 
-    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("element", ElementID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksChecklistElement", Options);
 
     TaskID    = "8720";
     ElementID = "6164";
@@ -10,4 +15,10 @@
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("task"   , TaskID);
+    Options.Insert("element", ElementID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksChecklistElement", Options);

@@ -8,12 +8,27 @@
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, File);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , File);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
     Process(Result, "VKTeams", "ChangeChatPicture", "URL");
 
-    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FilePath);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , FilePath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
     Process(Result, "VKTeams", "ChangeChatPicture", "Path");
 
-    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FileBD);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , FileBD);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);

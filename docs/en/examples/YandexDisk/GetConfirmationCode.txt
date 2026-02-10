@@ -1,3 +1,6 @@
     ClientID = "cc2ce9d60deb4975be58866d32dbe7aa";
 
-    Result = OPI_YandexDisk.GetConfirmationCode(ClientID);
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetConfirmationCode", Options);

@@ -1,7 +1,10 @@
     URL = "http://localhost:8123";
     // No authorization
 
-    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL);
+    Options = New Structure;
+    Options.Insert("url", URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
     // With basic authorization
 
@@ -10,17 +13,30 @@
 
     Authorization = New Structure(Login, Password);
 
-    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
     // With JWT authorization
 
     JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
 
-    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, JWT);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", JWT);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
     // With additional headers
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("X-Custom-Header", "CustomValue");
 
-    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("auth"   , Authorization);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);

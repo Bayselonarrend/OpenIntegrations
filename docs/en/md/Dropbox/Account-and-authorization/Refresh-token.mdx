@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     AppSecret    = "tk2oewn...";
     RefreshToken = "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV...";
 
-    Result = OPI_Dropbox.RefreshToken(AppKey, AppSecret, RefreshToken);
+    Options = New Structure;
+    Options.Insert("appkey"   , AppKey);
+    Options.Insert("appsecret", AppSecret);
+    Options.Insert("refresh"  , RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RefreshToken", Options);
 ```
  
 

@@ -28,8 +28,11 @@ Description in the API documentation: [Creating a counter](https://yandex.ru/dev
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Clear  = False;
-    Result = OPI_YandexMetrika.GetCounterStructure(Clear);
+    Clear   = False;
+    Options = New Structure;
+    Options.Insert("empty", Clear);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
 ```
  
 

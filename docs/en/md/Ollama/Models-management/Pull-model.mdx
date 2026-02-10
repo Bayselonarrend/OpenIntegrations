@@ -39,7 +39,12 @@ Method at API documentation: [Pull a Model](https://github.com/ollama/ollama/blo
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.PullModel(URL, Model, , AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("model"  , Model);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
 ```
  
 

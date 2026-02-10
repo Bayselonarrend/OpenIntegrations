@@ -4,4 +4,11 @@
     Record = "recuJsvpt9DG2SuEk";
     Text   = "TestComment";
 
-    Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("base"  , Base);
+    Options.Insert("table" , Table);
+    Options.Insert("record", Record);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateComment", Options);

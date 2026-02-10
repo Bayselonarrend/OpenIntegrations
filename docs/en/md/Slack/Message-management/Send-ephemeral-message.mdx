@@ -34,8 +34,19 @@ Sends a message that arrives in the channel but is visible only to a specific us
     Image   = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Text    = "Ephemeral message";
 
-    Block  = OPI_Slack.GenerateImageBlock(Image, "Image");
-    Result = OPI_Slack.SendEphemeralMessage(Token, Channel, Text, User, Block);
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("alt"    , "Image");
+
+    Block   = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("text"   , Text);
+    Options.Insert("user"   , User);
+    Options.Insert("blocks" , Block);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendEphemeralMessage", Options);
 ```
  
 

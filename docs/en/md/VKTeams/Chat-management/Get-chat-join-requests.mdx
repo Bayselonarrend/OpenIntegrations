@@ -34,7 +34,11 @@ Method at API documentation: [GET ​​/chats​/getPendingUsers](https://teams
     Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
 
-    Result = OPI_VKTeams.GetChatJoinRequests(Token, ChatID);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatJoinRequests", Options);
 ```
  
 

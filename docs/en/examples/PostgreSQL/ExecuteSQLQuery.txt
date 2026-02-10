@@ -8,10 +8,20 @@
 
     TLS = True;
     Port = 5432;
-    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+    Options.Insert("port" , Port);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", True);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -31,7 +41,11 @@
                    |data BYTEA
                    |);";
 
-    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     // INSERT with parameters
 
@@ -47,13 +61,22 @@
     ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
     ParameterArray.Add(New Structure("BYTEA", Image));
 
-    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+    Options = New Structure;
+    Options.Insert("sql"   , QueryText);
+    Options.Insert("params", ParameterArray);
+    Options.Insert("dbc"   , Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     // SELECT (The result of this query is shown in the Result block)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     // DO + Transaction
 
@@ -69,12 +92,20 @@
                    |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    |END $$ LANGUAGE plpgsql;";
 
-    Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     // SQL query from file
 
     SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA.sql"; // Binary Data, URL or path to file
 
-    Result = OPI_PostgreSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", SQLFile);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);

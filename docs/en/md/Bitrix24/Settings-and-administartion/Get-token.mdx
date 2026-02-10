@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
     Code         = "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c";
 
-    Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);
+    Options = New Structure;
+    Options.Insert("clientid"    , ClientID);
+    Options.Insert("clientsecret", ClientSecret);
+    Options.Insert("code"        , Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetToken", Options);
 ```
  
 

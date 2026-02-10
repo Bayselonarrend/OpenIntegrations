@@ -29,7 +29,11 @@ Is a shorthand for the function `GetMessageStructure`
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_OpenAI.GetUserMessage("What is 1C:Enterprise?", "Vitaly");
+    Options = New Structure;
+    Options.Insert("text", "What is 1C:Enterprise?");
+    Options.Insert("name", "Vitaly");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetUserMessage", Options);
 ```
  
 

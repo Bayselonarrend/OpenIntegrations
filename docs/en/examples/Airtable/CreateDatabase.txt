@@ -11,4 +11,10 @@
     TableMapping = New Map;
     TableMapping.Insert(TableName, FieldArray);
 
-    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
+    Options = New Structure;
+    Options.Insert("token"     , Token);
+    Options.Insert("ws"        , Region);
+    Options.Insert("title"     , Name);
+    Options.Insert("tablesdata", TableMapping);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateDatabase", Options);

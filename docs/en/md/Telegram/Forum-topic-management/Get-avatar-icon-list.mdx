@@ -28,8 +28,11 @@ Method at API documentation: [getForumTopicIconStickers](https://core.telegram.o
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "6129457865:AAFyzNYOAFbu...";
-    Result = OPI_Telegram.GetAvatarIconList(Token);
+    Token   = "6129457865:AAFyzNYOAFbu...";
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetAvatarIconList", Options);
 ```
  
 

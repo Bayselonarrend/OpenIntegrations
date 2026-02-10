@@ -38,13 +38,25 @@ Method at AWS documentation: [GetObjectTagging](https://docs.aws.amazon.com/Amaz
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
     Bucket = "w567hjy1";
-    Result = OPI_S3.GetObjectTagging(Name, Bucket, BasicData, , , Directory);
+    Options = New Structure;
+    Options.Insert("name"  , Name);
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("dir"   , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectTagging", Options);
 ```
  
 

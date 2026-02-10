@@ -7,8 +7,15 @@
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
-    Tls        = OPI_GRPC.GetTlsSettings(True);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options    = New Structure;
+    Options.Insert("trust", True);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
     Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
 

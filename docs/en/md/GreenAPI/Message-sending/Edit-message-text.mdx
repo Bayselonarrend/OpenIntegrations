@@ -40,8 +40,20 @@ Method at API documentation: [EditMessage](https://green-api.com/docs/api/servic
     MessageID = "BAE5777A5F7C5685";
     Text      = "New message text";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.EditMessageText(AccessParameters, ChatID, MessageID, Text);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access" , AccessParameters);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("message", MessageID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "EditMessageText", Options);
 ```
  
 

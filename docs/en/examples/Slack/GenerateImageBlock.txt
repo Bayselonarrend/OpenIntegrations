@@ -1,3 +1,7 @@
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
 
-    Result = OPI_Slack.GenerateImageBlock(Image, "Image");
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("alt"    , "Image");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);

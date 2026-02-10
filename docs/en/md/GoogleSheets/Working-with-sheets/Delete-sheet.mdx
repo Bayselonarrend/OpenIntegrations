@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Spreadsheet = "1hAKnTEvhiX-_-fYfXXYthJ3xq6Ub4SrlLPaIg0Tb9fs";
     Sheet       = "767360097";
 
-    Result = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("sheet"      , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "DeleteSheet", Options);
 ```
  
 

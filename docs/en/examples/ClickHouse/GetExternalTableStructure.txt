@@ -5,11 +5,21 @@
     ColoumnsStruct.Insert("id"  , "UInt64");
     ColoumnsStruct.Insert("name", "String");
 
-    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct);
+    Options = New Structure;
+    Options.Insert("name", TableName);
+    Options.Insert("cols", ColoumnsStruct);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
 
     // With TSV data
 
     TableData = StrTemplate("1%1Test
     |2%2Test2", Chars.Tab);
 
-    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
+    Options = New Structure;
+    Options.Insert("name"  , TableName);
+    Options.Insert("cols"  , ColoumnsStruct);
+    Options.Insert("data"  , TableData);
+    Options.Insert("format", "TSV");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);

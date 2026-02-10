@@ -1,1 +1,3 @@
-    Result = OPI_Ollama.GetContextParameterStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextParameterStructure", Options);

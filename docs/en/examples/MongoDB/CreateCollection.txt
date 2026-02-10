@@ -3,7 +3,13 @@
     Password = "12we...";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Name = "test_collection";
@@ -31,4 +37,10 @@
     Expression.Insert("$expr", GroupAnd);
     Parameters.Insert("validator", Expression);
 
-    Result = OPI_MongoDB.CreateCollection(Connection, Name, Base, Parameters);
+    Options = New Structure;
+    Options.Insert("dbc"   , Connection);
+    Options.Insert("name"  , Name);
+    Options.Insert("db"    , Base);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateCollection", Options);

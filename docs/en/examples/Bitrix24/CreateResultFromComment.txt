@@ -1,10 +1,19 @@
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     CommentID = "20224";
 
-    Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);
 
     URL       = "b24-ar17wx.bitrix24.by";
     Token     = "a5b00469006e9f06006b12e400000001000...";
     CommentID = "20226";
 
-    Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID, Token);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("comment", CommentID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);

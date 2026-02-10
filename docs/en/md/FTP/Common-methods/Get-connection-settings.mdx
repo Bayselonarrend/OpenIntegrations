@@ -40,7 +40,13 @@ When `IPResolve = True`, the connection address returned by the server in passiv
     Login    = "bayselonarrend";
     Password = "12we...";
 
-    Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+    Options = New Structure;
+    Options.Insert("host" , Host);
+    Options.Insert("port" , Port);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 ```
  
 

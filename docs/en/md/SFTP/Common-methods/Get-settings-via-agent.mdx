@@ -26,10 +26,15 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Host   = "172.33.0.13";
-    Port   = "2222";
-    Login  = "bayselonarrend";
-    Result = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+    Host    = "172.33.0.13";
+    Port    = "2222";
+    Login   = "bayselonarrend";
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsViaAgent", Options);
 ```
  
 

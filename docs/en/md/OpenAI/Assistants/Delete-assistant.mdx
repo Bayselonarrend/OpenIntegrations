@@ -36,7 +36,12 @@ Method at API documentation: [Delete assistant](https://platform.openai.com/docs
 
     AssistantID = "asst_2";
 
-    Result = OPI_OpenAI.DeleteAssistant(URL, Token, AssistantID);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+    Options.Insert("id"   , AssistantID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteAssistant", Options);
 ```
  
 

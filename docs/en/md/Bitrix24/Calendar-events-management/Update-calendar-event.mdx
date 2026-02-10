@@ -43,14 +43,25 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
     EventStucture.Insert("importance"   , "low");
     EventStucture.Insert("private_event", "Y");
 
-    Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("fields", EventStucture);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 
     URL        = "b24-ar17wx.bitrix24.by";
     Token      = "a5b00469006e9f06006b12e400000001000...";
     EventID    = "3046";
     CalendarID = "1650";
 
-    Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("event" , EventID);
+    Options.Insert("fields", EventStucture);
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 ```
  
 

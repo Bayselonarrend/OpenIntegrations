@@ -36,7 +36,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Data  = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
     Path  = "testfolder/test_pic.png";
 
-    Result = OPI_Neocities.UploadFile(Token, Path, Data);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+    Options.Insert("file" , Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "UploadFile", Options);
 ```
  
 

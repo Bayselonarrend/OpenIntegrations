@@ -4,9 +4,20 @@
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     UserName = "newuser";
 
-    Result = OPI_MongoDB.DeleteUser(Connection, UserName, Base);
+    Options = New Structure;
+    Options.Insert("dbc" , Connection);
+    Options.Insert("name", UserName);
+    Options.Insert("db"  , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteUser", Options);

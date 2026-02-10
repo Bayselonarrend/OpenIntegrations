@@ -4,4 +4,9 @@
 
     Result = OPI_Telegram.OpenForumTopic(Token, Chat); // Opens main topic
 
-    Result = OPI_Telegram.OpenForumTopic(Token, Chat, Topic);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("forum", Chat);
+    Options.Insert("topic", Topic);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumTopic", Options);

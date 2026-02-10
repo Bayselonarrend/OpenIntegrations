@@ -2,4 +2,9 @@
     ChatID    = "689203963@chat.agent";
     MessageID = "7567354422724936211";
 
-    Result = OPI_VKTeams.PinMessage(Token, ChatID, MessageID);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "PinMessage", Options);

@@ -2,4 +2,9 @@
     DiscussionID = "54403421";
     Message      = "I like yellow more";
 
-    Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);
+    Options = New Structure;
+    Options.Insert("topic", DiscussionID);
+    Options.Insert("text" , Message);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteInDiscussion", Options);

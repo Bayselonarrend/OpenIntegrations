@@ -2,4 +2,8 @@
     Chat  = "-1001971186208";
     Topic = "12491";
 
-    Result = OPI_Telegram.ClearTopicPinnedMessagesList(Token, Chat);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("forum", Chat);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearTopicPinnedMessagesList", Options);

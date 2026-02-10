@@ -2,4 +2,9 @@
     Login    = "bayselonarrend";
     Password = "12we...";
 
-    Result = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);

@@ -36,7 +36,12 @@ Method at API documentation: [Retrieve file content](https://platform.openai.com
 
     FileID = "file-3";
 
-    Result = OPI_OpenAI.DownloadFile(URL, Token, FileID);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("token", Token);
+    Options.Insert("id"   , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DownloadFile", Options);
 ```
  
 

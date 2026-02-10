@@ -1,2 +1,5 @@
-    Token  = "523b58ba82afffaa-7ef3b426...";
-    Result = OPI_Viber.GetChannelInformation(Token);
+    Token   = "523b58ba82afffaa-7ef3b426...";
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetChannelInformation", Options);

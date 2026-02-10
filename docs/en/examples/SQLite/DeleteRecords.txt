@@ -13,4 +13,9 @@
 
     Filters.Add(FilterStructure);
 
-    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
+    Options = New Structure;
+    Options.Insert("table" , Table);
+    Options.Insert("filter", FilterStructure);
+    Options.Insert("db"    , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteRecords", Options);

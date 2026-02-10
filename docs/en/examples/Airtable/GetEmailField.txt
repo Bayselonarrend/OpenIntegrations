@@ -1,1 +1,4 @@
-    Result = OPI_Airtable.GetEmailField("Email");
+    Options = New Structure;
+    Options.Insert("title", "Email");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetEmailField", Options);

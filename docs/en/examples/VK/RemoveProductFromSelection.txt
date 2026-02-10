@@ -3,4 +3,9 @@
     Product   = "12115889";
     Selection = "144";
 
-    Result = OPI_VK.RemoveProductFromSelection(Product, Selection, Parameters);
+    Options = New Structure;
+    Options.Insert("item", Product);
+    Options.Insert("sel" , Selection);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "RemoveProductFromSelection", Options);

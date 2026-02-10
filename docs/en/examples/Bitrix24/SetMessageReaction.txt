@@ -1,10 +1,19 @@
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     MessageID = "67534";
 
-    Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);
 
     URL       = "b24-ar17wx.bitrix24.by";
     Token     = "a5b00469006e9f06006b12e400000001000...";
     MessageID = "67536";
 
-    Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("message", MessageID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);

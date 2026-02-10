@@ -32,7 +32,9 @@ Field descriptions in the documentation: [Order registration](https://api-docs.c
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_CDEK.GetOrderDescription();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderDescription", Options);
 ```
  
 

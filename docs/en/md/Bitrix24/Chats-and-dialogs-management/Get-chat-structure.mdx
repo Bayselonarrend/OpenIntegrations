@@ -24,8 +24,11 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Clear  = False;
-    Result = OPI_Bitrix24.GetChatStructure(Clear);
+    Clear   = False;
+    Options = New Structure;
+    Options.Insert("empty", Clear);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatStructure", Options);
 ```
  
 

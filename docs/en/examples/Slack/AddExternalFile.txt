@@ -2,4 +2,9 @@
     Title = "NewFile";
     File  = "https://hut.openintegrations.dev/test_data/document.docx";
 
-    Result = OPI_Slack.AddExternalFile(Token, File, Title);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("url"  , File);
+    Options.Insert("title", Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "AddExternalFile", Options);

@@ -1,4 +1,8 @@
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
 
-    Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat" , ChannelID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetParticipantCount", Options);

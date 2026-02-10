@@ -4,10 +4,22 @@
     Token            = "523b5b25ed27e6ec-fdf013e4...";
     SendingToChannel = False;
 
-    Result = OPI_Viber.SendLink(Token, URL, UserID, SendingToChannel);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("url"      , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
     UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
     Token            = "523b58ba82afffaa-7ef3b426...";
     SendingToChannel = True;
 
-    Result = OPI_Viber.SendLink(Token, URL, UserID, SendingToChannel);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("url"      , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);

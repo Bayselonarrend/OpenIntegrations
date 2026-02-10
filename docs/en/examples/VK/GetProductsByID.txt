@@ -7,4 +7,8 @@
     ProductsArray.Add(Item1);
     ProductsArray.Add(Item2);
 
-    Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);
+    Options = New Structure;
+    Options.Insert("items", ProductsArray);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductsByID", Options);

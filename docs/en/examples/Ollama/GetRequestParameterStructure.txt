@@ -1,1 +1,3 @@
-    Result = OPI_Ollama.GetRequestParameterStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetRequestParameterStructure", Options);

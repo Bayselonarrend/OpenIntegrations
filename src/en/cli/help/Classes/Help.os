@@ -122,6 +122,8 @@ Procedure DisplayMethodHelp(Val Command) Export
 
 	EndDo;
 
+	Console.WriteLine("");
+
 	Exit(0);
 
 EndProcedure
@@ -143,7 +145,8 @@ Procedure DisplayParameterHelp(Val Command, Val Method) Export
 	| (■|#color=Green) Method (%1|#color=Cyan)
 	| (■|#color=Green) %2
 	|
-	|%3", MethodName, MethodDescription, FullParamsDescription); 
+	|%3
+	|", MethodName, MethodDescription, FullParamsDescription); 
 
 	ColorOutput.WriteLine(HelpText);
 

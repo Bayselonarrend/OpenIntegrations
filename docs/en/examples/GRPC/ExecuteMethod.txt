@@ -7,9 +7,17 @@
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Meta       = New Structure("somekey", "somevalue");
-    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
-    Tls        = OPI_GRPC.GetTlsSettings(True);
+    Meta    = New Structure("somekey", "somevalue");
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("proto", Scheme);
+    Options.Insert("meta" , Meta);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options    = New Structure;
+    Options.Insert("trust", True);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
     Service = "grpcbin.GRPCBin";
     Method  = "DummyUnary";
@@ -60,4 +68,11 @@
     Data.Insert("f_bools"  , BoolArray);
     Data.Insert("f_enums"  , StrSplit("ENUM_1,ENUM_2" , ","));
 
-    Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Data, , Tls);
+    Options = New Structure;
+    Options.Insert("conn"   , Parameters);
+    Options.Insert("service", Service);
+    Options.Insert("method" , Method);
+    Options.Insert("data"   , Data);
+    Options.Insert("tls"    , Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);

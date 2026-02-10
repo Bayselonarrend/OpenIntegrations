@@ -3,7 +3,17 @@
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
     Method    = "GET";
 
-    Result = OPI_S3.SendRequestWithoutBody(Method, BasicData);
+    Options = New Structure;
+    Options.Insert("method", Method);
+    Options.Insert("basic" , BasicData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithoutBody", Options);

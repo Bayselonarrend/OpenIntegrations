@@ -1,2 +1,5 @@
     Parameters = GetVKParameters();
-    Result     = OPI_VK.GetProductList( , Parameters);
+    Options    = New Structure;
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductList", Options);

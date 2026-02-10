@@ -3,4 +3,10 @@
     Identifier = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
     File       = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary Data or File path
 
-    Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("object", Identifier);
+    Options.Insert("file"  , File);
+    Options.Insert("title" , NewName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UpdateFile", Options);

@@ -9,4 +9,9 @@
     ColoumnsStruct.Insert("age"  , "INTEGER");
     ColoumnsStruct.Insert("info" , "TEXT");
 
-    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("cols" , ColoumnsStruct);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);

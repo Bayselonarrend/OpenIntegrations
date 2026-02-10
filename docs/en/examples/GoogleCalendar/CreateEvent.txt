@@ -21,4 +21,9 @@
     EventDescription.Insert("ArrayOfAttachmentURLs", Attachments);
     EventDescription.Insert("SendNotifications"    , True);
 
-    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("props"   , EventDescription);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateEvent", Options);

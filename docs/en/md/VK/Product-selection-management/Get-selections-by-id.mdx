@@ -28,7 +28,11 @@ import TabItem from '@theme/TabItem';
     Parameters = GetVKParameters();
     Selection  = "144";
 
-    Result = OPI_VK.GetSelectionsByID(Selection, Parameters);
+    Options = New Structure;
+    Options.Insert("sels", Selection);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionsByID", Options);
 ```
  
 

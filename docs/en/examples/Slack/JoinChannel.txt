@@ -1,4 +1,8 @@
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C09PUMJU2GM";
 
-    Result = OPI_Slack.JoinChannel(Token, Channel);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "JoinChannel", Options);

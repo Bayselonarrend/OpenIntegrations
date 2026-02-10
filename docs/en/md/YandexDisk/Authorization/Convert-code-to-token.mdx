@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     ClientSecret = "7cc0b903d33e41c1...";
     DeviceCode   = "12345678";
 
-    Result = OPI_YandexDisk.ConvertCodeToToken(ClientID, ClientSecret, DeviceCode);
+    Options = New Structure;
+    Options.Insert("id"    , ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("device", DeviceCode);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "ConvertCodeToToken", Options);
 ```
  
 

@@ -32,7 +32,11 @@ Method at API documentation: [unhideGeneralForumTopic](https://core.telegram.org
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
 
-    Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("forum", Chat);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ShowMainForumTopic", Options);
 ```
  
 

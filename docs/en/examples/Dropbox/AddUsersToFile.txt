@@ -2,4 +2,10 @@
     Email = "h5bk6ft62s@privaterelay.appleid.com";
     File  = "kJU6-a-pT48AAAAAAAAABw";
 
-    Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("fileid"  , File);
+    Options.Insert("emails"  , Email);
+    Options.Insert("readonly", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);

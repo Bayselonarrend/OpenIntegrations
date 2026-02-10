@@ -43,8 +43,17 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     Password = "12we...";
     Base     = "test_data";
 
-    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options     = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
     Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
     // CREATE
@@ -63,7 +72,11 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
         |    Data VARBINARY(MAX)
         |);";
 
-    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     // INSERT with parameters
 
@@ -83,19 +96,32 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
     ParameterArray.Add(New Structure("UUID"    , New UUID));
     ParameterArray.Add(New Structure("BYTES"   , Image));
 
-    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+    Options = New Structure;
+    Options.Insert("sql"   , QueryText);
+    Options.Insert("params", ParameterArray);
+    Options.Insert("dbc"   , Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     // SELECT (The result of this query is shown in the Result block)
 
     QueryText = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
 
-    Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", QueryText);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     // SQL query from file
 
     SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"; // Binary Data, URL or path to file
 
-    Result = OPI_MSSQL.ExecuteSQLQuery(SQLFile, , , Connection);
+    Options = New Structure;
+    Options.Insert("sql", SQLFile);
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     Closing = OPI_MSSQL.CloseConnection(Connection);
 ```

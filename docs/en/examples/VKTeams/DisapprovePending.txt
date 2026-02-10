@@ -2,6 +2,15 @@
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Result = OPI_VKTeams.DisapprovePending(Token, ChatID, User);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("userid", User);
 
-    Result = OPI_VKTeams.DisapprovePending(Token, ChatID);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);

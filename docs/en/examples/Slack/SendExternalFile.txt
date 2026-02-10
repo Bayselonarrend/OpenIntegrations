@@ -2,4 +2,9 @@
     Channel = "C06UFNUTKUL";
     FileID  = "F09PUMN3TPX";
 
-    Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("fileid"  , FileID);
+    Options.Insert("channels", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendExternalFile", Options);

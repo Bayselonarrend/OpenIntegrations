@@ -1,2 +1,5 @@
-    Clear  = False;
-    Result = OPI_Bitrix24.GetCommentStructure(Clear);
+    Clear   = False;
+    Options = New Structure;
+    Options.Insert("empty", Clear);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCommentStructure", Options);

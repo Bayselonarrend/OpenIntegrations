@@ -6,11 +6,26 @@
     Table = "testtable";
     Name  = "new_field";
 
-    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options     = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_MSSQL.DeleteTableColumn(Table, Name, ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name", Name);
+    Options.Insert("dbc", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteTableColumn", Options);

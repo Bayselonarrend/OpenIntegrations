@@ -31,8 +31,17 @@ import TabItem from '@theme/TabItem';
     Parent = "5dd94c34fab04bff986b7511c0779f77";
     Block  = "d7021bdd15b944ababcb02bd2b1a5f6a";
 
-    BlockData = OPI_Notion.ReturnBlock(Token, Block);
-    Result    = OPI_Notion.CreateBlock(Token, Parent, BlockData);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("block", Block);
+
+    BlockData = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
+    Options   = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("page" , Parent);
+    Options.Insert("block", BlockData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateBlock", Options);
 ```
  
 

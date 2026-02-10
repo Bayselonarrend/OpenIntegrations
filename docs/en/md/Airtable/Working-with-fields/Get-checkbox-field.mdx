@@ -24,7 +24,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_Airtable.GetCheckboxField("Checkbox");
+    Options = New Structure;
+    Options.Insert("title", "Checkbox");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetCheckboxField", Options);
 ```
  
 

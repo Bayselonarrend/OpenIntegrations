@@ -32,7 +32,12 @@ import TabItem from '@theme/TabItem';
     StartDate   = BegOfDay(CurrentDate);
     EndDate     = EndOfDay(StartDate);
 
-    Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
+    Options = New Structure;
+    Options.Insert("datefrom", StartDate);
+    Options.Insert("dateto"  , EndDate);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetStatistics", Options);
 ```
  
 

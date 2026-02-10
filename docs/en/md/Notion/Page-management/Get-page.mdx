@@ -28,7 +28,11 @@ import TabItem from '@theme/TabItem';
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
     Page  = "29d82aa7-fc4e-81bd-8fc1-e5b7d59b73fa";
 
-    Result = OPI_Notion.GetPage(Token, Page);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("page" , Page);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetPage", Options);
 ```
  
 

@@ -39,8 +39,17 @@ List of available types is described on the initial page of the MSSQL library do
     Password = "12we...";
     Base     = "test_data";
 
-    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
-    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options     = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -62,7 +71,14 @@ List of available types is described on the initial page of the MSSQL library do
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Result = OPI_MSSQL.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("values", FieldsStructure);
+    Options.Insert("filter", FilterStructure);
+    Options.Insert("dbc", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "UpdateRecords", Options);
 ```
  
 

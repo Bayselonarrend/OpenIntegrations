@@ -39,7 +39,12 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
     ChatID = "AoLI0egLWBSLR1Ngn2w";
     Text   = "Message text";
 
-    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
     ChatID  = "689203963@chat.agent";
     ReplyID = "7567354422724936211";
@@ -55,7 +60,15 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
 
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
-    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("chatid"  , ChatID);
+    Options.Insert("text"    , Text);
+    Options.Insert("reply"   , ReplyID);
+    Options.Insert("keyboard", Keyboard);
+    Options.Insert("parsemod", Markup);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 ```
  
 

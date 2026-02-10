@@ -33,7 +33,13 @@ import TabItem from '@theme/TabItem';
     Password = "12we...";
     Base     = "";
 
-    Result = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password);
+    Options = New Structure;
+    Options.Insert("addr" , Address);
+    Options.Insert("db"   , Base);
+    Options.Insert("login", Login);
+    Options.Insert("pass" , Password);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 ```
  
 

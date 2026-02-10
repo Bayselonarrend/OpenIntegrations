@@ -37,7 +37,11 @@ import TabItem from '@theme/TabItem';
 
     // Connection creation
 
-    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+
+    ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
     // Request via open connection (table creation)
@@ -51,8 +55,15 @@ import TabItem from '@theme/TabItem';
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req" , Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     // Data insertion
 
@@ -82,15 +93,34 @@ import TabItem from '@theme/TabItem';
     Data      = New Structure("meta,data", Meta, DataArray);
     RequestID = String(New UUID());
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", RequestID, Data, DataFormat);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query" , QueryText);
+    Options.Insert("db"    , "default");
+    Options.Insert("id"    , RequestID);
+    Options.Insert("data"  , Data);
+    Options.Insert("format", DataFormat);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req" , Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     // Selection
 
     SelectionText = "SELECT * FROM events_grpc";
 
-    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query" , SelectionText);
+    Options.Insert("format", "JSON");
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req" , Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     // Request with external table via gRPC
 
@@ -102,15 +132,30 @@ import TabItem from '@theme/TabItem';
     TableData = "1" + Tab + "John
     |2" + Tab + "Jane";
 
-    ExternalTable = OPI_ClickHouse.GetExternalTableStructure("ext_grpc", ColoumnsStruct, TableData, "TSV");
+    Options = New Structure;
+    Options.Insert("name"  , "ext_grpc");
+    Options.Insert("cols"  , ColoumnsStruct);
+    Options.Insert("data"  , TableData);
+    Options.Insert("format", "TSV");
+
+    ExternalTable = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
 
     ExternalTablesArray = New Array;
     ExternalTablesArray.Add(ExternalTable);
 
     QueryText = "SELECT * FROM ext_grpc";
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", ExternalTablesArray);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query" , QueryText);
+    Options.Insert("format", "JSON");
+    Options.Insert("ext"   , ExternalTablesArray);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req" , Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 ```
  
 

@@ -6,4 +6,12 @@
     Name        = String(New UUID) + "(change.)";
     Description = "New description";
 
-    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("base"       , Base);
+    Options.Insert("table"      , Table);
+    Options.Insert("field"      , Field);
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyField", Options);

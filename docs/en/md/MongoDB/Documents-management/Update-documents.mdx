@@ -34,7 +34,13 @@ import TabItem from '@theme/TabItem';
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "new_collection";
@@ -44,7 +50,13 @@ import TabItem from '@theme/TabItem';
     Data = New Structure( "__4set", New Structure("doubleField", 999));
 
     Updating = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data); // Array or single
-    Result   = OPI_MongoDB.UpdateDocuments(Connection, Collection, Updating, Base);
+    Options  = New Structure;
+    Options.Insert("dbc"    , Connection);
+    Options.Insert("coll"   , Collection);
+    Options.Insert("updates", Updating);
+    Options.Insert("db"     , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
 ```
  
 
