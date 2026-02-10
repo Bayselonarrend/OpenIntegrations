@@ -31,7 +31,12 @@ import TabItem from '@theme/TabItem';
     AccountID = "1607951446";
     AdID      = "0";
 
-    Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);
+    Options = New Structure;
+    Options.Insert("cabinet", AccountID);
+    Options.Insert("adv"    , AdID);
+    Options.Insert("auth"   , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "PauseAdvertising", Options);
 ```
  
 

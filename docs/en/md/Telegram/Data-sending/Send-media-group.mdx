@@ -51,7 +51,13 @@ Method at API documentation: [sendMediaGroup](https://core.telegram.org/bots/api
     MediaGroup.Insert(ImagePath, "photo");
     MediaGroup.Insert(VideoDD  , "video");
 
-    Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat" , ChatID);
+    Options.Insert("text" , Text);
+    Options.Insert("media", MediaGroup);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendMediaGroup", Options);
 ```
  
 

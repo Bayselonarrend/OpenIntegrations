@@ -33,13 +33,22 @@ Method at API documentation: [task.item.userfield.delete](https://dev.1c-bitrix.
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     FieldID = "259";
 
-    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fieldid", FieldID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
 
     URL     = "b24-ar17wx.bitrix24.by";
     Token   = "a5b00469006e9f06006b12e400000001000...";
     FieldID = "261";
 
-    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID, Token);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("fieldid", FieldID);
+    Options.Insert("token"  , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
 ```
  
 

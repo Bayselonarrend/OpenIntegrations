@@ -36,7 +36,13 @@ Method at API documentation: [Update an order](https://api-docs.cdek.ru/36989543
 
     OrderDescription = New Structure("comment", "NewComment");
 
-    Result = OPI_CDEK.UpdateOrder(Token, UUID, OrderDescription, True);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("order"  , OrderDescription);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "UpdateOrder", Options);
 ```
  
 

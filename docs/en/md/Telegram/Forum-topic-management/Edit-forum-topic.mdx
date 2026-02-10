@@ -38,7 +38,14 @@ Method at API documentation: [editForumTopic](https://core.telegram.org/bots/api
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 
-    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("forum", Chat);
+    Options.Insert("topic", Topic);
+    Options.Insert("title", NewName);
+    Options.Insert("icon" , NewIcon);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditForumTopic", Options);
 ```
  
 

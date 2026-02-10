@@ -29,7 +29,10 @@ Tls settings can only be set when a connection is created: explicitly, by using 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_GRPC.GetTlsSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 ```
  
 

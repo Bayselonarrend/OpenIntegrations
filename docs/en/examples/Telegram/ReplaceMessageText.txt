@@ -3,4 +3,10 @@
     MessageID = "22536";
     Text      = "New message text";
 
-    Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chat"   , ChatID);
+    Options.Insert("message", MessageID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageText", Options);

@@ -40,14 +40,27 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "pictureU.jpg";
 
     Directory = True; // Formation URL in path-style
     Bucket = "newbucket2";
 
-    Result = OPI_S3.GetObjectUploadLink(Name, Bucket, BasicData, 7200, , Directory);
+    Options = New Structure;
+    Options.Insert("name"   , Name);
+    Options.Insert("bucket" , Bucket);
+    Options.Insert("basic"  , BasicData);
+    Options.Insert("expires", 7200);
+    Options.Insert("dir"    , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
 ```
  
 

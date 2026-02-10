@@ -7,4 +7,10 @@
     CellsArray.Add("A3");
     CellsArray.Add("B4");
 
-    Result = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, CellsArray, Sheet);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("cells"      , CellsArray);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);

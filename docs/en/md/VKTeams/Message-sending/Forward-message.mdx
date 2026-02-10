@@ -39,11 +39,24 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
     FromChatID = "689203963@chat.agent";
     MessageID  = "7567354422724936211";
 
-    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("fromid"   , FromChatID);
+    Options.Insert("chatid"   , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
     Text = "Additional text";
 
-    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID, Text);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("fromid"   , FromChatID);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("text"     , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 ```
  
 

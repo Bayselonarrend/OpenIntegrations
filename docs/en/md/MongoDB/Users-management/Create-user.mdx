@@ -39,7 +39,13 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     RoleArray = New Array;
@@ -49,7 +55,14 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     UserName     = "newuser";
     UserPassword = "1234";
 
-    Result = OPI_MongoDB.CreateUser(Connection, UserName, RoleArray, Base, UserPassword);
+    Options = New Structure;
+    Options.Insert("dbc"  , Connection);
+    Options.Insert("name" , UserName);
+    Options.Insert("roles", RoleArray);
+    Options.Insert("db"   , Base);
+    Options.Insert("pwd"  , UserPassword);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateUser", Options);
 ```
  
 

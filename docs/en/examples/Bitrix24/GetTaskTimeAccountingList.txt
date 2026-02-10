@@ -1,9 +1,18 @@
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     TaskID = "8726";
 
-    Result = OPI_Bitrix24.GetTaskTimeAccountingList(URL, TaskID);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("task", TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.GetTaskTimeAccountingList(URL, TaskID, Token);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);

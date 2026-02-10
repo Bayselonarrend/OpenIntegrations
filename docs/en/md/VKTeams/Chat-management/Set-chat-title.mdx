@@ -36,7 +36,12 @@ Method at API documentation: [GET ​​/chats/setTitle](https://teams.vk.com/bo
     ChatID = "689203963@chat.agent";
     Text   = "New title";
 
-    Result = OPI_VKTeams.SetChatTitle(Token, ChatID, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatTitle", Options);
 ```
  
 

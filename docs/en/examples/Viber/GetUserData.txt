@@ -1,4 +1,8 @@
     Token  = "523b58ba82afffaa-7ef3b426...";
     UserID = "tMNGhftyUPrB3r1lD+bT4g==";
 
-    Result = OPI_Viber.GetUserData(Token, UserID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("user" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetUserData", Options);

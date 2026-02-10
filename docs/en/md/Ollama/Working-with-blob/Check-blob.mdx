@@ -37,7 +37,12 @@ Method at API documentation: [Check if a Blob Exists](https://github.com/ollama/
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Result = OPI_Ollama.CheckBlob(URL, SHA256, AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("url"    , URL);
+    Options.Insert("digest" , SHA256);
+    Options.Insert("headers", AdditionalHeaders);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
 ```
  
 

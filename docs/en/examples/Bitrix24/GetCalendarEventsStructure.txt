@@ -1,1 +1,3 @@
-    Result = OPI_Bitrix24.GetCalendarEventsStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsStructure", Options);

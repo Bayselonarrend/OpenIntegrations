@@ -39,7 +39,13 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
     UUID   = "4c7113d6-e20b-4218-9fd9-2cf33b75a384";
     Tariff = 139;
 
-    Result = OPI_CDEK.CreateCustomerRefund(Token, UUID, Tariff, True);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("uuid"   , UUID);
+    Options.Insert("tariff" , Tariff);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCustomerRefund", Options);
 ```
  
 

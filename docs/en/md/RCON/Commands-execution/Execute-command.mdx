@@ -34,11 +34,21 @@ When passing connection parameters, a new connection will be created and closed 
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("pass" , Password);
+    Options.Insert("rtout", ReadTimeout);
+    Options.Insert("wtout", WriteTimeout);
+
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
     Connection       = OPI_RCON.CreateConnection(ConnectionParams);
 
     Command = "list";
-    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
+    Options = New Structure;
+    Options.Insert("exec", Command);
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
 ```
  
 

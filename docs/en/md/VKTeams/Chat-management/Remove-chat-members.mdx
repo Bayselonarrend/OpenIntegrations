@@ -34,7 +34,12 @@ Method at API documentation: [GET /chats/members/delete](https://teams.vk.com/bo
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Result = OPI_VKTeams.RemoveChatMembers(Token, ChatID, User);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("members", User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "RemoveChatMembers", Options);
 ```
  
 

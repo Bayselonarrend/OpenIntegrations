@@ -36,7 +36,12 @@ Method at API documentation: [GET /chats/setRules](https://teams.vk.com/botapi/#
     ChatID = "689203963@chat.agent";
     Text   = "Text of the new rules";
 
-    Result = OPI_VKTeams.SetChatRules(Token, ChatID, Text);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatRules", Options);
 ```
  
 

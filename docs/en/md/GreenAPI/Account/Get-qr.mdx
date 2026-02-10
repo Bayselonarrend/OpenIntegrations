@@ -33,8 +33,17 @@ Method at API documentation: [QR](https://green-api.com/docs/api/account/QR/)
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.GetQR(AccessParameters);
+    Options = New Structure;
+    Options.Insert("api"  , ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id"   , IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options          = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetQR", Options);
 ```
  
 

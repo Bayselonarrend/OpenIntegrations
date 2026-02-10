@@ -1,4 +1,8 @@
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Path  = "/c20d5eca-8524-41ce-aa92-521e71dd6b17.png";
 
-    Result = OPI_YandexDisk.DownloadFile(Token, Path);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);

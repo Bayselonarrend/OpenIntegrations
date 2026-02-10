@@ -3,4 +3,7 @@
     ButtonArray.Add("Button 2");
     ButtonArray.Add("Button 3");
 
-    Result = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);

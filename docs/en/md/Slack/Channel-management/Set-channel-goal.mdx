@@ -30,7 +30,12 @@ import TabItem from '@theme/TabItem';
     Channel = "C09PUMJU2GM";
     Purpose = "TestGoal";
 
-    Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("purpose", Purpose);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelGoal", Options);
 ```
  
 

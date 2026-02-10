@@ -5,4 +5,10 @@
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);
 
-    Result = OPI_Dropbox.UploadFile(Token, ImagePath, Path, True);
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("file"     , ImagePath);
+    Options.Insert("path"     , Path);
+    Options.Insert("overwrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);

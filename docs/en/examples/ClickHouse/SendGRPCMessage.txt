@@ -4,7 +4,11 @@
 
     Authorization = New Structure(Login, Password);
 
-    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url" , URL);
+    Options.Insert("auth", Authorization);
+
+    ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
     Timeout = 10000;
@@ -13,6 +17,10 @@
     StreamID      = OpeningResult["streamId"];
 
     QueryText = "SELECT 1 AS result";
-    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Options   = New Structure;
+    Options.Insert("query" , QueryText);
+    Options.Insert("format", "JSON");
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
     Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);

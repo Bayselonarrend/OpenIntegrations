@@ -1,4 +1,8 @@
     Parameters = GetVKParameters();
     ImageID    = "457260557";
 
-    Result = OPI_VK.DeleteImage(ImageID, Parameters);
+    Options = New Structure;
+    Options.Insert("pictureid", ImageID);
+    Options.Insert("auth"     , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteImage", Options);

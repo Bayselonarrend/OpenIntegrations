@@ -31,7 +31,10 @@ Passing Tls settings together with passing an already created connection to the 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_PostgreSQL.GetTLSSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
 ```
  
 

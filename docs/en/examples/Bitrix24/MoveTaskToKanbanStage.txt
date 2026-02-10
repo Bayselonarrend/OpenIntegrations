@@ -3,11 +3,22 @@
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("stage", StageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);
 
     StageID = "3218";
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
+    Options = New Structure;
+    Options.Insert("url"  , URL);
+    Options.Insert("task" , TaskID);
+    Options.Insert("stage", StageID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);

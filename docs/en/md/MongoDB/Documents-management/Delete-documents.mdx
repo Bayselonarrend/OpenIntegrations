@@ -34,7 +34,13 @@ import TabItem from '@theme/TabItem';
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Options          = New Structure;
+    Options.Insert("addr"  , Address);
+    Options.Insert("usr"   , Login);
+    Options.Insert("pwd"   , Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "new_collection";
@@ -42,7 +48,13 @@ import TabItem from '@theme/TabItem';
     Filter   = New Structure("stringField,doubleField", "Text", 999);
     Deletion = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single
 
-    Result = OPI_MongoDB.DeleteDocuments(Connection, Collection, Deletion, Base);
+    Options = New Structure;
+    Options.Insert("dbc"    , Connection);
+    Options.Insert("coll"   , Collection);
+    Options.Insert("deletes", Deletion);
+    Options.Insert("db"     , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteDocuments", Options);
 ```
  
 

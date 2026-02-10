@@ -14,4 +14,9 @@
     CounterStructure.Insert("favorite"     , 0);
     CounterStructure.Insert("filter_robots", 1);
 
-    Result = OPI_YandexMetrika.UpdateCounter(Token, CounterID, CounterStructure);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("counter", CounterID);
+    Options.Insert("fields" , CounterStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateCounter", Options);

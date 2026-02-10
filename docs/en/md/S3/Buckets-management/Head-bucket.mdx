@@ -37,13 +37,30 @@ Method at AWS documentation: [HeadBucket](https://docs.aws.amazon.com/AmazonS3/l
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Name = "w567hjy1";
-    Result = OPI_S3.HeadBucket(Name, BasicData, Directory);
+    Options = New Structure;
+    Options.Insert("name" , Name);
+    Options.Insert("basic", BasicData);
+    Options.Insert("dir"  , Directory);
 
-    Result = OPI_S3.HeadBucket(Name, BasicData, Directory, "1234");
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
+
+    Options = New Structure;
+    Options.Insert("name"   , Name);
+    Options.Insert("basic"  , BasicData);
+    Options.Insert("dir"    , Directory);
+    Options.Insert("account", "1234");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
 ```
  
 

@@ -38,12 +38,24 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
+    Options = New Structure;
+    Options.Insert("url"   , URL);
+    Options.Insert("access", AccessKey);
+    Options.Insert("secret", SecretKey);
+    Options.Insert("region", Region);
+
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Bucket = "w567hjy1";
-    Prefix = "pic";
-    Result = OPI_S3.ListObjectVersions(Bucket, BasicData, Prefix, , , Directory);
+    Prefix  = "pic";
+    Options = New Structure;
+    Options.Insert("bucket", Bucket);
+    Options.Insert("basic" , BasicData);
+    Options.Insert("prefix", Prefix);
+    Options.Insert("dir"   , Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListObjectVersions", Options);
 ```
  
 

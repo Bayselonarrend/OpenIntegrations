@@ -36,14 +36,25 @@ Method at API documentation: [disk.file.copyto](https://dev.1c-bitrix.ru/rest_he
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID);
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("fileid"  , FileID);
+    Options.Insert("folderid", FolderID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 
     FolderID = "46678";
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID, Token);
+    Options = New Structure;
+    Options.Insert("url"     , URL);
+    Options.Insert("fileid"  , FileID);
+    Options.Insert("folderid", FolderID);
+    Options.Insert("token"   , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 ```
  
 

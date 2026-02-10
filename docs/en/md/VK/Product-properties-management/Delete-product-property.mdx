@@ -29,7 +29,11 @@ import TabItem from '@theme/TabItem';
 
     Property = "4862";
 
-    Result = OPI_VK.DeleteProductProperty(Property, Parameters);
+    Options = New Structure;
+    Options.Insert("prop", Property);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductProperty", Options);
 ```
  
 

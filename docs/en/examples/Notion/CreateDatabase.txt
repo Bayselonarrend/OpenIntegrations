@@ -21,4 +21,10 @@
 
     Properties.Insert("Status", ValueSelection);
 
-    Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("page" , Parent);
+    Options.Insert("title", Title);
+    Options.Insert("props", Properties);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateDatabase", Options);

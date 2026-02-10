@@ -1,1 +1,3 @@
-    Result = OPI_MySQL.GetRecordsFilterStructure();
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecordsFilterStructure", Options);

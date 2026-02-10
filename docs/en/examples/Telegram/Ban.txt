@@ -2,4 +2,9 @@
     UserID    = "461699897";
     ChannelID = "@testsichee";
 
-    Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("chat" , ChannelID);
+    Options.Insert("user" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "Ban", Options);

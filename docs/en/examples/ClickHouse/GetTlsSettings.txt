@@ -1,1 +1,4 @@
-    Result = OPI_ClickHouse.GetTlsSettings(False);
+    Options = New Structure;
+    Options.Insert("trust", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetTlsSettings", Options);

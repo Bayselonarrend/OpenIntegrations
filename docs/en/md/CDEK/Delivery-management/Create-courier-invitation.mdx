@@ -72,7 +72,12 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
 
     InvitationDescription.Insert("from_location", ShippingPoint);
 
-    Result = OPI_CDEK.CreateCourierInvitation(Token, InvitationDescription, True);
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("intake" , InvitationDescription);
+    Options.Insert("testapi", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCourierInvitation", Options);
 ```
  
 

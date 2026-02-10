@@ -32,7 +32,13 @@ import TabItem from '@theme/TabItem';
     Name     = "new_col";
     DataType = "TEXT";
 
-    Result = OPI_SQLite.AddTableColumn(Table, Name, DataType, Base);
+    Options = New Structure;
+    Options.Insert("table", Table);
+    Options.Insert("name" , Name);
+    Options.Insert("type" , DataType);
+    Options.Insert("db"   , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddTableColumn", Options);
 ```
  
 

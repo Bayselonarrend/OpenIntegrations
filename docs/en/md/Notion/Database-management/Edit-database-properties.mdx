@@ -38,7 +38,14 @@ import TabItem from '@theme/TabItem';
     Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
     Properties.Insert("Website"); // Field "Website" will deleted
 
-    Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("base"       , Base);
+    Options.Insert("props"      , Properties);
+    Options.Insert("title"      , Title);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditDatabaseProperties", Options);
 ```
  
 

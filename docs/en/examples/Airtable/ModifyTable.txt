@@ -4,4 +4,11 @@
     Name        = "Test table 2 (change.)";
     Description = "New table (change.)";
 
-    Result = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description);
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("base"       , Base);
+    Options.Insert("table"      , Table);
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyTable", Options);
