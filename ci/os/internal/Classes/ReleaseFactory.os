@@ -264,7 +264,7 @@
 		
 	КонецЦикла;
 	
-	УдалитьФайлы("./ci/installer_set/share/oint/lib/oint/tests");
+	УдалитьФайлы("./ci/installer_set/share/oint/lib/oint/tests/", "*.os");
 	
 КонецПроцедуры
 
