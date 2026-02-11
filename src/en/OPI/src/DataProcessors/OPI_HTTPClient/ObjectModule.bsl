@@ -49,6 +49,8 @@
 //@skip-check doc-comment-collection-item-type
 //@skip-check object-module-export-variable
 
+//#Use "../../../../main"
+
 #If Not Client Then
 
 #Region Variables
