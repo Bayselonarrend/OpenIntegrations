@@ -49,6 +49,8 @@
 //@skip-check doc-comment-collection-item-type
 //@skip-check object-module-export-variable
 
+//#Использовать "../../../../main"
+
 #Если Не Клиент Тогда
 
 #Область ОписаниеПеременных
