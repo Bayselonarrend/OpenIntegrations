@@ -235,8 +235,9 @@ Function Base64UrlEncode(Val Value) Export
     Output = Base64String(Value);
     Output = StrSplit(Output, "=")[0];
     Output = StrReplace(Output, Chars.CR + Chars.LF, "");
-    Output = StrReplace(Output, "+"                , "-");
-    Output = StrReplace(Output, "/"                , "_");
+
+    Output = StrReplace(Output, "+", "-");
+    Output = StrReplace(Output, "/", "_");
     Return Output;
 
 EndFunction

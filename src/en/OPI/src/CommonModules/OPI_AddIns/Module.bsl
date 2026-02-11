@@ -52,7 +52,7 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     AddIn     = Undefined;
     Error     = "";
-    AddInName = "OPI_" + AddInName;
+    AddInName = StrTemplate("OPI_%1", AddInName);
 
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
@@ -205,7 +205,7 @@ EndFunction
 Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
     Try
-        AddIn = New("AddIn." + AddInName + "." + Class);
+        AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
         Return True;
     Except
         Return False;
@@ -216,14 +216,14 @@ EndFunction
 Function AttachAddInOnServer(Val AddInName, Val Class, Error)
 
     If OPI_Tools.IsOneScript() Then
-        TemplateName = AddInsFolderOS() + AddInName + ".zip";
+        TemplateName = StrTemplate("%1%2.zip"         , AddInsFolderOS(), AddInName);
     Else
-        TemplateName = "CommonTemplate." + AddInName;
+        TemplateName = StrTemplate("CommonTemplate.%1", AddInName);
     EndIf;
 
     Try
         ConnectAddInNoIsolated(TemplateName, AddInName);
-        AddIn = New("AddIn." + AddInName + "." + Class);
+        AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
         Error = Undefined;
         Return AddIn;
     Except
@@ -307,24 +307,19 @@ Procedure FormAddInException(Val Error)
 
     If Not OPI_Tools.IsWindows() Then
 
-        Text = Text
-            + Chars.LF
-            + Chars.LF
-            + "Important: The component requires GLIBC >=2.18"
-            + " and OpenSSL version 3.x"
-            + Chars.LF
-            + "Check that these dependencies are resolved on your system!";
+        Text                                      = StrTemplate("%1
+        |
+        |Important: The component requires GLIBC >=2.18 and OpenSSL version 3.x
+        |Check that these dependencies are resolved on your system!", Text);
 
     EndIf;
 
-    Text = Text
-        + Chars.LF
-        + Chars.LF
-        + "Read more: https://en.openintegrations.dev/docs/Start/Component-requirements"
-        + Chars.LF
-        + Chars.LF
-        + "System info:"
-        + Error;
+    Text = StrTemplate("%1
+    |
+    |Read more: https://en.openintegrations.dev/docs/Start/Component-requirements
+    |
+    |System info:
+    |%2", Text, Error);
 
     Raise Text;
 
