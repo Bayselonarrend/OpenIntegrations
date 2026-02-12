@@ -65,8 +65,8 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Использовать "../../../tools"
-// #Использовать "../../../core"
+#Использовать "../../../tools"
+#Использовать "../../../core"
 // #Использовать asserts
 
 #Область СлужебныйПрограммныйИнтерфейс
