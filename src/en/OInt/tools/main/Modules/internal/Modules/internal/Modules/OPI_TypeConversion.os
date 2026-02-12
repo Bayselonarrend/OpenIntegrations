@@ -139,7 +139,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://")) Then
 
-                Value = DownloadFile(ValueES);
+                Value = OPI_HTTPRequests.Get(ValueES);
 
             Else
 
@@ -250,7 +250,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             ElsIf StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-                Value = DownloadFile(ValueES);
+                Value = OPI_HTTPRequests.Get(ValueES);
                 GetLine(Value);
 
             Else
@@ -530,7 +530,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
     ElsIf StrStartsWith(TrimL(ValueES), "http://")
         Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-        Value = DownloadFile(ValueES);
+        Value = OPI_HTTPRequests.Get(ValueES);
 
     Else
 
@@ -559,26 +559,6 @@ Procedure ConvertSourceToValue(Value, TryB64)
     EndIf;
 
 EndProcedure
-
-#Region HTTP
-
-Function DownloadFile(Val URL)
-
-    TFN = GetTempFileName();
-    CopyFile(URL, TFN);
-
-    Data = New BinaryData(TFN);
-
-    //@skip-check empty-except-statement
-    Try
-        DeleteFiles(TFN);
-    Except EndTry;
-
-    Return Data;
-
-EndFunction
-
-#EndRegion
 
 #EndRegion
 
