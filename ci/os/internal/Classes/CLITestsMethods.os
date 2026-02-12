@@ -114,7 +114,7 @@
 		
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "СформироватьТестыЯкс()", "СформироватьТестыЯксCLI()");
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "СформироватьТестыАссертс()", "СформироватьТестыАссертсCLI()");
-		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os", "// OneScript: ./OInt/tests/Modules/internal/OPI_ТестыCLI.os");
+		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/OPI_Тесты.os", "// OneScript: ./OInt/tests/Modules/OPI_ТестыCLI.os");
 		
 	Иначе
 		
@@ -127,7 +127,7 @@
 		
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "FormYAXTests()", "FormYAXTestsCLI()");
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "FormAssertsTests()", "FormAssertsTestsCLI()");
-		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/internal/OPI_Tests.os", "// OneScript: ./OInt/tests/Modules/internal/OPI_TestsCLI.os");
+		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/OPI_Tests.os", "// OneScript: ./OInt/tests/Modules/OPI_TestsCLI.os");
 		
 	КонецЕсли;
 	
