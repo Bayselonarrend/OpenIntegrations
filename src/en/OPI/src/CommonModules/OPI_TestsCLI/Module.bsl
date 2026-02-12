@@ -65,8 +65,8 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Use "../../../tools"
-// #Use "../../../core"
+#Use "../../../tools"
+#Use "../../../core"
 // #Use asserts
 
 #Region Internal
