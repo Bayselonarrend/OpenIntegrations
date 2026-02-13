@@ -2,9 +2,4 @@
     Channel = "C09PUMJU2GM";
     User    = "U06UABH3APP";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("user"   , User);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "KickUserFromChannel", Options);
+    Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);

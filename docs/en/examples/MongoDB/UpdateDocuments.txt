@@ -4,13 +4,7 @@
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "new_collection";
@@ -20,10 +14,4 @@
     Data = New Structure( "__4set", New Structure("doubleField", 999));
 
     Updating = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data); // Array or single
-    Options  = New Structure;
-    Options.Insert("dbc"    , Connection);
-    Options.Insert("coll"   , Collection);
-    Options.Insert("updates", Updating);
-    Options.Insert("db"     , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
+    Result   = OPI_MongoDB.UpdateDocuments(Connection, Collection, Updating, Base);

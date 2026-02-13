@@ -42,34 +42,18 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 
     MessagesArray = New Array;
 
-    Options = New Structure;
-    Options.Insert("role", "user");
-    Options.Insert("text", "What is 1C:Enterprise?");
-
-    Question1 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
+    Question1 = OPI_Ollama.GetContextMessageStructure("user", "What is 1C:Enterprise?");
     Question2 = OPI_Ollama.GetContextMessageStructure("user", "When the first version was released?"); // Question without specifics
 
     // Adding the first question to the context
     MessagesArray.Add(Question1);
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("msgs"   , MessagesArray);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Response1 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
+    Response1 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
 
     MessagesArray.Add(Response1["message"]); // Add response to first question in context
     MessagesArray.Add(Question2); // Add second question in context
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("msgs"   , MessagesArray);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Response2 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
+    Response2 = OPI_Ollama.GetContextResponse(URL, Model, MessagesArray, , AdditionalHeaders);
 
     MessagesArray.Add(Response2["message"]);
 

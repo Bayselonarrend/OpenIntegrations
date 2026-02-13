@@ -6,9 +6,4 @@
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
+    Result = OPI_Ollama.PullModel(URL, Model, , AdditionalHeaders);

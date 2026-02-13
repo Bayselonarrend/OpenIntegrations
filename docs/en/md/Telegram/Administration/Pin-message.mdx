@@ -34,12 +34,7 @@ Method at API documentation: [pinChatMessage](https://core.telegram.org/bots/api
     ChannelID = "@testsichee";
     MessageID = "22536";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("chat"   , ChannelID);
-    Options.Insert("message", MessageID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "PinMessage", Options);
+    Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 ```
  
 

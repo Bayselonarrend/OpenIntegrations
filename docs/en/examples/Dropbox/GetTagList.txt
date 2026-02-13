@@ -4,8 +4,4 @@
     PathsArray.Add("/New/Dogs.mp3");
     PathsArray.Add("/New/mydoc.docx");
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("paths", PathsArray);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
+    Result = OPI_Dropbox.GetTagList(Token, PathsArray);

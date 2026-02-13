@@ -6,16 +6,5 @@
     GroupID = "120363421084000163@g.us";
     UserID  = "123123123@c.us";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access", AccessParameters);
-    Options.Insert("group" , GroupID);
-    Options.Insert("user"  , UserID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "RevokeAdminRights", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.RevokeAdminRights(AccessParameters, GroupID, UserID);

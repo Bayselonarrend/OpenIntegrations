@@ -6,16 +6,5 @@
     UserID = 87654321;
     Name   = "New group";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access" , AccessParameters);
-    Options.Insert("name"   , Name);
-    Options.Insert("members", UserID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "CreateGroup", Options);
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.CreateGroup(AccessParameters, Name, UserID);

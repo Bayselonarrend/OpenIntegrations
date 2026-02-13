@@ -743,3 +743,95 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetConfirmationCode(Val ClientId) Export
+    Return ПолучитьКодПодтверждения(ClientId);
+EndFunction
+
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
+    Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
+EndFunction
+
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+    Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
+EndFunction
+
+Function GetDiskInformation(Val Token) Export
+    Return ПолучитьИнформациюОДиске(Token);
+EndFunction
+
+Function CreateFolder(Val Token, Val Path) Export
+    Return СоздатьПапку(Token, Path);
+EndFunction
+
+Function GetObject(Val Token, Val Path) Export
+    Return ПолучитьОбъект(Token, Path);
+EndFunction
+
+Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
+    Return УдалитьОбъект(Token, Path, ToCart);
+EndFunction
+
+Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+    Return СоздатьКопиюОбъекта(Token, Original, Path, Overwrite);
+EndFunction
+
+Function GetDownloadLink(Val Token, Val Path) Export
+    Return ПолучитьСсылкуДляСкачивания(Token, Path);
+EndFunction
+
+Function GetFileUploadLink(Val Token, Val Path, Val Overwrite = False) Export
+    Return ПолучитьСсылкуЗагрузкиФайла(Token, Path, Overwrite);
+EndFunction
+
+Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
+    Return СкачатьФайл(Token, Path, SavePath);
+EndFunction
+
+Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export
+    Return ПолучитьСписокФайлов(Token, Count, OffsetFromStart, FilterByType, SortByDate);
+EndFunction
+
+Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
+    Return ПереместитьОбъект(Token, Original, Path, Overwrite);
+EndFunction
+
+Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
+    Return ЗагрузитьФайл(Token, Path, File, Overwrite);
+EndFunction
+
+Function UploadFileInParts(Val Token, Val Path, Val File, Val ChunkSize = 33554432, Val Overwrite = False) Export
+    Return ЗагрузитьФайлЧастями(Token, Path, File, ChunkSize, Overwrite);
+EndFunction
+
+Function UploadFileByURL(Val Token, Val Path, Val Address) Export
+    Return ЗагрузитьФайлПоURL(Token, Path, Address);
+EndFunction
+
+Function PublishObject(Val Token, Val Path) Export
+    Return ОпубликоватьОбъект(Token, Path);
+EndFunction
+
+Function CancelObjectPublication(Val Token, Val Path) Export
+    Return ОтменитьПубликациюОбъекта(Token, Path);
+EndFunction
+
+Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
+    Return ПолучитьСписокОпубликованныхОбъектов(Token, Count, OffsetFromStart);
+EndFunction
+
+Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
+    Return ПолучитьПубличныйОбъект(Token, URL, Count, OffsetFromStart);
+EndFunction
+
+Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
+    Return ПолучитьСсылкуСкачиванияПубличногоОбъекта(Token, URL, Path);
+EndFunction
+
+Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
+    Return СохранитьПубличныйОбъектНаДиск(Token, URL, From, Target);
+EndFunction
+
+#EndRegion

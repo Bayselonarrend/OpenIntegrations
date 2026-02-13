@@ -3,10 +3,4 @@
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("access", AccessKey);
-    Options.Insert("secret", SecretKey);
-    Options.Insert("region", Region);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+    Result = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);

@@ -36,20 +36,12 @@ import TabItem from '@theme/TabItem';
 
     Authorization = New Structure(Login, Password);
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("auth", Authorization);
-
-    ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
     QueryText = "SELECT number FROM system.numbers LIMIT 1";
-    Options   = New Structure;
-    Options.Insert("query" , QueryText);
-    Options.Insert("format", "JSON");
-
-    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
-    Timeout = 10000;
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Timeout   = 10000;
 
     OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
     StreamID      = OpeningResult["streamId"];

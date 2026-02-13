@@ -3,19 +3,8 @@
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("access", AccessKey);
-    Options.Insert("secret", SecretKey);
-    Options.Insert("region", Region);
-
-    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
     Name = "w567hjy1";
-    Options = New Structure;
-    Options.Insert("name" , Name);
-    Options.Insert("basic", BasicData);
-    Options.Insert("dir"  , Directory);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBucketEncryption", Options);
+    Result = OPI_S3.GetBucketEncryption(Name, BasicData, Directory);

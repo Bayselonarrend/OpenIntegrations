@@ -898,3 +898,59 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreatePage(Val Token, Val Parent, Val Title) Export
+    Return СоздатьСтраницу(Token, Parent, Title);
+EndFunction
+
+Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
+    Return СоздатьСтраницуВБазу(Token, Parent, Data);
+EndFunction
+
+Function GetPage(Val Token, Val Page) Export
+    Return ПолучитьСтраницу(Token, Page);
+EndFunction
+
+Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export
+    Return ИзменитьСвойстваСтраницы(Token, Page, Data, Icon, Cover, Archived);
+EndFunction
+
+Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export
+    Return СоздатьБазуДанных(Token, Parent, Title, Properties);
+EndFunction
+
+Function GetDatabase(Val Token, Val Base) Export
+    Return ПолучитьБазуДанных(Token, Base);
+EndFunction
+
+Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export
+    Return ИзменитьСвойстваБазы(Token, Base, Properties, Title, Description);
+EndFunction
+
+Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export
+    Return СоздатьБлок(Token, Parent, Block, InsertAfter);
+EndFunction
+
+Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
+    Return ВернутьБлок(Token, BlockID, OnlyBase);
+EndFunction
+
+Function ReturnChildBlocks(Val Token, Val BlockID) Export
+    Return ВернутьДочерниеБлоки(Token, BlockID);
+EndFunction
+
+Function DeleteBlock(Val Token, Val BlockID) Export
+    Return УдалитьБлок(Token, BlockID);
+EndFunction
+
+Function UserList(Val Token) Export
+    Return СписокПользователей(Token);
+EndFunction
+
+Function GetUserData(Val Token, Val UserID) Export
+    Return ПолучитьДанныеПользователя(Token, UserID);
+EndFunction
+
+#EndRegion

@@ -3,10 +3,4 @@
     NewName    = "CopiedFile.jpeg";
     NewParent  = "root";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("object" , Identifier);
-    Options.Insert("title"  , NewName);
-    Options.Insert("catalog", NewParent);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CopyObject", Options);
+    Result = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewParent);

@@ -2,9 +2,4 @@
     Directory    = "root";
     NameContains = "data";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("query"  , NameContains);
-    Options.Insert("catalog", Directory);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
+    Result = OPI_GoogleDrive.GetFilesList(Token, NameContains, Directory);

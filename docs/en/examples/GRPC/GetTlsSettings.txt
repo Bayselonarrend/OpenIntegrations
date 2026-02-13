@@ -1,4 +1,1 @@
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Result = OPI_GRPC.GetTlsSettings(True);

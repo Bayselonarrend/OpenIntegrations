@@ -4,18 +4,6 @@
     Width     = "48.87373649724122";
     Longitude = "48.87373649724122";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat" , ChatID);
-    Options.Insert("lat"  , Width);
-    Options.Insert("long" , Longitude);
+    Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendLocation", Options);
-
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat" , ChannelID);
-    Options.Insert("lat"  , Width);
-    Options.Insert("long" , Longitude);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendLocation", Options);
+    Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);

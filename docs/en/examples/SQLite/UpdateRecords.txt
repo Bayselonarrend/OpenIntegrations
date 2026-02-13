@@ -17,10 +17,4 @@
 
     Filters.Add(FilterStructure);
 
-    Options = New Structure;
-    Options.Insert("table" , Table);
-    Options.Insert("values", FieldsStructure);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("db"    , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "UpdateRecords", Options);
+    Result = OPI_SQLite.UpdateRecords(Table, FieldsStructure, FilterStructure, Base);

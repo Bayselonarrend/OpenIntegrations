@@ -5,20 +5,10 @@
 
     TLS = True;
     Port = 3306;
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-    Options.Insert("port" , Port);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
 
     If TLS Then
-        Options = New Structure;
-        Options.Insert("trust", True);
-
-        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -43,11 +33,4 @@
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("values", FieldsStructure);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("dbc", ConnectionString);
-    Options.Insert("tls", TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "UpdateRecords", Options);
+    Result = OPI_MySQL.UpdateRecords(Table, FieldsStructure, FilterStructure, ConnectionString, TLSSettings);

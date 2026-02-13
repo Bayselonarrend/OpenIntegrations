@@ -2,9 +2,4 @@
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-    Options.Insert("title", Title);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditMainForumTopicName", Options);
+    Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);

@@ -28,11 +28,8 @@ Method at API documentation: [getMe](https://core.telegram.org/bots/api#getme)
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token   = "6129457865:AAFyzNYOAFbu...";
-    Options = New Structure;
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetBotInformation", Options);
+    Token  = "6129457865:AAFyzNYOAFbu...";
+    Result = OPI_Telegram.GetBotInformation(Token);
 ```
  
 

@@ -32,11 +32,7 @@ Method at API documentation: [getChatMemberCount](https://core.telegram.org/bots
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat" , ChannelID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetParticipantCount", Options);
+    Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
 ```
  
 

@@ -41,12 +41,7 @@ import TabItem from '@theme/TabItem';
 
     Filters.Add(FilterStructure);
 
-    Options = New Structure;
-    Options.Insert("table" , Table);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("db"    , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteRecords", Options);
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
 ```
  
 

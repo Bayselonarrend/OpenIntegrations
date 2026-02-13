@@ -43,27 +43,10 @@ Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/S
     Address   = "Victory Square, Minsk";
     Name      = "Victory sq.";
 
-    Options = New Structure;
-    Options.Insert("lat" , Latitude);
-    Options.Insert("long", Longitude);
-    Options.Insert("addr", Address);
-    Options.Insert("name", Name);
+    Location = OPI_GreenAPI.GetLocationDescription(Latitude, Longitude, Address, Name);
 
-    Location = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetLocationDescription", Options);
-
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access", AccessParameters);
-    Options.Insert("chat"  , ChatID);
-    Options.Insert("loc"   , Location);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendLocation(AccessParameters, ChatID, Location);
 ```
  
 

@@ -3,9 +3,4 @@
     AccountID = "1607951446";
     Name      = "New campaign";
 
-    Options = New Structure;
-    Options.Insert("cabinet", AccountID);
-    Options.Insert("title"  , Name);
-    Options.Insert("auth"   , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAdvertisingCampaign", Options);
+    Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);

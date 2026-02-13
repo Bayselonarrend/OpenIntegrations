@@ -7,17 +7,6 @@
     ButtonArray.Add("New button 2");
     ButtonArray.Add("New button 1");
 
-    Options = New Structure;
-    Options.Insert("buttons", ButtonArray);
-    Options.Insert("under"  , True);
-    Options.Insert("column" , False);
+    Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, False);
 
-    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
-
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("chat"    , ChatID);
-    Options.Insert("message" , MessageID);
-    Options.Insert("keyboard", Keyboard);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageKeyboard", Options);
+    Result = OPI_Telegram.ReplaceMessageKeyboard(Token, ChatID, MessageID, Keyboard);

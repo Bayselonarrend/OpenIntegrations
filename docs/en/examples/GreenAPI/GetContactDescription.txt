@@ -4,11 +4,4 @@
     Patronymic = "Petrovich";
     Company    = "Bicycle";
 
-    Options = New Structure;
-    Options.Insert("phone"  , Phone);
-    Options.Insert("name"   , Name);
-    Options.Insert("surname", LastName);
-    Options.Insert("midname", Patronymic);
-    Options.Insert("company", Company);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
+    Result = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);

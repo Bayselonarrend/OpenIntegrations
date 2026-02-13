@@ -1,8 +1,4 @@
     Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     CounterID = "105009635";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("counter", CounterID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounter", Options);
+    Result = OPI_YandexMetrika.GetCounter(Token, CounterID);

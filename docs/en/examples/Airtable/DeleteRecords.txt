@@ -3,10 +3,4 @@
     Table  = "tblFGmvh2eldM8MuJ";
     Record = "recuJsvpt9DG2SuEk";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("base"   , Base);
-    Options.Insert("table"  , Table);
-    Options.Insert("records", Record);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteRecords", Options);
+    Result = OPI_Airtable.DeleteRecords(Token, Base, Table, Record);

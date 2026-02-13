@@ -2,9 +2,4 @@
     Channel = "C09PUMJU2GM";
     Name    = "testconv" + String(New UUID);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("title"  , Name);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "RenameChannel", Options);
+    Result = OPI_Slack.RenameChannel(Token, Channel, Name);

@@ -31,12 +31,7 @@ import TabItem from '@theme/TabItem';
     Name     = "Color (change.)";
     Property = "4862";
 
-    Options = New Structure;
-    Options.Insert("title", Name);
-    Options.Insert("prop" , Property);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductProperty", Options);
+    Result = OPI_VK.EditProductProperty(Name, Property, Parameters);
 ```
  
 

@@ -3,17 +3,8 @@
     Password = "12we...";
     Base     = "testbase1";
 
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
-    Options     = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     // All records without filters
 
@@ -23,22 +14,11 @@
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("dbc", ConnectionString);
-    Options.Insert("tls", TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
+    Result = OPI_MSSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
 
     // Filter, selected fields, limit and sorting
 
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("db"   , "test_data");
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, "test_data", Login, Password);
 
     Table = "test_data";
 
@@ -70,13 +50,4 @@
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Options = New Structure;
-    Options.Insert("table" , Table);
-    Options.Insert("fields", Fields);
-    Options.Insert("filter", Filters);
-    Options.Insert("order" , Sort);
-    Options.Insert("limit" , Count);
-    Options.Insert("dbc"   , ConnectionString);
-    Options.Insert("tls"   , TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
+    Result = OPI_MSSQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString, TLSSettings);

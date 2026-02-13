@@ -1,8 +1,4 @@
     URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFilesList", Options);
+    Result = OPI_OpenAI.GetFilesList(URL, Token);

@@ -3,12 +3,7 @@
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Options = New Structure;
-    Options.Insert("url"     , URL);
-    Options.Insert("folderid", FolderID);
-    Options.Insert("tagetid" , DestinationID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFolderCopy", Options);
+    Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID);
 
     DestinationID = "46682";
     FolderID      = "46680";

@@ -28,11 +28,7 @@ import TabItem from '@theme/TabItem';
     Token  = "xoxb-6965308400114-696804637...";
     Dialog = "D06UAKK1C6R";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("conv" , Dialog);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CloseDialog", Options);
+    Result = OPI_Slack.CloseDialog(Token, Dialog);
 ```
  
 

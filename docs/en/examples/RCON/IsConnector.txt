@@ -3,12 +3,6 @@
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("pass" , Password);
-    Options.Insert("rtout", ReadTimeout);
-    Options.Insert("wtout", WriteTimeout);
-
-    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
     Connection       = OPI_RCON.CreateConnection(ConnectionParams);
     Result           = OPI_RCON.IsConnector(Connection);

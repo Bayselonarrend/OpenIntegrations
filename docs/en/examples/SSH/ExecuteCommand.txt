@@ -10,13 +10,7 @@
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        Options = New Structure;
-        Options.Insert("host", Host);
-        Options.Insert("port", Port);
-        Options.Insert("user", Login);
-        Options.Insert("pass", Password);
-
-        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsLoginPassword", Options);
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -42,25 +36,14 @@
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        Options = New Structure;
-        Options.Insert("addr" , ProxyAddress);
-        Options.Insert("port" , ProxyPort);
-        Options.Insert("type" , ProxyType);
-        Options.Insert("login", ProxyLogin);
-        Options.Insert("pass" , ProxyPassword);
-
-        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetProxySettings", Options);
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 
     EndIf;
 
     Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SSH.IsConnector(Connection) Then
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-        Options.Insert("comm", "whoami");
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "ExecuteCommand", Options);
+        Result = OPI_SSH.ExecuteCommand(Connection, "whoami");
     Else
         Result = Connection; // Error of connection
     EndIf;

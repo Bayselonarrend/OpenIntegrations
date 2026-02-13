@@ -61,12 +61,7 @@ Binary data can also be transferred as a structure `{'blob':File path}`
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStructure1);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows" , DataArray);
-    Options.Insert("db"   , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 ```
  
 

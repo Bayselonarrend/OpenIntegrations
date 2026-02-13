@@ -5,9 +5,4 @@
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("digest" , SHA256);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
+    Result = OPI_Ollama.CheckBlob(URL, SHA256, AdditionalHeaders);

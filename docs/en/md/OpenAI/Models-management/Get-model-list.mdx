@@ -33,11 +33,7 @@ Method at API documentation: [List models](https://platform.openai.com/docs/api-
     URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetModelList", Options);
+    Result = OPI_OpenAI.GetModelList(URL, Token);
 ```
  
 

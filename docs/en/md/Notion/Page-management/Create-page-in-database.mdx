@@ -45,12 +45,7 @@ import TabItem from '@theme/TabItem';
     Properties.Insert("Phone"       , "88005553535");
     Properties.Insert("Status"      , "New");
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("base" , Base);
-    Options.Insert("data" , Properties);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePageInDatabase", Options);
+    Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 ```
  
 

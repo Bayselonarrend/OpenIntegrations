@@ -34,13 +34,7 @@ import TabItem from '@theme/TabItem';
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "new_collection";
@@ -104,13 +98,7 @@ import TabItem from '@theme/TabItem';
 
     DocsArray.Add(DocumentStructure);
 
-    Options = New Structure;
-    Options.Insert("dbc" , Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("docs", DocsArray);
-    Options.Insert("db"  , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "InsertDocuments", Options);
+    Result = OPI_MongoDB.InsertDocuments(Connection, Collection, DocsArray, Base);
 ```
  
 

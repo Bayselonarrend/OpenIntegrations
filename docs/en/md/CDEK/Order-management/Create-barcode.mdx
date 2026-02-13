@@ -38,14 +38,7 @@ Method at API documentation: [Creating barcode CP for the order](https://api-doc
     Format = "A5";
     Copies = 1;
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuids"  , UUID);
-    Options.Insert("count"  , Copies);
-    Options.Insert("format" , Format);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateBarcode", Options);
+    Result = OPI_CDEK.CreateBarcode(Token, UUID, Copies, Format, , True);
 ```
  
 
