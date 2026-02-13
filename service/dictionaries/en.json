@@ -7688,6 +7688,8 @@
 "ПодключитьсяИПолучитьДанные": "ConnectAndReceiveData",
 "color=Зеленый) Библиотека -": "color=Green) Library -",
 "Путь к публикуемому объекту": "Path to the object to be published",
+"//#Использовать \"../../../../../../http": "//#Use \"../../../../../../http",
+"//#Использовать \"../../../../../../http\"": "//#Use \"../../../../../../http\"",
 "Удаляет сообщение в диалоге": "Deletes a dialog message",
 "Отправить/Удалить эфемерное": "Send/Delete ephemeral",
 "ОткрытьСоединение (закрытие": "CreateConnection (closing",
