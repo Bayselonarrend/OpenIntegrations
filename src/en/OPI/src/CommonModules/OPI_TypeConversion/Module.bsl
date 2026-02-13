@@ -36,6 +36,8 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
+//#Use "../../../../../../http"
+
 #Region Internal
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
