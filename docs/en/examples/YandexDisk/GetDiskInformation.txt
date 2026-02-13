@@ -1,5 +1,2 @@
-    Token   = "y0__xCOranuBRj1uTsgs8z_iRV...";
-    Options = New Structure;
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDiskInformation", Options);
+    Token  = "y0__xCOranuBRj1uTsgs8z_iRV...";
+    Result = OPI_YandexDisk.GetDiskInformation(Token);

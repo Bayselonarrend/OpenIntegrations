@@ -35,11 +35,7 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
+    Result = OPI_Ollama.GetModelList(URL, AdditionalHeaders);
 ```
  
 

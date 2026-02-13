@@ -6,12 +6,7 @@
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     DealID = "5482";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("deal"  , DealID);
-    Options.Insert("fields", FieldsStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
+    Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
     FieldsStructure.Insert("TITLE"    , "Future deal in RUB");
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
@@ -20,10 +15,4 @@
     Token  = "a5b00469006e9f06006b12e400000001000...";
     DealID = "5484";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("deal"  , DealID);
-    Options.Insert("fields", FieldsStructure);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
+    Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);

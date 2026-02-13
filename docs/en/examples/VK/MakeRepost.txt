@@ -2,9 +2,4 @@
     PostID     = 2571;
     WallID     = -218704372;
 
-    Options = New Structure;
-    Options.Insert("post", PostID);
-    Options.Insert("from", WallID);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "MakeRepost", Options);
+    Result = OPI_VK.MakeRepost(PostID, WallID, , , Parameters);

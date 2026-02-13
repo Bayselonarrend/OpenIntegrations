@@ -745,9 +745,9 @@
 
     Если ЭтоOneScript() Тогда
 
-        ЭтоCLI          = Неопределено;
+        ЭтоCLI = Неопределено;
         ЭтоCLI = ПолучитьПеременнуюСреды("OINT_CLI");
-        ЭтоCLI          = ?(ЗначениеЗаполнено(ЭтоCLI), ЭтоCLI, "NO");
+        ЭтоCLI = ?(ЗначениеЗаполнено(ЭтоCLI), ЭтоCLI, "NO");
 
         Возврат ЭтоCLI = "YES";
 
@@ -830,9 +830,9 @@
 
     Попытка
 
-        ЭтоОтладка          = Неопределено;
+        ЭтоОтладка = Неопределено;
         ЭтоОтладка = ПолучитьПеременнуюСреды("OINT_DEBUG");
-        ЭтоОтладка          = ?(ЗначениеЗаполнено(ЭтоОтладка), ЭтоОтладка, "NO");
+        ЭтоОтладка = ?(ЗначениеЗаполнено(ЭтоОтладка), ЭтоОтладка, "NO");
 
     Исключение
        ЭтоОтладка = "NO";
@@ -1266,3 +1266,187 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function RequestParametersToString(Val Parameters, Val SplitArrayParams = False, Val Start = True) Export
+    Return ПараметрыЗапросаВСтроку(Parameters, SplitArrayParams, Start);
+EndFunction
+
+Function RequestParametersToMap(Val ParameterString) Export
+    Return ПараметрыЗапросаВСоответствие(ParameterString);
+EndFunction
+
+Function SplitURL(Val URL) Export
+    Return РазбитьURL(URL);
+EndFunction
+
+Function GetDomain(Val ConnectionString) Export
+    Return ПолучитьДомен(ConnectionString);
+EndFunction
+
+Function JsonToStructure(Val Text, Val ToMap = True) Export
+    Return JsonВСтруктуру(Text, ToMap);
+EndFunction
+
+Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
+    Return JSONСтрокой(Data, Escaping, LineBreaks, DoubleQuotes);
+EndFunction
+
+Function ReadJSONFile(Val Path, Val ToMap = False) Export
+    Return ПрочитатьJSONФайл(Path, ToMap);
+EndFunction
+
+Procedure WriteJSONFile(Val Path, Val Data) Export
+    ЗаписатьJSONФайл(Path, Data);
+EndProcedure
+
+Function ProcessXML(XML) Export
+    Return ОбработатьXML(XML);
+EndFunction
+
+Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
+    Return ПолучитьXML(Value, TargetNamespace, XMLWriter);
+EndFunction
+
+Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
+    ДобавитьПоле(Name, Value, Type, Collection);
+EndProcedure
+
+Procedure AddKeyValue(Table, Val Key, Val Value) Export
+    ДобавитьКлючЗначение(Table, Key, Value);
+EndProcedure
+
+Procedure RemoveEmptyCollectionFields(Collection) Export
+    УдалитьПустыеПоляКоллекции(Collection);
+EndProcedure
+
+Procedure ValueToArray(Value) Export
+    ЗначениеВМассив(Value);
+EndProcedure
+
+Function CollectionFieldExists(Val Collection, Val Field, FieldValue = Undefined) Export
+    Return ПолеКоллекцииСуществует(Collection, Field, FieldValue);
+EndFunction
+
+Function FindMissingCollectionFields(Val Collection, Val Fields) Export
+    Return НайтиОтсутствующиеПоляКоллекции(Collection, Fields);
+EndFunction
+
+Function ClearCollectionRecursively(Val Collection) Export
+    Return ОчиститьКоллекциюРекурсивно(Collection);
+EndFunction
+
+Function CopyCollection(Val Collection) Export
+    Return КопироватьКоллекцию(Collection);
+EndFunction
+
+Function GetOr(Val Collection, Val Field, Val DefaultValue) Export
+    Return ПолучитьИли(Collection, Field, DefaultValue);
+EndFunction
+
+Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val ExcludedFields = Undefined, Val ParrentField = "Root") Export
+    Return СравнитьДвеКоллекции(FirstCollection, SecondCollection, ExcludedFields, ParrentField);
+EndFunction
+
+Function IsOneScript() Export
+    Return ЭтоOneScript();
+EndFunction
+
+Function IsCLI() Export
+    Return ЭтоCLI();
+EndFunction
+
+Function GetLibraryDirectory() Export
+    Return ПолучитьКаталогБиблиотеки();
+EndFunction
+
+Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
+    ИнформацияОПрогрессе(Current, Total, Unit, Divider);
+EndProcedure
+
+Procedure DebugInfo(Val Text, Val Forced = False) Export
+    ОтладочнаяИнформация(Text, Forced);
+EndProcedure
+
+Procedure Pause(Val Seconds) Export
+    Пауза(Seconds);
+EndProcedure
+
+Procedure ReplaceEscapeSequences(Text) Export
+    ЗаменитьУправляющиеПоследовательности(Text);
+EndProcedure
+
+Procedure RestoreEscapeSequences(Text) Export
+    ВернутьУправляющиеПоследовательности(Text);
+EndProcedure
+
+Procedure StreamToStart(CurrentStream) Export
+    ПотокВНачало(CurrentStream);
+EndProcedure
+
+Procedure RemoveFileWithTry(Val Path, Val MessageText = "Failed to delete file") Export
+    УдалитьФайлВПопытке(Path, MessageText);
+EndProcedure
+
+Function NumberToString(Val Value) Export
+    Return ЧислоВСтроку(Value);
+EndFunction
+
+Function GetCurrentDate() Export
+    Return ПолучитьТекущуюДату();
+EndFunction
+
+Function DateRFC3339(Val Date, Val Offset = "Z") Export
+    Return ДатаRFC3339(Date, Offset);
+EndFunction
+
+Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
+    Return ПреобразоватьДанныеСПолучениемРазмера(Data, MinimumStreamSize);
+EndFunction
+
+Function ISOTimestamp(Val Date) Export
+    Return ВременнаяМеткаISO(Date);
+EndFunction
+
+Function CreateStream(Val FilePath = Undefined) Export
+    Return СоздатьПоток(FilePath);
+EndFunction
+
+Function IsWindows() Export
+    Return ЭтоWindows();
+EndFunction
+
+Function MergeData(Val Data, Val Addition) Export
+    Return СклеитьДанные(Data, Addition);
+EndFunction
+
+Function IsPrimitiveType(Val Value) Export
+    Return ЭтоПримитивныйТип(Value);
+EndFunction
+
+Function ThisIsCollection(Val Value, Val KeyValue = False) Export
+    Return ЭтоКоллекция(Value, KeyValue);
+EndFunction
+
+Function GetTextTemplate(Val TemplateName) Export
+    Return ПолучитьТекстовыйМакет(TemplateName);
+EndFunction
+
+Function GetLastBuildHashSum() Export
+    Return ПолучитьХешСуммуПоследнейСборки();
+EndFunction
+
+Function OPIVersion() Export
+    Return ВерсияОПИ();
+EndFunction
+
+Function OPILanguage() Export
+    Return ЯзыкОПИ();
+EndFunction
+
+Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Export
+    ВывестиТекстВТекущуюСтроку(Text, Color, ToStart);
+EndProcedure
+
+#EndRegion

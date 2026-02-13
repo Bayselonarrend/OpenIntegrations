@@ -31,24 +31,13 @@ import TabItem from '@theme/TabItem';
     Password = "12we...";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     Collection = "test_collection";
     Base       = "test_database";
 
-    Options = New Structure;
-    Options.Insert("dbc" , Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("db"  , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteCollection", Options);
+    Result = OPI_MongoDB.DeleteCollection(Connection, Collection, Base);
 ```
  
 

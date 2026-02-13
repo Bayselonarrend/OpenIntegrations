@@ -1,13 +1,6 @@
     Token   = "f1e616e20ab5893b...";
     Website = "2athenaeum";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
+    Result = OPI_Neocities.GetSiteData(Token);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetSiteData", Options);
-
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("sitename", Website);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetSiteData", Options);
+    Result = OPI_Neocities.GetSiteData(Token, Website);

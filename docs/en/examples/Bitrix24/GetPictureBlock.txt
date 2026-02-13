@@ -1,8 +1,4 @@
     Name = "Image";
     URL  = "https://hut.openintegrations.dev/test_data/picture.jpg";
 
-    Options = New Structure;
-    Options.Insert("title", Name);
-    Options.Insert("url"  , URL);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPictureBlock", Options);
+    Result = OPI_Bitrix24.GetPictureBlock(Name, URL);

@@ -1,8 +1,4 @@
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "HideMainForumTopic", Options);
+    Result = OPI_Telegram.HideMainForumTopic(Token, Chat);

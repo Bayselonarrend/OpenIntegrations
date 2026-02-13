@@ -34,20 +34,10 @@ import TabItem from '@theme/TabItem';
 
     TLS = True;
     Port = 5432;
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-    Options.Insert("port" , Port);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
 
     If TLS Then
-        Options = New Structure;
-        Options.Insert("trust", True);
-
-        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -55,13 +45,7 @@ import TabItem from '@theme/TabItem';
     Table = "testtable";
     Name  = "new_field";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("name" , Name);
-    Options.Insert("dbc"  , ConnectionString);
-    Options.Insert("tls"  , TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTableColumn", Options);
+    Result = OPI_PostgreSQL.DeleteTableColumn(Table, Name, ConnectionString, TLSSettings);
 ```
  
 

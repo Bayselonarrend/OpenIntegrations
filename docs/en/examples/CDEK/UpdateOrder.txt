@@ -3,10 +3,4 @@
 
     OrderDescription = New Structure("comment", "NewComment");
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuid"   , UUID);
-    Options.Insert("order"  , OrderDescription);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "UpdateOrder", Options);
+    Result = OPI_CDEK.UpdateOrder(Token, UUID, OrderDescription, True);

@@ -13542,8 +13542,8 @@
 
         // BSLLS:CommonModuleAssign-on
 
-        ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
-        МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+        ТекущийКаталог   = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+        МассивПути       = СтрРазделить(ТекущийКаталог, "/");
         МассивПути.Удалить(МассивПути.ВГраница());
         МассивПути.Удалить(МассивПути.ВГраница());
         МассивПути.Добавить("core");
@@ -13597,7 +13597,7 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-    
+
     Модуль = Вычислить(Имя);
     Возврат Модуль;
 КонецФункции
@@ -14357,3 +14357,131 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+    Return ВыполнитьТестCLI(Library, Method, Options, Record);
+EndFunction
+
+Function GetTestingSectionMapping() Export
+    Return ПолучитьСоответствиеРазделовТестирования();
+EndFunction
+
+Function GetTestingSectionMappingGA() Export
+    Return ПолучитьСоответствиеРазделовТестированияGA();
+EndFunction
+
+Function GetTestTable() Export
+    Return ПолучитьТаблицуТестов();
+EndFunction
+
+Function ExpectsThat(Value) Export
+    Return ОжидаетЧто(Value);
+EndFunction
+
+Function FormYAXTests() Export
+    Return СформироватьТестыЯкс();
+EndFunction
+
+Function FormAssertsTests() Export
+    Return СформироватьТестыАссертс();
+EndFunction
+
+Function FormYAXTestsCLI() Export
+    Return СформироватьТестыЯксCLI();
+EndFunction
+
+Function FormAssertsTestsCLI() Export
+    Return СформироватьТестыАссертсCLI();
+EndFunction
+
+Function GetParameter(Parameter) Export
+    Return ПолучитьПараметр(Parameter);
+EndFunction
+
+Function GetBinary(Parameter) Export
+    Return ПолучитьДвоичные(Parameter);
+EndFunction
+
+Function GetFilePath(Val Path) Export
+    Return ПолучитьФайлПути(Path);
+EndFunction
+
+Function GetLocalhost() Export
+    Return ПолучитьLocalhost();
+EndFunction
+
+Function IsCLITest() Export
+    Return ЭтоТестCLI();
+EndFunction
+
+Procedure ParameterToCollection(Parameter, Collection) Export
+    ПараметрВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure BinaryToCollection(Parameter, Collection) Export
+    ДвоичныеВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure WriteParameter(Parameter, Value) Export
+    ЗаписатьПараметр(Parameter, Value);
+EndProcedure
+
+Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+    ОбработатьРезультатТестирования(Result, Method, Library, Option, AddParam1, AddParam2, AddParam3);
+EndProcedure
+
+Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
+    ВывестиСлужебнуюИнформацию(Text, Note, Library);
+EndProcedure
+
+Function CreateReportPortalLaunch(Val Platform = "") Export
+    Return СоздатьЗапускReportPortal(Platform);
+EndFunction
+
+Function CreateLaunchSet(Val Name) Export
+    Return СоздатьНаборЗапуска(Name);
+EndFunction
+
+Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
+    Return СоздатьТестовыйЭлемент(Set, Library, Method, Option);
+EndFunction
+
+Procedure FinishLaunch() Export
+    ЗавершитьЗапуск();
+EndProcedure
+
+Function GetExecutedTestsList() Export
+    Return ПолучитьСписокВыполненныхТестов();
+EndFunction
+
+Function GetFullTestList() Export
+    Return ПолучитьПолныйСписокТестов();
+EndFunction
+
+Function GetFTPParameterOptions() Export
+    Return ПолучитьВариантыПараметровFTP();
+EndFunction
+
+Function GetSSHParameterOptions() Export
+    Return ПолучитьВариантыПараметровSSH();
+EndFunction
+
+Function GetS3ParameterOptions() Export
+    Return ПолучитьВариантыПараметровS3();
+EndFunction
+
+Function GetPostgresParameterOptions() Export
+    Return ПолучитьВариантыПараметровPostgres();
+EndFunction
+
+Function GetMySQLParameterOptions() Export
+    Return ПолучитьВариантыПараметровMySQL();
+EndFunction
+
+Function GetTagArray(Index) Export
+    Return ПолучитьМассивТегов(Index);
+EndFunction
+
+#EndRegion

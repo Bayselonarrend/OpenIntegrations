@@ -1,4 +1,1 @@
-    Options = New Structure;
-    Options.Insert("title", "Number");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetNumberField", Options);
+    Result = OPI_Airtable.GetNumberField("Number");

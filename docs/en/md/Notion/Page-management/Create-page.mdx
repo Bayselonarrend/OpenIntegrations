@@ -30,12 +30,7 @@ import TabItem from '@theme/TabItem';
     Parent = "5dd94c34fab04bff986b7511c0779f77";
     Title  = "TestTitle";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("page" , Parent);
-    Options.Insert("title", Title);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePage", Options);
+    Result = OPI_Notion.CreatePage(Token, Parent, Title);
 ```
  
 

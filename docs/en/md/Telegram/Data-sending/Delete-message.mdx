@@ -34,12 +34,7 @@ Method at API documentation: [deleteMessage](https://core.telegram.org/bots/api#
     ChatID    = "@testsichee";
     MessageID = "22536";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("message", MessageID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteMessage", Options);
+    Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```
  
 

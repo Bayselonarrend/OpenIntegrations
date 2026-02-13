@@ -589,3 +589,63 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateTag(Val Token, Val Name) Export
+    Return СоздатьМетку(Token, Name);
+EndFunction
+
+Function UpdateTag(Val Token, Val TagID, Val Name) Export
+    Return ИзменитьМетку(Token, TagID, Name);
+EndFunction
+
+Function GetTag(Val Token, Val TagID) Export
+    Return ПолучитьМетку(Token, TagID);
+EndFunction
+
+Function DeleteTag(Val Token, Val TagID) Export
+    Return УдалитьМетку(Token, TagID);
+EndFunction
+
+Function GetTagsList(Val Token) Export
+    Return ПолучитьСписокМеток(Token);
+EndFunction
+
+Function CreateCounter(Val Token, Val CounterStructure) Export
+    Return СоздатьСчетчик(Token, CounterStructure);
+EndFunction
+
+Function UpdateCounter(Val Token, Val CounterID, Val CounterStructure) Export
+    Return ИзменитьСчетчик(Token, CounterID, CounterStructure);
+EndFunction
+
+Function GetCounter(Val Token, Val CounterID) Export
+    Return ПолучитьСчетчик(Token, CounterID);
+EndFunction
+
+Function DeleteCounter(Val Token, Val CounterID) Export
+    Return УдалитьСчетчик(Token, CounterID);
+EndFunction
+
+Function RestoreCounter(Val Token, Val CounterID) Export
+    Return ВосстановитьСчетчик(Token, CounterID);
+EndFunction
+
+Function GetCountersList(Val Token, Val Filter = Undefined) Export
+    Return ПолучитьСписокСчетчиков(Token, Filter);
+EndFunction
+
+Function GetCounterStructure(Val Clear = False) Export
+    Return ПолучитьСтруктуруСчетчика(Clear);
+EndFunction
+
+Function GetCounterFilterStructure(Val Clear = False) Export
+    Return ПолучитьСтруктуруФильтраСчетчиков(Clear);
+EndFunction
+
+Function GetActionsList(Val Token, Val CounterID) Export
+    Return ПолучитьСписокОпераций(Token, CounterID);
+EndFunction
+
+#EndRegion

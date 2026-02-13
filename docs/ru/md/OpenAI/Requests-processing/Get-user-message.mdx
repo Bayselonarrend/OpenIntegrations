@@ -29,11 +29,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Опции = Новый Структура;
-    Опции.Вставить("text", "What is 1C:Enterprise?");
-    Опции.Вставить("name", "Vitaly");
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "ПолучитьСообщениеПользователя", Опции);
+    Результат = OPI_OpenAI.ПолучитьСообщениеПользователя("What is 1C:Enterprise?", "Vitaly");
 ```
     
 

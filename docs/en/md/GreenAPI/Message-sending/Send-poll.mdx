@@ -46,20 +46,8 @@ Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/S
     Variants.Add("Yellow");
     Variants.Add("Green");
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access" , AccessParameters);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("text"   , Text);
-    Options.Insert("options", Variants);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Variants);
 ```
  
 

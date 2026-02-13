@@ -43,13 +43,7 @@ Using the connection configuration is not recommended for multiple requests to t
     ProxySettings = Undefined;
     TLSSettings   = Undefined; // FTPS
 
-    Options = New Structure;
-    Options.Insert("host" , Host);
-    Options.Insert("port" , Port);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 
     If UseProxy Then
 
@@ -60,30 +54,15 @@ Using the connection configuration is not recommended for multiple requests to t
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        Options = New Structure;
-        Options.Insert("addr" , ProxyAddress);
-        Options.Insert("port" , ProxyPort);
-        Options.Insert("type" , ProxyType);
-        Options.Insert("login", ProxyLogin);
-        Options.Insert("pass" , ProxyPassword);
-
-        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 
     EndIf;
 
     If FTPS Then
-        Options = New Structure;
-        Options.Insert("trust", True);
-
-        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
     EndIf;
 
-    Options = New Structure;
-    Options.Insert("set"  , FTPSettings);
-    Options.Insert("proxy", ProxySettings);
-    Options.Insert("tls"  , TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
+    Result = OPI_FTP.GetConnectionConfiguration(FTPSettings, ProxySettings, TLSSettings);
 ```
  
 

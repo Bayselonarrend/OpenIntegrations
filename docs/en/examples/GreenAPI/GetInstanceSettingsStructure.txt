@@ -1,3 +1,1 @@
-    Options = New Structure;
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
+    Result = OPI_GreenAPI.GetInstanceSettingsStructure();

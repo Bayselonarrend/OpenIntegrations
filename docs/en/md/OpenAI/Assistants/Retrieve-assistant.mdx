@@ -36,12 +36,7 @@ Method at API documentation: [Retrieve assistant](https://platform.openai.com/do
 
     AssistantID = "asst_2";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("id"   , AssistantID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "RetrieveAssistant", Options);
+    Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);
 ```
  
 

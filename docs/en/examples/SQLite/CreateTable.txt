@@ -10,9 +10,4 @@
     ColoumnsStruct.Insert("created_at", "DATETIME");
     ColoumnsStruct.Insert("data"      , "BLOB");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("cols" , ColoumnsStruct);
-    Options.Insert("db"   , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, Base);

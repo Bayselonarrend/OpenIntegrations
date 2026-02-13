@@ -10,13 +10,7 @@
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        Options = New Structure;
-        Options.Insert("host", Host);
-        Options.Insert("port", Port);
-        Options.Insert("user", Login);
-        Options.Insert("pass", Password);
-
-        SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -42,14 +36,7 @@
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        Options = New Structure;
-        Options.Insert("addr" , ProxyAddress);
-        Options.Insert("port" , ProxyPort);
-        Options.Insert("type" , ProxyType);
-        Options.Insert("login", ProxyLogin);
-        Options.Insert("pass" , ProxyPassword);
-
-        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 
     EndIf;
 
@@ -60,12 +47,7 @@
         Path     = "pic_from_disk.png";
         FileName = GetTempFileName("bin");
 
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-        Options.Insert("path", Path);
-        Options.Insert("file", FileName);
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "SaveFile", Options);
+        Result = OPI_SFTP.SaveFile(Connection, Path, FileName);
 
     Else
         Result = Connection; // Error of connection

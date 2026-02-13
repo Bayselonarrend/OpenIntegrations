@@ -2,9 +2,4 @@
     Name        = "AlbumFromAutoTest";
     Description = "NewAlbumFromAutoTest";
 
-    Options = New Structure;
-    Options.Insert("title"      , Name);
-    Options.Insert("description", Description);
-    Options.Insert("auth"       , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAlbum", Options);
+    Result = OPI_VK.CreateAlbum(Name, Description, Parameters);

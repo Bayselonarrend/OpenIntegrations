@@ -32,11 +32,7 @@ Method at API documentation: [getFile](https://core.telegram.org/bots/api#getfil
     FileID = "CQACAgIAAx0EcNsaZQACWBFpBJl6nDHeih2m1CcGUJUTUMBewwACt4IAAmBxKUhCDKl_dJD1TjYE";
     Token  = "6129457865:AAFyzNYOAFbu...";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("fileid", FileID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DownloadFile", Options);
+    Result = OPI_Telegram.DownloadFile(Token, FileID);
 ```
  
 

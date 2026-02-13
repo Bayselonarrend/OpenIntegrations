@@ -611,6 +611,11 @@
 	},
 	{
 		"lib": "VK",
+		"name": "ShortenLink",
+		"variant": ""
+	},
+	{
+		"lib": "VK",
 		"name": "GetAdvertisingCategoryList",
 		"variant": ""
 	},

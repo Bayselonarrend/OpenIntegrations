@@ -12,19 +12,6 @@
     ImageArray.Add(Image);
     ImageArray.Add(TFN);
 
-    Options = New Structure;
-    Options.Insert("text"    , Text);
-    Options.Insert("pictures", ImageArray);
-    Options.Insert("ad"      , True);
-    Options.Insert("url"     , URL);
-    Options.Insert("auth"    , Parameters);
+    Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
-
-    Options = New Structure;
-    Options.Insert("text"    , Text);
-    Options.Insert("pictures", Image);
-    Options.Insert("ad"      , False);
-    Options.Insert("auth"    , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
+    Result = OPI_VK.CreatePost(Text, Image, False, , Parameters);

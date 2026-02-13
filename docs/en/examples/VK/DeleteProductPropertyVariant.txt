@@ -2,8 +2,4 @@
 
     Option = "8944";
 
-    Options = New Structure;
-    Options.Insert("option", Option);
-    Options.Insert("auth"  , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductPropertyVariant", Options);
+    Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);

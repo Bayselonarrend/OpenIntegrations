@@ -2,9 +2,4 @@
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("userid", User);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnblockChatUser", Options);
+    Result = OPI_VKTeams.UnblockChatUser(Token, ChatID, User);

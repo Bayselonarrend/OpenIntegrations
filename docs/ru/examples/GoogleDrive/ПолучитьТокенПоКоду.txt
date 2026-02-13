@@ -2,9 +2,4 @@
     ClientSecret = "GOCSPX-v--MJyEjtV...";
     Code         = "4/0AeaYSHBDZAbAtChyjMxPKa0DXIilJYYcVCgKYzA_CPmCPSt1mg_KqxI4w5CP3lTlYibpGg";
 
-    Опции = Новый Структура;
-    Опции.Вставить("id"    , ClientID);
-    Опции.Вставить("secret", ClientSecret);
-    Опции.Вставить("code"  , Code);
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "ПолучитьТокенПоКоду", Опции);
+    Результат = OPI_GoogleDrive.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);

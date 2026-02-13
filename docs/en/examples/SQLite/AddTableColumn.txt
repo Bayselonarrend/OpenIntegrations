@@ -3,10 +3,4 @@
     Name     = "new_col";
     DataType = "TEXT";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("name" , Name);
-    Options.Insert("type" , DataType);
-    Options.Insert("db"   , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddTableColumn", Options);
+    Result = OPI_SQLite.AddTableColumn(Table, Name, DataType, Base);

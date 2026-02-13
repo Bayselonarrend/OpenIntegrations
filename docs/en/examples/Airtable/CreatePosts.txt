@@ -12,10 +12,4 @@
     ArrayOfDescriptions.Add(RowDescription1);
     ArrayOfDescriptions.Add(RowDescription2);
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("base" , Base);
-    Options.Insert("table", Table);
-    Options.Insert("data" , ArrayOfDescriptions);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);

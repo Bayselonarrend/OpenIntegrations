@@ -410,3 +410,51 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function SetWebhook(Val Token, Val URL) Export
+    Return УстановитьWebhook(Token, URL);
+EndFunction
+
+Function GetChannelInformation(Val Token) Export
+    Return ПолучитьИнформациюОКанале(Token);
+EndFunction
+
+Function GetUserData(Val Token, Val UserID) Export
+    Return ПолучитьДанныеПользователя(Token, UserID);
+EndFunction
+
+Function GetOnlineUsers(Val Token, Val UserIDs) Export
+    Return ПолучитьОнлайнПользователей(Token, UserIDs);
+EndFunction
+
+Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export
+    Return ОтправитьТекстовоеСообщение(Token, Text, UserID, SendingToChannel, Keyboard);
+EndFunction
+
+Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
+    Return ОтправитьКартинку(Token, URL, UserID, SendingToChannel, Description);
+EndFunction
+
+Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export
+    Return ОтправитьФайл(Token, URL, UserID, SendingToChannel, Extension, Size);
+EndFunction
+
+Function SendContact(Val Token, Val ContactName, Val PhoneNumber, Val UserID, Val SendingToChannel) Export
+    Return ОтправитьКонтакт(Token, ContactName, PhoneNumber, UserID, SendingToChannel);
+EndFunction
+
+Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
+    Return ОтправитьЛокацию(Token, Latitude, Longitude, UserID, SendingToChannel);
+EndFunction
+
+Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
+    Return ОтправитьСсылку(Token, URL, UserID, SendingToChannel);
+EndFunction
+
+Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export
+    Return СформироватьКлавиатуруИзМассиваКнопок(ButtonArray, ButtonColor);
+EndFunction
+
+#EndRegion

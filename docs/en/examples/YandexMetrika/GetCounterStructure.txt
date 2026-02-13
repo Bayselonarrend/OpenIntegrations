@@ -1,5 +1,2 @@
-    Clear   = False;
-    Options = New Structure;
-    Options.Insert("empty", Clear);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
+    Clear  = False;
+    Result = OPI_YandexMetrika.GetCounterStructure(Clear);

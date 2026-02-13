@@ -108,13 +108,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
     OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
     OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("order"  , OrderDescription);
-    Options.Insert("ostore" , True);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateOrder", Options);
+    Result = OPI_CDEK.CreateOrder(Token, OrderDescription, True, True);
 ```
  
 

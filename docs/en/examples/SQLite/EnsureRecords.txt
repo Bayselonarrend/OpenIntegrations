@@ -21,10 +21,4 @@
     KeyFields = New Array;
     KeyFields.Add("id");
 
-    Options = New Structure;
-    Options.Insert("table" , Table);
-    Options.Insert("rows"  , DataArray);
-    Options.Insert("unique", KeyFields);
-    Options.Insert("db"    , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureRecords", Options);
+    Result = OPI_SQLite.EnsureRecords(Table, DataArray, KeyFields, , Base);

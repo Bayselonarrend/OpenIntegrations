@@ -2,9 +2,4 @@
     Spreadsheet = "1hAKnTEvhiX-_-fYfXXYthJ3xq6Ub4SrlLPaIg0Tb9fs";
     Name        = "Test table (changed.)";
 
-    Options = New Structure;
-    Options.Insert("token"      , Token);
-    Options.Insert("spreadsheet", Spreadsheet);
-    Options.Insert("title"      , Name);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "EditSpreadsheetTitle", Options);
+    Result = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name);

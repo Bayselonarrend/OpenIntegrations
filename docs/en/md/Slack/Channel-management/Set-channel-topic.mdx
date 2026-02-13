@@ -30,12 +30,7 @@ import TabItem from '@theme/TabItem';
     Channel = "C09PUMJU2GM";
     Topic   = "TestTopic";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("theme"  , Topic);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelTopic", Options);
+    Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
 ```
  
 

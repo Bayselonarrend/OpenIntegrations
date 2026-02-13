@@ -1,8 +1,4 @@
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Options = New Structure;
-    Options.Insert("text", Text);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateTextTweet", Options);
+    Result = OPI_Twitter.CreateTextTweet(Text, Parameters);

@@ -1,6 +1,3 @@
     Token = "xoxb-6965308400114-696804637...";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelList", Options);
+    Result = OPI_Slack.GetChannelList(Token);

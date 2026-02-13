@@ -45,13 +45,7 @@ Method at API documentation: [Create chat completion](https://platform.openai.co
 
     Model = "smolvlm-256m-instruct";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("model", Model);
-    Options.Insert("msgs" , Messages);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
+    Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
 
     // Pictures
 
@@ -62,33 +56,15 @@ Method at API documentation: [Create chat completion](https://platform.openai.co
 
     Messages = New Array;
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("token"  , Token);
-    Options.Insert("name"   , FileName);
-    Options.Insert("data"   , File);
-    Options.Insert("purpose", Destination);
-
-    ImageUpload = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
+    ImageUpload = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
 
     ImageID = ImageUpload["id"];
 
-    Options = New Structure;
-    Options.Insert("role"  , "user");
-    Options.Insert("file"  , ImageID);
-    Options.Insert("prompt", "What is in this image?");
-
-    Description = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageMessageStructure", Options);
+    Description = OPI_OpenAI.GetImageMessageStructure("user", ImageID, "What is in this image?");
 
     Messages.Add(Description);
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("model", Model);
-    Options.Insert("msgs" , Messages);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
+    Result = OPI_OpenAI.GetResponse(URL, Token, Model, Messages);
 
     OPI_OpenAI.DeleteFile(URL, Token, ImageID);
 ```

@@ -36,18 +36,9 @@ Method at API documentation: [GET ​​/chats/resolvePending](https://teams.vk.
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("userid", User);
+    Result = OPI_VKTeams.ApprovePending(Token, ChatID, User);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
-
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
+    Result = OPI_VKTeams.ApprovePending(Token, ChatID);
 ```
  
 

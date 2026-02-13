@@ -1,5 +1,2 @@
-    Токен = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
-    Опции = Новый Структура;
-    Опции.Вставить("token", Токен);
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "ПолучитьСписокКалендарей", Опции);
+    Токен     = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
+    Результат = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен);

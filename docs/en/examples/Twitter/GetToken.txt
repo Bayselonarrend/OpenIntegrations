@@ -1,8 +1,4 @@
     Parameters = GetTwitterAuthData();
     Code       = "123456";
 
-    Options = New Structure;
-    Options.Insert("code", Code);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetToken", Options);
+    Result = OPI_Twitter.GetToken(Code, Parameters);

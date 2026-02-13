@@ -38,12 +38,7 @@ Method at API documentation: [Unload a model](https://github.com/ollama/ollama/b
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "UnloadModelFromMemory", Options);
+    Result = OPI_Ollama.UnloadModelFromMemory(URL, Model, AdditionalHeaders);
 ```
  
 

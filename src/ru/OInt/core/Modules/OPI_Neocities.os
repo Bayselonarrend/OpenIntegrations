@@ -454,3 +454,35 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetSiteData(Val Token, Val Website = "") Export
+    Return ПолучитьДанныеОСайте(Token, Website);
+EndFunction
+
+Function GetToken(Val Login, Val Password) Export
+    Return ПолучитьТокен(Login, Password);
+EndFunction
+
+Function UploadFile(Val Token, Val Path, Val Data) Export
+    Return ЗагрузитьФайл(Token, Path, Data);
+EndFunction
+
+Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export
+    Return ЗагрузитьФайлы(Token, FileMapping, Singly);
+EndFunction
+
+Function DeleteSelectedFiles(Val Token, Val Paths) Export
+    Return УдалитьВыбранныеФайлы(Token, Paths);
+EndFunction
+
+Function GetFilesList(Val Token, Val Path = "") Export
+    Return ПолучитьСписокФайлов(Token, Path);
+EndFunction
+
+Function SynchronizeFolders(Val Token, Val LocalFolder, Val RemoteFolder = "") Export
+    Return СинхронизироватьКаталоги(Token, LocalFolder, RemoteFolder);
+EndFunction
+
+#EndRegion

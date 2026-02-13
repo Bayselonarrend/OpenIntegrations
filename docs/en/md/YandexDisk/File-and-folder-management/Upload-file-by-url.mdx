@@ -30,12 +30,7 @@ import TabItem from '@theme/TabItem';
     Address = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Path    = "/" + String(New UUID) + ".png";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("path" , Path);
-    Options.Insert("url"  , Address);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileByURL", Options);
+    Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
 ```
  
 

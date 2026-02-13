@@ -3,9 +3,4 @@
     LocalFolder  = "C:\test_site";
     RemoteFolder = "test_sync";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("local" , LocalFolder);
-    Options.Insert("remote", RemoteFolder);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "SynchronizeFolders", Options);
+    Result = OPI_Neocities.SynchronizeFolders(Token, LocalFolder, RemoteFolder);

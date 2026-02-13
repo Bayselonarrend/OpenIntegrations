@@ -1,8 +1,4 @@
     Token  = "xoxb-6965308400114-696804637...";
     FileID = "F09PUMN3TPX";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("fileid", FileID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFile", Options);
+    Result = OPI_Slack.GetExternalFile(Token, FileID);

@@ -1,5 +1,2 @@
-    Token   = "xoxb-6965308400114-696804637...";
-    Options = New Structure;
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetWorkspaceList", Options);
+    Token  = "xoxb-6965308400114-696804637...";
+    Result = OPI_Slack.GetWorkspaceList(Token);

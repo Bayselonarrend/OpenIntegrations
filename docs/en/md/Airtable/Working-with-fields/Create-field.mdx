@@ -32,17 +32,8 @@ import TabItem from '@theme/TabItem';
     Table = "tblFGmvh2eldM8MuJ";
     Name  = String(New UUID);
 
-    Options = New Structure;
-    Options.Insert("title", Name);
-
-    Field   = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetNumberField", Options);
-    Options = New Structure;
-    Options.Insert("token"    , Token);
-    Options.Insert("base"     , Base);
-    Options.Insert("table"    , Table);
-    Options.Insert("fielddata", Field);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateField", Options);
+    Field  = OPI_Airtable.GetNumberField(Name);
+    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
 ```
  
 

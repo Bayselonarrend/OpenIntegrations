@@ -39,13 +39,7 @@ Method at API documentation: [Show Model Information](https://github.com/ollama/
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("verbose", False);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelInformation", Options);
+    Result = OPI_Ollama.GetModelInformation(URL, Model, False, AdditionalHeaders);
 ```
  
 

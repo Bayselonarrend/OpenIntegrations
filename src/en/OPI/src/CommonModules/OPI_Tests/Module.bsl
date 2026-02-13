@@ -67,6 +67,7 @@
 
 //#Use oint
 //#Use asserts
+//#Use "internal"
 
 #Region Internal
 

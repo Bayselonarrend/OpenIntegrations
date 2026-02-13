@@ -28,11 +28,7 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
     Token = "523b58ba82afffaa-7ef3b426...";
     URL   = "http://api.athenaeum.digital/hs/viber";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("url"  , URL);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SetWebhook", Options);
+    Result = OPI_Viber.SetWebhook(Token, URL);
 ```
  
 

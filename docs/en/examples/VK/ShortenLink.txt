@@ -1,7 +1,3 @@
     Parameters = GetVKParameters();
 
-    Options = New Structure;
-    Options.Insert("url" , "https://github.com/Bayselonarrend/OpenIntegrations");
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "ShortenLink", Options);
+    Result = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);

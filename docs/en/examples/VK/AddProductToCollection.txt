@@ -3,9 +3,4 @@
     Product   = "12115889";
     Selection = "144";
 
-    Options = New Structure;
-    Options.Insert("items", Product);
-    Options.Insert("sel"  , Selection);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProductToCollection", Options);
+    Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);

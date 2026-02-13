@@ -3,10 +3,4 @@
     UserID = "1";
     KeyID  = "1...";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("user" , UserID);
-    Options.Insert("id"   , KeyID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "DeletePermanentToken", Options);
+    Result = OPI_ReportPortal.DeletePermanentToken(URL, Token, UserID, KeyID);

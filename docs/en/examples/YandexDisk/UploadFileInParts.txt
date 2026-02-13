@@ -5,11 +5,4 @@
 
     ChunkSize = 1048576; // 1 MB
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("path"   , Path);
-    Options.Insert("file"   , File);
-    Options.Insert("psize"  , ChunkSize);
-    Options.Insert("rewrite", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileInParts", Options);
+    Result = OPI_YandexDisk.UploadFileInParts(Token, Path, File, ChunkSize, True);

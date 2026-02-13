@@ -26,10 +26,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     ClientID = "cc2ce9d60deb4975be58866d32dbe7aa";
 
-    Options = New Structure;
-    Options.Insert("id", ClientID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetConfirmationCode", Options);
+    Result = OPI_YandexDisk.GetConfirmationCode(ClientID);
 ```
  
 

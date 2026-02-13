@@ -32,11 +32,7 @@ Method at API documentation: [Tag information](https://yandex.ru/dev/metrika/en/
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     TagID = "320569";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("label", TagID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTag", Options);
+    Result = OPI_YandexMetrika.GetTag(Token, TagID);
 ```
  
 

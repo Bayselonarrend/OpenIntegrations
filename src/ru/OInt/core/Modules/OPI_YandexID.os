@@ -131,3 +131,23 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetConfirmationCode(Val ClientId) Export
+    Return ПолучитьКодПодтверждения(ClientId);
+EndFunction
+
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
+    Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
+EndFunction
+
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+    Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
+EndFunction
+
+Function GetAuthorizationHeader(Val Token) Export
+    Return ПолучитьЗаголовокАвторизации(Token);
+EndFunction
+
+#EndRegion

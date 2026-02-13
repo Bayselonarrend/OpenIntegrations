@@ -40,13 +40,7 @@ Method at API documentation: [Copy a Model](https://github.com/ollama/ollama/blo
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("name"   , Name);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CopyModel", Options);
+    Result = OPI_Ollama.CopyModel(URL, Model, Name, AdditionalHeaders);
 ```
  
 

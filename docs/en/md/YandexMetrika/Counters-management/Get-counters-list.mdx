@@ -32,10 +32,7 @@ Method at API documentation: [List of available counters](https://yandex.ru/dev/
     Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     CounterID = "105009635";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
+    Result = OPI_YandexMetrika.GetCountersList(Token);
 
     // filter by IDs list
 
@@ -46,11 +43,7 @@ Method at API documentation: [List of available counters](https://yandex.ru/dev/
 
     Filter.Insert("counter_ids", CountersArray);
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("filter", Filter);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
+    Result = OPI_YandexMetrika.GetCountersList(Token, Filter);
 ```
  
 

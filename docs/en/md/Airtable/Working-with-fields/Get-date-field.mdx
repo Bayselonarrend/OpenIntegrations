@@ -24,10 +24,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Options = New Structure;
-    Options.Insert("title", "Date");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDateField", Options);
+    Result = OPI_Airtable.GetDateField("Date");
 ```
  
 

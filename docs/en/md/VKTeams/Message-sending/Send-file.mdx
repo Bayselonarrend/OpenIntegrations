@@ -47,29 +47,11 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("file"  , File);
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("file"  , FilePath);
-    Options.Insert("text"  , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
-
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("chatid"  , ChatID);
-    Options.Insert("file"    , FileBD);
-    Options.Insert("text"    , Text);
-    Options.Insert("filename", "ImportantDocument.docx");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FileBD, Text, "ImportantDocument.docx");
 ```
  
 

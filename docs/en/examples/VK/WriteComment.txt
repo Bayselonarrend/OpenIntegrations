@@ -3,10 +3,4 @@
     PostID     = "10422";
     WallID     = Parameters["owner_id"];
 
-    Options = New Structure;
-    Options.Insert("post", PostID);
-    Options.Insert("wall", WallID);
-    Options.Insert("text", Text);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteComment", Options);
+    Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);

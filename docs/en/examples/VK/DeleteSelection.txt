@@ -2,8 +2,4 @@
 
     Selection = "144";
 
-    Options = New Structure;
-    Options.Insert("sel" , Selection);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteSelection", Options);
+    Result = OPI_VK.DeleteSelection(Selection, Parameters);

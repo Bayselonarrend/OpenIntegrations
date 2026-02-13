@@ -34,12 +34,7 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
     ChatID = "AoLI0egLWBSLR1Ngn2w";
     FileID = "I000bT4QTQzury5Slakfpw6904a4f61bd";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("fileid", FileID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendVoice", Options);
+    Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
 ```
  
 

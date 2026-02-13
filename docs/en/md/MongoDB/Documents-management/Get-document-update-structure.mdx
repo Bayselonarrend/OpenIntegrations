@@ -32,13 +32,7 @@ import TabItem from '@theme/TabItem';
     Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
     Data = New Structure( "__4set", New Structure("doubleField", 999));
 
-    Options = New Structure;
-    Options.Insert("query" , Filter);
-    Options.Insert("data"  , Data);
-    Options.Insert("multi" , True);
-    Options.Insert("upsert", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocumentUpdateStructure", Options);
+    Result = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data, True, True);
 ```
  
 

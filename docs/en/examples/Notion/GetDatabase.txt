@@ -1,8 +1,4 @@
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
     Base  = "29d82aa7-fc4e-8173-83c3-eef87a456cc4";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("base" , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetDatabase", Options);
+    Result = OPI_Notion.GetDatabase(Token, Base);

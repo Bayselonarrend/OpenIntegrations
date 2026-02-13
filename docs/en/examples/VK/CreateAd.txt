@@ -6,12 +6,9 @@
     PostID         = "10422";
     AccountID      = "1607951446";
 
-    Options = New Structure;
-    Options.Insert("campaign", CampaignNumber);
-    Options.Insert("limit"   , DailyLimit);
-    Options.Insert("category", CategoryNumber);
-    Options.Insert("post"    , PostID);
-    Options.Insert("cabinet" , AccountID);
-    Options.Insert("auth"    , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAd", Options);
+    Result = OPI_VK.CreateAd(CampaignNumber
+        , DailyLimit
+        , CategoryNumber
+        , PostID
+        , AccountID
+        , Parameters);

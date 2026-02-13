@@ -2,16 +2,8 @@
     Login    = "SA";
     Password = "12we...";
 
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
-    Options     = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
 
     Base = "testbase1";
 
@@ -19,9 +11,4 @@
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Options = New Structure;
-    Options.Insert("base", Base);
-    Options.Insert("dbc", ConnectionString);
-    Options.Insert("tls", TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteDatabase", Options);
+    Result = OPI_MSSQL.DeleteDatabase(Base, ConnectionString, TLSSettings);
