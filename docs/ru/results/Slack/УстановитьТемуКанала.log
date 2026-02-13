@@ -1,15 +1,15 @@
 ﻿{
  "ok": true,
  "channel": {
-  "id": "C0AESLKN22H",
-  "created": 1770991168,
+  "id": "C0AEZLB3N7L",
+  "created": 1771022556,
   "creator": "U06UG1CAYH2",
   "is_org_shared": false,
   "is_im": false,
   "context_team_id": "T06UD92BS3C",
-  "updated": 1770991172344,
-  "name": "testconvcaeb9d62-0f71-404f-a5f5-ee84befc8b0e",
-  "name_normalized": "testconvcaeb9d62-0f71-404f-a5f5-ee84befc8b0e",
+  "updated": 1771022559600,
+  "name": "testconv876b3d44-12c9-476c-9c4f-7bd240f32af8",
+  "name_normalized": "testconv876b3d44-12c9-476c-9c4f-7bd240f32af8",
   "is_channel": true,
   "is_group": false,
   "is_mpim": false,
@@ -30,7 +30,7 @@
   "topic": {
    "value": "Тестовая тема",
    "creator": "U06UG1CAYH2",
-   "last_set": 1770991172
+   "last_set": 1771022559
   },
   "shared_team_ids": [
    "T06UD92BS3C"
