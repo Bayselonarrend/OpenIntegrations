@@ -3,5 +3,6 @@
 oint ollama ПолучитьОтветВКонтексте \
   --url "https://hut.openintegrations.dev/ollama" \
   --model "tinyllama" \
-  --msgs "[{'role':'user','content':'What is 1C:Enterprise?'}]" \
+  --msgs "[{'role':'user','content':'Hello!'}]" \
+  --options "{'options':{'seed':'555','temperature':'10'}}" \
   --headers "{'Authorization':'***'}"

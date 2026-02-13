@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/2en3qc3y.uap"
+  --file "/tmp/mdkyolk2.dcp"
