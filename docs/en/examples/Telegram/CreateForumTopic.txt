@@ -3,10 +3,4 @@
     Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-    Options.Insert("title", Name);
-    Options.Insert("icon" , Icon);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateForumTopic", Options);
+    Result = OPI_Telegram.CreateForumTopic(Token, Chat, Name, Icon);

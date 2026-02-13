@@ -3,9 +3,4 @@
 
     FileID = "file-3";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("id"   , FileID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteFile", Options);
+    Result = OPI_OpenAI.DeleteFile(URL, Token, FileID);

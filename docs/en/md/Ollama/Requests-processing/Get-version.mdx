@@ -35,11 +35,7 @@ Method at API documentation: [Version](https://github.com/ollama/ollama/blob/mai
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetVersion", Options);
+    Result = OPI_Ollama.GetVersion(URL, AdditionalHeaders);
 ```
  
 

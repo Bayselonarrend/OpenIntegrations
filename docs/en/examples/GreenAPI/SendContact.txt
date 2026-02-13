@@ -11,25 +11,7 @@
     Patronymic = "Petrovich";
     Company    = "Bicycle";
 
-    Options = New Structure;
-    Options.Insert("phone"  , Phone);
-    Options.Insert("name"   , Name);
-    Options.Insert("surname", LastName);
-    Options.Insert("midname", Patronymic);
-    Options.Insert("company", Company);
+    Contact = OPI_GreenAPI.GetContactDescription(Phone, Name, LastName, Patronymic, Company);
 
-    Contact = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
-
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access" , AccessParameters);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("contact", Contact);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendContact(AccessParameters, ChatID, Contact);

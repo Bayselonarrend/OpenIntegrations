@@ -1,8 +1,4 @@
     Token = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     Name  = "TestCalendar";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("title", Name);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateCalendar", Options);
+    Result = OPI_GoogleCalendar.CreateCalendar(Token, Name);

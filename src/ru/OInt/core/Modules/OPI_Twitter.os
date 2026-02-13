@@ -652,3 +652,51 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetAuthorizationLink(Parameters = "") Export
+    Return ПолучитьСсылкуАвторизации(Parameters);
+EndFunction
+
+Function GetToken(Val Code, Val Parameters = "") Export
+    Return ПолучитьТокен(Code, Parameters);
+EndFunction
+
+Function RefreshToken(Val Parameters = "") Export
+    Return ОбновитьТокен(Parameters);
+EndFunction
+
+Function HandleIncomingRequestAfterAuthorization(Request) Export
+    Return ОбработкаВходящегоЗапросаПослеАвторизации(Request);
+EndFunction
+
+Function CreateCustomTweet(Val Text = "", Val MediaArray = "", Val PollOptionsArray = "", Val PollDuration = "", Val Parameters = "") Export
+    Return СоздатьПроизвольныйТвит(Text, MediaArray, PollOptionsArray, PollDuration, Parameters);
+EndFunction
+
+Function CreateTextTweet(Val Text, Val Parameters = "") Export
+    Return СоздатьТекстовыйТвит(Text, Parameters);
+EndFunction
+
+Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
+    Return СоздатьТвитКартинки(Text, ImageArray, Parameters);
+EndFunction
+
+Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
+    Return СоздатьТвитГифки(Text, GifsArray, Parameters);
+EndFunction
+
+Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
+    Return СоздатьТвитВидео(Text, VideosArray, Parameters);
+EndFunction
+
+Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export
+    Return СоздатьТвитОпрос(Text, OptionArray, Duration, Parameters);
+EndFunction
+
+Function UploadAttachmentsArray(Val ArrayOfFiles, Val AttachmentsType, Val Parameters = "") Export
+    Return ЗагрузитьМассивВложений(ArrayOfFiles, AttachmentsType, Parameters);
+EndFunction
+
+#EndRegion

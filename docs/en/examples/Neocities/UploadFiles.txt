@@ -9,8 +9,4 @@
     FileMapping.Insert("test/gif.gif" , Image2);
     FileMapping.Insert("pic2.png"     , GIF);
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("files", FileMapping);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "UploadFiles", Options);
+    Result = OPI_Neocities.UploadFiles(Token, FileMapping);

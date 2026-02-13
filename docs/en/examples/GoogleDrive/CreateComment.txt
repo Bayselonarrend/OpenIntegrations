@@ -2,9 +2,4 @@
     Identifier = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
     Comment    = "Comment text";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("object", Identifier);
-    Options.Insert("text"  , Comment);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateComment", Options);
+    Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);

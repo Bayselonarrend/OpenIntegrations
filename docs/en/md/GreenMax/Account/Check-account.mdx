@@ -36,18 +36,8 @@ Method at API documentation: [CheckAccount](https://green-api.com/v3/docs/api/se
     ApiTokenInstance = "17915d8e0b4b4975a183478da...";
 
     PhoneNumber = 441234567890;
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access", AccessParameters);
-    Options.Insert("phone" , PhoneNumber);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "CheckAccount", Options);
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.CheckAccount(AccessParameters, PhoneNumber);
 ```
  
 

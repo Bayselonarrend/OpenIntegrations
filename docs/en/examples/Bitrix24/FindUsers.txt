@@ -7,11 +7,7 @@
     FilterStructure.Insert("UF_DEPARTMENT_NAME", "Marketing department");
     FilterStructure.Insert("USER_TYPE"         , "employee");
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("filter", FilterStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "FindUsers", Options);
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
@@ -19,9 +15,4 @@
     FilterStructure = New Structure;
     FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "FindUsers", Options);
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure, Token);

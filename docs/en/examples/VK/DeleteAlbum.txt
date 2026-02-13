@@ -1,8 +1,4 @@
     Parameters = GetVKParameters();
     AlbumID    = "310586206";
 
-    Options = New Structure;
-    Options.Insert("album", AlbumID);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteAlbum", Options);
+    Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);

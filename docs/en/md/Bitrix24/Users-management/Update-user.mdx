@@ -41,12 +41,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     UserStructure.Insert("EMAIL"        , Email);
     UserStructure.Insert("UF_DEPARTMENT", 1);
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("userid", UserID);
-    Options.Insert("fields", UserStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateUser", Options);
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
@@ -59,13 +54,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     UserStructure.Insert("LAST_NAME"    , "Lama");
     UserStructure.Insert("UF_DEPARTMENT", 7);
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("userid", UserID);
-    Options.Insert("fields", UserStructure);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateUser", Options);
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure, Token);
 ```
  
 

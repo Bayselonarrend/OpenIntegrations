@@ -28,10 +28,7 @@ Is a shorthand for the function `GetMessageStructure`
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Options = New Structure;
-    Options.Insert("text", "What is 1C:Enterprise?");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetSystemMessage", Options);
+    Result = OPI_OpenAI.GetSystemMessage("What is 1C:Enterprise?");
 ```
  
 

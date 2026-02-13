@@ -1,10 +1,7 @@
     URL = "http://localhost:9101";
     // No authorization
 
-    Options = New Structure;
-    Options.Insert("url", URL);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL);
 
     // With basic authorization
 
@@ -13,44 +10,23 @@
 
     Authorization = New Structure(Login, Password);
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("auth", Authorization);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
 
     // With JWT authorization
 
     JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("auth", JWT);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, JWT);
 
     // With metadata
 
     Meta = New Map;
     Meta.Insert("custom-meta", "value");
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("auth", Authorization);
-    Options.Insert("meta", Meta);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, Meta);
 
     // With TLS settings
 
-    Options = New Structure;
-    Options.Insert("trust", True);
+    Tls = OPI_ClickHouse.GetTlsSettings(True);
 
-    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetTlsSettings", Options);
-
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("auth", Authorization);
-    Options.Insert("tls" , Tls);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, , Tls);

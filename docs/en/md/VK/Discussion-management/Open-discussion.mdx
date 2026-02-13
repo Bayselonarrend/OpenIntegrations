@@ -27,11 +27,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters   = GetVKParameters();
     DiscussionID = "54403421";
-    Options      = New Structure;
-    Options.Insert("topic", DiscussionID);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "OpenDiscussion", Options);
+    Result       = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
 ```
  
 

@@ -40,10 +40,7 @@ The response body can be returned as a collection (for JSON) or as binary data (
 
     QueryText = "SELECT 1";
 
-    Options = New Structure;
-    Options.Insert("query", QueryText);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText);
 
     // Full request
 
@@ -56,25 +53,18 @@ The response body can be returned as a collection (for JSON) or as binary data (
     AdditionalSettings.Insert("max_threads", "4");
 
     ColoumnsStruct = New Structure("id,name", "UInt64", "String");
-    Options        = New Structure;
-    Options.Insert("name", "ext");
-    Options.Insert("cols", ColoumnsStruct);
-
-    ExternalTable = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
+    ExternalTable  = OPI_ClickHouse.GetExternalTableStructure("ext", ColoumnsStruct);
 
     TableArray = New Array;
     TableArray.Add(ExternalTable);
 
-    Options = New Structure;
-    Options.Insert("query"   , QueryText);
-    Options.Insert("db"      , Database);
-    Options.Insert("id"      , RequestID);
-    Options.Insert("data"    , Data);
-    Options.Insert("format"  , ResponseFormat);
-    Options.Insert("ext"     , TableArray);
-    Options.Insert("settings", AdditionalSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText
+        , Database
+        , RequestID
+        , Data
+        , ResponseFormat
+        , TableArray
+        , AdditionalSettings);
 ```
  
 

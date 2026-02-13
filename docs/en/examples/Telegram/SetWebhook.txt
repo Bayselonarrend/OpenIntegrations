@@ -1,8 +1,4 @@
     Token = "6129457865:AAFyzNYOAFbu...";
     URL   = "https://api.athenaeum.digital/opi/hs/twitter";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("url"  , URL);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SetWebhook", Options);
+    Result = OPI_Telegram.SetWebhook(Token, URL);

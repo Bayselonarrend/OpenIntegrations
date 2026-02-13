@@ -2,15 +2,7 @@
     Login    = "SA";
     Password = "12we...";
 
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
-    Options          = New Structure;
-    Options.Insert("trust", True);
-
-    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
 
     Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);

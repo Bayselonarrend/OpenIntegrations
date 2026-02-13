@@ -34,14 +34,7 @@ import TabItem from '@theme/TabItem';
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Options = New Structure;
-    Options.Insert("token"    , Token);
-    Options.Insert("calendar" , Calendar);
-    Options.Insert("primary"  , PrimaryColor);
-    Options.Insert("secondary", SecondaryColor);
-    Options.Insert("hidden"   , Hidden);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditListCalendar", Options);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, Hidden);
 ```
  
 

@@ -5,24 +5,10 @@
     Token            = "523b5b25ed27e6ec-fdf013e4...";
     SendingToChannel = False;
 
-    Options = New Structure;
-    Options.Insert("token"    , Token);
-    Options.Insert("lat"      , Latitude);
-    Options.Insert("long"     , Longitude);
-    Options.Insert("user"     , UserID);
-    Options.Insert("ischannel", SendingToChannel);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
 
     UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
     Token            = "523b58ba82afffaa-7ef3b426...";
     SendingToChannel = True;
 
-    Options = New Structure;
-    Options.Insert("token"    , Token);
-    Options.Insert("lat"      , Latitude);
-    Options.Insert("long"     , Longitude);
-    Options.Insert("user"     , UserID);
-    Options.Insert("ischannel", SendingToChannel);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);

@@ -34,14 +34,7 @@ import TabItem from '@theme/TabItem';
     Record  = "recuJsvpt9DG2SuEk";
     Comment = "comPMHUtwEsa66el1";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("base"   , Base);
-    Options.Insert("table"  , Table);
-    Options.Insert("record" , Record);
-    Options.Insert("comment", Comment);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteComment", Options);
+    Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);
 ```
  
 

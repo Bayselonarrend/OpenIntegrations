@@ -25,10 +25,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetTwitterAuthData();
-    Options    = New Structure;
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "RefreshToken", Options);
+    Result     = OPI_Twitter.RefreshToken(Parameters);
 ```
  
 

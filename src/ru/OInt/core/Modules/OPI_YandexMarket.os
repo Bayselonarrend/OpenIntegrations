@@ -429,3 +429,39 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetMarketsList(Val Token, Val Page = 1) Export
+    Return ПолучитьСписокМагазинов(Token, Page);
+EndFunction
+
+Function GetMarket(Val Token, Val CampaignID) Export
+    Return ПолучитьМагазин(Token, CampaignID);
+EndFunction
+
+Function GetBusinessSettings(Val Token, Val AccountID) Export
+    Return ПолучитьНастройкиКабинета(Token, AccountID);
+EndFunction
+
+Function GetCampaignSettings(Val Token, Val CampaignID) Export
+    Return ПолучитьНастройкиМагазина(Token, CampaignID);
+EndFunction
+
+Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnImages = False) Export
+    Return ДобавитьОбновитьТовары(Token, AccountID, ProductsArray, OwnImages);
+EndFunction
+
+Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val PageToken = "") Export
+    Return ПолучитьТоварыМагазина(Token, CampaignID, Filters, PageToken);
+EndFunction
+
+Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export
+    Return ПолучитьТоварыКабинета(Token, AccountID, Filters, PageToken);
+EndFunction
+
+Function GetProductStructure(Val Clear = False) Export
+    Return ПолучитьСтруктуруТовара(Clear);
+EndFunction
+
+#EndRegion

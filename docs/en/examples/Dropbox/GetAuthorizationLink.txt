@@ -1,5 +1,2 @@
-    AppKey  = "oynqxds...";
-    Options = New Structure;
-    Options.Insert("appkey", AppKey);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
+    AppKey = "oynqxds...";
+    Result = OPI_Dropbox.GetAuthorizationLink(AppKey);

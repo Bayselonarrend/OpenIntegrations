@@ -2,9 +2,4 @@
     Check     = True;
     Timeout   = 120;
 
-    Options = New Structure;
-    Options.Insert("id"     , SessionID);
-    Options.Insert("check"  , Check);
-    Options.Insert("timeout", Timeout);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetSessionSettings", Options);
+    Result = OPI_ClickHouse.GetSessionSettings(SessionID, Check, Timeout);

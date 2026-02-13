@@ -18,11 +18,7 @@
                    |data BLOB
                    |);";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db" , Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     // INSERT with parameters
 
@@ -38,22 +34,13 @@
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
     ParameterArray.Add(New Structure("blob", Image)); // BLOB
 
-    Options = New Structure;
-    Options.Insert("sql"   , QueryText);
-    Options.Insert("params", ParameterArray);
-    Options.Insert("db"    , Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
     // SELECT (The result of this query is shown in the Result block)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db" , Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     // Transaction
 
@@ -68,11 +55,7 @@
                    |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    |    COMMIT;";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db" , Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     // With extension
 
@@ -89,11 +72,6 @@
 
     QueryText = "SELECT uuid4();";
 
-    Options = New Structure;
-    Options.Insert("sql" , QueryText);
-    Options.Insert("db"  , Connection);
-    Options.Insert("exts", ExtensionMap);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
 
     Closing = OPI_SQLite.CloseConnection(Connection);

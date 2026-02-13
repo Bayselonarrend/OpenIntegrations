@@ -8,17 +8,7 @@
     ImageArray.Add(Image);
     ImageArray.Add(Image2);
 
-    Options = New Structure;
-    Options.Insert("text"    , Text);
-    Options.Insert("pictures", ImageArray);
-    Options.Insert("auth"    , Parameters);
+    Result = OPI_Twitter.CreateImageTweet(Text, ImageArray, Parameters);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
-
-    Text    = "TestTweet" + String(New UUID);
-    Options = New Structure;
-    Options.Insert("text"    , Text);
-    Options.Insert("pictures", Image);
-    Options.Insert("auth"    , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
+    Text   = "TestTweet" + String(New UUID);
+    Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);

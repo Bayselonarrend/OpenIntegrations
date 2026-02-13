@@ -1,19 +1,10 @@
     URL          = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     DepartmentID = "2964";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("depid", DepartmentID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
+    Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     HeadID = 1;
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("headid", HeadID);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
+    Result = OPI_Bitrix24.GetDepartments(URL, , , , HeadID, Token);

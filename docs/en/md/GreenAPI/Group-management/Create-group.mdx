@@ -37,18 +37,8 @@ Method at API documentation: [CreateGroup](https://green-api.com/docs/api/groups
 
     Name = "New group";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access", AccessParameters);
-    Options.Insert("name"  , Name);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "CreateGroup", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name);
 ```
  
 

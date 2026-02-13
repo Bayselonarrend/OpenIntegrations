@@ -1,3 +1,1 @@
-    Options = New Structure;
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecordsFilterStructure", Options);
+    Result = OPI_MSSQL.GetRecordsFilterStructure();

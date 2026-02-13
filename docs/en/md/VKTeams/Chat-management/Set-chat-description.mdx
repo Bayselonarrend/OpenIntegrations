@@ -36,12 +36,7 @@ Method at API documentation: [GET ​​/chats/setAbout](https://teams.vk.com/bo
     ChatID = "689203963@chat.agent";
     Text   = "New description";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("text"  , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatDescription", Options);
+    Result = OPI_VKTeams.SetChatDescription(Token, ChatID, Text);
 ```
  
 

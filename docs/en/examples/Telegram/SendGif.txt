@@ -10,28 +10,10 @@
     GifDD = New BinaryData(GifPath);
 
     // In chat, by URL
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChatID);
-    Options.Insert("text", Text);
-    Options.Insert("gif", GIF);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
+    Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
 
     // To channel, on disk
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("gif", GifPath);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
 
     // To channel, from binary data
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("gif", GifDD);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);

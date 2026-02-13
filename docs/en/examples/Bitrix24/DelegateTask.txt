@@ -2,21 +2,10 @@
     TaskID = "8718";
     UserID = "2960";
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("task", TaskID);
-    Options.Insert("user", UserID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DelegateTask", Options);
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     TaskID = "8720";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("task" , TaskID);
-    Options.Insert("user" , UserID);
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DelegateTask", Options);
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);

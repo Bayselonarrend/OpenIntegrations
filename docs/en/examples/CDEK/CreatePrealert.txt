@@ -3,11 +3,4 @@
     Point        = "NSK27";
     TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuids"  , UUID);
-    Options.Insert("date"   , TransferDate);
-    Options.Insert("point"  , Point);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreatePrealert", Options);
+    Result = OPI_CDEK.CreatePrealert(Token, UUID, TransferDate, Point, True);

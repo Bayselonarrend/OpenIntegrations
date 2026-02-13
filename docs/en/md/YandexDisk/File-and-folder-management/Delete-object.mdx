@@ -29,12 +29,7 @@ import TabItem from '@theme/TabItem';
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Path  = "/ec98cf96-9738-40a1-b9bc-a24a2f049cb0.png";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("path" , Path);
-    Options.Insert("can"  , False);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
 ```
  
 

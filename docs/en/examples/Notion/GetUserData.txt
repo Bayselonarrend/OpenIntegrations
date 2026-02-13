@@ -1,8 +1,4 @@
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
     User  = "ed71865a-9891-46bc-86cd-a92aa499cfdb";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("user" , User);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetUserData", Options);
+    Result = OPI_Notion.GetUserData(Token, User);

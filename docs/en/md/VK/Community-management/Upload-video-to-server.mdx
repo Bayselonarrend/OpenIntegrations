@@ -38,13 +38,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Name        = "NewVideo";
     Description = "Video description";
 
-    Options = New Structure;
-    Options.Insert("file"       , Video);
-    Options.Insert("title"      , Name);
-    Options.Insert("description", Description);
-    Options.Insert("auth"       , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);
+    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
 ```
  
 

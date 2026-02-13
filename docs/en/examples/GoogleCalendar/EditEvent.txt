@@ -6,10 +6,4 @@
     EventDescription = New Map;
     EventDescription.Insert("Description", Description);
 
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("calendar", Calendar);
-    Options.Insert("props"   , EventDescription);
-    Options.Insert("event"   , Event);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditEvent", Options);
+    Result = OPI_GoogleCalendar.EditEvent(Token, Calendar, EventDescription, Event);

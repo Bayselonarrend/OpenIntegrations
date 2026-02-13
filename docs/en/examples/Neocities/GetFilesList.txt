@@ -1,8 +1,4 @@
     Token = "f1e616e20ab5893b...";
     Path  = "test";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("path" , Path);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetFilesList", Options);
+    Result = OPI_Neocities.GetFilesList(Token, Path);

@@ -3,13 +3,8 @@
 
     // Text
 
-    Text    = "TestMessage1";
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("text"   , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+    Text   = "TestMessage1";
+    Result = OPI_Slack.SendMessage(Token, Channel, Text);
 
     // With attachments (picture block in the example)
 
@@ -17,20 +12,10 @@
     Image      = "https://hut.openintegrations.dev/test_data/picture.jpg";
     BlockArray = New Array;
 
-    Options = New Structure;
-    Options.Insert("picture", Image);
-    Options.Insert("alt"    , "Image");
-
-    Block = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+    Block = OPI_Slack.GenerateImageBlock(Image, "Image");
     BlockArray.Add(Block);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("text"   , Text);
-    Options.Insert("blocks" , BlockArray);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , BlockArray);
 
     // Sheduled
 
@@ -39,10 +24,4 @@
     Day  = 24;
 
     SendingDate = OPI_Tools.GetCurrentDate() + (Day * Hour);
-    Options     = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("text"   , Text);
-    Options.Insert("date"   , SendingDate);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+    Result      = OPI_Slack.SendMessage(Token, Channel, Text, SendingDate);

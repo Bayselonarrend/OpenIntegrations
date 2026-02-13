@@ -5,19 +5,6 @@
     FileName = "megadoc.docx";
     Title    = "NewFile";
 
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("file"    , File);
-    Options.Insert("filename", FileName);
-    Options.Insert("title"   , Title);
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
-
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("file"    , File);
-    Options.Insert("filename", FileName);
-    Options.Insert("title"   , Title);
-    Options.Insert("channel" , Channel);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);

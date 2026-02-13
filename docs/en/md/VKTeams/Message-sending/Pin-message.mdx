@@ -36,12 +36,7 @@ Method at API documentation: [GET /chats/pinMessage](https://teams.vk.com/botapi
     ChatID    = "689203963@chat.agent";
     MessageID = "7567354422724936211";
 
-    Options = New Structure;
-    Options.Insert("token"    , Token);
-    Options.Insert("chatid"   , ChatID);
-    Options.Insert("messageid", MessageID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "PinMessage", Options);
+    Result = OPI_VKTeams.PinMessage(Token, ChatID, MessageID);
 ```
  
 

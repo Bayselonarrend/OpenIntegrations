@@ -32,11 +32,7 @@ Method at API documentation: [Deleting a counter](https://yandex.ru/dev/metrika/
     Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     CounterID = "105009635";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("counter", CounterID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteCounter", Options);
+    Result = OPI_YandexMetrika.DeleteCounter(Token, CounterID);
 ```
  
 

@@ -1,8 +1,4 @@
     Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatMembers", Options);
+    Result = OPI_VKTeams.GetChatMembers(Token, ChatID);

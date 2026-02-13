@@ -358,3 +358,27 @@
 КонецФункции
 
 #КонецОбласти
+
+#Region Alternate
+
+Function NewRequest() Export
+    Return НовыйЗапрос();
+EndFunction
+
+Function PostWithBody(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False, Val ResponseFile = Undefined) Export
+    Return PostСТелом(URL, Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
+EndFunction
+
+Function PatchWithBody(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False, Val ResponseFile = Undefined) Export
+    Return PatchСТелом(URL, Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
+EndFunction
+
+Function PutWithBody(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False, Val ResponseFile = Undefined) Export
+    Return PutСТелом(URL, Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
+EndFunction
+
+Function DeleteWithBody(Val URL, Val Parameters = "", Val AdditionalHeaders = "", Val JSON = True, Val FullResponse = False, Val ResponseFile = Undefined) Export
+    Return DeleteСТелом(URL, Parameters, AdditionalHeaders, JSON, FullResponse, ResponseFile);
+EndFunction
+
+#EndRegion

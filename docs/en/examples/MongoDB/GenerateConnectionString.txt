@@ -4,11 +4,4 @@
     Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("db"    , Base);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Result           = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
