@@ -2,7 +2,7 @@
 
 oint s3 УстановитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "814ef6a8" \
+  --bucket "7a9af49f" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}" \
   --dir true
