@@ -42,14 +42,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Audio = "C:\Users\bayse\AppData\Local\Temp\c2iirpb4.a52.wav";
     Model = "whisper-1";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("model", Model);
-    Options.Insert("audio", Audio);
-    Options.Insert("type" , "audio/wav");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateTranscription", Options);
+    Result = OPI_OpenAI.CreateTranscription(URL, Token, Model, Audio, "audio/wav");
 ```
  
 

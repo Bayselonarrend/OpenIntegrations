@@ -4,11 +4,4 @@
     PrivateKey = "./ssh_key";
     PublicKey  = "./ssh_key.pub";
 
-    Options = New Structure;
-    Options.Insert("host", Host);
-    Options.Insert("port", Port);
-    Options.Insert("user", Login);
-    Options.Insert("key" , PrivateKey);
-    Options.Insert("pub" , PublicKey);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsPrivateKey", Options);
+    Result = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);

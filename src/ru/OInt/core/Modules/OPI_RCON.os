@@ -168,3 +168,23 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateConnection(Val ConnectionParams) Export
+    Return ОткрытьСоединение(ConnectionParams);
+EndFunction
+
+Function ExecuteCommand(Val Command, Val Connection) Export
+    Return ВыполнитьКоманду(Command, Connection);
+EndFunction
+
+Function FormConnectionParameters(Val URL, Val Password, Val ReadTimeout = 30, Val WriteTimeout = 30) Export
+    Return СформироватьПараметрыСоединения(URL, Password, ReadTimeout, WriteTimeout);
+EndFunction
+
+Function IsConnector(Val Value) Export
+    Return ЭтоКоннектор(Value);
+EndFunction
+
+#EndRegion

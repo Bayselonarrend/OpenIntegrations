@@ -39,13 +39,7 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     Base     = "admin";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     RoleArray = New Array;
@@ -59,25 +53,14 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     Actions.Add("insert");
     Actions.Add("update");
 
-    Options = New Structure;
-    Options.Insert("res", Resource);
-    Options.Insert("act", Actions);
-
-    Privilege = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetRolePrivilegeStructure", Options);
+    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
 
     PrivilegesArray = New Array;
     PrivilegesArray.Add(Privilege);
 
     RoleName = "newrole";
 
-    Options = New Structure;
-    Options.Insert("dbc"  , Connection);
-    Options.Insert("name" , RoleName);
-    Options.Insert("db"   , Base);
-    Options.Insert("prvl" , PrivilegesArray);
-    Options.Insert("roles", RoleArray);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateRole", Options);
+    Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
 ```
  
 

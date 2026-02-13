@@ -26,10 +26,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     ClientID = "cc2ce9d60deb4975be58866d32dbe7aa";
 
-    Опции = Новый Структура;
-    Опции.Вставить("id", ClientID);
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "ПолучитьКодПодтверждения", Опции);
+    Результат = OPI_YandexDisk.ПолучитьКодПодтверждения(ClientID);
 ```
     
 

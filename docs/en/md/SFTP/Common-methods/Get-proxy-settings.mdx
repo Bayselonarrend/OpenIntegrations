@@ -35,14 +35,7 @@ import TabItem from '@theme/TabItem';
     ProxyLogin    = "proxyuser";
     ProxyPassword = "12we...";
 
-    Options = New Structure;
-    Options.Insert("addr" , ProxyAddress);
-    Options.Insert("port" , ProxyPort);
-    Options.Insert("type" , ProxyType);
-    Options.Insert("login", ProxyLogin);
-    Options.Insert("pass" , ProxyPassword);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
+    Result = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 ```
  
 

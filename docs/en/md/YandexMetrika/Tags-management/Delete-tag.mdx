@@ -32,11 +32,7 @@ Method at API documentation: [Deleting a tag](https://yandex.ru/dev/metrika/en/m
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
     TagID = "320569";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("label", TagID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteTag", Options);
+    Result = OPI_YandexMetrika.DeleteTag(Token, TagID);
 ```
  
 

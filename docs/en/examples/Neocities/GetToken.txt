@@ -1,8 +1,4 @@
     Login    = "2athenaeum";
     Password = "Rit...";
 
-    Options = New Structure;
-    Options.Insert("login"   , Login);
-    Options.Insert("password", Password);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetToken", Options);
+    Result = OPI_Neocities.GetToken(Login, Password);

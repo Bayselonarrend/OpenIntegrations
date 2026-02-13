@@ -41,13 +41,8 @@ If the Proto value is not an object (a key value collection), it will be interpr
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Meta    = New Structure("somekey", "somevalue");
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("proto", Scheme);
-    Options.Insert("meta" , Meta);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Meta   = New Structure("somekey", "somevalue");
+    Result = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
 ```
  
 

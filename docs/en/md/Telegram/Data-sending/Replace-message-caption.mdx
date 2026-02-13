@@ -37,13 +37,7 @@ Method at API documentation: [editMessageCaption](https://core.telegram.org/bots
     MessageID = "17744";
 
     Description = "New picture description";
-    Options     = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("message", MessageID);
-    Options.Insert("caption", Description);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageCaption", Options);
+    Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);
 ```
  
 

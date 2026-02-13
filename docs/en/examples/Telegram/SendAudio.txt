@@ -10,28 +10,10 @@
     AudioDD = New BinaryData(AudioPath);
 
     // In chat, by URL
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChatID);
-    Options.Insert("text", Text);
-    Options.Insert("audio", Audio);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
+    Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
 
     // To channel, on disk
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("audio", AudioPath);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
 
     // To channel, from binary data
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("audio", AudioDD);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);

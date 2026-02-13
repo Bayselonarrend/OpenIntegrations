@@ -42,41 +42,21 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("access", AccessKey);
-    Options.Insert("secret", SecretKey);
-    Options.Insert("region", Region);
-
-    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
     Bucket = "w567hjy1";
     Name   = "picture.jpg";
     Entity = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 
-    Options = New Structure;
-    Options.Insert("name"  , Name);
-    Options.Insert("bucket", Bucket);
-    Options.Insert("data"  , Entity);
-    Options.Insert("basic" , BasicData);
-    Options.Insert("dir"   , Directory);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
+    Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData, , Directory);
 
     Name   = "fileChunked.mp3";
     Entity = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Path or Binary Data
 
     BasicData.Insert("ChunkSize", 5242880); // Size parts for upload in multiple of requests
 
-    Options = New Structure;
-    Options.Insert("name"  , Name);
-    Options.Insert("bucket", Bucket);
-    Options.Insert("data"  , Entity);
-    Options.Insert("basic" , BasicData);
-    Options.Insert("dir"   , Directory);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
+    Result = OPI_S3.PutObject(Name, Bucket, Entity, BasicData, , Directory);
 ```
  
 

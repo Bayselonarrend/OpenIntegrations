@@ -35,20 +35,9 @@ Method at API documentation: [Create image](https://platform.openai.com/docs/api
     URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    Model   = "sd-1.5-ggml";
-    Options = New Structure;
-    Options.Insert("prompt", "Yellow alpaca");
-    Options.Insert("amount", 1);
-    Options.Insert("size"  , "64x64");
-
-    Description = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageDescriptionStructure", Options);
-    Options     = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("model", Model);
-    Options.Insert("descr", Description);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImages", Options);
+    Model       = "sd-1.5-ggml";
+    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "64x64");
+    Result      = OPI_OpenAI.GetImages(URL, Token, Model, Description);
 ```
  
 

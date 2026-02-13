@@ -1,5 +1,2 @@
     Parameters = GetTwitterAuthData();
-    Options    = New Structure;
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
+    Result     = OPI_Twitter.GetAuthorizationLink(Parameters);

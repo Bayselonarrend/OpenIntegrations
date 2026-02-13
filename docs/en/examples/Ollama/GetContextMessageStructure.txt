@@ -1,5 +1,1 @@
-    Options = New Structure;
-    Options.Insert("role", "user");
-    Options.Insert("text", "Hello!");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
+    Result = OPI_Ollama.GetContextMessageStructure("user", "Hello!");

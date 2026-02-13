@@ -65,12 +65,7 @@ Method at API documentation: [Registration of delivery appointment](https://api-
 
     Appointment.Insert("to_location", DeliveryLocation);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("appt"   , Appointment);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "RegisterDeliveryAppointment", Options);
+    Result = OPI_CDEK.RegisterDeliveryAppointment(Token, Appointment, True);
 ```
  
 

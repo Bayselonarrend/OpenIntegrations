@@ -43,13 +43,7 @@ It is not recommended to use the connection configuration for multiple requests 
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        Options = New Structure;
-        Options.Insert("host", Host);
-        Options.Insert("port", Port);
-        Options.Insert("user", Login);
-        Options.Insert("pass", Password);
-
-        SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -75,22 +69,11 @@ It is not recommended to use the connection configuration for multiple requests 
         ProxyLogin    = "proxyuser";
         ProxyPassword = "12we...";
 
-        Options = New Structure;
-        Options.Insert("addr" , ProxyAddress);
-        Options.Insert("port" , ProxyPort);
-        Options.Insert("type" , ProxyType);
-        Options.Insert("login", ProxyLogin);
-        Options.Insert("pass" , ProxyPassword);
-
-        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 
     EndIf;
 
-    Options = New Structure;
-    Options.Insert("set"  , SFTPSettings);
-    Options.Insert("proxy", ProxySettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetConnectionConfiguration", Options);
+    Result = OPI_SFTP.GetConnectionConfiguration(SFTPSettings, ProxySettings);
 ```
  
 

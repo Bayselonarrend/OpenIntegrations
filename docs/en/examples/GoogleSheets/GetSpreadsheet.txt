@@ -1,8 +1,4 @@
     Token      = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     Identifier = "1hAKnTEvhiX-_-fYfXXYthJ3xq6Ub4SrlLPaIg0Tb9fs";
 
-    Options = New Structure;
-    Options.Insert("token"      , Token);
-    Options.Insert("spreadsheet", Identifier);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
+    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier);

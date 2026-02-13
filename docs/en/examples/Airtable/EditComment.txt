@@ -4,13 +4,5 @@
     Record  = "recuJsvpt9DG2SuEk";
     Comment = "comPMHUtwEsa66el1";
 
-    Text    = "Test comment (change.)";
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("base"   , Base);
-    Options.Insert("table"  , Table);
-    Options.Insert("record" , Record);
-    Options.Insert("comment", Comment);
-    Options.Insert("text"   , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "EditComment", Options);
+    Text   = "Test comment (change.)";
+    Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);

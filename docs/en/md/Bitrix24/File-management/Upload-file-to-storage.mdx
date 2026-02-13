@@ -45,25 +45,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Options = New Structure;
-    Options.Insert("url"      , URL);
-    Options.Insert("title"    , Filename2);
-    Options.Insert("file"     , Image2);
-    Options.Insert("storageid", DestinationID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
+    Result = OPI_Bitrix24.UploadFileToStorage(URL, Filename2, Image2, DestinationID);
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Options = New Structure;
-    Options.Insert("url"      , URL);
-    Options.Insert("title"    , Name);
-    Options.Insert("file"     , Image);
-    Options.Insert("storageid", DestinationID);
-    Options.Insert("token"    , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
+    Result = OPI_Bitrix24.UploadFileToStorage(URL, Name, Image, DestinationID, , Token);
 ```
  
 

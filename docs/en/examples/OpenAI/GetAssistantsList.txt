@@ -4,10 +4,4 @@
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("token"  , Token);
-    Options.Insert("limit"  , Count);
-    Options.Insert("options", AdditionalParameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantsList", Options);
+    Result = OPI_OpenAI.GetAssistantsList(URL, Token, Count, AdditionalParameters);

@@ -245,3 +245,23 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export
+    Return СоздатьПодпись(SignKey, SignatureData, Algorithm, HashFunc);
+EndFunction
+
+Function Hash(BinaryData, Type) Export
+    Return Хеш(BinaryData, Type);
+EndFunction
+
+Function UniteBinaryData(BinaryData1, BinaryData2) Export
+    Return СклеитьДвоичныеДанные(BinaryData1, BinaryData2);
+EndFunction
+
+Function RepeatString(String, Count) Export
+    Return ПовторитьСтроку(String, Count);
+EndFunction
+
+#EndRegion

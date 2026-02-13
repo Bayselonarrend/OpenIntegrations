@@ -34,10 +34,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 ```bsl title="1C:Enterprise/OneScript code example"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Options = New Structure;
-    Options.Insert("url", URL);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
+    Result = OPI_Bitrix24.StartTimekeeping(URL);
 
     Hour = 3600;
 
@@ -47,14 +44,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("userid", UserID);
-    Options.Insert("time"  , Time);
-    Options.Insert("report", Report);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
+    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, Token);
 ```
  
 

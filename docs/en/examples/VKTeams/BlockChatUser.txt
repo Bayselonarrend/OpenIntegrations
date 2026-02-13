@@ -2,10 +2,4 @@
     ChatID = "689203963@chat.agent";
     User   = 1011987091;
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("chatid" , ChatID);
-    Options.Insert("userid" , User);
-    Options.Insert("dellast", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "BlockChatUser", Options);
+    Result = OPI_VKTeams.BlockChatUser(Token, ChatID, User, True);

@@ -36,12 +36,7 @@ Method at API documentation: [closeForumTopic](https://core.telegram.org/bots/ap
 
     Result = OPI_Telegram.CloseForumTopic(Token, Chat); // Closes main topic
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-    Options.Insert("topic", Topic);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumTopic", Options);
+    Result = OPI_Telegram.CloseForumTopic(Token, Chat, Topic);
 ```
  
 

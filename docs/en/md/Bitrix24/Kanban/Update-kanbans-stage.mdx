@@ -40,13 +40,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("title", Name);
-    Options.Insert("stage", StageID);
-    Options.Insert("color", Color);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
+    Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color);
 
     Name    = "New stage name 2";
     Color   = "000000";
@@ -55,16 +49,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Options = New Structure;
-    Options.Insert("url"      , URL);
-    Options.Insert("title"    , Name);
-    Options.Insert("stage"    , StageID);
-    Options.Insert("color"    , Color);
-    Options.Insert("prevstage", 6);
-    Options.Insert("admin"    , True);
-    Options.Insert("token"    , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
+    Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);
 ```
  
 

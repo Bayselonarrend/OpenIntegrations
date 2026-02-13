@@ -2,9 +2,4 @@
     ClientSecret = "GOCSPX-v--MJyEjtV...";
     RefreshToken = "1//09J8_kLVO7HENCgYIARAAGAkSNwF-L9IrtySthNY3OrNP5Qu...";
 
-    Опции = Новый Структура;
-    Опции.Вставить("id"     , ClientID);
-    Опции.Вставить("secret" , ClientSecret);
-    Опции.Вставить("refresh", RefreshToken);
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "ОбновитьТокен", Опции);
+    Результат = OPI_GoogleSheets.ОбновитьТокен(ClientID, ClientSecret, RefreshToken);

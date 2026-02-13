@@ -3,10 +3,4 @@
     Login    = "bayselonarrend";
     Password = "12we...";
 
-    Options = New Structure;
-    Options.Insert("host" , Host);
-    Options.Insert("port" , Port);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
+    Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);

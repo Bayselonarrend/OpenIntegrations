@@ -2,9 +2,4 @@
     ClientSecret = "GOCSPX-v--MJyEjtV...";
     Code         = "4/0AeaYSHBDZAbAtChyjMxPKa0DXIilJYYcVCgKYzA_CPmCPSt1mg_KqxI4w5CP3lTlYibpGg";
 
-    Options = New Structure;
-    Options.Insert("id"    , ClientID);
-    Options.Insert("secret", ClientSecret);
-    Options.Insert("code"  , Code);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetTokenByCode", Options);
+    Result = OPI_GoogleDrive.GetTokenByCode(ClientID, ClientSecret, Code);

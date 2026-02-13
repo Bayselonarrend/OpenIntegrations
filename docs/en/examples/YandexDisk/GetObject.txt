@@ -1,8 +1,4 @@
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Path  = "/ec98cf96-9738-40a1-b9bc-a24a2f049cb0.png";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("path" , Path);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetObject", Options);
+    Result = OPI_YandexDisk.GetObject(Token, Path);

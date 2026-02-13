@@ -38,19 +38,8 @@ Method at API documentation: [GetMessage](https://green-api.com/v3/docs/api/jour
     ChatID    = 12345678;
     MessageID = "2761480287806";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access" , AccessParameters);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("message", MessageID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetChatMessage", Options);
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetChatMessage(AccessParameters, ChatID, MessageID);
 ```
  
 

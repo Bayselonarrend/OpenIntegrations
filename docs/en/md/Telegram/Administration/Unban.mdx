@@ -34,12 +34,7 @@ Method at API documentation: [unbanChatMember](https://core.telegram.org/bots/ap
     UserID    = "461699897";
     ChannelID = "@testsichee";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat" , ChannelID);
-    Options.Insert("user" , UserID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "Unban", Options);
+    Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
 ```
  
 

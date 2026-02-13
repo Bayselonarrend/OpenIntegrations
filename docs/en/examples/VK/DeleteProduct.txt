@@ -2,8 +2,4 @@
 
     Product = "12115889";
 
-    Options = New Structure;
-    Options.Insert("item", Product);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProduct", Options);
+    Result = OPI_VK.DeleteProduct(Product, Parameters);

@@ -30,12 +30,7 @@ import TabItem from '@theme/TabItem';
     Login    = "superadmin";
     Password = "Rit2...";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetTemporaryToken", Options);
+    Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);
 ```
  
 

@@ -40,9 +40,4 @@
 
     InvitationDescription.Insert("from_location", ShippingPoint);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("intake" , InvitationDescription);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCourierInvitation", Options);
+    Result = OPI_CDEK.CreateCourierInvitation(Token, InvitationDescription, True);

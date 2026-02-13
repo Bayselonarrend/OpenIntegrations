@@ -3,7 +3,4 @@
     ButtonArray.Add("Button2");
     ButtonArray.Add("Button3");
 
-    Options = New Structure;
-    Options.Insert("buttons", ButtonArray);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
+    Result = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray);

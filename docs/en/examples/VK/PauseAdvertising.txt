@@ -3,9 +3,4 @@
     AccountID = "1607951446";
     AdID      = "0";
 
-    Options = New Structure;
-    Options.Insert("cabinet", AccountID);
-    Options.Insert("adv"    , AdID);
-    Options.Insert("auth"   , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "PauseAdvertising", Options);
+    Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);

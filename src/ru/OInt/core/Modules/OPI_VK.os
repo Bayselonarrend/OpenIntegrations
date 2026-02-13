@@ -2269,3 +2269,215 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateTokenRetrievalLink(Val App_id) Export
+    Return СоздатьСсылкуПолученияТокена(App_id);
+EndFunction
+
+Function GetAuthParameters(Val GroupID, Val AppID, Val AuthToken) Export
+    Return ПолучитьПараметрыАвторизации(GroupID, AppID, AuthToken);
+EndFunction
+
+Function CreatePost(Val Text, Val ImageArray, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export
+    Return СоздатьПост(Text, ImageArray, Advertisement, LinkUnderPost, Parameters);
+EndFunction
+
+Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export
+    Return СоздатьСоставнойПост(Text, Objects, Advertisement, LinkUnderPost, Parameters);
+EndFunction
+
+Function DeletePost(Val PostID, Val Parameters = "") Export
+    Return УдалитьПост(PostID, Parameters);
+EndFunction
+
+Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Text = "", Val Parameters = "") Export
+    Return СоздатьОпрос(Question, AnswersArray, Image, Text, Parameters);
+EndFunction
+
+Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export
+    Return СоздатьАльбом(Name, Description, Parameters);
+EndFunction
+
+Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export
+    Return УдалитьАльбом(AlbumID, Parameters);
+EndFunction
+
+Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export
+    Return СоздатьИсторию(Image, URL, Parameters);
+EndFunction
+
+Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export
+    Return СохранитьКартинкуВАльбом(AlbumID, Image, Description, Parameters);
+EndFunction
+
+Function DeleteImage(Val ImageID, Val Parameters = "") Export
+    Return УдалитьКартинку(ImageID, Parameters);
+EndFunction
+
+Function UploadVideoToServer(Val Video, Val Name, Val Description = "", Val Album = "", Val Parameters = "") Export
+    Return ЗагрузитьВидеоНаСервер(Video, Name, Description, Album, Parameters);
+EndFunction
+
+Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export
+    Return ЗагрузитьФотоНаСервер(Image, Parameters, View);
+EndFunction
+
+Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export
+    Return СоздатьОбсуждение(Name, FirstMessageText, Parameters);
+EndFunction
+
+Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Parameters = "") Export
+    Return ЗакрытьОбсуждение(DiscussionID, DeleteCompletely, Parameters);
+EndFunction
+
+Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export
+    Return ОткрытьОбсуждение(DiscussionID, Parameters);
+EndFunction
+
+Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export
+    Return НаписатьВОбсуждение(DiscussionID, Text, Parameters);
+EndFunction
+
+Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export
+    Return ПоставитьЛайк(PostID, WallID, Parameters);
+EndFunction
+
+Function MakeRepost(Val PostID, Val WallID = "", Val TargetWall = "", Val Advertising = False, Val Parameters = "") Export
+    Return СделатьРепост(PostID, WallID, TargetWall, Advertising, Parameters);
+EndFunction
+
+Function WriteMessage(Val Text, Val UserID, Val Communitytoken, Val Keyboard = "", Val Parameters = "") Export
+    Return НаписатьСообщение(Text, UserID, Communitytoken, Keyboard, Parameters);
+EndFunction
+
+Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export
+    Return НаписатьКомментарий(PostID, WallID, Text, Parameters);
+EndFunction
+
+Function ShortenLink(Val URL, Val Parameters = "") Export
+    Return СократитьСсылку(URL, Parameters);
+EndFunction
+
+Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export
+    Return ПолучитьСтатистику(StartDate, EndDate, Parameters);
+EndFunction
+
+Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
+    Return ПолучитьСтатистикуПостов(PostIDsArray, Parameters);
+EndFunction
+
+Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export
+    Return СоздатьРекламнуюКампанию(AccountID, Name, Parameters);
+EndFunction
+
+Function CreateAd(Val CampaignNumber, Val DailyLimit, Val CategoryNumber, Val PostID, Val AccountID, Val Parameters = "") Export
+    Return СоздатьРекламноеОбъявление(CampaignNumber, DailyLimit, CategoryNumber, PostID, AccountID, Parameters);
+EndFunction
+
+Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export
+    Return ПриостановитьРекламноеОбъявление(AccountID, AdID, Parameters);
+EndFunction
+
+Function GetAdvertisingCategoryList(Val Parameters = "") Export
+    Return ПолучитьСписокРекламныхКатегорий(Parameters);
+EndFunction
+
+Function GetProductCategoryList(Val Parameters = "") Export
+    Return ПолучитьСписокКатегорийТоваров(Parameters);
+EndFunction
+
+Function GetProductList(Val Selection = "", Val Parameters = "") Export
+    Return ПолучитьСписокТоваров(Selection, Parameters);
+EndFunction
+
+Function GetProductsByID(Val Products, Val Parameters = "") Export
+    Return ПолучитьТоварыПоИД(Products, Parameters);
+EndFunction
+
+Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export
+    Return ДобавитьТовар(ProductDescription, Selection, Parameters);
+EndFunction
+
+Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export
+    Return ИзменитьТовар(Product, ProductDescription, Selection, Parameters);
+EndFunction
+
+Function DeleteProduct(Val Product, Val Parameters = "") Export
+    Return УдалитьТовар(Product, Parameters);
+EndFunction
+
+Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export
+    Return СгруппироватьТовары(ProductsArray, ExistingGroup, Parameters);
+EndFunction
+
+Function GetProductDescription(Val Clear = False) Export
+    Return ПолучитьОписаниеТовара(Clear);
+EndFunction
+
+Function GetSelectionList(Val Parameters = "") Export
+    Return ПолучитьСписокПодборок(Parameters);
+EndFunction
+
+Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
+    Return ПолучитьПодборкиПоИД(Selections, Parameters);
+EndFunction
+
+Function CreateProductCollection(Val Name, Val Image, Val Main = False, Val Hidden = False, Val Parameters = "") Export
+    Return СоздатьПодборкуТоваров(Name, Image, Main, Hidden, Parameters);
+EndFunction
+
+Function EditProductCollection(Val Name, Val Selection, Val Image = "", Val Main = False, Val Hidden = False, Val Parameters = "") Export
+    Return ИзменитьПодборкуТоваров(Name, Selection, Image, Main, Hidden, Parameters);
+EndFunction
+
+Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export
+    Return ДобавитьТоварВПодборку(ProductsArray, Selection, Parameters);
+EndFunction
+
+Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export
+    Return УдалитьТоварИзПодборки(Product, Selection, Parameters);
+EndFunction
+
+Function DeleteSelection(Val Selection, Val Parameters = "") Export
+    Return УдалитьПодборку(Selection, Parameters);
+EndFunction
+
+Function GetPropertyList(Val Parameters = "") Export
+    Return ПолучитьСписокСвойств(Parameters);
+EndFunction
+
+Function CreateProductProperty(Val Name, Val Parameters = "") Export
+    Return СоздатьСвойствоТовара(Name, Parameters);
+EndFunction
+
+Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export
+    Return ИзменитьСвойствоТовара(Name, Property, Parameters);
+EndFunction
+
+Function DeleteProductProperty(Val Property, Val Parameters = "") Export
+    Return УдалитьСвойствоТовара(Property, Parameters);
+EndFunction
+
+Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export
+    Return ДобавитьВариантСвойстваТовара(Value, Property, Parameters);
+EndFunction
+
+Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export
+    Return ИзменитьВариантСвойстваТовара(Value, Property, Option, Parameters);
+EndFunction
+
+Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export
+    Return УдалитьВариантСвойстваТовара(Option, Parameters);
+EndFunction
+
+Function GetOrderList(Val Parameters = "") Export
+    Return ПолучитьСписокЗаказов(Parameters);
+EndFunction
+
+Function FormKeyboard(Val ButtonArray) Export
+    Return СформироватьКлавиатуру(ButtonArray);
+EndFunction
+
+#EndRegion

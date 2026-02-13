@@ -43,8 +43,4 @@
 
     CounterStructure.Insert("site2", DomainStructure);
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("fields", CounterStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateCounter", Options);
+    Result = OPI_YandexMetrika.CreateCounter(Token, CounterStructure);

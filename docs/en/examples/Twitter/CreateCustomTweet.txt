@@ -8,15 +8,5 @@
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Options = New Structure;
-    Options.Insert("files", ImageArray);
-    Options.Insert("type" , "tweet_image");
-    Options.Insert("auth" , Parameters);
-
-    MediaArray = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
-    Options    = New Structure;
-    Options.Insert("text" , Text);
-    Options.Insert("media", MediaArray);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateCustomTweet", Options);
+    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
+    Result     = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);

@@ -8,17 +8,7 @@
     VideosArray.Add(Video);
     VideosArray.Add(Video2);
 
-    Options = New Structure;
-    Options.Insert("text"  , Text);
-    Options.Insert("videos", VideosArray);
-    Options.Insert("auth"  , Parameters);
+    Result = OPI_Twitter.CreateVideoTweet(Text, VideosArray, Parameters);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
-
-    Text    = "TestTweet" + String(New UUID);
-    Options = New Structure;
-    Options.Insert("text"  , Text);
-    Options.Insert("videos", Video);
-    Options.Insert("auth"  , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
+    Text   = "TestTweet" + String(New UUID);
+    Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);

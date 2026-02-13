@@ -33,13 +33,7 @@ Gets a list of files with or without filtering by type List of available types: 
     OffsetFromStart = 1;
     FilterByType    = "image";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("amount", Count);
-    Options.Insert("offset", OffsetFromStart);
-    Options.Insert("type"  , FilterByType);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetFilesList", Options);
+    Result = OPI_YandexDisk.GetFilesList(Token, Count, OffsetFromStart, FilterByType);
 ```
  
 

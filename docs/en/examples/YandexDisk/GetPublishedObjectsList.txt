@@ -2,9 +2,4 @@
     Count           = 2;
     OffsetFromStart = 1;
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("amount", Count);
-    Options.Insert("offset", OffsetFromStart);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublishedObjectsList", Options);
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);

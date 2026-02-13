@@ -3,11 +3,4 @@
     Type   = "tpl_russia";
     Copies = 1;
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("uuids"  , UUID);
-    Options.Insert("type"   , Type);
-    Options.Insert("count"  , Copies);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateReceipt", Options);
+    Result = OPI_CDEK.CreateReceipt(Token, UUID, Type, Copies, True);

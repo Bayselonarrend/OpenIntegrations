@@ -6,11 +6,4 @@
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("token"  , Token);
-    Options.Insert("name"   , FileName);
-    Options.Insert("data"   , File);
-    Options.Insert("purpose", Destination);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
+    Result = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);

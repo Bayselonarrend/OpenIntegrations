@@ -4,8 +4,4 @@
     ArrayOfPosts.Add(214);
     ArrayOfPosts.Add(215);
 
-    Options = New Structure;
-    Options.Insert("posts", ArrayOfPosts);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetPostStatistics", Options);
+    Result = OPI_VK.GetPostStatistics(ArrayOfPosts, Parameters);

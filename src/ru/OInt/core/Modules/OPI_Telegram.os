@@ -1617,3 +1617,167 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function GetBotInformation(Val Token) Export
+    Return ПолучитьИнформациюБота(Token);
+EndFunction
+
+Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export
+    Return ПолучитьОбновления(Token, Timeout, Offset);
+EndFunction
+
+Function SetWebhook(Val Token, Val URL) Export
+    Return УстановитьWebhook(Token, URL);
+EndFunction
+
+Function DeleteWebhook(Val Token) Export
+    Return УдалитьWebhook(Token);
+EndFunction
+
+Function DownloadFile(Val Token, Val FileID) Export
+    Return СкачатьФайл(Token, FileID);
+EndFunction
+
+Function ProcessTMAData(Val DataString, Val Token) Export
+    Return ОбработатьДанныеTMA(DataString, Token);
+EndFunction
+
+Function SendTextMessage(Val Token, Val ChatID, Val Text, Val Keyboard = "", Val Markup = "Markdown", Val RepliedID = 0) Export
+    Return ОтправитьТекстовоеСообщение(Token, ChatID, Text, Keyboard, Markup, RepliedID);
+EndFunction
+
+Function SendImage(Val Token, Val ChatID, Val Text, Val Image, Val Keyboard = "", Val Markup = "Markdown") Export
+    Return ОтправитьКартинку(Token, ChatID, Text, Image, Keyboard, Markup);
+EndFunction
+
+Function SendVideo(Val Token, Val ChatID, Val Text, Val Video, Val Keyboard = "", Val Markup = "Markdown") Export
+    Return ОтправитьВидео(Token, ChatID, Text, Video, Keyboard, Markup);
+EndFunction
+
+Function SendAudio(Val Token, Val ChatID, Val Text, Val Audio, Val Keyboard = "", Val Markup = "Markdown") Export
+    Return ОтправитьАудио(Token, ChatID, Text, Audio, Keyboard, Markup);
+EndFunction
+
+Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown", Val FileName = "") Export
+    Return ОтправитьДокумент(Token, ChatID, Text, Document, Keyboard, Markup, FileName);
+EndFunction
+
+Function SendGif(Val Token, Val ChatID, Val Text, Val GIF, Val Keyboard = "", Val Markup = "Markdown") Export
+    Return ОтправитьГифку(Token, ChatID, Text, GIF, Keyboard, Markup);
+EndFunction
+
+Function SendMediaGroup(Val Token, Val ChatID, Val Text, Val FileMapping, Val Keyboard = "", Val Markup = "Markdown") Export
+    Return ОтправитьМедиагруппу(Token, ChatID, Text, FileMapping, Keyboard, Markup);
+EndFunction
+
+Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export
+    Return ОтправитьМестоположение(Token, ChatID, Latitude, Longitude, Keyboard);
+EndFunction
+
+Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export
+    Return ОтправитьКонтакт(Token, ChatID, Name, LastName, Phone, Keyboard);
+EndFunction
+
+Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Anonymous = True) Export
+    Return ОтправитьОпрос(Token, ChatID, Question, AnswersArray, Anonymous);
+EndFunction
+
+Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export
+    Return ПереслатьСообщение(Token, OriginalID, FromID, ToID);
+EndFunction
+
+Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
+    Return УдалитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function ReplaceMessageKeyboard(Val Token, Val ChatID, Val MessageID, Val Keyboard) Export
+    Return ЗаменитьКлавиатуруСообщения(Token, ChatID, MessageID, Keyboard);
+EndFunction
+
+Function ReplaceMessageText(Val Token, Val ChatID, Val MessageID, Val Text, Val Markup = "") Export
+    Return ЗаменитьТекстСообщения(Token, ChatID, MessageID, Text, Markup);
+EndFunction
+
+Function ReplaceMessageCaption(Val Token, Val ChatID, Val MessageID, Val Description, Val Markup = "") Export
+    Return ЗаменитьОписаниеСообщения(Token, ChatID, MessageID, Description, Markup);
+EndFunction
+
+Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export
+    Return СформироватьКлавиатуруПоМассивуКнопок(ButtonArray, UnderMessage, OneByOne);
+EndFunction
+
+Function Ban(Val Token, Val ChatID, Val UserID) Export
+    Return Бан(Token, ChatID, UserID);
+EndFunction
+
+Function Unban(Val Token, Val ChatID, Val UserID) Export
+    Return Разбан(Token, ChatID, UserID);
+EndFunction
+
+Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export
+    Return СоздатьСсылкуПриглашение(Token, ChatID, Title, ExpirationDate, UserLimit);
+EndFunction
+
+Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
+    Return ЗакрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
+    Return ОткрепитьСообщение(Token, ChatID, MessageID);
+EndFunction
+
+Function GetParticipantCount(Val Token, Val ChatID) Export
+    Return ПолучитьЧислоУчастников(Token, ChatID);
+EndFunction
+
+Function GetAvatarIconList(Val Token) Export
+    Return ПолучитьСписокИконокАватаров(Token);
+EndFunction
+
+Function CreateForumTopic(Val Token, Val ChatID, Val Title, Val IconID = "") Export
+    Return СоздатьТемуФорума(Token, ChatID, Title, IconID);
+EndFunction
+
+Function EditForumTopic(Val Token, Val ChatID, Val TopicID, Val Title = Undefined, Val IconID = Undefined) Export
+    Return ИзменитьТемуФорума(Token, ChatID, TopicID, Title, IconID);
+EndFunction
+
+Function CloseForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
+    Return ЗакрытьТемуФорума(Token, ChatID, TopicID);
+EndFunction
+
+Function OpenForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
+    Return ОткрытьТемуФорума(Token, ChatID, TopicID);
+EndFunction
+
+Function DeleteForumTopic(Val Token, Val ChatID, Val TopicID) Export
+    Return УдалитьТемуФорума(Token, ChatID, TopicID);
+EndFunction
+
+Function HideMainForumTopic(Val Token, Val ChatID) Export
+    Return СкрытьГлавнуюТемуФорума(Token, ChatID);
+EndFunction
+
+Function ShowMainForumTopic(Val Token, Val ChatID) Export
+    Return ПоказатьГлавнуюТемуФорума(Token, ChatID);
+EndFunction
+
+Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
+    Return ИзменитьИмяГлавнойТемыФорума(Token, ChatID, Title);
+EndFunction
+
+Function ClearTopicPinnedMessagesList(Val Token, Val ChatID, Val TopicID = "") Export
+    Return ОчиститьСписокЗакрепленныхСообщенийТемы(Token, ChatID, TopicID);
+EndFunction
+
+Procedure PrepareString(Text, Markup = "Markdown") Export
+    ПодготовитьСтроку(Text, Markup);
+EndProcedure
+
+Procedure ReplaceSpecialCharacters(Text, Markup) Export
+    ЗаменитьСпецСимволы(Text, Markup);
+EndProcedure
+
+#EndRegion

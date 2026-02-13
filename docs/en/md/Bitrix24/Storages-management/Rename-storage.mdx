@@ -36,13 +36,7 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
     Token     = "a5b00469006e9f06006b12e400000001000...";
     StorageID = "18";
 
-    Options = New Structure;
-    Options.Insert("url"      , URL);
-    Options.Insert("storageid", StorageID);
-    Options.Insert("title"    , Name);
-    Options.Insert("token"    , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameStorage", Options);
+    Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
 ```
  
 

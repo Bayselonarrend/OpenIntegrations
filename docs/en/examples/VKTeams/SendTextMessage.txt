@@ -2,12 +2,7 @@
     ChatID = "AoLI0egLWBSLR1Ngn2w";
     Text   = "Message text";
 
-    Options = New Structure;
-    Options.Insert("token" , Token);
-    Options.Insert("chatid", ChatID);
-    Options.Insert("text"  , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
 
     ChatID  = "689203963@chat.agent";
     ReplyID = "7567354422724936211";
@@ -23,12 +18,4 @@
 
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
-    Options = New Structure;
-    Options.Insert("token"   , Token);
-    Options.Insert("chatid"  , ChatID);
-    Options.Insert("text"    , Text);
-    Options.Insert("reply"   , ReplyID);
-    Options.Insert("keyboard", Keyboard);
-    Options.Insert("parsemod", Markup);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);

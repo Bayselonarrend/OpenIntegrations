@@ -3,17 +3,8 @@
     Password = "12we...";
     Base     = "testbase1";
 
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
-    Options     = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("db"   , Base);
-    Options.Insert("login", Login);
-    Options.Insert("pass" , Password);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
 
     Table = "test_guarantee";
 
@@ -37,11 +28,4 @@
     KeyFields = New Array;
     KeyFields.Add("id");
 
-    Options = New Structure;
-    Options.Insert("table" , Table);
-    Options.Insert("rows"  , DataArray);
-    Options.Insert("unique", KeyFields);
-    Options.Insert("db"    , ConnectionString);
-    Options.Insert("tls"   , TLSSettings);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "EnsureRecords", Options);
+    Result = OPI_MSSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);

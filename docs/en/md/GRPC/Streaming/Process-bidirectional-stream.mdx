@@ -43,15 +43,8 @@ Example: Retrieving a message after every two sent messages and three more at th
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("proto", Scheme);
-
-    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
-    Options    = New Structure;
-    Options.Insert("trust", True);
-
-    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
 
     StingsArray = New Array;
     StingsArray.Add("one");
@@ -76,14 +69,7 @@ Example: Retrieving a message after every two sent messages and three more at th
 
     EndDo;
 
-    Options = New Structure;
-    Options.Insert("conn"   , Parameters);
-    Options.Insert("service", Service);
-    Options.Insert("method" , Method);
-    Options.Insert("exch"   , ExchangeOrder);
-    Options.Insert("tls"    , Tls);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ProcessBidirectionalStream", Options);
+    Result = OPI_GRPC.ProcessBidirectionalStream(Parameters, Service, Method, ExchangeOrder, , Tls);
 ```
  
 

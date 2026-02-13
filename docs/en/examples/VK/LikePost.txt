@@ -1,8 +1,4 @@
     Parameters = GetVKParameters();
     PostID     = "10422";
 
-    Options = New Structure;
-    Options.Insert("post", PostID);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "LikePost", Options);
+    Result = OPI_VK.LikePost(PostID, , Parameters);

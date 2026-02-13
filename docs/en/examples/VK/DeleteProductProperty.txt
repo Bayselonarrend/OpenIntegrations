@@ -2,8 +2,4 @@
 
     Property = "4862";
 
-    Options = New Structure;
-    Options.Insert("prop", Property);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductProperty", Options);
+    Result = OPI_VK.DeleteProductProperty(Property, Parameters);

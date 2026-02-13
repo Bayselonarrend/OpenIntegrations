@@ -1,8 +1,3 @@
     Parameters   = GetVKParameters();
     DiscussionID = "54403421";
-    Options      = New Structure;
-    Options.Insert("topic" , DiscussionID);
-    Options.Insert("remove", False);
-    Options.Insert("auth"  , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CloseDiscussion", Options);
+    Result       = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);

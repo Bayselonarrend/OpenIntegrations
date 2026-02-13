@@ -3418,3 +3418,183 @@
 #КонецОбласти
 
 // #КонецЕсли
+
+#Region Alternate
+
+Function Initialize(Val URL = "") Export
+    Return Инициализировать(URL);
+EndFunction
+
+Function SetURL(Val URL) Export
+    Return УстановитьURL(URL);
+EndFunction
+
+Function SetURLParams(Val Value) Export
+    Return УстановитьПараметрыURL(Value);
+EndFunction
+
+Function AddURLParameter(Val Name, Val Value, Val IgnoreEmpty = False) Export
+    Return ДобавитьПараметрURL(Name, Value, IgnoreEmpty);
+EndFunction
+
+Function SetResponseFile(Val Value) Export
+    Return УстановитьФайлОтвета(Value);
+EndFunction
+
+Function SetDataType(Val Value) Export
+    Return УстановитьТипДанных(Value);
+EndFunction
+
+Function SetProxy(Val Settings) Export
+    Return УстановитьПрокси(Settings);
+EndFunction
+
+Function SetTimeout(Val Value) Export
+    Return УстановитьТаймаут(Value);
+EndFunction
+
+Function GetLog(Val AsString = False) Export
+    Return ПолучитьЛог(AsString);
+EndFunction
+
+Function UseEncoding(Val Encoding) Export
+    Return ИспользоватьКодировку(Encoding);
+EndFunction
+
+Function UseGzipCompression(Val Flag) Export
+    Return ИспользоватьСжатиеGzip(Flag);
+EndFunction
+
+Function UseBodyFiledsAtOAuth(Val Flag) Export
+    Return ИспользоватьПоляТелаВOAuth(Flag);
+EndFunction
+
+Function UseURLEncoding(Val Flag) Export
+    Return ИспользоватьКодированиеURL(Flag);
+EndFunction
+
+Function MaxAttempts(Val Value) Export
+    Return МаксимумПопыток(Value);
+EndFunction
+
+Function MaxRedirects(Val Value) Export
+    Return МаксимумПереадресаций(Value);
+EndFunction
+
+Function SplitArraysInURL(Val Flag, Val SquareBrackets = Undefined) Export
+    Return РазделятьМассивыВURL(Flag, SquareBrackets);
+EndFunction
+
+Function ReturnSettings(Val Filter = Undefined) Export
+    Return ВернутьНастройки(Filter);
+EndFunction
+
+Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
+    Return УстановитьДвоичноеТело(Data, SetIfEmpty);
+EndFunction
+
+Function SetStringBody(Val Data, Val WriteBOM = False) Export
+    Return УстановитьСтроковоеТело(Data, WriteBOM);
+EndFunction
+
+Function SetJsonBody(Val Data) Export
+    Return УстановитьJsonТело(Data);
+EndFunction
+
+Function SetFormBody(Val Data) Export
+    Return УстановитьFormТело(Data);
+EndFunction
+
+Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
+    Return НачатьЗаписьТелаMultipart(UseFile, View);
+EndFunction
+
+Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val DataType = "", Val IgnoreEmpty = False) Export
+    Return ДобавитьФайлMultipartFormData(FieldName, FileName, Data, DataType, IgnoreEmpty);
+EndFunction
+
+Function AddMultipartFormDataField(Val FieldName, Val Value) Export
+    Return ДобавитьПолеMultipartFormData(FieldName, Value);
+EndFunction
+
+Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
+    Return ДобавитьДанныеRelated(Data, DataType, ContentID);
+EndFunction
+
+Function SetHeaders(Val Value, Val FullReplace = False) Export
+    Return УстановитьЗаголовки(Value, FullReplace);
+EndFunction
+
+Function AddHeader(Val Name, Val Value, Val IgnoreEmpty = False) Export
+    Return ДобавитьЗаголовок(Name, Value, IgnoreEmpty);
+EndFunction
+
+Function AddBasicAuthorization(Val User, Val Password) Export
+    Return ДобавитьBasicАвторизацию(User, Password);
+EndFunction
+
+Function AddBearerAuthorization(Val Token) Export
+    Return ДобавитьBearerАвторизацию(Token);
+EndFunction
+
+Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
+    Return ДобавитьAWS4Авторизацию(AccessKey, SecretKey, Region, Service);
+EndFunction
+
+Function AddOAuthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export
+    Return ДобавитьOAuthV1Авторизацию(Token, Secret, ConsumerKey, ConsumerSecret, Version);
+EndFunction
+
+Function SetOAuthV1Algorithm(Val Algorithm, Val HashFunction) Export
+    Return УстановитьАлгоритмOAuthV1(Algorithm, HashFunction);
+EndFunction
+
+Function ProcessRequest(Val Method, Val Start = True) Export
+    Return ОбработатьЗапрос(Method, Start);
+EndFunction
+
+Function ExecuteRequest(Forced = False) Export
+    Return ВыполнитьЗапрос(Forced);
+EndFunction
+
+Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
+    Return ОтправитьДанныеЧастями(ChunkSize, Method);
+EndFunction
+
+Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
+    Return ОтправитьЧасть(StartPosition, ByteCount, Method);
+EndFunction
+
+Function ReturnRequest(Forced = False) Export
+    Return ВернутьЗапрос(Forced);
+EndFunction
+
+Function ReturnConnection(Forced = False) Export
+    Return ВернутьСоединение(Forced);
+EndFunction
+
+Function ReturnResponse(Val Forced = False, Val ExceptionOnError = False) Export
+    Return ВернутьОтвет(Forced, ExceptionOnError);
+EndFunction
+
+Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = False) Export
+    Return ВернутьОтветКакJSONКоллекцию(ToMap, ExceptionOnError);
+EndFunction
+
+Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = False) Export
+    Return ВернутьОтветКакДвоичныеДанные(Forced, ExceptionOnError);
+EndFunction
+
+Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False) Export
+    Return ВернутьОтветКакСтроку(Forced, ExceptionOnError);
+EndFunction
+
+Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False) Export
+    Return ВернутьИмяФайлаТелаОтвета(Forced, ExceptionOnError);
+EndFunction
+
+Procedure EncodeURLInURL(URL) Export
+    КодироватьURLВURL(URL);
+EndProcedure
+
+#EndRegion

@@ -7,11 +7,7 @@
     UserStructure.Insert("EMAIL"        , Email);
     UserStructure.Insert("UF_DEPARTMENT", 7);
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("fields", UserStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateUser", Options);
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
@@ -24,9 +20,4 @@
     UserStructure.Insert("PERSONAL_MOBILE", "88003553535");
     UserStructure.Insert("UF_DEPARTMENT"  , 1);
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("fields", UserStructure);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateUser", Options);
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure, Token);

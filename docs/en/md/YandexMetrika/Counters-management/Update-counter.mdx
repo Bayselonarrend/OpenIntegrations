@@ -46,12 +46,7 @@ Method at API documentation: [Changing a counter](https://yandex.ru/dev/metrika/
     CounterStructure.Insert("favorite"     , 0);
     CounterStructure.Insert("filter_robots", 1);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("counter", CounterID);
-    Options.Insert("fields" , CounterStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateCounter", Options);
+    Result = OPI_YandexMetrika.UpdateCounter(Token, CounterID, CounterStructure);
 ```
  
 

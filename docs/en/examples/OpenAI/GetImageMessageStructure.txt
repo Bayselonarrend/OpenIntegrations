@@ -2,9 +2,4 @@
     Token = "12We...";
     Image = "file-3";
 
-    Options = New Structure;
-    Options.Insert("role"  , "user");
-    Options.Insert("file"  , Image);
-    Options.Insert("prompt", "What is in this image?");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageMessageStructure", Options);
+    Result = OPI_OpenAI.GetImageMessageStructure("user", Image, "What is in this image?");

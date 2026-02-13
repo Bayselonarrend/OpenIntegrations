@@ -34,12 +34,7 @@ Method at API documentation: [deleteForumTopic](https://core.telegram.org/bots/a
     Chat  = "-1001971186208";
     Topic = "12491";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-    Options.Insert("topic", Topic);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteForumTopic", Options);
+    Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
 ```
  
 

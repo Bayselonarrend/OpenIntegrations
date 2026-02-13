@@ -38,25 +38,13 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     Base     = "admin";
 
     ConnectionParams = New Structure("authSource", "admin");
-    Options          = New Structure;
-    Options.Insert("addr"  , Address);
-    Options.Insert("usr"   , Login);
-    Options.Insert("pwd"   , Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
     User = "bayselonarrend";
     Role = New Structure("role,db", "newrole", Base);
 
-    Options = New Structure;
-    Options.Insert("dbc"  , Connection);
-    Options.Insert("user" , User);
-    Options.Insert("roles", Role);
-    Options.Insert("db"   , Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GrantRoles", Options);
+    Result = OPI_MongoDB.GrantRoles(Connection, User, Role, Base);
 ```
  
 

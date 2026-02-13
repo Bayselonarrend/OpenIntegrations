@@ -2,9 +2,4 @@
     Channel = "C09PUMJU2GM";
     User    = "U06UABH3APP";
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("channel", Channel);
-    Options.Insert("users"  , User);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "InviteUsersToChannel", Options);
+    Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);

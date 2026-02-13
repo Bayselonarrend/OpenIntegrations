@@ -38,19 +38,8 @@ Method at API documentation: [ReadChat](https://green-api.com/docs/api/marks/Rea
     ChatID    = "120363410406221140@g.us";
     MessageID = "BAE58CA98E4E31AB";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access" , AccessParameters);
-    Options.Insert("chat"   , ChatID);
-    Options.Insert("message", MessageID);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetReadMark", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetReadMark(AccessParameters, ChatID, MessageID);
 ```
  
 

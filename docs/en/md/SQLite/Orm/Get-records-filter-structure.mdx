@@ -28,9 +28,7 @@ The use of the `raw` feature is necessary for compound constructions like `BETWE
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Options = New Structure;
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStructure", Options);
+    Result = OPI_SQLite.GetRecordsFilterStructure();
 ```
  
 

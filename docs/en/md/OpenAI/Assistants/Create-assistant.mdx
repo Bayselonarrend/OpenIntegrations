@@ -41,14 +41,7 @@ Method at API documentation: [Create assistant](https://platform.openai.com/docs
     Model       = "smolvlm-256m-instruct";
     Name        = "Math tutor";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("token", Token);
-    Options.Insert("model", Model);
-    Options.Insert("name" , Name);
-    Options.Insert("inst" , Instruction);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateAssistant", Options);
+    Result = OPI_OpenAI.CreateAssistant(URL, Token, Model, Name, Instruction);
 ```
  
 

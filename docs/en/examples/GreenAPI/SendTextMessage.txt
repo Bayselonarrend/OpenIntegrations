@@ -6,16 +6,5 @@
     ChatID = "120363410406221140@g.us";
     Text   = "New message";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access", AccessParameters);
-    Options.Insert("chat"  , ChatID);
-    Options.Insert("text"  , Text);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SendTextMessage(AccessParameters, ChatID, Text);

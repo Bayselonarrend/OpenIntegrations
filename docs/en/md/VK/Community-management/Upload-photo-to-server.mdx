@@ -35,12 +35,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
     View  = "Post";
 
-    Options = New Structure;
-    Options.Insert("file", Image);
-    Options.Insert("auth", Parameters);
-    Options.Insert("type", View);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadPhotoToServer", Options);
+    Result = OPI_VK.UploadPhotoToServer(Image, Parameters, View);
 ```
  
 

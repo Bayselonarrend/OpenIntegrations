@@ -47,11 +47,7 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("fields", FieldsStructure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
+    Result = OPI_Bitrix24.CreateDeal(URL, FieldsStructure);
 
     FieldsStructure.Insert("TITLE"    , "Another deal");
     FieldsStructure.Insert("CLOSEDATE", "2031-01-01");
@@ -59,12 +55,7 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
     URL   = "b24-ar17wx.bitrix24.by";
     Token = "a5b00469006e9f06006b12e400000001000...";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("fields", FieldsStructure);
-    Options.Insert("token" , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
+    Result = OPI_Bitrix24.CreateDeal(URL, FieldsStructure, Token);
 ```
  
 

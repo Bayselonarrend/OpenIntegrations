@@ -39,15 +39,8 @@ import TabItem from '@theme/TabItem';
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Options = New Structure;
-    Options.Insert("addr" , Address);
-    Options.Insert("proto", Scheme);
-
-    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
-    Options    = New Structure;
-    Options.Insert("trust", True);
-
-    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
 
     Service = "grpcbin.GRPCBin";
     Method  = "DummyServerStream";
@@ -58,15 +51,7 @@ import TabItem from '@theme/TabItem';
     Data.Insert("f_bool"   , True);
     Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
 
-    Options = New Structure;
-    Options.Insert("conn"   , Parameters);
-    Options.Insert("service", Service);
-    Options.Insert("method" , Method);
-    Options.Insert("data"   , Data);
-    Options.Insert("tls"    , Tls);
-    Options.Insert("count"  , 3);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ProcessServerStream", Options);
+    Result = OPI_GRPC.ProcessServerStream(Parameters, Service, Method, Data, , Tls, 3);
 ```
  
 

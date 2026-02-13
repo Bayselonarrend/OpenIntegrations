@@ -1,8 +1,4 @@
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Path  = "/" + String(New UUID);
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("path" , Path);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateFolder", Options);
+    Result = OPI_YandexDisk.CreateFolder(Token, Path);

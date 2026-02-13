@@ -1148,3 +1148,103 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
+    Return ОткрытьСоединение(FTPSettings, Proxy, Tls);
+EndFunction
+
+Function GetConnectionConfiguration(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
+    Return ПолучитьКонфигурациюСоединения(FTPSettings, Proxy, Tls);
+EndFunction
+
+Function CloseConnection(Val Connection) Export
+    Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function GetWelcomeMessage(Val Connection) Export
+    Return ПолучитьПриветственноеСообщение(Connection);
+EndFunction
+
+Function GetProtocolFeatureList(Val Connection) Export
+    Return ПолучитьСписокРасширенийПротокола(Connection);
+EndFunction
+
+Function Ping(Val Connection) Export
+    Return Пинг(Connection);
+EndFunction
+
+Function ExecuteCustomCommand(Val Connection, Val CommandText) Export
+    Return ВыполнитьНестандартнуюКоманду(Connection, CommandText);
+EndFunction
+
+Function ExecuteArbitraryCommand(Val Connection, Val CommandText) Export
+    Return ВыполнитьПроизвольнуюКоманду(Connection, CommandText);
+EndFunction
+
+Function GetObjectSize(Val Connection, Val Path) Export
+    Return ПолучитьРазмерОбъекта(Connection, Path);
+EndFunction
+
+Function UpdatePath(Val Connection, Val Path, Val NewPath) Export
+    Return ИзменитьПуть(Connection, Path, NewPath);
+EndFunction
+
+Function IsConnector(Val Value) Export
+    Return ЭтоКоннектор(Value);
+EndFunction
+
+Function GetConnectionSettings(Val Host, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120, Val IPResolve = True) Export
+    Return ПолучитьНастройкиСоединения(Host, Port, Login, Password, Passive, ReadTimeout, WriteTimeout, IPResolve);
+EndFunction
+
+Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
+    Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+EndFunction
+
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export
+    Return ПолучитьСписокОбъектов(Connection, Path, Recursively);
+EndFunction
+
+Function CreateNewDirectory(Val Connection, Val Path) Export
+    Return СоздатьНовуюДиректорию(Connection, Path);
+EndFunction
+
+Function DeleteDirectory(Val Connection, Val Path) Export
+    Return УдалитьДиректорию(Connection, Path);
+EndFunction
+
+Function ClearDirectory(Val Connection, Val Path) Export
+    Return ОчиститьДиректорию(Connection, Path);
+EndFunction
+
+Function GetCurrentDirectory(Val Connection) Export
+    Return ПолучитьТекущийКаталог(Connection);
+EndFunction
+
+Function ChangeCurrentDirectory(Val Connection, Val Path) Export
+    Return ИзменитьТекущийКаталог(Connection, Path);
+EndFunction
+
+Function UploadFile(Val Connection, Val File, Val Path) Export
+    Return ЗагрузитьФайл(Connection, File, Path);
+EndFunction
+
+Function DeleteFile(Val Connection, Val Path) Export
+    Return УдалитьФайл(Connection, Path);
+EndFunction
+
+Function SaveFile(Val Connection, Val Path, Val FileName) Export
+    Return СохранитьФайл(Connection, Path, FileName);
+EndFunction
+
+Function GetFileData(Val Connection, Val Path) Export
+    Return ПолучитьДанныеФайла(Connection, Path);
+EndFunction
+
+#EndRegion

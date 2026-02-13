@@ -37,60 +37,25 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     File        = "https://hut.openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
-    Options = New Structure;
-    Options.Insert("url" , URL);
-    Options.Insert("chat", ChatID);
-
-    Directory = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
     FolderID  = Directory["result"]["ID"];
 
-    Options = New Structure;
-    Options.Insert("url"     , URL);
-    Options.Insert("title"   , "Imortant doc.docx");
-    Options.Insert("file"    , File);
-    Options.Insert("folderid", FolderID);
-
-    UploadedFile = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID);
     FileID       = UploadedFile["result"]["ID"];
 
-    Options = New Structure;
-    Options.Insert("url"        , URL);
-    Options.Insert("chat"       , ChatID);
-    Options.Insert("fileid"     , FileID);
-    Options.Insert("description", Description);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     ChatID = "3392";
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("chat" , ChatID);
-    Options.Insert("token", Token);
-
-    Directory = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
 
-    Options = New Structure;
-    Options.Insert("url"     , URL);
-    Options.Insert("title"   , "Imortant doc.docx");
-    Options.Insert("file"    , File);
-    Options.Insert("folderid", FolderID);
-    Options.Insert("token"   , Token);
-
-    UploadedFile = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
     FileID       = UploadedFile["result"]["ID"];
 
-    Options = New Structure;
-    Options.Insert("url"        , URL);
-    Options.Insert("chat"       , ChatID);
-    Options.Insert("fileid"     , FileID);
-    Options.Insert("description", Description);
-    Options.Insert("token"      , Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);
 ```
  
 

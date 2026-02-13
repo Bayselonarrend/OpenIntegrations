@@ -47,31 +47,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     VideoDD = New BinaryData(VideoPath);
 
     // In chat, by URL
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChatID);
-    Options.Insert("text", Text);
-    Options.Insert("video", Video);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
+    Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
 
     // To channel, on disk
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("video", VideoPath);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
 
     // To channel, from binary data
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("chat", ChannelID);
-    Options.Insert("text", Text);
-    Options.Insert("video", VideoDD);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 ```
  
 

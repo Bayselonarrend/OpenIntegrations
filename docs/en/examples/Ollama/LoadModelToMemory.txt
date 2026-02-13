@@ -7,10 +7,4 @@
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Options = New Structure;
-    Options.Insert("url"    , URL);
-    Options.Insert("model"  , Model);
-    Options.Insert("keep"   , Period);
-    Options.Insert("headers", AdditionalHeaders);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "LoadModelToMemory", Options);
+    Result = OPI_Ollama.LoadModelToMemory(URL, Model, Period, AdditionalHeaders);

@@ -1,5 +1,2 @@
-    Clear   = False;
-    Options = New Structure;
-    Options.Insert("empty", Clear);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventDescription", Options);
+    Clear  = False;
+    Result = OPI_GoogleCalendar.GetEventDescription(Clear);

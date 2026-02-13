@@ -4,9 +4,4 @@
     Filter.Insert("city_code"  , 270);
     Filter.Insert("allowed_cod", True);
 
-    Options = New Structure;
-    Options.Insert("token"  , Token);
-    Options.Insert("filter" , Filter);
-    Options.Insert("testapi", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeList", Options);
+    Result = OPI_CDEK.GetOfficeList(Token, Filter, True);

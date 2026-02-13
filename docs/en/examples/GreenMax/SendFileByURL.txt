@@ -8,17 +8,5 @@
     ChatID      = 12345678;
     Description = "File description";
 
-    Options = New Structure;
-    Options.Insert("api"  , ApiUrl);
-    Options.Insert("media", MediaUrl);
-    Options.Insert("id"   , IdInstance);
-    Options.Insert("token", ApiTokenInstance);
-
-    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
-    Options          = New Structure;
-    Options.Insert("access"  , AccessParameters);
-    Options.Insert("chat"    , ChatID);
-    Options.Insert("url"     , File);
-    Options.Insert("filename", FileName);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFileByURL", Options);
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SendFileByURL(AccessParameters, ChatID, File, FileName);

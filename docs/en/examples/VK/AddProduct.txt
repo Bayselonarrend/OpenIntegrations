@@ -25,9 +25,4 @@
     ProductDescription.Insert("SKU"              , "12345");
     ProductDescription.Insert("AvailableBalance" , "10");
 
-    Options = New Structure;
-    Options.Insert("product", ProductDescription);
-    Options.Insert("sel"    , Selection);
-    Options.Insert("auth"   , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
+    Result = OPI_VK.AddProduct(ProductDescription, Selection, Parameters);

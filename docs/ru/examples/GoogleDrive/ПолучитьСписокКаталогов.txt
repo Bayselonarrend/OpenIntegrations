@@ -1,9 +1,4 @@
     Имя   = "Тестовая папка";
     Токен = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
 
-    Опции = Новый Структура;
-    Опции.Вставить("token", Токен);
-    Опции.Вставить("query", Имя);
-    Опции.Вставить("depth", Истина);
-
-    Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "ПолучитьСписокКаталогов", Опции);
+    Результат = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Истина);

@@ -31,10 +31,7 @@ Passing Tls settings together with passing an already created connection to the 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Options = New Structure;
-    Options.Insert("trust", True);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
+    Result = OPI_MySQL.GetTLSSettings(True);
 ```
  
 

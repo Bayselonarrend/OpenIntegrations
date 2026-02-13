@@ -2,8 +2,4 @@
 
     Name = "Color";
 
-    Options = New Structure;
-    Options.Insert("title", Name);
-    Options.Insert("auth" , Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductProperty", Options);
+    Result = OPI_VK.CreateProductProperty(Name, Parameters);

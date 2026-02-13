@@ -37,23 +37,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     SecretKey = "12we34...";
     Region    = "BTC";
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("access", AccessKey);
-    Options.Insert("secret", SecretKey);
-    Options.Insert("region", Region);
-
-    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+    BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Method = "PUT";
     Body   = "C:\test_data\document.docx"; // URL, Path or Binary Data
 
-    Options = New Structure;
-    Options.Insert("method", Method);
-    Options.Insert("basic" , BasicData);
-    Options.Insert("body"  , Body);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithBody", Options);
+    Result = OPI_S3.SendRequestWithBody(Method, BasicData, Body);
 ```
  
 

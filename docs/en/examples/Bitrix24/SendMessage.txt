@@ -12,22 +12,10 @@
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Options = New Structure;
-    Options.Insert("url"   , URL);
-    Options.Insert("chat"  , ChatString);
-    Options.Insert("text"  , Text);
-    Options.Insert("blocks", Attachments);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
+    Result = OPI_Bitrix24.SendMessage(URL, ChatString, Text, Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "a5b00469006e9f06006b12e400000001000...";
     UserID = 10;
 
-    Options = New Structure;
-    Options.Insert("url"  , URL);
-    Options.Insert("chat" , UserID);
-    Options.Insert("text" , Text);
-    Options.Insert("token", Token);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
+    Result = OPI_Bitrix24.SendMessage(URL, UserID, Text, , Token);

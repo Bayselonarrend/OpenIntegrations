@@ -26,11 +26,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Options = New Structure;
-    Options.Insert("role", "user");
-    Options.Insert("text", "What is 1C:Enterprise?");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
+    Result = OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?");
 ```
  
 

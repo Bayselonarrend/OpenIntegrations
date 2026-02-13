@@ -4,11 +4,4 @@
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 
-    Options = New Structure;
-    Options.Insert("token", Token);
-    Options.Insert("forum", Chat);
-    Options.Insert("topic", Topic);
-    Options.Insert("title", NewName);
-    Options.Insert("icon" , NewIcon);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditForumTopic", Options);
+    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
