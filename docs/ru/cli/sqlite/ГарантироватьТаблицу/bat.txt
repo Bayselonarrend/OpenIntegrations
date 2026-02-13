@@ -3,4 +3,4 @@
 oint sqlite ГарантироватьТаблицу ^
   --table "test_new" ^
   --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" ^
-  --db "/tmp/fcbawlc5.qdh.sqlite"
+  --db "/tmp/ffvvqcn5.zio.sqlite"

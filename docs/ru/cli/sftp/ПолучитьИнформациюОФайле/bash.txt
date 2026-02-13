@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint sftp ПолучитьИнформациюОФайле \
-  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/abat32zn.ahs.tmp','username':'bayselonarrend'}}" \
+  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/uql5bjhr.0c2.tmp','username':'bayselonarrend'}}" \
   --path "pic_from_disk.png"

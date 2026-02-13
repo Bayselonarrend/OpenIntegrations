@@ -1,12 +1,12 @@
 ﻿[
  {
   "kind": "calendar#event",
-  "etag": "\"3541981675623646\"",
-  "id": "a8iql7lpcvivs9097115s1d9r4",
+  "etag": "\"3542044456803102\"",
+  "id": "543d9tr0euhd6hugf6o0461u1o",
   "status": "confirmed",
-  "htmlLink": "https://www.google.com/calendar/event?eid=YThpcWw3bHBjdml2czkwOTcxMTVzMWQ5cjQgMzA1MmE4NjEwODA3N2Y1ODNhMWNmYzMwOGMyNjA2YzRmMGVmZTBhYWI5NGQwOWM5NzgyNjRmYzU0Yjg3NWU5N0Bn",
-  "created": "2026-02-13T13:53:46Z",
-  "updated": "2026-02-13T13:53:57.811Z",
+  "htmlLink": "https://www.google.com/calendar/event?eid=NTQzZDl0cjBldWhkNmh1Z2Y2bzA0NjF1MW8gZmRlZjJkMzVhZWY4NGQzNDdjMjQ2NjljZWYzZTFmMGM0NTdiMGIyNjI3NDQzYjVmOWI2NzlkYWQxODRlYjQ5M0Bn",
+  "created": "2026-02-13T22:36:57Z",
+  "updated": "2026-02-13T22:37:08.401Z",
   "summary": "Новое событие",
   "description": "Новое описание события",
   "location": "В офисе",
@@ -14,19 +14,19 @@
    "email": "bayselonarrend@gmail.com"
   },
   "organizer": {
-   "email": "3052a86108077f583a1cfc308c2606c4f0efe0aab94d09c978264fc54b875e97@group.calendar.google.com",
+   "email": "fdef2d35aef84d347c24669cef3e1f0c457b0b2627443b5f9b679dad184eb493@group.calendar.google.com",
    "displayName": "Тестовый календарь",
    "self": true
   },
   "start": {
-   "dateTime": "2026-02-13T13:53:44+00:00",
+   "dateTime": "2026-02-13T22:36:55+00:00",
    "timeZone": "Europe/Moscow"
   },
   "end": {
-   "dateTime": "2026-02-13T14:53:44+00:00",
+   "dateTime": "2026-02-13T23:36:55+00:00",
    "timeZone": "Europe/Moscow"
   },
-  "iCalUID": "a8iql7lpcvivs9097115s1d9r4@google.com",
+  "iCalUID": "543d9tr0euhd6hugf6o0461u1o@google.com",
   "sequence": 0,
   "reminders": {
    "useDefault": true
