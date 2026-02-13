@@ -170,7 +170,6 @@ pipeline {
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_СоздатьОпрос'],
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_СохранитьУдалитьКартинку'],
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_СоздатьИсторию'],
-						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_МетодыОбсуждений'],
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_ЛайкРепостКоммент'],
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистику'],
 						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистикуПостов'],

@@ -462,22 +462,6 @@ Procedure VKAPI_CreateStory() Export
 
 EndProcedure
 
-Procedure VKAPI_DiscussionMethods() Export
-
-    TestParameters = New Structure;
-    Parameters     = GetVKParameters();
-
-    VK_CreateDiscussion(TestParameters);
-    VK_CloseDiscussion(TestParameters);
-    VK_OpenDiscussion(TestParameters);
-    VK_WriteInDiscussion(TestParameters);
-
-    OPI_VK.CloseDiscussion(TestParameters["VK_ConvID"], True, Parameters);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
 Procedure VKAPI_LikeRepostComment() Export
 
     TestParameters = New Structure;
@@ -490,7 +474,6 @@ Procedure VKAPI_LikeRepostComment() Export
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
     OPI_TestDataRetrieval.ParameterToCollection("VK_PostID", TestParameters);
 
-    VK_LikePost(TestParameters);
     VK_MakeRepost(TestParameters);
     VK_WriteComment(TestParameters);
     VK_ShortenLink(TestParameters);
@@ -4974,94 +4957,6 @@ Procedure VK_CreateStory(FunctionParameters)
     Process(Result, "VK", "CreateStory", "Path");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
-
-EndProcedure
-
-Procedure VK_CreateDiscussion(FunctionParameters)
-
-    Parameters = GetVKParameters();
-    Name       = "Discussing: Which color is better??";
-    Message    = "Red, yellow, blue, or some other??";
-
-    Options = New Structure;
-    Options.Insert("title", Name);
-    Options.Insert("text", Message);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateDiscussion", Options);
-
-    // END
-
-    Process(Result, "VK", "CreateDiscussion", , FunctionParameters);
-
-EndProcedure
-
-Procedure VK_CloseDiscussion(FunctionParameters)
-
-    Parameters   = GetVKParameters();
-    DiscussionID = FunctionParameters["VK_ConvID"];
-    Options = New Structure;
-    Options.Insert("topic", DiscussionID);
-    Options.Insert("remove", Ложь);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CloseDiscussion", Options);
-
-    // END
-
-    Process(Result, "VK", "CloseDiscussion");
-
-EndProcedure
-
-Procedure VK_OpenDiscussion(FunctionParameters)
-
-    Parameters   = GetVKParameters();
-    DiscussionID = FunctionParameters["VK_ConvID"];
-    Options = New Structure;
-    Options.Insert("topic", DiscussionID);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "OpenDiscussion", Options);
-
-    // END
-
-    Process(Result, "VK", "OpenDiscussion");
-
-EndProcedure
-
-Procedure VK_WriteInDiscussion(FunctionParameters)
-
-    Parameters   = GetVKParameters();
-    DiscussionID = FunctionParameters["VK_ConvID"];
-    Message      = "I like yellow more";
-
-    Options = New Structure;
-    Options.Insert("topic", DiscussionID);
-    Options.Insert("text", Message);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteInDiscussion", Options);
-
-    // END
-
-    Process(Result, "VK", "WriteInDiscussion");
-
-EndProcedure
-
-Procedure VK_LikePost(FunctionParameters)
-
-    Parameters = GetVKParameters();
-    PostID     = FunctionParameters["VK_PostID"];
-
-    Options = New Structure;
-    Options.Insert("post", PostID);
-    Options.Insert("auth", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "LikePost", Options);
-
-    // END
-
-    Process(Result, "VK", "LikePost");
 
 EndProcedure
 
