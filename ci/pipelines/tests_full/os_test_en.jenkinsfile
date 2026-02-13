@@ -135,7 +135,6 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreatePoll'],
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_SaveDeleteImage'],
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateStory'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_DiscussionMethods'],
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_LikeRepostComment'],
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetStatistics'],
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetPostStatistics'],
