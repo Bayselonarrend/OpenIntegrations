@@ -3465,7 +3465,7 @@ Procedure Process(Val Result
 
     CLITestsMark = 1;
 
-    Constants.IsCLITests.Set(CLITestsMark);
+    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
 
     OPI_TestDataRetrieval.ProcessTestingResult(Result
         , Method
