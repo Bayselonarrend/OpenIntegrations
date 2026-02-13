@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьФайл ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fileid 51120 ^
+  --fileid 51444 ^
   --token "***"
