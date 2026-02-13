@@ -1,5 +1,5 @@
 oint yadisk ПереместитьОбъект ^
   --token "***" ^
-  --from "/a7e1bdec-d95e-4708-bc71-53f00bbad9a9.png" ^
-  --to "/66097a80-249a-4f89-b676-d088db5793eb.png" ^
+  --from "/ee6497b6-3c62-41cd-93e4-e568e7c71669.png" ^
+  --to "/4d28e872-ddc8-4d5c-950f-8b29b6c5a245.png" ^
   --rewrite true

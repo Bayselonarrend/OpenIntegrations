@@ -2,4 +2,4 @@
 
 oint clickhouse ПолучитьНастройкиСоединенияGRPC \
   --url "http://127.0.0.1:9101" \
-  --auth "{'bayselonarrend':'12we3456!2154'}"
+  --auth "{'bayselonarrend':'***'}"

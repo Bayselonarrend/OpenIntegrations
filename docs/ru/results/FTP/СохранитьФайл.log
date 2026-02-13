@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/n3wnygf3.do2.bin",
- "result": true
+ "filepath": "/tmp/eteup0s0.brk.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
