@@ -141,7 +141,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://")) Then
 
-                Value = OPI_HTTPRequests.Get(ValueES);
+                Value = GetHttpClient().Get(ValueES);
 
             Else
 
@@ -252,7 +252,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             ElsIf StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-                Value = OPI_HTTPRequests.Get(ValueES);
+                Value = GetHttpClient().Get(ValueES);
                 GetLine(Value);
 
             Else
@@ -532,7 +532,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
     ElsIf StrStartsWith(TrimL(ValueES), "http://")
         Or StrStartsWith(TrimL(ValueES), "https://") Then
 
-        Value = OPI_HTTPRequests.Get(ValueES);
+        Value = GetHttpClient().Get(ValueES);
 
     Else
 
@@ -574,6 +574,7 @@ Function GetHttpClient()
             Return OPI_HTTPRequests;
         EndTry;
 
+        //@skip-check module-unused-local-variable
         ClientPath = GetHttpClientPath();
 
         HttpClient = Undefined;
@@ -617,6 +618,31 @@ Function GetHttpClientPath() Export
     Return Path;
 
 EndFunction
+
+Function IsOneScript()
+
+    Try
+
+        Response = False;
+
+        // BSLLS:UnusedLocalVariable-off
+
+        //@skip-check module-unused-local-variable
+        Check = New OpenSSLSecureConnection;
+
+        // BSLLS:UnusedLocalVariable-on
+
+    Except
+
+        Response = True;
+
+    EndTry;
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
 
 #EndRegion
 

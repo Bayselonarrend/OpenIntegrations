@@ -141,7 +141,7 @@
             ИначеЕсли ПоСети И (СтрНачинаетсяС(СокрЛ(ЗначениеУП), "http://")
                 Или СтрНачинаетсяС(СокрЛ(ЗначениеУП), "https://")) Тогда
 
-                Значение = OPI_ЗапросыHTTP.Get(ЗначениеУП);
+                Значение = ПолучитьHttpКлиент().Get(ЗначениеУП);
 
             Иначе
 
@@ -252,7 +252,7 @@
             ИначеЕсли СтрНачинаетсяС(СокрЛ(ЗначениеУП), "http://")
                 Или СтрНачинаетсяС(СокрЛ(ЗначениеУП), "https://") Тогда
 
-                Значение = OPI_ЗапросыHTTP.Get(ЗначениеУП);
+                Значение = ПолучитьHttpКлиент().Get(ЗначениеУП);
                 ПолучитьСтроку(Значение);
 
             Иначе
@@ -532,7 +532,7 @@
     ИначеЕсли СтрНачинаетсяС(СокрЛ(ЗначениеУП), "http://")
         Или СтрНачинаетсяС(СокрЛ(ЗначениеУП), "https://") Тогда
 
-        Значение = OPI_ЗапросыHTTP.Get(ЗначениеУП);
+        Значение = ПолучитьHttpКлиент().Get(ЗначениеУП);
 
     Иначе
 
@@ -574,9 +574,10 @@
             Возврат OPI_ЗапросыHTTP;
         КонецПопытки;
 
+        //@skip-check module-unused-local-variable
         ПутьКлиента = ПолучитьПутьHttpКлиента();
 
-        HttpКлиент = Неопределено;
+        HttpКлиент          = Неопределено;
         HttpКлиент = ЗагрузитьСценарий(ПутьКлиента);
         Возврат HttpКлиент;
 
@@ -618,72 +619,29 @@
 
 КонецФункции
 
+Функция ЭтоOneScript()
+
+    Попытка
+
+        Ответ = Ложь;
+
+        // BSLLS:UnusedLocalVariable-off
+
+        //@skip-check module-unused-local-variable
+        Проверка = Новый ЗащищенноеСоединениеOpenSSL;
+
+        // BSLLS:UnusedLocalVariable-on
+
+    Исключение
+
+        Ответ = Истина;
+
+    КонецПопытки;
+
+    Возврат Ответ;
+
+КонецФункции
+
 #КонецОбласти
 
-#Region Alternate
-
-Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
-    ПолучитьДвоичныеДанные(Value, Force, TryB64);
-EndProcedure
-
-Procedure GetBinaryOrStream(Value) Export
-    ПолучитьДвоичныеИлиПоток(Value);
-EndProcedure
-
-Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
-    ПолучитьКоллекцию(Value, ByNetwork, Success);
-EndProcedure
-
-Procedure GetKeyValueCollection(Value, Val ErrorText = "The specified value is not a valid collection!") Export
-    ПолучитьКоллекциюКлючИЗначение(Value, ErrorText);
-EndProcedure
-
-Procedure GetArray(Value) Export
-    ПолучитьМассив(Value);
-EndProcedure
-
-Procedure GetBoolean(Value) Export
-    ПолучитьБулево(Value);
-EndProcedure
-
-Procedure GetLine(Value, Val FromSource = False) Export
-    ПолучитьСтроку(Value, FromSource);
-EndProcedure
-
-Procedure GetDate(Value) Export
-    ПолучитьДату(Value);
-EndProcedure
-
-Procedure GetNumber(Value) Export
-    ПолучитьЧисло(Value);
-EndProcedure
-
-Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
-    ПолучитьФайлНаДиске(Value, Extension);
-EndProcedure
-
-Procedure RestoreEscapeSequences(Text) Export
-    ВернутьУправляющиеПоследовательности(Text);
-EndProcedure
-
-Procedure ReplaceEscapeSequences(Text) Export
-    ЗаменитьУправляющиеПоследовательности(Text);
-EndProcedure
-
-Procedure ValueToArray(Value) Export
-    ЗначениеВМассив(Value);
-EndProcedure
-
-Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
-    Return JSONСтрокой(Data, Escaping, LineBreaks, DoubleQuotes);
-EndFunction
-
-Function NumberToString(Val Value) Export
-    Return ЧислоВСтроку(Value);
-EndFunction
-
-Function GetHttpClientPath() Export
-    Return ПолучитьПутьHttpКлиента();
-EndFunction
-
-#EndRegion
+#КонецОбласти
