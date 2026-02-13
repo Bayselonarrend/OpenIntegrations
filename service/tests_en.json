@@ -416,31 +416,6 @@
 	},
 	{
 		"lib": "VK",
-		"name": "CreateDiscussion",
-		"variant": ""
-	},
-	{
-		"lib": "VK",
-		"name": "CloseDiscussion",
-		"variant": ""
-	},
-	{
-		"lib": "VK",
-		"name": "OpenDiscussion",
-		"variant": ""
-	},
-	{
-		"lib": "VK",
-		"name": "WriteInDiscussion",
-		"variant": ""
-	},
-	{
-		"lib": "VK",
-		"name": "LikePost",
-		"variant": ""
-	},
-	{
-		"lib": "VK",
 		"name": "MakeRepost",
 		"variant": ""
 	},

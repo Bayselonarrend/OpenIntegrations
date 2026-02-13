@@ -72,23 +72,17 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint clickhouse ПолучитьНастройкиЗапроса \
-              --query "SELECT * FROM ext_grpc" \
-              --format "JSON" \
-              --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn\n2\tJane','format':'TSV'}]"
+              --query "SELECT number FROM system.numbers LIMIT 1" \
+              --format "JSON"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint clickhouse ПолучитьНастройкиЗапроса ^
-              --query "SELECT * FROM ext_grpc" ^
-              --format "JSON" ^
-              --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn\n2\tJane','format':'TSV'}]"
+              --query "SELECT number FROM system.numbers LIMIT 1" ^
+              --format "JSON"
         ```
     </TabItem>
 </Tabs>
@@ -98,11 +92,8 @@ import TabItem from '@theme/TabItem';
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "c89049df-81eb-4fa5-9378-043a9ccccd0d",
- "data": {
-  "meta": [],
-  "data": []
- },
+ "id": "1bdcac37-774b-4a88-bfa8-bdbed872d7ce",
+ "data": "/tmp/mf2szbs0.qes.json",
  "format": "CSV",
  "external_tables": [
   {

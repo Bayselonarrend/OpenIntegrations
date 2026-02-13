@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint notion ПолучитьБазуДанных \
               --token "***" \
-              --base "2ff82aa7-fc4e-8161-b7ec-d6c18cf181d1"
+              --base "30682aa7-fc4e-8183-a34e-e777a5b3abad"
         ```
     </TabItem>
   
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint notion ПолучитьБазуДанных ^
               --token "***" ^
-              --base "2ff82aa7-fc4e-8161-b7ec-d6c18cf181d1"
+              --base "30682aa7-fc4e-8183-a34e-e777a5b3abad"
         ```
     </TabItem>
 </Tabs>
@@ -55,10 +55,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "30082aa7-fc4e-8111-af67-f6a500d8dc29",
+ "id": "30682aa7-fc4e-8183-a34e-e777a5b3abad",
  "cover": null,
  "icon": null,
- "created_time": "2026-02-07T06:35:00Z",
+ "created_time": "2026-02-13T13:57:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-02-07T06:36:00Z",
+ "last_edited_time": "2026-02-13T13:57:00Z",
  "title": [
   {
    "type": "text",
@@ -108,8 +108,36 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
+  "Активен": {
+   "id": "%3C%7BiD",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Дата создания": {
+   "id": "Dshs",
+   "name": "Дата создания",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Картинка": {
+   "id": "EuLU",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Описание": {
+   "id": "HFHu",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
   "Номер": {
-   "id": "%3Fdgx",
+   "id": "MDnR",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -118,61 +146,40 @@ import TabItem from '@theme/TabItem';
    }
   },
   "Пользователь": {
-   "id": "BYAH",
+   "id": "N%60%5C%5D",
    "name": "Пользователь",
    "description": null,
    "type": "people",
    "people": {}
   },
-  "Активен": {
-   "id": "BgVq",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Описание": {
-   "id": "NshD",
-   "name": "Описание",
+  "Почта": {
+   "id": "Ubw%60",
+   "name": "Почта",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
   },
-  "Дата создания": {
-   "id": "%5BTQ%3A",
-   "name": "Дата создания",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Телефон": {
-   "id": "%5CP%3Cn",
-   "name": "Телефон",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
   "Статус": {
-   "id": "dg%5CN",
+   "id": "jkeb",
    "name": "Статус",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "07c51990-20e9-4ede-8091-44208d0aa709",
+      "id": "e239cc33-9dc4-44a4-98a8-72e0d5778270",
       "name": "Новый",
       "color": "green",
       "description": null
      },
      {
-      "id": "e59a3627-9337-4764-9883-d44c974aaaa9",
+      "id": "29011148-c03e-4bc3-9b34-3361ceb63474",
       "name": "В работе",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "916d14dd-54f7-42ac-b217-8deec3358299",
+      "id": "e18f20f5-5602-491f-8b48-0e008860aff5",
       "name": "Удаленный",
       "color": "red",
       "description": null
@@ -180,19 +187,12 @@ import TabItem from '@theme/TabItem';
     ]
    }
   },
-  "Картинка": {
-   "id": "tlcf",
-   "name": "Картинка",
+  "Телефон": {
+   "id": "z%60%3FE",
+   "name": "Телефон",
    "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Почта": {
-   "id": "w%60tg",
-   "name": "Почта",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
+   "type": "phone_number",
+   "phone_number": {}
   },
   "Имя": {
    "id": "title",
