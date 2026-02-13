@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСтатусУчастияПользователя \
   --url "b24-ar17wx.bitrix24.by" \
-  --event 3708 \
+  --event 3756 \
   --token "***"
