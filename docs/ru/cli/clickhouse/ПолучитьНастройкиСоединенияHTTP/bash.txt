@@ -2,5 +2,5 @@
 
 oint clickhouse ПолучитьНастройкиСоединенияHTTP \
   --url "http://127.0.0.1:8123" \
-  --auth "{'bayselonarrend':'12we3456!2154'}" \
+  --auth "{'bayselonarrend':'***'}" \
   --headers "{'X-Custom-Header':'CustomValue'}"

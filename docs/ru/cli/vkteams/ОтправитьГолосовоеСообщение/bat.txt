@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\0y320dwq.1gj"
+  --file "/tmp/2en3qc3y.uap"
