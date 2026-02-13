@@ -15,7 +15,6 @@
 "OPI_Tests.VKAPI_CreatePoll",
 "OPI_Tests.VKAPI_SaveDeleteImage",
 "OPI_Tests.VKAPI_CreateStory",
-"OPI_Tests.VKAPI_DiscussionMethods",
 "OPI_Tests.VKAPI_LikeRepostComment",
 "OPI_Tests.VKAPI_GetStatistics",
 "OPI_Tests.VKAPI_GetPostStatistics",

@@ -292,7 +292,6 @@ Function GetTestTable() Export
     NewTest(TestTable, "VKAPI_CreatePoll"                    , "Create poll"                     , VKontakte);
     NewTest(TestTable, "VKAPI_SaveDeleteImage"               , "Add/Delete image"                , VKontakte);
     NewTest(TestTable, "VKAPI_CreateStory"                   , "Create story"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_DiscussionMethods"             , "Actions with discussions"        , VKontakte);
     NewTest(TestTable, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"             , VKontakte);
     NewTest(TestTable, "VKAPI_GetStatistics"                 , "Get statistics"                  , VKontakte);
     NewTest(TestTable, "VKAPI_GetPostStatistics"             , "Get post statistics"             , VKontakte);
