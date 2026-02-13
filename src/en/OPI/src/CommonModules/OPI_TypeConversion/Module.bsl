@@ -562,4 +562,60 @@ Procedure ConvertSourceToValue(Value, TryB64)
 
 EndProcedure
 
+#Region HttpClient
+
+Function GetHttpClient()
+
+    If IsOneScript() Then
+
+        Try
+            OPI_HTTPRequests = Undefined;
+        Except
+            Return OPI_HTTPRequests;
+        EndTry;
+
+        ClientPath = GetHttpClientPath();
+
+        HttpClient          = Undefined;
+        // !OInt HttpClient = LoadScript(ClientPath);
+        Return HttpClient;
+
+    Else
+        Return OPI_HTTPRequests;
+    EndIf;
+
+EndFunction
+
+Function GetHttpClientPath() Export
+
+    ScriptDirectory = "";
+
+    ScriptDirectory = CurrentScript().Path;
+
+    If Not ValueIsFilled(ScriptDirectory) Then
+        Return "";
+    EndIf;
+
+    ScriptDirectory = StrReplace(ScriptDirectory, "\", "/");
+    PartsArray      = StrSplit(ScriptDirectory, "/");
+
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+
+    PartsArray.Add("tools");
+    PartsArray.Add("http");
+    PartsArray.Add("Modules");
+    PartsArray.Add("OPI_HTTPRequests.os");
+
+    Path = StrConcat(PartsArray, "/");
+
+    Return Path;
+
+EndFunction
+
 #EndRegion

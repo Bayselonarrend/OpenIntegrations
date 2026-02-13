@@ -68,6 +68,7 @@
 #Use "../../tools/main"
 #Use "../../tools/http"
 #Use "../../core"
+#Use "internal"
 #Use asserts
 
 #Region Internal

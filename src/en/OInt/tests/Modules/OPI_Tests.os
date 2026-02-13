@@ -68,6 +68,7 @@
 #Use "../../tools/main"
 #Use "../../tools/http"
 #Use "../../core"
+#Use "internal"
 #Use asserts
 
 #Region Internal
@@ -3465,7 +3466,7 @@ Procedure Process(Val Result
 
     CLITestsMark = 1;
 
-    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Constants.IsCLITests.Set(CLITestsMark);
 
     OPI_TestDataRetrieval.ProcessTestingResult(Result
         , Method
