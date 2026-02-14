@@ -39,22 +39,7 @@ import TabItem from '@theme/TabItem';
     НастройкиСоединения = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация);
     Соединение          = OPI_ClickHouse.ОткрытьСоединениеGRPC(НастройкиСоединения);
 
-    ТекстСозданияТаблицы = "CREATE TABLE IF NOT EXISTS events_stream_test (
-    |    id UInt64,
-    |    timestamp DateTime,
-    |    user_id UInt32,
-    |    event_type String,
-    |    payload String
-    |) ENGINE            = MergeTree()
-    |ORDER BY (timestamp, id)";
-
-    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса("DROP TABLE IF EXISTS events_stream_test");
-    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);
-
-    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса(ТекстСозданияТаблицы);
-    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);
-
-    Результат = OPI_ClickHouse.ОткрытьПотокGRPC(Соединение);
+    Результат = OPI_ClickHouse.ОткрытьПотокGRPC(Соединение); // <---
 
     Если Не Результат["result"] Тогда
         ВызватьИсключение Результат["error"];
