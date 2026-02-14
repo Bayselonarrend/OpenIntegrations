@@ -31,3 +31,9 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 ### 1.29.0 -> 1.30.0
 
 **Telegram**: Fixed and unified string decoding and special character replacement processing for all message types. When updating from a previous version, be sure to check the places where the Telegram library is used! You need to manually remove any calls to the DecodeString function if you added such in your code for emoji processing. This procedure is now handled within the library code for all messages.
+
+### 1.31.0 -> 1.32.0
+
+**All distribution types**: Fixed some function names containing typos. Be sure to check usage locations or perform syntax validation after updating!
+
+**VK**: Removed `Like` function and all functions from the `Discussion management` section due to their removal from the VK API
