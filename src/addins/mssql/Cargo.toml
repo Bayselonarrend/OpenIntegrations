@@ -21,7 +21,7 @@ common-utils = { path = "../commons/common-utils" }
 common-dataset = { path = "../commons/common-dataset" }
 common-binary = { path = "../commons/common-binary" }
 
-tiberius = { version = "0.12", features = ["chrono", "rust_decimal"] }
+tiberius = { version = "0.12", default-features = false, features = ["chrono", "rust_decimal", "rustls", "rustls-native-certs", "tds73"] }
 tokio = { version = "1.0", features = ["full"] }
 tokio-util = { version = "0.7", features = ["compat"] }
 serde_json = "1.0"
