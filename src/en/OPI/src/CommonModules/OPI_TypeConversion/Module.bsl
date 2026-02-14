@@ -575,10 +575,9 @@ Function GetHttpClient()
         //@skip-check module-unused-local-variable
         ClientPath = GetHttpClientPath();
 
-        HttpClient = Undefined;
+        // !OInt AttachScript(ClientPath, "OPI_HTTPRequests");
 
-        // !OInt HttpClient = LoadScript(ClientPath);
-        Return HttpClient;
+        Return OPI_HTTPRequests;
 
     Else
         Return OPI_HTTPRequests;
