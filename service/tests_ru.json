@@ -7221,11 +7221,6 @@
 	},
 	{
 		"lib": "ClickHouse",
-		"name": "ОтправитьСообщениеGRPC",
-		"variant": ""
-	},
-	{
-		"lib": "ClickHouse",
 		"name": "ПолучитьСообщениеGRPC",
 		"variant": ""
 	},
