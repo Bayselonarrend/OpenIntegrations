@@ -572,12 +572,11 @@ Function GetHttpClient()
             Return OPI_HTTPRequests;
         EndTry;
 
-        //@skip-check module-unused-local-variable
         ClientPath = GetHttpClientPath();
+        Try AttachScript(ClientPath, "OPI_HTTPRequests"); Except EndTry;
 
-        AttachScript(ClientPath, "OPI_HTTPRequests");
-
-        Return OPI_HTTPRequests;
+        HttpClient = New("OPI_HTTPRequests");
+        Return HttpClient;
 
     Else
         Return OPI_HTTPRequests;
