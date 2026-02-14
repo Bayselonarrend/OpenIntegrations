@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "cda38d9e-cf4e-4b76-bb34-2a7e63f378f5" \
+              --uuid "c311f0d3-ebba-438b-8b7b-026fcc847e3c" \
               --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "cda38d9e-cf4e-4b76-bb34-2a7e63f378f5" ^
+              --uuid "c311f0d3-ebba-438b-8b7b-026fcc847e3c" ^
               --testapi "***"
         ```
     </TabItem>
@@ -64,11 +64,11 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "cda38d9e-cf4e-4b76-bb34-2a7e63f378f5",
-  "cdek_number": "1106987107",
-  "order_uuid": "11c28bb0-5e48-49ff-a306-a72d5dd7f20b",
+  "uuid": "c311f0d3-ebba-438b-8b7b-026fcc847e3c",
+  "cdek_number": "1106987352",
+  "order_uuid": "fbf84120-1582-415f-b4fc-b5ce30c5f184",
   "intake_date": "2026-02-14",
-  "intake_number": "13311178",
+  "intake_number": "13311179",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -79,11 +79,14 @@ import TabItem from '@theme/TabItem';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Компания",
+   "name": "Иванов Иван",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "79589441654"
+    },
+    {
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -118,24 +121,19 @@ import TabItem from '@theme/TabItem';
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2026-02-13T14:26:55+00:00"
-   },
-   {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-02-13T14:26:55+00:00"
+    "date_time": "2026-02-13T23:09:20+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-13T14:26:55+00:00"
+    "date_time": "2026-02-13T23:09:20+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "14fd9b71-5386-4a4d-b41b-b31e8a2581cb",
+    "package_id": "815b0116-c968-4ba3-a462-fd242968cfc8",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,9 +143,9 @@ import TabItem from '@theme/TabItem';
  },
  "requests": [
   {
-   "request_uuid": "df0b7e38-b97c-46b5-a6bf-daa051ca56aa",
+   "request_uuid": "7a6918e8-cb67-4b96-adf6-08d7e604df24",
    "type": "CREATE",
-   "date_time": "2026-02-13T14:26:54+00:00",
+   "date_time": "2026-02-13T23:09:19+00:00",
    "state": "SUCCESSFUL"
   }
  ]

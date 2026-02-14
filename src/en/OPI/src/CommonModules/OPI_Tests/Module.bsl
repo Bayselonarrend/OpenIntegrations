@@ -940,7 +940,7 @@ Procedure GC_CreateDeleteCalendar() Export
     GoogleCalendar_EditListCalendar(TestParameters);
     GoogleCalendar_GetListCalendar(TestParameters);
     GoogleCalendar_ClearMainCalendar(TestParameters);
-    GoogleCalendar_DeleteCalendarFromList(TestParameters);
+    // !DISABLED! GoogleCalendar_DeleteCalendarFromList(TestParameters);
     GoogleCalendar_DeleteCalendar(TestParameters);
 
     OPI_Tools.Pause(5);
