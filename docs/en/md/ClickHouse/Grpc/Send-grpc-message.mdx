@@ -42,15 +42,53 @@ import TabItem from '@theme/TabItem';
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    Timeout = 10000;
+    Result = OPI_ClickHouse.OpenGRPCStream(Connection);
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
-    StreamID      = OpeningResult["streamId"];
+    If Not Result["result"] Then
+        Raise Result["error"];
+    Else
+        StreamID = Result["streamId"];
+    EndIf;
 
-    QueryText = "SELECT 1 AS result";
-    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
+    DataFormat  = "JSON";
+    CurrentDate = Date("20260101100000");
 
-    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+    Counter = 0;
+    While Counter < 5 Do
+
+        Record = New Structure;
+        Record.Insert("id"         , Counter + 1);
+        Record.Insert("timestamp"  , CurrentDate);
+        Record.Insert("user_id"    , 100 + Counter);
+        Record.Insert("event_type" , "stream_test");
+        Record.Insert("payload"    , "{}");
+
+        Record = OPI_Tools.JSONString(Record) + Chars.LF;
+
+        Last = Counter = 4;
+
+        If Counter = 0 Then
+
+            Request     = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+            CurrentSend = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last); // <---
+        Else
+            CurrentSend = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
+        EndIf;
+
+        If Not CurrentSend["result"] Then
+
+            Error = CurrentSend["error"];
+
+            If Error <> "Timeout" Then
+                Raise OPI_Tools.JSONString(CurrentSend);
+            EndIf;
+
+        EndIf;
+
+        Counter = Counter + 1;
+
+    EndDo;
 ```
  
 

@@ -7,22 +7,7 @@
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    TableCreationText = "CREATE TABLE IF NOT EXISTS events_stream_test (
-    |    id UInt64,
-    |    timestamp DateTime,
-    |    user_id UInt32,
-    |    event_type String,
-    |    payload String
-    |) ENGINE         = MergeTree()
-    |ORDER BY (timestamp, id)";
-
-    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE IF EXISTS events_stream_test");
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
-
-    Request = OPI_ClickHouse.GetRequestSettings(TableCreationText);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
-
-    Result = OPI_ClickHouse.OpenGRPCStream(Connection);
+    Result = OPI_ClickHouse.OpenGRPCStream(Connection); // <---
 
     If Not Result["result"] Then
         Raise Result["error"];
