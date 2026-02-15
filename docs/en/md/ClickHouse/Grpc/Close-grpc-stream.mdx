@@ -38,11 +38,15 @@ import TabItem from '@theme/TabItem';
 
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
-
-    Timeout = 10000;
+    Timeout            = 10000;
 
     OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
-    StreamID      = OpeningResult["streamId"];
+
+    If Not OpeningResult["result"] Then
+        Raise OpeningResult["error"];
+    Else
+        StreamID = OpeningResult["streamId"];
+    EndIf;
 
     Result = OPI_ClickHouse.CloseGRPCStream(Connection, StreamID);
 ```

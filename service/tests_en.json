@@ -7231,7 +7231,22 @@
 	},
 	{
 		"lib": "ClickHouse",
+		"name": "CompleteGRPCSending",
+		"variant": "Sending"
+	},
+	{
+		"lib": "ClickHouse",
 		"name": "CloseGRPCStream",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ProcessGRPCSending",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ProcessGRPCReceiving",
 		"variant": ""
 	}
 ]

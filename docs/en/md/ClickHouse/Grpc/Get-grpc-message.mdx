@@ -12,16 +12,20 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetGRPCMessage(Val Connection, Val StreamID) Export`
+`Function GetGRPCMessage(Val Connection, Val StreamID, Val DefaultFormat = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | - | Arbitrary | &#x2714; | Connection object |
   | StreamID | - | String | &#x2714; | Stream Identifier |
+  | DefaultFormat | - | String | &#x2716; | Expected data format if the server did not return output_format |
 
   
   Returns:  Map Of KeyAndValue - Processing result
 
+:::tip
+`DefaultFormat` is necessary for streaming reception, as the server does not return format information after the first response
+:::
 
 :::caution
 **NOCLI:** this method is not available in CLI version
@@ -38,15 +42,46 @@ import TabItem from '@theme/TabItem';
 
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Timeout            = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+
+    If Not OpeningResult["result"] Then
+        Raise OpeningResult["error"];
+    Else
+        StreamID = OpeningResult["streamId"];
+    EndIf;
 
     QueryText = "SELECT number FROM system.numbers LIMIT 1";
     Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
-    Timeout   = 10000;
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
-    StreamID      = OpeningResult["streamId"];
+    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+    OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
 
-    Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+    Data = "";
+
+    If Result["result"] Then
+
+        While True Do
+
+            Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID, "JSON");
+
+            If Not Result["result"] Then
+                Break;
+            EndIf;
+
+            TextPart = Result["message"]["output"];
+            Data     = Data + TextPart;
+
+        EndDo;
+
+        OPI_GRPC.CloseConnection(Connection);
+
+    Else
+        Raise Result["error"];
+    EndIf;
+
+    OPI_TypeConversion.GetCollection(Data);
 ```
  
 
