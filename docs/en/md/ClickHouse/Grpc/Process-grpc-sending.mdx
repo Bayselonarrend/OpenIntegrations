@@ -1,0 +1,74 @@
+---
+sidebar_position: 9
+description: Process GRPC sending and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Process GRPC sending
+ Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion
+
+
+
+`Function ProcessGRPCSending(Val Connection, Val Request, Val Data, Val Session = Undefined, Val Timeout = 10000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection parameters |
+  | Request | --req | Structure Of KeyAndValue | &#x2714; | Request data. See GetRequestSettings |
+  | Data | --data | Array Of Arbitrary | &#x2714; | An array of strings, collections, binary data, or file paths |
+  | Session | --session | Structure Of KeyAndValue | &#x2716; | Session settings. See GetSessionSettings |
+  | Timeout | --tout | Number | &#x2716; | Timeout (in ms) |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization      = New Structure(Login, Password);
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
+    DataFormat  = "JSON";
+    CurrentDate = Date("20260101100000");
+
+    Request   = Undefined;
+    DataArray = New Array;
+
+    Counter = 0;
+    While Counter < 5 Do
+
+        Record = New Structure;
+        Record.Insert("id"        , Counter + 1);
+        Record.Insert("timestamp" , CurrentDate);
+        Record.Insert("user_id"   , 100 + Counter);
+        Record.Insert("event_type", "stream_test");
+        Record.Insert("payload"   , "{}");
+
+        Record = OPI_Tools.JSONString(Record) + Chars.LF;
+
+        If Counter  = 0 Then
+            Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+        Else
+            DataArray.Add(Record);
+        EndIf;
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    Result = OPI_ClickHouse.ProcessGRPCSending(Connection, Request, DataArray);
+```
+ 
+
+
+
+

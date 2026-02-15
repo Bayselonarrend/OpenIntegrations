@@ -7231,7 +7231,22 @@
 	},
 	{
 		"lib": "ClickHouse",
+		"name": "ЗавершитьОтправкуGRPC",
+		"variant": "Отправка"
+	},
+	{
+		"lib": "ClickHouse",
 		"name": "ЗакрытьПотокGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ОбработатьОтправкуGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ОбработатьПолучениеGRPC",
 		"variant": ""
 	}
 ]
