@@ -1,0 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint clickhouse ОбработатьПолучениеGRPC \
+  --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+  --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"

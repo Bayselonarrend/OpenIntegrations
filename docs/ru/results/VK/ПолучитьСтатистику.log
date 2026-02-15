@@ -2,10 +2,10 @@
  "response": [
   {
    "activity": {
-    "comments": 3
+    "comments": 1
    },
-   "period_from": 1770940800,
-   "period_to": 1771027199,
+   "period_from": 1771113600,
+   "period_to": 1771199999,
    "reach": {
     "cities": [],
     "countries": [],
@@ -15,15 +15,22 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "BR",
+      "count": 1,
+      "name": "Бразилия",
+      "value": 43
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   },
   {
-   "period_from": 1770854400,
-   "period_to": 1770940799,
+   "period_from": 1771027200,
+   "period_to": 1771113599,
    "reach": {
     "cities": [],
     "countries": [],
