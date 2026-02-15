@@ -1,0 +1,8 @@
+﻿{
+ "stop_message": {
+  "result": false,
+  "error": "Implicit connection opening is senseless in this case"
+ },
+ "result": true,
+ "messages": []
+}

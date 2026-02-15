@@ -1,0 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint clickhouse ОбработатьОтправкуGRPC ^
+  --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+  --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'01/01/2026 10:00:00','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
+  --data "['{\r\n \"'"id\"'": 2,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 101,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 3,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 102,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 4,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 103,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 5,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 104,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n']"
