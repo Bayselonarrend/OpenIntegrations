@@ -94,14 +94,14 @@ GLIBC_2.17
 
 ## Техническая информация о сборке и разработке 
 
-+ Все компоненты - cydlib на Rust, основанные на крейте [addin1c от medigor](https://crates.io/crates/addin1c)
++ Все компоненты - cdylib на Rust, основанные на крейте [addin1c от medigor](https://crates.io/crates/addin1c)
 + Сборка под Linux происходит при помощи [zigbuild](https://github.com/rust-cross/cargo-zigbuild) на OracleLinux 9.1 (WSL)
 + Profile.release:
 ```toml
-    lto = "fat"       # Enable Link Time Optimization
-    codegen-units = 1 # Reduce number of codegen units to increase optimizations.
-    panic = "abort"   # Abort on panic
-    strip = true      # Automatically strip symbols from the binary.
-    opt-level = "z"
+	lto = "fat"
+	codegen-units = 1
+	panic = "unwind"
+	strip = true
+	opt-level = "z"
 ```
 
