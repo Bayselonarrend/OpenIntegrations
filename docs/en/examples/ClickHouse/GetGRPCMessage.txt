@@ -6,12 +6,43 @@
 
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Timeout            = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+
+    If Not OpeningResult["result"] Then
+        Raise OpeningResult["error"];
+    Else
+        StreamID = OpeningResult["streamId"];
+    EndIf;
 
     QueryText = "SELECT number FROM system.numbers LIMIT 1";
     Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
-    Timeout   = 10000;
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
-    StreamID      = OpeningResult["streamId"];
+    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+    OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
 
-    Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+    Data = "";
+
+    If Result["result"] Then
+
+        While True Do
+
+            Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID, "JSON");
+
+            If Not Result["result"] Then
+                Break;
+            EndIf;
+
+            TextPart = Result["message"]["output"];
+            Data     = Data + TextPart;
+
+        EndDo;
+
+        OPI_GRPC.CloseConnection(Connection);
+
+    Else
+        Raise Result["error"];
+    EndIf;
+
+    OPI_TypeConversion.GetCollection(Data);
