@@ -20,7 +20,9 @@
 			"name": "Grpc",
 			"methods": [
 				"GetGRPCConnectionSettings",
-				"GetTlsSettings"
+				"GetTlsSettings",
+				"ProcessGRPCReceiving",
+				"ProcessGRPCSending"
 			]
 		}
 	],
@@ -236,6 +238,92 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings. See GetTlsSettings",
 					"default": "Empty value",
+					"short": "-t"
+				}
+			],
+			"region": "Grpc"
+		},
+		{
+			"name": "ProcessGRPCSending",
+			"id": "PROCESSGRPCSENDING",
+			"description": "Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": null,
+					"short": "-c"
+				},
+				{
+					"name": "--req",
+					"types": "Structure Of KeyAndValue",
+					"description": "Request data. See GetRequestSettings",
+					"default": null,
+					"short": "-r"
+				},
+				{
+					"name": "--data",
+					"types": "Array Of Arbitrary",
+					"description": "An array of strings, collections, binary data, or file paths",
+					"default": null,
+					"short": "-d"
+				},
+				{
+					"name": "--session",
+					"types": "Structure Of KeyAndValue",
+					"description": "Session settings. See GetSessionSettings",
+					"default": "Empty value",
+					"short": "-s"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout (in ms)",
+					"default": 10000,
+					"short": "-t"
+				}
+			],
+			"region": "Grpc"
+		},
+		{
+			"name": "ProcessGRPCReceiving",
+			"id": "PROCESSGRPCRECEIVING",
+			"description": "Initializes the stream, sends the request, and receives messages until closure or a set limit is reached",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": null,
+					"short": "-c"
+				},
+				{
+					"name": "--req",
+					"types": "Structure Of KeyAndValue",
+					"description": "Request data. See GetRequestSettings",
+					"default": null,
+					"short": "-r"
+				},
+				{
+					"name": "--amount",
+					"types": "Number",
+					"description": "Maximum number of messages to receive, if necessary",
+					"default": "Empty value",
+					"short": "-a"
+				},
+				{
+					"name": "--session",
+					"types": "Structure Of KeyAndValue",
+					"description": "Session settings. See GetSessionSettings",
+					"default": "Empty value",
+					"short": "-s"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout (in ms)",
+					"default": 10000,
 					"short": "-t"
 				}
 			],

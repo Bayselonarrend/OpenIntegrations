@@ -13085,7 +13085,7 @@ Function Check_GRPC_CompleteSend(Val Result, Val Option)
 
 EndFunction
 
-Function Check_ClickHouse_ExecuteRequest(Val Result, Option)
+Function Check_ClickHouse_ExecuteRequest(Val Result, Val Option)
 
     If TypeOf(Result["body"]) = Type("BinaryData") Then
         Result.Insert("body", GetStringFromBinaryData(Result["body"]));
@@ -13144,7 +13144,7 @@ Function Check_ClickHouse_ExecuteRequest(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_CreateGRPCConnection(Val Result, Option)
+Function Check_ClickHouse_CreateGRPCConnection(Val Result, Val Option)
 
     If Option = "Openning" Then
 
@@ -13172,7 +13172,7 @@ Function Check_ClickHouse_CreateGRPCConnection(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetHTTPConnectionSettings(Val Result, Option)
+Function Check_ClickHouse_GetHTTPConnectionSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
@@ -13205,7 +13205,7 @@ Function Check_ClickHouse_GetHTTPConnectionSettings(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetGRPCConnectionSettings(Val Result, Option)
+Function Check_ClickHouse_GetGRPCConnectionSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
     ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "address")).Равно(True);
@@ -13241,7 +13241,7 @@ Function Check_ClickHouse_GetGRPCConnectionSettings(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetRequestSettings(Val Result, Option)
+Function Check_ClickHouse_GetRequestSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
     ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "query")).Равно(True);
@@ -13266,7 +13266,7 @@ Function Check_ClickHouse_GetRequestSettings(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetExternalTableStructure(Val Result, Option)
+Function Check_ClickHouse_GetExternalTableStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
     ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "name")).Равно(True);
@@ -13288,7 +13288,7 @@ Function Check_ClickHouse_GetExternalTableStructure(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetSessionSettings(Val Result, Option)
+Function Check_ClickHouse_GetSessionSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
@@ -13299,7 +13299,7 @@ Function Check_ClickHouse_GetSessionSettings(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetTlsSettings(Val Result, Option)
+Function Check_ClickHouse_GetTlsSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
@@ -13307,7 +13307,7 @@ Function Check_ClickHouse_GetTlsSettings(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_OpenGRPCStream(Val Result, Option)
+Function Check_ClickHouse_OpenGRPCStream(Val Result, Val Option)
 
     If Option = "Final" Then
 
@@ -13344,7 +13344,7 @@ Function Check_ClickHouse_OpenGRPCStream(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_SendGRPCMessage(Val Result, Option)
+Function Check_ClickHouse_SendGRPCMessage(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);
@@ -13353,17 +13353,7 @@ Function Check_ClickHouse_SendGRPCMessage(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_GetGRPCMessage(Val Result, Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(ValueIsFilled(Result["message"])).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_ClickHouse_CompleteGRPCSending(Val Result, Option)
+Function Check_ClickHouse_SendGRPCData(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);
@@ -13372,7 +13362,51 @@ Function Check_ClickHouse_CompleteGRPCSending(Val Result, Option)
 
 EndFunction
 
-Function Check_ClickHouse_CloseGRPCStream(Val Result, Option)
+Function Check_ClickHouse_GetGRPCMessage(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    ExpectsThat(Result["rows"]).Равно(1);
+    ExpectsThat(ValueIsFilled(Result["data"])).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_CompleteGRPCSending(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Sending" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_CloseGRPCStream(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_ProcessGRPCSending(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data_sending"].Count()).Равно(4);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_ProcessGRPCReceiving(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);

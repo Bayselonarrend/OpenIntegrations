@@ -1,0 +1,38 @@
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization      = New Structure(Login, Password);
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
+    DataFormat  = "JSON";
+    CurrentDate = Date("20260101100000");
+
+    Request   = Undefined;
+    DataArray = New Array;
+
+    Counter = 0;
+    While Counter < 5 Do
+
+        Record = New Structure;
+        Record.Insert("id"        , Counter + 1);
+        Record.Insert("timestamp" , CurrentDate);
+        Record.Insert("user_id"   , 100 + Counter);
+        Record.Insert("event_type", "stream_test");
+        Record.Insert("payload"   , "{}");
+
+        Record = OPI_Tools.JSONString(Record) + Chars.LF;
+
+        If Counter  = 0 Then
+            Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+        Else
+            DataArray.Add(Record);
+        EndIf;
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    Result = OPI_ClickHouse.ProcessGRPCSending(Connection, Request, DataArray);

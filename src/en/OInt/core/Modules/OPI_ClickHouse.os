@@ -361,7 +361,7 @@ EndFunction
 // Parameters:
 // Connection - Arbitrary - GRPC connection object                                       - conn
 // StreamID   - String    - Stream Identifier                                            - stream
-// Data       - Arbitrary - Sending data                                                 - data
+// Data       - Arbitrary - A string, collection, binary data, or file path to send      - data
 // WaitNext   - Boolean   - Flag for waiting for the next messages after the current one - next
 //
 // Returns:
@@ -383,15 +383,20 @@ EndFunction
 // Get GRPC message !NOCLI
 // Gets the next message from the stream
 //
+// Note:
+// `DefaultFormat` is necessary for streaming reception, as the server does not return format information after the first response
+//
 // Parameters:
-// Connection - Arbitrary - Connection object - conn
-// StreamID   - String    - Stream Identifier - stream
+// Connection    - Arbitrary - Connection object                                               - conn
+// StreamID      - String    - Stream Identifier                                               - stream
+// DefaultFormat - String    - Expected data format if the server did not return output_format - format
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function GetGRPCMessage(Val Connection, Val StreamID) Export
+Function GetGRPCMessage(Val Connection, Val StreamID, Val DefaultFormat = "") Export
 
     Result = OPI_GRPC.GetMessage(Connection, StreamID);
+    ProcessGRPCResponse(Result, "message", DefaultFormat);
 
     Return Result;
 
@@ -428,6 +433,173 @@ Function CloseGRPCStream(Val Connection, Val StreamID) Export
     Result = OPI_GRPC.CloseStream(Connection, StreamID);
 
     Return Result;
+
+EndFunction
+
+// Process GRPC sending
+// Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion
+//
+// Parameters:
+// Connection - Arbitrary                - Existing connection or connection parameters                 - conn
+// Request    - Structure Of KeyAndValue - Request data. See GetRequestSettings                         - req
+// Data       - Array Of Arbitrary       - An array of strings, collections, binary data, or file paths - data
+// Session    - Structure Of KeyAndValue - Session settings. See GetSessionSettings                     - session
+// Timeout    - Number                   - Timeout (in ms)                                              - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ProcessGRPCSending(Val Connection
+    , Val Request
+    , Val Data
+    , Val Session = Undefined
+    , Val Timeout = 10000) Export
+
+    If OPI_GRPC.IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateGRPCConnection(Connection);
+    EndIf;
+
+    If Not OPI_GRPC.IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    GRPCStream = OpenGRPCStream(Connector, Timeout);
+
+    If Not GRPCStream["result"] Then
+        Return GRPCStream;
+    Else
+        StreamID = GRPCStream["streamId"];
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Data);
+
+    SendingRequest = SendGRPCMessage(Connector, StreamID, Request, Session, Data.Count() > 0);
+
+    If Not SendingRequest["result"] Then
+        Return SendingRequest;
+    EndIf;
+
+    ResultMap    = New Map;
+    SendingArray = New Array;
+    CommonResult = True;
+
+    LastIndex = Data.UBound();
+
+    For N = 0 To LastIndex Do
+
+        DataPart    = Data[N];
+        CurrentSend = SendGRPCData(Connector, StreamID, DataPart, Not N = LastIndex);
+
+        SendingArray.Add(CurrentSend);
+
+        If Not CurrentSend["result"] Then
+            CommonResult = False;
+            Break;
+        EndIf;
+
+    EndDo;
+
+    CompleteGRPCSending(Connection, StreamID);
+
+    ResultMap.Insert("result"          , CommonResult);
+    ResultMap.Insert("request_sending" , SendingRequest);
+    ResultMap.Insert("data_sending"    , SendingArray);
+    ResultMap.Insert("received_message", GetGRPCMessage(Connector , StreamID));
+    ResultMap.Insert("stream_closing"  , CloseGRPCStream(Connector, StreamID));
+
+    If CloseConnection Then
+        OPI_GRPC.CloseConnection(Connector);
+    EndIf;
+
+    Return ResultMap;
+
+EndFunction
+
+// Process GRPC receiving
+// Initializes the stream, sends the request, and receives messages until closure or a set limit is reached
+//
+// Parameters:
+// Connection   - Arbitrary                - Existing connection or connection parameters        - conn
+// Request      - Structure Of KeyAndValue - Request data. See GetRequestSettings                - req
+// MessageCount - Number                   - Maximum number of messages to receive, if necessary - amount
+// Session      - Structure Of KeyAndValue - Session settings. See GetSessionSettings            - session
+// Timeout      - Number                   - Timeout (in ms)                                     - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ProcessGRPCReceiving(Val Connection
+    , Val Request
+    , Val MessageCount = Undefined
+    , Val Session = Undefined
+    , Val Timeout = 10000) Export
+
+    If OPI_GRPC.IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateGRPCConnection(Connection);
+    EndIf;
+
+    If Not OPI_GRPC.IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    GRPCStream = OpenGRPCStream(Connector, Timeout);
+
+    If Not GRPCStream["result"] Then
+        Return GRPCStream;
+    Else
+        StreamID = GRPCStream["streamId"];
+    EndIf;
+
+    SendingRequest = SendGRPCMessage(Connector, StreamID, Request, Session);
+
+    If Not SendingRequest["result"] Then
+        Return SendingRequest;
+    EndIf;
+
+    NumberOfMessagesSpecified = MessageCount <> Undefined;
+
+    If NumberOfMessagesSpecified Then
+        OPI_TypeConversion.GetNumber(MessageCount);
+    EndIf;
+
+    ResultMap = New Map;
+
+    AnswersArray  = New Array;
+    DefaultFormat = Undefined;
+    Counter       = 0;
+
+    While True And ?(NumberOfMessagesSpecified, MessageCount > Counter, True) Do
+
+        CurrentResponse = GetGRPCMessage(Connection, StreamID, DefaultFormat);
+
+        If Not CurrentResponse["result"] Then
+            ResultMap.Insert("stop_message", CurrentResponse);
+            Break;
+        EndIf;
+
+        AnswersArray.Add(CurrentResponse);
+        DefaultFormat = OPI_Tools.GetOr(CurrentResponse, "message.output_format", DefaultFormat);
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    CommonResult = ?(NumberOfMessagesSpecified, MessageCount = AnswersArray.Count(), True);
+
+    ResultMap.Insert("result"  , CommonResult);
+    ResultMap.Insert("messages", AnswersArray);
+
+    If CloseConnection Then
+        OPI_GRPC.CloseConnection(Connector);
+    EndIf;
+
+    Return ResultMap;
 
 EndFunction
 
@@ -778,7 +950,7 @@ Function FormGRPCRequest(Val Connection, Val Request, Val Session)
     QueryText          = OPI_Tools.GetOr(Request, "query" , Undefined);
     DataFormat         = OPI_Tools.GetOr(Request, "format" , Undefined);
     Database           = OPI_Tools.GetOr(Request, "database" , Undefined);
-    AdditionalSettings = OPI_Tools.GetOr(Request, "settings" , New Structure);
+    AdditionalSettings = OPI_Tools.GetOr(Request, "settings" , Undefined);
     ExternalTables     = OPI_Tools.GetOr(Request, "external_tables", Undefined);
 
     OPI_TypeConversion.GetBinaryData(Data, True);
@@ -903,21 +1075,25 @@ Procedure SetGRPCSession(GRPCRequest, Val Session)
 
 EndProcedure
 
-Procedure ProcessGRPCResponse(Response)
+Procedure ProcessGRPCResponse(Response, Val DataField = "data", Val DefaultFormat = "")
 
     If Not OPI_Tools.GetOr(Response, "result", False) Then
         Return;
     EndIf;
 
-    Format = OPI_Tools.GetOr(Response, "data.output_format", Undefined);
+    Format = OPI_Tools.GetOr(Response, StrTemplate("%1.output_format", DataField), Undefined);
 
     If Not ValueIsFilled(Format) Then
-        Return;
+        If ValueIsFilled(DefaultFormat) Then
+            Format = DefaultFormat;
+        Else
+            Return;
+        EndIf;
     EndIf;
 
     B64String = "";
 
-    If OPI_Tools.CollectionFieldExists(Response, "data.output.BYTES", B64String) Then
+    If OPI_Tools.CollectionFieldExists(Response, StrTemplate("%1.output.BYTES", DataField), B64String) Then
 
         If IsValidJSONFormat(Format) Then
 
@@ -926,6 +1102,7 @@ Procedure ProcessGRPCResponse(Response)
             OPI_TypeConversion.GetCollection(Value, , Success);
 
             If Not Success Then
+                Value             = ?(TypeOf(Value) = Type("Array"), Value[0], Value);
                 Value = GetStringFromBinaryData(Value);
             EndIf;
 
@@ -940,7 +1117,7 @@ Procedure ProcessGRPCResponse(Response)
 
         EndIf;
 
-        Response["data"]["output"] = Value;
+        Response[DataField]["output"] = Value;
 
     EndIf;
 
@@ -992,8 +1169,8 @@ Function ОтправитьДанныеGRPC(Val Соединение, Val IDПо
     Return SendGRPCData(Соединение, IDПотока, Данные, ОжидатьСледующее);
 EndFunction
 
-Function ПолучитьСообщениеGRPC(Val Соединение, Val IDПотока) Export
-    Return GetGRPCMessage(Соединение, IDПотока);
+Function ПолучитьСообщениеGRPC(Val Соединение, Val IDПотока, Val ФорматПоУмолчанию = "") Export
+    Return GetGRPCMessage(Соединение, IDПотока, ФорматПоУмолчанию);
 EndFunction
 
 Function ЗавершитьОтправкуGRPC(Val Соединение, Val IDПотока) Export
@@ -1002,6 +1179,14 @@ EndFunction
 
 Function ЗакрытьПотокGRPC(Val Соединение, Val IDПотока) Export
     Return CloseGRPCStream(Соединение, IDПотока);
+EndFunction
+
+Function ОбработатьОтправкуGRPC(Val Соединение, Val Запрос, Val Данные, Val Сессия = Undefined, Val Таймаут = 10000) Export
+    Return ProcessGRPCSending(Соединение, Запрос, Данные, Сессия, Таймаут);
+EndFunction
+
+Function ОбработатьПолучениеGRPC(Val Соединение, Val Запрос, Val ЧислоСообщений = Undefined, Val Сессия = Undefined, Val Таймаут = 10000) Export
+    Return ProcessGRPCReceiving(Соединение, Запрос, ЧислоСообщений, Сессия, Таймаут);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
