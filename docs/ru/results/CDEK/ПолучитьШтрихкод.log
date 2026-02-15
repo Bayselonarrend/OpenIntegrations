@@ -1,39 +1,45 @@
 ﻿{
  "entity": {
-  "uuid": "fdb8232a-7cca-4cd6-ae6a-c35f48381c98",
+  "uuid": "5a2370e7-1e24-4c32-98d8-d8b8faec2f1a",
   "orders": [
    {
-    "order_uuid": "1d4068fc-b1bb-4d03-b630-894eaf1680e5"
+    "order_uuid": "e78334f7-fb7c-43da-9dcb-e08111eaaf6f"
    }
   ],
   "copy_count": 1,
   "format": "A5",
-  "url": "https://api.edu.cdek.ru/v2/print/barcodes/fdb8232a-7cca-4cd6-ae6a-c35f48381c98.pdf",
   "lang": "RUS",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-07T06:53:31+00:00"
+    "date_time": "2026-02-15T21:01:53+00:00"
    },
    {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2026-02-07T06:53:31+00:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2026-02-07T06:53:32+00:00"
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2026-02-15T21:01:54+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "50c11e4c-08a5-43cb-a76d-f371d2a617bf",
+   "request_uuid": "e0fa66f3-a35f-4f67-938c-483372d6fb1d",
    "type": "CREATE",
-   "date_time": "2026-02-07T06:53:31+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-02-15T21:01:53+00:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid e78334f7-fb7c-43da-9dcb-e08111eaaf6f"
+    }
+   ]
   }
  ],
  "related_entities": []

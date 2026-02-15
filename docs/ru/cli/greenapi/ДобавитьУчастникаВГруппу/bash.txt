@@ -2,5 +2,5 @@
 
 oint greenapi ДобавитьУчастникаВГруппу \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363405987706264@g.us" \
+  --group "120363423673771839@g.us" \
   --user "123123123@c.us"

@@ -1,8 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "8fa1de68-f137-4afc-9788-f9e0ddf3f483",
- "data": "/tmp/4vfoxhud.ftk.json",
+ "id": "24faa975-913e-4bd1-a6c4-150f864dbbd7",
+ "data": "/tmp/zo2g1wki.ho3.json",
  "format": "CSV",
  "external_tables": [
   {

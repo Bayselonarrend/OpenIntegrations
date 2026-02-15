@@ -1,1 +1,26 @@
-﻿{}
+﻿[
+ {
+  "messagesIDs": [
+   "3EB0FE943705B0383A0CEC"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB041BC902ACD543B8307"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0800EC2F4A90A577519",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB041BC902ACD543B8307",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
