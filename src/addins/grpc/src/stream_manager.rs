@@ -77,13 +77,13 @@ impl StreamManager {
 
     pub async fn send_message(&self, stream_id: &str, message: DynamicMessage) -> Result<(), String> {
         let stream = self.get_stream(stream_id).await
-            .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
+            .ok_or_else(|| json_error(format!("Stream '{}' not found", stream_id)))?;
         
         let (sender, timeout_ms) = {
             let stream_info = stream.lock().await;
 
             let sender = stream_info.sender.as_ref()
-                .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
+                .ok_or_else(|| json_error(format!("Stream '{}' does not support sending", stream_id)))?
                 .clone();
 
             (sender, stream_info.timeout_ms)
