@@ -131,7 +131,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetConfirmationCode(Val ClientId) Export

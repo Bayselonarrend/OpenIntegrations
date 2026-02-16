@@ -740,7 +740,6 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export

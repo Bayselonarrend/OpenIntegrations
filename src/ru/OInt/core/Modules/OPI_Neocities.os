@@ -454,7 +454,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetSiteData(Val Token, Val Website = "") Export

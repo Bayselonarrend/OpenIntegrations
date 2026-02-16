@@ -1129,7 +1129,6 @@ EndProcedure
 #EndRegion
 
 #EndRegion
-
 #Region Alternate
 
 Function ВыполнитьЗапрос(Val Соединение, Val Запрос, Val Сессия = Undefined) Export

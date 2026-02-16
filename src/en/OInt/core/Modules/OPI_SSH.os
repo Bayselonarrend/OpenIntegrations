@@ -217,7 +217,6 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export

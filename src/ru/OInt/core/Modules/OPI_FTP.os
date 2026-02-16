@@ -1148,7 +1148,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export

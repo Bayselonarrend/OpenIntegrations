@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_ClickHouse.os
+// OneScript: ./OInt/core/clickhouse/Modules/OPI_ClickHouse.os
 // Lib: ClickHouse
 // CLI: clickhouse
 // Keywords: clickhouse

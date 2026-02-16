@@ -481,7 +481,6 @@ Function GetAuthorizationHeader(Val Token)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьВременныйТокен(Val URL, Val Логин, Val Пароль) Export

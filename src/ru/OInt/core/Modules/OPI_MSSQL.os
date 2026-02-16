@@ -627,7 +627,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export

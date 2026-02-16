@@ -700,7 +700,6 @@ Procedure AddDataDescription(Val Data, Parameters)
 EndProcedure
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьСписокБаз(Val Токен, Val Отступ = "") Export

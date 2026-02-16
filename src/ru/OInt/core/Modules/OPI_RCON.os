@@ -168,7 +168,6 @@
 #КонецОбласти
 
 #КонецОбласти
-
 #Region Alternate
 
 Function CreateConnection(Val ConnectionParams) Export
