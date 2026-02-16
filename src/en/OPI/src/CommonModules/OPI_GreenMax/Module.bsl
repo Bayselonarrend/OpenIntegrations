@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
+// OneScript: ./OInt/core/greenmax/Modules/OPI_GreenMax.os
 // Lib: GreenMax
 // CLI: greenmax
 // Keywords: greenapi, max

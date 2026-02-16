@@ -8,10 +8,10 @@
 |![FTP(S)](../FTP.png)| `FTP(S)`| ftp, ftps |
 |![Google Calendar](../GoogleCalendar.png)| `Google Calendar`| google calendar, googlecalendar, gcalendar |
 |![Google Drive](../GoogleDrive.png)| `Google Drive`| google drive, googledrive, gdrive, google disk |
-|![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
 |![GreenAPI (WhatsApp)](../GreenAPI.png)| `GreenAPI (WhatsApp)`| greenapi, whatsapp |
 |![GreenAPI (Max)](../GreenMax.png)| `GreenAPI (Max)`| greenapi, max |
 |![gRPC](../GRPC.png)| `gRPC`| grpc |
+|![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
 |![MongoDB](../MongoDB.png)| `MongoDB`| mongodb, mongo, nosql |
 |![MS SQL](../MSSQL.png)| `MS SQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |

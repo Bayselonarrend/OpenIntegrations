@@ -387,10 +387,10 @@ li > a.menu__link {
 .FTP a::before,
 .GoogleCalendar a::before,
 .GoogleDrive a::before,
-.GoogleSheets a::before,
 .GreenAPI a::before,
 .GreenMax a::before,
 .GRPC a::before,
+.GoogleSheets a::before,
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
@@ -449,10 +449,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/GoogleDrive.png);
 }
 
-.GoogleSheets > div > a::before{
-  content: url(../../static/img/APIs/small/GoogleSheets.png);
-}
-
 .GreenAPI > div > a::before{
   content: url(../../static/img/APIs/small/GreenAPI.png);
 }
@@ -463,6 +459,10 @@ li > a.menu__link {
 
 .GRPC > div > a::before{
   content: url(../../static/img/APIs/small/GRPC.png);
+}
+
+.GoogleSheets > div > a::before{
+  content: url(../../static/img/APIs/small/GoogleSheets.png);
 }
 
 .MongoDB > div > a::before{

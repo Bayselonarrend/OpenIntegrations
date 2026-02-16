@@ -454,7 +454,6 @@ Procedure GetLocalPathsSets(LocalFolder, RemoteFolder, LocalPaths, LocalSubfolde
 EndProcedure
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьДанныеОСайте(Val Токен, Val Сайт = "") Export
