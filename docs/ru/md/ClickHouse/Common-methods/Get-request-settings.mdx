@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint clickhouse ПолучитьНастройкиЗапроса \
-              --query "SELECT number FROM system.numbers LIMIT 1" \
+              --query "SELECT * FROM events_stream_test ORDER BY id" \
               --format "JSON"
         ```
     </TabItem>
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint clickhouse ПолучитьНастройкиЗапроса ^
-              --query "SELECT number FROM system.numbers LIMIT 1" ^
+              --query "SELECT * FROM events_stream_test ORDER BY id" ^
               --format "JSON"
         ```
     </TabItem>
@@ -92,8 +92,8 @@ import TabItem from '@theme/TabItem';
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "8fa1de68-f137-4afc-9788-f9e0ddf3f483",
- "data": "/tmp/4vfoxhud.ftk.json",
+ "id": "24faa975-913e-4bd1-a6c4-150f864dbbd7",
+ "data": "/tmp/zo2g1wki.ho3.json",
  "format": "CSV",
  "external_tables": [
   {

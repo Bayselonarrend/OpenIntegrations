@@ -28084,7 +28084,7 @@ Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
     Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
 
     Sending = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
-    Result     = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+    Result  = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
 
     // END
 
