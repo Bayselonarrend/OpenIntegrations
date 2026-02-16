@@ -252,7 +252,7 @@ Function GetTestTable() Export
     SFTP      = "SFTP";
     GreenMax  = "GreenMax";
     GRPC      = "GRPC";
-    CH        = "ClickHouse";
+    CHouse    = "ClickHouse";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -439,8 +439,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
     NewTest(TestTable, "GR_Introspection"                    , "Introspection"                   , GRPC);
     NewTest(TestTable, "GR_Streaming"                        , "Streaming"                       , GRPC);
-    NewTest(TestTable, "CH_CommonMethods"                    , "Common methods"                  , CH);
-    NewTest(TestTable, "CH_GRPC"                             , "GRPC"                            , CH);
+    NewTest(TestTable, "CH_CommonMethods"                    , "Common methods"                  , CHouse);
+    NewTest(TestTable, "CH_GRPC"                             , "GRPC"                            , CHouse);
 
     Return TestTable;
 
@@ -894,27 +894,7 @@ Procedure FinishLaunch() Export
 
         EndIf;
 
-        AllTests      = GetFullTestList();
-        ExecutedTests = New ValueList;
-        ExecutedTests.LoadValues(GetExecutedTestsList());
-
-        If ExecutedTests.Count() / AllTests.Count() > 0.8 Then
-
-            For Each Test In AllTests Do
-
-                If ValueIsFilled(Test["variant"]) Then
-                    TestFunctionName = StrTemplate("%1_%2_%3", Test["lib"], Test["name"], Test["variant"]);
-                Else
-                    TestFunctionName = StrTemplate("%1_%2"   , Test["lib"], Test["name"]);
-                EndIf;
-
-                If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
-                    WriteMissingTest(Test["lib"], Test["name"], Test["variant"]);
-                EndIf;
-
-            EndDo;
-
-        EndIf;
+        // WriteMissingTests();
 
         FinishStructure = ReportPortal().GetLaunchCompletionStructure(CurrentDate);
         ReportPortal().FinishLaunch(URL, Token, Project, ExistingLaunch["id"], FinishStructure);
@@ -928,7 +908,8 @@ EndProcedure
 
 Function GetExecutedTestsList() Export
 
-    Tests          = ReadLaunchFile()["tests"];
+    Tests = ReadLaunchFile()["tests"];
+
     Return ?(Tests = Undefined, New Array, Tests);
 
 EndFunction
@@ -13400,6 +13381,7 @@ Function Check_ClickHouse_ProcessGRPCSending(Val Result, Val Option)
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data_sending"].Count()).Равно(4);
+    ExpectsThat(Result["received_message"]["message"]["exception"]["code"]).Равно(0);
 
     Return Result;
 
@@ -13409,6 +13391,7 @@ Function Check_ClickHouse_ProcessGRPCReceiving(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["messages"].Count() > 0).Равно(True);
 
     Return Result;
 
@@ -13417,6 +13400,32 @@ EndFunction
 #EndRegion
 
 #Region ReportPortal
+
+Procedure WriteMissingTests()
+
+    AllTests      = GetFullTestList();
+    ExecutedTests = New ValueList;
+    ExecutedTests.LoadValues(GetExecutedTestsList());
+
+    If ExecutedTests.Count() / AllTests.Count() > 0.8 Then
+
+        For Each Test In AllTests Do
+
+            If ValueIsFilled(Test["variant"]) Then
+                TestFunctionName = StrTemplate("%1_%2_%3", Test["lib"], Test["name"], Test["variant"]);
+            Else
+                TestFunctionName = StrTemplate("%1_%2"   , Test["lib"], Test["name"]);
+            EndIf;
+
+            If ExecutedTests.FindByValue(TestFunctionName) = Undefined Then
+                WriteMissingTest(Test["lib"], Test["name"], Test["variant"]);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+EndProcedure
 
 Procedure WriteMissingTest(Val Library, Val Method, Val Option)
 
