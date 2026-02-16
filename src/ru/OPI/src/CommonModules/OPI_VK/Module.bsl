@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/vk/Modules/OPI_VK.os
+// OneScript: ./OInt/api/vk/Modules/OPI_VK.os
 // Lib: VK
 // CLI: vk
 // Keywords: vk, vkontakte
@@ -49,8 +49,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

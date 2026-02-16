@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/bitrix24/Modules/OPI_Bitrix24.os
+// OneScript: ./OInt/api/bitrix24/Modules/OPI_Bitrix24.os
 // Lib: Bitrix24
 // CLI: bitrix24
 // Keywords: bitrix24, b24, bitrix
@@ -44,8 +44,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

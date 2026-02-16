@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/postgres/Modules/OPI_PostgreSQL.os
+// OneScript: ./OInt/api/postgres/Modules/OPI_PostgreSQL.os
 // Lib: PostgreSQL
 // CLI: postgres
 // Keywords: postgresql, postgre sql, postgres
@@ -46,8 +46,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

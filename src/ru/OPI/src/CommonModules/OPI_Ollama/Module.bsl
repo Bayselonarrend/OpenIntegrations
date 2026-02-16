@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/ollama/Modules/OPI_Ollama.os
+// OneScript: ./OInt/api/ollama/Modules/OPI_Ollama.os
 // Lib: Ollama
 // CLI: ollama
 // Keywords: ollama, ai llm
@@ -47,8 +47,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 
