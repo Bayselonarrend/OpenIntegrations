@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Telegram
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Telegram" cli="telegram" use="oint/api/telegram" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с Telegram Bot API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ### Начало работы

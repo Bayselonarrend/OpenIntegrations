@@ -8,6 +8,14 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # VK Teams
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_VKTeams" cli="vkteams" use="oint/api/vkteams" lang="ru"/>
+
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Airtable" cli="airtable" use="oint/api/airtable" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с VK Teams API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ### Начало работы

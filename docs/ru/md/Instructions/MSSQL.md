@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # MS SQL Server
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_MSSQL" cli="mssql" use="oint/api/mssql" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с базами данных MSSQL в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">

@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Google Sheets
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GoogleSheets" cli="gsheets" use="oint/api/gsheets" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с API Google Sheets в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 :::important
