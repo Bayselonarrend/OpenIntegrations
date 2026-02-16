@@ -12,5 +12,6 @@ fpm -t rpm \
   --url "%3" \
   --maintainer "%4" \
   --after-install postinst.sh \
+  --after-remove postrm.sh \
   --verbose \
   ../ci/installer_set/=/usr %5=/usr/lib/oint/bin
