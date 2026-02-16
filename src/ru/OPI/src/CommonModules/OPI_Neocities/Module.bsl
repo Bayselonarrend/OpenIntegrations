@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/neocities/Modules/OPI_Neocities.os
+// OneScript: ./OInt/api/neocities/Modules/OPI_Neocities.os
 // Lib: Neocities
 // CLI: neocities
 // Keywords: neocities
@@ -45,8 +45,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

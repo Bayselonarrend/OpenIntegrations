@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/greenapi/Modules/OPI_GreenAPI.os
+// OneScript: ./OInt/api/greenapi/Modules/OPI_GreenAPI.os
 // Lib: GreenAPI
 // CLI: greenapi
 // Keywords: greenapi, whatsapp
@@ -46,8 +46,8 @@
 //@skip-check method-too-many-params
 //@skip-check bsl-legacy-check-string-literal
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

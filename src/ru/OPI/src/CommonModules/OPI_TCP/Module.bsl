@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/tcp/Modules/OPI_TCP.os
+// OneScript: ./OInt/api/tcp/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
 // Keywords: tcp
@@ -46,8 +46,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

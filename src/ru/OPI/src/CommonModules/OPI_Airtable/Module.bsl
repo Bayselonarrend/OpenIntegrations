@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/airtable/Modules/OPI_Airtable.os
+// OneScript: ./OInt/api/airtable/Modules/OPI_Airtable.os
 // Lib: Airtable
 // CLI: airtable
 // Keywords: airtable
@@ -39,8 +39,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

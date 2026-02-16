@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/openai/Modules/OPI_OpenAI.os
+// OneScript: ./OInt/api/openai/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
 // Keywords: openai, localai, ai llm
@@ -47,8 +47,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

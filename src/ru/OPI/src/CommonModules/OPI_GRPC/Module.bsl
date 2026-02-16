@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/grpc/Modules/OPI_GRPC.os
+// OneScript: ./OInt/api/grpc/Modules/OPI_GRPC.os
 // Lib: GRPC
 // CLI: grpc
 // Keywords: grpc
@@ -48,8 +48,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/clickhouse/Modules/OPI_ClickHouse.os
+// OneScript: ./OInt/api/clickhouse/Modules/OPI_ClickHouse.os
 // Lib: ClickHouse
 // CLI: clickhouse
 // Keywords: clickhouse
@@ -47,8 +47,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

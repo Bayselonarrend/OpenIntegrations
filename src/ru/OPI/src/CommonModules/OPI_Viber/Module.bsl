@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/viber/Modules/OPI_Viber.os
+// OneScript: ./OInt/api/viber/Modules/OPI_Viber.os
 // Lib: Viber
 // CLI: viber
 // Keywords: viber
@@ -41,8 +41,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

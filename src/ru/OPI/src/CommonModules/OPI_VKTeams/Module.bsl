@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/vkteams/Modules/OPI_VKTeams.os
+// OneScript: ./OInt/api/vkteams/Modules/OPI_VKTeams.os
 // Lib: VKTeams
 // CLI: vkteams
 // Keywords: vkteams, vk teams
@@ -43,8 +43,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

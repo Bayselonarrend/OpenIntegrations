@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/yadisk/Modules/OPI_YandexDisk.os
+// OneScript: ./OInt/api/yadisk/Modules/OPI_YandexDisk.os
 // Lib: YandexDisk
 // CLI: yadisk
 // Keywords: yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk
@@ -44,8 +44,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 
