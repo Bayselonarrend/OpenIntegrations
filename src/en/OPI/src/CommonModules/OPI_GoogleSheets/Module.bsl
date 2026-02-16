@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/gsheets/Modules/OPI_GoogleSheets.os
+// OneScript: ./OInt/api/gsheets/Modules/OPI_GoogleSheets.os
 // Lib: GoogleSheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
@@ -43,8 +43,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

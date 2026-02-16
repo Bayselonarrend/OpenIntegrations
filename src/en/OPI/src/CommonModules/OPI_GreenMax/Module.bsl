@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/greenmax/Modules/OPI_GreenMax.os
+// OneScript: ./OInt/api/greenmax/Modules/OPI_GreenMax.os
 // Lib: GreenMax
 // CLI: greenmax
 // Keywords: greenapi, max
@@ -47,8 +47,8 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check doc-comment-collection-item-type
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

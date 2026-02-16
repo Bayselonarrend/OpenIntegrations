@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/gdrive/Modules/OPI_GoogleDrive.os
+// OneScript: ./OInt/api/gdrive/Modules/OPI_GoogleDrive.os
 // Lib: GoogleDrive
 // CLI: gdrive
 // Keywords: google drive, googledrive, gdrive, google disk
@@ -43,8 +43,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 
