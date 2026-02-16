@@ -10,11 +10,12 @@
 		"ftp": "OPI_FTP",
 		"gcalendar": "OPI_GoogleCalendar",
 		"gdrive": "OPI_GoogleDrive",
-		"gsheets": "OPI_GoogleSheets",
 		"google": "OPI_GoogleWorkspace",
 		"greenapi": "OPI_GreenAPI",
 		"greenmax": "OPI_GreenMax",
 		"grpc": "OPI_GRPC",
+		"gsheets": "OPI_GoogleSheets",
+		"metrika": "OPI_YandexMetrika",
 		"mongodb": "OPI_MongoDB",
 		"mssql": "OPI_MSSQL",
 		"mysql": "OPI_MySQL",
@@ -38,7 +39,6 @@
 		"vkteams": "OPI_VKTeams",
 		"yadisk": "OPI_YandexDisk",
 		"yandex": "OPI_YandexID",
-		"yamarket": "OPI_YandexMarket",
-		"metrika": "OPI_YandexMetrika"
+		"yamarket": "OPI_YandexMarket"
 	}
 }

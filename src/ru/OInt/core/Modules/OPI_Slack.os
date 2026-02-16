@@ -1047,7 +1047,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetBotInformation(Val Token) Export

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_VKTeams.os
+// OneScript: ./OInt/core/vkteams/Modules/OPI_VKTeams.os
 // Lib: VKTeams
 // CLI: vkteams
 // Keywords: vkteams, vk teams

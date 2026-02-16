@@ -778,7 +778,6 @@ Function ConvertKeysToLowerCase(Val Collection)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьОтвет(Val URL, Val Токен, Val Модель, Val Сообщения, Val ДопПараметры = "", Val ДопЗаголовки = "") Export

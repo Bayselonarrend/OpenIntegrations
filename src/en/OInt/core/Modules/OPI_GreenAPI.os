@@ -1292,7 +1292,6 @@ Function ChatArchivingManagement(Val AccessParameters, Val ChatID, Val Archiving
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function СформироватьПараметрыДоступа(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
