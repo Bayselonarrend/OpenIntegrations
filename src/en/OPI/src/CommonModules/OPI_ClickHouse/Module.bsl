@@ -507,8 +507,8 @@ Function ProcessGRPCSending(Val Connection
     ResultMap.Insert("result"          , CommonResult);
     ResultMap.Insert("request_sending" , SendingRequest);
     ResultMap.Insert("data_sending"    , SendingArray);
-    ResultMap.Insert("received_message", GetGRPCMessage(Connector , StreamID));
-    ResultMap.Insert("stream_closing"  , CloseGRPCStream(Connector, StreamID));
+    ResultMap.Insert("received_message", GetGRPCMessage(Connector  , StreamID));
+    ResultMap.Insert("stream_closing"  , CloseGRPCStream(Connector , StreamID));
 
     If CloseConnection Then
         OPI_GRPC.CloseConnection(Connector);
@@ -576,7 +576,7 @@ Function ProcessGRPCReceiving(Val Connection
 
     While True And ?(NumberOfMessagesSpecified, MessageCount > Counter, True) Do
 
-        CurrentResponse = GetGRPCMessage(Connection, StreamID, DefaultFormat);
+        CurrentResponse = GetGRPCMessage(Connector, StreamID, DefaultFormat);
 
         If Not CurrentResponse["result"] Then
             ResultMap.Insert("stop_message", CurrentResponse);
@@ -945,6 +945,9 @@ Function FormGRPCRequest(Val Connection, Val Request, Val Session)
         ConnectionSettings = Connection;
     EndIf;
 
+    ErrorText = "Request is not a valid key-value structure";
+    OPI_TypeConversion.GetKeyValueCollection(Request, ErrorText);
+
     Data               = OPI_Tools.GetOr(Request, "data" , Undefined);
     RequestID          = OPI_Tools.GetOr(Request, "id" , Undefined);
     QueryText          = OPI_Tools.GetOr(Request, "query" , Undefined);
@@ -1102,7 +1105,7 @@ Procedure ProcessGRPCResponse(Response, Val DataField = "data", Val DefaultForma
             OPI_TypeConversion.GetCollection(Value, , Success);
 
             If Not Success Then
-                Value             = ?(TypeOf(Value) = Type("Array"), Value[0], Value);
+                Value = ?(TypeOf(Value) = Type("Array"), Value[0], Value);
                 Value = GetStringFromBinaryData(Value);
             EndIf;
 
