@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Google Календарь
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GoogleCalendar" cli="gcalendar" use="oint/api/gcalendar" lang="ru"/>
+
 ### Начало работы
 
 Для начала работы необходимо создать аккаунт и новый проект на [главной странице консоли Google Cloud](https://console.cloud.google.com/), после чего подключить сервис Calendar на [его странице в Marketplace](https://console.cloud.google.com/marketplace/product/google/calendar-json.googleapis.com) 

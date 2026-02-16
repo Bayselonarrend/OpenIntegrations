@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # WhatsApp (GreenAPI)
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GreenAPI" cli="greenapi" use="oint/api/greenapi" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с WhatsApp через Green API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ### Начало работы

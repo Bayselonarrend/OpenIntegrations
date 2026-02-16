@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Twitter | X
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Twitter" cli="twitter" use="oint/api/twitter" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с Twitter API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы. Данная библиотека позволяет работать с функционалом бесплатного плана, т.е. создавать твиты. 
 
 ### Начало работы
