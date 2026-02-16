@@ -8,9 +8,9 @@ fpm -t rpm \
   --version %1 \
   --architecture all \
   --category "Development" \
-  --description "%3" \
-  --url "%4" \
-  --maintainer "%5" \
+  --description "$(cat description_%2.txt)" \
+  --url "%3" \
+  --maintainer "%4" \
   --after-install postinst.sh \
   --verbose \
-  ../ci/installer_set/=/usr %6=/usr/lib/oint/bin
+  ../ci/installer_set/=/usr %5=/usr/lib/oint/bin
