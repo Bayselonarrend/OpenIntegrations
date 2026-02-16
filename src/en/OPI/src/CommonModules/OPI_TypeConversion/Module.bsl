@@ -580,7 +580,7 @@ Function GetHttpClient()
         Return HttpClient;
 
     Else
-        Return OPI_HTTPRequests;
+        Return OPI_HTTPRequests; // !OPI
     EndIf;
 
 EndFunction
