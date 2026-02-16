@@ -12,7 +12,7 @@
  ],
  "rows": 1,
  "statistics": {
-  "elapsed": 0.003929309,
+  "elapsed": 0.005267904,
   "rows_read": 0,
   "bytes_read": 0
  }
