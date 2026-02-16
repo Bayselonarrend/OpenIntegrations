@@ -67,7 +67,7 @@
 
 //#Use "../../tools/main"
 //#Use "../../tools/http"
-//#Use "../../app"
+//#Use "../../api"
 //#Use asserts
 //#Use "internal"
 
