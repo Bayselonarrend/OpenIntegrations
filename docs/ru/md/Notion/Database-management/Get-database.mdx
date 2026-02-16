@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint notion ПолучитьБазуДанных \
               --token "***" \
-              --base "30682aa7-fc4e-815f-bbd9-c8ec9b220824"
+              --base "30882aa7-fc4e-810e-8a43-c1b7ca3fdb86"
         ```
     </TabItem>
   
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint notion ПолучитьБазуДанных ^
               --token "***" ^
-              --base "30682aa7-fc4e-815f-bbd9-c8ec9b220824"
+              --base "30882aa7-fc4e-810e-8a43-c1b7ca3fdb86"
         ```
     </TabItem>
 </Tabs>
@@ -55,10 +55,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "30682aa7-fc4e-815f-bbd9-c8ec9b220824",
+ "id": "30882aa7-fc4e-810e-8a43-c1b7ca3fdb86",
  "cover": null,
  "icon": null,
- "created_time": "2026-02-13T22:40:00Z",
+ "created_time": "2026-02-15T20:34:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-02-13T22:40:00Z",
+ "last_edited_time": "2026-02-15T20:34:00Z",
  "title": [
   {
    "type": "text",
@@ -108,62 +108,50 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
-  "Картинка": {
-   "id": "%3BNMa",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Активен": {
-   "id": "OdH%5B",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Телефон": {
-   "id": "W%5EV%3B",
-   "name": "Телефон",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Описание": {
-   "id": "Yj%5E%5D",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
   "Почта": {
-   "id": "ZzFY",
+   "id": "%3CsBm",
    "name": "Почта",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
   },
+  "Активен": {
+   "id": "%40YA%7D",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Номер": {
+   "id": "LWPT",
+   "name": "Номер",
+   "description": null,
+   "type": "number",
+   "number": {
+    "format": "number"
+   }
+  },
   "Статус": {
-   "id": "%5DMvS",
+   "id": "%60DAD",
    "name": "Статус",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "d35053a2-4294-49bf-a833-a4e64ae57c55",
+      "id": "1ee3fceb-1a78-426b-917d-50c7a0ad0659",
       "name": "Новый",
       "color": "green",
       "description": null
      },
      {
-      "id": "09ef0f73-5ffb-4843-a9db-f7252b0266a2",
+      "id": "6f38791e-d3fc-4bd3-ba9a-00cde719ff50",
       "name": "В работе",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "b7a22fa2-1900-4d1d-814c-4f06811294ee",
+      "id": "bd2ccac4-f0d2-424f-a54e-26b36cffdbe8",
       "name": "Удаленный",
       "color": "red",
       "description": null
@@ -172,23 +160,35 @@ import TabItem from '@theme/TabItem';
    }
   },
   "Пользователь": {
-   "id": "dSaG",
+   "id": "a%3EsJ",
    "name": "Пользователь",
    "description": null,
    "type": "people",
    "people": {}
   },
-  "Номер": {
-   "id": "rW_y",
-   "name": "Номер",
+  "Описание": {
+   "id": "mrbp",
+   "name": "Описание",
    "description": null,
-   "type": "number",
-   "number": {
-    "format": "number"
-   }
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Картинка": {
+   "id": "qVz%7B",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Телефон": {
+   "id": "tBMo",
+   "name": "Телефон",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
   },
   "Дата создания": {
-   "id": "u%40%7Bn",
+   "id": "yflW",
    "name": "Дата создания",
    "description": null,
    "type": "date",
