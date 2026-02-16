@@ -1,0 +1,86 @@
+.libraryIntro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  border-radius: 11px;
+  overflow: hidden;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tag:active {
+  transform: scale(0.98);
+}
+
+.tagLabel {
+  padding: 0 0.5rem;
+  background: #004943;
+  color: #ffffff !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.tagValue {
+  padding: 0 0.6rem;
+  color: #333333 !important;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Темная тема */
+[data-theme='dark'] .tag {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme='dark'] .tagLabel {
+  background: #004943;
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .tagValue {
+  color: #e5e5e5 !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .libraryIntro {
+    gap: 0.35rem;
+  }
+  
+  .tag {
+    font-size: 0.68rem;
+    height: 20px;
+  }
+  
+  .tagLabel {
+    padding: 0 0.45rem;
+    font-size: 0.66rem;
+  }
+  
+  .tagValue {
+    padding: 0 0.55rem;
+  }
+}
