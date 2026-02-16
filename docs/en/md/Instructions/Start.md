@@ -87,7 +87,7 @@ A simple example of using OpenIntegrations is sending a picture to Telegram:
 
 ```
 
-The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [Working with CLI app](/docs/Start/CLI_version))
+The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [Working with CLI app](/docs/Start/CLI-version))
 
 CLI example:
 
