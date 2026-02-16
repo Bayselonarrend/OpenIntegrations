@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_VK.os
+// OneScript: ./OInt/core/vk/Modules/OPI_VK.os
 // Lib: VK
 // CLI: vk
 // Keywords: vk, vkontakte
