@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/twitter/Modules/OPI_Twitter.os
+// OneScript: ./OInt/api/twitter/Modules/OPI_Twitter.os
 // Lib: Twitter
 // CLI: twitter
 // Keywords: twitter, x
@@ -46,8 +46,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

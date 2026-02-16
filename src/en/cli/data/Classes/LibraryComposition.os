@@ -194,7 +194,7 @@ EndFunction
 
 Function FormModuleInitializationString(Val CommandData, Val Module)
     
-    LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/core/Modules/%%1.os"", Context);", PackagesDirectory);
+    LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/api/Modules/%%1.os"", Context);", PackagesDirectory);
     ContextTemplate = "Context.Insert(""%1"", %2);";
     CallArray = New Array;
 

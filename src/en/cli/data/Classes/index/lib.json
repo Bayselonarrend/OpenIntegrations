@@ -38,7 +38,7 @@
 		"vk": "OPI_VK",
 		"vkteams": "OPI_VKTeams",
 		"yadisk": "OPI_YandexDisk",
-		"yandex": "OPI_YandexID",
-		"yamarket": "OPI_YandexMarket"
+		"yamarket": "OPI_YandexMarket",
+		"yandex": "OPI_YandexID"
 	}
 }
