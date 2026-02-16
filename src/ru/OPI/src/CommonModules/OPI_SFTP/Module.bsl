@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/sftp/Modules/OPI_SFTP.os
+// OneScript: ./OInt/api/sftp/Modules/OPI_SFTP.os
 // Lib: SFTP
 // CLI: sftp
 // Keywords: sftp
@@ -45,8 +45,8 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

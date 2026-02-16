@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/cdek/Modules/OPI_CDEK.os
+// OneScript: ./OInt/api/cdek/Modules/OPI_CDEK.os
 // Lib: CDEK
 // CLI: cdek
 // Keywords: cdek
@@ -45,8 +45,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

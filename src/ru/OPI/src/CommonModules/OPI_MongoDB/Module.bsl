@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/mongodb/Modules/OPI_MongoDB.os
+// OneScript: ./OInt/api/mongodb/Modules/OPI_MongoDB.os
 // Lib: MongoDB
 // CLI: mongodb
 // Keywords: mongodb, mongo, nosql
@@ -47,8 +47,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

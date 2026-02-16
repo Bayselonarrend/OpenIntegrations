@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/ssh/Modules/OPI_SSH.os
+// OneScript: ./OInt/api/ssh/Modules/OPI_SSH.os
 // Lib: SSH
 // CLI: ssh
 // Keywords: ssh, shell
@@ -45,8 +45,8 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 
