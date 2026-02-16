@@ -71,39 +71,45 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "80653d81-bd72-4b1d-9b8a-d75ada0fc30e",
+  "uuid": "64999bce-1915-4fda-aea1-9604a5896032",
   "orders": [
    {
-    "order_uuid": "1d4068fc-b1bb-4d03-b630-894eaf1680e5"
+    "order_uuid": "e78334f7-fb7c-43da-9dcb-e08111eaaf6f"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/80653d81-bd72-4b1d-9b8a-d75ada0fc30e.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-07T06:53:30+00:00"
+    "date_time": "2026-02-15T21:01:51+00:00"
    },
    {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2026-02-07T06:53:30+00:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2026-02-07T06:53:31+00:00"
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2026-02-15T21:01:52+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "b5d7f3c9-544d-42eb-a510-6aa4c6971eea",
+   "request_uuid": "1b06061f-629d-4ee2-95ec-7ecfca0abfd5",
    "type": "CREATE",
-   "date_time": "2026-02-07T06:53:30+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-02-15T21:01:51+00:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid e78334f7-fb7c-43da-9dcb-e08111eaaf6f"
+    }
+   ]
   }
  ],
  "related_entities": []

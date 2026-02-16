@@ -43,6 +43,37 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint clickhouse ОбработатьПолучениеGRPC \
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint clickhouse ОбработатьПолучениеGRPC ^
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "stop_message": {
+  "result": false,
+  "error": "Implicit connection opening is senseless in this case"
+ },
+ "result": true,
+ "messages": []
+}
+```

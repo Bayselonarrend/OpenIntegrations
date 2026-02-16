@@ -37149,7 +37149,7 @@ Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
     Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
     Sending = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
-    Result     = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+    Result  = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
 
     // END
 
