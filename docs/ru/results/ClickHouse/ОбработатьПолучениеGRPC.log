@@ -1,8 +1,220 @@
 ﻿{
  "stop_message": {
-  "result": false,
-  "error": "Implicit connection opening is senseless in this case"
+  "error": "Closed",
+  "result": false
  },
  "result": true,
- "messages": []
+ "messages": [
+  {
+   "message": {
+    "cancelled": false,
+    "exception": {
+     "code": 0,
+     "display_text": "",
+     "name": "",
+     "stack_trace": ""
+    },
+    "extremes": {
+     "BYTES": ""
+    },
+    "logs": [],
+    "output": {
+     "meta": [
+      {
+       "name": "id",
+       "type": "UInt64"
+      },
+      {
+       "name": "timestamp",
+       "type": "DateTime"
+      },
+      {
+       "name": "user_id",
+       "type": "UInt32"
+      },
+      {
+       "name": "event_type",
+       "type": "String"
+      },
+      {
+       "name": "payload",
+       "type": "String"
+      }
+     ],
+     "data": [
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      }
+     ],
+     "rows": 20,
+     "statistics": {
+      "elapsed": 0.009037437,
+      "rows_read": 0,
+      "bytes_read": 0
+     }
+    },
+    "output_columns": [],
+    "output_format": "JSON",
+    "progress": {
+     "read_bytes": 940,
+     "read_rows": 20,
+     "total_rows_to_read": 20,
+     "written_bytes": 0,
+     "written_rows": 0
+    },
+    "query_id": "ea11cbc3-5687-4971-833d-289cf2cd5c48",
+    "stats": {
+     "allocated_bytes": 2816,
+     "applied_aggregation": false,
+     "applied_limit": false,
+     "blocks": 1,
+     "rows": 20,
+     "rows_before_aggregation": 0,
+     "rows_before_limit": 0
+    },
+    "time_zone": "Europe/Moscow",
+    "totals": {
+     "BYTES": ""
+    }
+   },
+   "result": true
+  }
+ ]
 }
