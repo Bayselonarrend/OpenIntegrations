@@ -15,7 +15,7 @@
   font-weight: 500;
   background: #ffffff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e5e5e5;
+  border: 1px solid;
   cursor: pointer;
   user-select: none;
 }
@@ -26,7 +26,7 @@
 
 .tagLabel {
   padding: 0 0.5rem;
-  background: #004943;
+  background: #007e73;
   color: #ffffff !important;
   height: 100%;
   display: flex;
