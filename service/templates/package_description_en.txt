@@ -4,8 +4,6 @@ CLI toolkit for integrating with popular services and technologies
  technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well
  as various DBMS and exchange protocols.
  .
- Features:
-  • Simple and intuitive command-line interface
-  • Comprehensive documentation and usage examples
-  • Support for various data formats (JSON, XML, CSV)
-  • Automation capabilities through scripts
+ Features: simple and intuitive command-line interface, comprehensive documentation
+ and usage examples, support for various data formats (JSON, XML, CSV), automation
+ capabilities through scripts.

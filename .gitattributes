@@ -36,5 +36,6 @@ src/en/cli/data/Classes/internal/Classes/** linguist-vendored
 
 *.sh text eol=lf
 *.bash text eol=lf
+*.desktop text eol=lf
 *.bat text eol=crlf
 
