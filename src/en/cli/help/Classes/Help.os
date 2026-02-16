@@ -36,7 +36,6 @@ Procedure DisplayStartPage() Export
 
 	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write(StrTemplate("
-		|
 		|    _______ _____________  ___  _______
 		|    __  __ ___/__  _/_ /  |  / /___  __/
 		|    _  / / / __  /  __      / __  /   
