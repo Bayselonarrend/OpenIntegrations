@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/ftp/Modules/OPI_FTP.os
+// OneScript: ./OInt/api/ftp/Modules/OPI_FTP.os
 // Lib: FTP
 // CLI: ftp
 // Keywords: ftp, ftps
@@ -45,8 +45,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

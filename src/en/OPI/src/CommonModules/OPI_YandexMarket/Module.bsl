@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/yamarket/Modules/OPI_YandexMarket.os
+// OneScript: ./OInt/api/yamarket/Modules/OPI_YandexMarket.os
 // Lib: YandexMarket
 // CLI: yamarket
 // Depends: OPI_YandexID
@@ -40,8 +40,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

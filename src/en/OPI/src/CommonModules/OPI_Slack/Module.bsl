@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/slack/Modules/OPI_Slack.os
+// OneScript: ./OInt/api/slack/Modules/OPI_Slack.os
 // Lib: Slack
 // CLI: slack
 // Keywords: slack
@@ -40,8 +40,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

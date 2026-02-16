@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/mysql/Modules/OPI_MySQL.os
+// OneScript: ./OInt/api/mysql/Modules/OPI_MySQL.os
 // Lib: MySQL
 // CLI: mysql
 // Keywords: mysql, my sql
@@ -46,8 +46,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

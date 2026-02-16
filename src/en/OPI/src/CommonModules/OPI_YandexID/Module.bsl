@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/yandex/Modules/OPI_YandexID.os
+// OneScript: ./OInt/api/yandex/Modules/OPI_YandexID.os
 // Lib: YandexID
 // CLI: yandex
 
@@ -35,8 +35,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

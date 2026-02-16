@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/sqlite/Modules/OPI_SQLite.os
+// OneScript: ./OInt/api/sqlite/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
@@ -45,8 +45,8 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 
