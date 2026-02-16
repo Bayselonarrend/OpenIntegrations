@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Ollama.os
+// OneScript: ./OInt/core/ollama/Modules/OPI_Ollama.os
 // Lib: Ollama
 // CLI: ollama
 // Keywords: ollama, ai llm

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_SFTP.os
+// OneScript: ./OInt/core/sftp/Modules/OPI_SFTP.os
 // Lib: SFTP
 // CLI: sftp
 // Keywords: sftp

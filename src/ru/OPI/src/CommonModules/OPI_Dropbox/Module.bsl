@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
+// OneScript: ./OInt/core/dropbox/Modules/OPI_Dropbox.os
 // Lib: Dropbox
 // CLI: dropbox
 // Keywords: dropbox
