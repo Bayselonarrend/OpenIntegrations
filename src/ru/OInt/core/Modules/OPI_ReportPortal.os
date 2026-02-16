@@ -481,7 +481,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetTemporaryToken(Val URL, Val Login, Val Password) Export

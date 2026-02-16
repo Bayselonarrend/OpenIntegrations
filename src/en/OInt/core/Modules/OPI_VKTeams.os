@@ -981,7 +981,6 @@ Function UpdateChatParameters(Val Token, Val ChatID, Val Parameter, Val Value)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПроверитьТокен(Val Токен) Export

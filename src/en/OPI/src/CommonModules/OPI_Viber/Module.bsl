@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Viber.os
+// OneScript: ./OInt/core/viber/Modules/OPI_Viber.os
 // Lib: Viber
 // CLI: viber
 // Keywords: viber

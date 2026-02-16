@@ -28,6 +28,12 @@
 				"RestoreCounter",
 				"UpdateCounter"
 			]
+		},
+		{
+			"name": "Actions management",
+			"methods": [
+				"GetActionsList"
+			]
 		}
 	],
 	"methods": [

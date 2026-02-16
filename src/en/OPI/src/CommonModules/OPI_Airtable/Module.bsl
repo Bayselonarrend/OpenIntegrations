@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Airtable.os
+// OneScript: ./OInt/core/airtable/Modules/OPI_Airtable.os
 // Lib: Airtable
 // CLI: airtable
 // Keywords: airtable

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_S3.os
+// OneScript: ./OInt/core/s3/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service

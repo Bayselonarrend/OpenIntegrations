@@ -652,7 +652,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetAuthorizationLink(Parameters = "") Export

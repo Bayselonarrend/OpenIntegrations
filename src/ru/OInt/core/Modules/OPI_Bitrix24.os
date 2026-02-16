@@ -5241,7 +5241,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetAppAuthLink(Val Domain, Val ClientID) Export
