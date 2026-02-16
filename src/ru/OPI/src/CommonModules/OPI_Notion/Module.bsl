@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Notion.os
+// OneScript: ./OInt/core/notion/Modules/OPI_Notion.os
 // Lib: Notion
 // CLI: notion
 // Keywords: notion

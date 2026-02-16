@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
+// OneScript: ./OInt/core/mssql/Modules/OPI_MSSQL.os
 // Lib: MSSQL
 // CLI: mssql
 // Keywords: mssql, ms sql

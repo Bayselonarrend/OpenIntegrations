@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
+// OneScript: ./OInt/core/gsheets/Modules/OPI_GoogleSheets.os
 // Lib: GoogleSheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
