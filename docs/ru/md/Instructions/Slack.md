@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Slack
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Slack" cli="slack" use="oint/api/slack" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы со Slack Web API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ### Начало работы

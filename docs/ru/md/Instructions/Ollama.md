@@ -8,8 +8,11 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # Ollama
 
-Этот раздел посвящен библиотеке для работы с Ollama в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
+import LibraryIntro from '@site/src/components/LibraryIntro';
 
+<LibraryIntro module="OPI_Ollama" cli="ollama" use="oint/api/ollama" lang="ru"/>
+
+Этот раздел посвящен библиотеке для работы с Ollama в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ## Начало работы
 

@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 # CDEK
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_CDEK" cli="cdek" use="oint/api/cdek" lang="ru"/>
+
 Этот раздел посвящен библиотеке для работы с CDEK API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 ## Начало работы
