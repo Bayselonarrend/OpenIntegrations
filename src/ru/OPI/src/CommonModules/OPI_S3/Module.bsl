@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/s3/Modules/OPI_S3.os
+// OneScript: ./OInt/api/s3/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
@@ -47,8 +47,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check bsl-legacy-check-expression-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

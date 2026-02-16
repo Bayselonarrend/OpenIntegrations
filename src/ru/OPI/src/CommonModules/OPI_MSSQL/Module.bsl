@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/mssql/Modules/OPI_MSSQL.os
+// OneScript: ./OInt/api/mssql/Modules/OPI_MSSQL.os
 // Lib: MSSQL
 // CLI: mssql
 // Keywords: mssql, ms sql
@@ -46,8 +46,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

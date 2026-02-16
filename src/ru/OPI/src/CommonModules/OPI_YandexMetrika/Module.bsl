@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/metrika/Modules/OPI_YandexMetrika.os
+// OneScript: ./OInt/api/metrika/Modules/OPI_YandexMetrika.os
 // Lib: YandexMetrika
 // CLI: metrika
 // Depends: OPI_YandexID
@@ -40,8 +40,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/google/Modules/OPI_GoogleWorkspace.os
+// OneScript: ./OInt/api/google/Modules/OPI_GoogleWorkspace.os
 // Lib: GoogleWorkspace
 // CLI: google
 
@@ -37,8 +37,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
+//#Использовать "../../../tools/main"
+//#Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 
