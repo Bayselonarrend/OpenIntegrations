@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/notion/Modules/OPI_Notion.os
+// OneScript: ./OInt/api/notion/Modules/OPI_Notion.os
 // Lib: Notion
 // CLI: notion
 // Keywords: notion
@@ -42,8 +42,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

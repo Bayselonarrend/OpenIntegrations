@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/dropbox/Modules/OPI_Dropbox.os
+// OneScript: ./OInt/api/dropbox/Modules/OPI_Dropbox.os
 // Lib: Dropbox
 // CLI: dropbox
 // Keywords: dropbox
@@ -40,8 +40,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

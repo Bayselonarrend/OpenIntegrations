@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/gcalendar/Modules/OPI_GoogleCalendar.os
+// OneScript: ./OInt/api/gcalendar/Modules/OPI_GoogleCalendar.os
 // Lib: GoogleCalendar
 // CLI: gcalendar
 // Keywords: google calendar, googlecalendar, gcalendar
@@ -43,8 +43,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

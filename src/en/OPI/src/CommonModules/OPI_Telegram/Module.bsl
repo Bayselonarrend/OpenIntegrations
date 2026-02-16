@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/telegram/Modules/OPI_Telegram.os
+// OneScript: ./OInt/api/telegram/Modules/OPI_Telegram.os
 // Lib: Telegram
 // CLI: telegram
 // Keywords: telegram
@@ -46,8 +46,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

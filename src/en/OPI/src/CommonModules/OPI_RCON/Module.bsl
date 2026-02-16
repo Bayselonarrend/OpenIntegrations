@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/rcon/Modules/OPI_RCON.os
+// OneScript: ./OInt/api/rcon/Modules/OPI_RCON.os
 // Lib: RCON
 // CLI: rcon
 // Keywords: rcon, remote console
@@ -45,8 +45,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 
-//#Use "../../tools/main"
-//#Use "../../tools/http"
+//#Use "../../../tools/main"
+//#Use "../../../tools/http"
 
 #Region Public
 

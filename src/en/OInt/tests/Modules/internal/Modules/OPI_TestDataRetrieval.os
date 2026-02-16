@@ -60,7 +60,7 @@
 
 #Use "../../../../tools/main"
 #Use "../../../../tools/http"
-#Use "../../../../core"
+#Use "../../../../api"
 #Use asserts
 
 #Region Internal
@@ -13588,7 +13588,7 @@ Function ReportPortal()
         PathArray        = StrSplit(CurrentDirectory, "/");
         PathArray.Delete(PathArray.UBound());
         PathArray.Delete(PathArray.UBound());
-        PathArray.Add("core");
+        PathArray.Add("api");
         PathArray.Add("Modules");
         PathArray.Add("OPI_ReportPortal.os");
         AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
