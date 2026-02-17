@@ -7,6 +7,10 @@ sidebar_class_name: MongoDB
 
 # MongoDB
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_MongoDB" cli="mongodb" use="oint/api/mongodb" lang="en"/>
+
 This section covers the library for working with MongoDB databases in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">

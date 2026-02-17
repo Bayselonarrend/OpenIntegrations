@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Notion
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Notion" cli="notion" use="oint/api/notion" lang="en"/>
+
 This section covers the library for working with Notion API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ## Getting Started

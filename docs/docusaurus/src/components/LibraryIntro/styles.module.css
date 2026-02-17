@@ -26,7 +26,7 @@
 
 .tagLabel {
   padding: 0 0.5rem;
-  background: #004943;
+  background: #017269;
   color: #ffffff !important;
   height: 100%;
   display: flex;
@@ -49,7 +49,6 @@
   align-items: center;
 }
 
-/* Темная тема */
 [data-theme='dark'] .tag {
   background: #1e293b;
   border-color: #334155;
@@ -64,7 +63,6 @@
   color: #e5e5e5 !important;
 }
 
-/* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .libraryIntro {
     gap: 0.35rem;

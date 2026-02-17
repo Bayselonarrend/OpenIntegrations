@@ -8,6 +8,10 @@ keywords: [1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Dat
 
 # FTP(s)
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_FTP" cli="ftp" use="oint/api/ftp" lang="en"/>
+
 This section covers the library for working with the FTP(s) protocol in 1C:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">

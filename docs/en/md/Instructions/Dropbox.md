@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Dropbox
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Dropbox" cli="dropbox" use="oint/api/dropbox" lang="en"/>
+
 This section covers the library for working with Dropbox API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ## Getting Started

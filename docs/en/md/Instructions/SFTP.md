@@ -8,6 +8,10 @@ keywords: [1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Dat
 
 # SFTP
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_SFTP" cli="sftp" use="oint/api/sftp" lang="en"/>
+
 This section covers the library for working with SFTP protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">

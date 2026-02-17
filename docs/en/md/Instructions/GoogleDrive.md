@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Google Drive
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GoogleDrive" cli="gdrive" use="oint/api/gdrive" lang="en"/>
+
 ### Getting Started
 
 To get started, you need to create an account and a new project on the [Google Cloud Console main page](https://console.cloud.google.com/), then enable the Drive service on [its Marketplace page](https://console.cloud.google.com/marketplace/product/google/drive.googleapis.com).

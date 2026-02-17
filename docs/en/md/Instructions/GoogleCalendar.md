@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Google Calendar
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GoogleCalendar" cli="gcalendar" use="oint/api/gcalendar" lang="en"/>
+
 ### Getting Started
 
 To get started, you need to create an account and a new project on the [Google Cloud Console main page](https://console.cloud.google.com/), then enable the Calendar service on [its Marketplace page](https://console.cloud.google.com/marketplace/product/google/calendar-json.googleapis.com).
