@@ -8,6 +8,10 @@ keywords: [1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Dat
 
 # SSH
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_SSH" cli="ssh" use="oint/api/ssh" lang="en"/>
+
 This section covers the library for working with SSH protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
