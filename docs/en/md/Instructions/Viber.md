@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Viber
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_Viber" cli="viber" use="oint/api/viber" lang="en"/>
+
 This section covers the library for working with Viber API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 :::warning

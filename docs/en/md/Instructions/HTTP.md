@@ -9,7 +9,7 @@ sidebar_class_name: HTTP
 
 import LibraryIntro from '@site/src/components/LibraryIntro';
 
-<LibraryIntro module="OPI_ЗапросыHTTP" use="oint/tools/http" lang="en"/>
+<LibraryIntro module="OPI_HTTPRequests" use="oint/tools/http" lang="en"/>
 
 This section covers the library for working with HTTP(s) protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
