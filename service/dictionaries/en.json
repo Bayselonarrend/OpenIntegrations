@@ -9416,7 +9416,7 @@
 "Получает ссылку для скачивания файла": "Gets a download link for the file",
 "ID файла картинки. См. ЗагрузитьФайл": "Image file ID. See UploadFile",
 "УстановитьПрокси: установка значения": "SetProxy: setting the value",
-"Файл размером %1 МБ был записан в %2": "File with size %1 MB was recorded in %1",
+"Файл размером %1 МБ был записан в %2": "File with size %1 MB was recorded in %2",
 "ПереименоватьОбъект (список, обратно": "RenameObject (list, back",
 "Пароль (passphrase) приватного ключа": "Private key password (passphrase)",
 "Строка подключения к базе PostgreSQL": "PostgreSQL database connection string",
