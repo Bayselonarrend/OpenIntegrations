@@ -30,12 +30,13 @@
   height: 100%;
   display: flex;
   align-items: center;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 0.7rem;
   letter-spacing: 0.02em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  padding-top: 1px;
 }
 
 .tagValue {
