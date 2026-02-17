@@ -7,6 +7,10 @@ sidebar_class_name: RCON
 
 # RCON (Client)
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_RCON" cli="rcon" use="oint/api/rcon" lang="en"/>
+
 This section covers the library for working with RCON protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
