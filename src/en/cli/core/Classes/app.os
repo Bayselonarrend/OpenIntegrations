@@ -207,7 +207,7 @@ Function WriteValueToFile(Val Value, Val Path)
 
 	If RecordedFile.Exists() Then
 
-		Return StrTemplate("File with size %1 MB was recorded in %1"
+		Return StrTemplate("File with size %1 MB was recorded in %2"
 			, String(Round(RecordedFile.Size() / DataUnit, 3)) 
 			, RecordedFile.FullName);
 
