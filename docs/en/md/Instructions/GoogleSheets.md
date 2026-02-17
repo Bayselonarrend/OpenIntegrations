@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Google Sheets
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GoogleSheets" cli="gsheets" use="oint/api/gsheets" lang="en"/>
+
 ### Getting Started
 
 To get started, you need to create an account and a new project on the [Google Cloud Console main page](https://console.cloud.google.com/), then enable the Sheets service on [its Marketplace page](https://console.cloud.google.com/marketplace/product/google/sheets.googleapis.com).

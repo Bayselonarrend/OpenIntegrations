@@ -8,6 +8,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Max (GreenAPI)
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GreenMax" cli="greenmax" use="oint/api/greenmax" lang="en"/>
+
 This section covers the library for working with Max via Green API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ### Getting Started

@@ -9,6 +9,10 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # gRPC
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_GRPC" cli="grpc" use="oint/api/grpc" lang="en"/>
+
 This section covers the library for working with gRPC in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 
