@@ -170,7 +170,10 @@ a:hover, .navbar__title:hover{
 }
 
 .breadcrumbs__item--active .breadcrumbs__link {
-  background: #004943;
+  border-color: #004943 !important;
+  border: 2px solid;
+  color: black;
+  background-color: white;
 }
 
 .navbar__title{
