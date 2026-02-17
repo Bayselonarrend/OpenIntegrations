@@ -65,11 +65,11 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-//#Использовать "../../tools/main"
-//#Использовать "../../tools/http"
-//#Использовать "../../api"
-//#Использовать asserts
-//#Использовать "internal"
+// #Использовать "../../tools/main"
+// #Использовать "../../tools/http"
+// #Использовать "../../api"
+// #Использовать asserts
+// #Использовать "internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 
