@@ -58,10 +58,10 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check bsl-legacy-check-expression-type
 
-//#Use "../../../../tools/main"
-//#Use "../../../../tools/http"
-//#Use "../../../../api"
-//#Use asserts
+// #Use "../../../../tools/main"
+// #Use "../../../../tools/http"
+// #Use "../../../../api"
+// #Use asserts
 
 #Region Internal
 

@@ -65,9 +65,9 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-//#Use oint
-//#Use asserts
-//#Use "internal"
+// #Use oint
+// #Use asserts
+// #Use "internal"
 
 #Region Internal
 
@@ -27742,7 +27742,7 @@ Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
     // With TSV data
 
     TableData = StrTemplate("1%1Test
-    |2%2Test2", Chars.Tab);
+    |2%1Test2", Chars.Tab);
 
     Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
 

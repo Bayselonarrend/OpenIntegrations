@@ -36756,7 +36756,7 @@ Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
     // With TSV data
 
     TableData = StrTemplate("1%1Test
-    |2%2Test2", Chars.Tab);
+    |2%1Test2", Chars.Tab);
 
     Options = New Structure;
     Options.Insert("name", TableName);

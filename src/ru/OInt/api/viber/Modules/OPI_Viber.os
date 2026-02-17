@@ -36,6 +36,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
+// BSLLS:LineLength-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
