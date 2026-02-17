@@ -7,6 +7,10 @@ sidebar_class_name: OpenAI
 
 # OpenAI
 
+import LibraryIntro from '@site/src/components/LibraryIntro';
+
+<LibraryIntro module="OPI_OpenAI" cli="openai" use="oint/api/openai" lang="en"/>
+
 This section covers the library for working with OpenAI API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ## Preface
