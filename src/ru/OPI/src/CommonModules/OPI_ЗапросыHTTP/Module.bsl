@@ -39,8 +39,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
-//#Использовать "./internal"
-//#Использовать "../../main"
+// #Использовать "./internal"
+// #Использовать "../../main"
 
 #Область ПрограммныйИнтерфейс
 

@@ -58,10 +58,10 @@
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check bsl-legacy-check-expression-type
 
-//#Использовать "../../../../tools/main"
-//#Использовать "../../../../tools/http"
-//#Использовать "../../../../api"
-//#Использовать asserts
+// #Использовать "../../../../tools/main"
+// #Использовать "../../../../tools/http"
+// #Использовать "../../../../api"
+// #Использовать asserts
 
 #Область СлужебныйПрограммныйИнтерфейс
 

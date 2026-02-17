@@ -42,7 +42,7 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-//#Использовать "./internal"
+// #Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 

@@ -45,8 +45,8 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-//#Использовать "../../../tools/main"
-//#Использовать "../../../tools/http"
+// #Использовать "../../../tools/main"
+// #Использовать "../../../tools/http"
 
 #Область ПрограммныйИнтерфейс
 
