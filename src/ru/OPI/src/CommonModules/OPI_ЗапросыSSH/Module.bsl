@@ -42,7 +42,7 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-//#Использовать "./internal"
+// #Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 

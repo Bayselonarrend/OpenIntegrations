@@ -49,7 +49,7 @@
 //@skip-check doc-comment-collection-item-type
 //@skip-check object-module-export-variable
 
-//#Использовать "../../../../main"
+// #Использовать "../../../../main"
 
 #Если Не Клиент Тогда
 
