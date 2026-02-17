@@ -39,6 +39,8 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:DuplicateStringLiteral-off
+// BSLLS:MagicNumber-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -47,8 +49,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-//#Use "../../../tools/main"
-//#Use "../../../tools/http"
+// #Use "../../../tools/main"
+// #Use "../../../tools/http"
 
 #Region Public
 
@@ -75,7 +77,9 @@ Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Ex
     ConnectorGrpcPassed = OPI_GRPC.IsConnector(Connection);
     DefaultTransport    = ?(ConnectorGrpcPassed, "grpc", "http");
 
-    If Not ConnectorGrpcPassed Then
+    If ConnectorGrpcPassed Then
+        Transport = DefaultTransport;
+    Else
 
         OPI_TypeConversion.GetKeyValueCollection(Connection, "Incorrect connection structure");
         MissingFields = OPI_Tools.FindMissingCollectionFields(Connection, "address");
@@ -86,9 +90,9 @@ Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Ex
             Raise ErrorText;
         EndIf;
 
-    EndIf;
+        Transport = OPI_Tools.GetOr(Connection, "transport", DefaultTransport);
 
-    Transport = OPI_Tools.GetOr(Connection, "transport", DefaultTransport);
+    EndIf;
 
     If Transport = "http" Then
 
@@ -97,6 +101,10 @@ Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Ex
     ElsIf Transport = "grpc" Then
 
         Result = ExecuteRequestViaGRPC(Connection, Request, Session);
+
+    Else
+
+        Raise "Invalid transport type in connection settings. Possible options: http, grpc";
 
     EndIf;
 
@@ -711,7 +719,6 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
     SetAdditionalHTTPParameters(HTTPClient, Request);
     SetAdditionalHTTPHeaders(HTTPClient, Connection);
 
-
     HTTPClient.ProcessRequest("POST", True);
 
     If HTTPClient.Error Then
@@ -726,7 +733,9 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
             Response = New Map();
             Response.Insert("status", ResponseObject.StatusCode);
 
-            If ResponseCode < 300 Then
+            Redirection = 300;
+
+            If ResponseCode < Redirection Then
 
                 Result = True;
 
@@ -752,7 +761,6 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
                 ResponseBody = HTTPClient.ReturnResponseAsString();
 
             EndIf;
-
 
             Response.Insert("result" , Result);
             Response.Insert("body"   , ResponseBody);

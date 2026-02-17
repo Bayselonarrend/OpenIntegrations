@@ -46,8 +46,8 @@
 //@skip-check method-too-many-params
 //@skip-check bsl-legacy-check-string-literal
 
-//#Use "../../../tools/main"
-//#Use "../../../tools/http"
+// #Use "../../../tools/main"
+// #Use "../../../tools/http"
 
 #Region Public
 

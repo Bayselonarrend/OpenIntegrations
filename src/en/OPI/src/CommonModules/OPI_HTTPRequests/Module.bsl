@@ -39,8 +39,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
-//#Use "./internal"
-//#Use "../../main"
+// #Use "./internal"
+// #Use "../../main"
 
 #Region Public
 
