@@ -1,9 +1,6 @@
 #!/bin/sh
 set -e
 
-chmod +x /usr/bin/oint
-chmod +x /usr/lib/oint/bin/oscript
-
 # Update desktop database
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database /usr/share/applications >/dev/null 2>&1 || true
