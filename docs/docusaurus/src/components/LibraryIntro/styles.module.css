@@ -13,11 +13,10 @@
   overflow: hidden;
   font-size: 0.72rem;
   font-weight: 500;
-  background: #ffffff;
+  background: #007e73 !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   border: 1px solid;
   cursor: pointer;
-  user-select: none;
 }
 
 .tag:active {
@@ -42,6 +41,7 @@
 .tagValue {
   padding: 0 0.6rem;
   color: #333333 !important;
+  background: #fff !important;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-weight: 500;
   height: 100%;
@@ -49,7 +49,6 @@
   align-items: center;
 }
 
-/* Темная тема */
 [data-theme='dark'] .tag {
   background: #1e293b;
   border-color: #334155;
