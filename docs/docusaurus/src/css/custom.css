@@ -35,7 +35,6 @@ strong{
 
     font-size: 1rem;
     color: #333;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); /* Легкий текстовый отблеск */
     box-shadow: 
       inset 0 1px 3px rgba(255, 255, 255, 0.7), /* Мягкий внутренний свет */
       0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая внешняя тень */
@@ -171,7 +170,7 @@ a:hover, .navbar__title:hover{
 
 .breadcrumbs__item--active .breadcrumbs__link {
   border-color: #004943 !important;
-  border: 2px solid;
+  border: 1px solid;
   color: black;
   background-color: white;
 }
