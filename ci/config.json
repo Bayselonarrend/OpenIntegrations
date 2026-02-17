@@ -470,6 +470,10 @@
     "description": "Postinstall script path",
     "value": "./service/templates/postinst.sh"
    },
+   "postrmScript": {
+    "description": "Post-removal script path",
+    "value": "./service/templates/postrm.sh"
+   },
    "packageTypes": {
     "description": "Package data by type",
     "value": {
