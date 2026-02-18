@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint metrika GetCountersList \
- --token "***" \
- --filter "{'counter_ids':['106156811']}"
+  --token "***" \
+  --filter "{'counter_ids':['106897190']}"
