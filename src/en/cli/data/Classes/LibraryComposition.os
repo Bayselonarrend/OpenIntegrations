@@ -201,21 +201,7 @@ Function FormModuleInitializationString(Val CommandData, Val Module)
     ContextTemplate = "Context.Insert(""%1"", %2);";
     CallArray = New Array;
 
-    CallArray.Add("Context = New Structure;");
-
-    Dependencies = CommandData["dependencies"];
-
-    If Dependencies <> Undefined Then
-
-        For Each Dependence In Dependencies Do
-
-            CallArray.Add(StrTemplate(LoadingTemplate, Dependence));
-            CallArray.Add(StrTemplate(ContextTemplate, Dependence, Dependence));
-
-        EndDo;
-
-    EndIf;
-    
+    CallArray.Add("Context = New Structure;");    
     CallArray.Add(StrTemplate(ContextTemplate, Module, "Undefined"));
     CallArray.Add(StrTemplate(LoadingTemplate , Module));
     

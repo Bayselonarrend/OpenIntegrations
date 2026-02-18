@@ -706,10 +706,8 @@ Procedure ProcessTestingResult(Val Result
 
         EndIf;
 
-        AIAttributes = GetAICheckAttributes(Result);
-
         WriteTestLog(ElementID, Text, "info");
-        FinishTestElement(ElementID, "passed", AIAttributes);
+        FinishTestElement(ElementID, "passed");
 
     Except
 
