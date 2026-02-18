@@ -58,11 +58,11 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             # JSON data can also be passed as a path to a .json file
             
             oint s3 GetObjectUploadLink \
-             --name "pictureU.jpg" \
-             --bucket "newbucket2" \
-             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-             --expires 7200 \
-             --dir true
+              --name "pictureU.jpg" \
+              --bucket "newbucket2" \
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --expires 7200 \
+              --dir true
         ```
     </TabItem>
   
@@ -71,16 +71,16 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             :: JSON data can also be passed as a path to a .json file
             
             oint s3 GetObjectUploadLink ^
-             --name "pictureU.jpg" ^
-             --bucket "newbucket2" ^
-             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-             --expires 7200 ^
-             --dir true
+              --name "pictureU.jpg" ^
+              --bucket "newbucket2" ^
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --expires 7200 ^
+              --dir true
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Result"
-"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260207%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260207T141345Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=08e3feada7a8ed3cef384e891ab6d9258cfee5a3816339cf0d91d3a68e424e0d"
+"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260218%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260218T063615Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=c1400b6743e9833b19a394ee1dae1889306d2e54137d94a07744b8158d749778"
 ```

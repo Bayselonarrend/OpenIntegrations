@@ -42,6 +42,7 @@
 
 #Use "../../../tools/main"
 #Use "../../../tools/http"
+#Use "../../yandex"
 
 #Region Public
 

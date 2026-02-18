@@ -77,9 +77,9 @@ FTP Command: `LIST`
             # JSON data can also be passed as a path to a .json file
             
             oint ftp ListObjects \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-             --path "." \
-             --rcv true
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+              --path "." \
+              --rcv true
         ```
     </TabItem>
   
@@ -88,9 +88,9 @@ FTP Command: `LIST`
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp ListObjects ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-             --path "." ^
-             --rcv true
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+              --path "." ^
+              --rcv true
         ```
     </TabItem>
 </Tabs>
@@ -103,8 +103,8 @@ FTP Command: `LIST`
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-sr-x    3 1000     1000         4096 Feb 07 13:29 new_dir",
-   "modified": "2026-02-07T13:29:00+00:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Feb 18 05:02 new_dir",
+   "modified": "2026-02-18T05:02:00+00:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -113,8 +113,8 @@ FTP Command: `LIST`
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-sr-x    2 1000     1000         4096 Feb 07 13:29 another_one",
-     "modified": "2026-02-07T13:29:00+00:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Feb 18 05:02 another_one",
+     "modified": "2026-02-18T05:02:00+00:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",
@@ -123,6 +123,9 @@ FTP Command: `LIST`
     }
    ]
   }
- ]
+ ],
+ "close_connection": {
+  "result": true
+ }
 }
 ```

@@ -56,9 +56,9 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint notion CreatePageInDatabase \
-             --token "***" \
-             --base "2e082aa7-fc4e-81b7-8f70-d5f822a1f1b0" \
-             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'01/06/2026 09:49:11','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --token "***" \
+              --base "30b82aa7-fc4e-814f-a435-fc6cf552abc1" \
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'02/18/2026 05:54:03','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
   
@@ -67,9 +67,9 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint notion CreatePageInDatabase ^
-             --token "***" ^
-             --base "2e082aa7-fc4e-81b7-8f70-d5f822a1f1b0" ^
-             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'01/06/2026 09:49:11','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --token "***" ^
+              --base "30b82aa7-fc4e-814f-a435-fc6cf552abc1" ^
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'02/18/2026 05:54:03','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
 </Tabs>
@@ -78,9 +78,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "object": "page",
- "id": "30082aa7-fc4e-81fd-a46b-e88d65943df8",
- "created_time": "2026-02-07T13:54:00Z",
- "last_edited_time": "2026-02-07T13:54:00Z",
+ "id": "30b82aa7-fc4e-81f6-8391-c2e2d6850099",
+ "created_time": "2026-02-18T05:54:00Z",
+ "last_edited_time": "2026-02-18T05:54:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -93,37 +93,24 @@ import TabItem from '@theme/TabItem';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "30082aa7-fc4e-8135-9784-d44ad29ded98"
+  "database_id": "30b82aa7-fc4e-814f-a435-fc6cf552abc1"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "User": {
-   "id": "%3Bl%5Cy",
-   "type": "people",
-   "people": []
-  },
-  "Image": {
-   "id": "C%5B%3FN",
-   "type": "files",
-   "files": [
-    {
-     "name": "Logo",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
   "Number": {
-   "id": "MBR%3E",
+   "id": "G%60Px",
    "type": "number",
    "number": 1
   },
+  "Active": {
+   "id": "Gb%5DZ",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Email": {
-   "id": "YKYd",
+   "id": "LXmk",
    "type": "rich_text",
    "rich_text": [
     {
@@ -145,27 +132,8 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
-  "Active": {
-   "id": "YzT%7C",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Status": {
-   "id": "%5EILW",
-   "type": "select",
-   "select": {
-    "id": "60bffa1f-c488-4a57-a34f-7aec63f89f9d",
-    "name": "New",
-    "color": "green"
-   }
-  },
-  "Phone": {
-   "id": "jayH",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "Description": {
-   "id": "psU%7D",
+   "id": "X%3FGS",
    "type": "rich_text",
    "rich_text": [
     {
@@ -187,13 +155,45 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
+  "Image": {
+   "id": "f%60RT",
+   "type": "files",
+   "files": [
+    {
+     "name": "Logo",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
   "CreationDate": {
-   "id": "weac",
+   "id": "h%3DG%7C",
    "type": "date",
    "date": {
-    "start": "2026-02-07T01:54:00+00:00",
+    "start": "2026-02-18T05:54:00+00:00",
     "end": null,
     "time_zone": null
+   }
+  },
+  "User": {
+   "id": "kD%7DM",
+   "type": "people",
+   "people": []
+  },
+  "Phone": {
+   "id": "mxSe",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Status": {
+   "id": "vo%7CR",
+   "type": "select",
+   "select": {
+    "id": "07997f8d-6e00-46fb-b98f-6404ada01418",
+    "name": "New",
+    "color": "green"
    }
   },
   "Name": {
@@ -220,8 +220,8 @@ import TabItem from '@theme/TabItem';
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-30082aa7fc4e81fda46be88d65943df8",
+ "url": "https://www.notion.so/LLC-Vector-30b82aa7fc4e81f68391c2e2d6850099",
  "public_url": null,
- "request_id": "b3a4715c-bc02-4bc7-9860-c76413149297"
+ "request_id": "63c9e575-8281-44ca-abf5-bcc8e6ac77bb"
 }
 ```

@@ -55,6 +55,28 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse GetHTTPConnectionSettings \
+              --url "http://127.0.0.1:8123" \
+              --auth "{'bayselonarrend':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse GetHTTPConnectionSettings ^
+              --url "http://127.0.0.1:8123" ^
+              --auth "{'bayselonarrend':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
