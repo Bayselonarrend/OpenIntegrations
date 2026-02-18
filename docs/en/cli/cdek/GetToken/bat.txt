@@ -1,4 +1,4 @@
 oint cdek GetToken ^
- --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" ^
- --pass "***" ^
- --testapi "***"
+  --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" ^
+  --pass "***" ^
+  --testapi "***"

@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint greenapi GetMessage ^
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --chat "***" ^
- --msg "3EB080FDE93AE399C139E3"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --chat "***" ^
+  --msg "3EB0A4E38563ED5199EFE6"

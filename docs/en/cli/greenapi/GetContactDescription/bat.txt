@@ -1,6 +1,6 @@
 oint greenapi GetContactDescription ^
- --phone "***" ^
- --name "Artem" ^
- --surname "Evpatoriysky" ^
- --midname "Petrovich" ^
- --company "Bicycle"
+  --phone "***" ^
+  --name "Artem" ^
+  --surname "Evpatoriysky" ^
+  --midname "Petrovich" ^
+  --company "Bicycle"

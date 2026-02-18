@@ -1,4 +1,4 @@
 oint dropbox DeleteTag ^
- --token "***" ^
- --path "/New/mydoc.docx" ^
- --tag "Important"
+  --token "***" ^
+  --path "/New/mydoc.docx" ^
+  --tag "Important"

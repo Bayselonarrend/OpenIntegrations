@@ -1,3 +1,3 @@
 oint bitrix24 GetPictureBlock \
- --title "Image" \
- --url "https://hut.openintegrations.dev/test_data/picture.jpg"
+  --title "Image" \
+  --url "https://hut.openintegrations.dev/test_data/picture.jpg"

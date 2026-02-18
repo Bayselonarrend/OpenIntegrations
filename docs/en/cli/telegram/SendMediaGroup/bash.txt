@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint telegram SendMediaGroup \
- --token "***" \
- --chat "***" \
- --text "Строковое значение" \
- --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/2jyjijns.by1.docx':'document'}"
+  --token "***" \
+  --chat "***" \
+  --text "Строковое значение" \
+  --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/wizelgry.yym.docx':'document'}"

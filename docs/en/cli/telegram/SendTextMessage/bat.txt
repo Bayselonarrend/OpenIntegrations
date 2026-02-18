@@ -1,4 +1,4 @@
 oint telegram SendTextMessage ^
- --token "***" ^
- --chat "***" ^
- --text "Строковое значение"
+  --token "***" ^
+  --chat "***" ^
+  --text "Строковое значение"

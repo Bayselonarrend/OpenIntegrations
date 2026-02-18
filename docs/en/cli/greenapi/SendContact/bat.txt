@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint greenapi SendContact ^
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --chat "***" ^
- --contact "{'phoneContact':'79001234568','company':'Bicycle'}" ^
- --quoted "3EB0759C5C0965ADFE245F"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --chat "***" ^
+  --contact "{'phoneContact':'79001234568','company':'Bicycle'}" ^
+  --quoted "3EB0D641F867A88DC826A8"

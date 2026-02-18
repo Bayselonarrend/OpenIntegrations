@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/4bd2hnrz.sqo.bin",
- "result": true
+ "filepath": "/tmp/das01scw.ocx.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

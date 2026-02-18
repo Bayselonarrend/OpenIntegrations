@@ -1,3 +1,3 @@
 oint dropbox DownloadFolder \
- --token "***" \
- --path "/New"
+  --token "***" \
+  --path "/New"

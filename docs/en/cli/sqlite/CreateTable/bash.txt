@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint sqlite CreateTable \
- --table "test1" \
- --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" \
- --db "/tmp/kw5qpacl.fb2.sqlite"
+  --table "test1" \
+  --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" \
+  --db "/tmp/4vkk4yex.afy.sqlite"

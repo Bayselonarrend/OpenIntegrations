@@ -1,5 +1,5 @@
 oint telegram SendAudio \
- --token "***" \
- --chat "***" \
- --text "Строковое значение" \
- --audio "/tmp/z32oxp1u.ybp"
+  --token "***" \
+  --chat "***" \
+  --text "Строковое значение" \
+  --audio "/tmp/v4xdfvw2.stm"

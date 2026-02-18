@@ -1,3 +1,3 @@
 oint bitrix24 GetTaskFieldsStructure ^
- --url "b24-ar17wx.bitrix24.by" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --token "***"

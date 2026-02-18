@@ -1,15 +1,15 @@
 ﻿{
  "ok": true,
  "channel": {
-  "id": "C0AE0J4RSNM",
-  "created": 1770472528,
+  "id": "C0AG02035PT",
+  "created": 1771394159,
   "creator": "U06UG1CAYH2",
   "is_org_shared": false,
   "is_im": false,
   "context_team_id": "T06UD92BS3C",
-  "updated": 1770472530734,
-  "name": "testconvb7467eb8-9f94-4d30-b087-a36a25add9d3",
-  "name_normalized": "testconvb7467eb8-9f94-4d30-b087-a36a25add9d3",
+  "updated": 1771394165974,
+  "name": "testconv33c8b300-9cea-4380-86ed-0a349f22962e",
+  "name_normalized": "testconv33c8b300-9cea-4380-86ed-0a349f22962e",
   "is_channel": true,
   "is_group": false,
   "is_mpim": false,
@@ -25,19 +25,19 @@
   "purpose": {
    "value": "TestGoal",
    "creator": "U06UG1CAYH2",
-   "last_set": 1770472530
+   "last_set": 1771394165
   },
   "topic": {
    "value": "TestTopic",
    "creator": "U06UG1CAYH2",
-   "last_set": 1770472530
+   "last_set": 1771394163
   },
   "shared_team_ids": [
    "T06UD92BS3C"
   ],
   "pending_connected_team_ids": [],
   "is_member": true,
-  "last_read": "1770472532.164689",
+  "last_read": "1771394171.463439",
   "priority": 0,
   "previous_names": []
  }

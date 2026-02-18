@@ -1,4 +1,4 @@
 oint slack SendMessage ^
- --token "***" ^
- --channel "D06UAKK1C6R" ^
- --text "Test dialog"
+  --token "***" ^
+  --channel "D06UAKK1C6R" ^
+  --text "Test dialog"

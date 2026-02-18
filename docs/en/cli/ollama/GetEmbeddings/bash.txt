@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint ollama GetEmbeddings \
- --url "https://hut.openintegrations.dev/ollama" \
- --model "tinyllama" \
- --input "['Why is the sky blue?','Why is the grass green?']" \
- --headers "{'Authorization':'***'}"
+  --url "https://hut.openintegrations.dev/ollama" \
+  --model "tinyllama" \
+  --input "['Why is the sky blue?','Why is the grass green?']" \
+  --headers "{'Authorization':'***'}"

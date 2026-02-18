@@ -1,4 +1,4 @@
 oint dropbox GetObjectInformation ^
- --token "***" ^
- --path "/New/pic.png" ^
- --detail true
+  --token "***" ^
+  --path "/New/pic.png" ^
+  --detail true

@@ -1,2 +1,2 @@
 oint airtable GetEmailField \
- --title "Email"
+  --title "Email"

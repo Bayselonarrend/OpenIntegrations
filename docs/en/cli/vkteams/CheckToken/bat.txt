@@ -1,2 +1,2 @@
 oint vkteams CheckToken ^
- --token "***"
+  --token "***"

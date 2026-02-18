@@ -1,4 +1,4 @@
 oint gdrive GetDirectoriesList ^
- --token "***" ^
- --query "TestFolder" ^
- --depth true
+  --token "***" ^
+  --query "TestFolder" ^
+  --depth true

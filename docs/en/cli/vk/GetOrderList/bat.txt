@@ -1,4 +1,4 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint vk GetOrderList ^
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

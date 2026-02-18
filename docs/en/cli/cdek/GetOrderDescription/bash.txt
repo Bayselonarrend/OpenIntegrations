@@ -1,2 +1,2 @@
 oint cdek GetOrderDescription \
- --empty true
+  --empty true

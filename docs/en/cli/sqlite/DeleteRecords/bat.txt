@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint sqlite DeleteRecords ^
- --table "test" ^
- --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" ^
- --db "/tmp/kw5qpacl.fb2.sqlite"
+  --table "test" ^
+  --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" ^
+  --db "/tmp/4vkk4yex.afy.sqlite"

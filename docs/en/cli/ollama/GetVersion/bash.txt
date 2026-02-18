@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint ollama GetVersion \
- --url "https://hut.openintegrations.dev/ollama" \
- --headers "{'Authorization':'***'}"
+  --url "https://hut.openintegrations.dev/ollama" \
+  --headers "{'Authorization':'***'}"

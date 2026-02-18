@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint mysql CreateTable ^
- --table "somename" ^
- --cols "{'char_field':'CHAR(5)','varchar_field':'VARCHAR(255)','tinytext_field':'TINYTEXT','text_field':'TEXT','mediumtext_field':'MEDIUMTEXT','longtext_field':'LONGTEXT','tinyint_field':'TINYINT','smallint_field':'SMALLINT','mediumint_field':'MEDIUMINT','int_field':'INT','uint_field':'INT UNSIGNED','bigint_field':'BIGINT','float_field':'FLOAT','double_field':'DOUBLE','date_field':'DATE','time_field':'TIME','datetime_field':'DATETIME','timestamp_field':'TIMESTAMP','mediumblob_field':'MEDIUMBLOB','set_field':'SET(\u0027one\u0027,\u0027two\u0027,\u0027three\u0027)','wtf_field':'WTF'}" ^
- --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "somename" ^
+  --cols "{'char_field':'CHAR(5)','varchar_field':'VARCHAR(255)','tinytext_field':'TINYTEXT','text_field':'TEXT','mediumtext_field':'MEDIUMTEXT','longtext_field':'LONGTEXT','tinyint_field':'TINYINT','smallint_field':'SMALLINT','mediumint_field':'MEDIUMINT','int_field':'INT','uint_field':'INT UNSIGNED','bigint_field':'BIGINT','float_field':'FLOAT','double_field':'DOUBLE','date_field':'DATE','time_field':'TIME','datetime_field':'DATETIME','timestamp_field':'TIMESTAMP','mediumblob_field':'MEDIUMBLOB','set_field':'SET(\u0027one\u0027,\u0027two\u0027,\u0027three\u0027)','wtf_field':'WTF'}" ^
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

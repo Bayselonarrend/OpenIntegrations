@@ -1,4 +1,4 @@
 oint bitrix24 GetDepartments \
- --url "b24-ar17wx.bitrix24.by" \
- --headid 1 \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --headid 1 \
+  --token "***"

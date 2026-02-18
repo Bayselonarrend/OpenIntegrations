@@ -1,6 +1,6 @@
 oint ftp GetProxySettings \
- --addr "127.0.0.1" \
- --port 1080 \
- --type "socks5" \
- --login "proxyuser" \
- --pass "***"
+  --addr "127.0.0.1" \
+  --port 1080 \
+  --type "socks5" \
+  --login "proxyuser" \
+  --pass "***"

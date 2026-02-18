@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 GetBucketEncryption ^
- --name "3f60a2a1" ^
- --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
- --dir true
+  --name "66477ae8" ^
+  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+  --dir true

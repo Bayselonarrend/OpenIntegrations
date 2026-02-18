@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint bitrix24 UpdateUser \
- --url "b24-ar17wx.bitrix24.by" \
- --userid 3204 \
- --fields "{'EMAIL':'87f48c2a-2a7e-4d60-96ea-31d74b00178f@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --userid 3324 \
+  --fields "{'EMAIL':'59658071-cf99-4933-8a7a-b9b7774c619e@example.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" \
+  --token "***"

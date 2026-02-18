@@ -1,5 +1,5 @@
 oint bitrix24 CreateStorageFolder ^
- --url "b24-ar17wx.bitrix24.by" ^
- --storageid 3 ^
- --title "New catalog" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --storageid 3 ^
+  --title "New catalog" ^
+  --token "***"

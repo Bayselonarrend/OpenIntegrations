@@ -1,8 +1,8 @@
 # JSON data can also be passed as a path to a .json file
 
 oint mysql UpdateRecords \
- --table "test_data" \
- --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
- --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" \
- --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "test_data" \
+  --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
+  --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" \
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

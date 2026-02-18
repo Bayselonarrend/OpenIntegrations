@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint vk UploadPhotoToServer ^
- --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}" ^
- --type "Post"
+  --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}" ^
+  --type "Post"

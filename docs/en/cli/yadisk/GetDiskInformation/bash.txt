@@ -1,2 +1,2 @@
 oint yadisk GetDiskInformation \
- --token "***"
+  --token "***"

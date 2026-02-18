@@ -1,1 +1,6 @@
-﻿{}
+﻿{
+ "timestamp": "2026-02-18T06:24:49.321+00:00",
+ "status": 404,
+ "error": "Not Found",
+ "path": "/v2/payment"
+}

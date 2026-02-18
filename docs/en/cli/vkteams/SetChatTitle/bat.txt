@@ -1,4 +1,4 @@
 oint vkteams SetChatTitle ^
- --token "***" ^
- --chatid "***" ^
- --text "New title"
+  --token "***" ^
+  --chatid "***" ^
+  --text "New title"

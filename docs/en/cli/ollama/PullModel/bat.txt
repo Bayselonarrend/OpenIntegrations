@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint ollama PullModel ^
- --url "https://hut.openintegrations.dev/ollama" ^
- --model "bayselonarrend/tinyllama:latest" ^
- --headers "{'Authorization':'***'}"
+  --url "https://hut.openintegrations.dev/ollama" ^
+  --model "bayselonarrend/tinyllama:latest" ^
+  --headers "{'Authorization':'***'}"

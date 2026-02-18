@@ -1,0 +1,5 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint clickhouse GetHTTPConnectionSettings ^
+  --url "http://127.0.0.1:8123" ^
+  --auth "{'bayselonarrend':'***'}"

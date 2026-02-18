@@ -1,4 +1,4 @@
 oint slack AddExternalFile ^
- --token "***" ^
- --url "https://hut.openintegrations.dev/test_data/document.docx" ^
- --title "NewFile"
+  --token "***" ^
+  --url "https://hut.openintegrations.dev/test_data/document.docx" ^
+  --title "NewFile"
