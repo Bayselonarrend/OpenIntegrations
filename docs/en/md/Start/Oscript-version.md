@@ -2,53 +2,53 @@
 sidebar_position: 3
 ---
 
-# Работа с OneScript-версией
+# Working with OneScript Version
 
-Открытый пакет интеграций имеет вариант поставки в виде OSPX-пакета для пакетного менеджера OPM, позволяющего использовать его функции при работе с OneScript
+The Open Integration Package is available as an OSPX package for the OPM package manager, allowing its functions to be used when working with OneScript.
 
-## Установка
+## Installation
 
-Для начала работы необходимо установить пакет `oint` при помощи пакетного менеджера OPM. Сделать это можно одним из двух способов:
+To get started, you need to install the `oint` package using the OPM package manager. This can be done in one of two ways:
 
-1. Из онлайн хаба пакетов (только русская версия):
+1. From the online package hub (Russian version only):
 
 ```bash
     opm install oint
 ```
 
-2. Из скачанного OSPX-файла:
+2. From a downloaded OSPX file:
 
 ```bash
     opm install -f "./OInt-x.x.x.ospx"
 ```
 
-Кроме того, подобный OSPX-файл может быть собран вручную, если клонировать репозиторий и в каталоге исходников `/src/<язык>/OInt` выполнить команду следующего вида:
+Additionally, such an OSPX file can be built manually by cloning the repository and running the following command in the source directory `/src/<language>/OInt`:
 
 ```bash
     opm build
 ```
 
-## Подключение в скрипт
+## Importing into a Script
 
-Для использования методов Открытого пакета интеграций, после установки, его необходимо импортировать в свой скрипт при помощи директивы `#Использовать`:
-
-```bsl
-#Использовать oint
-
-Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, Чат, Текст);
-```
-
-`#Использовать` в таком виде импортирует весь пакет целиком, что позволяет вызывать методы сразу из всех доступных модулей `oint` без дополнительных действий. Это универсально, однако чаще всего избыточно и отрицательно сказывается на времени выполнения конечного скрипта. Поэтому рекомендуется осуществлять импорт только для тех модулей пакета, которые необходимы в данный момент. Сделать это можно следующим образом:
+To use the Open Integration Package methods, after installation, it must be imported into your script using the `#Use` directive:
 
 ```bsl
-#Использовать oint/api/telegram
+#Use oint
 
-Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, Чат, Текст);
+Result = OPI_Telegram.SendTextMessage(Token, Chat, Text);
 ```
 
-Все основные модули ОПИ находятся в подразделе `/api` и идентифицируются названиями, схожими с названиями команд для CLI версии. Найти название конкретной библиотеки всегда можно на главной странице посвященного ей раздела документации
+`#Use` in this form imports the entire package at once, allowing methods to be called from all available `oint` modules immediately without additional actions. This is universal, but most often redundant and negatively impacts the execution time of the final script. Therefore, it is recommended to import only those package modules that are currently needed. This can be done as follows:
 
-Также, кроме импорта основных модулей, вы можете импортировать внутренние модули инструменты пакета, если они вам необходимы:
+```bsl
+#Use oint/api/telegram
 
- - `oint/tools/main` - для основных модулей инструментов
- - `oint/tools/http` - для модулей, связанных с работой HTTP-клиента
+Result = OPI_Telegram.SendTextMessage(Token, Chat, Text);
+```
+
+All main OPI modules are located in the `/api` subsection and are identified by names similar to the command names for the CLI version. You can always find the name of a specific library on the main page of its dedicated documentation section.
+
+Also, in addition to importing the main modules, you can import internal package tool modules if you need them:
+
+ - `oint/tools/main` - for main tool modules
+ - `oint/tools/http` - for modules related to HTTP client operations
