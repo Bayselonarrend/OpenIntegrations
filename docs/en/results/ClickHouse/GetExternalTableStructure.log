@@ -4,6 +4,6 @@
   "id": "UInt64",
   "name": "String"
  },
- "data": "1\tTest\n2Test2",
+ "data": "1\tTest\n2\tTest2",
  "format": "TSV"
 }

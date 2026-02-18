@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint gdrive UploadFile \
- --token "***" \
- --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
- --props "{'MIME':'image/jpeg','Name':'New file.jpg','Description':'This is a new file','Parent':'1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP'}"
+  --token "***" \
+  --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
+  --props "{'MIME':'image/jpeg','Name':'New file.jpg','Description':'This is a new file','Parent':'1T61ve0vc7hRiV8RYiMcBqR0GH3umkYDN'}"

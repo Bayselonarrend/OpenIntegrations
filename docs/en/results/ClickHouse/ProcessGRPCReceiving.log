@@ -1,0 +1,220 @@
+﻿{
+ "stop_message": {
+  "error": "Closed",
+  "result": false
+ },
+ "result": true,
+ "messages": [
+  {
+   "message": {
+    "cancelled": false,
+    "exception": {
+     "code": 0,
+     "display_text": "",
+     "name": "",
+     "stack_trace": ""
+    },
+    "extremes": {
+     "BYTES": ""
+    },
+    "logs": [],
+    "output": {
+     "meta": [
+      {
+       "name": "id",
+       "type": "UInt64"
+      },
+      {
+       "name": "timestamp",
+       "type": "DateTime"
+      },
+      {
+       "name": "user_id",
+       "type": "UInt32"
+      },
+      {
+       "name": "event_type",
+       "type": "String"
+      },
+      {
+       "name": "payload",
+       "type": "String"
+      }
+     ],
+     "data": [
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "5",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 104,
+       "event_type": "stream_test",
+       "payload": "{}"
+      }
+     ],
+     "rows": 20,
+     "statistics": {
+      "elapsed": 0.008624423,
+      "rows_read": 0,
+      "bytes_read": 0
+     }
+    },
+    "output_columns": [],
+    "output_format": "JSON",
+    "progress": {
+     "read_bytes": 940,
+     "read_rows": 20,
+     "total_rows_to_read": 20,
+     "written_bytes": 0,
+     "written_rows": 0
+    },
+    "query_id": "7bfc4550-b6ed-44a2-92f5-54aaff0bb96c",
+    "stats": {
+     "allocated_bytes": 21248,
+     "applied_aggregation": false,
+     "applied_limit": false,
+     "blocks": 1,
+     "rows": 20,
+     "rows_before_aggregation": 0,
+     "rows_before_limit": 0
+    },
+    "time_zone": "Europe/Moscow",
+    "totals": {
+     "BYTES": ""
+    }
+   },
+   "result": true
+  }
+ ]
+}

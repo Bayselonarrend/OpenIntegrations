@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint gsheets SetCellValues ^
- --token "***" ^
- --spreadsheet "1VhU56ZqWvpN76HktHGoXTRMtbWysb6cos5QWEI3_QtQ" ^
- --data "{'A1':'ThisIsA1','A2':'ThisIsA2','B2':'ThisIsB2','B3':'ThisIsB3','A3':'ThisIsA3','A4':'ThisIsA4','B1':'ThisIsB1','B4':'ThisIsB4'}" ^
- --sheetname "Sheet2"
+  --token "***" ^
+  --spreadsheet "1NlProN9MrfKNO-R7DEHxdYgWSoHGov3mKXi4djPyUto" ^
+  --data "{'A1':'ThisIsA1','A2':'ThisIsA2','B2':'ThisIsB2','B3':'ThisIsB3','A3':'ThisIsA3','A4':'ThisIsA4','B1':'ThisIsB1','B4':'ThisIsB4'}" ^
+  --sheetname "Sheet2"

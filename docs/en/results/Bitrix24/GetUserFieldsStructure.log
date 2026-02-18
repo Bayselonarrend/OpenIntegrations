@@ -65,13 +65,13 @@
   "USER_TYPE": "USER_TYPE"
  },
  "time": {
-  "start": 1771395410,
-  "finish": 1771395410.20486,
-  "duration": 0.204857110977173,
+  "start": 1771422267,
+  "finish": 1771422267.43723,
+  "duration": 0.437226057052612,
   "processing": 0,
-  "date_start": "2026-02-18T06:16:50+00:00",
-  "date_finish": "2026-02-18T06:16:50+00:00",
-  "operating_reset_at": 1771396010,
+  "date_start": "2026-02-18T13:44:27+00:00",
+  "date_finish": "2026-02-18T13:44:27+00:00",
+  "operating_reset_at": 1771422867,
   "operating": 0
  }
 }

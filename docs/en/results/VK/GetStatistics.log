@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 1
+    "comments": 3
    },
    "period_from": 1771372800,
    "period_to": 1771459199,
@@ -15,10 +15,17 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "IN",
+      "count": 1,
+      "name": "Индия",
+      "value": 80
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   },
   {

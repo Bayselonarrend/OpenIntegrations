@@ -1,0 +1,65 @@
+﻿{
+ "result": true,
+ "request_sending": {
+  "result": true
+ },
+ "data_sending": [
+  {
+   "result": true
+  },
+  {
+   "result": true
+  },
+  {
+   "result": true
+  },
+  {
+   "result": true
+  }
+ ],
+ "received_message": {
+  "message": {
+   "cancelled": false,
+   "exception": {
+    "code": 0,
+    "display_text": "",
+    "name": "",
+    "stack_trace": ""
+   },
+   "extremes": {
+    "BYTES": ""
+   },
+   "logs": [],
+   "output": {
+    "BYTES": ""
+   },
+   "output_columns": [],
+   "output_format": "",
+   "progress": {
+    "read_bytes": 0,
+    "read_rows": 0,
+    "total_rows_to_read": 0,
+    "written_bytes": 235,
+    "written_rows": 5
+   },
+   "query_id": "b1068c98-b526-47fa-a43a-00eb478d58aa",
+   "stats": {
+    "allocated_bytes": 0,
+    "applied_aggregation": false,
+    "applied_limit": false,
+    "blocks": 0,
+    "rows": 0,
+    "rows_before_aggregation": 0,
+    "rows_before_limit": 0
+   },
+   "time_zone": "Europe/Moscow",
+   "totals": {
+    "BYTES": ""
+   }
+  },
+  "result": true
+ },
+ "stream_closing": {
+  "result": true
+ }
+}

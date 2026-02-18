@@ -1,4 +1,4 @@
 oint bitrix24 DeleteTask ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "9650" ^
+  --task "9660" ^
   --token "***"

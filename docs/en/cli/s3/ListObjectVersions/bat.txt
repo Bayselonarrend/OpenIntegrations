@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 ListObjectVersions ^
-  --bucket "a21b504e" ^
+  --bucket "a6ca664f" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --prefix "pic" ^
   --dir true

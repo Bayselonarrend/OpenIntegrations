@@ -1,4 +1,4 @@
 oint bitrix24 DeleteKanbanStage ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --stage 3584 ^
+  --stage 3588 ^
   --token "***"

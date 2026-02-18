@@ -1,0 +1,3 @@
+oint clickhouse GetRequestSettings ^
+  --query "SELECT * FROM events_stream_test ORDER BY id" ^
+  --format "JSON"

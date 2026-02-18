@@ -1,4 +1,4 @@
 oint gsheets CreateSpreadsheet ^
   --token "***" ^
-  --title "TestTable" ^
+  --title "Test table (new.)" ^
   --sheets "['Sheet1','Sheet2']"

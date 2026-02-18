@@ -1,4 +1,4 @@
 oint sqlite DeleteTableColumn ^
   --table "test" ^
   --name "new_col" ^
-  --db "/tmp/4vkk4yex.afy.sqlite"
+  --db "/tmp/vaznnvbd.ozf.sqlite"
