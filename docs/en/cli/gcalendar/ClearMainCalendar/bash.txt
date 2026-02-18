@@ -1,2 +1,2 @@
 oint gcalendar ClearMainCalendar \
- --token "***"
+  --token "***"

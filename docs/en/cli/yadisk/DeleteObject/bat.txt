@@ -1,4 +1,4 @@
 oint yadisk DeleteObject ^
- --token "***" ^
- --path "/song.mp3" ^
- --can false
+  --token "***" ^
+  --path "/song.mp3" ^
+  --can false

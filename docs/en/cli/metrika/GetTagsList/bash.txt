@@ -1,2 +1,2 @@
 oint metrika GetTagsList \
- --token "***"
+  --token "***"

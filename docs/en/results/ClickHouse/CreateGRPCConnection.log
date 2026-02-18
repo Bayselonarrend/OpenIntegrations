@@ -12,7 +12,32 @@
   },
   "logs": [],
   "output": {
-   "BYTES": "ewoJIm1ldGEiOgoJWwoJCXsKCQkJIm5hbWUiOiAiaWQiLAoJCQkidHlwZSI6ICJVSW50NjQiCgkJfSwKCQl7CgkJCSJuYW1lIjogIm5hbWUiLAoJCQkidHlwZSI6ICJTdHJpbmciCgkJfQoJXSwKCgkiZGF0YSI6CglbCgkJewoJCQkiaWQiOiAiMSIsCgkJCSJuYW1lIjogIkpvaG4iCgkJfSwKCQl7CgkJCSJpZCI6ICIyIiwKCQkJIm5hbWUiOiAiSmFuZSIKCQl9CgldLAoKCSJyb3dzIjogMiwKCgkic3RhdGlzdGljcyI6Cgl7CgkJImVsYXBzZWQiOiAwLjAwMjYzMzM0NSwKCQkicm93c19yZWFkIjogMCwKCQkiYnl0ZXNfcmVhZCI6IDAKCX0KfQo="
+   "meta": [
+    {
+     "name": "id",
+     "type": "UInt64"
+    },
+    {
+     "name": "name",
+     "type": "String"
+    }
+   ],
+   "data": [
+    {
+     "id": "1",
+     "name": "John"
+    },
+    {
+     "id": "2",
+     "name": "Jane"
+    }
+   ],
+   "rows": 2,
+   "statistics": {
+    "elapsed": 0.005166434,
+    "rows_read": 0,
+    "bytes_read": 0
+   }
   },
   "output_columns": [],
   "output_format": "JSON",
@@ -23,7 +48,7 @@
    "written_bytes": 0,
    "written_rows": 0
   },
-  "query_id": "e34af074-27b9-473b-99ae-d5239352387f",
+  "query_id": "b115f130-86f3-411b-8969-a0fae1904b17",
   "stats": {
    "allocated_bytes": 8448,
    "applied_aggregation": false,

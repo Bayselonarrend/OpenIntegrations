@@ -1,4 +1,4 @@
 oint gdrive GetFilesList \
- --token "***" \
- --query "data" \
- --catalog "root"
+  --token "***" \
+  --query "data" \
+  --catalog "root"
