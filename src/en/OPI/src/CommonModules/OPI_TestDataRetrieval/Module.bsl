@@ -707,8 +707,10 @@ Procedure ProcessTestingResult(Val Result
 
         EndIf;
 
+        AIAttributes = GetAICheckAttributes(Result);
+
         WriteTestLog(ElementID, Text, "info");
-        FinishTestElement(ElementID, "passed");
+        FinishTestElement(ElementID, "passed", AIAttributes);
 
     Except
 
@@ -13480,7 +13482,7 @@ Procedure WriteTestLog(Val Test, Val Text, Val Level)
 
 EndProcedure
 
-Procedure FinishTestElement(Val UUID, Val Status)
+Procedure FinishTestElement(Val UUID, Val Status, Val Attributes = Undefined)
 
     Data = GetExistingLaunch();
 
@@ -13499,6 +13501,10 @@ Procedure FinishTestElement(Val UUID, Val Status)
     ElementStructure.Insert("endTime"   , CurrentDate);
     ElementStructure.Insert("launchUuid", Data["id"]);
     ElementStructure.Insert("status"    , Status);
+
+    If Attributes <> Undefined Then
+        ElementStructure.Insert("attributes", Attributes);
+    EndIf;
 
     ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
 
@@ -14123,6 +14129,70 @@ Function GetSecretKeyArray()
     SecretsArray.Add("bayselonarrend");
 
     Return SecretsArray;
+
+EndFunction
+
+Function GetAICheckAttributes(Val Result)
+
+    OPI_TypeConversion.GetLine(Result);
+    Result_ = Lower(Result);
+
+    KeyWordArray = New Array;
+    KeyWordArray.Add("error");
+    KeyWordArray.Add("exception");
+    KeyWordArray.Add("failed");
+
+    NeedCheck = False;
+
+    For Each KeyWord In KeyWordArray Do
+        If StrFind(Result_, KeyWord) > 0 Then
+            NeedCheck = True;
+            Break;
+        EndIf;
+    EndDo;
+
+    If Not NeedCheck Then
+        Return Undefined;
+    EndIf;
+
+    Prompt = "You need to check the received service response and determine whether it is an error message from the
+    |server that could not process it (regardless of the reason) or found issues with the request.
+    |Return only one word ""error"" if an error is found or one word ""success"" if there was no error
+    |
+    |Service response:
+    |%1";
+
+    Prompt = StrTemplate(Prompt, Result);
+
+    Token = GetParameter("CI_AI_Token");
+    URL   = GetParameter("CI_AI_URL");
+    Model = GetParameter("CI_AI_Model");
+
+    Message = OPI_OpenAI.GetMessageStructure("user", Prompt);
+
+    AttributeTemplate = "ai_check: %1";
+    Skip              = StrTemplate(AttributeTemplate, "skipped");
+
+    Try
+        Response = OPI_OpenAI.GetResponse(URL, Token, Model, Message);
+    Except
+        Return Skip;
+    EndTry;
+
+    If OPI_Tools.ThisIsCollection(Response) Then
+
+        Try
+            ResponseValue = Response["choices"][0]["message"]["content"];
+            Attribute     = StrTemplate(AttributeTemplate, ResponseValue);
+        Except
+            Attribute     = Skip;
+        EndTry;
+
+    Else
+        Attribute = Skip;
+    EndIf;
+
+    Return Attribute;
 
 EndFunction
 

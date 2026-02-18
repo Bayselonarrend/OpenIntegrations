@@ -63,6 +63,34 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mssql EnsureRecords \
+              --table "test_guarantee" \
+              --rows "[{'id':{'INT':'1'},'name':{'NVARCHAR':'Vitaly Updated'},'age':{'INT':'25'},'salary':{'DECIMAL':'1500.5'}},{'id':{'INT':'3'},'name':{'NVARCHAR':'Anton'},'age':{'INT':'30'},'salary':{'DECIMAL':'3000'}}]" \
+              --unique "['id']" \
+              --db "Server=127.0.0.1;Database=testbase1;User Id=SA;Password="'"12we3456!2154"'";" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mssql EnsureRecords ^
+              --table "test_guarantee" ^
+              --rows "[{'id':{'INT':'1'},'name':{'NVARCHAR':'Vitaly Updated'},'age':{'INT':'25'},'salary':{'DECIMAL':'1500.5'}},{'id':{'INT':'3'},'name':{'NVARCHAR':'Anton'},'age':{'INT':'30'},'salary':{'DECIMAL':'3000'}}]" ^
+              --unique "['id']" ^
+              --db "Server=127.0.0.1;Database=testbase1;User Id=SA;Password="'"12we3456!2154"'";" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 
