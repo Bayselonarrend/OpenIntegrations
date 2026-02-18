@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1771396736,
-  "idMessage": "3EB0DFA70C443995AAACCE",
+  "timestamp": 1771396773,
+  "idMessage": "3EB0D9A90344EF4A6A5669",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,26 +17,16 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "extendedTextMessageData": {
-    "text": "New message",
-    "stanzaId": "3EB0A4E38563ED5199EFE6",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB0A4E38563ED5199EFE6",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "New message",
-    "extendedTextMessage": {
-     "text": "New message",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "caption": "File description",
+    "fileName": "picture.jpg",
+    "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }
