@@ -73,10 +73,10 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint mssql DeleteRecords \
-             --table "test_data" \
-             --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" \
-             --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+              --table "test_data" \
+              --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
@@ -85,10 +85,10 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint mssql DeleteRecords ^
-             --table "test_data" ^
-             --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" ^
-             --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+              --table "test_data" ^
+              --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

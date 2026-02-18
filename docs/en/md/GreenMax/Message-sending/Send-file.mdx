@@ -58,11 +58,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint greenmax SendFile \
-             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
-             --chat "***" \
-             --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
-             --filename "photo.jpg" \
-             --caption "File description"
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --chat "***" \
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" \
+              --filename "vid.mp4" \
+              --caption "File description" \
+              --typing 1000 \
+              --ttype "video"
         ```
     </TabItem>
   
@@ -71,11 +73,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint greenmax SendFile ^
-             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
-             --chat "***" ^
-             --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-             --filename "photo.jpg" ^
-             --caption "File description"
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --chat "***" ^
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
+              --filename "vid.mp4" ^
+              --caption "File description" ^
+              --typing 1000 ^
+              --ttype "video"
         ```
     </TabItem>
 </Tabs>
@@ -83,7 +87,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 {
- "idMessage": "1770473820895",
- "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/bc827aae-e24f-434e-9973-c39c2998582d.jpg"
+ "idMessage": "1771396989255",
+ "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/e797a9cc-9afa-495b-832f-d65937c66bef.jpg"
 }
 ```

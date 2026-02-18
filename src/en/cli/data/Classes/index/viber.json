@@ -30,7 +30,7 @@
 		{
 			"name": "SetWebhook",
 			"id": "SETWEBHOOK",
-			"description": "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,\n\n which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published\n\n on the server - you can use an HTTP service. Information about new messages will also be sent there\n\n Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working",
+			"description": "Sets a webhook to receive messages",
 			"params": [
 				{
 					"name": "--token",

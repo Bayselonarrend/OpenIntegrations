@@ -49,10 +49,10 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint mongodb GetRoles \
-             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
-             --roles "{'role':'newrole','db':'admin'}" \
-             --db "admin" \
-             --sprv true
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+              --roles "{'role':'newrole','db':'admin'}" \
+              --db "admin" \
+              --sprv true
         ```
     </TabItem>
   
@@ -61,10 +61,10 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint mongodb GetRoles ^
-             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
-             --roles "{'role':'newrole','db':'admin'}" ^
-             --db "admin" ^
-             --sprv true
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+              --roles "{'role':'newrole','db':'admin'}" ^
+              --db "admin" ^
+              --sprv true
         ```
     </TabItem>
 </Tabs>
@@ -94,11 +94,11 @@ import TabItem from '@theme/TabItem';
     ],
     "roles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],

@@ -54,9 +54,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreateImageTweet \
-             --text "TestTweet6274a4bc-19af-495f-a6b2-e71852ada2ce" \
-             --pictures "/tmp/crm2srn4.irt" \
-             --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+              --text "TestTweetcc004d06-1f2b-4f34-9c1d-210dc9812d90" \
+              --pictures "/tmp/olytt2rz.mc5" \
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
   
@@ -65,9 +65,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreateImageTweet ^
-             --text "TestTweet6274a4bc-19af-495f-a6b2-e71852ada2ce" ^
-             --pictures "/tmp/crm2srn4.irt" ^
-             --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+              --text "TestTweetcc004d06-1f2b-4f34-9c1d-210dc9812d90" ^
+              --pictures "/tmp/olytt2rz.mc5" ^
+              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
 </Tabs>
@@ -75,9 +75,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "edit_history_tweet_ids": [
+   "2023985071812653323"
+  ],
+  "text": "TestTweetf7c0b591-339d-457b-a058-5c35a60c0559 https://t.co/FaiXKuL8CL",
+  "id": "2023985071812653323"
+ }
 }
 ```

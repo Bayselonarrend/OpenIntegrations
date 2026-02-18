@@ -66,8 +66,8 @@
 //@skip-check module-unused-method
 
 //#Use "../../tools/main"
-//#Use "../../tools/http"
-//#Use "../../api"
+ //#Use "../../tools/http"
+ //#Use "../../api"
 //#Use asserts
 //#Use "internal"
 

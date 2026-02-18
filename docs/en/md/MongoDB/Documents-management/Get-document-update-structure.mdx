@@ -43,10 +43,10 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint mongodb GetDocumentUpdateStructure \
-             --query "{'stringField':'Text','doubleField':{'__4gte':'100','__4lte':'150'}}" \
-             --data "{'__4set':{'doubleField':'999'}}" \
-             --multi true \
-             --upsert true
+              --query "{'stringField':'Text','doubleField':{'__4gte':'100','__4lte':'150'}}" \
+              --data "{'__4set':{'doubleField':'999'}}" \
+              --multi true \
+              --upsert true
         ```
     </TabItem>
   
@@ -55,10 +55,10 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint mongodb GetDocumentUpdateStructure ^
-             --query "{'stringField':'Text','doubleField':{'__4gte':'100','__4lte':'150'}}" ^
-             --data "{'__4set':{'doubleField':'999'}}" ^
-             --multi true ^
-             --upsert true
+              --query "{'stringField':'Text','doubleField':{'__4gte':'100','__4lte':'150'}}" ^
+              --data "{'__4set':{'doubleField':'999'}}" ^
+              --multi true ^
+              --upsert true
         ```
     </TabItem>
 </Tabs>

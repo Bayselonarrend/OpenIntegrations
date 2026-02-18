@@ -82,9 +82,9 @@ FTP Command: `RETR`
             # JSON data can also be passed as a path to a .json file
             
             oint ftp SaveFile \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-             --path "new_dir/pic_from_disk.png" \
-             --file "/tmp/bh01u4uf.gxi.bin"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+              --path "new_dir/pic_from_disk.png" \
+              --file "/tmp/das01scw.ocx.bin"
         ```
     </TabItem>
   
@@ -93,9 +93,9 @@ FTP Command: `RETR`
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp SaveFile ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-             --path "new_dir/pic_from_disk.png" ^
-             --file "/tmp/bh01u4uf.gxi.bin"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+              --path "new_dir/pic_from_disk.png" ^
+              --file "/tmp/das01scw.ocx.bin"
         ```
     </TabItem>
 </Tabs>
@@ -104,7 +104,10 @@ FTP Command: `RETR`
 ```json title="Result"
 {
  "bytes": 2114023,
- "filepath": "/tmp/4bd2hnrz.sqo.bin",
- "result": true
+ "filepath": "/tmp/das01scw.ocx.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

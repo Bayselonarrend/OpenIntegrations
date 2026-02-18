@@ -43,9 +43,9 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics \
-             --datefrom "2026-01-06T00:00:00" \
-             --dateto "2026-01-06T23:59:59" \
-             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+              --datefrom "2026-02-18T00:00:00" \
+              --dateto "2026-02-18T23:59:59" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
@@ -54,9 +54,9 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics ^
-             --datefrom "2026-01-06T00:00:00" ^
-             --dateto "2026-01-06T23:59:59" ^
-             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+              --datefrom "2026-02-18T00:00:00" ^
+              --dateto "2026-02-18T23:59:59" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -67,134 +67,16 @@ import TabItem from '@theme/TabItem';
  "response": [
   {
    "activity": {
-    "comments": 4,
-    "likes": 4
+    "comments": 1
    },
-   "period_from": 1770422400,
-   "period_to": 1770508799,
+   "period_from": 1771372800,
+   "period_to": 1771459199,
    "reach": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 1
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 0
-     },
-     {
-      "value": "35-45",
-      "count": 0
-     },
-     {
-      "value": "45-100",
-      "count": 0
-     }
-    ],
     "cities": [],
-    "countries": [
-     {
-      "code": "BY",
-      "count": 1,
-      "name": "Беларусь",
-      "value": 3
-     }
-    ],
-    "mobile_reach": 1,
-    "reach": 1,
-    "reach_subscribers": 1,
-    "sex": [
-     {
-      "value": "f",
-      "count": 0
-     },
-     {
-      "value": "m",
-      "count": 1
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 0
-     },
-     {
-      "value": "f;24-27",
-      "count": 0
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 0
-     },
-     {
-      "value": "f;45-100",
-      "count": 0
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 1
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],
@@ -205,13 +87,23 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "activity": {
-    "comments": 3,
-    "likes": 3
-   },
-   "period_from": 1770336000,
-   "period_to": 1770422399,
+   "period_from": 1771286400,
+   "period_to": 1771372799,
    "reach": {
-    "age": [
-...
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  }
+ ]
+}
 ```
