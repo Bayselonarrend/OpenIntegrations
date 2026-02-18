@@ -1,2 +1,2 @@
 oint ollama GetModelSettingsStructure ^
- --empty true
+  --empty true

@@ -1,4 +1,4 @@
 oint neocities SynchronizeFolders ^
- --token "***" ^
- --local "C:\test_site" ^
- --remote "test_sync"
+  --token "***" ^
+  --local "C:\test_site" ^
+  --remote "test_sync"

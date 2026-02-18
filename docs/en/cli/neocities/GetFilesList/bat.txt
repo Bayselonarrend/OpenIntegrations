@@ -1,2 +1,2 @@
 oint neocities GetFilesList ^
- --token "***"
+  --token "***"

@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint airtable CreateDatabase ^
- --token "***" ^
- --ws "wspdf8yl1yZz3PmWZ" ^
- --title "TestDatabase" ^
- --tablesdata "{'TestTable':[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'}]}"
+  --token "***" ^
+  --ws "wspdf8yl1yZz3PmWZ" ^
+  --title "TestDatabase" ^
+  --tablesdata "{'TestTable':[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'}]}"

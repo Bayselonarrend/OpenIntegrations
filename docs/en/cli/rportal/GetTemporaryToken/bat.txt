@@ -1,4 +1,4 @@
 oint rportal GetTemporaryToken ^
- --url "tests.openintegrations.dev" ^
- --login "superadmin" ^
- --pass "***"
+  --url "tests.openintegrations.dev" ^
+  --login "superadmin" ^
+  --pass "***"

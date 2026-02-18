@@ -1,6 +1,6 @@
 oint bitrix24 UploadFileToFolder ^
- --url "b24-ar17wx.bitrix24.by" ^
- --title "Imortant doc.docx" ^
- --file "https://hut.openintegrations.dev/test_data/document.docx" ^
- --folderid 50014 ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --title "Imortant doc.docx" ^
+  --file "https://hut.openintegrations.dev/test_data/document.docx" ^
+  --folderid 51634 ^
+  --token "***"

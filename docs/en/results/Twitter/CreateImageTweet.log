@@ -1,6 +1,9 @@
 ﻿{
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "edit_history_tweet_ids": [
+   "2023985071812653323"
+  ],
+  "text": "TestTweetf7c0b591-339d-457b-a058-5c35a60c0559 https://t.co/FaiXKuL8CL",
+  "id": "2023985071812653323"
+ }
 }

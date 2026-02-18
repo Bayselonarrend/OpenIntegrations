@@ -1,4 +1,4 @@
 # JSON data can also be passed as a path to a .json file
 
 oint ftp GetWelcomeMessage \
- --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':true,'read_timeout':'120','write_timeout':'120','advanced_resolve':true,'login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':true,'accept_invalid_certs':true}}"
+  --conn "{'set':{'domain':'172.33.0.11','port':'21','passive':true,'read_timeout':'120','write_timeout':'120','advanced_resolve':true,'login':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'},'tls':{'use_tls':true,'accept_invalid_certs':true}}"

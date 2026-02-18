@@ -1,4 +1,4 @@
 oint dropbox RefreshToken \
- --appkey "***" \
- --appsecret "***" \
- --refresh "***"
+  --appkey "***" \
+  --appsecret "***" \
+  --refresh "***"

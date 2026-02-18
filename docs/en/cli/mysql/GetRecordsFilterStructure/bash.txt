@@ -1,0 +1,2 @@
+oint mysql GetRecordsFilterStructure \
+  --empty true

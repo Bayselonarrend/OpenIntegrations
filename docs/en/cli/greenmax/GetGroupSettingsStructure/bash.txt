@@ -1,2 +1,2 @@
 oint greenmax GetGroupSettingsStructure \
- --empty true
+  --empty true

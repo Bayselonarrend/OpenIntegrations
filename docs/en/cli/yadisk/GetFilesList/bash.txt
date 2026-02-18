@@ -1,5 +1,5 @@
 oint yadisk GetFilesList \
- --token "***" \
- --amount 2 \
- --offset 1 \
- --type "image"
+  --token "***" \
+  --amount 2 \
+  --offset 1 \
+  --type "image"

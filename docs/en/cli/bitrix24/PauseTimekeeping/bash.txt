@@ -1,4 +1,4 @@
 oint bitrix24 PauseTimekeeping \
- --url "b24-ar17wx.bitrix24.by" \
- --userid 1 \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --userid 1 \
+  --token "***"

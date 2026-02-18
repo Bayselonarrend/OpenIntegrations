@@ -1,4 +1,4 @@
 oint yadisk GetPublishedObjectsList \
- --token "***" \
- --amount 2 \
- --offset 1
+  --token "***" \
+  --amount 2 \
+  --offset 1

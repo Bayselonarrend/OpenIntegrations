@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint sqlite AddRecords ^
- --table "test1" ^
- --rows "{'[An obscure column]':'yo'}" ^
- --db "/tmp/kw5qpacl.fb2.sqlite"
+  --table "test1" ^
+  --rows "{'[An obscure column]':'yo'}" ^
+  --db "/tmp/4vkk4yex.afy.sqlite"

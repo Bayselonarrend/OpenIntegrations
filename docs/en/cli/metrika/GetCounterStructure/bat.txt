@@ -1,2 +1,2 @@
 oint metrika GetCounterStructure ^
- --empty false
+  --empty false

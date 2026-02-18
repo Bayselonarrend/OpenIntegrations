@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint mssql EnsureTable \
- --table "test_new" \
- --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" \
- --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "test_new" \
+  --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" \
+  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

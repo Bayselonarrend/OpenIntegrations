@@ -1,6 +1,6 @@
 oint sftp GetSettingsPrivateKey \
- --host "172.33.0.13" \
- --port "2222" \
- --user "bayselonarrend" \
- --key "***" \
- --pub "https://hut.openintegrations.dev/test_data/ssh_key.pub"
+  --host "172.33.0.13" \
+  --port "2222" \
+  --user "bayselonarrend" \
+  --key "***" \
+  --pub "https://hut.openintegrations.dev/test_data/ssh_key.pub"

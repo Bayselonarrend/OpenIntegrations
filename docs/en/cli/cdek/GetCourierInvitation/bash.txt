@@ -1,4 +1,4 @@
 oint cdek GetCourierInvitation \
- --token "***" \
- --uuid "8cdf0a00-6b2f-4621-a931-587d3563bfe3" \
- --testapi "***"
+  --token "***" \
+  --uuid "787de2fe-7b63-4392-8ad5-0f67d9559b63" \
+  --testapi "***"

@@ -1,4 +1,4 @@
 oint bitrix24 GetPosts ^
- --url "b24-ar17wx.bitrix24.by" ^
- --postid 3572 ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --postid 3692 ^
+  --token "***"

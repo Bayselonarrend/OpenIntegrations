@@ -1,2 +1,2 @@
 oint slack GetExternalFileList \
- --token "***"
+  --token "***"

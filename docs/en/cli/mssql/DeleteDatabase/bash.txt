@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint mssql DeleteDatabase \
- --base "testbase2" \
- --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
+  --base "testbase2" \
+  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+  --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"

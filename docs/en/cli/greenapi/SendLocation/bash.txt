@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint greenapi SendLocation \
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
- --chat "***" \
- --loc "{'latitude':'53.908522','longitude':'27.574821'}" \
- --quoted "3EB0FA010F727DE87D25C7"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --chat "***" \
+  --loc "{'latitude':'53.908522','longitude':'27.574821'}" \
+  --quoted "3EB066934E8870EE4F9A9C"

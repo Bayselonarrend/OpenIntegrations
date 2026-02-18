@@ -1,5 +1,5 @@
 oint vkteams BlockChatUser ^
- --token "***" ^
- --chatid "***" ^
- --userid 1011987091 ^
- --dellast true
+  --token "***" ^
+  --chatid "***" ^
+  --userid 1011987091 ^
+  --dellast true

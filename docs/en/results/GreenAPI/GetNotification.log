@@ -1,17 +1,32 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingMessageStatus",
-  "chatId": "***",
+  "typeWebhook": "outgoingAPIMessageReceived",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1770411801,
-  "idMessage": "3EB063C951BFAB125542FC",
-  "status": "failed",
-  "description": "TypeError: this.isZero is not a function",
-  "sendByApi": "***"
+  "timestamp": 1771396733,
+  "idMessage": "3EB0A4E38563ED5199EFE6",
+  "senderData": {
+   "chatId": "***",
+   "chatName": "***",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***"
+  },
+  "messageData": {
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   }
+  }
  }
 }

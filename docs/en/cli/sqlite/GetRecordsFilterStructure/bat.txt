@@ -1,0 +1,2 @@
+oint sqlite GetRecordsFilterStructure ^
+  --empty true

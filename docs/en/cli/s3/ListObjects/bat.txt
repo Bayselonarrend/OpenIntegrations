@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 ListObjects ^
- --bucket "04428a9b" ^
- --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
- --dir true
+  --bucket "a21b504e" ^
+  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+  --dir true

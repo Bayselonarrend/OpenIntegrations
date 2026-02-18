@@ -1,2 +1,2 @@
 oint viber CreateKeyboardFromArrayButton \
- --buttons "['Button 1','Button 2','Button 3']"
+  --buttons "['Button 1','Button 2','Button 3']"

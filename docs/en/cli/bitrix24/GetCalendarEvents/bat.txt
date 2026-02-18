@@ -1,8 +1,8 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint bitrix24 GetCalendarEvents ^
- --url "b24-ar17wx.bitrix24.by" ^
- --owner 1 ^
- --type "user" ^
- --filter "{'from':'01/07/2026 10:11:51','to':'01/08/2026 10:11:51','section':['1894','1896']}" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --owner 1 ^
+  --type "user" ^
+  --filter "{'from':'02/19/2026 06:19:31','to':'02/20/2026 06:19:31','section':['2014','2016']}" ^
+  --token "***"

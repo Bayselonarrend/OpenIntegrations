@@ -1,4 +1,4 @@
 oint dropbox UploadFileByURL ^
- --token "***" ^
- --url "https://hut.openintegrations.dev/test_data/document.docx" ^
- --path "/New/url_doc.docx"
+  --token "***" ^
+  --url "https://hut.openintegrations.dev/test_data/document.docx" ^
+  --path "/New/url_doc.docx"

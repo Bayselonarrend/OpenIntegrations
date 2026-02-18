@@ -1,4 +1,4 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 ListBuckets ^
- --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"

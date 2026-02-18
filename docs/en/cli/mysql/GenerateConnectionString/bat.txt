@@ -1,5 +1,5 @@
 oint mysql GenerateConnectionString ^
- --addr "127.0.0.1" ^
- --login "bayselonarrend" ^
- --pass "***" ^
- --port 3307
+  --addr "127.0.0.1" ^
+  --login "bayselonarrend" ^
+  --pass "***" ^
+  --port 3307

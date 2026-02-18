@@ -1,2 +1,2 @@
 oint bitrix24 GetCalendarEventsFilterStructure ^
- --empty true
+  --empty true

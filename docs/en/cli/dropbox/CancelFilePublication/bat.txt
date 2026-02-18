@@ -1,3 +1,3 @@
 oint dropbox CancelFilePublication ^
- --token "***" ^
- --fileid "kJU6-a-pT48AAAAAAAAABw"
+  --token "***" ^
+  --fileid "kJU6-a-pT48AAAAAAAAABw"

@@ -1,2 +1,2 @@
 oint telegram GetUpdates ^
- --token "***"
+  --token "***"

@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk GetStatistics \
- --datefrom "2026-01-06T00:00:00" \
- --dateto "2026-01-06T23:59:59" \
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+  --datefrom "2026-02-18T00:00:00" \
+  --dateto "2026-02-18T23:59:59" \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

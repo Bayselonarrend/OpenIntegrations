@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 GetObject ^
- --name "bigfile.exe" ^
- --bucket "newbucket2" ^
- --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'200000'}"
+  --name "bigfile.exe" ^
+  --bucket "newbucket2" ^
+  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'200000'}"

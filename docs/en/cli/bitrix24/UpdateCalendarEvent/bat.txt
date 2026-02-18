@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint bitrix24 UpdateCalendarEvent ^
- --url "b24-ar17wx.bitrix24.by" ^
- --event 3540 ^
- --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --event 3780 ^
+  --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
+  --token "***"

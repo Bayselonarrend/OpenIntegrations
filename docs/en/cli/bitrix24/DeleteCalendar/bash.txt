@@ -1,6 +1,6 @@
 oint bitrix24 DeleteCalendar \
- --url "b24-ar17wx.bitrix24.by" \
- --calendar 1896 \
- --owner 1 \
- --type "user" \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --calendar 2016 \
+  --owner 1 \
+  --type "user" \
+  --token "***"

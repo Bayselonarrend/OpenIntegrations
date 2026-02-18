@@ -1,4 +1,4 @@
 oint vkteams SetChatDescription ^
- --token "***" ^
- --chatid "***" ^
- --text "New description"
+  --token "***" ^
+  --chatid "***" ^
+  --text "New description"

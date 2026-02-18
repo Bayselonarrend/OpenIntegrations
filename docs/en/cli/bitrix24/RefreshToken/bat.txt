@@ -1,4 +1,4 @@
 oint bitrix24 RefreshToken ^
- --clientid "***" ^
- --clientsecret "***" ^
- --refresh "***"
+  --clientid "***" ^
+  --clientsecret "***" ^
+  --refresh "***"

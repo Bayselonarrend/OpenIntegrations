@@ -1,5 +1,5 @@
 oint bitrix24 CheckTaskAccesses ^
- --url "b24-ar17wx.bitrix24.by" ^
- --task "9350" ^
- --users "['1','10']" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --task "9650" ^
+  --users "['1','10']" ^
+  --token "***"

@@ -1,4 +1,4 @@
 oint vkteams RemoveChatMembers \
- --token "***" \
- --chatid "***" \
- --members 1011987091
+  --token "***" \
+  --chatid "***" \
+  --members 1011987091
