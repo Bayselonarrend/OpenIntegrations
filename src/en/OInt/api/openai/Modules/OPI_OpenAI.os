@@ -61,12 +61,12 @@
 // Method at API documentation: [Create chat completion](@platform.openai.com/docs/api-reference/chat/create)
 //
 // Parameters:
-// URL                  - String                   - OpenAI server URL                              - url
-// Token                - String                   - OpenAI authorization token                     - token
-// Model                - String                   - Models name                                    - model
-// Messages             - String, Array of String  - Conversation messages. See GetMessageStructure - msgs
-// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary    - options
-// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary       - headers
+// URL                  - String                        - OpenAI server URL                              - url
+// Token                - String                        - OpenAI authorization token                     - token
+// Model                - String                        - Models name                                    - model
+// Messages             - Structure, Array of Structure - Conversation messages. See GetMessageStructure - msgs
+// AdditionalParameters - Structure Of KeyAndValue      - Additional request parameters, if necessary    - options
+// AdditionalHeaders    - Map Of KeyAndValue            - Additional request headers, if necessary       - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result

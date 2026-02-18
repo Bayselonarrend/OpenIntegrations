@@ -42,23 +42,28 @@ Method at API documentation: [Cash on delivery transfer information](https://api
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint cdek GetDeliveryCashTransfers \
-             --token "***" \
-             --date "2026-01-06T10:16:48.293382" \
-             --testapi "***"
+              --token "***" \
+              --date "2026-02-18T06:24:47" \
+              --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint cdek GetDeliveryCashTransfers ^
-             --token "***" ^
-             --date "2026-01-06T10:16:48.293382" ^
-             --testapi "***"
+              --token "***" ^
+              --date "2026-02-18T06:24:47" ^
+              --testapi "***"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Result"
-{}
+{
+ "timestamp": "2026-02-18T06:24:49.321+00:00",
+ "status": 404,
+ "error": "Not Found",
+ "path": "/v2/payment"
+}
 ```

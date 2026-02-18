@@ -76,8 +76,8 @@ FTP Command: `RMD`
             # JSON data can also be passed as a path to a .json file
             
             oint ftp DeleteDirectory \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-             --path "new_dir/another_one"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+              --path "new_dir/another_one"
         ```
     </TabItem>
   
@@ -86,8 +86,8 @@ FTP Command: `RMD`
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp DeleteDirectory ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-             --path "new_dir/another_one"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+              --path "new_dir/another_one"
         ```
     </TabItem>
 </Tabs>
@@ -96,6 +96,9 @@ FTP Command: `RMD`
 ```json title="Result"
 {
  "result": true,
- "deleted_objects": []
+ "deleted_objects": [],
+ "close_connection": {
+  "result": true
+ }
 }
 ```

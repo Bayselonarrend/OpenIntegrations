@@ -81,8 +81,8 @@ FTP Command: `SITE`
             # JSON data can also be passed as a path to a .json file
             
             oint ftp ExecuteCustomCommand \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-             --cmd "UMASK"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+              --cmd "UMASK"
         ```
     </TabItem>
   
@@ -91,8 +91,8 @@ FTP Command: `SITE`
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp ExecuteCustomCommand ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-             --cmd "UMASK"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+              --cmd "UMASK"
         ```
     </TabItem>
 </Tabs>
@@ -102,6 +102,9 @@ FTP Command: `SITE`
 {
  "data": "200 Your current UMASK is 022\r\n",
  "result": true,
- "status": 200
+ "status": 200,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

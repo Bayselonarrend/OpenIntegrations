@@ -49,8 +49,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
             # JSON data can also be passed as a path to a .json file
             
             oint greenapi GetChatHistory \
-             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --chat "***"
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --chat "***"
         ```
     </TabItem>
   
@@ -59,8 +59,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
             :: JSON data can also be passed as a path to a .json file
             
             oint greenapi GetChatHistory ^
-             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --chat "***"
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --chat "***"
         ```
     </TabItem>
 </Tabs>
@@ -70,65 +70,70 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
 [
  {
   "type": "outgoing",
-  "idMessage": "3EB0749C37E8C9991F4522",
-  "timestamp": 1770473752,
-  "typeMessage": "imageMessage",
+  "idMessage": "3EB03F4EE4559DB3E23810",
+  "timestamp": 1771396801,
+  "typeMessage": "extendedTextMessage",
   "chatId": "***",
-  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/16414198-7770-4a6c-94e3-e5403d799f43.jpg",
-  "caption": "File description",
-  "fileName": "16414198-7770-4a6c-94e3-e5403d799f43.jpg",
-  "jpegThumbnail": "",
-  "mimeType": "image/jpeg",
-  "isAnimated": false,
-  "isForwarded": false,
-  "forwardingScore": 0,
+  "textMessage": "New message",
+  "extendedTextMessage": {
+   "text": "New message",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
   "statusMessage": "sent",
   "sendByApi": "***",
-  "editedMessageId": "",
   "deletedMessageId": "",
-  "videoNote": false,
+  "editedMessageId": "",
   "isEdited": false,
   "isDeleted": false
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB035617C53955AD7F959",
-  "timestamp": 1770473743,
-  "typeMessage": "deletedMessage",
+  "idMessage": "3EB0D641F867A88DC826A8",
+  "timestamp": 1771396800,
+  "typeMessage": "contactMessage",
   "chatId": "***",
-  "deletedMessageData": {
-   "stanzaId": "3EB0CE9B173AD7D98D3D70"
+  "contact": {
+   "displayName": "Artem Evpatoriysky Petrovich",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Petrovich;Artem;Evpatoriysky;\nFN:Artem Evpatoriysky Petrovich\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
   },
   "statusMessage": "sent",
-  "sendByApi": "***"
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB01944D5F387CFB3A261",
-  "timestamp": 1770473729,
-  "typeMessage": "quotedMessage",
+  "idMessage": "3EB0DB2FCD42B1494FA998",
+  "timestamp": 1771396800,
+  "typeMessage": "contactMessage",
   "chatId": "***",
-  "extendedTextMessage": {
-   "text": "New message",
-   "stanzaId": "3EB0CE9B173AD7D98D3D70",
-   "participant": "1234567890@c.us"
+  "contact": {
+   "displayName": "Bicycle",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Bicycle\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
+   "forwardingScore": 0,
+   "isForwarded": false
   },
   "quotedMessage": {
-   "stanzaId": "3EB0CE9B173AD7D98D3D70",
+   "stanzaId": "3EB0D641F867A88DC826A8",
    "participant": "1234567890@c.us",
-   "typeMessage": "extendedTextMessage",
-   "textMessage": "New message",
-   "extendedTextMessage": {
-    "text": "New message",
-    "description": "",
-    "title": "",
-    "previewType": "None",
-    "jpegThumbnail": "",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Artem Evpatoriysky Petrovich",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Petrovich;Artem;Evpatoriysky;\nFN:Artem Evpatoriysky Petrovich\nORG:Bicycle\nTEL;type=CELL;type=VOICE;waid=79001234568:+79001234568\nEND:VCARD",
     "forwardingScore": 0,
     "isForwarded": false
    },
-   "editedMessageId": "",
    "deletedMessageId": "",
+   "editedMessageId": "",
    "isEdited": false,
    "isDeleted": false
   },
@@ -141,81 +146,76 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0CE9B173AD7D98D3D70",
-  "timestamp": 1770473728,
-  "typeMessage": "extendedTextMessage",
+  "idMessage": "3EB03C6B16F5B3C5E4AE98",
+  "timestamp": 1771396799,
+  "typeMessage": "locationMessage",
   "chatId": "***",
-  "textMessage": "New message",
-  "extendedTextMessage": {
-   "text": "New message",
-   "description": "",
-   "title": "",
-   "previewType": "None",
+  "location": {
+   "nameLocation": "",
+   "address": "",
    "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
    "forwardingScore": 0,
    "isForwarded": false
   },
-  "statusMessage": "sent",
-  "sendByApi": "***",
-  "deletedMessageId": "3EB035617C53955AD7F959",
-  "editedMessageId": "",
-  "isEdited": false,
-  "isDeleted": true
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB09C8A2D41B05D36567F",
-  "timestamp": 1770465771,
-  "typeMessage": "deletedMessage",
-  "chatId": "***",
-  "deletedMessageData": {
-   "stanzaId": "3EB03D807475B9670E028E"
+  "quotedMessage": {
+   "stanzaId": "3EB066934E8870EE4F9A9C",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Victory Square, Minsk",
+    "address": "Victory sq.",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
   },
   "statusMessage": "sent",
-  "sendByApi": "***"
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB08165B45C6B275CE348",
-  "timestamp": 1770465764,
-  "typeMessage": "imageMessage",
-  "chatId": "***",
-  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/5ed59d65-25bf-47c2-b13e-51328a2e949d.jpg",
-  "caption": "File description",
-  "fileName": "5ed59d65-25bf-47c2-b13e-51328a2e949d.jpg",
-  "jpegThumbnail": "",
-  "mimeType": "image/jpeg",
-  "isAnimated": false,
-  "isForwarded": false,
-  "forwardingScore": 0,
-  "statusMessage": "sent",
   "sendByApi": "***",
-  "editedMessageId": "",
   "deletedMessageId": "",
-  "videoNote": false,
+  "editedMessageId": "",
   "isEdited": false,
   "isDeleted": false
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0CF8E7E96E93B305C6B",
-  "timestamp": 1770465757,
-  "typeMessage": "quotedMessage",
+  "idMessage": "3EB07A17B3D64000A89A7E",
+  "timestamp": 1771396798,
+  "typeMessage": "pollMessage",
   "chatId": "***",
-  "extendedTextMessage": {
-   "text": "New message",
-   "stanzaId": "3EB03D807475B9670E028E",
-   "participant": "1234567890@c.us"
+  "pollMessageData": {
+   "name": "What's your favorite color??",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true
   },
   "quotedMessage": {
-   "stanzaId": "3EB03D807475B9670E028E",
+   "stanzaId": "3EB0B3D7169AF15270215B",
    "participant": "1234567890@c.us",
-   "typeMessage": "extendedTextMessage",
-   "textMessage": "New message",
-   "extendedTextMessage": {
-    "text": "New message",
-    "description": "",
-    "title": "",
-    "previewType": "None",
+   "type": "",
+   "typeMessage": "",
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
 ...
 ```

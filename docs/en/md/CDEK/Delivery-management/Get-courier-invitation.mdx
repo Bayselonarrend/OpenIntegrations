@@ -44,18 +44,18 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint cdek GetCourierInvitation \
-             --token "***" \
-             --uuid "8cdf0a00-6b2f-4621-a931-587d3563bfe3" \
-             --testapi "***"
+              --token "***" \
+              --uuid "787de2fe-7b63-4392-8ad5-0f67d9559b63" \
+              --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint cdek GetCourierInvitation ^
-             --token "***" ^
-             --uuid "8cdf0a00-6b2f-4621-a931-587d3563bfe3" ^
-             --testapi "***"
+              --token "***" ^
+              --uuid "787de2fe-7b63-4392-8ad5-0f67d9559b63" ^
+              --testapi "***"
         ```
     </TabItem>
 </Tabs>
@@ -64,11 +64,11 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "90eff849-8690-4c9d-be35-c405ab648059",
-  "cdek_number": "1106983961",
-  "order_uuid": "4859874c-9a3b-426b-a32d-4ca06500975b",
-  "intake_date": "2026-02-08",
-  "intake_number": "13311135",
+  "uuid": "787de2fe-7b63-4392-8ad5-0f67d9559b63",
+  "cdek_number": "1106992998",
+  "order_uuid": "491ddc54-3c04-4704-a90d-36f32e7edd43",
+  "intake_date": "2026-02-19",
+  "intake_number": "13311200",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -79,14 +79,11 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Ivaniv Ivan",
+   "name": "Company",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "79589441654"
-    },
-    {
-     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -121,19 +118,24 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-02-18T06:26:43+00:00"
+   },
+   {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-02-07T14:09:05+00:00"
+    "date_time": "2026-02-18T06:26:43+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-07T14:09:05+00:00"
+    "date_time": "2026-02-18T06:26:43+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "dd450042-fc80-4760-9fe2-bc0110073543",
+    "package_id": "9b5e620e-f56d-4d29-ac3f-f6ded882efc4",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -143,10 +145,10 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
  },
  "requests": [
   {
-   "request_uuid": "25a54e6a-5056-4e33-8316-daa2ce774a00",
+   "request_uuid": "e5ea6870-c971-48f8-9ed3-592a40d46718",
    "type": "CREATE",
-   "date_time": "2026-02-07T14:09:01+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-02-18T06:26:39+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }

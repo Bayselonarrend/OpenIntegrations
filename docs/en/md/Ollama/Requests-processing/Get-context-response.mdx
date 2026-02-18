@@ -68,11 +68,11 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
             # JSON data can also be passed as a path to a .json file
             
             oint ollama GetContextResponse \
-             --url "https://hut.openintegrations.dev/ollama" \
-             --model "tinyllama" \
-             --msgs "[{'role':'user','content':'Hello!'}]" \
-             --options "{'options':{'seed':'555','temperature':'10'}}" \
-             --headers "{'Authorization':'***'}"
+              --url "https://hut.openintegrations.dev/ollama" \
+              --model "tinyllama" \
+              --msgs "[{'role':'user','content':'Hello!'}]" \
+              --options "{'options':{'seed':'555','temperature':'10'}}" \
+              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
@@ -81,11 +81,11 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
             :: JSON data can also be passed as a path to a .json file
             
             oint ollama GetContextResponse ^
-             --url "https://hut.openintegrations.dev/ollama" ^
-             --model "tinyllama" ^
-             --msgs "[{'role':'user','content':'Hello!'}]" ^
-             --options "{'options':{'seed':'555','temperature':'10'}}" ^
-             --headers "{'Authorization':'***'}"
+              --url "https://hut.openintegrations.dev/ollama" ^
+              --model "tinyllama" ^
+              --msgs "[{'role':'user','content':'Hello!'}]" ^
+              --options "{'options':{'seed':'555','temperature':'10'}}" ^
+              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
 </Tabs>
@@ -94,18 +94,18 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 ```json title="Result"
 {
  "model": "tinyllama",
- "created_at": "2026-02-07T14:20:37.789188782Z",
+ "created_at": "2026-02-18T06:49:00.153097289Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2007. The current version is called 2021, and it was released on August 31st, 2021. However, the company often updates its software with new features and improvements, so there may be some differences between the previous versions and the latest release."
+  "content": "1C:Enterprise has undergone multiple updates since its initial release. The latest version of the software is 6.50, which was released in December 2021. Prior to this version, it had several previous releases that include 6.49, 6.48, 6.47, and more recent versions such as 6.43, 6.39, etc.\n\nUpdates to the software are regularly made based on feedback from users and improvements in the business environment. This means that new features, functionalities, and enhancements may be added or removed depending on customer needs and industry trends."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 19344157674,
- "load_duration": 15472979,
- "prompt_eval_count": 198,
- "prompt_eval_duration": 7201227156,
- "eval_count": 77,
- "eval_duration": 12115057332
+ "total_duration": 30459599575,
+ "load_duration": 45243841,
+ "prompt_eval_count": 193,
+ "prompt_eval_duration": 7917521331,
+ "eval_count": 140,
+ "eval_duration": 22476901444
 }
 ```

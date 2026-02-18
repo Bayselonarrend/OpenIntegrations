@@ -80,7 +80,7 @@
 				},
 				{
 					"name": "--msgs",
-					"types": "String, Array of String",
+					"types": "Structure, Array of Structure",
 					"description": "Conversation messages. See GetMessageStructure",
 					"default": null,
 					"short": "-s"
