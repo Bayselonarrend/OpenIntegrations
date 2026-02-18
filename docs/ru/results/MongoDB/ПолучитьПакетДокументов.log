@@ -4,7 +4,7 @@
   "cursor": {
    "nextBatch": [
     {
-     "_id": "69922ad9fd49554225d54b6d",
+     "_id": "6995d54efd49554225d5613a",
      "stringField": "Текст",
      "intField": 200,
      "doubleField": 123.456,
@@ -17,7 +17,7 @@
       "text": "Текст",
       "number": 10
      },
-     "dateField": "2026-02-15T20:21:44Z",
+     "dateField": "2026-02-18T15:05:50Z",
      "nullField": null
     }
    ],
