@@ -69,6 +69,96 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse ProcessGRPCSending \
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'01/01/2026 10:00:00','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" \
+              --data "['{\r\n \"'"id\"'": 2,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 101,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 3,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 102,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 4,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 103,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 5,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 104,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse ProcessGRPCSending ^
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'01/01/2026 10:00:00','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
+              --data "['{\r\n \"'"id\"'": 2,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 101,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 3,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 102,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 4,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 103,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 5,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 104,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n']"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true,
+ "request_sending": {
+  "result": true
+ },
+ "data_sending": [
+  {
+   "result": true
+  },
+  {
+   "result": true
+  },
+  {
+   "result": true
+  },
+  {
+   "result": true
+  }
+ ],
+ "received_message": {
+  "message": {
+   "cancelled": false,
+   "exception": {
+    "code": 0,
+    "display_text": "",
+    "name": "",
+    "stack_trace": ""
+   },
+   "extremes": {
+    "BYTES": ""
+   },
+   "logs": [],
+   "output": {
+    "BYTES": ""
+   },
+   "output_columns": [],
+   "output_format": "",
+   "progress": {
+    "read_bytes": 0,
+    "read_rows": 0,
+    "total_rows_to_read": 0,
+    "written_bytes": 235,
+    "written_rows": 5
+   },
+   "query_id": "9cbcf7ff-ee99-43e8-b3c2-607c2d7f7dec",
+   "stats": {
+    "allocated_bytes": 0,
+    "applied_aggregation": false,
+    "applied_limit": false,
+    "blocks": 0,
+    "rows": 0,
+    "rows_before_aggregation": 0,
+    "rows_before_limit": 0
+   },
+   "time_zone": "Europe/Moscow",
+   "totals": {
+    "BYTES": ""
+   }
+  },
+  "result": true
+ },
+ "stream_closing": {
+  "result": true
+ }
+}
+```

@@ -33,6 +33,22 @@ Tls settings can only be set when a connection is created: explicitly, by using 
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint clickhouse GetTlsSettings \
+              --trust false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint clickhouse GetTlsSettings ^
+              --trust false
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

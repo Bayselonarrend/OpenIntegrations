@@ -63,7 +63,8 @@ import TabItem from '@theme/TabItem';
             
             oint clickhouse GetHTTPConnectionSettings \
               --url "http://127.0.0.1:8123" \
-              --auth "{'bayselonarrend':'***'}"
+              --auth "{'bayselonarrend':'***'}" \
+              --headers "{'X-Custom-Header':'CustomValue'}"
         ```
     </TabItem>
   
@@ -73,7 +74,8 @@ import TabItem from '@theme/TabItem';
             
             oint clickhouse GetHTTPConnectionSettings ^
               --url "http://127.0.0.1:8123" ^
-              --auth "{'bayselonarrend':'***'}"
+              --auth "{'bayselonarrend':'***'}" ^
+              --headers "{'X-Custom-Header':'CustomValue'}"
         ```
     </TabItem>
 </Tabs>

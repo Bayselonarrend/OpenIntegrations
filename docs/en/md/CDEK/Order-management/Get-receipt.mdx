@@ -67,45 +67,39 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "8fb195bd-e983-4bf9-b9ba-d26ad9cf8c79",
+  "uuid": "ebf5de14-c61c-4909-bb2e-099059507d3e",
   "orders": [
    {
-    "order_uuid": "484cc23f-50be-4ca6-a197-e743043647f5"
+    "order_uuid": "4a76daaf-7d6d-49c6-98af-f2540679e5b0"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/ebf5de14-c61c-4909-bb2e-099059507d3e.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-18T06:25:37+00:00"
+    "date_time": "2026-02-18T18:31:29+00:00"
    },
    {
-    "code": "INVALID",
-    "name": "Некорректный запрос",
-    "date_time": "2026-02-18T06:25:38+00:00"
+    "code": "PROCESSING",
+    "name": "Формируется",
+    "date_time": "2026-02-18T18:31:29+00:00"
+   },
+   {
+    "code": "READY",
+    "name": "Сформирован",
+    "date_time": "2026-02-18T18:31:29+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "ec353a55-df88-4126-9e0d-3c07cd8b66f3",
+   "request_uuid": "7d4b6c57-529f-4028-9c4c-a322c6e8b097",
    "type": "CREATE",
-   "date_time": "2026-02-18T06:25:37+00:00",
-   "state": "INVALID",
-   "errors": [
-    {
-     "code": "v2_orders_number_is_empty",
-     "message": "Entity is empty. All orders are incorrect"
-    }
-   ],
-   "warnings": [
-    {
-     "code": "v2_order_invalid",
-     "message": "Order is invalid 484cc23f-50be-4ca6-a197-e743043647f5"
-    }
-   ]
+   "date_time": "2026-02-18T18:31:28+00:00",
+   "state": "SUCCESSFUL"
   }
  ],
  "related_entities": []
