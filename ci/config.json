@@ -27,9 +27,13 @@
     "description": "OneScript engine for CLI packs (Linux, at WSL)",
     "value": "/mnt/c/engine/linux/"
    },
-   "onecPath": {
-    "description": "1C:Enterprise exe path",
+   "onecConfig": {
+    "description": "1C:Enterprise configurator exe path",
     "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
+   },
+   "onecClient": {
+    "description": "1C:Enterprise client exe path",
+    "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe"
    },
    "osPath": {
     "description": "OneScript exe path",
