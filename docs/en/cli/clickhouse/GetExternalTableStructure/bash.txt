@@ -1,0 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
+oint clickhouse GetExternalTableStructure \
+  --name "ext_grpc" \
+  --cols "{'id':'UInt64','name':'String'}" \
+  --data "1	John\n2	Jane" \
+  --format "TSV"

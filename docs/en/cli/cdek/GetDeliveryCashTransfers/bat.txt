@@ -1,4 +1,4 @@
 oint cdek GetDeliveryCashTransfers ^
   --token "***" ^
-  --date "2026-02-18T06:24:47" ^
+  --date "2026-02-18T13:52:11" ^
   --testapi "***"

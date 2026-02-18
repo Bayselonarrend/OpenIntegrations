@@ -4,4 +4,4 @@ oint greenapi SendTextMessage ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "***" ^
   --text "New message" ^
-  --quoted "3EB0A4E38563ED5199EFE6"
+  --quoted "3EB012B6D2E620D6E1C43C"

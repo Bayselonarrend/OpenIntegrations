@@ -1,4 +1,3 @@
 oint gdrive CreateFolder \
   --token "***" \
-  --title "TestFolder" \
-  --catalog "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP"
+  --title "TestFolder"
