@@ -45,6 +45,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse GetExternalTableStructure \
+              --name "ext_grpc" \
+              --cols "{'id':'UInt64','name':'String'}" \
+              --data "1	John\n2	Jane" \
+              --format "TSV"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse GetExternalTableStructure ^
+              --name "ext_grpc" ^
+              --cols "{'id':'UInt64','name':'String'}" ^
+              --data "1	John\n2	Jane" ^
+              --format "TSV"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -54,7 +80,7 @@ import TabItem from '@theme/TabItem';
   "id": "UInt64",
   "name": "String"
  },
- "data": "1\tTest\n2Test2",
+ "data": "1\tTest\n2\tTest2",
  "format": "TSV"
 }
 ```

@@ -44,18 +44,18 @@ Method at API documentation: [Information about delivery appointment](https://ap
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint cdek GetDeliveryAppointment \
-             --token "***" \
-             --uuid "9d98a5c2-8ce6-478b-be2c-e81c03669dfa" \
-             --testapi "***"
+              --token "***" \
+              --uuid "af4886ff-8670-485a-8e63-10c8a9220292" \
+              --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint cdek GetDeliveryAppointment ^
-             --token "***" ^
-             --uuid "9d98a5c2-8ce6-478b-be2c-e81c03669dfa" ^
-             --testapi "***"
+              --token "***" ^
+              --uuid "af4886ff-8670-485a-8e63-10c8a9220292" ^
+              --testapi "***"
         ```
     </TabItem>
 </Tabs>
@@ -65,8 +65,8 @@ Method at API documentation: [Information about delivery appointment](https://ap
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "9a8f52c1-354e-4a91-8a08-e3420c41c527",
-  "date": "2026-02-23",
+  "order_uuid": "4b4c1637-29d2-4ca6-990d-496f1a494d89",
+  "date": "2026-03-04",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Group office",
@@ -83,30 +83,30 @@ Method at API documentation: [Information about delivery appointment](https://ap
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "fb3c1ffe-e645-4a00-9269-dcd6d6574dea",
+  "uuid": "132da0c1-b65a-4c84-af04-192e19b515e6",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-02-07T14:09:09+00:00"
+    "date_time": "2026-02-18T18:32:39+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-02-07T14:09:08+00:00"
+    "date_time": "2026-02-18T18:32:38+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "b3f44a6e-3666-4a0e-ac00-5b44b002e17e",
+   "request_uuid": "375e70f2-f89d-4ae2-8e8d-7c5e1aabba7b",
    "type": "CREATE",
-   "date_time": "2026-02-07T14:09:08+00:00",
+   "date_time": "2026-02-18T18:32:38+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2026-02-17"
+     "message": "Указанная дата доставки не может быть позднее 2026-03-03"
     }
    ]
   }

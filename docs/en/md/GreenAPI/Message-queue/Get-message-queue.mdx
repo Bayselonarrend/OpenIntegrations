@@ -61,5 +61,124 @@ Method at API documentation: [ShowMessagesQueue](https://green-api.com/docs/api/
 
 
 ```json title="Result"
-{}
+[
+ {
+  "messageID": "3EB0E05740E47A854D08E4",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "What's your favorite color??",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0F9873C1741A7617B95",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "What's your favorite color??",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0E05740E47A854D08E4",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB06C44553F4822E032F8",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Victory Square, Minsk",
+   "nameLocation": "Victory sq.",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0E4CAEBCB9CDA06B6D2",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB06C44553F4822E032F8",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB05DB91BD0529FB2F661",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Artem",
+    "middleName": "Evpatoriysky",
+    "lastName": "Petrovich",
+    "company": "Bicycle"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0A462DC6C6D92D2D014",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Bicycle"
+   },
+   "quotedMessageId": "3EB05DB91BD0529FB2F661",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB01E8CDE497BA1184328"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0191E0A2616C793B81F"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0820FF0F268FC5F611F",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0191E0A2616C793B81F",
+   "message": "New message text",
+   "linkPreview": true
+  }
+ }
+]
 ```

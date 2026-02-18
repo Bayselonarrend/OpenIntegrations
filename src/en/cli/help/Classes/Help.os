@@ -31,8 +31,8 @@ Procedure DisplayStartPage() Export
 
 	CommandList = StrConcat(CommandArray, ", ");
 
-	OffsetLength = 10;
-	NewLineTab = "          ";
+	OffsetLength = 11;
+	NewLineTab = "           ";
 
 	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write(StrTemplate("
@@ -65,6 +65,7 @@ Procedure DisplayStartPage() Export
 		|  (--out|#color=Green)   -%3
 		|
 		|  (Full documentation can be found at:|#color=Yellow) (https://openintegrations.dev|#color=Cyan)
+		|
 		|"
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
