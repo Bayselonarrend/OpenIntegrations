@@ -1,2 +1,2 @@
 oint airtable GetCheckboxField \
- --title "Checkbox"
+  --title "Checkbox"

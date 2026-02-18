@@ -1,4 +1,4 @@
 oint dropbox GetObjectVersionList ^
- --token "***" ^
- --path "/New/pic.png" ^
- --amount 1
+  --token "***" ^
+  --path "/New/pic.png" ^
+  --amount 1

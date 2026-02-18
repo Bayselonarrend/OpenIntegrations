@@ -1,5 +1,5 @@
 oint rportal GetPermanentToken ^
- --url "tests.openintegrations.dev" ^
- --token "***" ^
- --user 1 ^
- --name "test_key"
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --user 1 ^
+  --name "test_key"

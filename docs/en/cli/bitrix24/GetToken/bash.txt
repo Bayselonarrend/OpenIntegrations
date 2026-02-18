@@ -1,4 +1,4 @@
 oint bitrix24 GetToken \
- --clientid "***" \
- --clientsecret "***" \
- --code "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c"
+  --clientid "***" \
+  --clientsecret "***" \
+  --code "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c"

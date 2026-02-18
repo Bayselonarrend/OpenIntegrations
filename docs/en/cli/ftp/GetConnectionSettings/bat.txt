@@ -1,5 +1,5 @@
 oint ftp GetConnectionSettings ^
- --host "172.33.0.11" ^
- --port 21 ^
- --login "bayselonarrend" ^
- --pass "***"
+  --host "172.33.0.11" ^
+  --port 21 ^
+  --login "bayselonarrend" ^
+  --pass "***"

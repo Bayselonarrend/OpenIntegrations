@@ -1,2 +1,2 @@
 oint tcp GetTLSSettings \
- --trust true
+  --trust true

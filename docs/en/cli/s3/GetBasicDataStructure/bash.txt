@@ -1,5 +1,5 @@
 oint s3 GetBasicDataStructure \
- --url "s3.openintegrations.dev" \
- --access "bayselonarrend" \
- --secret "***" \
- --region "BTC"
+  --url "s3.openintegrations.dev" \
+  --access "bayselonarrend" \
+  --secret "***" \
+  --region "BTC"

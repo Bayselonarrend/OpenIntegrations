@@ -1,3 +1,3 @@
 oint slack CloseDialog ^
- --token "***" ^
- --conv "D06UAKK1C6R"
+  --token "***" ^
+  --conv "D06UAKK1C6R"

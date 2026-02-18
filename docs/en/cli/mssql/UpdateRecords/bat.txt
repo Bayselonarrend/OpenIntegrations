@@ -1,8 +1,8 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint mssql UpdateRecords ^
- --table "test_data" ^
- --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
- --filter "{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false}" ^
- --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "test_data" ^
+  --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
+  --filter "{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false}" ^
+  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

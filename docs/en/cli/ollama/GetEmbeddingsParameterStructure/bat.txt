@@ -1,2 +1,2 @@
 oint ollama GetEmbeddingsParameterStructure ^
- --empty true
+  --empty true

@@ -1,3 +1,3 @@
 oint bitrix24 GetFileBlock ^
- --title "Image" ^
- --url "https://hut.openintegrations.dev/test_data/document.docx"
+  --title "Image" ^
+  --url "https://hut.openintegrations.dev/test_data/document.docx"

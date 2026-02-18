@@ -1,2 +1,2 @@
 oint telegram DeleteWebhook \
- --token "***"
+  --token "***"

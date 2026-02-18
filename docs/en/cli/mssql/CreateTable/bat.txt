@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint mssql CreateTable ^
- --table "somename" ^
- --cols "{'tinyint_field':'tinyint','smallint_field':'smallint','int_field':'int','bigint_field':'bigint','float24_field':'float(24)','float53_field':'float(53)','bit_field':'bit','nvarchar_field':'nvarchar(4000)','varbinary_field':'varbinary(max)','uid_field':'uniqueidentifier','numeric_field':'numeric(5,3)','xml_field':'xml','date_field':'date','time_field':'time','dto_field':'datetimeoffset','datetime_field':'datetime','wtf_field':'WTF'}" ^
- --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "somename" ^
+  --cols "{'tinyint_field':'tinyint','smallint_field':'smallint','int_field':'int','bigint_field':'bigint','float24_field':'float(24)','float53_field':'float(53)','bit_field':'bit','nvarchar_field':'nvarchar(4000)','varbinary_field':'varbinary(max)','uid_field':'uniqueidentifier','numeric_field':'numeric(5,3)','xml_field':'xml','date_field':'date','time_field':'time','dto_field':'datetimeoffset','datetime_field':'datetime','wtf_field':'WTF'}" ^
+  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

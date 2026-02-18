@@ -1,3 +1,3 @@
 oint ollama GetContextMessageStructure ^
- --role "user" ^
- --text "Hello!"
+  --role "user" ^
+  --text "Hello!"

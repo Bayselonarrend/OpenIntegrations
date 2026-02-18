@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint greenapi SetReadMark ^
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --chat "***" ^
- --message "3EB0BE53FAB261EA6FF1B4"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+  --chat "***" ^
+  --message "3EB0D9A90344EF4A6A5669"

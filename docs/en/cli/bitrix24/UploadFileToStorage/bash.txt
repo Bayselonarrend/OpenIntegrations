@@ -1,6 +1,6 @@
 oint bitrix24 UploadFileToStorage \
- --url "b24-ar17wx.bitrix24.by" \
- --title "Picture1.jpg" \
- --file "https://hut.openintegrations.dev/test_data/picture2.jpg" \
- --storageid 3 \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --title "Picture1.jpg" \
+  --file "https://hut.openintegrations.dev/test_data/picture2.jpg" \
+  --storageid 3 \
+  --token "***"

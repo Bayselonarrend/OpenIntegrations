@@ -1,5 +1,5 @@
 oint dropbox AddUsersToFile \
- --token "***" \
- --fileid "kJU6-a-pT48AAAAAAAAABw" \
- --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
- --readonly true
+  --token "***" \
+  --fileid "kJU6-a-pT48AAAAAAAAABw" \
+  --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
+  --readonly true

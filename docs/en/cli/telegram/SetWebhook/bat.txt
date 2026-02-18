@@ -1,3 +1,3 @@
 oint telegram SetWebhook ^
- --token "***" ^
- --url "https://api.athenaeum.digital/opi/hs/twitter"
+  --token "***" ^
+  --url "https://api.athenaeum.digital/opi/hs/twitter"

@@ -1,4 +1,4 @@
 oint notion CreatePage ^
- --token "***" ^
- --page "5dd94c34fab04bff986b7511c0779f77" ^
- --title "TestTitle"
+  --token "***" ^
+  --page "5dd94c34fab04bff986b7511c0779f77" ^
+  --title "TestTitle"

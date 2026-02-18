@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint greenapi UnarchiveChat \
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
- --chat "***"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --chat "***"

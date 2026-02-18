@@ -1,2 +1,2 @@
 oint vk CreateTokenRetrievalLink ^
- --app "51694790"
+  --app "51694790"

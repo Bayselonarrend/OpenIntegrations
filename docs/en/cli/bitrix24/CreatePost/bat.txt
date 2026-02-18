@@ -1,8 +1,8 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint bitrix24 CreatePost ^
- --url "b24-ar17wx.bitrix24.by" ^
- --text "Text of post" ^
- --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" ^
- --title "Post title" ^
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" ^
+  --text "Text of post" ^
+  --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" ^
+  --title "Post title" ^
+  --token "***"
