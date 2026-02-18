@@ -1,8 +1,8 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint mysql AddRecords ^
- --table "testtable" ^
- --rows "[{'char_field':{'TEXT':'AAAAA'},'varchar_field':{'TEXT':'Some varchar'},'tinytext_field':{'TEXT':'Some tiny text'},'text_field':{'TEXT':'Some text'},'mediumtext_field':{'TEXT':'Some medium text'},'longtext_field':{'TEXT':'Some looooooong text'},'tinyint_field':{'INT':'127'},'smallint_field':{'INT':'-32767'},'mediumint_field':{'INT':'8388607'},'int_field':{'INT':'-2147483647'},'uint_field':{'UINT':'4294967295'},'bigint_field':{'INT':'9223372036854775807'},'float_field':{'FLOAT':'100.5'},'double_field':{'FLOAT':'100.512123'},'date_field':{'DATE':'01/06/2026 09:22:54'},'time_field':{'TIME':'01/06/2026 09:22:54'},'datetime_field':{'DATE':'01/06/2026 09:22:54'},'timestamp_field':{'DATE':'01/06/2026 09:22:54'},'mediumblob_field':{'BYTES':'/tmp/44xksofs.bw4'},'set_field':{'TEXT':'one'}}]" ^
- --trn true ^
- --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --table "testtable" ^
+  --rows "[{'char_field':{'TEXT':'AAAAA'},'varchar_field':{'TEXT':'Some varchar'},'tinytext_field':{'TEXT':'Some tiny text'},'text_field':{'TEXT':'Some text'},'mediumtext_field':{'TEXT':'Some medium text'},'longtext_field':{'TEXT':'Some looooooong text'},'tinyint_field':{'INT':'127'},'smallint_field':{'INT':'-32767'},'mediumint_field':{'INT':'8388607'},'int_field':{'INT':'-2147483647'},'uint_field':{'UINT':'4294967295'},'bigint_field':{'INT':'9223372036854775807'},'float_field':{'FLOAT':'100.5'},'double_field':{'FLOAT':'100.512123'},'date_field':{'DATE':'02/18/2026 05:37:43'},'time_field':{'TIME':'02/18/2026 05:37:43'},'datetime_field':{'DATE':'02/18/2026 05:37:43'},'timestamp_field':{'DATE':'02/18/2026 05:37:43'},'mediumblob_field':{'BYTES':'/tmp/35esw4mg.vbi'},'set_field':{'TEXT':'one'}}]" ^
+  --trn true ^
+  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

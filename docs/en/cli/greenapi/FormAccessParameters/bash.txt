@@ -1,5 +1,5 @@
 oint greenapi FormAccessParameters \
- --api "***" \
- --media "https://7105.media.greenapi.com" \
- --id "7105187566" \
- --token "***"
+  --api "***" \
+  --media "https://7105.media.greenapi.com" \
+  --id "7105187566" \
+  --token "***"

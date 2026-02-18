@@ -1,5 +1,5 @@
 oint telegram ForwardMessage \
- --token "***" \
- --message "24247" \
- --from "@testsichee" \
- --to "461699897"
+  --token "***" \
+  --message "25064" \
+  --from "@testsichee" \
+  --to "461699897"

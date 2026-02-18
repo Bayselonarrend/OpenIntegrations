@@ -1,2 +1,2 @@
 oint bitrix24 GetCommentStructure ^
- --empty false
+  --empty false

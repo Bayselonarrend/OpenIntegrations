@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "30082aa7-fc4e-8135-9784-d44ad29ded98",
+ "id": "30b82aa7-fc4e-814f-a435-fc6cf552abc1",
  "cover": null,
  "icon": null,
- "created_time": "2026-02-07T13:54:00Z",
+ "created_time": "2026-02-18T05:53:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-02-07T13:54:00Z",
+ "last_edited_time": "2026-02-18T05:53:00Z",
  "title": [
   {
    "type": "text",
@@ -53,22 +53,8 @@
  ],
  "is_inline": false,
  "properties": {
-  "User": {
-   "id": "%3Bl%5Cy",
-   "name": "User",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
-  "Image": {
-   "id": "C%5B%3FN",
-   "name": "Image",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
   "Number": {
-   "id": "MBR%3E",
+   "id": "G%60Px",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -76,68 +62,82 @@
     "format": "number"
    }
   },
-  "Email": {
-   "id": "YKYd",
-   "name": "Email",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
   "Active": {
-   "id": "YzT%7C",
+   "id": "Gb%5DZ",
    "name": "Active",
    "description": null,
    "type": "checkbox",
    "checkbox": {}
   },
+  "Email": {
+   "id": "LXmk",
+   "name": "Email",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Description": {
+   "id": "X%3FGS",
+   "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Image": {
+   "id": "f%60RT",
+   "name": "Image",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "CreationDate": {
+   "id": "h%3DG%7C",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "User": {
+   "id": "kD%7DM",
+   "name": "User",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
+  "Phone": {
+   "id": "mxSe",
+   "name": "Phone",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
+  },
   "Status": {
-   "id": "%5EILW",
+   "id": "vo%7CR",
    "name": "Status",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "60bffa1f-c488-4a57-a34f-7aec63f89f9d",
+      "id": "07997f8d-6e00-46fb-b98f-6404ada01418",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "4779b37d-dfd0-4a2d-9f5d-3817d1dcdf4c",
+      "id": "214ecc70-f88a-4b15-8998-4bab47556464",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "af9df5f5-94d3-462b-a6bf-b5562e98c98b",
+      "id": "51d23763-31c0-4b1f-8139-170f45656685",
       "name": "Remote",
       "color": "red",
       "description": null
      }
     ]
    }
-  },
-  "Phone": {
-   "id": "jayH",
-   "name": "Phone",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Description": {
-   "id": "psU%7D",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "CreationDate": {
-   "id": "weac",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
   },
   "Name": {
    "id": "title",
@@ -151,9 +151,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/30082aa7fc4e81359784d44ad29ded98",
+ "url": "https://www.notion.so/30b82aa7fc4e814fa435fc6cf552abc1",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "8064ecc4-6222-47df-9b74-6e3d2d299349"
+ "request_id": "abc80ad7-89a4-4174-9cde-0ef57a72b031"
 }

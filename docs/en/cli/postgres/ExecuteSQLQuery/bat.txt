@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint postgres ExecuteSQLQuery ^
- --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" ^
- --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
+  --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" ^
+  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

@@ -1,6 +1,6 @@
 oint bitrix24 CreateSystemNotification \
- --url "b24-ar17wx.bitrix24.by" \
- --user 10 \
- --text "Message text" \
- --tag "New" \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --user 10 \
+  --text "Message text" \
+  --tag "New" \
+  --token "***"

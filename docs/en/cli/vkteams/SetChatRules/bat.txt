@@ -1,4 +1,4 @@
 oint vkteams SetChatRules ^
- --token "***" ^
- --chatid "***" ^
- --text "Text of the new rules"
+  --token "***" ^
+  --chatid "***" ^
+  --text "Text of the new rules"

@@ -1,3 +1,3 @@
 oint slack DeleteFile \
- --token "***" \
- --fileid "F0A6UN1SQQK"
+  --token "***" \
+  --fileid "F0AFHMFHBUM"

@@ -1,9 +1,9 @@
 # JSON data can also be passed as a path to a .json file
 
 oint greenapi SendFile \
- --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
- --chat "***" \
- --file "https://hut.openintegrations.dev/test_data/video.mp4" \
- --filename "vid.mp4" \
- --caption "File description" \
- --quoted "3EB0F9DDD20F02A9D27EA2"
+  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+  --chat "***" \
+  --file "https://hut.openintegrations.dev/test_data/video.mp4" \
+  --filename "vid.mp4" \
+  --caption "File description" \
+  --quoted "3EB02824D332CB2599452D"

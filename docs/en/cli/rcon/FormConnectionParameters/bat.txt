@@ -1,5 +1,5 @@
 oint rcon FormConnectionParameters ^
- --url "127.0.0.1:25575" ^
- --pass "***" ^
- --rtout 20 ^
- --wtout 20
+  --url "127.0.0.1:25575" ^
+  --pass "***" ^
+  --rtout 20 ^
+  --wtout 20

@@ -1,4 +1,4 @@
 oint bitrix24 DeleteCustomTaskField \
- --url "b24-ar17wx.bitrix24.by" \
- --fieldid 261 \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --fieldid 261 \
+  --token "***"

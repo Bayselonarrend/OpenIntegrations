@@ -1,0 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
+oint mysql EnsureRecords \
+  --table "test_merge" \
+  --rows "[{'id':{'INT':'1'},'name':{'TEXT':'Vitaly Updated'},'age':{'INT':'25'},'salary':{'DOUBLE':'1500.5'}},{'id':{'INT':'3'},'name':{'TEXT':'Anton'},'age':{'INT':'30'},'salary':{'DOUBLE':'3000'}}]" \
+  --db "mysql://bayselonarrend:12we3456!2154@127.0.0.1:3307/testbase1" \
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

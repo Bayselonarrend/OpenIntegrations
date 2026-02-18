@@ -1,6 +1,6 @@
 oint telegram SendContact ^
- --token "***" ^
- --chat "***" ^
- --name "Петр" ^
- --surname "Петров" ^
- --phone "***"
+  --token "***" ^
+  --chat "***" ^
+  --name "Петр" ^
+  --surname "Петров" ^
+  --phone "***"

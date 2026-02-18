@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint bitrix24 CreateChat \
- --url "b24-ar17wx.bitrix24.by" \
- --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':['10','1']}" \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':['10','1']}" \
+  --token "***"

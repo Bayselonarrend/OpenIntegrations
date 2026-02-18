@@ -1,10 +1,10 @@
 # JSON data can also be passed as a path to a .json file
 
 oint bitrix24 AddCustomTaskField \
- --url "b24-ar17wx.bitrix24.by" \
- --type "string" \
- --fieldname "TEXT_FIELD" \
- --externalid "BITRIX_TEXT_FIELD" \
- --title "Text field" \
- --label "{'en':'Some field','ru':'Nekotoroe pole'}" \
- --token "***"
+  --url "b24-ar17wx.bitrix24.by" \
+  --type "string" \
+  --fieldname "TEXT_FIELD" \
+  --externalid "BITRIX_TEXT_FIELD" \
+  --title "Text field" \
+  --label "{'en':'Some field','ru':'Nekotoroe pole'}" \
+  --token "***"

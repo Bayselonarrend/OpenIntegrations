@@ -1,4 +1,4 @@
 oint dropbox GetListOfFolderFiles \
- --token "***" \
- --path "/New" \
- --detail true
+  --token "***" \
+  --path "/New" \
+  --detail true

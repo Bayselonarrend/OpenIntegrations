@@ -1,6 +1,6 @@
 oint slack UploadFile ^
- --token "***" ^
- --file "https://hut.openintegrations.dev/test_data/document.docx" ^
- --filename "megadoc.docx" ^
- --title "NewFile" ^
- --channel "C06UFNUTKUL"
+  --token "***" ^
+  --file "https://hut.openintegrations.dev/test_data/document.docx" ^
+  --filename "megadoc.docx" ^
+  --title "NewFile" ^
+  --channel "C06UFNUTKUL"
