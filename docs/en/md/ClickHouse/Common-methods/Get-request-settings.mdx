@@ -68,13 +68,31 @@ The response body can be returned as a collection (for JSON) or as binary data (
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint clickhouse GetRequestSettings \
+              --query "SELECT * FROM events_stream_test ORDER BY id" \
+              --format "JSON"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint clickhouse GetRequestSettings ^
+              --query "SELECT * FROM events_stream_test ORDER BY id" ^
+              --format "JSON"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "b73d27b0-3b33-4541-a7bd-3c276c63b94f",
+ "id": "d375d60b-3507-4301-abea-e60f1d8f2859",
  "data": {
   "meta": [],
   "data": []

@@ -43,6 +43,180 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse ProcessGRPCReceiving \
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint clickhouse ProcessGRPCReceiving ^
+              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "stop_message": {
+  "error": "Closed",
+  "result": false
+ },
+ "result": true,
+ "messages": [
+  {
+   "message": {
+    "cancelled": false,
+    "exception": {
+     "code": 0,
+     "display_text": "",
+     "name": "",
+     "stack_trace": ""
+    },
+    "extremes": {
+     "BYTES": ""
+    },
+    "logs": [],
+    "output": {
+     "meta": [
+      {
+       "name": "id",
+       "type": "UInt64"
+      },
+      {
+       "name": "timestamp",
+       "type": "DateTime"
+      },
+      {
+       "name": "user_id",
+       "type": "UInt32"
+      },
+      {
+       "name": "event_type",
+       "type": "String"
+      },
+      {
+       "name": "payload",
+       "type": "String"
+      }
+     ],
+     "data": [
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+...
+```
