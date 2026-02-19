@@ -1,38 +1,38 @@
 ﻿{
  "entity": {
-  "uuid": "34fe5654-06f3-491b-a296-522d9bef6b9d",
+  "uuid": "85ca59eb-3913-4412-a2a9-b9b0b4bb0123",
   "orders": [
    {
-    "order_uuid": "703ac320-163a-452b-af94-4bbbbb8aa2e3"
+    "order_uuid": "96365116-5373-4186-b4bc-23653e4a2d89"
    }
   ],
   "copy_count": 1,
   "format": "A5",
-  "url": "https://api.edu.cdek.ru/v2/print/barcodes/34fe5654-06f3-491b-a296-522d9bef6b9d.pdf",
+  "url": "https://api.edu.cdek.ru/v2/print/barcodes/85ca59eb-3913-4412-a2a9-b9b0b4bb0123.pdf",
   "lang": "RUS",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-18T15:29:22+00:00"
+    "date_time": "2026-02-19T12:28:03+00:00"
    },
    {
     "code": "PROCESSING",
     "name": "Формируется",
-    "date_time": "2026-02-18T15:29:22+00:00"
+    "date_time": "2026-02-19T12:28:03+00:00"
    },
    {
     "code": "READY",
     "name": "Сформирован",
-    "date_time": "2026-02-18T15:29:23+00:00"
+    "date_time": "2026-02-19T12:28:04+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "e1dee016-bacd-4350-bf3d-957585b48d57",
+   "request_uuid": "0deefe8a-6cdb-4ba5-b885-6144bfb9ffe2",
    "type": "CREATE",
-   "date_time": "2026-02-18T15:29:22+00:00",
+   "date_time": "2026-02-19T12:28:03+00:00",
    "state": "SUCCESSFUL"
   }
  ],

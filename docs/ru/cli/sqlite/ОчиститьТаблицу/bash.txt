@@ -1,3 +1,3 @@
 oint sqlite ОчиститьТаблицу \
   --table "test" \
-  --db "/tmp/evrcum5w.hzg.sqlite"
+  --db "/tmp/wjbpusja.e2c.sqlite"

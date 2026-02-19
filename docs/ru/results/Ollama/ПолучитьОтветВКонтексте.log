@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-02-18T15:42:38.541445509Z",
+ "created_at": "2026-02-19T12:50:23.182731373Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2003. However, it was discontinued after that year due to a decline in interest and business demand for the product. It was later revived as a subscription-based service by Odoo in 2006, and has since then been maintained with regular updates and improvements, including new features and functionality. The latest version, 14, is available on both the commercial and open source platforms of Odoo."
+  "content": "I don't have information about specific releases of 1c:enterprise. However, according to their website, the latest release as of this writing is v9.10. It has been available since may 2015. The latest known version for mac os m1 and windows (64-bit) is 1c:enterprise 9.10.2, released in october 2018."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 23147394590,
- "load_duration": 18727655,
- "prompt_eval_count": 311,
- "prompt_eval_duration": 7559675829,
- "eval_count": 108,
- "eval_duration": 15564155167
+ "total_duration": 15900618121,
+ "load_duration": 20557180,
+ "prompt_eval_count": 156,
+ "prompt_eval_duration": 5027197482,
+ "eval_count": 96,
+ "eval_duration": 10847718152
 }

@@ -3,4 +3,4 @@
 oint greenapi ПолучитьСообщение \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "***" \
-  --msg "3EB041BC902ACD543B8307"
+  --msg "3EB0696540A2C1FE9391DF"

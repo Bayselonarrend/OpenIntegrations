@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1771396743,
-  "idMessage": "3EB02824D332CB2599452D",
+  "timestamp": 1771423627,
+  "idMessage": "3EB0F3B3586FDD7EB2220E",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,16 +17,26 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/9dcf4d84-0361-41a6-a021-490667c49ae5.jpg",
-    "caption": "File description",
-    "fileName": "9dcf4d84-0361-41a6-a021-490667c49ae5.jpg",
-    "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
-    "forwardingScore": 0,
-    "isForwarded": false
+   "typeMessage": "quotedMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "stanzaId": "3EB012B6D2E620D6E1C43C",
+    "participant": "1234567890@c.us"
+   },
+   "quotedMessage": {
+    "stanzaId": "3EB012B6D2E620D6E1C43C",
+    "participant": "1234567890@c.us",
+    "typeMessage": "extendedTextMessage",
+    "textMessage": "New message",
+    "extendedTextMessage": {
+     "text": "New message",
+     "description": "",
+     "title": "",
+     "previewType": "None",
+     "jpegThumbnail": "",
+     "forwardingScore": 0,
+     "isForwarded": false
+    }
    }
   }
  }
