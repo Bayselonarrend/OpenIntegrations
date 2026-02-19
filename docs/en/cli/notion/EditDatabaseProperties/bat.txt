@@ -2,7 +2,7 @@
 
 oint notion EditDatabaseProperties ^
   --token "***" ^
-  --base "30b82aa7-fc4e-817f-8dda-f7606912c191" ^
+  --base "30c82aa7-fc4e-8180-85bd-e9121714c5e2" ^
   --props "{'Email':'rich_text','Website':null}" ^
   --title "TestTitle" ^
   --description "TestDescription"

@@ -1,6 +1,6 @@
 oint vkteams SendFile \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/0s1bhtjg.sw0" \
+  --file "/tmp/skkfkuod.qao" \
   --text "File caption" \
   --filename "ImportantDocument.docx"

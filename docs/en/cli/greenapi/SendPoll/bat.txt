@@ -6,4 +6,4 @@ oint greenapi SendPoll ^
   --text "What's your favorite color??" ^
   --options "['Red','Yellow','Green']" ^
   --multi true ^
-  --quoted "3EB02104279BFB29CE4AD3"
+  --quoted "3EB00B34730028014344C8"

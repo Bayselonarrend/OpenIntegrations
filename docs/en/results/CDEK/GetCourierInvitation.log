@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "f56f7e90-acfc-4719-870f-2ea2c48f87d2",
-  "cdek_number": "1106995040",
-  "order_uuid": "2cd26eab-cb2c-4020-bda9-21d18e9f2e61",
-  "intake_date": "2026-02-19",
-  "intake_number": "13311215",
+  "uuid": "fdaea526-ed94-4c26-bfe2-041f1e613dd8",
+  "cdek_number": "1106995843",
+  "order_uuid": "fef031c7-c8a9-44fc-ae58-6239393cd09c",
+  "intake_date": "2026-02-20",
+  "intake_number": "13311222",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -20,9 +20,6 @@
    "phones": [
     {
      "number": "79589441654"
-    },
-    {
-     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -59,22 +56,22 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2026-02-18T18:32:34+00:00"
+    "date_time": "2026-02-19T09:15:08+00:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-02-18T18:32:34+00:00"
+    "date_time": "2026-02-19T09:15:08+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-18T18:32:34+00:00"
+    "date_time": "2026-02-19T09:15:08+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "22262d1f-a6dd-411c-b4a2-8d20bbfaf8c2",
+    "package_id": "4f0bc478-bb0d-4d07-bc48-6611f801494c",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -84,9 +81,9 @@
  },
  "requests": [
   {
-   "request_uuid": "c750ae69-1c68-4eed-98fd-03d3b959c0e9",
+   "request_uuid": "5ca73143-913d-43d3-907f-7120f6da0d65",
    "type": "CREATE",
-   "date_time": "2026-02-18T18:32:30+00:00",
+   "date_time": "2026-02-19T09:15:04+00:00",
    "state": "SUCCESSFUL"
   }
  ]

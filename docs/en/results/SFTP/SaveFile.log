@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/fpsjll1a.0wc.bin",
- "result": true
+ "filepath": "/tmp/2mmztzpe.yci.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
