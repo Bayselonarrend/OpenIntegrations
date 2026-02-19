@@ -1,6 +1,6 @@
 oint telegram ReplaceMessageText ^
   --token "***" ^
   --chat "***" ^
-  --message "25114" ^
+  --message "25316" ^
   --text "<b>Bold text</b>" ^
   --parsemode "HTML"

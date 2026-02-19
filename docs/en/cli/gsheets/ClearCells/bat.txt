@@ -1,5 +1,5 @@
 oint gsheets ClearCells ^
   --token "***" ^
-  --spreadsheet "1NlProN9MrfKNO-R7DEHxdYgWSoHGov3mKXi4djPyUto" ^
+  --spreadsheet "1go29gnILBhHvNbjZm2AnDPjQGop5PoOaIHZ7L8bb1bc" ^
   --cells "['B2','A3','B4']" ^
   --sheetname "Sheet2"

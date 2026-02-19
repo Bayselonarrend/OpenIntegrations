@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint s3 DeleteBucket \
-  --name "a6ca664f" \
+  --name "e1500558" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true

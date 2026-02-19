@@ -1,4 +1,4 @@
 oint telegram DeleteForumTopic \
   --token "***" \
   --forum "-1001971186208" \
-  --topic "13591"
+  --topic "13690"
