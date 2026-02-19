@@ -1,4 +1,4 @@
 oint vkteams ChangeChatPicture ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/divocevs.yhl"
+  --file "/tmp/ljdgjkq5.gpd"

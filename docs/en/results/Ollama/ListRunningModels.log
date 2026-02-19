@@ -15,7 +15,7 @@
     "parameter_size": "1.1B",
     "quantization_level": "Q4_0"
    },
-   "expires_at": "2026-02-18T14:27:28.565879131Z",
+   "expires_at": "2026-02-19T09:45:36.014785463Z",
    "size_vram": 0
   }
  ]

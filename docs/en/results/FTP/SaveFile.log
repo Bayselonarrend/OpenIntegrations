@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/5dlbhul4.yuv.bin",
- "result": true
+ "filepath": "/tmp/ozylr13j.5cl.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
