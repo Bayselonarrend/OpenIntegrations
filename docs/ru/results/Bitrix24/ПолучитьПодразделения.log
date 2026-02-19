@@ -1,10 +1,10 @@
 ﻿{
  "result": [
   {
-   "ID": "3370",
+   "ID": "3378",
    "NAME": "Подчиненное подразделение",
    "SORT": 500,
-   "PARENT": "3368",
+   "PARENT": "3376",
    "UF_HEAD": "1"
   },
   {
@@ -17,13 +17,13 @@
  ],
  "total": 2,
  "time": {
-  "start": 1771529032,
-  "finish": 1771529033.0137,
-  "duration": 1.01369905471802,
-  "processing": 0,
-  "date_start": "2026-02-19T22:23:52+03:00",
-  "date_finish": "2026-02-19T22:23:53+03:00",
-  "operating_reset_at": 1771529633,
+  "start": 1771540801,
+  "finish": 1771540802.00075,
+  "duration": 1.00075101852417,
+  "processing": 1,
+  "date_start": "2026-02-20T01:40:01+03:00",
+  "date_finish": "2026-02-20T01:40:02+03:00",
+  "operating_reset_at": 1771541401,
   "operating": 0
  }
 }

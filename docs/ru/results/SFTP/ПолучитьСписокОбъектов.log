@@ -1,7 +1,7 @@
 ﻿{
  "data": [
   {
-   "accessed": 1771527588,
+   "accessed": 1771537839,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
@@ -27,7 +27,7 @@
      "uid": 1000
     },
     {
-     "accessed": 1771527588,
+     "accessed": 1771537839,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -55,7 +55,7 @@
      ]
     },
     {
-     "accessed": 1771527588,
+     "accessed": 1771537839,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -98,5 +98,8 @@
    ]
   }
  ],
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

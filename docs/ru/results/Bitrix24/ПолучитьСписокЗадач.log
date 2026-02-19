@@ -4106,13 +4106,13 @@
  "next": 50,
  "total": 353,
  "time": {
-  "start": 1771528846,
-  "finish": 1771528846.98448,
-  "duration": 0.984477043151856,
+  "start": 1771540360,
+  "finish": 1771540360.53339,
+  "duration": 0.533387899398804,
   "processing": 0,
-  "date_start": "2026-02-19T22:20:46+03:00",
-  "date_finish": "2026-02-19T22:20:46+03:00",
-  "operating_reset_at": 1771529446,
+  "date_start": "2026-02-20T01:32:40+03:00",
+  "date_finish": "2026-02-20T01:32:40+03:00",
+  "operating_reset_at": 1771540960,
   "operating": 0
  }
 }
