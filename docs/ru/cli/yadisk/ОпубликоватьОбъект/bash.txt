@@ -1,3 +1,3 @@
 oint yadisk ОпубликоватьОбъект \
   --token "***" \
-  --path "/6f8bc56a-2130-404c-88e4-5e04586c46b8.png"
+  --path "/955b3eae-74f4-4404-a2ff-cddebe34ec4a.png"

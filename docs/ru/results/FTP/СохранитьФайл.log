@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/lukxgvpc.3x1.bin",
- "result": true
+ "filepath": "/tmp/252rbgmo.vhw.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
