@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/kbkji4gu.mli.bin",
- "result": true
+ "filepath": "/tmp/hi2ap2xu.enm.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
