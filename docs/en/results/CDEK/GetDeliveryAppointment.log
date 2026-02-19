@@ -1,7 +1,7 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "3cf420cf-00a5-4cf5-afd5-738b2db6343a",
+  "order_uuid": "e09de12d-a3af-47e2-bad7-7c21ab0745ff",
   "date": "2026-03-05",
   "time_from": "10:00",
   "time_to": "17:00",
@@ -19,25 +19,25 @@
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "cae9f8e7-76e4-4b55-89e1-e3b35fb92e52",
+  "uuid": "a76bf91f-8fd7-47ec-b365-784e75848082",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-02-19T09:15:22+00:00"
+    "date_time": "2026-02-19T20:41:02+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-02-19T09:15:21+00:00"
+    "date_time": "2026-02-19T20:41:01+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "8d006175-71c2-42e4-9973-cafb08a3b44d",
+   "request_uuid": "461636d2-1186-40be-a2ff-d412ad4aa005",
    "type": "CREATE",
-   "date_time": "2026-02-19T09:15:21+00:00",
+   "date_time": "2026-02-19T20:41:01+00:00",
    "state": "INVALID",
    "errors": [
     {
