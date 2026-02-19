@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "d8063083-e674-4f21-a8f9-61379c019a32",
- "data": "/tmp/en2cit1v.ubd.json",
+ "id": "34df14eb-504f-4346-a90a-9d316e5bb00a",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {
