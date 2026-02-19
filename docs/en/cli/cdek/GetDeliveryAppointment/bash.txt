@@ -1,4 +1,4 @@
 oint cdek GetDeliveryAppointment \
   --token "***" \
-  --uuid "af4886ff-8670-485a-8e63-10c8a9220292" \
+  --uuid "cae9f8e7-76e4-4b55-89e1-e3b35fb92e52" \
   --testapi "***"

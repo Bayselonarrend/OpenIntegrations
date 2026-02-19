@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9690",
+   "id": "9710",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-02-18T18:21:00+00:00",
+   "createdDate": "2026-02-19T08:54:10+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-02-18T18:21:18+00:00",
+   "changedDate": "2026-02-19T08:55:04+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
-   "closedDate": "2026-02-18T18:21:18+00:00",
-   "activityDate": "2026-02-18T18:21:18+00:00",
+   "closedDate": "2026-02-19T08:55:04+00:00",
+   "activityDate": "2026-02-19T08:55:04+00:00",
    "dateStart": null,
-   "deadline": "2026-02-19T18:20:00+00:00",
-   "startDatePlan": "2026-02-18T18:21:00+00:00",
-   "endDatePlan": "2026-02-18T21:00:00+00:00",
-   "guid": "{20025c67-abeb-48aa-817e-d215d2b07d2b}",
+   "deadline": "2026-02-20T08:54:00+00:00",
+   "startDatePlan": "2026-02-19T08:54:10+00:00",
+   "endDatePlan": "2026-02-19T21:00:00+00:00",
+   "guid": "{c52fa2fb-55d7-4695-b490-08af57b359ec}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "5",
-   "statusChangedDate": "2026-02-18T18:21:18+00:00",
+   "statusChangedDate": "2026-02-19T08:55:04+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1771438878,
-  "finish": 1771438878.50579,
-  "duration": 0.505790948867798,
+  "start": 1771491303,
+  "finish": 1771491304.24233,
+  "duration": 1.24232792854309,
   "processing": 0,
-  "date_start": "2026-02-18T18:21:18+00:00",
-  "date_finish": "2026-02-18T18:21:18+00:00",
-  "operating_reset_at": 1771439478,
-  "operating": 0.203908920288086
+  "date_start": "2026-02-19T08:55:03+00:00",
+  "date_finish": "2026-02-19T08:55:04+00:00",
+  "operating_reset_at": 1771491904,
+  "operating": 0.23174786567688
  }
 }
