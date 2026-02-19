@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/u20cawi5.rvy"
+  --file "C:\Users\bayse\AppData\Local\Temp\35jo0zt1.gvz"
