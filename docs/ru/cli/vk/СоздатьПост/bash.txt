@@ -2,7 +2,7 @@
 
 oint vk СоздатьПост \
   --text "Пост из автотеста" \
-  --pictures "['https://hut.openintegrations.dev/test_data/picture.jpg','/tmp/andvcbzg.hrj.png']" \
+  --pictures "/tmp/d0hibeqv.2s0.png" \
   --ad true \
   --url "https://github.com/Bayselonarrend/OpenIntegrations" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

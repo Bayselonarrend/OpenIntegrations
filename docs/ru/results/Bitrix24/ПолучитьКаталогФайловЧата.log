@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 52066
+  "ID": 52120
  },
  "time": {
-  "start": 1771513279,
-  "finish": 1771513280.04086,
-  "duration": 1.0408570766449,
+  "start": 1771523046,
+  "finish": 1771523046.53154,
+  "duration": 0.531534910202026,
   "processing": 0,
-  "date_start": "2026-02-19T15:01:19+00:00",
-  "date_finish": "2026-02-19T15:01:20+00:00",
-  "operating_reset_at": 1771513880,
+  "date_start": "2026-02-19T17:44:06+00:00",
+  "date_finish": "2026-02-19T17:44:06+00:00",
+  "operating_reset_at": 1771523646,
   "operating": 0
  }
 }

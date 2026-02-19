@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/2przpe4c.rsa.bin",
- "result": true
+ "filepath": "/tmp/5tqd23l4.g5y.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

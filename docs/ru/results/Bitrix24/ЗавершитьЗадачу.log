@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9730",
+   "id": "9740",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-02-19T14:57:37+00:00",
+   "createdDate": "2026-02-19T17:34:50+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-02-19T14:57:51+00:00",
+   "changedDate": "2026-02-19T17:35:45+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
-   "closedDate": "2026-02-19T14:57:51+00:00",
-   "activityDate": "2026-02-19T14:57:51+00:00",
+   "closedDate": "2026-02-19T17:35:45+00:00",
+   "activityDate": "2026-02-19T17:35:45+00:00",
    "dateStart": null,
-   "deadline": "2026-02-20T14:57:00+00:00",
-   "startDatePlan": "2026-02-19T14:57:37+00:00",
+   "deadline": "2026-02-20T17:34:00+00:00",
+   "startDatePlan": "2026-02-19T17:34:50+00:00",
    "endDatePlan": "2026-02-19T21:00:00+00:00",
-   "guid": "{b99d1f6e-99c1-4076-9545-cf94474a1523}",
+   "guid": "{b3792579-db5c-4188-9846-7749344d3118}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "5",
-   "statusChangedDate": "2026-02-19T14:57:51+00:00",
+   "statusChangedDate": "2026-02-19T17:35:45+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1771513071,
-  "finish": 1771513071.59017,
-  "duration": 0.590168952941894,
+  "start": 1771522545,
+  "finish": 1771522545.60107,
+  "duration": 0.601067066192627,
   "processing": 0,
-  "date_start": "2026-02-19T14:57:51+00:00",
-  "date_finish": "2026-02-19T14:57:51+00:00",
-  "operating_reset_at": 1771513671,
-  "operating": 0.201025009155273
+  "date_start": "2026-02-19T17:35:45+00:00",
+  "date_finish": "2026-02-19T17:35:45+00:00",
+  "operating_reset_at": 1771523145,
+  "operating": 0.170182943344116
  }
 }
