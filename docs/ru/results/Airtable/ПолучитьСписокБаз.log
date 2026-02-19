@@ -4349,6 +4349,11 @@
    "id": "appg7iu4XLX1LIOy7",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "appdzi4qsMzPdJkA2",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }
