@@ -2,9 +2,9 @@
  "status": 200,
  "response": {
   "InitiateMultipartUploadResult": {
-   "Bucket": "6d67282c",
+   "Bucket": "19602e77",
    "Key": "***",
-   "UploadId": "NGU4YWU5ZGItY2JiMC00Y2U4LThjM2QtY2QyODU2N2VkODVmLjgyOTY2NDM3LWEyMTQtNDIzZS05OWI3LTI3Yjk4NWI4ZjA2NXgxNzcxNDI4ODE1MjczNDc1Mjk5"
+   "UploadId": "NGU4YWU5ZGItY2JiMC00Y2U4LThjM2QtY2QyODU2N2VkODVmLjljNzkwYWEyLTYzZjgtNGU3Yy1hNzZlLTkxY2RlNmUxMzUzMHgxNzcxNTA0NTgwMjQ2ODk4MjAw"
   }
  },
  "headers": {
@@ -13,13 +13,13 @@
   "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "1895611F3F3F7DC2",
+  "X-Amz-Request-Id": "1895A607A79073C8",
   "X-Content-Type-Options": "nosniff",
-  "X-Ratelimit-Limit": "3038",
-  "X-Ratelimit-Remaining": "3038",
+  "X-Ratelimit-Limit": "3057",
+  "X-Ratelimit-Remaining": "3057",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Wed, 18 Feb 2026 15:33:35 GMT",
+  "Date": "Thu, 19 Feb 2026 12:36:20 GMT",
   "Content-Type": "application/xml",
   "Content-Length": "346"
  }

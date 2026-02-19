@@ -2,4 +2,4 @@ oint telegram ОтправитьАудио \
   --token "***" \
   --chat "***" \
   --text "Строковое значение" \
-  --audio "/tmp/g44lsi5x.3kf"
+  --audio "/tmp/dvwtagwy.uuq"
