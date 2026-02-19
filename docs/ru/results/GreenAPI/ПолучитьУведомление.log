@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1771440053,
-  "idMessage": "3EB0191E0A2616C793B81F",
+  "timestamp": 1771478227,
+  "idMessage": "3EB0F8845BA56396D68B57",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -19,7 +19,7 @@
   "messageData": {
    "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
-    "text": "New message",
+    "text": "Новое сообщение",
     "description": "",
     "title": "",
     "previewType": "None",

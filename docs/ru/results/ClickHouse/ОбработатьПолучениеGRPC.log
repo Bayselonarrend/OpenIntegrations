@@ -185,7 +185,7 @@
      ],
      "rows": 20,
      "statistics": {
-      "elapsed": 0.003147919,
+      "elapsed": 0.002992841,
       "rows_read": 0,
       "bytes_read": 0
      }
@@ -199,7 +199,7 @@
      "written_bytes": 0,
      "written_rows": 0
     },
-    "query_id": "6a0bb731-92c0-4032-96ef-8e15d8db18f0",
+    "query_id": "e80d558b-b9e0-4543-93e9-7542329876cc",
     "stats": {
      "allocated_bytes": 21248,
      "applied_aggregation": false,

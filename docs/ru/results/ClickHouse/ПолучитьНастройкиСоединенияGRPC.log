@@ -1,5 +1,5 @@
 ﻿{
- "address": "http://host.docker.internal:9101",
+ "address": "http://127.0.0.1:9101",
  "tls": {
   "use_tls": true,
   "accept_invalid_certs": true
