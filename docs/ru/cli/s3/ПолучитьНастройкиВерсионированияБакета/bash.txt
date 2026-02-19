@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ПолучитьНастройкиВерсионированияБакета \
-  --name "4b43fec1" \
+  --name "13079907" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"

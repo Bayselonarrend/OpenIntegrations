@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint sftp ЗагрузитьФайл ^
-  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/irsd1jyy.wbb.tmp','username':'bayselonarrend'}}" ^
-  --file "/tmp/gpmls043.fjf" ^
+  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\xsmydmt5.s3r.tmp','username':'bayselonarrend'}}" ^
+  --file "C:\Users\bayse\AppData\Local\Temp\4ai2y23i.xci" ^
   --path "files_folder/pic_from_binary.png"
