@@ -1,14 +1,13 @@
 ﻿{
  ".tag": "complete",
- "client_modified": "***",
- "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c",
- "id": "id:kJU6-a-pT48AAAAAAABqmQ",
- "is_downloadable": true,
  "name": "url_doc.docx",
- "path_display": "/New/url_doc.docx",
  "path_lower": "/new/url_doc.docx",
- "property_groups": [],
- "rev": "64b3b697a3e9dbd841553",
- "server_modified": "2026-02-20T06:20:05Z",
- "size": 24069
+ "path_display": "/New/url_doc.docx",
+ "id": "id:kJU6-a-pT48AAAAAAABqtQ",
+ "client_modified": "***",
+ "server_modified": "2026-02-20T08:12:40Z",
+ "rev": "64b3cfc2227b9bd841553",
+ "size": 24069,
+ "is_downloadable": true,
+ "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
 }
