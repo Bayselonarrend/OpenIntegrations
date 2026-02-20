@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "30c82aa7-fc4e-811b-b417-d02773c06c77",
- "created_time": "2026-02-19T22:23:00Z",
- "last_edited_time": "2026-02-19T22:23:00Z",
+ "id": "30d82aa7-fc4e-8107-96d1-eb38ed0699f9",
+ "created_time": "2026-02-20T11:56:00Z",
+ "last_edited_time": "2026-02-20T11:56:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,51 +15,19 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "30c82aa7-fc4e-8102-9122-e34cc4b8214a"
+  "database_id": "30d82aa7-fc4e-81b4-af54-e99f00646a29"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "%3E%7BYC",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Статус": {
-   "id": "N%3AUQ",
-   "type": "select",
-   "select": {
-    "id": "44520f24-8765-459a-8cb0-630213215406",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Номер": {
-   "id": "Qq%3EC",
-   "type": "number",
-   "number": 1
-  },
-  "Телефон": {
-   "id": "hdu%3A",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Картинка": {
-   "id": "i_t%7C",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Пользователь": {
+   "id": "%3BJ%7Cm",
+   "type": "people",
+   "people": []
   },
   "Почта": {
-   "id": "y%7BDh",
+   "id": "HKmn",
    "type": "rich_text",
    "rich_text": [
     {
@@ -81,8 +49,54 @@
     }
    ]
   },
+  "Картинка": {
+   "id": "LYCU",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Дата создания": {
+   "id": "LkFC",
+   "type": "date",
+   "date": {
+    "start": "2026-02-20T11:56:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Статус": {
+   "id": "R%3BJg",
+   "type": "select",
+   "select": {
+    "id": "7c47afb6-2af0-44bf-bdb1-e6de7083f9c2",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Телефон": {
+   "id": "TfvZ",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Активен": {
+   "id": "VT%3E%3E",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Номер": {
+   "id": "%5COm~",
+   "type": "number",
+   "number": 1
+  },
   "Описание": {
-   "id": "%7BA~k",
+   "id": "v%3A%5C%3B",
    "type": "rich_text",
    "rich_text": [
     {
@@ -103,20 +117,6 @@
      "href": null
     }
    ]
-  },
-  "Пользователь": {
-   "id": "%7D%3CC%5C",
-   "type": "people",
-   "people": []
-  },
-  "Дата создания": {
-   "id": "~%5EsU",
-   "type": "date",
-   "date": {
-    "start": "2026-02-20T04:23:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/30c82aa7fc4e811bb417d02773c06c77",
+ "url": "https://www.notion.so/30d82aa7fc4e810796d1eb38ed0699f9",
  "public_url": null,
- "request_id": "d2091d91-c9fc-4cf6-a424-28735c78bbf1"
+ "request_id": "ec8de0f3-4f9c-48d1-93e5-403fdefaa853"
 }
