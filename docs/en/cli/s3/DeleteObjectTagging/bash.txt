@@ -2,6 +2,6 @@
 
 oint s3 DeleteObjectTagging \
   --name "picture.jpg" \
-  --bucket "4a02d641" \
+  --bucket "42625bab" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true

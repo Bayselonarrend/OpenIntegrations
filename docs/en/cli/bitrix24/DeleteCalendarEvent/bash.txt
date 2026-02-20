@@ -1,4 +1,4 @@
 oint bitrix24 DeleteCalendarEvent \
   --url "b24-ar17wx.bitrix24.by" \
-  --event 3892 \
+  --event 3908 \
   --token "***"
