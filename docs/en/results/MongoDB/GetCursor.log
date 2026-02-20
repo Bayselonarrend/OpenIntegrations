@@ -4,7 +4,7 @@
   "cursor": {
    "firstBatch": [
     {
-     "_id": "6997f88faef230199487800b",
+     "_id": "699814abaef230199487833c",
      "stringField": "Text",
      "oidField": "63ceed18f71dda7d8cf21e8e",
      "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
@@ -14,7 +14,7 @@
      "doubleField": 124.456,
      "boolField": true,
      "dateField": "2025-11-15T10:55:41Z",
-     "tsField": "Timestamp(1771567245, 0)",
+     "tsField": "Timestamp(1771574443, 0)",
      "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
      "binaryField": {
       "__B64_BINARY__": "VGV4dA=="
@@ -32,7 +32,7 @@
      ]
     }
    ],
-   "id": 7204783118641857338,
+   "id": 2621333261080818341,
    "ns": "main.new_collection"
   },
   "ok": 1
