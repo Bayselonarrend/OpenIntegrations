@@ -2,6 +2,6 @@
 
 oint bitrix24 UpdateTask ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "9790" ^
+  --task "9810" ^
   --fields "{'TITLE':'Another task title','DESCRIPTION':'Another task description','PRIORITY':'1'}" ^
   --token "***"

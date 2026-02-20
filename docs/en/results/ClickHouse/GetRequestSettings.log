@@ -1,11 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "a9a5756d-a5db-4852-b543-2a6fecf2edca",
- "data": {
-  "meta": [],
-  "data": []
- },
+ "id": "fa0da385-e8b8-4712-865a-1b5c84e0c3fe",
+ "data": "C:\\Users\\bayse\\AppData\\Local\\Temp\\vapvztsx.kk5.json",
  "format": "CSV",
  "external_tables": [
   {

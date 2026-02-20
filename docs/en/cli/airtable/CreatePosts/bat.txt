@@ -2,6 +2,6 @@
 
 oint airtable CreatePosts ^
   --token "***" ^
-  --base "appklSZpbv9eEiISh" ^
-  --table "tblWRrRwTycA9KPai" ^
+  --base "apprCT0EcfjAunnr1" ^
+  --table "tbloKSd2MBJA1JQT2" ^
   --data "{'Number':'10','String':'Hello'}"

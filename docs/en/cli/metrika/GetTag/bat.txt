@@ -1,3 +1,3 @@
 oint metrika GetTag ^
   --token "***" ^
-  --label "322399"
+  --label "322405"

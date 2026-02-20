@@ -1,4 +1,4 @@
 oint vkteams SendVoice ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/i3awquqz.5zv"
+  --file "C:\Users\bayse\AppData\Local\Temp\tb515sqm.qpi"

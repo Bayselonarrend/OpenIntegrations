@@ -1,2 +1,2 @@
 oint mysql GetTLSSettings ^
- --trust true
+  --trust true

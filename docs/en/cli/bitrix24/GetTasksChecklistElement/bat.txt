@@ -1,5 +1,5 @@
 oint bitrix24 GetTasksChecklistElement ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "9790" ^
-  --element 7002 ^
+  --task "9810" ^
+  --element 7018 ^
   --token "***"
