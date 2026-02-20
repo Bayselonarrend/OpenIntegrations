@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "350078d3-12f1-4e87-93ba-921aef62f47a",
-  "cdek_number": "1106996900",
-  "order_uuid": "b02e5278-5b4d-48ce-818b-f478f28f17fe",
+  "uuid": "c1c69b34-991b-4a00-a171-0f619e106263",
+  "cdek_number": "1106997639",
+  "order_uuid": "b80fcc90-e9e4-4ef5-baab-c99e0556c879",
   "intake_date": "2026-02-21",
-  "intake_number": "13311239",
+  "intake_number": "13311249",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -15,9 +15,12 @@
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Компания",
+   "name": "Иванов Иван",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
+    {
+     "number": "+79589441654"
+    },
     {
      "number": "79589441654"
     }
@@ -54,24 +57,19 @@
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2026-02-20T01:48:09+03:00"
-   },
-   {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-02-20T01:48:09+03:00"
+    "date_time": "2026-02-20T12:12:09+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-20T01:48:09+03:00"
+    "date_time": "2026-02-20T12:12:09+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "b870da41-504c-4142-a5b3-48fbc0739246",
+    "package_id": "c070ad2f-9fe8-4e38-8c2e-8743a297f7aa",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -81,10 +79,10 @@
  },
  "requests": [
   {
-   "request_uuid": "576e544d-677c-444f-ba3a-46d9fd4bf473",
+   "request_uuid": "857bbbed-31e5-4725-b0de-3bb66ce5f458",
    "type": "CREATE",
-   "date_time": "2026-02-20T01:48:08+03:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-02-20T12:12:07+00:00",
+   "state": "ACCEPTED"
   }
  ]
 }
