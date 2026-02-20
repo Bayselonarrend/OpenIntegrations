@@ -1,4 +1,4 @@
 oint bitrix24 GetFolderExternalLink ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 51936 ^
+  --folderid 52368 ^
   --token "***"

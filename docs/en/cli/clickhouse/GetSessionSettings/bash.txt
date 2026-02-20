@@ -1,4 +1,4 @@
 oint clickhouse GetSessionSettings \
-  --id "74d6c725-b16d-4676-8d24-6ef6c4ce74a2" \
+  --id "cd00c2a6-9044-4a15-ae3e-a4a251f28582" \
   --check true \
   --timeout 120

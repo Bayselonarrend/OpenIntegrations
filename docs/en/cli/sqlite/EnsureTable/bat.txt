@@ -3,4 +3,4 @@
 oint sqlite EnsureTable ^
   --table "test_new" ^
   --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" ^
-  --db "/tmp/mbk35mp3.1xr.sqlite"
+  --db "/tmp/x0ac0tjz.pys.sqlite"
