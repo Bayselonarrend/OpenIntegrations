@@ -1,6 +1,6 @@
 oint cdek CreateBarcode \
   --token "***" \
-  --uuids "0ce11172-d41a-4341-90d3-387f9d59e60b" \
+  --uuids "8f05be23-88bf-4f36-9947-1989419364d3" \
   --count 1 \
   --format "A5" \
   --testapi "***"
