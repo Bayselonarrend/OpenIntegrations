@@ -1,5 +1,5 @@
 oint yadisk CreateObjectCopy \
   --token "***" \
-  --from "/89aa85f3-db53-4be4-a194-228be608c5b8.png" \
-  --to "/04b4efdc-0a28-49c5-93cb-bc537073791c.png" \
+  --from "/3757eab1-ee09-4b5f-a795-ef4b7a593fee.png" \
+  --to "/9f1267ee-7210-4c75-abfd-4b8585ce901a.png" \
   --rewrite true

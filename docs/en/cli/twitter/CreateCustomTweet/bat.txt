@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint twitter CreateCustomTweet ^
-  --text "TestTweeta07f8bd5-ef1e-42d8-9c5c-10cd21411bae" ^
-  --media "['2024390372160393216','2024390384483274752']" ^
+  --text "TestTweet6aadd457-7c96-41a2-b260-ad8e01d17863" ^
+  --media "['2024714663515041793','2024714675737223168']" ^
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

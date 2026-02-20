@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint sftp UpdatePath ^
-  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/vdhy54xd.k3t.tmp','username':'bayselonarrend'}}" ^
+  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/ebem1bp1.1pk.tmp','username':'bayselonarrend'}}" ^
   --old "files_folder/pic_from_disk.png" ^
   --new "pic_from_disk.png"

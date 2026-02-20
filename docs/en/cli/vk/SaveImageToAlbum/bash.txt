@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk SaveImageToAlbum \
-  --album 311677582 \
+  --album 311687173 \
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
   --description "AutoTestImage" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
