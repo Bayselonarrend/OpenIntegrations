@@ -58,7 +58,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink \
               --name "picture.jpg" \
-              --bucket "a6ca664f" \
+              --bucket "42625bab" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --expires 7200 \
               --dir true
@@ -71,7 +71,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink ^
               --name "picture.jpg" ^
-              --bucket "a6ca664f" ^
+              --bucket "42625bab" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --expires 7200 ^
               --dir true
@@ -81,5 +81,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"s3.openintegrations.dev/e6e20092/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260218%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260218T183847Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=5da09c2bcb99894e4fe4c0d961a7aeee36064e3445ab4b356be2d7b58ff13b0f"
+"s3.openintegrations.dev/42625bab/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260220%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260220T105341Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=b4bafc803a13dfcc4d8edd507fcd4bae82a1e73f2572f2409a296014532d88b7"
 ```
