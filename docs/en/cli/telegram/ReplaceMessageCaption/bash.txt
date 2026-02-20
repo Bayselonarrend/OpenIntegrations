@@ -1,5 +1,5 @@
 oint telegram ReplaceMessageCaption \
   --token "***" \
   --chat "***" \
-  --message "19701" \
+  --message "19845" \
   --caption "New picture description"

@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint twitter CreateVideoTweet \
-  --text "TestTweet9368cd95-986b-4b9f-a0ad-78d84e64a496" \
-  --videos "/tmp/ya2laqhw.omb" \
+  --text "TestTweet4c6d26b1-0cae-4f8f-a804-7725cc03784d" \
+  --videos "/tmp/pvzwjpsc.i3y" \
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
