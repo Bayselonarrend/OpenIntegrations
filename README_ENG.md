@@ -26,6 +26,7 @@ The project code is organized as a set of independent modules, each responsible 
     <a href="https://en.openintegrations.dev/docs/Instructions/GreenMax/"><img src="media/GreenMax.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/GreenAPI/"><img src="media/GreenAPI.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/S3/"><img src="media/S3.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/ClickHouse/"><img src="media/ClickHouse.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/PostgreSQL/"><img src="media/PostgreSQL.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/SQLite/"><img src="media/SQLite.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/MSSQL/"><img src="media/MSSQL.png" width="40"></a>
