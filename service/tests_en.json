@@ -6285,6 +6285,16 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "CreateItem",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "FinishItem",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "CreateConnection",
 		"variant": ""

@@ -33,7 +33,8 @@ import TabItem from '@theme/TabItem';
     LaunchID = "";
     Project  = "Test";
 
-    FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(Date("20260101200000")
+    EndDate         = Date("20260101200000");
+    FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(EndDate
         , "passed"
         , "Updated launch description");
 
