@@ -13,23 +13,33 @@
 			]
 		},
 		{
-			"name": "Orm",
+			"name": "Database management",
 			"methods": [
-				"AddRecords",
+				"CreateDatabase",
+				"DeleteDatabase",
+				"DisableAllDatabaseConnections"
+			]
+		},
+		{
+			"name": "Table management",
+			"methods": [
 				"AddTableColumn",
 				"ClearTable",
-				"CreateDatabase",
 				"CreateTable",
-				"DeleteDatabase",
-				"DeleteRecords",
 				"DeleteTable",
 				"DeleteTableColumn",
-				"DisableAllDatabaseConnections",
-				"EnsureRecords",
 				"EnsureTable",
+				"GetTableInformation"
+			]
+		},
+		{
+			"name": "Record management",
+			"methods": [
+				"AddRecords",
+				"DeleteRecords",
+				"EnsureRecords",
 				"GetRecords",
 				"GetRecordsFilterStructure",
-				"GetTableInformation",
 				"UpdateRecords"
 			]
 		}
@@ -170,7 +180,7 @@
 					"short": "-t"
 				}
 			],
-			"region": "Orm"
+			"region": "Database management"
 		},
 		{
 			"name": "DeleteDatabase",
@@ -199,7 +209,7 @@
 					"short": "-t"
 				}
 			],
-			"region": "Orm"
+			"region": "Database management"
 		},
 		{
 			"name": "DisableAllDatabaseConnections",
@@ -228,7 +238,7 @@
 					"short": "-t"
 				}
 			],
-			"region": "Orm"
+			"region": "Database management"
 		},
 		{
 			"name": "GetTableInformation",
@@ -257,7 +267,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "CreateTable",
@@ -293,7 +303,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "AddTableColumn",
@@ -336,7 +346,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "DeleteTableColumn",
@@ -372,7 +382,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "EnsureTable",
@@ -408,7 +418,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "ClearTable",
@@ -437,7 +447,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "DeleteTable",
@@ -466,7 +476,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "AddRecords",
@@ -509,7 +519,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "UpdateRecords",
@@ -552,7 +562,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "EnsureRecords",
@@ -602,7 +612,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "GetRecords",
@@ -659,7 +669,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "DeleteRecords",
@@ -695,7 +705,7 @@
 					"short": "-l"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "GetRecordsFilterStructure",
@@ -710,7 +720,7 @@
 					"short": "-e"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		}
 	]
 }

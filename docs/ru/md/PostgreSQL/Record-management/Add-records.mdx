@@ -1,0 +1,140 @@
+---
+sidebar_position: 1
+description: Добавить записи и другие функции для работы с PostgreSQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, PostgreSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить записи
+ Добавляет записи в таблицу
+
+
+
+`Функция ДобавитьЗаписи(Знач Таблица, Знач МассивДанных, Знач Транзакция = Истина, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | МассивДанных | --rows | Массив Из Структура | &#x2714; | Массив структур данных строк: Ключ > поле, Значение > значение поля |
+  | Транзакция | --trn | Булево | &#x2716; | Истина > добавление записей в транзакции с откатом при ошибке |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/PostgreSQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+:::tip
+Данные записей указываются как массив структур вида:<br/>`{'Имя поля 1': {'Тип данных': 'Значение'}, 'Имя поля 2': {'Тип данных': 'Значение'},...}`
+
+Список доступных типов описан на начальной странице документации библиотеки PostgreSQL
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    TLS = Истина;
+    Порт = 5432;
+    СтрокаПодключения = OPI_PostgreSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль, Порт);
+
+    Если TLS Тогда
+        НастройкиTLS = OPI_PostgreSQL.ПолучитьНастройкиTLS(Истина);
+    Иначе
+        НастройкиTLS = Неопределено;
+    КонецЕсли;
+
+    Таблица       = "testtable";
+    МассивЗаписей = Новый Массив;
+
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
+
+    СлучайнаяСтруктура = Новый Структура("key,value", "ItsKey", 10);
+
+    ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
+    ТекущаяДатаЧП = OPI_Инструменты.ДатаRFC3339(ТекущаяДата, "+05:00");
+
+    СтруктураЗаписи = Новый Структура;
+    СтруктураЗаписи.Вставить("bool_field"       , Новый Структура("BOOL"                    , Истина));
+    СтруктураЗаписи.Вставить("oldchar_field"    , Новый Структура("OLDCHAR"                 , 1));                  // или "char"
+    СтруктураЗаписи.Вставить("smallint_field"   , Новый Структура("SMALLINT"                , 5));
+    СтруктураЗаписи.Вставить("smallserial_field", Новый Структура("SMALLSERIAL"             , 6));
+    СтруктураЗаписи.Вставить("int_field"        , Новый Структура("INT"                     , 100));
+    СтруктураЗаписи.Вставить("serial_field"     , Новый Структура("SERIAL"                  , 100));
+    СтруктураЗаписи.Вставить("oid_field"        , Новый Структура("OID"                     , 24576));
+    СтруктураЗаписи.Вставить("bigint_field"     , Новый Структура("BIGINT"                  , 9999999));
+    СтруктураЗаписи.Вставить("bigserial_field"  , Новый Структура("BIGSERIAL"               , 9999999));
+    СтруктураЗаписи.Вставить("real_field"       , Новый Структура("REAL"                    , 15.2));
+    СтруктураЗаписи.Вставить("dp_field"         , Новый Структура("DOUBLE_PRECISION"        , 1.0002));            // или DOUBLE PRECISION
+    СтруктураЗаписи.Вставить("text_field"       , Новый Структура("TEXT"                    , "Some text"));
+    СтруктураЗаписи.Вставить("varchar_field"    , Новый Структура("VARCHAR"                 , "Some varchar"));
+    СтруктураЗаписи.Вставить("charn_field"      , Новый Структура("CHAR"                    , "AAA"));
+    СтруктураЗаписи.Вставить("char_field"       , Новый Структура("CHAR"                    , "A"));
+    СтруктураЗаписи.Вставить("name_field"       , Новый Структура("NAME"                    , "Vitaly"));
+    СтруктураЗаписи.Вставить("bytea_field"      , Новый Структура("BYTEA"                   , Картинка));
+    СтруктураЗаписи.Вставить("ts_field"         , Новый Структура("TIMESTAMP"               , ТекущаяДата));
+    СтруктураЗаписи.Вставить("tswtz_field"      , Новый Структура("TIMESTAMP_WITH_TIME_ZONE", ТекущаяДатаЧП));      // или TIMESTAMP WITH TIME ZONE
+    СтруктураЗаписи.Вставить("ip_field"         , Новый Структура("INET"                    , "127.0.0.1"));
+    СтруктураЗаписи.Вставить("json_field"       , Новый Структура("JSON"                    , СлучайнаяСтруктура));
+    СтруктураЗаписи.Вставить("jsonb_field"      , Новый Структура("JSONB"                   , СлучайнаяСтруктура));
+    СтруктураЗаписи.Вставить("date_field"       , Новый Структура("DATE"                    , ТекущаяДата));
+    СтруктураЗаписи.Вставить("time_field"       , Новый Структура("TIME"                    , ТекущаяДата));
+    СтруктураЗаписи.Вставить("uuid_field"       , Новый Структура("UUID"                    , Новый УникальныйИдентификатор));
+    СтруктураЗаписи.Вставить("numeric_field"    , Новый Структура("NUMERIC"                 , "15.2"));
+
+    МассивЗаписей.Добавить(СтруктураЗаписи);
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_PostgreSQL.ДобавитьЗаписи(Таблица, МассивЗаписей, Истина, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ДобавитьЗаписи \
+              --table "testtable" \
+              --rows "[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':'1'},'smallint_field':{'SMALLINT':'5'},'smallserial_field':{'SMALLSERIAL':'6'},'int_field':{'INT':'100'},'serial_field':{'SERIAL':'100'},'oid_field':{'OID':'24576'},'bigint_field':{'BIGINT':'9999999'},'bigserial_field':{'BIGSERIAL':'9999999'},'real_field':{'REAL':'15.2'},'dp_field':{'DOUBLE_PRECISION':'1.0002'},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\y4lkxacm.rqx'},'ts_field':{'TIMESTAMP':'2/20/2026 1:01:23 AM'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'2/19/2026 11:01:23 PM'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'***','value':'10'}},'jsonb_field':{'JSONB':{'key':'***','value':'10'}},'date_field':{'DATE':'2/20/2026 1:01:23 AM'},'time_field':{'TIME':'2/20/2026 1:01:23 AM'},'uuid_field':{'UUID':'4511da6a-9ca0-443d-bc16-322ab23b17b2'},'numeric_field':{'NUMERIC':'15.2'}}]" \
+              --trn true \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ДобавитьЗаписи ^
+              --table "testtable" ^
+              --rows "[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':'1'},'smallint_field':{'SMALLINT':'5'},'smallserial_field':{'SMALLSERIAL':'6'},'int_field':{'INT':'100'},'serial_field':{'SERIAL':'100'},'oid_field':{'OID':'24576'},'bigint_field':{'BIGINT':'9999999'},'bigserial_field':{'BIGSERIAL':'9999999'},'real_field':{'REAL':'15.2'},'dp_field':{'DOUBLE_PRECISION':'1.0002'},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\y4lkxacm.rqx'},'ts_field':{'TIMESTAMP':'2/20/2026 1:01:23 AM'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'2/19/2026 11:01:23 PM'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'***','value':'10'}},'jsonb_field':{'JSONB':{'key':'***','value':'10'}},'date_field':{'DATE':'2/20/2026 1:01:23 AM'},'time_field':{'TIME':'2/20/2026 1:01:23 AM'},'uuid_field':{'UUID':'4511da6a-9ca0-443d-bc16-322ab23b17b2'},'numeric_field':{'NUMERIC':'15.2'}}]" ^
+              --trn true ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "commit": {
+  "result": true
+ },
+ "result": true,
+ "rows": 1,
+ "errors": []
+}
+```

@@ -1,0 +1,101 @@
+---
+sidebar_position: 5
+description: Delete records and other functions to work with MSSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete records
+ Deletes records from the table
+
+
+
+`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStructure |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "test_data";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_data";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "gender");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("NVARCHAR", "Male"));
+    FilterStructure.Insert("raw"  , False);
+    FilterStructure.Insert("union", "AND");
+
+    Filters.Add(FilterStructure);
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "ip_address");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", New Structure("NVARCHAR", "127.0.0.1"));
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.DeleteRecords(Table, Filters, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mssql DeleteRecords \
+              --table "test_data" \
+              --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mssql DeleteRecords ^
+              --table "test_data" ^
+              --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": true
+}
+```

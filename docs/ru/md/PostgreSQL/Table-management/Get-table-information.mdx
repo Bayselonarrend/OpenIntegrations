@@ -1,0 +1,232 @@
+---
+sidebar_position: 1
+description: Получить информацию о таблице и другие функции для работы с PostgreSQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, PostgreSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить информацию о таблице
+ Получает информацию о таблице
+
+
+
+`Функция ПолучитьИнформациюОТаблице(Знач Таблица, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/PostgreSQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    TLS = Истина;
+    Порт = 5432;
+    СтрокаПодключения = OPI_PostgreSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль, Порт);
+
+    Если TLS Тогда
+        НастройкиTLS = OPI_PostgreSQL.ПолучитьНастройкиTLS(Истина);
+    Иначе
+        НастройкиTLS = Неопределено;
+    КонецЕсли;
+
+    Таблица = "testtable";
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_PostgreSQL.ПолучитьИнформациюОТаблице(Таблица, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ПолучитьИнформациюОТаблице \
+              --table "test_new" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ПолучитьИнформациюОТаблице ^
+              --table "test_new" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": [
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bool_field",
+   "data_type": "boolean",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "oldchar_field",
+   "data_type": "\"char\"",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "smallint_field",
+   "data_type": "smallint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": "nextval('testtable_smallserial_field_seq'::regclass)",
+   "column_name": "smallserial_field",
+   "data_type": "smallint",
+   "is_nullable": "NO"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "int_field",
+   "data_type": "integer",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": "nextval('testtable_serial_field_seq'::regclass)",
+   "column_name": "serial_field",
+   "data_type": "integer",
+   "is_nullable": "NO"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "oid_field",
+   "data_type": "oid",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bigint_field",
+   "data_type": "bigint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": "nextval('testtable_bigserial_field_seq'::regclass)",
+   "column_name": "bigserial_field",
+   "data_type": "bigint",
+   "is_nullable": "NO"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "real_field",
+   "data_type": "real",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "dp_field",
+   "data_type": "double precision",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "jsonb_field",
+   "data_type": "jsonb",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "date_field",
+   "data_type": "date",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "time_field",
+   "data_type": "time without time zone",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "uuid_field",
+   "data_type": "uuid",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "numeric_field",
+   "data_type": "numeric",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bytea_field",
+   "data_type": "bytea",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "ts_field",
+   "data_type": "timestamp without time zone",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "tswtz_field",
+   "data_type": "timestamp with time zone",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "ip_field",
+   "data_type": "inet",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "json_field",
+   "data_type": "json",
+   "is_nullable": "YES"
+  },
+  {
+...
+```

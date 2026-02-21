@@ -1,0 +1,76 @@
+---
+sidebar_position: 1
+description: Create database and other functions to work with MSSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create database
+ Creates a database with the specified name
+
+
+
+`Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Base | --base | String | &#x2714; | Database name |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+
+    Base = "testbase1";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.CreateDatabase(Base, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mssql CreateDatabase \
+              --base "testbase2" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mssql CreateDatabase ^
+              --base "testbase2" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": true
+}
+```
