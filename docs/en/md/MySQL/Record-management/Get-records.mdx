@@ -1,0 +1,152 @@
+---
+sidebar_position: 4
+description: Get records and other functions to work with MySQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MySQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get records
+ Gets records from the selected table
+
+
+
+`Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Fields | --fields | Array Of String | &#x2716; | Fields for selection |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStructure |
+  | Sort | --order | Structure Of KeyAndValue | &#x2716; | Sorting: Key > field name, Value > direction (ASC, DESC) |
+  | Count | --limit | Number | &#x2716; | Limiting the number of received strings |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLS = True;
+    Port = 3306;
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    // All records without filters
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MySQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
+
+    // Filter, selected fields, limit and sorting
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, "test_data", Login, Password, Port);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Result = OPI_MySQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mysql GetRecords \
+              --table "testtable" \
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mysql GetRecords ^
+              --table "testtable" ^
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "data": [
+  {
+   "bigint_field": 9223372036854775807,
+   "char_field": "AAAAA",
+   "date_field": "2026-02-20T03:00:00+03:00",
+   "datetime_field": "2026-02-20T16:03:20+03:00",
+   "double_field": 100.51212310791,
+   "float_field": 100.5,
+   "int_field": -2147483647,
+   "longtext_field": "Some looooooong text",
+   "mediumblob_field": {
+    "BYTES": "/9j/4VTBRX..."
+   },
+   "mediumint_field": 8388607,
+   "mediumtext_field": "Some medium text",
+   "set_field": "one",
+   "smallint_field": -32767,
+   "text_field": "Some text",
+   "time_field": "1970-01-01T15:03:20+02:00",
+   "timestamp_field": "2026-02-20T16:03:20+03:00",
+   "tinyint_field": 127,
+   "tinytext_field": "Some tiny text",
+   "uint_field": 4294967295,
+   "varchar_field": "Some varchar"
+  }
+ ],
+ "result": true
+}
+```

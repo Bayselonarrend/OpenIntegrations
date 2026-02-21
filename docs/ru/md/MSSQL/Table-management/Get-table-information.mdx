@@ -1,0 +1,191 @@
+---
+sidebar_position: 7
+description: Получить информацию о таблице и другие функции для работы с MSSQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить информацию о таблице
+ Получает информацию о таблице
+
+
+
+`Функция ПолучитьИнформациюОТаблице(Знач Таблица, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/MSSQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "SA";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    НастройкиTLS      = OPI_MSSQL.ПолучитьНастройкиTLS(Истина);
+    СтрокаПодключения = OPI_MSSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль);
+
+    Таблица = "testtable";
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_MSSQL.ПолучитьИнформациюОТаблице(Таблица, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ПолучитьИнформациюОТаблице \
+              --table "test_new" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ПолучитьИнформациюОТаблице ^
+              --table "test_new" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "data": [
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "tinyint_field",
+   "data_type": "tinyint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "smallint_field",
+   "data_type": "smallint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "int_field",
+   "data_type": "int",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bigint_field",
+   "data_type": "bigint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "float24_field",
+   "data_type": "real",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "float53_field",
+   "data_type": "float",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bit_field",
+   "data_type": "bit",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": 4000,
+   "column_default": null,
+   "column_name": "nvarchar_field",
+   "data_type": "nvarchar",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": -1,
+   "column_default": null,
+   "column_name": "varbinary_field",
+   "data_type": "varbinary",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "uid_field",
+   "data_type": "uniqueidentifier",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "numeric_field",
+   "data_type": "numeric",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": -1,
+   "column_default": null,
+   "column_name": "xml_field",
+   "data_type": "xml",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "date_field",
+   "data_type": "date",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "time_field",
+   "data_type": "time",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "dto_field",
+   "data_type": "datetimeoffset",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "datetime_field",
+   "data_type": "datetime",
+   "is_nullable": "YES"
+  }
+ ],
+ "result": true
+}
+```

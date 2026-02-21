@@ -1,0 +1,67 @@
+---
+sidebar_position: 3
+description: Добавить колонку таблицы и другие функции для работы с SQLite в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить колонку таблицы
+ Добавляет новую колонку в существующую таблицу
+
+
+
+`Функция ДобавитьКолонкуТаблицы(Знач Таблица, Знач Имя, Знач ТипДанных, Знач Соединение = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | Имя | --name | Строка | &#x2714; | Имя колонки |
+  | ТипДанных | --type | Строка | &#x2714; | Тип данных колонки |
+  | Соединение | --db | Строка, Произвольный | &#x2716; | Существующее соединение или путь к базе |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    База      = "/tmp/vnnmoosn.qqb.sqlite";
+    Таблица   = "test";
+    Имя       = "new_col";
+    ТипДанных = "TEXT";
+
+    Результат = OPI_SQLite.ДобавитьКолонкуТаблицы(Таблица, Имя, ТипДанных, База);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite ДобавитьКолонкуТаблицы \
+              --table "test" \
+              --name "new_col" \
+              --type "TEXT" \
+              --db "C:\Users\bayse\AppData\Local\Temp\utfqhyfj.m2h.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite ДобавитьКолонкуТаблицы ^
+              --table "test" ^
+              --name "new_col" ^
+              --type "TEXT" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\utfqhyfj.m2h.sqlite"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true
+}
+```

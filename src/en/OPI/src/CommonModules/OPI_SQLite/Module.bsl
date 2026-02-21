@@ -238,7 +238,7 @@ EndFunction
 
 #EndRegion
 
-#Region ORM
+#Region TableManagement
 
 // Get table information
 // Gets information about the table
@@ -329,6 +329,42 @@ Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
     Return Result;
 
 EndFunction
+
+// Delete table
+// Deletes a table from the database
+//
+// Parameters:
+// Table      - String            - Table name                           - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
+    Return Result;
+
+EndFunction
+
+// Clear table
+// Clears the database table
+//
+// Parameters:
+// Table      - String            - Table name                           - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function ClearTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region RecordManagement
 
 // Add rows
 // Adds new rows to the table
@@ -443,38 +479,6 @@ EndFunction
 Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
 
     Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, Filters, Connection);
-    Return Result;
-
-EndFunction
-
-// Delete table
-// Deletes a table from the database
-//
-// Parameters:
-// Table      - String            - Table name                           - table
-// Connection - String, Arbitrary - Existing connection or database path - db
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function DeleteTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
-    Return Result;
-
-EndFunction
-
-// Clear table
-// Clears the database table
-//
-// Parameters:
-// Table      - String            - Table name                           - table
-// Connection - String, Arbitrary - Existing connection or database path - db
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function ClearTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
     Return Result;
 
 EndFunction

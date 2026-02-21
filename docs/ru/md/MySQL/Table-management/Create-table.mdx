@@ -1,0 +1,113 @@
+---
+sidebar_position: 1
+description: Создать таблицу и другие функции для работы с MySQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, MySQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Создать таблицу
+ Создает пустую таблицу в базе
+
+
+
+`Функция СоздатьТаблицу(Знач Таблица, Знач СтруктураКолонок, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | СтруктураКолонок | --cols | Структура Из КлючИЗначение | &#x2714; | Структура колонок: Ключ > имя, Значение > Тип данных |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/MySQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+:::tip
+Список доступных типов описан на начальной странице документации библиотеки MySQL
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    TLS = Истина;
+    Порт = 3306;
+    СтрокаПодключения = OPI_MySQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль, Порт);
+
+    Если TLS Тогда
+        НастройкиTLS = OPI_MySQL.ПолучитьНастройкиTLS(Истина);
+    Иначе
+        НастройкиTLS = Неопределено;
+    КонецЕсли;
+
+    Таблица = "testtable";
+
+    СтруктураКолонок = Новый Структура;
+    СтруктураКолонок.Вставить("char_field"      , "CHAR(5)");
+    СтруктураКолонок.Вставить("varchar_field"   , "VARCHAR(255)");
+    СтруктураКолонок.Вставить("tinytext_field"  , "TINYTEXT");
+    СтруктураКолонок.Вставить("text_field"      , "TEXT");
+    СтруктураКолонок.Вставить("mediumtext_field", "MEDIUMTEXT");
+    СтруктураКолонок.Вставить("longtext_field"  , "LONGTEXT");
+    СтруктураКолонок.Вставить("tinyint_field"   , "TINYINT");
+    СтруктураКолонок.Вставить("smallint_field"  , "SMALLINT");
+    СтруктураКолонок.Вставить("mediumint_field" , "MEDIUMINT");
+    СтруктураКолонок.Вставить("int_field"       , "INT");
+    СтруктураКолонок.Вставить("uint_field"      , "INT UNSIGNED");
+    СтруктураКолонок.Вставить("bigint_field"    , "BIGINT");
+    СтруктураКолонок.Вставить("float_field"     , "FLOAT");
+    СтруктураКолонок.Вставить("double_field"    , "DOUBLE");
+    СтруктураКолонок.Вставить("date_field"      , "DATE");
+    СтруктураКолонок.Вставить("time_field"      , "TIME");
+    СтруктураКолонок.Вставить("datetime_field"  , "DATETIME");
+    СтруктураКолонок.Вставить("timestamp_field" , "TIMESTAMP");
+    СтруктураКолонок.Вставить("mediumblob_field", "MEDIUMBLOB");
+    СтруктураКолонок.Вставить("set_field"       , "SET('one','two','three')");
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_MySQL.СоздатьТаблицу(Таблица, СтруктураКолонок, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mysql СоздатьТаблицу \
+              --table "somename" \
+              --cols "{'char_field':'CHAR(5)','varchar_field':'VARCHAR(255)','tinytext_field':'TINYTEXT','text_field':'TEXT','mediumtext_field':'MEDIUMTEXT','longtext_field':'LONGTEXT','tinyint_field':'TINYINT','smallint_field':'SMALLINT','mediumint_field':'MEDIUMINT','int_field':'INT','uint_field':'INT UNSIGNED','bigint_field':'BIGINT','float_field':'FLOAT','double_field':'DOUBLE','date_field':'DATE','time_field':'TIME','datetime_field':'DATETIME','timestamp_field':'TIMESTAMP','mediumblob_field':'MEDIUMBLOB','set_field':'SET(\u0027one\u0027,\u0027two\u0027,\u0027three\u0027)','wtf_field':'WTF'}" \
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mysql СоздатьТаблицу ^
+              --table "somename" ^
+              --cols "{'char_field':'CHAR(5)','varchar_field':'VARCHAR(255)','tinytext_field':'TINYTEXT','text_field':'TEXT','mediumtext_field':'MEDIUMTEXT','longtext_field':'LONGTEXT','tinyint_field':'TINYINT','smallint_field':'SMALLINT','mediumint_field':'MEDIUMINT','int_field':'INT','uint_field':'INT UNSIGNED','bigint_field':'BIGINT','float_field':'FLOAT','double_field':'DOUBLE','date_field':'DATE','time_field':'TIME','datetime_field':'DATETIME','timestamp_field':'TIMESTAMP','mediumblob_field':'MEDIUMBLOB','set_field':'SET(\u0027one\u0027,\u0027two\u0027,\u0027three\u0027)','wtf_field':'WTF'}" ^
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true
+}
+```

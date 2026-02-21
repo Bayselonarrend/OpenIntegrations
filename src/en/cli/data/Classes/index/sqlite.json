@@ -11,20 +11,25 @@
 			]
 		},
 		{
-			"name": "Orm",
+			"name": "Table management",
 			"methods": [
-				"AddRecords",
 				"AddTableColumn",
 				"ClearTable",
 				"CreateTable",
-				"DeleteRecords",
 				"DeleteTable",
 				"DeleteTableColumn",
-				"EnsureRecords",
 				"EnsureTable",
+				"GetTableInformation"
+			]
+		},
+		{
+			"name": "Record management",
+			"methods": [
+				"AddRecords",
+				"DeleteRecords",
+				"EnsureRecords",
 				"GetRecords",
 				"GetRecordsFilterStructure",
-				"GetTableInformation",
 				"UpdateRecords"
 			]
 		}
@@ -93,7 +98,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "CreateTable",
@@ -122,7 +127,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "AddTableColumn",
@@ -158,7 +163,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "DeleteTableColumn",
@@ -187,7 +192,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
 		},
 		{
 			"name": "EnsureTable",
@@ -216,7 +221,51 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Table management"
+		},
+		{
+			"name": "DeleteTable",
+			"id": "DELETETABLE",
+			"description": "Deletes a table from the database",
+			"params": [
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table name",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--db",
+					"types": "String, Arbitrary",
+					"description": "Existing connection or database path",
+					"default": "Empty value",
+					"short": "-d"
+				}
+			],
+			"region": "Table management"
+		},
+		{
+			"name": "ClearTable",
+			"id": "CLEARTABLE",
+			"description": "Clears the database table",
+			"params": [
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table name",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--db",
+					"types": "String, Arbitrary",
+					"description": "Existing connection or database path",
+					"default": "Empty value",
+					"short": "-d"
+				}
+			],
+			"region": "Table management"
 		},
 		{
 			"name": "AddRecords",
@@ -252,7 +301,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "UpdateRecords",
@@ -288,7 +337,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "EnsureRecords",
@@ -331,7 +380,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "GetRecords",
@@ -381,7 +430,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "DeleteRecords",
@@ -410,51 +459,7 @@
 					"short": "-d"
 				}
 			],
-			"region": "Orm"
-		},
-		{
-			"name": "DeleteTable",
-			"id": "DELETETABLE",
-			"description": "Deletes a table from the database",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--db",
-					"types": "String, Arbitrary",
-					"description": "Existing connection or database path",
-					"default": "Empty value",
-					"short": "-d"
-				}
-			],
-			"region": "Orm"
-		},
-		{
-			"name": "ClearTable",
-			"id": "CLEARTABLE",
-			"description": "Clears the database table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--db",
-					"types": "String, Arbitrary",
-					"description": "Existing connection or database path",
-					"default": "Empty value",
-					"short": "-d"
-				}
-			],
-			"region": "Orm"
+			"region": "Record management"
 		},
 		{
 			"name": "GetRecordsFilterStructure",
@@ -469,7 +474,7 @@
 					"short": "-e"
 				}
 			],
-			"region": "Orm"
+			"region": "Record management"
 		}
 	]
 }
