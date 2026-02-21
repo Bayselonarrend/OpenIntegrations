@@ -1,0 +1,117 @@
+---
+sidebar_position: 1
+description: Get table information and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get table information
+ Gets information about the table
+
+
+
+`Function GetTableInformation(Val Table, Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Table = "test";
+
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite GetTableInformation \
+              --table "test" \
+              --db "C:\Users\bayse\AppData\Local\Temp\lezmyh51.mot.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite GetTableInformation ^
+              --table "test" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\lezmyh51.mot.sqlite"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "data": [
+  {
+   "cid": 0,
+   "dflt_value": null,
+   "name": "id",
+   "notnull": 0,
+   "pk": 1,
+   "type": "INTEGER"
+  },
+  {
+   "cid": 1,
+   "dflt_value": null,
+   "name": "name",
+   "notnull": 0,
+   "pk": 0,
+   "type": "TEXT"
+  },
+  {
+   "cid": 2,
+   "dflt_value": null,
+   "name": "age",
+   "notnull": 0,
+   "pk": 0,
+   "type": "INTEGER"
+  },
+  {
+   "cid": 3,
+   "dflt_value": null,
+   "name": "salary",
+   "notnull": 0,
+   "pk": 0,
+   "type": "REAL"
+  },
+  {
+   "cid": 4,
+   "dflt_value": null,
+   "name": "is_active",
+   "notnull": 0,
+   "pk": 0,
+   "type": "BOOLEAN"
+  },
+  {
+   "cid": 5,
+   "dflt_value": null,
+   "name": "created_at",
+   "notnull": 0,
+   "pk": 0,
+   "type": "DATETIME"
+  },
+  {
+   "cid": 6,
+   "dflt_value": null,
+   "name": "data",
+   "notnull": 0,
+   "pk": 0,
+   "type": "BLOB"
+  }
+ ],
+ "result": true
+}
+```
