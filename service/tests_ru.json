@@ -6275,6 +6275,16 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "СоздатьЗапуск",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ЗавершитьЗапуск",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "ОткрытьСоединение",
 		"variant": ""

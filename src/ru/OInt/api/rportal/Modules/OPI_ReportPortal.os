@@ -3,6 +3,10 @@
 // CLI: rportal
 // Keywords: reportportal
 
+// DocsCategory: Other
+// DocsNameRU: ReportPortal
+// DocsNameEN: ReportPortal
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

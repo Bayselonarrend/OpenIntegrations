@@ -95,6 +95,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_Authorization'],
+						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_ResultsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

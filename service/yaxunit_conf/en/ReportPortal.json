@@ -9,7 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.RPortal_Authorization"
+"OPI_Tests.RPortal_Authorization",
+"OPI_Tests.RPortal_ResultsManagement"
     ]
   },
   "settings": {
