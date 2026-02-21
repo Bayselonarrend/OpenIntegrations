@@ -1,0 +1,98 @@
+---
+sidebar_position: 5
+description: Ensure table and other functions to work with PostgreSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, PostgreSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Ensure table
+ Creates a new table if it does not exist or updates the composition of columns in an existing table
+
+
+
+`Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | ColoumnsStruct | --cols | Structure Of KeyAndValue | &#x2714; | Column structure: Key > Name, Value > Data type |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Existing connection or database path |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+:::tip
+As a result of changing the table structure, data may be lost! It is recommended to test this method on test data beforehand
+
+This function does not update the data type of existing columns
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Table = "testtable";
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("smallint_field" , "SMALLINT");
+    ColoumnsStruct.Insert("uuid_field"     , "uuid");
+    ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
+    ColoumnsStruct.Insert("custom_field"   , "TEXT");
+
+    Result = OPI_PostgreSQL.EnsureTable(Table, ColoumnsStruct, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint postgres EnsureTable \
+              --table "test_new" \
+              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" \
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint postgres EnsureTable ^
+              --table "test_new" ^
+              --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
+              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": true,
+ "commit": {
+  "result": true
+ }
+}
+```

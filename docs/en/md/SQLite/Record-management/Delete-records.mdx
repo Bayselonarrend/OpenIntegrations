@@ -1,0 +1,78 @@
+---
+sidebar_position: 5
+description: Delete records and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete records
+ Deletes records from the table
+
+
+
+`Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStructure |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Table = "test";
+
+    Filters = New Array;
+
+    FilterStructure = New Structure;
+
+    FilterStructure.Insert("field", "name");
+    FilterStructure.Insert("type" , "=");
+    FilterStructure.Insert("value", "Vitaly A.");
+    FilterStructure.Insert("union", "AND");
+    FilterStructure.Insert("raw"  , False);
+
+    Filters.Add(FilterStructure);
+
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint sqlite DeleteRecords \
+              --table "test" \
+              --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
+              --db "C:\Users\bayse\AppData\Local\Temp\lezmyh51.mot.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint sqlite DeleteRecords ^
+              --table "test" ^
+              --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\lezmyh51.mot.sqlite"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "result": true
+}
+```

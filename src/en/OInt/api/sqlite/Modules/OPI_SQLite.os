@@ -238,7 +238,7 @@ EndFunction
 
 #EndRegion
 
-#Region ORM
+#Region TableManagement
 
 // Get table information
 // Gets information about the table
@@ -329,6 +329,42 @@ Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
     Return Result;
 
 EndFunction
+
+// Delete table
+// Deletes a table from the database
+//
+// Parameters:
+// Table      - String            - Table name                           - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
+    Return Result;
+
+EndFunction
+
+// Clear table
+// Clears the database table
+//
+// Parameters:
+// Table      - String            - Table name                           - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function ClearTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region RecordManagement
 
 // Add rows
 // Adds new rows to the table
@@ -447,38 +483,6 @@ Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
 
 EndFunction
 
-// Delete table
-// Deletes a table from the database
-//
-// Parameters:
-// Table      - String            - Table name                           - table
-// Connection - String, Arbitrary - Existing connection or database path - db
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function DeleteTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
-    Return Result;
-
-EndFunction
-
-// Clear table
-// Clears the database table
-//
-// Parameters:
-// Table      - String            - Table name                           - table
-// Connection - String, Arbitrary - Existing connection or database path - db
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function ClearTable(Val Table, Val Connection = "") Export
-
-    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
-    Return Result;
-
-EndFunction
-
 // Get records filter Structure
 // Gets the template structure for filtering records in ORM queries
 //
@@ -581,6 +585,14 @@ Function ГарантироватьТаблицу(Val Таблица, Val Стр
     Return EnsureTable(Таблица, СтруктураКолонок, Соединение);
 EndFunction
 
+Function УдалитьТаблицу(Val Таблица, Val Соединение = "") Export
+    Return DeleteTable(Таблица, Соединение);
+EndFunction
+
+Function ОчиститьТаблицу(Val Таблица, Val Соединение = "") Export
+    Return ClearTable(Таблица, Соединение);
+EndFunction
+
 Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "") Export
     Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
 EndFunction
@@ -599,14 +611,6 @@ EndFunction
 
 Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "") Export
     Return DeleteRecords(Таблица, Фильтры, Соединение);
-EndFunction
-
-Function УдалитьТаблицу(Val Таблица, Val Соединение = "") Export
-    Return DeleteTable(Таблица, Соединение);
-EndFunction
-
-Function ОчиститьТаблицу(Val Таблица, Val Соединение = "") Export
-    Return ClearTable(Таблица, Соединение);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
