@@ -1,0 +1,131 @@
+---
+sidebar_position: 1
+description: Добавить записи и другие функции для работы с MySQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, MySQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить записи
+ Добавляет записи в таблицу
+
+
+
+`Функция ДобавитьЗаписи(Знач Таблица, Знач МассивДанных, Знач Транзакция = Истина, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | МассивДанных | --rows | Массив Из Структура | &#x2714; | Массив структур данных строк: Ключ > поле, Значение > значение поля |
+  | Транзакция | --trn | Булево | &#x2716; | Истина > добавление записей в транзакции с откатом при ошибке |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/MySQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+:::tip
+Данные записей указываются как массив структур вида:<br/>`{'Имя поля 1': {'Тип данных': 'Значение'}, 'Имя поля 2': {'Тип данных': 'Значение'},...}`
+
+Список доступных типов описан на начальной странице документации библиотеки MySQL
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    TLS = Истина;
+    Порт = 3306;
+    СтрокаПодключения = OPI_MySQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль, Порт);
+
+    Если TLS Тогда
+        НастройкиTLS = OPI_MySQL.ПолучитьНастройкиTLS(Истина);
+    Иначе
+        НастройкиTLS = Неопределено;
+    КонецЕсли;
+
+    Таблица       = "testtable";
+    МассивЗаписей = Новый Массив;
+
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
+
+    ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
+
+    СтруктураЗаписи = Новый Структура;
+    СтруктураЗаписи.Вставить("char_field"      , Новый Структура("TEXT"  , "AAAAA"));
+    СтруктураЗаписи.Вставить("varchar_field"   , Новый Структура("TEXT"  , "Some varchar"));
+    СтруктураЗаписи.Вставить("tinytext_field"  , Новый Структура("TEXT"  , "Some tiny text"));
+    СтруктураЗаписи.Вставить("text_field"      , Новый Структура("TEXT"  , "Some text"));
+    СтруктураЗаписи.Вставить("mediumtext_field", Новый Структура("TEXT"  , "Some medium text"));
+    СтруктураЗаписи.Вставить("longtext_field"  , Новый Структура("TEXT"  , "Some looooooong text"));
+    СтруктураЗаписи.Вставить("tinyint_field"   , Новый Структура("INT"   , 127));
+    СтруктураЗаписи.Вставить("smallint_field"  , Новый Структура("INT"   , -32767));
+    СтруктураЗаписи.Вставить("mediumint_field" , Новый Структура("INT"   , 8388607));
+    СтруктураЗаписи.Вставить("int_field"       , Новый Структура("INT"   , -2147483647));
+    СтруктураЗаписи.Вставить("uint_field"      , Новый Структура("UINT"  , 4294967295));
+    СтруктураЗаписи.Вставить("bigint_field"    , Новый Структура("INT"   , 9223372036854775807));
+    СтруктураЗаписи.Вставить("float_field"     , Новый Структура("FLOAT" , 100.50));
+    СтруктураЗаписи.Вставить("double_field"    , Новый Структура("FLOAT" , 100.512123));
+    СтруктураЗаписи.Вставить("date_field"      , Новый Структура("DATE"  , ТекущаяДата));
+    СтруктураЗаписи.Вставить("time_field"      , Новый Структура("TIME"  , ТекущаяДата));
+    СтруктураЗаписи.Вставить("datetime_field"  , Новый Структура("DATE"  , ТекущаяДата));
+    СтруктураЗаписи.Вставить("timestamp_field" , Новый Структура("DATE"  , ТекущаяДата));
+    СтруктураЗаписи.Вставить("mediumblob_field", Новый Структура("BYTES" , Картинка));
+    СтруктураЗаписи.Вставить("set_field"       , Новый Структура("TEXT"  , "one"));
+
+    МассивЗаписей.Добавить(СтруктураЗаписи);
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_MySQL.ДобавитьЗаписи(Таблица, МассивЗаписей, Истина, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mysql ДобавитьЗаписи \
+              --table "testtable" \
+              --rows "[{'char_field':{'TEXT':'AAAAA'},'varchar_field':{'TEXT':'Some varchar'},'tinytext_field':{'TEXT':'Some tiny text'},'text_field':{'TEXT':'Some text'},'mediumtext_field':{'TEXT':'Some medium text'},'longtext_field':{'TEXT':'Some looooooong text'},'tinyint_field':{'INT':'127'},'smallint_field':{'INT':'-32767'},'mediumint_field':{'INT':'8388607'},'int_field':{'INT':'-2147483647'},'uint_field':{'UINT':'4294967295'},'bigint_field':{'INT':'9223372036854775807'},'float_field':{'FLOAT':'100.5'},'double_field':{'FLOAT':'100.512123'},'date_field':{'DATE':'2/20/2026 1:05:14 AM'},'time_field':{'TIME':'2/20/2026 1:05:14 AM'},'datetime_field':{'DATE':'2/20/2026 1:05:14 AM'},'timestamp_field':{'DATE':'2/20/2026 1:05:14 AM'},'mediumblob_field':{'BYTES':'C:\\Users\\bayse\\AppData\\Local\\Temp\\xyroafpu.pxt'},'set_field':{'TEXT':'one'}}]" \
+              --trn true \
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mysql ДобавитьЗаписи ^
+              --table "testtable" ^
+              --rows "[{'char_field':{'TEXT':'AAAAA'},'varchar_field':{'TEXT':'Some varchar'},'tinytext_field':{'TEXT':'Some tiny text'},'text_field':{'TEXT':'Some text'},'mediumtext_field':{'TEXT':'Some medium text'},'longtext_field':{'TEXT':'Some looooooong text'},'tinyint_field':{'INT':'127'},'smallint_field':{'INT':'-32767'},'mediumint_field':{'INT':'8388607'},'int_field':{'INT':'-2147483647'},'uint_field':{'UINT':'4294967295'},'bigint_field':{'INT':'9223372036854775807'},'float_field':{'FLOAT':'100.5'},'double_field':{'FLOAT':'100.512123'},'date_field':{'DATE':'2/20/2026 1:05:14 AM'},'time_field':{'TIME':'2/20/2026 1:05:14 AM'},'datetime_field':{'DATE':'2/20/2026 1:05:14 AM'},'timestamp_field':{'DATE':'2/20/2026 1:05:14 AM'},'mediumblob_field':{'BYTES':'C:\\Users\\bayse\\AppData\\Local\\Temp\\xyroafpu.pxt'},'set_field':{'TEXT':'one'}}]" ^
+              --trn true ^
+              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "commit": {
+  "result": true
+ },
+ "result": true,
+ "rows": 1,
+ "errors": []
+}
+```

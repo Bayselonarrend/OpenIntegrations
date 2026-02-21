@@ -1,0 +1,78 @@
+---
+sidebar_position: 5
+description: Удалить записи и другие функции для работы с SQLite в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить записи
+ Удаляет записи из таблицы
+
+
+
+`Функция УдалитьЗаписи(Знач Таблица, Знач Фильтры = "", Знач Соединение = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | Фильтры | --filter | Массив Из Структура | &#x2716; | Массив фильтров. См. [`ПолучитьСтруктуруФильтраЗаписей`](/docs/SQLite/Record-management/Get-records-filter-structure) |
+  | Соединение | --db | Строка, Произвольный | &#x2716; | Существующее соединение или путь к базе |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    База    = "/tmp/vnnmoosn.qqb.sqlite";
+    Таблица = "test";
+
+    Фильтры = Новый Массив;
+
+    СтруктураФильтра = Новый Структура;
+
+    СтруктураФильтра.Вставить("field", "name");
+    СтруктураФильтра.Вставить("type" , "=");
+    СтруктураФильтра.Вставить("value", "Vitaly A.");
+    СтруктураФильтра.Вставить("union", "AND");
+    СтруктураФильтра.Вставить("raw"  , Ложь);
+
+    Фильтры.Добавить(СтруктураФильтра);
+
+    Результат = OPI_SQLite.УдалитьЗаписи(Таблица, СтруктураФильтра, База);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite УдалитьЗаписи \
+              --table "test" \
+              --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
+              --db "C:\Users\bayse\AppData\Local\Temp\utfqhyfj.m2h.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite УдалитьЗаписи ^
+              --table "test" ^
+              --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\utfqhyfj.m2h.sqlite"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "result": true
+}
+```

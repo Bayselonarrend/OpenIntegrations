@@ -255,7 +255,7 @@ EndFunction
 
 #EndRegion
 
-#Region ORM
+#Region DatabaseManagement
 
 // Create database
 // Creates a database with the specified name
@@ -300,6 +300,10 @@ Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
     Return Result;
 
 EndFunction
+
+#EndRegion
+
+#Region TableManagement
 
 // Create table
 // Creates an empty table in the database
@@ -432,6 +436,10 @@ Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Expor
     Return Result;
 
 EndFunction
+
+#EndRegion
+
+#Region RecordManagement
 
 // Add rows
 // Adds new rows to the table
