@@ -7691,68 +7691,6 @@ Function Check_S3_GetObjectUploadLink(Val Result, Val Option, Size = "")
 
 EndFunction
 
-Function Check_ReportPortal_GetTemporaryToken(Val Result, Val Option, Parameters = "")
-
-    Token = Result["access_token"];
-
-    ExpectsThat(Token).Заполнено();
-
-    WriteParameter("RPortal_TempToken", Token);
-    Parameters.Insert("RPortal_TempToken", Token);
-
-    Return Result;
-
-EndFunction
-
-Function Check_ReportPortal_GetPermanentToken(Val Result, Val Option, Parameters = "")
-
-    Token = Result["api_key"];
-    UID   = Result["id"];
-
-    ExpectsThat(Token).Заполнено();
-
-    WriteParameter("RPortal_TestApiKey", Token);
-    Parameters.Insert("RPortal_TestApiKey", Token);
-
-    WriteParameter("RPortal_TestKeyID", UID);
-    Parameters.Insert("RPortal_TestKeyID", UID);
-
-    Return Result;
-
-EndFunction
-
-Function Check_ReportPortal_DeletePermanentToken(Val Result, Val Option)
-
-    Response = Result["message"];
-    ExpectsThat(StrEndsWith(Response, "was successfully deleted.")).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_ReportPortal_CreateLaunch(Val Result, Val Option, Parameters = "")
-
-    LaunchID = Result["id"];
-
-    ExpectsThat(LaunchID).Заполнено();
-
-    WriteParameter("RPortal_TestLaunch", LaunchID);
-    Parameters.Insert("RPortal_TestLaunch", LaunchID);
-
-    Return Result;
-
-EndFunction
-
-Function Check_ReportPortal_FinishLaunch(Val Result, Val Option)
-
-    LaunchID = Result["id"];
-
-    ExpectsThat(LaunchID).Заполнено();
-
-    Return Result;
-
-EndFunction
-
 Function Check_TCP_CloseConnection(Val Result, Val Option)
 
     ExpectsThat(Result).Равно(True);
@@ -13417,6 +13355,87 @@ Function Check_ClickHouse_ProcessGRPCReceiving(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["messages"].Count() > 0).Равно(True);
 
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetTemporaryToken(Val Result, Val Option, Parameters = "")
+
+    Token = Result["access_token"];
+
+    ExpectsThat(Token).Заполнено();
+
+    WriteParameter("RPortal_TempToken", Token);
+    Parameters.Insert("RPortal_TempToken", Token);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetPermanentToken(Val Result, Val Option, Parameters = "")
+
+    Token = Result["api_key"];
+    UID   = Result["id"];
+
+    ExpectsThat(Token).Заполнено();
+
+    WriteParameter("RPortal_TestApiKey", Token);
+    Parameters.Insert("RPortal_TestApiKey", Token);
+
+    WriteParameter("RPortal_TestKeyID", UID);
+    Parameters.Insert("RPortal_TestKeyID", UID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeletePermanentToken(Val Result, Val Option)
+
+    Response = Result["message"];
+    ExpectsThat(StrEndsWith(Response, "was successfully deleted.")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_CreateLaunch(Val Result, Val Option, Parameters = "")
+
+    LaunchID = Result["id"];
+
+    ExpectsThat(LaunchID).Заполнено();
+
+    WriteParameter("RPortal_TestLaunch", LaunchID);
+    Parameters.Insert("RPortal_TestLaunch", LaunchID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_FinishLaunch(Val Result, Val Option)
+
+    LaunchID = Result["id"];
+    ExpectsThat(LaunchID).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_CreateItem(Val Result, Val Option, Parameters = "")
+
+    LaunchID = Result["id"];
+
+    ExpectsThat(LaunchID).Заполнено();
+
+    WriteParameter("RPortal_TestItem", LaunchID);
+    Parameters.Insert("RPortal_TestItem", LaunchID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_FinishItem(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully finished") > 0).Равно(True);
     Return Result;
 
 EndFunction
