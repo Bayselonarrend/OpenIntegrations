@@ -2925,6 +2925,19 @@ Procedure RPortal_Authorization() Export
 
 EndProcedure
 
+Procedure RPortal_ResultsManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Login"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Password"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken" , TestParameters);
+
+    ReportPortal_CreateLaunch(TestParameters);
+    ReportPortal_FinishLaunch(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region SSH
@@ -30112,6 +30125,60 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "DeletePermanentToken");
+
+EndProcedure
+
+Procedure ReportPortal_CreateLaunch(FunctionParameters)
+
+    URL     = FunctionParameters["RPortal_URL"];
+    Token   = FunctionParameters["RPortal_TempToken"];
+    Project = "Test";
+
+    LaunchStructure = New Structure;
+    LaunchStructure.Insert("name"       , "Test");
+    LaunchStructure.Insert("startTime"  , Date("20260101100000"));
+    LaunchStructure.Insert("description", "Test launch");
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("token", Token);
+    Options.Insert("proj", Project);
+    Options.Insert("params", LaunchStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "CreateLaunch", Options);
+
+    // END
+
+    Process(Result, "ReportPortal", "CreateLaunch", , FunctionParameters);
+
+EndProcedure
+
+Procedure ReportPortal_FinishLaunch(FunctionParameters)
+
+    URL      = FunctionParameters["RPortal_URL"];
+    Token    = FunctionParameters["RPortal_TempToken"];
+    LaunchID = FunctionParameters["RPortal_TestLaunch"];
+    Project  = "Test";
+
+    Options = New Structure;
+    Options.Insert("end", Date);
+    Options.Insert("status", "passed");
+    Options.Insert("descr", "Updated launch description");
+
+    FinishStructure = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetLaunchCompletionStructure", Options);
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("token", Token);
+    Options.Insert("proj", Project);
+    Options.Insert("id", LaunchID);
+    Options.Insert("params", FinishStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "FinishLaunch", Options);
+
+    // END
+
+    Process(Result, "ReportPortal", "FinishLaunch");
 
 EndProcedure
 

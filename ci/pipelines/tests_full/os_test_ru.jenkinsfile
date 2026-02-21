@@ -807,6 +807,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_Авторизация'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_УправлениеРезультатами'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
