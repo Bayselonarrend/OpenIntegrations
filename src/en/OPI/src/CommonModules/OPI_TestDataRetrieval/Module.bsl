@@ -432,6 +432,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_FileOperations"                   , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                  , FTP);
     NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                   , RPortal);
+    NewTest(TestTable, "RPortal_ResultsManagement"           , "Results management"              , RPortal);
     NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
     NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
     NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
@@ -7725,6 +7726,29 @@ Function Check_ReportPortal_DeletePermanentToken(Val Result, Val Option)
 
     Response = Result["message"];
     ExpectsThat(StrEndsWith(Response, "was successfully deleted.")).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_CreateLaunch(Val Result, Val Option, Parameters = "")
+
+    LaunchID = Result["id"];
+
+    ExpectsThat(LaunchID).Заполнено();
+
+    WriteParameter("RPortal_TestLaunch", LaunchID);
+    Parameters.Insert("RPortal_TestLaunch", LaunchID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_FinishLaunch(Val Result, Val Option)
+
+    LaunchID = Result["id"];
+
+    ExpectsThat(LaunchID).Заполнено();
 
     Return Result;
 

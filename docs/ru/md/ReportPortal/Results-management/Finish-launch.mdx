@@ -27,7 +27,18 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "tests.openintegrations.dev";
+    Токен     = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    IDЗапуска = "";
+    Проект    = "Test";
 
+    СтруктураЗавершения = OPI_ReportPortal.ПолучитьСтруктуруЗавершенияЗапуска(Дата("20260101200000")
+        , "passed"
+        , "Updated launch description");
+
+    Результат = OPI_ReportPortal.ЗавершитьЗапуск(URL, Токен, Проект, IDЗапуска, СтруктураЗавершения);
+```
     
 
 

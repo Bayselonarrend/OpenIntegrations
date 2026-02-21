@@ -6275,6 +6275,16 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "CreateLaunch",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "FinishLaunch",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "CreateConnection",
 		"variant": ""
