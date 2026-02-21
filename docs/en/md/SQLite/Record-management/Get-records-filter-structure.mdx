@@ -1,0 +1,61 @@
+---
+sidebar_position: 6
+description: Get records filter Structure and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get records filter Structure
+ Gets the template structure for filtering records in ORM queries
+
+
+
+`Function GetRecordsFilterStructure(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure Of KeyAndValue - Record filter element
+
+:::tip
+The use of the `raw` feature is necessary for compound constructions like `BETWEEN`. For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 ` where `?1 = "10 AND 20,"' which would cause an error.. In such a case, you must use `raw:true` to set the condition directly in the query text
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_SQLite.GetRecordsFilterStructure();
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite GetRecordsFilterStructure \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite GetRecordsFilterStructure ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "field": "<filtering field name>",
+ "type": "<comparison type>",
+ "value": "<comparison value>",
+ "union": "<connection with the following condition: AND, OR, etc..>",
+ "raw": "<true - the value will be inserted by text as it is, false - through the parameter>"
+}
+```
