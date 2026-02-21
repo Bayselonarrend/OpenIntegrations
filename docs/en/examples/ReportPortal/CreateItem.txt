@@ -1,0 +1,15 @@
+    URL      = "tests.openintegrations.dev";
+    Token    = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    LaunchID = "";
+    Project  = "Test";
+
+    StartDate = Date("20260101100000");
+
+    ElementStructure = New Structure;
+    ElementStructure.Insert("name"       , "Test");
+    ElementStructure.Insert("startTime"  , StartDate);
+    ElementStructure.Insert("type"       , "test");
+    ElementStructure.Insert("description", "Test launch");
+    ElementStructure.Insert("launchUuid" , LaunchID);
+
+    Result = OPI_ReportPortal.CreateItem(URL, Token, Project, ElementStructure);
