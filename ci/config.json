@@ -205,7 +205,7 @@
   "value": {
    "artifactsCount": {
     "description": "Release artifacts (files) count",
-    "value": 16
+    "value": 18
    }
   }
  },
@@ -504,6 +504,15 @@
        "wslDistro": {
         "description": "WSL linux distro",
         "value": "OracleLinux_9_1"
+       }
+      }
+     },
+     "appimage": {
+      "description": "AppImage packages options",
+      "value": {
+       "wslDistro": {
+        "description": "WSL linux distro",
+        "value": "Ubuntu"
        }
       }
      }
