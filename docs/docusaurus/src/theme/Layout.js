@@ -7,30 +7,25 @@ export default function CustomLayout(props) {
   const location = useLocation();
 
   useEffect(() => {
-    // Проверяем, находимся ли мы на странице документации
     if (!location.pathname.startsWith('/docs/')) {
-      return; // Если нет, не добавляем блок
+      return; 
     }
 
-    // Удаляем предыдущий блок и скрипт, если они существуют
     const existingAdContainer = document.getElementById('yandex_rtb_R-A-12294791-5');
     if (existingAdContainer) {
-      existingAdContainer.innerHTML = ''; // Очищаем контейнер перед перерендерингом
+      existingAdContainer.innerHTML = '';
     }
 
-    // Создаем контейнер для второго рекламного блока, если он не существует
     let adContainer = existingAdContainer;
     if (!adContainer) {
       adContainer = document.createElement('div');
       adContainer.id = 'yandex_rtb_R-A-12294791-5';
-      adContainer.style.marginTop = '20px'; // Добавим отступ для красоты
+      adContainer.style.marginTop = '20px'; 
 
-      // Находим элемент кнопок "Previous" и "Next" и вставляем перед ним
       const paginationElement = document.querySelector('.pagination-nav');
       if (paginationElement) {
         paginationElement.parentNode.insertBefore(adContainer, paginationElement);
       } else {
-        // Если кнопок нет, добавляем контейнер в конец body
         document.body.appendChild(adContainer);
       }
     }
@@ -54,12 +49,11 @@ export default function CustomLayout(props) {
     `;
     document.body.appendChild(script);
 
-    // Удаляем элементы при размонтировании компонента
     return () => {
       script.remove();
-      adContainer.innerHTML = ''; // Очищаем контейнер при размонтировании
+      adContainer.innerHTML = ''; 
     };
-  }, [location.pathname]); // Перезапуск эффекта при изменении пути
+  }, [location.pathname]);
 
   return (
     <>
