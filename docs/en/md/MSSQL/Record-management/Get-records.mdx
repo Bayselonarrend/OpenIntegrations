@@ -1,0 +1,141 @@
+---
+sidebar_position: 4
+description: Get records and other functions to work with MSSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get records
+ Gets records from the selected table
+
+
+
+`Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Fields | --fields | Array Of String | &#x2716; | Fields for selection |
+  | Filters | --filter | Array of Structure | &#x2716; | Filters array. See GetRecordsFilterStructure |
+  | Sort | --order | Structure Of KeyAndValue | &#x2716; | Sorting: Key > field name, Value > direction (ASC, DESC) |
+  | Count | --limit | Number | &#x2716; | Limiting the number of received strings |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    // All records without filters
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
+
+    // Filter, selected fields, limit and sorting
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, "test_data", Login, Password);
+
+    Table = "test_data";
+
+    Fields = New Array;
+    Fields.Add("first_name");
+    Fields.Add("last_name");
+    Fields.Add("email");
+
+    Filters = New Array;
+
+    FilterStructure1 = New Structure;
+
+    FilterStructure1.Insert("field", "gender");
+    FilterStructure1.Insert("type" , "=");
+    FilterStructure1.Insert("value", "Male");
+    FilterStructure1.Insert("union", "AND");
+    FilterStructure1.Insert("raw"  , False);
+
+    FilterStructure2 = New Structure;
+
+    FilterStructure2.Insert("field", "id");
+    FilterStructure2.Insert("type" , "BETWEEN");
+    FilterStructure2.Insert("value", "20 AND 50");
+    FilterStructure2.Insert("raw"  , True);
+
+    Filters.Add(FilterStructure1);
+    Filters.Add(FilterStructure2);
+
+    Sort  = New Structure("ip_address", "DESC");
+    Count = 5;
+
+    Result = OPI_MSSQL.GetRecords(Table, Fields, Filters, Sort, Count, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mssql GetRecords \
+              --table "testtable" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mssql GetRecords ^
+              --table "testtable" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "data": [
+  {
+   "bigint_field": 20000000000,
+   "bit_field": 1,
+   "date_field": "2026-02-20",
+   "datetime_field": "2026-02-20T13:05:29",
+   "dto_field": "2026-02-20T14:05:29+03:00",
+   "float24_field": 10.1234569549561,
+   "float53_field": 10.1234567891235,
+   "int_field": 200000,
+   "numeric_field": 5.333,
+   "nvarchar_field": "Some text",
+   "smallint_field": 2000,
+   "time_field": "13:05:29",
+   "tinyint_field": 5,
+   "uid_field": "06667da8-efb5-443b-85a5-d17ca781a586",
+   "varbinary_field": {
+    "BYTES": "/9j/4VTBRX..."
+   },
+   "xml_field": "<root><element><name>Example</name><value>123</value></element><element><name>Test</name><value>456</value></element></root>"
+  }
+ ],
+ "result": true
+}
+```

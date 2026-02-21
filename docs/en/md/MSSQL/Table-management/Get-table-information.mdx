@@ -1,0 +1,191 @@
+---
+sidebar_position: 7
+description: Get table information and other functions to work with MSSQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get table information
+ Gets information about the table
+
+
+
+`Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Table | --table | String | &#x2714; | Table name |
+  | Connection | --dbc | String, Arbitrary | &#x2716; | Connection or connection string |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "testtable";
+
+    // When using the connection string, a new connection is initialised,
+    // which will be closed after the function is executed.
+    // If several operations are performed, it is desirable to use one connection,
+    // previously created by the CreateConnection function()
+    Result = OPI_MSSQL.GetTableInformation(Table, ConnectionString, TLSSettings);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mssql GetTableInformation \
+              --table "test_new" \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mssql GetTableInformation ^
+              --table "test_new" ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "data": [
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "tinyint_field",
+   "data_type": "tinyint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "smallint_field",
+   "data_type": "smallint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "int_field",
+   "data_type": "int",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bigint_field",
+   "data_type": "bigint",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "float24_field",
+   "data_type": "real",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "float53_field",
+   "data_type": "float",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "bit_field",
+   "data_type": "bit",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": 4000,
+   "column_default": null,
+   "column_name": "nvarchar_field",
+   "data_type": "nvarchar",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": -1,
+   "column_default": null,
+   "column_name": "varbinary_field",
+   "data_type": "varbinary",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "uid_field",
+   "data_type": "uniqueidentifier",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "numeric_field",
+   "data_type": "numeric",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": -1,
+   "column_default": null,
+   "column_name": "xml_field",
+   "data_type": "xml",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "date_field",
+   "data_type": "date",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "time_field",
+   "data_type": "time",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "dto_field",
+   "data_type": "datetimeoffset",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "datetime_field",
+   "data_type": "datetime",
+   "is_nullable": "YES"
+  }
+ ],
+ "result": true
+}
+```

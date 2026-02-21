@@ -1,0 +1,132 @@
+---
+sidebar_position: 1
+description: Добавить записи и другие функции для работы с MSSQL в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, MSSQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить записи
+ Добавляет записи в таблицу
+
+
+
+`Функция ДобавитьЗаписи(Знач Таблица, Знач МассивДанных, Знач Транзакция = Истина, Знач Соединение = "", Знач Tls = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Таблица | --table | Строка | &#x2714; | Имя таблицы |
+  | МассивДанных | --rows | Массив Из Структура | &#x2714; | Массив структур данных строк: Ключ > поле, Значение > значение поля |
+  | Транзакция | --trn | Булево | &#x2716; | Истина > добавление записей в транзакции с откатом при ошибке |
+  | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
+  | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/MSSQL/Common-methods/Get-tls-settings) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
+
+:::tip
+Данные записей указываются как массив структур вида:<br/>`{'Имя поля 1': {'Тип данных': 'Значение'}, 'Имя поля 2': {'Тип данных': 'Значение'},...}`
+
+Список доступных типов описан на начальной странице документации библиотеки MSSQL
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Адрес  = "127.0.0.1";
+    Логин  = "SA";
+    Пароль = "12we...";
+    База   = "testbase1";
+
+    НастройкиTLS      = OPI_MSSQL.ПолучитьНастройкиTLS(Истина);
+    СтрокаПодключения = OPI_MSSQL.СформироватьСтрокуПодключения(Адрес, База, Логин, Пароль);
+
+    Таблица       = "testtable";
+    МассивЗаписей = Новый Массив;
+
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
+
+    XML = "<?xml version=""1.0""?><root>
+        |    <element>
+        |        <name>Пример</name>
+        |        <value>123</value>
+        |    </element>
+        |    <element>
+        |        <name>Тест</name>
+        |        <value>456</value>
+        |    </element>
+        |</root>";
+
+    ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
+    ТекущаяДатаЧП = OPI_Инструменты.ДатаRFC3339(ТекущаяДата, "+05:00");
+
+    СтруктураЗаписи = Новый Структура;
+    СтруктураЗаписи.Вставить("tinyint_field"  , Новый Структура("TINYINT"       , 5));
+    СтруктураЗаписи.Вставить("smallint_field" , Новый Структура("SMALLINT"      , 2000));
+    СтруктураЗаписи.Вставить("int_field"      , Новый Структура("INT"           , 200000));
+    СтруктураЗаписи.Вставить("bigint_field"   , Новый Структура("BIGINT"        , 20000000000));
+    СтруктураЗаписи.Вставить("float24_field"  , Новый Структура("FLOAT24"       , 10.1234567));
+    СтруктураЗаписи.Вставить("float53_field"  , Новый Структура("FLOAT53"       , 10.123456789123456));
+    СтруктураЗаписи.Вставить("bit_field"      , Новый Структура("BIT"           , Истина));
+    СтруктураЗаписи.Вставить("nvarchar_field" , Новый Структура("NVARCHAR"      , "Some text"));
+    СтруктураЗаписи.Вставить("varbinary_field", Новый Структура("BYTES"         , Картинка));
+    СтруктураЗаписи.Вставить("uid_field"      , Новый Структура("UUID"          , Новый УникальныйИдентификатор));
+    СтруктураЗаписи.Вставить("numeric_field"  , Новый Структура("NUMERIC"       , 5.333));
+    СтруктураЗаписи.Вставить("xml_field"      , Новый Структура("XML"           , XML));
+    СтруктураЗаписи.Вставить("date_field"     , Новый Структура("DATE"          , ТекущаяДата));
+    СтруктураЗаписи.Вставить("time_field"     , Новый Структура("TIME"          , ТекущаяДата));
+    СтруктураЗаписи.Вставить("dto_field"      , Новый Структура("DATETIMEOFFSET", ТекущаяДатаЧП));
+    СтруктураЗаписи.Вставить("datetime_field" , Новый Структура("DATETIME"      , ТекущаяДата));
+
+    МассивЗаписей.Добавить(СтруктураЗаписи);
+
+    // При использовании строки подключения инициализируется новое соединение,
+    // которое будет закрыто после выполнения функции.
+    // В случае выполнения нескольких операций желательно использовать одно соединение,
+    // заранее созданное функцией ОткрытьСоединение()
+    Результат = OPI_MSSQL.ДобавитьЗаписи(Таблица, МассивЗаписей, Истина, СтрокаПодключения, НастройкиTLS);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ДобавитьЗаписи \
+              --table "testtable" \
+              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayse\\AppData\\Local\\Temp\\aw3b0eye.f3f'},'uid_field':{'UUID':'4e278ef4-d1c7-4545-abb6-09e5a4863f85'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'2/20/2026 1:07:29 AM'},'time_field':{'TIME':'2/20/2026 1:07:29 AM'},'dto_field':{'DATETIMEOFFSET':'2/19/2026 11:07:29 PM'},'datetime_field':{'DATETIME':'2/20/2026 1:07:29 AM'}}]" \
+              --trn true \
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mssql ДобавитьЗаписи ^
+              --table "testtable" ^
+              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayse\\AppData\\Local\\Temp\\aw3b0eye.f3f'},'uid_field':{'UUID':'4e278ef4-d1c7-4545-abb6-09e5a4863f85'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'2/20/2026 1:07:29 AM'},'time_field':{'TIME':'2/20/2026 1:07:29 AM'},'dto_field':{'DATETIMEOFFSET':'2/19/2026 11:07:29 PM'},'datetime_field':{'DATETIME':'2/20/2026 1:07:29 AM'}}]" ^
+              --trn true ^
+              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "commit": {
+  "result": true
+ },
+ "result": true,
+ "rows": 1,
+ "errors": []
+}
+```
