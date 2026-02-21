@@ -6285,6 +6285,16 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "СоздатьЭлемент",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ЗавершитьЭлемент",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "ОткрытьСоединение",
 		"variant": ""

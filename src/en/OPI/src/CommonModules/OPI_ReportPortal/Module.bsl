@@ -187,7 +187,7 @@ Function CreateItem(Val URL, Val Token, Val Project, Val ElementStructure, Val P
     OPI_TypeConversion.GetLine(Project);
     OPI_TypeConversion.GetLine(Parent);
 
-    Parent = ?(ValueIsFilled(Parent), "/" + Parent, "");
+    Parent = ?(ValueIsFilled(Parent), StrTemplate("/%1", Parent), "");
 
     CompleteURL(URL, StrTemplate("api/v1/%1/item%2", Project, Parent));
 
@@ -211,7 +211,11 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function FinishLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val FinishStructure) Export
+Function FinishLaunch(Val URL
+    , Val Token
+    , Val Project
+    , Val LaunchID
+    , Val FinishStructure) Export
 
     ErrorText = "Completion structure is not a valid KeyValue collection";
 

@@ -2932,6 +2932,8 @@ Procedure RPortal_ResultsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken" , TestParameters);
 
     ReportPortal_CreateLaunch(TestParameters);
+    ReportPortal_CreateItem(TestParameters);
+    ReportPortal_FinishItem(TestParameters);
     ReportPortal_FinishLaunch(TestParameters);
 
 EndProcedure
@@ -22958,9 +22960,11 @@ Procedure ReportPortal_CreateLaunch(FunctionParameters)
     Token   = FunctionParameters["RPortal_TempToken"];
     Project = "Test";
 
+    StartDate = Date("20260101100000");
+
     LaunchStructure = New Structure;
     LaunchStructure.Insert("name"       , "Test");
-    LaunchStructure.Insert("startTime"  , Date("20260101100000"));
+    LaunchStructure.Insert("startTime"  , StartDate);
     LaunchStructure.Insert("description", "Test launch");
 
     Result = OPI_ReportPortal.CreateLaunch(URL, Token, Project, LaunchStructure);
@@ -22978,7 +22982,8 @@ Procedure ReportPortal_FinishLaunch(FunctionParameters)
     LaunchID = FunctionParameters["RPortal_TestLaunch"];
     Project  = "Test";
 
-    FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(Date("20260101200000")
+    EndDate         = Date("20260101200000");
+    FinishStructure = OPI_ReportPortal.GetLaunchCompletionStructure(EndDate
         , "passed"
         , "Updated launch description");
 
@@ -22987,6 +22992,51 @@ Procedure ReportPortal_FinishLaunch(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "FinishLaunch");
+
+EndProcedure
+
+Procedure ReportPortal_CreateItem(FunctionParameters)
+
+    URL      = FunctionParameters["RPortal_URL"];
+    Token    = FunctionParameters["RPortal_TempToken"];
+    LaunchID = FunctionParameters["RPortal_TestLaunch"];
+    Project  = "Test";
+
+    StartDate = Date("20260101100000");
+
+    ElementStructure = New Structure;
+    ElementStructure.Insert("name"       , "Test");
+    ElementStructure.Insert("startTime"  , StartDate);
+    ElementStructure.Insert("type"       , "test");
+    ElementStructure.Insert("description", "Test launch");
+    ElementStructure.Insert("launchUuid" , LaunchID);
+
+    Result = OPI_ReportPortal.CreateItem(URL, Token, Project, ElementStructure);
+
+    // END
+
+    Process(Result, "ReportPortal", "CreateItem", , FunctionParameters);
+
+EndProcedure
+
+Procedure ReportPortal_FinishItem(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ElementID = FunctionParameters["RPortal_TestItem"];
+    Project   = "Test";
+
+    EndDate = Date("20260101200000");
+
+    FinishStructure = New Structure;
+    FinishStructure.Insert("endTime", EndDate);
+    FinishStructure.Insert("status" , "passed");
+
+    Result = OPI_ReportPortal.FinishItem(URL, Token, Project, ElementID, FinishStructure);
+
+    // END
+
+    Process(Result, "ReportPortal", "FinishItem");
 
 EndProcedure
 
