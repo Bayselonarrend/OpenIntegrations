@@ -26,7 +26,18 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    URL     = "tests.openintegrations.dev";
+    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    Project = "Test";
 
+    LaunchStructure = New Structure;
+    LaunchStructure.Insert("name"       , "Test");
+    LaunchStructure.Insert("startTime"  , Date("20260101100000"));
+    LaunchStructure.Insert("description", "Test launch");
+
+    Result = OPI_ReportPortal.CreateLaunch(URL, Token, Project, LaunchStructure);
+```
  
 
 

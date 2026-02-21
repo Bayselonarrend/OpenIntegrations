@@ -9,7 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.RPortal_Авторизация"
+"OPI_Тесты.RPortal_Авторизация",
+"OPI_Тесты.RPortal_УправлениеРезультатами"
     ]
   },
   "settings": {

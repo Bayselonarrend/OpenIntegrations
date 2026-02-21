@@ -21,6 +21,7 @@
 |![OpenAI](../OpenAI.png)| `OpenAI`| openai, localai, ai llm |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
+|![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![AWS S3](../S3.png)| `AWS S3`| s3, minio, aws, simple storage service |
 |![SFTP](../SFTP.png)| `SFTP`| sftp |
 |![Slack](../Slack.png)| `Slack`| slack |
