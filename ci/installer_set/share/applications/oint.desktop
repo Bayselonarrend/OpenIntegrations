@@ -11,6 +11,6 @@ Exec=oint --help
 Icon=oint
 Terminal=true
 NoDisplay=true
-Categories=Development;Utility;
+Categories=Development;
 Keywords=api;integration;cli;telegram;vk;bitrix24;
 Keywords[ru]=апи;интеграция;командная строка;телеграм;вк;битрикс24;
