@@ -17,6 +17,10 @@
       и примеры использования, возможность автоматизации через скрипты.
     </p>
   </description>
+  <developer id="dev.openintegrations">
+    <name>OpenIntegrations</name>
+  </developer>
+  <content_rating type="oars-1.1" />
   <url type="homepage">https://openintegrations.dev</url>
   <url type="bugtracker">https://github.com/Bayselonarrend/OpenIntegrations/issues</url>
   <url type="help">https://openintegrations.dev</url>
