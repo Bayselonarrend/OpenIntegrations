@@ -22,7 +22,6 @@
   <url type="help">https://en.openintegrations.dev</url>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
-  <developer_name>Anton Titovets</developer_name>
   <provides>
     <binary>oint</binary>
   </provides>
