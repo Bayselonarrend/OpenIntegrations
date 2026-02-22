@@ -12,7 +12,7 @@ The Open Integration Package is a project with three development paths: 1C, OneS
 These release options are various forms of distribution for the extension for the 1C:Enterprise platform
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/1.png').default} width="86" align="left"/>
-**OpenIntegrations_x.x.x.cfe** - the standard distribution option for the 1C configuration extension. To start working, it is sufficient to load it into the list of extensions for your specific configuration. Development is carried out in compatibility mode with 1C 8.3.10.
+**OpenIntegrations_x.x.x_lang.cfe** - the standard distribution option for the 1C configuration extension. To start working, it is sufficient to load it into the list of extensions for your specific configuration. Development is carried out in compatibility mode with 1C 8.3.10.
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/2.png').default} width="86" align="left"/>
 **XML.zip** - this is a zip archive that contains the files of the standard 1C extension export "to files". Similar to the CFE option, the unpacked archive can be used to load the extension through the Configuration Extensions panel in a specific project
@@ -26,13 +26,16 @@ These release options are various forms of distribution for the extension for th
 these release options are various forms of distribution for OInt CLI – a cross-platform terminal/command line application that implements the full functionality of the OpenIntegrations library without being tied to the 1C/OS technology stack
 
 <img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/6.png').default} width="86" align="left"/>
-**oint_x.x.x_installer.exe** - this is a Windows installer. It is the recommended installation method for Windows OS, as it automatically creates the program directory and sets the PATH (after restarting the computer). This allows the application to be launched from any location by simply typing oint in the command line
+**oint_x.x.x_installer_lang.exe** - this is a Windows installer. It is the recommended installation method for Windows OS, as it automatically creates the program directory and sets the PATH (after restarting the computer). This allows the application to be launched from any location by simply typing oint in the command line
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/7.png').default} width="86" align="left"/>
-**oint_x.x.x_all.deb** - this is a DEB package designed for installing OInt in Debian/Ubuntu and other deb-based distributions. The package has no inbuilt dependencies, so no additional downloads from the internet are required to get it working
+**oint_x.x.x_all_lang.deb** - this is a DEB package designed for installing OInt in Debian/Ubuntu and other deb-based distributions. The package has no inbuilt dependencies, so no additional downloads from the internet are required to get it working
 
 <img style={{paddingRight:'20px',marginTop:'16px'}} src={require('./img/8.png').default} width="86" align="left"/>
-**oint-x.x.x-1.el7.x86_64.rpm** - this is an RPM package designed to install OInt in RHEL/Fedora/CentOS and other rpm-based distributions. It automatically suggests the install libicu - the internalisation package for Unicode (ICU) required for the application engine to work
+**oint-x.x.x-1.noarch_lang.rpm** - this is an RPM package designed to install OInt in RHEL/Fedora/CentOS and other rpm-based distributions. It automatically suggests the install libicu - the internalisation package for Unicode (ICU) required for the application engine to work
+
+<img style={{paddingRight:'20px',marginTop:'16px'}} src={require('./img/9.png').default} width="86" align="left"/>
+**oint-x.x.x_lang-x86_64.AppImage** is an AppImage format file that allows you to use OInt CLI as a single executable file without additional installation. The downloaded file must be made executable via `chmod +x ./oint-x.x.x_lang-x86_64.AppImage`, after which it can be launched in the terminal
 
 <img style={{paddingRight:'20px',marginTop:'20px'}} src={require('./img/5.png').default} width="86" align="left"/>
 **`Deprecated since v. 1.18.0`** **oint.exe** - an executable file that, despite its Windows-oriented extension, is cross-platform. It requires .Net Framework 4.8 or a compatible version of Mono to run. In Windows and Debian-based distributions, this application is launched simply through the command line/terminal, while in RHEL-based distributions, it is launched through ```mono oint.exe "$@"```

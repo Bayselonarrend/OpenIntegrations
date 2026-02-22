@@ -417,7 +417,7 @@
 	ТекущаяДата = Формат(ТекущаяДата(), "ДФ=yyyy-MM-dd");
 	ТекстAppdata = СтрШаблон(ТекстAppdata, Версия, ТекущаяДата);
 	
-	ПутьAppdata = СтрШаблон("%1/usr/share/metainfo/oint.appdata.xml", AppDir);
+	ПутьAppdata = СтрШаблон("%1/usr/share/metainfo/dev.openintegrations.oint.appdata.xml", AppDir);
 	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppdata).Записать(ПутьAppdata);
 	
 	ИмяAppImage  = СтрШаблон("oint-%1_%2-x86_64.AppImage", Версия, Префикс);
