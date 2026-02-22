@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>dev.openintegrations.oint</id>
+  <name>OInt</name>
+  <name xml:lang="ru">OInt</name>
+  <summary>Инструмент интеграции с API</summary>
+  <summary xml:lang="en">API Integration Tool</summary>
+  <description>
+    <p>
+      Приложение для работы с различными онлайн-сервисами и технологиями из командной строки.
+      Решение предоставляет готовые методы для выполнения прикладных задач (отправки сообщения, 
+      создания документа, SQL-запросов и пр.) в более чем 30 сервисах и технологиях, включая 
+      Telegram, VK, Bitrix24, Google и Yandex-сервисы, а также различные СУБД и протоколы обмена.
+    </p>
+    <p>
+      Особенности: простой и интуитивный интерфейс командной строки, подробная документация 
+      и примеры использования, возможность автоматизации через скрипты.
+    </p>
+  </description>
+  <url type="homepage">https://openintegrations.dev</url>
+  <url type="bugtracker">https://github.com/Bayselonarrend/OpenIntegrations/issues</url>
+  <url type="help">https://openintegrations.dev</url>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>Anton Titovets</developer_name>
+  <provides>
+    <binary>oint</binary>
+  </provides>
+  <categories>
+    <category>Development</category>
+    <category>ConsoleOnly</category>
+  </categories>
+  <keywords>
+    <keyword>api</keyword>
+    <keyword>integration</keyword>
+    <keyword>cli</keyword>
+    <keyword>telegram</keyword>
+    <keyword>vk</keyword>
+    <keyword>bitrix24</keyword>
+    <keyword xml:lang="ru">апи</keyword>
+    <keyword xml:lang="ru">интеграция</keyword>
+    <keyword xml:lang="ru">командная строка</keyword>
+  </keywords>
+  <releases>
+    <release version="%1" date="%2"/>
+  </releases>
+</component>
