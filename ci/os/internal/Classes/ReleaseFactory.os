@@ -376,7 +376,7 @@
 	CommonTools.СообщитьПроцесс("Start AppImage");
 	
 	Префикс      = Данные["Префикс"];
-	Дистрибутив  = ДанныеПроекта.ПолучитьЗначениеНастройки("packaging.packageTypes.appimage.wslDistro");
+	Дистрибутив  = ДанныеПроекта.ПолучитьЗначениеНастройки("packaging.appimageSettings.wslDistro");
 	
 	AppDir = СтрШаблон("%1AppDir_%2", ПутьВыгрузки, Префикс);
 	
