@@ -402,13 +402,13 @@
 	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppRun).Записать(ПутьAppRun);
 	
 	КопироватьФайл(
-		СтрШаблон("%1/usr/share/applications/oint.desktop", AppDir),
-		СтрШаблон("%1/oint.desktop", AppDir)
+		СтрШаблон("%1/usr/share/applications/dev.openintegrations.oint.desktop", AppDir),
+		СтрШаблон("%1/dev.openintegrations.oint.desktop", AppDir)
 	);
 	
-	ФайлИконки = Новый Файл(СтрШаблон("%1/usr/share/pixmaps/oint.png", AppDir));
+	ФайлИконки = Новый Файл(СтрШаблон("%1/usr/share/pixmaps/dev.openintegrations.oint.png", AppDir));
 	Если ФайлИконки.Существует() Тогда
-		КопироватьФайл(ФайлИконки.ПолноеИмя, СтрШаблон("%1/oint.png", AppDir));
+		КопироватьФайл(ФайлИконки.ПолноеИмя, СтрШаблон("%1/dev.openintegrations.oint.png", AppDir));
 	КонецЕсли;
 	
 	ПутьШаблонаAppdata = СтрШаблон("./service/templates/oint_%1.appdata.xml", Префикс);
@@ -417,13 +417,9 @@
 	ТекущаяДата = Формат(ТекущаяДата(), "ДФ=yyyy-MM-dd");
 	ТекстAppdata = СтрШаблон(ТекстAppdata, Версия, ТекущаяДата);
 	
-	// Создаем файл с правильным именем по component id
+	// Создаем файл метаданных с именем по component id
 	ПутьAppdata = СтрШаблон("%1/usr/share/metainfo/dev.openintegrations.oint.appdata.xml", AppDir);
 	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppdata).Записать(ПутьAppdata);
-	
-	// Также создаем файл с именем по иконке для совместимости с appimagetool
-	ПутьAppdataIcon = СтрШаблон("%1/usr/share/metainfo/oint.appdata.xml", AppDir);
-	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppdata).Записать(ПутьAppdataIcon);
 	
 	ИмяAppImage  = СтрШаблон("oint-%1_%2-x86_64.AppImage", Версия, Префикс);
 	ТекстСкрипта = СтрШаблон("chmod +x AppDir_%1/AppRun
