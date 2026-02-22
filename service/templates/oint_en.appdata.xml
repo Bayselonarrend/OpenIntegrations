@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>dev.openintegrations.oint</id>
+  <name>OInt</name>
+  <summary>API Integration Tool</summary>
+  <summary xml:lang="ru">Инструмент интеграции с API</summary>
+  <description>
+    <p>
+      CLI toolkit for integrating with popular services and technologies. The project provides 
+      ready-made methods for performing application tasks (sending messages, creating documents, 
+      SQL queries, etc.) across more than 30 services and technologies, including Telegram, VK, 
+      Bitrix24, Google and Yandex services, as well as various DBMS and exchange protocols.
+    </p>
+    <p>
+      Features: simple and intuitive command-line interface, comprehensive documentation and 
+      usage examples, support for various data formats (JSON, XML, CSV), automation capabilities 
+      through scripts.
+    </p>
+  </description>
+  <url type="homepage">https://en.openintegrations.dev</url>
+  <url type="bugtracker">https://github.com/Bayselonarrend/OpenIntegrations/issues</url>
+  <url type="help">https://en.openintegrations.dev</url>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <developer_name>Anton Titovets</developer_name>
+  <provides>
+    <binary>oint</binary>
+  </provides>
+  <categories>
+    <category>Development</category>
+    <category>ConsoleOnly</category>
+  </categories>
+  <keywords>
+    <keyword>api</keyword>
+    <keyword>integration</keyword>
+    <keyword>cli</keyword>
+    <keyword>telegram</keyword>
+    <keyword>vk</keyword>
+    <keyword>bitrix24</keyword>
+  </keywords>
+  <releases>
+    <release version="%1" date="%2"/>
+  </releases>
+</component>
