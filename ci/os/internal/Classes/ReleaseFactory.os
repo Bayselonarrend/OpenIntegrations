@@ -417,8 +417,13 @@
 	ТекущаяДата = Формат(ТекущаяДата(), "ДФ=yyyy-MM-dd");
 	ТекстAppdata = СтрШаблон(ТекстAppdata, Версия, ТекущаяДата);
 	
+	// Создаем файл с правильным именем по component id
 	ПутьAppdata = СтрШаблон("%1/usr/share/metainfo/dev.openintegrations.oint.appdata.xml", AppDir);
 	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppdata).Записать(ПутьAppdata);
+	
+	// Также создаем файл с именем по иконке для совместимости с appimagetool
+	ПутьAppdataIcon = СтрШаблон("%1/usr/share/metainfo/oint.appdata.xml", AppDir);
+	ПолучитьДвоичныеДанныеИзСтроки(ТекстAppdata).Записать(ПутьAppdataIcon);
 	
 	ИмяAppImage  = СтрШаблон("oint-%1_%2-x86_64.AppImage", Версия, Префикс);
 	ТекстСкрипта = СтрШаблон("chmod +x AppDir_%1/AppRun
