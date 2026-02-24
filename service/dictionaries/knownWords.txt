@@ -385,3 +385,4 @@ customname
 автотеста
 hashsum
 Юнит
+testproject
