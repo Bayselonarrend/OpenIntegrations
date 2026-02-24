@@ -13,21 +13,38 @@
 			]
 		},
 		{
-			"name": "Results management",
+			"name": "Project management",
+			"methods": [
+				"CreateProject",
+				"DeleteProject",
+				"GetProject"
+			]
+		},
+		{
+			"name": "Test management",
 			"methods": [
 				"CreateItem",
 				"CreateLaunch",
+				"DeleteItem",
+				"DeleteLaunch",
 				"FinishItem",
 				"FinishLaunch",
+				"GetItem",
 				"GetItemCompletionStructure",
 				"GetItemStructure",
+				"GetLaunch",
 				"GetLaunchCompletionStructure",
-				"GetLaunchStructure"
+				"GetLaunchReport",
+				"GetLaunchStructure",
+				"UpdateItem",
+				"UpdateLaunch"
 			]
 		},
 		{
 			"name": "Log recording",
 			"methods": [
+				"DeleteLog",
+				"GetLog",
 				"GetLogStructure",
 				"WriteLog"
 			]
@@ -136,6 +153,93 @@
 			"region": "Authorization"
 		},
 		{
+			"name": "CreateProject",
+			"id": "CREATEPROJECT",
+			"description": "Creates a new project with the specified name",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Project name",
+					"default": null,
+					"short": "-n"
+				}
+			],
+			"region": "Project management"
+		},
+		{
+			"name": "DeleteProject",
+			"id": "DELETEPROJECT",
+			"description": "Deletes a project by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Project ID",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Project management"
+		},
+		{
+			"name": "GetProject",
+			"id": "GETPROJECT",
+			"description": "Gets information about a project by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Project name",
+					"default": null,
+					"short": "-n"
+				}
+			],
+			"region": "Project management"
+		},
+		{
 			"name": "CreateLaunch",
 			"id": "CREATELAUNCH",
 			"description": "Starts a new test execution session",
@@ -169,7 +273,208 @@
 					"short": "-r"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
+		},
+		{
+			"name": "GetLaunch",
+			"id": "GETLAUNCH",
+			"description": "Gets information about a launch by UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Launch UUID",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "UpdateLaunch",
+			"id": "UPDATELAUNCH",
+			"description": "Updates data of a test session launch",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Launch ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Launch parameters. See GetLaunchStructure",
+					"default": null,
+					"short": "-r"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "FinishLaunch",
+			"id": "FINISHLAUNCH",
+			"description": "Ends a previously started test execution session",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Launch UUID",
+					"default": null,
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Completion parameters. See GetLaunchCompletionStructure",
+					"default": null,
+					"short": "-r"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "DeleteLaunch",
+			"id": "DELETELAUNCH",
+			"description": "Deletes a test session by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Launch ID",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "GetLaunchReport",
+			"id": "GETLAUNCHREPORT",
+			"description": "Gets report for the selected test session",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Launch ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--format",
+					"types": "String",
+					"description": "Report format: pdf, xls, html",
+					"default": "pdf",
+					"short": "-f"
+				}
+			],
+			"region": "Test management"
 		},
 		{
 			"name": "CreateItem",
@@ -212,12 +517,48 @@
 					"short": "-n"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
-			"name": "FinishLaunch",
-			"id": "FINISHLAUNCH",
-			"description": "Ends a previously started test execution session",
+			"name": "GetItem",
+			"id": "GETITEM",
+			"description": "Gets information about a test item by UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Test item UUID",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "UpdateItem",
+			"id": "UPDATEITEM",
+			"description": "Updates data of a test item by ID",
 			"params": [
 				{
 					"name": "--url",
@@ -242,20 +583,20 @@
 				},
 				{
 					"name": "--id",
-					"types": "String",
-					"description": "Launch ID",
+					"types": "Number",
+					"description": "Test item ID",
 					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
-					"description": "Completion parameters. See GetLaunchCompletionStructure",
+					"description": "Item parameters. See GetItemStructure",
 					"default": null,
 					"short": "-r"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
 			"name": "FinishItem",
@@ -284,11 +625,11 @@
 					"short": "-p"
 				},
 				{
-					"name": "--id",
+					"name": "--uuid",
 					"types": "String",
-					"description": "Element ID",
+					"description": "Test item UUID",
 					"default": null,
-					"short": "-i"
+					"short": "-d"
 				},
 				{
 					"name": "--params",
@@ -298,7 +639,43 @@
 					"short": "-r"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
+		},
+		{
+			"name": "DeleteItem",
+			"id": "DELETEITEM",
+			"description": "Deletes a test item by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Test item ID",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Test management"
 		},
 		{
 			"name": "GetLaunchStructure",
@@ -320,7 +697,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
 			"name": "GetItemStructure",
@@ -342,7 +719,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
 			"name": "GetItemCompletionStructure",
@@ -364,7 +741,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
 			"name": "GetLaunchCompletionStructure",
@@ -400,7 +777,7 @@
 					"short": "-a"
 				}
 			],
-			"region": "Results management"
+			"region": "Test management"
 		},
 		{
 			"name": "WriteLog",
@@ -434,6 +811,78 @@
 					"description": "Execution information. See GetLogStructure",
 					"default": null,
 					"short": "-r"
+				}
+			],
+			"region": "Log recording"
+		},
+		{
+			"name": "GetLog",
+			"id": "GETLOG",
+			"description": "Gets information about a log by UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Log UUID",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Log recording"
+		},
+		{
+			"name": "DeleteLog",
+			"id": "DELETELOG",
+			"description": "Deletes a log item by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Log ID",
+					"default": null,
+					"short": "-i"
 				}
 			],
 			"region": "Log recording"

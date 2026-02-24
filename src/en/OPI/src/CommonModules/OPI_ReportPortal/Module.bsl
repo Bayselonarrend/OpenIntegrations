@@ -137,7 +137,85 @@ EndFunction
 
 #EndRegion
 
-#Region ResultsManagement
+#Region ProjectManagement
+
+// Create project
+// Creates a new project with the specified name
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+// Name  - String - Project name            - name
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function CreateProject(Val URL, Val Token, Val Name) Export
+
+    CompleteURL(URL, "api/v1/project");
+
+    Headers = GetAuthorizationHeader(Token);
+
+    ProjectStructure = New Structure;
+    OPI_Tools.AddField("projectName", Name      , "String", ProjectStructure);
+    OPI_Tools.AddField("entryType"  , "INTERNAL", "String", ProjectStructure);
+
+    Result = OPI_HTTPRequests.PostWithBody(URL, ProjectStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Delete project
+// Deletes a project by ID
+//
+// Parameters:
+// URL       - String - ReportPortal server URL - url
+// Token     - String - Access token            - token
+// ProjectID - Number - Project ID              - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteProject(Val URL, Val Token, Val ProjectID) Export
+
+    OPI_TypeConversion.GetLine(ProjectID);
+
+    CompleteURL(URL, StrTemplate("api/v1/project/%1", ProjectID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get project
+// Gets information about a project by ID
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+// Name  - String - Project name            - name
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetProject(Val URL, Val Token, Val Name) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    CompleteURL(URL, StrTemplate("api/v1/project/%1", Name));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region TestManagement
 
 // Create launch
 // Starts a new test execution session
@@ -162,6 +240,165 @@ Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Expo
     Headers = GetAuthorizationHeader(Token);
 
     Result = OPI_HTTPRequests.PostWithBody(URL, LaunchStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get launch
+// Gets information about a launch by UUID
+//
+// Parameters:
+// URL        - String - ReportPortal server URL - url
+// Token      - String - Access token            - token
+// Project    - String - Project ID              - proj
+// LaunchUUID - String - Launch UUID             - uuid
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetLaunch(Val URL, Val Token, Val Project, Val LaunchUUID) Export
+
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LaunchUUID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2", Project, LaunchUUID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Update launch
+// Updates data of a test session launch
+//
+// Note:
+// Numeric launch ID can be obtained by UUID using the `GetLaunch` function
+//
+// Parameters:
+// URL             - String                   - ReportPortal server URL                   - url
+// Token           - String                   - Access token                              - token
+// Project         - String                   - Project ID                                - proj
+// LaunchID        - Number                   - Launch ID                                 - id
+// LaunchStructure - Structure Of KeyAndValue - Launch parameters. See GetLaunchStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function UpdateLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val LaunchStructure) Export
+
+    ErrorText = "Launch structure is not a valid KeyValue collection";
+
+    OPI_TypeConversion.GetKeyValueCollection(LaunchStructure, ErrorText);
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LaunchID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2/update", Project, LaunchID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.PutWithBody(URL, LaunchStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Finish launch
+// Ends a previously started test execution session
+//
+// Parameters:
+// URL             - String                   - ReportPortal server URL                                 - url
+// Token           - String                   - Access token                                            - token
+// Project         - String                   - Project ID                                              - proj
+// LaunchUUID      - String                   - Launch UUID                                             - uuid
+// FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetLaunchCompletionStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function FinishLaunch(Val URL
+    , Val Token
+    , Val Project
+    , Val LaunchUUID
+    , Val FinishStructure) Export
+
+    ErrorText = "Completion structure is not a valid KeyValue collection";
+
+    OPI_TypeConversion.GetKeyValueCollection(FinishStructure, ErrorText);
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LaunchUUID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2/finish", Project, LaunchUUID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.PutWithBody(URL, FinishStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Delete launch
+// Deletes a test session by ID
+//
+// Note:
+// Numeric launch ID can be obtained by UUID using the `GetLaunch` function
+//
+// Parameters:
+// URL      - String - ReportPortal server URL - url
+// Token    - String - Access token            - token
+// Project  - String - Project ID              - proj
+// LaunchID - Number - Launch ID               - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteLaunch(Val URL, Val Token, Val Project, Val LaunchID) Export
+
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LaunchID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2", Project, LaunchID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get launch report
+// Gets report for the selected test session
+//
+// Note:
+// Numeric launch ID can be obtained by UUID using the `GetLaunch` function
+//
+// Parameters:
+// URL      - String - ReportPortal server URL       - url
+// Token    - String - Access token                  - token
+// Project  - String - Project ID                    - proj
+// LaunchID - Number - Launch ID                     - id
+// Format   - String - Report format: pdf, xls, html - format
+//
+// Returns:
+// BinaryData - report file
+Function GetLaunchReport(Val URL, Val Token, Val Project, Val LaunchID, Val Format = "pdf") Export
+
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LaunchID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2/report", Project, LaunchID));
+
+    ReportStructure = New Structure;
+    OPI_Tools.AddField("view", Format, "String", ReportStructure);
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Get(URL, ReportStructure, Headers);
+
+    If TypeOf(Result) = Type("BinaryData") And Format = "html" Then
+        OPI_TypeConversion.GetLine(Result);
+    EndIf;
 
     Return Result;
 
@@ -199,35 +436,60 @@ Function CreateItem(Val URL, Val Token, Val Project, Val ElementStructure, Val P
 
 EndFunction
 
-// Finish launch
-// Ends a previously started test execution session
+// Get item
+// Gets information about a test item by UUID
 //
 // Parameters:
-// URL             - String                   - ReportPortal server URL                                 - url
-// Token           - String                   - Access token                                            - token
-// Project         - String                   - Project ID                                              - proj
-// LaunchID        - String                   - Launch ID                                               - id
-// FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetLaunchCompletionStructure - params
+// URL      - String - ReportPortal server URL - url
+// Token    - String - Access token            - token
+// Project  - String - Project ID              - proj
+// ItemUUID - String - Test item UUID          - uuid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function FinishLaunch(Val URL
-    , Val Token
-    , Val Project
-    , Val LaunchID
-    , Val FinishStructure) Export
+Function GetItem(Val URL, Val Token, Val Project, Val ItemUUID) Export
 
-    ErrorText = "Completion structure is not a valid KeyValue collection";
-
-    OPI_TypeConversion.GetKeyValueCollection(FinishStructure, ErrorText);
     OPI_TypeConversion.GetLine(Project);
-    OPI_TypeConversion.GetLine(LaunchID);
+    OPI_TypeConversion.GetLine(ItemUUID);
 
-    CompleteURL(URL, StrTemplate("api/v1/%1/launch/%2/finish", Project, LaunchID));
+    CompleteURL(URL, StrTemplate("api/v1/%1/item/%2", Project, ItemUUID));
 
     Headers = GetAuthorizationHeader(Token);
 
-    Result = OPI_HTTPRequests.PutWithBody(URL, FinishStructure, Headers);
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Update item
+// Updates data of a test item by ID
+//
+// Note:
+// Numeric item ID can be obtained by UUID using the `GetItem` function
+//
+// Parameters:
+// URL              - String                   - ReportPortal server URL               - url
+// Token            - String                   - Access token                          - token
+// Project          - String                   - Project ID                            - proj
+// ElementID        - Number                   - Test item ID                          - id
+// ElementStructure - Structure Of KeyAndValue - Item parameters. See GetItemStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function UpdateItem(Val URL, Val Token, Val Project, Val ElementID, Val ElementStructure) Export
+
+    ErrorText = "Element structure is not a valid KeyValue collection";
+
+    OPI_TypeConversion.GetKeyValueCollection(ElementStructure, ErrorText);
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(ElementID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/item/%2/update", Project, ElementID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.PutWithBody(URL, ElementStructure, Headers);
 
     Return Result;
 
@@ -240,16 +502,45 @@ EndFunction
 // URL             - String                   - ReportPortal server URL                               - url
 // Token           - String                   - Access token                                          - token
 // Project         - String                   - Project ID                                            - proj
-// ElementID       - String                   - Element ID                                            - id
+// ItemUUID        - String                   - Test item UUID                                        - uuid
 // FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetItemCompletionStructure - params
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function FinishItem(Val URL, Val Token, Val Project, Val ElementID, Val FinishStructure) Export
+Function FinishItem(Val URL, Val Token, Val Project, Val ItemUUID, Val FinishStructure) Export
 
     ErrorText = "Completion structure is not a valid KeyValue collection";
 
     OPI_TypeConversion.GetKeyValueCollection(FinishStructure, ErrorText);
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(ItemUUID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/item/%2", Project, ItemUUID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.PutWithBody(URL, FinishStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Delete item
+// Deletes a test item by ID
+//
+// Note:
+// Numeric item ID can be obtained by UUID using the `GetItem` function
+//
+// Parameters:
+// URL       - String - ReportPortal server URL - url
+// Token     - String - Access token            - token
+// Project   - String - Project ID              - proj
+// ElementID - Number - Test item ID            - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteItem(Val URL, Val Token, Val Project, Val ElementID) Export
+
     OPI_TypeConversion.GetLine(Project);
     OPI_TypeConversion.GetLine(ElementID);
 
@@ -257,7 +548,7 @@ Function FinishItem(Val URL, Val Token, Val Project, Val ElementID, Val FinishSt
 
     Headers = GetAuthorizationHeader(Token);
 
-    Result = OPI_HTTPRequests.PutWithBody(URL, FinishStructure, Headers);
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
 
     Return Result;
 
@@ -389,7 +680,10 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
-Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export
+Function GetLaunchCompletionStructure(Val Time
+    , Val Status = ""
+    , Val Description = ""
+    , Val Attributes = "") Export
 
     String_ = "String";
 
@@ -435,6 +729,61 @@ Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
 
 EndFunction
 
+// Get log
+// Gets information about a log by UUID
+//
+// Parameters:
+// URL     - String - ReportPortal server URL - url
+// Token   - String - Access token            - token
+// Project - String - Project ID              - proj
+// LogUUID - String - Log UUID                - uuid
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetLog(Val URL, Val Token, Val Project, Val LogUUID) Export
+
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LogUUID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/log/%2", Project, LogUUID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Delete log
+// Deletes a log item by ID
+//
+// Note:
+// Numeric log ID can be obtained by UUID using the `GetLog` function
+//
+// Parameters:
+// URL     - String - ReportPortal server URL - url
+// Token   - String - Access token            - token
+// Project - String - Project ID              - proj
+// LogID   - Number - Log ID                  - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteLog(Val URL, Val Token, Val Project, Val LogID) Export
+
+    OPI_TypeConversion.GetLine(Project);
+    OPI_TypeConversion.GetLine(LogID);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/log/%2", Project, LogID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
 // Get log structure
 // Gets the parameter structure for log entry
 //
@@ -447,7 +796,11 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
-Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export
+Function GetLogStructure(Val LaunchID
+    , Val ElementID
+    , Val Time
+    , Val Text = ""
+    , Val Level = "info") Export
 
     String_ = "String";
 

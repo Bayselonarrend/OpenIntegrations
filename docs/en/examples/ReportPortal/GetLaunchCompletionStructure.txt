@@ -1,0 +1,6 @@
+    Time        = Date("20260101100000");
+    Status      = "passed";
+    Description = "Some test";
+    Attributes  = "key1:value1, key2:value2";
+
+    Result = OPI_ReportPortal.GetLaunchCompletionStructure(Time, Status, Description, Attributes);
