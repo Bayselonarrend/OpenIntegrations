@@ -43,6 +43,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
  <a href="/docs/Instructions/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32" class="wp_logo"/></a>
+ <a href="/docs/Instructions/ReportPortal/"><img src={require('../../static/img/APIs/ReportPortal.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/Neocities/"><img src={require('../../static/img/APIs/Neocities.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/FTP/"><img src={require('../../static/img/APIs/FTP.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/SFTP/"><img src={require('../../static/img/APIs/SFTP.png').default} width="32" class="wp_logo"/></a>
