@@ -10,7 +10,9 @@
     "paths": null,
     "tests": [
 "OPI_Tests.RPortal_Authorization",
-"OPI_Tests.RPortal_ResultsManagement"
+"OPI_Tests.RPortal_TestManagement",
+"OPI_Tests.RPortal_LogRecording",
+"OPI_Tests.RPortal_ProjectManagement"
     ]
   },
   "settings": {

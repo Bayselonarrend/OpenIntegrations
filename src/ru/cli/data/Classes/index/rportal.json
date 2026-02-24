@@ -13,23 +13,40 @@
 			]
 		},
 		{
-			"name": "Управление результатами",
+			"name": "Управление проектами",
+			"methods": [
+				"ПолучитьПроект",
+				"СоздатьПроект",
+				"УдалитьПроект"
+			]
+		},
+		{
+			"name": "Управление тестами",
 			"methods": [
 				"ЗавершитьЗапуск",
 				"ЗавершитьЭлемент",
+				"ИзменитьЗапуск",
+				"ИзменитьЭлемент",
+				"ПолучитьЗапуск",
+				"ПолучитьОтчетЗапуска",
 				"ПолучитьСтруктуруЗавершенияЗапуска",
 				"ПолучитьСтруктуруЗавершенияЭлемента",
 				"ПолучитьСтруктуруЗапуска",
 				"ПолучитьСтруктуруЭлемента",
+				"ПолучитьЭлемент",
 				"СоздатьЗапуск",
-				"СоздатьЭлемент"
+				"СоздатьЭлемент",
+				"УдалитьЗапуск",
+				"УдалитьЭлемент"
 			]
 		},
 		{
 			"name": "Запись логов",
 			"methods": [
 				"ЗаписатьЛог",
-				"ПолучитьСтруктуруЛога"
+				"ПолучитьЛог",
+				"ПолучитьСтруктуруЛога",
+				"УдалитьЛог"
 			]
 		}
 	],
@@ -136,6 +153,93 @@
 			"region": "Авторизация"
 		},
 		{
+			"name": "СоздатьПроект",
+			"id": "СОЗДАТЬПРОЕКТ",
+			"description": "Создает новый проект с указанным именем",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя проекта",
+					"default": null,
+					"short": "-n"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
+			"name": "УдалитьПроект",
+			"id": "УДАЛИТЬПРОЕКТ",
+			"description": "Удаляет проект по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
+			"name": "ПолучитьПроект",
+			"id": "ПОЛУЧИТЬПРОЕКТ",
+			"description": "Получает информацию о проекте по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя проекта",
+					"default": null,
+					"short": "-n"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
 			"name": "СоздатьЗапуск",
 			"id": "СОЗДАТЬЗАПУСК",
 			"description": "Запускает новый сеанс выполнения тестов",
@@ -169,7 +273,208 @@
 					"short": "-r"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
+		},
+		{
+			"name": "ПолучитьЗапуск",
+			"id": "ПОЛУЧИТЬЗАПУСК",
+			"description": "Получает информацию о запуске по UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "Строка",
+					"description": "UUID запуска",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Управление тестами"
+		},
+		{
+			"name": "ИзменитьЗапуск",
+			"id": "ИЗМЕНИТЬЗАПУСК",
+			"description": "Изменяет данные запуска сеанса тестирования",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID запуска",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--params",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Параметры запуска. См. ПолучитьСтруктуруЗапуска",
+					"default": null,
+					"short": "-r"
+				}
+			],
+			"region": "Управление тестами"
+		},
+		{
+			"name": "ЗавершитьЗапуск",
+			"id": "ЗАВЕРШИТЬЗАПУСК",
+			"description": "Завершает запущенный ранее сеанс выполнения тестов",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "Строка",
+					"description": "UUID запуска",
+					"default": null,
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЗапуска",
+					"default": null,
+					"short": "-r"
+				}
+			],
+			"region": "Управление тестами"
+		},
+		{
+			"name": "УдалитьЗапуск",
+			"id": "УДАЛИТЬЗАПУСК",
+			"description": "Удаляет сессию тестирования по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID запуска",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Управление тестами"
+		},
+		{
+			"name": "ПолучитьОтчетЗапуска",
+			"id": "ПОЛУЧИТЬОТЧЕТЗАПУСКА",
+			"description": "Получает отчет по выбранной тестовой сессии",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID запуска",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--format",
+					"types": "Строка",
+					"description": "Формат отчета: pdf, xls, html",
+					"default": "pdf",
+					"short": "-f"
+				}
+			],
+			"region": "Управление тестами"
 		},
 		{
 			"name": "СоздатьЭлемент",
@@ -212,12 +517,48 @@
 					"short": "-n"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
-			"name": "ЗавершитьЗапуск",
-			"id": "ЗАВЕРШИТЬЗАПУСК",
-			"description": "Завершает запущенный ранее сеанс выполнения тестов",
+			"name": "ПолучитьЭлемент",
+			"id": "ПОЛУЧИТЬЭЛЕМЕНТ",
+			"description": "Получает информацию об тестовом элементе по UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "Строка",
+					"description": "UUID тестового элемента",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Управление тестами"
+		},
+		{
+			"name": "ИзменитьЭлемент",
+			"id": "ИЗМЕНИТЬЭЛЕМЕНТ",
+			"description": "Изменяет данные тестового элемента по ID",
 			"params": [
 				{
 					"name": "--url",
@@ -242,20 +583,20 @@
 				},
 				{
 					"name": "--id",
-					"types": "Строка",
-					"description": "ID запуска",
+					"types": "Число",
+					"description": "ID тестового элемента",
 					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
-					"description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЗапуска",
+					"description": "Параметры элемента. См. ПолучитьСтруктуруЭлемента",
 					"default": null,
 					"short": "-r"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ЗавершитьЭлемент",
@@ -284,11 +625,11 @@
 					"short": "-p"
 				},
 				{
-					"name": "--id",
+					"name": "--uuid",
 					"types": "Строка",
-					"description": "ID элемента",
+					"description": "UUID тестового элемента",
 					"default": null,
-					"short": "-i"
+					"short": "-d"
 				},
 				{
 					"name": "--params",
@@ -298,7 +639,43 @@
 					"short": "-r"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
+		},
+		{
+			"name": "УдалитьЭлемент",
+			"id": "УДАЛИТЬЭЛЕМЕНТ",
+			"description": "Удаляет тестовый элемент по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID тестового элемента",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ПолучитьСтруктуруЗапуска",
@@ -320,7 +697,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ПолучитьСтруктуруЭлемента",
@@ -342,7 +719,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ПолучитьСтруктуруЗавершенияЭлемента",
@@ -364,7 +741,7 @@
 					"short": "-m"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ПолучитьСтруктуруЗавершенияЗапуска",
@@ -400,7 +777,7 @@
 					"short": "-a"
 				}
 			],
-			"region": "Управление результатами"
+			"region": "Управление тестами"
 		},
 		{
 			"name": "ЗаписатьЛог",
@@ -434,6 +811,78 @@
 					"description": "Информация о выполнении. См. ПолучитьСтруктуруЛога",
 					"default": null,
 					"short": "-r"
+				}
+			],
+			"region": "Запись логов"
+		},
+		{
+			"name": "ПолучитьЛог",
+			"id": "ПОЛУЧИТЬЛОГ",
+			"description": "Получает информацию о логе по UUID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--uuid",
+					"types": "Строка",
+					"description": "UUID лога",
+					"default": null,
+					"short": "-d"
+				}
+			],
+			"region": "Запись логов"
+		},
+		{
+			"name": "УдалитьЛог",
+			"id": "УДАЛИТЬЛОГ",
+			"description": "Удаляет элемент лога по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "Строка",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID лога",
+					"default": null,
+					"short": "-i"
 				}
 			],
 			"region": "Запись логов"

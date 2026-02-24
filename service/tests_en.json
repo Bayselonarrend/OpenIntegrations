@@ -6295,6 +6295,111 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "GetLaunchStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLaunchStructure",
+		"variant": "Clear"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItemStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItemStructure",
+		"variant": "Clear"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItemCompletionStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItemCompletionStructure",
+		"variant": "Clear"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLaunchCompletionStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "WriteLog",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLogStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLog",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "DeleteLog",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "CreateProject",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "DeleteProject",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetProject",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLaunch",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItem",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "UpdateLaunch",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "UpdateItem",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "DeleteLaunch",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "DeleteItem",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetLaunchReport",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "CreateConnection",
 		"variant": ""

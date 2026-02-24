@@ -1,0 +1,1 @@
+    Result = OPI_ReportPortal.GetLaunchStructure();

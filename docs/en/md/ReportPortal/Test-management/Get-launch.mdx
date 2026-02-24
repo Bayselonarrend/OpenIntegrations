@@ -1,0 +1,41 @@
+---
+sidebar_position: 2
+description: Get launch and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get launch
+ Gets information about a launch by UUID
+
+
+
+`Function GetLaunch(Val URL, Val Token, Val Project, Val LaunchUUID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | Project | --proj | String | &#x2714; | Project ID |
+  | LaunchUUID | --uuid | String | &#x2714; | Launch UUID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL        = "tests.openintegrations.dev";
+    Token      = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    LaunchUUID = "";
+    Project    = "Test";
+
+    Result = OPI_ReportPortal.GetLaunch(URL, Token, Project, LaunchUUID);
+```
+ 
+
+
+
+
