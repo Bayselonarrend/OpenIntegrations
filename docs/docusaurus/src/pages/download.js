@@ -67,6 +67,7 @@ const DownloadPage = () => {
           },
           desc: 'Пакет CLI приложения для систем на базе RHEL',
         },
+        
       ],
     },
     {
@@ -105,7 +106,6 @@ const DownloadPage = () => {
 
   const handleDownload = (filename) => {
     if (thankYouClosed.current) {
-      // Просто скачиваем без модалки
       triggerDownload(filename);
       return;
     }
@@ -113,7 +113,6 @@ const DownloadPage = () => {
     triggerDownload(filename);
 
     setShowThankYou(true);
-    // Задержка перед анимацией (чтобы пользователь успел увидеть начало скачивания)
     setTimeout(() => {
       setIsModalVisible(true);
     }, 600);
