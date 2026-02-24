@@ -6295,6 +6295,111 @@
 		"variant": ""
 	},
 	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЗапуска",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЗапуска",
+		"variant": "Пустая"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЭлемента",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЭлемента",
+		"variant": "Пустая"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЗавершенияЭлемента",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЗавершенияЭлемента",
+		"variant": "Пустая"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЗавершенияЗапуска",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ЗаписатьЛог",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруЛога",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьЛог",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "УдалитьЛог",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "СоздатьПроект",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "УдалитьПроект",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьПроект",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьЗапуск",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьЭлемент",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ИзменитьЗапуск",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ИзменитьЭлемент",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "УдалитьЗапуск",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "УдалитьЭлемент",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьОтчетЗапуска",
+		"variant": ""
+	},
+	{
 		"lib": "SSH",
 		"name": "ОткрытьСоединение",
 		"variant": ""

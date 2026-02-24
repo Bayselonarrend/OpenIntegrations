@@ -432,7 +432,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_FileOperations"                   , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                  , FTP);
     NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                   , RPortal);
-    NewTest(TestTable, "RPortal_ResultsManagement"           , "Results management"              , RPortal);
+    NewTest(TestTable, "RPortal_TestManagement"              , "Test management"                 , RPortal);
+    NewTest(TestTable, "RPortal_LogRecording"                , "Log recording"                   , RPortal);
+    NewTest(TestTable, "RPortal_ProjectManagement"           , "Project management"              , RPortal);
     NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
     NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
     NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
@@ -13437,6 +13439,206 @@ EndFunction
 Function Check_ReportPortal_FinishItem(Val Result, Val Option)
 
     ExpectsThat(StrFind(Result["message"], "successfully finished") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLaunchStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetItemStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetItemCompletionStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLaunchCompletionStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["status"]).Равно("passed");
+    ExpectsThat(Result["description"]).Равно("Some test");
+    ExpectsThat(Result["attributes"]).Равно("key1:value1, key2:value2");
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_WriteLog(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["id"]).Заполнено();
+
+    LogID = Result["id"];
+    WriteParameter("RPortal_TestLog", LogID);
+    Parameters.Insert("RPortal_TestLog", LogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLogStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["message"]).Равно("Some log");
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLog(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["message"]).Равно("Some log 1");
+
+    LogID = Result["id"];
+    WriteParameter("RPortal_TestLogId", LogID);
+    Parameters.Insert("RPortal_TestLogId", LogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeleteLog(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully deleted") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_CreateProject(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["id"]).Заполнено();
+
+    ProjectID = Result["id"];
+    WriteParameter("RPortal_TestProject", ProjectID);
+    Parameters.Insert("RPortal_TestProject", ProjectID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeleteProject(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully deleted") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetProject(Val Result, Val Option)
+
+    ExpectsThat(Result["projectId"]).Заполнено();
+    ExpectsThat(Result["projectName"]).Равно("testproject");
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLaunch(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["id"]).Заполнено();
+
+    LogID = Result["id"];
+    WriteParameter("RPortal_TestLaunchId", LogID);
+    Parameters.Insert("RPortal_TestLaunchId", LogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetItem(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["id"]).Заполнено();
+
+    LogID = Result["id"];
+    WriteParameter("RPortal_TestItemId", LogID);
+    Parameters.Insert("RPortal_TestItemId", LogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_UpdateLaunch(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_UpdateItem(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeleteLaunch(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeleteItem(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetLaunchReport(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("String");
     Return Result;
 
 EndFunction

@@ -10,7 +10,9 @@
     "paths": null,
     "tests": [
 "OPI_Тесты.RPortal_Авторизация",
-"OPI_Тесты.RPortal_УправлениеРезультатами"
+"OPI_Тесты.RPortal_УправлениеТестами",
+"OPI_Тесты.RPortal_ЗаписьЛогов",
+"OPI_Тесты.RPortal_УправлениеПроектами"
     ]
   },
   "settings": {
