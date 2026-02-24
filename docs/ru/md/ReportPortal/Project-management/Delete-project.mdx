@@ -1,0 +1,39 @@
+---
+sidebar_position: 2
+description: Удалить проект и другие функции для работы с ReportPortal в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Удалить проект
+ Удаляет проект по ID
+
+
+
+`Функция УдалитьПроект(Знач URL, Знач Токен, Знач IDПроекта) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера ReportPortal |
+  | Токен | --token | Строка | &#x2714; | Токен доступа |
+  | IDПроекта | --id | Число | &#x2714; | ID проекта |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL       = "tests.openintegrations.dev";
+    Токен     = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    IDПроекта = "";
+
+    Результат = OPI_ReportPortal.УдалитьПроект(URL, Токен, IDПроекта);
+```
+    
+
+
+
+

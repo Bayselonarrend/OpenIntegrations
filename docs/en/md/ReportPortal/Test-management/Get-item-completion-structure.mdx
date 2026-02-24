@@ -1,0 +1,34 @@
+---
+sidebar_position: 14
+description: Get item completion structure and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get item completion structure
+ Gets the parameter structure for completing the test item execution
+
+
+
+`Function GetItemCompletionStructure(Val Clear = False, Val AsMap = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+  | AsMap | --map | Boolean | &#x2716; | True > returns the filter fields as a map |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_ReportPortal.GetItemCompletionStructure();
+```
+ 
+
+
+
+

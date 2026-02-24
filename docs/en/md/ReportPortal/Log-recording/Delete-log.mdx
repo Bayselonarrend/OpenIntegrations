@@ -1,0 +1,45 @@
+---
+sidebar_position: 3
+description: Delete log and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete log
+ Deletes a log item by ID
+
+
+
+`Function DeleteLog(Val URL, Val Token, Val Project, Val LogID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | Project | --proj | String | &#x2714; | Project ID |
+  | LogID | --id | Number | &#x2714; | Log ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+:::tip
+Numeric log ID can be obtained by UUID using the `GetLog` function
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL     = "tests.openintegrations.dev";
+    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    LogID   = "";
+    Project = "Test";
+
+    Result = OPI_ReportPortal.DeleteLog(URL, Token, Project, LogID);
+```
+ 
+
+
+
+

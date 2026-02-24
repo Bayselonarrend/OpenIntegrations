@@ -1,0 +1,41 @@
+---
+sidebar_position: 15
+description: Get launch completion structure and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get launch completion structure
+ Gets the parameter structure for completing a test session
+
+
+
+`Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Time | --end | Date | &#x2714; | Launch end date and time |
+  | Status | --status | String | &#x2716; | Completion status: passed, failed, stopped, skipped, interrupted, cancelled |
+  | Description | --descr | String | &#x2716; | Launch description. Overwrites the one specified during creation |
+  | Attributes | --attr | String | &#x2716; | Launch attributes. Overwrites the one specified during creation |
+
+  
+  Returns:  Structure Of KeyAndValue - Fields structure
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Time        = Date("20260101100000");
+    Status      = "passed";
+    Description = "Some test";
+    Attributes  = "key1:value1, key2:value2";
+
+    Result = OPI_ReportPortal.GetLaunchCompletionStructure(Time, Status, Description, Attributes);
+```
+ 
+
+
+
+
