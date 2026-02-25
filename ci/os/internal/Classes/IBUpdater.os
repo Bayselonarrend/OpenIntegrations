@@ -65,7 +65,6 @@
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBName ""%2"" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяИБ);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
-
 	
 КонецПроцедуры
 
