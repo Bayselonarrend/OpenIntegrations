@@ -1,6 +1,7 @@
 name: Update Stable Branch on Latest Release Update
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
