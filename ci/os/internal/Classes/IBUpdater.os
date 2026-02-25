@@ -65,7 +65,7 @@
 
 	ЗаменитьCRLF(КаталогСборки);
 
-	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for...", Язык));
+	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for %1...", Язык));
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBName ""%2"" /LoadConfigFromFiles ""%3"" -Extension OpenIntegrations", Путь1С, ИмяИБ, КаталогСборки);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
