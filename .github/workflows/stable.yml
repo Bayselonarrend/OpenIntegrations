@@ -6,7 +6,6 @@ on:
     types:
       - published
       - edited
-      - updated
 
 jobs:
   update-stable:
@@ -17,14 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
-      - name: Configure Git user
-        run: |
-          git config --local user.email "vitaly.the.alpaca@gmail.com"
-          git config --local user.name "Vitaly the Alpaca (bot)"
-
-      - name: Update stable branch from latest release
+      - name: Update stable branch from latest release via API
         env:
           TOKEN: ${{ secrets.TOKEN }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
@@ -58,8 +52,23 @@ jobs:
           git checkout "$LATEST_RELEASE"
           COMMIT_SHA=$(git rev-parse HEAD)
           echo "Release commit SHA: $COMMIT_SHA"
-
-          git checkout -B stable
-          git push --force origin stable
           
-          echo "✅ Stable branch successfully updated to $LATEST_RELEASE ($COMMIT_SHA)"
+          # Используем GitHub API для обновления ветки (обходит ограничения на workflow файлы)
+          echo "🔄 Updating stable branch via GitHub API..."
+          
+          RESPONSE=$(curl -X PATCH \
+            -H "Authorization: token $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/git/refs/heads/stable" \
+            -d "{\"sha\":\"$COMMIT_SHA\",\"force\":true}")
+          
+          echo "API Response: $RESPONSE"
+          
+          # Проверяем успешность
+          if echo "$RESPONSE" | jq -e '.ref' > /dev/null; then
+            echo "✅ Stable branch successfully updated to $LATEST_RELEASE ($COMMIT_SHA)"
+          else
+            echo "❌ Failed to update stable branch"
+            echo "$RESPONSE"
+            exit 1
+          fi
