@@ -5,6 +5,7 @@ on:
     types:
       - published
       - edited
+      - updated
 
 jobs:
   update-stable:
