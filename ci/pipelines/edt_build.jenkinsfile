@@ -1,87 +1,10 @@
 pipeline {
     agent { label 'windows' }
     stages {
-        stage('Initialize') {
-            steps {
-                script {
-                    def config = readJSON file: './service/local_vars.json'
-                    env.ONEC_PATH = config.onec_path
-                    env.EDT_RU = config.edt_ru_path
-                    env.EDT_EN = config.edt_en_path
-                    env.IB_RU = config.ib_ru_name
-                    env.IB_EN = config.ib_en_name
-                    env.SRV = config.server_name
-                }
-            }
-        }
+     
         stage('Build') {
             steps {
-                script {
-                    def runEdtExport = { dataPath, projectPath, configPath, projectName ->
-                        echo "Building ${projectName}..."
-                        
-                        def output = bat(
-                            encoding: 'UTF-8',
-                            script: "chcp 65001 >nul && 1cedtcli -data \"${dataPath}\" -command export --project \"${projectPath}\" --configuration-files \"${configPath}\"",
-                            returnStdout: true
-                        )
-                        
-                        // Фильтруем вывод: убираем строки, содержащие команду
-                        def lines = output.readLines()
-                        def cleanLines = lines.findAll { line ->
-                            !line.contains('chcp 65001') && 
-                            !line.contains('1cedtcli') && 
-                            !line.contains('--project') &&
-                            !line.contains('--configuration-files') &&
-                            line.trim()
-                        }
-                        def cleanOutput = cleanLines.join('\n').trim()
-                        
-                        if (cleanOutput) {
-                            echo "EDT output for ${projectName}: ${cleanOutput}"
-                            
-                            // Проверяем на критические ошибки
-                            if (cleanOutput.contains('ERROR') || 
-                                cleanOutput.contains('Exception') || 
-                                cleanOutput.contains('IllegalStateException') ||
-                                cleanOutput.contains('External property manager')) {
-                                error "EDT export for ${projectName} failed with errors: ${cleanOutput}"
-                            } else {
-                                echo "⚠ ${projectName} build completed with warnings: ${cleanOutput}"
-                            }
-                        } else {
-                            echo "✓ ${projectName} build completed successfully (no output)"
-                        }
-                    }
-                    
-                    runEdtExport(env.EDT_RU, "./src/ru/OPI", "./build/OPI_RU", "RU")
-                    runEdtExport(env.EDT_EN, "./src/en/OPI", "./build/OPI_EN", "EN")
-                }
-            }
-        }
-
-        stage('CRLF Replace'){
-            steps{
-                script{
-                    bat encoding: 'UTF-8', script: 'oscript ./ci/os/internal/Classes/CRLFReplacer.os ./build'    
-                }
-            }
-        }
-
-        stage('Update') {
-            steps {
-                script {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /LoadConfigFromFiles ./build/OPI_RU -Extension OpenIntegrations"
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force"
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /UpdateDBCfg -SessionTerminate force"
-                    }
-                    timeout(time: 5, unit: 'MINUTES') {
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /LoadConfigFromFiles ./build/OPI_EN -Extension OpenIntegrations"
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force"
-                        bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /UpdateDBCfg -SessionTerminate force"
-                    }
-                }
+                bat 'oscript ./ci/os/internal/Classes/IBUpdater.os'
             }
         }
 
