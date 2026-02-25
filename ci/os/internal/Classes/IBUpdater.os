@@ -117,7 +117,7 @@
 	КонфигурацияYaxUnit = СтрШаблон("%1%2/BuildCheck.json", YaxUnitConf, Язык);
 	СтрокаПодключения   = СтрШаблон("Srvr=""""%1"""";Ref=""""%2"""";", ИмяСервера, ИмяИБ);
 
-	СтрокаЗапуска = СтрШаблон("""%1"" /IBConnectionString ""%2"" /UsePrivilegedMode /C\""RunUnitTests=%3\"""
+	СтрокаЗапуска = СтрШаблон("""%1"" /IBConnectionString ""%2"" /UsePrivilegedMode /C""RunUnitTests=%3"""
 		, Путь1СК
 		, СтрокаПодключения
 		, КонфигурацияYaxUnit);
