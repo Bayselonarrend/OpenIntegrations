@@ -41,7 +41,7 @@
 
 	ПутьEDT = ОбъединитьПути(КаталогEDT, ИмяEDT);
 
-	КомандаЭкспорта = СтрШаблон("1cedtcli.exe -data ""%1"" -command export --project ""${projectPath}"" --configuration-files ""${configPath}"""
+	КомандаЭкспорта = СтрШаблон("1cedtcli.exe -data ""%1"" -command export --project ""%2"" --configuration-files ""%3"""
 		, ПутьEDT
 		, ОбъединитьПути(Корень, Язык, "OPI")
 		, КаталогСборки);
