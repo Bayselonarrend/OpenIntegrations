@@ -25,13 +25,13 @@ jobs:
           git config --local user.email "vitaly.the.alpaca@gmail.com"
           git config --local user.name "Vitaly the Alpaca (bot)"
 
-      - name: Check if this is the latest release and update stable
+      - name: Update stable branch from latest release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          echo "🔍 Checking release information..."
-          echo "Current release tag: $RELEASE_TAG"
+          echo "🔍 Event type: $EVENT_NAME"
           
           LATEST_RELEASE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -40,21 +40,27 @@ jobs:
           
           echo "Latest release tag: $LATEST_RELEASE"
           
-          if [ "$RELEASE_TAG" != "$LATEST_RELEASE" ]; then
-            echo "⚠️  This is not the latest release. Skipping stable branch update."
-            exit 0
+          if [ "$EVENT_NAME" = "release" ]; then
+            echo "Current release tag: $RELEASE_TAG"
+            
+            if [ "$RELEASE_TAG" != "$LATEST_RELEASE" ]; then
+              echo "⚠️  This is not the latest release. Skipping stable branch update."
+              exit 0
+            fi
+            
+            echo "✓ This is the latest release!"
+          else
+            echo "✓ Manual workflow dispatch - updating to latest release"
           fi
           
-          echo "✓ This is the latest release!"
           echo "📦 Updating stable branch to release commit..."
-          
+
           git fetch --tags --force
-          git checkout "$RELEASE_TAG"
-          
+          git checkout "$LATEST_RELEASE"
           COMMIT_SHA=$(git rev-parse HEAD)
           echo "Release commit SHA: $COMMIT_SHA"
-          
+
           git checkout -B stable
           git push --force origin stable
           
-          echo "✅ Stable branch successfully updated to $RELEASE_TAG ($COMMIT_SHA)"
+          echo "✅ Stable branch successfully updated to $LATEST_RELEASE ($COMMIT_SHA)"
