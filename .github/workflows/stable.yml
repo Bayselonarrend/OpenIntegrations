@@ -11,10 +11,7 @@ on:
 jobs:
   update-stable:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      actions: write
-      workflows: write
+    permissions: write-all
 
     steps:
       - name: Checkout repository
