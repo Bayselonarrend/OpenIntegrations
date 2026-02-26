@@ -112,7 +112,7 @@ impl AddIn{
                     Err(e) => return json_error(format!("File error: {}", e))
                 };
 
-                let mut buf_reader = BufReader::new(file);
+                let mut buf_reader = BufReader::with_capacity(256 * 1024, file);
                 let result = upload_from_reader(s, path, &mut buf_reader);
 
                 match result{
