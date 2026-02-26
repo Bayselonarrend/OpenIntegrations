@@ -6,7 +6,6 @@ use serde_json::json;
 use ssh2::{MethodType, Session};
 use crate::AddIn;
 use crate::ssh_settings::{SshAuthTypes, SshConf};
-
 impl AddIn{
     pub fn set_settings(&mut self, settings: String) -> String{
 
@@ -60,20 +59,29 @@ impl AddIn{
         };
 
         ssh2::init();
-        let mut identities = vec![];
-        let methods;
-        let banner;
-        let kex;
 
         let mut sess = match Session::new(){
-            Ok(sess) => {
-                methods = sess.auth_methods(username).unwrap_or("").to_string();
-                banner = sess.banner().unwrap_or("").to_string();
-                kex = sess.methods(MethodType::Kex).unwrap_or("").to_string();
-                sess
-            },
+            Ok(sess) => sess,
             Err(e) => return json_error(format!("Session error: {}", e.to_string()))
         };
+
+        sess.set_tcp_stream(tcp);
+
+        if let Err(e) = sess.handshake() {
+            return connection_response(
+                false,
+                Some(format!("Handshake error: {}", e)),
+                vec![],
+                String::new(),
+                String::new(),
+                String::new()
+            );
+        };
+
+        let mut identities = vec![];
+        let methods = sess.auth_methods(username).unwrap_or("").to_string();
+        let banner = sess.banner().unwrap_or("").to_string();
+        let kex = sess.methods(MethodType::Kex).unwrap_or("").to_string();
 
         match sess.agent(){
             Ok(agent) => {
@@ -87,19 +95,6 @@ impl AddIn{
                 }
             }
             Err(e) => identities.push(e.to_string())
-        };
-
-        sess.set_tcp_stream(tcp);
-
-        if let Err(e) = sess.handshake() {
-            return json!({
-                "result": false,
-                "error": format!("Handshake error: {}", e.to_string()),
-                "identities": identities,
-                "methods": methods,
-                "banner": banner,
-                "kex_methods": kex
-            }).to_string();
         };
 
         let auth_success = match settings.auth_type {
@@ -123,16 +118,16 @@ impl AddIn{
 
         };
 
-        if let Err(e) = auth_success{
-            return json_error(format!("Auth error: {}", e.to_string()));
+        let (result, error) = if let Err(e) = auth_success {
+            (false, Some(format!("Auth error: {}", e)))
+        } else if !sess.authenticated() {
+            (false, Some("Authentication failed with no errors".to_string()))
+        } else {
+            self.inner = Some(sess);
+            (true, None)
         };
 
-        if !sess.authenticated(){
-            return json_error("Authentication failed with no errors");
-        }
-
-        self.inner = Some(sess);
-        json_success()
+        connection_response(result, error, identities, methods, banner, kex)
 
     }
 
@@ -191,4 +186,20 @@ impl AddIn{
             json_error("No session")
         }
     }
+}
+
+fn connection_response(result: bool, error: Option<String>, identities: Vec<String>, methods: String, banner: String, kex: String) -> String {
+    let mut response = json!({
+        "result": result,
+        "identities": identities,
+        "methods": methods,
+        "banner": banner,
+        "kex_methods": kex
+    });
+
+    if let Some(err) = error {
+        response["error"] = json!(err);
+    }
+
+    response.to_string()
 }
