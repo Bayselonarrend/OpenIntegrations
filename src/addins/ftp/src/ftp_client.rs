@@ -174,7 +174,7 @@ impl FtpClient {
             Err(e) => return json_error(format!("File error: {}", e))
         };
 
-        let mut buf_reader = BufReader::new(file);
+        let mut buf_reader = BufReader::with_capacity(256 * 1024, file);
         self.upload_from_reader(path, &mut buf_reader)
 
     }
