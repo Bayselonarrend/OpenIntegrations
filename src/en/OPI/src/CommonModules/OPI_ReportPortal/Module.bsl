@@ -137,6 +137,102 @@ EndFunction
 
 #EndRegion
 
+#Region UsersManagement
+
+// Create user
+// Creates a new user
+//
+// Parameters:
+// URL           - String                   - ReportPortal server URL                    - url
+// Token         - String                   - Access token                               - token
+// UserStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function CreateUser(Val URL, Val Token, Val UserStructure) Export
+
+    ErrorText = "User structure is not a valid KeyValue collection";
+
+    OPI_TypeConversion.GetKeyValueCollection(UserStructure, ErrorText);
+
+    CompleteURL(URL, "api/v1/users");
+
+    Headers = GetAuthorizationHeader(Token);
+
+    If Not OPI_Tools.CollectionFieldExists(UserStructure, "accountType") Then
+        UserStructure.Insert("accountType", "INTERNAL");
+    EndIf;
+
+    Result = OPI_HTTPRequests.PostWithBody(URL, UserStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Delete user
+// Deletes a user by login
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+// Login - String - Users login             - login
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteUser(Val URL, Val Token, Val Login) Export
+
+    OPI_TypeConversion.GetLine(Login);
+
+    CompleteURL(URL, StrTemplate("api/v1/users/%1", Login));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get user fields structure
+// Gets the structure of user description fields
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns the filter fields as a map                                - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetUserFieldsStructure(Val Clear = False, Val AsMap = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(AsMap);
+
+    If AsMap Then
+        UserStructure = New Map;
+    Else
+        UserStructure = New Structure;
+    EndIf;
+
+    UserStructure.Insert("active"        , "<user activity status>");
+    UserStructure.Insert("login"         , "<user login>");
+    UserStructure.Insert("password"      , "<user password>");
+    UserStructure.Insert("fullName"      , "<full name>");
+    UserStructure.Insert("email"         , "<email address>");
+    UserStructure.Insert("accountRole"   , "<account role: USER, ADMINISTRATOR>");
+    UserStructure.Insert("projectRole"   , "<project role: CUSTOMER, MEMBER, PROJECT_MANAGER>");
+    UserStructure.Insert("defaultProject", "<default project>");
+
+    If Clear Then
+        UserStructure = OPI_Tools.ClearCollectionRecursively(UserStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return UserStructure;
+
+EndFunction
+
+#EndRegion
+
 #Region ProjectManagement
 
 // Create project

@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+description: Create user and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create user
+ Creates a new user
+
+
+
+`Function CreateUser(Val URL, Val Token, Val UserStructure) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | UserStructure | --params | Structure Of KeyAndValue | &#x2714; | New user data. See. GetUserFieldsStructure |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+
+
+
+ 
+
+
+
+
