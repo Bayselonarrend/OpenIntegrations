@@ -1,0 +1,33 @@
+---
+sidebar_position: 2
+description: Delete user and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete user
+ Deletes a user by login
+
+
+
+`Function DeleteUser(Val URL, Val Token, Val Login) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | Login | --login | String | &#x2714; | Users login |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+
+
+
+ 
+
+
+
+

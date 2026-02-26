@@ -13,6 +13,14 @@
 			]
 		},
 		{
+			"name": "Users management",
+			"methods": [
+				"CreateUser",
+				"DeleteUser",
+				"GetUserFieldsStructure"
+			]
+		},
+		{
 			"name": "Project management",
 			"methods": [
 				"CreateProject",
@@ -151,6 +159,86 @@
 				}
 			],
 			"region": "Authorization"
+		},
+		{
+			"name": "CreateUser",
+			"id": "CREATEUSER",
+			"description": "Creates a new user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "New user data. See. GetUserFieldsStructure",
+					"default": null,
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "DeleteUser",
+			"id": "DELETEUSER",
+			"description": "Deletes a user by login",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String",
+					"description": "Users login",
+					"default": null,
+					"short": "-l"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUserFieldsStructure",
+			"id": "GETUSERFIELDSSTRUCTURE",
+			"description": "Gets the structure of user description fields",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": "false",
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns the filter fields as a map",
+					"default": "false",
+					"short": "-m"
+				}
+			],
+			"region": "Users management"
 		},
 		{
 			"name": "CreateProject",
