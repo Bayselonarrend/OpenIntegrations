@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Upload') {
+            steps {        
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {          
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/internal/Classes/SourceForgeUploader.os %GPGKEY%'
+                }
+            }
+        }
+    }
+}

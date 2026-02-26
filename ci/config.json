@@ -66,7 +66,11 @@
    "npmPath": {
     "description": "NPM executable",
     "value": "C:/Program Files/nodejs/npm.cmd"
-   }
+   },
+   "releaseWorkspace": {
+        "description": "Artifacts root folder",
+        "value": "C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease/" 
+    }
   }
  },
  "paths": {
@@ -557,6 +561,27 @@
     "value": "CI_Sonar_Token"
    }
   }
+ },
+ "sourceforge": {
+    "description": "SourceForge credentials",
+    "value": {
+        "login": {
+            "description": "SourceForge username",
+            "value": "bayselonarrend"
+        },
+        "passwordField": {
+            "description": "SourceForge password field at secret data",
+            "value": "CI_SF_Password"
+        },
+        "projectName": {
+            "description": "SourceForge project name",
+            "value": "openintegrations"
+        },
+        "hostUrl": {
+            "description": "SourceForge upload server URL",
+            "value": "frs.sourceforge.net"
+        }
+    }
  },
  "replacements": {
   "description": "Dictionary of values replacements",
