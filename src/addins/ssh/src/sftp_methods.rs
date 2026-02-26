@@ -221,11 +221,23 @@ fn upload_from_reader<R: Read>(sftp: &Sftp, path: &str, reader: &mut R) -> Resul
         Err(e) => return Err(format!("Remote file access error: {}", e))
     };
 
-    match copy(reader, &mut remote) {
-        Ok(b) => Ok(b),
-        Err(e) => Err(format!("Upload error: {}", &e.to_string()))
+    let mut buffer = vec![0u8; 256 * 1024]; // 256KB buffer
+    let mut total_bytes = 0u64;
+
+    loop {
+        let bytes_read = match reader.read(&mut buffer) {
+            Ok(0) => break,
+            Ok(n) => n,
+            Err(e) => return Err(format!("Read error: {}", e))
+        };
+
+        match remote.write_all(&buffer[..bytes_read]) {
+            Ok(_) => total_bytes += bytes_read as u64,
+            Err(e) => return Err(format!("Upload error: {}", e))
+        };
     }
 
+    Ok(total_bytes)
 }
 
 fn download_to_writer<W: Write>(sftp: &Sftp, path: &str, writer: &mut W, ) -> Result<u64, String> {
@@ -235,10 +247,23 @@ fn download_to_writer<W: Write>(sftp: &Sftp, path: &str, writer: &mut W, ) -> Re
         Err(e) => return Err(format!("Remote file access error: {}", e))
     };
 
-    match copy(&mut remote, writer) {
-        Ok(b) => Ok(b),
-        Err(e) => Err(format!("Upload error: {}", &e.to_string()))
+    let mut buffer = vec![0u8; 256 * 1024]; // 256KB buffer
+    let mut total_bytes = 0u64;
+
+    loop {
+        let bytes_read = match remote.read(&mut buffer) {
+            Ok(0) => break,
+            Ok(n) => n,
+            Err(e) => return Err(format!("Read error: {}", e))
+        };
+
+        match writer.write_all(&buffer[..bytes_read]) {
+            Ok(_) => total_bytes += bytes_read as u64,
+            Err(e) => return Err(format!("Write error: {}", e))
+        };
     }
+
+    Ok(total_bytes)
 }
 
 fn form_file_info(path: &PathBuf, data: &FileStat) -> Value{
