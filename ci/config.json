@@ -68,9 +68,9 @@
     "value": "C:/Program Files/nodejs/npm.cmd"
    },
    "releaseWorkspace": {
-        "description": "Artifacts root folder",
-        "value": "C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease/" 
-    }
+    "description": "Artifacts root folder",
+    "value": "C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease/"
+   }
   }
  },
  "paths": {
@@ -563,29 +563,29 @@
   }
  },
  "sourceforge": {
-    "description": "SourceForge credentials",
-    "value": {
-        "login": {
-            "description": "SourceForge username",
-            "value": "bayselonarrend"
-        },
-        "projectName": {
-            "description": "SourceForge project name",
-            "value": "openintegrations"
-        },
-        "hostUrl": {
-            "description": "SourceForge upload server URL",
-            "value": "frs.sourceforge.net"
-        },
-        "privateKey": {
-            "description": "SourceForge auth private key",
-            "value": "D:/Important/id_ed25519"
-        },
-        "publicKey": {
-            "description": "SourceForge auth private key",
-            "value": "D:/Important/id_ed25519.pub"
-        }
-    }
+  "description": "SourceForge credentials",
+  "value": {
+   "login": {
+    "description": "SourceForge username",
+    "value": "bayselonarrend"
+   },
+   "projectName": {
+    "description": "SourceForge project name",
+    "value": "openintegrations"
+   },
+   "hostUrl": {
+    "description": "SourceForge upload server URL",
+    "value": "frs.sourceforge.net"
+   },
+   "privateKey": {
+    "description": "SourceForge auth private key",
+    "value": "D:/Important/id_ed25519"
+   },
+   "publicKey": {
+    "description": "SourceForge auth private key",
+    "value": "D:/Important/id_ed25519.pub"
+   }
+  }
  },
  "replacements": {
   "description": "Dictionary of values replacements",
