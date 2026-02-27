@@ -67,6 +67,14 @@ const DownloadPage = () => {
           },
           desc: 'Пакет CLI приложения для систем на базе RHEL',
         },
+        {
+          name: 'Linux (.AppImage)',
+          files: {
+            ru: 'oint-1.33.0_ru-x86_64.AppImage',
+            en: 'oint-1.33.0_en-x86_64.AppImage',
+          },
+          desc: 'Пакет CLI приложения для систем на базе RHEL',
+        },
         
       ],
     },
