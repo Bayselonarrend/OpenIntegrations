@@ -7,11 +7,6 @@ pipeline {
             steps {
                     
                     bat "git branch"
-                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install osparser'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install cmdline'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install asserts'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install osparser'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install coloratos'
                     bat encoding: 'UTF-8', script:'if exist Melezh rd /s /q Melezh'
                     bat encoding: 'UTF-8', script:'chcp 65001 & git clone https://github.com/bayselonarrend/Melezh'
             }
