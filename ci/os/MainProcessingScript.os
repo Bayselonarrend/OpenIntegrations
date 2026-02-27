@@ -11,7 +11,7 @@
 	Обработчик = Новый Versioning(ДанныеПроекта);
 	Обработчик = Новый ConversionMethods(ДанныеПроекта);
 	Обработчик = Новый LocalizationMethods(ДанныеПроекта);
-	Обработчик = Новый CodeFormatingMethods(ДанныеПроекта);
+	Обработчик = Новый CodeFormattingMethods(ДанныеПроекта);
 	Обработчик = Новый CodeExamplesMethods(ДанныеПроекта);
 	Обработчик = Новый CLIMethods(ДанныеПроекта);
 	Обработчик = Новый AlternativeNamesMethods(ДанныеПроекта);
