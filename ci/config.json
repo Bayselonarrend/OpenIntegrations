@@ -588,18 +588,18 @@
   }
  },
  "oscript": {
-    "description": "OneScript and OPM options",
-    "value": {
-        "dependencies": {
-            "description": "OPM dependencies",
-            "value": [
-                "osparser",
-                "cmdline",
-                "asserts",
-                "coloratos"
-            ]
-        }
-    }
+  "description": "OneScript and OPM options",
+  "value": {
+   "dependencies": {
+    "description": "OPM dependencies",
+    "value": [
+     "osparser",
+     "cmdline",
+     "asserts",
+     "coloratos"
+    ]
+   }
+  }
  },
  "replacements": {
   "description": "Dictionary of values replacements",
