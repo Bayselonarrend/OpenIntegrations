@@ -10225,6 +10225,7 @@
 "ID сообщения. Все сообщения, если не указано": "Message ID. All messages, unless specified",
 "Вводный текст запроса для обработки картинки": "Input text query for image processing",
 "!OInt OPI_ReportPortal = Новый(\"ReportPortal": "!OInt OPI_ReportPortal = New(\"ReportPortal",
+"Единый исполняемый файл CLI формата AppImage": "Single executable CLI file in AppImage format",
 "Получает последние сообщения из истории чата": "Gets the latest messages from the chat history",
 "Формат получения ответа: JSON, CSV, TSV и пр": "Response format: JSON, CSV, TSV, etc.",
 "Переводит каталог в режим публичного доступа": "Sets the directory to public access mode",
