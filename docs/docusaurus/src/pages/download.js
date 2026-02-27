@@ -73,7 +73,7 @@ const DownloadPage = () => {
             ru: 'oint-1.33.0_ru-x86_64.AppImage',
             en: 'oint-1.33.0_en-x86_64.AppImage',
           },
-          desc: 'Пакет CLI приложения для систем на базе RHEL',
+          desc: 'Единый исполняемый файл CLI формата AppImage',
         },
         
       ],
