@@ -1,0 +1,15 @@
+    URL   = "tests.openintegrations.dev";
+    Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    Name  = "testproject";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("active"        , True);
+    UserStructure.Insert("login"         , "test");
+    UserStructure.Insert("password"      , "G00d_Pass");
+    UserStructure.Insert("fullName"      , "Test User");
+    UserStructure.Insert("email"         , "test@example.com");
+    UserStructure.Insert("accountRole"   , "USER");
+    UserStructure.Insert("projectRole"   , "MEMBER");
+    UserStructure.Insert("defaultProject", "test");
+
+    Result = OPI_ReportPortal.CreateUser(URL, Token, UserStructure);

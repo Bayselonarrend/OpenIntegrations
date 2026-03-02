@@ -2920,6 +2920,7 @@ Procedure RPortal_Authorization() Export
     ReportPortal_GetTemporaryToken(TestParameters);
     ReportPortal_GetPermanentToken(TestParameters);
     ReportPortal_DeletePermanentToken(TestParameters);
+    ReportPortal_GetUserTokens(TestParameters);
 
 EndProcedure
 
@@ -2931,9 +2932,11 @@ Procedure RPortal_TestManagement() Export
 
     ReportPortal_CreateLaunch(TestParameters);
     ReportPortal_GetLaunch(TestParameters);
+    ReportPortal_GetLaunchItems(TestParameters);
     ReportPortal_UpdateLaunch(TestParameters);
     ReportPortal_CreateItem(TestParameters);
     ReportPortal_GetItem(TestParameters);
+    ReportPortal_GetItemLogs(TestParameters);
     ReportPortal_UpdateItem(TestParameters);
     ReportPortal_FinishItem(TestParameters);
     ReportPortal_FinishLaunch(TestParameters);
@@ -2975,6 +2978,23 @@ Procedure RPortal_ProjectManagement() Export
     ReportPortal_CreateProject(TestParameters);
     ReportPortal_GetProject(TestParameters);
     ReportPortal_DeleteProject(TestParameters);
+
+EndProcedure
+
+Procedure RPortal_UserManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"      , TestParameters);
+
+    ReportPortal_CreateUser(TestParameters);
+    ReportPortal_GetCurrentUser(TestParameters);
+    ReportPortal_GetUser(TestParameters);
+    ReportPortal_GetUsers(TestParameters);
+    ReportPortal_GetUserProjects(TestParameters);
+    ReportPortal_UpdateUser(TestParameters);
+    ReportPortal_DeleteUser(TestParameters);
+    ReportPortal_GetUserFieldsStructure(TestParameters);
 
 EndProcedure
 
@@ -22969,7 +22989,7 @@ Procedure ReportPortal_GetPermanentToken(FunctionParameters)
     URL     = FunctionParameters["RPortal_URL"];
     Token   = FunctionParameters["RPortal_TempToken"];
     UserID  = FunctionParameters["RPortal_UserID"];
-    KeyName = "test_key";
+    KeyName = "test_key_2";
 
     Result = OPI_ReportPortal.GetPermanentToken(URL, Token, UserID, KeyName);
 
@@ -22991,6 +23011,20 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "DeletePermanentToken");
+
+EndProcedure
+
+Procedure ReportPortal_GetUserTokens(FunctionParameters)
+
+    URL    = FunctionParameters["RPortal_URL"];
+    Token  = FunctionParameters["RPortal_TempToken"];
+    UserID = FunctionParameters["RPortal_UserID"];
+
+    Result = OPI_ReportPortal.GetUserTokens(URL, Token, UserID);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetUserTokens");
 
 EndProcedure
 
@@ -23261,6 +23295,21 @@ Procedure ReportPortal_GetLaunch(FunctionParameters)
 
 EndProcedure
 
+Procedure ReportPortal_GetLaunchItems(FunctionParameters)
+
+    URL      = FunctionParameters["RPortal_URL"];
+    Token    = FunctionParameters["RPortal_TempToken"];
+    LaunchID = FunctionParameters["RPortal_TestLaunchId"];
+    Project  = "Test";
+
+    Result = OPI_ReportPortal.GetLaunchItems(URL, Token, Project, LaunchID);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetLaunchItems");
+
+EndProcedure
+
 Procedure ReportPortal_GetItem(FunctionParameters)
 
     URL      = FunctionParameters["RPortal_URL"];
@@ -23276,6 +23325,20 @@ Procedure ReportPortal_GetItem(FunctionParameters)
 
 EndProcedure
 
+Procedure ReportPortal_GetItemLogs(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ElementID = FunctionParameters["RPortal_TestItemId"];
+    Project   = "Test";
+
+    Result = OPI_ReportPortal.GetItemLogs(URL, Token, Project, ElementID);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetItemLogs");
+
+EndProcedure
 
 Procedure ReportPortal_UpdateLaunch(FunctionParameters)
 
@@ -23355,6 +23418,130 @@ Procedure ReportPortal_GetLaunchReport(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "GetLaunchReport");
+
+EndProcedure
+
+Procedure ReportPortal_CreateUser(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+    Name  = "testproject";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("active"        , True);
+    UserStructure.Insert("login"         , "test");
+    UserStructure.Insert("password"      , "G00d_Pass");
+    UserStructure.Insert("fullName"      , "Test User");
+    UserStructure.Insert("email"         , "test@example.com");
+    UserStructure.Insert("accountRole"   , "USER");
+    UserStructure.Insert("projectRole"   , "MEMBER");
+    UserStructure.Insert("defaultProject", "test");
+
+    Result = OPI_ReportPortal.CreateUser(URL, Token, UserStructure);
+
+    // END
+
+    Process(Result, "ReportPortal", "CreateUser", , FunctionParameters);
+
+EndProcedure
+
+Procedure ReportPortal_DeleteUser(FunctionParameters)
+
+    URL    = FunctionParameters["RPortal_URL"];
+    Token  = FunctionParameters["RPortal_TempToken"];
+    UserID = FunctionParameters["RPortal_TestUser"];
+
+    Result = OPI_ReportPortal.DeleteUser(URL, Token, UserID);
+
+    // END
+
+    Process(Result, "ReportPortal", "DeleteUser");
+
+EndProcedure
+
+Procedure ReportPortal_GetUserFieldsStructure(FunctionParameters)
+
+    Result = OPI_ReportPortal.GetUserFieldsStructure();
+
+    // END
+
+    Process(Result, "ReportPortal", "GetUserFieldsStructure");
+
+    Result = OPI_ReportPortal.GetUserFieldsStructure(True);
+
+    Process(Result, "ReportPortal", "GetUserFieldsStructure", "Clear");
+
+EndProcedure
+
+Procedure ReportPortal_UpdateUser(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+    Login = "test";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("fullName", "Updated Test User");
+    UserStructure.Insert("email"   , "updated@example.com");
+
+    Result = OPI_ReportPortal.UpdateUser(URL, Token, Login, UserStructure);
+
+    // END
+
+    Process(Result, "ReportPortal", "UpdateUser");
+
+EndProcedure
+
+Procedure ReportPortal_GetCurrentUser(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+
+    Result = OPI_ReportPortal.GetCurrentUser(URL, Token);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetCurrentUser");
+
+EndProcedure
+
+Procedure ReportPortal_GetUser(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+    Login = "test";
+
+    Result = OPI_ReportPortal.GetUser(URL, Token, Login);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetUser");
+
+EndProcedure
+
+Procedure ReportPortal_GetUsers(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+
+    Result = OPI_ReportPortal.GetUsers(URL, Token);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetUsers");
+
+EndProcedure
+
+Procedure ReportPortal_GetUserProjects(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+    Login = "test";
+
+    Result = OPI_ReportPortal.GetUserProjects(URL, Token, Login);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetUserProjects");
 
 EndProcedure
 

@@ -1,0 +1,37 @@
+---
+sidebar_position: 4
+description: Get current user and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get current user
+ Get current user data
+
+
+
+`Function GetCurrentUser(Val URL, Val Token) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "tests.openintegrations.dev";
+    Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+
+    Result = OPI_ReportPortal.GetCurrentUser(URL, Token);
+```
+ 
+
+
+
+

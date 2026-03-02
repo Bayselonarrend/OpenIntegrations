@@ -803,6 +803,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RPortal_TestManagement'],
 						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RPortal_LogRecording'],
 						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RPortal_ProjectManagement'],
+						['./src/en/OInt/tests/Modules/OPI_TestsCLI.os', 'RPortal_UserManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
