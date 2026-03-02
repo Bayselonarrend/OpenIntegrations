@@ -12,20 +12,26 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function DeleteUser(Val URL, Val Token, Val Login) Export`
+`Function DeleteUser(Val URL, Val Token, Val UserID) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | ReportPortal server URL |
   | Token | --token | String | &#x2714; | Access token |
-  | Login | --login | String | &#x2714; | Users login |
+  | UserID | --id | String | &#x2714; | User ID |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    URL    = "tests.openintegrations.dev";
+    Token  = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    UserID = "";
 
+    Result = OPI_ReportPortal.DeleteUser(URL, Token, UserID);
+```
  
 
 

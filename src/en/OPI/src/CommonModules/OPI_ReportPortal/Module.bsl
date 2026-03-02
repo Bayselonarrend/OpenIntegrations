@@ -135,6 +135,29 @@ Function DeletePermanentToken(Val URL, Val Token, Val UserID, Val KeyID) Export
 
 EndFunction
 
+// Get user tokens
+// Gets the list of user tokens (API keys)
+//
+// Parameters:
+// URL    - String - ReportPortal server URL - url
+// Token  - String - Access token            - token
+// UserID - String - User ID                 - user
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetUserTokens(Val URL, Val Token, Val UserID) Export
+
+    OPI_TypeConversion.GetLine(UserID);
+
+    CompleteURL(URL, StrTemplate("api/users/%1/api-keys", UserID));
+
+    Headers = GetAuthorizationHeader(Token);
+    Result  = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region UsersManagement
@@ -155,7 +178,7 @@ Function CreateUser(Val URL, Val Token, Val UserStructure) Export
 
     OPI_TypeConversion.GetKeyValueCollection(UserStructure, ErrorText);
 
-    CompleteURL(URL, "api/v1/users");
+    CompleteURL(URL, "api/users");
 
     Headers = GetAuthorizationHeader(Token);
 
@@ -173,21 +196,142 @@ EndFunction
 // Deletes a user by login
 //
 // Parameters:
+// URL    - String - ReportPortal server URL - url
+// Token  - String - Access token            - token
+// UserID - String - User ID                 - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function DeleteUser(Val URL, Val Token, Val UserID) Export
+
+    OPI_TypeConversion.GetLine(UserID);
+
+    CompleteURL(URL, StrTemplate("api/users/%1", UserID));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Update user
+// Changes the data of the selected user
+//
+// Parameters:
+// URL           - String                   - ReportPortal server URL                    - url
+// Token         - String                   - Access token                               - token
+// Login         - String                   - Users login                                - login
+// UserStructure - Structure Of KeyAndValue - New user data. See. GetUserFieldsStructure - params
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function UpdateUser(Val URL, Val Token, Val Login, Val UserStructure) Export
+
+    ErrorText = "User structure is not a valid KeyValue collection";
+
+    OPI_TypeConversion.GetKeyValueCollection(UserStructure, ErrorText);
+    OPI_TypeConversion.GetLine(Login);
+
+    CompleteURL(URL, StrTemplate("api/users/%1", Login));
+
+    Headers = GetAuthorizationHeader(Token);
+    Result  = OPI_HTTPRequests.PutWithBody(URL, UserStructure, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get current user
+// Get current user data
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetCurrentUser(Val URL, Val Token) Export
+
+    CompleteURL(URL, "api/users");
+
+    Headers = GetAuthorizationHeader(Token);
+    Result  = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get user
+// Gets user information by login
+//
+// Parameters:
 // URL   - String - ReportPortal server URL - url
 // Token - String - Access token            - token
 // Login - String - Users login             - login
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function DeleteUser(Val URL, Val Token, Val Login) Export
+Function GetUser(Val URL, Val Token, Val Login) Export
 
     OPI_TypeConversion.GetLine(Login);
 
-    CompleteURL(URL, StrTemplate("api/v1/users/%1", Login));
+    CompleteURL(URL, StrTemplate("api/users/%1", Login));
 
     Headers = GetAuthorizationHeader(Token);
 
-    Result = OPI_HTTPRequests.Delete(URL, , Headers);
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get users
+// Gets the list of existing users
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+// Page  - Number - List page number        - page
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetUsers(Val URL, Val Token, Val Page = 1) Export
+
+    CompleteURL(URL, "api/users/all");
+
+    Headers = GetAuthorizationHeader(Token);
+
+    RequestParameters = New Map;
+    OPI_Tools.AddField("page.size", 30  , "Number", RequestParameters);
+    OPI_Tools.AddField("page.page", Page, "Number", RequestParameters);
+
+    Result = OPI_HTTPRequests.Get(URL, RequestParameters, Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get user projects
+// Gets the list of user projects
+//
+// Parameters:
+// URL   - String - ReportPortal server URL - url
+// Token - String - Access token            - token
+// Login - String - Users login             - login
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetUserProjects(Val URL, Val Token, Val Login) Export
+
+    OPI_TypeConversion.GetLine(Login);
+
+    CompleteURL(URL, StrTemplate("api/users/%1/projects", Login));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    Result = OPI_HTTPRequests.Get(URL, , Headers);
 
     Return Result;
 
@@ -495,6 +639,37 @@ Function GetLaunchReport(Val URL, Val Token, Val Project, Val LaunchID, Val Form
     If TypeOf(Result) = Type("BinaryData") And Format = "html" Then
         OPI_TypeConversion.GetLine(Result);
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get launch items
+// Gets the test items of the selected test session
+//
+// Parameters:
+// URL      - String - ReportPortal server URL - url
+// Token    - String - Access token            - token
+// Project  - String - Project ID              - proj
+// LaunchID - Number - Launch ID               - id
+// Page     - Number - List page number        - page
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetLaunchItems(Val URL, Val Token, Val Project, Val LaunchID, Val Page = 1) Export
+
+    OPI_TypeConversion.GetLine(Project);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/item", Project));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    RequestParameters = New Map;
+    OPI_Tools.AddField("filter.eq.launchId", LaunchID, "Number", RequestParameters);
+    OPI_Tools.AddField("page.size"         , 30      , "Number", RequestParameters);
+    OPI_Tools.AddField("page.page"         , Page    , "Number", RequestParameters);
+
+    Result = OPI_HTTPRequests.Get(URL, RequestParameters, Headers);
 
     Return Result;
 
@@ -846,6 +1021,37 @@ Function GetLog(Val URL, Val Token, Val Project, Val LogUUID) Export
     Headers = GetAuthorizationHeader(Token);
 
     Result = OPI_HTTPRequests.Get(URL, , Headers);
+
+    Return Result;
+
+EndFunction
+
+// Get item logs
+// Gets the logs of the selected test item
+//
+// Parameters:
+// URL       - String - ReportPortal server URL - url
+// Token     - String - Access token            - token
+// Project   - String - Project ID              - proj
+// ElementID - Number - Test item ID            - item
+// Page      - Number - List page number        - page
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from ReportPortal
+Function GetItemLogs(Val URL, Val Token, Val Project, Val ElementID, Val Page = 1) Export
+
+    OPI_TypeConversion.GetLine(Project);
+
+    CompleteURL(URL, StrTemplate("api/v1/%1/log", Project));
+
+    Headers = GetAuthorizationHeader(Token);
+
+    RequestParameters = New Map;
+    OPI_Tools.AddField("filter.eq.item", ElementID, "Number", RequestParameters);
+    OPI_Tools.AddField("page.size"     , 30       , "Number", RequestParameters);
+    OPI_Tools.AddField("page.page"     , Page     , "Number", RequestParameters);
+
+    Result = OPI_HTTPRequests.Get(URL, RequestParameters, Headers);
 
     Return Result;
 

@@ -12,7 +12,8 @@
 "OPI_Tests.RPortal_Authorization",
 "OPI_Tests.RPortal_TestManagement",
 "OPI_Tests.RPortal_LogRecording",
-"OPI_Tests.RPortal_ProjectManagement"
+"OPI_Tests.RPortal_ProjectManagement",
+"OPI_Tests.RPortal_UserManagement"
     ]
   },
   "settings": {

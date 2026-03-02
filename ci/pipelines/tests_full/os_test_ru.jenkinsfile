@@ -810,6 +810,7 @@ pipeline {
 						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_УправлениеТестами'],
 						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_ЗаписьЛогов'],
 						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_УправлениеПроектами'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'RPortal_УправлениеПользователями'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

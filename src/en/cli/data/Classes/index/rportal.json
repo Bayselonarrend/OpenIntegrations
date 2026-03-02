@@ -9,7 +9,8 @@
 			"methods": [
 				"DeletePermanentToken",
 				"GetPermanentToken",
-				"GetTemporaryToken"
+				"GetTemporaryToken",
+				"GetUserTokens"
 			]
 		},
 		{
@@ -17,7 +18,12 @@
 			"methods": [
 				"CreateUser",
 				"DeleteUser",
-				"GetUserFieldsStructure"
+				"GetCurrentUser",
+				"GetUser",
+				"GetUserFieldsStructure",
+				"GetUserProjects",
+				"GetUsers",
+				"UpdateUser"
 			]
 		},
 		{
@@ -42,6 +48,7 @@
 				"GetItemStructure",
 				"GetLaunch",
 				"GetLaunchCompletionStructure",
+				"GetLaunchItems",
 				"GetLaunchReport",
 				"GetLaunchStructure",
 				"UpdateItem",
@@ -52,6 +59,7 @@
 			"name": "Log recording",
 			"methods": [
 				"DeleteLog",
+				"GetItemLogs",
 				"GetLog",
 				"GetLogStructure",
 				"WriteLog"
@@ -161,6 +169,35 @@
 			"region": "Authorization"
 		},
 		{
+			"name": "GetUserTokens",
+			"id": "GETUSERTOKENS",
+			"description": "Gets the list of user tokens (API keys)",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "User ID",
+					"default": null,
+					"short": "-s"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
 			"name": "CreateUser",
 			"id": "CREATEUSER",
 			"description": "Creates a new user",
@@ -193,6 +230,151 @@
 			"name": "DeleteUser",
 			"id": "DELETEUSER",
 			"description": "Deletes a user by login",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "User ID",
+					"default": null,
+					"short": "-i"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "UpdateUser",
+			"id": "UPDATEUSER",
+			"description": "Changes the data of the selected user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String",
+					"description": "Users login",
+					"default": null,
+					"short": "-l"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "New user data. See. GetUserFieldsStructure",
+					"default": null,
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetCurrentUser",
+			"id": "GETCURRENTUSER",
+			"description": "Get current user data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUser",
+			"id": "GETUSER",
+			"description": "Gets user information by login",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String",
+					"description": "Users login",
+					"default": null,
+					"short": "-l"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUsers",
+			"id": "GETUSERS",
+			"description": "Gets the list of existing users",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "List page number",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUserProjects",
+			"id": "GETUSERPROJECTS",
+			"description": "Gets the list of user projects",
 			"params": [
 				{
 					"name": "--url",
@@ -560,6 +742,49 @@
 					"description": "Report format: pdf, xls, html",
 					"default": "pdf",
 					"short": "-f"
+				}
+			],
+			"region": "Test management"
+		},
+		{
+			"name": "GetLaunchItems",
+			"id": "GETLAUNCHITEMS",
+			"description": "Gets the test items of the selected test session",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Launch ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "List page number",
+					"default": 1,
+					"short": "-g"
 				}
 			],
 			"region": "Test management"
@@ -935,6 +1160,49 @@
 					"description": "Log UUID",
 					"default": null,
 					"short": "-d"
+				}
+			],
+			"region": "Log recording"
+		},
+		{
+			"name": "GetItemLogs",
+			"id": "GETITEMLOGS",
+			"description": "Gets the logs of the selected test item",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": null,
+					"short": "-p"
+				},
+				{
+					"name": "--item",
+					"types": "Number",
+					"description": "Test item ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "List page number",
+					"default": 1,
+					"short": "-g"
 				}
 			],
 			"region": "Log recording"

@@ -6276,6 +6276,11 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "ПолучитьТокеныПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "СоздатьЗапуск",
 		"variant": ""
 	},
@@ -6371,7 +6376,17 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "ПолучитьЭлементыЗапуска",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "ПолучитьЭлемент",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьЛогиЭлемента",
 		"variant": ""
 	},
 	{
@@ -6397,6 +6412,51 @@
 	{
 		"lib": "ReportPortal",
 		"name": "ПолучитьОтчетЗапуска",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "СоздатьПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "УдалитьПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьСтруктуруПользователя",
+		"variant": "Пустая"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ИзменитьПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьТекущегоПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьПользователя",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьПользователей",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ПолучитьПроектыПользователя",
 		"variant": ""
 	},
 	{

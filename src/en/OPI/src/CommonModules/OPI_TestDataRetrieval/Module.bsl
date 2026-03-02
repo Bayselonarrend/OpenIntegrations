@@ -435,6 +435,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "RPortal_TestManagement"              , "Test management"                 , RPortal);
     NewTest(TestTable, "RPortal_LogRecording"                , "Log recording"                   , RPortal);
     NewTest(TestTable, "RPortal_ProjectManagement"           , "Project management"              , RPortal);
+    NewTest(TestTable, "RPortal_UserManagement"              , "Users management"                , RPortal);
     NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
     NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
     NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
@@ -13401,6 +13402,20 @@ Function Check_ReportPortal_DeletePermanentToken(Val Result, Val Option)
 
 EndFunction
 
+Function Check_ReportPortal_GetUserTokens(Val Result, Val Option)
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+    If Result["items"].Count() > 0 Then
+        FirstToken = Result["items"][0];
+        ExpectsThat(FirstToken["id"]).Заполнено();
+        ExpectsThat(FirstToken["name"]).Заполнено();
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_ReportPortal_CreateLaunch(Val Result, Val Option, Parameters = "")
 
     LaunchID = Result["id"];
@@ -13596,6 +13611,15 @@ Function Check_ReportPortal_GetLaunch(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
+Function Check_ReportPortal_GetLaunchItems(Val Result, Val Option)
+
+    ExpectsThat(Result["content"]).ИмеетТип("Array");
+    ExpectsThat(Result["page"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
 Function Check_ReportPortal_GetItem(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["id"]).Заполнено();
@@ -13603,6 +13627,15 @@ Function Check_ReportPortal_GetItem(Val Result, Val Option, Parameters = "")
     LogID = Result["id"];
     WriteParameter("RPortal_TestItemId", LogID);
     Parameters.Insert("RPortal_TestItemId", LogID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetItemLogs(Val Result, Val Option)
+
+    ExpectsThat(Result["content"]).ИмеетТип("Array");
+    ExpectsThat(Result["page"]).ИмеетТип("Map");
 
     Return Result;
 
@@ -13639,6 +13672,97 @@ EndFunction
 Function Check_ReportPortal_GetLaunchReport(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String");
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_CreateUser(Val Result, Val Option, Parameters = "")
+
+    UserID = Result["id"];
+
+    ExpectsThat(UserID).Заполнено();
+
+    WriteParameter("RPortal_TestUser", UserID);
+    Parameters.Insert("RPortal_TestUser", UserID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_DeleteUser(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetUserFieldsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_UpdateUser(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetCurrentUser(Val Result, Val Option)
+
+    ExpectsThat(Result["userId"]).Заполнено();
+    ExpectsThat(Result["email"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetUser(Val Result, Val Option)
+
+    ExpectsThat(Result["userId"]).Заполнено();
+    ExpectsThat(Result["email"]).Заполнено();
+    ExpectsThat(Result["fullName"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["content"]).ИмеетТип("Array");
+    ExpectsThat(Result["page"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_GetUserProjects(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+
+    If Result.Count() > 0 Then
+        For Each Project In Result Do
+            ExpectsThat(Project.Value["projectRole"]).Заполнено();
+            Break;
+        EndDo;
+    EndIf;
+
     Return Result;
 
 EndFunction
