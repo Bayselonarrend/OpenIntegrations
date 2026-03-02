@@ -1,0 +1,44 @@
+---
+sidebar_position: 3
+description: Update user and other functions to work with ReportPortal in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ReportPortal]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update user
+ Changes the data of the selected user
+
+
+
+`Function UpdateUser(Val URL, Val Token, Val Login, Val UserStructure) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | ReportPortal server URL |
+  | Token | --token | String | &#x2714; | Access token |
+  | Login | --login | String | &#x2714; | Users login |
+  | UserStructure | --params | Structure Of KeyAndValue | &#x2714; | New user data. See. GetUserFieldsStructure |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "tests.openintegrations.dev";
+    Token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    Login = "test";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("fullName", "Updated Test User");
+    UserStructure.Insert("email"   , "updated@example.com");
+
+    Result = OPI_ReportPortal.UpdateUser(URL, Token, Login, UserStructure);
+```
+ 
+
+
+
+

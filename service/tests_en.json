@@ -6276,6 +6276,11 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "GetUserTokens",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "CreateLaunch",
 		"variant": ""
 	},
@@ -6371,7 +6376,17 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "GetLaunchItems",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "GetItem",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetItemLogs",
 		"variant": ""
 	},
 	{
@@ -6397,6 +6412,51 @@
 	{
 		"lib": "ReportPortal",
 		"name": "GetLaunchReport",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "CreateUser",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "DeleteUser",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetUserFieldsStructure",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetUserFieldsStructure",
+		"variant": "Clear"
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "UpdateUser",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetCurrentUser",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetUser",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetUsers",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "GetUserProjects",
 		"variant": ""
 	},
 	{

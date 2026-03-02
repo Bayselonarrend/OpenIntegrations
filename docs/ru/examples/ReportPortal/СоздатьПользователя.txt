@@ -1,0 +1,15 @@
+    URL   = "tests.openintegrations.dev";
+    Токен = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    Имя   = "testproject";
+
+    СтруктураПользователя = Новый Структура;
+    СтруктураПользователя.Вставить("active"        , Истина);
+    СтруктураПользователя.Вставить("login"         , "test");
+    СтруктураПользователя.Вставить("password"      , "G00d_Pass");
+    СтруктураПользователя.Вставить("fullName"      , "Test User");
+    СтруктураПользователя.Вставить("email"         , "test@example.com");
+    СтруктураПользователя.Вставить("accountRole"   , "USER");
+    СтруктураПользователя.Вставить("projectRole"   , "MEMBER");
+    СтруктураПользователя.Вставить("defaultProject", "test");
+
+    Результат = OPI_ReportPortal.СоздатьПользователя(URL, Токен, СтруктураПользователя);
