@@ -98,6 +98,8 @@ const config = {
       src: 'https://context7.com/widget.js',
       async: true,
       'data-library': '/bayselonarrend/openintegrations',
+      'data-color': '#004943',
+      'data-placeholder': 'Задайте вопрос о библиотеке...',
     },
   ],
 
