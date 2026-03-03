@@ -93,6 +93,14 @@ const config = {
       languages: ['en', 'ru'] // language codes
     }]],
 
+  scripts: [
+    {
+      src: 'https://context7.com/widget.js',
+      async: true,
+      'data-library': '/bayselonarrend/openintegrations',
+    },
+  ],
+
   themeConfig:
     ({
       docs: {
