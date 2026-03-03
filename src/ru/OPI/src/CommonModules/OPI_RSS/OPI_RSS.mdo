@@ -3,8 +3,9 @@
   <name>OPI_RSS</name>
   <synonym>
     <key>ru</key>
-    <value>RSS</value>
+    <value>RSS (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с RSS из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
