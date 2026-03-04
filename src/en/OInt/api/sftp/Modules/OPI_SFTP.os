@@ -419,7 +419,7 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
 
         If Not IsFileOnDisk Then
 
-            OPI_TypeConversion.GetBinaryData(File);
+            OPI_TypeConversion.GetBinaryData(File, True);
 
             If OPI_AddIns.FileTransferRequired() Then
 

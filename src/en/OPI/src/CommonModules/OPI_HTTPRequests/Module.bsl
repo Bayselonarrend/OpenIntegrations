@@ -94,6 +94,16 @@ Function Head(Val URL
 
 EndFunction
 
+Function Put(Val URL
+    , Val Parameters        = ""
+    , Val AdditionalHeaders = ""
+    , Val ResponseFile      = Undefined
+    , Val FullResponse      = False) Export
+
+    Return ExecuteRequestWithoutBody(URL, "PUT", Parameters, AdditionalHeaders, ResponseFile, FullResponse);
+
+EndFunction
+
 Function Delete(Val URL
     , Val Parameters        = ""
     , Val AdditionalHeaders = ""

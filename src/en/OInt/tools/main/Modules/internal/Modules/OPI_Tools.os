@@ -942,6 +942,43 @@ Function DateRFC3339(Val Date, Val Offset = "Z") Export
 
 EndFunction
 
+Function DateRFC822(Date) Export
+
+    DaysOfWeek = New Map;
+    DaysOfWeek.Insert(1, "Mon");
+    DaysOfWeek.Insert(2, "Tue");
+    DaysOfWeek.Insert(3, "Wed");
+    DaysOfWeek.Insert(4, "Thu");
+    DaysOfWeek.Insert(5, "Fri");
+    DaysOfWeek.Insert(6, "Sat");
+    DaysOfWeek.Insert(7, "Sun");
+
+    Mounths = New Map;
+    Mounths.Insert(1 , "Jan");
+    Mounths.Insert(2 , "Feb");
+    Mounths.Insert(3 , "Mar");
+    Mounths.Insert(4 , "Apr");
+    Mounths.Insert(5 , "May");
+    Mounths.Insert(6 , "Jun");
+    Mounths.Insert(7 , "Jul");
+    Mounths.Insert(8 , "Aug");
+    Mounths.Insert(9 , "Sep");
+    Mounths.Insert(10, "Oct");
+    Mounths.Insert(11, "Nov");
+    Mounths.Insert(12, "Dec");
+
+    DayOfWeek = DaysOfWeek.Get(DayOfWeek(Date));
+    Day = Format(Day(Date), "ND=10; NLZ=");
+    Mounth    = Mounths.Get(Mounth(Date));
+    Year = Format(Year(Date), "NG=0");
+    Time = Format(Date, "DF='HH:mm:ss'");
+
+    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", DayOfWeek, Day, Mounth, Year, Time);
+
+    Return Result;
+
+EndFunction
+
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;
@@ -1400,6 +1437,10 @@ EndFunction
 
 Function ДатаRFC3339(Val Дата, Val Смещение = "Z") Export
     Return DateRFC3339(Дата, Смещение);
+EndFunction
+
+Function ДатаRFC822(Дата) Export
+    Return DateRFC822(Дата);
 EndFunction
 
 Function ПреобразоватьДанныеСПолучениемРазмера(Данные, Val МинимальныйРазмерДляПотока = 0) Export
