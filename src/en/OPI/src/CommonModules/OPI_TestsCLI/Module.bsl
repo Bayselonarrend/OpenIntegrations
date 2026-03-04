@@ -2979,6 +2979,9 @@ Procedure RPortal_ProjectManagement() Export
 
     ReportPortal_CreateProject(TestParameters);
     ReportPortal_GetProject(TestParameters);
+    ReportPortal_GetProjects(TestParameters);
+    ReportPortal_AddUsersToProject(TestParameters);
+    ReportPortal_ExcludeUsersFromProject(TestParameters);
     ReportPortal_DeleteProject(TestParameters);
 
 EndProcedure
@@ -30553,6 +30556,69 @@ Procedure ReportPortal_GetProject(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "GetProject");
+
+EndProcedure
+
+Procedure ReportPortal_GetProjects(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetProjects", Options);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetProjects");
+
+EndProcedure
+
+Procedure ReportPortal_AddUsersToProject(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ProjectID = FunctionParameters["RPortal_TestProject"];
+
+    UserList = New Map;
+    UserList.Insert("default", "MEMBER");
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("token", Token);
+    Options.Insert("id", ProjectID);
+    Options.Insert("users", UserList);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "AddUsersToProject", Options);
+
+    // END
+
+    Process(Result, "ReportPortal", "AddUsersToProject");
+
+EndProcedure
+
+Procedure ReportPortal_ExcludeUsersFromProject(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ProjectID = FunctionParameters["RPortal_TestProject"];
+
+    ArrayOfUsers = New Array;
+    ArrayOfUsers.Add("default");
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("token", Token);
+    Options.Insert("id", ProjectID);
+    Options.Insert("users", ArrayOfUsers);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "ExcludeUsersFromProject", Options);
+
+    // END
+
+    Process(Result, "ReportPortal", "ExcludeUsersFromProject");
 
 EndProcedure
 

@@ -6371,6 +6371,21 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "ПолучитьПроекты",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ДобавитьПользователейВПроект",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ИсключитьПользователейИзПроекта",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "ПолучитьЗапуск",
 		"variant": ""
 	},

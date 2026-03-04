@@ -13598,6 +13598,31 @@ Function Check_ReportPortal_GetProject(Val Result, Val Option)
 
 EndFunction
 
+Function Check_ReportPortal_GetProjects(Val Result, Val Option)
+
+    ExpectsThat(Result["content"]).ИмеетТип("Array");
+    ExpectsThat(Result["page"]).ИмеетТип("Map");
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_AddUsersToProject(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ReportPortal_ExcludeUsersFromProject(Val Result, Val Option)
+
+    ExpectsThat(StrFind(Result["message"], "successfully") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_ReportPortal_GetLaunch(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["id"]).Заполнено();
