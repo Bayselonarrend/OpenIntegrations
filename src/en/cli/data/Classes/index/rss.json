@@ -1,0 +1,82 @@
+{
+	"module": "OPI_RSS",
+	"library": "rss",
+	"self_depend": false,
+	"dependencies": null,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"CreateFeedRSS",
+				"GetFeedItemStructureRSS"
+			]
+		}
+	],
+	"methods": [
+		{
+			"name": "CreateFeedRSS",
+			"id": "CREATEFEEDRSS",
+			"description": "Creates RSS feed text",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Channel title",
+					"default": null,
+					"short": "-n"
+				},
+				{
+					"name": "--descr",
+					"types": "String",
+					"description": "Channel description",
+					"default": null,
+					"short": "-d"
+				},
+				{
+					"name": "--link",
+					"types": "String",
+					"description": "Channel link",
+					"default": null,
+					"short": "-l"
+				},
+				{
+					"name": "--items",
+					"types": "Array of Structure",
+					"description": "Feed items. See GetFeedItemStructure",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--date",
+					"types": "Date, Undefined",
+					"description": "Update date. Current if not filled",
+					"default": "Empty value",
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetFeedItemStructureRSS",
+			"id": "GETFEEDITEMSTRUCTURERSS",
+			"description": "Gets the structure of parameters for an RSS feed item",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": "false",
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns fields as map",
+					"default": "false",
+					"short": "-m"
+				}
+			],
+			"region": "Common methods"
+		}
+	]
+}
