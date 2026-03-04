@@ -23299,14 +23299,14 @@ EndProcedure
 
 Procedure ReportPortal_AddUsersToProject(FunctionParameters)
 
-    URL       = FunctionParameters["RPortal_URL"];
-    Token     = FunctionParameters["RPortal_TempToken"];
-    ProjectID = FunctionParameters["RPortal_TestProject"];
+    URL         = FunctionParameters["RPortal_URL"];
+    Token       = FunctionParameters["RPortal_TempToken"];
+    ProjectName = "TestProject";
 
     UserList = New Map;
     UserList.Insert("default", "MEMBER");
 
-    Result = OPI_ReportPortal.AddUsersToProject(URL, Token, ProjectID, UserList);
+    Result = OPI_ReportPortal.AddUsersToProject(URL, Token, ProjectName, UserList);
 
     // END
 
@@ -23316,14 +23316,14 @@ EndProcedure
 
 Procedure ReportPortal_ExcludeUsersFromProject(FunctionParameters)
 
-    URL       = FunctionParameters["RPortal_URL"];
-    Token     = FunctionParameters["RPortal_TempToken"];
-    ProjectID = FunctionParameters["RPortal_TestProject"];
+    URL         = FunctionParameters["RPortal_URL"];
+    Token       = FunctionParameters["RPortal_TempToken"];
+    ProjectName = "TestProject";
 
     ArrayOfUsers = New Array;
     ArrayOfUsers.Add("default");
 
-    Result = OPI_ReportPortal.ExcludeUsersFromProject(URL, Token, ProjectID, ArrayOfUsers);
+    Result = OPI_ReportPortal.ExcludeUsersFromProject(URL, Token, ProjectName, ArrayOfUsers);
 
     // END
 

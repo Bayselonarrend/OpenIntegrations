@@ -465,7 +465,7 @@
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 Функция ПолучитьПроекты(Знач URL, Знач Токен, Знач Страница = 1) Экспорт
 
-    ДополнитьURL(URL, "api/project/list");
+    ДополнитьURL(URL, "api/v1/project/list");
 
     Заголовки = ПолучитьЗаголовокАвторизации(Токен);
 
@@ -485,16 +485,16 @@
 // Параметры:
 //  URL                 - Строка                        - URL сервера ReportPortal                  - url
 //  Токен               - Строка                        - Токен доступа                             - token
-//  IDПроекта           - Число                         - ID проекта                                - id
+//  ИмяПроекта          - Строка                        - Имя проекта                               - proj
 //  СписокПользователей - Соответствие Из КлючИЗначение - Пользователи: Ключ > имя, Значение > роль - users
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
-Функция ДобавитьПользователейВПроект(Знач URL, Знач Токен, Знач IDПроекта, Знач СписокПользователей) Экспорт
+Функция ДобавитьПользователейВПроект(Знач URL, Знач Токен, Знач ИмяПроекта, Знач СписокПользователей) Экспорт
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПроекта);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяПроекта);
 
-    ДополнитьURL(URL, СтрШаблон("api/v1/project/%1/assign", IDПроекта));
+    ДополнитьURL(URL, СтрШаблон("api/v1/project/%1/assign", ИмяПроекта));
 
     СтруктураПолей = Новый Структура;
     OPI_Инструменты.ДобавитьПоле("userNames", СписокПользователей, "КлючИЗначение", СтруктураПолей);
@@ -512,16 +512,16 @@
 // Параметры:
 //  URL                 - Строка           - URL сервера ReportPortal  - url
 //  Токен               - Строка           - Токен доступа             - token
-//  IDПроекта           - Число            - ID проекта                - id
+//  ИмяПроекта          - Строка           - Имя проекта               - proj
 //  МассивПользователей - Массив Из Строка - Массив имен пользователей - users
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
-Функция ИсключитьПользователейИзПроекта(Знач URL, Знач Токен, Знач IDПроекта, Знач МассивПользователей) Экспорт
+Функция ИсключитьПользователейИзПроекта(Знач URL, Знач Токен, Знач ИмяПроекта, Знач МассивПользователей) Экспорт
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПроекта);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяПроекта);
 
-    ДополнитьURL(URL, СтрШаблон("api/v1/project/%1/unassign", IDПроекта));
+    ДополнитьURL(URL, СтрШаблон("api/v1/project/%1/unassign", ИмяПроекта));
 
     СтруктураПолей = Новый Структура;
     OPI_Инструменты.ДобавитьПоле("userNames", МассивПользователей, "Массив", СтруктураПолей);
@@ -1291,12 +1291,12 @@ Function GetProjects(Val URL, Val Token, Val Page = 1) Export
     Return ПолучитьПроекты(URL, Token, Page);
 EndFunction
 
-Function AddUsersToProject(Val URL, Val Token, Val ProjectID, Val UserList) Export
-    Return ДобавитьПользователейВПроект(URL, Token, ProjectID, UserList);
+Function AddUsersToProject(Val URL, Val Token, Val ProjectName, Val UserList) Export
+    Return ДобавитьПользователейВПроект(URL, Token, ProjectName, UserList);
 EndFunction
 
-Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectID, Val ArrayOfUsers) Export
-    Return ИсключитьПользователейИзПроекта(URL, Token, ProjectID, ArrayOfUsers);
+Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectName, Val ArrayOfUsers) Export
+    Return ИсключитьПользователейИзПроекта(URL, Token, ProjectName, ArrayOfUsers);
 EndFunction
 
 Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Export
