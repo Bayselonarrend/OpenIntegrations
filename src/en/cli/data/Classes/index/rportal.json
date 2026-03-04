@@ -29,9 +29,12 @@
 		{
 			"name": "Project management",
 			"methods": [
+				"AddUsersToProject",
 				"CreateProject",
 				"DeleteProject",
-				"GetProject"
+				"ExcludeUsersFromProject",
+				"GetProject",
+				"GetProjects"
 			]
 		},
 		{
@@ -505,6 +508,107 @@
 					"description": "Project name",
 					"default": null,
 					"short": "-n"
+				}
+			],
+			"region": "Project management"
+		},
+		{
+			"name": "GetProjects",
+			"id": "GETPROJECTS",
+			"description": "Gets a list of existing projects",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "List page number",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Project management"
+		},
+		{
+			"name": "AddUsersToProject",
+			"id": "ADDUSERSTOPROJECT",
+			"description": "Adds users to the specified project",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Project ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--users",
+					"types": "Map Of KeyAndValue",
+					"description": "Users: Key > name, Value > role",
+					"default": null,
+					"short": "-s"
+				}
+			],
+			"region": "Project management"
+		},
+		{
+			"name": "ExcludeUsersFromProject",
+			"id": "EXCLUDEUSERSFROMPROJECT",
+			"description": "Excludes users from the specified project",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Project ID",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--users",
+					"types": "Array Of String",
+					"description": "Array of usernames",
+					"default": null,
+					"short": "-s"
 				}
 			],
 			"region": "Project management"
