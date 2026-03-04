@@ -29,7 +29,10 @@
 		{
 			"name": "Управление проектами",
 			"methods": [
+				"ДобавитьПользователейВПроект",
+				"ИсключитьПользователейИзПроекта",
 				"ПолучитьПроект",
+				"ПолучитьПроекты",
 				"СоздатьПроект",
 				"УдалитьПроект"
 			]
@@ -505,6 +508,107 @@
 					"description": "Имя проекта",
 					"default": null,
 					"short": "-n"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
+			"name": "ПолучитьПроекты",
+			"id": "ПОЛУЧИТЬПРОЕКТЫ",
+			"description": "Получает список существующих проектов",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "Число",
+					"description": "Номер страницы списка",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
+			"name": "ДобавитьПользователейВПроект",
+			"id": "ДОБАВИТЬПОЛЬЗОВАТЕЛЕЙВПРОЕКТ",
+			"description": "Добавляет пользователей в указанный проект",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--users",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Пользователи: Ключ > имя, Значение > роль",
+					"default": null,
+					"short": "-s"
+				}
+			],
+			"region": "Управление проектами"
+		},
+		{
+			"name": "ИсключитьПользователейИзПроекта",
+			"id": "ИСКЛЮЧИТЬПОЛЬЗОВАТЕЛЕЙИЗПРОЕКТА",
+			"description": "Исключает пользователей из указанного проекта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера ReportPortal",
+					"default": null,
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен доступа",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Число",
+					"description": "ID проекта",
+					"default": null,
+					"short": "-i"
+				},
+				{
+					"name": "--users",
+					"types": "Массив Из Строка",
+					"description": "Массив имен пользователей",
+					"default": null,
+					"short": "-s"
 				}
 			],
 			"region": "Управление проектами"

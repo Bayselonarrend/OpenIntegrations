@@ -2977,6 +2977,9 @@ Procedure RPortal_ProjectManagement() Export
 
     ReportPortal_CreateProject(TestParameters);
     ReportPortal_GetProject(TestParameters);
+    ReportPortal_GetProjects(TestParameters);
+    ReportPortal_AddUsersToProject(TestParameters);
+    ReportPortal_ExcludeUsersFromProject(TestParameters);
     ReportPortal_DeleteProject(TestParameters);
 
 EndProcedure
@@ -23277,6 +23280,53 @@ Procedure ReportPortal_GetProject(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "GetProject");
+
+EndProcedure
+
+Procedure ReportPortal_GetProjects(FunctionParameters)
+
+    URL   = FunctionParameters["RPortal_URL"];
+    Token = FunctionParameters["RPortal_TempToken"];
+
+    Result = OPI_ReportPortal.GetProjects(URL, Token);
+
+    // END
+
+    Process(Result, "ReportPortal", "GetProjects");
+
+EndProcedure
+
+Procedure ReportPortal_AddUsersToProject(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ProjectID = FunctionParameters["RPortal_TestProject"];
+
+    UserList = New Map;
+    UserList.Insert("default", "MEMBER");
+
+    Result = OPI_ReportPortal.AddUsersToProject(URL, Token, ProjectID, UserList);
+
+    // END
+
+    Process(Result, "ReportPortal", "AddUsersToProject");
+
+EndProcedure
+
+Procedure ReportPortal_ExcludeUsersFromProject(FunctionParameters)
+
+    URL       = FunctionParameters["RPortal_URL"];
+    Token     = FunctionParameters["RPortal_TempToken"];
+    ProjectID = FunctionParameters["RPortal_TestProject"];
+
+    ArrayOfUsers = New Array;
+    ArrayOfUsers.Add("default");
+
+    Result = OPI_ReportPortal.ExcludeUsersFromProject(URL, Token, ProjectID, ArrayOfUsers);
+
+    // END
+
+    Process(Result, "ReportPortal", "ExcludeUsersFromProject");
 
 EndProcedure
 

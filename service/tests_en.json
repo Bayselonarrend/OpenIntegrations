@@ -6371,6 +6371,21 @@
 	},
 	{
 		"lib": "ReportPortal",
+		"name": "GetProjects",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "AddUsersToProject",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
+		"name": "ExcludeUsersFromProject",
+		"variant": ""
+	},
+	{
+		"lib": "ReportPortal",
 		"name": "GetLaunch",
 		"variant": ""
 	},
