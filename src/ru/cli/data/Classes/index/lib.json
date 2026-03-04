@@ -15,6 +15,7 @@
 		"greenmax": "OPI_GreenMax",
 		"grpc": "OPI_GRPC",
 		"gsheets": "OPI_GoogleSheets",
+		"rss": "OPI_RSS",
 		"metrika": "OPI_YandexMetrika",
 		"mongodb": "OPI_MongoDB",
 		"mssql": "OPI_MSSQL",
