@@ -561,11 +561,11 @@
 					"short": "-t"
 				},
 				{
-					"name": "--id",
-					"types": "Number",
-					"description": "Project ID",
+					"name": "--proj",
+					"types": "String",
+					"description": "Project name",
 					"default": null,
-					"short": "-i"
+					"short": "-p"
 				},
 				{
 					"name": "--users",
@@ -597,11 +597,11 @@
 					"short": "-t"
 				},
 				{
-					"name": "--id",
-					"types": "Number",
-					"description": "Project ID",
+					"name": "--proj",
+					"types": "String",
+					"description": "Project name",
 					"default": null,
-					"short": "-i"
+					"short": "-p"
 				},
 				{
 					"name": "--users",

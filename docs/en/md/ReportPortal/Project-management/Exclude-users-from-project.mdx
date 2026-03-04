@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectID, Val ArrayOfUsers) Export`
+`Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectName, Val ArrayOfUsers) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | ReportPortal server URL |
   | Token | --token | String | &#x2714; | Access token |
-  | ProjectID | --id | Number | &#x2714; | Project ID |
+  | ProjectName | --proj | String | &#x2714; | Project name |
   | ArrayOfUsers | --users | Array Of String | &#x2714; | Array of usernames |
 
   
@@ -27,14 +27,14 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = "tests.openintegrations.dev";
-    Token     = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
-    ProjectID = "";
+    URL         = "tests.openintegrations.dev";
+    Token       = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    ProjectName = "TestProject";
 
     ArrayOfUsers = New Array;
     ArrayOfUsers.Add("default");
 
-    Result = OPI_ReportPortal.ExcludeUsersFromProject(URL, Token, ProjectID, ArrayOfUsers);
+    Result = OPI_ReportPortal.ExcludeUsersFromProject(URL, Token, ProjectName, ArrayOfUsers);
 ```
  
 

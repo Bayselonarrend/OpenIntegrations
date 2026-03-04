@@ -561,11 +561,11 @@
 					"short": "-t"
 				},
 				{
-					"name": "--id",
-					"types": "Число",
-					"description": "ID проекта",
+					"name": "--proj",
+					"types": "Строка",
+					"description": "Имя проекта",
 					"default": null,
-					"short": "-i"
+					"short": "-p"
 				},
 				{
 					"name": "--users",
@@ -597,11 +597,11 @@
 					"short": "-t"
 				},
 				{
-					"name": "--id",
-					"types": "Число",
-					"description": "ID проекта",
+					"name": "--proj",
+					"types": "Строка",
+					"description": "Имя проекта",
 					"default": null,
-					"short": "-i"
+					"short": "-p"
 				},
 				{
 					"name": "--users",
