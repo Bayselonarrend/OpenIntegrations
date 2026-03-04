@@ -386,3 +386,4 @@ customname
 hashsum
 Юнит
 testproject
+Фида
