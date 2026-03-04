@@ -12280,7 +12280,7 @@
 "ДобавитьПользователейВПроект": "AddUsersToProject",
 "Структура полей элемента фида": "Feed item fields structure",
 "Добавить пользователей в проект": "Add users to project",
-"ИсключитьПользователейИзПроекта": "Exclude users from project",
+"ИсключитьПользователейИзПроекта": "ExcludeUsersFromProject",
 "ПолучитьСтруктуруЭлементаФидаRSS": "GetFeedItemStructureRSS",
 "уникальный идентификатор элемента": "unique identifier of the item",
 "Исключить пользователей из проекта": "Exclude users from project",
