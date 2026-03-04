@@ -465,7 +465,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
 Function GetProjects(Val URL, Val Token, Val Page = 1) Export
 
-    CompleteURL(URL, "api/project/list");
+    CompleteURL(URL, "api/v1/project/list");
 
     Headers = GetAuthorizationHeader(Token);
 
@@ -483,18 +483,18 @@ EndFunction
 // Adds users to the specified project
 //
 // Parameters:
-// URL       - String             - ReportPortal server URL         - url
-// Token     - String             - Access token                    - token
-// ProjectID - Number             - Project ID                      - id
-// UserList  - Map Of KeyAndValue - Users: Key > name, Value > role - users
+// URL         - String             - ReportPortal server URL         - url
+// Token       - String             - Access token                    - token
+// ProjectName - String             - Project name                    - proj
+// UserList    - Map Of KeyAndValue - Users: Key > name, Value > role - users
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function AddUsersToProject(Val URL, Val Token, Val ProjectID, Val UserList) Export
+Function AddUsersToProject(Val URL, Val Token, Val ProjectName, Val UserList) Export
 
-    OPI_TypeConversion.GetLine(ProjectID);
+    OPI_TypeConversion.GetLine(ProjectName);
 
-    CompleteURL(URL, StrTemplate("api/v1/project/%1/assign", ProjectID));
+    CompleteURL(URL, StrTemplate("api/v1/project/%1/assign", ProjectName));
 
     FieldsStructure = New Structure;
     OPI_Tools.AddField("userNames", UserList, "KeyAndValue", FieldsStructure);
@@ -512,16 +512,16 @@ EndFunction
 // Parameters:
 // URL          - String          - ReportPortal server URL - url
 // Token        - String          - Access token            - token
-// ProjectID    - Number          - Project ID              - id
+// ProjectName  - String          - Project name            - proj
 // ArrayOfUsers - Array Of String - Array of usernames      - users
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
-Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectID, Val ArrayOfUsers) Export
+Function ExcludeUsersFromProject(Val URL, Val Token, Val ProjectName, Val ArrayOfUsers) Export
 
-    OPI_TypeConversion.GetLine(ProjectID);
+    OPI_TypeConversion.GetLine(ProjectName);
 
-    CompleteURL(URL, StrTemplate("api/v1/project/%1/unassign", ProjectID));
+    CompleteURL(URL, StrTemplate("api/v1/project/%1/unassign", ProjectName));
 
     FieldsStructure = New Structure;
     OPI_Tools.AddField("userNames", ArrayOfUsers, "Array", FieldsStructure);
@@ -1291,12 +1291,12 @@ Function ПолучитьПроекты(Val URL, Val Токен, Val Стран�
     Return GetProjects(URL, Токен, Страница);
 EndFunction
 
-Function ДобавитьПользователейВПроект(Val URL, Val Токен, Val IDПроекта, Val СписокПользователей) Export
-    Return AddUsersToProject(URL, Токен, IDПроекта, СписокПользователей);
+Function ДобавитьПользователейВПроект(Val URL, Val Токен, Val ИмяПроекта, Val СписокПользователей) Export
+    Return AddUsersToProject(URL, Токен, ИмяПроекта, СписокПользователей);
 EndFunction
 
-Function ИсключитьПользователейИзПроекта(Val URL, Val Токен, Val IDПроекта, Val МассивПользователей) Export
-    Return ExcludeUsersFromProject(URL, Токен, IDПроекта, МассивПользователей);
+Function ИсключитьПользователейИзПроекта(Val URL, Val Токен, Val ИмяПроекта, Val МассивПользователей) Export
+    Return ExcludeUsersFromProject(URL, Токен, ИмяПроекта, МассивПользователей);
 EndFunction
 
 Function СоздатьЗапуск(Val URL, Val Токен, Val Проект, Val СтруктураЗапуска) Export
