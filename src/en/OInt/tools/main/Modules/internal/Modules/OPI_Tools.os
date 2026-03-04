@@ -953,27 +953,27 @@ Function DateRFC822(Date) Export
     DaysOfWeek.Insert(6, "Sat");
     DaysOfWeek.Insert(7, "Sun");
 
-    Mounths = New Map;
-    Mounths.Insert(1 , "Jan");
-    Mounths.Insert(2 , "Feb");
-    Mounths.Insert(3 , "Mar");
-    Mounths.Insert(4 , "Apr");
-    Mounths.Insert(5 , "May");
-    Mounths.Insert(6 , "Jun");
-    Mounths.Insert(7 , "Jul");
-    Mounths.Insert(8 , "Aug");
-    Mounths.Insert(9 , "Sep");
-    Mounths.Insert(10, "Oct");
-    Mounths.Insert(11, "Nov");
-    Mounths.Insert(12, "Dec");
+    Months = New Map;
+    Months.Insert(1 , "Jan");
+    Months.Insert(2 , "Feb");
+    Months.Insert(3 , "Mar");
+    Months.Insert(4 , "Apr");
+    Months.Insert(5 , "May");
+    Months.Insert(6 , "Jun");
+    Months.Insert(7 , "Jul");
+    Months.Insert(8 , "Aug");
+    Months.Insert(9 , "Sep");
+    Months.Insert(10, "Oct");
+    Months.Insert(11, "Nov");
+    Months.Insert(12, "Dec");
 
     DayOfWeek = DaysOfWeek.Get(DayOfWeek(Date));
     Day = Format(Day(Date), "ND=10; NLZ=");
-    Mounth    = Mounths.Get(Mounth(Date));
+    Month     = Months.Get(Month(Date));
     Year = Format(Year(Date), "NG=0");
     Time = Format(Date, "DF='HH:mm:ss'");
 
-    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", DayOfWeek, Day, Mounth, Year, Time);
+    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", DayOfWeek, Day, Month, Year, Time);
 
     Return Result;
 
