@@ -65,7 +65,9 @@ Function CreateFeedRSS(Val ChannelTitle
     , Val UpdateDate = Undefined) Export
 
     //@skip-check use-non-recommended-method
-    UpdateDate = ?(UpdateDate = Undefined, CurrentDate(), UpdateDate);
+    UpdateDate = ?(UpdateDate = Undefined
+        , OPI_Tools.GetCurrentDate()
+        , UpdateDate);
 
     OPI_TypeConversion.GetLine(ChannelTitle);
     OPI_TypeConversion.GetLine(ChannelDescription);

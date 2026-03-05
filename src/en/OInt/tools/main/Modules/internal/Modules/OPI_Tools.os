@@ -915,7 +915,15 @@ Function NumberToString(Val Value) Export
 EndFunction
 
 Function GetCurrentDate() Export
-    Return CurrentDate();
+
+    If IsOneScript() Then
+        CurrentDate = CurrentDate();
+    Else
+        CurrentDate = Undefined;
+    EndIf;
+
+    Return CurrentDate;
+
 EndFunction
 
 Function UNIXTime(Val Date) Export

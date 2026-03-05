@@ -52,6 +52,8 @@
 // BSLLS:MethodSize-off
 // BSLLS:NestedConstructorsInStructureDeclaration-off
 // BSLLS:NumberOfValuesInStructureConstructor-off
+// BSLLS:UsingHardcodeSecretInformation-off
+// BSLLS:SpaceAtStartComment-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -28392,7 +28394,6 @@
     Результат = OPI_ClickHouse.ПолучитьСтруктуруВнешнейТаблицы(ИмяТаблицы, СтруктураКолонок);
 
     Обработать(Результат, "ClickHouse", "ПолучитьСтруктуруВнешнейТаблицы", "Минимальная"); // SKIP
-
 
     // С данными TSV
 

@@ -1234,7 +1234,6 @@ Function AddHeader(Val Name, Val Value, Val IgnoreEmpty = False) Export
         OPI_TypeConversion.GetLine(Value);
         OPI_TypeConversion.GetBoolean(IgnoreEmpty);
 
-
         AddLog("AddHeader: header setting");
 
         RequestHeaders.Insert(Name, Value);
