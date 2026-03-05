@@ -1,0 +1,10 @@
+﻿{
+ "name": "<launch name>",
+ "startTime": "<launch start time>",
+ "description": "<launch description>",
+ "uuid": "<UUID of the launch. Will be generated automatically if not filled>",
+ "attributes": "<launch attributes in the form key1:value1, key2:value2>",
+ "mode": "<mode: default or debug>",
+ "rerun": "<rerun flag>",
+ "rerunOf": "<UUID of an existing launch if rerun = True>"
+}

@@ -1,0 +1,4 @@
+oint rportal GetLaunchCompletionStructure \
+  --end "2026-01-01T20:00:00" \
+  --status "passed" \
+  --descr "Updated launch description"

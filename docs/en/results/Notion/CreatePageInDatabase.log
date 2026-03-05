@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "30d82aa7-fc4e-8124-a88d-c2dd10e27e56",
- "created_time": "2026-02-20T10:21:00Z",
- "last_edited_time": "2026-02-20T10:21:00Z",
+ "id": "31a82aa7-fc4e-8135-bab6-e4906db16919",
+ "created_time": "2026-03-05T13:40:00Z",
+ "last_edited_time": "2026-03-05T13:40:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "30d82aa7-fc4e-81e5-951f-f45ad263b160"
+  "database_id": "31a82aa7-fc4e-81fb-b888-d4dbe0886c03"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
   "Description": {
-   "id": "CS%7C%3F",
+   "id": "%3C%7CU%7C",
    "type": "rich_text",
    "rich_text": [
     {
@@ -44,22 +44,8 @@
     }
    ]
   },
-  "Status": {
-   "id": "Hg%5Es",
-   "type": "select",
-   "select": {
-    "id": "cbd666a3-3e6a-488f-94f7-e189cf11869f",
-    "name": "New",
-    "color": "green"
-   }
-  },
-  "Phone": {
-   "id": "ITFz",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "Image": {
-   "id": "QWfs",
+   "id": "%3FeBj",
    "type": "files",
    "files": [
     {
@@ -71,32 +57,41 @@
     }
    ]
   },
-  "Number": {
-   "id": "TKfe",
-   "type": "number",
-   "number": 1
-  },
-  "Active": {
-   "id": "q%60C%3E",
-   "type": "checkbox",
-   "checkbox": true
+  "User": {
+   "id": "C%5BQr",
+   "type": "people",
+   "people": []
   },
   "CreationDate": {
-   "id": "umU_",
+   "id": "UZ%7Ds",
    "type": "date",
    "date": {
-    "start": "2026-02-20T04:21:00+03:00",
+    "start": "2026-03-05T01:40:00+00:00",
     "end": null,
     "time_zone": null
    }
   },
-  "User": {
-   "id": "wvH%5D",
-   "type": "people",
-   "people": []
+  "Status": {
+   "id": "Ucbi",
+   "type": "select",
+   "select": {
+    "id": "143431f9-eae4-4160-a35c-c721de108e9e",
+    "name": "New",
+    "color": "green"
+   }
+  },
+  "Active": {
+   "id": "r%3Bub",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Phone": {
+   "id": "uhCj",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Email": {
-   "id": "%7Dzue",
+   "id": "wv%5E_",
    "type": "rich_text",
    "rich_text": [
     {
@@ -117,6 +112,11 @@
      "href": null
     }
    ]
+  },
+  "Number": {
+   "id": "xCot",
+   "type": "number",
+   "number": 1
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-30d82aa7fc4e8124a88dc2dd10e27e56",
+ "url": "https://www.notion.so/LLC-Vector-31a82aa7fc4e8135bab6e4906db16919",
  "public_url": null,
- "request_id": "286757e3-124a-48a5-aef6-cf8c0a59bf95"
+ "request_id": "017e8ab4-1fb2-401f-a8d9-8717a2440f42"
 }

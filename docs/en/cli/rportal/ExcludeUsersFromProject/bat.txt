@@ -1,0 +1,5 @@
+oint rportal ExcludeUsersFromProject ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --proj "TestProject" ^
+  --users "['default']"

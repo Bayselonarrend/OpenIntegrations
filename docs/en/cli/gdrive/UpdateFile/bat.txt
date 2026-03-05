@@ -1,5 +1,5 @@
 oint gdrive UpdateFile ^
   --token "***" ^
-  --object "1t-0FS1Gboi69-71zYiWvPzmzt1PV1HUg" ^
+  --object "1Q6fkvjyuBtw_qSnD6suhMNGZklx2tefp" ^
   --file "https://hut.openintegrations.dev/test_data/picture2.jpg" ^
   --title "UpdatedFile.jpg"

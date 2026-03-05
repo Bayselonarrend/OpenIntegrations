@@ -1,0 +1,5 @@
+oint rportal GetLaunchItems \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --proj "Test" \
+  --id 400

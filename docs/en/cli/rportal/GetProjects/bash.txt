@@ -1,0 +1,3 @@
+oint rportal GetProjects \
+  --url "tests.openintegrations.dev" \
+  --token "***"

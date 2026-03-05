@@ -1,0 +1,8 @@
+# JSON data can also be passed as a path to a .json file
+
+oint rportal UpdateItem \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --proj "Test" \
+  --id 445313 \
+  --params "{'description':'New description'}"

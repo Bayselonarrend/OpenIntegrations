@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint rportal WriteLog ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --proj "Test" ^
+  --params "{'launchUuid':'3fb2096a-39aa-404c-9480-164fa183ef03','itemUuid':'3b71ff99-17a4-415c-859a-460851c0821d','time':'1767258010','message':'Some log 1','level':'info'}"

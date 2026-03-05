@@ -1,0 +1,2 @@
+oint rportal GetLaunchStructure \
+  --empty true

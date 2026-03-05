@@ -1,0 +1,3 @@
+oint rportal GetCurrentUser \
+  --url "tests.openintegrations.dev" \
+  --token "***"

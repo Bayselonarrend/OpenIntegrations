@@ -1,0 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
+oint rportal CreateUser \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --params "{'active':true,'login':'test','password':'***','fullName':'Test User','email':'test@example.com','accountRole':'USER','projectRole':'MEMBER','defaultProject':'test'}"

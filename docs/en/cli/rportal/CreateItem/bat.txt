@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint rportal CreateItem ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --proj "Test" ^
+  --params "{'name':'Test','startTime':'01/01/2026 10:00:00','type':'test','description':'Test launch','launchUuid':'3fb2096a-39aa-404c-9480-164fa183ef03'}"
