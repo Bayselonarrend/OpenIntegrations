@@ -40,6 +40,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal УдалитьЛог \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --id 406483
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal УдалитьЛог ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --id 406483
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "message": "Log with ID = '406483' successfully deleted."
+}
+```

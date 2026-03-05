@@ -36,6 +36,33 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal ПолучитьСтруктуруЗавершенияЗапуска \
+              --end "2026-01-01T20:00:00" \
+              --status "passed" \
+              --descr "Updated launch description"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal ПолучитьСтруктуруЗавершенияЗапуска ^
+              --end "2026-01-01T20:00:00" ^
+              --status "passed" ^
+              --descr "Updated launch description"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "endTime": "2026-01-01T10:00:00",
+ "status": "passed",
+ "description": "Some test",
+ "attributes": "key1:value1, key2:value2"
+}
+```
