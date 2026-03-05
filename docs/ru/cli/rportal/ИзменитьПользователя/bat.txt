@@ -1,0 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint rportal ИзменитьПользователя ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --login "test" ^
+  --params "{'fullName':'Updated Test User','email':'updated@example.com'}"

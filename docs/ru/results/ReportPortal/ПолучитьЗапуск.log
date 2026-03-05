@@ -1,0 +1,22 @@
+﻿{
+ "owner": "superadmin",
+ "description": "Test launch",
+ "id": 397,
+ "uuid": "a44ba553-69e4-454e-ace4-fc307f7b1965",
+ "name": "Test",
+ "number": 49,
+ "startTime": "2026-01-01T10:00:00Z",
+ "lastModified": "2026-03-05T09:10:43.146156Z",
+ "status": "IN_PROGRESS",
+ "statistics": {
+  "executions": {},
+  "defects": {}
+ },
+ "attributes": [],
+ "mode": "DEFAULT",
+ "analysing": [],
+ "approximateDuration": 36000,
+ "hasRetries": false,
+ "rerun": false,
+ "retentionPolicy": "REGULAR"
+}

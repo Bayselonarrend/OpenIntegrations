@@ -1,0 +1,12 @@
+﻿{
+ "test": {
+  "projectId": null,
+  "projectRole": "MEMBER",
+  "entryType": "INTERNAL"
+ },
+ "test_personal": {
+  "projectId": null,
+  "projectRole": "PROJECT_MANAGER",
+  "entryType": "PERSONAL"
+ }
+}

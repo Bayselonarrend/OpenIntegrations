@@ -1,0 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint rportal ЗавершитьЭлемент \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --proj "Test" \
+  --uuid "e067838a-c814-4a81-931d-d83ece4cd0f2" \
+  --params "{'endTime':'01/01/2026 20:00:00','status':'passed'}"

@@ -1,0 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint rportal ДобавитьПользователейВПроект ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --proj "TestProject" ^
+  --users "{'default':'MEMBER'}"

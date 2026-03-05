@@ -1,0 +1,4 @@
+oint rportal СоздатьПроект \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --name "testproject"

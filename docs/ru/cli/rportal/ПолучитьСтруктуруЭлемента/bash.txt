@@ -1,0 +1,2 @@
+oint rportal ПолучитьСтруктуруЭлемента \
+  --empty true

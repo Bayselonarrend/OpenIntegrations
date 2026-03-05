@@ -1,0 +1,4 @@
+oint rportal ПолучитьПроектыПользователя \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --login "test"
