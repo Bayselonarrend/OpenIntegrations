@@ -1,0 +1,4 @@
+oint rportal УдалитьПользователя ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --id 15
