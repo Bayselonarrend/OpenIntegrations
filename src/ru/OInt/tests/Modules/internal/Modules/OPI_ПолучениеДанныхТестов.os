@@ -45,6 +45,7 @@
 // BSLLS:CyclomaticComplexity-off
 // BSLLS:LineLength-off
 // BSLLS:NestedStatements-off
+// BSLLS:IfElseDuplicatedCodeBlock-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region

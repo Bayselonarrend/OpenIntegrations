@@ -52,6 +52,8 @@
 // BSLLS:MethodSize-off
 // BSLLS:NestedConstructorsInStructureDeclaration-off
 // BSLLS:NumberOfValuesInStructureConstructor-off
+// BSLLS:UsingHardcodeSecretInformation-off
+// BSLLS:SpaceAtStartComment-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -37619,7 +37621,6 @@ Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
 
     Process(Result, "ClickHouse", "GetExternalTableStructure", "Minimal"); // SKIP
-
 
     // With TSV data
 

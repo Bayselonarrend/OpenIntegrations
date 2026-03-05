@@ -562,6 +562,8 @@ EndProcedure
 
 #Region HttpClient
 
+// BSLLS:CommentedCode-off
+
 Function GetHttpClient()
 
     If IsOneScript() Then
@@ -615,6 +617,8 @@ Function GetHttpClientPath() Export
     Return Path;
 
 EndFunction
+
+// BSLLS:CommentedCode-on
 
 Function IsOneScript()
 

@@ -309,16 +309,16 @@
     Соединение = OPI_GRPC.ОткрытьСоединение(Параметры, Tls);
 
     Если OPI_GRPC.ЭтоКоннектор(Соединение) Тогда
-        
+
         ПараметрыСтрокой = OPI_Инструменты.JSONСтрокой(НастройкиСоединения);
-        
+
         // BSLLS:UnusedLocalVariable-off
 
         //@skip-check module-unused-local-variable
         Результат = Соединение.StoreSettings(ПараметрыСтрокой);
-        
+
         // BSLLS:UnusedLocalVariable-on
-        
+
     КонецЕсли;
 
     Возврат Соединение;

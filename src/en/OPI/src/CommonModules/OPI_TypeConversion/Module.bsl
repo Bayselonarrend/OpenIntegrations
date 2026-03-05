@@ -562,12 +562,15 @@ EndProcedure
 
 #Region HttpClient
 
+// BSLLS:CommentedCode-off
+
 Function GetHttpClient()
 
     If IsOneScript() Then
 
         Try
             // !OInt OPI_HTTPRequests = Undefined;
+            Return Undefined; // !OPI
         Except
             Return OPI_HTTPRequests;
         EndTry;
@@ -616,6 +619,8 @@ Function GetHttpClientPath() Export
     Return Path;
 
 EndFunction
+
+// BSLLS:CommentedCode-on
 
 Function IsOneScript()
 
