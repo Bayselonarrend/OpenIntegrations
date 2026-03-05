@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-03-05T17:30:41.021998991Z",
+ "created_at": "2026-03-05T22:00:11.359586052Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2007. However, due to technical issues, it has been delayed several times and is still under development as of today. It's estimated that the current version (currently on beta stage) will be released sometime in 2019 or 2020 after being tested and refined over the next few years."
+  "content": "The first version of 1C:Enterprise was released in 1997. The latest major release of 1C:Enterprise is v20.3, which was released in January 2022."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 17239364790,
- "load_duration": 15607517,
- "prompt_eval_count": 181,
- "prompt_eval_duration": 6889112284,
- "eval_count": 86,
- "eval_duration": 10328311810
+ "total_duration": 24393467178,
+ "load_duration": 19904768,
+ "prompt_eval_count": 240,
+ "prompt_eval_duration": 12796104843,
+ "eval_count": 52,
+ "eval_duration": 11563844944
 }
