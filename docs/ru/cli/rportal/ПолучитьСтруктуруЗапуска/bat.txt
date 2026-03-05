@@ -1,0 +1,2 @@
+oint rportal ПолучитьСтруктуруЗапуска ^
+  --empty true

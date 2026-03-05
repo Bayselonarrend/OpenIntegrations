@@ -1,0 +1,62 @@
+﻿{
+ "content": [
+  {
+   "id": 1,
+   "projectName": "superadmin_personal",
+   "usersQuantity": 2,
+   "launchesQuantity": 140,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": "2026-03-05T06:59:27Z",
+   "creationDate": "2025-08-12T20:02:56.704687Z",
+   "entryType": "PERSONAL",
+   "organization": null
+  },
+  {
+   "id": 3,
+   "projectName": "test",
+   "usersQuantity": 1,
+   "launchesQuantity": 40,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": "2026-01-01T10:00:00Z",
+   "creationDate": "2026-02-21T08:39:11.640205Z",
+   "entryType": "INTERNAL",
+   "organization": null
+  },
+  {
+   "id": 20,
+   "projectName": "default_personal",
+   "usersQuantity": 1,
+   "launchesQuantity": 0,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": null,
+   "creationDate": "2026-03-03T10:19:49.364291Z",
+   "entryType": "PERSONAL",
+   "organization": null
+  },
+  {
+   "id": 27,
+   "projectName": "testproject",
+   "usersQuantity": 1,
+   "launchesQuantity": 0,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": null,
+   "creationDate": "2026-03-05T09:11:53.018052Z",
+   "entryType": "INTERNAL",
+   "organization": null
+  }
+ ],
+ "page": {
+  "number": 1,
+  "size": 30,
+  "totalElements": 4,
+  "totalPages": 1
+ }
+}

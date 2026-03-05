@@ -29,6 +29,35 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal ПолучитьСтруктуруЭлемента \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal ПолучитьСтруктуруЭлемента ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "name": "<название элемента>",
+ "startTime": "<время начала>",
+ "type": "<тип элемента: suite, story, test, scenario, step, before_class, before_groups, before_method, before_suite, before_test, after_class, after_groups, after_method, after_suite, after_test>",
+ "launchUuid": "<UUID запуска>",
+ "description": "<описание элемента>",
+ "attributes": "<атрибуты элемента в виде ключ1:значение1, ключ2:значение2>",
+ "uuid": "<UUID элемента. Будет сгенерирован автоматически, если не заполнено>",
+ "codeRef": "<физическое расположение тестов>",
+ "parameters": "<параметры для параметризованных тестов>",
+ "retry": "<является перезапуском>"
+}
+```

@@ -1,0 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint rportal ИзменитьЭлемент \
+  --url "tests.openintegrations.dev" \
+  --token "***" \
+  --proj "Test" \
+  --id 443155 \
+  --params "{'description':'New description'}"
