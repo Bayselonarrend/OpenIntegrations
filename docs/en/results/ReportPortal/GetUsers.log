@@ -1,0 +1,90 @@
+﻿{
+ "content": [
+  {
+   "uuid": "0d6825d9-482f-4808-b9ff-938cca5f59ee",
+   "active": true,
+   "id": 1,
+   "userId": "superadmin",
+   "email": "bayselonarrend@gmail.com",
+   "photoId": "dXNlcnMvc3VwZXJhZG1pbg",
+   "fullName": "bayselonarrend",
+   "accountType": "INTERNAL",
+   "userRole": "ADMINISTRATOR",
+   "photoLoaded": true,
+   "metadata": {
+    "last_login": 1772721823745,
+    "attachmentContentType": "image/jpeg"
+   },
+   "assignedProjects": {
+    "superadmin_personal": {
+     "projectId": 1,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "PERSONAL"
+    },
+    "test": {
+     "projectId": 3,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "INTERNAL"
+    }
+   }
+  },
+  {
+   "uuid": "327cfc9f-8b72-4594-8a4d-480a847927b2",
+   "active": true,
+   "id": 11,
+   "userId": "default",
+   "email": "default@default.com",
+   "fullName": "default",
+   "accountType": "INTERNAL",
+   "userRole": "USER",
+   "photoLoaded": true,
+   "metadata": {
+    "last_login": 1772533189154
+   },
+   "assignedProjects": {
+    "default_personal": {
+     "projectId": 20,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "PERSONAL"
+    },
+    "superadmin_personal": {
+     "projectId": 1,
+     "projectRole": "MEMBER",
+     "entryType": "PERSONAL"
+    }
+   }
+  },
+  {
+   "uuid": "4447a735-9186-4331-a0d8-d057d000c307",
+   "active": true,
+   "id": 16,
+   "userId": "test",
+   "email": "test@example.com",
+   "fullName": "Test User",
+   "accountType": "INTERNAL",
+   "userRole": "USER",
+   "photoLoaded": true,
+   "metadata": {
+    "last_login": 1772721950125
+   },
+   "assignedProjects": {
+    "test_personal": {
+     "projectId": 30,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "PERSONAL"
+    },
+    "test": {
+     "projectId": 3,
+     "projectRole": "MEMBER",
+     "entryType": "INTERNAL"
+    }
+   }
+  }
+ ],
+ "page": {
+  "number": 1,
+  "size": 30,
+  "totalElements": 3,
+  "totalPages": 1
+ }
+}

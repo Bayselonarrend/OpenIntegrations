@@ -1,0 +1,10 @@
+﻿{
+ "active": "<user activity status>",
+ "login": "<user login>",
+ "password": "***",
+ "fullName": "<full name>",
+ "email": "<email address>",
+ "accountRole": "<account role: USER, ADMINISTRATOR>",
+ "projectRole": "<project role: CUSTOMER, MEMBER, PROJECT_MANAGER>",
+ "defaultProject": "<default project>"
+}

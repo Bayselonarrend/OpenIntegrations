@@ -1,3 +1,3 @@
 oint sqlite ClearTable \
   --table "test" \
-  --db "C:\Users\bayse\AppData\Local\Temp\lezmyh51.mot.sqlite"
+  --db "/tmp/blvcxqev.1yv.sqlite"

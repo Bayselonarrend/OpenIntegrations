@@ -1,0 +1,28 @@
+﻿{
+ "id": 445313,
+ "uuid": "797c5bbc-90da-4511-9d97-9855e2e27f72",
+ "name": "Test",
+ "description": "Test launch",
+ "parameters": [],
+ "attributes": [],
+ "type": "TEST",
+ "startTime": "2026-01-01T10:00:00Z",
+ "status": "IN_PROGRESS",
+ "statistics": {
+  "executions": {},
+  "defects": {}
+ },
+ "pathNames": {
+  "launchPathName": {
+   "name": "Test",
+   "number": 51
+  }
+ },
+ "hasChildren": false,
+ "hasStats": true,
+ "launchId": 400,
+ "uniqueId": "auto:5f572a37ee0e97cf32dbc9afec105d08",
+ "testCaseHash": 1517177626,
+ "patternTemplates": [],
+ "path": "445313"
+}

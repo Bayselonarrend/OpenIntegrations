@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint rportal CreateLaunch ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --proj "Test" ^
+  --params "{'name':'Test','startTime':'01/01/2026 10:00:00','description':'Test launch'}"

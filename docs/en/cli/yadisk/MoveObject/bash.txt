@@ -1,5 +1,5 @@
 oint yadisk MoveObject \
   --token "***" \
-  --from "/a9a5f937-c8b6-4506-9bca-57d94c17d2ed.png" \
-  --to "/02e051de-ffce-49f6-817a-da03f753c9ef.png" \
+  --from "/73f2021a-6097-4c5a-9f2c-fcd10a581c03.png" \
+  --to "/d6bf7aaa-8fe6-461a-8197-7d20ff167a0e.png" \
   --rewrite true

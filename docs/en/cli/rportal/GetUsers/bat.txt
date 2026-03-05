@@ -1,0 +1,3 @@
+oint rportal GetUsers ^
+  --url "tests.openintegrations.dev" ^
+  --token "***"
