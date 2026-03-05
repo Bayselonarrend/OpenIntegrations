@@ -2,4 +2,4 @@ oint rportal ПолучитьПостоянныйТокен \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --user 1 \
-  --name "test_key"
+  --name "test_key_2"

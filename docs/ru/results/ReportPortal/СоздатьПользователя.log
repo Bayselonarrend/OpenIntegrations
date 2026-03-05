@@ -1,0 +1,10 @@
+﻿{
+ "id": 15,
+ "uuid": "04e58f03-54ae-442a-8547-802c376d1c6c",
+ "login": "test",
+ "email": "test@example.com",
+ "fullName": "Test User",
+ "accountRole": "USER",
+ "accountType": "INTERNAL",
+ "active": true
+}

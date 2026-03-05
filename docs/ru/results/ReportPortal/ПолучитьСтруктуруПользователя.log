@@ -1,0 +1,10 @@
+﻿{
+ "active": "<признак активности пользователя>",
+ "login": "<логин пользователя>",
+ "password": "***",
+ "fullName": "<полное имя>",
+ "email": "<адрес электронной почты>",
+ "accountRole": "<роль аккаунта: USER, ADMINISTRATOR>",
+ "projectRole": "<роль проекта: CUSTOMER, MEMBER, PROJECT_MANAGER>",
+ "defaultProject": "<проект по умолчанию>"
+}

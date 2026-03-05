@@ -1,0 +1,3 @@
+oint rportal ПолучитьТекущегоПользователя \
+  --url "tests.openintegrations.dev" \
+  --token "***"

@@ -1,0 +1,6 @@
+﻿{
+ "endTime": "2026-01-01T10:00:00",
+ "status": "passed",
+ "description": "Some test",
+ "attributes": "key1:value1, key2:value2"
+}

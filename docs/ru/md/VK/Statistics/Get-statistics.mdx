@@ -43,8 +43,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-02-20T00:00:00" \
-              --dateto "2026-02-20T23:59:59" \
+              --datefrom "2026-03-05T00:00:00" \
+              --dateto "2026-03-05T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-02-20T00:00:00" ^
-              --dateto "2026-02-20T23:59:59" ^
+              --datefrom "2026-03-05T00:00:00" ^
+              --dateto "2026-03-05T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -67,10 +67,10 @@ import TabItem from '@theme/TabItem';
  "response": [
   {
    "activity": {
-    "comments": 5
+    "comments": 1
    },
-   "period_from": 1771545600,
-   "period_to": 1771631999,
+   "period_from": 1772668800,
+   "period_to": 1772755199,
    "reach": {
     "cities": [],
     "countries": [],
@@ -87,11 +87,8 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "activity": {
-    "comments": 10
-   },
-   "period_from": 1771459200,
-   "period_to": 1771545599,
+   "period_from": 1772582400,
+   "period_to": 1772668799,
    "reach": {
     "cities": [],
     "countries": [],
@@ -101,10 +98,17 @@ import TabItem from '@theme/TabItem';
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "IN",
+      "count": 2,
+      "name": "Индия",
+      "value": 80
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 2,
+    "visitors": 2
    }
   }
  ]
