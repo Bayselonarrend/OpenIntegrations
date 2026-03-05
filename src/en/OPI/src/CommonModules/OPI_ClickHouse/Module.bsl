@@ -309,9 +309,16 @@ Function CreateGRPCConnection(Val ConnectionSettings) Export
     Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
 
     If OPI_GRPC.IsConnector(Connection) Then
+
         ParametersString = OPI_Tools.JSONString(ConnectionSettings);
+
+        // BSLLS:UnusedLocalVariable-off
+
         //@skip-check module-unused-local-variable
-        Result           = Connection.StoreSettings(ParametersString);
+        Result = Connection.StoreSettings(ParametersString);
+
+        // BSLLS:UnusedLocalVariable-on
+
     EndIf;
 
     Return Connection;

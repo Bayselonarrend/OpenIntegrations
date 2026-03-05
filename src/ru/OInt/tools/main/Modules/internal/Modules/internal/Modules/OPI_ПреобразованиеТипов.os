@@ -562,6 +562,8 @@
 
 #Область HttpКлиент
 
+// BSLLS:CommentedCode-off
+
 Функция ПолучитьHttpКлиент()
 
     Если ЭтоOneScript() Тогда
@@ -615,6 +617,8 @@
     Возврат Путь;
 
 КонецФункции
+
+// BSLLS:CommentedCode-on
 
 Функция ЭтоOneScript()
 

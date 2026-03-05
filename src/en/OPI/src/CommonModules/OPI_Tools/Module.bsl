@@ -915,7 +915,16 @@ Function NumberToString(Val Value) Export
 EndFunction
 
 Function GetCurrentDate() Export
-    Return CurrentDate();
+
+    If IsOneScript() Then
+        CurrentDate          = CurrentDate();
+    Else
+        // !OInt CurrentDate = Undefined;
+        CurrentDate          = CurrentSessionDate(); // !OPI
+    EndIf;
+
+    Return CurrentDate;
+
 EndFunction
 
 Function UNIXTime(Val Date) Export
