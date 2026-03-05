@@ -1,0 +1,4 @@
+oint rportal ПолучитьПроект ^
+  --url "tests.openintegrations.dev" ^
+  --token "***" ^
+  --name "TestProject"

@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/mv0p4ytj.ftz.bin",
- "result": true
+ "filepath": "/tmp/w3ez2kpy.gvz.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
