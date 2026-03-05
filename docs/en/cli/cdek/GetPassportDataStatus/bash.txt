@@ -1,4 +1,4 @@
 oint cdek GetPassportDataStatus \
   --token "***" \
-  --uuid "8f05be23-88bf-4f36-9947-1989419364d3" \
+  --uuid "46e71260-e9d6-4948-8482-c2ae7e757d94" \
   --testapi "***"

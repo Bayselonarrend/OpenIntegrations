@@ -1,6 +1,6 @@
 oint bitrix24 GetUserBusy ^
   --url "b24-ar17wx.bitrix24.by" ^
   --users 1 ^
-  --from "2026-02-20T13:40:38" ^
-  --to "2026-02-27T13:40:38" ^
+  --from "2026-03-05T14:04:37" ^
+  --to "2026-03-12T14:04:37" ^
   --token "***"

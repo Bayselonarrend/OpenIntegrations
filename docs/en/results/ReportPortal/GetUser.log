@@ -1,0 +1,26 @@
+﻿{
+ "uuid": "4447a735-9186-4331-a0d8-d057d000c307",
+ "active": true,
+ "id": 16,
+ "userId": "test",
+ "email": "test@example.com",
+ "fullName": "Test User",
+ "accountType": "INTERNAL",
+ "userRole": "USER",
+ "photoLoaded": true,
+ "metadata": {
+  "last_login": 1772721950125
+ },
+ "assignedProjects": {
+  "test_personal": {
+   "projectId": 30,
+   "projectRole": "PROJECT_MANAGER",
+   "entryType": "PERSONAL"
+  },
+  "test": {
+   "projectId": 3,
+   "projectRole": "MEMBER",
+   "entryType": "INTERNAL"
+  }
+ }
+}
