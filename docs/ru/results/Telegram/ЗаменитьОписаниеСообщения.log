@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 19898,
+  "message_id": 19916,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,40 +15,40 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1771586159,
-  "edit_date": 1771586183,
+  "date": 1772694048,
+  "edit_date": 1772694093,
   "photo": [
    {
-    "file_id": "AgACAgIAAxkDAAJLrmmG0so_zQABN2Y2qpD-IVqWPSdQXgACuRFrG6VbMUgpis3AMBD6GQEAAwIAA3MAAzoE",
-    "file_unique_id": "AQADuRFrG6VbMUh4",
+    "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADcwADOgQ",
+    "file_unique_id": "AQADnhdrG_cLSUl4",
     "file_size": 1568,
     "width": "***",
     "height": 67
    },
    {
-    "file_id": "AgACAgIAAxkDAAJLrmmG0so_zQABN2Y2qpD-IVqWPSdQXgACuRFrG6VbMUgpis3AMBD6GQEAAwIAA20AAzoE",
-    "file_unique_id": "AQADuRFrG6VbMUhy",
+    "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADbQADOgQ",
+    "file_unique_id": "AQADnhdrG_cLSUly",
     "file_size": 21633,
     "width": "***",
     "height": 240
    },
    {
-    "file_id": "AgACAgIAAxkDAAJLrmmG0so_zQABN2Y2qpD-IVqWPSdQXgACuRFrG6VbMUgpis3AMBD6GQEAAwIAA3gAAzoE",
-    "file_unique_id": "AQADuRFrG6VbMUh9",
+    "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADeAADOgQ",
+    "file_unique_id": "AQADnhdrG_cLSUl9",
     "file_size": 99260,
     "width": "***",
     "height": 600
    },
    {
-    "file_id": "AgACAgIAAxkDAAJLrmmG0so_zQABN2Y2qpD-IVqWPSdQXgACuRFrG6VbMUgpis3AMBD6GQEAAwIAA3kAAzoE",
-    "file_unique_id": "AQADuRFrG6VbMUh-",
+    "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADeQADOgQ",
+    "file_unique_id": "AQADnhdrG_cLSUl-",
     "file_size": 218651,
     "width": "***",
     "height": 960
    },
    {
-    "file_id": "AgACAgIAAxkDAAJLrmmG0so_zQABN2Y2qpD-IVqWPSdQXgACuRFrG6VbMUgpis3AMBD6GQEAAwIAA3cAAzoE",
-    "file_unique_id": "AQADuRFrG6VbMUh8",
+    "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADdwADOgQ",
+    "file_unique_id": "AQADnhdrG_cLSUl8",
     "file_size": 650214,
     "width": "***",
     "height": 1920
