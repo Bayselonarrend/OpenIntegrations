@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": 52578,
+  "ID": 52686,
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 35954,
+  "FILE_ID": 36030,
   "SIZE": "805189",
-  "CREATE_TIME": "2026-03-05T08:25:21+00:00",
-  "UPDATE_TIME": "2026-03-05T08:25:21+00:00",
+  "CREATE_TIME": "2026-03-05T15:48:46+00:00",
+  "UPDATE_TIME": "2026-03-05T15:48:46+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=f74aa969006e9f06006b12e40000000100000799751695b1da196af6ccf9251e480253&token=disk%7CaWQ9NTI1NzgmXz1BRzB4MFBrN1VLM2E4SkVNRmljWm9sTGg1d0kyN2tQQQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5USTFOemdtWHoxQlJ6QjRNRkJyTjFWTE0yRTRTa1ZOUm1saldtOXNUR2cxZDBreU4ydFFRUT09fGY3NGFhOTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OTk3NTE2OTViMWRhMTk2YWY2Y2NmOTI1MWU0ODAyNTMi.SyFp3a5N%2FvDyyWW4RAN9uh2Wy79%2FWPw2%2Blkp4zxito4%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=86b3a969006e9f06006b12e40000000100000752dd43b1062aa7bcaba8ff328be0f98f&token=disk%7CaWQ9NTI2ODYmXz1oVm1SV1hPZnEyMEJlSmp2OXlKcEI5T2ZNSlhtV1JUSQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5USTJPRFltWHoxb1ZtMVNWMWhQWm5FeU1FSmxTbXAyT1hsS2NFSTVUMlpOU2xodFYxSlVTUT09fDg2YjNhOTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NTJkZDQzYjEwNjJhYTdiY2FiYThmZjMyOGJlMGY5OGYi.1KTYaMcvQYVE34XYWur8x7FV32Fk725SuMO%2BPs5VFpo%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1772699121,
-  "finish": 1772699121.52081,
-  "duration": 0.520808935165405,
-  "processing": 0,
-  "date_start": "2026-03-05T08:25:21+00:00",
-  "date_finish": "2026-03-05T08:25:21+00:00",
-  "operating_reset_at": 1772699721,
-  "operating": 0.244790077209473
+  "start": 1772725725,
+  "finish": 1772725726.10169,
+  "duration": 1.10168600082397,
+  "processing": 1,
+  "date_start": "2026-03-05T15:48:45+00:00",
+  "date_finish": "2026-03-05T15:48:46+00:00",
+  "operating_reset_at": 1772726325,
+  "operating": 0.276490926742554
  }
 }

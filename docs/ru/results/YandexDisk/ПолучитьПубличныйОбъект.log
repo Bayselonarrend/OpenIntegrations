@@ -1,24 +1,24 @@
 ﻿{
  "path": "/",
  "type": "file",
- "name": "0855982a-564f-4fc2-8392-d52216595425.png",
- "created": "2026-03-05T08:06:45+00:00",
- "modified": "2026-03-05T08:06:45+00:00",
+ "name": "9578024a-146d-4d5f-80d0-2fdeaac03564.png",
+ "created": "2026-03-05T15:37:08+00:00",
+ "modified": "2026-03-05T15:37:08+00:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "public_key": "***",
- "public_url": "https://yadi.sk/d/QukIsq2WzJMf4w",
+ "public_url": "https://yadi.sk/d/2giqIIbHE_lCrg",
  "media_type": "image",
- "resource_id": "1573541518:1558b3e11fd4924ad330f0dbd43d378b86be306059b289934b08202d7714bacd",
- "revision": 1772698026984353,
+ "resource_id": "1573541518:9a6d1419b9fe11db41f2a83485f48cf80aff49f517fda809274b28ef531bb185",
+ "revision": 1772725048980068,
  "comment_ids": {
-  "public_resource": "1573541518:1558b3e11fd4924ad330f0dbd43d378b86be306059b289934b08202d7714bacd",
-  "private_resource": "1573541518:1558b3e11fd4924ad330f0dbd43d378b86be306059b289934b08202d7714bacd"
+  "public_resource": "1573541518:9a6d1419b9fe11db41f2a83485f48cf80aff49f517fda809274b28ef531bb185",
+  "private_resource": "1573541518:9a6d1419b9fe11db41f2a83485f48cf80aff49f517fda809274b28ef531bb185"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/2db7daea714d4fd1e44f7ea7c7c576f0fbbf9e7809e9c40210760c667e17a4ca/69a971ef/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=0&filename=0855982a-564f-4fc2-8392-d52216595425.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=0&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "file": "https://downloader.disk.yandex.ru/disk/b93e249a7abc8c141e6ea5f03f1633761a0edff8474f911d07efea5f44988ade/69a9db7b/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=0&filename=9578024a-146d-4d5f-80d0-2fdeaac03564.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=0&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78",
  "views_count": 0
 }

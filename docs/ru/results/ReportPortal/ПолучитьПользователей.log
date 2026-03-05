@@ -12,19 +12,19 @@
    "userRole": "ADMINISTRATOR",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1772701829133,
+    "last_login": 1772727458395,
     "attachmentContentType": "image/jpeg"
    },
    "assignedProjects": {
-    "test": {
-     "projectId": 3,
-     "projectRole": "PROJECT_MANAGER",
-     "entryType": "INTERNAL"
-    },
     "superadmin_personal": {
      "projectId": 1,
      "projectRole": "PROJECT_MANAGER",
      "entryType": "PERSONAL"
+    },
+    "test": {
+     "projectId": 3,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "INTERNAL"
     }
    }
   },
@@ -42,22 +42,22 @@
     "last_login": 1772533189154
    },
    "assignedProjects": {
-    "superadmin_personal": {
-     "projectId": 1,
-     "projectRole": "MEMBER",
-     "entryType": "PERSONAL"
-    },
     "default_personal": {
      "projectId": 20,
      "projectRole": "PROJECT_MANAGER",
+     "entryType": "PERSONAL"
+    },
+    "superadmin_personal": {
+     "projectId": 1,
+     "projectRole": "MEMBER",
      "entryType": "PERSONAL"
     }
    }
   },
   {
-   "uuid": "04e58f03-54ae-442a-8547-802c376d1c6c",
+   "uuid": "a4ce5e7c-74c8-4c4f-99e8-c334dcfabeaa",
    "active": true,
-   "id": 15,
+   "id": 17,
    "userId": "test",
    "email": "test@example.com",
    "fullName": "Test User",
@@ -65,11 +65,11 @@
    "userRole": "USER",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1772701929526
+    "last_login": 1772727500689
    },
    "assignedProjects": {
     "test_personal": {
-     "projectId": 28,
+     "projectId": 32,
      "projectRole": "PROJECT_MANAGER",
      "entryType": "PERSONAL"
     },
