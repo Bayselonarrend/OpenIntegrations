@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1772701057,
-  "idMessage": "1772701057495",
+  "timestamp": 1772726771,
+  "idMessage": "1772726769142",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -18,14 +18,13 @@
    "senderPhoneNumber": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/ca74dbf9-5d92-4771-b608-b8553474b114.jpg",
-    "caption": "Описание файла",
-    "fileName": "photo.jpg",
-    "jpegThumbnail": "UklGRh4BAABXRUJQVlA4IBIBAACQCACdASoyACYAP3Gsy2E0rCglqBVZypAuCUAZMQDDgZvlC9W+/2iE8uR8ULVrh0T+1MeFovSyHQZOO1uvfen67eXf7ZyRHgOrHWaerAD+PGvNxn2iPXpwY8kdFCYOlL/208e6LiQhTNR//KahBpU/MacIOarb1rLfsX8nuwgo9CJgIdoeJPG4poah5jq/NMDnFuzKrXe5yA2yRP8vhSaUKJSyyH6LlcqrkLHUhW52GBC0uTNIg9MCEhOpznPO2bfmZa0AejZm3rJp4lAXmFtUSjk4qgTzKKq7uDZ0cJWeYdIa9vbJKQVsPhCsGFDa1rpi7TRw+asx5lrqai4mJ0lrY7bpBnmmKoM4WYMCNl4NtAAA",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Текст сообщения",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
     "forwardingScore": 0,
     "isForwarded": false
    }

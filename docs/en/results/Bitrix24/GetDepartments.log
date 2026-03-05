@@ -1,10 +1,10 @@
 ﻿{
  "result": [
   {
-   "ID": "3406",
+   "ID": "3414",
    "NAME": "Subordinate department",
    "SORT": 500,
-   "PARENT": "3404",
+   "PARENT": "3412",
    "UF_HEAD": "1"
   },
   {
@@ -17,13 +17,13 @@
  ],
  "total": 2,
  "time": {
-  "start": 1772719276,
-  "finish": 1772719276.0293,
-  "duration": 0.0292990207672119,
+  "start": 1772730784,
+  "finish": 1772730784.25648,
+  "duration": 0.256484985351562,
   "processing": 0,
-  "date_start": "2026-03-05T14:01:16+00:00",
-  "date_finish": "2026-03-05T14:01:16+00:00",
-  "operating_reset_at": 1772719876,
+  "date_start": "2026-03-05T17:13:04+00:00",
+  "date_finish": "2026-03-05T17:13:04+00:00",
+  "operating_reset_at": 1772731384,
   "operating": 0
  }
 }
