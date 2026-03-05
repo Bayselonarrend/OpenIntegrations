@@ -3,17 +3,17 @@
   "count": 1,
   "items": [
    {
-    "id": 144,
+    "id": 146,
     "owner_id": -218861756,
     "title": "Измененная подборка",
     "count": 0,
-    "updated_time": 1772694687,
+    "updated_time": 1772723476,
     "is_main": false,
     "is_hidden": false,
     "photo": {
      "album_id": -53,
-     "date": 1772694686,
-     "id": 457262738,
+     "date": 1772723476,
+     "id": 457262776,
      "owner_id": -218861756,
      "sizes": [
       {
