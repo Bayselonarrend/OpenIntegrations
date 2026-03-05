@@ -29,6 +29,33 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal ПолучитьСтруктуруПользователя \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal ПолучитьСтруктуруПользователя ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "active": "<признак активности пользователя>",
+ "login": "<логин пользователя>",
+ "password": "***",
+ "fullName": "<полное имя>",
+ "email": "<адрес электронной почты>",
+ "accountRole": "<роль аккаунта: USER, ADMINISTRATOR>",
+ "projectRole": "<роль проекта: CUSTOMER, MEMBER, PROJECT_MANAGER>",
+ "defaultProject": "<проект по умолчанию>"
+}
+```

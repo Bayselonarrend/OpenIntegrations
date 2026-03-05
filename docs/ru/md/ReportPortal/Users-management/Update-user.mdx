@@ -39,6 +39,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint rportal ИзменитьПользователя \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --login "test" \
+              --params "{'fullName':'Updated Test User','email':'updated@example.com'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint rportal ИзменитьПользователя ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --login "test" ^
+              --params "{'fullName':'Updated Test User','email':'updated@example.com'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "message": "User with login = 'test' successfully updated"
+}
+```
