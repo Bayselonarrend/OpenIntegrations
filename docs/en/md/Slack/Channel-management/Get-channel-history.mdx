@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack GetChannelHistory \
               --token "***" \
-              --channel "C0AG8MWLKGC"
+              --channel "C0AJT38QRDZ"
         ```
     </TabItem>
   
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack GetChannelHistory ^
               --token "***" ^
-              --channel "C0AG8MWLKGC"
+              --channel "C0AJT38QRDZ"
         ```
     </TabItem>
 </Tabs>
@@ -57,12 +57,19 @@ import TabItem from '@theme/TabItem';
  "ok": true,
  "messages": [
   {
+   "subtype": "channel_leave",
+   "user": "U06UABH3APP",
+   "text": "<@U06UABH3APP> has left the channel",
+   "type": "message",
+   "ts": "1772810323.283189"
+  },
+  {
    "subtype": "channel_join",
    "user": "U06UABH3APP",
    "text": "<@U06UABH3APP> has joined the channel",
    "inviter": "***",
    "type": "message",
-   "ts": "1771582994.065519"
+   "ts": "1772810322.676469"
   },
   {
    "subtype": "channel_purpose",
@@ -70,7 +77,7 @@ import TabItem from '@theme/TabItem';
    "purpose": "TestGoal",
    "text": "set the channel description: TestGoal",
    "type": "message",
-   "ts": "1771582990.097659"
+   "ts": "1772810321.564209"
   },
   {
    "subtype": "channel_topic",
@@ -78,14 +85,14 @@ import TabItem from '@theme/TabItem';
    "topic": "TestTopic",
    "text": "set the channel topic: TestTopic",
    "type": "message",
-   "ts": "1771582988.209569"
+   "ts": "1772810320.679359"
   },
   {
    "subtype": "channel_join",
    "user": "U06UG1CAYH2",
    "text": "<@U06UG1CAYH2> has joined the channel",
    "type": "message",
-   "ts": "1771582985.862879"
+   "ts": "1772810319.843659"
   }
  ],
  "has_more": false,

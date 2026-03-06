@@ -45,7 +45,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```bash
             oint cdek GetCourierInvitation \
               --token "***" \
-              --uuid "511c6d72-8d04-42bd-a72c-db768cb85de3" \
+              --uuid "8932ba72-1717-42c3-b709-b67c637a44a1" \
               --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```batch
             oint cdek GetCourierInvitation ^
               --token "***" ^
-              --uuid "511c6d72-8d04-42bd-a72c-db768cb85de3" ^
+              --uuid "8932ba72-1717-42c3-b709-b67c637a44a1" ^
               --testapi "***"
         ```
     </TabItem>
@@ -64,11 +64,10 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "511c6d72-8d04-42bd-a72c-db768cb85de3",
-  "cdek_number": "1106997492",
-  "order_uuid": "18c7ab4a-6918-4213-ad71-81e0edb7ecdc",
-  "intake_date": "2026-02-21",
-  "intake_number": "13311246",
+  "uuid": "4bd78bea-7418-472c-be7e-7d02565ca426",
+  "cdek_number": "1107010123",
+  "order_uuid": "531fb9b2-39ba-42e6-8dd4-d6bd607b3684",
+  "intake_date": "2026-03-07",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -79,11 +78,10 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Company",
-   "contragent_type": "LEGAL_ENTITY",
+   "name": "Ivaniv Ivan",
    "phones": [
     {
-     "number": "79589441654"
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -102,40 +100,17 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
-  "to_location": {
-   "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "longitude": 37.831928,
-   "latitude": 55.644399,
-   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
-   "postal_code": "140091"
-  },
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2026-02-20T13:46:42+03:00"
-   },
-   {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2026-02-20T13:46:42+03:00"
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-20T13:46:42+03:00"
+    "date_time": "2026-03-06T18:30:51+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "ff2b457c-b939-4bee-8229-da380f88b833",
+    "package_id": "f2c9d2a3-5322-478a-a64c-1069e29af4bf",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,10 +120,10 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
  },
  "requests": [
   {
-   "request_uuid": "3a25071d-95c8-45e2-a046-33e83d293b7a",
+   "request_uuid": "92d280b6-b88c-4936-9ebb-8c64563cbbe3",
    "type": "CREATE",
-   "date_time": "2026-02-20T13:46:38+03:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-03-06T18:30:47+03:00",
+   "state": "ACCEPTED"
   }
  ]
 }

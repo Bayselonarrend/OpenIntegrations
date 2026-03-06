@@ -29,6 +29,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetItemCompletionStructure \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetItemCompletionStructure ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "endTime": "<end time>",
+ "launchUuid": "<Launch UUID>",
+ "status": "<status of completion: passed, failed, stopped, skipped, interrupted, cancelled>",
+ "description": "<element description. Overwrites the one specified during creation>",
+ "attributes": "<attributes of the element. Overwrites the one specified during creation>",
+ "retry": "<retry finish flag>",
+ "issue": "<problem information>"
+}
+```

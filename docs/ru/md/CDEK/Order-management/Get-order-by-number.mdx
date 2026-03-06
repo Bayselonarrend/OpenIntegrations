@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "74bced7d-2b3c-4556-952b-7f82e42fd73f" \
+              --number "6c3fd630-dc53-4bae-94ee-1fe1a84ff3a1" \
               --internal true \
               --testapi "***"
         ```
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "74bced7d-2b3c-4556-952b-7f82e42fd73f" ^
+              --number "6c3fd630-dc53-4bae-94ee-1fe1a84ff3a1" ^
               --internal true ^
               --testapi "***"
         ```
@@ -65,12 +65,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "0b18bf79-7a49-41e0-8df1-f5424e81a1cb",
+  "uuid": "81e75f17-62d1-4174-bae8-40b732821ec5",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107008473",
-  "number": "74bced7d-2b3c-4556-952b-7f82e42fd73f",
+  "cdek_number": "1107010260",
+  "number": "6c3fd630-dc53-4bae-94ee-1fe1a84ff3a1",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -140,16 +140,6 @@ import TabItem from '@theme/TabItem';
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
     "parameter": "10",
     "sum": 500,
@@ -158,12 +148,22 @@ import TabItem from '@theme/TabItem';
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001684291",
+    "barcode": "000001686310",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -189,21 +189,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "91421466-53d4-4cb8-ad70-668cc3a0ceb0"
+    "package_id": "c7a4ee70-5a5a-4364-a477-b200c7b1c001"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-03-05T08:40:39+00:00",
+    "date_time": "2026-03-06T20:17:43+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-03-05T08:40:38+00:00",
+    "date_time": "2026-03-06T20:17:42+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
