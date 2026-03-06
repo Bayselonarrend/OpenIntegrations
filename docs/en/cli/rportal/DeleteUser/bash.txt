@@ -1,4 +1,4 @@
 oint rportal DeleteUser \
   --url "tests.openintegrations.dev" \
   --token "***" \
-  --id 23
+  --id 25

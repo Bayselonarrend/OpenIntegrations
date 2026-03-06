@@ -1,8 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "27ccf547-0cc5-43aa-8f73-6cbb8db767f8",
- "data": "/tmp/it0wzrx4.ndo.json",
+ "id": "2c36b538-ba4c-4cec-af7d-e02a76d50711",
+ "data": "C:\\Users\\bayse\\AppData\\Local\\Temp\\pgyojsje.yzn.json",
  "format": "CSV",
  "external_tables": [
   {
