@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/vtstxnvj.x0m.bin",
- "result": true
+ "filepath": "/tmp/go0cwscv.5vs.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

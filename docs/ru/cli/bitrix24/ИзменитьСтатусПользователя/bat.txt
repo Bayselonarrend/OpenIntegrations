@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьСтатусПользователя ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --userid 3396 ^
+  --userid 3432 ^
   --fire true ^
   --token "***"

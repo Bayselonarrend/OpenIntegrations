@@ -1,16 +1,19 @@
 ﻿{
  "data": {
-  "accessed": 1772724300,
+  "accessed": 1772779497,
   "extension": "png",
   "gid": 1000,
   "is_directory": false,
   "is_symlink": false,
-  "modified": 1772724300,
+  "modified": 1772779497,
   "name": "pic_from_binary.png",
   "path": "files_folder/pic_from_binary.png",
   "permissions": "100644",
   "size": 2114023,
   "uid": 1000
  },
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

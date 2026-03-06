@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/lud0tnue.xag"
+  --file "/tmp/3lrub30c.xwj"

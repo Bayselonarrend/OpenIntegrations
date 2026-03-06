@@ -4,5 +4,5 @@ oint rportal ИзменитьЭлемент \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --id 443155 \
+  --id 462571 \
   --params "{'description':'New description'}"
