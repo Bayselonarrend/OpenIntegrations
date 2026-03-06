@@ -2,6 +2,6 @@
 
 oint s3 GetObjectTagging \
   --name "picture.jpg" \
-  --bucket "ae630d7f" \
+  --bucket "cf940ee8" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true

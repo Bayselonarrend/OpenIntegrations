@@ -1,5 +1,5 @@
 oint bitrix24 MoveFolder ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 52964 ^
-  --tagetid 52960 ^
+  --folderid 53018 ^
+  --tagetid 53014 ^
   --token "***"
