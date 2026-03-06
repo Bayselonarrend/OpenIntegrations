@@ -2,7 +2,7 @@
  "ok": true,
  "result": [
   {
-   "message_id": 20050,
+   "message_id": 20068,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -16,8 +16,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1772748934,
-   "media_group_id": "14181991477711650",
+   "date": 1772757283,
+   "media_group_id": "14182058267748314",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAJNzGmpKh-MPYOziG5F9jsFTO5r9zcbAAKeF2sb9wtJSd5NNeuJFtC_AQADAgADcwADOgQ",
@@ -58,7 +58,7 @@
    "caption": "Строковое значение"
   },
   {
-   "message_id": 20051,
+   "message_id": 20069,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -72,8 +72,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1772748934,
-   "media_group_id": "14181991477711650",
+   "date": 1772757283,
+   "media_group_id": "14182058267748314",
    "video": {
     "duration": 5,
     "width": "***",
@@ -81,21 +81,21 @@
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdpqgABhlD4T3P3Wu-hxUkW5AAB6BRKAAJ0nAACq_JRSROSg4y3kFe2AQAHbQADOgQ",
-     "file_unique_id": "AQADdJwAAqvyUUly",
+     "file_id": "AAMCAgADFQdpqiEjJHF94Bj3S5epysWUX588XwAC8ZwAAqvyUUlVkSp0ilIVrAEAB20AAzoE",
+     "file_unique_id": "AQAD8ZwAAqvyUUly",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdpqgABhlD4T3P3Wu-hxUkW5AAB6BRKAAJ0nAACq_JRSROSg4y3kFe2AQAHbQADOgQ",
-     "file_unique_id": "AQADdJwAAqvyUUly",
+     "file_id": "AAMCAgADFQdpqiEjJHF94Bj3S5epysWUX588XwAC8ZwAAqvyUUlVkSp0ilIVrAEAB20AAzoE",
+     "file_unique_id": "AQAD8ZwAAqvyUUly",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHaaoAAYZQ-E9z91rvocVJFuQAAegUSgACdJwAAqvyUUkTkoOMt5BXtjoE",
-    "file_unique_id": "AgADdJwAAqvyUUk",
+    "file_id": "BAACAgIAAxUHaaohIyRxfeAY90uXqcrFlF-fPF8AAvGcAAKr8lFJVZEqdIpSFaw6BA",
+    "file_unique_id": "AgAD8ZwAAqvyUUk",
     "file_size": 1137878
    }
   }

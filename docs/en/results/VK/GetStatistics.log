@@ -1,11 +1,8 @@
 ﻿{
  "response": [
   {
-   "activity": {
-    "comments": 8
-   },
-   "period_from": 1772668800,
-   "period_to": 1772755199,
+   "period_from": 1772755200,
+   "period_to": 1772841599,
    "reach": {
     "cities": [],
     "countries": [],
@@ -22,8 +19,11 @@
    }
   },
   {
-   "period_from": 1772582400,
-   "period_to": 1772668799,
+   "activity": {
+    "comments": 9
+   },
+   "period_from": 1772668800,
+   "period_to": 1772755199,
    "reach": {
     "cities": [],
     "countries": [],
@@ -33,17 +33,10 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "IN",
-      "count": 2,
-      "name": "Индия",
-      "value": 80
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 2,
-    "visitors": 2
+    "views": 0,
+    "visitors": 0
    }
   }
  ]

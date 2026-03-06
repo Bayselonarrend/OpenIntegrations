@@ -2,7 +2,7 @@
 
 oint vk CreatePost ^
   --text "Post from autotest" ^
-  --pictures "/tmp/xum1fooq.gye.png" ^
+  --pictures "/tmp/2osvi52u.2ij.png" ^
   --ad true ^
   --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

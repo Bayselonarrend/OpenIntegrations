@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "31a82aa7-fc4e-81fc-80c3-dc28564de8ce",
+ "id": "31b82aa7-fc4e-8118-849e-ec99034d4ea1",
  "cover": null,
  "icon": null,
- "created_time": "2026-03-05T23:27:00Z",
+ "created_time": "2026-03-06T01:44:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-03-05T23:27:00Z",
+ "last_edited_time": "2026-03-06T01:44:00Z",
  "title": [
   {
    "type": "text",
@@ -35,41 +35,48 @@
  "description": [],
  "is_inline": false,
  "properties": {
-  "Image": {
-   "id": "%3Fm%3Az",
-   "name": "Image",
+  "Description": {
+   "id": "%3A%3C%5EN",
+   "name": "Description",
    "description": null,
-   "type": "files",
-   "files": {}
+   "type": "rich_text",
+   "rich_text": {}
   },
-  "Email": {
-   "id": "FqB%3D",
-   "name": "Email",
+  "CreationDate": {
+   "id": "Wd%3Cn",
+   "name": "CreationDate",
    "description": null,
-   "type": "email",
-   "email": {}
+   "type": "date",
+   "date": {}
+  },
+  "Active": {
+   "id": "exDP",
+   "name": "Active",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
   },
   "Status": {
-   "id": "IC%60G",
+   "id": "i_%5Ek",
    "name": "Status",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "3c8cccd4-db57-4c33-a4db-db410b76322b",
+      "id": "75ac85ff-46c9-4ed1-ae40-fc512d241d00",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "5e551a88-696b-4cbd-ac4e-d5cc822c9de2",
+      "id": "f2a20d35-5ba4-4059-b9c4-1442c2a20e10",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "e97c6686-a23f-4e9b-a4e0-069a7124415f",
+      "id": "e210a21a-2f00-44c9-bfc4-5d05752a9dd7",
       "name": "Remote",
       "color": "red",
       "description": null
@@ -77,15 +84,29 @@
     ]
    }
   },
-  "CreationDate": {
-   "id": "YPlt",
-   "name": "CreationDate",
+  "User": {
+   "id": "j%3Aej",
+   "name": "User",
    "description": null,
-   "type": "date",
-   "date": {}
+   "type": "people",
+   "people": {}
+  },
+  "Website": {
+   "id": "jzcR",
+   "name": "Website",
+   "description": null,
+   "type": "url",
+   "url": {}
+  },
+  "Email": {
+   "id": "yyH%7B",
+   "name": "Email",
+   "description": null,
+   "type": "email",
+   "email": {}
   },
   "Number": {
-   "id": "akGF",
+   "id": "zYU%40",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -93,40 +114,19 @@
     "format": "number"
    }
   },
-  "User": {
-   "id": "aszm",
-   "name": "User",
+  "Image": {
+   "id": "%7Clnt",
+   "name": "Image",
    "description": null,
-   "type": "people",
-   "people": {}
+   "type": "files",
+   "files": {}
   },
   "Phone": {
-   "id": "cgpc",
+   "id": "~Tc%7D",
    "name": "Phone",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
-  },
-  "Description": {
-   "id": "k%3CAg",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Active": {
-   "id": "kw%7Dm",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Website": {
-   "id": "~h%7DY",
-   "name": "Website",
-   "description": null,
-   "type": "url",
-   "url": {}
   },
   "Name": {
    "id": "title",
@@ -140,9 +140,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/31a82aa7fc4e81fc80c3dc28564de8ce",
+ "url": "https://www.notion.so/31b82aa7fc4e8118849eec99034d4ea1",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "8f9e94d9-3f3e-4789-94ff-a2786c0c3d56"
+ "request_id": "a8ad5b5f-3b35-47b7-8738-0c205cb57286"
 }

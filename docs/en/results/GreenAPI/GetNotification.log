@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1772700854,
-  "idMessage": "3EB0B20A8D58D9DB2D15E3",
+  "timestamp": 1772700858,
+  "idMessage": "3EB0D6E98CEFAE2266CFB9",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,25 +17,15 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "pollMessage",
-   "pollMessageData": {
-    "name": "Какой ваш любимый цвет?",
-    "options": [
-     {
-      "optionName": "Красный"
-     },
-     {
-      "optionName": "Желтый"
-     },
-     {
-      "optionName": "Зеленый"
-     }
-    ],
-    "multipleAnswers": true
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB096BA55D03D7012101B",
-    "participant": "1234567890@c.us"
+   "typeMessage": "locationMessage",
+   "locationMessageData": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }
