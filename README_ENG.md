@@ -43,6 +43,7 @@ The project code is organized as a set of independent modules, each responsible 
   <a href="https://en.openintegrations.dev/docs/Instructions/Slack/"><img src="media/Slack.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png?6" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/ReportPortal/"><img src="media/ReportPortal.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png?6" width="40"></a>
