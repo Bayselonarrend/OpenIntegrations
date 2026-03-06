@@ -1,6 +1,6 @@
 oint bitrix24 НачатьУчетВремени \
   --url "b24-ar17wx.bitrix24.by" \
   --userid 1 \
-  --time "2026-03-06T06:58:52" \
+  --time "2026-03-06T19:06:56" \
   --report "Опоздание" \
   --token "***"
