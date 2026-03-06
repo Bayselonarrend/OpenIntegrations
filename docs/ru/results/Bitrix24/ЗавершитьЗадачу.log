@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9940",
+   "id": "9960",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-03-06T17:16:14+03:00",
+   "createdDate": "2026-03-06T20:01:56+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-03-06T17:16:34+03:00",
+   "changedDate": "2026-03-06T20:02:37+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
-   "closedDate": "2026-03-06T17:16:34+03:00",
-   "activityDate": "2026-03-06T17:16:34+03:00",
+   "closedDate": "2026-03-06T20:02:37+03:00",
+   "activityDate": "2026-03-06T20:02:37+03:00",
    "dateStart": null,
-   "deadline": "2026-03-07T17:16:00+03:00",
-   "startDatePlan": "2026-03-06T17:16:14+03:00",
+   "deadline": "2026-03-07T20:01:00+03:00",
+   "startDatePlan": "2026-03-06T20:01:56+03:00",
    "endDatePlan": "2026-03-07T00:00:00+03:00",
-   "guid": "{cd2a2650-d886-415d-966c-b78ac28ea357}",
+   "guid": "{a997de39-1c6e-4a68-a7f3-3a3dba310328}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "5",
-   "statusChangedDate": "2026-03-06T17:16:34+03:00",
+   "statusChangedDate": "2026-03-06T20:02:37+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1772806594,
-  "finish": 1772806594.6261,
-  "duration": 0.626101016998291,
+  "start": 1772816557,
+  "finish": 1772816557.40845,
+  "duration": 0.408452033996582,
   "processing": 0,
-  "date_start": "2026-03-06T17:16:34+03:00",
-  "date_finish": "2026-03-06T17:16:34+03:00",
-  "operating_reset_at": 1772807194,
-  "operating": 0.22448205947876
+  "date_start": "2026-03-06T20:02:37+03:00",
+  "date_finish": "2026-03-06T20:02:37+03:00",
+  "operating_reset_at": 1772817157,
+  "operating": 0.198225975036621
  }
 }

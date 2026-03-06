@@ -1,6 +1,6 @@
 oint telegram ЗаменитьТекстСообщения ^
   --token "***" ^
   --chat "***" ^
-  --message "25835" ^
+  --message "25925" ^
   --text "<b>Полужирный текст</b>" ^
   --parsemode "HTML"
