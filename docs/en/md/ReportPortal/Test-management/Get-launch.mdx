@@ -36,6 +36,51 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetLaunch \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --uuid "5c544531-f4ff-4ec4-bbc6-c73d1821f35d"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetLaunch ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --uuid "5c544531-f4ff-4ec4-bbc6-c73d1821f35d"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "owner": "superadmin",
+ "description": "Test launch",
+ "id": 433,
+ "uuid": "df03e83c-cfeb-4a3c-a4d1-02c7ec7ff8d9",
+ "name": "Test",
+ "number": 73,
+ "startTime": "2026-01-01T10:00:00Z",
+ "lastModified": "2026-03-06T15:39:19.43176Z",
+ "status": "IN_PROGRESS",
+ "statistics": {
+  "executions": {},
+  "defects": {}
+ },
+ "attributes": [],
+ "mode": "DEFAULT",
+ "analysing": [],
+ "approximateDuration": 36000,
+ "hasRetries": false,
+ "rerun": false,
+ "retentionPolicy": "REGULAR"
+}
+```

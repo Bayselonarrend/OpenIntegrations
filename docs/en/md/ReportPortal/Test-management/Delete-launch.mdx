@@ -40,6 +40,32 @@ Numeric launch ID can be obtained by UUID using the `GetLaunch` function
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal DeleteLaunch \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --id 427
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal DeleteLaunch ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --id 427
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "Launch with ID = '433' successfully deleted."
+}
+```

@@ -54,8 +54,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreateGifTweet \
-              --text "TestTweet9f397bfd-9abe-4c50-8a4f-0c0cb5b5ad98" \
-              --gifs "C:\Users\bayse\AppData\Local\Temp\iu5223y2.k4h" \
+              --text "TestTweetf3f05a0a-7830-4d4e-afab-c9983e80301d" \
+              --gifs "C:\Users\bayse\AppData\Local\Temp\lmlggsq3.2bw" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreateGifTweet ^
-              --text "TestTweet9f397bfd-9abe-4c50-8a4f-0c0cb5b5ad98" ^
-              --gifs "C:\Users\bayse\AppData\Local\Temp\iu5223y2.k4h" ^
+              --text "TestTweetf3f05a0a-7830-4d4e-afab-c9983e80301d" ^
+              --gifs "C:\Users\bayse\AppData\Local\Temp\lmlggsq3.2bw" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -75,9 +75,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "id": "2029934422787502162",
+  "edit_history_tweet_ids": [
+   "2029934422787502162"
+  ],
+  "text": "TestTweetfb08f9e6-1d14-4463-afc6-174bd1801c72 https://t.co/noot9rSpf7"
+ }
 }
 ```

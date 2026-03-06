@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion CreatePageInDatabase \
               --token "***" \
-              --base "30d82aa7-fc4e-81e5-951f-f45ad263b160" \
-              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'2/20/2026 1:21:47 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --base "31b82aa7-fc4e-81b9-ba29-e4e56ac0438f" \
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'3/6/2026 2:22:42 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
   
@@ -68,8 +68,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion CreatePageInDatabase ^
               --token "***" ^
-              --base "30d82aa7-fc4e-81e5-951f-f45ad263b160" ^
-              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'2/20/2026 1:21:47 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --base "31b82aa7-fc4e-81b9-ba29-e4e56ac0438f" ^
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'3/6/2026 2:22:42 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
 </Tabs>
@@ -78,9 +78,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "object": "page",
- "id": "30d82aa7-fc4e-8124-a88d-c2dd10e27e56",
- "created_time": "2026-02-20T10:21:00Z",
- "last_edited_time": "2026-02-20T10:21:00Z",
+ "id": "31b82aa7-fc4e-81aa-8d14-e1e0af857e4b",
+ "created_time": "2026-03-06T15:17:00Z",
+ "last_edited_time": "2026-03-06T15:17:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -93,14 +93,65 @@ import TabItem from '@theme/TabItem';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "30d82aa7-fc4e-81e5-951f-f45ad263b160"
+  "database_id": "31b82aa7-fc4e-818f-876f-cd4b669b7729"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
+  "Number": {
+   "id": "%3AhBk",
+   "type": "number",
+   "number": 1
+  },
+  "Status": {
+   "id": "%3BALG",
+   "type": "select",
+   "select": {
+    "id": "e1b4b282-2433-49b3-99a5-d181d010ae0a",
+    "name": "New",
+    "color": "green"
+   }
+  },
+  "Email": {
+   "id": "%3DcVD",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
+  },
+  "Active": {
+   "id": "FBcy",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "CreationDate": {
+   "id": "T%7CJW",
+   "type": "date",
+   "date": {
+    "start": "2026-03-06T09:17:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Description": {
-   "id": "CS%7C%3F",
+   "id": "%5C%7D_%3A",
    "type": "rich_text",
    "rich_text": [
     {
@@ -122,22 +173,18 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
-  "Status": {
-   "id": "Hg%5Es",
-   "type": "select",
-   "select": {
-    "id": "cbd666a3-3e6a-488f-94f7-e189cf11869f",
-    "name": "New",
-    "color": "green"
-   }
-  },
   "Phone": {
-   "id": "ITFz",
+   "id": "%5EzMA",
    "type": "phone_number",
    "phone_number": "***"
   },
+  "User": {
+   "id": "vl%3DS",
+   "type": "people",
+   "people": []
+  },
   "Image": {
-   "id": "QWfs",
+   "id": "zosI",
    "type": "files",
    "files": [
     {
@@ -146,53 +193,6 @@ import TabItem from '@theme/TabItem';
      "external": {
       "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
      }
-    }
-   ]
-  },
-  "Number": {
-   "id": "TKfe",
-   "type": "number",
-   "number": 1
-  },
-  "Active": {
-   "id": "q%60C%3E",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "CreationDate": {
-   "id": "umU_",
-   "type": "date",
-   "date": {
-    "start": "2026-02-20T04:21:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "User": {
-   "id": "wvH%5D",
-   "type": "people",
-   "people": []
-  },
-  "Email": {
-   "id": "%7Dzue",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
     }
    ]
   },
@@ -220,8 +220,8 @@ import TabItem from '@theme/TabItem';
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-30d82aa7fc4e8124a88dc2dd10e27e56",
+ "url": "https://www.notion.so/LLC-Vector-31b82aa7fc4e81aa8d14e1e0af857e4b",
  "public_url": null,
- "request_id": "286757e3-124a-48a5-aef6-cf8c0a59bf95"
+ "request_id": "bd6365f4-e53f-4ee5-90dd-77cae2c7387a"
 }
 ```

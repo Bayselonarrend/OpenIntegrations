@@ -40,6 +40,32 @@ Numeric item ID can be obtained by UUID using the `GetItem` function
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal DeleteItem \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --id 464723
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal DeleteItem ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --id 464723
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "Test Item with ID = '468986' has been successfully deleted."
+}
+```

@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreatePollTweet \
-              --text "TestTweet11c47680-6d44-432b-b3b3-23dc32617b85" \
+              --text "TestTweet0154b0f4-b233-4858-a3fe-3287011cbfb0" \
               --options "['Option 1','Option 2']" \
               --duration 60 \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreatePollTweet ^
-              --text "TestTweet11c47680-6d44-432b-b3b3-23dc32617b85" ^
+              --text "TestTweet0154b0f4-b233-4858-a3fe-3287011cbfb0" ^
               --options "['Option 1','Option 2']" ^
               --duration 60 ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
@@ -68,9 +68,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "id": "2029934585346228333",
+  "edit_history_tweet_ids": [
+   "2029934585346228333"
+  ],
+  "text": "TestTweeta170fd6d-331e-4712-bea9-08e45c6f20e2"
+ }
 }
 ```
