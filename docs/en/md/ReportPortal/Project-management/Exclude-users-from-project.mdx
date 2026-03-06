@@ -38,6 +38,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal ExcludeUsersFromProject \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "TestProject" \
+              --users "['default']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal ExcludeUsersFromProject ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "TestProject" ^
+              --users "['default']"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "User(s) with username(s)='[default]' was successfully un-assigned from project='testproject'"
+}
+```

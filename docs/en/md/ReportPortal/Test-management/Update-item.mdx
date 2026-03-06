@@ -44,6 +44,38 @@ Numeric item ID can be obtained by UUID using the `GetItem` function
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint rportal UpdateItem \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --id 464723 \
+              --params "{'description':'New description'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint rportal UpdateItem ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --id 464723 ^
+              --params "{'description':'New description'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "TestItem with ID = '468986' successfully updated."
+}
+```

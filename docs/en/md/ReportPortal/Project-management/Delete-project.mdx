@@ -34,6 +34,30 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal DeleteProject \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --id 47
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal DeleteProject ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --id 47
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "Project with id = '51' has been successfully deleted."
+}
+```

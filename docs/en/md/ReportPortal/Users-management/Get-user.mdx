@@ -34,6 +34,53 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetUser \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --login "test"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetUser ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --login "test"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "uuid": "4b3115d2-8933-40f0-8e56-00daabbce639",
+ "active": true,
+ "id": 27,
+ "userId": "test",
+ "email": "test@example.com",
+ "fullName": "Test User",
+ "accountType": "INTERNAL",
+ "userRole": "USER",
+ "photoLoaded": true,
+ "metadata": {
+  "last_login": 1772811582073
+ },
+ "assignedProjects": {
+  "test_personal": {
+   "projectId": 52,
+   "projectRole": "PROJECT_MANAGER",
+   "entryType": "PERSONAL"
+  },
+  "test": {
+   "projectId": 3,
+   "projectRole": "MEMBER",
+   "entryType": "INTERNAL"
+  }
+ }
+}
+```

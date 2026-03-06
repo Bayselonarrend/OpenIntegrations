@@ -54,8 +54,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreateCustomTweet \
-              --text "TestTweet04809bc8-7927-4b68-973c-89b7c43d59c8" \
-              --media "['2024779085231083520','2024779097281351680']" \
+              --text "TestTweet201cdf37-fa57-4887-bf7b-05ece814a7b0" \
+              --media "['2029861989980205056','2029862003708502016']" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreateCustomTweet ^
-              --text "TestTweet04809bc8-7927-4b68-973c-89b7c43d59c8" ^
-              --media "['2024779085231083520','2024779097281351680']" ^
+              --text "TestTweet201cdf37-fa57-4887-bf7b-05ece814a7b0" ^
+              --media "['2029861989980205056','2029862003708502016']" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -75,9 +75,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "edit_history_tweet_ids": [
+   "2029934665331585276"
+  ],
+  "id": "2029934665331585276",
+  "text": "TestTweeta19e8cc7-9f40-43cd-82a8-92b3bf7c9b37 https://t.co/aFqLRTp3fZ"
+ }
 }
 ```

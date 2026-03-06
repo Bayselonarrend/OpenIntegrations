@@ -34,6 +34,123 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetProject \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --name "TestProject"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetProject ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --name "TestProject"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "projectId": 51,
+ "projectName": "testproject",
+ "entryType": "INTERNAL",
+ "configuration": {
+  "attributes": {
+   "job.keepScreenshots": "1209600",
+   "analyzer.uniqueError.removeNumbers": "true",
+   "analyzer.autoAnalyzerMode": "CURRENT_AND_THE_SAME_NAME",
+   "analyzer.numberOfLogLines": "-1",
+   "analyzer.searchLogsMinShouldMatch": "95",
+   "analyzer.isAutoAnalyzerEnabled": "true",
+   "analyzer.allMessagesShouldMatch": "false",
+   "job.keepLaunches": "7776000",
+   "analyzer.isAutoPatternAnalyzerEnabled": "false",
+   "analyzer.uniqueError.enabled": "true",
+   "job.interruptJobTime": "86400",
+   "notifications.enabled": "true",
+   "analyzer.indexingRunning": "false",
+   "job.keepLogs": "7776000",
+   "analyzer.minShouldMatch": "95",
+   "notifications.email.enabled": "true"
+  },
+  "subTypes": {
+   "NO_DEFECT": [
+    {
+     "id": 4,
+     "locator": "nd001",
+     "typeRef": "NO_DEFECT",
+     "longName": "No Defect",
+     "shortName": "ND",
+     "color": "#76839b"
+    }
+   ],
+   "TO_INVESTIGATE": [
+    {
+     "id": 1,
+     "locator": "ti001",
+     "typeRef": "TO_INVESTIGATE",
+     "longName": "To Investigate",
+     "shortName": "TI",
+     "color": "#00829b"
+    }
+   ],
+   "AUTOMATION_BUG": [
+    {
+     "id": 2,
+     "locator": "ab001",
+     "typeRef": "AUTOMATION_BUG",
+     "longName": "Automation Bug",
+     "shortName": "AB",
+     "color": "#ffc208"
+    }
+   ],
+   "PRODUCT_BUG": [
+    {
+     "id": 3,
+     "locator": "pb001",
+     "typeRef": "PRODUCT_BUG",
+     "longName": "Product Bug",
+     "shortName": "PB",
+     "color": "#d32f2f"
+    }
+   ],
+   "SYSTEM_ISSUE": [
+    {
+     "id": 5,
+     "locator": "si001",
+     "typeRef": "SYSTEM_ISSUE",
+     "longName": "System Issue",
+     "shortName": "SI",
+     "color": "#3e7be6"
+    }
+   ]
+  },
+  "notificationsConfiguration": {
+   "enabled": true,
+   "cases": []
+  },
+  "patterns": []
+ },
+ "users": [
+  {
+   "uuid": "0d6825d9-482f-4808-b9ff-938cca5f59ee",
+   "login": "superadmin",
+   "email": "bayselonarrend@gmail.com",
+   "projectRole": "PROJECT_MANAGER",
+   "accountRole": "ADMINISTRATOR",
+   "accountType": "INTERNAL"
+  }
+ ],
+ "integrations": [],
+ "organization": null,
+ "allocatedStorage": 0,
+ "creationDate": "2026-03-06T15:39:36.748255Z"
+}
+```

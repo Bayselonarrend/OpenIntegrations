@@ -40,6 +40,32 @@ Numeric log ID can be obtained by UUID using the `GetLog` function
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal DeleteLog \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --id 427662
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal DeleteLog ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --id 427662
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "message": "Log with ID = '431847' successfully deleted."
+}
+```

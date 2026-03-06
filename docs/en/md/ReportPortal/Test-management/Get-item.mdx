@@ -36,6 +36,57 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetItem \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --uuid "c1577ecf-76bf-4b53-9b56-8ed500a6d26e"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetItem ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --uuid "c1577ecf-76bf-4b53-9b56-8ed500a6d26e"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "id": 468986,
+ "uuid": "4ea16412-aa0a-4a6f-8e37-d4e4e602305c",
+ "name": "Test",
+ "description": "Test launch",
+ "parameters": [],
+ "attributes": [],
+ "type": "TEST",
+ "startTime": "2026-01-01T10:00:00Z",
+ "status": "IN_PROGRESS",
+ "statistics": {
+  "executions": {},
+  "defects": {}
+ },
+ "pathNames": {
+  "launchPathName": {
+   "name": "Test",
+   "number": 73
+  }
+ },
+ "hasChildren": false,
+ "hasStats": true,
+ "launchId": 433,
+ "uniqueId": "auto:5f572a37ee0e97cf32dbc9afec105d08",
+ "testCaseHash": 1517177626,
+ "patternTemplates": [],
+ "path": "468986"
+}
+```

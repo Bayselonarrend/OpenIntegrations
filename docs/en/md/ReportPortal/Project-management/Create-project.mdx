@@ -34,6 +34,30 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal CreateProject \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --name "testproject"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal CreateProject ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --name "testproject"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "id": 51
+}
+```

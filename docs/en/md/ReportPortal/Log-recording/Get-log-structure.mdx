@@ -40,6 +40,36 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetLogStructure \
+              --launch "a000b575-7f6f-4799-8f88-17093ccd350d" \
+              --id "36129b5b-bb0f-4247-b0aa-c757fe1b1452" \
+              --time "2026-01-01T10:00:10" \
+              --text "Some log"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetLogStructure ^
+              --launch "a000b575-7f6f-4799-8f88-17093ccd350d" ^
+              --id "36129b5b-bb0f-4247-b0aa-c757fe1b1452" ^
+              --time "2026-01-01T10:00:10" ^
+              --text "Some log"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "launchUuid": "0e217aea-bd61-4e0c-a70e-3242c177a806",
+ "itemUuid": "284e8c0c-fdcb-4f70-93b8-d6d50c6aa64c",
+ "time": "1767258010",
+ "message": "Some log",
+ "level": "info"
+}
+```

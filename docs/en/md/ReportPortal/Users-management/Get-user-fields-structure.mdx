@@ -29,6 +29,33 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal GetUserFieldsStructure \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal GetUserFieldsStructure ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "active": "<user activity status>",
+ "login": "<user login>",
+ "password": "***",
+ "fullName": "<full name>",
+ "email": "<email address>",
+ "accountRole": "<account role: USER, ADMINISTRATOR>",
+ "projectRole": "<project role: CUSTOMER, MEMBER, PROJECT_MANAGER>",
+ "defaultProject": "<default project>"
+}
+```

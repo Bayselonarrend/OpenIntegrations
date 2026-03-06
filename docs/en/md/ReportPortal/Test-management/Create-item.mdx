@@ -46,6 +46,37 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint rportal CreateItem \
+              --url "tests.openintegrations.dev" \
+              --token "***" \
+              --proj "Test" \
+              --params "{'name':'Test','startTime':'1/1/2026 10:00:00 AM','type':'test','description':'Test launch','launchUuid':'a000b575-7f6f-4799-8f88-17093ccd350d'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint rportal CreateItem ^
+              --url "tests.openintegrations.dev" ^
+              --token "***" ^
+              --proj "Test" ^
+              --params "{'name':'Test','startTime':'1/1/2026 10:00:00 AM','type':'test','description':'Test launch','launchUuid':'a000b575-7f6f-4799-8f88-17093ccd350d'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "id": "284e8c0c-fdcb-4f70-93b8-d6d50c6aa64c",
+ "uniqueId": "auto:5f572a37ee0e97cf32dbc9afec105d08"
+}
+```
