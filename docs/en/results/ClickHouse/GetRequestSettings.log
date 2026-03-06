@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "2c36b538-ba4c-4cec-af7d-e02a76d50711",
- "data": "C:\\Users\\bayse\\AppData\\Local\\Temp\\pgyojsje.yzn.json",
+ "id": "a39ab1a0-c209-42df-ab4d-0dabe04b4e03",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {

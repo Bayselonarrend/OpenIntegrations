@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "2126",
+   "ID": "2134",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2126&sign=30de399f38b9d6736af954fb3923556c&bx_hit_hash=ikvV9xrASFLoNSENIaOQrTmhnpPTp0W0"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2134&sign=f6e1a4be953db1a0cb37bfa4aa77951c&bx_hit_hash=ikvV9xrASFLoNSENIaOQrTmhnpPTp0W0"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-03-06 14:49:00",
-   "TIMESTAMP_X": "2026-03-06 14:49:00",
+   "DATE_CREATE": "2026-03-06 18:27:00",
+   "TIMESTAMP_X": "2026-03-06 18:27:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "2128",
+   "ID": "2136",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2128&sign=16964fe8aabb5d3fce23ebe45930ff15&bx_hit_hash=ikvV9xrASFLoNSENIaOQrTmhnpPTp0W0"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2136&sign=b5c56f6a7ffcca25d439b4b81a501b01&bx_hit_hash=ikvV9xrASFLoNSENIaOQrTmhnpPTp0W0"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-03-06 14:49:00",
-   "TIMESTAMP_X": "2026-03-06 14:49:00",
+   "DATE_CREATE": "2026-03-06 18:27:00",
+   "TIMESTAMP_X": "2026-03-06 18:27:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1772797772,
-  "finish": 1772797772.67504,
-  "duration": 0.675036907196045,
+  "start": 1772810810,
+  "finish": 1772810810.28554,
+  "duration": 0.285542011260986,
   "processing": 0,
-  "date_start": "2026-03-06T14:49:32+03:00",
-  "date_finish": "2026-03-06T14:49:32+03:00",
-  "operating_reset_at": 1772798372,
+  "date_start": "2026-03-06T18:26:50+03:00",
+  "date_finish": "2026-03-06T18:26:50+03:00",
+  "operating_reset_at": 1772811410,
   "operating": 0
  }
 }
