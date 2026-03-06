@@ -1,5 +1,5 @@
 oint bitrix24 DeleteTaskTimeAccounting \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "9916" \
-  --record 3674 \
+  --task "9936" \
+  --record 3682 \
   --token "***"

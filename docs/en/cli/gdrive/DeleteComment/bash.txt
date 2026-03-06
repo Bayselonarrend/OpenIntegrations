@@ -1,4 +1,4 @@
 oint gdrive DeleteComment \
   --token "***" \
-  --object "1wzjOwYobT9oFjbCVuhKucb18qkbKZjRL" \
-  --comment "AAAB0SsJcRI"
+  --object "14kesyB0NK9MBTph4zBCTLaeD0y3rAw3e" \
+  --comment "AAAB0zgH_Vo"

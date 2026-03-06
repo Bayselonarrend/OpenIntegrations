@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "31b82aa7-fc4e-8118-849e-ec99034d4ea1",
+ "id": "31b82aa7-fc4e-81b9-ba29-e4e56ac0438f",
  "cover": null,
  "icon": null,
- "created_time": "2026-03-06T01:44:00Z",
+ "created_time": "2026-03-06T11:22:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-03-06T01:44:00Z",
+ "last_edited_time": "2026-03-06T11:22:00Z",
  "title": [
   {
    "type": "text",
@@ -35,78 +35,29 @@
  "description": [],
  "is_inline": false,
  "properties": {
-  "Description": {
-   "id": "%3A%3C%5EN",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "CreationDate": {
-   "id": "Wd%3Cn",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Active": {
-   "id": "exDP",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Status": {
-   "id": "i_%5Ek",
-   "name": "Status",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "75ac85ff-46c9-4ed1-ae40-fc512d241d00",
-      "name": "New",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "f2a20d35-5ba4-4059-b9c4-1442c2a20e10",
-      "name": "InProgress",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "e210a21a-2f00-44c9-bfc4-5d05752a9dd7",
-      "name": "Remote",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
-  "User": {
-   "id": "j%3Aej",
-   "name": "User",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
-  "Website": {
-   "id": "jzcR",
-   "name": "Website",
-   "description": null,
-   "type": "url",
-   "url": {}
-  },
   "Email": {
-   "id": "yyH%7B",
+   "id": "%3EXDK",
    "name": "Email",
    "description": null,
    "type": "email",
    "email": {}
   },
+  "Image": {
+   "id": "F_%3Co",
+   "name": "Image",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "CreationDate": {
+   "id": "J%7CPw",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
   "Number": {
-   "id": "zYU%40",
+   "id": "P%7C%60q",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -114,19 +65,68 @@
     "format": "number"
    }
   },
-  "Image": {
-   "id": "%7Clnt",
-   "name": "Image",
+  "Active": {
+   "id": "Qkes",
+   "name": "Active",
    "description": null,
-   "type": "files",
-   "files": {}
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Website": {
+   "id": "RKx%5B",
+   "name": "Website",
+   "description": null,
+   "type": "url",
+   "url": {}
+  },
+  "User": {
+   "id": "g%5B%5Cr",
+   "name": "User",
+   "description": null,
+   "type": "people",
+   "people": {}
   },
   "Phone": {
-   "id": "~Tc%7D",
+   "id": "gc%5C%3E",
    "name": "Phone",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
+  },
+  "Status": {
+   "id": "ulqf",
+   "name": "Status",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "057a0bd4-9ac0-45d4-9dd9-81f8ab4433bf",
+      "name": "New",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "7158fa8c-ed10-49f2-9294-db00ba9e1efc",
+      "name": "InProgress",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "71f7ab5f-a2e4-4f22-8389-a406fedf4127",
+      "name": "Remote",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
+  "Description": {
+   "id": "wG%5BN",
+   "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
   },
   "Name": {
    "id": "title",
@@ -140,9 +140,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/31b82aa7fc4e8118849eec99034d4ea1",
+ "url": "https://www.notion.so/31b82aa7fc4e81b9ba29e4e56ac0438f",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "a8ad5b5f-3b35-47b7-8738-0c205cb57286"
+ "request_id": "4ab3a46a-4a3b-4f74-9d50-7a3ef818873a"
 }
