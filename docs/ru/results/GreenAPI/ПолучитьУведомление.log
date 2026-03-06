@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1772700843,
-  "idMessage": "3EB0E928DFD43067C1F840",
+  "timestamp": 1772720759,
+  "idMessage": "3EB01A42F69970E39B97B7",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,14 +17,13 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/145b2d2e-c62d-4eb2-b0f1-8ba2347981e9.jpg",
-    "caption": "Описание файла",
-    "fileName": "145b2d2e-c62d-4eb2-b0f1-8ba2347981e9.jpg",
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
     "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }

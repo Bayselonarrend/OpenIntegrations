@@ -4414,6 +4414,41 @@
    "id": "appgRNlJKWiTRqT37",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "app4KgvHM3QQ0gVZr",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appzR2VAzqlRJOkuu",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appkVvbA1Q44odU5V",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app28AxmN3ysynNHr",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appU8180fXSUgF6nY",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appAa5MbZB5FklAfp",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appgfVhQsEV4JSkHN",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }
