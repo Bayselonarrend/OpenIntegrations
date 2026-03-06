@@ -3,7 +3,15 @@
 	"library": "rcon",
 	"self_depend": true,
 	"dependencies": null,
-	"regions": [],
+	"regions": [
+		{
+			"name": "Commands execution",
+			"methods": [
+				"ExecuteCommand",
+				"FormConnectionParameters"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ExecuteCommand",
