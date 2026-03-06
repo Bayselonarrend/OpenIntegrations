@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/5m4iaazg.oxh.bin",
- "result": true
+ "filepath": "/tmp/w2q1gp2b.vvd.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

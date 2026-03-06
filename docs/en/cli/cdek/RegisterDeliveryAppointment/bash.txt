@@ -2,5 +2,5 @@
 
 oint cdek RegisterDeliveryAppointment \
   --token "***" \
-  --appt "{'cdek_number':'1106207236','order_uuid':'c2ca4217-2fc7-4c56-8629-64bffa3dca09','date':'2026-03-19','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
+  --appt "{'cdek_number':'1106207236','order_uuid':'b247849c-8442-42b4-9110-61dc8c3c91db','date':'2026-03-19','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
   --testapi "***"

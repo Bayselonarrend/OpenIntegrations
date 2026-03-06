@@ -1,3 +1,3 @@
 oint sqlite GetRecords ^
   --table "test" ^
-  --db "/tmp/blvcxqev.1yv.sqlite"
+  --db "/tmp/ftu3deek.42j.sqlite"

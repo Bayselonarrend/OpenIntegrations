@@ -4,5 +4,5 @@ oint rportal UpdateLaunch \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --id 400 \
+  --id 418 \
   --params "{'description':'New description'}"
