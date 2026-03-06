@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "31b82aa7-fc4e-8157-b282-dd9f4716e1e7",
- "created_time": "2026-03-06T07:37:00Z",
- "last_edited_time": "2026-03-06T07:37:00Z",
+ "id": "31b82aa7-fc4e-8116-b6b7-ca80ebaa1b9c",
+ "created_time": "2026-03-06T14:09:00Z",
+ "last_edited_time": "2026-03-06T14:09:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,33 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "31b82aa7-fc4e-812d-96d9-e3e680ed5984"
+  "database_id": "31b82aa7-fc4e-81df-b56b-f8e5c2b5a5cc"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Пользователь": {
-   "id": "%3Dp%3B%5E",
-   "type": "people",
-   "people": []
-  },
-  "Номер": {
-   "id": "HU%3EH",
-   "type": "number",
-   "number": 1
-  },
-  "Дата создания": {
-   "id": "JHtp",
-   "type": "date",
-   "date": {
-    "start": "2026-03-06T07:37:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Картинка": {
-   "id": "KxP_",
+   "id": "%3BsPi",
    "type": "files",
    "files": [
     {
@@ -53,27 +34,18 @@
     }
    ]
   },
-  "Телефон": {
-   "id": "P~%3Fz",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Статус": {
-   "id": "Szt%5D",
-   "type": "select",
-   "select": {
-    "id": "eff2b07d-8944-4a9e-b567-944fae04b6cd",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
   "Активен": {
-   "id": "v%7CWB",
+   "id": "U~%7D%7B",
    "type": "checkbox",
    "checkbox": true
   },
+  "Пользователь": {
+   "id": "VE%5EA",
+   "type": "people",
+   "people": []
+  },
   "Описание": {
-   "id": "%7Ccsn",
+   "id": "behq",
    "type": "rich_text",
    "rich_text": [
     {
@@ -95,8 +67,36 @@
     }
    ]
   },
+  "Дата создания": {
+   "id": "kfBx",
+   "type": "date",
+   "date": {
+    "start": "2026-03-06T08:09:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Статус": {
+   "id": "mJpH",
+   "type": "select",
+   "select": {
+    "id": "9d748041-627d-4ebc-8d4b-7c60f7971287",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Телефон": {
+   "id": "o%3FmO",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Номер": {
+   "id": "vmm%5E",
+   "type": "number",
+   "number": 1
+  },
   "Почта": {
-   "id": "%7CrU%7C",
+   "id": "%7CaC_",
    "type": "rich_text",
    "rich_text": [
     {
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/31b82aa7fc4e8157b282dd9f4716e1e7",
+ "url": "https://www.notion.so/31b82aa7fc4e8116b6b7ca80ebaa1b9c",
  "public_url": null,
- "request_id": "f15b75c7-7203-465c-b90b-417b16fab3b0"
+ "request_id": "65b89428-36a0-4269-8680-4098a4d8d6ff"
 }
