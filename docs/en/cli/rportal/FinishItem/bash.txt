@@ -4,5 +4,5 @@ oint rportal FinishItem \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "4bad611f-4062-49c1-9f2a-f9de0e2a4577" \
-  --params "{'endTime':'01/01/2026 20:00:00','status':'passed'}"
+  --uuid "36129b5b-bb0f-4247-b0aa-c757fe1b1452" \
+  --params "{'endTime':'1/1/2026 8:00:00 PM','status':'passed'}"
