@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1772700853,
-  "idMessage": "3EB096BA55D03D7012101B",
+  "timestamp": 1772700854,
+  "idMessage": "3EB0B20A8D58D9DB2D15E3",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -31,7 +31,11 @@
       "optionName": "Зеленый"
      }
     ],
-    "multipleAnswers": false
+    "multipleAnswers": true
+   },
+   "quotedMessage": {
+    "stanzaId": "3EB096BA55D03D7012101B",
+    "participant": "1234567890@c.us"
    }
   }
  }

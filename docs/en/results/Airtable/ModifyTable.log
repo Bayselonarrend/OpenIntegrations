@@ -1,11 +1,11 @@
 ﻿{
- "id": "tblU5XBUgl3eWJOtW",
+ "id": "tblwDkOphrmUD26mT",
  "name": "Test table 2 (change.)",
  "description": "New table (change.)",
- "primaryFieldId": "fldWKo8Tt44Nt8uoH",
+ "primaryFieldId": "fldGrSlgs78mPXl02",
  "fields": [
   {
-   "id": "fldWKo8Tt44Nt8uoH",
+   "id": "fldGrSlgs78mPXl02",
    "name": "Number",
    "type": "number",
    "options": {
@@ -13,12 +13,12 @@
    }
   },
   {
-   "id": "fldtM4X3xngHznbot",
+   "id": "fldnjYX3lvreqKgE6",
    "name": "String",
    "type": "richText"
   },
   {
-   "id": "fldJbc6s1eOS8AOse",
+   "id": "fldtqZGbSlCwULyG3",
    "name": "Attachment",
    "type": "multipleAttachments",
    "options": {
@@ -26,7 +26,7 @@
    }
   },
   {
-   "id": "fldNq6gAmPjDTXIum",
+   "id": "flddpVb7O1tcTGE6C",
    "name": "Checkbox",
    "type": "checkbox",
    "options": {
@@ -35,7 +35,7 @@
    }
   },
   {
-   "id": "fld5CnV707JUzuohE",
+   "id": "fldexIEcnhJr5PsEU",
    "name": "Date",
    "type": "date",
    "options": {
@@ -46,24 +46,24 @@
    }
   },
   {
-   "id": "fldplUduFzNAv5uGb",
+   "id": "fldYB0d7GSIyyi2t5",
    "name": "Phone",
    "type": "phoneNumber"
   },
   {
-   "id": "fld1NcPdCQ6TylPCG",
+   "id": "fldkRlo0OBL2naQxf",
    "name": "Email",
    "type": "email"
   },
   {
-   "id": "fldCTZljkKAPWJvkW",
+   "id": "fldmgwQUP3hNyg82g",
    "name": "Link",
    "type": "url"
   }
  ],
  "views": [
   {
-   "id": "viwfkPmNw3GmPU4Dh",
+   "id": "viwbqR38y0oG9jADJ",
    "name": "Grid view",
    "type": "grid"
   }

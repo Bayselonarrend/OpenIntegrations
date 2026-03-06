@@ -1,4 +1,4 @@
 oint vkteams SendVoice ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/zemhgup3.aty"
+  --file "/tmp/3tlzjmg4.u1o"

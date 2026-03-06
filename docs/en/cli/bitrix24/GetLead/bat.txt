@@ -1,4 +1,4 @@
 oint bitrix24 GetLead ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --lead 3190 ^
+  --lead 3214 ^
   --token "***"

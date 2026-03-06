@@ -1,3 +1,3 @@
 oint gdrive DownloadFile \
   --token "***" \
-  --object "1Q6fkvjyuBtw_qSnD6suhMNGZklx2tefp"
+  --object "1RzcsqxcyfkzAViuDNMNOBBh17V6Y3Uvw"

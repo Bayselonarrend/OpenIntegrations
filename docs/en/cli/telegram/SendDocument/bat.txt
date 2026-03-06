@@ -2,5 +2,5 @@ oint telegram SendDocument ^
   --token "***" ^
   --chat "***" ^
   --text "Строковое значение" ^
-  --doc "/tmp/dxlsrcwb.qao" ^
+  --doc "/tmp/zjedxyhb.422" ^
   --filename "customname.docx"

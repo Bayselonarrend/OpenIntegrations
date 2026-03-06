@@ -1,4 +1,4 @@
 oint vkteams DeleteMessage \
   --token "***" \
   --chatid "***" \
-  --messageid "7613772419215412413"
+  --messageid "7613923090963123611"
