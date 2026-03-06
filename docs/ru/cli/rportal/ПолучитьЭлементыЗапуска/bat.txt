@@ -2,4 +2,4 @@ oint rportal ПолучитьЭлементыЗапуска ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 397
+  --id 424
