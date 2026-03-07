@@ -27,12 +27,12 @@ To work with ReportPortal API, you need to obtain an authorization token. There 
 Obtained based on user login and password and has a limited validity period:
 
 ```bsl
-URL = "https://your-reportportal-instance.com";
-Login = "your_username";
+URL      = "https://your-reportportal-instance.com";
+Login    = "your_username";
 Password = "your_password";
 
 Response = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);
-Token = Response["access_token"];
+Token    = Response["access_token"];
 ```
 
 #### Permanent token
@@ -44,7 +44,7 @@ For long-term use, it is recommended to create a permanent token:
 3. Create a permanent token:
 
 ```bsl
-UserID = "your_user_id";
+UserID  = "your_user_id";
 KeyName = "API Key for Integration";
 
 Response = OPI_ReportPortal.GetPermanentToken(URL, Token, UserID, KeyName);

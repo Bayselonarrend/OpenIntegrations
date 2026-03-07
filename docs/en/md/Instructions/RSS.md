@@ -6,7 +6,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 <img src={require('../../static/img/APIs/RSS.png').default} width='64px' />
 
-# RSS
+# RSS/Atom
 
 import LibraryIntro from '@site/src/components/LibraryIntro';
 
@@ -26,29 +26,32 @@ RSS (Really Simple Syndication) is a format for distributing news and other webs
 
 ### Creating an RSS feed
 
-To create an RSS feed, use the `СоздатьФидRSS` function:
+To create an RSS feed, use the `CreateFeedRSS` function:
 
 ```bsl
-НазваниеКанала = "Мой блог";
-ОписаниеКанала = "Последние новости и статьи";
-СсылкаКанала = "https://example.com";
+ChannelName        = "My Blog";
+ChannelDescription = "Latest news and articles";
+ChannelLink        = "https://example.com";
 
-Элементы = Новый Массив;
-Элемент = OPI_RSS.ПолучитьСтруктуруЭлементаФидаRSS(Истина);
-Элемент.title = "Первая статья";
-Элемент.description = "Описание первой статьи";
-Элемент.link = "https://example.com/article1";
-Элемент.pubDate = ТекущаяДата();
-Элемент.author = "author@example.com";
-Элемент.guid = "article1";
-Элементы.Добавить(Элемент);
+Items = New Array;
 
-ФидRSS = OPI_RSS.СоздатьФидRSS(НазваниеКанала, ОписаниеКанала, СсылкаКанала, Элементы);
+Item = OPI_RSS.GetFeedItemStructureRSS(True);
+
+Item.title       = "First article";
+Item.description = "First article description";
+Item.link        = "https://example.com/article1";
+Item.pubDate     = CurrentDate();
+Item.author      = "author@example.com";
+Item.guid        = "article1";
+
+Items.Add(Item);
+
+RSSFeed = OPI_RSS.CreateFeedRSS(ChannelName, ChannelDescription, ChannelLink, Items);
 ```
 
 ### RSS element structure
 
-The `ПолучитьСтруктуруЭлементаФидаRSS` function returns a structure with the following fields:
+The `GetFeedItemStructureRSS` function returns a structure with the following fields:
 
 - **title** — element title
 - **description** — element description/content
@@ -59,13 +62,11 @@ The `ПолучитьСтруктуруЭлементаФидаRSS` function ret
 
 ### Parsing an RSS feed
 
-To parse an existing RSS feed, use the `РазобратьФидRSS` function:
+To parse an existing RSS feed, use the `ParseFeedRSS` function:
 
 ```bsl
-XMLТекст = "<?xml version=""1.0""?>..."; // XML содержимое фида
-Канал = OPI_RSS.РазобратьФидRSS(XMLТекст);
-
-// Канал содержит данные канала и массив элементов в поле "items"
+XMLText = "<?xml version=""1.0""?>..."; // XML feed content
+Channel = OPI_RSS.ParseFeedRSS(XMLText);
 ```
 
 ## Working with Atom
@@ -74,31 +75,34 @@ Atom is an alternative content syndication format, more modern and flexible than
 
 ### Creating an Atom feed
 
-To create an Atom feed, use the `СоздатьФидAtom` function:
+To create an Atom feed, use the `CreateFeedAtom` function:
 
 ```bsl
-НазваниеФида = "Мой блог";
-СсылкаФида = "https://example.com";
-IDФида = "https://example.com/feed";
+FeedTitle = "My Blog";
+FeedLink  = "https://example.com";
+FeedID    = "https://example.com/feed";
 
-Элементы = Новый Массив;
-Элемент = OPI_RSS.ПолучитьСтруктуруЭлементаФидаAtom(Истина);
-Элемент.title = "Первая статья";
-Элемент.id = "article1";
-Элемент.link = "https://example.com/article1";
-Элемент.updated = ТекущаяДата();
-Элемент.summary = "Краткое описание";
-Элемент.content = "Полное содержимое статьи";
-Элемент.author = "Иван Иванов";
-Элемент.published = ТекущаяДата();
-Элементы.Добавить(Элемент);
+Items = New Array;
 
-ФидAtom = OPI_RSS.СоздатьФидAtom(НазваниеФида, СсылкаФида, IDФида, Элементы);
+Item = OPI_RSS.GetFeedItemStructureAtom(True);
+
+Item.title     = "First article";
+Item.id        = "article1";
+Item.link      = "https://example.com/article1";
+Item.updated   = CurrentDate();
+Item.summary   = "Brief description";
+Item.content   = "Full article content";
+Item.author    = "Ivan Ivanov";
+Item.published = CurrentDate();
+
+Items.Add(Item);
+
+AtomFeed = OPI_RSS.CreateFeedAtom(FeedTitle, FeedLink, FeedID, Items);
 ```
 
 ### Atom element structure
 
-The `ПолучитьСтруктуруЭлементаФидаAtom` function returns a structure with the following fields:
+The `GetFeedItemStructureAtom` function returns a structure with the following fields:
 
 - **title** — element title
 - **id** — unique element identifier
@@ -111,13 +115,11 @@ The `ПолучитьСтруктуруЭлементаФидаAtom` function re
 
 ### Parsing an Atom feed
 
-To parse an existing Atom feed, use the `РазобратьФидAtom` function:
+To parse an existing Atom feed, use the `ParseFeedAtom` function:
 
 ```bsl
-XMLТекст = "<?xml version=""1.0""?>..."; // XML содержимое фида
-Фид = OPI_RSS.РазобратьФидAtom(XMLТекст);
-
-// Фид содержит данные фида и массив элементов в поле "entries"
+XMLText = "<?xml version=""1.0""?>..."; // XML feed content
+Feed    = OPI_RSS.ParseFeedAtom(XMLText);
 ```
 
 ## Usage features
