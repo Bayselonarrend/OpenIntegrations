@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+description: Create feed (Atom) and other functions to work with RSS in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, RSS]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create feed (Atom)
+ Creates the text of an Atom feed
+
+
+
+`Function CreateFeedAtom(Val FeedTitle, Val FeedLink, Val FeedID, Val Items, Val UpdateDate = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | FeedTitle | --name | String | &#x2714; | Feed title |
+  | FeedLink | --link | String | &#x2714; | Feed URL |
+  | FeedID | --id | String | &#x2714; | Feed unique identifier (usually a URL) |
+  | Items | --items | Array of Structure | &#x2714; | Feed items. See GetFeedItemStructureAtom |
+  | UpdateDate | --date | Date, Undefined | &#x2716; | Update date. Current if not filled |
+
+  
+  Returns:  String - Atom XML feed
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    FeedTitle = "Test Atom feed";
+    FeedLink  = "https://example.com";
+    FeedID    = "https://example.com/feed";
+
+    ItemsArray = New Array;
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "First record";
+    ElementStructure["id"]        = "https://example.com/entry1";
+    ElementStructure["link"]      = "https://example.com/entry1";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "First record summary";
+    ElementStructure["content"]   = "Full content of the first record";
+    ElementStructure["author"]    = "First Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "Second record";
+    ElementStructure["id"]        = "https://example.com/entry2";
+    ElementStructure["link"]      = "https://example.com/entry2";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "Second record summary";
+    ElementStructure["content"]   = "Full content of the second record";
+    ElementStructure["author"]    = "Second Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedAtom(FeedTitle, FeedLink, FeedID, ItemsArray);
+```
+ 
+
+
+
+

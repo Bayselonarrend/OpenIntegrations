@@ -3494,6 +3494,30 @@ EndProcedure
 
 #EndRegion
 
+#Region RSS
+
+Procedure RSS_RSSMethods() Export
+
+    TestParameters = New Structure;
+
+    RSS_CreateFeedRSS(TestParameters);
+    RSS_GetFeedItemStructureRSS(TestParameters);
+    RSS_ParseFeedRSS(TestParameters);
+
+EndProcedure
+
+Procedure RSS_AtomMethods() Export
+
+    TestParameters = New Structure;
+
+    RSS_CreateFeedAtom(TestParameters);
+    RSS_GetFeedItemStructureAtom(TestParameters);
+    RSS_ParseFeedAtom(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -38156,6 +38180,194 @@ Procedure ClickHouse_ProcessGRPCReceiving(FunctionParameters)
     // END
 
     Process(Result, "ClickHouse", "ProcessGRPCReceiving");
+
+EndProcedure
+
+#EndRegion
+
+#Region RSS
+
+Procedure RSS_CreateFeedRSS(FunctionParameters)
+
+    ChannelTitle       = "Test RSS channel";
+    ChannelDescription = "Test RSS channel description";
+    ChannelLink        = "https://example.com";
+
+    ItemsArray = New Array;
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    ElementStructure = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
+    ElementStructure["title"]       = "First element";
+    ElementStructure["description"] = "First element description";
+    ElementStructure["link"]        = "https://example.com/item1";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-1";
+
+    ItemsArray.Add(ElementStructure);
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    ElementStructure = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
+    ElementStructure["title"]       = "Second element";
+    ElementStructure["description"] = "Second element description";
+    ElementStructure["link"]        = "https://example.com/item2";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-2";
+
+    ItemsArray.Add(ElementStructure);
+
+    Options = New Structure;
+    Options.Insert("name", ChannelTitle);
+    Options.Insert("descr", ChannelDescription);
+    Options.Insert("link", ChannelLink);
+    Options.Insert("items", ItemsArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "CreateFeedRSS", Options);
+
+    // END
+
+    Process(Result, "RSS", "CreateFeedRSS", , FunctionParameters);
+
+EndProcedure
+
+Procedure RSS_GetFeedItemStructureRSS(FunctionParameters)
+
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
+
+    // END
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS");
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS", "Clear");
+
+    Options = New Structure;
+    Options.Insert("empty", Ложь);
+    Options.Insert("map", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS", "Map");
+
+EndProcedure
+
+Procedure RSS_ParseFeedRSS(FunctionParameters)
+
+    FeedXML = FunctionParameters["RSS_FeedXML"];
+
+    Options = New Structure;
+    Options.Insert("xml", FeedXML);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "ParseFeedRSS", Options);
+
+    // END
+
+    Process(Result, "RSS", "ParseFeedRSS");
+
+EndProcedure
+
+Procedure RSS_CreateFeedAtom(FunctionParameters)
+
+    FeedTitle = "Test Atom feed";
+    FeedLink  = "https://example.com";
+    FeedID    = "https://example.com/feed";
+
+    ItemsArray = New Array;
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    ElementStructure = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
+    ElementStructure["title"]     = "First record";
+    ElementStructure["id"]        = "https://example.com/entry1";
+    ElementStructure["link"]      = "https://example.com/entry1";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "First record summary";
+    ElementStructure["content"]   = "Full content of the first record";
+    ElementStructure["author"]    = "First Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    ElementStructure = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
+    ElementStructure["title"]     = "Second record";
+    ElementStructure["id"]        = "https://example.com/entry2";
+    ElementStructure["link"]      = "https://example.com/entry2";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "Second record summary";
+    ElementStructure["content"]   = "Full content of the second record";
+    ElementStructure["author"]    = "Second Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    Options = New Structure;
+    Options.Insert("name", FeedTitle);
+    Options.Insert("link", FeedLink);
+    Options.Insert("id", FeedID);
+    Options.Insert("items", ItemsArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "CreateFeedAtom", Options);
+
+    // END
+
+    Process(Result, "RSS", "CreateFeedAtom", , FunctionParameters);
+
+EndProcedure
+
+Procedure RSS_GetFeedItemStructureAtom(FunctionParameters)
+
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
+
+    // END
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom");
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom", "Clear");
+
+    Options = New Structure;
+    Options.Insert("empty", Ложь);
+    Options.Insert("map", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom", "Map");
+
+EndProcedure
+
+Procedure RSS_ParseFeedAtom(FunctionParameters)
+
+    FeedXML = FunctionParameters["RSS_AtomFeedXML"];
+
+    Options = New Structure;
+    Options.Insert("xml", FeedXML);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "ParseFeedAtom", Options);
+
+    // END
+
+    Process(Result, "RSS", "ParseFeedAtom");
 
 EndProcedure
 

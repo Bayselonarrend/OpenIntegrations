@@ -717,6 +717,104 @@ EndFunction
 
 #EndRegion
 
+#Region DateMethods
+
+Function GetCurrentDate() Export
+
+    If IsOneScript() Then
+
+        CurrentDate = CurrentDate();
+
+    Else
+
+        CurrentDate = Undefined;
+
+
+    EndIf;
+
+    Return CurrentDate;
+
+EndFunction
+
+Function UNIXTime(Val Date) Export
+
+    OTD  = New TypeDescription("Date");
+    Date = OTD.AdjustValue(Date);
+
+    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "ND=10; NFD=0; NG=0");
+    UNIX = StrReplace(UNIX, ","       , "");
+    UNIX = StrReplace(UNIX, Chars.NBSp, "");
+    UNIX = StrReplace(UNIX, " "       , "");
+    UNIX = Left(UNIX, 10);
+
+    Return UNIX;
+
+EndFunction
+
+Function ISOTimestamp(Val Date) Export
+
+    Label = Left(XMLString(Date), 19) + "Z";
+    Label = StrReplace(Label, "-", "");
+    Label = StrReplace(Label, ":", "");
+
+    Return Label;
+
+EndFunction
+
+Function DateISO8601(Val Date) Export
+
+    Return XMLString(Date);
+
+EndFunction
+
+Function DateRFC3339(Val Date, Val Offset = "Z") Export
+
+    OPI_TypeConversion.GetDate(Date);
+    OPI_TypeConversion.GetLine(Offset);
+
+    Return XMLString(Date) + Offset;
+
+EndFunction
+
+Function DateRFC822(Date) Export
+
+    DaysOfWeek = New Map;
+    DaysOfWeek.Insert(1, "Mon");
+    DaysOfWeek.Insert(2, "Tue");
+    DaysOfWeek.Insert(3, "Wed");
+    DaysOfWeek.Insert(4, "Thu");
+    DaysOfWeek.Insert(5, "Fri");
+    DaysOfWeek.Insert(6, "Sat");
+    DaysOfWeek.Insert(7, "Sun");
+
+    Months = New Map;
+    Months.Insert(1 , "Jan");
+    Months.Insert(2 , "Feb");
+    Months.Insert(3 , "Mar");
+    Months.Insert(4 , "Apr");
+    Months.Insert(5 , "May");
+    Months.Insert(6 , "Jun");
+    Months.Insert(7 , "Jul");
+    Months.Insert(8 , "Aug");
+    Months.Insert(9 , "Sep");
+    Months.Insert(10, "Oct");
+    Months.Insert(11, "Nov");
+    Months.Insert(12, "Dec");
+
+    DayOfWeek = DaysOfWeek.Get(DayOfWeek(Date));
+    Day = Format(Day(Date), "ND=10; NLZ=");
+    Month     = Months.Get(Month(Date));
+    Year = Format(Year(Date), "NG=0");
+    Time = Format(Date, "DF='HH:mm:ss'");
+
+    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", DayOfWeek, Day, Month, Year, Time);
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #Region OneScript
 
 Function IsOneScript() Export
@@ -914,79 +1012,6 @@ Function NumberToString(Val Value) Export
 
 EndFunction
 
-Function GetCurrentDate() Export
-
-    If IsOneScript() Then
-        CurrentDate = CurrentDate();
-    Else
-        CurrentDate = Undefined;
-    EndIf;
-
-    Return CurrentDate;
-
-EndFunction
-
-Function UNIXTime(Val Date) Export
-
-    OTD  = New TypeDescription("Date");
-    Date = OTD.AdjustValue(Date);
-
-    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "ND=10; NFD=0; NG=0");
-    UNIX = StrReplace(UNIX, ","       , "");
-    UNIX = StrReplace(UNIX, Chars.NBSp, "");
-    UNIX = StrReplace(UNIX, " "       , "");
-    UNIX = Left(UNIX, 10);
-
-    Return UNIX;
-
-EndFunction
-
-Function DateRFC3339(Val Date, Val Offset = "Z") Export
-
-    OPI_TypeConversion.GetDate(Date);
-    OPI_TypeConversion.GetLine(Offset);
-
-    Return XMLString(Date) + Offset;
-
-EndFunction
-
-Function DateRFC822(Date) Export
-
-    DaysOfWeek = New Map;
-    DaysOfWeek.Insert(1, "Mon");
-    DaysOfWeek.Insert(2, "Tue");
-    DaysOfWeek.Insert(3, "Wed");
-    DaysOfWeek.Insert(4, "Thu");
-    DaysOfWeek.Insert(5, "Fri");
-    DaysOfWeek.Insert(6, "Sat");
-    DaysOfWeek.Insert(7, "Sun");
-
-    Months = New Map;
-    Months.Insert(1 , "Jan");
-    Months.Insert(2 , "Feb");
-    Months.Insert(3 , "Mar");
-    Months.Insert(4 , "Apr");
-    Months.Insert(5 , "May");
-    Months.Insert(6 , "Jun");
-    Months.Insert(7 , "Jul");
-    Months.Insert(8 , "Aug");
-    Months.Insert(9 , "Sep");
-    Months.Insert(10, "Oct");
-    Months.Insert(11, "Nov");
-    Months.Insert(12, "Dec");
-
-    DayOfWeek = DaysOfWeek.Get(DayOfWeek(Date));
-    Day = Format(Day(Date), "ND=10; NLZ=");
-    Month     = Months.Get(Month(Date));
-    Year = Format(Year(Date), "NG=0");
-    Time = Format(Date, "DF='HH:mm:ss'");
-
-    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", DayOfWeek, Day, Month, Year, Time);
-
-    Return Result;
-
-EndFunction
-
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;
@@ -1018,16 +1043,6 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
     EndIf;
 
     Return Size;
-
-EndFunction
-
-Function ISOTimestamp(Val Date) Export
-
-    Label = Left(XMLString(Date), 19) + "Z";
-    Label = StrReplace(Label, "-", "");
-    Label = StrReplace(Label, ":", "");
-
-    Return Label;
 
 EndFunction
 
@@ -1395,6 +1410,26 @@ Function СравнитьДвеКоллекции(Val ПерваяКоллекц
     Return CompareTwoCollections(ПерваяКоллекция, ВтораяКоллекция, ИсключаемыеПоля, РодительскоеПоле);
 EndFunction
 
+Function ПолучитьТекущуюДату() Export
+    Return GetCurrentDate();
+EndFunction
+
+Function ВременнаяМеткаISO(Val Дата) Export
+    Return ISOTimestamp(Дата);
+EndFunction
+
+Function ДатаISO8601(Val Дата) Export
+    Return DateISO8601(Дата);
+EndFunction
+
+Function ДатаRFC3339(Val Дата, Val Смещение = "Z") Export
+    Return DateRFC3339(Дата, Смещение);
+EndFunction
+
+Function ДатаRFC822(Дата) Export
+    Return DateRFC822(Дата);
+EndFunction
+
 Function ЭтоOneScript() Export
     Return IsOneScript();
 EndFunction
@@ -1439,24 +1474,8 @@ Function ЧислоВСтроку(Val Значение) Export
     Return NumberToString(Значение);
 EndFunction
 
-Function ПолучитьТекущуюДату() Export
-    Return GetCurrentDate();
-EndFunction
-
-Function ДатаRFC3339(Val Дата, Val Смещение = "Z") Export
-    Return DateRFC3339(Дата, Смещение);
-EndFunction
-
-Function ДатаRFC822(Дата) Export
-    Return DateRFC822(Дата);
-EndFunction
-
 Function ПреобразоватьДанныеСПолучениемРазмера(Данные, Val МинимальныйРазмерДляПотока = 0) Export
     Return ConvertDataWithSizeRetrieval(Данные, МинимальныйРазмерДляПотока);
-EndFunction
-
-Function ВременнаяМеткаISO(Val Дата) Export
-    Return ISOTimestamp(Дата);
 EndFunction
 
 Function СоздатьПоток(Val ПутьКФайлу = Undefined) Export

@@ -1,0 +1,29 @@
+{
+  "reportPath": "./test_results/RSS.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPI_Tests.RSS_RSSMethods",
+"OPI_Tests.RSS_AtomMethods"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/RSS.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
