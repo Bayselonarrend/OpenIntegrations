@@ -850,6 +850,24 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-RSS') {
+            when {
+                expression { return shouldRunStage('RSS') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'RSS_МетодыRSS'],
+						['./src/ru/OInt/tests/Modules/OPI_ТестыCLI.os', 'RSS_МетодыAtom'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 
 	}
 	post{

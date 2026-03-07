@@ -1,0 +1,31 @@
+    FeedTitle = "Test Atom feed";
+    FeedLink  = "https://example.com";
+    FeedID    = "https://example.com/feed";
+
+    ItemsArray = New Array;
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "First record";
+    ElementStructure["id"]        = "https://example.com/entry1";
+    ElementStructure["link"]      = "https://example.com/entry1";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "First record summary";
+    ElementStructure["content"]   = "Full content of the first record";
+    ElementStructure["author"]    = "First Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "Second record";
+    ElementStructure["id"]        = "https://example.com/entry2";
+    ElementStructure["link"]      = "https://example.com/entry2";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "Second record summary";
+    ElementStructure["content"]   = "Full content of the second record";
+    ElementStructure["author"]    = "Second Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedAtom(FeedTitle, FeedLink, FeedID, ItemsArray);

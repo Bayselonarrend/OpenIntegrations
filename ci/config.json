@@ -199,7 +199,8 @@
      "BuildCheck": true,
      "MongoDB": true,
      "GRPC": true,
-     "ClickHouse": true
+     "ClickHouse": true,
+     "RSS": true
     }
    }
   }

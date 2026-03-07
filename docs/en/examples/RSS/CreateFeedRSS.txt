@@ -1,0 +1,27 @@
+    ChannelTitle       = "Test RSS channel";
+    ChannelDescription = "Test RSS channel description";
+    ChannelLink        = "https://example.com";
+
+    ItemsArray = New Array;
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "First element";
+    ElementStructure["description"] = "First element description";
+    ElementStructure["link"]        = "https://example.com/item1";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-1";
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "Second element";
+    ElementStructure["description"] = "Second element description";
+    ElementStructure["link"]        = "https://example.com/item2";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-2";
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedRSS(ChannelTitle, ChannelDescription, ChannelLink, ItemsArray);

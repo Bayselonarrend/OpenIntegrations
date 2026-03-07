@@ -3492,6 +3492,30 @@ EndProcedure
 
 #EndRegion
 
+#Region RSS
+
+Procedure RSS_RSSMethods() Export
+
+    TestParameters = New Structure;
+
+    RSS_CreateFeedRSS(TestParameters);
+    RSS_GetFeedItemStructureRSS(TestParameters);
+    RSS_ParseFeedRSS(TestParameters);
+
+EndProcedure
+
+Procedure RSS_AtomMethods() Export
+
+    TestParameters = New Structure;
+
+    RSS_CreateFeedAtom(TestParameters);
+    RSS_GetFeedItemStructureAtom(TestParameters);
+    RSS_ParseFeedAtom(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -28854,6 +28878,146 @@ Procedure ClickHouse_ProcessGRPCReceiving(FunctionParameters)
     // END
 
     Process(Result, "ClickHouse", "ProcessGRPCReceiving");
+
+EndProcedure
+
+#EndRegion
+
+#Region RSS
+
+Procedure RSS_CreateFeedRSS(FunctionParameters)
+
+    ChannelTitle       = "Test RSS channel";
+    ChannelDescription = "Test RSS channel description";
+    ChannelLink        = "https://example.com";
+
+    ItemsArray = New Array;
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "First element";
+    ElementStructure["description"] = "First element description";
+    ElementStructure["link"]        = "https://example.com/item1";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-1";
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "Second element";
+    ElementStructure["description"] = "Second element description";
+    ElementStructure["link"]        = "https://example.com/item2";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-2";
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedRSS(ChannelTitle, ChannelDescription, ChannelLink, ItemsArray);
+
+    // END
+
+    Process(Result, "RSS", "CreateFeedRSS", , FunctionParameters);
+
+EndProcedure
+
+Procedure RSS_GetFeedItemStructureRSS(FunctionParameters)
+
+    Result = OPI_RSS.GetFeedItemStructureRSS();
+
+    // END
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS");
+
+    Result = OPI_RSS.GetFeedItemStructureRSS(True);
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS", "Clear");
+
+    Result = OPI_RSS.GetFeedItemStructureRSS(False, True);
+
+    Process(Result, "RSS", "GetFeedItemStructureRSS", "Map");
+
+EndProcedure
+
+Procedure RSS_ParseFeedRSS(FunctionParameters)
+
+    FeedXML = FunctionParameters["RSS_FeedXML"];
+
+    Result = OPI_RSS.ParseFeedRSS(FeedXML);
+
+    // END
+
+    Process(Result, "RSS", "ParseFeedRSS");
+
+EndProcedure
+
+Procedure RSS_CreateFeedAtom(FunctionParameters)
+
+    FeedTitle = "Test Atom feed";
+    FeedLink  = "https://example.com";
+    FeedID    = "https://example.com/feed";
+
+    ItemsArray = New Array;
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "First record";
+    ElementStructure["id"]        = "https://example.com/entry1";
+    ElementStructure["link"]      = "https://example.com/entry1";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "First record summary";
+    ElementStructure["content"]   = "Full content of the first record";
+    ElementStructure["author"]    = "First Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure              = OPI_RSS.GetFeedItemStructureAtom(True);
+    ElementStructure["title"]     = "Second record";
+    ElementStructure["id"]        = "https://example.com/entry2";
+    ElementStructure["link"]      = "https://example.com/entry2";
+    ElementStructure["updated"]   = OPI_Tools.GetCurrentDate();
+    ElementStructure["summary"]   = "Second record summary";
+    ElementStructure["content"]   = "Full content of the second record";
+    ElementStructure["author"]    = "Second Author";
+    ElementStructure["published"] = OPI_Tools.GetCurrentDate();
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedAtom(FeedTitle, FeedLink, FeedID, ItemsArray);
+
+    // END
+
+    Process(Result, "RSS", "CreateFeedAtom", , FunctionParameters);
+
+EndProcedure
+
+Procedure RSS_GetFeedItemStructureAtom(FunctionParameters)
+
+    Result = OPI_RSS.GetFeedItemStructureAtom();
+
+    // END
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom");
+
+    Result = OPI_RSS.GetFeedItemStructureAtom(True);
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom", "Clear");
+
+    Result = OPI_RSS.GetFeedItemStructureAtom(False, True);
+
+    Process(Result, "RSS", "GetFeedItemStructureAtom", "Map");
+
+EndProcedure
+
+Procedure RSS_ParseFeedAtom(FunctionParameters)
+
+    FeedXML = FunctionParameters["RSS_AtomFeedXML"];
+
+    Result = OPI_RSS.ParseFeedAtom(FeedXML);
+
+    // END
+
+    Process(Result, "RSS", "ParseFeedAtom");
 
 EndProcedure
 
