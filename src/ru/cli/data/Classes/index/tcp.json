@@ -3,7 +3,16 @@
 	"library": "tcp",
 	"self_depend": false,
 	"dependencies": null,
-	"regions": [],
+	"regions": [
+		{
+			"name": "Методы клиента",
+			"methods": [
+				"ОбработатьЗапрос",
+				"ПолучитьНастройкиTls",
+				"ПолучитьНастройкиПрокси"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ОбработатьЗапрос",

@@ -7448,5 +7448,55 @@
 		"lib": "ClickHouse",
 		"name": "ProcessGRPCReceiving",
 		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "CreateFeedRSS",
+		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureRSS",
+		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureRSS",
+		"variant": "Clear"
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureRSS",
+		"variant": "Map"
+	},
+	{
+		"lib": "RSS",
+		"name": "ParseFeedRSS",
+		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "CreateFeedAtom",
+		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureAtom",
+		"variant": ""
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureAtom",
+		"variant": "Clear"
+	},
+	{
+		"lib": "RSS",
+		"name": "GetFeedItemStructureAtom",
+		"variant": "Map"
+	},
+	{
+		"lib": "RSS",
+		"name": "ParseFeedAtom",
+		"variant": ""
 	}
 ]

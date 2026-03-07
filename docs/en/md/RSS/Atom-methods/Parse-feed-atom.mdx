@@ -1,0 +1,35 @@
+---
+sidebar_position: 3
+description: Parse feed (Atom) and other functions to work with RSS in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, RSS]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Parse feed (Atom)
+ Parses the XML of an Atom feed and returns a structure with feed data and items
+
+
+
+`Function ParseFeedAtom(Val XMLText) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | XMLText | --xml | String | &#x2714; | XML content of Atom feed |
+
+  
+  Returns:  Structure Of KeyAndValue - Feed structure
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    FeedXML = "";
+
+    Result = OPI_RSS.ParseFeedAtom(FeedXML);
+```
+ 
+
+
+
+

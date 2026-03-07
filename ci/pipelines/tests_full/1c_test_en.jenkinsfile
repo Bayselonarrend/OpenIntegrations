@@ -735,6 +735,23 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-RSS') {
+            when {
+                expression { return shouldRunStage('RSS') }
+            }
+			steps {
+				script {
+					def tests = [
+						['RSS', './service/yaxunit_conf/en/RSS.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 
 	}
 	post{

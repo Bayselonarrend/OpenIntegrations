@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+description: Create feed (RSS) and other functions to work with RSS in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, RSS]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create feed (RSS)
+ Creates RSS feed text
+
+
+
+`Function CreateFeedRSS(Val ChannelTitle, Val ChannelDescription, Val ChannelLink, Val Items, Val UpdateDate = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ChannelTitle | --name | String | &#x2714; | Channel title |
+  | ChannelDescription | --descr | String | &#x2714; | Channel description |
+  | ChannelLink | --link | String | &#x2714; | Channel link |
+  | Items | --items | Array of Structure | &#x2714; | Feed items. See GetFeedItemStructureRSS |
+  | UpdateDate | --date | Date, Undefined | &#x2716; | Update date. Current if not filled |
+
+  
+  Returns:  String - Channel XML feed
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ChannelTitle       = "Test RSS channel";
+    ChannelDescription = "Test RSS channel description";
+    ChannelLink        = "https://example.com";
+
+    ItemsArray = New Array;
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "First element";
+    ElementStructure["description"] = "First element description";
+    ElementStructure["link"]        = "https://example.com/item1";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-1";
+
+    ItemsArray.Add(ElementStructure);
+
+    ElementStructure                = OPI_RSS.GetFeedItemStructureRSS(True);
+    ElementStructure["title"]       = "Second element";
+    ElementStructure["description"] = "Second element description";
+    ElementStructure["link"]        = "https://example.com/item2";
+    ElementStructure["pubDate"]     = OPI_Tools.GetCurrentDate();
+    ElementStructure["author"]      = "test@example.com";
+    ElementStructure["guid"]        = "item-2";
+
+    ItemsArray.Add(ElementStructure);
+
+    Result = OPI_RSS.CreateFeedRSS(ChannelTitle, ChannelDescription, ChannelLink, ItemsArray);
+```
+ 
+
+
+
+

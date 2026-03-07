@@ -717,6 +717,105 @@ EndFunction
 
 #EndRegion
 
+#Region DateMethods
+
+Function GetCurrentDate() Export
+
+    If IsOneScript() Then
+
+        CurrentDate = CurrentDate();
+
+    Else
+
+        // !OInt CurrentDate = Undefined;
+
+        CurrentDate = CurrentSessionDate(); // !OPI
+
+    EndIf;
+
+    Return CurrentDate;
+
+EndFunction
+
+Function UNIXTime(Val Date) Export
+
+    OTD  = New TypeDescription("Date");
+    Date = OTD.AdjustValue(Date);
+
+    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "ND=10; NFD=0; NG=0");
+    UNIX = StrReplace(UNIX, ","       , "");
+    UNIX = StrReplace(UNIX, Chars.NBSp, "");
+    UNIX = StrReplace(UNIX, " "       , "");
+    UNIX = Left(UNIX, 10);
+
+    Return UNIX;
+
+EndFunction
+
+Function ISOTimestamp(Val Date) Export
+
+    Label = Left(XMLString(Date), 19) + "Z";
+    Label = StrReplace(Label, "-", "");
+    Label = StrReplace(Label, ":", "");
+
+    Return Label;
+
+EndFunction
+
+Function DateISO8601(Val Date) Export
+
+    Return XMLString(Date);
+
+EndFunction
+
+Function DateRFC3339(Val Date, Val Offset = "Z") Export
+
+    OPI_TypeConversion.GetDate(Date);
+    OPI_TypeConversion.GetLine(Offset);
+
+    Return XMLString(Date) + Offset;
+
+EndFunction
+
+Function DateRFC822(Date) Export
+
+    DaysOfWeek = New Map;
+    DaysOfWeek.Insert(1, "Mon");
+    DaysOfWeek.Insert(2, "Tue");
+    DaysOfWeek.Insert(3, "Wed");
+    DaysOfWeek.Insert(4, "Thu");
+    DaysOfWeek.Insert(5, "Fri");
+    DaysOfWeek.Insert(6, "Sat");
+    DaysOfWeek.Insert(7, "Sun");
+
+    Months = New Map;
+    Months.Insert(1 , "Jan");
+    Months.Insert(2 , "Feb");
+    Months.Insert(3 , "Mar");
+    Months.Insert(4 , "Apr");
+    Months.Insert(5 , "May");
+    Months.Insert(6 , "Jun");
+    Months.Insert(7 , "Jul");
+    Months.Insert(8 , "Aug");
+    Months.Insert(9 , "Sep");
+    Months.Insert(10, "Oct");
+    Months.Insert(11, "Nov");
+    Months.Insert(12, "Dec");
+
+    WeekDay = DaysOfWeek.Get(WeekDay(Date));
+    Day = Format(Day(Date), "ND=10; NLZ=");
+    Month   = Months.Get(Month(Date));
+    Year = Format(Year(Date), "NG=0");
+    Time = Format(Date, "DF='HH:mm:ss'");
+
+    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", WeekDay, Day, Month, Year, Time);
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #Region OneScript
 
 Function IsOneScript() Export
@@ -914,80 +1013,6 @@ Function NumberToString(Val Value) Export
 
 EndFunction
 
-Function GetCurrentDate() Export
-
-    If IsOneScript() Then
-        CurrentDate          = CurrentDate();
-    Else
-        // !OInt CurrentDate = Undefined;
-        CurrentDate          = CurrentSessionDate(); // !OPI
-    EndIf;
-
-    Return CurrentDate;
-
-EndFunction
-
-Function UNIXTime(Val Date) Export
-
-    OTD  = New TypeDescription("Date");
-    Date = OTD.AdjustValue(Date);
-
-    UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "ND=10; NFD=0; NG=0");
-    UNIX = StrReplace(UNIX, ","       , "");
-    UNIX = StrReplace(UNIX, Chars.NBSp, "");
-    UNIX = StrReplace(UNIX, " "       , "");
-    UNIX = Left(UNIX, 10);
-
-    Return UNIX;
-
-EndFunction
-
-Function DateRFC3339(Val Date, Val Offset = "Z") Export
-
-    OPI_TypeConversion.GetDate(Date);
-    OPI_TypeConversion.GetLine(Offset);
-
-    Return XMLString(Date) + Offset;
-
-EndFunction
-
-Function DateRFC822(Date) Export
-
-    DaysOfWeek = New Map;
-    DaysOfWeek.Insert(1, "Mon");
-    DaysOfWeek.Insert(2, "Tue");
-    DaysOfWeek.Insert(3, "Wed");
-    DaysOfWeek.Insert(4, "Thu");
-    DaysOfWeek.Insert(5, "Fri");
-    DaysOfWeek.Insert(6, "Sat");
-    DaysOfWeek.Insert(7, "Sun");
-
-    Months = New Map;
-    Months.Insert(1 , "Jan");
-    Months.Insert(2 , "Feb");
-    Months.Insert(3 , "Mar");
-    Months.Insert(4 , "Apr");
-    Months.Insert(5 , "May");
-    Months.Insert(6 , "Jun");
-    Months.Insert(7 , "Jul");
-    Months.Insert(8 , "Aug");
-    Months.Insert(9 , "Sep");
-    Months.Insert(10, "Oct");
-    Months.Insert(11, "Nov");
-    Months.Insert(12, "Dec");
-
-    WeekDay = DaysOfWeek.Get(WeekDay(Date));
-    Day = Format(Day(Date), "ND=10; NLZ=");
-    Month   = Months.Get(Month(Date));
-    Year = Format(Year(Date), "NG=0");
-    Time = Format(Date, "DF='HH:mm:ss'");
-
-    Result = StrTemplate("%1, %2 %3 %4 %5 +0000", WeekDay, Day, Month, Year, Time);
-
-    Return Result;
-
-EndFunction
-
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;
@@ -1019,16 +1044,6 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
     EndIf;
 
     Return Size;
-
-EndFunction
-
-Function ISOTimestamp(Val Date) Export
-
-    Label = Left(XMLString(Date), 19) + "Z";
-    Label = StrReplace(Label, "-", "");
-    Label = StrReplace(Label, ":", "");
-
-    Return Label;
 
 EndFunction
 

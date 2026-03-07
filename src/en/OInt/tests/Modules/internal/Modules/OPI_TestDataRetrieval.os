@@ -61,7 +61,8 @@
 
 #Use "../../../../tools/main"
 #Use "../../../../tools/http"
-#Use "../../../../api"
+#Use "../../../../api/openai"
+#Use "../../../../api/rportal"
 #Use asserts
 
 #Region Internal
@@ -161,6 +162,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("ReportPortal"   , 5);
     Sections.Insert("GRPC"           , 5);
     Sections.Insert("ClickHouse"     , 5);
+    Sections.Insert("RSS"            , 5);
 
     Return Sections;
 
@@ -210,6 +212,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("ReportPortal"   , StandardDependencies);
     Sections.Insert("GRPC"           , StandardDependencies);
     Sections.Insert("ClickHouse"     , StandardDependencies);
+    Sections.Insert("RSS"            , StandardDependencies);
 
     Return Sections;
 
@@ -254,6 +257,7 @@ Function GetTestTable() Export
     GreenMax  = "GreenMax";
     GRPC      = "GRPC";
     CHouse    = "ClickHouse";
+    RSS       = "RSS";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -446,6 +450,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "GR_Streaming"                        , "Streaming"                       , GRPC);
     NewTest(TestTable, "CH_CommonMethods"                    , "Common methods"                  , CHouse);
     NewTest(TestTable, "CH_GRPC"                             , "GRPC"                            , CHouse);
+    NewTest(TestTable, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
+    NewTest(TestTable, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
 
     Return TestTable;
 
@@ -13358,6 +13364,114 @@ Function Check_ClickHouse_ProcessGRPCReceiving(Val Result, Val Option)
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["messages"].Count() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_CreateFeedRSS(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+    ExpectsThat(Result).Заполнено();
+    ExpectsThat(StrFind(Result, "<?xml") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "<rss") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "<channel>") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "<item>") > 0).Равно(True);
+
+    WriteParameter("RSS_FeedXML", Result);
+    Parameters.Insert("RSS_FeedXML", Result);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_GetFeedItemStructureRSS(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option    = "Clear" Then
+        ExpectsThat(Result["title"]).Равно("");
+        ExpectsThat(Result["description"]).Равно("");
+        ExpectsThat(Result["link"]).Равно("");
+    ElsIf Option = "Map" Then
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+    Else
+        ExpectsThat(Result["title"]).Заполнено();
+        ExpectsThat(Result["description"]).Заполнено();
+        ExpectsThat(Result["link"]).Заполнено();
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_ParseFeedRSS(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["title"]).Заполнено();
+    ExpectsThat(Result["description"]).Заполнено();
+    ExpectsThat(Result["link"]).Заполнено();
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+    ExpectsThat(Result["items"].Count() > 0).Равно(True);
+
+    FirestElement = Result["items"][0];
+    ExpectsThat(FirestElement["title"]).Заполнено();
+    ExpectsThat(FirestElement["description"]).Заполнено();
+    ExpectsThat(FirestElement["link"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_CreateFeedAtom(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+    ExpectsThat(Result).Заполнено();
+    ExpectsThat(StrFind(Result, "<?xml") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "<feed") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "xmlns=""http://www.w3.org/2005/Atom""") > 0).Равно(True);
+    ExpectsThat(StrFind(Result, "<entry>") > 0).Равно(True);
+
+    WriteParameter("RSS_AtomFeedXML", Result);
+    Parameters.Insert("RSS_AtomFeedXML", Result);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_GetFeedItemStructureAtom(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option    = "Clear" Then
+        ExpectsThat(Result["title"]).Равно("");
+        ExpectsThat(Result["id"]).Равно("");
+        ExpectsThat(Result["link"]).Равно("");
+    ElsIf Option = "Map" Then
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+    Else
+        ExpectsThat(Result["title"]).Заполнено();
+        ExpectsThat(Result["id"]).Заполнено();
+        ExpectsThat(Result["link"]).Заполнено();
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RSS_ParseFeedAtom(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["title"]).Заполнено();
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["link"]).Заполнено();
+    ExpectsThat(Result["entries"]).ИмеетТип("Array");
+    ExpectsThat(Result["entries"].Count() > 0).Равно(True);
+
+    FirstRecord = Result["entries"][0];
+    ExpectsThat(FirstRecord["title"]).Заполнено();
+    ExpectsThat(FirstRecord["id"]).Заполнено();
+    ExpectsThat(FirstRecord["link"]).Заполнено();
 
     Return Result;
 
