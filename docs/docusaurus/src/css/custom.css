@@ -393,7 +393,6 @@ li > a.menu__link {
 .GreenMax a::before,
 .GRPC a::before,
 .GoogleSheets a::before,
-.RSS a::before,
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
@@ -404,6 +403,7 @@ li > a.menu__link {
 .PostgreSQL a::before,
 .RCON a::before,
 .ReportPortal a::before,
+.RSS a::before,
 .S3 a::before,
 .SFTP a::before,
 .Slack a::before,
@@ -469,10 +469,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/GoogleSheets.png);
 }
 
-.RSS > div > a::before{
-  content: url(../../static/img/APIs/small/RSS.png);
-}
-
 .MongoDB > div > a::before{
   content: url(../../static/img/APIs/small/MongoDB.png);
 }
@@ -511,6 +507,10 @@ li > a.menu__link {
 
 .ReportPortal > div > a::before{
   content: url(../../static/img/APIs/small/ReportPortal.png);
+}
+
+.RSS > div > a::before{
+  content: url(../../static/img/APIs/small/RSS.png);
 }
 
 .S3 > div > a::before{
