@@ -1,4 +1,4 @@
-// OneScript: ./OInt/api/metrika/Modules/OPI_RSS.os
+// OneScript: ./OInt/api/rss/Modules/OPI_RSS.os
 // Lib: RSS
 // CLI: rss
 // Keywords: rss, atom, feed
