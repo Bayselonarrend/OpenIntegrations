@@ -27,8 +27,8 @@ ReportPortal — это система управления результата
 Получается на основе логина и пароля пользователя и имеет ограниченный срок действия:
 
 ```bsl
-URL = "https://your-reportportal-instance.com";
-Логин = "your_username";
+URL    = "https://your-reportportal-instance.com";
+Логин  = "your_username";
 Пароль = "your_password";
 
 Ответ = OPI_ReportPortal.ПолучитьВременныйТокен(URL, Логин, Пароль);
@@ -45,7 +45,7 @@ URL = "https://your-reportportal-instance.com";
 
 ```bsl
 IDПользователя = "your_user_id";
-ИмяКлюча = "API Key for Integration";
+ИмяКлюча       = "API Key for Integration";
 
 Ответ = OPI_ReportPortal.ПолучитьПостоянныйТокен(URL, Токен, IDПользователя, ИмяКлюча);
 ПостоянныйТокен = Ответ["apiKey"];
