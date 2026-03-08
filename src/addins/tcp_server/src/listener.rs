@@ -2,6 +2,7 @@ use std::sync::Arc;
 use std::time::Duration;
 use tokio::net::{TcpListener, TcpStream};
 use tokio::io::AsyncWriteExt;
+use tokio::sync::broadcast;
 use dashmap::DashMap;
 use serde_json::json;
 use uuid::Uuid;
@@ -14,7 +15,7 @@ pub struct ConnectionInfo {
 
 pub struct ServerState {
     pub connections: Arc<DashMap<String, ConnectionInfo>>,
-    pub queue_size: usize,
+    shutdown_tx: broadcast::Sender<()>,
 }
 
 impl ServerState {
@@ -25,32 +26,42 @@ impl ServerState {
 
         let connections: Arc<DashMap<String, ConnectionInfo>> = Arc::new(DashMap::new());
         let connections_clone = connections.clone();
+        
+        let (shutdown_tx, mut shutdown_rx) = broadcast::channel(1);
 
         tokio::spawn(async move {
             loop {
-                match listener.accept().await {
-                    Ok((stream, addr)) => {
-                        let connection_id = Uuid::new_v4().to_string();
+                tokio::select! {
+                    result = listener.accept() => {
+                        match result {
+                            Ok((stream, addr)) => {
+                                let connection_id = Uuid::new_v4().to_string();
 
-                        // Удаляем старое соединение если очередь переполнена
-                        if connections_clone.len() >= queue_size {
-                            if let Some(entry) = connections_clone.iter().next() {
-                                let old_id = entry.key().clone();
-                                drop(entry);
-                                connections_clone.remove(&old_id);
+                                // Удаляем старое соединение если очередь переполнена
+                                if connections_clone.len() >= queue_size {
+                                    if let Some(entry) = connections_clone.iter().next() {
+                                        let old_id = entry.key().clone();
+                                        drop(entry);
+                                        connections_clone.remove(&old_id);
+                                    }
+                                }
+
+                                connections_clone.insert(
+                                    connection_id,
+                                    ConnectionInfo {
+                                        stream,
+                                        addr: addr.to_string(),
+                                    },
+                                );
+                            }
+                            Err(e) => {
+                                eprintln!("Failed to accept connection: {}", e);
                             }
                         }
-
-                        connections_clone.insert(
-                            connection_id,
-                            ConnectionInfo {
-                                stream,
-                                addr: addr.to_string(),
-                            },
-                        );
                     }
-                    Err(e) => {
-                        eprintln!("Failed to accept connection: {}", e);
+                    _ = shutdown_rx.recv() => {
+                        // Получен сигнал остановки - выходим из цикла
+                        break;
                     }
                 }
             }
@@ -58,7 +69,7 @@ impl ServerState {
 
         Ok(ServerState {
             connections,
-            queue_size,
+            shutdown_tx,
         })
     }
 
@@ -204,5 +215,18 @@ impl ServerState {
             Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => true, // Нет данных - активно
             _ => true,
         }
+    }
+}
+
+impl Drop for ServerState {
+    fn drop(&mut self) {
+        // Отправляем сигнал остановки listener task
+        let _ = self.shutdown_tx.send(());
+        
+        // Закрываем все соединения
+        for mut entry in self.connections.iter_mut() {
+            let _ = entry.value_mut().stream.try_write(&[]);
+        }
+        self.connections.clear();
     }
 }
