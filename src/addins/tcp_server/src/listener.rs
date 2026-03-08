@@ -63,54 +63,63 @@ impl ServerState {
     }
 
     pub async fn get_next_message(&mut self, timeout_ms: u64) -> String {
-        let mut to_remove = Vec::new();
+        let start = std::time::Instant::now();
+        let timeout = Duration::from_millis(timeout_ms);
+        let poll_interval = Duration::from_millis(10);
 
-        for mut entry in self.connections.iter_mut() {
-            let conn_id = entry.key().clone();
-            let conn_info = entry.value_mut();
+        loop {
+            let mut to_remove = Vec::new();
 
-            let mut buffer = vec![0u8; 8192];
-            match conn_info.stream.try_read(&mut buffer) {
-                Ok(0) => {
-                    to_remove.push(conn_id);
-                }
-                Ok(n) => {
-                    let message = buffer[..n].to_vec();
-                    let addr = conn_info.addr.clone();
+            for mut entry in self.connections.iter_mut() {
+                let conn_id = entry.key().clone();
+                let conn_info = entry.value_mut();
 
-                    let still_active = Self::check_connection_active(&mut conn_info.stream);
-
-                    if !still_active {
-                        to_remove.push(conn_id.clone());
+                let mut buffer = vec![0u8; 8192];
+                match conn_info.stream.try_read(&mut buffer) {
+                    Ok(0) => {
+                        to_remove.push(conn_id);
                     }
+                    Ok(n) => {
+                        let message = buffer[..n].to_vec();
+                        let addr = conn_info.addr.clone();
 
-                    for conn_id in to_remove {
-                        self.connections.remove(&conn_id);
+                        let still_active = Self::check_connection_active(&mut conn_info.stream);
+
+                        if !still_active {
+                            to_remove.push(conn_id.clone());
+                        }
+
+                        for conn_id in to_remove {
+                            self.connections.remove(&conn_id);
+                        }
+
+                        return json!({
+                            "result": true,
+                            "connectionId": conn_id,
+                            "message": message,
+                            "active": still_active,
+                            "address": addr
+                        })
+                        .to_string();
                     }
-
-                    return json!({
-                        "result": true,
-                        "connectionId": conn_id,
-                        "message": message,
-                        "active": still_active,
-                        "address": addr
-                    })
-                    .to_string();
-                }
-                Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {}
-                Err(_) => {
-                    to_remove.push(conn_id);
+                    Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                    }
+                    Err(_) => {
+                        to_remove.push(conn_id);
+                    }
                 }
             }
+
+            for conn_id in to_remove {
+                self.connections.remove(&conn_id);
+            }
+
+            if start.elapsed() >= timeout {
+                return json!({"result": false, "error": "Timeout"}).to_string();
+            }
+
+            tokio::time::sleep(poll_interval).await;
         }
-
-        for conn_id in to_remove {
-            self.connections.remove(&conn_id);
-        }
-
-        tokio::time::sleep(Duration::from_millis(timeout_ms.min(100))).await;
-
-        json!({"result": false, "error": "Timeout"}).to_string()
     }
 
     pub async fn send_message(&mut self, connection_id: &str, message: Vec<u8>) -> String {
@@ -118,7 +127,6 @@ impl ServerState {
             match conn.stream.write_all(&message).await {
                 Ok(_) => json_success(),
                 Err(e) => {
-                    // При ошибке удаляем соединение
                     drop(conn);
                     self.connections.remove(connection_id);
                     json_error(&format!("Failed to send message: {}", e))
@@ -132,14 +140,6 @@ impl ServerState {
     pub async fn close_connection(&mut self, connection_id: &str) -> String {
         if let Some((_, mut conn)) = self.connections.remove(connection_id) {
             let _ = conn.stream.shutdown().await;
-            json_success()
-        } else {
-            json_error("Connection not found")
-        }
-    }
-
-    pub fn remove_connection(&mut self, connection_id: &str) -> String {
-        if self.connections.remove(connection_id).is_some() {
             json_success()
         } else {
             json_error("Connection not found")
