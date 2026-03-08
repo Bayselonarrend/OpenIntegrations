@@ -23,10 +23,6 @@ enum BackendCommand {
         message: Vec<u8>,
         response: Sender<String>,
     },
-    RemoveConnection {
-        connection_id: String,
-        response: Sender<String>,
-    },
     CloseConnection {
         connection_id: String,
         response: Sender<String>,
@@ -94,15 +90,6 @@ impl TcpServerBackend {
                                 let result = rt.block_on(async {
                                     state.send_message(&connection_id, message).await
                                 });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
-                        }
-
-                        BackendCommand::RemoveConnection { connection_id, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = state.remove_connection(&connection_id);
                                 let _ = response.send(result);
                             } else {
                                 let _ = response.send(json_error("Server not started"));
@@ -199,21 +186,6 @@ impl TcpServerBackend {
         if let Err(e) = self.tx.send(BackendCommand::SendMessage {
             connection_id,
             message,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
-    }
-
-    pub fn remove_connection(&self, connection_id: String) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.tx.send(BackendCommand::RemoveConnection {
-            connection_id,
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
