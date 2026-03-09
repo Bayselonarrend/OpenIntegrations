@@ -111,12 +111,26 @@ impl AddIn {
             return json_error("Server not started");
         }
 
+        // Сначала закрываем все соединения gracefully
+        let _ = self.close_all_connections();
+
         match self.backend.lock() {
             Ok(mut backend) => {
                 backend.shutdown();
                 self.started = false;
                 json_success()
             }
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn close_all_connections(&self) -> String {
+        if !self.started {
+            return json_error("Server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.close_all_connections(),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }

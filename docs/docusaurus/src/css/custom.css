@@ -53,14 +53,14 @@ strong{
 
 }
 
-.navbar-github-link, .navbar-boosty-link {
+.navbar-github-link, .navbar-boosty-link, .navbar-sourcecraft-link {
   display: flex;
   align-items: center; /* Вертикальное выравнивание */
   text-decoration: none; /* Убираем подчеркивание */
   color: inherit; /* Унаследовать цвет текста */
 }
 
-.navbar-github-link::before, .navbar-boosty-link::before {
+.navbar-github-link::before, .navbar-boosty-link::before, .navbar-sourcecraft-link::before {
   content: '';
  /* Замените на путь к вашему логотипу */
   background-size: contain;
@@ -71,7 +71,7 @@ strong{
 }
 
 /* Если хотите добавить эффект при наведении */
-.navbar-github-link:hover, .navbar-boosty-link:hover {
+.navbar-github-link:hover, .navbar-boosty-link:hover, .navbar-sourcecraft-link:hover {
   opacity: 0.8; /* Легкая прозрачность при наведении */
 }
 
@@ -81,6 +81,10 @@ strong{
 
 .navbar-boosty-link::before{
     background-image: url('./../../static/img/boosty-logo.svg');
+}
+
+.navbar-sourcecraft-link::before{
+    background-image: url('./../../static/img/sourcecraft.svg');
 }
 
 .tipimage{
