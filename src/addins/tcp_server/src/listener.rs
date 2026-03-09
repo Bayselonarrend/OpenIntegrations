@@ -42,7 +42,11 @@ impl ServerState {
                                     if let Some(entry) = connections_clone.iter().next() {
                                         let old_id = entry.key().clone();
                                         drop(entry);
-                                        connections_clone.remove(&old_id);
+                                        
+                                        // Корректно закрываем соединение перед удалением
+                                        if let Some((_, mut old_conn)) = connections_clone.remove(&old_id) {
+                                            let _ = old_conn.stream.shutdown().await;
+                                        }
                                     }
                                 }
 
@@ -157,6 +161,18 @@ impl ServerState {
         }
     }
 
+    pub async fn close_all_connections(&mut self) -> String {
+        let conn_ids: Vec<String> = self.connections.iter().map(|e| e.key().clone()).collect();
+        
+        for conn_id in conn_ids {
+            if let Some((_, mut conn)) = self.connections.remove(&conn_id) {
+                let _ = conn.stream.shutdown().await;
+            }
+        }
+        
+        json_success()
+    }
+
     pub fn shutdown_read(&mut self, connection_id: &str) -> String {
         if let Some(conn) = self.connections.get_mut(connection_id) {
             match conn.stream.try_read(&mut []) {
@@ -224,9 +240,16 @@ impl Drop for ServerState {
         let _ = self.shutdown_tx.send(());
         
         // Закрываем все соединения
-        for mut entry in self.connections.iter_mut() {
-            let _ = entry.value_mut().stream.try_write(&[]);
+        // Используем blocking операцию для корректного закрытия
+        let conn_ids: Vec<String> = self.connections.iter().map(|e| e.key().clone()).collect();
+        
+        for conn_id in conn_ids {
+            if let Some((_, conn)) = self.connections.remove(&conn_id) {
+                // TcpStream::drop() закроет соединение, но не отправит FIN корректно
+                // К сожалению, в Drop нельзя использовать async shutdown()
+                // Соединение закроется при drop, но может быть не graceful
+                drop(conn);
+            }
         }
-        self.connections.clear();
     }
 }

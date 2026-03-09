@@ -15,6 +15,8 @@
 	CommonTools.ЗапуститьПриложениеВКонсоли("npm install -g -D cspell", , Истина);
 	CommonTools.ЗапуститьПриложениеВКонсоли("npm install -g -D @cspell/dict-ru_ru", , Истина);
 	CommonTools.ЗапуститьПриложениеВКонсоли("npx cspell lint ""./src/ru/OPI/**/*.bsl"" --config ./service/cspell.json --locale ""en,ru"" -u", , Истина);
+	CommonTools.ЗапуститьПриложениеВКонсоли("npx cspell lint ""./docs/**/md/Instructions/*.md"" --config ./service/cspell.json --locale ""en,ru"" -u", , Истина);
+	CommonTools.ЗапуститьПриложениеВКонсоли("npx cspell lint ""./docs/**/md/Start/*.md"" --config ./service/cspell.json --locale ""en,ru"" -u", , Истина);
 
 КонецПроцедуры
 

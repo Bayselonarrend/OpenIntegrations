@@ -105,7 +105,7 @@ const config = {
         { name: 'keywords', content: '1С, OneScript, библиотеки, расширение, CLI, 1С:Предприятие, обмен, http, сервисы, интеграция, Telegram, Bitrix24, CDEK, VK, VK Teams, Viber, S3, Twitter, Notion, Яндекс Диск, Google Drive, Календарь Google, Google Таблицы, Slack, Airtable, Dropbox, Neocities, MySQL, SQLite, PostgreSQL, Ollama, TCP, RCON' },
         { name: 'og:title', content: 'Открытый Пакет Интеграций - библиотека интеграции для 1С и OneScript' },
         { name: 'og:description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript' },
-        { name: 'og:image', content: 'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/preview.png' }, // Замените на ваше изображение
+        { name: 'og:image', content: 'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/preview2.png' },
         { name: 'og:url', content: 'https://openintegrations.dev/' },
       ],
 
@@ -175,10 +175,15 @@ window.yaContextCb.push(() => {
           },
           {
             to: 'https://github.com/Bayselonarrend/OpenIntegrations',
-            label: 'GitHub',
             position: 'right',
-            className: 'navbar-github-link', // Класс для кастомизации
+            className: 'navbar-github-link', 
             'aria-label': 'GitHub repository',
+          },
+          {
+            to: 'https://sourcecraft.dev/bayselonarrend/openintegrations',
+            position: 'right',
+            className: 'navbar-sourcecraft-link', 
+            'aria-label': 'SourceCraft repository',
           },
           {
             type: 'dropdown',

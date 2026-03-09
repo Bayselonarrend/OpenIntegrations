@@ -27,6 +27,9 @@ enum BackendCommand {
         connection_id: String,
         response: Sender<String>,
     },
+    CloseAllConnections {
+        response: Sender<String>,
+    },
     ShutdownRead {
         connection_id: String,
         response: Sender<String>,
@@ -100,6 +103,17 @@ impl TcpServerBackend {
                             if let Some(ref mut state) = server_state {
                                 let result = rt.block_on(async {
                                     state.close_connection(&connection_id).await
+                                });
+                                let _ = response.send(result);
+                            } else {
+                                let _ = response.send(json_error("Server not started"));
+                            }
+                        }
+
+                        BackendCommand::CloseAllConnections { response } => {
+                            if let Some(ref mut state) = server_state {
+                                let result = rt.block_on(async {
+                                    state.close_all_connections().await
                                 });
                                 let _ = response.send(result);
                             } else {
@@ -201,6 +215,20 @@ impl TcpServerBackend {
 
         if let Err(e) = self.tx.send(BackendCommand::CloseConnection {
             connection_id,
+            response: response_tx,
+        }) {
+            return json_error(&format!("Failed to send command: {}", e));
+        }
+
+        response_rx
+            .recv()
+            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+    }
+
+    pub fn close_all_connections(&self) -> String {
+        let (response_tx, response_rx) = mpsc::channel();
+
+        if let Err(e) = self.tx.send(BackendCommand::CloseAllConnections {
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
