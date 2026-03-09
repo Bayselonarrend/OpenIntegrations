@@ -4,7 +4,6 @@ src/ru/OInt/** linguist-vendored
 src/en/** linguist-vendored
 media/** linguist-vendored
 docs/** linguist-vendored
-
 * text=auto eol=lf
 *.png binary
 *.jpg binary
@@ -30,6 +29,8 @@ docs/** linguist-vendored
 *.bash text eol=lf
 *.desktop text eol=lf
 *.bat text eol=crlf
+src/*/OInt/addins/*.zip filter=lfs diff=lfs merge=lfs -text
+src/*/OPI/src/CommonTemplates/**/*.addin filter=lfs diff=lfs merge=lfs -text
 media/** filter=lfs diff=lfs merge=lfs -text
 Media/** filter=lfs diff=lfs merge=lfs -text
 media/** !text !filter !merge !diff
