@@ -158,15 +158,9 @@ window.yaContextCb.push(() => {
             to: 'https://boosty.to/bayselonarrend',
             label: 'Поддержать проект',
             position: 'right',
-            className: 'navbar-boosty-link', // Класс для кастомизации
+            className: 'navbar-boosty-link',
             'aria-label': 'Boosty',
           },
-          /*{
-            to: '/courses',
-            label: 'Обучение',
-            position: 'left',
-            'aria-label': 'Download',
-          },*/
           {
             to: '/download',
             label: 'Скачать',
