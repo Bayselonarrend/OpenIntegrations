@@ -356,4 +356,31 @@ EndFunction
 
 #EndRegion
 
+#Region ServerMethods
+
+// Start server !NOCLI
+// Starts listening for messages on the specified port
+//
+// Parameters:
+// Port     - Number - Server port                                            - port
+// PoolSize - Number - Maximum number of simultaneously supported connections - psize
+//
+// Returns:
+// Undefined, Arbitrary - Start server
+Function StartServer(Val Port, Val PoolSize = 100) Export
+
+    OPI_TypeConversion.GetNumber(Port);
+    OPI_TypeConversion.GetNumber(PoolSize);
+
+    AddIn = OPI_AddIns.GetAddIn("TCPServer");
+
+    Result = AddIn.Start(Port, PoolSize);
+    Result = OPI_Tools.JsonToStructure(Result, False);
+
+    Return ?(Result["result"], AddIn, Result);
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
