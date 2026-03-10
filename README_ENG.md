@@ -1,5 +1,4 @@
-![Main](media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
-![Main-light](media/main-light.gif#gh-light-mode-only)
+![Main](media/main.png)
 
 # Open Integrations Package
 
@@ -18,8 +17,8 @@ The project code is organized as a set of independent modules, each responsible 
 <br>
   <div>
   <a href="https://en.openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png?6" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png?6" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/VK/"><img src="media/VK.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/VKTeams/"><img src="media/VKTeams.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Viber/"><img src="media/Viber.png" width="40"></a>
@@ -41,17 +40,17 @@ The project code is organized as a set of independent modules, each responsible 
     <a href="https://en.openintegrations.dev/docs/Instructions/OpenAI/"><img src="media/OpenAI.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/Ollama/"><img src="media/Ollama.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Slack/"><img src="media/Slack.png" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png?6" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/ReportPortal/"><img src="media/ReportPortal.png" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png?6" width="40"></a>
-  <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png?6" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png?6" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
        
    
 </div>
@@ -136,7 +135,7 @@ Regardless of the installation method, OInt CLI is launched with the `oint` comm
 
 OpenIntegrations features comprehensive documentation with examples available at [en.openintegrations.dev](https://en.openintegrations.dev). Here you can find both general guidelines for getting started with each specific API and descriptions of each method with code examples, parameters, and return values.
 
-![Docs](media/docs.png?4)
+![Docs](media/docs.png)
 
 The OpenIntegrations CLI version includes built-in help for all methods. Help is displayed when calling the library without a method, when calling a method without options, or when specifying the `--help` option.
 

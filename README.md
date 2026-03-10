@@ -1,11 +1,9 @@
 
- <img src="media/eng.png?1" align="left" width="32"> *This package is also available in English: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
+ <img src="media/eng.png" align="left" width="32"> *This package is also available in English: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
 
 <hr>
 
-![Main](media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
-![Main-light](media/main-light.gif#gh-light-mode-only)
-
+![Main](media/main.png)
 
 # Открытый пакет интеграций
 
@@ -26,7 +24,7 @@
   <div>
   <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>  
   <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VK/"><img src="media/VK.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VKTeams/"><img src="media/VKTeams.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Viber/"><img src="media/Viber.png" width="40"></a>
@@ -48,17 +46,17 @@
    <a href="https://openintegrations.dev/docs/Instructions/OpenAI/"><img src="media/OpenAI.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/Ollama/"><img src="media/Ollama.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Slack/"><img src="media/Slack.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/ReportPortal/"><img src="media/ReportPortal.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png?6" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
      
 </div> 
 <br>
