@@ -31,6 +31,6 @@ docs/** linguist-vendored
 *.bat text eol=crlf
 src/*/OInt/addins/*.zip filter=lfs diff=lfs merge=lfs -text
 src/*/OPI/src/CommonTemplates/**/*.addin filter=lfs diff=lfs merge=lfs -text
-media/** !text !filter !merge !diff
+media/** binary
 src/*/OInt/addins/*.zip !text !filter !merge !diff
 src/*/BSL/OpenIntegrations/src/CommonTemplates/**/*.addin !text !filter !merge !diff
