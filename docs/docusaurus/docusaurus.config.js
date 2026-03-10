@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from 'prism-react-renderer';
+import { label } from 'three/src/nodes/core/ContextNode.js';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -160,6 +161,27 @@ window.yaContextCb.push(() => {
             position: 'left',
             'aria-label': 'Download',
           },
+            {
+            to: 'https://boosty.to/bayselonarrend',
+            position: 'right',
+            className: 'navbar-boosty-link',
+            'aria-label': 'Boosty',
+            label: 'Поддержать проект'
+          },
+          {
+            to: 'https://github.com/Bayselonarrend/OpenIntegrations',
+            position: 'right',
+            className: 'navbar-github-link', 
+            'aria-label': 'GitHub repository',
+            label: 'GitHub'
+          },
+          {
+            to: 'https://sourcecraft.dev/bayselonarrend/openintegrations',
+            position: 'right',
+            className: 'navbar-sourcecraft-link', 
+            'aria-label': 'SourceCraft repository',
+            label: 'SourceCraft'
+          },
           {
             type: 'dropdown',
             label: 'Translation',
@@ -170,24 +192,6 @@ window.yaContextCb.push(() => {
                 to: 'https://en.openintegrations.dev',
               }
             ],
-          },
-          {
-            to: 'https://boosty.to/bayselonarrend',
-            position: 'right',
-            className: 'navbar-boosty-link',
-            'aria-label': 'Boosty',
-          },
-          {
-            to: 'https://github.com/Bayselonarrend/OpenIntegrations',
-            position: 'right',
-            className: 'navbar-github-link', 
-            'aria-label': 'GitHub repository',
-          },
-          {
-            to: 'https://sourcecraft.dev/bayselonarrend/openintegrations',
-            position: 'right',
-            className: 'navbar-sourcecraft-link', 
-            'aria-label': 'SourceCraft repository',
           },
         ],
       },
