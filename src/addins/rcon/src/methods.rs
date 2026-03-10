@@ -37,7 +37,7 @@ impl AddIn {
             }
             false => {
                 let response_type = auth_result.response_type;
-                json_error(format!("Unexpected authorisation rejection (type {})", response_type))
+                json_error(format!("Unexpected authorization rejection (type {})", response_type))
             }
         }
     }

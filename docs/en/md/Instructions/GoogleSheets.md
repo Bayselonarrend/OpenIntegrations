@@ -47,7 +47,7 @@ OAuth authorization allows obtaining a temporary, refreshable access token for a
 After obtaining the client ID, you need to get the authorization URL. This can be done by passing the ClientID to the `FormCodeRetrievalLink` function. Open the resulting link in a browser, log in with your Google account, then quickly pass the access code from the URL (the text in the address bar after `code=`) to the `GetTokenByCode` function.
 
 :::important
-**The code has a very short lifetime.** After navigating to the link from the `FormCodeRetrievalLink` function and logging in with your Google account, you must pass it to the `GetTokenByCode` function as quickly as possible. It's best to prepare a processing form with an input field and button (in 1C) in advance, or use the OIPI CLI version. If the code expires before executing the `GetTokenByCode` function, you will receive an `invalid_grant` error.
+**The code has a very short lifetime.** After navigating to the link from the `FormCodeRetrievalLink` function and logging in with your Google account, you must pass it to the `GetTokenByCode` function as quickly as possible. It's best to prepare a processing form with an input field and button (in 1C) in advance, or use the OInt CLI version. If the code expires before executing the `GetTokenByCode` function, you will receive an `invalid_grant` error.
 :::
 
 The function will return a structure containing `access_token` and `refresh_token`: the first is used when calling other library functions, and the second is for obtaining a new `access_token` when it expires (using the `RefreshToken` function).

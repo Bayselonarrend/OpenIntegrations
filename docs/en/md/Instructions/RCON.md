@@ -33,4 +33,4 @@ Typically, control via RCON is available on servers for games such as:
  - MTA
  - etc.
 
-This library provides two main functions for operation: `CreateConnection` for connection and authorisation on the server, and `ExecuteCommand` for performing actions. It is also possible to execute single commands without creating a preliminary connection, passing connection parameters to the `ExecuteCommand` method (in this case the connection will be opened and closed within the function, the only option for CLI version).
+This library provides two main functions for operation: `CreateConnection` for connection and authorization on the server, and `ExecuteCommand` for performing actions. It is also possible to execute single commands without creating a preliminary connection, passing connection parameters to the `ExecuteCommand` method (in this case the connection will be opened and closed within the function, the only option for CLI version).

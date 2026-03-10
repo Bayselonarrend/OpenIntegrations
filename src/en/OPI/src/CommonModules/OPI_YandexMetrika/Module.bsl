@@ -429,7 +429,7 @@ Function GetCounterStructure(Val Clear = False) Export
 
     CounterStructure.Insert("goals", GoalsArray);
 
-        PremissionsArray = New Array;
+        PermissionsArray = New Array;
 
             PermissionsStructure = New Structure;
             PermissionsStructure.Insert("perm"               , "<Access level>");
@@ -438,9 +438,9 @@ Function GetCounterStructure(Val Clear = False) Export
             PermissionsStructure.Insert("user_login"         , "<login of the user to whom the authorization has been granted>");
             PermissionsStructure.Insert("user_uid"           , "<uid of the user to whom the authorization has been granted>");
 
-        PremissionsArray.Add(PermissionsStructure);
+        PermissionsArray.Add(PermissionsStructure);
 
-    CounterStructure.Insert("grants", PremissionsArray);
+    CounterStructure.Insert("grants", PermissionsArray);
 
         LabelsArray = New Array;
 

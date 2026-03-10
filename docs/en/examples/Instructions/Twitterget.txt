@@ -11,7 +11,7 @@
   Parameters_.Insert("oauth_consumer_secret", "");
   
   
-  Function Twitterget(Request)
+  Function TwitterGet(Request)
   
   Code = Request.RequestParameters["code"];
   TokenResponse = OPI_Twitter.GetToken(Code, Parameters);
