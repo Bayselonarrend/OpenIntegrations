@@ -3,7 +3,7 @@
 
 <hr>
 
-![Main](media/main.png)
+![Main](media/main2.png)
 
 # Открытый пакет интеграций
 
