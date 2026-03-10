@@ -6,7 +6,7 @@
 
 # Открытый пакет интеграций
 
-![Версия](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10-yellow)![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg =112x)[![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript)[![OneScript](media/boosty.svg)](https://boosty.to/bayselonarrend)
+![Версия](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10-yellow) ![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![OneScript](media/boosty.svg)](https://boosty.to/bayselonarrend)
 
 <br>
 
