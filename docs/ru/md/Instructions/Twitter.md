@@ -17,7 +17,7 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 ### Начало работы
 
   
-Работа с Twitter подразумевает работу с двумя API - v1 (1.1) и v2, каждый из которых отвечает за свою часть функционала. Для начала работы с ними, необходимо сформировать определенный набор данных и параметров авторизации. Его структура описанна в функции `ПолучитьСтандартныеПараметры`
+Работа с Twitter подразумевает работу с двумя API - v1 (1.1) и v2, каждый из которых отвечает за свою часть функционала. Для начала работы с ними, необходимо сформировать определенный набор данных и параметров авторизации. Его структура описана в функции `ПолучитьСтандартныеПараметры`
 
 
 ```bsl
@@ -54,7 +54,7 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 	
 - **client_id**
 
-	ID клиента может быть найден на главной странице настроек в разделе *OAuth 2.0 Clien ID and Client Secret*
+	ID клиента может быть найден на главной странице настроек в разделе *OAuth 2.0 Client ID and Client Secret*
 
 - **client_secret**
 
@@ -63,11 +63,11 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 - **oauth_token** и **oauth_token_secret**
 
-	Могут быть сгененрированы в разделе *Authentication Tokens*, пунтк *Access Token and Secret*
+	Могут быть сгенерированы в разделе *Authentication Tokens*, пункт *Access Token and Secret*
 
 - **oauth_consumer_key** и **oauth_consumer_secret**
 
-	Могут быть сгенерированы в разделе *Consumer Keys*, пунт *API Key and Secret*
+	Могут быть сгенерированы в разделе *Consumer Keys*, пункт *API Key and Secret*
 	
 - **access_token** и **refresh_token**
 
@@ -81,7 +81,7 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 ```bsl title="Получение"
 
-	Функция Twitterget(Запрос)
+	Функция TwitterGet(Запрос)
 		
 		Код         = Запрос.ПараметрыЗапроса["code"];	
 		ОтветТокен  = OPI_Twitter.ПолучитьТокен(Код, Параметры);
