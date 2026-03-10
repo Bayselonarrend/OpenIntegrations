@@ -155,17 +155,27 @@ window.yaContextCb.push(() => {
             label: 'Аддоны',
           },
           {
-            to: 'https://boosty.to/bayselonarrend',
-            label: 'Поддержать проект',
-            position: 'right',
-            className: 'navbar-boosty-link',
-            'aria-label': 'Boosty',
-          },
-          {
             to: '/download',
             label: 'Скачать',
             position: 'left',
             'aria-label': 'Download',
+          },
+          {
+            type: 'dropdown',
+            label: 'Translation',
+            position: 'right',
+            items: [
+              {
+                label: 'English',
+                to: 'https://en.openintegrations.dev',
+              }
+            ],
+          },
+          {
+            to: 'https://boosty.to/bayselonarrend',
+            position: 'right',
+            className: 'navbar-boosty-link',
+            'aria-label': 'Boosty',
           },
           {
             to: 'https://github.com/Bayselonarrend/OpenIntegrations',
@@ -178,18 +188,6 @@ window.yaContextCb.push(() => {
             position: 'right',
             className: 'navbar-sourcecraft-link', 
             'aria-label': 'SourceCraft repository',
-          },
-          {
-            type: 'dropdown',
-            label: 'Translation',
-            position: 'right',
-            items: [
-              {
-                label: 'English',
-                to: 'https://en.openintegrations.dev',
-              }
-              // ... more items
-            ],
           },
         ],
       },
