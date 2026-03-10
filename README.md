@@ -23,7 +23,7 @@
 <br>
   <div>
   <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>  
-  <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png?6" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VK/"><img src="media/VK.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/VKTeams/"><img src="media/VKTeams.png" width="40"></a>
