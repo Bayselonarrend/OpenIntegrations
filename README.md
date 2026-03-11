@@ -1,4 +1,4 @@
-<img src="media/eng.png" align="left" width="32"> *This package is also available in English:* [*Click!*](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)
+<img src="media/eng.png" align="left" width="32"> *This package is also available in English:* [*Click!*](/README_ENG.md)
 
 <hr>
 
