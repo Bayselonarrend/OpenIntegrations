@@ -58,7 +58,7 @@ strong{
   align-items: center; /* Вертикальное выравнивание */
   text-decoration: none; /* Убираем подчеркивание */
   color: inherit; /* Унаследовать цвет текста */
-  padding: 6px;
+  padding: 9px;
 }
 
 .navbar-github-link::before, .navbar-boosty-link::before, .navbar-sourcecraft-link::before {
