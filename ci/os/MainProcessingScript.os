@@ -29,6 +29,7 @@
 	Обработчик = Новый DocsGenerator(ДанныеПроекта);
 	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
 	Обработчик = Новый LocalUpdater(ДанныеПроекта);
+	Обработчик = Новый DraftMethods(ДанныеПроекта);
 
 	CommonTools.СообщитьПроцесс("Processing complete!");
 
