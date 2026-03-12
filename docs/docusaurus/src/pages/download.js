@@ -194,6 +194,9 @@ const DownloadPage = () => {
           <Link to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
             Другие версии →
           </Link>
+          <Link to="https://disk.yandex.com/d/_paRtkfzIV-wGQ">
+            Резервное зеркало (Яндекс Диск) →
+          </Link>
         </div>
       </main>
 
