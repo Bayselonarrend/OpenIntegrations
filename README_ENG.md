@@ -2,10 +2,7 @@
 
 # Open Integrations Package
 
-![Версия](https://img.shields.io/badge/1C_version-8.3.10-yellow)
-[![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759)
-[![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript)
-[![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
+![Version](https://img.shields.io/badge/1C_version-8.3.10-yellow) [![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
 
 **OpenIntegrations** is a set of tools for working with external APIs, available as a library (extension) for 1C:Enterprise / OneScript and a cross-platform console application for Windows and Linux. The project provides ready-made methods for performing application tasks (sending messages, creating documents, SQL queries, etc.) across more than 30 services and technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well as various DBMS and exchange protocols.
 
