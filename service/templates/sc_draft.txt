@@ -1,0 +1,54 @@
+![cover](https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/Covers/SSH.png)
+
+<br>
+
+**🇷🇺: Обновление Открытого пакета интеграций %1: Методы работы**
+**🇺🇸: Open integrations package update %1: Methods of working with**
+
+<hr>
+
+## Новые функции / New functions
+
+>Полное описание всех функций вы можете найти на [openintegrations.dev](https://openintegrations.dev)
+>Full functions description you can find on [en.openintegrations.dev](https://en.openintegrations.dev)
+
+| API | 🇷🇺 | 🇺🇸 |
+|-|-|-|
+| <img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/logo.png" width="32"/> | Шаблон |  Template  |
+
+<hr>
+
+## Скачать / Download
+
+>**Не знаете что выбрать?** Посетите [страницу "О релизах"](https://openintegrations.dev/docs/Start/Release-variants)
+>**Don't know what to choose?**  Visit ["About releases" page](https://en.openintegrations.dev/docs/Start/Release-variants)
+
+|| Тип поставки / Release type | Русская версия | English version |
+|-|-|-|-|
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/3.png" width="32"/>| EDT (1C) | [EDT_RU.zip](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/EDT_RU.zip) | [EDT_EN.zip](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/EDT_EN.zip) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/2.png" width="32"/>| XML (1C) | [XML_RU.zip](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/XML_RU.zip) | [XML_EN.zip](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/XML_EN.zip) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/1.png" width="32"/>| CFE (1C) | [OpenIntegrations_%1_ru.cfe](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/OpenIntegrations_%1_ru.cfe) |  [OpenIntegrations_%1_en.cfe](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/OpenIntegrations_%1_en.cfe) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/6.png" width="32"/>| Installer (OInt CLI + [Melezh](https://github.com/Bayselonarrend/Melezh), Windows) | [oint_%1_installer_ru.exe](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint_%1_installer_ru.exe) | [oint_%1_installer_en.exe](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint_%1_installer_en.exe) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/7.png" width="32"/>| DEB-package (OInt CLI, Debian/Ubuntu) | [oint_%1_all_ru.deb](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint_%1_all_ru.deb) | [oint_%1_all_en.deb](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint_%1_all_en.deb) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/8.png" width="32"/>| RPM-package (OInt CLI, Fedora/RHEL) | [oint-%1-1.noarch_ru.rpm](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1-1.noarch_ru.rpm) | [oint-%1-1.noarch_en.rpm](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1-1.noarch_en.rpm) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/11.png" width="32"/>| AppImage (OInt CLI, Linux) | [oint-%1_ru-x86_64.AppImage](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1_ru-x86_64.AppImage) | [oint-%1_en-x86_64.AppImage](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1_en-x86_64.AppImage) |
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/4.png" width="32"/>| OSPX (OneScript) | [oint-%1_ru.ospx](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1_ru.ospx) | [oint-%1_en.ospx](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-%1_en.ospx) | 
+|<img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/pins/9.png" width="32"/>| OInt CLI OSPX (OneScript) | [oint-cli-%1_ru.ospx](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-cli-%1_ru.ospx) | [oint-cli-%1_en.ospx](https://disk.yandex.com/d/_paRtkfzIV-wGQ/%1/oint-cli-%1_en.ospx) | 
+
+<br>
+
+| 🪞 Зеркало/Mirror: [GitHub](https://github.com/Bayselonarrend/OpenIntegrations/releases/tag/%1) |
+|-|
+
+<hr>
+<br>
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%%20and%%20places/Star.png" alt="Star-Struck" width="30" height="30" align=left />
+
+## Поддержать проект / Support the project
+
+
+Если вам понравился проект, то не забудьте поставить звездочку. Также проект можно поддержать [на Boosty](https://boosty.to/bayselonarrend)
+If you like the project, don't forget to put a star. You can also support the project financially [on Boosty](https://boosty.to/bayselonarrend)
+
+<br>
