@@ -204,6 +204,9 @@ ___
 > - Открытый Пакет интеграций (OpenIntegrations)<br>
 >   Licensed under the MIT License<br>
 >   Список зависимостей находится в файле NOTICE<br>
+
+<hr>
+
 <details>
 <summary>Синопсис</summary>
 <br>
