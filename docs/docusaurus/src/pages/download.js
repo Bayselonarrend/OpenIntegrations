@@ -192,10 +192,10 @@ const DownloadPage = () => {
 
         <div className={styles.otherVersions}>
           <Link to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
-            Другие версии →
+            Все версии (GitHub) →
           </Link>
           <Link to="https://disk.yandex.com/d/_paRtkfzIV-wGQ">
-            Резервное зеркало (Яндекс Диск) →
+            Все версии (Яндекс Диск) →
           </Link>
         </div>
       </main>
