@@ -3,7 +3,7 @@
     .Автор("bayselonarrend")
     .АдресАвтора("bayselonarrend@gmail.com")
     .Описание("OpenIntegrations-based CLI tool")
-    .ВерсияСреды("1.0.7")
+    .ВерсияСреды("2.0.0")
     .ВключитьФайл("core")
     .ВключитьФайл("tools")
     .ВключитьФайл("help")

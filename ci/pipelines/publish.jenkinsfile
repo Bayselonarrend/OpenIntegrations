@@ -1,0 +1,45 @@
+pipeline {
+	agent {
+		label 'windows'
+	}
+
+    stages {
+
+        stage('Melezh - Docker') {
+            steps {
+                build job: 'Melezh/MelezhDocker', wait: true,
+                    parameters: [
+                            [$class: 'StringParameterValue', name: 'VERSION', value: '1.34.0'],
+                            [$class: 'StringParameterValue', name: 'MELEZH_VERSION', value: '0.11.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '1.34.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild'],
+                            [$class: 'BooleanParameterValue', name: 'PUSH_TO_STABLE', value: true]
+                    ]
+            }
+        }
+        stage('Docs - Release update') {
+            steps {
+                build job: 'OpiDocs/OpiDocsRu', wait: true
+                build job: 'OpiDocs/OpiDocsEn', wait: true
+            }
+        }
+        stage('Git - Publish releases') {
+            steps {        
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {          
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/internal/Classes/ReleasePublisher.os %GPGKEY%'
+                }
+            }
+        }
+        stage('OPM - Push') {
+            steps {
+                build job: 'OpiBuild/OpiOpmPush', wait: true
+                build job: 'Melezh/MelezhOpmPush', wait: true
+            }
+        }
+        stage('SourceForge - Update') {
+            steps {
+                build job: 'OpiBuild/OpiSourceForge', wait: true
+            }
+        }
+    }
+}
