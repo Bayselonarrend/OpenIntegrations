@@ -13,7 +13,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("Start"),                      // 0
     name!("Stop"),                       // 1
     name!("GetNextMessage"),             // 2
-    name!("GetMessageFromConnection"),   // 3
+    name!("GetMessage"),                 // 3
     name!("SendMessage"),                // 4
     name!("CloseConnection"),            // 5
     name!("ShutdownRead"),               // 6
@@ -26,7 +26,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 2,  // Start(port, queue_size)
         1 => 0,  // Stop()
         2 => 2,  // GetNextMessage(timeout_ms, max_message_size)
-        3 => 3,  // GetMessageFromConnection(connection_id, timeout_ms, max_message_size)
+        3 => 3,  // GetMessage(connection_id, timeout_ms, max_message_size)
         4 => 2,  // SendMessage(connection_id, message)
         5 => 1,  // CloseConnection(connection_id)
         6 => 1,  // ShutdownRead(connection_id)
@@ -120,7 +120,6 @@ impl AddIn {
             return json_error("Server not started");
         }
 
-        // Сначала закрываем все соединения gracefully
         let _ = self.close_all_connections();
 
         match self.backend.lock() {
