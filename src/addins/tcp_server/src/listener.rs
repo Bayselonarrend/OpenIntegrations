@@ -78,7 +78,7 @@ impl ServerState {
         })
     }
 
-    pub async fn get_next_message(&mut self, timeout_ms: u64) -> String {
+    pub async fn get_next_message(&mut self, timeout_ms: u64, max_message_size: usize) -> String {
         let start = std::time::Instant::now();
         let timeout = Duration::from_millis(timeout_ms);
         let poll_interval = Duration::from_millis(10);
@@ -97,7 +97,7 @@ impl ServerState {
 
             for conn_id in all_ids {
                 if let Some(mut entry) = self.connections.get_mut(&conn_id) {
-                    let mut buffer = vec![0u8; 8192];
+                    let mut buffer = vec![0u8; max_message_size];
                     match entry.stream.try_read(&mut buffer) {
 
                         Ok(0) => {
@@ -145,6 +145,81 @@ impl ServerState {
                 }
             }
 
+            if start.elapsed() >= timeout {
+                return json!({"result": true, "timeout": true}).to_string();
+            }
+
+            tokio::time::sleep(poll_interval).await;
+        }
+    }
+
+    /// Получает сообщение из конкретного соединения
+    pub async fn get_message_from_connection(&mut self, connection_id: &str, timeout_ms: u64, max_message_size: usize) -> String {
+        let start = std::time::Instant::now();
+        let timeout = Duration::from_millis(timeout_ms);
+        let poll_interval = Duration::from_millis(10);
+
+        loop {
+            if let Some(mut entry) = self.connections.get_mut(connection_id) {
+                let mut buffer = vec![0u8; max_message_size];
+                match entry.stream.try_read(&mut buffer) {
+                    Ok(0) => {
+                        // Соединение закрыто
+                        drop(entry);
+                        self.connections.remove(connection_id);
+                        if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+                            self.last_processed = None;
+                        }
+                        return json!({
+                            "result": false,
+                            "error": "Connection closed"
+                        }).to_string();
+                    }
+                    Ok(n) => {
+                        // Получены данные
+                        let message = buffer[..n].to_vec();
+                        let addr = entry.addr.clone();
+
+                        let still_active = Self::check_connection_active(&mut entry.stream);
+
+                        if !still_active {
+                            drop(entry);
+                            self.connections.remove(connection_id);
+                            if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+                                self.last_processed = None;
+                            }
+                        }
+
+                        return json!({
+                            "result": true,
+                            "connectionId": connection_id,
+                            "message": message,
+                            "active": still_active,
+                            "address": addr
+                        })
+                        .to_string();
+                    }
+                    Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                        // Нет данных - ждем
+                    }
+                    Err(e) => {
+                        // Ошибка чтения
+                        drop(entry);
+                        self.connections.remove(connection_id);
+                        if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+                            self.last_processed = None;
+                        }
+                        return json!({
+                            "result": false,
+                            "error": format!("Read error: {}", e)
+                        }).to_string();
+                    }
+                }
+            } else {
+                return json_error("Connection not found");
+            }
+
+            // Проверяем таймаут
             if start.elapsed() >= timeout {
                 return json!({"result": true, "timeout": true}).to_string();
             }
