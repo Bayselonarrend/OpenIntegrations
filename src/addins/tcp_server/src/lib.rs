@@ -10,26 +10,28 @@ impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
-    name!("Start"),                 // 0
-    name!("Stop"),                  // 1
-    name!("GetNextMessage"),        // 2
-    name!("SendMessage"),           // 3
-    name!("CloseConnection"),       // 4
-    name!("ShutdownRead"),          // 5
-    name!("ShutdownWrite"),         // 6
-    name!("GetConnectionsList"),    // 7
+    name!("Start"),                      // 0
+    name!("Stop"),                       // 1
+    name!("GetNextMessage"),             // 2
+    name!("GetMessageFromConnection"),   // 3
+    name!("SendMessage"),                // 4
+    name!("CloseConnection"),            // 5
+    name!("ShutdownRead"),               // 6
+    name!("ShutdownWrite"),              // 7
+    name!("GetConnectionsList"),         // 8
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 2,  // Start(port, queue_size)
         1 => 0,  // Stop()
-        2 => 1,  // GetNextMessage(timeout_ms)
-        3 => 2,  // SendMessage(connection_id, message)
-        4 => 1,  // CloseConnection(connection_id)
-        5 => 1,  // ShutdownRead(connection_id)
-        6 => 1,  // ShutdownWrite(connection_id)
-        7 => 0,  // GetConnectionsList()
+        2 => 2,  // GetNextMessage(timeout_ms, max_message_size)
+        3 => 3,  // GetMessageFromConnection(connection_id, timeout_ms, max_message_size)
+        4 => 2,  // SendMessage(connection_id, message)
+        5 => 1,  // CloseConnection(connection_id)
+        6 => 1,  // ShutdownRead(connection_id)
+        7 => 1,  // ShutdownWrite(connection_id)
+        8 => 0,  // GetConnectionsList()
         _ => 0,
     }
 }
@@ -48,26 +50,33 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         2 => {
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
-            Box::new(obj.get_next_message(timeout_ms))
+            let max_message_size = params[1].get_i32().unwrap_or(8192) as usize;
+            Box::new(obj.get_next_message(timeout_ms, max_message_size))
         },
         3 => {
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let timeout_ms = params[1].get_i32().unwrap_or(1000) as u64;
+            let max_message_size = params[2].get_i32().unwrap_or(8192) as usize;
+            Box::new(obj.get_message_from_connection(&connection_id, timeout_ms, max_message_size))
+        },
+        4 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let message = params[1].get_blob().unwrap_or(&empty_array);
             Box::new(obj.send_message(&connection_id, message.to_vec()))
         },
-        4 => {
+        5 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             Box::new(obj.close_connection(&connection_id))
         },
-        5 => {
+        6 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             Box::new(obj.shutdown_read(&connection_id))
         },
-        6 => {
+        7 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             Box::new(obj.shutdown_write(&connection_id))
         },
-        7 => {
+        8 => {
             Box::new(obj.get_connections_list())
         },
         _ => Box::new(false),
@@ -135,13 +144,24 @@ impl AddIn {
         }
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
         if !self.started {
             return json_error("Server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.get_next_message(timeout_ms),
+            Ok(backend) => backend.get_next_message(timeout_ms, max_message_size),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn get_message_from_connection(&self, connection_id: &str, timeout_ms: u64, max_message_size: usize) -> String {
+        if !self.started {
+            return json_error("Server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.get_message_from_connection(connection_id.to_string(), timeout_ms, max_message_size),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
