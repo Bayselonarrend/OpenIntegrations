@@ -7,8 +7,6 @@ use crate::listener::ServerState;
 pub struct TcpServerBackend {
     tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
-    #[allow(dead_code)]
-    vault: BinaryVault,
 }
 
 enum BackendCommand {
@@ -55,9 +53,8 @@ enum BackendCommand {
 }
 
 impl TcpServerBackend {
-    pub fn new() -> Self {
+    pub fn new(vault: BinaryVault) -> Self {
         let (tx, rx) = mpsc::channel();
-        let vault = BinaryVault::new();
         let vault_clone = vault.clone();
 
         let thread_handle = thread::Builder::new()
@@ -186,7 +183,6 @@ impl TcpServerBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
-            vault,
         }
     }
 
