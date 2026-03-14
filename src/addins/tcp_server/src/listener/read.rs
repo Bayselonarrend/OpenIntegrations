@@ -52,7 +52,7 @@ impl ServerState {
             }
 
             if start.elapsed() >= timeout {
-                return json!({"result": true, "timeout": true}).to_string();
+                return json!({"result": false, "error": "timeout"}).to_string();
             }
 
             tokio::time::sleep(poll_interval).await;

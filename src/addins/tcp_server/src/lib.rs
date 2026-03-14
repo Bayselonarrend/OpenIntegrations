@@ -4,6 +4,7 @@ mod listener;
 use std::sync::{Arc, Mutex};
 use common_core::*;
 use common_utils::utils::{json_error, json_success};
+use common_binary::vault::BinaryVault;
 use crate::backend::TcpServerBackend;
 
 impl_addin_exports!(AddIn);
@@ -13,12 +14,13 @@ pub const METHODS: &[&[u16]] = &[
     name!("Start"),                      // 0
     name!("Stop"),                       // 1
     name!("GetNextMessage"),             // 2
-    name!("GetMessage"),                 // 3
+    name!("GetMessageFromConnection"),   // 3
     name!("SendMessage"),                // 4
     name!("CloseConnection"),            // 5
     name!("ShutdownRead"),               // 6
     name!("ShutdownWrite"),              // 7
     name!("GetConnectionsList"),         // 8
+    name!("RetrieveBinaryFromVault"),    // 9
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -32,6 +34,7 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 1,  // ShutdownRead(connection_id)
         7 => 1,  // ShutdownWrite(connection_id)
         8 => 0,  // GetConnectionsList()
+        9 => 1,  // RetrieveBinaryFromVault()
         _ => 0,
     }
 }
@@ -79,6 +82,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         8 => {
             Box::new(obj.get_connections_list())
         },
+        9 => {
+            let vault_key = params[0].get_string().unwrap_or_default();
+            Box::new(obj.retrieve_binary_from_vault(&vault_key))
+        },
         _ => Box::new(false),
     }
 }
@@ -87,13 +94,16 @@ pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
     backend: Arc<Mutex<TcpServerBackend>>,
+    vault: BinaryVault,
     started: bool,
 }
 
 impl AddIn {
     pub fn new() -> Self {
+        let vault = BinaryVault::new();
         AddIn {
-            backend: Arc::new(Mutex::new(TcpServerBackend::new())),
+            backend: Arc::new(Mutex::new(TcpServerBackend::new(vault.clone()))),
+            vault,
             started: false,
         }
     }
@@ -217,6 +227,13 @@ impl AddIn {
         match self.backend.lock() {
             Ok(backend) => backend.get_connections_list(),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
+        match self.vault.retrieve(&vault_key.to_string()) {
+            Ok(data) => data,
+            Err(_) => Vec::new(), // Возвращаем пустой массив при ошибке
         }
     }
 
