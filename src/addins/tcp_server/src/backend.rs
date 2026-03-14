@@ -1,11 +1,14 @@
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
 use common_utils::utils::{json_error, json_success};
+use common_binary::vault::BinaryVault;
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
     tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
+    #[allow(dead_code)]
+    vault: BinaryVault,
 }
 
 enum BackendCommand {
@@ -54,6 +57,8 @@ enum BackendCommand {
 impl TcpServerBackend {
     pub fn new() -> Self {
         let (tx, rx) = mpsc::channel();
+        let vault = BinaryVault::new();
+        let vault_clone = vault.clone();
 
         let thread_handle = thread::Builder::new()
             .name("opi_tcpserver_backend".to_string())
@@ -70,7 +75,7 @@ impl TcpServerBackend {
                             }
 
                             let result = rt.block_on(async {
-                                ServerState::start(port, queue_size).await
+                                ServerState::start(port, queue_size, vault_clone.clone()).await
                             });
 
                             match result {
@@ -181,6 +186,7 @@ impl TcpServerBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
+            vault,
         }
     }
 

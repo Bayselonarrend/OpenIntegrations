@@ -8,6 +8,7 @@ use tokio::net::TcpStream;
 use tokio::sync::broadcast;
 use dashmap::DashMap;
 use uuid::Uuid;
+use common_binary::vault::BinaryVault;
 
 pub struct ConnectionInfo {
     pub stream: TcpStream,
@@ -20,10 +21,11 @@ pub struct ServerState {
     pub(crate) queue_size: usize,
     pub(crate) shutdown_tx: broadcast::Sender<()>,
     pub(crate) last_processed: Option<String>,
+    pub(crate) vault: BinaryVault,
 }
 
 impl ServerState {
-    pub async fn start(port: u16, queue_size: usize) -> Result<Self, String> {
+    pub async fn start(port: u16, queue_size: usize, vault: BinaryVault) -> Result<Self, String> {
         use tokio::net::TcpListener;
         
         let listener = TcpListener::bind(format!("0.0.0.0:{}", port))
@@ -80,6 +82,7 @@ impl ServerState {
             queue_size,
             shutdown_tx,
             last_processed: None,
+            vault,
         })
     }
 }
