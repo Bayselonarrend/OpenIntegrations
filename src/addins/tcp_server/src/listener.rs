@@ -15,7 +15,9 @@ pub struct ConnectionInfo {
 
 pub struct ServerState {
     pub connections: Arc<DashMap<String, ConnectionInfo>>,
+    pub queue_size: usize,
     shutdown_tx: broadcast::Sender<()>,
+    last_processed: Option<String>,
 }
 
 impl ServerState {
@@ -37,13 +39,11 @@ impl ServerState {
                             Ok((stream, addr)) => {
                                 let connection_id = Uuid::new_v4().to_string();
 
-                                // Удаляем старое соединение если очередь переполнена
                                 if connections_clone.len() >= queue_size {
                                     if let Some(entry) = connections_clone.iter().next() {
                                         let old_id = entry.key().clone();
                                         drop(entry);
-                                        
-                                        // Корректно закрываем соединение перед удалением
+
                                         if let Some((_, mut old_conn)) = connections_clone.remove(&old_id) {
                                             let _ = old_conn.stream.shutdown().await;
                                         }
@@ -64,7 +64,6 @@ impl ServerState {
                         }
                     }
                     _ = shutdown_rx.recv() => {
-                        // Получен сигнал остановки - выходим из цикла
                         break;
                     }
                 }
@@ -73,7 +72,9 @@ impl ServerState {
 
         Ok(ServerState {
             connections,
+            queue_size,
             shutdown_tx,
+            last_processed: None,
         })
     }
 
@@ -84,53 +85,68 @@ impl ServerState {
 
         loop {
             let mut to_remove = Vec::new();
+            let start_id = self.last_processed.clone();
 
-            for mut entry in self.connections.iter_mut() {
-                let conn_id = entry.key().clone();
-                let conn_info = entry.value_mut();
+            let mut all_ids: Vec<String> = self.connections.iter().map(|e| e.key().clone()).collect();
 
-                let mut buffer = vec![0u8; 8192];
-                match conn_info.stream.try_read(&mut buffer) {
-                    Ok(0) => {
-                        to_remove.push(conn_id);
-                    }
-                    Ok(n) => {
-                        let message = buffer[..n].to_vec();
-                        let addr = conn_info.addr.clone();
+            if let Some(ref last_id) = start_id {
+                if let Some(pos) = all_ids.iter().position(|id| id == last_id) {
+                    all_ids.rotate_left(pos + 1);
+                }
+            }
 
-                        let still_active = Self::check_connection_active(&mut conn_info.stream);
+            for conn_id in all_ids {
+                if let Some(mut entry) = self.connections.get_mut(&conn_id) {
+                    let mut buffer = vec![0u8; 8192];
+                    match entry.stream.try_read(&mut buffer) {
 
-                        if !still_active {
+                        Ok(0) => {
                             to_remove.push(conn_id.clone());
                         }
+                        Ok(n) => {
+                            let message = buffer[..n].to_vec();
+                            let addr = entry.addr.clone();
 
-                        for conn_id in to_remove {
-                            self.connections.remove(&conn_id);
+                            let still_active = Self::check_connection_active(&mut entry.stream);
+
+                            if !still_active {
+                                to_remove.push(conn_id.clone());
+                                self.last_processed = None;
+                            } else {
+                                self.last_processed = Some(conn_id.clone());
+                            }
+
+                            for id in to_remove {
+                                self.connections.remove(&id);
+                            }
+
+                            return json!({
+                                "result": true,
+                                "connectionId": conn_id,
+                                "message": message,
+                                "active": still_active,
+                                "address": addr
+                            })
+                            .to_string();
                         }
-
-                        return json!({
-                            "result": true,
-                            "connectionId": conn_id,
-                            "message": message,
-                            "active": still_active,
-                            "address": addr
-                        })
-                        .to_string();
-                    }
-                    Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
-                    }
-                    Err(_) => {
-                        to_remove.push(conn_id);
+                        Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
+                        }
+                        Err(_) => {
+                            to_remove.push(conn_id.clone());
+                        }
                     }
                 }
             }
 
-            for conn_id in to_remove {
-                self.connections.remove(&conn_id);
+            for conn_id in &to_remove {
+                self.connections.remove(conn_id);
+                if self.last_processed.as_ref() == Some(conn_id) {
+                    self.last_processed = None;
+                }
             }
 
             if start.elapsed() >= timeout {
-                return json!({"result": false, "error": "Timeout"}).to_string();
+                return json!({"result": true, "timeout": true}).to_string();
             }
 
             tokio::time::sleep(poll_interval).await;
@@ -144,6 +160,10 @@ impl ServerState {
                 Err(e) => {
                     drop(conn);
                     self.connections.remove(connection_id);
+
+                    if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+                        self.last_processed = None;
+                    }
                     json_error(&format!("Failed to send message: {}", e))
                 }
             }
@@ -154,6 +174,9 @@ impl ServerState {
 
     pub async fn close_connection(&mut self, connection_id: &str) -> String {
         if let Some((_, mut conn)) = self.connections.remove(connection_id) {
+            if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+                self.last_processed = None;
+            }
             let _ = conn.stream.shutdown().await;
             json_success()
         } else {
@@ -214,8 +237,12 @@ impl ServerState {
             }
         }
 
-        for conn_id in to_remove {
-            self.connections.remove(&conn_id);
+        for conn_id in &to_remove {
+            self.connections.remove(conn_id);
+            // Сбрасываем last_processed если удаляем это соединение
+            if self.last_processed.as_ref() == Some(conn_id) {
+                self.last_processed = None;
+            }
         }
 
         json!({
@@ -236,18 +263,13 @@ impl ServerState {
 
 impl Drop for ServerState {
     fn drop(&mut self) {
-        // Отправляем сигнал остановки listener task
+
         let _ = self.shutdown_tx.send(());
-        
-        // Закрываем все соединения
-        // Используем blocking операцию для корректного закрытия
+
         let conn_ids: Vec<String> = self.connections.iter().map(|e| e.key().clone()).collect();
         
         for conn_id in conn_ids {
             if let Some((_, conn)) = self.connections.remove(&conn_id) {
-                // TcpStream::drop() закроет соединение, но не отправит FIN корректно
-                // К сожалению, в Drop нельзя использовать async shutdown()
-                // Соединение закроется при drop, но может быть не graceful
                 drop(conn);
             }
         }
