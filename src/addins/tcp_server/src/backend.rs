@@ -167,7 +167,10 @@ impl TcpServerBackend {
                         }
 
                         BackendCommand::Shutdown => {
-                            server_state = None;
+                            #[allow(unused_assignments)]
+                            {
+                                server_state = None;
+                            }
                             break;
                         }
                     }
