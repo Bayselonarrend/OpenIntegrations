@@ -16,6 +16,13 @@ enum BackendCommand {
     },
     GetNextMessage {
         timeout_ms: u64,
+        max_message_size: usize,
+        response: Sender<String>,
+    },
+    GetMessageFromConnection {
+        connection_id: String,
+        timeout_ms: u64,
+        max_message_size: usize,
         response: Sender<String>,
     },
     SendMessage {
@@ -77,10 +84,21 @@ impl TcpServerBackend {
                             }
                         }
 
-                        BackendCommand::GetNextMessage { timeout_ms, response } => {
+                        BackendCommand::GetNextMessage { timeout_ms, max_message_size, response } => {
                             if let Some(ref mut state) = server_state {
                                 let result = rt.block_on(async {
-                                    state.get_next_message(timeout_ms).await
+                                    state.get_next_message(timeout_ms, max_message_size).await
+                                });
+                                let _ = response.send(result);
+                            } else {
+                                let _ = response.send(json_error("Server not started"));
+                            }
+                        }
+
+                        BackendCommand::GetMessageFromConnection { connection_id, timeout_ms, max_message_size, response } => {
+                            if let Some(ref mut state) = server_state {
+                                let result = rt.block_on(async {
+                                    state.get_message_from_connection(&connection_id, timeout_ms, max_message_size).await
                                 });
                                 let _ = response.send(result);
                             } else {
@@ -179,11 +197,29 @@ impl TcpServerBackend {
             .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
         if let Err(e) = self.tx.send(BackendCommand::GetNextMessage {
             timeout_ms,
+            max_message_size,
+            response: response_tx,
+        }) {
+            return json_error(&format!("Failed to send command: {}", e));
+        }
+
+        response_rx
+            .recv()
+            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+    }
+
+    pub fn get_message_from_connection(&self, connection_id: String, timeout_ms: u64, max_message_size: usize) -> String {
+        let (response_tx, response_rx) = mpsc::channel();
+
+        if let Err(e) = self.tx.send(BackendCommand::GetMessageFromConnection {
+            connection_id,
+            timeout_ms,
+            max_message_size,
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
