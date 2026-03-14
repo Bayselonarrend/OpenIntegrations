@@ -4,14 +4,15 @@ mod read;
 mod write;
 
 use std::sync::Arc;
-use tokio::net::TcpStream;
+use tokio::net::tcp::{OwnedReadHalf, OwnedWriteHalf};
 use tokio::sync::broadcast;
 use dashmap::DashMap;
 use uuid::Uuid;
 use common_binary::vault::BinaryVault;
 
 pub struct ConnectionInfo {
-    pub stream: TcpStream,
+    pub read_half: Option<OwnedReadHalf>,
+    pub write_half: Option<OwnedWriteHalf>,
     pub addr: String,
 }
 
@@ -50,17 +51,17 @@ impl ServerState {
                                         let old_id = entry.key().clone();
                                         drop(entry);
 
-                                        if let Some((_, mut old_conn)) = connections_clone.remove(&old_id) {
-                                            use tokio::io::AsyncWriteExt;
-                                            let _ = old_conn.stream.shutdown().await;
-                                        }
+                                        connections_clone.remove(&old_id);
                                     }
                                 }
+
+                                let (read_half, write_half) = stream.into_split();
 
                                 connections_clone.insert(
                                     connection_id,
                                     ConnectionInfo {
-                                        stream,
+                                        read_half: Some(read_half),
+                                        write_half: Some(write_half),
                                         addr: addr.to_string(),
                                     },
                                 );
@@ -90,10 +91,6 @@ impl ServerState {
 impl Drop for ServerState {
     fn drop(&mut self) {
         let _ = self.shutdown_tx.send(());
-        
-        for mut entry in self.connections.iter_mut() {
-            let _ = entry.value_mut().stream.try_write(&[]);
-        }
         self.connections.clear();
     }
 }
