@@ -5,7 +5,7 @@ use std::task::{Context, Poll};
 use futures_util::task::noop_waker;
 
 impl ServerState {
-    /// Проверяет, активно ли соединение через poll_peek (не ждет, не удаляет данные)
+
     pub(super) fn check_connection_active(read_half: &mut OwnedReadHalf) -> bool {
         let waker = noop_waker();
         let mut cx = Context::from_waker(&waker);
@@ -14,23 +14,12 @@ impl ServerState {
         let mut read_buf = ReadBuf::new(&mut buf);
         
         match read_half.poll_peek(&mut cx, &mut read_buf) {
-            Poll::Pending => {
-                // Нет данных сейчас, но соединение открыто
-                true
-            }
-            Poll::Ready(Ok(n)) => {
-                // n > 0: есть данные в буфере (соединение может быть закрыто, но данные есть)
-                // n = 0: FIN получен И буфер пуст
-                n > 0
-            }
-            Poll::Ready(Err(_)) => {
-                // Ошибка - соединение неактивно
-                false
-            }
+            Poll::Pending => true,
+            Poll::Ready(Ok(n)) => n > 0,
+            Poll::Ready(Err(_)) => false,
         }
     }
 
-    /// Внутренняя функция для чтения из соединения с обработкой ошибок
     pub(super) fn try_read_from_connection(
         &mut self,
         conn_id: &str,
@@ -51,7 +40,7 @@ impl ServerState {
                         Err("Connection closed".to_string())
                     }
                     Ok(n) => {
-                        // Получены данные
+
                         let message = buffer[..n].to_vec();
                         let still_active = Self::check_connection_active(read_half);
 
@@ -66,11 +55,9 @@ impl ServerState {
                         Ok(Some((message, addr, still_active)))
                     }
                     Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => {
-                        // Нет данных
                         Ok(None)
                     }
                     Err(e) => {
-                        // Ошибка чтения
                         drop(entry);
                         self.connections.remove(conn_id);
                         if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
@@ -80,7 +67,6 @@ impl ServerState {
                     }
                 }
             } else {
-                // Read half закрыт
                 Err("Read half is closed".to_string())
             }
         } else {
