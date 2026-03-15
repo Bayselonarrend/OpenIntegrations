@@ -611,6 +611,10 @@
             "contentPath": {
                 "description": "Base URL for raw media content",
                 "value": "https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path="
+            },
+            "diskTokenField": {
+                "description": "Yandex Disk token field for assets upload",
+                "value": "CI_YD_Token"
             }
         }
     },
