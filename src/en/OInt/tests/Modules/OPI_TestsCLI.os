@@ -19776,7 +19776,7 @@ Procedure TCP_GetConnectionData(FunctionParameters)
     If ConnectionList["connections"].Count() = 0 Then
         Raise "Connection list is empty";
     Else
-        ConnectionID                            = ConnectionList["connections"][0]["connectionId"];
+        ConnectionID                         = ConnectionList["connections"][0]["connectionId"];
     EndIf;
 
     EmptyResult = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192); // SKIP
