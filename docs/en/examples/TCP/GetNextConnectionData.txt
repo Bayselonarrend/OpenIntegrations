@@ -1,0 +1,16 @@
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
+
+    // Send message from client
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    Else
+        Message = "Hello from client!" + Chars.LF;
+        OPI_TCP.SendLine(ClientObject, Message);
+    EndIf;
+
+    // Receive message on server
+    Result = OPI_TCP.GetNextConnectionData(ServerObject, 5000, 8192);
