@@ -1,6 +1,7 @@
 #Использовать "./internal"
 #Использовать "../../../../src/ru/OInt/tools/http"
 #Использовать "../../../../src/ru/OInt/tools/main"
+#Использовать "../../../../src/ru/OInt/api/yadisk"
 
 Перем ДанныеПроекта;
 
@@ -118,5 +119,16 @@
         .ВернутьОтветКакСтроку();
 
 	CommonTools.СообщитьПроцесс(СозданиеДрафта);
+
+	CommonTools.СообщитьПроцесс("Yandex Disk: Prerelease directory rename");
+
+	ПолеТокенаYD  = ДанныеПроекта.ПолучитьЗначениеНастройки("sourcecraft.diskTokenField");
+	ТокенYD       = ДанныеПроекта.ПолучитьЗначениеСекретныхДанных(ПолеТокенаYD);
+
+	ПереименованиеКаталога = OPI_YandexDisk.ПереместитьОбъект(ТокенYD
+		, "/OpenIntegrations/prerelease"
+		, СтрШаблон("/OpenIntegrations/%1", Версия));
+
+	CommonTools.СообщитьПроцесс(ПереименованиеКаталога);
 
 КонецПроцедуры
