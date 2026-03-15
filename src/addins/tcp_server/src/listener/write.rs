@@ -3,7 +3,6 @@ use tokio::io::AsyncWriteExt;
 use common_utils::utils::{json_error, json_success};
 
 impl ServerState {
-    /// Отправляет сообщение в указанное соединение
     pub async fn send_message(&mut self, connection_id: &str, message: Vec<u8>) -> String {
         if let Some(mut conn) = self.connections.get_mut(connection_id) {
             if let Some(ref mut write_half) = conn.write_half {
