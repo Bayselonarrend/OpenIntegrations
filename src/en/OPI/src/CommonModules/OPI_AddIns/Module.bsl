@@ -196,6 +196,28 @@ Function PutData(Val AddIn, Val Value) Export
 
 EndFunction
 
+Function ReceiveData(Val AddIn, Val DataKey) Export
+
+    If Not TypeOf(DataKey) = Type("String") Then
+        Return DataKey;
+    EndIf;
+
+    Result = AddIn.RetrieveBinaryFromVault(DataKey);
+
+    If TypeOf(Result) = Type("String") Then
+
+        Try
+            Result = OPI_Tools.JsonToStructure(Result);
+        Except
+            Return Result;
+        EndTry;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion

@@ -1,689 +1,689 @@
 {
-	"module": "OPI_MySQL",
-	"library": "mysql",
-	"self_depend": true,
-	"dependencies": null,
-	"regions": [
-		{
-			"name": "Common methods",
-			"methods": [
-				"ExecuteSQLQuery",
-				"GenerateConnectionString",
-				"GetTlsSettings"
-			]
-		},
-		{
-			"name": "Database management",
-			"methods": [
-				"CreateDatabase",
-				"DeleteDatabase"
-			]
-		},
-		{
-			"name": "Table management",
-			"methods": [
-				"AddTableColumn",
-				"ClearTable",
-				"CreateTable",
-				"DeleteTable",
-				"DeleteTableColumn",
-				"EnsureTable",
-				"GetTableInformation"
-			]
-		},
-		{
-			"name": "Record management",
-			"methods": [
-				"AddRecords",
-				"DeleteRecords",
-				"EnsureRecords",
-				"GetRecords",
-				"GetRecordsFilterStructure",
-				"UpdateRecords"
-			]
-		}
-	],
-	"methods": [
-		{
-			"name": "ExecuteSQLQuery",
-			"id": "EXECUTESQLQUERY",
-			"description": "Executes an arbitrary SQL query",
-			"params": [
-				{
-					"name": "--sql",
-					"types": "String",
-					"description": "Database query text",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--params",
-					"types": "Array Of Arbitrary",
-					"description": "Array of positional parameters of the request",
-					"default": "Empty value",
-					"short": "-p"
-				},
-				{
-					"name": "--force",
-					"types": "Boolean",
-					"description": "Includes an attempt to retrieve the result, even for nonSELECT queries",
-					"default": "false",
-					"short": "-f"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-t"
-				}
-			],
-			"region": "Common methods"
-		},
-		{
-			"name": "GenerateConnectionString",
-			"id": "GENERATECONNECTIONSTRING",
-			"description": "Forms a connection string from the passed data",
-			"params": [
-				{
-					"name": "--addr",
-					"types": "String",
-					"description": "IP address or domain name of the server",
-					"default": null,
-					"short": "-a"
-				},
-				{
-					"name": "--db",
-					"types": "String",
-					"description": "Name of the database to connect",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--login",
-					"types": "String",
-					"description": "MySQL user",
-					"default": "Empty value",
-					"short": "-l"
-				},
-				{
-					"name": "--pass",
-					"types": "String",
-					"description": "MySQL password",
-					"default": "Empty value",
-					"short": "-p"
-				},
-				{
-					"name": "--port",
-					"types": "String",
-					"description": "Connection port",
-					"default": "3306",
-					"short": "-r"
-				}
-			],
-			"region": "Common methods"
-		},
-		{
-			"name": "GetTlsSettings",
-			"id": "GETTLSSETTINGS",
-			"description": "Forms settings for using TLS",
-			"params": [
-				{
-					"name": "--trust",
-					"types": "Boolean",
-					"description": "Allows to work with invalid certificates, including self signed",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--cert",
-					"types": "String",
-					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Empty value",
-					"short": "-c"
-				}
-			],
-			"region": "Common methods"
-		},
-		{
-			"name": "CreateDatabase",
-			"id": "CREATEDATABASE",
-			"description": "Creates a database with the specified name",
-			"params": [
-				{
-					"name": "--base",
-					"types": "String",
-					"description": "Database name",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-t"
-				}
-			],
-			"region": "Database management"
-		},
-		{
-			"name": "DeleteDatabase",
-			"id": "DELETEDATABASE",
-			"description": "Deletes the database",
-			"params": [
-				{
-					"name": "--base",
-					"types": "String",
-					"description": "Database name",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-t"
-				}
-			],
-			"region": "Database management"
-		},
-		{
-			"name": "CreateTable",
-			"id": "CREATETABLE",
-			"description": "Creates an empty table in the database",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--cols",
-					"types": "Structure Of KeyAndValue",
-					"description": "Column structure: Key > Name, Value > Data type",
-					"default": null,
-					"short": "-c"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "AddTableColumn",
-			"id": "ADDTABLECOLUMN",
-			"description": "Adds a new column to an existing table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--name",
-					"types": "String",
-					"description": "Column name",
-					"default": null,
-					"short": "-n"
-				},
-				{
-					"name": "--type",
-					"types": "String",
-					"description": "Column data type",
-					"default": null,
-					"short": "-p"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "DeleteTableColumn",
-			"id": "DELETETABLECOLUMN",
-			"description": "Deletes a column from the table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--name",
-					"types": "String",
-					"description": "Column name",
-					"default": null,
-					"short": "-n"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "EnsureTable",
-			"id": "ENSURETABLE",
-			"description": "Creates a new table if it does not exist or updates the composition of columns in an existing table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--cols",
-					"types": "Structure Of KeyAndValue",
-					"description": "Column structure: Key > Name, Value > Data type",
-					"default": null,
-					"short": "-c"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Existing connection or database path",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "ClearTable",
-			"id": "CLEARTABLE",
-			"description": "Clears the database table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "DeleteTable",
-			"id": "DELETETABLE",
-			"description": "Deletes a table from the database",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "GetTableInformation",
-			"id": "GETTABLEINFORMATION",
-			"description": "Gets information about the table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Table management"
-		},
-		{
-			"name": "AddRecords",
-			"id": "ADDRECORDS",
-			"description": "Adds new rows to the table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--rows",
-					"types": "Array of Structure",
-					"description": "An array of string data structures: Key > field, Value > field value",
-					"default": null,
-					"short": "-r"
-				},
-				{
-					"name": "--trn",
-					"types": "Boolean",
-					"description": "True > adding records to transactions with rollback on error",
-					"default": "true",
-					"short": "-n"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Record management"
-		},
-		{
-			"name": "UpdateRecords",
-			"id": "UPDATERECORDS",
-			"description": "Updates the value of records by selected criteria",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--values",
-					"types": "Structure Of KeyAndValue",
-					"description": "Values structure: Key > field, Value > field value",
-					"default": null,
-					"short": "-v"
-				},
-				{
-					"name": "--filter",
-					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Empty value",
-					"short": "-f"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Record management"
-		},
-		{
-			"name": "EnsureRecords",
-			"id": "ENSURERECORDS",
-			"description": "Adds records or updates data of existing ones when key fields match",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--rows",
-					"types": "Array of Structure",
-					"description": "An array of string data structures: Key > field, Value > field value",
-					"default": null,
-					"short": "-r"
-				},
-				{
-					"name": "--trn",
-					"types": "Boolean",
-					"description": "True > adding records to transactions with rollback on error",
-					"default": "true",
-					"short": "-n"
-				},
-				{
-					"name": "--db",
-					"types": "String, Arbitrary",
-					"description": "Existing connection or database path",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Record management"
-		},
-		{
-			"name": "GetRecords",
-			"id": "GETRECORDS",
-			"description": "Gets records from the selected table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--fields",
-					"types": "Array Of String",
-					"description": "Fields for selection",
-					"default": "*",
-					"short": "-f"
-				},
-				{
-					"name": "--filter",
-					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Empty value",
-					"short": "-l"
-				},
-				{
-					"name": "--order",
-					"types": "Structure Of KeyAndValue",
-					"description": "Sorting: Key > field name, Value > direction (ASC, DESC)",
-					"default": "Empty value",
-					"short": "-o"
-				},
-				{
-					"name": "--limit",
-					"types": "Number",
-					"description": "Limiting the number of received strings",
-					"default": "Empty value",
-					"short": "-m"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-s"
-				}
-			],
-			"region": "Record management"
-		},
-		{
-			"name": "DeleteRecords",
-			"id": "DELETERECORDS",
-			"description": "Deletes records from the table",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--filter",
-					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Empty value",
-					"short": "-f"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Empty value",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Empty value",
-					"short": "-l"
-				}
-			],
-			"region": "Record management"
-		},
-		{
-			"name": "GetRecordsFilterStructure",
-			"id": "GETRECORDSFILTERSTRUCTURE",
-			"description": "Gets the template structure for filtering records in ORM queries",
-			"params": [
-				{
-					"name": "--empty",
-					"types": "Boolean",
-					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": "false",
-					"short": "-e"
-				}
-			],
-			"region": "Record management"
-		}
-	]
+ "module": "OPI_MySQL",
+ "library": "mysql",
+ "self_depend": true,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Common methods",
+   "methods": [
+    "ExecuteSQLQuery",
+    "GenerateConnectionString",
+    "GetTlsSettings"
+   ]
+  },
+  {
+   "name": "Database management",
+   "methods": [
+    "CreateDatabase",
+    "DeleteDatabase"
+   ]
+  },
+  {
+   "name": "Table management",
+   "methods": [
+    "AddTableColumn",
+    "ClearTable",
+    "CreateTable",
+    "DeleteTable",
+    "DeleteTableColumn",
+    "EnsureTable",
+    "GetTableInformation"
+   ]
+  },
+  {
+   "name": "Record management",
+   "methods": [
+    "AddRecords",
+    "DeleteRecords",
+    "EnsureRecords",
+    "GetRecords",
+    "GetRecordsFilterStructure",
+    "UpdateRecords"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ExecuteSQLQuery",
+   "id": "EXECUTESQLQUERY",
+   "description": "Executes an arbitrary SQL query",
+   "params": [
+    {
+     "name": "--sql",
+     "types": "String",
+     "description": "Database query text",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--params",
+     "types": "Array Of Arbitrary",
+     "description": "Array of positional parameters of the request",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--force",
+     "types": "Boolean",
+     "description": "Includes an attempt to retrieve the result, even for nonSELECT queries",
+     "default": "false",
+     "short": "-f"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "GenerateConnectionString",
+   "id": "GENERATECONNECTIONSTRING",
+   "description": "Forms a connection string from the passed data",
+   "params": [
+    {
+     "name": "--addr",
+     "types": "String",
+     "description": "IP address or domain name of the server",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--db",
+     "types": "String",
+     "description": "Name of the database to connect",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--login",
+     "types": "String",
+     "description": "MySQL user",
+     "default": "Empty value",
+     "short": "-l"
+    },
+    {
+     "name": "--pass",
+     "types": "String",
+     "description": "MySQL password",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--port",
+     "types": "String",
+     "description": "Connection port",
+     "default": "3306",
+     "short": "-r"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "GetTlsSettings",
+   "id": "GETTLSSETTINGS",
+   "description": "Forms settings for using TLS",
+   "params": [
+    {
+     "name": "--trust",
+     "types": "Boolean",
+     "description": "Allows to work with invalid certificates, including self signed",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cert",
+     "types": "String",
+     "description": "Path to the root PEM file of the certificate if it is not in the system repository",
+     "default": "Empty value",
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "CreateDatabase",
+   "id": "CREATEDATABASE",
+   "description": "Creates a database with the specified name",
+   "params": [
+    {
+     "name": "--base",
+     "types": "String",
+     "description": "Database name",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Database management"
+  },
+  {
+   "name": "DeleteDatabase",
+   "id": "DELETEDATABASE",
+   "description": "Deletes the database",
+   "params": [
+    {
+     "name": "--base",
+     "types": "String",
+     "description": "Database name",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Database management"
+  },
+  {
+   "name": "CreateTable",
+   "id": "CREATETABLE",
+   "description": "Creates an empty table in the database",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cols",
+     "types": "Structure Of KeyAndValue",
+     "description": "Column structure: Key > Name, Value > Data type",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "AddTableColumn",
+   "id": "ADDTABLECOLUMN",
+   "description": "Adds a new column to an existing table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--name",
+     "types": "String",
+     "description": "Column name",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--type",
+     "types": "String",
+     "description": "Column data type",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "DeleteTableColumn",
+   "id": "DELETETABLECOLUMN",
+   "description": "Deletes a column from the table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--name",
+     "types": "String",
+     "description": "Column name",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "EnsureTable",
+   "id": "ENSURETABLE",
+   "description": "Creates a new table if it does not exist or updates the composition of columns in an existing table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cols",
+     "types": "Structure Of KeyAndValue",
+     "description": "Column structure: Key > Name, Value > Data type",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Existing connection or database path",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "ClearTable",
+   "id": "CLEARTABLE",
+   "description": "Clears the database table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "DeleteTable",
+   "id": "DELETETABLE",
+   "description": "Deletes a table from the database",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "GetTableInformation",
+   "id": "GETTABLEINFORMATION",
+   "description": "Gets information about the table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Table management"
+  },
+  {
+   "name": "AddRecords",
+   "id": "ADDRECORDS",
+   "description": "Adds new rows to the table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--rows",
+     "types": "Array of Structure",
+     "description": "An array of string data structures: Key > field, Value > field value",
+     "default": null,
+     "short": "-r"
+    },
+    {
+     "name": "--trn",
+     "types": "Boolean",
+     "description": "True > adding records to transactions with rollback on error",
+     "default": "true",
+     "short": "-n"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Record management"
+  },
+  {
+   "name": "UpdateRecords",
+   "id": "UPDATERECORDS",
+   "description": "Updates the value of records by selected criteria",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--values",
+     "types": "Structure Of KeyAndValue",
+     "description": "Values structure: Key > field, Value > field value",
+     "default": null,
+     "short": "-v"
+    },
+    {
+     "name": "--filter",
+     "types": "Array of Structure",
+     "description": "Filters array. See GetRecordsFilterStructure",
+     "default": "Empty value",
+     "short": "-f"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Record management"
+  },
+  {
+   "name": "EnsureRecords",
+   "id": "ENSURERECORDS",
+   "description": "Adds records or updates data of existing ones when key fields match",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--rows",
+     "types": "Array of Structure",
+     "description": "An array of string data structures: Key > field, Value > field value",
+     "default": null,
+     "short": "-r"
+    },
+    {
+     "name": "--trn",
+     "types": "Boolean",
+     "description": "True > adding records to transactions with rollback on error",
+     "default": "true",
+     "short": "-n"
+    },
+    {
+     "name": "--db",
+     "types": "String, Arbitrary",
+     "description": "Existing connection or database path",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Record management"
+  },
+  {
+   "name": "GetRecords",
+   "id": "GETRECORDS",
+   "description": "Gets records from the selected table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--fields",
+     "types": "Array Of String",
+     "description": "Fields for selection",
+     "default": "*",
+     "short": "-f"
+    },
+    {
+     "name": "--filter",
+     "types": "Array of Structure",
+     "description": "Filters array. See GetRecordsFilterStructure",
+     "default": "Empty value",
+     "short": "-l"
+    },
+    {
+     "name": "--order",
+     "types": "Structure Of KeyAndValue",
+     "description": "Sorting: Key > field name, Value > direction (ASC, DESC)",
+     "default": "Empty value",
+     "short": "-o"
+    },
+    {
+     "name": "--limit",
+     "types": "Number",
+     "description": "Limiting the number of received strings",
+     "default": "Empty value",
+     "short": "-m"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-s"
+    }
+   ],
+   "region": "Record management"
+  },
+  {
+   "name": "DeleteRecords",
+   "id": "DELETERECORDS",
+   "description": "Deletes records from the table",
+   "params": [
+    {
+     "name": "--table",
+     "types": "String",
+     "description": "Table name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--filter",
+     "types": "Array of Structure",
+     "description": "Filters array. See GetRecordsFilterStructure",
+     "default": "Empty value",
+     "short": "-f"
+    },
+    {
+     "name": "--dbc",
+     "types": "String, Arbitrary",
+     "description": "Connection or connection string",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Record management"
+  },
+  {
+   "name": "GetRecordsFilterStructure",
+   "id": "GETRECORDSFILTERSTRUCTURE",
+   "description": "Gets the template structure for filtering records in ORM queries",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    }
+   ],
+   "region": "Record management"
+  }
+ ]
 }

@@ -391,6 +391,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
     NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
+    NewTest(TestTable, "TC_Server"                           , "TCP Host"                        , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
     NewTest(TestTable, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
@@ -7783,6 +7784,141 @@ Function Check_TCP_GetProxySettings(Val Result, Val Option)
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_StartServer(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+
+    ExpectsThat(Result).Равно("AddIn.OPI_TCPServer.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_StopServer(Val Result, Val Option)
+
+    If Option    = "List" Then
+        // After stopping the server, an attempt to get the list should return an error
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
+    ElsIf Option = "Connection" Then
+        // Attempting to connect to a stopped server should return an error
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetNextConnectionData(Val Result, Val Option, Message = "")
+
+    If Option = "Closed" Then
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(Result["error"]).Равно("timeout");
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["active"]).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["connectionId"])).Равно(True);
+
+        Data = Result["message"];
+        Data = GetStringFromBinaryData(Data);
+
+        ExpectsThat(Data).Равно(Message);
+
+        Result["message"] = "<BinaryData>";
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetConnectionData(Val Result, Val Option, Message = "")
+
+    If Option = "Empty" Or Option = "Closed" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        If Option = "EmptyList" Then
+            ExpectsThat(Result["connections"].Count()).Равно(0);
+        Else
+
+            Data = Result["message"];
+            Data = GetStringFromBinaryData(Data);
+
+            ExpectsThat(Data).Равно(Message);
+
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_SendData(Val Result, Val Option, Message = "")
+
+    If Option = "Check" Then
+        ExpectsThat(Result).Равно(Message);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_CloseIncomingConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_CompleteSend(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_FinishReceiving(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetConnectionList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(TypeOf(Result["connections"])).Равно(Type("Array"));
+    ExpectsThat(Result["connections"].Count() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_IsServerObject(Val Result, Val Option)
+
+    If Option = "False" Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
 
     Return Result;
 

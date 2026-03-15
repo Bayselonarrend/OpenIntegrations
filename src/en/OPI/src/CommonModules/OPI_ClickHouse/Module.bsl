@@ -386,7 +386,8 @@ Function SendGRPCData(Val Connection, Val StreamID, Val Data, Val WaitNext = Fal
 
     GRPCRequest = New Structure;
 
-    OPI_TypeConversion.GetBinaryData(Data, True);
+    OPI_TypeConversion.GetBinaryData(Data, True, False);
+
     OPI_Tools.AddField("input_data"     , Data    , "BinaryData", GRPCRequest);
     OPI_Tools.AddField("next_query_info", WaitNext, "Boolean"   , GRPCRequest);
 
@@ -972,7 +973,7 @@ Function FormGRPCRequest(Val Connection, Val Request, Val Session)
     AdditionalSettings = OPI_Tools.GetOr(Request, "settings" , Undefined);
     ExternalTables     = OPI_Tools.GetOr(Request, "external_tables", Undefined);
 
-    OPI_TypeConversion.GetBinaryData(Data, True);
+    OPI_TypeConversion.GetBinaryData(Data, True, False);
 
     GRPCRequest = New Structure;
     OPI_Tools.AddField("query"        , QueryText         , "String"      , GRPCRequest);
