@@ -95,6 +95,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'TC_Клиент'],
+						['./src/ru/OInt/tests/Modules/OPI_Тесты.os', 'TC_Сервер'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

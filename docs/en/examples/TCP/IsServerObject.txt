@@ -1,0 +1,4 @@
+    Port = 9884;
+    Host = OPI_TCP.StartServer(Port);
+
+    Result = OPI_TCP.IsServerObject(Host);

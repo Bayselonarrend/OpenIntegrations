@@ -1,0 +1,74 @@
+---
+sidebar_position: 4
+description: Get connection data  and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection data 
+ Gets data from the buffer of a specific connection by ID
+
+
+
+`Function GetConnectionData(Val ServerObject, Val ConnectionID, Val Timeout = 1000, Val MaxSize = 8192) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+  | ConnectionID | - | String | &#x2714; | Connection identifier |
+  | Timeout | - | Number | &#x2716; | Waiting period for new data if the queue is empty (in ms) |
+  | MaxSize | - | Number | &#x2716; | Maximum size of data to receive |
+
+  
+  Returns:  Map Of KeyAndValue - Execution result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
+
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    // Receive the list of server connections
+    ConnectionList = OPI_TCP.GetConnectionList(ServerObject);
+
+    If Not ConnectionList["result"] Then
+        Raise OPI_Tools.JSONString(ConnectionList);
+    EndIf;
+
+    If ConnectionList["connections"].Count() = 0 Then
+        Raise "Connection list is empty";
+    Else
+        ConnectionID                            = ConnectionList["connections"][0]["connectionId"];
+    EndIf;
+
+    For N = 0 To 5 Do
+
+        // Send from client
+        CurrentMessage = StrTemplate("Message no. %1%2", N, Chars.LF);
+        OPI_TCP.SendLine(ClientObject, CurrentMessage);
+
+        // Recieve on server
+        Result = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192);
+
+    EndDo;
+```
+ 
+
+
+
+

@@ -1,0 +1,21 @@
+    Port = 9881;
+    Host = OPI_TCP.StartServer(Port);
+
+    // Connect client
+    Address = "127.0.0.1:" + Port;
+    Client = OPI_TCP.CreateConnection(Address);
+
+    If Not OPI_TCP.IsClientObject(Client) Then
+        Raise "Could not connect to server";
+    EndIf;
+
+    Message = "Hello!" + Chars.LF;
+
+    OPI_TCP.SendLine(Client, Message);
+
+    // Get connection ID
+    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
+    ConnectionID = FirstMessage["connectionId"];
+
+    // Close connection from server side
+    Result = OPI_TCP.CloseIncomingConnection(Host, ConnectionID);

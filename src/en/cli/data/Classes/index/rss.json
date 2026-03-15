@@ -1,186 +1,186 @@
 {
-	"module": "OPI_RSS",
-	"library": "rss",
-	"self_depend": false,
-	"dependencies": null,
-	"regions": [
-		{
-			"name": "Rss methods",
-			"methods": [
-				"CreateFeedRSS",
-				"GetFeedItemStructureRSS",
-				"ParseFeedRSS"
-			]
-		},
-		{
-			"name": "Atom methods",
-			"methods": [
-				"CreateFeedAtom",
-				"GetFeedItemStructureAtom",
-				"ParseFeedAtom"
-			]
-		}
-	],
-	"methods": [
-		{
-			"name": "CreateFeedRSS",
-			"id": "CREATEFEEDRSS",
-			"description": "Creates RSS feed text",
-			"params": [
-				{
-					"name": "--name",
-					"types": "String",
-					"description": "Channel title",
-					"default": null,
-					"short": "-n"
-				},
-				{
-					"name": "--descr",
-					"types": "String",
-					"description": "Channel description",
-					"default": null,
-					"short": "-d"
-				},
-				{
-					"name": "--link",
-					"types": "String",
-					"description": "Channel link",
-					"default": null,
-					"short": "-l"
-				},
-				{
-					"name": "--items",
-					"types": "Array of Structure",
-					"description": "Feed items. See GetFeedItemStructureRSS",
-					"default": null,
-					"short": "-i"
-				},
-				{
-					"name": "--date",
-					"types": "Date, Undefined",
-					"description": "Update date. Current if not filled",
-					"default": "Empty value",
-					"short": "-t"
-				}
-			],
-			"region": "Rss methods"
-		},
-		{
-			"name": "GetFeedItemStructureRSS",
-			"id": "GETFEEDITEMSTRUCTURERSS",
-			"description": "Gets the structure of parameters for an RSS feed item",
-			"params": [
-				{
-					"name": "--empty",
-					"types": "Boolean",
-					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": "false",
-					"short": "-e"
-				},
-				{
-					"name": "--map",
-					"types": "Boolean",
-					"description": "True > returns fields as map",
-					"default": "false",
-					"short": "-m"
-				}
-			],
-			"region": "Rss methods"
-		},
-		{
-			"name": "ParseFeedRSS",
-			"id": "PARSEFEEDRSS",
-			"description": "Parses the XML of an RSS feed and returns a structure with channel data and items",
-			"params": [
-				{
-					"name": "--xml",
-					"types": "String",
-					"description": "XML content of RSS feed",
-					"default": null,
-					"short": "-x"
-				}
-			],
-			"region": "Rss methods"
-		},
-		{
-			"name": "CreateFeedAtom",
-			"id": "CREATEFEEDATOM",
-			"description": "Creates the text of an Atom feed",
-			"params": [
-				{
-					"name": "--name",
-					"types": "String",
-					"description": "Feed title",
-					"default": null,
-					"short": "-n"
-				},
-				{
-					"name": "--link",
-					"types": "String",
-					"description": "Feed URL",
-					"default": null,
-					"short": "-l"
-				},
-				{
-					"name": "--id",
-					"types": "String",
-					"description": "Feed unique identifier (usually a URL)",
-					"default": null,
-					"short": "-i"
-				},
-				{
-					"name": "--items",
-					"types": "Array of Structure",
-					"description": "Feed items. See GetFeedItemStructureAtom",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--date",
-					"types": "Date, Undefined",
-					"description": "Update date. Current if not filled",
-					"default": "Empty value",
-					"short": "-d"
-				}
-			],
-			"region": "Atom methods"
-		},
-		{
-			"name": "GetFeedItemStructureAtom",
-			"id": "GETFEEDITEMSTRUCTUREATOM",
-			"description": "Gets the structure of parameters of an Atom feed item",
-			"params": [
-				{
-					"name": "--empty",
-					"types": "Boolean",
-					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": "false",
-					"short": "-e"
-				},
-				{
-					"name": "--map",
-					"types": "Boolean",
-					"description": "True > returns fields as map",
-					"default": "false",
-					"short": "-m"
-				}
-			],
-			"region": "Atom methods"
-		},
-		{
-			"name": "ParseFeedAtom",
-			"id": "PARSEFEEDATOM",
-			"description": "Parses the XML of an Atom feed and returns a structure with feed data and items",
-			"params": [
-				{
-					"name": "--xml",
-					"types": "String",
-					"description": "XML content of Atom feed",
-					"default": null,
-					"short": "-x"
-				}
-			],
-			"region": "Atom methods"
-		}
-	]
+ "module": "OPI_RSS",
+ "library": "rss",
+ "self_depend": false,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Rss methods",
+   "methods": [
+    "CreateFeedRSS",
+    "GetFeedItemStructureRSS",
+    "ParseFeedRSS"
+   ]
+  },
+  {
+   "name": "Atom methods",
+   "methods": [
+    "CreateFeedAtom",
+    "GetFeedItemStructureAtom",
+    "ParseFeedAtom"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "CreateFeedRSS",
+   "id": "CREATEFEEDRSS",
+   "description": "Creates RSS feed text",
+   "params": [
+    {
+     "name": "--name",
+     "types": "String",
+     "description": "Channel title",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--descr",
+     "types": "String",
+     "description": "Channel description",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--link",
+     "types": "String",
+     "description": "Channel link",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--items",
+     "types": "Array of Structure",
+     "description": "Feed items. See GetFeedItemStructureRSS",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--date",
+     "types": "Date, Undefined",
+     "description": "Update date. Current if not filled",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Rss methods"
+  },
+  {
+   "name": "GetFeedItemStructureRSS",
+   "id": "GETFEEDITEMSTRUCTURERSS",
+   "description": "Gets the structure of parameters for an RSS feed item",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    },
+    {
+     "name": "--map",
+     "types": "Boolean",
+     "description": "True > returns fields as map",
+     "default": "false",
+     "short": "-m"
+    }
+   ],
+   "region": "Rss methods"
+  },
+  {
+   "name": "ParseFeedRSS",
+   "id": "PARSEFEEDRSS",
+   "description": "Parses the XML of an RSS feed and returns a structure with channel data and items",
+   "params": [
+    {
+     "name": "--xml",
+     "types": "String",
+     "description": "XML content of RSS feed",
+     "default": null,
+     "short": "-x"
+    }
+   ],
+   "region": "Rss methods"
+  },
+  {
+   "name": "CreateFeedAtom",
+   "id": "CREATEFEEDATOM",
+   "description": "Creates the text of an Atom feed",
+   "params": [
+    {
+     "name": "--name",
+     "types": "String",
+     "description": "Feed title",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--link",
+     "types": "String",
+     "description": "Feed URL",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Feed unique identifier (usually a URL)",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--items",
+     "types": "Array of Structure",
+     "description": "Feed items. See GetFeedItemStructureAtom",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--date",
+     "types": "Date, Undefined",
+     "description": "Update date. Current if not filled",
+     "default": "Empty value",
+     "short": "-d"
+    }
+   ],
+   "region": "Atom methods"
+  },
+  {
+   "name": "GetFeedItemStructureAtom",
+   "id": "GETFEEDITEMSTRUCTUREATOM",
+   "description": "Gets the structure of parameters of an Atom feed item",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    },
+    {
+     "name": "--map",
+     "types": "Boolean",
+     "description": "True > returns fields as map",
+     "default": "false",
+     "short": "-m"
+    }
+   ],
+   "region": "Atom methods"
+  },
+  {
+   "name": "ParseFeedAtom",
+   "id": "PARSEFEEDATOM",
+   "description": "Parses the XML of an Atom feed and returns a structure with feed data and items",
+   "params": [
+    {
+     "name": "--xml",
+     "types": "String",
+     "description": "XML content of Atom feed",
+     "default": null,
+     "short": "-x"
+    }
+   ],
+   "region": "Atom methods"
+  }
+ ]
 }
