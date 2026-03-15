@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
   | PoolSize | - | Number | &#x2716; | Maximum number of simultaneously supported connections |
 
   
-  Returns:  Undefined, Arbitrary - Start server
+  Returns:  Arbitrary - Server object or match with error information
 
 
 :::caution
@@ -29,7 +29,12 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Port     = 9876;
+    PoolSize = 10;
 
+    Host = OPI_TCP.StartServer(Port, PoolSize);
+```
  
 
 

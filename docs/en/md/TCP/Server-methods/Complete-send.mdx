@@ -1,0 +1,59 @@
+---
+sidebar_position: 7
+description: Complete send  and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Complete send 
+ Sends a signal to finish sending data to the specified connection
+
+
+
+`Function CompleteSend(Val ServerObject, Val ConnectionID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+  | ConnectionID | - | String | &#x2714; | Connection identifier |
+
+  
+  Returns:  Map Of KeyAndValue - Execution result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Port = 9882;
+    Host = OPI_TCP.StartServer(Port);
+
+    // Connect client
+    Address = "127.0.0.1:" + Port;
+    Client = OPI_TCP.CreateConnection(Address);
+
+    If Not OPI_TCP.IsClientObject(Client) Then
+        Raise "Could not connect to server";
+    EndIf;
+
+    Message = "Hello!" + Chars.LF;
+
+    OPI_TCP.SendLine(Client, Message);
+
+    // Get connection ID
+    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
+    ConnectionID = FirstMessage["connectionId"];
+
+    // Finish sending from server
+    Result = OPI_TCP.CompleteSend(Host, ConnectionID);
+```
+ 
+
+
+
+

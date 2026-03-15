@@ -1,457 +1,457 @@
 {
-	"module": "OPI_GoogleSheets",
-	"library": "gsheets",
-	"self_depend": false,
-	"dependencies": [
-		"OPI_GoogleWorkspace"
-	],
-	"regions": [
-		{
-			"name": "Authorization",
-			"methods": [
-				"FormCodeRetrievalLink",
-				"GetServiceAccountToken",
-				"GetTokenByCode",
-				"RefreshToken"
-			]
-		},
-		{
-			"name": "Spreadsheets management",
-			"methods": [
-				"CreateSpreadsheet",
-				"EditSpreadsheetTitle",
-				"GetSpreadsheet"
-			]
-		},
-		{
-			"name": "Working with sheets",
-			"methods": [
-				"AddSheet",
-				"CopySheet",
-				"DeleteSheet"
-			]
-		},
-		{
-			"name": "Data management",
-			"methods": [
-				"ClearCells",
-				"GetCellValues",
-				"SetCellValues"
-			]
-		}
-	],
-	"methods": [
-		{
-			"name": "FormCodeRetrievalLink",
-			"id": "FORMCODERETRIEVALLINK",
-			"description": "Returns URL for browser authorization",
-			"params": [
-				{
-					"name": "--id",
-					"types": "String",
-					"description": "Client ID",
-					"default": null,
-					"short": "-i"
-				},
-				{
-					"name": "--calendar",
-					"types": "Boolean",
-					"description": "Calendar methods permission",
-					"default": "true",
-					"short": "-c"
-				},
-				{
-					"name": "--drive",
-					"types": "Boolean",
-					"description": "Drive methods permission",
-					"default": "true",
-					"short": "-d"
-				},
-				{
-					"name": "--sheets",
-					"types": "Boolean",
-					"description": "Sheets methods permission",
-					"default": "true",
-					"short": "-s"
-				}
-			],
-			"region": "Authorization"
-		},
-		{
-			"name": "GetTokenByCode",
-			"id": "GETTOKENBYCODE",
-			"description": "Gets token by code from browser authorization",
-			"params": [
-				{
-					"name": "--id",
-					"types": "String",
-					"description": "Client ID",
-					"default": null,
-					"short": "-i"
-				},
-				{
-					"name": "--secret",
-					"types": "String",
-					"description": "Client secret",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--code",
-					"types": "String",
-					"description": "Code from browser",
-					"default": null,
-					"short": "-c"
-				}
-			],
-			"region": "Authorization"
-		},
-		{
-			"name": "RefreshToken",
-			"id": "REFRESHTOKEN",
-			"description": "Updates token by Refresh token",
-			"params": [
-				{
-					"name": "--id",
-					"types": "String",
-					"description": "Client ID",
-					"default": null,
-					"short": "-i"
-				},
-				{
-					"name": "--secret",
-					"types": "String",
-					"description": "Client secret",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--refresh",
-					"types": "String",
-					"description": "Refresh token",
-					"default": null,
-					"short": "-r"
-				}
-			],
-			"region": "Authorization"
-		},
-		{
-			"name": "GetServiceAccountToken",
-			"id": "GETSERVICEACCOUNTTOKEN",
-			"description": "Gets authorization token by service account data",
-			"params": [
-				{
-					"name": "--auth",
-					"types": "Arbitrary",
-					"description": "JSON authorization data as a file, collection or binary data",
-					"default": null,
-					"short": "-a"
-				},
-				{
-					"name": "--scope",
-					"types": "Array Of String",
-					"description": "Scope or array of scopes",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--exp",
-					"types": "Number",
-					"description": "Token lifetime in seconds",
-					"default": 3600,
-					"short": "-e"
-				}
-			],
-			"region": "Authorization"
-		},
-		{
-			"name": "CreateSpreadsheet",
-			"id": "CREATESPREADSHEET",
-			"description": "Creates a new spreadsheet",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--title",
-					"types": "String",
-					"description": "Name",
-					"default": null,
-					"short": "-l"
-				},
-				{
-					"name": "--sheets",
-					"types": "Array of String",
-					"description": "Array of names to add new sheets to the spreadsheet",
-					"default": null,
-					"short": "-s"
-				}
-			],
-			"region": "Spreadsheets management"
-		},
-		{
-			"name": "GetSpreadsheet",
-			"id": "GETSPREADSHEET",
-			"description": "Gets information about the spreadsheet by ID",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "Spreadsheet identifier",
-					"default": null,
-					"short": "-s"
-				}
-			],
-			"region": "Spreadsheets management"
-		},
-		{
-			"name": "EditSpreadsheetTitle",
-			"id": "EDITSPREADSHEETTITLE",
-			"description": "Changes the name of the existing spreadsheet",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "SpreadsheetID",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--title",
-					"types": "String",
-					"description": "New name",
-					"default": null,
-					"short": "-l"
-				}
-			],
-			"region": "Spreadsheets management"
-		},
-		{
-			"name": "AddSheet",
-			"id": "ADDSHEET",
-			"description": "Adds a new sheet to the spreadsheet",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "Spreadsheet identifier",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--title",
-					"types": "String",
-					"description": "NewSheetName",
-					"default": null,
-					"short": "-l"
-				}
-			],
-			"region": "Working with sheets"
-		},
-		{
-			"name": "DeleteSheet",
-			"id": "DELETESHEET",
-			"description": "Deletes a sheet from the spreadsheet",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "Spreadsheet identifier",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--sheet",
-					"types": "String",
-					"description": "IdentifierOfSheetToDelete",
-					"default": null,
-					"short": "-h"
-				}
-			],
-			"region": "Working with sheets"
-		},
-		{
-			"name": "CopySheet",
-			"id": "COPYSHEET",
-			"description": "Copies a sheet from one spreadsheet to another",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--from",
-					"types": "String",
-					"description": "Source spreadsheet ID",
-					"default": null,
-					"short": "-f"
-				},
-				{
-					"name": "--to",
-					"types": "String",
-					"description": "Destination spreadsheet ID",
-					"default": null,
-					"short": "-o"
-				},
-				{
-					"name": "--sheet",
-					"types": "String",
-					"description": "CopiedSheetID",
-					"default": null,
-					"short": "-s"
-				}
-			],
-			"region": "Working with sheets"
-		},
-		{
-			"name": "SetCellValues",
-			"id": "SETCELLVALUES",
-			"description": "Sets sheet cell values",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "SpreadsheetID",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--data",
-					"types": "Map Of KeyAndValue",
-					"description": "Fill data where the key is the cell name like A1",
-					"default": null,
-					"short": "-d"
-				},
-				{
-					"name": "--sheetname",
-					"types": "String",
-					"description": "Sheet name (first sheet by default)",
-					"default": "Empty value",
-					"short": "-h"
-				},
-				{
-					"name": "--dim",
-					"types": "String",
-					"description": "Main dimension when filling the array range",
-					"default": "COLUMNS",
-					"short": "-m"
-				}
-			],
-			"region": "Data management"
-		},
-		{
-			"name": "ClearCells",
-			"id": "CLEARCELLS",
-			"description": "Clears the value in cells",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "SpreadsheetID",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--cells",
-					"types": "Array of String",
-					"description": "Array of cells like A1 to be cleared",
-					"default": null,
-					"short": "-c"
-				},
-				{
-					"name": "--sheetname",
-					"types": "String",
-					"description": "Sheet name (first sheet by default)",
-					"default": "Empty value",
-					"short": "-h"
-				}
-			],
-			"region": "Data management"
-		},
-		{
-			"name": "GetCellValues",
-			"id": "GETCELLVALUES",
-			"description": "Gets cell values of the table",
-			"params": [
-				{
-					"name": "--token",
-					"types": "String",
-					"description": "Token",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--spreadsheet",
-					"types": "String",
-					"description": "SpreadsheetID",
-					"default": null,
-					"short": "-s"
-				},
-				{
-					"name": "--cells",
-					"types": "Array of String",
-					"description": "Array of A1 type cells to get (whole sheet if not filled)",
-					"default": "Empty value",
-					"short": "-c"
-				},
-				{
-					"name": "--sheetname",
-					"types": "String",
-					"description": "Sheet name (first sheet by default)",
-					"default": "Empty value",
-					"short": "-h"
-				}
-			],
-			"region": "Data management"
-		}
-	]
+ "module": "OPI_GoogleSheets",
+ "library": "gsheets",
+ "self_depend": false,
+ "dependencies": [
+  "OPI_GoogleWorkspace"
+ ],
+ "regions": [
+  {
+   "name": "Authorization",
+   "methods": [
+    "FormCodeRetrievalLink",
+    "GetServiceAccountToken",
+    "GetTokenByCode",
+    "RefreshToken"
+   ]
+  },
+  {
+   "name": "Spreadsheets management",
+   "methods": [
+    "CreateSpreadsheet",
+    "EditSpreadsheetTitle",
+    "GetSpreadsheet"
+   ]
+  },
+  {
+   "name": "Working with sheets",
+   "methods": [
+    "AddSheet",
+    "CopySheet",
+    "DeleteSheet"
+   ]
+  },
+  {
+   "name": "Data management",
+   "methods": [
+    "ClearCells",
+    "GetCellValues",
+    "SetCellValues"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "FormCodeRetrievalLink",
+   "id": "FORMCODERETRIEVALLINK",
+   "description": "Returns URL for browser authorization",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client ID",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--calendar",
+     "types": "Boolean",
+     "description": "Calendar methods permission",
+     "default": "true",
+     "short": "-c"
+    },
+    {
+     "name": "--drive",
+     "types": "Boolean",
+     "description": "Drive methods permission",
+     "default": "true",
+     "short": "-d"
+    },
+    {
+     "name": "--sheets",
+     "types": "Boolean",
+     "description": "Sheets methods permission",
+     "default": "true",
+     "short": "-s"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "GetTokenByCode",
+   "id": "GETTOKENBYCODE",
+   "description": "Gets token by code from browser authorization",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client ID",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "String",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--code",
+     "types": "String",
+     "description": "Code from browser",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "RefreshToken",
+   "id": "REFRESHTOKEN",
+   "description": "Updates token by Refresh token",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client ID",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "String",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--refresh",
+     "types": "String",
+     "description": "Refresh token",
+     "default": null,
+     "short": "-r"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "GetServiceAccountToken",
+   "id": "GETSERVICEACCOUNTTOKEN",
+   "description": "Gets authorization token by service account data",
+   "params": [
+    {
+     "name": "--auth",
+     "types": "Arbitrary",
+     "description": "JSON authorization data as a file, collection or binary data",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--scope",
+     "types": "Array Of String",
+     "description": "Scope or array of scopes",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--exp",
+     "types": "Number",
+     "description": "Token lifetime in seconds",
+     "default": 3600,
+     "short": "-e"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "CreateSpreadsheet",
+   "id": "CREATESPREADSHEET",
+   "description": "Creates a new spreadsheet",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--title",
+     "types": "String",
+     "description": "Name",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--sheets",
+     "types": "Array of String",
+     "description": "Array of names to add new sheets to the spreadsheet",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Spreadsheets management"
+  },
+  {
+   "name": "GetSpreadsheet",
+   "id": "GETSPREADSHEET",
+   "description": "Gets information about the spreadsheet by ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "Spreadsheet identifier",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Spreadsheets management"
+  },
+  {
+   "name": "EditSpreadsheetTitle",
+   "id": "EDITSPREADSHEETTITLE",
+   "description": "Changes the name of the existing spreadsheet",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "SpreadsheetID",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--title",
+     "types": "String",
+     "description": "New name",
+     "default": null,
+     "short": "-l"
+    }
+   ],
+   "region": "Spreadsheets management"
+  },
+  {
+   "name": "AddSheet",
+   "id": "ADDSHEET",
+   "description": "Adds a new sheet to the spreadsheet",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "Spreadsheet identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--title",
+     "types": "String",
+     "description": "NewSheetName",
+     "default": null,
+     "short": "-l"
+    }
+   ],
+   "region": "Working with sheets"
+  },
+  {
+   "name": "DeleteSheet",
+   "id": "DELETESHEET",
+   "description": "Deletes a sheet from the spreadsheet",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "Spreadsheet identifier",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--sheet",
+     "types": "String",
+     "description": "IdentifierOfSheetToDelete",
+     "default": null,
+     "short": "-h"
+    }
+   ],
+   "region": "Working with sheets"
+  },
+  {
+   "name": "CopySheet",
+   "id": "COPYSHEET",
+   "description": "Copies a sheet from one spreadsheet to another",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--from",
+     "types": "String",
+     "description": "Source spreadsheet ID",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--to",
+     "types": "String",
+     "description": "Destination spreadsheet ID",
+     "default": null,
+     "short": "-o"
+    },
+    {
+     "name": "--sheet",
+     "types": "String",
+     "description": "CopiedSheetID",
+     "default": null,
+     "short": "-s"
+    }
+   ],
+   "region": "Working with sheets"
+  },
+  {
+   "name": "SetCellValues",
+   "id": "SETCELLVALUES",
+   "description": "Sets sheet cell values",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "SpreadsheetID",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--data",
+     "types": "Map Of KeyAndValue",
+     "description": "Fill data where the key is the cell name like A1",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--sheetname",
+     "types": "String",
+     "description": "Sheet name (first sheet by default)",
+     "default": "Empty value",
+     "short": "-h"
+    },
+    {
+     "name": "--dim",
+     "types": "String",
+     "description": "Main dimension when filling the array range",
+     "default": "COLUMNS",
+     "short": "-m"
+    }
+   ],
+   "region": "Data management"
+  },
+  {
+   "name": "ClearCells",
+   "id": "CLEARCELLS",
+   "description": "Clears the value in cells",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "SpreadsheetID",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--cells",
+     "types": "Array of String",
+     "description": "Array of cells like A1 to be cleared",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--sheetname",
+     "types": "String",
+     "description": "Sheet name (first sheet by default)",
+     "default": "Empty value",
+     "short": "-h"
+    }
+   ],
+   "region": "Data management"
+  },
+  {
+   "name": "GetCellValues",
+   "id": "GETCELLVALUES",
+   "description": "Gets cell values of the table",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--spreadsheet",
+     "types": "String",
+     "description": "SpreadsheetID",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--cells",
+     "types": "Array of String",
+     "description": "Array of A1 type cells to get (whole sheet if not filled)",
+     "default": "Empty value",
+     "short": "-c"
+    },
+    {
+     "name": "--sheetname",
+     "types": "String",
+     "description": "Sheet name (first sheet by default)",
+     "default": "Empty value",
+     "short": "-h"
+    }
+   ],
+   "region": "Data management"
+  }
+ ]
 }
