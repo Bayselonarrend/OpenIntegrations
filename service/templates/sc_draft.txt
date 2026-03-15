@@ -1,9 +1,9 @@
-![cover](https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/Covers/SSH.png)
+![cover](%5%6)
 
 <br>
 
-**🇷🇺: Обновление Открытого пакета интеграций %1: Методы работы**
-**🇺🇸: Open integrations package update %1: Methods of working with**
+**🇷🇺: Обновление Открытого пакета интеграций %1: %2**
+**🇺🇸: Open integrations package update %1: %3**
 
 <hr>
 
@@ -14,7 +14,7 @@
 
 | API | 🇷🇺 | 🇺🇸 |
 |-|-|-|
-| <img src="https://sourcecraft.dev/file?owner=bayselonarrend&repo=openintegrations&rev=main&path=media/logo.png" width="32"/> | Шаблон |  Template  |
+%4
 
 <hr>
 
