@@ -1,0 +1,61 @@
+---
+sidebar_position: 9
+description: Get connection list  and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection list 
+ Gets the list of connections
+
+
+
+`Function GetConnectionList(Val ServerObject) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+
+  
+  Returns:  Map Of KeyAndValue - Execution result
+
+:::tip
+The list displays active connections and closed connections with unprocessed data in the buffer
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Port = 9883;
+    Host = OPI_TCP.StartServer(Port);
+
+    // Connect multiple clients
+    Address = "127.0.0.1:" + Port;
+    Client1 = OPI_TCP.CreateConnection(Address);
+    Client2 = OPI_TCP.CreateConnection(Address);
+
+    If Not OPI_TCP.IsClientObject(Client1) Or Not OPI_TCP.IsClientObject(Client2) Then
+        Raise "Could not connect to server";
+    EndIf;
+
+    OPI_TCP.SendLine(Client1, "Client 1" + Chars.LF);
+    OPI_TCP.SendLine(Client2, "Client 2" + Chars.LF);
+
+    // Receive messages for initializing connections
+    OPI_TCP.GetNextConnectionData(Host, 5000);
+    OPI_TCP.GetNextConnectionData(Host, 5000);
+
+    // Receive the list of connections
+    Result = OPI_TCP.GetConnectionList(Host);
+```
+ 
+
+
+
+
