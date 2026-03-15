@@ -46,37 +46,19 @@ impl ServerState {
 
     pub fn get_connections_list(&mut self) -> String {
         let mut connections_list = Vec::new();
-        let mut to_remove = Vec::new();
 
-        for mut entry in self.connections.iter_mut() {
+        for entry in self.connections.iter() {
             let conn_id = entry.key().clone();
-            let conn_info = entry.value_mut();
+            let conn_info = entry.value();
 
-            // Проверяем активность только если read_half существует
-            let active = if let Some(ref mut read_half) = conn_info.read_half {
-                Self::check_connection_active(read_half)
-            } else {
-                false
-            };
-
-            if !active {
-                to_remove.push(conn_id.clone());
-            } else {
-                connections_list.push(json!({
-                    "connectionId": conn_id,
-                    "address": conn_info.addr,
-                    "active": active,
-                    "canRead": conn_info.read_half.is_some(),
-                    "canWrite": conn_info.write_half.is_some()
-                }));
-            }
-        }
-
-        for conn_id in &to_remove {
-            self.connections.remove(conn_id);
-            if self.last_processed.as_ref() == Some(conn_id) {
-                self.last_processed = None;
-            }
+            // НЕ проверяем активность через try_read - это ненадежно!
+            // try_read(&mut []) может вернуть Ok(0) для активного соединения
+            connections_list.push(json!({
+                "connectionId": conn_id,
+                "address": conn_info.addr,
+                "canRead": conn_info.read_half.is_some(),
+                "canWrite": conn_info.write_half.is_some()
+            }));
         }
 
         json!({
