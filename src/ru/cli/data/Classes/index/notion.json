@@ -1,420 +1,420 @@
 {
-	"module": "OPI_Notion",
-	"library": "notion",
-	"self_depend": false,
-	"dependencies": null,
-	"regions": [
-		{
-			"name": "Работа со страницами",
-			"methods": [
-				"ИзменитьСвойстваСтраницы",
-				"ПолучитьСтраницу",
-				"СоздатьСтраницу",
-				"СоздатьСтраницуВБазу"
-			]
-		},
-		{
-			"name": "Работа с базами данных",
-			"methods": [
-				"ИзменитьСвойстваБазы",
-				"ПолучитьБазуДанных",
-				"СоздатьБазуДанных"
-			]
-		},
-		{
-			"name": "Работа с блоками",
-			"methods": [
-				"ВернутьБлок",
-				"ВернутьДочерниеБлоки",
-				"СоздатьБлок",
-				"УдалитьБлок"
-			]
-		},
-		{
-			"name": "Пользователи",
-			"methods": [
-				"ПолучитьДанныеПользователя",
-				"СписокПользователей"
-			]
-		}
-	],
-	"methods": [
-		{
-			"name": "СоздатьСтраницу",
-			"id": "СОЗДАТЬСТРАНИЦУ",
-			"description": "Создает дочернюю страницу над другой страницей-родителем",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--page",
-					"types": "Строка",
-					"description": "ID Родителя",
-					"default": null,
-					"short": "-p"
-				},
-				{
-					"name": "--title",
-					"types": "Строка",
-					"description": "Заголовок страницы",
-					"default": null,
-					"short": "-l"
-				}
-			],
-			"region": "Работа со страницами"
-		},
-		{
-			"name": "СоздатьСтраницуВБазу",
-			"id": "СОЗДАТЬСТРАНИЦУВБАЗУ",
-			"description": "Создает страницу в базе-родителе",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--base",
-					"types": "Строка",
-					"description": "ID родительской базы",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--data",
-					"types": "Соответствие Из КлючИЗначение",
-					"description": "Соответствие свойств",
-					"default": null,
-					"short": "-d"
-				}
-			],
-			"region": "Работа со страницами"
-		},
-		{
-			"name": "ПолучитьСтраницу",
-			"id": "ПОЛУЧИТЬСТРАНИЦУ",
-			"description": "Получает информацию о странице по ID",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--page",
-					"types": "Строка",
-					"description": "ID страницы",
-					"default": null,
-					"short": "-p"
-				}
-			],
-			"region": "Работа со страницами"
-		},
-		{
-			"name": "ИзменитьСвойстваСтраницы",
-			"id": "ИЗМЕНИТЬСВОЙСТВАСТРАНИЦЫ",
-			"description": "Изменяет свойства существующей страницы",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--page",
-					"types": "Строка",
-					"description": "ID изменяемой страницы",
-					"default": null,
-					"short": "-p"
-				},
-				{
-					"name": "--data",
-					"types": "Соответствие Из КлючИЗначение",
-					"description": "Соответствие изменяемых параметров",
-					"default": "Пустое значение",
-					"short": "-d"
-				},
-				{
-					"name": "--icon",
-					"types": "Строка",
-					"description": "URL картинки иконки страницы",
-					"default": "Пустое значение",
-					"short": "-i"
-				},
-				{
-					"name": "--cover",
-					"types": "Строка",
-					"description": "URL картинки обложки страницы",
-					"default": "Пустое значение",
-					"short": "-c"
-				},
-				{
-					"name": "--archive",
-					"types": "Булево",
-					"description": "Архивировать страницу или нет (булево)",
-					"default": "false",
-					"short": "-a"
-				}
-			],
-			"region": "Работа со страницами"
-		},
-		{
-			"name": "СоздатьБазуДанных",
-			"id": "СОЗДАТЬБАЗУДАННЫХ",
-			"description": "Создает базу данных",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--page",
-					"types": "Строка",
-					"description": "ID страницы родителя",
-					"default": null,
-					"short": "-p"
-				},
-				{
-					"name": "--title",
-					"types": "Строка",
-					"description": "Заголовок базы данных",
-					"default": null,
-					"short": "-l"
-				},
-				{
-					"name": "--props",
-					"types": "Структура Из Строка",
-					"description": "Свойства базы данных",
-					"default": "Пустое значение",
-					"short": "-r"
-				}
-			],
-			"region": "Работа с базами данных"
-		},
-		{
-			"name": "ПолучитьБазуДанных",
-			"id": "ПОЛУЧИТЬБАЗУДАННЫХ",
-			"description": "Получить данные о базе данных",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--base",
-					"types": "Строка",
-					"description": "ID базы данных",
-					"default": null,
-					"short": "-b"
-				}
-			],
-			"region": "Работа с базами данных"
-		},
-		{
-			"name": "ИзменитьСвойстваБазы",
-			"id": "ИЗМЕНИТЬСВОЙСТВАБАЗЫ",
-			"description": "Изменяет свойства существующей базы",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--base",
-					"types": "Строка",
-					"description": "ID целевой базы",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--props",
-					"types": "Соответствие из КлючИЗначение",
-					"description": "Новые или изменяемые свойства базы данных",
-					"default": "Пустое значение",
-					"short": "-p"
-				},
-				{
-					"name": "--title",
-					"types": "Строка",
-					"description": "Новый заголовок базы",
-					"default": "Пустое значение",
-					"short": "-l"
-				},
-				{
-					"name": "--description",
-					"types": "Строка",
-					"description": "Новое описание базы",
-					"default": "Пустое значение",
-					"short": "-d"
-				}
-			],
-			"region": "Работа с базами данных"
-		},
-		{
-			"name": "СоздатьБлок",
-			"id": "СОЗДАТЬБЛОК",
-			"description": "Создает новый блок на основе существующего блока",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--page",
-					"types": "Строка",
-					"description": "ID родительского блока или страницы",
-					"default": null,
-					"short": "-p"
-				},
-				{
-					"name": "--block",
-					"types": "Строка, Соответствие Из КлючИЗначение",
-					"description": "ID блока или сам блок образец",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--prev",
-					"types": "Строка",
-					"description": "ID блока, после которого необходимо вставить новый",
-					"default": "Пустое значение",
-					"short": "-r"
-				}
-			],
-			"region": "Работа с блоками"
-		},
-		{
-			"name": "ВернутьБлок",
-			"id": "ВЕРНУТЬБЛОК",
-			"description": "Возвращает структуру блока по ID",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--block",
-					"types": "Строка",
-					"description": "ID блока",
-					"default": null,
-					"short": "-b"
-				},
-				{
-					"name": "--core",
-					"types": "Булево",
-					"description": "Истина > служебные поля удаляются, остается только сам блок",
-					"default": "true",
-					"short": "-c"
-				}
-			],
-			"region": "Работа с блоками"
-		},
-		{
-			"name": "ВернутьДочерниеБлоки",
-			"id": "ВЕРНУТЬДОЧЕРНИЕБЛОКИ",
-			"description": "Возвращает список дочерних блоков блока-родителя",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--block",
-					"types": "Строка",
-					"description": "ID блока родителя",
-					"default": null,
-					"short": "-b"
-				}
-			],
-			"region": "Работа с блоками"
-		},
-		{
-			"name": "УдалитьБлок",
-			"id": "УДАЛИТЬБЛОК",
-			"description": "Удаляет блок по ID",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--block",
-					"types": "Строка",
-					"description": "ID блока",
-					"default": null,
-					"short": "-b"
-				}
-			],
-			"region": "Работа с блоками"
-		},
-		{
-			"name": "СписокПользователей",
-			"id": "СПИСОКПОЛЬЗОВАТЕЛЕЙ",
-			"description": "Возвращает список пользователей рабочего пространства",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				}
-			],
-			"region": "Пользователи"
-		},
-		{
-			"name": "ПолучитьДанныеПользователя",
-			"id": "ПОЛУЧИТЬДАННЫЕПОЛЬЗОВАТЕЛЯ",
-			"description": "Получает данные пользователя по ID",
-			"params": [
-				{
-					"name": "--token",
-					"types": "Строка",
-					"description": "Токен",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--user",
-					"types": "Строка",
-					"description": "ID целевого пользователя",
-					"default": null,
-					"short": "-u"
-				}
-			],
-			"region": "Пользователи"
-		}
-	]
+ "module": "OPI_Notion",
+ "library": "notion",
+ "self_depend": false,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Работа со страницами",
+   "methods": [
+    "ИзменитьСвойстваСтраницы",
+    "ПолучитьСтраницу",
+    "СоздатьСтраницу",
+    "СоздатьСтраницуВБазу"
+   ]
+  },
+  {
+   "name": "Работа с базами данных",
+   "methods": [
+    "ИзменитьСвойстваБазы",
+    "ПолучитьБазуДанных",
+    "СоздатьБазуДанных"
+   ]
+  },
+  {
+   "name": "Работа с блоками",
+   "methods": [
+    "ВернутьБлок",
+    "ВернутьДочерниеБлоки",
+    "СоздатьБлок",
+    "УдалитьБлок"
+   ]
+  },
+  {
+   "name": "Пользователи",
+   "methods": [
+    "ПолучитьДанныеПользователя",
+    "СписокПользователей"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "СоздатьСтраницу",
+   "id": "СОЗДАТЬСТРАНИЦУ",
+   "description": "Создает дочернюю страницу над другой страницей-родителем",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--page",
+     "types": "Строка",
+     "description": "ID Родителя",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--title",
+     "types": "Строка",
+     "description": "Заголовок страницы",
+     "default": null,
+     "short": "-l"
+    }
+   ],
+   "region": "Работа со страницами"
+  },
+  {
+   "name": "СоздатьСтраницуВБазу",
+   "id": "СОЗДАТЬСТРАНИЦУВБАЗУ",
+   "description": "Создает страницу в базе-родителе",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--base",
+     "types": "Строка",
+     "description": "ID родительской базы",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--data",
+     "types": "Соответствие Из КлючИЗначение",
+     "description": "Соответствие свойств",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Работа со страницами"
+  },
+  {
+   "name": "ПолучитьСтраницу",
+   "id": "ПОЛУЧИТЬСТРАНИЦУ",
+   "description": "Получает информацию о странице по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--page",
+     "types": "Строка",
+     "description": "ID страницы",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Работа со страницами"
+  },
+  {
+   "name": "ИзменитьСвойстваСтраницы",
+   "id": "ИЗМЕНИТЬСВОЙСТВАСТРАНИЦЫ",
+   "description": "Изменяет свойства существующей страницы",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--page",
+     "types": "Строка",
+     "description": "ID изменяемой страницы",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--data",
+     "types": "Соответствие Из КлючИЗначение",
+     "description": "Соответствие изменяемых параметров",
+     "default": "Пустое значение",
+     "short": "-d"
+    },
+    {
+     "name": "--icon",
+     "types": "Строка",
+     "description": "URL картинки иконки страницы",
+     "default": "Пустое значение",
+     "short": "-i"
+    },
+    {
+     "name": "--cover",
+     "types": "Строка",
+     "description": "URL картинки обложки страницы",
+     "default": "Пустое значение",
+     "short": "-c"
+    },
+    {
+     "name": "--archive",
+     "types": "Булево",
+     "description": "Архивировать страницу или нет (булево)",
+     "default": "false",
+     "short": "-a"
+    }
+   ],
+   "region": "Работа со страницами"
+  },
+  {
+   "name": "СоздатьБазуДанных",
+   "id": "СОЗДАТЬБАЗУДАННЫХ",
+   "description": "Создает базу данных",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--page",
+     "types": "Строка",
+     "description": "ID страницы родителя",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--title",
+     "types": "Строка",
+     "description": "Заголовок базы данных",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--props",
+     "types": "Структура Из Строка",
+     "description": "Свойства базы данных",
+     "default": "Пустое значение",
+     "short": "-r"
+    }
+   ],
+   "region": "Работа с базами данных"
+  },
+  {
+   "name": "ПолучитьБазуДанных",
+   "id": "ПОЛУЧИТЬБАЗУДАННЫХ",
+   "description": "Получить данные о базе данных",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--base",
+     "types": "Строка",
+     "description": "ID базы данных",
+     "default": null,
+     "short": "-b"
+    }
+   ],
+   "region": "Работа с базами данных"
+  },
+  {
+   "name": "ИзменитьСвойстваБазы",
+   "id": "ИЗМЕНИТЬСВОЙСТВАБАЗЫ",
+   "description": "Изменяет свойства существующей базы",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--base",
+     "types": "Строка",
+     "description": "ID целевой базы",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--props",
+     "types": "Соответствие из КлючИЗначение",
+     "description": "Новые или изменяемые свойства базы данных",
+     "default": "Пустое значение",
+     "short": "-p"
+    },
+    {
+     "name": "--title",
+     "types": "Строка",
+     "description": "Новый заголовок базы",
+     "default": "Пустое значение",
+     "short": "-l"
+    },
+    {
+     "name": "--description",
+     "types": "Строка",
+     "description": "Новое описание базы",
+     "default": "Пустое значение",
+     "short": "-d"
+    }
+   ],
+   "region": "Работа с базами данных"
+  },
+  {
+   "name": "СоздатьБлок",
+   "id": "СОЗДАТЬБЛОК",
+   "description": "Создает новый блок на основе существующего блока",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--page",
+     "types": "Строка",
+     "description": "ID родительского блока или страницы",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--block",
+     "types": "Строка, Соответствие Из КлючИЗначение",
+     "description": "ID блока или сам блок образец",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--prev",
+     "types": "Строка",
+     "description": "ID блока, после которого необходимо вставить новый",
+     "default": "Пустое значение",
+     "short": "-r"
+    }
+   ],
+   "region": "Работа с блоками"
+  },
+  {
+   "name": "ВернутьБлок",
+   "id": "ВЕРНУТЬБЛОК",
+   "description": "Возвращает структуру блока по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--block",
+     "types": "Строка",
+     "description": "ID блока",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--core",
+     "types": "Булево",
+     "description": "Истина > служебные поля удаляются, остается только сам блок",
+     "default": "true",
+     "short": "-c"
+    }
+   ],
+   "region": "Работа с блоками"
+  },
+  {
+   "name": "ВернутьДочерниеБлоки",
+   "id": "ВЕРНУТЬДОЧЕРНИЕБЛОКИ",
+   "description": "Возвращает список дочерних блоков блока-родителя",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--block",
+     "types": "Строка",
+     "description": "ID блока родителя",
+     "default": null,
+     "short": "-b"
+    }
+   ],
+   "region": "Работа с блоками"
+  },
+  {
+   "name": "УдалитьБлок",
+   "id": "УДАЛИТЬБЛОК",
+   "description": "Удаляет блок по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--block",
+     "types": "Строка",
+     "description": "ID блока",
+     "default": null,
+     "short": "-b"
+    }
+   ],
+   "region": "Работа с блоками"
+  },
+  {
+   "name": "СписокПользователей",
+   "id": "СПИСОКПОЛЬЗОВАТЕЛЕЙ",
+   "description": "Возвращает список пользователей рабочего пространства",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Пользователи"
+  },
+  {
+   "name": "ПолучитьДанныеПользователя",
+   "id": "ПОЛУЧИТЬДАННЫЕПОЛЬЗОВАТЕЛЯ",
+   "description": "Получает данные пользователя по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--user",
+     "types": "Строка",
+     "description": "ID целевого пользователя",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "Пользователи"
+  }
+ ]
 }
