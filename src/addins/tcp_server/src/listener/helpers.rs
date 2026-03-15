@@ -1,13 +1,32 @@
 use super::ServerState;
 use tokio::net::tcp::OwnedReadHalf;
+use tokio::io::ReadBuf;
+use std::task::{Context, Poll};
+use futures_util::task::noop_waker;
 
 impl ServerState {
-    /// Проверяет, активно ли соединение (не закрыто ли)
+    /// Проверяет, активно ли соединение через poll_peek (не ждет, не удаляет данные)
     pub(super) fn check_connection_active(read_half: &mut OwnedReadHalf) -> bool {
-        match read_half.try_read(&mut []) {
-            Ok(0) => false,
-            Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => true,
-            _ => true,
+        let waker = noop_waker();
+        let mut cx = Context::from_waker(&waker);
+        
+        let mut buf = [0u8; 1];
+        let mut read_buf = ReadBuf::new(&mut buf);
+        
+        match read_half.poll_peek(&mut cx, &mut read_buf) {
+            Poll::Pending => {
+                // Нет данных сейчас, но соединение открыто
+                true
+            }
+            Poll::Ready(Ok(n)) => {
+                // n > 0: есть данные в буфере (соединение может быть закрыто, но данные есть)
+                // n = 0: FIN получен И буфер пуст
+                n > 0
+            }
+            Poll::Ready(Err(_)) => {
+                // Ошибка - соединение неактивно
+                false
+            }
         }
     }
 
