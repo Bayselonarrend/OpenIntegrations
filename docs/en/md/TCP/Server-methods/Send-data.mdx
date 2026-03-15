@@ -1,0 +1,64 @@
+---
+sidebar_position: 5
+description: Send data  and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send data 
+ Sends data to the specified connection
+
+
+
+`Function SendData(Val ServerObject, Val ConnectionID, Val Data) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+  | ConnectionID | - | String | &#x2714; | Connection identifier |
+  | Data | - | String, BinaryData | &#x2714; | Sending data |
+
+  
+  Returns:  Map Of KeyAndValue - Execution result
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
+
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = "Hello!" + Chars.LF;
+
+    OPI_TCP.SendLine(ClientObject, Message);
+
+    // Receive message and connection ID
+    NextMessage = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+    ConnectionID = NextMessage["connectionId"];
+
+    // Send response from server
+    ServerResponse = "Response from server!" + Chars.LF;
+    Result = OPI_TCP.SendData(ServerObject, ConnectionID, ServerResponse);
+```
+ 
+
+
+
+

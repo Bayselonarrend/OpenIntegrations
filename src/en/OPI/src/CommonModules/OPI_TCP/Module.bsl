@@ -354,6 +354,20 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 
 EndFunction
 
+// Is client object !NOCLI
+// Checks that the value is an object of the TCP client external component
+//
+// Parameters:
+// Value - Arbitrary - Value to check - value
+//
+// Returns:
+// Boolean - Is connector
+Function IsClientObject(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPClient.Main";
+
+EndFunction
+
 #EndRegion
 
 #Region ServerMethods
@@ -366,7 +380,7 @@ EndFunction
 // PoolSize - Number - Maximum number of simultaneously supported connections - psize
 //
 // Returns:
-// Undefined, Arbitrary - Start server
+// Arbitrary - Server object or match with error information
 Function StartServer(Val Port, Val PoolSize = 100) Export
 
     OPI_TypeConversion.GetNumber(Port);
@@ -381,6 +395,255 @@ Function StartServer(Val Port, Val PoolSize = 100) Export
 
 EndFunction
 
+// Stop server !NOCLI
+// Shuts down the server
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component - srv
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function StopServer(Val ServerObject) Export
+
+    If Not IsServerObject(ServerObject) Then
+
+        Result = NotAddinParameterError();
+
+    Else
+
+        Result = ServerObject.Stop();
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get next connection data !NOCLI
+// Gets data from the buffer of the next active connection in the queue where there are incoming data
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component                        - srv
+// Timeout      - Number    - Waiting period for new data if the queue is empty (in ms) - tout
+// MaxSize      - Number    - Maximum size of data to receive                           - msize
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(Timeout);
+    OPI_TypeConversion.GetNumber(MaxSize);
+
+    Result = ServerObject.GetNextMessage(Timeout, MaxSize);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    CompleteMessageWithVaultData(ServerObject, Result);
+
+    Return Result;
+
+EndFunction
+
+// Get connection data !NOCLI
+// Gets data from the buffer of a specific connection by ID
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component                        - srv
+// ConnectionID - String    - Connection identifier                                     - id
+// Timeout      - Number    - Waiting period for new data if the queue is empty (in ms) - tout
+// MaxSize      - Number    - Maximum size of data to receive                           - msize
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function GetConnectionData(Val ServerObject
+    , Val ConnectionID
+    , Val Timeout = 1000
+    , Val MaxSize = 8192) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(Timeout);
+    OPI_TypeConversion.GetNumber(MaxSize);
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = ServerObject.GetMessageFromConnection(ConnectionID, Timeout, MaxSize);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    CompleteMessageWithVaultData(ServerObject, Result);
+
+    Return Result;
+
+EndFunction
+
+// Send data !NOCLI
+// Sends data to the specified connection
+//
+// Parameters:
+// ServerObject - Arbitrary          - Object of running server component - srv
+// ConnectionID - String             - Connection identifier              - id
+// Data         - String, BinaryData - Sending data                       - data
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SendData(Val ServerObject, Val ConnectionID, Val Data) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Data, True, False);
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = ServerObject.SendMessage(ConnectionID, Data);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Close incoming connection !NOCLI
+// Closes incoming server connection by ID
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component - srv
+// ConnectionID - String    - Connection identifier              - id
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function CloseIncomingConnection(Val ServerObject, Val ConnectionID) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = ServerObject.CloseConnection(ConnectionID);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Complete send !NOCLI
+// Sends a signal to finish sending data to the specified connection
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component - srv
+// ConnectionID - String    - Connection identifier              - id
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function CompleteSend(Val ServerObject, Val ConnectionID) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = ServerObject.ShutdownWrite(ConnectionID);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Finish receiving !NOCLI
+// Closes receiving data for the specified connection
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component - srv
+// ConnectionID - String    - Connection identifier              - id
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function FinishReceiving(Val ServerObject, Val ConnectionID) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetLine(ConnectionID);
+
+    Result = ServerObject.ShutdownRead(ConnectionID);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Get connection list !NOCLI
+// Gets the list of connections
+//
+// Note:
+// The list displays active connections and closed connections with unprocessed data in the buffer
+//
+// Parameters:
+// ServerObject - Arbitrary - Object of running server component - srv
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function GetConnectionList(Val ServerObject) Export
+
+    If Not IsServerObject(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    Result = ServerObject.GetConnectionsList();
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Is server object !NOCLI
+// Checks that the value is an object of the TCP server external component
+//
+// Parameters:
+// Value - Arbitrary - Value to check - value
+//
+// Returns:
+// Boolean - Is connector
+Function IsServerObject(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
+
+EndFunction
+
 #EndRegion
+
+#EndRegion
+
+#Region Private
+
+Function NotAddinParameterError()
+
+    Result = New Map;
+    Result.Insert("result", False);
+    Result.Insert("error" , "The passed value is not a server object");
+
+    Return Result;
+
+EndFunction
+
+Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
+
+    DataKey = Undefined;
+
+    If OPI_Tools.CollectionFieldExists(MessageStructure, "message", DataKey) And ValueIsFilled(DataKey) Then
+
+        DataBD = OPI_AddIns.ReceiveData(ServerObject, DataKey);
+        MessageStructure.Insert("message", DataBD);
+
+    EndIf;
+
+EndProcedure
 
 #EndRegion

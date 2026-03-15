@@ -1,0 +1,21 @@
+    Port = 9883;
+    Host = OPI_TCP.StartServer(Port);
+
+    // Connect multiple clients
+    Address = "127.0.0.1:" + Port;
+    Client1 = OPI_TCP.CreateConnection(Address);
+    Client2 = OPI_TCP.CreateConnection(Address);
+
+    If Not OPI_TCP.IsClientObject(Client1) Or Not OPI_TCP.IsClientObject(Client2) Then
+        Raise "Could not connect to server";
+    EndIf;
+
+    OPI_TCP.SendLine(Client1, "Client 1" + Chars.LF);
+    OPI_TCP.SendLine(Client2, "Client 2" + Chars.LF);
+
+    // Receive messages for initializing connections
+    OPI_TCP.GetNextConnectionData(Host, 5000);
+    OPI_TCP.GetNextConnectionData(Host, 5000);
+
+    // Receive the list of connections
+    Result = OPI_TCP.GetConnectionList(Host);

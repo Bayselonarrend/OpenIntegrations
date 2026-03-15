@@ -1,0 +1,4 @@
+    Port = 9877;
+    Host = OPI_TCP.StartServer(Port);
+
+    Result = OPI_TCP.StopServer(Host);

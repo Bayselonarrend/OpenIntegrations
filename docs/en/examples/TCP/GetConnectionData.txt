@@ -1,0 +1,34 @@
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
+
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    // Receive the list of server connections
+    ConnectionList = OPI_TCP.GetConnectionList(ServerObject);
+
+    If Not ConnectionList["result"] Then
+        Raise OPI_Tools.JSONString(ConnectionList);
+    EndIf;
+
+    If ConnectionList["connections"].Count() = 0 Then
+        Raise "Connection list is empty";
+    Else
+        ConnectionID                            = ConnectionList["connections"][0]["connectionId"];
+    EndIf;
+
+    For N = 0 To 5 Do
+
+        // Send from client
+        CurrentMessage = StrTemplate("Message no. %1%2", N, Chars.LF);
+        OPI_TCP.SendLine(ClientObject, CurrentMessage);
+
+        // Recieve on server
+        Result = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192);
+
+    EndDo;
