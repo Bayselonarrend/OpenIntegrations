@@ -129,7 +129,7 @@
 
 	CommonTools.СообщитьПроцесс("YandexDisk directory creating");
 
-	СозданиеКаталога = OPI_YandexDisk.СоздатьПапку(ТокенYD, СтрШаблон("/OpenIntegrations/%1", Версия));
+	СозданиеКаталога = OPI_YandexDisk.СоздатьПапку(ТокенYD, "/OpenIntegrations/prerelease");
 	CommonTools.СообщитьПроцесс(OPI_Инструменты.JSONСтрокой(СозданиеКаталога));
 	
 	CommonTools.СообщитьПроцесс("Files uploading");
@@ -150,7 +150,7 @@
 		CommonTools.ЗапуститьВнешнееПриложение(СтрокаЗапуска);
 
 		Результат = OPI_YandexDisk.ЗагрузитьФайл(ТокенYD
-			, СтрШаблон("/OpenIntegrations/%1/%2", Версия, ФайлРелиза.Имя)
+			, СтрШаблон("/OpenIntegrations/prerelease/%1", ФайлРелиза.Имя)
 			, ФайлРелиза.ПолноеИмя
 			, Истина);
 
