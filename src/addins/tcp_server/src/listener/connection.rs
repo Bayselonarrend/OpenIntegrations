@@ -52,20 +52,21 @@ impl ServerState {
             let conn_id = entry.key().clone();
             let conn_info = entry.value_mut();
 
-            // Проверяем активность только если read_half существует
-            let active = if let Some(ref mut read_half) = conn_info.read_half {
+            // Проверяем есть ли данные или соединение открыто
+            let keep = if let Some(ref mut read_half) = conn_info.read_half {
                 Self::check_connection_active(read_half)
             } else {
                 false
             };
 
-            if !active {
+            if !keep {
+                // Нет данных И соединение закрыто - удаляем
                 to_remove.push(conn_id.clone());
             } else {
+                // Есть данные ИЛИ соединение открыто - показываем
                 connections_list.push(json!({
                     "connectionId": conn_id,
                     "address": conn_info.addr,
-                    "active": active,
                     "canRead": conn_info.read_half.is_some(),
                     "canWrite": conn_info.write_half.is_some()
                 }));
