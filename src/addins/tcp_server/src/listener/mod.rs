@@ -26,6 +26,14 @@ pub struct ServerState {
 }
 
 impl ServerState {
+    // Helper для безопасного получения lock, восстанавливает poisoned mutex
+    fn lock_connections(&self) -> std::sync::MutexGuard<IndexMap<String, ConnectionInfo>> {
+        match self.connections.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        }
+    }
+
     pub async fn start(port: u16, queue_size: usize, vault: BinaryVault) -> Result<Self, String> {
         use tokio::net::TcpListener;
         
@@ -46,7 +54,10 @@ impl ServerState {
                             Ok((stream, addr)) => {
                                 let connection_id = Uuid::new_v4().to_string();
 
-                                let mut conns = connections_clone.lock().unwrap();
+                                let mut conns = match connections_clone.lock() {
+                                    Ok(guard) => guard,
+                                    Err(poisoned) => poisoned.into_inner(),
+                                };
                                 
                                 // Удаляем самое старое соединение если достигли лимита (FIFO)
                                 if conns.len() >= queue_size {
@@ -91,7 +102,7 @@ impl ServerState {
 impl Drop for ServerState {
     fn drop(&mut self) {
         let _ = self.shutdown_tx.send(());
-        if let Ok(mut conns) = self.connections.lock() {
+        if let Ok(mut conns) = self.connections.lock().or_else(|poisoned| Ok(poisoned.into_inner())) {
             conns.clear();
         }
     }
