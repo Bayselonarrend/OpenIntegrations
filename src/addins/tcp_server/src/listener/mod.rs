@@ -102,7 +102,11 @@ impl ServerState {
 impl Drop for ServerState {
     fn drop(&mut self) {
         let _ = self.shutdown_tx.send(());
-        if let Ok(mut conns) = self.connections.lock().or_else(|poisoned| Ok(poisoned.into_inner())) {
+        {
+            let mut conns = match self.connections.lock() {
+                Ok(guard) => guard,
+                Err(poisoned) => poisoned.into_inner(),
+            };
             conns.clear();
         }
     }
