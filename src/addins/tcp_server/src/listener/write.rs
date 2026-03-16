@@ -10,31 +10,19 @@ impl ServerState {
             if let Some(ref mut write_half) = conn.write_half {
                 match write_half.write_all(&message).await {
                     Ok(_) => {
-                        // Добавляем flush для немедленной отправки
+
                         match write_half.flush().await {
                             Ok(_) => json_success(),
                             Err(e) => {
                                 drop(conns);
-                                {
-                                    let mut conns = self.lock_connections();
-                                    conns.shift_remove(connection_id);
-                                }
-                                if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
-                                    self.last_processed = None;
-                                }
+                                self.remove_connection(connection_id);
                                 json_error(&format!("Failed to flush message: {}", e))
                             }
                         }
                     }
                     Err(e) => {
                         drop(conns);
-                        {
-                            let mut conns = self.lock_connections();
-                            conns.shift_remove(connection_id);
-                        }
-                        if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
-                            self.last_processed = None;
-                        }
+                        self.remove_connection(connection_id);
                         json_error(&format!("Failed to send message: {}", e))
                     }
                 }
