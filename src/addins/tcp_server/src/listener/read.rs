@@ -62,7 +62,7 @@ impl ServerState {
     pub async fn get_next_message(&mut self, timeout_ms: u64, max_message_size: usize) -> String {
         self.wait_for_message(timeout_ms, max_message_size, |state, buffer| {
             let start_id = state.last_processed.clone();
-            let conns = state.connections.lock().unwrap();
+            let conns = state.lock_connections();
             let mut all_ids: Vec<String> = conns.keys().cloned().collect();
             drop(conns);
 
