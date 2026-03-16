@@ -15,8 +15,10 @@ impl ServerState {
                             Ok(_) => json_success(),
                             Err(e) => {
                                 drop(conns);
-                                let mut conns = self.lock_connections();
-                                conns.shift_remove(connection_id);
+                                {
+                                    let mut conns = self.lock_connections();
+                                    conns.shift_remove(connection_id);
+                                }
                                 if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                                     self.last_processed = None;
                                 }
@@ -26,8 +28,10 @@ impl ServerState {
                     }
                     Err(e) => {
                         drop(conns);
-                        let mut conns = self.lock_connections();
-                        conns.shift_remove(connection_id);
+                        {
+                            let mut conns = self.lock_connections();
+                            conns.shift_remove(connection_id);
+                        }
                         if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                             self.last_processed = None;
                         }
