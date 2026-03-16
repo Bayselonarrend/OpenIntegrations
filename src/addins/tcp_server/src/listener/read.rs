@@ -62,7 +62,9 @@ impl ServerState {
     pub async fn get_next_message(&mut self, timeout_ms: u64, max_message_size: usize) -> String {
         self.wait_for_message(timeout_ms, max_message_size, |state, buffer| {
             let start_id = state.last_processed.clone();
-            let mut all_ids: Vec<String> = state.connections.iter().map(|e| e.key().clone()).collect();
+            let conns = state.connections.lock().unwrap();
+            let mut all_ids: Vec<String> = conns.keys().cloned().collect();
+            drop(conns);
 
             if let Some(ref last_id) = start_id {
                 if let Some(pos) = all_ids.iter().position(|id| id == last_id) {

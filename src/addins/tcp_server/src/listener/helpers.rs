@@ -25,28 +25,31 @@ impl ServerState {
         conn_id: &str,
         buffer: &mut [u8],
     ) -> Result<Option<(Vec<u8>, String, bool)>, String> {
-        if let Some(mut entry) = self.connections.get_mut(conn_id) {
-            let addr = entry.addr.clone();
+        let mut conns = self.connections.lock().unwrap();
+        
+        if let Some(conn_info) = conns.get_mut(conn_id) {
+            let addr = conn_info.addr.clone();
 
-            if let Some(ref mut read_half) = entry.read_half {
+            if let Some(ref mut read_half) = conn_info.read_half {
                 match read_half.try_read(buffer) {
                     Ok(0) => {
                         // Соединение закрыто
-                        drop(entry);
-                        self.connections.remove(conn_id);
+                        drop(conns);
+                        let mut conns = self.connections.lock().unwrap();
+                        conns.shift_remove(conn_id);
                         if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                             self.last_processed = None;
                         }
                         Err("Connection closed".to_string())
                     }
                     Ok(n) => {
-
                         let message = buffer[..n].to_vec();
                         let still_active = Self::check_connection_active(read_half);
 
                         if !still_active {
-                            drop(entry);
-                            self.connections.remove(conn_id);
+                            drop(conns);
+                            let mut conns = self.connections.lock().unwrap();
+                            conns.shift_remove(conn_id);
                             if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                                 self.last_processed = None;
                             }
@@ -58,8 +61,9 @@ impl ServerState {
                         Ok(None)
                     }
                     Err(e) => {
-                        drop(entry);
-                        self.connections.remove(conn_id);
+                        drop(conns);
+                        let mut conns = self.connections.lock().unwrap();
+                        conns.shift_remove(conn_id);
                         if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                             self.last_processed = None;
                         }
