@@ -32,7 +32,7 @@ impl ServerState {
     pub fn shutdown_read(&mut self, connection_id: &str) -> String {
         let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
-            conn.read_half = None; // Дропаем read half - отправляет FIN
+            conn.read_half = None;
             json_success()
         } else {
             json_error("Connection not found")
@@ -42,7 +42,7 @@ impl ServerState {
     pub fn shutdown_write(&mut self, connection_id: &str) -> String {
         let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
-            conn.write_half = None; // Дропаем write half - отправляет FIN
+            conn.write_half = None;
             json_success()
         } else {
             json_error("Connection not found")
@@ -55,7 +55,7 @@ impl ServerState {
         let mut to_remove = Vec::new();
 
         for (conn_id, conn_info) in conns.iter_mut() {
-            // Проверяем есть ли данные или соединение открыто
+
             let keep = if let Some(ref mut read_half) = conn_info.read_half {
                 Self::check_connection_active(read_half)
             } else {
@@ -63,10 +63,8 @@ impl ServerState {
             };
 
             if !keep {
-                // Нет данных И соединение закрыто - удаляем
                 to_remove.push(conn_id.clone());
             } else {
-                // Есть данные ИЛИ соединение открыто - показываем
                 connections_list.push(json!({
                     "connectionId": conn_id,
                     "address": conn_info.addr,
@@ -80,8 +78,7 @@ impl ServerState {
             conns.shift_remove(conn_id);
         }
         drop(conns);
-        
-        // Обновляем last_processed после освобождения lock
+
         for conn_id in &to_remove {
             if self.last_processed.as_ref() == Some(conn_id) {
                 self.last_processed = None;

@@ -33,7 +33,6 @@ impl ServerState {
             if let Some(ref mut read_half) = conn_info.read_half {
                 match read_half.try_read(buffer) {
                     Ok(0) => {
-                        // Соединение закрыто
                         drop(conns);
                         {
                             let mut conns = self.lock_connections();
