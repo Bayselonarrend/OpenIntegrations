@@ -6,6 +6,16 @@ use futures_util::task::noop_waker;
 
 impl ServerState {
 
+    pub(super) fn remove_connection(&mut self, connection_id: &str) {
+        let mut conns = self.lock_connections();
+        conns.shift_remove(connection_id);
+        drop(conns);
+        
+        if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
+            self.last_processed = None;
+        }
+    }
+
     pub(super) fn check_connection_active(read_half: &mut OwnedReadHalf) -> bool {
         let waker = noop_waker();
         let mut cx = Context::from_waker(&waker);
@@ -34,13 +44,7 @@ impl ServerState {
                 match read_half.try_read(buffer) {
                     Ok(0) => {
                         drop(conns);
-                        {
-                            let mut conns = self.lock_connections();
-                            conns.shift_remove(conn_id);
-                        }
-                        if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
-                            self.last_processed = None;
-                        }
+                        self.remove_connection(conn_id);
                         Err("Connection closed".to_string())
                     }
                     Ok(n) => {
@@ -49,13 +53,7 @@ impl ServerState {
 
                         if !still_active {
                             drop(conns);
-                            {
-                                let mut conns = self.lock_connections();
-                                conns.shift_remove(conn_id);
-                            }
-                            if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
-                                self.last_processed = None;
-                            }
+                            self.remove_connection(conn_id);
                         }
 
                         Ok(Some((message, addr, still_active)))
@@ -65,13 +63,7 @@ impl ServerState {
                     }
                     Err(e) => {
                         drop(conns);
-                        {
-                            let mut conns = self.lock_connections();
-                            conns.shift_remove(conn_id);
-                        }
-                        if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
-                            self.last_processed = None;
-                        }
+                        self.remove_connection(conn_id);
                         Err(format!("Read error: {}", e))
                     }
                 }
