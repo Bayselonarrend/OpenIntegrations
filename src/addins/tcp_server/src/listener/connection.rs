@@ -5,15 +5,21 @@ use common_utils::utils::{json_error, json_success};
 impl ServerState {
 
     pub async fn close_all_connections(&mut self) -> String {
-        let mut conns = self.lock_connections();
-        conns.clear();
+        {
+            let mut conns = self.lock_connections();
+            conns.clear();
+        }
         self.last_processed = None;
         json_success()
     }
 
     pub async fn close_connection(&mut self, connection_id: &str) -> String {
-        let mut conns = self.lock_connections();
-        if conns.shift_remove(connection_id).is_some() {
+        let removed = {
+            let mut conns = self.lock_connections();
+            conns.shift_remove(connection_id).is_some()
+        };
+        
+        if removed {
             if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                 self.last_processed = None;
             }
@@ -72,8 +78,14 @@ impl ServerState {
 
         for conn_id in &to_remove {
             conns.shift_remove(conn_id);
+        }
+        drop(conns);
+        
+        // Обновляем last_processed после освобождения lock
+        for conn_id in &to_remove {
             if self.last_processed.as_ref() == Some(conn_id) {
                 self.last_processed = None;
+                break;
             }
         }
 
