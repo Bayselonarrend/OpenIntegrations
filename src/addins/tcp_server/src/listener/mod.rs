@@ -26,12 +26,8 @@ pub struct ServerState {
 }
 
 impl ServerState {
-    // Helper для безопасного получения lock, восстанавливает poisoned mutex
     fn lock_connections(&self) -> std::sync::MutexGuard<IndexMap<String, ConnectionInfo>> {
-        match self.connections.lock() {
-            Ok(guard) => guard,
-            Err(poisoned) => poisoned.into_inner(),
-        }
+        self.connections.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
     }
 
     pub async fn start(port: u16, queue_size: usize, vault: BinaryVault) -> Result<Self, String> {
@@ -58,11 +54,10 @@ impl ServerState {
                                     Ok(guard) => guard,
                                     Err(poisoned) => poisoned.into_inner(),
                                 };
-                                
-                                // Удаляем самое старое соединение если достигли лимита (FIFO)
+
                                 if conns.len() >= queue_size {
                                     if let Some((old_id, _)) = conns.shift_remove_index(0) {
-                                        drop(old_id); // Явно дропаем, чтобы отправить FIN
+                                        drop(old_id);
                                     }
                                 }
 
@@ -103,10 +98,8 @@ impl Drop for ServerState {
     fn drop(&mut self) {
         let _ = self.shutdown_tx.send(());
         {
-            let mut conns = match self.connections.lock() {
-                Ok(guard) => guard,
-                Err(poisoned) => poisoned.into_inner(),
-            };
+            let mut conns = self.connections.lock()
+                .unwrap_or_else(|poisoned| poisoned.into_inner());
             conns.clear();
         }
     }
