@@ -23,7 +23,6 @@ impl ServerState {
             
             match try_read(self, &mut buffer) {
                 Ok(Some((message, conn_id, addr, still_active))) => {
-                    // Сохраняем бинарные данные в vault
                     let vault_key = match self.vault.store(BinaryInput::Bytes(message)) {
                         Ok(key) => key,
                         Err(e) => return json!({
