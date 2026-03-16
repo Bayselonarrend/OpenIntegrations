@@ -3,10 +3,10 @@ mod helpers;
 mod read;
 mod write;
 
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use tokio::net::tcp::{OwnedReadHalf, OwnedWriteHalf};
 use tokio::sync::broadcast;
-use dashmap::DashMap;
+use indexmap::IndexMap;
 use uuid::Uuid;
 use common_binary::vault::BinaryVault;
 
@@ -17,7 +17,7 @@ pub struct ConnectionInfo {
 }
 
 pub struct ServerState {
-    pub(crate) connections: Arc<DashMap<String, ConnectionInfo>>,
+    pub(crate) connections: Arc<Mutex<IndexMap<String, ConnectionInfo>>>,
     #[allow(dead_code)]
     pub(crate) queue_size: usize,
     pub(crate) shutdown_tx: broadcast::Sender<()>,
@@ -33,7 +33,7 @@ impl ServerState {
             .await
             .map_err(|e| format!("Failed to bind to port {}: {}", port, e))?;
 
-        let connections: Arc<DashMap<String, ConnectionInfo>> = Arc::new(DashMap::new());
+        let connections: Arc<Mutex<IndexMap<String, ConnectionInfo>>> = Arc::new(Mutex::new(IndexMap::new()));
         let connections_clone = connections.clone();
         
         let (shutdown_tx, mut shutdown_rx) = broadcast::channel(1);
@@ -46,18 +46,18 @@ impl ServerState {
                             Ok((stream, addr)) => {
                                 let connection_id = Uuid::new_v4().to_string();
 
-                                if connections_clone.len() >= queue_size {
-                                    if let Some(entry) = connections_clone.iter().next() {
-                                        let old_id = entry.key().clone();
-                                        drop(entry);
-
-                                        connections_clone.remove(&old_id);
+                                let mut conns = connections_clone.lock().unwrap();
+                                
+                                // Удаляем самое старое соединение если достигли лимита (FIFO)
+                                if conns.len() >= queue_size {
+                                    if let Some((old_id, _)) = conns.shift_remove_index(0) {
+                                        drop(old_id); // Явно дропаем, чтобы отправить FIN
                                     }
                                 }
 
                                 let (read_half, write_half) = stream.into_split();
 
-                                connections_clone.insert(
+                                conns.insert(
                                     connection_id,
                                     ConnectionInfo {
                                         read_half: Some(read_half),
@@ -91,6 +91,8 @@ impl ServerState {
 impl Drop for ServerState {
     fn drop(&mut self) {
         let _ = self.shutdown_tx.send(());
-        self.connections.clear();
+        if let Ok(mut conns) = self.connections.lock() {
+            conns.clear();
+        }
     }
 }
