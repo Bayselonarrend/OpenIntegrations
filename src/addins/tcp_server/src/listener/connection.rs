@@ -5,14 +5,14 @@ use common_utils::utils::{json_error, json_success};
 impl ServerState {
 
     pub async fn close_all_connections(&mut self) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         conns.clear();
         self.last_processed = None;
         json_success()
     }
 
     pub async fn close_connection(&mut self, connection_id: &str) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         if conns.shift_remove(connection_id).is_some() {
             if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                 self.last_processed = None;
@@ -24,7 +24,7 @@ impl ServerState {
     }
 
     pub fn shutdown_read(&mut self, connection_id: &str) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
             conn.read_half = None; // Дропаем read half - отправляет FIN
             json_success()
@@ -34,7 +34,7 @@ impl ServerState {
     }
 
     pub fn shutdown_write(&mut self, connection_id: &str) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
             conn.write_half = None; // Дропаем write half - отправляет FIN
             json_success()
@@ -44,7 +44,7 @@ impl ServerState {
     }
 
     pub fn get_connections_list(&mut self) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         let mut connections_list = Vec::new();
         let mut to_remove = Vec::new();
 

@@ -4,7 +4,7 @@ use common_utils::utils::{json_error, json_success};
 
 impl ServerState {
     pub async fn send_message(&mut self, connection_id: &str, message: Vec<u8>) -> String {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         
         if let Some(conn) = conns.get_mut(connection_id) {
             if let Some(ref mut write_half) = conn.write_half {
@@ -15,7 +15,7 @@ impl ServerState {
                             Ok(_) => json_success(),
                             Err(e) => {
                                 drop(conns);
-                                let mut conns = self.connections.lock().unwrap();
+                                let mut conns = self.lock_connections();
                                 conns.shift_remove(connection_id);
                                 if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                                     self.last_processed = None;
@@ -26,7 +26,7 @@ impl ServerState {
                     }
                     Err(e) => {
                         drop(conns);
-                        let mut conns = self.connections.lock().unwrap();
+                        let mut conns = self.lock_connections();
                         conns.shift_remove(connection_id);
                         if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                             self.last_processed = None;

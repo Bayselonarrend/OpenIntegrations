@@ -25,7 +25,7 @@ impl ServerState {
         conn_id: &str,
         buffer: &mut [u8],
     ) -> Result<Option<(Vec<u8>, String, bool)>, String> {
-        let mut conns = self.connections.lock().unwrap();
+        let mut conns = self.lock_connections();
         
         if let Some(conn_info) = conns.get_mut(conn_id) {
             let addr = conn_info.addr.clone();
@@ -35,7 +35,7 @@ impl ServerState {
                     Ok(0) => {
                         // Соединение закрыто
                         drop(conns);
-                        let mut conns = self.connections.lock().unwrap();
+                        let mut conns = self.lock_connections();
                         conns.shift_remove(conn_id);
                         if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                             self.last_processed = None;
@@ -48,7 +48,7 @@ impl ServerState {
 
                         if !still_active {
                             drop(conns);
-                            let mut conns = self.connections.lock().unwrap();
+                            let mut conns = self.lock_connections();
                             conns.shift_remove(conn_id);
                             if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                                 self.last_processed = None;
@@ -62,7 +62,7 @@ impl ServerState {
                     }
                     Err(e) => {
                         drop(conns);
-                        let mut conns = self.connections.lock().unwrap();
+                        let mut conns = self.lock_connections();
                         conns.shift_remove(conn_id);
                         if self.last_processed.as_ref() == Some(&conn_id.to_string()) {
                             self.last_processed = None;
