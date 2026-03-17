@@ -1,4 +1,4 @@
-    Токен         = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
-    Идентификатор = "1hAKnTEvhiX-_-fYfXXYthJ3xq6Ub4SrlLPaIg0Tb9fs";
+    Токен         = "ya29.a0ATkoCc7NIaMoQyko9kNNsGA_NcNp2ra5WH144UV1BR2r9JdyTQocbBSQiR9QcLAI2btfyyE1OMQUkgMHs9xVvwkMlDaQ8dqWiQIftCNobgkG15t59vzvmxN2o...";
+    Идентификатор = "1r-GaurPYMb0giRz_CruzO25QhbwKR1dJ_ptgreEUMkU";
 
     Результат = OPI_GoogleSheets.ПолучитьКнигу(Токен, Идентификатор);
