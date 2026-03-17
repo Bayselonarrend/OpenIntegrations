@@ -19852,93 +19852,106 @@ EndProcedure
 
 Procedure TCP_CloseIncomingConnection(FunctionParameters)
 
-    Port = 9881;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
 
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
     Message = "Hello!" + Chars.LF;
 
-    OPI_TCP.SendLine(Client, Message);
+    OPI_TCP.SendLine(ClientObject, Message);
 
     // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
+    FirstMessage = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
     ConnectionID = FirstMessage["connectionId"];
 
     // Close connection from server side
-    Result = OPI_TCP.CloseIncomingConnection(Host, ConnectionID);
+    Result = OPI_TCP.CloseIncomingConnection(ServerObject, ConnectionID);
 
     // END
 
     Process(Result, "TCP", "CloseIncomingConnection");
 
-    OPI_TCP.CloseConnection(Client);
-    OPI_TCP.StopServer(Host);
+    Result = OPI_TCP.GetConnectionList(ServerObject);
+
+    Process(Result, "TCP", "CloseIncomingConnection", "EmptyList");
+
+    OPI_TCP.SendLine(ClientObject, Message);
+    Result = OPI_TCP.SendLine(ClientObject, Message);
+
+    Process(Result, "TCP", "CloseIncomingConnection", "SendingToClosed");
+
+    OPI_TCP.StopServer(ServerObject);
 
 EndProcedure
 
 Procedure TCP_CompleteSend(FunctionParameters)
 
-    Port = 9882;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    OPI_Tools.Pause(1); // SKIP
 
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Message = "Hello!" + Chars.LF;
-
-    OPI_TCP.SendLine(Client, Message);
-
-    // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
-    ConnectionID = FirstMessage["connectionId"];
+    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
 
     // Finish sending from server
-    Result = OPI_TCP.CompleteSend(Host, ConnectionID);
+    Result = OPI_TCP.CompleteSend(ServerObject, ConnectionID);
 
     // END
 
     Process(Result, "TCP", "CompleteSend");
 
-    OPI_TCP.CloseConnection(Client);
-    OPI_TCP.StopServer(Host);
+    Message = "Hello" + Chars.LF;
+
+    OPI_TCP.SendLine(ClientObject, Message);
+    Result = OPI_TCP.SendLine(ClientObject, Message);
+
+    Process(Result, "TCP", "CompleteSend", "SendingClient");
+
+    ServerResponse = "Response from server!" + Chars.LF;
+    Result         = OPI_TCP.SendData(ServerObject, ConnectionID, ServerResponse);
+
+    Process(Result, "TCP", "CompleteSend", "SendingServer");
+
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
 
 EndProcedure
 
 Procedure TCP_GetConnectionList(FunctionParameters)
 
-    Port = 9883;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect multiple clients
-    Address = "127.0.0.1:" + Port;
-    Client1 = OPI_TCP.CreateConnection(Address);
-    Client2 = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
 
-    If Not OPI_TCP.IsClientObject(Client1) Or Not OPI_TCP.IsClientObject(Client2) Then
-        Raise "Could not connect to server";
+    Client1 = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client2    = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(Client1) Then
+        Raise OPI_Tools.JSONString(Client1);
     EndIf;
 
-    OPI_TCP.SendLine(Client1, "Client 1" + Chars.LF);
-    OPI_TCP.SendLine(Client2, "Client 2" + Chars.LF);
+    If Not OPI_TCP.IsClientObject(Client2) Then
+        Raise OPI_Tools.JSONString(Client2);
+    EndIf;
 
-    // Receive messages for initializing connections
-    OPI_TCP.GetNextConnectionData(Host, 5000);
-    OPI_TCP.GetNextConnectionData(Host, 5000);
-
-    // Receive the list of connections
-    Result = OPI_TCP.GetConnectionList(Host);
+    Result = OPI_TCP.GetConnectionList(ServerObject);
 
     // END
 
@@ -19946,42 +19959,49 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     OPI_TCP.CloseConnection(Client1);
     OPI_TCP.CloseConnection(Client2);
-    OPI_TCP.StopServer(Host);
+
+    Client3 = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client4    = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    OPI_TCP.SendLine(Client3, "Yo" + Chars.LF);
+
+    OPI_TCP.CloseConnection(Client3);
+    OPI_TCP.CloseConnection(Client4);
+
+    Result = OPI_TCP.GetConnectionList(ServerObject);
+
+    Process(Result, "TCP", "GetConnectionList", "Closing");
+
+    OPI_TCP.StopServer(ServerObject);
 
 EndProcedure
 
 Procedure TCP_FinishReceiving(FunctionParameters)
 
-    Port = 9885;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    OPI_Tools.Pause(1); // SKIP
 
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Message = "Hello!" + Chars.LF;
+    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
 
-    OPI_TCP.SendLine(Client, Message);
-
-    // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
-    ConnectionID = FirstMessage["connectionId"];
-
-    // Finish receiving from the server side (the second FinishSending function in the source code)
-    // Note: in the source code, the function is named incorrectly, it should be FinishReceiving
-    Result = Host.ShutdownRead(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    // Completing server-side reception
+    Result = OPI_TCP.FinishReceiving(ServerObject, ConnectionID);
 
     // END
 
     Process(Result, "TCP", "FinishReceiving");
 
-    OPI_TCP.CloseConnection(Client);
-    OPI_TCP.StopServer(Host);
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
 
 EndProcedure
 
