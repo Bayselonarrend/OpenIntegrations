@@ -24,7 +24,37 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FeedXML = "";
+    FeedXML = "<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Тестовый Atom фид</title>
+    <id>https://example.com/feed</id>
+    <link href="https://example.com" rel="alternate"/>
+    <updated>2026-03-07T12:32:51</updated>
+    <entry>
+        <title>Первая запись</title>
+        <id>https://example.com/entry1</id>
+        <link href="https://example.com/entry1" rel="alternate"/>
+        <updated>2026-03-07T12:32:51</updated>
+        <summary>Краткое описание первой записи</summary>
+        <content type="html">Полное содержимое первой записи</content>
+        <author>
+            <name>Автор Первый</name>
+        </author>
+        <published>2026-03-07T12:32:51</published>
+    </entry>
+    <entry>
+        <title>Вторая запись</title>
+        <id>https://example.com/entry2</id>
+        <link href="https://example.com/entry2" rel="alternate"/>
+        <updated>2026-03-07T12:32:51</updated>
+        <summary>Краткое описание второй записи</summary>
+        <content type="html">Полное содержимое второй записи</content>
+        <author>
+            <name>Автор Второй</name>
+        </author>
+        <published>2026-03-07T12:32:51</published>
+    </entry>
+</feed>";
 
     Result = OPI_RSS.ParseFeedAtom(FeedXML);
 ```
