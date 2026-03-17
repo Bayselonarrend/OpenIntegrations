@@ -93,14 +93,14 @@
                                 "description": "Language name",
                                 "value": "English"
                             }
-                        },
-                        "en": {
-                            "description": "Language defined data for English",
-                            "value": {
-                                "title": {
-                                    "description": "Language name",
-                                    "value": "English"
-                                }
+                        }
+                    },
+                    "en": {
+                        "description": "Language defined data for English",
+                        "value": {
+                            "title": {
+                                "description": "Language name",
+                                "value": "English"
                             }
                         }
                     }
