@@ -60,15 +60,6 @@
             }
         }
     },
-    "release": {
-        "description": "Release producing data",
-        "value": {
-            "artifactsCount": {
-                "description": "Release artifacts (files) count",
-                "value": 18
-            }
-        }
-    },
     "localization": {
         "description": "Localization data",
         "value": {
