@@ -1,0 +1,220 @@
+{
+    "local": {
+        "description": "Paths and information for processing on local machine",
+        "value": {
+            "engineWindows": {
+                "description": "OneScript engine for CLI packs (Windows)",
+                "value": "C:/engine/windows"
+            },
+            "engineLinux": {
+                "description": "OneScript engine for CLI packs (Linux)",
+                "value": "C:/engine/linux"
+            },
+            "engineLinuxWsl": {
+                "description": "OneScript engine for CLI packs (Linux, at WSL)",
+                "value": "/mnt/c/engine/linux/"
+            },
+            "onecConfig": {
+                "description": "1C:Enterprise configurator exe path",
+                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
+            },
+            "onecClient": {
+                "description": "1C:Enterprise client exe path",
+                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe"
+            },
+            "osPath": {
+                "description": "OneScript exe path",
+                "value": "C:/Program Files/OneScript/"
+            },
+            "ghcliPath": {
+                "description": "GitHub CLI exe path",
+                "value": "C:/Program Files/GitHub CLI/gh.exe"
+            },
+            "innoPath": {
+                "description": "Inno Setup exe path",
+                "value": "C:/Program Files (x86)/Inno Setup 6/Compil32.exe"
+            },
+            "serverName": {
+                "description": "Build server name",
+                "value": "DEVSRV"
+            },
+            "edtProjectsPath": {
+                "description": "EDT projects directory",
+                "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
+            },
+            "jenkinsHost": {
+                "description": "Jenkins URL",
+                "value": "https://jenkins.openintegrations.dev"
+            },
+            "rcloneConf": {
+                "description": "rclone configuration name for web site deploying",
+                "value": "hoster"
+            },
+            "npmPath": {
+                "description": "NPM executable",
+                "value": "C:/Program Files/nodejs/npm.cmd"
+            },
+            "releaseWorkspace": {
+                "description": "Artifacts root folder",
+                "value": "C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease/"
+            }
+        }
+    },
+    "release": {
+        "description": "Release producing data",
+        "value": {
+            "artifactsCount": {
+                "description": "Release artifacts (files) count",
+                "value": 18
+            }
+        }
+    },
+    "localization": {
+        "description": "Localization data",
+        "value": {
+            "mainLang": {
+                "description": "Main project language",
+                "value": "ru"
+            },
+            "langs": {
+                "description": "Localization languages",
+                "value": [
+                    "en",
+                    "ru"
+                ]
+            },
+            "langsVars": {
+                "description": "Language defined data",
+                "value": {
+                    "ru": {
+                        "description": "Language defined data for Russian",
+                        "value": {
+                            "title": {
+                                "description": "Language name",
+                                "value": "English"
+                            }
+                        },
+                        "en": {
+                            "description": "Language defined data for English",
+                            "value": {
+                                "title": {
+                                    "description": "Language name",
+                                    "value": "English"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "packaging": {
+            "description": "Linux distribution options",
+            "value": {
+                "maintainer": {
+                    "description": "Maintainer data",
+                    "value": "Anton Titovets <bayselonarrend@gmail.com>"
+                },
+                "packageTypes": {
+                    "description": "Package data by type",
+                    "value": {
+                        "deb": {
+                            "description": "DEB packages options",
+                            "value": {
+                                "wslDistro": {
+                                    "description": "WSL linux distro",
+                                    "value": "Ubuntu"
+                                }
+                            }
+                        },
+                        "rpm": {
+                            "description": "RPM packages options",
+                            "value": {
+                                "wslDistro": {
+                                    "description": "WSL linux distro",
+                                    "value": "OracleLinux_9_1"
+                                }
+                            }
+                        },
+                        "appimage": {
+                            "description": "AppImage packages options",
+                            "value": {
+                                "wslDistro": {
+                                    "description": "WSL linux distro",
+                                    "value": "Ubuntu"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ai": {
+            "description": "AI settings",
+            "value": {
+                "useAi": {
+                    "description": "Use processes with external AI services",
+                    "value": true
+                },
+                "openAiUrl": {
+                    "description": "OpenAI-compatible service URL",
+                    "value": "https://bothub.chat/api/v2/openai/"
+                },
+                "textModel": {
+                    "description": "AI model for text-based operations",
+                    "value": "claude-sonnet-4.5"
+                }
+            }
+        },
+        "sonar": {
+            "description": "SonarQube data",
+            "value": {
+                "serverUrl": {
+                    "description": "SonarQube server URL",
+                    "value": "https://sonar.openintegrations.dev/"
+                },
+                "projectKey": {
+                    "description": "SonarQube project name",
+                    "value": "OpenIntegrations"
+                }
+            }
+        },
+        "sourceforge": {
+            "description": "SourceForge credentials",
+            "value": {
+                "login": {
+                    "description": "SourceForge username",
+                    "value": "bayselonarrend"
+                },
+                "hostUrl": {
+                    "description": "SourceForge upload server URL",
+                    "value": "frs.sourceforge.net"
+                },
+                "privateKey": {
+                    "description": "SourceForge auth private key",
+                    "value": "D:/Important/id_ed25519"
+                },
+                "publicKey": {
+                    "description": "SourceForge auth private key",
+                    "value": "D:/Important/id_ed25519.pub"
+                }
+            }
+        },
+        "replacements": {
+            "description": "Dictionary of values replacements",
+            "value": {
+                "oscriptConvertation": {
+                    "description": "Replacements for 1C to OneScript conversion",
+                    "value": {
+                        "// #Использовать": "#Использовать",
+                        "//#Использовать": "#Использовать",
+                        "УстановитьБезопасныйРежим(Истина);": "",
+                        "УстановитьБезопасныйРежим(Ложь);": "",
+                        "// !OInt ": "",
+                        "#КонецЕсли": "// #КонецЕсли",
+                        "#Если": "// #Если"
+                    }
+                }
+            }
+        }
+    }
+}
