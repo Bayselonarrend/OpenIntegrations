@@ -30,27 +30,27 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Port = 9881;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
 
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
     Message = "Hello!" + Chars.LF;
 
-    OPI_TCP.SendLine(Client, Message);
+    OPI_TCP.SendLine(ClientObject, Message);
 
     // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
+    FirstMessage = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
     ConnectionID = FirstMessage["connectionId"];
 
     // Close connection from server side
-    Result = OPI_TCP.CloseIncomingConnection(Host, ConnectionID);
+    Result = OPI_TCP.CloseIncomingConnection(ServerObject, ConnectionID);
 ```
  
 

@@ -32,27 +32,24 @@ The list displays active connections and closed connections with unprocessed dat
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Port = 9883;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect multiple clients
-    Address = "127.0.0.1:" + Port;
-    Client1 = OPI_TCP.CreateConnection(Address);
-    Client2 = OPI_TCP.CreateConnection(Address);
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
 
-    If Not OPI_TCP.IsClientObject(Client1) Or Not OPI_TCP.IsClientObject(Client2) Then
-        Raise "Could not connect to server";
+    Client1 = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client2    = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(Client1) Then
+        Raise OPI_Tools.JSONString(Client1);
     EndIf;
 
-    OPI_TCP.SendLine(Client1, "Client 1" + Chars.LF);
-    OPI_TCP.SendLine(Client2, "Client 2" + Chars.LF);
+    If Not OPI_TCP.IsClientObject(Client2) Then
+        Raise OPI_Tools.JSONString(Client2);
+    EndIf;
 
-    // Receive messages for initializing connections
-    OPI_TCP.GetNextConnectionData(Host, 5000);
-    OPI_TCP.GetNextConnectionData(Host, 5000);
-
-    // Receive the list of connections
-    Result = OPI_TCP.GetConnectionList(Host);
+    Result = OPI_TCP.GetConnectionList(ServerObject);
 ```
  
 
