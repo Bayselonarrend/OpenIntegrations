@@ -32,7 +32,7 @@
 | 🪞 Зеркало/Mirror: [SourceCraft/Yandex Disk](https://sourcecraft.dev/bayselonarrend/openintegrations/releases/%1) |
 |-|
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%%20and%%20places/Star.png" alt="Star-Struck" width="30" height="30" align=left />
+<img src="https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Star.png" alt="Star-Struck" width="30" height="30" align=left />
 
 ## Поддержать проект / Support the project
 
