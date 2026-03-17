@@ -5,7 +5,7 @@
     ConnectionAddress = "127.0.0.1:9877";
 
     Client1 = OPI_TCP.CreateConnection(ConnectionAddress);
-    Client2    = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client2 = OPI_TCP.CreateConnection(ConnectionAddress);
 
     If Not OPI_TCP.IsClientObject(Client1) Then
         Raise OPI_Tools.JSONString(Client1);

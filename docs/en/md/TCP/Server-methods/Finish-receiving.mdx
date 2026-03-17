@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
     EndIf;
 
     ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
-    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
+    ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Completing server-side reception
     Result = OPI_TCP.FinishReceiving(ServerObject, ConnectionID);
