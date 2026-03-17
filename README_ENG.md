@@ -101,11 +101,11 @@ To save the response in the console, you can use the standard `>` redirect or th
 
 <br/><br>
 
-When using versions for 1C and OneScript, you can also manually copy common module code into your project. However, regardless of the chosen installation method, it is recommended to obtain files from [*Releases*](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) or the [*stable branch*](https://github.com/Bayselonarrend/OpenIntegrations/tree/stable) of the repository, as the source files in the main branch may contain intermediate data and functions under development.
+When using versions for 1C and OneScript, you can also manually copy common module code into your project. However, regardless of the chosen installation method, it is recommended to obtain files from [*Downloads page*](https://en.openintegrations.dev/download/), *Releases* or the *stable branch* of the repository, as the source files in the main branch may contain intermediate data and functions under development.
 
 Quick start options:
 
-- To start working in 1C: Simply [download](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) the CFE file (or XML export) of the extension and load it into your configuration's extensions list<br>
+- To start working in 1C: Simply [download](https://en.openintegrations.dev/download/) the CFE file (or XML export) of the extension and load it into your configuration's extensions list<br>
 - To start working in OneScript: Install the package
 
    From the package hub (RU version only):
@@ -122,7 +122,7 @@ Quick start options:
 
 <br>
 
-- To start working with CLI (command line application): [Download from releases](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) the Windows installer or one of the Linux package variants, depending on your operating system
+- To start working with CLI (command line application): [Download](https://en.openintegrations.dev/download/) the Windows installer or one of the Linux package variants, depending on your operating system
 
 Regardless of the installation method, OInt CLI is launched with the `oint` command from the command line (when installing via Windows Installer, a system reboot may be required).
 
