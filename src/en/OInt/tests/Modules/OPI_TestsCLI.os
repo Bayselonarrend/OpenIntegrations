@@ -19906,7 +19906,7 @@ Procedure TCP_CompleteSend(FunctionParameters)
     EndIf;
 
     ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
-    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
+    ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Finish sending from server
     Result = OPI_TCP.CompleteSend(ServerObject, ConnectionID);
@@ -19941,7 +19941,7 @@ Procedure TCP_GetConnectionList(FunctionParameters)
     ConnectionAddress = "127.0.0.1:9877";
 
     Client1 = OPI_TCP.CreateConnection(ConnectionAddress);
-    Client2    = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client2 = OPI_TCP.CreateConnection(ConnectionAddress);
 
     If Not OPI_TCP.IsClientObject(Client1) Then
         Raise OPI_Tools.JSONString(Client1);
@@ -19961,7 +19961,7 @@ Procedure TCP_GetConnectionList(FunctionParameters)
     OPI_TCP.CloseConnection(Client2);
 
     Client3 = OPI_TCP.CreateConnection(ConnectionAddress);
-    Client4    = OPI_TCP.CreateConnection(ConnectionAddress);
+    Client4 = OPI_TCP.CreateConnection(ConnectionAddress);
 
     OPI_TCP.SendLine(Client3, "Yo" + Chars.LF);
 
@@ -19991,7 +19991,7 @@ Procedure TCP_FinishReceiving(FunctionParameters)
     EndIf;
 
     ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
-    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
+    ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Completing server-side reception
     Result = OPI_TCP.FinishReceiving(ServerObject, ConnectionID);

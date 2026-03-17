@@ -9,7 +9,7 @@
     EndIf;
 
     ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
-    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
+    ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Finish sending from server
     Result = OPI_TCP.CompleteSend(ServerObject, ConnectionID);
