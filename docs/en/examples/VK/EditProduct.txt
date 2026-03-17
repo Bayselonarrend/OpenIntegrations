@@ -1,6 +1,6 @@
     Parameters = GetVKParameters();
 
-    Product = "12115889";
+    Product = "12740111";
 
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");

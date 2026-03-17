@@ -1,4 +1,4 @@
-    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_9CE5_2c.sqlite";
     Table = "test_merge";
 
     DataArray = New Array;

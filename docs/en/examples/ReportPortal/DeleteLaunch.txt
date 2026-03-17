@@ -1,6 +1,6 @@
     URL      = "tests.openintegrations.dev";
-    Token    = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
-    LaunchID = "";
+    Token    = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc3MjgzMDA3MSwiaWF0IjoxNzcyNzQzNjcxLCJqdGkiOiI3YmRjMDY4Ny0yY2...";
+    LaunchID = "412";
     Project  = "Test";
 
     Result = OPI_ReportPortal.DeleteLaunch(URL, Token, Project, LaunchID);
