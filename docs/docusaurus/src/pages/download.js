@@ -194,8 +194,8 @@ const DownloadPage = () => {
           <Link to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
             Архив версий (GitHub) →
           </Link>
-          <Link to="https://disk.yandex.com/d/_paRtkfzIV-wGQ">
-            Архив версий (Яндекс Диск) →
+          <Link to="https://sourcecraft.dev/bayselonarrend/openintegrations/releases">
+            Архив версий (SourceCraft) →
           </Link>
         </div>
       </main>
