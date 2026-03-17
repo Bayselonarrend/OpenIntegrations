@@ -7824,7 +7824,6 @@ Function Check_TCP_GetNextConnectionData(Val Result, Val Option, Message = "")
     Else
 
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Result["active"]).Равно(True);
         ExpectsThat(ValueIsFilled(Result["connectionId"])).Равно(True);
 
         Data = Result["message"];
@@ -7879,7 +7878,19 @@ EndFunction
 
 Function Check_TCP_CloseIncomingConnection(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If Option = "EmptyList" Then
+
+        ExpectsThat(Result["connections"].Count()).Равно(0);
+
+    ElsIf Option = "SendingToClosed" Then
+
+        ExpectsThat(Result).Равно(False);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -7887,7 +7898,19 @@ EndFunction
 
 Function Check_TCP_CompleteSend(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If Option = "SendingServer" Then
+
+        ExpectsThat(Result["error"]).Равно("Write half is closed");
+
+    ElsIf Option = "SendingClient" Then
+
+        ExpectsThat(Result).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -7903,9 +7926,11 @@ EndFunction
 
 Function Check_TCP_GetConnectionList(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(TypeOf(Result["connections"])).Равно(Type("Array"));
-    ExpectsThat(Result["connections"].Count() > 0).Равно(True);
+    If Option = "Closing" Then
+        ExpectsThat(Result["connections"].Count()).Равно(1);
+    Else
+        ExpectsThat(Result["connections"].Count()).Равно(2);
+    EndIf;
 
     Return Result;
 

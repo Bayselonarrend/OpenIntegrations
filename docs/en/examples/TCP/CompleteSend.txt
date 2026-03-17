@@ -1,21 +1,15 @@
-    Port = 9882;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
-
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Message = "Hello!" + Chars.LF;
-
-    OPI_TCP.SendLine(Client, Message);
-
-    // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
-    ConnectionID = FirstMessage["connectionId"];
+    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
 
     // Finish sending from server
-    Result = OPI_TCP.CompleteSend(Host, ConnectionID);
+    Result = OPI_TCP.CompleteSend(ServerObject, ConnectionID);

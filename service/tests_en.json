@@ -4236,13 +4236,38 @@
  },
  {
   "lib": "TCP",
+  "name": "CloseIncomingConnection",
+  "variant": "EmptyList"
+ },
+ {
+  "lib": "TCP",
+  "name": "CloseIncomingConnection",
+  "variant": "SendingToClosed"
+ },
+ {
+  "lib": "TCP",
   "name": "CompleteSend",
   "variant": ""
  },
  {
   "lib": "TCP",
+  "name": "CompleteSend",
+  "variant": "SendingClient"
+ },
+ {
+  "lib": "TCP",
+  "name": "CompleteSend",
+  "variant": "SendingServer"
+ },
+ {
+  "lib": "TCP",
   "name": "GetConnectionList",
   "variant": ""
+ },
+ {
+  "lib": "TCP",
+  "name": "GetConnectionList",
+  "variant": "Closing"
  },
  {
   "lib": "TCP",

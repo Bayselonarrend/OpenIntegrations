@@ -30,29 +30,21 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Port = 9885;
-    Host = OPI_TCP.StartServer(Port);
+    LaunchPort   = 9877;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
 
-    // Connect client
-    Address = "127.0.0.1:" + Port;
-    Client = OPI_TCP.CreateConnection(Address);
-
-    If Not OPI_TCP.IsClientObject(Client) Then
-        Raise "Could not connect to server";
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Message = "Hello!" + Chars.LF;
+    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    ConnectionID   = ActiveConnections["connections"][0]["connectionId"];
 
-    OPI_TCP.SendLine(Client, Message);
-
-    // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(Host, 5000);
-    ConnectionID = FirstMessage["connectionId"];
-
-    // Finish receiving from the server side (the second FinishSending function in the source code)
-    // Note: in the source code, the function is named incorrectly, it should be FinishReceiving
-    Result = Host.ShutdownRead(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    // Completing server-side reception
+    Result = OPI_TCP.FinishReceiving(ServerObject, ConnectionID);
 ```
  
 
