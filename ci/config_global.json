@@ -106,113 +106,113 @@
                     }
                 }
             }
-        },
-        "packaging": {
-            "description": "Linux distribution options",
-            "value": {
-                "maintainer": {
-                    "description": "Maintainer data",
-                    "value": "Anton Titovets <bayselonarrend@gmail.com>"
-                },
-                "packageTypes": {
-                    "description": "Package data by type",
-                    "value": {
-                        "deb": {
-                            "description": "DEB packages options",
-                            "value": {
-                                "wslDistro": {
-                                    "description": "WSL linux distro",
-                                    "value": "Ubuntu"
-                                }
+        }
+    },
+    "packaging": {
+        "description": "Linux distribution options",
+        "value": {
+            "maintainer": {
+                "description": "Maintainer data",
+                "value": "Anton Titovets <bayselonarrend@gmail.com>"
+            },
+            "packageTypes": {
+                "description": "Package data by type",
+                "value": {
+                    "deb": {
+                        "description": "DEB packages options",
+                        "value": {
+                            "wslDistro": {
+                                "description": "WSL linux distro",
+                                "value": "Ubuntu"
                             }
-                        },
-                        "rpm": {
-                            "description": "RPM packages options",
-                            "value": {
-                                "wslDistro": {
-                                    "description": "WSL linux distro",
-                                    "value": "OracleLinux_9_1"
-                                }
+                        }
+                    },
+                    "rpm": {
+                        "description": "RPM packages options",
+                        "value": {
+                            "wslDistro": {
+                                "description": "WSL linux distro",
+                                "value": "OracleLinux_9_1"
                             }
-                        },
-                        "appimage": {
-                            "description": "AppImage packages options",
-                            "value": {
-                                "wslDistro": {
-                                    "description": "WSL linux distro",
-                                    "value": "Ubuntu"
-                                }
+                        }
+                    },
+                    "appimage": {
+                        "description": "AppImage packages options",
+                        "value": {
+                            "wslDistro": {
+                                "description": "WSL linux distro",
+                                "value": "Ubuntu"
                             }
                         }
                     }
                 }
             }
-        },
-        "ai": {
-            "description": "AI settings",
-            "value": {
-                "useAi": {
-                    "description": "Use processes with external AI services",
-                    "value": true
-                },
-                "openAiUrl": {
-                    "description": "OpenAI-compatible service URL",
-                    "value": "https://bothub.chat/api/v2/openai/"
-                },
-                "textModel": {
-                    "description": "AI model for text-based operations",
-                    "value": "claude-sonnet-4.5"
-                }
+        }
+    },
+    "ai": {
+        "description": "AI settings",
+        "value": {
+            "useAi": {
+                "description": "Use processes with external AI services",
+                "value": true
+            },
+            "openAiUrl": {
+                "description": "OpenAI-compatible service URL",
+                "value": "https://bothub.chat/api/v2/openai/"
+            },
+            "textModel": {
+                "description": "AI model for text-based operations",
+                "value": "claude-sonnet-4.5"
             }
-        },
-        "sonar": {
-            "description": "SonarQube data",
-            "value": {
-                "serverUrl": {
-                    "description": "SonarQube server URL",
-                    "value": "https://sonar.openintegrations.dev/"
-                },
-                "projectKey": {
-                    "description": "SonarQube project name",
-                    "value": "OpenIntegrations"
-                }
+        }
+    },
+    "sonar": {
+        "description": "SonarQube data",
+        "value": {
+            "serverUrl": {
+                "description": "SonarQube server URL",
+                "value": "https://sonar.openintegrations.dev/"
+            },
+            "projectKey": {
+                "description": "SonarQube project name",
+                "value": "OpenIntegrations"
             }
-        },
-        "sourceforge": {
-            "description": "SourceForge credentials",
-            "value": {
-                "login": {
-                    "description": "SourceForge username",
-                    "value": "bayselonarrend"
-                },
-                "hostUrl": {
-                    "description": "SourceForge upload server URL",
-                    "value": "frs.sourceforge.net"
-                },
-                "privateKey": {
-                    "description": "SourceForge auth private key",
-                    "value": "D:/Important/id_ed25519"
-                },
-                "publicKey": {
-                    "description": "SourceForge auth private key",
-                    "value": "D:/Important/id_ed25519.pub"
-                }
+        }
+    },
+    "sourceforge": {
+        "description": "SourceForge credentials",
+        "value": {
+            "login": {
+                "description": "SourceForge username",
+                "value": "bayselonarrend"
+            },
+            "hostUrl": {
+                "description": "SourceForge upload server URL",
+                "value": "frs.sourceforge.net"
+            },
+            "privateKey": {
+                "description": "SourceForge auth private key",
+                "value": "D:/Important/id_ed25519"
+            },
+            "publicKey": {
+                "description": "SourceForge auth private key",
+                "value": "D:/Important/id_ed25519.pub"
             }
-        },
-        "replacements": {
-            "description": "Dictionary of values replacements",
-            "value": {
-                "oscriptConvertation": {
-                    "description": "Replacements for 1C to OneScript conversion",
-                    "value": {
-                        "// #Использовать": "#Использовать",
-                        "//#Использовать": "#Использовать",
-                        "УстановитьБезопасныйРежим(Истина);": "",
-                        "УстановитьБезопасныйРежим(Ложь);": "",
-                        "// !OInt ": "",
-                        "#КонецЕсли": "// #КонецЕсли",
-                        "#Если": "// #Если"
-                    }
+        }
+    },
+    "replacements": {
+        "description": "Dictionary of values replacements",
+        "value": {
+            "oscriptConvertation": {
+                "description": "Replacements for 1C to OneScript conversion",
+                "value": {
+                    "// #Использовать": "#Использовать",
+                    "//#Использовать": "#Использовать",
+                    "УстановитьБезопасныйРежим(Истина);": "",
+                    "УстановитьБезопасныйРежим(Ложь);": "",
+                    "// !OInt ": "",
+                    "#КонецЕсли": "// #КонецЕсли",
+                    "#Если": "// #Если"
                 }
             }
         }
