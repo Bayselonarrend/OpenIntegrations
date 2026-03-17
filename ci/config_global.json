@@ -40,7 +40,7 @@
             },
             "edtProjectsPath": {
                 "description": "EDT projects directory",
-                "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
+                "value": "C:/Users/bayselonarrend/AppData/Local/1C/1cedtstart/projects"
             },
             "jenkinsHost": {
                 "description": "Jenkins URL",
@@ -123,7 +123,7 @@
                         "value": {
                             "wslDistro": {
                                 "description": "WSL linux distro",
-                                "value": "OracleLinux_9_1"
+                                "value": "OracleLinux_9_5"
                             }
                         }
                     },
