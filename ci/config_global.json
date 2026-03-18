@@ -56,7 +56,7 @@
             },
             "releaseWorkspace": {
                 "description": "Artifacts root folder",
-                "value": "C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease/"
+                "value": "C:/Users/bayselonarrend/AppData/Local/Jenkins/.jenkins/workspace/OpiBuild/OpiRelease"
             }
         }
     },
