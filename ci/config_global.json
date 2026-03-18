@@ -24,7 +24,7 @@
             },
             "osPath": {
                 "description": "OneScript exe path",
-                "value": "C:/Program Files/OneScript/"
+                "value": "D:/OneScript/"
             },
             "ghcliPath": {
                 "description": "GitHub CLI exe path",
