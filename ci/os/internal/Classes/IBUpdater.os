@@ -70,7 +70,7 @@
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for %1...", Язык));
 
-	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%3"" -Extension OpenIntegrations", Путь1С, СерверИБ, ИмяИБ, КаталогСборки);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension OpenIntegrations", Путь1С, СерверИБ, ИмяИБ, КаталогСборки);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
