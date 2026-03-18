@@ -115,6 +115,10 @@
                             "wslDistro": {
                                 "description": "WSL linux distro",
                                 "value": "Ubuntu"
+                            },
+                            "buildScript": {
+                                "description": "FPM-based shell script",
+                                "value": "./service/templates/builddeb.sh"
                             }
                         }
                     },
@@ -124,6 +128,10 @@
                             "wslDistro": {
                                 "description": "WSL linux distro",
                                 "value": "OracleLinux_9_5"
+                            },
+                            "buildScript": {
+                                "description": "FPM-based shell script",
+                                "value": "./service/templates/buildrpm.sh"
                             }
                         }
                     },

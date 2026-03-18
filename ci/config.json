@@ -389,29 +389,6 @@
    "postrmScript": {
     "description": "Post-removal script path",
     "value": "./service/templates/postrm.sh"
-   },
-   "packageTypes": {
-    "description": "Package data by type",
-    "value": {
-     "deb": {
-      "description": "DEB packages options",
-      "value": {
-       "buildScript": {
-        "description": "FPM-based shell script",
-        "value": "./service/templates/builddeb.sh"
-       }
-      }
-     },
-     "rpm": {
-      "description": "RPM packages options",
-      "value": {
-       "buildScript": {
-        "description": "FPM-based shell script",
-        "value": "./service/templates/buildrpm.sh"
-       }
-      }
-     }
-    }
    }
   }
  },
