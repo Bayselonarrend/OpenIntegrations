@@ -41,7 +41,6 @@
 Процедура ОбновитьБазуИзИсходников(Знач Язык)
 
 	ИмяИБ    = ДанныеПроекта.ПолучитьЗначениеНастройкиЛокализации("ib_name", Язык);
-	СерверИБ = "";
 	ИмяEDT   = ДанныеПроекта.ПолучитьЗначениеНастройкиЛокализации("edt_project", Язык);
 
 	КаталогСборки = СтрШаблон("./build/OPI_%1", вРег(Язык));
@@ -70,15 +69,15 @@
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for %1...", Язык));
 
-	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension OpenIntegrations", Путь1С, СерверИБ, ИмяИБ, КаталогСборки);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension OpenIntegrations", Путь1С, ИмяСервера, ИмяИБ, КаталогСборки);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
-	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force", Путь1С, СерверИБ, ИмяИБ);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
-	ТекущаяКоманда = СтрШаблон("""%1"" /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -SessionTerminate force", Путь1С, СерверИБ, ИмяИБ);
+	ТекущаяКоманда = СтрШаблон("""%1"" /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
