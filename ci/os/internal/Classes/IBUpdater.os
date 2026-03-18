@@ -54,6 +54,8 @@
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("EDT project export for %1...", Язык));
 
+	CommonTools.СообщитьПроцесс(КомандаЭкспорта);
+
 	ВыводЭкспорт = CommonTools.ЗапуститьВнешнееПриложение(КомандаЭкспорта);
 	ВыводЭкспорт = нРег(ВыводЭкспорт);
 
@@ -68,12 +70,15 @@
 	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for %1...", Язык));
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBName ""%2"" /LoadConfigFromFiles ""%3"" -Extension OpenIntegrations", Путь1С, ИмяИБ, КаталогСборки);
+	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBName ""%2"" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force", Путь1С, ИмяИБ);
+	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBName ""%2"" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяИБ);
+	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("Hash sum test for %1", Язык));
