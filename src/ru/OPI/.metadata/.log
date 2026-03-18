@@ -4,7 +4,7 @@ java.version=17.0.16
 java.vendor=Axiom JSC
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  2025.1\1cedt\1cedtc.exe
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 2025.1\1cedt\1cedtc.exe -console -data C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\src\ru\OPI
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 2025.1\1cedt\1cedtc.exe -console -data C:\Users\bayselonarrend\AppData\Local\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\src\ru\OPI
 
 !ENTRY com._1c.g5.v8.dt.core 1 0 2025-10-20 21:52:04.282
 !MESSAGE java.vm.name=OpenJDK 64-Bit Server VM
