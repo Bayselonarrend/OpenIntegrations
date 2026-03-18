@@ -77,7 +77,7 @@
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
-	ТекущаяКоманда = СтрШаблон("""%1"" /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда);
 
