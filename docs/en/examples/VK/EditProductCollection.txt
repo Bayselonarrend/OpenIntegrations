@@ -1,6 +1,6 @@
     Parameters = GetVKParameters();
 
     Name      = "EditedCollection";
-    Selection = "149";
+    Selection = "144";
 
     Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
