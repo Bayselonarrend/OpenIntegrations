@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9970",
+   "id": "9980",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-03-19T19:47:38+00:00",
+   "createdDate": "2026-03-19T23:30:50+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-03-19T19:47:44+00:00",
+   "changedDate": "2026-03-19T23:30:56+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-03-19T19:47:45+00:00",
-   "dateStart": "2026-03-19T19:47:44+00:00",
-   "deadline": "2026-03-20T19:47:00+00:00",
-   "startDatePlan": "2026-03-19T19:47:38+00:00",
-   "endDatePlan": "2026-03-19T21:00:00+00:00",
-   "guid": "{2800b3fb-28ce-44d3-9c63-98ad093e1fa9}",
+   "activityDate": "2026-03-19T23:30:56+03:00",
+   "dateStart": "2026-03-19T23:30:56+03:00",
+   "deadline": "2026-03-20T23:30:00+03:00",
+   "startDatePlan": "2026-03-19T23:30:50+03:00",
+   "endDatePlan": "2026-03-20T00:00:00+03:00",
+   "guid": "{6790e025-4340-40ae-918a-c2c1d6a498fd}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-03-19T19:47:44+00:00",
+   "statusChangedDate": "2026-03-19T23:30:56+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1773949664,
-  "finish": 1773949665.1203,
-  "duration": 1.12030410766602,
-  "processing": 1,
-  "date_start": "2026-03-19T19:47:44+00:00",
-  "date_finish": "2026-03-19T19:47:45+00:00",
-  "operating_reset_at": 1773950264,
-  "operating": 0.167725801467896
+  "start": 1773952256,
+  "finish": 1773952256.71236,
+  "duration": 0.712363958358765,
+  "processing": 0,
+  "date_start": "2026-03-19T23:30:56+03:00",
+  "date_finish": "2026-03-19T23:30:56+03:00",
+  "operating_reset_at": 1773952856,
+  "operating": 0.192111015319824
  }
 }
