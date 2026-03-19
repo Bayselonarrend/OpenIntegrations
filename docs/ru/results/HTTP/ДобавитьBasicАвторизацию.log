@@ -9,8 +9,8 @@
   "Content-Length": "0",
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "fb9cdd42-b086-483d-81a0-9a6d0ca60101",
+  "User-Agent": "1Script v$2.0.1.0",
+  "X-Arr-Log-Id": "94931b9b-9bfd-4115-8a02-56429639b101",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

@@ -13,8 +13,8 @@
    "is_email_confirmed": false,
    "real_name": "Slackbot",
    "tz": "America/Los_Angeles",
-   "tz_label": "Pacific Standard Time",
-   "tz_offset": -28800,
+   "tz_label": "Pacific Daylight Time",
+   "tz_offset": -25200,
    "is_admin": false,
    "is_owner": false,
    "is_primary_owner": false,
@@ -109,8 +109,8 @@
    "is_email_confirmed": false,
    "real_name": "OpenIntegrations",
    "tz": "America/Los_Angeles",
-   "tz_label": "Pacific Standard Time",
-   "tz_offset": -28800,
+   "tz_label": "Pacific Daylight Time",
+   "tz_offset": -25200,
    "is_admin": false,
    "is_owner": false,
    "is_primary_owner": false,
@@ -146,7 +146,7 @@
    }
   }
  ],
- "cache_ts": 1772816077,
+ "cache_ts": 1773949469,
  "response_metadata": {
   "next_cursor": ""
  }
