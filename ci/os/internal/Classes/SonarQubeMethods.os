@@ -31,7 +31,7 @@
 	ПолеТокена = ДанныеПроекта.ПолучитьЗначениеНастройки("sonar.tokenField");
 	Токен      = ДанныеПроекта.ПолучитьЗначениеСекретныхДанных(ПолеТокена);
 	
-	ШаблонЗапуска = "sonar-scanner -D""sonar.projectKey=%1"" -D""sonar.host.url=%2"" -D""sonar.token=%3"" -D""sonar.sourceEncoding=UTF-8"" -D""sonar.inclusions=**/*.bsl""";
+	ШаблонЗапуска = "sonar-scanner.bat -D""sonar.projectKey=%1"" -D""sonar.host.url=%2"" -D""sonar.token=%3"" -D""sonar.sourceEncoding=UTF-8"" -D""sonar.inclusions=**/*.bsl""";
 	СтрокаЗапуска = СтрШаблон(ШаблонЗапуска, ИмяПроекта, URL, Токен);
 
 	CommonTools.ЗапуститьПриложениеВКонсоли(СтрокаЗапуска, КаталогИсходников);
