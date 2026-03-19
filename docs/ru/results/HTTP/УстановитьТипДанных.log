@@ -12,8 +12,8 @@
   "Content-Type": "text/markdown",
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "b60746ba-e85d-4911-9565-421da2dc3765",
+  "User-Agent": "1Script v$2.0.1.0",
+  "X-Arr-Log-Id": "81bf29ca-22ad-474e-a7dc-23a856b22801",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

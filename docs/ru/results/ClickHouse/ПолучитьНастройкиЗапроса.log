@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "af383b05-6939-4dc5-a27f-e8774647dd82",
- "data": "C:\\Users\\bayse\\AppData\\Local\\Temp\\dbn0atsv.54x.json",
+ "id": "733bef59-8fe8-446c-a9b2-dcdc6b03f24f",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {
