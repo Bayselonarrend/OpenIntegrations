@@ -87,17 +87,17 @@
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension OpenIntegrations", Путь1С, ИмяСервера, ИмяИБ, КаталогСборки);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
-	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда);
+	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда, , , 5);
 	OPI_Инструменты.Пауза(3);
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
-	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда);
+	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда, , , 5);
 	OPI_Инструменты.Пауза(3);
 
 	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
-	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда);
+	CommonTools.ЗапуститьПриложениеВКонсоли(ТекущаяКоманда, , , 5);
 	OPI_Инструменты.Пауза(3);
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("Hash sum test for %1", Язык));
