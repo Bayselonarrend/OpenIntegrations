@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "53334",
+  "ID": "53388",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "36524",
+  "FILE_ID": "36570",
   "SIZE": "805189",
-  "CREATE_TIME": "2026-03-19T19:48:01+00:00",
-  "UPDATE_TIME": "2026-03-19T19:48:22+00:00",
-  "DELETE_TIME": "2026-03-19T19:48:22+00:00",
+  "CREATE_TIME": "2026-03-19T23:31:11+03:00",
+  "UPDATE_TIME": "2026-03-19T23:31:32+03:00",
+  "DELETE_TIME": "2026-03-19T23:31:32+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=d460bc69006e9f06006b12e40000000100000781f526629ff58a01d32e3b9caabc71be&token=disk%7CaWQ9NTMzMzQmXz03dkJEeEx0OUVwRjdBT3kxVzFJZ0RNTERPUWhSOHh2eA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UTXpNelFtWHowM2RrSkVlRXgwT1VWd1JqZEJUM2t4VnpGSlowUk5URVJQVVdoU09IaDJlQT09fGQ0NjBiYzY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODFmNTI2NjI5ZmY1OGEwMWQzMmUzYjljYWFiYzcxYmUi.j6jhxschVgWKqg5bU6U9G9gP0w3ko13G4moO%2BC%2FOWqE%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=f96abc69006e9f06006b12e400000001000007ebab145a1dde7510d7b71d08026fe81d&token=disk%7CaWQ9NTMzODgmXz1NQ0ZhZzAwZHc5VzhSOEhlN3EzdHpGSjlLTTZEQnpCZQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UTXpPRGdtWHoxTlEwWmhaekF3WkhjNVZ6aFNPRWhsTjNFemRIcEdTamxMVFRaRVFucENaUT09fGY5NmFiYzY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZWJhYjE0NWExZGRlNzUxMGQ3YjcxZDA4MDI2ZmU4MWQi.oVem%2FW2TZF6oY7qzsmUY%2B5UKGraYL39GOvQpE%2B9wecI%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новое имя файла.jpg"
  },
  "time": {
-  "start": 1773949702,
-  "finish": 1773949702.64422,
-  "duration": 0.644216060638428,
+  "start": 1773952292,
+  "finish": 1773952292.9667,
+  "duration": 0.966695070266724,
   "processing": 0,
-  "date_start": "2026-03-19T19:48:22+00:00",
-  "date_finish": "2026-03-19T19:48:22+00:00",
-  "operating_reset_at": 1773950302,
+  "date_start": "2026-03-19T23:31:32+03:00",
+  "date_finish": "2026-03-19T23:31:32+03:00",
+  "operating_reset_at": 1773952892,
   "operating": 0
  }
 }

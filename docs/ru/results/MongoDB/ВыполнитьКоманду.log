@@ -10,6 +10,9 @@
    },
    {
     "name": "local"
+   },
+   {
+    "name": "main"
    }
   ],
   "ok": 1
