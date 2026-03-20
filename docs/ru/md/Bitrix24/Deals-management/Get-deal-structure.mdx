@@ -110,6 +110,16 @@ import TabItem from '@theme/TabItem';
    "statusType": "DEAL_STAGE",
    "title": "Стадия сделки"
   },
+  "PREVIOUS_STAGE_ID": {
+   "type": "crm_status",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "statusType": "DEAL_STAGE",
+   "title": "Предыдущая стадия"
+  },
   "STAGE_SEMANTIC_ID": {
    "type": "string",
    "isRequired": false,
@@ -189,7 +199,7 @@ import TabItem from '@theme/TabItem';
    "isImmutable": false,
    "isMultiple": false,
    "isDynamic": false,
-   "title": "IS_MANUAL_OPPORTUNITY"
+   "title": "Режим расчёта суммы"
   },
   "TAX_VALUE": {
    "type": "double",
@@ -201,15 +211,5 @@ import TabItem from '@theme/TabItem';
    "title": "Ставка налога"
   },
   "COMPANY_ID": {
-   "type": "crm_company",
-   "isRequired": false,
-   "isReadOnly": false,
-   "isImmutable": false,
-   "isMultiple": false,
-   "isDynamic": false,
-   "title": "Компания",
-   "settings": {
-    "parentEntityTypeId": 4
-   }
 ...
 ```
