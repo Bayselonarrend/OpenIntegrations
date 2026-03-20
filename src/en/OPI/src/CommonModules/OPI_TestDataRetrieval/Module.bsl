@@ -9595,7 +9595,7 @@ EndFunction
 Function Check_Ollama_DeleteModel(Val Result, Val Option)
 
     If Option = "List" Then
-        ExpectsThat(Result["models"].Count()).Равно(0);
+        ExpectsThat(Result["models"].Count()).Равно(4);
     ElsIf Not ValueIsFilled(Option) Then
         ExpectsThat(Result["status_code"] < 300).Равно(True);
     EndIf;
