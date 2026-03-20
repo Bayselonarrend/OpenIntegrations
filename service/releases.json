@@ -29,7 +29,1470 @@
                 "icon": "media/logo.png",
                 "description_ru": "Исправлен баг вывода справки CLI для `tcp` и `ssh`",
                 "description_en": "Fixed CLI help output bug for `tcp` and `ssh`"
-            }            
+            }
+        ]
+    },
+    {
+        "version": "1.33.0",
+        "title": "Version 1.33.0 - 06.03.2026",
+        "summary_ru": "Методы работы с ReportPortal",
+        "summary_en": "Methods of working with ReportPortal",
+        "image": "media/Covers/ReportPortal.png",
+        "changes": [
+            {
+                "lib": "ReportPortal",
+                "icon": "media/ReportPortal.png",
+                "description_ru": "Авторизация (4 функции)",
+                "description_en": "Authorization (4 functions)"
+            },
+            {
+                "lib": "ReportPortal",
+                "icon": "media/ReportPortal.png",
+                "description_ru": "Управление пользователями (8 функций)",
+                "description_en": "Users management (8 functions)"
+            },
+            {
+                "lib": "ReportPortal",
+                "icon": "media/ReportPortal.png",
+                "description_ru": "Управление проектами (6 функций)",
+                "description_en": "Project management (6 functions)"
+            },
+            {
+                "lib": "ReportPortal",
+                "icon": "media/ReportPortal.png",
+                "description_ru": "Управление тестами (16 функций)",
+                "description_en": "Test management (16 functions)"
+            },
+            {
+                "lib": "ReportPortal",
+                "icon": "media/ReportPortal.png",
+                "description_ru": "Запись логов (5 функций)",
+                "description_en": "Log recording (5 functions)"
+            },
+            {
+                "lib": "SFTP",
+                "icon": "media/SFTP.png",
+                "description_ru": "Оптимизирована загрузка и скачивание больших файлов",
+                "description_en": "Optimized uploading and downloading of large files"
+            },
+            {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Исправлен процесс авторизации, который мог приводить к ошибке при подключении к некоторым серверам",
+                "description_en": "Fixed authorization process that could lead to an error when connecting to some servers"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлен новый вариант релиза CLI приложения - `AppImage`",
+                "description_en": "Added new release variant for CLI application - `AppImage`"
+            }
+        ]
+    },
+    {
+        "version": "1.32.0",
+        "title": "Version 1.32.0 - 20.02.2026",
+        "summary_ru": "Методы работы с ClickHouse",
+        "summary_en": "Methods of working with ClickHouse",
+        "image": "media/Covers/ClickHouse.png",
+        "changes": [
+            {
+                "lib": "ClickHouse",
+                "icon": "media/ClickHouse.png",
+                "description_ru": "Основные методы (5 функций)",
+                "description_en": "Common methods (5 functions)"
+            },
+            {
+                "lib": "ClickHouse",
+                "icon": "media/ClickHouse.png",
+                "description_ru": "Функции работы через gRPC (11 функций)",
+                "description_en": "gRPC functions (11 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Улучшена стабильность, добавлена обработка внутренних ошибок клиента",
+                "description_en": "Improved stability, added handling of internal client errors"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Удалены функции `ПоставитьЛайк` и все функции раздела \"Работа с обсуждениями\" в связи с их удалением из VK API",
+                "description_en": "Removed `Like` function and all functions from the \"Discussion management\" section due to their removal from the VK API"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлен метод `ГаранитроватьЗаписи` (`ON DUPLICATE UPDATE` / `MERGE`) во все библиотеки СУБД #87",
+                "description_en": "Added `EnsureRecords` method (`ON DUPLICATE UPDATE` / `MERGE`) to all DBMS libraries #87"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Улучшен вывод справки, проведена оптимизация CLI версии",
+                "description_en": "Improved help output, optimized CLI version"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена возможность подключать библиотеки по одной в версии для OneScript (например `#Использовать oint/api/telegram`)",
+                "description_en": "Added ability to include libraries individually in OneScript version (e.g. `#Use oint/api/telegram`)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправлены ошибки `MissedImport` при отладке OneScript",
+                "description_en": "Fixed `MissedImport` errors when debugging OneScript"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправлены множественные опечатки в описании и именах функций",
+                "description_en": "Fixed multiple typos in descriptions and function names"
+            }
+        ]
+    },
+    {
+        "version": "1.31.0",
+        "title": "Version 1.31.0 - 06.01.2026",
+        "summary_ru": "Методы работы с gRPC",
+        "summary_en": "Methods of working with gRPC",
+        "image": "media/Covers/GRPC.png",
+        "changes": [
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "Основные методы (7 функций)",
+                "description_en": "Common methods (7 functions)"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "Функции интроспекции (3 функций)",
+                "description_en": "Introspection functions (3 functions)"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "Функции стриминга (10 функций)",
+                "description_en": "Streaming functions (10 functions)"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Улучшен механизм загрузки фото на сервер",
+                "description_en": "Improved photo upload mechanism"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Добавлена возможность установки максимального числа переадресаций и попыток при коде `5**`",
+                "description_en": "Added support for setting maximum number of redirects and retries for `5**` status codes"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Добавлен полный сброс объекта обработки при повторной инициализации",
+                "description_en": "Complete handler object reset implemented for reinitialization"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Оптимизирована передача двоичных данных во внешние компоненты во всех библиотеках СУБД",
+                "description_en": "Optimized binary data transfer to the AddIn across all DBMS libraries"
+            }
+        ]
+    },
+    {
+        "version": "1.30.0",
+        "title": "Version 1.30.0 - 10.12.2025",
+        "summary_ru": "Методы работы с MongoDB",
+        "summary_en": "Methods of working with MongoDB",
+        "image": "media/Covers/MongoDB.png",
+        "changes": [
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Основные методы (5 функций)",
+                "description_en": "Common methods (5 functions)"
+            },
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Методы работы с базами данных (3 функции)",
+                "description_en": "Database management methods (3 functions)"
+            },
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Методы работы с коллекциями (3 функции)",
+                "description_en": "Collection manipulation methods (3 functions)"
+            },
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Методы работы с документами (8 функций)",
+                "description_en": "Document processing methods (8 functions)"
+            },
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Методы управления пользователями (5 функций)",
+                "description_en": "User management methods (5 functions)"
+            },
+            {
+                "lib": "MongoDB",
+                "icon": "media/MongoDB.png",
+                "description_ru": "Методы управления ролями (7 функций)",
+                "description_en": "Role management methods (7 functions)"
+            },
+            {
+                "lib": "YandexDisk",
+                "icon": "media/YandexDisk.png",
+                "description_ru": "Добавлены методы загрузки файлов по частям и полчения ссылки для ручной загрузки",
+                "description_en": "Added methods for partial file upload and generating links for manual upload"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Добавлены методы порционной отправки тела в нескольких запросах через `Content-Range`",
+                "description_en": "Added methods for partial data sending across multiple requests using `Content-Range`"
+            },
+            {
+                "lib": "TCP",
+                "icon": "media/TCP.png",
+                "description_ru": "Добавлена возможность подключения через прокси-сервер",
+                "description_en": "Added ability to connect via proxy server"
+            },
+            {
+                "lib": "PostgreSQL",
+                "icon": "media/PostgreSQL.png",
+                "description_ru": "Добавлена поддержка типа NUMERIC/DECIMAL #79",
+                "description_en": "Added support for NUMERIC/DECIMAL data type #79"
+            },
+            {
+                "lib": "MSSQL",
+                "icon": "media/MSSQL.png",
+                "description_ru": "Добавлена обертка пароля в двойные кавычки при формировании строки подключения #81 @zeratulayuris",
+                "description_en": "Added password wrapping in double quotes when forming connection strings #81 @zeratulayuris"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Исправлена и унифицирована обработка раскодирования строки и замены спец. символов для всех видов сообщений",
+                "description_en": "Fixed and unified string decoding and special character replacement processing for all message types"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Исправлена синтаксическая ошибка при установке ID чата #82",
+                "description_en": "Fixed syntax error when setting chat ID #82"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Методы авторизации продублированны в основные модули сервисов Yandex и Google",
+                "description_en": "Authorization methods have been duplicated into the main service modules for Yandex and Google"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлены сокращенные варианты опций для команд в консольном приложении",
+                "description_en": "Added shortened option variants for console application commands"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена обработка параметров `Неопределено` в библиотеки СУБД",
+                "description_en": "Added handling of `Undefined` parameters in DBMS libraries"
+            }
+        ]
+    },
+    {
+        "version": "1.29.0",
+        "title": "Version 1.29.0 - 31.10.2025",
+        "summary_ru": "Методы работы с мессенджером Max через GreenAPI",
+        "summary_en": "Methods of working with Max messenger via GreenAPI",
+        "image": "media/Covers/GreenMax.png",
+        "changes": [
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Управление аккаунтом (16 функций)",
+                "description_en": "Account management (16 functions)"
+            },
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Работа с группами (11 функций)",
+                "description_en": "Group management (11 functions)"
+            },
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Отправка сообщений (3 функции)",
+                "description_en": "Message sending (3 functions)"
+            },
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Работа с уведомлениями (2 функции)",
+                "description_en": "Notification handling (2 functions)"
+            },
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Работа с историей сообщений (5 функций)",
+                "description_en": "Message history management (5 functions)"
+            },
+            {
+                "lib": "GreenMax",
+                "icon": "media/GreenMax.png",
+                "description_ru": "Работа с очередями (5 функций)",
+                "description_en": "Queue management (5 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Удален модуль для работы Ozon",
+                "description_en": "The Ozon module has been removed"
+            },
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Добавлена обработка `gzip` при получении сжатых XML данных",
+                "description_en": "Added `gzip` processing for receiving compressed XML data"
+            }
+        ]
+    },
+    {
+        "version": "1.28.0",
+        "title": "Version 1.28.0 - 15.10.2025",
+        "summary_ru": "Методы работы с SSH и SFTP",
+        "summary_en": "Methods of working with SSH and SFTP",
+        "image": "media/Covers/SSH.png",
+        "changes": [
+            {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Основные методы SSH (9 функций)",
+                "description_en": "SSH common methods (9 functions)"
+            },
+            {
+                "lib": "SFTP",
+                "icon": "media/SFTP.png",
+                "description_ru": "Основные методы SFTP (9 функций)",
+                "description_en": "SFTP common methods (9 functions)"
+            },
+            {
+                "lib": "SFTP",
+                "icon": "media/SFTP.png",
+                "description_ru": "Методы работы с директориями (4 функции)",
+                "description_en": "Directory management methods (4 functions)"
+            },
+            {
+                "lib": "SFTP",
+                "icon": "media/SFTP.png",
+                "description_ru": "Методы работы с файлами (5 функции)",
+                "description_en": "File management methods (5 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправлен баг с режимом `НеИзолированно` при подключении компонент",
+                "description_en": "Resolved an issue with AddIn connection in `NotIsolated` mode"
+            }
+        ]
+    },
+    {
+        "version": "1.27.0",
+        "title": "Version 1.27.0 - 16.09.2025",
+        "summary_ru": "Методы работы с протоколом FTP",
+        "summary_en": "Methods of working with FTP protocol",
+        "image": "media/Covers/FTP.png",
+        "changes": [
+            {
+                "lib": "FTP",
+                "icon": "media/FTP.png",
+                "description_ru": "Основные методы FTP(s) (14 функций)",
+                "description_en": "FTP(s) common methods (14 functions)"
+            },
+            {
+                "lib": "FTP",
+                "icon": "media/FTP.png",
+                "description_ru": "Методы работы с директориями (6 функции)",
+                "description_en": "Directory management methods (6 functions)"
+            },
+            {
+                "lib": "FTP",
+                "icon": "media/FTP.png",
+                "description_ru": "Методы работы с файлами (4 функции)",
+                "description_en": "File management methods (4 functions)"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Исправлен неоднозначный перевод \"Тема\" как \"Thread\" и \"Topic\" в английской версии функций форума. Теперь используется только \"Topic\"",
+                "description_en": "Ambiguous usage of \"Thread\" and \"Topic\" in forum methods has been corrected; Only \"Topic\" is now used"
+            },
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Добавлена возможность использования path-style URL в функциях работы с объектами  #73",
+                "description_en": "Added support for using path-style URL in object processing functions #73"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Обновлен метод `СоздатьОпрос` в связи с [изменениями API](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed)",
+                "description_en": "The `CreatePoll` method has been updated in accordance with [API changes](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed)"
+            },
+            {
+                "lib": "VKTeams",
+                "icon": "media/VKTeams.png",
+                "description_ru": "Добавлен параметр `ТипКонтента` для функции `ОтправитьФайл` #74 @yuschkof",
+                "description_en": "Added the `ContentType` parameter to the `SendFile` function #74 @yuschkof"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправлен баг аварийного завершения при передаче больших данных в/из ВК на Linux #72",
+                "description_en": "Fixed a bug causing abrupt termination when transferring large amounts of data to/from AddIn on Linux #72"
+            }
+        ]
+    },
+    {
+        "version": "1.26.0",
+        "title": "Version 1.26.0 - 15.07.2025",
+        "summary_ru": "Методы работы с MS SQL",
+        "summary_en": "Methods of working with MS SQL",
+        "image": "media/Covers/MSSQL.png",
+        "changes": [
+            {
+                "lib": "MSSQL",
+                "icon": "media/MSSQL.png",
+                "description_ru": "Основные методы MSSQL (6 функций)",
+                "description_en": "MSSQL common methods (6 functions)"
+            },
+            {
+                "lib": "MSSQL",
+                "icon": "media/MSSQL.png",
+                "description_ru": "Методы ORM (10 функций)",
+                "description_en": "ORM methods (10 functions)"
+            },
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Добавлены сокращенные функции формирования сообщений контекста",
+                "description_en": "Added shortened functions for generating context messages"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Проведена оптимизация CLI версии, увеличина скорость выполнения операций",
+                "description_en": "The CLI version has been optimized to increase the speed of operation execution"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлен универсальный обработчик даты в разных форматах для позиционных параметров во все библиотеки СУБД",
+                "description_en": "Added a universal date handler in various formats for positional parameters to all database libraries"
+            }
+        ]
+    },
+    {
+        "version": "1.25.0",
+        "title": "Version 1.25.0 - 18.06.2025",
+        "summary_ru": "Методы работы с OpenAI API",
+        "summary_en": "Methods of working with OpenAI API",
+        "image": "media/Covers/OpenAI.png",
+        "changes": [
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Методы обработки запросов (6 функций)",
+                "description_en": "Request processing methods (6 functions)"
+            },
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Методы управления ассистентами (4 функции)",
+                "description_en": "Assistant management methods (4 functions)"
+            },
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Методы работы с файлами (5 функций)",
+                "description_en": "Methods for working with files (5 functions)"
+            },
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Методы работы с аудио (2 функции)",
+                "description_en": "Methods for working with audio (2 functions)"
+            },
+            {
+                "lib": "OpenAI",
+                "icon": "media/OpenAI.png",
+                "description_ru": "Функция получения списка доступных моделей",
+                "description_en": "Function for obtaining a list of available models"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Добавлена функция установки таймаута",
+                "description_en": "Added timeout setting function"
+            },
+            {
+                "lib": "PostgreSQL",
+                "icon": "media/PostgreSQL.png",
+                "description_ru": "Изменен формат представления даты и времени на ISO 8061-совместимый при получении значений из базы",
+                "description_en": "Changed the date and time format to ISO 8061-compatible for values retrieved from the database"
+            },
+            {
+                "lib": "VK",
+                "icon": "media/VK.png",
+                "description_ru": "Исправлена ошибка получения списка товаров по массиву ID",
+                "description_en": "Fixed a bug in retrieving a list of products by ID array"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлены методы создания и удаления колонок существующих таблиц для SQLite, PostgreSQL и MySQL",
+                "description_en": "Added methods for creating and deleting columns in existing tables for SQLite, PostgreSQL, and MySQL"
+            }
+        ]
+    },
+    {
+        "version": "1.24.0",
+        "title": "Version 1.24.0 - 04.06.2025",
+        "summary_ru": "Это обновление - не совсем обычное. В нем не было особенных изменений библиотек Открытого пакета интеграций, но только доработки, касающиеся совершенно нового проекта, основанного на OpenIntegrations - **Melezh**",
+        "summary_en": "This Update is a Bit Special. While it doesn’t include major changes to the Open Integration Package (OInt) libraries, it introduces refinements related to a brand-new project based on OpenIntegrations — **Melezh**",
+        "image": "media/logo.png",
+        "changes": []
+    },
+    {
+        "version": "1.23.0",
+        "title": "Version 1.23.0 - 21.05.2025",
+        "summary_ru": "Методы работы с HTTP(s)",
+        "summary_en": "Methods of working with HTTP(s)",
+        "image": "media/Covers/HTTP.png",
+        "changes": [
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы инициализации запроса (8 функций)",
+                "description_en": "Methods of request initialization (8 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы дополнительных настроек (5 функции)",
+                "description_en": "Advanced setting methods (5 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы установки тела запроса (8 функций)",
+                "description_en": "Methods for setting the request body (8 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы установки заголовков (2 функции)",
+                "description_en": "Header setting methods (2 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы авторизации (5 функций)",
+                "description_en": "Authorization methods (5 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы обработки и выполнения запроса (4 функции)",
+                "description_en": "Methods of request processing and execution (4 functions)"
+            },
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Методы получения ответа в нужном формате (5 функций)",
+                "description_en": "Methods to get the response in the required format (5 functions)"
+            },
+            {
+                "lib": "MySQL",
+                "icon": "media/MySQL.png",
+                "description_ru": "Добавлена функция получения информации о таблице",
+                "description_en": "Added a function to retrieve table information"
+            },
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Компонента пересобрана для поддержки многопоточности",
+                "description_en": "AddIn rebuilt for multithreading support"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена функция получения Service токена для всех сервисов Google",
+                "description_en": "Added a function to get a Service token for all Google services"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Увеличино количество выводимой информации в режиме `--debug` для CLI версии",
+                "description_en": "Increased the amount of information in `--debug` mode for CLI version"
+            }
+        ]
+    },
+    {
+        "version": "1.22.0",
+        "title": "Version 1.22.0 - 04.05.2025",
+        "summary_ru": "Методы работы с Ollama",
+        "summary_en": "Methods of working with Ollama",
+        "image": "media/Covers/Ollama.png",
+        "changes": [
+            {
+                "lib": "Ollama",
+                "icon": "media/Ollama.png",
+                "description_ru": "Методы обработки запросов (8 функций)",
+                "description_en": "Request processing methods (8 functions)"
+            },
+            {
+                "lib": "Ollama",
+                "icon": "media/Ollama.png",
+                "description_ru": "Методы управления моделями (11 функций)",
+                "description_en": "Model management methods (11 functions)"
+            },
+            {
+                "lib": "Ollama",
+                "icon": "media/Ollama.png",
+                "description_ru": "Методы работы с BLOB (2 функции)",
+                "description_en": "Methods of working with BLOB (2 functions)"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Добавлен выбор разметки в `ЗаменитьТекстСообщения` и `ЗаменитьОписаниеСообщения` #60",
+                "description_en": "Added markup option in `ReplaceMessageText` and `ReplaceMessageCaption` #60"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Добавлено экранирование спец. символов в `ЗаменитьТекстСообщения` и `ЗаменитьОписаниеСообщения` #62",
+                "description_en": "Added escaping of special characters in `ReplaceMessageText` and `ReplaceMessageCaption` #62"
+            },
+            {
+                "lib": "MySQL",
+                "icon": "media/MySQL.png",
+                "description_ru": "Исправлена работа с транзакциями, улучшено управление соединениями",
+                "description_en": "Fixed work with transactions, improved connection management"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Глобальная переработка механизма обработки HTTP-запросов",
+                "description_en": "Global revision of HTTP request processing mechanism"
+            }
+        ]
+    },
+    {
+        "version": "1.21.0",
+        "title": "Version 1.21.0 - 06.04.2025",
+        "summary_ru": "Методы работы с MySQL",
+        "summary_en": "Methods of working with MySQL",
+        "image": "media/Covers/MySQL.png",
+        "changes": [
+            {
+                "lib": "MySQL",
+                "icon": "media/MySQL.png",
+                "description_ru": "Основные методы MySQL (6 функций)",
+                "description_en": "MySQL common methods (6 functions)"
+            },
+            {
+                "lib": "MySQL",
+                "icon": "media/MySQL.png",
+                "description_ru": "Методы ORM (10 функций)",
+                "description_en": "ORM methods (10 functions)"
+            },
+            {
+                "lib": "TCP",
+                "icon": "media/TCP.png",
+                "description_ru": "Добавлена поддержка TLS соединений и функция получения текста последней ошибки",
+                "description_en": "Added support for TLS connections and a function to get the text of the last error"
+            }
+        ]
+    },
+    {
+        "version": "1.20.0",
+        "title": "Version 1.20.0 - 18.03.2025",
+        "summary_ru": "Методы работы с WhatsApp через GreenAPI",
+        "summary_en": "Methods of working with WhatsApp (GreenAPI)",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Функции управления аккаунтом (13 функций)",
+                "description_en": "Account management methods (13 functions)"
+            },
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Методы управления группами (9 функций)",
+                "description_en": "Group management methods (9 functions)"
+            },
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Методы отправки сообщений (11 функций)",
+                "description_en": "Methods of sending messages (11 functions)"
+            },
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Методы получения уведомлений (4 функции)",
+                "description_en": "Methods of receiving notifications (4 functions)"
+            },
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Методы работы с очередью сообщений (2 функции)",
+                "description_en": "Methods of working with message queue (2 functions)"
+            },
+            {
+                "lib": "GreenAPI",
+                "icon": "media/GreenAPI.png",
+                "description_ru": "Методы работы с журналом сообщений (4 функции)",
+                "description_en": "Methods of working with the message log (4 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Изменен способ приведения типов для строк и чисел #52",
+                "description_en": "Changed the method of type conversion for strings and numbers #52"
+            },
+            {
+                "lib": "RCON",
+                "icon": "media/RCON.png",
+                "description_ru": "Добавлены функции для работы по протоколу RCON (4 функции)",
+                "description_en": "Added functions for RCON protocol operation (4 functions)"
+            },
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Добавлена возможность подключения расширений из dll-файлов #53",
+                "description_en": "Added ability to attach extensions from dll-files #53"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Исправлен баг с отправкой клавиатуры в сообщения с вложениями #54",
+                "description_en": "Fixed bug with sending keyboard to messages with attachments #54"
+            },
+            {
+                "lib": "PostgreSQL",
+                "icon": "media/PostgreSQL.png",
+                "description_ru": "Добавлена поддержка TLS соединений",
+                "description_en": "Added support for TLS connections"
+            }
+        ]
+    },
+    {
+        "version": "1.19.0",
+        "title": "Version 1.19.0 - 19.02.2025",
+        "summary_ru": "Методы работы с базами PostgreSQL",
+        "summary_en": "Methods of working with PostgreSQL databases",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "PostgreSQL",
+                "icon": "media/PostgreSQL.png",
+                "description_ru": "Основные методы PostgreSQL (5 функций)",
+                "description_en": "PostgreSQL common methods (5 functions)"
+            },
+            {
+                "lib": "PostgreSQL",
+                "icon": "media/PostgreSQL.png",
+                "description_ru": "Методы ORM (12 функций)",
+                "description_en": "ORM methods (12 functions)"
+            },
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Добавлена возможность указывать файл с текстом запроса в качестве параметра функции `ВыполнитьЗапросSQL`",
+                "description_en": "Added the ability to specify a file with the query text as a parameter of the `ExecuteSQLQuery` function"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Обновлены устаревшие методы:  `ПолучитьСписокТоваров`, `ПолучитьКоличествоТоваров`, `ПолучитьОписанияХарактеристикТоваров`, `ПолучитьЦеныТоваров`, `ПолучитьИнформациюОТоварах`, `ПроверитьЗагрузкуИзображенийТоваров`",
+                "description_en": "Obsolete methods have been updated:  `GetProductList`, `GetProductsStocks`, `GetProductsAttributesData`, `GetProductsPrices`, `GetProductsInformation`, `CheckProductsImagesUpload`"
+            }
+        ]
+    },
+    {
+        "version": "1.18.1",
+        "title": "Version 1.18.1 - 10.02.2025",
+        "summary_ru": "Новые методы для API Telegram и Bitrix24",
+        "summary_en": "New methods for Telegram and Bitrix24 API",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Функции для редактирования текста и клавиатуры сообщений (3 функции)",
+                "description_en": "Functions for editing the message text and keyboard (3 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Функции для работы с календарями (19 функции)  #47",
+                "description_en": "Functions for working with calendars  (19 functions) #47"
+            },
+            {
+                "lib": "Neocities",
+                "icon": "media/Neocities.png",
+                "description_ru": "Фикс метода синхронизации каталогов",
+                "description_en": "Directory synchronisation method fix"
+            }
+        ]
+    },
+    {
+        "version": "1.18.0",
+        "title": "Version 1.18.0 - 13.01.2025",
+        "summary_ru": "Методы работы с базами SQLite",
+        "summary_en": "Methods of working with SQLite databases",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Основные методы SQLite (4 функций)",
+                "description_en": "Common methods SQLite (4 functions)"
+            },
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Методы ORM (9 функций)",
+                "description_en": "ORM methods (9 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Улучшена обработка управляющих последовательностей в CLI версии",
+                "description_en": "Improved handling of escape sequences in CLI version"
+            }
+        ]
+    },
+    {
+        "version": "1.17.0",
+        "title": "Version 1.17.0 - 25.12.2024",
+        "summary_ru": "Методы обмена по протоколу TCP",
+        "summary_en": "TCP operating methods",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "TCP",
+                "icon": "media/TCP.png",
+                "description_ru": "Методы TCP клиента (7 функций)",
+                "description_en": "TCP client methods (7 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы работы по схеме FBO (8 функций)",
+                "description_en": "FBO scheme working methods (8 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Улучшен интерфейс CLI версии: обновлена цветовая схема списка методов, добавлены прогресс бары для длительных операций",
+                "description_en": "Improved CLI version interface: updated color scheme of methods list, added progress bars for long operations"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена обработка управляющих последовательностей `\\n`, `\\r`, `\\v` и `\\f` для не-JSON аргументов и аргументов, не являющихся путями к файлам в CLI",
+                "description_en": "Added processing of `\\n`, `\\r`, `\\v` and `\\f` control sequences for non-JSON and non-file paths CLI arguments"
+            }
+        ]
+    },
+    {
+        "version": "1.16.1",
+        "title": "Version 1.16.1 - 10.12.2024",
+        "summary_ru": "Новые методы для S3, CDEK и Bitrix24",
+        "summary_en": "New methods for S3, CDEK and Bitrix24 APIs",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Создание pre-signed (прямых) ссылок для загрузки и скачивания объектов (2 функции) #46",
+                "description_en": "Creating pre-signed (direct) links for uploading and downloading objects (2 functions)"
+            },
+            {
+                "lib": "CDEK",
+                "icon": "media/CDEK.png",
+                "description_ru": "Добавлен метод получения регионов, исправлен URL основного API",
+                "description_en": "Added method of getting regions, fixed URL of the main API"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Убрана проверка режима совместимости интерфейса в расширении 1С",
+                "description_en": "Removed interface compatibility mode check in 1C extension"
+            }
+        ]
+    },
+    {
+        "version": "1.16.0",
+        "title": "Version 1.16.0 - 22.11.2024",
+        "summary_ru": "Новый API - AWS S3 API",
+        "summary_en": "New API - AWS S3 API",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Универсальные методы работы с S3 (3 функции)",
+                "description_en": "Common methods of working with S3 (3 functions)"
+            },
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Методы работы с бакетами (12 функций)",
+                "description_en": "Bucket management methods (12 functions)"
+            },
+            {
+                "lib": "S3",
+                "icon": "media/S3.png",
+                "description_ru": "Методы работы с объектами (15 функции)",
+                "description_en": "Object management methods (15 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Оптимизация некоторых общих методов и функций работы с Http-запросами",
+                "description_en": "Optimization of some common methods and functions of working with Http requests"
+            }
+        ]
+    },
+    {
+        "version": "1.15.1",
+        "title": "Version 1.15.1 - 01.11.2024",
+        "summary_ru": "Перенос CLI версии на OneScript 2",
+        "summary_en": "Migrating the CLI version to OneScript 2",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Изменен состав Windows установщика и Linux пакетов: теперь в поставке код библиотеки с движком вместо единого exe-файла, что значительно увеличивает быстродействие",
+                "description_en": "Changed the composition of Windows installer and Linux packages: now the library code with the engine is provided instead of a single exe file, which greatly increases performance"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "CLI приложение из установщиков/пакетов для Linux и Windows теперь использует OneScript 2 (RC5). Это увеличивает размер самого пакета, но позволяет использовать его без .NET и Mono (не относится к поставке одним файлом)",
+                "description_en": "The CLI application from Linux and Windows installers/packages now uses OneScript 2 (RC5). This increases the size of the package itself, but allows it to be used without .NET and Mono  (does not apply to the single file version)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлен осмысленный текст ошибки на вызов некорректного метода с параметрами",
+                "description_en": "Added sensible error text on calling an invalid method with parameters"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Улучшена общая стабильность, исправлены некоторые недочеты",
+                "description_en": "Improved overall stability, fixed some bugs"
+            }
+        ]
+    },
+    {
+        "version": "1.15.0",
+        "title": "Version 1.15.0 - 21.10.2024",
+        "summary_ru": "Новый API - CDEK API",
+        "summary_en": "New API - CDEK API",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "CDEK",
+                "icon": "media/CDEK.png",
+                "description_ru": "Общие методы получения данных (5 функций)",
+                "description_en": "Common methods for data retrieval (5 functions)"
+            },
+            {
+                "lib": "CDEK",
+                "icon": "media/CDEK.png",
+                "description_ru": "Методы работы с заказами (16 функций)",
+                "description_en": "Methods of order processing (16 functions)"
+            },
+            {
+                "lib": "CDEK",
+                "icon": "media/CDEK.png",
+                "description_ru": "Методы управления доставкой (8 функций)",
+                "description_en": "Delivery management methods (8 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Добавлен параметр *Поля* для указания необходимых полей ответа в функции `ПолучитьСписокЗадач`",
+                "description_en": "Added *Fields* parameter to specify required fields of the response in the `GetTasksList` function"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Улучшение документации: более конкретные и подробные примеры команд CLI, колонка обязательности в таблице параметрв, прочие небольшие визуальные доработки",
+                "description_en": "Documentation improvements: more specific and detailed examples of CLI commands, requirement column in the parameter table, other small visual enhancements"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправление багов некоторых методов в CLI версии благодаря повторению набора 1С тестов для консольного приложения",
+                "description_en": "Bug fixes in some CLI methods by repeating a set of 1C tests for the console application"
+            }
+        ]
+    },
+    {
+        "version": "1.14.0",
+        "title": "Version 1.14.0 - 27.09.2024",
+        "summary_ru": "Новый API - Neocities API",
+        "summary_en": "New API - Neocities API",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Neocities",
+                "icon": "media/Neocities.png",
+                "description_ru": "Методы получения данных (2 функций)",
+                "description_en": "Methods of data retrieval (2 functions)"
+            },
+            {
+                "lib": "Neocities",
+                "icon": "media/Neocities.png",
+                "description_ru": "Методы работы с файлами (5 функций)",
+                "description_en": "Files managment methods (5 functions)"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Изменен метод отправки текстовых сообщений для устранения ошибок при отправке emoji",
+                "description_en": "Changed the method of sending text messages to fix emoji sending errors"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Изменен порядок раскодирования строки TMA для устранения ошибок при наличии \"&\" в значениях",
+                "description_en": "Changed the order of TMA string decoding to eliminate errors when '&' is present in values"
+            }
+        ]
+    },
+    {
+        "version": "1.13.0",
+        "title": "Version 1.13.0 - 10.09.2024",
+        "summary_ru": "Новый API - Ozon Seller API",
+        "summary_en": "New API - Ozon Seller API",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы работы с атибутами и характеристиками (5 функций)",
+                "description_en": "Attributes and features managment methods (5 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы загрузки и обновления товаров (26 функций)",
+                "description_en": "Products uploading and updating methods (26 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы работы со штрихкодами (2 функции)",
+                "description_en": "Barcodes methods (14 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы управления ценами и остатками (8 функций)",
+                "description_en": "Stocks and prices methods (8 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Методы работы с акциями (3 функций)",
+                "description_en": "Promos management methods (3 functions)"
+            },
+            {
+                "lib": "Ozon",
+                "icon": "media/Ozon.png",
+                "description_ru": "Метод получения списка складов",
+                "description_en": "Method for obtaining the list of warehouses"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы работы со сделками (7 функции) by @EvgeniyOst",
+                "description_en": "Deals managment methods (7 functions) by @EvgeniyOst"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы работы с лидами (7 функции) by @EvgeniyOst",
+                "description_en": "Leads managment methods (7 functions) by @EvgeniyOst"
+            }
+        ]
+    },
+    {
+        "version": "1.12.0",
+        "title": "Version 1.12.0 - 19.08.2024",
+        "summary_ru": "Новый API - VK Teams",
+        "summary_en": "New API - VK Teams",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "VKTeams",
+                "icon": "media/VKTeams.png",
+                "description_ru": "Общие методы работы с сервисом (3 функции)",
+                "description_en": "Common methods of working with the service (3 functions)"
+            },
+            {
+                "lib": "VKTeams",
+                "icon": "media/VKTeams.png",
+                "description_ru": "Методы упраления и отправки сообщений (12 функций)",
+                "description_en": "Message management and sending methods (12 functions)"
+            },
+            {
+                "lib": "VKTeams",
+                "icon": "media/VKTeams.png",
+                "description_ru": "Методы управления и администрирования чатов (14 функций)",
+                "description_en": "Chat management and administration methods (14 functions)"
+            }
+        ]
+    },
+    {
+        "version": "1.11.1",
+        "title": "Version 1.11.1 - 30.07.2024",
+        "summary_ru": "Доработки по Bitrix24 и Telegram",
+        "summary_en": "Bitrix24 and Telegram improvements",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Параметр отображаемого имени для метода отправки файла",
+                "description_en": "Display name parameter for the file sending method"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Автоматическая установка имени файла при загрузке по пути к файлу (если не заполнен параметр имени)",
+                "description_en": "Automatic setting of the file name when loading by file path (if the name parameter is not filled in)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для работы с пользователями диалогов (3 функции)",
+                "description_en": "New methods of working with dialog users (3 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для работы с уведомлениями (3 функции)",
+                "description_en": "New methods of working with notifications (3 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для работы с пользовательскими полями задач (5 функции)",
+                "description_en": "New methods of working with custom tasks fields (5 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для работы с подразделениями (4 функции)",
+                "description_en": "New methods of working with departments (4 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для работы с пользователями (5 функции)",
+                "description_en": "New methods of working with users (5 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Новые методы для учета рабочего времени (5 функции)",
+                "description_en": "New methods for timekeeping (5 functions)"
+            }
+        ]
+    },
+    {
+        "version": "1.11.0",
+        "title": "Version 1.11.0 - 15.07.2024",
+        "summary_ru": "Методы для работы с Bitrix 24 API через приложение и Webhook",
+        "summary_en": "Bitrix24 API methods for apps and Webhooks",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Новый метод для удаления сообщений",
+                "description_en": "New method for deleting messages"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Добавлен параметр сообщения для ответа в отправку сообщения",
+                "description_en": "New \"Reply to\" parameter at message sending method"
+            },
+            {
+                "lib": "Telegram",
+                "icon": "media/Telegram.png",
+                "description_ru": "Исправлена отправка Emoji",
+                "description_en": "Bug fix for emoji sending"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для работы с живой лентой и новостями (7 функций)",
+                "description_en": "News feed managment methods (7 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для работы с задачами (27 функции)",
+                "description_en": "Tasks managment methods (27 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для работы с чек-листами задач (7 функции)",
+                "description_en": "Tasks checklists managment methods (7 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для работы с комментариями и результатами задач (9 функций)",
+                "description_en": "Methods for working with comments and task results (9 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для работы с канбан и \"Моим планом\" (5 функций)",
+                "description_en": "Kanban and \"My plan\" managment methods (5 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для учета рабочего времени в задачах (5 функций)",
+                "description_en": "Methods for timekeeping in tasks (5 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для управления хранилищами (6 функций)",
+                "description_en": "Storages management methods (6 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для управления каталогами (11 функций)",
+                "description_en": "Folders management methods (11 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы для управления файлами (10 функций)",
+                "description_en": "Files management methods (10 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы работы с чатами и диалогами (18 функций)",
+                "description_en": "Methods of working with chats and dialogs (18 functions)"
+            },
+            {
+                "lib": "Bitrix24",
+                "icon": "media/Bitrix24.png",
+                "description_ru": "Методы работы с сообщениями (9 функций)",
+                "description_en": "Methods of working with messages (9 functions)"
+            }
+        ]
+    },
+    {
+        "version": "1.10.0",
+        "title": "Version 1.10.0 - 08.06.2024",
+        "summary_ru": "Методы для работы с Dropbox API и английская версия пакета",
+        "summary_en": "Dropbox API methods and english version",
+        "image": "media/logo.png",
+        "changes": [
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение ссылки авторизации",
+                "description_en": "Getting authorization link"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение токена",
+                "description_en": "Getting token"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Обновление токена",
+                "description_en": "Refreshing token"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение информации об аккаунте",
+                "description_en": "Getting account information"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение информации об использованном пространстве",
+                "description_en": "Getting used space information"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение информации об объекте на диске",
+                "description_en": "Getting information about an object on the drive"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение списка файлов в папке",
+                "description_en": "Getting a list of files in a folder"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение превью объекта",
+                "description_en": "Getting object preview"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Загрузка локального файла",
+                "description_en": "Uploading a local file"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Загрузка файла по URL",
+                "description_en": "Uploading a file from URL"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение статуса загрузки по URL",
+                "description_en": "Getting upload status from URL"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Удаление объекта",
+                "description_en": "Deleting an object"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Копирование объекта",
+                "description_en": "Copying an object"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Перемещение объекта",
+                "description_en": "Moving an object"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Создание папки",
+                "description_en": "Creating a folder"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Скачивание файла",
+                "description_en": "Downloading a file"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Скачивание папки (как zip)",
+                "description_en": "Downloading a folder (as zip)"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение списка версий объекта",
+                "description_en": "Getting a list of object versions"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Восстановление объекта к версии",
+                "description_en": "Restoring an object to a version"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Получение списка тегов объекта",
+                "description_en": "Getting a list of object tags"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Добавление тега",
+                "description_en": "Adding a tag"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Удаление тега",
+                "description_en": "Deleting a tag"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Публикация/Отмена публикации папки в общий доступ",
+                "description_en": "Publishing/Unpublishing a folder for public access"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Выдача доступа к папке",
+                "description_en": "Granting access to a folder"
+            },
+            {
+                "lib": "Dropbox",
+                "icon": "media/Dropbox.png",
+                "description_ru": "Выдача доступа к файлу",
+                "description_en": "Granting access to a file"
+            },
+            {
+                "lib": "Twitter",
+                "icon": "media/Twitter.png",
+                "description_ru": "Исправления имен типов для обновленного API",
+                "description_en": "New types names for new API version"
+            },
+            {
+                "lib": "GoogleDrive",
+                "icon": "media/GoogleDrive.png",
+                "description_ru": "Более оптимальный способ получения данных локального файла для загрузки на Диск",
+                "description_en": "New optimal way to sending local files on a Drive"
+            }
         ]
     }
 ]
