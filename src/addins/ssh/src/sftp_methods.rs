@@ -1,4 +1,4 @@
-use std::io::{BufReader, Cursor, Read, copy, Write};
+use std::io::{BufReader, Cursor, Read, Write};
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 use common_utils::utils::{json_error, json_success};

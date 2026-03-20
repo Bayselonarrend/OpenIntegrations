@@ -1,11 +1,13 @@
 use std::io::Read;
 use std::path::Path;
+use std::cell::RefCell;
 use common_tcp::tcp_establish::create_tcp_connection;
 use common_utils::utils::{json_error, json_success};
 use serde_json::json;
 use ssh2::{MethodType, Session};
 use crate::AddIn;
-use crate::ssh_settings::{SshAuthTypes, SshConf};
+use crate::ssh_settings::{KeyboardInteractiveHandler, SshAuthTypes, SshConf};
+
 impl AddIn{
     pub fn set_settings(&mut self, settings: String) -> String{
 
@@ -114,6 +116,18 @@ impl AddIn{
                 };
 
                 sess.userauth_pubkey_file(username, pub_path, path, passphrase.as_deref())
+            },
+            SshAuthTypes::KeyboardInteractive => {
+                let responses = match &settings.keyboard_responses {
+                    Some(responses) => responses.clone(),
+                    None => return json_error("No keyboard_responses provided with keyboard_interactive auth type")
+                };
+
+                let mut handler = KeyboardInteractiveHandler {
+                    responses,
+                    index: RefCell::new(0),
+                };
+                sess.userauth_keyboard_interactive(username, &mut handler)
             },
 
         };
