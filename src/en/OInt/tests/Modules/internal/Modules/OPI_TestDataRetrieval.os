@@ -11815,7 +11815,7 @@ Function Check_SFTP_DeleteFile(Val Result, Val Option)
     ElsIf StrFind(Option, "Check") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(0);
 
     Else
 

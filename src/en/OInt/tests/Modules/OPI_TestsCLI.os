@@ -32293,7 +32293,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    ImagePath = "C:\pic.png";
+    Image = "C:\pic.png";
 
     Image = FunctionParameters["Picture"]; // SKIP
     TFN   = GetTempFileName("png"); // SKIP

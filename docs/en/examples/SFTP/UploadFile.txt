@@ -1,4 +1,4 @@
-    ImagePath = "C:\pic.png";
+    Image = "C:\pic.png";
 
     ImageDD = New BinaryData(Image);
 

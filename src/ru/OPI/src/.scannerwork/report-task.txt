@@ -2,5 +2,5 @@ projectKey=OpenIntegrations
 serverUrl=https://sonar.openintegrations.dev
 serverVersion=25.5.0.107428
 dashboardUrl=https://sonar.openintegrations.dev/dashboard?id=OpenIntegrations
-ceTaskId=0ed10049-6f64-4936-9753-61ab16bbd144
-ceTaskUrl=https://sonar.openintegrations.dev/api/ce/task?id=0ed10049-6f64-4936-9753-61ab16bbd144
+ceTaskId=ee8ede6e-5739-40b6-b8b3-f2911bb7c339
+ceTaskUrl=https://sonar.openintegrations.dev/api/ce/task?id=ee8ede6e-5739-40b6-b8b3-f2911bb7c339
