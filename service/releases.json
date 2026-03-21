@@ -19,6 +19,12 @@
                 "description_en": "Atom generation methods (3 functions)"
             },
             {
+                "lib": "SSH",
+                "icon": "media/SSH.png",
+                "description_ru": "Добавлена keyboard interactive авторизация #97",
+                "description_en": "Added keyboard-interactive authentication #97"
+            },
+            {
                 "lib": "TCP",
                 "icon": "media/TCP.png",
                 "description_ru": "Добавлен функционал TCP-сервера",
