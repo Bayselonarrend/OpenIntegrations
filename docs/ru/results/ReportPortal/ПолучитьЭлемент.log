@@ -1,6 +1,6 @@
 ﻿{
- "id": 7,
- "uuid": "c0e91bc8-8238-43bb-8fc4-504895c93901",
+ "id": 9,
+ "uuid": "447d2c4e-bb9f-4cc3-82d9-a96bdf0e2ee4",
  "name": "Test",
  "description": "Test launch",
  "parameters": [],
@@ -15,15 +15,15 @@
  "pathNames": {
   "launchPathName": {
    "name": "Test",
-   "number": 7
+   "number": 9
   }
  },
  "hasChildren": false,
  "hasStats": true,
- "launchId": 7,
+ "launchId": 9,
  "uniqueId": "auto:293897e9b3e0f4d39b111586ac4a3985",
  "testCaseHash": 1545806777,
  "patternTemplates": [],
- "path": "7",
+ "path": "9",
  "hasNestedSteps": false
 }

@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "32a82aa7-fc4e-811e-8711-d38f5f2c08cf",
- "created_time": "2026-03-21T19:08:00Z",
- "last_edited_time": "2026-03-21T19:08:00Z",
+ "id": "32a82aa7-fc4e-81d1-b763-c8fa47397434",
+ "created_time": "2026-03-21T20:24:00Z",
+ "last_edited_time": "2026-03-21T20:24:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,19 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "32a82aa7-fc4e-8119-b2f9-ecafb150a269"
+  "database_id": "32a82aa7-fc4e-8166-b212-d415bd74e1a6"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "Пользователь": {
+   "id": "E%3Cx%3E",
+   "type": "people",
+   "people": []
+  },
   "Описание": {
-   "id": "%40ZN%5D",
+   "id": "SwjY",
    "type": "rich_text",
    "rich_text": [
     {
@@ -44,8 +49,18 @@
     }
    ]
   },
+  "Номер": {
+   "id": "TMSo",
+   "type": "number",
+   "number": 1
+  },
+  "Активен": {
+   "id": "TvLH",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Почта": {
-   "id": "BOa%40",
+   "id": "rQiV",
    "type": "rich_text",
    "rich_text": [
     {
@@ -67,17 +82,8 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "FGIm",
-   "type": "date",
-   "date": {
-    "start": "2026-03-21T13:08:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Картинка": {
-   "id": "IeBb",
+   "id": "wiDj",
    "type": "files",
    "files": [
     {
@@ -89,34 +95,28 @@
     }
    ]
   },
+  "Телефон": {
+   "id": "zvn_",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
   "Статус": {
-   "id": "RtoK",
+   "id": "%7D%3E_c",
    "type": "select",
    "select": {
-    "id": "a3c262da-079f-45b6-8f1d-4d1d012d6daa",
+    "id": "8b26b42b-0077-4005-8ff3-1b54f977a3b0",
     "name": "Новый",
     "color": "green"
    }
   },
-  "Пользователь": {
-   "id": "Z%3F%3Ar",
-   "type": "people",
-   "people": []
-  },
-  "Телефон": {
-   "id": "%60HAD",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Номер": {
-   "id": "%7CuYN",
-   "type": "number",
-   "number": 1
-  },
-  "Активен": {
-   "id": "%7D%3FQ%5C",
-   "type": "checkbox",
-   "checkbox": true
+  "Дата создания": {
+   "id": "~UpO",
+   "type": "date",
+   "date": {
+    "start": "2026-03-21T08:24:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://www.notion.so/32a82aa7fc4e811e8711d38f5f2c08cf",
+ "url": "https://www.notion.so/32a82aa7fc4e81d1b763c8fa47397434",
  "public_url": null,
  "archived": false,
- "request_id": "84e531cf-f621-43b3-8550-5917a919a8b7"
+ "request_id": "8216abd9-991a-4675-910e-55fb85167bdd"
 }
