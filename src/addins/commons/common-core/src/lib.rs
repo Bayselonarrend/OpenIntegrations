@@ -1,5 +1,5 @@
-pub mod getset;
 pub mod from_variant;
+pub mod getset;
 
 // Реэкспортируем зависимости
 pub use addin1c;
@@ -30,7 +30,10 @@ macro_rules! impl_addin_exports {
 
         #[allow(non_snake_case)]
         #[no_mangle]
-        pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
+        pub unsafe extern "C" fn GetClassObject(
+            _name: *const u16,
+            component: *mut *mut c_void,
+        ) -> c_long {
             let addin = <$addin_type>::new();
             create_component(component, addin)
         }
@@ -132,7 +135,11 @@ macro_rules! impl_raw_addin {
                 true
             }
 
-            fn call_as_proc(&mut self, _num: usize, _params: &mut [$crate::addin1c::Variant]) -> bool {
+            fn call_as_proc(
+                &mut self,
+                _num: usize,
+                _params: &mut [$crate::addin1c::Variant],
+            ) -> bool {
                 false
             }
 

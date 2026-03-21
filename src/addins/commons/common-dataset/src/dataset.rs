@@ -1,6 +1,6 @@
-use std::fs;
 use dashmap::DashMap;
 use serde_json::{json, Value};
+use std::fs;
 use std::sync::Arc;
 use uuid::Uuid;
 
@@ -23,8 +23,12 @@ impl Datasets {
         }
     }
 
-    pub fn init_query(&self, text: &str, force_result: bool, from_file: bool) -> Result<String, String> {
-
+    pub fn init_query(
+        &self,
+        text: &str,
+        force_result: bool,
+        from_file: bool,
+    ) -> Result<String, String> {
         let content = read_input(text, from_file)?;
 
         let key = Uuid::new_v4().to_string();
@@ -48,8 +52,9 @@ impl Datasets {
     }
 
     pub fn result_as_string(&self, key: &str) -> Result<String, String> {
-
-        let (_, query_data) = self.data.remove(key)
+        let (_, query_data) = self
+            .data
+            .remove(key)
             .ok_or_else(|| format!("Key '{}' not found", key))?;
 
         let response = json!({
@@ -57,16 +62,13 @@ impl Datasets {
             "data": query_data.results
         });
 
-        serde_json::to_string(&response)
-            .map_err(|e| format!("Serialization failed: {}", e))
+        serde_json::to_string(&response).map_err(|e| format!("Serialization failed: {}", e))
     }
 
     pub fn result_as_file(&self, key: &str, filepath: &str) -> Result<(), String> {
-
         let json_data = self.result_as_string(key)?;
 
-        fs::write(filepath, json_data)
-            .map_err(|e| format!("Failed to write file: {}", e))?;
+        fs::write(filepath, json_data).map_err(|e| format!("Failed to write file: {}", e))?;
 
         Ok(())
     }
@@ -82,14 +84,13 @@ impl Datasets {
     }
 
     pub fn params_from_string(&self, key: &str, json_str: &str) -> Result<(), String> {
-        let value = serde_json::from_str(json_str)
-            .map_err(|e| format!("Invalid JSON string: {}", e))?;
+        let value =
+            serde_json::from_str(json_str).map_err(|e| format!("Invalid JSON string: {}", e))?;
 
         self.set_params(key, value)
     }
 
     pub fn batch_query_init(&self, input_file: &str, output_file: &str) -> Result<(), String> {
-
         let content = fs::read_to_string(input_file)
             .map_err(|e| format!("Failed to read file '{}': {}", input_file, e))?;
 
@@ -99,18 +100,22 @@ impl Datasets {
         let mut keys = Vec::new();
 
         for query in queries.into_iter() {
-            let obj = query.as_object()
+            let obj = query
+                .as_object()
                 .ok_or_else(|| "Each query should be a JSON object".to_string())?;
 
-            let text = obj.get("text")
+            let text = obj
+                .get("text")
                 .and_then(Value::as_str)
                 .ok_or_else(|| "Missing or invalid 'text' field".to_string())?;
 
-            let force_result = obj.get("force_result")
+            let force_result = obj
+                .get("force_result")
                 .and_then(Value::as_bool)
                 .unwrap_or(false);
 
-            let params = obj.get("params")
+            let params = obj
+                .get("params")
                 .cloned()
                 .unwrap_or_else(|| Value::Array(Vec::new()));
 
@@ -121,8 +126,8 @@ impl Datasets {
             keys.push(key);
         }
 
-        let keys_json = serde_json::to_string(&keys)
-            .map_err(|e| format!("Failed to serialize keys: {}", e))?;
+        let keys_json =
+            serde_json::to_string(&keys).map_err(|e| format!("Failed to serialize keys: {}", e))?;
 
         fs::write(output_file, keys_json)
             .map_err(|e| format!("Failed to write keys to '{}': {}", output_file, e))?;
@@ -162,8 +167,7 @@ impl Datasets {
 
 fn read_input(input: &str, from_file: bool) -> Result<String, String> {
     if from_file {
-        fs::read_to_string(input)
-            .map_err(|e| format!("Failed to read file '{}': {}", input, e))
+        fs::read_to_string(input).map_err(|e| format!("Failed to read file '{}': {}", input, e))
     } else {
         Ok(input.to_string())
     }

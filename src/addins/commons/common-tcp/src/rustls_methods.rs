@@ -1,14 +1,14 @@
-#[cfg(feature = "rustls")]
-use std::fmt::{Debug, Formatter};
-#[cfg(feature = "rustls")]
-use rustls::crypto::ring;
+use crate::tls_settings::TlsSettings;
 #[cfg(feature = "rustls")]
 use rustls::client::danger::{HandshakeSignatureValid, ServerCertVerified, ServerCertVerifier};
+#[cfg(feature = "rustls")]
+use rustls::crypto::ring;
 #[cfg(feature = "rustls")]
 use rustls::pki_types::{CertificateDer, ServerName, UnixTime};
 #[cfg(feature = "rustls")]
 use rustls::{ClientConfig, DigitallySignedStruct};
-use crate::tls_settings::TlsSettings;
+#[cfg(feature = "rustls")]
+use std::fmt::{Debug, Formatter};
 
 #[cfg(feature = "rustls")]
 pub struct NoCertificateVerification;
@@ -16,17 +16,15 @@ pub struct NoCertificateVerification;
 #[cfg(feature = "rustls")]
 impl TlsSettings {
     pub fn get_rustls_config(&self) -> Result<ClientConfig, String> {
-
         use std::sync::Arc;
 
-        let _ = ring::default_provider()
-            .install_default();
+        let _ = ring::default_provider().install_default();
 
         let mut root_store = rustls::RootCertStore::empty();
-        
+
         // Добавляем webpki корневые сертификаты
         root_store.extend(webpki_roots::TLS_SERVER_ROOTS.iter().cloned());
-        
+
         // Добавляем нативные системные корневые сертификаты
         let native_certs = rustls_native_certs::load_native_certs();
         for cert in native_certs.certs {
@@ -49,13 +47,14 @@ impl TlsSettings {
             }
         }
 
-        let config_builder = ClientConfig::builder()
-            .with_root_certificates(root_store);
+        let config_builder = ClientConfig::builder().with_root_certificates(root_store);
 
         let mut config = config_builder.with_no_client_auth();
 
         if self.accept_invalid_certs {
-            config.dangerous().set_certificate_verifier(Arc::new(NoCertificateVerification));
+            config
+                .dangerous()
+                .set_certificate_verifier(Arc::new(NoCertificateVerification));
         }
 
         config.resumption = rustls::client::Resumption::default();

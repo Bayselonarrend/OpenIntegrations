@@ -1,4 +1,4 @@
-use addin1c::{Variant, Tm};
+use addin1c::{Tm, Variant};
 
 pub trait ValueType {
     fn get_value(&self, val: &mut Variant) -> bool;

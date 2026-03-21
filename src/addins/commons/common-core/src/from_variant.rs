@@ -1,14 +1,14 @@
 use addin1c::Variant;
 
 /// Trait для автоматической конвертации из Variant в нужный тип
-/// 
+///
 /// # Пример
-/// 
+///
 /// ```rust
 /// fn my_method(value: impl FromVariant) {
 ///     // value автоматически конвертируется из Variant
 /// }
-/// 
+///
 /// // Вызов:
 /// my_method(&params[0]); // Rust сам выведет тип из сигнатуры
 /// ```
