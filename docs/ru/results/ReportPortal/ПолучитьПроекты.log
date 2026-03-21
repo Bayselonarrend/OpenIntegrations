@@ -14,7 +14,33 @@
    "organization": null
   },
   {
-   "id": 3,
+   "id": 4,
+   "projectName": "test",
+   "usersQuantity": 2,
+   "launchesQuantity": 4,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": "2026-01-01T10:00:00Z",
+   "creationDate": "2026-03-21T12:12:51.737289Z",
+   "entryType": "INTERNAL",
+   "organization": null
+  },
+  {
+   "id": 8,
+   "projectName": "default_personal",
+   "usersQuantity": 1,
+   "launchesQuantity": 0,
+   "launchesPerUser": null,
+   "uniqueTickets": null,
+   "launchesPerWeek": null,
+   "lastRun": null,
+   "creationDate": "2026-03-21T12:14:42.494131Z",
+   "entryType": "PERSONAL",
+   "organization": null
+  },
+  {
+   "id": 12,
    "projectName": "testproject",
    "usersQuantity": 1,
    "launchesQuantity": 0,
@@ -22,7 +48,7 @@
    "uniqueTickets": null,
    "launchesPerWeek": null,
    "lastRun": null,
-   "creationDate": "2026-03-21T12:10:38.219432Z",
+   "creationDate": "2026-03-21T19:31:56.438227Z",
    "entryType": "INTERNAL",
    "organization": null
   }
@@ -30,7 +56,7 @@
  "page": {
   "number": 1,
   "size": 30,
-  "totalElements": 2,
+  "totalElements": 4,
   "totalPages": 1
  }
 }

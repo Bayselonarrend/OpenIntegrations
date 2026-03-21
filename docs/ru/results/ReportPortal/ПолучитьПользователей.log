@@ -1,18 +1,19 @@
 ﻿{
  "content": [
   {
-   "uuid": "0d6825d9-482f-4808-b9ff-938cca5f59ee",
+   "uuid": "e5f6d2db-e63a-48d5-915a-e8ac666d0b2a",
    "active": true,
+   "loaded": true,
    "id": 1,
    "userId": "superadmin",
-   "email": "bayselonarrend@gmail.com",
+   "email": "superadminemail@domain.com",
    "photoId": "dXNlcnMvc3VwZXJhZG1pbg",
-   "fullName": "bayselonarrend",
+   "fullName": "tester",
    "accountType": "INTERNAL",
    "userRole": "ADMINISTRATOR",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1772818509267,
+    "last_login": 1774121508632,
     "attachmentContentType": "image/jpeg"
    },
    "assignedProjects": {
@@ -22,42 +23,44 @@
      "entryType": "PERSONAL"
     },
     "test": {
-     "projectId": 3,
+     "projectId": 4,
      "projectRole": "PROJECT_MANAGER",
      "entryType": "INTERNAL"
     }
    }
   },
   {
-   "uuid": "327cfc9f-8b72-4594-8a4d-480a847927b2",
+   "uuid": "1f5b36f7-9bc0-48bf-a712-fb9dfb0ed95f",
    "active": true,
-   "id": 11,
+   "loaded": true,
+   "id": 6,
    "userId": "default",
-   "email": "default@default.com",
-   "fullName": "default",
+   "email": "example@example.com",
+   "fullName": "Default",
    "accountType": "INTERNAL",
    "userRole": "USER",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1772533189154
+    "last_login": 1774095282438
    },
    "assignedProjects": {
     "default_personal": {
-     "projectId": 20,
+     "projectId": 8,
      "projectRole": "PROJECT_MANAGER",
      "entryType": "PERSONAL"
     },
-    "superadmin_personal": {
-     "projectId": 1,
+    "test": {
+     "projectId": 4,
      "projectRole": "MEMBER",
-     "entryType": "PERSONAL"
+     "entryType": "INTERNAL"
     }
    }
   },
   {
-   "uuid": "99376ee0-411e-478d-a0c0-5ec56713a99b",
+   "uuid": "ef1de87c-c20b-4b3f-b19f-fbd38414b17a",
    "active": true,
-   "id": 28,
+   "loaded": true,
+   "id": 8,
    "userId": "test",
    "email": "test@example.com",
    "fullName": "Test User",
@@ -65,16 +68,16 @@
    "userRole": "USER",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1772818591403
+    "last_login": 1774121518640
    },
    "assignedProjects": {
     "test_personal": {
-     "projectId": 54,
+     "projectId": 13,
      "projectRole": "PROJECT_MANAGER",
      "entryType": "PERSONAL"
     },
     "test": {
-     "projectId": 3,
+     "projectId": 4,
      "projectRole": "MEMBER",
      "entryType": "INTERNAL"
     }
