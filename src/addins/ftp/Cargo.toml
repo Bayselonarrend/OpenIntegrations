@@ -19,13 +19,13 @@ common-core = { path = "../commons/common-core" }
 common-tcp = { path = "../commons/common-tcp", features = ["rustls"], default-features = false }
 common-utils = { path = "../commons/common-utils" }
 
-suppaftp = { version = "6.3.0", features = ["rustls", "secure"] }
+suppaftp = { version = "8.0.2", features = ["rustls-aws-lc-rs", "secure"] }
 serde_json = "1.0"
 serde = { version = "1.0.217", features = ["derive"] }
 socks = "0.3.4"
 base64 = "0.22.1"
 chrono = { version = "0.4", features = ["serde"] }
 webpki-roots = "1.0.1"
-rustls = { version = "0.23.28", features = ["ring"] }
 rustls-pemfile = "2.2.0"
 httparse = "1.10.1"
+rustls = "0.23.37"
