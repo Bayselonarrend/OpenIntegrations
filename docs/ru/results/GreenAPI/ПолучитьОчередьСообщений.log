@@ -1,81 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB0A59A894E7600876956",
-  "type": "sendMessage",
-  "body": {
-   "chatId": "***",
-   "message": "Новое сообщение",
-   "linkPreview": true,
-   "typingTime": null,
-   "typePreview": "small"
-  }
- },
- {
-  "messageID": "3EB0091924C21FBEEADC6F",
-  "type": "sendMessage",
-  "body": {
-   "chatId": "***",
-   "message": "Новое сообщение",
-   "quotedMessageId": "3EB0A59A894E7600876956",
-   "linkPreview": true,
-   "typingTime": null,
-   "typePreview": "small"
-  }
- },
- {
-  "messageID": "3EB06EBF735D513B4D63F3",
-  "type": "sendFileByUrl",
-  "body": {
-   "fileName": "photo.jpg",
-   "chatId": "***",
-   "caption": "Описание файла",
-   "archive": false,
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/dc217364-af32-4212-aaf7-bbe465d5a650.jpg",
-   "typingTime": null,
-   "typingType": "composing"
-  }
- },
- {
-  "messageID": "3EB0D5BF2570FEBAD09CC7",
-  "type": "sendFileByUrl",
-  "body": {
-   "fileName": "vid.mp4",
-   "chatId": "***",
-   "quotedMessageId": "3EB06EBF735D513B4D63F3",
-   "caption": "Описание файла",
-   "archive": false,
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/f193108e-6896-42fd-9538-b702d0bb8b7e.mp4",
-   "typingTime": null,
-   "typingType": "composing"
-  }
- },
- {
-  "messageID": "3EB049097FF6D202FE6E2F",
-  "type": "sendFileByUrl",
-  "body": {
-   "chatId": "***",
-   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
-   "fileName": "photo.jpg",
-   "caption": "Описание файла",
-   "typingTime": null,
-   "typingType": "composing"
-  }
- },
- {
-  "messageID": "3EB015F2EE953A8FD36C7A",
-  "type": "sendFileByUrl",
-  "body": {
-   "chatId": "***",
-   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
-   "fileName": "vid.mp4",
-   "caption": "Описание файла",
-   "quotedMessageId": "3EB049097FF6D202FE6E2F",
-   "typingTime": null,
-   "typingType": "composing"
-  }
- },
- {
-  "messageID": "3EB095B90AD9A88E76F90D",
+  "messageID": "3EB0C9BA79D2B013EA27A9",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -96,7 +21,7 @@
   }
  },
  {
-  "messageID": "3EB06BCA767E2BB68C6DF4",
+  "messageID": "3EB05C377C4C86160B2AC0",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -113,12 +38,12 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB095B90AD9A88E76F90D",
+   "quotedMessageId": "3EB0C9BA79D2B013EA27A9",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB02AEC70BF139F02696E",
+  "messageID": "3EB0151545004182C5CCF9",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -130,18 +55,18 @@
   }
  },
  {
-  "messageID": "3EB0C985057C44CFF0A466",
+  "messageID": "3EB0DE865C1C45B9A8E4B6",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB02AEC70BF139F02696E",
+   "quotedMessageId": "3EB0151545004182C5CCF9",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB09AD12C097D0CBED2D9",
+  "messageID": "3EB077E4DBE86ED26D7718",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -156,7 +81,7 @@
   }
  },
  {
-  "messageID": "3EB0D510158E793A1F18DC",
+  "messageID": "3EB085AF5D0BE7F2296D2B",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -164,30 +89,30 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB09AD12C097D0CBED2D9",
+   "quotedMessageId": "3EB077E4DBE86ED26D7718",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0CE9CE05D82B30691C1"
+   "3EB0ED0BAADAAB561C20B4"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0A59A894E7600876956"
+    "3EB07A5A9E170621EFDE82"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB05F46AAA7518860C9A5",
+  "messageID": "3EB0248D7F6D25BBA4C379",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0A59A894E7600876956",
+   "idMessage": "3EB07A5A9E170621EFDE82",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }
