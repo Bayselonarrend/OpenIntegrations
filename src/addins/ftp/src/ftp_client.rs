@@ -17,6 +17,7 @@ use common_utils::utils::{json_error, json_success};
 use suppaftp::types::Response;
 use crate::configuration::FtpSettings;
 use crate::passive_establish;
+use suppaftp::rustls;
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),
@@ -414,7 +415,7 @@ pub fn configure_ftp_client(
         ftp_stream.set_passive_nat_workaround(true);
 
         let mut secure_stream = ftp_stream
-            .into_secure(RustlsConnector::from(tls_connector), &ftp_settings.domain)
+            .into_secure(tls_connector, &ftp_settings.domain)
             .map_err(|e| json_error(&e))?;
 
         if passive_proxy {
