@@ -40,7 +40,6 @@ impl Default for BinaryVault {
 }
 
 impl BinaryVault {
-
     pub fn new() -> Self {
         Self {
             storage: Arc::new(Mutex::new(HashMap::new())),
@@ -80,7 +79,8 @@ impl BinaryVault {
 
         let cleaned_base64 = base64_str.replace(&['\n', '\r', ' '][..], "");
 
-        let data = BASE64_STANDARD.decode(cleaned_base64)
+        let data = BASE64_STANDARD
+            .decode(cleaned_base64)
             .map_err(|e| VaultError::IoError(io::Error::new(io::ErrorKind::InvalidData, e)))?;
         Ok(self.store_bytes(data))
     }
@@ -90,7 +90,6 @@ impl BinaryVault {
         *counter += 1;
         format!("vault_key_{}", *counter)
     }
-
 }
 
 #[derive(Debug)]
