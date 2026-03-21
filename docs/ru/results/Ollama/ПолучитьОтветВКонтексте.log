@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-03-21T12:09:15.9438945Z",
+ "created_at": "2026-03-21T19:30:27.2683164Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to real-time information about specific versions of software. However, as per my understanding, the first version of 1c:enterprise was launched in 2003, although it may vary by region or organization. In general, when a new version of a software comes out, it usually releases a minor update to users, followed by a major release that includes significant changes and improvements. This is because the development cycle for software updates is often longer, and users need time to adapt to the changes before being able to use them in production. Some organizations may choose to upgrade their systems at different intervals based on organizational needs and budget constraints."
+  "content": "I don't have access to specific release dates. However, as per my knowledge, the first version of 1c:enterprise was released in august 2009. It has since been updated several times, including several major releases with bug fixes and new features, such as the most recent one that was released in may 2021."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 3155597000,
- "load_duration": 40437300,
- "prompt_eval_count": 227,
- "prompt_eval_duration": 889429800,
- "eval_count": 137,
- "eval_duration": 2165466100
+ "total_duration": 1711463900,
+ "load_duration": 38236000,
+ "prompt_eval_count": 163,
+ "prompt_eval_duration": 362030700,
+ "eval_count": 75,
+ "eval_duration": 1278092700
 }

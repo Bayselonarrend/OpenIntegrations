@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9990",
+   "id": "10000",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-03-21T14:52:00+03:00",
+   "createdDate": "2026-03-21T22:12:23+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-03-21T14:52:07+03:00",
+   "changedDate": "2026-03-21T22:12:29+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-03-21T14:52:07+03:00",
-   "dateStart": "2026-03-21T14:52:07+03:00",
-   "deadline": "2026-03-22T14:52:00+03:00",
-   "startDatePlan": "2026-03-21T14:52:00+03:00",
+   "activityDate": "2026-03-21T22:12:29+03:00",
+   "dateStart": "2026-03-21T22:12:29+03:00",
+   "deadline": "2026-03-22T22:12:00+03:00",
+   "startDatePlan": "2026-03-21T22:12:23+03:00",
    "endDatePlan": "2026-03-22T00:00:00+03:00",
-   "guid": "{ca8f30c1-6bfb-424c-b8da-bedba00e153d}",
+   "guid": "{8831e610-1b6e-47a8-bc72-8b437bae44ad}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-03-21T14:52:07+03:00",
+   "statusChangedDate": "2026-03-21T22:12:29+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1774093927,
-  "finish": 1774093927.62955,
-  "duration": 0.629554033279419,
+  "start": 1774120349,
+  "finish": 1774120349.66315,
+  "duration": 0.663146018981934,
   "processing": 0,
-  "date_start": "2026-03-21T14:52:07+03:00",
-  "date_finish": "2026-03-21T14:52:07+03:00",
-  "operating_reset_at": 1774094527,
-  "operating": 0.158728837966919
+  "date_start": "2026-03-21T22:12:29+03:00",
+  "date_finish": "2026-03-21T22:12:29+03:00",
+  "operating_reset_at": 1774120949,
+  "operating": 0.161761045455933
  }
 }
