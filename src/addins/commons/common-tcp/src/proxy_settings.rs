@@ -1,6 +1,6 @@
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize,Serialize,Clone)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct ProxySettings {
     pub server: String,
     pub port: u16,
@@ -11,8 +11,6 @@ pub struct ProxySettings {
 
 impl ProxySettings {
     pub fn from_json(json_str: &str) -> Result<Self, String> {
-        serde_json::from_str(json_str)
-            .map_err(|e| format!("Failed to parse proxy setting: {}", e))
+        serde_json::from_str(json_str).map_err(|e| format!("Failed to parse proxy setting: {}", e))
     }
-
 }
