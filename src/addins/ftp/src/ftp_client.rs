@@ -17,7 +17,6 @@ use common_utils::utils::{json_error, json_success};
 use suppaftp::types::Response;
 use crate::configuration::FtpSettings;
 use crate::passive_establish;
-use suppaftp::rustls;
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),

@@ -777,7 +777,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 [[package]]
 name = "suppaftp"
 version = "8.0.2"
-source = "git+https://github.com/Bayselonarrend/suppaftp?rev=54cc4e746bdc6494f9abe62f81a272fd7a45716d#54cc4e746bdc6494f9abe62f81a272fd7a45716d"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7d3da253d7e9993de86df41eb89e8cb1b6f567abe215798645651fca4148d0aa"
 dependencies = [
  "chrono",
  "futures-lite",
