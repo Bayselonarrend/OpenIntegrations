@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "53496",
+  "ID": "53550",
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "36646",
+  "FILE_ID": "36684",
   "SIZE": "805189",
-  "CREATE_TIME": "2026-03-21T22:12:44+03:00",
-  "UPDATE_TIME": "2026-03-21T22:12:44+03:00",
+  "CREATE_TIME": "2026-03-21T20:28:33+00:00",
+  "UPDATE_TIME": "2026-03-21T20:28:33+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=97fbbe69006e9f06006b12e400000001000007d2a328ea209d814d14fb1ef24663ce6c&token=disk%7CaWQ9NTM0OTYmXz0xSGZEM1htMVF0QjJnbTM2YVNvTEs2dFlFTUFaMklBaw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UTTBPVFltWHoweFNHWkVNMWh0TVZGMFFqSm5iVE0yWVZOdlRFczJkRmxGVFVGYU1rbEJhdz09fDk3ZmJiZTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZDJhMzI4ZWEyMDlkODE0ZDE0ZmIxZWYyNDY2M2NlNmMi.PPpq0VtMRJLCt%2BNTiiSLOY8tj%2FgBx669tOMwKb1v%2B48%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=5d0dbf69006e9f06006b12e4000000010000078a4759a1c7649319521e716ea9b07fde&token=disk%7CaWQ9NTM1NTAmXz1NVHg4MU5xVnVPeWx1WWV0WXI3NlpHdTdSZEFtVm5aWg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UTTFOVEFtWHoxTlZIZzRNVTV4Vm5WUGVXeDFXV1YwV1hJM05scEhkVGRTWkVGdFZtNWFXZz09fDVkMGRiZjY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OGE0NzU5YTFjNzY0OTMxOTUyMWU3MTZlYTliMDdmZGUi.Lj9MKaigeR23WQnlQCuymJN3e7pFaZcExzJddhQIFn8%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1774120365,
-  "finish": 1774120365.33063,
-  "duration": 0.330631017684936,
+  "start": 1774124914,
+  "finish": 1774124914.14545,
+  "duration": 0.145453929901123,
   "processing": 0,
-  "date_start": "2026-03-21T22:12:45+03:00",
-  "date_finish": "2026-03-21T22:12:45+03:00",
-  "operating_reset_at": 1774120965,
+  "date_start": "2026-03-21T20:28:34+00:00",
+  "date_finish": "2026-03-21T20:28:34+00:00",
+  "operating_reset_at": 1774125514,
   "operating": 0
  }
 }
