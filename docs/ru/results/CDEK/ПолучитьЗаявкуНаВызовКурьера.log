@@ -1,9 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "5dc6ab30-89a0-4eba-85ac-faa7c7cc6478",
-  "cdek_number": "1107119016",
-  "order_uuid": "bae84ff3-1deb-4354-905c-543a7af0b4c2",
-  "intake_date": "2026-03-20",
+  "uuid": "6afdecc7-1641-43f9-ab61-756678673718",
+  "cdek_number": "1107120555",
+  "order_uuid": "e4e7f69c-d5bf-4951-8372-2e460609646a",
+  "intake_date": "2026-03-22",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -41,12 +41,12 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-03-19T23:36:38+03:00"
+    "date_time": "2026-03-21T14:57:38+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "b5508847-11aa-41d1-9f76-8a9a84cd7a56",
+    "package_id": "e57800ff-d531-4d95-ad22-62720d1c6e88",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -56,9 +56,9 @@
  },
  "requests": [
   {
-   "request_uuid": "26b5134c-c0cf-4a00-94bf-b66559aee063",
+   "request_uuid": "bbe45167-d294-49ff-8565-339201a07b02",
    "type": "CREATE",
-   "date_time": "2026-03-19T23:36:37+03:00",
+   "date_time": "2026-03-21T14:57:37+03:00",
    "state": "ACCEPTED"
   }
  ]
