@@ -14754,7 +14754,7 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
 
             EndIf;
 
-            TruncateString(Value_, 100);
+            TruncateString(CurrentValue, 100);
 
             Value_.Insert(CurrentKey, CurrentValue);
 

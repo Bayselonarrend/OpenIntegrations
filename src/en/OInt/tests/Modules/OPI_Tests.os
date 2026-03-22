@@ -15399,6 +15399,8 @@ Procedure TCP_GetConnectionData(FunctionParameters)
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
+    OPI_Tools.Pause(1); // SKIP
+
     // Receive the list of server connections
     ConnectionList = OPI_TCP.GetConnectionList(ServerObject);
 
