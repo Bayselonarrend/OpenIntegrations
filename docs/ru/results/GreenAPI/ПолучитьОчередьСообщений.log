@@ -1,6 +1,19 @@
 ﻿[
  {
-  "messageID": "3EB0CFBF828AA9D7C4C777",
+  "messageID": "3EB00854C60A0AD33C6ACA",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "3EB056111751ACAB5482BF",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0D395E00FAD04BEFB1C",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -21,7 +34,7 @@
   }
  },
  {
-  "messageID": "3EB0BB5406EF2B4A7938C7",
+  "messageID": "3EB0C4D95DA97AC310A689",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -38,12 +51,12 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB0CFBF828AA9D7C4C777",
+   "quotedMessageId": "3EB0D395E00FAD04BEFB1C",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB00F7E887878D0CA48BD",
+  "messageID": "3EB0B8EFA85D2649CADDD7",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -55,18 +68,18 @@
   }
  },
  {
-  "messageID": "3EB00EB5A62778AFF6977C",
+  "messageID": "3EB0F94ECEA2569CA46728",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB00F7E887878D0CA48BD",
+   "quotedMessageId": "3EB0B8EFA85D2649CADDD7",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0B91568DCC547A58FCB",
+  "messageID": "3EB0993D95D82CEE7D4063",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -81,7 +94,7 @@
   }
  },
  {
-  "messageID": "3EB08F3FCF5D1F434799BD",
+  "messageID": "3EB0696798A92CCEAE2543",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -89,30 +102,30 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB0B91568DCC547A58FCB",
+   "quotedMessageId": "3EB0993D95D82CEE7D4063",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB07EEFFC17510DA04423"
+   "3EB08C7EA0305B6925AF8B"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB014AF476704A1E3E960"
+    "3EB04BA78B7345D840069A"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0FB27AAEAEC1CFAA04F",
+  "messageID": "3EB01FC33BEECCAA1566C3",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB014AF476704A1E3E960",
+   "idMessage": "3EB04BA78B7345D840069A",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }

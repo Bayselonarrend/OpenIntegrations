@@ -588,7 +588,7 @@
   "code": "NSK21",
   "name": "NSK21, Новосибирск, ул. Героев Революции",
   "uuid": "1757335f-2eb8-49eb-85ff-cf4296fcebfe",
-  "address_comment": "Обходим поликлинику с правой стороны, второе здание по ходу движения. Рядом с вывеской СДЭК, вывески Ткани, а также Зоомагазин.",
+  "address_comment": "Обходим поликлинику с правой стороны, второе здание по ходу движения. Рядом с вывеской СДЭК, вывески...",
   "nearest_station": "Поликлиника (ул. Героев революции)",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
   "phones": [
@@ -597,7 +597,7 @@
    }
   ],
   "email": "s.semenov@cdek.ru",
-  "note": "Обходим поликлинику с правой стороны, второе здание по ходу движения. Рядом с вывеской СДЭК, вывески Ткани, а также Зоомагазин.",
+  "note": "Обходим поликлинику с правой стороны, второе здание по ходу движения. Рядом с вывеской СДЭК, вывески...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -886,7 +886,7 @@
   "code": "NSK66",
   "name": "NSK66, Новосибирск, ул. Титова",
   "uuid": "10dd1c92-dd93-40e1-80f1-258b5794dac9",
-  "address_comment": "От площади Станиславского вверх по ул. Титова около 350 метров, на первом этаже пятиэтажного многоквартирного жилого дома, в котором расположен супермаркет «Ярче», отдельный совместный вход с магазином строительных материалов колор-студией «Палитра», рядом с входом в супермаркет «Мясная карта»",
+  "address_comment": "От площади Станиславского вверх по ул. Титова около 350 метров, на первом этаже пятиэтажного многокв...",
   "nearest_station": "пл. Станиславского, Телецентр",
   "nearest_metro_station": "пл. Карла Маркса",
   "work_time": "Пн-Пт 10:00-20:00, Сб-Вс 10:00-16:00",
@@ -896,7 +896,7 @@
    }
   ],
   "email": "titov.sa@cdek.ru",
-  "note": "От площади Станиславского вверх по ул. Титова около 350 метров, на первом этаже пятиэтажного многоквартирного жилого дома, в котором расположен супермаркет «Ярче», отдельный совместный вход с магазином строительных материалов колор-студией «Палитра», рядом с входом в супермаркет «Мясная карта»",
+  "note": "От площади Станиславского вверх по ул. Титова около 350 метров, на первом этаже пятиэтажного многокв...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -960,7 +960,7 @@
   "code": "NSK67",
   "name": "NSK67, Новосибирск, ул. Молодости",
   "uuid": "e360835f-a499-403a-a6b4-3b1b990f2680",
-  "address_comment": "Пересечение улиц Гидромонтажная и Молодости. Остановка «Поликлиника». Вход — пристрой к жилому двухэтажному дому со стороны ул. Молодости.",
+  "address_comment": "Пересечение улиц Гидромонтажная и Молодости. Остановка «Поликлиника». Вход — пристрой к жилому двухэ...",
   "nearest_station": "Поликлиника",
   "work_time": "Пн-Пт 10:00-20:00, Сб-Вс 10:00-16:00",
   "phones": [
@@ -969,7 +969,7 @@
    }
   ],
   "email": "i.gordeeva@cdek.ru",
-  "note": "Пересечение улиц Гидромонтажная и Молодости. Остановка «Поликлиника». Вход — пристрой к жилому двухэтажному дому со стороны ул. Молодости.",
+  "note": "Пересечение улиц Гидромонтажная и Молодости. Остановка «Поликлиника». Вход — пристрой к жилому двухэ...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1185,7 +1185,7 @@
   "code": "NSK70",
   "name": "NSK70, Новосибирск, ул. Октябрьская",
   "uuid": "c476ea6b-cc13-4c80-a5d0-0477a099a59d",
-  "address_comment": "Возле кинотеатра им. В.Маяковского на пересечении Красного проспекта и ул. Октябрьская здание БЦ «На Октябрьской», главный вход в здание, на 1-м эт., кааб. 110А",
+  "address_comment": "Возле кинотеатра им. В.Маяковского на пересечении Красного проспекта и ул. Октябрьская здание БЦ «На...",
   "nearest_station": "Кинотеатр им. В.Маяковского",
   "nearest_metro_station": "Ленина",
   "work_time": "Пн-Пт 10:00-20:00, Сб-Вс 10:00-16:00",
@@ -1195,7 +1195,7 @@
    }
   ],
   "email": "E.Voronova@cdek.ru",
-  "note": "Возле кинотеатра им. В.Маяковского на пересечении Красного проспекта и ул. Октябрьская здание БЦ «На Октябрьской», главный вход в здание, на 1-м эт., кааб. 110А",
+  "note": "Возле кинотеатра им. В.Маяковского на пересечении Красного проспекта и ул. Октябрьская здание БЦ «На...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1261,7 +1261,7 @@
   "code": "NSK71",
   "name": "NSK71, Новосибирск, ул. Холодильная",
   "uuid": "deadf595-2a04-488a-935f-00b3976fd6e1",
-  "address_comment": "Рядом с остановкой «Холодильная» ( по стороне нечетных домов Дуси Ковальчук) стоит дом , от дороги второе офисное помещение.",
+  "address_comment": "Рядом с остановкой «Холодильная» ( по стороне нечетных домов Дуси Ковальчук) стоит дом , от дороги в...",
   "nearest_station": "Холодильная",
   "nearest_metro_station": "Заельцовская",
   "work_time": "Пн-Пт 10:00-20:00, Сб-Вс 10:00-16:00",
@@ -1271,7 +1271,7 @@
    }
   ],
   "email": "Bibikova.m@cdek.ru",
-  "note": "Рядом с остановкой «Холодильная» ( по стороне нечетных домов Дуси Ковальчук) стоит дом , от дороги второе офисное помещение.",
+  "note": "Рядом с остановкой «Холодильная» ( по стороне нечетных домов Дуси Ковальчук) стоит дом , от дороги в...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1357,7 +1357,7 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6da10e9-dbe2-4ad1-95c2-412d6ab0dd36"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6da10e9-dbe2-4ad1-95c2-412d6ab0dd3..."
    }
   ],
   "work_time_list": [
@@ -1433,13 +1433,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c3ec2fcf-2edb-4b67-aef4-9fd518cfaf31"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c3ec2fcf-2edb-4b67-aef4-9fd518cfaf3..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23417e5f-0a30-4035-a1a9-8c45c2303a52"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23417e5f-0a30-4035-a1a9-8c45c2303a5..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fbf9c44f-7291-4ed9-951b-395e771191d1"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fbf9c44f-7291-4ed9-951b-395e771191d..."
    }
   ],
   "work_time_list": [
@@ -1494,7 +1494,7 @@
   "code": "NSK49",
   "name": "NSK49, Новосибирск, ул. Балтийская",
   "uuid": "ef362772-2c16-43ea-b515-7f7056614472",
-  "address_comment": "ТЦ \"Балтийский\", по эскалатору на 2ой этаж, далее по навигационным вывескам. С заднего фасада имеется доп.вход с грузовым лифтом.",
+  "address_comment": "ТЦ \"Балтийский\", по эскалатору на 2ой этаж, далее по навигационным вывескам. С заднего фасада имеетс...",
   "nearest_station": "Белоусова",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
   "phones": [
@@ -1503,7 +1503,7 @@
    }
   ],
   "email": "f.kvashnin@cdek.ru",
-  "note": "ТЦ \"Балтийский\", по эскалатору на 2ой этаж, далее по навигационным вывескам. С заднего фасада имеется доп.вход с грузовым лифтом.",
+  "note": "ТЦ \"Балтийский\", по эскалатору на 2ой этаж, далее по навигационным вывескам. С заднего фасада имеетс...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1517,19 +1517,19 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcaf11cc-c7d9-4f80-b0f9-eb6393db28cc"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcaf11cc-c7d9-4f80-b0f9-eb6393db28c..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/1f49e563-770d-43b7-863a-2e7aab237cca"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/1f49e563-770d-43b7-863a-2e7aab237cc..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/9ba140bc-47b5-471d-90ef-cef6a320708e"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/9ba140bc-47b5-471d-90ef-cef6a320708..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3e87c42f-68f0-490d-aba0-747d9ae1f33a"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3e87c42f-68f0-490d-aba0-747d9ae1f33..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/32075198-b5f4-4dde-b353-53444e9df2b4"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/32075198-b5f4-4dde-b353-53444e9df2b..."
    }
   ],
   "work_time_list": [
@@ -1584,7 +1584,7 @@
   "code": "NSK33",
   "name": "NSK33, Новосибирск, ул. Дуси Ковальчук",
   "uuid": "7aa87999-de93-4cb0-ae67-9e865010cbd2",
-  "address_comment": "От метро по ул. Дуси Ковальчук в сторону Университета путей сообщения. Здание рядом с БЦ Колибри, вход с правой стороны.",
+  "address_comment": "От метро по ул. Дуси Ковальчук в сторону Университета путей сообщения. Здание рядом с БЦ Колибри, вх...",
   "nearest_station": "Ст. м.  Заельцовская, пл.Калинина",
   "nearest_metro_station": "Ст. м. Заельцовская",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
@@ -1594,7 +1594,7 @@
    }
   ],
   "email": "e.arestova@cdek.ru",
-  "note": "От метро по ул. Дуси Ковальчук в сторону Университета путей сообщения. Здание рядом с БЦ Колибри, вход с правой стороны.",
+  "note": "От метро по ул. Дуси Ковальчук в сторону Университета путей сообщения. Здание рядом с БЦ Колибри, вх...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1608,19 +1608,19 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/76bdfa32-1544-4eb2-8e4f-76af58b48096"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/76bdfa32-1544-4eb2-8e4f-76af58b4809..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/171ae838-036b-4ec5-954e-ebaedf7c7971"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/171ae838-036b-4ec5-954e-ebaedf7c797..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23088921-8838-4a8a-a268-d5dc1d98e0af"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23088921-8838-4a8a-a268-d5dc1d98e0a..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/8449af3e-5a01-45b9-b04b-a784656b0bf9"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/8449af3e-5a01-45b9-b04b-a784656b0bf..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b094e78e-88ae-418f-afd8-66f4179b7b00"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b094e78e-88ae-418f-afd8-66f4179b7b0..."
    }
   ],
   "work_time_list": [
@@ -1675,7 +1675,7 @@
   "code": "NSK42",
   "name": "NSK42, Новосибирск, ул. Немировича – Данченко",
   "uuid": "140d5d34-1c32-4cdb-9160-f96bdc7504fa",
-  "address_comment": "Станция метро Студенческая, спуститься до улицы Немировича Данченко по улице Геодезическая, повернуть налево. Пройти 100 метров, где будет центральный вход в здание.",
+  "address_comment": "Станция метро Студенческая, спуститься до улицы Немировича Данченко по улице Геодезическая, повернут...",
   "nearest_station": "Лыщинского",
   "nearest_metro_station": "Студенческая",
   "work_time": "Пн-Пт 09:00-20:00, Сб 09:00-16:00, Вс 09:00-16:00",
@@ -1685,7 +1685,7 @@
    }
   ],
   "email": "v.shilin@cdek.ru",
-  "note": "Станция метро Студенческая, спуститься до улицы Немировича Данченко по улице Геодезическая, повернуть налево. Пройти 100 метров, где будет центральный вход в здание.",
+  "note": "Станция метро Студенческая, спуститься до улицы Немировича Данченко по улице Геодезическая, повернут...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -1699,16 +1699,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/395ab244-63d0-46ba-a263-5c27110a9de8"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/395ab244-63d0-46ba-a263-5c27110a9de..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/e32b5936-129a-48d1-8766-215d5ee92162"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/e32b5936-129a-48d1-8766-215d5ee9216..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/f3bb8752-cc6e-4878-8905-137670163a50"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/f3bb8752-cc6e-4878-8905-137670163a5..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/725c3bbe-ace9-4e39-9264-11850f95c61a"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/725c3bbe-ace9-4e39-9264-11850f95c61..."
    }
   ],
   "work_time_list": [
@@ -1789,19 +1789,19 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/761ebd60-cf4d-4e68-ab17-5254a50bbfb0"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/761ebd60-cf4d-4e68-ab17-5254a50bbfb..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4d1d9fdf-ea93-4fdf-a4fa-48d610459e14"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4d1d9fdf-ea93-4fdf-a4fa-48d610459e1..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb2120"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb212..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d9069726-b35a-441e-9d6d-7ca1f8732a2d"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d9069726-b35a-441e-9d6d-7ca1f8732a2..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b97a5e27-43da-4285-9bbb-d1a66733d152"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b97a5e27-43da-4285-9bbb-d1a66733d15..."
    }
   ],
   "work_time_list": [
@@ -1880,22 +1880,22 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2844d6ff-b437-4d52-9e65-479944018274"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2844d6ff-b437-4d52-9e65-47994401827..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/906ea4d7-a4a8-425c-b305-a635566864fb"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/906ea4d7-a4a8-425c-b305-a635566864f..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/e7b11edf-f5fa-4f14-97ef-2b171abc8db2"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/e7b11edf-f5fa-4f14-97ef-2b171abc8db..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/04291070-f3ea-4727-a847-6369339f4605"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/04291070-f3ea-4727-a847-6369339f460..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6b5f9ab2-1a2f-48c0-aa60-174b70e4a17a"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6b5f9ab2-1a2f-48c0-aa60-174b70e4a17..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3f319211-09d2-4aff-8cdc-1528d47b191c"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3f319211-09d2-4aff-8cdc-1528d47b191..."
    }
   ],
   "work_time_list": [
@@ -1973,13 +1973,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/030fefb4-e97d-4328-a03c-b39b5b3590f2"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/030fefb4-e97d-4328-a03c-b39b5b3590f..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b23dc5ac-45ab-43b8-90bb-9fe5007037e1"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b23dc5ac-45ab-43b8-90bb-9fe5007037e..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/5855b16f-19b8-4384-88ec-8db4f2220145"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/5855b16f-19b8-4384-88ec-8db4f222014..."
    }
   ],
   "work_time_list": [
@@ -2061,16 +2061,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/11f8dba3-1eb5-410b-b893-310ac6007fcf"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/11f8dba3-1eb5-410b-b893-310ac6007fc..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/91e3f6cf-ac29-4860-a575-64be946bcccc"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/91e3f6cf-ac29-4860-a575-64be946bccc..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/096735ed-c289-437f-b093-1dbbcad2e6c4"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/096735ed-c289-437f-b093-1dbbcad2e6c..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/a84cbe99-1e5c-4741-8080-74dc16d59a66"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/a84cbe99-1e5c-4741-8080-74dc16d59a6..."
    }
   ],
   "work_time_list": [
@@ -2125,7 +2125,7 @@
   "code": "NSK48",
   "name": "NSK48, Новосибирск, ул. Бориса Богаткова",
   "uuid": "88f2222b-cd8b-4c67-b551-70c01d028874",
-  "address_comment": "Октябрьский район. Остановка Октябрьский рынок. Серое трехэтажное здание, вход один со стороны дороги,  почти напротив (на перекрестке) университет связи — новый корпус",
+  "address_comment": "Октябрьский район. Остановка Октябрьский рынок. Серое трехэтажное здание, вход один со стороны дорог...",
   "nearest_station": "Октябрьский рынок",
   "nearest_metro_station": "Октябрьская",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
@@ -2135,7 +2135,7 @@
    }
   ],
   "email": "o.doroganova@cdek.ru",
-  "note": "Октябрьский район. Остановка Октябрьский рынок. Серое трехэтажное здание, вход один со стороны дороги,  почти напротив (на перекрестке) университет связи — новый корпус",
+  "note": "Октябрьский район. Остановка Октябрьский рынок. Серое трехэтажное здание, вход один со стороны дорог...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -2149,13 +2149,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6cbd8eaa-49e8-43a9-96ee-82502a793b39"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6cbd8eaa-49e8-43a9-96ee-82502a793b3..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/89e90c8d-4f05-405c-8733-719ba11a98cf"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/89e90c8d-4f05-405c-8733-719ba11a98c..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b4637807-af2e-4dee-8e59-e2e984549873"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b4637807-af2e-4dee-8e59-e2e98454987..."
    }
   ],
   "work_time_list": [
@@ -2232,22 +2232,22 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b983bcd7-4ba8-4862-a1ad-efd94b38ff32"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b983bcd7-4ba8-4862-a1ad-efd94b38ff3..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6edf1703-7589-4498-9616-bc013f6adf6d"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6edf1703-7589-4498-9616-bc013f6adf6..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/66a12260-b386-4a48-a320-eb82cf4bda57"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/66a12260-b386-4a48-a320-eb82cf4bda5..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bb4f5ca-5c00-486b-aeb9-57ee8938387a"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bb4f5ca-5c00-486b-aeb9-57ee8938387..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/75f927dd-c4cb-4e85-97aa-ca93292befb5"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/75f927dd-c4cb-4e85-97aa-ca93292befb..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ee1c1339-e433-42c6-9fea-fff614870fc3"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ee1c1339-e433-42c6-9fea-fff614870fc..."
    }
   ],
   "work_time_list": [
@@ -2302,7 +2302,7 @@
   "code": "NSK53",
   "name": "NSK53, Новосибирск, ул. Титова",
   "uuid": "d1507fd5-1cd3-4984-864e-469dfce90124",
-  "address_comment": "Вход в здание со стороны ул. Титова, правый вход в помещение Гастронома. Сразу на входе направо. Левая дверь (возле автострахования).",
+  "address_comment": "Вход в здание со стороны ул. Титова, правый вход в помещение Гастронома. Сразу на входе направо. Лев...",
   "nearest_station": "Танкистов",
   "nearest_metro_station": "Площадь Маркса",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
@@ -2312,7 +2312,7 @@
    }
   ],
   "email": "e.shabunina@cdek.ru",
-  "note": "Вход в здание со стороны ул. Титова, правый вход в помещение Гастронома. Сразу на входе направо. Левая дверь (возле автострахования).",
+  "note": "Вход в здание со стороны ул. Титова, правый вход в помещение Гастронома. Сразу на входе направо. Лев...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -2326,13 +2326,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/a157c100-ea5c-44ab-aa75-488e91fd4da3"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/a157c100-ea5c-44ab-aa75-488e91fd4da..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/57cb0e8d-adfa-4f67-8886-58ee6c1ff6ef"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/57cb0e8d-adfa-4f67-8886-58ee6c1ff6e..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f09d1a5-55e0-4756-90f9-2708dc6aa62e"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f09d1a5-55e0-4756-90f9-2708dc6aa62..."
    }
   ],
   "work_time_list": [
@@ -2408,16 +2408,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fdaa6562-903b-4f9b-8cba-bba004e202bf"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fdaa6562-903b-4f9b-8cba-bba004e202b..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bba5c96-dd38-431f-9516-432cd2e3a958"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bba5c96-dd38-431f-9516-432cd2e3a95..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d1d39d64-36de-4410-a31e-9965f58cb3b2"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d1d39d64-36de-4410-a31e-9965f58cb3b..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572df"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572d..."
    }
   ],
   "work_time_list": [
@@ -2474,7 +2474,7 @@
   "code": "NSK50",
   "name": "NSK50, Новосибирск, ул. Ленинградская",
   "uuid": "47ce9ce7-db9d-4724-bfde-0d5a4529004c",
-  "address_comment": "4 мин. от остановок «Октябрьский Рынок», «Октябрьский Универмаг» или «Никитина» в сторону СИБСТРИНа, 3-х этажное здание напротив ворот университета.",
+  "address_comment": "4 мин. от остановок «Октябрьский Рынок», «Октябрьский Универмаг» или «Никитина» в сторону СИБСТРИНа,...",
   "nearest_station": "Октябрьский Универмаг, Октябрьский Рынок, ул. Никитина",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
   "phones": [
@@ -2486,7 +2486,7 @@
    }
   ],
   "email": "m.tatkova@cdek.ru",
-  "note": "4 мин. от остановок «Октябрьский Рынок», «Октябрьский Универмаг» или «Никитина» в сторону СИБСТРИНа, 3-х этажное здание напротив ворот университета.",
+  "note": "4 мин. от остановок «Октябрьский Рынок», «Октябрьский Универмаг» или «Никитина» в сторону СИБСТРИНа,...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -2500,10 +2500,10 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/596dd964-fbc7-4dc3-bbf2-f77fd0edaa30"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/596dd964-fbc7-4dc3-bbf2-f77fd0edaa3..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6ea2a497-1098-4894-8725-2a29e0e5d533"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6ea2a497-1098-4894-8725-2a29e0e5d53..."
    }
   ],
   "work_time_list": [
@@ -2558,7 +2558,7 @@
   "code": "NSK46",
   "name": "NSK46, Новосибирск, ул. Московская",
   "uuid": "746f8725-1879-4285-af02-6e1c1bbc3cf5",
-  "address_comment": "100м от пересечения улиц Кирова и Сакко и Ванцетти в сторону ул. Толстого. За\nмагазином Бахетле. Цокольный этаж",
+  "address_comment": "100м от пересечения улиц Кирова и Сакко и Ванцетти в сторону ул. Толстого. За\nмагазином Бахетле. Цок...",
   "nearest_station": "ГПНТБ",
   "nearest_metro_station": "Октябрьская",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
@@ -2568,7 +2568,7 @@
    }
   ],
   "email": "ya.shiryaev@cdek.ru",
-  "note": "100м от пересечения улиц Кирова и Сакко и Ванцетти в сторону ул. Толстого. За\nмагазином Бахетле. Цокольный этаж",
+  "note": "100м от пересечения улиц Кирова и Сакко и Ванцетти в сторону ул. Толстого. За\nмагазином Бахетле. Цок...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -2582,16 +2582,16 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0400dca2-1c56-488d-abc5-2fbe9b21ae10"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0400dca2-1c56-488d-abc5-2fbe9b21ae1..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c9b9c337-4749-4ac7-a98f-16c8bf3d06f6"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c9b9c337-4749-4ac7-a98f-16c8bf3d06f..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/48365ffa-f79c-4de9-856a-efcecae05a4a"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/48365ffa-f79c-4de9-856a-efcecae05a4..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40e1df55-0a94-4030-b938-a4673b080e99"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40e1df55-0a94-4030-b938-a4673b080e9..."
    }
   ],
   "work_time_list": [
@@ -2646,7 +2646,7 @@
   "code": "NSK35",
   "name": "NSK35, Новосибирск, ул. Вавилова",
   "uuid": "7436bfff-464c-48b7-94da-aabd382df0c4",
-  "address_comment": "От перекрестка прямо по ул. Плановой в сторону зоопарка по правой стороне дороги. Через 150м перед домом номер 50 (высокий многоэтажный дом) повернуть направо и двигаться до улицы Вавилова. Вход - отдельное крыльцо.",
+  "address_comment": "От перекрестка прямо по ул. Плановой в сторону зоопарка по правой стороне дороги. Через 150м перед д...",
   "nearest_station": "Плановая",
   "nearest_metro_station": "Ст. м. Заельцовская",
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
@@ -2656,7 +2656,7 @@
    }
   ],
   "email": "E.A.Efremov@cdek.ru",
-  "note": "От перекрестка прямо по ул. Плановой в сторону зоопарка по правой стороне дороги. Через 150м перед домом номер 50 (высокий многоэтажный дом) повернуть направо и двигаться до улицы Вавилова. Вход - отдельное крыльцо.",
+  "note": "От перекрестка прямо по ул. Плановой в сторону зоопарка по правой стороне дороги. Через 150м перед д...",
   "type": "PVZ",
   "owner_code": "CDEK",
   "take_only": false,
@@ -2670,28 +2670,28 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4a295bfa-3f19-4a4e-8d50-8bbd818bdfe8"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4a295bfa-3f19-4a4e-8d50-8bbd818bdfe..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcfa1378-d3cc-4407-b6f4-f2d4eb4e272c"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcfa1378-d3cc-4407-b6f4-f2d4eb4e272..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c1a0b2dc-3944-4e6d-8c45-16a286a2d133"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c1a0b2dc-3944-4e6d-8c45-16a286a2d13..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f625711-0a3b-4724-a87f-7f11c1169dde"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f625711-0a3b-4724-a87f-7f11c1169dd..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c61e4136-2a69-4fa4-8336-4edd63bcce68"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c61e4136-2a69-4fa4-8336-4edd63bcce6..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0d12c8c8-fc2e-48ac-939f-df096dd77569"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0d12c8c8-fc2e-48ac-939f-df096dd7756..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b115381a-fd1f-4665-b972-dd317de61636"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b115381a-fd1f-4665-b972-dd317de6163..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40812a83-da10-4541-9245-49d2cef44b1f"
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40812a83-da10-4541-9245-49d2cef44b1..."
    }
   ],
   "work_time_list": [

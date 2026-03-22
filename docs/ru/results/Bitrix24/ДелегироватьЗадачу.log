@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10020",
+   "id": "10030",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-03-22T11:19:04+03:00",
+   "createdDate": "2026-03-22T13:05:41+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-03-22T11:19:07+03:00",
+   "changedDate": "2026-03-22T13:05:44+00:00",
    "statusChangedBy": "1",
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-03-22T11:19:08+03:00",
+   "activityDate": "2026-03-22T13:05:44+00:00",
    "dateStart": null,
-   "deadline": "2026-03-23T11:19:00+03:00",
-   "startDatePlan": "2026-03-22T11:19:04+03:00",
-   "endDatePlan": "2026-03-23T00:00:00+03:00",
-   "guid": "{645377f3-c25c-4a6a-8fd5-6b2e51775dcb}",
+   "deadline": "2026-03-23T13:05:00+00:00",
+   "startDatePlan": "2026-03-22T13:05:41+00:00",
+   "endDatePlan": "2026-03-22T21:00:00+00:00",
+   "guid": "{9bb33c96-491f-4226-9ec7-f7453c533716}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-03-22T11:19:07+03:00",
+   "statusChangedDate": "2026-03-22T13:05:44+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -68,7 +68,7 @@
     "id": "1",
     "name": "Антон Титовец",
     "link": "/company/personal/user/1/",
-    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
     "workPosition": null
    },
    "responsible": {
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1774167547,
-  "finish": 1774167548.05394,
-  "duration": 1.05393600463867,
-  "processing": 1,
-  "date_start": "2026-03-22T11:19:07+03:00",
-  "date_finish": "2026-03-22T11:19:08+03:00",
-  "operating_reset_at": 1774168147,
-  "operating": 0.218638896942139
+  "start": 1774184744,
+  "finish": 1774184744.88227,
+  "duration": 0.882268905639648,
+  "processing": 0,
+  "date_start": "2026-03-22T13:05:44+00:00",
+  "date_finish": "2026-03-22T13:05:44+00:00",
+  "operating_reset_at": 1774185344,
+  "operating": 0.18982195854187
  }
 }
