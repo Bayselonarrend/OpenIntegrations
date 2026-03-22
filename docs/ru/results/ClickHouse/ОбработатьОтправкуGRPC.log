@@ -42,7 +42,7 @@
     "written_bytes": 235,
     "written_rows": 5
    },
-   "query_id": "c085a8fa-fb9d-4d51-9b47-1d2a6ef90923",
+   "query_id": "b7cc2ada-c34a-48b2-9758-7e85befa925a",
    "stats": {
     "allocated_bytes": 0,
     "applied_aggregation": false,
