@@ -2,10 +2,10 @@
  "response": [
   {
    "activity": {
-    "comments": 3
+    "comments": 1
    },
-   "period_from": 1774051200,
-   "period_to": 1774137599,
+   "period_from": 1774137600,
+   "period_to": 1774223999,
    "reach": {
     "cities": [],
     "countries": [],
@@ -22,8 +22,11 @@
    }
   },
   {
-   "period_from": 1773964800,
-   "period_to": 1774051199,
+   "activity": {
+    "comments": 3
+   },
+   "period_from": 1774051200,
+   "period_to": 1774137599,
    "reach": {
     "cities": [],
     "countries": [],
