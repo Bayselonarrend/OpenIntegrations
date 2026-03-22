@@ -2,27 +2,27 @@
  "title": "Тестовый Atom фид",
  "id": "https://example.com/feed",
  "link": "https://example.com",
- "updated": "2026-03-21T20:49:55",
+ "updated": "2026-03-22T11:37:51",
  "entries": [
   {
    "title": "Первая запись",
    "id": "https://example.com/entry1",
    "link": "https://example.com/entry1",
-   "updated": "2026-03-21T20:49:55",
+   "updated": "2026-03-22T11:37:51",
    "summary": "Краткое описание первой записи",
    "content": "Полное содержимое первой записи",
    "author": "Автор Первый",
-   "published": "2026-03-21T20:49:55"
+   "published": "2026-03-22T11:37:51"
   },
   {
    "title": "Вторая запись",
    "id": "https://example.com/entry2",
    "link": "https://example.com/entry2",
-   "updated": "2026-03-21T20:49:55",
+   "updated": "2026-03-22T11:37:51",
    "summary": "Краткое описание второй записи",
    "content": "Полное содержимое второй записи",
    "author": "Автор Второй",
-   "published": "2026-03-21T20:49:55"
+   "published": "2026-03-22T11:37:51"
   }
  ]
 }
