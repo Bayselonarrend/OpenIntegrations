@@ -8,9 +8,9 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1774094984,
-  "idMessage": "1774094852777",
+  "timestamp": 1774121345,
+  "idMessage": "1774121323012",
   "status": "failed",
-  "description": "MessageError: socket not open"
+  "description": "MessageError: Error: Вы не можете отправить сообщение в этом чате"
  }
 }
