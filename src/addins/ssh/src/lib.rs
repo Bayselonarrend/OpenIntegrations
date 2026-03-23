@@ -1,6 +1,8 @@
 mod ssh_settings;
 mod sftp_methods;
 mod ssh_methods;
+mod connection_response;
+mod keyboard_interactive;
 
 use common_utils::utils::json_error;
 use ssh2::{Session, Sftp};

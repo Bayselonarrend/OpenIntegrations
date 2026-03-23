@@ -1,12 +1,12 @@
 use std::io::Read;
 use std::path::Path;
-use std::cell::RefCell;
 use common_tcp::tcp_establish::create_tcp_connection;
 use common_utils::utils::{json_error, json_success};
-use serde_json::json;
 use ssh2::{MethodType, Session};
 use crate::AddIn;
-use crate::ssh_settings::{KeyboardInteractiveHandler, SshAuthTypes, SshConf};
+use crate::ssh_settings::{SshAuthTypes, SshConf};
+use crate::connection_response::ConnectionResponse;
+use crate::keyboard_interactive::KeyboardInteractiveHandler;
 
 impl AddIn{
     pub fn set_settings(&mut self, settings: String) -> String{
@@ -68,16 +68,14 @@ impl AddIn{
         };
 
         sess.set_tcp_stream(tcp);
+        
+        // Включаем trace для отладки
+        sess.trace(ssh2::TraceFlags::AUTH | ssh2::TraceFlags::CONN | ssh2::TraceFlags::ERROR);
 
         if let Err(e) = sess.handshake() {
-            return connection_response(
-                false,
-                Some(format!("Handshake error: {}", e)),
-                vec![],
-                String::new(),
-                String::new(),
-                String::new()
-            );
+            return ConnectionResponse::new(false)
+                .with_error(format!("Handshake error: {}", e))
+                .to_json();
         };
 
         let mut identities = vec![];
@@ -99,10 +97,24 @@ impl AddIn{
             Err(e) => identities.push(e.to_string())
         };
 
-        let auth_success = match settings.auth_type {
+        // Подготовка keyboard-interactive handler если нужен
+        let mut kb_handler = if matches!(settings.auth_type, SshAuthTypes::KeyboardInteractive) {
+            let responses = match &settings.keyboard_responses {
+                Some(responses) => responses.clone(),
+                None => return json_error("No keyboard_responses provided with keyboard_interactive auth type")
+            };
+            if responses.is_empty() {
+                return json_error("keyboard_responses array is empty")
+            }
+            Some(KeyboardInteractiveHandler::new(responses))
+        } else {
+            None
+        };
 
-            SshAuthTypes::Password => sess.userauth_password(username, password),
-            SshAuthTypes::Agent => sess.userauth_agent(username),
+        let (auth_success, kb_info) = match settings.auth_type {
+
+            SshAuthTypes::Password => (sess.userauth_password(username, password), None),
+            SshAuthTypes::Agent => (sess.userauth_agent(username), None),
             SshAuthTypes::PrivateKey => {
 
                 let path = match key_path{
@@ -115,19 +127,16 @@ impl AddIn{
                     None => None
                 };
 
-                sess.userauth_pubkey_file(username, pub_path, path, passphrase.as_deref())
+                (sess.userauth_pubkey_file(username, pub_path, path, passphrase.as_deref()), None)
             },
             SshAuthTypes::KeyboardInteractive => {
-                let responses = match &settings.keyboard_responses {
-                    Some(responses) => responses.clone(),
-                    None => return json_error("No keyboard_responses provided with keyboard_interactive auth type")
-                };
-
-                let mut handler = KeyboardInteractiveHandler {
-                    responses,
-                    index: RefCell::new(0),
-                };
-                sess.userauth_keyboard_interactive(username, &mut handler)
+                let handler = kb_handler.as_mut().unwrap();
+                let result = sess.userauth_keyboard_interactive(username, handler);
+                let prompts = handler.get_prompts();
+                let callback_count = handler.get_callback_count();
+                let responses_count = handler.get_responses_count();
+                
+                (result, Some((prompts, callback_count, responses_count)))
             },
 
         };
@@ -141,7 +150,26 @@ impl AddIn{
             (true, None)
         };
 
-        connection_response(result, error, identities, methods, banner, kex)
+        let (kb_prompts, kb_callback_count, kb_responses_count) = match kb_info {
+            Some((prompts, count, resp_count)) => (Some(prompts), Some(count), Some(resp_count)),
+            None => (None, None, None)
+        };
+
+        let mut response = ConnectionResponse::new(result)
+            .with_identities(identities)
+            .with_methods(methods)
+            .with_banner(banner)
+            .with_kex_methods(kex);
+
+        if let Some(err) = error {
+            response = response.with_error(err);
+        }
+
+        if let (Some(prompts), Some(cb_count), Some(resp_count)) = (kb_prompts, kb_callback_count, kb_responses_count) {
+            response = response.with_keyboard_info(prompts, cb_count, resp_count);
+        }
+
+        response.to_json()
 
     }
 
@@ -181,7 +209,7 @@ impl AddIn{
             Err(e) => e.to_string()
         };
 
-        json!({"result": true, "exit_code": code, "stdout": stdout, "stderr": stderr}).to_string()
+        serde_json::json!({"result": true, "exit_code": code, "stdout": stdout, "stderr": stderr}).to_string()
     }
 
     pub fn get_configuration(&mut self) -> String{
@@ -189,7 +217,7 @@ impl AddIn{
             Some(conf) => conf,
             None => return json_error("No configuration found")
         };
-        json!({"result": true, "conf": conf}).to_string()
+        serde_json::json!({"result": true, "conf": conf}).to_string()
     }
 
     pub fn disconnect(&mut self) -> String{
@@ -200,20 +228,4 @@ impl AddIn{
             json_error("No session")
         }
     }
-}
-
-fn connection_response(result: bool, error: Option<String>, identities: Vec<String>, methods: String, banner: String, kex: String) -> String {
-    let mut response = json!({
-        "result": result,
-        "identities": identities,
-        "methods": methods,
-        "banner": banner,
-        "kex_methods": kex
-    });
-
-    if let Some(err) = error {
-        response["error"] = json!(err);
-    }
-
-    response.to_string()
 }
