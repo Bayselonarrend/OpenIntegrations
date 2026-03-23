@@ -5,6 +5,7 @@ use std::sync::{Arc, Mutex};
 use common_core::*;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
+use common_logs::Logger;
 use crate::backend::TcpServerBackend;
 
 impl_addin_exports!(AddIn);
@@ -21,11 +22,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("ShutdownWrite"),              // 7
     name!("GetConnectionsList"),         // 8
     name!("RetrieveBinaryFromVault"),    // 9
+    name!("GetLogs"),                    // 10
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 2,  // Start(port, queue_size)
+        0 => 3,  // Start(port, queue_size, logger_config_json)
         1 => 0,  // Stop()
         2 => 2,  // GetNextMessage(timeout_ms, max_message_size)
         3 => 3,  // GetMessage(connection_id, timeout_ms, max_message_size)
@@ -35,6 +37,7 @@ pub fn get_params_amount(num: usize) -> usize {
         7 => 1,  // ShutdownWrite(connection_id)
         8 => 0,  // GetConnectionsList()
         9 => 1,  // RetrieveBinaryFromVault()
+        10 => 1, // GetLogs(count)
         _ => 0,
     }
 }
@@ -46,7 +49,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         0 => {
             let port = params[0].get_i32().unwrap_or(0) as u16;
             let queue_size = params[1].get_i32().unwrap_or(10) as usize;
-            Box::new(obj.start_server(port, queue_size))
+            let logger_config = params[2].get_string().unwrap_or_default();
+            Box::new(obj.start_server(port, queue_size, &logger_config))
         },
         1 => {
             Box::new(obj.stop_server())
@@ -86,6 +90,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let vault_key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&vault_key))
         },
+        10 => {
+            let count = params[0].get_i32().unwrap_or(0) as usize;
+            Box::new(obj.get_logs(count))
+        },
         _ => Box::new(false),
     }
 }
@@ -96,6 +104,7 @@ pub struct AddIn {
     backend: Arc<Mutex<TcpServerBackend>>,
     vault: BinaryVault,
     started: bool,
+    logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
@@ -105,12 +114,45 @@ impl AddIn {
             backend: Arc::new(Mutex::new(TcpServerBackend::new(vault.clone()))),
             vault,
             started: false,
+            logger: None,
         }
     }
 
-    pub fn start_server(&mut self, port: u16, queue_size: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> String {
+        if let Some(ref logger) = self.logger {
+            let logs = logger.get_last_logs(count);
+            let total = logger.len();
+            
+            serde_json::json!({
+                "result": true,
+                "logs": logs,
+                "total": total,
+                "returned": logs.len()
+            }).to_string()
+        } else {
+            json_error("Logger not initialized")
+        }
+    }
+
+    pub fn start_server(&mut self, port: u16, queue_size: usize, logger_config: &str) -> String {
         if self.started {
             return json_error("Server already started");
+        }
+
+        if !logger_config.is_empty() {
+            match Logger::from_json(logger_config) {
+                Ok(logger) => {
+                    let logger_arc = Arc::new(logger);
+                    self.logger = Some(logger_arc.clone());
+
+                    if let Ok(mut backend) = self.backend.lock() {
+                        backend.set_logger(logger_arc);
+                    }
+                }
+                Err(e) => {
+                    return json_error(&format!("Failed to initialize logger: {}", e));
+                }
+            }
         }
 
         let result = match self.backend.lock() {
@@ -231,10 +273,7 @@ impl AddIn {
     }
 
     pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        match self.vault.retrieve(&vault_key.to_string()) {
-            Ok(data) => data,
-            Err(_) => Vec::new(), // Возвращаем пустой массив при ошибке
-        }
+        self.vault.retrieve(&vault_key.to_string()).unwrap_or_else(|_| Vec::new())
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {

@@ -23,13 +23,25 @@ impl ServerState {
             
             match try_read(self, &mut buffer) {
                 Ok(Some((message, conn_id, addr, still_active))) => {
+                    self.log(&format!("Message received from {}: {} bytes, active: {}", conn_id, message.len(), still_active));
+                    
                     let vault_key = match self.vault.store(BinaryInput::Bytes(message)) {
-                        Ok(key) => key,
-                        Err(e) => return json!({
-                            "result": false,
-                            "error": format!("Failed to store message in vault: {}", e)
-                        }).to_string(),
+                        Ok(key) => {
+                            self.log(&format!("Message stored in vault with key: {}", key));
+                            key
+                        },
+                        Err(e) => {
+                            self.log(&format!("Failed to store message in vault: {}", e));
+                            return json!({
+                                "result": false,
+                                "error": format!("Failed to store message in vault: {}", e)
+                            }).to_string();
+                        }
                     };
+
+                    if !still_active {
+                        self.log(&format!("Connection {} became inactive after read", conn_id));
+                    }
 
                     return json!({
                         "result": true,
@@ -42,6 +54,7 @@ impl ServerState {
                 }
                 Ok(None) => {}
                 Err(e) => {
+                    self.log(&format!("Error reading message: {}", e));
                     return json!({
                         "result": false,
                         "error": e

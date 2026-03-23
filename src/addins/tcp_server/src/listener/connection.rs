@@ -5,11 +5,14 @@ use common_utils::utils::{json_error, json_success};
 impl ServerState {
 
     pub async fn close_all_connections(&mut self) -> String {
-        {
+        let count = {
             let mut conns = self.lock_connections();
+            let count = conns.len();
             conns.clear();
-        }
+            count
+        };
         self.last_processed = None;
+        self.log(&format!("Closed all connections ({})", count));
         json_success()
     }
 
@@ -20,11 +23,13 @@ impl ServerState {
         };
         
         if removed {
+            self.log(&format!("Connection closed: {}", connection_id));
             if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
                 self.last_processed = None;
             }
             json_success()
         } else {
+            self.log(&format!("Attempt to close non-existent connection: {}", connection_id));
             json_error("Connection not found")
         }
     }
@@ -33,6 +38,7 @@ impl ServerState {
         let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
             conn.read_half = None;
+            self.log(&format!("Read half shutdown for connection: {}", connection_id));
             json_success()
         } else {
             json_error("Connection not found")
@@ -43,6 +49,7 @@ impl ServerState {
         let mut conns = self.lock_connections();
         if let Some(conn) = conns.get_mut(connection_id) {
             conn.write_half = None;
+            self.log(&format!("Write half shutdown for connection: {}", connection_id));
             json_success()
         } else {
             json_error("Connection not found")
@@ -78,6 +85,10 @@ impl ServerState {
             conns.shift_remove(conn_id);
         }
         drop(conns);
+
+        if !to_remove.is_empty() {
+            self.log(&format!("Removed {} inactive connections", to_remove.len()));
+        }
 
         for conn_id in &to_remove {
             if self.last_processed.as_ref() == Some(conn_id) {
