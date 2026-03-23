@@ -1,18 +1,22 @@
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
+use std::sync::Arc;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
+use common_logs::Logger;
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
     tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
+    logger: Option<Arc<Logger>>,
 }
 
 enum BackendCommand {
     Start {
         port: u16,
         queue_size: usize,
+        logger: Option<Arc<Logger>>,
         response: Sender<String>,
     },
     GetNextMessage {
@@ -65,14 +69,14 @@ impl TcpServerBackend {
 
                 while let Ok(cmd) = rx.recv() {
                     match cmd {
-                        BackendCommand::Start { port, queue_size, response } => {
+                        BackendCommand::Start { port, queue_size, logger, response } => {
                             if server_state.is_some() {
                                 let _ = response.send(json_error("Server already started"));
                                 continue;
                             }
 
                             let result = rt.block_on(async {
-                                ServerState::start(port, queue_size, vault_clone.clone()).await
+                                ServerState::start(port, queue_size, vault_clone.clone(), logger).await
                             });
 
                             match result {
@@ -183,7 +187,12 @@ impl TcpServerBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
+            logger: None,
         }
+    }
+
+    pub fn set_logger(&mut self, logger: Arc<Logger>) {
+        self.logger = Some(logger);
     }
 
     pub fn start(&self, port: u16, queue_size: usize) -> String {
@@ -192,6 +201,7 @@ impl TcpServerBackend {
         if let Err(e) = self.tx.send(BackendCommand::Start {
             port,
             queue_size,
+            logger: self.logger.clone(),
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
