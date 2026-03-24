@@ -7,13 +7,13 @@ use chrono::Local;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
 pub enum LogMode {
     Memory,
     File,
     Both,
 }
 
-/// Структура для логирования
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Logger {
     mode: LogMode,

@@ -3,6 +3,7 @@ use std::fs;
 use std::io;
 use std::path::Path;
 use std::sync::{Arc, Mutex};
+use uuid::Uuid;
 
 pub type VaultKey = String;
 
@@ -30,7 +31,6 @@ impl std::fmt::Display for VaultError {
 #[derive(Debug, Clone)]
 pub struct BinaryVault {
     storage: Arc<Mutex<HashMap<VaultKey, Vec<u8>>>>,
-    counter: Arc<Mutex<u64>>,
 }
 
 impl Default for BinaryVault {
@@ -43,7 +43,6 @@ impl BinaryVault {
     pub fn new() -> Self {
         Self {
             storage: Arc::new(Mutex::new(HashMap::new())),
-            counter: Arc::new(Mutex::new(0)),
         }
     }
 
@@ -86,9 +85,7 @@ impl BinaryVault {
     }
 
     fn generate_key(&self) -> VaultKey {
-        let mut counter = self.counter.lock().unwrap();
-        *counter += 1;
-        format!("vault_key_{}", *counter)
+        Uuid::new_v4().to_string()
     }
 }
 
