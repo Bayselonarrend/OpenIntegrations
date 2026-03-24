@@ -1,5 +1,5 @@
     URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+    Токен = "12We34...";
 
     Аудио  = "C:\Users\bayse\AppData\Local\Temp\c2iirpb4.a52.wav";
     Модель = "whisper-1";

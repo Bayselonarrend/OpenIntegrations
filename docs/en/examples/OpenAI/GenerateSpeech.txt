@@ -1,5 +1,5 @@
     URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+    Token = "12We34...";
 
     Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
     Model = "bark-cpp-small";
