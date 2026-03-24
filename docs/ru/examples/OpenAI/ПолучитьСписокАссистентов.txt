@@ -1,5 +1,5 @@
     URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+    Токен = "12We34...";
 
     Количество   = 2;
     ДопПараметры = Новый Структура("after,order", "asst_2", "desc");
