@@ -1,0 +1,1 @@
+    Result = OPI_TCP.GetLoggingSettings(True, 100, GetTempFileName());

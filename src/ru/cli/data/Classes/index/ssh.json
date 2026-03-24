@@ -9,6 +9,7 @@
    "methods": [
     "ВыполнитьКоманду",
     "ПолучитьКонфигурациюСоединения",
+    "ПолучитьНастройкиKI",
     "ПолучитьНастройкиЛогинПароль",
     "ПолучитьНастройкиПриватныйКлюч",
     "ПолучитьНастройкиПрокси",
@@ -172,6 +173,42 @@
      "description": "Имя пользователя SSH",
      "default": null,
      "short": "-u"
+    }
+   ],
+   "region": "Основные методы"
+  },
+  {
+   "name": "ПолучитьНастройкиKI",
+   "id": "ПОЛУЧИТЬНАСТРОЙКИKI",
+   "description": "Получает настройки соединения с keyboard-interactive авторизацией\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--host",
+     "types": "Строка",
+     "description": "Хост SSH",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--port",
+     "types": "Число",
+     "description": "Порт SSH",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--user",
+     "types": "Строка",
+     "description": "Имя пользователя SSH",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--prompts",
+     "types": "Массив Из Строка",
+     "description": "Массив ответов на вопросы сервера",
+     "default": null,
+     "short": "-r"
     }
    ],
    "region": "Основные методы"
