@@ -1,5 +1,5 @@
     URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+    Токен = "12We34...";
 
     // Текстовые сообщения
 

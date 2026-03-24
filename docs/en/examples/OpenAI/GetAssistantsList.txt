@@ -1,5 +1,5 @@
     URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+    Token = "12We34...";
 
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");
