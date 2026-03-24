@@ -4285,6 +4285,26 @@
   "variant": "False"
  },
  {
+  "lib": "TCP",
+  "name": "GetLog",
+  "variant": ""
+ },
+ {
+  "lib": "TCP",
+  "name": "GetLoggingSettings",
+  "variant": ""
+ },
+ {
+  "lib": "TCP",
+  "name": "GetLoggingSettings",
+  "variant": "File"
+ },
+ {
+  "lib": "TCP",
+  "name": "GetLoggingSettings",
+  "variant": "Memory"
+ },
+ {
   "lib": "SQLite",
   "name": "CreateConnection",
   "variant": ""
@@ -6622,6 +6642,11 @@
  {
   "lib": "SSH",
   "name": "GetSettingsViaAgent",
+  "variant": ""
+ },
+ {
+  "lib": "SSH",
+  "name": "GetSettingsKI",
   "variant": ""
  },
  {

@@ -222,6 +222,23 @@
 
 КонецФункции
 
+// Получить настройки (keyboard-interactive)
+// Получает настройки соединения с keyboard-interactive авторизацией
+//
+// Параметры:
+//  Хост         - Строка           - Хост SSH                          - host
+//  Порт         - Число            - Порт SSH                          - port
+//  Логин        - Строка           - Имя пользователя SSH              - user
+//  ПорядокВвода - Массив Из Строка - Массив ответов на вопросы сервера - prompts
+//
+// Возвращаемое значение:
+//  Структура Из КлючИЗначение -  Конфигурация соединения
+Функция ПолучитьНастройкиKI(Знач Хост, Знач Порт, Знач Логин, Знач ПорядокВвода) Экспорт
+
+    Возврат OPI_ЗапросыSSH.ПолучитьНастройкиKI(Хост, Порт, Логин, ПорядокВвода);
+
+КонецФункции
+
 // Получить настройки прокси
 // Формирует структуру настроек прокси-сервера для соединения
 //
@@ -778,6 +795,10 @@ EndFunction
 
 Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
     Return ПолучитьНастройкиЧерезАгента(Host, Port, Login);
+EndFunction
+
+Function GetSettingsKI(Val Host, Val Port, Val Login, Val InputOrder) Export
+    Return ПолучитьНастройкиKI(Host, Port, Login, InputOrder);
 EndFunction
 
 Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export

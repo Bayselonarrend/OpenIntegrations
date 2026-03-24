@@ -56,6 +56,16 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = "bayselonarrend";
+        Password = "12we...";
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = "bayselonarrend";

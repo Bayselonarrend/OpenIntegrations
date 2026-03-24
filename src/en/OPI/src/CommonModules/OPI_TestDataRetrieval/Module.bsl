@@ -1100,7 +1100,9 @@ Function GetSSHParameterOptions() Export
     ParameterToCollection("Picture"       , TestParametersMain);
     ParameterToCollection("Big"           , TestParametersMain);
     ParameterToCollection("SSH_Host"      , TestParametersMain);
+    ParameterToCollection("SSH_HostKI"    , TestParametersMain);
     ParameterToCollection("SSH_Port"      , TestParametersMain);
+    ParameterToCollection("SSH_PortKI"    , TestParametersMain);
     ParameterToCollection("SSH_User"      , TestParametersMain);
     ParameterToCollection("SSH_Password"  , TestParametersMain);
     ParameterToCollection("SSH_Key"       , TestParametersMain);
@@ -1121,7 +1123,9 @@ Function GetSSHParameterOptions() Export
     HttpProxyIP                    = TestParametersMain["Proxy_IP"];
     TestParametersMain["Proxy_IP"] = ?(HttpProxyIP = "127.0.0.1", Localhost, HttpProxyIP);
 
-    NetAddress = TestParametersMain["SSH_Host"];
+    NetAddress       = TestParametersMain["SSH_Host"];
+    NetworkAddressKI = TestParametersMain["SSH_HostKI"];
+
     TestParametersMain.Insert("SSH_Host", Localhost);
 
     PrivateKey = GetTempFileName();
@@ -1145,6 +1149,11 @@ Function GetSSHParameterOptions() Export
     OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("AuthType", "Keyboard interactive");
+    TestParameters.Insert("Postfix" , "Keyboard interactive");
+    OptionArray.Add(TestParameters);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "Via SSH agent");
     TestParameters.Insert("Postfix" , "Via SSH agent");
     //OptionArray.Add(TestParameters);
@@ -1156,7 +1165,11 @@ Function GetSSHParameterOptions() Export
         Prefix = ?(TestProxyParameters["Postfix"] = "By login and password", "", StrTemplate("%1, SOCKS5",
             TestProxyParameters["Postfix"]));
 
-        TestProxyParameters.Insert("SSH_Host"  , NetAddress);
+        CurrentAddress = ?(TestProxyParameters["Postfix"] = "Keyboard interactive"
+            , NetworkAddressKI
+            , NetAddress);
+
+        TestProxyParameters.Insert("SSH_Host"  , CurrentAddress);
         TestProxyParameters.Insert("Proxy"     , True);
         TestProxyParameters.Insert("Proxy_Type", "socks5");
         TestProxyParameters.Insert("Postfix"   , Prefix);
@@ -1167,7 +1180,7 @@ Function GetSSHParameterOptions() Export
 
         TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
 
-        TestProxyParameters.Insert("SSH_Host"  , NetAddress);
+        TestProxyParameters.Insert("SSH_Host"  , CurrentAddress);
         TestProxyParameters.Insert("Proxy"     , True);
         TestProxyParameters.Insert("Proxy_Type", "http");
         TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
@@ -7937,6 +7950,43 @@ Function Check_TCP_GetConnectionList(Val Result, Val Option)
 
 EndFunction
 
+Function Check_TCP_GetLog(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_TCP_IsServerObject(Val Result, Val Option)
 
     If Option = "False" Then
@@ -11700,6 +11750,20 @@ Function Check_SSH_GetSettingsViaAgent(Val Result, Val Option)
     ExpectsThat(Result["host"]).Заполнено();
     ExpectsThat(Result["port"]).Заполнено();
     ExpectsThat(Result["username"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_GetSettingsKI(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("keyboard_interactive");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["keyboard_responses"]).Заполнено();
+
+    Result["keyboard_responses"][1] = "***";
 
     Return Result;
 

@@ -200,6 +200,21 @@ Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
 
 EndFunction
 
+Function GetSettingsKI(Val Host, Val Port, Val Login, Val InputOrder) Export
+
+    String_ = "String";
+
+    ConfigurationStructure = New Structure;
+    OPI_Tools.AddField("auth_type"         , "keyboard_interactive", String_  , ConfigurationStructure);
+    OPI_Tools.AddField("host"              , Host                  , String_  , ConfigurationStructure);
+    OPI_Tools.AddField("port"              , Port                  , "Number" , ConfigurationStructure);
+    OPI_Tools.AddField("username"          , Login                 , String_  , ConfigurationStructure);
+    OPI_Tools.AddField("keyboard_responses", InputOrder            , "Array"  , ConfigurationStructure);
+
+    Return ConfigurationStructure;
+
+EndFunction
+
 Function GetProxySettings(Val Address
     , Val Port
     , Val View     = "socks5"

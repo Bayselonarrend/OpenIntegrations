@@ -10,6 +10,7 @@
     "ExecuteCommand",
     "GetConnectionConfiguration",
     "GetProxySettings",
+    "GetSettingsKI",
     "GetSettingsLoginPassword",
     "GetSettingsPrivateKey",
     "GetSettingsViaAgent"
@@ -172,6 +173,42 @@
      "description": "SSH username",
      "default": null,
      "short": "-u"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "GetSettingsKI",
+   "id": "GETSETTINGSKI",
+   "description": "Retrieves connection settings for keyboard-interactive authentication",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String",
+     "description": "SSH host",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--port",
+     "types": "Number",
+     "description": "SSH port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--user",
+     "types": "String",
+     "description": "SSH username",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--prompts",
+     "types": "Array Of String",
+     "description": "Array of responses to server questions",
+     "default": null,
+     "short": "-r"
     }
    ],
    "region": "Common methods"

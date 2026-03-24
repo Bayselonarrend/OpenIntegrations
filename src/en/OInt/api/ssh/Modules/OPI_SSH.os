@@ -192,6 +192,23 @@ Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
 
 EndFunction
 
+// Get settings (keyboard-interactive))
+// Retrieves connection settings for keyboard-interactive authentication
+//
+// Parameters:
+// Host       - String          - SSH host                               - host
+// Port       - Number          - SSH port                               - port
+// Login      - String          - SSH username                           - user
+// InputOrder - Array Of String - Array of responses to server questions - prompts
+//
+// Returns:
+// Structure Of KeyAndValue - Connection configuration
+Function GetSettingsKI(Val Host, Val Port, Val Login, Val InputOrder) Export
+
+    Return OPI_SSHRequests.GetSettingsKI(Host, Port, Login, InputOrder);
+
+EndFunction
+
 // Get proxy settings
 // Creates a structure of proxy server settings for the connection
 //
@@ -250,6 +267,10 @@ EndFunction
 
 Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
     Return GetSettingsViaAgent(Хост, Порт, Логин);
+EndFunction
+
+Function ПолучитьНастройкиKI(Val Хост, Val Порт, Val Логин, Val ПорядокВвода) Export
+    Return GetSettingsKI(Хост, Порт, Логин, ПорядокВвода);
 EndFunction
 
 Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export

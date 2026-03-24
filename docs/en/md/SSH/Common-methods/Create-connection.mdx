@@ -55,6 +55,16 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = "bayselonarrend";
+        Password = "12we...";
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login       = "bayselonarrend";

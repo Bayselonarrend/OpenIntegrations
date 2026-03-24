@@ -1,0 +1,52 @@
+---
+sidebar_position: 10
+description: Get log  and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get log 
+ Retrieves server log data (with logging to memory enabled)
+
+
+
+`Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+  | AsString | - | Boolean | &#x2716; | True > returns log as a single string, False > as an array |
+  | EventCount | - | Number | &#x2716; | Number of recent events to retrieve. 0 > no limits |
+
+  
+  Returns:  String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    LaunchPort      = 9877;
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
+    ServerObject    = OPI_TCP.StartServer(LaunchPort, , LoggingSettings);
+
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Result = OPI_TCP.GetLog(ServerObject);
+```
+ 
+
+
+
+

@@ -48,6 +48,16 @@ import TabItem from '@theme/TabItem';
 
         НастройкиSFTP = OPI_SFTP.ПолучитьНастройкиПриватныйКлюч(Хост, Порт, Логин, ПриватныйКлюч, ПубличныйКлюч);
 
+    ИначеЕсли ВидАвторизации = "Keyboard interactive" Тогда
+
+        Логин  = "bayselonarrend";
+        Пароль = "12we...";
+
+        МассивОтветов = Новый Массив;
+        МассивОтветов.Добавить(Пароль);
+
+        НастройкиSFTP = OPI_SFTP.ПолучитьНастройкиKI(Хост, Порт, Логин, МассивОтветов);
+
     Иначе
 
         Логин         = "bayselonarrend";
@@ -112,7 +122,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "bytes": 2114023,
- "filepath": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\kxrhfx0i.vu1.bin",
+ "filepath": "/tmp/bshsknof.flc.bin",
  "result": true
 }
 ```
