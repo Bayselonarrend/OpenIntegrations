@@ -16,11 +16,11 @@
             },
             "onecConfig": {
                 "description": "1C:Enterprise configurator exe path",
-                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
+                "value": "C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8.exe"
             },
             "onecClient": {
                 "description": "1C:Enterprise client exe path",
-                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe"
+                "value": "C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe"
             },
             "osPath": {
                 "description": "OneScript exe path",
