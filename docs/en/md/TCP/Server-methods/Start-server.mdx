@@ -12,12 +12,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function StartServer(Val Port, Val PoolSize = 100) Export`
+`Function StartServer(Val Port, Val PoolSize = 100, Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Port | - | Number | &#x2714; | Server port |
   | PoolSize | - | Number | &#x2716; | Maximum number of simultaneously supported connections |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
   
   Returns:  Arbitrary - Server object or match with error information

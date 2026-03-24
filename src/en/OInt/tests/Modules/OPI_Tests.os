@@ -2266,6 +2266,8 @@ Procedure TC_Server() Export
     TCP_FinishReceiving(TestParameters);
     TCP_GetConnectionList(TestParameters);
     TCP_IsServerObject(TestParameters);
+    TCP_GetLog(TestParameters);
+    TCP_GetLoggingSettings(TestParameters);
 
 EndProcedure
 
@@ -15660,6 +15662,48 @@ Procedure TCP_IsServerObject(FunctionParameters)
 
 EndProcedure
 
+Procedure TCP_GetLog(FunctionParameters)
+
+    LaunchPort      = 9877;
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
+    ServerObject    = OPI_TCP.StartServer(LaunchPort, , LoggingSettings);
+
+    // Connect to running server
+    ConnectionAddress = "127.0.0.1:9877";
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    OPI_Tools.Pause(1); // SKIP
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Result = OPI_TCP.GetLog(ServerObject);
+
+    // END
+
+    Process(Result, "TCP", "GetLog", , LogFile);
+
+EndProcedure
+
+Procedure TCP_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_TCP.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    Process(Result, "TCP", "GetLoggingSettings");
+
+    Result = OPI_TCP.GetLoggingSettings(False, , GetTempFileName());
+
+    Process(Result, "TCP", "GetLoggingSettings", "File");
+
+    Result = OPI_TCP.GetLoggingSettings(True);
+
+    Process(Result, "TCP", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
 #EndRegion
 
 #Region SQLite
@@ -24023,6 +24067,18 @@ Procedure SSH_CreateConnection(FunctionParameters)
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login       = FunctionParameters["SSH_User"];
@@ -24082,6 +24138,18 @@ Procedure SSH_ExecuteCommand(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24149,6 +24217,18 @@ Procedure SSH_GetConnectionConfiguration(FunctionParameters)
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login       = FunctionParameters["SSH_User"];
@@ -24212,6 +24292,18 @@ Procedure SSH_CloseConnection(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24278,6 +24370,18 @@ Procedure SSH_IsConnector(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = 2223; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24365,6 +24469,27 @@ Procedure SSH_GetSettingsViaAgent(FunctionParameters)
 
 EndProcedure
 
+Procedure SSH_GetSettingsKI(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    AnswersArray = New Array;
+    AnswersArray.Add("yes");
+    AnswersArray.Add(Password);
+
+    Result = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
+
+    // END
+
+    Process(Result, "SSH", "GetSettingsKI", Postfix);
+
+EndProcedure
+
 Procedure SSH_GetProxySettings(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
@@ -24419,6 +24544,18 @@ Procedure SFTP_CreateConnection(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24479,6 +24616,18 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24546,6 +24695,18 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -24612,6 +24773,18 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -24677,6 +24850,18 @@ Procedure SFTP_ListObjects(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24756,6 +24941,18 @@ Procedure SFTP_UploadFile(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -24855,6 +25052,18 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -24928,6 +25137,18 @@ Procedure SFTP_IsConnector(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -25066,6 +25287,18 @@ Procedure SFTP_GetConnectionConfiguration(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -25129,6 +25362,18 @@ Procedure SFTP_CloseConnection(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -25195,6 +25440,18 @@ Procedure SFTP_SaveFile(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
@@ -25287,6 +25544,18 @@ Procedure SFTP_GetFileData(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -25373,6 +25642,18 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
     Else
 
         Login        = FunctionParameters["SSH_User"];
@@ -25458,6 +25739,18 @@ Procedure SFTP_GetFileInformation(FunctionParameters)
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
         SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
