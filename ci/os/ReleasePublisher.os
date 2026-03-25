@@ -1,8 +1,8 @@
 #Использовать "./internal"
 #Использовать "./internal/Classes/internal"
-#Использовать "../../../../src/ru/OInt/tools/http"
-#Использовать "../../../../src/ru/OInt/tools/main"
-#Использовать "../../../../src/ru/OInt/api/yadisk"
+#Использовать "../../src/ru/OInt/tools/http"
+#Использовать "../../src/ru/OInt/tools/main"
+#Использовать "../../src/ru/OInt/api/yadisk"
 
 Перем ДанныеПроекта;
 
