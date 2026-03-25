@@ -27,7 +27,7 @@ pipeline {
 					try {
 						// Удаление каталога C:\Program Files\OneScript\lib\oint, если существует
 						powershell encoding: 'UTF-8', script: '''
-							$dirPath = "C:\\Program Files\\OneScript\\lib\\oint"
+							$dirPath = "D:\\OneScript\\lib\\oint"
 							if (Test-Path $dirPath) {
 								Write-Host "Каталог oint найден. Удаляем..."
 								Remove-Item -Path $dirPath -Recurse -Force
@@ -39,7 +39,7 @@ pipeline {
 
 						// Проверяем, что каталог действительно удален
 						powershell encoding: 'UTF-8', script: '''
-							$dirPath = "C:\\Program Files\\OneScript\\lib\\oint"
+							$dirPath = "D:\\OneScript\\lib\\oint"
 							if (Test-Path $dirPath) {
 								Write-Error "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
 								exit 1

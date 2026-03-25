@@ -6716,6 +6716,11 @@
  },
  {
   "lib": "SFTP",
+  "name": "GetSettingsKI",
+  "variant": ""
+ },
+ {
+  "lib": "SFTP",
   "name": "GetProxySettings",
   "variant": ""
  },

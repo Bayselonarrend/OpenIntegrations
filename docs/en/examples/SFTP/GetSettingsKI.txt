@@ -1,0 +1,10 @@
+    Host     = "172.33.0.13";
+    Port     = "2222";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    AnswersArray = New Array;
+    AnswersArray.Add("yes");
+    AnswersArray.Add(Password);
+
+    Result = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
