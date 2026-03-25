@@ -67,39 +67,45 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "3e9f27c1-a680-4893-901a-2a5230e43885",
+  "uuid": "17c4440c-8463-490b-b224-498e402eb593",
   "orders": [
    {
-    "order_uuid": "982ad73b-6f44-41f4-a839-03b4ec3b9c51"
+    "order_uuid": "f5d899b2-1af6-4b26-868e-2bae4c34ff94"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/3e9f27c1-a680-4893-901a-2a5230e43885.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-03-06T18:29:54+03:00"
+    "date_time": "2026-03-25T06:46:10+00:00"
    },
    {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2026-03-06T18:29:54+03:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2026-03-06T18:29:55+03:00"
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2026-03-25T06:46:11+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "3bb88bb4-579b-4790-8fef-8f197f260362",
+   "request_uuid": "ff4c1060-d6d7-4341-856c-543bed648527",
    "type": "CREATE",
-   "date_time": "2026-03-06T18:29:54+03:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-03-25T06:46:10+00:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid f5d899b2-1af6-4b26-868e-2bae4c34ff94"
+    }
+   ]
   }
  ],
  "related_entities": []

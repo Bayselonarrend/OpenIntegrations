@@ -71,10 +71,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "b7268834-8bce-42f2-b659-71fd8c200388",
+  "uuid": "086ebc4e-ef2b-4e95-bf9d-402d5be6f4f8",
   "orders": [
    {
-    "order_uuid": "91287020-03b3-4233-914c-702b8c0b5053"
+    "order_uuid": "116139c6-c136-4c53-aab9-0b0056c21f11"
    }
   ],
   "copy_count": 1,
@@ -84,16 +84,33 @@ import TabItem from '@theme/TabItem';
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-03-22T13:10:28+00:00"
+    "date_time": "2026-03-25T08:15:54+00:00"
+   },
+   {
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2026-03-25T08:15:55+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "355e014a-94ee-4101-b0f0-05829ad5002f",
+   "request_uuid": "d3d5a67c-773a-4773-aa8d-9543dbd80c4d",
    "type": "CREATE",
-   "date_time": "2026-03-22T13:10:28+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-03-25T08:15:54+00:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid 116139c6-c136-4c53-aab9-0b0056c21f11"
+    }
+   ]
   }
  ],
  "related_entities": []

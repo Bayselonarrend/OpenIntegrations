@@ -62,6 +62,34 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint rss CreateFeedAtom \
+              --name "Test Atom feed" \
+              --link "https://example.com" \
+              --id "https://example.com/feed" \
+              --items "[{'title':'First record','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 07:08:19','summary':'First record summary','content':'Full content of the first record','author':'First Author','published':'03/25/2026 07:08:19'},{'title':'Second record','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 07:08:20','summary':'Second record summary','content':'Full content of the second record','author':'Second Author','published':'03/25/2026 07:08:20'}]"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint rss CreateFeedAtom ^
+              --name "Test Atom feed" ^
+              --link "https://example.com" ^
+              --id "https://example.com/feed" ^
+              --items "[{'title':'First record','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 07:08:19','summary':'First record summary','content':'Full content of the first record','author':'First Author','published':'03/25/2026 07:08:19'},{'title':'Second record','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 07:08:20','summary':'Second record summary','content':'Full content of the second record','author':'Second Author','published':'03/25/2026 07:08:20'}]"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n    <title>Test Atom feed</title>\n    <id>https://example.com/feed</id>\n    <link href=\"https://example.com\" rel=\"alternate\"/>\n    <updated>2026-03-25T09:40:33</updated>\n    <entry>\n        <title>First record</title>\n        <id>https://example.com/entry1</id>\n        <link href=\"https://example.com/entry1\" rel=\"alternate\"/>\n        <updated>2026-03-25T09:40:33</updated>\n        <summary>First record summary</summary>\n        <content type=\"html\">Full content of the first record</content>\n        <author>\n            <name>First Author</name>\n        </author>\n        <published>2026-03-25T09:40:33</published>\n    </entry>\n    <entry>\n        <title>Second record</title>\n        <id>https://example.com/entry2</id>\n        <link href=\"https://example.com/entry2\" rel=\"alternate\"/>\n        <updated>2026-03-25T09:40:33</updated>\n        <summary>Second record summary</summary>\n        <content type=\"html\">Full content of the second record</content>\n        <author>\n            <name>Second Author</name>\n        </author>\n        <published>2026-03-25T09:40:33</published>\n    </entry>\n</feed>"
+```

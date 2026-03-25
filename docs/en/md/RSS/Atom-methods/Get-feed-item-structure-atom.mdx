@@ -29,6 +29,35 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rss GetFeedItemStructureAtom \
+              --empty false \
+              --map true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rss GetFeedItemStructureAtom ^
+              --empty false ^
+              --map true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "title": "<item title>",
+ "id": "<unique identifier of the item>",
+ "link": "<item URL>",
+ "updated": "<update date>",
+ "summary": "<short description>",
+ "content": "<full content>",
+ "author": "<author's name>",
+ "published": "<publication date>"
+}
+```

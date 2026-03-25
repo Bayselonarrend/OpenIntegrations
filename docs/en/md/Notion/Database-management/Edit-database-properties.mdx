@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
             
             oint notion EditDatabaseProperties \
               --token "***" \
-              --base "31b82aa7-fc4e-81b9-ba29-e4e56ac0438f" \
+              --base "32e82aa7-fc4e-817e-ae9f-de171f633a7d" \
               --props "{'Email':'rich_text','Website':null}" \
               --title "TestTitle" \
               --description "TestDescription"
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
             
             oint notion EditDatabaseProperties ^
               --token "***" ^
-              --base "31b82aa7-fc4e-81b9-ba29-e4e56ac0438f" ^
+              --base "32e82aa7-fc4e-817e-ae9f-de171f633a7d" ^
               --props "{'Email':'rich_text','Website':null}" ^
               --title "TestTitle" ^
               --description "TestDescription"
@@ -75,10 +75,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "object": "database",
- "id": "31b82aa7-fc4e-818f-876f-cd4b669b7729",
+ "id": "32e82aa7-fc4e-8197-9425-e5e75b4faa64",
  "cover": null,
  "icon": null,
- "created_time": "2026-03-06T15:17:00Z",
+ "created_time": "2026-03-25T09:11:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-03-06T15:17:00Z",
+ "last_edited_time": "2026-03-25T09:11:00Z",
  "title": [
   {
    "type": "text",
@@ -128,36 +128,27 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
-  "Number": {
-   "id": "%3AhBk",
-   "name": "Number",
-   "description": null,
-   "type": "number",
-   "number": {
-    "format": "number"
-   }
-  },
   "Status": {
-   "id": "%3BALG",
+   "id": "CSSK",
    "name": "Status",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "e1b4b282-2433-49b3-99a5-d181d010ae0a",
+      "id": "aaf84bf3-f206-4f7e-8d65-7ea015d05dc1",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "f043e834-6972-449a-8229-6a1c10b51e28",
+      "id": "6a9658f6-6b9e-4868-b7dc-97c20a179830",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "5804e0fc-d58b-464d-8bd7-6cdad2e8a6b9",
+      "id": "b568af54-3389-4cb2-96d0-9a433ffd0088",
       "name": "Remote",
       "color": "red",
       "description": null
@@ -165,54 +156,63 @@ import TabItem from '@theme/TabItem';
     ]
    }
   },
-  "Email": {
-   "id": "%3DcVD",
-   "name": "Email",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Active": {
-   "id": "FBcy",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "CreationDate": {
-   "id": "T%7CJW",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Description": {
-   "id": "%5C%7D_%3A",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
   "Phone": {
-   "id": "%5EzMA",
+   "id": "Dq%3C%3D",
    "name": "Phone",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
   "User": {
-   "id": "vl%3DS",
+   "id": "FLds",
    "name": "User",
    "description": null,
    "type": "people",
    "people": {}
   },
+  "Email": {
+   "id": "KZSy",
+   "name": "Email",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Active": {
+   "id": "bD%5B%5C",
+   "name": "Active",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Number": {
+   "id": "dp%40P",
+   "name": "Number",
+   "description": null,
+   "type": "number",
+   "number": {
+    "format": "number"
+   }
+  },
+  "CreationDate": {
+   "id": "hiuL",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
   "Image": {
-   "id": "zosI",
+   "id": "lZdo",
    "name": "Image",
    "description": null,
    "type": "files",
    "files": {}
+  },
+  "Description": {
+   "id": "ytYZ",
+   "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
   },
   "Name": {
    "id": "title",
