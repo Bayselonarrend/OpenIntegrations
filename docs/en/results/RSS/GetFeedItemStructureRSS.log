@@ -1,0 +1,8 @@
+﻿{
+ "title": "<item title>",
+ "description": "<item description/content>",
+ "link": "<item URL>",
+ "pubDate": "<publication date>",
+ "author": "<authors email>",
+ "guid": "<unique identifier of the item>"
+}

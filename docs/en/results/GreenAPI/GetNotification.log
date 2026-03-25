@@ -2,41 +2,45 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB0D1F6E9144407C389B5",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1772726676,
-  "idMessage": "3EB016343BD49F2D250954",
+  "timestamp": 1774413561,
   "senderData": {
    "chatId": "***",
-   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***"
+   "senderContactName": "***",
+   "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "stanzaId": "3EB00497EF76B10E69DD86",
+   "typeMessage": "videoMessage",
+   "quotedMessage": {
+    "downloadUrl": "",
+    "caption": "File description",
+    "fileName": "",
+    "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
+    "forwardingScore": 0,
+    "isForwarded": false,
+    "typeMessage": "imageMessage",
+    "stanzaId": "3EB050A0F7ACBAC79C955A",
     "participant": "1234567890@c.us"
    },
-   "quotedMessage": {
-    "stanzaId": "3EB00497EF76B10E69DD86",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+   "fileMessageData": {
+    "downloadUrl": "",
+    "caption": "File description",
+    "fileName": "",
+    "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB...",
+    "isAnimated": false,
+    "mimeType": "video/mp4",
+    "forwardingScore": 0,
+    "isForwarded": false,
+    "videoNote": false
    }
   }
  }

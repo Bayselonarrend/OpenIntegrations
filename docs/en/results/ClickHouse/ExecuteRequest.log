@@ -24,21 +24,21 @@
   ],
   "rows": 2,
   "statistics": {
-   "elapsed": 0.00139862,
+   "elapsed": 0.001056145,
    "rows_read": 2,
    "bytes_read": 44
   }
  },
  "headers": {
-  "Date": "Fri, 06 Mar 2026 15:40:30 GMT",
+  "Date": "Wed, 25 Mar 2026 07:07:41 GMT",
   "Connection": "Keep-Alive",
   "X-ClickHouse-Server-Display-Name": "clickhouse",
   "Transfer-Encoding": "chunked",
-  "X-ClickHouse-Query-Id": "a266b64d-e695-4454-a1f3-f5b2e93b657c",
+  "X-ClickHouse-Query-Id": "4aef9930-7e74-4ca8-8907-28f7c84e3dc3",
   "X-ClickHouse-Format": "JSON",
   "X-ClickHouse-Timezone": "Europe/Moscow",
   "Keep-Alive": "timeout=3",
-  "X-ClickHouse-Summary": "{\"read_rows\":\"2\",\"read_bytes\":\"44\",\"written_rows\":\"0\",\"written_bytes\":\"0\",\"total_rows_to_read\":\"0\",\"result_rows\":\"0\",\"result_bytes\":\"0\"}",
+  "X-ClickHouse-Summary": "{\"read_rows\":\"2\",\"read_bytes\":\"44\",\"written_rows\":\"0\",\"written_bytes\":\"0\",\"total_rows_to_read\":\"0\",\"...",
   "Content-Type": "application/json; charset=UTF-8"
  }
 }

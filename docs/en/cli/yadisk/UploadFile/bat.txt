@@ -1,5 +1,5 @@
 oint yadisk UploadFile ^
   --token "***" ^
-  --path "/7948c2b0-db2c-4532-9797-7014315b1d55.png" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\yf5xnt2i.rzn.png" ^
+  --path "/17573999-8b21-4b2d-8df3-a5962cc1b311.png" ^
+  --file "/tmp/ly1cmpb4.hqv.png" ^
   --rewrite true
