@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-03-25T05:38:36.5286933Z",
+ "created_at": "2026-03-25T08:34:05.7833563Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise was relaased in 2017 with several major updates and improvements. The newest version o..."
+  "content": "1C:Enterprise was initially released in 2009. The latest edition was released in 2021 with several n..."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 2267419400,
- "load_duration": 31507600,
- "prompt_eval_count": 219,
- "prompt_eval_duration": 879508200,
- "eval_count": 86,
- "eval_duration": 1320024100
+ "total_duration": 1744474800,
+ "load_duration": 42812500,
+ "prompt_eval_count": 213,
+ "prompt_eval_duration": 853591600,
+ "eval_count": 49,
+ "eval_duration": 825648400
 }
