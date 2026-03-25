@@ -122,14 +122,14 @@ FTP Command: `LIST`
 {
  "data": [
   {
-   "accessed": 1774429099,
+   "accessed": 1774447455,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
    "is_symlink": false,
    "modified": 1773778601,
    "name": "test_folder2",
-   "path": "test_folder/test_folder2",
+   "path": "test_folder\\test_folder2",
    "permissions": "40777",
    "size": 4096,
    "uid": 1000,
@@ -142,20 +142,20 @@ FTP Command: `LIST`
      "is_symlink": false,
      "modified": 1773778601,
      "name": "3.txt",
-     "path": "test_folder/test_folder2/3.txt",
+     "path": "test_folder\\test_folder2\\3.txt",
      "permissions": "100777",
      "size": 0,
      "uid": 1000
     },
     {
-     "accessed": 1774429099,
+     "accessed": 1774447455,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1773778601,
      "name": "test_folder3",
-     "path": "test_folder/test_folder2/test_folder3",
+     "path": "test_folder\\test_folder2\\test_folder3",
      "permissions": "40777",
      "size": 4096,
      "uid": 1000,
@@ -168,7 +168,7 @@ FTP Command: `LIST`
        "is_symlink": false,
        "modified": 1773778601,
        "name": "4.txt",
-       "path": "test_folder/test_folder2/test_folder3/4.txt",
+       "path": "test_folder\\test_folder2\\test_folder3\\4.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -176,14 +176,14 @@ FTP Command: `LIST`
      ]
     },
     {
-     "accessed": 1774429099,
+     "accessed": 1774447455,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1773778601,
      "name": "test_folder4",
-     "path": "test_folder/test_folder2/test_folder4",
+     "path": "test_folder\\test_folder2\\test_folder4",
      "permissions": "40777",
      "size": 4096,
      "uid": 1000,
@@ -196,7 +196,7 @@ FTP Command: `LIST`
        "is_symlink": false,
        "modified": 1773778601,
        "name": "1.txt",
-       "path": "test_folder/test_folder2/test_folder4/1.txt",
+       "path": "test_folder\\test_folder2\\test_folder4\\1.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -209,7 +209,7 @@ FTP Command: `LIST`
        "is_symlink": false,
        "modified": 1773778601,
        "name": "2.txt",
-       "path": "test_folder/test_folder2/test_folder4/2.txt",
+       "path": "test_folder\\test_folder2\\test_folder4\\2.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -219,6 +219,9 @@ FTP Command: `LIST`
    ]
   }
  ],
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```
