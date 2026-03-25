@@ -94,7 +94,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint sftp GetFileInformation \
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\utgvahbq.x1j.tmp','username':'bayselonarrend'}}" \
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" \
               --path "pic_from_disk.png"
         ```
     </TabItem>
@@ -104,7 +104,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint sftp GetFileInformation ^
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\utgvahbq.x1j.tmp','username':'bayselonarrend'}}" ^
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" ^
               --path "pic_from_disk.png"
         ```
     </TabItem>
@@ -114,12 +114,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "data": {
-  "accessed": 1772809505,
+  "accessed": 1774429171,
   "extension": "png",
   "gid": 1000,
   "is_directory": false,
   "is_symlink": false,
-  "modified": 1772809505,
+  "modified": 1774429171,
   "name": "pic_from_binary.png",
   "path": "files_folder/pic_from_binary.png",
   "permissions": "100644",
