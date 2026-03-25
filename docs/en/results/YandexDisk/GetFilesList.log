@@ -15,7 +15,7 @@
    "media_type": "image",
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/94c3fbfa08db41feb4a7e545284d057437558d0e24f86506ae8b882068055...",
+     "url": "https://downloader.disk.yandex.ru/disk/8aa7fe68a54d5a251615146323b364ab318fa0deeab1a820d570c211d979d...",
      "name": "ORIGINAL"
     },
     {
@@ -73,7 +73,7 @@
     "date_time": "2014-12-13T14:29:24+00:00"
    },
    "antivirus_status": "clean",
-   "file": "https://downloader.disk.yandex.ru/disk/d3025d66dd377242b94b99ec90742832b41e00fa9e6d13743e13967933d3e..."
+   "file": "https://downloader.disk.yandex.ru/disk/e7b77f9e3fd2a12f6e06ca625219a3421f82083177499b6f660016faa9da3..."
   },
   {
    "path": "disk:/Тестовая папка/Альпака.png",
@@ -89,7 +89,7 @@
    "media_type": "image",
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/741d573cfa9a219a218104277ae45b2689f9ad043b9ce91e063c354e0cbb7...",
+     "url": "https://downloader.disk.yandex.ru/disk/3afed3cbb9d71269a91d3d576a3d1b3893b6e42552a9f42bf4555f8cf0cac...",
      "name": "ORIGINAL"
     },
     {
@@ -145,7 +145,7 @@
    },
    "exif": {},
    "antivirus_status": "clean",
-   "file": "https://downloader.disk.yandex.ru/disk/6293b5814dba555d87e5dcf8e923220e62ac91c8f8d9cb49ce6951ab3cbf0..."
+   "file": "https://downloader.disk.yandex.ru/disk/c5dbb22de70e43c4842aad663ed8202124d69593796208dd45390458e81a1..."
   }
  ],
  "offset": 1

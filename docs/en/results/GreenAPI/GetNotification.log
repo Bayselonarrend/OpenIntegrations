@@ -2,13 +2,13 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0D1F6E9144407C389B5",
+  "idMessage": "3EB0780EDCBF89E74FDBEA",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1774413561,
+  "timestamp": 1774413569,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -17,30 +17,21 @@
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "videoMessage",
-   "quotedMessage": {
-    "downloadUrl": "",
-    "caption": "File description",
-    "fileName": "",
-    "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
-    "forwardingScore": 0,
-    "isForwarded": false,
-    "typeMessage": "imageMessage",
-    "stanzaId": "3EB050A0F7ACBAC79C955A",
-    "participant": "1234567890@c.us"
-   },
-   "fileMessageData": {
-    "downloadUrl": "",
-    "caption": "File description",
-    "fileName": "",
-    "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB...",
-    "isAnimated": false,
-    "mimeType": "video/mp4",
-    "forwardingScore": 0,
-    "isForwarded": false,
-    "videoNote": false
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "What's your favorite color??",
+    "options": [
+     {
+      "optionName": "Red"
+     },
+     {
+      "optionName": "Yellow"
+     },
+     {
+      "optionName": "Green"
+     }
+    ],
+    "multipleAnswers": false
    }
   }
  }
