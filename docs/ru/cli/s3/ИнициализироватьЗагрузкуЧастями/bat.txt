@@ -2,6 +2,6 @@
 
 oint s3 ИнициализироватьЗагрузкуЧастями ^
   --name "fileChunked.mp3" ^
-  --bucket "cce806c2" ^
+  --bucket "c3c3c02f" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --dir true

@@ -1,0 +1,3 @@
+oint rss ПолучитьСтруктуруЭлементаФидаAtom \
+  --empty false \
+  --map true

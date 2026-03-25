@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint rss СоздатьФидRSS \
+  --name "Тестовый RSS канал" \
+  --descr "Описание тестового RSS канала" \
+  --link "https://example.com" \
+  --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'03/25/2026 08:38:47','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'03/25/2026 08:38:48','author':'test@example.com','guid':'item-2'}]"
