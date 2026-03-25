@@ -1,0 +1,10 @@
+﻿{
+ "title": "<item title>",
+ "id": "<unique identifier of the item>",
+ "link": "<item URL>",
+ "updated": "<update date>",
+ "summary": "<short description>",
+ "content": "<full content>",
+ "author": "<author's name>",
+ "published": "<publication date>"
+}

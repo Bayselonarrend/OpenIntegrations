@@ -80,36 +80,36 @@
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "jsonb_field",
-   "data_type": "jsonb",
+   "column_name": "text_field",
+   "data_type": "text",
    "is_nullable": "YES"
   },
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "date_field",
-   "data_type": "date",
+   "column_name": "varchar_field",
+   "data_type": "character varying",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": 3,
+   "column_default": null,
+   "column_name": "charn_field",
+   "data_type": "character",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": 1,
+   "column_default": null,
+   "column_name": "char_field",
+   "data_type": "character",
    "is_nullable": "YES"
   },
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "time_field",
-   "data_type": "time without time zone",
-   "is_nullable": "YES"
-  },
-  {
-   "character_maximum_length": null,
-   "column_default": null,
-   "column_name": "uuid_field",
-   "data_type": "uuid",
-   "is_nullable": "YES"
-  },
-  {
-   "character_maximum_length": null,
-   "column_default": null,
-   "column_name": "numeric_field",
-   "data_type": "numeric",
+   "column_name": "name_field",
+   "data_type": "name",
    "is_nullable": "YES"
   },
   {
@@ -150,36 +150,36 @@
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "text_field",
-   "data_type": "text",
+   "column_name": "jsonb_field",
+   "data_type": "jsonb",
    "is_nullable": "YES"
   },
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "varchar_field",
-   "data_type": "character varying",
-   "is_nullable": "YES"
-  },
-  {
-   "character_maximum_length": 3,
-   "column_default": null,
-   "column_name": "charn_field",
-   "data_type": "character",
-   "is_nullable": "YES"
-  },
-  {
-   "character_maximum_length": 1,
-   "column_default": null,
-   "column_name": "char_field",
-   "data_type": "character",
+   "column_name": "date_field",
+   "data_type": "date",
    "is_nullable": "YES"
   },
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "name_field",
-   "data_type": "name",
+   "column_name": "time_field",
+   "data_type": "time without time zone",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "uuid_field",
+   "data_type": "uuid",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "numeric_field",
+   "data_type": "numeric",
    "is_nullable": "YES"
   }
  ],
