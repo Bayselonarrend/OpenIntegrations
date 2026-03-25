@@ -11944,6 +11944,20 @@ Function Check_SFTP_GetSettingsViaAgent(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SFTP_GetSettingsKI(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("keyboard_interactive");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["keyboard_responses"]).Заполнено();
+
+    Result["keyboard_responses"][1] = "***";
+
+    Return Result;
+
+EndFunction
+
 Function Check_SFTP_GetProxySettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);

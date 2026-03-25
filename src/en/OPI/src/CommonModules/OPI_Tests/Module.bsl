@@ -3040,6 +3040,7 @@ Procedure SShell_CommonMethods() Export
         SSH_GetSettingsLoginPassword(TestParameters);
         SSH_GetSettingsPrivateKey(TestParameters);
         SSH_GetSettingsViaAgent(TestParameters);
+        SSH_GetSettingsKI(TestParameters);
         SSH_GetProxySettings(TestParameters);
 
     EndDo;
@@ -3065,6 +3066,7 @@ Procedure SF_CommonMethods() Export
         SFTP_GetSettingsLoginPassword(TestParameters);
         SFTP_GetSettingsPrivateKey(TestParameters);
         SFTP_GetSettingsViaAgent(TestParameters);
+        SFTP_GetSettingsKI(TestParameters);
         SFTP_GetProxySettings(TestParameters);
 
     EndDo;
@@ -25234,6 +25236,27 @@ Procedure SFTP_GetSettingsViaAgent(FunctionParameters)
     // END
 
     Process(Result, "SFTP", "GetSettingsViaAgent", Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetSettingsKI(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    AnswersArray = New Array;
+    AnswersArray.Add("yes");
+    AnswersArray.Add(Password);
+
+    Result = OPI_SFTP.GetSettingsKI(Host, Port, Login, AnswersArray);
+
+    // END
+
+    Process(Result, "SFTP", "GetSettingsKI", Postfix);
 
 EndProcedure
 
