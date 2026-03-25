@@ -1,4 +1,4 @@
 oint vkteams SendVoice ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/dngqepxd.uop"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\mpkvhajs.jrp"

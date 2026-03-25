@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10110",
+   "id": "10150",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-03-25T09:16:14+00:00",
+   "createdDate": "2026-03-25T17:30:11+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-03-25T09:16:31+00:00",
+   "changedDate": "2026-03-25T17:30:50+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-03-25T09:16:31+00:00",
-   "dateStart": "2026-03-25T09:16:28+00:00",
-   "deadline": "2026-03-26T09:16:00+00:00",
-   "startDatePlan": "2026-03-25T09:16:14+00:00",
-   "endDatePlan": "2026-03-25T21:00:00+00:00",
-   "guid": "{5256b429-f1c3-4a04-9909-a7c5be172ef4}",
+   "activityDate": "2026-03-25T17:30:50+03:00",
+   "dateStart": "2026-03-25T17:30:44+03:00",
+   "deadline": "2026-03-26T17:30:00+03:00",
+   "startDatePlan": "2026-03-25T17:30:11+03:00",
+   "endDatePlan": "2026-03-26T00:00:00+03:00",
+   "guid": "{7002c55c-b62e-4bb4-ab64-2e0e65ace4bf}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-03-25T09:16:31+00:00",
+   "statusChangedDate": "2026-03-25T17:30:50+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1774430191,
-  "finish": 1774430191.25804,
-  "duration": 0.258038997650146,
+  "start": 1774449050,
+  "finish": 1774449050.71595,
+  "duration": 0.715948104858398,
   "processing": 0,
-  "date_start": "2026-03-25T09:16:31+00:00",
-  "date_finish": "2026-03-25T09:16:31+00:00",
-  "operating_reset_at": 1774430791,
-  "operating": 0.184432983398438
+  "date_start": "2026-03-25T17:30:50+03:00",
+  "date_finish": "2026-03-25T17:30:50+03:00",
+  "operating_reset_at": 1774449650,
+  "operating": 0.141419172286987
  }
 }

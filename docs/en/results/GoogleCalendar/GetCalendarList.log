@@ -1030,5 +1030,24 @@
     "hangoutsMeet"
    ]
   }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1774436939364847\"",
+  "id": "10f9b286b24bfb2cfd826d10779c9bcfd91133c489036fbc7f497c5be74ee38c@group.calendar.google.com",
+  "summary": "Тестовый календарь",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "3",
+  "backgroundColor": "#f83a22",
+  "foregroundColor": "#000000",
+  "selected": true,
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
  }
 ]

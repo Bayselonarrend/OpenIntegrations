@@ -1,4 +1,4 @@
 oint rportal DeleteProject \
   --url "tests.openintegrations.dev" \
   --token "***" \
-  --id 26
+  --id 42

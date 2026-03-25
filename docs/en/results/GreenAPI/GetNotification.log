@@ -2,36 +2,31 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0780EDCBF89E74FDBEA",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1774413569,
+  "timestamp": 1774416944,
+  "idMessage": "3EB01D92847E41681A71C7",
   "senderData": {
    "chatId": "***",
+   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***",
-   "chatName": "***"
+   "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "pollMessage",
-   "pollMessageData": {
-    "name": "What's your favorite color??",
-    "options": [
-     {
-      "optionName": "Red"
-     },
-     {
-      "optionName": "Yellow"
-     },
-     {
-      "optionName": "Green"
-     }
-    ],
-    "multipleAnswers": false
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/65554279-e5da-4078-b722-7dee650238b4...",
+    "caption": "Описание файла",
+    "fileName": "65554279-e5da-4078-b722-7dee650238b4.jpg",
+    "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }

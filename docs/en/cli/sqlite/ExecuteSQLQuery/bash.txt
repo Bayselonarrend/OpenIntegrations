@@ -2,5 +2,5 @@
 
 oint sqlite ExecuteSQLQuery \
   --sql "SELECT uuid4();" \
-  --db "/tmp/vlpne1i4.ft3.sqlite" \
-  --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
+  --db "C:\Users\bayselonarrend\AppData\Local\Temp\kp5acnxy.fpm.sqlite" \
+  --exts "{'https://hut.openintegrations.dev/test_data/uuid.dll':'sqlite3_uuid_init'}"
