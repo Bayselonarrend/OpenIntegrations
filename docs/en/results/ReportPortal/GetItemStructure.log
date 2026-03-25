@@ -1,7 +1,7 @@
 ﻿{
  "name": "<element name>",
  "startTime": "<start time>",
- "type": "<type of element: suite, story, test, scenario, step, before_class, before_groups, before_method, before_suite, before_test, after_class, after_groups, after_method, after_suite, after_test>",
+ "type": "<type of element: suite, story, test, scenario, step, before_class, before_groups, before_method, be...",
  "launchUuid": "<Launch UUID>",
  "description": "<element description>",
  "attributes": "<element attributes in the form key1:value1, key2:value2>",

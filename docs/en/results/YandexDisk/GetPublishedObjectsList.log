@@ -1,5 +1,22 @@
 ﻿{
  "limit": 2,
  "offset": 1,
- "items": []
+ "items": [
+  {
+   "path": "disk:/OpenIntegrations",
+   "type": "dir",
+   "name": "OpenIntegrations",
+   "created": "2026-03-12T08:49:24+00:00",
+   "modified": "2026-03-12T08:49:24+00:00",
+   "public_key": "***",
+   "public_url": "https://yadi.sk/d/_paRtkfzIV-wGQ",
+   "resource_id": "1573541518:2fbe9407e86db710692960dae5780ebc0fd64015b5bdb7b9f00a285f05109dbe",
+   "revision": 1773309484819481,
+   "comment_ids": {
+    "public_resource": "1573541518:2fbe9407e86db710692960dae5780ebc0fd64015b5bdb7b9f00a285f05109dbe",
+    "private_resource": "1573541518:2fbe9407e86db710692960dae5780ebc0fd64015b5bdb7b9f00a285f05109dbe"
+   },
+   "exif": {}
+  }
+ ]
 }

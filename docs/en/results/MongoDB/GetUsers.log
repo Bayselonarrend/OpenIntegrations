@@ -5,7 +5,7 @@
    {
     "_id": "admin.bayselonarrend",
     "userId": {
-     "__B64_BINARY__": "o/sTQLP2Q0Gh/ktdyTzYEw=="
+     "__B64_BINARY__": "EjWtfR/yQgGol18zZoi5HA=="
     },
     "user": "bayselonarrend",
     "db": "admin",
@@ -16,13 +16,13 @@
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "uJIHxzZApTwt+kxKvyGNFQ==",
+      "salt": "Qav4apyB+3UkB53eZtIiEA==",
       "storedKey": "***",
       "serverKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "5AWQEtOv0LtrbiyyPowpiiixAz+yuDiU5ckYMQ==",
+      "salt": "nLO0xnlSs9iMSpmKP3tEv0hCiwk7helxkaomuQ==",
       "storedKey": "***",
       "serverKey": "***"
      }
@@ -702,7 +702,7 @@
    {
     "_id": "main.newuser",
     "userId": {
-     "__B64_BINARY__": "WRMybUjWQ/2QW6qmVEo18A=="
+     "__B64_BINARY__": "lQHUVgr3TUu3YA4VLKwIgA=="
     },
     "user": "newuser",
     "db": "main",
@@ -713,13 +713,13 @@
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "rqLhoZ4nYf+IhIdyB7fmQw==",
+      "salt": "UzmW+QyYC1MiwFCoog/PaA==",
       "storedKey": "***",
       "serverKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "LzTX7dACJbcPsoyM7e3G76ArJQ80LjdTy0EkoA==",
+      "salt": "gvTnRRCgWPRYP584TXPBadQtb0flqJGmi6lO+A==",
       "storedKey": "***",
       "serverKey": "***"
      }

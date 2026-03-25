@@ -1,0 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
+oint rss CreateFeedRSS \
+  --name "Test RSS channel" \
+  --descr "Test RSS channel description" \
+  --link "https://example.com" \
+  --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'03/25/2026 07:08:13','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'03/25/2026 07:08:13','author':'test@example.com','guid':'item-2'}]"

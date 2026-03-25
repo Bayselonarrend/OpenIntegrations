@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint rss CreateFeedAtom ^
+  --name "Test Atom feed" ^
+  --link "https://example.com" ^
+  --id "https://example.com/feed" ^
+  --items "[{'title':'First record','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 07:08:19','summary':'First record summary','content':'Full content of the first record','author':'First Author','published':'03/25/2026 07:08:19'},{'title':'Second record','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 07:08:20','summary':'Second record summary','content':'Full content of the second record','author':'Second Author','published':'03/25/2026 07:08:20'}]"

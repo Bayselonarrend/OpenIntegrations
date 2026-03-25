@@ -3,14 +3,14 @@
   "f_bool": true,
   "f_bools": [],
   "f_bytes": {
-   "BYTES": "<base64 string>
+   "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
   },
   "f_bytess": [
    {
-    "BYTES": "<base64 string>
+    "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
    },
    {
-    "BYTES": "<base64 string>
+    "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
    }
   ],
   "f_enum": "ENUM_1",

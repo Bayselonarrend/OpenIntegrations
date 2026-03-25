@@ -3,7 +3,7 @@
   {
    "name": "mario:latest",
    "model": "mario:latest",
-   "size": 1013987328,
+   "size": 645263360,
    "digest": "83472d32997e219d78e3e480763e7b72beca170aaa02f3f2e2dbf613c248dee4",
    "details": {
     "parent_model": "",
@@ -15,8 +15,9 @@
     "parameter_size": "1.1B",
     "quantization_level": "Q4_0"
    },
-   "expires_at": "2026-03-06T12:31:53.037042091Z",
-   "size_vram": 0
+   "expires_at": "2026-03-25T07:09:29.3597573+00:00",
+   "size_vram": 0,
+   "context_length": 2048
   }
  ]
 }

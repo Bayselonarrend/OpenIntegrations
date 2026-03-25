@@ -1,0 +1,11 @@
+﻿{
+ "logs": [
+  "[2026-03-25 06:58:38.646] Binding to port 9877...",
+  "[2026-03-25 06:58:38.646] Successfully bound to port 9877",
+  "[2026-03-25 06:58:38.646] Listener task started",
+  "[2026-03-25 06:58:38.646] New connection accepted: 7ec8f869-05f6-45f4-8d28-0573902800d6 from 127.0.0..."
+ ],
+ "result": true,
+ "returned": 4,
+ "total": 4
+}

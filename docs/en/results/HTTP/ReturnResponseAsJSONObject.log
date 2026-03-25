@@ -12,8 +12,8 @@
   "Content-Type": "application/octet-stream",
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "dd04f8a4-f776-4009-a7c0-6141e93b452b",
+  "User-Agent": "1Script v$2.0.1.0",
+  "X-Arr-Log-Id": "c9aece28-a12a-4c6b-87b6-bc1e58c01778",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

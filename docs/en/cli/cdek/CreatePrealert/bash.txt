@@ -1,6 +1,6 @@
 oint cdek CreatePrealert \
   --token "***" \
-  --uuids "0d5c2b05-ba83-4feb-a654-027a9492aae9" \
-  --date "2026-03-07T14:55:51" \
+  --uuids "f5d899b2-1af6-4b26-868e-2bae4c34ff94" \
+  --date "2026-03-26T06:46:13" \
   --point "NSK27" \
   --testapi "***"

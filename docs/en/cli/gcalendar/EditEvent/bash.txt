@@ -2,6 +2,6 @@
 
 oint gcalendar EditEvent \
   --token "***" \
-  --calendar "09ca86d380b0c7e27db210f4dfc02c9246b9f004ddb1a9b6941bd2300d743cb7@group.calendar.google.com" \
+  --calendar "79af2c982ec186705019e9e71362c6a07874f1b25510f4f8595458195f03fa91@group.calendar.google.com" \
   --props "{'Description':'New event description'}" \
-  --event "nthmim636il828kiou4mguitpk"
+  --event "lopt0bdgkmvjgqd5cfh23j4v4c"

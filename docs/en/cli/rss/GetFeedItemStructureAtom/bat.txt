@@ -1,0 +1,3 @@
+oint rss GetFeedItemStructureAtom ^
+  --empty false ^
+  --map true
