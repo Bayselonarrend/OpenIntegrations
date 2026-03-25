@@ -2,10 +2,12 @@ pipeline {
 	agent {
 		label 'windows'
 	}
-    stage('Git - Publish releases') {
-        steps {        
-            withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {          
-                bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/ReleasePublisher.os %GPGKEY%'
+    stages {
+        stage('Git - Publish releases') {
+            steps {        
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {          
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/ReleasePublisher.os %GPGKEY%'
+                }
             }
         }
     }
