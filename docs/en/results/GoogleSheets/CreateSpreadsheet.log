@@ -1,5 +1,5 @@
 ﻿{
- "spreadsheetId": "18P2G8RHMXmZ5HBlrgR5E3F2u5HQ7VcaPmZ8CDeBblDE",
+ "spreadsheetId": "1P_TYqvmcprZXNFHWZlB3jq1p2-p1Z-Xh7vYU7b8czQY",
  "properties": {
   "title": "TestTable",
   "locale": "ru_RU",
@@ -134,7 +134,7 @@
  "sheets": [
   {
    "properties": {
-    "sheetId": 792081246,
+    "sheetId": 2114702527,
     "title": "Sheet1",
     "index": 0,
     "sheetType": "GRID",
@@ -146,7 +146,7 @@
   },
   {
    "properties": {
-    "sheetId": 3387211,
+    "sheetId": 1145730480,
     "title": "Sheet2",
     "index": 1,
     "sheetType": "GRID",
@@ -157,5 +157,5 @@
    }
   }
  ],
- "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/18P2G8RHMXmZ5HBlrgR5E3F2u5HQ7VcaPmZ8CDeBblDE/edit"
+ "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1P_TYqvmcprZXNFHWZlB3jq1p2-p1Z-Xh7vYU7b8czQY/edit"
 }
