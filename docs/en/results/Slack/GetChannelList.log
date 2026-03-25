@@ -24,7 +24,7 @@
    "pending_shared": [],
    "parent_conversation": null,
    "purpose": {
-    "value": "This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.",
+    "value": "This is the one channel that will always include everyone. It’s a great spot for announcements and t...",
     "creator": "U06UABH3APP",
     "last_set": 1713202497
    },
@@ -67,7 +67,7 @@
    "pending_shared": [],
    "parent_conversation": null,
    "purpose": {
-    "value": "This channel is for everything #slack-api-librarry. Hold meetings, share docs, and make decisions together with your team.",
+    "value": "This channel is for everything #slack-api-librarry. Hold meetings, share docs, and make decisions to...",
     "creator": "U06UABH3APP",
     "last_set": 1713202541
    },
@@ -242,7 +242,7 @@
    "pending_shared": [],
    "parent_conversation": null,
    "purpose": {
-    "value": "This channel is for... well, everything else. It’s a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!",
+    "value": "This channel is for... well, everything else. It’s a place for team jokes, spur-of-the-moment ideas,...",
     "creator": "U06UABH3APP",
     "last_set": 1713202498
    },
