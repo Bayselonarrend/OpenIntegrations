@@ -55,6 +55,7 @@
    <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
 
 </div> 
 <br>
