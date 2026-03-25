@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/yqvaq0kv.2ti.bin",
- "result": true
+ "filepath": "/tmp/jigdysfi.eps.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
