@@ -25,8 +25,10 @@ fakedata.json
 suppaftp/
 
 
+
 target/
 .idea/
+.scannerwork/
 
 !oscript.exe
 addin.zip
