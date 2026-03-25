@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint rss СоздатьФидAtom \
+  --name "Тестовый Atom фид" \
+  --link "https://example.com" \
+  --id "https://example.com/feed" \
+  --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 08:38:54','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'03/25/2026 08:38:54'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 08:38:55','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'03/25/2026 08:38:55'}]"

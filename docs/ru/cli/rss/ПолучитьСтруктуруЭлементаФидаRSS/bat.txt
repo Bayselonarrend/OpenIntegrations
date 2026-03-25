@@ -1,0 +1,3 @@
+oint rss ПолучитьСтруктуруЭлементаФидаRSS ^
+  --empty false ^
+  --map true
