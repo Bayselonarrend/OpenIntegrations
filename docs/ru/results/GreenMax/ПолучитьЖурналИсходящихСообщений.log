@@ -1,11 +1,11 @@
 ﻿[
  {
   "type": "outgoing",
-  "idMessage": "1774185755219",
-  "timestamp": 1774185755,
+  "idMessage": "1774417002838",
+  "timestamp": 1774417003,
   "typeMessage": "imageMessage",
   "chatId": "***",
-  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/e40a8147-c86b-4b9f-bfe2-1b4c6e61c26f.jpg",
+  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/1a72a6a2-1df6-43ba-9a72-337bdf6b6fa9.jpg",
   "caption": "Описание файла",
   "fileName": "photo.jpg",
   "jpegThumbnail": "UklGRh4BAABXRUJQVlA4IBIBAACQCACdASoyACYAP3Gsy2E0rCglqBVZypAuCUAZMQDDgZvlC9W+/2iE8uR8ULVrh0T+1MeFovSy...",
@@ -23,8 +23,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "1774185751674",
-  "timestamp": 1774185753,
+  "idMessage": "1774417000273",
+  "timestamp": 1774417002,
   "typeMessage": "extendedTextMessage",
   "chatId": "***",
   "textMessage": "Текст сообщения",
