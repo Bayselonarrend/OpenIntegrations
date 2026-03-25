@@ -1,22 +1,22 @@
 ﻿{
  "result": {
-  "ID": 53892,
+  "ID": 54108,
   "NAME": "Picture1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": "53880",
+  "PARENT_ID": "54096",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 36918,
+  "FILE_ID": 37070,
   "SIZE": "805191",
-  "CREATE_TIME": "2026-03-25T06:38:02+00:00",
-  "UPDATE_TIME": "2026-03-25T06:38:02+00:00",
+  "CREATE_TIME": "2026-03-25T09:17:35+00:00",
+  "UPDATE_TIME": "2026-03-25T09:17:35+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=1d90c369006e9f06006b12e400000001000007a08970b...",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=d7b5c369006e9f06006b12e4000000010000077566fd8...",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/Picture1.jpg"
  }
 }
