@@ -30,6 +30,22 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rss РазобратьФидRSS \
+              --xml "<?xml version="'"1.0"'" encoding="'"utf-8"'"?>\n<rss version="'"2.0"'">\n    <channel>\n        <title>Тестовый RSS канал</title>\n        <link>https://example.com</link>\n        <description>Описание тестового RSS канала</description>\n        <lastBuildDate>Wed, 25 Mar 2026 08:38:48 +0000</lastBuildDate>\n        <item>\n            <title>Первый элемент</title>\n            <description>Описание первого элемента</description>\n            <link>https://example.com/item1</link>\n            <pubDate>Wed, 25 Mar 2026 08:38:47 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink="'"false"'">item-1</guid>\n        </item>\n        <item>\n            <title>Второй элемент</title>\n            <description>Описание второго элемента</description>\n            <link>https://example.com/item2</link>\n            <pubDate>Wed, 25 Mar 2026 08:38:48 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink="'"false"'">item-2</guid>\n        </item>\n    </channel>\n</rss>"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rss РазобратьФидRSS ^
+              --xml "<?xml version="'"1.0"'" encoding="'"utf-8"'"?>\n<rss version="'"2.0"'">\n    <channel>\n        <title>Тестовый RSS канал</title>\n        <link>https://example.com</link>\n        <description>Описание тестового RSS канала</description>\n        <lastBuildDate>Wed, 25 Mar 2026 08:38:48 +0000</lastBuildDate>\n        <item>\n            <title>Первый элемент</title>\n            <description>Описание первого элемента</description>\n            <link>https://example.com/item1</link>\n            <pubDate>Wed, 25 Mar 2026 08:38:47 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink="'"false"'">item-1</guid>\n        </item>\n        <item>\n            <title>Второй элемент</title>\n            <description>Описание второго элемента</description>\n            <link>https://example.com/item2</link>\n            <pubDate>Wed, 25 Mar 2026 08:38:48 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink="'"false"'">item-2</guid>\n        </item>\n    </channel>\n</rss>"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
@@ -37,13 +53,13 @@ import TabItem from '@theme/TabItem';
  "title": "Тестовый RSS канал",
  "link": "https://example.com",
  "description": "Описание тестового RSS канала",
- "lastBuildDate": "Sun, 22 Mar 2026 13:26:11 +0000",
+ "lastBuildDate": "Wed, 25 Mar 2026 08:38:48 +0000",
  "items": [
   {
    "title": "Первый элемент",
    "description": "Описание первого элемента",
    "link": "https://example.com/item1",
-   "pubDate": "Sun, 22 Mar 2026 13:26:11 +0000",
+   "pubDate": "Wed, 25 Mar 2026 08:38:47 +0000",
    "author": "test@example.com",
    "guid": "item-1"
   },
@@ -51,7 +67,7 @@ import TabItem from '@theme/TabItem';
    "title": "Второй элемент",
    "description": "Описание второго элемента",
    "link": "https://example.com/item2",
-   "pubDate": "Sun, 22 Mar 2026 13:26:11 +0000",
+   "pubDate": "Wed, 25 Mar 2026 08:38:48 +0000",
    "author": "test@example.com",
    "guid": "item-2"
   }

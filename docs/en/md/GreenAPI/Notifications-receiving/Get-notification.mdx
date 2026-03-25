@@ -68,41 +68,36 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB0780EDCBF89E74FDBEA",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1772726676,
-  "idMessage": "3EB016343BD49F2D250954",
+  "timestamp": 1774413569,
   "senderData": {
    "chatId": "***",
-   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***"
+   "senderContactName": "***",
+   "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "stanzaId": "3EB00497EF76B10E69DD86",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB00497EF76B10E69DD86",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "What's your favorite color??",
+    "options": [
+     {
+      "optionName": "Red"
+     },
+     {
+      "optionName": "Yellow"
+     },
+     {
+      "optionName": "Green"
+     }
+    ],
+    "multipleAnswers": false
    }
   }
  }
