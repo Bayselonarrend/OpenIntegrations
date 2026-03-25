@@ -61,5 +61,58 @@ Method at API documentation: [ShowMessagesQueue](https://green-api.com/docs/api/
 
 
 ```json title="Result"
-[]
+[
+ {
+  "messageID": "3EB08E09D054445CC698F3",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Artem",
+    "middleName": "Evpatoriysky",
+    "lastName": "Petrovich",
+    "company": "Bicycle"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB095F0EDCD987745C16C",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Bicycle"
+   },
+   "quotedMessageId": "3EB08E09D054445CC698F3",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0DF30734609E40804E5"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB080EC35E41AED82DA09"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0D199410A8EB60D2F4A",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB080EC35E41AED82DA09",
+   "message": "New message text",
+   "linkPreview": true
+  }
+ }
+]
 ```

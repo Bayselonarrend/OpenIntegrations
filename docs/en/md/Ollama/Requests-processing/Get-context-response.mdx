@@ -71,7 +71,7 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
               --url "https://hut.openintegrations.dev/ollama" \
               --model "tinyllama" \
               --msgs "[{'role':'user','content':'Hello!'}]" \
-              --options "{'options':{'seed':'101','temperature':'0'}}" \
+              --options "{'options':{'seed':'555','temperature':'10'}}" \
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -84,7 +84,7 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
               --url "https://hut.openintegrations.dev/ollama" ^
               --model "tinyllama" ^
               --msgs "[{'role':'user','content':'Hello!'}]" ^
-              --options "{'options':{'seed':'101','temperature':'0'}}" ^
+              --options "{'options':{'seed':'555','temperature':'10'}}" ^
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -94,18 +94,18 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 ```json title="Result"
 {
  "model": "tinyllama",
- "created_at": "2026-03-06T12:24:12.033747955Z",
+ "created_at": "2026-03-25T09:37:41.9604031Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2007. However, it is not known when exactly a new version of the software was released due to the complexity of maintaining and updating an enterprise-wide software system. The latest version available at this time is 9.5.1, which was released in March 2021."
+  "content": "1C:Enterprise has been released several times since its initial release in 2005. Some of the notable..."
  },
- "done_reason": "stop",
  "done": true,
- "total_duration": 35319059981,
- "load_duration": 19305819,
- "prompt_eval_count": 209,
- "prompt_eval_duration": 6653175164,
- "eval_count": 79,
- "eval_duration": 28627714209
+ "done_reason": "stop",
+ "total_duration": 4009138300,
+ "load_duration": 33268300,
+ "prompt_eval_count": 205,
+ "prompt_eval_duration": 706965200,
+ "eval_count": 176,
+ "eval_duration": 3201120900
 }
 ```

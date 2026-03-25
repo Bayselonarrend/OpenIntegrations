@@ -62,8 +62,34 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint rss СоздатьФидAtom \
+              --name "Тестовый Atom фид" \
+              --link "https://example.com" \
+              --id "https://example.com/feed" \
+              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 08:38:54','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'03/25/2026 08:38:54'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 08:38:55','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'03/25/2026 08:38:55'}]"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint rss СоздатьФидAtom ^
+              --name "Тестовый Atom фид" ^
+              --link "https://example.com" ^
+              --id "https://example.com/feed" ^
+              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'03/25/2026 08:38:54','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'03/25/2026 08:38:54'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'03/25/2026 08:38:55','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'03/25/2026 08:38:55'}]"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n    <title>Тестовый Atom фид</title>\n    <id>https://example.com/feed</id>\n    <link href=\"https://example.com\" rel=\"alternate\"/>\n    <updated>2026-03-22T13:26:13</updated>\n    <entry>\n        <title>Первая запись</title>\n        <id>https://example.com/entry1</id>\n        <link href=\"https://example.com/entry1\" rel=\"alternate\"/>\n        <updated>2026-03-22T13:26:13</updated>\n        <summary>Краткое описание первой записи</summary>\n        <content type=\"html\">Полное содержимое первой записи</content>\n        <author>\n            <name>Автор Первый</name>\n        </author>\n        <published>2026-03-22T13:26:13</published>\n    </entry>\n    <entry>\n        <title>Вторая запись</title>\n        <id>https://example.com/entry2</id>\n        <link href=\"https://example.com/entry2\" rel=\"alternate\"/>\n        <updated>2026-03-22T13:26:13</updated>\n        <summary>Краткое описание второй записи</summary>\n        <content type=\"html\">Полное содержимое второй записи</content>\n        <author>\n            <name>Автор Второй</name>\n        </author>\n        <published>2026-03-22T13:26:13</published>\n    </entry>\n</feed>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\n    <title>Тестовый Atom фид</title>\n    <id>https://example.com/feed</id>\n    <link href=\"https://example.com\" rel=\"alternate\"/>\n    <updated>2026-03-25T08:38:55</updated>\n    <entry>\n        <title>Первая запись</title>\n        <id>https://example.com/entry1</id>\n        <link href=\"https://example.com/entry1\" rel=\"alternate\"/>\n        <updated>2026-03-25T08:38:54</updated>\n        <summary>Краткое описание первой записи</summary>\n        <content type=\"html\">Полное содержимое первой записи</content>\n        <author>\n            <name>Автор Первый</name>\n        </author>\n        <published>2026-03-25T08:38:54</published>\n    </entry>\n    <entry>\n        <title>Вторая запись</title>\n        <id>https://example.com/entry2</id>\n        <link href=\"https://example.com/entry2\" rel=\"alternate\"/>\n        <updated>2026-03-25T08:38:55</updated>\n        <summary>Краткое описание второй записи</summary>\n        <content type=\"html\">Полное содержимое второй записи</content>\n        <author>\n            <name>Автор Второй</name>\n        </author>\n        <published>2026-03-25T08:38:55</published>\n    </entry>\n</feed>"
 ```
