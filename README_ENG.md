@@ -48,6 +48,7 @@ The project code is organized as a set of independent modules, each responsible 
     <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
        
    
 </div>
