@@ -1,6 +1,6 @@
 oint gcalendar EditListCalendar \
   --token "***" \
-  --calendar "e59bf1c3266d9cebcf57228cb223cf46375dc6a7afeed72c78ce1529c254501e@group.calendar.google.com" \
+  --calendar "3d4aa01d61efab48f9fc76da8bd3ada65e052f909e1d888856ae06d05e375bb1@group.calendar.google.com" \
   --primary "#000000" \
   --secondary "#ffd800" \
   --hidden false

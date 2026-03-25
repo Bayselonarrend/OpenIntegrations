@@ -1,3 +1,6 @@
 ﻿{
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
