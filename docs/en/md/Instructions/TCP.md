@@ -38,7 +38,7 @@ The library provides the ability to work with TCP protocol in two modes: as a **
 This library provides several ready-made methods for working as a TCP client. The standard interaction scheme is as follows:
 
     1. Creating an object and connecting to the server is performed using the `CreateConnection` function. A connection string in the format `<address>:<port>` is passed to it
-    2. If necessary, a message can be sent to the server using the `SendBinaryData` and `SendString` functions
+    2. If necessary, a message can be sent to the server using the `SendBinaryData` and `SendLine` functions
     3. To receive data from the server, the `ReadBinaryData` and `ReadString` functions are used. They have various parameters for limiting the received data by size, marker and input waiting (timeout)
     4. When finishing work, it is advisable to explicitly terminate the connection using the `CloseConnection` function
 
