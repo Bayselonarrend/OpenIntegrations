@@ -1,0 +1,154 @@
+// OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_РасширенныйВызов.os
+
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UnusedLocalVariable-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:CognitiveComplexity-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
+
+// #Использовать "./internal"
+
+// !OInt Перем ТекущиеНастройки;
+
+#Область ПрограммныйИнтерфейс
+
+// Вызвать с настройками
+// Вызывает указанный метод с расширенной установкой настроек
+// 
+// Параметры:
+//  ИмяМодуля  - Строка                     - Имя модуля ОПИ 
+//  ИмяФункции - Строка                     - Имя функции в модуле
+//  Параметры  - Массив Из Произвольный     - Массив параметров функции
+//  Настройки  - Структура Из КлючИЗначение - Набор настроек. См. ПолучитьДоступныеНастройки
+// 
+// Возвращаемое значение:
+//  Структура Из КлючИЗначение - Вызвать функцию с настройками
+Функция ВызватьСНастройками(Знач ИмяМодуля
+    , Знач ИмяФункции
+    , Знач Параметры = Неопределено
+    , Знач Настройки = Неопределено) Экспорт
+    
+    Если ЗначениеЗаполнено(Настройки) Тогда
+        
+        OPI_ПреобразованиеТипов.ПолучитьКоллекциюКлючИЗначение(Настройки);
+        
+        ТекущиеНастройки = Настройки;
+        
+        ПараметрыСеанса.OPI_Настройки =  ТекущиеНастройки; // !OPI
+        
+    КонецЕсли;
+    
+    Если ЗначениеЗаполнено(Параметры) Тогда
+        OPI_ПреобразованиеТипов.ПолучитьМассив(Параметры);
+    Иначе
+        Параметры = Новый Массив;
+    КонецЕсли;
+    
+    Для Н = 0 По Параметры.ВГраница() Цикл
+        Параметры.Добавить(СтрШаблон("Параметры[%1]", Н));
+    КонецЦикла;
+    
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяМодуля);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяФункции);
+    
+    СтрокаВызова = СтрШаблон("Результат = %1.%2(%3);"
+        , ИмяМодуля
+        , ИмяФункции
+        , СтрСоединить(Параметры, ", "));
+        
+    Результат = Неопределено;
+        
+    //@skip-check server-execution-safe-mode
+    Выполнить(СтрокаВызова);
+        
+    //@skip-check constructor-function-return-section
+    Возврат Результат;
+    
+КонецФункции
+
+// Получить доступные настройки
+// Получает описание доступных настроек для указанного метода (справочно)
+// 
+// Параметры:
+//  ИмяМодуля  - Строка - Имя модуля ОПИ 
+//  ИмяФункции - Строка - Имя функции в модуле
+// 
+// Возвращаемое значение:
+//  Строка - справка по доступным настройкам
+Функция ПолучитьДоступныеНастройки(Знач ИмяМодуля, Знач ИмяФункции) Экспорт
+    
+    ТекстМакета     = OPI_Инструменты.ПолучитьТекстовыйМакет("OPI_Text_MethodSettings");
+    СтруктураМакета = OPI_Инструменты.JsonВСтруктуру(ТекстМакета, Ложь);
+    НетНастроек     = Ложь;
+    
+    Попытка 
+        СтруктураНастроек = СтруктураМакета[ИмяМодуля][ИмяФункции];
+    Исключение
+        НетНастроек = Истина;
+    КонецПопытки;
+    
+    Если НетНастроек Или СтруктураНастроек.Количество() = 0 Тогда
+        Возврат "Для этой функции нет доступных настроек";
+    КонецЕсли;
+
+    МассивОписания = Новый Массив;
+    
+    Для Каждого Настройка Из СтруктураНастроек Цикл
+        МассивОписания.Добавить(СтрШаблон("%1: %2", Настройка.Ключ, Настройка.Значение));    
+    КонецЦикла;
+    
+    Возврат СтрСоединить(МассивОписания);
+    
+КонецФункции
+
+#КонецОбласти
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+Функция ПолучитьТекущиеНастройки() Экспорт
+    
+    Попытка
+        //@skip-check bsl-legacy-check-string-literal
+        Возврат ПараметрыСеанса["OPI_Настройки"]; // !OPI
+        // !OInt Возврат ПолучитьТекущиеНастройки();
+    Исключение
+        Возврат Неопределено;
+    КонецПопытки;
+             
+КонецФункции
+
+#КонецОбласти
+
+#Область СлужебныеПроцедурыИФункции
+
+#КонецОбласти
