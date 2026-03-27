@@ -1,119 +1,71 @@
 use super::ServerState;
-use std::time::Duration;
-use serde_json::json;
-use common_binary::vault::BinaryInput;
+use common_server::{MessageHandler, AsyncWaiter};
 
 impl ServerState {
 
-    async fn wait_for_message<F>(
-        &mut self,
-        timeout_ms: u64,
-        max_message_size: usize,
-        mut try_read: F,
-    ) -> String
-    where
-        F: FnMut(&mut Self, &mut Vec<u8>) -> Result<Option<(Vec<u8>, String, String, bool)>, String>,
-    {
-        let start = std::time::Instant::now();
-        let timeout = Duration::from_millis(timeout_ms);
-        let poll_interval = Duration::from_millis(10);
-
-        loop {
-            let mut buffer = vec![0u8; max_message_size];
-            
-            match try_read(self, &mut buffer) {
-                Ok(Some((message, conn_id, addr, still_active))) => {
-                    self.log(&format!("Message received from {}: {} bytes, active: {}", conn_id, message.len(), still_active));
-                    
-                    let vault_key = match self.vault.store(BinaryInput::Bytes(message)) {
-                        Ok(key) => {
-                            self.log(&format!("Message stored in vault with key: {}", key));
-                            key
-                        },
-                        Err(e) => {
-                            self.log(&format!("Failed to store message in vault: {}", e));
-                            return json!({
-                                "result": false,
-                                "error": format!("Failed to store message in vault: {}", e)
-                            }).to_string();
-                        }
-                    };
-
-                    if !still_active {
-                        self.log(&format!("Connection {} became inactive after read", conn_id));
-                    }
-
-                    return json!({
-                        "result": true,
-                        "connectionId": conn_id,
-                        "message": vault_key,
-                        "active": still_active,
-                        "address": addr
-                    })
-                    .to_string();
-                }
-                Ok(None) => {}
-                Err(e) => {
-                    self.log(&format!("Error reading message: {}", e));
-                    return json!({
-                        "result": false,
-                        "error": e
-                    })
-                    .to_string();
-                }
-            }
-
-            if start.elapsed() >= timeout {
-                return json!({"result": false, "error": "timeout"}).to_string();
-            }
-
-            tokio::time::sleep(poll_interval).await;
-        }
-    }
-
     pub async fn get_next_message(&mut self, timeout_ms: u64, max_message_size: usize) -> String {
-        self.wait_for_message(timeout_ms, max_message_size, |state, buffer| {
-            let start_id = state.last_processed.clone();
-            let conns = state.lock_connections();
-            let mut all_ids: Vec<String> = conns.keys().cloned().collect();
-            drop(conns);
+        let message_handler = MessageHandler::new(self.vault.clone());
+        let waiter = AsyncWaiter::new(timeout_ms);
 
-            if let Some(ref last_id) = start_id {
-                if let Some(pos) = all_ids.iter().position(|id| id == last_id) {
-                    all_ids.rotate_left(pos + 1);
-                }
-            }
+        let result = waiter.wait_for(|| {
+            let all_ids = self.manager.get_ids_round_robin();
 
             for conn_id in all_ids {
-                match state.try_read_from_connection(&conn_id, buffer) {
+                let mut buffer = vec![0u8; max_message_size];
+                
+                match self.try_read_from_connection(&conn_id, &mut buffer) {
                     Ok(Some((message, addr, still_active))) => {
+                        self.log(&format!("Message received from {}: {} bytes, active: {}", conn_id, message.len(), still_active));
+                        
                         if still_active {
-                            state.last_processed = Some(conn_id.clone());
+                            self.manager.set_last_processed(Some(conn_id.clone()));
                         } else {
-                            state.last_processed = None;
+                            self.manager.set_last_processed(None);
+                            self.log(&format!("Connection {} became inactive after read", conn_id));
                         }
-                        return Ok(Some((message, conn_id, addr, still_active)));
+                        
+                        return Some((message, conn_id, addr, still_active));
                     }
                     Ok(None) => {}
                     Err(_) => {}
                 }
             }
 
-            Ok(None)
-        }).await
+            None
+        }).await;
+
+        match result {
+            Ok((message, conn_id, addr, still_active)) => {
+                message_handler.success_response(conn_id, message, addr, still_active)
+            }
+            Err(()) => MessageHandler::timeout_response(),
+        }
     }
 
     pub async fn get_message_from_connection(&mut self, connection_id: &str, timeout_ms: u64, max_message_size: usize) -> String {
+        let message_handler = MessageHandler::new(self.vault.clone());
+        let waiter = AsyncWaiter::new(timeout_ms);
         let conn_id = connection_id.to_string();
-        
-        self.wait_for_message(timeout_ms, max_message_size, |state, buffer| {
-            match state.try_read_from_connection(&conn_id, buffer) {
+
+        let result = waiter.wait_for(|| {
+            let mut buffer = vec![0u8; max_message_size];
+            
+            match self.try_read_from_connection(&conn_id, &mut buffer) {
                 Ok(Some((message, addr, still_active))) => {
-                    Ok(Some((message, conn_id.clone(), addr, still_active)))
+                    Some((message, addr, still_active))
                 }
-                Ok(None) => Ok(None),
-                Err(e) => Err(e),
+                Ok(None) => None,
+                Err(_e) => Some((Vec::new(), String::new(), false)), // Error case
             }
-        }).await
+        }).await;
+
+        match result {
+            Ok((message, addr, still_active)) if !message.is_empty() => {
+                self.log(&format!("Message received from {}: {} bytes, active: {}", conn_id, message.len(), still_active));
+                message_handler.success_response(conn_id, message, addr, still_active)
+            }
+            Ok(_) => MessageHandler::error_response("Failed to read from connection"),
+            Err(()) => MessageHandler::timeout_response(),
+        }
     }
 }

@@ -5,28 +5,17 @@ use common_utils::utils::{json_error, json_success};
 impl ServerState {
 
     pub async fn close_all_connections(&mut self) -> String {
-        let count = {
-            let mut conns = self.lock_connections();
-            let count = conns.len();
-            conns.clear();
-            count
-        };
-        self.last_processed = None;
+        let count = self.manager.len();
+        self.manager.clear();
         self.log(&format!("Closed all connections ({})", count));
         json_success()
     }
 
     pub async fn close_connection(&mut self, connection_id: &str) -> String {
-        let removed = {
-            let mut conns = self.lock_connections();
-            conns.shift_remove(connection_id).is_some()
-        };
+        let removed = self.manager.remove(connection_id);
         
         if removed {
             self.log(&format!("Connection closed: {}", connection_id));
-            if self.last_processed.as_ref() == Some(&connection_id.to_string()) {
-                self.last_processed = None;
-            }
             json_success()
         } else {
             self.log(&format!("Attempt to close non-existent connection: {}", connection_id));
@@ -35,9 +24,9 @@ impl ServerState {
     }
 
     pub fn shutdown_read(&mut self, connection_id: &str) -> String {
-        let mut conns = self.lock_connections();
-        if let Some(conn) = conns.get_mut(connection_id) {
+        if let Some(()) = self.manager.get_mut(connection_id, |conn| {
             conn.read_half = None;
+        }) {
             self.log(&format!("Read half shutdown for connection: {}", connection_id));
             json_success()
         } else {
@@ -46,9 +35,9 @@ impl ServerState {
     }
 
     pub fn shutdown_write(&mut self, connection_id: &str) -> String {
-        let mut conns = self.lock_connections();
-        if let Some(conn) = conns.get_mut(connection_id) {
+        if let Some(()) = self.manager.get_mut(connection_id, |conn| {
             conn.write_half = None;
+        }) {
             self.log(&format!("Write half shutdown for connection: {}", connection_id));
             json_success()
         } else {
@@ -57,21 +46,16 @@ impl ServerState {
     }
 
     pub fn get_connections_list(&mut self) -> String {
-        let mut conns = self.lock_connections();
         let mut connections_list = Vec::new();
-        let mut to_remove = Vec::new();
-
-        for (conn_id, conn_info) in conns.iter_mut() {
-
+        
+        let removed = self.manager.retain(|conn_id, conn_info| {
             let keep = if let Some(ref mut read_half) = conn_info.read_half {
                 Self::check_connection_active(read_half)
             } else {
                 false
             };
 
-            if !keep {
-                to_remove.push(conn_id.clone());
-            } else {
+            if keep {
                 connections_list.push(json!({
                     "connectionId": conn_id,
                     "address": conn_info.addr,
@@ -79,22 +63,12 @@ impl ServerState {
                     "canWrite": conn_info.write_half.is_some()
                 }));
             }
-        }
 
-        for conn_id in &to_remove {
-            conns.shift_remove(conn_id);
-        }
-        drop(conns);
+            keep
+        });
 
-        if !to_remove.is_empty() {
-            self.log(&format!("Removed {} inactive connections", to_remove.len()));
-        }
-
-        for conn_id in &to_remove {
-            if self.last_processed.as_ref() == Some(conn_id) {
-                self.last_processed = None;
-                break;
-            }
+        if !removed.is_empty() {
+            self.log(&format!("Removed {} inactive connections", removed.len()));
         }
 
         json!({

@@ -1,18 +1,17 @@
 use std::sync::mpsc::{self, Sender};
-use std::thread::{self, JoinHandle};
 use std::sync::Arc;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
+use common_server::Backend;
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
-    tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,
+    backend: Backend<BackendCommand>,
     logger: Option<Arc<Logger>>,
 }
 
-enum BackendCommand {
+pub enum BackendCommand {
     Start {
         port: u16,
         queue_size: usize,
@@ -56,43 +55,11 @@ enum BackendCommand {
     Shutdown,
 }
 
-impl BackendCommand {
-    pub(crate) fn take_response(self) -> Option<Sender<String>> {
-        match self {
-            BackendCommand::Start { response, .. } => Some(response),
-            BackendCommand::GetNextMessage { response, .. } => Some(response),
-            BackendCommand::GetMessageFromConnection { response, .. } => Some(response),
-            BackendCommand::SendMessage { response, .. } => Some(response),
-            BackendCommand::CloseConnection { response, .. } => Some(response),
-            BackendCommand::CloseAllConnections { response } => Some(response),
-            BackendCommand::ShutdownRead { response, .. } => Some(response),
-            BackendCommand::ShutdownWrite { response, .. } => Some(response),
-            BackendCommand::GetConnectionsList { response } => Some(response),
-            BackendCommand::Shutdown => None,
-        }
-    }
-}
-
 impl TcpServerBackend {
     pub fn new(vault: BinaryVault) -> Self {
-        let (tx, rx) = mpsc::channel::<BackendCommand>();
-        let vault_clone = vault.clone();
-
-        let thread_handle = thread::Builder::new()
-            .name("opi_tcpserver_backend".to_string())
-            .spawn(move || {
-                let rt = match tokio::runtime::Runtime::new() {
-                    Ok(runtime) => runtime,
-                    Err(e) => {
-                        let error_msg = json_error(&format!("Runtime initialization failed: {}", e));
-                        while let Ok(cmd) = rx.recv() {
-                            if let Some(response) = cmd.take_response() {
-                                let _ = response.send(error_msg.clone());
-                            }
-                        }
-                        return;
-                    }
-                };
+        let backend = Backend::new(
+            "opi_tcpserver_backend".to_string(),
+            move |rt, rx| {
                 let mut server_state: Option<ServerState> = None;
 
                 while let Ok(cmd) = rx.recv() {
@@ -104,7 +71,7 @@ impl TcpServerBackend {
                             }
 
                             let result = rt.block_on(async {
-                                ServerState::start(port, queue_size, vault_clone.clone(), logger).await
+                                ServerState::start(port, queue_size, vault.clone(), logger).await
                             });
 
                             match result {
@@ -209,12 +176,11 @@ impl TcpServerBackend {
                         }
                     }
                 }
-            })
-            .unwrap();
+            },
+        );
 
         Self {
-            tx,
-            thread_handle: Some(thread_handle),
+            backend,
             logger: None,
         }
     }
@@ -226,7 +192,7 @@ impl TcpServerBackend {
     pub fn start(&self, port: u16, queue_size: usize) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::Start {
+        if let Err(e) = self.backend.send(BackendCommand::Start {
             port,
             queue_size,
             logger: self.logger.clone(),
@@ -243,7 +209,7 @@ impl TcpServerBackend {
     pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::GetNextMessage {
+        if let Err(e) = self.backend.send(BackendCommand::GetNextMessage {
             timeout_ms,
             max_message_size,
             response: response_tx,
@@ -259,7 +225,7 @@ impl TcpServerBackend {
     pub fn get_message_from_connection(&self, connection_id: String, timeout_ms: u64, max_message_size: usize) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::GetMessageFromConnection {
+        if let Err(e) = self.backend.send(BackendCommand::GetMessageFromConnection {
             connection_id,
             timeout_ms,
             max_message_size,
@@ -276,7 +242,7 @@ impl TcpServerBackend {
     pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::SendMessage {
+        if let Err(e) = self.backend.send(BackendCommand::SendMessage {
             connection_id,
             message,
             response: response_tx,
@@ -292,7 +258,7 @@ impl TcpServerBackend {
     pub fn close_connection(&self, connection_id: String) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::CloseConnection {
+        if let Err(e) = self.backend.send(BackendCommand::CloseConnection {
             connection_id,
             response: response_tx,
         }) {
@@ -307,7 +273,7 @@ impl TcpServerBackend {
     pub fn close_all_connections(&self) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::CloseAllConnections {
+        if let Err(e) = self.backend.send(BackendCommand::CloseAllConnections {
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
@@ -321,7 +287,7 @@ impl TcpServerBackend {
     pub fn shutdown_read(&self, connection_id: String) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::ShutdownRead {
+        if let Err(e) = self.backend.send(BackendCommand::ShutdownRead {
             connection_id,
             response: response_tx,
         }) {
@@ -336,7 +302,7 @@ impl TcpServerBackend {
     pub fn shutdown_write(&self, connection_id: String) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::ShutdownWrite {
+        if let Err(e) = self.backend.send(BackendCommand::ShutdownWrite {
             connection_id,
             response: response_tx,
         }) {
@@ -351,7 +317,7 @@ impl TcpServerBackend {
     pub fn get_connections_list(&self) -> String {
         let (response_tx, response_rx) = mpsc::channel();
 
-        if let Err(e) = self.tx.send(BackendCommand::GetConnectionsList {
+        if let Err(e) = self.backend.send(BackendCommand::GetConnectionsList {
             response: response_tx,
         }) {
             return json_error(&format!("Failed to send command: {}", e));
@@ -363,15 +329,6 @@ impl TcpServerBackend {
     }
 
     pub fn shutdown(&mut self) {
-        let _ = self.tx.send(BackendCommand::Shutdown);
-        if let Some(handle) = self.thread_handle.take() {
-            let _ = handle.join();
-        }
-    }
-}
-
-impl Drop for TcpServerBackend {
-    fn drop(&mut self) {
-        self.shutdown();
+        let _ = self.backend.send(BackendCommand::Shutdown);
     }
 }

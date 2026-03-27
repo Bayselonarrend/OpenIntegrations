@@ -3,35 +3,25 @@ mod helpers;
 mod read;
 mod write;
 
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 use tokio::net::tcp::{OwnedReadHalf, OwnedWriteHalf};
-use tokio::sync::broadcast;
-use indexmap::IndexMap;
-use uuid::Uuid;
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
+use common_server::ConnectionManager;
 
-pub struct ConnectionInfo {
+pub struct TcpConnectionInfo {
     pub read_half: Option<OwnedReadHalf>,
     pub write_half: Option<OwnedWriteHalf>,
     pub addr: String,
 }
 
 pub struct ServerState {
-    pub(crate) connections: Arc<Mutex<IndexMap<String, ConnectionInfo>>>,
-    #[allow(dead_code)]
-    pub(crate) queue_size: usize,
-    pub(crate) shutdown_tx: broadcast::Sender<()>,
-    pub(crate) last_processed: Option<String>,
+    pub(crate) manager: ConnectionManager<TcpConnectionInfo>,
     pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
 }
 
 impl ServerState {
-    fn lock_connections(&self) -> std::sync::MutexGuard<'_, IndexMap<String, ConnectionInfo>> {
-        self.connections.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
-    }
-
     fn log(&self, message: &str) {
         if let Some(ref logger) = self.logger {
             log!(logger, "{}", message);
@@ -53,12 +43,11 @@ impl ServerState {
             log!(log, "Successfully bound to port {}", port);
         }
 
-        let connections: Arc<Mutex<IndexMap<String, ConnectionInfo>>> = Arc::new(Mutex::new(IndexMap::new()));
-        let connections_clone = connections.clone();
+        let manager = ConnectionManager::new(queue_size, logger.clone());
+        let connections_arc = manager.connections_arc();
+        let mut shutdown_rx = manager.subscribe_shutdown();
         let logger_clone = logger.clone();
         
-        let (shutdown_tx, mut shutdown_rx) = broadcast::channel(1);
-
         tokio::spawn(async move {
             if let Some(ref log) = logger_clone {
                 log!(log, "Listener task started");
@@ -69,13 +58,13 @@ impl ServerState {
                     result = listener.accept() => {
                         match result {
                             Ok((stream, addr)) => {
-                                let connection_id = Uuid::new_v4().to_string();
+                                let connection_id = ConnectionManager::<TcpConnectionInfo>::generate_id();
 
                                 if let Some(ref log) = logger_clone {
                                     log!(log, "New connection accepted: {} from {}", connection_id, addr);
                                 }
 
-                                let mut conns = match connections_clone.lock() {
+                                let mut conns = match connections_arc.lock() {
                                     Ok(guard) => guard,
                                     Err(poisoned) => poisoned.into_inner(),
                                 };
@@ -92,7 +81,7 @@ impl ServerState {
 
                                 conns.insert(
                                     connection_id,
-                                    ConnectionInfo {
+                                    TcpConnectionInfo {
                                         read_half: Some(read_half),
                                         write_half: Some(write_half),
                                         addr: addr.to_string(),
@@ -118,10 +107,7 @@ impl ServerState {
         });
 
         Ok(ServerState {
-            connections,
-            queue_size,
-            shutdown_tx,
-            last_processed: None,
+            manager,
             vault,
             logger,
         })
@@ -130,11 +116,7 @@ impl ServerState {
 
 impl Drop for ServerState {
     fn drop(&mut self) {
-        let _ = self.shutdown_tx.send(());
-        {
-            let mut conns = self.connections.lock()
-                .unwrap_or_else(|poisoned| poisoned.into_inner());
-            conns.clear();
-        }
+        self.manager.shutdown();
+        self.manager.clear();
     }
 }
