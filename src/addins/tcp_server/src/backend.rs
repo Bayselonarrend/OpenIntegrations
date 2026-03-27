@@ -56,15 +56,43 @@ enum BackendCommand {
     Shutdown,
 }
 
+impl BackendCommand {
+    pub(crate) fn take_response(self) -> Option<Sender<String>> {
+        match self {
+            BackendCommand::Start { response, .. } => Some(response),
+            BackendCommand::GetNextMessage { response, .. } => Some(response),
+            BackendCommand::GetMessageFromConnection { response, .. } => Some(response),
+            BackendCommand::SendMessage { response, .. } => Some(response),
+            BackendCommand::CloseConnection { response, .. } => Some(response),
+            BackendCommand::CloseAllConnections { response } => Some(response),
+            BackendCommand::ShutdownRead { response, .. } => Some(response),
+            BackendCommand::ShutdownWrite { response, .. } => Some(response),
+            BackendCommand::GetConnectionsList { response } => Some(response),
+            BackendCommand::Shutdown => None,
+        }
+    }
+}
+
 impl TcpServerBackend {
     pub fn new(vault: BinaryVault) -> Self {
-        let (tx, rx) = mpsc::channel();
+        let (tx, rx) = mpsc::channel::<BackendCommand>();
         let vault_clone = vault.clone();
 
         let thread_handle = thread::Builder::new()
             .name("opi_tcpserver_backend".to_string())
             .spawn(move || {
-                let rt = tokio::runtime::Runtime::new().unwrap();
+                let rt = match tokio::runtime::Runtime::new() {
+                    Ok(runtime) => runtime,
+                    Err(e) => {
+                        let error_msg = json_error(&format!("Runtime initialization failed: {}", e));
+                        while let Ok(cmd) = rx.recv() {
+                            if let Some(response) = cmd.take_response() {
+                                let _ = response.send(error_msg.clone());
+                            }
+                        }
+                        return;
+                    }
+                };
                 let mut server_state: Option<ServerState> = None;
 
                 while let Ok(cmd) = rx.recv() {
