@@ -1,41 +1,46 @@
-mod backend;
-mod server;
+mod http;
+mod websocket;
 
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
 use common_core::*;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::json_error;
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use crate::backend::HttpServerBackend;
+use crate::http::HttpServer;
+use crate::websocket::WebSocketServer;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
-    name!("Start"),                      // 0
-    name!("Stop"),                       // 1
+    name!("StartHTTP"),                  // 0
+    name!("StopHTTP"),                   // 1
     name!("HandleRequest"),              // 2
     name!("SendResponse"),               // 3
-    name!("GetWebSocketMessage"),        // 4
-    name!("SendWebSocketMessage"),       // 5
-    name!("CloseWebSocket"),             // 6
-    name!("GetConnectionsList"),         // 7
-    name!("RetrieveBinaryFromVault"),    // 8
-    name!("GetLogs"),                    // 9
+    name!("StartWebSocket"),             // 4
+    name!("StopWebSocket"),              // 5
+    name!("GetWebSocketMessage"),        // 6
+    name!("SendWebSocketMessage"),       // 7
+    name!("CloseWebSocket"),             // 8
+    name!("GetWebSocketConnections"),    // 9
+    name!("RetrieveBinaryFromVault"),    // 10
+    name!("GetLogs"),                    // 11
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 3,  // Start(port, config_json, logger_config_json)
-        1 => 0,  // Stop()
+        0 => 3,  // StartHTTP(port, config_json, logger_config_json)
+        1 => 0,  // StopHTTP()
         2 => 1,  // HandleRequest(timeout_ms)
         3 => 3,  // SendResponse(request_id, status_code, body)
-        4 => 2,  // GetWebSocketMessage(connection_id, timeout_ms)
-        5 => 2,  // SendWebSocketMessage(connection_id, message)
-        6 => 1,  // CloseWebSocket(connection_id)
-        7 => 0,  // GetConnectionsList()
-        8 => 1,  // RetrieveBinaryFromVault(vault_key)
-        9 => 1,  // GetLogs(count)
+        4 => 3,  // StartWebSocket(port, config_json, logger_config_json)
+        5 => 0,  // StopWebSocket()
+        6 => 2,  // GetWebSocketMessage(connection_id, timeout_ms)
+        7 => 2,  // SendWebSocketMessage(connection_id, message)
+        8 => 1,  // CloseWebSocket(connection_id)
+        9 => 0,  // GetWebSocketConnections()
+        10 => 1, // RetrieveBinaryFromVault(vault_key)
+        11 => 1, // GetLogs(count)
         _ => 0,
     }
 }
@@ -48,43 +53,55 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let port = params[0].get_i32().unwrap_or(8080) as u16;
             let config = params[1].get_string().unwrap_or_default();
             let logger_config = params[2].get_string().unwrap_or_default();
-            Box::new(obj.start_server(port, &config, &logger_config))
+
+            if let Err(e) = obj.init_logger_if_needed(&logger_config) {
+                return Box::new(json_error(&e));
+            };
+            Box::new(obj.http_server.start(port, &config))
         },
-        1 => {
-            Box::new(obj.stop_server())
-        },
+        1 => Box::new(obj.http_server.stop()),
         2 => {
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
-            Box::new(obj.handle_request(timeout_ms))
+            Box::new(obj.http_server.handle_request(timeout_ms))
         },
         3 => {
             let request_id = params[0].get_string().unwrap_or_default();
             let status_code = params[1].get_i32().unwrap_or(200) as u16;
             let body = params[2].get_blob().unwrap_or(&empty_array);
-            Box::new(obj.send_response(&request_id, status_code, body.to_vec()))
+            Box::new(obj.http_server.send_response(&request_id, status_code, body.to_vec()))
         },
         4 => {
-            let connection_id = params[0].get_string().unwrap_or_default();
-            let timeout_ms = params[1].get_i32().unwrap_or(1000) as u64;
-            Box::new(obj.get_websocket_message(&connection_id, timeout_ms))
+            let port = params[0].get_i32().unwrap_or(8080) as u16;
+            let config = params[1].get_string().unwrap_or_default();
+            let logger_config = params[2].get_string().unwrap_or_default();
+
+            if let Err(e) = obj.init_logger_if_needed(&logger_config) {
+                return Box::new(json_error(&e));
+            };
+            Box::new(obj.ws_server.start(port, &config))
+
         },
-        5 => {
-            let connection_id = params[0].get_string().unwrap_or_default();
-            let message = params[1].get_blob().unwrap_or(&empty_array);
-            Box::new(obj.send_websocket_message(&connection_id, message.to_vec()))
-        },
+        5 => Box::new(obj.ws_server.stop()),
         6 => {
             let connection_id = params[0].get_string().unwrap_or_default();
-            Box::new(obj.close_websocket(&connection_id))
+            let timeout_ms = params[1].get_i32().unwrap_or(1000) as u64;
+            Box::new(obj.ws_server.get_message(&connection_id, timeout_ms))
         },
         7 => {
-            Box::new(obj.get_connections_list())
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let message = params[1].get_blob().unwrap_or(&empty_array);
+            Box::new(obj.ws_server.send_message(&connection_id, message.to_vec()))
         },
         8 => {
+            let connection_id = params[0].get_string().unwrap_or_default();
+            Box::new(obj.ws_server.close_connection(&connection_id))
+        },
+        9 => Box::new(obj.ws_server.get_connections_list()),
+        10 => {
             let vault_key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&vault_key))
         },
-        9 => {
+        11 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
@@ -95,9 +112,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
-    backend: Arc<Mutex<HttpServerBackend>>,
+    http_server: HttpServer,
+    ws_server: WebSocketServer,
     vault: BinaryVault,
-    started: bool,
     logger: Option<Arc<Logger>>,
 }
 
@@ -105,11 +122,28 @@ impl AddIn {
     pub fn new() -> Self {
         let vault = BinaryVault::new();
         AddIn {
-            backend: Arc::new(Mutex::new(HttpServerBackend::new(vault.clone()))),
+            http_server: HttpServer::new(vault.clone()),
+            ws_server: WebSocketServer::new(vault.clone()),
             vault,
-            started: false,
             logger: None,
         }
+    }
+
+    fn init_logger_if_needed(&mut self, logger_config: &str) -> Result<(), String> {
+        if logger_config.is_empty() || self.logger.is_some() {
+            return Ok(());
+        }
+
+        let logger = Logger::from_json(logger_config)
+            .map_err(|e| format!("Failed to initialize logger: {}", e))?;
+        
+        let logger_arc = Arc::new(logger);
+        self.logger = Some(logger_arc.clone());
+
+        self.http_server.set_logger(logger_arc.clone());
+        self.ws_server.set_logger(logger_arc);
+
+        Ok(())
     }
 
     pub fn get_logs(&self, count: usize) -> String {
@@ -128,120 +162,6 @@ impl AddIn {
         }
     }
 
-    pub fn start_server(&mut self, port: u16, config: &str, logger_config: &str) -> String {
-        if self.started {
-            return json_error("Server already started");
-        }
-
-        if !logger_config.is_empty() {
-            match Logger::from_json(logger_config) {
-                Ok(logger) => {
-                    let logger_arc = Arc::new(logger);
-                    self.logger = Some(logger_arc.clone());
-
-                    if let Ok(mut backend) = self.backend.lock() {
-                        backend.set_logger(logger_arc);
-                    }
-                }
-                Err(e) => {
-                    return json_error(&format!("Failed to initialize logger: {}", e));
-                }
-            }
-        }
-
-        let result = match self.backend.lock() {
-            Ok(backend) => backend.start(port, config),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        };
-
-        if result.contains("\"result\":true") {
-            self.started = true;
-        }
-
-        result
-    }
-
-    pub fn stop_server(&mut self) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(mut backend) => {
-                backend.shutdown();
-                self.started = false;
-                json_success()
-            }
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn handle_request(&self, timeout_ms: u64) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.handle_request(timeout_ms),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.send_response(request_id.to_string(), status_code, body),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn get_websocket_message(&self, connection_id: &str, timeout_ms: u64) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.get_websocket_message(connection_id.to_string(), timeout_ms),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn send_websocket_message(&self, connection_id: &str, message: Vec<u8>) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.send_websocket_message(connection_id.to_string(), message),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn close_websocket(&self, connection_id: &str) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.close_websocket(connection_id.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
-    pub fn get_connections_list(&self) -> String {
-        if !self.started {
-            return json_error("Server not started");
-        }
-
-        match self.backend.lock() {
-            Ok(backend) => backend.get_connections_list(),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
-        }
-    }
-
     pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
         self.vault.retrieve(&vault_key.to_string()).unwrap_or_else(|_| Vec::new())
     }
@@ -257,8 +177,11 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        if self.started {
-            let _ = self.stop_server();
+        if self.http_server.is_started() {
+            let _ = self.http_server.stop();
+        }
+        if self.ws_server.is_started() {
+            let _ = self.ws_server.stop();
         }
     }
 }
