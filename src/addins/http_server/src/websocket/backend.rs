@@ -4,41 +4,31 @@ use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use common_server::{Backend, send_command, handle_async_command, handle_sync_command};
-use crate::server::ServerState;
+use super::WebSocketServerState;
 
-pub struct HttpServerBackend {
-    backend: Backend<BackendCommand>,
+pub struct WebSocketServerBackend {
+    backend: Backend<WebSocketCommand>,
     logger: Option<Arc<Logger>>,
 }
 
-pub enum BackendCommand {
+pub enum WebSocketCommand {
     Start {
         port: u16,
         config: String,
         logger: Option<Arc<Logger>>,
         response: Sender<String>,
     },
-    HandleRequest {
-        timeout_ms: u64,
-        response: Sender<String>,
-    },
-    SendResponse {
-        request_id: String,
-        status_code: u16,
-        body: Vec<u8>,
-        response: Sender<String>,
-    },
-    GetWebSocketMessage {
+    GetMessage {
         connection_id: String,
         timeout_ms: u64,
         response: Sender<String>,
     },
-    SendWebSocketMessage {
+    SendMessage {
         connection_id: String,
         message: Vec<u8>,
         response: Sender<String>,
     },
-    CloseWebSocket {
+    CloseConnection {
         connection_id: String,
         response: Sender<String>,
     },
@@ -48,23 +38,23 @@ pub enum BackendCommand {
     Shutdown,
 }
 
-impl HttpServerBackend {
+impl WebSocketServerBackend {
     pub fn new(vault: BinaryVault) -> Self {
         let backend = Backend::new(
-            "opi_httpserver_backend".to_string(),
+            "opi_websocket_backend".to_string(),
             move |rt, rx| {
-                let mut server_state: Option<ServerState> = None;
+                let mut server_state: Option<WebSocketServerState> = None;
 
                 while let Ok(cmd) = rx.recv() {
                     match cmd {
-                        BackendCommand::Start { port, config, logger, response } => {
+                        WebSocketCommand::Start { port, config, logger, response } => {
                             if server_state.is_some() {
-                                let _ = response.send(json_error("Server already started"));
+                                let _ = response.send(json_error("WebSocket server already started"));
                                 continue;
                             }
 
                             let result = rt.block_on(async {
-                                ServerState::start(port, &config, vault.clone(), logger).await
+                                WebSocketServerState::start(port, &config, vault.clone(), logger).await
                             });
 
                             match result {
@@ -78,43 +68,31 @@ impl HttpServerBackend {
                             }
                         }
 
-                        BackendCommand::HandleRequest { timeout_ms, response } => {
+                        WebSocketCommand::GetMessage { connection_id, timeout_ms, response } => {
                             handle_async_command!(server_state, rt, response, |state|
-                                state.handle_request(timeout_ms).await
+                                state.get_message(&connection_id, timeout_ms).await
                             );
                         }
 
-                        BackendCommand::SendResponse { request_id, status_code, body, response } => {
+                        WebSocketCommand::SendMessage { connection_id, message, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.send_message(&connection_id, message).await
+                            );
+                        }
+
+                        WebSocketCommand::CloseConnection { connection_id, response } => {
                             handle_sync_command!(server_state, response, |state|
-                                state.send_response(&request_id, status_code, body)
+                                state.close_connection(&connection_id)
                             );
                         }
 
-                        BackendCommand::GetWebSocketMessage { connection_id, timeout_ms, response } => {
-                            handle_async_command!(server_state, rt, response, |state|
-                                state.get_websocket_message(&connection_id, timeout_ms).await
-                            );
-                        }
-
-                        BackendCommand::SendWebSocketMessage { connection_id, message, response } => {
-                            handle_async_command!(server_state, rt, response, |state|
-                                state.send_websocket_message(&connection_id, message).await
-                            );
-                        }
-
-                        BackendCommand::CloseWebSocket { connection_id, response } => {
-                            handle_sync_command!(server_state, response, |state|
-                                state.close_websocket(&connection_id)
-                            );
-                        }
-
-                        BackendCommand::GetConnectionsList { response } => {
+                        WebSocketCommand::GetConnectionsList { response } => {
                             handle_sync_command!(server_state, response, |state|
                                 state.get_connections_list()
                             );
                         }
 
-                        BackendCommand::Shutdown => {
+                        WebSocketCommand::Shutdown => {
                             #[allow(unused_assignments)]
                             {
                                 server_state = None;
@@ -138,7 +116,7 @@ impl HttpServerBackend {
 
     pub fn start(&self, port: u16, config: &str) -> String {
         send_command!(self.backend, |response| {
-            BackendCommand::Start {
+            WebSocketCommand::Start {
                 port,
                 config: config.to_string(),
                 logger: self.logger.clone(),
@@ -147,29 +125,9 @@ impl HttpServerBackend {
         })
     }
 
-    pub fn handle_request(&self, timeout_ms: u64) -> String {
+    pub fn get_message(&self, connection_id: String, timeout_ms: u64) -> String {
         send_command!(self.backend, |response| {
-            BackendCommand::HandleRequest {
-                timeout_ms,
-                response,
-            }
-        })
-    }
-
-    pub fn send_response(&self, request_id: String, status_code: u16, body: Vec<u8>) -> String {
-        send_command!(self.backend, |response| {
-            BackendCommand::SendResponse {
-                request_id,
-                status_code,
-                body,
-                response,
-            }
-        })
-    }
-
-    pub fn get_websocket_message(&self, connection_id: String, timeout_ms: u64) -> String {
-        send_command!(self.backend, |response| {
-            BackendCommand::GetWebSocketMessage {
+            WebSocketCommand::GetMessage {
                 connection_id,
                 timeout_ms,
                 response,
@@ -177,9 +135,9 @@ impl HttpServerBackend {
         })
     }
 
-    pub fn send_websocket_message(&self, connection_id: String, message: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
         send_command!(self.backend, |response| {
-            BackendCommand::SendWebSocketMessage {
+            WebSocketCommand::SendMessage {
                 connection_id,
                 message,
                 response,
@@ -187,9 +145,9 @@ impl HttpServerBackend {
         })
     }
 
-    pub fn close_websocket(&self, connection_id: String) -> String {
+    pub fn close_connection(&self, connection_id: String) -> String {
         send_command!(self.backend, |response| {
-            BackendCommand::CloseWebSocket {
+            WebSocketCommand::CloseConnection {
                 connection_id,
                 response,
             }
@@ -198,11 +156,11 @@ impl HttpServerBackend {
 
     pub fn get_connections_list(&self) -> String {
         send_command!(self.backend, |response| {
-            BackendCommand::GetConnectionsList { response }
+            WebSocketCommand::GetConnectionsList { response }
         })
     }
 
     pub fn shutdown(&mut self) {
-        let _ = self.backend.send(BackendCommand::Shutdown);
+        let _ = self.backend.send(WebSocketCommand::Shutdown);
     }
 }
