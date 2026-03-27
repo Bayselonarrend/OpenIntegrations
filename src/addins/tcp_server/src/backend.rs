@@ -3,7 +3,7 @@ use std::sync::Arc;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use common_server::{Backend, send_command};
+use common_server::{Backend, send_command, handle_async_command, handle_sync_command};
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
@@ -86,85 +86,51 @@ impl TcpServerBackend {
                         }
 
                         BackendCommand::GetNextMessage { timeout_ms, max_message_size, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = rt.block_on(async {
-                                    state.get_next_message(timeout_ms, max_message_size).await
-                                });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_async_command!(server_state, rt, response, |state| 
+                                state.get_next_message(timeout_ms, max_message_size).await
+                            );
                         }
 
                         BackendCommand::GetMessageFromConnection { connection_id, timeout_ms, max_message_size, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = rt.block_on(async {
-                                    state.get_message_from_connection(&connection_id, timeout_ms, max_message_size).await
-                                });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_async_command!(server_state, rt, response, |state| 
+                                state.get_message_from_connection(&connection_id, timeout_ms, max_message_size).await
+                            );
                         }
 
                         BackendCommand::SendMessage { connection_id, message, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = rt.block_on(async {
-                                    state.send_message(&connection_id, message).await
-                                });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_async_command!(server_state, rt, response, |state| 
+                                state.send_message(&connection_id, message).await
+                            );
                         }
 
                         BackendCommand::CloseConnection { connection_id, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = rt.block_on(async {
-                                    state.close_connection(&connection_id).await
-                                });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_async_command!(server_state, rt, response, |state| 
+                                state.close_connection(&connection_id).await
+                            );
                         }
 
                         BackendCommand::CloseAllConnections { response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = rt.block_on(async {
-                                    state.close_all_connections().await
-                                });
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_async_command!(server_state, rt, response, |state| 
+                                state.close_all_connections().await
+                            );
                         }
 
                         BackendCommand::ShutdownRead { connection_id, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = state.shutdown_read(&connection_id);
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_sync_command!(server_state, response, |state| 
+                                state.shutdown_read(&connection_id)
+                            );
                         }
 
                         BackendCommand::ShutdownWrite { connection_id, response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = state.shutdown_write(&connection_id);
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_sync_command!(server_state, response, |state| 
+                                state.shutdown_write(&connection_id)
+                            );
                         }
 
                         BackendCommand::GetConnectionsList { response } => {
-                            if let Some(ref mut state) = server_state {
-                                let result = state.get_connections_list();
-                                let _ = response.send(result);
-                            } else {
-                                let _ = response.send(json_error("Server not started"));
-                            }
+                            handle_sync_command!(server_state, response, |state| 
+                                state.get_connections_list()
+                            );
                         }
 
                         BackendCommand::Shutdown => {
