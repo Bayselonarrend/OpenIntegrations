@@ -80,11 +80,16 @@
         
     Результат = Неопределено;
         
-    //@skip-check server-execution-safe-mode
-    Выполнить(СтрокаВызова);
+    Попытка
+        //@skip-check server-execution-safe-mode
+        Выполнить(СтрокаВызова);
+    Исключение
+        УдалитьНастройки();
+        ВызватьИсключение            
+    КонецПопытки;
     
     УдалитьНастройки();
-        
+    
     //@skip-check constructor-function-return-section
     Возврат Результат;
     
