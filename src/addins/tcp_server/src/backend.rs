@@ -1,9 +1,9 @@
-use std::sync::mpsc::{self, Sender};
+use std::sync::mpsc::Sender;
 use std::sync::Arc;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use common_server::Backend;
+use common_server::{Backend, send_command};
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
@@ -190,142 +190,84 @@ impl TcpServerBackend {
     }
 
     pub fn start(&self, port: u16, queue_size: usize) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::Start {
-            port,
-            queue_size,
-            logger: self.logger.clone(),
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::Start {
+                port,
+                queue_size,
+                logger: self.logger.clone(),
+                response,
+            }
+        })
     }
 
     pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::GetNextMessage {
-            timeout_ms,
-            max_message_size,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::GetNextMessage {
+                timeout_ms,
+                max_message_size,
+                response,
+            }
+        })
     }
 
     pub fn get_message_from_connection(&self, connection_id: String, timeout_ms: u64, max_message_size: usize) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::GetMessageFromConnection {
-            connection_id,
-            timeout_ms,
-            max_message_size,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::GetMessageFromConnection {
+                connection_id,
+                timeout_ms,
+                max_message_size,
+                response,
+            }
+        })
     }
 
     pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::SendMessage {
-            connection_id,
-            message,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::SendMessage {
+                connection_id,
+                message,
+                response,
+            }
+        })
     }
 
     pub fn close_connection(&self, connection_id: String) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::CloseConnection {
-            connection_id,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::CloseConnection {
+                connection_id,
+                response,
+            }
+        })
     }
 
     pub fn close_all_connections(&self) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::CloseAllConnections {
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::CloseAllConnections { response }
+        })
     }
 
     pub fn shutdown_read(&self, connection_id: String) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::ShutdownRead {
-            connection_id,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::ShutdownRead {
+                connection_id,
+                response,
+            }
+        })
     }
 
     pub fn shutdown_write(&self, connection_id: String) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::ShutdownWrite {
-            connection_id,
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::ShutdownWrite {
+                connection_id,
+                response,
+            }
+        })
     }
 
     pub fn get_connections_list(&self) -> String {
-        let (response_tx, response_rx) = mpsc::channel();
-
-        if let Err(e) = self.backend.send(BackendCommand::GetConnectionsList {
-            response: response_tx,
-        }) {
-            return json_error(&format!("Failed to send command: {}", e));
-        }
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| json_error(&format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::GetConnectionsList { response }
+        })
     }
 
     pub fn shutdown(&mut self) {
