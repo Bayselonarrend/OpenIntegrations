@@ -1,0 +1,16 @@
+[package]
+name = "common-server"
+version = "0.1.0"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+serde_json = "1.0"
+uuid = { version = "1.17.0", features = ["v4"] }
+indexmap = "2.7.0"
+futures-util = "0.3"
+
+common-binary = { path = "../common-binary" }
+common-logs = { path = "../common-logs" }
+common-utils = { path = "../common-utils" }

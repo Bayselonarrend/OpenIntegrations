@@ -19,6 +19,7 @@ common-core = { path = "../commons/common-core" }
 common-utils = { path = "../commons/common-utils" }
 common-binary = { path = "../commons/common-binary" }
 common-logs = { path = "../commons/common-logs" }
+common-server = { path = "../commons/common-server" }
 
 serde_json = "1.0.140"
 tokio = { version = "1.0", features = ["full"] }
