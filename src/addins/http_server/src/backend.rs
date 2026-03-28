@@ -4,61 +4,57 @@ use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use common_server::{Backend, send_command, handle_async_command, handle_sync_command};
-use super::WebSocketServerState;
+use crate::server::HttpServerState;
 
-pub struct WebSocketServerBackend {
-    backend: Backend<WebSocketCommand>,
+pub struct HttpServerBackend {
+    backend: Backend<HttpCommand>,
     logger: Option<Arc<Logger>>,
 }
 
-pub enum WebSocketCommand {
+pub enum HttpCommand {
     Start {
         port: u16,
         config: String,
         logger: Option<Arc<Logger>>,
         response: Sender<String>,
     },
-    GetNextMessage {
+    HandleRequest {
         timeout_ms: u64,
         response: Sender<String>,
     },
-    GetMessage {
-        connection_id: String,
-        timeout_ms: u64,
+    HandleRequestById {
+        request_id: String,
         response: Sender<String>,
     },
-    SendMessage {
-        connection_id: String,
-        message: Vec<u8>,
+    SendResponse {
+        request_id: String,
+        status_code: u16,
+        body: Vec<u8>,
         response: Sender<String>,
     },
-    CloseConnection {
-        connection_id: String,
-        response: Sender<String>,
-    },
-    GetConnectionsList {
+    GetPendingRequests {
         response: Sender<String>,
     },
     Shutdown,
 }
 
-impl WebSocketServerBackend {
+impl HttpServerBackend {
     pub fn new(vault: BinaryVault) -> Self {
         let backend = Backend::new(
-            "opi_websocket_backend".to_string(),
+            "opi_http_backend".to_string(),
             move |rt, rx| {
-                let mut server_state: Option<WebSocketServerState> = None;
+                let mut server_state: Option<HttpServerState> = None;
 
                 while let Ok(cmd) = rx.recv() {
                     match cmd {
-                        WebSocketCommand::Start { port, config, logger, response } => {
+                        HttpCommand::Start { port, config, logger, response } => {
                             if server_state.is_some() {
-                                let _ = response.send(json_error("WebSocket server already started"));
+                                let _ = response.send(json_error("HTTP server already started"));
                                 continue;
                             }
 
                             let result = rt.block_on(async {
-                                WebSocketServerState::start(port, &config, vault.clone(), logger).await
+                                HttpServerState::start(port, &config, vault.clone(), logger).await
                             });
 
                             match result {
@@ -72,37 +68,31 @@ impl WebSocketServerBackend {
                             }
                         }
 
-                        WebSocketCommand::GetNextMessage { timeout_ms, response } => {
+                        HttpCommand::HandleRequest { timeout_ms, response } => {
                             handle_async_command!(server_state, rt, response, |state|
-                                state.get_next_message(timeout_ms).await
+                                state.handle_request(timeout_ms).await
                             );
                         }
 
-                        WebSocketCommand::GetMessage { connection_id, timeout_ms, response } => {
+                        HttpCommand::HandleRequestById { request_id, response } => {
                             handle_async_command!(server_state, rt, response, |state|
-                                state.get_message(&connection_id, timeout_ms).await
+                                state.handle_request_by_id(&request_id).await
                             );
                         }
 
-                        WebSocketCommand::SendMessage { connection_id, message, response } => {
+                        HttpCommand::SendResponse { request_id, status_code, body, response } => {
                             handle_async_command!(server_state, rt, response, |state|
-                                state.send_message(&connection_id, message).await
+                                state.send_response(&request_id, status_code, body).await
                             );
                         }
 
-                        WebSocketCommand::CloseConnection { connection_id, response } => {
+                        HttpCommand::GetPendingRequests { response } => {
                             handle_sync_command!(server_state, response, |state|
-                                state.close_connection(&connection_id)
+                                state.get_pending_requests()
                             );
                         }
 
-                        WebSocketCommand::GetConnectionsList { response } => {
-                            handle_sync_command!(server_state, response, |state|
-                                state.get_connections_list()
-                            );
-                        }
-
-                        WebSocketCommand::Shutdown => {
+                        HttpCommand::Shutdown => {
                             #[allow(unused_assignments)]
                             {
                                 server_state = None;
@@ -126,7 +116,7 @@ impl WebSocketServerBackend {
 
     pub fn start(&self, port: u16, config: &str) -> String {
         send_command!(self.backend, |response| {
-            WebSocketCommand::Start {
+            HttpCommand::Start {
                 port,
                 config: config.to_string(),
                 logger: self.logger.clone(),
@@ -135,51 +125,42 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+    pub fn handle_request(&self, timeout_ms: u64) -> String {
         send_command!(self.backend, |response| {
-            WebSocketCommand::GetNextMessage {
+            HttpCommand::HandleRequest {
                 timeout_ms,
                 response,
             }
         })
     }
 
-    pub fn get_message(&self, connection_id: String, timeout_ms: u64) -> String {
+    pub fn handle_request_by_id(&self, request_id: String) -> String {
         send_command!(self.backend, |response| {
-            WebSocketCommand::GetMessage {
-                connection_id,
-                timeout_ms,
+            HttpCommand::HandleRequestById {
+                request_id,
                 response,
             }
         })
     }
 
-    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
+    pub fn send_response(&self, request_id: String, status_code: u16, body: Vec<u8>) -> String {
         send_command!(self.backend, |response| {
-            WebSocketCommand::SendMessage {
-                connection_id,
-                message,
+            HttpCommand::SendResponse {
+                request_id,
+                status_code,
+                body,
                 response,
             }
         })
     }
 
-    pub fn close_connection(&self, connection_id: String) -> String {
+    pub fn get_pending_requests(&self) -> String {
         send_command!(self.backend, |response| {
-            WebSocketCommand::CloseConnection {
-                connection_id,
-                response,
-            }
-        })
-    }
-
-    pub fn get_connections_list(&self) -> String {
-        send_command!(self.backend, |response| {
-            WebSocketCommand::GetConnectionsList { response }
+            HttpCommand::GetPendingRequests { response }
         })
     }
 
     pub fn shutdown(&mut self) {
-        let _ = self.backend.send(WebSocketCommand::Shutdown);
+        let _ = self.backend.send(HttpCommand::Shutdown);
     }
 }

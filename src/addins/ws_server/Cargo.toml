@@ -1,5 +1,5 @@
 [package]
-name = "opi_httpserver"
+name = "opi_wsserver"
 version = "0.1.0"
 license = "MIT"
 edition = "2021"
@@ -24,8 +24,5 @@ common-server = { path = "../commons/common-server" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.0", features = ["full"] }
-axum = "0.8.8"
-tower = "0.5"
-tower-http = { version = "0.6", features = ["cors", "trace"] }
-uuid = { version = "1.17.0", features = ["v4"] }
-indexmap = "2.7.0"
+axum = { version = "0.8.8", features = ["ws"] }
+futures-util = "0.3"
