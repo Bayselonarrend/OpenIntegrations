@@ -55,6 +55,17 @@ impl WebSocketServer {
         }
     }
 
+    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+        if !self.started {
+            return json_error("WebSocket server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.get_next_message(timeout_ms),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
     pub fn get_message(&self, connection_id: &str, timeout_ms: u64) -> String {
         if !self.started {
             return json_error("WebSocket server not started");
