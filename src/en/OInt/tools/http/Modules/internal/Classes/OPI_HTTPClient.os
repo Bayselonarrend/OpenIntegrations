@@ -108,6 +108,7 @@ Var AuthData; // Credentials structure
 Var Response; // HTTPResponse object
 Var ResponseStatusCode; // Response status code
 Var ResponseHeaders; // Response headers mapping
+Var AdvancedResponse; // Include code and headers in structure of response
 
 // Multipart
 
@@ -160,6 +161,7 @@ Function Initialize(Val URL = "") Export
 
     ResponseStatusCode = 0;
     ResponseHeaders    = New Map;
+    AdvancedResponse   = False;
 
     Multipart = False;
 
@@ -1439,6 +1441,9 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         OPI_TypeConversion.GetBoolean(Start);
         RequestMethod = Method;
 
+        AddLog("ProcessRequest: setting advanced call settings");
+        If SetAdvancedCallSettings().Error Then Return ЭтотОбъект; EndIf;
+
         AddLog("ProcessRequest: creation of HTTPRequest object");
         If FormRequest().Error Then Return ЭтотОбъект; EndIf;
 
@@ -1972,6 +1977,54 @@ Function FormRequest()
     CreateConnection();
 
     Return ЭтотОбъект;
+
+EndFunction
+
+Function SetAdvancedCallSettings()
+
+    CallSettings = OPI_AdvancedCall.GetCurrentSettings();
+
+    If Not ValueIsFilled(CallSettings) Then
+        AddLog("SetAdvancedCallSettings: Settings not found");
+        Return ЭтотОбъект;
+    EndIf;
+
+    ProxySettings            = OPI_Tools.GetOr(CallSettings, "proxy" , Undefined);
+    TimeoutSettings          = OPI_Tools.GetOr(CallSettings, "timeout" , Undefined);
+    AdvancedResponseSettings = OPI_Tools.GetOr(CallSettings, "adv_response", Undefined);
+
+    If ProxySettings <> Undefined Then
+
+        If TypeOf(ProxySettings) = Type("InternetProxy") Then
+            RequestProxy         = ProxySettings;
+        Else
+
+            ErrorText = "Advanced call: incorrect proxy settings passed (neither InternetProxy nor a collection)";
+            OPI_TypeConversion.GetKeyValueCollection(ProxySettings, ErrorText);
+
+            Protocol_         = OPI_Tools.GetOr(ProxySettings, "Protocol" , Undefined);
+            Host_             = OPI_Tools.GetOr(ProxySettings, "Host" , Undefined);
+            Port_             = OPI_Tools.GetOr(ProxySettings, "Port" , Undefined);
+            User_             = OPI_Tools.GetOr(ProxySettings, "User" , Undefined);
+            Password_         = OPI_Tools.GetOr(ProxySettings, "Password" , Undefined);
+            OSAuthentication_ = OPI_Tools.GetOr(ProxySettings, "UseOSAuthentication", Undefined);
+
+            RequestProxy = New InternetProxy();
+            RequestProxy.Set(Protocol_, Host_, Port_, User_, Password_, OSAuthentication_);
+
+        EndIf;
+
+    EndIf;
+
+    If TimeoutSettings <> Undefined Then
+        OPI_TypeConversion.GetNumber(TimeoutSettings);
+        RequestTimeout = TimeoutSettings;
+    EndIf;
+
+    If AdvancedResponseSettings <> Undefined Then
+        OPI_TypeConversion.GetBoolean(AdvancedResponseSettings);
+        AdvancedResponse = AdvancedResponseSettings;
+    EndIf;
 
 EndFunction
 

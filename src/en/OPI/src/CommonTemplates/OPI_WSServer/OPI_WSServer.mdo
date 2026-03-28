@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d8348139-074a-4a51-82fb-5e34cbd2845c">
+  <name>OPI_WSServer</name>
+  <synonym>
+    <key>en</key>
+    <value>AddIn Websocket-of server (OPI)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

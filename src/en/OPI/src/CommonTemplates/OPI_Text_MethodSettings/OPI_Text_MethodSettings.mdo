@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="af33364a-2d73-4cdb-a486-76b2ff68e964">
+  <name>OPI_Text_MethodSettings</name>
+  <synonym>
+    <key>en</key>
+    <value>List of available advanced call parameters (OPI)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>
