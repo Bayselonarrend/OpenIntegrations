@@ -1,0 +1,2474 @@
+{
+ "OPI_Airtable": {
+  "GetListOfBases": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDatabaseTables": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateDatabase": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateTable": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ModifyTable": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ModifyField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetListOfRecords": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetRecord": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePosts": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteRecords": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetComments": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_Bitrix24": {
+  "GetToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RefreshToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ServerTime": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdatePost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeletePost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetImportantPostViewers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPosts": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddPostComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddPostRecipients": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTasksList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateTask": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateTask": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AttachFileToTopic": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DelegateTask": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CheckTaskAccesses": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateTasksDependencies": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteTasksDependencies": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDailyPlan": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTaskFieldsStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCustomTaskFieldsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddCustomTaskField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateCustomTaskField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCustomTaskField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteCustomTaskField": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddTasksChecklistElement": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateTasksChecklistElement": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTasksChecklist": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTaskComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddTaskComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateTaskComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteTaskComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateResultFromComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteResultFromComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddKanbanStage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateKanbansStage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteKanbanStage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetKanbanStages": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveTaskToKanbanStage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddTaskTimeAccounting": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteTaskTimeAccounting": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTaskTimeAccountingList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTaskTimeAccounting": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateTaskTimeAccounting": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "StartTimekeeping": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "StopTimekeeping": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PauseTimekeeping": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTimekeepingStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTimekeepingSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetStoragesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAppStorage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RenameStorage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateStorageFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateSubfolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MakeFolderCopy": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFolderItems": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RenameFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFolderFilterStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFileToStorage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFileToFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MakeFileCopy": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveFileToFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RenameFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateChat": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUsers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddUsersToChat": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteUserFromChat": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeChatTitle": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeChatColor": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeChatPicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeChatOwner": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatMessagesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDialog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatMembersList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendWritingNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetUserStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReadAll": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetMessageReaction": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MarkMessageAsReaded": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MarkMessageAsUnreaded": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePersonalNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateSystemNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateDepartment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateDepartment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDepartments": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteDepartment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCurrentUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "FindUsers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserFieldsStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateLead": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLeadsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateLead": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLeadStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateDeal": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDealsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateDeal": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDealStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCalendarList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserBusy": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCustomCalendarSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetCustomCalendarSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCalendarSettingsStructure": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateCalendarEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateCalendarEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCalendarEvents": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetUserParticipationStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_CDEK": {
+  "GetToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCashboxChecksByDate": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDeliveryCashRegistry": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDeliveryCashTransfers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOfficeList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetRegionsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateOrder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateOrder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteOrder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOrder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOrderByNumber": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateCustomerRefund": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateRefusal": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateReceipt": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetReceipt": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateBarcode": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetBarcode": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePrealert": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPrealert": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPassportDataStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCashboxCheck": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAvailableDeliveryIntervals": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateCourierInvitation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCourierInvitation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteCourierInvitation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RegisterDeliveryAppointment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDeliveryAppointment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_ClickHouse": {},
+ "OPI_Dropbox": {
+  "GetToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RefreshToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetSpaceUsageData": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetObjectInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetListOfFolderFiles": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFileByURL": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUploadStatusByURL": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CopyObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetObjectVersionList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RestoreObjectToVersion": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetTagList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CancelFolderPublication": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddUsersToFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddUsersToFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAsynchronousChangeStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CancelFilePublication": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PostBinary": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_FTP": {},
+ "OPI_GoogleCalendar": {
+  "CreateCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCalendarMetadata": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditCalendarMetadata": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearMainCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddCalendarToList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetListCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteCalendarFromList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditListCalendar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_GoogleDrive": {
+  "GetObjectInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DownloadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CopyObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCommentList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_GreenAPI": {
+  "GetAccountInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetInstanceSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetInstanceSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetInstanceStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RebootInstance": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "LogoutInstance": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetQR": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAuthorizationCode": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetProfilePicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetGroupInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateGroup": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateGroupName": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "LeaveGroup": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetGroupPicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendTextMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFileByURL": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendPoll": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendLocation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendContact": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ForwardMessages": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditMessageText": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteNotificationFromQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DownloadMessageFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetReadMark": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetMessageQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearMessageQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatHistory": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetIncomingMessageLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOutgoingMessageLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_GreenMax": {
+  "GetAccountInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetInstanceSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetInstanceSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAuthorizationCode": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendAuthorizationCode": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetInstanceStatus": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetProfilePicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "LogoutInstance": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RebootInstance": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CheckAccount": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetContactList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetContactInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatAvatar": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateGroup": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetGroupInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateGroupName": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetGroupPicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeGroupSettings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddGroupMember": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RemoveGroupMember": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetAdminRights": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RevokeAdminRights": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "LeaveGroup": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendTextMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFileByURL": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteNotification": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatMessageHistory": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChatMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetIncomingMessageLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOutgoingMessageLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MarkMessagesAsRead": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOutgoingMessageCount": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOutgoingMessageQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearOutgoingMessageQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetIncomingNotificationCount": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearIncomingNotificationQueue": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_GRPC": {},
+ "OPI_GoogleSheets": {
+  "CreateSpreadsheet": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetSpreadsheet": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditSpreadsheetTitle": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddSheet": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteSheet": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CopySheet": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetCellValues": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearCells": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCellValues": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_MongoDB": {},
+ "OPI_MSSQL": {},
+ "OPI_MySQL": {},
+ "OPI_Neocities": {
+  "GetSiteData": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFiles": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteSelectedFiles": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFilesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_Notion": {
+  "CreatePage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePageInDatabase": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditPageProperties": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateDatabase": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDatabase": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditDatabaseProperties": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateBlock": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReturnBlock": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReturnChildBlocks": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteBlock": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UserList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserData": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_Ollama": {
+  "GetVersion": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetResponse": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetContextResponse": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetEmbeddings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetModelList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ListRunningModels": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetModelInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateModel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CopyModel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteModel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "LoadModelToMemory": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UnloadModelFromMemory": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PushModel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PullModel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PushBlob": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CheckBlob": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_OpenAI": {
+  "GetResponse": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetImages": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetEmbeddings": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAssistantsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateAssistant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RetrieveAssistant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteAssistant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFilesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFileInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DownloadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GenerateSpeech": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateTranscription": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetModelList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_PostgreSQL": {},
+ "OPI_RCON": {},
+ "OPI_ReportPortal": {
+  "GetTemporaryToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPermanentToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeletePermanentToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserTokens": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetCurrentUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUsers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserProjects": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateProject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteProject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetProject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetProjects": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddUsersToProject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ExcludeUsersFromProject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateLaunch": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLaunch": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateLaunch": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "FinishLaunch": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteLaunch": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLaunchReport": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLaunchItems": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateItem": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetItem": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UpdateItem": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "FinishItem": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteItem": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "WriteLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetItemLogs": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteLog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_RSS": {},
+ "OPI_S3": {},
+ "OPI_SFTP": {},
+ "OPI_Slack": {
+  "GetBotInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendEphemeralMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDelayedMessageList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetMessageLink": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetMessageReplyList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChannelList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChannelUserList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateChannel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "InviteUsersToChannel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "KickUserFromChannel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetChannelTopic": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetChannelGoal": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RenameChannel": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "OpenDialog": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFilesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetExternalFileList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddExternalFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendExternalFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_SQLite": {},
+ "OPI_SSH": {},
+ "OPI_TCP": {},
+ "OPI_Telegram": {
+  "GetBotInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUpdates": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SetWebhook": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteWebhook": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DownloadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendTextMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendMediaGroup": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendLocation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendContact": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendPoll": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ForwardMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReplaceMessageKeyboard": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReplaceMessageText": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ReplaceMessageCaption": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "Ban": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "Unban": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateInvitationLink": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PinMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UnpinMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetParticipantCount": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAvatarIconList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditMainForumTopicName": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ClearTopicPinnedMessagesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_Twitter": {
+  "GetToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RefreshToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_Viber": {
+  "SetWebhook": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetChannelInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetUserData": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetOnlineUsers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_VK": {
+  "CreateCompositePost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeletePost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreatePoll": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateAlbum": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteAlbum": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteImage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadVideoToServer": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadPhotoToServer": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MakeRepost": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "WriteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "WriteComment": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ShortenLink": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetStatistics": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPostStatistics": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateAdvertisingCampaign": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateAd": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PauseAdvertising": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetAdvertisingCategoryList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetProductCategoryList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetProductsByID": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteProduct": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GroupProducts": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetSelectionsByID": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddProductToCollection": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RemoveProductFromSelection": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteSelection": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPropertyList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateProductProperty": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditProductProperty": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteProductProperty": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AddProductPropertyVariant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditProductPropertyVariant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteProductPropertyVariant": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_VKTeams": {
+  "CheckToken": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetEvents": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFileInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendTextMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SendVoice": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "EditMessageText": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ResendFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ResendVoice": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ForwardMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "PinMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UnpinMessage": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "AnswerButtonEvent": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "RemoveChatMembers": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "ChangeChatPicture": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "BlockChatUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UnblockChatUser": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_YandexDisk": {
+  "GetDiskInformation": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateFolder": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DeleteObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "CreateObjectCopy": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDownloadLink": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFileUploadLink": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "DownloadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetFilesList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "MoveObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFile": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFileInParts": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "UploadFileByURL": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPublishedObjectsList": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetPublicObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "GetDownloadLinkForPublicObject": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  },
+  "SavePublicObjectToDisk": {
+   "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_HTTPClient": {}
+}
