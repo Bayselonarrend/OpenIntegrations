@@ -139,7 +139,7 @@ Function GetCurrentSettings() Export
     Try
         //@skip-check bsl-legacy-check-string-literal
         Return SessionParameters["OPI_Settings"]; // !OPI
-        // !OInt Return GetCurrentSettings();
+        // !OInt Return CurrentSettings;
     Except
         Return Undefined;
     EndTry;
