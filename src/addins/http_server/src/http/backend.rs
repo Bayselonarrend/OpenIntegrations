@@ -3,7 +3,7 @@ use std::sync::Arc;
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use common_server::{Backend, send_command, handle_async_command};
+use common_server::{Backend, send_command, handle_async_command, handle_sync_command};
 use super::HttpServerState;
 
 pub struct HttpServerBackend {
@@ -22,10 +22,17 @@ pub enum HttpCommand {
         timeout_ms: u64,
         response: Sender<String>,
     },
+    HandleRequestById {
+        request_id: String,
+        response: Sender<String>,
+    },
     SendResponse {
         request_id: String,
         status_code: u16,
         body: Vec<u8>,
+        response: Sender<String>,
+    },
+    GetPendingRequests {
         response: Sender<String>,
     },
     Shutdown,
@@ -67,9 +74,21 @@ impl HttpServerBackend {
                             );
                         }
 
+                        HttpCommand::HandleRequestById { request_id, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.handle_request_by_id(&request_id).await
+                            );
+                        }
+
                         HttpCommand::SendResponse { request_id, status_code, body, response } => {
                             handle_async_command!(server_state, rt, response, |state|
                                 state.send_response(&request_id, status_code, body).await
+                            );
+                        }
+
+                        HttpCommand::GetPendingRequests { response } => {
+                            handle_sync_command!(server_state, response, |state|
+                                state.get_pending_requests()
                             );
                         }
 
@@ -115,6 +134,15 @@ impl HttpServerBackend {
         })
     }
 
+    pub fn handle_request_by_id(&self, request_id: String) -> String {
+        send_command!(self.backend, |response| {
+            HttpCommand::HandleRequestById {
+                request_id,
+                response,
+            }
+        })
+    }
+
     pub fn send_response(&self, request_id: String, status_code: u16, body: Vec<u8>) -> String {
         send_command!(self.backend, |response| {
             HttpCommand::SendResponse {
@@ -123,6 +151,12 @@ impl HttpServerBackend {
                 body,
                 response,
             }
+        })
+    }
+
+    pub fn get_pending_requests(&self) -> String {
+        send_command!(self.backend, |response| {
+            HttpCommand::GetPendingRequests { response }
         })
     }
 
