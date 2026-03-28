@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="171887ca-f296-4a6e-befd-789bb45c3157">
+  <name>OPI_HTTPServer</name>
+  <synonym>
+    <key>ru</key>
+    <value>Компонента HTTP-сервера (ОПИ)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

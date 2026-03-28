@@ -7,7 +7,7 @@ use common_core::*;
 use common_utils::utils::json_error;
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use wrapper::HttpServer;
+use wrapper::WebSocketServer;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -18,9 +18,10 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetNextMessage"),             // 2
     name!("GetMessage"),                 // 3
     name!("SendMessage"),                // 4
-    name!("ListConnections"),            // 5
-    name!("RetrieveBinaryFromVault"),    // 6
-    name!("GetLogs"),                    // 7
+    name!("CloseConnection"),            // 5
+    name!("ListConnections"),            // 6
+    name!("RetrieveBinaryFromVault"),    // 7
+    name!("GetLogs"),                    // 8
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -28,11 +29,12 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 3,  // Start(port, config_json, logger_config_json)
         1 => 0,  // Stop()
         2 => 1,  // GetNextMessage(timeout_ms)
-        3 => 1,  // GetMessage(request_id)
-        4 => 3,  // SendMessage(request_id, status_code, body)
-        5 => 0,  // ListConnections()
-        6 => 1,  // RetrieveBinaryFromVault(vault_key)
-        7 => 1,  // GetLogs(count)
+        3 => 2,  // GetMessage(connection_id, timeout_ms)
+        4 => 2,  // SendMessage(connection_id, message)
+        5 => 1,  // CloseConnection(connection_id)
+        6 => 0,  // ListConnections()
+        7 => 1,  // RetrieveBinaryFromVault(vault_key)
+        8 => 1,  // GetLogs(count)
         _ => 0,
     }
 }
@@ -42,7 +44,6 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
     match num {
         0 => {
-            // Start(port, config_json, logger_config_json)
             let port = params[0].get_i32().unwrap_or(8080) as u16;
             let config = params[1].get_string().unwrap_or_default();
             let logger_config = params[2].get_string().unwrap_or_default();
@@ -53,37 +54,34 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.server.start(port, &config))
         },
         1 => {
-            // Stop()
             Box::new(obj.server.stop())
         },
         2 => {
-            // GetNextMessage(timeout_ms)
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
-            Box::new(obj.server.handle_request(timeout_ms))
+            Box::new(obj.server.get_next_message(timeout_ms))
         },
         3 => {
-            // GetMessage(request_id)
-            let request_id = params[0].get_string().unwrap_or_default();
-            Box::new(obj.server.handle_request_by_id(&request_id))
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let timeout_ms = params[1].get_i32().unwrap_or(1000) as u64;
+            Box::new(obj.server.get_message(&connection_id, timeout_ms))
         },
         4 => {
-            // SendMessage(request_id, status_code, body)
-            let request_id = params[0].get_string().unwrap_or_default();
-            let status_code = params[1].get_i32().unwrap_or(200) as u16;
-            let body = params[2].get_blob().unwrap_or(&empty_array);
-            Box::new(obj.server.send_response(&request_id, status_code, body.to_vec()))
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let message = params[1].get_blob().unwrap_or(&empty_array);
+            Box::new(obj.server.send_message(&connection_id, message.to_vec()))
         },
         5 => {
-            // ListConnections()
-            Box::new(obj.server.get_pending_requests())
+            let connection_id = params[0].get_string().unwrap_or_default();
+            Box::new(obj.server.close_connection(&connection_id))
         },
         6 => {
-            // RetrieveBinaryFromVault(vault_key)
+            Box::new(obj.server.get_connections_list())
+        },
+        7 => {
             let vault_key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&vault_key))
         },
-        7 => {
-            // GetLogs(count)
+        8 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
@@ -94,7 +92,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
-    server: HttpServer,
+    server: WebSocketServer,
     vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
@@ -103,7 +101,7 @@ impl AddIn {
     pub fn new() -> Self {
         let vault = BinaryVault::new();
         AddIn {
-            server: HttpServer::new(vault.clone()),
+            server: WebSocketServer::new(vault.clone()),
             vault,
             logger: None,
         }
