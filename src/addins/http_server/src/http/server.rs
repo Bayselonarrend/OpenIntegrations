@@ -52,6 +52,7 @@ pub struct PendingRequest {
     pub id: String,
     pub method: String,
     pub path: String,
+    pub query: String,
     pub headers: Vec<(String, String)>,
     pub body: Vec<u8>,
 }
@@ -69,7 +70,7 @@ impl HttpServerState {
         vault: BinaryVault,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
-        // Parse configuration
+
         let config = if config_json.is_empty() {
             HttpServerConfig::default()
         } else {
@@ -93,7 +94,6 @@ impl HttpServerState {
             config: config.clone(),
         }));
 
-        // Create router with configured routes
         let mut app = Router::new();
         for route in &config.routes {
             if let Some(ref log) = logger {
@@ -156,6 +156,7 @@ impl HttpServerState {
                             "requestId": req.id,
                             "method": req.method,
                             "path": req.path,
+                            "query": req.query,
                             "headers": req.headers,
                             "body": vault_key
                         }).to_string()
@@ -198,6 +199,7 @@ async fn http_handler(
     
     let method = req.method().to_string();
     let path = req.uri().path().to_string();
+    let query = req.uri().query().unwrap_or("").to_string();
     let headers: Vec<(String, String)> = req
         .headers()
         .iter()
@@ -222,6 +224,7 @@ async fn http_handler(
         id: request_id.clone(),
         method,
         path,
+        query,
         headers,
         body,
     };
@@ -236,7 +239,6 @@ async fn http_handler(
     }
     drop(locked_state);
 
-    // Wait for response with configured timeout
     let timeout_duration = {
         let locked_state = state.lock().await;
         std::time::Duration::from_secs(locked_state.config.response_timeout_secs)

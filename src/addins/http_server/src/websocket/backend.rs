@@ -18,6 +18,10 @@ pub enum WebSocketCommand {
         logger: Option<Arc<Logger>>,
         response: Sender<String>,
     },
+    GetNextMessage {
+        timeout_ms: u64,
+        response: Sender<String>,
+    },
     GetMessage {
         connection_id: String,
         timeout_ms: u64,
@@ -66,6 +70,12 @@ impl WebSocketServerBackend {
                                     let _ = response.send(json_error(&e));
                                 }
                             }
+                        }
+
+                        WebSocketCommand::GetNextMessage { timeout_ms, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.get_next_message(timeout_ms).await
+                            );
                         }
 
                         WebSocketCommand::GetMessage { connection_id, timeout_ms, response } => {
@@ -120,6 +130,15 @@ impl WebSocketServerBackend {
                 port,
                 config: config.to_string(),
                 logger: self.logger.clone(),
+                response,
+            }
+        })
+    }
+
+    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+        send_command!(self.backend, |response| {
+            WebSocketCommand::GetNextMessage {
+                timeout_ms,
                 response,
             }
         })
