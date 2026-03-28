@@ -138,17 +138,14 @@ impl WebSocketServerState {
         let message_handler = MessageHandler::new(self.vault.clone());
         
         let result = waiter.wait_for(|| {
-            // First check for new connections
             if let Some(ref mut conn_rx) = self.connection_rx {
                 if let Ok(connection_id) = conn_rx.try_recv() {
-                    return Some((connection_id, None)); // New connection, no message yet
+                    return Some((connection_id, None));
                 }
             }
-            
-            // Then check for messages from existing connections
+
             if let Some(ref mut msg_rx) = self.message_rx {
                 if let Ok((conn_id, msg)) = msg_rx.try_recv() {
-                    // Check if connection still exists by trying to get it
                     let exists = self.manager.get_mut(&conn_id, |_| {}).is_some();
                     if exists {
                         return Some((conn_id, Some(msg)));
@@ -278,16 +275,13 @@ async fn handle_websocket(socket: WebSocket, state: Arc<tokio::sync::Mutex<WebSo
         (locked_state.message_tx.clone(), locked_state.connection_tx.clone())
     };
 
-    // Notify about new connection
     let _ = connection_tx.send(connection_id.clone());
 
     let connection_id_clone = connection_id.clone();
     let state_clone = state.clone();
 
-    // Split socket into sender and receiver
     let (mut ws_sender, mut ws_receiver) = socket.split();
 
-    // Task for sending messages to client
     let send_task = tokio::spawn(async move {
         while let Some(msg) = rx.recv().await {
             if ws_sender.send(Message::Binary(msg.into())).await.is_err() {
@@ -296,7 +290,6 @@ async fn handle_websocket(socket: WebSocket, state: Arc<tokio::sync::Mutex<WebSo
         }
     });
 
-    // Task for receiving messages from client
     let recv_task = tokio::spawn(async move {
         while let Some(Ok(msg)) = ws_receiver.next().await {
             if let Message::Binary(data) = msg {
@@ -307,7 +300,6 @@ async fn handle_websocket(socket: WebSocket, state: Arc<tokio::sync::Mutex<WebSo
         }
     });
 
-    // Wait for either task to complete
     tokio::select! {
         _ = send_task => {},
         _ = recv_task => {},

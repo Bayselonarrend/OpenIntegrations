@@ -2,17 +2,17 @@ use std::sync::{Arc, Mutex};
 use common_utils::utils::{json_error, json_success};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
-use super::HttpServerBackend;
+use crate::backend::WebSocketServerBackend;
 
-pub struct HttpServer {
-    backend: Arc<Mutex<HttpServerBackend>>,
+pub struct WebSocketServer {
+    backend: Arc<Mutex<WebSocketServerBackend>>,
     started: bool,
 }
 
-impl HttpServer {
+impl WebSocketServer {
     pub fn new(vault: BinaryVault) -> Self {
         Self {
-            backend: Arc::new(Mutex::new(HttpServerBackend::new(vault))),
+            backend: Arc::new(Mutex::new(WebSocketServerBackend::new(vault))),
             started: false,
         }
     }
@@ -25,7 +25,7 @@ impl HttpServer {
 
     pub fn start(&mut self, port: u16, config: &str) -> String {
         if self.started {
-            return json_error("HTTP server already started");
+            return json_error("WebSocket server already started");
         }
 
         let result = match self.backend.lock() {
@@ -42,7 +42,7 @@ impl HttpServer {
 
     pub fn stop(&mut self) -> String {
         if !self.started {
-            return json_error("HTTP server not started");
+            return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
@@ -55,46 +55,57 @@ impl HttpServer {
         }
     }
 
-    pub fn handle_request(&self, timeout_ms: u64) -> String {
+    pub fn get_next_message(&self, timeout_ms: u64) -> String {
         if !self.started {
-            return json_error("HTTP server not started");
+            return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.handle_request(timeout_ms),
+            Ok(backend) => backend.get_next_message(timeout_ms),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn handle_request_by_id(&self, request_id: &str) -> String {
+    pub fn get_message(&self, connection_id: &str, timeout_ms: u64) -> String {
         if !self.started {
-            return json_error("HTTP server not started");
+            return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.handle_request_by_id(request_id.to_string()),
+            Ok(backend) => backend.get_message(connection_id.to_string(), timeout_ms),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> String {
         if !self.started {
-            return json_error("HTTP server not started");
+            return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.send_response(request_id.to_string(), status_code, body),
+            Ok(backend) => backend.send_message(connection_id.to_string(), message),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_pending_requests(&self) -> String {
+    pub fn close_connection(&self, connection_id: &str) -> String {
         if !self.started {
-            return json_error("HTTP server not started");
+            return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.get_pending_requests(),
+            Ok(backend) => backend.close_connection(connection_id.to_string()),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn get_connections_list(&self) -> String {
+        if !self.started {
+            return json_error("WebSocket server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.get_connections_list(),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
@@ -104,7 +115,7 @@ impl HttpServer {
     }
 }
 
-impl Drop for HttpServer {
+impl Drop for WebSocketServer {
     fn drop(&mut self) {
         if self.started {
             let _ = self.stop();
