@@ -66,6 +66,17 @@ impl HttpServer {
         }
     }
 
+    pub fn handle_request_by_id(&self, request_id: &str) -> String {
+        if !self.started {
+            return json_error("HTTP server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.handle_request_by_id(request_id.to_string()),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
     pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
         if !self.started {
             return json_error("HTTP server not started");
@@ -73,6 +84,17 @@ impl HttpServer {
 
         match self.backend.lock() {
             Ok(backend) => backend.send_response(request_id.to_string(), status_code, body),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn get_pending_requests(&self) -> String {
+        if !self.started {
+            return json_error("HTTP server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.get_pending_requests(),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
