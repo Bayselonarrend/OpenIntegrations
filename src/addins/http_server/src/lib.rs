@@ -19,12 +19,13 @@ pub const METHODS: &[&[u16]] = &[
     name!("SendResponse"),               // 3
     name!("StartWebSocket"),             // 4
     name!("StopWebSocket"),              // 5
-    name!("GetWebSocketMessage"),        // 6
-    name!("SendWebSocketMessage"),       // 7
-    name!("CloseWebSocket"),             // 8
-    name!("GetWebSocketConnections"),    // 9
-    name!("RetrieveBinaryFromVault"),    // 10
-    name!("GetLogs"),                    // 11
+    name!("GetNextWebSocketMessage"),    // 6
+    name!("GetWebSocketMessage"),        // 7
+    name!("SendWebSocketMessage"),       // 8
+    name!("CloseWebSocket"),             // 9
+    name!("GetWebSocketConnections"),    // 10
+    name!("RetrieveBinaryFromVault"),    // 11
+    name!("GetLogs"),                    // 12
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -35,12 +36,13 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 3,  // SendResponse(request_id, status_code, body)
         4 => 3,  // StartWebSocket(port, config_json, logger_config_json)
         5 => 0,  // StopWebSocket()
-        6 => 2,  // GetWebSocketMessage(connection_id, timeout_ms)
-        7 => 2,  // SendWebSocketMessage(connection_id, message)
-        8 => 1,  // CloseWebSocket(connection_id)
-        9 => 0,  // GetWebSocketConnections()
-        10 => 1, // RetrieveBinaryFromVault(vault_key)
-        11 => 1, // GetLogs(count)
+        6 => 1,  // GetWebSocketConnection(timeout_ms)
+        7 => 2,  // GetWebSocketMessage(connection_id, timeout_ms)
+        8 => 2,  // SendWebSocketMessage(connection_id, message)
+        9 => 1,  // CloseWebSocket(connection_id)
+        10 => 0, // GetWebSocketConnections()
+        11 => 1, // RetrieveBinaryFromVault(vault_key)
+        12 => 1, // GetLogs(count)
         _ => 0,
     }
 }
@@ -83,25 +85,29 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         5 => Box::new(obj.ws_server.stop()),
         6 => {
+            let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
+            Box::new(obj.ws_server.get_next_message(timeout_ms))
+        },
+        7 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let timeout_ms = params[1].get_i32().unwrap_or(1000) as u64;
             Box::new(obj.ws_server.get_message(&connection_id, timeout_ms))
         },
-        7 => {
+        8 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let message = params[1].get_blob().unwrap_or(&empty_array);
             Box::new(obj.ws_server.send_message(&connection_id, message.to_vec()))
         },
-        8 => {
+        9 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             Box::new(obj.ws_server.close_connection(&connection_id))
         },
-        9 => Box::new(obj.ws_server.get_connections_list()),
-        10 => {
+        10 => Box::new(obj.ws_server.get_connections_list()),
+        11 => {
             let vault_key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&vault_key))
         },
-        11 => {
+        12 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
