@@ -138,7 +138,7 @@ Function GetCurrentSettings() Export
 
     Try
         //@skip-check bsl-legacy-check-string-literal
-        Return GetCurrentSettings();
+        Return CurrentSettings;
     Except
         Return Undefined;
     EndTry;
