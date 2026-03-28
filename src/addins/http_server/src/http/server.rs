@@ -1,12 +1,11 @@
 use std::sync::Arc;
-use indexmap::IndexMap;
 use axum::{
     Router,
     routing::any,
     extract::State,
     response::Response,
 };
-use tokio::sync::{mpsc, Mutex as TokioMutex};
+use tokio::sync::Mutex as TokioMutex;
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
 use common_server::{MessageHandler, AsyncWaiter, ConnectionManager};
@@ -20,6 +19,9 @@ pub struct HttpServerConfig {
     
     #[serde(default = "default_routes")]
     pub routes: Vec<String>,
+    
+    #[serde(default = "default_max_pending")]
+    pub max_pending_requests: usize,
 }
 
 fn default_timeout() -> u64 {
@@ -30,11 +32,16 @@ fn default_routes() -> Vec<String> {
     vec!["/*path".to_string()]
 }
 
+fn default_max_pending() -> usize {
+    100
+}
+
 impl Default for HttpServerConfig {
     fn default() -> Self {
         Self {
             response_timeout_secs: 30,
             routes: vec!["/*path".to_string()],
+            max_pending_requests: 100,
         }
     }
 }
@@ -42,19 +49,17 @@ impl Default for HttpServerConfig {
 pub struct HttpServerState {
     vault: BinaryVault,
     logger: Option<Arc<Logger>>,
-    request_tx: mpsc::UnboundedSender<PendingRequest>,
-    request_rx: Option<mpsc::UnboundedReceiver<PendingRequest>>,
-    pending_responses: Arc<TokioMutex<IndexMap<String, tokio::sync::oneshot::Sender<(u16, Vec<u8>)>>>>,
+    manager: ConnectionManager<PendingRequest>,
     config: HttpServerConfig,
 }
 
 pub struct PendingRequest {
-    pub id: String,
     pub method: String,
     pub path: String,
     pub query: String,
     pub headers: Vec<(String, String)>,
     pub body: Vec<u8>,
+    pub response_tx: tokio::sync::oneshot::Sender<(u16, Vec<u8>)>,
 }
 
 impl HttpServerState {
@@ -82,15 +87,12 @@ impl HttpServerState {
             log!(log, "Starting HTTP server on port {} with config: {:?}", port, config);
         }
 
-        let (request_tx, request_rx) = mpsc::unbounded_channel();
-        let pending_responses = Arc::new(TokioMutex::new(IndexMap::new()));
+        let manager = ConnectionManager::new(config.max_pending_requests, logger.clone());
 
         let state = Arc::new(TokioMutex::new(HttpServerState {
             vault: vault.clone(),
             logger: logger.clone(),
-            request_tx: request_tx.clone(),
-            request_rx: Some(request_rx),
-            pending_responses: pending_responses.clone(),
+            manager,
             config: config.clone(),
         }));
 
@@ -118,50 +120,64 @@ impl HttpServerState {
             }
         });
 
-        let mut locked_state = state.lock().await;
-        let request_rx = locked_state.request_rx.take().unwrap();
-        let pending_responses_clone = locked_state.pending_responses.clone();
-        drop(locked_state);
-
         Ok(HttpServerState {
             vault,
-            logger,
-            request_tx,
-            request_rx: Some(request_rx),
-            pending_responses: pending_responses_clone,
+            logger: logger.clone(),
+            manager: ConnectionManager::new(config.max_pending_requests, logger),
             config,
         })
     }
 
     pub async fn handle_request(&mut self, timeout_ms: u64) -> String {
         let waiter = AsyncWaiter::new(timeout_ms);
+        let message_handler = MessageHandler::new(self.vault.clone());
         
         let result = waiter.wait_for(|| {
-            if let Some(ref mut rx) = self.request_rx {
-                rx.try_recv().ok()
-            } else {
-                None
+            // Get request IDs in round-robin order
+            let ids = self.manager.get_ids_round_robin();
+            
+            for request_id in ids {
+                // Check if this request still exists
+                if self.manager.get_mut(&request_id, |_| {}).is_some() {
+                    return Some(request_id);
+                }
             }
+            
+            None
         }).await;
 
         match result {
-            Ok(req) => {
-                self.log(&format!("Received {} request to {}", req.method, req.path));
-                
-                let message_handler = MessageHandler::new(self.vault.clone());
-                match message_handler.store_message(req.body) {
-                    Ok(vault_key) => {
-                        json!({
-                            "result": true,
-                            "requestId": req.id,
-                            "method": req.method,
-                            "path": req.path,
-                            "query": req.query,
-                            "headers": req.headers,
-                            "body": vault_key
-                        }).to_string()
+            Ok(request_id) => {
+                // Extract request data and remove from manager
+                let request_data = self.manager.get_mut(&request_id, |req| {
+                    (req.method.clone(), req.path.clone(), req.query.clone(), 
+                     req.headers.clone(), req.body.clone())
+                });
+
+                if let Some((method, path, query, headers, body)) = request_data {
+                    self.log(&format!("Received {} request to {}", method, path));
+                    self.manager.set_last_processed(Some(request_id.clone()));
+                    
+                    match message_handler.store_message(body) {
+                        Ok(vault_key) => {
+                            json!({
+                                "result": true,
+                                "requestId": request_id,
+                                "method": method,
+                                "path": path,
+                                "query": query,
+                                "headers": headers,
+                                "body": vault_key
+                            }).to_string()
+                        }
+                        Err(e) => {
+                            // Remove failed request
+                            self.manager.remove(&request_id);
+                            MessageHandler::error_response(&e)
+                        }
                     }
-                    Err(e) => MessageHandler::error_response(&e),
+                } else {
+                    MessageHandler::error_response("Request not found")
                 }
             }
             Err(()) => MessageHandler::timeout_response(),
@@ -171,10 +187,9 @@ impl HttpServerState {
     pub async fn send_response(&mut self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
         self.log(&format!("Sending response for request {}: {}", request_id, status_code));
         
-        let mut responses = self.pending_responses.lock().await;
-
-        if let Some(tx) = responses.shift_remove(request_id) {
-            match tx.send((status_code, body)) {
+        // Take the request (removes it and gives us ownership)
+        if let Some(request) = self.manager.take(request_id) {
+            match request.response_tx.send((status_code, body)) {
                 Ok(_) => {
                     json!({
                         "result": true,
@@ -187,6 +202,60 @@ impl HttpServerState {
             }
         } else {
             MessageHandler::error_response("Request not found or already responded")
+        }
+    }
+
+    pub fn get_pending_requests(&mut self) -> String {
+        let mut requests = Vec::new();
+        
+        self.manager.iter_mut(|id, req| {
+            requests.push(json!({
+                "requestId": id,
+                "method": req.method,
+                "path": req.path,
+                "query": req.query,
+            }));
+        });
+        
+        json!({
+            "result": true,
+            "requests": requests,
+            "count": requests.len()
+        }).to_string()
+    }
+
+    pub async fn handle_request_by_id(&mut self, request_id: &str) -> String {
+        let message_handler = MessageHandler::new(self.vault.clone());
+        
+        // Extract request data
+        let request_data = self.manager.get_mut(request_id, |req| {
+            (req.method.clone(), req.path.clone(), req.query.clone(), 
+             req.headers.clone(), req.body.clone())
+        });
+
+        if let Some((method, path, query, headers, body)) = request_data {
+            self.log(&format!("Handling specific {} request to {}", method, path));
+            
+            match message_handler.store_message(body) {
+                Ok(vault_key) => {
+                    json!({
+                        "result": true,
+                        "requestId": request_id,
+                        "method": method,
+                        "path": path,
+                        "query": query,
+                        "headers": headers,
+                        "body": vault_key
+                    }).to_string()
+                }
+                Err(e) => {
+                    // Remove failed request
+                    self.manager.remove(request_id);
+                    MessageHandler::error_response(&e)
+                }
+            }
+        } else {
+            MessageHandler::error_response("Request not found")
         }
     }
 }
@@ -211,33 +280,27 @@ async fn http_handler(
         .unwrap_or_default()
         .to_vec();
 
-    let request_id = ConnectionManager::<()>::generate_id();
+    let request_id = ConnectionManager::<PendingRequest>::generate_id();
     let (response_tx, response_rx) = tokio::sync::oneshot::channel();
 
-    {
-        let locked_state = state.lock().await;
-        let mut responses = locked_state.pending_responses.lock().await;
-        responses.insert(request_id.clone(), response_tx);
-    }
-
     let pending_request = PendingRequest {
-        id: request_id.clone(),
         method,
         path,
         query,
         headers,
         body,
+        response_tx,
     };
 
-    let locked_state = state.lock().await;
-    if locked_state.request_tx.send(pending_request).is_err() {
-        drop(locked_state);
-        return Response::builder()
-            .status(500)
-            .body("Internal server error".into())
-            .unwrap();
+    // Add request to manager
+    {
+        let mut locked_state = state.lock().await;
+        let removed = locked_state.manager.add(request_id.clone(), pending_request);
+        
+        if let Some(old_id) = removed {
+            locked_state.log(&format!("Queue full, removed oldest request: {}", old_id));
+        }
     }
-    drop(locked_state);
 
     let timeout_duration = {
         let locked_state = state.lock().await;
@@ -252,9 +315,9 @@ async fn http_handler(
                 .unwrap()
         }
         _ => {
-            let locked_state = state.lock().await;
-            let mut responses = locked_state.pending_responses.lock().await;
-            responses.shift_remove(&request_id);
+            // Timeout or channel closed - remove the request
+            let mut locked_state = state.lock().await;
+            locked_state.manager.remove(&request_id);
             
             Response::builder()
                 .status(504)

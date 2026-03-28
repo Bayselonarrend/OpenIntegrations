@@ -68,6 +68,22 @@ impl<T> ConnectionManager<T> {
         removed
     }
 
+    /// Remove and return connection by ID, taking ownership
+    pub fn take(&mut self, id: &str) -> Option<T> {
+        let mut conns = self.lock_connections();
+        let value = conns.shift_remove(id);
+        drop(conns);
+        
+        if value.is_some() {
+            self.log(&format!("Connection taken: {}", id));
+            if self.last_processed.as_ref() == Some(&id.to_string()) {
+                self.last_processed = None;
+            }
+        }
+        
+        value
+    }
+
     /// Get mutable reference to connection
     pub fn get_mut<F, R>(&mut self, id: &str, f: F) -> Option<R>
     where

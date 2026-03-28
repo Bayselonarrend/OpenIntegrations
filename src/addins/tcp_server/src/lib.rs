@@ -15,12 +15,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("Start"),                      // 0
     name!("Stop"),                       // 1
     name!("GetNextMessage"),             // 2
-    name!("GetMessageFromConnection"),   // 3
+    name!("GetMessage"),                 // 3
     name!("SendMessage"),                // 4
     name!("CloseConnection"),            // 5
     name!("ShutdownRead"),               // 6
     name!("ShutdownWrite"),              // 7
-    name!("GetConnectionsList"),         // 8
+    name!("ListConnections"),            // 8
     name!("RetrieveBinaryFromVault"),    // 9
     name!("GetLogs"),                    // 10
 ];
