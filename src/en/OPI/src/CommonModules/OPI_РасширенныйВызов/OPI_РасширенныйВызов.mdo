@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="bca36f04-82d2-4368-9f95-83fe66327c28">
+  <name>OPI_AdvancedCall</name>
+  <synonym>
+    <key>en</key>
+    <value>Advanced call (OPI)</value>
+  </synonym>
+  <comment>Module for calling methods with advanced parameter set</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
