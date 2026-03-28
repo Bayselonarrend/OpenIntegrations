@@ -12517,6 +12517,6 @@
 "Получает описание доступных настроек для указанного метода (справочно": "Gets a description of the available settings for the specified method (for reference",
 "Оформляет ответ в виде полной структуры с полями code, body и headers": "Formats the response as a complete structure with fields code, body, and headers",
 "OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_РасширенныйВызов.os": "OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_AdvancedCall.os",
-"Расширенный вызов: переданы некорретные настройки прокси (не ИнтернетПрокси и не коллекция": "Advanced call: incorrect proxy settings passed (neither InternetProxy nor a collection",
+"Расширенный вызов: переданы некорректные настройки прокси (не ИнтернетПрокси и не коллекция": "Advanced call: incorrect proxy settings passed (neither InternetProxy nor a collection",
 "ИнтернетПрокси или структура полей Протокол, Сервер, Порт, Пользователь, Пароль, ИспользоватьАутентификациюОС": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication"
 }
