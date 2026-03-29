@@ -1,0 +1,38 @@
+---
+sidebar_position: 9
+description: Get logging settings  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get logging settings 
+ Retrieves settings structure for starting logging on server startup
+
+
+
+`Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | WriteToMemory | - | Boolean | &#x2716; | Logging log to memory for further retrieval from the addin object |
+  | MaxEvents | - | Number | &#x2716; | Maximum number of events stored in memory |
+  | FilePath | - | String | &#x2716; | Path to file for saving full log, if necessary |
+
+  
+  Returns:  Structure Of KeyAndValue - Settings structure
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+ 
+
+
+
+

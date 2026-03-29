@@ -384,27 +384,7 @@ EndFunction
 // Arbitrary - Server object or match with error information
 Function StartServer(Val Port, Val PoolSize = 100, Val Logging = Undefined) Export
 
-    OPI_TypeConversion.GetNumber(Port);
-    OPI_TypeConversion.GetNumber(PoolSize);
-
-    If Logging = Undefined Then
-
-        SettingsString = "";
-
-    Else
-
-        ErrorText      = "Incorrect logging settings";
-        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
-
-    EndIf;
-
-    AddIn = OPI_AddIns.GetAddIn("TCPServer");
-
-    Result = AddIn.Start(Port, PoolSize, SettingsString);
-    Result = OPI_Tools.JsonToStructure(Result, False);
-
-    Return ?(Result["result"], AddIn, Result);
+    Return OPI_GenericServer.StartServer(OPI_TCP, Port, PoolSize, Logging);
 
 EndFunction
 
@@ -418,18 +398,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function StopServer(Val ServerObject) Export
 
-    If Not IsServerObject(ServerObject) Then
-
-        Result = NotAddinParameterError();
-
-    Else
-
-        Result = ServerObject.Stop();
-        Result = OPI_Tools.JsonToStructure(Result);
-
-    EndIf;
-
-    Return Result;
+    Return OPI_GenericServer.StopServer(OPI_TCP, ServerObject);
 
 EndFunction
 
@@ -445,19 +414,10 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetNumber(Timeout);
-    OPI_TypeConversion.GetNumber(MaxSize);
-
-    Result = ServerObject.GetNextMessage(Timeout, MaxSize);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    CompleteMessageWithVaultData(ServerObject, Result);
-
-    Return Result;
+    Return OPI_GenericServer.GetNextConnectionData(OPI_TCP
+        , ServerObject
+        , Timeout
+        , MaxSize);
 
 EndFunction
 
@@ -477,20 +437,11 @@ Function GetConnectionData(Val ServerObject
     , Val Timeout = 1000
     , Val MaxSize = 8192) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetNumber(Timeout);
-    OPI_TypeConversion.GetNumber(MaxSize);
-    OPI_TypeConversion.GetLine(ConnectionID);
-
-    Result = ServerObject.GetMessageFromConnection(ConnectionID, Timeout, MaxSize);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    CompleteMessageWithVaultData(ServerObject, Result);
-
-    Return Result;
+    Return OPI_GenericServer.GetConnectionData(OPI_TCP
+        , ServerObject
+        , ConnectionID
+        , Timeout
+        , MaxSize);
 
 EndFunction
 
@@ -506,17 +457,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function SendData(Val ServerObject, Val ConnectionID, Val Data) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetBinaryData(Data, True, False);
-    OPI_TypeConversion.GetLine(ConnectionID);
-
-    Result = ServerObject.SendMessage(ConnectionID, Data);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    Return Result;
+    Return OPI_GenericServer.SendData(OPI_TCP, ServerObject, ConnectionID, Data);
 
 EndFunction
 
@@ -531,16 +472,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function CloseIncomingConnection(Val ServerObject, Val ConnectionID) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetLine(ConnectionID);
-
-    Result = ServerObject.CloseConnection(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    Return Result;
+    Return OPI_GenericServer.CloseIncomingConnection(OPI_TCP, ServerObject, ConnectionID);
 
 EndFunction
 
@@ -555,16 +487,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function CompleteSend(Val ServerObject, Val ConnectionID) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetLine(ConnectionID);
-
-    Result = ServerObject.ShutdownWrite(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    Return Result;
+    Return OPI_GenericServer.CompleteSend(OPI_TCP, ServerObject, ConnectionID);
 
 EndFunction
 
@@ -579,16 +502,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function FinishReceiving(Val ServerObject, Val ConnectionID) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetLine(ConnectionID);
-
-    Result = ServerObject.ShutdownRead(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    Return Result;
+    Return OPI_GenericServer.FinishReceiving(OPI_TCP, ServerObject, ConnectionID);
 
 EndFunction
 
@@ -605,14 +519,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function GetConnectionList(Val ServerObject) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    Result = ServerObject.GetConnectionsList();
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    Return Result;
+    Return OPI_GenericServer.GetConnectionList(OPI_TCP, ServerObject);
 
 EndFunction
 
@@ -628,35 +535,10 @@ EndFunction
 // String, Map Of KeyAndValue - Log as a string or a map with the full execution result
 Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
 
-    If Not IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetNumber(EventCount);
-    OPI_TypeConversion.GetBoolean(AsString);
-
-    Result = ServerObject.GetLogs(EventCount);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    If AsString And Result["result"] Then
-        Result = StrConcat(Result["logs"], Chars.LF);
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-// Is server object !NOCLI
-// Checks that the value is an object of the TCP server external component
-//
-// Parameters:
-// Value - Arbitrary - Value to check - value
-//
-// Returns:
-// Boolean - Is connector
-Function IsServerObject(Val Value) Export
-
-    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
+    Return OPI_GenericServer.GetLog(OPI_TCP
+        , ServerObject
+        , AsString
+        , EventCount);
 
 EndFunction
 
@@ -674,29 +556,22 @@ Function GetLoggingSettings(Val WriteToMemory = True
     , Val MaxEvents = 300
     , Val FilePath = "") Export
 
-    OPI_TypeConversion.GetBoolean(WriteToMemory);
-    OPI_TypeConversion.GetLine(FilePath);
-    OPI_TypeConversion.GetNumber(MaxEvents);
-
-    SettingsStructure = New Structure;
-    WriteToFile       = ValueIsFilled(FilePath);
-
-    If WriteToMemory Then
-        SettingsStructure.Insert("mode"       , "memory");
-        SettingsStructure.Insert("max_entries", MaxEvents);
-    EndIf;
-
-    If WriteToFile Then
-        SettingsStructure.Insert("mode"     , "file");
-        SettingsStructure.Insert("file_path", FilePath);
-    EndIf;
-
-    If WriteToFile And WriteToMemory Then
-        SettingsStructure.Insert("mode", "both");
-    EndIf;
-
     //@skip-check constructor-function-return-section
-    Return SettingsStructure;
+    Return OPI_GenericServer.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Is server object !NOCLI
+// Checks that the value is an object of the TCP server external component
+//
+// Parameters:
+// Value - Arbitrary - Value to check - value
+//
+// Returns:
+// Boolean - Is connector
+Function IsServerObject(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
 
 EndFunction
 
@@ -704,29 +579,13 @@ EndFunction
 
 #EndRegion
 
-#Region Private
+#Region Internal
 
-Function NotAddinParameterError()
+Function AddInName() Export
 
-    Result = New Map;
-    Result.Insert("result", False);
-    Result.Insert("error" , "The passed value is not a server object");
-
-    Return Result;
+    Return "TCPServer";
 
 EndFunction
 
-Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
-
-    DataKey = Undefined;
-
-    If OPI_Tools.CollectionFieldExists(MessageStructure, "message", DataKey) And ValueIsFilled(DataKey) Then
-
-        DataBD = OPI_AddIns.ReceiveData(ServerObject, DataKey);
-        MessageStructure.Insert("message", DataBD);
-
-    EndIf;
-
-EndProcedure
-
 #EndRegion
+

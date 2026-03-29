@@ -28,6 +28,7 @@
 "SQLite",
 "SSH",
 "TCP",
+"WebSocket",
 "Telegram",
 "Twitter",
 "Viber",
