@@ -1,4 +1,4 @@
-﻿THIRD-PARTY SOFTWARE LICENSES
+THIRD-PARTY SOFTWARE LICENSES
 =================================
 
 This file contains the full license texts for all third-party dependencies used in this project.
@@ -6,7 +6,7 @@ This file contains the full license texts for all third-party dependencies used 
 
 ================================================================================
 License: Apache License 2.0 (SPDX: Apache-2.0)
-Used by: ryu, openssl, clang-sys, ring, dunce, miette, prost-build, prost-derive, prost-types, prost, miette-derive, sync_wrapper, mongodb, mongocrypt-sys, mongocrypt, mongodb-internal-macros
+Used by: ryu, openssl, ring, aws-lc-sys, dunce, miette, prost-build, prost-derive, prost-types, prost, miette-derive, sync_wrapper, moka, mongodb-internal-macros, mongodb
 ================================================================================
 
 Apache License
@@ -86,41 +86,41 @@ limitations under the License.
 
 ================================================================================
 License: MIT License (SPDX: MIT)
-Used by: common-binary, itoa, serde_core, serde_json, base64, memchr, smallvec, common-core, addin1c, utf16_lit, common-core-macros, proc-macro2, quote, syn, unicode-ident, cfg-if, bitflags, uuid, libc, hashbrown, lock_api, parking_lot_core, equivalent, scopeguard, redox_syscall, getrandom, dashmap, common-dataset, r-efi, wasip2, windows-link, wit-bindgen, crossbeam-utils, core-foundation-sys, core-foundation, form_urlencoded, idna, percent-encoding, url, cc, find-msvc-tools, openssl-probe, openssl-sys, pkg-config, errno, log, tempfile, socks, schannel, winapi, httparse, native-tls, vcpkg, stable_deref_trait, foreign-types-shared, foreign-types, openssl-macros, idna_adapter, synstructure, utf8_iter, common-tcp, winapi-i686-pc-windows-gnu, winapi-x86_64-pc-windows-gnu, windows-sys, displaydoc, fastrand, linux-raw-sys, once_cell, rustix, serde, serde_derive, byteorder, shlex, security-framework-sys, security-framework, common-utils, sha1, sha2, lazy_static, base64ct, num-bigint-dig, num-integer, num-iter, num-traits, digest, hmac, autocfg, block-buffer, signature, ppv-lite86, const-oid, der, pkcs8, cpufeatures, crypto-common, pem-rfc7468, pkcs1, spki, rand, rand_chacha, rand_core, zerocopy, zeroize, opi_crypto, libm, rsa, wasi, spin, typenum, version_check, generic-array, cexpr, cmake, jobserver, js-sys, wasm-bindgen-backend, wasm-bindgen-macro-support, wasm-bindgen-macro, wasm-bindgen-shared, wasm-bindgen, glob, regex-automata, regex-syntax, regex, nom, either, itertools, which, futures-core, futures-io, rustls-native-certs, rustls-pemfile, rustls, bumpalo, iana-time-zone-haiku, iana-time-zone, rustls-pki-types, fs_extra, lazy-regex, opi_ftp, chrono, lazy-regex-proc_macros, suppaftp, windows-core, windows-targets, windows_aarch64_gnullvm, windows_aarch64_msvc, windows_i686_gnu, windows_i686_gnullvm, windows_i686_msvc, windows_x86_64_gnu, windows_x86_64_gnullvm, windows_x86_64_msvc, wit-bindgen-rt, android-tzdata, lazycell, futures-lite, home, minimal-lexical, parking, pin-project-lite, prettyplease, rustc-hash, rustversion, thiserror-impl, thiserror, android_system_properties, aho-corasick, socket2, mio, mime, hyper, petgraph, heck, unicode-width, fixedbitset, futures-channel, futures-executor, futures-macro, futures-sink, futures-task, futures-util, futures, hyper-rustls, httpdate, rustc_version, multimap, indexmap, fnv, h2, http, tokio-rustls, bytes, logos-codegen, logos-derive, logos, pin-utils, want, try-lock, slab, tracing-attributes, tracing-core, tracing, tower-layer, tower-service, tower, axum, http-body, http-body-util, beef, hyper-util, tonic-build, tonic, axum-core, tokio-macros, matchit, opi_grpc, tokio-stream, tokio-util, tokio, anyhow, async-trait, atomic-waker, pin-project-internal, pin-project, prost-reflect, protox-parse, protox, semver, hyper-timeout, md-5, hex, backtrace, rustc-demangle, serde_with, serde_with_macros, winreg, object, hickory-proto, hickory-resolver, gimli, linked-hash-map, lru-cache, unicode-bidi, unicode-normalization, unicode-properties, enum-as-inner, resolv-conf, const-random-macro, const-random, parking_lot, addr2line, pbkdf2, ipconfig, stringprep, signal-hook-registry, ahash, num-conv, powerfmt, deranged, time-core, time-macros, time, ipnet, macro_magic, macro_magic_core, macro_magic_core_macros, macro_magic_macros, tap, darling, darling_core, darling_macro, bitvec, wyz, radium, tinyvec_macros, funty, derive-where, opi_mongodb, convert_case, dateparser, windows-implement, windows-interface, windows-result, windows-strings, miniz_oxide, ident_case, widestring, adler2, derive-syn-parse, serde_bytes, typed-builder-macro, typed-builder, tinyvec, strsim, rustc_version_runtime, bson, data-encoding, derive_more, crunchy, take_mut, enumflags2_derive, enumflags2, tiberius, arrayvec, rand_hc, encoding_rs, rust_decimal, pretty-hex, asynchronous-codec, opi_mssql, md5, thread-id, winauth, async-native-tls, connection-string, libz-sys, bufstream, num-bigint, flate2, mysql_common, subprocess, btoi, toml_datetime, toml_edit, utf16_iter, write16, lru, crc32fast, saturating, proc-macro-error-attr2, proc-macro-error2, opi_mysql, mysql-common-derive, derive_utils, io-enum, proc-macro-crate, winnow, termcolor, twox-hash, pem, winapi-util, crossbeam-queue, mysql, zstd-safe, zstd-sys, zstd, named_pipe, web-sys, fallible-iterator, tokio-native-tls, opi_postgres, siphasher, wasite, whoami, phf, phf_shared, postgres-native-tls, postgres-protocol, postgres-types, postgres, tokio-postgres, rcon-client, opi_rcon, libsqlite3-sys, rusqlite, fallible-streaming-iterator, opi_sqlite, hashlink, openssl-src, ssh2, opi_ssh, libssh2-sys, opi_tcpclient
+Used by: cfg-if, uuid, getrandom, libc, common-binary, r-efi, wasip2, wasip3, itoa, serde_core, serde_json, wit-bindgen, base64, memchr, smallvec, common-core, addin1c, utf16_lit, common-core-macros, proc-macro2, quote, syn, unicode-ident, bitflags, hashbrown, lock_api, parking_lot_core, equivalent, scopeguard, redox_syscall, dashmap, common-dataset, windows-link, crossbeam-utils, core-foundation-sys, cc, find-msvc-tools, js-sys, wasm-bindgen-macro-support, wasm-bindgen-macro, wasm-bindgen-shared, wasm-bindgen, log, num-traits, autocfg, bumpalo, iana-time-zone-haiku, iana-time-zone, common-logs, chrono, windows-core, windows-implement, windows-interface, windows-result, windows-strings, once_cell, rustversion, serde, serde_derive, zmij, android_system_properties, shlex, socket2, mio, errno, futures-core, futures-macro, futures-task, futures-util, parking_lot, indexmap, signal-hook-registry, bytes, slab, tokio-macros, common-server, common-utils, windows-sys, tokio, pin-project-lite, wasi, core-foundation, form_urlencoded, idna, percent-encoding, url, openssl-probe, openssl-sys, pkg-config, tempfile, socks, schannel, winapi, httparse, native-tls, vcpkg, stable_deref_trait, foreign-types-shared, foreign-types, openssl-macros, idna_adapter, synstructure, utf8_iter, common-tcp, winapi-i686-pc-windows-gnu, winapi-x86_64-pc-windows-gnu, displaydoc, fastrand, linux-raw-sys, rustix, byteorder, security-framework-sys, security-framework, sha1, sha2, lazy_static, base64ct, num-bigint-dig, num-integer, num-iter, digest, hmac, block-buffer, signature, ppv-lite86, const-oid, der, pkcs8, cpufeatures, crypto-common, pem-rfc7468, pkcs1, spki, rand, rand_chacha, rand_core, zerocopy, zeroize, opi_crypto, libm, rsa, spin, typenum, version_check, generic-array, cmake, jobserver, regex-automata, regex-syntax, regex, futures-io, rustls-native-certs, rustls-pemfile, rustls, rustls-pki-types, fs_extra, lazy-regex, opi_ftp, lazy-regex-proc_macros, suppaftp, windows-targets, windows_aarch64_gnullvm, windows_aarch64_msvc, windows_i686_gnu, windows_i686_gnullvm, windows_i686_msvc, windows_x86_64_gnu, windows_x86_64_gnullvm, windows_x86_64_msvc, futures-lite, parking, thiserror-impl, thiserror, aho-corasick, aws-lc-sys, mime, hyper, either, itertools, petgraph, heck, unicode-width, fixedbitset, futures-channel, futures-executor, futures-sink, futures, hyper-rustls, httpdate, rustc_version, multimap, fnv, h2, http, tokio-rustls, logos-codegen, logos-derive, logos, pin-utils, want, try-lock, tracing-attributes, tracing-core, tracing, tower-layer, tower-service, tower, axum, http-body, http-body-util, beef, hyper-util, tonic-build, tonic, axum-core, matchit, opi_grpc, tokio-stream, tokio-util, anyhow, async-trait, atomic-waker, pin-project-internal, pin-project, prettyplease, prost-reflect, protox-parse, protox, semver, hyper-timeout, serde_urlencoded, tower-http, opi_httpserver, serde_path_to_error, md-5, hex, serde_with, serde_with_macros, winreg, hickory-proto, hickory-resolver, unicode-bidi, unicode-normalization, unicode-properties, unicode-segmentation, unicode-xid, enum-as-inner, resolv-conf, const-random-macro, const-random, pbkdf2, ipconfig, stringprep, ahash, critical-section, num-conv, powerfmt, deranged, time-core, time-macros, time, ipnet, macro_magic, macro_magic_core, macro_magic_core_macros, macro_magic_macros, tap, darling, darling_core, darling_macro, bitvec, wyz, radium, tinyvec_macros, funty, tagptr, derive-where, convert_case, opi_mongodb, dateparser, ident_case, widestring, derive-syn-parse, portable-atomic, serde_bytes, typed-builder-macro, typed-builder, tinyvec, strsim, rustc_version_runtime, bson, data-encoding, derive_more-impl, derive_more, crossbeam-channel, crossbeam-epoch, crunchy, take_mut, enumflags2_derive, enumflags2, tiberius, arrayvec, rand_hc, encoding_rs, rust_decimal, pretty-hex, asynchronous-codec, opi_mssql, md5, thread-id, winauth, async-native-tls, connection-string, libz-sys, bufstream, num-bigint, flate2, mysql_common, btoi, toml_datetime, toml_edit, toml_parser, lru, crc32fast, saturating, proc-macro-error-attr2, proc-macro-error2, opi_mysql, mysql-common-derive, simd-adler32, miniz_oxide, adler2, derive_utils, io-enum, proc-macro-crate, winnow, termcolor, twox-hash, pem, winapi-util, crossbeam-queue, mysql, named_pipe, web-sys, fallible-iterator, tokio-native-tls, libredox, opi_postgres, objc2-core-foundation, objc2-system-configuration, siphasher, wasite, whoami, phf, phf_shared, postgres-native-tls, postgres-protocol, postgres-types, postgres, tokio-postgres, rcon-client, opi_rcon, libsqlite3-sys, rusqlite, fallible-streaming-iterator, opi_sqlite, wit-bindgen-rt, hashlink, openssl-src, ssh2, opi_ssh, libssh2-sys, opi_tcpclient, backtrace, rustc-demangle, object, gimli, addr2line, opi_tcpserver, io-uring, tungstenite, tokio-tungstenite, opi_wsserver, utf-8
 ================================================================================
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Steven Fackler
+Copyright (c) 2015 Bart┼Вomiej Kami┼Дski
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ================================================================================
 License: Unicode License v3 (SPDX: Unicode-3.0)
-Used by: unicode-ident, icu_collections, icu_locale_core, icu_normalizer, icu_normalizer_data, icu_properties, icu_properties_data, icu_provider, litemap, potential_utf, tinystr, writeable, yoke-derive, yoke, zerofrom-derive, zerofrom, zerotrie, zerovec-derive, zerovec, icu_locid, icu_locid_transform, icu_locid_transform_data, icu_provider_macros
+Used by: unicode-ident, icu_collections, icu_locale_core, icu_normalizer, icu_normalizer_data, icu_properties, icu_properties_data, icu_provider, litemap, potential_utf, tinystr, writeable, yoke-derive, yoke, zerofrom-derive, zerofrom, zerotrie, zerovec-derive, zerovec
 ================================================================================
 
 UNICODE LICENSE V3
 
 COPYRIGHT AND PERMISSION NOTICE
 
-Copyright ┬й 2020-2024 Unicode, Inc.
+Copyright ┬й 1991-2023 Unicode, Inc.
 
 NOTICE TO USER: Carefully read the following legal agreement. BY
 DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING DATA FILES, AND/OR
@@ -156,48 +156,41 @@ not be used in advertising or otherwise to promote the sale, use or other
 dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 
-SPDX-License-Identifier: Unicode-3.0
-
-тАФ
-
-Portions of ICU4X may have been adapted from ICU4C and/or ICU4J.
-ICU 1.8.1 to ICU 57.1 ┬й 1995-2016 International Business Machines Corporation and others.
-
 
 ================================================================================
 License: BSD 3-Clause "New" or "Revised" License (SPDX: BSD-3-Clause)
-Used by: subtle, bindgen, matchit, encoding_rs
+Used by: subtle, aws-lc-sys, matchit, encoding_rs
 ================================================================================
 
-Copyright (c) 2016-2017 Isis Agora Lovecruft, Henry de Valence. All rights reserved.
-Copyright (c) 2016-2024 Isis Agora Lovecruft. All rights reserved.
+BSD 3-Clause License
+
+Copyright (c) 2013, Julien Schmidt
+All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
+modification, are permitted provided that the following conditions are met:
 
-1. Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
 
-2. Redistributions in binary form must reproduce the above copyright
-notice, this list of conditions and the following disclaimer in the
-documentation and/or other materials provided with the distribution.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
 
 3. Neither the name of the copyright holder nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
-TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 ================================================================================
@@ -270,7 +263,7 @@ insights.
 
 ================================================================================
 License: ISC License (SPDX: ISC)
-Used by: aws-lc-sys, untrusted, ring, libloading, rustls-webpki, aws-lc-rs
+Used by: untrusted, ring, rustls-webpki, aws-lc-rs, aws-lc-sys
 ================================================================================
 
 Except as otherwise noted, this project is licensed under the following
@@ -292,179 +285,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 The files under third-party/chromium are licensed as described in
 third-party/chromium/LICENSE.
-
-
-================================================================================
-License: OpenSSL License (SPDX: OpenSSL)
-Used by: aws-lc-sys
-================================================================================
-
-/* Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
- * All rights reserved.
- *
- * This package is an SSL implementation written
- * by Eric Young (eay@cryptsoft.com).
- * The implementation was written so as to conform with Netscapes SSL.
- *
- * This library is free for commercial and non-commercial use as long as
- * the following conditions are aheared to.  The following conditions
- * apply to all code found in this distribution, be it the RC4, RSA,
- * lhash, DES, etc., code; not just the SSL code.  The SSL documentation
- * included with this distribution is covered by the same copyright terms
- * except that the holder is Tim Hudson (tjh@cryptsoft.com).
- *
- * Copyright remains Eric Young's, and as such any Copyright notices in
- * the code are not to be removed.
- * If this package is used in a product, Eric Young should be given attribution
- * as the author of the parts of the library used.
- * This can be in the form of a textual message at program startup or
- * in documentation (online or textual) provided with the package.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * 3. All advertising materials mentioning features or use of this software
- *    must display the following acknowledgement:
- *    "This product includes cryptographic software written by
- *     Eric Young (eay@cryptsoft.com)"
- *    The word 'cryptographic' can be left out if the rouines from the library
- *    being used are not cryptographic related :-).
- * 4. If you include any Windows specific code (or a derivative thereof) from
- *    the apps directory (application code) you must include an acknowledgement:
- *    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
- *
- * THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
- *
- * The licence and distribution terms for any publically available version or
- * derivative of this code cannot be changed.  i.e. this code cannot simply be
- * copied and put under another distribution licence
- * [including the GNU Public Licence.]
- */
-/* ====================================================================
- * Copyright (c) 1998-2007 The OpenSSL Project.  All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
- * 3. All advertising materials mentioning features or use of this
- *    software must display the following acknowledgment:
- *    "This product includes software developed by the OpenSSL Project
- *    for use in the OpenSSL Toolkit. (http://www.openssl.org/)"
- *
- * 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
- *    endorse or promote products derived from this software without
- *    prior written permission. For written permission, please contact
- *    openssl-core@openssl.org.
- *
- * 5. Products derived from this software may not be called "OpenSSL"
- *    nor may "OpenSSL" appear in their names without prior written
- *    permission of the OpenSSL Project.
- *
- * 6. Redistributions of any form whatsoever must retain the following
- *    acknowledgment:
- *    "This product includes software developed by the OpenSSL Project
- *    for use in the OpenSSL Toolkit (http://www.openssl.org/)"
- *
- * THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
- * EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR
- * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
- * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- * ====================================================================
- *
- * This product includes cryptographic software written by Eric Young
- * (eay@cryptsoft.com).  This product includes software written by Tim
- * Hudson (tjh@cryptsoft.com).
- *
- */
-
-#include <openssl/ssl.h>
-
-#if !defined(OPENSSL_WINDOWS) && !defined(OPENSSL_PNACL) && \
-    !defined(OPENSSL_NO_FILESYSTEM)
-
-#include <dirent.h>
-#include <errno.h>
-#include <string.h>
-
-#include <openssl/err.h>
-#include <openssl/mem.h>
-
-
-int SSL_add_dir_cert_subjects_to_stack(STACK_OF(X509_NAME) *stack,
-                                       const char *path) {
-  DIR *dir = opendir(path);
-  if (dir == NULL) {
-    OPENSSL_PUT_ERROR(SSL, ERR_R_SYS_LIB);
-    ERR_add_error_data(3, "opendir('", dir, "')");
-    return 0;
-  }
-
-  int ret = 0;
-  for (;;) {
-    // |readdir| may fail with or without setting |errno|.
-    errno = 0;
-    struct dirent *dirent = readdir(dir);
-    if (dirent == NULL) {
-      if (errno) {
-        OPENSSL_PUT_ERROR(SSL, ERR_R_SYS_LIB);
-        ERR_add_error_data(3, "readdir('", path, "')");
-      } else {
-        ret = 1;
-      }
-      break;
-    }
-
-    char buf[1024];
-    if (strlen(path) + strlen(dirent->d_name) + 2 > sizeof(buf)) {
-      OPENSSL_PUT_ERROR(SSL, SSL_R_PATH_TOO_LONG);
-      break;
-    }
-
-    int r = snprintf(buf, sizeof(buf), "%s/%s", path, dirent->d_name);
-    if (r <= 0 ||
-        r >= (int)sizeof(buf) ||
-        !SSL_add_file_cert_subjects_to_stack(stack, buf)) {
-      break;
-    }
-  }
-
-  closedir(dir);
-  return ret;
-}
-
-#endif  // !WINDOWS && !PNACL && !OPENSSL_NO_FILESYSTEM
 
 
 ================================================================================
