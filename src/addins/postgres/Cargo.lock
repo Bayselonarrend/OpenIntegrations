@@ -208,6 +208,7 @@ version = "0.1.0"
 dependencies = [
  "base64",
  "serde_json",
+ "uuid",
 ]
 
 [[package]]
