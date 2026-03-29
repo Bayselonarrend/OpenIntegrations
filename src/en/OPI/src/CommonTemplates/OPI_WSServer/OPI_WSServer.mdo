@@ -3,7 +3,7 @@
   <name>OPI_WSServer</name>
   <synonym>
     <key>en</key>
-    <value>AddIn Websocket-of server (OPI)</value>
+    <value>WebSocket-server Component (OpenIntegrations</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

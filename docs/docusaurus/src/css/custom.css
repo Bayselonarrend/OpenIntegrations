@@ -415,6 +415,7 @@ li > a.menu__link {
 .SQLite a::before,
 .SSH a::before,
 .TCP a::before,
+.WebSocket a::before,
 .Telegram a::before,
 .Twitter a::before,
 .Viber a::before,
@@ -540,6 +541,10 @@ li > a.menu__link {
 
 .TCP > div > a::before{
   content: url(../../static/img/APIs/small/TCP.png);
+}
+
+.WebSocket > div > a::before{
+  content: url(../../static/img/APIs/small/WebSocket.png);
 }
 
 .Telegram > div > a::before{
