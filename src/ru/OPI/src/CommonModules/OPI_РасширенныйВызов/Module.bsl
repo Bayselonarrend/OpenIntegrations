@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/main/Modules/internal/Modules/OPI_РасширенныйВызов.os
+// OneScript: ./OInt/tools/main/Modules/OPI_РасширенныйВызов.os
 
 // MIT License
 
@@ -37,6 +37,7 @@
 //@skip-check wrong-string-literal-content
 
 // #Использовать "./internal"
+// #Использовать "./internal/Modules/internal"
 
 // !OInt Перем ТекущиеНастройки;
 
