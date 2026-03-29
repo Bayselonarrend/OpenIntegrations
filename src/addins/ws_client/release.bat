@@ -1,5 +1,9 @@
 @echo off
-cargo build --release --target x86_64-pc-windows-msvc
-cargo build --release --target i686-pc-windows-msvc
-cargo build --release --target x86_64-unknown-linux-gnu
-cargo build --release --target i686-unknown-linux-gnu
+
+:: Установить переменную
+set CARGO_NAME=opi_wsclient
+set LIB_NAME=OPI_WSClient
+set ADDIN_DIR=%~dp0
+set FOLV=true
+
+call ../build.bat
