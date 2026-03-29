@@ -57,6 +57,7 @@
   <commonTemplates>CommonTemplate.OPI_SSH</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_TCPServer</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_WSClient</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_WSServer</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_ClickHouseProto</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_MethodSettings</commonTemplates>

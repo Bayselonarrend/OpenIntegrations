@@ -52,7 +52,6 @@ impl WebSocketClient {
                         }
                     }
                     Message::Ping(data) => {
-                        // Automatically send pong
                         let _ = socket.send(Message::Pong(data));
                         self.log("Received ping");
                         json!({
@@ -73,7 +72,6 @@ impl WebSocketClient {
                             .map(|f| f.reason.to_string())
                             .unwrap_or_default();
 
-                        // Send close response
                         let _ = socket.close(None);
                         self.socket = None;
                         self.log("Received close");
