@@ -158,6 +158,7 @@
 
         ТекущиеНастройки = Настройки;
 
+
     КонецЕсли;
 
 КонецПроцедуры
@@ -167,6 +168,23 @@
     //@skip-check module-unused-local-variable
     ТекущиеНастройки = Новый Структура;
 
+
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Undefined, Val Settings = Undefined) Export
+    Return ВызватьСНастройками(ModuleName, FunctionName, Parameters, Settings);
+EndFunction
+
+Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
+    Return ПолучитьДоступныеНастройки(ModuleName, FunctionName);
+EndFunction
+
+Function GetCurrentSettings() Export
+    Return ПолучитьТекущиеНастройки();
+EndFunction
+
+#EndRegion

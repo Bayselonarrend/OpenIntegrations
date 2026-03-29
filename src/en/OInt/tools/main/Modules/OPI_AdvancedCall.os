@@ -36,10 +36,10 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-// #Use "./internal"
-// #Use "./internal/Modules/internal"
+#Use "./internal"
+#Use "./internal/Modules/internal"
 
-// !OInt Var CurrentSettings;
+Var CurrentSettings;
 
 #Region Public
 
@@ -139,8 +139,7 @@ Function GetCurrentSettings() Export
 
     Try
         //@skip-check bsl-legacy-check-string-literal
-        Return SessionParameters["OPI_Settings"]; // !OPI
-        // !OInt Return CurrentSettings;
+        Return CurrentSettings;
     Except
         Return Undefined;
     EndTry;
@@ -159,7 +158,6 @@ Procedure SetSettings(Val Settings)
 
         CurrentSettings = Settings;
 
-        SessionParameters.OPI_Settings = CurrentSettings; // !OPI
 
     EndIf;
 
@@ -170,8 +168,23 @@ Procedure DeleteSettings()
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
 
-    SessionParameters.OPI_Settings = New Structure; // !OPI
 
 EndProcedure
+
+#EndRegion
+
+#Region Alternate
+
+Function ВызватьСНастройками(Val ИмяМодуля, Val ИмяФункции, Val Параметры = Undefined, Val Настройки = Undefined) Export
+    Return CallWithSettings(ИмяМодуля, ИмяФункции, Параметры, Настройки);
+EndFunction
+
+Function ПолучитьДоступныеНастройки(Val ИмяМодуля, Val ИмяФункции) Export
+    Return GetAvailableSettings(ИмяМодуля, ИмяФункции);
+EndFunction
+
+Function ПолучитьТекущиеНастройки() Export
+    Return GetCurrentSettings();
+EndFunction
 
 #EndRegion
