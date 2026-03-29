@@ -57,6 +57,7 @@
   <commonTemplates>CommonTemplate.OPI_SSH</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_TCPClient</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_TCPServer</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_WSClient</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_WSServer</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_ClickHouseProto</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_MethodSettings</commonTemplates>
@@ -95,6 +96,7 @@
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_VKTeams</commonModules>
+  <commonModules>CommonModule.OPI_WebSocket</commonModules>
   <commonModules>CommonModule.OPI_YandexDisk</commonModules>
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexMarket</commonModules>
@@ -108,6 +110,7 @@
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
   <commonModules>CommonModule.OPI_AdvancedCall</commonModules>
+  <commonModules>CommonModule.OPI_GenericServer</commonModules>
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>

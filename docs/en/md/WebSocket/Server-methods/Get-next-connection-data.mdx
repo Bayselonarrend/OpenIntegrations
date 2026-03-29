@@ -1,0 +1,38 @@
+---
+sidebar_position: 3
+description: Get next connection data  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get next connection data 
+ Gets data from the buffer of the next active connection in the queue where there are incoming data
+
+
+
+`Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
+  | Timeout | - | Number | &#x2716; | Waiting period for new data if the queue is empty (in ms) |
+  | MaxSize | - | Number | &#x2716; | Maximum size of data to receive |
+
+  
+  Returns:  Map Of KeyAndValue - Execution result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+ 
+
+
+
+
