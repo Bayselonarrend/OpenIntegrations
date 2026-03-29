@@ -33,6 +33,7 @@
   "sqlite": "OPI_SQLite",
   "ssh": "OPI_SSH",
   "tcp": "OPI_TCP",
+  "ws": "OPI_WebSocket",
   "telegram": "OPI_Telegram",
   "twitter": "OPI_Twitter",
   "viber": "OPI_Viber",
