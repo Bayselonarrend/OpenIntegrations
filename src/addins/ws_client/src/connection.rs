@@ -71,21 +71,7 @@ impl WebSocketClient {
     }
 
     fn connect_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<WebSocket<MaybeTlsStream<TcpStream>>, String> {
-        let mut request = Request::builder()
-            .uri(url.as_str())
-            .body(())
-            .map_err(|e| format!("Failed to build request: {}", e))?;
-
-        if let Some(headers_vec) = headers {
-            let req_headers = request.headers_mut();
-            for (key, value) in headers_vec {
-                let header_value = HeaderValue::from_str(value)
-                    .map_err(|e| format!("Invalid header value for '{}': {}", key, e))?;
-                let header_name = key.parse::<tungstenite::http::HeaderName>()
-                    .map_err(|e| format!("Invalid header name '{}': {}", key, e))?;
-                req_headers.insert(header_name, header_value);
-            }
-        }
+        let request = Self::build_request_with_headers(url, headers)?;
 
         let (socket, _) = client(request, MaybeTlsStream::Plain(
             TcpStream::connect((url.host_str().ok_or("No host")?, url.port().unwrap_or(80)))
@@ -104,7 +90,6 @@ impl WebSocketClient {
 
         let tls_config = tls_settings.get_rustls_config()?;
 
-        // Parse server name
         let server_name = ServerName::try_from(host.to_string())
             .map_err(|e| format!("Invalid server name: {}", e))?;
 
@@ -114,6 +99,25 @@ impl WebSocketClient {
         let tls_stream = rustls::StreamOwned::new(connector, tcp_stream);
         let maybe_tls_stream = MaybeTlsStream::Rustls(tls_stream);
 
+        let request = Self::build_request_with_headers(url, headers)?;
+
+        let (socket, _) = client(request, maybe_tls_stream)
+            .map_err(|e| format!("WebSocket handshake failed: {}", e))?;
+
+        Ok(socket)
+    }
+
+    pub fn disconnect(&mut self) -> String {
+        if let Some(mut socket) = self.socket.take() {
+            self.log("Disconnecting");
+            let _ = socket.close(None);
+            json_success()
+        } else {
+            json_error("Not connected")
+        }
+    }
+
+    fn build_request_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<Request, String> {
         let mut request = Request::builder()
             .uri(url.as_str())
             .body(())
@@ -130,19 +134,6 @@ impl WebSocketClient {
             }
         }
 
-        let (socket, _) = client(request, maybe_tls_stream)
-            .map_err(|e| format!("WebSocket handshake failed: {}", e))?;
-
-        Ok(socket)
-    }
-
-    pub fn disconnect(&mut self) -> String {
-        if let Some(mut socket) = self.socket.take() {
-            self.log("Disconnecting");
-            let _ = socket.close(None);
-            json_success()
-        } else {
-            json_error("Not connected")
-        }
+        Ok(request)
     }
 }
