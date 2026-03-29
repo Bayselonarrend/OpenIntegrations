@@ -352,7 +352,8 @@
          "OPI_ЗапросыSQL": "OPI_SQLQueries",
          "OPI_ПолучениеДанныхТестов": "OPI_TestDataRetrieval",
          "OPI_ПреобразованиеТипов": "OPI_TypeConversion",
-         "OPI_РасширенныйВызов": "OPI_AdvancedCall"
+         "OPI_РасширенныйВызов": "OPI_AdvancedCall",
+         "OPI_УниверсальныйСервер": "OPI_GenericServer"
         }
        },
        "docsUrl": {
