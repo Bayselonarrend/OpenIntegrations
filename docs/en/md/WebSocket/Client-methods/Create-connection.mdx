@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+description: Create connection  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create connection 
+ Creates a TCP connection
+
+
+
+`Function CreateConnection(Val Address, Val Tls = Undefined, Val Proxy = Undefined, Val Logging = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | - | String | &#x2714; | Address and port |
+  | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
+
+  
+  Returns:  Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+ 
+
+
+
+

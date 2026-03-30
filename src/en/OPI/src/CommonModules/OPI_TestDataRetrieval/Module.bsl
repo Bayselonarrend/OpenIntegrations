@@ -7870,6 +7870,8 @@ Function Check_TCP_GetConnectionData(Val Result, Val Option, Message = "")
 
             ExpectsThat(Data).Равно(Message);
 
+            Result["message"] = "<BinaryData>";
+
         EndIf;
 
     EndIf;
@@ -13618,8 +13620,11 @@ Function Check_RSS_CreateFeedRSS(Val Result, Val Option, Parameters = "")
     ExpectsThat(StrFind(Result, "<channel>") > 0).Равно(True);
     ExpectsThat(StrFind(Result, "<item>") > 0).Равно(True);
 
-    WriteParameter("RSS_FeedXML", Result);
-    Parameters.Insert("RSS_FeedXML", Result);
+    TFN = GetTempFileName("xml");
+    GetBinaryDataFromString(Result).Write(TFN);
+
+    WriteParameter("RSS_FeedXML", TFN);
+    Parameters.Insert("RSS_FeedXML", TFN);
 
     Return Result;
 
@@ -13672,8 +13677,11 @@ Function Check_RSS_CreateFeedAtom(Val Result, Val Option, Parameters = "")
     ExpectsThat(StrFind(Result, "xmlns=""http://www.w3.org/2005/Atom""") > 0).Равно(True);
     ExpectsThat(StrFind(Result, "<entry>") > 0).Равно(True);
 
-    WriteParameter("RSS_AtomFeedXML", Result);
-    Parameters.Insert("RSS_AtomFeedXML", Result);
+    TFN = GetTempFileName("xml");
+    GetBinaryDataFromString(Result).Write(TFN);
+
+    WriteParameter("RSS_AtomFeedXML", TFN);
+    Parameters.Insert("RSS_AtomFeedXML", TFN);
 
     Return Result;
 

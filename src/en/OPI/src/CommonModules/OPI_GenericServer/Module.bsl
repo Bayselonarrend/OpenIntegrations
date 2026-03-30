@@ -228,37 +228,6 @@ Function GetLog(Val Module, Val ServerObject, Val AsString = False, Val EventCou
 
 EndFunction
 
-Function GetLoggingSettings(Val WriteToMemory = True
-    , Val MaxEvents                           = 300
-    , Val FilePath                            = "") Export
-
-    OPI_TypeConversion.GetBoolean(WriteToMemory);
-    OPI_TypeConversion.GetLine(FilePath);
-    OPI_TypeConversion.GetNumber(MaxEvents);
-
-    SettingsStructure = New Structure;
-    WriteToFile       = ValueIsFilled(FilePath);
-
-    If WriteToMemory Then
-        SettingsStructure.Insert("mode"       , "memory");
-        SettingsStructure.Insert("max_entries", MaxEvents);
-    EndIf;
-
-    If WriteToFile Then
-        SettingsStructure.Insert("mode"     , "file");
-        SettingsStructure.Insert("file_path", FilePath);
-    EndIf;
-
-    If WriteToFile And WriteToMemory Then
-        SettingsStructure.Insert("mode", "both");
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return SettingsStructure;
-
-EndFunction
-
-
 #EndRegion
 
 #Region Internal

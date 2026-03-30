@@ -29631,6 +29631,8 @@ Procedure RSS_ParseFeedRSS(FunctionParameters)
 
     Process(Result, "RSS", "ParseFeedRSS");
 
+    OPI_Tools.RemoveFileWithTry(FeedXML, "Failed to delete the temporary file after the test!!");
+
 EndProcedure
 
 Procedure RSS_CreateFeedAtom(FunctionParameters)
@@ -29700,6 +29702,8 @@ Procedure RSS_ParseFeedAtom(FunctionParameters)
     // END
 
     Process(Result, "RSS", "ParseFeedAtom");
+
+    OPI_Tools.RemoveFileWithTry(FeedXML, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
