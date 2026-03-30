@@ -4,13 +4,19 @@
         "title": "Version 1.35.0 - .04.2026",
         "summary_ru": "Методы работы с Websocket",
         "summary_en": "Methods of working with Websocket",
-        "image": "media/Covers/RSS.png",
+        "image": "media/Covers/WebSocket.png",
         "changes": [
             {
                 "lib": "WebSocket",
                 "icon": "media/WebSocket.png",
                 "description_ru": "Методы клиента (3 функции)",
                 "description_en": "Client methods (3 functions)"
+            },
+            {
+                "lib": "SQLite",
+                "icon": "media/SQLite.png",
+                "description_ru": "Исправлена работа с расширениями для новых версий платформы",
+                "description_en": "Fixed extension compatibility with new platform versions"                
             }
         ]
     },
