@@ -33,12 +33,12 @@
   "sqlite": "OPI_SQLite",
   "ssh": "OPI_SSH",
   "tcp": "OPI_TCP",
-  "ws": "OPI_WebSocket",
   "telegram": "OPI_Telegram",
   "twitter": "OPI_Twitter",
   "viber": "OPI_Viber",
   "vk": "OPI_VK",
   "vkteams": "OPI_VKTeams",
+  "ws": "OPI_WebSocket",
   "yadisk": "OPI_YandexDisk",
   "yamarket": "OPI_YandexMarket",
   "yandex": "OPI_YandexID"

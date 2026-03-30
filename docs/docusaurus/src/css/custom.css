@@ -415,12 +415,12 @@ li > a.menu__link {
 .SQLite a::before,
 .SSH a::before,
 .TCP a::before,
-.WebSocket a::before,
 .Telegram a::before,
 .Twitter a::before,
 .Viber a::before,
 .VK a::before,
 .VKTeams a::before,
+.WebSocket a::before,
 .YandexDisk a::before,
 .HTTP a::before{
   padding-right: 0.7rem;
@@ -543,10 +543,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/TCP.png);
 }
 
-.WebSocket > div > a::before{
-  content: url(../../static/img/APIs/small/WebSocket.png);
-}
-
 .Telegram > div > a::before{
   content: url(../../static/img/APIs/small/Telegram.png);
 }
@@ -565,6 +561,10 @@ li > a.menu__link {
 
 .VKTeams > div > a::before{
   content: url(../../static/img/APIs/small/VKTeams.png);
+}
+
+.WebSocket > div > a::before{
+  content: url(../../static/img/APIs/small/WebSocket.png);
 }
 
 .YandexDisk > div > a::before{

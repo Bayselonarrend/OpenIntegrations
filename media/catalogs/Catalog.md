@@ -29,11 +29,11 @@
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
 |![SSH](../SSH.png)| `SSH`| ssh, shell |
 |![TCP](../TCP.png)| `TCP`| tcp |
-|![WebSocket](../WebSocket.png)| `WebSocket`| websocket, ws |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Twitter (X)](../Twitter.png)| `Twitter (X)`| twitter, x |
 |![Viber](../Viber.png)| `Viber`| viber |
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VK Teams](../VKTeams.png)| `VK Teams`| vkteams, vk teams |
+|![WebSocket](../WebSocket.png)| `WebSocket`| websocket, ws |
 |![Yandex.Disk](../YandexDisk.png)| `Yandex.Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
 |![HTTP](../HTTP.png)| `HTTP`| http, https |

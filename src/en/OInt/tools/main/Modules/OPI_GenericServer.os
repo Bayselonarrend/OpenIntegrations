@@ -287,3 +287,51 @@ Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
 EndProcedure
 
 #EndRegion
+
+#Region Alternate
+
+Function ЗапуститьСервер(Val Модуль, Val Порт, Val РазмерПула = 100, Val Логирование = Undefined) Export
+    Return StartServer(Модуль, Порт, РазмерПула, Логирование);
+EndFunction
+
+Function ОстановитьСервер(Val Модуль, Val ОбъектСервера) Export
+    Return StopServer(Модуль, ОбъектСервера);
+EndFunction
+
+Function ПолучитьДанныеОчередногоСоединения(Val Модуль, Val ОбъектСервера, Val Таймаут = 1000, Val МаксимальныйРазмер = 8192) Export
+    Return GetNextConnectionData(Модуль, ОбъектСервера, Таймаут, МаксимальныйРазмер);
+EndFunction
+
+Function ПолучитьДанныеСоединения(Val Модуль, Val ОбъектСервера, Val IDСоединения, Val Таймаут = 1000, Val МаксимальныйРазмер = 8192) Export
+    Return GetConnectionData(Модуль, ОбъектСервера, IDСоединения, Таймаут, МаксимальныйРазмер);
+EndFunction
+
+Function ОтправитьДанные(Val Модуль, Val ОбъектСервера, Val IDСоединения, Val Данные) Export
+    Return SendData(Модуль, ОбъектСервера, IDСоединения, Данные);
+EndFunction
+
+Function ЗакрытьВходящееСоединение(Val Модуль, Val ОбъектСервера, Val IDСоединения) Export
+    Return CloseIncomingConnection(Модуль, ОбъектСервера, IDСоединения);
+EndFunction
+
+Function ЗавершитьОтправку(Val Модуль, Val ОбъектСервера, Val IDСоединения) Export
+    Return CompleteSend(Модуль, ОбъектСервера, IDСоединения);
+EndFunction
+
+Function ЗавершитьПолучение(Val Модуль, Val ОбъектСервера, Val IDСоединения) Export
+    Return FinishReceiving(Модуль, ОбъектСервера, IDСоединения);
+EndFunction
+
+Function ПолучитьСписокСоединений(Val Модуль, Val ОбъектСервера) Export
+    Return GetConnectionList(Модуль, ОбъектСервера);
+EndFunction
+
+Function ПолучитьЛог(Val Модуль, Val ОбъектСервера, Val КакСтрока = False, Val ЧислоСобытий = 100) Export
+    Return GetLog(Модуль, ОбъектСервера, КакСтрока, ЧислоСобытий);
+EndFunction
+
+Function ПолучитьНастройкиЛогирования(Val ЗаписьВПамять = True, Val МаксимумСобытий = 300, Val ПутьКФайлу = "") Export
+    Return GetLoggingSettings(ЗаписьВПамять, МаксимумСобытий, ПутьКФайлу);
+EndFunction
+
+#EndRegion

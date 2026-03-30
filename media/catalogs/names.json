@@ -28,12 +28,12 @@
 "SQLite",
 "SSH",
 "TCP",
-"WebSocket",
 "Telegram",
 "Twitter",
 "Viber",
 "VK",
 "VKTeams",
+"WebSocket",
 "YandexDisk",
 "HTTP"
 ]
