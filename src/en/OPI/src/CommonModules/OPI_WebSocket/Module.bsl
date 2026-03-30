@@ -1,4 +1,4 @@
-// OneScript: ./OInt/api/tcp/Modules/OPI_WebSocket.os
+// OneScript: ./OInt/api/ws/Modules/OPI_WebSocket.os
 // Lib: WebSocket
 // CLI: ws
 // Keywords: websocket, ws
