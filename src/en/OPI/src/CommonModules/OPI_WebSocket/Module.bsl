@@ -51,7 +51,125 @@
 
 #Region Public
 
+#Region Common
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for starting logging on server startup
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging log to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                         - count
+// FilePath      - String  - Path to file for saving full log, if necessary                    - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+#EndRegion
+
 #Region ClientMethods
+
+// Create connection !NOCLI
+// Creates a TCP connection
+//
+// Parameters:
+// Address - String                   - Address and port                                  - address
+// Tls     - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
+// Proxy   - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
+Function CreateConnection(Val Address
+    , Val Tls = Undefined
+    , Val Proxy = Undefined
+    , Val Logging = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Address);
+    OPI_Tools.RestoreEscapeSequences(Address);
+
+    WSClient = OPI_AddIns.GetAddIn("WSClient");
+    Tls      = OPI_AddIns.SetTls(WSClient, Tls);
+
+    If Not OPI_Tools.GetOr(Tls, "result", False) Then
+        Return Tls;
+    EndIf;
+
+    If ValueIsFilled(Proxy) Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Proxy);
+        ProxtString = OPI_Tools.JSONString(Proxy);
+
+        Setup = WSClient.SetProxySettings(ProxtString);
+        Setup = OPI_Tools.JsonToStructure(Setup);
+
+        If Not OPI_Tools.GetOr(Setup, "result", False) Then
+            Return Setup;
+        EndIf;
+
+    EndIf;
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    Result = WSClient.Connect(Address, SettingsString);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return ?(Result["result"], WSClient, Result);
+
+EndFunction
+
+// Close connection !NOCLI
+// Explicitly closes a previously created connection
+//
+// Parameters:
+// Connection - Arbitrary - Connection, See CreateConnection - conn
+//
+// Returns:
+// Structure Of KeyAndValue - Result of connection termination
+Function CloseConnection(Val Connection) Export
+
+    Result = Connection.Disconnect();
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Get TLS settings !NOCLI
+// Forms settings for using TLS
+//
+// Note:
+// Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
+// or implicit, when passing the connection string to the `ProcessRequest` method
+//
+// Parameters:
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
+//
+// Returns:
+// Structure Of KeyAndValue - Structure of TLS connection settings
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+
+    Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+
+EndFunction
 
 // Is client object !NOCLI
 // Checks that the value is an object of the WebSocket client external component
@@ -208,25 +326,6 @@ Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Ex
         , ServerObject
         , AsString
         , EventCount);
-
-EndFunction
-
-// Get logging settings !NOCLI
-// Retrieves settings structure for starting logging on server startup
-//
-// Parameters:
-// WriteToMemory - Boolean - Logging log to memory for further retrieval from the addin object - memory
-// MaxEvents     - Number  - Maximum number of events stored in memory                         - count
-// FilePath      - String  - Path to file for saving full log, if necessary                    - path
-//
-// Returns:
-// Structure Of KeyAndValue - Settings structure
-Function GetLoggingSettings(Val WriteToMemory = True
-    , Val MaxEvents = 300
-    , Val FilePath = "") Export
-
-    //@skip-check constructor-function-return-section
-    Return OPI_GenericServer.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
 
 EndFunction
 

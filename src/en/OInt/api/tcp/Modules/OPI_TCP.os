@@ -557,7 +557,7 @@ Function GetLoggingSettings(Val WriteToMemory = True
     , Val FilePath = "") Export
 
     //@skip-check constructor-function-return-section
-    Return OPI_GenericServer.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
 
 EndFunction
 
