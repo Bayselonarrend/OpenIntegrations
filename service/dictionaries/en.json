@@ -5388,6 +5388,7 @@
 "ДополнитьКэшСостава": "CompleteCompositionCache",
 "Архивировать товары": "Archive products",
 "УниверсальныйСервер": "GenericServer",
+"OPI_УниверсальныйСервер": "OPI_GenericServer",
 "Команда FTP: `LIST`": "FTP Command: `LIST`",
 "ПолучитьСписокМеток": "GetTagsList",
 "Команда FTP: `NOOP`": "FTP Command: `NOOP`",
