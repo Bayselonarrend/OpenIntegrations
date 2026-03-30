@@ -1,9 +1,11 @@
 use std::net::TcpStream;
 use std::sync::Arc;
 use common_tcp::tls_settings::TlsSettings;
+use common_tcp::tcp_establish::create_tcp_connection;
+use common_tcp::proxy_settings::ProxySettings;
 use common_utils::utils::{json_error, json_success};
 use rustls::pki_types::ServerName;
-use tungstenite::{client, connect, WebSocket};
+use tungstenite::{client, WebSocket};
 use tungstenite::handshake::client::Request;
 use tungstenite::http::HeaderValue;
 use tungstenite::stream::MaybeTlsStream;
@@ -25,47 +27,23 @@ impl WebSocketClient {
             Err(e) => return json_error(&format!("Invalid URL: {}", e)),
         };
 
-        if self.tls_settings.is_some() {
-            let tls_settings = self.tls_settings.as_ref().unwrap();
+        let custom = self.tls_settings.is_some() || self.proxy_settings.is_some();
 
-            if tls_settings.use_tls {
-                return match Self::connect_with_custom_tls(&url, tls_settings, &self.headers) {
-                    Ok(socket) => {
-                        self.socket = Some(socket);
-                        self.log("Connected successfully with custom TLS");
-                        json_success()
-                    }
-                    Err(e) => {
-                        self.log(&format!("Connection failed: {}", e));
-                        json_error(&format!("Connection failed: {}", e))
-                    }
-                }
-            }
-        }
+        let conn =  if custom {
+            Self::connect_with_custom_settings(&url, &self.tls_settings, &self.proxy_settings, &self.headers)
+        }else{
+            Self::connect_with_headers(&url, &self.headers)
+        };
 
-        if self.headers.is_some() {
-            match Self::connect_with_headers(&url, &self.headers) {
-                Ok(socket) => {
-                    self.socket = Some(socket);
-                    self.log("Connected successfully with custom headers");
-                    json_success()
-                }
-                Err(e) => {
-                    self.log(&format!("Connection failed: {}", e));
-                    json_error(&format!("Connection failed: {}", e))
-                }
+        match conn {
+            Ok(socket) => {
+                self.socket = Some(socket);
+                self.log("Connected successfully");
+                json_success()
             }
-        } else {
-            match connect(url.as_str()) {
-                Ok((socket, _response)) => {
-                    self.socket = Some(socket);
-                    self.log("Connected successfully");
-                    json_success()
-                }
-                Err(e) => {
-                    self.log(&format!("Connection failed: {}", e));
-                    json_error(&format!("Connection failed: {}", e))
-                }
+            Err(e) => {
+                self.log(&format!("Connection failed: {}", e));
+                json_error(&format!("Connection failed: {}", e))
             }
         }
     }
@@ -81,23 +59,37 @@ impl WebSocketClient {
         Ok(socket)
     }
 
-    fn connect_with_custom_tls(url: &Url, tls_settings: &TlsSettings, headers: &Option<Vec<(String, String)>>) -> Result<WebSocket<MaybeTlsStream<TcpStream>>, String> {
+    fn connect_with_custom_settings(
+        url: &Url, 
+        tls_settings: &Option<TlsSettings>, 
+        proxy_settings: &Option<ProxySettings>,
+        headers: &Option<Vec<(String, String)>>
+    ) -> Result<WebSocket<MaybeTlsStream<TcpStream>>, String> {
+
         let host = url.host_str().ok_or("No host in URL")?;
-        let port = url.port().unwrap_or(443);
+        let port = url.port().unwrap_or_else(|| {
+            if url.scheme() == "wss" { 443 } else { 80 }
+        });
 
-        let tcp_stream = TcpStream::connect((host, port))
-            .map_err(|e| format!("TCP connection failed: {}", e))?;
+        let tcp_stream = create_tcp_connection(host, port, proxy_settings)?;
 
-        let tls_config = tls_settings.get_rustls_config()?;
+        let maybe_tls_stream = if let Some(tls) = tls_settings {
+            if tls.use_tls {
+                let tls_config = tls.get_rustls_config()?;
+                let server_name = ServerName::try_from(host.to_string())
+                    .map_err(|e| format!("Invalid server name: {}", e))?;
 
-        let server_name = ServerName::try_from(host.to_string())
-            .map_err(|e| format!("Invalid server name: {}", e))?;
+                let connector = rustls::ClientConnection::new(Arc::new(tls_config), server_name)
+                    .map_err(|e| format!("TLS connection setup failed: {}", e))?;
 
-        let connector = rustls::ClientConnection::new(Arc::new(tls_config), server_name)
-            .map_err(|e| format!("TLS connection setup failed: {}", e))?;
-
-        let tls_stream = rustls::StreamOwned::new(connector, tcp_stream);
-        let maybe_tls_stream = MaybeTlsStream::Rustls(tls_stream);
+                let tls_stream = rustls::StreamOwned::new(connector, tcp_stream);
+                MaybeTlsStream::Rustls(tls_stream)
+            } else {
+                MaybeTlsStream::Plain(tcp_stream)
+            }
+        } else {
+            MaybeTlsStream::Plain(tcp_stream)
+        };
 
         let request = Self::build_request_with_headers(url, headers)?;
 
@@ -118,6 +110,7 @@ impl WebSocketClient {
     }
 
     fn build_request_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<Request, String> {
+
         let mut request = Request::builder()
             .uri(url.as_str())
             .body(())
