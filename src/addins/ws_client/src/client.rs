@@ -5,6 +5,7 @@ use tungstenite::stream::MaybeTlsStream;
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
 use common_tcp::tls_settings::TlsSettings;
+use common_tcp::proxy_settings::ProxySettings;
 use common_utils::utils::{json_error, json_success};
 use serde_json::json;
 
@@ -13,6 +14,7 @@ pub struct WebSocketClient {
     pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
     pub(crate) tls_settings: Option<TlsSettings>,
+    pub(crate) proxy_settings: Option<ProxySettings>,
     pub(crate) headers: Option<Vec<(String, String)>>,
 }
 
@@ -24,6 +26,7 @@ impl WebSocketClient {
             vault,
             logger: None,
             tls_settings: None,
+            proxy_settings: None,
             headers: None,
         }
     }
@@ -60,6 +63,21 @@ impl WebSocketClient {
                 json_success()
             }
             Err(e) => json_error(&format!("Invalid headers JSON: {}", e)),
+        }
+    }
+
+    pub fn set_proxy(&mut self, proxy_json: &str) -> String {
+        if self.socket.is_some() {
+            return json_error("Cannot set proxy while connected");
+        }
+
+        match ProxySettings::from_json(proxy_json) {
+            Ok(proxy) => {
+                self.proxy_settings = Some(proxy);
+                self.log("Proxy settings configured");
+                json_success()
+            }
+            Err(e) => json_error(&format!("Invalid proxy JSON: {}", e)),
         }
     }
 
