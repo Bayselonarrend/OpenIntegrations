@@ -48,7 +48,7 @@
 
 #Region Main
 
-Function GetAddIn(Val AddInName, Val Class = "Main") Export
+Function GetAddIn(Val AddInName, Val Class = "Main", NoIsolated = False) Export
 
     AddIn     = Undefined;
     Error     = "";
@@ -57,7 +57,7 @@ Function GetAddIn(Val AddInName, Val Class = "Main") Export
     If Not InitializeAddIn(AddInName, Class, AddIn) Then
 
         Error = Undefined;
-        AddIn = AttachAddInOnServer(AddInName, Class, Error);
+        AddIn = AttachAddInOnServer(AddInName, Class, Error, NoIsolated);
 
         If ValueIsFilled(Error) Then
             FormAddInException(Error);
@@ -90,6 +90,36 @@ Function FileTransferRequired() Export
     // BSLLS:CommentedCode-on
 
     Return False;
+
+EndFunction
+
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents                           = 300
+    , Val FilePath                            = "") Export
+
+    OPI_TypeConversion.GetBoolean(WriteToMemory);
+    OPI_TypeConversion.GetLine(FilePath);
+    OPI_TypeConversion.GetNumber(MaxEvents);
+
+    SettingsStructure = New Structure;
+    WriteToFile       = ValueIsFilled(FilePath);
+
+    If WriteToMemory Then
+        SettingsStructure.Insert("mode"       , "memory");
+        SettingsStructure.Insert("max_entries", MaxEvents);
+    EndIf;
+
+    If WriteToFile Then
+        SettingsStructure.Insert("mode"     , "file");
+        SettingsStructure.Insert("file_path", FilePath);
+    EndIf;
+
+    If WriteToFile And WriteToMemory Then
+        SettingsStructure.Insert("mode", "both");
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
 
 EndFunction
 
@@ -235,7 +265,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName, Val Class, Error)
+Function AttachAddInOnServer(Val AddInName, Val Class, Error, NoIsolated)
 
     If OPI_Tools.IsOneScript() Then
         TemplateName = StrTemplate("%1%2.zip"         , AddInsFolderOS(), AddInName);
@@ -244,7 +274,7 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error)
     EndIf;
 
     Try
-        ConnectAddInNoIsolated(TemplateName, AddInName);
+        AttachAddInWithMode(TemplateName, AddInName, NoIsolated);
         AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
         Error = Undefined;
         Return AddIn;
@@ -255,12 +285,14 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error)
 
 EndFunction
 
-Function ConnectAddInNoIsolated(TemplateName, AddInName)
+Function AttachAddInWithMode(TemplateName, AddInName, ForceNonIsolated)
 
-    IsOneScript           = OPI_Tools.IsOneScript();
-    TypeRequieredBySystem = Not IsOneScript And Not OPI_Tools.IsWindows();
+    IsOneScript = OPI_Tools.IsOneScript();
 
-    If IsOneScript Then
+    TypeRequieredByVM     = Not IsOneScript;
+    TypeRequieredBySystem = Not OPI_Tools.IsWindows();
+
+    If Not TypeRequieredByVM Then
 
         TypeRequieredByVersion = False;
 
@@ -279,7 +311,7 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
     EndIf;
 
-    TypeRequiered = TypeRequieredByVersion And TypeRequieredBySystem;
+    TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion And (TypeRequieredBySystem Or ForceNonIsolated);
 
     If Not TypeRequiered Then
 
