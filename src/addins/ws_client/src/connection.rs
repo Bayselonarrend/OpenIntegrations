@@ -49,12 +49,19 @@ impl WebSocketClient {
     }
 
     fn connect_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<WebSocket<MaybeTlsStream<TcpStream>>, String> {
+
         let request = Self::build_request_with_headers(url, headers)?;
 
-        let (socket, _) = client(request, MaybeTlsStream::Plain(
-            TcpStream::connect((url.host_str().ok_or("No host")?, url.port().unwrap_or(80)))
-                .map_err(|e| format!("TCP connection failed: {}", e))?
-        )).map_err(|e| format!("Connection failed: {}", e))?;
+        let host = url.host_str().ok_or("No host")?;
+        let port = url.port().unwrap_or(80);
+
+        let stream = TcpStream::connect((host, port))
+            .map_err(|e| format!("TCP connection failed: {}", e))?;
+
+        let mb_stream = MaybeTlsStream::Plain(stream);
+
+        let (socket, _) = client(request, mb_stream)
+            .map_err(|e| format!("Connection failed: {}", e))?;
 
         Ok(socket)
     }
@@ -75,6 +82,7 @@ impl WebSocketClient {
 
         let maybe_tls_stream = if let Some(tls) = tls_settings {
             if tls.use_tls {
+
                 let tls_config = tls.get_rustls_config()?;
                 let server_name = ServerName::try_from(host.to_string())
                     .map_err(|e| format!("Invalid server name: {}", e))?;
@@ -84,6 +92,7 @@ impl WebSocketClient {
 
                 let tls_stream = rustls::StreamOwned::new(connector, tcp_stream);
                 MaybeTlsStream::Rustls(tls_stream)
+
             } else {
                 MaybeTlsStream::Plain(tcp_stream)
             }
@@ -117,12 +126,17 @@ impl WebSocketClient {
             .map_err(|e| format!("Failed to build request: {}", e))?;
 
         if let Some(headers_vec) = headers {
+
             let req_headers = request.headers_mut();
+
             for (key, value) in headers_vec {
+
                 let header_value = HeaderValue::from_str(value)
                     .map_err(|e| format!("Invalid header value for '{}': {}", key, e))?;
+
                 let header_name = key.parse::<tungstenite::http::HeaderName>()
                     .map_err(|e| format!("Invalid header name '{}': {}", key, e))?;
+
                 req_headers.insert(header_name, header_value);
             }
         }
