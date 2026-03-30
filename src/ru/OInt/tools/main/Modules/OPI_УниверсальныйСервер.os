@@ -287,3 +287,51 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function StartServer(Val Module, Val Port, Val PoolSize = 100, Val Logging = Undefined) Export
+    Return ЗапуститьСервер(Module, Port, PoolSize, Logging);
+EndFunction
+
+Function StopServer(Val Module, Val ServerObject) Export
+    Return ОстановитьСервер(Module, ServerObject);
+EndFunction
+
+Function GetNextConnectionData(Val Module, Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
+    Return ПолучитьДанныеОчередногоСоединения(Module, ServerObject, Timeout, MaxSize);
+EndFunction
+
+Function GetConnectionData(Val Module, Val ServerObject, Val ConnectionID, Val Timeout = 1000, Val MaxSize = 8192) Export
+    Return ПолучитьДанныеСоединения(Module, ServerObject, ConnectionID, Timeout, MaxSize);
+EndFunction
+
+Function SendData(Val Module, Val ServerObject, Val ConnectionID, Val Data) Export
+    Return ОтправитьДанные(Module, ServerObject, ConnectionID, Data);
+EndFunction
+
+Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗакрытьВходящееСоединение(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function CompleteSend(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗавершитьОтправку(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function FinishReceiving(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗавершитьПолучение(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function GetConnectionList(Val Module, Val ServerObject) Export
+    Return ПолучитьСписокСоединений(Module, ServerObject);
+EndFunction
+
+Function GetLog(Val Module, Val ServerObject, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(Module, ServerObject, AsString, EventCount);
+EndFunction
+
+Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
+    Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
+EndFunction
+
+#EndRegion
