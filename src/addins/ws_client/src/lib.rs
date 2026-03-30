@@ -26,6 +26,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("RetrieveBinaryFromVault"),    // 9
     name!("GetLogs"),                    // 10
     name!("SetTLS"),                     // 11
+    name!("SetProxySettings"),           // 12
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -42,6 +43,7 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 1,  // RetrieveBinaryFromVault(vault_key)
         10 => 1, // GetLogs(count)
         11 => 3, // SetTLS(use_tls, accept_invalid_certs, ca_cert_path)
+        12 => 1, // SetProxySettings(proxy_json)
         _ => 0,
     }
 }
@@ -113,6 +115,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let ca_cert_path = params[2].get_string().unwrap_or_default();
             let mut client = obj.client.lock().unwrap();
             Box::new(client.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+        },
+        12 => {
+            let proxy_json = params[0].get_string().unwrap_or_default();
+            let mut client = obj.client.lock().unwrap();
+            Box::new(client.set_proxy(&proxy_json))
         },
         _ => Box::new(false),
     }
