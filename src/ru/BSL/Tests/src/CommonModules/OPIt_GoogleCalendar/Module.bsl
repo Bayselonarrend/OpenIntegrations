@@ -1,0 +1,498 @@
+ // OneScript: ./OInt/tests/Modules/OPI_Тесты.os
+
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and +this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// Набор тестов для YAxUnit
+
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UnusedParameters-off
+// BSLLS:DuplicateStringLiteral-off
+// BSLLS:UsingHardcodePath-off
+// BSLLS:UnusedLocalVariable-off
+// BSLLS:DeprecatedMessage-off
+// BSLLS:LineLength-off
+// BSLLS:MagicNumber-off
+// BSLLS:CommentedCode-off
+// BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:UnreachableCode-off
+// BSLLS:UnusedLocalMethod-off
+// BSLLS:NestedFunctionInParameters-off
+// BSLLS:MissingTemporaryFileDeletion-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:MagicNumber-off
+// BSLLS:MagicDate-off
+// BSLLS:MissingParameterDescription-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:MethodSize-off
+// BSLLS:NestedConstructorsInStructureDeclaration-off
+// BSLLS:NumberOfValuesInStructureConstructor-off
+// BSLLS:UsingHardcodeSecretInformation-off
+// BSLLS:SpaceAtStartComment-off
+
+//@skip-check undefined-variable
+//@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
+//@skip-check module-unused-local-variable
+//@skip-check bsl-legacy-check-string-literal
+//@skip-check bsl-legacy-check-method-for-statements-after-return
+//@skip-check missing-temporary-file-deletion
+//@skip-check module-unused-method
+
+// #Использовать oint
+// #Использовать asserts
+// #Использовать "internal"
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+#Область ЗапускаемыеТесты
+
+#Область GoogleCalendar
+
+Процедура ГК_Авторизация() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_ClientID"    , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_ClientSecret", ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_Code"        , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_Refresh"     , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_ServiceData" , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Access_Token"       , ПараметрыТеста);
+
+    GoogleCalendar_СформироватьСсылкуПолученияКода(ПараметрыТеста);
+    GoogleCalendar_ПолучитьТокенПоКоду(ПараметрыТеста);
+    GoogleCalendar_ОбновитьТокен(ПараметрыТеста);
+    GoogleCalendar_ПолучитьТокенServiceАккаунта(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура ГК_ПолучитьСписокКалендарей() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_Token", ПараметрыТеста);
+
+    GoogleCalendar_ПолучитьСписокКалендарей(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура ГК_СоздатьУдалитьКалендарь() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_Token", ПараметрыТеста);
+
+    GoogleCalendar_СоздатьКалендарь(ПараметрыТеста);
+    GoogleCalendar_ИзменитьМетаданныеКалендаря(ПараметрыТеста);
+    GoogleCalendar_ПолучитьМетаданныеКалендаря(ПараметрыТеста);
+    GoogleCalendar_ДобавитьКалендарьВСписок(ПараметрыТеста);
+    GoogleCalendar_ИзменитьКалендарьСписка(ПараметрыТеста);
+    GoogleCalendar_ПолучитьКалендарьСписка(ПараметрыТеста);
+    GoogleCalendar_ОчиститьОсновнойКалендарь(ПараметрыТеста);
+    // !DISABLED! GoogleCalendar_УдалитьКалендарьИзСписка(ПараметрыТеста);
+    GoogleCalendar_УдалитьКалендарь(ПараметрыТеста);
+
+    OPI_Инструменты.Пауза(5);
+
+КонецПроцедуры
+
+Процедура ГК_СоздатьУдалитьСобытие() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_Token"        , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_NewCalendarID", ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Google_CalendarID"   , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"             , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture2"            , ПараметрыТеста);
+
+    GoogleCalendar_СоздатьКалендарь(ПараметрыТеста);
+    GoogleCalendar_СоздатьСобытие(ПараметрыТеста);
+    GoogleCalendar_ИзменитьСобытие(ПараметрыТеста);
+    GoogleCalendar_ПолучитьСобытие(ПараметрыТеста);
+    GoogleCalendar_ПереместитьСобытие(ПараметрыТеста);
+    GoogleCalendar_ПолучитьСписокСобытий(ПараметрыТеста);
+    GoogleCalendar_ПолучитьОписаниеСобытия(ПараметрыТеста);
+    GoogleCalendar_УдалитьСобытие(ПараметрыТеста);
+    GoogleCalendar_УдалитьКалендарь(ПараметрыТеста);
+
+    OPI_Инструменты.Пауза(5);
+
+КонецПроцедуры
+
+#КонецОбласти // GoogleCalendar
+
+#КонецОбласти // ЗапускаемыеТесты
+
+#КонецОбласти // СлужебныйПрограммныйИнтерфейс
+
+#Область СлужебныеПроцедурыИФункции
+
+#Область АтомарныеТесты
+
+#Область GoogleCalendar
+
+Процедура GoogleCalendar_СформироватьСсылкуПолученияКода(ПараметрыФункции)
+
+    ClientID  = ПараметрыФункции["Google_ClientID"];
+    Результат = OPI_GoogleCalendar.СформироватьСсылкуПолученияКода(ClientID);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "СформироватьСсылкуПолученияКода");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьТокенПоКоду(ПараметрыФункции)
+
+    ClientID     = ПараметрыФункции["Google_ClientID"];
+    ClientSecret = ПараметрыФункции["Google_ClientSecret"];
+    Code         = ПараметрыФункции["Google_Code"];
+
+    Результат = OPI_GoogleCalendar.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьТокенПоКоду");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ОбновитьТокен(ПараметрыФункции)
+
+    ClientID     = ПараметрыФункции["Google_ClientID"];
+    ClientSecret = ПараметрыФункции["Google_ClientSecret"];
+    RefreshToken = ПараметрыФункции["Google_Refresh"];
+
+    Результат = OPI_GoogleCalendar.ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ОбновитьТокен");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьТокенServiceАккаунта(ПараметрыФункции)
+
+    Данные = ПараметрыФункции["Google_ServiceData"]; // URL, двоичные данные, файл или коллекция
+
+    Токен  = ПараметрыФункции["Access_Token"];  // SKIP
+    Данные = OPI_ЗапросыHTTP                    // SKIP
+        .НовыйЗапрос()                          // SKIP
+        .Инициализировать(Данные)               // SKIP
+        .ДобавитьBearerАвторизацию(Токен)       // SKIP
+        .ОбработатьЗапрос("GET")                // SKIP
+        .ВернутьОтветКакДвоичныеДанные();       // SKIP
+
+    ОбластиДействия = Новый Массив;
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/calendar");
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/drive");
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/spreadsheets");
+
+    Результат = OPI_GoogleCalendar.ПолучитьТокенServiceАккаунта(Данные, ОбластиДействия);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьТокенServiceАккаунта");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьСписокКалендарей(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Результат = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьСписокКалендарей");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_СоздатьКалендарь(ПараметрыФункции)
+
+    Токен        = ПараметрыФункции["Google_Token"];
+    Наименование = "Тестовый календарь";
+
+    Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "СоздатьКалендарь", , ПараметрыФункции, Наименование);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ИзменитьМетаданныеКалендаря(ПараметрыФункции)
+
+    Токен        = ПараметрыФункции["Google_Token"];
+    Календарь    = ПараметрыФункции["Google_NewCalendarID"];
+    Наименование = "Новое наименование";
+    Описание     = "Новое описание";
+
+    Результат = OPI_GoogleCalendar.ИзменитьМетаданныеКалендаря(Токен, Календарь, Наименование, Описание);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ИзменитьМетаданныеКалендаря", , Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьМетаданныеКалендаря(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.ПолучитьМетаданныеКалендаря(Токен, Календарь);
+
+    // END
+
+    Наименование = "Новое наименование";
+    Описание     = "Новое описание";
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьМетаданныеКалендаря", , Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ДобавитьКалендарьВСписок(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, Календарь);
+
+    // END
+
+    Наименование = "Новое наименование";
+    Описание     = "Новое описание";
+
+    Обработать(Результат, "GoogleCalendar", "ДобавитьКалендарьВСписок", , Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ИзменитьКалендарьСписка(ПараметрыФункции)
+
+    Токен              = ПараметрыФункции["Google_Token"];
+    Календарь          = ПараметрыФункции["Google_NewCalendarID"];
+    ОсновнойЦвет       = "#000000";
+    ДополнительныйЦвет = "#ffd800";
+    Скрытый            = Ложь;
+
+    Результат = OPI_GoogleCalendar.ИзменитьКалендарьСписка(Токен, Календарь, ОсновнойЦвет, ДополнительныйЦвет, Скрытый);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ИзменитьКалендарьСписка", , ОсновнойЦвет, ДополнительныйЦвет);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьКалендарьСписка(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.ПолучитьКалендарьСписка(Токен, Календарь);
+
+    // END
+
+    ОсновнойЦвет       = "#000000";
+    ДополнительныйЦвет = "#ffd800";
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьКалендарьСписка", , ОсновнойЦвет, ДополнительныйЦвет);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ОчиститьОсновнойКалендарь(ПараметрыФункции)
+
+    Токен = ПараметрыФункции["Google_Token"];
+
+    Результат = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ОчиститьОсновнойКалендарь");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_УдалитьКалендарьИзСписка(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.УдалитьКалендарьИзСписка(Токен, Календарь);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "УдалитьКалендарьИзСписка");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_УдалитьКалендарь(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.УдалитьКалендарь(Токен, Календарь);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "УдалитьКалендарь");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_СоздатьСобытие(ПараметрыФункции)
+
+    ТекущаяДата  = OPI_Инструменты.ПолучитьТекущуюДату();
+    Токен        = ПараметрыФункции["Google_Token"];
+    Календарь    = ПараметрыФункции["Google_NewCalendarID"];
+    Наименование = "Новое событие";
+    Описание     = "Описание тестового события";
+    Час          = 3600;
+
+    Картинка1 = ПараметрыФункции["Picture"];  // URL, Двоичные или Путь к файлу
+    Картинка2 = ПараметрыФункции["Picture2"]; // URL, Двоичные или Путь к файлу
+    Вложения  = Новый Соответствие;
+
+    Вложения.Вставить("Картинка1", Картинка1);
+    Вложения.Вставить("Картинка2", Картинка2);
+
+    ОписаниеСобытия = Новый Соответствие;
+    ОписаниеСобытия.Вставить("Описание"               , Описание);
+    ОписаниеСобытия.Вставить("Заголовок"              , Наименование);
+    ОписаниеСобытия.Вставить("МестоПроведения"        , "В офисе");
+    ОписаниеСобытия.Вставить("ДатаНачала"             , ТекущаяДата);
+    ОписаниеСобытия.Вставить("ДатаОкончания"          , ОписаниеСобытия["ДатаНачала"] + Час);
+    ОписаниеСобытия.Вставить("МассивURLФайловВложений", Вложения);
+    ОписаниеСобытия.Вставить("ОтправлятьУведомления"  , Истина);
+
+    Результат = OPI_GoogleCalendar.СоздатьСобытие(Токен, Календарь, ОписаниеСобытия);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "СоздатьСобытие", , ПараметрыФункции, Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ИзменитьСобытие(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+    Событие   = ПараметрыФункции["Google_EventID"];
+    Описание  = "Новое описание события";
+
+    ОписаниеСобытия = Новый Соответствие;
+    ОписаниеСобытия.Вставить("Описание", Описание);
+
+    Результат = OPI_GoogleCalendar.ИзменитьСобытие(Токен, Календарь, ОписаниеСобытия, Событие);
+
+    // END
+
+    Наименование = "Новое событие";
+
+    Обработать(Результат, "GoogleCalendar", "ИзменитьСобытие", , Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьСобытие(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+    Событие   = ПараметрыФункции["Google_EventID"];
+
+    Результат = OPI_GoogleCalendar.ПолучитьСобытие(Токен, Календарь, Событие);
+
+    // END
+
+    Наименование = "Новое событие";
+    Описание     = "Новое описание события";
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьСобытие", , Наименование, Описание);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПереместитьСобытие(ПараметрыФункции)
+
+    Токен   = ПараметрыФункции["Google_Token"];
+    Событие = ПараметрыФункции["Google_EventID"];
+
+    КалендарьИсточник = ПараметрыФункции["Google_NewCalendarID"];
+    КалендарьПриемник = ПараметрыФункции["Google_CalendarID"];
+
+    Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
+
+    // END
+
+    Наименование = "Новое событие";
+    Описание     = "Новое описание события";
+
+    Обработать(Результат, "GoogleCalendar", "ПереместитьСобытие", , Наименование, Описание);
+
+    OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьПриемник, КалендарьИсточник, Событие);
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_УдалитьСобытие(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+    Событие   = ПараметрыФункции["Google_EventID"];
+
+    Результат = OPI_GoogleCalendar.УдалитьСобытие(Токен, Календарь, Событие);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "УдалитьСобытие");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьСписокСобытий(ПараметрыФункции)
+
+    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
+
+    Результат = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, Календарь);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьСписокСобытий");
+
+КонецПроцедуры
+
+Процедура GoogleCalendar_ПолучитьОписаниеСобытия(ПараметрыФункции)
+
+    Пустая    = Ложь;
+    Результат = OPI_GoogleCalendar.ПолучитьОписаниеСобытия(Пустая);
+
+    // END
+
+    Обработать(Результат, "GoogleCalendar", "ПолучитьОписаниеСобытия");
+
+КонецПроцедуры
+
+#КонецОбласти // GoogleCalendar
+
+#КонецОбласти // АтомарныеТесты
+
+#КонецОбласти // СлужебныеПроцедурыИФункции

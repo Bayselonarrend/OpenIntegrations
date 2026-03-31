@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2997bcfc-aa7a-44d0-bbb4-30cafd06fc36">
+  <name>OPItc_GoogleCalendar</name>
+  <synonym>
+    <key>ru</key>
+    <value>GoogleCalendar</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

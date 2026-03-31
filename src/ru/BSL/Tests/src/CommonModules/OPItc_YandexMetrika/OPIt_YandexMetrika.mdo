@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="22290dfe-5799-4460-90b2-c7c2d81c2275">
+  <name>OPItc_YandexMetrika</name>
+  <synonym>
+    <key>ru</key>
+    <value>YandexMetrika</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
