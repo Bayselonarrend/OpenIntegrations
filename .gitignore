@@ -23,7 +23,8 @@ fakedata.json
 /Melezh
 /test_results
 suppaftp/
-
+/.metadata
+/.sonarlint
 
 
 target/
