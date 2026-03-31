@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b259f9ca-3cea-4eba-834f-36ce55351785">
-  <name>OPIt_Airtable</name>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c4ab12c9-2b78-44ef-8995-4d171d0260a7">
+  <name>OPItc_HTTP</name>
   <synonym>
     <key>ru</key>
-    <value>Airtable</value>
+    <value>HTTP</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

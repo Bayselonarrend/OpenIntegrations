@@ -38,6 +38,7 @@
     <languageCode>ru</languageCode>
   </languages>
   <roles>Role.OPIt_ОсновнаяРоль</roles>
+  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPIt_Airtable</commonModules>
   <commonModules>CommonModule.OPIt_Bitrix24</commonModules>
   <commonModules>CommonModule.OPIt_BuildHash</commonModules>
@@ -52,6 +53,7 @@
   <commonModules>CommonModule.OPIt_GreenAPI</commonModules>
   <commonModules>CommonModule.OPIt_GreenMax</commonModules>
   <commonModules>CommonModule.OPIt_GRPC</commonModules>
+  <commonModules>CommonModule.OPIt_HTTP</commonModules>
   <commonModules>CommonModule.OPIt_MongoDB</commonModules>
   <commonModules>CommonModule.OPIt_MSSQL</commonModules>
   <commonModules>CommonModule.OPIt_MySQL</commonModules>
@@ -79,7 +81,6 @@
   <commonModules>CommonModule.OPIt_YandexID</commonModules>
   <commonModules>CommonModule.OPIt_YandexMarket</commonModules>
   <commonModules>CommonModule.OPIt_YandexMetrika</commonModules>
-  <commonModules>CommonModule.OPIt_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPItc_Airtable</commonModules>
   <commonModules>CommonModule.OPItc_Bitrix24</commonModules>
   <commonModules>CommonModule.OPItc_BuildHash</commonModules>
@@ -94,6 +95,7 @@
   <commonModules>CommonModule.OPItc_GreenAPI</commonModules>
   <commonModules>CommonModule.OPItc_GreenMax</commonModules>
   <commonModules>CommonModule.OPItc_GRPC</commonModules>
+  <commonModules>CommonModule.OPItc_HTTP</commonModules>
   <commonModules>CommonModule.OPItc_MongoDB</commonModules>
   <commonModules>CommonModule.OPItc_MSSQL</commonModules>
   <commonModules>CommonModule.OPItc_MySQL</commonModules>
