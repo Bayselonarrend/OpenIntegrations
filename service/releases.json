@@ -1,7 +1,7 @@
 [
         {
-        "version": "1.35.0",
-        "title": "Version 1.35.0 - .04.2026",
+        "version": "2.0.0",
+        "title": "Version 2.0.0 - .04.2026",
         "summary_ru": "Методы работы с Websocket",
         "summary_en": "Methods of working with Websocket",
         "image": "media/Covers/WebSocket.png",
