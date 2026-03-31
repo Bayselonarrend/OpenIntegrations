@@ -139,7 +139,8 @@
      "MongoDB": true,
      "GRPC": true,
      "ClickHouse": true,
-     "RSS": true
+     "RSS": true,
+     "HTTP": true
     }
    }
   }

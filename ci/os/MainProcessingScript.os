@@ -23,7 +23,7 @@
 	Обработчик = Новый CLITestsMethods(ДанныеПроекта);
 	Обработчик = Новый JenkinsTestsMethods(ДанныеПроекта);
 	Обработчик = Новый APICatalogGenerator(ДанныеПроекта);
-	Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
+	//Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
 	Обработчик = Новый SonarQubeMethods(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator(ДанныеПроекта);
