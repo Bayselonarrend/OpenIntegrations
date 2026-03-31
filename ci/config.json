@@ -197,10 +197,6 @@
         "description": "Test selections array retrieve method (for Jenkins)",
         "value": "ПолучитьСоответствиеРазделовТестирования"
        },
-       "testsSectionsMethodGA": {
-        "dictionaries": "Test selections array retrieve method (for Github Actions)",
-        "value": "ПолучитьСоответствиеРазделовТестированияGA"
-       },
        "docsMdSrc": {
         "description": "Docs MD files directory",
         "value": "./docs/ru/md/"
