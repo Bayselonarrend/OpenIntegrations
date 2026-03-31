@@ -58,6 +58,7 @@
 //@skip-check bsl-legacy-check-for-each-statetement-collection
 //@skip-check bsl-legacy-check-string-literal
 //@skip-check bsl-legacy-check-expression-type
+//@skip-check undefined-variable
 
 #Use "../../../../tools/main"
 #Use "../../../../tools/http"
@@ -157,7 +158,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("GreenAPI"       , 5);
     Sections.Insert("GreenMax"       , 5);
     Sections.Insert("Ollama"         , 5);
-    Sections.Insert("HTTPClient"     , 5);
+    Sections.Insert("HTTP"           , 5);
     Sections.Insert("OpenAI"         , 5);
     Sections.Insert("ReportPortal"   , 5);
     Sections.Insert("GRPC"           , 5);
@@ -168,57 +169,7 @@ Function GetTestingSectionMapping() Export
 
 EndFunction
 
-Function GetTestingSectionMappingGA() Export
-
-    StandardDependencies = "[Decode, Build]";
-    GoogleDependencies   = "Testing-GoogleWorkspace";
-
-    Sections = New Structure;
-    Sections.Insert("BuildCheck"     , StandardDependencies);
-    Sections.Insert("Telegram"       , StandardDependencies);
-    Sections.Insert("VK"             , StandardDependencies);
-    Sections.Insert("Viber"          , StandardDependencies);
-    Sections.Insert("Twitter"        , StandardDependencies);
-    Sections.Insert("FTP"            , StandardDependencies);
-    Sections.Insert("SSH"            , StandardDependencies);
-    Sections.Insert("SFTP"           , StandardDependencies);
-    Sections.Insert("PostgreSQL"     , StandardDependencies);
-    Sections.Insert("MySQL"          , StandardDependencies);
-    Sections.Insert("MSSQL"          , StandardDependencies);
-    Sections.Insert("SQLite"         , StandardDependencies);
-    Sections.Insert("MongoDB"        , StandardDependencies);
-    Sections.Insert("RCON"           , StandardDependencies);
-    Sections.Insert("YandexDisk"     , StandardDependencies);
-    Sections.Insert("GoogleWorkspace", StandardDependencies);
-    Sections.Insert("GoogleCalendar" , GoogleDependencies);
-    Sections.Insert("GoogleDrive"    , GoogleDependencies);
-    Sections.Insert("GoogleSheets"   , GoogleDependencies);
-    Sections.Insert("Notion"         , StandardDependencies);
-    Sections.Insert("Slack"          , StandardDependencies);
-    Sections.Insert("Airtable"       , StandardDependencies);
-    Sections.Insert("Dropbox"        , StandardDependencies);
-    Sections.Insert("Bitrix24"       , StandardDependencies);
-    Sections.Insert("VkTeams"        , StandardDependencies);
-    Sections.Insert("Neocities"      , StandardDependencies);
-    Sections.Insert("CDEK"           , StandardDependencies);
-    Sections.Insert("YandexMetrika"  , StandardDependencies);
-    Sections.Insert("S3"             , StandardDependencies);
-    Sections.Insert("TCP"            , StandardDependencies);
-    Sections.Insert("GreenAPI"       , StandardDependencies);
-    Sections.Insert("GreenMax"       , StandardDependencies);
-    Sections.Insert("Ollama"         , StandardDependencies);
-    Sections.Insert("HTTPClient"     , StandardDependencies);
-    Sections.Insert("OpenAI"         , StandardDependencies);
-    Sections.Insert("ReportPortal"   , StandardDependencies);
-    Sections.Insert("GRPC"           , StandardDependencies);
-    Sections.Insert("ClickHouse"     , StandardDependencies);
-    Sections.Insert("RSS"            , StandardDependencies);
-
-    Return Sections;
-
-EndFunction
-
-Function GetTestTable() Export
+Function GetTestTable(Val TestModule = "") Export
 
     Telegram  = "Telegram";
     VKontakte = "VK";
@@ -234,7 +185,7 @@ Function GetTestTable() Export
     AirT      = "Airtable";
     Dropbox   = "Dropbox";
     Bitrix    = "Bitrix24";
-    VKT       = "VkTeams";
+    VKT       = "VKTeams";
     Neocities = "Neocities";
     Cdek      = "CDEK";
     Metrika   = "YandexMetrika";
@@ -247,7 +198,7 @@ Function GetTestTable() Export
     RCON      = "RCON";
     MySQL     = "MySQL";
     Ollama    = "Ollama";
-    Http      = "HTTPClient";
+    Http      = "HTTP";
     OpenAI    = "OpenAI";
     MSSQL     = "MSSQL";
     FTP       = "FTP";
@@ -454,6 +405,13 @@ Function GetTestTable() Export
     NewTest(TestTable, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
     NewTest(TestTable, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
 
+    If ValueIsFilled(TestModule) Then
+
+        Filter    = New Structure("Section", TestModule);
+        TestTable = TestTable.Copy(Filter);
+
+    EndIf;
+
     Return TestTable;
 
 EndFunction
@@ -472,11 +430,11 @@ Function ExpectsThat(Value) Export
 
 EndFunction
 
-Function FormYAXTests() Export
+Function FormYAXTests(Val TestModule = "") Export
 
     Module    = GetCommonModule("ЮТТесты");
     Sections  = GetTestingSectionMapping();
-    TestTable = GetTestTable();
+    TestTable = GetTestTable(TestModule);
 
     For Each Section In Sections Do
 
@@ -496,9 +454,9 @@ Function FormYAXTests() Export
 
 EndFunction
 
-Function FormAssertsTests() Export
+Function FormAssertsTests(Val TestModule = "") Export
 
-    TestTable    = GetTestTable();
+    TestTable    = GetTestTable(TestModule);
     ArrayOfTests = New Array;
 
     For Each Test In TestTable Do
@@ -509,11 +467,11 @@ Function FormAssertsTests() Export
 
 EndFunction
 
-Function FormYAXTestsCLI() Export
+Function FormYAXTestsCLI(Val TestModule = "") Export
 
     Module    = GetCommonModule("ЮТТесты");
     Sections  = GetTestingSectionMapping();
-    TestTable = GetTestTable();
+    TestTable = GetTestTable(TestModule);
 
     For Each Section In Sections Do
 
@@ -538,12 +496,12 @@ Function FormYAXTestsCLI() Export
 
 EndFunction
 
-Function FormAssertsTestsCLI() Export
+Function FormAssertsTestsCLI(Val TestModule = "") Export
 
     ArrayOfTests = New Array;
 
     Sections  = GetTestingSectionMapping();
-    TestTable = GetTestTable();
+    TestTable = GetTestTable(TestModule);
 
     For Each Section In Sections Do
 
@@ -656,82 +614,27 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Procedure ProcessTestingResult(Val Result
-    , Val Method
+//@skip-check method-too-many-params
+
+Procedure Process(Val Result
     , Val Library
+    , Val Method
     , Val Option = ""
     , AddParam1  = Undefined
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
-    // BSLLS:UnusedLocalVariable-off
-    //
-    //@skip-check module-unused-local-variable
-    Result_ = ?(OPI_Tools.ThisIsCollection(Result), OPI_Tools.CopyCollection(Result), Result);
+    CLITestsMark = 0;
 
-    // BSLLS:UnusedLocalVariable-on
+    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
 
-    IsVariant  = ValueIsFilled(Option);
-    LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
-
-    SetID     = CreateLaunchSet(Library);
-    ElementID = CreateTestElement(SetID, Library, Method, Option);
-
-    Try
-
-        ParameterArray = New Array;
-        ParameterArray.Add("Result_");
-        ParameterArray.Add("Option");
-
-        If AddParam1 <> Undefined Then
-            ParameterArray.Add("AddParam1");
-        EndIf;
-
-        If AddParam2 <> Undefined Then
-            ParameterArray.Add("AddParam2");
-        EndIf;
-
-        If AddParam3 <> Undefined Then
-            ParameterArray.Add("AddParam3");
-        EndIf;
-
-        CheckTemplate = "CheckResult = Check_%1_%2(%3)";
-
-        CheckCall   = StrTemplate(CheckTemplate, Library, Method, StrConcat(ParameterArray, ", "));
-        CheckResult = Undefined;
-
-        //@skip-check server-execution-safe-mode
-        Execute(CheckCall);
-
-        Text = PrintLog(Result, LogsMethod, Library);
-
-        If Not ValueIsFilled(Option) Then
-
-            ResultString = TypeOf(CheckResult) = Type("String");
-            Overwrite    = Not ?(ResultString, CheckResult = "", CheckResult = Undefined);
-
-            If Overwrite Then
-                WriteLogFile(CheckResult, Method, Library);
-            Else
-                WriteLogFile(Result     , Method, Library, False);
-            EndIf;
-
-        EndIf;
-
-        WriteTestLog(ElementID, Text, "info");
-        FinishTestElement(ElementID, "passed");
-
-    Except
-
-        ErrInfo = DetailErrorDescription(ErrorInfo());
-        Text    = PrintLog(Result, LogsMethod, Library, ErrInfo);
-
-        WriteTestLog(ElementID, Text, "error");
-        FinishTestElement(ElementID, "failed");
-
-        Raise ErrInfo;
-
-    EndTry;
+    ProcessTestingResult(Result
+        , Method
+        , Library
+        , Option
+        , AddParam1
+        , AddParam2
+        , AddParam3);
 
 EndProcedure
 
@@ -14368,6 +14271,85 @@ EndFunction
 
 #Region Miscellaneous
 
+Procedure ProcessTestingResult(Val Result
+    , Val Method
+    , Val Library
+    , Val Option = ""
+    , AddParam1  = Undefined
+    , AddParam2  = Undefined
+    , AddParam3  = Undefined)
+
+    // BSLLS:UnusedLocalVariable-off
+    //
+    //@skip-check module-unused-local-variable
+    Result_ = ?(OPI_Tools.ThisIsCollection(Result), OPI_Tools.CopyCollection(Result), Result);
+
+    // BSLLS:UnusedLocalVariable-on
+
+    IsVariant  = ValueIsFilled(Option);
+    LogsMethod = ?(IsVariant, StrTemplate("%1 (%2)", Method, Option), Method);
+
+    SetID     = CreateLaunchSet(Library);
+    ElementID = CreateTestElement(SetID, Library, Method, Option);
+
+    Try
+
+        ParameterArray = New Array;
+        ParameterArray.Add("Result_");
+        ParameterArray.Add("Option");
+
+        If AddParam1 <> Undefined Then
+            ParameterArray.Add("AddParam1");
+        EndIf;
+
+        If AddParam2 <> Undefined Then
+            ParameterArray.Add("AddParam2");
+        EndIf;
+
+        If AddParam3 <> Undefined Then
+            ParameterArray.Add("AddParam3");
+        EndIf;
+
+        CheckTemplate = "CheckResult = Check_%1_%2(%3)";
+
+        CheckCall   = StrTemplate(CheckTemplate, Library, Method, StrConcat(ParameterArray, ", "));
+        CheckResult = Undefined;
+
+        //@skip-check server-execution-safe-mode
+        Execute(CheckCall);
+
+        Text = PrintLog(Result, LogsMethod, Library);
+
+        If Not ValueIsFilled(Option) Then
+
+            ResultString = TypeOf(CheckResult) = Type("String");
+            Overwrite    = Not ?(ResultString, CheckResult = "", CheckResult = Undefined);
+
+            If Overwrite Then
+                WriteLogFile(CheckResult, Method, Library);
+            Else
+                WriteLogFile(Result     , Method, Library, False);
+            EndIf;
+
+        EndIf;
+
+        WriteTestLog(ElementID, Text, "info");
+        FinishTestElement(ElementID, "passed");
+
+    Except
+
+        ErrInfo = DetailErrorDescription(ErrorInfo());
+        Text    = PrintLog(Result, LogsMethod, Library, ErrInfo);
+
+        WriteTestLog(ElementID, Text, "error");
+        FinishTestElement(ElementID, "failed");
+
+        Raise ErrInfo;
+
+    EndTry;
+
+EndProcedure
+
 Function GetValueFromFile(Parameter, Path)
 
     Values = OPI_Tools.ReadJSONFile(Path);
@@ -15234,32 +15216,28 @@ Function ПолучитьСоответствиеРазделовТестиро�
     Return GetTestingSectionMapping();
 EndFunction
 
-Function ПолучитьСоответствиеРазделовТестированияGA() Export
-    Return GetTestingSectionMappingGA();
-EndFunction
-
-Function ПолучитьТаблицуТестов() Export
-    Return GetTestTable();
+Function ПолучитьТаблицуТестов(Val МодульТестов = "") Export
+    Return GetTestTable(МодульТестов);
 EndFunction
 
 Function ОжидаетЧто(Значение) Export
     Return ExpectsThat(Значение);
 EndFunction
 
-Function СформироватьТестыЯкс() Export
-    Return FormYAXTests();
+Function СформироватьТестыЯкс(Val МодульТестов = "") Export
+    Return FormYAXTests(МодульТестов);
 EndFunction
 
-Function СформироватьТестыАссертс() Export
-    Return FormAssertsTests();
+Function СформироватьТестыАссертс(Val МодульТестов = "") Export
+    Return FormAssertsTests(МодульТестов);
 EndFunction
 
-Function СформироватьТестыЯксCLI() Export
-    Return FormYAXTestsCLI();
+Function СформироватьТестыЯксCLI(Val МодульТестов = "") Export
+    Return FormYAXTestsCLI(МодульТестов);
 EndFunction
 
-Function СформироватьТестыАссертсCLI() Export
-    Return FormAssertsTestsCLI();
+Function СформироватьТестыАссертсCLI(Val МодульТестов = "") Export
+    Return FormAssertsTestsCLI(МодульТестов);
 EndFunction
 
 Function ПолучитьПараметр(Параметр) Export
@@ -15294,8 +15272,8 @@ Procedure ЗаписатьПараметр(Параметр, Значение) E
     WriteParameter(Параметр, Значение);
 EndProcedure
 
-Procedure ОбработатьРезультатТестирования(Val Результат, Val Метод, Val Библиотека, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
-    ProcessTestingResult(Результат, Метод, Библиотека, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
+Procedure Обработать(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
+    Process(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
 EndProcedure
 
 Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export

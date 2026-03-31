@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="16f7e05a-936f-469a-9f12-037091823fb7">
+  <name>OPItc_GoogleWorkspace</name>
+  <synonym>
+    <key>en</key>
+    <value>GoogleWorkspace</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

@@ -152,6 +152,10 @@ Function CloseConnection(Val Connection) Export
 
 EndFunction
 
+Function SendText(Val Connection, Val Text) Export
+
+EndFunction
+
 // Get TLS settings !NOCLI
 // Forms settings for using TLS
 //
@@ -370,6 +374,10 @@ EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
     Return CloseConnection(Соединение);
+EndFunction
+
+Function ОтправитьТекст(Val Соединение, Val Текст) Export
+    Return SendText(Соединение, Текст);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export

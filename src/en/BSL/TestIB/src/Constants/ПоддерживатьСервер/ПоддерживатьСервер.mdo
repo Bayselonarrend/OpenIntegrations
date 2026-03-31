@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c1d1faa9-6850-4646-b3d0-023e55021d61">
+  <producedTypes>
+    <managerType typeId="5d42e973-d2b2-46c3-8f8a-2b98d66ea1df" valueTypeId="14c4a33d-4002-42f2-b33e-f10b8eb073df"/>
+    <valueManagerType typeId="ffaa452b-20a0-4cfa-bee3-c5cd36909211" valueTypeId="b3483abc-437c-4102-9013-04cda059da8a"/>
+    <valueKeyType typeId="82923406-369b-46b4-a9ab-21c1750f1bff" valueTypeId="8dd8a8dc-7968-4e2e-b107-d0acbcfabde6"/>
+  </producedTypes>
+  <name>ПоддерживатьСервер</name>
+  <synonym>
+    <key>ru</key>
+    <value>Поддерживать сервер</value>
+  </synonym>
+  <type>
+    <types>Boolean</types>
+  </type>
+  <useStandardCommands>true</useStandardCommands>
+  <minValue xsi:type="core:UndefinedValue"/>
+  <maxValue xsi:type="core:UndefinedValue"/>
+  <dataLockControlMode>Managed</dataLockControlMode>
+</mdclass:Constant>
