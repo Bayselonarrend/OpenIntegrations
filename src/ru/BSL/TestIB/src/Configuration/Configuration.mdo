@@ -40,8 +40,6 @@
     <languageCode>ru</languageCode>
   </languages>
   <commonModules>CommonModule.ТестовыйМодуль1</commonModules>
-  <httpServices>HTTPService.Twitter</httpServices>
-  <httpServices>HTTPService.Vitalik</httpServices>
   <definedTypes>DefinedType.Календарь</definedTypes>
   <constants>Constant.IDГруппы</constants>
   <constants>Constant.ПоддерживатьСервер</constants>

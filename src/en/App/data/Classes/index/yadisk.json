@@ -1,0 +1,687 @@
+{
+ "module": "OPI_YandexDisk",
+ "library": "yadisk",
+ "self_depend": false,
+ "dependencies": [
+  "OPI_YandexID"
+ ],
+ "regions": [
+  {
+   "name": "Authorization",
+   "methods": [
+    "ConvertCodeToToken",
+    "GetConfirmationCode",
+    "RefreshToken"
+   ]
+  },
+  {
+   "name": "File and folder management",
+   "methods": [
+    "CreateFolder",
+    "CreateObjectCopy",
+    "DeleteObject",
+    "DownloadFile",
+    "GetDiskInformation",
+    "GetDownloadLink",
+    "GetFilesList",
+    "GetFileUploadLink",
+    "GetObject",
+    "MoveObject",
+    "UploadFile",
+    "UploadFileByURL",
+    "UploadFileInParts"
+   ]
+  },
+  {
+   "name": "Manage public access",
+   "methods": [
+    "CancelObjectPublication",
+    "GetDownloadLinkForPublicObject",
+    "GetPublicObject",
+    "GetPublishedObjectsList",
+    "PublishObject",
+    "SavePublicObjectToDisk"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "GetConfirmationCode",
+   "id": "GETCONFIRMATIONCODE",
+   "description": "Gets the confirmation code and the address of the page where it needs to be entered",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "ConvertCodeToToken",
+   "id": "CONVERTCODETOTOKEN",
+   "description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "String",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--device",
+     "types": "String",
+     "description": "device_code from GetConfirmationCode",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "RefreshToken",
+   "id": "REFRESHTOKEN",
+   "description": "Updates token by Refresh token",
+   "params": [
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "String",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--refresh",
+     "types": "String",
+     "description": "Refresh token",
+     "default": null,
+     "short": "-r"
+    }
+   ],
+   "region": "Authorization"
+  },
+  {
+   "name": "GetDiskInformation",
+   "id": "GETDISKINFORMATION",
+   "description": "Gets information about the current disk",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "CreateFolder",
+   "id": "CREATEFOLDER",
+   "description": "Creates a directory on the disk",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the created folder",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "GetObject",
+   "id": "GETOBJECT",
+   "description": "Gets information about a disk object at the specified path",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to folder or file",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "DeleteObject",
+   "id": "DELETEOBJECT",
+   "description": "Deletes an object at the specified path",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the folder or file to be deleted",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--can",
+     "types": "Boolean",
+     "description": "To cart",
+     "default": "true",
+     "short": "-c"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "CreateObjectCopy",
+   "id": "CREATEOBJECTCOPY",
+   "description": "Creates a copy of the object at the specified path and path to the original",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--from",
+     "types": "String",
+     "description": "Path to the original file or directory",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--to",
+     "types": "String",
+     "description": "Destination path for the copy",
+     "default": null,
+     "short": "-o"
+    },
+    {
+     "name": "--rewrite",
+     "types": "Boolean",
+     "description": "Overwrite if a file with the same name already exists",
+     "default": "false",
+     "short": "-r"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "GetDownloadLink",
+   "id": "GETDOWNLOADLINK",
+   "description": "Gets a download link for the file",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the file for downloading",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "GetFileUploadLink",
+   "id": "GETFILEUPLOADLINK",
+   "description": "Gets a link for manual file upload to Disk",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path for saving the file to disk",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--rewrite",
+     "types": "Boolean",
+     "description": "Overwrite if a file with the same name already exists",
+     "default": "false",
+     "short": "-r"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "DownloadFile",
+   "id": "DOWNLOADFILE",
+   "description": "Downloads a file at the specified path",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the file for downloading",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--out",
+     "types": "String",
+     "description": "File save path",
+     "default": "Empty value",
+     "short": null
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "GetFilesList",
+   "id": "GETFILESLIST",
+   "description": "Gets a list of files with or without filtering by type\n\n List of available types: audio, backup, book, compressed, data, development,\n\n diskimage, document, encoded, executable, flash, font,\n\n mage, settings, spreadsheet, text, unknown, video, web",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--amount",
+     "types": "Number, String",
+     "description": "Number of returned objects",
+     "default": "Empty value",
+     "short": "-a"
+    },
+    {
+     "name": "--offset",
+     "types": "Number",
+     "description": "Offset for getting objects not from the beginning of the list",
+     "default": "Empty value",
+     "short": "-o"
+    },
+    {
+     "name": "--type",
+     "types": "String",
+     "description": "Filter by file type",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--datesort",
+     "types": "Boolean",
+     "description": "True > sort by date, False > alphabetically",
+     "default": "false",
+     "short": "-d"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "MoveObject",
+   "id": "MOVEOBJECT",
+   "description": "Moves the object to the specified path and path to the original",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--from",
+     "types": "String",
+     "description": "Path to the original file or folder",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--to",
+     "types": "String",
+     "description": "Destination path for moving",
+     "default": null,
+     "short": "-o"
+    },
+    {
+     "name": "--rewrite",
+     "types": "Boolean",
+     "description": "Overwrite if a file with the same name already exists",
+     "default": "false",
+     "short": "-r"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "UploadFile",
+   "id": "UPLOADFILE",
+   "description": "Uploads a file to disk at the specified path",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path for saving the file to disk",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--file",
+     "types": "String, BinaryData",
+     "description": "File for upload",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--rewrite",
+     "types": "Boolean",
+     "description": "Overwrite if a file with the same name already exists",
+     "default": "false",
+     "short": "-r"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "UploadFileInParts",
+   "id": "UPLOADFILEINPARTS",
+   "description": "Uploads a file to disk at the specified path in parts",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path for saving the file to disk",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--file",
+     "types": "String, BinaryData",
+     "description": "File for upload",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--psize",
+     "types": "Number",
+     "description": "Part size when uploading",
+     "default": 33554432,
+     "short": "-s"
+    },
+    {
+     "name": "--rewrite",
+     "types": "Boolean",
+     "description": "Overwrite if a file with the same name already exists",
+     "default": "false",
+     "short": "-r"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "UploadFileByURL",
+   "id": "UPLOADFILEBYURL",
+   "description": "Downloads a file to disk from the specified URL",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to place the downloaded file",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "File URL",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "File and folder management"
+  },
+  {
+   "name": "PublishObject",
+   "id": "PUBLISHOBJECT",
+   "description": "Publishes the disk object for public access",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the object to be published",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Manage public access"
+  },
+  {
+   "name": "CancelObjectPublication",
+   "id": "CANCELOBJECTPUBLICATION",
+   "description": "Unpublishes a previously published object",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to the previously published object",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Manage public access"
+  },
+  {
+   "name": "GetPublishedObjectsList",
+   "id": "GETPUBLISHEDOBJECTSLIST",
+   "description": "Gets a list of published objects",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--amount",
+     "types": "Number",
+     "description": "Number of returned objects",
+     "default": "Empty value",
+     "short": "-a"
+    },
+    {
+     "name": "--offset",
+     "types": "Number",
+     "description": "Offset for getting objects not from the beginning of the list",
+     "default": "Empty value",
+     "short": "-o"
+    }
+   ],
+   "region": "Manage public access"
+  },
+  {
+   "name": "GetPublicObject",
+   "id": "GETPUBLICOBJECT",
+   "description": "Gets information about the published object by its URL",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Object address",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--amount",
+     "types": "Number",
+     "description": "Number of returned nested objects (for catalog)",
+     "default": "Empty value",
+     "short": "-a"
+    },
+    {
+     "name": "--offset",
+     "types": "Number",
+     "description": "Offset for getting nested objects not from the beginning of the list",
+     "default": "Empty value",
+     "short": "-o"
+    }
+   ],
+   "region": "Manage public access"
+  },
+  {
+   "name": "GetDownloadLinkForPublicObject",
+   "id": "GETDOWNLOADLINKFORPUBLICOBJECT",
+   "description": "Gets a direct link to download the public object",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Object address",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path inside the object",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Manage public access"
+  },
+  {
+   "name": "SavePublicObjectToDisk",
+   "id": "SAVEPUBLICOBJECTTODISK",
+   "description": "Saves the public object to your disk",
+   "params": [
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Token",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Object address",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--from",
+     "types": "String",
+     "description": "Path within public catalog (folders only)",
+     "default": "Empty value",
+     "short": "-f"
+    },
+    {
+     "name": "--to",
+     "types": "String",
+     "description": "File save path",
+     "default": "Empty value",
+     "short": "-o"
+    }
+   ],
+   "region": "Manage public access"
+  }
+ ]
+}

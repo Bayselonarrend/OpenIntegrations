@@ -1,0 +1,126 @@
+{
+ "module": "OPI_TCP",
+ "library": "tcp",
+ "self_depend": true,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Client methods",
+   "methods": [
+    "GetProxySettings",
+    "GetTlsSettings",
+    "ProcessRequest"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ProcessRequest",
+   "id": "PROCESSREQUEST",
+   "description": "Sends a single request to a specified address and receives a response using the default settings",
+   "params": [
+    {
+     "name": "--address",
+     "types": "String",
+     "description": "Address and port",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--data",
+     "types": "String, BinaryData",
+     "description": "Data or text to be sent",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--string",
+     "types": "Boolean",
+     "description": "An attribute of receiving the response as a string",
+     "default": "true",
+     "short": "-s"
+    },
+    {
+     "name": "--tls",
+     "types": "Structure Of KeyAndValue",
+     "description": "TLS settings, if necessary. See GetTlsSettings",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "name": "--proxy",
+     "types": "Structure Of KeyAndValue",
+     "description": "Proxy settings, if required. See GetProxySettings",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "name": "GetProxySettings",
+   "id": "GETPROXYSETTINGS",
+   "description": "Creates a structure of proxy server settings for the connection",
+   "params": [
+    {
+     "name": "--addr",
+     "types": "String",
+     "description": "Proxy address",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--port",
+     "types": "Number",
+     "description": "Proxy port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--type",
+     "types": "String",
+     "description": "Proxy type: socks5, socks4, http",
+     "default": "socks5",
+     "short": "-t"
+    },
+    {
+     "name": "--login",
+     "types": "String, Undefined",
+     "description": "Authorization login, if required",
+     "default": "Empty value",
+     "short": "-l"
+    },
+    {
+     "name": "--pass",
+     "types": "String, Undefined",
+     "description": "Authorization password, if required",
+     "default": "Empty value",
+     "short": "-s"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "name": "GetTlsSettings",
+   "id": "GETTLSSETTINGS",
+   "description": "Forms settings for using TLS",
+   "params": [
+    {
+     "name": "--trust",
+     "types": "Boolean",
+     "description": "Allows to work with invalid certificates, including self signed",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cert",
+     "types": "String",
+     "description": "Path to the root PEM file of the certificate if it is not in the system repository",
+     "default": "Empty value",
+     "short": "-c"
+    }
+   ],
+   "region": "Client methods"
+  }
+ ]
+}

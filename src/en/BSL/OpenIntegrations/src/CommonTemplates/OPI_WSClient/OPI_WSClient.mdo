@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="8decd110-7b01-41d7-bff7-8d627ba024f4">
+  <name>OPI_WSClient</name>
+  <synonym>
+    <key>en</key>
+    <value>WebSocket-client Component (OpenIntegrations</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

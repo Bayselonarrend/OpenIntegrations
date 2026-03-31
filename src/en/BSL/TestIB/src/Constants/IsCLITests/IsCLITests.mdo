@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="cb39c05b-1324-470a-813d-d1c3b3f03730">
+  <producedTypes>
+    <managerType typeId="3b94a81f-d06b-4d76-8805-3b02afc70810" valueTypeId="3c1ebeee-ced6-40f2-b8c9-1bc3ac6b3f5c"/>
+    <valueManagerType typeId="abca1b1b-7a70-480a-9f02-1e8786acff6e" valueTypeId="8d5cffce-9738-44f3-9c2c-94b553d4e7f1"/>
+    <valueKeyType typeId="f4f90118-52bd-4aaa-97f3-c075888ee600" valueTypeId="821da7a0-a6b5-41f1-9c48-6c23196e6bf3"/>
+  </producedTypes>
+  <name>IsCLITests</name>
+  <synonym>
+    <key>ru</key>
+    <value>Is CLITests</value>
+  </synonym>
+  <type>
+    <types>Number</types>
+    <numberQualifiers>
+      <precision>10</precision>
+    </numberQualifiers>
+  </type>
+  <useStandardCommands>true</useStandardCommands>
+  <minValue xsi:type="core:UndefinedValue"/>
+  <maxValue xsi:type="core:UndefinedValue"/>
+  <dataLockControlMode>Managed</dataLockControlMode>
+</mdclass:Constant>
