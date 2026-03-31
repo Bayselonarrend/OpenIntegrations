@@ -6,7 +6,7 @@ app:
   format: EDT
 
   # Абсолютный путь к корню проекта 1С на диске
-  base-path: "R:\\Repos\\OpenIntegrations\\src\\ru"
+  base-path: "R:\\Repos\\OpenIntegrations\\src\\ru\\BSL"
 
   # Описание исходников проекта (пути относительно base-path)
   source-set:
@@ -14,7 +14,7 @@ app:
       name: testib
       type: "CONFIGURATION"
       purpose: ["MAIN"]
-    - path: "OPI"
+    - path: "OpenIntegrations"
       name: openintegrations
       type: "EXTENSION"
       purpose: ["MAIN", "TESTS"]

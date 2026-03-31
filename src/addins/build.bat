@@ -66,8 +66,8 @@ if errorlevel 1 goto :error
 copy /y "%LIB_NAME%.zip" "../../ru/OInt/addins/%LIB_NAME%.zip"
 copy /y "%LIB_NAME%.zip" "../../en/OInt/addins/%LIB_NAME%.zip"
 
-copy /y "%LIB_NAME%.zip" "../../ru/OPI/src/CommonTemplates/%LIB_NAME%/Template.addin"
-copy /y "%LIB_NAME%.zip" "../../en/OPI/src/CommonTemplates/%LIB_NAME%/Template.addin"
+copy /y "%LIB_NAME%.zip" "../../ru/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
+copy /y "%LIB_NAME%.zip" "../../en/BSL/OpenIntegrations/src/CommonTemplates/%LIB_NAME%/Template.addin"
 
 if exist "%OUTPUT_DIR%" (
     rmdir /S /Q "%OUTPUT_DIR%"
