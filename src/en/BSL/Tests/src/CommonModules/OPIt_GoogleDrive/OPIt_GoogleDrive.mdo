@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="5d149e55-d7a8-4b86-a16b-18b3a0f54903">
+  <name>OPIt_GoogleDrive</name>
+  <synonym>
+    <key>en</key>
+    <value>GoogleDrive</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
