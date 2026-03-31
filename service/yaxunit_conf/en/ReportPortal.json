@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.RPortal_Authorization",
-"OPI_Tests.RPortal_TestManagement",
-"OPI_Tests.RPortal_LogRecording",
-"OPI_Tests.RPortal_ProjectManagement",
-"OPI_Tests.RPortal_UserManagement"
+"OPIt_ReportPortal.RPortal_Authorization",
+"OPIt_ReportPortal.RPortal_TestManagement",
+"OPIt_ReportPortal.RPortal_LogRecording",
+"OPIt_ReportPortal.RPortal_ProjectManagement",
+"OPIt_ReportPortal.RPortal_UserManagement"
     ]
   },
   "settings": {

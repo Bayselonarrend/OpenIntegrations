@@ -9,10 +9,10 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GC_Authorization",
-"OPI_Tests.GC_GetCalendarList",
-"OPI_Tests.GC_CreateDeleteCalendar",
-"OPI_Tests.GC_CreateDeleteEvent"
+"OPIt_GoogleCalendar.GC_Authorization",
+"OPIt_GoogleCalendar.GC_GetCalendarList",
+"OPIt_GoogleCalendar.GC_CreateDeleteCalendar",
+"OPIt_GoogleCalendar.GC_CreateDeleteEvent"
     ]
   },
   "settings": {

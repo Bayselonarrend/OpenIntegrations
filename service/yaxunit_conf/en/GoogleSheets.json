@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GT_Authorization",
-"OPI_Tests.GT_CreateTable",
-"OPI_Tests.GT_FillClearCells"
+"OPIt_GoogleSheets.GT_Authorization",
+"OPIt_GoogleSheets.GT_CreateTable",
+"OPIt_GoogleSheets.GT_FillClearCells"
     ]
   },
   "settings": {

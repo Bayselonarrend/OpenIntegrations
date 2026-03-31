@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.Postgres_CommonMethods",
-"OPI_Tests.Postgres_ORM"
+"OPIt_PostgreSQL.Postgres_CommonMethods",
+"OPIt_PostgreSQL.Postgres_ORM"
     ]
   },
   "settings": {

@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.RSS_МетодыRSS",
-"OPI_Тесты.RSS_МетодыAtom"
+"OPIt_RSS.RSS_МетодыRSS",
+"OPIt_RSS.RSS_МетодыAtom"
     ]
   },
   "settings": {

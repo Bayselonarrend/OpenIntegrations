@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.MSS_ОсновныеМетоды",
-"OPI_Тесты.MSS_ORM"
+"OPIt_MSSQL.MSS_ОсновныеМетоды",
+"OPIt_MSSQL.MSS_ORM"
     ]
   },
   "settings": {

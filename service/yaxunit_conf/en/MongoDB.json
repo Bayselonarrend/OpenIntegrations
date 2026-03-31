@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.Mongo_CommonMethods",
-"OPI_Tests.Mong_DatabaseManagement",
-"OPI_Tests.Mongo_CollectionManagement",
-"OPI_Tests.Mongo_DocumentsManagement",
-"OPI_Tests.Mongo_UserManagement",
-"OPI_Tests.Mongo_RoleManagement"
+"OPIt_MongoDB.Mongo_CommonMethods",
+"OPIt_MongoDB.Mong_DatabaseManagement",
+"OPIt_MongoDB.Mongo_CollectionManagement",
+"OPIt_MongoDB.Mongo_DocumentsManagement",
+"OPIt_MongoDB.Mongo_UserManagement",
+"OPIt_MongoDB.Mongo_RoleManagement"
     ]
   },
   "settings": {

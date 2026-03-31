@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.GAPI_УправлениеГруппами",
-"OPI_Тесты.GAPI_ОтправкаСообщений",
-"OPI_Тесты.GAPI_ПолучениеУведомлений",
-"OPI_Тесты.GAPI_ОчередьСообщений",
-"OPI_Тесты.GAPI_ЖурналыСообщений",
-"OPI_Тесты.GAPI_Аккаунт"
+"OPIt_GreenAPI.GAPI_УправлениеГруппами",
+"OPIt_GreenAPI.GAPI_ОтправкаСообщений",
+"OPIt_GreenAPI.GAPI_ПолучениеУведомлений",
+"OPIt_GreenAPI.GAPI_ОчередьСообщений",
+"OPIt_GreenAPI.GAPI_ЖурналыСообщений",
+"OPIt_GreenAPI.GAPI_Аккаунт"
     ]
   },
   "settings": {

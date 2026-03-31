@@ -9,17 +9,17 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.YDisk_Authorization",
-"OPI_Tests.YDisk_GetDiskInfo",
-"OPI_Tests.YDisk_CreateFolder",
-"OPI_Tests.YDisk_UploadByUrlAndGetObject",
-"OPI_Tests.YDisk_UploadDeleteFile",
-"OPI_Tests.YDisk_CreateObjectCopy",
-"OPI_Tests.YDisk_GetDownloadLink",
-"OPI_Tests.YDisk_GetFileList",
-"OPI_Tests.YDisk_MoveObject",
-"OPI_Tests.YDisk_PublicObjectActions",
-"OPI_Tests.YDisk_GetPublishedList"
+"OPIt_YandexDisk.YDisk_Authorization",
+"OPIt_YandexDisk.YDisk_GetDiskInfo",
+"OPIt_YandexDisk.YDisk_CreateFolder",
+"OPIt_YandexDisk.YDisk_UploadByUrlAndGetObject",
+"OPIt_YandexDisk.YDisk_UploadDeleteFile",
+"OPIt_YandexDisk.YDisk_CreateObjectCopy",
+"OPIt_YandexDisk.YDisk_GetDownloadLink",
+"OPIt_YandexDisk.YDisk_GetFileList",
+"OPIt_YandexDisk.YDisk_MoveObject",
+"OPIt_YandexDisk.YDisk_PublicObjectActions",
+"OPIt_YandexDisk.YDisk_GetPublishedList"
     ]
   },
   "settings": {

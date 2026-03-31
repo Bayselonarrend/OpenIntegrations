@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.TC_Клиент",
-"OPI_Тесты.TC_Сервер"
+"OPIt_TCP.TC_Клиент",
+"OPIt_TCP.TC_Сервер"
     ]
   },
   "settings": {

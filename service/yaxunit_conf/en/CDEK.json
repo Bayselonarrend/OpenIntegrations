@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.CdekAPI_CommonMethods",
-"OPI_Tests.CDEKAPI_OrdersManagement",
-"OPI_Tests.CdekAPI_CourierInvitationsManagement"
+"OPIt_CDEK.CdekAPI_CommonMethods",
+"OPIt_CDEK.CDEKAPI_OrdersManagement",
+"OPIt_CDEK.CdekAPI_CourierInvitationsManagement"
     ]
   },
   "settings": {

@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.OAI_ОбработкаЗапросов",
-"OPI_Тесты.OAI_Ассистенты",
-"OPI_Тесты.OAI_РаботаСФайлами",
-"OPI_Тесты.OAI_РаботаСАудио",
-"OPI_Тесты.OAI_РаботаСМоделями"
+"OPIt_OpenAI.OAI_ОбработкаЗапросов",
+"OPIt_OpenAI.OAI_Ассистенты",
+"OPIt_OpenAI.OAI_РаботаСФайлами",
+"OPIt_OpenAI.OAI_РаботаСАудио",
+"OPIt_OpenAI.OAI_РаботаСМоделями"
     ]
   },
   "settings": {

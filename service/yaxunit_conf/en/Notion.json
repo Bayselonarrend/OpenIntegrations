@@ -9,10 +9,10 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.NotionAPI_CreatePage",
-"OPI_Tests.NotionAPI_CreateUpdateBase",
-"OPI_Tests.NotionAPI_CreateDeleteBlock",
-"OPI_Tests.NotionAPI_GetUsers"
+"OPIt_Notion.NotionAPI_CreatePage",
+"OPIt_Notion.NotionAPI_CreateUpdateBase",
+"OPIt_Notion.NotionAPI_CreateDeleteBlock",
+"OPIt_Notion.NotionAPI_GetUsers"
     ]
   },
   "settings": {

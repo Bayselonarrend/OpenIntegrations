@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.YaMetrika_TagsManagement",
-"OPI_Tests.YaMetrika_CountersManagement",
-"OPI_Tests.YaMetrika_ActionsManagement"
+"OPIt_YandexMetrika.YaMetrika_TagsManagement",
+"OPIt_YandexMetrika.YaMetrika_CountersManagement",
+"OPIt_YandexMetrika.YaMetrika_ActionsManagement"
     ]
   },
   "settings": {

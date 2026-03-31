@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GR_CommonMethods",
-"OPI_Tests.GR_Introspection",
-"OPI_Tests.GR_Streaming"
+"OPIt_GRPC.GR_CommonMethods",
+"OPIt_GRPC.GR_Introspection",
+"OPIt_GRPC.GR_Streaming"
     ]
   },
   "settings": {

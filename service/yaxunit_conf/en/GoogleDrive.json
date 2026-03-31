@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GD_Authorization",
-"OPI_Tests.GD_GetCatalogList",
-"OPI_Tests.GD_UploadDeleteFile",
-"OPI_Tests.GD_CreateDeleteComment",
-"OPI_Tests.GD_CreateCatalog"
+"OPIt_GoogleDrive.GD_Authorization",
+"OPIt_GoogleDrive.GD_GetCatalogList",
+"OPIt_GoogleDrive.GD_UploadDeleteFile",
+"OPIt_GoogleDrive.GD_CreateDeleteComment",
+"OPIt_GoogleDrive.GD_CreateCatalog"
     ]
   },
   "settings": {

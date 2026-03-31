@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.OLLM_ОбработкаЗапросов",
-"OPI_Тесты.OLLM_РаботаСМоделями",
-"OPI_Тесты.OLLM_РаботаСBlob"
+"OPIt_Ollama.OLLM_ОбработкаЗапросов",
+"OPIt_Ollama.OLLM_РаботаСМоделями",
+"OPIt_Ollama.OLLM_РаботаСBlob"
     ]
   },
   "settings": {

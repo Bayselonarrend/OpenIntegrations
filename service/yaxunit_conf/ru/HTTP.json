@@ -1,0 +1,34 @@
+{
+  "reportPath": "./test_results/HTTP.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_HTTP.HTTP_Инициализация",
+"OPIt_HTTP.HTTP_УстановкаТела",
+"OPIt_HTTP.HTTP_Настройки",
+"OPIt_HTTP.HTTP_УстановкаЗаголовков",
+"OPIt_HTTP.HTTP_Авторизация",
+"OPIt_HTTP.HTTP_ОбработкаЗапроса",
+"OPIt_HTTP.HTTP_ПолучениеОтвета"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/HTTP.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
