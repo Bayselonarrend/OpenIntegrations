@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Configuration xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a92a85a1-a44f-436f-ba05-ba7cf84637af">
+  <name>OpenIntegrations</name>
+  <synonym>
+    <key>ru</key>
+    <value>OpenIntegrations</value>
+  </synonym>
+  <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="7f79bb54-6648-498e-9b18-3667bae17173"/>
+  <containedObjects classId="9fcd25a0-4822-11d4-9414-008048da11f9" objectId="d634cb63-c0a5-4376-bf93-1d62426a005c"/>
+  <containedObjects classId="e3687481-0a87-462c-a166-9f34594f9bba" objectId="abac5d86-e8a1-436c-bc9b-471ed0c0ac93"/>
+  <containedObjects classId="9de14907-ec23-4a07-96f0-85521cb6b53b" objectId="7e9408de-8bfd-418d-93b9-c27a4e3e30cc"/>
+  <containedObjects classId="51f2d5d8-ea4d-4064-8892-82951750031e" objectId="1b4b6326-d4a1-4a30-b06f-a319c39f103a"/>
+  <containedObjects classId="e68182ea-4237-4383-967f-90c1e3370bc7" objectId="33c4a1c1-1bc7-46ab-ab03-1fcb86589d9d"/>
+  <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="93765445-3ccd-492b-befa-ef545ec09a1f"/>
+  <configurationExtensionCompatibilityMode>8.3.26</configurationExtensionCompatibilityMode>
+  <defaultRunMode>ManagedApplication</defaultRunMode>
+  <usePurposes>PersonalComputer</usePurposes>
+  <scriptVariant>Russian</scriptVariant>
+  <usedMobileApplicationFunctionalities>
+    <functionality>
+      <use>true</use>
+    </functionality>
+    <functionality>
+      <functionality>OSBackup</functionality>
+      <use>true</use>
+    </functionality>
+  </usedMobileApplicationFunctionalities>
+  <defaultLanguage>Language.Русский</defaultLanguage>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <objectAutonumerationMode>NotAutoFree</objectAutonumerationMode>
+  <modalityUseMode>DontUse</modalityUseMode>
+  <synchronousPlatformExtensionAndAddInCallUseMode>DontUse</synchronousPlatformExtensionAndAddInCallUseMode>
+  <compatibilityMode>8.3.15</compatibilityMode>
+  <languages uuid="710c9daf-82ec-48b6-a0ec-af9831dc3195">
+    <name>Русский</name>
+    <synonym>
+      <key>ru</key>
+      <value>Русский</value>
+    </synonym>
+    <languageCode>ru</languageCode>
+  </languages>
+  <commonModules>CommonModule.ТестовыйМодуль1</commonModules>
+  <httpServices>HTTPService.Twitter</httpServices>
+  <httpServices>HTTPService.Vitalik</httpServices>
+  <definedTypes>DefinedType.Календарь</definedTypes>
+  <constants>Constant.IDГруппы</constants>
+  <constants>Constant.ПоддерживатьСервер</constants>
+  <constants>Constant.Токен</constants>
+  <constants>Constant.ЭтоТестыCLI</constants>
+  <catalogs>Catalog.Пользователи</catalogs>
+  <dataProcessors>DataProcessor.Mustela</dataProcessors>
+  <dataProcessors>DataProcessor.ТестоваяОбработка</dataProcessors>
+</mdclass:Configuration>

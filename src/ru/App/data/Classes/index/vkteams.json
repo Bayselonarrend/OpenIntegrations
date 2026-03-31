@@ -1,0 +1,986 @@
+{
+ "module": "OPI_VKTeams",
+ "library": "vkteams",
+ "self_depend": false,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Общие методы",
+   "methods": [
+    "ПолучитьИнформациюОФайле",
+    "ПолучитьСобытия",
+    "ПроверитьТокен"
+   ]
+  },
+  {
+   "name": "Отправка сообщений",
+   "methods": [
+    "ЗакрепитьСообщение",
+    "ИзменитьТекстСообщения",
+    "ОтветитьНаСобытиеКлавиатуры",
+    "ОткрепитьСообщение",
+    "ОтправитьГолосовоеСообщение",
+    "ОтправитьТекстовоеСообщение",
+    "ОтправитьФайл",
+    "ПереслатьГолосовоеСообщение",
+    "ПереслатьСообщение",
+    "ПереслатьФайл",
+    "СформироватьКнопкуДействия",
+    "УдалитьСообщение"
+   ]
+  },
+  {
+   "name": "Управление чатами",
+   "methods": [
+    "ЗаблокироватьПользователяЧата",
+    "ИзменитьАватарЧата",
+    "ИсключитьПользователейЧата",
+    "ОдобритьЗаявкуНаВступление",
+    "ОтклонитьЗаявкуНаВступление",
+    "ПолучитьАдминистраторовЧата",
+    "ПолучитьЗаблокированныхПользователейЧата",
+    "ПолучитьЗапросыВступленияЧата",
+    "ПолучитьИнформациюОЧате",
+    "ПолучитьПользователейЧата",
+    "РазблокироватьПользователяЧата",
+    "УстановитьЗаголовокЧата",
+    "УстановитьОписаниеЧата",
+    "УстановитьПравилаЧата"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ПроверитьТокен",
+   "id": "ПРОВЕРИТЬТОКЕН",
+   "description": "Проверяет работоспособность токена бота",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Общие методы"
+  },
+  {
+   "name": "ПолучитьСобытия",
+   "id": "ПОЛУЧИТЬСОБЫТИЯ",
+   "description": "Получает события бота в Polling режиме",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--last",
+     "types": "Строка, Число",
+     "description": "ID последнего обработанного до этого события",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--timeout",
+     "types": "Строка, Число",
+     "description": "Время удержания соединения для Long Polling",
+     "default": "Пустое значение",
+     "short": "-m"
+    }
+   ],
+   "region": "Общие методы"
+  },
+  {
+   "name": "ПолучитьИнформациюОФайле",
+   "id": "ПОЛУЧИТЬИНФОРМАЦИЮОФАЙЛЕ",
+   "description": "Получает информацию о файле по его ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--fileid",
+     "types": "Строка, Число",
+     "description": "ID Файла",
+     "default": null,
+     "short": "-f"
+    }
+   ],
+   "region": "Общие методы"
+  },
+  {
+   "name": "ОтправитьТекстовоеСообщение",
+   "id": "ОТПРАВИТЬТЕКСТОВОЕСООБЩЕНИЕ",
+   "description": "Отправляет текстовое сообщение в чат\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки сообщения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст сообщения",
+     "default": null,
+     "short": "-x"
+    },
+    {
+     "name": "--reply",
+     "types": "Строка, Число",
+     "description": "ID цитируемого сообщения, если необходимо",
+     "default": "Пустое значение",
+     "short": "-r"
+    },
+    {
+     "name": "--keyboard",
+     "types": "Массив Из Строка",
+     "description": "Кнопки к сообщению, если необходимо",
+     "default": "Пустое значение",
+     "short": "-k"
+    },
+    {
+     "name": "--parsemod",
+     "types": "Строка",
+     "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
+     "default": "MarkdownV2",
+     "short": "-p"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьФайл",
+   "id": "ОТПРАВИТЬФАЙЛ",
+   "description": "Отправляет файл в чат",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки файла",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--file",
+     "types": "ДвоичныеДанные, Строка",
+     "description": "Файл для отправки",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Подпись к файлу",
+     "default": "Пустое значение",
+     "short": "-x"
+    },
+    {
+     "name": "--filename",
+     "types": "Строка",
+     "description": "Отображаемое имя файла",
+     "default": "Пустое значение",
+     "short": "-l"
+    },
+    {
+     "name": "--parsemod",
+     "types": "Строка",
+     "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
+     "default": "MarkdownV2",
+     "short": "-p"
+    },
+    {
+     "name": "--type",
+     "types": "Строка",
+     "description": "Тип файла для отправки",
+     "default": "image/jpeg",
+     "short": "-y"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьГолосовоеСообщение",
+   "id": "ОТПРАВИТЬГОЛОСОВОЕСООБЩЕНИЕ",
+   "description": "Отправляет аудиофайл в качестве голосового сообщения\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки файла",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--file",
+     "types": "ДвоичныеДанные, Строка",
+     "description": "Файл для отправки",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--type",
+     "types": "Строка",
+     "description": "Тип аудиофайла: aac, ogg или m4a",
+     "default": "m4a",
+     "short": "-p"
+    },
+    {
+     "name": "--reply",
+     "types": "Строка, Число",
+     "description": "ID цитируемого сообщения, если необходимо",
+     "default": "Пустое значение",
+     "short": "-r"
+    },
+    {
+     "name": "--keyboard",
+     "types": "Массив Из Строка",
+     "description": "Кнопки к сообщению, если необходимо",
+     "default": "Пустое значение",
+     "short": "-k"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ИзменитьТекстСообщения",
+   "id": "ИЗМЕНИТЬТЕКСТСООБЩЕНИЯ",
+   "description": "Изменяет текст существующего сообщения",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки сообщения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--messageid",
+     "types": "Строка, Число",
+     "description": "ID сообщения для редактирования",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Новый текст сообщения",
+     "default": null,
+     "short": "-x"
+    },
+    {
+     "name": "--parsemod",
+     "types": "Строка",
+     "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
+     "default": "MarkdownV2",
+     "short": "-p"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "УдалитьСообщение",
+   "id": "УДАЛИТЬСООБЩЕНИЕ",
+   "description": "Удаляет сообщение по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки сообщения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--messageid",
+     "types": "Строка, Число",
+     "description": "ID сообщения для редактирования",
+     "default": null,
+     "short": "-m"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ПереслатьФайл",
+   "id": "ПЕРЕСЛАТЬФАЙЛ",
+   "description": "Отправляет ранее загруженный файл по его ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки файла",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--fileid",
+     "types": "Строка, Число",
+     "description": "ID Файла для отправки",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Подпись к файлу",
+     "default": "Пустое значение",
+     "short": "-x"
+    },
+    {
+     "name": "--parsemod",
+     "types": "Строка",
+     "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
+     "default": "MarkdownV2",
+     "short": "-p"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ПереслатьГолосовоеСообщение",
+   "id": "ПЕРЕСЛАТЬГОЛОСОВОЕСООБЩЕНИЕ",
+   "description": "Отправляет ранее загруженное голосовое сообщение по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки файла",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--fileid",
+     "types": "Строка, Число",
+     "description": "ID Файла голосового сообщения",
+     "default": null,
+     "short": "-f"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ПереслатьСообщение",
+   "id": "ПЕРЕСЛАТЬСООБЩЕНИЕ",
+   "description": "Пересылает существующее сообщение в текущий диалог",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--messageid",
+     "types": "Строка, Число",
+     "description": "ID оригинального сообщения",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "name": "--fromid",
+     "types": "Строка, Число",
+     "description": "ID чата источника оригинального сообщения",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата для отправки сообщения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Дополнительный текст сообщения",
+     "default": "Пустое значение",
+     "short": "-x"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ЗакрепитьСообщение",
+   "id": "ЗАКРЕПИТЬСООБЩЕНИЕ",
+   "description": "Закрепляет выбранное сообщение в чате",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--messageid",
+     "types": "Строка, Число",
+     "description": "ID сообщения для закрепления",
+     "default": null,
+     "short": "-m"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОткрепитьСообщение",
+   "id": "ОТКРЕПИТЬСООБЩЕНИЕ",
+   "description": "Открепляет ранее закрепленное сообщение в чате",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--messageid",
+     "types": "Строка, Число",
+     "description": "ID сообщения для открепления",
+     "default": null,
+     "short": "-m"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтветитьНаСобытиеКлавиатуры",
+   "id": "ОТВЕТИТЬНАСОБЫТИЕКЛАВИАТУРЫ",
+   "description": "Возвращает ответ пользователю при нажатии на кнопку клавиатуры",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--queryid",
+     "types": "Строка",
+     "description": "Идентификатор callback query полученного ботом",
+     "default": null,
+     "short": "-q"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст ответа",
+     "default": "Пустое значение",
+     "short": "-x"
+    },
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "URL, который будет открыт клиентским приложением",
+     "default": "Пустое значение",
+     "short": "-u"
+    },
+    {
+     "name": "--showalert",
+     "types": "Булево",
+     "description": "Отображать ответ как предупреждение (alert)",
+     "default": "false",
+     "short": "-s"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "СформироватьКнопкуДействия",
+   "id": "СФОРМИРОВАТЬКНОПКУДЕЙСТВИЯ",
+   "description": "Формирует кнопку действия для клавиатуры сообщения",
+   "params": [
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст кнопки",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--data",
+     "types": "Строка",
+     "description": "Значение, возвращаемое в событии нажатия. Только если не заполнено URL",
+     "default": "Пустое значение",
+     "short": "-d"
+    },
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "URL для создания кнопки открытия страницы. Только если не заполнено Значение",
+     "default": "Пустое значение",
+     "short": "-u"
+    },
+    {
+     "name": "--style",
+     "types": "Строка",
+     "description": "Стиль кнопки: primary, attention или base",
+     "default": "base",
+     "short": "-s"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ИсключитьПользователейЧата",
+   "id": "ИСКЛЮЧИТЬПОЛЬЗОВАТЕЛЕЙЧАТА",
+   "description": "Исключает пользователей из чата\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--members",
+     "types": "Строка, Число, Массив Из Строка, Число",
+     "description": "Пользователь или пользователи чата для удаления",
+     "default": null,
+     "short": "-m"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ИзменитьАватарЧата",
+   "id": "ИЗМЕНИТЬАВАТАРЧАТА",
+   "description": "Изменяет картинку аватар чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--file",
+     "types": "ДвоичныеДанные, Строка",
+     "description": "Файл картинки",
+     "default": null,
+     "short": "-f"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ПолучитьИнформациюОЧате",
+   "id": "ПОЛУЧИТЬИНФОРМАЦИЮОЧАТЕ",
+   "description": "Получает основную информацию о чате",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ПолучитьАдминистраторовЧата",
+   "id": "ПОЛУЧИТЬАДМИНИСТРАТОРОВЧАТА",
+   "description": "Получает список администраторов чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ПолучитьПользователейЧата",
+   "id": "ПОЛУЧИТЬПОЛЬЗОВАТЕЛЕЙЧАТА",
+   "description": "Получает список пользователей чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--cursor",
+     "types": "Строка",
+     "description": "Маркер продолжения списка из предыдущего запроса",
+     "default": "Пустое значение",
+     "short": "-r"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ПолучитьЗаблокированныхПользователейЧата",
+   "id": "ПОЛУЧИТЬЗАБЛОКИРОВАННЫХПОЛЬЗОВАТЕЛЕЙЧАТА",
+   "description": "Получает список заблокированных пользователей чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ПолучитьЗапросыВступленияЧата",
+   "id": "ПОЛУЧИТЬЗАПРОСЫВСТУПЛЕНИЯЧАТА",
+   "description": "Получает список запросов на вступление в чат",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ЗаблокироватьПользователяЧата",
+   "id": "ЗАБЛОКИРОВАТЬПОЛЬЗОВАТЕЛЯЧАТА",
+   "description": "Блокирует выбранного пользователя в чате",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--userid",
+     "types": "Строка, Число",
+     "description": "ID пользователя для блокировки",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--dellast",
+     "types": "Булево",
+     "description": "Удалить последние сообщения перед блокировкой",
+     "default": "false",
+     "short": "-d"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "РазблокироватьПользователяЧата",
+   "id": "РАЗБЛОКИРОВАТЬПОЛЬЗОВАТЕЛЯЧАТА",
+   "description": "Разблокирует ранее заблокированного пользователя в чате",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--userid",
+     "types": "Строка, Число",
+     "description": "ID пользователя",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ОдобритьЗаявкуНаВступление",
+   "id": "ОДОБРИТЬЗАЯВКУНАВСТУПЛЕНИЕ",
+   "description": "Подтверждает вступление пользователя в закрытый чат",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--userid",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Ответ на все заявки, если не заполнено",
+     "default": "Пустое значение",
+     "short": "-u"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "ОтклонитьЗаявкуНаВступление",
+   "id": "ОТКЛОНИТЬЗАЯВКУНАВСТУПЛЕНИЕ",
+   "description": "Отклоняет вступление пользователя в закрытый чат",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--userid",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Ответ на все заявки, если не заполнено",
+     "default": "Пустое значение",
+     "short": "-u"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "УстановитьЗаголовокЧата",
+   "id": "УСТАНОВИТЬЗАГОЛОВОКЧАТА",
+   "description": "Устанавливает новый заголовок чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст заголовка",
+     "default": null,
+     "short": "-x"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "УстановитьОписаниеЧата",
+   "id": "УСТАНОВИТЬОПИСАНИЕЧАТА",
+   "description": "Устанавливает новое описание чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст описания",
+     "default": null,
+     "short": "-x"
+    }
+   ],
+   "region": "Управление чатами"
+  },
+  {
+   "name": "УстановитьПравилаЧата",
+   "id": "УСТАНОВИТЬПРАВИЛАЧАТА",
+   "description": "Устанавливает новые правила чата",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен бота",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--chatid",
+     "types": "Строка, Число",
+     "description": "ID чата",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст правил",
+     "default": null,
+     "short": "-x"
+    }
+   ],
+   "region": "Управление чатами"
+  }
+ ]
+}
