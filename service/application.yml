@@ -5,13 +5,13 @@ app:
 
   source-set:
     - path: "TestIB"
-      name: testib
+      name: TestIB
       type: "CONFIGURATION"
       purpose: ["MAIN"]
-    - path: "OpenIntegrations"
-      name: openintegrations
+    - path: "Tests"
+      name: Tests
       type: "EXTENSION"
-      purpose: ["MAIN", "TESTS"]
+      purpose: ["TESTS"]
 
   connection:
     connection-string: "Srvr='DEVSRV';Ref='OpenIntegrations';"
