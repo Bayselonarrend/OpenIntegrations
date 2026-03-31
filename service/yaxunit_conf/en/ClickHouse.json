@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.CH_CommonMethods",
-"OPI_Tests.CH_GRPC"
+"OPIt_ClickHouse.CH_CommonMethods",
+"OPIt_ClickHouse.CH_GRPC"
     ]
   },
   "settings": {
