@@ -1,0 +1,392 @@
+{
+ "module": "OPI_Viber",
+ "library": "viber",
+ "self_depend": false,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Настройки и информация",
+   "methods": [
+    "ПолучитьДанныеПользователя",
+    "ПолучитьИнформациюОКанале",
+    "ПолучитьОнлайнПользователей",
+    "УстановитьWebhook"
+   ]
+  },
+  {
+   "name": "Отправка сообщений",
+   "methods": [
+    "ОтправитьКартинку",
+    "ОтправитьКонтакт",
+    "ОтправитьЛокацию",
+    "ОтправитьСсылку",
+    "ОтправитьТекстовоеСообщение",
+    "ОтправитьФайл",
+    "СформироватьКлавиатуруИзМассиваКнопок"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "УстановитьWebhook",
+   "id": "УСТАНОВИТЬWEBHOOK",
+   "description": "Устанавливает Webhook для приема сообщений",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен Viber",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "URL для установки Webhook",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "Настройки и информация"
+  },
+  {
+   "name": "ПолучитьИнформациюОКанале",
+   "id": "ПОЛУЧИТЬИНФОРМАЦИЮОКАНАЛЕ",
+   "description": "Тут можно получить ID пользователей канала. ID для бота необходимо получать из прилетов на Webhook\n\n ID пользователя из информации о канале не подойдет для отправки сообщений через бота - они разные",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Настройки и информация"
+  },
+  {
+   "name": "ПолучитьДанныеПользователя",
+   "id": "ПОЛУЧИТЬДАННЫЕПОЛЬЗОВАТЕЛЯ",
+   "description": "Получает информацию о пользователе по ID",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя Viber",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "Настройки и информация"
+  },
+  {
+   "name": "ПолучитьОнлайнПользователей",
+   "id": "ПОЛУЧИТЬОНЛАЙНПОЛЬЗОВАТЕЛЕЙ",
+   "description": "Получает статус пользователя или нескольких пользователей по ID\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен Viber",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--users",
+     "types": "Строка, Число, Массив из Строка, Число",
+     "description": "ID пользователей(я) Viber",
+     "default": null,
+     "short": "-u"
+    }
+   ],
+   "region": "Настройки и информация"
+  },
+  {
+   "name": "ОтправитьТекстовоеСообщение",
+   "id": "ОТПРАВИТЬТЕКСТОВОЕСООБЩЕНИЕ",
+   "description": "Отправляет текстовое сообщение в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--text",
+     "types": "Строка",
+     "description": "Текст сообщения",
+     "default": null,
+     "short": "-x"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--ischannel",
+     "types": "Булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--keyboard",
+     "types": "Структура из Строка",
+     "description": "См. СформироватьКлавиатуруИзМассиваКнопок",
+     "default": "Пустое значение",
+     "short": "-k"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьКартинку",
+   "id": "ОТПРАВИТЬКАРТИНКУ",
+   "description": "Отправляет картинку в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--picture",
+     "types": "Строка",
+     "description": "URL картинки",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--ischannel",
+     "types": "булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--description",
+     "types": "Строка",
+     "description": "Аннотация к картинке",
+     "default": "Пустое значение",
+     "short": "-d"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьФайл",
+   "id": "ОТПРАВИТЬФАЙЛ",
+   "description": "Отправляет файл (документ) в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--file",
+     "types": "Строка",
+     "description": "URL файла",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--ischannel",
+     "types": "Булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--ext",
+     "types": "Строка",
+     "description": "Расширение файла",
+     "default": null,
+     "short": "-e"
+    },
+    {
+     "name": "--size",
+     "types": "Число",
+     "description": "Размер файла. Если не заполнен > определяется автоматически скачиванием файла",
+     "default": "Пустое значение",
+     "short": "-s"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьКонтакт",
+   "id": "ОТПРАВИТЬКОНТАКТ",
+   "description": "Отправляет контакт с номером телефона в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--name",
+     "types": "Строка",
+     "description": "Имя контакта",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--phone",
+     "types": "Строка",
+     "description": "Номер телефона",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--ischannel",
+     "types": "Булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьЛокацию",
+   "id": "ОТПРАВИТЬЛОКАЦИЮ",
+   "description": "Отправляет географические координаты в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--lat",
+     "types": "Строка, Число",
+     "description": "Географическая широта",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--long",
+     "types": "Строка, Число",
+     "description": "Географическая долгота",
+     "default": null,
+     "short": "-n"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--ischannel",
+     "types": "Булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "ОтправитьСсылку",
+   "id": "ОТПРАВИТЬССЫЛКУ",
+   "description": "Отправляет URL с предпросмотром в чат или канал",
+   "params": [
+    {
+     "name": "--token",
+     "types": "Строка",
+     "description": "Токен",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "Отправляемая ссылка",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--user",
+     "types": "Строка, Число",
+     "description": "ID пользователя. Для канала > администратора, для бота > получателя",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--ischannel",
+     "types": "Булево",
+     "description": "Отправка в канал или в чат бота",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Отправка сообщений"
+  },
+  {
+   "name": "СформироватьКлавиатуруИзМассиваКнопок",
+   "id": "СФОРМИРОВАТЬКЛАВИАТУРУИЗМАССИВАКНОПОК",
+   "description": "Возвращает структура клавиатуры для сообщений\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--buttons",
+     "types": "Массив из Строка",
+     "description": "Массив кнопок",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--color",
+     "types": "Строка",
+     "description": "HEX цвет кнопок с # в начале",
+     "default": "#2db9b9",
+     "short": "-c"
+    }
+   ],
+   "region": "Отправка сообщений"
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "module": "OPI_YandexID",
+ "library": "yandex",
+ "self_depend": false,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Программный интерфейс",
+   "methods": [
+    "ОбновитьТокен",
+    "ПолучитьКодПодтверждения",
+    "ПреобразоватьКодВТокен"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ПолучитьКодПодтверждения",
+   "id": "ПОЛУЧИТЬКОДПОДТВЕРЖДЕНИЯ",
+   "description": "Получает код подтверждения и адрес страницы, на которой его необходимо ввести",
+   "params": [
+    {
+     "name": "--id",
+     "types": "Строка",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    }
+   ],
+   "region": "Программный интерфейс"
+  },
+  {
+   "name": "ПреобразоватьКодВТокен",
+   "id": "ПРЕОБРАЗОВАТЬКОДВТОКЕН",
+   "description": "Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения",
+   "params": [
+    {
+     "name": "--id",
+     "types": "Строка",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "Строка",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--device",
+     "types": "Строка",
+     "description": "device_code из ПолучитьКодПодтверждения()",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Программный интерфейс"
+  },
+  {
+   "name": "ОбновитьТокен",
+   "id": "ОБНОВИТЬТОКЕН",
+   "description": "Обновляет токен по Refresh token",
+   "params": [
+    {
+     "name": "--id",
+     "types": "Строка",
+     "description": "Client id",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--secret",
+     "types": "Строка",
+     "description": "Client secret",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--refresh",
+     "types": "Строка",
+     "description": "Refresh token",
+     "default": null,
+     "short": "-r"
+    }
+   ],
+   "region": "Программный интерфейс"
+  }
+ ]
+}
