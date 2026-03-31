@@ -107,12 +107,9 @@
   <commonModules>CommonModule.OPI_ЗапросыSSH</commonModules>
   <commonModules>CommonModule.OPI_Компоненты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
-  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
   <commonModules>CommonModule.OPI_РасширенныйВызов</commonModules>
   <commonModules>CommonModule.OPI_УниверсальныйСервер</commonModules>
-  <commonModules>CommonModule.OPI_Тесты</commonModules>
-  <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPКлиент</dataProcessors>
 </mdclass:Configuration>
