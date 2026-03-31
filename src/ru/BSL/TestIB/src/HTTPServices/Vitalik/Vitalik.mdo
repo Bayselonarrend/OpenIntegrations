@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:HTTPService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="fbe0b353-3f44-4def-8d2c-2bb26c823c8c">
+  <name>Vitalik</name>
+  <synonym>
+    <key>ru</key>
+    <value>Vitalik</value>
+  </synonym>
+  <rootURL>vitalik</rootURL>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <urlTemplates uuid="1d0a5d78-615b-472c-ab44-7c5e158181d6">
+    <name>main</name>
+    <synonym>
+      <key>ru</key>
+      <value>Main</value>
+    </synonym>
+    <template>/*</template>
+    <methods uuid="a3e2d170-58fb-4229-934e-e2cba5f8e041">
+      <name>getMessages</name>
+      <synonym>
+        <key>ru</key>
+        <value>Get messages</value>
+      </synonym>
+      <httpMethod>POST</httpMethod>
+      <handler>maingetMessages</handler>
+    </methods>
+  </urlTemplates>
+</mdclass:HTTPService>

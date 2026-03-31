@@ -1,0 +1,75 @@
+{
+ "module": "OPI_RCON",
+ "library": "rcon",
+ "self_depend": true,
+ "dependencies": null,
+ "regions": [
+  {
+   "name": "Выполнение команд",
+   "methods": [
+    "ВыполнитьКоманду",
+    "СформироватьПараметрыСоединения"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ВыполнитьКоманду",
+   "id": "ВЫПОЛНИТЬКОМАНДУ",
+   "description": "Выполняет команду на сервере",
+   "params": [
+    {
+     "name": "--exec",
+     "types": "Строка",
+     "description": "Текст команды",
+     "default": null,
+     "short": "-e"
+    },
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Выполнение команд"
+  },
+  {
+   "name": "СформироватьПараметрыСоединения",
+   "id": "СФОРМИРОВАТЬПАРАМЕТРЫСОЕДИНЕНИЯ",
+   "description": "Формирует коллекцию параметров соединения",
+   "params": [
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "URL сервера",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--pass",
+     "types": "Строка",
+     "description": "Пароль для подключения",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--rtout",
+     "types": "Число",
+     "description": "Таймаут ожидания ответа (в секундах)",
+     "default": 30,
+     "short": "-r"
+    },
+    {
+     "name": "--wtout",
+     "types": "Число",
+     "description": "Таймаут ожидания отправки запроса (в секундах)",
+     "default": 30,
+     "short": "-w"
+    }
+   ],
+   "region": "Выполнение команд"
+  }
+ ]
+}
