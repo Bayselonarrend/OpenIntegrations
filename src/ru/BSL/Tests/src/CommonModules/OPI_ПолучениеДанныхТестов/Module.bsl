@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/Modules/OPIt_ПолучениеДанныхТестов.os
+// OneScript: ./OInt/tests/Modules/internal/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
