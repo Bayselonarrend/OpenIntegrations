@@ -1,4 +1,4 @@
- // OneScript: ./OInt/tests/Modules/OPI_Тесты.os
+// OneScript: ./OInt/tests/Modules/OPIt_YandexMetrika.os
 
 // MIT License
 
