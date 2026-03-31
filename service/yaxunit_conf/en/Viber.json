@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.Viber_DataRetrieval",
-"OPI_Tests.Viber_MessagesSending"
+"OPIt_Viber.Viber_DataRetrieval",
+"OPIt_Viber.Viber_MessagesSending"
     ]
   },
   "settings": {

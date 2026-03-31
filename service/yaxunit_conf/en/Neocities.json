@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.NC_FilesManagement",
-"OPI_Tests.NC_DataRetrieving"
+"OPIt_Neocities.NC_FilesManagement",
+"OPIt_Neocities.NC_DataRetrieving"
     ]
   },
   "settings": {

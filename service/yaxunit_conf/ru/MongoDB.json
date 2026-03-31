@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.Mongo_ОсновныеМетоды",
-"OPI_Тесты.Mongo_РаботаСБазами",
-"OPI_Тесты.Mongo_РаботаСКоллекциями",
-"OPI_Тесты.Mongo_РаботаСДокументами",
-"OPI_Тесты.Mongo_УправлениеПользователями",
-"OPI_Тесты.Mongo_УправлениеРолями"
+"OPIt_MongoDB.Mongo_ОсновныеМетоды",
+"OPIt_MongoDB.Mongo_РаботаСБазами",
+"OPIt_MongoDB.Mongo_РаботаСКоллекциями",
+"OPIt_MongoDB.Mongo_РаботаСДокументами",
+"OPIt_MongoDB.Mongo_УправлениеПользователями",
+"OPIt_MongoDB.Mongo_УправлениеРолями"
     ]
   },
   "settings": {

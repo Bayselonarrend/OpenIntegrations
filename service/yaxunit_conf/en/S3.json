@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.AWS_CommonMethods",
-"OPI_Tests.AWS_BucketsManagement",
-"OPI_Tests.AWS_ObjectsManagement"
+"OPIt_S3.AWS_CommonMethods",
+"OPIt_S3.AWS_BucketsManagement",
+"OPIt_S3.AWS_ObjectsManagement"
     ]
   },
   "settings": {

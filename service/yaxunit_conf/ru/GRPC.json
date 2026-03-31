@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.GR_ОсновныеМетоды",
-"OPI_Тесты.GR_Интроспекция",
-"OPI_Тесты.GR_Стриминг"
+"OPIt_GRPC.GR_ОсновныеМетоды",
+"OPIt_GRPC.GR_Интроспекция",
+"OPIt_GRPC.GR_Стриминг"
     ]
   },
   "settings": {

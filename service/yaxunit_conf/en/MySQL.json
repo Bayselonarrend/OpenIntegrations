@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.MYS_CommonMethods",
-"OPI_Tests.MYS_ORM"
+"OPIt_MySQL.MYS_CommonMethods",
+"OPIt_MySQL.MYS_ORM"
     ]
   },
   "settings": {

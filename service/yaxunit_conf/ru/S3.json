@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.AWS_ОбщиеМетоды",
-"OPI_Тесты.AWS_РаботаСБакетами",
-"OPI_Тесты.AWS_РаботаСОбъектами"
+"OPIt_S3.AWS_ОбщиеМетоды",
+"OPIt_S3.AWS_РаботаСБакетами",
+"OPIt_S3.AWS_РаботаСОбъектами"
     ]
   },
   "settings": {
