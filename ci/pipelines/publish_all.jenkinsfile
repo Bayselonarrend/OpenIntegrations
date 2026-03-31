@@ -29,7 +29,7 @@ pipeline {
                     parameters: [
                             [$class: 'StringParameterValue', name: 'VERSION', value: '0.12.0'],
                             [$class: 'StringParameterValue', name: 'MELEZH_VERSION', value: '0.12.0'],
-                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '1.35.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '2.0.0'],
                             [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild'],
                             [$class: 'BooleanParameterValue', name: 'PUSH_TO_STABLE', value: true]
                     ]
