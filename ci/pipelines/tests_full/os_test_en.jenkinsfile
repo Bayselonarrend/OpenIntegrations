@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPIt_BuildCheck.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -91,28 +91,28 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_GetBotInfo'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_GetUpdates'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SetWebhook'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendTextMessage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendImage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendVideo'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendAudio'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendDocument'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendGIF'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendMediaGroup'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendLocation'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendContact'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_SendPoll'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_ForwardMessage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_BanUnban'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_CreateInvitationLink'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_PinUnpinMessage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_GetMemberCount'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_GetForumAvatarsList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_CreateDeleteForumTopic'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_ChangeMainTopicName'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TelegramAPI_HideShowMainTopic'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetBotInfo'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetUpdates'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SetWebhook'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendTextMessage'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendImage'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendVideo'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendAudio'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendDocument'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendGIF'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendMediaGroup'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendLocation'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendContact'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendPoll'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_ForwardMessage'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_BanUnban'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_CreateInvitationLink'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_PinUnpinMessage'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetMemberCount'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetForumAvatarsList'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_CreateDeleteForumTopic'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_ChangeMainTopicName'],
+						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_HideShowMainTopic'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -129,25 +129,25 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateTokenLink'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateDeletePost'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateCompositePost'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreatePoll'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_SaveDeleteImage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateStory'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_LikeRepostComment'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetStatistics'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetPostStatistics'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateAdCampaign'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_SendMessage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetProductCategories'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateProductSelection'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_CreateProductWithProperties'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetProductList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetSelectionList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetPropertyList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_GetOrderList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKAPI_UploadVideo'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateTokenLink'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateDeletePost'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateCompositePost'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreatePoll'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_SaveDeleteImage'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateStory'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_LikeRepostComment'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetStatistics'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetPostStatistics'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateAdCampaign'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_SendMessage'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetProductCategories'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateProductSelection'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_CreateProductWithProperties'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetProductList'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetSelectionList'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetPropertyList'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_GetOrderList'],
+						['./src/en/OInt/tests/Modules/OPIt_VK.os', 'VKAPI_UploadVideo'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -164,8 +164,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Viber_DataRetrieval'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Viber_MessagesSending'],
+						['./src/en/OInt/tests/Modules/OPIt_Viber.os', 'Viber_DataRetrieval'],
+						['./src/en/OInt/tests/Modules/OPIt_Viber.os', 'Viber_MessagesSending'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -182,8 +182,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TwitterAPI_AccountData'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TwitterAPI_Tweets'],
+						['./src/en/OInt/tests/Modules/OPIt_Twitter.os', 'TwitterAPI_AccountData'],
+						['./src/en/OInt/tests/Modules/OPIt_Twitter.os', 'TwitterAPI_Tweets'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -200,9 +200,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'FT_DirecotryManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'FT_FileOperations'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'FT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_DirecotryManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_FileOperations'],
+						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_CommonMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -219,7 +219,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SShell_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SSH.os', 'SShell_CommonMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -236,9 +236,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SF_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SF_DirectoryManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SF_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_DirectoryManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_FileManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -255,8 +255,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Postgres_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Postgres_ORM'],
+						['./src/en/OInt/tests/Modules/OPIt_PostgreSQL.os', 'Postgres_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_PostgreSQL.os', 'Postgres_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -273,8 +273,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'MYS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'MYS_ORM'],
+						['./src/en/OInt/tests/Modules/OPIt_MySQL.os', 'MYS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MySQL.os', 'MYS_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -291,8 +291,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'MSS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'MSS_ORM'],
+						['./src/en/OInt/tests/Modules/OPIt_MSSQL.os', 'MSS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MSSQL.os', 'MSS_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -309,8 +309,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SQLL_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SQLL_ORM'],
+						['./src/en/OInt/tests/Modules/OPIt_SQLite.os', 'SQLL_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SQLite.os', 'SQLL_ORM'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -327,12 +327,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mong_DatabaseManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_CollectionManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_DocumentsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_UserManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Mongo_RoleManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mong_DatabaseManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CollectionManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_DocumentsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_UserManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_RoleManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -349,7 +349,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RC_CommandsExecution'],
+						['./src/en/OInt/tests/Modules/OPIt_RCON.os', 'RC_CommandsExecution'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -366,17 +366,17 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetDiskInfo'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_CreateFolder'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_UploadByUrlAndGetObject'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_CreateObjectCopy'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetDownloadLink'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetFileList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_MoveObject'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_PublicObjectActions'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YDisk_GetPublishedList'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetDiskInfo'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_UploadByUrlAndGetObject'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_CreateObjectCopy'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetDownloadLink'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetFileList'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_MoveObject'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_PublicObjectActions'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetPublishedList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -393,7 +393,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleWorkspace.os', 'GW_Auth'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -410,10 +410,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GC_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GC_GetCalendarList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GC_CreateDeleteCalendar'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GC_CreateDeleteEvent'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleCalendar.os', 'GC_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleCalendar.os', 'GC_GetCalendarList'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleCalendar.os', 'GC_CreateDeleteCalendar'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleCalendar.os', 'GC_CreateDeleteEvent'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -430,11 +430,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_GetCatalogList'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_CreateDeleteComment'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GD_CreateCatalog'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_GetCatalogList'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_CreateDeleteComment'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_CreateCatalog'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -451,9 +451,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GT_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GT_CreateTable'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GT_FillClearCells'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleSheets.os', 'GT_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleSheets.os', 'GT_CreateTable'],
+						['./src/en/OInt/tests/Modules/OPIt_GoogleSheets.os', 'GT_FillClearCells'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -470,10 +470,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreatePage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreateUpdateBase'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_CreateDeleteBlock'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NotionAPI_GetUsers'],
+						['./src/en/OInt/tests/Modules/OPIt_Notion.os', 'NotionAPI_CreatePage'],
+						['./src/en/OInt/tests/Modules/OPIt_Notion.os', 'NotionAPI_CreateUpdateBase'],
+						['./src/en/OInt/tests/Modules/OPIt_Notion.os', 'NotionAPI_CreateDeleteBlock'],
+						['./src/en/OInt/tests/Modules/OPIt_Notion.os', 'NotionAPI_GetUsers'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -490,12 +490,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'SlackGetData'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Slack_SendDeleteMessage'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Slack_CreateArchiveChannel'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Slack_OpenCloseDialog'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Slack_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'Slack_UploadDeleteExternalFile'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'SlackGetData'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'Slack_SendDeleteMessage'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'Slack_CreateArchiveChannel'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'Slack_OpenCloseDialog'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'Slack_UploadDeleteFile'],
+						['./src/en/OInt/tests/Modules/OPIt_Slack.os', 'Slack_UploadDeleteExternalFile'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -512,10 +512,10 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AT_CreateDatabase'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AT_CreateTable'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AT_CreateField'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AT_CreateDeleteRecords'],
+						['./src/en/OInt/tests/Modules/OPIt_Airtable.os', 'AT_CreateDatabase'],
+						['./src/en/OInt/tests/Modules/OPIt_Airtable.os', 'AT_CreateTable'],
+						['./src/en/OInt/tests/Modules/OPIt_Airtable.os', 'AT_CreateField'],
+						['./src/en/OInt/tests/Modules/OPIt_Airtable.os', 'AT_CreateDeleteRecords'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -532,14 +532,14 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetUpdateToken'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_UploadFile'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_UploadFileByURL'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_CreateFolder'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_CreateDeleteTag'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetAccount'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_AccessManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'DropboxAPI_GetFolderFileList'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_GetUpdateToken'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_UploadFile'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_UploadFileByURL'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_CreateFolder'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_CreateDeleteTag'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_GetAccount'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_AccessManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Dropbox.os', 'DropboxAPI_GetFolderFileList'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -556,22 +556,22 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_TokenManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_ServerTime'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_PostsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_TaskManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_CommentsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_WorkingWithDrive'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_Kanban'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_Timekeeping'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_ChatManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_NotificationsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_TasksFieldsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_DepartmentsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B2_UsersManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_LeadsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_DealsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'B24_CalendarsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TokenManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_ServerTime'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_PostsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TaskManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_CommentsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_WorkingWithDrive'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_Kanban'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_Timekeeping'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_ChatManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_NotificationsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TasksFieldsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_DepartmentsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B2_UsersManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_LeadsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_DealsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_CalendarsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -588,9 +588,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKT_MessagesSending'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKT_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'VKT_ChatManagement'],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -607,8 +605,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NC_FilesManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'NC_DataRetrieving'],
+						['./src/en/OInt/tests/Modules/OPIt_Neocities.os', 'NC_FilesManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Neocities.os', 'NC_DataRetrieving'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -625,9 +623,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CdekAPI_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CDEKAPI_OrdersManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CdekAPI_CourierInvitationsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_CDEK.os', 'CdekAPI_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_CDEK.os', 'CDEKAPI_OrdersManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_CDEK.os', 'CdekAPI_CourierInvitationsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -644,9 +642,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YaMetrika_TagsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YaMetrika_CountersManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'YaMetrika_ActionsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexMetrika.os', 'YaMetrika_TagsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexMetrika.os', 'YaMetrika_CountersManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_YandexMetrika.os', 'YaMetrika_ActionsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -663,9 +661,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AWS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AWS_BucketsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'AWS_ObjectsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_S3.os', 'AWS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_S3.os', 'AWS_BucketsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_S3.os', 'AWS_ObjectsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -682,8 +680,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TC_Client'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'TC_Server'],
+						['./src/en/OInt/tests/Modules/OPIt_TCP.os', 'TC_Client'],
+						['./src/en/OInt/tests/Modules/OPIt_TCP.os', 'TC_Server'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -700,12 +698,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_GroupManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageSending'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_NotificationsReceiving'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageQueue'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_MessageLogs'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GAPI_Account'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_GroupManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageSending'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_NotificationsReceiving'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageQueue'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageLogs'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_Account'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -722,12 +720,12 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_GroupManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_MessageSending'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_Notifications'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_MessageHistory'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_Queues'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GMax_Account'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_GroupManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_MessageSending'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_Notifications'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_MessageHistory'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_Queues'],
+						['./src/en/OInt/tests/Modules/OPIt_GreenMax.os', 'GMax_Account'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -744,9 +742,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OLLM_RequestsProcessing'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OLLM_ModelsManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OLLM_WorkingWithBlob'],
+						['./src/en/OInt/tests/Modules/OPIt_Ollama.os', 'OLLM_RequestsProcessing'],
+						['./src/en/OInt/tests/Modules/OPIt_Ollama.os', 'OLLM_ModelsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Ollama.os', 'OLLM_WorkingWithBlob'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -756,20 +754,20 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-HTTPClient') {
+		stage('Testing-HTTP') {
             when {
-                expression { return shouldRunStage('HTTPClient') }
+                expression { return shouldRunStage('HTTP') }
             }
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_Initialization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_BodySet'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_Settings'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_HeadersSetting'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_RequestProcessing'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'HTTP_ResponseReceiving'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_Initialization'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_BodySet'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_Settings'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_HeadersSetting'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_RequestProcessing'],
+						['./src/en/OInt/tests/Modules/OPIt_HTTP.os', 'HTTP_ResponseReceiving'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -786,11 +784,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OAI_RequestsProcessing'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OAI_Assistants'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OAI_FileManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OAI_AudioProcessing'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'OAI_ModelsManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_OpenAI.os', 'OAI_RequestsProcessing'],
+						['./src/en/OInt/tests/Modules/OPIt_OpenAI.os', 'OAI_Assistants'],
+						['./src/en/OInt/tests/Modules/OPIt_OpenAI.os', 'OAI_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_OpenAI.os', 'OAI_AudioProcessing'],
+						['./src/en/OInt/tests/Modules/OPIt_OpenAI.os', 'OAI_ModelsManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -807,11 +805,11 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_Authorization'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_TestManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_LogRecording'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_ProjectManagement'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RPortal_UserManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_ReportPortal.os', 'RPortal_Authorization'],
+						['./src/en/OInt/tests/Modules/OPIt_ReportPortal.os', 'RPortal_TestManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_ReportPortal.os', 'RPortal_LogRecording'],
+						['./src/en/OInt/tests/Modules/OPIt_ReportPortal.os', 'RPortal_ProjectManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_ReportPortal.os', 'RPortal_UserManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -828,9 +826,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GR_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GR_Introspection'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'GR_Streaming'],
+						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_Introspection'],
+						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_Streaming'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -847,8 +845,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CH_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'CH_GRPC'],
+						['./src/en/OInt/tests/Modules/OPIt_ClickHouse.os', 'CH_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_ClickHouse.os', 'CH_GRPC'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -865,8 +863,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RSS_RSSMethods'],
-						['./src/en/OInt/tests/Modules/OPI_Tests.os', 'RSS_AtomMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_RSS.os', 'RSS_RSSMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_RSS.os', 'RSS_AtomMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.GMax_РаботаСГруппами",
-"OPI_Тесты.GMax_ОтправкаСообщений",
-"OPI_Тесты.GMax_Уведомления",
-"OPI_Тесты.GMax_ИсторияСообщений",
-"OPI_Тесты.GMax_Очереди",
-"OPI_Тесты.GMax_Аккаунт"
+"OPIt_GreenMax.GMax_РаботаСГруппами",
+"OPIt_GreenMax.GMax_ОтправкаСообщений",
+"OPIt_GreenMax.GMax_Уведомления",
+"OPIt_GreenMax.GMax_ИсторияСообщений",
+"OPIt_GreenMax.GMax_Очереди",
+"OPIt_GreenMax.GMax_Аккаунт"
     ]
   },
   "settings": {

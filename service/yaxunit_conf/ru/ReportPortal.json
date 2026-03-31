@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.RPortal_Авторизация",
-"OPI_Тесты.RPortal_УправлениеТестами",
-"OPI_Тесты.RPortal_ЗаписьЛогов",
-"OPI_Тесты.RPortal_УправлениеПроектами",
-"OPI_Тесты.RPortal_УправлениеПользователями"
+"OPIt_ReportPortal.RPortal_Авторизация",
+"OPIt_ReportPortal.RPortal_УправлениеТестами",
+"OPIt_ReportPortal.RPortal_ЗаписьЛогов",
+"OPIt_ReportPortal.RPortal_УправлениеПроектами",
+"OPIt_ReportPortal.RPortal_УправлениеПользователями"
     ]
   },
   "settings": {

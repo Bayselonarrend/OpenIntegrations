@@ -37,7 +37,6 @@
     </extension>
     <languageCode>ru</languageCode>
   </languages>
-  <roles>Role.OPIt_MainRole</roles>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
   <commonModules>CommonModule.OPIt_Airtable</commonModules>
   <commonModules>CommonModule.OPIt_Bitrix24</commonModules>

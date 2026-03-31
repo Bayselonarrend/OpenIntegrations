@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.ГТ_Авторизация",
-"OPI_Тесты.ГТ_СоздатьТаблицу",
-"OPI_Тесты.ГТ_ЗаполнитьОчиститьЯчейки"
+"OPIt_GoogleSheets.ГТ_Авторизация",
+"OPIt_GoogleSheets.ГТ_СоздатьТаблицу",
+"OPIt_GoogleSheets.ГТ_ЗаполнитьОчиститьЯчейки"
     ]
   },
   "settings": {

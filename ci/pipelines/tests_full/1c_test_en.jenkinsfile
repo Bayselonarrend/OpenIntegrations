@@ -650,14 +650,14 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-HTTPClient') {
+		stage('Testing-HTTP') {
             when {
-                expression { return shouldRunStage('HTTPClient') }
+                expression { return shouldRunStage('HTTP') }
             }
 			steps {
 				script {
 					def tests = [
-						['HTTPClient', './service/yaxunit_conf/en/HTTPClient.json'],
+						['HTTP', './service/yaxunit_conf/en/HTTP.json'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
