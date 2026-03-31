@@ -50,7 +50,7 @@
 
 	КонецЦикла;
 	
-	CommonTools.ЗаписатьФайлJSON("./src/ru/OPI/src/CommonTemplates/OPI_Text_MethodSettings/Template.txt", СтруктураИндекса);
+	CommonTools.ЗаписатьФайлJSON("./src/ru/BSL/OpenIntegrations/src/CommonTemplates/OPI_Text_MethodSettings/Template.txt", СтруктураИндекса);
 	CommonTools.ЗаписатьФайлJSON("./src/ru/OInt/templates/OPI_Text_MethodSettings.txt", СтруктураИндекса);
 		
 КонецПроцедуры
