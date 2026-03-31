@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ca04c0c9-e4e4-4e00-a927-8b6b43b5865b">
+  <name>OPIt_MongoDB</name>
+  <synonym>
+    <key>ru</key>
+    <value>MongoDB</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

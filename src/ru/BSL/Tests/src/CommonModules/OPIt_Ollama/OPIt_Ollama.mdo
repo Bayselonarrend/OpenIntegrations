@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="8c2a282b-b9e9-4dd8-90fc-5d4f38f61c6f">
+  <name>OPIt_Ollama</name>
+  <synonym>
+    <key>ru</key>
+    <value>Ollama</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
