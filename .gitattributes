@@ -1,5 +1,5 @@
-src/ru/OPI/src/CommonModules/OPI_Тесты/** linguist-vendored
-src/ru/OPI/src/CommonModules/OPI_ТестыCLI/** linguist-vendored
+src/ru/BSL/OpenIntegrations/src/CommonModules/OPI_Тесты/** linguist-vendored
+src/ru/BSL/OpenIntegrations/src/CommonModules/OPI_ТестыCLI/** linguist-vendored
 src/ru/OInt/** linguist-vendored
 src/en/** linguist-vendored
 media/** linguist-vendored
@@ -30,7 +30,7 @@ docs/** linguist-vendored
 *.desktop text eol=lf
 *.bat text eol=crlf
 src/*/OInt/addins/*.zip filter=lfs diff=lfs merge=lfs -text
-src/*/OPI/src/CommonTemplates/**/*.addin filter=lfs diff=lfs merge=lfs -text
+src/*/BSL/OpenIntegrations/src/CommonTemplates/**/*.addin filter=lfs diff=lfs merge=lfs -text
 media/** binary
 src/*/OInt/addins/*.zip !text !filter !merge !diff
 src/*/BSL/OpenIntegrations/src/CommonTemplates/**/*.addin !text !filter !merge !diff
