@@ -1,14 +1,8 @@
 app:
-  # (необязательно) Человекочитаемый идентификатор проекта
   id: OpenIntegrations
-
-  # Формат проекта: DESIGNER (типовой) или EDT (структура EDT)
   format: EDT
-
-  # Абсолютный путь к корню проекта 1С на диске
   base-path: "R:\\Repos\\OpenIntegrations\\src\\ru\\BSL"
 
-  # Описание исходников проекта (пути относительно base-path)
   source-set:
     - path: "TestIB"
       name: testib
@@ -19,24 +13,18 @@ app:
       type: "EXTENSION"
       purpose: ["MAIN", "TESTS"]
 
-  # Подключение к информационной базе
   connection:
-    # Примеры ниже; оставьте ровно одну строку
     connection-string: "Srvr='DEVSRV';Ref='OpenIntegrations';"
-    # user: "Администратор"     # (необязательно)
-    # password: "secret"        # (необязательно)
 
-  # Инструменты сборки\\запуска
   tools:
     builder: DESIGNER
     edt-cli:
-      auto-start: true                 # автозапуск при старте приложения (по умолчанию: false)
-      version: "latest"               # версия EDT CLI (по умолчанию: latest; требуется EDT >= 2025.1)
-      interactive-mode: true           # интерактивный режим (по умолчанию: true)
-      working-directory: "R:\\Repos\\OpenIntegrations\\src\\ru"  # рабочая папка EDT
-      startup-timeout-ms: 30000        # ожидание готовности промпта (по умолчанию: 30000)
-      command-timeout-ms: 300000       # таймаут команд (по умолчанию: 300000)
-      ready-check-timeout-ms: 5000     # таймаут проверки готовности (по умолчанию: 5000)
-
-  # Версия платформы
+      auto-start: true
+      version: "latest"
+      interactive-mode: true
+      working-directory: "R:\\Repos\\OpenIntegrations\\src\\ru\\BSL"
+      startup-timeout-ms: 30000
+      command-timeout-ms: 300000
+      ready-check-timeout-ms: 5000
+      
   platform-version: "8.3.26.1656"
