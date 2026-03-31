@@ -33,7 +33,7 @@
    },
    "configurationSrc": {
     "description": "1C configuration directory",
-    "value": "./src/ru/OPI/src/"
+    "value": "./src/ru/BSL/OpenIntegrations/src/"
    },
    "dictionariesSrc": {
     "description": "Translation dictionaries directory",
