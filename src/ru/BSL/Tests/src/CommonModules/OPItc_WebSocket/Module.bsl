@@ -1,3 +1,5 @@
+// OneScript: ./OInt/tests/Modules/OPItc_WebSocket.os
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
@@ -63,6 +65,31 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Использовать oint
-// #Использовать asserts
-// #Использовать "internal"
+//#Использовать "../../tools/main"
+//#Использовать "../../tools/http"
+//#Использовать "../../api"
+//#Использовать asserts
+//#Использовать "internal"
+
+// Для YaxUnit
+
+Процедура ИсполняемыеСценарии() Экспорт
+
+    OPI_ПолучениеДанныхТестов.СформироватьТестыЯкс("WebSocket");
+
+КонецПроцедуры
+
+// Для Asserts
+
+Функция ПолучитьСписокТестов(ЮнитТестирование) Экспорт
+
+    Возврат OPI_ПолучениеДанныхТестов.СформироватьТестыАссертс("WebSocket");
+
+КонецФункции
+
+
+#Region Alternate
+
+
+
+#EndRegion

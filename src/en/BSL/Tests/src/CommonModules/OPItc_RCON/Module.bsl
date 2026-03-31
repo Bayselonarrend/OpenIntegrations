@@ -1,3 +1,5 @@
+// OneScript: ./OInt/tests/Modules/OPItc_RCON.os
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
@@ -9,7 +11,7 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 
-// The above copyright notice and this permission notice shall be included in all
+// The above copyright notice and +this permission notice shall be included in all
 // copies or substantial portions of the Software.
 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -21,6 +23,8 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
+
+// Test suite for YAxUnit
 
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
@@ -63,6 +67,174 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Use oint
-// #Use asserts
-// #Use "internal"
+//#Use "../../tools/main"
+//#Use "../../tools/http"
+//#Use "../../api"
+//#Use asserts
+//#Use "internal"
+
+
+// For YAxUnit
+
+Procedure ИсполняемыеСценарии() Export
+
+    OPI_TestDataRetrieval.FormYAXTests("RCON");
+
+EndProcedure
+
+// For Asserts
+
+Function ПолучитьСписокТестов(UnitTesting) Export
+
+    Return OPI_TestDataRetrieval.FormAssertsTests("RCON");
+
+EndFunction
+
+#Region Internal
+
+#Region RunnableTests
+
+#Region RCON
+
+Procedure RC_CommandsExecution() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
+
+    RCON_FormConnectionParameters(TestParameters);
+    RCON_CreateConnection(TestParameters);
+    RCON_ExecuteCommand(TestParameters);
+    RCON_IsConnector(TestParameters);
+
+EndProcedure
+
+#EndRegion // RCON
+
+#EndRegion // RunnableTests
+
+#EndRegion // Internal
+
+#Region Private
+
+#Region AtomicTests
+
+#Region RCON
+
+Procedure RCON_FormConnectionParameters(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("pass", Password);
+    Options.Insert("rtout", ReadTimeout);
+    Options.Insert("wtout", WriteTimeout);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "FormConnectionParameters");
+
+EndProcedure
+
+Procedure RCON_CreateConnection(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("pass", Password);
+    Options.Insert("rtout", ReadTimeout);
+    Options.Insert("wtout", WriteTimeout);
+
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+    Result           = OPI_RCON.CreateConnection(ConnectionParams);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "CreateConnection");
+
+EndProcedure
+
+Procedure RCON_ExecuteCommand(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("pass", Password);
+    Options.Insert("rtout", ReadTimeout);
+    Options.Insert("wtout", WriteTimeout);
+
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+
+    Command = "list";
+    Options = New Structure;
+    Options.Insert("exec", Command);
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "ExecuteCommand");
+
+    Command = "list";
+    Options = New Structure;
+    Options.Insert("exec", Command);
+    Options.Insert("conn", ConnectionParams);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "ExecuteCommand", "No connection");
+
+EndProcedure
+
+Procedure RCON_IsConnector(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("pass", Password);
+    Options.Insert("rtout", ReadTimeout);
+    Options.Insert("wtout", WriteTimeout);
+
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+    Result           = OPI_RCON.IsConnector(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "IsConnector");
+
+EndProcedure
+
+#EndRegion // RCON
+
+#EndRegion // AtomicTests
+
+#EndRegion // Private
+
+#Region Alternate
+
+Procedure RC_ВыполнениеКоманд() Export
+    RC_CommandsExecution();
+EndProcedure
+
+#EndRegion

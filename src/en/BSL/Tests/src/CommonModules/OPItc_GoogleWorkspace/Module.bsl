@@ -1,3 +1,5 @@
+// OneScript: ./OInt/tests/Modules/OPItc_GoogleWorkspace.os
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
@@ -9,7 +11,7 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 
-// The above copyright notice and this permission notice shall be included in all
+// The above copyright notice and +this permission notice shall be included in all
 // copies or substantial portions of the Software.
 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -21,6 +23,8 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
+
+// Test suite for YAxUnit
 
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
@@ -63,6 +67,155 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Use oint
-// #Use asserts
-// #Use "internal"
+//#Use "../../tools/main"
+//#Use "../../tools/http"
+//#Use "../../api"
+//#Use asserts
+//#Use "internal"
+
+
+// For YAxUnit
+
+Procedure ИсполняемыеСценарии() Export
+
+    OPI_TestDataRetrieval.FormYAXTests("GoogleWorkspace");
+
+EndProcedure
+
+// For Asserts
+
+Function ПолучитьСписокТестов(UnitTesting) Export
+
+    Return OPI_TestDataRetrieval.FormAssertsTests("GoogleWorkspace");
+
+EndFunction
+
+#Region Internal
+
+#Region RunnableTests
+
+#Region GoogleWorkspace
+
+Procedure GW_Auth() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
+
+    GoogleWorkspace_FormCodeRetrievalLink(TestParameters);
+    GoogleWorkspace_GetTokenByCode(TestParameters);
+    GoogleWorkspace_RefreshToken(TestParameters);
+    GoogleWorkspace_GetServiceAccountToken(TestParameters);
+
+EndProcedure
+
+#EndRegion // GoogleWorkspace
+
+#EndRegion // RunnableTests
+
+#EndRegion // Internal
+
+#Region Private
+
+#Region AtomicTests
+
+#Region GoogleWorkspace
+
+Procedure GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "FormCodeRetrievalLink");
+
+EndProcedure
+
+Procedure GoogleWorkspace_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("code", Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetTokenByCode", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "GetTokenByCode");
+
+EndProcedure
+
+Procedure GoogleWorkspace_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "RefreshToken", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "RefreshToken");
+
+EndProcedure
+
+Procedure GoogleWorkspace_GetServiceAccountToken(FunctionParameters)
+
+    Data = FunctionParameters["Google_ServiceData"]; // URL, binary Data, file or collection
+
+    Token = FunctionParameters["Access_Token"]; // SKIP
+    Data  = OPI_HTTPRequests // SKIP
+        .NewRequest() // SKIP
+        .Initialize(Data) // SKIP
+        .AddBearerAuthorization(Token) // SKIP
+        .ProcessRequest("GET") // SKIP
+        .ReturnResponseAsBinaryData(); // SKIP
+
+    Scope = New Array;
+    Scope.Add("https://www.googleapis.com/auth/calendar");
+    Scope.Add("https://www.googleapis.com/auth/drive");
+    Scope.Add("https://www.googleapis.com/auth/spreadsheets");
+
+    Options = New Structure;
+    Options.Insert("auth", Data);
+    Options.Insert("scope", Scope);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetServiceAccountToken", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "GetServiceAccountToken");
+
+EndProcedure
+
+#EndRegion // GoogleWorkspace
+
+#EndRegion // AtomicTests
+
+#EndRegion // Private
+
+#Region Alternate
+
+Procedure ГВ_Авторизация() Export
+    GW_Auth();
+EndProcedure
+
+#EndRegion
