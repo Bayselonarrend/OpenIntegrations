@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="30c93373-4a4f-4abd-be22-c29e8dc820cf">
+  <producedTypes>
+    <managerType typeId="8dcf5bd1-6eef-4959-9d2a-160bf7050821" valueTypeId="e1eae433-df10-4782-bad3-9b2b0e8cbc49"/>
+    <valueManagerType typeId="d76b910c-b3ba-42c2-bb90-b9df80992e59" valueTypeId="dc0bf241-3c78-48a1-b8bc-814e36e03149"/>
+    <valueKeyType typeId="5bc179e4-9e66-48fd-b9d4-734de6d196f8" valueTypeId="6289531c-cd60-4eba-a163-56163dbc7c39"/>
+  </producedTypes>
+  <name>ЭтоТестыCLI</name>
+  <synonym>
+    <key>ru</key>
+    <value>Это тесты CLI</value>
+  </synonym>
+  <type>
+    <types>String</types>
+    <stringQualifiers>
+      <length>1</length>
+    </stringQualifiers>
+  </type>
+  <useStandardCommands>true</useStandardCommands>
+  <minValue xsi:type="core:UndefinedValue"/>
+  <maxValue xsi:type="core:UndefinedValue"/>
+  <dataLockControlMode>Managed</dataLockControlMode>
+</mdclass:Constant>

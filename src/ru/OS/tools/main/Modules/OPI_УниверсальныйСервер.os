@@ -1,0 +1,302 @@
+// OneScript: ./OInt/tools/main/Modules/OPI_УниверсальныйСервер.os
+
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
+// BSLLS:QueryParseError-off
+// BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:NumberOfParams-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:MagicNumber-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+//@skip-check method-too-many-params
+//@skip-check constructor-function-return-section
+
+#Использовать "./internal"
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+Функция ЗапуститьСервер(Знач Модуль, Знач Порт, Знач РазмерПула = 100, Знач Логирование = Неопределено) Экспорт
+
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(Порт);
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(РазмерПула);
+
+    Если Логирование = Неопределено Тогда
+
+        СтрокаНастроек = "";
+
+    Иначе
+
+        ТекстОшибки    = "Некорректные настройки логирования";
+        OPI_ПреобразованиеТипов.ПолучитьКоллекциюКлючИЗначение(Логирование, ТекстОшибки);
+        СтрокаНастроек = OPI_Инструменты.JSONСтрокой(Логирование);
+
+    КонецЕсли;
+
+    ИмяКомпоненты = Модуль.ИмяКомпоненты();
+    Компонента    = OPI_Компоненты.ПолучитьКомпоненту(ИмяКомпоненты);
+
+    Результат = Компонента.Start(Порт, РазмерПула, СтрокаНастроек);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат, Ложь);
+
+    Возврат ?(Результат["result"], Компонента, Результат);
+
+КонецФункции
+
+Функция ОстановитьСервер(Знач Модуль, Знач ОбъектСервера) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+
+        Результат = ОшибкаПараметрНеКомпонента();
+
+    Иначе
+
+        Результат = ОбъектСервера.Stop();
+        Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    КонецЕсли;
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ПолучитьДанныеОчередногоСоединения(Знач Модуль
+    , Знач ОбъектСервера
+    , Знач Таймаут            = 1000
+    , Знач МаксимальныйРазмер = 8192) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(Таймаут);
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(МаксимальныйРазмер);
+
+    Результат = ОбъектСервера.GetNextMessage(Таймаут, МаксимальныйРазмер);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    ДополнитьСообщениеДаннымиХранилища(ОбъектСервера, Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ПолучитьДанныеСоединения(Знач Модуль
+    , Знач ОбъектСервера
+    , Знач IDСоединения
+    , Знач Таймаут            = 1000
+    , Знач МаксимальныйРазмер = 8192) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(Таймаут);
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(МаксимальныйРазмер);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСоединения);
+
+    Результат = ОбъектСервера.GetMessageFromConnection(IDСоединения, Таймаут, МаксимальныйРазмер);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    ДополнитьСообщениеДаннымиХранилища(ОбъектСервера, Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ОтправитьДанные(Знач Модуль, Знач ОбъектСервера, Знач IDСоединения, Знач Данные) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Данные, Истина, Ложь);
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСоединения);
+
+    Результат = ОбъектСервера.SendMessage(IDСоединения, Данные);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ЗакрытьВходящееСоединение(Знач Модуль, Знач ОбъектСервера, Знач IDСоединения) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСоединения);
+
+    Результат = ОбъектСервера.CloseConnection(IDСоединения);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ЗавершитьОтправку(Знач Модуль, Знач ОбъектСервера, Знач IDСоединения) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСоединения);
+
+    Результат = ОбъектСервера.ShutdownWrite(IDСоединения);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ЗавершитьПолучение(Знач Модуль, Знач ОбъектСервера, Знач IDСоединения) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСоединения);
+
+    Результат = ОбъектСервера.ShutdownRead(IDСоединения);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ПолучитьСписокСоединений(Знач Модуль, Знач ОбъектСервера) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    Результат = ОбъектСервера.GetConnectionsList();
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Возврат Результат;
+
+КонецФункции
+
+Функция ПолучитьЛог(Знач Модуль, Знач ОбъектСервера, Знач КакСтрока = Ложь, Знач ЧислоСобытий = 100) Экспорт
+
+    Если Не Модуль.ЭтоОбъектСервера(ОбъектСервера) Тогда
+        Возврат ОшибкаПараметрНеКомпонента();
+    КонецЕсли;
+
+    OPI_ПреобразованиеТипов.ПолучитьЧисло(ЧислоСобытий);
+    OPI_ПреобразованиеТипов.ПолучитьБулево(КакСтрока);
+
+    Результат = ОбъектСервера.GetLogs(ЧислоСобытий);
+    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    Если КакСтрока И Результат["result"] Тогда
+        Результат = СтрСоединить(Результат["logs"], Символы.ПС);
+    КонецЕсли;
+
+    Возврат Результат;
+
+КонецФункции
+
+#КонецОбласти
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+Функция ОшибкаПараметрНеКомпонента()
+
+    Результат = Новый Соответствие;
+    Результат.Вставить("result", Ложь);
+    Результат.Вставить("error" , "The passed value is not a server object");
+
+    Возврат Результат;
+
+КонецФункции
+
+Процедура ДополнитьСообщениеДаннымиХранилища(Знач ОбъектСервера, СтруктураСообщения)
+
+    КлючДанных = Неопределено;
+
+    Если OPI_Инструменты.ПолеКоллекцииСуществует(СтруктураСообщения, "message", КлючДанных) И ЗначениеЗаполнено(КлючДанных) Тогда
+
+        ДанныеДД = OPI_Компоненты.ПолучитьДанные(ОбъектСервера, КлючДанных);
+        СтруктураСообщения.Вставить("message", ДанныеДД);
+
+    КонецЕсли;
+
+КонецПроцедуры
+
+#КонецОбласти
+
+#Region Alternate
+
+Function StartServer(Val Module, Val Port, Val PoolSize = 100, Val Logging = Undefined) Export
+    Return ЗапуститьСервер(Module, Port, PoolSize, Logging);
+EndFunction
+
+Function StopServer(Val Module, Val ServerObject) Export
+    Return ОстановитьСервер(Module, ServerObject);
+EndFunction
+
+Function GetNextConnectionData(Val Module, Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
+    Return ПолучитьДанныеОчередногоСоединения(Module, ServerObject, Timeout, MaxSize);
+EndFunction
+
+Function GetConnectionData(Val Module, Val ServerObject, Val ConnectionID, Val Timeout = 1000, Val MaxSize = 8192) Export
+    Return ПолучитьДанныеСоединения(Module, ServerObject, ConnectionID, Timeout, MaxSize);
+EndFunction
+
+Function SendData(Val Module, Val ServerObject, Val ConnectionID, Val Data) Export
+    Return ОтправитьДанные(Module, ServerObject, ConnectionID, Data);
+EndFunction
+
+Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗакрытьВходящееСоединение(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function CompleteSend(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗавершитьОтправку(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function FinishReceiving(Val Module, Val ServerObject, Val ConnectionID) Export
+    Return ЗавершитьПолучение(Module, ServerObject, ConnectionID);
+EndFunction
+
+Function GetConnectionList(Val Module, Val ServerObject) Export
+    Return ПолучитьСписокСоединений(Module, ServerObject);
+EndFunction
+
+Function GetLog(Val Module, Val ServerObject, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(Module, ServerObject, AsString, EventCount);
+EndFunction
+
+#EndRegion

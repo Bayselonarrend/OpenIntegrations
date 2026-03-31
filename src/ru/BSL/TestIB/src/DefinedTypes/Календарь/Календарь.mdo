@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:DefinedType xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4389d569-ae8b-4ba8-a7de-9c891c8885a9">
+  <producedTypes>
+    <containerType typeId="e35bc6a8-b57b-42d2-8af9-6bc7f8d29fe6" valueTypeId="4dcc2912-2111-46f9-8c77-4f1f4149f247"/>
+  </producedTypes>
+  <name>Календарь</name>
+  <synonym>
+    <key>ru</key>
+    <value>Календарь</value>
+  </synonym>
+  <type>
+    <types>FixedMap</types>
+  </type>
+</mdclass:DefinedType>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="26384b42-cc9a-4a51-b898-e193e284233d">
+  <producedTypes>
+    <objectType typeId="338c366a-7cd2-4916-acfb-70824e315cfc" valueTypeId="e29b2b2e-b5e6-44ca-ac5a-ba3b8eb1518d"/>
+    <refType typeId="e0aae969-c053-43e6-9eb4-9143fd94c09b" valueTypeId="169473d2-7d18-401a-a16e-369d2e124b74"/>
+    <selectionType typeId="251551cf-4171-4076-9583-ee32d931e895" valueTypeId="af0cae4c-93db-48d2-b81d-1dfa7c1b3393"/>
+    <listType typeId="51563e79-9cf4-4fe1-8660-9a5c80c46682" valueTypeId="827a5cfe-e9da-4d4e-afb3-199e8bd23f40"/>
+    <managerType typeId="964b19a8-d5d0-4f82-be2e-2fc21d8c55fc" valueTypeId="95416b3a-4188-4f5e-aeb4-0fc38b6303d8"/>
+  </producedTypes>
+  <name>Пользователи</name>
+  <synonym>
+    <key>ru</key>
+    <value>Пользователи</value>
+  </synonym>
+  <useStandardCommands>true</useStandardCommands>
+  <inputByString>Catalog.Пользователи.StandardAttribute.Description</inputByString>
+  <inputByString>Catalog.Пользователи.StandardAttribute.Code</inputByString>
+  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
+  <createOnInput>Use</createOnInput>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <fullTextSearch>Use</fullTextSearch>
+  <levelCount>2</levelCount>
+  <foldersOnTop>true</foldersOnTop>
+  <codeLength>9</codeLength>
+  <descriptionLength>125</descriptionLength>
+  <codeType>String</codeType>
+  <codeAllowedLength>Variable</codeAllowedLength>
+  <checkUnique>true</checkUnique>
+  <autonumbering>true</autonumbering>
+  <defaultPresentation>AsDescription</defaultPresentation>
+  <editType>InDialog</editType>
+  <choiceMode>BothWays</choiceMode>
+  <attributes uuid="05d4c200-45e7-4c8b-b528-a225b4f201bf">
+    <name>TelegramID</name>
+    <synonym>
+      <key>ru</key>
+      <value>Telegram ID</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>100</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:StringValue">
+      <value></value>
+    </fillValue>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+  <attributes uuid="654f0cab-3ca3-434e-b61f-535bfca53b6e">
+    <name>Статус</name>
+    <synonym>
+      <key>ru</key>
+      <value>Статус</value>
+    </synonym>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+  </attributes>
+</mdclass:Catalog>
