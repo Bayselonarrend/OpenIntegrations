@@ -1,3 +1,5 @@
+// OneScript: ./OInt/tests/Modules/OPIt_WebSocket.os
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
