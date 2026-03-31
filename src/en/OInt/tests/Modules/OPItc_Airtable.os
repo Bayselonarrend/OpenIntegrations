@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/OPIt_Airtable.os
+// OneScript: ./OInt/tests/Modules/OPItc_Airtable.os
 
 // MIT License
 
@@ -68,8 +68,8 @@
 //@skip-check module-unused-method
 
 #Use "../../tools/main"
- #Use "../../tools/http"
- #Use "../../api"
+#Use "../../tools/http"
+#Use "../../api"
 #Use asserts
 #Use "internal"
 

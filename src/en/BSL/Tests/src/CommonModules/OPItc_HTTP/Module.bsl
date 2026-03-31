@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/OPI_Tests.os
+// OneScript: ./OInt/tests/Modules/OPItc_HTTP.os
 
 // MIT License
 
@@ -67,17 +67,18 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
-// #Use oint
-// #Use asserts
-// #Use "internal"
+//#Use "../../tools/main"
+//#Use "../../tools/http"
+//#Use "../../api"
+//#Use asserts
+//#Use "internal"
 
-#Region Internal
 
 // For YAxUnit
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Airtable");
+    OPI_TestDataRetrieval.FormYAXTests("HTTP");
 
 EndProcedure
 
@@ -85,76 +86,119 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Airtable");
+    Return OPI_TestDataRetrieval.FormAssertsTests("HTTP");
 
 EndFunction
 
+#Region Internal
+
 #Region RunnableTests
 
-#Region Airtable
+#Region HTTP
 
-Procedure AT_CreateDatabase() Export
+Procedure HTTP_Initialization() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Workspace", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
-    Airtable_CreateDatabase(TestParameters);
-    Airtable_GetDatabaseTables(TestParameters);
-    Airtable_GetListOfBases(TestParameters);
+    HTTP_Initialize(TestParameters);
+    HTTP_SetURL(TestParameters);
+    HTTP_SetURLParams(TestParameters);
+    HTTP_SetResponseFile(TestParameters);
+    HTTP_SetDataType(TestParameters);
+    HTTP_GetLog(TestParameters);
+    HTTP_SetProxy(TestParameters);
+    HTTP_SetTimeout(TestParameters);
 
 EndProcedure
 
-Procedure AT_CreateTable() Export
+Procedure HTTP_BodySet() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    Airtable_GetNumberField(TestParameters);
-    Airtable_GetStringField(TestParameters);
-    Airtable_GetAttachmentField(TestParameters);
-    Airtable_GetCheckboxField(TestParameters);
-    Airtable_GetDateField(TestParameters);
-    Airtable_GetPhoneField(TestParameters);
-    Airtable_GetEmailField(TestParameters);
-    Airtable_GetLinkField(TestParameters);
-    Airtable_CreateTable(TestParameters);
-    Airtable_ModifyTable(TestParameters);
+    HTTP_SetBinaryBody(TestParameters);
+    HTTP_SetStringBody(TestParameters);
+    HTTP_SetJsonBody(TestParameters);
+    HTTP_SetFormBody(TestParameters);
+    HTTP_StartMultipartBody(TestParameters);
+    HTTP_AddMultipartFormDataField(TestParameters);
+    HTTP_AddMultipartFormDataFile(TestParameters);
+    HTTP_AddDataAsRelated(TestParameters);
 
 EndProcedure
 
-Procedure AT_CreateField() Export
+Procedure HTTP_Settings() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    Airtable_CreateField(TestParameters);
-    Airtable_ModifyField(TestParameters);
+    HTTP_UseEncoding(TestParameters);
+    HTTP_UseGzipCompression(TestParameters);
+    HTTP_UseBodyFiledsAtOAuth(TestParameters);
+    HTTP_UseURLEncoding(TestParameters);
+    HTTP_SplitArraysInURL(TestParameters);
+    HTTP_MaxRedirects(TestParameters);
+    HTTP_MaxAttempts(TestParameters);
+    HTTP_ReturnSettings(TestParameters);
 
 EndProcedure
 
-Procedure AT_CreateDeleteRecords() Export
+Procedure HTTP_HeadersSetting() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
-    Airtable_CreatePosts(TestParameters);
-    Airtable_GetRecord(TestParameters);
-    Airtable_CreateComment(TestParameters);
-    Airtable_EditComment(TestParameters);
-    Airtable_GetComments(TestParameters);
-    Airtable_DeleteComment(TestParameters);
-    Airtable_GetListOfRecords(TestParameters);
-    Airtable_DeleteRecords(TestParameters);
+    HTTP_SetHeaders(TestParameters);
+    HTTP_AddHeader(TestParameters);
 
 EndProcedure
 
-#EndRegion // Airtable
+Procedure HTTP_Authorization() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+
+    HTTP_AddBasicAuthorization(TestParameters);
+    HTTP_AddBearerAuthorization(TestParameters);
+    HTTP_AddAWS4Authorization(TestParameters);
+    HTTP_AddOAuthV1Authorization(TestParameters);
+    HTTP_SetOAuthV1Algorithm(TestParameters);
+
+EndProcedure
+
+Procedure HTTP_RequestProcessing() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+
+    HTTP_ProcessRequest(TestParameters);
+    HTTP_ExecuteRequest(TestParameters);
+    HTTP_ReturnRequest(TestParameters);
+    HTTP_ReturnConnection(TestParameters);
+    HTTP_SendDataInParts(TestParameters);
+    HTTP_SendPart(TestParameters);
+
+EndProcedure
+
+Procedure HTTP_ResponseReceiving() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+
+    HTTP_ReturnResponse(TestParameters);
+    HTTP_ReturnResponseAsJSONObject(TestParameters);
+    HTTP_ReturnResponseAsBinaryData(TestParameters);
+    HTTP_ReturnResponseAsString(TestParameters);
+    HTTP_ReturnResponseFilename(TestParameters);
+
+EndProcedure
+
+#EndRegion
 
 #EndRegion // RunnableTests
 
@@ -164,363 +208,1185 @@ EndProcedure
 
 #Region AtomicTests
 
-#Region Airtable
+#Region HTTP
 
-Procedure Airtable_CreateDatabase(FunctionParameters)
+Procedure HTTP_Initialize(FunctionParameters)
 
-    Token  = FunctionParameters["Airtable_Token"];
-    Region = FunctionParameters["Airtable_Workspace"];
-    Name   = "TestDatabase";
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    FieldArray = New Array;
-    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-    FieldArray.Add(OPI_Airtable.GetStringField("String"));
-
-    TableName = "TestTable";
-
-    TableMapping = New Map;
-    TableMapping.Insert(TableName, FieldArray);
-
-    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateDatabase", , FunctionParameters, TableName);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "Initialize");
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .ProcessRequest("POST", False);
+
+    OPI_TestDataRetrieval.Process(HTTPClient, "HTTP", "Initialize", "Check 1", FunctionParameters);
+
+    AnotherRequest = HTTPClient.SetURL(FunctionParameters["HTTP_URL"] + "/post")
+        .ProcessRequest("POST", False)
+        .ReturnRequest();
+
+    OPI_TestDataRetrieval.Process(AnotherRequest, "HTTP", "Initialize", "Check 2");
 
 EndProcedure
 
-Procedure Airtable_GetDatabaseTables(FunctionParameters)
+Procedure HTTP_SetURL(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetDatabaseTables");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetURL");
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("POST", False);
+
+    OPI_TestDataRetrieval.Process(HTTPClient, "HTTP", "SetURL", "Check", FunctionParameters);
 
 EndProcedure
 
-Procedure Airtable_GetListOfBases(FunctionParameters)
+Procedure HTTP_SetURLParams(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.GetListOfBases(Token);
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetListOfBases");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetURLParams", , FunctionParameters);
+
+    HTTPClient = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("POST", False);
+
+    HTTPRequest = HTTPClient.ReturnRequest();
+
+    OPI_TestDataRetrieval.Process(HTTPRequest, "HTTP", "SetURLParams", "Check");
+
+    // Encoding check
+
+    // Complex
+
+    ParameterStructure1 = New Structure;
+    ParameterStructure1.Insert("param1", "search?text");
+    ParameterStructure1.Insert("param2", "John Doe");
+    ParameterStructure1.Insert("param3", "value&another");
+    ParameterStructure1.Insert("param4", "кириллица");
+    ParameterStructure1.Insert("param5", "<script>alert('XSS')</script>");
+
+    ResourceAddress1 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParameterStructure1)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress1, "HTTP", "SetURLParams", "Option 1");
+
+    ParameterStructure2 = New Structure;
+    ParameterStructure2.Insert("param1", "search?text");
+    ParameterStructure2.Insert("param2", "John Doe");
+
+    // Parameters in the original URL
+
+    ResourceAddress2 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page?existing=value")
+        .SetURLParams(ParameterStructure2)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress2, "HTTP", "SetURLParams", "Option 2");
+
+    // Empty parameter string
+
+    ParameterStructure3 = New Structure;
+    ParameterStructure3.Insert("param1", "search?text");
+    ParameterStructure3.Insert("param2", "John Doe");
+
+    ResourceAddress3 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page?")
+        .SetURLParams(ParameterStructure3)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress3, "HTTP", "SetURLParams", "Variant 3");
+
+    // Special characters at path
+
+    ParameterStructure4 = New Structure;
+    ParameterStructure4.Insert("param1", "search?text");
+    ParameterStructure4.Insert("param2", "John Doe");
+
+    ResourceAddress4 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/path with spaces")
+        .SetURLParams(ParameterStructure4)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress4, "HTTP", "SetURLParams", "Variant 4");
+
+    // URL with a snippet
+
+    ParameterStructure5 = New Structure;
+    ParameterStructure5.Insert("param1", "search?text");
+    ParameterStructure5.Insert("param2", "John Doe");
+
+    ResourceAddress5 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page#section")
+        .SetURLParams(ParameterStructure5)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress5, "HTTP", "SetURLParams", "Variant 5");
+
+    // Cyrillic at path
+
+    ParameterStructure6 = New Structure;
+    ParameterStructure6.Insert("param1", "search?text");
+    ParameterStructure6.Insert("param2", "John Doe");
+
+    ResourceAddress6 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/путь")
+        .SetURLParams(ParameterStructure6)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress6, "HTTP", "SetURLParams", "Variant 6");
+
+    // Multiple parameters and encoding
+
+    ParameterStructure7 = New Structure;
+    ParameterStructure7.Insert("param1", "value1");
+    ParameterStructure7.Insert("param2", "value two");
+    ParameterStructure7.Insert("param3", "value<three>");
+
+    ResourceAddress7 = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParameterStructure7)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    OPI_TestDataRetrieval.Process(ResourceAddress7, "HTTP", "SetURLParams", "Variant 7");
 
 EndProcedure
 
-Procedure Airtable_GetNumberField(FunctionParameters)
+Procedure HTTP_SetResponseFile(FunctionParameters)
 
-    Result = OPI_Airtable.GetNumberField("Number");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    TFN = GetTempFileName();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseFilename();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetNumberField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetResponseFile", , TFN);
+
+    CheckResult = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsBinaryData();
+
+    OPI_TestDataRetrieval.Process(CheckResult, "HTTP", "SetResponseFile", "Body", TFN);
+
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
-Procedure Airtable_GetStringField(FunctionParameters)
+Procedure HTTP_SetDataType(FunctionParameters)
 
-    Result = OPI_Airtable.GetStringField("String");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    MIMEType = "text/markdown";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetStringBody("# Hello world!!")
+        .SetDataType(MIMEType) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetStringField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetDataType");
 
 EndProcedure
 
-Procedure Airtable_GetAttachmentField(FunctionParameters)
+Procedure HTTP_GetLog(FunctionParameters)
 
-    Result = OPI_Airtable.GetAttachmentField("Attachment");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure("param1,param2", "text", 10);
+
+    HTTPClient = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET");
+
+    Response = HTTPClient.ReturnResponseAsJSONObject();
+    Log      = HTTPClient.GetLog(True);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetAttachmentField");
+    OPI_TestDataRetrieval.Process(Log, "HTTP", "GetLog");
 
 EndProcedure
 
-Procedure Airtable_GetCheckboxField(FunctionParameters)
+Procedure HTTP_SetBinaryBody(FunctionParameters)
 
-    Result = OPI_Airtable.GetCheckboxField("Checkbox");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetCheckboxField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetBinaryBody", , Image);
 
 EndProcedure
 
-Procedure Airtable_GetDateField(FunctionParameters)
+Procedure HTTP_SetStringBody(FunctionParameters)
 
-    Result = OPI_Airtable.GetDateField("Date");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Text     = "Hello world!!";
+    Encoding = "Windows-1251";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .UseEncoding(Encoding)
+        .SetStringBody(Text) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetDateField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetStringBody");
 
 EndProcedure
 
-Procedure Airtable_GetPhoneField(FunctionParameters)
+Procedure HTTP_SetJsonBody(FunctionParameters)
 
-    Result = OPI_Airtable.GetPhoneField("Phone");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetPhoneField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetJsonBody", , Data);
 
 EndProcedure
 
-Procedure Airtable_GetEmailField(FunctionParameters)
+Procedure HTTP_SetFormBody(FunctionParameters)
 
-    Result = OPI_Airtable.GetEmailField("Email");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Data) // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetEmailField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetFormBody", , Data);
 
 EndProcedure
 
-Procedure Airtable_GetLinkField(FunctionParameters)
+Procedure HTTP_StartMultipartBody(FunctionParameters)
 
-    Result = OPI_Airtable.GetLinkField("Link");
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody() // <---
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetLinkField");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "StartMultipartBody", , Image);
 
 EndProcedure
 
-Procedure Airtable_CreateTable(FunctionParameters)
+Procedure HTTP_AddMultipartFormDataFile(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    FieldArray = New Array;
-    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-    FieldArray.Add(OPI_Airtable.GetStringField("String"));
-    FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
-    FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
-    FieldArray.Add(OPI_Airtable.GetDateField("Date"));
-    FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
-    FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
-    FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
-    Name        = "TestTable2";
-    Description = "NewTable";
-
-    Result = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png") // <---
+        .AddMultipartFormDataField("Field1", "Text")
+        .AddMultipartFormDataField("Field2", "10")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateTable", , FunctionParameters, Name, Description);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddMultipartFormDataFile", , Image);
 
 EndProcedure
 
-Procedure Airtable_ModifyTable(FunctionParameters)
+Procedure HTTP_AddMultipartFormDataField(FunctionParameters)
 
-    Token       = FunctionParameters["Airtable_Token"];
-    Base        = FunctionParameters["Airtable_Base"];
-    Table       = FunctionParameters["Airtable_Table"];
-    Name        = "Test table 2 (change.)";
-    Description = "New table (change.)";
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    Result = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description);
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("Field1", "Text") // <---
+        .AddMultipartFormDataField("Field2", "10") // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "ModifyTable", , Name, Description);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddMultipartFormDataField", , Image);
 
 EndProcedure
 
-Procedure Airtable_CreateField(FunctionParameters)
+Procedure HTTP_AddDataAsRelated(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
-    Table = FunctionParameters["Airtable_Table"];
-    Name  = String(New UUID);
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    Field  = OPI_Airtable.GetNumberField(Name);
-    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody(True, "related")
+        .AddDataAsRelated(Data, "application/json; charset=UTF-8") // <---
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateField", , FunctionParameters, Name);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDataAsRelated");
 
 EndProcedure
 
-Procedure Airtable_ModifyField(FunctionParameters)
+Procedure HTTP_UseEncoding(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
-    Table = FunctionParameters["Airtable_Table"];
-    Field = FunctionParameters["Airtable_Field"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    Name        = String(New UUID) + "(change.)";
-    Description = "New description";
+    Text     = "Hello world!!";
+    Encoding = "Windows-1251";
 
-    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .UseEncoding(Encoding) // <---
+        .SetStringBody(Text)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "ModifyField", , Name, Description);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseEncoding");
 
 EndProcedure
 
-Procedure Airtable_CreatePosts(FunctionParameters)
+Procedure HTTP_UseGzipCompression(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
-    Table = FunctionParameters["Airtable_Table"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    Number = 10;
-    String = "Hello";
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
-    RowDescription1 = New Structure("Number,String", Number, String);
-    RowDescription2 = New Structure("Number,String", Number, String);
-
-    ArrayOfDescriptions = New Array;
-    ArrayOfDescriptions.Add(RowDescription1);
-    ArrayOfDescriptions.Add(RowDescription2);
-
-    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .UseGzipCompression(False) // <---
+        .ProcessRequest("POST", False)
+        .ReturnRequest();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreatePosts", , FunctionParameters);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseGzipCompression");
 
-    ArrayOfDeletions = New Array;
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .UseGzipCompression(True) // <---
+        .ProcessRequest("POST", False)
+        .ReturnRequest();
 
-    For Each Record In Result["records"] Do
-
-        CurrentRecord = Record["id"];
-        ArrayOfDeletions.Add(CurrentRecord);
-
-    EndDo;
-
-    OPI_Airtable.DeleteRecords(Token, Base, Table, ArrayOfDeletions);
-
-    // Single
-
-    Result = OPI_Airtable.CreatePosts(Token, Base, Table, RowDescription1);
-
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreatePosts", "Single", FunctionParameters, Number, String);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseGzipCompression", "Enabled");
 
 EndProcedure
 
-Procedure Airtable_GetRecord(FunctionParameters)
+Procedure HTTP_UseBodyFiledsAtOAuth(FunctionParameters)
 
-    Token  = FunctionParameters["Airtable_Token"];
-    Base   = FunctionParameters["Airtable_Base"];
-    Table  = FunctionParameters["Airtable_Table"];
-    Record = FunctionParameters["Airtable_Record"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
 
-    Result = OPI_Airtable.GetRecord(Token, Base, Table, Record);
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    NewRequest = OPI_HTTPRequests.NewRequest().Initialize(URL);
+
+    Result = NewRequest
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("field1", "Text")
+        .AddMultipartFormDataField("field2", "10")
+        .UseBodyFiledsAtOAuth(False) // <---
+        .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetRecord", , Record);
+    LogAsString = NewRequest.GetLog(True);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseBodyFiledsAtOAuth", , LogAsString);
+
+    Result = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .StartMultipartBody()
+        .AddMultipartFormDataFile("file1", "pic.png", Image, "image/png")
+        .AddMultipartFormDataField("field1", "Text")
+        .AddMultipartFormDataField("field2", "10")
+        .UseBodyFiledsAtOAuth(True) // <---
+        .AddOauthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .ProcessRequest("POST", False)
+        .GetLog(True);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseBodyFiledsAtOAuth", "Enabled");
 
 EndProcedure
 
-Procedure Airtable_CreateComment(FunctionParameters)
+Procedure HTTP_SetHeaders(FunctionParameters)
 
-    Token  = FunctionParameters["Airtable_Token"];
-    Base   = FunctionParameters["Airtable_Base"];
-    Table  = FunctionParameters["Airtable_Table"];
-    Record = FunctionParameters["Airtable_Record"];
-    Text   = "TestComment";
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
+    Headers = New Map;
+    Headers.Insert("X-Header1", "Value1");
+    Headers.Insert("X-Header2", "Value2");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetHeaders(Headers) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateComment", , FunctionParameters, Text);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetHeaders");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("1111")
+        .SetHeaders(Headers, True) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetHeaders", "Rewrite");
 
 EndProcedure
 
-Procedure Airtable_EditComment(FunctionParameters)
+Procedure HTTP_AddHeader(FunctionParameters)
 
-    Token   = FunctionParameters["Airtable_Token"];
-    Base    = FunctionParameters["Airtable_Base"];
-    Table   = FunctionParameters["Airtable_Table"];
-    Record  = FunctionParameters["Airtable_Record"];
-    Comment = FunctionParameters["Airtable_Comment"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Text   = "Test comment (change.)";
-    Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddHeader("X-Header1", "Value1") // <---
+        .AddHeader("X-Header2", "Value2") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "EditComment", , Text);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader");
+
+    Headers = New Map;
+    Headers.Insert("X-Header1", "Value1");
+    Headers.Insert("X-Header2", "Value2");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("1111")
+        .AddHeader("X-Header3", "BadValue") // <---
+        .AddHeader("X-Header4", "BadValue")
+        .SetHeaders(Headers, True) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader", "Replace");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("1111")
+        .AddHeader("X-Header3", "BadValue") // <---
+        .AddHeader("X-Header4", "BadValue")
+        .SetHeaders(Headers) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader", "Addition");
 
 EndProcedure
 
-Procedure Airtable_GetComments(FunctionParameters)
+Procedure HTTP_AddBasicAuthorization(FunctionParameters)
 
-    Token  = FunctionParameters["Airtable_Token"];
-    Base   = FunctionParameters["Airtable_Base"];
-    Table  = FunctionParameters["Airtable_Table"];
-    Record = FunctionParameters["Airtable_Record"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.GetComments(Token, Base, Table, Record);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBasicAuthorization("user", "password") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetComments");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddBasicAuthorization");
 
 EndProcedure
 
-Procedure Airtable_DeleteComment(FunctionParameters)
+Procedure HTTP_AddBearerAuthorization(FunctionParameters)
 
-    Token   = FunctionParameters["Airtable_Token"];
-    Base    = FunctionParameters["Airtable_Base"];
-    Table   = FunctionParameters["Airtable_Table"];
-    Record  = FunctionParameters["Airtable_Record"];
-    Comment = FunctionParameters["Airtable_Comment"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization("123123") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "DeleteComment", , Comment);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddBearerAuthorization");
 
 EndProcedure
 
-Procedure Airtable_GetListOfRecords(FunctionParameters)
+Procedure HTTP_AddAWS4Authorization(FunctionParameters)
 
-    Token = FunctionParameters["Airtable_Token"];
-    Base  = FunctionParameters["Airtable_Base"];
-    Table = FunctionParameters["Airtable_Table"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
+    AccessKey = "AccessKey";
+    SecretKey = "SecretKey";
+    Region    = "Region";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddAWS4Authorization(AccessKey, SecretKey, Region) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetListOfRecords");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddAWS4Authorization");
 
 EndProcedure
 
-Procedure Airtable_DeleteRecords(FunctionParameters)
+Procedure HTTP_AddOAuthV1Authorization(FunctionParameters)
 
-    Token  = FunctionParameters["Airtable_Token"];
-    Base   = FunctionParameters["Airtable_Base"];
-    Table  = FunctionParameters["Airtable_Table"];
-    Record = FunctionParameters["Airtable_Record"];
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
 
-    Result = OPI_Airtable.DeleteRecords(Token, Base, Table, Record);
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "DeleteRecords");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddOAuthV1Authorization");
 
 EndProcedure
 
-#EndRegion // Airtable
+Procedure HTTP_SetOAuthV1Algorithm(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Token       = "***";
+    Secret      = "***";
+    UsersKey    = "***";
+    UsersSecret = "***";
+    Version     = "1.0";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .AddOAuthV1Authorization(Token, Secret, UsersKey, UsersSecret, Version)
+        .SetOAuthV1Algorithm("HMAC", "SHA1") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetOAuthV1Algorithm");
+
+EndProcedure
+
+Procedure HTTP_ProcessRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET") // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ProcessRequest");
+
+EndProcedure
+
+Procedure HTTP_ExecuteRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ExecuteRequest() // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnResponse(True);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest", "No execution");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ExecuteRequest()
+        .ReturnResponse(True);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest", "Execution");
+
+EndProcedure
+
+Procedure HTTP_ReturnRequest(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnRequest(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnRequest");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ReturnRequest(True);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnRequest", "Forced");
+
+EndProcedure
+
+Procedure HTTP_ReturnConnection(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET", False)
+        .ReturnConnection(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnConnection");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ReturnConnection(True);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnConnection", "Forced");
+
+EndProcedure
+
+Procedure HTTP_ReturnResponse(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .ProcessRequest("POST")
+        .ReturnResponse(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponse");
+
+EndProcedure
+
+Procedure HTTP_ReturnResponseAsJSONObject(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsJSONObject");
+
+EndProcedure
+
+Procedure HTTP_ReturnResponseAsBinaryData(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .ProcessRequest("POST")
+        .ReturnResponseAsBinaryData(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsBinaryData");
+
+EndProcedure
+
+Procedure HTTP_ReturnResponseAsString(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .ProcessRequest("POST")
+        .ReturnResponseAsString(); // <---
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsString");
+
+EndProcedure
+
+Procedure HTTP_ReturnResponseFilename(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    TFN = GetTempFileName();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetResponseFile(TFN) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseFilename();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseFilename", , TFN);
+
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
+
+EndProcedure
+
+Procedure HTTP_SetProxy(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ProxySettings = New InternetProxy;
+    ProxySettings.Set("https", "proxy.com", 443, "user", "password", False);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetProxy(ProxySettings) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetProxy");
+
+EndProcedure
+
+Procedure HTTP_SetTimeout(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .SetTimeout(60) // <---
+        .ProcessRequest("GET", False)
+        .ReturnConnection();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetTimeout");
+
+EndProcedure
+
+Procedure HTTP_UseURLEncoding(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("param1", "search?text");
+    ParametersStructure.Insert("param2", "John Doe");
+    ParametersStructure.Insert("param3", "value&another");
+    ParametersStructure.Insert("param4", "кириллица");
+    ParametersStructure.Insert("param5", "<script>alert('XSS')</script>");
+
+    NoEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .UseURLEncoding(False) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    WithEncoding = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    // END
+
+    Result = New Map;
+    Result.Insert("No encoding"   , NoEncoding);
+    Result.Insert("With encoding" , WithEncoding);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseURLEncoding");
+
+EndProcedure
+
+Procedure HTTP_SplitArraysInURL(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/get";
+
+    ArrayParam = New Array;
+    ArrayParam.Add("val1");
+    ArrayParam.Add("val2");
+    ArrayParam.Add("val3");
+
+    ParametersStructure = New Structure("arrayfield", ArrayParam);
+
+    Separation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    SeparationPhp = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .SplitArraysInURL(True, True) // <---
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    NoSeparation = OPI_HTTPRequests.NewRequest()
+        .Initialize("https://example.com/page")
+        .SetURLParams(ParametersStructure)
+        .ProcessRequest("GET", False)
+        .ReturnRequest()
+        .ResourceAddress;
+
+    // END
+
+    Result = New Map;
+    Result.Insert("No separation", NoSeparation);
+    Result.Insert("Separation"   , Separation);
+    Result.Insert("PHP"          , SeparationPhp);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SplitArraysInURL");
+
+EndProcedure
+
+Procedure HTTP_SendDataInParts(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/put";
+
+    ChunkSize = 524288;
+    Image     = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .SendDataInParts(ChunkSize) // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SendDataInParts");
+
+EndProcedure
+
+Procedure HTTP_SendPart(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/put";
+
+    ChunkSize = 524288;
+    Data      = GetBinaryDataFromString("Some data for sending");
+
+    // Sending only "data for"
+    StartPosition = 5;
+    Bytes = 8;
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Data)
+        .SendPart(StartPosition, Bytes) // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "SendPart");
+
+EndProcedure
+
+Procedure HTTP_MaxAttempts(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxAttempts(10)
+        .ReturnSettings();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "MaxAttempts");
+
+EndProcedure
+
+Procedure HTTP_MaxRedirects(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxRedirects(15)
+        .ReturnSettings();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "MaxRedirects");
+
+EndProcedure
+
+Procedure HTTP_ReturnSettings(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings("EncodeRequestBody");
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Single");
+
+    SettingArray = New Array;
+    SettingArray.Add("MaxAttempts");
+    SettingArray.Add("MaxRedirects");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxAttempts(5)
+        .ReturnSettings(SettingArray);
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Array");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings("AAA");
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Nonexistent");
+
+EndProcedure
+
+#EndRegion
 
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
+#Region Alternate
+
+Procedure HTTP_Инициализация() Export
+    HTTP_Initialization();
+EndProcedure
+
+Procedure HTTP_УстановкаТела() Export
+    HTTP_BodySet();
+EndProcedure
+
+Procedure HTTP_Настройки() Export
+    HTTP_Settings();
+EndProcedure
+
+Procedure HTTP_УстановкаЗаголовков() Export
+    HTTP_HeadersSetting();
+EndProcedure
+
+Procedure HTTP_Авторизация() Export
+    HTTP_Authorization();
+EndProcedure
+
+Procedure HTTP_ОбработкаЗапроса() Export
+    HTTP_RequestProcessing();
+EndProcedure
+
+Procedure HTTP_ПолучениеОтвета() Export
+    HTTP_ResponseReceiving();
+EndProcedure
+
+#EndRegion
