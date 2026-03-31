@@ -1,0 +1,540 @@
+// OneScript: ./OInt/tests/Modules/OPIt_OpenAI.os
+
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and +this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// Набор тестов для YAxUnit
+
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UnusedParameters-off
+// BSLLS:DuplicateStringLiteral-off
+// BSLLS:UsingHardcodePath-off
+// BSLLS:UnusedLocalVariable-off
+// BSLLS:DeprecatedMessage-off
+// BSLLS:LineLength-off
+// BSLLS:MagicNumber-off
+// BSLLS:CommentedCode-off
+// BSLLS:AssignAliasFieldsInQuery-off
+// BSLLS:UsingHardcodeNetworkAddress-off
+// BSLLS:UnreachableCode-off
+// BSLLS:UnusedLocalMethod-off
+// BSLLS:NestedFunctionInParameters-off
+// BSLLS:MissingTemporaryFileDeletion-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:MagicNumber-off
+// BSLLS:MagicDate-off
+// BSLLS:MissingParameterDescription-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:MethodSize-off
+// BSLLS:NestedConstructorsInStructureDeclaration-off
+// BSLLS:NumberOfValuesInStructureConstructor-off
+// BSLLS:UsingHardcodeSecretInformation-off
+// BSLLS:SpaceAtStartComment-off
+
+//@skip-check undefined-variable
+//@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
+//@skip-check module-unused-local-variable
+//@skip-check bsl-legacy-check-string-literal
+//@skip-check bsl-legacy-check-method-for-statements-after-return
+//@skip-check missing-temporary-file-deletion
+//@skip-check module-unused-method
+
+#Использовать oint
+#Использовать asserts
+#Использовать "internal"
+
+
+// Для YaxUnit
+
+Процедура ИсполняемыеСценарии() Экспорт
+
+    OPI_ПолучениеДанныхТестов.СформироватьТестыЯкс("OpenAI");
+
+КонецПроцедуры
+
+// Для Asserts
+
+Функция ПолучитьСписокТестов(ЮнитТестирование) Экспорт
+
+    Возврат OPI_ПолучениеДанныхТестов.СформироватьТестыАссертс("OpenAI");
+
+КонецФункции
+
+#Область СлужебныйПрограммныйИнтерфейс
+
+#Область ЗапускаемыеТесты
+
+#Область OpenAI
+
+Процедура OAI_ОбработкаЗапросов() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token"  , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL"    , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token2" , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL2"   , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_File"   , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"       , ПараметрыТеста);
+
+    OpenAI_ПолучитьОтвет(ПараметрыТеста);
+    OpenAI_ПолучитьПредставления(ПараметрыТеста);
+    OpenAI_ПолучитьСтруктуруСообщения(ПараметрыТеста);
+    OpenAI_ПолучитьСтруктуруСообщенияКартинки(ПараметрыТеста);
+    OpenAI_ПолучитьКартинки(ПараметрыТеста);
+    OpenAI_ПолучитьСообщениеАссистента(ПараметрыТеста);
+    OpenAI_ПолучитьСообщениеПользователя(ПараметрыТеста);
+    OpenAI_ПолучитьСообщениеСистемы(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура OAI_Ассистенты() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token"  , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL"    , ПараметрыТеста);
+
+    OpenAI_СоздатьАссистента(ПараметрыТеста);
+    OpenAI_ПолучитьАссистента(ПараметрыТеста);
+    OpenAI_ПолучитьСписокАссистентов(ПараметрыТеста);
+    OpenAI_УдалитьАссистента(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура OAI_РаботаСФайлами() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token"  , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL"    , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"       , ПараметрыТеста);
+
+    OpenAI_ЗагрузитьФайл(ПараметрыТеста);
+    OpenAI_ПолучитьИнформациюОФайле(ПараметрыТеста);
+    OpenAI_ПолучитьСписокФайлов(ПараметрыТеста);
+    OpenAI_СкачатьФайл(ПараметрыТеста);
+    OpenAI_УдалитьФайл(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура OAI_РаботаСАудио() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token"  , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL"    , ПараметрыТеста);
+
+    OpenAI_СгенерироватьРечь(ПараметрыТеста);
+    OpenAI_СоздатьТранскрипцию(ПараметрыТеста);
+
+КонецПроцедуры
+
+Процедура OAI_РаботаСМоделями() Экспорт
+
+    ПараметрыТеста = Новый Структура;
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_Token"  , ПараметрыТеста);
+    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("OpenAI_URL"    , ПараметрыТеста);
+
+    OpenAI_ПолучитьСписокМоделей(ПараметрыТеста);
+
+КонецПроцедуры
+
+#КонецОбласти // OpenAI
+
+#КонецОбласти // ЗапускаемыеТесты
+
+#КонецОбласти // СлужебныйПрограммныйИнтерфейс
+
+#Область СлужебныеПроцедурыИФункции
+
+#Область АтомарныеТесты
+
+#Область OpenAI
+
+Процедура OpenAI_ПолучитьОтвет(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    // Текстовые сообщения
+
+    Сообщения = Новый Массив;
+    Сообщения.Добавить(OPI_OpenAI.ПолучитьСтруктуруСообщения("user"     , "What is 1C:Enterprise?"));
+    Сообщения.Добавить(OPI_OpenAI.ПолучитьСтруктуруСообщения("assistant", "1C:Enterprise is a full-stack, low-code platform"));
+    Сообщения.Добавить(OPI_OpenAI.ПолучитьСтруктуруСообщения("user"     , "When the first version was released?"));
+
+    Модель = "smolvlm-256m-instruct";
+
+    Результат = OPI_OpenAI.ПолучитьОтвет(URL, Токен, Модель, Сообщения);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьОтвет"); // SKIP
+
+    // Картинки
+
+    Модель     = "moondream2-20250414";
+    Файл       = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
+    ИмяФайла   = СтрШаблон("%1.png", Строка(Новый УникальныйИдентификатор()));
+    Назначение = "user_data";
+
+    Сообщения = Новый Массив;
+
+    ЗагрузкаКартинки = OPI_OpenAI.ЗагрузитьФайл(URL, Токен, ИмяФайла, Файл, Назначение);
+
+    OPI_ПолучениеДанныхТестов.Обработать(ЗагрузкаКартинки, "OpenAI", "ПолучитьОтвет", "Загрузка картинки"); // SKIP
+
+    IDКартинки = ЗагрузкаКартинки["id"];
+
+    Описание = OPI_OpenAI.ПолучитьСтруктуруСообщенияКартинки("user", IDКартинки, "What is in this image?");
+
+    Сообщения.Добавить(Описание);
+
+    Результат = OPI_OpenAI.ПолучитьОтвет(URL, Токен, Модель, Сообщения);
+
+    OPI_OpenAI.УдалитьФайл(URL, Токен, IDКартинки);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьОтвет", "Картинка");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьПредставления(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Текст  = "What is 1C:Enterprise?";
+    Модель = "arcee-ai_afm-4.5b";
+
+    Результат = OPI_OpenAI.ПолучитьПредставления(URL, Токен, Модель, Текст);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьПредставления");
+
+КонецПроцедуры
+
+Процедура OpenAI_СоздатьАссистента(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Инструкция = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
+    Модель     = "smolvlm-256m-instruct";
+    Имя        = "Math tutor";
+
+    Результат = OPI_OpenAI.СоздатьАссистента(URL, Токен, Модель, Имя, Инструкция);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "СоздатьАссистента", , ПараметрыФункции);
+
+КонецПроцедуры
+
+Процедура OpenAI_УдалитьАссистента(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    IDАссистента = ПараметрыФункции["OpenAI_Assistant"];
+
+    Результат = OPI_OpenAI.УдалитьАссистента(URL, Токен, IDАссистента);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "УдалитьАссистента", , IDАссистента);
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьАссистента(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    IDАссистента = ПараметрыФункции["OpenAI_Assistant"];
+
+    Результат = OPI_OpenAI.ПолучитьАссистента(URL, Токен, IDАссистента);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьАссистента");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСписокАссистентов(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Количество   = 2;
+    ДопПараметры = Новый Структура("after,order", "asst_2", "desc");
+
+    Результат = OPI_OpenAI.ПолучитьСписокАссистентов(URL, Токен, Количество, ДопПараметры);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСписокАссистентов");
+
+КонецПроцедуры
+
+Процедура OpenAI_ЗагрузитьФайл(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Файл = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
+
+    ИмяФайла   = СтрШаблон("%1.png", Строка(Новый УникальныйИдентификатор()));
+    Назначение = "assistants";
+
+    Результат = OPI_OpenAI.ЗагрузитьФайл(URL, Токен, ИмяФайла, Файл, Назначение);
+
+    // END
+
+    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ЗагрузитьФайл", , ПараметрыФункции, ИмяФайла, Файл.Размер() + 2);
+
+КонецПроцедуры
+
+Процедура OpenAI_УдалитьФайл(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    IDФайла = ПараметрыФункции["OpenAI_File"];
+
+    Результат = OPI_OpenAI.УдалитьФайл(URL, Токен, IDФайла);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "УдалитьФайл", , IDФайла);
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьИнформациюОФайле(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    IDФайла = ПараметрыФункции["OpenAI_File"];
+
+    Результат = OPI_OpenAI.ПолучитьИнформациюОФайле(URL, Токен, IDФайла);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьИнформациюОФайле");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСписокФайлов(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Результат = OPI_OpenAI.ПолучитьСписокФайлов(URL, Токен);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСписокФайлов");
+
+КонецПроцедуры
+
+Процедура OpenAI_СкачатьФайл(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    IDФайла = ПараметрыФункции["OpenAI_File"];
+
+    Результат = OPI_OpenAI.СкачатьФайл(URL, Токен, IDФайла);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "СкачатьФайл", , ПараметрыФункции);
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСтруктуруСообщения(ПараметрыФункции)
+
+    Результат = OPI_OpenAI.ПолучитьСтруктуруСообщения("user", "What is 1C:Enterprise?");
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСтруктуруСообщения");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСтруктуруСообщенияКартинки(ПараметрыФункции)
+
+    URL      = ПараметрыФункции["OpenAI_URL"];
+    Токен    = ПараметрыФункции["OpenAI_Token"];
+    Картинка = ПараметрыФункции["OpenAI_File"];
+
+    Результат = OPI_OpenAI.ПолучитьСтруктуруСообщенияКартинки("user", Картинка, "What is in this image?");
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСтруктуруСообщенияКартинки");
+
+КонецПроцедуры
+
+Процедура OpenAI_СгенерироватьРечь(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
+    Модель = "bark-cpp-small";
+
+    ДопПараметры = Новый Структура("response_format", "wav");
+
+    Результат = OPI_OpenAI.СгенерироватьРечь(URL, Токен, Модель, Текст, , ДопПараметры);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "СгенерироватьРечь", , ПараметрыФункции);
+
+КонецПроцедуры
+
+Процедура OpenAI_СоздатьТранскрипцию(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Аудио  = ПараметрыФункции["OpenAI_Speech"];
+    Модель = "whisper-1";
+
+    Результат = OPI_OpenAI.СоздатьТранскрипцию(URL, Токен, Модель, Аудио, "audio/wav");
+
+    // END
+
+    OPI_Инструменты.УдалитьФайлВПопытке(Аудио, "Не удалось удалить временный файл после теста!");
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "СоздатьТранскрипцию");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьКартинки(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Модель    = "sd-1.5-ggml";
+    Описание  = OPI_OpenAI.ПолучитьСтруктуруОписанияКартинок("Yellow alpaca", 1, , "64x64");
+    Результат = OPI_OpenAI.ПолучитьКартинки(URL, Токен, Модель, Описание);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьКартинки");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСписокМоделей(ПараметрыФункции)
+
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
+
+    Результат = OPI_OpenAI.ПолучитьСписокМоделей(URL, Токен);
+
+    // END
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСписокМоделей");
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСообщениеАссистента(ПараметрыФункции)
+
+    Результат = OPI_OpenAI.ПолучитьСообщениеАссистента("What is 1C:Enterprise?");
+
+    // END
+
+    Проверка  = OPI_OpenAI.ПолучитьСтруктуруСообщения("assistant", "What is 1C:Enterprise?");
+    Проверка  = OPI_Инструменты.JSONСтрокой(Проверка);
+    Результат = OPI_Инструменты.JSONСтрокой(Результат);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСообщениеАссистента", , Проверка);
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСообщениеПользователя(ПараметрыФункции)
+
+    Результат = OPI_OpenAI.ПолучитьСообщениеПользователя("What is 1C:Enterprise?", "Vitaly");
+
+    // END
+
+    Проверка  = OPI_OpenAI.ПолучитьСтруктуруСообщения("user", "What is 1C:Enterprise?", "Vitaly");
+    Проверка  = OPI_Инструменты.JSONСтрокой(Проверка);
+    Результат = OPI_Инструменты.JSONСтрокой(Результат);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСообщениеПользователя", , Проверка);
+
+КонецПроцедуры
+
+Процедура OpenAI_ПолучитьСообщениеСистемы(ПараметрыФункции)
+
+    Результат = OPI_OpenAI.ПолучитьСообщениеСистемы("What is 1C:Enterprise?");
+
+    // END
+
+    Проверка  = OPI_OpenAI.ПолучитьСтруктуруСообщения("system", "What is 1C:Enterprise?");
+    Проверка  = OPI_Инструменты.JSONСтрокой(Проверка);
+    Результат = OPI_Инструменты.JSONСтрокой(Результат);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "OpenAI", "ПолучитьСообщениеСистемы", , Проверка);
+
+КонецПроцедуры
+
+#КонецОбласти // OpenAI
+
+#КонецОбласти // АтомарныеТесты
+
+#КонецОбласти // СлужебныеПроцедурыИФункции
+
+#Region Alternate
+
+Procedure OAI_RequestsProcessing() Export
+    OAI_ОбработкаЗапросов();
+EndProcedure
+
+Procedure OAI_Assistants() Export
+    OAI_Ассистенты();
+EndProcedure
+
+Procedure OAI_FileManagement() Export
+    OAI_РаботаСФайлами();
+EndProcedure
+
+Procedure OAI_AudioProcessing() Export
+    OAI_РаботаСАудио();
+EndProcedure
+
+Procedure OAI_ModelsManagement() Export
+    OAI_РаботаСМоделями();
+EndProcedure
+
+#EndRegion

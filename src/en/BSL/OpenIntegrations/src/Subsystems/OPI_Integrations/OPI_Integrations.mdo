@@ -22,6 +22,4 @@
   <content>CommonModule.OPI_GoogleSheets</content>
   <content>CommonModule.OPI_Slack</content>
   <content>CommonModule.OPI_Airtable</content>
-  <content>CommonModule.OPI_Tests</content>
-  <content>CommonModule.OPI_TestDataRetrieval</content>
 </mdclass:Subsystem>

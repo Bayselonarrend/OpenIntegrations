@@ -115,7 +115,6 @@
 		
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "СформироватьТестыЯкс()", "СформироватьТестыЯксCLI()");
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "СформироватьТестыАссертс()", "СформироватьТестыАссертсCLI()");
-		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/OPI_Тесты.os", "// OneScript: ./OInt/tests/Modules/OPI_ТестыCLI.os");
 		
 	Иначе
 		
@@ -128,9 +127,10 @@
 		
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "FormYAXTests()", "FormYAXTestsCLI()");
 		ТекстМодуля = СтрЗаменить(ТекстМодуля, "FormAssertsTests()", "FormAssertsTestsCLI()");
-		ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/OPI_Tests.os", "// OneScript: ./OInt/tests/Modules/OPI_TestsCLI.os");
 		
 	КонецЕсли;
+
+	ТекстМодуля = СтрЗаменить(ТекстМодуля, "// OneScript: ./OInt/tests/Modules/OPIt", "// OneScript: ./OInt/tests/Modules/OPItc");
 	
 	CommonTools.ЗаписатьТекст(ТекстМодуля, ПутиСохраненияМодулейCLI[0]);
 

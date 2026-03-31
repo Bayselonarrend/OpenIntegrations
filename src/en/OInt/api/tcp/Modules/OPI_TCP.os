@@ -141,6 +141,16 @@ Function ReadBinaryData(Val Connection
     , Val Marker = ""
     , Val Timeout = 5000) Export
 
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
     OPI_TypeConversion.GetNumber(Timeout);
     OPI_TypeConversion.GetNumber(MaxSize);
 
@@ -195,6 +205,16 @@ EndFunction
 // Returns:
 // Boolean - Flag of successful delivery
 Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
 
     OPI_TypeConversion.GetBinaryData(Data);
     OPI_TypeConversion.GetNumber(Timeout);

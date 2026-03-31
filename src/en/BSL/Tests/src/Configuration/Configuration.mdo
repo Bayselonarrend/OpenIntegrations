@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="19d7d33f-80c8-49d7-b117-22e72d7a9fd7">
+  <name>Tests</name>
+  <synonym>
+    <key>en</key>
+    <value>Tests</value>
+  </synonym>
+  <objectBelonging>Adopted</objectBelonging>
+  <extension xsi:type="mdclassExtension:ConfigurationExtension">
+    <defaultRunMode>Checked</defaultRunMode>
+    <usePurposes>Checked</usePurposes>
+    <defaultLanguage>Checked</defaultLanguage>
+    <interfaceCompatibilityMode>Checked</interfaceCompatibilityMode>
+    <compatibilityMode>Checked</compatibilityMode>
+  </extension>
+  <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="ed9307a6-4959-4d8e-b2e0-876e3018dade"/>
+  <containedObjects classId="9fcd25a0-4822-11d4-9414-008048da11f9" objectId="da8c99fc-3654-4ae0-bb9b-ca5cd7161d6d"/>
+  <containedObjects classId="e3687481-0a87-462c-a166-9f34594f9bba" objectId="4dc96dfb-c174-4fe0-a250-7cb2e777e4a0"/>
+  <containedObjects classId="9de14907-ec23-4a07-96f0-85521cb6b53b" objectId="fb4a5d0f-7d23-49f4-8034-f48dc8ea777f"/>
+  <containedObjects classId="51f2d5d8-ea4d-4064-8892-82951750031e" objectId="8b4574c4-20a3-4f95-8641-dc6647a3c1be"/>
+  <containedObjects classId="e68182ea-4237-4383-967f-90c1e3370bc7" objectId="2fddfaa7-a991-4f28-ab8b-47250f21baf7"/>
+  <keepMappingToExtendedConfigurationObjectsByIDs>true</keepMappingToExtendedConfigurationObjectsByIDs>
+  <namePrefix>OPIt_</namePrefix>
+  <configurationExtensionCompatibilityMode>8.3.15</configurationExtensionCompatibilityMode>
+  <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
+  <defaultRunMode>ManagedApplication</defaultRunMode>
+  <usePurposes>PersonalComputer</usePurposes>
+  <scriptVariant>English</scriptVariant>
+  <defaultLanguage>Language.Russian</defaultLanguage>
+  <compatibilityMode>8.3.15</compatibilityMode>
+  <languages uuid="7e3c6fb6-b2e5-4ae9-8f94-5c7106bdb707" extendedConfigurationObject="710c9daf-82ec-48b6-a0ec-af9831dc3195">
+    <name>Russian</name>
+    <objectBelonging>Adopted</objectBelonging>
+    <extension xsi:type="mdclassExtension:LanguageExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+      <languageCode>Checked</languageCode>
+    </extension>
+    <languageCode>ru</languageCode>
+  </languages>
+  <roles>Role.OPIt_MainRole</roles>
+  <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
+  <commonModules>CommonModule.OPIt_Airtable</commonModules>
+  <commonModules>CommonModule.OPIt_Bitrix24</commonModules>
+  <commonModules>CommonModule.OPIt_BuildHash</commonModules>
+  <commonModules>CommonModule.OPIt_CDEK</commonModules>
+  <commonModules>CommonModule.OPIt_ClickHouse</commonModules>
+  <commonModules>CommonModule.OPIt_Dropbox</commonModules>
+  <commonModules>CommonModule.OPIt_FTP</commonModules>
+  <commonModules>CommonModule.OPIt_GoogleCalendar</commonModules>
+  <commonModules>CommonModule.OPIt_GoogleDrive</commonModules>
+  <commonModules>CommonModule.OPIt_GoogleSheets</commonModules>
+  <commonModules>CommonModule.OPIt_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPIt_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPIt_GreenMax</commonModules>
+  <commonModules>CommonModule.OPIt_GRPC</commonModules>
+  <commonModules>CommonModule.OPIt_HTTP</commonModules>
+  <commonModules>CommonModule.OPIt_MongoDB</commonModules>
+  <commonModules>CommonModule.OPIt_MSSQL</commonModules>
+  <commonModules>CommonModule.OPIt_MySQL</commonModules>
+  <commonModules>CommonModule.OPIt_Neocities</commonModules>
+  <commonModules>CommonModule.OPIt_Notion</commonModules>
+  <commonModules>CommonModule.OPIt_Ollama</commonModules>
+  <commonModules>CommonModule.OPIt_OpenAI</commonModules>
+  <commonModules>CommonModule.OPIt_PostgreSQL</commonModules>
+  <commonModules>CommonModule.OPIt_RCON</commonModules>
+  <commonModules>CommonModule.OPIt_ReportPortal</commonModules>
+  <commonModules>CommonModule.OPIt_RSS</commonModules>
+  <commonModules>CommonModule.OPIt_S3</commonModules>
+  <commonModules>CommonModule.OPIt_SFTP</commonModules>
+  <commonModules>CommonModule.OPIt_Slack</commonModules>
+  <commonModules>CommonModule.OPIt_SQLite</commonModules>
+  <commonModules>CommonModule.OPIt_SSH</commonModules>
+  <commonModules>CommonModule.OPIt_TCP</commonModules>
+  <commonModules>CommonModule.OPIt_Telegram</commonModules>
+  <commonModules>CommonModule.OPIt_Twitter</commonModules>
+  <commonModules>CommonModule.OPIt_Viber</commonModules>
+  <commonModules>CommonModule.OPIt_VK</commonModules>
+  <commonModules>CommonModule.OPIt_VKTeams</commonModules>
+  <commonModules>CommonModule.OPIt_WebSocket</commonModules>
+  <commonModules>CommonModule.OPIt_YandexDisk</commonModules>
+  <commonModules>CommonModule.OPIt_YandexID</commonModules>
+  <commonModules>CommonModule.OPIt_YandexMarket</commonModules>
+  <commonModules>CommonModule.OPIt_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPItc_Airtable</commonModules>
+  <commonModules>CommonModule.OPItc_Bitrix24</commonModules>
+  <commonModules>CommonModule.OPItc_BuildHash</commonModules>
+  <commonModules>CommonModule.OPItc_CDEK</commonModules>
+  <commonModules>CommonModule.OPItc_ClickHouse</commonModules>
+  <commonModules>CommonModule.OPItc_Dropbox</commonModules>
+  <commonModules>CommonModule.OPItc_FTP</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleCalendar</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleDrive</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleSheets</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPItc_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPItc_GreenMax</commonModules>
+  <commonModules>CommonModule.OPItc_GRPC</commonModules>
+  <commonModules>CommonModule.OPItc_HTTP</commonModules>
+  <commonModules>CommonModule.OPItc_MongoDB</commonModules>
+  <commonModules>CommonModule.OPItc_MSSQL</commonModules>
+  <commonModules>CommonModule.OPItc_MySQL</commonModules>
+  <commonModules>CommonModule.OPItc_Neocities</commonModules>
+  <commonModules>CommonModule.OPItc_Notion</commonModules>
+  <commonModules>CommonModule.OPItc_Ollama</commonModules>
+  <commonModules>CommonModule.OPItc_OpenAI</commonModules>
+  <commonModules>CommonModule.OPItc_PostgreSQL</commonModules>
+  <commonModules>CommonModule.OPItc_RCON</commonModules>
+  <commonModules>CommonModule.OPItc_ReportPortal</commonModules>
+  <commonModules>CommonModule.OPItc_RSS</commonModules>
+  <commonModules>CommonModule.OPItc_S3</commonModules>
+  <commonModules>CommonModule.OPItc_SFTP</commonModules>
+  <commonModules>CommonModule.OPItc_Slack</commonModules>
+  <commonModules>CommonModule.OPItc_SQLite</commonModules>
+  <commonModules>CommonModule.OPItc_SSH</commonModules>
+  <commonModules>CommonModule.OPItc_TCP</commonModules>
+  <commonModules>CommonModule.OPItc_Telegram</commonModules>
+  <commonModules>CommonModule.OPItc_Twitter</commonModules>
+  <commonModules>CommonModule.OPItc_Viber</commonModules>
+  <commonModules>CommonModule.OPItc_VK</commonModules>
+  <commonModules>CommonModule.OPItc_VKTeams</commonModules>
+  <commonModules>CommonModule.OPItc_WebSocket</commonModules>
+  <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
+  <commonModules>CommonModule.OPItc_YandexID</commonModules>
+  <commonModules>CommonModule.OPItc_YandexMarket</commonModules>
+  <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
+</mdclass:Configuration>

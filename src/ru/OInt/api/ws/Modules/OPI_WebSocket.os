@@ -152,6 +152,10 @@
 
 КонецФункции
 
+Функция ОтправитьТекст(Знач Соединение, Знач Текст) Экспорт
+
+КонецФункции
+
 // Получить настройки TLS !NOCLI
 // Формирует настройки для использования TLS при выполнении запросов
 //
@@ -370,6 +374,10 @@ EndFunction
 
 Function CloseConnection(Val Connection) Export
     Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function SendText(Val Connection, Val Text) Export
+    Return ОтправитьТекст(Connection, Text);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
