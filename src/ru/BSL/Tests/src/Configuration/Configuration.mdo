@@ -80,4 +80,45 @@
   <commonModules>CommonModule.OPIt_YandexMarket</commonModules>
   <commonModules>CommonModule.OPIt_YandexMetrika</commonModules>
   <commonModules>CommonModule.OPIt_ПолучениеДанныхТестов</commonModules>
+  <commonModules>CommonModule.OPItc_Airtable</commonModules>
+  <commonModules>CommonModule.OPItc_Bitrix24</commonModules>
+  <commonModules>CommonModule.OPItc_BuildHash</commonModules>
+  <commonModules>CommonModule.OPItc_CDEK</commonModules>
+  <commonModules>CommonModule.OPItc_ClickHouse</commonModules>
+  <commonModules>CommonModule.OPItc_Dropbox</commonModules>
+  <commonModules>CommonModule.OPItc_FTP</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleCalendar</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleDrive</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleSheets</commonModules>
+  <commonModules>CommonModule.OPItc_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPItc_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPItc_GreenMax</commonModules>
+  <commonModules>CommonModule.OPItc_GRPC</commonModules>
+  <commonModules>CommonModule.OPItc_MongoDB</commonModules>
+  <commonModules>CommonModule.OPItc_MSSQL</commonModules>
+  <commonModules>CommonModule.OPItc_MySQL</commonModules>
+  <commonModules>CommonModule.OPItc_Neocities</commonModules>
+  <commonModules>CommonModule.OPItc_Notion</commonModules>
+  <commonModules>CommonModule.OPItc_Ollama</commonModules>
+  <commonModules>CommonModule.OPItc_OpenAI</commonModules>
+  <commonModules>CommonModule.OPItc_PostgreSQL</commonModules>
+  <commonModules>CommonModule.OPItc_RCON</commonModules>
+  <commonModules>CommonModule.OPItc_ReportPortal</commonModules>
+  <commonModules>CommonModule.OPItc_RSS</commonModules>
+  <commonModules>CommonModule.OPItc_S3</commonModules>
+  <commonModules>CommonModule.OPItc_SFTP</commonModules>
+  <commonModules>CommonModule.OPItc_Slack</commonModules>
+  <commonModules>CommonModule.OPItc_SQLite</commonModules>
+  <commonModules>CommonModule.OPItc_SSH</commonModules>
+  <commonModules>CommonModule.OPItc_TCP</commonModules>
+  <commonModules>CommonModule.OPItc_Telegram</commonModules>
+  <commonModules>CommonModule.OPItc_Twitter</commonModules>
+  <commonModules>CommonModule.OPItc_Viber</commonModules>
+  <commonModules>CommonModule.OPItc_VK</commonModules>
+  <commonModules>CommonModule.OPItc_VKTeams</commonModules>
+  <commonModules>CommonModule.OPItc_WebSocket</commonModules>
+  <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
+  <commonModules>CommonModule.OPItc_YandexID</commonModules>
+  <commonModules>CommonModule.OPItc_YandexMarket</commonModules>
+  <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
 </mdclass:Configuration>
