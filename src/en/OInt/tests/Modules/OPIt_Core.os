@@ -109,7 +109,7 @@ Procedure CheckIBToLastBuildCompliance() Export
         .ProcessRequest("GET")
         .ReturnResponseAsString(False, True);
 
-    OPI_TestDataRetrieval.Process(BuildSum, "BuildCheck", "CheckIBToLastBuildCompliance", , LastSum);
+    OPI_TestDataRetrieval.Process(BuildSum, "Core", "CheckIBToLastBuildCompliance", , LastSum);
 
 EndProcedure
 
