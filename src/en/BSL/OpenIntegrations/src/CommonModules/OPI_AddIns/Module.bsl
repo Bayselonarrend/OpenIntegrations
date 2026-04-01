@@ -54,7 +54,7 @@ Function GetAddIn(Val AddInName, Val Class = "Main", NoIsolated = False) Export
     Error     = "";
     AddInName = StrTemplate("OPI_%1", AddInName);
 
-    If Not InitializeAddIn(AddInName, Class, AddIn) Then
+    If NoIsolated Or Not InitializeAddIn(AddInName, Class, AddIn) Then
 
         Error = Undefined;
         AddIn = AttachAddInOnServer(AddInName, Class, Error, NoIsolated);

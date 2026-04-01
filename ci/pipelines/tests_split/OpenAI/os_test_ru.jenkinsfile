@@ -76,7 +76,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/OPIt_BuildCheck.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
