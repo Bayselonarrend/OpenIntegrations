@@ -125,7 +125,7 @@ EndFunction
 Function GetTestingSectionMapping() Export
 
     Sections = New Structure;
-    Sections.Insert("BuildCheck"     , 1);
+    Sections.Insert("Core"           , 1);
     Sections.Insert("Telegram"       , 5);
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
@@ -1214,7 +1214,7 @@ EndFunction
 
 #Region Checks
 
-Function Check_BuildCheck_CheckIBToLastBuildCompliance(Val Result, Val Option, Val LastSum)
+Function Check_Core_CheckIBToLastBuildCompliance(Val Result, Val Option, Val LastSum)
 
     //@skip-check use-non-recommended-method
     Message(StrTemplate("Current IB build: %1", Result));

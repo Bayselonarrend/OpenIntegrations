@@ -72,17 +72,19 @@ pipeline {
 				}
 		}
 
-		stage('Testing-BuildCheck') {
+		stage('Testing-Core') {
             when {
-                expression { return shouldRunStage('BuildCheck') }
+                expression { return shouldRunStage('Core') }
             }
 			steps {
 				script {
 					def tests = [
-
+						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
+						}
 					}
 				}
 			}
