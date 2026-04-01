@@ -1,4 +1,4 @@
-// MIT License
+// OneScript: ./OInt/tests/Modules/OPIt_Core.os
 
 // Copyright (c) 2023-2026 Anton Tsitavets
 
@@ -71,7 +71,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("BuildHash");
+    OPI_TestDataRetrieval.FormYAXTests("Core");
 
 EndProcedure
 
@@ -79,7 +79,50 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("BuildHash");
+    Return OPI_TestDataRetrieval.FormAssertsTests("Core");
 
 EndFunction
+
+#Region Internal
+
+#Region RunnableTests
+
+Procedure CheckIBToLastBuildCompliance() Export
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+
+        //@skip-check use-non-recommended-method
+        Message("CLI test check for hash sum");
+        BuildSum = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", New Structure);
+
+    Else
+
+        BuildSum = OPI_Tools.GetLastBuildHashSum();
+
+    EndIf;
+
+    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
+
+    LastSum = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .ProcessRequest("GET")
+        .ReturnResponseAsString(False, True);
+
+    OPI_TestDataRetrieval.Process(BuildSum, "BuildCheck", "CheckIBToLastBuildCompliance", , LastSum);
+
+EndProcedure
+
+#EndRegion
+
+#EndRegion
+
+#Region Private
+
+#Region AtomicTests
+
+#EndRegion
+
+#EndRegion
+
 
