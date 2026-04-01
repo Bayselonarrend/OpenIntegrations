@@ -39,13 +39,7 @@
     </synonym>
     <languageCode>ru</languageCode>
   </languages>
-  <commonModules>CommonModule.ТестовыйМодуль1</commonModules>
   <definedTypes>DefinedType.Календарь</definedTypes>
-  <constants>Constant.IDГруппы</constants>
-  <constants>Constant.ПоддерживатьСервер</constants>
-  <constants>Constant.Токен</constants>
-  <constants>Constant.ЭтоТестыCLI</constants>
+  <constants>Constant.IsCLITests</constants>
   <catalogs>Catalog.Пользователи</catalogs>
-  <dataProcessors>DataProcessor.Mustela</dataProcessors>
-  <dataProcessors>DataProcessor.ТестоваяОбработка</dataProcessors>
 </mdclass:Configuration>
