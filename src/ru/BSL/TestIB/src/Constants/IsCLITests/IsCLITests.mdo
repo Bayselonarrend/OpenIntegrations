@@ -5,10 +5,10 @@
     <valueManagerType typeId="d76b910c-b3ba-42c2-bb90-b9df80992e59" valueTypeId="dc0bf241-3c78-48a1-b8bc-814e36e03149"/>
     <valueKeyType typeId="5bc179e4-9e66-48fd-b9d4-734de6d196f8" valueTypeId="6289531c-cd60-4eba-a163-56163dbc7c39"/>
   </producedTypes>
-  <name>ЭтоТестыCLI</name>
+  <name>IsCLITests</name>
   <synonym>
     <key>ru</key>
-    <value>Это тесты CLI</value>
+    <value>Is CLITests</value>
   </synonym>
   <type>
     <types>String</types>

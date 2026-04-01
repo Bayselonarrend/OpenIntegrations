@@ -12,6 +12,10 @@ app:
       name: Tests
       type: "EXTENSION"
       purpose: ["TESTS"]
+    - path: "OpenIntegrations"
+      name: OPI
+      type: "EXTENSION"
+      purpose: ["MAIN"]
 
   connection:
     connection-string: "Srvr='DEVSRV';Ref='OpenIntegrations';"

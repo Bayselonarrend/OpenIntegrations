@@ -40,9 +40,9 @@
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPIt_Airtable</commonModules>
   <commonModules>CommonModule.OPIt_Bitrix24</commonModules>
-  <commonModules>CommonModule.OPIt_BuildHash</commonModules>
   <commonModules>CommonModule.OPIt_CDEK</commonModules>
   <commonModules>CommonModule.OPIt_ClickHouse</commonModules>
+  <commonModules>CommonModule.OPIt_Core</commonModules>
   <commonModules>CommonModule.OPIt_Dropbox</commonModules>
   <commonModules>CommonModule.OPIt_FTP</commonModules>
   <commonModules>CommonModule.OPIt_GoogleCalendar</commonModules>
