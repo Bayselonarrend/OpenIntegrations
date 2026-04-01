@@ -26,6 +26,8 @@ suppaftp/
 **/.metadata
 **/.sonarlint
 
+/src/**/BSL/YAXUNIT
+
 
 target/
 .idea/
