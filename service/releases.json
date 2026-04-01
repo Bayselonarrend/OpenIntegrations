@@ -1,5 +1,5 @@
 [
-        {
+    {
         "version": "2.0.0",
         "title": "Version 2.0.0 - .04.2026",
         "summary_ru": "Методы работы с Websocket",
@@ -13,10 +13,16 @@
                 "description_en": "Client methods (3 functions)"
             },
             {
-                "lib": "SQLite",
-                "icon": "media/SQLite.png",
-                "description_ru": "Исправлена работа с расширениями для новых версий платформы",
-                "description_en": "Fixed extension compatibility with new platform versions"                
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена возможность вызова функций библиотеки с переопределением настроек HTTP-клиента",
+                "description_en": "Added ability to call library functions with HTTP client settings override"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Поднят режим совместимости расширения для 1С:Предприятия до версии 8.3.14",
+                "description_en": "1C:Enterprise extension compatibility mode upgraded to 8.3.14"
             }
         ]
     },

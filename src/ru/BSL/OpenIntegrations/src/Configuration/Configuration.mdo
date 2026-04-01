@@ -20,7 +20,7 @@
   <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="c9ed170a-ffaa-4859-9d92-fd1cbc7051b3"/>
   <keepMappingToExtendedConfigurationObjectsByIDs>true</keepMappingToExtendedConfigurationObjectsByIDs>
   <namePrefix>OPI_</namePrefix>
-  <configurationExtensionCompatibilityMode>8.3.9</configurationExtensionCompatibilityMode>
+  <configurationExtensionCompatibilityMode>8.3.14</configurationExtensionCompatibilityMode>
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
@@ -44,6 +44,7 @@
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
+  <sessionParameters>SessionParameter.OPI_НастройкиРасширенногоВызова</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_GRPC</commonTemplates>
