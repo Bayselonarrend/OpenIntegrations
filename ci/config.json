@@ -135,7 +135,6 @@
      "OpenAI": false,
      "ReportPortal": true,
      "HTTPClient": true,
-     "BuildCheck": true,
      "MongoDB": true,
      "GRPC": true,
      "ClickHouse": true,
