@@ -218,7 +218,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable
         , "CheckIBToLastBuildCompliance"
         , "Check IB to last build compliance"
-        , "BuildCheck");
+        , "Core");
 
     NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
     NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);

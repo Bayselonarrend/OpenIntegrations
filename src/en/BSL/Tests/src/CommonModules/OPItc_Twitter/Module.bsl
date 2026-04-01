@@ -140,12 +140,9 @@ Function GetTwitterAuthData()
 
     URL = OPI_TestDataRetrieval.GetParameter("Twitter_TokenURL");
 
-    Result = OPI_HTTPRequests.NewRequest()
-        .Initialize()
-        .SetURL(URL)
-        .AddBearerAuthorization(ServerToken) // <---
-        .ProcessRequest("GET")
-        .ReturnResponseAsJSONObject();
+    Result = OPI_HTTPRequests.NewRequest().Initialize().SetURL(URL).AddBearerAuthorization(
+        ServerToken) // <---
+    .ProcessRequest("GET").ReturnResponseAsJSONObject();
 
     Token = Result["data"];
 
