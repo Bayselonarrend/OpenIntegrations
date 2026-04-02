@@ -3,6 +3,7 @@
  "library": "rcon",
  "self_depend": true,
  "dependencies": null,
+ "cli_tool": false,
  "regions": [
   {
    "name": "Выполнение команд",

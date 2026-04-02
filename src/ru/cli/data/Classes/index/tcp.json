@@ -3,6 +3,7 @@
  "library": "tcp",
  "self_depend": true,
  "dependencies": null,
+ "cli_tool": false,
  "regions": [
   {
    "name": "Методы клиента",

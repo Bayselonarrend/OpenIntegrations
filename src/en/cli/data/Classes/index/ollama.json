@@ -3,6 +3,7 @@
  "library": "ollama",
  "self_depend": false,
  "dependencies": null,
+ "cli_tool": false,
  "regions": [
   {
    "name": "Requests processing",

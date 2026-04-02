@@ -5,6 +5,7 @@
  "dependencies": [
   "OPI_GoogleWorkspace"
  ],
+ "cli_tool": false,
  "regions": [
   {
    "name": "Authorization",

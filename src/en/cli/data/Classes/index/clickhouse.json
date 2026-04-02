@@ -5,6 +5,7 @@
  "dependencies": [
   "OPI_GRPC"
  ],
+ "cli_tool": false,
  "regions": [
   {
    "name": "Common methods",
