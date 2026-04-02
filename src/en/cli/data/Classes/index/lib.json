@@ -40,7 +40,6 @@
   "vkteams": "OPI_VKTeams",
   "ws": "OPI_WebSocket",
   "yadisk": "OPI_YandexDisk",
-  "yamarket": "OPI_YandexMarket",
   "yandex": "OPI_YandexID"
  }
 }
