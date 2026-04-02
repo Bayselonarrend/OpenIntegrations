@@ -1,0 +1,39 @@
+{
+ "module": "MCP",
+ "library": "mcp",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": true,
+ "regions": [
+  {
+   "name": "Методы mcp",
+   "methods": [
+    "Start"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "Start",
+   "id": "START",
+   "description": "Запускает MCP сервер",
+   "params": [
+    {
+     "name": "--config",
+     "types": "Строка",
+     "description": "Путь к файлу конфигурации. Передайте \"\" для использования стандартной конфигурации",
+     "default": "Пустое значение",
+     "short": "-c"
+    },
+    {
+     "name": "--log",
+     "types": "Строка",
+     "description": "Путь записи лога, если необходимо",
+     "default": "Пустое значение",
+     "short": "-l"
+    }
+   ],
+   "region": "Методы mcp"
+  }
+ ]
+}

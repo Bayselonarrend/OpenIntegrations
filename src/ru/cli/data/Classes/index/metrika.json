@@ -5,6 +5,7 @@
  "dependencies": [
   "OPI_YandexID"
  ],
+ "cli_tool": false,
  "regions": [
   {
    "name": "Управление метками",

@@ -3,6 +3,7 @@
  "library": "telegram",
  "self_depend": false,
  "dependencies": null,
+ "cli_tool": false,
  "regions": [
   {
    "name": "Получение данных и настройка",
