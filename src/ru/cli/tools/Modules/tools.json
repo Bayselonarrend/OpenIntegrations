@@ -1,0 +1,109 @@
+{
+  "tools": [
+    {
+      "name": "get_services",
+      "description": "Получает список всех доступных сервисов (команд) CLI утилиты",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_service_methods",
+      "description": "Получает список всех методов конкретного сервиса",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Имя сервиса (команды), например: telegram, slack, notion"
+          }
+        },
+        "required": ["service"]
+      }
+    },
+    {
+      "name": "get_method_parameters",
+      "description": "Получает список параметров конкретного метода сервиса с их описанием, типами и значениями по умолчанию",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Имя сервиса (команды)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Имя метода сервиса"
+          }
+        },
+        "required": ["service", "method"]
+      }
+    },
+    {
+      "name": "get_method_help",
+      "description": "Получает текстовую справку по методу в том же формате, что выводится в CLI help",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Имя сервиса (команды)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Имя метода сервиса"
+          }
+        },
+        "required": ["service", "method"]
+      }
+    },
+    {
+      "name": "execute_method",
+      "description": "Выполняет метод сервиса с указанными параметрами и возвращает результат",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Имя сервиса (команды)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Имя метода сервиса"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Объект с именованными параметрами метода",
+            "additionalProperties": true
+          }
+        },
+        "required": ["service", "method", "parameters"]
+      }
+    },
+    {
+      "name": "build_cli_command",
+      "description": "Формирует готовую строку команды для выполнения в CLI без фактического выполнения",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Имя сервиса (команды)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Имя метода сервиса"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Объект с именованными параметрами метода",
+            "additionalProperties": true
+          }
+        },
+        "required": ["service", "method", "parameters"]
+      }
+    }
+  ]
+}
