@@ -29,6 +29,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Исправлена ошибка при вызове методов `tools` в CLI версии",
                 "description_en": "Fixed error when calling `tools` methods in CLI version"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлен встроенный MCP-сервер (stdio) в CLI версию",
+                "description_en": "Added built-in MCP server (stdio) to CLI version"
             }
         ]
     },

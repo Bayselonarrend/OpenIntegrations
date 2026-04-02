@@ -42,24 +42,6 @@
       }
     },
     {
-      "name": "get_method_help",
-      "description": "Gets text help for a method in the same format as displayed in CLI help",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "service": {
-            "type": "string",
-            "description": "Service name (command)"
-          },
-          "method": {
-            "type": "string",
-            "description": "Service method name"
-          }
-        },
-        "required": ["service", "method"]
-      }
-    },
-    {
       "name": "execute_method",
       "description": "Executes a service method with specified parameters and returns the result",
       "inputSchema": {
