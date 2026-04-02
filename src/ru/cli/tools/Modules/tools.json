@@ -2,7 +2,7 @@
   "tools": [
     {
       "name": "get_services",
-      "description": "Получает список всех доступных сервисов (команд) CLI утилиты",
+      "description": "Gets a list of all available services (commands) of the CLI utility",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -11,13 +11,13 @@
     },
     {
       "name": "get_service_methods",
-      "description": "Получает список всех методов конкретного сервиса",
+      "description": "Gets a list of all methods for a specific service",
       "inputSchema": {
         "type": "object",
         "properties": {
           "service": {
             "type": "string",
-            "description": "Имя сервиса (команды), например: telegram, slack, notion"
+            "description": "Service name (command), for example: telegram, slack, notion"
           }
         },
         "required": ["service"]
@@ -25,17 +25,17 @@
     },
     {
       "name": "get_method_parameters",
-      "description": "Получает список параметров конкретного метода сервиса с их описанием, типами и значениями по умолчанию",
+      "description": "Gets a list of parameters for a specific service method with their description, types, and default values",
       "inputSchema": {
         "type": "object",
         "properties": {
           "service": {
             "type": "string",
-            "description": "Имя сервиса (команды)"
+            "description": "Service name (command)"
           },
           "method": {
             "type": "string",
-            "description": "Имя метода сервиса"
+            "description": "Service method name"
           }
         },
         "required": ["service", "method"]
@@ -43,17 +43,17 @@
     },
     {
       "name": "get_method_help",
-      "description": "Получает текстовую справку по методу в том же формате, что выводится в CLI help",
+      "description": "Gets text help for a method in the same format as displayed in CLI help",
       "inputSchema": {
         "type": "object",
         "properties": {
           "service": {
             "type": "string",
-            "description": "Имя сервиса (команды)"
+            "description": "Service name (command)"
           },
           "method": {
             "type": "string",
-            "description": "Имя метода сервиса"
+            "description": "Service method name"
           }
         },
         "required": ["service", "method"]
@@ -61,21 +61,21 @@
     },
     {
       "name": "execute_method",
-      "description": "Выполняет метод сервиса с указанными параметрами и возвращает результат",
+      "description": "Executes a service method with specified parameters and returns the result",
       "inputSchema": {
         "type": "object",
         "properties": {
           "service": {
             "type": "string",
-            "description": "Имя сервиса (команды)"
+            "description": "Service name (command)"
           },
           "method": {
             "type": "string",
-            "description": "Имя метода сервиса"
+            "description": "Service method name"
           },
           "parameters": {
             "type": "object",
-            "description": "Объект с именованными параметрами метода",
+            "description": "Object with named method parameters",
             "additionalProperties": true
           }
         },
@@ -84,21 +84,21 @@
     },
     {
       "name": "build_cli_command",
-      "description": "Формирует готовую строку команды для выполнения в CLI без фактического выполнения",
+      "description": "Builds a ready-to-use command string for CLI execution without actually executing it",
       "inputSchema": {
         "type": "object",
         "properties": {
           "service": {
             "type": "string",
-            "description": "Имя сервиса (команды)"
+            "description": "Service name (command)"
           },
           "method": {
             "type": "string",
-            "description": "Имя метода сервиса"
+            "description": "Service method name"
           },
           "parameters": {
             "type": "object",
-            "description": "Объект с именованными параметрами метода",
+            "description": "Object with named method parameters",
             "additionalProperties": true
           }
         },
