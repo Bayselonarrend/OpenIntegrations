@@ -1,8 +1,0 @@
-    Parameters = GetTwitterAuthData();
-    Text       = "TestTweet" + String(New UUID);
-
-    AnswersArray = New Array;
-    AnswersArray.Add("Option 1");
-    AnswersArray.Add("Option 2");
-
-    Result = OPI_Twitter.CreatePollTweet(Text, AnswersArray, 60, Parameters);

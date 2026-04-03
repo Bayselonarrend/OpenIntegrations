@@ -129,7 +129,6 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Telegram"       , 5);
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
-    Sections.Insert("Twitter"        , 4);
     Sections.Insert("FTP"            , 5);
     Sections.Insert("SSH"            , 5);
     Sections.Insert("SFTP"           , 5);
@@ -175,7 +174,6 @@ Function GetTestTable(Val TestModule = "") Export
     VKontakte = "VK";
     YDisk     = "YandexDisk";
     Calendar  = "GoogleCalendar";
-    Twitter   = "Twitter";
     Viber     = "Viber";
     Drive     = "GoogleDrive";
     VSpace    = "GoogleWorkspace";
@@ -283,8 +281,6 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable, "GT_Authorization"                    , "Authorization"                   , Tables);
     NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
     NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
-    NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                    , Twitter);
-    NewTest(TestTable, "TwitterAPI_Tweets"                   , "Tweets creation"                 , Twitter);
     NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
     NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"                , Viber);
     NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
