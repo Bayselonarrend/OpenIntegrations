@@ -71,7 +71,6 @@
   <commonModules>CommonModule.OPIt_SSH</commonModules>
   <commonModules>CommonModule.OPIt_TCP</commonModules>
   <commonModules>CommonModule.OPIt_Telegram</commonModules>
-  <commonModules>CommonModule.OPIt_Twitter</commonModules>
   <commonModules>CommonModule.OPIt_Viber</commonModules>
   <commonModules>CommonModule.OPIt_VK</commonModules>
   <commonModules>CommonModule.OPIt_VKTeams</commonModules>
@@ -113,7 +112,6 @@
   <commonModules>CommonModule.OPItc_SSH</commonModules>
   <commonModules>CommonModule.OPItc_TCP</commonModules>
   <commonModules>CommonModule.OPItc_Telegram</commonModules>
-  <commonModules>CommonModule.OPItc_Twitter</commonModules>
   <commonModules>CommonModule.OPItc_Viber</commonModules>
   <commonModules>CommonModule.OPItc_VK</commonModules>
   <commonModules>CommonModule.OPItc_VKTeams</commonModules>

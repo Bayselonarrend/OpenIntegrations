@@ -35,7 +35,6 @@
   "ssh": "OPI_SSH",
   "tcp": "OPI_TCP",
   "telegram": "OPI_Telegram",
-  "twitter": "OPI_Twitter",
   "viber": "OPI_Viber",
   "vk": "OPI_VK",
   "vkteams": "OPI_VKTeams",

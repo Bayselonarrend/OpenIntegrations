@@ -93,7 +93,6 @@
   <commonModules>CommonModule.OPI_S3</commonModules>
   <commonModules>CommonModule.OPI_TCP</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
-  <commonModules>CommonModule.OPI_Twitter</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_VKTeams</commonModules>
