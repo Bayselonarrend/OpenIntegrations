@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "a2b39438-a787-4d4f-b1f8-4222da111196",
- "data": "/tmp/tj3brt02.ule.json",
+ "id": "907a7397-1cdc-4bb5-a5f6-2c5aa26be2a5",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {

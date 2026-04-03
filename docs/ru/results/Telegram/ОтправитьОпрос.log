@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 20432,
+  "message_id": 20605,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,24 +15,28 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1774422846,
+  "date": 1775242538,
   "poll": {
-   "id": "5341349624273706109",
+   "id": "5368696196443413200",
    "question": "Какой ваш любимый цвет?",
    "options": [
     {
+     "persistent_id": "0",
      "text": "Красный",
      "voter_count": 0
     },
     {
+     "persistent_id": "1",
      "text": "Желтый",
      "voter_count": 0
     },
     {
+     "persistent_id": "2",
      "text": "Зеленый",
      "voter_count": 0
     },
     {
+     "persistent_id": "3",
      "text": "Синий",
      "voter_count": 0
     }
@@ -40,8 +44,9 @@
    "total_voter_count": 0,
    "is_closed": false,
    "is_anonymous": false,
-   "type": "regular",
-   "allows_multiple_answers": false
+   "allows_multiple_answers": false,
+   "allows_revoting": true,
+   "type": "regular"
   }
  }
 }
