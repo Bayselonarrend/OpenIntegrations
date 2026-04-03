@@ -30,7 +30,6 @@
 |![SSH](../SSH.png)| `SSH`| ssh, shell |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
-|![Twitter (X)](../Twitter.png)| `Twitter (X)`| twitter, x |
 |![Viber](../Viber.png)| `Viber`| viber |
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VK Teams](../VKTeams.png)| `VK Teams`| vkteams, vk teams |

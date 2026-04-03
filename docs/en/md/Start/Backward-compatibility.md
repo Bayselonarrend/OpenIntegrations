@@ -37,3 +37,7 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 **All distribution types**: Fixed some function names containing typos. Be sure to check usage locations or perform syntax validation after updating!
 
 **VK**: Removed `Like` function and all functions from the `Discussion management` section due to their removal from the VK API
+
+### 1.34.0 -> 2.0.0
+
+**Twitter**: The Twitter library has been removed and its support is discontinued, as continued maintenance is not feasible. If you are already using this library in your project, you need to preserve it separately before updating
