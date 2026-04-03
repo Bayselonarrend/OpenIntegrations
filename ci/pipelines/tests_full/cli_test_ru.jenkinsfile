@@ -249,24 +249,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-Twitter') {
-            when {
-                expression { return shouldRunStage('Twitter') }
-            }
-			steps {
-				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Twitter.os', 'Твиттер_ДанныеАккаунта'],
-						['./src/ru/OInt/tests/Modules/OPItc_Twitter.os', 'Твиттер_Твиты'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
-				}
-			}
-		}
 		stage('Testing-FTP') {
             when {
                 expression { return shouldRunStage('FTP') }

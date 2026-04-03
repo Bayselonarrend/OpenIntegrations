@@ -416,7 +416,6 @@ li > a.menu__link {
 .SSH a::before,
 .TCP a::before,
 .Telegram a::before,
-.Twitter a::before,
 .Viber a::before,
 .VK a::before,
 .VKTeams a::before,
@@ -545,10 +544,6 @@ li > a.menu__link {
 
 .Telegram > div > a::before{
   content: url(../../static/img/APIs/small/Telegram.png);
-}
-
-.Twitter > div > a::before{
-  content: url(../../static/img/APIs/small/Twitter.png);
 }
 
 .Viber > div > a::before{
