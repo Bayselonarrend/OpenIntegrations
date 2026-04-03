@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:SessionParameter xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b0894aa8-b61d-4bd1-a606-5099b00bce0a">
+  <name>OPI_AdvancedCallSettings</name>
+  <synonym>
+    <key>en</key>
+    <value>Advanced call settings (OPI)</value>
+  </synonym>
+  <type>
+    <types>FixedStructure</types>
+  </type>
+</mdclass:SessionParameter>
