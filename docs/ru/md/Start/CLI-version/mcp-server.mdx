@@ -1,0 +1,205 @@
+---
+sidebar_position: 2
+description: Встроенный MCP-сервер OInt CLI — запуск, конфигурация vars, подключение в Cursor, Kiro и Cline
+keywords: [OInt, CLI, MCP, Model Context Protocol, Cursor, Kiro, Cline, OneScript, OpenIntegrations]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# MCP-сервер CLI
+
+**MCP-сервер** в OInt CLI — это встроенная реализация [Model Context Protocol](https://modelcontextprotocol.io/) поверх стандартных потоков ввода-вывода (stdio). Клиент (ИИ-агент или IDE) запускает процесс `oint mcp start` и обменивается с ним JSON-RPC сообщениями по протоколу MCP: объявление возможностей, список инструментов и их вызов.
+
+В ответ на `initialize` сервер сообщает имя `oint-mcp-server` и возможности в части **tools**. Список инструментов читается из каталога CLI (`tools.json` рядом с реализацией модуля MCP). Фактически агент получает обёртку над тем же набором библиотек и методов, что и обычная строка вызова `oint <команда> <метод> ...`, но без ручного составления команд в каждом шаге.
+
+## Доступные инструменты
+
+| Инструмент | Назначение |
+|------------|------------|
+| `get_services` | Список доступных сервисов (команд CLI), соответствующих библиотекам OInt |
+| `get_service_methods` | Список методов выбранного сервиса |
+| `get_method_parameters` | Описание параметров метода (типы, значения по умолчанию, подсказки) |
+| `execute_method` | Выполнение метода с набором именованных параметров; результат — строка (как в CLI) |
+| `get_variables` | Список имён подстановок вида `@@ИмяПеременной`, заданных в файле конфигурации |
+
+При вызове `execute_method` значения параметров — строки. Если значение начинается с `@@`, оно трактуется как ключ переменной из блока `vars` конфигурации (см. ниже), что удобно для токенов и секретов.
+
+## Запуск сервера
+
+Сервер работает в бесконечном цикле: читает строки из stdin, парсит JSON, пишет ответ в stdout. Кодировка потоков — **UTF-8**. Убедитесь, что `oint` доступен в `PATH` (или укажите полный путь к исполняемому файлу в настройках агента).
+
+Команда запуска (инструмент `mcp`, метод `start`):
+
+- `--config` (`-c`) — путь к JSON-файлу конфигурации или строка `default` для пустой конфигурации (без пользовательских `vars`).
+- `--log` (`-l`) — необязательный путь к файлу журнала.
+
+<Tabs>
+  <TabItem value="bash" label="Bash" default>
+```bash
+oint mcp start --config default
+```
+```bash
+oint mcp start -c /home/user/oint-mcp.json -l /tmp/oint-mcp.log
+```
+  </TabItem>
+  <TabItem value="bat" label="CMD/Bat">
+```batch
+oint mcp start --config default
+```
+```batch
+oint mcp start -c C:\Users\user\oint-mcp.json -l C:\Temp\oint-mcp.log
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+oint mcp start --config default
+```
+```powershell
+oint mcp start -c "$env:USERPROFILE\oint-mcp.json" -l "$env:TEMP\oint-mcp.log"
+```
+  </TabItem>
+</Tabs>
+
+Шаблон конфигурации можно получить отдельной командой CLI — метод `config` модуля `mcp`:
+
+<Tabs>
+  <TabItem value="bash" label="Bash" default>
+```bash
+oint mcp config --empty false
+```
+  </TabItem>
+  <TabItem value="bat" label="CMD/Bat">
+```batch
+oint mcp config --empty false
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+oint mcp config --empty false
+```
+  </TabItem>
+</Tabs>
+
+При `--empty true` (значение по умолчанию) возвращается минимальный каркас; при `--empty false` в `vars` добавляются поясняющие примеры полей.
+
+## Файл конфигурации
+
+Файл — JSON с корневым объектом. Пользовательские значения для подстановки в `execute_method` задаются в объекте **`vars`**: произвольные строковые ключи и значения. В аргументах инструмента передаётся строка `@@Ключ`, которая перед выполнением заменяется на значение из `vars`.
+
+Пример файла `oint-mcp.json`:
+
+```json title="oint-mcp.json"
+{
+  "vars": {
+    "TelegramToken": "123456:ABC-DEF...",
+    "BitrixWebhook": "https://example.bitrix24.ru/rest/1/xxxxx/"
+  }
+}
+```
+
+Запуск с этим файлом:
+
+<Tabs>
+  <TabItem value="bash" label="Bash" default>
+```bash
+oint mcp start -c /home/user/oint-mcp.json
+```
+  </TabItem>
+  <TabItem value="bat" label="CMD/Bat">
+```batch
+oint mcp start -c C:\Users\user\oint-mcp.json
+```
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+```powershell
+oint mcp start -c "$env:USERPROFILE\oint-mcp.json"
+```
+  </TabItem>
+</Tabs>
+
+:::caution
+Не публикуйте файлы с реальными токенами в репозиториях. Для агентов предпочтительнее путь к конфигурации вне проекта или переменные окружения, если ваш клиент MCP их поддерживает при запуске процесса.
+:::
+
+## Подключение в ИИ-агентах
+
+Ниже — типовой фрагмент **локального** MCP-сервера: команда `oint` и аргументы `mcp`, `start`, параметры конфигурации. При необходимости замените `oint` на полный путь к исполняемому файлу (особенно на Windows, если `PATH` не настроен).
+
+<Tabs>
+  <TabItem value="cursor" label="Cursor" default>
+В Cursor MCP задаётся в пользовательском или проектном конфиге (например, через настройки **MCP** в интерфейсе или файл в каталоге `.cursor`). Структура в общем виде совпадает с другими клиентами:
+
+```json
+{
+  "mcpServers": {
+    "oint-mcp": {
+      "command": "oint",
+      "args": ["mcp", "start", "-c", "default"]
+    }
+  }
+}
+```
+
+Для файла конфигурации с секретами укажите абсолютный путь вместо `default`:
+
+```json
+{
+  "mcpServers": {
+    "oint-mcp": {
+      "command": "oint",
+      "args": ["mcp", "start", "-c", "C:\\Users\\user\\oint-mcp.json", "-l", "C:\\Temp\\oint-mcp.log"]
+    }
+  }
+}
+```
+
+Актуальный формат и расположение файла см. в [документации Cursor по MCP](https://docs.cursor.com/context/mcp).
+  </TabItem>
+  <TabItem value="kiro" label="Kiro">
+В Kiro используются файлы:
+
+- уровень проекта: `.kiro/settings/mcp.json`
+- уровень пользователя: `~/.kiro/settings/mcp.json`
+
+При наличии обоих они объединяются, приоритет у настроек рабочей области. Пример локального сервера:
+
+```json
+{
+  "mcpServers": {
+    "oint-mcp": {
+      "command": "oint",
+      "args": ["mcp", "start", "-c", "default"]
+    }
+  }
+}
+```
+
+Создать или отредактировать конфиг можно через палитру команд (**Kiro: Open workspace MCP config** / **Kiro: Open user MCP config**). Подробности: [Configuration](https://kiro.dev/docs/mcp/configuration/) в документации Kiro.
+  </TabItem>
+  <TabItem value="cline" label="Cline">
+В Cline список серверов задаётся в JSON с ключом `mcpServers`. Расположение файлов может обновляться между версиями расширения; ориентируйтесь на актуальную инструкцию в [документации Cline](https://docs.cline.bot/mcp/configuring-mcp-servers). Пример для stdio-сервера:
+
+```json
+{
+  "mcpServers": {
+    "oint-mcp": {
+      "command": "oint",
+      "args": ["mcp", "start", "-c", "default"],
+      "disabled": false
+    }
+  }
+}
+```
+
+Управление серверами (включение, перезапуск) доступно из панели MCP в интерфейсе Cline.
+  </TabItem>
+</Tabs>
+
+## Диагностика
+
+Если клиент не видит инструменты или падает при старте, проверьте в обычном терминале:
+
+1. Выполняется ли `oint mcp start -c default` без ошибок (процесс должен ожидать ввод — это нормально).
+2. Корректность JSON в файле конфигурации при использовании `-c` с путём.
+3. Журнал при указании `-l`: в нём фиксируются этапы обработки запросов и текст ошибок.
