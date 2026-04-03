@@ -215,10 +215,8 @@ Function GetTestTable(Val TestModule = "") Export
     TestTable.Columns.Add("Synonym");
     TestTable.Columns.Add("Section");
 
-    NewTest(TestTable
-        , "CheckIBToLastBuildCompliance"
-        , "Check IB to last build compliance"
-        , "Core");
+    NewTest(TestTable, "CheckIBToLastBuildCompliance", "Check IB to last build compliance", "Core");
+    NewTest(TestTable, "ValidateAdvancedCall"        , "Validate advanced call"           , "Core");
 
     NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
     NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
@@ -1220,6 +1218,17 @@ Function Check_Core_CheckIBToLastBuildCompliance(Val Result, Val Option, Val Las
     Message(StrTemplate("Last project build: %1", LastSum));
 
     ExpectsThat(Result).Равно(LastSum);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Core_CallWithSettings(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure");
+    ExpectsThat(Result["status"]).Заполнено();
+    ExpectsThat(Result["body"]).Заполнено();
+    ExpectsThat(Result["headers"]).Заполнено();
 
     Return Undefined;
 
@@ -7933,8 +7942,6 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     If Not ValueIsFilled(Option) Then
 
-        ExpectsThat(Result["result"]).Равно(True);
-
         Blob                              = Result["data"][0]["data"]["blob"];
         Result["data"][0]["data"]["blob"] = "Base64";
 
@@ -7947,9 +7954,12 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     ElsIf Option = "Extension" Then
 
-        ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
 
+    EndIf;
+
+    If Not Option = "Openning" Then
+        ExpectsThat(Result["result"]).Равно(True);
     EndIf;
 
     Return Result;

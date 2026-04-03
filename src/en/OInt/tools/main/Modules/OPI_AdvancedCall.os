@@ -67,8 +67,10 @@ Function CallWithSettings(Val ModuleName
         Parameters = New Array;
     EndIf;
 
+    StringParameters = New Array;
+
     For N = 0 To Parameters.UBound() Do
-        Parameters.Add(StrTemplate("Parameters[%1]", N));
+        StringParameters.Add(StrTemplate("Parameters[%1]", N));
     EndDo;
 
     OPI_TypeConversion.GetLine(ModuleName);
@@ -77,7 +79,7 @@ Function CallWithSettings(Val ModuleName
     CallString = StrTemplate("Result = %1.%2(%3);"
         , ModuleName
         , FunctionName
-        , StrConcat(Parameters, ", "));
+        , StrConcat(StringParameters, ", "));
 
     Result = Undefined;
 
@@ -156,7 +158,17 @@ Procedure SetSettings(Val Settings)
 
         OPI_TypeConversion.GetKeyValueCollection(Settings);
 
-        CurrentSettings = Settings;
+        If Not TypeOf(Settings) = Type("Structure") Then
+
+            CurrentSettings = New Structure;
+
+            For Each KeyValue In Settings Do
+                CurrentSettings.Insert(KeyValue.Key, KeyValue.Value);
+            EndDo;
+
+        Else
+             CurrentSettings = OPI_Tools.CopyCollection(Settings);
+        EndIf;
 
 
     EndIf;

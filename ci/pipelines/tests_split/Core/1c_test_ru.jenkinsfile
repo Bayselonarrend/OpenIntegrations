@@ -91,21 +91,6 @@ pipeline {
             }
         }
 
-		stage('Testing-BuildCheck') {
-            when {
-                expression { return shouldRunStage('BuildCheck') }
-            }
-			steps {
-				script {
-					def tests = [
-						['BuildCheck', './service/yaxunit_conf/ru/BuildCheck.json'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
-				}
-			}
-		}
 		stage('Testing-Core') {
             when {
                 expression { return shouldRunStage('Core') }
@@ -116,9 +101,7 @@ pipeline {
 						['Core', './service/yaxunit_conf/ru/Core.json'],
 					]
 					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
-						}
 					}
 				}
 			}

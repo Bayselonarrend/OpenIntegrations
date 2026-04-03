@@ -67,8 +67,10 @@ Function CallWithSettings(Val ModuleName
         Parameters = New Array;
     EndIf;
 
+    StringParameters = New Array;
+
     For N = 0 To Parameters.UBound() Do
-        Parameters.Add(StrTemplate("Parameters[%1]", N));
+        StringParameters.Add(StrTemplate("Parameters[%1]", N));
     EndDo;
 
     OPI_TypeConversion.GetLine(ModuleName);
@@ -77,7 +79,7 @@ Function CallWithSettings(Val ModuleName
     CallString = StrTemplate("Result = %1.%2(%3);"
         , ModuleName
         , FunctionName
-        , StrConcat(Parameters, ", "));
+        , StrConcat(StringParameters, ", "));
 
     Result = Undefined;
 
@@ -139,7 +141,7 @@ Function GetCurrentSettings() Export
 
     Try
         //@skip-check bsl-legacy-check-string-literal
-        Return SessionParameters["OPI_Settings"]; // !OPI
+        Return SessionParameters["OPI_AdvancedCallSettings"]; // !OPI
         // !OInt Return CurrentSettings;
     Except
         Return Undefined;
@@ -157,9 +159,19 @@ Procedure SetSettings(Val Settings)
 
         OPI_TypeConversion.GetKeyValueCollection(Settings);
 
-        CurrentSettings = Settings;
+        If Not TypeOf(Settings) = Type("Structure") Then
 
-        SessionParameters.OPI_Settings = CurrentSettings; // !OPI
+            CurrentSettings = New Structure;
+
+            For Each KeyValue In Settings Do
+                CurrentSettings.Insert(KeyValue.Key, KeyValue.Value);
+            EndDo;
+
+        Else
+             CurrentSettings = OPI_Tools.CopyCollection(Settings);
+        EndIf;
+
+        SessionParameters.OPI_AdvancedCallSettings = New FixedStructure(CurrentSettings); // !OPI
 
     EndIf;
 
@@ -170,7 +182,7 @@ Procedure DeleteSettings()
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
 
-    SessionParameters.OPI_Settings = New Structure; // !OPI
+    SessionParameters.OPI_AdvancedCallSettings = New FixedStructure(); // !OPI
 
 EndProcedure
 

@@ -142,14 +142,15 @@ pipeline {
 				}
 		}
 
-		stage('Testing-BuildCheck') {
+		stage('Testing-Core') {
             when {
-                expression { return shouldRunStage('BuildCheck') }
+                expression { return shouldRunStage('Core') }
             }
 			steps {
 				script {
 					def tests = [
-
+						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
