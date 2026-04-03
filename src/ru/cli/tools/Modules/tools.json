@@ -63,29 +63,6 @@
         },
         "required": ["service", "method", "parameters"]
       }
-    },
-    {
-      "name": "build_cli_command",
-      "description": "Builds a ready-to-use command string for CLI execution without actually executing it",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "service": {
-            "type": "string",
-            "description": "Service name (command)"
-          },
-          "method": {
-            "type": "string",
-            "description": "Service method name"
-          },
-          "parameters": {
-            "type": "object",
-            "description": "Object with named method parameters",
-            "additionalProperties": true
-          }
-        },
-        "required": ["service", "method", "parameters"]
-      }
     }
   ]
 }
