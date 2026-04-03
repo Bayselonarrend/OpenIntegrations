@@ -61,5 +61,103 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-{}
+[
+ {
+  "messageID": "3EB0A87607537B5B327D55",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0EA01D915BE40B428B7",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB052B82D32BD87C09FF8",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB09E2918DCBB7114FA0E",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB052B82D32BD87C09FF8",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0760480150ABDDA84D7",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB04C3E1E8C010362BA5D",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB0760480150ABDDA84D7",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB07567B30010A4051F47"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB01B5C1546A509DE4743"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0C171880807665D3B7D",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB01B5C1546A509DE4743",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
 ```
