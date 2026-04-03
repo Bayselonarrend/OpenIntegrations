@@ -30,6 +30,7 @@
 	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
 	Обработчик = Новый LocalUpdater(ДанныеПроекта);
 	Обработчик = Новый DraftMethods(ДанныеПроекта);
+	Обработчик = Новый McpTesting(ДанныеПроекта);
 
 	CommonTools.СообщитьПроцесс("Processing complete!");
 
