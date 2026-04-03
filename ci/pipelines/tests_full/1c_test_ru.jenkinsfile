@@ -101,9 +101,7 @@ pipeline {
 						['Core', './service/yaxunit_conf/ru/Core.json'],
 					]
 					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
-						}
 					}
 				}
 			}

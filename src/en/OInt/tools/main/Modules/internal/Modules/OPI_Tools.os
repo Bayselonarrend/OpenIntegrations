@@ -496,8 +496,9 @@ Function CollectionFieldExists(Val Collection, Val Field, FieldValue = Undefined
 
     CollectionType = TypeOf(Collection);
 
-    IsStructure      = CollectionType = Type("Structure");
-    IsMap            = CollectionType = Type("Map");
+    IsStructure = CollectionType = Type("Structure") Or CollectionType = Type("FixedStructure");
+    IsMap       = CollectionType = Type("Map") Or CollectionType = Type("FixedMap");
+
     ThisIsCollection = IsStructure Or IsMap;
 
     If StrFind(Field, ".") And ThisIsCollection Then

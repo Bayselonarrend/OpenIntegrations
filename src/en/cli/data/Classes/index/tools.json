@@ -3,7 +3,7 @@
  "library": "tools",
  "self_depend": false,
  "dependencies": null,
- "cli_tool": false,
+ "cli_tool": true,
  "regions": [
   {
    "name": "Internal",

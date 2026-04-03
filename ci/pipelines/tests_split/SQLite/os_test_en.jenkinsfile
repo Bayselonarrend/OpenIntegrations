@@ -69,14 +69,15 @@ pipeline {
 				}
 		}
 
-		stage('Testing-BuildCheck') {
+		stage('Testing-Core') {
             when {
-                expression { return shouldRunStage('BuildCheck') }
+                expression { return shouldRunStage('Core') }
             }
 			steps {
 				script {
 					def tests = [
-
+						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])

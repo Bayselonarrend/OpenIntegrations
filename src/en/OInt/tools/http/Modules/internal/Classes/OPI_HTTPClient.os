@@ -1694,7 +1694,9 @@ Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = Fal
 
         EndTry;
 
-        Return JSON;
+        ReturnedResponse = ProcessAdvancedResponse(JSON);
+
+        Return ReturnedResponse;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -1730,7 +1732,9 @@ Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = F
 
     EndTry;
 
-    Return BodyBinary;
+    ReturnedResponse = ProcessAdvancedResponse(BodyBinary);
+
+    Return ReturnedResponse;
 
 EndFunction
 
@@ -1762,7 +1766,9 @@ Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False
 
     EndTry;
 
-    Return BodyAsString;
+    ReturnedResponse = ProcessAdvancedResponse(BodyAsString);
+
+    Return ReturnedResponse;
 
 EndFunction
 
@@ -1794,7 +1800,9 @@ Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False
 
     EndTry;
 
-    Return BodyFileName;
+    ReturnedResponse = ProcessAdvancedResponse(BodyFileName);
+
+    Return ReturnedResponse;
 
 EndFunction
 
@@ -1989,42 +1997,50 @@ Function SetAdvancedCallSettings()
         Return ЭтотОбъект;
     EndIf;
 
-    ProxySettings            = OPI_Tools.GetOr(CallSettings, "proxy" , Undefined);
-    TimeoutSettings          = OPI_Tools.GetOr(CallSettings, "timeout" , Undefined);
-    AdvancedResponseSettings = OPI_Tools.GetOr(CallSettings, "adv_response", Undefined);
+    Try
 
-    If ProxySettings <> Undefined Then
+        ProxySettings            = OPI_Tools.GetOr(CallSettings, "proxy" , Undefined);
+        TimeoutSettings          = OPI_Tools.GetOr(CallSettings, "timeout" , Undefined);
+        AdvancedResponseSettings = OPI_Tools.GetOr(CallSettings, "adv_response", Undefined);
 
-        If TypeOf(ProxySettings) = Type("InternetProxy") Then
-            RequestProxy         = ProxySettings;
-        Else
+        If ProxySettings <> Undefined Then
 
-            ErrorText = "Advanced call: incorrect proxy settings passed (neither InternetProxy nor a collection)";
-            OPI_TypeConversion.GetKeyValueCollection(ProxySettings, ErrorText);
+            If TypeOf(ProxySettings) = Type("InternetProxy") Then
+                RequestProxy         = ProxySettings;
+            Else
 
-            Protocol_         = OPI_Tools.GetOr(ProxySettings, "Protocol" , Undefined);
-            Host_             = OPI_Tools.GetOr(ProxySettings, "Host" , Undefined);
-            Port_             = OPI_Tools.GetOr(ProxySettings, "Port" , Undefined);
-            User_             = OPI_Tools.GetOr(ProxySettings, "User" , Undefined);
-            Password_         = OPI_Tools.GetOr(ProxySettings, "Password" , Undefined);
-            OSAuthentication_ = OPI_Tools.GetOr(ProxySettings, "UseOSAuthentication", Undefined);
+                ErrorText = "Advanced call: incorrect proxy settings passed (neither InternetProxy nor a collection)";
+                OPI_TypeConversion.GetKeyValueCollection(ProxySettings, ErrorText);
 
-            RequestProxy = New InternetProxy();
-            RequestProxy.Set(Protocol_, Host_, Port_, User_, Password_, OSAuthentication_);
+                Protocol_         = OPI_Tools.GetOr(ProxySettings, "Protocol" , Undefined);
+                Host_             = OPI_Tools.GetOr(ProxySettings, "Host" , Undefined);
+                Port_             = OPI_Tools.GetOr(ProxySettings, "Port" , Undefined);
+                User_             = OPI_Tools.GetOr(ProxySettings, "User" , Undefined);
+                Password_         = OPI_Tools.GetOr(ProxySettings, "Password" , Undefined);
+                OSAuthentication_ = OPI_Tools.GetOr(ProxySettings, "UseOSAuthentication", Undefined);
+
+                RequestProxy = New InternetProxy();
+                RequestProxy.Set(Protocol_, Host_, Port_, User_, Password_, OSAuthentication_);
+
+            EndIf;
 
         EndIf;
 
-    EndIf;
+        If TimeoutSettings <> Undefined Then
+            OPI_TypeConversion.GetNumber(TimeoutSettings);
+            RequestTimeout = TimeoutSettings;
+        EndIf;
 
-    If TimeoutSettings <> Undefined Then
-        OPI_TypeConversion.GetNumber(TimeoutSettings);
-        RequestTimeout = TimeoutSettings;
-    EndIf;
+        If AdvancedResponseSettings <> Undefined Then
+            OPI_TypeConversion.GetBoolean(AdvancedResponseSettings);
+            AdvancedResponse = AdvancedResponseSettings;
+        EndIf;
 
-    If AdvancedResponseSettings <> Undefined Then
-        OPI_TypeConversion.GetBoolean(AdvancedResponseSettings);
-        AdvancedResponse = AdvancedResponseSettings;
-    EndIf;
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
 
 EndFunction
 
@@ -3370,6 +3386,21 @@ EndFunction
 
 Function GetSetting(Val SettingKey)
     Return Settings[SettingKey];
+EndFunction
+
+Function ProcessAdvancedResponse(Val Body)
+
+    If Not AdvancedResponse Or TypeOf(Body) = TypeOf(ЭтотОбъект) Then
+        Return Body;
+    EndIf;
+
+    ResponseStructure = New Structure;
+    ResponseStructure.Insert("status" , ResponseStatusCode);
+    ResponseStructure.Insert("body"   , Body);
+    ResponseStructure.Insert("headers", ResponseHeaders);
+
+    Return ResponseStructure;
+
 EndFunction
 
 Procedure SetSetting(Val SettingKey, Val Value)

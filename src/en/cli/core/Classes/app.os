@@ -14,6 +14,7 @@ Var CurrentIndex;
 
 Var OintTemplate;     
 Var PackagesDirectory;
+Var ApplicationDirectory;
 Var AccessTemplate;
 Var Responsible;       
 
@@ -33,7 +34,8 @@ Procedure MainHandler()
 	
 	Parser = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
 	OPIObject = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
-	OPIObject.SetPackagesDirectory(PackagesDirectory);
+
+	OPIObject.SetDirectories(PackagesDirectory, ApplicationDirectory);
 
 	AttachScript(StrTemplate(AccessTemplate, "help/Classes/Help.os"), "Help");
 	Help = New Help(AccessTemplate, OPIObject);
@@ -263,7 +265,8 @@ Procedure DefinePathsTemplates()
 	PathParts.Delete(PathParts.UBound());
 	PathParts.Delete(PathParts.UBound());
 
-	AccessTemplate = StrConcat(PathParts, "/") + "/%1";
+	ApplicationDirectory = StrConcat(PathParts, "/");
+	AccessTemplate = ApplicationDirectory + "/%1";
 
 	PathParts.Delete(PathParts.UBound());
 

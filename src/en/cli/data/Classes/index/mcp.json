@@ -1,0 +1,55 @@
+{
+ "module": "MCP",
+ "library": "mcp",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": true,
+ "regions": [
+  {
+   "name": "Mcp methods",
+   "methods": [
+    "config",
+    "start"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "start",
+   "id": "START",
+   "description": "Starts the MCP server",
+   "params": [
+    {
+     "name": "--config",
+     "types": "String",
+     "description": "Path to the configuration file. Pass default to use the standard configuration",
+     "default": "default",
+     "short": "-c"
+    },
+    {
+     "name": "--log",
+     "types": "String",
+     "description": "Log file path, if needed",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Mcp methods"
+  },
+  {
+   "name": "config",
+   "id": "CONFIG",
+   "description": "Returns a configuration template with or without examples",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > returns an empty JSON configuration, False > with field descriptions",
+     "default": "true",
+     "short": "-e"
+    }
+   ],
+   "region": "Mcp methods"
+  }
+ ]
+}

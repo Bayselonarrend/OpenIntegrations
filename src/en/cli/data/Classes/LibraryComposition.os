@@ -3,6 +3,7 @@ Var Version;
 Var IndexCache;
 Var CurrentDirectory;
 Var PackagesDirectory;
+Var ApplicationDirectory;
 
 
 Procedure OnObjectCreate()
@@ -116,12 +117,23 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     For Each RequiredParameter In MethodParameters Do
         
         ParameterName = RequiredParameter["name"];
-
         ParameterNameTrim = RequiredParameter["short"];
-        ParameterValue = PassedParameters.Get(ParameterName);
-        ParameterValue = ?(ParameterValue = Undefined
-            , PassedParameters.Get(ParameterNameTrim)
-            , ParameterValue);
+
+        SearchOptionsArray = New Array;
+        SearchOptionsArray.Add(ParameterName);
+        SearchOptionsArray.Add(ParameterNameTrim);
+        SearchOptionsArray.Add(StrReplace(ParameterName, "--", ""));
+        SearchOptionsArray.Add(StrReplace(ParameterNameTrim, "-", ""));
+
+        For Each SearchOption In SearchOptionsArray Do
+
+            ParameterValue = PassedParameters.Get(SearchOption);
+
+            If ValueIsFilled(ParameterValue) Then
+                Break;
+            EndIf;
+            
+        EndDo;
         
         If ValueIsFilled(ParameterValue) Then
             
@@ -162,8 +174,9 @@ Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "
     
 EndProcedure
 
-Procedure SetPackagesDirectory(Val Path) Export
-    PackagesDirectory = Path;
+Procedure SetDirectories(Val PackagesPath, ApplicationPath) Export
+    PackagesDirectory = PackagesPath;
+    ApplicationDirectory = ApplicationPath;
 EndProcedure
 
 Procedure DefinePackagesDirectory()
@@ -174,6 +187,9 @@ Procedure DefinePackagesDirectory()
     PathParts = StrSplit(CurrentDirectory, "/");
     PathParts.Delete(PathParts.UBound());
     PathParts.Delete(PathParts.UBound());
+
+    ApplicationDirectory = StrConcat(PathParts, "/");
+
     PathParts.Delete(PathParts.UBound());
     
     PackagesDirectory = StrConcat(PathParts, "/");
@@ -194,9 +210,17 @@ EndFunction
 
 Function FormModuleInitializationString(Val CommandData, Val Module)
     
-    LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/api/%2/Modules/%%1.os"", Context);"
-        , PackagesDirectory
-        , CommandData["library"]);
+    If CommandData["cli_tool"] Then
+
+        LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/tools/Modules/%%1.os"", Context);"
+            , ApplicationDirectory);
+
+    Else
+        LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/api/%2/Modules/%%1.os"", Context);"
+            , PackagesDirectory
+            , CommandData["library"])
+
+    EndIf;
 
     ContextTemplate = "Context.Insert(""%1"", %2);";
     CallArray = New Array;
@@ -262,8 +286,8 @@ Procedure ДополнитьКэшСостава(Val Библиотека, Val �
     CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndProcedure
 
-Procedure УстановитьКаталогПакетов(Val Путь) Export
-    SetPackagesDirectory(Путь);
+Procedure УстановитьКаталоги(Val ПутьПакетов, ПутьПриложения) Export
+    SetDirectories(ПутьПакетов, ПутьПриложения);
 EndProcedure
 
 #EndRegion

@@ -1,0 +1,86 @@
+{
+  "tools": [
+    {
+      "name": "get_services",
+      "description": "Gets a list of all available services (commands) of the CLI utility",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_variables",
+      "description": "Gets a list of user-defined variable names that can be used to specify parameter values when calling methods instead of actual data",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_service_methods",
+      "description": "Gets a list of all methods for a specific service",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Service name (command), for example: telegram, slack, notion"
+          }
+        },
+        "required": [
+          "service"
+        ]
+      }
+    },
+    {
+      "name": "get_method_parameters",
+      "description": "Gets a list of parameters for a specific service method with their description, types, and default values",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Service name (command)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Service method name"
+          }
+        },
+        "required": [
+          "service",
+          "method"
+        ]
+      }
+    },
+    {
+      "name": "execute_method",
+      "description": "Executes a service method with specified parameters and returns the result",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "Service name (command)"
+          },
+          "method": {
+            "type": "string",
+            "description": "Service method name"
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Object with named method parameters",
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "service",
+          "method",
+          "parameters"
+        ]
+      }
+    }
+  ]
+}
