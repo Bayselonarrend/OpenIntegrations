@@ -129,7 +129,6 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Telegram"       , 5);
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
-    Sections.Insert("Twitter"        , 4);
     Sections.Insert("FTP"            , 5);
     Sections.Insert("SSH"            , 5);
     Sections.Insert("SFTP"           , 5);
@@ -175,7 +174,6 @@ Function GetTestTable(Val TestModule = "") Export
     VKontakte = "VK";
     YDisk     = "YandexDisk";
     Calendar  = "GoogleCalendar";
-    Twitter   = "Twitter";
     Viber     = "Viber";
     Drive     = "GoogleDrive";
     VSpace    = "GoogleWorkspace";
@@ -283,8 +281,6 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable, "GT_Authorization"                    , "Authorization"                   , Tables);
     NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
     NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
-    NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                    , Twitter);
-    NewTest(TestTable, "TwitterAPI_Tweets"                   , "Tweets creation"                 , Twitter);
     NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
     NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"                , Viber);
     NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
@@ -4142,223 +4138,6 @@ Function Check_Airtable_DeleteRecords(Val Result, Val Option, Comment = "")
 
     ExpectsThat(Result["records"]).ИмеетТип("Array");
     ExpectsThat(Result["records"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_GetToken(Val Result, Val Option)
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
-
-    If TypeOf(Result) = Type("BinaryData") Then
-        Result        = GetStringFromBinaryData(Result);
-    EndIf;
-
-    ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://twitter.com/i/oauth2/")).Равно(True);
-
-    WriteParameter("Twitter_URL", Result);
-
-    OPI_Tools.Pause(2);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_RefreshToken(Val Result, Val Option)
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["access_token"]).Заполнено();
-    ExpectsThat(Result["refresh_token"]).Заполнено();
-
-    Refresh = Result["refresh_token"];
-    Token   = Result["access_token"];
-
-    If ValueIsFilled(Refresh) And Not Refresh = "null" Then
-        WriteParameter("Twitter_Refresh", Refresh);
-    EndIf;
-
-    If ValueIsFilled(Token) And Not Token = "null" Then
-        WriteParameter("Twitter_Token", Token);
-    EndIf;
-
-    OPI_Tools.Pause(2);
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Twitter_CreateTextTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(2);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_CreateImageTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(10);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_CreateVideoTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(10);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_CreateGifTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(10);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_CreatePollTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(10);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_CreateCustomTweet(Val Result, Val Option, Text = "")
-
-    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-
-    Data = Result["data"];
-
-    If Data = Undefined Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    Else
-
-        ReplyText = Result["data"]["text"];
-        ReplyText = Left(ReplyText, StrLen(Text));
-
-        ExpectsThat(ReplyText).Равно(Text);
-
-    EndIf;
-
-    OPI_Tools.Pause(10);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Twitter_UploadAttachmentsArray(Val Result, Val Option)
-
-    If Not TypeOf(Result) = Type("Array") Then
-
-        Status = Result["status"];
-        ExpectsThat(Status).Равно(429);
-
-    EndIf;
 
     Return Result;
 
