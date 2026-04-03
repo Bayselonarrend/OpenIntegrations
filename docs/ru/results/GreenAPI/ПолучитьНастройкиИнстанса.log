@@ -22,5 +22,6 @@
  "incomingBlockWebhook": "no",
  "incomingCallWebhook": "no",
  "editedMessageWebhook": "yes",
- "deletedMessageWebhook": "yes"
+ "deletedMessageWebhook": "yes",
+ "autoTyping": 0
 }

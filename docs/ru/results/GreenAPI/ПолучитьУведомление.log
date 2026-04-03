@@ -2,13 +2,13 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB03C778EAE66F099BA06",
+  "idMessage": "3EB01B5C1546A509DE4743",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1774413566,
+  "timestamp": 1775245065,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -17,9 +17,15 @@
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "deletedMessage",
-   "deletedMessageData": {
-    "stanzaId": "3EB07740F551CD153C0331"
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }

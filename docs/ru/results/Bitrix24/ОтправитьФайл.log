@@ -1,8 +1,8 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload54014": {
-    "id": 54014,
+   "upload54716": {
+    "id": 54716,
     "chatId": "***",
     "date": {},
     "type": "file",
@@ -24,10 +24,10 @@
      "viewerTypeClass": "BX.Disk.Viewer.UnifiedLinkItem",
      "viewerSeparateItem": true,
      "viewerExtension": "disk.viewer.unified-link-item",
-     "objectId": "54014",
+     "objectId": "54716",
      "imChatId": "***",
      "title": "Важный документ.docx",
-     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/zLbnBpNmyETkYUWUECFW",
+     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/rjbQqYfB69wVOAygXOm4",
      "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAct..."
     },
     "mediaUrl": {
@@ -41,11 +41,11 @@
    }
   },
   "DISK_ID": [
-   "54014"
+   "54716"
   ],
   "FILE_MODELS": {
-   "upload54014": {
-    "id": 54014,
+   "upload54716": {
+    "id": 54716,
     "name": "Важный документ.docx",
     "createTime": {},
     "updateTime": {},
@@ -53,34 +53,34 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 54014,
-    "parentId": 54010,
+    "realObjectId": 54716,
+    "parentId": 54712,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "zLbnBpNmyETkYUWUECFW",
+    "uniqueCode": "rjbQqYfB69wVOAygXOm4",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 37008,
+    "fileId": 37524,
     "size": 24071,
-    "etag": "691d14d211133d76b2c5850e5fb712db",
+    "etag": "b52182b5b031b5001cf0473e1887daa2",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=54014",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=54014&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=54716",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=54716&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 84390
+  "MESSAGE_ID": 86166
  },
  "time": {
-  "start": 1774426198,
-  "finish": 1774426198.98487,
-  "duration": 0.984873056411743,
+  "start": 1775244269,
+  "finish": 1775244269.11563,
+  "duration": 0.115628957748413,
   "processing": 0,
-  "date_start": "2026-03-25T08:09:58+00:00",
-  "date_finish": "2026-03-25T08:09:58+00:00",
-  "operating_reset_at": 1774426798,
+  "date_start": "2026-04-03T22:24:29+03:00",
+  "date_finish": "2026-04-03T22:24:29+03:00",
+  "operating_reset_at": 1775244869,
   "operating": 0
  }
 }
