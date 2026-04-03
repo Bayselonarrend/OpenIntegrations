@@ -1,21 +1,72 @@
 ﻿{
- "path": "disk:/b780008e-003e-4f52-82cc-be893b2c682a.png",
+ "path": "disk:/6db1565b-db7c-49d1-9222-2395d1ac1d47.png",
  "type": "file",
- "name": "b780008e-003e-4f52-82cc-be893b2c682a.png",
- "created": "2026-03-25T07:50:54+00:00",
- "modified": "2026-03-25T07:50:54+00:00",
+ "name": "6db1565b-db7c-49d1-9222-2395d1ac1d47.png",
+ "created": "2026-04-03T22:12:03+03:00",
+ "modified": "2026-04-03T22:12:03+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
+ "preview": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
  "media_type": "image",
- "resource_id": "1573541518:3cd5e1ab344cbcfe46961b477b6e9b822c68307255511d5e6bcf49ab593ea496",
- "revision": 1774425055269932,
+ "sizes": [
+  {
+   "url": "https://downloader.disk.yandex.ru/disk/1885355eef9d4cf5ee7a6cb8aab48edbb45ffe8a3e6663b00aa42747318c2...",
+   "name": "ORIGINAL"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "DEFAULT"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XXXS"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XXS"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XS"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "S"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "M"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "L"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XL"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XXL"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "XXXL"
+  },
+  {
+   "url": "https://downloader.disk.yandex.ru/preview/2697143e7664b02e210b7ef95d2ea10ccd7460bb01cd202d5daedbea21...",
+   "name": "C"
+  }
+ ],
+ "resource_id": "1573541518:036e799df9bba4a7992febc3c568381f73fe5803c21dd9bd2887c4ff878fdbbb",
+ "revision": 1775243523072569,
  "comment_ids": {
-  "public_resource": "1573541518:3cd5e1ab344cbcfe46961b477b6e9b822c68307255511d5e6bcf49ab593ea496",
-  "private_resource": "1573541518:3cd5e1ab344cbcfe46961b477b6e9b822c68307255511d5e6bcf49ab593ea496"
+  "public_resource": "1573541518:036e799df9bba4a7992febc3c568381f73fe5803c21dd9bd2887c4ff878fdbbb",
+  "private_resource": "1573541518:036e799df9bba4a7992febc3c568381f73fe5803c21dd9bd2887c4ff878fdbbb"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/39f4ccba63762a994e4528f48efab8ad71f27e1723d64a41e21ebb9a44870..."
+ "file": "https://downloader.disk.yandex.ru/disk/1885355eef9d4cf5ee7a6cb8aab48edbb45ffe8a3e6663b00aa42747318c2..."
 }
