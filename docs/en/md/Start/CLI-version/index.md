@@ -1,5 +1,5 @@
-﻿---
-sidebar_position: 2
+---
+sidebar_position: 1
 ---
 
 # Working with CLI application
@@ -10,7 +10,7 @@ sidebar_position: 2
 
 To start working with the console application, you need to run the `oint` command from the command line/terminal. When installed from Linux packages or Windows installer (after reboot), this can be done from anywhere without additional configuration. If `oint` is installed as an OPM package, calling from anywhere is available provided that the `bin` subdirectory of the OneScript directory is in the `PATH`.
 
-![demo](./img/1.gif)
+![demo](../img/1.gif)
 
 ## Help
 
@@ -18,7 +18,7 @@ When launching the application without additional options, the initial `oint` pa
 
 >**Important:** Library names are case-sensitive and are written in lowercase. Method names are not case-sensitive.
 
-![demo](./img/2.gif)
+![demo](../img/2.gif)
 
 ## Using Methods
 Like most other programs aimed at use in bat/sh scripts, each separate action in Oint CLI is performed by calling a full command string of the following form:
@@ -37,7 +37,7 @@ Parameters in the call string can be of one of the following types:
 
 After executing the requested action, the program outputs the result and terminates. By default, output goes to the console, but there is an option to redirect it for writing to a file - both by the standard method `>` and using the application's general parameter `--out`. The difference between these two methods is the encoding of the saved file: when using `>` it will be the shell encoding, while when using `--out` it will be UTF-8 (used internally by OInt). Also, using `--out` is mandatory for methods that return binary data in the response (such as downloading files from cloud storage).
 
-![demo](./img/3.gif)
+![demo](../img/3.gif)
 
 ## Control Sequences
 
@@ -50,5 +50,7 @@ The use of standard control sequences is allowed in passed parameters: `\n`, `\r
 To avoid control sequence conversion where it shouldn't occur, you need to escape them with a second `\` character (for example, `\\n`).
 
 <hr/>
+
+The built-in **MCP server** (Model Context Protocol) that lets AI agents call OInt CLI methods over stdio is described on the [CLI MCP server](./mcp-server) page.
 
 All further information you may need for work can be found in other sections of this documentation, as well as in the built-in help of OInt CLI
