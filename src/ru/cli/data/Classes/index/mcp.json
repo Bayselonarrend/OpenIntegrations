@@ -8,21 +8,22 @@
   {
    "name": "Методы mcp",
    "methods": [
-    "Start"
+    "config",
+    "start"
    ]
   }
  ],
  "methods": [
   {
-   "name": "Start",
+   "name": "start",
    "id": "START",
    "description": "Запускает MCP сервер",
    "params": [
     {
      "name": "--config",
      "types": "Строка",
-     "description": "Путь к файлу конфигурации. Передайте \"\" для использования стандартной конфигурации",
-     "default": "Пустое значение",
+     "description": "Путь к файлу конфигурации. Передайте default для использования стандартной конфигурации",
+     "default": "default",
      "short": "-c"
     },
     {
@@ -31,6 +32,21 @@
      "description": "Путь записи лога, если необходимо",
      "default": "Пустое значение",
      "short": "-l"
+    }
+   ],
+   "region": "Методы mcp"
+  },
+  {
+   "name": "config",
+   "id": "CONFIG",
+   "description": "Возвращает шаблон конфигурации с примерами или без",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Булево",
+     "description": "Истина > возвращает пустой JSON конфигурации, Ложь > с описание полей",
+     "default": "true",
+     "short": "-e"
     }
    ],
    "region": "Методы mcp"

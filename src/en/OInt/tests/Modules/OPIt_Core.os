@@ -113,6 +113,12 @@ Procedure CheckIBToLastBuildCompliance() Export
 
 EndProcedure
 
+Procedure ValidateAdvancedCall() Export
+
+    AdvancedCall_CallWithSettings();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -120,6 +126,22 @@ EndProcedure
 #Region Private
 
 #Region AtomicTests
+
+Procedure AdvancedCall_CallWithSettings()
+
+    Parameters = New Array;
+    Parameters.Add("token");
+
+    Settings = New Structure("adv_response", True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "GetBotInformation"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "CallWithSettings");
+
+EndProcedure
 
 #EndRegion
 
@@ -131,6 +153,10 @@ EndProcedure
 
 Procedure ПроверитьСоответствиеИБПоследнейСборке() Export
     CheckIBToLastBuildCompliance();
+EndProcedure
+
+Procedure ПроверитьРасширенныйВызов() Export
+    ValidateAdvancedCall();
 EndProcedure
 
 #EndRegion

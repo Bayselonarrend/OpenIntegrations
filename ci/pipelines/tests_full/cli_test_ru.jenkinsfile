@@ -150,11 +150,10 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
 					]
 					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
-						}
 					}
 				}
 			}

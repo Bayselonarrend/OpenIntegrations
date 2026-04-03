@@ -91,14 +91,14 @@ pipeline {
             }
         }
 
-		stage('Testing-BuildCheck') {
+		stage('Testing-Core') {
             when {
-                expression { return shouldRunStage('BuildCheck') }
+                expression { return shouldRunStage('Core') }
             }
 			steps {
 				script {
 					def tests = [
-						['BuildCheck', './service/yaxunit_conf/ru/BuildCheck.json'],
+						['Core', './service/yaxunit_conf/ru/Core.json'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])

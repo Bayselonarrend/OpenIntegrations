@@ -286,4 +286,8 @@ Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "
     ДополнитьКэшСостава(Library, ParametersTable, Command);
 EndProcedure
 
+Procedure SetDirectories(Val PackagesPath, ApplicationPath) Export
+    УстановитьКаталоги(PackagesPath, ApplicationPath);
+EndProcedure
+
 #EndRegion
