@@ -27,6 +27,7 @@ suppaftp/
 **/.sonarlint
 
 /src/**/BSL/YAXUNIT
+/syntax
 
 
 target/
