@@ -12,17 +12,17 @@ import TabItem from '@theme/TabItem';
 
 
 
-`@Объявление`
-
 <Tabs>
   <TabItem value="params" label="Parameters" default>
+
+`@Объявление`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
 @ТаблицаПараметров
   
   </TabItem>
-  <TabItem value="extended" label="Advanced call">
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
 
 @СодержимоеВкладкиРасширенногоВызова
 
