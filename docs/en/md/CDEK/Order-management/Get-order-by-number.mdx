@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GetOrderByNumber(Val Token, Val OrderNumber, Val Internal = False, Val TestAPI = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Auth token |
@@ -21,6 +24,19 @@ import TabItem from '@theme/TabItem';
   | Internal | --internal | Boolean | &#x2716; | Type of order number. True > number in the customer base, False > CDEK number |
   | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
 

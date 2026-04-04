@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Функция СформироватьСсылкуПолученияКода(Знач ClientID, Знач Calendar = Истина, Знач Drive = Истина, Знач Sheets = Истина) Экспорт`
 
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | ClientID | --id | Строка | &#x2714; | Client ID |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | Drive | --drive | Булево | &#x2716; | разрешение на методы Drive |
   | Sheets | --sheets | Булево | &#x2716; | разрешение на методы Sheets |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Расширенный вызов">
+
+*Для текущего метода нет дополнительных параметров расширенного вызова.*
+
+
+  </TabItem>
+</Tabs>
   
   Возвращаемое значение:   Строка - Ссылка получения кода
 

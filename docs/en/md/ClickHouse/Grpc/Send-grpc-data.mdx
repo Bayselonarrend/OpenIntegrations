@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function SendGRPCData(Val Connection, Val StreamID, Val Data, Val WaitNext = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | - | Arbitrary | &#x2714; | GRPC connection object |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | Data | - | Arbitrary | &#x2714; | A string, collection, binary data, or file path to send |
   | WaitNext | - | Boolean | &#x2716; | Flag for waiting for the next messages after the current one |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - Processing result
 

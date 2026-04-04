@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function WriteMessage(Val Text, Val UserID, Val Communitytoken, Val Keyboard = "", Val Parameters = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Text | --text | String | &#x2714; | Message text |
@@ -22,6 +25,19 @@ import TabItem from '@theme/TabItem';
   | Keyboard | --keyboard | String | &#x2716; | Keyboard JSON. See FormKeyboard |
   | Parameters | --auth | Structure Of String | &#x2716; | Authorization parameters. See GetAuthParameters |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
 

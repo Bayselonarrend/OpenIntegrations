@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
@@ -21,6 +24,19 @@ import TabItem from '@theme/TabItem';
   | Detailed | --detail | Boolean | &#x2716; | Add information fields for mediafiles |
   | Cursor | --cursor | String | &#x2716; | Cursor from the previous request to get the next set of files |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  HTTPResponse - Get list of folder files
 
