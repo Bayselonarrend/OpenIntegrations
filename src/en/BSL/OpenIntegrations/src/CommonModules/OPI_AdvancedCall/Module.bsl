@@ -109,17 +109,10 @@ EndFunction
 // String - Help on available settings
 Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
 
-    TemplateText      = OPI_Tools.GetTextTemplate("OPI_Text_MethodSettings");
-    TemplateStructure = OPI_Tools.JsonToStructure(TemplateText, False);
-    NoSettings        = False;
+    TemplateStructure    = GetFullSettingsIndex();
+    SettingsStructure = FindInIndex(TemplateStructure, ModuleName, FunctionName);;
 
-    Try
-        SettingsStructure = TemplateStructure[ModuleName][FunctionName];
-    Except
-        NoSettings        = True;
-    EndTry;
-
-    If NoSettings Or SettingsStructure.Count() = 0 Then
+    If SettingsStructure = Undefined Then
         Return "There are no available settings for this function";
     EndIf;
 
@@ -149,15 +142,44 @@ Function GetCurrentSettings() Export
 
 EndFunction
 
-#EndRegion
+Function GetFullSettingsIndex() Export
 
-#Region Private
+    TemplateText      = OPI_Tools.GetTextTemplate("OPI_Text_MethodSettings");
+    TemplateStructure = OPI_Tools.JsonToStructure(TemplateText, False);
 
-Procedure SetSettings(Val Settings)
+    Return TemplateStructure;
+
+EndFunction
+
+Function FindInIndex(Val Index, Val ModuleName, Val FunctionName) Export
+
+    OPI_TypeConversion.GetLine(ModuleName);
+    OPI_TypeConversion.GetLine(FunctionName);
+
+    NoSettings = False;
+
+    Try
+        SettingsStructure = Index[ModuleName][FunctionName];
+    Except
+
+        NoSettings = True;
+
+    EndTry;
+
+    If NoSettings Or SettingsStructure.Count() = 0 Then
+        Return Undefined;
+    EndIf;
+
+    Return SettingsStructure;
+
+EndFunction
+
+Procedure SetSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
 
-        OPI_TypeConversion.GetKeyValueCollection(Settings);
+        ErrorText = "The passed settings are not a valid key-value structure";
+        OPI_TypeConversion.GetKeyValueCollection(Settings, ErrorText);
 
         If Not TypeOf(Settings) = Type("Structure") Then
 
@@ -177,7 +199,7 @@ Procedure SetSettings(Val Settings)
 
 EndProcedure
 
-Procedure DeleteSettings()
+Procedure DeleteSettings() Export
 
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
@@ -187,3 +209,4 @@ Procedure DeleteSettings()
 EndProcedure
 
 #EndRegion
+

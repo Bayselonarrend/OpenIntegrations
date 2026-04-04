@@ -85,6 +85,8 @@ Procedure FormParameterSet()
 		WriteFromFunction = True;
 	EndIf;
 
+	Parser.AddNamedCommandParameter(Command, "--config");
+
 	Parser.AddCommandFlagParameter(Command, "--help");
 	Parser.AddCommandFlagParameter(Command, "--debug");
 	Parser.AddCommandFlagParameter(Command, "--test");
@@ -106,7 +108,7 @@ Procedure ExecuteCommandProcessing(Val Data)
 
 	Try
 			
-		Output = GetProcessingResult(CurrentCommand, Parameters);
+		Output = GetProcessingResult(Parameters);
 
 		ProcessJSONOutput(Output);
 		ReportResult(Output, MessageStatus.Attention);
@@ -117,7 +119,7 @@ Procedure ExecuteCommandProcessing(Val Data)
 	
 EndProcedure
 
-Function GetProcessingResult(Val Command, Val Parameters)
+Function GetProcessingResult(Val Parameters)
 
 	If CurrentCommand = "hashsum" Then
 
@@ -132,14 +134,24 @@ Function GetProcessingResult(Val Command, Val Parameters)
 	NumberOfStandardParameters = 4;
 
 	If Not ValueIsFilled(Method) Or Method = "--help" Then
-		Help.DisplayMethodHelp(Command);
+		Help.DisplayMethodHelp(CurrentCommand);
+	EndIf;
+
+	Configuration = Parameters["--config"];
+
+	If Configuration <> Undefined Then
+
+		If Configuration = "" Then
+			Help.OutputSettingsHelp(CurrentCommand, Method);
+		EndIf;
+
 	EndIf;
 
 	If Parameters.Count() = NumberOfStandardParameters Or Parameters["--help"] Then
-		Help.DisplayParameterHelp(Command, Method);
+		Help.DisplayParameterHelp(CurrentCommand, Method);
 	EndIf;
 
-	ExecutionStructure = OPIObject.FormMethodCallString(Parameters, Command, Method);
+	ExecutionStructure = OPIObject.FormMethodCallString(Parameters, CurrentCommand, Method);
 
 	If ExecutionStructure["Error"] Then
 		Help.DisplayExceptionMessage(ExecutionStructure["Result"], OutputFile);
@@ -153,7 +165,7 @@ Function GetProcessingResult(Val Command, Val Parameters)
 
 	If Not Testing Then
 		AttachExecutor();
-		Responsible.ExecuteScript(ExecutionText, Response);
+		Responsible.ExecuteScript(ExecutionText, Response, Configuration);
 	EndIf;
 
 	Return Response;

@@ -285,7 +285,7 @@ Procedure ParseNamedParam(Val Token, Value, Val NamedParams, Val ParseResult)
 	Var TokenValue;
 
 	StrParam = NamedParams.Find(Token, "Name");
-	TokenValue = ?(Value = Undefined, NextRequiredToken(Token), Value);
+	TokenValue = ?(Value = Undefined, NextRequiredToken(Token, NamedParams), Value);
 	If StrParam.ThisIsCollection Then
 
 		CurrentCollection = ParseResult[Token];
@@ -355,23 +355,36 @@ Function ParseArgs(Val NamedParams, Val PositionParams)
 	
 EndFunction
 
-Function NextToken()
+Function NextToken(WithoutOffset = False)
 	If mTokenListPosition = mEntryParamsArray.Count() Then
 		Return Undefined;
 	EndIf;
 	
 	Token = mEntryParamsArray[mTokenListPosition];
-	mTokenListPosition = mTokenListPosition + 1;
+
+	If Not WithoutOffset Then
+		mTokenListPosition = mTokenListPosition + 1;
+	EndIf;
 	
 	Return Token;
 EndFunction
 
-Function NextRequiredToken(Val DesiredParameter)
-	Token = NextToken();
-	If Token = Undefined Then
-		Raise "Expected parameter value " + DesiredParameter;
+Function NextRequiredToken(Val DesiredParameter, Val NamedParams)
+
+	Token = NextToken(True);
+
+	If Token = Undefined Or IsParameter(Token, NamedParams) Then
+		Return "";
+	Else
+		Return NextToken();
 	EndIf;
+
 	Return Token;
+EndFunction
+
+Function IsParameter(Val Token, Val NamedParams)
+	StrParam = NamedParams.Find(Token, "Name");
+	Return StrParam <> Undefined;
 EndFunction
 
 Function IsNamedParam(Val Token, Val NamedParams)
