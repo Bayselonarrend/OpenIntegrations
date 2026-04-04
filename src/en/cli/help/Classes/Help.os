@@ -3,6 +3,8 @@ Var ConsoleWidth;
 Var UseAdaptiveOutput;
 Var OPIObject;
 
+Var AdvancedCallIndex;
+
 #Region Internal
 
 Procedure OnObjectCreate(AccessTemplate_, OPIObject_)
@@ -60,15 +62,17 @@ Procedure DisplayStartPage() Export
 	ColorOutput.Write(StrTemplate("
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  -%1
-		|  (--debug|#color=Green) -%2
-		|  (--out|#color=Green)   -%3
+		|  (--help|#color=Green)   -%1
+		|  (--debug|#color=Green)  -%2
+		|  (--config|#color=Green) -%3
+		|  (--out|#color=Green)    -%4
 		|
 		|  (Full documentation can be found at:|#color=Yellow) (https://openintegrations.dev|#color=Cyan)
 		|
 		|"
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
+		, GetWidthSplittedDescription("additional method settings. When used without a value, returns available options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("the path to the result saving file (particularly binary data)", NewLineTab, OffsetLength)));
 
 	Exit(0);
@@ -152,6 +156,23 @@ Procedure DisplayParameterHelp(Val Command, Val Method) Export
 
 	Exit(0);
 	
+EndProcedure
+
+Procedure OutputSettingsHelp(Val Command, Val Method) Export
+
+	ConnectAdvancedCallIndex();
+
+	Commands = OPIObject.GetCommandModuleMapping();
+	ModuleName = Commands.Get(Command);
+
+	HelpText = AdvancedCallIndex.ReturnSettingsList(ModuleName, Method);
+
+	Console.TextColor = ConsoleColor.White;
+	
+	Console.WriteLine(HelpText);
+
+	Exit(0);
+
 EndProcedure
 
 Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
@@ -343,5 +364,21 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 	Return FullDescription;
 
 EndFunction
+
+Procedure ConnectAdvancedCallIndex()
+
+	If AdvancedCallIndex = Undefined Then
+
+		CurrentScriptFolder = StrReplace(CurrentScript().Path, "\", "/");
+
+		IndexPath = StrTemplate("%1/%2"
+			, CurrentScriptFolder
+			, "internal/Classes/AdvancedCallIndex.os");
+
+		AdvancedCallIndex = LoadScript(IndexPath);
+
+	EndIf;
+
+EndProcedure
 
 #EndRegion
