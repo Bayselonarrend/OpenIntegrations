@@ -14,10 +14,22 @@ import TabItem from '@theme/TabItem';
 
 `Function ReturnConnection(Forced = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Forced | - | Boolean | &#x2716; | False > The processor object will be returned instead of the connection if there were errors in it |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  DataProcessorObject.OPI_HTTPClient, HTTPConnection, Undefined - Connection or the same processor object
 

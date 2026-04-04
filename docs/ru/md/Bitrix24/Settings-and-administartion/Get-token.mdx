@@ -14,12 +14,28 @@ import TabItem from '@theme/TabItem';
 
 `Функция ПолучитьТокен(Знач ClientID, Знач ClientSecret, Знач Code) Экспорт`
 
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | ClientID | --clientid | Строка | &#x2714; | Client ID из настроек приложения |
   | ClientSecret | --clientsecret | Строка | &#x2714; | Client secret из настроек приложения |
   | Code | --code | Строка | &#x2714; | Code из авторизации через браузер |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Расширенный вызов">
+
+  | Параметр | Описание |
+  |---|---|
+  | proxy | ИнтернетПрокси или структура полей Протокол, Сервер, Порт, Пользователь, Пароль, ИспользоватьАутентификациюОС |
+  | timeout | Таймаут выполнения запроса |
+  | adv_response | Оформляет ответ в виде полной структуры с полями code, body и headers |
+
+
+  </TabItem>
+</Tabs>
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 

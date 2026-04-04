@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Text | --text | String | &#x2714; | Button text |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | URL | --url | String | &#x2716; | URL to create the page open button. Only if the Value is not filled in |
   | Style | --style | String | &#x2716; | Button style: primary, attention or base |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Structure - Button for keyboard
 

@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GetObject(Val Name, Val Bucket, Val BasicData, Val Version = "", Val Headers = Undefined, Val SavePath = "", Val Directory = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Name | --name | String | &#x2714; | Name of the object in the bucket |
@@ -24,6 +27,15 @@ import TabItem from '@theme/TabItem';
   | SavePath | --out | String | &#x2716; | Path to directly write a file to disk |
   | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  BinaryData, String - object content or file path, if a save path is specified
 

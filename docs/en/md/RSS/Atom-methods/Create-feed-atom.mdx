@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateFeedAtom(Val FeedTitle, Val FeedLink, Val FeedID, Val Items, Val UpdateDate = Undefined) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | FeedTitle | --name | String | &#x2714; | Feed title |
@@ -22,6 +25,15 @@ import TabItem from '@theme/TabItem';
   | Items | --items | Array of Structure | &#x2714; | Feed items. See GetFeedItemStructureAtom |
   | UpdateDate | --date | Date, Undefined | &#x2716; | Update date. Current if not filled |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  String - Atom XML feed
 

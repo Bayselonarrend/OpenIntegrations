@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GetConnectionSettings(Val Host, Val Port = 21, Val Login = Undefined, Val Password = Undefined, Val Passive = True, Val ReadTimeout = 120, Val WriteTimeout = 120, Val IPResolve = True) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Host | --host | String | &#x2714; | Host address |
@@ -25,6 +28,15 @@ import TabItem from '@theme/TabItem';
   | WriteTimeout | --wtout | Number | &#x2716; | Write timeout |
   | IPResolve | --ipresl | Boolean | &#x2716; | Advanced passive mode address resolution |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Structure Of KeyAndValue - Connection settings structure
 

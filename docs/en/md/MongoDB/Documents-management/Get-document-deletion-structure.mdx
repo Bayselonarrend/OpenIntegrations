@@ -14,12 +14,24 @@ import TabItem from '@theme/TabItem';
 
 `Function GetDocumentDeletionStructure(Val Filter, Val Count = 0, Collation = Undefined) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Filter | --query | Structure Of KeyAndValue | &#x2714; | Document filter |
   | Count | --limit | Number | &#x2716; | Deletion limit: 1 > first document, 0 > all documents |
   | Collation | --cltn | Structure Of KeyAndValue | &#x2716; | Special field comparison rules |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Structure - Get document deletion structure
 
