@@ -167,9 +167,11 @@ Procedure OutputSettingsHelp(Val Command, Val Method) Export
 
 	HelpText = AdvancedCallIndex.ReturnSettingsList(ModuleName, Method);
 
-	Console.TextColor = ConsoleColor.White;
+	Console.TextColor = ConsoleColor.Yellow;
 	
 	Console.WriteLine(HelpText);
+
+	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
 
