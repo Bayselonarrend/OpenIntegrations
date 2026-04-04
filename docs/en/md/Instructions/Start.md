@@ -116,6 +116,8 @@ Some features of this documentation that will help you use it more effectively a
 
 3. **Examples of function results are in JSON format, but in 1C and OS they will be Maps**. If the sample result on the function description page is JSON, in 1C and OneScript it will be a *Map* - i.e. the response will be deserialized. JSON is returned as a string only in the CLI version
 
+4. **Advanced call**. Some methods support extra settings (proxy, timeout, extended HTTP response shape, etc.) that are not part of the normal signature. They are documented on the [Advanced call](/docs/Start/Advanced-call) page and on the second tab of the parameters block on each method page; a “?” link next to the tab title points to that help topic
+
 <hr/>
 
 ## Support the project
