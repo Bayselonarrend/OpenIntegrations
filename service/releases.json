@@ -17,7 +17,7 @@
                 "icon": "media/logo.png",
                 "description_ru": "Библиотека работы с Twitter удалена из пакета",
                 "description_en": "Twitter library has been removed from the package"
-            },            
+            },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
@@ -41,6 +41,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Добавлен встроенный MCP-сервер (stdio) в CLI версию",
                 "description_en": "Added built-in MCP server (stdio) to CLI version"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Включено использование двойных кавычек вместо одиночных при выводе JSON",
+                "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON"
             }
         ]
     },
