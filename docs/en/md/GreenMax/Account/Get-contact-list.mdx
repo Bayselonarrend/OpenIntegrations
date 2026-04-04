@@ -14,11 +14,27 @@ import TabItem from '@theme/TabItem';
 
 `Function GetContactList(Val AccessParameters, Val Count = Undefined) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
   | Count | --count | Number | &#x2716; | Contact count to retrieve. All if not specified |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Array Of Map - serialized JSON response from Green API
 

@@ -14,12 +14,24 @@ import TabItem from '@theme/TabItem';
 
 `Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Extension | - | String, BinaryData | &#x2714; | Extension data or filepath |
   | EntryPoint | - | String | &#x2716; | Expansion entry point, if required |
   | Connection | - | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - Result of extension connecting
 

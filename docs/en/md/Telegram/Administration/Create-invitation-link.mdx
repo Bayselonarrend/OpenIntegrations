@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Bot token |
@@ -22,6 +25,19 @@ import TabItem from '@theme/TabItem';
   | ExpirationDate | --expire | Date | &#x2716; | Link expiration date (permanent if not specified) |
   | UserLimit | --limit | Number | &#x2716; | User limit (infinite if not specified) |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 

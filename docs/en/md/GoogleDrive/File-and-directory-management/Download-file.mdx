@@ -14,12 +14,28 @@ import TabItem from '@theme/TabItem';
 
 `Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
   | Identifier | --object | String | &#x2714; | File identifier |
   | SavePath | --out | String | &#x2716; | File save path |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  BinaryData,String - Binary data or file path when SavePath parameter is specified
 

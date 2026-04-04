@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Bot token |
@@ -21,6 +24,19 @@ import TabItem from '@theme/TabItem';
   | FromID | --from | String, Number | &#x2714; | Chat ID of the original message |
   | ToID | --to | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 

@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function ListBuckets(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | BasicData | --basic | Structure Of KeyAndValue | &#x2714; | Basic request data. See GetBasicDataStructure |
@@ -22,6 +25,15 @@ import TabItem from '@theme/TabItem';
   | PageToken | --ctoken | String | &#x2716; | Page token if pagination is used |
   | Headers | --headers | Map Of KeyAndValue | &#x2716; | Additional request headers, if necessary |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage
 

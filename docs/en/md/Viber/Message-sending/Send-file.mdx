@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
@@ -23,6 +26,19 @@ import TabItem from '@theme/TabItem';
   | Extension | --ext | String | &#x2714; | File extension |
   | Size | --size | Number | &#x2716; | File size. If not filled in > determined automatically by downloading the file |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Viber
 

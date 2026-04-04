@@ -14,12 +14,28 @@ import TabItem from '@theme/TabItem';
 
 `Function GetTemporaryToken(Val URL, Val Login, Val Password) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | ReportPortal server URL |
   | Login | --login | String | &#x2714; | Users login |
   | Password | --pass | String | &#x2714; | Users password |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
 

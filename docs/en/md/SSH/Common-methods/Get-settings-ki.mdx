@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GetSettingsKI(Val Host, Val Port, Val Login, Val InputOrder) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Host | --host | String | &#x2714; | SSH host |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | Login | --user | String | &#x2714; | SSH username |
   | InputOrder | --prompts | Array Of String | &#x2714; | Array of responses to server questions |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Structure Of KeyAndValue - Connection configuration
 
