@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
@@ -21,6 +24,19 @@ import TabItem from '@theme/TabItem';
   | CellsArray | --cells | Array of String | &#x2714; | Array of cells like A1 to be cleared |
   | Sheet | --sheetname | String | &#x2716; | Sheet name (first sheet by default) |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google
 

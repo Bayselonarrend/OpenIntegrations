@@ -14,12 +14,24 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | - | String | &#x2714; | Address and port |
   | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
   | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
 

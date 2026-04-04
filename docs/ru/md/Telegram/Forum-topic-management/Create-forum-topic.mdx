@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Функция СоздатьТемуФорума(Знач Токен, Знач IDЧата, Знач Заголовок, Знач IDИконки = "") Экспорт`
 
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | Заголовок | --title | Строка | &#x2714; | Заголовок темы |
   | IDИконки | --icon | Строка | &#x2716; |  См. [`ПолучитьСписокИконокАватаров`](/docs/Telegram/Forum-topic-management/Get-avatar-icon-list) |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Расширенный вызов">
+
+*Для текущего метода нет дополнительных параметров расширенного вызова.*
+
+
+  </TabItem>
+</Tabs>
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 

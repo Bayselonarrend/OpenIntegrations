@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewOnly = True) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
@@ -21,6 +24,19 @@ import TabItem from '@theme/TabItem';
   | EmailAddresses | --emails | String, Array of String | &#x2714; | List of email addresses of users being added |
   | ViewOnly | --readonly | Boolean | &#x2716; | Prohibits file editing for the external user |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Undefined - empty response
 

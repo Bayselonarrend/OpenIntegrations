@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
@@ -22,6 +25,19 @@ import TabItem from '@theme/TabItem';
   | FieldArray | --fieldsdata | Array of Structure | &#x2714; | Array of field descriptions |
   | Description | --description | String | &#x2716; | Table description |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable
 

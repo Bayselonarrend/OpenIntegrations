@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Функция ДобавитьAWS4Авторизацию(Знач AccessKey, Знач SecretKey, Знач Region, Знач Service = "s3") Экспорт`
 
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | AccessKey | - | Строка | &#x2714; | Access key для авторизации |
@@ -21,6 +24,15 @@ import TabItem from '@theme/TabItem';
   | Region | - | Строка | &#x2714; | Регион сервиса |
   | Service | - | Строка | &#x2716; | Вид сервиса, если отличен от s3 |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Расширенный вызов">
+
+*Для текущего метода нет дополнительных параметров расширенного вызова.*
+
+
+  </TabItem>
+</Tabs>
   
   Возвращаемое значение:   ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
 

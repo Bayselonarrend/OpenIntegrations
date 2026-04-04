@@ -14,12 +14,28 @@ import TabItem from '@theme/TabItem';
 
 `Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
   | Path | --path | String | &#x2714; | Path to the object |
   | Detailed | --detail | Boolean | &#x2716; | Add information fields for mediafiles |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 

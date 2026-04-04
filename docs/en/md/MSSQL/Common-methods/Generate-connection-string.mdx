@@ -14,6 +14,9 @@ import TabItem from '@theme/TabItem';
 
 `Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Port = "", Val WindowsAuth = False) Export`
 
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | --addr | String | &#x2714; | Database server address and instance |
@@ -23,6 +26,15 @@ import TabItem from '@theme/TabItem';
   | Port | --port | Number | &#x2716; | Server port |
   | WindowsAuth | --trust | Boolean | &#x2716; | Use Windows authentication. The login and password will be ignored |
 
+  
+  </TabItem>
+  <TabItem value="extended" label="Advanced call">
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
   
   Returns:  String - MSSQL connection string
 
