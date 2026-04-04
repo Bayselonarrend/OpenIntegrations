@@ -45,8 +45,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Включено использование двойных кавычек вместо одиночных при выводе JSON",
-                "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON"
+                "description_ru": "Включено использование двойных кавычек вместо одиночных при выводе JSON в CLI версии",
+                "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON in CLI version"
             }
         ]
     },
