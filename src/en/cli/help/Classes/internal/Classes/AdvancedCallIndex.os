@@ -20,11 +20,11 @@ Function ReturnSettingsList(Val Module, Val Method) Export
 
 	Else
 
-		Result = OPI_Tools.JSONString(Settings, , False);
-		
+		Result = OPI_Tools.JSONString(Settings);
+
 	EndIf;
 
-	Return Settings
+	Return Result;
 
 EndFunction
 
