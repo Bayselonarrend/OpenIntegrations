@@ -247,7 +247,7 @@ Function JSONString(Val Data)
 
     JSONParameters = New JSONWriterSettings(LineBreak
         , " "
-        , False
+        , True
         , JSONCharactersEscapeMode["None"]
         , False
         , False

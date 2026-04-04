@@ -109,7 +109,7 @@ EndFunction
 // String - Help on available settings
 Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
 
-    TemplateStructure    = GetFullSettingsIndex();
+    TemplateStructure = GetFullSettingsIndex();
     SettingsStructure = FindInIndex(TemplateStructure, ModuleName, FunctionName);;
 
     If SettingsStructure = Undefined Then
