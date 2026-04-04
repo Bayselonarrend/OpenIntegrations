@@ -14,9 +14,20 @@ import TabItem from '@theme/TabItem';
 
 `@Объявление`
 
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
 @ТаблицаПараметров
+  
+  </TabItem>
+  <TabItem value="extended" label="Расширенный вызов">
+
+@СодержимоеВкладкиРасширенногоВызова
+
+  </TabItem>
+</Tabs>
   
   Возвращаемое значение: @ВозвращаемоеЗначение
 
