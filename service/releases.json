@@ -13,8 +13,8 @@
                 "description_en": "Client methods (3 functions)"
             },
             {
-                "lib": "Twitter",
-                "icon": "media/Twitter.png",
+                "lib": "All",
+                "icon": "media/logo.png",
                 "description_ru": "Библиотека работы с Twitter удалена из пакета",
                 "description_en": "Twitter library has been removed from the package"
             },            
