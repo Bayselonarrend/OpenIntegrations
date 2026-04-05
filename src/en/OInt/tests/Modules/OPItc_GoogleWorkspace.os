@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GoogleWorkspace");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GoogleWorkspace");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GoogleWorkspace");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GoogleWorkspace");
 
 EndFunction
 

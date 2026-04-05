@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Notion");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Notion");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Notion");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Notion");
 
 EndFunction
 

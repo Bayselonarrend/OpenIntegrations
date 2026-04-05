@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("MSSQL");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("MSSQL");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("MSSQL");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("MSSQL");
 
 EndFunction
 
