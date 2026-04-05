@@ -129,8 +129,10 @@ EndProcedure
 
 Procedure AdvancedCall_CallWithSettings()
 
+    Token = OPI_TestDataRetrieval.GetParameter("Telegram_Token");
+
     Parameters = New Array;
-    Parameters.Add("token");
+    Parameters.Add(Token);
 
     Settings = New Structure("adv_response", True);
 
