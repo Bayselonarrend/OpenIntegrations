@@ -89,17 +89,9 @@ EndFunction
 
 Procedure CheckIBToLastBuildCompliance() Export
 
-    If OPI_TestDataRetrieval.IsCLITest() Then
-
-        //@skip-check use-non-recommended-method
-        Message("CLI test check for hash sum");
-        BuildSum = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", New Structure);
-
-    Else
-
-        BuildSum = OPI_Tools.GetLastBuildHashSum();
-
-    EndIf;
+    //@skip-check use-non-recommended-method
+    Message("CLI test check for hash sum");
+    BuildSum = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", New Structure);
 
     URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
 
@@ -115,7 +107,10 @@ EndProcedure
 
 Procedure ValidateAdvancedCall() Export
 
-    AdvancedCall_CallWithSettings();
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+
+    AdvancedCall_CallWithSettings(TestParameters);
 
 EndProcedure
 
@@ -127,19 +122,15 @@ EndProcedure
 
 #Region AtomicTests
 
-Procedure AdvancedCall_CallWithSettings()
+Procedure AdvancedCall_CallWithSettings(FunctionParameters)
 
-    Token = OPI_TestDataRetrieval.GetParameter("Telegram_Token");
+    Token = FunctionParameters["Telegram_Token"];
 
-    Parameters = New Array;
-    Parameters.Add(Token);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("config", New Structure("adv_response", True));
 
-    Settings = New Structure("adv_response", True);
-
-    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
-        , "GetBotInformation"
-        , Parameters
-        , Settings);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetBotInformation", Options);
 
     OPI_TestDataRetrieval.Process(Result, "Core", "CallWithSettings");
 

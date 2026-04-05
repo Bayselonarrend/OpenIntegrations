@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("RCON");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("RCON");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("RCON");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("RCON");
 
 EndFunction
 

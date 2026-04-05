@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("CDEK");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("CDEK");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("CDEK");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("CDEK");
 
 EndFunction
 

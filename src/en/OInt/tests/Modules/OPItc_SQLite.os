@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("SQLite");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("SQLite");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("SQLite");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("SQLite");
 
 EndFunction
 

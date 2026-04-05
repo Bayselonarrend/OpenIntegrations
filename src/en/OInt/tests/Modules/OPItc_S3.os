@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("S3");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("S3");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("S3");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("S3");
 
 EndFunction
 

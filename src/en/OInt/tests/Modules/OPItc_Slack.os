@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Slack");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Slack");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Slack");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Slack");
 
 EndFunction
 

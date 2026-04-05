@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Telegram");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Telegram");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Telegram");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Telegram");
 
 EndFunction
 

@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Bitrix24");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Bitrix24");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Bitrix24");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Bitrix24");
 
 EndFunction
 

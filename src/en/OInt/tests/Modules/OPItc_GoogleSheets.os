@@ -77,7 +77,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GoogleSheets");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GoogleSheets");
 
 EndProcedure
 
@@ -85,7 +85,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GoogleSheets");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GoogleSheets");
 
 EndFunction
 

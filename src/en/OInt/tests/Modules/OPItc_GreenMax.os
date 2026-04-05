@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GreenMax");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GreenMax");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GreenMax");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GreenMax");
 
 EndFunction
 

@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("PostgreSQL");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("PostgreSQL");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("PostgreSQL");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("PostgreSQL");
 
 EndFunction
 

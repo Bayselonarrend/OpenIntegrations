@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("OpenAI");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("OpenAI");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("OpenAI");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("OpenAI");
 
 EndFunction
 

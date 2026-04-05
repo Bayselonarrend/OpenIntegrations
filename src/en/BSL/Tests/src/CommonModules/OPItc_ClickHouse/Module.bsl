@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("ClickHouse");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("ClickHouse");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("ClickHouse");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("ClickHouse");
 
 EndFunction
 

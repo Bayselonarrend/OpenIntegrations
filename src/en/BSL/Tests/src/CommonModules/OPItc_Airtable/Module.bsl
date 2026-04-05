@@ -79,7 +79,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Airtable");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Airtable");
 
 EndProcedure
 
@@ -87,7 +87,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Airtable");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Airtable");
 
 EndFunction
 

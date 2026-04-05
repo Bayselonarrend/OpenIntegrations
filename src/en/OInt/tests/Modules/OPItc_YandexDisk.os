@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("YandexDisk");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("YandexDisk");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("YandexDisk");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("YandexDisk");
 
 EndFunction
 

@@ -1221,7 +1221,8 @@ EndFunction
 
 Function Check_Core_CallWithSettings(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure");
+    ResultType             = TypeOf(Result);
+    ExpectsThat(ResultType = Type("Structure") Or ResultType = Type("Map")).Равно(True);
     ExpectsThat(Result["status"]).Заполнено();
     ExpectsThat(Result["body"]).Заполнено();
     ExpectsThat(Result["headers"]).Заполнено();

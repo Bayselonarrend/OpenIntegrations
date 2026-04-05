@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Dropbox");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Dropbox");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Dropbox");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Dropbox");
 
 EndFunction
 

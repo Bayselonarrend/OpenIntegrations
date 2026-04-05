@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("VKTeams");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("VKTeams");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("VKTeams");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("VKTeams");
 
 EndFunction
 

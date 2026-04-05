@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("FTP");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("FTP");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("FTP");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("FTP");
 
 EndFunction
 

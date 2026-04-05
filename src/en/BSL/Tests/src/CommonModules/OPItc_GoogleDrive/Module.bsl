@@ -77,7 +77,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GoogleDrive");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GoogleDrive");
 
 EndProcedure
 
@@ -85,7 +85,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GoogleDrive");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GoogleDrive");
 
 EndFunction
 
