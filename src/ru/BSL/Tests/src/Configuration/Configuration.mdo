@@ -77,7 +77,6 @@
   <commonModules>CommonModule.OPIt_WebSocket</commonModules>
   <commonModules>CommonModule.OPIt_YandexDisk</commonModules>
   <commonModules>CommonModule.OPIt_YandexID</commonModules>
-  <commonModules>CommonModule.OPIt_YandexMarket</commonModules>
   <commonModules>CommonModule.OPIt_YandexMetrika</commonModules>
   <commonModules>CommonModule.OPItc_Airtable</commonModules>
   <commonModules>CommonModule.OPItc_Bitrix24</commonModules>
@@ -118,6 +117,6 @@
   <commonModules>CommonModule.OPItc_WebSocket</commonModules>
   <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
   <commonModules>CommonModule.OPItc_YandexID</commonModules>
-  <commonModules>CommonModule.OPItc_YandexMarket</commonModules>
   <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPItс_Core</commonModules>
 </mdclass:Configuration>
