@@ -12,10 +12,10 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ProcessBidirectionalStream(Val Connection, Val Service, Val Method, Val ExchangeOrder, Val Timeout = 10000, Val Tls = Undefined, Val ContinueReceiving = True) Export`
-
 <Tabs>
   <TabItem value="params" label="Parameters" default>
+
+`Function ProcessBidirectionalStream(Val Connection, Val Service, Val Method, Val ExchangeOrder, Val Timeout = 10000, Val Tls = Undefined, Val ContinueReceiving = True) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
   
   </TabItem>
-  <TabItem value="extended" label="Advanced call">
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
 
 *This method has no additional advanced call parameters.*
 
