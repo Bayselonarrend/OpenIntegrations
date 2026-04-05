@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: Built-in OInt CLI MCP server — run, vars configuration, connecting Cursor, Kiro, and Cline
+description: Built-in OInt CLI MCP server — startup, vars configuration, connecting in Cursor, Kiro, and Cline
 keywords: [OInt, CLI, MCP, Model Context Protocol, Cursor, Kiro, Cline, OneScript, OpenIntegrations]
 ---
 
@@ -9,26 +9,24 @@ import TabItem from '@theme/TabItem';
 
 # Built-in MCP server
 
-The **MCP server** in OInt CLI is a built-in implementation of the [Model Context Protocol](https://modelcontextprotocol.io/) over standard input/output (stdio) that you can use to let an AI agent work directly with the capabilities of the Open Integration Package.
+The **MCP server** in OInt CLI is a built-in implementation of the [Model Context Protocol](https://modelcontextprotocol.io/) over standard input/output (stdio) that you can use so an AI agent can work directly with the capabilities of the Open Integration Package.
 
 ## Available tools
 
 | Tool | Purpose |
-|------|---------|
-| `get_services` | Lists available services (CLI commands) matching OInt libraries |
-| `get_service_methods` | Lists methods for the selected service |
+|------------|------------|
+| `get_services` | List of available services (CLI commands) that correspond to OInt libraries |
+| `get_service_methods` | List of methods for the selected service |
 | `get_method_parameters` | Describes method parameters (types, default values, hints) |
-| `execute_method` | Runs a method with a set of named parameters; the result is a string (as in CLI) |
-| `get_variables` | Returns the list of variables defined in the configuration file |
-
-For `execute_method`, parameter values are strings. If a value starts with `@@`, it is treated as a key for a variable from the configuration `vars` block (see below), which is convenient for using secrets without passing them directly to the agent.
+| `execute_method` | Runs a method with a set of named parameters |
+| `get_variables` | Returns the list of variables defined in the configuration file (see below) |
 
 ## Starting the server
 
 Start the MCP server with `oint mcp start` and one or more parameters:
 
-- `--config` (`-c`) — path to a JSON configuration file, or the literal `default` for the default configuration
-- `--log` (`-l`) — path to a log file, if required
+- `--config` (`-c`) — path to a JSON configuration file, or `default` to use the default configuration
+- `--log` (`-l`) — path to a log file, if needed
 
 Example start commands:
 
@@ -42,22 +40,18 @@ oint mcp start -c /home/user/oint-mcp.json -l /tmp/oint-mcp.log
   <TabItem value="bat" label="CMD/Bat">
 ```batch
 oint mcp start --config default
-```
-```batch
 oint mcp start -c C:\Users\user\oint-mcp.json -l C:\Temp\oint-mcp.log
 ```
   </TabItem>
   <TabItem value="powershell" label="PowerShell">
 ```powershell
 oint mcp start --config default
-```
-```powershell
 oint mcp start -c "$env:USERPROFILE\oint-mcp.json" -l "$env:TEMP\oint-mcp.log"
 ```
   </TabItem>
 </Tabs>
 
-You can obtain a template for your own configuration (the `--config` argument) with the separate command `oint mcp config`:
+You can get a template for your own configuration (the `--config` argument) with the separate command `oint mcp config`:
 
 <Tabs>
   <TabItem value="bash" label="Bash" default>
@@ -77,11 +71,11 @@ oint mcp config --empty true
   </TabItem>
 </Tabs>
 
-With `--empty true` (the default) a minimal skeleton is returned; with `--empty false`, explanatory example fields are added under `vars`. Save the template using the standard `--out <file path>` option or shell redirection.
+When the command is run with `--empty true`, an empty JSON template is returned; with `--empty false`, explanatory example fields are added. Save the template by appending the standard `--out <file path>` option to the command or using shell redirection.
 
 ## Configuration file
 
-The configuration is a JSON file for MCP server settings. Currently a single block is supported — **`vars`**, which holds user-defined variable values. The agent can use these at runtime and substitute them for real data when calling the `execute_method` tool.
+The configuration is a JSON file for various MCP server settings. Currently a single block is implemented — **`vars`**, which stores user-defined variable values. The agent can use these while running to substitute them for real data when calling the `execute_method` tool.
 
 Example `oint-mcp.json`:
 
@@ -114,15 +108,11 @@ oint mcp start -c "$env:USERPROFILE\oint-mcp.json"
   </TabItem>
 </Tabs>
 
-While running, the agent can call the `get_variables` tool to obtain the names of defined variables (not their actual values). Each name is prefixed with `@@` and can be supplied as a value for OInt function parameters. When the MCP server receives a value starting with `@@`, it treats it as a variable key and replaces it with the value from the configuration file if that key exists. Secrets are therefore not passed directly to the AI agent.
-
-:::caution
-Do not publish files with real tokens in repositories!
-:::
+While running, the agent can call the `get_variables` tool to obtain the list of keys (names) of configured variables (without receiving their actual values). All of them are prefixed with `@@` and can be supplied by the agent as values for OInt function parameters. When the MCP server receives such a value, it treats it as a variable key and replaces it with the real value from the configuration file. Secret data can therefore be used by the agent without passing it in plain text.
 
 ## Connecting the server in AI agents
 
-Below is a typical **local** MCP server snippet: the `oint` command with arguments `mcp`, `start`, and configuration parameters. Replace `oint` with the full path to the executable if needed (especially on Windows when `PATH` is not set).
+Below are examples of adding the OInt MCP server in various IDEs.
 
 <Tabs>
   <TabItem value="cursor" label="Cursor" default>
@@ -160,7 +150,7 @@ Kiro uses:
 - project-level: `.kiro/settings/mcp.json`
 - user-level: `~/.kiro/settings/mcp.json`
 
-When both exist, they are merged; workspace settings take precedence. Example local server:
+When both exist, they are merged; workspace settings take precedence.
 
 ```json
 {
@@ -173,7 +163,7 @@ When both exist, they are merged; workspace settings take precedence. Example lo
 }
 ```
 
-For a configuration file with secrets, use an absolute path instead of `default`:
+For a configuration file that holds secrets, use an absolute path instead of `default`:
 
 ```json
 {
@@ -186,10 +176,10 @@ For a configuration file with secrets, use an absolute path instead of `default`
 }
 ```
 
-Create or edit the config via the command palette (**Kiro: Open workspace MCP config** / **Kiro: Open user MCP config**). Details: [Configuration](https://kiro.dev/docs/mcp/configuration/) in the Kiro documentation.
+Create or edit the config via the command palette (**Kiro: Open workspace MCP config** / **Kiro: Open user MCP config**). See [Configuration](https://kiro.dev/docs/mcp/configuration/) in the Kiro documentation.
   </TabItem>
   <TabItem value="cline" label="Cline">
-In Cline, servers are defined in JSON under the `mcpServers` key. File locations may change between extension versions; follow the current guide in the [Cline documentation](https://docs.cline.bot/mcp/configuring-mcp-servers). Example for a stdio server:
+In Cline, servers are listed in JSON under the `mcpServers` key. File locations may change between extension versions; follow the current guide in the [Cline documentation](https://docs.cline.bot/mcp/configuring-mcp-servers).
 
 ```json
 {
@@ -203,14 +193,15 @@ In Cline, servers are defined in JSON under the `mcpServers` key. File locations
 }
 ```
 
-For a configuration file with secrets, use an absolute path instead of `default`:
+For a configuration file that holds secrets, use an absolute path instead of `default`:
 
 ```json
 {
   "mcpServers": {
     "oint-mcp": {
       "command": "oint",
-      "args": ["mcp", "start", "-c", "C:\\Users\\user\\oint-mcp.json", "-l", "C:\\Temp\\oint-mcp.log"]
+      "args": ["mcp", "start", "-c", "C:\\Users\\user\\oint-mcp.json", "-l", "C:\\Temp\\oint-mcp.log"],
+      "disabled": false
     }
   }
 }
@@ -220,10 +211,10 @@ Server management (enable, restart) is available from the MCP panel in the Cline
   </TabItem>
 </Tabs>
 
-## Troubleshooting
+## Diagnostics
 
-If the client does not see the tools or fails on startup, check in a normal terminal:
+If the client does not see the tools or fails on startup, run diagnostics in a terminal (command line):
 
-1. Whether `oint mcp start -c default` runs without errors (the process should wait for input and not print messages to the console).
-2. That the JSON in the configuration file is valid when using `-c` with a path.
-3. The log when `-l` is set: it records request processing steps and error text.
+1. Check that `oint mcp start -c default` runs without errors (the process should wait for input and not print messages to the console).
+2. Check that the JSON in the configuration file is valid when using `-c` with a custom configuration.
+3. Use logging (the `-l` option) and analyze the log after launch.
