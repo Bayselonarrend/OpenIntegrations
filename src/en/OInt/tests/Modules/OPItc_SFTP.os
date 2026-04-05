@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("SFTP");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("SFTP");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("SFTP");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("SFTP");
 
 EndFunction
 

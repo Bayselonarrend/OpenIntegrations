@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Ollama");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Ollama");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Ollama");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Ollama");
 
 EndFunction
 

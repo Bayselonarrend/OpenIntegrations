@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("MongoDB");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("MongoDB");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("MongoDB");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("MongoDB");
 
 EndFunction
 

@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("RSS");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("RSS");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("RSS");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("RSS");
 
 EndFunction
 

@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("MySQL");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("MySQL");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("MySQL");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("MySQL");
 
 EndFunction
 

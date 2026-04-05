@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("HTTP");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("HTTP");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("HTTP");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("HTTP");
 
 EndFunction
 
