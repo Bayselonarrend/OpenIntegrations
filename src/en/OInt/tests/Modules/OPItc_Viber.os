@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Viber");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Viber");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Viber");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Viber");
 
 EndFunction
 

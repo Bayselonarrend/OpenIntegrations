@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GRPC");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GRPC");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GRPC");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GRPC");
 
 EndFunction
 

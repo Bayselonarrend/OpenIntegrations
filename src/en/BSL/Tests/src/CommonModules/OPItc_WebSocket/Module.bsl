@@ -75,7 +75,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("WebSocket");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("WebSocket");
 
 EndProcedure
 
@@ -83,7 +83,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("WebSocket");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("WebSocket");
 
 EndFunction
 

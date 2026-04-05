@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("TCP");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("TCP");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("TCP");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("TCP");
 
 EndFunction
 

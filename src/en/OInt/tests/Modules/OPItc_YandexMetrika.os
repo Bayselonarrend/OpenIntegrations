@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("YandexMetrika");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("YandexMetrika");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("YandexMetrika");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("YandexMetrika");
 
 EndFunction
 

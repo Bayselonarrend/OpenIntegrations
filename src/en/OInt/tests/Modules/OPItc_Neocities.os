@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Neocities");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Neocities");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Neocities");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Neocities");
 
 EndFunction
 

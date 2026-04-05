@@ -78,7 +78,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("GreenAPI");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("GreenAPI");
 
 EndProcedure
 
@@ -86,7 +86,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("GreenAPI");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("GreenAPI");
 
 EndFunction
 
