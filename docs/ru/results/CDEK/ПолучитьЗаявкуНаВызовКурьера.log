@@ -1,9 +1,7 @@
 ﻿{
  "entity": {
-  "uuid": "6c7ffb7e-a4e7-4e4e-8f1c-0cf15fc0224c",
-  "cdek_number": "1107141598",
-  "order_uuid": "52957eb4-1c26-4d18-b3fd-91e0b30ee3ea",
-  "intake_date": "2026-04-04",
+  "uuid": "952b03a7-b6df-4ea9-b008-08f65f24dde8",
+  "intake_date": "2026-04-07",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -19,46 +17,35 @@
     {
      "number": "+79589441654"
     }
-   ],
-   "passport_requirements_satisfied": "***"
+   ]
   },
   "from_location": {
    "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "kladr_code": "7700000000000",
    "country_code": "RU",
-   "country": "Россия",
    "region": "Москва",
-   "region_code": 81,
    "sub_region": "Москва",
-   "longitude": 37.61556,
-   "latitude": 55.75222,
-   "address": "ул. Блюхера, 32"
+   "longitude": 37.6204,
+   "latitude": 55.754,
+   "address": "ул. Блюхера, 32",
+   "postal_code": "109004"
   },
   "need_call": false,
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-03T22:27:15+03:00"
-   }
-  ],
-  "packages": [
-   {
-    "package_id": "8d47f143-a540-4e9d-9f06-4bd5a552dab4",
-    "weight": 1000,
-    "length": 10,
-    "width": "***",
-    "height": 10
+    "date_time": "2026-04-06T23:37:41+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "9adf6529-a13e-4551-b9f0-50f9793a0a97",
+   "request_uuid": "52b4438e-710f-4fd7-97a4-9a413d74c1f2",
    "type": "CREATE",
-   "date_time": "2026-04-03T22:27:14+03:00",
+   "date_time": "2026-04-06T23:37:00+03:00",
    "state": "ACCEPTED"
   }
  ]
