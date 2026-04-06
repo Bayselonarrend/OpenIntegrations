@@ -1,19 +1,10 @@
 ﻿{
  "type": "outgoing",
- "idMessage": "2761480287806",
+ "idMessage": "115440372143232131",
  "timestamp": 1761480287,
- "typeMessage": "extendedTextMessage",
+ "typeMessage": "textMessage",
  "chatId": "***",
  "textMessage": "Тест 5",
- "extendedTextMessage": {
-  "text": "Тест 5",
-  "description": "",
-  "title": "",
-  "previewType": "None",
-  "jpegThumbnail": "",
-  "forwardingScore": 0,
-  "isForwarded": false
- },
  "statusMessage": "delivered",
  "sendByApi": "***",
  "deletedMessageId": "",

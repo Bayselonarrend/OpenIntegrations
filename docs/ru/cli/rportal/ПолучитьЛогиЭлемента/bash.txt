@@ -2,4 +2,4 @@ oint rportal ПолучитьЛогиЭлемента \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --item 15757
+  --item 39834
