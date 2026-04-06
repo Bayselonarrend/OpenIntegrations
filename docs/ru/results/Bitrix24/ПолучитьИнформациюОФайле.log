@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "54738",
+  "ID": "54792",
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "37550",
+  "FILE_ID": "37588",
   "SIZE": "805189",
-  "CREATE_TIME": "2026-04-06T21:58:40+03:00",
-  "UPDATE_TIME": "2026-04-06T21:58:40+03:00",
+  "CREATE_TIME": "2026-04-06T23:28:23+03:00",
+  "UPDATE_TIME": "2026-04-06T23:28:23+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=f80fd469006e9f06006b12e4000000010000073355d1b...",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=3c25d469006e9f06006b12e400000001000007f35c7fe...",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1775501924,
-  "finish": 1775501924.70116,
-  "duration": 0.701159954071045,
+  "start": 1775507305,
+  "finish": 1775507305.10772,
+  "duration": 0.107717990875244,
   "processing": 0,
-  "date_start": "2026-04-06T21:58:44+03:00",
-  "date_finish": "2026-04-06T21:58:44+03:00",
-  "operating_reset_at": 1775502524,
+  "date_start": "2026-04-06T23:28:25+03:00",
+  "date_finish": "2026-04-06T23:28:25+03:00",
+  "operating_reset_at": 1775507905,
   "operating": 0
  }
 }

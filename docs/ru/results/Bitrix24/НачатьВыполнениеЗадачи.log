@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10230",
+   "id": "10240",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-04-06T21:57:16+03:00",
+   "createdDate": "2026-04-06T23:27:44+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-04-06T21:57:47+03:00",
+   "changedDate": "2026-04-06T23:27:59+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-04-06T21:57:47+03:00",
-   "dateStart": "2026-04-06T21:57:47+03:00",
-   "deadline": "2026-04-07T21:57:00+03:00",
-   "startDatePlan": "2026-04-06T21:57:16+03:00",
+   "activityDate": "2026-04-06T23:27:59+03:00",
+   "dateStart": "2026-04-06T23:27:59+03:00",
+   "deadline": "2026-04-07T23:27:00+03:00",
+   "startDatePlan": "2026-04-06T23:27:44+03:00",
    "endDatePlan": "2026-04-07T00:00:00+03:00",
-   "guid": "{8f64005a-0642-4b0a-a67b-02c9c3eedea1}",
+   "guid": "{cb29461d-5886-493f-a902-f6d549af5641}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-04-06T21:57:47+03:00",
+   "statusChangedDate": "2026-04-06T23:27:59+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1775501867,
-  "finish": 1775501867.87207,
-  "duration": 0.872066974639892,
+  "start": 1775507279,
+  "finish": 1775507279.46686,
+  "duration": 0.466862916946411,
   "processing": 0,
-  "date_start": "2026-04-06T21:57:47+03:00",
-  "date_finish": "2026-04-06T21:57:47+03:00",
-  "operating_reset_at": 1775502467,
-  "operating": 0.161477088928223
+  "date_start": "2026-04-06T23:27:59+03:00",
+  "date_finish": "2026-04-06T23:27:59+03:00",
+  "operating_reset_at": 1775507879,
+  "operating": 0.174753904342651
  }
 }
