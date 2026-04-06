@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "e9713678-d301-4278-aed4-0ec9b933336c",
- "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\1frjuplu.cky.json",
+ "id": "0d94c8ac-ad6f-4b95-8798-69b7a87cb466",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {
