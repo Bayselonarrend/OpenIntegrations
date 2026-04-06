@@ -110,7 +110,7 @@ begin
   with TBitmapImage.Create(WizardForm) do
   begin
     Parent := AddonTaskPage.Surface;
-    Left := WizardForm.Width - 195;  // Прижимаем к правому краю
+    Left := WizardForm.Width - 300;  // Прижимаем к правому краю
     Top := 35;
     Width := 175;
     Height := 200;
