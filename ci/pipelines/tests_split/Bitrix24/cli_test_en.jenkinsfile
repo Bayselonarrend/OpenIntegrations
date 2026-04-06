@@ -33,7 +33,7 @@ pipeline {
         stage('Remove oint.bat if exists') {
             steps {
                 powershell encoding: 'UTF-8', script: '''
-                    $batFile = "D:/OneScript/oint.bat"
+                    $batFile = "D:/OneScript/bin/oint.bat"
                     if (Test-Path $batFile) {
                         Remove-Item -Path $batFile -Force
                         Write-Host "Файл oint.bat удален."
@@ -44,7 +44,7 @@ pipeline {
 
                 // Проверяем, что файл действительно удален
                 powershell encoding: 'UTF-8', script: '''
-                    $batFile = "D:/OneScript/oint.bat"
+                    $batFile = "D:/OneScript/bin/oint.bat"
                     if (Test-Path $batFile) {
                         Write-Error "Ошибка: Файл oint.bat не удален!"
                         exit 1
