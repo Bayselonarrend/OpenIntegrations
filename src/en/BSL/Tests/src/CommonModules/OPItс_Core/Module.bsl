@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/OPIt_Core.os
+// OneScript: ./OInt/tests/Modules/OPItc_Core.os
 
 // Copyright (c) 2023-2026 Anton Tsitavets
 
