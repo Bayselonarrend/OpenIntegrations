@@ -10,6 +10,7 @@
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
     <defaultRunMode>Checked</defaultRunMode>
     <usePurposes>Checked</usePurposes>
+    <compatibilityMode>Notify</compatibilityMode>
   </extension>
   <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="12689443-2950-4e3b-b313-9a692b6acac7"/>
   <containedObjects classId="9fcd25a0-4822-11d4-9414-008048da11f9" objectId="f6f98fbd-010a-4aba-8f11-01203bbc59c7"/>
@@ -20,7 +21,7 @@
   <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="c9ed170a-ffaa-4859-9d92-fd1cbc7051b3"/>
   <keepMappingToExtendedConfigurationObjectsByIDs>true</keepMappingToExtendedConfigurationObjectsByIDs>
   <namePrefix>OPI_</namePrefix>
-  <configurationExtensionCompatibilityMode>8.3.14</configurationExtensionCompatibilityMode>
+  <configurationExtensionCompatibilityMode>8.3.15</configurationExtensionCompatibilityMode>
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
@@ -43,6 +44,7 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
+  <compatibilityMode>8.3.10</compatibilityMode>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <sessionParameters>SessionParameter.OPI_НастройкиРасширенногоВызова</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
