@@ -27,8 +27,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Поднят режим совместимости расширения для 1С:Предприятия до версии 8.3.14",
-                "description_en": "1C:Enterprise extension compatibility mode upgraded to 8.3.14"
+                "description_ru": "Поднят режим совместимости расширения для 1С:Предприятия до версии 8.3.15 (расширения) / 8.3.10 (основной, режим \"Предупреждать\")",
+                "description_en": "1C:Enterprise extension compatibility mode upgraded to 8.3.15 (extension) / 8.3.10 (main, \"Notify\" mode)"
             },
             {
                 "lib": "All",
