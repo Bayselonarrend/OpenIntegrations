@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-04-03T19:39:58.254657Z",
+ "created_at": "2026-04-06T19:24:38.2514873Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise was originally released in 2009. The latest and most recent release is version 15.5, w..."
+  "content": "The first version of 1C:Enterprise was released in August 2006. It was followed by three subsequent ..."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 1800018100,
- "load_duration": 47190500,
- "prompt_eval_count": 244,
- "prompt_eval_duration": 833369200,
- "eval_count": 66,
- "eval_duration": 890886100
+ "total_duration": 2433266100,
+ "load_duration": 41043800,
+ "prompt_eval_count": 208,
+ "prompt_eval_duration": 477266500,
+ "eval_count": 127,
+ "eval_duration": 1864749200
 }

@@ -1,8 +1,136 @@
 ﻿[
  {
   "type": "outgoing",
-  "idMessage": "3EB0A87607537B5B327D55",
-  "timestamp": 1775245081,
+  "idMessage": "3EB04294497015030F93AD",
+  "timestamp": 1775503231,
+  "typeMessage": "deletedMessage",
+  "chatId": "***",
+  "deletedMessageData": {
+   "stanzaId": "3EB0359911C3C139773663"
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***"
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB07168CEF1CDA1DB9B48",
+  "timestamp": 1775503228,
+  "typeMessage": "contactMessage",
+  "chatId": "***",
+  "contact": {
+   "displayName": "Велосипед",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:;;;\nFN:Велосипед\nORG:Велосипед\nTEL;type=CELL;type=VOICE;waid=79001234568:+...",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "3EB0C44EC3049DB86CCCAA",
+   "participant": "1234567890@c.us",
+   "typeMessage": "contactMessage",
+   "contact": {
+    "displayName": "Артем Евпаторийский Петрович",
+    "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипе...",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0451DF3B5A4EF0B3EB3",
+  "timestamp": 1775503228,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "***",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 1,
+   "isForwarded": true
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0C44EC3049DB86CCCAA",
+  "timestamp": 1775503227,
+  "typeMessage": "contactMessage",
+  "chatId": "***",
+  "contact": {
+   "displayName": "Артем Евпаторийский Петрович",
+   "vcard": "BEGIN:VCARD\nVERSION:3.0\nN:Петрович;Артем;Евпаторийский;\nFN:Артем Евпаторийский Петрович\nORG:Велосипе...",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0D2B21185947162567C",
+  "timestamp": 1775503226,
+  "typeMessage": "locationMessage",
+  "chatId": "***",
+  "location": {
+   "nameLocation": "",
+   "address": "",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "quotedMessage": {
+   "stanzaId": "3EB0F7ED52F9B72D3C5510",
+   "participant": "1234567890@c.us",
+   "typeMessage": "locationMessage",
+   "location": {
+    "nameLocation": "Площадь Победы, Минск",
+    "address": "пл. Победы",
+    "jpegThumbnail": "",
+    "latitude": 53.908522,
+    "longitude": 27.574821,
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "deletedMessageId": "",
+   "editedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB06A33B359DFA0D88770",
+  "timestamp": 1775503225,
   "typeMessage": "pollMessage",
   "chatId": "***",
   "pollMessageData": {
@@ -29,8 +157,30 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0EA01D915BE40B428B7",
-  "timestamp": 1775245080,
+  "idMessage": "3EB0F7ED52F9B72D3C5510",
+  "timestamp": 1775503225,
+  "typeMessage": "locationMessage",
+  "chatId": "***",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB006A0F07B9266590471",
+  "timestamp": 1775503224,
   "typeMessage": "pollMessage",
   "chatId": "***",
   "pollMessageData": {
@@ -57,8 +207,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB02625CADC75130F7629",
-  "timestamp": 1775245079,
+  "idMessage": "3EB01D6B65BC996CE5FCD9",
+  "timestamp": 1775503223,
   "typeMessage": "videoMessage",
   "chatId": "***",
   "downloadUrl": "",
@@ -70,7 +220,7 @@
   "isForwarded": false,
   "forwardingScore": 0,
   "quotedMessage": {
-   "stanzaId": "3EB0101668B3603F2A5968",
+   "stanzaId": "3EB06442AD560758FF798C",
    "participant": "1234567890@c.us",
    "typeMessage": "imageMessage",
    "downloadUrl": "",
@@ -97,8 +247,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0101668B3603F2A5968",
-  "timestamp": 1775245077,
+  "idMessage": "3EB06442AD560758FF798C",
+  "timestamp": 1775503220,
   "typeMessage": "imageMessage",
   "chatId": "***",
   "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
@@ -119,20 +269,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB04599200452D9F5D6D4",
-  "timestamp": 1775245075,
-  "typeMessage": "deletedMessage",
-  "chatId": "***",
-  "deletedMessageData": {
-   "stanzaId": "3EB01B5C1546A509DE4743"
-  },
-  "statusMessage": "sent",
-  "sendByApi": "***"
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB04240E6A42C6068331A",
-  "timestamp": 1775245072,
+  "idMessage": "3EB071E16B87D184AE641C",
+  "timestamp": 1775503215,
   "typeMessage": "videoMessage",
   "chatId": "***",
   "downloadUrl": "",
@@ -144,7 +282,7 @@
   "isForwarded": false,
   "forwardingScore": 0,
   "quotedMessage": {
-   "stanzaId": "3EB079CB3913424B8016A4",
+   "stanzaId": "3EB05E29620CCBEE9BD719",
    "participant": "1234567890@c.us",
    "typeMessage": "imageMessage",
    "downloadUrl": "",
@@ -171,13 +309,13 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB079CB3913424B8016A4",
-  "timestamp": 1775245070,
+  "idMessage": "3EB05E29620CCBEE9BD719",
+  "timestamp": 1775503212,
   "typeMessage": "imageMessage",
   "chatId": "***",
-  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/b8cbd527-b0d5-4f29-843f-9323f352d548...",
+  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/cf290f92-2628-4de4-b02e-3531161ca33a...",
   "caption": "Описание файла",
-  "fileName": "b8cbd527-b0d5-4f29-843f-9323f352d548.jpg",
+  "fileName": "cf290f92-2628-4de4-b02e-3531161ca33a.jpg",
   "jpegThumbnail": "",
   "mimeType": "image/jpeg",
   "isAnimated": false,
@@ -193,17 +331,17 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0D8CB73F2B52F8F96BC",
-  "timestamp": 1775245066,
+  "idMessage": "3EB0BE7EDE1B28D598D11D",
+  "timestamp": 1775503206,
   "typeMessage": "quotedMessage",
   "chatId": "***",
   "extendedTextMessage": {
    "text": "Новое сообщение",
-   "stanzaId": "3EB01B5C1546A509DE4743",
+   "stanzaId": "3EB0359911C3C139773663",
    "participant": "1234567890@c.us"
   },
   "quotedMessage": {
-   "stanzaId": "3EB01B5C1546A509DE4743",
+   "stanzaId": "3EB0359911C3C139773663",
    "participant": "1234567890@c.us",
    "typeMessage": "extendedTextMessage",
    "textMessage": "Новое сообщение",
@@ -230,13 +368,13 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB01B5C1546A509DE4743",
-  "timestamp": 1775245065,
+  "idMessage": "3EB0359911C3C139773663",
+  "timestamp": 1775503205,
   "typeMessage": "extendedTextMessage",
   "chatId": "***",
-  "textMessage": "Новое сообщение",
+  "textMessage": "Новый текст сообщения",
   "extendedTextMessage": {
-   "text": "Новое сообщение",
+   "text": "Новый текст сообщения",
    "description": "",
    "title": "",
    "previewType": "None",
@@ -246,9 +384,9 @@
   },
   "statusMessage": "sent",
   "sendByApi": "***",
-  "deletedMessageId": "3EB04599200452D9F5D6D4",
-  "editedMessageId": "",
-  "isEdited": false,
+  "deletedMessageId": "3EB04294497015030F93AD",
+  "editedMessageId": "3EB007D3E655C6C3C61C8F",
+  "isEdited": true,
   "isDeleted": true
  }
 ]
