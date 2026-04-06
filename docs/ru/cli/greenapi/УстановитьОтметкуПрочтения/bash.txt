@@ -3,4 +3,4 @@
 oint greenapi УстановитьОтметкуПрочтения \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "***" \
-  --message "3EB09A170C8606DE5DA6B8"
+  --message "3EB06442AD560758FF798C"

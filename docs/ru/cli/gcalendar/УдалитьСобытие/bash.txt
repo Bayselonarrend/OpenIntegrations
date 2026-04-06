@@ -1,4 +1,4 @@
 oint gcalendar УдалитьСобытие \
   --token "***" \
-  --calendar "e52a3205409b02d4896edd8579b01be5afc5bc7e8f1cb47d47f4afea67b1e54b@group.calendar.google.com" \
-  --event "fq6urjdsdlq70g9tjip32hojps"
+  --calendar "387ed7945272ff96bcfb727f1b1794eb56bbbc028f01f1e5b38937d6d5539699@group.calendar.google.com" \
+  --event "8js8o3drcat6spdotouo6k0jro"
