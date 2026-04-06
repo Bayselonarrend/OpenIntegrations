@@ -71,7 +71,7 @@
 
 Procedure ИсполняемыеСценарии() Export
 
-    OPI_TestDataRetrieval.FormYAXTests("Core");
+    OPI_TestDataRetrieval.FormYAXTestsCLI("Core");
 
 EndProcedure
 
@@ -79,7 +79,7 @@ EndProcedure
 
 Function ПолучитьСписокТестов(UnitTesting) Export
 
-    Return OPI_TestDataRetrieval.FormAssertsTests("Core");
+    Return OPI_TestDataRetrieval.FormAssertsTestsCLI("Core");
 
 EndFunction
 
