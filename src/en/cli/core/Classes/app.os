@@ -59,7 +59,13 @@ Procedure DetermineCurrentCommandMethod()
 	EndIf;
 
 	If ArgsCount > 1 Then
+
 		CurrentMethod = CommandLineArguments[1];
+
+		If StrStartsWith(CurrentMethod, "-") Then
+			CurrentMethod = Undefined;
+		EndIf;
+
 	Else
 		CurrentMethod = Undefined;
 	EndIf;
