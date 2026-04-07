@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+
 description: Получить события календарей и другие функции для работы с Bitrix24 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Bitrix24]
 ---
@@ -86,7 +87,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" \
               --owner 1 \
               --type "user" \
-              --filter "{'from':'03/26/2026 08:12:06','to':'03/27/2026 08:12:06','section':['2190','2192']}" \
+              --filter "{'from':'4/7/2026 10:03:48 PM','to':'4/8/2026 10:03:48 PM','section':['2246','2248']}" \
               --token "***"
         ```
     </TabItem>
@@ -99,7 +100,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" ^
               --owner 1 ^
               --type "user" ^
-              --filter "{'from':'03/26/2026 08:12:06','to':'03/27/2026 08:12:06','section':['2190','2192']}" ^
+              --filter "{'from':'4/7/2026 10:03:48 PM','to':'4/8/2026 10:03:48 PM','section':['2246','2248']}" ^
               --token "***"
         ```
     </TabItem>
@@ -110,28 +111,28 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "4232",
-   "PARENT_ID": "4232",
+   "ID": "4248",
+   "PARENT_ID": "4248",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "Новое событие",
-   "DATE_FROM": "04.04.2026 22:25:00",
-   "DATE_TO": "04.04.2026 23:25:00",
+   "DATE_FROM": "07.04.2026 23:31:00",
+   "DATE_TO": "08.04.2026 00:31:00",
    "ORIGINAL_DATE_FROM": "***",
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1775319917",
-   "DATE_TO_TS_UTC": "1777926300",
+   "DATE_FROM_TS_UTC": "1775583073",
+   "DATE_TO_TS_UTC": "1778189460",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "03.04.2026 22:25:16",
-   "TIMESTAMP_X": "03.04.2026 22:25:16",
+   "DATE_CREATE": "06.04.2026 23:31:12",
+   "TIMESTAMP_X": "06.04.2026 23:31:12",
    "DESCRIPTION": "Описание события",
    "DT_FROM": null,
    "DT_TO": null,
@@ -164,12 +165,12 @@ import TabItem from '@theme/TabItem';
     "FREQ": "DAILY",
     "COUNT": 3,
     "INTERVAL": 10,
-    "UNTIL": "14.04.2026",
-    "~UNTIL": "14.04.2026",
-    "UNTIL_TS": 1776124800
+    "UNTIL": "17.04.2026",
+    "~UNTIL": "17.04.2026",
+    "UNTIL_TS": 1776384000
    },
    "EXDATE": "",
-   "DAV_XML_ID": "20260404T192500Z-99c71226256dfcbf0348ed14207bf845@b24-ar17wx.bitrix24.by",
+   "DAV_XML_ID": "20260407T203100Z-6c811329426a6355af37d7e2ab36007c@b24-ar17wx.bitrix24.by",
    "G_EVENT_ID": "",
    "DAV_EXCH_LABEL": "",
    "CAL_DAV_LABEL": "",
@@ -180,30 +181,30 @@ import TabItem from '@theme/TabItem';
    ],
    "RECURRENCE_ID": null,
    "RELATIONS": "",
-   "SECTION_ID": "2242",
+   "SECTION_ID": "2250",
    "SYNC_STATUS": null,
    "UF_CRM_CAL_EVENT": null,
    "UF_WEBDAV_CAL_EVENT": null,
    "SECTION_DAV_XML_ID": null,
-   "DATE_FROM_FORMATTED": "Sat Apr 04 2026 22:25:00",
-   "DATE_TO_FORMATTED": "Sat Apr 04 2026 23:25:00",
+   "DATE_FROM_FORMATTED": "Tue Apr 07 2026 23:31:00",
+   "DATE_TO_FORMATTED": "Wed Apr 08 2026 00:31:00",
    "IS_DAYLIGHT_SAVING_TZ": "N",
-   "SECT_ID": "2242",
+   "SECT_ID": "2250",
    "OPTIONS": null,
    "ATTENDEE_LIST": [
     {
      "id": 1,
-     "entryId": "4232",
+     "entryId": "4248",
      "status": "H"
     },
     {
      "id": 10,
-     "entryId": "4234",
+     "entryId": "4250",
      "status": "Q"
     }
    ],
    "COLLAB_ID": null,
-   "~RRULE_DESCRIPTION": "каждый 10-й день, от 04.04.2026 до 14.04.2026",
+   "~RRULE_DESCRIPTION": "каждый 10-й день, от 07.04.2026 до 17.04.2026",
    "attendeesEntityList": [
     {
      "entityId": "user",
@@ -214,35 +215,35 @@ import TabItem from '@theme/TabItem';
      "id": 10
     }
    ],
-   "~DATE_FROM": "04.04.2026 22:25:00",
-   "~DATE_TO": "04.04.2026 23:25:00",
+   "~DATE_FROM": "07.04.2026 23:31:00",
+   "~DATE_TO": "08.04.2026 00:31:00",
    "RINDEX": 0,
    "~USER_OFFSET_FROM": 0,
    "~USER_OFFSET_TO": 0
   },
   {
-   "ID": "4236",
-   "PARENT_ID": "4236",
+   "ID": "4252",
+   "PARENT_ID": "4252",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "Новое событие",
-   "DATE_FROM": "04.04.2026 22:25:00",
-   "DATE_TO": "04.04.2026 23:25:00",
+   "DATE_FROM": "07.04.2026 23:31:00",
+   "DATE_TO": "08.04.2026 00:31:00",
    "ORIGINAL_DATE_FROM": "***",
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1775319917",
-   "DATE_TO_TS_UTC": "1777926300",
+   "DATE_FROM_TS_UTC": "1775583073",
+   "DATE_TO_TS_UTC": "1778189460",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "03.04.2026 22:25:16",
-   "TIMESTAMP_X": "03.04.2026 22:25:16",
+   "DATE_CREATE": "06.04.2026 23:31:13",
+   "TIMESTAMP_X": "06.04.2026 23:31:13",
    "DESCRIPTION": "Описание события",
    "DT_FROM": null,
    "DT_TO": null,

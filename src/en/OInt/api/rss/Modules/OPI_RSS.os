@@ -153,7 +153,7 @@ EndFunction
 // Structure Of KeyAndValue - Channel structure
 Function ParseFeedRSS(Val XMLText) Export
 
-    OPI_TypeConversion.GetLine(XMLText);
+    OPI_TypeConversion.GetLine(XMLText, True);
 
     Channel = New Structure;
 
@@ -289,7 +289,7 @@ EndFunction
 // Structure Of KeyAndValue - Feed structure
 Function ParseFeedAtom(Val XMLText) Export
 
-    OPI_TypeConversion.GetLine(XMLText);
+    OPI_TypeConversion.GetLine(XMLText, True);
 
     Feed = New Structure;
 

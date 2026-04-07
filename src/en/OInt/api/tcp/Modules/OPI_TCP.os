@@ -116,7 +116,13 @@ EndFunction
 // Boolean - always return True
 Function CloseConnection(Val Connection) Export
 
-    Return Connection.Disconnect();
+    If Not IsClientObject(Connection) Then
+        Result = True;
+    Else
+        Result = Connection.Disconnect();
+    EndIf;
+
+    Return Result;
 
 EndFunction
 

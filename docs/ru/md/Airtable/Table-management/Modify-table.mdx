@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+
 description: Изменить таблицу и другие функции для работы с Airtable в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Airtable]
 ---
@@ -60,8 +61,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ИзменитьТаблицу \
               --token "***" \
-              --base "appTYDEaLwn6MFbSH" \
-              --table "tblgMLZeHQHDwiRFx" \
+              --base "appwa9Dy06QftAJwY" \
+              --table "tbls1WaYULRT1sjo4" \
               --title "Тестовая таблица 2 (изм.)" \
               --description "Новая таблица (изм.)"
         ```
@@ -71,8 +72,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ИзменитьТаблицу ^
               --token "***" ^
-              --base "appTYDEaLwn6MFbSH" ^
-              --table "tblgMLZeHQHDwiRFx" ^
+              --base "appwa9Dy06QftAJwY" ^
+              --table "tbls1WaYULRT1sjo4" ^
               --title "Тестовая таблица 2 (изм.)" ^
               --description "Новая таблица (изм.)"
         ```
@@ -82,13 +83,13 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "tblv0QvtHmPqCzP0M",
+ "id": "tblxj1XeUKkVZC2XO",
  "name": "Тестовая таблица 2 (изм.)",
  "description": "Новая таблица (изм.)",
- "primaryFieldId": "fld9yIY99MKL78hxQ",
+ "primaryFieldId": "fldNlr2B7lF2Y7Sc7",
  "fields": [
   {
-   "id": "fld9yIY99MKL78hxQ",
+   "id": "fldNlr2B7lF2Y7Sc7",
    "name": "Номер",
    "type": "number",
    "options": {
@@ -96,12 +97,12 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldv7UZIDwNlPaG4a",
+   "id": "fldh06aspVkFOjUH4",
    "name": "Строковое",
    "type": "richText"
   },
   {
-   "id": "fldP8KqMDmjklrmQo",
+   "id": "fldGOhN1v4t0zVcRv",
    "name": "Вложение",
    "type": "multipleAttachments",
    "options": {
@@ -109,7 +110,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "flddNktCrbqoyjLEf",
+   "id": "fldgVnyrjtzecGugn",
    "name": "Флажок",
    "type": "checkbox",
    "options": {
@@ -118,7 +119,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldMB2r06Ofs9sNpx",
+   "id": "fldSCIB0rHrct2mEs",
    "name": "Дата",
    "type": "date",
    "options": {
@@ -129,24 +130,24 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldPyDnOLjl4lTvzD",
+   "id": "fldDBesf9TwLiNbyx",
    "name": "Телефон",
    "type": "phoneNumber"
   },
   {
-   "id": "fldonCD2wgR1a5pBk",
+   "id": "fldQZP6L4Ljg8JiRr",
    "name": "Почта",
    "type": "email"
   },
   {
-   "id": "fldjVX8LD4YNTYS0e",
+   "id": "fldXjQZYgZqgYfPXU",
    "name": "Ссылка",
    "type": "url"
   }
  ],
  "views": [
   {
-   "id": "viwNr8wPtHEYp5YVh",
+   "id": "viwNXVVYaQOL5iX1Q",
    "name": "Grid view",
    "type": "grid"
   }
