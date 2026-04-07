@@ -1,5 +1,6 @@
 ---
 sidebar_position: 15
+
 description: Получить список версий объектов и другие функции для работы с S3 в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, S3]
 ---
@@ -66,7 +67,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокВерсийОбъектов \
-              --bucket "c3c3c02f" \
+              --bucket "4438f8d2" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --prefix "pic" \
               --dir true
@@ -78,7 +79,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокВерсийОбъектов ^
-              --bucket "c3c3c02f" ^
+              --bucket "4438f8d2" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --prefix "pic" ^
               --dir true
@@ -92,7 +93,7 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "ListVersionsResult": {
-   "Name": "f4715a5e",
+   "Name": "c747a716",
    "Prefix": "pic",
    "KeyMarker": {},
    "NextVersionIdMarker": {},
@@ -101,7 +102,7 @@ import TabItem from '@theme/TabItem';
    "IsTruncated": "false",
    "Version": {
     "Key": "***",
-    "LastModified": "2026-04-03T19:32:33.487Z",
+    "LastModified": "2026-04-06T20:42:50.748Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "Owner": {
@@ -120,13 +121,13 @@ import TabItem from '@theme/TabItem';
   "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "18A2EFB6EB319E3D",
+  "X-Amz-Request-Id": "18A3DF4A3D11E120",
   "X-Content-Type-Options": "nosniff",
   "X-Ratelimit-Limit": "6372",
   "X-Ratelimit-Remaining": "6372",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Fri, 03 Apr 2026 19:32:51 GMT",
+  "Date": "Mon, 06 Apr 2026 20:43:07 GMT",
   "Content-Type": "application/xml",
   "Content-Length": "702"
  }

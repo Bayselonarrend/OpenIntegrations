@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+
 description: Сгруппировать товары и другие функции для работы с VK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, VK]
 ---
@@ -62,7 +63,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk СгруппироватьТовары \
-              --items "['12836140','12836142']" \
+              --items "['12902957','12902958']" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -72,7 +73,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk СгруппироватьТовары ^
-              --items "['12836140','12836142']" ^
+              --items "['12902957','12902958']" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -82,7 +83,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "response": {
-  "item_group_id": 489913
+  "item_group_id": 489915
  }
 }
 ```

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 9
+
 description: Обработать отправку GRPC и другие функции для работы с ClickHouse в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, ClickHouse]
 ---
@@ -89,8 +90,8 @@ import TabItem from '@theme/TabItem';
             
             oint clickhouse ОбработатьОтправкуGRPC \
               --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
-              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'01/01/2026 10:00:00','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" \
-              --data "['{\r\n \"'"id\"'": 2,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 101,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 3,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 102,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 4,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 103,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 5,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 104,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n']"
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" \
+              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
         ```
     </TabItem>
   
@@ -100,8 +101,8 @@ import TabItem from '@theme/TabItem';
             
             oint clickhouse ОбработатьОтправкуGRPC ^
               --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
-              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'01/01/2026 10:00:00','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
-              --data "['{\r\n \"'"id\"'": 2,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 101,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 3,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 102,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 4,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 103,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n','{\r\n \"'"id\"'": 5,\r\n \"'"timestamp\"'": \"'"2026-01-01T10:00:00\"'",\r\n \"'"user_id\"'": 104,\r\n \"'"event_type\"'": \"'"stream_test\"'",\r\n \"'"payload\"'": \"'"{}\"'"\r\n}\n']"
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
+              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
         ```
     </TabItem>
 </Tabs>
@@ -152,7 +153,7 @@ import TabItem from '@theme/TabItem';
     "written_bytes": 235,
     "written_rows": 5
    },
-   "query_id": "b05b03f4-ad7e-4c35-b32f-aeb1bb0e0a11",
+   "query_id": "eb0f812b-2756-4632-862b-6abbdd52053f",
    "stats": {
     "allocated_bytes": 0,
     "applied_aggregation": false,

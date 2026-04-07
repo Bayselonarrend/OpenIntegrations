@@ -1,5 +1,6 @@
 ---
 sidebar_position: 12
+
 description: Создать преалерт и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
 ---
@@ -63,8 +64,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek СоздатьПреалерт \
               --token "***" \
-              --uuids "116139c6-c136-4c53-aab9-0b0056c21f11" \
-              --date "2026-03-26T08:15:57" \
+              --uuids "b68c08e7-86b7-4553-bde6-b4cccd34895d" \
+              --date "2026-04-07T22:06:27" \
               --point "NSK27" \
               --testapi "***"
         ```
@@ -74,8 +75,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek СоздатьПреалерт ^
               --token "***" ^
-              --uuids "116139c6-c136-4c53-aab9-0b0056c21f11" ^
-              --date "2026-03-26T08:15:57" ^
+              --uuids "b68c08e7-86b7-4553-bde6-b4cccd34895d" ^
+              --date "2026-04-07T22:06:27" ^
               --point "NSK27" ^
               --testapi "***"
         ```
@@ -86,13 +87,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "c2f0f7c9-4e19-40c1-8e99-5d8cc347d421"
+  "uuid": "922ab33c-2453-45d6-ab86-c7b1a506ef41"
  },
  "requests": [
   {
-   "request_uuid": "0bce9834-bc5f-4f9c-80af-7d24156fea17",
+   "request_uuid": "1515de14-a09f-4dab-a114-3b04aebfa09c",
    "type": "CREATE",
-   "date_time": "2026-04-03T22:26:24+03:00",
+   "date_time": "2026-04-06T23:34:00+03:00",
    "state": "ACCEPTED"
   }
  ],
