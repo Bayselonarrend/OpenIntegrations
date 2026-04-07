@@ -3,7 +3,7 @@
 // CLI: vk
 // Keywords: vk, vkontakte
 
-// DocsCategory: Social
+// DocsCategory: Messenger
 // DocsNameRU: VK
 // DocsNameEN: VK
 

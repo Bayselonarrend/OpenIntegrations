@@ -2,6 +2,10 @@
     "local": {
         "description": "Paths and information for processing on local machine",
         "value": {
+            "1cVersion": {
+                "description": "1C:Enterprise platform version",
+                "value": "8.3.26.1656"
+            },
             "engineWindows": {
                 "description": "OneScript engine for CLI packs (Windows)",
                 "value": "C:/engine/windows"

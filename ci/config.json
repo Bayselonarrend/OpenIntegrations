@@ -240,13 +240,11 @@
        "docsCategories": {
         "description": "Docs categories and classes",
         "value": {
-         "Messenger": "Мессенджеры",
-         "Social": "Социальные сети",
+         "Messenger": "Мессенджеры и соц. сети",
          "Database": "Базы данных и электронные таблицы",
          "Folder": "Файловые хостинги и хранилища",
-         "CRM": "Комплексные решения (CMS, CRM)",
          "Commerce": "Электронная коммерция и доставка",
-         "Calendar": "Планирование и управление проектами",
+         "Calendar": "Планирование и управление",
          "AI": "Искусственный интеллект",
          "Exchange": "Протоколы обмена",
          "Other": "Прочее"
@@ -359,8 +357,7 @@
        "docsCategories": {
         "description": "Docs categories and classes",
         "value": {
-         "Messenger": "Messengers",
-         "Social": "Social networks",
+         "Messenger": "Messengers and social networks",
          "Database": "Databases and spreadsheets",
          "Folder": "File-hosting services and storages",
          "CRM": "Complete solutions (CMS, CRM)",

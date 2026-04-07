@@ -487,10 +487,7 @@ impl GrpcBackend {
         }
     }
 
-    pub fn set_metadata(&self, metadata_json: &str) -> Result<(), String> {
-        let metadata: HashMap<String, String> = serde_json::from_str(metadata_json)
-            .map_err(|e| format!("Invalid metadata JSON: {}", e))?;
-
+    pub fn set_metadata(&self, metadata: HashMap<String, String>) -> Result<(), String> {
         let (response_tx, response_rx) = mpsc::channel();
         
         self.tx.send(BackendCommand::SetMetadata {

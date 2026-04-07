@@ -13,8 +13,9 @@ mod identity_codec;
 use common_core::*;
 use common_utils::utils::{json_error, json_success};
 use common_tcp::tls_settings::TlsSettings;
+use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
-use serde_json::json;
+use serde_json::{json, Value};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -150,9 +151,23 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     }
 }
 
+pub struct StoredSettings {
+    pub settings: HashMap<String, Value>,
+    pub metadata: HashMap<String, String>,
+}
+
+impl Default for StoredSettings {
+    fn default() -> Self {
+        Self {
+            settings: HashMap::new(),
+            metadata: HashMap::new(),
+        }
+    }
+}
+
 pub struct AddIn {
     server_address: String,
-    stored_settings: String,
+    stored_settings: StoredSettings,
     tls: Option<TlsSettings>,
     backend: Arc<Mutex<backend_core::GrpcBackend>>,
     initialized: bool,
@@ -162,7 +177,7 @@ impl AddIn {
     pub fn new() -> Self {
         Self {
             server_address: String::new(),
-            stored_settings: String::new(),
+            stored_settings: StoredSettings::default(),
             tls: None,
             backend: Arc::new(Mutex::new(backend_core::GrpcBackend::new())),
             initialized: false,
@@ -249,24 +264,47 @@ impl AddIn {
     }
 
     pub fn set_metadata(&mut self, metadata_json: &str) -> String {
+        let metadata: HashMap<String, String> = match serde_json::from_str(metadata_json) {
+            Ok(map) => map,
+            Err(e) => return json_error(&format!("Invalid metadata JSON: {}", e)),
+        };
+
         let guard = match self.backend.lock() {
             Ok(lock) => lock,
             Err(e) => return json_error(&e.to_string())
         };
 
-        match guard.set_metadata(metadata_json) {
-            Ok(_) => json_success(),
+        match guard.set_metadata(metadata.clone()) {
+            Ok(_) => {
+                self.stored_settings.metadata = metadata;
+                json_success()
+            }
             Err(e) => json_error(&e)
         }
     }
 
     pub fn get_settings(&self) -> String {
-        self.stored_settings.clone()
+        let s = &self.stored_settings;
+        if s.metadata.is_empty() {
+            return serde_json::to_string(&s.settings).unwrap_or_else(|_| "{}".to_string());
+        }
+
+        let mut result = s.settings.clone();
+        result.insert(
+            "metadata".to_string(),
+            serde_json::to_value(&s.metadata).unwrap_or(Value::Null),
+        );
+        serde_json::to_string(&result).unwrap_or_else(|_| "{}".to_string())
     }
 
     pub fn store_settings(&mut self, settings: String) -> String {
-        self.stored_settings = settings;
-        json_success()
+        match serde_json::from_str::<HashMap<String, Value>>(&settings) {
+            Ok(value) => {
+                self.stored_settings.settings = value;
+                json_success()
+            }
+            Err(e) => json_error(&format!("Invalid settings JSON: {}", e)),
+        }
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
