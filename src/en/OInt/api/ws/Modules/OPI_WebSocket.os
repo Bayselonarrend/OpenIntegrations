@@ -145,9 +145,18 @@ EndFunction
 // Structure Of KeyAndValue - Result of connection termination
 Function CloseConnection(Val Connection) Export
 
-    Result = Connection.Disconnect();
-    Result = OPI_Tools.JsonToStructure(Result);
+    If IsClientObject(Connection) Then
 
+        Result = Connection.Disconnect();
+        Result = OPI_Tools.JsonToStructure(Result, False);
+
+    Else
+
+        Result = New Structure("result,error", False, "It's not a connection");
+
+    EndIf;
+
+    //@skip-check constructor-function-return-section
     Return Result;
 
 EndFunction

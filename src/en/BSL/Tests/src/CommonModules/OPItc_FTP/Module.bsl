@@ -1822,6 +1822,8 @@ EndProcedure
 
 Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
 
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
+
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host     = FunctionParameters["FTP_IP"];
