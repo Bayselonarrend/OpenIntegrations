@@ -15,6 +15,12 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
+                "description_ru": "Добавлен новый вариант релиза для 1С:Предприятие - `.CF`",
+                "description_en": "Added new release variant for 1C:Enterprise - `.CF`"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
                 "description_ru": "Библиотека работы с Twitter удалена из пакета",
                 "description_en": "Twitter library has been removed from the package"
             },
@@ -47,6 +53,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Включено использование двойных кавычек вместо одиночных при выводе JSON в CLI версии",
                 "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON in CLI version"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Доработана документация: изменена структура разделов, добавлены таблицы расширенного вызова, улучшен UI/UX",
+                "description_en": "Documentation updated: section structure revised, extended call tables added, improved UI/UX design"
             }
         ]
     },

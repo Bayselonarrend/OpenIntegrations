@@ -23,6 +23,14 @@ const DownloadPage = () => {
           desc: 'Файл расширения 1С в формате .cfe',
         },
         {
+          name: 'CF (конфигурация)',
+          files: {
+            ru: 'OpenIntegrations_2.0.0_ru.cf',
+            en: 'OpenIntegrations_2.0.0_en.cf',
+          },
+          desc: 'Файл конфигурации 1С в формате .cf',
+        },
+        {
           name: 'XML (выгрузка)',
           files: {
             ru: 'XML_RU.zip',
