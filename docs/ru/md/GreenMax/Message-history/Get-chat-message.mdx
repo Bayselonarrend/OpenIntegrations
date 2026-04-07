@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+
 description: Получить сообщение чата и другие функции для работы с GreenMax в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenMax]
 ---
@@ -68,7 +69,7 @@ import TabItem from '@theme/TabItem';
             oint greenmax ПолучитьСообщениеЧата \
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
               --chat "***" \
-              --message "2761480287806"
+              --message "115440372143232131"
         ```
     </TabItem>
   
@@ -79,7 +80,7 @@ import TabItem from '@theme/TabItem';
             oint greenmax ПолучитьСообщениеЧата ^
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
               --chat "***" ^
-              --message "2761480287806"
+              --message "115440372143232131"
         ```
     </TabItem>
 </Tabs>
@@ -88,20 +89,11 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "type": "outgoing",
- "idMessage": "2761480287806",
+ "idMessage": "115440372143232131",
  "timestamp": 1761480287,
- "typeMessage": "extendedTextMessage",
+ "typeMessage": "textMessage",
  "chatId": "***",
  "textMessage": "Тест 5",
- "extendedTextMessage": {
-  "text": "Тест 5",
-  "description": "",
-  "title": "",
-  "previewType": "None",
-  "jpegThumbnail": "",
-  "forwardingScore": 0,
-  "isForwarded": false
- },
  "statusMessage": "delivered",
  "sendByApi": "***",
  "deletedMessageId": "",

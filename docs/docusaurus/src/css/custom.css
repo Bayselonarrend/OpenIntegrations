@@ -589,25 +589,3 @@ li > a.menu__link {
 .HTTP > div > a::before{
   content: url(../../static/img/APIs/small/HTTP.png);
 }
-
-/* Метод недоступен в CLI (!NOCLI) — см. sidebar_class_name в шаблонах doc_*.md / DocsGenerator */
-.theme-doc-sidebar-menu .menu__link.doc-no-cli,
-.theme-doc-sidebar-menu a.doc-no-cli {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 0.35rem;
-  box-sizing: border-box;
-}
-
-.theme-doc-sidebar-menu .menu__link.doc-no-cli::after,
-.theme-doc-sidebar-menu a.doc-no-cli::after {
-  content: '';
-  display: inline-block;
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  background: url(../../static/img/nocli-sidebar.svg) center / contain no-repeat;
-  opacity: 0.85;
-}
