@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint clickhouse ОбработатьОтправкуGRPC ^
-  --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+  --conn "{'user':'bayselonarrend','address':'http://127.0.0.1:9101','transport':'grpc','password':'***','auth_type':'basic'}" ^
   --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
   --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"

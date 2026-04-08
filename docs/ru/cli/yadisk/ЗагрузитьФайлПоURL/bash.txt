@@ -1,4 +1,4 @@
 oint yadisk ЗагрузитьФайлПоURL \
   --token "***" \
-  --path "/0bc10bbb-a586-4e3a-96e8-163854052726.png" \
+  --path "/0ddaded9-2db4-477e-8aec-c4e22072b82a.png" \
   --url "https://hut.openintegrations.dev/test_data/picture.jpg"

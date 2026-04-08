@@ -1,2 +1,2 @@
 oint rss РазобратьФидRSS \
-  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\n53am01p.apb.xml"
+  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\5mrdcjxj.3so.xml"

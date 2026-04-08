@@ -2,5 +2,5 @@
 
 oint sftp ЗагрузитьФайл \
   --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\ik3i5prh.apg" \
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\smaamzcz.ffq" \
   --path "files_folder/pic_from_binary.png"
