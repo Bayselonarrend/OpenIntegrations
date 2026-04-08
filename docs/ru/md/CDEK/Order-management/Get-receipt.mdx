@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить квитанцию
  Получает квитанцию к заказу
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | ПолучитьФайл | --getfile | Булево | &#x2716; | Истина > будут получены сразу данные PDF файла, Ложь > ответ сервера CDEK |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение, ДвоичныеДанные - сериализованный JSON ответа от CDEK или PDF файл
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение, ДвоичныеДанные - сериализованный JSON ответа от CDEK или PDF файл
 
 :::tip
 Квитанция должна быть предварительно создана. См. СформироватьКвитанцию
@@ -88,38 +94,38 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "04dbba98-3207-4a93-81f6-9f2087955921",
+  "uuid": "9b43e29d-42c0-4669-b478-0d9ddd8a5150",
   "orders": [
    {
-    "order_uuid": "4f7ac9af-e625-4607-b8d8-60ce16cedd1b"
+    "order_uuid": "aecd5417-dc58-4ea3-afea-776cdaf577c3"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/04dbba98-3207-4a93-81f6-9f2087955921.pdf",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/9b43e29d-42c0-4669-b478-0d9ddd8a5150.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-06T23:33:59+03:00"
+    "date_time": "2026-04-08T09:04:24+03:00"
    },
    {
     "code": "PROCESSING",
     "name": "Формируется",
-    "date_time": "2026-04-06T23:33:59+03:00"
+    "date_time": "2026-04-08T09:04:24+03:00"
    },
    {
     "code": "READY",
     "name": "Сформирован",
-    "date_time": "2026-04-06T23:34:00+03:00"
+    "date_time": "2026-04-08T09:04:25+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "dcaa9c65-04ea-45bb-a60d-4f94a813415d",
+   "request_uuid": "61ee8970-0df7-42d4-a45b-fc366347ae4c",
    "type": "CREATE",
-   "date_time": "2026-04-06T23:33:19+03:00",
+   "date_time": "2026-04-08T09:03:44+03:00",
    "state": "SUCCESSFUL"
   }
  ],

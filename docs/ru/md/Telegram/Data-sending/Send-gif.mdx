@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить гифку
  Отправляет гифку в чат или канал
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Клавиатура | --keyboard | Строка, Структура Из КлючИЗначение | &#x2716; | Клавиатура. См. [`СформироватьКлавиатуруПоМассивуКнопок`](/docs/Telegram/Data-sending/Form-keyboard-from-button-array) |
   | Разметка | --parsemode | Строка | &#x2716; | Вид обработки текста (HTML, Markdown, MarkdownV2) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 :::tip
 Метод в документации API: [sendAnimation](https://core.telegram.org/bots/api#sendanimation)
@@ -78,7 +84,7 @@ import TabItem from '@theme/TabItem';
               --token "***" \
               --chat "***" \
               --text "Строковое значение" \
-              --gif "C:\Users\bayselonarrend\AppData\Local\Temp\sqg3dva5.wg2"
+              --gif "C:\Users\bayselonarrend\AppData\Local\Temp\4ccltd33.gwf"
         ```
     </TabItem>
   
@@ -88,7 +94,7 @@ import TabItem from '@theme/TabItem';
               --token "***" ^
               --chat "***" ^
               --text "Строковое значение" ^
-              --gif "C:\Users\bayselonarrend\AppData\Local\Temp\sqg3dva5.wg2"
+              --gif "C:\Users\bayselonarrend\AppData\Local\Temp\4ccltd33.gwf"
         ```
     </TabItem>
 </Tabs>
@@ -98,7 +104,7 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "result": {
-  "message_id": 20636,
+  "message_id": 20654,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -112,7 +118,7 @@ import TabItem from '@theme/TabItem';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1775505566,
+  "date": 1775625190,
   "animation": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
@@ -120,42 +126,42 @@ import TabItem from '@theme/TabItem';
    "width": "***",
    "height": 220,
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAlCcadQQniGcxaKAyvCD0nwRNb2t_hIAAkacAAKvqqhKycCywYwHclYBAAdtAAM7BA",
-    "file_unique_id": "AQADRpwAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCuadXj5svw-xkO1t0x6S0AAUflJcuNAALZkwAC_lqxSg7qKfZR-P6oAQAHbQADOwQ",
+    "file_unique_id": "AQAD2ZMAAv5asUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAlCcadQQniGcxaKAyvCD0nwRNb2t_hIAAkacAAKvqqhKycCywYwHclYBAAdtAAM7BA",
-    "file_unique_id": "AQADRpwAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCuadXj5svw-xkO1t0x6S0AAUflJcuNAALZkwAC_lqxSg7qKfZR-P6oAQAHbQADOwQ",
+    "file_unique_id": "AQAD2ZMAAv5asUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAJQnGnUEJ4hnMWigMrwg9J8ETW9rf4SAAJGnAACr6qoSsnAssGMB3JWOwQ",
-   "file_unique_id": "AgADRpwAAq-qqEo",
+   "file_id": "CgACAgIAAxkDAAJQrmnV4-bL8PsZDtbdMektAAFH5SXLjQAC2ZMAAv5asUoO6in2Ufj-qDsE",
+   "file_unique_id": "AgAD2ZMAAv5asUo",
    "file_size": 84979
   },
   "document": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAlCcadQQniGcxaKAyvCD0nwRNb2t_hIAAkacAAKvqqhKycCywYwHclYBAAdtAAM7BA",
-    "file_unique_id": "AQADRpwAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCuadXj5svw-xkO1t0x6S0AAUflJcuNAALZkwAC_lqxSg7qKfZR-P6oAQAHbQADOwQ",
+    "file_unique_id": "AQAD2ZMAAv5asUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAlCcadQQniGcxaKAyvCD0nwRNb2t_hIAAkacAAKvqqhKycCywYwHclYBAAdtAAM7BA",
-    "file_unique_id": "AQADRpwAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCuadXj5svw-xkO1t0x6S0AAUflJcuNAALZkwAC_lqxSg7qKfZR-P6oAQAHbQADOwQ",
+    "file_unique_id": "AQAD2ZMAAv5asUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAJQnGnUEJ4hnMWigMrwg9J8ETW9rf4SAAJGnAACr6qoSsnAssGMB3JWOwQ",
-   "file_unique_id": "AgADRpwAAq-qqEo",
+   "file_id": "CgACAgIAAxkDAAJQrmnV4-bL8PsZDtbdMektAAFH5SXLjQAC2ZMAAv5asUoO6in2Ufj-qDsE",
+   "file_unique_id": "AgAD2ZMAAv5asUo",
    "file_size": 84979
   },
   "caption": "Строковое значение"

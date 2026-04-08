@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Зафиксировать договоренность о доставке
  Фиксирует оговоренные с клиентом дату, время и адрес доставки
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Договоренность | --appt | Структура Из КлючИЗначение | &#x2714; | Описание договоренности. См. [`ПолучитьОписаниеДоговоренности`](/docs/CDEK/Delivery-management/Get-appointment-description) |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
 Метод в документации API: [Регистрация договоренности о доставке](https://api-docs.cdek.ru/36981338.html)
@@ -94,7 +100,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ЗафиксироватьДоговоренностьОДоставке \
               --token "***" \
-              --appt "{'cdek_number':'1106207236','order_uuid':'a2a287ea-fa8d-4c9a-832b-185bdb7e257c','date':'2026-03-20','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" \
+              --appt "{'cdek_number':'1106207236','order_uuid':'2e35a3c9-ff85-4224-bf21-0a2675c3bf6c','date':'2026-04-22','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" \
               --testapi "***"
         ```
     </TabItem>
@@ -105,7 +111,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ЗафиксироватьДоговоренностьОДоставке ^
               --token "***" ^
-              --appt "{'cdek_number':'1106207236','order_uuid':'a2a287ea-fa8d-4c9a-832b-185bdb7e257c','date':'2026-03-20','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" ^
+              --appt "{'cdek_number':'1106207236','order_uuid':'2e35a3c9-ff85-4224-bf21-0a2675c3bf6c','date':'2026-04-22','time_from':'10:00','time_to':'17:00','comment':'Офис группы компаний','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Новосибирск','sub_region':'Новосибирск','city':'Новосибирск','kladr_code':'7700000000000','address':'ул. Блюхера, 33'}}" ^
               --testapi "***"
         ```
     </TabItem>
@@ -115,13 +121,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "5e0eac48-9de8-43ad-9e43-c0177b3cd559"
+  "uuid": "3660fcda-9cd5-446b-b8b4-0454f29a4e90"
  },
  "requests": [
   {
-   "request_uuid": "e07a549b-656e-476c-b049-aed332e41a56",
+   "request_uuid": "a2868d64-7c8c-4fd4-875e-7e2e037f8f84",
    "type": "CREATE",
-   "date_time": "2026-04-06T23:38:04+03:00",
+   "date_time": "2026-04-08T09:08:40+03:00",
    "state": "ACCEPTED"
   }
  ],

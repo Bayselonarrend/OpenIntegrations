@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить заказ
  Получает заказ по UUID
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | UUID | --uuid | Строка | &#x2714; | UUID заказа |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
 Метод в документации API: [Информация о заказе](https://api-docs.cdek.ru/29923975.html)
@@ -60,7 +66,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказ \
               --token "***" \
-              --uuid "b68c08e7-86b7-4553-bde6-b4cccd34895d" \
+              --uuid "aecd5417-dc58-4ea3-afea-776cdaf577c3" \
               --testapi "***"
         ```
     </TabItem>
@@ -69,7 +75,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказ ^
               --token "***" ^
-              --uuid "b68c08e7-86b7-4553-bde6-b4cccd34895d" ^
+              --uuid "aecd5417-dc58-4ea3-afea-776cdaf577c3" ^
               --testapi "***"
         ```
     </TabItem>
@@ -79,12 +85,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "4f7ac9af-e625-4607-b8d8-60ce16cedd1b",
+  "uuid": "aecd5417-dc58-4ea3-afea-776cdaf577c3",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107164731",
-  "number": "e89f3c51-ac2d-437e-8aff-c827f78ad22e",
+  "cdek_number": "1107188470",
+  "number": "a51e45f8-6f82-4ec4-9055-9f82e8d5c551",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -177,7 +183,7 @@ import TabItem from '@theme/TabItem';
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001854856",
+    "barcode": "000001880803",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -203,21 +209,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "74858eb2-e7aa-44fa-805a-c40fe575688c"
+    "package_id": "cce37195-0bee-4861-9275-3e69ca4acfe2"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-04-06T23:31:46+03:00",
+    "date_time": "2026-04-08T09:01:57+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-06T23:31:45+03:00",
+    "date_time": "2026-04-08T09:01:56+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

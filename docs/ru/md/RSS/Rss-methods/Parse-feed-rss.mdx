@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Разобрать фид (RSS)
  Разбирает XML RSS фида и возвращает структуру с данными канала и элементами
@@ -22,6 +23,13 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | ТекстXML | --xml | Строка | &#x2714; | XML содержимое RSS фида |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - Структура канала
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -31,8 +39,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - Структура канала
 
 
 
@@ -48,14 +54,14 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint rss РазобратьФидRSS \
-              --xml "C:\Users\bayselonarrend\AppData\Local\Temp\n53am01p.apb.xml"
+              --xml "C:\Users\bayselonarrend\AppData\Local\Temp\5mrdcjxj.3so.xml"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint rss РазобратьФидRSS ^
-              --xml "C:\Users\bayselonarrend\AppData\Local\Temp\n53am01p.apb.xml"
+              --xml "C:\Users\bayselonarrend\AppData\Local\Temp\5mrdcjxj.3so.xml"
         ```
     </TabItem>
 </Tabs>
@@ -66,13 +72,13 @@ import TabItem from '@theme/TabItem';
  "title": "Тестовый RSS канал",
  "link": "https://example.com",
  "description": "Описание тестового RSS канала",
- "lastBuildDate": "Wed, 25 Mar 2026 08:38:48 +0000",
+ "lastBuildDate": "Wed, 08 Apr 2026 09:28:42 +0000",
  "items": [
   {
    "title": "Первый элемент",
    "description": "Описание первого элемента",
    "link": "https://example.com/item1",
-   "pubDate": "Wed, 25 Mar 2026 08:38:47 +0000",
+   "pubDate": "Wed, 08 Apr 2026 09:28:41 +0000",
    "author": "test@example.com",
    "guid": "item-1"
   },
@@ -80,7 +86,7 @@ import TabItem from '@theme/TabItem';
    "title": "Второй элемент",
    "description": "Описание второго элемента",
    "link": "https://example.com/item2",
-   "pubDate": "Wed, 25 Mar 2026 08:38:48 +0000",
+   "pubDate": "Wed, 08 Apr 2026 09:28:41 +0000",
    "author": "test@example.com",
    "guid": "item-2"
   }

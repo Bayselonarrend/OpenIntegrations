@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить ссылку для скачивания
  Получает ссылку для скачивания файла
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен |
   | Путь | --path | Строка | &#x2714; | Путь к файлу для скачивания |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
 
 
@@ -55,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ПолучитьСсылкуДляСкачивания \
               --token "***" \
-              --path "/d2ee4174-4ac5-4434-b109-151cfbf9b145.png"
+              --path "/31c61f6a-85bf-4ad3-aa86-476d4300184d.png"
         ```
     </TabItem>
   
@@ -63,7 +69,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ПолучитьСсылкуДляСкачивания ^
               --token "***" ^
-              --path "/d2ee4174-4ac5-4434-b109-151cfbf9b145.png"
+              --path "/31c61f6a-85bf-4ad3-aa86-476d4300184d.png"
         ```
     </TabItem>
 </Tabs>
@@ -72,7 +78,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "method": "GET",
- "href": "https://downloader.disk.yandex.ru/disk/9446bc30e2575ecf8b0428ee21bccad087ec13ebf77d0f7edf97006675e74...",
+ "href": "https://downloader.disk.yandex.ru/disk/b430ba07d3ff65cfe8f77595c020e4e441d4a7f8fab753a1d2e783c01e9fe...",
  "templated": false
 }
 ```

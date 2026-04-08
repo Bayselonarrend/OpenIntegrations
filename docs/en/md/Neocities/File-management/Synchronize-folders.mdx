@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Synchronize folders
  Creates a copy of the local directory at the selected path on the Neocities server
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | LocalFolder | --local | String | &#x2714; | Local source catalog |
   | RemoteFolder | --remote | String | &#x2716; | Remote receiver catalog. Root by default |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - synchronization error information
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - synchronization error information
 
 :::tip
 Neocities API docs: [neocities.org/api](https://neocities.org/api)

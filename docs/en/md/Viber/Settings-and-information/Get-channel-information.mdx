@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get channel information
 Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals The user ID from channel information is not suitable for sending messages through the bot - they are different
@@ -22,6 +23,13 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
   |-|-|-|-|-|
   | Token | --token | String | &#x2714; | Token |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Viber
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Viber
 
 
 

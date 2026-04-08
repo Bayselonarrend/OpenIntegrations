@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Обработать запрос
  Отправляет одиночный запрос на указанный адрес и получает ответ, используя стандартные настройки
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/TCP/Client-methods/Get-tls-settings) |
   | Прокси | --proxy | Структура Из КлючИЗначение | &#x2716; | Настройки прокси, если необходимо. См. [`ПолучитьНастройкиПрокси`](/docs/TCP/Client-methods/Get-proxy-settings) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  ДвоичныеДанные, Строка - Ответ на запрос или информация об ошибке
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   ДвоичныеДанные, Строка - Ответ на запрос или информация об ошибке
 
 :::tip
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL

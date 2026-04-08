@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get connection configuration
  Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | SSHSettings | --set | Structure Of KeyAndValue | &#x2714; | SSH settings |
   | Proxy | --proxy | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Connection settings structure
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,8 +40,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - Connection settings structure
 
 :::tip
 Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function. At the same time, a new connection will be opened and closed within the called function

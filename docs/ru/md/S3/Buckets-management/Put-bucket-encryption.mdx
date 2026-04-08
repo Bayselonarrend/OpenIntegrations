@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Установить шифрование бакета
  Устанавливает шифрование бакета по XML конфигурации
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Каталог | --dir | Булево | &#x2716; | Истина > Path style URL, Ложь > Virtual hosted style URL |
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 :::tip
 Метод в документации AWS: [PutBucketEncryption](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
@@ -73,9 +79,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 УстановитьШифрованиеБакета \
-              --name "93b90b9c" \
+              --name "c4f2b323" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --conf "C:\Users\bayselonarrend\AppData\Local\Temp\yqnedv3d.bhs.xml" \
+              --conf "C:\Users\bayselonarrend\AppData\Local\Temp\elkfr2y3.vjs.xml" \
               --dir true
         ```
     </TabItem>
@@ -85,9 +91,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 УстановитьШифрованиеБакета ^
-              --name "93b90b9c" ^
+              --name "c4f2b323" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --conf "C:\Users\bayselonarrend\AppData\Local\Temp\yqnedv3d.bhs.xml" ^
+              --conf "C:\Users\bayselonarrend\AppData\Local\Temp\elkfr2y3.vjs.xml" ^
               --dir true
         ```
     </TabItem>

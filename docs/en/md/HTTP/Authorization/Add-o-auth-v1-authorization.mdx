@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Add OAuth V1 authorization
  Adds data for OAuth v1 authorization
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | ConsumerSecret | --cs | String | &#x2714; | Consumer secret for authorization |
   | Version | --ver | String | &#x2714; | API version |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ DataProcessorObject.OPI_HTTPClient - This processor object
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
 
 :::tip
 By default, HMAC-SHA256 is used to create the signature. To change the algorithm, you can use `SetOAuthV1Algorithm`

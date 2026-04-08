@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить внешнюю ссылку файла
  Получает внешнюю ссылку для доступа к файлу
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDФайла | --fileid | Строка, Число | &#x2714; | Идентификатор файла |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод внезапно исчез из API на облачном Bitrix24, где проводилось тестирование (09/24). Возможно, он все еще будет работать на других версиях, но это не гарантировано
@@ -63,7 +69,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьВнешнююСсылкуФайла \
               --url "b24-ar17wx.bitrix24.by" \
-              --fileid 54738 \
+              --fileid 54846 \
               --token "***"
         ```
     </TabItem>
@@ -72,7 +78,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьВнешнююСсылкуФайла ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --fileid 54738 ^
+              --fileid 54846 ^
               --token "***"
         ```
     </TabItem>

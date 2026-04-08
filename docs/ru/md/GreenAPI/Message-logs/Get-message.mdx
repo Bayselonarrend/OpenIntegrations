@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить сообщение
  Получает информацию о сообщении чата по ID
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDЧата | --chat | Строка | &#x2714; | Идентификатор чата |
   | IDСообщения | --msg | Строка | &#x2714; | Идентификатор сообщения |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [GetMessage](https://green-api.com/docs/api/journals/GetMessage/)
@@ -69,7 +75,7 @@ import TabItem from '@theme/TabItem';
             oint greenapi ПолучитьСообщение \
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "***" \
-              --msg "3EB0359911C3C139773663"
+              --msg "3EB07867FD75AFECC12F6E"
         ```
     </TabItem>
   
@@ -80,7 +86,7 @@ import TabItem from '@theme/TabItem';
             oint greenapi ПолучитьСообщение ^
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "***" ^
-              --msg "3EB0359911C3C139773663"
+              --msg "3EB07867FD75AFECC12F6E"
         ```
     </TabItem>
 </Tabs>
@@ -89,13 +95,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "type": "outgoing",
- "idMessage": "3EB03B02F6F292E5137EC5",
- "timestamp": 1775508453,
+ "idMessage": "3EB07867FD75AFECC12F6E",
+ "timestamp": 1775629222,
  "typeMessage": "extendedTextMessage",
  "chatId": "***",
- "textMessage": "Новое сообщение",
+ "textMessage": "Новый текст сообщения",
  "extendedTextMessage": {
-  "text": "Новое сообщение",
+  "text": "Новый текст сообщения",
   "description": "",
   "title": "",
   "previewType": "None",
@@ -105,9 +111,9 @@ import TabItem from '@theme/TabItem';
  },
  "statusMessage": "sent",
  "sendByApi": "***",
- "deletedMessageId": "3EB0F15584323A732648BC",
- "editedMessageId": "",
- "isEdited": false,
+ "deletedMessageId": "3EB01CD21F6551EEE3ED7F",
+ "editedMessageId": "3EB0975D041E2D90D2E899",
+ "isEdited": true,
  "isDeleted": true
 }
 ```

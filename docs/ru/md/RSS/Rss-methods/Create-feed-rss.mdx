@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать фид (RSS)
  Создает текст RSS фида
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Элементы | --items | Массив Из Структура | &#x2714; | Элементы фида. См. [`ПолучитьСтруктуруЭлементаФидаRSS`](/docs/RSS/Rss-methods/Get-feed-item-structure-rss) |
   | ДатаОбновления | --date | Дата, Неопределено | &#x2716; | Дата обновления. Текущая, если не заполнено |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Строка - XML фид канала
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Строка - XML фид канала
 
 
 
@@ -81,7 +87,7 @@ import TabItem from '@theme/TabItem';
               --name "Тестовый RSS канал" \
               --descr "Описание тестового RSS канала" \
               --link "https://example.com" \
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'4/6/2026 10:28:23 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'4/6/2026 10:28:23 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'4/8/2026 9:28:41 AM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'4/8/2026 9:28:41 AM','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
   
@@ -93,12 +99,12 @@ import TabItem from '@theme/TabItem';
               --name "Тестовый RSS канал" ^
               --descr "Описание тестового RSS канала" ^
               --link "https://example.com" ^
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'4/6/2026 10:28:23 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'4/6/2026 10:28:23 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'4/8/2026 9:28:41 AM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'4/8/2026 9:28:41 AM','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Тестовый RSS канал</title>\r\n        <link>https://example.com</link>\r\n        <description>Описание тестового RSS канала</description>\r\n        <lastBuildDate>Mon, 06 Apr 2026 23:52:17 +0000</lastBuildDate>\r\n        <item>\r\n            <title>Первый элемент</title>\r\n            <description>Описание первого элемента</description>\r\n            <link>https://example.com/item1</link>\r\n            <pubDate>Mon, 06 Apr 2026 23:52:17 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-1</guid>\r\n        </item>\r\n        <item>\r\n            <title>Второй элемент</title>\r\n            <description>Описание второго элемента</description>\r\n            <link>https://example.com/item2</link>\r\n            <pubDate>Mon, 06 Apr 2026 23:52:17 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-2</guid>\r\n        </item>\r\n    </channel>\r\n</rss>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Тестовый RSS канал</title>\r\n        <link>https://example.com</link>\r\n        <description>Описание тестового RSS канала</description>\r\n        <lastBuildDate>Wed, 08 Apr 2026 09:28:42 +0000</lastBuildDate>\r\n        <item>\r\n            <title>Первый элемент</title>\r\n            <description>Описание первого элемента</description>\r\n            <link>https://example.com/item1</link>\r\n            <pubDate>Wed, 08 Apr 2026 09:28:41 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-1</guid>\r\n        </item>\r\n        <item>\r\n            <title>Второй элемент</title>\r\n            <description>Описание второго элемента</description>\r\n            <link>https://example.com/item2</link>\r\n            <pubDate>Wed, 08 Apr 2026 09:28:41 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-2</guid>\r\n        </item>\r\n    </channel>\r\n</rss>"
 ```
