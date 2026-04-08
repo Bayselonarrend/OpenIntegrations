@@ -24,11 +24,6 @@ h3,h2,h1{
   font-weight: 400;
 }
 
-/* Reduce gap between page title and method description */
-.markdown h1:first-child {
-  margin-bottom: 0.35rem;
-}
-
 strong{
   font-weight: 500;
 }
@@ -198,6 +193,47 @@ a:hover, .navbar__title:hover{
 
 li > a.menu__link {
   justify-content: flex-start;
+}
+
+/* Sidebar section chevrons: minimal custom style */
+.theme-doc-sidebar-container .menu__caret::before,
+.theme-doc-sidebar-container .menu__link--sublist-caret::after {
+  background: none;
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 0.38rem;
+  height: 0.38rem;
+  min-width: 0.38rem;
+  min-height: 0.38rem;
+  max-width: 0.38rem;
+  max-height: 0.38rem;
+  aspect-ratio: 1 / 1;
+  line-height: 0;
+  border: 0;
+  border-radius: 50%;
+  opacity: 0;
+  transform: none;
+  transition: opacity 140ms ease, background-color 140ms ease;
+}
+
+.theme-doc-sidebar-container .menu__list-item--collapsed .menu__caret::before,
+.theme-doc-sidebar-container .menu__list-item--collapsed .menu__link--sublist-caret::after {
+  background-color: transparent;
+}
+
+.theme-doc-sidebar-container .menu__list-item--active .menu__caret::before,
+.theme-doc-sidebar-container .menu__list-item--active .menu__link--sublist-caret::after,
+.theme-doc-sidebar-container .menu__link--active + .menu__caret::before,
+.theme-doc-sidebar-container .menu__link--active.menu__link--sublist-caret::after {
+  background-color: #9ca3af;
+  opacity: 1;
+}
+
+.theme-doc-sidebar-container .menu__caret:hover::before,
+.theme-doc-sidebar-container .menu__link--sublist-caret:hover::after {
+  background-color: #6b7280;
 }
 
 
