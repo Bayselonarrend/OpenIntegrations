@@ -52,6 +52,7 @@ const config = {
 
   plugins: [
     './plugins/api-icons-plugin',
+    './plugins/translation-path-sync-plugin',
 
     /*
   './plugins/course-protection',
@@ -169,6 +170,7 @@ window.yaContextCb.push(() => {
               {
                 label: 'English',
                 to: 'https://en.openintegrations.dev',
+                className: 'translation-en-link',
               }
             ],
           },
