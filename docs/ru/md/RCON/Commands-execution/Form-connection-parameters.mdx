@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Сформировать параметры соединения
  Формирует коллекцию параметров соединения
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | ТаймаутЧтения | --rtout | Число | &#x2716; | Таймаут ожидания ответа (в секундах) |
   | ТаймаутЗаписи | --wtout | Число | &#x2716; | Таймаут ожидания отправки запроса (в секундах) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - Структура параметров соединения
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - Структура параметров соединения
 
 
 

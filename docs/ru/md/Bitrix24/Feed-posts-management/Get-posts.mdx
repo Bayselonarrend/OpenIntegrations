@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить новости
  Получает новости или одну новость с отбором по ID или доступности
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Отбор | --sel | Строка | &#x2716; | Отбор новостей по доступу: UA все, SGn раб. группа, Un пользователь, DRn отдел, Gn группа |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php)
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьНовости \
               --url "b24-ar17wx.bitrix24.by" \
-              --postid 3924 \
+              --postid 3932 \
               --token "***"
         ```
     </TabItem>
@@ -75,7 +81,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьНовости ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --postid 3924 ^
+              --postid 3932 ^
               --token "***"
         ```
     </TabItem>
@@ -86,7 +92,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "3928",
+   "ID": "3932",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "Новый заголовок новости",
@@ -96,7 +102,7 @@ import TabItem from '@theme/TabItem';
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "Новый текст новости",
-   "DATE_PUBLISH": "2026-04-06T23:27:33+03:00",
+   "DATE_PUBLISH": "2026-04-08T08:53:32+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -147,7 +153,7 @@ import TabItem from '@theme/TabItem';
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 3928,
+    "ENTITY_VALUE_ID": 3932,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -178,7 +184,7 @@ import TabItem from '@theme/TabItem';
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3928,
+    "ENTITY_VALUE_ID": 3932,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -223,7 +229,7 @@ import TabItem from '@theme/TabItem';
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3928,
+    "ENTITY_VALUE_ID": 3932,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []

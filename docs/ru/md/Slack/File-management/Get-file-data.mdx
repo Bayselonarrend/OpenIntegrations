@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить данные файла
  Получает информацию о файле
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен бота |
   | ИдентификаторФайла | --fileid | Строка | &#x2714; | Идентификатор файла |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,8 +40,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -51,7 +57,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack ПолучитьДанныеФайла \
               --token "***" \
-              --fileid "F0AQPVDD97Z"
+              --fileid "F0ARW5F9PED"
         ```
     </TabItem>
   
@@ -59,7 +65,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack ПолучитьДанныеФайла ^
               --token "***" ^
-              --fileid "F0AQPVDD97Z"
+              --fileid "F0ARW5F9PED"
         ```
     </TabItem>
 </Tabs>
@@ -69,9 +75,9 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "file": {
-  "id": "F0AQQH5C57H",
-  "created": 1775507078,
-  "timestamp": 1775507078,
+  "id": "F0ARW5F9PED",
+  "created": 1775627396,
+  "timestamp": 1775627396,
   "name": "megadoc.docx",
   "title": "Новый файл",
   "mimetype": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -88,15 +94,15 @@ import TabItem from '@theme/TabItem';
   "public_url_shared": false,
   "display_as_bot": false,
   "username": "",
-  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F0AQQH5C57H/megadoc.docx",
-  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F0AQQH5C57H/download/megadoc.docx",
+  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F0ARW5F9PED/megadoc.docx",
+  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F0ARW5F9PED/download/megadoc.docx",
   "media_display_type": "unknown",
-  "converted_pdf": "https://files.slack.com/files-tmb/T06UD92BS3C-F0AQQH5C57H-50f88f5099/megadoc_converted.pdf",
-  "thumb_pdf": "https://files.slack.com/files-tmb/T06UD92BS3C-F0AQQH5C57H-50f88f5099/megadoc_thumb_pdf.png",
+  "converted_pdf": "https://files.slack.com/files-tmb/T06UD92BS3C-F0ARW5F9PED-4a8cd150db/megadoc_converted.pdf",
+  "thumb_pdf": "https://files.slack.com/files-tmb/T06UD92BS3C-F0ARW5F9PED-4a8cd150db/megadoc_thumb_pdf.png",
   "thumb_pdf_w": 909,
   "thumb_pdf_h": 1286,
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F0AQQH5C57H/megadoc.docx",
-  "permalink_public": "https://slack-files.com/T06UD92BS3C-F0AQQH5C57H-2abb07ada9",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F0ARW5F9PED/megadoc.docx",
+  "permalink_public": "https://slack-files.com/T06UD92BS3C-F0ARW5F9PED-cd1588f553",
   "is_starred": false,
   "shares": {},
   "channels": [],

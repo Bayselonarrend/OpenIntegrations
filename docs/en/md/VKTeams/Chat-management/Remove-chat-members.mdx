@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Remove chat members
  Removes users from the chat
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | ChatID | --chatid | String, Number | &#x2714; | Chat ID |
   | Users | --members | String, Number, Array of String, Number | &#x2714; | The member or members of the chat room to remove |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from VK Teams
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 :::tip
 Method at API documentation: [GET /chats/members/delete](https://teams.vk.com/botapi/#/chats/get_chats_members_delete)

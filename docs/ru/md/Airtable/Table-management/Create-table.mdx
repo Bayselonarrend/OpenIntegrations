@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать таблицу
  Создает новую таблицу в базе
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | МассивПолей | --fieldsdata | Массив Из Структура | &#x2714; | Массив описаний полей |
   | Описание | --description | Строка | &#x2716; | Описание таблицы |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
 
 
 
@@ -73,7 +79,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable СоздатьТаблицу \
               --token "***" \
-              --base "appwa9Dy06QftAJwY" \
+              --base "appBmzwVCsYBr1uLg" \
               --title "Тестовая таблица 2" \
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" \
               --description "Новая таблица"
@@ -86,7 +92,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable СоздатьТаблицу ^
               --token "***" ^
-              --base "appwa9Dy06QftAJwY" ^
+              --base "appBmzwVCsYBr1uLg" ^
               --title "Тестовая таблица 2" ^
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" ^
               --description "Новая таблица"
@@ -97,22 +103,22 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "tblxj1XeUKkVZC2XO",
+ "id": "tblY8Wp81f66UTre3",
  "name": "Тестовая таблица 2",
  "description": "Новая таблица",
- "primaryFieldId": "fldNlr2B7lF2Y7Sc7",
+ "primaryFieldId": "fldJQQOWPL37Spfhm",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldNlr2B7lF2Y7Sc7",
+   "id": "fldJQQOWPL37Spfhm",
    "name": "Номер"
   },
   {
    "type": "richText",
-   "id": "fldh06aspVkFOjUH4",
+   "id": "fldTCC9s6BAUT8h2Z",
    "name": "Строковое"
   },
   {
@@ -120,7 +126,7 @@ import TabItem from '@theme/TabItem';
    "options": {
     "isReversed": false
    },
-   "id": "fldGOhN1v4t0zVcRv",
+   "id": "fldvrft1qWt1Frvre",
    "name": "Вложение"
   },
   {
@@ -129,7 +135,7 @@ import TabItem from '@theme/TabItem';
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldgVnyrjtzecGugn",
+   "id": "fldvaQF04qeyU9MOd",
    "name": "Флажок"
   },
   {
@@ -140,28 +146,28 @@ import TabItem from '@theme/TabItem';
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldSCIB0rHrct2mEs",
+   "id": "fldjlq94xpL4D3hk3",
    "name": "Дата"
   },
   {
    "type": "phoneNumber",
-   "id": "fldDBesf9TwLiNbyx",
+   "id": "fldVi0UP9KscdlC6E",
    "name": "Телефон"
   },
   {
    "type": "email",
-   "id": "fldQZP6L4Ljg8JiRr",
+   "id": "fldoY8Xy3V3KgeZ6J",
    "name": "Почта"
   },
   {
    "type": "url",
-   "id": "fldXjQZYgZqgYfPXU",
+   "id": "fldEmurW9JL2aPDD6",
    "name": "Ссылка"
   }
  ],
  "views": [
   {
-   "id": "viwNXVVYaQOL5iX1Q",
+   "id": "viwC16M2w9XHUMLku",
    "name": "Grid view",
    "type": "grid"
   }

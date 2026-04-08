@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Connect extension 
  Connects the SQLite extension for the specified connection
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | EntryPoint | - | String | &#x2716; | Expansion entry point, if required |
   | Connection | - | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Result of extension connecting
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - Result of extension connecting
 
 :::tip
 The extension is active only for the current connection. You must reconnect it each time a new connection is established
@@ -44,9 +50,11 @@ Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQu
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

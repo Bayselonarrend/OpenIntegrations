@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать канал
  Создает новый канал
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Название | --title | Строка | &#x2714; | Наименование канала |
   | Приватный | --private | Булево | &#x2716; | Создать канал приватным |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -56,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack СоздатьКанал \
               --token "***" \
-              --title "testconv71c37c61-15ec-4351-84ca-91a0280d23ab"
+              --title "testconv1f773f95-c005-446b-a557-59f7c32d1400"
         ```
     </TabItem>
   
@@ -64,7 +70,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack СоздатьКанал ^
               --token "***" ^
-              --title "testconv71c37c61-15ec-4351-84ca-91a0280d23ab"
+              --title "testconv1f773f95-c005-446b-a557-59f7c32d1400"
         ```
     </TabItem>
 </Tabs>
@@ -74,15 +80,15 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "channel": {
-  "id": "C0AR3UFGGR4",
-  "created": 1775507066,
+  "id": "C0ARDRXGXL5",
+  "created": 1775627372,
   "creator": "U06UG1CAYH2",
   "is_org_shared": false,
   "is_im": false,
   "context_team_id": "T06UD92BS3C",
-  "updated": 1775507066259,
-  "name": "testconv60f0bc5b-2fa2-40d5-b49e-bc38419e4ebd",
-  "name_normalized": "testconv60f0bc5b-2fa2-40d5-b49e-bc38419e4ebd",
+  "updated": 1775627372208,
+  "name": "testconv1f773f95-c005-446b-a557-59f7c32d1400",
+  "name_normalized": "testconv1f773f95-c005-446b-a557-59f7c32d1400",
   "is_channel": true,
   "is_group": false,
   "is_mpim": false,

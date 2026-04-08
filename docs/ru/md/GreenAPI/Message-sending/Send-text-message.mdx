@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить текстовое сообщение
  Отправляет текстовое сообщение в выбранный чат
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Текст | --text | Строка | &#x2714; | Текст сообщения |
   | IDЦитируемого | --quoted | Строка | &#x2716; | ID цитируемого сообщения, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [SendMessage](https://green-api.com/docs/api/sending/SendMessage/)
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "***" \
               --text "Новое сообщение" \
-              --quoted "3EB0359911C3C139773663"
+              --quoted "3EB07867FD75AFECC12F6E"
         ```
     </TabItem>
   
@@ -83,7 +89,7 @@ import TabItem from '@theme/TabItem';
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "***" ^
               --text "Новое сообщение" ^
-              --quoted "3EB0359911C3C139773663"
+              --quoted "3EB07867FD75AFECC12F6E"
         ```
     </TabItem>
 </Tabs>
@@ -91,6 +97,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "3EB03B02F6F292E5137EC5"
+ "idMessage": "3EB07867FD75AFECC12F6E"
 }
 ```

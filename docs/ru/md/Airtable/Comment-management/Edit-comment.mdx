@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить комментарий
  Изменяет текст существующего комментария
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Комментарий | --comment | Строка | &#x2714; | Идентификатор комментария |
   | Текст | --text | Строка | &#x2714; | Новый текст комментария |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
 
 
 
@@ -63,10 +69,10 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ИзменитьКомментарий \
               --token "***" \
-              --base "appwa9Dy06QftAJwY" \
-              --table "tbls1WaYULRT1sjo4" \
-              --record "recMuQq84yDsU8BCo" \
-              --comment "comnPf5wXMwnZgV4D" \
+              --base "appBmzwVCsYBr1uLg" \
+              --table "tblY8Wp81f66UTre3" \
+              --record "recr94pbSB0oUIAPf" \
+              --comment "com0x0IU9d8WXJOCH" \
               --text "Тестовый комментарий (изм.)"
         ```
     </TabItem>
@@ -75,10 +81,10 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ИзменитьКомментарий ^
               --token "***" ^
-              --base "appwa9Dy06QftAJwY" ^
-              --table "tbls1WaYULRT1sjo4" ^
-              --record "recMuQq84yDsU8BCo" ^
-              --comment "comnPf5wXMwnZgV4D" ^
+              --base "appBmzwVCsYBr1uLg" ^
+              --table "tblY8Wp81f66UTre3" ^
+              --record "recr94pbSB0oUIAPf" ^
+              --comment "com0x0IU9d8WXJOCH" ^
               --text "Тестовый комментарий (изм.)"
         ```
     </TabItem>
@@ -87,14 +93,14 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "combK1FSc5msCEURD",
+ "id": "com0x0IU9d8WXJOCH",
  "author": {
   "id": "usrFlaAHlTfYWAbVW",
   "email": "bayselonarrend@gmail.com",
   "name": "Антон Титовец"
  },
  "text": "Тестовый комментарий (изм.)",
- "createdTime": "2026-04-06T20:25:07Z",
- "lastUpdatedTime": "2026-04-06T20:25:07.729Z"
+ "createdTime": "2026-04-08T05:50:45Z",
+ "lastUpdatedTime": "2026-04-08T05:50:46.827Z"
 }
 ```

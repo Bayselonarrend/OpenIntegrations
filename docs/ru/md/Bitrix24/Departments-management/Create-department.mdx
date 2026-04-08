@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать подразделение
  Создает новое подразделение
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | IDРуководителя | --headid | Строка, Число | &#x2716; | ID руководителя подразделения |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [department.add](https://dev.1c-bitrix.ru/rest_help/departments/department_add.php)
@@ -74,7 +80,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 СоздатьПодразделение \
               --url "b24-ar17wx.bitrix24.by" \
               --title "Подчиненное подразделение" \
-              --parentid 3560 \
+              --parentid 3568 \
               --headid 1 \
               --token "***"
         ```
@@ -85,7 +91,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 СоздатьПодразделение ^
               --url "b24-ar17wx.bitrix24.by" ^
               --title "Подчиненное подразделение" ^
-              --parentid 3560 ^
+              --parentid 3568 ^
               --headid 1 ^
               --token "***"
         ```
@@ -95,16 +101,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3566,
+ "result": 3570,
  "time": {
-  "start": 1775507439,
-  "finish": 1775507439.31841,
-  "duration": 0.31840991973877,
+  "start": 1775627971,
+  "finish": 1775627971.71793,
+  "duration": 0.717931985855102,
   "processing": 0,
-  "date_start": "2026-04-06T23:30:39+03:00",
-  "date_finish": "2026-04-06T23:30:39+03:00",
-  "operating_reset_at": 1775508039,
-  "operating": 0.14412784576416
+  "date_start": "2026-04-08T08:59:31+03:00",
+  "date_finish": "2026-04-08T08:59:31+03:00",
+  "operating_reset_at": 1775628571,
+  "operating": 0.17361307144165
  }
 }
 ```

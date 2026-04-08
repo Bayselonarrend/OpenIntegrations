@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отключить звук задачи
  Устанавливает режим Без звука для задачи
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDЗадачи | --task | Число, Строка | &#x2714; | ID задачи |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [tasks.task.mute](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
@@ -62,7 +68,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ОтключитьЗвукЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "10230" \
+              --task "10250" \
               --token "***"
         ```
     </TabItem>
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ОтключитьЗвукЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "10230" ^
+              --task "10250" ^
               --token "***"
         ```
     </TabItem>
@@ -82,7 +88,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "10240",
+   "id": "10250",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -95,19 +101,19 @@ import TabItem from '@theme/TabItem';
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-04-06T23:27:44+03:00",
+   "createdDate": "2026-04-08T08:54:06+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2026-04-06T23:27:48+03:00",
+   "changedDate": "2026-04-08T08:54:12+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-04-06T23:27:48+03:00",
+   "activityDate": "2026-04-08T08:54:13+03:00",
    "dateStart": null,
-   "deadline": "2026-04-07T23:27:00+03:00",
-   "startDatePlan": "2026-04-06T23:27:44+03:00",
-   "endDatePlan": "2026-04-07T00:00:00+03:00",
-   "guid": "{cb29461d-5886-493f-a902-f6d549af5641}",
+   "deadline": "2026-04-09T08:54:00+03:00",
+   "startDatePlan": "2026-04-08T08:54:06+03:00",
+   "endDatePlan": "2026-04-09T00:00:00+03:00",
+   "guid": "{87af01fc-18bb-4983-a585-e9cea82e1a56}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -136,7 +142,7 @@ import TabItem from '@theme/TabItem';
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-04-06T23:27:48+03:00",
+   "statusChangedDate": "2026-04-08T08:54:12+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -217,13 +223,13 @@ import TabItem from '@theme/TabItem';
   }
  },
  "time": {
-  "start": 1775507270,
-  "finish": 1775507270.75568,
-  "duration": 0.755676984786987,
+  "start": 1775627657,
+  "finish": 1775627657.55288,
+  "duration": 0.552881002426148,
   "processing": 0,
-  "date_start": "2026-04-06T23:27:50+03:00",
-  "date_finish": "2026-04-06T23:27:50+03:00",
-  "operating_reset_at": 1775507870,
+  "date_start": "2026-04-08T08:54:17+03:00",
+  "date_finish": "2026-04-08T08:54:17+03:00",
+  "operating_reset_at": 1775628257,
   "operating": 0
  }
 }

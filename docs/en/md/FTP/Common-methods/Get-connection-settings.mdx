@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get connection settings
  Creates a structure of FTP connection settings
@@ -29,6 +30,13 @@ import TabItem from '@theme/TabItem';
   | WriteTimeout | --wtout | Number | &#x2716; | Write timeout |
   | IPResolve | --ipresl | Boolean | &#x2716; | Advanced passive mode address resolution |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Connection settings structure
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - Connection settings structure
 
 :::tip
 When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))

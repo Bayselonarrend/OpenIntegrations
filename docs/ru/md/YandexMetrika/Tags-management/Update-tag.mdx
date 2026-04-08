@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить метку
  Изменяет имя метки по ID
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDМетки | --label | Строка | &#x2714; | ID метки для изменения |
   | Наименование | --title | Строка | &#x2714; | Новое наименование |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
 :::tip
 Метод в документации API: [Изменение метки](https://yandex.ru/dev/metrika/ru/management/openapi/label/updateLabel)
@@ -57,7 +63,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint metrika ИзменитьМетку \
               --token "***" \
-              --label "323289" \
+              --label "323321" \
               --title "Новое имя метки"
         ```
     </TabItem>
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint metrika ИзменитьМетку ^
               --token "***" ^
-              --label "323289" ^
+              --label "323321" ^
               --title "Новое имя метки"
         ```
     </TabItem>
@@ -76,7 +82,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "label": {
-  "id": 323290,
+  "id": 323321,
   "name": "Новое имя метки"
  }
 }

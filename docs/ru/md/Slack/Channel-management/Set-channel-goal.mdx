@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Установить цель канала
  Устанавливает цель (описание) канала
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Канал | --channel | Строка | &#x2714; | ID канала |
   | Цель | --purpose | Строка | &#x2714; | Цель канала |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -57,7 +63,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack УстановитьЦельКанала \
               --token "***" \
-              --channel "C0AQZ1TF6CT" \
+              --channel "C0ARDRXGXL5" \
               --purpose "Тестовая цель"
         ```
     </TabItem>
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack УстановитьЦельКанала ^
               --token "***" ^
-              --channel "C0AQZ1TF6CT" ^
+              --channel "C0ARDRXGXL5" ^
               --purpose "Тестовая цель"
         ```
     </TabItem>
@@ -77,15 +83,15 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "channel": {
-  "id": "C0AR3UFGGR4",
-  "created": 1775507066,
+  "id": "C0ARDRXGXL5",
+  "created": 1775627372,
   "creator": "U06UG1CAYH2",
   "is_org_shared": false,
   "is_im": false,
   "context_team_id": "T06UD92BS3C",
-  "updated": 1775507067539,
-  "name": "testconv60f0bc5b-2fa2-40d5-b49e-bc38419e4ebd",
-  "name_normalized": "testconv60f0bc5b-2fa2-40d5-b49e-bc38419e4ebd",
+  "updated": 1775627374888,
+  "name": "testconv1f773f95-c005-446b-a557-59f7c32d1400",
+  "name_normalized": "testconv1f773f95-c005-446b-a557-59f7c32d1400",
   "is_channel": true,
   "is_group": false,
   "is_mpim": false,
@@ -101,12 +107,12 @@ import TabItem from '@theme/TabItem';
   "purpose": {
    "value": "Тестовая цель",
    "creator": "U06UG1CAYH2",
-   "last_set": 1775507067
+   "last_set": 1775627374
   },
   "topic": {
    "value": "Тестовая тема",
    "creator": "U06UG1CAYH2",
-   "last_set": 1775507067
+   "last_set": 1775627373
   },
   "shared_team_ids": [
    "T06UD92BS3C"

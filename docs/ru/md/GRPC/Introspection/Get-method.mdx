@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить метод
  Получает информацию о методе
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Метод | --method | Строка | &#x2714; | Имя метода |
   | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/GRPC/Common-methods/Get-tls-settings) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат обработки
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
 
 
 
@@ -61,7 +67,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint grpc ПолучитьМетод \
-              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" \
+              --conn "{'proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'},'address':'https://grpcb.in:9001'}" \
               --service "grpcbin.GRPCBin" \
               --method "Index"
         ```
@@ -72,7 +78,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint grpc ПолучитьМетод ^
-              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" ^
+              --conn "{'proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'},'address':'https://grpcb.in:9001'}" ^
               --service "grpcbin.GRPCBin" ^
               --method "Index"
         ```

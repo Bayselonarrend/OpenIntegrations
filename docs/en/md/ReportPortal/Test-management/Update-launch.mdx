@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Update launch
  Updates data of a test session launch
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | LaunchID | --id | Number | &#x2714; | Launch ID |
   | LaunchStructure | --params | Structure Of KeyAndValue | &#x2714; | Launch parameters. See GetLaunchStructure |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from ReportPortal
 
 :::tip
 Numeric launch ID can be obtained by UUID using the `GetLaunch` function

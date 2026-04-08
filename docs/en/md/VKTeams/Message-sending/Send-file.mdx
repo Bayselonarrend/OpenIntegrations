@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Send file
  Sends the file to the chat
@@ -28,6 +29,13 @@ import TabItem from '@theme/TabItem';
   | Markup | --parsemod | String | &#x2716; | Markup type for message text: MarkdownV2 or HTML |
   | ContentType | --type | String | &#x2716; | Content type for sending |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from VK Teams
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -41,8 +49,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 :::tip
 Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/botapi/#/messages/post_messages_sendFile)
