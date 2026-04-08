@@ -2,5 +2,5 @@
 
 oint greenapi УстановитьКартинкуГруппы \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --group "120363423684518487@g.us" \
+  --group "120363425377855141@g.us" \
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
