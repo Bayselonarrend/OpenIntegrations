@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Ensure table
  Creates a new table if it does not exist or updates the composition of columns in an existing table
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | ColoumnsStruct | --cols | Structure Of KeyAndValue | &#x2714; | Column structure: Key > Name, Value > Data type |
   | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Result of query execution
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - Result of query execution
 
 :::tip
 As a result of changing the table structure, data may be lost! It is recommended to test this method on test data beforehand

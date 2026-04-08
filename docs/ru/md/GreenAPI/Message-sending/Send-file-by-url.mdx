@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить файл по URL
  Отправляет файл по URL в выбранный чат
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Описание | --caption | Строка | &#x2716; | Текст сообщения под файлом |
   | IDЦитируемого | --quoted | Строка | &#x2716; | ID цитируемого сообщения, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [SendFileByUrl](https://green-api.com/docs/api/sending/SendFileByUrl/)
@@ -77,7 +83,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/test_data/video.mp4" \
               --filename "vid.mp4" \
               --caption "Описание файла" \
-              --quoted "3EB06442AD560758FF798C"
+              --quoted "3EB0B9FEE955240B40016A"
         ```
     </TabItem>
   
@@ -91,7 +97,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/test_data/video.mp4" ^
               --filename "vid.mp4" ^
               --caption "Описание файла" ^
-              --quoted "3EB06442AD560758FF798C"
+              --quoted "3EB0B9FEE955240B40016A"
         ```
     </TabItem>
 </Tabs>
@@ -99,6 +105,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "3EB0AB2B208DE362AA7D98"
+ "idMessage": "3EB0B9FEE955240B40016A"
 }
 ```

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить уведомление
  Получает одно уведомление из очереди
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenAPI/Account/Form-access-parameters) |
   | Таймаут | --timeout | Число | &#x2716; | Таймаут ожидания новых сообщений при пустой очереди |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 После успешного принятия уведомления, необходимо удалить его из очереди при помощи метода `УдалитьУведомлениеИзОчереди`
@@ -85,13 +91,13 @@ import TabItem from '@theme/TabItem';
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0BE7EDE1B28D598D11D",
+  "idMessage": "3EB07867FD75AFECC12F6E",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1775503206,
+  "timestamp": 1775629222,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -100,22 +106,7 @@ import TabItem from '@theme/TabItem';
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "quotedMessage": {
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    },
-    "stanzaId": "3EB0359911C3C139773663",
-    "participant": "1234567890@c.us"
-   },
+   "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
     "text": "Новое сообщение",
     "description": "",
@@ -123,9 +114,7 @@ import TabItem from '@theme/TabItem';
     "previewType": "None",
     "jpegThumbnail": "",
     "forwardingScore": 0,
-    "isForwarded": false,
-    "stanzaId": "3EB0359911C3C139773663",
-    "participant": "1234567890@c.us"
+    "isForwarded": false
    }
   }
  }

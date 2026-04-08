@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Read binary data 
  Reads data from the specified connection
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Marker | - | String, BinaryData | &#x2716; | End of message marker. Empty > without marker |
   | Timeout | - | Number | &#x2716; | Data waiting timeout (ms). 0 > no limit |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ BinaryData - Received data
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  BinaryData - Received data
 
 :::tip
 When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because endless data retrieval can cause hang-ups
@@ -45,9 +51,11 @@ If the connection is closed, an error occurs, or EOF is detected, the read is te
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

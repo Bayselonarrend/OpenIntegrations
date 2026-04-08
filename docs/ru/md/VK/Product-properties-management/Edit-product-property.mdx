@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить свойство товара
  Изменяет существующее свойство товара
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Свойство | --prop | Строка, Число | &#x2714; | ID свойства |
   | Параметры | --auth | Структура из Строка | &#x2716; | Параметры авторизации. См. [`ПолучитьПараметрыАвторизации`](/docs/VK/Authorization/Get-auth-parameters) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
 
 
 
@@ -60,7 +66,7 @@ import TabItem from '@theme/TabItem';
             
             oint vk ИзменитьСвойствоТовара \
               --title "Цвет (изм.)" \
-              --prop "5770" \
+              --prop "5772" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
             
             oint vk ИзменитьСвойствоТовара ^
               --title "Цвет (изм.)" ^
-              --prop "5770" ^
+              --prop "5772" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать запуск
  Запускает новый сеанс выполнения тестов
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Проект | --proj | Строка | &#x2714; | ID проекта |
   | СтруктураЗапуска | --params | Структура Из КлючИЗначение | &#x2714; | Параметры запуска. См. [`ПолучитьСтруктуруЗапуска`](/docs/ReportPortal/Test-management/Get-launch-structure) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 
 
 
@@ -89,7 +95,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "823e242a-a6ec-4db9-8347-f94446d22de6",
- "number": 50
+ "id": "bb642f8c-0616-43c1-9588-6ca2a6e82e6a",
+ "number": 52
 }
 ```

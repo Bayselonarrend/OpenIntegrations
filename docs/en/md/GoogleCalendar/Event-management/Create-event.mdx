@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Create event
  Creates a new event
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Calendar | --calendar | String | &#x2714; | Calendar ID |
   | EventDescription | --props | Map Of KeyAndValue | &#x2714; | Event description |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
 
 
 

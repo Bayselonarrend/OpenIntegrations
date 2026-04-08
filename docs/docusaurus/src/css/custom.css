@@ -9,8 +9,8 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: #004943;
   --ifm-tabs-color-active: #004943;
-  /* Tab labels: default Infima uses 1rem vertical padding — tabs look tall */
-  --ifm-tabs-padding-vertical: 0.4rem;
+  /* Slightly taller tab header row (labels: "Параметры", "Расширенный вызов") */
+  --ifm-tabs-padding-vertical: 0.52rem;
   --ifm-tabs-padding-horizontal: 0.75rem;
   --ifm-pagination-nav-color-hover: black;
   --ifm-footer-link-hover-color: black;
@@ -22,6 +22,11 @@ p{
 
 h3,h2,h1{
   font-weight: 400;
+}
+
+/* Reduce gap between page title and method description */
+.markdown h1:first-child {
+  margin-bottom: 0.35rem;
 }
 
 strong{
@@ -203,6 +208,10 @@ li > a.menu__link {
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
 }
 
+.tabs-container {
+  margin-top: 0.9rem;
+}
+
 /* Thinner active underline + slightly tighter line box for tab titles (e.g. JSX labels with links) */
 .tabs__item {
   border-bottom-width: 2px;
@@ -211,13 +220,45 @@ li > a.menu__link {
 
 .tabs-container [role="tabpanel"] {
   padding-inline: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.45rem;
+}
+
+.tabs-container [role="tabpanel"] > :last-child {
+  margin-bottom: 0;
 }
 
 .tabs-container [role="tabpanel"] .theme-code-block {
   margin-inline: -1rem;
   max-width: none;
   border-radius: 0;
+}
+
+.return-value-note {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0 0.15rem 0;
+  border-top: 1px solid rgba(27, 31, 35, 0.12);
+  display: block;
+}
+
+.return-value-note__title {
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 0.92rem;
+  margin-bottom: 0.1rem;
+}
+
+.return-value-note__value {
+  color: #1f2937;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.return-value-note__value > :first-child {
+  margin-top: 0;
+}
+
+.return-value-note__value > :last-child {
+  margin-bottom: 0;
 }
 
 /* CSS */
@@ -588,4 +629,70 @@ li > a.menu__link {
 
 .HTTP > div > a::before{
   content: url(../../static/img/APIs/small/HTTP.png);
+}
+
+/* NOCLI marker in sidebar items */
+li.doc-no-cli .menu__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+li.doc-no-cli .menu__link::after {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-left: 0.35rem;
+  background: url(../../static/img/nocli-sidebar.svg) center / contain no-repeat;
+}
+
+/* NOCLI admonition visual */
+.nocli-admonition {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 58px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.nocli-admonition::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  background: url(../../static/img/nocli-warning.svg) center / contain no-repeat;
+}
+
+.nocli-admonition [class*="admonitionIcon"] {
+  display: none !important;
+}
+
+.nocli-admonition [class*="admonitionHeading"],
+.nocli-admonition [class*="admonitionContent"] {
+  padding-left: 68px;
+}
+
+.nocli-admonition [class*="admonitionHeading"] {
+  margin-top: 0.34rem !important;
+  margin-bottom: 0.05rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nocli-admonition [class*="admonitionContent"] > :first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.nocli-admonition [class*="admonitionContent"] :last-child {
+  margin-bottom: 0 !important;
 }

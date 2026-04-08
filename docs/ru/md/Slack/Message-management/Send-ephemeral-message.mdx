@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить эфемерное сообщение
 Отправляет сообщение, которое приходит в канал, но видно только конкретному пользователю
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Пользователь | --user | Строка | &#x2716; | ID пользователя |
   | Блоки | --blocks | Массив Из Структура | &#x2716; | Массив описаний блоков |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -89,6 +95,6 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "ok": true,
- "message_ts": "1775507063.000300"
+ "message_ts": "1775627368.000300"
 }
 ```

@@ -32,7 +32,7 @@
 "HTTPКлиент": true,
 "OpenAI": false,
 "ReportPortal": true,
-"HTTPClient": true,
+"HTTP": true,
 "Core": true,
 "MongoDB": true,
 "GRPC": true,

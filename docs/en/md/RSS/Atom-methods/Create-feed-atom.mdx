@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Create feed (Atom)
  Creates the text of an Atom feed
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Items | --items | Array of Structure | &#x2714; | Feed items. See GetFeedItemStructureAtom |
   | UpdateDate | --date | Date, Undefined | &#x2716; | Update date. Current if not filled |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ String - Atom XML feed
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  String - Atom XML feed
 
 
 

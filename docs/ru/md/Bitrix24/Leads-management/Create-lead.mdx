@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать лид
  Создает новый лид по структуре полей
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | СтруктураПолей | --fields | Структура Из КлючИЗначение | &#x2714; | Структура полей лида. См. [`ПолучитьСтруктуруЛида`](/docs/Bitrix24/Leads-management/Get-lead-structure) |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php)
@@ -105,16 +111,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3350,
+ "result": 3354,
  "time": {
-  "start": 1775507458,
-  "finish": 1775507458.95873,
-  "duration": 0.958731889724731,
-  "processing": 0,
-  "date_start": "2026-04-06T23:30:58+03:00",
-  "date_finish": "2026-04-06T23:30:58+03:00",
-  "operating_reset_at": 1775508058,
-  "operating": 0.638360977172852
+  "start": 1775628009,
+  "finish": 1775628010.54185,
+  "duration": 1.54185009002686,
+  "processing": 1,
+  "date_start": "2026-04-08T09:00:09+03:00",
+  "date_finish": "2026-04-08T09:00:10+03:00",
+  "operating_reset_at": 1775628609,
+  "operating": 0.968688011169434
  }
 }
 ```

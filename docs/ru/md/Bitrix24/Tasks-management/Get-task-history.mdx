@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить историю задачи
  Получает историю изменений задачи
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDЗадачи | --task | Число, Строка | &#x2714; | ID задачи |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [tasks.task.history.list](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
@@ -62,7 +68,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьИсториюЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "10230" \
+              --task "10250" \
               --token "***"
         ```
     </TabItem>
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьИсториюЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "10230" ^
+              --task "10250" ^
               --token "***"
         ```
     </TabItem>
@@ -83,8 +89,8 @@ import TabItem from '@theme/TabItem';
  "result": {
   "list": [
    {
-    "id": 126710,
-    "createdDate": "2026-04-06T23:27:44+03:00",
+    "id": 126810,
+    "createdDate": "2026-04-08T08:54:06+03:00",
     "field": "NEW",
     "value": {
      "from": null,
@@ -99,12 +105,12 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126712,
-    "createdDate": "2026-04-06T23:27:45+03:00",
+    "id": 126812,
+    "createdDate": "2026-04-08T08:54:07+03:00",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1775507264"
+     "to": "1775627646"
     },
     "user": {
      "id": 1,
@@ -115,12 +121,12 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126714,
-    "createdDate": "2026-04-06T23:27:45+03:00",
+    "id": 126814,
+    "createdDate": "2026-04-08T08:54:07+03:00",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1775509200"
+     "to": "1775682000"
     },
     "user": {
      "id": 1,
@@ -131,8 +137,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126726,
-    "createdDate": "2026-04-06T23:27:48+03:00",
+    "id": 126826,
+    "createdDate": "2026-04-08T08:54:12+03:00",
     "field": "TITLE",
     "value": {
      "from": "Новая задача",
@@ -147,8 +153,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126728,
-    "createdDate": "2026-04-06T23:27:48+03:00",
+    "id": 126828,
+    "createdDate": "2026-04-08T08:54:12+03:00",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -163,8 +169,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126730,
-    "createdDate": "2026-04-06T23:27:48+03:00",
+    "id": 126830,
+    "createdDate": "2026-04-08T08:54:12+03:00",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -179,8 +185,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126734,
-    "createdDate": "2026-04-06T23:27:54+03:00",
+    "id": 126834,
+    "createdDate": "2026-04-08T08:54:25+03:00",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
@@ -195,8 +201,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126738,
-    "createdDate": "2026-04-06T23:27:55+03:00",
+    "id": 126838,
+    "createdDate": "2026-04-08T08:54:27+03:00",
     "field": "STATUS",
     "value": {
      "from": "2",
@@ -211,8 +217,8 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126742,
-    "createdDate": "2026-04-06T23:27:56+03:00",
+    "id": 126842,
+    "createdDate": "2026-04-08T08:54:30+03:00",
     "field": "STATUS",
     "value": {
      "from": "6",
@@ -227,7 +233,7 @@ import TabItem from '@theme/TabItem';
     }
    },
    {
-    "id": 126746,
-    "createdDate": "2026-04-06T23:27:58+03:00",
+    "id": 126846,
+    "createdDate": "2026-04-08T08:54:36+03:00",
 ...
 ```

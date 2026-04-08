@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Удалить событие
  Удаляет событие по ID
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Календарь | --calendar | Строка | &#x2714; | ID календаря |
   | Событие | --event | Строка | &#x2714; | ID события |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
 
 
@@ -57,8 +63,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar УдалитьСобытие \
               --token "***" \
-              --calendar "387ed7945272ff96bcfb727f1b1794eb56bbbc028f01f1e5b38937d6d5539699@group.calendar.google.com" \
-              --event "8js8o3drcat6spdotouo6k0jro"
+              --calendar "f6c41ad17fd585e185275dab44298dc0cd6821ade71223eb1e2499c0353e2e38@group.calendar.google.com" \
+              --event "tuhsv3imrdi6ubnsa1ca7ek8pg"
         ```
     </TabItem>
   
@@ -66,8 +72,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar УдалитьСобытие ^
               --token "***" ^
-              --calendar "387ed7945272ff96bcfb727f1b1794eb56bbbc028f01f1e5b38937d6d5539699@group.calendar.google.com" ^
-              --event "8js8o3drcat6spdotouo6k0jro"
+              --calendar "f6c41ad17fd585e185275dab44298dc0cd6821ade71223eb1e2499c0353e2e38@group.calendar.google.com" ^
+              --event "tuhsv3imrdi6ubnsa1ca7ek8pg"
         ```
     </TabItem>
 </Tabs>

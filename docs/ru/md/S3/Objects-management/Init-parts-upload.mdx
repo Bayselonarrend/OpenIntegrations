@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Инициализировать загрузку частями
  Инициализирует загрузку объекта по частям
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
   | Каталог | --dir | Булево | &#x2716; | Истина > Path style URL, Ложь > Virtual hosted style URL |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 :::tip
 Метод в документации AWS: [CreateMultipartUpload](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
@@ -114,7 +120,7 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ИнициализироватьЗагрузкуЧастями \
               --name "fileChunked.mp3" \
-              --bucket "4438f8d2" \
+              --bucket "1429d4e7" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --dir true
         ```
@@ -126,7 +132,7 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ИнициализироватьЗагрузкуЧастями ^
               --name "fileChunked.mp3" ^
-              --bucket "4438f8d2" ^
+              --bucket "1429d4e7" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --dir true
         ```
@@ -139,9 +145,9 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "InitiateMultipartUploadResult": {
-   "Bucket": "c747a716",
+   "Bucket": "1429d4e7",
    "Key": "***",
-   "UploadId": "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLmIyNGJlN2E0LWRiOGUtNGY5MS1hOTI0LThhY2I3YWRhYzE1NHgx..."
+   "UploadId": "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLmFkN2YzNTBiLTVhY2QtNGZjNi05ZmRkLWZmYWRhM2IzY2QwZngx..."
   }
  },
  "headers": {
@@ -150,13 +156,13 @@ import TabItem from '@theme/TabItem';
   "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "18A3DF478F4D897F",
+  "X-Amz-Request-Id": "18A44D19C80A4174",
   "X-Content-Type-Options": "nosniff",
   "X-Ratelimit-Limit": "6372",
   "X-Ratelimit-Remaining": "6372",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Mon, 06 Apr 2026 20:42:56 GMT",
+  "Date": "Wed, 08 Apr 2026 06:15:26 GMT",
   "Content-Type": "application/xml",
   "Content-Length": "346"
  }

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Переименовать канал
  Изменяет название канала
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Канал | --channel | Строка | &#x2714; | ID канала |
   | Название | --title | Строка | &#x2714; | Новое название канала |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -57,8 +63,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack ПереименоватьКанал \
               --token "***" \
-              --channel "C0AQZ1TF6CT" \
-              --title "testconvb0cc0c66-c628-46d1-b5bd-e9e491be1ecb"
+              --channel "C0ARDRXGXL5" \
+              --title "testconv9ea6f064-2908-43e4-b7a5-bff3e9664b58"
         ```
     </TabItem>
   
@@ -66,8 +72,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack ПереименоватьКанал ^
               --token "***" ^
-              --channel "C0AQZ1TF6CT" ^
-              --title "testconvb0cc0c66-c628-46d1-b5bd-e9e491be1ecb"
+              --channel "C0ARDRXGXL5" ^
+              --title "testconv9ea6f064-2908-43e4-b7a5-bff3e9664b58"
         ```
     </TabItem>
 </Tabs>
@@ -77,15 +83,15 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "channel": {
-  "id": "C0AR3UFGGR4",
-  "created": 1775507066,
+  "id": "C0ARDRXGXL5",
+  "created": 1775627372,
   "creator": "U06UG1CAYH2",
   "is_org_shared": false,
   "is_im": false,
   "context_team_id": "T06UD92BS3C",
-  "updated": 1775507071863,
-  "name": "testconve0d46ba0-14ff-47af-aa42-da70dbab766e",
-  "name_normalized": "testconve0d46ba0-14ff-47af-aa42-da70dbab766e",
+  "updated": 1775627384558,
+  "name": "testconv9ea6f064-2908-43e4-b7a5-bff3e9664b58",
+  "name_normalized": "testconv9ea6f064-2908-43e4-b7a5-bff3e9664b58",
   "is_channel": true,
   "is_group": false,
   "is_mpim": false,
@@ -101,21 +107,21 @@ import TabItem from '@theme/TabItem';
   "purpose": {
    "value": "Тестовая цель",
    "creator": "U06UG1CAYH2",
-   "last_set": 1775507067
+   "last_set": 1775627374
   },
   "topic": {
    "value": "Тестовая тема",
    "creator": "U06UG1CAYH2",
-   "last_set": 1775507067
+   "last_set": 1775627373
   },
   "shared_team_ids": [
    "T06UD92BS3C"
   ],
   "pending_connected_team_ids": [],
   "is_member": true,
-  "last_read": "1775507070.744939",
+  "last_read": "1775627382.132689",
   "previous_names": [
-   "testconv60f0bc5b-2fa2-40d5-b49e-bc38419e4ebd"
+   "testconv1f773f95-c005-446b-a557-59f7c32d1400"
   ]
  }
 }

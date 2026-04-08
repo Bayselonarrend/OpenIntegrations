@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить пользователя
  Получает информацию о пользователе по ID
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDПользователя | --userid | Строка, Число | &#x2714; | ID пользователя для получения |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [user.get](https://dev.1c-bitrix.ru/rest_help/users/user_get.php)
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --userid 3556 \
+              --userid 3564 \
               --token "***"
         ```
     </TabItem>
@@ -75,7 +81,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --userid 3556 ^
+              --userid 3564 ^
               --token "***"
         ```
     </TabItem>
@@ -86,13 +92,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "3560",
+   "ID": "3564",
    "ACTIVE": true,
    "NAME": "Олег",
    "LAST_NAME": "Лама",
-   "EMAIL": "421a28af-4760-4185-8885-e7956ef16b26@example.org",
+   "EMAIL": "9c943ece-0675-459b-80c3-e723df455389@example.org",
    "LAST_LOGIN": "",
-   "DATE_REGISTER": "2026-04-06T03:00:00+03:00",
+   "DATE_REGISTER": "2026-04-08T03:00:00+03:00",
    "IS_ONLINE": "N",
    "TIMESTAMP_X": {},
    "PERSONAL_GENDER": "",
@@ -107,13 +113,13 @@ import TabItem from '@theme/TabItem';
  ],
  "total": 1,
  "time": {
-  "start": 1775507452,
-  "finish": 1775507452.6571,
-  "duration": 0.657097101211548,
+  "start": 1775627996,
+  "finish": 1775627996.77789,
+  "duration": 0.777887105941772,
   "processing": 0,
-  "date_start": "2026-04-06T23:30:52+03:00",
-  "date_finish": "2026-04-06T23:30:52+03:00",
-  "operating_reset_at": 1775508052,
+  "date_start": "2026-04-08T08:59:56+03:00",
+  "date_finish": "2026-04-08T08:59:56+03:00",
+  "operating_reset_at": 1775628596,
   "operating": 0
  }
 }

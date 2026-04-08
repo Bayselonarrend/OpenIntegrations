@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Завершить элемент
  Завершает работу созданного ранее тестового элемента
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | UUIDЭлемента | --uuid | Строка | &#x2714; | UUID тестового элемента |
   | СтруктураЗавершения | --params | Структура Из КлючИЗначение | &#x2714; | Параметры завершения. См. [`ПолучитьСтруктуруЗавершенияЭлемента`](/docs/ReportPortal/Test-management/Get-item-completion-structure) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 
 
 
@@ -70,7 +76,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" \
               --token "***" \
               --proj "Test" \
-              --uuid "e0c92bd1-1e4d-4686-b15f-910ac1bbd2b6" \
+              --uuid "f55732d6-5277-471c-927e-d9fe912fe96f" \
               --params "{'endTime':'1/1/2026 8:00:00 PM','status':'passed'}"
         ```
     </TabItem>
@@ -83,7 +89,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" ^
               --token "***" ^
               --proj "Test" ^
-              --uuid "e0c92bd1-1e4d-4686-b15f-910ac1bbd2b6" ^
+              --uuid "f55732d6-5277-471c-927e-d9fe912fe96f" ^
               --params "{'endTime':'1/1/2026 8:00:00 PM','status':'passed'}"
         ```
     </TabItem>
@@ -92,6 +98,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "message": "TestItem with ID = '0bdacd56-9738-418b-afe2-e2dfa890b881' successfully finished."
+ "message": "TestItem with ID = 'f55732d6-5277-471c-927e-d9fe912fe96f' successfully finished."
 }
 ```
