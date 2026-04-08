@@ -124,6 +124,8 @@
 		CommonTools.СообщитьПроцесс(СтрШаблон("Incorrect number of artifacts for export: required %1, found %2"
 		, НеобходимоеЧислоАртефактов
 		, КоличествоАртефактов));
+
+		ВызватьИсключение "Abort...";
 		
 	КонецЕсли;
 	
