@@ -13,6 +13,12 @@
                 "description_en": "Client methods (3 functions)"
             },
             {
+                "lib": "RSS",
+                "icon": "media/RSS.png",
+                "description_ru": "Добавлена возможность передачи файла в функции `РазобратьФидRSS` и `РазобратьФидAtom`",
+                "description_en": "Added ability to pass a file to `ParseFeedRSS` and `ParseFeedAtom` functions"
+            },
+            {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Добавлен новый вариант релиза для 1С:Предприятие - `.CF`",
