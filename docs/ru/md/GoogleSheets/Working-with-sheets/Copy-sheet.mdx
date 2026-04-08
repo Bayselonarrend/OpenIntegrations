@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Копировать лист
  Копирует лист из одной книги в другую
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Куда | --to | Строка | &#x2714; | ID книги приемника |
   | Лист | --sheet | Строка | &#x2714; | ID копируемого листа |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
 
 
@@ -59,9 +65,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gsheets КопироватьЛист \
               --token "***" \
-              --from "1JTJlSYtH3a79e5CBI04zgfCnVeYpBg59nGyM4SL-BtE" \
-              --to "1LWR4e0PgUWyCNwqdaR5kMEwWeKNe26DDTO5e-1TAAxw" \
-              --sheet "1169672516"
+              --from "1Ml9JouvdbFPrCK50mSNxtg9YYiJHHkQ5sFAoM_NTZiQ" \
+              --to "17rCiT2re0o6b4qXdA67sIv93Aa1-bihps2pYjRQ3jZI" \
+              --sheet "4656563"
         ```
     </TabItem>
   
@@ -69,9 +75,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gsheets КопироватьЛист ^
               --token "***" ^
-              --from "1JTJlSYtH3a79e5CBI04zgfCnVeYpBg59nGyM4SL-BtE" ^
-              --to "1LWR4e0PgUWyCNwqdaR5kMEwWeKNe26DDTO5e-1TAAxw" ^
-              --sheet "1169672516"
+              --from "1Ml9JouvdbFPrCK50mSNxtg9YYiJHHkQ5sFAoM_NTZiQ" ^
+              --to "17rCiT2re0o6b4qXdA67sIv93Aa1-bihps2pYjRQ3jZI" ^
+              --sheet "4656563"
         ```
     </TabItem>
 </Tabs>
@@ -79,7 +85,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "sheetId": 1088172345,
+ "sheetId": 732832718,
  "title": "Лист1 (копия)",
  "index": 2,
  "sheetType": "GRID",

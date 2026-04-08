@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить поле
  Изменяет имя и|или описание существующего поля таблицы
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Наименование | --title | Строка | &#x2716; | Новое наименование |
   | Описание | --description | Строка | &#x2716; | Новое описание |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
 
 
 
@@ -64,10 +70,10 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ИзменитьПоле \
               --token "***" \
-              --base "appwa9Dy06QftAJwY" \
-              --table "tbls1WaYULRT1sjo4" \
-              --field "fldiCcfBq4QvkDjJg" \
-              --title "7e52bd66-a368-46ef-a339-70ff450b9696(изм.)" \
+              --base "appBmzwVCsYBr1uLg" \
+              --table "tblY8Wp81f66UTre3" \
+              --field "fldz9KZyDoyRFmDay" \
+              --title "2d5597c2-a713-4af1-a7cf-2f2b137ce394(изм.)" \
               --description "Новое описание"
         ```
     </TabItem>
@@ -76,10 +82,10 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ИзменитьПоле ^
               --token "***" ^
-              --base "appwa9Dy06QftAJwY" ^
-              --table "tbls1WaYULRT1sjo4" ^
-              --field "fldiCcfBq4QvkDjJg" ^
-              --title "7e52bd66-a368-46ef-a339-70ff450b9696(изм.)" ^
+              --base "appBmzwVCsYBr1uLg" ^
+              --table "tblY8Wp81f66UTre3" ^
+              --field "fldz9KZyDoyRFmDay" ^
+              --title "2d5597c2-a713-4af1-a7cf-2f2b137ce394(изм.)" ^
               --description "Новое описание"
         ```
     </TabItem>
@@ -92,8 +98,8 @@ import TabItem from '@theme/TabItem';
  "options": {
   "precision": 0
  },
- "id": "fldikh0tupnNYBtbn",
- "name": "b1203c06-8dfe-482e-8599-b0d80eb6f6af(изм.)",
+ "id": "fldz9KZyDoyRFmDay",
+ "name": "2d5597c2-a713-4af1-a7cf-2f2b137ce394(изм.)",
  "description": "Новое описание"
 }
 ```

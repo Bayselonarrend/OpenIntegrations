@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Удалить блок
  Удаляет блок по ID
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен |
   | ИДБлока | --block | Строка | &#x2714; | ID блока |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
 
 
 
@@ -55,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint notion УдалитьБлок \
               --token "***" \
-              --block "33a82aa7-fc4e-81d4-b600-d4db61b3f79b"
+              --block "33c82aa7-fc4e-810b-9592-f13ae16290e7"
         ```
     </TabItem>
   
@@ -63,7 +69,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint notion УдалитьБлок ^
               --token "***" ^
-              --block "33a82aa7-fc4e-81d4-b600-d4db61b3f79b"
+              --block "33c82aa7-fc4e-810b-9592-f13ae16290e7"
         ```
     </TabItem>
 </Tabs>
@@ -72,13 +78,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "block",
- "id": "33a82aa7-fc4e-81f0-a675-e460cda7ffd0",
+ "id": "33c82aa7-fc4e-810b-9592-f13ae16290e7",
  "parent": {
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "created_time": "2026-04-06T20:23:00Z",
- "last_edited_time": "2026-04-06T20:23:00Z",
+ "created_time": "2026-04-08T05:48:00Z",
+ "last_edited_time": "2026-04-08T05:48:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -114,6 +120,6 @@ import TabItem from '@theme/TabItem';
   "color": "default"
  },
  "archived": true,
- "request_id": "a4892302-7606-4ca0-9aba-126f3e1b6283"
+ "request_id": "4471f6a2-aad9-4d12-8662-3f91975fdd78"
 }
 ```

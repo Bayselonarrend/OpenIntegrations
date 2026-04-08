@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить внешний файл
  Отправляет внешний файл по списку каналов
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | ИдентификаторФайла | --fileid | Строка | &#x2714; | Идентификатор файла |
   | МассивКаналов | --channels | Массив Из Строка | &#x2714; | Массив каналов для отправки |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
 
 
 
@@ -57,7 +63,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint slack ОтправитьВнешнийФайл \
               --token "***" \
-              --fileid "F0ARJA9UZ8R" \
+              --fileid "F0ARH8JHP4J" \
               --channels "C06UFNUTKUL"
         ```
     </TabItem>
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint slack ОтправитьВнешнийФайл ^
               --token "***" ^
-              --fileid "F0ARJA9UZ8R" ^
+              --fileid "F0ARH8JHP4J" ^
               --channels "C06UFNUTKUL"
         ```
     </TabItem>
@@ -77,9 +83,9 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "file": {
-  "id": "F0ARJTG5E8H",
-  "created": 1775507085,
-  "timestamp": 1775507085,
+  "id": "F0ARH8JHP4J",
+  "created": 1775627409,
+  "timestamp": 1775627409,
   "name": "Novyj_fajl",
   "title": "Новый файл",
   "mimetype": "application/vnd.slack-remote",
@@ -96,11 +102,11 @@ import TabItem from '@theme/TabItem';
   "public_url_shared": false,
   "display_as_bot": false,
   "username": "",
-  "external_id": "bcca9e63-ff26-4756-9b58-cc9ff8dd9028",
+  "external_id": "84281d32-a085-4e12-855d-0caeec9aa991",
   "external_url": "https://hut.openintegrations.dev/test_data/document.docx",
   "url_private": "https://hut.openintegrations.dev/test_data/document.docx",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F0ARJTG5E8H/novyj_fajl",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F0ARH8JHP4J/novyj_fajl",
   "comments_count": 0,
   "is_starred": false,
   "shares": {
@@ -110,7 +116,7 @@ import TabItem from '@theme/TabItem';
       "reply_users": [],
       "reply_users_count": 0,
       "reply_count": 0,
-      "ts": "1775507086.906929",
+      "ts": "1775627411.916589",
       "channel_name": "slack-api-librarry",
       "team_id": "T06UD92BS3C",
       "share_user_id": "U06UG1CAYH2",

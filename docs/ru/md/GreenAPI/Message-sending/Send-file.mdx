@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить файл
  Отправляет файл в выбранный чат
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Описание | --caption | Строка | &#x2716; | Текст сообщения под файлом |
   | IDЦитируемого | --quoted | Строка | &#x2716; | ID цитируемого сообщения, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [SendFileByUpload](https://green-api.com/docs/api/sending/SendFileByUpload/)
@@ -79,7 +85,7 @@ import TabItem from '@theme/TabItem';
               --file "https://hut.openintegrations.dev/test_data/video.mp4" \
               --filename "vid.mp4" \
               --caption "Описание файла" \
-              --quoted "3EB05E29620CCBEE9BD719"
+              --quoted "3EB02A9A663D3E14B1A478"
         ```
     </TabItem>
   
@@ -93,7 +99,7 @@ import TabItem from '@theme/TabItem';
               --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
               --filename "vid.mp4" ^
               --caption "Описание файла" ^
-              --quoted "3EB05E29620CCBEE9BD719"
+              --quoted "3EB02A9A663D3E14B1A478"
         ```
     </TabItem>
 </Tabs>
@@ -101,7 +107,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "3EB01DFCB14FFA1313DE16",
- "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/0907ec29-5d87-4c78-9b54-88b7190a9228..."
+ "idMessage": "3EB02A9A663D3E14B1A478",
+ "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/842db7d8-0756-48be-bb77-1a90624cc3ee..."
 }
 ```

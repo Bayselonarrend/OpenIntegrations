@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить поле (числовое)
  Получает описание поля числового типа
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Наименование | --title | Строка | &#x2714; | Наименование нового поля |
   | Точность | --precision | Число, Строка | &#x2716; | Число знаков после запятой |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура -  Описание поля
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,8 +40,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура -  Описание поля
 
 
 
@@ -47,14 +53,14 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint airtable ПолучитьПолеНомера \
-              --title "4f04e2ed-bbdd-472f-8ddc-0a3c8a60d0c2"
+              --title "29611cf4-788b-4b7e-b530-a02fc56ce805"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint airtable ПолучитьПолеНомера ^
-              --title "4f04e2ed-bbdd-472f-8ddc-0a3c8a60d0c2"
+              --title "29611cf4-788b-4b7e-b530-a02fc56ce805"
         ```
     </TabItem>
 </Tabs>

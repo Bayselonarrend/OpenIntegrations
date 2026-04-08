@@ -1,10 +1,10 @@
-﻿---
+---
 sidebar_position: 1
 ---
 
 # About releases variants
 
-The Open Integration Package is a project with three development paths: 1C, OneScript, and CLI. The main version is 1C, which is then automatically transformed into a package for OneScript, and from there into a CLI application. Each of these paths has its own distribution options – there are 8 in total: 3 for 1C, 4 for CLI, and 1 for OneScript. Descriptions of each of these are provided below
+The Open Integration Package is a project with three development paths: 1C, OneScript, and CLI. The main version is 1C, which is then automatically transformed into a package for OneScript, and from there into a CLI application. Each of these paths has its own distribution options – there are 9 in total: 4 for 1C, 4 for CLI, and 1 for OneScript. Descriptions of each of these are provided below
 
 >To the latest release: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 
@@ -13,6 +13,9 @@ These release options are various forms of distribution for the extension for th
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/1.png').default} width="86" align="left"/>
 **OpenIntegrations_x.x.x_lang.cfe** - the standard distribution option for the 1C configuration extension. To start working, it is sufficient to load it into the list of extensions for your specific configuration. Development is carried out in compatibility mode with 1C 8.3.10.
+
+<img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/10.png').default} width="86" align="left"/>
+**OpenIntegrations_x.x.x_lang.cf** - the standard 1C:Enterprise configuration file. It contains a set of metadata objects equivalent to the CFE file and other extension-based delivery variants. It is intended for compare-and-merge with the main configuration in cases where using extensions is undesirable. Compatibility mode: 8.3.10
 
 <img style={{paddingRight:'20px',marginTop:'6px'}} src={require('./img/2.png').default} width="86" align="left"/>
 **XML.zip** - this is a zip archive that contains the files of the standard 1C extension export "to files". Similar to the CFE option, the unpacked archive can be used to load the extension through the Configuration Extensions panel in a specific project

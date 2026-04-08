@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Загрузить файл
  Загружает файл на диск по заданному пути
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Файл | --file | Строка, ДвоичныеДанные | &#x2714; | Файл для загрузки |
   | Перезаписывать | --rewrite | Булево | &#x2716; | Перезаписывать, если файл с таким именем уже существует |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
 :::tip
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
@@ -69,8 +75,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ЗагрузитьФайл \
               --token "***" \
-              --path "/4621b034-3ea0-4c54-b801-f8a53213bd24.png" \
-              --file "C:\Users\bayselonarrend\AppData\Local\Temp\boi355ln.fau.png" \
+              --path "/b0cbe7bc-27e1-40e1-87f8-cfcec36f0b0e.png" \
+              --file "C:\Users\bayselonarrend\AppData\Local\Temp\rnmxmrt0.0it.png" \
               --rewrite true
         ```
     </TabItem>
@@ -79,8 +85,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ЗагрузитьФайл ^
               --token "***" ^
-              --path "/4621b034-3ea0-4c54-b801-f8a53213bd24.png" ^
-              --file "C:\Users\bayselonarrend\AppData\Local\Temp\boi355ln.fau.png" ^
+              --path "/b0cbe7bc-27e1-40e1-87f8-cfcec36f0b0e.png" ^
+              --file "C:\Users\bayselonarrend\AppData\Local\Temp\rnmxmrt0.0it.png" ^
               --rewrite true
         ```
     </TabItem>

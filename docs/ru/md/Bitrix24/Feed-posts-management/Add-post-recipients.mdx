@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Добавить получателей к новости
  Добавляет новые группы или пользователей в получатели
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Видимость | --vision | Строка | &#x2714; | Массив или 1 получатель: UA все, SGn р. группа, Un пользователь, DRn отдел, Gn группа |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
@@ -67,7 +73,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьПолучателейКНовости \
               --url "b24-ar17wx.bitrix24.by" \
-              --postid 3924 \
+              --postid 3932 \
               --vision "UA" \
               --token "***"
         ```
@@ -77,7 +83,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьПолучателейКНовости ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --postid 3924 ^
+              --postid 3932 ^
               --vision "UA" ^
               --token "***"
         ```
@@ -89,13 +95,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1775507260,
-  "finish": 1775507260.89824,
-  "duration": 0.89824390411377,
+  "start": 1775627635,
+  "finish": 1775627635.54939,
+  "duration": 0.549386024475098,
   "processing": 0,
-  "date_start": "2026-04-06T23:27:40+03:00",
-  "date_finish": "2026-04-06T23:27:40+03:00",
-  "operating_reset_at": 1775507860,
+  "date_start": "2026-04-08T08:53:55+03:00",
+  "date_finish": "2026-04-08T08:53:55+03:00",
+  "operating_reset_at": 1775628235,
   "operating": 0
  }
 }

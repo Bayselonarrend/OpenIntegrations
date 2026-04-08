@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Добавить записи
  Добавляет записи в таблицу
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Соединение | --dbc | Строка, Произвольный | &#x2716; | Соединение или строка подключения |
   | Tls | --tls | Структура Из КлючИЗначение | &#x2716; | Настройки TLS, если необходимо. См. [`ПолучитьНастройкиTls`](/docs/MSSQL/Common-methods/Get-tls-settings) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат выполнения запроса
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения запроса
 
 :::tip
 Данные записей указываются как массив структур вида:<br/>`{'Имя поля 1': {'Тип данных': 'Значение'}, 'Имя поля 2': {'Тип данных': 'Значение'},...}`
@@ -111,7 +117,7 @@ import TabItem from '@theme/TabItem';
             
             oint mssql ДобавитьЗаписи \
               --table "testtable" \
-              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\b01dqird.rof'},'uid_field':{'UUID':'91ceb7ec-d17c-4da6-9d73-3ea46391c8e8'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'4/6/2026 9:40:55 PM'},'time_field':{'TIME':'4/6/2026 9:40:55 PM'},'dto_field':{'DATETIMEOFFSET':'4/6/2026 7:40:55 PM'},'datetime_field':{'DATETIME':'4/6/2026 9:40:55 PM'}}]" \
+              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\s4xzymwn.bhv'},'uid_field':{'UUID':'bec771ff-7a9a-4c0d-84b8-9576161792b8'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'4/8/2026 8:37:50 AM'},'time_field':{'TIME':'4/8/2026 8:37:50 AM'},'dto_field':{'DATETIMEOFFSET':'4/8/2026 6:37:50 AM'},'datetime_field':{'DATETIME':'4/8/2026 8:37:50 AM'}}]" \
               --trn true \
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
               --tls "{'use_tls':true,'accept_invalid_certs':true}"
@@ -124,7 +130,7 @@ import TabItem from '@theme/TabItem';
             
             oint mssql ДобавитьЗаписи ^
               --table "testtable" ^
-              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\b01dqird.rof'},'uid_field':{'UUID':'91ceb7ec-d17c-4da6-9d73-3ea46391c8e8'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'4/6/2026 9:40:55 PM'},'time_field':{'TIME':'4/6/2026 9:40:55 PM'},'dto_field':{'DATETIMEOFFSET':'4/6/2026 7:40:55 PM'},'datetime_field':{'DATETIME':'4/6/2026 9:40:55 PM'}}]" ^
+              --rows "[{'tinyint_field':{'TINYINT':'5'},'smallint_field':{'SMALLINT':'2000'},'int_field':{'INT':'200000'},'bigint_field':{'BIGINT':'20000000000'},'float24_field':{'FLOAT24':'10.1234567'},'float53_field':{'FLOAT53':'10.1234567891235'},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\s4xzymwn.bhv'},'uid_field':{'UUID':'bec771ff-7a9a-4c0d-84b8-9576161792b8'},'numeric_field':{'NUMERIC':'5.333'},'xml_field':{'XML':'<?xml version=\"1.0\"?><root>\n    <element>\n        <name>Пример</name>\n        <value>123</value>\n    </element>\n    <element>\n        <name>Тест</name>\n        <value>456</value>\n    </element>\n</root>'},'date_field':{'DATE':'4/8/2026 8:37:50 AM'},'time_field':{'TIME':'4/8/2026 8:37:50 AM'},'dto_field':{'DATETIMEOFFSET':'4/8/2026 6:37:50 AM'},'datetime_field':{'DATETIME':'4/8/2026 8:37:50 AM'}}]" ^
               --trn true ^
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
               --tls "{'use_tls':true,'accept_invalid_certs':true}"

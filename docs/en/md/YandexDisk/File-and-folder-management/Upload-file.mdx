@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Upload file
  Uploads a file to disk at the specified path
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | File | --file | String, BinaryData | &#x2714; | File for upload |
   | Overwrite | --rewrite | Boolean | &#x2716; | Overwrite if a file with the same name already exists |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
 
 :::tip
 Parameters with Binary data type can also accept file paths on disk and URLs

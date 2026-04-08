@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Загрузить модель в память
  Загружает выбранную модель в оперативную память
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Период | --keep | Число | &#x2716; | Время удержания модели в памяти в секундах |
   | ДопЗаголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Доп заголовки запроса, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат обработки
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
 
 :::tip
 Метод в документации API: [Load a model](https://github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
@@ -92,7 +98,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "model": "tinyllama",
- "created_at": "2026-04-06T20:50:58.6240519Z",
+ "created_at": "2026-04-08T06:25:33.0313145Z",
  "response": "",
  "done": true,
  "done_reason": "load"

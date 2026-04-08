@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Form access parameters
  Forms the structure of basic authorization data
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | IdInstance | --id | String | &#x2714; | Unique instance number |
   | ApiTokenInstance | --token | String | &#x2714; | Instance access key |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure - Structure of access parameters
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure - Structure of access parameters
 
 :::tip
 More details in the API documentation: [Get access parameters to instance](https://green-api.com/v3/docs/before-start/#parameters)

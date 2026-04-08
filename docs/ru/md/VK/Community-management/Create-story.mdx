@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать историю
  Создает историю из картинки
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | URL | --url | Строка | &#x2716; | URL для кнопки под историей |
   | Параметры | --auth | Структура из Строка | &#x2716; | Параметры авторизации. См. [`ПолучитьПараметрыАвторизации`](/docs/VK/Authorization/Get-auth-parameters) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
 
 :::tip
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
@@ -62,7 +68,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk СоздатьИсторию \
-              --picture "C:\Users\bayselonarrend\AppData\Local\Temp\tvantmts.pp0.png" \
+              --picture "C:\Users\bayselonarrend\AppData\Local\Temp\ki2s11rt.1ki.png" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -72,7 +78,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk СоздатьИсторию ^
-              --picture "C:\Users\bayselonarrend\AppData\Local\Temp\tvantmts.pp0.png" ^
+              --picture "C:\Users\bayselonarrend\AppData\Local\Temp\ki2s11rt.1ki.png" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -85,7 +91,7 @@ import TabItem from '@theme/TabItem';
   "count": 1,
   "items": [
    {
-    "id": 456241535,
+    "id": 456241537,
     "owner_id": -218861756,
     "access_key": "***",
     "can_comment": 1,
@@ -94,17 +100,17 @@ import TabItem from '@theme/TabItem';
     "can_like": true,
     "can_share": 1,
     "can_hide": 1,
-    "date": 1775505812,
+    "date": 1775625461,
     "answers_count": 0,
-    "expires_at": 1775592212,
+    "expires_at": 1775711861,
     "link": {
      "text": "Ещё",
      "url": "https://github.com/Bayselonarrend/OpenIntegrations"
     },
     "photo": {
      "album_id": -81,
-     "date": 1775505812,
-     "id": 457263458,
+     "date": 1775625461,
+     "id": 457263477,
      "owner_id": -218861756,
      "sizes": [
       {
@@ -141,7 +147,7 @@ import TabItem from '@theme/TabItem';
      "count": 0,
      "new": 0
     },
-    "track_code": "story_json/eyJvd25lcl9pZCI6LTIxODg2MTc1Niwic3RvcnlfaWQiOjQ1NjI0MTUzNSwidmlld2VyX2lkIjo2NTc4NDY3NTZ9",
+    "track_code": "story_json/eyJvd25lcl9pZCI6LTIxODg2MTc1Niwic3RvcnlfaWQiOjQ1NjI0MTUzNywidmlld2VyX2lkIjo2NTc4NDY3NTZ9",
     "type": "photo",
     "views": 0,
     "likes_count": 0,

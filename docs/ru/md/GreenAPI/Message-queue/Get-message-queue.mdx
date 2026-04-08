@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить очередь сообщений
  Получает список сообщений в очереди на отправку
@@ -22,6 +23,13 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenAPI/Account/Form-access-parameters) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [ShowMessagesQueue](https://green-api.com/docs/api/queues/ShowMessagesQueue/)
@@ -78,103 +84,5 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-[
- {
-  "messageID": "3EB0C1084EE360FCDA7ECD",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": true,
-   "quotedMessageId": "3EB00C7072D7CA8CE641CE",
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB02F1F1B39BB1229982C",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "***",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "address": "Площадь Победы, Минск",
-   "nameLocation": "пл. Победы",
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0F8E50CCFA5CC042876",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "***",
-   "quotedMessageId": "3EB02F1F1B39BB1229982C",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB01F51CC47E6CABFFB0A",
-  "type": "sendContact",
-  "body": {
-   "chatId": "***",
-   "contact": {
-    "phoneContact": "***",
-    "firstName": "Артем",
-    "middleName": "Евпаторийский",
-    "lastName": "Петрович",
-    "company": "Велосипед"
-   },
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0F629D13BA4F7DD814E",
-  "type": "sendContact",
-  "body": {
-   "chatId": "***",
-   "contact": {
-    "phoneContact": "***",
-    "company": "Велосипед"
-   },
-   "quotedMessageId": "3EB01F51CC47E6CABFFB0A",
-   "typingTime": null
-  }
- },
- {
-  "messagesIDs": [
-   "3EB0FAEA86658B36BAAD74"
-  ],
-  "type": "ForwardMessages",
-  "body": {
-   "chatId": "***",
-   "chatIdFrom": "***",
-   "messages": [
-    "3EB03B02F6F292E5137EC5"
-   ],
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB058DD19B2FECE4D44E4",
-  "type": "editMessage",
-  "body": {
-   "chatId": "***",
-   "idMessage": "3EB03B02F6F292E5137EC5",
-   "message": "Новый текст сообщения",
-   "linkPreview": true
-  }
- }
-]
+{}
 ```

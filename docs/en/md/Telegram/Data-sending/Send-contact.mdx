@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Send contact
  Sends a contact with name and phone number
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Phone | --phone | String | &#x2714; | Contact phone number |
   | Keyboard | --keyboard | String, Structure Of KeyAndValue | &#x2716; | Keyboard. See FormKeyboardFromButtonArray |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Telegram
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 :::tip
 Method at API documentation: [sendContact](https://core.telegram.org/bots/api#sendcontact)

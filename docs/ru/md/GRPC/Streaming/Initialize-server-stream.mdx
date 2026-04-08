@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Инициализировать серверный поток 
  Инициализирует новый серверный поток
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Запрос | - | Структура Из КлючИЗначение | &#x2714; | Данные клиентского запроса |
   | Таймаут | - | Число | &#x2716; | Таймаут (в мс) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат обработки
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,13 +43,13 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
 
 
-:::caution
-**NOCLI:** данный метод недоступен для использования в CLI версии
-:::
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
 <br/>
 
 
@@ -124,6 +132,6 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": true,
- "streamId": "4b251f9b-aeba-48ab-8c1c-a3f6fe423be7"
+ "streamId": "039e0ce7-44f3-4a92-850e-9cfc74662ae7"
 }
 ```

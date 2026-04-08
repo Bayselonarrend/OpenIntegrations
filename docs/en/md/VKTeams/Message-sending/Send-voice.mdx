@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Send voice
  Sends an audio file as a voice message
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | ReplyID | --reply | String, Number | &#x2716; | Replying message id if necessary |
   | Keyboard | --keyboard | Array Of String | &#x2716; | Buttons to the message if necessary |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from VK Teams
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 :::tip
 If you want the client to display this file as a playable voice message, it must be in aac, ogg, or m4a format

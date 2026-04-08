@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Сформировать параметры доступа
  Формирует структуру основных авторизационных данных
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | IdInstance | --id | Строка | &#x2714; | Уникальный номер инстанса |
   | ApiTokenInstance | --token | Строка | &#x2714; | Ключ доступа инстанса |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура -  Структура параметров доступа
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура -  Структура параметров доступа
 
 :::tip
 Подробнее в документации API: [Получить параметры доступа к инстансу](https://green-api.com/v3/docs/before-start/#parameters)

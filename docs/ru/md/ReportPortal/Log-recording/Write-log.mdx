@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Записать лог
  Добавляет информацию о выполнении для тестового элемента
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Проект | --proj | Строка | &#x2714; | ID проекта |
   | СтруктураЛога | --params | Структура Из КлючИЗначение | &#x2714; | Информация о выполнении. См. [`ПолучитьСтруктуруЛога`](/docs/ReportPortal/Log-recording/Get-log-structure) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 
 
 
@@ -66,7 +72,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" \
               --token "***" \
               --proj "Test" \
-              --params "{'launchUuid':'c0cc3abb-e745-455f-bd82-ecf0e299cf22','itemUuid':'e0c92bd1-1e4d-4686-b15f-910ac1bbd2b6','time':'1767258010','message':'Some log 1','level':'info'}"
+              --params "{'launchUuid':'bb642f8c-0616-43c1-9588-6ca2a6e82e6a','itemUuid':'f55732d6-5277-471c-927e-d9fe912fe96f','time':'1767258010','message':'Some log 1','level':'info'}"
         ```
     </TabItem>
   
@@ -78,7 +84,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" ^
               --token "***" ^
               --proj "Test" ^
-              --params "{'launchUuid':'c0cc3abb-e745-455f-bd82-ecf0e299cf22','itemUuid':'e0c92bd1-1e4d-4686-b15f-910ac1bbd2b6','time':'1767258010','message':'Some log 1','level':'info'}"
+              --params "{'launchUuid':'bb642f8c-0616-43c1-9588-6ca2a6e82e6a','itemUuid':'f55732d6-5277-471c-927e-d9fe912fe96f','time':'1767258010','message':'Some log 1','level':'info'}"
         ```
     </TabItem>
 </Tabs>
@@ -86,6 +92,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "367f7680-73e7-4afa-ac0c-9fd8e102ce10"
+ "id": "eb7bc7e9-347d-40f0-8757-127b7b3c531a"
 }
 ```

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Use Gzip compression 
  Enables or disables the header for receiving data from the server in compressed form
@@ -22,6 +23,13 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | Flag | - | Boolean | &#x2714; | Flag for gzip using |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ DataProcessorObject.OPI_HTTPClient - This processor object
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -31,16 +39,16 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
 
 :::tip
 By default, the response from the server is requested with gzip compression
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

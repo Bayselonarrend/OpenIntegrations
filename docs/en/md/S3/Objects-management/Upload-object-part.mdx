@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Upload object part
  Uploads a part of an object for multipart uploading
@@ -28,6 +29,13 @@ import TabItem from '@theme/TabItem';
   | Data | --content | BinaryData, String | &#x2714; | Part content for uploading |
   | Directory | --dir | Boolean | &#x2716; | True > Path style URL, False > Virtual hosted style URL |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - serialized JSON response from storage
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - serialized JSON response from storage
 
 :::tip
 Method at AWS documentation: [UploadPart](https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)

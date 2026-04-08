@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить список версий объектов
  Получает список всех версий объектов в выбранном бакете
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
   | Каталог | --dir | Булево | &#x2716; | Истина > Path style URL, Ложь > Virtual hosted style URL |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 :::tip
 Метод в документации AWS: [ListObjectVersions](https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html)
@@ -67,7 +73,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокВерсийОбъектов \
-              --bucket "4438f8d2" \
+              --bucket "1429d4e7" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --prefix "pic" \
               --dir true
@@ -79,7 +85,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокВерсийОбъектов ^
-              --bucket "4438f8d2" ^
+              --bucket "1429d4e7" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --prefix "pic" ^
               --dir true
@@ -93,7 +99,7 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "ListVersionsResult": {
-   "Name": "c747a716",
+   "Name": "1429d4e7",
    "Prefix": "pic",
    "KeyMarker": {},
    "NextVersionIdMarker": {},
@@ -102,7 +108,7 @@ import TabItem from '@theme/TabItem';
    "IsTruncated": "false",
    "Version": {
     "Key": "***",
-    "LastModified": "2026-04-06T20:42:50.748Z",
+    "LastModified": "2026-04-08T06:15:17.911Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "Owner": {
@@ -121,13 +127,13 @@ import TabItem from '@theme/TabItem';
   "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "18A3DF4A3D11E120",
+  "X-Amz-Request-Id": "18A44D20033E187F",
   "X-Content-Type-Options": "nosniff",
   "X-Ratelimit-Limit": "6372",
   "X-Ratelimit-Remaining": "6372",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Mon, 06 Apr 2026 20:43:07 GMT",
+  "Date": "Wed, 08 Apr 2026 06:15:52 GMT",
   "Content-Type": "application/xml",
   "Content-Length": "702"
  }

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Upload file
  Uploads a file to the cloud drive
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Path | --path | String | &#x2714; | Save path on Dropbox |
   | Overwrite | --overwrite | Boolean | &#x2716; | Overwrite file in case of path conflicts |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Dropbox
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 
 :::tip
 Parameters with Binary data type can also accept file paths on disk and URLs

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить локацию
  Отправляет данные о местоположении в указанный чат
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Локация | --loc | Структура Из КлючИЗначение | &#x2714; | Описание локации. См. [`ПолучитьОписаниеЛокации`](/docs/GreenAPI/Message-sending/Get-location-description) |
   | IDЦитируемого | --quoted | Строка | &#x2716; | ID цитируемого сообщения, если необходимо |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [SendPoll](https://green-api.com/docs/api/sending/SendPoll/)
@@ -77,7 +83,7 @@ import TabItem from '@theme/TabItem';
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "***" \
               --loc "{'latitude':'53.908522','longitude':'27.574821'}" \
-              --quoted "3EB0F7ED52F9B72D3C5510"
+              --quoted "3EB0195CC23444AA8D9A08"
         ```
     </TabItem>
   
@@ -89,7 +95,7 @@ import TabItem from '@theme/TabItem';
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "***" ^
               --loc "{'latitude':'53.908522','longitude':'27.574821'}" ^
-              --quoted "3EB0F7ED52F9B72D3C5510"
+              --quoted "3EB0195CC23444AA8D9A08"
         ```
     </TabItem>
 </Tabs>
@@ -97,6 +103,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "3EB02F1F1B39BB1229982C"
+ "idMessage": "3EB0195CC23444AA8D9A08"
 }
 ```

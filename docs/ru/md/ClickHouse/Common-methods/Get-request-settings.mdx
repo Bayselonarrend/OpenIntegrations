@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить настройки запроса
  Формирует структуру описания запроса
@@ -28,6 +29,13 @@ import TabItem from '@theme/TabItem';
   | ВнешниеТаблицы | --ext | Массив Из Структура | &#x2716; | Информация о внешних таблицах. См. [`ПолучитьСтруктуруВнешнейТаблицы`](/docs/ClickHouse/Common-methods/Get-external-table-structure) |
   | Настройки | --settings | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные query параметры запроса |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - Структура запроса
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - Структура запроса
 
 :::tip
 При использовании транспорта `http` нельзя одновременно использовать `Данные` и `Внешние таблицы`
@@ -105,11 +111,8 @@ import TabItem from '@theme/TabItem';
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "0d94c8ac-ad6f-4b95-8798-69b7a87cb466",
- "data": {
-  "meta": [],
-  "data": []
- },
+ "id": "b7db2076-d381-4f39-9e2e-673b4169163c",
+ "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\0k2eydeh.uwq.json",
  "format": "CSV",
  "external_tables": [
   {

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отменить публикацию папки
  Отменяет режим общего доступа для каталога
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен |
   | IDПапки | --folder | Строка | &#x2714; | ID публичного каталога (shared folder ID) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
 
 
@@ -64,7 +70,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint dropbox ОтменитьПубликациюПапки \
               --token "***" \
-              --folder "14042663747"
+              --folder "14052661507"
         ```
     </TabItem>
   
@@ -72,7 +78,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint dropbox ОтменитьПубликациюПапки ^
               --token "***" ^
-              --folder "14042663747"
+              --folder "14052661507"
         ```
     </TabItem>
 </Tabs>
@@ -81,6 +87,6 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  ".tag": "async_job_id",
- "async_job_id": "dbjid:AAAu5-xrdoAlpf6Le3swSTOnygVSLWZUxdpOcFZhoaTBih8txVb_OSVZcAXsU-UNk7JPLgExGkBMbbuX66QXPfbp"
+ "async_job_id": "dbjid:AABa6lzKJX2jmfLUbyn8NmzQZQTNCcjQcU1IGGpIkn6L2xzKt04sh1KeS6sr-W8mkk0sAvTSEb_YRM04knqPWT60"
 }
 ```

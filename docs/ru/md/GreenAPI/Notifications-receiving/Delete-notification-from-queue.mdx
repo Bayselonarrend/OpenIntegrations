@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Удалить уведомление из очереди
  Удаляет уведомление из очереди после успешного получения
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenAPI/Account/Form-access-parameters) |
   | IDДоставки | --receipt | Строка, Число | &#x2714; | Идентификатор доставки из метода ПолучитьУведомление |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
 
 :::tip
 Метод в документации API: [DeleteNotification](https://green-api.com/docs/api/receiving/technology-http-api/DeleteNotification/)

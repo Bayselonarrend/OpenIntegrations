@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить статус участия пользователя
  Получает статус участия в событии для текущего пользователя
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | IDСобытия | --event | Число | &#x2714; | ID события календаря |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [calendar.meeting.status.get](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-get.html)
@@ -62,7 +68,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСтатусУчастияПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --event 4244 \
+              --event 4260 \
               --token "***"
         ```
     </TabItem>
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСтатусУчастияПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --event 4244 ^
+              --event 4260 ^
               --token "***"
         ```
     </TabItem>
@@ -82,13 +88,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": "H",
  "time": {
-  "start": 1775507474,
-  "finish": 1775507474.66899,
-  "duration": 0.668992042541504,
+  "start": 1775628050,
+  "finish": 1775628050.56739,
+  "duration": 0.567393064498901,
   "processing": 0,
-  "date_start": "2026-04-06T23:31:14+03:00",
-  "date_finish": "2026-04-06T23:31:14+03:00",
-  "operating_reset_at": 1775508074,
+  "date_start": "2026-04-08T09:00:50+03:00",
+  "date_finish": "2026-04-08T09:00:50+03:00",
+  "operating_reset_at": 1775628650,
   "operating": 0
  }
 }

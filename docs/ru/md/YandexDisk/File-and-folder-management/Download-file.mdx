@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Скачать файл
  Скачивает файл по указанному пути
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Путь | --path | Строка | &#x2714; | Путь к файлу для скачивания |
   | ПутьСохранения | --out | Строка | &#x2716; | Путь сохранения файла |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  ДвоичныеДанные,Строка - Двоичные данные или путь к файлу при указании параметра ПутьСохранения
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   ДвоичныеДанные,Строка - Двоичные данные или путь к файлу при указании параметра ПутьСохранения
 
 
 
@@ -56,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk СкачатьФайл \
               --token "***" \
-              --path "/d2ee4174-4ac5-4434-b109-151cfbf9b145.png"
+              --path "/31c61f6a-85bf-4ad3-aa86-476d4300184d.png"
         ```
     </TabItem>
   
@@ -64,7 +70,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk СкачатьФайл ^
               --token "***" ^
-              --path "/d2ee4174-4ac5-4434-b109-151cfbf9b145.png"
+              --path "/31c61f6a-85bf-4ad3-aa86-476d4300184d.png"
         ```
     </TabItem>
 </Tabs>

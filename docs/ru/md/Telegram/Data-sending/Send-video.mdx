@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Отправить видео
  Отправляет видео в чат или канал
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Клавиатура | --keyboard | Строка, Структура Из КлючИЗначение | &#x2716; | Клавиатура. См. [`СформироватьКлавиатуруПоМассивуКнопок`](/docs/Telegram/Data-sending/Form-keyboard-from-button-array) |
   | Разметка | --parsemode | Строка | &#x2716; | Вид обработки текста (HTML, Markdown, MarkdownV2) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 :::tip
 Метод в документации API: [sendVideo](https://core.telegram.org/bots/api#sendvideo)
@@ -78,7 +84,7 @@ import TabItem from '@theme/TabItem';
               --token "***" \
               --chat "***" \
               --text "Строковое значение" \
-              --video "C:\Users\bayselonarrend\AppData\Local\Temp\dcw0n23p.2va"
+              --video "C:\Users\bayselonarrend\AppData\Local\Temp\hpbrg2qb.pdd"
         ```
     </TabItem>
   
@@ -88,7 +94,7 @@ import TabItem from '@theme/TabItem';
               --token "***" ^
               --chat "***" ^
               --text "Строковое значение" ^
-              --video "C:\Users\bayselonarrend\AppData\Local\Temp\dcw0n23p.2va"
+              --video "C:\Users\bayselonarrend\AppData\Local\Temp\hpbrg2qb.pdd"
         ```
     </TabItem>
 </Tabs>
@@ -98,7 +104,7 @@ import TabItem from '@theme/TabItem';
 {
  "ok": true,
  "result": {
-  "message_id": 20632,
+  "message_id": 20650,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -112,7 +118,7 @@ import TabItem from '@theme/TabItem';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1775505492,
+  "date": 1775625097,
   "video": {
    "duration": 5,
    "width": "***",
@@ -120,21 +126,21 @@ import TabItem from '@theme/TabItem';
    "file_name": "video",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAlCYadQQVI3u1ER1AeMU3lQBpwrNtIUAAj-cAAKvqqhKFe5bOL0b4UEBAAdtAAM7BA",
-    "file_unique_id": "AQADP5wAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCqadXjiWWJWfHzX3tD4Na5FX_CvEgAAtOTAAL-WrFKMUFXdK1ZyYMBAAdtAAM7BA",
+    "file_unique_id": "AQAD05MAAv5asUpy",
     "file_size": 19807,
     "width": "***",
     "height": 240
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAlCYadQQVI3u1ER1AeMU3lQBpwrNtIUAAj-cAAKvqqhKFe5bOL0b4UEBAAdtAAM7BA",
-    "file_unique_id": "AQADP5wAAq-qqEpy",
+    "file_id": "AAMCAgADGQMAAlCqadXjiWWJWfHzX3tD4Na5FX_CvEgAAtOTAAL-WrFKMUFXdK1ZyYMBAAdtAAM7BA",
+    "file_unique_id": "AQAD05MAAv5asUpy",
     "file_size": 19807,
     "width": "***",
     "height": 240
    },
-   "file_id": "BAACAgIAAxkDAAJQmGnUEFSN7tREdQHjFN5UAacKzbSFAAI_nAACr6qoShXuWzi9G-FBOwQ",
-   "file_unique_id": "AgADP5wAAq-qqEo",
+   "file_id": "BAACAgIAAxkDAAJQqmnV44lliVnx8197Q-DWuRV_wrxIAALTkwAC_lqxSjFBV3StWcmDOwQ",
+   "file_unique_id": "AgAD05MAAv5asUo",
    "file_size": 1137878
   },
   "caption": "Строковое значение"

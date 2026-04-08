@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Загрузить фото на сервер
  Загружает фото на сервер для его дальнейшего использования
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Параметры | --auth | Структура из Строка | &#x2716; | Параметры авторизации. См. [`ПолучитьПараметрыАвторизации`](/docs/VK/Authorization/Get-auth-parameters) |
   | Вид | --type | Строка | &#x2716; | Вид загрузки (Пост, Товар, История, Опрос, Прочее) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
 
 :::tip
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
@@ -87,8 +93,8 @@ import TabItem from '@theme/TabItem';
  "response": [
   {
    "album_id": -14,
-   "date": 1775505806,
-   "id": 457250129,
+   "date": 1775625456,
+   "id": 457250136,
    "owner_id": 657846756,
    "access_key": "***",
    "sizes": [

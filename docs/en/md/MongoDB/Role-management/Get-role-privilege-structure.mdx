@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get role privilege structure
  Forms the privilege information structure for use when working with roles
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Resource | --res | Structure Of KeyAndValue | &#x2714; | Privilege resource |
   | ActionsArray | --act | Array Of String | &#x2714; | Array of available privilege actions |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure - Privilege structure
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,8 +40,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure - Privilege structure
 
 :::tip
 Resource can be defined in one of the following formats:<br/>Structure for collection: `{ db: "database", collection: "collection name" }`

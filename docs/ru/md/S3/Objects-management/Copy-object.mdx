@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Копировать объект
  Копирует объект из одного расположения в другое
@@ -28,6 +29,13 @@ import TabItem from '@theme/TabItem';
   | Заголовки | --headers | Соответствие Из КлючИЗначение | &#x2716; | Дополнительные заголовки запроса, если необходимо |
   | Каталог | --dir | Булево | &#x2716; | Истина > Path style URL, Ложь > Virtual hosted style URL |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
 
 :::tip
 Метод в документации AWS: [CopyObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
@@ -74,7 +80,7 @@ import TabItem from '@theme/TabItem';
               --sname "picture.jpg" \
               --sbucket "newbucket2" \
               --name "new_picture.jpg" \
-              --bucket "4438f8d2" \
+              --bucket "1429d4e7" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --dir true
         ```
@@ -88,7 +94,7 @@ import TabItem from '@theme/TabItem';
               --sname "picture.jpg" ^
               --sbucket "newbucket2" ^
               --name "new_picture.jpg" ^
-              --bucket "4438f8d2" ^
+              --bucket "1429d4e7" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --dir true
         ```
@@ -101,7 +107,7 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "CopyObjectResult": {
-   "LastModified": "2026-04-06T20:43:06.746Z",
+   "LastModified": "2026-04-08T06:15:44.865Z",
    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\""
   }
  },
@@ -114,13 +120,13 @@ import TabItem from '@theme/TabItem';
   "X-Amz-Checksum-Crc64nvme": "p+vCtK1YeeU=",
   "X-Amz-Checksum-Type": "FULL_OBJECT",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "18A3DF49EE0900DD",
+  "X-Amz-Request-Id": "18A44D1E1E587AAA",
   "X-Content-Type-Options": "nosniff",
   "X-Ratelimit-Limit": "6372",
   "X-Ratelimit-Remaining": "6372",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Mon, 06 Apr 2026 20:43:05 GMT",
+  "Date": "Wed, 08 Apr 2026 06:15:44 GMT",
   "Content-Type": "application/xml",
   "Content-Length": "232"
  }

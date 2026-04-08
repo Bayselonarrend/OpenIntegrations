@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить список сообщений чата
  Получает список из 20 сообщений чата или диалога, в зависимости от указания IDПервого и IDПоследнего
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | IDПервого | --first | Строка, Число | &#x2716; | ID первого загруженного сообщения |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [im.dialog.messages.get](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11479)

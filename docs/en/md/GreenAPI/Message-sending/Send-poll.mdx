@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Send poll
  Sends a poll with answer choices to the selected chat room
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | MultipleSelect | --multi | Boolean | &#x2716; | Allows to select more than one answer choice |
   | ReplyID | --quoted | String | &#x2716; | Replying message id if necessary |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Green API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
 
 :::tip
 Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/SendPoll/)

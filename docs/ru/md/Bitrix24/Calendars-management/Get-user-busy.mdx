@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить занятость пользователей
  Получает массив событий пользователей в заданном интервале
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | ДатаОкончания | --to | Дата | &#x2714; | Дата окончания периода |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [calendar.accessibility.get](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-accessibility-get.html)
@@ -77,8 +83,8 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ПолучитьЗанятостьПользователей \
               --url "b24-ar17wx.bitrix24.by" \
               --users 1 \
-              --from "2026-04-06T22:03:51" \
-              --to "2026-04-13T22:03:51" \
+              --from "2026-04-08T09:00:59" \
+              --to "2026-04-15T09:00:59" \
               --token "***"
         ```
     </TabItem>
@@ -88,8 +94,8 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ПолучитьЗанятостьПользователей ^
               --url "b24-ar17wx.bitrix24.by" ^
               --users 1 ^
-              --from "2026-04-06T22:03:51" ^
-              --to "2026-04-13T22:03:51" ^
+              --from "2026-04-08T09:00:59" ^
+              --to "2026-04-15T09:00:59" ^
               --token "***"
         ```
     </TabItem>
@@ -101,12 +107,12 @@ import TabItem from '@theme/TabItem';
  "result": {
   "1": [
    {
-    "ID": "4248",
+    "ID": "4256",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.04.2026 23:31:00",
-    "DATE_TO": "08.04.2026 00:31:00",
-    "DATE_FROM_TS_UTC": "1775583060",
-    "DATE_TO_TS_UTC": "1778189460",
+    "DATE_FROM": "09.04.2026 09:01:00",
+    "DATE_TO": "09.04.2026 10:01:00",
+    "DATE_FROM_TS_UTC": "1775703660",
+    "DATE_TO_TS_UTC": "1778310060",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -117,12 +123,12 @@ import TabItem from '@theme/TabItem';
     "EVENT_TYPE": null
    },
    {
-    "ID": "4252",
+    "ID": "4260",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.04.2026 23:31:00",
-    "DATE_TO": "08.04.2026 00:31:00",
-    "DATE_FROM_TS_UTC": "1775583060",
-    "DATE_TO_TS_UTC": "1778189460",
+    "DATE_FROM": "09.04.2026 09:01:00",
+    "DATE_TO": "09.04.2026 10:01:00",
+    "DATE_FROM_TS_UTC": "1775703660",
+    "DATE_TO_TS_UTC": "1778310060",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -135,13 +141,13 @@ import TabItem from '@theme/TabItem';
   ]
  },
  "time": {
-  "start": 1775507477,
-  "finish": 1775507477.65604,
-  "duration": 0.656035900115967,
+  "start": 1775628058,
+  "finish": 1775628058.87209,
+  "duration": 0.872087001800537,
   "processing": 0,
-  "date_start": "2026-04-06T23:31:17+03:00",
-  "date_finish": "2026-04-06T23:31:17+03:00",
-  "operating_reset_at": 1775508077,
+  "date_start": "2026-04-08T09:00:58+03:00",
+  "date_finish": "2026-04-08T09:00:58+03:00",
+  "operating_reset_at": 1775628658,
   "operating": 0
  }
 }

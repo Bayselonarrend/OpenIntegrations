@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Добавить файл в задачу
  Прикрепляет файл к выбранной задаче
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | IDФайла | --fileid | Число, Строка | &#x2714; | ID Файла |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [tasks.task.files.attach](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
@@ -68,8 +74,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьФайлВЗадачу \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "10230" \
-              --fileid 54734 \
+              --task "10250" \
+              --fileid 54842 \
               --token "***"
         ```
     </TabItem>
@@ -78,8 +84,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьФайлВЗадачу ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "10230" ^
-              --fileid 54734 ^
+              --task "10250" ^
+              --fileid 54842 ^
               --token "***"
         ```
     </TabItem>
@@ -89,16 +95,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "attachmentId": 15468
+  "attachmentId": 15484
  },
  "time": {
-  "start": 1775507291,
-  "finish": 1775507291.86779,
-  "duration": 0.867789030075073,
+  "start": 1775627712,
+  "finish": 1775627712.2325,
+  "duration": 0.232501983642578,
   "processing": 0,
-  "date_start": "2026-04-06T23:28:11+03:00",
-  "date_finish": "2026-04-06T23:28:11+03:00",
-  "operating_reset_at": 1775507891,
+  "date_start": "2026-04-08T08:55:12+03:00",
+  "date_finish": "2026-04-08T08:55:12+03:00",
+  "operating_reset_at": 1775628312,
   "operating": 0
  }
 }

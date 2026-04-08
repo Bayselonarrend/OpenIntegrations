@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get TLS settings 
  Forms settings for using TLS
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | DisableCertVerification | - | Boolean | &#x2714; | Allows to work with invalid certificates, including self signed |
   | CertFilepath | - | String | &#x2716; | Path to the root PEM file of the certificate if it is not in the system repository |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Structure of TLS connection settings
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,16 +40,16 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - Structure of TLS connection settings
 
 :::tip
 Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function or implicit, when passing the connection string to the `ProcessRequest` method
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

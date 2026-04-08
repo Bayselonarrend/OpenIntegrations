@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить стадию канбана
  Изменяет свойства существующей стадии канбана или Моего плана
@@ -28,6 +29,13 @@ import TabItem from '@theme/TabItem';
   | КакАдминистратор | --admin | Булево | &#x2716; | Позволяет добавлять стадии без проверки прав (для администраторов) |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -41,8 +49,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [task.stages.update](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_update.php)
@@ -77,7 +83,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ИзменитьСтадиюКанбана \
               --url "b24-ar17wx.bitrix24.by" \
               --title "Новое имя стадии стадии 2" \
-              --stage 3816 \
+              --stage 3824 \
               --color "000000" \
               --prevstage 6 \
               --admin true \
@@ -90,7 +96,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ИзменитьСтадиюКанбана ^
               --url "b24-ar17wx.bitrix24.by" ^
               --title "Новое имя стадии стадии 2" ^
-              --stage 3816 ^
+              --stage 3824 ^
               --color "000000" ^
               --prevstage 6 ^
               --admin true ^
@@ -104,13 +110,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1775507345,
-  "finish": 1775507345.10316,
-  "duration": 0.103154897689819,
+  "start": 1775627807,
+  "finish": 1775627808.05912,
+  "duration": 1.05912303924561,
   "processing": 0,
-  "date_start": "2026-04-06T23:29:05+03:00",
-  "date_finish": "2026-04-06T23:29:05+03:00",
-  "operating_reset_at": 1775507945,
+  "date_start": "2026-04-08T08:56:47+03:00",
+  "date_finish": "2026-04-08T08:56:48+03:00",
+  "operating_reset_at": 1775628408,
   "operating": 0
  }
 }

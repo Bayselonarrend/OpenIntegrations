@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать событие
  Создает новое событие
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Календарь | --calendar | Строка | &#x2714; | ID календаря |
   | ОписаниеСобытия | --props | Соответствие Из КлючИЗначение | &#x2714; | Описание события |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Строка, Произвольный, HTTPОтвет, ДвоичныеДанные, Неопределено - ответ сервера Google
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Строка, Произвольный, HTTPОтвет, ДвоичныеДанные, Неопределено - ответ сервера Google
 
 
 
@@ -74,8 +80,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие \
               --token "***" \
-              --calendar "387ed7945272ff96bcfb727f1b1794eb56bbbc028f01f1e5b38937d6d5539699@group.calendar.google.com" \
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'4/6/2026 9:49:18 PM','ДатаОкончания':'4/6/2026 10:49:18 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "f6c41ad17fd585e185275dab44298dc0cd6821ade71223eb1e2499c0353e2e38@group.calendar.google.com" \
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'4/8/2026 8:46:09 AM','ДатаОкончания':'4/8/2026 9:46:09 AM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
   
@@ -85,8 +91,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие ^
               --token "***" ^
-              --calendar "387ed7945272ff96bcfb727f1b1794eb56bbbc028f01f1e5b38937d6d5539699@group.calendar.google.com" ^
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'4/6/2026 9:49:18 PM','ДатаОкончания':'4/6/2026 10:49:18 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "f6c41ad17fd585e185275dab44298dc0cd6821ade71223eb1e2499c0353e2e38@group.calendar.google.com" ^
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'4/8/2026 8:46:09 AM','ДатаОкончания':'4/8/2026 9:46:09 AM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
 </Tabs>
@@ -95,12 +101,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "kind": "calendar#event",
- "etag": "\"3551013817024958\"",
- "id": "1tca52d1lfl9o6ag390tb58cps",
+ "etag": "\"3551254336553662\"",
+ "id": "tuhsv3imrdi6ubnsa1ca7ek8pg",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=MXRjYTUyZDFsZmw5bzZhZzM5MHRiNThjcHMgZTJjM2M3MDQyYmE2YTQzMT...",
- "created": "2026-04-06T20:21:48Z",
- "updated": "2026-04-06T20:21:48.512Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=dHVoc3YzaW1yZGk2dWJuc2ExY2E3ZWs4cGcgZjZjNDFhZDE3ZmQ1ODVlMT...",
+ "created": "2026-04-08T05:46:07Z",
+ "updated": "2026-04-08T05:46:08.276Z",
  "summary": "Новое событие",
  "description": "Описание тестового события",
  "location": "В офисе",
@@ -108,19 +114,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "e2c3c7042ba6a4316e8127c7aed8ad8bbf5f83adbb83a8c97fd00e6cd2380a7d@group.calendar.google.com",
+  "email": "f6c41ad17fd585e185275dab44298dc0cd6821ade71223eb1e2499c0353e2e38@group.calendar.google.com",
   "displayName": "Тестовый календарь",
   "self": true
  },
  "start": {
-  "dateTime": "2026-04-07T02:21:49+03:00",
+  "dateTime": "2026-04-08T11:46:09+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-04-07T03:21:49+03:00",
+  "dateTime": "2026-04-08T12:46:09+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "1tca52d1lfl9o6ag390tb58cps@google.com",
+ "iCalUID": "tuhsv3imrdi6ubnsa1ca7ek8pg@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

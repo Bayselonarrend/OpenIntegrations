@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Создать заявку на вызов курьера
  Создает новую заявку на вызов курьера для забора груза
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | ОписаниеЗаявки | --intake | Структура Из КлючИЗначение | &#x2714; | Описание заявки. См. [`ПолучитьОписаниеЗаявкиКурьера`](/docs/CDEK/Delivery-management/Get-courier-invitations-description) |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
 Метод в документации API: [Регистрация отказа](https://api-docs.cdek.ru/55327658.html)
@@ -101,7 +107,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаявкуНаВызовКурьера \
               --token "***" \
-              --intake "{'intake_date':'2026-03-26','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
+              --intake "{'intake_date':'2026-04-09','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
               --testapi "***"
         ```
     </TabItem>
@@ -112,7 +118,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --intake "{'intake_date':'2026-03-26','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" ^
+              --intake "{'intake_date':'2026-04-09','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" ^
               --testapi "***"
         ```
     </TabItem>
@@ -122,13 +128,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "952b03a7-b6df-4ea9-b008-08f65f24dde8"
+  "uuid": "05897fad-3ac0-4903-94df-28094f295780"
  },
  "requests": [
   {
-   "request_uuid": "52b4438e-710f-4fd7-97a4-9a413d74c1f2",
+   "request_uuid": "10a588cb-4f92-4bde-af44-3c4507f064b3",
    "type": "CREATE",
-   "date_time": "2026-04-06T23:37:00+03:00",
+   "date_time": "2026-04-08T09:07:33+03:00",
    "state": "ACCEPTED"
   }
  ],

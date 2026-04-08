@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Process request 
  Creates a request based on the entered data with or without execution
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Method | - | String | &#x2714; | Request HTTP method |
   | Start | - | Boolean | &#x2716; | Executes the request immediately after it is generated |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ DataProcessorObject.OPI_HTTPClient - This processor object
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,16 +40,16 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
 
 :::tip
 `ExecuteRequest=False` can be used to get ready HTTPConnection and HTTPConnection objects without executing them. See `ReturnRequest` and `ReturnConnection`.
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить комментарий задачи
  Изменяет текст комментария задачи
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Текст | --text | Строка | &#x2714; | Текст комментария |
   | Токен | --token | Строка | &#x2716; | Токен авторизации, если используется не вебхук |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
 
 :::tip
 Метод в документации API: [task.commentitem.update](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
@@ -73,8 +79,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьКомментарийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "10232" \
-              --comment 86258 \
+              --task "10252" \
+              --comment 86536 \
               --text "Задача изменена, расходимся" \
               --token "***"
         ```
@@ -84,8 +90,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьКомментарийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "10232" ^
-              --comment 86258 ^
+              --task "10252" ^
+              --comment 86536 ^
               --text "Задача изменена, расходимся" ^
               --token "***"
         ```

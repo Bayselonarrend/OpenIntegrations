@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get connection parameters
  Forms a structure of parameters for creating a connection
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Proto | --proto | Arbitrary | &#x2716; | Schema or schema structure: Key > file name (for import), Value > schema as a string or file path |
   | Metadata | --meta | Structure Of KeyAndValue | &#x2716; | Metadata structure, if necessary |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Connection parameters
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -33,8 +41,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - Connection parameters
 
 :::tip
 Proto file name is used to allow further specification of this Proto in the import of another Proto It does not have to be a real file path. Proto files that are not involved in the import of other Protos can have arbitrary file names

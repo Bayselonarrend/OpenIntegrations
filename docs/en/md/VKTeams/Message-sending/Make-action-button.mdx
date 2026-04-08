@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Make action button
  Forms an action button for the message keyboard
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | URL | --url | String | &#x2716; | URL to create the page open button. Only if the Value is not filled in |
   | Style | --style | String | &#x2716; | Button style: primary, attention or base |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure - Button for keyboard
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure - Button for keyboard
 
 :::tip
 Used for `SendTextMessage` function

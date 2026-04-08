@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get updates
  Executes a request, returning information about bot events. Used in polling mode
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Timeout | --timeout | Number | &#x2716; | Waiting time for new events |
   | Offset | --offset | Number | &#x2716; | Offset in the list of received messages |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from Telegram
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 :::tip
 Method at API documentation: [getUpdates](https://core.telegram.org/bots/api#getupdates)

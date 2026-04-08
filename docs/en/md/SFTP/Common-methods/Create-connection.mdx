@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Create connection 
  Creates a new SFTP session
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | SSHSettings | - | Structure Of KeyAndValue | &#x2714; | Connection settings structure |
   | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings structure, if necessary |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Arbitrary, Map of KeyAndValue - Create connection
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,16 +40,16 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Arbitrary, Map of KeyAndValue - Create connection
 
 :::tip
 Get the connection configuration using the functions `GetSettingsLoginPassword`, `GetSettingsPrivateKey`, `GetSettingsViaAgent`
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

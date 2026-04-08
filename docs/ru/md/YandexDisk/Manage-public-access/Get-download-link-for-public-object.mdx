@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить ссылку скачивания публичного объекта
  Получает прямую ссылку для скачивания публичного объекта
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | URL | --url | Строка | &#x2714; | Адрес объекта |
   | Путь | --path | Строка | &#x2716; | Путь внутри объекта |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
 
 
@@ -56,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта \
               --token "***" \
-              --url "https://yadi.sk/d/N0GxJqAP6Z-iGw"
+              --url "https://yadi.sk/d/kQgbTTYJL9rp_g"
         ```
     </TabItem>
   
@@ -64,7 +70,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта ^
               --token "***" ^
-              --url "https://yadi.sk/d/N0GxJqAP6Z-iGw"
+              --url "https://yadi.sk/d/kQgbTTYJL9rp_g"
         ```
     </TabItem>
 </Tabs>
@@ -73,7 +79,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "method": "GET",
- "href": "https://downloader.disk.yandex.ru/disk/423ee18416a8caab95913009db81c53ff9ee3193b805ec96009ee3bc8bc92...",
+ "href": "https://downloader.disk.yandex.ru/disk/3fed92a416c8ecf51e1fa2fe9577593d691392c01e37cd7b1b5eb651f9cb0...",
  "templated": false
 }
 ```

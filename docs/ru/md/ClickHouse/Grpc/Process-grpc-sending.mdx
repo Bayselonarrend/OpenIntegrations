@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Обработать отправку GRPC
  Инициализирует поток, передает запрос и набор данных в указанном порядке с получением одного сообщения по окончании
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Сессия | --session | Структура Из КлючИЗначение | &#x2716; | Настройки сессии. См. [`ПолучитьНастройкиСессии`](/docs/ClickHouse/Common-methods/Get-session-settings) |
   | Таймаут | --tout | Число | &#x2716; | Таймаут (в мс) |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат обработки
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат обработки
 
 
 
@@ -89,7 +95,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ОбработатьОтправкуGRPC \
-              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+              --conn "{'user':'bayselonarrend','address':'http://127.0.0.1:9101','transport':'grpc','password':'***','auth_type':'basic'}" \
               --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" \
               --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
         ```
@@ -100,7 +106,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ОбработатьОтправкуGRPC ^
-              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+              --conn "{'user':'bayselonarrend','address':'http://127.0.0.1:9101','transport':'grpc','password':'***','auth_type':'basic'}" ^
               --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
               --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
         ```
@@ -153,7 +159,7 @@ import TabItem from '@theme/TabItem';
     "written_bytes": 235,
     "written_rows": 5
    },
-   "query_id": "eb0f812b-2756-4632-862b-6abbdd52053f",
+   "query_id": "db115366-f25f-4744-a24f-8f650311b65b",
    "stats": {
     "allocated_bytes": 0,
     "applied_aggregation": false,

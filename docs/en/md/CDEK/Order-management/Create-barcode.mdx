@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Create barcode
  Generates a PDF barcode CP for orders
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Lang | --lang | String | &#x2716; | Barcode language: RUS, ENG |
   | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -40,8 +48,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
 
 :::tip
 Method at API documentation: [Creating barcode CP for the order](https://api-docs.cdek.ru/36969713.html)

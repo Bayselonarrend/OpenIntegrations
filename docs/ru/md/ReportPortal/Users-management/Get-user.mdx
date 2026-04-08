@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить пользователя
  Получает информацию о пользователе по логину
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен доступа |
   | Логин | --login | Строка | &#x2714; | Логин пользователя |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 
 
 
@@ -75,10 +81,10 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "uuid": "1400d75e-97f0-48a7-bbc1-50932ccaf132",
+ "uuid": "2ab227a7-cbe7-46a4-8459-0cf9fc456cbe",
  "active": true,
  "loaded": true,
- "id": 29,
+ "id": 30,
  "userId": "test",
  "email": "test@example.com",
  "fullName": "Test User",
@@ -86,11 +92,11 @@ import TabItem from '@theme/TabItem';
  "userRole": "USER",
  "photoLoaded": true,
  "metadata": {
-  "last_login": 1775508687799
+  "last_login": 1775629597494
  },
  "assignedProjects": {
   "test_personal": {
-   "projectId": 55,
+   "projectId": 57,
    "projectRole": "PROJECT_MANAGER",
    "entryType": "PERSONAL"
   },

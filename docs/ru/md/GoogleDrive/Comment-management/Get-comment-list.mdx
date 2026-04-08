@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить список комментариев
  Получает список всех комментариев объекта
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен |
   | ИДОбъекта | --object | Строка | &#x2714; | Идентификатор объекта |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
 
 
@@ -55,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gdrive ПолучитьСписокКомментариев \
               --token "***" \
-              --object "1VLtz5m0tIedvOQawgpkAfoY5fvfUVj56"
+              --object "1_HMxUmtlLuti8aNMTu5bWWCT2-G65tUF"
         ```
     </TabItem>
   
@@ -63,7 +69,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gdrive ПолучитьСписокКомментариев ^
               --token "***" ^
-              --object "1VLtz5m0tIedvOQawgpkAfoY5fvfUVj56"
+              --object "1_HMxUmtlLuti8aNMTu5bWWCT2-G65tUF"
         ```
     </TabItem>
 </Tabs>
@@ -81,9 +87,9 @@ import TabItem from '@theme/TabItem';
     "photoLink": "//lh3.googleusercontent.com/a/ACg8ocJnbqA6yq1Q0s-yU0hen8H6NFa_chOdcC2wpT9q-BJj0q7MyPU=s50-c-k-no"
    },
    "kind": "drive#comment",
-   "id": "AAAB43tNSHU",
-   "createdTime": "2026-04-06T20:22:52.173Z",
-   "modifiedTime": "2026-04-06T20:22:52.173Z",
+   "id": "AAAB4G7DknE",
+   "createdTime": "2026-04-08T05:47:26.147Z",
+   "modifiedTime": "2026-04-08T05:47:26.147Z",
    "htmlContent": "Текст комментария",
    "content": "Текст комментария",
    "deleted": false

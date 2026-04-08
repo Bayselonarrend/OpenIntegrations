@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Return response as JSON object 
  Returns the response body as a collection from JSON
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | ToMap | - | Boolean | &#x2716; | Use map instead of structure |
   | ExceptionOnError | - | Boolean | &#x2716; | Causes an exception with a log if there were errors during processing |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Arbitrary - The response or the same processing object
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,16 +40,16 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Arbitrary - The response or the same processing object
 
 :::tip
 If it is not possible to obtain a collection from the body, binary data will be returned
 :::
 
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить объект
  Получает информацию об объекте диска по заданному пути
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Токен | --token | Строка | &#x2714; | Токен |
   | Путь | --path | Строка | &#x2714; | Путь к папке или файлу |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
 
 
@@ -55,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint yadisk ПолучитьОбъект \
               --token "***" \
-              --path "/0bc10bbb-a586-4e3a-96e8-163854052726.png"
+              --path "/0ddaded9-2db4-477e-8aec-c4e22072b82a.png"
         ```
     </TabItem>
   
@@ -63,7 +69,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint yadisk ПолучитьОбъект ^
               --token "***" ^
-              --path "/0bc10bbb-a586-4e3a-96e8-163854052726.png"
+              --path "/0ddaded9-2db4-477e-8aec-c4e22072b82a.png"
         ```
     </TabItem>
 </Tabs>
@@ -71,24 +77,24 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "path": "disk:/b1d3e9e6-5501-4ff6-bfb1-3c78bb4710ac.png",
+ "path": "disk:/0ddaded9-2db4-477e-8aec-c4e22072b82a.png",
  "type": "file",
- "name": "b1d3e9e6-5501-4ff6-bfb1-3c78bb4710ac.png",
- "created": "2026-04-06T23:17:59+03:00",
- "modified": "2026-04-06T23:17:59+03:00",
+ "name": "0ddaded9-2db4-477e-8aec-c4e22072b82a.png",
+ "created": "2026-04-08T08:41:50+03:00",
+ "modified": "2026-04-08T08:41:50+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "media_type": "image",
- "resource_id": "1573541518:48dd6ba91cb71acbfbc80b79a4ae976da65d475c6d8a6a01ea3e8f094696e043",
- "revision": 1775506680340470,
+ "resource_id": "1573541518:2172d92dda463dbfc469f275a874c80a3146991863c8ae42cc3527bf92743636",
+ "revision": 1775626910987715,
  "comment_ids": {
-  "public_resource": "1573541518:48dd6ba91cb71acbfbc80b79a4ae976da65d475c6d8a6a01ea3e8f094696e043",
-  "private_resource": "1573541518:48dd6ba91cb71acbfbc80b79a4ae976da65d475c6d8a6a01ea3e8f094696e043"
+  "public_resource": "1573541518:2172d92dda463dbfc469f275a874c80a3146991863c8ae42cc3527bf92743636",
+  "private_resource": "1573541518:2172d92dda463dbfc469f275a874c80a3146991863c8ae42cc3527bf92743636"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/cf7eff1103296db312a91c68c756b815af668c6aa4356169f914af516f471..."
+ "file": "https://downloader.disk.yandex.ru/disk/426a9902a2e369f49815a8ff93cdd1c2dfd0adafc1c6721250e5ab2f15233..."
 }
 ```

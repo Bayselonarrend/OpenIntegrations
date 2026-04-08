@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get task fields structure
  Gets a structure with a description of the fields for creating a task
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
   | Token | --token | String | &#x2716; | Access token, when app auth method used |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 :::tip
 Method at API documentation: [tasks.task.getFields](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Список пользователей
  Возвращает список пользователей рабочего пространства
@@ -22,6 +23,13 @@ import TabItem from '@theme/TabItem';
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
 
 
 
@@ -102,6 +108,6 @@ import TabItem from '@theme/TabItem';
  "has_more": false,
  "type": "user",
  "user": {},
- "request_id": "954097fc-9ddd-46e0-86d5-0908763d8c21"
+ "request_id": "6921ed38-17d2-4951-b800-66a4a1168d95"
 }
 ```

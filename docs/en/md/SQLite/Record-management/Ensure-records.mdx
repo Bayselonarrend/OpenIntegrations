@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Ensure records
  Adds records or updates data of existing ones when key fields match
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | Transaction | --trn | Boolean | &#x2716; | True > adding records to transactions with rollback on error |
   | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or database path |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Result of query execution
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -35,8 +43,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Map Of KeyAndValue - Result of query execution
 
 :::tip
 UNIQUE and PRIMARY KEY fields can be specified as key fields. If fields are not specified, uniqueness is determined by all suitable fields

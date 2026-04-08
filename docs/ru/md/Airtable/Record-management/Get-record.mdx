@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить запись
  Получает данные строки таблицы по идентификатору
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Таблица | --table | Строка | &#x2714; | Идентификатор таблицы |
   | Запись | --record | Строка | &#x2714; | Идентификатор записи в таблице |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
 
 
 
@@ -59,9 +65,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ПолучитьЗапись \
               --token "***" \
-              --base "appwa9Dy06QftAJwY" \
-              --table "tbls1WaYULRT1sjo4" \
-              --record "recMuQq84yDsU8BCo"
+              --base "appBmzwVCsYBr1uLg" \
+              --table "tblY8Wp81f66UTre3" \
+              --record "recr94pbSB0oUIAPf"
         ```
     </TabItem>
   
@@ -69,9 +75,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ПолучитьЗапись ^
               --token "***" ^
-              --base "appwa9Dy06QftAJwY" ^
-              --table "tbls1WaYULRT1sjo4" ^
-              --record "recMuQq84yDsU8BCo"
+              --base "appBmzwVCsYBr1uLg" ^
+              --table "tblY8Wp81f66UTre3" ^
+              --record "recr94pbSB0oUIAPf"
         ```
     </TabItem>
 </Tabs>
@@ -79,8 +85,8 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "recxVDEABpFGB0eCN",
- "createdTime": "2026-04-06T20:25:05Z",
+ "id": "recr94pbSB0oUIAPf",
+ "createdTime": "2026-04-08T05:50:42Z",
  "fields": {
   "Номер": 10,
   "Строковое": "Привет\n"

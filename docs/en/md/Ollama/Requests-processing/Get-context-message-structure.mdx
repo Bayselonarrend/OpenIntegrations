@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get context message structure
  Gets the message structure for a list of request messages in context
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Pictures | --images | Array Of String | &#x2716; | List of pictures in Base64 format (for multimodal models like llava) |
   | Tools | --tools | Array Of String | &#x2716; | List of tools in JSON format that the model should use |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Fields structure
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -34,8 +42,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  Structure Of KeyAndValue - Fields structure
 
 
 

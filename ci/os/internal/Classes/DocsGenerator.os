@@ -706,17 +706,18 @@
 	Если Не СтруктураДанных["ЕстьCLI"] Тогда
 		
 		ТекстПримечания = ТекстПримечания 
-		+ Символы.ПС   
-		+ ":::caution"
-		+ Символы.ПС
-		+ ?(ТекущийЯзык = "ru"
-		, "**NOCLI:** данный метод недоступен для использования в CLI версии"
-		, "**NOCLI:** this method is not available in CLI version")
-		+ Символы.ПС
-		+ ":::"
-		+ Символы.ПС
-		+ "<br/>"
-		+ Символы.ПС;
+		+ СтрШаблон("
+		|<Admonition type=""caution"" title=""%1"" className=""nocli-admonition"">
+		|<div className=""addin"">
+		|%2
+		|</div>
+		|</Admonition>
+		|<br/>
+		|"
+		, ?(ТекущийЯзык = "ru", "Предупреждение", "Caution")
+		, ?(ТекущийЯзык = "ru"
+			, "<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии"
+			, "<strong>NOCLI:</strong> this method is not available in CLI version"));
 		
 	ИначеЕсли ЗначениеЗаполнено(ТекстПримечания) Тогда
 		

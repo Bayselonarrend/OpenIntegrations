@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить лог
  Получает информацию о логе по UUID
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | Проект | --proj | Строка | &#x2714; | ID проекта |
   | UUIDЛога | --uuid | Строка | &#x2714; | UUID лога |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от ReportPortal
 
 
 
@@ -61,7 +67,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" \
               --token "***" \
               --proj "Test" \
-              --uuid "88aae4d3-21a0-4b65-bc43-535140497433"
+              --uuid "eb7bc7e9-347d-40f0-8757-127b7b3c531a"
         ```
     </TabItem>
   
@@ -71,7 +77,7 @@ import TabItem from '@theme/TabItem';
               --url "tests.openintegrations.dev" ^
               --token "***" ^
               --proj "Test" ^
-              --uuid "88aae4d3-21a0-4b65-bc43-535140497433"
+              --uuid "eb7bc7e9-347d-40f0-8757-127b7b3c531a"
         ```
     </TabItem>
 </Tabs>
@@ -79,11 +85,11 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": 41349,
- "uuid": "367f7680-73e7-4afa-ac0c-9fd8e102ce10",
+ "id": 43405,
+ "uuid": "eb7bc7e9-347d-40f0-8757-127b7b3c531a",
  "time": "1970-01-21T10:54:18.01Z",
  "message": "Some log 1",
  "level": "INFO",
- "itemId": 42079
+ "itemId": 44172
 }
 ```

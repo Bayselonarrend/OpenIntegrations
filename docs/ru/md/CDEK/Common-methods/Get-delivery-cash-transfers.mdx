@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Получить переводы платежей на дату
  Получает информацию о заказах, по которым был переведен наложенный платеж интернет магазину
@@ -24,6 +25,13 @@ import TabItem from '@theme/TabItem';
   | ДатаПолучения | --date | Дата | &#x2714; | Дата, за которую необходимо получить данные |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -37,8 +45,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
 Метод в документации API: [Информация о переводе наложенного платежа](https://api-docs.cdek.ru/71059888.html)
@@ -60,7 +66,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьПереводыПлатежейНаДату \
               --token "***" \
-              --date "2026-04-06T22:04:40" \
+              --date "2026-04-08T09:01:45" \
               --testapi "***"
         ```
     </TabItem>
@@ -69,7 +75,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьПереводыПлатежейНаДату ^
               --token "***" ^
-              --date "2026-04-06T22:04:40" ^
+              --date "2026-04-08T09:01:45" ^
               --testapi "***"
         ```
     </TabItem>
@@ -78,7 +84,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "timestamp": "2026-04-06T23:31:42.173+03:00",
+ "timestamp": "2026-04-08T09:01:45.95+03:00",
  "status": 404,
  "error": "Not Found",
  "path": "/v2/payment"

@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Изменить заказ
  Изменяет значения полей выбранного заказа
@@ -25,6 +26,13 @@ import TabItem from '@theme/TabItem';
   | ОписаниеЗаказа | --order | Структура Из КлючИЗначение | &#x2714; | Набор изменяемых полей заказа |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -38,8 +46,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
 Метод в документации API: [Изменение заказа](https://api-docs.cdek.ru/36981178.html)
@@ -65,7 +71,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ИзменитьЗаказ \
               --token "***" \
-              --uuid "81e75f17-62d1-4174-bae8-40b732821ec5" \
+              --uuid "aecd5417-dc58-4ea3-afea-776cdaf577c3" \
               --order "{'comment':'Новый комментарий'}" \
               --testapi "***"
         ```
@@ -77,7 +83,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ИзменитьЗаказ ^
               --token "***" ^
-              --uuid "81e75f17-62d1-4174-bae8-40b732821ec5" ^
+              --uuid "aecd5417-dc58-4ea3-afea-776cdaf577c3" ^
               --order "{'comment':'Новый комментарий'}" ^
               --testapi "***"
         ```
@@ -88,13 +94,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "4f7ac9af-e625-4607-b8d8-60ce16cedd1b"
+  "uuid": "aecd5417-dc58-4ea3-afea-776cdaf577c3"
  },
  "requests": [
   {
-   "request_uuid": "69cecc30-8524-4dfd-aa59-3777615c459b",
+   "request_uuid": "7bad1abd-0310-456c-b558-a6c8f76f3537",
    "type": "UPDATE",
-   "date_time": "2026-04-06T23:35:14+03:00",
+   "date_time": "2026-04-08T09:05:41+03:00",
    "state": "ACCEPTED"
   }
  ],

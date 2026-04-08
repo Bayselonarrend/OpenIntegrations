@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Generate connection string
  Forms a connection string from the passed data
@@ -27,6 +28,13 @@ import TabItem from '@theme/TabItem';
   | Port | --port | Number | &#x2716; | Server port |
   | WindowsAuth | --trust | Boolean | &#x2716; | Use Windows authentication. The login and password will be ignored |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ String - MSSQL connection string
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -36,8 +44,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  String - MSSQL connection string
 
 :::tip
 This function allows you to quickly assemble a basic connection string. In case you need more flexible configuration, you can also form (obtain) this connection string on your own (ADO format)

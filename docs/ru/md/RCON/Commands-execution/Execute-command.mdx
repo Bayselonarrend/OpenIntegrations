@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Выполнить команду
  Выполняет команду на сервере
@@ -23,6 +24,13 @@ import TabItem from '@theme/TabItem';
   | Команда | --exec | Строка | &#x2714; | Текст команды |
   | Соединение | --conn | Произвольный, Структура Из КлючИЗначение | &#x2714; | Соединение или параметры соединения |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - Результат выполнения команды
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -32,8 +40,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - Результат выполнения команды
 
 :::tip
 При передаче параметров соединения, новое соединение будет создано и закрыто в рамках выполнения одной команды. Для выполнения нескольких команд (в версиях для OS и 1С) рекомендуется использовать заранее созданное соединение (см. ОткрытьСоединение)

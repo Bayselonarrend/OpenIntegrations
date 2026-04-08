@@ -7,6 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 # Get launch report
  Gets report for the selected test session
@@ -26,6 +27,13 @@ import TabItem from '@theme/TabItem';
   | LaunchID | --id | Number | &#x2714; | Launch ID |
   | Format | --format | String | &#x2716; | Report format: pdf, xls, html |
 
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ BinaryData - report file
+  </div>
+</div>
   
   </TabItem>
   <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
@@ -39,8 +47,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-  
-  Returns:  BinaryData - report file
 
 :::tip
 Numeric launch ID can be obtained by UUID using the `GetLaunch` function
