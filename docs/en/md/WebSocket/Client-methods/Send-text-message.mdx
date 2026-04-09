@@ -1,7 +1,7 @@
 ---
-sidebar_position: 7
-sidebar_class_name: doc-no-cli
-description: Is client object  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_position: 4
+
+description: Send text message and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
 ---
 
@@ -9,25 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Is client object 
- Checks that the value is an object of the WebSocket client external component
+# Send text message
+ Sends text to the connection
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function IsClientObject(Val Value) Export`
+`Function SendTextMessage(Val Connection, Val Text) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Value | - | Arbitrary | &#x2714; | Value to check |
+  | Connection | --conn | Arbitrary | &#x2714; | Connection, See CreateConnection |
+  | Text | --text | String | &#x2714; | Text or path to a text file |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Returns</div>
   <div className="return-value-note__value">
- Boolean - Is connector
+ Map Of KeyAndValue - Execution result
   </div>
 </div>
   
@@ -40,13 +41,6 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
-
-<Admonition type="caution" title="Caution" className="nocli-admonition">
-<div className="addin">
-<strong>NOCLI:</strong> this method is not available in CLI version
-</div>
-</Admonition>
-<br/>
 
 
 

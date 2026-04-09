@@ -1,7 +1,7 @@
 ---
-sidebar_position: 7
-sidebar_class_name: doc-no-cli
-description: Это объект клиента  и другие функции для работы с WebSocket в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 3
+
+description: Получить сообщение и другие функции для работы с WebSocket в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, WebSocket]
 ---
 
@@ -9,25 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Это объект клиента 
- Проверяет, что значение является объектом внешней компоненты клиента WebSocket
+# Получить сообщение
+ Получает входящее сообщение из очереди или ожидает новое
 
 
 
 <Tabs>
   <TabItem value="params" label="Параметры" default>
 
-`Функция ЭтоОбъектКлиента(Знач Значение) Экспорт`
+`Функция ПолучитьСообщение(Знач Соединение, Знач Таймаут = 10000) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
-  | Значение | - | Произвольный | &#x2714; | Значение для проверки |
+  | Соединение | --conn | Произвольный | &#x2714; | Соединение, См. [`ОткрытьСоединение`](/docs/WebSocket/Client-methods/Create-connection) |
+  | Таймаут | --tout | Число | &#x2716; | Таймаут ожидания сообщения (в мс.) |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Возвращаемое значение</div>
   <div className="return-value-note__value">
-  Булево -  Это коннектор
+  ДвоичныеДанные - Полученное сообщение
   </div>
 </div>
   
@@ -40,13 +41,6 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
-
-<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
-<div className="addin">
-<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
-</div>
-</Admonition>
-<br/>
 
 
 

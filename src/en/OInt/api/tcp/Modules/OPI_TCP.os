@@ -204,9 +204,9 @@ EndFunction
 // Sends binary data over the specified connection
 //
 // Parameters:
-// Connection - Arbitrary  - Connection, See CreateConnection        - tcp
-// Data       - BinaryData - Sending data                            - data
-// Timeout    - Number     - Data reading timeout (ms). 0 > no limit - timeout
+// Connection - Arbitrary          - Connection, See CreateConnection        - tcp
+// Data       - BinaryData, String - Binary data or file path                - data
+// Timeout    - Number             - Data reading timeout (ms). 0 > no limit - timeout
 //
 // Returns:
 // Boolean - Flag of successful delivery
@@ -222,7 +222,7 @@ Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
 
     EndIf;
 
-    OPI_TypeConversion.GetBinaryData(Data);
+    OPI_TypeConversion.GetBinaryData(Data, True);
     OPI_TypeConversion.GetNumber(Timeout);
 
     Result = Connection.Send(Data, Timeout);
