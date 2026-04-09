@@ -161,7 +161,92 @@ Function CloseConnection(Val Connection) Export
 
 EndFunction
 
-Function SendText(Val Connection, Val Text) Export
+// Get message
+// Receives an incoming message from the queue or waits for a new one
+//
+// Parameters:
+// Connection - Arbitrary - Connection, See CreateConnection - conn
+// Timeout    - Number    - Message receive timeout (in ms.) - tout
+//
+// Returns:
+// BinaryData - Received message
+Function GetMessage(Val Connection, Val Timeout = 10000) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(Timeout);
+
+    Result = Connection.ReceiveMessage(Timeout);
+
+    Return Result;
+
+EndFunction
+
+// Send text message
+// Sends text to the connection
+//
+// Parameters:
+// Connection - Arbitrary - Connection, See CreateConnection - conn
+// Text       - String    - Text or path to a text file      - text
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SendTextMessage(Val Connection, Val Text) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Text, True);
+
+    Result = Connection.SendText(Text);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Send binary message
+// Sends binary data to the connection
+//
+// Parameters:
+// Connection - Arbitrary          - Connection, See CreateConnection - conn
+// Data       - BinaryData, String - Binary data or file path         - data
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SendBinaryMessage(Val Connection, Val Data) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
+
+    Result = Connection.SendBinary(Data);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
 
 EndFunction
 
@@ -385,8 +470,16 @@ Function ЗакрытьСоединение(Val Соединение) Export
     Return CloseConnection(Соединение);
 EndFunction
 
-Function ОтправитьТекст(Val Соединение, Val Текст) Export
-    Return SendText(Соединение, Текст);
+Function ПолучитьСообщение(Val Соединение, Val Таймаут = 10000) Export
+    Return GetMessage(Соединение, Таймаут);
+EndFunction
+
+Function ОтправитьТекстовоеСообщение(Val Соединение, Val Текст) Export
+    Return SendTextMessage(Соединение, Текст);
+EndFunction
+
+Function ОтправитьДвоичноеСообщение(Val Соединение, Val Данные) Export
+    Return SendBinaryMessage(Соединение, Данные);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
