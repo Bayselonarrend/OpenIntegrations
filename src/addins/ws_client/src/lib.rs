@@ -58,41 +58,65 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 return Box::new(json_error(&e));
             };
             
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.connect(&url))
         },
         1 => {
             let text = params[0].get_string().unwrap_or_default();
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.send_text(&text))
         },
         2 => {
             let data = params[0].get_blob().unwrap_or(&empty_array);
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.send_binary(data.to_vec()))
         },
         3 => {
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.receive_message(timeout_ms))
         },
         4 => {
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.send_ping())
         },
         5 => {
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.send_pong())
         },
         6 => {
             let code = params[0].get_i32().unwrap_or(1000) as u16;
             let reason = params[1].get_string().unwrap_or_default();
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.close(code, &reason))
         },
         7 => {
             let headers_json = params[0].get_string().unwrap_or_default();
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.set_headers(&headers_json))
         },
         8 => {
@@ -107,12 +131,18 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or_default();
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
         },
         11 => {
             let proxy_json = params[0].get_string().unwrap_or_default();
-            let mut client = obj.client.lock().unwrap();
+            let mut client = match obj.lock_client() {
+                Ok(c) => c,
+                Err(e) => return Box::new(json_error(&e)),
+            };
             Box::new(client.set_proxy(&proxy_json))
         },
         _ => Box::new(false),
@@ -128,6 +158,10 @@ pub struct AddIn {
 }
 
 impl AddIn {
+    fn lock_client(&self) -> Result<std::sync::MutexGuard<'_, WebSocketClient>, String> {
+        self.client.lock().map_err(|e| format!("Client lock failed: {}", e))
+    }
+
     pub fn new() -> Self {
         let vault = BinaryVault::new();
         AddIn {
@@ -148,7 +182,8 @@ impl AddIn {
         let logger_arc = Arc::new(logger);
         self.logger = Some(logger_arc.clone());
         
-        let mut client = self.client.lock().unwrap();
+        let mut client = self.lock_client()
+            .map_err(|e| format!("Failed to set logger to client: {}", e))?;
         client.set_logger(logger_arc);
 
         Ok(())
@@ -185,7 +220,8 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        let mut client = self.client.lock().unwrap();
-        let _ = client.close(1000, "");
+        if let Ok(mut client) = self.client.lock() {
+            let _ = client.close(1000, "");
+        }
     }
 }
