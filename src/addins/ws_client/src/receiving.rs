@@ -8,11 +8,10 @@ use crate::client::WebSocketClient;
 impl WebSocketClient {
     pub fn receive_message(&mut self, timeout_ms: u64) -> String {
 
-        if self.socket.is_none() {
-            return json_error("Not connected");
-        }
-
-        let socket = self.socket.as_mut().unwrap();
+        let socket = match self.socket.as_mut() {
+            Some(s) => s,
+            None => return json_error("Not connected"),
+        };
 
         match socket.get_mut() {
             MaybeTlsStream::Plain(stream) => {
