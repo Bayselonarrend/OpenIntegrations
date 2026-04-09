@@ -39,7 +39,7 @@ impl WebSocketClient {
         }
     }
     
-    pub fn ping(&mut self) -> String {
+    pub fn send_ping(&mut self) -> String {
         if self.socket.is_none() {
             return json_error("Not connected");
         }
@@ -51,6 +51,24 @@ impl WebSocketClient {
             Ok(_) => json_success(),
             Err(e) => {
                 let err_msg = format!("Ping failed: {}", e);
+                self.log(&err_msg);
+                json_error(&err_msg)
+            }
+        }
+    }
+
+    pub fn send_pong(&mut self) -> String {
+        if self.socket.is_none() {
+            return json_error("Not connected");
+        }
+
+        self.log("Sending pong");
+
+        let socket = self.socket.as_mut().unwrap();
+        match socket.send(Message::Pong(vec![].into())) {
+            Ok(_) => json_success(),
+            Err(e) => {
+                let err_msg = format!("Pong failed: {}", e);
                 self.log(&err_msg);
                 json_error(&err_msg)
             }

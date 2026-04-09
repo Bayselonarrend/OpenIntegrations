@@ -108,16 +108,6 @@ impl WebSocketClient {
         Ok(socket)
     }
 
-    pub fn disconnect(&mut self) -> String {
-        if let Some(mut socket) = self.socket.take() {
-            self.log("Disconnecting");
-            let _ = socket.close(None);
-            json_success()
-        } else {
-            json_error("Not connected")
-        }
-    }
-
     fn build_request_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<Request, String> {
 
         let mut request = Request::builder()
