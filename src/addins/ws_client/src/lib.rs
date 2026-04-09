@@ -15,35 +15,33 @@ impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),                    // 0
-    name!("Disconnect"),                 // 1
-    name!("SendText"),                   // 2
-    name!("SendBinary"),                 // 3
-    name!("ReceiveMessage"),             // 4
-    name!("Ping"),                       // 5
+    name!("SendText"),                   // 1
+    name!("SendBinary"),                 // 2
+    name!("ReceiveMessage"),             // 3
+    name!("SendPing"),                   // 4
+    name!("SendPong"),                   // 5
     name!("Close"),                      // 6
-    name!("IsConnected"),                // 7
-    name!("SetHeaders"),                 // 8
-    name!("RetrieveBinaryFromVault"),    // 9
-    name!("GetLogs"),                    // 10
-    name!("SetTLS"),                     // 11
-    name!("SetProxySettings"),           // 12
+    name!("SetHeaders"),                 // 7
+    name!("RetrieveBinaryFromVault"),    // 8
+    name!("GetLogs"),                    // 9
+    name!("SetTLS"),                     // 10
+    name!("SetProxySettings"),           // 11
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 2,  // Connect(url, logger_config_json)
-        1 => 0,  // Disconnect()
-        2 => 1,  // SendText(text)
-        3 => 1,  // SendBinary(data)
-        4 => 1,  // ReceiveMessage(timeout_ms)
-        5 => 0,  // Ping()
+        1 => 1,  // SendText(text)
+        2 => 1,  // SendBinary(data)
+        3 => 1,  // ReceiveMessage(timeout_ms)
+        4 => 0,  // SendPing()
+        5 => 0,  // SendPong()
         6 => 2,  // Close(code, reason)
-        7 => 0,  // IsConnected()
-        8 => 1,  // SetHeaders(headers_json)
-        9 => 1,  // RetrieveBinaryFromVault(vault_key)
-        10 => 1, // GetLogs(count)
-        11 => 3, // SetTLS(use_tls, accept_invalid_certs, ca_cert_path)
-        12 => 1, // SetProxySettings(proxy_json)
+        7 => 1,  // SetHeaders(headers_json)
+        8 => 1,  // RetrieveBinaryFromVault(vault_key)
+        9 => 1,  // GetLogs(count)
+        10 => 3, // SetTLS(use_tls, accept_invalid_certs, ca_cert_path)
+        11 => 1, // SetProxySettings(proxy_json)
         _ => 0,
     }
 }
@@ -64,27 +62,27 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(client.connect(&url))
         },
         1 => {
-            let mut client = obj.client.lock().unwrap();
-            Box::new(client.disconnect())
-        },
-        2 => {
             let text = params[0].get_string().unwrap_or_default();
             let mut client = obj.client.lock().unwrap();
             Box::new(client.send_text(&text))
         },
-        3 => {
+        2 => {
             let data = params[0].get_blob().unwrap_or(&empty_array);
             let mut client = obj.client.lock().unwrap();
             Box::new(client.send_binary(data.to_vec()))
         },
-        4 => {
+        3 => {
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
             let mut client = obj.client.lock().unwrap();
             Box::new(client.receive_message(timeout_ms))
         },
+        4 => {
+            let mut client = obj.client.lock().unwrap();
+            Box::new(client.send_ping())
+        },
         5 => {
             let mut client = obj.client.lock().unwrap();
-            Box::new(client.ping())
+            Box::new(client.send_pong())
         },
         6 => {
             let code = params[0].get_i32().unwrap_or(1000) as u16;
@@ -93,30 +91,26 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(client.close(code, &reason))
         },
         7 => {
-            let client = obj.client.lock().unwrap();
-            Box::new(client.is_connected())
-        },
-        8 => {
             let headers_json = params[0].get_string().unwrap_or_default();
             let mut client = obj.client.lock().unwrap();
             Box::new(client.set_headers(&headers_json))
         },
-        9 => {
+        8 => {
             let vault_key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&vault_key))
         },
-        10 => {
+        9 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
-        11 => {
+        10 => {
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or_default();
             let mut client = obj.client.lock().unwrap();
             Box::new(client.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
         },
-        12 => {
+        11 => {
             let proxy_json = params[0].get_string().unwrap_or_default();
             let mut client = obj.client.lock().unwrap();
             Box::new(client.set_proxy(&proxy_json))
@@ -192,6 +186,6 @@ impl AddIn {
 impl Drop for AddIn {
     fn drop(&mut self) {
         let mut client = self.client.lock().unwrap();
-        let _ = client.disconnect();
+        let _ = client.close(1000, "");
     }
 }
