@@ -23,7 +23,7 @@ app:
   tools:
     builder: DESIGNER
     edt-cli:
-      auto-start: true
+      auto-start: false
       version: "latest"
       interactive-mode: true
       working-directory: "R:\\Repos\\OpenIntegrations\\src\\ru\\BSL"
