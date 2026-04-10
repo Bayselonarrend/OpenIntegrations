@@ -257,7 +257,7 @@
 	ТекущаяКоманда = СтрШаблон("%1 CreateInfobase ""File=""""%2OpenIntegrationsIB_%3"""""" /AddInList OpenIntegrationsIB_%3", Файл1С, ПутьИБ, Префикс);
 	МассивКоманд.Добавить(ТекущаяКоманда);
 
-	ТекущаяКоманда = СтрШаблон("%1 DESIGNER /IBConnectionString ""File=""""%2OpenIntegrationsIB_%3"""""" /LoadConfigFromFiles ""%4""", Файл1С, ПутьИБ, Префикс, Преобразование.ИмяФайлаКонфигурации);
+	ТекущаяКоманда = СтрШаблон("%1 DESIGNER /IBConnectionString ""File=""""%2OpenIntegrationsIB_%3"""""" /LoadCfg ""%4""", Файл1С, ПутьИБ, Префикс, Преобразование.ИмяФайлаКонфигурации);
 	МассивКоманд.Добавить(ТекущаяКоманда);
 
 	ТекущаяКоманда = СтрШаблон("%1 DESIGNER /IBConnectionString ""File=""""%2OpenIntegrationsIB_%3"""""" /UpdateDBCfg -SessionTerminate force", Файл1С, ПутьИБ, Префикс);
