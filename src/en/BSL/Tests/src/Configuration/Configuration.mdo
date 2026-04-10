@@ -19,14 +19,10 @@
   <configurationExtensionCompatibilityMode>8.3.15</configurationExtensionCompatibilityMode>
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <scriptVariant>English</scriptVariant>
-  <languages uuid="7e3c6fb6-b2e5-4ae9-8f94-5c7106bdb707" extendedConfigurationObject="710c9daf-82ec-48b6-a0ec-af9831dc3195">
+  <languages uuid="7e3c6fb6-b2e5-4ae9-8f94-5c7106bdb707">
     <name>Russian</name>
     <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:LanguageExtension">
-      <extendedConfigurationObject>Checked</extendedConfigurationObject>
-      <languageCode>Checked</languageCode>
-    </extension>
-    <languageCode>ru</languageCode>
+    <extension xsi:type="mdclassExtension:LanguageExtension"/>
   </languages>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
   <commonModules>CommonModule.OPIt_Airtable</commonModules>
