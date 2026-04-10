@@ -118,5 +118,5 @@
   <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
   <commonModules>CommonModule.OPItc_YandexID</commonModules>
   <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
-  <commonModules>CommonModule.OPItwith_Core</commonModules>
+  <commonModules>CommonModule.OPItc_Core</commonModules>
 </mdclass:Configuration>
