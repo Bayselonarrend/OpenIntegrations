@@ -93,33 +93,13 @@ Function FileTransferRequired() Export
 
 EndFunction
 
-Function GetLoggingSettings(Val WriteToMemory = True
-    , Val MaxEvents                           = 300
-    , Val FilePath                            = "") Export
+Function NotAddinParameterError() Export
 
-    OPI_TypeConversion.GetBoolean(WriteToMemory);
-    OPI_TypeConversion.GetLine(FilePath);
-    OPI_TypeConversion.GetNumber(MaxEvents);
+    Result = New Map;
+    Result.Insert("result", False);
+    Result.Insert("error" , "The passed value is not an AddIn object");
 
-    SettingsStructure = New Structure;
-    WriteToFile       = ValueIsFilled(FilePath);
-
-    If WriteToMemory Then
-        SettingsStructure.Insert("mode"       , "memory");
-        SettingsStructure.Insert("max_entries", MaxEvents);
-    EndIf;
-
-    If WriteToFile Then
-        SettingsStructure.Insert("mode"     , "file");
-        SettingsStructure.Insert("file_path", FilePath);
-    EndIf;
-
-    If WriteToFile And WriteToMemory Then
-        SettingsStructure.Insert("mode", "both");
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return SettingsStructure;
+    Return Result;
 
 EndFunction
 
@@ -242,6 +222,60 @@ Function ReceiveData(Val AddIn, Val DataKey) Export
             Return Result;
         EndTry;
 
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region Logging
+
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents                           = 300
+    , Val FilePath                            = "") Export
+
+    OPI_TypeConversion.GetBoolean(WriteToMemory);
+    OPI_TypeConversion.GetLine(FilePath);
+    OPI_TypeConversion.GetNumber(MaxEvents);
+
+    SettingsStructure = New Structure;
+    WriteToFile       = ValueIsFilled(FilePath);
+
+    If WriteToMemory Then
+        SettingsStructure.Insert("mode"       , "memory");
+        SettingsStructure.Insert("max_entries", MaxEvents);
+    EndIf;
+
+    If WriteToFile Then
+        SettingsStructure.Insert("mode"     , "file");
+        SettingsStructure.Insert("file_path", FilePath);
+    EndIf;
+
+    If WriteToFile And WriteToMemory Then
+        SettingsStructure.Insert("mode", "both");
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
+
+EndFunction
+
+Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
+
+    If Not IsAddIn(ServerObject) Then
+        Return NotAddinParameterError();
+    EndIf;
+
+    OPI_TypeConversion.GetNumber(EventCount);
+    OPI_TypeConversion.GetBoolean(AsString);
+
+    Result = ServerObject.GetLogs(EventCount);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If AsString And Result["result"] Then
+        Result = StrConcat(Result["logs"], Chars.LF);
     EndIf;
 
     Return Result;

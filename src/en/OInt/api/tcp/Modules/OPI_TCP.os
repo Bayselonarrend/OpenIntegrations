@@ -561,8 +561,7 @@ EndFunction
 // String, Map Of KeyAndValue - Log as a string or a map with the full execution result
 Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
 
-    Return OPI_GenericServer.GetLog(OPI_TCP
-        , ServerObject
+    Return OPI_AddIns.GetLog(ServerObject
         , AsString
         , EventCount);
 

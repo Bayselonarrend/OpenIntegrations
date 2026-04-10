@@ -10,11 +10,43 @@
    "methods": [
     "GetMessage",
     "SendBinaryMessage",
+    "SendPing",
+    "SendPong",
     "SendTextMessage"
    ]
   }
  ],
  "methods": [
+  {
+   "name": "SendPing",
+   "id": "SENDPING",
+   "description": "Sends a ping to the remote server",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Client methods"
+  },
+  {
+   "name": "SendPong",
+   "id": "SENDPONG",
+   "description": "Sends a pong to the remote server",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "Connection, See CreateConnection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Client methods"
+  },
   {
    "name": "GetMessage",
    "id": "GETMESSAGE",
