@@ -85,9 +85,264 @@ Function ПолучитьСписокТестов(UnitTesting) Export
 
 EndFunction
 
+#Region Internal
+
+#Region RunnableTests
+
+#Region WebSocket
+
+Procedure WS_Client() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetWebSocketParametersOptions();
+
+    For Each TestParameters In OptionArray Do
+
+        WebSocket_CreateConnection(TestParameters);
+        WebSocket_CloseConnection(TestParameters);
+        WebSocket_SendPing(TestParameters);
+        WebSocket_SendPong(TestParameters);
+        WebSocket_GetMessage(TestParameters);
+        WebSocket_SendTextMessage(TestParameters);
+        WebSocket_SendBinaryMessage(TestParameters);
+        WebSocket_GetTlsSettings(TestParameters);
+        WebSocket_IsClientObject(TestParameters);
+
+    EndDo;
+
+EndProcedure
+
+#EndRegion // WebSocket
+
+#EndRegion // RunnableTests
+
+#EndRegion // Internal
+
+#Region Private
+
+#Region AtomicTests
+
+#Region WebSocket
+
+Procedure WebSocket_CreateConnection(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+
+    OPI_TestDataRetrieval.Process(Connection, "WebSocket", "CreateConnection", Postfix);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_CloseConnection(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+
+    OPI_TestDataRetrieval.Process(Connection, "WebSocket", "CloseConnection", "Openning, " + Postfix); // SKIP
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.CloseConnection(Connection);
+    Else
+        Result = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "CloseConnection", Postfix);
+
+EndProcedure
+
+Procedure WebSocket_SendPing(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.SendPing(Connection);
+        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
+    Else
+        Result = Connection;
+        Check  = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendPing", Postfix);
+    OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendPing", "Check, " + Postfix);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_SendPong(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.SendPong(Connection);
+    Else
+        Result = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendPong", Postfix);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_GetMessage(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+    Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Sending = OPI_WebSocket.SendTextMessage(Connection, Message); // SKIP
+        OPI_TestDataRetrieval.Process(Sending, "WebSocket", "GetMessage", "Sending, " + Postfix); // SKIP
+        Result  = OPI_WebSocket.GetMessage(Connection, 3000);
+    Else
+        Result  = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetMessage", Postfix, Message);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_SendTextMessage(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+    Message = "text-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.SendTextMessage(Connection, Message);
+        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
+    Else
+        Result = Connection;
+        Check  = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendTextMessage", Postfix);
+    OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendTextMessage", "Check, " + Postfix, Message);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_SendBinaryMessage(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+    SourceString = "binary-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+    Data       = GetBinaryDataFromString(SourceString);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.SendBinaryMessage(Connection, Data);
+        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
+    Else
+        Result = Connection;
+        Check  = Connection;
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendBinaryMessage", Postfix);
+    OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendBinaryMessage", "Check, " + Postfix, SourceString);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+Procedure WebSocket_GetTlsSettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"];
+    Result  = OPI_WebSocket.GetTlsSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetTlsSettings", Postfix);
+
+EndProcedure
+
+Procedure WebSocket_IsClientObject(FunctionParameters)
+
+    Postfix    = FunctionParameters["Postfix"];
+    Connection = CreateWebSocketClient(FunctionParameters);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.IsClientObject(Connection);
+    Else
+        Result = OPI_WebSocket.IsClientObject("not-a-client");
+    EndIf;
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "IsClientObject", Postfix);
+
+    Result = OPI_WebSocket.IsClientObject("not-a-client");
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "IsClientObject", "False, " + Postfix);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        OPI_WebSocket.CloseConnection(Connection);
+    EndIf;
+
+EndProcedure
+
+#EndRegion // WebSocket
+
+#EndRegion // AtomicTests
+
+#Region AdditionalFunctions
+
+Function CreateWebSocketClient(FunctionParameters)
+
+    Address = GetWebSocketAddress(FunctionParameters);
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+    Headers       = New Structure("X-Trace-Id", "OPI-WS-TEST");
+
+    If FunctionParameters["TLS"] Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If FunctionParameters["Proxy"] Then
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+    EndIf;
+
+    Return OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, , Headers);
+
+EndFunction
+
+Function GetWebSocketAddress(FunctionParameters)
+
+    Scheme = ?(FunctionParameters["TLS"], "wss://", "ws://");
+    Host   = FunctionParameters["WS_IP"];
+    Port   = FunctionParameters["WS_Port"];
+
+    Return StrTemplate("%1%2:%3", Scheme, Host, Port);
+
+EndFunction
+
+#EndRegion // AdditionalFunctions
+
+#EndRegion // Private
 
 #Region Alternate
 
-
+Procedure WS_Клиент() Export
+    WS_Client();
+EndProcedure
 
 #EndRegion

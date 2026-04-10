@@ -139,7 +139,8 @@
      "ClickHouse": true,
      "RSS": true,
      "HTTP": true,
-     "Core": true
+     "Core": true,
+     "WebSocket": true
     }
    }
   }

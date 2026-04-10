@@ -17,11 +17,13 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CloseConnection(Val Connection) Export`
+`Function CloseConnection(Val Connection, Val Code = 1000, Val Reason = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | - | Arbitrary | &#x2714; | Connection, See CreateConnection |
+  | Code | - | Number | &#x2716; | Status code |
+  | Reason | - | String | &#x2716; | Close message |
 
 
 <div className="return-value-note">

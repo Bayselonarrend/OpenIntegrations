@@ -154,6 +154,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("YandexMetrika"  , 5);
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
+    Sections.Insert("WebSocket"      , 5);
     Sections.Insert("GreenAPI"       , 5);
     Sections.Insert("GreenMax"       , 5);
     Sections.Insert("Ollama"         , 5);
@@ -189,6 +190,7 @@ Function GetTestTable(Val TestModule = "") Export
     Metrika   = "YandexMetrika";
     S3_       = "S3";
     TCP       = "TCP";
+    WebSocket = "WebSocket";
     SQLite    = "SQLite";
     Postgres  = "PostgreSQL";
     MongoDB   = "MongoDB";
@@ -336,6 +338,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
     NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
     NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
+    NewTest(TestTable, "WS_Client"                           , "WebSocket Client"                , WebSocket);
     NewTest(TestTable, "TC_Server"                           , "TCP Host"                        , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
@@ -983,6 +986,85 @@ Function GetFTPParameterOptions() Export
         OptionArray.Add(ParametersStructure);
 
     EndIf;
+
+    Return OptionArray;
+
+EndFunction
+
+Function GetWebSocketParametersOptions() Export
+
+    OptionArray = New Array;
+
+    TestParametersMain = New Structure;
+    ParameterToCollection("WS_IP"         , TestParametersMain);
+    ParameterToCollection("WS_Port"       , TestParametersMain);
+    ParameterToCollection("WSS_IP"        , TestParametersMain);
+    ParameterToCollection("WSS_Port"      , TestParametersMain);
+    ParameterToCollection("Proxy_User"    , TestParametersMain);
+    ParameterToCollection("Proxy_Password", TestParametersMain);
+    ParameterToCollection("Socks5_IP"     , TestParametersMain);
+    ParameterToCollection("Socks5_Port"   , TestParametersMain);
+
+    Localhost = GetLocalhost();
+
+    Socks5IP                        = TestParametersMain["Socks5_IP"];
+    TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
+
+    // WS
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("Postfix", "WS");
+    ParametersStructure.Insert("WS_IP", Localhost);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WS_Port"]);
+    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
+    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
+    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
+    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
+    ParametersStructure.Insert("Proxy_Type", "socks5");
+    ParametersStructure.Insert("Proxy", False);
+    ParametersStructure.Insert("TLS", False);
+    OptionArray.Add(ParametersStructure);
+
+    // WSS
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("Postfix", "WSS");
+    ParametersStructure.Insert("WS_IP", Localhost);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WSS_Port"]);
+    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
+    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
+    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
+    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
+    ParametersStructure.Insert("Proxy_Type", "socks5");
+    ParametersStructure.Insert("Proxy", False);
+    ParametersStructure.Insert("TLS", True);
+    OptionArray.Add(ParametersStructure);
+
+    // WS + Socks5
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("Postfix", "WS, Socks5");
+    ParametersStructure.Insert("WS_IP", TestParametersMain["WS_IP"]);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WS_Port"]);
+    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
+    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
+    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
+    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
+    ParametersStructure.Insert("Proxy_Type", "socks5");
+    ParametersStructure.Insert("Proxy", True);
+    ParametersStructure.Insert("TLS", False);
+    OptionArray.Add(ParametersStructure);
+
+    // WSS + Socks5
+    ParametersStructure = New Structure;
+    ParametersStructure.Insert("Postfix", "WSS, Socks5");
+    ParametersStructure.Insert("WS_IP", TestParametersMain["WSS_IP"]);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WSS_Port"]);
+    ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
+    ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
+    ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
+    ParametersStructure.Insert("Proxy_Port", TestParametersMain["Socks5_Port"]);
+    ParametersStructure.Insert("Proxy_Type", "socks5");
+    ParametersStructure.Insert("Proxy", True);
+    ParametersStructure.Insert("TLS", True);
+    OptionArray.Add(ParametersStructure);
 
     Return OptionArray;
 
@@ -7683,6 +7765,109 @@ EndFunction
 Function Check_TCP_IsServerObject(Val Result, Val Option)
 
     If Option = "False" Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_WSClient.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_CloseConnection(Val Result, Val Option)
+
+    If Left(Option, 8) = "Openning" Then
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_WSClient.Main");
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_SendPing(Val Result, Val Option)
+
+    If Left(Option, 8) = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["type"]).Равно("pong");
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_SendPong(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetMessage(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["type"]).Равно("text");
+    ExpectsThat(Result["data"]).Равно(Message);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_SendTextMessage(Val Result, Val Option, Message = "")
+
+    If Left(Option, 8) = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["type"]).Равно("text");
+        ExpectsThat(Result["data"]).Равно(Message);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_SendBinaryMessage(Val Result, Val Option, Message = "")
+
+    If Left(Option, 8) = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["type"]).Равно("binary");
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetTlsSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_IsClientObject(Val Result, Val Option)
+
+    If Left(Option, 4) = "False" Then
         ExpectsThat(Result).Равно(False);
     Else
         ExpectsThat(Result).Равно(True);
@@ -15096,6 +15281,10 @@ EndFunction
 
 Function ПолучитьВариантыПараметровFTP() Export
     Return GetFTPParameterOptions();
+EndFunction
+
+Function ПолучитьВариантыПараметровWebSocket() Export
+    Return GetWebSocketParametersOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровSSH() Export

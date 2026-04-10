@@ -667,6 +667,23 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-WebSocket') {
+            when {
+                expression { return shouldRunStage('WebSocket') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/OPItc_WebSocket.os', 'WS_Клиент'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 		stage('Testing-GreenAPI') {
             when {
                 expression { return shouldRunStage('GreenAPI') }

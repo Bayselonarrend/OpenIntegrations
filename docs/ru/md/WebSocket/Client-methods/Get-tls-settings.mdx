@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 8
 sidebar_class_name: doc-no-cli
 description: Получить настройки TLS  и другие функции для работы с WebSocket в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, WebSocket]
@@ -53,7 +53,12 @@ import Admonition from '@theme/Admonition';
 <br/>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    Постфикс  = "";
+    Результат = OPI_WebSocket.ПолучитьНастройкиTls(Истина);
 
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "WebSocket", "ПолучитьНастройкиTls", Постфикс);
+```
     
 
 
