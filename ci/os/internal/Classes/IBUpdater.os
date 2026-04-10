@@ -123,12 +123,12 @@
 
 	CommonTools.СообщитьПроцесс(СтрШаблон("1С batch updating for %2 (%1)...", Язык, ИмяРасширения));
 	
-	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension OpenIntegrations", Путь1С, ИмяСервера, ИмяИБ, КаталогСборки);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /LoadConfigFromFiles ""%4"" -Extension %5", Путь1С, ИмяСервера, ИмяИБ, КаталогСборки, ИмяРасширения);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда, , , 5);
 	OPI_Инструменты.Пауза(3);
 	
-	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ);
+	ТекущаяКоманда = СтрШаблон("""%1"" DESIGNER /IBConnectionString ""Srvr=""""%2"""";Ref=""""%3"""""" /UpdateDBCfg -Extension %4 -SessionTerminate force", Путь1С, ИмяСервера, ИмяИБ, ИмяРасширения);
 	CommonTools.СообщитьПроцесс(ТекущаяКоманда);
 	CommonTools.ЗапуститьВнешнееПриложение(ТекущаяКоманда, , , 5);
 	OPI_Инструменты.Пауза(3);
