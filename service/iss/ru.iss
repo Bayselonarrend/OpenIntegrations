@@ -41,7 +41,6 @@ Source: "{#Repo}\Media\icons\ex.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\wizard.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\doc.ico"; DestDir: "{app}\share\oint\icons"
 
-; Файлы Melezh (устанавливаются только если выбран чекбокс)
 Source: "{#Melezh}\src\ru\*"; DestDir: "{app}\share\oint\lib\melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
 Source: "{#Melezh}\src\ru\extensions\*"; DestDir: "{app}\share\oint\lib\melezh\extensions"; Flags: recursesubdirs uninsneveruninstall; Check: ShouldInstallAddon
 Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; DestName: "melezh_start.bat"; Flags: recursesubdirs; Check: ShouldInstallAddon
@@ -78,6 +77,14 @@ Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environmen
 
 [Code]
 
+var
+  InterpreterLicensePage: TOutputMsgMemoWizardPage;
+  InterpreterLicenseAcceptedRadio: TNewRadioButton;
+  InterpreterLicenseRejectedRadio: TNewRadioButton;
+  AddonTaskPage: TWizardPage;
+  AddonCheckBox: TNewCheckBox;
+  AddonDescription: TNewStaticText;
+
 function NeedsAddPath(Param: string): boolean;
 var
   OrigPath: string;
@@ -93,98 +100,6 @@ begin
   Element:= ';' + Param + ';';
   Result := Pos(Element, ';' + OrigPath + ';') = 0;
 end;    
-
-var
-
-  InterpreterLicensePage: TOutputMsgMemoWizardPage;
-  InterpreterLicenseAcceptedRadio: TNewRadioButton;
-  InterpreterLicenseRejectedRadio: TNewRadioButton;
-  AddonTaskPage: TWizardPage;
-
-  AddonCheckBox: TNewCheckBox;
-  
-  AddonDescription: TNewStaticText;
-
-procedure InterpreterLicenseOptionClick(Sender: TObject);
-procedure UpdateInterpreterLicenseNextButton();
-
-procedure InitializeWizard();
-var
-  OscriptLicenseText: string;
-begin
-
-  ExtractTemporaryFile('oscript-lic.txt');
-  OscriptLicenseText := '';
-  if not LoadStringFromFile(ExpandConstant('{tmp}\oscript-lic.txt'), OscriptLicenseText) then
-    RaiseException('Не удалось загрузить файл лицензии интерпретатора OneScript.');
-
-  InterpreterLicensePage := CreateOutputMsgMemoPage(
-    wpLicense,
-    'Лицензия интерпретатора OneScript',
-    'Пожалуйста, ознакомьтесь с лицензией интерпретатора OneScript.',
-    'Нажмите "Далее", чтобы перейти к следующему шагу установки.',
-    OscriptLicenseText);
-
-  InterpreterLicenseAcceptedRadio := TNewRadioButton.Create(WizardForm);
-  InterpreterLicenseAcceptedRadio.Parent := InterpreterLicensePage.Surface;
-  InterpreterLicenseAcceptedRadio.Left := 0;
-  InterpreterLicenseAcceptedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(44);
-  InterpreterLicenseAcceptedRadio.Width := InterpreterLicensePage.SurfaceWidth;
-  InterpreterLicenseAcceptedRadio.Caption := 'Я принимаю условия соглашения';
-  InterpreterLicenseAcceptedRadio.Checked := False;
-  InterpreterLicenseAcceptedRadio.OnClick := @InterpreterLicenseOptionClick;
-
-  InterpreterLicenseRejectedRadio := TNewRadioButton.Create(WizardForm);
-  InterpreterLicenseRejectedRadio.Parent := InterpreterLicensePage.Surface;
-  InterpreterLicenseRejectedRadio.Left := 0;
-  InterpreterLicenseRejectedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(24);
-  InterpreterLicenseRejectedRadio.Width := InterpreterLicensePage.SurfaceWidth;
-  InterpreterLicenseRejectedRadio.Caption := 'Я не принимаю условия соглашения';
-  InterpreterLicenseRejectedRadio.Checked := True;
-  InterpreterLicenseRejectedRadio.OnClick := @InterpreterLicenseOptionClick;
-
-  // --- Страница для аддона ---
-  AddonTaskPage := CreateCustomPage(InterpreterLicensePage.ID,
-    'Установить Melezh', 'Установка серверной версии OInt');
-
-  // Картинка справа
-
-  ExtractTemporaryFile('melezh.bmp');
-
-  with TBitmapImage.Create(WizardForm) do
-  begin
-    Parent := AddonTaskPage.Surface;
-    Left := WizardForm.Width - 250;  // Прижимаем к правому краю
-    Top := 35;
-    Width := 175;
-    Height := 200;
-    Stretch := True;
-    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));  // Убедись, что это .bmp или замени на LoadFromBitmapFile
-  end;
-
-  AddonDescription := TNewStaticText.Create(WizardForm);
-  AddonDescription.Parent := AddonTaskPage.Surface;
-  AddonDescription.Caption := 'Melezh - это небольшой (~ 6 MB) серверный аддон для OInt, позволяющий запускать настраиваемый gateway для любых его методов. Melezh может прослушивать выбранный вами порт и интерпретировать приходящие туда HTTP-запросы в команды OInt для дальнейшего выплнения. Имеется встроенное логирование и Web UI для удобной настройки';
-  AddonDescription.WordWrap := True;
-  AddonDescription.Width := 350;
-  AddonDescription.Height := 120; 
-  AddonDescription.Top := 85;
-  AddonDescription.AutoSize := True; 
-    
-  AddonCheckBox := TNewCheckBox.Create(WizardForm);
-  AddonCheckBox.Parent := AddonTaskPage.Surface;
-  AddonCheckBox.Left := 2;
-  AddonCheckBox.Top := AddonDescription.Top + AddonDescription.Height + 5; 
-  AddonCheckBox.Width := 300;
-  AddonCheckBox.Caption := 'Установить Melezh';
-  AddonCheckBox.Checked := True;
-    
-end;
-
-function ShouldInstallAddon(): Boolean;
-begin
-  Result := AddonCheckBox.Checked;
-end;
 
 procedure UpdateInterpreterLicenseNextButton();
 begin
@@ -213,4 +128,81 @@ begin
     MsgBox('Для продолжения установки необходимо принять лицензию интерпретатора OneScript.', mbError, MB_OK);
     Result := False;
   end;
+end;
+
+procedure InitializeWizard();
+var
+  OscriptLicenseText: AnsiString;
+begin
+
+  ExtractTemporaryFile('oscript-lic.txt');
+  OscriptLicenseText := '';
+  if not LoadStringFromFile(ExpandConstant('{tmp}\oscript-lic.txt'), OscriptLicenseText) then
+    RaiseException('Не удалось загрузить файл лицензии интерпретатора OneScript.');
+
+  InterpreterLicensePage := CreateOutputMsgMemoPage(
+    wpLicense,
+    'Лицензия интерпретатора OneScript',
+    'Пожалуйста, ознакомьтесь с лицензией интерпретатора OneScript.',
+    'Пожалуйста, прочтите следующее Лицензионное Соглашение. Вы должны принять условия этого соглашения перед тем, как продолжить.',
+    OscriptLicenseText);
+    
+  InterpreterLicensePage.RichEditViewer.Height := ScaleY(216);
+
+  InterpreterLicenseAcceptedRadio := TNewRadioButton.Create(WizardForm);
+  InterpreterLicenseAcceptedRadio.Parent := InterpreterLicensePage.Surface;
+  InterpreterLicenseAcceptedRadio.Left := 0;
+  InterpreterLicenseAcceptedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(41);
+  InterpreterLicenseAcceptedRadio.Width := InterpreterLicensePage.SurfaceWidth;
+  InterpreterLicenseAcceptedRadio.Caption := 'Я принимаю условия соглашения';
+  InterpreterLicenseAcceptedRadio.Checked := False;
+  InterpreterLicenseAcceptedRadio.OnClick := @InterpreterLicenseOptionClick;
+
+  InterpreterLicenseRejectedRadio := TNewRadioButton.Create(WizardForm);
+  InterpreterLicenseRejectedRadio.Parent := InterpreterLicensePage.Surface;
+  InterpreterLicenseRejectedRadio.Left := 0;
+  InterpreterLicenseRejectedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(21);
+  InterpreterLicenseRejectedRadio.Width := InterpreterLicensePage.SurfaceWidth;
+  InterpreterLicenseRejectedRadio.Caption := 'Я не принимаю условия соглашения';
+  InterpreterLicenseRejectedRadio.Checked := True;
+  InterpreterLicenseRejectedRadio.OnClick := @InterpreterLicenseOptionClick;
+
+  AddonTaskPage := CreateCustomPage(InterpreterLicensePage.ID,
+    'Установить Melezh', 'Установка серверной версии OInt');
+    
+  ExtractTemporaryFile('melezh.bmp');
+
+  with TBitmapImage.Create(WizardForm) do
+  begin
+    Parent := AddonTaskPage.Surface;
+    Left := WizardForm.Width - 260;
+    Top := 35;
+    Width := 175;
+    Height := 200;
+    Stretch := True;
+    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));
+  end;
+
+  AddonDescription := TNewStaticText.Create(WizardForm);
+  AddonDescription.Parent := AddonTaskPage.Surface;
+  AddonDescription.Caption := 'Melezh - это небольшой (~ 6 MB) серверный аддон для OInt, позволяющий запускать настраиваемый gateway для любых его методов. Melezh может прослушивать выбранный вами порт и интерпретировать приходящие туда HTTP-запросы в команды OInt для дальнейшего выплнения. Имеется встроенное логирование и Web UI для удобной настройки';
+  AddonDescription.WordWrap := True;
+  AddonDescription.Width := 350;
+  AddonDescription.Height := 120; 
+  AddonDescription.Top := 85;
+  AddonDescription.AutoSize := True; 
+    
+  AddonCheckBox := TNewCheckBox.Create(WizardForm);
+  AddonCheckBox.Parent := AddonTaskPage.Surface;
+  AddonCheckBox.Left := 2;
+  AddonCheckBox.Top := AddonDescription.Top + AddonDescription.Height + 5; 
+  AddonCheckBox.Width := 300;
+  AddonCheckBox.Caption := 'Установить Melezh';
+  AddonCheckBox.Checked := True;
+    
+end;
+
+function ShouldInstallAddon(): Boolean;
+begin
+  Result := AddonCheckBox.Checked;
 end;
