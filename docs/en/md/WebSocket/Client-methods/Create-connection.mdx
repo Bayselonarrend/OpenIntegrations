@@ -17,13 +17,14 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CreateConnection(Val Address, Val Tls = Undefined, Val Proxy = Undefined, Val Logging = Undefined) Export`
+`Function CreateConnection(Val Address, Val Tls = Undefined, Val Proxy = Undefined, Val Headers = Undefined, Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | - | String | &#x2714; | Address and port |
   | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
   | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
+  | Headers | - | Map Of KeyAndValue | &#x2716; | Map of additional HTTP headers for handshake |
   | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
 
