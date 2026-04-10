@@ -72,6 +72,24 @@ Function GetLoggingSettings(Val WriteToMemory = True
 
 EndFunction
 
+// Get log !NOCLI
+// Retrieves server log data (with logging to memory enabled)
+//
+// Parameters:
+// ServerObject - Arbitrary - Server or client component object                          - srv
+// AsString     - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount   - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(ServerObject
+        , AsString
+        , EventCount);
+
+EndFunction
+
 #EndRegion
 
 #Region ClientMethods
@@ -83,6 +101,7 @@ EndFunction
 // Address - String                   - Address and port                                  - address
 // Tls     - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
 // Proxy   - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Headers - Map Of KeyAndValue       - Map of additional HTTP headers for handshake      - headers
 // Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
 //
 // Returns:
@@ -90,6 +109,7 @@ EndFunction
 Function CreateConnection(Val Address
     , Val Tls = Undefined
     , Val Proxy = Undefined
+    , Val Headers = Undefined
     , Val Logging = Undefined) Export
 
     OPI_TypeConversion.GetLine(Address);
@@ -128,6 +148,20 @@ Function CreateConnection(Val Address
 
     EndIf;
 
+    If ValueIsFilled(Headers) Then
+
+        ErrorText = "Incorrect header structure";
+        OPI_TypeConversion.GetKeyValueCollection(Headers, ErrorText);
+
+        HeadersAsString = OPI_Tools.JSONString(Headers);
+        Result          = WSClient.SetHeaders(HeadersAsString);
+
+        If Not OPI_Tools.GetOr(Result, "result", False) Then
+            Return Result;
+        EndIf;
+
+    EndIf;
+
     Result = WSClient.Connect(Address, SettingsString);
     Result = OPI_Tools.JsonToStructure(Result);
 
@@ -140,14 +174,19 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection, See CreateConnection - conn
+// Code       - Number    - Status code                      - code
+// Reason     - String    - Close message                    - reason
 //
 // Returns:
 // Structure Of KeyAndValue - Result of connection termination
-Function CloseConnection(Val Connection) Export
+Function CloseConnection(Val Connection, Val Code = 1000, Val Reason = "") Export
 
     If IsClientObject(Connection) Then
 
-        Result = Connection.Disconnect();
+        OPI_TypeConversion.GetNumber(Code);
+        OPI_TypeConversion.GetLine(Reason);
+
+        Result = Connection.Close(Code, Reason);
         Result = OPI_Tools.JsonToStructure(Result, False);
 
     Else
@@ -157,6 +196,60 @@ Function CloseConnection(Val Connection) Export
     EndIf;
 
     //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
+
+// Send ping
+// Sends a ping to the remote server
+//
+// Parameters:
+// Connection - Arbitrary - Connection, See CreateConnection - conn
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SendPing(Val Connection) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    Result = Connection.SendPing();
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Send pong
+// Sends a pong to the remote server
+//
+// Parameters:
+// Connection - Arbitrary - Connection, See CreateConnection - conn
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SendPong(Val Connection) Export
+
+    If Not IsClientObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    Result = Connection.SendPong();
+    Result = OPI_Tools.JsonToStructure(Result);
+
     Return Result;
 
 EndFunction
@@ -185,6 +278,17 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
     OPI_TypeConversion.GetNumber(Timeout);
 
     Result = Connection.ReceiveMessage(Timeout);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If OPI_Tools.GetOr(Result, "type", "") = "binary" Then
+
+        Data = OPI_Tools.GetOr(Result, "data", "");
+
+        If ValueIsFilled(Data) Then
+            Result.Insert("data", OPI_AddIns.ReceiveData(Connection, Data));
+        EndIf;
+
+    EndIf;
 
     Return Result;
 
@@ -405,25 +509,6 @@ EndFunction
 Function GetConnectionList(Val ServerObject) Export
 
     Return OPI_GenericServer.GetConnectionList(OPI_WebSocket, ServerObject);
-
-EndFunction
-
-// Get log !NOCLI
-// Retrieves server log data (with logging to memory enabled)
-//
-// Parameters:
-// ServerObject - Arbitrary - Object of running server component                         - srv
-// AsString     - Boolean   - True > returns log as a single string, False > as an array - str
-// EventCount   - Number    - Number of recent events to retrieve. 0 > no limits         - count
-//
-// Returns:
-// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
-Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
-
-    Return OPI_GenericServer.GetLog(OPI_WebSocket
-        , ServerObject
-        , AsString
-        , EventCount);
 
 EndFunction
 

@@ -77,7 +77,7 @@ Function StopServer(Val Module, Val ServerObject) Export
 
     If Not Module.IsServerObject(ServerObject) Then
 
-        Result = NotAddinParameterError();
+        Result = OPI_AddIns.NotAddinParameterError();
 
     Else
 
@@ -96,7 +96,7 @@ Function GetNextConnectionData(Val Module
     , Val MaxSize = 8192) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetNumber(Timeout);
@@ -118,7 +118,7 @@ Function GetConnectionData(Val Module
     , Val MaxSize = 8192) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetNumber(Timeout);
@@ -137,7 +137,7 @@ EndFunction
 Function SendData(Val Module, Val ServerObject, Val ConnectionID, Val Data) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetBinaryData(Data, True, False);
@@ -153,7 +153,7 @@ EndFunction
 Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetLine(ConnectionID);
@@ -168,7 +168,7 @@ EndFunction
 Function CompleteSend(Val Module, Val ServerObject, Val ConnectionID) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetLine(ConnectionID);
@@ -183,7 +183,7 @@ EndFunction
 Function FinishReceiving(Val Module, Val ServerObject, Val ConnectionID) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     OPI_TypeConversion.GetLine(ConnectionID);
@@ -198,7 +198,7 @@ EndFunction
 Function GetConnectionList(Val Module, Val ServerObject) Export
 
     If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
+        Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
     Result = ServerObject.GetConnectionsList();
@@ -208,39 +208,9 @@ Function GetConnectionList(Val Module, Val ServerObject) Export
 
 EndFunction
 
-Function GetLog(Val Module, Val ServerObject, Val AsString = False, Val EventCount = 100) Export
-
-    If Not Module.IsServerObject(ServerObject) Then
-        Return NotAddinParameterError();
-    EndIf;
-
-    OPI_TypeConversion.GetNumber(EventCount);
-    OPI_TypeConversion.GetBoolean(AsString);
-
-    Result = ServerObject.GetLogs(EventCount);
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    If AsString And Result["result"] Then
-        Result = StrConcat(Result["logs"], Chars.LF);
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
 #EndRegion
 
 #Region Internal
-
-Function NotAddinParameterError()
-
-    Result = New Map;
-    Result.Insert("result", False);
-    Result.Insert("error" , "The passed value is not a server object");
-
-    Return Result;
-
-EndFunction
 
 Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
 
