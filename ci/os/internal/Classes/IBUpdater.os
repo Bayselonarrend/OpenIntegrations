@@ -75,7 +75,7 @@
 	ФайлТекущейИБ = Новый Файл(ПутьТекущейИБ);
 
 	Если Не ФайлТекущейИБ.Существует() Тогда
-		ЗапуститьПриложение(СтрШаблон("%1 CreateInfobase ""File=""""%2OpenIntegrationsIB_%3"""""" /AddInList OpenIntegrationsIB_%3", Путь1С, ПутьИБ, Язык), , Истина);
+		ЗапуститьПриложение(СтрШаблон("""%1"" CreateInfobase ""File=""""%2OpenIntegrationsIB_%3"""""" /AddInList OpenIntegrationsIB_%3", Путь1С, ПутьИБ, Язык), , Истина);
 	КонецЕсли;	
 	
 	ЭкспортироватьПроектEDT("OpenIntegrations", Корень, Язык, ПутьEDT);
