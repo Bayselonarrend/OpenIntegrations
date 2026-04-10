@@ -142,6 +142,10 @@
      "Core": true,
      "WebSocket": true
     }
+   },
+   "testIbPath": {
+    "description": "Base path for rest IBs",
+    "value": "D:/TEST_IB/"
    }
   }
  },
