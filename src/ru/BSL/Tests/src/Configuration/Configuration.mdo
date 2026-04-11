@@ -16,7 +16,7 @@
   <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="f72b6a70-d3a6-4a78-89a9-6d06acef12cf"/>
   <keepMappingToExtendedConfigurationObjectsByIDs>true</keepMappingToExtendedConfigurationObjectsByIDs>
   <namePrefix>OPIt_</namePrefix>
-  <configurationExtensionCompatibilityMode>8.3.15</configurationExtensionCompatibilityMode>
+  <configurationExtensionCompatibilityMode>8.3.10</configurationExtensionCompatibilityMode>
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <scriptVariant>Russian</scriptVariant>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
