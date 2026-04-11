@@ -51,14 +51,6 @@ const sidebars = {
     },
            {
       type: 'category',
-      label: 'Complete solutions (CMS, CRM)',
-      className: 'CRM',
-      items: [
-        
-      ],
-    },
-           {
-      type: 'category',
       label: 'E-commerce and delivery',
       className: 'Commerce',
       items: [
