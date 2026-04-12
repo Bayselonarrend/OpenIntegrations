@@ -155,7 +155,7 @@ begin
   InterpreterLicenseAcceptedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(41);
   InterpreterLicenseAcceptedRadio.Width := InterpreterLicensePage.SurfaceWidth;
   InterpreterLicenseAcceptedRadio.Caption := 'Я принимаю условия соглашения';
-  InterpreterLicenseAcceptedRadio.Checked := False;
+  InterpreterLicenseAcceptedRadio.Checked := True;
   InterpreterLicenseAcceptedRadio.OnClick := @InterpreterLicenseOptionClick;
 
   InterpreterLicenseRejectedRadio := TNewRadioButton.Create(WizardForm);
@@ -164,7 +164,7 @@ begin
   InterpreterLicenseRejectedRadio.Top := InterpreterLicensePage.SurfaceHeight - ScaleY(21);
   InterpreterLicenseRejectedRadio.Width := InterpreterLicensePage.SurfaceWidth;
   InterpreterLicenseRejectedRadio.Caption := 'Я не принимаю условия соглашения';
-  InterpreterLicenseRejectedRadio.Checked := True;
+  InterpreterLicenseRejectedRadio.Checked := False;
   InterpreterLicenseRejectedRadio.OnClick := @InterpreterLicenseOptionClick;
 
   AddonTaskPage := CreateCustomPage(InterpreterLicensePage.ID,
