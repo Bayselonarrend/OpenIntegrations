@@ -155,6 +155,7 @@ Function CreateConnection(Val Address
 
         HeadersAsString = OPI_Tools.JSONString(Headers);
         Result          = WSClient.SetHeaders(HeadersAsString);
+        Result          = OPI_Tools.JsonToStructure(Result);
 
         If Not OPI_Tools.GetOr(Result, "result", False) Then
             Return Result;
@@ -280,13 +281,29 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
     Result = Connection.ReceiveMessage(Timeout);
     Result = OPI_Tools.JsonToStructure(Result);
 
-    If OPI_Tools.GetOr(Result, "type", "") = "binary" Then
+    MessageType = OPI_Tools.GetOr(Result, "type", "");
+    Data        = OPI_Tools.GetOr(Result, "data", "");
 
-        Data = OPI_Tools.GetOr(Result, "data", "");
+    If MessageType = "binary" Then
 
         If ValueIsFilled(Data) Then
             Result.Insert("data", OPI_AddIns.ReceiveData(Connection, Data));
         EndIf;
+
+    EndIf;
+
+    If MessageType = "text" Then
+
+        Try
+
+            If StrStartsWith(Data, "{") Or StrStartsWith(Data, "[") Then
+                OPI_TypeConversion.GetKeyValueCollection(Data);
+                Result["data"] = Data;
+            EndIf;
+
+        Except
+            Result["data"] = String(Data);
+        EndTry;
 
     EndIf;
 
