@@ -5,9 +5,9 @@ use common_tcp::tcp_establish::create_tcp_connection;
 use common_tcp::proxy_settings::ProxySettings;
 use common_utils::utils::{json_error, json_success};
 use rustls::pki_types::ServerName;
-use tungstenite::{client, WebSocket};
+use tungstenite::{client, ClientRequestBuilder, WebSocket};
+use tungstenite::client::IntoClientRequest;
 use tungstenite::handshake::client::Request;
-use tungstenite::http::HeaderValue;
 use tungstenite::stream::MaybeTlsStream;
 use url::Url;
 use crate::client::WebSocketClient;
@@ -109,28 +109,22 @@ impl WebSocketClient {
     }
 
     fn build_request_with_headers(url: &Url, headers: &Option<Vec<(String, String)>>) -> Result<Request, String> {
+        // Полноценный GET с Sec-WebSocket-Key и др.: см. `IntoClientRequest` в tungstenite.
+        let uri: tungstenite::http::Uri = url
+            .as_str()
+            .parse()
+            .map_err(|e| format!("Invalid WebSocket URI: {}", e))?;
 
-        let mut request = Request::builder()
-            .uri(url.as_str())
-            .body(())
-            .map_err(|e| format!("Failed to build request: {}", e))?;
+        let mut builder = ClientRequestBuilder::new(uri);
 
         if let Some(headers_vec) = headers {
-
-            let req_headers = request.headers_mut();
-
             for (key, value) in headers_vec {
-
-                let header_value = HeaderValue::from_str(value)
-                    .map_err(|e| format!("Invalid header value for '{}': {}", key, e))?;
-
-                let header_name = key.parse::<tungstenite::http::HeaderName>()
-                    .map_err(|e| format!("Invalid header name '{}': {}", key, e))?;
-
-                req_headers.insert(header_name, header_value);
+                builder = builder.with_header(key, value);
             }
         }
 
-        Ok(request)
+        builder
+            .into_client_request()
+            .map_err(|e| format!("Failed to build WebSocket request: {}", e))
     }
 }
