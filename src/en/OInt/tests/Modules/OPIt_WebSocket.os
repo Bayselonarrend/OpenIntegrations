@@ -125,7 +125,7 @@ EndProcedure
 
 Procedure WebSocket_CreateConnection(FunctionParameters)
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -171,7 +171,7 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -218,7 +218,7 @@ EndProcedure
 
 Procedure WebSocket_SendPing(FunctionParameters)
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -285,7 +285,7 @@ Procedure WebSocket_SendPong(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -336,7 +336,7 @@ Procedure WebSocket_GetMessage(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -406,7 +406,7 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -475,7 +475,7 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
@@ -554,7 +554,7 @@ Procedure WebSocket_IsClientObject(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Address    = "wss://127.0.0.1:8443";
+    Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
     TLSSettings   = Undefined;
