@@ -1,21 +1,21 @@
 ﻿{
- "path": "disk:/Загрузки/436085b4-c857-4280-a811-e563a3783dc1.png",
+ "path": "disk:/Загрузки/50518a16-e985-43fd-a633-90e61d90313c.png",
  "type": "file",
- "name": "436085b4-c857-4280-a811-e563a3783dc1.png",
- "created": "2026-04-08T08:44:48+03:00",
- "modified": "2026-04-08T08:44:48+03:00",
+ "name": "50518a16-e985-43fd-a633-90e61d90313c.png",
+ "created": "2026-04-13T00:09:39+03:00",
+ "modified": "2026-04-13T00:09:39+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "media_type": "image",
- "resource_id": "1573541518:35eb12d8c41a8ad4714605c6f9496dd04a320c4de0f240d6c3347e8fffa4da0d",
- "revision": 1775627088773635,
+ "resource_id": "1573541518:7a52fe290c87c66683111eaefabae958218de944644dfb9ede5deb5a46c0b259",
+ "revision": 1776028179647653,
  "comment_ids": {
-  "public_resource": "1573541518:35eb12d8c41a8ad4714605c6f9496dd04a320c4de0f240d6c3347e8fffa4da0d",
-  "private_resource": "1573541518:35eb12d8c41a8ad4714605c6f9496dd04a320c4de0f240d6c3347e8fffa4da0d"
+  "public_resource": "1573541518:7a52fe290c87c66683111eaefabae958218de944644dfb9ede5deb5a46c0b259",
+  "private_resource": "1573541518:7a52fe290c87c66683111eaefabae958218de944644dfb9ede5deb5a46c0b259"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/1f4fcdc6f7e1476d14bbf54494bd3174b83b32964bfa30335b919f1264b3b..."
+ "file": "https://downloader.disk.yandex.ru/disk/23169d3fc2b84ae36695adac49b3348df3f49a0c3004c4ae027d9bd9a0d32..."
 }

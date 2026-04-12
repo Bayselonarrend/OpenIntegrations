@@ -4,8 +4,8 @@
    "activity": {
     "comments": 1
    },
-   "period_from": 1775606400,
-   "period_to": 1775692799,
+   "period_from": 1775952000,
+   "period_to": 1776038399,
    "reach": {
     "cities": [],
     "countries": [],
@@ -15,22 +15,15 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "BR",
-      "count": 1,
-      "name": "Бразилия",
-      "value": 43
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   },
   {
-   "period_from": 1775520000,
-   "period_to": 1775606399,
+   "period_from": 1775865600,
+   "period_to": 1775951999,
    "reach": {
     "cities": [],
     "countries": [],
