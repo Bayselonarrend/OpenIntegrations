@@ -1,3 +1,3 @@
 oint slack ПокинутьКанал \
   --token "***" \
-  --channel "C0ARDRXGXL5"
+  --channel "C0ASGSQ87NG"
