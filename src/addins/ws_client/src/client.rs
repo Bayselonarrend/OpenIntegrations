@@ -55,13 +55,13 @@ impl WebSocketClient {
             return json_error("Cannot set headers while connected");
         }
 
-        match serde_json::from_str::<Vec<(String, String)>>(headers_json) {
+        match parse_headers_json(headers_json) {
             Ok(headers) => {
                 self.headers = Some(headers);
                 self.log("Headers configured");
                 json_success()
             }
-            Err(e) => json_error(&format!("Invalid headers JSON: {}", e)),
+            Err(e) => json_error(&e),
         }
     }
 
@@ -111,4 +111,27 @@ impl WebSocketClient {
         }
     }
 
+}
+
+fn parse_headers_json(headers_json: &str) -> Result<Vec<(String, String)>, String> {
+    let value: serde_json::Value =
+        serde_json::from_str(headers_json).map_err(|e| format!("Invalid headers JSON: {}", e))?;
+
+    match value {
+        serde_json::Value::Object(map) => Ok(
+            map.into_iter()
+                .map(|(k, v)| {
+                    let val = match v {
+                        serde_json::Value::String(s) => s,
+                        serde_json::Value::Null => String::new(),
+                        other => other.to_string(),
+                    };
+                    (k, val)
+                })
+                .collect(),
+        ),
+        serde_json::Value::Array(_) => serde_json::from_value(value)
+            .map_err(|e| format!("Invalid headers array (expected [[\"key\",\"value\"], ...]): {}", e)),
+        _ => Err("Headers JSON must be an object or an array of [key, value] pairs".to_string()),
+    }
 }
