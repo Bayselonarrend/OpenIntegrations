@@ -125,21 +125,82 @@ EndProcedure
 
 Procedure WebSocket_CreateConnection(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    OPI_TestDataRetrieval.Process(Connection, "WebSocket", "CreateConnection", Postfix);
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
 
-    If OPI_WebSocket.IsClientObject(Connection) Then
-        OPI_WebSocket.CloseConnection(Connection);
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Result = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "CreateConnection", Postfix);
+
+    If OPI_WebSocket.IsClientObject(Result) Then
+        OPI_WebSocket.CloseConnection(Result);
     EndIf;
 
 EndProcedure
 
 Procedure WebSocket_CloseConnection(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
     OPI_TestDataRetrieval.Process(Connection, "WebSocket", "CloseConnection", "Openning, " + Postfix); // SKIP
 
@@ -149,23 +210,68 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
         Result = Connection;
     EndIf;
 
+    // END
+
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "CloseConnection", Postfix);
 
 EndProcedure
 
 Procedure WebSocket_SendPing(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
         Result = OPI_WebSocket.SendPing(Connection);
-        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
+
+        While True Do
+
+            LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
+
+            If LastMessage["result"] Then
+                Check = OPI_WebSocket.GetMessage(Connection, 3000);
+            Else
+                Break;
+            EndIf;
+
+        EndDo;
+
     Else
         Result = Connection;
         Check  = Connection;
     EndIf;
 
+    // END
+
+    Postfix = FunctionParameters["Postfix"];
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendPing", Postfix);
     OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendPing", "Check, " + Postfix);
 
@@ -177,14 +283,46 @@ EndProcedure
 
 Procedure WebSocket_SendPong(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
         Result = OPI_WebSocket.SendPong(Connection);
     Else
         Result = Connection;
     EndIf;
+
+    // END
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendPong", Postfix);
 
@@ -196,17 +334,65 @@ EndProcedure
 
 Procedure WebSocket_GetMessage(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+
     Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Sending = OPI_WebSocket.SendTextMessage(Connection, Message); // SKIP
+
+        // ECHO
+        Sending = OPI_WebSocket.SendTextMessage(Connection, Message);
+
         OPI_TestDataRetrieval.Process(Sending, "WebSocket", "GetMessage", "Sending, " + Postfix); // SKIP
-        Result  = OPI_WebSocket.GetMessage(Connection, 3000);
+
+        While True Do
+
+            LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
+
+            If LastMessage["result"] Then
+                Result = OPI_WebSocket.GetMessage(Connection, 3000); // <----
+            Else
+                Break;
+            EndIf;
+
+        EndDo;
+
     Else
-        Result  = Connection;
+        Result = Connection;
     EndIf;
+
+    // END
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetMessage", Postfix, Message);
 
@@ -218,19 +404,65 @@ EndProcedure
 
 Procedure WebSocket_SendTextMessage(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
-    Message = "text-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.SendTextMessage(Connection, Message);
-        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
-    Else
-        Result = Connection;
-        Check  = Connection;
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
     EndIf;
 
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+
+    Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+
+        Result = OPI_WebSocket.SendTextMessage(Connection, Message);
+
+    Else
+        Result = Connection;
+    EndIf;
+
+    // END
+
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendTextMessage", Postfix);
+
+    While True Do
+
+        LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
+
+        If LastMessage["result"] Then
+            Check = OPI_WebSocket.GetMessage(Connection, 3000);
+        Else
+            Break;
+        EndIf;
+
+    EndDo;
+
     OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendTextMessage", "Check, " + Postfix, Message);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
@@ -241,18 +473,61 @@ EndProcedure
 
 Procedure WebSocket_SendBinaryMessage(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+
     SourceString = "binary-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
-    Data       = GetBinaryDataFromString(SourceString);
+    Data = GetBinaryDataFromString(SourceString);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
         Result = OPI_WebSocket.SendBinaryMessage(Connection, Data);
-        Check  = OPI_WebSocket.GetMessage(Connection, 3000);
     Else
         Result = Connection;
-        Check  = Connection;
     EndIf;
+
+    // END
+
+    While True Do
+
+        LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
+
+        If LastMessage["result"] Then
+            Check = OPI_WebSocket.GetMessage(Connection, 3000);
+        Else
+            Break;
+        EndIf;
+
+    EndDo;
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendBinaryMessage", Postfix);
     OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendBinaryMessage", "Check, " + Postfix, SourceString);
@@ -265,8 +540,11 @@ EndProcedure
 
 Procedure WebSocket_GetTlsSettings(FunctionParameters)
 
+    Result = OPI_WebSocket.GetTlsSettings(True);
+
+    // END
+
     Postfix = FunctionParameters["Postfix"];
-    Result  = OPI_WebSocket.GetTlsSettings(True);
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetTlsSettings", Postfix);
 
@@ -274,22 +552,49 @@ EndProcedure
 
 Procedure WebSocket_IsClientObject(FunctionParameters)
 
-    Postfix    = FunctionParameters["Postfix"];
-    Connection = CreateWebSocketClient(FunctionParameters);
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.IsClientObject(Connection);
-    Else
-        Result = OPI_WebSocket.IsClientObject("not-a-client");
+    Address    = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
     EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_AddIns.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Result     = OPI_WebSocket.IsClientObject(Connection);
+
+    // END
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "IsClientObject", Postfix);
 
     Result = OPI_WebSocket.IsClientObject("not-a-client");
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "IsClientObject", "False, " + Postfix);
 
-    If OPI_WebSocket.IsClientObject(Connection) Then
-        OPI_WebSocket.CloseConnection(Connection);
+    If OPI_WebSocket.IsClientObject(Result) Then
+        OPI_WebSocket.CloseConnection(Result);
     EndIf;
 
 EndProcedure
@@ -306,7 +611,9 @@ Function CreateWebSocketClient(FunctionParameters)
 
     TLSSettings   = Undefined;
     ProxySettings = Undefined;
-    Headers       = New Structure("X-Trace-Id", "OPI-WS-TEST");
+
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If FunctionParameters["TLS"] Then
         TLSSettings = OPI_WebSocket.GetTlsSettings(True);
@@ -321,7 +628,7 @@ Function CreateWebSocketClient(FunctionParameters)
             FunctionParameters["Proxy_Password"]);
     EndIf;
 
-    Return OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, , Headers);
+    Return OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
 EndFunction
 
@@ -330,6 +637,8 @@ Function GetWebSocketAddress(FunctionParameters)
     Scheme = ?(FunctionParameters["TLS"], "wss://", "ws://");
     Host   = FunctionParameters["WS_IP"];
     Port   = FunctionParameters["WS_Port"];
+
+    OPI_TypeConversion.GetLine(Port);
 
     Return StrTemplate("%1%2:%3", Scheme, Host, Port);
 
