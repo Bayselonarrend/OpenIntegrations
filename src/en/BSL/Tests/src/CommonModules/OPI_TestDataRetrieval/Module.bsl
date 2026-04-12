@@ -998,14 +998,16 @@ Function GetWebSocketParametersOptions() Export
     OptionArray = New Array;
 
     TestParametersMain = New Structure;
-    ParameterToCollection("WS_IP"         , TestParametersMain);
-    ParameterToCollection("WS_Port"       , TestParametersMain);
-    ParameterToCollection("WSS_IP"        , TestParametersMain);
-    ParameterToCollection("WSS_Port"      , TestParametersMain);
-    ParameterToCollection("Proxy_User"    , TestParametersMain);
-    ParameterToCollection("Proxy_Password", TestParametersMain);
-    ParameterToCollection("Socks5_IP"     , TestParametersMain);
-    ParameterToCollection("Socks5_Port"   , TestParametersMain);
+    ParameterToCollection("WS_IP"           , TestParametersMain);
+    ParameterToCollection("WS_Port"         , TestParametersMain);
+    ParameterToCollection("WS_InternalPort" , TestParametersMain);
+    ParameterToCollection("WSS_IP"          , TestParametersMain);
+    ParameterToCollection("WSS_Port"        , TestParametersMain);
+    ParameterToCollection("WSS_InternalPort", TestParametersMain);
+    ParameterToCollection("Proxy_User"      , TestParametersMain);
+    ParameterToCollection("Proxy_Password"  , TestParametersMain);
+    ParameterToCollection("Socks5_IP"       , TestParametersMain);
+    ParameterToCollection("Socks5_Port"     , TestParametersMain);
 
     Localhost = GetLocalhost();
 
@@ -1044,7 +1046,7 @@ Function GetWebSocketParametersOptions() Export
     ParametersStructure = New Structure;
     ParametersStructure.Insert("Postfix", "WS, Socks5");
     ParametersStructure.Insert("WS_IP", TestParametersMain["WS_IP"]);
-    ParametersStructure.Insert("WS_Port", TestParametersMain["WS_Port"]);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WS_InternalPort"]);
     ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
     ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
     ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
@@ -1058,7 +1060,7 @@ Function GetWebSocketParametersOptions() Export
     ParametersStructure = New Structure;
     ParametersStructure.Insert("Postfix", "WSS, Socks5");
     ParametersStructure.Insert("WS_IP", TestParametersMain["WSS_IP"]);
-    ParametersStructure.Insert("WS_Port", TestParametersMain["WSS_Port"]);
+    ParametersStructure.Insert("WS_Port", TestParametersMain["WSS_InternalPort"]);
     ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
     ParametersStructure.Insert("Proxy_Password", TestParametersMain["Proxy_Password"]);
     ParametersStructure.Insert("Proxy_IP", TestParametersMain["Socks5_IP"]);
@@ -7822,8 +7824,11 @@ EndFunction
 Function Check_WebSocket_GetMessage(Val Result, Val Option, Message = "")
 
     ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["type"]).Равно("text");
-    ExpectsThat(Result["data"]).Равно(Message);
+
+    If StrFind(Option, "Sending") = 0 Then
+        ExpectsThat(Result["type"]).Равно("text");
+        ExpectsThat(Result["data"]["payload"]).Равно(Message);
+    EndIf;
 
     Return Result;
 
@@ -7834,7 +7839,7 @@ Function Check_WebSocket_SendTextMessage(Val Result, Val Option, Message = "")
     If Left(Option, 8) = "Check" Then
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["type"]).Равно("text");
-        ExpectsThat(Result["data"]).Равно(Message);
+        ExpectsThat(Result["data"]["payload"]).Равно(Message);
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -7846,11 +7851,15 @@ EndFunction
 Function Check_WebSocket_SendBinaryMessage(Val Result, Val Option, Message = "")
 
     If Left(Option, 8) = "Check" Then
+
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["type"]).Равно("binary");
-        Data           = GetStringFromBinaryData(Result["data"]);
+
+        Data = GetStringFromBinaryData(Result["data"]);
         ExpectsThat(Data).Равно(Message);
+
         Result["data"] = "<BinaryData>";
+
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
