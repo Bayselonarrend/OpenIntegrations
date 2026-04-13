@@ -1733,6 +1733,7 @@
 "IDОперации": "OperationID",
 "ОбъектЛога": "LogObject",
 "Обработать": "Process",
+"ОбработатьCLI": "ProcessCLI",
 "ГуглОбъект": "GoogleObject",
 "ЗапросыSSH": "SSHRequests",
 "ПолучитьQR": "GetQR",

@@ -579,6 +579,7 @@
         // !OInt Попытка ПодключитьСценарий(ПутьКлиента, "OPI_ЗапросыHTTP"); Исключение КонецПопытки;
 
         //@skip-check bsl-legacy-check-string-literal
+        //@skip-check bsl-legacy-check-method-for-statements-after-return
         HttpКлиент = Новый("OPI_ЗапросыHTTP");
         Возврат HttpКлиент;
 
