@@ -4,8 +4,8 @@
    "activity": {
     "comments": 1
    },
-   "period_from": 1775952000,
-   "period_to": 1776038399,
+   "period_from": 1776038400,
+   "period_to": 1776124799,
    "reach": {
     "cities": [],
     "countries": [],
@@ -22,8 +22,11 @@
    }
   },
   {
-   "period_from": 1775865600,
-   "period_to": 1775951999,
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1775952000,
+   "period_to": 1776038399,
    "reach": {
     "cities": [],
     "countries": [],

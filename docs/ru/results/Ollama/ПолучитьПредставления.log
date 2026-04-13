@@ -2052,7 +2052,7 @@
    -0.026820691
   ]
  ],
- "total_duration": 131454500,
- "load_duration": 21378400,
+ "total_duration": 117304400,
+ "load_duration": 33374800,
  "prompt_eval_count": 16
 }

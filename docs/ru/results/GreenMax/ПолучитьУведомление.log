@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1776030410,
-  "idMessage": "1776030407958",
+  "timestamp": 1776030414,
+  "idMessage": "1776030413154",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -18,13 +18,14 @@
    "senderPhoneNumber": "***"
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
-   "extendedTextMessageData": {
-    "text": "Текст сообщения",
-    "description": "",
-    "title": "",
-    "previewType": "None",
-    "jpegThumbnail": "",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/8599cf24-4995-4e1d-a9a3-f1615535f106.jpg",
+    "caption": "Описание файла",
+    "fileName": "photo.jpg",
+    "jpegThumbnail": "UklGRiIBAABXRUJQVlA4IBYBAADQCACdASoyACYAP3Guy2E0rKglqBVZypAuCUAZXgDDgZvlC9W+/2dNt9X9heotrVGtU5fk+sPA...",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }
