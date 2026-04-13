@@ -182,7 +182,7 @@ Procedure VKTeams_CheckToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "CheckToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "CheckToken");
 
 EndProcedure
 
@@ -195,7 +195,7 @@ Procedure VKTeams_GetEvents(FunctionParameters)
 
         Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
 
-        OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetEvents"); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetEvents"); // SKIP
 
         Events = Result["events"];
 
@@ -228,7 +228,7 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendTextMessage", "Simple", FunctionParameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendTextMessage", "Simple", FunctionParameters); // SKIP
 
     ChatID  = FunctionParameters["VkTeams_ChatID2"];
     ReplyID = FunctionParameters["VkTeams_MessageID"];
@@ -259,7 +259,7 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendTextMessage", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendTextMessage", , FunctionParameters);
 
 EndProcedure
 
@@ -278,7 +278,7 @@ Procedure VKTeams_ForwardMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ForwardMessage", "Simple"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ForwardMessage", "Simple"); // SKIP
 
     Text = "Additional text";
 
@@ -293,7 +293,7 @@ Procedure VKTeams_ForwardMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ForwardMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ForwardMessage");
 
 EndProcedure
 
@@ -317,7 +317,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendFile", "URL", FunctionParameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendFile", "URL", FunctionParameters); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -327,7 +327,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendFile", "Path", FunctionParameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendFile", "Path", FunctionParameters); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -340,7 +340,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendFile", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendFile", , FunctionParameters);
 
     OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
@@ -363,7 +363,7 @@ Procedure VKTeams_ResendFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ResendFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ResendFile");
 
 EndProcedure
 
@@ -380,7 +380,7 @@ Procedure VKTeams_GetFileInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetFileInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetFileInformation");
 
 EndProcedure
 
@@ -399,7 +399,7 @@ Procedure VKTeams_EditMessageText(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "EditMessageText", "Path"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "EditMessageText", "Path"); // SKIP
 
     Text   = "<b>New bold message text</b>";
     Markup = "HTML";
@@ -415,7 +415,7 @@ Procedure VKTeams_EditMessageText(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "EditMessageText");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "EditMessageText");
 
 EndProcedure
 
@@ -434,7 +434,7 @@ Procedure VKTeams_DeleteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "DeleteMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "DeleteMessage");
 
 EndProcedure
 
@@ -458,7 +458,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendVoice", "URL", FunctionParameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendVoice", "URL", FunctionParameters); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -468,7 +468,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendVoice", "Path", FunctionParameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendVoice", "Path", FunctionParameters); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -479,7 +479,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SendVoice", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendVoice", , FunctionParameters);
 
     OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
@@ -500,7 +500,7 @@ Procedure VKTeams_ResendVoice(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ResendVoice");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ResendVoice");
 
 EndProcedure
 
@@ -519,7 +519,7 @@ Procedure VKTeams_RemoveChatMembers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "RemoveChatMembers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "RemoveChatMembers");
 
 EndProcedure
 
@@ -542,7 +542,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ChangeChatPicture", "URL");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ChangeChatPicture", "URL");
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -551,7 +551,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ChangeChatPicture", "Path");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ChangeChatPicture", "Path");
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -562,7 +562,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ChangeChatPicture");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ChangeChatPicture");
 
     OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
@@ -581,7 +581,7 @@ Procedure VKTeams_GetChatInfo(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetChatInfo");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetChatInfo");
 
 EndProcedure
 
@@ -598,7 +598,7 @@ Procedure VKTeams_GetChatAdmins(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetChatAdmins");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetChatAdmins");
 
 EndProcedure
 
@@ -615,7 +615,7 @@ Procedure VKTeams_GetChatMembers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetChatMembers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetChatMembers");
 
 EndProcedure
 
@@ -632,7 +632,7 @@ Procedure VKTeams_GetChatBlockedUsers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetChatBlockedUsers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetChatBlockedUsers");
 
 EndProcedure
 
@@ -649,7 +649,7 @@ Procedure VKTeams_GetChatJoinRequests(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "GetChatJoinRequests");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "GetChatJoinRequests");
 
 EndProcedure
 
@@ -669,7 +669,7 @@ Procedure VKTeams_BlockChatUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "BlockChatUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "BlockChatUser");
 
 EndProcedure
 
@@ -688,7 +688,7 @@ Procedure VKTeams_UnblockChatUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "UnblockChatUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "UnblockChatUser");
 
 EndProcedure
 
@@ -707,7 +707,7 @@ Procedure VKTeams_PinMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "PinMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "PinMessage");
 
 EndProcedure
 
@@ -726,7 +726,7 @@ Procedure VKTeams_UnpinMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "UnpinMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "UnpinMessage");
 
 EndProcedure
 
@@ -743,7 +743,7 @@ Procedure VKTeams_ApprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ApprovePending", "One"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ApprovePending", "One"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -753,7 +753,7 @@ Procedure VKTeams_ApprovePending(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "ApprovePending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "ApprovePending");
 
 EndProcedure
 
@@ -770,7 +770,7 @@ Procedure VKTeams_DisapprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "DisapprovePending", "One"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "DisapprovePending", "One"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -780,7 +780,7 @@ Procedure VKTeams_DisapprovePending(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "DisapprovePending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "DisapprovePending");
 
 EndProcedure
 
@@ -799,7 +799,7 @@ Procedure VKTeams_SetChatTitle(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SetChatTitle");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SetChatTitle");
 
 EndProcedure
 
@@ -818,7 +818,7 @@ Procedure VKTeams_SetChatDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SetChatDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SetChatDescription");
 
 EndProcedure
 
@@ -837,7 +837,7 @@ Procedure VKTeams_SetChatRules(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VKTeams", "SetChatRules");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SetChatRules");
 
 EndProcedure
 
@@ -862,7 +862,7 @@ Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
                     EventID = callbackData["queryId"];
                     Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!!");
 
-                    OPI_TestDataRetrieval.Process(Result, "VKTeams", "AnswerButtonEvent"); // SKIP
+                    OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "AnswerButtonEvent"); // SKIP
 
                 EndIf;
 

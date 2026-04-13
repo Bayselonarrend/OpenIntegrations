@@ -169,7 +169,7 @@ Procedure Viber_SetWebhook(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SetWebhook");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SetWebhook");
 
 EndProcedure
 
@@ -183,7 +183,7 @@ Procedure Viber_GetChannelInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "GetChannelInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "GetChannelInformation");
 
 EndProcedure
 
@@ -200,7 +200,7 @@ Procedure Viber_GetUserData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "GetUserData");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "GetUserData");
 
 EndProcedure
 
@@ -217,7 +217,7 @@ Procedure Viber_GetOnlineUsers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "GetOnlineUsers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "GetOnlineUsers");
 
 EndProcedure
 
@@ -235,7 +235,7 @@ Procedure Viber_CreateKeyboardFromArrayButton(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "CreateKeyboardFromArrayButton");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "CreateKeyboardFromArrayButton");
 
 EndProcedure
 
@@ -266,7 +266,7 @@ Procedure Viber_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendTextMessage"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendTextMessage"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -283,7 +283,7 @@ Procedure Viber_SendTextMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendTextMessage", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendTextMessage", "Channel");
 
 EndProcedure
 
@@ -305,7 +305,7 @@ Procedure Viber_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendImage"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendImage"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -322,7 +322,7 @@ Procedure Viber_SendImage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendImage", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendImage", "Channel");
 
 EndProcedure
 
@@ -344,7 +344,7 @@ Procedure Viber_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendFile"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendFile"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -361,7 +361,7 @@ Procedure Viber_SendFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendFile", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendFile", "Channel");
 
 EndProcedure
 
@@ -383,7 +383,7 @@ Procedure Viber_SendContact(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendContact"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendContact"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -400,7 +400,7 @@ Procedure Viber_SendContact(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendContact", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendContact", "Channel");
 
 EndProcedure
 
@@ -422,7 +422,7 @@ Procedure Viber_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendLocation"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendLocation"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -439,7 +439,7 @@ Procedure Viber_SendLocation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendLocation", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendLocation", "Channel");
 
 EndProcedure
 
@@ -459,7 +459,7 @@ Procedure Viber_SendLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendLink"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendLink"); // SKIP
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
     Token            = FunctionParameters["Viber_ChannelToken"];
@@ -475,7 +475,7 @@ Procedure Viber_SendLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Viber", "SendLink", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Viber", "SendLink", "Channel");
 
 EndProcedure
 

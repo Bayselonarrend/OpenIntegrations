@@ -213,7 +213,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "TableCreation"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "TableCreation"); // SKIP
 
     // Request (data insertion)
 
@@ -266,7 +266,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "DataInsert"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "DataInsert"); // SKIP
 
     // Request with external table
 
@@ -305,7 +305,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "ExternalTable"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "ExternalTable"); // SKIP
 
     // Selection
 
@@ -324,7 +324,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest"); // SKIP
 
     Options = New Structure;
     Options.Insert("query", SelectionText);
@@ -337,7 +337,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "CSVSelection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "CSVSelection");
 
     Options = New Structure;
     Options.Insert("query", SelectionText);
@@ -350,7 +350,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "TSVSelection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "TSVSelection");
 
     Options = New Structure;
     Options.Insert("query", SelectionText);
@@ -363,7 +363,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "JSONCompactSelection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "JSONCompactSelection");
 
     QueryText = "SELECT 1 AS result";
 
@@ -382,7 +382,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "AdditionalSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "AdditionalSettings");
 
     UUID    = String(New UUID());
     Options = New Structure;
@@ -403,7 +403,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "SessionCreation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "SessionCreation");
 
     QueryText = "INSERT INTO temp_session_test VALUES (1, 'test1'), (2, 'test2')";
 
@@ -418,7 +418,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest", "SessionInsert");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest", "SessionInsert");
 
     QueryText = "SELECT * FROM temp_session_test";
 
@@ -436,7 +436,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ExecuteRequest");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ExecuteRequest");
 
 EndProcedure
 
@@ -459,7 +459,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "ClickHouse", "CreateGRPCConnection", "Openning"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "ClickHouse", "CreateGRPCConnection", "Openning"); // SKIP
 
     // Request via open connection (table creation)
 
@@ -485,7 +485,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CreateGRPCConnection", "TableCreation"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CreateGRPCConnection", "TableCreation"); // SKIP
 
     // Data insertion
 
@@ -529,7 +529,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CreateGRPCConnection", "DataInsert"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CreateGRPCConnection", "DataInsert"); // SKIP
 
     // Selection
 
@@ -546,7 +546,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CreateGRPCConnection", "Selection"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CreateGRPCConnection", "Selection"); // SKIP
 
     // Request with external table via gRPC
 
@@ -585,7 +585,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CreateGRPCConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CreateGRPCConnection");
 
 EndProcedure
 
@@ -601,7 +601,7 @@ Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "NoAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetHTTPConnectionSettings", "NoAuthorization"); // SKIP
 
     // With basic authorization
 
@@ -616,7 +616,7 @@ Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "BasicAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetHTTPConnectionSettings", "BasicAuthorization"); // SKIP
 
     // With JWT authorization
 
@@ -628,7 +628,7 @@ Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "JWTAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetHTTPConnectionSettings", "JWTAuthorization"); // SKIP
 
     // With additional headers
 
@@ -644,7 +644,7 @@ Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetHTTPConnectionSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetHTTPConnectionSettings");
 
 EndProcedure
 
@@ -660,7 +660,7 @@ Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "NoAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetGRPCConnectionSettings", "NoAuthorization"); // SKIP
 
     // With basic authorization
 
@@ -675,7 +675,7 @@ Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "BasicAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetGRPCConnectionSettings", "BasicAuthorization"); // SKIP
 
     // With JWT authorization
 
@@ -687,7 +687,7 @@ Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "JWTAuthorization"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetGRPCConnectionSettings", "JWTAuthorization"); // SKIP
 
     // With metadata
 
@@ -701,7 +701,7 @@ Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "WithMetadata"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetGRPCConnectionSettings", "WithMetadata"); // SKIP
 
     // With TLS settings
 
@@ -719,7 +719,7 @@ Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetGRPCConnectionSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetGRPCConnectionSettings");
 
 EndProcedure
 
@@ -734,7 +734,7 @@ Procedure ClickHouse_GetRequestSettings(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetRequestSettings", "Minimal"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetRequestSettings", "Minimal"); // SKIP
 
     // Full request
 
@@ -769,7 +769,7 @@ Procedure ClickHouse_GetRequestSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetRequestSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetRequestSettings");
 
 EndProcedure
 
@@ -788,7 +788,7 @@ Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetExternalTableStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetExternalTableStructure", "Minimal"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetExternalTableStructure", "Minimal"); // SKIP
 
     // With TSV data
 
@@ -805,7 +805,7 @@ Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetExternalTableStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetExternalTableStructure");
 
 EndProcedure
 
@@ -824,7 +824,7 @@ Procedure ClickHouse_GetSessionSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetSessionSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetSessionSettings");
 
 EndProcedure
 
@@ -837,7 +837,7 @@ Procedure ClickHouse_GetTlsSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "GetTlsSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "GetTlsSettings");
 
 EndProcedure
 
@@ -912,8 +912,8 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result       , "ClickHouse", "OpenGRPCStream");
-    OPI_TestDataRetrieval.Process(FinalMessage , "ClickHouse", "OpenGRPCStream", "Final");
+    OPI_TestDataRetrieval.ProcessCLI(Result       , "ClickHouse", "OpenGRPCStream");
+    OPI_TestDataRetrieval.ProcessCLI(FinalMessage , "ClickHouse", "OpenGRPCStream", "Final");
 
     Connection = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
@@ -929,7 +929,7 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
 
     SelectionResult = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
-    OPI_TestDataRetrieval.Process(SelectionResult, "ClickHouse", "OpenGRPCStream", "Selection");
+    OPI_TestDataRetrieval.ProcessCLI(SelectionResult, "ClickHouse", "OpenGRPCStream", "Selection");
 
     OPI_GRPC.CloseConnection(Connection);
 
@@ -982,7 +982,7 @@ Procedure ClickHouse_SendGRPCMessage(FunctionParameters)
 
             Request     = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
             CurrentSend = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last); // <---
-            OPI_TestDataRetrieval.Process(Result, "ClickHouse", "SendGRPCMessage"); // SKIP
+            OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "SendGRPCMessage"); // SKIP
         Else
             CurrentSend = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
         EndIf;
@@ -1059,7 +1059,7 @@ Procedure ClickHouse_SendGRPCData(FunctionParameters)
             CurrentSend = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
         Else
             CurrentSend = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last); // <---
-            OPI_TestDataRetrieval.Process(Result, "ClickHouse", "SendGRPCData"); // SKIP
+            OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "SendGRPCData"); // SKIP
         EndIf;
 
         If Not CurrentSend["result"] Then
@@ -1148,7 +1148,7 @@ Procedure ClickHouse_GetGRPCMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Data, "ClickHouse", "GetGRPCMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Data, "ClickHouse", "GetGRPCMessage");
 
 EndProcedure
 
@@ -1190,11 +1190,11 @@ Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CompleteGRPCSending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CompleteGRPCSending");
 
     Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CompleteGRPCSending", "Sending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CompleteGRPCSending", "Sending");
 
 EndProcedure
 
@@ -1228,7 +1228,7 @@ Procedure ClickHouse_CloseGRPCStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "CloseGRPCStream");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CloseGRPCStream");
 
     OPI_GRPC.CloseConnection(Connection);
 
@@ -1288,7 +1288,7 @@ Procedure ClickHouse_ProcessGRPCSending(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ProcessGRPCSending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ProcessGRPCSending");
 
 EndProcedure
 
@@ -1323,7 +1323,7 @@ Procedure ClickHouse_ProcessGRPCReceiving(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ClickHouse", "ProcessGRPCReceiving");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "ProcessGRPCReceiving");
 
 EndProcedure
 

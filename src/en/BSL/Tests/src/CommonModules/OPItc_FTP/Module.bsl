@@ -222,7 +222,7 @@ Procedure FTP_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "CreateConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "CreateConnection", Postfix);
 
 EndProcedure
 
@@ -292,7 +292,7 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetWelcomeMessage", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetWelcomeMessage", Postfix);
 
 EndProcedure
 
@@ -358,14 +358,14 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetConnectionConfiguration", Postfix, FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetConnectionConfiguration", Postfix, FunctionParameters);
 
     Options = New Structure;
     Options.Insert("conn", Result);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "FTP", "GetConnectionConfiguration", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "FTP", "GetConnectionConfiguration", "Check, " + Postfix);
 
 EndProcedure
 
@@ -424,13 +424,13 @@ Procedure FTP_CloseConnection(FunctionParameters)
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "FTP", "CloseConnection", "Openning, " + Postfix); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "FTP", "CloseConnection", "Openning, " + Postfix); // SKIP
 
     Result = OPI_FTP.CloseConnection(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "CloseConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "CloseConnection", Postfix);
 
 EndProcedure
 
@@ -489,13 +489,13 @@ Procedure FTP_IsConnector(FunctionParameters)
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "FTP", "IsConnector", "Openning, " + Postfix); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "FTP", "IsConnector", "Openning, " + Postfix); // SKIP
 
     Result = OPI_FTP.IsConnector(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "IsConnector", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "IsConnector", Postfix);
 
 EndProcedure
 
@@ -518,7 +518,7 @@ Procedure FTP_GetConnectionSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetConnectionSettings", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetConnectionSettings", Postfix);
 
 EndProcedure
 
@@ -544,7 +544,7 @@ Procedure FTP_GetProxySettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetProxySettings", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetProxySettings", Postfix);
 
 EndProcedure
 
@@ -559,7 +559,7 @@ Procedure FTP_GetTLSSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetTLSSettings", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetTLSSettings", Postfix);
 
 EndProcedure
 
@@ -621,7 +621,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
-        OPI_TestDataRetrieval.Process(Deletion, "FTP", "CreateNewDirectory", "Deletion, " + Postfix); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Deletion, "FTP", "CreateNewDirectory", "Deletion, " + Postfix); // SKIP
 
         Options = New Structure;
         Options.Insert("conn", Connection);
@@ -635,7 +635,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "CreateNewDirectory", Postfix, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "CreateNewDirectory", Postfix, True);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -643,7 +643,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateNewDirectory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "CreateNewDirectory", "Nested, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "CreateNewDirectory", "Nested, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -651,7 +651,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateNewDirectory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "CreateNewDirectory", "Double, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "CreateNewDirectory", "Double, " + Postfix);
 
     OPI_Tools.Pause(5);
 
@@ -662,7 +662,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "FTP", "CreateNewDirectory", "Check 1, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "FTP", "CreateNewDirectory", "Check 1, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -671,7 +671,7 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "FTP", "CreateNewDirectory", "Check 2, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "FTP", "CreateNewDirectory", "Check 2, " + Postfix);
 
 EndProcedure
 
@@ -743,7 +743,7 @@ Procedure FTP_ListObjects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ListObjects", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ListObjects", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -752,7 +752,7 @@ Procedure FTP_ListObjects(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ListObjects", "File, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ListObjects", "File, " + Postfix);
 
 EndProcedure
 
@@ -843,8 +843,8 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UploadFile", Postfix             , ImageDD.Size());
-    OPI_TestDataRetrieval.Process(Result2, "FTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UploadFile", Postfix             , ImageDD.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result2, "FTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -857,8 +857,8 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UploadFile", "Size 1, " + Postfix, ImageDD.Size());
-    OPI_TestDataRetrieval.Process(Result2, "FTP", "UploadFile", "Size 2, " + Postfix, ImageDD.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UploadFile", "Size 1, " + Postfix, ImageDD.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result2, "FTP", "UploadFile", "Size 2, " + Postfix, ImageDD.Size());
 
     For N = 1 To 5 Do
 
@@ -866,11 +866,11 @@ Procedure FTP_UploadFile(FunctionParameters)
         Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
 
         If Not Result["result"] Then
-            OPI_TestDataRetrieval.Process(Result, "FTP", "UploadFile", "Multiple, " + Postfix, ImageDD.Size());
+            OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "UploadFile", "Multiple, " + Postfix, ImageDD.Size());
         EndIf;
 
         If Not Result2["result"] Then
-            OPI_TestDataRetrieval.Process(Result2, "FTP", "UploadFile", "Multiple, binary, " + Postfix, ImageDD.Size());
+            OPI_TestDataRetrieval.ProcessCLI(Result2, "FTP", "UploadFile", "Multiple, binary, " + Postfix, ImageDD.Size());
         EndIf;
 
     EndDo;
@@ -946,7 +946,7 @@ Procedure FTP_DeleteFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "DeleteFile", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "DeleteFile", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -954,7 +954,7 @@ Procedure FTP_DeleteFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "DeleteFile", "Nonexistent, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "DeleteFile", "Nonexistent, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -963,7 +963,7 @@ Procedure FTP_DeleteFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "DeleteFile", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "DeleteFile", "Check, " + Postfix);
 
 EndProcedure
 
@@ -1034,7 +1034,7 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "DeleteDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "DeleteDirectory", Postfix);
 
 EndProcedure
 
@@ -1105,7 +1105,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "ClearDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "ClearDirectory", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1114,7 +1114,7 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "ClearDirectory", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "ClearDirectory", "Check, " + Postfix);
 
 EndProcedure
 
@@ -1185,7 +1185,7 @@ Procedure FTP_GetObjectSize(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "GetObjectSize", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "GetObjectSize", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1193,7 +1193,7 @@ Procedure FTP_GetObjectSize(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "GetObjectSize", "Nonexistent, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "GetObjectSize", "Nonexistent, " + Postfix);
 
 EndProcedure
 
@@ -1265,7 +1265,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1273,7 +1273,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "Check, new, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "Check, new, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1281,7 +1281,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "Check, old, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "Check, old, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1290,7 +1290,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "Directory, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "Directory, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1299,7 +1299,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "List, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "List, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1308,7 +1308,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "Directory, back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "Directory, back, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1317,7 +1317,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "Back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "Back, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1326,7 +1326,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "FTP", "UpdatePath", "List, back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "FTP", "UpdatePath", "List, back, " + Postfix);
 
 EndProcedure
 
@@ -1403,7 +1403,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "SaveFile", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "SaveFile", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1411,7 +1411,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     Size = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Size, "FTP", "SaveFile", "Size, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Size, "FTP", "SaveFile", "Size, " + Postfix);
 
     FileObject = New File(FileName);
 
@@ -1419,7 +1419,7 @@ Procedure FTP_SaveFile(FunctionParameters)
     ResultSize = Result["bytes"];
     CheckSize  = Size["bytes"];
 
-    OPI_TestDataRetrieval.Process(FileSize, "FTP", "SaveFile", "File size, " + Postfix, ResultSize, CheckSize);
+    OPI_TestDataRetrieval.ProcessCLI(FileSize, "FTP", "SaveFile", "File size, " + Postfix, ResultSize, CheckSize);
 
     Path = "new_dir/pic_from_disk.png";
 
@@ -1428,7 +1428,7 @@ Procedure FTP_SaveFile(FunctionParameters)
         Result = OPI_FTP.SaveFile(Connection, Path, FileName);
 
         If Not Result["result"] Then
-            OPI_TestDataRetrieval.Process(Result, "FTP", "SaveFile", "Multiple, " + Postfix);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "SaveFile", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -1503,7 +1503,7 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetFileData", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetFileData", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1511,12 +1511,12 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     Size = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
-    OPI_TestDataRetrieval.Process(Size, "FTP", "GetFileData", "Size, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Size, "FTP", "GetFileData", "Size, " + Postfix);
 
     FileSize  = Result.Size();
     CheckSize = Size["bytes"];
 
-    OPI_TestDataRetrieval.Process(FileSize, "FTP", "GetFileData", "File size, " + Postfix, CheckSize);
+    OPI_TestDataRetrieval.ProcessCLI(FileSize, "FTP", "GetFileData", "File size, " + Postfix, CheckSize);
 
     Path = "new_dir/pic_from_disk.png";
 
@@ -1525,7 +1525,7 @@ Procedure FTP_GetFileData(FunctionParameters)
         Result = OPI_FTP.GetFileData(Connection, Path);
 
         If Not TypeOf(Result) = Type("BinaryData") Then
-            OPI_TestDataRetrieval.Process(Result, "FTP", "GetFileData", "Multiple, " + Postfix);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetFileData", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -1598,7 +1598,7 @@ Procedure FTP_Ping(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "Ping", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "Ping", Postfix);
 
 EndProcedure
 
@@ -1672,7 +1672,7 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ExecuteCustomCommand", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ExecuteCustomCommand", Postfix);
 
 EndProcedure
 
@@ -1746,7 +1746,7 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ExecuteArbitraryCommand", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ExecuteArbitraryCommand", Postfix);
 
 EndProcedure
 
@@ -1816,7 +1816,7 @@ Procedure FTP_GetCurrentDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetCurrentDirectory", Postfix, FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetCurrentDirectory", Postfix, FunctionParameters);
 
 EndProcedure
 
@@ -1886,26 +1886,26 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ChangeCurrentDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetCurrentDirectory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ChangeCurrentDirectory", "Check, " + Postfix, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", "Check, " + Postfix, Path);
 
     Path   = FunctionParameters["FTP_RootPath"];
     Result = OPI_FTP.ChangeCurrentDirectory(Connection, Path);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ChangeCurrentDirectory", "Back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", "Back, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetCurrentDirectory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "ChangeCurrentDirectory", "Check, back, " + Postfix, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", "Check, back, " + Postfix, Path);
 
 EndProcedure
 
@@ -1975,7 +1975,7 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "FTP", "GetProtocolFeatureList", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetProtocolFeatureList", Postfix);
 
 EndProcedure
 

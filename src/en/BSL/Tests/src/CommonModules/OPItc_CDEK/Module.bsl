@@ -193,7 +193,7 @@ Procedure CDEK_GetToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetToken", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetToken", , FunctionParameters);
 
 EndProcedure
 
@@ -205,14 +205,14 @@ Procedure CDEK_GetOrderDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOrderDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOrderDescription");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderDescription", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOrderDescription", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOrderDescription", "Clear");
 
 EndProcedure
 
@@ -305,7 +305,7 @@ Procedure CDEK_CreateOrder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateOrder", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateOrder", , FunctionParameters);
 
 EndProcedure
 
@@ -323,7 +323,7 @@ Procedure CDEK_GetOrder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOrder", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOrder", , FunctionParameters);
 
 EndProcedure
 
@@ -342,7 +342,7 @@ Procedure CDEK_GetOrderByNumber(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOrderByNumber");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOrderByNumber");
 
 EndProcedure
 
@@ -363,7 +363,7 @@ Procedure CDEK_UpdateOrder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "UpdateOrder");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "UpdateOrder");
 
 EndProcedure
 
@@ -381,7 +381,7 @@ Procedure CDEK_DeleteOrder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "DeleteOrder");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "DeleteOrder");
 
 EndProcedure
 
@@ -401,7 +401,7 @@ Procedure CDEK_CreateCustomerRefund(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateCustomerRefund");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateCustomerRefund");
 
 EndProcedure
 
@@ -419,7 +419,7 @@ Procedure CDEK_CreateRefusal(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateRefusal");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateRefusal");
 
 EndProcedure
 
@@ -431,14 +431,14 @@ Procedure CDEK_GetCourierInvitationsDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetCourierInvitationsDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetCourierInvitationsDescription");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitationsDescription", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetCourierInvitationsDescription", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetCourierInvitationsDescription", "Clear");
 
 EndProcedure
 
@@ -495,7 +495,7 @@ Procedure CDEK_CreateCourierInvitation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateCourierInvitation", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateCourierInvitation", , FunctionParameters);
 
 EndProcedure
 
@@ -513,7 +513,7 @@ Procedure CDEK_GetCourierInvitation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetCourierInvitation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetCourierInvitation");
 
 EndProcedure
 
@@ -531,7 +531,7 @@ Procedure CDEK_DeleteCourierInvitation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "DeleteCourierInvitation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "DeleteCourierInvitation");
 
 EndProcedure
 
@@ -553,7 +553,7 @@ Procedure CDEK_CreateReceipt(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateReceipt", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateReceipt", , FunctionParameters);
 
 EndProcedure
 
@@ -566,7 +566,7 @@ Procedure CDEK_GetReceipt(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetReceipt");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetReceipt");
 
 EndProcedure
 
@@ -588,7 +588,7 @@ Procedure CDEK_CreateBarcode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreateBarcode", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreateBarcode", , FunctionParameters);
 
 EndProcedure
 
@@ -601,7 +601,7 @@ Procedure CDEK_GetBarcode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetBarcode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetBarcode");
 
 EndProcedure
 
@@ -619,7 +619,7 @@ Procedure CDEK_GetAvailableDeliveryIntervals(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetAvailableDeliveryIntervals");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetAvailableDeliveryIntervals");
 
 EndProcedure
 
@@ -631,14 +631,14 @@ Procedure CDEK_GetAppointmentDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetAppointmentDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetAppointmentDescription");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetAppointmentDescription", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetAppointmentDescription", "Clear");
 
 EndProcedure
 
@@ -688,7 +688,7 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "RegisterDeliveryAppointment", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "RegisterDeliveryAppointment", , FunctionParameters);
 
 EndProcedure
 
@@ -706,7 +706,7 @@ Procedure CDEK_GetDeliveryAppointment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetDeliveryAppointment");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetDeliveryAppointment");
 
 EndProcedure
 
@@ -728,7 +728,7 @@ Procedure CDEK_CreatePrealert(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "CreatePrealert", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "CreatePrealert", , FunctionParameters);
 
 EndProcedure
 
@@ -746,7 +746,7 @@ Procedure CDEK_GetPrealert(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetPrealert");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetPrealert");
 
 EndProcedure
 
@@ -764,7 +764,7 @@ Procedure CDEK_GetPassportDataStatus(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetPassportDataStatus");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetPassportDataStatus");
 
 EndProcedure
 
@@ -782,7 +782,7 @@ Procedure CDEK_GetCashboxCheck(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetCashboxCheck");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetCashboxCheck");
 
 EndProcedure
 
@@ -800,7 +800,7 @@ Procedure CDEK_GetCashboxChecksByDate(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetCashboxChecksByDate");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetCashboxChecksByDate");
 
 EndProcedure
 
@@ -818,7 +818,7 @@ Procedure CDEK_GetDeliveryCashRegistry(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetDeliveryCashRegistry");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetDeliveryCashRegistry");
 
 EndProcedure
 
@@ -836,7 +836,7 @@ Procedure CDEK_GetDeliveryCashTransfers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetDeliveryCashTransfers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetDeliveryCashTransfers");
 
 EndProcedure
 
@@ -848,14 +848,14 @@ Procedure CDEK_GetOfficeFilterDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOfficeFilterDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOfficeFilterDescription");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOfficeFilterDescription", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOfficeFilterDescription", "Clear");
 
 EndProcedure
 
@@ -876,7 +876,7 @@ Procedure CDEK_GetOfficeList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetOfficeList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetOfficeList");
 
 EndProcedure
 
@@ -892,7 +892,7 @@ Procedure CDEK_GetRegionsList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "CDEK", "GetRegionsList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "CDEK", "GetRegionsList");
 
 EndProcedure
 

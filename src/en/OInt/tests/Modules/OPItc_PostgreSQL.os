@@ -172,7 +172,7 @@ Procedure PostgreSQL_GenerateConnectionString(FunctionParameters)
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GenerateConnectionString");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GenerateConnectionString");
 
 EndProcedure
 
@@ -213,7 +213,7 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
 
     OPI_PostgreSQL.CloseConnection(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateConnection");
 
 EndProcedure
 
@@ -253,7 +253,7 @@ Procedure PostgreSQL_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CloseConnection");
 
 EndProcedure
 
@@ -295,7 +295,7 @@ Procedure PostgreSQL_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "IsConnector");
 
 EndProcedure
 
@@ -339,7 +339,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     OPI_PostgreSQL.DeleteTable("test_data" , Connection); // SKIP
     OPI_PostgreSQL.DeleteTable("test_table", Connection); // SKIP
 
-    OPI_TestDataRetrieval.Process(Connection, "PostgreSQL", "ExecuteSQLQuery", "Connection"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "PostgreSQL", "ExecuteSQLQuery", "Connection"); // SKIP
 
     // CREATE
 
@@ -360,7 +360,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Create"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "Create"); // SKIP
 
     // INSERT with parameters
 
@@ -383,7 +383,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Insert"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "Insert"); // SKIP
 
     // SELECT (The result of this query is shown in the Result block)
 
@@ -395,7 +395,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", , Image); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", , Image); // SKIP
 
     // DO + Transaction
 
@@ -417,7 +417,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Transaction"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "Transaction"); // SKIP
 
     // SQL query from file
 
@@ -429,13 +429,13 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "File"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "File"); // SKIP
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "Closing");
 
 EndProcedure
 
@@ -488,11 +488,11 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateDatabase");
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "PostgreSQL", "CreateDatabase", "Openning");
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "PostgreSQL", "CreateDatabase", "Openning");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -500,7 +500,7 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateDatabase", "Existing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateDatabase", "Existing");
 
     Base = "testbase2";
 
@@ -511,7 +511,7 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateDatabase", "New");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateDatabase", "New");
 
     OPI_PostgreSQL.CloseConnection(Connection);
 
@@ -594,7 +594,7 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateTable");
 
     Table = "ABC DEF";
 
@@ -606,7 +606,7 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateTable", "Name error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateTable", "Name error");
 
     Table = "somename";
     ColoumnsStruct.Insert("wtf_field", "WTF");
@@ -619,7 +619,7 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "CreateTable", "Type error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateTable", "Type error");
 
 EndProcedure
 
@@ -669,7 +669,7 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetTableInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetTableInformation");
 
     Table = "heyho";
 
@@ -680,7 +680,7 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetTableInformation", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetTableInformation", "Error");
 
 EndProcedure
 
@@ -771,7 +771,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "AddRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "AddRecords");
 
 EndProcedure
 
@@ -821,7 +821,7 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetRecords"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetRecords"); // SKIP
 
     // Filter, selected fields, limit and sorting
 
@@ -877,7 +877,7 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetRecords", "Filters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetRecords", "Filters");
 
 EndProcedure
 
@@ -929,7 +929,7 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     Filters.Add(FilterStructure);
 
     Count = OPI_PostgreSQl.GetRecords(Table, , Filters, , , ConnectionString); // SKIP
-    OPI_TestDataRetrieval.Process(Count, "PostgreSQL", "UpdateRecords", "Count"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Count, "PostgreSQL", "UpdateRecords", "Count"); // SKIP
     Count = Count["data"].Count(); // SKIP
 
     // When using the connection string, a new connection is initialised,
@@ -944,11 +944,11 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "UpdateRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "UpdateRecords");
 
     Check = OPI_PostgreSQl.GetRecords(Table, "['ip_address']", Filters, , , ConnectionString);
 
-    OPI_TestDataRetrieval.Process(Check, "PostgreSQL", "UpdateRecords", "Check", Count, FieldsStructure);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "PostgreSQL", "UpdateRecords", "Check", Count, FieldsStructure);
 
 EndProcedure
 
@@ -1020,12 +1020,12 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Obtaining, "PostgreSQL", "DeleteRecords", "Obtaining");
+    OPI_TestDataRetrieval.ProcessCLI(Obtaining, "PostgreSQL", "DeleteRecords", "Obtaining");
 
     Count   = Obtaining["data"].Count();
     Residue = 100 - Count;
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1034,7 +1034,7 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteRecords", "Check", Residue);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteRecords", "Check", Residue);
 
 EndProcedure
 
@@ -1084,7 +1084,7 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteTable");
 
     Base  = "test_data";
     Table = "test_data";
@@ -1104,7 +1104,7 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteTable", "Test");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteTable", "Test");
 
 EndProcedure
 
@@ -1154,13 +1154,13 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase");
 
     Base = "testbase2";
 
     Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "PostgreSQL", "DeleteDatabase", "Openning");
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "PostgreSQL", "DeleteDatabase", "Openning");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1168,7 +1168,7 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DisableAllDatabaseConnections", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteDatabase", "Shutdown");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase", "Shutdown");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1176,7 +1176,7 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteDatabase", "Deletion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase", "Deletion");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1184,11 +1184,11 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteDatabase", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase", "Error");
 
     Closing = OPI_PostgreSQL.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Closing, "PostgreSQL", "DeleteDatabase", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "PostgreSQL", "DeleteDatabase", "Closing");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1196,7 +1196,7 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteDatabase", "Connection error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase", "Connection error");
 
 EndProcedure
 
@@ -1246,7 +1246,7 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ClearTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ClearTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1255,7 +1255,7 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ClearTable", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ClearTable", "Check");
 
 EndProcedure
 
@@ -1303,7 +1303,7 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DisableAllDatabaseConnections");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DisableAllDatabaseConnections");
 
 EndProcedure
 
@@ -1378,7 +1378,7 @@ Procedure PostgreSQL_EnsureRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "EnsureRecords", "Insertion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "EnsureRecords", "Insertion");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1387,7 +1387,7 @@ Procedure PostgreSQL_EnsureRecords(FunctionParameters)
     Options.Insert("tls", TLSSettings);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "PostgreSQL", "EnsureRecords", "Insertion check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "PostgreSQL", "EnsureRecords", "Insertion check");
 
     RowStructure2.Insert("name"  , New Structure("TEXT", "Vitaly Updated"));
     RowStructure2.Insert("salary", New Structure("REAL", 1500.50));
@@ -1411,7 +1411,7 @@ Procedure PostgreSQL_EnsureRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "EnsureRecords", "Updating");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "EnsureRecords", "Updating");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1420,7 +1420,7 @@ Procedure PostgreSQL_EnsureRecords(FunctionParameters)
     Options.Insert("tls", TLSSettings);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "PostgreSQL", "EnsureRecords", "Updating check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "PostgreSQL", "EnsureRecords", "Updating check");
 
     OPI_PostgreSQL.DeleteTable(Table, ConnectionString, TLSSettings);
 
@@ -1434,14 +1434,14 @@ Procedure PostgreSQL_GetRecordsFilterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetRecordsFilterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetRecordsFilterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecordsFilterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetRecordsFilterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -1454,7 +1454,7 @@ Procedure PostgreSQL_GetTLSSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetTLSSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetTLSSettings");
 
 EndProcedure
 
@@ -1504,7 +1504,7 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "AddTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "AddTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1513,7 +1513,7 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "AddTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "AddTableColumn", "Check");
 
 EndProcedure
 
@@ -1561,7 +1561,7 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1570,7 +1570,7 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "DeleteTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteTableColumn", "Check");
 
 EndProcedure
 
@@ -1623,7 +1623,7 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "EnsureTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "EnsureTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1632,7 +1632,7 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
@@ -1644,7 +1644,7 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "EnsureTable", "New");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "EnsureTable", "New");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1653,7 +1653,7 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
 
 EndProcedure
 

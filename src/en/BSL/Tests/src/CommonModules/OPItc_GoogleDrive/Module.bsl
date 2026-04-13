@@ -197,7 +197,7 @@ Procedure GoogleDrive_FormCodeRetrievalLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "FormCodeRetrievalLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "FormCodeRetrievalLink");
 
 EndProcedure
 
@@ -216,7 +216,7 @@ Procedure GoogleDrive_GetTokenByCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetTokenByCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetTokenByCode");
 
 EndProcedure
 
@@ -235,7 +235,7 @@ Procedure GoogleDrive_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "RefreshToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "RefreshToken");
 
 EndProcedure
 
@@ -264,7 +264,7 @@ Procedure GoogleDrive_GetServiceAccountToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetServiceAccountToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetServiceAccountToken");
 
 EndProcedure
 
@@ -282,7 +282,7 @@ Procedure GoogleDrive_GetDirectoriesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetDirectoriesList", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetDirectoriesList", , FunctionParameters);
 
 EndProcedure
 
@@ -299,7 +299,7 @@ Procedure GoogleDrive_GetObjectInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetObjectInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetObjectInformation");
 
 EndProcedure
 
@@ -326,7 +326,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "UploadFile", , FunctionParameters, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "UploadFile", , FunctionParameters, Description);
 
     If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
 
@@ -340,7 +340,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 
-        OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
 
         Options = New Structure;
         Options.Insert("token", Token);
@@ -348,7 +348,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DownloadFile", Options);
 
-        OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "UploadFile", "Check", FunctionParameters, Description);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "UploadFile", "Check", FunctionParameters, Description);
 
     EndIf;
 
@@ -371,7 +371,7 @@ Procedure GoogleDrive_CopyObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "CopyObject", , FunctionParameters, NewName);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "CopyObject", , FunctionParameters, NewName);
 
 EndProcedure
 
@@ -388,7 +388,7 @@ Procedure GoogleDrive_DownloadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "DownloadFile", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "DownloadFile", , FunctionParameters);
 
 EndProcedure
 
@@ -409,7 +409,7 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "UpdateFile", , NewName);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "UpdateFile", , NewName);
 
 EndProcedure
 
@@ -428,7 +428,7 @@ Procedure GoogleDrive_GetFilesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetFilesList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetFilesList");
 
 EndProcedure
 
@@ -445,13 +445,13 @@ Procedure GoogleDrive_DeleteObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "DeleteObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "DeleteObject");
 
     For Each Deletable In FunctionParameters["ArrayOfDeletions"] Do
 
         Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);
 
-        OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "DeleteObject", "Additional");
+        OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "DeleteObject", "Additional");
 
         OPI_Tools.Pause(2);
 
@@ -467,7 +467,7 @@ Procedure GoogleDrive_GetFileDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetFileDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetFileDescription");
 
 EndProcedure
 
@@ -486,7 +486,7 @@ Procedure GoogleDrive_CreateComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "CreateComment", , FunctionParameters, Comment);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "CreateComment", , FunctionParameters, Comment);
 
 EndProcedure
 
@@ -505,7 +505,7 @@ Procedure GoogleDrive_GetComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetComment");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetComment");
 
 EndProcedure
 
@@ -522,7 +522,7 @@ Procedure GoogleDrive_GetCommentList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "GetCommentList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "GetCommentList");
 
 EndProcedure
 
@@ -541,7 +541,7 @@ Procedure GoogleDrive_DeleteComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "DeleteComment");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "DeleteComment");
 
 EndProcedure
 
@@ -560,7 +560,7 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "CreateFolder");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "CreateFolder");
 
     CatalogID = Result["id"];
     OPI_GoogleDrive.DeleteObject(Token, CatalogID);
@@ -571,7 +571,7 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleDrive", "CreateFolder", "Root");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleDrive", "CreateFolder", "Root");
 
     CatalogID = Result["id"];
     OPI_GoogleDrive.DeleteObject(Token, CatalogID);
