@@ -223,19 +223,19 @@ Procedure HTTP_Initialize(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "Initialize");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "Initialize");
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
         .ProcessRequest("POST", False);
 
-    OPI_TestDataRetrieval.Process(HTTPClient, "HTTP", "Initialize", "Check 1", FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(HTTPClient, "HTTP", "Initialize", "Check 1", FunctionParameters);
 
     AnotherRequest = HTTPClient.SetURL(FunctionParameters["HTTP_URL"] + "/post")
         .ProcessRequest("POST", False)
         .ReturnRequest();
 
-    OPI_TestDataRetrieval.Process(AnotherRequest, "HTTP", "Initialize", "Check 2");
+    OPI_TestDataRetrieval.ProcessCLI(AnotherRequest, "HTTP", "Initialize", "Check 2");
 
 EndProcedure
 
@@ -252,14 +252,14 @@ Procedure HTTP_SetURL(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetURL");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetURL");
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ProcessRequest("POST", False);
 
-    OPI_TestDataRetrieval.Process(HTTPClient, "HTTP", "SetURL", "Check", FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(HTTPClient, "HTTP", "SetURL", "Check", FunctionParameters);
 
 EndProcedure
 
@@ -279,7 +279,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetURLParams", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetURLParams", , FunctionParameters);
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -288,7 +288,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
 
     HTTPRequest = HTTPClient.ReturnRequest();
 
-    OPI_TestDataRetrieval.Process(HTTPRequest, "HTTP", "SetURLParams", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(HTTPRequest, "HTTP", "SetURLParams", "Check");
 
     // Encoding check
 
@@ -308,7 +308,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress1, "HTTP", "SetURLParams", "Option 1");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress1, "HTTP", "SetURLParams", "Option 1");
 
     ParameterStructure2 = New Structure;
     ParameterStructure2.Insert("param1", "search?text");
@@ -323,7 +323,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress2, "HTTP", "SetURLParams", "Option 2");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress2, "HTTP", "SetURLParams", "Option 2");
 
     // Empty parameter string
 
@@ -338,7 +338,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress3, "HTTP", "SetURLParams", "Variant 3");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress3, "HTTP", "SetURLParams", "Variant 3");
 
     // Special characters at path
 
@@ -353,7 +353,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress4, "HTTP", "SetURLParams", "Variant 4");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress4, "HTTP", "SetURLParams", "Variant 4");
 
     // URL with a snippet
 
@@ -368,7 +368,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress5, "HTTP", "SetURLParams", "Variant 5");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress5, "HTTP", "SetURLParams", "Variant 5");
 
     // Cyrillic at path
 
@@ -383,7 +383,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress6, "HTTP", "SetURLParams", "Variant 6");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress6, "HTTP", "SetURLParams", "Variant 6");
 
     // Multiple parameters and encoding
 
@@ -399,7 +399,7 @@ Procedure HTTP_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    OPI_TestDataRetrieval.Process(ResourceAddress7, "HTTP", "SetURLParams", "Variant 7");
+    OPI_TestDataRetrieval.ProcessCLI(ResourceAddress7, "HTTP", "SetURLParams", "Variant 7");
 
 EndProcedure
 
@@ -418,7 +418,7 @@ Procedure HTTP_SetResponseFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetResponseFile", , TFN);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetResponseFile", , TFN);
 
     CheckResult = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -427,7 +427,7 @@ Procedure HTTP_SetResponseFile(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsBinaryData();
 
-    OPI_TestDataRetrieval.Process(CheckResult, "HTTP", "SetResponseFile", "Body", TFN);
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "HTTP", "SetResponseFile", "Body", TFN);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
@@ -449,7 +449,7 @@ Procedure HTTP_SetDataType(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetDataType");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetDataType");
 
 EndProcedure
 
@@ -471,7 +471,7 @@ Procedure HTTP_GetLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Log, "HTTP", "GetLog");
+    OPI_TestDataRetrieval.ProcessCLI(Log, "HTTP", "GetLog");
 
 EndProcedure
 
@@ -490,7 +490,7 @@ Procedure HTTP_SetBinaryBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetBinaryBody", , Image);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetBinaryBody", , Image);
 
 EndProcedure
 
@@ -511,7 +511,7 @@ Procedure HTTP_SetStringBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetStringBody");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetStringBody");
 
 EndProcedure
 
@@ -535,7 +535,7 @@ Procedure HTTP_SetJsonBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetJsonBody", , Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetJsonBody", , Data);
 
 EndProcedure
 
@@ -554,7 +554,7 @@ Procedure HTTP_SetFormBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetFormBody", , Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetFormBody", , Data);
 
 EndProcedure
 
@@ -576,7 +576,7 @@ Procedure HTTP_StartMultipartBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "StartMultipartBody", , Image);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "StartMultipartBody", , Image);
 
 EndProcedure
 
@@ -598,7 +598,7 @@ Procedure HTTP_AddMultipartFormDataFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddMultipartFormDataFile", , Image);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddMultipartFormDataFile", , Image);
 
 EndProcedure
 
@@ -620,7 +620,7 @@ Procedure HTTP_AddMultipartFormDataField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddMultipartFormDataField", , Image);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddMultipartFormDataField", , Image);
 
 EndProcedure
 
@@ -645,7 +645,7 @@ Procedure HTTP_AddDataAsRelated(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDataAsRelated");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddDataAsRelated");
 
 EndProcedure
 
@@ -666,7 +666,7 @@ Procedure HTTP_UseEncoding(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseEncoding");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseEncoding");
 
 EndProcedure
 
@@ -686,7 +686,7 @@ Procedure HTTP_UseGzipCompression(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseGzipCompression");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseGzipCompression");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -695,7 +695,7 @@ Procedure HTTP_UseGzipCompression(FunctionParameters)
         .ProcessRequest("POST", False)
         .ReturnRequest();
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseGzipCompression", "Enabled");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseGzipCompression", "Enabled");
 
 EndProcedure
 
@@ -727,7 +727,7 @@ Procedure HTTP_UseBodyFiledsAtOAuth(FunctionParameters)
     // END
 
     LogAsString = NewRequest.GetLog(True);
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseBodyFiledsAtOAuth", , LogAsString);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseBodyFiledsAtOAuth", , LogAsString);
 
     Result = OPI_HTTPRequests
         .NewRequest()
@@ -741,7 +741,7 @@ Procedure HTTP_UseBodyFiledsAtOAuth(FunctionParameters)
         .ProcessRequest("POST", False)
         .GetLog(True);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseBodyFiledsAtOAuth", "Enabled");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseBodyFiledsAtOAuth", "Enabled");
 
 EndProcedure
 
@@ -763,7 +763,7 @@ Procedure HTTP_SetHeaders(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetHeaders");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetHeaders");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -773,7 +773,7 @@ Procedure HTTP_SetHeaders(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetHeaders", "Rewrite");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetHeaders", "Rewrite");
 
 EndProcedure
 
@@ -792,7 +792,7 @@ Procedure HTTP_AddHeader(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddHeader");
 
     Headers = New Map;
     Headers.Insert("X-Header1", "Value1");
@@ -808,7 +808,7 @@ Procedure HTTP_AddHeader(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader", "Replace");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddHeader", "Replace");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -820,7 +820,7 @@ Procedure HTTP_AddHeader(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddHeader", "Addition");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddHeader", "Addition");
 
 EndProcedure
 
@@ -838,7 +838,7 @@ Procedure HTTP_AddBasicAuthorization(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddBasicAuthorization");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddBasicAuthorization");
 
 EndProcedure
 
@@ -856,7 +856,7 @@ Procedure HTTP_AddBearerAuthorization(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddBearerAuthorization");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddBearerAuthorization");
 
 EndProcedure
 
@@ -878,7 +878,7 @@ Procedure HTTP_AddAWS4Authorization(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddAWS4Authorization");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddAWS4Authorization");
 
 EndProcedure
 
@@ -901,7 +901,7 @@ Procedure HTTP_AddOAuthV1Authorization(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddOAuthV1Authorization");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "AddOAuthV1Authorization");
 
 EndProcedure
 
@@ -925,7 +925,7 @@ Procedure HTTP_SetOAuthV1Algorithm(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetOAuthV1Algorithm");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetOAuthV1Algorithm");
 
 EndProcedure
 
@@ -942,7 +942,7 @@ Procedure HTTP_ProcessRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ProcessRequest");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ProcessRequest");
 
 EndProcedure
 
@@ -960,7 +960,7 @@ Procedure HTTP_ExecuteRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ExecuteRequest");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -968,7 +968,7 @@ Procedure HTTP_ExecuteRequest(FunctionParameters)
         .ProcessRequest("GET", False)
         .ReturnResponse(True);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest", "No execution");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ExecuteRequest", "No execution");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -977,7 +977,7 @@ Procedure HTTP_ExecuteRequest(FunctionParameters)
         .ExecuteRequest()
         .ReturnResponse(True);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ExecuteRequest", "Execution");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ExecuteRequest", "Execution");
 
 EndProcedure
 
@@ -994,14 +994,14 @@ Procedure HTTP_ReturnRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnRequest");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnRequest");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ReturnRequest(True);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnRequest", "Forced");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnRequest", "Forced");
 
 EndProcedure
 
@@ -1018,14 +1018,14 @@ Procedure HTTP_ReturnConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnConnection");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ReturnConnection(True);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnConnection", "Forced");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnConnection", "Forced");
 
 EndProcedure
 
@@ -1044,7 +1044,7 @@ Procedure HTTP_ReturnResponse(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponse");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnResponse");
 
 EndProcedure
 
@@ -1063,7 +1063,7 @@ Procedure HTTP_ReturnResponseAsJSONObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsJSONObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnResponseAsJSONObject");
 
 EndProcedure
 
@@ -1082,7 +1082,7 @@ Procedure HTTP_ReturnResponseAsBinaryData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsBinaryData");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnResponseAsBinaryData");
 
 EndProcedure
 
@@ -1101,7 +1101,7 @@ Procedure HTTP_ReturnResponseAsString(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseAsString");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnResponseAsString");
 
 EndProcedure
 
@@ -1120,7 +1120,7 @@ Procedure HTTP_ReturnResponseFilename(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnResponseFilename", , TFN);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnResponseFilename", , TFN);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
@@ -1143,7 +1143,7 @@ Procedure HTTP_SetProxy(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetProxy");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetProxy");
 
 EndProcedure
 
@@ -1161,7 +1161,7 @@ Procedure HTTP_SetTimeout(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SetTimeout");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SetTimeout");
 
 EndProcedure
 
@@ -1198,7 +1198,7 @@ Procedure HTTP_UseURLEncoding(FunctionParameters)
     Result.Insert("No encoding"   , NoEncoding);
     Result.Insert("With encoding" , WithEncoding);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "UseURLEncoding");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "UseURLEncoding");
 
 EndProcedure
 
@@ -1244,7 +1244,7 @@ Procedure HTTP_SplitArraysInURL(FunctionParameters)
     Result.Insert("Separation"   , Separation);
     Result.Insert("PHP"          , SeparationPhp);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SplitArraysInURL");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SplitArraysInURL");
 
 EndProcedure
 
@@ -1264,7 +1264,7 @@ Procedure HTTP_SendDataInParts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SendDataInParts");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SendDataInParts");
 
 EndProcedure
 
@@ -1288,7 +1288,7 @@ Procedure HTTP_SendPart(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "SendPart");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "SendPart");
 
 EndProcedure
 
@@ -1301,7 +1301,7 @@ Procedure HTTP_MaxAttempts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "MaxAttempts");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "MaxAttempts");
 
 EndProcedure
 
@@ -1314,7 +1314,7 @@ Procedure HTTP_MaxRedirects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "MaxRedirects");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "MaxRedirects");
 
 EndProcedure
 
@@ -1326,13 +1326,13 @@ Procedure HTTP_ReturnSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnSettings");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .ReturnSettings("EncodeRequestBody");
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Single");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnSettings", "Single");
 
     SettingArray = New Array;
     SettingArray.Add("MaxAttempts");
@@ -1343,13 +1343,13 @@ Procedure HTTP_ReturnSettings(FunctionParameters)
         .MaxAttempts(5)
         .ReturnSettings(SettingArray);
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Array");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnSettings", "Array");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .ReturnSettings("AAA");
 
-    OPI_TestDataRetrieval.Process(Result, "HTTP", "ReturnSettings", "Nonexistent");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "HTTP", "ReturnSettings", "Nonexistent");
 
 EndProcedure
 

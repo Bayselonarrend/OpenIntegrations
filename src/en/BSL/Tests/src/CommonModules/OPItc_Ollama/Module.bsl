@@ -177,7 +177,7 @@ Procedure Ollama_GetResponse(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetResponse"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetResponse"); // SKIP
 
     // With paramether
 
@@ -213,7 +213,7 @@ Procedure Ollama_GetResponse(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetResponse", "Parameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetResponse", "Parameters");
 
 EndProcedure
 
@@ -247,7 +247,7 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     Response1 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Response1, "Ollama", "GetContextResponse", "Preliminary"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Response1, "Ollama", "GetContextResponse", "Preliminary"); // SKIP
 
     MessagesArray.Add(Response1["message"]); // Add response to first question in context
     MessagesArray.Add(Question2); // Add second question in context
@@ -266,7 +266,7 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Response2, "Ollama", "GetContextResponse");
+    OPI_TestDataRetrieval.ProcessCLI(Response2, "Ollama", "GetContextResponse");
 
     MessagesArray = New Array;
 
@@ -285,7 +285,7 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextResponse", "Seed 1");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextResponse", "Seed 1");
 
     Message1 = Result["message"]["content"];
 
@@ -298,7 +298,7 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextResponse", "Seed 2");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextResponse", "Seed 2");
 
     Message2 = Result["message"]["content"];
 
@@ -314,11 +314,11 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextResponse", "Seed 3");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextResponse", "Seed 3");
 
     Message3 = Result["message"]["content"];
 
-    OPI_TestDataRetrieval.Process(Message3, "Ollama", "GetContextResponse", "Comparison", Message1, Message2, Message3);
+    OPI_TestDataRetrieval.ProcessCLI(Message3, "Ollama", "GetContextResponse", "Comparison", Message1, Message2, Message3);
 
 EndProcedure
 
@@ -343,7 +343,7 @@ Procedure Ollama_LoadModelToMemory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "LoadModelToMemory");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "LoadModelToMemory");
 
 EndProcedure
 
@@ -366,7 +366,7 @@ Procedure Ollama_UnloadModelFromMemory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "UnloadModelFromMemory");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "UnloadModelFromMemory");
 
 EndProcedure
 
@@ -378,14 +378,14 @@ Procedure Ollama_GetRequestParameterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetRequestParameterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetRequestParameterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetRequestParameterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetRequestParameterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetRequestParameterStructure", "Clear");
 
 EndProcedure
 
@@ -397,14 +397,14 @@ Procedure Ollama_GetContextParameterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextParameterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextParameterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextParameterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextParameterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextParameterStructure", "Clear");
 
 EndProcedure
 
@@ -418,7 +418,7 @@ Procedure Ollama_GetContextMessageStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetContextMessageStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetContextMessageStructure");
 
 EndProcedure
 
@@ -430,14 +430,14 @@ Procedure Ollama_GetModelSettingsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetModelSettingsStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetModelSettingsStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetModelSettingsStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetModelSettingsStructure", "Clear");
 
 EndProcedure
 
@@ -463,7 +463,7 @@ Procedure Ollama_CreateModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "CreateModel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "CreateModel");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -473,7 +473,7 @@ Procedure Ollama_CreateModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "CreateModel", "Request");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "CreateModel", "Request");
 
 EndProcedure
 
@@ -496,7 +496,7 @@ Procedure Ollama_DeleteModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "DeleteModel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "DeleteModel");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -504,7 +504,7 @@ Procedure Ollama_DeleteModel(FunctionParameters)
     Options.Insert("headers", AdditionalHeaders);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "DeleteModel", "Tiny");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "DeleteModel", "Tiny");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -512,7 +512,7 @@ Procedure Ollama_DeleteModel(FunctionParameters)
     Options.Insert("headers", AdditionalHeaders);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "DeleteModel", "Tiny, account");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "DeleteModel", "Tiny, account");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -520,7 +520,7 @@ Procedure Ollama_DeleteModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "DeleteModel", "List");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "DeleteModel", "List");
 
 EndProcedure
 
@@ -540,7 +540,7 @@ Procedure Ollama_GetModelList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetModelList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetModelList");
 
 EndProcedure
 
@@ -560,7 +560,7 @@ Procedure Ollama_ListRunningModels(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "ListRunningModels");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "ListRunningModels");
 
 EndProcedure
 
@@ -584,7 +584,7 @@ Procedure Ollama_GetModelInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetModelInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetModelInformation");
 
 EndProcedure
 
@@ -609,7 +609,7 @@ Procedure Ollama_CopyModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "CopyModel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "CopyModel");
 
     OPI_Ollama.DeleteModel(URL, Name, AdditionalHeaders);
 
@@ -631,7 +631,7 @@ Procedure Ollama_GetVersion(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetVersion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetVersion");
 
 EndProcedure
 
@@ -659,7 +659,7 @@ Procedure Ollama_GetEmbeddings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetEmbeddings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetEmbeddings");
 
 EndProcedure
 
@@ -671,14 +671,14 @@ Procedure Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetEmbeddingsParameterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetEmbeddingsParameterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "GetEmbeddingsParameterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "GetEmbeddingsParameterStructure", "Clear");
 
 EndProcedure
 
@@ -701,7 +701,7 @@ Procedure Ollama_PushModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "PushModel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "PushModel");
 
 EndProcedure
 
@@ -724,7 +724,7 @@ Procedure Ollama_PullModel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "PullModel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "PullModel");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -733,7 +733,7 @@ Procedure Ollama_PullModel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "PullModel", "Account");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "PullModel", "Account");
 
 EndProcedure
 
@@ -760,7 +760,7 @@ Procedure Ollama_PushBlob(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "PushBlob", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "PushBlob", , FunctionParameters);
 
 EndProcedure
 
@@ -782,7 +782,7 @@ Procedure Ollama_CheckBlob(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "CheckBlob");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "CheckBlob");
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -791,7 +791,7 @@ Procedure Ollama_CheckBlob(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Ollama", "CheckBlob", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Ollama", "CheckBlob", "Error");
 
 EndProcedure
 

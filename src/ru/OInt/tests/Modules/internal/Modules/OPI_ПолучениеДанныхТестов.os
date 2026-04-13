@@ -635,6 +635,28 @@
 
 КонецПроцедуры
 
+Процедура ОбработатьCLI(Знач Результат
+    , Знач Библиотека
+    , Знач Метод
+    , Знач Вариант = ""
+    , ДопПараметр1 = Неопределено
+    , ДопПараметр2 = Неопределено
+    , ДопПараметр3 = Неопределено) Экспорт
+
+    CLITestsMark = 1;
+
+    УстановитьПеременнуюСреды("OINT_TESTS_CLI", CLITestsMark);
+
+    ОбработатьРезультатТестирования(Результат
+        , Метод
+        , Библиотека
+        , Вариант
+        , ДопПараметр1
+        , ДопПараметр2
+        , ДопПараметр3);
+
+КонецПроцедуры
+
 Процедура ВывестиСлужебнуюИнформацию(Знач Текст, Знач Примечание, Знач Библиотека) Экспорт
 
     ШаблонТекста = "
@@ -15258,6 +15280,10 @@ EndProcedure
 
 Procedure Process(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
     Обработать(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
+EndProcedure
+
+Procedure ProcessCLI(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+    ОбработатьCLI(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
 EndProcedure
 
 Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export

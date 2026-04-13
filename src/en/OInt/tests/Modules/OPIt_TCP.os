@@ -284,6 +284,8 @@ EndProcedure
 
 Procedure TCP_ReadLine(FunctionParameters)
 
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
+
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Data       = "Hello server!" + Chars.LF;
@@ -313,6 +315,8 @@ Procedure TCP_ReadLine(FunctionParameters)
 EndProcedure
 
 Procedure TCP_SendLine(FunctionParameters)
+
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -354,12 +358,14 @@ EndProcedure
 
 Procedure TCP_GetLastError(FunctionParameters)
 
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
+
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Data       = "Hello server!" + Chars.LF;
 
     Sending = OPI_TCP.SendLine(Connection, Data);
-    Result  = OPI_TCP.GetLastError(Connection); // SKIP
+    Result  = OPI_TCP.GetLastError(Connection);
 
     // END
 
@@ -389,13 +395,13 @@ Procedure TCP_StartServer(FunctionParameters)
     Port     = 9876;
     PoolSize = 10;
 
-    Host = OPI_TCP.StartServer(Port, PoolSize);
+    Result = OPI_TCP.StartServer(Port, PoolSize);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Host, "TCP", "StartServer");
+    OPI_TestDataRetrieval.Process(Result, "TCP", "StartServer");
 
-    OPI_TCP.StopServer(Host);
+    OPI_TCP.StopServer(Result);
 
 EndProcedure
 

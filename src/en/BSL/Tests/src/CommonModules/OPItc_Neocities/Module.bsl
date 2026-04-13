@@ -151,7 +151,7 @@ Procedure Neocities_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "UploadFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "UploadFile");
 
 EndProcedure
 
@@ -176,7 +176,7 @@ Procedure Neocities_UploadFiles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "UploadFiles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "UploadFiles");
 
 EndProcedure
 
@@ -197,7 +197,7 @@ Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "DeleteSelectedFiles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "DeleteSelectedFiles");
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -205,7 +205,7 @@ Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "DeleteSelectedFiles", "Directory 1");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "DeleteSelectedFiles", "Directory 1");
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -213,7 +213,7 @@ Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "DeleteSelectedFiles", "Directory 2");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "DeleteSelectedFiles", "Directory 2");
 
 EndProcedure
 
@@ -230,14 +230,14 @@ Procedure Neocities_GetFilesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "GetFilesList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "GetFilesList");
 
     Options = New Structure;
     Options.Insert("token", Token);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "GetFilesList", "All");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "GetFilesList", "All");
 
 EndProcedure
 
@@ -251,7 +251,7 @@ Procedure Neocities_GetSiteData(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetSiteData", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "GetSiteData"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "GetSiteData"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -261,7 +261,7 @@ Procedure Neocities_GetSiteData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "GetSiteData", "Website");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "GetSiteData", "Website");
 
 EndProcedure
 
@@ -280,7 +280,7 @@ Procedure Neocities_GetToken(FunctionParameters)
 
     Result["api_key"] = "***";
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "GetToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "GetToken");
 
 EndProcedure
 
@@ -300,7 +300,7 @@ Procedure Neocities_SynchronizeFolders(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Neocities", "SynchronizeFolders");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Neocities", "SynchronizeFolders");
 
 EndProcedure
 

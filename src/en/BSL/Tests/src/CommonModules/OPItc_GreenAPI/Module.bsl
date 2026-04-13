@@ -251,7 +251,7 @@ Procedure GreenAPI_FormAccessParameters(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "FormAccessParameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "FormAccessParameters");
 
 EndProcedure
 
@@ -276,7 +276,7 @@ Procedure GreenAPI_GetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetInstanceSettings", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetInstanceSettings", , FunctionParameters);
 
 EndProcedure
 
@@ -301,7 +301,7 @@ Procedure GreenAPI_GetAccountInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetAccountInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetAccountInformation");
 
 EndProcedure
 
@@ -313,14 +313,14 @@ Procedure GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetInstanceSettingsStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetInstanceSettingsStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetInstanceSettingsStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetInstanceSettingsStructure", "Clear");
 
 EndProcedure
 
@@ -355,7 +355,7 @@ Procedure GreenAPI_SetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SetInstanceSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SetInstanceSettings");
 
 EndProcedure
 
@@ -380,7 +380,7 @@ Procedure GreenAPI_GetInstanceStatus(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetInstanceStatus");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetInstanceStatus");
 
 EndProcedure
 
@@ -405,7 +405,7 @@ Procedure GreenAPI_RebootInstance(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "RebootInstance");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "RebootInstance");
 
 EndProcedure
 
@@ -430,7 +430,7 @@ Procedure GreenAPI_GetQR(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetQR");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetQR");
 
 EndProcedure
 
@@ -455,7 +455,7 @@ Procedure GreenAPI_LogoutInstance(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "LogoutInstance");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "LogoutInstance");
 
 EndProcedure
 
@@ -483,7 +483,7 @@ Procedure GreenAPI_GetAuthorizationCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetAuthorizationCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetAuthorizationCode");
 
 EndProcedure
 
@@ -511,7 +511,7 @@ Procedure GreenAPI_SetProfilePicture(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SetProfilePicture");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SetProfilePicture");
 
 EndProcedure
 
@@ -539,7 +539,7 @@ Procedure GreenAPI_CreateGroup(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "CreateGroup", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "CreateGroup", , FunctionParameters);
 
 EndProcedure
 
@@ -567,7 +567,7 @@ Procedure GreenAPI_LeaveGroup(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "LeaveGroup");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "LeaveGroup");
 
 EndProcedure
 
@@ -595,7 +595,7 @@ Procedure GreenAPI_GetGroupInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetGroupInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetGroupInformation");
 
 EndProcedure
 
@@ -625,7 +625,7 @@ Procedure GreenAPI_UpdateGroupName(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "UpdateGroupName");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "UpdateGroupName");
 
 EndProcedure
 
@@ -655,7 +655,7 @@ Procedure GreenAPI_AddGroupMember(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "AddGroupMember");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "AddGroupMember");
 
 EndProcedure
 
@@ -685,7 +685,7 @@ Procedure GreenAPI_ExcludeGroupMember(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "ExcludeGroupMember");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "ExcludeGroupMember");
 
 EndProcedure
 
@@ -715,7 +715,7 @@ Procedure GreenAPI_SetAdminRights(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SetAdminRights");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SetAdminRights");
 
 EndProcedure
 
@@ -745,7 +745,7 @@ Procedure GreenAPI_RevokeAdminRights(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "RevokeAdminRights");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "RevokeAdminRights");
 
 EndProcedure
 
@@ -775,7 +775,7 @@ Procedure GreenAPI_SetGroupPicture(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SetGroupPicture");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SetGroupPicture");
 
 EndProcedure
 
@@ -805,7 +805,7 @@ Procedure GreenAPI_SendTextMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendTextMessage", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendTextMessage", , FunctionParameters);
 
     MessageID = Result["idMessage"];
     Options = New Structure;
@@ -816,7 +816,7 @@ Procedure GreenAPI_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendTextMessage", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendTextMessage", "Quote");
 
 EndProcedure
 
@@ -846,7 +846,7 @@ Procedure GreenAPI_DeleteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "DeleteMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "DeleteMessage");
 
 EndProcedure
 
@@ -878,7 +878,7 @@ Procedure GreenAPI_EditMessageText(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "EditMessageText");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "EditMessageText");
 
 EndProcedure
 
@@ -912,7 +912,7 @@ Procedure GreenAPI_SendFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendFile", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendFile", , FunctionParameters);
 
     File     = FunctionParameters["Video"];
     FileName = "vid.mp4";
@@ -928,7 +928,7 @@ Procedure GreenAPI_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendFile", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendFile", "Quote");
 
 EndProcedure
 
@@ -962,7 +962,7 @@ Procedure GreenAPI_SendFileByURL(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendFileByURL", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendFileByURL", , FunctionParameters);
 
     File     = FunctionParameters["Video"];
     FileName = "vid.mp4";
@@ -978,7 +978,7 @@ Procedure GreenAPI_SendFileByURL(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFileByURL", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendFileByURL", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendFileByURL", "Quote");
 
 EndProcedure
 
@@ -1014,7 +1014,7 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendPoll", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendPoll", , FunctionParameters);
 
     MessageID = Result["idMessage"];
     Options = New Structure;
@@ -1027,7 +1027,7 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendPoll", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendPoll", "Quote");
 
 EndProcedure
 
@@ -1048,7 +1048,7 @@ Procedure GreenAPI_GetLocationDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetLocationDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetLocationDescription");
 
 EndProcedure
 
@@ -1090,7 +1090,7 @@ Procedure GreenAPI_SendLocation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendLocation", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendLocation", , FunctionParameters);
 
     MessageID = Result["idMessage"];
     Options = New Structure;
@@ -1106,7 +1106,7 @@ Procedure GreenAPI_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendLocation", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendLocation", "Quote");
 
 EndProcedure
 
@@ -1129,7 +1129,7 @@ Procedure GreenAPI_GetContactDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetContactDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetContactDescription");
 
 EndProcedure
 
@@ -1173,7 +1173,7 @@ Procedure GreenAPI_SendContact(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendContact", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendContact", , FunctionParameters);
 
     MessageID = Result["idMessage"];
     Options = New Structure;
@@ -1189,7 +1189,7 @@ Procedure GreenAPI_SendContact(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SendContact", "Quote");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SendContact", "Quote");
 
 EndProcedure
 
@@ -1223,7 +1223,7 @@ Procedure GreenAPI_ForwardMessages(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "ForwardMessages");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "ForwardMessages");
 
 EndProcedure
 
@@ -1248,7 +1248,7 @@ Procedure GreenAPI_GetNotification(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetNotification", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetNotification", , FunctionParameters);
 
 EndProcedure
 
@@ -1276,7 +1276,7 @@ Procedure GreenAPI_DeleteNotificationFromQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "DeleteNotificationFromQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "DeleteNotificationFromQueue");
 
 EndProcedure
 
@@ -1306,7 +1306,7 @@ Procedure GreenAPI_DownloadMessageFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "DownloadMessageFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "DownloadMessageFile");
 
 EndProcedure
 
@@ -1336,7 +1336,7 @@ Procedure GreenAPI_SetReadMark(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "SetReadMark");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "SetReadMark");
 
 EndProcedure
 
@@ -1361,7 +1361,7 @@ Procedure GreenAPI_GetMessageQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetMessageQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetMessageQueue");
 
 EndProcedure
 
@@ -1386,7 +1386,7 @@ Procedure GreenAPI_ClearMessageQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "ClearMessageQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "ClearMessageQueue");
 
 EndProcedure
 
@@ -1414,7 +1414,7 @@ Procedure GreenAPI_GetChatHistory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetChatHistory", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetChatHistory", , FunctionParameters);
 
 EndProcedure
 
@@ -1444,7 +1444,7 @@ Procedure GreenAPI_GetMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetMessage", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetMessage", , FunctionParameters);
 
 EndProcedure
 
@@ -1469,7 +1469,7 @@ Procedure GreenAPI_GetIncomingMessageLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetIncomingMessageLog", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetIncomingMessageLog", , FunctionParameters);
 
 EndProcedure
 
@@ -1494,7 +1494,7 @@ Procedure GreenAPI_GetOutgoingMessageLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetOutgoingMessageLog", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "GetOutgoingMessageLog", , FunctionParameters);
 
 EndProcedure
 
@@ -1525,7 +1525,7 @@ Procedure GreenAPI_ArchiveChat(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "ArchiveChat");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "ArchiveChat");
 
 EndProcedure
 
@@ -1553,7 +1553,7 @@ Procedure GreenAPI_UnarchiveChat(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "UnarchiveChat");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenAPI", "UnarchiveChat");
 
 EndProcedure
 

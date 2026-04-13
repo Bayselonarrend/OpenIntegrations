@@ -172,7 +172,7 @@ Procedure RSS_CreateFeedRSS(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "CreateFeedRSS", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "CreateFeedRSS", , FunctionParameters);
 
 EndProcedure
 
@@ -184,14 +184,14 @@ Procedure RSS_GetFeedItemStructureRSS(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureRSS");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureRSS");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureRSS", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureRSS", "Clear");
 
     Options = New Structure;
     Options.Insert("empty", Ложь);
@@ -199,7 +199,7 @@ Procedure RSS_GetFeedItemStructureRSS(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureRSS", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureRSS", "Map");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureRSS", "Map");
 
 EndProcedure
 
@@ -214,7 +214,7 @@ Procedure RSS_ParseFeedRSS(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "ParseFeedRSS");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "ParseFeedRSS");
 
     OPI_Tools.RemoveFileWithTry(FeedXML, "Failed to delete the temporary file after the test!!");
 
@@ -268,7 +268,7 @@ Procedure RSS_CreateFeedAtom(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "CreateFeedAtom", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "CreateFeedAtom", , FunctionParameters);
 
 EndProcedure
 
@@ -280,14 +280,14 @@ Procedure RSS_GetFeedItemStructureAtom(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureAtom");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureAtom");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureAtom", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureAtom", "Clear");
 
     Options = New Structure;
     Options.Insert("empty", Ложь);
@@ -295,7 +295,7 @@ Procedure RSS_GetFeedItemStructureAtom(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rss", "GetFeedItemStructureAtom", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "GetFeedItemStructureAtom", "Map");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "GetFeedItemStructureAtom", "Map");
 
 EndProcedure
 
@@ -310,7 +310,7 @@ Procedure RSS_ParseFeedAtom(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RSS", "ParseFeedAtom");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RSS", "ParseFeedAtom");
 
     OPI_Tools.RemoveFileWithTry(FeedXML, "Failed to delete the temporary file after the test!!");
 

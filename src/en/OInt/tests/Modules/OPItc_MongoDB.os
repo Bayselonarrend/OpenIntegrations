@@ -231,7 +231,7 @@ Procedure MongoDB_GenerateConnectionString(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GenerateConnectionString", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GenerateConnectionString", , FunctionParameters);
 
 EndProcedure
 
@@ -258,11 +258,11 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateConnection");
 
     Result = OPI_MongoDB.CloseConnection(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateConnection", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateConnection", "Closing");
 
 EndProcedure
 
@@ -290,7 +290,7 @@ Procedure MongoDB_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CloseConnection");
 
 EndProcedure
 
@@ -318,7 +318,7 @@ Procedure MongoDB_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "IsConnector");
 
 EndProcedure
 
@@ -344,7 +344,7 @@ Procedure MongoDB_ExecuteCommand(FunctionParameters)
 
     Connection = OPI_MongoDB.CreateConnection(ConnectionString);
 
-    OPI_TestDataRetrieval.Process(Connection, "MongoDB", "ExecuteCommand", "Connection"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "MongoDB", "ExecuteCommand", "Connection"); // SKIP
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -355,7 +355,7 @@ Procedure MongoDB_ExecuteCommand(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "ExecuteCommand");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "ExecuteCommand");
 
 EndProcedure
 
@@ -389,7 +389,7 @@ Procedure MongoDB_GetDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDatabase");
 
 EndProcedure
 
@@ -418,7 +418,7 @@ Procedure MongoDB_GetListOfBases(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetListOfBases");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetListOfBases");
 
 EndProcedure
 
@@ -449,7 +449,7 @@ Procedure MongoDB_DeleteDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteDatabase");
 
 EndProcedure
 
@@ -506,7 +506,7 @@ Procedure MongoDB_CreateCollection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateCollection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateCollection");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -516,7 +516,7 @@ Procedure MongoDB_CreateCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateCollection", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateCollection", "Existing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateCollection", "Existing");
 
 EndProcedure
 
@@ -550,7 +550,7 @@ Procedure MongoDB_DeleteCollection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteCollection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteCollection");
 
 EndProcedure
 
@@ -582,7 +582,7 @@ Procedure MongoDB_GetCollectionList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetCollectionList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCollectionList");
 
 EndProcedure
 
@@ -678,7 +678,7 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "InsertDocuments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "InsertDocuments");
 
     DocsArray = New Array;
 
@@ -742,7 +742,7 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "InsertDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "InsertDocuments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "InsertDocuments");
 
 EndProcedure
 
@@ -784,7 +784,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments");
 
     // 1: Category and price range
     Filter = New Structure("category,price", "electronics", New Structure("__4gte,__4lte", 100, 400));
@@ -801,7 +801,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments", 1);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments", 1);
 
     // 2: Stock and rating
     Filter = New Structure("inStock,rating", True, New Structure("__4gte", 4));
@@ -816,7 +816,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments", 2);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments", 2);
 
     // 3: By tags array
     Filter = New Structure("tags", "sale");
@@ -831,7 +831,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments", 3);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments", 3);
 
     // 4: By nested fields
     Filter = New Map;
@@ -846,7 +846,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments", 4);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments", 4);
 
     // 5: Projection
     Filter = New Structure("category", "books");
@@ -863,7 +863,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocuments", 5);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocuments", 5);
 
 EndProcedure
 
@@ -896,7 +896,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetCursor");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCursor");
 
     // Big batchSize with limit
     Filter = New Structure("inStock", True);
@@ -905,7 +905,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
 
     Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetCursor", 1);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCursor", 1);
 
     // Small batchSize without limit
     Filter = New Structure("category", "clothing");
@@ -914,7 +914,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
 
     Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetCursor", 2);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCursor", 2);
 
 EndProcedure
 
@@ -972,7 +972,7 @@ Procedure MongoDB_GetDocumentBatch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocumentBatch");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocumentBatch");
 
 EndProcedure
 
@@ -1012,7 +1012,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments");
 
     Parameters = New Structure("limit,batchSize", 2, 1);
     Sort       = New Structure("doubleField", -1);
@@ -1027,7 +1027,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", "Obtaining");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", "Obtaining");
 
     Filter = New Structure("stringField,doubleField", "Text", 999);
 
@@ -1041,7 +1041,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", "Getting new");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", "Getting new");
 
     // Multiply fields
     Filter = New Structure("category", "electronics");
@@ -1060,7 +1060,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 1);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 1);
 
     Filter      = New Structure("category", "electronics", "price", 777);
     Options = New Structure;
@@ -1070,7 +1070,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 1");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 1");
 
     // Number inc
     Filter = New Structure("productName", "Product 1");
@@ -1088,7 +1088,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 2);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 2);
 
     Filter      = New Structure("productName", "Product 1");
     Options = New Structure;
@@ -1098,7 +1098,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 2");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 2");
 
     // Array insertion
     Filter = New Structure("productName", "Product 2");
@@ -1116,7 +1116,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 3);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 3);
 
     Filter      = New Structure("productName", "Product 2", "tags", "updated");
     Options = New Structure;
@@ -1126,7 +1126,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 3");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 3");
 
     // Nested field update
     SettingMapping = New Map;
@@ -1151,7 +1151,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 4);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 4);
 
     Filter      = New Map;
     Filter.Insert("details.supplier", "Supplier A+");
@@ -1163,7 +1163,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 4");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 4");
 
     // Upsert
     Filter = New Structure("productName", "New product");
@@ -1192,7 +1192,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 5);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 5);
 
     Filter      = New Structure("productName", "New product");
     Options = New Structure;
@@ -1202,7 +1202,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 5");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 5");
 
     // Field removing
     Filter = New Structure("productName", "Product 3");
@@ -1220,7 +1220,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 6);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 6);
 
     Filter      = New Structure("productName", "Product 3");
     Parameters  = New Structure("projection", New Structure("productName,rating", 1, 1));
@@ -1233,7 +1233,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("params", Parameters);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 6");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 6");
 
     // Multiply operators
     Filter = New Structure("price", New Structure("__4lt", 200));
@@ -1255,7 +1255,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 7);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 7);
 
     Filter      = New Structure("price,tags", New Structure("__4lt", 200), "discount");
     Options = New Structure;
@@ -1265,7 +1265,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 7");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 7");
 
     // Updates array
     UpdateArray = New Array;
@@ -1341,7 +1341,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateDocuments", 9);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateDocuments", 9);
 
     Filter      = New Structure("category,price", "electronics", 888);
     Options = New Structure;
@@ -1351,7 +1351,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_1");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_1");
 
     Filter      = New Structure("category,tags", "books", "mass_update");
     Options = New Structure;
@@ -1361,7 +1361,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_2");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_2");
 
     Filter      = New Structure("productName", "Special item from array");
     Options = New Structure;
@@ -1371,7 +1371,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_3");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_3");
 
     Filter      = New Structure("needsImprovement", True);
     Options = New Structure;
@@ -1381,7 +1381,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("query", Filter);
 
     CheckResult = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
-    OPI_TestDataRetrieval.Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_4");
+    OPI_TestDataRetrieval.ProcessCLI(CheckResult, "MongoDB", "UpdateDocuments", "Check 8_4");
 
 EndProcedure
 
@@ -1401,7 +1401,7 @@ Procedure MongoDB_GetDocumentUpdateStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocumentUpdateStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocumentUpdateStructure");
 
 EndProcedure
 
@@ -1412,7 +1412,7 @@ Procedure MongoDB_GetDocumentDeletionStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDocumentDeletionStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDocumentDeletionStructure");
 
 EndProcedure
 
@@ -1441,7 +1441,7 @@ Procedure MongoDB_DeleteDocuments(FunctionParameters)
     Deletion = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single
 
     Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter); // SKIP
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteDocuments", "Precheck"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteDocuments", "Precheck"); // SKIP
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1453,7 +1453,7 @@ Procedure MongoDB_DeleteDocuments(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteDocuments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteDocuments");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1463,7 +1463,7 @@ Procedure MongoDB_DeleteDocuments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDocuments", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteDocuments", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteDocuments", "Check");
 
 EndProcedure
 
@@ -1504,7 +1504,7 @@ Procedure MongoDB_CreateUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateUser");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1515,7 +1515,7 @@ Procedure MongoDB_CreateUser(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateUser", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateUser", "Existing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateUser", "Existing");
 
 EndProcedure
 
@@ -1555,7 +1555,7 @@ Procedure MongoDB_UpdateUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateUser");
 
     UserName = "anotheruser";
 
@@ -1568,7 +1568,7 @@ Procedure MongoDB_UpdateUser(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateUser", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateUser", "Nonexistent");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateUser", "Nonexistent");
 
 EndProcedure
 
@@ -1602,7 +1602,7 @@ Procedure MongoDB_DeleteUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteUser");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1611,7 +1611,7 @@ Procedure MongoDB_DeleteUser(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteUser", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteUser", "Again");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteUser", "Again");
 
 EndProcedure
 
@@ -1643,7 +1643,7 @@ Procedure MongoDB_GetUsers(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetUsers", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetUsers", "Simple"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetUsers", "Simple"); // SKIP
 
     ArrayOfUsers = New Array;
     ArrayOfUsers.Add(New Structure("user,db", "bayselonarrend", "admin"));
@@ -1660,7 +1660,7 @@ Procedure MongoDB_GetUsers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetUsers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetUsers");
 
 EndProcedure
 
@@ -1691,7 +1691,7 @@ Procedure MongoDB_GetDatabaseUsers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetDatabaseUsers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetDatabaseUsers");
 
 EndProcedure
 
@@ -1748,7 +1748,7 @@ Procedure MongoDB_CreateRole(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateRole");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateRole");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1759,7 +1759,7 @@ Procedure MongoDB_CreateRole(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateRole", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "CreateRole", "Existing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateRole", "Existing");
 
 EndProcedure
 
@@ -1814,7 +1814,7 @@ Procedure MongoDB_UpdateRole(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "UpdateRole");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "UpdateRole");
 
 EndProcedure
 
@@ -1848,7 +1848,7 @@ Procedure MongoDB_DeleteRole(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteRole");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteRole");
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1857,7 +1857,7 @@ Procedure MongoDB_DeleteRole(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteRole", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "DeleteRole", "Again");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "DeleteRole", "Again");
 
 EndProcedure
 
@@ -1879,7 +1879,7 @@ Procedure MongoDB_GetRolePrivilegeStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetRolePrivilegeStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetRolePrivilegeStructure");
 
 EndProcedure
 
@@ -1914,7 +1914,7 @@ Procedure MongoDB_GetRoles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GetRoles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetRoles");
 
 EndProcedure
 
@@ -1950,7 +1950,7 @@ Procedure MongoDB_GrantRoles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "GrantRoles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GrantRoles");
 
 EndProcedure
 
@@ -1986,7 +1986,7 @@ Procedure MongoDB_RevokeRoles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MongoDB", "RevokeRoles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "RevokeRoles");
 
 EndProcedure
 

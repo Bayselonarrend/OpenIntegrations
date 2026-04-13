@@ -212,7 +212,7 @@ Procedure SSH_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "CreateConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "CreateConnection", Postfix);
 
 EndProcedure
 
@@ -307,7 +307,7 @@ Procedure SSH_ExecuteCommand(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "ExecuteCommand", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "ExecuteCommand", Postfix);
 
 EndProcedure
 
@@ -396,7 +396,7 @@ Procedure SSH_GetConnectionConfiguration(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetConnectionConfiguration", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetConnectionConfiguration", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Result);
@@ -404,7 +404,7 @@ Procedure SSH_GetConnectionConfiguration(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "ExecuteCommand", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetConnectionConfiguration", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetConnectionConfiguration", "Check, " + Postfix);
 
 EndProcedure
 
@@ -495,7 +495,7 @@ Procedure SSH_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "CloseConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "CloseConnection", Postfix);
 
 EndProcedure
 
@@ -581,11 +581,11 @@ Procedure SSH_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "IsConnector", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "IsConnector", Postfix);
 
     Result = OPI_SSH.IsConnector("a");
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "IsConnector", "Error, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "IsConnector", "Error, " + Postfix);
 
 EndProcedure
 
@@ -608,7 +608,7 @@ Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetSettingsLoginPassword", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetSettingsLoginPassword", Postfix);
 
 EndProcedure
 
@@ -636,7 +636,7 @@ Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetSettingsPrivateKey", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetSettingsPrivateKey", Postfix);
 
 EndProcedure
 
@@ -656,7 +656,7 @@ Procedure SSH_GetSettingsViaAgent(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetSettingsViaAgent", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetSettingsViaAgent", Postfix);
 
 EndProcedure
 
@@ -683,7 +683,7 @@ Procedure SSH_GetSettingsKI(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetSettingsKI", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetSettingsKI", Postfix);
 
 EndProcedure
 
@@ -709,7 +709,7 @@ Procedure SSH_GetProxySettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SSH", "GetProxySettings", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetProxySettings", Postfix);
 
 EndProcedure
 

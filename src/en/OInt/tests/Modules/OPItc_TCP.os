@@ -155,7 +155,7 @@ Procedure TCP_CreateConnection(FunctionParameters)
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
 
-    OPI_TestDataRetrieval.Process(Connection, "TCP", "CreateConnection"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "TCP", "CreateConnection"); // SKIP
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -189,7 +189,7 @@ Procedure TCP_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Connection, "TCP", "CreateConnection", "TLS");
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "TCP", "CreateConnection", "TLS");
 
 EndProcedure
 
@@ -202,7 +202,7 @@ Procedure TCP_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseConnection");
 
 EndProcedure
 
@@ -224,7 +224,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ReadBinaryData", , Message);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadBinaryData", , Message);
 
     Connection = OPI_TCP.CreateConnection(Address);
 
@@ -233,7 +233,7 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ReadBinaryData", "Timeout", Message);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadBinaryData", "Timeout", Message);
 
 EndProcedure
 
@@ -255,7 +255,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Response, "TCP", "SendBinaryData", , Message);
+    OPI_TestDataRetrieval.ProcessCLI(Response, "TCP", "SendBinaryData", , Message);
 
     Connection = OPI_TCP.CreateConnection(Address);
 
@@ -264,7 +264,7 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "SendBinaryData", "Timeout", Message);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "SendBinaryData", "Timeout", Message);
 
 EndProcedure
 
@@ -279,7 +279,7 @@ Procedure TCP_ProcessRequest(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ProcessRequest", , "Echo this!" + Chars.LF); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ProcessRequest", , "Echo this!" + Chars.LF); // SKIP
 
     Address = FunctionParameters["TCP_AddressTLS"];
 
@@ -313,11 +313,13 @@ Procedure TCP_ProcessRequest(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ProcessRequest", "TLS", "Echo this!" + Chars.LF);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ProcessRequest", "TLS", "Echo this!" + Chars.LF);
 
 EndProcedure
 
 Procedure TCP_ReadLine(FunctionParameters)
+
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -334,7 +336,7 @@ Procedure TCP_ReadLine(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ReadLine", , Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadLine", , Data);
 
     Connection = OPI_TCP.CreateConnection(Address);
 
@@ -343,11 +345,13 @@ Procedure TCP_ReadLine(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "ReadLine", "Timeout", Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadLine", "Timeout", Data);
 
 EndProcedure
 
 Procedure TCP_SendLine(FunctionParameters)
+
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -364,7 +368,7 @@ Procedure TCP_SendLine(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Response, "TCP", "SendLine", , Data);
+    OPI_TestDataRetrieval.ProcessCLI(Response, "TCP", "SendLine", , Data);
 
     Connection = OPI_TCP.CreateConnection(Address);
 
@@ -373,7 +377,7 @@ Procedure TCP_SendLine(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "SendLine", "Timeout", Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "SendLine", "Timeout", Data);
 
 EndProcedure
 
@@ -386,22 +390,24 @@ Procedure TCP_GetTLSSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetTLSSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetTLSSettings");
 
 EndProcedure
 
 Procedure TCP_GetLastError(FunctionParameters)
+
+    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Data       = "Hello server!" + Chars.LF;
 
     Sending = OPI_TCP.SendLine(Connection, Data);
-    Result  = OPI_TCP.GetLastError(Connection); // SKIP
+    Result  = OPI_TCP.GetLastError(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLastError");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLastError");
 
 EndProcedure
 
@@ -425,7 +431,7 @@ Procedure TCP_GetProxySettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetProxySettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetProxySettings");
 
 EndProcedure
 
@@ -434,13 +440,13 @@ Procedure TCP_StartServer(FunctionParameters)
     Port     = 9876;
     PoolSize = 10;
 
-    Host = OPI_TCP.StartServer(Port, PoolSize);
+    Result = OPI_TCP.StartServer(Port, PoolSize);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Host, "TCP", "StartServer");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "StartServer");
 
-    OPI_TCP.StopServer(Host);
+    OPI_TCP.StopServer(Result);
 
 EndProcedure
 
@@ -453,18 +459,18 @@ Procedure TCP_StopServer(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "StopServer");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "StopServer");
 
     ListResult = OPI_TCP.GetConnectionList(Host);
 
-    OPI_TestDataRetrieval.Process(ListResult, "TCP", "StopServer", "List");
+    OPI_TestDataRetrieval.ProcessCLI(ListResult, "TCP", "StopServer", "List");
 
     OPI_TypeConversion.GetLine(Port);
 
     Address = StrTemplate("127.0.0.1:%1", Port);
     Client  = OPI_TCP.CreateConnection(Address);
 
-    OPI_TestDataRetrieval.Process(Client, "TCP", "StopServer", "Connection");
+    OPI_TestDataRetrieval.ProcessCLI(Client, "TCP", "StopServer", "Connection");
 
 EndProcedure
 
@@ -491,14 +497,14 @@ Procedure TCP_GetNextConnectionData(FunctionParameters)
 
     OPI_TCP.CloseConnection(ClientObject);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetNextConnectionData", , Message);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetNextConnectionData", , Message);
 
     OPI_TCP.SendLine(ClientObject, Message);
     OPI_TCP.CloseConnection(ClientObject);
 
     Result = OPI_TCP.GetNextConnectionData(ServerObject, 5000, 8192);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetNextConnectionData", "Closed", Message);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetNextConnectionData", "Closed", Message);
 
     OPI_TCP.StopServer(ServerObject);
 
@@ -533,7 +539,7 @@ Procedure TCP_GetConnectionData(FunctionParameters)
     EndIf;
 
     EmptyResult = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192); // SKIP
-    OPI_TestDataRetrieval.Process(EmptyResult, "TCP", "GetConnectionData", "Empty"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(EmptyResult, "TCP", "GetConnectionData", "Empty"); // SKIP
 
     For N = 0 To 5 Do
 
@@ -544,7 +550,7 @@ Procedure TCP_GetConnectionData(FunctionParameters)
         // Recieve on server
         Result = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192);
 
-        OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionData", , CurrentMessage); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionData", , CurrentMessage); // SKIP
 
     EndDo;
 
@@ -554,11 +560,11 @@ Procedure TCP_GetConnectionData(FunctionParameters)
 
     Result = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionData", "Closed");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionData", "Closed");
 
     Result = OPI_TCP.GetConnectionList(ServerObject);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionData", "EmptyList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionData", "EmptyList");
 
     OPI_TCP.StopServer(ServerObject);
 
@@ -591,12 +597,12 @@ Procedure TCP_SendData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "SendData");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "SendData");
 
     // Check receiving on client
     ClientResponse = OPI_TCP.ReadLine(ClientObject, , Chars.LF);
 
-    OPI_TestDataRetrieval.Process(ClientResponse, "TCP", "SendData", "Check", ServerResponse);
+    OPI_TestDataRetrieval.ProcessCLI(ClientResponse, "TCP", "SendData", "Check", ServerResponse);
 
     OPI_TCP.CloseConnection(ClientObject);
     OPI_TCP.StopServer(ServerObject);
@@ -629,16 +635,16 @@ Procedure TCP_CloseIncomingConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CloseIncomingConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection");
 
     Result = OPI_TCP.GetConnectionList(ServerObject);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CloseIncomingConnection", "EmptyList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection", "EmptyList");
 
     OPI_TCP.SendLine(ClientObject, Message);
     Result = OPI_TCP.SendLine(ClientObject, Message);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CloseIncomingConnection", "SendingToClosed");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection", "SendingToClosed");
 
     OPI_TCP.StopServer(ServerObject);
 
@@ -666,19 +672,19 @@ Procedure TCP_CompleteSend(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CompleteSend");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CompleteSend");
 
     Message = "Hello" + Chars.LF;
 
     OPI_TCP.SendLine(ClientObject, Message);
     Result = OPI_TCP.SendLine(ClientObject, Message);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CompleteSend", "SendingClient");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CompleteSend", "SendingClient");
 
     ServerResponse = "Response from server!" + Chars.LF;
     Result         = OPI_TCP.SendData(ServerObject, ConnectionID, ServerResponse);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "CompleteSend", "SendingServer");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CompleteSend", "SendingServer");
 
     OPI_TCP.CloseConnection(ClientObject);
     OPI_TCP.StopServer(ServerObject);
@@ -708,7 +714,7 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionList");
 
     OPI_TCP.CloseConnection(Client1);
     OPI_TCP.CloseConnection(Client2);
@@ -723,7 +729,7 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     Result = OPI_TCP.GetConnectionList(ServerObject);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionList", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionList", "Closing");
 
     OPI_TCP.StopServer(ServerObject);
 
@@ -751,7 +757,7 @@ Procedure TCP_FinishReceiving(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "FinishReceiving");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "FinishReceiving");
 
     OPI_TCP.CloseConnection(ClientObject);
     OPI_TCP.StopServer(ServerObject);
@@ -767,14 +773,14 @@ Procedure TCP_IsServerObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "IsServerObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "IsServerObject");
 
     OPI_TCP.StopServer(Host);
 
     // Check with wrong object
     Result = OPI_TCP.IsServerObject("Not a server");
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "IsServerObject", "False");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "IsServerObject", "False");
 
 EndProcedure
 
@@ -798,7 +804,7 @@ Procedure TCP_GetLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLog", , LogFile);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLog", , LogFile);
 
 EndProcedure
 
@@ -808,15 +814,15 @@ Procedure TCP_GetLoggingSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLoggingSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings");
 
     Result = OPI_TCP.GetLoggingSettings(False, , GetTempFileName());
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLoggingSettings", "File");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings", "File");
 
     Result = OPI_TCP.GetLoggingSettings(True);
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLoggingSettings", "Memory");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings", "Memory");
 
 EndProcedure
 

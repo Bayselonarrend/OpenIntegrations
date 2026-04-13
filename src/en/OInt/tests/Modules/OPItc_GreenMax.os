@@ -286,7 +286,7 @@ Procedure GreenMax_FormAccessParameters(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "FormAccessParameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "FormAccessParameters");
 
 EndProcedure
 
@@ -314,7 +314,7 @@ Procedure GreenMax_GetAuthorizationCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetAuthorizationCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetAuthorizationCode");
 
 EndProcedure
 
@@ -339,7 +339,7 @@ Procedure GreenMax_LogoutInstance(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "LogoutInstance");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "LogoutInstance");
 
 EndProcedure
 
@@ -367,7 +367,7 @@ Procedure GreenMax_SendAuthorizationCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendAuthorizationCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendAuthorizationCode");
 
 EndProcedure
 
@@ -392,7 +392,7 @@ Procedure GreenMax_GetInstanceStatus(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetInstanceStatus");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetInstanceStatus");
 
 EndProcedure
 
@@ -417,7 +417,7 @@ Procedure GreenMax_RebootInstance(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "RebootInstance");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "RebootInstance");
 
 EndProcedure
 
@@ -429,14 +429,14 @@ Procedure GreenMax_GetInstanceSettingsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetInstanceSettingsStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetInstanceSettingsStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetInstanceSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMAx", "GetInstanceSettingsStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMAx", "GetInstanceSettingsStructure", "Clear");
 
 EndProcedure
 
@@ -461,7 +461,7 @@ Procedure GreenMax_GetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetInstanceSettings", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetInstanceSettings", , FunctionParameters);
 
 EndProcedure
 
@@ -493,7 +493,7 @@ Procedure GreenMax_SetInstanceSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SetInstanceSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SetInstanceSettings");
 
 EndProcedure
 
@@ -521,7 +521,7 @@ Procedure GreenMax_SetProfilePicture(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SetProfilePicture");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SetProfilePicture");
 
 EndProcedure
 
@@ -546,7 +546,7 @@ Procedure GreenMax_GetAccountInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetAccountInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetAccountInformation");
 
 EndProcedure
 
@@ -575,7 +575,7 @@ Procedure GreenMax_CheckAccount(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "CheckAccount", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "CheckAccount", , FunctionParameters);
 
 EndProcedure
 
@@ -603,7 +603,7 @@ Procedure GreenMax_GetContactList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetContactList", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetContactList", , FunctionParameters);
 
 EndProcedure
 
@@ -632,7 +632,7 @@ Procedure GreenMax_GetContactInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetContactInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetContactInformation");
 
 EndProcedure
 
@@ -657,7 +657,7 @@ Procedure GreenMax_GetChatList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetChatList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetChatList");
 
 EndProcedure
 
@@ -686,7 +686,7 @@ Procedure GreenMax_GetChatAvatar(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetChatAvatar");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetChatAvatar");
 
 EndProcedure
 
@@ -718,7 +718,7 @@ Procedure GreenMax_CreateGroup(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "CreateGroup", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "CreateGroup", , FunctionParameters);
 
 EndProcedure
 
@@ -751,7 +751,7 @@ Procedure GreenMax_AddGroupMember(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "AddGroupMember");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "AddGroupMember");
 
     GreenMax_RemoveGroupMember(FunctionParameters);
 
@@ -786,7 +786,7 @@ Procedure GreenMax_RemoveGroupMember(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "RemoveGroupMember");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "RemoveGroupMember");
 
 EndProcedure
 
@@ -815,7 +815,7 @@ Procedure GreenMax_LeaveGroup(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "LeaveGroup");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "LeaveGroup");
 
 EndProcedure
 
@@ -846,7 +846,7 @@ Procedure GreenMax_UpdateGroupName(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "UpdateGroupName");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "UpdateGroupName");
 
 EndProcedure
 
@@ -875,7 +875,7 @@ Procedure GreenMax_GetGroupInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetGroupInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetGroupInformation");
 
 EndProcedure
 
@@ -910,7 +910,7 @@ Procedure GreenMax_ChangeGroupSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "ChangeGroupSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "ChangeGroupSettings");
 
 EndProcedure
 
@@ -922,14 +922,14 @@ Procedure GreenMax_GetGroupSettingsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetGroupSettingsStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetGroupSettingsStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetGroupSettingsStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetGroupSettingsStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetGroupSettingsStructure", "Clear");
 
 EndProcedure
 
@@ -962,7 +962,7 @@ Procedure GreenMax_SetAdminRights(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SetAdminRights");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SetAdminRights");
 
 EndProcedure
 
@@ -995,7 +995,7 @@ Procedure GreenMax_RevokeAdminRights(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "RevokeAdminRights");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "RevokeAdminRights");
 
 EndProcedure
 
@@ -1027,7 +1027,7 @@ Procedure GreenMax_SetGroupPicture(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SetGroupPicture");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SetGroupPicture");
 
 EndProcedure
 
@@ -1061,7 +1061,7 @@ Procedure GreenMax_SendTextMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendTextMessage", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendTextMessage", , FunctionParameters);
 
 EndProcedure
 
@@ -1097,7 +1097,7 @@ Procedure GreenMax_SendFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendFile", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendFile", , FunctionParameters);
 
     File     = FunctionParameters["Video"];
     FileName = "vid.mp4";
@@ -1114,7 +1114,7 @@ Procedure GreenMax_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendFile", "Video");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendFile", "Video");
 
 EndProcedure
 
@@ -1149,7 +1149,7 @@ Procedure GreenMax_SendFileByURL(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendFileByURL");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendFileByURL");
 
     File     = FunctionParameters["Video"];
     FileName = "vid.mp4";
@@ -1165,7 +1165,7 @@ Procedure GreenMax_SendFileByURL(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFileByURL", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "SendFileByURL", "Typing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "SendFileByURL", "Typing");
 
 EndProcedure
 
@@ -1190,7 +1190,7 @@ Procedure GreenMax_GetNotification(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetNotification", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetNotification", , FunctionParameters);
 
 EndProcedure
 
@@ -1218,7 +1218,7 @@ Procedure GreenMax_DeleteNotification(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "DeleteNotification", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "DeleteNotification", , FunctionParameters);
 
 EndProcedure
 
@@ -1248,7 +1248,7 @@ Procedure GreenMax_MarkMessagesAsRead(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "MarkMessagesAsRead");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "MarkMessagesAsRead");
 
 EndProcedure
 
@@ -1280,7 +1280,7 @@ Procedure GreenMax_GetChatMessageHistory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetChatMessageHistory", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetChatMessageHistory", , FunctionParameters);
 
 EndProcedure
 
@@ -1312,7 +1312,7 @@ Procedure GreenMax_GetChatMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetChatMessage", , MessageID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetChatMessage", , MessageID);
 
 EndProcedure
 
@@ -1340,7 +1340,7 @@ Procedure GreenMax_GetIncomingMessageLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetIncomingMessageLog");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetIncomingMessageLog");
 
 EndProcedure
 
@@ -1368,7 +1368,7 @@ Procedure GreenMax_GetOutgoingMessageLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetOutgoingMessageLog");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetOutgoingMessageLog");
 
 EndProcedure
 
@@ -1393,7 +1393,7 @@ Procedure GreenMax_GetOutgoingMessageCount(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetOutgoingMessageCount");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetOutgoingMessageCount");
 
 EndProcedure
 
@@ -1418,7 +1418,7 @@ Procedure GreenMax_GetOutgoingMessageQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetOutgoingMessageQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetOutgoingMessageQueue");
 
 EndProcedure
 
@@ -1443,7 +1443,7 @@ Procedure GreenMax_ClearOutgoingMessageQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "ClearOutgoingMessageQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "ClearOutgoingMessageQueue");
 
 EndProcedure
 
@@ -1468,7 +1468,7 @@ Procedure GreenMax_GetIncomingNotificationCount(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "GetIncomingNotificationCount");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "GetIncomingNotificationCount");
 
 EndProcedure
 
@@ -1493,7 +1493,7 @@ Procedure GreenMax_ClearIncomingNotificationQueue(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenMax", "ClearIncomingNotificationQueue");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GreenMax", "ClearIncomingNotificationQueue");
 
 EndProcedure
 

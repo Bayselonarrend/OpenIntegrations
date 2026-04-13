@@ -579,6 +579,7 @@ Function GetHttpClient()
         // !OInt Try AttachScript(ClientPath, "OPI_HTTPRequests"); Except EndTry;
 
         //@skip-check bsl-legacy-check-string-literal
+        //@skip-check bsl-legacy-check-method-for-statements-after-return
         HttpClient = New("OPI_HTTPRequests");
         Return HttpClient;
 

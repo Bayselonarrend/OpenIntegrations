@@ -138,7 +138,7 @@ Procedure RCON_FormConnectionParameters(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RCON", "FormConnectionParameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "FormConnectionParameters");
 
 EndProcedure
 
@@ -160,7 +160,7 @@ Procedure RCON_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RCON", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "CreateConnection");
 
 EndProcedure
 
@@ -189,7 +189,7 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RCON", "ExecuteCommand");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "ExecuteCommand");
 
     Command = "list";
     Options = New Structure;
@@ -198,7 +198,7 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "RCON", "ExecuteCommand", "No connection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "ExecuteCommand", "No connection");
 
 EndProcedure
 
@@ -221,7 +221,7 @@ Procedure RCON_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "RCON", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "IsConnector");
 
 EndProcedure
 

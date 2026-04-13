@@ -186,7 +186,7 @@ Procedure GoogleCalendar_FormCodeRetrievalLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "FormCodeRetrievalLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "FormCodeRetrievalLink");
 
 EndProcedure
 
@@ -205,7 +205,7 @@ Procedure GoogleCalendar_GetTokenByCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetTokenByCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetTokenByCode");
 
 EndProcedure
 
@@ -224,7 +224,7 @@ Procedure GoogleCalendar_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "RefreshToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "RefreshToken");
 
 EndProcedure
 
@@ -253,7 +253,7 @@ Procedure GoogleCalendar_GetServiceAccountToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetServiceAccountToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetServiceAccountToken");
 
 EndProcedure
 
@@ -267,7 +267,7 @@ Procedure GoogleCalendar_GetCalendarList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetCalendarList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetCalendarList");
 
 EndProcedure
 
@@ -284,7 +284,7 @@ Procedure GoogleCalendar_CreateCalendar(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "CreateCalendar", , FunctionParameters, Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "CreateCalendar", , FunctionParameters, Name);
 
 EndProcedure
 
@@ -305,7 +305,7 @@ Procedure GoogleCalendar_EditCalendarMetadata(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "EditCalendarMetadata", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "EditCalendarMetadata", , Name, Description);
 
 EndProcedure
 
@@ -325,7 +325,7 @@ Procedure GoogleCalendar_GetCalendarMetadata(FunctionParameters)
     Name        = "New name";
     Description = "New description";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetCalendarMetadata", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetCalendarMetadata", , Name, Description);
 
 EndProcedure
 
@@ -345,7 +345,7 @@ Procedure GoogleCalendar_AddCalendarToList(FunctionParameters)
     Name        = "New name";
     Description = "New description";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "AddCalendarToList", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "AddCalendarToList", , Name, Description);
 
 EndProcedure
 
@@ -368,7 +368,7 @@ Procedure GoogleCalendar_EditListCalendar(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "EditListCalendar", , PrimaryColor, SecondaryColor);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "EditListCalendar", , PrimaryColor, SecondaryColor);
 
 EndProcedure
 
@@ -388,7 +388,7 @@ Procedure GoogleCalendar_GetListCalendar(FunctionParameters)
     PrimaryColor   = "#000000";
     SecondaryColor = "#ffd800";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetListCalendar", , PrimaryColor, SecondaryColor);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetListCalendar", , PrimaryColor, SecondaryColor);
 
 EndProcedure
 
@@ -403,7 +403,7 @@ Procedure GoogleCalendar_ClearMainCalendar(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "ClearMainCalendar");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "ClearMainCalendar");
 
 EndProcedure
 
@@ -420,7 +420,7 @@ Procedure GoogleCalendar_DeleteCalendarFromList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "DeleteCalendarFromList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "DeleteCalendarFromList");
 
 EndProcedure
 
@@ -437,7 +437,7 @@ Procedure GoogleCalendar_DeleteCalendar(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "DeleteCalendar");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "DeleteCalendar");
 
 EndProcedure
 
@@ -475,7 +475,7 @@ Procedure GoogleCalendar_CreateEvent(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "CreateEvent", , FunctionParameters, Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "CreateEvent", , FunctionParameters, Name, Description);
 
 EndProcedure
 
@@ -501,7 +501,7 @@ Procedure GoogleCalendar_EditEvent(FunctionParameters)
 
     Name = "New event";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "EditEvent", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "EditEvent", , Name, Description);
 
 EndProcedure
 
@@ -523,7 +523,7 @@ Procedure GoogleCalendar_GetEvent(FunctionParameters)
     Name        = "New event";
     Description = "New event description";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetEvent", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetEvent", , Name, Description);
 
 EndProcedure
 
@@ -548,7 +548,7 @@ Procedure GoogleCalendar_MoveEvent(FunctionParameters)
     Name        = "New event";
     Description = "New event description";
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "MoveEvent", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "MoveEvent", , Name, Description);
 
     OPI_GoogleCalendar.MoveEvent(Token, TargetCalendar, SourceCalendar, Event);
 
@@ -569,7 +569,7 @@ Procedure GoogleCalendar_DeleteEvent(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "DeleteEvent");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "DeleteEvent");
 
 EndProcedure
 
@@ -586,7 +586,7 @@ Procedure GoogleCalendar_GetEventList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetEventList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetEventList");
 
 EndProcedure
 
@@ -600,7 +600,7 @@ Procedure GoogleCalendar_GetEventDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleCalendar", "GetEventDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleCalendar", "GetEventDescription");
 
 EndProcedure
 

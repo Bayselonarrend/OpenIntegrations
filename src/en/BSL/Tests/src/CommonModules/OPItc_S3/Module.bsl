@@ -192,7 +192,7 @@ Procedure S3_GetBasicDataStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetBasicDataStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetBasicDataStructure");
 
 EndProcedure
 
@@ -220,7 +220,7 @@ Procedure S3_SendRequestWithoutBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "SendRequestWithoutBody");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "SendRequestWithoutBody");
 
 EndProcedure
 
@@ -251,7 +251,7 @@ Procedure S3_SendRequestWithBody(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "SendRequestWithBody");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "SendRequestWithBody");
 
 EndProcedure
 
@@ -277,7 +277,7 @@ Procedure S3_CreateBucket(FunctionParameters)
     Name = ?(Directory, FunctionParameters["S3_DB"], FunctionParameters["S3_GPB"]); // SKIP
 
     Result = OPI_S3.DeleteBucket(Name, BasicData, Directory); // SKIP
-    OPI_TestDataRetrieval.Process(Result, "S3", "CreateBucket", "Deletion"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "CreateBucket", "Deletion"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -288,7 +288,7 @@ Procedure S3_CreateBucket(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "CreateBucket");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "CreateBucket");
 
 EndProcedure
 
@@ -322,7 +322,7 @@ Procedure S3_DeleteBucket(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "DeleteBucket");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "DeleteBucket");
 
 EndProcedure
 
@@ -347,7 +347,7 @@ Procedure S3_ListBuckets(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "ListBuckets");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "ListBuckets");
 
 EndProcedure
 
@@ -379,7 +379,7 @@ Procedure S3_HeadBucket(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "HeadBucket"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "HeadBucket"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -391,7 +391,7 @@ Procedure S3_HeadBucket(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "HeadBucket", "Account");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "HeadBucket", "Account");
 
 EndProcedure
 
@@ -425,7 +425,7 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetBucketEncryption");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetBucketEncryption");
 
 EndProcedure
 
@@ -459,7 +459,7 @@ Procedure S3_DeleteBucketEncryption(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "DeleteBucketEncryption");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "DeleteBucketEncryption");
 
 EndProcedure
 
@@ -508,7 +508,7 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
 
     OPI_Tools.RemoveFileWithTry(XmlConfig, "Error deleting file after test");
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutBucketEncryption");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutBucketEncryption");
 
 EndProcedure
 
@@ -542,7 +542,7 @@ Procedure S3_GetBucketTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetBucketTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetBucketTagging");
 
 EndProcedure
 
@@ -580,7 +580,7 @@ Procedure S3_PutBucketTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutBucketTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutBucketTagging");
 
 EndProcedure
 
@@ -613,7 +613,7 @@ Procedure S3_DeleteBucketTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "DeleteBucketTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "DeleteBucketTagging");
 
 EndProcedure
 
@@ -646,7 +646,7 @@ Procedure S3_GetBucketVersioning(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetBucketVersioning");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetBucketVersioning");
 
 EndProcedure
 
@@ -681,7 +681,7 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutBucketVersioning");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutBucketVersioning");
 
 EndProcedure
 
@@ -718,7 +718,7 @@ Procedure S3_PutObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutObject"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutObject"); // SKIP
 
     Name   = "fileChunked.mp3";
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
@@ -736,7 +736,7 @@ Procedure S3_PutObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutObject", "ByParts");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutObject", "ByParts");
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData, , , Directory);
 
@@ -777,7 +777,7 @@ Procedure S3_UploadFullObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "UploadFullObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "UploadFullObject");
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData, , , Directory);
 
@@ -816,7 +816,7 @@ Procedure S3_DeleteObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "DeleteObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "DeleteObject");
 
 EndProcedure
 
@@ -853,7 +853,7 @@ Procedure S3_HeadObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "HeadObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "HeadObject");
 
 EndProcedure
 
@@ -894,7 +894,7 @@ Procedure S3_CopyObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "CopyObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "CopyObject");
 
     OPI_S3.DeleteObject(DestinationPath, SourceBucket, BasicData, , , Directory);
 
@@ -939,7 +939,7 @@ Procedure S3_PutObjectTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "PutObjectTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutObjectTagging");
 
 EndProcedure
 
@@ -976,7 +976,7 @@ Procedure S3_GetObjectTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObjectTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObjectTagging");
 
 EndProcedure
 
@@ -1013,7 +1013,7 @@ Procedure S3_DeleteObjectTagging(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "DeleteObjectTagging");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "DeleteObjectTagging");
 
 EndProcedure
 
@@ -1047,7 +1047,7 @@ Procedure S3_ListObjects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "ListObjects");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "ListObjects");
 
 EndProcedure
 
@@ -1083,7 +1083,7 @@ Procedure S3_ListObjectVersions(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "ListObjectVersions");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "ListObjectVersions");
 
 EndProcedure
 
@@ -1122,7 +1122,7 @@ Procedure S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObject", , RequiredSize); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", , RequiredSize); // SKIP
 
     TempFile = GetTempFileName();
     BasicData.Insert("ChunkSize", 200000);
@@ -1137,7 +1137,7 @@ Procedure S3_GetObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObject", "File", RequiredSize);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "File", RequiredSize);
 
     Name   = "bigfile.exe";
     Bucket = "newbucket2";
@@ -1151,7 +1151,7 @@ Procedure S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObject", "Big file", 34432400);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big file", 34432400);
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -1160,7 +1160,7 @@ Procedure S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObject", "Big BD", 34432400);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big BD", 34432400);
 
     OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!!");
     OPI_Tools.RemoveFileWithTry(TempFile   , "Failed to delete the temporary file after the test!!");
@@ -1202,7 +1202,7 @@ Procedure S3_InitPartsUpload(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "InitPartsUpload"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "InitPartsUpload"); // SKIP
 
     UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
     TotalSize  = Entity.Size();
@@ -1231,7 +1231,7 @@ Procedure S3_InitPartsUpload(FunctionParameters)
             , CurrentData
             , Directory);
 
-        OPI_TestDataRetrieval.Process(Result, "S3", "InitPartsUpload", "Part"); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "InitPartsUpload", "Part"); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
 
@@ -1256,7 +1256,7 @@ Procedure S3_InitPartsUpload(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "InitPartsUpload", "Completion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "InitPartsUpload", "Completion");
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
@@ -1296,7 +1296,7 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "FinishPartsUpload", "Start"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "FinishPartsUpload", "Start"); // SKIP
 
     UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
     TotalSize  = Entity.Size();
@@ -1325,7 +1325,7 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
             , CurrentData
             , Directory);
 
-        OPI_TestDataRetrieval.Process(Result, "S3", "FinishPartsUpload", "Part"); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "FinishPartsUpload", "Part"); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
 
@@ -1351,7 +1351,7 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "FinishPartsUpload");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "FinishPartsUpload");
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
@@ -1391,7 +1391,7 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "UploadObjectPart", "Start"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "UploadObjectPart", "Start"); // SKIP
 
     UploadID   = Result["response"]["InitiateMultipartUploadResult"]["UploadId"];
     TotalSize  = Entity.Size();
@@ -1422,7 +1422,7 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-        OPI_TestDataRetrieval.Process(Result, "S3", "UploadObjectPart"); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "UploadObjectPart"); // SKIP
 
         BytesRead = SourceStream.CurrentPosition();
 
@@ -1447,7 +1447,7 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "UploadObjectPart", "Completion"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "UploadObjectPart", "Completion"); // SKIP
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
 
@@ -1496,7 +1496,7 @@ Procedure S3_AbortMultipartUpload(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "AbortMultipartUpload");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "AbortMultipartUpload");
 
 EndProcedure
 
@@ -1538,11 +1538,11 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObjectDownloadLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObjectDownloadLink");
 
     Result = OPI_HTTPRequests.Get(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObjectDownloadLink", "Check", RequiredSize);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObjectDownloadLink", "Check", RequiredSize);
 
 EndProcedure
 
@@ -1583,14 +1583,14 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObjectUploadLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObjectUploadLink");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(Result)
         .SetBinaryBody(Image)
         .ProcessRequest("PUT");
 
-    OPI_TestDataRetrieval.Process(Result, "S3", "GetObjectUploadLink", "Upload");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObjectUploadLink", "Upload");
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -1599,7 +1599,7 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadObject", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "S3", "GetObjectUploadLink", "Check", RequiredSize);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "S3", "GetObjectUploadLink", "Check", RequiredSize);
 
     OPI_S3.DeleteObject(Name, Bucket, BasicData);
 

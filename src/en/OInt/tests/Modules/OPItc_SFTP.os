@@ -247,7 +247,7 @@ Procedure SFTP_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "CreateConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "CreateConnection", Postfix);
 
 EndProcedure
 
@@ -342,7 +342,7 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "CreateNewDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "CreateNewDirectory", Postfix);
 
 EndProcedure
 
@@ -437,7 +437,7 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "DeleteDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "DeleteDirectory", Postfix);
 
 EndProcedure
 
@@ -531,7 +531,7 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetCurrentDirectory", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetCurrentDirectory", Postfix);
 
 EndProcedure
 
@@ -627,7 +627,7 @@ Procedure SFTP_ListObjects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "ListObjects", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "ListObjects", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -635,7 +635,7 @@ Procedure SFTP_ListObjects(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "ListObjects", Postfix + ", No recursion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "ListObjects", Postfix + ", No recursion");
 
 EndProcedure
 
@@ -750,8 +750,8 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     UploadedFile = New File(Image);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UploadFile", Postfix             , UploadedFile.Size());
-    OPI_TestDataRetrieval.Process(Result2, "SFTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UploadFile", Postfix             , UploadedFile.Size());
+    OPI_TestDataRetrieval.ProcessCLI(Result2, "SFTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
 
     FileSizeLocal   = UploadedFile.Size();
     FileSizeLocalBD = ImageDD.Size();
@@ -759,8 +759,8 @@ Procedure SFTP_UploadFile(FunctionParameters)
     FileSizeRemote   = OPI_SFTP.GetFileInformation(Connection, "pic_from_disk.png")["data"]["size"];
     FileSizeRemoteBD = OPI_SFTP.GetFileInformation(Connection, "files_folder/pic_from_binary.png")["data"]["size"];
 
-    OPI_TestDataRetrieval.Process(FileSizeLocal  , "SFTP", "SaveFile", "File size, " + Postfix    , FileSizeRemote);
-    OPI_TestDataRetrieval.Process(FileSizeLocalBD, "SFTP", "SaveFile", "File size, BD, " + Postfix, FileSizeRemoteBD);
+    OPI_TestDataRetrieval.ProcessCLI(FileSizeLocal  , "SFTP", "SaveFile", "File size, " + Postfix    , FileSizeRemote);
+    OPI_TestDataRetrieval.ProcessCLI(FileSizeLocalBD, "SFTP", "SaveFile", "File size, BD, " + Postfix, FileSizeRemoteBD);
 
     For N = 1 To 7 Do
 
@@ -768,11 +768,11 @@ Procedure SFTP_UploadFile(FunctionParameters)
         Result2 = OPI_SFTP.UploadFile(Connection, ImageDD, "files_folder/pic_from_binary.png");
 
         If Not Result["result"] Then
-            OPI_TestDataRetrieval.Process(Result, "SFTP", "UploadFile", "Multiple, " + Postfix, ImageDD.Size());
+            OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "UploadFile", "Multiple, " + Postfix, ImageDD.Size());
         EndIf;
 
         If Not Result2["result"] Then
-            OPI_TestDataRetrieval.Process(Result2, "SFTP", "UploadFile", "Multiple, binary, " + Postfix, ImageDD.Size());
+            OPI_TestDataRetrieval.ProcessCLI(Result2, "SFTP", "UploadFile", "Multiple, binary, " + Postfix, ImageDD.Size());
         EndIf;
 
     EndDo;
@@ -872,7 +872,7 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "DeleteFile", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "DeleteFile", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -880,7 +880,7 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "DeleteFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "DeleteFile", "Nonexistent, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "DeleteFile", "Nonexistent, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -889,7 +889,7 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "DeleteFile", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "DeleteFile", "Check, " + Postfix);
 
 EndProcedure
 
@@ -975,11 +975,11 @@ Procedure SFTP_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "IsConnector", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "IsConnector", Postfix);
 
     Result = OPI_SFTP.IsConnector("a");
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "IsConnector", "Error, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "IsConnector", "Error, " + Postfix);
 
 EndProcedure
 
@@ -1002,7 +1002,7 @@ Procedure SFTP_GetSettingsLoginPassword(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetSettingsLoginPassword", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetSettingsLoginPassword", Postfix);
 
 EndProcedure
 
@@ -1030,7 +1030,7 @@ Procedure SFTP_GetSettingsPrivateKey(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetSettingsPrivateKey", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetSettingsPrivateKey", Postfix);
 
 EndProcedure
 
@@ -1050,7 +1050,7 @@ Procedure SFTP_GetSettingsViaAgent(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetSettingsViaAgent", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetSettingsViaAgent", Postfix);
 
 EndProcedure
 
@@ -1077,7 +1077,7 @@ Procedure SFTP_GetSettingsKI(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetSettingsKI", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetSettingsKI", Postfix);
 
 EndProcedure
 
@@ -1103,7 +1103,7 @@ Procedure SFTP_GetProxySettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetProxySettings", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetProxySettings", Postfix);
 
 EndProcedure
 
@@ -1192,7 +1192,7 @@ Procedure SFTP_GetConnectionConfiguration(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetConnectionConfiguration", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetConnectionConfiguration", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Result);
@@ -1200,7 +1200,7 @@ Procedure SFTP_GetConnectionConfiguration(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "ExecuteCommand", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetConnectionConfiguration", "Check, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetConnectionConfiguration", "Check, " + Postfix);
 
 EndProcedure
 
@@ -1291,7 +1291,7 @@ Procedure SFTP_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "CloseConnection", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "CloseConnection", Postfix);
 
 EndProcedure
 
@@ -1392,13 +1392,13 @@ Procedure SFTP_SaveFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "SaveFile", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "SaveFile", Postfix);
 
     UploadedFile   = New File(FileName);
     FileSizeLocal  = UploadedFile.Size();
     FileSizeRemote = OPI_SFTP.GetFileInformation(Connection, Path)["data"]["size"];
 
-    OPI_TestDataRetrieval.Process(FileSizeLocal, "SFTP", "SaveFile", "File size, " + Postfix, FileSizeRemote);
+    OPI_TestDataRetrieval.ProcessCLI(FileSizeLocal, "SFTP", "SaveFile", "File size, " + Postfix, FileSizeRemote);
 
     Path = "files_folder/pic_from_binary.png";
 
@@ -1407,7 +1407,7 @@ Procedure SFTP_SaveFile(FunctionParameters)
         Result = OPI_SFTP.SaveFile(Connection, Path, FileName);
 
         If Not Result["result"] Then
-            OPI_TestDataRetrieval.Process(Result, "SFTP", "SaveFile", "Multiple, " + Postfix);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "SaveFile", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -1506,12 +1506,12 @@ Procedure SFTP_GetFileData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SFTP", "GetFileData", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetFileData", Postfix);
 
     FileSizeLocal  = Result.Size();
     FileSizeRemote = OPI_SFTP.GetFileInformation(Connection, Path)["data"]["size"];
 
-    OPI_TestDataRetrieval.Process(FileSizeLocal, "SFTP", "GetFileData", "File size, " + Postfix, FileSizeRemote);
+    OPI_TestDataRetrieval.ProcessCLI(FileSizeLocal, "SFTP", "GetFileData", "File size, " + Postfix, FileSizeRemote);
 
     Path = "files_folder/pic_from_binary.png";
 
@@ -1520,7 +1520,7 @@ Procedure SFTP_GetFileData(FunctionParameters)
         Result = OPI_SFTP.GetFileData(Connection, Path);
 
         If Not TypeOf(Result) = Type("BinaryData") Then
-            OPI_TestDataRetrieval.Process(Result, "SFTP", "GetFileData", "Multiple, " + Postfix);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "GetFileData", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -1619,7 +1619,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1627,7 +1627,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", "Check, Old, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", "Check, Old, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1635,7 +1635,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", "Check, New, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", "Check, New, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1644,7 +1644,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "UpdatePath", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", "Back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", "Back, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1652,7 +1652,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", "Check, Old, Back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", "Check, Old, Back, " + Postfix);
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -1660,7 +1660,7 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "UpdatePath", "Check, New, Back, " + Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "UpdatePath", "Check, New, Back, " + Postfix);
 
 EndProcedure
 
@@ -1755,7 +1755,7 @@ Procedure SFTP_GetFileInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result , "SFTP", "GetFileInformation", Postfix);
+    OPI_TestDataRetrieval.ProcessCLI(Result , "SFTP", "GetFileInformation", Postfix);
 
 EndProcedure
 

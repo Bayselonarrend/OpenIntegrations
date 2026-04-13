@@ -171,7 +171,7 @@ Procedure MySQL_GenerateConnectionString(FunctionParameters)
     Result = StrReplace(Result, Password, "***");
     Result = StrReplace(Result, Address , "127.0.0.1");
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GenerateConnectionString");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GenerateConnectionString");
 
 EndProcedure
 
@@ -211,7 +211,7 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     // END
 
     OPI_MySQL.CloseConnection(Result);
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateConnection");
 
 EndProcedure
 
@@ -251,7 +251,7 @@ Procedure MySQL_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CloseConnection");
 
 EndProcedure
 
@@ -293,7 +293,7 @@ Procedure MySQL_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "IsConnector");
 
 EndProcedure
 
@@ -337,7 +337,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     OPI_MySQL.DeleteTable("test_data" , Connection); // SKIP
     OPI_MySQL.DeleteTable("test_table", Connection); // SKIP
 
-    OPI_TestDataRetrieval.Process(Connection, "MySQL", "ExecuteSQLQuery", "Connection"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "MySQL", "ExecuteSQLQuery", "Connection"); // SKIP
 
     // CREATE
 
@@ -360,7 +360,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", "Create"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ExecuteSQLQuery", "Create"); // SKIP
 
     // INSERT with parameters
 
@@ -385,7 +385,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", "Insert"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ExecuteSQLQuery", "Insert"); // SKIP
 
     // SELECT (The result of this query is shown in the Result block)
 
@@ -397,10 +397,10 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", , Image); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ExecuteSQLQuery", , Image); // SKIP
 
     Result = OPI_MySQL.ExecuteSQLQuery("create table test_data (id INT,first_name VARCHAR(50),last_name VARCHAR(50),email VARCHAR(50),gender VARCHAR(50),ip_address VARCHAR(20));", , , Connection); // SKIP
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", "Test data"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ExecuteSQLQuery", "Test data"); // SKIP
 
     // SQL query from file
 
@@ -412,13 +412,13 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", "File"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ExecuteSQLQuery", "File"); // SKIP
 
     Closing = OPI_MySQL.CloseConnection(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Closing, "MySQL", "ExecuteSQLQuery", "Closing"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "MySQL", "ExecuteSQLQuery", "Closing"); // SKIP
 
 EndProcedure
 
@@ -470,14 +470,14 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateDatabase");
 
     Base = "testbase2";
     OPI_MySQL.DeleteDatabase(Base, ConnectionString, TLSSettings);
 
     Connection = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "MySQL", "CreateDatabase", "Openning");
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "MySQL", "CreateDatabase", "Openning");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -486,7 +486,7 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateDatabase", "Creation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateDatabase", "Creation");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -495,7 +495,7 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateDatabase", "Existing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateDatabase", "Existing");
 
     OPI_MySQL.CloseConnection(Connection);
 
@@ -570,7 +570,7 @@ Procedure MySQL_CreateTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateTable");
 
     Table = "ABC DEF";
 
@@ -582,7 +582,7 @@ Procedure MySQL_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateTable", "Name error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateTable", "Name error");
 
     Table = "somename";
     ColoumnsStruct.Insert("wtf_field", "WTF");
@@ -595,7 +595,7 @@ Procedure MySQL_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "CreateTable", "Type error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "CreateTable", "Type error");
 
 EndProcedure
 
@@ -677,7 +677,7 @@ Procedure MySQL_AddRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "AddRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "AddRecords");
 
 EndProcedure
 
@@ -727,7 +727,7 @@ Procedure MySQL_GetRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetRecords"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetRecords"); // SKIP
 
     // Filter, selected fields, limit and sorting
 
@@ -783,7 +783,7 @@ Procedure MySQL_GetRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetRecords", "Filters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetRecords", "Filters");
 
 EndProcedure
 
@@ -835,7 +835,7 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
     Filters.Add(FilterStructure);
 
     Count = OPI_MySQL.GetRecords(Table, , Filters, , , ConnectionString, TLSSettings); // SKIP
-    OPI_TestDataRetrieval.Process(Count, "MySQL", "UpdateRecords", "Count"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Count, "MySQL", "UpdateRecords", "Count"); // SKIP
     Count = Count["data"].Count(); // SKIP
 
     // When using the connection string, a new connection is initialised,
@@ -853,7 +853,7 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "UpdateRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "UpdateRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -864,7 +864,7 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "MySQL", "UpdateRecords", "Check", Count, FieldsStructure);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "MySQL", "UpdateRecords", "Check", Count, FieldsStructure);
 
 EndProcedure
 
@@ -936,12 +936,12 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Obtaining, "MySQL", "DeleteRecords", "Obtaining");
+    OPI_TestDataRetrieval.ProcessCLI(Obtaining, "MySQL", "DeleteRecords", "Obtaining");
 
     Count   = Obtaining["data"].Count();
     Residue = 100 - Count;
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -950,7 +950,7 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteRecords", "Check", Residue);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteRecords", "Check", Residue);
 
 EndProcedure
 
@@ -1000,7 +1000,7 @@ Procedure MySQL_DeleteTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteTable");
 
     Base  = "test_data";
     Table = "test_data";
@@ -1020,7 +1020,7 @@ Procedure MySQL_DeleteTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteTable", "Test");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteTable", "Test");
 
 EndProcedure
 
@@ -1070,13 +1070,13 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteDatabase");
 
     Base = "testbase2";
 
     Connection = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings);
 
-    OPI_TestDataRetrieval.Process(Connection, "MySQL", "DeleteDatabase", "Openning");
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "MySQL", "DeleteDatabase", "Openning");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1084,7 +1084,7 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteDatabase", "Deletion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteDatabase", "Deletion");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1092,11 +1092,11 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteDatabase", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteDatabase", "Error");
 
     Closing = OPI_MySQL.CloseConnection(Connection);
 
-    OPI_TestDataRetrieval.Process(Closing, "MySQL", "DeleteDatabase", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "MySQL", "DeleteDatabase", "Closing");
 
     Options = New Structure;
     Options.Insert("base", Base);
@@ -1104,7 +1104,7 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteDatabase", "Connection error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteDatabase", "Connection error");
 
 EndProcedure
 
@@ -1154,7 +1154,7 @@ Procedure MySQL_ClearTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ClearTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ClearTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1163,7 +1163,7 @@ Procedure MySQL_ClearTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "ClearTable", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "ClearTable", "Check");
 
 EndProcedure
 
@@ -1237,7 +1237,7 @@ Procedure MySQL_EnsureRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "EnsureRecords", "Insertion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "EnsureRecords", "Insertion");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1246,7 +1246,7 @@ Procedure MySQL_EnsureRecords(FunctionParameters)
     Options.Insert("tls", TLSSettings);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "MySQL", "EnsureRecords", "Insertion check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "MySQL", "EnsureRecords", "Insertion check");
 
     RowStructure2.Insert("name"  , New Structure("TEXT"  , "Vitaly Updated"));
     RowStructure2.Insert("salary", New Structure("DOUBLE", 1500.50));
@@ -1269,7 +1269,7 @@ Procedure MySQL_EnsureRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "EnsureRecords", "Updating");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "EnsureRecords", "Updating");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1278,7 +1278,7 @@ Procedure MySQL_EnsureRecords(FunctionParameters)
     Options.Insert("tls", TLSSettings);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "MySQL", "EnsureRecords", "Updating check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "MySQL", "EnsureRecords", "Updating check");
 
     OPI_MySQL.DeleteTable(Table, ConnectionString, TLSSettings);
 
@@ -1292,14 +1292,14 @@ Procedure MySQL_GetRecordsFilterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetRecordsFilterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetRecordsFilterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecordsFilterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetRecordsFilterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -1312,7 +1312,7 @@ Procedure MySQL_GetTLSSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetTLSSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetTLSSettings");
 
 EndProcedure
 
@@ -1362,7 +1362,7 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetTableInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetTableInformation");
 
     Table = "heyho";
 
@@ -1373,7 +1373,7 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetTableInformation", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "GetTableInformation", "Error");
 
 EndProcedure
 
@@ -1427,7 +1427,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "AddTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "AddTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1436,7 +1436,7 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "AddTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "AddTableColumn", "Check");
 
 EndProcedure
 
@@ -1488,7 +1488,7 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1497,7 +1497,7 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "DeleteTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "DeleteTableColumn", "Check");
 
 EndProcedure
 
@@ -1554,7 +1554,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "EnsureTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "EnsureTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1563,7 +1563,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
@@ -1575,7 +1575,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "MySQL", "EnsureTable", "New");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MySQL", "EnsureTable", "New");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -1584,7 +1584,7 @@ Procedure MySQL_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
 
 EndProcedure
 

@@ -185,12 +185,12 @@ Procedure SQLite_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(LocalBase   , "SQLite", "CreateConnection");
-    OPI_TestDataRetrieval.Process(InMemoryBase, "SQLite", "CreateConnection", "IM");
+    OPI_TestDataRetrieval.ProcessCLI(LocalBase   , "SQLite", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(InMemoryBase, "SQLite", "CreateConnection", "IM");
 
     Closing = OPI_SQLite.CloseConnection(LocalBase);
 
-    OPI_TestDataRetrieval.Process(Closing, "SQLite", "CreateConnection", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "SQLite", "CreateConnection", "Closing");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
@@ -202,13 +202,13 @@ Procedure SQLite_CloseConnection(FunctionParameters)
 
     Connection = OPI_SQLite.CreateConnection(TFN);
 
-    OPI_TestDataRetrieval.Process(Connection, "SQLite", "CloseConnection", "Openning"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "SQLite", "CloseConnection", "Openning"); // SKIP
 
     Closing = OPI_SQLite.CloseConnection(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Closing, "SQLite", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "SQLite", "CloseConnection");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
@@ -223,7 +223,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Connection = OPI_SQLite.CreateConnection(TFN);
 
-    OPI_TestDataRetrieval.Process(Connection, "SQLite", "ExecuteSQLQuery", "Openning"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Connection, "SQLite", "ExecuteSQLQuery", "Openning"); // SKIP
 
     // CREATE
 
@@ -244,7 +244,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Create"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Create"); // SKIP
 
     // INSERT with parameters
 
@@ -267,7 +267,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Insert"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Insert"); // SKIP
 
     // SELECT (The result of this query is shown in the Result block)
 
@@ -279,7 +279,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", , Image); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", , Image); // SKIP
 
     // Transaction
 
@@ -300,7 +300,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Transaction"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Transaction"); // SKIP
 
     // With extension
 
@@ -324,13 +324,13 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Extension"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Extension"); // SKIP
 
     Closing = OPI_SQLite.CloseConnection(Connection);
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Closing");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
@@ -343,7 +343,7 @@ Procedure SQLite_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "IsConnector");
 
 EndProcedure
 
@@ -370,7 +370,7 @@ Procedure SQLite_CreateTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "CreateTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "CreateTable");
 
     ColoumnsMap = New Map;
     ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
@@ -383,7 +383,7 @@ Procedure SQLite_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "CreateTable", "An obscure column");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "CreateTable", "An obscure column");
 
 EndProcedure
 
@@ -428,7 +428,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -438,7 +438,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords", "No transaction");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords", "No transaction");
 
     RowStructure1.Insert("error", "Lesha");
     DataArray.Add(RowStructure1);
@@ -449,7 +449,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords", "Field error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords", "Field error");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -458,7 +458,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords", "Error without transaction");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords", "Error without transaction");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -466,7 +466,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords", "JSON Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords", "JSON Error");
 
     RowMap = New Map;
     RowMap.Insert("[An obscure column]", "yo");
@@ -477,7 +477,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddRecords", "An obscure column");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddRecords", "An obscure column");
 
     OPI_Tools.RemoveFileWithTry(PictureFile, "Failed to delete the temporary file after the test!!");
 
@@ -527,7 +527,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -536,7 +536,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecords", "No parameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecords", "No parameters");
 
     FilterStructure2.Insert("type", "SOMETHING");
     Filters.Add(FilterStructure2);
@@ -549,7 +549,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecords", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecords", "Error");
 
     Options = New Structure;
     Options.Insert("table", "test1");
@@ -557,7 +557,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecords", "An obscure column");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecords", "An obscure column");
 
 EndProcedure
 
@@ -592,7 +592,7 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "UpdateRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "UpdateRecords");
 
     FilterStructure.Insert("value", "Vitaly A.");
 
@@ -607,7 +607,7 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "UpdateRecords", "Check", FieldsStructure);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "UpdateRecords", "Check", FieldsStructure);
 
 EndProcedure
 
@@ -637,7 +637,7 @@ Procedure SQLite_DeleteRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "DeleteRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "DeleteRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -647,7 +647,7 @@ Procedure SQLite_DeleteRecords(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "DeleteRecords", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "DeleteRecords", "Check");
 
 EndProcedure
 
@@ -664,7 +664,7 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetTableInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetTableInformation");
 
 EndProcedure
 
@@ -710,7 +710,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureRecords", "Insertion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureRecords", "Insertion");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -718,7 +718,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureRecords", "Insertion check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "EnsureRecords", "Insertion check");
 
     RowStructure2.Insert("name"  , "Vitaly Updated");
     RowStructure2.Insert("salary", 1500.50);
@@ -741,7 +741,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureRecords", "Updating");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureRecords", "Updating");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -749,7 +749,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
     Options.Insert("db", Base);
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureRecords", "Updating check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "EnsureRecords", "Updating check");
 
     OPI_SQLite.DeleteTable(Table, Base);
 
@@ -763,14 +763,14 @@ Procedure SQLite_GetRecordsFilterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecordsFilterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecordsFilterStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetRecordsFilterStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -787,7 +787,7 @@ Procedure SQLite_DeleteTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "DeleteTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "DeleteTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -795,7 +795,7 @@ Procedure SQLite_DeleteTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "DeleteTable", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "DeleteTable", "Check");
 
     OPI_SQLite.DeleteTable("test1", Base);
 
@@ -814,7 +814,7 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ClearTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ClearTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -822,7 +822,7 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "ClearTable", "Table");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "ClearTable", "Table");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -830,7 +830,7 @@ Procedure SQLite_ClearTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "ClearTable", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "ClearTable", "Check");
 
 EndProcedure
 
@@ -850,18 +850,18 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ConnectExtension");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ConnectExtension");
 
     TFN = GetTempFileName("dll");
     CopyFile(Extension, TFN);
 
     Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ConnectExtension", "Path");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ConnectExtension", "Path");
 
     Result = OPI_SQLite.ConnectExtension(New BinaryData(TFN), EntryPoint, Connection);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "ConnectExtension", "Binary");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ConnectExtension", "Binary");
 
     Result = OPI_SQLite.CloseConnection(Connection);
 
@@ -886,7 +886,7 @@ Procedure SQLite_AddTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -894,7 +894,7 @@ Procedure SQLite_AddTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "AddTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "AddTableColumn", "Check");
 
 EndProcedure
 
@@ -913,7 +913,7 @@ Procedure SQLite_DeleteTableColumn(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "DeleteTableColumn");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "DeleteTableColumn");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -921,7 +921,7 @@ Procedure SQLite_DeleteTableColumn(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "DeleteTableColumn", "Check");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "DeleteTableColumn", "Check");
 
 EndProcedure
 
@@ -947,7 +947,7 @@ Procedure SQLite_EnsureTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureTable");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -955,7 +955,7 @@ Procedure SQLite_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureTable", "Check", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
@@ -966,7 +966,7 @@ Procedure SQLite_EnsureTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureTable", "New");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureTable", "New");
 
     Options = New Structure;
     Options.Insert("table", Table);
@@ -974,7 +974,7 @@ Procedure SQLite_EnsureTable(FunctionParameters)
 
     Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureTable", "Check 2", ColoumnsStruct);
+    OPI_TestDataRetrieval.ProcessCLI(Check, "SQLite", "EnsureTable", "Check 2", ColoumnsStruct);
 
 EndProcedure
 

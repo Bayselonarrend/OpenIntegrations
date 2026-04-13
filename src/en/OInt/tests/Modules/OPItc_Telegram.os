@@ -389,7 +389,7 @@ Procedure Telegram_GetBotInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "GetBotInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "GetBotInformation");
 
 EndProcedure
 
@@ -403,7 +403,7 @@ Procedure Telegram_GetUpdates(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "GetUpdates");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "GetUpdates");
 
 EndProcedure
 
@@ -420,7 +420,7 @@ Procedure Telegram_SetWebhook(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SetWebhook");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SetWebhook");
 
 EndProcedure
 
@@ -434,7 +434,7 @@ Procedure Telegram_DeleteWebhook(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "DeleteWebhook");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "DeleteWebhook");
 
 EndProcedure
 
@@ -463,7 +463,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", , FunctionParameters, Text); // SKIP
 
     // Simple, to channel
     Options = New Structure;
@@ -475,7 +475,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "Channel", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "Channel", FunctionParameters, Text);
 
     Text   = "<b>Text html %F0%9F%93%9E 10%</b>";
     Options = New Structure;
@@ -486,7 +486,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "HTML");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "HTML");
 
     Text   = "%F0%9F%A4%BC";
     Options = New Structure;
@@ -496,7 +496,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "Emoji");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "Emoji");
 
     Text   = "Text %F0%9F%A5%9D and emoji \(10%\)";
     Options = New Structure;
@@ -507,7 +507,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "Text + Emoji");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "Text + Emoji");
 
     Keyboard = OPI_Tools.JsonToStructure(Keyboard, False);
     Options = New Structure;
@@ -518,7 +518,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "Keyboard structure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "Keyboard structure");
 
     Text = "%F0%9F%94%A5 *New release\!*
     |
@@ -540,7 +540,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendTextMessage", "Complex");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendTextMessage", "Complex");
 
 EndProcedure
 
@@ -558,7 +558,7 @@ Procedure Telegram_FormKeyboardFromButtonArray(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "FormKeyboardFromButtonArray");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "FormKeyboardFromButtonArray");
 
 EndProcedure
 
@@ -584,7 +584,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", , FunctionParameters, Text); // SKIP
 
     // To channel, on disk
     Options = New Structure;
@@ -595,7 +595,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Path", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Path", FunctionParameters, Text); // SKIP
 
     // To channel, from binary data
     Options = New Structure;
@@ -608,7 +608,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Binary", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Binary", FunctionParameters, Text);
 
     ButtonArray = New Array;
     ButtonArray.Add("Button1");
@@ -629,7 +629,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Keyboard", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Keyboard", FunctionParameters, Text);
 
     Keyboard = OPI_Tools.JsonToStructure(Keyboard);
     Options = New Structure;
@@ -641,7 +641,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Keyboard collection", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Keyboard collection", FunctionParameters, Text);
 
     Text   = "Text %F0%9F%A5%9D and emoji \(10%\)";
     Options = New Structure;
@@ -653,7 +653,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Text + Emoji");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Text + Emoji");
 
     Text = "%F0%9F%94%A5 *New release\!*
     |
@@ -676,7 +676,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendImage", "Complex");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendImage", "Complex");
 
     OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!!");
 
@@ -706,7 +706,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendVideo", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendVideo", , FunctionParameters, Text); // SKIP
 
     // To channel, on disk
     Options = New Structure;
@@ -717,7 +717,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendVideo", "Path", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendVideo", "Path", FunctionParameters, Text); // SKIP
 
     // To channel, from binary data
     Options = New Structure;
@@ -731,7 +731,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
     // END
 
     OPI_Tools.RemoveFileWithTry(VideoPath, "Failed to delete the temporary file after the test!!");
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendVideo", "Binary", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendVideo", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
 
@@ -759,7 +759,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendAudio", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendAudio", , FunctionParameters, Text); // SKIP
 
     // To channel, on disk
     Options = New Structure;
@@ -770,7 +770,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendAudio", "Path", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendAudio", "Path", FunctionParameters, Text); // SKIP
 
     // To channel, from binary data
     Options = New Structure;
@@ -784,7 +784,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
     // END
 
     OPI_Tools.RemoveFileWithTry(AudioPath, "Failed to delete the temporary file after the test!!");
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendAudio", "Binary", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendAudio", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
 
@@ -812,7 +812,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendDocument", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendDocument", , FunctionParameters, Text); // SKIP
 
     // In chat, by URL, with file name
     Options = New Structure;
@@ -824,7 +824,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendDocument", "With name", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendDocument", "With name", FunctionParameters, Text); // SKIP
 
     // To channel, on disk
     Options = New Structure;
@@ -835,7 +835,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendDocument", "Path", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendDocument", "Path", FunctionParameters, Text); // SKIP
 
     // To channel, from binary data, with file name
     Options = New Structure;
@@ -850,7 +850,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
     // END
 
     OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!!");
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendDocument", "Binary", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendDocument", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
 
@@ -878,7 +878,7 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendGif", , FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendGif", , FunctionParameters, Text); // SKIP
 
     // To channel, on disk
     Options = New Structure;
@@ -889,7 +889,7 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendGif", "Path", FunctionParameters, Text); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendGif", "Path", FunctionParameters, Text); // SKIP
 
     // To channel, from binary data
     Options = New Structure;
@@ -903,7 +903,7 @@ Procedure Telegram_SendGif(FunctionParameters)
     // END
 
     OPI_Tools.RemoveFileWithTry(GifPath, "Failed to delete the temporary file after the test!!");
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendGif", "Binary", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendGif", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
 
@@ -939,7 +939,7 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendMediaGroup");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendMediaGroup");
 
     DocumentURL  = FunctionParameters["Document"];
     DocumentPath = GetTempFileName("docx");
@@ -963,7 +963,7 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     OPI_Tools.RemoveFileWithTry(ImagePath   , "Failed to delete the temporary file after the test!!");
     OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!!");
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendMediaGroup", "Documents");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendMediaGroup", "Documents");
 
     OPI_Tools.Pause(5);
 
@@ -985,7 +985,7 @@ Procedure Telegram_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendLocation"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendLocation"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -997,7 +997,7 @@ Procedure Telegram_SendLocation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendLocation", "Channel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendLocation", "Channel");
 
     OPI_Tools.Pause(5);
 
@@ -1021,7 +1021,7 @@ Procedure Telegram_SendContact(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendContact", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendContact", , Name); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendContact", , Name); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -1034,7 +1034,7 @@ Procedure Telegram_SendContact(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendContact", "Channel", Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendContact", "Channel", Name);
 
 EndProcedure
 
@@ -1060,7 +1060,7 @@ Procedure Telegram_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendPoll", , Question); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendPoll", , Question); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -1071,7 +1071,7 @@ Procedure Telegram_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendPoll", "Channel", Question); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendPoll", "Channel", Question); // SKIP
 
     // END
 
@@ -1086,7 +1086,7 @@ Procedure Telegram_SendPoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "SendPoll", "Questions as string", Question);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "SendPoll", "Questions as string", Question);
 
     OPI_Tools.Pause(5);
 
@@ -1105,7 +1105,7 @@ Procedure Telegram_DownloadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "DownloadFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "DownloadFile");
 
 EndProcedure
 
@@ -1126,7 +1126,7 @@ Procedure Telegram_ForwardMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ForwardMessage", , MessageID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ForwardMessage", , MessageID);
 
 EndProcedure
 
@@ -1145,7 +1145,7 @@ Procedure Telegram_Ban(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "Ban");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "Ban");
 
 EndProcedure
 
@@ -1164,7 +1164,7 @@ Procedure Telegram_Unban(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "Unban");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "Unban");
 
 EndProcedure
 
@@ -1190,7 +1190,7 @@ Procedure Telegram_CreateInvitationLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "CreateInvitationLink", , Title, UnixExpiration);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "CreateInvitationLink", , Title, UnixExpiration);
 
 EndProcedure
 
@@ -1209,7 +1209,7 @@ Procedure Telegram_PinMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "PinMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "PinMessage");
 
 EndProcedure
 
@@ -1228,7 +1228,7 @@ Procedure Telegram_UnpinMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "UnpinMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "UnpinMessage");
 
 EndProcedure
 
@@ -1245,7 +1245,7 @@ Procedure Telegram_GetParticipantCount(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "GetParticipantCount");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "GetParticipantCount");
 
 EndProcedure
 
@@ -1259,7 +1259,7 @@ Procedure Telegram_GetAvatarIconList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "GetAvatarIconList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "GetAvatarIconList");
 
 EndProcedure
 
@@ -1280,7 +1280,7 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "CreateForumTopic", , FunctionParameters, Name, Icon);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "CreateForumTopic", , FunctionParameters, Name, Icon);
 
     ChatTopic = Chat + "*" + FunctionParameters["Telegram_TopicID"];
     Text      = FunctionParameters["String"];
@@ -1292,7 +1292,7 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "CreateForumTopic", "Message", FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "CreateForumTopic", "Message", FunctionParameters, Text);
 
 EndProcedure
 
@@ -1315,7 +1315,7 @@ Procedure Telegram_EditForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "EditForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "EditForumTopic");
 
 EndProcedure
 
@@ -1329,7 +1329,7 @@ Procedure Telegram_CloseForumTopic(FunctionParameters)
 
     Result = OPI_Telegram.CloseForumTopic(Token, Chat); // Closes main topic
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "CloseForumTopic", "Main"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "CloseForumTopic", "Main"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -1340,7 +1340,7 @@ Procedure Telegram_CloseForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "CloseForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "CloseForumTopic");
 
 EndProcedure
 
@@ -1352,7 +1352,7 @@ Procedure Telegram_OpenForumTopic(FunctionParameters)
 
     Result = OPI_Telegram.OpenForumTopic(Token, Chat); // Opens main topic
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "OpenForumTopic", "Main"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "OpenForumTopic", "Main"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -1363,7 +1363,7 @@ Procedure Telegram_OpenForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "OpenForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "OpenForumTopic");
 
 EndProcedure
 
@@ -1382,7 +1382,7 @@ Procedure Telegram_DeleteForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "DeleteForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "DeleteForumTopic");
 
 EndProcedure
 
@@ -1398,11 +1398,11 @@ Procedure Telegram_ClearTopicPinnedMessagesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearTopicPinnedMessagesList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ClearTopicPinnedMessagesList", "Main"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ClearTopicPinnedMessagesList", "Main"); // SKIP
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ClearTopicPinnedMessagesList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ClearTopicPinnedMessagesList");
 
 EndProcedure
 
@@ -1419,7 +1419,7 @@ Procedure Telegram_HideMainForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "HideMainForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "HideMainForumTopic");
 
 EndProcedure
 
@@ -1436,7 +1436,7 @@ Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ShowMainForumTopic");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ShowMainForumTopic");
 
 EndProcedure
 
@@ -1455,7 +1455,7 @@ Procedure Telegram_EditMainForumTopicName(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "EditMainForumTopicName");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "EditMainForumTopicName");
 
 EndProcedure
 
@@ -1474,7 +1474,7 @@ Procedure Telegram_DeleteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "DeleteMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "DeleteMessage");
 
 EndProcedure
 
@@ -1495,7 +1495,7 @@ Procedure Telegram_ReplaceMessageText(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ReplaceMessageText", , Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ReplaceMessageText", , Text);
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -1506,7 +1506,7 @@ Procedure Telegram_ReplaceMessageText(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageText", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ReplaceMessageText", "Markup", "Bold text");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ReplaceMessageText", "Markup", "Bold text");
 
 EndProcedure
 
@@ -1538,7 +1538,7 @@ Procedure Telegram_ReplaceMessageKeyboard(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ReplaceMessageKeyboard", , Keyboard);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ReplaceMessageKeyboard", , Keyboard);
 
 EndProcedure
 
@@ -1559,7 +1559,7 @@ Procedure Telegram_ReplaceMessageCaption(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Telegram", "ReplaceMessageCaption", , Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Telegram", "ReplaceMessageCaption", , Description);
 
 EndProcedure
 

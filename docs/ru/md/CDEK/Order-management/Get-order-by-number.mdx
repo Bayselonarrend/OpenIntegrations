@@ -67,7 +67,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "a51e45f8-6f82-4ec4-9055-9f82e8d5c551" \
+              --number "b1f419ab-3157-4fdf-84c1-f68ab1b0f55f" \
               --internal true \
               --testapi "***"
         ```
@@ -77,7 +77,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "a51e45f8-6f82-4ec4-9055-9f82e8d5c551" ^
+              --number "b1f419ab-3157-4fdf-84c1-f68ab1b0f55f" ^
               --internal true ^
               --testapi "***"
         ```
@@ -88,12 +88,12 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "aecd5417-dc58-4ea3-afea-776cdaf577c3",
+  "uuid": "25cba1b8-48c2-495e-bfe4-2c560f80951f",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107188470",
-  "number": "a51e45f8-6f82-4ec4-9055-9f82e8d5c551",
+  "cdek_number": "1107191074",
+  "number": "b1f419ab-3157-4fdf-84c1-f68ab1b0f55f",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -163,16 +163,6 @@ import Admonition from '@theme/Admonition';
   },
   "services": [
    {
-    "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
-   },
-   {
     "code": "INSURANCE",
     "parameter": "600.00",
     "sum": 4.5,
@@ -181,12 +171,22 @@ import Admonition from '@theme/Admonition';
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 0.9
+   },
+   {
+    "code": "SECURE_PACKAGE_A2",
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001880803",
+    "barcode": "000001885765",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -212,21 +212,21 @@ import Admonition from '@theme/Admonition';
       "cost": 300
      }
     ],
-    "package_id": "cce37195-0bee-4861-9275-3e69ca4acfe2"
+    "package_id": "b2047619-dddb-4687-81e4-33d015dba757"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-04-08T09:01:57+03:00",
+    "date_time": "2026-04-13T00:28:02+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-08T09:01:56+03:00",
+    "date_time": "2026-04-13T00:28:00+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

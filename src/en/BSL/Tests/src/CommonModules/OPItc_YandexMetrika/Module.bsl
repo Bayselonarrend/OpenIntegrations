@@ -159,7 +159,7 @@ Procedure YandexMetrika_GetTagsList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetTagsList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetTagsList");
 
 EndProcedure
 
@@ -176,7 +176,7 @@ Procedure YandexMetrika_CreateTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "CreateTag", , FunctionParameters, Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "CreateTag", , FunctionParameters, Name);
 
 EndProcedure
 
@@ -193,7 +193,7 @@ Procedure YandexMetrika_DeleteTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "DeleteTag");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "DeleteTag");
 
 EndProcedure
 
@@ -212,7 +212,7 @@ Procedure YandexMetrika_UpdateTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "UpdateTag", , Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "UpdateTag", , Name);
 
 EndProcedure
 
@@ -229,7 +229,7 @@ Procedure YandexMetrika_GetTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetTag");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetTag");
 
 EndProcedure
 
@@ -243,7 +243,7 @@ Procedure YandexMetrika_GetCounterStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetCounterStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetCounterStructure");
 
 EndProcedure
 
@@ -302,7 +302,7 @@ Procedure YandexMetrika_CreateCounter(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "CreateCounter", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "CreateCounter", , FunctionParameters);
 
 EndProcedure
 
@@ -319,7 +319,7 @@ Procedure YandexMetrika_DeleteCounter(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "DeleteCounter");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "DeleteCounter");
 
 EndProcedure
 
@@ -350,7 +350,7 @@ Procedure YandexMetrika_UpdateCounter(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "UpdateCounter");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "UpdateCounter");
 
 EndProcedure
 
@@ -367,7 +367,7 @@ Procedure YandexMetrika_GetCounter(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetCounter");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetCounter");
 
 EndProcedure
 
@@ -384,7 +384,7 @@ Procedure YandexMetrika_RestoreCounter(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "RestoreCounter");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "RestoreCounter");
 
 EndProcedure
 
@@ -398,7 +398,7 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetCountersList"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetCountersList"); // SKIP
 
     // filter by IDs list
 
@@ -417,7 +417,7 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetCountersList", "Filter");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetCountersList", "Filter");
 
 EndProcedure
 
@@ -434,7 +434,7 @@ Procedure YandexMetrika_GetActionsList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexMetrika", "GetActionsList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexMetrika", "GetActionsList");
 
 EndProcedure
 
