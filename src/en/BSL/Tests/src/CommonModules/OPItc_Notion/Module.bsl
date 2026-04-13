@@ -176,7 +176,7 @@ Procedure Notion_CreatePage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "CreatePage", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "CreatePage", , FunctionParameters);
 
 EndProcedure
 
@@ -215,7 +215,7 @@ Procedure Notion_CreateDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "CreateDatabase", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "CreateDatabase", , FunctionParameters);
 
 EndProcedure
 
@@ -242,7 +242,7 @@ Procedure Notion_EditDatabaseProperties(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "EditDatabaseProperties");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "EditDatabaseProperties");
 
 EndProcedure
 
@@ -259,7 +259,7 @@ Procedure Notion_GetPage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "GetPage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "GetPage");
 
 EndProcedure
 
@@ -276,7 +276,7 @@ Procedure Notion_GetDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "GetDatabase");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "GetDatabase");
 
 EndProcedure
 
@@ -310,7 +310,7 @@ Procedure Notion_CreatePageInDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "CreatePageInDatabase", , Base);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "CreatePageInDatabase", , Base);
 
 EndProcedure
 
@@ -338,7 +338,7 @@ Procedure Notion_EditPageProperties(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "EditPageProperties");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "EditPageProperties");
 
 EndProcedure
 
@@ -355,7 +355,7 @@ Procedure Notion_ReturnBlock(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "ReturnBlock");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "ReturnBlock");
 
 EndProcedure
 
@@ -379,7 +379,7 @@ Procedure Notion_CreateBlock(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "CreateBlock", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "CreateBlock", , FunctionParameters);
 
 EndProcedure
 
@@ -396,7 +396,7 @@ Procedure Notion_ReturnChildBlocks(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "ReturnChildBlocks");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "ReturnChildBlocks");
 
 EndProcedure
 
@@ -413,7 +413,7 @@ Procedure Notion_DeleteBlock(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "DeleteBlock");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "DeleteBlock");
 
 EndProcedure
 
@@ -428,7 +428,7 @@ Procedure Notion_UserList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "UserList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "UserList");
 
 EndProcedure
 
@@ -445,7 +445,7 @@ Procedure Notion_GetUserData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Notion", "GetUserData");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Notion", "GetUserData");
 
 EndProcedure
 

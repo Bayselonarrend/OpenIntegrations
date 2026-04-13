@@ -635,6 +635,28 @@ Procedure Process(Val Result
 
 EndProcedure
 
+Procedure ProcessCLI(Val Result
+    , Val Library
+    , Val Method
+    , Val Option = ""
+    , AddParam1  = Undefined
+    , AddParam2  = Undefined
+    , AddParam3  = Undefined) Export
+
+    CLITestsMark = 1;
+
+    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+
+    ProcessTestingResult(Result
+        , Method
+        , Library
+        , Option
+        , AddParam1
+        , AddParam2
+        , AddParam3);
+
+EndProcedure
+
 Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
 
     TextTemplate = "
@@ -15258,6 +15280,10 @@ EndProcedure
 
 Procedure Обработать(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
     Process(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
+EndProcedure
+
+Procedure ОбработатьCLI(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
+    ProcessCLI(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
 EndProcedure
 
 Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export

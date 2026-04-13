@@ -193,7 +193,7 @@ Procedure Airtable_CreateDatabase(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateDatabase", , FunctionParameters, TableName);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreateDatabase", , FunctionParameters, TableName);
 
 EndProcedure
 
@@ -210,7 +210,7 @@ Procedure Airtable_GetDatabaseTables(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetDatabaseTables");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetDatabaseTables");
 
 EndProcedure
 
@@ -225,7 +225,7 @@ Procedure Airtable_GetListOfBases(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetListOfBases");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetListOfBases");
 
 EndProcedure
 
@@ -238,7 +238,7 @@ Procedure Airtable_GetNumberField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetNumberField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetNumberField");
 
 EndProcedure
 
@@ -251,7 +251,7 @@ Procedure Airtable_GetStringField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetStringField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetStringField");
 
 EndProcedure
 
@@ -264,7 +264,7 @@ Procedure Airtable_GetAttachmentField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetAttachmentField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetAttachmentField");
 
 EndProcedure
 
@@ -277,7 +277,7 @@ Procedure Airtable_GetCheckboxField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetCheckboxField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetCheckboxField");
 
 EndProcedure
 
@@ -290,7 +290,7 @@ Procedure Airtable_GetDateField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetDateField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetDateField");
 
 EndProcedure
 
@@ -303,7 +303,7 @@ Procedure Airtable_GetPhoneField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetPhoneField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetPhoneField");
 
 EndProcedure
 
@@ -316,7 +316,7 @@ Procedure Airtable_GetEmailField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetEmailField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetEmailField");
 
 EndProcedure
 
@@ -329,7 +329,7 @@ Procedure Airtable_GetLinkField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetLinkField");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetLinkField");
 
 EndProcedure
 
@@ -362,7 +362,7 @@ Procedure Airtable_CreateTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateTable", , FunctionParameters, Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreateTable", , FunctionParameters, Name, Description);
 
 EndProcedure
 
@@ -385,7 +385,7 @@ Procedure Airtable_ModifyTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "ModifyTable", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "ModifyTable", , Name, Description);
 
 EndProcedure
 
@@ -410,7 +410,7 @@ Procedure Airtable_CreateField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateField", , FunctionParameters, Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreateField", , FunctionParameters, Name);
 
 EndProcedure
 
@@ -436,7 +436,7 @@ Procedure Airtable_ModifyField(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "ModifyField", , Name, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "ModifyField", , Name, Description);
 
 EndProcedure
 
@@ -466,7 +466,7 @@ Procedure Airtable_CreatePosts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreatePosts", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreatePosts", , FunctionParameters);
 
     ArrayOfDeletions = New Array;
 
@@ -489,7 +489,7 @@ Procedure Airtable_CreatePosts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreatePosts", "Single", FunctionParameters, Number, String);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreatePosts", "Single", FunctionParameters, Number, String);
 
 EndProcedure
 
@@ -510,7 +510,7 @@ Procedure Airtable_GetRecord(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetRecord", , Record);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetRecord", , Record);
 
 EndProcedure
 
@@ -533,7 +533,7 @@ Procedure Airtable_CreateComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "CreateComment", , FunctionParameters, Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "CreateComment", , FunctionParameters, Text);
 
 EndProcedure
 
@@ -558,7 +558,7 @@ Procedure Airtable_EditComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "EditComment", , Text);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "EditComment", , Text);
 
 EndProcedure
 
@@ -579,7 +579,7 @@ Procedure Airtable_GetComments(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetComments");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetComments");
 
 EndProcedure
 
@@ -602,7 +602,7 @@ Procedure Airtable_DeleteComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "DeleteComment", , Comment);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "DeleteComment", , Comment);
 
 EndProcedure
 
@@ -621,7 +621,7 @@ Procedure Airtable_GetListOfRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "GetListOfRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "GetListOfRecords");
 
 EndProcedure
 
@@ -642,7 +642,7 @@ Procedure Airtable_DeleteRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Airtable", "DeleteRecords");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Airtable", "DeleteRecords");
 
 EndProcedure
 

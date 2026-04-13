@@ -167,7 +167,7 @@ Procedure GoogleSheets_FormCodeRetrievalLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "FormCodeRetrievalLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "FormCodeRetrievalLink");
 
 EndProcedure
 
@@ -186,7 +186,7 @@ Procedure GoogleSheets_GetTokenByCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetTokenByCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetTokenByCode");
 
 EndProcedure
 
@@ -205,7 +205,7 @@ Procedure GoogleSheets_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "RefreshToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "RefreshToken");
 
 EndProcedure
 
@@ -234,7 +234,7 @@ Procedure GoogleSheets_GetServiceAccountToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetServiceAccountToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetServiceAccountToken");
 
 EndProcedure
 
@@ -256,7 +256,7 @@ Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "CreateSpreadsheet", , FunctionParameters, Name, SheetArray);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "CreateSpreadsheet", , FunctionParameters, Name, SheetArray);
 
     Name   = "Test table (new.)";
     Options = New Structure;
@@ -266,7 +266,7 @@ Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "CreateSpreadsheet", "Additionally", FunctionParameters, Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "CreateSpreadsheet", "Additionally", FunctionParameters, Name);
 
 EndProcedure
 
@@ -283,7 +283,7 @@ Procedure GoogleSheets_GetSpreadsheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetSpreadsheet");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetSpreadsheet");
 
 EndProcedure
 
@@ -304,7 +304,7 @@ Procedure GoogleSheets_CopySheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "CopySheet");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "CopySheet");
 
 EndProcedure
 
@@ -323,7 +323,7 @@ Procedure GoogleSheets_AddSheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "AddSheet");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "AddSheet");
 
 EndProcedure
 
@@ -342,7 +342,7 @@ Procedure GoogleSheets_DeleteSheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "DeleteSheet", , Spreadsheet);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "DeleteSheet", , Spreadsheet);
 
 EndProcedure
 
@@ -361,7 +361,7 @@ Procedure GoogleSheets_EditSpreadsheetTitle(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "EditSpreadsheetTitle", , Spreadsheet);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "EditSpreadsheetTitle", , Spreadsheet);
 
 EndProcedure
 
@@ -378,7 +378,7 @@ Procedure GoogleSheets_GetTable(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetTable");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetTable");
 
 EndProcedure
 
@@ -408,7 +408,7 @@ Procedure GoogleSheets_SetCellValues(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "SetCellValues", , ValueMapping.Count());
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "SetCellValues", , ValueMapping.Count());
 
 EndProcedure
 
@@ -433,7 +433,7 @@ Procedure GoogleSheets_GetCellValues(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetCellValues", , CellsArray.Count());
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetCellValues", , CellsArray.Count());
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -442,7 +442,7 @@ Procedure GoogleSheets_GetCellValues(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "GetCellValues", "All", Spreadsheet);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "GetCellValues", "All", Spreadsheet);
 
 EndProcedure
 
@@ -467,7 +467,7 @@ Procedure GoogleSheets_ClearCells(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleSheets", "ClearCells", , CellsArray.Count());
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleSheets", "ClearCells", , CellsArray.Count());
 
 EndProcedure
 

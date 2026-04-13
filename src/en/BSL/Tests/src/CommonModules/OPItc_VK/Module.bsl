@@ -374,7 +374,7 @@ Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateTokenRetrievalLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateTokenRetrievalLink");
 
 EndProcedure
 
@@ -393,7 +393,7 @@ Procedure VK_GetAuthParameters(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetAuthParameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetAuthParameters");
 
 EndProcedure
 
@@ -422,7 +422,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreatePost", , Parameters); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreatePost", , Parameters); // SKIP
 
     PostID = Result["response"]["post_id"]; // SKIP
     OPI_VK.DeletePost(PostID, Parameters); // SKIP
@@ -437,7 +437,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreatePost", "Image", Parameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreatePost", "Image", Parameters);
 
     PostID = Result["response"]["post_id"];
     OPI_VK.DeletePost(PostID, Parameters);
@@ -451,7 +451,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreatePost", "Path", FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreatePost", "Path", FunctionParameters);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
@@ -470,7 +470,7 @@ Procedure VK_DeletePost(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeletePost");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeletePost");
 
 EndProcedure
 
@@ -515,7 +515,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateCompositePost");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateCompositePost");
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
@@ -538,7 +538,7 @@ Procedure VK_CreatePoll(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreatePoll", "Text"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreatePoll", "Text"); // SKIP
 
     // With picture
 
@@ -554,7 +554,7 @@ Procedure VK_CreatePoll(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreatePoll");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreatePoll");
 
     PostID = Result["response"]["post_id"];
     OPI_VK.DeletePost(PostID, Parameters);
@@ -578,7 +578,7 @@ Procedure VK_CreateAlbum(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateAlbum", , FunctionParameters, Description);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateAlbum", , FunctionParameters, Description);
 
 EndProcedure
 
@@ -600,7 +600,7 @@ Procedure VK_SaveImageToAlbum(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "SaveImageToAlbum", , FunctionParameters, ImageDescription, AlbumID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "SaveImageToAlbum", , FunctionParameters, ImageDescription, AlbumID);
 
 EndProcedure
 
@@ -617,7 +617,7 @@ Procedure VK_DeleteImage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteImage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteImage");
 
 EndProcedure
 
@@ -634,7 +634,7 @@ Procedure VK_DeleteAlbum(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteAlbum");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteAlbum");
 
 EndProcedure
 
@@ -655,7 +655,7 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateStory"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateStory"); // SKIP
 
     // END
 
@@ -665,7 +665,7 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateStory", "Path");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateStory", "Path");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
@@ -686,7 +686,7 @@ Procedure VK_MakeRepost(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "MakeRepost", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "MakeRepost", , FunctionParameters);
 
 EndProcedure
 
@@ -707,7 +707,7 @@ Procedure VK_WriteComment(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "WriteComment");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "WriteComment");
 
 EndProcedure
 
@@ -728,7 +728,7 @@ Procedure VK_GetStatistics(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetStatistics");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetStatistics");
 
 EndProcedure
 
@@ -748,7 +748,7 @@ Procedure VK_GetPostStatistics(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetPostStatistics");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetPostStatistics");
 
 EndProcedure
 
@@ -768,7 +768,7 @@ Procedure VK_CreateAdvertisingCampaign(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateAdvertisingCampaign", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateAdvertisingCampaign", , FunctionParameters);
 
 EndProcedure
 
@@ -794,7 +794,7 @@ Procedure VK_CreateAd(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateAd", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateAd", , FunctionParameters);
 
 EndProcedure
 
@@ -814,7 +814,7 @@ Procedure VK_PauseAdvertising(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "PauseAdvertising");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "PauseAdvertising");
 
 EndProcedure
 
@@ -831,7 +831,7 @@ Procedure VK_FormKeyboard(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "FormKeyboard");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "FormKeyboard");
 
 EndProcedure
 
@@ -862,7 +862,7 @@ Procedure VK_WriteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "WriteMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "WriteMessage");
 
 EndProcedure
 
@@ -877,7 +877,7 @@ Procedure VK_GetProductCategoryList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetProductCategoryList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetProductCategoryList");
 
 EndProcedure
 
@@ -901,7 +901,7 @@ Procedure VK_CreateProductCollection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateProductCollection", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateProductCollection", , FunctionParameters);
 
 EndProcedure
 
@@ -921,7 +921,7 @@ Procedure VK_EditProductCollection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "EditProductCollection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "EditProductCollection");
 
 EndProcedure
 
@@ -938,7 +938,7 @@ Procedure VK_GetSelectionsByID(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetSelectionsByID");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetSelectionsByID");
 
 EndProcedure
 
@@ -980,7 +980,7 @@ Procedure VK_AddProduct(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "AddProduct", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "AddProduct", , FunctionParameters);
 
 EndProcedure
 
@@ -1002,7 +1002,7 @@ Procedure VK_EditProduct(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "EditProduct");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "EditProduct");
 
 EndProcedure
 
@@ -1022,7 +1022,7 @@ Procedure VK_AddProductToCollection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "AddProductToCollection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "AddProductToCollection");
 
 EndProcedure
 
@@ -1042,7 +1042,7 @@ Procedure VK_RemoveProductFromSelection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "RemoveProductFromSelection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "RemoveProductFromSelection");
 
 EndProcedure
 
@@ -1060,7 +1060,7 @@ Procedure VK_DeleteProduct(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteProduct");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteProduct");
 
 EndProcedure
 
@@ -1078,7 +1078,7 @@ Procedure VK_DeleteSelection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteSelection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteSelection");
 
 EndProcedure
 
@@ -1096,7 +1096,7 @@ Procedure VK_CreateProductProperty(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateProductProperty", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateProductProperty", , FunctionParameters);
 
 EndProcedure
 
@@ -1116,7 +1116,7 @@ Procedure VK_EditProductProperty(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "EditProductProperty");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "EditProductProperty");
 
 EndProcedure
 
@@ -1135,7 +1135,7 @@ Procedure VK_AddProductPropertyVariant(FunctionParameters)
 
         Result = OPI_VK.AddProductPropertyVariant(Value, Property, Parameters);
 
-        OPI_TestDataRetrieval.Process(Result, "VK", "AddProductPropertyVariant", , FunctionParameters, Counter); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "AddProductPropertyVariant", , FunctionParameters, Counter); // SKIP
 
         Counter = Counter + 1; // SKIP
 
@@ -1163,7 +1163,7 @@ Procedure VK_EditProductPropertyVariant(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "EditProductPropertyVariant");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "EditProductPropertyVariant");
 
 EndProcedure
 
@@ -1206,7 +1206,7 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateProductWithProp", "First", FunctionParameters, 2);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateProductWithProp", "First", FunctionParameters, 2);
 
     Product.Insert("Name"          , "Test product (another)");
     Product.Insert("PropertyValues", PropVariant2);
@@ -1217,7 +1217,7 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "CreateProductWithProp", "Second", FunctionParameters, 3);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "CreateProductWithProp", "Second", FunctionParameters, 3);
 
     OPI_Tools.Pause(5);
 
@@ -1242,7 +1242,7 @@ Procedure VK_GetProductsByID(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetProductsByID");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetProductsByID");
 
 EndProcedure
 
@@ -1265,7 +1265,7 @@ Procedure VK_GroupProducts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GroupProducts");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GroupProducts");
 
 EndProcedure
 
@@ -1283,7 +1283,7 @@ Procedure VK_DeleteProductPropertyVariant(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteProductPropertyVariant");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteProductPropertyVariant");
 
 EndProcedure
 
@@ -1301,7 +1301,7 @@ Procedure VK_DeleteProductProperty(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "DeleteProductProperty");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "DeleteProductProperty");
 
 EndProcedure
 
@@ -1315,7 +1315,7 @@ Procedure VK_GetProductList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetProductList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetProductList");
 
 EndProcedure
 
@@ -1329,7 +1329,7 @@ Procedure VK_GetSelectionList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetSelectionList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetSelectionList");
 
 EndProcedure
 
@@ -1343,7 +1343,7 @@ Procedure VK_GetPropertyList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetPropertyList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetPropertyList");
 
 EndProcedure
 
@@ -1357,7 +1357,7 @@ Procedure VK_GetOrderList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetOrderList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetOrderList");
 
 EndProcedure
 
@@ -1379,7 +1379,7 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "UploadVideoToServer");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "UploadVideoToServer");
 
 EndProcedure
 
@@ -1399,7 +1399,7 @@ Procedure VK_UploadPhotoToServer(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "UploadPhotoToServer");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "UploadPhotoToServer");
 
 EndProcedure
 
@@ -1426,7 +1426,7 @@ Procedure VK_GetAdvertisingCategoryList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetAdvertisingCategoryList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetAdvertisingCategoryList");
 
 EndProcedure
 
@@ -1440,7 +1440,7 @@ Procedure VK_GetProductDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "VK", "GetProductDescription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "VK", "GetProductDescription");
 
 EndProcedure
 

@@ -212,7 +212,7 @@ Procedure Slack_GetBotInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetBotInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetBotInformation");
 
 EndProcedure
 
@@ -226,7 +226,7 @@ Procedure Slack_GetUserList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetUserList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetUserList");
 
 EndProcedure
 
@@ -240,7 +240,7 @@ Procedure Slack_GetWorkspaceList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetWorkspaceList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetWorkspaceList");
 
 EndProcedure
 
@@ -259,7 +259,7 @@ Procedure Slack_SendMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SendMessage", , FunctionParameters, Text, Channel); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SendMessage", , FunctionParameters, Text, Channel); // SKIP
 
     // With attachments (picture block in the example)
 
@@ -282,7 +282,7 @@ Procedure Slack_SendMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SendMessage", "Image", FunctionParameters, Text, Channel); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SendMessage", "Image", FunctionParameters, Text, Channel); // SKIP
 
     // Sheduled
 
@@ -301,7 +301,7 @@ Procedure Slack_SendMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SendMessage", "Sheduled", FunctionParameters, Text, Channel);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SendMessage", "Sheduled", FunctionParameters, Text, Channel);
 
     Token     = FunctionParameters["Slack_Token"];
     Timestamp = Result["scheduled_message_id"];
@@ -322,7 +322,7 @@ Procedure Slack_GenerateImageBlock(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GenerateImageBlock");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GenerateImageBlock");
 
 EndProcedure
 
@@ -344,7 +344,7 @@ Procedure Slack_EditMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "EditMessage", , Text, Channel);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "EditMessage", , Text, Channel);
 
 EndProcedure
 
@@ -363,7 +363,7 @@ Procedure Slack_GetMessageReplyList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetMessageReplyList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetMessageReplyList");
 
 EndProcedure
 
@@ -382,7 +382,7 @@ Procedure Slack_GetMessageLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetMessageLink", , Channel);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetMessageLink", , Channel);
 
 EndProcedure
 
@@ -401,7 +401,7 @@ Procedure Slack_DeleteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "DeleteMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "DeleteMessage");
 
 EndProcedure
 
@@ -429,7 +429,7 @@ Procedure Slack_SendEphemeralMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SendEphemeralMessage");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SendEphemeralMessage");
 
 EndProcedure
 
@@ -446,7 +446,7 @@ Procedure Slack_GetDelayedMessageList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetDelayedMessageList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetDelayedMessageList");
 
 EndProcedure
 
@@ -463,7 +463,7 @@ Procedure Slack_CreateChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "CreateChannel", , FunctionParameters, Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "CreateChannel", , FunctionParameters, Name);
 
 EndProcedure
 
@@ -482,7 +482,7 @@ Procedure Slack_SetChannelTopic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SetChannelTopic", , Topic);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SetChannelTopic", , Topic);
 
 EndProcedure
 
@@ -501,7 +501,7 @@ Procedure Slack_SetChannelGoal(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SetChannelGoal");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SetChannelGoal");
 
 EndProcedure
 
@@ -518,7 +518,7 @@ Procedure Slack_GetChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetChannel", , FunctionParameters["Slack_NewChannelName"]);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetChannel", , FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
 
@@ -537,7 +537,7 @@ Procedure Slack_InviteUsersToChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "InviteUsersToChannel", , FunctionParameters["Slack_NewChannelName"]);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "InviteUsersToChannel", , FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
 
@@ -556,7 +556,7 @@ Procedure Slack_KickUserFromChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "KickUserFromChannel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "KickUserFromChannel");
 
 EndProcedure
 
@@ -573,7 +573,7 @@ Procedure Slack_GetChannelHistory(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetChannelHistory");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetChannelHistory");
 
 EndProcedure
 
@@ -590,7 +590,7 @@ Procedure Slack_GetChannelUserList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetChannelUserList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetChannelUserList");
 
 EndProcedure
 
@@ -607,7 +607,7 @@ Procedure Slack_LeaveChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "LeaveChannel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "LeaveChannel");
 
 EndProcedure
 
@@ -624,7 +624,7 @@ Procedure Slack_JoinChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "JoinChannel", , FunctionParameters["Slack_NewChannelName"]);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "JoinChannel", , FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
 
@@ -643,7 +643,7 @@ Procedure Slack_RenameChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "RenameChannel", , Name);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "RenameChannel", , Name);
 
 EndProcedure
 
@@ -660,7 +660,7 @@ Procedure Slack_ArchiveChannel(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "ArchiveChannel");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "ArchiveChannel");
 
 EndProcedure
 
@@ -675,7 +675,7 @@ Procedure Slack_GetChannelList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetChannelList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetChannelList");
 
 EndProcedure
 
@@ -692,7 +692,7 @@ Procedure Slack_OpenDialog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "OpenDialog", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "OpenDialog", , FunctionParameters);
 
     Channel = Result["channel"]["id"];
 
@@ -703,7 +703,7 @@ Procedure Slack_OpenDialog(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "OpenDialog", "Message", FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "OpenDialog", "Message", FunctionParameters);
 
 EndProcedure
 
@@ -720,7 +720,7 @@ Procedure Slack_CloseDialog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "CloseDialog");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "CloseDialog");
 
 EndProcedure
 
@@ -737,14 +737,14 @@ Procedure Slack_GetFilesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetFilesList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetFilesList");
 
     Options = New Structure;
     Options.Insert("token", Token);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetFilesList", "All");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetFilesList", "All");
 
 EndProcedure
 
@@ -765,9 +765,9 @@ Procedure Slack_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "UploadFile", , FunctionParameters, FileName); // SKIP
-    OPI_TestDataRetrieval.Process(Result, "Slack", "MakeFilePublic"); // SKIP
-    OPI_TestDataRetrieval.Process(Result, "Slack", "MakeFilePrivate"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "UploadFile", , FunctionParameters, FileName); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "MakeFilePublic"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "MakeFilePrivate"); // SKIP
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -780,7 +780,7 @@ Procedure Slack_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "UploadFile", "Channel", FunctionParameters, FileName);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "UploadFile", "Channel", FunctionParameters, FileName);
     OPI_Slack.DeleteFile(FunctionParameters["Slack_Token"], Result["files"][0]["id"]);
 
 EndProcedure
@@ -798,7 +798,7 @@ Procedure Slack_MakeFilePublic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "MakeFilePublic", "No record");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "MakeFilePublic", "No record");
 
 EndProcedure
 
@@ -815,7 +815,7 @@ Procedure Slack_MakeFilePrivate(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "MakeFilePrivate", "No record");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "MakeFilePrivate", "No record");
 
 EndProcedure
 
@@ -832,7 +832,7 @@ Procedure Slack_GetFileData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetFileData", , "megadoc.docx");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetFileData", , "megadoc.docx");
 
 EndProcedure
 
@@ -849,7 +849,7 @@ Procedure Slack_DeleteFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "DeleteFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "DeleteFile");
 
 EndProcedure
 
@@ -866,14 +866,14 @@ Procedure Slack_GetExternalFileList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetExternalFileList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetExternalFileList");
 
     Options = New Structure;
     Options.Insert("token", Token);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetExternalFileList", "All");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetExternalFileList", "All");
 
 EndProcedure
 
@@ -892,7 +892,7 @@ Procedure Slack_AddExternalFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "AddExternalFile", , FunctionParameters, Title);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "AddExternalFile", , FunctionParameters, Title);
 
 EndProcedure
 
@@ -909,7 +909,7 @@ Procedure Slack_GetExternalFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "GetExternalFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "GetExternalFile");
 
 EndProcedure
 
@@ -928,7 +928,7 @@ Procedure Slack_SendExternalFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "SendExternalFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "SendExternalFile");
 
 EndProcedure
 
@@ -945,7 +945,7 @@ Procedure Slack_DeleteExternalFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Slack", "DeleteExternalFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Slack", "DeleteExternalFile");
 
 EndProcedure
 

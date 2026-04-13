@@ -222,7 +222,7 @@ Procedure Dropbox_GetAuthorizationLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetAuthorizationLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetAuthorizationLink");
 
 EndProcedure
 
@@ -241,7 +241,7 @@ Procedure Dropbox_GetToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetToken");
 
 EndProcedure
 
@@ -260,7 +260,7 @@ Procedure Dropbox_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "RefreshToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "RefreshToken");
 
 EndProcedure
 
@@ -278,7 +278,7 @@ Procedure Dropbox_GetObjectInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetObjectInformation", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetObjectInformation", , Path);
 
 EndProcedure
 
@@ -295,7 +295,7 @@ Procedure Dropbox_GetPreview(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetPreview");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetPreview");
 
 EndProcedure
 
@@ -318,7 +318,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "UploadFile", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "UploadFile", , Path);
 
     OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!!");
 
@@ -335,7 +335,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
 
-        OPI_TestDataRetrieval.Process(Result, "Dropbox", "UploadFile", "Big", Path);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "UploadFile", "Big", Path);
 
     EndIf;
 
@@ -356,7 +356,7 @@ Procedure Dropbox_UploadFileByURL(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "UploadFileByURL", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "UploadFileByURL", , FunctionParameters);
 
 EndProcedure
 
@@ -373,13 +373,13 @@ Procedure Dropbox_GetUploadStatusByURL(FunctionParameters)
 
         OPI_Tools.Pause(5);
 
-        OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetUploadStatusByURL", "Progress"); // SKIP
+        OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetUploadStatusByURL", "Progress"); // SKIP
 
     EndDo;
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetUploadStatusByURL");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetUploadStatusByURL");
 
     Token  = FunctionParameters["Dropbox_Token"];
     Path   = "/New/url_doc.docx";
@@ -389,7 +389,7 @@ Procedure Dropbox_GetUploadStatusByURL(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetUploadStatusByURL", "Deletion", Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetUploadStatusByURL", "Deletion", Path);
 
 EndProcedure
 
@@ -406,7 +406,7 @@ Procedure Dropbox_DeleteObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "DeleteObject", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "DeleteObject", , Path);
 
 EndProcedure
 
@@ -425,7 +425,7 @@ Procedure Dropbox_CopyObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CopyObject", , Copy);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CopyObject", , Copy);
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -433,7 +433,7 @@ Procedure Dropbox_CopyObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CopyObject", "Deletion", Copy);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CopyObject", "Deletion", Copy);
 
 EndProcedure
 
@@ -452,7 +452,7 @@ Procedure Dropbox_MoveObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "MoveObject", , TargetPath);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "MoveObject", , TargetPath);
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -461,7 +461,7 @@ Procedure Dropbox_MoveObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "MoveObject", "Deletion", OriginalPath);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "MoveObject", "Deletion", OriginalPath);
 
 EndProcedure
 
@@ -478,7 +478,7 @@ Procedure Dropbox_CreateFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CreateFolder", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CreateFolder", , Path);
 
     OPI_Dropbox.DeleteObject(Token, Path);
 
@@ -497,7 +497,7 @@ Procedure Dropbox_DownloadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "DownloadFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "DownloadFile");
 
 EndProcedure
 
@@ -514,7 +514,7 @@ Procedure Dropbox_DownloadFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "DownloadFolder");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "DownloadFolder");
 
 EndProcedure
 
@@ -532,7 +532,7 @@ Procedure Dropbox_GetListOfFolderFiles(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetListOfFolderFiles");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetListOfFolderFiles");
 
 EndProcedure
 
@@ -550,7 +550,7 @@ Procedure Dropbox_GetObjectVersionList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetObjectVersionList", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetObjectVersionList", , FunctionParameters);
 
 EndProcedure
 
@@ -569,7 +569,7 @@ Procedure Dropbox_RestoreObjectToVersion(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "RestoreObjectToVersion", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "RestoreObjectToVersion", , Path);
 
 EndProcedure
 
@@ -589,7 +589,7 @@ Procedure Dropbox_GetTagList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetTagList", , FunctionParameters, PathsArray);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetTagList", , FunctionParameters, PathsArray);
 
 EndProcedure
 
@@ -608,7 +608,7 @@ Procedure Dropbox_AddTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "AddTag");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "AddTag");
 
 EndProcedure
 
@@ -627,7 +627,7 @@ Procedure Dropbox_DeleteTag(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "DeleteTag");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "DeleteTag");
 
 EndProcedure
 
@@ -642,7 +642,7 @@ Procedure Dropbox_GetAccountInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetAccountInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetAccountInformation");
 
     AccountID = Result["account_id"];
     Options = New Structure;
@@ -651,7 +651,7 @@ Procedure Dropbox_GetAccountInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetAccountInformation", "By ID");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetAccountInformation", "By ID");
 
 EndProcedure
 
@@ -666,7 +666,7 @@ Procedure Dropbox_GetSpaceUsageData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetSpaceUsageData");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetSpaceUsageData");
 
 EndProcedure
 
@@ -686,7 +686,7 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "AddUsersToFile", , Email, False);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "AddUsersToFile", , Email, False);
 
     Mails = New Array;
     Mails.Add(Email);
@@ -699,7 +699,7 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "AddUsersToFile", , Email, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "AddUsersToFile", , Email, True);
 
 EndProcedure
 
@@ -716,7 +716,7 @@ Procedure Dropbox_PublishFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "PublishFolder", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "PublishFolder", , FunctionParameters);
 
 EndProcedure
 
@@ -731,7 +731,7 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFolderPublication", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CancelFolderPublication"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CancelFolderPublication"); // SKIP
 
     CurrentStatus = "in_progress";
     JobID         = Result["async_job_id"];
@@ -744,7 +744,7 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CancelFolderPublication", "Ending", FunctionParameters, JobID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CancelFolderPublication", "Ending", FunctionParameters, JobID);
 
 EndProcedure
 
@@ -761,7 +761,7 @@ Procedure Dropbox_GetAsynchronousChangeStatus(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "GetAsynchronousChangeStatus");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "GetAsynchronousChangeStatus");
 
 EndProcedure
 
@@ -781,7 +781,7 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "AddUsersToFolder");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "AddUsersToFolder");
 
     Mails = New Array;
     Mails.Add(Email);
@@ -794,7 +794,7 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "AddUsersToFolder", "Additional");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "AddUsersToFolder", "Additional");
 
 EndProcedure
 
@@ -811,7 +811,7 @@ Procedure Dropbox_CancelFilePublication(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Dropbox", "CancelFilePublication");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "CancelFilePublication");
 
 EndProcedure
 
