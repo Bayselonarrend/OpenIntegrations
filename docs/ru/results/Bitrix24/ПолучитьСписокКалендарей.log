@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "2258",
+   "ID": "2262",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2258&sign=b872e54218b3e39e9ea6d389ec2f90fb&bx_hit_hash=XbBhRV..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2262&sign=04b6457f7fe4393ae2c0fe7a3db72cca&bx_hit_hash=XbBhRV..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-04-13 00:25:00",
-   "TIMESTAMP_X": "2026-04-13 00:25:00",
+   "DATE_CREATE": "2026-04-14 00:10:00",
+   "TIMESTAMP_X": "2026-04-14 00:10:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "2260",
+   "ID": "2264",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2260&sign=ad8f9bc6eec41a791f3995f9b9ebf380&bx_hit_hash=XbBhRV..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2264&sign=602b56a5a27ab9c18c4ad44e76520aea&bx_hit_hash=XbBhRV..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-04-13 00:25:00",
-   "TIMESTAMP_X": "2026-04-13 00:25:00",
+   "DATE_CREATE": "2026-04-14 00:10:00",
+   "TIMESTAMP_X": "2026-04-14 00:10:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1776029123,
-  "finish": 1776029123.5841,
-  "duration": 0.584098100662231,
+  "start": 1776114585,
+  "finish": 1776114585.08347,
+  "duration": 0.0834689140319824,
   "processing": 0,
-  "date_start": "2026-04-13T00:25:23+03:00",
-  "date_finish": "2026-04-13T00:25:23+03:00",
-  "operating_reset_at": 1776029723,
+  "date_start": "2026-04-14T00:09:45+03:00",
+  "date_finish": "2026-04-14T00:09:45+03:00",
+  "operating_reset_at": 1776115185,
   "operating": 0
  }
 }
