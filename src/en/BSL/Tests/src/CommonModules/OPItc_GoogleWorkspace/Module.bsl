@@ -135,7 +135,7 @@ Procedure GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "FormCodeRetrievalLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleWorkspace", "FormCodeRetrievalLink");
 
 EndProcedure
 
@@ -154,7 +154,7 @@ Procedure GoogleWorkspace_GetTokenByCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "GetTokenByCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleWorkspace", "GetTokenByCode");
 
 EndProcedure
 
@@ -173,7 +173,7 @@ Procedure GoogleWorkspace_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "RefreshToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleWorkspace", "RefreshToken");
 
 EndProcedure
 
@@ -202,7 +202,7 @@ Procedure GoogleWorkspace_GetServiceAccountToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GoogleWorkspace", "GetServiceAccountToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GoogleWorkspace", "GetServiceAccountToken");
 
 EndProcedure
 

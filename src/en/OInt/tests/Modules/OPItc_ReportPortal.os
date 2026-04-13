@@ -215,7 +215,7 @@ Procedure ReportPortal_GetTemporaryToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetTemporaryToken", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetTemporaryToken", , FunctionParameters);
 
 EndProcedure
 
@@ -236,7 +236,7 @@ Procedure ReportPortal_GetPermanentToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetPermanentToken", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetPermanentToken", , FunctionParameters);
 
 EndProcedure
 
@@ -257,7 +257,7 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeletePermanentToken");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeletePermanentToken");
 
 EndProcedure
 
@@ -276,7 +276,7 @@ Procedure ReportPortal_GetUserTokens(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUserTokens");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUserTokens");
 
 EndProcedure
 
@@ -303,7 +303,7 @@ Procedure ReportPortal_CreateLaunch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "CreateLaunch", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "CreateLaunch", , FunctionParameters);
 
 EndProcedure
 
@@ -333,7 +333,7 @@ Procedure ReportPortal_FinishLaunch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "FinishLaunch");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "FinishLaunch");
 
 EndProcedure
 
@@ -363,7 +363,7 @@ Procedure ReportPortal_CreateItem(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "CreateItem", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "CreateItem", , FunctionParameters);
 
 EndProcedure
 
@@ -391,7 +391,7 @@ Procedure ReportPortal_FinishItem(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "FinishItem");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "FinishItem");
 
 EndProcedure
 
@@ -403,14 +403,14 @@ Procedure ReportPortal_GetLaunchStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunchStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunchStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetLaunchStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunchStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunchStructure", "Clear");
 
 EndProcedure
 
@@ -422,14 +422,14 @@ Procedure ReportPortal_GetItemStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItemStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItemStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetItemStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItemStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItemStructure", "Clear");
 
 EndProcedure
 
@@ -441,14 +441,14 @@ Procedure ReportPortal_GetItemCompletionStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItemCompletionStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItemCompletionStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetItemCompletionStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItemCompletionStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItemCompletionStructure", "Clear");
 
 EndProcedure
 
@@ -469,7 +469,7 @@ Procedure ReportPortal_GetLaunchCompletionStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunchCompletionStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunchCompletionStructure");
 
 EndProcedure
 
@@ -500,7 +500,7 @@ Procedure ReportPortal_WriteLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "WriteLog", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "WriteLog", , FunctionParameters);
 
 EndProcedure
 
@@ -524,7 +524,7 @@ Procedure ReportPortal_GetLogStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLogStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLogStructure");
 
 EndProcedure
 
@@ -545,7 +545,7 @@ Procedure ReportPortal_GetLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLog", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLog", , FunctionParameters);
 
 EndProcedure
 
@@ -566,7 +566,7 @@ Procedure ReportPortal_DeleteLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeleteLog");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeleteLog");
 
 EndProcedure
 
@@ -585,7 +585,7 @@ Procedure ReportPortal_CreateProject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "CreateProject", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "CreateProject", , FunctionParameters);
 
 EndProcedure
 
@@ -604,7 +604,7 @@ Procedure ReportPortal_DeleteProject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeleteProject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeleteProject");
 
 EndProcedure
 
@@ -623,7 +623,7 @@ Procedure ReportPortal_GetProject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetProject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetProject");
 
 EndProcedure
 
@@ -640,7 +640,7 @@ Procedure ReportPortal_GetProjects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetProjects");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetProjects");
 
 EndProcedure
 
@@ -663,7 +663,7 @@ Procedure ReportPortal_AddUsersToProject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "AddUsersToProject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "AddUsersToProject");
 
 EndProcedure
 
@@ -686,7 +686,7 @@ Procedure ReportPortal_ExcludeUsersFromProject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "ExcludeUsersFromProject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "ExcludeUsersFromProject");
 
 EndProcedure
 
@@ -707,7 +707,7 @@ Procedure ReportPortal_GetLaunch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunch", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunch", , FunctionParameters);
 
 EndProcedure
 
@@ -728,7 +728,7 @@ Procedure ReportPortal_GetLaunchItems(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunchItems");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunchItems");
 
 EndProcedure
 
@@ -749,7 +749,7 @@ Procedure ReportPortal_GetItem(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItem", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItem", , FunctionParameters);
 
 EndProcedure
 
@@ -770,7 +770,7 @@ Procedure ReportPortal_GetItemLogs(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetItemLogs");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetItemLogs");
 
 EndProcedure
 
@@ -795,7 +795,7 @@ Procedure ReportPortal_UpdateLaunch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "UpdateLaunch");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "UpdateLaunch");
 
 EndProcedure
 
@@ -820,7 +820,7 @@ Procedure ReportPortal_UpdateItem(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "UpdateItem");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "UpdateItem");
 
 EndProcedure
 
@@ -841,7 +841,7 @@ Procedure ReportPortal_DeleteLaunch(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeleteLaunch");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeleteLaunch");
 
 EndProcedure
 
@@ -862,7 +862,7 @@ Procedure ReportPortal_DeleteItem(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeleteItem");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeleteItem");
 
 EndProcedure
 
@@ -884,7 +884,7 @@ Procedure ReportPortal_GetLaunchReport(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetLaunchReport");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetLaunchReport");
 
 EndProcedure
 
@@ -913,7 +913,7 @@ Procedure ReportPortal_CreateUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "CreateUser", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "CreateUser", , FunctionParameters);
 
 EndProcedure
 
@@ -932,7 +932,7 @@ Procedure ReportPortal_DeleteUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "DeleteUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "DeleteUser");
 
 EndProcedure
 
@@ -944,14 +944,14 @@ Procedure ReportPortal_GetUserFieldsStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUserFieldsStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUserFieldsStructure");
 
     Options = New Structure;
     Options.Insert("empty", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetUserFieldsStructure", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUserFieldsStructure", "Clear");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUserFieldsStructure", "Clear");
 
 EndProcedure
 
@@ -975,7 +975,7 @@ Procedure ReportPortal_UpdateUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "UpdateUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "UpdateUser");
 
 EndProcedure
 
@@ -992,7 +992,7 @@ Procedure ReportPortal_GetCurrentUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetCurrentUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetCurrentUser");
 
 EndProcedure
 
@@ -1011,7 +1011,7 @@ Procedure ReportPortal_GetUser(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUser");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUser");
 
 EndProcedure
 
@@ -1028,7 +1028,7 @@ Procedure ReportPortal_GetUsers(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUsers");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUsers");
 
 EndProcedure
 
@@ -1047,7 +1047,7 @@ Procedure ReportPortal_GetUserProjects(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "ReportPortal", "GetUserProjects");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ReportPortal", "GetUserProjects");
 
 EndProcedure
 

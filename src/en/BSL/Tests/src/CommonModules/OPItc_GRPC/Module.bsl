@@ -191,11 +191,11 @@ Procedure GRPC_CreateConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CreateConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection");
 
     Result = OPI_GRPC.CloseConnection(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CreateConnection", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "Closing");
 
     Address    = FunctionParameters["GRPC_AddressNoTls"];
     Options = New Structure;
@@ -205,7 +205,7 @@ Procedure GRPC_CreateConnection(FunctionParameters)
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
     Result     = OPI_GRPC.CreateConnection(Parameters);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CreateConnection", "No TLS");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "No TLS");
 
     Scheme = New Map;
     Scheme.Insert("main.proto", Proto1);
@@ -217,7 +217,7 @@ Procedure GRPC_CreateConnection(FunctionParameters)
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
     Result     = OPI_GRPC.CreateConnection(Parameters);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CreateConnection", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "Error");
 
 EndProcedure
 
@@ -249,7 +249,7 @@ Procedure GRPC_CloseConnection(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CloseConnection");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CloseConnection");
 
 EndProcedure
 
@@ -281,7 +281,7 @@ Procedure GRPC_IsConnector(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "IsConnector");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "IsConnector");
 
 EndProcedure
 
@@ -306,7 +306,7 @@ Procedure GRPC_GetConnectionParameters(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetConnectionParameters");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetConnectionParameters");
 
 EndProcedure
 
@@ -319,7 +319,7 @@ Procedure GRPC_GetTlsSettings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetTlsSettings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetTlsSettings");
 
 EndProcedure
 
@@ -351,7 +351,7 @@ Procedure GRPC_SetMetadata(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "SetMetadata");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "SetMetadata");
 
     If Not OPI_TestDataRetrieval.IsCLITest() Then
 
@@ -367,7 +367,7 @@ Procedure GRPC_SetMetadata(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
-        OPI_TestDataRetrieval.Process(Result, "GRPC", "SetMetadata", "Check");
+        OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "SetMetadata", "Check");
 
      EndIf;
 
@@ -456,7 +456,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ExecuteMethod");
 
     Options = New Structure;
     Options.Insert("conn", Parameters);
@@ -467,7 +467,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod", "Empty");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ExecuteMethod", "Empty");
 
     Method = "HeadersUnary";
     Options = New Structure;
@@ -479,7 +479,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod", "Meta");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ExecuteMethod", "Meta");
 
 EndProcedure
 
@@ -506,7 +506,7 @@ Procedure GRPC_GetServiceList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetServiceList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetServiceList");
 
 EndProcedure
 
@@ -536,7 +536,7 @@ Procedure GRPC_GetMethodList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetMethodList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetMethodList");
 
 EndProcedure
 
@@ -568,7 +568,7 @@ Procedure GRPC_GetMethod(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetMethod");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetMethod");
 
 EndProcedure
 
@@ -654,8 +654,8 @@ Procedure GRPC_InitializeServerStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result       , "GRPC", "InitializeServerStream");
-    OPI_TestDataRetrieval.Process(MessagesArray, "GRPC", "InitializeServerStream", "Array");
+    OPI_TestDataRetrieval.ProcessCLI(Result       , "GRPC", "InitializeServerStream");
+    OPI_TestDataRetrieval.ProcessCLI(MessagesArray, "GRPC", "InitializeServerStream", "Array");
 
 EndProcedure
 
@@ -744,7 +744,7 @@ Procedure GRPC_InitializeClientStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(FinalMessage, "GRPC", "InitializeClientStream", , Counter);
+    OPI_TestDataRetrieval.ProcessCLI(FinalMessage, "GRPC", "InitializeClientStream", , Counter);
 
 EndProcedure
 
@@ -833,7 +833,7 @@ Procedure GRPC_InitializeBidirectionalStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "InitializeBidirectionalStream", , ResultArray);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "InitializeBidirectionalStream", , ResultArray);
 
 EndProcedure
 
@@ -892,7 +892,7 @@ Procedure GRPC_SendMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "SendMessage", , Closing);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "SendMessage", , Closing);
 
 EndProcedure
 
@@ -978,7 +978,7 @@ Procedure GRPC_GetMessage(FunctionParameters)
     Data.Insert("f_bools" , New Array);
     Data.Insert("f_subs"  , New Array);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetMessage", , Closing, Data);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetMessage", , Closing, Data);
 
 EndProcedure
 
@@ -1036,11 +1036,11 @@ Procedure GRPC_CloseStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CloseStream");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CloseStream");
 
     Result = OPI_GRPC.GetMessage(Connection, StreamID);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CloseStream", "Sending");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CloseStream", "Sending");
 
 EndProcedure
 
@@ -1086,7 +1086,7 @@ Procedure GRPC_ProcessServerStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessServerStream");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ProcessServerStream");
 
 EndProcedure
 
@@ -1137,7 +1137,7 @@ Procedure GRPC_ProcessClientStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessClientStream");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ProcessClientStream");
 
     ArrayOfRequests.Delete(ArrayOfRequests.UBound());
 
@@ -1150,7 +1150,7 @@ Procedure GRPC_ProcessClientStream(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ProcessClientStream", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessClientStream", "Error");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ProcessClientStream", "Error");
 
 EndProcedure
 
@@ -1209,7 +1209,7 @@ Procedure GRPC_ProcessBidirectionalStream(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ProcessBidirectionalStream");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ProcessBidirectionalStream");
 
 EndProcedure
 
@@ -1255,7 +1255,7 @@ Procedure GRPC_CompleteSend(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "CompleteSend");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CompleteSend");
 
 EndProcedure
 

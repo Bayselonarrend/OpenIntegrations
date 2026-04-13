@@ -200,7 +200,7 @@ Procedure OpenAI_GetResponse(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetResponse"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetResponse"); // SKIP
 
     // Pictures
 
@@ -220,7 +220,7 @@ Procedure OpenAI_GetResponse(FunctionParameters)
 
     ImageUpload = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.Process(ImageUpload, "OpenAI", "GetResponse", "Image upload"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(ImageUpload, "OpenAI", "GetResponse", "Image upload"); // SKIP
 
     ImageID = ImageUpload["id"];
 
@@ -245,7 +245,7 @@ Procedure OpenAI_GetResponse(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetResponse", "Image");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetResponse", "Image");
 
 EndProcedure
 
@@ -267,7 +267,7 @@ Procedure OpenAI_GetEmbeddings(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetEmbeddings");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetEmbeddings");
 
 EndProcedure
 
@@ -291,7 +291,7 @@ Procedure OpenAI_CreateAssistant(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "CreateAssistant", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "CreateAssistant", , FunctionParameters);
 
 EndProcedure
 
@@ -311,7 +311,7 @@ Procedure OpenAI_DeleteAssistant(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "DeleteAssistant", , AssistantID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "DeleteAssistant", , AssistantID);
 
 EndProcedure
 
@@ -331,7 +331,7 @@ Procedure OpenAI_RetrieveAssistant(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "RetrieveAssistant");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "RetrieveAssistant");
 
 EndProcedure
 
@@ -353,7 +353,7 @@ Procedure OpenAI_GetAssistantsList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetAssistantsList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetAssistantsList");
 
 EndProcedure
 
@@ -379,7 +379,7 @@ Procedure OpenAI_UploadFile(FunctionParameters)
     // END
 
     OPI_TypeConversion.GetBinaryData(File);
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "UploadFile", , FunctionParameters, FileName, File.Size() + 2);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "UploadFile", , FunctionParameters, FileName, File.Size() + 2);
 
 EndProcedure
 
@@ -399,7 +399,7 @@ Procedure OpenAI_DeleteFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "DeleteFile", , FileID);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "DeleteFile", , FileID);
 
 EndProcedure
 
@@ -419,7 +419,7 @@ Procedure OpenAI_GetFileInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetFileInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetFileInformation");
 
 EndProcedure
 
@@ -436,7 +436,7 @@ Procedure OpenAI_GetFilesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetFilesList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetFilesList");
 
 EndProcedure
 
@@ -456,7 +456,7 @@ Procedure OpenAI_DownloadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "DownloadFile", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "DownloadFile", , FunctionParameters);
 
 EndProcedure
 
@@ -470,7 +470,7 @@ Procedure OpenAI_GetMessageStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetMessageStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetMessageStructure");
 
 EndProcedure
 
@@ -489,7 +489,7 @@ Procedure OpenAI_GetImageMessageStructure(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetImageMessageStructure");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetImageMessageStructure");
 
 EndProcedure
 
@@ -514,7 +514,7 @@ Procedure OpenAI_GenerateSpeech(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GenerateSpeech", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GenerateSpeech", , FunctionParameters);
 
 EndProcedure
 
@@ -539,7 +539,7 @@ Procedure OpenAI_CreateTranscription(FunctionParameters)
 
     OPI_Tools.RemoveFileWithTry(Audio, "Failed to delete the temporary file after the test!!");
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "CreateTranscription");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "CreateTranscription");
 
 EndProcedure
 
@@ -565,7 +565,7 @@ Procedure OpenAI_GetImages(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetImages");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetImages");
 
 EndProcedure
 
@@ -582,7 +582,7 @@ Procedure OpenAI_GetModelList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetModelList");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetModelList");
 
 EndProcedure
 
@@ -603,7 +603,7 @@ Procedure OpenAI_GetAssistantMessage(FunctionParameters)
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetAssistantMessage", , Check);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetAssistantMessage", , Check);
 
 EndProcedure
 
@@ -626,7 +626,7 @@ Procedure OpenAI_GetUserMessage(FunctionParameters)
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetUserMessage", , Check);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetUserMessage", , Check);
 
 EndProcedure
 
@@ -647,7 +647,7 @@ Procedure OpenAI_GetSystemMessage(FunctionParameters)
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
-    OPI_TestDataRetrieval.Process(Result, "OpenAI", "GetSystemMessage", , Check);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "OpenAI", "GetSystemMessage", , Check);
 
 EndProcedure
 

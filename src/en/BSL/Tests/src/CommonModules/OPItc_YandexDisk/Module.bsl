@@ -302,7 +302,7 @@ Procedure YandexDisk_GetConfirmationCode(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetConfirmationCode");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetConfirmationCode");
 
 EndProcedure
 
@@ -321,7 +321,7 @@ Procedure YandexDisk_ConvertCodeToToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "ConvertCodeToToken", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "ConvertCodeToToken", , FunctionParameters);
 
 EndProcedure
 
@@ -340,7 +340,7 @@ Procedure YandexDisk_RefreshToken(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "RefreshToken", , FunctionParameters);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "RefreshToken", , FunctionParameters);
 
 EndProcedure
 
@@ -354,7 +354,7 @@ Procedure YandexDisk_GetDiskInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetDiskInformation");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetDiskInformation");
 
 EndProcedure
 
@@ -371,7 +371,7 @@ Procedure YandexDisk_CreateFolder(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "CreateFolder", , Token, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "CreateFolder", , Token, Path);
 
     OPI_YandexDisk.DeleteObject(Token, Path, False);
 
@@ -392,7 +392,7 @@ Procedure YandexDisk_UploadFileByURL(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFileByURL", , FunctionParameters, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFileByURL", , FunctionParameters, Path);
 
 EndProcedure
 
@@ -409,7 +409,7 @@ Procedure YandexDisk_GetObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetObject", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetObject", , Path);
 
 EndProcedure
 
@@ -427,7 +427,7 @@ Procedure YandexDisk_DeleteObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "DeleteObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "DeleteObject");
 
 EndProcedure
 
@@ -450,7 +450,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFile", "URL"); // SKIP
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFile", "URL"); // SKIP
 
     OPI_YandexDisk.DeleteObject(Token, Path1, False); // SKIP
 
@@ -466,7 +466,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFile");
 
     OPI_YandexDisk.DeleteObject(Token, Path2, False); // SKIP
 
@@ -488,7 +488,7 @@ Procedure YandexDisk_CreateObjectCopy(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "CreateObjectCopy", , FunctionParameters, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "CreateObjectCopy", , FunctionParameters, Path);
 
 EndProcedure
 
@@ -505,7 +505,7 @@ Procedure YandexDisk_GetDownloadLink(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetDownloadLink");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetDownloadLink");
 
 EndProcedure
 
@@ -522,7 +522,7 @@ Procedure YandexDisk_DownloadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "DownloadFile");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "DownloadFile");
 
 EndProcedure
 
@@ -543,7 +543,7 @@ Procedure YandexDisk_GetFilesList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetFilesList", , Count, OffsetFromStart);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetFilesList", , Count, OffsetFromStart);
 
 EndProcedure
 
@@ -563,7 +563,7 @@ Procedure YandexDisk_MoveObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "MoveObject", , FunctionParameters, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "MoveObject", , FunctionParameters, Path);
 
 EndProcedure
 
@@ -582,7 +582,7 @@ Procedure YandexDisk_GetPublishedObjectsList(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetPublishedObjectsList", , Count, OffsetFromStart);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetPublishedObjectsList", , Count, OffsetFromStart);
 
 EndProcedure
 
@@ -599,7 +599,7 @@ Procedure YandexDisk_PublishObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "PublishObject", , FunctionParameters, Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "PublishObject", , FunctionParameters, Path);
 
 EndProcedure
 
@@ -616,7 +616,7 @@ Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetDownloadLinkForPublicObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetDownloadLinkForPublicObject");
 
 EndProcedure
 
@@ -633,7 +633,7 @@ Procedure YandexDisk_GetPublicObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "GetPublicObject");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "GetPublicObject");
 
 EndProcedure
 
@@ -650,7 +650,7 @@ Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "SavePublicObjectToDisk");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "SavePublicObjectToDisk");
 
 EndProcedure
 
@@ -667,7 +667,7 @@ Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "CancelObjectPublication", , Path);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "CancelObjectPublication", , Path);
 
 EndProcedure
 
@@ -691,7 +691,7 @@ Procedure YandexDisk_UploadFileInParts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFileInParts", , File);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFileInParts", , File);
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -699,7 +699,7 @@ Procedure YandexDisk_UploadFileInParts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFileInParts", "Downloading", File);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFileInParts", "Downloading", File);
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -708,7 +708,7 @@ Procedure YandexDisk_UploadFileInParts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.Process(Result, "YandexDisk", "UploadFileInParts", "Deletion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "YandexDisk", "UploadFileInParts", "Deletion");
 
 EndProcedure
 
