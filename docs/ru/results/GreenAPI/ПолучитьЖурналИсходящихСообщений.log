@@ -1,20 +1,8 @@
 ﻿[
  {
   "type": "outgoing",
-  "idMessage": "3EB01CD21F6551EEE3ED7F",
-  "timestamp": 1775629248,
-  "typeMessage": "deletedMessage",
-  "chatId": "***",
-  "deletedMessageData": {
-   "stanzaId": "3EB07867FD75AFECC12F6E"
-  },
-  "statusMessage": "sent",
-  "sendByApi": "***"
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB039C0706BE153DD0875",
-  "timestamp": 1775629244,
+  "idMessage": "3EB0EF0AF4323AC197B336",
+  "timestamp": 1776115688,
   "typeMessage": "extendedTextMessage",
   "chatId": "***",
   "textMessage": "Новое сообщение",
@@ -36,8 +24,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB09913BEC01BB11FF400",
-  "timestamp": 1775629243,
+  "idMessage": "3EB011E156546615A6CF6C",
+  "timestamp": 1776115687,
   "typeMessage": "contactMessage",
   "chatId": "***",
   "contact": {
@@ -47,7 +35,7 @@
    "isForwarded": false
   },
   "quotedMessage": {
-   "stanzaId": "3EB0C4571BA86D51FEC2D0",
+   "stanzaId": "3EB097ECA2CBB305AE5B93",
    "participant": "1234567890@c.us",
    "typeMessage": "contactMessage",
    "contact": {
@@ -70,8 +58,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0C4571BA86D51FEC2D0",
-  "timestamp": 1775629242,
+  "idMessage": "3EB097ECA2CBB305AE5B93",
+  "timestamp": 1776115686,
   "typeMessage": "contactMessage",
   "chatId": "***",
   "contact": {
@@ -89,8 +77,30 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB04CCE982DC290E0603E",
-  "timestamp": 1775629241,
+  "idMessage": "3EB04F48237309BA7F5E0A",
+  "timestamp": 1776115685,
+  "typeMessage": "locationMessage",
+  "chatId": "***",
+  "location": {
+   "nameLocation": "Площадь Победы, Минск",
+   "address": "пл. Победы",
+   "jpegThumbnail": "",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB00FFEEA2514E5EC9787",
+  "timestamp": 1776115685,
   "typeMessage": "locationMessage",
   "chatId": "***",
   "location": {
@@ -103,7 +113,7 @@
    "isForwarded": false
   },
   "quotedMessage": {
-   "stanzaId": "3EB0195CC23444AA8D9A08",
+   "stanzaId": "3EB04F48237309BA7F5E0A",
    "participant": "1234567890@c.us",
    "typeMessage": "locationMessage",
    "location": {
@@ -129,8 +139,20 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB00F264A48FB3F4C6694",
-  "timestamp": 1775629240,
+  "idMessage": "3EB0081BC939C9AEE51481",
+  "timestamp": 1776115685,
+  "typeMessage": "deletedMessage",
+  "chatId": "***",
+  "deletedMessageData": {
+   "stanzaId": "3EB01670A6FECEF8C5F89F"
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***"
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0864ED7B1A2E72E08A6",
+  "timestamp": 1776115684,
   "typeMessage": "pollMessage",
   "chatId": "***",
   "pollMessageData": {
@@ -157,30 +179,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0195CC23444AA8D9A08",
-  "timestamp": 1775629240,
-  "typeMessage": "locationMessage",
-  "chatId": "***",
-  "location": {
-   "nameLocation": "Площадь Победы, Минск",
-   "address": "пл. Победы",
-   "jpegThumbnail": "",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "forwardingScore": 0,
-   "isForwarded": false
-  },
-  "statusMessage": "sent",
-  "sendByApi": "***",
-  "deletedMessageId": "",
-  "editedMessageId": "",
-  "isEdited": false,
-  "isDeleted": false
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB0FE90AF85FF21ED7F0F",
-  "timestamp": 1775629239,
+  "idMessage": "3EB032D79D5637B1A3ED81",
+  "timestamp": 1776115683,
   "typeMessage": "pollMessage",
   "chatId": "***",
   "pollMessageData": {
@@ -207,8 +207,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB01C4BB6577BFDDFD426",
-  "timestamp": 1775629238,
+  "idMessage": "3EB06F830C3353483A4FC5",
+  "timestamp": 1776115680,
   "typeMessage": "videoMessage",
   "chatId": "***",
   "downloadUrl": "",
@@ -220,7 +220,7 @@
   "isForwarded": false,
   "forwardingScore": 0,
   "quotedMessage": {
-   "stanzaId": "3EB0B9FEE955240B40016A",
+   "stanzaId": "3EB0B7226EB2049FD74F7D",
    "participant": "1234567890@c.us",
    "typeMessage": "imageMessage",
    "downloadUrl": "",
@@ -247,8 +247,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0B9FEE955240B40016A",
-  "timestamp": 1775629235,
+  "idMessage": "3EB0B7226EB2049FD74F7D",
+  "timestamp": 1776115676,
   "typeMessage": "imageMessage",
   "chatId": "***",
   "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
@@ -269,8 +269,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0DAC3F7BBABEE914FB9",
-  "timestamp": 1775629230,
+  "idMessage": "3EB07E8D26A981CB58F4F9",
+  "timestamp": 1776115670,
   "typeMessage": "videoMessage",
   "chatId": "***",
   "downloadUrl": "",
@@ -282,7 +282,7 @@
   "isForwarded": false,
   "forwardingScore": 0,
   "quotedMessage": {
-   "stanzaId": "3EB02A9A663D3E14B1A478",
+   "stanzaId": "3EB089A30C40813669682C",
    "participant": "1234567890@c.us",
    "typeMessage": "imageMessage",
    "downloadUrl": "",
@@ -309,13 +309,13 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB02A9A663D3E14B1A478",
-  "timestamp": 1775629229,
+  "idMessage": "3EB089A30C40813669682C",
+  "timestamp": 1776115668,
   "typeMessage": "imageMessage",
   "chatId": "***",
-  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/842db7d8-0756-48be-bb77-1a90624cc3ee...",
+  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/fbc8624e-9ede-439a-aefe-3bf3c2d36104...",
   "caption": "Описание файла",
-  "fileName": "842db7d8-0756-48be-bb77-1a90624cc3ee.jpg",
+  "fileName": "fbc8624e-9ede-439a-aefe-3bf3c2d36104.jpg",
   "jpegThumbnail": "",
   "mimeType": "image/jpeg",
   "isAnimated": false,
@@ -331,17 +331,17 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB01EB48162BD82E8848D",
-  "timestamp": 1775629224,
+  "idMessage": "3EB009DA15EA5A9AC04A96",
+  "timestamp": 1776115662,
   "typeMessage": "quotedMessage",
   "chatId": "***",
   "extendedTextMessage": {
    "text": "Новое сообщение",
-   "stanzaId": "3EB07867FD75AFECC12F6E",
+   "stanzaId": "3EB01670A6FECEF8C5F89F",
    "participant": "1234567890@c.us"
   },
   "quotedMessage": {
-   "stanzaId": "3EB07867FD75AFECC12F6E",
+   "stanzaId": "3EB01670A6FECEF8C5F89F",
    "participant": "1234567890@c.us",
    "typeMessage": "extendedTextMessage",
    "textMessage": "Новое сообщение",
@@ -368,8 +368,8 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB07867FD75AFECC12F6E",
-  "timestamp": 1775629222,
+  "idMessage": "3EB01670A6FECEF8C5F89F",
+  "timestamp": 1776115661,
   "typeMessage": "extendedTextMessage",
   "chatId": "***",
   "textMessage": "Новый текст сообщения",
@@ -384,8 +384,8 @@
   },
   "statusMessage": "sent",
   "sendByApi": "***",
-  "deletedMessageId": "3EB01CD21F6551EEE3ED7F",
-  "editedMessageId": "3EB0975D041E2D90D2E899",
+  "deletedMessageId": "3EB0081BC939C9AEE51481",
+  "editedMessageId": "3EB037EF3EC2467621D578",
   "isEdited": true,
   "isDeleted": true
  }

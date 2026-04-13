@@ -2,6 +2,6 @@
 
 oint airtable СоздатьПоле ^
   --token "***" ^
-  --base "appPnH7gloGddaulq" ^
-  --table "tbl3fk7J8BVXz2UUn" ^
-  --fielddata "{'name':'66922a5d-4531-4c72-a426-d5fdf8f7d957','type':'number','options':{'precision':'0'}}"
+  --base "appawYsmlpFipcRJL" ^
+  --table "tbliYBVZIAdZaUgCd" ^
+  --fielddata "{'name':'43ca7e49-de3b-4b8e-b13d-9da1277c6924','type':'number','options':{'precision':'0'}}"
