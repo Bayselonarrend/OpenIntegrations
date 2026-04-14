@@ -1,4 +1,4 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint grpc ПолучитьСписокСервисов \
-  --conn "{'proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'},'address':'https://grpcb.in:9001'}"
+  --conn "{'error':'HTTPS connection failed: transport error. Address: https://grpcb.in:9001, Host: grpcb.in, Port: 9001','result':false}"

@@ -2,7 +2,7 @@
 
 oint s3 ЗагрузитьОбъектЦеликом ^
   --name "pictureSmall.jpg" ^
-  --bucket "e3ff64d1" ^
+  --bucket "b489ece7" ^
   --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --dir true

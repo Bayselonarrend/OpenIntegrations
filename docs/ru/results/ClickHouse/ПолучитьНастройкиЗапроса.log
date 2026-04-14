@@ -1,8 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "8a81d0ab-6224-43c7-9d91-d72471823e4f",
- "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\qumogjra.xqn.json",
+ "id": "e211a877-f948-4110-9e85-7b4d29e84d40",
+ "data": "/tmp/jjqls3wt.adm.json",
  "format": "CSV",
  "external_tables": [
   {

@@ -1,6 +1,6 @@
 ﻿{
  "entity": {
-  "uuid": "34457838-bcf2-4a0e-a79e-8fcc9978951d",
+  "uuid": "5b4869bb-988f-4d1e-989d-ccebd70537a7",
   "intake_date": "2026-04-15",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
@@ -37,15 +37,15 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-14T00:16:09+03:00"
+    "date_time": "2026-04-14T20:57:17+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "4bdb8db4-1450-4cfe-a16b-3ad411bcd94d",
+   "request_uuid": "baff676e-9979-4cb1-b2a2-b1e3778f2141",
    "type": "CREATE",
-   "date_time": "2026-04-14T00:15:28+03:00",
+   "date_time": "2026-04-14T20:56:45+00:00",
    "state": "ACCEPTED"
   }
  ]

@@ -2,4 +2,4 @@ oint rportal ПолучитьЛог \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "a6e43798-ef23-4ae5-8c7d-db15952b7675"
+  --uuid "79ae262a-487e-4e39-97a9-cff0bfbcb681"

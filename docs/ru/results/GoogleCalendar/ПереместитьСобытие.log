@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3552227170501374\"",
- "id": "8cpb709d0u9vj59c965peqfnf0",
+ "etag": "\"3552398036917726\"",
+ "id": "m69q21crkbfakgdp0569b0t1vg",
  "status": "cancelled",
- "htmlLink": "https://www.google.com/calendar/event?eid=OGNwYjcwOWQwdTl2ajU5Yzk2NXBlcWZuZjAgNTllNmQ3NGY3MmNhNWI0Nz...",
- "created": "2026-04-13T20:53:03Z",
- "updated": "2026-04-13T20:53:05.25Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bTY5cTIxY3JrYmZha2dkcDA1NjliMHQxdmcgZGUxZWIyZDU3NWIwZjQyOW...",
+ "created": "2026-04-14T20:36:56Z",
+ "updated": "2026-04-14T20:36:58.458Z",
  "summary": "Новое событие",
  "description": "Новое описание события",
  "location": "В офисе",
@@ -16,14 +16,14 @@
   "email": "bayselonarrend@gmail.com"
  },
  "start": {
-  "dateTime": "2026-04-14T02:53:04+03:00",
+  "dateTime": "2026-04-14T20:36:57+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-04-14T03:53:04+03:00",
+  "dateTime": "2026-04-14T21:36:57+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "8cpb709d0u9vj59c965peqfnf0@google.com",
+ "iCalUID": "m69q21crkbfakgdp0569b0t1vg@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true
