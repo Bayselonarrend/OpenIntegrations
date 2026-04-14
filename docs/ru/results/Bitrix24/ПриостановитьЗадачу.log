@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10270",
+   "id": "10280",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-04-14T00:03:42+03:00",
+   "createdDate": "2026-04-14T20:44:35+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-04-14T00:04:17+03:00",
+   "changedDate": "2026-04-14T20:45:11+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-04-14T00:04:17+03:00",
-   "dateStart": "2026-04-14T00:04:11+03:00",
-   "deadline": "2026-04-15T00:03:00+03:00",
-   "startDatePlan": "2026-04-14T00:03:42+03:00",
-   "endDatePlan": "2026-04-15T00:00:00+03:00",
-   "guid": "{b5f24ead-1aa6-4fd5-b7b0-7075837c103c}",
+   "activityDate": "2026-04-14T20:45:11+00:00",
+   "dateStart": "2026-04-14T20:45:05+00:00",
+   "deadline": "2026-04-15T20:44:00+00:00",
+   "startDatePlan": "2026-04-14T20:44:35+00:00",
+   "endDatePlan": "2026-04-14T21:00:00+00:00",
+   "guid": "{362ad6ca-0817-4731-a8f2-41071264682f}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-04-14T00:04:17+03:00",
+   "statusChangedDate": "2026-04-14T20:45:11+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1776114257,
-  "finish": 1776114257.61289,
-  "duration": 0.612894058227539,
+  "start": 1776199511,
+  "finish": 1776199511.75602,
+  "duration": 0.756021022796631,
   "processing": 0,
-  "date_start": "2026-04-14T00:04:17+03:00",
-  "date_finish": "2026-04-14T00:04:17+03:00",
-  "operating_reset_at": 1776114857,
-  "operating": 0.148627042770386
+  "date_start": "2026-04-14T20:45:11+00:00",
+  "date_finish": "2026-04-14T20:45:11+00:00",
+  "operating_reset_at": 1776200111,
+  "operating": 0.157957077026367
  }
 }
