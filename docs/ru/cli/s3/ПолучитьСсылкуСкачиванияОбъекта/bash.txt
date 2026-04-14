@@ -2,7 +2,7 @@
 
 oint s3 ПолучитьСсылкуСкачиванияОбъекта \
   --name "picture.jpg" \
-  --bucket "e3ff64d1" \
+  --bucket "b489ece7" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --expires 7200 \
   --dir true
