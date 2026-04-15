@@ -252,6 +252,7 @@ Procedure WebSocket_SendPing(FunctionParameters)
     Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
+
         Options = New Structure;
         Options.Insert("conn", Connection);
 
@@ -262,7 +263,7 @@ Procedure WebSocket_SendPing(FunctionParameters)
             LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
 
             If LastMessage["result"] Then
-                Check = OPI_WebSocket.GetMessage(Connection, 3000);
+                Check = LastMessage;
             Else
                 Break;
             EndIf;
@@ -390,10 +391,10 @@ Procedure WebSocket_GetMessage(FunctionParameters)
 
         While True Do
 
-            LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
+            LastMessage = OPI_WebSocket.GetMessage(Connection, 3000); // <----
 
             If LastMessage["result"] Then
-                Result = OPI_WebSocket.GetMessage(Connection, 3000); // <----
+                Result = LastMessage;
             Else
                 Break;
             EndIf;
@@ -472,7 +473,7 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
         LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
 
         If LastMessage["result"] Then
-            Check = OPI_WebSocket.GetMessage(Connection, 3000);
+            Check = LastMessage;
         Else
             Break;
         EndIf;
@@ -542,7 +543,7 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
         LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
 
         If LastMessage["result"] Then
-            Check = OPI_WebSocket.GetMessage(Connection, 3000);
+            Check = LastMessage;
         Else
             Break;
         EndIf;
