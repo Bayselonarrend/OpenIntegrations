@@ -64,6 +64,7 @@
 //@skip-check bsl-legacy-check-method-for-statements-after-return
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
+//@skip-check use-non-recommended-method
 
 // #Использовать oint
 // #Использовать asserts
@@ -93,6 +94,13 @@
 
 Процедура WS_Клиент() Экспорт
 
+	УстановитьПризнакТестаCLI(Ложь);
+	
+	Если OPI_ПолучениеДанныхТестов.ЭтоТестCLI() Тогда 
+		Сообщить("CLI SKIP");
+		Возврат; 
+	КонецЕсли;
+	
     МассивВариантов = OPI_ПолучениеДанныхТестов.ПолучитьВариантыПараметровWebSocket();
 
     Для Каждого ПараметрыТеста Из МассивВариантов Цикл
