@@ -181,5 +181,12 @@ impl WebSocketServerBackend {
 
     pub fn shutdown(&mut self) {
         let _ = self.backend.send(WebSocketCommand::Shutdown);
+        self.backend.shutdown();
+    }
+}
+
+impl Drop for WebSocketServerBackend {
+    fn drop(&mut self) {
+        self.shutdown();
     }
 }
