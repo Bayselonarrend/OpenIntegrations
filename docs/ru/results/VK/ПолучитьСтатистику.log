@@ -1,11 +1,8 @@
 ﻿{
  "response": [
   {
-   "activity": {
-    "comments": 1
-   },
-   "period_from": 1776124800,
-   "period_to": 1776211199,
+   "period_from": 1776211200,
+   "period_to": 1776297599,
    "reach": {
     "cities": [],
     "countries": [],
@@ -23,10 +20,10 @@
   },
   {
    "activity": {
-    "comments": 1
+    "comments": 2
    },
-   "period_from": 1776038400,
-   "period_to": 1776124799,
+   "period_from": 1776124800,
+   "period_to": 1776211199,
    "reach": {
     "cities": [],
     "countries": [],
@@ -36,10 +33,17 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "VN",
+      "count": 1,
+      "name": "Вьетнам",
+      "value": 55
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   }
  ]
