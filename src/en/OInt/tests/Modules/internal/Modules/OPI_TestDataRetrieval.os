@@ -474,10 +474,6 @@ Function FormYAXTestsCLI(Val TestModule = "") Export
 
         CurrentSection = Section.Key;
 
-        If CurrentSection = "HTTP" Then
-            Continue;
-        EndIf;
-
         Filter       = New Structure("Section", CurrentSection);
         SectionTests = TestTable.FindRows(Filter);
 
@@ -7739,7 +7735,7 @@ EndFunction
 
 Function Check_TCP_GetConnectionList(Val Result, Val Option)
 
-    If Option = "Closing" Then
+    If Option = "Closing" Or IsCLITest() Then
         ExpectsThat(Result["connections"].Count()).Равно(1);
     Else
         ExpectsThat(Result["connections"].Count()).Равно(2);
