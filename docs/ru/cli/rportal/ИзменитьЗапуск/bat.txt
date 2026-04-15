@@ -4,5 +4,5 @@ oint rportal ИзменитьЗапуск ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 84 ^
+  --id 90 ^
   --params "{'description':'New description'}"
