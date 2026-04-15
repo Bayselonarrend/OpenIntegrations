@@ -238,5 +238,12 @@ impl TcpServerBackend {
 
     pub fn shutdown(&mut self) {
         let _ = self.backend.send(BackendCommand::Shutdown);
+        self.backend.shutdown();
+    }
+}
+
+impl Drop for TcpServerBackend {
+    fn drop(&mut self) {
+        self.shutdown();
     }
 }
