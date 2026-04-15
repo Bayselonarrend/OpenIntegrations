@@ -208,6 +208,7 @@
 	
 	Если Не КаталогСfe2cf.Существует() Тогда
 		ЗапуститьПриложение("git clone https://github.com/bayselonarrend/cfe2cf");
+		Приостановить(20000);
 	КонецЕсли;
 	
 	ПодключитьСценарий("./cfe2cf/src/cfe2cf.os", "cfe2cf");
