@@ -13,6 +13,18 @@
                 "description_en": "Client methods (3 functions)"
             },
             {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Исправлено неполное переформирование запроса при повторных попытка отправки запроса в версии для OneScript",
+                "description_en": "Fixed incomplete request regeneration when retrying request sending in OneScript version"
+            },
+            {
+                "lib": "GRPC",
+                "icon": "media/GRPC.png",
+                "description_ru": "Исправлено формирование результата при ошибке в функциях упрощенной обработки потоков",
+                "description_en": "Fixed result generation on error in simplified stream processing functions"
+            },
+            {
                 "lib": "RSS",
                 "icon": "media/RSS.png",
                 "description_ru": "Добавлена возможность передачи файла в функции `РазобратьФидRSS` и `РазобратьФидAtom`",
