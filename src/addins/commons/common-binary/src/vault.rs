@@ -122,8 +122,12 @@ impl From<&str> for BinaryInput {
 
 impl Drop for BinaryVault {
     fn drop(&mut self) {
-        if let Ok(mut storage) = self.storage.lock() {
-            storage.clear();
+        // Clear shared storage only when the last vault owner is dropped.
+        // Otherwise, dropping any clone would wipe data for all clones.
+        if Arc::strong_count(&self.storage) == 1 {
+            if let Ok(mut storage) = self.storage.lock() {
+                storage.clear();
+            }
         }
     }
 }
