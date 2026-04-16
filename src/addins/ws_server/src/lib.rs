@@ -1,6 +1,9 @@
 mod backend;
 mod server;
 mod wrapper;
+mod read;
+mod write;
+mod connections;
 
 use std::sync::Arc;
 use common_core::*;
@@ -22,6 +25,9 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListConnections"),            // 6
     name!("RetrieveBinaryFromVault"),    // 7
     name!("GetLogs"),                    // 8
+    name!("SendText"),                   // 9
+    name!("SendPing"),                   // 10
+    name!("SendPong"),                   // 11
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -35,6 +41,9 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 0,  // ListConnections()
         7 => 1,  // RetrieveBinaryFromVault(vault_key)
         8 => 1,  // GetLogs(count)
+        9 => 2,  // SendText(connection_id, text)
+        10 => 2, // SendPing(connection_id, payload)
+        11 => 2, // SendPong(connection_id, payload)
         _ => 0,
     }
 }
@@ -84,6 +93,21 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         8 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
+        },
+        9 => {
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let text = params[1].get_string().unwrap_or_default();
+            Box::new(obj.server.send_text(&connection_id, &text))
+        },
+        10 => {
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let payload = params[1].get_blob().unwrap_or(&empty_array);
+            Box::new(obj.server.send_ping(&connection_id, payload.to_vec()))
+        },
+        11 => {
+            let connection_id = params[0].get_string().unwrap_or_default();
+            let payload = params[1].get_blob().unwrap_or(&empty_array);
+            Box::new(obj.server.send_pong(&connection_id, payload.to_vec()))
         },
         _ => Box::new(false),
     }
