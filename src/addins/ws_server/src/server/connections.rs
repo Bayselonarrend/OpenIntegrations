@@ -1,10 +1,13 @@
-use crate::server::{OutgoingMessage, WebSocketServerState};
+use super::{OutgoingMessage, WebSocketServerState};
 use common_server::MessageHandler;
 use serde_json::json;
 
 impl WebSocketServerState {
     pub(crate) fn close_all_connections_internal(&mut self) {
-        let mut manager = self.manager.lock().unwrap();
+        let mut manager = match self.manager.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
         manager.iter_mut(|_, conn| {
             conn.is_closed = true;
             let _ = conn.outgoing_tx.send(OutgoingMessage::Close);
@@ -13,7 +16,10 @@ impl WebSocketServerState {
     }
 
     pub fn close_connection(&mut self, connection_id: &str) -> String {
-        let mut manager = self.manager.lock().unwrap();
+        let mut manager = match self.manager.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
         if let Some(close_sent) = manager.get_mut(connection_id, |conn| {
             conn.is_closed = true;
             conn.outgoing_tx.send(OutgoingMessage::Close).is_ok()
@@ -33,7 +39,10 @@ impl WebSocketServerState {
     }
 
     pub fn get_connections_list(&mut self) -> String {
-        let mut manager = self.manager.lock().unwrap();
+        let mut manager = match self.manager.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
         let mut connections_list = Vec::new();
 
         manager.iter_mut(|conn_id, conn_info| {
