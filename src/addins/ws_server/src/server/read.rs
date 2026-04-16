@@ -1,4 +1,4 @@
-use crate::server::{WebSocketConnection, WebSocketServerState};
+use super::{WebSocketConnection, WebSocketServerState};
 use common_server::{AsyncWaiter, MessageHandler};
 use serde_json::json;
 
@@ -9,7 +9,10 @@ impl WebSocketServerState {
         let message_handler = MessageHandler::new(self.vault.clone());
 
         let result = waiter.wait_for(|| {
-            let mut manager = self.manager.lock().unwrap();
+            let mut manager = match self.manager.lock() {
+                Ok(guard) => guard,
+                Err(poisoned) => poisoned.into_inner(),
+            };
             let all_ids = manager.get_ids_round_robin();
             let mut to_remove = Vec::new();
             let mut found_message = None;
@@ -66,7 +69,10 @@ impl WebSocketServerState {
         let conn_id = connection_id.to_string();
 
         let result = waiter.wait_for(|| {
-            let mut manager = self.manager.lock().unwrap();
+            let mut manager = match self.manager.lock() {
+                Ok(guard) => guard,
+                Err(poisoned) => poisoned.into_inner(),
+            };
             if let Some((message, address, is_active)) =
                 manager.get_mut(&conn_id, Self::poll_connection_message)
             {

@@ -1,3 +1,7 @@
+mod read;
+mod write;
+mod connections;
+
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::net::SocketAddr;
@@ -20,7 +24,7 @@ use serde::{Deserialize, Serialize};
 pub struct WebSocketServerConfig {
     #[serde(default = "default_max_connections")]
     pub max_connections: usize,
-    
+
     #[serde(default = "default_ws_routes")]
     pub routes: Vec<String>,
 }
@@ -123,7 +127,10 @@ impl WebSocketServerState {
                 .with_graceful_shutdown(async {
                     let _ = shutdown_rx.await;
                 })
-                .await{}
+                .await
+            {
+                eprintln!("WebSocket server error: {}", e);
+            }
         });
 
         Ok(WebSocketServerState {
@@ -169,7 +176,10 @@ async fn handle_websocket(
     {
         let locked_state = state.lock().await;
         {
-            let mut manager = locked_state.manager.lock().unwrap();
+            let mut manager = match locked_state.manager.lock() {
+                Ok(guard) => guard,
+                Err(poisoned) => poisoned.into_inner(),
+            };
             manager.add(connection_id.clone(), WebSocketConnection {
                 addr: addr.to_string(),
                 outgoing_tx,
@@ -232,7 +242,10 @@ async fn handle_websocket(
 
     let locked_state = state_clone.lock().await;
     {
-        let mut manager = locked_state.manager.lock().unwrap();
+        let mut manager = match locked_state.manager.lock() {
+            Ok(guard) => guard,
+            Err(poisoned) => poisoned.into_inner(),
+        };
         let _ = manager.get_mut(&connection_id, |conn| {
             conn.is_closed = true;
         });
