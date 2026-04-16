@@ -136,9 +136,10 @@ impl WebSocketServerBackend {
                         }
 
                         WebSocketCommand::Shutdown => {
-                            #[allow(unused_assignments)]
-                            {
-                                server_state = None;
+                            if let Some(mut state) = server_state.take() {
+                                rt.block_on(async {
+                                    state.shutdown().await;
+                                });
                             }
                             break;
                         }
