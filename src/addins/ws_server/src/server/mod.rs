@@ -193,7 +193,7 @@ async fn handle_websocket(
 
     let (mut ws_sender, mut ws_receiver) = socket.split();
 
-    let send_task = tokio::spawn(async move {
+    let mut send_task = tokio::spawn(async move {
         while let Some(msg) = outgoing_rx.recv().await {
             match msg {
                 OutgoingMessage::Binary(data) => {
@@ -224,7 +224,7 @@ async fn handle_websocket(
         }
     });
 
-    let recv_task = tokio::spawn(async move {
+    let mut recv_task = tokio::spawn(async move {
         while let Some(Ok(msg)) = ws_receiver.next().await {
             if let Message::Binary(data) = msg {
                 let _ = incoming_tx.send(data.to_vec());
@@ -235,8 +235,14 @@ async fn handle_websocket(
     });
 
     tokio::select! {
-        _ = send_task => {},
-        _ = recv_task => {},
+        _ = &mut send_task => {
+            recv_task.abort();
+            let _ = recv_task.await;
+        },
+        _ = &mut recv_task => {
+            send_task.abort();
+            let _ = send_task.await;
+        },
     }
 
     let locked_state = state_clone.lock().await;
