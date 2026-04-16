@@ -34,7 +34,7 @@ pub fn get_params_amount(num: usize) -> usize {
         2 => 1,  // GetNextMessage(timeout_ms)
         3 => 2,  // GetMessage(connection_id, timeout_ms)
         4 => 2,  // SendMessage(connection_id, message)
-        5 => 1,  // CloseConnection(connection_id)
+        5 => 2,  // CloseConnection(connection_id, remove_from_list)
         6 => 0,  // ListConnections()
         7 => 1,  // RetrieveBinaryFromVault(vault_key)
         8 => 1,  // GetLogs(count)
@@ -78,7 +78,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         5 => {
             let connection_id = params[0].get_string().unwrap_or_default();
-            Box::new(obj.server.close_connection(&connection_id))
+            let remove_from_list = params[1].get_bool().unwrap_or(false);
+            Box::new(obj.server.close_connection(&connection_id, remove_from_list))
         },
         6 => {
             Box::new(obj.server.get_connections_list())
