@@ -18,6 +18,7 @@ use futures_util::{StreamExt, SinkExt};
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
 use common_server::ConnectionManager;
+use common_utils::utils::lock_unpoisoned;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -176,10 +177,8 @@ async fn handle_websocket(
     {
         let locked_state = state.lock().await;
         {
-            let mut manager = match locked_state.manager.lock() {
-                Ok(guard) => guard,
-                Err(poisoned) => poisoned.into_inner(),
-            };
+            let mut manager = lock_unpoisoned(&locked_state.manager);
+            
             manager.add(connection_id.clone(), WebSocketConnection {
                 addr: addr.to_string(),
                 outgoing_tx,
@@ -242,10 +241,8 @@ async fn handle_websocket(
 
     let locked_state = state_clone.lock().await;
     {
-        let mut manager = match locked_state.manager.lock() {
-            Ok(guard) => guard,
-            Err(poisoned) => poisoned.into_inner(),
-        };
+        let mut manager = lock_unpoisoned(&locked_state.manager);
+
         let _ = manager.get_mut(&connection_id, |conn| {
             conn.is_closed = true;
         });

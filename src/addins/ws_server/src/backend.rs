@@ -49,6 +49,7 @@ pub enum WebSocketCommand {
     },
     CloseConnection {
         connection_id: String,
+        remove_from_list: bool,
         response: Sender<String>,
     },
     GetConnectionsList {
@@ -123,9 +124,9 @@ impl WebSocketServerBackend {
                             );
                         }
 
-                        WebSocketCommand::CloseConnection { connection_id, response } => {
+                        WebSocketCommand::CloseConnection { connection_id, remove_from_list, response } => {
                             handle_sync_command!(server_state, response, |state|
-                                state.close_connection(&connection_id)
+                                state.close_connection(&connection_id, remove_from_list)
                             );
                         }
 
@@ -228,10 +229,11 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn close_connection(&self, connection_id: String) -> String {
+    pub fn close_connection(&self, connection_id: String, remove_from_list: bool) -> String {
         send_command!(self.backend, |response| {
             WebSocketCommand::CloseConnection {
                 connection_id,
+                remove_from_list,
                 response,
             }
         })
