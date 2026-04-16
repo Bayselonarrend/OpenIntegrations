@@ -8,6 +8,7 @@ use tokio::net::tcp::{OwnedReadHalf, OwnedWriteHalf};
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
 use common_server::ConnectionManager;
+use common_utils::utils::lock_unpoisoned;
 
 pub struct TcpConnectionInfo {
     pub read_half: Option<OwnedReadHalf>,
@@ -64,10 +65,7 @@ impl ServerState {
                                     log!(log, "New connection accepted: {} from {}", connection_id, addr);
                                 }
 
-                                let mut conns = match connections_arc.lock() {
-                                    Ok(guard) => guard,
-                                    Err(poisoned) => poisoned.into_inner(),
-                                };
+                                let mut conns = lock_unpoisoned(&connections_arc);
 
                                 if conns.len() >= queue_size {
                                     if let Some((old_id, _)) = conns.shift_remove_index(0) {

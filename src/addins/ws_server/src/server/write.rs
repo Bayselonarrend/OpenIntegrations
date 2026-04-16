@@ -1,5 +1,6 @@
 use super::{OutgoingMessage, WebSocketServerState};
 use common_server::MessageHandler;
+use common_utils::utils::lock_unpoisoned;
 use serde_json::json;
 
 impl WebSocketServerState {
@@ -40,10 +41,8 @@ impl WebSocketServerState {
     fn send_frame(&self, connection_id: &str, frame: OutgoingMessage, log_message: &str) -> String {
         self.log(log_message);
 
-        let mut manager = match self.manager.lock() {
-            Ok(guard) => guard,
-            Err(poisoned) => poisoned.into_inner(),
-        };
+        let mut manager = lock_unpoisoned(&self.manager);
+        
         if let Some(send_result) = manager.get_mut(connection_id, |conn| {
             if conn.is_closed {
                 return false;
@@ -52,8 +51,7 @@ impl WebSocketServerState {
         }) {
             if send_result {
                 json!({
-                    "result": true,
-                    "message": "Message sent"
+                    "result": true
                 }).to_string()
             } else {
                 MessageHandler::error_response("WebSocket connection is closed")

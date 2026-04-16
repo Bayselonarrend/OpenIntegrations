@@ -121,13 +121,13 @@ impl WebSocketServer {
         }
     }
 
-    pub fn close_connection(&self, connection_id: &str) -> String {
+    pub fn close_connection(&self, connection_id: &str, remove_from_list: bool) -> String {
         if !self.started {
             return json_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.close_connection(connection_id.to_string()),
+            Ok(backend) => backend.close_connection(connection_id.to_string(), remove_from_list),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
     }
