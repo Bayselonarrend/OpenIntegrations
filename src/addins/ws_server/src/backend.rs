@@ -32,6 +32,21 @@ pub enum WebSocketCommand {
         message: Vec<u8>,
         response: Sender<String>,
     },
+    SendText {
+        connection_id: String,
+        text: String,
+        response: Sender<String>,
+    },
+    SendPing {
+        connection_id: String,
+        payload: Vec<u8>,
+        response: Sender<String>,
+    },
+    SendPong {
+        connection_id: String,
+        payload: Vec<u8>,
+        response: Sender<String>,
+    },
     CloseConnection {
         connection_id: String,
         response: Sender<String>,
@@ -87,6 +102,24 @@ impl WebSocketServerBackend {
                         WebSocketCommand::SendMessage { connection_id, message, response } => {
                             handle_async_command!(server_state, rt, response, |state|
                                 state.send_message(&connection_id, message).await
+                            );
+                        }
+
+                        WebSocketCommand::SendText { connection_id, text, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.send_text(&connection_id, text).await
+                            );
+                        }
+
+                        WebSocketCommand::SendPing { connection_id, payload, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.send_ping(&connection_id, payload).await
+                            );
+                        }
+
+                        WebSocketCommand::SendPong { connection_id, payload, response } => {
+                            handle_async_command!(server_state, rt, response, |state|
+                                state.send_pong(&connection_id, payload).await
                             );
                         }
 
@@ -159,6 +192,36 @@ impl WebSocketServerBackend {
             WebSocketCommand::SendMessage {
                 connection_id,
                 message,
+                response,
+            }
+        })
+    }
+
+    pub fn send_text(&self, connection_id: String, text: String) -> String {
+        send_command!(self.backend, |response| {
+            WebSocketCommand::SendText {
+                connection_id,
+                text,
+                response,
+            }
+        })
+    }
+
+    pub fn send_ping(&self, connection_id: String, payload: Vec<u8>) -> String {
+        send_command!(self.backend, |response| {
+            WebSocketCommand::SendPing {
+                connection_id,
+                payload,
+                response,
+            }
+        })
+    }
+
+    pub fn send_pong(&self, connection_id: String, payload: Vec<u8>) -> String {
+        send_command!(self.backend, |response| {
+            WebSocketCommand::SendPong {
+                connection_id,
+                payload,
                 response,
             }
         })

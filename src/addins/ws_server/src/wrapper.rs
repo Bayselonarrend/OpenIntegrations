@@ -88,6 +88,39 @@ impl WebSocketServer {
         }
     }
 
+    pub fn send_text(&self, connection_id: &str, text: &str) -> String {
+        if !self.started {
+            return json_error("WebSocket server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.send_text(connection_id.to_string(), text.to_string()),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn send_ping(&self, connection_id: &str, payload: Vec<u8>) -> String {
+        if !self.started {
+            return json_error("WebSocket server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.send_ping(connection_id.to_string(), payload),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
+    pub fn send_pong(&self, connection_id: &str, payload: Vec<u8>) -> String {
+        if !self.started {
+            return json_error("WebSocket server not started");
+        }
+
+        match self.backend.lock() {
+            Ok(backend) => backend.send_pong(connection_id.to_string(), payload),
+            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+        }
+    }
+
     pub fn close_connection(&self, connection_id: &str) -> String {
         if !self.started {
             return json_error("WebSocket server not started");
