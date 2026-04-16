@@ -11,9 +11,8 @@ use tokio::sync::mpsc;
 use futures_util::{StreamExt, SinkExt};
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
-use common_server::{ConnectionManager, MessageHandler, AsyncWaiter};
+use common_server::ConnectionManager;
 use serde::{Deserialize, Serialize};
-use serde_json::json;
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct WebSocketServerConfig {
@@ -42,20 +41,28 @@ impl Default for WebSocketServerConfig {
 }
 
 pub struct WebSocketServerState {
-    vault: BinaryVault,
-    logger: Option<Arc<Logger>>,
-    manager: Arc<Mutex<ConnectionManager<WebSocketConnection>>>,
+    pub(crate) vault: BinaryVault,
+    pub(crate) logger: Option<Arc<Logger>>,
+    pub(crate) manager: Arc<Mutex<ConnectionManager<WebSocketConnection>>>,
 }
 
 pub struct WebSocketConnection {
-    addr: String,
-    outgoing_tx: mpsc::UnboundedSender<Vec<u8>>,
-    incoming_rx: mpsc::UnboundedReceiver<Vec<u8>>,
-    is_closed: bool,
+    pub(crate) addr: String,
+    pub(crate) outgoing_tx: mpsc::UnboundedSender<OutgoingMessage>,
+    pub(crate) incoming_rx: mpsc::UnboundedReceiver<Vec<u8>>,
+    pub(crate) is_closed: bool,
+}
+
+pub(crate) enum OutgoingMessage {
+    Binary(Vec<u8>),
+    Text(String),
+    Ping(Vec<u8>),
+    Pong(Vec<u8>),
+    Close,
 }
 
 impl WebSocketServerState {
-    fn log(&self, message: &str) {
+    pub(crate) fn log(&self, message: &str) {
         if let Some(ref logger) = self.logger {
             log!(logger, "{}", message);
         }
@@ -67,7 +74,7 @@ impl WebSocketServerState {
         vault: BinaryVault,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
-        // Parse configuration
+
         let config = if config_json.is_empty() {
             WebSocketServerConfig::default()
         } else {
@@ -86,7 +93,6 @@ impl WebSocketServerState {
             manager: manager.clone(),
         }));
 
-        // Create router with configured routes
         let mut app = Router::new();
         for route in &config.routes {
             if let Some(ref log) = logger {
@@ -118,188 +124,6 @@ impl WebSocketServerState {
         })
     }
 
-    pub async fn get_next_message(&mut self, timeout_ms: u64) -> String {
-        let waiter = AsyncWaiter::new(timeout_ms);
-        let message_handler = MessageHandler::new(self.vault.clone());
-        
-        let result = waiter.wait_for(|| {
-            let mut manager = self.manager.lock().unwrap();
-            let all_ids = manager.get_ids_round_robin();
-            let mut to_remove = Vec::new();
-            let mut found_message = None;
-            for conn_id in all_ids {
-                if let Some(next_state) = manager.get_mut(&conn_id, |conn| {
-                    let is_active = !conn.is_closed;
-                    let address = conn.addr.clone();
-                    match conn.incoming_rx.try_recv() {
-                        Ok(msg) => Some((Some(msg), address, is_active)),
-                        Err(tokio::sync::mpsc::error::TryRecvError::Empty) => Some((None, address, is_active)),
-                        Err(tokio::sync::mpsc::error::TryRecvError::Disconnected) => Some((None, address, false)),
-                    }
-                }) {
-                    if let Some((message, address, is_active)) = next_state {
-                        if let Some(msg) = message {
-                            manager.set_last_processed(Some(conn_id.clone()));
-                            found_message = Some((conn_id, Some(msg), address, is_active));
-                            break;
-                        }
-                        if !is_active {
-                            to_remove.push(conn_id.clone());
-                        }
-                    }
-                }
-            }
-
-            for conn_id in to_remove {
-                manager.remove(&conn_id);
-            }
-
-            if found_message.is_some() {
-                return found_message;
-            }
-
-            None
-        }).await;
-
-        match result {
-            Ok((connection_id, Some(message), address, is_active)) => {
-                self.log(&format!("Received {} bytes from WebSocket {}", message.len(), connection_id));
-                
-                match message_handler.store_message(message) {
-                    Ok(vault_key) => {
-                        json!({
-                            "result": true,
-                            "connectionId": connection_id,
-                            "address": address,
-                            "message": vault_key,
-                            "isActive": is_active,
-                            "isNewConnection": false
-                        }).to_string()
-                    }
-                    Err(e) => MessageHandler::error_response(&e),
-                }
-            }
-            Ok((_, None, _, _)) => MessageHandler::timeout_response(),
-            Err(()) => MessageHandler::timeout_response(),
-        }
-    }
-
-    pub async fn get_message(&mut self, connection_id: &str, timeout_ms: u64) -> String {
-        let waiter = AsyncWaiter::new(timeout_ms);
-        let conn_id = connection_id.to_string();
-        
-        let result = waiter.wait_for(|| {
-            let mut manager = self.manager.lock().unwrap();
-            if let Some(next_state) = manager.get_mut(&conn_id, |conn| {
-                let is_active = !conn.is_closed;
-                let address = conn.addr.clone();
-                match conn.incoming_rx.try_recv() {
-                    Ok(msg) => Some((Some(msg), address, is_active)),
-                    Err(tokio::sync::mpsc::error::TryRecvError::Empty) => Some((None, address, is_active)),
-                    Err(tokio::sync::mpsc::error::TryRecvError::Disconnected) => Some((None, address, false)),
-                }
-            }) {
-                if let Some((message, address, is_active)) = next_state {
-                    if !is_active && message.is_none() {
-                        manager.remove(&conn_id);
-                    }
-                    if let Some(msg) = message {
-                        return Some((Some(msg), address, is_active));
-                    }
-                    if !is_active {
-                        return Some((None, address, false));
-                    }
-                }
-            }
-            None
-        }).await;
-
-        match result {
-            Ok((Some(message), address, is_active)) => {
-                self.log(&format!("Received {} bytes from WebSocket {}", message.len(), connection_id));
-
-                let message_handler = MessageHandler::new(self.vault.clone());
-                match message_handler.store_message(message) {
-                    Ok(vault_key) => {
-                        json!({
-                            "result": true,
-                            "connectionId": connection_id,
-                            "address": address,
-                            "isActive": is_active,
-                            "message": vault_key
-                        }).to_string()
-                    }
-                    Err(e) => MessageHandler::error_response(&e),
-                }
-            }
-            Ok((None, address, _)) => {
-                json!({
-                    "result": true,
-                    "connectionId": connection_id,
-                    "address": address,
-                    "isActive": false
-                }).to_string()
-            }
-            Err(()) => MessageHandler::timeout_response(),
-        }
-    }
-
-    pub async fn send_message(&mut self, connection_id: &str, message: Vec<u8>) -> String {
-        self.log(&format!("Sending {} bytes to WebSocket {}", message.len(), connection_id));
-        
-        let mut manager = self.manager.lock().unwrap();
-        if let Some(send_result) = manager.get_mut(connection_id, |conn| {
-            if conn.is_closed {
-                return false;
-            }
-            conn.outgoing_tx.send(message).is_ok()
-        }) {
-            if send_result {
-                json!({
-                    "result": true,
-                    "message": "Message sent"
-                }).to_string()
-            } else {
-                MessageHandler::error_response("WebSocket connection is closed")
-            }
-        } else {
-            MessageHandler::error_response("WebSocket connection not found")
-        }
-    }
-
-    pub fn close_connection(&mut self, connection_id: &str) -> String {
-        let mut manager = self.manager.lock().unwrap();
-        if let Some(()) = manager.get_mut(connection_id, |conn| {
-            conn.is_closed = true;
-        }) {
-            self.log(&format!("WebSocket closed: {}", connection_id));
-            json!({
-                "result": true,
-                "message": "WebSocket closed"
-            }).to_string()
-        } else {
-            MessageHandler::error_response("WebSocket connection not found")
-        }
-    }
-
-    pub fn get_connections_list(&mut self) -> String {
-        let mut manager = self.manager.lock().unwrap();
-        let mut connections_list = Vec::new();
-
-        manager.iter_mut(|conn_id, conn_info| {
-            connections_list.push(json!({
-                "connectionId": conn_id,
-                "address": conn_info.addr,
-                "isActive": !conn_info.is_closed
-            }));
-        });
-        
-        json!({
-            "result": true,
-            "connections": connections_list
-        }).to_string()
-    }
-    
 }
 
 async fn ws_handler(
@@ -339,8 +163,31 @@ async fn handle_websocket(
 
     let send_task = tokio::spawn(async move {
         while let Some(msg) = outgoing_rx.recv().await {
-            if ws_sender.send(Message::Binary(msg.into())).await.is_err() {
-                break;
+            match msg {
+                OutgoingMessage::Binary(data) => {
+                    if ws_sender.send(Message::Binary(data.into())).await.is_err() {
+                        break;
+                    }
+                }
+                OutgoingMessage::Text(text) => {
+                    if ws_sender.send(Message::Text(text.into())).await.is_err() {
+                        break;
+                    }
+                }
+                OutgoingMessage::Ping(data) => {
+                    if ws_sender.send(Message::Ping(data.into())).await.is_err() {
+                        break;
+                    }
+                }
+                OutgoingMessage::Pong(data) => {
+                    if ws_sender.send(Message::Pong(data.into())).await.is_err() {
+                        break;
+                    }
+                }
+                OutgoingMessage::Close => {
+                    let _ = ws_sender.send(Message::Close(None)).await;
+                    break;
+                }
             }
         }
     });
