@@ -8,6 +8,8 @@ use axum::{
     response::Response,
 };
 use tokio::sync::mpsc;
+use tokio::sync::oneshot;
+use tokio::task::JoinHandle;
 use futures_util::{StreamExt, SinkExt};
 use common_binary::vault::BinaryVault;
 use common_logs::{Logger, log};
@@ -44,6 +46,8 @@ pub struct WebSocketServerState {
     pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
     pub(crate) manager: Arc<Mutex<ConnectionManager<WebSocketConnection>>>,
+    pub(crate) shutdown_tx: Option<oneshot::Sender<()>>,
+    pub(crate) server_task: Option<JoinHandle<()>>,
 }
 
 pub struct WebSocketConnection {
@@ -87,10 +91,13 @@ impl WebSocketServerState {
         }
 
         let manager = Arc::new(Mutex::new(ConnectionManager::new(config.max_connections, logger.clone())));
+        let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
         let state = Arc::new(tokio::sync::Mutex::new(WebSocketServerState {
             vault: vault.clone(),
             logger: logger.clone(),
             manager: manager.clone(),
+            shutdown_tx: None,
+            server_task: None,
         }));
 
         let mut app = Router::new();
@@ -111,17 +118,33 @@ impl WebSocketServerState {
             log!(log, "WebSocket server listening on {}", addr);
         }
 
-        tokio::spawn(async move {
-            if let Err(e) = axum::serve(listener, app.into_make_service_with_connect_info::<SocketAddr>()).await {
-                eprintln!("WebSocket server error: {}", e);
-            }
+        let server_task = tokio::spawn(async move {
+            if let Err(e) = axum::serve(listener, app.into_make_service_with_connect_info::<SocketAddr>())
+                .with_graceful_shutdown(async {
+                    let _ = shutdown_rx.await;
+                })
+                .await{}
         });
 
         Ok(WebSocketServerState {
             vault,
             logger: logger.clone(),
             manager,
+            shutdown_tx: Some(shutdown_tx),
+            server_task: Some(server_task),
         })
+    }
+
+    pub async fn shutdown(&mut self) {
+        self.close_all_connections_internal();
+
+        if let Some(shutdown_tx) = self.shutdown_tx.take() {
+            let _ = shutdown_tx.send(());
+        }
+
+        if let Some(server_task) = self.server_task.take() {
+            let _ = server_task.await;
+        }
     }
 
 }

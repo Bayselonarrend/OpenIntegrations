@@ -3,6 +3,15 @@ use common_server::MessageHandler;
 use serde_json::json;
 
 impl WebSocketServerState {
+    pub(crate) fn close_all_connections_internal(&mut self) {
+        let mut manager = self.manager.lock().unwrap();
+        manager.iter_mut(|_, conn| {
+            conn.is_closed = true;
+            let _ = conn.outgoing_tx.send(OutgoingMessage::Close);
+        });
+        manager.clear();
+    }
+
     pub fn close_connection(&mut self, connection_id: &str) -> String {
         let mut manager = self.manager.lock().unwrap();
         if let Some(close_sent) = manager.get_mut(connection_id, |conn| {
