@@ -53,25 +53,12 @@ const config = {
   plugins: [
     './plugins/api-icons-plugin',
     './plugins/translation-path-sync-plugin',
-
-    /*
-  './plugins/course-protection',
     [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'legal',
-        path: 'legal',
-        routeBasePath: 'legal',
-        sidebarPath: require.resolve('./sidebars-legal.js'),
-      },
-    ],
-
-        [
       '@docusaurus/plugin-content-docs',
       {
         id: 'courses',
         path: 'courses',
-        routeBasePath: 'courses',
+        routeBasePath: 'courses/private',
         sidebarPath: require.resolve('./courses/sidebars.js')
       },
     ],
@@ -79,11 +66,10 @@ const config = {
       '@docusaurus/plugin-sitemap',
       {
         ignorePatterns: [
-          '/courses/**', 
+          '/courses/private/**',
         ],
       },
     ],
-    */
 
     ['docusaurus-plugin-yandex-metrica', {
       counterID: '97292922',
@@ -155,6 +141,12 @@ window.yaContextCb.push(() => {
             sidebarId: 'addonsSidebar',
             position: 'left',
             label: 'Аддоны',
+          },
+          {
+            to: '/courses',
+            label: 'Материалы',
+            position: 'left',
+            'aria-label': 'Courses and materials',
           },
           {
             to: '/download',
