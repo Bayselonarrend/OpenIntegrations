@@ -28,6 +28,7 @@ echo Syncing course content from "%SOURCE_DIR%"
 if not exist "%SCRIPT_DIR%courses" mkdir "%SCRIPT_DIR%courses"
 if not exist "%SCRIPT_DIR%data" mkdir "%SCRIPT_DIR%data"
 if not exist "%SCRIPT_DIR%src\pages" mkdir "%SCRIPT_DIR%src\pages"
+if not exist "%SCRIPT_DIR%static\img\Courses" mkdir "%SCRIPT_DIR%static\img\Courses"
 
 robocopy "%SOURCE_DIR%\courses" "%SCRIPT_DIR%courses" /MIR /NFL /NDL /NJH /NJS /NP
 if %ERRORLEVEL% GEQ 8 (
@@ -44,6 +45,12 @@ if %ERRORLEVEL% GEQ 8 (
 robocopy "%SOURCE_DIR%\src\pages" "%SCRIPT_DIR%src\pages" courses.js courses.module.css /NFL /NDL /NJH /NJS /NP
 if %ERRORLEVEL% GEQ 8 (
   echo [ERROR] Failed to sync courses page files.
+  exit /b %ERRORLEVEL%
+)
+
+robocopy "%SOURCE_DIR%\static\img\Courses" "%SCRIPT_DIR%static\img\Courses" /MIR /NFL /NDL /NJH /NJS /NP
+if %ERRORLEVEL% GEQ 8 (
+  echo [ERROR] Failed to sync course images.
   exit /b %ERRORLEVEL%
 )
 
