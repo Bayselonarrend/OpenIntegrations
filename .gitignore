@@ -1,4 +1,4 @@
-﻿
+
 .vscode
 OInt/coverage/genericCoverage.xml
 OInt/coverage/coverage.xml
@@ -20,6 +20,9 @@ fakedata.json
 /docs/docusaurus/docs
 /docs/docusaurus/courses
 /docs/docusaurus/data
+/docs/docusaurus/src/pages/courses.js
+/docs/docusaurus/src/pages/courses.module.css
+/OpenIntegrations-Courses
 /Melezh
 /test_results
 suppaftp/
