@@ -22,6 +22,7 @@ fakedata.json
 /docs/docusaurus/data
 /docs/docusaurus/src/pages/courses.js
 /docs/docusaurus/src/pages/courses.module.css
+/docs/docusaurus/static/img/Courses
 /OpenIntegrations-Courses
 /Melezh
 /test_results
