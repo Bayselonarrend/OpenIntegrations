@@ -678,6 +678,14 @@ Function ProcessServerStream(Val Connection
             ErrorMap.Insert("error" , Error);
             ErrorMap.Insert("data"  , MessagesArray);
 
+            CloseStream(Connector, StreamID);
+
+            If CloseConnection Then
+                CloseConnection(Connector);
+            EndIf;
+
+            Return ErrorMap;
+
         Else
 
             MessageData = CurrentMessage["message"];
@@ -763,6 +771,14 @@ Function ProcessClientStream(Val Connection
             ErrorMap.Insert("messages_sent"  , Counter);
             ErrorMap.Insert("final_retrieval", Obtaining);
 
+            CloseStream(Connector, StreamID);
+
+            If CloseConnection Then
+                CloseConnection(Connector);
+            EndIf;
+
+            Return ErrorMap;
+
         EndIf;
 
     EndDo;
@@ -835,28 +851,17 @@ Function ProcessBidirectionalStream(Val Connection
 
     For Each Action In ExchangeOrder Do
 
-        IsRettrieve = Action = Undefined;
+        ActionResult = PerformExchangeOperation(StreamID, Action, Connector, ReceivedArray);
 
-        If IsRettrieve Then
-            CurrentOperation = GetMessage(Connector, StreamID);
-        Else
-            CurrentOperation = SendMessage(Connector, StreamID, Action);
-        EndIf;
+        If ActionResult <> Undefined Then
 
-        If Not CurrentOperation["result"] Then
+            CloseStream(Connector, StreamID);
 
-            Error = CurrentOperation["error"];
-
-            ErrorMap = New Map;
-            ErrorMap.Insert("result", False);
-            ErrorMap.Insert("error" , Error);
-            ErrorMap.Insert("data"  , ReceivedArray);
-
-        Else
-
-            If IsRettrieve Then
-                ReceivedArray.Add(CurrentOperation["message"]);
+            If CloseConnection Then
+                CloseConnection(Connector);
             EndIf;
+
+            Return ActionResult;
 
         EndIf;
 
@@ -1066,6 +1071,39 @@ Function SaveSettingsAtAddIn(Connector, Val Parameters)
     SettingsSaving   = Connector.StoreSettings(ParametersString);
 
     Return SettingsSaving;
+
+EndFunction
+
+Function PerformExchangeOperation(Val StreamID, Val Action, Connector, ReceivedArray)
+
+    IsRettrieve = Action = Undefined;
+
+    If IsRettrieve Then
+        CurrentOperation = GetMessage(Connector, StreamID);
+    Else
+        CurrentOperation = SendMessage(Connector, StreamID, Action);
+    EndIf;
+
+    If Not CurrentOperation["result"] Then
+
+        Error = CurrentOperation["error"];
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , Error);
+        ErrorMap.Insert("data"  , ReceivedArray);
+
+        Return ErrorMap;
+
+    Else
+
+        If IsRettrieve Then
+            ReceivedArray.Add(CurrentOperation["message"]);
+        EndIf;
+
+    EndIf;
+
+    Return Undefined;
 
 EndFunction
 

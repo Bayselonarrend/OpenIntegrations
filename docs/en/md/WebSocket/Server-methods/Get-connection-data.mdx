@@ -17,14 +17,13 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function GetConnectionData(Val ServerObject, Val ConnectionID, Val Timeout = 1000, Val MaxSize = 8192) Export`
+`Function GetConnectionData(Val ServerObject, Val ConnectionID, Val Timeout = 1000) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
   | ConnectionID | - | String | &#x2714; | Connection identifier |
   | Timeout | - | Number | &#x2716; | Waiting period for new data if the queue is empty (in ms) |
-  | MaxSize | - | Number | &#x2716; | Maximum size of data to receive |
 
 
 <div className="return-value-note">

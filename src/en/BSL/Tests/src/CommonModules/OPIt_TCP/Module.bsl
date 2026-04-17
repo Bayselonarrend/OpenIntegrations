@@ -66,6 +66,7 @@
 //@skip-check bsl-legacy-check-method-for-statements-after-return
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
+//@skip-check use-non-recommended-method
 
 // #Use oint
 // #Use asserts
@@ -118,6 +119,13 @@ Procedure TC_Client() Export
 EndProcedure
 
 Procedure TC_Server() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
 
     TestParameters = New Structure;
 
@@ -284,8 +292,6 @@ EndProcedure
 
 Procedure TCP_ReadLine(FunctionParameters)
 
-    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
-
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Data       = "Hello server!" + Chars.LF;
@@ -315,8 +321,6 @@ Procedure TCP_ReadLine(FunctionParameters)
 EndProcedure
 
 Procedure TCP_SendLine(FunctionParameters)
-
-    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
@@ -357,8 +361,6 @@ Procedure TCP_GetTLSSettings(FunctionParameters)
 EndProcedure
 
 Procedure TCP_GetLastError(FunctionParameters)
-
-    If OPI_TestDataRetrieval.IsCLITest() Then Return; EndIf; // SKIP
 
     Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
