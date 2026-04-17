@@ -46,6 +46,11 @@ const config = {
         docs: {
           sidebarPath: './docs/sidebars.js',
         },
+        sitemap: {
+          ignorePatterns: [
+            '/courses/private/**',
+          ],
+        },
       }),
     ],
   ],
@@ -60,14 +65,6 @@ const config = {
         path: 'courses',
         routeBasePath: 'courses/private',
         sidebarPath: require.resolve('./courses/sidebars.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-sitemap',
-      {
-        ignorePatterns: [
-          '/courses/private/**',
-        ],
       },
     ],
 
