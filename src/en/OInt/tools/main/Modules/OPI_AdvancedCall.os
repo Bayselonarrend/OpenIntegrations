@@ -88,7 +88,7 @@ Function CallWithSettings(Val ModuleName
         Execute(CallString);
     Except
         DeleteSettings();
-        Raise
+        Raise;
     EndTry;
 
     DeleteSettings();
@@ -110,7 +110,7 @@ EndFunction
 Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
 
     TemplateStructure = GetFullSettingsIndex();
-    SettingsStructure = FindInIndex(TemplateStructure, ModuleName, FunctionName);;
+    SettingsStructure = FindInIndex(TemplateStructure, ModuleName, FunctionName);
 
     If SettingsStructure = Undefined Then
         Return "There are no available settings for this function";
@@ -206,7 +206,6 @@ Procedure DeleteSettings() Export
 EndProcedure
 
 #EndRegion
-
 
 #Region Alternate
 

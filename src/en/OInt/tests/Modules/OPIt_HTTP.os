@@ -66,6 +66,7 @@
 //@skip-check bsl-legacy-check-method-for-statements-after-return
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
+//@skip-check use-non-recommended-method
 
 #Use oint
 #Use asserts
@@ -96,6 +97,13 @@ EndFunction
 
 Procedure HTTP_Initialization() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
@@ -111,6 +119,13 @@ Procedure HTTP_Initialization() Export
 EndProcedure
 
 Procedure HTTP_BodySet() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
@@ -129,6 +144,13 @@ EndProcedure
 
 Procedure HTTP_Settings() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
@@ -146,6 +168,13 @@ EndProcedure
 
 Procedure HTTP_HeadersSetting() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
@@ -155,6 +184,13 @@ Procedure HTTP_HeadersSetting() Export
 EndProcedure
 
 Procedure HTTP_Authorization() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
@@ -168,6 +204,13 @@ Procedure HTTP_Authorization() Export
 EndProcedure
 
 Procedure HTTP_RequestProcessing() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
@@ -183,6 +226,13 @@ Procedure HTTP_RequestProcessing() Export
 EndProcedure
 
 Procedure HTTP_ResponseReceiving() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);

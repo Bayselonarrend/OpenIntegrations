@@ -440,6 +440,8 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
 
+    MaxSize = ?(MaxSize = Undefined, 8192, MaxSize);
+
     Return OPI_GenericServer.GetNextConnectionData(OPI_TCP
         , ServerObject
         , Timeout
@@ -462,6 +464,8 @@ Function GetConnectionData(Val ServerObject
     , Val ConnectionID
     , Val Timeout = 1000
     , Val MaxSize = 8192) Export
+
+    MaxSize = ?(MaxSize = Undefined, 8192, MaxSize);
 
     Return OPI_GenericServer.GetConnectionData(OPI_TCP
         , ServerObject
@@ -498,7 +502,7 @@ EndFunction
 // Map Of KeyAndValue - Execution result
 Function CloseIncomingConnection(Val ServerObject, Val ConnectionID) Export
 
-    Return OPI_GenericServer.CloseIncomingConnection(OPI_TCP, ServerObject, ConnectionID);
+    Return OPI_GenericServer.CloseIncomingConnection(OPI_TCP, ServerObject, ConnectionID, Undefined);
 
 EndFunction
 
@@ -613,7 +617,6 @@ Function AddInName() Export
 EndFunction
 
 #EndRegion
-
 
 #Region Alternate
 

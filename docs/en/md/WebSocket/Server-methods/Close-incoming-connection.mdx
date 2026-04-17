@@ -17,12 +17,13 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CloseIncomingConnection(Val ServerObject, Val ConnectionID) Export`
+`Function CloseIncomingConnection(Val ServerObject, Val ConnectionID, Val RemoveImmediately = True) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | ServerObject | - | Arbitrary | &#x2714; | Object of running server component |
   | ConnectionID | - | String | &#x2714; | Connection identifier |
+  | RemoveImmediately | - | Boolean | &#x2716; | If True, the connection will be removed from the list immediately |
 
 
 <div className="return-value-note">

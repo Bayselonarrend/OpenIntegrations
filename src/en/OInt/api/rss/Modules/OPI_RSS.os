@@ -386,6 +386,8 @@ Function ReadChannelRSS(XMLReader)
 
         ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "channel" Then
             Break;
+        Else
+            Continue;
         EndIf;
 
     EndDo;
@@ -413,6 +415,8 @@ Function ReadItemRSS(XMLReader)
 
         ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "item" Then
             Break;
+        Else
+            Continue;
         EndIf;
 
     EndDo;
@@ -487,6 +491,8 @@ Function ReadFeedAtom(XMLReader)
 
         ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "feed" Then
             Break;
+        Else
+            Continue;
         EndIf;
 
     EndDo;
@@ -521,6 +527,8 @@ Function ReadItemAtom(XMLReader)
 
         ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "entry" Then
             Break;
+        Else
+            Continue;
         EndIf;
 
     EndDo;
@@ -542,6 +550,8 @@ Function ReadAuthorAtom(XMLReader)
             EndIf;
         ElsIf XMLReader.NodeType  = XMLNodeType.EndElement And XMLReader.Name = "author" Then
             Break;
+        Else
+            Continue;
         EndIf;
 
     EndDo;

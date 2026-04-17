@@ -100,9 +100,16 @@ Function GetNextConnectionData(Val Module
     EndIf;
 
     OPI_TypeConversion.GetNumber(Timeout);
-    OPI_TypeConversion.GetNumber(MaxSize);
 
-    Result = ServerObject.GetNextMessage(Timeout, MaxSize);
+    If MaxSize = Undefined Then
+        Result = ServerObject.GetNextMessage(Timeout);
+    Else
+
+        OPI_TypeConversion.GetNumber(MaxSize);
+        Result = ServerObject.GetNextMessage(Timeout, MaxSize);
+
+    EndIf;
+
     Result = OPI_Tools.JsonToStructure(Result);
 
     CompleteMessageWithVaultData(ServerObject, Result);
@@ -122,10 +129,17 @@ Function GetConnectionData(Val Module
     EndIf;
 
     OPI_TypeConversion.GetNumber(Timeout);
-    OPI_TypeConversion.GetNumber(MaxSize);
     OPI_TypeConversion.GetLine(ConnectionID);
 
-    Result = ServerObject.GetMessageFromConnection(ConnectionID, Timeout, MaxSize);
+    If MaxSize = Undefined Then
+        Result = ServerObject.GetMessage(ConnectionID, Timeout);
+    Else
+
+        OPI_TypeConversion.GetNumber(MaxSize);
+        Result = ServerObject.GetMessage(ConnectionID, Timeout, MaxSize);
+
+    EndIf;
+
     Result = OPI_Tools.JsonToStructure(Result);
 
     CompleteMessageWithVaultData(ServerObject, Result);
@@ -150,7 +164,7 @@ Function SendData(Val Module, Val ServerObject, Val ConnectionID, Val Data) Expo
 
 EndFunction
 
-Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID) Export
+Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID, Val RemoveImmediately = Undefined) Export
 
     If Not Module.IsServerObject(ServerObject) Then
         Return OPI_AddIns.NotAddinParameterError();
@@ -158,8 +172,14 @@ Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID)
 
     OPI_TypeConversion.GetLine(ConnectionID);
 
-    Result = ServerObject.CloseConnection(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    If RemoveImmediately = Undefined Then
+        Result           = ServerObject.CloseConnection(ConnectionID);
+    Else
+
+        OPI_TypeConversion.GetBoolean(RemoveImmediately);
+        Result = ServerObject.CloseConnection(ConnectionID, RemoveImmediately);
+    EndIf;
+    Result     = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
 
@@ -201,7 +221,7 @@ Function GetConnectionList(Val Module, Val ServerObject) Export
         Return OPI_AddIns.NotAddinParameterError();
     EndIf;
 
-    Result = ServerObject.GetConnectionsList();
+    Result = ServerObject.ListConnections();
     Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
@@ -210,7 +230,7 @@ EndFunction
 
 #EndRegion
 
-#Region Internal
+#Region Private
 
 Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
 
@@ -249,8 +269,8 @@ Function ОтправитьДанные(Val Модуль, Val ОбъектСер
     Return SendData(Модуль, ОбъектСервера, IDСоединения, Данные);
 EndFunction
 
-Function ЗакрытьВходящееСоединение(Val Модуль, Val ОбъектСервера, Val IDСоединения) Export
-    Return CloseIncomingConnection(Модуль, ОбъектСервера, IDСоединения);
+Function ЗакрытьВходящееСоединение(Val Модуль, Val ОбъектСервера, Val IDСоединения, Val УдалятьСразу = Undefined) Export
+    Return CloseIncomingConnection(Модуль, ОбъектСервера, IDСоединения, УдалятьСразу);
 EndFunction
 
 Function ЗавершитьОтправку(Val Модуль, Val ОбъектСервера, Val IDСоединения) Export

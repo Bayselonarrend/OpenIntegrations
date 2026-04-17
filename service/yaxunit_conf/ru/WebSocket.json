@@ -9,7 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPIt_WebSocket.WS_Клиент"
+"OPIt_WebSocket.WS_Клиент",
+"OPIt_WebSocket.WS_Сервер"
     ]
   },
   "settings": {

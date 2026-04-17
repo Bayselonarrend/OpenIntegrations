@@ -339,6 +339,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
     NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
     NewTest(TestTable, "WS_Client"                           , "WebSocket Client"                , WebSocket);
+    NewTest(TestTable, "WS_Server"                           , "WebSocket Server"                , WebSocket);
     NewTest(TestTable, "TC_Server"                           , "TCP Host"                        , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
@@ -617,9 +618,7 @@ Procedure Process(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
-    CLITestsMark = 0;
-
-    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    SetCLITestFlag(False);
 
     ProcessTestingResult(Result
         , Method
@@ -639,9 +638,7 @@ Procedure ProcessCLI(Val Result
     , AddParam2  = Undefined
     , AddParam3  = Undefined) Export
 
-    CLITestsMark = 1;
-
-    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    SetCLITestFlag(True);
 
     ProcessTestingResult(Result
         , Method
@@ -650,6 +647,14 @@ Procedure ProcessCLI(Val Result
         , AddParam1
         , AddParam2
         , AddParam3);
+
+EndProcedure
+
+Procedure SetCLITestFlag(Val Value) Export
+
+    CLITestsMark = ?(Value, 1, 0);
+
+    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
 
 EndProcedure
 
@@ -7898,6 +7903,172 @@ Function Check_WebSocket_IsClientObject(Val Result, Val Option)
         ExpectsThat(Result).Равно(False);
     Else
         ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_StartServer(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_WSServer.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_StopServer(Val Result, Val Option)
+
+    If Option                              = "List" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    ElsIf Option                           = "Connection" Then
+        ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_WSClient.Main").Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetNextConnectionData(Val Result, Val Option, Message = "")
+
+    If Option = "Closed" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["connectionId"])).Равно(True);
+
+        ResponseMessage            = Result["message"];
+        If TypeOf(ResponseMessage) = Type("BinaryData") Then
+            ResponseMessage        = GetStringFromBinaryData(ResponseMessage);
+        ElsIf OPI_Tools.ThisIsCollection(ResponseMessage, True) Then
+            ResponseMessage        = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+        EndIf;
+
+        ExpectsThat(ResponseMessage).Равно(Message);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetConnectionData(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "EmptyList" Then
+
+        ExpectsThat(Result["connections"]).ИмеетТип("Array").ИмеетДлину(0);
+
+    Else
+
+        If Option = "Closed" Then
+            ExpectsThat(Result["isActive"]).Равно(False);
+        Else
+            ExpectsThat(Result["isActive"]).Равно(True);
+        EndIf;
+
+        ResponseMessage = Result["message"];
+
+        If TypeOf(ResponseMessage) = Type("BinaryData") Then
+            ResponseMessage        = GetStringFromBinaryData(ResponseMessage);
+        ElsIf OPI_Tools.ThisIsCollection(ResponseMessage, True) Then
+            ResponseMessage        = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+        EndIf;
+
+        ExpectsThat(ResponseMessage).Равно(Message);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_SendData(Val Result, Val Option, Message = "")
+
+    If Option = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["type"]).Равно("binary");
+        ExpectsThat(GetStringFromBinaryData(Result["data"])).Равно(Message);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_CloseIncomingConnection(Val Result, Val Option)
+
+    If Option    = "EmptyList" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["connections"]).ИмеетТип("Array").ИмеетДлину(0);
+    ElsIf Option = "SendingToClosed" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetConnectionList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["connections"].Count() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_IsServerObject(Val Result, Val Option)
+
+    If Option = "False" Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetLog(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
     EndIf;
 
     Return Result;
@@ -15280,6 +15451,10 @@ EndProcedure
 
 Procedure ОбработатьCLI(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
     ProcessCLI(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
+EndProcedure
+
+Procedure УстановитьПризнакТестаCLI(Val Значение) Export
+    SetCLITestFlag(Значение);
 EndProcedure
 
 Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export

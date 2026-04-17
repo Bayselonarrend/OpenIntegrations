@@ -166,6 +166,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/OPItc_WebSocket.os', 'WS_Клиент'],
+						['./src/ru/OInt/tests/Modules/OPItc_WebSocket.os', 'WS_Сервер'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

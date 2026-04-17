@@ -843,6 +843,8 @@
 
 КонецФункции
 
+// BSLLS:CognitiveComplexity-off
+
 Функция СформироватьТекстMerge(Знач Схема)
 
     ПроверитьОбязательныеПоляСхемы(Схема, "table,set,values,dbms");
@@ -937,6 +939,8 @@
     Возврат ТекстSQL;
 
 КонецФункции
+
+// BSLLS:CognitiveComplexity-on
 
 Функция СформироватьТекстDelete(Знач Схема)
 
