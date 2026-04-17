@@ -733,53 +733,59 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
     If HTTPClient.Error Then
         Response = FormatHTTPErrorResponse(HTTPClient);
     Else
+        Response       = FormatHTTPResponse(HTTPClient, DataFormat);
+    EndIf;
 
-        Try
+    Return Response;
 
-            ResponseObject = HTTPClient.ReturnResponse(, True);
-            ResponseCode   = ResponseObject.StatusCode;
+EndFunction
 
-            Response = New Map();
-            Response.Insert("status", ResponseObject.StatusCode);
+Function FormatHTTPResponse(HTTPClient, Val DataFormat)
 
-            Redirection = 300;
+    Try
 
-            If ResponseCode < Redirection Then
+        ResponseObject = HTTPClient.ReturnResponse(, True);
+        ResponseCode   = ResponseObject.StatusCode;
 
-                Result = True;
+        Response = New Map();
+        Response.Insert("status", ResponseObject.StatusCode);
 
-                If IsValidJSONFormat(DataFormat) Then
-                    ResponseBody = HTTPClient.ReturnResponseAsJSONObject();
-                ElsIf IsStringFormat(DataFormat) Then
-                    ResponseBody = HTTPClient.ReturnResponseAsString();
-                Else
-                    ResponseBody = HTTPClient.ReturnResponseAsBinaryData();
-                EndIf;
+        Redirection = 300;
 
-                If OPI_Tools.IsCLI() Then
+        If ResponseCode < Redirection Then
 
-                    ResponseBody = ?(TypeOf(ResponseBody) = Type("BinaryData")
-                        , GetBase64StringFromBinaryData(ResponseBody)
-                        , ResponseBody);
+            Result = True;
 
-                EndIf;
-
-            Else
-
-                Result       = False;
+            If IsValidJSONFormat(DataFormat) Then
+                ResponseBody = HTTPClient.ReturnResponseAsJSONObject();
+            ElsIf IsStringFormat(DataFormat) Then
                 ResponseBody = HTTPClient.ReturnResponseAsString();
+            Else
+                ResponseBody = HTTPClient.ReturnResponseAsBinaryData();
+            EndIf;
+
+            If OPI_Tools.IsCLI() Then
+
+                ResponseBody = ?(TypeOf(ResponseBody) = Type("BinaryData")
+                    , GetBase64StringFromBinaryData(ResponseBody)
+                    , ResponseBody);
 
             EndIf;
 
-            Response.Insert("result" , Result);
-            Response.Insert("body"   , ResponseBody);
-            Response.Insert("headers", ResponseObject.Headers);
+        Else
 
-        Except
-            Response = FormatHTTPErrorResponse(HTTPClient);
-        EndTry;
+            Result       = False;
+            ResponseBody = HTTPClient.ReturnResponseAsString();
 
-    EndIf;
+        EndIf;
+
+        Response.Insert("result" , Result);
+        Response.Insert("body"   , ResponseBody);
+        Response.Insert("headers", ResponseObject.Headers);
+
+    Except
+        Response = FormatHTTPErrorResponse(HTTPClient);
+    EndTry;
 
     Return Response;
 
@@ -997,6 +1003,34 @@ Function GetGRPCServiceName()
 
 EndFunction
 
+Function ProcessB64Response(Val B64String, Val Format)
+
+    If IsValidJSONFormat(Format) Then
+
+        Value   = GetBinaryDataFromBase64String(B64String);
+        Success = False;
+        OPI_TypeConversion.GetCollection(Value, , Success);
+
+        If Not Success Then
+            Value = ?(TypeOf(Value) = Type("Array"), Value[0], Value);
+            Value = GetStringFromBinaryData(Value);
+        EndIf;
+
+    ElsIf IsStringFormat(Format) Then
+
+        Value = GetBinaryDataFromBase64String(B64String);
+        Value = GetStringFromBinaryData(Value);
+
+    Else
+
+        Value = Undefined;
+
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Procedure SetGRPCAuthorization(GRPCRequest, Val ConnectionSettings)
 
     Authorization = OPI_Tools.GetOr(ConnectionSettings, "auth_type", "none");
@@ -1115,29 +1149,11 @@ Procedure ProcessGRPCResponse(Response, Val DataField = "data", Val DefaultForma
 
     If OPI_Tools.CollectionFieldExists(Response, StrTemplate("%1.output.BYTES", DataField), B64String) Then
 
-        If IsValidJSONFormat(Format) Then
+        Value = ProcessB64Response(B64String, Format);
 
-            Value   = GetBinaryDataFromBase64String(B64String);
-            Success = False;
-            OPI_TypeConversion.GetCollection(Value, , Success);
-
-            If Not Success Then
-                Value = ?(TypeOf(Value) = Type("Array"), Value[0], Value);
-                Value = GetStringFromBinaryData(Value);
-            EndIf;
-
-        ElsIf IsStringFormat(Format) Then
-
-            Value = GetBinaryDataFromBase64String(B64String);
-            Value = GetStringFromBinaryData(Value);
-
-        Else
-
-            Return;
-
+        If Not Value                         = Undefined Then
+            Response[DataField]["output"] = Value;
         EndIf;
-
-        Response[DataField]["output"] = Value;
 
     EndIf;
 

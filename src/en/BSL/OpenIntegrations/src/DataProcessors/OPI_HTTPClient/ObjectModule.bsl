@@ -2327,7 +2327,7 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
     If NeedsResend Then
 
         If OPI_Tools.IsOneScript() Then
-            FormRequest();
+            ProcessRequest(RequestMethod, False);
         EndIf;
 
         ExecuteMethod(RedirectCount, ErrorCount, Forced);

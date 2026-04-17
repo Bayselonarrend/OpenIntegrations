@@ -843,6 +843,8 @@ Function FormTextUpdate(Val Scheme)
 
 EndFunction
 
+// BSLLS:CognitiveComplexity-off
+
 Function FormTextMerge(Val Scheme)
 
     CheckSchemeRequiredFields(Scheme, "table,set,values,dbms");
@@ -937,6 +939,8 @@ Function FormTextMerge(Val Scheme)
     Return TextSQL;
 
 EndFunction
+
+// BSLLS:CognitiveComplexity-on
 
 Function FormTextDelete(Val Scheme)
 

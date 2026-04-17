@@ -448,12 +448,12 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Execution result
-Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000, Val MaxSize = 8192) Export
+Function GetNextConnectionData(Val ServerObject, Val Timeout = 1000) Export
 
     Return OPI_GenericServer.GetNextConnectionData(OPI_WebSocket
         , ServerObject
         , Timeout
-        , MaxSize);
+        , Undefined);
 
 EndFunction
 
@@ -464,20 +464,18 @@ EndFunction
 // ServerObject - Arbitrary - Object of running server component                        - srv
 // ConnectionID - String    - Connection identifier                                     - id
 // Timeout      - Number    - Waiting period for new data if the queue is empty (in ms) - tout
-// MaxSize      - Number    - Maximum size of data to receive                           - msize
 //
 // Returns:
 // Map Of KeyAndValue - Execution result
 Function GetConnectionData(Val ServerObject
     , Val ConnectionID
-    , Val Timeout = 1000
-    , Val MaxSize = 8192) Export
+    , Val Timeout = 1000) Export
 
     Return OPI_GenericServer.GetConnectionData(OPI_WebSocket
         , ServerObject
         , ConnectionID
         , Timeout
-        , MaxSize);
+        , Undefined);
 
 EndFunction
 
@@ -501,14 +499,16 @@ EndFunction
 // Closes incoming server connection by ID
 //
 // Parameters:
-// ServerObject - Arbitrary - Object of running server component - srv
-// ConnectionID - String    - Connection identifier              - id
+// ServerObject      - Arbitrary - Object of running server component                                - srv
+// ConnectionID      - String    - Connection identifier                                             - id
+// RemoveImmediately - Boolean   - If True, the connection will be removed from the list immediately - rm
 //
 // Returns:
 // Map Of KeyAndValue - Execution result
-Function CloseIncomingConnection(Val ServerObject, Val ConnectionID) Export
+Function CloseIncomingConnection(Val ServerObject, Val ConnectionID, Val RemoveImmediately = True) Export
 
-    Return OPI_GenericServer.CloseIncomingConnection(OPI_WebSocket, ServerObject, ConnectionID);
+    RemoveImmediately = ?(RemoveImmediately = Undefined, False, RemoveImmediately);
+    Return OPI_GenericServer.CloseIncomingConnection(OPI_WebSocket, ServerObject, ConnectionID, RemoveImmediately);
 
 EndFunction
 
@@ -556,7 +556,6 @@ Function AddInName() Export
 EndFunction
 
 #EndRegion
-
 
 #Region Alternate
 
@@ -612,20 +611,20 @@ Function ОстановитьСервер(Val ОбъектСервера) Export
     Return StopServer(ОбъектСервера);
 EndFunction
 
-Function ПолучитьДанныеОчередногоСоединения(Val ОбъектСервера, Val Таймаут = 1000, Val МаксимальныйРазмер = 8192) Export
-    Return GetNextConnectionData(ОбъектСервера, Таймаут, МаксимальныйРазмер);
+Function ПолучитьДанныеОчередногоСоединения(Val ОбъектСервера, Val Таймаут = 1000) Export
+    Return GetNextConnectionData(ОбъектСервера, Таймаут);
 EndFunction
 
-Function ПолучитьДанныеСоединения(Val ОбъектСервера, Val IDСоединения, Val Таймаут = 1000, Val МаксимальныйРазмер = 8192) Export
-    Return GetConnectionData(ОбъектСервера, IDСоединения, Таймаут, МаксимальныйРазмер);
+Function ПолучитьДанныеСоединения(Val ОбъектСервера, Val IDСоединения, Val Таймаут = 1000) Export
+    Return GetConnectionData(ОбъектСервера, IDСоединения, Таймаут);
 EndFunction
 
 Function ОтправитьДанные(Val ОбъектСервера, Val IDСоединения, Val Данные) Export
     Return SendData(ОбъектСервера, IDСоединения, Данные);
 EndFunction
 
-Function ЗакрытьВходящееСоединение(Val ОбъектСервера, Val IDСоединения) Export
-    Return CloseIncomingConnection(ОбъектСервера, IDСоединения);
+Function ЗакрытьВходящееСоединение(Val ОбъектСервера, Val IDСоединения, Val УдалятьСразу = True) Export
+    Return CloseIncomingConnection(ОбъектСервера, IDСоединения, УдалятьСразу);
 EndFunction
 
 Function ПолучитьСписокСоединений(Val ОбъектСервера) Export

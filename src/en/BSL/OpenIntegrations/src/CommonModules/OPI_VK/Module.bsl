@@ -580,12 +580,14 @@ Function MakeRepost(Val PostID
     OPI_TypeConversion.GetLine(TargetWall);
     OPI_TypeConversion.GetBoolean(Advertising);
 
-    Source   = ?(ValueIsFilled(WallID), WallID, GroupId);
-    Receiver = ?(ValueIsFilled(TargetWall), TargetWall, GroupId);
+    Source      = ?(ValueIsFilled(WallID), WallID, GroupId);
+    Receiver    = ?(ValueIsFilled(TargetWall), TargetWall, GroupId);
+    ObjectField = StrTemplate("wall%1_%2", Source, PostID);
 
-    Parameters_.Insert("object"      , "wall" + Source + "_" + OPI_Tools.NumberToString(PostID));
-    Parameters_.Insert("group_id"    , StrReplace(Receiver, "-", ""));
-    Parameters_.Insert("mark_as_ads" , ?(Advertising      , 1  , 0));
+    Parameters_.Insert("object"   , ObjectField);
+    Parameters_.Insert("group_id" , StrReplace(Receiver, "-", ""));
+
+    Parameters_.Insert("mark_as_ads" , ?(Advertising, 1, 0));
 
     Response = OPI_HTTPRequests.Get("api.vk.com/method/wall.repost", Parameters_);
 
@@ -1930,32 +1932,10 @@ Function FillPhotoUploadParameters(Val Method, Val Response, Parameters)
 
     If Way = StandardMethod Then
 
-        Hash  = "hash";
-        Serv  = "server";
-        Aid   = "aid";
-        Photo = Method["Photo"];
+        Result = FillParametersStandardWay(Method, Response, Parameters);
 
-        PhotoID = Response[Photo];
-
-        If Not ValueIsFilled(PhotoID) Then
-            Return False;
-        EndIf;
-
-        Parameters.Insert(Hash , Response[Hash]);
-        Parameters.Insert(Photo, Response[Photo]);
-
-        PhotoServer = Response.Get(Serv);
-
-        If ValueIsFilled(PhotoServer) Then
-            PhotoServer = OPI_Tools.NumberToString(PhotoServer);
-            Parameters.Insert(Serv, PhotoServer);
-        EndIf;
-
-        Identifier = Response.Get(Aid);
-
-        If ValueIsFilled(Identifier) Then
-            Identifier = OPI_Tools.NumberToString(Identifier);
-            Parameters.Insert(Aid , Identifier);
+        If Result <> Undefined Then
+            Return Result;
         EndIf;
 
     ElsIf Way = NewMethod Then
@@ -1985,6 +1965,40 @@ Function FillPhotoUploadParameters(Val Method, Val Response, Parameters)
     EndIf;
 
     Return True;
+
+EndFunction
+
+Function FillParametersStandardWay(Val Method, Val Response, Parameters)
+
+    Hash  = "hash";
+    Serv  = "server";
+    Aid   = "aid";
+    Photo = Method["Photo"];
+
+    PhotoID = Response[Photo];
+
+    If Not ValueIsFilled(PhotoID) Then
+        Return False;
+    EndIf;
+
+    Parameters.Insert(Hash , Response[Hash]);
+    Parameters.Insert(Photo, Response[Photo]);
+
+    PhotoServer = Response.Get(Serv);
+
+    If ValueIsFilled(PhotoServer) Then
+        PhotoServer = OPI_Tools.NumberToString(PhotoServer);
+        Parameters.Insert(Serv, PhotoServer);
+    EndIf;
+
+    Identifier = Response.Get(Aid);
+
+    If ValueIsFilled(Identifier) Then
+        Identifier = OPI_Tools.NumberToString(Identifier);
+        Parameters.Insert(Aid , Identifier);
+    EndIf;
+
+    Return Undefined;
 
 EndFunction
 
