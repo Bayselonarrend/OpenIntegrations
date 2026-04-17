@@ -733,7 +733,7 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
     If HTTPClient.Error Then
         Response = FormatHTTPErrorResponse(HTTPClient);
     Else
-        Response       = FormatHTTPResponse(HTTPClient, DataFormat);
+        Response = FormatHTTPResponse(HTTPClient, DataFormat);
     EndIf;
 
     Return Response;
@@ -1151,7 +1151,7 @@ Procedure ProcessGRPCResponse(Response, Val DataField = "data", Val DefaultForma
 
         Value = ProcessB64Response(B64String, Format);
 
-        If Not Value                         = Undefined Then
+        If Not Value                      = Undefined Then
             Response[DataField]["output"] = Value;
         EndIf;
 
