@@ -147,7 +147,7 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ВыполнитьЗапрос \
-              --conn "{'transport':'grpc','user':'bayselonarrend','password':'***','address':'http://127.0.0.1:9101','auth_type':'basic'}" \
+              --conn "{'address':'http://127.0.0.1:9101','password':'***','transport':'grpc','auth_type':'basic','user':'bayselonarrend'}" \
               --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
         ```
     </TabItem>
@@ -157,7 +157,7 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ВыполнитьЗапрос ^
-              --conn "{'transport':'grpc','user':'bayselonarrend','password':'***','address':'http://127.0.0.1:9101','auth_type':'basic'}" ^
+              --conn "{'address':'http://127.0.0.1:9101','password':'***','transport':'grpc','auth_type':'basic','user':'bayselonarrend'}" ^
               --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
         ```
     </TabItem>
@@ -191,17 +191,17 @@ import Admonition from '@theme/Admonition';
   ],
   "rows": 2,
   "statistics": {
-   "elapsed": 0.00133788,
+   "elapsed": 0.001000947,
    "rows_read": 2,
    "bytes_read": 44
   }
  },
  "headers": {
-  "Date": "Mon, 13 Apr 2026 21:35:13 GMT",
+  "Date": "Wed, 15 Apr 2026 05:33:42 GMT",
   "Connection": "Keep-Alive",
   "X-ClickHouse-Server-Display-Name": "clickhouse",
   "Transfer-Encoding": "chunked",
-  "X-ClickHouse-Query-Id": "9880f7d7-39bb-4251-be05-ae3e44fb6e38",
+  "X-ClickHouse-Query-Id": "49dff13f-f86a-4459-bfcb-a6e61e99ddbe",
   "X-ClickHouse-Format": "JSON",
   "X-ClickHouse-Timezone": "Europe/Moscow",
   "Keep-Alive": "timeout=3",
