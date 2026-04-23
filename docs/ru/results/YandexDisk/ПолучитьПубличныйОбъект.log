@@ -1,24 +1,24 @@
 ﻿{
  "path": "/",
  "type": "file",
- "name": "5a90c70f-38d7-499c-959b-be1747c17ba3.png",
- "created": "2026-04-15T04:56:32+00:00",
- "modified": "2026-04-15T04:56:32+00:00",
+ "name": "e25b8b27-0bf0-4ecb-aed5-5559011bed13.png",
+ "created": "2026-04-23T16:48:53+03:00",
+ "modified": "2026-04-23T16:48:53+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "public_key": "***",
- "public_url": "https://yadi.sk/d/zR2O6YYOkCyUpQ",
+ "public_url": "https://yadi.sk/d/yqQBBWfnuk0C-w",
  "media_type": "image",
- "resource_id": "1573541518:212b1c5465bf42b62454a514a65e2465c5f66d8ad4d7f6eca39abd396d985a3a",
- "revision": 1776229012899006,
+ "resource_id": "1573541518:44c4589bf0b1d62762b396cb1467f8ccd86a60eaa89ef1b9cdb8ad379d7982dd",
+ "revision": 1776952153984043,
  "comment_ids": {
-  "public_resource": "1573541518:212b1c5465bf42b62454a514a65e2465c5f66d8ad4d7f6eca39abd396d985a3a",
-  "private_resource": "1573541518:212b1c5465bf42b62454a514a65e2465c5f66d8ad4d7f6eca39abd396d985a3a"
+  "public_resource": "1573541518:44c4589bf0b1d62762b396cb1467f8ccd86a60eaa89ef1b9cdb8ad379d7982dd",
+  "private_resource": "1573541518:44c4589bf0b1d62762b396cb1467f8ccd86a60eaa89ef1b9cdb8ad379d7982dd"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/a6d1851fb3479873965ce127fd39d008a38ace52d5c7e242aff827e95a679...",
+ "file": "https://downloader.disk.yandex.ru/disk/1597cb0fcc92d0a9e9dece066cc598dca5b707ea60f26412354cb931944a2...",
  "views_count": 0
 }

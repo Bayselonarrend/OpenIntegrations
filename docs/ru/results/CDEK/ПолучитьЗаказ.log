@@ -1,11 +1,11 @@
 ﻿{
  "entity": {
-  "uuid": "076c8aa7-bbc3-4c0b-b856-081c923abd8c",
+  "uuid": "b7d7f332-96a5-4cd0-bf2e-c4b4aed7e4b0",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107192472",
-  "number": "be447b9c-86e8-483e-9d34-594a77b74904",
+  "cdek_number": "1107196368",
+  "number": "a9bfa723-a706-448f-a6ba-0f0dc2794b69",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -63,7 +63,6 @@
    "code": 270,
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
    "city": "Новосибирск",
-   "kladr_code": "5400000100000",
    "country_code": "RU",
    "country": "Россия",
    "region": "Новосибирская область",
@@ -98,7 +97,7 @@
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001889584",
+    "barcode": "000001897957",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -124,21 +123,21 @@
       "cost": 300
      }
     ],
-    "package_id": "955f9e87-9ee5-47b8-bb34-6838bd4d8b55"
+    "package_id": "7c97669b-3962-4771-8e16-051d07c973cf"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-04-15T05:13:03+00:00",
+    "date_time": "2026-04-23T17:00:41+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-15T05:13:01+00:00",
+    "date_time": "2026-04-23T17:00:40+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -159,9 +158,9 @@
  },
  "requests": [
   {
-   "request_uuid": "f3200ab8-d8b4-4f33-bbbd-d868427ba9b0",
+   "request_uuid": "36955b36-9955-43ef-88f6-67c5555ad130",
    "type": "CREATE",
-   "date_time": "2026-04-15T05:13:02+00:00",
+   "date_time": "2026-04-23T17:00:41+03:00",
    "state": "SUCCESSFUL"
   }
  ],
