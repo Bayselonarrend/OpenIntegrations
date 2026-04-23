@@ -1,1 +1,77 @@
-﻿{}
+﻿[
+ {
+  "messageID": "3EB024ACDAA21F0117F11E",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB015BF73A0A56D42A0CD",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB024ACDAA21F0117F11E",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0C9907A48A6E2E0C9D7",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0D513864495569E0CCD",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB0C9907A48A6E2E0C9D7",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0C056B7221CC15FC752"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0810C80D515AB4D2E3C"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB037D3038679A0057512",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0810C80D515AB4D2E3C",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]

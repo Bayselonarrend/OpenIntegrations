@@ -900,7 +900,7 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1763968756909759\"",
+  "etag": "\"1776311797289935\"",
   "id": "fccd8159ccc85dd93f5a1d9ce2b54280d4ad23179da11cbd4f715a258617a7cb@group.calendar.google.com",
   "summary": "Новое наименование",
   "description": "Новое описание",
@@ -919,45 +919,7 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1764184102664607\"",
-  "id": "f599793167a2f206a33c0f495f0a5dae023846a534988bf6e8f281b41912698f@group.calendar.google.com",
-  "summary": "Новое наименование",
-  "description": "Новое описание",
-  "timeZone": "Europe/Moscow",
-  "dataOwner": "bayselonarrend@gmail.com",
-  "colorId": "6",
-  "backgroundColor": "#ffd800",
-  "foregroundColor": "#000000",
-  "accessRole": "owner",
-  "defaultReminders": [],
-  "conferenceProperties": {
-   "allowedConferenceSolutionTypes": [
-    "hangoutsMeet"
-   ]
-  }
- },
- {
-  "kind": "calendar#calendarListEntry",
-  "etag": "\"1764315070720591\"",
-  "id": "a5522de86b9ead48e7bca1fef5ac18cdbc36942eb2b997cf8a0a9b573d01bb08@group.calendar.google.com",
-  "summary": "Новое наименование",
-  "description": "Новое описание",
-  "timeZone": "Europe/Moscow",
-  "dataOwner": "bayselonarrend@gmail.com",
-  "colorId": "6",
-  "backgroundColor": "#ffd800",
-  "foregroundColor": "#000000",
-  "accessRole": "owner",
-  "defaultReminders": [],
-  "conferenceProperties": {
-   "allowedConferenceSolutionTypes": [
-    "hangoutsMeet"
-   ]
-  }
- },
- {
-  "kind": "calendar#calendarListEntry",
-  "etag": "\"1764323866008159\"",
+  "etag": "\"1776311798121151\"",
   "id": "7b38edc4fff3969c1ff7ba9c2e0a691a07c7b1087936c2948b8b6c0482c2b5ba@group.calendar.google.com",
   "summary": "Новое наименование",
   "description": "Новое описание",
@@ -976,15 +938,15 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1764325116487967\"",
-  "id": "0d88d368b4dbf70b0d4d95e1949b9acb6b2ee080fe7cfd91204ed163d13585ec@group.calendar.google.com",
-  "summary": "Новое наименование",
-  "description": "Новое описание",
+  "etag": "\"1776311798830575\"",
+  "id": "10f9b286b24bfb2cfd826d10779c9bcfd91133c489036fbc7f497c5be74ee38c@group.calendar.google.com",
+  "summary": "Тестовый календарь",
   "timeZone": "Europe/Moscow",
   "dataOwner": "bayselonarrend@gmail.com",
-  "colorId": "6",
-  "backgroundColor": "#ffd800",
+  "colorId": "3",
+  "backgroundColor": "#f83a22",
   "foregroundColor": "#000000",
+  "selected": true,
   "accessRole": "owner",
   "defaultReminders": [],
   "conferenceProperties": {
@@ -995,26 +957,7 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1770990805065727\"",
-  "id": "8e0778d805a2b80a632421178527be77022f513d06fb9cd8ef5851676fb1452b@group.calendar.google.com",
-  "summary": "Новое наименование",
-  "description": "Новое описание",
-  "timeZone": "Europe/Moscow",
-  "dataOwner": "bayselonarrend@gmail.com",
-  "colorId": "6",
-  "backgroundColor": "#ffd800",
-  "foregroundColor": "#000000",
-  "accessRole": "owner",
-  "defaultReminders": [],
-  "conferenceProperties": {
-   "allowedConferenceSolutionTypes": [
-    "hangoutsMeet"
-   ]
-  }
- },
- {
-  "kind": "calendar#calendarListEntry",
-  "etag": "\"1771022195178767\"",
+  "etag": "\"1776311799670671\"",
   "id": "d6580a925c8ed7d732837545f2b858c826a93a19a37275244d3c27d409f27017@group.calendar.google.com",
   "summary": "Новое наименование",
   "description": "Новое описание",
@@ -1033,15 +976,72 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1774436939364847\"",
-  "id": "10f9b286b24bfb2cfd826d10779c9bcfd91133c489036fbc7f497c5be74ee38c@group.calendar.google.com",
-  "summary": "Тестовый календарь",
+  "etag": "\"1776311800516783\"",
+  "id": "a5522de86b9ead48e7bca1fef5ac18cdbc36942eb2b997cf8a0a9b573d01bb08@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
   "timeZone": "Europe/Moscow",
   "dataOwner": "bayselonarrend@gmail.com",
-  "colorId": "3",
-  "backgroundColor": "#f83a22",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
   "foregroundColor": "#000000",
-  "selected": true,
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1776311801316799\"",
+  "id": "f599793167a2f206a33c0f495f0a5dae023846a534988bf6e8f281b41912698f@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1776311802036207\"",
+  "id": "8e0778d805a2b80a632421178527be77022f513d06fb9cd8ef5851676fb1452b@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1776311802855935\"",
+  "id": "0d88d368b4dbf70b0d4d95e1949b9acb6b2ee080fe7cfd91204ed163d13585ec@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
   "accessRole": "owner",
   "defaultReminders": [],
   "conferenceProperties": {
