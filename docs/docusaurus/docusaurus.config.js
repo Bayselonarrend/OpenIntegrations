@@ -4,8 +4,59 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import { themes as prismThemes } from 'prism-react-renderer';
-import { label } from 'three/src/nodes/core/ContextNode.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
+
+const coursesSidebarsFile = path.join(__dirname, 'courses', 'sidebars.js');
+const hasCoursesContent = fs.existsSync(coursesSidebarsFile);
+
+/** Пункт «Материалы» — только если в дереве есть каталог курсов (сборка ru / после sync). */
+const navbarCoursesItem = hasCoursesContent
+  ? [
+      {
+        to: '/courses',
+        label: 'Материалы',
+        position: 'left',
+        'aria-label': 'Courses and materials',
+      },
+    ]
+  : [];
+
+const basePlugins = [
+  './plugins/api-icons-plugin',
+  './plugins/translation-path-sync-plugin',
+];
+
+if (hasCoursesContent) {
+  basePlugins.push([
+    '@docusaurus/plugin-content-docs',
+    {
+      id: 'courses',
+      path: 'courses',
+      routeBasePath: 'courses/private',
+      sidebarPath: require.resolve('./courses/sidebars.js'),
+    },
+  ]);
+}
+
+basePlugins.push(
+  [
+    'docusaurus-plugin-yandex-metrica',
+    {
+      counterID: '97292922',
+    },
+  ],
+  [require.resolve('docusaurus-lunr-search'), {
+    languages: ['en', 'ru'], // language codes
+  }],
+);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -55,28 +106,7 @@ const config = {
     ],
   ],
 
-  plugins: [
-    './plugins/api-icons-plugin',
-    './plugins/translation-path-sync-plugin',
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'courses',
-        path: 'courses',
-        routeBasePath: 'courses/private',
-        sidebarPath: require.resolve('./courses/sidebars.js')
-      },
-    ],
-
-    ['docusaurus-plugin-yandex-metrica', {
-      counterID: '97292922',
-    }],
-
-
-
-    [require.resolve('docusaurus-lunr-search'), {
-      languages: ['en', 'ru'] // language codes
-    }]],
+  plugins: basePlugins,
 
   themeConfig:
     ({
@@ -139,12 +169,7 @@ window.yaContextCb.push(() => {
             position: 'left',
             label: 'Аддоны',
           },
-          {
-            to: '/courses',
-            label: 'Материалы',
-            position: 'left',
-            'aria-label': 'Courses and materials',
-          },
+          ...navbarCoursesItem,
           {
             to: '/download',
             label: 'Скачать',
