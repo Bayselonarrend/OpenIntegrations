@@ -1,7 +1,7 @@
     URL        = "tests.openintegrations.dev";
-    Токен      = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiYXVkIjoicmVwb3J0cG9ydGFsIiwibmJmIjoxNzc0NDU5MjI1LCJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwiaXNzIjoiaHR0cDovL3JlcG9ydHBvcnRhbC5pbnRlcm5hbCIsInNjb3BlcyI6WyJ1aSJdLCJleHAiOjE3NzQ1NDU2M...";
-    IDЗапуска  = "af98edb4-9615-4ded-b542-e3f106fabd9c";
-    IDЭлемента = "1d79fa7a-59d7-4763-a332-938b186ea172";
+    Токен      = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    IDЗапуска  = "";
+    IDЭлемента = "";
     Проект     = "Test";
     Время      = Дата("20260101100010");
     Текст      = "Some log";

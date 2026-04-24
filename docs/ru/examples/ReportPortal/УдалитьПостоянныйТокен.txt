@@ -1,6 +1,6 @@
     URL            = "tests.openintegrations.dev";
-    Токен          = "test-key-2_N-ldwgw8RsGQPUyESWmEqgL2D5...";
+    Токен          = "test-key_uTk4iLOTRU2XN217ku-ATdmUoqQ...";
     IDПользователя = "1";
-    IDКлюча        = "2...";
+    IDКлюча        = "1...";
 
     Результат = OPI_ReportPortal.УдалитьПостоянныйТокен(URL, Токен, IDПользователя, IDКлюча);
