@@ -1,6 +1,6 @@
-    Токен         = "ya29.a0Aa7MYipG58m8xRCxgUC1Y-lFEXBWqlyLNPZAvmtp1O3GY3MwoBwDXCqSV-8ev__EJwPqprz7Q9jTCez9-k4a4rZeI1VuOXG1kyAuPLDlu6X-NQ4phH_QO1rl1...";
+    Токен         = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1JDb_pk1nK5JQu0S_94nmWY-BB9BRD9xW";
+    Идентификатор = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
     Файл          = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);
