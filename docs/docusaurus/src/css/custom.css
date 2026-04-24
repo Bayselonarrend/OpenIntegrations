@@ -107,6 +107,33 @@ strong{
   padding-bottom: 3px;
 }
 
+.nocli-admonition .alert__title::before,
+.nocli-admonition .addin strong:first-child::before{
+  content: '';
+  display: inline-block;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-right: 0.38rem;
+  margin-bottom: -0.15rem;
+  background-image: url('../../static/img/nocli-warning.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.theme-doc-sidebar-container .menu__list-item.doc-no-cli > .menu__link::after,
+.theme-doc-sidebar-container .menu__list-item.doc-no-cli .menu__link::after{
+  content: '';
+  display: inline-block;
+  width: 0.92rem;
+  height: 0.92rem;
+  margin-left: 0.35rem;
+  background-image: url('../../static/img/nocli-sidebar.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  opacity: 0.82;
+}
+
 .alert{
   margin-top: 10px;
 }
