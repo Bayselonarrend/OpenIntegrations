@@ -53,8 +53,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE5MTU3NDQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "4c7113d6-e20b-4218-9fd9-2cf33b75a384";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NzUwMjk0MTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "d2e82746-de33-4bb5-83ea-1ec058034f93";
 
     Результат = OPI_CDEK.ПолучитьЗаказ(Токен, UUID, Истина);
 ```
@@ -85,12 +85,12 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "076c8aa7-bbc3-4c0b-b856-081c923abd8c",
+  "uuid": "b7d7f332-96a5-4cd0-bf2e-c4b4aed7e4b0",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107192472",
-  "number": "be447b9c-86e8-483e-9d34-594a77b74904",
+  "cdek_number": "1107196368",
+  "number": "a9bfa723-a706-448f-a6ba-0f0dc2794b69",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -148,7 +148,6 @@ import Admonition from '@theme/Admonition';
    "code": 270,
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
    "city": "Новосибирск",
-   "kladr_code": "5400000100000",
    "country_code": "RU",
    "country": "Россия",
    "region": "Новосибирская область",
@@ -183,7 +182,7 @@ import Admonition from '@theme/Admonition';
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001889584",
+    "barcode": "000001897957",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -209,21 +208,21 @@ import Admonition from '@theme/Admonition';
       "cost": 300
      }
     ],
-    "package_id": "955f9e87-9ee5-47b8-bb34-6838bd4d8b55"
+    "package_id": "7c97669b-3962-4771-8e16-051d07c973cf"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-04-15T05:13:03+00:00",
+    "date_time": "2026-04-23T17:00:41+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-15T05:13:01+00:00",
+    "date_time": "2026-04-23T17:00:40+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -233,5 +232,6 @@ import Admonition from '@theme/Admonition';
   "has_reverse_order": false,
   "delivery_detail": {
    "delivery_sum": 1315,
+   "total_sum": 2183.4,
 ...
 ```

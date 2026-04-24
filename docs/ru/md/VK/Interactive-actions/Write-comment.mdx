@@ -52,7 +52,7 @@ import Admonition from '@theme/Admonition';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
     Текст     = "Новый комментарий";
-    IDПоста   = "10422";
+    IDПоста   = "11931";
     IDСтены   = Параметры["owner_id"];
 
     Результат = OPI_VK.НаписатьКомментарий(IDПоста, IDСтены, Текст, Параметры);
@@ -90,7 +90,7 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "response": {
-  "comment_id": 12013,
+  "comment_id": 12024,
   "parents_stack": []
  }
 }

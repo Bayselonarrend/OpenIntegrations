@@ -1,4 +1,4 @@
-    Токен     = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
-    Календарь = "f70efec034ef36b040f12b5d8938e54fc399d73cd37b8e765bdd86ebc4a67e4a@group.calendar.google.com";
+    Токен     = "ya29.a0Aa7MYipG58m8xRCxgUC1Y-lFEXBWqlyLNPZAvmtp1O3GY3MwoBwDXCqSV-8ev__EJwPqprz7Q9jTCez9-k4a4rZeI1VuOXG1kyAuPLDlu6X-NQ4phH_QO1rl1...";
+    Календарь = "fb9599b6f998ee7d2521d0823d515ae172a85b58a0e20861c557d3e640e2fc5e@group.calendar.google.com";
 
     Результат = OPI_GoogleCalendar.ПолучитьКалендарьСписка(Токен, Календарь);
