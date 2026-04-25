@@ -285,10 +285,7 @@ Procedure WebSocket_SendPing(FunctionParameters)
 
     If OPI_WebSocket.IsClientObject(Connection) Then
 
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendPing", Options);
+        Result = OPI_WebSocket.SendPing(Connection);
 
         While True Do
 
@@ -355,10 +352,7 @@ Procedure WebSocket_SendPong(FunctionParameters)
     Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendPong", Options);
+        Result = OPI_WebSocket.SendPong(Connection);
     Else
         Result = Connection;
     EndIf;
@@ -413,11 +407,7 @@ Procedure WebSocket_GetMessage(FunctionParameters)
     If OPI_WebSocket.IsClientObject(Connection) Then
 
         // ECHO
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-        Options.Insert("text", Message);
-
-        Sending = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
+        Sending = OPI_WebSocket.SendTextMessage(Connection, Message);
 
         OPI_TestDataRetrieval.ProcessCLI(Sending, "WebSocket", "GetMessage", "Sending, " + Postfix); // SKIP
 
@@ -486,11 +476,7 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
 
     If OPI_WebSocket.IsClientObject(Connection) Then
 
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-        Options.Insert("text", Message);
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
+        Result = OPI_WebSocket.SendTextMessage(Connection, Message);
 
     Else
         Result = Connection;
@@ -559,11 +545,7 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
     Data = GetBinaryDataFromString(SourceString);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Options = New Structure;
-        Options.Insert("conn", Connection);
-        Options.Insert("data", Data);
-
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendBinaryMessage", Options);
+        Result = OPI_WebSocket.SendBinaryMessage(Connection, Data);
     Else
         Result = Connection;
     EndIf;
@@ -804,11 +786,7 @@ Procedure WebSocket_SendData(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "SendData");
 
-    Options = New Structure;
-    Options.Insert("conn", ClientObject);
-    Options.Insert("tout", 3000);
-
-    ClientResponse = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetMessage", Options);
+    ClientResponse = OPI_WebSocket.GetMessage(ClientObject, 3000);
 
     OPI_TestDataRetrieval.ProcessCLI(ClientResponse, "WebSocket", "SendData", "Check", ServerResponse);
 
@@ -847,11 +825,7 @@ Procedure WebSocket_CloseIncomingConnection(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "CloseIncomingConnection", "EmptyList");
 
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
-    Options = New Structure;
-    Options.Insert("conn", ClientObject);
-    Options.Insert("text", Message);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
+    Result = OPI_WebSocket.SendTextMessage(ClientObject, Message);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "CloseIncomingConnection", "SendingToClosed");
 

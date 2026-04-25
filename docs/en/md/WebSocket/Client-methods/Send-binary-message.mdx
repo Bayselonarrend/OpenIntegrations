@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
-
-description: Send binary message and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_class_name: doc-no-cli
+description: Send binary message  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Send binary message
+# Send binary message 
  Sends binary data to the connection
 
 
@@ -21,8 +21,8 @@ import Admonition from '@theme/Admonition';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Connection | --conn | Arbitrary | &#x2714; | Connection, See CreateConnection |
-  | Data | --data | BinaryData, String | &#x2714; | Binary data or file path |
+  | Connection | - | Arbitrary | &#x2714; | Connection, See CreateConnection |
+  | Data | - | BinaryData, String | &#x2714; | Binary data or file path |
 
 
 <div className="return-value-note">
@@ -44,6 +44,12 @@ import Admonition from '@theme/Admonition';
 :::tip
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 <br/>
 
 

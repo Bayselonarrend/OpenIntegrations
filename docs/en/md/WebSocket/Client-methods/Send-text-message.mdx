@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
-
-description: Send text message and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_class_name: doc-no-cli
+description: Send text message  and other functions to work with WebSocket in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, WebSocket]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Send text message
+# Send text message 
  Sends text to the connection
 
 
@@ -21,8 +21,8 @@ import Admonition from '@theme/Admonition';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Connection | --conn | Arbitrary | &#x2714; | Connection, See CreateConnection |
-  | Text | --text | String | &#x2714; | Text or path to a text file |
+  | Connection | - | Arbitrary | &#x2714; | Connection, See CreateConnection |
+  | Text | - | String | &#x2714; | Text or path to a text file |
 
 
 <div className="return-value-note">
@@ -41,6 +41,13 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+<br/>
 
 
 
