@@ -575,8 +575,12 @@ EndFunction
 
 Function IsCLITest() Export
 
-    // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
-    Data = Constants.IsCLITests.Get(); // !OPI
+    Try
+           // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+        Data             = Constants.IsCLITests.Get(); // !OPI
+    Except
+        Return False;
+    EndTry;
 
     If String(Data) = "1" Then
         Result      = True;
