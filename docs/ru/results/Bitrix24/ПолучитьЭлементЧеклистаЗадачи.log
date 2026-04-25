@@ -1,8 +1,8 @@
 ﻿{
  "result": {
-  "ID": "7410",
-  "TASK_ID": "10300",
-  "PARENT_ID": "7408",
+  "ID": "7418",
+  "TASK_ID": "10310",
+  "PARENT_ID": "7416",
   "CREATED_BY": "1",
   "TITLE": "Новый текст пункта чек-листа",
   "SORT_INDEX": "1",
@@ -14,13 +14,13 @@
   "ATTACHMENTS": []
  },
  "time": {
-  "start": 1776952601,
-  "finish": 1776952601.12099,
-  "duration": 0.120991945266724,
+  "start": 1777119201,
+  "finish": 1777119201.48206,
+  "duration": 0.482063055038452,
   "processing": 0,
-  "date_start": "2026-04-23T16:56:41+03:00",
-  "date_finish": "2026-04-23T16:56:41+03:00",
-  "operating_reset_at": 1776953201,
+  "date_start": "2026-04-25T15:13:21+03:00",
+  "date_finish": "2026-04-25T15:13:21+03:00",
+  "operating_reset_at": 1777119801,
   "operating": 0
  }
 }

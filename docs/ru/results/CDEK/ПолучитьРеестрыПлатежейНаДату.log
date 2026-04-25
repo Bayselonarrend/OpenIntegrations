@@ -1,1 +1,6 @@
-﻿{}
+﻿{
+ "timestamp": "2026-04-25T15:20:30.768+03:00",
+ "status": 500,
+ "error": "Internal Server Error",
+ "path": "/v2/registries"
+}
