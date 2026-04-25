@@ -2,7 +2,7 @@
  "rows": 4,
  "counters": [
   {
-   "id": 108732187,
+   "id": 108757072,
    "status": "Active",
    "owner_login": "bayselonarrend",
    "code_status": "CS_ERR_UNKNOWN",
@@ -32,6 +32,9 @@
      "color_text": 0,
      "color_arrow": 1
     },
+    "modules": {
+     "prebid_enabled": 0
+    },
     "visor": 1,
     "track_hash": 1,
     "xml_site": 0,
@@ -43,7 +46,7 @@
     "ytm": false,
     "ssr": true
    },
-   "create_time": "2026-04-23T17:07:45+03:00",
+   "create_time": "2026-04-25T15:34:44+03:00",
    "time_zone_name": "Europe/Moscow",
    "time_zone_offset": 180,
    "partner_id": 0,
@@ -84,6 +87,9 @@
      "color_end": "EFEFEFFE",
      "color_text": 0,
      "color_arrow": 1
+    },
+    "modules": {
+     "prebid_enabled": 0
     },
     "visor": 1,
     "track_hash": 1,
@@ -139,6 +145,9 @@
      "color_text": 0,
      "color_arrow": 1
     },
+    "modules": {
+     "prebid_enabled": 0
+    },
     "visor": 0,
     "track_hash": 0,
     "xml_site": 0,
@@ -192,6 +201,9 @@
      "color_end": "EFEFEFFF",
      "color_text": 0,
      "color_arrow": 1
+    },
+    "modules": {
+     "prebid_enabled": 0
     },
     "visor": 0,
     "track_hash": 0,

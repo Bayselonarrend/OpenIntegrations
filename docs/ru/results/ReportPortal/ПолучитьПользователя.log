@@ -1,8 +1,8 @@
 ﻿{
- "uuid": "dbd1a830-28e9-46d0-9964-e80446c528ac",
+ "uuid": "8be877b9-8798-407c-98d7-01b65d0620e0",
  "active": true,
  "loaded": true,
- "id": 35,
+ "id": 36,
  "userId": "test",
  "email": "test@example.com",
  "fullName": "Test User",
@@ -10,7 +10,7 @@
  "userRole": "USER",
  "photoLoaded": true,
  "metadata": {
-  "last_login": 1776954109916
+  "last_login": 1777121365928
  },
  "assignedProjects": {
   "test": {
@@ -19,7 +19,7 @@
    "entryType": "INTERNAL"
   },
   "test_personal": {
-   "projectId": 67,
+   "projectId": 69,
    "projectRole": "PROJECT_MANAGER",
    "entryType": "PERSONAL"
   }
