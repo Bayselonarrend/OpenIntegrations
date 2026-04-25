@@ -201,7 +201,7 @@ Function CloseConnection(Val Connection, Val Code = 1000, Val Reason = "") Expor
 
 EndFunction
 
-// Send ping
+// Send ping !NOCLI
 // Sends a ping to the remote server
 //
 // Parameters:
@@ -228,7 +228,7 @@ Function SendPing(Val Connection) Export
 
 EndFunction
 
-// Send pong
+// Send pong !NOCLI
 // Sends a pong to the remote server
 //
 // Parameters:
@@ -255,7 +255,7 @@ Function SendPong(Val Connection) Export
 
 EndFunction
 
-// Get message
+// Get message !NOCLI
 // Receives an incoming message from the queue or waits for a new one
 //
 // Parameters:
@@ -311,7 +311,7 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
 
 EndFunction
 
-// Send text message
+// Send text message !NOCLI
 // Sends text to the connection
 //
 // Parameters:
@@ -341,7 +341,7 @@ Function SendTextMessage(Val Connection, Val Text) Export
 
 EndFunction
 
-// Send binary message
+// Send binary message !NOCLI
 // Sends binary data to the connection
 //
 // Parameters:
