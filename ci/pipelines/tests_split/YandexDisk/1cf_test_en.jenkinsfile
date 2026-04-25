@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File="D:/TEST_IB/OpenIntegrationsIB_en";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_en\"\";\" /C\"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
