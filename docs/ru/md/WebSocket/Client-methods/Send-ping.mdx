@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
-
-description: Отправить пинг и другие функции для работы с WebSocket в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_class_name: doc-no-cli
+description: Отправить пинг  и другие функции для работы с WebSocket в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, WebSocket]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Отправить пинг
+# Отправить пинг 
  Отправляет пинг удаленному серверу
 
 
@@ -21,7 +21,7 @@ import Admonition from '@theme/Admonition';
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
-  | Соединение | --conn | Произвольный | &#x2714; | Соединение, См. [`ОткрытьСоединение`](/docs/WebSocket/Client-methods/Create-connection) |
+  | Соединение | - | Произвольный | &#x2714; | Соединение, См. [`ОткрытьСоединение`](/docs/WebSocket/Client-methods/Create-connection) |
 
 
 <div className="return-value-note">
@@ -40,6 +40,13 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
+<br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
