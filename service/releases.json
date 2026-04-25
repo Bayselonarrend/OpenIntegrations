@@ -9,9 +9,21 @@
             {
                 "lib": "WebSocket",
                 "icon": "media/WebSocket.png",
-                "description_ru": "Методы клиента (3 функции)",
-                "description_en": "Client methods (3 functions)"
+                "description_ru": "Общие методы (2 функции)",
+                "description_en": "Common methods (2 functions)"
             },
+            {
+                "lib": "WebSocket",
+                "icon": "media/WebSocket.png",
+                "description_ru": "Методы клиента (10 функции)",
+                "description_en": "Client methods (10 functions)"
+            },
+            {
+                "lib": "WebSocket",
+                "icon": "media/WebSocket.png",
+                "description_ru": "Методы сервера (8 функции)",
+                "description_en": "Server methods (8 functions)"
+            },            
             {
                 "lib": "HTTP",
                 "icon": "media/HTTP.png",
