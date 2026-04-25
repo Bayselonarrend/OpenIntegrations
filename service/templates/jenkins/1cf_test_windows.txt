@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"%2\" /IBConnectionString \"File="D:/TEST_IB/OpenIntegrationsIB_%3";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"%2\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_%3\"\";\" /C\"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
