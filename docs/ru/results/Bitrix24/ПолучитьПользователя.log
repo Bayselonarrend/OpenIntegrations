@@ -1,13 +1,13 @@
 ﻿{
  "result": [
   {
-   "ID": "3584",
+   "ID": "3588",
    "ACTIVE": true,
    "NAME": "Олег",
    "LAST_NAME": "Лама",
-   "EMAIL": "3e12e83f-7a41-440e-ab69-0d7bf8166ce0@example.org",
+   "EMAIL": "af1bf434-9e61-4fa1-b7bd-a590f4ae4e78@example.org",
    "LAST_LOGIN": "",
-   "DATE_REGISTER": "2026-04-23T03:00:00+03:00",
+   "DATE_REGISTER": "2026-04-25T03:00:00+03:00",
    "IS_ONLINE": "N",
    "TIMESTAMP_X": {},
    "PERSONAL_GENDER": "",
@@ -22,13 +22,13 @@
  ],
  "total": 1,
  "time": {
-  "start": 1776952782,
-  "finish": 1776952782.71878,
-  "duration": 0.718775033950806,
+  "start": 1777119370,
+  "finish": 1777119370.26453,
+  "duration": 0.264527082443237,
   "processing": 0,
-  "date_start": "2026-04-23T16:59:42+03:00",
-  "date_finish": "2026-04-23T16:59:42+03:00",
-  "operating_reset_at": 1776953382,
+  "date_start": "2026-04-25T15:16:10+03:00",
+  "date_finish": "2026-04-25T15:16:10+03:00",
+  "operating_reset_at": 1777119970,
   "operating": 0
  }
 }
