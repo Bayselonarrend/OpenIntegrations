@@ -1912,7 +1912,7 @@ Function SplitURL()
 
     URL = RequestURL;
 
-    RequestProtected = Not StrStartsWith(RequestURL, "http://");
+    RequestProtected = Not StrStartWith(RequestURL, "http://");
 
     AddLog("SplitURL: Secure = " + String(RequestProtected));
 
@@ -3066,7 +3066,7 @@ Function GetHeadersKeysString()
         CurrentKey  = Title.Key;
         CurrentKeyN = Lower(CurrentKey);
 
-        If Not StrStartsWith(CurrentKeyN, "host") And Not StrStartsWith(CurrentKeyN, "x-amz") Then
+        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
             Continue;
         EndIf;
 
@@ -3086,7 +3086,7 @@ EndFunction
 Function GetURIString()
 
     URI = Request.ResourceAddress;
-    URI = ?(StrStartsWith(URI, "/"), URI, "/" + URI);
+    URI = ?(StrStartWith(URI, "/"), URI, "/" + URI);
 
     ParamsStart = StrFind(URI, "?");
 
@@ -3128,7 +3128,7 @@ Function GetHeadersString()
         CurrentKey  = Title.Key;
         CurrentKeyN = Lower(CurrentKey);
 
-        If Not StrStartsWith(CurrentKeyN, "host") And Not StrStartsWith(CurrentKeyN, "x-amz") Then
+        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
             Continue;
         EndIf;
 

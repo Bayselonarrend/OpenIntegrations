@@ -296,7 +296,7 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
 
         Try
 
-            If StrStartsWith(Data, "{") Or StrStartsWith(Data, "[") Then
+            If StrStartWith(Data, "{") Or StrStartWith(Data, "[") Then
                 OPI_TypeConversion.GetKeyValueCollection(Data);
                 Result["data"] = Data;
             EndIf;

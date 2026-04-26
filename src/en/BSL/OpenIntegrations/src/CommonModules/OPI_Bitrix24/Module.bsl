@@ -65,7 +65,7 @@ Function GetAppAuthLink(Val Domain, Val ClientID) Export
     OPI_TypeConversion.GetLine(Domain);
     OPI_TypeConversion.GetLine(ClientID);
 
-    If Not StrStartsWith(Domain, "http") Then
+    If Not StrStartWith(Domain, "http") Then
         URL = "https://" + Domain;
     EndIf;
 
