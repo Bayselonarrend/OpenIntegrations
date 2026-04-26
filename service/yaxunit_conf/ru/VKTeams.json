@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/VKTeams.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_VKTeams.ВКТ_ОтправкаСообщений",
+"OPIt_VKTeams.ВКТ_ОбщиеМетоды",
+"OPIt_VKTeams.ВКТ_УправлениеЧатами"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/VKTeams.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
