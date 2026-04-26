@@ -148,7 +148,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Airtable"       , 5);
     Sections.Insert("Dropbox"        , 5);
     Sections.Insert("Bitrix24"       , 5);
-    Sections.Insert("VkTeams"        , 5);
+    Sections.Insert("VKTeams"        , 5);
     Sections.Insert("Neocities"      , 5);
     Sections.Insert("CDEK"           , 5);
     Sections.Insert("YandexMetrika"  , 5);
@@ -6445,8 +6445,8 @@ Function Check_VKTeams_SendTextMessage(Val Result, Val Option, Parameters = "")
     If Not ValueIsFilled(Option) Then
 
         MessageID = Result["msgId"];
-        WriteParameter("VkTeams_MessageID", MessageID);
-        Parameters.Insert("VkTeams_MessageID", MessageID);
+        WriteParameter("VKTeams_MessageID", MessageID);
+        Parameters.Insert("VKTeams_MessageID", MessageID);
 
     EndIf;
 
@@ -6471,8 +6471,8 @@ Function Check_VKTeams_SendFile(Val Result, Val Option, Parameters = "")
     If Not ValueIsFilled(Option) Then
 
         FileID = Result["fileId"];
-        WriteParameter("VkTeams_FileID", FileID);
-        Parameters.Insert("VkTeams_FileID", FileID);
+        WriteParameter("VKTeams_FileID", FileID);
+        Parameters.Insert("VKTeams_FileID", FileID);
 
         OPI_Tools.Pause(2);
 
@@ -6525,8 +6525,8 @@ Function Check_VKTeams_SendVoice(Val Result, Val Option, Parameters = "")
     If Not ValueIsFilled(Option) Then
 
         FileID = Result["fileId"];
-        WriteParameter("VkTeams_VoiceID", FileID);
-        Parameters.Insert("VkTeams_VoiceID", FileID);
+        WriteParameter("VKTeams_VoiceID", FileID);
+        Parameters.Insert("VKTeams_VoiceID", FileID);
 
         OPI_Tools.Pause(2);
 

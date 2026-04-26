@@ -106,14 +106,14 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-VkTeams') {
+		stage('Testing-VKTeams') {
             when {
-                expression { return shouldRunStage('VkTeams') }
+                expression { return shouldRunStage('VKTeams') }
             }
 			steps {
 				script {
 					def tests = [
-						['VkTeams', './service/yaxunit_conf/en/VkTeams.json'],
+						['VKTeams', './service/yaxunit_conf/en/VKTeams.json'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
