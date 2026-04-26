@@ -95,7 +95,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-
+						['./src/en/OInt/tests/Modules/OPIt_VKTeams.os', 'VKT_MessagesSending'],
+						['./src/en/OInt/tests/Modules/OPIt_VKTeams.os', 'VKT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_VKTeams.os', 'VKT_ChatManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
