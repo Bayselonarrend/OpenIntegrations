@@ -659,8 +659,10 @@ Procedure SetCLITestFlag(Val Value) Export
 
     CLITestsMark = ?(Value, 1, 0);
 
-    Constants["IsCLITests"].Set(CLITestsMark); // !OPI
-    // !OInt SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Try
+        Constants["IsCLITests"].Set(CLITestsMark); // !OPI
+        // !OInt SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Except EndTry;
 
 EndProcedure
 
