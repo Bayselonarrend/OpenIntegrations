@@ -575,7 +575,11 @@ EndFunction
 
 Function IsCLITest() Export
 
-    Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+    Try
+           Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+    Except
+        Return False;
+    EndTry;
 
     If String(Data) = "1" Then
         Result      = True;
