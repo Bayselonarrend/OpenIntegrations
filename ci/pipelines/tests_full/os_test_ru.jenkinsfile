@@ -564,9 +564,9 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-VkTeams') {
+		stage('Testing-VKTeams') {
             when {
-                expression { return shouldRunStage('VkTeams') }
+                expression { return shouldRunStage('VKTeams') }
             }
 			steps {
 				script {
