@@ -1176,7 +1176,7 @@ Function ProcessCollectionForOperation(Val AddIn, Val Data)
         For Each DataPart In Data Do
 
             CurrentKey = String(DataPart.Key);
-            Covered    = StrStartsWith(CurrentKey, "__OPI_");
+            Covered    = StrStartWith(CurrentKey, "__OPI_");
 
             CurrentValue = DataPart.Value;
 

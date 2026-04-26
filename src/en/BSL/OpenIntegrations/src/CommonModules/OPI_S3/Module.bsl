@@ -982,7 +982,7 @@ Function CopyObject(Val SourcePath
     OPI_TypeConversion.GetLine(DestinationBucket);
 
     Source = DestinationBucket + "/" + SourcePath;
-    Source = ?(StrStartsWith(Source, "/"), Source, "/" + Source);
+    Source = ?(StrStartWith(Source, "/"), Source, "/" + Source);
 
     SourceHeader = New Map();
     SourceHeader.Insert("x-amz-copy-source", Source);
@@ -1429,7 +1429,7 @@ Function GetHeadersString(Val Headers)
         CurrentKey  = Title.Key;
         CurrentKeyN = Lower(CurrentKey);
 
-        If Not StrStartsWith(CurrentKeyN, "host") And Not StrStartsWith(CurrentKeyN, "x-amz") Then
+        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
             Continue;
         EndIf;
 
@@ -1456,7 +1456,7 @@ Function GetHeadersKeysString(Val Headers)
         CurrentKey  = Title.Key;
         CurrentKeyN = Lower(CurrentKey);
 
-        If Not StrStartsWith(CurrentKeyN, "host") And Not StrStartsWith(CurrentKeyN, "x-amz") Then
+        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
             Continue;
         EndIf;
 

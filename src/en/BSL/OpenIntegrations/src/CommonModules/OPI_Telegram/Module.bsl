@@ -223,7 +223,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(DataString);
 
-    If StrStartsWith(DataString, "?") Then
+    If StrStartWith(DataString, "?") Then
         DataString = Right(DataString, StrLen(DataString) - 1);
     EndIf;
 

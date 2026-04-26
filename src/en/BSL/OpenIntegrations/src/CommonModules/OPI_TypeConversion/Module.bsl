@@ -136,8 +136,8 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
                 Value = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
                 JSONReader.Close();
 
-            ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
-                Or StrStartsWith(TrimL(ValueES), "https://")) Then
+            ElsIf ByNetwork And (StrStartWith(TrimL(ValueES), "http://")
+                Or StrStartWith(TrimL(ValueES), "https://")) Then
 
                 Value = GetHttpClient().Get(ValueES);
 
@@ -247,8 +247,8 @@ Procedure GetLine(Value, Val FromSource = False) Export
                 Value      = TextReader.Read();
                 TextReader.Close();
 
-            ElsIf StrStartsWith(TrimL(ValueES), "http://")
-                Or StrStartsWith(TrimL(ValueES), "https://") Then
+            ElsIf StrStartWith(TrimL(ValueES), "http://")
+                Or StrStartWith(TrimL(ValueES), "https://") Then
 
                 Value = GetHttpClient().Get(ValueES);
                 GetLine(Value);
@@ -527,8 +527,8 @@ Procedure ConvertSourceToValue(Value, TryB64)
 
         Value = New BinaryData(ValueES);
 
-    ElsIf StrStartsWith(TrimL(ValueES), "http://")
-        Or StrStartsWith(TrimL(ValueES), "https://") Then
+    ElsIf StrStartWith(TrimL(ValueES), "http://")
+        Or StrStartWith(TrimL(ValueES), "https://") Then
 
         Value = GetHttpClient().Get(ValueES);
 

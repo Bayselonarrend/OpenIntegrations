@@ -72,7 +72,7 @@ EndFunction
 Function IsAddIn(Val Value) Export
 
     ValeType = String(TypeOf(Value));
-    Return StrStartsWith(ValeType, "AddIn.");
+    Return StrStartWith(ValeType, "AddIn.");
 
 EndFunction
 
