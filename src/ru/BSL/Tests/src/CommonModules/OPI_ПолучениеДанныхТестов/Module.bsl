@@ -659,8 +659,10 @@
 
     CLITestsMark = ?(Значение, 1, 0);
 
-    Константы["IsCLITests"].Установить(CLITestsMark); // !OPI
-    // !OInt УстановитьПеременнуюСреды("OINT_TESTS_CLI", CLITestsMark);
+    Попытка
+        Константы["IsCLITests"].Установить(CLITestsMark); // !OPI
+        // !OInt УстановитьПеременнуюСреды("OINT_TESTS_CLI", CLITestsMark);
+    Исключение КонецПопытки;
 
 КонецПроцедуры
 
