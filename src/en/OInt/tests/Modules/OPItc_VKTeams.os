@@ -94,16 +94,16 @@ EndFunction
 
 #Region RunnableTests
 
-#Region VkTeams
+#Region VKTeams
 
 Procedure VKT_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_FileID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_FileID", TestParameters);
 
-    VkTeams_CheckToken(TestParameters);
-    VkTeams_GetEvents(TestParameters);
+    VKTeams_CheckToken(TestParameters);
+    VKTeams_GetEvents(TestParameters);
     VKTeams_GetFileInformation(TestParameters);
 
 EndProcedure
@@ -111,14 +111,14 @@ EndProcedure
 Procedure VKT_MessagesSending() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_MessageID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID2"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_MessageID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Audio2"           , TestParameters);
 
-    VkTeams_SendTextMessage(TestParameters);
+    VKTeams_SendTextMessage(TestParameters);
     OPI_Tools.Pause(60);
 
     VKTeams_AnswerButtonEvent(TestParameters);
@@ -138,9 +138,9 @@ EndProcedure
 Procedure VKT_ChatManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID2", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture3"       , TestParameters);
 
     VKTeams_RemoveChatMembers(TestParameters);
@@ -160,7 +160,7 @@ Procedure VKT_ChatManagement() Export
 
 EndProcedure
 
-#EndRegion // VkTeams
+#EndRegion // VKTeams
 
 #EndRegion // RunnableTests
 
@@ -174,7 +174,7 @@ EndProcedure
 
 Procedure VKTeams_CheckToken(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
+    Token  = FunctionParameters["VKTeams_Token"];
     Options = New Structure;
     Options.Insert("token", Token);
 
@@ -188,7 +188,7 @@ EndProcedure
 
 Procedure VKTeams_GetEvents(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
+    Token  = FunctionParameters["VKTeams_Token"];
     LastID = 0;
 
     For N = 1 To 5 Do // In real work - endless loop
@@ -217,8 +217,8 @@ EndProcedure
 
 Procedure VKTeams_SendTextMessage(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
     Text   = "Message text";
 
     Options = New Structure;
@@ -230,8 +230,8 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "VKTeams", "SendTextMessage", "Simple", FunctionParameters); // SKIP
 
-    ChatID  = FunctionParameters["VkTeams_ChatID2"];
-    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    ChatID  = FunctionParameters["VKTeams_ChatID2"];
+    ReplyID = FunctionParameters["VKTeams_MessageID"];
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 
@@ -265,10 +265,10 @@ EndProcedure
 
 Procedure VKTeams_ForwardMessage(FunctionParameters)
 
-    Token      = FunctionParameters["VkTeams_Token"];
-    ChatID     = FunctionParameters["VkTeams_ChatID"];
-    FromChatID = FunctionParameters["VkTeams_ChatID2"];
-    MessageID  = FunctionParameters["VkTeams_MessageID"];
+    Token      = FunctionParameters["VKTeams_Token"];
+    ChatID     = FunctionParameters["VKTeams_ChatID"];
+    FromChatID = FunctionParameters["VKTeams_ChatID2"];
+    MessageID  = FunctionParameters["VKTeams_MessageID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -299,8 +299,8 @@ EndProcedure
 
 Procedure VKTeams_SendFile(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
     Text   = "File caption";
 
     File     = FunctionParameters["Document"]; // URL
@@ -348,9 +348,9 @@ EndProcedure
 
 Procedure VKTeams_ResendFile(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
-    FileID = FunctionParameters["VkTeams_FileID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
+    FileID = FunctionParameters["VKTeams_FileID"];
     Text   = "File caption";
 
     Options = New Structure;
@@ -369,8 +369,8 @@ EndProcedure
 
 Procedure VKTeams_GetFileInformation(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    FileID = FunctionParameters["VkTeams_FileID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    FileID = FunctionParameters["VKTeams_FileID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -386,9 +386,9 @@ EndProcedure
 
 Procedure VKTeams_EditMessageText(FunctionParameters)
 
-    Token     = FunctionParameters["VkTeams_Token"];
-    ChatID    = FunctionParameters["VkTeams_ChatID2"];
-    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Token     = FunctionParameters["VKTeams_Token"];
+    ChatID    = FunctionParameters["VKTeams_ChatID2"];
+    MessageID = FunctionParameters["VKTeams_MessageID"];
     Text      = "New message text";
 
     Options = New Structure;
@@ -421,9 +421,9 @@ EndProcedure
 
 Procedure VKTeams_DeleteMessage(FunctionParameters)
 
-    Token     = FunctionParameters["VkTeams_Token"];
-    ChatID    = FunctionParameters["VkTeams_ChatID2"];
-    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Token     = FunctionParameters["VKTeams_Token"];
+    ChatID    = FunctionParameters["VKTeams_ChatID2"];
+    MessageID = FunctionParameters["VKTeams_MessageID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -440,9 +440,9 @@ EndProcedure
 
 Procedure VKTeams_SendVoice(FunctionParameters)
 
-    Token   = FunctionParameters["VkTeams_Token"];
-    ChatID  = FunctionParameters["VkTeams_ChatID2"];
-    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    Token   = FunctionParameters["VKTeams_Token"];
+    ChatID  = FunctionParameters["VKTeams_ChatID2"];
+    ReplyID = FunctionParameters["VKTeams_MessageID"];
 
     File     = FunctionParameters["Audio2"]; // URL
     FilePath = GetTempFileName("m4a"); // Path
@@ -487,9 +487,9 @@ EndProcedure
 
 Procedure VKTeams_ResendVoice(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
-    FileID = FunctionParameters["VkTeams_VoiceID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
+    FileID = FunctionParameters["VKTeams_VoiceID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -506,8 +506,8 @@ EndProcedure
 
 Procedure VKTeams_RemoveChatMembers(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     User   = 1011987091;
 
     Options = New Structure;
@@ -525,8 +525,8 @@ EndProcedure
 
 Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     File     = FunctionParameters["Picture3"]; // URL
     FilePath = GetTempFileName("png"); // Path
@@ -570,8 +570,8 @@ EndProcedure
 
 Procedure VKTeams_GetChatInfo(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -587,8 +587,8 @@ EndProcedure
 
 Procedure VKTeams_GetChatAdmins(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -604,8 +604,8 @@ EndProcedure
 
 Procedure VKTeams_GetChatMembers(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -621,8 +621,8 @@ EndProcedure
 
 Procedure VKTeams_GetChatBlockedUsers(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -638,8 +638,8 @@ EndProcedure
 
 Procedure VKTeams_GetChatJoinRequests(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -655,8 +655,8 @@ EndProcedure
 
 Procedure VKTeams_BlockChatUser(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     User   = 1011987091;
 
     Options = New Structure;
@@ -675,8 +675,8 @@ EndProcedure
 
 Procedure VKTeams_UnblockChatUser(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     User   = 1011987091;
 
     Options = New Structure;
@@ -694,9 +694,9 @@ EndProcedure
 
 Procedure VKTeams_PinMessage(FunctionParameters)
 
-    Token     = FunctionParameters["VkTeams_Token"];
-    ChatID    = FunctionParameters["VkTeams_ChatID2"];
-    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Token     = FunctionParameters["VKTeams_Token"];
+    ChatID    = FunctionParameters["VKTeams_ChatID2"];
+    MessageID = FunctionParameters["VKTeams_MessageID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -713,9 +713,9 @@ EndProcedure
 
 Procedure VKTeams_UnpinMessage(FunctionParameters)
 
-    Token     = FunctionParameters["VkTeams_Token"];
-    ChatID    = FunctionParameters["VkTeams_ChatID2"];
-    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Token     = FunctionParameters["VKTeams_Token"];
+    ChatID    = FunctionParameters["VKTeams_ChatID2"];
+    MessageID = FunctionParameters["VKTeams_MessageID"];
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -732,8 +732,8 @@ EndProcedure
 
 Procedure VKTeams_ApprovePending(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     User   = 1011987091;
 
     Options = New Structure;
@@ -759,8 +759,8 @@ EndProcedure
 
 Procedure VKTeams_DisapprovePending(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     User   = 1011987091;
 
     Options = New Structure;
@@ -786,8 +786,8 @@ EndProcedure
 
 Procedure VKTeams_SetChatTitle(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     Text   = "New title";
 
     Options = New Structure;
@@ -805,8 +805,8 @@ EndProcedure
 
 Procedure VKTeams_SetChatDescription(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     Text   = "New description";
 
     Options = New Structure;
@@ -824,8 +824,8 @@ EndProcedure
 
 Procedure VKTeams_SetChatRules(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Token  = FunctionParameters["VKTeams_Token"];
+    ChatID = FunctionParameters["VKTeams_ChatID2"];
     Text   = "Text of the new rules";
 
     Options = New Structure;
@@ -843,7 +843,7 @@ EndProcedure
 
 Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
 
-    Token  = FunctionParameters["VkTeams_Token"];
+    Token  = FunctionParameters["VKTeams_Token"];
     LastID = 0;
 
     For N = 1 To 5 Do
