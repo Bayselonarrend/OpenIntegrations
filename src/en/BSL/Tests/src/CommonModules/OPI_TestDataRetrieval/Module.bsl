@@ -577,7 +577,7 @@ Function IsCLITest() Export
 
     Try
            // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
-        Data             = Constants.IsCLITests.Get(); // !OPI
+        Data             = Constants["IsCLITests"].Get(); // !OPI
     Except
         Return False;
     EndTry;
@@ -659,7 +659,7 @@ Procedure SetCLITestFlag(Val Value) Export
 
     CLITestsMark = ?(Value, 1, 0);
 
-    Constants.IsCLITests.Set(CLITestsMark); // !OPI
+    Constants["IsCLITests"].Set(CLITestsMark); // !OPI
     // !OInt SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
 
 EndProcedure
