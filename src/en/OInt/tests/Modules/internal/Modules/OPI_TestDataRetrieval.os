@@ -658,7 +658,9 @@ Procedure SetCLITestFlag(Val Value) Export
 
     CLITestsMark = ?(Value, 1, 0);
 
-    SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Try
+        SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+    Except EndTry;
 
 EndProcedure
 
