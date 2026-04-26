@@ -636,7 +636,7 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
     OPI_TypeConversion.GetLine(FileID);
     OPI_TypeConversion.GetBoolean(ViewOnly);
 
-    If Not StrStartsWith(FileID, "id:") Then
+    If Not StrStartWith(FileID, "id:") Then
         FileID = "id:" + FileID;
     EndIf;
 
@@ -753,7 +753,7 @@ Function CancelFilePublication(Val Token, Val FileID) Export
 
     OPI_TypeConversion.GetLine(FileID);
 
-    If Not StrStartsWith(FileID, "id:") Then
+    If Not StrStartWith(FileID, "id:") Then
         FileID = "id:" + FileID;
     EndIf;
 

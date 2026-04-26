@@ -109,7 +109,7 @@ Function SplitURL(Val URL) Export
 
     RestoreEscapeSequences(URL);
 
-    SecureConnection = Not StrStartsWith(URL, "http://");
+    SecureConnection = Not StrStartWith(URL, "http://");
 
     URL = StrReplace(URL, "https://", "");
     URL = StrReplace(URL, "http://" , "");
@@ -157,7 +157,7 @@ Function GetDomain(Val ConnectionString) Export
 
     Domain = String(ConnectionString);
 
-    If Not StrStartsWith(Lower(Domain), "http") And StrFind(Domain, "@") <> 0 Then
+    If Not StrStartWith(Lower(Domain), "http") And StrFind(Domain, "@") <> 0 Then
 
         Parts  = StrSplit(Domain, "@");
         Domain = Parts[1];
