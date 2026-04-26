@@ -1845,7 +1845,7 @@ Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://oauth.vk.com")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://oauth.vk.com")).Равно(True);
 
     Return Result;
 
@@ -2863,7 +2863,7 @@ Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -2919,7 +2919,7 @@ Function Check_GoogleCalendar_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -3166,7 +3166,7 @@ Function Check_GoogleDrive_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -3420,7 +3420,7 @@ Function Check_GoogleSheets_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -4396,7 +4396,7 @@ Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
 
     Return Result;
 
@@ -10176,7 +10176,7 @@ Function Check_HTTP_StartMultipartBody(Val Result, Val Option, Image = "")
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -10204,7 +10204,7 @@ Function Check_HTTP_AddMultipartFormDataFile(Val Result, Val Option, Image = "")
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -10232,7 +10232,7 @@ Function Check_HTTP_AddMultipartFormDataField(Val Result, Val Option, Image = ""
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -10258,7 +10258,7 @@ Function Check_HTTP_AddDataAsRelated(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     Return Result;
 
@@ -10480,7 +10480,7 @@ Function Check_HTTP_AddAWS4Authorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
     ExpectsThat(Result["headers"]["X-Amz-Content-Sha256"] = Undefined).Равно(False);
 
     Return Result;
@@ -10499,7 +10499,7 @@ Function Check_HTTP_AddOAuthV1Authorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
 
     Return Result;
 
@@ -10517,7 +10517,7 @@ Function Check_HTTP_SetOAuthV1Algorithm(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
 
     Return Result;
 
@@ -14681,7 +14681,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
-    ElsIf StrStartsWith(CurrentTypeString, "AddIn") Then
+    ElsIf StrStartWith(CurrentTypeString, "AddIn") Then
 
         Value = ProcessAddInParamCLI(Value, CurrentTypeString, AddOptions);
         Cover = Not Embedded;
@@ -14831,7 +14831,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         ValueAsString = Value;
 
-        If Not Embedded And StrStartsWith(ValueAsString, """") And StrEndsWith(ValueAsString, """") Then
+        If Not Embedded And StrStartWith(ValueAsString, """") And StrEndsWith(ValueAsString, """") Then
 
             ValueAsString = Left(ValueAsString, StrLen(ValueAsString) - 1);
             ValueAsString = Right(ValueAsString, StrLen(ValueAsString) - 1);
