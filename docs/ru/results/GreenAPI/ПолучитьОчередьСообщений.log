@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB0B8C62F263FE4AF677A",
+  "messageID": "3EB0F5D536F39BF72E2715",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -21,7 +21,7 @@
   }
  },
  {
-  "messageID": "3EB0D53C794D11CD569706",
+  "messageID": "3EB037888A1592B29D4B44",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -38,12 +38,12 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB0B8C62F263FE4AF677A",
+   "quotedMessageId": "3EB0F5D536F39BF72E2715",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB04FB76F8DE3EA2E2E9C",
+  "messageID": "3EB033F4AE9236A1D9DAE4",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -55,18 +55,18 @@
   }
  },
  {
-  "messageID": "3EB09A2D0BAE4CF84AE7AF",
+  "messageID": "3EB00AFC9D217C79B2283C",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB04FB76F8DE3EA2E2E9C",
+   "quotedMessageId": "3EB033F4AE9236A1D9DAE4",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB09299387BA6B2C212B5",
+  "messageID": "3EB019894B1A76DC91DBA4",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -81,7 +81,7 @@
   }
  },
  {
-  "messageID": "3EB084084E1CB587951818",
+  "messageID": "3EB0EA9E3C2C2B3924B5DF",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -89,30 +89,30 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB09299387BA6B2C212B5",
+   "quotedMessageId": "3EB019894B1A76DC91DBA4",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB089FCFBC1B0D7B77A9A"
+   "3EB09CAFFC4E08EAA40AE4"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0BEF763B848DA044665"
+    "3EB0CD11D426FE4B963DA7"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0AE180338D0767ED4C3",
+  "messageID": "3EB0C27FBB6819F9904F10",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0BEF763B848DA044665",
+   "idMessage": "3EB0CD11D426FE4B963DA7",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }
