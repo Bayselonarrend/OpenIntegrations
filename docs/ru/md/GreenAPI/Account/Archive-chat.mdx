@@ -35,7 +35,11 @@ import Admonition from '@theme/Admonition';
   </TabItem>
   <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
 
-*Для текущего метода нет дополнительных параметров расширенного вызова.*
+  | Параметр | Описание |
+  |---|---|
+  | proxy | ИнтернетПрокси или структура полей Протокол, Сервер, Порт, Пользователь, Пароль, ИспользоватьАутентификациюОС |
+  | timeout | Таймаут выполнения запроса |
+  | adv_response | Оформляет ответ в виде полной структуры с полями code, body и headers |
 
 
   </TabItem>
