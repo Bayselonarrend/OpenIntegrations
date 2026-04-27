@@ -1,2 +1,2 @@
 oint rss РазобратьФидAtom ^
-  --xml "/tmp/epbp4dqa.ju0.xml"
+  --xml "/tmp/4wfvcc3k.t35.xml"

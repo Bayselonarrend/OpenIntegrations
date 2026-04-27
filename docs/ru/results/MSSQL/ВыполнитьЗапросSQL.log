@@ -3,14 +3,14 @@
   {
    "Age": 20,
    "BirthDate": "2026-04-27",
-   "CreatedAt": "2026-04-27T14:47:21",
+   "CreatedAt": "2026-04-27T13:41:17",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "cc1be74a-bd3a-4ec0-be5c-d5672e929d65",
+   "RowGuid": "4353b954-9ce0-45b0-b9a6-53b5a32c6fbb",
    "Salary": 10.3
   }
  ],
