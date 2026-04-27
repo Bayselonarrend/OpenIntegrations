@@ -7905,7 +7905,7 @@ EndFunction
 
 Function Check_WebSocket_IsClientObject(Val Result, Val Option)
 
-    If Left(Option, 4) = "False" Then
+    If StrFind(Option, "False") > 0 Then
         ExpectsThat(Result).Равно(False);
     Else
         ExpectsThat(Result).Равно(True);
@@ -7926,10 +7926,14 @@ EndFunction
 
 Function Check_WebSocket_StopServer(Val Result, Val Option)
 
-    If Option                              = "List" Then
+    If Option = "List" Then
+
         ExpectsThat(Result["result"]).Равно(False);
-    ElsIf Option                           = "Connection" Then
+
+    ElsIf Option = "Connection" Then
+
         ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_WSClient.Main").Равно(False);
+
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -7941,8 +7945,11 @@ EndFunction
 Function Check_WebSocket_GetNextConnectionData(Val Result, Val Option, Message = "")
 
     If Option = "Closed" Then
+
         ExpectsThat(Result["result"]).Равно(False);
+
     Else
+
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(ValueIsFilled(Result["connectionId"])).Равно(True);
 
@@ -7954,6 +7961,7 @@ Function Check_WebSocket_GetNextConnectionData(Val Result, Val Option, Message =
         EndIf;
 
         ExpectsThat(ResponseMessage).Равно(Message);
+
     EndIf;
 
     Return Result;
