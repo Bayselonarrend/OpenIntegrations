@@ -87,7 +87,7 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый RSS канал" \
               --descr "Описание тестового RSS канала" \
               --link "https://example.com" \
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'04/15/2026 05:34:13','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'04/15/2026 05:34:14','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'04/27/2026 14:32:16','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'04/27/2026 14:32:16','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
   
@@ -99,12 +99,12 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый RSS канал" ^
               --descr "Описание тестового RSS канала" ^
               --link "https://example.com" ^
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'04/15/2026 05:34:13','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'04/15/2026 05:34:14','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'04/27/2026 14:32:16','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'04/27/2026 14:32:16','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Тестовый RSS канал</title>\r\n        <link>https://example.com</link>\r\n        <description>Описание тестового RSS канала</description>\r\n        <lastBuildDate>Sat, 25 Apr 2026 15:50:16 +0000</lastBuildDate>\r\n        <item>\r\n            <title>Первый элемент</title>\r\n            <description>Описание первого элемента</description>\r\n            <link>https://example.com/item1</link>\r\n            <pubDate>Sat, 25 Apr 2026 15:50:16 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-1</guid>\r\n        </item>\r\n        <item>\r\n            <title>Второй элемент</title>\r\n            <description>Описание второго элемента</description>\r\n            <link>https://example.com/item2</link>\r\n            <pubDate>Sat, 25 Apr 2026 15:50:16 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-2</guid>\r\n        </item>\r\n    </channel>\r\n</rss>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<rss version=\"2.0\">\n    <channel>\n        <title>Тестовый RSS канал</title>\n        <link>https://example.com</link>\n        <description>Описание тестового RSS канала</description>\n        <lastBuildDate>Mon, 27 Apr 2026 14:32:17 +0000</lastBuildDate>\n        <item>\n            <title>Первый элемент</title>\n            <description>Описание первого элемента</description>\n            <link>https://example.com/item1</link>\n            <pubDate>Mon, 27 Apr 2026 14:32:16 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink=\"false\">item-1</guid>\n        </item>\n        <item>\n            <title>Второй элемент</title>\n            <description>Описание второго элемента</description>\n            <link>https://example.com/item2</link>\n            <pubDate>Mon, 27 Apr 2026 14:32:16 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink=\"false\">item-2</guid>\n        </item>\n    </channel>\n</rss>"
 ```
