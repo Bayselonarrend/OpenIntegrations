@@ -4,7 +4,11 @@ sidebar_position: 3
 
 # Working with OneScript Version
 
-The Open Integration Package is available as an OSPX package for the OPM package manager, allowing its functions to be used when working with OneScript.
+The Open Integration Package is available as an OSPX package for the OPM package manager, allowing its functions to be used when working with OneScript
+
+:::important
+OneScript version `2.0.0` or higher is required
+:::
 
 ## Installation
 
