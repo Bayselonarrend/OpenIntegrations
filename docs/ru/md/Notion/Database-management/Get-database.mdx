@@ -61,7 +61,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint notion ПолучитьБазуДанных \
               --token "***" \
-              --base "34382aa7-fc4e-8102-a310-dc18e7f20390"
+              --base "34f82aa7-fc4e-8190-9b95-de7fdf5fd68b"
         ```
     </TabItem>
   
@@ -69,7 +69,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint notion ПолучитьБазуДанных ^
               --token "***" ^
-              --base "34382aa7-fc4e-8102-a310-dc18e7f20390"
+              --base "34f82aa7-fc4e-8190-9b95-de7fdf5fd68b"
         ```
     </TabItem>
 </Tabs>
@@ -78,10 +78,10 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "object": "database",
- "id": "34d82aa7-fc4e-81be-a5be-d7bc99fa71d4",
+ "id": "34f82aa7-fc4e-8190-9b95-de7fdf5fd68b",
  "cover": null,
  "icon": null,
- "created_time": "2026-04-25T12:09:00Z",
+ "created_time": "2026-04-27T13:51:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -90,7 +90,7 @@ import Admonition from '@theme/Admonition';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-04-25T12:09:00Z",
+ "last_edited_time": "2026-04-27T13:51:00Z",
  "title": [
   {
    "type": "text",
@@ -131,43 +131,55 @@ import Admonition from '@theme/Admonition';
  ],
  "is_inline": false,
  "properties": {
-  "Номер": {
-   "id": "%40C%3C%3B",
-   "name": "Номер",
+  "Описание": {
+   "id": "%3Bf_Z",
+   "name": "Описание",
    "description": null,
-   "type": "number",
-   "number": {
-    "format": "number"
-   }
+   "type": "rich_text",
+   "rich_text": {}
   },
-  "Картинка": {
-   "id": "FXSJ",
-   "name": "Картинка",
+  "Телефон": {
+   "id": "%3E%3C%3FZ",
+   "name": "Телефон",
    "description": null,
-   "type": "files",
-   "files": {}
+   "type": "phone_number",
+   "phone_number": {}
+  },
+  "Пользователь": {
+   "id": "%3Eiuo",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
+  "Дата создания": {
+   "id": "HuOP",
+   "name": "Дата создания",
+   "description": null,
+   "type": "date",
+   "date": {}
   },
   "Статус": {
-   "id": "NoR%7B",
+   "id": "IPvB",
    "name": "Статус",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "7421465a-3e23-4870-ac1e-caae1832ebe0",
+      "id": "3aee2539-9088-42f7-8feb-b9a83f1fd6de",
       "name": "Новый",
       "color": "green",
       "description": null
      },
      {
-      "id": "b30624e3-33d1-4768-8010-e87449f9f82d",
+      "id": "41070510-443c-4671-b7a0-d9628e1b2ab8",
       "name": "В работе",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "d6d81c27-32cb-4cf9-ae61-009166448326",
+      "id": "5d491606-4926-4b06-8293-215755989c08",
       "name": "Удаленный",
       "color": "red",
       "description": null
@@ -175,47 +187,35 @@ import Admonition from '@theme/Admonition';
     ]
    }
   },
-  "Дата создания": {
-   "id": "QVsB",
-   "name": "Дата создания",
+  "Номер": {
+   "id": "%5C%3CfA",
+   "name": "Номер",
    "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Описание": {
-   "id": "Vtwf",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Почта": {
-   "id": "Z%5BhC",
-   "name": "Почта",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Пользователь": {
-   "id": "%5CA_G",
-   "name": "Пользователь",
-   "description": null,
-   "type": "people",
-   "people": {}
+   "type": "number",
+   "number": {
+    "format": "number"
+   }
   },
   "Активен": {
-   "id": "%5EUxg",
+   "id": "%5CnZp",
    "name": "Активен",
    "description": null,
    "type": "checkbox",
    "checkbox": {}
   },
-  "Телефон": {
-   "id": "ieCX",
-   "name": "Телефон",
+  "Картинка": {
+   "id": "%60%3D%3CG",
+   "name": "Картинка",
    "description": null,
-   "type": "phone_number",
-   "phone_number": {}
+   "type": "files",
+   "files": {}
+  },
+  "Почта": {
+   "id": "mUTj",
+   "name": "Почта",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
   },
   "Имя": {
    "id": "title",

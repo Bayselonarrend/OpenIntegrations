@@ -115,6 +115,8 @@ Procedure WS_Client() Export
         WebSocket_SendTextMessage(TestParameters);
         WebSocket_SendBinaryMessage(TestParameters);
         WebSocket_GetTlsSettings(TestParameters);
+        WebSocket_GetProxySettings(TestParameters);
+        WebSocket_GetClientLog(TestParameters);
         WebSocket_IsClientObject(TestParameters);
 
     EndDo;
@@ -585,6 +587,73 @@ Procedure WebSocket_GetTlsSettings(FunctionParameters)
 
 EndProcedure
 
+Procedure WebSocket_GetProxySettings(FunctionParameters)
+
+    ProxyType = FunctionParameters["Proxy_Type"];
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Result = OPI_WebSocket.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetProxySettings");
+
+EndProcedure
+
+Procedure WebSocket_GetClientLog(FunctionParameters)
+
+    Address = "wss://127.0.0.1:8443";
+    Address = GetWebSocketAddress(FunctionParameters); // SKIP
+
+    TLSSettings   = Undefined;
+    ProxySettings = Undefined;
+
+    NeedProxy = True;
+    NeedTLS   = True;
+    NeedProxy = FunctionParameters["Proxy"]; // SKIP
+    NeedTls   = FunctionParameters["TLS"]; // SKIP
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxySettings = OPI_WebSocket.GetProxySettings(
+            FunctionParameters["Proxy_IP"],
+            FunctionParameters["Proxy_Port"],
+            FunctionParameters["Proxy_Type"],
+            FunctionParameters["Proxy_User"],
+            FunctionParameters["Proxy_Password"]);
+
+    EndIf;
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
+    Connection      = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Undefined, LoggingSettings);
+    OPI_Tools.Pause(1); // SKIP
+
+    If Not OPI_WebSocket.IsClientObject(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_WebSocket.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", , LogFile);
+
+    Result = OPI_WebSocket.GetLog(Connection, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", "AsString", LogFile);
+
+    OPI_WebSocket.CloseConnection(Connection);
+
+EndProcedure
+
 Procedure WebSocket_IsClientObject(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
@@ -915,6 +984,9 @@ Procedure WebSocket_GetLog(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", , LogFile);
+
+    Result = OPI_WebSocket.GetLog(ServerObject, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", "AsString", LogFile);
 
     OPI_WebSocket.CloseConnection(ClientObject);
     OPI_WebSocket.StopServer(ServerObject);

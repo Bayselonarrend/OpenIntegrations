@@ -1,9 +1,0 @@
-{
- "module": "OPI_WebSocket",
- "library": "ws",
- "self_depend": true,
- "dependencies": null,
- "cli_tool": false,
- "regions": [],
- "methods": []
-}
