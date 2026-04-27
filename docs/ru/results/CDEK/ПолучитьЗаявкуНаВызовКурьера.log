@@ -1,7 +1,7 @@
 ﻿{
  "entity": {
-  "uuid": "8b877081-42a4-4c42-b8d2-cdd598e8906f",
-  "intake_date": "2026-04-26",
+  "uuid": "9bfd62ec-c62a-4419-80be-09bec7c20249",
+  "intake_date": "2026-04-28",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -37,15 +37,15 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-25T15:33:12+03:00"
+    "date_time": "2026-04-27T15:10:05+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "0425f227-97b1-4c48-9c3d-2dd5cecddb96",
+   "request_uuid": "c81a0864-b7e5-45f2-adc8-cb99a4fab8e2",
    "type": "CREATE",
-   "date_time": "2026-04-25T15:32:58+03:00",
+   "date_time": "2026-04-27T15:09:50+03:00",
    "state": "ACCEPTED"
   }
  ]
