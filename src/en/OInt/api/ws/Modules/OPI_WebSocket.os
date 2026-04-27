@@ -1,6 +1,6 @@
 // OneScript: ./OInt/api/ws/Modules/OPI_WebSocket.os
 // Lib: WebSocket
-// CLI: ws
+// CLI: none
 // Keywords: websocket, ws
 
 // DocsCategory: Exchange
@@ -390,6 +390,29 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 
 EndFunction
 
+// Get proxy settings
+// Creates a structure of proxy server settings for the connection
+//
+// Parameters:
+// Address  - String            - Proxy address                       - addr
+// Port     - Number            - Proxy port                          - port
+// View     - String            - Proxy type: socks5, socks4, http    - type
+// Login    - String, Undefined - Authorization login, if required    - login
+// Password - String, Undefined - Authorization password, if required - pass
+//
+// Returns:
+// Structure Of KeyAndValue - Proxy settings structure
+Function GetProxySettings(Val Address
+    , Val Port
+    , Val View = "socks5"
+    , Val Login = Undefined
+    , Val Password = Undefined) Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetProxySettings(Address, Port, View, Login, Password);
+
+EndFunction
+
 // Is client object !NOCLI
 // Checks that the value is an object of the WebSocket client external component
 //
@@ -597,6 +620,10 @@ EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
     Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
+    Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
 Function ЭтоОбъектКлиента(Val Значение) Export
