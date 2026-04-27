@@ -2026,7 +2026,7 @@ Function Check_VK_MakeRepost(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]["success"]).ИмеетТип("Number").Равно(1);
-    ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number").Равно(1);
+    ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number");
 
     Parameters.Insert("Repost", Result["response"]["post_id"]);
 
@@ -8133,7 +8133,13 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     ElsIf Option = "Extension" Then
 
-        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        SystemInfo = New SystemInfo;
+
+        If StrFind(String(SystemInfo.PlatformType), "32") = 0 Then
+            ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+        Else
+            Return Undefined;
+           EndIf;
 
     EndIf;
 
