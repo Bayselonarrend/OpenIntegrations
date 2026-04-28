@@ -403,8 +403,8 @@ Procedure VK_CreatePost(FunctionParameters)
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image  = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+    Image  = FunctionParameters["Picture"]; // URL, Path or Binary data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary data
 
     TFN = GetTempFileName("png");
     FileCopy(Image2, TFN);
@@ -480,8 +480,8 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    Video = FunctionParameters["Video"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
+    Video = FunctionParameters["Video"]; // URL, Path or Binary data
 
     TFN = GetTempFileName("png");
     FileCopy(Image, TFN);
@@ -542,7 +542,7 @@ Procedure VK_CreatePoll(FunctionParameters)
 
     // With picture
 
-    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, File path or Binary data
 
     Options = New Structure;
     Options.Insert("question", Question);
@@ -588,7 +588,7 @@ Procedure VK_SaveImageToAlbum(FunctionParameters)
     ImageDescription = "AutoTestImage";
     AlbumID          = FunctionParameters["VK_AlbumID"];
 
-    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, File path or Binary data
 
     Options = New Structure;
     Options.Insert("album", AlbumID);
@@ -643,7 +643,7 @@ Procedure VK_CreateStory(FunctionParameters)
     Parameters = GetVKParameters();
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, File path or Binary data
     TFN   = GetTempFileName("png");
     FileCopy(Image, TFN);
     Image = New BinaryData(TFN);
@@ -1365,7 +1365,7 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Video       = FunctionParameters["Video"]; // URL, Binary Data or File path
+    Video       = FunctionParameters["Video"]; // URL, Binary data or File path
     Name        = "NewVideo";
     Description = "Video description";
 
@@ -1387,7 +1387,7 @@ Procedure VK_UploadPhotoToServer(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Image = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image = FunctionParameters["Picture"]; // URL, Binary data or File path
     View  = "Post";
 
     Options = New Structure;

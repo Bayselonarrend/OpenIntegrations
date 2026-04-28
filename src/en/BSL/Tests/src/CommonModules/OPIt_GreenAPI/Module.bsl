@@ -407,7 +407,7 @@ Procedure GreenAPI_SetProfilePicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetProfilePicture(AccessParameters, Image);
@@ -574,7 +574,7 @@ Procedure GreenAPI_SetGroupPicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Image   = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image   = FunctionParameters["Picture"]; // URL, Path or Binary data
     GroupID = FunctionParameters["GreenAPI_GroupID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
@@ -656,7 +656,7 @@ Procedure GreenAPI_SendFile(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary data
     FileName    = "photo.jpg";
     ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
     Description = "File description";

@@ -579,7 +579,7 @@ Procedure Ollama_PushBlob(FunctionParameters)
     URL   = FunctionParameters["Ollama_URL"];
     Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     OPI_TypeConversion.GetBinaryData(Image, True); // SKIP
     Random = GetBinaryDataFromString(String(New UUID)); // SKIP

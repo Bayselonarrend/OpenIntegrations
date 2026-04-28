@@ -240,7 +240,7 @@ Procedure S3_SendRequestWithBody(FunctionParameters)
     BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Method = "PUT";
-    Body   = "C:\test_data\document.docx"; // URL, Path or Binary Data
+    Body   = "C:\test_data\document.docx"; // URL, Path or Binary data
 
     Options = New Structure;
     Options.Insert("method", Method);
@@ -707,7 +707,7 @@ Procedure S3_PutObject(FunctionParameters)
     Bucket = ?(Directory, FunctionParameters["S3_DB"], FunctionParameters["S3_GPB"]); // SKIP
 
     Name   = "picture.jpg";
-    Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -721,7 +721,7 @@ Procedure S3_PutObject(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "PutObject"); // SKIP
 
     Name   = "fileChunked.mp3";
-    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary data
 
     BasicData.Insert("ChunkSize", 5242880); // Size parts for upload in multiple of requests
 
@@ -758,7 +758,7 @@ Procedure S3_UploadFullObject(FunctionParameters)
     BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name   = "pictureSmall.jpg";
-    Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -1190,7 +1190,7 @@ Procedure S3_InitPartsUpload(FunctionParameters)
     Bucket = FunctionParameters["S3_DB"];
     Bucket = ?(Directory, FunctionParameters["S3_DB"], FunctionParameters["S3_GPB"]); // SKIP
 
-    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary data
     Entity = OPI_HTTPRequests.Get(Entity);
 
     Options = New Structure;
@@ -1285,7 +1285,7 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
     Bucket = FunctionParameters["S3_DB"];
     Bucket = ?(Directory, FunctionParameters["S3_DB"], FunctionParameters["S3_GPB"]); // SKIP
 
-    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary data
     Entity = OPI_HTTPRequests.Get(Entity);
 
     Options = New Structure;
@@ -1380,7 +1380,7 @@ Procedure S3_UploadObjectPart(FunctionParameters)
     Bucket = FunctionParameters["S3_DB"];
     Bucket = ?(Directory, FunctionParameters["S3_DB"], FunctionParameters["S3_GPB"]); // SKIP
 
-    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary data
     Entity = OPI_HTTPRequests.Get(Entity);
 
     Options = New Structure;
