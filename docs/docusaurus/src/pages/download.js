@@ -2,12 +2,51 @@ import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
+import CodeBlock from '@theme/CodeBlock';
 import styles from './download.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
+const cliInstallTabs = [
+  { key: 'ru', label: '🇷🇺 Русская' },
+  { key: 'en', label: '🇬🇧 English' },
+];
+
+const cliInstallByOs = [
+  {
+    os: 'Debian / Ubuntu',
+    commands: {
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_ru.deb
+sudo apt install -y ./oint_2.0.0_all_ru.deb`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_en.deb
+sudo apt install -y ./oint_2.0.0_all_en.deb`,
+    },
+  },
+  {
+    os: 'Fedora / RHEL',
+    commands: {
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_ru.rpm
+sudo rpm -i oint-2.0.0-1.noarch_ru.rpm`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_en.rpm
+sudo rpm -i oint-2.0.0-1.noarch_en.rpm`,
+    },
+  },
+  {
+    os: 'Linux (AppImage)',
+    commands: {
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_ru-x86_64.AppImage
+chmod +x ./oint-2.0.0_ru-x86_64.AppImage
+./oint-2.0.0_ru-x86_64.AppImage`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_en-x86_64.AppImage
+chmod +x ./oint-2.0.0_en-x86_64.AppImage
+./oint-2.0.0_en-x86_64.AppImage`,
+    },
+  },
+];
 
 const DownloadPage = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [cliTab, setCliTab] = useState('ru');
   const thankYouClosed = useRef(false); // флаг: пользователь закрыл окно
 
   const downloadItems = [
@@ -49,6 +88,27 @@ const DownloadPage = () => {
       ],
     },
     {
+      group: 'Для OneScript',
+      items: [
+        {
+          name: 'Пакет oint (.ospx)',
+          files: {
+            ru: 'oint-2.0.0_ru.ospx',
+            en: 'oint-2.0.0_en.ospx',
+          },
+          desc: 'Пакет библиотеки для OneScript',
+        },
+        {
+          name: 'Пакет oint-cli (.ospx)',
+          files: {
+            ru: 'oint-cli-2.0.0_ru.ospx',
+            en: 'oint-cli-2.0.0_en.ospx',
+          },
+          desc: 'Пакет CLI-приложения для OneScript',
+        },
+      ],
+    },
+    {
       group: 'Консольное приложение (OInt CLI)',
       items: [
         {
@@ -82,28 +142,6 @@ const DownloadPage = () => {
             en: 'oint-2.0.0_en-x86_64.AppImage',
           },
           desc: 'Единый исполняемый файл CLI формата AppImage',
-        },
-        
-      ],
-    },
-    {
-      group: 'Для OneScript',
-      items: [
-        {
-          name: 'Пакет oint (.ospx)',
-          files: {
-            ru: 'oint-2.0.0_ru.ospx',
-            en: 'oint-2.0.0_en.ospx',
-          },
-          desc: 'Пакет библиотеки для OneScript',
-        },
-        {
-          name: 'Пакет oint-cli (.ospx)',
-          files: {
-            ru: 'oint-cli-2.0.0_ru.ospx',
-            en: 'oint-cli-2.0.0_en.ospx',
-          },
-          desc: 'Пакет CLI-приложения для OneScript',
         },
       ],
     },
@@ -195,14 +233,51 @@ const DownloadPage = () => {
                 </div>
               ))}
             </div>
+            {group.group === 'Консольное приложение (OInt CLI)' && (
+              <div className={styles.cliInstallSection}>
+                <div className={styles.cliInstallTopRow}>
+                  <div className={styles.cliInstallHeading}>
+                    <h3>Установка из консоли</h3>
+                    <p>Быстрая установка через консоль для разных операционных систем</p>
+                  </div>
+                  <div className={styles.cliTabs}>
+                    {cliInstallTabs.map((tab) => (
+                      <button
+                        key={tab.key}
+                        className={`${styles.cliTabButton} ${cliTab === tab.key ? styles.cliTabButtonActive : ''}`}
+                        onClick={() => setCliTab(tab.key)}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className={styles.cliInstallOsGrid}>
+                  {cliInstallByOs.map((osInfo) => {
+                    return (
+                    <div key={osInfo.os} className={styles.cliInstallCard}>
+                      <div className={styles.cliCardHeader}>
+                        <h4>{osInfo.os}</h4>
+                      </div>
+                      <CodeBlock language="bash" className={styles.cliCommandBlock}>
+                        {osInfo.commands[cliTab]}
+                      </CodeBlock>
+                    </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         ))}
 
+        <hr />
+
         <div className={styles.otherVersions}>
-          <Link to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
+          <Link className={styles.otherVersionsButton} to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
             Архив версий (GitHub) →
           </Link>
-          <Link to="https://sourcecraft.dev/bayselonarrend/openintegrations/releases">
+          <Link className={styles.otherVersionsButton} to="https://sourcecraft.dev/bayselonarrend/openintegrations/releases">
             Архив версий (SourceCraft) →
           </Link>
         </div>

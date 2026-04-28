@@ -103,8 +103,121 @@
   text-align: left;
   margin-top: 2rem;
   display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.otherVersionsButton {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #cfd8dc;
+  border-radius: 16px;
+  color: #24292e;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.otherVersionsButton:hover {
+  background: #f3f4f6;
+  text-decoration: none;
+}
+
+.cliInstallSection {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.cliInstallSection:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cliInstallTopRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cliInstallHeading {
+  min-width: 0;
+}
+
+.cliInstallSection h3 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.cliInstallSection p {
+  margin: 0.6rem 0 1rem;
+  color: #555;
+}
+
+.cliCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cliTabs {
+  display: flex;
+  gap: 0.6rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.cliTabButton {
+  appearance: none;
+  border: 1px solid #cfd8dc;
+  border-radius: 16px;
+  background: white;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cliTabButton:hover {
+  background: #f3f4f6;
+}
+
+.cliTabButtonActive {
+  border-color: #004943;
+  color: #004943;
+  background: #eef7f6;
+}
+
+.cliInstallOsGrid {
+  display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cliInstallCard {
+  padding: 0;
+}
+
+.cliInstallCard h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.cliCommandBlock {
+  margin: 0;
+  font-size: 0.82rem;
 }
 
 /* Modal */
@@ -242,5 +355,19 @@
 
   .modalContent {
     padding: 1.5rem;
+  }
+
+  .cliTabs {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+
+  .cliCardHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cliInstallTopRow {
+    flex-direction: column;
   }
 }
