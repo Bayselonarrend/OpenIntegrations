@@ -8,6 +8,8 @@ import AlternatingFeatures from '@site/src/components/AlternatingFeatures';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
+const currentVersion = '2.0.0';
+
 const FallingIcons = () => {
   const { iconList } = usePluginData('api-icons-plugin');
   const [columns, setColumns] = useState(12);
@@ -103,6 +105,7 @@ function HomepageHeader() {
               🌐 English version
             </Link>
           </div>
+          <div className={styles.versionBadge}>Version {currentVersion}</div>
         </div>
       </div>
     </header>
