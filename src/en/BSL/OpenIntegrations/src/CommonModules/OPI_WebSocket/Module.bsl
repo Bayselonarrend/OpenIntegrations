@@ -95,7 +95,7 @@ EndFunction
 #Region ClientMethods
 
 // Create connection !NOCLI
-// Creates a TCP connection
+// Creates a WebSocket connection
 //
 // Parameters:
 // Address - String                   - Address and port                                  - address
@@ -105,7 +105,7 @@ EndFunction
 // Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
 //
 // Returns:
-// Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
+// Map Of KeyAndValue, Arbitrary - Returns WebSocket client object on successful connection or error information
 Function CreateConnection(Val Address
     , Val Tls = Undefined
     , Val Proxy = Undefined
@@ -553,7 +553,7 @@ Function GetConnectionList(Val ServerObject) Export
 EndFunction
 
 // Is server object !NOCLI
-// Checks that the value is an object of the TCP server external component
+// Checks that the value is an object of the WebSocket server external component
 //
 // Parameters:
 // Value - Arbitrary - Value to check - value

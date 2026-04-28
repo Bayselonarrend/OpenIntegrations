@@ -137,7 +137,7 @@ EndProcedure
 Procedure Neocities_UploadFile(FunctionParameters)
 
     Token = FunctionParameters["NC_Token"];
-    Data  = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Data  = FunctionParameters["Picture"]; // URL, Path or Binary data
     Path  = "testfolder/test_pic.png";
 
     Result = OPI_Neocities.UploadFile(Token, Path, Data);
@@ -152,9 +152,9 @@ Procedure Neocities_UploadFiles(FunctionParameters)
 
     Token = FunctionParameters["NC_Token"];
 
-    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
-    GIF    = FunctionParameters["Gif"]; // URL, Path or Binary Data
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary data
+    GIF    = FunctionParameters["Gif"]; // URL, Path or Binary data
 
     FileMapping = New Map;
     FileMapping.Insert("test/pic1.png", Image1);

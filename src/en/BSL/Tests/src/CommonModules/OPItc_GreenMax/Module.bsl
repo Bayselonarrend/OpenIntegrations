@@ -504,7 +504,7 @@ Procedure GreenMax_SetProfilePicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenMax_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenMax_Token"];
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Options = New Structure;
     Options.Insert("api", ApiUrl);
@@ -1006,7 +1006,7 @@ Procedure GreenMax_SetGroupPicture(FunctionParameters)
     IdInstance       = FunctionParameters["GreenMax_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenMax_Token"];
 
-    Image  = FunctionParameters["Picture3"]; // URL, Path or Binary Data
+    Image  = FunctionParameters["Picture3"]; // URL, Path or Binary data
     ChatID = 12345678;
 
     ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
@@ -1072,7 +1072,7 @@ Procedure GreenMax_SendFile(FunctionParameters)
     IdInstance       = FunctionParameters["GreenMax_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenMax_Token"];
 
-    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary data
     FileName    = "photo.jpg";
     ChatID      = 12345678;
     Description = "File description";

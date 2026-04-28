@@ -631,8 +631,8 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
 
     Text   = "Text of post";
     Title  = "Post title";
-    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary data
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -659,7 +659,7 @@ Procedure Bitrix24_UpdatePost(FunctionParameters)
 
     Text   = "New post text";
     Title  = "New post title";
-    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary data
     PostID = FunctionParameters["Bitrix24_PostID"];
 
     Files = New Map;
@@ -1251,8 +1251,8 @@ Procedure Bitrix24_UploadFileToStorage(FunctionParameters)
     Filename2 = "Picture2.jpg";
     Name      = "Picture1.jpg";
 
-    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
-    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary data
+    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary data
 
     DestinationID = 3;
 
@@ -1611,8 +1611,8 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
     Filename2 = "Picture2.jpg";
     Name      = "Picture1.jpg";
 
-    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
-    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary data
+    Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary data
 
     DestinationID = FunctionParameters["Bitrix24_FolderID"];
 
@@ -3119,7 +3119,7 @@ Procedure Bitrix24_SendFile(FunctionParameters)
 
     URL         = FunctionParameters["Bitrix24_URL"];
     ChatID      = FunctionParameters["Bitrix24_HookChatID"];
-    File        = FunctionParameters["Document"]; // Binary Data, URL or path to file
+    File        = FunctionParameters["Document"]; // Binary data, URL or path to file
     Description = "Very important file";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);

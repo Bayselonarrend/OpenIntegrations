@@ -343,7 +343,7 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     // SQL query from file
 
-    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
+    SQLFile = FunctionParameters["SQL2"]; // Binary data, URL or path to file
 
     Result = OPI_MySQL.ExecuteSQLQuery(SQLFile, , , Connection);
 

@@ -307,7 +307,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
     Token     = FunctionParameters["Google_Token"];
     Directory = FunctionParameters["GD_Catalog"];
-    Image     = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image     = FunctionParameters["Picture"]; // URL, Binary data or File path
 
     Clear       = False;
     Options = New Structure;
@@ -397,7 +397,7 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     NewName    = "UpdatedFile.jpg";
     Identifier = FunctionParameters["GD_File"];
-    File       = FunctionParameters["Picture2"]; // URL, Binary Data or File path
+    File       = FunctionParameters["Picture2"]; // URL, Binary data or File path
 
     Options = New Structure;
     Options.Insert("token", Token);

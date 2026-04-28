@@ -279,7 +279,7 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
 
     Token     = FunctionParameters["Google_Token"];
     Directory = FunctionParameters["GD_Catalog"];
-    Image     = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image     = FunctionParameters["Picture"]; // URL, Binary data or File path
 
     Clear       = False;
     Description = OPI_GoogleDrive.GetFileDescription(Clear);
@@ -342,7 +342,7 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     NewName    = "UpdatedFile.jpg";
     Identifier = FunctionParameters["GD_File"];
-    File       = FunctionParameters["Picture2"]; // URL, Binary Data or File path
+    File       = FunctionParameters["Picture2"]; // URL, Binary data or File path
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
 
