@@ -530,7 +530,7 @@ Procedure HTTP_SetBinaryBody(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -613,7 +613,7 @@ Procedure HTTP_StartMultipartBody(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -635,7 +635,7 @@ Procedure HTTP_AddMultipartFormDataFile(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -657,7 +657,7 @@ Procedure HTTP_AddMultipartFormDataField(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -725,7 +725,7 @@ Procedure HTTP_UseGzipCompression(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -754,7 +754,7 @@ Procedure HTTP_UseBodyFiledsAtOAuth(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Token       = "***";
     Secret      = "***";
@@ -1084,7 +1084,7 @@ Procedure HTTP_ReturnResponse(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -1103,7 +1103,7 @@ Procedure HTTP_ReturnResponseAsJSONObject(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -1122,7 +1122,7 @@ Procedure HTTP_ReturnResponseAsBinaryData(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -1141,7 +1141,7 @@ Procedure HTTP_ReturnResponseAsString(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -1304,7 +1304,7 @@ Procedure HTTP_SendDataInParts(FunctionParameters)
     URL = URL + "/put";
 
     ChunkSize = 524288;
-    Image     = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image     = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)

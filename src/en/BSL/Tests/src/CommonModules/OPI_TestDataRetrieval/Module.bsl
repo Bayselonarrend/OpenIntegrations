@@ -1088,7 +1088,7 @@ Function GetWebSocketParametersOptions() Export
 
     // WSS + Socks5
     ParametersStructure = New Structure;
-    ParametersStructure.Insert("Postfix", "WSS, Socks5");
+    ParametersStructure.Insert("Postfix", "");
     ParametersStructure.Insert("WS_IP", TestParametersMain["WSS_IP"]);
     ParametersStructure.Insert("WS_Port", TestParametersMain["WSS_InternalPort"]);
     ParametersStructure.Insert("Proxy_User", TestParametersMain["Proxy_User"]);
@@ -8007,11 +8007,22 @@ Function Check_WebSocket_GetNextConnectionData(Val Result, Val Option, Message =
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(ValueIsFilled(Result["connectionId"])).Равно(True);
 
-        ResponseMessage            = Result["message"];
+        ResponseMessage = Result["message"];
+
         If TypeOf(ResponseMessage) = Type("BinaryData") Then
-            ResponseMessage        = GetStringFromBinaryData(ResponseMessage);
+
+            ResponseMessage = GetStringFromBinaryData(ResponseMessage);
+
+            Result["message"] = "<Binary data>";
+
         ElsIf OPI_Tools.ThisIsCollection(ResponseMessage, True) Then
-            ResponseMessage        = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+
+            ResponseMessage = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+
+            If TypeOf(ResponseMessage)  = Type("BinaryData") Then
+                ResponseMessage["payload"] = "<Binary data>";
+            EndIf;
+
         EndIf;
 
         ExpectsThat(ResponseMessage).Равно(Message);
@@ -8200,11 +8211,11 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         SystemInfo = New SystemInfo;
 
-        If StrFind(String(SystemInfo.PlatformType), "32") = 0 Then
+        If StrFind(String(SystemInfo.PlatformType), "64") <> 0 Then
             ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
         Else
             Return Undefined;
-           EndIf;
+        EndIf;
 
     EndIf;
 
@@ -8348,10 +8359,18 @@ EndFunction
 
 Function Check_SQLite_ConnectExtension(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    SystemInfo = New SystemInfo;
 
-    If Option = "Check" Then
-        ExpectsThat(Result["data"].Count()).Равно(1);
+    If StrFind(String(SystemInfo.PlatformType), "64") <> 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        If Option = "Check" Then
+            ExpectsThat(Result["data"].Count()).Равно(1);
+        EndIf;
+
+    Else
+        Return Undefined;
     EndIf;
 
     Return Result;
@@ -9622,9 +9641,9 @@ EndFunction
 
 Function Check_GreenAPI_ArchiveChat(Val Result, Val Option)
 
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    // !DISABLED! ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 

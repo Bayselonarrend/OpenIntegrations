@@ -305,9 +305,9 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     // With extension
 
     If OPI_Tools.IsWindows() Then
-        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary data
     Else
-        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary data
     EndIf;
 
     EntryPoint = "sqlite3_uuid_init";
@@ -330,7 +330,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Closing");
+    OPI_TestDataRetrieval.ProcessCLI(Closing, "SQLite", "ExecuteSQLQuery", "Closing");
 
     OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
@@ -837,9 +837,9 @@ EndProcedure
 Procedure SQLite_ConnectExtension(FunctionParameters)
 
     If OPI_Tools.IsWindows() Then
-        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary data
     Else
-        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary data
     EndIf;
 
     Base       = FunctionParameters["SQLite_DB"];

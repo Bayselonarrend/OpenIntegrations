@@ -421,7 +421,7 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     // SQL query from file
 
-    SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
+    SQLFile = FunctionParameters["SQL"]; // Binary data, URL or path to file
 
     Options = New Structure;
     Options.Insert("sql", SQLFile);
