@@ -94,6 +94,18 @@
   margin: 10px;
 }
 
+.versionBadge {
+  border: 1px solid #004943;
+  border-radius: 16px;
+  background: white;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+  margin: 10px;
+  align-self: center;
+}
+
 .biglogo{
   width: 128px;
   height: 128px;
