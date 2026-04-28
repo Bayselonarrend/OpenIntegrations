@@ -197,7 +197,7 @@ Procedure OpenAI_GetResponse(FunctionParameters)
     // Pictures
 
     Model       = "moondream2-20250414";
-    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary data
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "user_data";
 
@@ -307,7 +307,7 @@ Procedure OpenAI_UploadFile(FunctionParameters)
     URL   = FunctionParameters["OpenAI_URL"];
     Token = FunctionParameters["OpenAI_Token"];
 
-    File = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    File = FunctionParameters["Picture"]; // URL, Path or Binary data
 
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";

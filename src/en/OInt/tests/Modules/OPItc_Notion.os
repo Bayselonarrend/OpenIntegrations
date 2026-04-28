@@ -284,7 +284,7 @@ Procedure Notion_CreatePageInDatabase(FunctionParameters)
 
     Token  = FunctionParameters["Notion_Token"];
     Base   = FunctionParameters["Notion_Base"];
-    Image_ = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image_ = FunctionParameters["Picture"]; // URL, Binary data or File path
 
     Image = New Map;
     Image.Insert("Logo", Image_);

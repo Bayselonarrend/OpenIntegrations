@@ -604,7 +604,7 @@ Procedure Slack_UploadFile(FunctionParameters)
 
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_Channel"];
-    File    = FunctionParameters["Document"]; // URL, Binary Data or File path
+    File    = FunctionParameters["Document"]; // URL, Binary data or File path
 
     FileName = "megadoc.docx";
     Title    = "NewFile";
