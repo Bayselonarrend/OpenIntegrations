@@ -11781,7 +11781,7 @@
 "Проверяет, что значение является объектом внешней компоненты SQLite": "Checks that the value is an object of a SQLite AddIn",
 "Совпадающие поля будут перезаписаны с приоритетом параметра функции": "Matching fields will be overwritten with the parameter of the function",
 "!OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, \"СоздатьБазу": "!OInt OPI_TestDataRetrieval.WriteLog(Result, \"CreateDatabase",
-"Запись лог в память для дальнейшего получения из объекта компоненты": "Logging log to memory for further retrieval from the addin object",
+"Запись лога в память для дальнейшего получения из объекта компоненты": "Logging to memory for further retrieval from the addin object",
 "Уровень информации: error, warn, info, debug, trace, fatal, unknown": "Information level: error, warn, info, debug, trace, fatal, unknown",
 "В качестве ключевых выступают все UNIQUE и PRIMARY KEY поля таблицы": "All UNIQUE and PRIMARY KEY fields of the table serve as key fields",
 "!OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, \"УдалитьБлок": "!OInt OPI_TestDataRetrieval.WriteLog(Result, \"DeleteBlock",
