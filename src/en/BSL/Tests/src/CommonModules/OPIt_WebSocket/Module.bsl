@@ -162,11 +162,12 @@ Procedure WebSocket_CreateConnection(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -179,12 +180,18 @@ Procedure WebSocket_CreateConnection(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -208,11 +215,12 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -225,12 +233,18 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -255,11 +269,12 @@ Procedure WebSocket_SendPing(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -272,12 +287,18 @@ Procedure WebSocket_SendPing(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -287,13 +308,16 @@ Procedure WebSocket_SendPing(FunctionParameters)
 
         Result = OPI_WebSocket.SendPing(Connection);
 
+        // Skipping all responses from the server until the last one
         While True Do
 
             LastMessage = OPI_WebSocket.GetMessage(Connection, 3000);
 
             If LastMessage["result"] Then
+                // Next message
                 Check = LastMessage;
             Else
+                // No more messages
                 Break;
             EndIf;
 
@@ -323,11 +347,12 @@ Procedure WebSocket_SendPong(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -340,12 +365,18 @@ Procedure WebSocket_SendPong(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -374,11 +405,12 @@ Procedure WebSocket_GetMessage(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -391,12 +423,18 @@ Procedure WebSocket_GetMessage(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -406,11 +444,12 @@ Procedure WebSocket_GetMessage(FunctionParameters)
 
     If OPI_WebSocket.IsClientObject(Connection) Then
 
-        // ECHO
+        // Sending a message to the ECHO server
         Sending = OPI_WebSocket.SendTextMessage(Connection, Message);
 
         OPI_TestDataRetrieval.Process(Sending, "WebSocket", "GetMessage", "Sending, " + Postfix); // SKIP
 
+        // Skipping all responses from the server until the last one
         While True Do
 
             LastMessage = OPI_WebSocket.GetMessage(Connection, 3000); // <----
@@ -444,11 +483,12 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -461,12 +501,18 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -475,9 +521,7 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
     Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-
         Result = OPI_WebSocket.SendTextMessage(Connection, Message);
-
     Else
         Result = Connection;
     EndIf;
@@ -513,11 +557,12 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -530,12 +575,18 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -607,11 +658,12 @@ Procedure WebSocket_GetClientLog(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -621,12 +673,18 @@ Procedure WebSocket_GetClientLog(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_WebSocket.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -659,11 +717,12 @@ Procedure WebSocket_IsClientObject(FunctionParameters)
     Address = "wss://127.0.0.1:8443";
     Address = GetWebSocketAddress(FunctionParameters); // SKIP
 
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
+    TLSSettings   = Undefined; // SKIP
+    ProxySettings = Undefined; // SKIP
 
     NeedProxy = True;
     NeedTLS   = True;
+
     NeedProxy = FunctionParameters["Proxy"]; // SKIP
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
@@ -676,12 +735,18 @@ Procedure WebSocket_IsClientObject(FunctionParameters)
 
     If NeedProxy Then
 
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
+
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
 
     EndIf;
 
@@ -703,7 +768,7 @@ EndProcedure
 
 Procedure WebSocket_StartServer(FunctionParameters)
 
-    Port     = 9886;
+    Port     = 9894;
     PoolSize = 10;
 
     Result = OPI_WebSocket.StartServer(Port, PoolSize);
@@ -718,41 +783,45 @@ EndProcedure
 
 Procedure WebSocket_StopServer(FunctionParameters)
 
-    Port = 9887;
-    Host = OPI_WebSocket.StartServer(Port);
+    Port         = 9894;
+    ServerObject = OPI_WebSocket.StartServer(Port);
 
-    Result = OPI_WebSocket.StopServer(Host);
+    Result = OPI_WebSocket.StopServer(ServerObject);
 
     // END
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "StopServer");
 
-    ListResult = OPI_WebSocket.GetConnectionList(Host);
+    ListResult = OPI_WebSocket.GetConnectionList(ServerObject);
 
     OPI_TestDataRetrieval.Process(ListResult, "WebSocket", "StopServer", "List");
 
-    Address = "ws://127.0.0.1:9887";
-    Client  = OPI_WebSocket.CreateConnection(Address);
+    Address      = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(Address);
 
-    OPI_TestDataRetrieval.Process(Client, "WebSocket", "StopServer", "Connection");
+    OPI_TestDataRetrieval.Process(ClientObject, "WebSocket", "StopServer", "Connection");
 
 EndProcedure
 
 Procedure WebSocket_GetNextConnectionData(FunctionParameters)
 
-    LaunchPort   = 9888;
+    // Server start
+    LaunchPort = 9894;
     ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
-    ConnectionAddress = "ws://127.0.0.1:9888";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     Else
+        // Client send
         Message = "Hello from client!";
         Sending = OPI_WebSocket.SendTextMessage(ClientObject, Message);
     EndIf;
 
+    // Server receive
     Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
 
     // END
@@ -774,11 +843,13 @@ EndProcedure
 
 Procedure WebSocket_GetConnectionData(FunctionParameters)
 
-    LaunchPort   = 9889;
+    // Server start
+    LaunchPort = 9894;
     ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
-    ConnectionAddress = "ws://127.0.0.1:9889";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -786,6 +857,7 @@ Procedure WebSocket_GetConnectionData(FunctionParameters)
 
     OPI_Tools.Pause(1); // SKIP
 
+    // Getting a list of active connections on the server
     ConnectionList = OPI_WebSocket.GetConnectionList(ServerObject);
 
     If Not ConnectionList["result"] Then
@@ -800,9 +872,11 @@ Procedure WebSocket_GetConnectionData(FunctionParameters)
 
     For N = 0 To 5 Do
 
+        // Client message send
         CurrentMessage = StrTemplate("Message no. %1", N);
         OPI_WebSocket.SendTextMessage(ClientObject, CurrentMessage);
 
+        // Receiving an incoming message on the server by ID
         Result = OPI_WebSocket.GetConnectionData(ServerObject, ConnectionID, 5000);
 
         OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetConnectionData", , CurrentMessage); // SKIP
@@ -829,21 +903,24 @@ EndProcedure
 
 Procedure WebSocket_SendData(FunctionParameters)
 
-    LaunchPort   = 9890;
+    // Server start
+    LaunchPort = 9894;
     ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
-    ConnectionAddress = "ws://127.0.0.1:9890";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
+    // Client message send
     Message = "Hello!";
-
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
 
-    NextMessage  = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    // Receiving the next connection on the server and returning a response
+    NextMessage = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
     ConnectionID = NextMessage["connectionId"];
 
     ServerResponse = "Response from server!";
@@ -864,20 +941,23 @@ EndProcedure
 
 Procedure WebSocket_CloseIncomingConnection(FunctionParameters)
 
-    LaunchPort   = 9891;
+    // Server start
+    LaunchPort = 9894;
     ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
-    ConnectionAddress = "ws://127.0.0.1:9891";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
+    // Client message send
     Message = "Hello!";
-
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
 
+    // Receiving and closing connection on the server
     FirstMessage = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
     ConnectionID = FirstMessage["connectionId"];
 
@@ -902,10 +982,12 @@ EndProcedure
 
 Procedure WebSocket_GetConnectionList(FunctionParameters)
 
-    LaunchPort   = 9892;
+    // Server start
+    LaunchPort = 9894;
     ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
-    ConnectionAddress = "ws://127.0.0.1:9892";
+    // Creating multiple client connections
+    ConnectionAddress = "ws://127.0.0.1:9894";
 
     Client1 = OPI_WebSocket.CreateConnection(ConnectionAddress);
     Client2 = OPI_WebSocket.CreateConnection(ConnectionAddress);
@@ -918,6 +1000,7 @@ Procedure WebSocket_GetConnectionList(FunctionParameters)
         Raise OPI_Tools.JSONString(Client2);
     EndIf;
 
+    // Getting a list of active connections on the server
     Result = OPI_WebSocket.GetConnectionList(ServerObject);
 
     // END
@@ -945,7 +1028,7 @@ EndProcedure
 
 Procedure WebSocket_IsServerObject(FunctionParameters)
 
-    Port = 9893;
+    Port = 9894;
     Host = OPI_WebSocket.StartServer(Port);
 
     Result = OPI_WebSocket.IsServerObject(Host);
@@ -964,19 +1047,22 @@ EndProcedure
 
 Procedure WebSocket_GetLog(FunctionParameters)
 
-    LaunchPort      = 9894;
-    LogFile         = GetTempFileName("txt");
+    // Server start
+    LaunchPort = 9894;
+    LogFile = GetTempFileName("txt");
     LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
-    ServerObject    = OPI_WebSocket.StartServer(LaunchPort, , LoggingSettings);
+    ServerObject = OPI_WebSocket.StartServer(LaunchPort, , LoggingSettings);
 
+    // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
+    // Server log retrieval
     Result = OPI_WebSocket.GetLog(ServerObject);
 
     // END
@@ -1014,33 +1100,6 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #Region AdditionalFunctions
-
-Function CreateWebSocketClient(FunctionParameters)
-
-    Address = GetWebSocketAddress(FunctionParameters);
-
-    TLSSettings   = Undefined;
-    ProxySettings = Undefined;
-
-    Headers = New Map;
-    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
-
-    If FunctionParameters["TLS"] Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
-    EndIf;
-
-    If FunctionParameters["Proxy"] Then
-        ProxySettings = OPI_AddIns.GetProxySettings(
-            FunctionParameters["Proxy_IP"],
-            FunctionParameters["Proxy_Port"],
-            FunctionParameters["Proxy_Type"],
-            FunctionParameters["Proxy_User"],
-            FunctionParameters["Proxy_Password"]);
-    EndIf;
-
-    Return OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
-
-EndFunction
 
 Function GetWebSocketAddress(FunctionParameters)
 

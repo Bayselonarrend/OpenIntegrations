@@ -109,6 +109,7 @@ Procedure ValidateAdvancedCall() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
     AdvancedCall_CallWithSettings(TestParameters);
+    AdvancedCall_GetAvailableSettings();
 
 EndProcedure
 
@@ -135,6 +136,14 @@ Procedure AdvancedCall_CallWithSettings(FunctionParameters)
         , Settings);
 
     OPI_TestDataRetrieval.Process(Result, "Core", "CallWithSettings");
+
+EndProcedure
+
+Procedure AdvancedCall_GetAvailableSettings()
+
+    Result = OPI_AdvancedCall.GetAvailableSettings("OPI_Telegram", "GetBotInformation");
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "GetAvailableSettings");
 
 EndProcedure
 
