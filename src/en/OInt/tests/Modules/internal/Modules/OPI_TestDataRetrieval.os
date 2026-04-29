@@ -1373,6 +1373,16 @@ Function Check_Core_CallWithSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_Core_GetAvailableSettings(Val Result, Val Option)
+
+    ExpectsThat(TypeOf(Result) = Type("String")).Равно(True);
+    ExpectsThat(ValueIsFilled(Result)).Равно(True);
+    ExpectsThat(StrFind(Result, "adv_response")).Bigger(0);
+
+    Return Undefined;
+
+EndFunction
+
 Function Check_Telegram_GetBotInformation(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -8017,7 +8027,7 @@ Function Check_WebSocket_GetNextConnectionData(Val Result, Val Option, Message =
 
             ResponseMessage = OPI_Tools.GetOr(ResponseMessage, "payload", "");
 
-            If TypeOf(ResponseMessage)  = Type("BinaryData") Then
+            If TypeOf(ResponseMessage)     = Type("BinaryData") Then
                 ResponseMessage["payload"] = "<Binary data>";
             EndIf;
 
