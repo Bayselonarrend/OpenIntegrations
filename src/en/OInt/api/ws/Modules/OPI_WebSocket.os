@@ -57,9 +57,9 @@
 // Retrieves settings structure for starting logging on server startup
 //
 // Parameters:
-// WriteToMemory - Boolean - Logging log to memory for further retrieval from the addin object - memory
-// MaxEvents     - Number  - Maximum number of events stored in memory                         - count
-// FilePath      - String  - Path to file for saving full log, if necessary                    - path
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
 //
 // Returns:
 // Structure Of KeyAndValue - Settings structure
