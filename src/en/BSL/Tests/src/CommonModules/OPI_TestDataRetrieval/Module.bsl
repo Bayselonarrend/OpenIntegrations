@@ -1379,7 +1379,7 @@ Function Check_Core_GetAvailableSettings(Val Result, Val Option)
 
     ExpectsThat(TypeOf(Result) = Type("String")).Равно(True);
     ExpectsThat(ValueIsFilled(Result)).Равно(True);
-    ExpectsThat(StrFind(Result, "adv_response")).Bigger(0);
+    ExpectsThat(StrFind(Result, "adv_response") > 0).Равно(True);
 
     Return Undefined;
 
