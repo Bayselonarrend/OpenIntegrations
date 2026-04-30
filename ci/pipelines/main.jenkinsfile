@@ -1,14 +1,26 @@
+@Library('openintegrations-shared') _
+
 pipeline {
 	agent {
 		label 'windows'
 	}
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('Prepare') {
             steps {
-                    
+                    script {
+                        String repoUrl = env.GIT_URL ?: (scm?.userRemoteConfigs ? scm.userRemoteConfigs[0].url : '')
+                        String branch = env.BRANCH_NAME ?: env.CHANGE_BRANCH ?: 'main'
+                        prepareRepo(
+                            repoUrl: repoUrl,
+                            branch: branch,
+                            cacheLocation: 'temp',
+                            lockName: 'openintegrations-repo-cache'
+                        )
+                    }
                     bat "git branch"
-                    bat encoding: 'UTF-8', script:'if exist Melezh rd /s /q Melezh'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & git clone https://github.com/bayselonarrend/Melezh'
             }
         }
 
