@@ -1,5 +1,3 @@
-@Library('openintegrations-shared') _
-
 pipeline {
 	agent {
 		label 'windows'
