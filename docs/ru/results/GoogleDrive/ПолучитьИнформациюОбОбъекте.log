@@ -123,6 +123,9 @@
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",
  "isAppAuthorized": false,
+ "clientEncryptionDetails": {
+  "decryptionMetadata": {}
+ },
  "linkShareMetadata": {
   "securityUpdateEligible": false,
   "securityUpdateEnabled": true

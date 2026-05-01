@@ -1,1 +1,7 @@
-﻿НЕ JSON: Соответствие
+﻿{
+ "address": "127.0.0.1:62911",
+ "connectionId": "aec2ab66-7b82-4509-810e-e95897582470",
+ "isActive": true,
+ "message": "<Двоичные данные>",
+ "result": true
+}
