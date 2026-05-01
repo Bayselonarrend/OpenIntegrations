@@ -68,7 +68,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "f8ac8856-cb87-4be9-bcbf-a09bb3ade638" \
+              --uuid "01c9ace2-31e8-4ca0-89e4-89045353f4e8" \
               --testapi "***"
         ```
     </TabItem>
@@ -77,7 +77,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "f8ac8856-cb87-4be9-bcbf-a09bb3ade638" ^
+              --uuid "01c9ace2-31e8-4ca0-89e4-89045353f4e8" ^
               --testapi "***"
         ```
     </TabItem>
@@ -87,8 +87,10 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "f8ac8856-cb87-4be9-bcbf-a09bb3ade638",
-  "intake_date": "2026-04-28",
+  "uuid": "15e880b4-406d-4530-ab8d-781fee7dd4b5",
+  "cdek_number": "1107201875",
+  "order_uuid": "6cd7a032-103e-4c11-acd0-5b08b99345d9",
+  "intake_date": "2026-05-02",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -104,35 +106,46 @@ import Admonition from '@theme/Admonition';
     {
      "number": "+79589441654"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "kladr_code": "7700000000000",
    "country_code": "RU",
+   "country": "Россия",
    "region": "Москва",
+   "region_code": 81,
    "sub_region": "Москва",
-   "longitude": 37.6204,
-   "latitude": 55.754,
-   "address": "ул. Блюхера, 32",
-   "postal_code": "109004"
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "ул. Блюхера, 32"
   },
   "need_call": false,
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-27T14:12:21+00:00"
+    "date_time": "2026-05-01T21:49:10+03:00"
+   }
+  ],
+  "packages": [
+   {
+    "package_id": "f596de1a-ebbc-45f6-8752-7fcd8f0ae533",
+    "weight": 1000,
+    "length": 10,
+    "width": "***",
+    "height": 10
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "dd5235af-745f-4b6d-8c81-51ca248d2d7f",
+   "request_uuid": "0d182276-6331-410a-ad76-502eab4543e1",
    "type": "CREATE",
-   "date_time": "2026-04-27T14:11:40+00:00",
+   "date_time": "2026-05-01T21:49:09+03:00",
    "state": "ACCEPTED"
   }
  ]
