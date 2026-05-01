@@ -592,8 +592,8 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
 
     Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
 
-    SourceString = "binary-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
-    Data = GetBinaryDataFromString(SourceString);
+    SourceLine = "binary-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
+    Data = GetBinaryDataFromString(SourceLine);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
         Result = OPI_WebSocket.SendBinaryMessage(Connection, Data);
@@ -616,7 +616,7 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
     EndDo;
 
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "SendBinaryMessage", Postfix);
-    OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendBinaryMessage", "Check, " + Postfix, SourceString);
+    OPI_TestDataRetrieval.Process(Check , "WebSocket", "SendBinaryMessage", "Check, " + Postfix, SourceLine);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
         OPI_WebSocket.CloseConnection(Connection);
