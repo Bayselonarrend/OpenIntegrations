@@ -16,8 +16,7 @@ pipeline {
                         prepareRepo(
                             repoUrl: repoUrl,
                             branch: branch,
-                            cacheLocation: 'temp',
-                            lockName: 'openintegrations-repo-cache'
+                            cacheLocation: 'temp'
                         )
                     }
                     bat "git branch"
