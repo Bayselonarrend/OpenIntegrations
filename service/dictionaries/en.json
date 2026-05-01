@@ -3270,7 +3270,7 @@
 "ТекущийКаталог": "CurrentDirectory",
 "МассивОтправки": "SendArray",
 "МассивУпаковок": "PackagesArray",
-"ИсходнаяСтрока": "SourceString",
+"ИсходнаяСтрока": "SourceLine",
 "ЗначениеТокена": "TokenValue",
 "Отправить понг": "Send pong",
 "Несуществующий": "Nonexistent",
