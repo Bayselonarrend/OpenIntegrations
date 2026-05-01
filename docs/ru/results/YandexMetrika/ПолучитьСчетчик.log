@@ -1,6 +1,6 @@
 ﻿{
  "counter": {
-  "id": 108785858,
+  "id": 109002324,
   "status": "Active",
   "owner_login": "bayselonarrend",
   "code_status": "CS_ERR_UNKNOWN",
@@ -44,12 +44,12 @@
    "ytm": false,
    "ssr": true
   },
-  "create_time": "2026-04-27T14:13:53+00:00",
+  "create_time": "2026-05-01T15:41:48+00:00",
   "time_zone_name": "Europe/Moscow",
   "time_zone_offset": 180,
   "partner_id": 0,
-  "update_time": "2026-04-27 17:13:53",
-  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=108785858&amp;from=inf...",
+  "update_time": "2026-05-01 18:41:48",
+  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=109002324&amp;from=inf...",
   "filter_robots": 2,
   "currency": 643,
   "currency_code": "RUB",
