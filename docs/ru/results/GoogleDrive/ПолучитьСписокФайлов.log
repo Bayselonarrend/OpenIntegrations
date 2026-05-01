@@ -124,6 +124,15 @@
     "restrictedForReaders": false,
     "restrictedForWriters": false
    }
+  },
+  "clientEncryptionDetails": {
+   "decryptionMetadata": {
+    "wrappedKey": "***",
+    "kaclsId": "0",
+    "aes256GcmChunkSize": "unset",
+    "keyFormat": "***",
+    "encryptionResourceKeyHash": "***"
+   }
   }
  }
 ]
