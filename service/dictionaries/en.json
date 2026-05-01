@@ -3271,6 +3271,7 @@
 "ТекущийКаталог": "CurrentDirectory",
 "Base64Значение": "Base64Value",
 "МассивОтправки": "SendArray",
+"Настройки Tls могут быть установлены только в момент создания соединения": "Tls settings can only be set when a connection is created",
 "ИсходнаяСтрока": "SourceLine",
 "ЗначениеТокена": "TokenValue",
 "Отправить понг": "Send pong",
