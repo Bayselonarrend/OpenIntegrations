@@ -375,8 +375,7 @@ EndFunction
 // Forms settings for using TLS
 //
 // Note:
-// Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
-// or implicit, when passing the connection string to the `ProcessRequest` method
+// Tls settings can only be set when a connection is created
 //
 // Parameters:
 // DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
