@@ -4,24 +4,7 @@ pipeline {
 	agent {
 		label 'windows'
 	}
-    options {
-        skipDefaultCheckout(true)
-    }
     stages {
-        stage('Prepare') {
-            steps {
-                    script {
-                        String repoUrl = env.GIT_URL ?: (scm?.userRemoteConfigs ? scm.userRemoteConfigs[0].url : '')
-                        String branch = env.BRANCH_NAME ?: env.CHANGE_BRANCH ?: 'main'
-                        prepareRepo(
-                            repoUrl: repoUrl,
-                            branch: branch,
-                            cacheLocation: 'temp'
-                        )
-                    }
-                    bat "git branch"
-            }
-        }
 
         stage('Build') {
             steps {
