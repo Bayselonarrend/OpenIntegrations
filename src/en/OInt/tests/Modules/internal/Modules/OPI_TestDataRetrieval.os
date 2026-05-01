@@ -8060,9 +8060,18 @@ Function Check_WebSocket_GetConnectionData(Val Result, Val Option, Message = "")
         ResponseMessage = Result["message"];
 
         If TypeOf(ResponseMessage) = Type("BinaryData") Then
-            ResponseMessage        = GetStringFromBinaryData(ResponseMessage);
+
+            ResponseMessage   = GetStringFromBinaryData(ResponseMessage);
+            Result["message"] = "<Binary data>";
+
         ElsIf OPI_Tools.ThisIsCollection(ResponseMessage, True) Then
-            ResponseMessage        = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+
+            ResponseMessage = OPI_Tools.GetOr(ResponseMessage, "payload", "");
+
+            If TypeOf(ResponseMessage)     = Type("BinaryData") Then
+                ResponseMessage["payload"] = "<Binary data>";
+            EndIf;
+
         EndIf;
 
         ExpectsThat(ResponseMessage).Равно(Message);
