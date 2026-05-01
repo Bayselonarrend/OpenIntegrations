@@ -5,7 +5,7 @@ keywords: [1C, 1C:Enterprise, OneScript, CLI, HTTP, proxy, timeout, advanced cal
 
 # Advanced call
 
-For some OPI methods you can use **advanced call** — passing extra settings that are not part of the normal function signature. Usually these are transport settings: proxy, timeout, response shape, and so on.
+For some OPI methods you can use **advanced call** - passing additional settings of internal library mechanisms that are not part of the regular signature of the called function
 
 ## 1C:Enterprise and OneScript
 
