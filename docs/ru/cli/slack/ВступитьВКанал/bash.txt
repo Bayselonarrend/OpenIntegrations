@@ -1,3 +1,3 @@
 oint slack ВступитьВКанал \
   --token "***" \
-  --channel "C0B03M77066"
+  --channel "C0B12PDJ34N"

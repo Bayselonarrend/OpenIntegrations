@@ -86,7 +86,8 @@
   "canRename": true,
   "canShare": true,
   "canTrash": true,
-  "canUntrash": true
+  "canUntrash": true,
+  "canStartApproval": false
  },
  "viewersCanCopyContent": true,
  "copyRequiresWriterPermission": false,

@@ -1,7 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "f8ac8856-cb87-4be9-bcbf-a09bb3ade638",
-  "intake_date": "2026-04-28",
+  "uuid": "01c9ace2-31e8-4ca0-89e4-89045353f4e8",
+  "cdek_number": "1107201773",
+  "order_uuid": "ba6eeb1a-9baf-4dfa-82b3-050fdb86b718",
+  "intake_date": "2026-05-02",
+  "intake_number": "13311916",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -12,41 +15,79 @@
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "+79589441654"
+    },
+    {
+     "number": "79589441654"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "kladr_code": "7700000000000",
    "country_code": "RU",
+   "country": "Россия",
    "region": "Москва",
+   "region_code": 81,
    "sub_region": "Москва",
-   "longitude": 37.6204,
-   "latitude": 55.754,
-   "address": "ул. Блюхера, 32",
-   "postal_code": "109004"
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "ул. Блюхера, 32"
+  },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
   },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-05-01T15:41:10+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-05-01T15:41:10+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-04-27T14:12:21+00:00"
+    "date_time": "2026-05-01T15:41:10+00:00"
+   }
+  ],
+  "packages": [
+   {
+    "package_id": "5ff95946-cf2e-4b9a-96ae-d40d7ec74dfd",
+    "weight": 1000,
+    "length": 10,
+    "width": "***",
+    "height": 10
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "dd5235af-745f-4b6d-8c81-51ca248d2d7f",
+   "request_uuid": "fd933922-9f74-4b79-8a68-5320901c560c",
    "type": "CREATE",
-   "date_time": "2026-04-27T14:11:40+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-05-01T15:41:09+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }
