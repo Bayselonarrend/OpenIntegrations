@@ -2053,22 +2053,22 @@
    }
   },
   {
-   "ID": "2298",
-   "NAME": "Новое имя календаря",
+   "ID": "2302",
+   "NAME": "Новый календарь",
    "GAPI_CALENDAR_ID": "***",
-   "DESCRIPTION": "Этот календарь был изменен",
+   "DESCRIPTION": "Мой новый календарь",
    "COLOR": "#FFFFFF",
    "TEXT_COLOR": "#000000",
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2298&sign=746b520a3cacdcb3036413011d161913&bx_hit_hash=GgseMB..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2302&sign=462355b8e6baa9ce472f57c2caa643af&bx_hit_hash=GgseMB..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-04-27 17:03:00",
-   "TIMESTAMP_X": "2026-04-27 17:03:00",
+   "DATE_CREATE": "2026-04-28 13:17:00",
+   "TIMESTAMP_X": "2026-04-28 13:17:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,43 @@
    }
   },
   {
-   "ID": "2300",
+   "ID": "2304",
+   "NAME": "Другой календарь",
+   "GAPI_CALENDAR_ID": "***",
+   "DESCRIPTION": "Мой другой новый календарь",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2304&sign=a74e503735efef418b176e3152f0ac48&bx_hit_hash=GgseMB..."
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2026-04-28 13:17:00",
+   "TIMESTAMP_X": "2026-04-28 13:17:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": "***",
+   "PAGE_TOKEN": "***",
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "2314",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2098,13 +2134,49 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2300&sign=c62f926b53cbb9eb7e9364f0af446567&bx_hit_hash=GgseMB..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2314&sign=e10424831e971375f5850e467cb98e27&bx_hit_hash=GgseMB..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-04-27 17:03:00",
-   "TIMESTAMP_X": "2026-04-27 17:03:00",
+   "DATE_CREATE": "2026-05-01 18:37:00",
+   "TIMESTAMP_X": "2026-05-01 18:37:00",
+   "CAL_DAV_CON": null,
+   "SYNC_TOKEN": "***",
+   "PAGE_TOKEN": "***",
+   "EXTERNAL_TYPE": "local",
+   "ACCESS": {
+    "G2": 31,
+    "U1": 39
+   },
+   "IS_COLLAB": false,
+   "PERM": {
+    "view_time": true,
+    "view_title": true,
+    "view_full": true,
+    "add": true,
+    "edit": true,
+    "edit_section": true,
+    "access": true
+   }
+  },
+  {
+   "ID": "2316",
+   "NAME": "Новое имя календаря",
+   "GAPI_CALENDAR_ID": "***",
+   "DESCRIPTION": "Этот календарь был изменен",
+   "COLOR": "#FFFFFF",
+   "TEXT_COLOR": "#000000",
+   "EXPORT": {
+    "ALLOW": true,
+    "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2316&sign=054dfec14506bc3f02227b9f5bd628a9&bx_hit_hash=GgseMB..."
+   },
+   "CAL_TYPE": "user",
+   "OWNER_ID": "1",
+   "CREATED_BY": "1",
+   "DATE_CREATE": "2026-05-01 18:37:00",
+   "TIMESTAMP_X": "2026-05-01 18:37:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2198,13 @@
   }
  ],
  "time": {
-  "start": 1777298563,
-  "finish": 1777298563.94684,
-  "duration": 0.946836948394775,
+  "start": 1777649796,
+  "finish": 1777649796.7992,
+  "duration": 0.799202919006348,
   "processing": 0,
-  "date_start": "2026-04-27T14:02:43+00:00",
-  "date_finish": "2026-04-27T14:02:43+00:00",
-  "operating_reset_at": 1777299163,
+  "date_start": "2026-05-01T15:36:36+00:00",
+  "date_finish": "2026-05-01T15:36:36+00:00",
+  "operating_reset_at": 1777650396,
   "operating": 0
  }
 }

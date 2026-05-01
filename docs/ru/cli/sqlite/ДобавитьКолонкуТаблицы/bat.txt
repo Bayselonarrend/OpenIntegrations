@@ -2,4 +2,4 @@ oint sqlite ДобавитьКолонкуТаблицы ^
   --table "test" ^
   --name "new_col" ^
   --type "TEXT" ^
-  --db "/tmp/pwhe4gqb.5x5.sqlite"
+  --db "/tmp/bdnj3umt.sp1.sqlite"
