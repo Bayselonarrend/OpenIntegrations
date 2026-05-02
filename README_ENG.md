@@ -44,6 +44,7 @@ The project code is organized as a set of independent modules, each responsible 
     <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/WebSocket/"><img src="media/WebSocket.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
@@ -91,12 +92,13 @@ To save the response in the console, you can use the standard `>` redirect or th
 
 <br><br>
 
-#### The library releases are available in five variants
+#### The library releases are available in six variants
 
 - As CLI application for Windows and Linux (exe, rpm, deb)
 - As XML extension export
 - As EDT extension project
-- As standalone extension file in CFE format
+- As standalone extension file in `cfe` format
+- - As standalone configuration file in `cf` format
 - As [OneScript](https://github.com/EvilBeaver/OneScript) extension package in OSPX format
 
 <br/><br>
