@@ -1,7 +1,9 @@
 ﻿{
- "avatar": "https://pps.whatsapp.net/v/t61.24694-24/656334263_1125426829708720_5519814278840505976_n.jpg?stp=dst...",
- "phone": "***",
  "stateInstance": "authorized",
  "deviceId": "***",
- "chatId": "***"
+ "chatId": "***",
+ "phone": "***",
+ "historySyncProgress": 100,
+ "avatar": "https://pps.whatsapp.net/v/t61.24694-24/685543145_949005817934208_1876761196152059316_n.jpg?stp=dst-...",
+ "base64Avatar": "/9j/4AAQSkZJRgABAQAAAQABAAD/7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCTUQwYTAwMGFhYTAxMDAwMDVk..."
 }

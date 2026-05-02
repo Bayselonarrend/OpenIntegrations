@@ -1,0 +1,31 @@
+﻿{
+ "status": 200,
+ "body": {
+  "ok": true,
+  "result": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot",
+   "can_join_groups": true,
+   "can_read_all_group_messages": false,
+   "supports_inline_queries": false,
+   "can_connect_to_business": false,
+   "has_main_web_app": false,
+   "has_topics_enabled": false,
+   "allows_users_to_create_topics": false,
+   "can_manage_bots": false
+  }
+ },
+ "headers": {
+  "Server": "nginx/1.18.0",
+  "Date": "Sat, 02 May 2026 10:17:06 GMT",
+  "Connection": "keep-alive",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Access-Control-Allow-Origin": "***",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Expose-Headers": "Content-Length,Content-Type,Date,Server,Connection",
+  "Content-Type": "application/json",
+  "Content-Length": "389"
+ }
+}

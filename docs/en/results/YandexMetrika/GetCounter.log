@@ -1,6 +1,6 @@
 ﻿{
  "counter": {
-  "id": 108239207,
+  "id": 109013989,
   "status": "Active",
   "owner_login": "bayselonarrend",
   "code_status": "CS_ERR_UNKNOWN",
@@ -30,6 +30,9 @@
     "color_text": 0,
     "color_arrow": 1
    },
+   "modules": {
+    "prebid_enabled": 0
+   },
    "visor": 1,
    "track_hash": 1,
    "xml_site": 0,
@@ -41,12 +44,12 @@
    "ytm": false,
    "ssr": true
   },
-  "create_time": "2026-03-25T17:42:03+03:00",
+  "create_time": "2026-05-02T10:55:53+00:00",
   "time_zone_name": "Europe/Moscow",
   "time_zone_offset": 180,
   "partner_id": 0,
-  "update_time": "2026-03-25 17:42:04",
-  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=108239207&amp;from=inf...",
+  "update_time": "2026-05-02 13:55:53",
+  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=109013989&amp;from=inf...",
   "filter_robots": 2,
   "currency": 643,
   "currency_code": "RUB",
