@@ -3,7 +3,7 @@
     IdInstance       = "31003...";
     ApiTokenInstance = "17915d8e0b4b4975a183478da...";
 
-    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
     FileName    = "photo.jpg";
     ChatID      = 12345678;
     Description = "File description";
