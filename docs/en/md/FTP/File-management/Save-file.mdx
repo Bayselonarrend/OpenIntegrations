@@ -103,7 +103,7 @@ FTP Command: `RETR`
             oint ftp SaveFile \
               --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
               --path "new_dir/pic_from_disk.png" \
-              --file "C:\Users\bayselonarrend\AppData\Local\Temp\lmwbkmwa.mhs.bin"
+              --file "/tmp/1pc0h210.4jp.bin"
         ```
     </TabItem>
   
@@ -114,7 +114,7 @@ FTP Command: `RETR`
             oint ftp SaveFile ^
               --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
               --path "new_dir/pic_from_disk.png" ^
-              --file "C:\Users\bayselonarrend\AppData\Local\Temp\lmwbkmwa.mhs.bin"
+              --file "/tmp/1pc0h210.4jp.bin"
         ```
     </TabItem>
 </Tabs>
@@ -123,7 +123,10 @@ FTP Command: `RETR`
 ```json title="Result"
 {
  "bytes": 2114023,
- "filepath": "/tmp/zj0rjuwb.cm4.bin",
- "result": true
+ "filepath": "/tmp/1pc0h210.4jp.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

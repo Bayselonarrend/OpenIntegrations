@@ -66,8 +66,8 @@ import Admonition from '@theme/Admonition';
             # JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics \
-              --datefrom "2026-03-25T00:00:00" \
-              --dateto "2026-03-25T23:59:59" \
+              --datefrom "2026-05-02T00:00:00" \
+              --dateto "2026-05-02T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -77,8 +77,8 @@ import Admonition from '@theme/Admonition';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics ^
-              --datefrom "2026-03-25T00:00:00" ^
-              --dateto "2026-03-25T23:59:59" ^
+              --datefrom "2026-05-02T00:00:00" ^
+              --dateto "2026-05-02T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -90,10 +90,10 @@ import Admonition from '@theme/Admonition';
  "response": [
   {
    "activity": {
-    "comments": 12
+    "comments": 10
    },
-   "period_from": 1774396800,
-   "period_to": 1774483199,
+   "period_from": 1777680000,
+   "period_to": 1777766399,
    "reach": {
     "cities": [],
     "countries": [],
@@ -110,30 +110,131 @@ import Admonition from '@theme/Admonition';
    }
   },
   {
-   "period_from": 1774310400,
-   "period_to": 1774396799,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
+   "activity": {
+    "comments": 3
    },
-   "visitors": {
-    "cities": [],
-    "countries": [
+   "period_from": 1777593600,
+   "period_to": 1777679999,
+   "reach": {
+    "age": [
      {
-      "code": "BR",
-      "count": 1,
-      "name": "Бразилия",
-      "value": 43
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 0
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 0
+     },
+     {
+      "value": "45-100",
+      "count": 1
      }
     ],
-    "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
-   }
-  }
- ]
-}
+    "cities": [
+     {
+      "count": 1,
+      "name": "Тула",
+      "value": 146
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 1,
+    "reach": 1,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 0
+     },
+     {
+      "value": "m",
+      "count": 1
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 0
+     },
+     {
+      "value": "f;45-100",
+      "count": 0
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+...
 ```
