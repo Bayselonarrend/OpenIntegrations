@@ -2,8 +2,5 @@
  "exit_code": "0",
  "result": true,
  "stderr": "",
- "stdout": "bayselonarrend",
- "close_connection": {
-  "result": true
- }
+ "stdout": "bayselonarrend"
 }

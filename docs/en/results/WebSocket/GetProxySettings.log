@@ -1,0 +1,7 @@
+﻿{
+ "server": "host.docker.internal",
+ "port": 8071,
+ "proxy_type": "http",
+ "login": "proxyuser",
+ "password": "***"
+}

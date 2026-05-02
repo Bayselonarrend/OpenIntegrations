@@ -1,7 +1,7 @@
 ﻿{
  "access_token": "***",
+ "scope": "location:all order:all payment:all",
  "token_type": "***",
  "expires_in": 3599,
- "scope": "location:all order:all payment:all",
- "jti": "VERlgiAQfR9PPsyDPAAHky6QB0Y"
+ "jti": "42bb9433-d092-44f7-9143-48094e938b70"
 }
