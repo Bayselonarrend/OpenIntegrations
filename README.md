@@ -51,6 +51,7 @@
    <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
+    <a href="https://openintegrations.dev/docs/Instructions/WebSocket/"><img src="media/WebSocket.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
@@ -97,12 +98,13 @@
 
 <br><br>
 
-#### Релизы библиотеки выходят в пяти вариантах:
+#### Релизы библиотеки выходят в шести вариантах:
 
 - Как CLI приложение для Windows и Linux (exe, rpm, deb)
 - Как XML выгрузка расширения
 - Как EDT проект расширения
-- Как отдельный файл расширения формата cfe
+- Как отдельный файл расширения формата `cfe`
+- Как отдельный файл конфигурации формата `cf`
 - Как [OneScript](https://github.com/EvilBeaver/OneScript) пакет расширения ospx
 
 <br/><br>
