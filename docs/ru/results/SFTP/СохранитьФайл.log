@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\5bpjjll3.tgn.bin",
- "result": true
+ "filepath": "/tmp/l2boxfyu.rqv.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

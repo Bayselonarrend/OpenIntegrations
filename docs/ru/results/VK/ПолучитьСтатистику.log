@@ -2,6 +2,27 @@
  "response": [
   {
    "activity": {
+    "comments": 2
+   },
+   "period_from": 1777680000,
+   "period_to": 1777766399,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "activity": {
     "comments": 3
    },
    "period_from": 1777593600,
@@ -135,24 +156,6 @@
       "count": 1
      }
     ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "period_from": 1777507200,
-   "period_to": 1777593599,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],

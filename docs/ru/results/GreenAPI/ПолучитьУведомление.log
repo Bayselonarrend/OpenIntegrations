@@ -2,31 +2,24 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB07FE2F4A30A03894EF7",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1777643683,
-  "idMessage": "3EB0E6EEEBA97FCECD9935",
+  "timestamp": 1777643689,
   "senderData": {
    "chatId": "***",
-   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***"
+   "senderContactName": "***",
+   "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/8197d5d0-3549-4eb2-97da-d32a18705a30...",
-    "caption": "Описание файла",
-    "fileName": "8197d5d0-3549-4eb2-97da-d32a18705a30.jpg",
-    "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
-    "forwardingScore": 0,
-    "isForwarded": false
+   "typeMessage": "deletedMessage",
+   "deletedMessageData": {
+    "stanzaId": "3EB0C5C84DEC5A163386FF"
    }
   }
  }
