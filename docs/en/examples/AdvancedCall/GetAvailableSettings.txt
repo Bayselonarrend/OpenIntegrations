@@ -1,0 +1,3 @@
+    Result = OPI_AdvancedCall.GetAvailableSettings("OPI_Telegram", "GetBotInformation");
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "GetAvailableSettings");

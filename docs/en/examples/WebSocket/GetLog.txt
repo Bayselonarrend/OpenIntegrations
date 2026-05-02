@@ -1,0 +1,15 @@
+    // Server start
+    LaunchPort = 9894;
+    LogFile = GetTempFileName("txt");
+    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
+    ServerObject = OPI_WebSocket.StartServer(LaunchPort, , LoggingSettings);
+
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    If Not OPI_WebSocket.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    // Server log retrieval
+    Result = OPI_WebSocket.GetLog(ServerObject);

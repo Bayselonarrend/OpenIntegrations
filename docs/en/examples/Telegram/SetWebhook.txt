@@ -1,4 +1,4 @@
     Token = "6129457865:AAFyzNYOAFbu...";
-    URL   = "https://api.athenaeum.digital/opi/hs/twitter";
+    URL   = "https://hut.openintegrations.dev";
 
     Result = OPI_Telegram.SetWebhook(Token, URL);

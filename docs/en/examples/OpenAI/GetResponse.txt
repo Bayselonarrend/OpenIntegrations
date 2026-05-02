@@ -15,7 +15,7 @@
     // Pictures
 
     Model       = "moondream2-20250414";
-    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "user_data";
 

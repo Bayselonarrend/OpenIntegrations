@@ -1,0 +1,4 @@
+    Port         = 9894;
+    ServerObject = OPI_WebSocket.StartServer(Port);
+
+    Result = OPI_WebSocket.StopServer(ServerObject);

@@ -1,6 +1,6 @@
     Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
     Base   = "29d82aa7-fc4e-8173-83c3-eef87a456cc4";
-    Image_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
+    Image_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary data or File path
 
     Image = New Map;
     Image.Insert("Logo", Image_);

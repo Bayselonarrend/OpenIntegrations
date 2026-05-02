@@ -1,0 +1,4 @@
+    Port     = 9894;
+    PoolSize = 10;
+
+    Result = OPI_WebSocket.StartServer(Port, PoolSize);

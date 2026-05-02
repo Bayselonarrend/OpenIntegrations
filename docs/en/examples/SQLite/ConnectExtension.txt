@@ -1,7 +1,7 @@
     If OPI_Tools.IsWindows() Then
-        Extension = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary Data
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary data
     Else
-        Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary Data
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary data
     EndIf;
 
     Base       = "/tmp/vnnmoosn.qqb.sqlite";

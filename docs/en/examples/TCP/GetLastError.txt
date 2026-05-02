@@ -3,3 +3,4 @@
     Data       = "Hello server!" + Chars.LF;
 
     Sending = OPI_TCP.SendLine(Connection, Data);
+    Result  = OPI_TCP.GetLastError(Connection);

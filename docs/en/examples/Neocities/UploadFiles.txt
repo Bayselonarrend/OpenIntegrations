@@ -1,8 +1,8 @@
     Token = "f1e616e20ab5893b...";
 
-    Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
-    GIF    = "https://hut.openintegrations.dev/test_data/animation.gif"; // URL, Path or Binary Data
+    Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
+    Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary data
+    GIF    = "https://hut.openintegrations.dev/test_data/animation.gif"; // URL, Path or Binary data
 
     FileMapping = New Map;
     FileMapping.Insert("test/pic1.png", Image1);
