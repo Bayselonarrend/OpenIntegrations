@@ -1,0 +1,1 @@
+﻿"proxy: InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthenticationtimeout: Request execution timeoutadv_response: Formats the response as a complete structure with fields code, body, and headers"

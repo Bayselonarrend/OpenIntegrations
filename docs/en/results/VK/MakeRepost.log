@@ -1,10 +1,10 @@
 ﻿{
  "response": {
   "success": 1,
-  "post_id": 11899,
-  "reposts_count": 3,
+  "post_id": 12222,
+  "reposts_count": 2,
   "likes_count": 10,
-  "wall_repost_count": 1,
+  "wall_repost_count": 0,
   "mail_repost_count": 2,
   "badges": {
    "type": 11,

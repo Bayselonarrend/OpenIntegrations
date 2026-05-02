@@ -159,6 +159,15 @@
     "parentEntityTypeId": 4
    }
   },
+  "MYCOMPANY_ID": {
+   "type": "crm_company",
+   "isRequired": false,
+   "isReadOnly": false,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "Реквизиты вашей компании"
+  },
   "CONTACT_ID": {
    "type": "crm_contact",
    "isRequired": false,
@@ -439,13 +448,13 @@
   }
  },
  "time": {
-  "start": 1774449378,
-  "finish": 1774449378.4064,
-  "duration": 0.406399011611938,
+  "start": 1777719097,
+  "finish": 1777719097.50227,
+  "duration": 0.502269983291626,
   "processing": 0,
-  "date_start": "2026-03-25T17:36:18+03:00",
-  "date_finish": "2026-03-25T17:36:18+03:00",
-  "operating_reset_at": 1774449978,
+  "date_start": "2026-05-02T10:51:37+00:00",
+  "date_finish": "2026-05-02T10:51:37+00:00",
+  "operating_reset_at": 1777719697,
   "operating": 0
  }
 }
