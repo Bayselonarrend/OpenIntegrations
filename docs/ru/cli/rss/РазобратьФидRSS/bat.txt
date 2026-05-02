@@ -1,2 +1,2 @@
 oint rss РазобратьФидRSS ^
-  --xml "/tmp/uaxjap4i.gy1.xml"
+  --xml "/tmp/lq4ns4i4.y0b.xml"

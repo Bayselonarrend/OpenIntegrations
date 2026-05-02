@@ -5,17 +5,11 @@
    "name": "Dogs.mp3",
    "path_lower": "/new/dogs.mp3",
    "path_display": "/New/Dogs.mp3",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAAAACA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8b6000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbc6bd841553",
    "size": 9229352,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "376f728ef041d9cef08406f16debc12de89d83130e69c66a817fd834d2d82dc2"
   },
@@ -24,17 +18,11 @@
    "name": "url_doc (1).docx",
    "path_lower": "/new/url_doc (1).docx",
    "path_display": "/New/url_doc (1).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAAALvg",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8b7000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbc7bd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -43,17 +31,11 @@
    "name": "url_doc (2).docx",
    "path_lower": "/new/url_doc (2).docx",
    "path_display": "/New/url_doc (2).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAAA24g",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8b8000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbc8bd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -62,17 +44,11 @@
    "name": "url_doc (3).docx",
    "path_lower": "/new/url_doc (3).docx",
    "path_display": "/New/url_doc (3).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABDNA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8b9000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbc9bd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -81,17 +57,11 @@
    "name": "url_doc (4).docx",
    "path_lower": "/new/url_doc (4).docx",
    "path_display": "/New/url_doc (4).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABJpA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8ba000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbcabd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -100,17 +70,11 @@
    "name": "url_doc (5).docx",
    "path_lower": "/new/url_doc (5).docx",
    "path_display": "/New/url_doc (5).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABSFA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8bb000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbcbbd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -119,17 +83,11 @@
    "name": "url_doc (6).docx",
    "path_lower": "/new/url_doc (6).docx",
    "path_display": "/New/url_doc (6).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABSTA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8bc000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbccbd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -138,17 +96,11 @@
    "name": "url_doc (7).docx",
    "path_lower": "/new/url_doc (7).docx",
    "path_display": "/New/url_doc (7).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABSaA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8bd000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbcdbd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -157,17 +109,11 @@
    "name": "url_doc (8).docx",
    "path_lower": "/new/url_doc (8).docx",
    "path_display": "/New/url_doc (8).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABShA",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8be000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbcebd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -176,17 +122,11 @@
    "name": "url_doc (9).docx",
    "path_lower": "/new/url_doc (9).docx",
    "path_display": "/New/url_doc (9).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABUqg",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8bf000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbcfbd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -195,17 +135,11 @@
    "name": "url_doc (10).docx",
    "path_lower": "/new/url_doc (10).docx",
    "path_display": "/New/url_doc (10).docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAABpLw",
    "client_modified": "***",
-   "server_modified": "2026-04-28T17:09:49Z",
-   "rev": "01650884c80b8c0000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbd0bd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   },
@@ -214,21 +148,15 @@
    "name": "mydoc.docx",
    "path_lower": "/new/mydoc.docx",
    "path_display": "/New/mydoc.docx",
-   "parent_shared_folder_id": "14207515843",
    "id": "id:kJU6-a-pT48AAAAAAAAABw",
    "client_modified": "***",
-   "server_modified": "2026-05-01T18:40:43Z",
-   "rev": "01650c5eb21fae2000000034ed57cc3",
+   "server_modified": "2026-05-02T08:10:34Z",
+   "rev": "650d13b56cbd1bd841553",
    "size": 24069,
-   "sharing_info": {
-    "read_only": false,
-    "parent_shared_folder_id": "14207515843",
-    "modified_by": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
-   },
    "is_downloadable": true,
    "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   }
  ],
- "cursor": "AAXtq5ycZnrFy_v2jbFuqZBsQ0ZjWdtZvqMW_dOQz7o3N-rsrwKo6OdYIislD1RD0ol951Ns-n8DYupeeFLuUPJFRh4dO_8JxpCP...",
+ "cursor": "AAU5MwWZxhwVzAn7LkbgZwuqZk55Q3Ek6kgQfB7jNv2cxB_hfqy96LZ8NiaGB-N82lwJ0oMmGuWYDLAilw-BUC7HifoslcDe9Ots...",
  "has_more": false
 }

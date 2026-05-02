@@ -5,8 +5,8 @@
    "path": "disk:/Тестовая папка/Мишки.jpg",
    "type": "file",
    "name": "Мишки.jpg",
-   "created": "2024-02-01T15:13:45+03:00",
-   "modified": "2024-02-10T14:05:03+03:00",
+   "created": "2024-02-01T12:13:45+00:00",
+   "modified": "2024-02-10T11:05:03+00:00",
    "size": 1555830,
    "mime_type": "image/jpeg",
    "md5": "569a1c98696050439b5b2a1ecfa52d19",
@@ -15,7 +15,7 @@
    "media_type": "image",
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/39bf328b7a41ee51f3fce82ed537e6d12968142ec29dbebf5278416cebdda...",
+     "url": "https://downloader.disk.yandex.ru/disk/40796c77785bb1e00b206aa6912341574b87dea7c1485f3712ed5e2fc164b...",
      "name": "ORIGINAL"
     },
     {
@@ -70,17 +70,17 @@
     "private_resource": "1573541518:12897a65b076a5a0a92f3033e271eb251764c1e70ba590f383d55c3da7ef8c60"
    },
    "exif": {
-    "date_time": "2014-12-13T17:29:24+03:00"
+    "date_time": "2014-12-13T14:29:24+00:00"
    },
    "antivirus_status": "clean",
-   "file": "https://downloader.disk.yandex.ru/disk/56b51de36b20103392d42cfcee45b89009a29bf20497e9f84ee34e59c3147..."
+   "file": "https://downloader.disk.yandex.ru/disk/6393b8510f3dbf40168cbc5002a4527667acf587754d9969137dd05c2932a..."
   },
   {
    "path": "disk:/Тестовая папка/Альпака.png",
    "type": "file",
    "name": "Альпака.png",
-   "created": "2024-02-09T11:01:20+03:00",
-   "modified": "2024-02-10T14:05:23+03:00",
+   "created": "2024-02-09T08:01:20+00:00",
+   "modified": "2024-02-10T11:05:23+00:00",
    "size": 440431,
    "mime_type": "image/png",
    "md5": "8d7bf7d7ee61113f9044f3a28496e458",
@@ -89,7 +89,7 @@
    "media_type": "image",
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/c419af0f52741d5304adb41f9ab248d8f259ae4e885d27cdd2bee198f63a0...",
+     "url": "https://downloader.disk.yandex.ru/disk/07f35a19dbc433ef4448a9ece4d0de5b8b63ce6fcfacbb05758609a20b223...",
      "name": "ORIGINAL"
     },
     {
@@ -145,7 +145,7 @@
    },
    "exif": {},
    "antivirus_status": "clean",
-   "file": "https://downloader.disk.yandex.ru/disk/46c35cd2a784caca5bb76bad84eaeb2831561291075e27897b964077ca69c..."
+   "file": "https://downloader.disk.yandex.ru/disk/b03531f02b8ea04515696b57798824eef371fd1337076afd6e5c9429f6fe9..."
   }
  ],
  "offset": 1

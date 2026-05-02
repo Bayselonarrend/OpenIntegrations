@@ -1,9 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "15e880b4-406d-4530-ab8d-781fee7dd4b5",
-  "cdek_number": "1107201875",
-  "order_uuid": "6cd7a032-103e-4c11-acd0-5b08b99345d9",
-  "intake_date": "2026-05-02",
+  "uuid": "a437d9ec-44b4-4af9-9386-fa3598882ed2",
+  "cdek_number": "1107202163",
+  "order_uuid": "0a8e58b3-562c-438b-8483-1830b5320e41",
+  "intake_date": "2026-05-03",
+  "intake_number": "13311921",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -14,10 +15,14 @@
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "+79589441654"
+    },
+    {
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -36,17 +41,40 @@
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-05-02T08:22:49+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-05-02T08:22:49+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-01T21:49:10+03:00"
+    "date_time": "2026-05-02T08:22:49+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "f596de1a-ebbc-45f6-8752-7fcd8f0ae533",
+    "package_id": "0c61e65b-912f-448b-aa9d-3efe55bf0ae4",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -56,10 +84,10 @@
  },
  "requests": [
   {
-   "request_uuid": "0d182276-6331-410a-ad76-502eab4543e1",
+   "request_uuid": "b113edd6-a078-4c28-9f12-46b0853168ee",
    "type": "CREATE",
-   "date_time": "2026-05-01T21:49:09+03:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-05-02T08:22:48+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }
