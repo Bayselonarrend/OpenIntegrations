@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10430",
+   "id": "10460",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-05-02T08:11:32+00:00",
+   "createdDate": "2026-05-02T09:35:17+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-05-02T08:12:13+00:00",
+   "changedDate": "2026-05-02T09:35:31+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-05-02T08:12:13+00:00",
-   "dateStart": "2026-05-02T08:12:06+00:00",
-   "deadline": "2026-05-03T08:11:00+00:00",
-   "startDatePlan": "2026-05-02T08:11:32+00:00",
+   "activityDate": "2026-05-02T09:35:31+00:00",
+   "dateStart": "2026-05-02T09:35:29+00:00",
+   "deadline": "2026-05-03T09:35:00+00:00",
+   "startDatePlan": "2026-05-02T09:35:17+00:00",
    "endDatePlan": "2026-05-02T21:00:00+00:00",
-   "guid": "{b65555e1-c164-4f6e-81d2-4bd78ec7e154}",
+   "guid": "{979562e8-96c9-48f2-9713-24cb36b2da8d}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-05-02T08:12:13+00:00",
+   "statusChangedDate": "2026-05-02T09:35:31+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1777709533,
-  "finish": 1777709533.56803,
-  "duration": 0.568031072616577,
+  "start": 1777714531,
+  "finish": 1777714531.9643,
+  "duration": 0.964303970336914,
   "processing": 0,
-  "date_start": "2026-05-02T08:12:13+00:00",
-  "date_finish": "2026-05-02T08:12:13+00:00",
-  "operating_reset_at": 1777710133,
-  "operating": 0.167945861816406
+  "date_start": "2026-05-02T09:35:31+00:00",
+  "date_finish": "2026-05-02T09:35:31+00:00",
+  "operating_reset_at": 1777715131,
+  "operating": 0.321352005004883
  }
 }
