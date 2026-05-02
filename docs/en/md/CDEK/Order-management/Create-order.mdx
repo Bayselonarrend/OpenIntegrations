@@ -143,7 +143,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
             
             oint cdek CreateOrder \
               --token "***" \
-              --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'6c3fae73-12af-4fec-8790-d76adbcd052a','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
+              --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'bf0b9fd8-947a-4d79-b3e4-f2f27edb79c8','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
               --ostore true \
               --testapi "***"
         ```
@@ -155,7 +155,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
             
             oint cdek CreateOrder ^
               --token "***" ^
-              --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'6c3fae73-12af-4fec-8790-d76adbcd052a','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
+              --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'bf0b9fd8-947a-4d79-b3e4-f2f27edb79c8','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
               --ostore true ^
               --testapi "***"
         ```
@@ -166,13 +166,13 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
 ```json title="Result"
 {
  "entity": {
-  "uuid": "bb23ee55-cba8-464f-870f-e8a490668e85"
+  "uuid": "044b29b3-d260-422d-8fbe-2d4317b48126"
  },
  "requests": [
   {
-   "request_uuid": "82d59dba-7e1f-4ff8-a760-fb96f42e594d",
+   "request_uuid": "6cf6487e-cc2d-4da5-b500-ff16dfab894d",
    "type": "CREATE",
-   "date_time": "2026-03-25T17:40:53+03:00",
+   "date_time": "2026-05-02T12:14:46+00:00",
    "state": "ACCEPTED"
   }
  ],

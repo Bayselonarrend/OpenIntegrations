@@ -59,6 +59,39 @@ import Admonition from '@theme/Admonition';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ssh GetSettingsKI \
+              --host "172.33.0.34" \
+              --port "2222" \
+              --user "bayselonarrend" \
+              --prompts "['yes','12we3456!2154']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ssh GetSettingsKI ^
+              --host "172.33.0.34" ^
+              --port "2222" ^
+              --user "bayselonarrend" ^
+              --prompts "['yes','12we3456!2154']"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "auth_type": "keyboard_interactive",
+ "host": "172.33.0.13",
+ "port": 2222,
+ "username": "bayselonarrend",
+ "keyboard_responses": [
+  "yes",
+  "***"
+ ]
+}
+```

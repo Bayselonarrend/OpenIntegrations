@@ -122,8 +122,8 @@ FTP Command: `LIST`
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-xr-x    3 1000     1000         4096 Mar 25 08:54 new_dir",
-   "modified": "2026-03-25T08:54:00+00:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 May 02 11:27 new_dir",
+   "modified": "2026-05-02T11:27:00+00:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -132,8 +132,8 @@ FTP Command: `LIST`
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-xr-x    2 1000     1000         4096 Mar 25 08:54 another_one",
-     "modified": "2026-03-25T08:54:00+00:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 May 02 11:27 another_one",
+     "modified": "2026-05-02T11:27:00+00:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",
@@ -142,6 +142,9 @@ FTP Command: `LIST`
     }
    ]
   }
- ]
+ ],
+ "close_connection": {
+  "result": true
+ }
 }
 ```
