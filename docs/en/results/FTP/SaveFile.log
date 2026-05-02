@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/v43ztkkv.kfo.bin",
- "result": true
+ "filepath": "/tmp/1pc0h210.4jp.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

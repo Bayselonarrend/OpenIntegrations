@@ -1,3 +1,3 @@
 oint gdrive GetCommentList ^
   --token "***" ^
-  --object "13EXKYwf5ivhfAf6jlxDapbYLDw6FjNrC"
+  --object "13B0BY-bNEhL3vk5YwajzcQAiC-1Wfr7U"

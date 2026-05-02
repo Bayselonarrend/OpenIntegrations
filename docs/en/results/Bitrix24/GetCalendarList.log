@@ -2197,7 +2197,7 @@
    }
   },
   {
-   "ID": "2346",
+   "ID": "2358",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2206,13 +2206,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2346&sign=8b9f15a2bccd8a42ca7f43ea42f128e6&bx_hit_hash=GgseMB..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2358&sign=a47c650bbd4a8eab854940b549115c52&bx_hit_hash=GgseMB..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-05-02 13:52:00",
-   "TIMESTAMP_X": "2026-05-02 13:52:00",
+   "DATE_CREATE": "2026-05-02 15:10:00",
+   "TIMESTAMP_X": "2026-05-02 15:10:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2233,7 +2233,7 @@
    }
   },
   {
-   "ID": "2348",
+   "ID": "2360",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2242,13 +2242,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2348&sign=2bda54840acb99360ebf5fc43c15c945&bx_hit_hash=GgseMB..."
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=2360&sign=757a977f28d7d24786a3dcd8dc2cf9d4&bx_hit_hash=GgseMB..."
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-05-02 13:52:00",
-   "TIMESTAMP_X": "2026-05-02 13:52:00",
+   "DATE_CREATE": "2026-05-02 15:10:00",
+   "TIMESTAMP_X": "2026-05-02 15:10:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2270,13 +2270,13 @@
   }
  ],
  "time": {
-  "start": 1777719105,
-  "finish": 1777719105.60683,
-  "duration": 0.606829881668091,
+  "start": 1777723826,
+  "finish": 1777723826.90798,
+  "duration": 0.907978057861328,
   "processing": 0,
-  "date_start": "2026-05-02T10:51:45+00:00",
-  "date_finish": "2026-05-02T10:51:45+00:00",
-  "operating_reset_at": 1777719705,
+  "date_start": "2026-05-02T12:10:26+00:00",
+  "date_finish": "2026-05-02T12:10:26+00:00",
+  "operating_reset_at": 1777724426,
   "operating": 0
  }
 }
