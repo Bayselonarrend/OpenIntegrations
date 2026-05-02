@@ -1,7 +1,7 @@
 [
     {
         "version": "2.0.0",
-        "title": "Version 2.0.0 - .04.2026",
+        "title": "Version 2.0.0 - 02.05.2026",
         "summary_ru": "Методы работы с Websocket",
         "summary_en": "Methods of working with Websocket",
         "image": "media/Covers/WebSocket.png",
@@ -45,8 +45,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Добавлен новый вариант релиза для 1С:Предприятие - `.CF`",
-                "description_en": "Added new release variant for 1C:Enterprise - `.CF`"
+                "description_ru": "Добавлен новый вариант релиза для 1С:Предприятие - `.CF` (8.3.10)",
+                "description_en": "Added new release variant for 1C:Enterprise - `.CF` (8.3.10)"
             },
             {
                 "lib": "All",
@@ -57,8 +57,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Добавлена возможность вызова функций библиотеки с переопределением настроек HTTP-клиента",
-                "description_en": "Added ability to call library functions with HTTP client settings override"
+                "description_ru": "Добавлена возможность вызова функций библиотеки с [переопределением настроек](https://openintegrations.dev/docs/Start/Advanced-call) HTTP-клиента",
+                "description_en": "Added ability to call library functions with HTTP client [settings override](https://en.openintegrations.dev/docs/Start/Advanced-call)"
             },
             {
                 "lib": "All",
@@ -75,8 +75,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Добавлен встроенный MCP-сервер (stdio) в CLI версию",
-                "description_en": "Added built-in MCP server (stdio) to CLI version"
+                "description_ru": "Добавлен [встроенный MCP-сервер (stdio)](https://openintegrations.dev/docs/Start/CLI-version/mcp-server) в CLI версию",
+                "description_en": "Added [built-in MCP server (stdio)](https://en.openintegrations.dev/docs/Start/CLI-version/mcp-server) to CLI version"
             },
             {
                 "lib": "All",
