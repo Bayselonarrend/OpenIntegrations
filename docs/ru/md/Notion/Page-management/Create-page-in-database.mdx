@@ -80,8 +80,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion СоздатьСтраницуВБазу \
               --token "***" \
-              --base "35382aa7-fc4e-81e9-94d2-e173ec2e1298" \
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'05/01/2026 15:26:05','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "35482aa7-fc4e-8108-8a8d-dbf050094c81" \
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'05/02/2026 08:06:21','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
   
@@ -91,8 +91,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion СоздатьСтраницуВБазу ^
               --token "***" ^
-              --base "35382aa7-fc4e-81e9-94d2-e173ec2e1298" ^
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'05/01/2026 15:26:05','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "35482aa7-fc4e-8108-8a8d-dbf050094c81" ^
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'05/02/2026 08:06:21','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
 </Tabs>
@@ -101,9 +101,9 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "object": "page",
- "id": "35382aa7-fc4e-81ca-a82a-e645b3eaa9d2",
- "created_time": "2026-05-01T18:38:00Z",
- "last_edited_time": "2026-05-01T18:38:00Z",
+ "id": "35482aa7-fc4e-81a7-87ea-e0beb7e0bb64",
+ "created_time": "2026-05-02T09:31:00Z",
+ "last_edited_time": "2026-05-02T09:31:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -116,19 +116,19 @@ import Admonition from '@theme/Admonition';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "35382aa7-fc4e-8174-abdf-f7f83bf9fe8e"
+  "database_id": "35482aa7-fc4e-81e8-b764-e7ab104ce707"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Пользователь": {
-   "id": "%40HDG",
-   "type": "people",
-   "people": []
+  "Активен": {
+   "id": "%3AyIZ",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Описание": {
-   "id": "K%5DM%3C",
+   "id": "CwLQ",
    "type": "rich_text",
    "rich_text": [
     {
@@ -150,54 +150,8 @@ import Admonition from '@theme/Admonition';
     }
    ]
   },
-  "Картинка": {
-   "id": "XGaP",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "Активен": {
-   "id": "_KTP",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Номер": {
-   "id": "_w%3AG",
-   "type": "number",
-   "number": 1
-  },
-  "Дата создания": {
-   "id": "i%40Sy",
-   "type": "date",
-   "date": {
-    "start": "2026-05-01T12:38:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Статус": {
-   "id": "spva",
-   "type": "select",
-   "select": {
-    "id": "d9ecdc23-626b-4aa9-a4cd-1415dfcfe7ee",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Телефон": {
-   "id": "ytW%3C",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "Почта": {
-   "id": "%7BZew",
+   "id": "J%3FxY",
    "type": "rich_text",
    "rich_text": [
     {
@@ -218,6 +172,52 @@ import Admonition from '@theme/Admonition';
      "href": null
     }
    ]
+  },
+  "Картинка": {
+   "id": "Vw~e",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Статус": {
+   "id": "bKbG",
+   "type": "select",
+   "select": {
+    "id": "480be338-f4cb-4073-a76b-9ecf80024db7",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Пользователь": {
+   "id": "e%7BB%3E",
+   "type": "people",
+   "people": []
+  },
+  "Номер": {
+   "id": "qqTd",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "t%7CYM",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Дата создания": {
+   "id": "uRXv",
+   "type": "date",
+   "date": {
+    "start": "2026-05-02T09:31:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -243,9 +243,9 @@ import Admonition from '@theme/Admonition';
    ]
   }
  },
- "url": "https://app.notion.com/p/35382aa7fc4e81caa82ae645b3eaa9d2",
+ "url": "https://www.notion.so/35482aa7fc4e81a787eae0beb7e0bb64",
  "public_url": null,
  "archived": false,
- "request_id": "03c92421-5981-49e8-8868-4ade5ed1819b"
+ "request_id": "a0f0261b-b37f-449c-801b-de88e5da9c7e"
 }
 ```

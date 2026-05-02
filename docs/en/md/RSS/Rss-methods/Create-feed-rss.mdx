@@ -87,7 +87,7 @@ import Admonition from '@theme/Admonition';
               --name "Test RSS channel" \
               --descr "Test RSS channel description" \
               --link "https://example.com" \
-              --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'3/25/2026 6:01:58 PM','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'3/25/2026 6:01:59 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'05/02/2026 12:33:26','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'05/02/2026 12:33:26','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
   
@@ -99,12 +99,12 @@ import Admonition from '@theme/Admonition';
               --name "Test RSS channel" ^
               --descr "Test RSS channel description" ^
               --link "https://example.com" ^
-              --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'3/25/2026 6:01:58 PM','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'3/25/2026 6:01:59 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'05/02/2026 12:33:26','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'05/02/2026 12:33:26','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Result"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Test RSS channel</title>\r\n        <link>https://example.com</link>\r\n        <description>Test RSS channel description</description>\r\n        <lastBuildDate>Wed, 0,000,000,025 Mar 2026 18:01:59 +0000</lastBuildDate>\r\n        <item>\r\n            <title>First element</title>\r\n            <description>First element description</description>\r\n            <link>https://example.com/item1</link>\r\n            <pubDate>Wed, 0,000,000,025 Mar 2026 18:01:58 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-1</guid>\r\n        </item>\r\n        <item>\r\n            <title>Second element</title>\r\n            <description>Second element description</description>\r\n            <link>https://example.com/item2</link>\r\n            <pubDate>Wed, 0,000,000,025 Mar 2026 18:01:59 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-2</guid>\r\n        </item>\r\n    </channel>\r\n</rss>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<rss version=\"2.0\">\n    <channel>\n        <title>Test RSS channel</title>\n        <link>https://example.com</link>\n        <description>Test RSS channel description</description>\n        <lastBuildDate>Sat, 0,000,000,002 May 2026 12:33:26 +0000</lastBuildDate>\n        <item>\n            <title>First element</title>\n            <description>First element description</description>\n            <link>https://example.com/item1</link>\n            <pubDate>Sat, 0,000,000,002 May 2026 12:33:26 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink=\"false\">item-1</guid>\n        </item>\n        <item>\n            <title>Second element</title>\n            <description>Second element description</description>\n            <link>https://example.com/item2</link>\n            <pubDate>Sat, 0,000,000,002 May 2026 12:33:26 +0000</pubDate>\n            <author>test@example.com</author>\n            <guid isPermaLink=\"false\">item-2</guid>\n        </item>\n    </channel>\n</rss>"
 ```
