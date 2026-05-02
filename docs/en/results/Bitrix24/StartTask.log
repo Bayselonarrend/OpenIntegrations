@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10480",
+   "id": "10510",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-05-02T10:48:19+00:00",
+   "createdDate": "2026-05-02T12:03:32+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-05-02T10:48:32+00:00",
+   "changedDate": "2026-05-02T12:04:06+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-05-02T10:48:32+00:00",
-   "dateStart": "2026-05-02T10:48:32+00:00",
-   "deadline": "2026-05-03T10:48:00+00:00",
-   "startDatePlan": "2026-05-02T10:48:19+00:00",
+   "activityDate": "2026-05-02T12:04:06+00:00",
+   "dateStart": "2026-05-02T12:04:06+00:00",
+   "deadline": "2026-05-03T12:03:00+00:00",
+   "startDatePlan": "2026-05-02T12:03:32+00:00",
    "endDatePlan": "2026-05-02T21:00:00+00:00",
-   "guid": "{b61c65bc-d8f6-41a9-afb8-6a43b9af3447}",
+   "guid": "{818d8f83-bb80-464d-9337-c1c0d92978a0}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-05-02T10:48:32+00:00",
+   "statusChangedDate": "2026-05-02T12:04:06+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1777718912,
-  "finish": 1777718912.9496,
-  "duration": 0.949599027633667,
+  "start": 1777723446,
+  "finish": 1777723446.26098,
+  "duration": 0.260974884033203,
   "processing": 0,
-  "date_start": "2026-05-02T10:48:32+00:00",
-  "date_finish": "2026-05-02T10:48:32+00:00",
-  "operating_reset_at": 1777719512,
-  "operating": 0.213270902633667
+  "date_start": "2026-05-02T12:04:06+00:00",
+  "date_finish": "2026-05-02T12:04:06+00:00",
+  "operating_reset_at": 1777724046,
+  "operating": 0.169528007507324
  }
 }

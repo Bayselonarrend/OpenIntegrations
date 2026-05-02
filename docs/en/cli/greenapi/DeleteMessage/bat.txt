@@ -3,4 +3,4 @@
 oint greenapi DeleteMessage ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "***" ^
-  --message "3EB057125E507CFCAC3611"
+  --message "3EB0AF3D1BD4CD99E68922"

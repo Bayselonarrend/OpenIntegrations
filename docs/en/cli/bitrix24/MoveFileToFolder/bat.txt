@@ -1,5 +1,5 @@
 oint bitrix24 MoveFileToFolder ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fileid 54306 ^
-  --folderid 54316 ^
+  --fileid 56250 ^
+  --folderid 56260 ^
   --token "***"
