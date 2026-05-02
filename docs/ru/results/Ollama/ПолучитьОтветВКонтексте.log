@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-05-01T19:03:00.4623383Z",
+ "created_at": "2026-05-02T08:39:08.3736568Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2016. At that time, the platform was a web-based ..."
+  "content": "1C:Enterprise was released in several versions over time, with each version providing new features a..."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 2161007600,
- "load_duration": 35834300,
- "prompt_eval_count": 205,
- "prompt_eval_duration": 770679900,
- "eval_count": 96,
- "eval_duration": 1317938100
+ "total_duration": 3094031100,
+ "load_duration": 31340800,
+ "prompt_eval_count": 193,
+ "prompt_eval_duration": 619449600,
+ "eval_count": 157,
+ "eval_duration": 2384483300
 }
