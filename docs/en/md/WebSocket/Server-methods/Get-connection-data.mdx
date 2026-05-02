@@ -50,7 +50,43 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    // Server start
+    LaunchPort = 9894;
+    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+
+    If Not OPI_WebSocket.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    // Getting a list of active connections on the server
+    ConnectionList = OPI_WebSocket.GetConnectionList(ServerObject);
+
+    If Not ConnectionList["result"] Then
+        Raise OPI_Tools.JSONString(ConnectionList);
+    EndIf;
+
+    If ConnectionList["connections"].Count() = 0 Then
+        Raise "Connection list is empty";
+    Else
+        ConnectionID                         = ConnectionList["connections"][0]["connectionId"];
+    EndIf;
+
+    For N = 0 To 5 Do
+
+        // Client message send
+        CurrentMessage = StrTemplate("Message no. %1", N);
+        OPI_WebSocket.SendTextMessage(ClientObject, CurrentMessage);
+
+        // Receiving an incoming message on the server by ID
+        Result = OPI_WebSocket.GetConnectionData(ServerObject, ConnectionID, 5000);
+
+    EndDo;
+```
  
 
 

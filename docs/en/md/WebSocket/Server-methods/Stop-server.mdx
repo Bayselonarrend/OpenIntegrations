@@ -48,7 +48,12 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Port         = 9894;
+    ServerObject = OPI_WebSocket.StartServer(Port);
 
+    Result = OPI_WebSocket.StopServer(ServerObject);
+```
  
 
 
