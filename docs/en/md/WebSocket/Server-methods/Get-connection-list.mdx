@@ -51,7 +51,28 @@ The list displays active connections and closed connections with unprocessed dat
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    // Server start
+    LaunchPort = 9894;
+    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
 
+    // Creating multiple client connections
+    ConnectionAddress = "ws://127.0.0.1:9894";
+
+    Client1 = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Client2 = OPI_WebSocket.CreateConnection(ConnectionAddress);
+
+    If Not OPI_WebSocket.IsClientObject(Client1) Then
+        Raise OPI_Tools.JSONString(Client1);
+    EndIf;
+
+    If Not OPI_WebSocket.IsClientObject(Client2) Then
+        Raise OPI_Tools.JSONString(Client2);
+    EndIf;
+
+    // Getting a list of active connections on the server
+    Result = OPI_WebSocket.GetConnectionList(ServerObject);
+```
  
 
 

@@ -50,7 +50,43 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "wss://127.0.0.1:8443";
+    NeedProxy = True;
+    NeedTLS   = True;
 
+    Headers = New Map;
+    Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
+
+    If NeedTls Then
+        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+    EndIf;
+
+    If NeedProxy Then
+
+        ProxyAddress = "127.0.0.1";
+        ProxyPort    = "8071";
+        ProxyType    = "http";
+
+        ProxtUser     = "proxyuser";
+        ProxyPassword = "12we...";
+
+        ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
+            , ProxyPort
+            , ProxyType
+            , ProxtUser
+            , ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+
+    If OPI_WebSocket.IsClientObject(Connection) Then
+        Result = OPI_WebSocket.CloseConnection(Connection);
+    Else
+        Result = Connection;
+    EndIf;
+```
  
 
 

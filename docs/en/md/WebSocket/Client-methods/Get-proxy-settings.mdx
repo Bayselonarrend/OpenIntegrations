@@ -46,7 +46,16 @@ import Admonition from '@theme/Admonition';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    ProxyType = "http";
 
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "8071";
+    ProxyLogin    = "proxyuser";
+    ProxyPassword = "12we...";
+
+    Result = OPI_WebSocket.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+```
  
 
 
