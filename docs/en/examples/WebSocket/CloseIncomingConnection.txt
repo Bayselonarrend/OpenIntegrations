@@ -1,0 +1,21 @@
+    // Server start
+    LaunchPort = 9894;
+    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+
+    // Client connect to server
+    ConnectionAddress = "ws://127.0.0.1:9894";
+    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+
+    If Not OPI_WebSocket.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    // Client message send
+    Message = "Hello!";
+    OPI_WebSocket.SendTextMessage(ClientObject, Message);
+
+    // Receiving and closing connection on the server
+    FirstMessage = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    ConnectionID = FirstMessage["connectionId"];
+
+    Result = OPI_WebSocket.CloseIncomingConnection(ServerObject, ConnectionID, True);

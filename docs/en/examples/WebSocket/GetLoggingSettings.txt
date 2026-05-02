@@ -1,0 +1,1 @@
+    Result = OPI_WebSocket.GetLoggingSettings(True, 100, GetTempFileName());
