@@ -1,9 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "c6096db1-c3d6-4794-9c5e-7c6fe4edaa83",
-  "cdek_number": "1107202202",
-  "order_uuid": "bb815dba-094c-45ba-ac71-4d199af6dc8a",
+  "uuid": "d17d433b-e17a-419c-b8b3-ac3e67d01259",
+  "cdek_number": "1107202228",
+  "order_uuid": "13567cba-0858-410b-86a9-2b93ff585217",
   "intake_date": "2026-05-03",
+  "intake_number": "13311930",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -14,10 +15,14 @@
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Ivaniv Ivan",
+   "name": "Company",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "+79589441654"
+    },
+    {
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -36,17 +41,40 @@
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-05-02T12:15:10+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-05-02T12:15:10+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-02T10:55:23+00:00"
+    "date_time": "2026-05-02T12:15:10+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "4085243f-260c-4dc8-a900-33021400303b",
+    "package_id": "f579f314-95a8-46a8-bbdf-f2478729062b",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -56,10 +84,10 @@
  },
  "requests": [
   {
-   "request_uuid": "8073c857-be00-4996-93fb-8173c3ac8e27",
+   "request_uuid": "283a0266-9a81-48a3-b57e-8d55456c593d",
    "type": "CREATE",
-   "date_time": "2026-05-02T10:55:17+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-05-02T12:15:09+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }

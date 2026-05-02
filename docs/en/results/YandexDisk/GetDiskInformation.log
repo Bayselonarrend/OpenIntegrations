@@ -1,6 +1,6 @@
 ﻿{
  "total_space": 220117073920,
- "used_space": 59471387757,
+ "used_space": 59479843849,
  "trash_size": 54095565882,
  "max_file_size": 53687091200,
  "paid_max_file_size": 53687091200,
@@ -23,7 +23,7 @@
   "calendar": "disk:/Материалы встреч"
  },
  "is_paid": true,
- "revision": 1777717015645000,
+ "revision": 1777721688970440,
  "user": {
   "uid": "1573541518",
   "login": "bayselonarrend",

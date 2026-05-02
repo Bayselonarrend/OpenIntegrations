@@ -1,0 +1,5 @@
+oint ssh GetSettingsKI ^
+  --host "172.33.0.34" ^
+  --port "2222" ^
+  --user "bayselonarrend" ^
+  --prompts "['yes','12we3456!2154']"

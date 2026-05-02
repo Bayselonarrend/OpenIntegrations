@@ -11,5 +11,8 @@
   "TVFS": null,
   "UTF8": null
  },
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

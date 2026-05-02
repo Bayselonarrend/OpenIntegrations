@@ -1,6 +1,6 @@
 oint vkteams SendFile ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\r3v1ojt0.f02" ^
+  --file "/tmp/effruptv.dq4" ^
   --text "File caption" ^
   --filename "ImportantDocument.docx"
