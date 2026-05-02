@@ -2,4 +2,4 @@ oint telegram SendAudio \
   --token "***" \
   --chat "***" \
   --text "Строковое значение" \
-  --audio "C:\Users\bayselonarrend\AppData\Local\Temp\i1hl0led.u1q"
+  --audio "/tmp/5rwtvjg2.qu0"

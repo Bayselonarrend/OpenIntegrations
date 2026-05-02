@@ -1,4 +1,4 @@
 oint bitrix24 MarkFileAsDeleted ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fileid 54306 ^
+  --fileid 56250 ^
   --token "***"

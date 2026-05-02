@@ -1,12 +1,12 @@
 ﻿{
  "type": "outgoing",
- "idMessage": "3EB0C40369A0479FC0C02D",
- "timestamp": 1777720083,
+ "idMessage": "3EB0AF3D1BD4CD99E68922",
+ "timestamp": 1777724791,
  "typeMessage": "extendedTextMessage",
  "chatId": "***",
- "textMessage": "New message",
+ "textMessage": "New message text",
  "extendedTextMessage": {
-  "text": "New message",
+  "text": "New message text",
   "description": "",
   "title": "",
   "previewType": "None",
@@ -16,8 +16,8 @@
  },
  "statusMessage": "sent",
  "sendByApi": "***",
- "deletedMessageId": "3EB0D1A42C9D1A58FA34DF",
- "editedMessageId": "",
- "isEdited": false,
+ "deletedMessageId": "3EB0C183C1D0A353977175",
+ "editedMessageId": "3EB0F2855134279DB874DD",
+ "isEdited": true,
  "isDeleted": true
 }
