@@ -1,8 +1,8 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload54338": {
-    "id": 54338,
+   "upload56120": {
+    "id": 56120,
     "chatId": "***",
     "date": {},
     "type": "file",
@@ -24,10 +24,10 @@
      "viewerTypeClass": "BX.Disk.Viewer.UnifiedLinkItem",
      "viewerSeparateItem": true,
      "viewerExtension": "disk.viewer.unified-link-item",
-     "objectId": "54338",
+     "objectId": "56120",
      "imChatId": "***",
      "title": "Imortant doc.docx",
-     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/7HE2l7oZ0LcWE7VcFo5B",
+     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/GdUEio7AprwVPpsRpwRs",
      "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAct..."
     },
     "mediaUrl": {
@@ -41,11 +41,11 @@
    }
   },
   "DISK_ID": [
-   "54338"
+   "56120"
   ],
   "FILE_MODELS": {
-   "upload54338": {
-    "id": 54338,
+   "upload56120": {
+    "id": 56120,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -53,34 +53,34 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 54338,
-    "parentId": 54334,
+    "realObjectId": 56120,
+    "parentId": 56116,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "7HE2l7oZ0LcWE7VcFo5B",
+    "uniqueCode": "GdUEio7AprwVPpsRpwRs",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 37236,
+    "fileId": 38612,
     "size": 24071,
-    "etag": "824a3958f017d62742d5ab13347386ce",
+    "etag": "03bcf55ec8329ebde82b7c6e1bb6a57d",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=54338",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=54338&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=56120",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=56120&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 85162
+  "MESSAGE_ID": 89608
  },
  "time": {
-  "start": 1774449300,
-  "finish": 1774449300.14357,
-  "duration": 0.143569946289062,
+  "start": 1777719058,
+  "finish": 1777719058.91267,
+  "duration": 0.912673950195312,
   "processing": 0,
-  "date_start": "2026-03-25T17:35:00+03:00",
-  "date_finish": "2026-03-25T17:35:00+03:00",
-  "operating_reset_at": 1774449900,
+  "date_start": "2026-05-02T10:50:58+00:00",
+  "date_finish": "2026-05-02T10:50:58+00:00",
+  "operating_reset_at": 1777719658,
   "operating": 0
  }
 }

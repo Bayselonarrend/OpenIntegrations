@@ -1,9 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "453bcf47-4cf0-4790-8817-0cdc0eab2b58",
+  "uuid": "0f333320-b360-4447-9524-e541c98eb02b",
   "orders": [
    {
-    "order_uuid": "a42bcd3c-e156-4681-8d4d-3a158eabcf3f"
+    "order_uuid": "f0d206a3-aec0-4ce0-93a0-22b94c8b5a24"
    }
   ],
   "copy_count": 1,
@@ -13,15 +13,15 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-03-25T17:40:19+03:00"
+    "date_time": "2026-05-02T10:54:28+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "4002b449-be24-48f6-b4e8-64c59e45d5ea",
+   "request_uuid": "d08fdbfd-bb88-4b1c-80f7-bb2408d26693",
    "type": "CREATE",
-   "date_time": "2026-03-25T17:40:19+03:00",
+   "date_time": "2026-05-02T10:54:28+00:00",
    "state": "ACCEPTED"
   }
  ],
