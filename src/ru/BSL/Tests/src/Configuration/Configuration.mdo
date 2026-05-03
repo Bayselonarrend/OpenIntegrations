@@ -102,4 +102,5 @@
   <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
   <commonModules>CommonModule.OPItc_YandexID</commonModules>
   <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPItc_ZeroMQ</commonModules>
 </mdclass:Configuration>
