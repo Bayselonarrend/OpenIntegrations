@@ -102,6 +102,7 @@
   <commonModules>CommonModule.OPI_YandexDisk</commonModules>
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPI_ZeroMQ</commonModules>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_ЗапросыHTTP</commonModules>
   <commonModules>CommonModule.OPI_ЗапросыSQL</commonModules>
