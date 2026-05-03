@@ -140,7 +140,8 @@
      "RSS": true,
      "HTTP": true,
      "Core": true,
-     "WebSocket": true
+     "WebSocket": true,
+     "ZeroMQ": true
     }
    },
    "testIbPath": {
