@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e4fdeef2-4faf-40a3-b21b-83f979404a45">
+  <name>OPIt_ZeroMQ</name>
+  <synonym>
+    <key>ru</key>
+    <value>ZeroMQ</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
