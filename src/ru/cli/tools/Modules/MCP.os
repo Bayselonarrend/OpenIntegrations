@@ -195,7 +195,7 @@
 	Результат = Новый Структура;
 	Результат.Вставить("protocolVersion", Данные["params"]["protocolVersion"]);
 	Результат.Вставить("capabilities"   , Новый Структура("tools", Новый Структура));
-	Результат.Вставить("serverInfo"     , Новый Структура("name,version", "oint-mcp-server", "2.0.0"));
+	Результат.Вставить("serverInfo"     , Новый Структура("name,version", "oint-mcp-server", "2.1.0"));
 	
 	Ответ.Вставить("result", Результат);
 	

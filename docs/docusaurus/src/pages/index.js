@@ -8,7 +8,7 @@ import AlternatingFeatures from '@site/src/components/AlternatingFeatures';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-const currentVersion = '2.0.0';
+const currentVersion = '2.1.0';
 
 const FallingIcons = () => {
   const { iconList } = usePluginData('api-icons-plugin');

@@ -15,30 +15,30 @@ const cliInstallByOs = [
   {
     os: 'Debian / Ubuntu',
     commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_ru.deb
-sudo apt install -y ./oint_2.0.0_all_ru.deb`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_en.deb
-sudo apt install -y ./oint_2.0.0_all_en.deb`,
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_all_ru.deb
+sudo apt install -y ./oint_2.1.0_all_ru.deb`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_all_en.deb
+sudo apt install -y ./oint_2.1.0_all_en.deb`,
     },
   },
   {
     os: 'Fedora / RHEL',
     commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_ru.rpm
-sudo rpm -i oint-2.0.0-1.noarch_ru.rpm`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_en.rpm
-sudo rpm -i oint-2.0.0-1.noarch_en.rpm`,
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0-1.noarch_ru.rpm
+sudo rpm -i oint-2.1.0-1.noarch_ru.rpm`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0-1.noarch_en.rpm
+sudo rpm -i oint-2.1.0-1.noarch_en.rpm`,
     },
   },
   {
     os: 'Linux (AppImage)',
     commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_ru-x86_64.AppImage
-chmod +x ./oint-2.0.0_ru-x86_64.AppImage
-./oint-2.0.0_ru-x86_64.AppImage`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_en-x86_64.AppImage
-chmod +x ./oint-2.0.0_en-x86_64.AppImage
-./oint-2.0.0_en-x86_64.AppImage`,
+      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_ru-x86_64.AppImage
+chmod +x ./oint-2.1.0_ru-x86_64.AppImage
+./oint-2.1.0_ru-x86_64.AppImage`,
+      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_en-x86_64.AppImage
+chmod +x ./oint-2.1.0_en-x86_64.AppImage
+./oint-2.1.0_en-x86_64.AppImage`,
     },
   },
 ];
@@ -56,16 +56,16 @@ const DownloadPage = () => {
         {
           name: 'CFE (расширение)',
           files: {
-            ru: 'OpenIntegrations_2.0.0_ru.cfe',
-            en: 'OpenIntegrations_2.0.0_en.cfe',
+            ru: 'OpenIntegrations_2.1.0_ru.cfe',
+            en: 'OpenIntegrations_2.1.0_en.cfe',
           },
           desc: 'Файл расширения 1С в формате .cfe',
         },
         {
           name: 'CF (конфигурация)',
           files: {
-            ru: 'OpenIntegrations_2.0.0_ru.cf',
-            en: 'OpenIntegrations_2.0.0_en.cf',
+            ru: 'OpenIntegrations_2.1.0_ru.cf',
+            en: 'OpenIntegrations_2.1.0_en.cf',
           },
           desc: 'Файл конфигурации 1С в формате .cf',
         },
@@ -93,16 +93,16 @@ const DownloadPage = () => {
         {
           name: 'Пакет oint (.ospx)',
           files: {
-            ru: 'oint-2.0.0_ru.ospx',
-            en: 'oint-2.0.0_en.ospx',
+            ru: 'oint-2.1.0_ru.ospx',
+            en: 'oint-2.1.0_en.ospx',
           },
           desc: 'Пакет библиотеки для OneScript',
         },
         {
           name: 'Пакет oint-cli (.ospx)',
           files: {
-            ru: 'oint-cli-2.0.0_ru.ospx',
-            en: 'oint-cli-2.0.0_en.ospx',
+            ru: 'oint-cli-2.1.0_ru.ospx',
+            en: 'oint-cli-2.1.0_en.ospx',
           },
           desc: 'Пакет CLI-приложения для OneScript',
         },
@@ -114,32 +114,32 @@ const DownloadPage = () => {
         {
           name: 'Windows Installer',
           files: {
-            ru: 'oint_2.0.0_installer_ru.exe',
-            en: 'oint_2.0.0_installer_en.exe',
+            ru: 'oint_2.1.0_installer_ru.exe',
+            en: 'oint_2.1.0_installer_en.exe',
           },
           desc: 'Windows установщик CLI приложения с аддоном Melezh',
         },
         {
           name: 'Debian / Ubuntu (.deb)',
           files: {
-            ru: 'oint_2.0.0_all_ru.deb',
-            en: 'oint_2.0.0_all_en.deb',
+            ru: 'oint_2.1.0_all_ru.deb',
+            en: 'oint_2.1.0_all_en.deb',
           },
           desc: 'Пакет CLI приложения для систем на базе Debian',
         },
         {
           name: 'Fedora / RHEL (.rpm)',
           files: {
-            ru: 'oint-2.0.0-1.noarch_ru.rpm',
-            en: 'oint-2.0.0-1.noarch_en.rpm',
+            ru: 'oint-2.1.0-1.noarch_ru.rpm',
+            en: 'oint-2.1.0-1.noarch_en.rpm',
           },
           desc: 'Пакет CLI приложения для систем на базе RHEL',
         },
         {
           name: 'Linux (.AppImage)',
           files: {
-            ru: 'oint-2.0.0_ru-x86_64.AppImage',
-            en: 'oint-2.0.0_en-x86_64.AppImage',
+            ru: 'oint-2.1.0_ru-x86_64.AppImage',
+            en: 'oint-2.1.0_en-x86_64.AppImage',
           },
           desc: 'Единый исполняемый файл CLI формата AppImage',
         },
@@ -201,7 +201,7 @@ const DownloadPage = () => {
               Скачать последнюю версию
             </Heading>
             <p className={styles.downloadSubtitle}>
-              Текущая версия: 2.0.0 | Выберите подходящий язык и вариант поставки
+              Текущая версия: 2.1.0 | Выберите подходящий язык и вариант поставки
             </p>
           </div>
         </div>

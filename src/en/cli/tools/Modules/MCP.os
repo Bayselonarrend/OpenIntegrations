@@ -195,7 +195,7 @@ Function ProcessInitialize(Val Data)
 	Result = New Structure;
 	Result.Insert("protocolVersion", Data["params"]["protocolVersion"]);
 	Result.Insert("capabilities" , New Structure("tools", New Structure));
-	Result.Insert("serverInfo" , New Structure("name,version", "oint-mcp-server", "2.0.0"));
+	Result.Insert("serverInfo" , New Structure("name,version", "oint-mcp-server", "2.1.0"));
 	
 	Response.Insert("result", Result);
 	
