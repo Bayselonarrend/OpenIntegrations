@@ -1,4 +1,4 @@
-// OneScript: ./OInt/api/ws/Modules/OPI_ZeroMQ.os
+// OneScript: ./OInt/api/zeromq/Modules/OPI_ZeroMQ.os
 // Lib: ZeroMQ
 // CLI: none
 // Keywords: zeromq
