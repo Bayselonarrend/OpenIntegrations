@@ -1,5 +1,13 @@
 [
     {
+        "version": "2.1.0",
+        "title": "Version 2.1.0 - .06.2026",
+        "summary_ru": "Методы работы с ZeroMQ",
+        "summary_en": "Methods of working with ZeroMQ",
+        "image": "media/Covers/WebSocket.png",
+        "changes": []
+    },
+    {
         "version": "2.0.0",
         "title": "Version 2.0.0 - 02.05.2026",
         "summary_ru": "Методы работы с Websocket",
@@ -23,7 +31,7 @@
                 "icon": "media/WebSocket.png",
                 "description_ru": "Методы сервера (8 функции)",
                 "description_en": "Server methods (8 functions)"
-            },            
+            },
             {
                 "lib": "HTTP",
                 "icon": "media/HTTP.png",
