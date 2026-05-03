@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>ZeroMQ (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с ZeroMQ из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

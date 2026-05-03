@@ -10050,7 +10050,7 @@
 "Получает информацию о выбранной модели": "Gets information about the model",
 "Перемещает один каталог внутрь другого": "Moves one folder inside another",
 "Доп заголовки запроса, если необходимо": "Additional request headers, if necessary",
-"Модуль для работы с SFTP из набора ОПИ": "Module for working with SFTP from the OpenIntegrations package",
+"Модуль для работы с SFTP из набора ОПИ": "SFTP Module of OpenIntegrations",
 "Создает твит с произвольным содержимым": "Creates a tweet with custom content",
 "Признак использования AWS4 авторизации": "Flag to use AWS4 authorization",
 "Получить элемент чеклиста задачи по ID": "Gets tasks checklist element by ID",
@@ -10479,9 +10479,9 @@
 "ID поста, используемого в качестве рекламы": "ID of the post used for advertising",
 "Создает системное уведомление пользователю": "Creates a system notification to the user",
 "Устанавливает Webhook для приема сообщений": "Sets a webhook to receive messages",
-"Модуль для работы с Airtable из набора ОПИ": "Module for working with Airtable from the Open Integrations Package",
+"Модуль для работы с Airtable из набора ОПИ": "Airtable Module of OpenIntegrations",
 "Время удержания модели в памяти в секундах": "Model hold time in seconds",
-"Модуль для работы с Bitrix24 из набора ОПИ": "Module for working with Bitrix24 from the Open Integrations Package",
+"Модуль для работы с Bitrix24 из набора ОПИ": "Bitrix24 Module of OpenIntegrations",
 "Отображать ответ как предупреждение (alert": "Display the answer as an alert",
 "Перемещает файл в корзину удаляемых файлов": "Move file to recycle bin",
 "Modules/internal/Classes/OPI_HTTPКлиент.os": "Modules/internal/Classes/OPI_HTTPClient.os",
@@ -11192,7 +11192,7 @@
 "ID чата (chatXXX) или пользователя (XXX) для диалога": "Chat ID (as chatXXX) or User ID (as XXX)",
 "Информация о заказе](@api-docs.cdek.ru/29923975.html": "Order details](@api-docs.cdek.ru/33828849.html",
 "Основное измерение при заполнении диапазона массивом": "Main dimension when filling the array range",
-"Модуль для работы с Max через GreenAPI из набора ОПИ": "Module for working with Max via GreenAPI from the OpenIntegrations set",
+"Модуль для работы с Max через GreenAPI из набора ОПИ": "Max via GreenAPI Module of OpenIntegrations",
 "Добавляет нового участника в выбранный групповой чат": "Adds a new member to the selected group chat",
 "Здесь собрано определение данных для работы с VK API": "Here is a collection of data definitions for working with the VK API",
 "Ошибка получения авторизационных данных из структуры": "Error of obtaining authorization data from the structure",
@@ -12713,5 +12713,6 @@
 "Не рекомендуется использовать методы служебных модулей в других местах вашей конфигурации (если вы собираетесь обновляться до новых версий в дальнейшем). Для сохранения обратной совместимости, количество/назначение параметров и типы возвращаемых значений для методов работы с API не изменяются, но это не применимо к служебным модулям, которые могут изменяться как угодно для оптимизации и дополнения под новые нужды. Если вам необходим функционал из служебных модулей, рекомендуется скопировать его себе отдельно": "It is not recommended to use the methods of utility modules in other parts of your configuration (if you plan to update to new versions in the future). To maintain backward compatibility, the number/purpose of parameters and the return types for API interaction methods do not change, but this does not apply to utility modules, which can be modified in any way for optimization and adaptation to new requirements. If you need functionality from the utility modules, it is recommended to copy it separately",
 "Ввести домееное имя и URL обработчика перенаправлений. Тут нужно отметить, что данный механизм создания приложений - новый. Еще недавно приложения VK создавались иначе и иметь redirect_url для них было не нужно. На данный момент не совсем понятно, зачем он нужен нам для серверного приложения - просто такого понятия как серверное приложение у VK теперь нет. Теоретически, туда можно вписать что угодно - для работы с библиотекой в получении обратных данных нет необходимости. Однако, с течением времени, это может измениться": "Enter the domain name and the URL of the redirect handler. It's worth noting that this mechanism for creating VK applications is new. Until recently, VK applications were created differently, and having a redirect URL was unnecessary. At the moment, it's not entirely clear why it's needed for our server application - VK no longer distinguishes server applications as such. Theoretically, you can enter anything there - there is no need for receiving callback data to work with the library. However, this may change over time",
 "Перечень необходимых данных в виде структуры содержится в функции *ПолучитьСтандартныеПараметры()*. Вы можете указывать значения параметров прямо в ней или же передавать их структурой при вызове любых других методов библиотеки в качестве необязательного параметра *Параметры* (последний во всех методах билиотеки). В последнем случае стандартные параметры будут перезаписаны по ключам теми, которые переданы при вызове метода. Перезаписаны будут только совпадающие по ключам данные. Если какой то параметр есть в наборе стандартных, но не был передан при вызове метода, то он сохранит стандартное значение": "The list of necessary data in the form of a structure is contained in the function *GetStandardParameters()*. You can specify parameter values directly within it or pass them as a structure when calling any other library methods as an optional parameter *Parameters* (the last one in all library methods). In the latter case, the standard parameters will be overwritten by the ones passed during the method call. Only the data with matching keys will be overwritten. If a parameter exists in the standard set but was not passed during the method call, it will retain its default value",
-"ОбъектКомпоненты": "AddInObject"
+"ОбъектКомпоненты": "AddInObject",
+"Модуль для работы с ZeroMQ из набора ОПИ": "ZeroMQ Module of OpenIntegrations"
 }
