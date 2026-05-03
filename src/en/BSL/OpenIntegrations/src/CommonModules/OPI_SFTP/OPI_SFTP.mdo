@@ -5,7 +5,7 @@
     <key>en</key>
     <value>SFTP (OpenIntegrations)</value>
   </synonym>
-  <comment>Module for working with SFTP from the OpenIntegrations package</comment>
+  <comment>SFTP Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

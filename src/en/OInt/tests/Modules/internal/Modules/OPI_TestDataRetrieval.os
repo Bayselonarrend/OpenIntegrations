@@ -155,6 +155,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
     Sections.Insert("WebSocket"      , 5);
+    Sections.Insert("ZeroMQ"         , 5);
     Sections.Insert("GreenAPI"       , 5);
     Sections.Insert("GreenMax"       , 5);
     Sections.Insert("Ollama"         , 5);
@@ -209,6 +210,7 @@ Function GetTestTable(Val TestModule = "") Export
     GRPC      = "GRPC";
     CHouse    = "ClickHouse";
     RSS       = "RSS";
+    ZMQ       = "ZeroMQ";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");

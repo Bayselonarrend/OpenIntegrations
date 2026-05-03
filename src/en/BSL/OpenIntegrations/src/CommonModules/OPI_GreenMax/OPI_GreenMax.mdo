@@ -5,7 +5,7 @@
     <key>en</key>
     <value>GreenAPI Max (OpenIntegrations)</value>
   </synonym>
-  <comment>Module for working with Max via GreenAPI from the OpenIntegrations set</comment>
+  <comment>Max via GreenAPI Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

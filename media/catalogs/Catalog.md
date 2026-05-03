@@ -35,4 +35,5 @@
 |![VK Teams](../VKTeams.png)| `VK Teams`| vkteams, vk teams |
 |![WebSocket](../WebSocket.png)| `WebSocket`| websocket, ws |
 |![Yandex.Disk](../YandexDisk.png)| `Yandex.Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
+|![ZeroMQ](../ZeroMQ.png)| `ZeroMQ`| zeromq |
 |![HTTP](../HTTP.png)| `HTTP`| http, https |
