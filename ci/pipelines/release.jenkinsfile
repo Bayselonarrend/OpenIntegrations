@@ -14,7 +14,7 @@ pipeline {
 
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: '2.0.0/*'
+                archiveArtifacts artifacts: '2.1.0/*'
             }
         }
     }
