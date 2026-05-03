@@ -1,4 +1,11 @@
-// OneScript: ./OInt/tools/main/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
+// OneScript: ./OInt/api/zeromq/Modules/OPI_ZeroMQ.os
+// Lib: ZeroMQ
+// CLI: none
+// Keywords: zeromq
+
+// DocsCategory: Exchange
+// DocsNameRU: ZeroMQ
+// DocsNameEN: ZeroMQ
 
 // MIT License
 
@@ -22,21 +29,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// BSLLS:CommonModuleMissingAPI-off
-// BSLLS:CodeOutOfRegion-off
-// BSLLS:UsingServiceTag-off
-
 // https://github.com/Bayselonarrend/OpenIntegrations
 
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:MagicNumber-off
+// BSLLS:DuplicateStringLiteral-off
+
+//@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+//@skip-check method-too-many-params
 
-Function GetHashSum() Export
+#Использовать "../../../tools/main"
+#Использовать "../../../tools/http"
 
-    LastBuildHash  = "7C06F955E6900FD6C889ACB1AF292C0E534D3219CE8DCAC47B8C932851715B32";
+#Область ПрограммныйИнтерфейс
 
-    Return LastBuildHash;
+#Область Общие
 
-EndFunction
+#КонецОбласти
+
+#КонецОбласти
 
 #Region Alternate
 
