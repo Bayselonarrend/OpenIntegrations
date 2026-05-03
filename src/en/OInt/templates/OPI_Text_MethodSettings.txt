@@ -1194,6 +1194,65 @@
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
   }
  },
+ "OPI_FTP": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "CloseConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetWelcomeMessage": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetProtocolFeatureList": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "Ping": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteCustomCommand": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteArbitraryCommand": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetObjectSize": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "UpdatePath": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ListObjects": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "CreateNewDirectory": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteDirectory": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ClearDirectory": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetCurrentDirectory": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ChangeCurrentDirectory": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "UploadFile": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteFile": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "SaveFile": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetFileData": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
  "OPI_GoogleCalendar": {
   "CreateCalendar": {
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
@@ -1737,6 +1796,32 @@
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
   }
  },
+ "OPI_GRPC": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteMethod": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetServiceList": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetMethodList": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetMethod": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ProcessServerStream": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ProcessClientStream": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ProcessBidirectionalStream": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
  "OPI_GoogleSheets": {
   "CreateSpreadsheet": {
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
@@ -1782,6 +1867,102 @@
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
    "timeout": "Request execution timeout",
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_MongoDB": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteCommand": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetListOfBases": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetDatabase": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteDatabase": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetCollectionList": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "CreateCollection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteCollection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "InsertDocuments": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "UpdateDocuments": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetDocuments": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteDocuments": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetCursor": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetDocumentBatch": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "CreateUser": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "UpdateUser": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetUsers": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetDatabaseUsers": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteUser": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "CreateRole": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "UpdateRole": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GetRoles": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteRole": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "GrantRoles": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "RevokeRoles": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
+ "OPI_MSSQL": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteSQLQuery": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DeleteDatabase": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
+ "OPI_MySQL": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteSQLQuery": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
   }
  },
  "OPI_Neocities": {
@@ -2040,6 +2221,25 @@
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
    "timeout": "Request execution timeout",
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_PostgreSQL": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteSQLQuery": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "DisableAllDatabaseConnections": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
+ "OPI_RCON": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteCommand": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
   }
  },
  "OPI_ReportPortal": {
@@ -2536,6 +2736,25 @@
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
    "timeout": "Request execution timeout",
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_SQLite": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ExecuteSQLQuery": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ConnectExtension": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  }
+ },
+ "OPI_TCP": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+  },
+  "ProcessRequest": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
   }
  },
  "OPI_Telegram": {
@@ -3134,6 +3353,11 @@
    "proxy": "InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication",
    "timeout": "Request execution timeout",
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
+  }
+ },
+ "OPI_WebSocket": {
+  "CreateConnection": {
+   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
   }
  },
  "OPI_YandexDisk": {
