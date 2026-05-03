@@ -472,3 +472,4 @@ opsx
 msize
 логировании
 keepalive
+inproc
