@@ -1,0 +1,74 @@
+.TH OINT 1 "2026\-05\-03" "Open Integrations" "User Commands"
+.SH NAME
+oint \- Open Integrations CLI (OneScript integrations from the terminal)
+.SH SYNOPSIS
+.B oint
+.RI [\| OPTIONS \| \&... \|]
+.br
+.B oint
+.I library
+.RI [\| METHOD \|]
+.RI [\| OPTIONS \| \&... \|]
+.SH DESCRIPTION
+.B oint
+(OInt CLI) invokes Open Integrations
+.RI (\(lqOPI\(rq)
+library methods from the command line using OneScript beneath the launcher.
+Specify an integration
+.I library
+name and a
+.I METHOD
+within that library, then optional flags and positional values for arguments.
+Calling
+.B oint
+without a library, or calling a library without a method, or calling a method
+without parameters, shows contextual help \(em similar to requesting detailed
+topics with
+\fB\-\-help\fR where applicable.
+
+Full reference with examples lives on the documentation site listed under
+\fBSEE ALSO\fR below.
+
+.SH OPTIONS
+.TP
+.BR \-\-help
+Show help for the current scope (whole program, selected library, or method).
+Equivalent to invoking the matching level without arguments, where implemented.
+.TP
+.BR \-\-debug
+Produce more verbose runtime diagnostics during execution.
+.TP
+.BR \-\-config\fR [\fIFILE\fR]
+Additional invocation settings.
+When given without a value, lists available extended\-call configuration keys.
+.TP
+.BR \-\-out\fR \fIFILE\fR
+Write structured or binary command output (including binary payloads) to
+.IR FILE .
+
+.SH EXAMPLES
+Show the top\-level launcher help:
+.PP
+.nf
+.RS
+.B oint
+.RE
+.fi
+
+List methods for one library (substitute real library alias):
+.PP
+.nf
+.RS
+.B oint\fR \fIYourLibrary\fR
+.RE
+.fi
+
+.SH SEE ALSO
+Documentation and method references:
+.br
+\fIhttps://openintegrations.dev\fR
+.PP
+OneScript interpreter:
+.br
+\fBoscript\fR(1)
+
