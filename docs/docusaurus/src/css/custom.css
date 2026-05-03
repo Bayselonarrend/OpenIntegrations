@@ -601,6 +601,7 @@ li > a.menu__link {
 .VKTeams a::before,
 .WebSocket a::before,
 .YandexDisk a::before,
+.ZeroMQ a::before,
 .HTTP a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
@@ -744,6 +745,10 @@ li > a.menu__link {
 
 .YandexDisk > div > a::before{
   content: url(../../static/img/APIs/small/YandexDisk.png);
+}
+
+.ZeroMQ > div > a::before{
+  content: url(../../static/img/APIs/small/ZeroMQ.png);
 }
 
 .HTTP > div > a::before{

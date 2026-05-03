@@ -76,15 +76,15 @@
 // Получает данные лога сервера (при включенном логировании в память)
 //
 // Параметры:
-//  ОбъектСервера - Произвольный - Объект компоненты сервера или клиента                      - srv
-//  КакСтрока     - Булево       - Истина > возвращает лог одной строкой, Ложь > как массив   - str
-//  ЧислоСобытий  - Число        - Число последних событий для получения. 0 > без ограничений - count
+//  ОбъектКомпоненты - Произвольный - Объект компоненты сервера или клиента                      - srv
+//  КакСтрока        - Булево       - Истина > возвращает лог одной строкой, Ложь > как массив   - str
+//  ЧислоСобытий     - Число        - Число последних событий для получения. 0 > без ограничений - count
 //
 // Возвращаемое значение:
 //  Строка, Соответствие Из КлючИЗначение - Лог как строка или соответствие с полным результатом выполнения
-Функция ПолучитьЛог(Знач ОбъектСервера, Знач КакСтрока = Ложь, Знач ЧислоСобытий = 100) Экспорт
+Функция ПолучитьЛог(Знач ОбъектКомпоненты, Знач КакСтрока = Ложь, Знач ЧислоСобытий = 100) Экспорт
 
-    Возврат OPI_Компоненты.ПолучитьЛог(ОбъектСервера
+    Возврат OPI_Компоненты.ПолучитьЛог(ОбъектКомпоненты
         , КакСтрока
         , ЧислоСобытий);
 
@@ -585,8 +585,8 @@ Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val F
     Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
 EndFunction
 
-Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
-    Return ПолучитьЛог(ServerObject, AsString, EventCount);
+Function GetLog(Val AddInObject, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(AddInObject, AsString, EventCount);
 EndFunction
 
 Function CreateConnection(Val Address, Val Tls = Undefined, Val Proxy = Undefined, Val Headers = Undefined, Val Logging = Undefined) Export

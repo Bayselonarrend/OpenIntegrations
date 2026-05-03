@@ -60,11 +60,13 @@
   <commonModules>CommonModule.OPIt_YandexDisk</commonModules>
   <commonModules>CommonModule.OPIt_YandexID</commonModules>
   <commonModules>CommonModule.OPIt_YandexMetrika</commonModules>
+  <commonModules>CommonModule.OPIt_ZeroMQ</commonModules>
   <commonModules>CommonModule.OPItc_Airtable</commonModules>
   <commonModules>CommonModule.OPItc_Bitrix24</commonModules>
   <commonModules>CommonModule.OPItc_BuildHash</commonModules>
   <commonModules>CommonModule.OPItc_CDEK</commonModules>
   <commonModules>CommonModule.OPItc_ClickHouse</commonModules>
+  <commonModules>CommonModule.OPItc_Core</commonModules>
   <commonModules>CommonModule.OPItc_Dropbox</commonModules>
   <commonModules>CommonModule.OPItc_FTP</commonModules>
   <commonModules>CommonModule.OPItc_GoogleCalendar</commonModules>
@@ -100,5 +102,5 @@
   <commonModules>CommonModule.OPItc_YandexDisk</commonModules>
   <commonModules>CommonModule.OPItc_YandexID</commonModules>
   <commonModules>CommonModule.OPItc_YandexMetrika</commonModules>
-  <commonModules>CommonModule.OPItc_Core</commonModules>
+  <commonModules>CommonModule.OPItc_ZeroMQ</commonModules>
 </mdclass:Configuration>

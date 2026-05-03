@@ -76,15 +76,15 @@ EndFunction
 // Retrieves server log data (with logging to memory enabled)
 //
 // Parameters:
-// ServerObject - Arbitrary - Server or client component object                          - srv
-// AsString     - Boolean   - True > returns log as a single string, False > as an array - str
-// EventCount   - Number    - Number of recent events to retrieve. 0 > no limits         - count
+// AddInObject - Arbitrary - Server or client component object                          - srv
+// AsString    - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount  - Number    - Number of recent events to retrieve. 0 > no limits         - count
 //
 // Returns:
 // String, Map Of KeyAndValue - Log as a string or a map with the full execution result
-Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
+Function GetLog(Val AddInObject, Val AsString = False, Val EventCount = 100) Export
 
-    Return OPI_AddIns.GetLog(ServerObject
+    Return OPI_AddIns.GetLog(AddInObject
         , AsString
         , EventCount);
 

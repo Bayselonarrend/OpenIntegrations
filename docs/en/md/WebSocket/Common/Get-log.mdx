@@ -17,11 +17,11 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export`
+`Function GetLog(Val AddInObject, Val AsString = False, Val EventCount = 100) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | ServerObject | - | Arbitrary | &#x2714; | Server or client component object |
+  | AddInObject | - | Arbitrary | &#x2714; | Server or client component object |
   | AsString | - | Boolean | &#x2716; | True > returns log as a single string, False > as an array |
   | EventCount | - | Number | &#x2716; | Number of recent events to retrieve. 0 > no limits |
 
