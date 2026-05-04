@@ -1,32 +1,31 @@
+mod backend;
 mod methods;
 
+use common_binary::vault::BinaryVault;
 use common_core::*;
-use common_utils::utils::json_success;
+use std::sync::{Arc, Mutex};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
-    name!("SetSocketType"), // 0
-    name!("Connect"),      // 1
-    name!("Bind"),         // 2
-    name!("Subscribe"),    // 3
-    name!("Send"),         // 4
-    name!("Recv"),         // 5
-    name!("Close"),        // 6
-    name!("GetLastError"), // 7
+    name!("Connect"),                // 0
+    name!("Bind"),                   // 1
+    name!("Subscribe"),              // 2
+    name!("Send"),                   // 3
+    name!("Recv"),                   // 4
+    name!("Close"),                  // 5
+    name!("RetrieveBinaryFromVault"), // 6
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 1,
-        1 => 1,
-        2 => 1,
-        3 => 1,
-        4 => 2,
-        5 => 1,
-        6 => 0,
-        7 => 0,
+        0 | 1 => 1, // Connect(endpoint) / Bind(endpoint)
+        2 => 1,     // Subscribe
+        3 => 2,     // Send(data, flags)
+        4 => 1,     // Recv
+        5 => 0,     // Close
+        6 => 1,     // RetrieveBinaryFromVault
         _ => 0,
     }
 }
@@ -40,91 +39,75 @@ pub fn cal_func(
 
     match num {
         0 => {
-            let t = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_socket_type(&t))
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.connect(&ep))
         }
         1 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.stub_connect(&ep))
+            Box::new(obj.bind(&ep))
         }
         2 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.stub_bind(&ep))
+            let prefix = params[0].get_string().unwrap_or_default();
+            Box::new(obj.subscribe(&prefix))
         }
         3 => {
-            let prefix = params[0].get_string().unwrap_or_default();
-            Box::new(obj.stub_subscribe(&prefix))
-        }
-        4 => {
             let data = params[0].get_blob().unwrap_or(&empty).to_vec();
             let flags = params[1].get_i32().unwrap_or(0);
-            Box::new(obj.stub_send(data, flags))
+            Box::new(obj.send(data, flags))
         }
-        5 => {
+        4 => {
             let timeout_ms = params[0].get_i32().unwrap_or(0);
-            Box::new(obj.stub_recv(timeout_ms))
+            Box::new(obj.recv(timeout_ms))
         }
-        6 => Box::new(obj.close()),
-        7 => Box::new(obj.last_error.clone()),
+        5 => Box::new(obj.close()),
+        6 => {
+            let key = params[0].get_string().unwrap_or_default();
+            Box::new(obj.retrieve_binary_from_vault(&key))
+        }
         _ => Box::new(false),
     }
 }
 
-pub const PROPS: &[&[u16]] = &[
-    name!("SocketType"),
-    name!("Endpoint"),
-];
+pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
-    pub socket_type: String,
-    pub endpoint: String,
-    pub last_error: String,
+    vault: BinaryVault,
+    backend: Arc<Mutex<backend::ZeroMqBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            socket_type: String::new(),
-            endpoint: String::new(),
-            last_error: String::new(),
+            vault: BinaryVault::new(),
+            backend: Arc::new(Mutex::new(backend::ZeroMqBackend::new())),
         }
     }
 
-    pub fn clear_error_on_success(&mut self) {
-        self.last_error.clear();
-    }
-
-    pub fn save_error_str(&mut self, msg: &str) {
-        self.last_error = common_utils::utils::json_error(msg);
-    }
-
-    pub fn set_socket_type(&mut self, socket_type: &str) -> String {
-        self.socket_type = socket_type.to_owned();
-        self.clear_error_on_success();
-        json_success()
-    }
-
-    pub fn close(&mut self) -> bool {
-        self.endpoint.clear();
-        self.clear_error_on_success();
-        true
-    }
-
-    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
-        match index {
-            0 => &self.socket_type as &dyn getset::ValueType as *const _,
-            1 => &self.endpoint as &dyn getset::ValueType as *const _,
-            _ => panic!("Index out of bounds"),
-        }
+    pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {
+        panic!("This add-in exposes no exported properties.")
     }
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType {
         self.get_field_ptr(index) as *mut _
     }
+
+    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
+        self.vault
+            .retrieve(&vault_key.to_string())
+            .unwrap_or_else(|_| Vec::new())
+    }
+
+    pub(crate) fn lock_backend(&self) -> Result<std::sync::MutexGuard<'_, backend::ZeroMqBackend>, String> {
+        self.backend
+            .lock()
+            .map_err(|e| format!("{}", e))
+    }
 }
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        let _ = self.close();
+        if let Ok(guard) = self.backend.lock() {
+            let _ = guard.close_socket();
+        }
     }
 }
