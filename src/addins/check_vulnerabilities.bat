@@ -25,7 +25,7 @@ if %ERRORLEVEL% neq 0 (
 )
 
 REM List of Rust project directories
-set "PROJECTS=crypto ftp grpc mongodb mssql mysql postgres rcon sqlite ssh tcp_client tcp_server"
+set "PROJECTS=crypto ftp grpc mongodb mssql mysql postgres rcon sqlite ssh tcp_client tcp_server zeromq"
 
 echo.
 echo Found projects to check:
