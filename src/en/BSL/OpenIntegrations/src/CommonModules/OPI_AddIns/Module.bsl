@@ -48,16 +48,16 @@
 
 #Region Main
 
-Function GetAddIn(Val AddInName, Val Class = "Main", NoIsolated = False) Export
+Function GetAddIn(Val AddInName, Val Class = "Main", NotIsolated = False) Export
 
     AddIn     = Undefined;
     Error     = "";
     AddInName = StrTemplate("OPI_%1", AddInName);
 
-    If NoIsolated Or Not InitializeAddIn(AddInName, Class, AddIn) Then
+    If NotIsolated Or Not InitializeAddIn(AddInName, Class, AddIn) Then
 
         Error = Undefined;
-        AddIn = AttachAddInOnServer(AddInName, Class, Error, NoIsolated);
+        AddIn = AttachAddInOnServer(AddInName, Class, Error, NotIsolated);
 
         If ValueIsFilled(Error) Then
             FormAddInException(Error);
@@ -83,7 +83,7 @@ Function FileTransferRequired() Export
     // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB
     // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
 
-    // UPD: NoIsolated works
+    // UPD: NotIsolated works
 
     // Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
 
@@ -299,7 +299,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName, Val Class, Error, NoIsolated)
+Function AttachAddInOnServer(Val AddInName, Val Class, Error, NotIsolated)
 
     If OPI_Tools.IsOneScript() Then
         TemplateName = StrTemplate("%1%2.zip"         , AddInsFolderOS(), AddInName);
@@ -308,7 +308,7 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error, NoIsolated)
     EndIf;
 
     Try
-        AttachAddInWithMode(TemplateName, AddInName, NoIsolated);
+        AttachAddInWithMode(TemplateName, AddInName, NotIsolated);
         AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
         Error = Undefined;
         Return AddIn;
@@ -319,7 +319,7 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error, NoIsolated)
 
 EndFunction
 
-Function AttachAddInWithMode(TemplateName, AddInName, ForceNonIsolated)
+Function AttachAddInWithMode(TemplateName, AddInName, ForceNotIsolated)
 
     IsOneScript = OPI_Tools.IsOneScript();
 
@@ -345,7 +345,7 @@ Function AttachAddInWithMode(TemplateName, AddInName, ForceNonIsolated)
 
     EndIf;
 
-    TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion And (TypeRequieredBySystem Or ForceNonIsolated);
+    TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion And (TypeRequieredBySystem Or ForceNotIsolated);
 
     If Not TypeRequiered Then
 
@@ -360,7 +360,7 @@ Function AttachAddInWithMode(TemplateName, AddInName, ForceNonIsolated)
         // BSLLS:UnusedLocalVariable-off
 
         //@skip-check module-unused-local-variable
-        ConnectionType = AddInConnectionType.NoIsolated;
+        ConnectionType = AddInConnectionType.NotIsolated;
         //@skip-check server-execution-safe-mode
 
         // BSLLS:UnusedLocalVariable-on
