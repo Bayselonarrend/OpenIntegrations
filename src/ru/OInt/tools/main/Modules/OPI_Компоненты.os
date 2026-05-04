@@ -417,8 +417,8 @@
 
 #Region Alternate
 
-Function GetAddIn(Val AddInName, Val Class = "Main", NoIsolated = False) Export
-    Return ПолучитьКомпоненту(AddInName, Class, NoIsolated);
+Function GetAddIn(Val AddInName, Val Class = "Main", NotIsolated = False) Export
+    Return ПолучитьКомпоненту(AddInName, Class, NotIsolated);
 EndFunction
 
 Function IsAddIn(Val Value) Export

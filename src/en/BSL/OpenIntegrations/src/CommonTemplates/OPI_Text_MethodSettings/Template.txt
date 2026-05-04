@@ -1196,61 +1196,61 @@
  },
  "OPI_FTP": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "CloseConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetWelcomeMessage": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetProtocolFeatureList": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "Ping": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteCustomCommand": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteArbitraryCommand": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetObjectSize": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "UpdatePath": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ListObjects": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "CreateNewDirectory": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteDirectory": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ClearDirectory": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetCurrentDirectory": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ChangeCurrentDirectory": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "UploadFile": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteFile": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "SaveFile": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetFileData": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_GoogleCalendar": {
@@ -1798,28 +1798,28 @@
  },
  "OPI_GRPC": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteMethod": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetServiceList": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetMethodList": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetMethod": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ProcessServerStream": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ProcessClientStream": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ProcessBidirectionalStream": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_GoogleSheets": {
@@ -1871,98 +1871,185 @@
  },
  "OPI_MongoDB": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteCommand": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetListOfBases": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetDatabase": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteDatabase": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetCollectionList": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "CreateCollection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteCollection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "InsertDocuments": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "UpdateDocuments": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetDocuments": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteDocuments": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetCursor": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetDocumentBatch": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "CreateUser": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "UpdateUser": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetUsers": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetDatabaseUsers": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteUser": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "CreateRole": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "UpdateRole": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetRoles": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteRole": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GrantRoles": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "RevokeRoles": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_MSSQL": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteSQLQuery": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateDatabase": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DeleteDatabase": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "ClearTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetTableInformation": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "UpdateRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecordsFilterStructure": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_MySQL": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteSQLQuery": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateDatabase": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteDatabase": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "ClearTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetTableInformation": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "UpdateRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecordsFilterStructure": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_Neocities": {
@@ -2225,21 +2312,66 @@
  },
  "OPI_PostgreSQL": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteSQLQuery": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateDatabase": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteDatabase": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "DisableAllDatabaseConnections": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetTableInformation": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "ClearTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "UpdateRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecordsFilterStructure": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_RCON": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteCommand": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_ReportPortal": {
@@ -2740,21 +2872,60 @@
  },
  "OPI_SQLite": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteSQLQuery": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ConnectExtension": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetTableInformation": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTableColumn": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "ClearTable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AddRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "UpdateRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "EnsureRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "DeleteRecords": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetRecordsFilterStructure": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_TCP": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ProcessRequest": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_Telegram": {
@@ -3357,7 +3528,7 @@
  },
  "OPI_WebSocket": {
   "CreateConnection": {
-   "addin_mode": "Ручbutй inыбoр режandмa toдtoлюченandя innotшnotй components (for 1C): Inoлandрoinaнbut, NoIsolated"
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
  "OPI_YandexDisk": {
