@@ -1,0 +1,23 @@
+[package]
+name = "opi_zeromq"
+version = "0.1.0"
+license = "MIT"
+edition = "2021"
+description = "Native add-in for ZeroMQ (scaffold)"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
+opt-level = "z"
+
+[dependencies]
+common-core = { path = "../commons/common-core" }
+common-utils = { path = "../commons/common-utils" }
+
+serde_json = "1.0.140"
+
