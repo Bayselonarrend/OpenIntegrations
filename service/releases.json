@@ -4,8 +4,15 @@
         "title": "Version 2.1.0 - .06.2026",
         "summary_ru": "Методы работы с ZeroMQ",
         "summary_en": "Methods of working with ZeroMQ",
-        "image": "media/Covers/WebSocket.png",
-        "changes": []
+        "image": "media/Covers/ZeroMQ.png",
+        "changes": [
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Тип подключения внешних компонент добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих компоненты (для 1С версии)",
+                "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"
+            }            
+        ]
     },
     {
         "version": "2.0.0",
