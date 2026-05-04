@@ -3,7 +3,7 @@
   <name>OPI_WSServer</name>
   <synonym>
     <key>ru</key>
-    <value>Компонента Websocket-сервера (ОПИ)</value>
+    <value>Компонента ZeroMQ (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

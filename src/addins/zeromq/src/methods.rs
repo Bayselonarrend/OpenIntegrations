@@ -1,40 +1,65 @@
+use common_binary::vault::BinaryInput;
+use common_utils::utils::{json_error, json_success};
+use serde_json::json;
+
 use crate::AddIn;
 
 impl AddIn {
-    pub fn stub_connect(&mut self, endpoint: &str) -> bool {
-        self.endpoint = endpoint.to_owned();
-        self.save_error_str(
-            "ZeroMQ scaffold: hook up `zmq` + libzmq; Connect is not implemented.",
-        );
-        false
+    pub fn connect(&mut self, endpoint: &str) -> String {
+        let ep = endpoint.trim().to_owned();
+
+        match self.lock_backend().and_then(|g| g.connect(&ep)) {
+            Ok(()) => json_success(),
+            Err(e) => json_error(&e),
+        }
     }
 
-    pub fn stub_bind(&mut self, endpoint: &str) -> bool {
-        self.endpoint = endpoint.to_owned();
-        self.save_error_str(
-            "ZeroMQ scaffold: hook up `zmq` + libzmq; Bind is not implemented.",
-        );
-        false
+    pub fn bind(&mut self, endpoint: &str) -> String {
+        let ep = endpoint.trim().to_owned();
+
+        match self.lock_backend().and_then(|g| g.bind(&ep)) {
+            Ok(bound_display) => json!({"result": true, "endpoint": bound_display}).to_string(),
+            Err(e) => json_error(&e),
+        }
     }
 
-    pub fn stub_subscribe(&mut self, _prefix: &str) -> String {
-        self.save_error_str(
-            "ZeroMQ scaffold: Subscribe is for SUB sockets after ZMQ wiring.",
-        );
-        self.last_error.clone()
+    pub fn subscribe(&mut self, _prefix: &str) -> String {
+        match self.lock_backend().and_then(|g| g.subscribe_stub()) {
+            Ok(()) => json_success(),
+            Err(e) => json_error(&e),
+        }
     }
 
-    pub fn stub_send(&mut self, _data: Vec<u8>, _flags: i32) -> bool {
-        self.save_error_str(
-            "ZeroMQ scaffold: Send (multipart) after queue integration.",
-        );
-        false
+    pub fn send(&mut self, data: Vec<u8>, _flags: i32) -> String {
+        match self.lock_backend().and_then(|g| g.send_payload(data)) {
+            Ok(()) => json_success(),
+            Err(e) => json_error(&e),
+        }
     }
 
-    pub fn stub_recv(&mut self, _timeout_ms: i32) -> Vec<u8> {
-        self.save_error_str(
-            "ZeroMQ scaffold: Recv will return message frames after integration.",
-        );
-        Vec::new()
+    pub fn recv(&mut self, timeout_ms: i32) -> String {
+        match self.lock_backend().and_then(|g| g.recv_payload(timeout_ms)) {
+            Ok(buf) => {
+                let len = buf.len();
+                match self.vault.store(BinaryInput::Bytes(buf)) {
+                    Ok(key) => json!({
+                        "result": true,
+                        "type": "binary",
+                        "data": key,
+                        "size": len
+                    })
+                    .to_string(),
+                    Err(e) => json_error(format!("Failed to store message in vault: {}", e)),
+                }
+            }
+            Err(e) => json_error(&e),
+        }
+    }
+
+    pub fn close(&mut self) -> String {
+        match self.lock_backend().and_then(|g| g.close_socket()) {
+            Ok(()) => json_success(),
+            Err(e) => json_error(&e),
+        }
     }
 }
