@@ -3,7 +3,7 @@ name = "opi_zeromq"
 version = "0.1.0"
 license = "MIT"
 edition = "2021"
-description = "Native add-in for ZeroMQ (scaffold)"
+description = "1C native add-in: ZeroMQ over the pure-Rust `zeromq` crate (REQ/REP first)"
 
 [lib]
 crate-type = ["cdylib"]
@@ -17,7 +17,10 @@ opt-level = "z"
 
 [dependencies]
 common-core = { path = "../commons/common-core" }
+common-binary = { path = "../commons/common-binary" }
 common-utils = { path = "../commons/common-utils" }
 
 serde_json = "1.0.140"
+tokio = { version = "1.52.2", features = ["rt-multi-thread", "time"] }
+zeromq = "0.6.0-pre.2"
 
