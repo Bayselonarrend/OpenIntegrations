@@ -4,7 +4,7 @@ use std::time::Duration;
 
 use tokio::time::timeout;
 use zeromq::prelude::*;
-use zeromq::{ReqSocket, RepSocket, Socket, ZmqMessage};
+use zeromq::{PubSocket, RepSocket, ReqSocket, Socket, SubSocket, ZmqMessage};
 
 #[derive(Debug)]
 pub enum BackendCommand {
@@ -16,7 +16,16 @@ pub enum BackendCommand {
         endpoint: String,
         response: Sender<Result<String, String>>,
     },
+    BindPub {
+        endpoint: String,
+        response: Sender<Result<String, String>>,
+    },
+    ConnectSub {
+        endpoint: String,
+        response: Sender<Result<(), String>>,
+    },
     Subscribe {
+        prefix: String,
         response: Sender<Result<(), String>>,
     },
     Send {
@@ -42,6 +51,8 @@ enum OpenSocket {
     None,
     Req(ReqSocket),
     Rep(RepSocket),
+    Pub(PubSocket),
+    Sub(SubSocket),
 }
 
 struct BackendState {
@@ -56,7 +67,7 @@ impl BackendState {
     }
 
     fn is_busy(&self) -> bool {
-        matches!(self.socket, OpenSocket::Req(_) | OpenSocket::Rep(..))
+        !matches!(self.socket, OpenSocket::None)
     }
 
     fn close_async(&mut self, rt: &tokio::runtime::Runtime) {
@@ -66,6 +77,12 @@ impl BackendState {
                 let _ = rt.block_on(s.close());
             }
             OpenSocket::Rep(s) => {
+                let _ = rt.block_on(s.close());
+            }
+            OpenSocket::Pub(s) => {
+                let _ = rt.block_on(s.close());
+            }
+            OpenSocket::Sub(s) => {
                 let _ = rt.block_on(s.close());
             }
         }
@@ -113,9 +130,7 @@ impl ZeroMqBackend {
                                     return Err("Socket is already connected or bound.".to_owned());
                                 }
                                 let mut sock = ReqSocket::new();
-                                sock.connect(&endpoint)
-                                    .await
-                                    .map_err(|e| e.to_string())?;
+                                sock.connect(&endpoint).await.map_err(|e| e.to_string())?;
                                 state.socket = OpenSocket::Req(sock);
                                 Ok(())
                             });
@@ -127,31 +142,67 @@ impl ZeroMqBackend {
                                     return Err("Socket is already connected or bound.".to_owned());
                                 }
                                 let mut sock = RepSocket::new();
-                                let bound = sock
-                                    .bind(&endpoint)
-                                    .await
-                                    .map_err(|e| e.to_string())?;
+                                let bound = sock.bind(&endpoint).await.map_err(|e| e.to_string())?;
                                 let ep_str = bound.to_string();
                                 state.socket = OpenSocket::Rep(sock);
                                 Ok(ep_str)
                             });
                             let _ = response.send(res);
                         }
-                        BackendCommand::Subscribe { response } => {
-                            let _ = response.send(Err(
-                                "Subscribe is only for SUB sockets (not REQ/REP).".to_owned(),
-                            ));
+                        BackendCommand::BindPub { endpoint, response } => {
+                            let res = rt.block_on(async {
+                                if state.is_busy() {
+                                    return Err("Socket is already connected or bound.".to_owned());
+                                }
+                                let mut sock = PubSocket::new();
+                                let bound = sock.bind(&endpoint).await.map_err(|e| e.to_string())?;
+                                let ep_str = bound.to_string();
+                                state.socket = OpenSocket::Pub(sock);
+                                Ok(ep_str)
+                            });
+                            let _ = response.send(res);
+                        }
+                        BackendCommand::ConnectSub { endpoint, response } => {
+                            let res = rt.block_on(async {
+                                if state.is_busy() {
+                                    return Err("Socket is already connected or bound.".to_owned());
+                                }
+                                let mut sock = SubSocket::new();
+                                sock.connect(&endpoint).await.map_err(|e| e.to_string())?;
+                                state.socket = OpenSocket::Sub(sock);
+                                Ok(())
+                            });
+                            let _ = response.send(res);
+                        }
+                        BackendCommand::Subscribe { prefix, response } => {
+                            let res = rt.block_on(async {
+                                match &mut state.socket {
+                                    OpenSocket::Sub(sock) => sock
+                                        .subscribe(&prefix)
+                                        .await
+                                        .map_err(|e| e.to_string()),
+                                    OpenSocket::None => {
+                                        Err("No socket. ConnectSub must succeed before Subscribe."
+                                            .to_owned())
+                                    }
+                                    _ => Err(
+                                        "Subscribe is only supported on SUB sockets (after ConnectSub)."
+                                            .to_owned(),
+                                    ),
+                                }
+                            });
+                            let _ = response.send(res);
                         }
                         BackendCommand::Send { payload, response } => {
                             let res = rt.block_on(async {
                                 let msg = ZmqMessage::from(payload);
                                 match &mut state.socket {
-                                    OpenSocket::Req(sock) => {
-                                        sock.send(msg).await.map_err(|e| e.to_string())
-                                    }
-                                    OpenSocket::Rep(sock) => {
-                                        sock.send(msg).await.map_err(|e| e.to_string())
-                                    }
+                                    OpenSocket::Req(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
+                                    OpenSocket::Rep(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
+                                    OpenSocket::Pub(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
+                                    OpenSocket::Sub(_) => Err(
+                                        "Send is not supported on SUB sockets.".to_owned(),
+                                    ),
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
                             });
@@ -166,6 +217,12 @@ impl ZeroMqBackend {
                                     OpenSocket::Rep(sock) => {
                                         recv_with_timeout(sock, timeout_ms).await
                                     }
+                                    OpenSocket::Sub(sock) => {
+                                        recv_with_timeout(sock, timeout_ms).await
+                                    }
+                                    OpenSocket::Pub(_) => Err(
+                                        "Recv is not supported on PUB sockets.".to_owned(),
+                                    ),
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
                             });
@@ -219,10 +276,39 @@ impl ZeroMqBackend {
             .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
     }
 
-    pub fn subscribe_stub(&self) -> Result<(), String> {
+    pub fn bind_pub(&self, endpoint: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        self.tx
+            .send(BackendCommand::BindPub {
+                endpoint: endpoint.to_string(),
+                response: response_tx,
+            })
+            .map_err(|e| format!("Failed to enqueue BindPub: {}", e))?;
+
+        response_rx
+            .recv()
+            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+    }
+
+    pub fn connect_sub(&self, endpoint: &str) -> Result<(), String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        self.tx
+            .send(BackendCommand::ConnectSub {
+                endpoint: endpoint.to_string(),
+                response: response_tx,
+            })
+            .map_err(|e| format!("Failed to enqueue ConnectSub: {}", e))?;
+
+        response_rx
+            .recv()
+            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+    }
+
+    pub fn subscribe(&self, prefix: &str) -> Result<(), String> {
         let (response_tx, response_rx) = mpsc::channel();
         self.tx
             .send(BackendCommand::Subscribe {
+                prefix: prefix.to_string(),
                 response: response_tx,
             })
             .map_err(|e| format!("Failed to enqueue Subscribe: {}", e))?;
