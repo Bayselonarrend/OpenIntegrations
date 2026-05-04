@@ -23,8 +23,29 @@ impl AddIn {
         }
     }
 
-    pub fn subscribe(&mut self, _prefix: &str) -> String {
-        match self.lock_backend().and_then(|g| g.subscribe_stub()) {
+    pub fn bind_pub(&mut self, endpoint: &str) -> String {
+        let ep = endpoint.trim().to_owned();
+
+        match self.lock_backend().and_then(|g| g.bind_pub(&ep)) {
+            Ok(bound_display) => json!({"result": true, "endpoint": bound_display}).to_string(),
+            Err(e) => json_error(&e),
+        }
+    }
+
+    pub fn connect_sub(&mut self, endpoint: &str) -> String {
+        let ep = endpoint.trim().to_owned();
+
+        match self.lock_backend().and_then(|g| g.connect_sub(&ep)) {
+            Ok(()) => json_success(),
+            Err(e) => json_error(&e),
+        }
+    }
+
+    pub fn subscribe(&mut self, prefix: &str) -> String {
+        match self
+            .lock_backend()
+            .and_then(|g| g.subscribe(prefix))
+        {
             Ok(()) => json_success(),
             Err(e) => json_error(&e),
         }
