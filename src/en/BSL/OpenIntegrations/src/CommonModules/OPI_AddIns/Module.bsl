@@ -48,16 +48,19 @@
 
 #Region Main
 
-Function GetAddIn(Val AddInName, Val Class = "Main", NotIsolated = False) Export
+Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     AddIn     = Undefined;
     Error     = "";
     AddInName = StrTemplate("OPI_%1", AddInName);
 
-    If NotIsolated Or Not InitializeAddIn(AddInName, Class, AddIn) Then
+    CallSettings   = OPI_AdvancedCall.GetCurrentSettings();
+    ConnectionMode = OPI_Tools.GetOr(CallSettings, "addin_mode", Undefined);
+
+    If ValueIsFilled(ConnectionMode) Or Not InitializeAddIn(AddInName, Class, AddIn) Then
 
         Error = Undefined;
-        AddIn = AttachAddInOnServer(AddInName, Class, Error, NotIsolated);
+        AddIn = AttachAddInOnServer(AddInName, Class, Error, ConnectionMode);
 
         If ValueIsFilled(Error) Then
             FormAddInException(Error);
@@ -299,7 +302,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName, Val Class, Error, NotIsolated)
+Function AttachAddInOnServer(Val AddInName, Val Class, Error, ConnectionMode)
 
     If OPI_Tools.IsOneScript() Then
         TemplateName = StrTemplate("%1%2.zip"         , AddInsFolderOS(), AddInName);
@@ -308,7 +311,7 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error, NotIsolated)
     EndIf;
 
     Try
-        AttachAddInWithMode(TemplateName, AddInName, NotIsolated);
+        AttachAddInWithMode(TemplateName, AddInName, ConnectionMode);
         AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
         Error = Undefined;
         Return AddIn;
@@ -319,12 +322,10 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error, NotIsolated)
 
 EndFunction
 
-Function AttachAddInWithMode(TemplateName, AddInName, ForceNotIsolated)
+Function AttachAddInWithMode(TemplateName, AddInName, ConnectionMode)
 
-    IsOneScript = OPI_Tools.IsOneScript();
-
-    TypeRequieredByVM     = Not IsOneScript;
-    TypeRequieredBySystem = Not OPI_Tools.IsWindows();
+    IsOneScript       = OPI_Tools.IsOneScript();
+    TypeRequieredByVM = Not IsOneScript;
 
     If Not TypeRequieredByVM Then
 
@@ -345,13 +346,9 @@ Function AttachAddInWithMode(TemplateName, AddInName, ForceNotIsolated)
 
     EndIf;
 
-    TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion And (TypeRequieredBySystem Or ForceNotIsolated);
+    TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion;
 
     If Not TypeRequiered Then
-
-        If Not TypeRequieredByVersion Then
-            AddInConnectionType = Undefined;
-        EndIf;
 
         Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
 
@@ -360,7 +357,7 @@ Function AttachAddInWithMode(TemplateName, AddInName, ForceNotIsolated)
         // BSLLS:UnusedLocalVariable-off
 
         //@skip-check module-unused-local-variable
-        ConnectionType = AddInConnectionType.NotIsolated;
+        ConnectionType = GetConnectionType(ConnectionMode);
         //@skip-check server-execution-safe-mode
 
         // BSLLS:UnusedLocalVariable-on
@@ -375,7 +372,7 @@ Function AttachAddInWithMode(TemplateName, AddInName, ForceNotIsolated)
 
 EndFunction
 
-Function AddInsFolderOS() Export
+Function AddInsFolderOS()
 
     LibraryDirectory = OPI_Tools.GetLibraryDirectory();
 
@@ -386,6 +383,49 @@ Function AddInsFolderOS() Export
     // BSLLS:UsingHardcodePath-on
 
     Return AddInsFolder;
+
+EndFunction
+
+Function GetConnectionType(Val ConnectionMode)
+
+    If False Then
+        AddInConnectionType = Undefined;
+    EndIf;
+
+    ConnectionType = Undefined;
+
+    If ValueIsFilled(ConnectionMode) Then
+
+        //@skip-check bsl-legacy-check-string-literal
+        If TypeOf(ConnectionMode) = Type("AddInConnectionType") Then
+            ConnectionType = ConnectionMode;
+        Else
+
+            OPI_TypeConversion.GetLine(ConnectionMode);
+
+            Try
+                ConnectionType = AddInConnectionType[ConnectionMode];
+            Except
+                ConnectionType = Undefined;
+            EndTry;
+
+        EndIf;
+
+    EndIf;
+
+    If ConnectionType = Undefined Then
+
+        NotIsolatedBySystem = Not OPI_Tools.IsWindows();
+
+        If NotIsolatedBySystem Then
+            ConnectionType = AddInConnectionType.NotIsolated;
+        Else
+            ConnectionType = AddInConnectionType.Isolated;
+        EndIf;
+
+    EndIf;
+
+    Return ConnectionType;
 
 EndFunction
 
