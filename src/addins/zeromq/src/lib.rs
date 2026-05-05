@@ -61,20 +61,20 @@ pub fn cal_func(
             Box::new(obj.connect(backend::ExchangeScheme::Pull, &ep))
         }
         4 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, &ep))
+            let port = params[0].get_i32().unwrap_or(0);
+            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, port))
         }
         5 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::PubSub, &ep))
+            let port = params[0].get_i32().unwrap_or(0);
+            Box::new(obj.bind(backend::ExchangeScheme::PubSub, port))
         }
         6 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::Push, &ep))
+            let port = params[0].get_i32().unwrap_or(0);
+            Box::new(obj.bind(backend::ExchangeScheme::Push, port))
         }
         7 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::Pull, &ep))
+            let port = params[0].get_i32().unwrap_or(0);
+            Box::new(obj.bind(backend::ExchangeScheme::Pull, port))
         }
         8 => {
             let prefix = params[0].get_string().unwrap_or_default();
