@@ -42,19 +42,19 @@ pub fn cal_func(
     match num {
         0 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect_req(&ep))
+            Box::new(obj.connect(backend::ExchangeScheme::ReqRep, &ep))
         }
         1 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect_sub(&ep))
+            Box::new(obj.connect(backend::ExchangeScheme::PubSub, &ep))
         }
         2 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind_rep(&ep))
+            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, &ep))
         }
         3 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind_pub(&ep))
+            Box::new(obj.bind(backend::ExchangeScheme::PubSub, &ep))
         }
         4 => {
             let prefix = params[0].get_string().unwrap_or_default();

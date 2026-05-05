@@ -6,40 +6,18 @@ use crate::backend::ExchangeScheme;
 use crate::AddIn;
 
 impl AddIn {
-    pub fn connect_req(&mut self, endpoint: &str) -> String {
+    pub(crate) fn connect(&mut self, scheme: ExchangeScheme, endpoint: &str) -> String {
         let ep = endpoint.trim().to_owned();
-        match self
-            .lock_backend()
-            .and_then(|g| g.connect(ExchangeScheme::ReqRep, &ep))
-        {
+        match self.lock_backend().and_then(|g| g.connect(scheme, &ep)) {
             Ok(()) => json_success(),
             Err(e) => json_error(&e),
         }
     }
 
-    pub fn connect_sub(&mut self, endpoint: &str) -> String {
+    pub(crate) fn bind(&mut self, scheme: ExchangeScheme, endpoint: &str) -> String {
         let ep = endpoint.trim().to_owned();
-        match self
-            .lock_backend()
-            .and_then(|g| g.connect(ExchangeScheme::PubSub, &ep))
-        {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn bind_rep(&mut self, endpoint: &str) -> String {
-        let ep = endpoint.trim().to_owned();
-        match self.lock_backend().and_then(|g| g.bind(ExchangeScheme::ReqRep, &ep)) {
-            Ok(bound_display) => json!({"result": true, "endpoint": bound_display}).to_string(),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn bind_pub(&mut self, endpoint: &str) -> String {
-        let ep = endpoint.trim().to_owned();
-        match self.lock_backend().and_then(|g| g.bind(ExchangeScheme::PubSub, &ep)) {
-            Ok(bound_display) => json!({"result": true, "endpoint": bound_display}).to_string(),
+        match self.lock_backend().and_then(|g| g.bind(scheme, &ep)) {
+            Ok(bound) => json!({"result": true, "endpoint": bound}).to_string(),
             Err(e) => json_error(&e),
         }
     }
