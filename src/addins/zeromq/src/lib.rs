@@ -9,25 +9,25 @@ impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"),
-    name!("Bind"),
-    name!("Subscribe"),
-    name!("Send"),                    // 3
-    name!("Recv"),                    // 4
-    name!("Close"),                   // 5
-    name!("RetrieveBinaryFromVault"),
-    name!("BindPub"),
+    name!("ConnectReq"),
     name!("ConnectSub"),
+    name!("BindRep"),
+    name!("BindPub"),
+    name!("Subscribe"),
+    name!("Send"),
+    name!("Recv"),
+    name!("Close"),
+    name!("RetrieveBinaryFromVault"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 | 1 | 7 | 8 => 1, // Connect/Bind/BindPub/ConnectSub(endpoint)
-        2 => 1,             // Subscribe(prefix)
-        3 => 2,             // Send(data, flags)
-        4 => 1,             // Recv
-        5 => 0,             // Close
-        6 => 1,             // RetrieveBinaryFromVault
+        0..=3 => 1, // ConnectReq/ConnectSub/BindRep/BindPub(endpoint)
+        4 => 1,     // Subscribe(prefix)
+        5 => 2,     // Send(data, flags)
+        6 => 1,     // Recv(timeout_ms)
+        7 => 0,     // Close
+        8 => 1,     // RetrieveBinaryFromVault
         _ => 0,
     }
 }
@@ -42,37 +42,37 @@ pub fn cal_func(
     match num {
         0 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect(&ep))
+            Box::new(obj.connect_req(&ep))
         }
         1 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(&ep))
+            Box::new(obj.connect_sub(&ep))
         }
         2 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind_rep(&ep))
+        }
+        3 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind_pub(&ep))
+        }
+        4 => {
             let prefix = params[0].get_string().unwrap_or_default();
             Box::new(obj.subscribe(&prefix))
         }
-        3 => {
+        5 => {
             let data = params[0].get_blob().unwrap_or(&empty).to_vec();
             let flags = params[1].get_i32().unwrap_or(0);
             Box::new(obj.send(data, flags))
         }
-        4 => {
+        6 => {
             let timeout_ms = params[0].get_i32().unwrap_or(0);
             Box::new(obj.recv(timeout_ms))
         }
-        5 => Box::new(obj.close()),
-        6 => {
+        7 => Box::new(obj.close()),
+        8 => {
             let key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&key))
-        }
-        7 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind_pub(&ep))
-        }
-        8 => {
-            let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect_sub(&ep))
         }
         _ => Box::new(false),
     }
