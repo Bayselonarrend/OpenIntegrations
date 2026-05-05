@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="42832dcb-0fe8-4770-b54f-5a310b9220fc">
+  <name>OPI_ZeroMQ</name>
+  <synonym>
+    <key>en</key>
+    <value>ZeroMQ</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>
