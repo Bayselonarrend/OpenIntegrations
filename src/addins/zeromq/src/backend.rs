@@ -4,12 +4,14 @@ use std::time::Duration;
 
 use tokio::time::timeout;
 use zeromq::prelude::*;
-use zeromq::{PubSocket, RepSocket, ReqSocket, Socket, SubSocket, ZmqMessage};
+use zeromq::{PubSocket, PullSocket, PushSocket, RepSocket, ReqSocket, Socket, SubSocket, ZmqMessage};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(crate) enum ExchangeScheme {
     ReqRep,
     PubSub,
+    Push,
+    Pull,
 }
 
 #[derive(Debug)]
@@ -53,6 +55,8 @@ enum OpenSocket {
     Rep(RepSocket),
     Pub(PubSocket),
     Sub(SubSocket),
+    Push(PushSocket),
+    Pull(PullSocket),
 }
 
 struct BackendState {
@@ -83,6 +87,12 @@ impl BackendState {
                 let _ = rt.block_on(s.close());
             }
             OpenSocket::Sub(s) => {
+                let _ = rt.block_on(s.close());
+            }
+            OpenSocket::Push(s) => {
+                let _ = rt.block_on(s.close());
+            }
+            OpenSocket::Pull(s) => {
                 let _ = rt.block_on(s.close());
             }
         }
@@ -142,6 +152,18 @@ impl ZeroMqBackend {
                                         state.socket = OpenSocket::Sub(sock);
                                         Ok(())
                                     }
+                                    ExchangeScheme::Push => {
+                                        let mut sock = PushSocket::new();
+                                        sock.connect(&endpoint).await.map_err(|e| e.to_string())?;
+                                        state.socket = OpenSocket::Push(sock);
+                                        Ok(())
+                                    }
+                                    ExchangeScheme::Pull => {
+                                        let mut sock = PullSocket::new();
+                                        sock.connect(&endpoint).await.map_err(|e| e.to_string())?;
+                                        state.socket = OpenSocket::Pull(sock);
+                                        Ok(())
+                                    }
                                 }
                             });
                             let _ = response.send(res);
@@ -166,6 +188,22 @@ impl ZeroMqBackend {
                                             sock.bind(&endpoint).await.map_err(|e| e.to_string())?;
                                         let ep_str = bound.to_string();
                                         state.socket = OpenSocket::Pub(sock);
+                                        Ok(ep_str)
+                                    }
+                                    ExchangeScheme::Push => {
+                                        let mut sock = PushSocket::new();
+                                        let bound =
+                                            sock.bind(&endpoint).await.map_err(|e| e.to_string())?;
+                                        let ep_str = bound.to_string();
+                                        state.socket = OpenSocket::Push(sock);
+                                        Ok(ep_str)
+                                    }
+                                    ExchangeScheme::Pull => {
+                                        let mut sock = PullSocket::new();
+                                        let bound =
+                                            sock.bind(&endpoint).await.map_err(|e| e.to_string())?;
+                                        let ep_str = bound.to_string();
+                                        state.socket = OpenSocket::Pull(sock);
                                         Ok(ep_str)
                                     }
                                 }
@@ -198,8 +236,12 @@ impl ZeroMqBackend {
                                     OpenSocket::Req(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
                                     OpenSocket::Rep(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
                                     OpenSocket::Pub(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
+                                    OpenSocket::Push(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
                                     OpenSocket::Sub(_) => Err(
                                         "Send is not supported on SUB sockets.".to_owned(),
+                                    ),
+                                    OpenSocket::Pull(_) => Err(
+                                        "Send is not supported on PULL sockets.".to_owned(),
                                     ),
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
@@ -218,8 +260,14 @@ impl ZeroMqBackend {
                                     OpenSocket::Sub(sock) => {
                                         recv_with_timeout(sock, timeout_ms).await
                                     }
+                                    OpenSocket::Pull(sock) => {
+                                        recv_with_timeout(sock, timeout_ms).await
+                                    }
                                     OpenSocket::Pub(_) => Err(
                                         "Recv is not supported on PUB sockets.".to_owned(),
+                                    ),
+                                    OpenSocket::Push(_) => Err(
+                                        "Recv is not supported on PUSH sockets.".to_owned(),
                                     ),
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
