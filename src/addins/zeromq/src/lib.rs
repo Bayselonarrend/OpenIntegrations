@@ -28,7 +28,7 @@ pub fn get_params_amount(num: usize) -> usize {
     match num {
         0..=7 => 1, // Connect*/Bind*(endpoint)
         8 => 1,     // Subscribe(prefix)
-        9 => 2,     // Send(data, flags)
+        9 => 2,     // Send(data, dontwait)
         10 => 1,    // Recv(timeout_ms)
         11 => 0,    // Close
         12 => 1,    // RetrieveBinaryFromVault
@@ -82,8 +82,8 @@ pub fn cal_func(
         }
         9 => {
             let data = params[0].get_blob().unwrap_or(&empty).to_vec();
-            let flags = params[1].get_i32().unwrap_or(0);
-            Box::new(obj.send(data, flags))
+            let dontwait = params[1].get_bool().unwrap_or(false);
+            Box::new(obj.send(data, dontwait))
         }
         10 => {
             let timeout_ms = params[0].get_i32().unwrap_or(0);
