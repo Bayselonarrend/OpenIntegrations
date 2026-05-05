@@ -32,6 +32,7 @@ pub enum BackendCommand {
     },
     Send {
         payload: Vec<u8>,
+        dontwait: bool,
         response: Sender<Result<(), String>>,
     },
     Recv {
@@ -119,6 +120,22 @@ async fn recv_with_timeout<S: SocketRecv + Unpin>(
             Ok(Err(e)) => Err(e.to_string()),
             Err(_) => Err("Receive timed out.".to_owned()),
         }
+    }
+}
+
+async fn send_with_dontwait<S: SocketSend + Unpin>(
+    sock: &mut S,
+    msg: ZmqMessage,
+    dontwait: bool,
+) -> Result<(), String> {
+    if dontwait {
+        match timeout(Duration::from_millis(0), sock.send(msg)).await {
+            Ok(Ok(())) => Ok(()),
+            Ok(Err(e)) => Err(e.to_string()),
+            Err(_) => Err("Send would block (DONTWAIT).".to_owned()),
+        }
+    } else {
+        sock.send(msg).await.map_err(|e| e.to_string())
     }
 }
 
@@ -229,14 +246,36 @@ impl ZeroMqBackend {
                             });
                             let _ = response.send(res);
                         }
-                        BackendCommand::Send { payload, response } => {
+                        BackendCommand::Send { payload, dontwait, response } => {
                             let res = rt.block_on(async {
-                                let msg = ZmqMessage::from(payload);
                                 match &mut state.socket {
-                                    OpenSocket::Req(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
-                                    OpenSocket::Rep(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
-                                    OpenSocket::Pub(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
-                                    OpenSocket::Push(sock) => sock.send(msg).await.map_err(|e| e.to_string()),
+                                    OpenSocket::Req(sock) => {
+                                        send_with_dontwait(
+                                            sock,
+                                            ZmqMessage::from(payload.clone()),
+                                            dontwait,
+                                        )
+                                        .await
+                                    }
+                                    OpenSocket::Rep(sock) => {
+                                        send_with_dontwait(
+                                            sock,
+                                            ZmqMessage::from(payload.clone()),
+                                            dontwait,
+                                        )
+                                        .await
+                                    }
+                                    OpenSocket::Pub(sock) => {
+                                        send_with_dontwait(
+                                            sock,
+                                            ZmqMessage::from(payload.clone()),
+                                            dontwait,
+                                        )
+                                        .await
+                                    }
+                                    OpenSocket::Push(sock) => {
+                                        send_with_dontwait(sock, ZmqMessage::from(payload), dontwait).await
+                                    }
                                     OpenSocket::Sub(_) => Err(
                                         "Send is not supported on SUB sockets.".to_owned(),
                                     ),
@@ -338,11 +377,12 @@ impl ZeroMqBackend {
             .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
     }
 
-    pub fn send_payload(&self, payload: Vec<u8>) -> Result<(), String> {
+    pub fn send_payload(&self, payload: Vec<u8>, dontwait: bool) -> Result<(), String> {
         let (response_tx, response_rx) = mpsc::channel();
         self.tx
             .send(BackendCommand::Send {
                 payload,
+                dontwait,
                 response: response_tx,
             })
             .map_err(|e| format!("Failed to enqueue Send: {}", e))?;
