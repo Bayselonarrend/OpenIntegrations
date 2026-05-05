@@ -14,8 +14,8 @@ impl AddIn {
         }
     }
 
-    pub(crate) fn bind(&mut self, scheme: ExchangeScheme, endpoint: &str) -> String {
-        let ep = endpoint.trim().to_owned();
+    pub(crate) fn bind(&mut self, scheme: ExchangeScheme, port: i32) -> String {
+        let ep = format!("tcp://*:{}", port);
         match self.lock_backend().and_then(|g| g.bind(scheme, &ep)) {
             Ok(bound) => json!({"result": true, "endpoint": bound}).to_string(),
             Err(e) => json_error(&e),
