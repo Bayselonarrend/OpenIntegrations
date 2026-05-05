@@ -11,8 +11,12 @@ impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 pub const METHODS: &[&[u16]] = &[
     name!("ConnectReq"),
     name!("ConnectSub"),
+    name!("ConnectPush"),
+    name!("ConnectPull"),
     name!("BindRep"),
     name!("BindPub"),
+    name!("BindPush"),
+    name!("BindPull"),
     name!("Subscribe"),
     name!("Send"),
     name!("Recv"),
@@ -22,12 +26,12 @@ pub const METHODS: &[&[u16]] = &[
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0..=3 => 1, // ConnectReq/ConnectSub/BindRep/BindPub(endpoint)
-        4 => 1,     // Subscribe(prefix)
-        5 => 2,     // Send(data, flags)
-        6 => 1,     // Recv(timeout_ms)
-        7 => 0,     // Close
-        8 => 1,     // RetrieveBinaryFromVault
+        0..=7 => 1, // Connect*/Bind*(endpoint)
+        8 => 1,     // Subscribe(prefix)
+        9 => 2,     // Send(data, flags)
+        10 => 1,    // Recv(timeout_ms)
+        11 => 0,    // Close
+        12 => 1,    // RetrieveBinaryFromVault
         _ => 0,
     }
 }
@@ -50,27 +54,43 @@ pub fn cal_func(
         }
         2 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, &ep))
+            Box::new(obj.connect(backend::ExchangeScheme::Push, &ep))
         }
         3 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.bind(backend::ExchangeScheme::PubSub, &ep))
+            Box::new(obj.connect(backend::ExchangeScheme::Pull, &ep))
         }
         4 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, &ep))
+        }
+        5 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind(backend::ExchangeScheme::PubSub, &ep))
+        }
+        6 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind(backend::ExchangeScheme::Push, &ep))
+        }
+        7 => {
+            let ep = params[0].get_string().unwrap_or_default();
+            Box::new(obj.bind(backend::ExchangeScheme::Pull, &ep))
+        }
+        8 => {
             let prefix = params[0].get_string().unwrap_or_default();
             Box::new(obj.subscribe(&prefix))
         }
-        5 => {
+        9 => {
             let data = params[0].get_blob().unwrap_or(&empty).to_vec();
             let flags = params[1].get_i32().unwrap_or(0);
             Box::new(obj.send(data, flags))
         }
-        6 => {
+        10 => {
             let timeout_ms = params[0].get_i32().unwrap_or(0);
             Box::new(obj.recv(timeout_ms))
         }
-        7 => Box::new(obj.close()),
-        8 => {
+        11 => Box::new(obj.close()),
+        12 => {
             let key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&key))
         }
