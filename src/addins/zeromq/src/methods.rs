@@ -29,10 +29,10 @@ impl AddIn {
         }
     }
 
-    pub fn send(&mut self, data: Vec<u8>, dontwait: bool) -> String {
+    pub fn send(&mut self, data: Vec<u8>, timeout_ms: i32) -> String {
         match self
             .lock_backend()
-            .and_then(|g| g.send_payload(data, dontwait))
+            .and_then(|g| g.send_payload(data, timeout_ms))
         {
             Ok(()) => json_success(),
             Err(e) => json_error(&e),
