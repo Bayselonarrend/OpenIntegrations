@@ -32,7 +32,7 @@ pub enum BackendCommand {
     },
     Send {
         payload: Vec<u8>,
-        dontwait: bool,
+        timeout_ms: i32,
         response: Sender<Result<(), String>>,
     },
     Recv {
@@ -123,19 +123,25 @@ async fn recv_with_timeout<S: SocketRecv + Unpin>(
     }
 }
 
-async fn send_with_dontwait<S: SocketSend + Unpin>(
+async fn send_with_timeout<S: SocketSend + Unpin>(
     sock: &mut S,
     msg: ZmqMessage,
-    dontwait: bool,
+    timeout_ms: i32,
 ) -> Result<(), String> {
-    if dontwait {
+    if timeout_ms < 0 {
+        sock.send(msg).await.map_err(|e| e.to_string())
+    } else if timeout_ms == 0 {
         match timeout(Duration::from_millis(0), sock.send(msg)).await {
             Ok(Ok(())) => Ok(()),
             Ok(Err(e)) => Err(e.to_string()),
-            Err(_) => Err("Send would block (DONTWAIT).".to_owned()),
+            Err(_) => Err("Send timed out.".to_owned()),
         }
     } else {
-        sock.send(msg).await.map_err(|e| e.to_string())
+        match timeout(Duration::from_millis(timeout_ms as u64), sock.send(msg)).await {
+            Ok(Ok(())) => Ok(()),
+            Ok(Err(e)) => Err(e.to_string()),
+            Err(_) => Err("Send timed out.".to_owned()),
+        }
     }
 }
 
@@ -246,35 +252,39 @@ impl ZeroMqBackend {
                             });
                             let _ = response.send(res);
                         }
-                        BackendCommand::Send { payload, dontwait, response } => {
+                        BackendCommand::Send {
+                            payload,
+                            timeout_ms,
+                            response,
+                        } => {
                             let res = rt.block_on(async {
                                 match &mut state.socket {
                                     OpenSocket::Req(sock) => {
-                                        send_with_dontwait(
+                                        send_with_timeout(
                                             sock,
                                             ZmqMessage::from(payload.clone()),
-                                            dontwait,
+                                            timeout_ms,
                                         )
                                         .await
                                     }
                                     OpenSocket::Rep(sock) => {
-                                        send_with_dontwait(
+                                        send_with_timeout(
                                             sock,
                                             ZmqMessage::from(payload.clone()),
-                                            dontwait,
+                                            timeout_ms,
                                         )
                                         .await
                                     }
                                     OpenSocket::Pub(sock) => {
-                                        send_with_dontwait(
+                                        send_with_timeout(
                                             sock,
                                             ZmqMessage::from(payload.clone()),
-                                            dontwait,
+                                            timeout_ms,
                                         )
                                         .await
                                     }
                                     OpenSocket::Push(sock) => {
-                                        send_with_dontwait(sock, ZmqMessage::from(payload), dontwait).await
+                                        send_with_timeout(sock, ZmqMessage::from(payload), timeout_ms).await
                                     }
                                     OpenSocket::Sub(_) => Err(
                                         "Send is not supported on SUB sockets.".to_owned(),
@@ -377,12 +387,12 @@ impl ZeroMqBackend {
             .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
     }
 
-    pub fn send_payload(&self, payload: Vec<u8>, dontwait: bool) -> Result<(), String> {
+    pub fn send_payload(&self, payload: Vec<u8>, timeout_ms: i32) -> Result<(), String> {
         let (response_tx, response_rx) = mpsc::channel();
         self.tx
             .send(BackendCommand::Send {
                 payload,
-                dontwait,
+                timeout_ms,
                 response: response_tx,
             })
             .map_err(|e| format!("Failed to enqueue Send: {}", e))?;
