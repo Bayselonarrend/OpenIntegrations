@@ -1,0 +1,21 @@
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPush(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    Result = OPI_ZeroMQ.CreateConnectionPull(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_PULL_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);

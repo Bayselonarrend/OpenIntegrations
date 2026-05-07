@@ -774,7 +774,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-
+						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыПодключения'],
+						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыПрослушивания'],
+						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыВзаимодействия'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

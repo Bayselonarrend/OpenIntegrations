@@ -105,7 +105,7 @@ EndFunction
 // Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
 //
 // Returns:
-// Map Of KeyAndValue, Arbitrary - Returns WebSocket client object on successful connection or error information
+// Map Of KeyAndValue, Arbitrary - Client object or map with error information
 Function CreateConnection(Val Address
     , Val Tls = Undefined
     , Val Proxy = Undefined
