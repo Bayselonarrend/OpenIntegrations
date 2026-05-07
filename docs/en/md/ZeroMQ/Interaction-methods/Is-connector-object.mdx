@@ -1,0 +1,66 @@
+---
+sidebar_position: 6
+sidebar_class_name: doc-no-cli
+description: Is client object  and other functions to work with ZeroMQ in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ZeroMQ]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Is client object 
+ Checks that the value is an object of the ZeroMQ AddIn
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function IsConnectorObject(Val Value) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | - | Arbitrary | &#x2714; | Value to check |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Boolean - Is connector
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Result = OPI_ZeroMQ.IsConnectorObject(ServerObject);
+```
+ 
+
+
+
+
