@@ -1,0 +1,15 @@
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;

@@ -1,0 +1,74 @@
+---
+sidebar_position: 1
+
+description: Bind port (REP) and other functions to work with ZeroMQ in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ZeroMQ]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Bind port (REP)
+ Bind port for incoming requests
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function BindPortRep(Val Port) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Port | --port | Number | &#x2714; | Target port |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    // Host
+    Port = 5555;
+    Result = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_REP_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+```
+ 
+
+
+
+

@@ -1,7 +1,7 @@
 // OneScript: ./OInt/api/zeromq/Modules/OPI_ZeroMQ.os
 // Lib: ZeroMQ
 // CLI: none
-// Keywords: zeromq
+// Keywords: zeromq, zmq
 
 // DocsCategory: Exchange
 // DocsNameRU: ZeroMQ
@@ -51,8 +51,355 @@
 
 #Region Public
 
-#Region Common
+#Region ConnectionMethods
+
+// Create connection (REQ)
+// Create connection for sending request
+//
+// Parameters:
+// Address - String - Receiver address - addr
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function CreateConnectionReq(Val Address) Export
+
+    Result = InitializeConnector(Address, "ConnectReq");
+    Return Result;
+
+EndFunction
+
+// Create connection (SUB)
+// Create subscriber connection
+//
+// Parameters:
+// Address - String - Receiver address - addr
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function CreateConnectionSub(Val Address) Export
+
+    Result = InitializeConnector(Address, "ConnectSub");
+    Return Result;
+
+EndFunction
+
+// Create connection (PUSH)
+// Create connection for sending to pipeline
+//
+// Parameters:
+// Address - String - Receiver address - addr
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function CreateConnectionPush(Val Address) Export
+
+    Result = InitializeConnector(Address, "ConnectPush");
+    Return Result;
+
+EndFunction
+
+// Create connection (PULL)
+// Create connection for reading from pipeline
+//
+// Parameters:
+// Address - String - Receiver address - addr
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function CreateConnectionPull(Val Address) Export
+
+    Result = InitializeConnector(Address, "ConnectPull");
+    Return Result;
+
+EndFunction
 
 #EndRegion
+
+#Region ListeningMethods
+
+// Bind port (REP)
+// Bind port for incoming requests
+//
+// Parameters:
+// Port - Number - Target port - port
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function BindPortRep(Val Port) Export
+
+    Result = InitializeConnector(Port, "BindRep");
+    Return Result;
+
+EndFunction
+
+// Bind port (Pub)
+// Bind port for subscribers
+//
+// Parameters:
+// Port - Number - Target port - port
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function BindPortPub(Val Port) Export
+
+    Result = InitializeConnector(Port, "BindPub");
+    Return Result;
+
+EndFunction
+
+// Bind port (Push)
+// Bind pipeline port for sending data
+//
+// Parameters:
+// Port - Number - Target port - port
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function BindPortPush(Val Port) Export
+
+    Result = InitializeConnector(Port, "BindPush");
+    Return Result;
+
+EndFunction
+
+// Bind port (Pull)
+// Bind pipeline port for receiving data
+//
+// Parameters:
+// Port - Number - Target port - port
+//
+// Returns:
+// Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
+Function BindPortPull(Val Port) Export
+
+    Result = InitializeConnector(Port, "BindPull");
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region InteractionMethods
+
+// Send data
+// Send data to connection
+//
+// Parameters:
+// Connection - Arbitrary         - AddIn object with an open connection or port - conn
+// Data       - BinaryData        - Sending data                                 - data
+// Timeout    - Number, Undefined - Timeout (in ms). No timeout if undefined     - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function SendData(Val Connection, Val Data, Val Timeout = Undefined) Export
+
+    If Not IsConnectorObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
+
+    If Timeout = Undefined Then
+
+        Timeout = -1;
+
+    Else
+        OPI_TypeConversion.GetNumber(Timeout);
+    EndIf;
+
+    Result = Connection.Send(Data, Timeout);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Receive data
+// Receive next message from connection
+//
+// Parameters:
+// Connection - Arbitrary         - AddIn object with an open connection or port - conn
+// Timeout    - Number, Undefined - Timeout (in ms). No timeout if undefined     - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ReceiveData(Val Connection, Val Timeout) Export
+
+    If Not IsConnectorObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    If Timeout = Undefined Then
+
+        Timeout = -1;
+
+    Else
+        OPI_TypeConversion.GetNumber(Timeout);
+    EndIf;
+
+    Result = Connection.Recv(Timeout);
+
+    Result  = OPI_Tools.JsonToStructure(Result);
+    DataKey = Undefined;
+
+    If OPI_Tools.CollectionFieldExists(Result, "data", DataKey) Then
+        Result["data"] = OPI_AddIns.ReceiveData(Connection, DataKey);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Process request
+// Sends a request and waits for a response within the specified time (for the REQ/REP scheme)
+//
+// Parameters:
+// Connection       - Arbitrary         - AddIn object with open connection                  - conn
+// Data             - BinaryData        - Sending data                                       - data
+// SendingTimeout   - Number, Undefined - Sending timeout (in ms). No timeout if undefined   - treq
+// ReceivingTimeout - Number, Undefined - Receiving timeout (in ms). No timeout if undefined - trep
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ProcessRequest(Val Connection
+    , Val Data
+    , Val SendingTimeout = Undefined
+    , Val ReceivingTimeout = Undefined) Export
+
+    SendingResult = SendData(Connection, Data, SendingTimeout);
+
+    If Not SendingResult["result"] Then
+        Return SendingResult;
+    EndIf;
+
+    ReceivingResult = ReceiveData(Connection, ReceivingTimeout);
+
+    Return ReceivingResult;
+
+EndFunction
+
+// Subscribe
+// Subscribe to a topic in the PUB/SUB scheme
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with an open connection or port   - conn
+// Prefix     - String    - Required prefix (topic) of messages to receive - prefix
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function Subscribe(Val Connection, Val Prefix) Export
+
+    If Not IsConnectorObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Prefix);
+
+    Result = Connection.Subscribe(Prefix);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Close connection
+// Close previously created connection
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with an open connection or port - conn
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CloseConnection(Val Connection) Export
+
+    If Not IsConnectorObject(Connection) Then
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
+
+        Return ErrorMap;
+
+    EndIf;
+
+    Result = Connection.Close();
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return Result;
+
+EndFunction
+
+// Is client object !NOCLI
+// Checks that the value is an object of the ZeroMQ AddIn
+//
+// Parameters:
+// Value - Arbitrary - Value to check - value
+//
+// Returns:
+// Boolean - Is connector
+Function IsConnectorObject(Val Value) Export
+
+    Return String(TypeOf(Value)) = "AddIn.OPI_ZeroMQ.Main";
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Private
+
+Function InitializeConnector(Val AddressPort, Val View)
+
+    If StrStartWith(View, "Connect") Then
+        OPI_TypeConversion.GetLine(AddressPort);
+        OPI_Tools.RestoreEscapeSequences(AddressPort);
+    Else
+        OPI_TypeConversion.GetNumber(AddressPort)
+    EndIf;
+
+    ZMQ = OPI_AddIns.GetAddIn("ZeroMQ");
+
+    If View    = "ConnectReq" Then
+        Result    = ZMQ.ConnectReq(AddressPort);
+    ElsIf View = "ConnectSub" Then
+        Result    = ZMQ.ConnectSub(AddressPort);
+    ElsIf View = "ConnectPush" Then
+        Result    = ZMQ.ConnectPush(AddressPort);
+    ElsIf View = "ConnectPull" Then
+        Result    = ZMQ.ConnectPull(AddressPort);
+    ElsIf View = "BindRep" Then
+        Result    = ZMQ.BindRep(AddressPort);
+    ElsIf View = "BindPub" Then
+        Result    = ZMQ.BindPub(AddressPort);
+    ElsIf View = "BindPush" Then
+        Result    = ZMQ.BindPush(AddressPort);
+    ElsIf View = "BindPull" Then
+        Result    = ZMQ.BindPull(AddressPort);
+    EndIf;
+
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    Return ?(Result["result"], ZMQ, Result);
+
+EndFunction
 
 #EndRegion

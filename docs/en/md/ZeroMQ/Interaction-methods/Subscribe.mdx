@@ -1,0 +1,73 @@
+---
+sidebar_position: 4
+
+description: Subscribe and other functions to work with ZeroMQ in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ZeroMQ]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Subscribe
+ Subscribe to a topic in the PUB/SUB scheme
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function Subscribe(Val Connection, Val Prefix) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | AddIn object with an open connection or port |
+  | Prefix | --prefix | String | &#x2714; | Required prefix (topic) of messages to receive |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Processing result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionSub(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Prefix = "topic.";
+    Message = StrTemplate("%1ZeroMQ_SUB_%2", Prefix, Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data   = GetBinaryDataFromString(Message);
+
+    Result      = OPI_ZeroMQ.Subscribe(ClientObject, Prefix);
+```
+ 
+
+
+
+

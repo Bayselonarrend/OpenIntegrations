@@ -704,7 +704,9 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-
+						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ConnectionMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ListeningMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_InteractionMethods'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

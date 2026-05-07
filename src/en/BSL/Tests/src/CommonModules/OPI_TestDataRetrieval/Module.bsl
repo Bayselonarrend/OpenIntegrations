@@ -342,6 +342,9 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
     NewTest(TestTable, "WS_Client"                           , "WebSocket Client"                , WebSocket);
     NewTest(TestTable, "WS_Server"                           , "WebSocket Server"                , WebSocket);
+    NewTest(TestTable, "ZMQ_ConnectionMethods"               , "Connection"                      , ZMQ);
+    NewTest(TestTable, "ZMQ_ListeningMethods"                , "Listening"                       , ZMQ);
+    NewTest(TestTable, "ZMQ_InteractionMethods"              , "Interaction"                     , ZMQ);
     NewTest(TestTable, "TC_Server"                           , "TCP Host"                        , TCP);
     NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
     NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
@@ -8182,6 +8185,228 @@ Function Check_WebSocket_GetLoggingSettings(Val Result, Val Option)
         ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
         ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
 
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_CreateConnectionReq(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_CreateConnectionSub(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_CreateConnectionPush(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_CreateConnectionPull(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_BindPortRep(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_BindPortPub(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_BindPortPush(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_BindPortPull(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        Result         = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_SendData(Val Result, Val Option, Message = "")
+
+    If Option          = "Check" Then
+        ExpectsThat(Result["result"]).Равно(True);
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_ReceiveData(Val Result, Val Option, Message = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    Data           = GetStringFromBinaryData(Result["data"]);
+    ExpectsThat(Data).Равно(Message);
+    Result["data"] = "<BinaryData>";
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_ProcessRequest(Val Result, Val Option, Message = "")
+
+    If Option = "ReceivingTimeout" Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(StrFind(Lower(Result["error"]), "timeout") > 0).Равно(True);
+
+    ElsIf Option = "Response" Or Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        Data           = GetStringFromBinaryData(Result["data"]);
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_Subscribe(Val Result, Val Option, Message = "")
+
+    If Option    = "ForeignTopic" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    ElsIf Option = "Check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        Data = GetStringFromBinaryData(Result["data"]);
+
+        ExpectsThat(Data).Равно(Message);
+        Result["data"] = "<BinaryData>";
+
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_CloseConnection(Val Result, Val Option)
+
+    If Option  = "Openning" Then
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_IsConnectorObject(Val Result, Val Option)
+
+    If Option = "False" Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
     EndIf;
 
     Return Result;

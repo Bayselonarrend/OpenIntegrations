@@ -3627,5 +3627,31 @@
    "timeout": "Request execution timeout",
    "adv_response": "Formats the response as a complete structure with fields code, body, and headers"
   }
+ },
+ "OPI_ZeroMQ": {
+  "CreateConnectionReq": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateConnectionSub": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateConnectionPush": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CreateConnectionPull": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "BindPortRep": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "BindPortPub": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "BindPortPush": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "BindPortPull": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  }
  }
 }

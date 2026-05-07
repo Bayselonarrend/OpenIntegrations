@@ -94,6 +94,41 @@ EndFunction
 
 #Region ZeroMQ
 
+Procedure ZMQ_ConnectionMethods() Export
+
+    TestParameters = New Structure;
+
+    ZeroMQ_CreateConnectionReq(TestParameters);
+    ZeroMQ_CreateConnectionSub(TestParameters);
+    ZeroMQ_CreateConnectionPush(TestParameters);
+    ZeroMQ_CreateConnectionPull(TestParameters);
+
+EndProcedure
+
+Procedure ZMQ_ListeningMethods() Export
+
+    TestParameters = New Structure;
+
+    ZeroMQ_BindPortRep(TestParameters);
+    ZeroMQ_BindPortPub(TestParameters);
+    ZeroMQ_BindPortPush(TestParameters);
+    ZeroMQ_BindPortPull(TestParameters);
+
+EndProcedure
+
+Procedure ZMQ_InteractionMethods() Export
+
+    TestParameters = New Structure;
+
+    ZeroMQ_SendData(TestParameters);
+    ZeroMQ_ReceiveData(TestParameters);
+    ZeroMQ_ProcessRequest(TestParameters);
+    ZeroMQ_Subscribe(TestParameters);
+    ZeroMQ_CloseConnection(TestParameters);
+    ZeroMQ_IsConnectorObject(TestParameters);
+
+EndProcedure
+
 #EndRegion // ZeroMQ
 
 #EndRegion // RunnableTests
@@ -106,6 +141,473 @@ EndFunction
 
 #Region ZeroMQ
 
+Procedure ZeroMQ_CreateConnectionReq(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    Result = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_REQ_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(Result, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CreateConnectionReq");
+    OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "CreateConnectionReq", "Check", Message);
+
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+    OPI_ZeroMQ.CloseConnection(Result);
+
+EndProcedure
+
+Procedure ZeroMQ_CreateConnectionSub(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    Result = OPI_ZeroMQ.CreateConnectionSub(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    OPI_ZeroMQ.Subscribe(Result, "topic.");
+
+    // END
+
+    OPI_Tools.Pause(1);
+
+    Message = StrTemplate("topic.ZMQ_C_SUB_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CreateConnectionSub");
+    OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "CreateConnectionSub", "Check", Message);
+
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+    OPI_ZeroMQ.CloseConnection(Result);
+
+EndProcedure
+
+Procedure ZeroMQ_CreateConnectionPush(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPull(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    Result = OPI_ZeroMQ.CreateConnectionPush(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_PUSH_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(Result, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CreateConnectionPush");
+    OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "CreateConnectionPush", "Check", Message);
+
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+    OPI_ZeroMQ.CloseConnection(Result);
+
+EndProcedure
+
+Procedure ZeroMQ_CreateConnectionPull(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPush(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    Result = OPI_ZeroMQ.CreateConnectionPull(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_PULL_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CreateConnectionPull");
+    OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "CreateConnectionPull", "Check", Message);
+
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+    OPI_ZeroMQ.CloseConnection(Result);
+
+EndProcedure
+
+Procedure ZeroMQ_BindPortRep(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    Result = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
+        Raise OPI_Tools.JSONString(Result);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_C_REP_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "BindPortRep");
+    OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "BindPortRep", "Check", Message);
+
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(Result);
+
+EndProcedure
+
+Procedure ZeroMQ_BindPortPub(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionSub(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    OPI_ZeroMQ.Subscribe(ClientObject, "topic.");
+
+    // END
+
+    OPI_Tools.Pause(1);
+
+    Message = StrTemplate("topic.ZMQ_B_PUB_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data    = GetBinaryDataFromString(Message);
+    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+
+    OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "BindPortPub");
+    OPI_TestDataRetrieval.ProcessCLI(Check       , "ZeroMQ", "BindPortPub", "Check", Message);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_BindPortPush(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPush(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionPull(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_B_PUSH_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
+    Check   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "BindPortPush");
+    OPI_TestDataRetrieval.ProcessCLI(Check       , "ZeroMQ", "BindPortPush", "Check", Message);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_BindPortPull(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPull(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionPush(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_B_PULL_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data    = GetBinaryDataFromString(Message);
+    Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000); // SKIP
+    Check   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000); // SKIP
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "BindPortPull");
+    OPI_TestDataRetrieval.ProcessCLI(Check       , "ZeroMQ", "BindPortPull", "Check", Message);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_SendData(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_SEND_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Result    = OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
+    Receiving = OPI_ZeroMQ.ReceiveData(ServerObject, 3000); // SKIP
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result   , "ZeroMQ", "SendData");
+    OPI_TestDataRetrieval.ProcessCLI(Receiving, "ZeroMQ", "SendData", "Check", Message);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_ProcessRequest(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Request = StrTemplate("ZMQ_REQ_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss")); // SKIP
+    ReqData = GetBinaryDataFromString(Request); // SKIP
+    Result  = OPI_ZeroMQ.ProcessRequest(ClientObject, ReqData, 3000, 300); // SKIP
+
+    // END
+
+    SendingResult   = OPI_ZeroMQ.SendData(ClientObject, ReqData, 3000);
+    ServerRequest   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Response = StrTemplate("ZMQ_REP_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    ResponseData    = GetBinaryDataFromString(Response);
+    ResponseSending = OPI_ZeroMQ.SendData(ServerObject, ResponseData, 3000);
+    Result          = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+
+    OPI_TestDataRetrieval.ProcessCLI(ServerRequest, "ZeroMQ", "ProcessRequest", "Response", Request);
+    OPI_TestDataRetrieval.ProcessCLI(Result       , "ZeroMQ", "ProcessRequest", "Response", Response);
+
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_ReceiveData(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_RECV_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000); // SKIP
+    Result  = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "ReceiveData", , Message);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_Subscribe(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    // Client
+    Address = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionSub(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Prefix = "topic.";
+    Message = StrTemplate("%1ZeroMQ_SUB_%2", Prefix, Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data   = GetBinaryDataFromString(Message);
+
+    Result      = OPI_ZeroMQ.Subscribe(ClientObject, Prefix);
+    OPI_Tools.Pause(1); // SKIP
+    Sending     = OPI_ZeroMQ.SendData(ServerObject, Data, 3000); // SKIP
+    Receiving   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000); // SKIP
+    ForeignMessage = StrTemplate("other.ZMQ_SUB_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss")); // SKIP
+    ForeignData = GetBinaryDataFromString(ForeignMessage); // SKIP
+    Sending2    = OPI_ZeroMQ.SendData(ServerObject, ForeignData, 3000); // SKIP
+    NotArrived  = OPI_ZeroMQ.ReceiveData(ClientObject, 300); // SKIP
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result    , "ZeroMQ", "Subscribe");
+    OPI_TestDataRetrieval.ProcessCLI(Receiving , "ZeroMQ", "Subscribe", "Check", Message);
+    OPI_TestDataRetrieval.ProcessCLI(NotArrived, "ZeroMQ", "Subscribe", "ForeignTopic");
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_CloseConnection(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "CloseConnection", "Openning"); // SKIP
+
+    If OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Result = OPI_ZeroMQ.CloseConnection(ServerObject);
+    EndIf;
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CloseConnection");
+
+EndProcedure
+
+Procedure ZeroMQ_IsConnectorObject(FunctionParameters)
+
+    // Host
+    Port = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Result = OPI_ZeroMQ.IsConnectorObject(ServerObject);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "IsConnectorObject");
+
+    Result = OPI_ZeroMQ.IsConnectorObject("not-a-client");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "IsConnectorObject", "False");
+
+    If OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        OPI_ZeroMQ.CloseConnection(ServerObject);
+    EndIf;
+
+EndProcedure
+
 #EndRegion // ZeroMQ
 
 #EndRegion // AtomicTests
@@ -114,6 +616,16 @@ EndFunction
 
 #Region Alternate
 
+Procedure ZMQ_МетодыПодключения() Export
+    ZMQ_ConnectionMethods();
+EndProcedure
 
+Procedure ZMQ_МетодыПрослушивания() Export
+    ZMQ_ListeningMethods();
+EndProcedure
+
+Procedure ZMQ_МетодыВзаимодействия() Export
+    ZMQ_InteractionMethods();
+EndProcedure
 
 #EndRegion
