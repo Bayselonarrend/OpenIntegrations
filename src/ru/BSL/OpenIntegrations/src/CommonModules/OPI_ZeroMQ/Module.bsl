@@ -381,7 +381,7 @@
     Если Вид = "ConnectReq" Тогда
     	Результат = ZMQ.ConnectReq(АдресПорт);
     ИначеЕсли Вид = "ConnectSub" Тогда
-    	Результат = ZMQ.ConnectPush(АдресПорт);
+    	Результат = ZMQ.ConnectSub(АдресПорт);
     ИначеЕсли Вид = "ConnectPush" Тогда
     	Результат = ZMQ.ConnectPush(АдресПорт);
     ИначеЕсли Вид = "ConnectPull" Тогда
