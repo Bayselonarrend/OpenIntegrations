@@ -15,7 +15,7 @@ impl AddIn {
     }
 
     pub(crate) fn bind(&mut self, scheme: ExchangeScheme, port: i32) -> String {
-        let ep = format!("tcp://*:{}", port);
+        let ep = format!("tcp://0.0.0.0:{}", port);
         match self.lock_backend().and_then(|g| g.bind(scheme, &ep)) {
             Ok(bound) => json!({"result": true, "endpoint": bound}).to_string(),
             Err(e) => json_error(&e),
