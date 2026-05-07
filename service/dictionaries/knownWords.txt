@@ -473,3 +473,7 @@ msize
 логировании
 keepalive
 inproc
+пайплайн
+пайплайна
+treq
+trep
