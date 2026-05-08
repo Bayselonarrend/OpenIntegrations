@@ -379,21 +379,21 @@ Function InitializeConnector(Val AddressPort, Val View)
     ZMQ = OPI_AddIns.GetAddIn("ZeroMQ");
 
     If View    = "ConnectReq" Then
-        Result    = ZMQ.ConnectReq(AddressPort);
+        Result = ZMQ.ConnectReq(AddressPort);
     ElsIf View = "ConnectSub" Then
-        Result    = ZMQ.ConnectSub(AddressPort);
+        Result = ZMQ.ConnectSub(AddressPort);
     ElsIf View = "ConnectPush" Then
-        Result    = ZMQ.ConnectPush(AddressPort);
+        Result = ZMQ.ConnectPush(AddressPort);
     ElsIf View = "ConnectPull" Then
-        Result    = ZMQ.ConnectPull(AddressPort);
+        Result = ZMQ.ConnectPull(AddressPort);
     ElsIf View = "BindRep" Then
-        Result    = ZMQ.BindRep(AddressPort);
+        Result = ZMQ.BindRep(AddressPort);
     ElsIf View = "BindPub" Then
-        Result    = ZMQ.BindPub(AddressPort);
+        Result = ZMQ.BindPub(AddressPort);
     ElsIf View = "BindPush" Then
-        Result    = ZMQ.BindPush(AddressPort);
+        Result = ZMQ.BindPush(AddressPort);
     ElsIf View = "BindPull" Then
-        Result    = ZMQ.BindPull(AddressPort);
+        Result = ZMQ.BindPull(AddressPort);
     EndIf;
 
     Result = OPI_Tools.JsonToStructure(Result);
