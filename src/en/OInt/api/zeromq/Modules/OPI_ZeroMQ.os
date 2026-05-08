@@ -132,7 +132,7 @@ Function BindPortRep(Val Port) Export
 
 EndFunction
 
-// Bind port (Pub)
+// Bind port (PUB)
 // Bind port for subscribers
 //
 // Parameters:
@@ -147,7 +147,7 @@ Function BindPortPub(Val Port) Export
 
 EndFunction
 
-// Bind port (Push)
+// Bind port (PUSH)
 // Bind pipeline port for sending data
 //
 // Parameters:
@@ -162,7 +162,7 @@ Function BindPortPush(Val Port) Export
 
 EndFunction
 
-// Bind port (Pull)
+// Bind port (PULL)
 // Bind pipeline port for receiving data
 //
 // Parameters:
