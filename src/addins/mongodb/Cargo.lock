@@ -165,7 +165,7 @@ dependencies = [
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "serde_json",
@@ -174,14 +174,14 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -1070,7 +1070,7 @@ dependencies = [
 
 [[package]]
 name = "opi_mongodb"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "common-binary",
