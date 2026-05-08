@@ -440,8 +440,8 @@ Procedure ZeroMQ_SendData(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result   , "ZeroMQ", "SendData");
-    OPI_TestDataRetrieval.Process(Receiving, "ZeroMQ", "SendData", "Check", Message);
+    OPI_TestDataRetrieval.Process(Result    , "ZeroMQ", "SendData");
+    OPI_TestDataRetrieval.Process(Receiving , "ZeroMQ", "SendData", "Check", Message);
     OPI_ZeroMQ.CloseConnection(ClientObject);
     OPI_ZeroMQ.CloseConnection(ServerObject);
 
@@ -551,9 +551,9 @@ Procedure ZeroMQ_Subscribe(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result    , "ZeroMQ", "Subscribe");
-    OPI_TestDataRetrieval.Process(Receiving , "ZeroMQ", "Subscribe", "Check", Message);
-    OPI_TestDataRetrieval.Process(NotArrived, "ZeroMQ", "Subscribe", "ForeignTopic");
+    OPI_TestDataRetrieval.Process(Result     , "ZeroMQ", "Subscribe");
+    OPI_TestDataRetrieval.Process(Receiving  , "ZeroMQ", "Subscribe", "Check", Message);
+    OPI_TestDataRetrieval.Process(NotArrived , "ZeroMQ", "Subscribe", "ForeignTopic");
     OPI_ZeroMQ.CloseConnection(ClientObject);
     OPI_ZeroMQ.CloseConnection(ServerObject);
 
