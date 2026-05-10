@@ -172,8 +172,10 @@ Function DownloadFile(Val Token, Val FileID) Export
 
     Parameters = New Structure("file_id", FileID);
 
-    URL      = "api.telegram.org/bot" + Token + "/getFile";
+    URL = StrTemplate("api.telegram.org/bot%1/getFile", Token);
+
     Response = OPI_HTTPRequests.Get(URL, Parameters);
+    OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
     Path = Response[Result]["file_path"];
 
@@ -202,7 +204,7 @@ Function DownloadFile(Val Token, Val FileID) Export
 
     EndIf;
 
-    URL      = "api.telegram.org/file/bot" + Token + "/" + Path;
+    URL      = StrTemplate("api.telegram.org/file/bot%1/%2", Token, Path);
     Response = OPI_HTTPRequests.Get(URL, Parameters);
 
     Return Response;
