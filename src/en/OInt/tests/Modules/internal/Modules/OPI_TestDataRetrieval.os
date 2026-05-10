@@ -1368,11 +1368,62 @@ EndFunction
 
 Function Check_Core_CallWithSettings(Val Result, Val Option)
 
-    ResultType             = TypeOf(Result);
+    ResultType = TypeOf(Result);
+
     ExpectsThat(ResultType = Type("Structure") Or ResultType = Type("Map")).Равно(True);
     ExpectsThat(Result["status"]).Заполнено();
     ExpectsThat(Result["body"]).Заполнено();
     ExpectsThat(Result["headers"]).Заполнено();
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_Core_BackgroundCall(Val Result, Val Option)
+
+    IsOneScript   = OPI_Tools.IsOneScript();
+    BackgroundJob = Result["BackgroundJob"];
+
+    Counter = 0;
+
+    Try
+        BackgroundJob.WaitForCompletion();
+    Except
+
+        Raise DetailErrorDescription(?(IsOneScript
+            , BackgroundJob.ErrorInfo
+            , BackgroundJobs.FindByUUID(BackgroundJob.UUID).ErrorInfo));
+
+    EndTry;
+
+    If Not IsOneScript Then
+        BackgroundJob = BackgroundJobs.FindByUUID(BackgroundJob.UUID);
+    EndIf;
+
+    ExpectsThat(BackgroundJob.State).Равно(BackgroundJobState.Completed);
+
+    If IsOneScript Then
+        ResultData = BackgroundJob.Result;
+    Else
+    EndIf;
+
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(ResultData.Property("status")).Равно(True);
+        ExpectsThat(ResultData.Property("headers")).Равно(True);
+        ExpectsThat(ResultData.Property("body")).Равно(True);
+
+    ElsIf Option = "BDReturn" Then
+
+        ExpectsThat(TypeOf(ResultData)).Равно(Type("BinaryData"));
+
+    ElsIf Option = "DBStructReturn" Then
+
+        ExpectsThat(ResultData.Property("status")).Равно(True);
+        ExpectsThat(ResultData.Property("headers")).Равно(True);
+        ExpectsThat(TypeOf(ResultData["body"])).Равно(Type("BinaryData"));
+
+    EndIf;
 
     Return Undefined;
 

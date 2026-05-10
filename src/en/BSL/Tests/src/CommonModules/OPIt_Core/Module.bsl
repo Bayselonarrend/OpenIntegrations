@@ -107,9 +107,11 @@ Procedure ValidateAdvancedCall() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_FileID", TestParameters);
 
     AdvancedCall_CallWithSettings(TestParameters);
     AdvancedCall_GetAvailableSettings();
+    AdvancedCall_BackgroundCall(TestParameters);
 
 EndProcedure
 
@@ -144,6 +146,51 @@ Procedure AdvancedCall_GetAvailableSettings()
     Result = OPI_AdvancedCall.GetAvailableSettings("OPI_Telegram", "GetBotInformation");
 
     OPI_TestDataRetrieval.Process(Result, "Core", "GetAvailableSettings");
+
+EndProcedure
+
+Procedure AdvancedCall_BackgroundCall(FunctionParameters)
+
+    Token = FunctionParameters["Telegram_Token"];
+    FileID   = FunctionParameters["Telegram_FileID"];
+
+    Parameters = New Array;
+    Parameters.Add(Token);
+
+    Settings = New Structure("adv_response, dontwait"
+        , True
+        , True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "GetBotInformation"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall");
+
+    Parameters = New Array;
+    Parameters.Add(Token);
+    Parameters.Add(FileID);
+
+    Settings = New Structure("dontwait", True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "DownloadFile"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "BDReturn");
+
+    Settings = New Structure("adv_response, dontwait"
+        , True
+        , True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "DownloadFile"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "DBStructReturn");
 
 EndProcedure
 
