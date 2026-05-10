@@ -477,3 +477,4 @@ inproc
 пайплайна
 treq
 trep
+dontwait
