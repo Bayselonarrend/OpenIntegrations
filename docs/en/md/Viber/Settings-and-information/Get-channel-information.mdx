@@ -36,6 +36,10 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 
   | Parameter | Description |
   |---|---|
+  | proxy | InternetProxy or a structure with fields Protocol, Host, Port, User, Password, UseOSAuthentication |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete structure with fields code, body, and headers |
+  | retries | Number of send attempts on `5**` status codes or internal client errors |
   | dontwait | Creates a background job and returns its object (for 1C and OneScript only) |
 
 
