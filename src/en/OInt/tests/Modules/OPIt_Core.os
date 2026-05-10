@@ -106,7 +106,7 @@ EndProcedure
 Procedure ValidateAdvancedCall() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_FileID", TestParameters);
 
     AdvancedCall_CallWithSettings(TestParameters);
@@ -151,8 +151,8 @@ EndProcedure
 
 Procedure AdvancedCall_BackgroundCall(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    FileID   = FunctionParameters["Telegram_FileID"];
+    Token  = FunctionParameters["Telegram_Token"];
+    FileID = FunctionParameters["Telegram_FileID"];
 
     Parameters = New Array;
     Parameters.Add(Token);
