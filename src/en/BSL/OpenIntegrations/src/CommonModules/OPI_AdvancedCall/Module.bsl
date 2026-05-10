@@ -40,7 +40,6 @@
 // #Use "./internal/Modules/internal"
 
 // !OInt Var CurrentSettings;
-
 #Region Public
 
 // Call with settings
@@ -54,44 +53,34 @@
 //
 // Returns:
 // Structure Of KeyAndValue - Call function with settings
-Function CallWithSettings(Val ModuleName
-    , Val FunctionName
-    , Val Parameters = Undefined
-    , Val Settings = Undefined) Export
+Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Undefined,
+    Val Settings = Undefined) Export
 
-    SetSettings(Settings);
+    NormalizedSettings = NormalizeSettings(Settings);
 
-    If ValueIsFilled(Parameters) Then
-        OPI_TypeConversion.GetArray(Parameters);
+    If OPI_Tools.GetOr(NormalizedSettings, "dontwait", False) Then
+
+        UID = New UUID;
+
+        ResultAddress = Undefined;
+        ResultAddress = PutToTempStorage(Undefined, UID); // !OPI
+
+        JobParameters = New Array;
+        JobParameters.Add(ModuleName);
+        JobParameters.Add(FunctionName);
+        JobParameters.Add(Parameters);
+        JobParameters.Add(NormalizedSettings);
+        JobParameters.Add(ResultAddress);
+
+        BackgroundJob = BackgroundJobs.Execute("OPI_AdvancedCall.CallWithSettingsService", JobParameters);
+
+        Result = New Structure("BackgroundJob,Address", BackgroundJob, ResultAddress);
+
     Else
-        Parameters = New Array;
+
+        Result = CallWithSettingsService(ModuleName, FunctionName, Parameters, NormalizedSettings);
+
     EndIf;
-
-    StringParameters = New Array;
-
-    For N = 0 To Parameters.UBound() Do
-        StringParameters.Add(StrTemplate("Parameters[%1]", N));
-    EndDo;
-
-    OPI_TypeConversion.GetLine(ModuleName);
-    OPI_TypeConversion.GetLine(FunctionName);
-
-    CallString = StrTemplate("Result = %1.%2(%3);"
-        , ModuleName
-        , FunctionName
-        , StrConcat(StringParameters, ", "));
-
-    Result = Undefined;
-
-    Try
-        //@skip-check server-execution-safe-mode
-        Execute(CallString);
-    Except
-        DeleteSettings();
-        Raise;
-    EndTry;
-
-    DeleteSettings();
 
     //@skip-check constructor-function-return-section
     Return Result;
@@ -122,13 +111,56 @@ Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
         DescriptionArray.Add(StrTemplate("%1: %2", Setting.Key, Setting.Value));
     EndDo;
 
-    Return StrConcat(DescriptionArray);
+    Return StrConcat(DescriptionArray, Chars.LF);
 
 EndFunction
 
 #EndRegion
 
 #Region Internal
+
+Function CallWithSettingsService(Val ModuleName, Val FunctionName, Val Parameters, Val Settings,
+    Val StorageAddress = Undefined) Export
+
+    SetSettings(Settings);
+
+    If ValueIsFilled(Parameters) Then
+        OPI_TypeConversion.GetArray(Parameters);
+    Else
+        Parameters = New Array;
+    EndIf;
+
+    StringParameters = New Array;
+
+    For N = 0 To Parameters.UBound() Do
+        StringParameters.Add(StrTemplate("Parameters[%1]", N));
+    EndDo;
+
+    OPI_TypeConversion.GetLine(ModuleName);
+    OPI_TypeConversion.GetLine(FunctionName);
+
+    CallString = StrTemplate("Result = %1.%2(%3);", ModuleName, FunctionName, StrConcat(StringParameters, ", "));
+
+    Result = Undefined;
+
+    Try
+        //@skip-check server-execution-safe-mode
+        Execute (CallString);
+    Except
+        DeleteSettings();
+        Raise;
+    EndTry;
+
+    DeleteSettings();
+
+    If ValueIsFilled(StorageAddress) Then
+        PutToTempStorage(Result, StorageAddress); // !OPI
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
 
 Function GetCurrentSettings() Export
 
@@ -174,26 +206,25 @@ Function FindInIndex(Val Index, Val ModuleName, Val FunctionName) Export
 
 EndFunction
 
-Procedure SetSettings(Val Settings) Export
+Function SetSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
-
-        ErrorText = "The passed settings are not a valid key-value structure";
-        OPI_TypeConversion.GetKeyValueCollection(Settings, ErrorText);
-
-        If Not TypeOf(Settings) = Type("Structure") Then
-
-            CurrentSettings = New Structure;
-
-            For Each KeyValue In Settings Do
-                CurrentSettings.Insert(KeyValue.Key, KeyValue.Value);
-            EndDo;
-
-        Else
-             CurrentSettings = OPI_Tools.CopyCollection(Settings);
-        EndIf;
-
+        CurrentSettings                            = Settings;
         SessionParameters.OPI_AdvancedCallSettings = New FixedStructure(CurrentSettings); // !OPI
+    EndIf;
+
+    Return CurrentSettings;
+
+EndFunction
+
+Procedure NormalizeIntermediateResult(Result) Export
+
+    NormalizedResult = Undefined;
+
+    If OPI_Tools.GetOr(GetCurrentSettings(), "adv_response", False)
+        And OPI_Tools.CollectionFieldExists(Result, "body", NormalizedResult) Then
+
+        Result = NormalizedResult;
 
     EndIf;
 
@@ -204,8 +235,39 @@ Procedure DeleteSettings() Export
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
 
-    SessionParameters.OPI_AdvancedCallSettings = New FixedStructure(); // !OPI
+    SessionParameters.OPI_AdvancedCallSettings = New FixedStructure; // !OPI
 
 EndProcedure
+
+#EndRegion
+
+#Region Private
+
+Function NormalizeSettings(Val Settings)
+
+    If ValueIsFilled(Settings) Then
+
+        ErrorText = "The passed settings are not a valid key-value structure";
+        OPI_TypeConversion.GetKeyValueCollection(Settings, ErrorText);
+
+        If Not TypeOf(Settings) = Type("Structure") Then
+
+            NormalizedSettings = New Structure;
+
+            For Each KeyValue In Settings Do
+                NormalizedSettings.Insert(KeyValue.Key, KeyValue.Value);
+            EndDo;
+
+        Else
+            NormalizedSettings = OPI_Tools.CopyCollection(Settings);
+        EndIf;
+
+    Else
+        NormalizedSettings = New Structure;
+    EndIf;
+
+    Return NormalizedSettings;
+
+EndFunction
 
 #EndRegion

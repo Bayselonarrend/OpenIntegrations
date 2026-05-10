@@ -1,0 +1,40 @@
+    Token = "6129457865:AAFyzNYOAFbu...";
+    FileID   = "CQACAgIAAx0EcNsaZQACWBFpBJl6nDHeih2m1CcGUJUTUMBewwACt4IAAmBxKUhCDKl_dJD1TjYE";
+
+    Parameters = New Array;
+    Parameters.Add(Token);
+
+    Settings = New Structure("adv_response, dontwait"
+        , True
+        , True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "GetBotInformation"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall");
+
+    Parameters = New Array;
+    Parameters.Add(Token);
+    Parameters.Add(FileID);
+
+    Settings = New Structure("dontwait", True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "DownloadFile"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "BDReturn");
+
+    Settings = New Structure("adv_response, dontwait"
+        , True
+        , True);
+
+    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+        , "DownloadFile"
+        , Parameters
+        , Settings);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "DBStructReturn");

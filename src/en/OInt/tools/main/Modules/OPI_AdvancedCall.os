@@ -40,7 +40,6 @@
 #Use "./internal/Modules/internal"
 
 Var CurrentSettings;
-
 #Region Public
 
 // Call with settings
@@ -54,44 +53,33 @@ Var CurrentSettings;
 //
 // Returns:
 // Structure Of KeyAndValue - Call function with settings
-Function CallWithSettings(Val ModuleName
-    , Val FunctionName
-    , Val Parameters = Undefined
-    , Val Settings = Undefined) Export
+Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Undefined,
+    Val Settings = Undefined) Export
 
-    SetSettings(Settings);
+    NormalizedSettings = NormalizeSettings(Settings);
 
-    If ValueIsFilled(Parameters) Then
-        OPI_TypeConversion.GetArray(Parameters);
+    If OPI_Tools.GetOr(NormalizedSettings, "dontwait", False) Then
+
+        UID = New UUID;
+
+        ResultAddress = Undefined;
+
+        JobParameters = New Array;
+        JobParameters.Add(ModuleName);
+        JobParameters.Add(FunctionName);
+        JobParameters.Add(Parameters);
+        JobParameters.Add(NormalizedSettings);
+        JobParameters.Add(ResultAddress);
+
+        BackgroundJob = BackgroundJobs.Execute("OPI_AdvancedCall.CallWithSettingsService", JobParameters);
+
+        Result = New Structure("BackgroundJob,Address", BackgroundJob, ResultAddress);
+
     Else
-        Parameters = New Array;
+
+        Result = CallWithSettingsService(ModuleName, FunctionName, Parameters, NormalizedSettings);
+
     EndIf;
-
-    StringParameters = New Array;
-
-    For N = 0 To Parameters.UBound() Do
-        StringParameters.Add(StrTemplate("Parameters[%1]", N));
-    EndDo;
-
-    OPI_TypeConversion.GetLine(ModuleName);
-    OPI_TypeConversion.GetLine(FunctionName);
-
-    CallString = StrTemplate("Result = %1.%2(%3);"
-        , ModuleName
-        , FunctionName
-        , StrConcat(StringParameters, ", "));
-
-    Result = Undefined;
-
-    Try
-        //@skip-check server-execution-safe-mode
-        Execute(CallString);
-    Except
-        DeleteSettings();
-        Raise;
-    EndTry;
-
-    DeleteSettings();
 
     //@skip-check constructor-function-return-section
     Return Result;
@@ -122,13 +110,55 @@ Function GetAvailableSettings(Val ModuleName, Val FunctionName) Export
         DescriptionArray.Add(StrTemplate("%1: %2", Setting.Key, Setting.Value));
     EndDo;
 
-    Return StrConcat(DescriptionArray);
+    Return StrConcat(DescriptionArray, Chars.LF);
 
 EndFunction
 
 #EndRegion
 
 #Region Internal
+
+Function CallWithSettingsService(Val ModuleName, Val FunctionName, Val Parameters, Val Settings,
+    Val StorageAddress = Undefined) Export
+
+    SetSettings(Settings);
+
+    If ValueIsFilled(Parameters) Then
+        OPI_TypeConversion.GetArray(Parameters);
+    Else
+        Parameters = New Array;
+    EndIf;
+
+    StringParameters = New Array;
+
+    For N = 0 To Parameters.UBound() Do
+        StringParameters.Add(StrTemplate("Parameters[%1]", N));
+    EndDo;
+
+    OPI_TypeConversion.GetLine(ModuleName);
+    OPI_TypeConversion.GetLine(FunctionName);
+
+    CallString = StrTemplate("Result = %1.%2(%3);", ModuleName, FunctionName, StrConcat(StringParameters, ", "));
+
+    Result = Undefined;
+
+    Try
+        //@skip-check server-execution-safe-mode
+        Execute (CallString);
+    Except
+        DeleteSettings();
+        Raise;
+    EndTry;
+
+    DeleteSettings();
+
+    If ValueIsFilled(StorageAddress) Then
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return Result;
+
+EndFunction
 
 Function GetCurrentSettings() Export
 
@@ -173,25 +203,24 @@ Function FindInIndex(Val Index, Val ModuleName, Val FunctionName) Export
 
 EndFunction
 
-Procedure SetSettings(Val Settings) Export
+Function SetSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
+        CurrentSettings = Settings;
+    EndIf;
 
-        ErrorText = "The passed settings are not a valid key-value structure";
-        OPI_TypeConversion.GetKeyValueCollection(Settings, ErrorText);
+    Return CurrentSettings;
 
-        If Not TypeOf(Settings) = Type("Structure") Then
+EndFunction
 
-            CurrentSettings = New Structure;
+Procedure NormalizeIntermediateResult(Result) Export
 
-            For Each KeyValue In Settings Do
-                CurrentSettings.Insert(KeyValue.Key, KeyValue.Value);
-            EndDo;
+    NormalizedResult = Undefined;
 
-        Else
-             CurrentSettings = OPI_Tools.CopyCollection(Settings);
-        EndIf;
+    If OPI_Tools.GetOr(GetCurrentSettings(), "adv_response", False)
+        And OPI_Tools.CollectionFieldExists(Result, "body", NormalizedResult) Then
 
+        Result = NormalizedResult;
 
     EndIf;
 
@@ -207,6 +236,37 @@ EndProcedure
 
 #EndRegion
 
+#Region Private
+
+Function NormalizeSettings(Val Settings)
+
+    If ValueIsFilled(Settings) Then
+
+        ErrorText = "The passed settings are not a valid key-value structure";
+        OPI_TypeConversion.GetKeyValueCollection(Settings, ErrorText);
+
+        If Not TypeOf(Settings) = Type("Structure") Then
+
+            NormalizedSettings = New Structure;
+
+            For Each KeyValue In Settings Do
+                NormalizedSettings.Insert(KeyValue.Key, KeyValue.Value);
+            EndDo;
+
+        Else
+            NormalizedSettings = OPI_Tools.CopyCollection(Settings);
+        EndIf;
+
+    Else
+        NormalizedSettings = New Structure;
+    EndIf;
+
+    Return NormalizedSettings;
+
+EndFunction
+
+#EndRegion
+
 #Region Alternate
 
 Function ВызватьСНастройками(Val ИмяМодуля, Val ИмяФункции, Val Параметры = Undefined, Val Настройки = Undefined) Export
@@ -215,6 +275,10 @@ EndFunction
 
 Function ПолучитьДоступныеНастройки(Val ИмяМодуля, Val ИмяФункции) Export
     Return GetAvailableSettings(ИмяМодуля, ИмяФункции);
+EndFunction
+
+Function ВызватьСНастройкамиСлужебный(Val ИмяМодуля, Val ИмяФункции, Val Параметры, Val Настройки, Val АдресХранилища = Undefined) Export
+    Return CallWithSettingsService(ИмяМодуля, ИмяФункции, Параметры, Настройки, АдресХранилища);
 EndFunction
 
 Function ПолучитьТекущиеНастройки() Export
@@ -229,8 +293,12 @@ Function НайтиВИндексе(Val Индекс, Val ИмяМодуля, Va
     Return FindInIndex(Индекс, ИмяМодуля, ИмяФункции);
 EndFunction
 
-Procedure УстановитьНастройки(Val Настройки) Export
-    SetSettings(Настройки);
+Function УстановитьНастройки(Val Настройки) Export
+    Return SetSettings(Настройки);
+EndFunction
+
+Procedure НормализоватьПромежуточныйРезультат(Результат) Export
+    NormalizeIntermediateResult(Результат);
 EndProcedure
 
 Procedure УдалитьНастройки() Export

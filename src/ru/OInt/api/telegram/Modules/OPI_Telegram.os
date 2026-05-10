@@ -172,8 +172,10 @@
 
     Параметры = Новый Структура("file_id", IDФайла);
 
-    URL   = "api.telegram.org/bot" + Токен + "/getFile";
+    URL = СтрШаблон("api.telegram.org/bot%1/getFile", Токен);
+
     Ответ = OPI_ЗапросыHTTP.Get(URL, Параметры);
+    OPI_РасширенныйВызов.НормализоватьПромежуточныйРезультат(Ответ);
 
     Путь = Ответ[Result]["file_path"];
 
@@ -202,7 +204,7 @@
 
     КонецЕсли;
 
-    URL   = "api.telegram.org/file/bot" + Токен + "/" + Путь;
+    URL   = СтрШаблон("api.telegram.org/file/bot%1/%2", Токен, Путь);
     Ответ = OPI_ЗапросыHTTP.Get(URL, Параметры);
 
     Возврат Ответ;
