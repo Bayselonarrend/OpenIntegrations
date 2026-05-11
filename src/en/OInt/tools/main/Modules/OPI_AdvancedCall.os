@@ -71,9 +71,7 @@ Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Und
         JobParameters.Add(NormalizedSettings);
         JobParameters.Add(ResultAddress);
 
-        BackgroundJob = BackgroundJobs.Execute("OPI_AdvancedCall.CallWithSettingsService", JobParameters);
-
-        Result = New Structure("BackgroundJob,Address", BackgroundJob, ResultAddress);
+        Result = BackgroundJobs.Execute(ЭтотОбъект, "CallWithSettingsService", JobParameters);
 
     Else
 
