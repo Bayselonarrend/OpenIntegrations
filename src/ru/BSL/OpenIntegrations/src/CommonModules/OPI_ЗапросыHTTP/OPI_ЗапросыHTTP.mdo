@@ -6,6 +6,8 @@
     <value>HTTP (служебный, ОПИ)</value>
   </synonym>
   <comment>Служебный модуль работы с HTTP набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
-  <serverCall>true</serverCall>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>
