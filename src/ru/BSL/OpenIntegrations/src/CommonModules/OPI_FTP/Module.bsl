@@ -48,6 +48,8 @@
 // #Использовать "../../../tools/main"
 // #Использовать "../../../tools/http"
 
+#Если Не ВебКлиент Тогда
+	
 #Область ПрограммныйИнтерфейс
 
 #Область ОсновныеМетоды
@@ -720,17 +722,10 @@
 
                 // BSLLS:MissingTemporaryFileDeletion-off
 
-                //@skip-check missing-temporary-file-deletion
-                #Если ВебКлиент Тогда
-                	ИВФ = Неопределено;
-                	ВызватьИсключение "Работа с файлами недоступна в веб-клиенте!";
-                #Иначе
-                	
-                	ИВФ = ПолучитьИмяВременногоФайла();	
-                	// BSLLS:MissingTemporaryFileDeletion-on
-                	Файл.Записать(ИВФ);
-                	
-                #КонецЕсли
+                //@skip-check missing-temporary-file-deletion         	
+            	ИВФ = ПолучитьИмяВременногоФайла();	
+            	// BSLLS:MissingTemporaryFileDeletion-on
+            	Файл.Записать(ИВФ);
 
                 Результат = СоединениеОбработки.UploadFile(ИВФ, Путь);
 
@@ -857,12 +852,7 @@
             // BSLLS:MissingTemporaryFileDeletion-off
 
             //@skip-check missing-temporary-file-deletion
-            #Если ВебКлиент Тогда
-            	ИВФ = Неопределено;
-            	ВызватьИсключение "Работа с файлами недоступна в веб-клиенте!";
-            #Иначе
-            	ИВФ = ПолучитьИмяВременногоФайла();
-            #КонецЕсли
+            ИВФ = ПолучитьИмяВременногоФайла();
 
             // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -1158,3 +1148,5 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#КонецЕсли

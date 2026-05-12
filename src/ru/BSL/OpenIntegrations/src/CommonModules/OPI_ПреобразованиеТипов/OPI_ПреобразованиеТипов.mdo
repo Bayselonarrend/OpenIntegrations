@@ -6,6 +6,8 @@
     <value>Преобразование типов (служебный, ОПИ)</value>
   </synonym>
   <comment>Модуль приведения типов набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
-  <serverCall>true</serverCall>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>
