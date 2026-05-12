@@ -3,9 +3,8 @@
   <name>OPI_ПолучениеДанныхТестов</name>
   <synonym>
     <key>ru</key>
-    <value>ПолучениеДанныхТестов</value>
+    <value>Получение данных тестов</value>
   </synonym>
   <server>true</server>
-  <externalConnection>true</externalConnection>
-  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+  <serverCall>true</serverCall>
 </mdclass:CommonModule>

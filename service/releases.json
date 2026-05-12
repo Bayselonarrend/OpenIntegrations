@@ -8,6 +8,18 @@
         "changes": [
             {
                 "lib": "All",
+                "icon": "media/HTTP.png",
+                "description_ru": "Оптимизирована загрузка по частям в HTTP-клиенте",
+                "description_en": ""
+            },   
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Все основные модули библиотек в 1С теперь `КлиентСервер`",
+                "description_en": ""
+            },              
+            {
+                "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Тип подключения внешних компонент добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих компоненты (для 1С версии)",
                 "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"

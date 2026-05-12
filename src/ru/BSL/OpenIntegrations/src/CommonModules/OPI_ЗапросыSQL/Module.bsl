@@ -1193,9 +1193,18 @@
     // BSLLS:MissingTemporaryFileDeletion-off
 
     //@skip-check missing-temporary-file-deletion
-    ПутьЗаготовок   = ПолучитьИмяВременногоФайла();
+    #Если ВебКлиент Тогда
+    	ПутьЗаготовок = OPI_Инструменты.ПолучитьИмяВременногоФайлаНаСервере();
+    #Иначе
+    	ПутьЗаготовок = ПолучитьИмяВременногоФайла();
+    #КонецЕсли
+    
     //@skip-check missing-temporary-file-deletion
-    ПутьКлючей      = ПолучитьИмяВременногоФайла();
+    #Если ВебКлиент Тогда
+    	ПутьКлючей = OPI_Инструменты.ПолучитьИмяВременногоФайлаНаСервере();
+    #Иначе
+    	ПутьКлючей = ПолучитьИмяВременногоФайла();
+    #КонецЕсли
 
     // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -1775,7 +1784,11 @@
         // BSLLS:MissingTemporaryFileDeletion-off
 
         //@skip-check missing-temporary-file-deletion
-        ИВФ     = ПолучитьИмяВременногоФайла();
+        #Если ВебКлиент Тогда
+            ИВФ = OPI_Инструменты.ПолучитьИмяВременногоФайлаНаСервере();
+        #Иначе
+        	ИВФ = ПолучитьИмяВременногоФайла();
+        #КонецЕсли
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -1803,7 +1816,11 @@
         // BSLLS:MissingTemporaryFileDeletion-off
 
         //@skip-check missing-temporary-file-deletion
-        ИВФ = ПолучитьИмяВременногоФайла();
+        #Если ВебКлиент Тогда
+            ИВФ = OPI_Инструменты.ПолучитьИмяВременногоФайлаНаСервере();
+        #Иначе
+        	ИВФ = ПолучитьИмяВременногоФайла();
+        #КонецЕсли
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -1849,7 +1866,11 @@
             // BSLLS:MissingTemporaryFileDeletion-off
 
             //@skip-check missing-temporary-file-deletion
-            ИВФ = ПолучитьИмяВременногоФайла();
+	        #Если ВебКлиент Тогда
+	            ИВФ = OPI_Инструменты.ПолучитьИмяВременногоФайлаНаСервере();
+	        #Иначе
+	        	ИВФ = ПолучитьИмяВременногоФайла();
+	        #КонецЕсли
 
             // BSLLS:MissingTemporaryFileDeletion-on
 
