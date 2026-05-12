@@ -11,4 +11,14 @@
   </synonym>
   <comment>HTTP-клиент набора ОПИ</comment>
   <useStandardCommands>true</useStandardCommands>
+  <defaultForm>DataProcessor.OPI_HTTPКлиент.Form.ОбъектКлиентскогоВызова</defaultForm>
+  <forms uuid="d022c24d-3a47-44f1-ad62-c6d4a395aac9">
+    <name>ОбъектКлиентскогоВызова</name>
+    <synonym>
+      <key>ru</key>
+      <value>Объект клиентского вызова</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
 </mdclass:DataProcessor>
