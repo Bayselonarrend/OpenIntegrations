@@ -6,6 +6,8 @@
     <value>Криптография (служебный, ОПИ)</value>
   </synonym>
   <comment>Модуль работы с криптографией набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
-  <serverCall>true</serverCall>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>

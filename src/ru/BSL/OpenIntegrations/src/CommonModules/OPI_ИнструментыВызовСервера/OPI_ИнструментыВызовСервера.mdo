@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="706f5964-dec2-478c-872e-50072d0fea88">
+  <name>OPI_ИнструментыВызовСервера</name>
+  <synonym>
+    <key>ru</key>
+    <value>Инструменты вызов сервера</value>
+  </synonym>
+  <server>true</server>
+  <serverCall>true</serverCall>
+</mdclass:CommonModule>
