@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9bbe0d01-567a-49ca-ae09-d55148424279">
+  <name>OPI_ФункцииБиблиотекВызовСервера</name>
+  <synonym>
+    <key>ru</key>
+    <value>Функции библиотек (ОПИ, вызов сервера)</value>
+  </synonym>
+  <comment>Отдельные функции библиотек, которые невозможно реализовать на клиенте</comment>
+  <server>true</server>
+  <serverCall>true</serverCall>
+</mdclass:CommonModule>

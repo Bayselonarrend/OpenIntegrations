@@ -6,6 +6,7 @@
     <value>Компоненты (служебный, ОПИ)</value>
   </synonym>
   <comment>Модуль работы с внешними компонентами набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

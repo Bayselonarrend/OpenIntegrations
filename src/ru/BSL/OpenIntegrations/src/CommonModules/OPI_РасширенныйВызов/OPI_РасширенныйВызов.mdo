@@ -7,6 +7,5 @@
   </synonym>
   <comment>Модуль для вызова методов с расширенным набором параметров</comment>
   <server>true</server>
-  <externalConnection>true</externalConnection>
-  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+  <serverCall>true</serverCall>
 </mdclass:CommonModule>

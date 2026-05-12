@@ -6,6 +6,7 @@
     <value>Neocities (ОПИ)</value>
   </synonym>
   <comment>Модуль для работы с Neocities из набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -6,6 +6,7 @@
     <value>SSH (служебный, ОПИ)</value>
   </synonym>
   <comment>Общий модуль инструментов работы с SSH набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
