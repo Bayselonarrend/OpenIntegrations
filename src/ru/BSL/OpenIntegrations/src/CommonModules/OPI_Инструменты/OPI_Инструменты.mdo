@@ -7,6 +7,5 @@
   </synonym>
   <comment>Основной модуль инструментов набора ОПИ</comment>
   <server>true</server>
-  <externalConnection>true</externalConnection>
-  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+  <serverCall>true</serverCall>
 </mdclass:CommonModule>

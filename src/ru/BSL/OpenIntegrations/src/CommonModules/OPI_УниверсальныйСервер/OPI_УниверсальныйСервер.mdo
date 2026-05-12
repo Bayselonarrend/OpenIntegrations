@@ -6,6 +6,7 @@
     <value>Универсальный сервер (служебный, ОПИ)</value>
   </synonym>
   <comment>Универсальные методы для разных видов серверов</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

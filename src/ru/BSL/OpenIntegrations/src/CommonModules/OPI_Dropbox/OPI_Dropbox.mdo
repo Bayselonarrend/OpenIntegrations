@@ -10,6 +10,7 @@
     <value>Dropbox (ОПИ)</value>
   </synonym>
   <comment>Модуль для работы с Dropbox из набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

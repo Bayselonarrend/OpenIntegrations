@@ -6,6 +6,7 @@
     <value>SQL (служебный, ОПИ)</value>
   </synonym>
   <comment>Общий модуль инструментов работы с SQL набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -113,6 +113,7 @@
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
   <commonModules>CommonModule.OPI_РасширенныйВызов</commonModules>
   <commonModules>CommonModule.OPI_УниверсальныйСервер</commonModules>
+  <commonModules>CommonModule.OPI_ФункцииБиблиотекВызовСервера</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPКлиент</dataProcessors>
 </mdclass:Configuration>

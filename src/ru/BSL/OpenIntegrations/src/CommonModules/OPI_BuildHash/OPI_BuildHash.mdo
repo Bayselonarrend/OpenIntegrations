@@ -6,6 +6,7 @@
     <value>Build hash (ОПИ</value>
   </synonym>
   <comment>Служебный модуль, помогающий определить актуальность проекта исходному коду</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
