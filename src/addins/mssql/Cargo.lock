@@ -232,7 +232,7 @@ dependencies = [
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64 0.22.1",
  "serde_json",
@@ -241,14 +241,14 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
 
 [[package]]
 name = "common-dataset"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "dashmap",
  "serde_json",
@@ -257,7 +257,7 @@ dependencies = [
 
 [[package]]
 name = "common-tcp"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64 0.22.1",
  "httparse",
@@ -270,7 +270,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -429,7 +429,7 @@ dependencies = [
 
 [[package]]
 name = "funty"
-version = "2.1.0"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6d5a32815ae3f33302d95fdcb2ce17862f8c65363dcfd29360480ba1001fc9c"
 
@@ -861,7 +861,7 @@ dependencies = [
 
 [[package]]
 name = "opi_mssql"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64 0.21.7",
  "chrono",
@@ -871,6 +871,7 @@ dependencies = [
  "common-tcp",
  "common-utils",
  "dateparser",
+ "funty",
  "serde_json",
  "thread-id",
  "tiberius",

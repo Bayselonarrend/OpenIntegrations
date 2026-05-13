@@ -65,7 +65,7 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "serde_json",
@@ -74,14 +74,14 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
 
 [[package]]
 name = "common-dataset"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "dashmap",
  "serde_json",
@@ -90,7 +90,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -232,7 +232,7 @@ checksum = "1261fe7e33c73b354eab43b1273a57c8f967d0391e80353e51f764ac02cf6775"
 
 [[package]]
 name = "opi_sqlite"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "common-binary",
