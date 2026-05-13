@@ -117,7 +117,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_MongoDB.MongoDB";
+    Return String(TypeOf(Value)) = "AddIn.OPI_MongoDB.Main";
 
 EndFunction
 

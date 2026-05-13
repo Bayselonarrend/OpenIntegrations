@@ -123,7 +123,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_MySQL.MySQL";
+    Return String(TypeOf(Value)) = "AddIn.OPI_MySQL.Main";
 
 EndFunction
 

@@ -9,8 +9,8 @@ use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use wrapper::WebSocketServer;
 
-impl_addin_exports!(AddIn, "WSServer");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "WSServer");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Start"),                      // 0

@@ -7627,7 +7627,7 @@ Function Check_TCP_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
 
-    ExpectsThat(Result).Равно("AddIn.OPI_TCPClient.TCPClient");
+    ExpectsThat(Result).Равно("AddIn.OPI_TCPClient.Main");
 
     Return Result;
 
@@ -7705,7 +7705,7 @@ Function Check_TCP_StartServer(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
 
-    ExpectsThat(Result).Равно("AddIn.OPI_TCPServer.TCPServer");
+    ExpectsThat(Result).Равно("AddIn.OPI_TCPServer.Main");
 
     Return Result;
 
@@ -7903,7 +7903,7 @@ EndFunction
 Function Check_WebSocket_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_WSClient.WSClient");
+    ExpectsThat(Result).Равно("AddIn.OPI_WSClient.Main");
 
     Return Result;
 
@@ -7913,7 +7913,7 @@ Function Check_WebSocket_CloseConnection(Val Result, Val Option)
 
     If Left(Option, 8) = "Openning" Then
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_WSClient.WSClient");
+        ExpectsThat(Result).Равно("AddIn.OPI_WSClient.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -8036,7 +8036,7 @@ EndFunction
 Function Check_WebSocket_StartServer(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_WSServer.WSServer");
+    ExpectsThat(Result).Равно("AddIn.OPI_WSServer.Main");
 
     Return Result;
 
@@ -8050,7 +8050,7 @@ Function Check_WebSocket_StopServer(Val Result, Val Option)
 
     ElsIf Option = "Connection" Then
 
-        ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_WSClient.WSClient").Равно(False);
+        ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_WSClient.Main").Равно(False);
 
     Else
         ExpectsThat(Result["result"]).Равно(True);
@@ -8249,7 +8249,7 @@ Function Check_ZeroMQ_CreateConnectionReq(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8265,7 +8265,7 @@ Function Check_ZeroMQ_CreateConnectionSub(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8281,7 +8281,7 @@ Function Check_ZeroMQ_CreateConnectionPush(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8297,7 +8297,7 @@ Function Check_ZeroMQ_CreateConnectionPull(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8313,7 +8313,7 @@ Function Check_ZeroMQ_BindPortRep(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8329,7 +8329,7 @@ Function Check_ZeroMQ_BindPortPub(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8345,7 +8345,7 @@ Function Check_ZeroMQ_BindPortPush(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8361,7 +8361,7 @@ Function Check_ZeroMQ_BindPortPull(Val Result, Val Option, Message = "")
         Result["data"] = "<BinaryData>";
     Else
         Result         = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     EndIf;
 
     Return Result;
@@ -8441,7 +8441,7 @@ Function Check_ZeroMQ_CloseConnection(Val Result, Val Option)
 
     If Option  = "Openning" Then
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.ZeroMQ");
+        ExpectsThat(Result).Равно("AddIn.OPI_ZeroMQ.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -8468,7 +8468,7 @@ Function Check_SQLite_CreateConnection(Val Result, Val Option)
         ExpectsThat(Result["result"]).Равно(True);
     Else
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.SQLite");
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
     EndIf;
 
     Return Result;
@@ -8479,7 +8479,7 @@ Function Check_SQLite_CloseConnection(Val Result, Val Option)
 
     If Option  = "Openning" Then
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.SQLite");
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -8500,7 +8500,7 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     ElsIf Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.SQLite");
+        ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
 
     ElsIf Option = "Extension" Then
 
@@ -8792,7 +8792,7 @@ EndFunction
 Function Check_PostgreSQL_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.PostgreSQL");
+    ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
 
     Return Result;
 
@@ -8819,7 +8819,7 @@ Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     If Option = "Connection" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.PostgreSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
 
     ElsIf ValueIsFilled(Option) Then
 
@@ -8844,7 +8844,7 @@ Function Check_PostgreSQL_CreateDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.PostgreSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
 
     ElsIf Option = "Existing" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -8952,7 +8952,7 @@ Function Check_PostgreSQL_DeleteDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.PostgreSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_PostgreSQL.Main");
 
     ElsIf Option = "Error" Or Option = "Connection error" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -9126,7 +9126,7 @@ EndFunction
 Function Check_MySQL_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_MySQL.MySQL");
+    ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
 
     Return Result;
 
@@ -9153,7 +9153,7 @@ Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     If Option = "Connection" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.MySQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
 
     ElsIf ValueIsFilled(Option) Then
 
@@ -9178,7 +9178,7 @@ Function Check_MySQL_CreateDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.MySQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
 
     ElsIf Option = "Existing" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -9277,7 +9277,7 @@ Function Check_MySQL_DeleteDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.MySQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MySQL.Main");
 
     ElsIf Option = "Error" Or Option = "Connection error" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -9966,7 +9966,7 @@ EndFunction
 Function Check_RCON_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_RCON.RCON");
+    ExpectsThat(Result).Равно("AddIn.OPI_RCON.Main");
 
     Return Result;
 
@@ -11364,7 +11364,7 @@ EndFunction
 Function Check_MSSQL_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.MSSQL");
+    ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
 
     Return Result;
 
@@ -11391,7 +11391,7 @@ Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     If Option = "Connection" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.MSSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
 
     ElsIf ValueIsFilled(Option) Then
 
@@ -11424,7 +11424,7 @@ Function Check_MSSQL_CreateDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.MSSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
 
     ElsIf Option = "Existing" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -11523,7 +11523,7 @@ Function Check_MSSQL_DeleteDatabase(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.MSSQL");
+        ExpectsThat(Result).Равно("AddIn.OPI_MSSQL.Main");
 
     ElsIf Option = "Error" Or Option = "Connection error" Then
         ExpectsThat(Result["result"]).Равно(False);
@@ -11686,7 +11686,7 @@ EndFunction
 Function Check_FTP_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_FTP.FTP");
+    ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
 
     If StrFind(Option, "HTTP") Then
         OPI_Tools.Pause(2);
@@ -11853,7 +11853,7 @@ Function Check_FTP_CloseConnection(Val Result, Val Option)
 
     If StrFind(Option, "Openning") > 0 Then
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_FTP.FTP");
+        ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -11870,7 +11870,7 @@ Function Check_FTP_IsConnector(Val Result, Val Option)
 
     If StrFind(Option, "Openning") > 0 Then
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_FTP.FTP");
+        ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
     Else
         ExpectsThat(Result).Равно(True);
     EndIf;
@@ -12116,7 +12116,7 @@ EndFunction
 Function Check_SSH_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_SSH.SSH");
+    ExpectsThat(Result).Равно("AddIn.OPI_SSH.Main");
 
     If StrFind(Option, "HTTP") Then
         OPI_Tools.Pause(2);
@@ -12260,7 +12260,7 @@ EndFunction
 Function Check_SFTP_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
-    ExpectsThat(Result).Равно("AddIn.OPI_SSH.SSH");
+    ExpectsThat(Result).Равно("AddIn.OPI_SSH.Main");
 
     If StrFind(Option, "HTTP") Then
         OPI_Tools.Pause(2);
@@ -13001,7 +13001,7 @@ Function Check_MongoDB_CreateConnection(Val Result, Val Option)
         ExpectsThat(Result["result"]).Равно(True);
     Else
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.MongoDB");
+        ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.Main");
     EndIf;
 
     Return Result;
@@ -13028,7 +13028,7 @@ Function Check_MongoDB_ExecuteCommand(Val Result, Val Option)
 
     If Option  = "Connection" Then
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.MongoDB");
+        ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -13546,7 +13546,7 @@ Function Check_GRPC_CreateConnection(Val Result, Val Option)
         ExpectsThat(Result["result"]).Равно(False);
     Else
         Result   = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.GRPC");
+        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.Main");
     EndIf;
 
     Return Result;
@@ -13819,7 +13819,7 @@ Function Check_ClickHouse_CreateGRPCConnection(Val Result, Val Option)
     If Option = "Openning" Then
 
         Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.GRPC");
+        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.Main");
 
     ElsIf Option = "TableCreation" Or Option = "DataInsert" Then
 

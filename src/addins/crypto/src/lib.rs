@@ -3,8 +3,8 @@ mod methods;
 use common_core::*;
 use methods::*;
 
-impl_addin_exports!(AddIn, "Cryptography");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, call_func, "Cryptography");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, call_func);
 
 pub const PROPS: &[&[u16]] = &[];
 

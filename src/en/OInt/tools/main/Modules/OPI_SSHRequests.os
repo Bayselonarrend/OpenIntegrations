@@ -135,7 +135,7 @@ EndFunction
 
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_SSH.SSH";
+    Return String(TypeOf(Value)) = "AddIn.OPI_SSH.Main";
 
 EndFunction
 
