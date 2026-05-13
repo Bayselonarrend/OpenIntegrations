@@ -6,8 +6,8 @@ use rcon_client::RCONClient;
 use settings::ConnectionSettings;
 use common_core::*;
 
-impl_addin_exports!(AddIn);
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
+impl_addin_exports!(AddIn, "RCON");
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "RCON");
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),     // 0

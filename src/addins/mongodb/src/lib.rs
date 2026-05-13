@@ -8,8 +8,8 @@ use serde_json::{json};
 use common_core::*;
 use common_utils::utils::json_error;
 
-impl_addin_exports!(AddIn);
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
+impl_addin_exports!(AddIn, "MongoDB");
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "MongoDB");
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),

@@ -5,8 +5,8 @@ use common_binary::vault::BinaryVault;
 use common_core::*;
 use std::sync::{Arc, Mutex};
 
-impl_addin_exports!(AddIn);
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
+impl_addin_exports!(AddIn, "ZeroMQ");
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "ZeroMQ");
 
 pub const METHODS: &[&[u16]] = &[
     name!("ConnectReq"),

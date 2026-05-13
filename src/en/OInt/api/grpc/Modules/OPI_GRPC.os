@@ -237,7 +237,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_GRPC.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_GRPC.GRPC";
 
 EndFunction
 

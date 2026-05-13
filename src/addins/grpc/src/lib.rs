@@ -17,8 +17,8 @@ use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use serde_json::{json, Value};
 
-impl_addin_exports!(AddIn);
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
+impl_addin_exports!(AddIn, "GRPC");
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "GRPC");
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),

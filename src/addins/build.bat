@@ -39,11 +39,12 @@ if errorlevel 1 goto :error
 wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include cargo zigbuild --release --target i686-unknown-linux-gnu.2.17
 if errorlevel 1 goto :error
 
-:: Имена бинарей и манифеста зависят от LIB_NAME (см. release.bat проекта)
-set "DLL_WIN64=AddIn_%LIB_NAME%_x64_windows.dll"
-set "DLL_WIN86=AddIn_%LIB_NAME%_x86_windows.dll"
-set "SO_LIN64=AddIn_%LIB_NAME%_x64_linux.so"
-set "SO_LIN86=AddIn_%LIB_NAME%_x86_linux.so"
+:: Имена файлов в zip — без префикса OPI_; name в манифесте = полный LIB_NAME
+set "FILE_PREFIX=%LIB_NAME:OPI_=%"
+set "DLL_WIN64=%FILE_PREFIX%_x64_windows.dll"
+set "DLL_WIN86=%FILE_PREFIX%_x86_windows.dll"
+set "SO_LIN64=%FILE_PREFIX%_x64_linux.so"
+set "SO_LIN86=%FILE_PREFIX%_x86_linux.so"
 
 :: Копирование файлов .dll и .so
 copy /y target\x86_64-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\%DLL_WIN64%"
