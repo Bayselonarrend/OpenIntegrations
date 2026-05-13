@@ -39,25 +39,39 @@ if errorlevel 1 goto :error
 wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include cargo zigbuild --release --target i686-unknown-linux-gnu.2.17
 if errorlevel 1 goto :error
 
+:: Имена бинарей и манифеста зависят от LIB_NAME (см. release.bat проекта)
+set "DLL_WIN64=AddIn_%LIB_NAME%_x64_windows.dll"
+set "DLL_WIN86=AddIn_%LIB_NAME%_x86_windows.dll"
+set "SO_LIN64=AddIn_%LIB_NAME%_x64_linux.so"
+set "SO_LIN86=AddIn_%LIB_NAME%_x86_linux.so"
+
 :: Копирование файлов .dll и .so
-copy /y target\x86_64-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\AddIn_x64_windows.dll"
+copy /y target\x86_64-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\%DLL_WIN64%"
 if errorlevel 1 goto :error
 
-copy /y target\i686-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\AddIn_x86_windows.dll"
+copy /y target\i686-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\%DLL_WIN86%"
 if errorlevel 1 goto :error
 
-copy /y target\x86_64-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\AddIn_x64_linux.so"
+copy /y target\x86_64-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\%SO_LIN64%"
 if errorlevel 1 goto :error
 
-copy /y target\i686-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\AddIn_x86_linux.so"
+copy /y target\i686-unknown-linux-gnu\release\lib%CARGO_NAME%.so "%OUTPUT_DIR%\%SO_LIN86%"
 if errorlevel 1 goto :error
 
-copy /y ..\MANIFEST.XML "%OUTPUT_DIR%\MANIFEST.XML"
+(
+echo ^<?xml version='1.0' encoding='UTF-8'?^>
+echo ^<bundle xmlns='http://v8.1c.ru/8.2/addin/bundle' name='%LIB_NAME%'^>
+echo 	^<component os='Windows' path='%DLL_WIN86%' type='native' arch='i386' /^>
+echo 	^<component os='Windows' path='%DLL_WIN64%' type='native' arch='x86_64' /^>
+echo 	^<component os='Linux' path='%SO_LIN86%' type='native' arch='i386' /^>
+echo 	^<component os='Linux' path='%SO_LIN64%' type='native' arch='x86_64' /^>
+echo ^</bundle^>
+) > "%OUTPUT_DIR%\MANIFEST.XML"
 if errorlevel 1 goto :error
 
 echo "MAIN ---" > dependencies.log
-wsl -d OracleLinux_8_7 ldd %OUTPUT_DIR%/AddIn_x64_linux.so >> dependencies.log
-wsl -d OracleLinux_8_7 bash -c "strings %OUTPUT_DIR%/AddIn_x64_linux.so | grep GLIBC_" >> dependencies.log
+wsl -d OracleLinux_8_7 ldd %OUTPUT_DIR%/%SO_LIN64% >> dependencies.log
+wsl -d OracleLinux_8_7 bash -c "strings %OUTPUT_DIR%/%SO_LIN64% | grep GLIBC_" >> dependencies.log
 
 :: Архивация
 powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -DestinationPath '%LIB_NAME%.zip'"
