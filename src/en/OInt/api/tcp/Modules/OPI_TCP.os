@@ -390,7 +390,7 @@ EndFunction
 // Boolean - Is connector
 Function IsClientObject(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_TCPClient.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPClient.TCPClient";
 
 EndFunction
 
@@ -600,7 +600,7 @@ EndFunction
 // Boolean - Is connector
 Function IsServerObject(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_TCPServer.TCPServer";
 
 EndFunction
 
