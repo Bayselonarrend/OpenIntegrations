@@ -15,7 +15,7 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Все основные модули библиотек в 1С теперь `КлиентСервер`",
+                "description_ru": "Все основные модули библиотек в версии для 1С:Предприятие теперь `КлиентСервер`",
                 "description_en": ""
             },              
             {
@@ -23,7 +23,13 @@
                 "icon": "media/logo.png",
                 "description_ru": "Тип подключения внешних компонент добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих компоненты (для 1С версии)",
                 "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"
-            }            
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Число попыток повторной отправки запроса добавлено в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих HTTP-клиент",
+                "description_en": ""
+            }
         ]
     },
     {
