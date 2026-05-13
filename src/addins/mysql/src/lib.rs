@@ -9,8 +9,8 @@ use mysql::*;
 use serde_json::json;
 use std::path::PathBuf;
 
-impl_addin_exports!(AddIn, "MySQL");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "MySQL");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),

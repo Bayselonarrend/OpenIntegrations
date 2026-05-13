@@ -115,7 +115,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.SQLite";
+    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
 
 EndFunction
 
@@ -213,7 +213,7 @@ Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "
     FilePath  = Extension_["Path"];
     Connector = CreateConnection(Connection);
 
-    ComponentType = "AddIn.OPI_SQLite.SQLite";
+    ComponentType = "AddIn.OPI_SQLite.Main";
 
     If TypeOf(Connector) <> Type(ComponentType) Then
         Return Connector;

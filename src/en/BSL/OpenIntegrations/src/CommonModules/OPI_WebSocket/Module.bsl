@@ -422,7 +422,7 @@ EndFunction
 // Boolean - Is connector
 Function IsClientObject(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_WSClient.WSClient";
+    Return String(TypeOf(Value)) = "AddIn.OPI_WSClient.Main";
 
 EndFunction
 
@@ -561,7 +561,7 @@ EndFunction
 // Boolean - Is connector
 Function IsServerObject(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_WSServer.WSServer";
+    Return String(TypeOf(Value)) = "AddIn.OPI_WSServer.Main";
 
 EndFunction
 
