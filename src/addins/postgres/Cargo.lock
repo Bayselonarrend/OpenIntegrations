@@ -204,7 +204,7 @@ dependencies = [
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "serde_json",
@@ -213,14 +213,14 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
 
 [[package]]
 name = "common-dataset"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "dashmap",
  "serde_json",
@@ -229,7 +229,7 @@ dependencies = [
 
 [[package]]
 name = "common-tcp"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "httparse",
@@ -242,7 +242,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -874,7 +874,7 @@ dependencies = [
 
 [[package]]
 name = "opi_postgres"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "chrono",

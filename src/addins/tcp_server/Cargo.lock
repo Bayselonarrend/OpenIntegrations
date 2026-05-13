@@ -118,7 +118,7 @@ dependencies = [
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "serde_json",
@@ -127,14 +127,14 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
 
 [[package]]
 name = "common-logs"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "chrono",
  "serde",
@@ -143,7 +143,7 @@ dependencies = [
 
 [[package]]
 name = "common-server"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "common-binary",
  "common-logs",
@@ -157,7 +157,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -413,7 +413,7 @@ checksum = "d75b0bedcc4fe52caa0e03d9f1151a323e4aa5e2d78ba3580400cd3c9e2bc4bc"
 
 [[package]]
 name = "opi_tcpserver"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "common-binary",
  "common-core",
