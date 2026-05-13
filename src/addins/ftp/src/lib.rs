@@ -15,8 +15,8 @@ use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
 use common_core::*;
 
-impl_addin_exports!(AddIn, "FTP");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "FTP");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),

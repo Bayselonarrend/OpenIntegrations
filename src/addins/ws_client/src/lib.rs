@@ -10,8 +10,8 @@ use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use client::WebSocketClient;
 
-impl_addin_exports!(AddIn, "WSClient");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "WSClient");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),                    // 0

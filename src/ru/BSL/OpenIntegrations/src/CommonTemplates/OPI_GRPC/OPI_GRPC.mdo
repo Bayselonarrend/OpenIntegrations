@@ -5,5 +5,5 @@
     <key>ru</key>
     <value>Компонента gRPC (ОПИ)</value>
   </synonym>
-  <templateType>BinaryData</templateType>
+  <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

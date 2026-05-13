@@ -8,8 +8,8 @@ use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use crate::backend::TcpServerBackend;
 
-impl_addin_exports!(AddIn, "TCPServer");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "TCPServer");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Start"),                      // 0

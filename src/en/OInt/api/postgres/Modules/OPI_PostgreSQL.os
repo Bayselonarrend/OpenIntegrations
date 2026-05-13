@@ -123,7 +123,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_PostgreSQL.PostgreSQL";
+    Return String(TypeOf(Value)) = "AddIn.OPI_PostgreSQL.Main";
 
 EndFunction
 

@@ -8,8 +8,8 @@ use common_utils::utils::{json_error, json_success};
 use common_binary::vault::{BinaryInput, BinaryVault};
 use common_core::*;
 
-impl_addin_exports!(AddIn, "SQLite");
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "SQLite");
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),

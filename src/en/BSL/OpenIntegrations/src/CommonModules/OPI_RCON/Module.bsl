@@ -161,7 +161,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_RCON.RCON";
+    Return String(TypeOf(Value)) = "AddIn.OPI_RCON.Main";
 
 EndFunction
 
