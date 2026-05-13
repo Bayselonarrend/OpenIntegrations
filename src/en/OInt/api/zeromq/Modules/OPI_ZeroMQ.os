@@ -357,7 +357,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnectorObject(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_ZeroMQ.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_ZeroMQ.ZeroMQ";
 
 EndFunction
 

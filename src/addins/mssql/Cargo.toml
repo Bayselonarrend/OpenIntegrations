@@ -30,3 +30,5 @@ base64 = "0.21"
 uuid = { version = "1.17.0", features = ["v4"] }
 dateparser = "0.2.1"
 thread-id = "5.0.0"
+# funty 2.1.0 yanked on crates.io; tiberius → rust_decimal → rkyv → bitvec тянет ^2.0
+funty = "=2.0.0"

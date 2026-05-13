@@ -19,7 +19,7 @@ pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> Stri
 /// Макрос для генерации экспортируемых функций Native API
 #[macro_export]
 macro_rules! impl_addin_exports {
-    ($addin_type:ty) => {
+    ($addin_type:ty, $class_name:literal) => {
         use std::{
             ffi::{c_int, c_long, c_void},
             sync::atomic::{AtomicI32, Ordering},
@@ -47,7 +47,7 @@ macro_rules! impl_addin_exports {
         #[allow(non_snake_case)]
         #[no_mangle]
         pub extern "C" fn GetClassNames() -> *const u16 {
-            $crate::addin1c::name!("Main").as_ptr()
+            $crate::addin1c::name!($class_name).as_ptr()
         }
 
         #[allow(non_snake_case)]
@@ -69,10 +69,10 @@ macro_rules! impl_addin_exports {
 /// Макрос для генерации реализации RawAddin с защитой от panic
 #[macro_export]
 macro_rules! impl_raw_addin {
-    ($addin_type:ty, $methods:expr, $props:expr, $get_params_amount:expr, $cal_func_fn:expr) => {
+    ($addin_type:ty, $methods:expr, $props:expr, $get_params_amount:expr, $cal_func_fn:expr, $class_name:literal) => {
         impl $crate::addin1c::RawAddin for $addin_type {
             fn register_extension_as(&mut self) -> &'static [u16] {
-                $crate::addin1c::name!("Main")
+                $crate::addin1c::name!($class_name)
             }
 
             fn get_n_props(&mut self) -> usize {

@@ -9,8 +9,8 @@ use ssh2::{Session, Sftp};
 use ssh_settings::SshConf;
 use common_core::*;
 
-impl_addin_exports!(AddIn);
-impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
+impl_addin_exports!(AddIn, "SSH");
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func, "SSH");
 
 pub const METHODS: &[&[u16]] = &[
     name!("SetSettings"),

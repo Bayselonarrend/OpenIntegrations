@@ -41,7 +41,7 @@ checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
@@ -135,9 +135,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.185"
+version = "0.2.186"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52ff2c0fe9bc6cb6b14a0592c2ff4fa9ceb83eea9db979b0487cd054946a2b8f"
+checksum = "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
 
 [[package]]
 name = "libm"
@@ -193,7 +193,7 @@ dependencies = [
 
 [[package]]
 name = "opi_crypto"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "common-core",
  "digest",
