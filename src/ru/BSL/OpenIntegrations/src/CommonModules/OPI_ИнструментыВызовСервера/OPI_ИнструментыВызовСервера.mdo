@@ -3,8 +3,9 @@
   <name>OPI_ИнструментыВызовСервера</name>
   <synonym>
     <key>ru</key>
-    <value>Инструменты вызов сервера</value>
+    <value>Инструменты (вызов сервера, служебный, ОПИ)</value>
   </synonym>
+  <comment>Модуль методов-инструментов, выполняемых только на сервере</comment>
   <server>true</server>
   <serverCall>true</serverCall>
 </mdclass:CommonModule>

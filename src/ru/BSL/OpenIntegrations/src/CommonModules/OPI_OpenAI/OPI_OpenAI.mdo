@@ -3,7 +3,7 @@
   <name>OPI_OpenAI</name>
   <synonym>
     <key>ru</key>
-    <value>Open AI (ОПИ)</value>
+    <value>OpenAI (ОПИ)</value>
   </synonym>
   <comment>Модуль для работы с OpenAI API из набора ОПИ</comment>
   <clientManagedApplication>true</clientManagedApplication>
