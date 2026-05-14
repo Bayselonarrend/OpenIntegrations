@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>WebSocket (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с WebSocket из набора ОПИ</comment>
   <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>

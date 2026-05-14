@@ -47,7 +47,6 @@
   <compatibilityMode>8.3.10</compatibilityMode>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <sessionParameters>SessionParameter.OPI_НастройкиРасширенногоВызова</sessionParameters>
-  <sessionParameters>SessionParameter.OPI_КомпонентыИнициализированы</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_GRPC</commonTemplates>

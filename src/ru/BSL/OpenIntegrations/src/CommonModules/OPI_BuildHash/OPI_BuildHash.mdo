@@ -3,7 +3,7 @@
   <name>OPI_BuildHash</name>
   <synonym>
     <key>ru</key>
-    <value>Build hash (ОПИ</value>
+    <value>Build hash (ОПИ)</value>
   </synonym>
   <comment>Служебный модуль, помогающий определить актуальность проекта исходному коду</comment>
   <clientManagedApplication>true</clientManagedApplication>
