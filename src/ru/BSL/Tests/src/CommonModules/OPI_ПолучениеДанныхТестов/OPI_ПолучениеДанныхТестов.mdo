@@ -5,6 +5,8 @@
     <key>ru</key>
     <value>Получение данных тестов</value>
   </synonym>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
-  <serverCall>true</serverCall>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>
