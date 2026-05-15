@@ -1262,10 +1262,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьКаталогКэша</name>
-    <title>
-      <key>ru</key>
-      <value>Открыть каталог кэша</value>
-    </title>
     <id>5</id>
     <use>
       <common>true</common>
@@ -1279,10 +1275,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьЛицензиюRu</name>
-    <title>
-      <key>ru</key>
-      <value>Открыть лицензию ru</value>
-    </title>
     <id>6</id>
     <use>
       <common>true</common>
@@ -1296,10 +1288,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьЛицензиюEn</name>
-    <title>
-      <key>ru</key>
-      <value>Открыть лицензию en</value>
-    </title>
     <id>7</id>
     <use>
       <common>true</common>
@@ -1347,10 +1335,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьSourceCraft</name>
-    <title>
-      <key>ru</key>
-      <value>Открыть source craft</value>
-    </title>
     <id>11</id>
     <use>
       <common>true</common>
