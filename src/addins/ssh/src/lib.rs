@@ -4,7 +4,7 @@ mod ssh_methods;
 mod connection_response;
 mod keyboard_interactive;
 
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 use ssh2::{Session, Sftp};
 use ssh_settings::SshConf;
 use common_core::*;
@@ -31,6 +31,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("DownloadToBuffer"),
     name!("RenameObject"),
     name!("GetFileInfo"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -53,6 +54,7 @@ pub fn get_params_amount(num: usize) -> usize {
         15 => 1,
         16 => 3,
         17 => 1,
+        18 => 0,
         _ => 0,
     }
 }
@@ -139,7 +141,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         17 => {
             let path = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.get_file_info(&path))
-        }
+        },
+        18 => Box::new(version()),
         _ => Box::new(false),
     }
 

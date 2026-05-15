@@ -3,7 +3,7 @@ mod listener;
 
 use std::sync::{Arc, Mutex};
 use common_core::*;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use crate::backend::TcpServerBackend;
@@ -23,6 +23,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListConnections"),            // 8
     name!("RetrieveBinaryFromVault"),    // 9
     name!("GetLogs"),                    // 10
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -38,6 +39,7 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 0,  // GetConnectionsList()
         9 => 1,  // RetrieveBinaryFromVault()
         10 => 1, // GetLogs(count)
+        11 => 0,
         _ => 0,
     }
 }
@@ -94,6 +96,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
+        11 => Box::new(version()),
         _ => Box::new(false),
     }
 }

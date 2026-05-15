@@ -1,7 +1,7 @@
 mod methods;
 mod settings;
 
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 use rcon_client::RCONClient;
 use settings::ConnectionSettings;
 use common_core::*;
@@ -12,7 +12,8 @@ impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),     // 0
     name!("Command"),     // 1
-    name!("GetSettings")  // 2
+    name!("GetSettings"), // 2
+    name!("Version"),     // 3
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -20,6 +21,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 4,
         1 => 1,
         2 => 0,
+        3 => 0,
         _ => 0,
     }
 }
@@ -45,7 +47,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Some(settings) =>  settings.get_settings(),
                 None => json_error("No connection settings found")
             })
-        }
+        },
+        3 => Box::new(version()),
         _ => Box::new(false), // Неверный номер команды
     }
 }

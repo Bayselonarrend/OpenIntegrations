@@ -12,7 +12,7 @@ use configuration::FtpSettings;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_core::*;
 
 impl_addin_exports!(AddIn);
@@ -43,6 +43,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ChangeCurrentDirectory"),
     name!("GetFeatures"),
     name!("ExecuteStandardCommand"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -71,6 +72,7 @@ pub fn get_params_amount(num: usize) -> usize {
         21 => 1,
         22 => 0,
         23 => 1,
+        24 => 0,
         _ => 0,
     }
 }
@@ -225,6 +227,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Err(e) => e.to_string()
             })
         },
+        24 => Box::new(version()),
         _ => Box::new(false),
     };
 

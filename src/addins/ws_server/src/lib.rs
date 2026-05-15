@@ -4,7 +4,7 @@ mod server;
 
 use std::sync::Arc;
 use common_core::*;
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use wrapper::WebSocketServer;
@@ -25,6 +25,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("SendText"),                   // 9
     name!("SendPing"),                   // 10
     name!("SendPong"),                   // 11
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -41,6 +42,7 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 2,  // SendText(connection_id, text)
         10 => 2, // SendPing(connection_id, payload)
         11 => 2, // SendPong(connection_id, payload)
+        12 => 0,
         _ => 0,
     }
 }
@@ -107,6 +109,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let payload = params[1].get_blob().unwrap_or(&empty_array);
             Box::new(obj.server.send_pong(&connection_id, payload.to_vec()))
         },
+        12 => Box::new(version()),
         _ => Box::new(false),
     }
 }
