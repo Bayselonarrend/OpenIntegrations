@@ -546,6 +546,7 @@
 "Больше": "Bigger",
 "СКонца": "FromEnd",
 "Формат": "Format",
+"Форма":" Form",
 "Курсор": "Cursor",
 "IDЛида": "LeadID",
 "ДатаОт": "DateFrom",
@@ -12962,5 +12963,7 @@
 "все": "all",
 "выделить": "enable",
 "Внешние": "External",
-"ПриСозданииНаСервере": "OnCreateAtServer"
+"ПриСозданииНаСервере": "OnCreateAtServer",
+"Текст лицензии на русском языке (ОПИ)": "License text in Russian (OpenIntegrations)",
+"Текст лицензии на английском языке (ОПИ)": "License text in English (OpenIntegrations)"
 }
