@@ -1,6 +1,7 @@
 mod methods;
 
 use common_core::*;
+use common_utils::utils::version;
 use methods::*;
 
 impl_addin_exports!(AddIn);
@@ -13,6 +14,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("HmacSha256"),
     name!("RsaSha1"),
     name!("RsaSha256"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -21,23 +23,36 @@ pub fn get_params_amount(num: usize) -> usize {
         1 => 2,
         2 => 2,
         3 => 2,
+        4 => 0,
         _ => 0,
     }
 }
 
 pub fn call_func(_obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-
-    let key = params[0].get_blob().unwrap_or_default();
-    let data = params[1].get_blob().unwrap_or_default();
-
     match num {
-        0 => box_result(hmac_sha1(key, data)),
-        1 => box_result(hmac_sha256(key, data)),
-        2 => box_result(rsa_sha1(key, data)),
-        3 => box_result(rsa_sha256(key, data)),
+        0 => {
+            let key = params[0].get_blob().unwrap_or_default();
+            let data = params[1].get_blob().unwrap_or_default();
+            box_result(hmac_sha1(key, data))
+        },
+        1 => {
+            let key = params[0].get_blob().unwrap_or_default();
+            let data = params[1].get_blob().unwrap_or_default();
+            box_result(hmac_sha256(key, data))
+        },
+        2 => {
+            let key = params[0].get_blob().unwrap_or_default();
+            let data = params[1].get_blob().unwrap_or_default();
+            box_result(rsa_sha1(key, data))
+        },
+        3 => {
+            let key = params[0].get_blob().unwrap_or_default();
+            let data = params[1].get_blob().unwrap_or_default();
+            box_result(rsa_sha256(key, data))
+        },
+        4 => Box::new(version()),
         _ => Box::new(false),
     }
-
 }
 
 fn box_result(result:  Result<Vec<u8>, String>) -> Box<dyn getset::ValueType> {

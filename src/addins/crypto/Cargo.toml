@@ -16,6 +16,7 @@ opt-level = "z"
 
 [dependencies]
 common-core = { path = "../commons/common-core" }
+common-utils = { path = "../commons/common-utils" }
 
 hmac = "0.12"
 sha1 = { version = "0.10", features = ["oid"] }

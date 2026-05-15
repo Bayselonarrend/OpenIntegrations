@@ -11,7 +11,7 @@ mod ack_stream;
 mod identity_codec;
 
 use common_core::*;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_tcp::tls_settings::TlsSettings;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
@@ -41,6 +41,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("GetSettings"),
     name!("StoreSettings"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -65,6 +66,7 @@ pub fn get_params_amount(num: usize) -> usize {
         17 => 1, // LoadBase64ToVault
         18 => 0, // GetSettings
         19 => 1, // StoreSettings
+        20 => 0,
         _ => 0,
     }
 }
@@ -146,7 +148,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         19 => {
             let settings = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.store_settings(settings))
-        }
+        },
+        20 => Box::new(version()),
         _ => Box::new(false),
     }
 }

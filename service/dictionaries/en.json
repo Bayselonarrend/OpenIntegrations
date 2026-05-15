@@ -12880,5 +12880,11 @@
 "Отдельные функции библиотек, которые невозможно реализовать на клиенте": "Individual library functions that cannot be implemented on the client side",
 "Функции библиотек (вызов сервера, служебный, ОПИ)": "Library functions (server call, utility, OpenIntegrations)",
 "Модуль методов-инструментов, выполняемых только на сервере": "Module of tool methods that run only on the server",
-"Инструменты (вызов сервера, служебный, ОПИ)": "Tools (server call, utility, OpenIntegrations)"
+"Инструменты (вызов сервера, служебный, ОПИ)": "Tools (server call, utility, OpenIntegrations)",
+"Панель управления расширением Открытого пакета интеграций": "OpenIntegrations extension control panel",
+"Панель управления расширением (ОПИ)": "Extension control panel (OpenIntegrations)",
+"Методы управления настройками расширения ОПИ": "Methods for managing OpenIntegrations extension settings",
+"Управление расширением (ОПИ)": "Extension management (OpenIntegrations)",
+"OPI_УправлениеРасширением": "OPI_ExtensionManagement",
+"OPI_ПанельУправления": "OPI_ControlPannel"
 }

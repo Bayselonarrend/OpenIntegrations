@@ -13,3 +13,7 @@ pub fn json_success() -> String {
 pub fn lock_unpoisoned<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
     mutex.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
 }
+
+pub fn version() -> String {
+    "2.1.0".to_string()
+}

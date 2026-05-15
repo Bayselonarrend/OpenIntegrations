@@ -4,7 +4,7 @@ mod wrapper;
 
 use std::sync::Arc;
 use common_core::*;
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use wrapper::HttpServer;
@@ -21,6 +21,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListConnections"),            // 5
     name!("RetrieveBinaryFromVault"),    // 6
     name!("GetLogs"),                    // 7
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -33,6 +34,7 @@ pub fn get_params_amount(num: usize) -> usize {
         5 => 0,  // ListConnections()
         6 => 1,  // RetrieveBinaryFromVault(vault_key)
         7 => 1,  // GetLogs(count)
+        8 => 0,
         _ => 0,
     }
 }
@@ -87,6 +89,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
+        8 => Box::new(version()),
         _ => Box::new(false),
     }
 }

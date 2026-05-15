@@ -5,7 +5,7 @@ use serde_json::json;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::{create_connection, resolve_to_socket_addr, Connection};
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_core::*;
 
 impl_addin_exports!(AddIn);
@@ -21,6 +21,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetLastError"),     // 6
     name!("SetAddress"),       // 7
     name!("SetProxySettings"), // 8
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -34,6 +35,7 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 0,
         7 => 1,
         8 => 1,
+        9 => 0,
         _ => 0,
     }
 }
@@ -72,7 +74,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         8 => {
             let json = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.set_proxy(&json))
-        }
+        },
+        9 => Box::new(version()),
         _ => Box::new(false),
     }
 
