@@ -478,3 +478,4 @@ inproc
 treq
 trep
 dontwait
+неизолированно

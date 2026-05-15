@@ -12932,7 +12932,7 @@
 "МассивДанныхКомпонент": "AddInDataArray",
 "УправлениеРасширением": "ExtensionManagement",
 "СписокМакетовКомпонент": "AddInTemplateList",
-"OPI_ЗвершениеУстановки": "OPI_InstallationFinish",
+"OPI_ЗавершениеУстановки": "OPI_InstallationFinish",
 "ОбработчикиКомандФормы": "FormCommandsEventHandlers",
 "ОбновитьСписокКомпонент": "UpdateAddInList",
 "ОбработчикиСобытийФормы": "FormEventHandlers",
