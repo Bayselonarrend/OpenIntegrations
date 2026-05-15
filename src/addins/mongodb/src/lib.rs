@@ -6,7 +6,7 @@ use std::sync::{Arc, Mutex};
 use common_binary::vault::BinaryInput;
 use serde_json::{json};
 use common_core::*;
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -18,6 +18,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("LoadFileToVault"),
     name!("LoadBase64ToVault"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -28,6 +29,7 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 1,
         4 => 1,
         5 => 1,
+        6 => 0,
         _ => 0,
     }
 }
@@ -88,6 +90,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(result)
         }
+        6 => Box::new(version()),
         _ => Box::new(false),
     }
 }

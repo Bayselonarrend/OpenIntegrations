@@ -3,6 +3,7 @@ mod methods;
 
 use common_binary::vault::BinaryVault;
 use common_core::*;
+use common_utils::utils::version;
 use std::sync::{Arc, Mutex};
 
 impl_addin_exports!(AddIn);
@@ -22,6 +23,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("Recv"),
     name!("Close"),
     name!("RetrieveBinaryFromVault"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -32,6 +34,7 @@ pub fn get_params_amount(num: usize) -> usize {
         10 => 1,    // Recv(timeout_ms)
         11 => 0,    // Close
         12 => 1,    // RetrieveBinaryFromVault
+        13 => 0,    // Version
         _ => 0,
     }
 }
@@ -93,7 +96,8 @@ pub fn cal_func(
         12 => {
             let key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&key))
-        }
+        },
+        13 => Box::new(version()),
         _ => Box::new(false),
     }
 }

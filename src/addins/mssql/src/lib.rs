@@ -5,7 +5,7 @@ use std::sync::{Arc, Mutex};
 use common_binary::vault::BinaryInput;
 use common_dataset::dataset::Datasets;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_core::*;
 
 impl_addin_exports!(AddIn);
@@ -26,6 +26,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("LoadFileToVault"),
     name!("LoadBase64ToVault"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -44,6 +45,7 @@ pub fn get_params_amount(num: usize) -> usize {
         11 => 1,
         12 => 1,
         13 => 1,
+        14 => 0,
         _ => 0,
     }
 }
@@ -173,7 +175,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             };
 
             Box::new(result)
-        }
+        },
+        14 => Box::new(version()),
         _ => Box::new(false),
     }
 }

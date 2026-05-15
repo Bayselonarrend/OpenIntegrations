@@ -5,7 +5,7 @@ mod receiving;
 
 use std::sync::{Arc, Mutex};
 use common_core::*;
-use common_utils::utils::json_error;
+use common_utils::utils::{json_error, version};
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use client::WebSocketClient;
@@ -26,6 +26,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetLogs"),                    // 9
     name!("SetTLS"),                     // 10
     name!("SetProxySettings"),           // 11
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -42,6 +43,7 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 1,  // GetLogs(count)
         10 => 3, // SetTLS(use_tls, accept_invalid_certs, ca_cert_path)
         11 => 1, // SetProxySettings(proxy_json)
+        12 => 0,
         _ => 0,
     }
 }
@@ -145,6 +147,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             };
             Box::new(client.set_proxy(&proxy_json))
         },
+        12 => Box::new(version()),
         _ => Box::new(false),
     }
 }

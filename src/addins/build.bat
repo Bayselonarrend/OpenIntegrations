@@ -40,11 +40,11 @@ wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DI
 if errorlevel 1 goto :error
 
 :: Имена файлов в zip — без префикса OPI_; name в манифесте = полный LIB_NAME
-set "FILE_PREFIX=%LIB_NAME:OPI_=%"
-set "DLL_WIN64=%FILE_PREFIX%_x64_windows.dll"
-set "DLL_WIN86=%FILE_PREFIX%_x86_windows.dll"
-set "SO_LIN64=%FILE_PREFIX%_x64_linux.so"
-set "SO_LIN86=%FILE_PREFIX%_x86_linux.so"
+set "FILE_PREFIX=%LIB_NAME%"
+set "DLL_WIN64=AddIn_%FILE_PREFIX%_x64_windows.dll"
+set "DLL_WIN86=AddIn_%FILE_PREFIX%_x86_windows.dll"
+set "SO_LIN64=AddIn_%FILE_PREFIX%_x64_linux.so"
+set "SO_LIN86=AddIn_%FILE_PREFIX%_x86_linux.so"
 
 :: Копирование файлов .dll и .so
 copy /y target\x86_64-pc-windows-msvc\release\%CARGO_NAME%.dll "%OUTPUT_DIR%\%DLL_WIN64%"

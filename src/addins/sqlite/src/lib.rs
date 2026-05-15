@@ -4,7 +4,7 @@ use std::sync::{Mutex, Arc};
 use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
 use common_dataset::dataset::Datasets;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{json_error, json_success, version};
 use common_binary::vault::{BinaryInput, BinaryVault};
 use common_core::*;
 
@@ -26,6 +26,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("LoadFileToVault"),
     name!("LoadBase64ToVault"),
+    name!("Version"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -44,6 +45,7 @@ pub fn get_params_amount(num: usize) -> usize {
         11 => 1,
         12 => 1,
         13 => 1,
+        14 => 0,
         _ => 0,
     }
 }
@@ -144,7 +146,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Err(e) => json_error(&e)
             };
             Box::new(result)
-        }
+        },
+        14 => Box::new(version()),
         _ => Box::new(false),
     }
 
