@@ -41,6 +41,19 @@
 	Иначе
 		ДанныеПроекта = ДанныеПроекта_;
 	КонецЕсли;
+
+	КаталогРепозиторияMelezh = "./Melezh";
+	ОбъектКаталогРепозиторияMelezh = Новый Файл(КаталогРепозиторияMelezh);
+	Если ОбъектКаталогРепозиторияMelezh.Существует() Тогда
+		CommonTools.СообщитьПроцесс("Updating Melezh...");
+		CommonTools.ЗапуститьВнешнееПриложение("git fetch --all", КаталогРепозиторияMelezh);
+		CommonTools.ЗапуститьВнешнееПриложение("git reset --hard origin/master", КаталогРепозиторияMelezh);
+	Иначе
+		CommonTools.СообщитьПроцесс("Cloning Melezh...");
+		CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/Melezh.git");
+	КонецЕсли;
+
+	Приостановить(10000);
 	
 	ЗаполнитьЗаменыРегистра();
 
