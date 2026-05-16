@@ -616,27 +616,3 @@
 #КонецОбласти
 
 #КонецОбласти
-
-#Region Alternate
-
-Function GenerateAWSSignature(Val DataStructure, Val Address, Val Method, Val Headers, Val Expire) Export
-    Return СгенерироватьПодписьAWS(DataStructure, Address, Method, Headers, Expire);
-EndFunction
-
-Function CreateFeedRSS(Val ChannelTitle, Val ChannelDescription, Val ChannelLink, Val Items, Val UpdateDate = Undefined) Export
-    Return СоздатьФидRSS(ChannelTitle, ChannelDescription, ChannelLink, Items, UpdateDate);
-EndFunction
-
-Function ParseFeedRSS(Val XMLText) Export
-    Return РазобратьФидRSS(XMLText);
-EndFunction
-
-Function CreateFeedAtom(Val FeedTitle, Val FeedLink, Val FeedID, Val Items, Val UpdateDate = Undefined) Export
-    Return СоздатьФидAtom(FeedTitle, FeedLink, FeedID, Items, UpdateDate);
-EndFunction
-
-Function ParseFeedAtom(Val XMLText) Export
-    Return РазобратьФидAtom(XMLText);
-EndFunction
-
-#EndRegion

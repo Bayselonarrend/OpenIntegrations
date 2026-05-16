@@ -616,27 +616,3 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
-#Region Alternate
-
-Function СгенерироватьПодписьAWS(Val СтруктураДанных, Val Адрес, Val Метод, Val Заголовки, Val ВремяЖизни) Export
-    Return GenerateAWSSignature(СтруктураДанных, Адрес, Метод, Заголовки, ВремяЖизни);
-EndFunction
-
-Function СоздатьФидRSS(Val НазваниеКанала, Val ОписаниеКанала, Val СсылкаКанала, Val Элементы, Val ДатаОбновления = Undefined) Export
-    Return CreateFeedRSS(НазваниеКанала, ОписаниеКанала, СсылкаКанала, Элементы, ДатаОбновления);
-EndFunction
-
-Function РазобратьФидRSS(Val ТекстXML) Export
-    Return ParseFeedRSS(ТекстXML);
-EndFunction
-
-Function СоздатьФидAtom(Val НазваниеФида, Val СсылкаФида, Val IDФида, Val Элементы, Val ДатаОбновления = Undefined) Export
-    Return CreateFeedAtom(НазваниеФида, СсылкаФида, IDФида, Элементы, ДатаОбновления);
-EndFunction
-
-Function РазобратьФидAtom(Val ТекстXML) Export
-    Return ParseFeedAtom(ТекстXML);
-EndFunction
-
-#EndRegion

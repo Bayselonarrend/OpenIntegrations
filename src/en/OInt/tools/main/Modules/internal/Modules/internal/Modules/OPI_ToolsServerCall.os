@@ -54,10 +54,10 @@ EndProcedure
 
 Function GetDecodedString(Val Value, Val Way) Export
 
-    If TypeOf(Way) = Type("String") Then
-        EncodingType  = StringEncodingMethod[Way];
+    If TypeOf(Way)   = Type("String") Then
+        EncodingType = StringEncodingMethod[Way];
     Else
-        EncodingType  = Way;
+        EncodingType = Way;
     EndIf;
 
     Return DecodeString(Value, EncodingType);
@@ -66,10 +66,10 @@ EndFunction
 
 Function GetEncodedString(Val Value, Val Way) Export
 
-    If TypeOf(Way) = Type("String") Then
-        EncodingType  = StringEncodingMethod[Way];
+    If TypeOf(Way)   = Type("String") Then
+        EncodingType = StringEncodingMethod[Way];
     Else
-        EncodingType  = Way;
+        EncodingType = Way;
     EndIf;
 
     Return EncodeString(Value, EncodingType);
@@ -143,9 +143,9 @@ EndFunction
 Function Hash(BinaryData, Type) Export
 
     If TypeOf(Type) = Type("String") Then
-        HashType       = HashFunction[Type];
+        HashType    = HashFunction[Type];
     Else
-        HashType       = Type;
+        HashType    = Type;
     EndIf;
 
     Hashing = New DataHashing(HashType);
