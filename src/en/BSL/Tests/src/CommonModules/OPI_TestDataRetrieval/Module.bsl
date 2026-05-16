@@ -433,7 +433,7 @@ Function FormYAXTests(Val TestModule) Export
     Set = Module.ДобавитьТестовыйНабор(TestModule);
 
     For Each Test In TestTable Do
-        Set.AddClientTest(Test.Method, Test.Synonym);
+        Set.ДобавитьКлиентскийТест(Test.Method, Test.Synonym);
         Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
     EndDo;
 
