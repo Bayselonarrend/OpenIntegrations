@@ -746,12 +746,31 @@ Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
     UUID        = String(New UUID);
     CurrentDate = GetLaunchTime();
 
-    If ValueIsFilled(Option) Then
-        Title      = StrTemplate("%1 (%2)", Method, Option);
-        Identifier = StrTemplate("%1_%2_%3", Library, Method, Option);
+    If OPI_Tools.IsOneScript() Then
+        LaunchType        = "Common";
+        HeaderPrimaryPart = Method;
     Else
-        Title      = Method;
-        Identifier = StrTemplate("%1_%2"   , Library, Method);
+
+        #If Client Then
+            LaunchType = "Client";
+        #Else
+            LaunchType = "Host";
+        #EndIf
+
+        HeaderPrimaryPart = StrTemplate("%1: %2", LaunchType, Method);
+
+    EndIf;
+
+    If ValueIsFilled(Option) Then
+
+        Title      = StrTemplate("%1 (%2)", HeaderPrimaryPart, Option);
+        Identifier = StrTemplate("%1_%2_%3_%4", LaunchType, Library, Method, Option);
+
+    Else
+
+        Title      = HeaderPrimaryPart;
+        Identifier = StrTemplate("%1_%2_%3", LaunchType, Library, Method);
+
     EndIf;
 
     Token   = GetParameter("RPortal_Token");
