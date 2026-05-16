@@ -38,6 +38,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 // Get confirmation code
@@ -131,3 +133,5 @@ Function GetAuthorizationHeader(Val Token) Export
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

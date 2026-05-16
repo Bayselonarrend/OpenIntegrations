@@ -5,5 +5,5 @@
     <key>en</key>
     <value>AddIn gRPC (OPI)</value>
   </synonym>
-  <templateType>BinaryData</templateType>
+  <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

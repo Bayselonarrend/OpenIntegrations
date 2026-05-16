@@ -3,8 +3,10 @@
   <name>OPI_ClickHouse</name>
   <synonym>
     <key>en</key>
-    <value>ClickHouse</value>
+    <value>ClickHouse (OPI)</value>
   </synonym>
+  <comment>Module for work with ClickHouse from of set OPI</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

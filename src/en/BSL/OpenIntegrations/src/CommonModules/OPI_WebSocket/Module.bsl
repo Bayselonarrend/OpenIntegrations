@@ -49,6 +49,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Common
@@ -578,3 +580,6 @@ Function AddInName() Export
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI
+

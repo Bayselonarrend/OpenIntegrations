@@ -45,6 +45,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region SettingsAndInformation
@@ -408,3 +410,5 @@ Function TokenInHeaders(Val Token)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

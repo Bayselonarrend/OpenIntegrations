@@ -47,6 +47,8 @@
 // #Use "../../../tools/http"
 // #Use "../../google"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Authorization
@@ -507,3 +509,5 @@ Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

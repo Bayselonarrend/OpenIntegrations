@@ -50,6 +50,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -1313,3 +1315,5 @@ Function PutBinaryData(AddIn, Val Value)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

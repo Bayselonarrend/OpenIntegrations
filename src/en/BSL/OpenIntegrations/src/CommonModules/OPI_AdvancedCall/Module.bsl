@@ -40,6 +40,9 @@
 // #Use "./internal/Modules/internal"
 
 // !OInt Var CurrentSettings;
+
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 // Call with settings
@@ -60,21 +63,30 @@ Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Und
 
     If OPI_Tools.GetOr(NormalizedSettings, "dontwait", False) Then
 
-        UID = New UUID;
+        #If Client Then
 
-        ResultAddress = Undefined;
-        ResultAddress = PutToTempStorage(Undefined, UID); // !OPI
+            Raise "Background job execution is not available on the client!";
 
-        JobParameters = New Array;
-        JobParameters.Add(ModuleName);
-        JobParameters.Add(FunctionName);
-        JobParameters.Add(Parameters);
-        JobParameters.Add(NormalizedSettings);
-        JobParameters.Add(ResultAddress);
+        #Else
 
-        // !OInt Result = BackgroundJobs.Execute(ThisObject, "CallWithSettingsService", JobParameters);
-        BackgroundJob = BackgroundJobs.Execute("OPI_AdvancedCall.CallWithSettingsService", JobParameters); // !OPI
-        Result = New Structure("BackgroundJob,Address", BackgroundJob, ResultAddress); // !OPI
+            UID = New UUID;
+
+            ResultAddress = Undefined;
+            ResultAddress = PutToTempStorage(Undefined, UID); // !OPI
+
+            JobParameters = New Array;
+            JobParameters.Add(ModuleName);
+            JobParameters.Add(FunctionName);
+            JobParameters.Add(Parameters);
+            JobParameters.Add(NormalizedSettings);
+            JobParameters.Add(ResultAddress);
+
+            // !OInt Result = BackgroundJobs.Execute(ThisObject, "CallWithSettingsService", JobParameters);
+            Method = "OPI_AdvancedCall.CallWithSettingsService"; // !OPI
+            BackgroundJob = BackgroundJobs.Execute(Method, JobParameters); // !OPI
+            Result = New Structure("BackgroundJob,Address", BackgroundJob, ResultAddress); // !OPI
+
+        #EndIf
 
     Else
 
@@ -145,7 +157,7 @@ Function CallWithSettingsService(Val ModuleName, Val FunctionName, Val Parameter
 
     Try
         //@skip-check server-execution-safe-mode
-        Execute (CallString);
+        Execute(CallString);
     Except
         DeleteSettings();
         Raise;
@@ -166,7 +178,7 @@ Function GetCurrentSettings() Export
 
     Try
         //@skip-check bsl-legacy-check-string-literal
-        Return SessionParameters["OPI_AdvancedCallSettings"]; // !OPI
+        Return OPI_Tools.GetSessionParameter("OPI_AdvancedCallSettings"); // !OPI
         // !OInt Return CurrentSettings;
     Except
         Return Undefined;
@@ -209,8 +221,12 @@ EndFunction
 Function SetSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
-        CurrentSettings                            = Settings;
-        SessionParameters.OPI_AdvancedCallSettings = New FixedStructure(CurrentSettings); // !OPI
+
+        CurrentSettings = Settings;
+
+        OPI_Tools.SetSessionParameter("OPI_AdvancedCallSettings" // !OPI
+            , New FixedStructure(CurrentSettings)); // !OPI
+
     EndIf;
 
     Return CurrentSettings;
@@ -235,7 +251,8 @@ Procedure DeleteSettings() Export
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
 
-    SessionParameters.OPI_AdvancedCallSettings = New FixedStructure; // !OPI
+    OPI_Tools.SetSessionParameter("OPI_AdvancedCallSettings" // !OPI
+        , New FixedStructure); // !OPI
 
 EndProcedure
 
@@ -271,3 +288,5 @@ Function NormalizeSettings(Val Settings)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

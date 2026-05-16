@@ -66,6 +66,8 @@
 // #Use "../../../../api/rportal"
 // #Use asserts
 
+#If Not WebClient Then // !OPI
+
 #Region Internal
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
@@ -212,210 +214,200 @@ Function GetTestTable(Val TestModule = "") Export
     RSS       = "RSS";
     ZMQ       = "ZeroMQ";
 
-    TestTable = New ValueTable;
-    TestTable.Columns.Add("Method");
-    TestTable.Columns.Add("Synonym");
-    TestTable.Columns.Add("Section");
+    ArrayOfTests = New Array;
 
-    NewTest(TestTable, "CheckIBToLastBuildCompliance", "Check IB to last build compliance", "Core");
-    NewTest(TestTable, "ValidateAdvancedCall"        , "Validate advanced call"           , "Core");
+    NewTest(ArrayOfTests, TestModule, "CheckIBToLastBuildCompliance", "Check IB to last build compliance", "Core");
+    NewTest(ArrayOfTests, TestModule, "ValidateAdvancedCall"        , "Validate advanced call"           , "Core");
 
-    NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SetWebhook"              , "Set Webhook"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendTextMessage"         , "Send text message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendImage"               , "Send image"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendVideo"               , "Send video"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendAudio"               , "Send audio"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendDocument"            , "Send document"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendGIF"                 , "Send GIF"                        , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendMediaGroup"          , "Send mediagroup"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendLocation"            , "Send location"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendContact"             , "Send contact"                    , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendPoll"                , "Send poll"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ForwardMessage"          , "Forward message"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_BanUnban"                , "Ban/Unban"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateInvitationLink"    , "Create invitation link"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_PinUnpinMessage"         , "Pin/Unpin message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetMemberCount"          , "Get participant count"           , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList"     , "Get forum avatars list"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic"  , "Create/Delete forum topic"       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"     , "Change main topic name"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_HideShowMainTopic"       , "Hide/Show main topic"            , Telegram);
-    NewTest(TestTable, "VKAPI_CreateTokenLink"               , "Create token retrieval link"     , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateDeletePost"              , "Create/Delete post"              , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateCompositePost"           , "Create/Delete composite post"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreatePoll"                    , "Create poll"                     , VKontakte);
-    NewTest(TestTable, "VKAPI_SaveDeleteImage"               , "Add/Delete image"                , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateStory"                   , "Create story"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"             , VKontakte);
-    NewTest(TestTable, "VKAPI_GetStatistics"                 , "Get statistics"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPostStatistics"             , "Get post statistics"             , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateAdCampaign"              , "Create advertising campaign"     , VKontakte);
-    NewTest(TestTable, "VKAPI_SendMessage"                   , "Send message"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductCategories"          , "Get product categories"          , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductSelection"        , "Create product and selection"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductWithProperties"   , "Create product with properties"  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductList"                , "Get product list"                , VKontakte);
-    NewTest(TestTable, "VKAPI_GetSelectionList"              , "Get selection list"              , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPropertyList"               , "Get property list"               , VKontakte);
-    NewTest(TestTable, "VKAPI_GetOrderList"                  , "Get order list"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_UploadVideo"                   , "Upload video"                    , VKontakte);
-    NewTest(TestTable, "YDisk_Authorization"                 , "Authorization"                   , YDisk);
-    NewTest(TestTable, "YDisk_GetDiskInfo"                   , "Get disk information"            , YDisk);
-    NewTest(TestTable, "YDisk_CreateFolder"                  , "Create folder"                   , YDisk);
-    NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"           , YDisk);
-    NewTest(TestTable, "YDisk_UploadDeleteFile"              , "Upload/Delete file"              , YDisk);
-    NewTest(TestTable, "YDisk_CreateObjectCopy"              , "Create object copy"              , YDisk);
-    NewTest(TestTable, "YDisk_GetDownloadLink"               , "Get download link"               , YDisk);
-    NewTest(TestTable, "YDisk_GetFileList"                   , "Get list of files"               , YDisk);
-    NewTest(TestTable, "YDisk_MoveObject"                    , "Move object"                     , YDisk);
-    NewTest(TestTable, "YDisk_PublicObjectActions"           , "Actions with public objects"     , YDisk);
-    NewTest(TestTable, "YDisk_GetPublishedList"              , "Get published list"              , YDisk);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , VSpace);
-    NewTest(TestTable, "GC_Authorization"                    , "Authorization"                   , Calendar);
-    NewTest(TestTable, "GC_GetCalendarList"                  , "Get list of calendars"           , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"          , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteEvent"                , "Create/Delete event"             , Calendar);
-    NewTest(TestTable, "GD_Authorization"                    , "Authorization"                   , Drive);
-    NewTest(TestTable, "GD_GetCatalogList"                   , "Get list of directories"         , Drive);
-    NewTest(TestTable, "GD_UploadDeleteFile"                 , "Upload/Delete file"              , Drive);
-    NewTest(TestTable, "GD_CreateDeleteComment"              , "Create/Delete Comment"           , Drive);
-    NewTest(TestTable, "GD_CreateCatalog"                    , "Create/Delete catalog"           , Drive);
-    NewTest(TestTable, "GT_Authorization"                    , "Authorization"                   , Tables);
-    NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
-    NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
-    NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
-    NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"                , Viber);
-    NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
-    NewTest(TestTable, "NotionAPI_CreateUpdateBase"          , "Create/Edit database"            , Notion);
-    NewTest(TestTable, "NotionAPI_CreateDeleteBlock"         , "Create/Delete block"             , Notion);
-    NewTest(TestTable, "NotionAPI_GetUsers"                  , "Get users"                       , Notion);
-    NewTest(TestTable, "SlackGetData"                        , "Get data"                        , Slack);
-    NewTest(TestTable, "Slack_SendDeleteMessage"             , "Send/Delete message"             , Slack);
-    NewTest(TestTable, "Slack_CreateArchiveChannel"          , "Create/Archive channel"          , Slack);
-    NewTest(TestTable, "Slack_OpenCloseDialog"               , "Open/Close dialog"               , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteFile"              , "Upload/Delete file"              , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteExternalFile"      , "Upload/Delete external file"     , Slack);
-    NewTest(TestTable, "AT_CreateDatabase"                   , "Create/Edit database"            , AirT);
-    NewTest(TestTable, "AT_CreateTable"                      , "Create/Edit table"               , AirT);
-    NewTest(TestTable, "AT_CreateField"                      , "Create/Edit field"               , AirT);
-    NewTest(TestTable, "AT_CreateDeleteRecords"              , "Create/Delete records"           , AirT);
-    NewTest(TestTable, "DropboxAPI_GetUpdateToken"           , "Get/Update token"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFile"               , "Upload file"                     , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFileByURL"          , "Upload file by URL"              , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateFolder"             , "Create folder"                   , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"          , "Create/Delete tag"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetAccount"               , "Get account data"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_AccessManagement"         , "Access management"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetFolderFileList"        , "Get list of folder files"        , Dropbox);
-    NewTest(TestTable, "B24_TokenManagement"                 , "Token management"                , Bitrix);
-    NewTest(TestTable, "B24_ServerTime"                      , "Server time"                     , Bitrix);
-    NewTest(TestTable, "B24_PostsManagement"                 , "Posts management"                , Bitrix);
-    NewTest(TestTable, "B24_TaskManagement"                  , "Tasks management"                , Bitrix);
-    NewTest(TestTable, "B24_CommentsManagement"              , "Comments management"             , Bitrix);
-    NewTest(TestTable, "B24_WorkingWithDrive"                , "Working with drive"              , Bitrix);
-    NewTest(TestTable, "B24_Kanban"                          , "Kanban"                          , Bitrix);
-    NewTest(TestTable, "B24_Timekeeping"                     , "Timekeeping"                     , Bitrix);
-    NewTest(TestTable, "B24_ChatManagement"                  , "Chats works"                     , Bitrix);
-    NewTest(TestTable, "B24_NotificationsManagement"         , "Notifications management"        , Bitrix);
-    NewTest(TestTable, "B24_TasksFieldsManagement"           , "Working with custom task fields" , Bitrix);
-    NewTest(TestTable, "B24_DepartmentsManagement"           , "Departments management"          , Bitrix);
-    NewTest(TestTable, "B2_UsersManagement"                  , "Users management"                , Bitrix);
-    NewTest(TestTable, "B24_LeadsManagement"                 , "Leads management"                , Bitrix);
-    NewTest(TestTable, "B24_DealsManagement"                 , "Deals management"                , Bitrix);
-    NewTest(TestTable, "B24_CalendarsManagement"             , "Calendars management"            , Bitrix);
-    NewTest(TestTable, "VKT_MessagesSending"                 , "Messages sending"                , VKT);
-    NewTest(TestTable, "VKT_CommonMethods"                   , "Common methods"                  , VKT);
-    NewTest(TestTable, "VKT_ChatManagement"                  , "Chat management"                 , VKT);
-    NewTest(TestTable, "NC_FilesManagement"                  , "Files management"                , Neocities);
-    NewTest(TestTable, "NC_DataRetrieving"                   , "Data retrieving"                 , Neocities);
-    NewTest(TestTable, "CdekAPI_CommonMethods"               , "Common methods"                  , Cdek);
-    NewTest(TestTable, "CDEKAPI_OrdersManagement"            , "Orders management"               , Cdek);
-    NewTest(TestTable, "CdekAPI_CourierInvitationsManagement", "Courier invitations management"  , Cdek);
-    NewTest(TestTable, "YaMetrika_TagsManagement"            , "Tags management"                 , Metrika);
-    NewTest(TestTable, "YaMetrika_CountersManagement"        , "Counters management"             , Metrika);
-    NewTest(TestTable, "YaMetrika_ActionsManagement"         , "Actions management"              , Metrika);
-    NewTest(TestTable, "AWS_CommonMethods"                   , "Common methods"                  , S3_);
-    NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
-    NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
-    NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
-    NewTest(TestTable, "WS_Client"                           , "WebSocket Client"                , WebSocket);
-    NewTest(TestTable, "WS_Server"                           , "WebSocket Server"                , WebSocket);
-    NewTest(TestTable, "ZMQ_ConnectionMethods"               , "Connection"                      , ZMQ);
-    NewTest(TestTable, "ZMQ_ListeningMethods"                , "Listening"                       , ZMQ);
-    NewTest(TestTable, "ZMQ_InteractionMethods"              , "Interaction"                     , ZMQ);
-    NewTest(TestTable, "TC_Server"                           , "TCP Host"                        , TCP);
-    NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
-    NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
-    NewTest(TestTable, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
-    NewTest(TestTable, "Postgres_ORM"                        , "ORM"                             , Postgres);
-    NewTest(TestTable, "MYS_CommonMethods"                   , "Common methods"                  , MySQL);
-    NewTest(TestTable, "MYS_ORM"                             , "ORM"                             , MySQL);
-    NewTest(TestTable, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
-    NewTest(TestTable, "MSS_ORM"                             , "ORM"                             , MSSQL);
-    NewTest(TestTable, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
-    NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
-    NewTest(TestTable, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
-    NewTest(TestTable, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
-    NewTest(TestTable, "Mongo_UserManagement"                , "Users management"                , MongoDB);
-    NewTest(TestTable, "Mongo_RoleManagement"                , "Role management"                 , MongoDB);
-    NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
-    NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
-    NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
-    NewTest(TestTable, "GMax_GroupManagement"                , "Group management"                , GreenMax);
-    NewTest(TestTable, "GMax_MessageSending"                 , "Messages sending"                , GreenMax);
-    NewTest(TestTable, "GMax_Notifications"                  , "Notifications"                   , GreenMax);
-    NewTest(TestTable, "GMax_MessageHistory"                 , "Message history"                 , GreenMax);
-    NewTest(TestTable, "GMax_Queues"                         , "Queues"                          , GreenMax);
-    NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
-    NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
-    NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
-    NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
-    NewTest(TestTable, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
-    NewTest(TestTable, "HTTP_Initialization"                 , "Initialization"                  , Http);
-    NewTest(TestTable, "HTTP_BodySet"                        , "Body set"                        , Http);
-    NewTest(TestTable, "HTTP_Settings"                       , "Settings"                        , Http);
-    NewTest(TestTable, "HTTP_HeadersSetting"                 , "Headers setting"                 , Http);
-    NewTest(TestTable, "HTTP_Authorization"                  , "Authorization"                   , Http);
-    NewTest(TestTable, "HTTP_RequestProcessing"              , "Request processing"              , Http);
-    NewTest(TestTable, "HTTP_ResponseReceiving"              , "Response receiving"              , Http);
-    NewTest(TestTable, "OAI_RequestsProcessing"              , "Requests processing"             , OpenAI);
-    NewTest(TestTable, "OAI_Assistants"                      , "Assistants"                      , OpenAI);
-    NewTest(TestTable, "OAI_FileManagement"                  , "Files management"                , OpenAI);
-    NewTest(TestTable, "OAI_AudioProcessing"                 , "Audio processing"                , OpenAI);
-    NewTest(TestTable, "OAI_ModelsManagement"                , "Models management"               , OpenAI);
-    NewTest(TestTable, "FT_DirecotryManagement"              , "Directory management"            , FTP);
-    NewTest(TestTable, "FT_FileOperations"                   , "Files management"                , FTP);
-    NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                  , FTP);
-    NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                   , RPortal);
-    NewTest(TestTable, "RPortal_TestManagement"              , "Test management"                 , RPortal);
-    NewTest(TestTable, "RPortal_LogRecording"                , "Log recording"                   , RPortal);
-    NewTest(TestTable, "RPortal_ProjectManagement"           , "Project management"              , RPortal);
-    NewTest(TestTable, "RPortal_UserManagement"              , "Users management"                , RPortal);
-    NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
-    NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
-    NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
-    NewTest(TestTable, "SF_FileManagement"                   , "Files management"                , SFTP);
-    NewTest(TestTable, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
-    NewTest(TestTable, "GR_Introspection"                    , "Introspection"                   , GRPC);
-    NewTest(TestTable, "GR_Streaming"                        , "Streaming"                       , GRPC);
-    NewTest(TestTable, "CH_CommonMethods"                    , "Common methods"                  , CHouse);
-    NewTest(TestTable, "CH_GRPC"                             , "GRPC"                            , CHouse);
-    NewTest(TestTable, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
-    NewTest(TestTable, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SetWebhook"              , "Set Webhook"                     , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendTextMessage"         , "Send text message"               , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendImage"               , "Send image"                      , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendVideo"               , "Send video"                      , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendAudio"               , "Send audio"                      , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendDocument"            , "Send document"                   , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendGIF"                 , "Send GIF"                        , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendMediaGroup"          , "Send mediagroup"                 , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendLocation"            , "Send location"                   , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendContact"             , "Send contact"                    , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_SendPoll"                , "Send poll"                       , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_ForwardMessage"          , "Forward message"                 , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_BanUnban"                , "Ban/Unban"                       , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_CreateInvitationLink"    , "Create invitation link"          , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_PinUnpinMessage"         , "Pin/Unpin message"               , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_GetMemberCount"          , "Get participant count"           , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_GetForumAvatarsList"     , "Get forum avatars list"          , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_CreateDeleteForumTopic"  , "Create/Delete forum topic"       , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_ChangeMainTopicName"     , "Change main topic name"          , Telegram);
+    NewTest(ArrayOfTests, TestModule, "TelegramAPI_HideShowMainTopic"       , "Hide/Show main topic"            , Telegram);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateTokenLink"               , "Create token retrieval link"     , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateDeletePost"              , "Create/Delete post"              , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateCompositePost"           , "Create/Delete composite post"    , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreatePoll"                    , "Create poll"                     , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_SaveDeleteImage"               , "Add/Delete image"                , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateStory"                   , "Create story"                    , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"             , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetStatistics"                 , "Get statistics"                  , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetPostStatistics"             , "Get post statistics"             , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateAdCampaign"              , "Create advertising campaign"     , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_SendMessage"                   , "Send message"                    , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetProductCategories"          , "Get product categories"          , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateProductSelection"        , "Create product and selection"    , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_CreateProductWithProperties"   , "Create product with properties"  , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetProductList"                , "Get product list"                , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetSelectionList"              , "Get selection list"              , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetPropertyList"               , "Get property list"               , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_GetOrderList"                  , "Get order list"                  , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "VKAPI_UploadVideo"                   , "Upload video"                    , VKontakte);
+    NewTest(ArrayOfTests, TestModule, "YDisk_Authorization"                 , "Authorization"                   , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_GetDiskInfo"                   , "Get disk information"            , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_CreateFolder"                  , "Create folder"                   , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"           , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_UploadDeleteFile"              , "Upload/Delete file"              , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_CreateObjectCopy"              , "Create object copy"              , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_GetDownloadLink"               , "Get download link"               , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_GetFileList"                   , "Get list of files"               , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_MoveObject"                    , "Move object"                     , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_PublicObjectActions"           , "Actions with public objects"     , YDisk);
+    NewTest(ArrayOfTests, TestModule, "YDisk_GetPublishedList"              , "Get published list"              , YDisk);
+    NewTest(ArrayOfTests, TestModule, "GW_Auth"                             , "Authorization"                   , VSpace);
+    NewTest(ArrayOfTests, TestModule, "GC_Authorization"                    , "Authorization"                   , Calendar);
+    NewTest(ArrayOfTests, TestModule, "GC_GetCalendarList"                  , "Get list of calendars"           , Calendar);
+    NewTest(ArrayOfTests, TestModule, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"          , Calendar);
+    NewTest(ArrayOfTests, TestModule, "GC_CreateDeleteEvent"                , "Create/Delete event"             , Calendar);
+    NewTest(ArrayOfTests, TestModule, "GD_Authorization"                    , "Authorization"                   , Drive);
+    NewTest(ArrayOfTests, TestModule, "GD_GetCatalogList"                   , "Get list of directories"         , Drive);
+    NewTest(ArrayOfTests, TestModule, "GD_UploadDeleteFile"                 , "Upload/Delete file"              , Drive);
+    NewTest(ArrayOfTests, TestModule, "GD_CreateDeleteComment"              , "Create/Delete Comment"           , Drive);
+    NewTest(ArrayOfTests, TestModule, "GD_CreateCatalog"                    , "Create/Delete catalog"           , Drive);
+    NewTest(ArrayOfTests, TestModule, "GT_Authorization"                    , "Authorization"                   , Tables);
+    NewTest(ArrayOfTests, TestModule, "GT_CreateTable"                      , "Create table"                    , Tables);
+    NewTest(ArrayOfTests, TestModule, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
+    NewTest(ArrayOfTests, TestModule, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
+    NewTest(ArrayOfTests, TestModule, "Viber_MessagesSending"               , "Messages sending"                , Viber);
+    NewTest(ArrayOfTests, TestModule, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
+    NewTest(ArrayOfTests, TestModule, "NotionAPI_CreateUpdateBase"          , "Create/Edit database"            , Notion);
+    NewTest(ArrayOfTests, TestModule, "NotionAPI_CreateDeleteBlock"         , "Create/Delete block"             , Notion);
+    NewTest(ArrayOfTests, TestModule, "NotionAPI_GetUsers"                  , "Get users"                       , Notion);
+    NewTest(ArrayOfTests, TestModule, "SlackGetData"                        , "Get data"                        , Slack);
+    NewTest(ArrayOfTests, TestModule, "Slack_SendDeleteMessage"             , "Send/Delete message"             , Slack);
+    NewTest(ArrayOfTests, TestModule, "Slack_CreateArchiveChannel"          , "Create/Archive channel"          , Slack);
+    NewTest(ArrayOfTests, TestModule, "Slack_OpenCloseDialog"               , "Open/Close dialog"               , Slack);
+    NewTest(ArrayOfTests, TestModule, "Slack_UploadDeleteFile"              , "Upload/Delete file"              , Slack);
+    NewTest(ArrayOfTests, TestModule, "Slack_UploadDeleteExternalFile"      , "Upload/Delete external file"     , Slack);
+    NewTest(ArrayOfTests, TestModule, "AT_CreateDatabase"                   , "Create/Edit database"            , AirT);
+    NewTest(ArrayOfTests, TestModule, "AT_CreateTable"                      , "Create/Edit table"               , AirT);
+    NewTest(ArrayOfTests, TestModule, "AT_CreateField"                      , "Create/Edit field"               , AirT);
+    NewTest(ArrayOfTests, TestModule, "AT_CreateDeleteRecords"              , "Create/Delete records"           , AirT);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_GetUpdateToken"           , "Get/Update token"                , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_UploadFile"               , "Upload file"                     , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_UploadFileByURL"          , "Upload file by URL"              , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_CreateFolder"             , "Create folder"                   , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_CreateDeleteTag"          , "Create/Delete tag"               , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_GetAccount"               , "Get account data"                , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_AccessManagement"         , "Access management"               , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "DropboxAPI_GetFolderFileList"        , "Get list of folder files"        , Dropbox);
+    NewTest(ArrayOfTests, TestModule, "B24_TokenManagement"                 , "Token management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_ServerTime"                      , "Server time"                     , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_PostsManagement"                 , "Posts management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_TaskManagement"                  , "Tasks management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_CommentsManagement"              , "Comments management"             , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_WorkingWithDrive"                , "Working with drive"              , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_Kanban"                          , "Kanban"                          , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_Timekeeping"                     , "Timekeeping"                     , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_ChatManagement"                  , "Chats works"                     , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_NotificationsManagement"         , "Notifications management"        , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_TasksFieldsManagement"           , "Working with custom task fields" , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_DepartmentsManagement"           , "Departments management"          , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B2_UsersManagement"                  , "Users management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_LeadsManagement"                 , "Leads management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_DealsManagement"                 , "Deals management"                , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "B24_CalendarsManagement"             , "Calendars management"            , Bitrix);
+    NewTest(ArrayOfTests, TestModule, "VKT_MessagesSending"                 , "Messages sending"                , VKT);
+    NewTest(ArrayOfTests, TestModule, "VKT_CommonMethods"                   , "Common methods"                  , VKT);
+    NewTest(ArrayOfTests, TestModule, "VKT_ChatManagement"                  , "Chat management"                 , VKT);
+    NewTest(ArrayOfTests, TestModule, "NC_FilesManagement"                  , "Files management"                , Neocities);
+    NewTest(ArrayOfTests, TestModule, "NC_DataRetrieving"                   , "Data retrieving"                 , Neocities);
+    NewTest(ArrayOfTests, TestModule, "CdekAPI_CommonMethods"               , "Common methods"                  , Cdek);
+    NewTest(ArrayOfTests, TestModule, "CDEKAPI_OrdersManagement"            , "Orders management"               , Cdek);
+    NewTest(ArrayOfTests, TestModule, "CdekAPI_CourierInvitationsManagement", "Courier invitations management"  , Cdek);
+    NewTest(ArrayOfTests, TestModule, "YaMetrika_TagsManagement"            , "Tags management"                 , Metrika);
+    NewTest(ArrayOfTests, TestModule, "YaMetrika_CountersManagement"        , "Counters management"             , Metrika);
+    NewTest(ArrayOfTests, TestModule, "YaMetrika_ActionsManagement"         , "Actions management"              , Metrika);
+    NewTest(ArrayOfTests, TestModule, "AWS_CommonMethods"                   , "Common methods"                  , S3_);
+    NewTest(ArrayOfTests, TestModule, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
+    NewTest(ArrayOfTests, TestModule, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
+    NewTest(ArrayOfTests, TestModule, "TC_Client"                           , "TCP Client"                      , TCP);
+    NewTest(ArrayOfTests, TestModule, "WS_Client"                           , "WebSocket Client"                , WebSocket);
+    NewTest(ArrayOfTests, TestModule, "WS_Server"                           , "WebSocket Server"                , WebSocket);
+    NewTest(ArrayOfTests, TestModule, "ZMQ_ConnectionMethods"               , "Connection"                      , ZMQ);
+    NewTest(ArrayOfTests, TestModule, "ZMQ_ListeningMethods"                , "Listening"                       , ZMQ);
+    NewTest(ArrayOfTests, TestModule, "ZMQ_InteractionMethods"              , "Interaction"                     , ZMQ);
+    NewTest(ArrayOfTests, TestModule, "TC_Server"                           , "TCP Host"                        , TCP);
+    NewTest(ArrayOfTests, TestModule, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
+    NewTest(ArrayOfTests, TestModule, "SQLL_ORM"                            , "ORM"                             , SQLite);
+    NewTest(ArrayOfTests, TestModule, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
+    NewTest(ArrayOfTests, TestModule, "Postgres_ORM"                        , "ORM"                             , Postgres);
+    NewTest(ArrayOfTests, TestModule, "MYS_CommonMethods"                   , "Common methods"                  , MySQL);
+    NewTest(ArrayOfTests, TestModule, "MYS_ORM"                             , "ORM"                             , MySQL);
+    NewTest(ArrayOfTests, TestModule, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
+    NewTest(ArrayOfTests, TestModule, "MSS_ORM"                             , "ORM"                             , MSSQL);
+    NewTest(ArrayOfTests, TestModule, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mongo_UserManagement"                , "Users management"                , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mongo_RoleManagement"                , "Role management"                 , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GAPI_Account"                        , "Account"                         , GreenAPI);
+    NewTest(ArrayOfTests, TestModule, "GMax_GroupManagement"                , "Group management"                , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "GMax_MessageSending"                 , "Messages sending"                , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "GMax_Notifications"                  , "Notifications"                   , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "GMax_MessageHistory"                 , "Message history"                 , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "GMax_Queues"                         , "Queues"                          , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "GMax_Account"                        , "Account"                         , GreenMax);
+    NewTest(ArrayOfTests, TestModule, "RC_CommandsExecution"                , "Commands execution"              , RCON);
+    NewTest(ArrayOfTests, TestModule, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
+    NewTest(ArrayOfTests, TestModule, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
+    NewTest(ArrayOfTests, TestModule, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
+    NewTest(ArrayOfTests, TestModule, "HTTP_Initialization"                 , "Initialization"                  , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_BodySet"                        , "Body set"                        , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_Settings"                       , "Settings"                        , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_HeadersSetting"                 , "Headers setting"                 , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_Authorization"                  , "Authorization"                   , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_RequestProcessing"              , "Request processing"              , Http);
+    NewTest(ArrayOfTests, TestModule, "HTTP_ResponseReceiving"              , "Response receiving"              , Http);
+    NewTest(ArrayOfTests, TestModule, "OAI_RequestsProcessing"              , "Requests processing"             , OpenAI);
+    NewTest(ArrayOfTests, TestModule, "OAI_Assistants"                      , "Assistants"                      , OpenAI);
+    NewTest(ArrayOfTests, TestModule, "OAI_FileManagement"                  , "Files management"                , OpenAI);
+    NewTest(ArrayOfTests, TestModule, "OAI_AudioProcessing"                 , "Audio processing"                , OpenAI);
+    NewTest(ArrayOfTests, TestModule, "OAI_ModelsManagement"                , "Models management"               , OpenAI);
+    NewTest(ArrayOfTests, TestModule, "FT_DirecotryManagement"              , "Directory management"            , FTP);
+    NewTest(ArrayOfTests, TestModule, "FT_FileOperations"                   , "Files management"                , FTP);
+    NewTest(ArrayOfTests, TestModule, "FT_CommonMethods"                    , "Common methods"                  , FTP);
+    NewTest(ArrayOfTests, TestModule, "RPortal_Authorization"               , "Authorization"                   , RPortal);
+    NewTest(ArrayOfTests, TestModule, "RPortal_TestManagement"              , "Test management"                 , RPortal);
+    NewTest(ArrayOfTests, TestModule, "RPortal_LogRecording"                , "Log recording"                   , RPortal);
+    NewTest(ArrayOfTests, TestModule, "RPortal_ProjectManagement"           , "Project management"              , RPortal);
+    NewTest(ArrayOfTests, TestModule, "RPortal_UserManagement"              , "Users management"                , RPortal);
+    NewTest(ArrayOfTests, TestModule, "SShell_CommonMethods"                , "Common methods"                  , SSH);
+    NewTest(ArrayOfTests, TestModule, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
+    NewTest(ArrayOfTests, TestModule, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
+    NewTest(ArrayOfTests, TestModule, "SF_FileManagement"                   , "Files management"                , SFTP);
+    NewTest(ArrayOfTests, TestModule, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
+    NewTest(ArrayOfTests, TestModule, "GR_Introspection"                    , "Introspection"                   , GRPC);
+    NewTest(ArrayOfTests, TestModule, "GR_Streaming"                        , "Streaming"                       , GRPC);
+    NewTest(ArrayOfTests, TestModule, "CH_CommonMethods"                    , "Common methods"                  , CHouse);
+    NewTest(ArrayOfTests, TestModule, "CH_GRPC"                             , "GRPC"                            , CHouse);
+    NewTest(ArrayOfTests, TestModule, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
+    NewTest(ArrayOfTests, TestModule, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
 
-    If ValueIsFilled(TestModule) Then
-
-        Filter    = New Structure("Section", TestModule);
-        TestTable = TestTable.Copy(Filter);
-
-    EndIf;
-
-    Return TestTable;
+    Return ArrayOfTests;
 
 EndFunction
 
@@ -433,24 +425,31 @@ Function ExpectsThat(Value) Export
 
 EndFunction
 
-Function FormYAXTests(Val TestModule = "") Export
+Function FormYAXTests(Val TestModule) Export
 
-    Module    = GetCommonModule("ЮТТесты");
-    Sections  = GetTestingSectionMapping();
+    Module       = GetCommonModule("ЮТТесты");
     TestTable = GetTestTable(TestModule);
 
-    For Each Section In Sections Do
+    Set = Module.ДобавитьТестовыйНабор(TestModule);
 
-        CurrentSection = Section.Key;
-        Filter         = New Structure("Section", CurrentSection);
-        SectionTests   = TestTable.FindRows(Filter);
+    For Each Test In TestTable Do
+        Set.AddClientTest(Test.Method, Test.Synonym);
+        Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
+    EndDo;
 
-        Set = Module.ДобавитьТестовыйНабор(CurrentSection);
+    Return "";
 
-        For Each Test In SectionTests Do
-            Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
-        EndDo;
+EndFunction
 
+Function FormYAXTestsCLI(Val TestModule = "") Export
+
+    Module       = GetCommonModule("ЮТТесты");
+    TestTable = GetTestTable(TestModule);
+
+    Set = Module.ДобавитьТестовыйНабор(TestModule + " (CLI)");
+
+    For Each Test In TestTable Do
+        Set.AddTest(Test.Method, Test.Synonym);
     EndDo;
 
     Return "";
@@ -470,52 +469,9 @@ Function FormAssertsTests(Val TestModule = "") Export
 
 EndFunction
 
-Function FormYAXTestsCLI(Val TestModule = "") Export
-
-    Module    = GetCommonModule("ЮТТесты");
-    Sections  = GetTestingSectionMapping();
-    TestTable = GetTestTable(TestModule);
-
-    For Each Section In Sections Do
-
-        CurrentSection = Section.Key;
-
-        Filter       = New Structure("Section", CurrentSection);
-        SectionTests = TestTable.FindRows(Filter);
-
-        Set = Module.ДобавитьТестовыйНабор(CurrentSection + " (CLI)");
-
-        For Each Test In SectionTests Do
-            Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
-        EndDo;
-
-    EndDo;
-
-    Return "";
-
-EndFunction
-
 Function FormAssertsTestsCLI(Val TestModule = "") Export
 
-    ArrayOfTests = New Array;
-
-    Sections  = GetTestingSectionMapping();
-    TestTable = GetTestTable(TestModule);
-
-    For Each Section In Sections Do
-
-        CurrentSection = Section.Key;
-
-        Filter       = New Structure("Section", CurrentSection);
-        SectionTests = TestTable.FindRows(Filter);
-
-        For Each Test In SectionTests Do
-            ArrayOfTests.Add(Test.Method);
-        EndDo;
-
-    EndDo;
-
-    Return ArrayOfTests;
+    Return FormAssertsTests(TestModule);
 
 EndFunction
 
@@ -577,8 +533,11 @@ EndFunction
 Function IsCLITest() Export
 
     Try
-           // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
-        Data             = Constants["IsCLITests"].Get(); // !OPI
+
+        // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+
+        Data = OPI_ToolsServerCall.GetConstant("IsCLITests"); // !OPI
+
     Except
         Return False;
     EndTry;
@@ -660,9 +619,12 @@ Procedure SetCLITestFlag(Val Value) Export
 
     CLITestsMark = ?(Value, 1, 0);
 
+    //@skip-check empty-except-statement
     Try
-        Constants["IsCLITests"].Set(CLITestsMark); // !OPI
+
+        OPI_ToolsServerCall.SetConstant("IsCLITests", CLITestsMark); // !OPI
         // !OInt SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+
     Except EndTry;
 
 EndProcedure
@@ -1383,50 +1345,52 @@ EndFunction
 
 Function Check_Core_BackgroundCall(Val Result, Val Option)
 
-    IsOneScript   = OPI_Tools.IsOneScript();
-    BackgroundJob = Result["BackgroundJob"];
+    #If Not Client Then
 
-    Counter = 0;
+        IsOneScript      = OPI_Tools.IsOneScript();
+        BackgroundJob = Result["BackgroundJob"];
 
-    Try
-        BackgroundJob.WaitForCompletion();
-    Except
+        Try
+            BackgroundJob.WaitForCompletion();
+        Except
 
-        Raise DetailErrorDescription(?(IsOneScript
-            , BackgroundJob.ErrorInfo
-            , BackgroundJobs.FindByUUID(BackgroundJob.UUID).ErrorInfo));
+            Raise DetailErrorDescription(?(IsOneScript
+                , BackgroundJob.ErrorInfo
+                , BackgroundJobs.FindByUUID(BackgroundJob.UUID).ErrorInfo));
 
-    EndTry;
+        EndTry;
 
-    If Not IsOneScript Then
-        BackgroundJob = BackgroundJobs.FindByUUID(BackgroundJob.UUID);
-    EndIf;
+        If Not IsOneScript Then
+            BackgroundJob = BackgroundJobs.FindByUUID(BackgroundJob.UUID);
+        EndIf;
 
-    ExpectsThat(BackgroundJob.State).Равно(BackgroundJobState.Completed);
+        ExpectsThat(BackgroundJob.State).Равно(BackgroundJobState.Completed);
 
-    If IsOneScript Then
-        ResultData = BackgroundJob.Result;
-    Else
-        ResultData = GetFromTempStorage(Result["Address"]); // !OPI
-    EndIf;
+        If IsOneScript Then
+            ResultData = BackgroundJob.Result;
+        Else
+            ResultData = GetFromTempStorage(Result["Address"]); // !OPI
+        EndIf;
 
-    If Not ValueIsFilled(Option) Then
+        If Not ValueIsFilled(Option) Then
 
-        ExpectsThat(ResultData.Property("status")).Равно(True);
-        ExpectsThat(ResultData.Property("headers")).Равно(True);
-        ExpectsThat(ResultData.Property("body")).Равно(True);
+            ExpectsThat(ResultData.Property("status")).Равно(True);
+            ExpectsThat(ResultData.Property("headers")).Равно(True);
+            ExpectsThat(ResultData.Property("body")).Равно(True);
 
-    ElsIf Option = "BDReturn" Then
+        ElsIf Option = "BDReturn" Then
 
-        ExpectsThat(TypeOf(ResultData)).Равно(Type("BinaryData"));
+            ExpectsThat(TypeOf(ResultData)).Равно(Type("BinaryData"));
 
-    ElsIf Option = "DBStructReturn" Then
+        ElsIf Option = "DBStructReturn" Then
 
-        ExpectsThat(ResultData.Property("status")).Равно(True);
-        ExpectsThat(ResultData.Property("headers")).Равно(True);
-        ExpectsThat(TypeOf(ResultData["body"])).Равно(Type("BinaryData"));
+            ExpectsThat(ResultData.Property("status")).Равно(True);
+            ExpectsThat(ResultData.Property("headers")).Равно(True);
+            ExpectsThat(TypeOf(ResultData["body"])).Равно(Type("BinaryData"));
 
-    EndIf;
+        EndIf;
+
+    #EndIf
 
     Return Undefined;
 
@@ -2623,8 +2587,8 @@ Function Check_YandexDisk_UploadFileInParts(Val Result, Val Option, File = "")
         ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
         ExpectsThat(Result.Size()).Равно(File.Size());
 
-        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, HashFunction.SHA256));
-        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, HashFunction.SHA256));
+        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, "SHA256"));
+        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, "SHA256"));
 
         ExpectsThat(HashCheck).Равно(HashOrigianl);
 
@@ -3360,8 +3324,8 @@ Function Check_GoogleDrive_UploadFile(Val Result, Val Option, Parameters = "", D
         ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
         ExpectsThat(Result.Size()).Равно(File.Size());
 
-        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, HashFunction.SHA256));
-        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, HashFunction.SHA256));
+        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, "SHA256"));
+        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, "SHA256"));
 
         ExpectsThat(HashCheck).Равно(HashOrigianl);
 
@@ -14958,9 +14922,11 @@ Function DataFilePath()
 EndFunction
 
 Function GetCommonModule(Val Name)
-    SetSafeMode(True);
+
+    //@skip-check server-execution-safe-mode
     Module = Eval(Name);
     Return Module;
+
 EndFunction
 
 Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
@@ -14993,7 +14959,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
     ElsIf CurrentType = Type("Date") Then
 
         If Not Embedded Then
-            Value = XMLString(Value);
+            Value = OPI_ToolsServerCall.GetXMLString(Value);
             Cover = True;
         EndIf;
 
@@ -15508,12 +15474,18 @@ Function GetAICheckAttributes(Val Result)
 
 EndFunction
 
-Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
+Procedure NewTest(ArrayOfTests, TestModule, Val Method, Val Synonym, Val Section)
 
-    NewTest         = ValueTable.Add();
-    NewTest.Method  = Method;
-    NewTest.Synonym = Synonym;
-    NewTest.Section = Section;
+    If Not ValueIsFilled(TestModule) Or TestModule = Section Then
+
+        NewTest         = New Structure("Method,Synonym,Section");
+        NewTest.Method  = Method;
+        NewTest.Synonym = Synonym;
+        NewTest.Section = Section;
+
+        ArrayOfTests.Add(NewTest);
+
+    EndIf;
 
 EndProcedure
 
@@ -15782,3 +15754,5 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

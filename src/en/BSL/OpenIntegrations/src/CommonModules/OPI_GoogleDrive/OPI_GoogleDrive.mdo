@@ -10,6 +10,7 @@
     <value>Google Drive (OpenIntegrations)</value>
   </synonym>
   <comment>Google Drive Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

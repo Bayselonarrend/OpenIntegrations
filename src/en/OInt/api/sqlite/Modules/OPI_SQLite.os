@@ -48,6 +48,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 #Region CommonMethods
@@ -542,6 +543,7 @@ Function GetTypesStructure() Export
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

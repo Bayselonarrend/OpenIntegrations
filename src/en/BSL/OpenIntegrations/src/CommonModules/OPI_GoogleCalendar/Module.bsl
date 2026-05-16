@@ -47,6 +47,8 @@
 // #Use "../../../tools/http"
 // #Use "../../google"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Authorization
@@ -743,3 +745,5 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

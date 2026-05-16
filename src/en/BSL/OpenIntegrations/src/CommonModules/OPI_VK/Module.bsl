@@ -52,6 +52,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Authorization
@@ -2151,3 +2153,5 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

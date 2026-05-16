@@ -53,6 +53,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -1108,3 +1110,5 @@ Function PerformExchangeOperation(Val StreamID, Val Action, Connector, ReceivedA
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

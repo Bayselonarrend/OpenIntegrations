@@ -48,6 +48,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -234,3 +236,5 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

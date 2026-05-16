@@ -67,6 +67,7 @@
 #Use asserts
 #Use "internal"
 
+
 // For YAxUnit
 
 Procedure ИсполняемыеСценарии() Export
@@ -151,53 +152,56 @@ EndProcedure
 
 Procedure AdvancedCall_BackgroundCall(FunctionParameters)
 
-    Token  = FunctionParameters["Telegram_Token"];
-    FileID = FunctionParameters["Telegram_FileID"];
+    #If Not Client Then
 
-    Parameters = New Array;
-    Parameters.Add(Token);
+        Token  = FunctionParameters["Telegram_Token"];
+        FileID = FunctionParameters["Telegram_FileID"];
 
-    Settings = New Structure("adv_response, dontwait"
-        , True
-        , True);
+        Parameters = New Array;
+        Parameters.Add(Token);
 
-    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
-        , "GetBotInformation"
-        , Parameters
-        , Settings);
+        Settings = New Structure("adv_response, dontwait"
+            , True
+            , True);
 
-    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall");
+        Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+            , "GetBotInformation"
+            , Parameters
+            , Settings);
 
-    Parameters = New Array;
-    Parameters.Add(Token);
-    Parameters.Add(FileID);
+        OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall");
 
-    Settings = New Structure("dontwait", True);
+        Parameters = New Array;
+        Parameters.Add(Token);
+        Parameters.Add(FileID);
 
-    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
-        , "DownloadFile"
-        , Parameters
-        , Settings);
+        Settings = New Structure("dontwait", True);
 
-    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "BDReturn");
+        Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+            , "DownloadFile"
+            , Parameters
+            , Settings);
 
-    Settings = New Structure("adv_response, dontwait"
-        , True
-        , True);
+        OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "BDReturn");
 
-    Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
-        , "DownloadFile"
-        , Parameters
-        , Settings);
+        Settings = New Structure("adv_response, dontwait"
+            , True
+            , True);
 
-    OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "DBStructReturn");
+        Result = OPI_AdvancedCall.CallWithSettings("OPI_Telegram"
+            , "DownloadFile"
+            , Parameters
+            , Settings);
+
+        OPI_TestDataRetrieval.Process(Result, "Core", "BackgroundCall", "DBStructReturn");
+
+    #EndIf
 
 EndProcedure
 
 #EndRegion
 
 #EndRegion
-
 
 
 #Region Alternate

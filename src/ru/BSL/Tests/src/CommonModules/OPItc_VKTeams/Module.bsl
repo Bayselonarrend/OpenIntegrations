@@ -904,6 +904,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure VKT_CommonMethods() Export

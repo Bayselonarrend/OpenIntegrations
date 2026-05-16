@@ -6,6 +6,7 @@
     <value>ReportPortal (OpenIntegrations)</value>
   </synonym>
   <comment>ReportPortal Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

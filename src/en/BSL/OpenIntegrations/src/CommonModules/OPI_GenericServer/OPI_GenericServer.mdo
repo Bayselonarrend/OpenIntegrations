@@ -6,6 +6,7 @@
     <value>Generic server (service, OPI)</value>
   </synonym>
   <comment>Generic methods for different types of servers</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

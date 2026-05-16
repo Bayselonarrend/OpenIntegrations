@@ -49,6 +49,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region ConnectionMethods
@@ -403,3 +405,5 @@ Function InitializeConnector(Val AddressPort, Val View)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

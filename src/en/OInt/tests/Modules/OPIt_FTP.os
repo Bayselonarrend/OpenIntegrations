@@ -590,6 +590,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     ImagePath = "C:\pic.png";
 
     Image = FunctionParameters["Picture"]; // SKIP
+
     TFN   = GetTempFileName("png"); // SKIP
     CopyFile(Image, TFN); // SKIP
     Image = TFN; // SKIP
@@ -1459,6 +1460,7 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
 
 #Region Alternate
 
