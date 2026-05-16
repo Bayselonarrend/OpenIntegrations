@@ -119,5 +119,318 @@
  "clientEncryptionDetails": {
   "decryptionMetadata": {}
  },
- "files": []
+ "files": [
+  {
+   "kind": "drive#file",
+   "fileExtension": "jpg",
+   "copyRequiresWriterPermission": false,
+   "md5Checksum": "85b6518b95b58536480354d9d5fc3d8b",
+   "writersCanShare": true,
+   "viewedByMe": false,
+   "mimeType": "image/jpeg",
+   "parents": [
+    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+   ],
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPMuXYWoDqFFPte9niaeG1FfMM-KycQ8-8jXWEPM00hjijs...",
+   "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
+   "shared": false,
+   "lastModifyingUser": {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   },
+   "owners": [
+    {
+     "displayName": "Антон Титовец",
+     "kind": "drive#user",
+     "me": true,
+     "permissionId": "07468399490707249352",
+     "emailAddress": "bayselonarrend@gmail.com",
+     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+    }
+   ],
+   "headRevisionId": "0B92vrbrhqfJrUTV5WDRMMDdXQncyOUpHMThtMElwRXUwWldzPQ",
+   "webViewLink": "https://drive.google.com/file/d/1SZkreDw75GciO4o0NUBeIopPxtCuhH_Y/view?usp=drivesdk",
+   "webContentLink": "https://drive.google.com/uc?id=1SZkreDw75GciO4o0NUBeIopPxtCuhH_Y&export=download",
+   "size": "2114025",
+   "viewersCanCopyContent": true,
+   "permissions": [
+    {
+     "id": "07468399490707249352",
+     "displayName": "Антон Титовец",
+     "type": "user",
+     "kind": "drive#permission",
+     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+     "emailAddress": "bayselonarrend@gmail.com",
+     "role": "owner",
+     "deleted": false,
+     "pendingOwner": false
+    }
+   ],
+   "hasThumbnail": true,
+   "spaces": [
+    "drive"
+   ],
+   "id": "1SZkreDw75GciO4o0NUBeIopPxtCuhH_Y",
+   "name": "Новый файл.jpg",
+   "description": "Это новый файл",
+   "starred": false,
+   "trashed": false,
+   "explicitlyTrashed": false,
+   "createdTime": "2026-05-11T19:19:04.026Z",
+   "modifiedTime": "2026-05-11T19:19:04.026Z",
+   "modifiedByMeTime": "2026-05-11T19:19:04.026Z",
+   "quotaBytesUsed": "2114025",
+   "version": "2",
+   "originalFilename": "***",
+   "ownedByMe": true,
+   "fullFileExtension": "jpg",
+   "isAppAuthorized": true,
+   "capabilities": {
+    "canChangeViewersCanCopyContent": true,
+    "canEdit": true,
+    "canCopy": true,
+    "canComment": true,
+    "canAddChildren": false,
+    "canDelete": true,
+    "canDownload": true,
+    "canListChildren": false,
+    "canRemoveChildren": false,
+    "canRename": true,
+    "canTrash": true,
+    "canReadRevisions": true,
+    "canChangeCopyRequiresWriterPermission": true,
+    "canMoveItemIntoTeamDrive": true,
+    "canUntrash": true,
+    "canModifyContent": true,
+    "canMoveItemOutOfDrive": true,
+    "canAddMyDriveParent": false,
+    "canRemoveMyDriveParent": true,
+    "canMoveItemWithinDrive": true,
+    "canShare": true,
+    "canMoveChildrenWithinDrive": false,
+    "canModifyContentRestriction": true,
+    "canChangeSecurityUpdateEnabled": false,
+    "canAcceptOwnership": false,
+    "canReadLabels": false,
+    "canModifyLabels": false,
+    "canModifyEditorContentRestriction": true,
+    "canModifyOwnerContentRestriction": true,
+    "canRemoveContentRestriction": false,
+    "canDisableInheritedPermissions": false,
+    "canEnableInheritedPermissions": true,
+    "canChangeItemDownloadRestriction": true,
+    "canStartApproval": false
+   },
+   "thumbnailVersion": "1",
+   "modifiedByMe": true,
+   "permissionIds": [
+    "07468399490707249352"
+   ],
+   "imageMediaMetadata": {
+    "flashUsed": true,
+    "meteringMode": "Pattern",
+    "exposureMode": "Auto",
+    "colorSpace": "sRGB",
+    "whiteBalance": "Auto",
+    "width": "***",
+    "height": 2448,
+    "rotation": 0,
+    "time": "2012:08:03 08:21:50",
+    "cameraMake": "SONY",
+    "cameraModel": "DSC-H7",
+    "exposureTime": 0.00125,
+    "aperture": 5.6,
+    "focalLength": 5.2,
+    "isoSpeed": 100,
+    "exposureBias": 0,
+    "maxApertureValue": 2.875
+   },
+   "linkShareMetadata": {
+    "securityUpdateEligible": false,
+    "securityUpdateEnabled": true
+   },
+   "sha1Checksum": "ebdbaf8ed7fe21f6562fde438a2bb12ba49750f2",
+   "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
+   "inheritedPermissionsDisabled": false,
+   "downloadRestrictions": {
+    "itemDownloadRestriction": {
+     "restrictedForReaders": false,
+     "restrictedForWriters": false
+    },
+    "effectiveDownloadRestrictionWithContext": {
+     "restrictedForReaders": false,
+     "restrictedForWriters": false
+    }
+   },
+   "clientEncryptionDetails": {
+    "decryptionMetadata": {
+     "wrappedKey": "***",
+     "kaclsId": "0",
+     "aes256GcmChunkSize": "unset",
+     "keyFormat": "***",
+     "encryptionResourceKeyHash": "***"
+    }
+   }
+  },
+  {
+   "kind": "drive#file",
+   "fileExtension": "jpg",
+   "copyRequiresWriterPermission": false,
+   "md5Checksum": "85b6518b95b58536480354d9d5fc3d8b",
+   "writersCanShare": true,
+   "viewedByMe": false,
+   "mimeType": "image/jpeg",
+   "parents": [
+    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+   ],
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBM6oQBUDrp2LRCwM81Yx-yZtCiSUoPDbxVu5Hf_jpE71NTg...",
+   "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
+   "shared": false,
+   "lastModifyingUser": {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   },
+   "owners": [
+    {
+     "displayName": "Антон Титовец",
+     "kind": "drive#user",
+     "me": true,
+     "permissionId": "07468399490707249352",
+     "emailAddress": "bayselonarrend@gmail.com",
+     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+    }
+   ],
+   "headRevisionId": "0B92vrbrhqfJrM3JmTEtHL04zWUVlSXFnR0szcFRhVGNnK084PQ",
+   "webViewLink": "https://drive.google.com/file/d/1N6vcyOUyObuVq-AZfrIBRSq1T3yL6df-/view?usp=drivesdk",
+   "webContentLink": "https://drive.google.com/uc?id=1N6vcyOUyObuVq-AZfrIBRSq1T3yL6df-&export=download",
+   "size": "2114025",
+   "viewersCanCopyContent": true,
+   "permissions": [
+    {
+     "id": "07468399490707249352",
+     "displayName": "Антон Титовец",
+     "type": "user",
+     "kind": "drive#permission",
+     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+     "emailAddress": "bayselonarrend@gmail.com",
+     "role": "owner",
+     "deleted": false,
+     "pendingOwner": false
+    }
+   ],
+   "hasThumbnail": true,
+   "spaces": [
+    "drive"
+   ],
+   "id": "1N6vcyOUyObuVq-AZfrIBRSq1T3yL6df-",
+   "name": "Новый файл.jpg",
+   "description": "Это новый файл",
+   "starred": false,
+   "trashed": false,
+   "explicitlyTrashed": false,
+   "createdTime": "2026-05-11T19:13:20.778Z",
+   "modifiedTime": "2026-05-11T19:13:20.778Z",
+   "modifiedByMeTime": "2026-05-11T19:13:20.778Z",
+   "quotaBytesUsed": "2114025",
+   "version": "2",
+   "originalFilename": "***",
+   "ownedByMe": true,
+   "fullFileExtension": "jpg",
+   "isAppAuthorized": true,
+   "capabilities": {
+    "canChangeViewersCanCopyContent": true,
+    "canEdit": true,
+    "canCopy": true,
+    "canComment": true,
+    "canAddChildren": false,
+    "canDelete": true,
+    "canDownload": true,
+    "canListChildren": false,
+    "canRemoveChildren": false,
+    "canRename": true,
+    "canTrash": true,
+    "canReadRevisions": true,
+    "canChangeCopyRequiresWriterPermission": true,
+    "canMoveItemIntoTeamDrive": true,
+    "canUntrash": true,
+    "canModifyContent": true,
+    "canMoveItemOutOfDrive": true,
+    "canAddMyDriveParent": false,
+    "canRemoveMyDriveParent": true,
+    "canMoveItemWithinDrive": true,
+    "canShare": true,
+    "canMoveChildrenWithinDrive": false,
+    "canModifyContentRestriction": true,
+    "canChangeSecurityUpdateEnabled": false,
+    "canAcceptOwnership": false,
+    "canReadLabels": false,
+    "canModifyLabels": false,
+    "canModifyEditorContentRestriction": true,
+    "canModifyOwnerContentRestriction": true,
+    "canRemoveContentRestriction": false,
+    "canDisableInheritedPermissions": false,
+    "canEnableInheritedPermissions": true,
+    "canChangeItemDownloadRestriction": true,
+    "canStartApproval": false
+   },
+   "thumbnailVersion": "1",
+   "modifiedByMe": true,
+   "permissionIds": [
+    "07468399490707249352"
+   ],
+   "imageMediaMetadata": {
+    "flashUsed": true,
+    "meteringMode": "Pattern",
+    "exposureMode": "Auto",
+    "colorSpace": "sRGB",
+    "whiteBalance": "Auto",
+    "width": "***",
+    "height": 2448,
+    "rotation": 0,
+    "time": "2012:08:03 08:21:50",
+    "cameraMake": "SONY",
+    "cameraModel": "DSC-H7",
+    "exposureTime": 0.00125,
+    "aperture": 5.6,
+    "focalLength": 5.2,
+    "isoSpeed": 100,
+    "exposureBias": 0,
+    "maxApertureValue": 2.875
+   },
+   "linkShareMetadata": {
+    "securityUpdateEligible": false,
+    "securityUpdateEnabled": true
+   },
+   "sha1Checksum": "ebdbaf8ed7fe21f6562fde438a2bb12ba49750f2",
+   "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
+   "inheritedPermissionsDisabled": false,
+   "downloadRestrictions": {
+    "itemDownloadRestriction": {
+     "restrictedForReaders": false,
+     "restrictedForWriters": false
+    },
+    "effectiveDownloadRestrictionWithContext": {
+     "restrictedForReaders": false,
+     "restrictedForWriters": false
+    }
+   },
+   "clientEncryptionDetails": {
+    "decryptionMetadata": {
+     "wrappedKey": "***",
+     "kaclsId": "0",
+     "aes256GcmChunkSize": "unset",
+     "keyFormat": "***",
+     "encryptionResourceKeyHash": "***"
+    }
+   }
+  }
+ ]
 }
