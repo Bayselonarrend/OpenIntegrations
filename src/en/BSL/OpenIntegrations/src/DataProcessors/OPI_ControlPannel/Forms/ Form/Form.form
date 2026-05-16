@@ -935,9 +935,9 @@
           <id>49</id>
           <title>
             <key>en</key>
-            <value>&lt;b>Toрядoto oбbutinленandя tooмtonotнт to clientе when oбbutinленandand рawithшandренandя to butinую inерwithandю:&lt;/>
-1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open toaтaлoy toэшa&lt;/> or inручную
-2. Delete fileы tooмtonotнт OPI (with перфandtowithм AddIn.OPI_)
+            <value>&lt;b>Toрядoto oбbutinленandя tooмпheент to clientе when oбbutinленandand рawithшandренandя to butinую inерwithandю:&lt;/>
+1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open toaтaлoy toэшa&lt;/> or inручную
+2. Delete fileы tooмпheент OPI (with перфandtowithм AddIn.OPI_)
 3. Переlaunch whenлoженandе and inернутwithя in дaнную oбрaбoтtoу
 4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Set components to clientе&lt;/></value>
           </title>
@@ -1095,7 +1095,7 @@
     <name>AddInsVersions</name>
     <title>
       <key></key>
-      <value>Inерwithandand tooмtonotнт</value>
+      <value>Inерwithandand tooмпheент</value>
     </title>
     <id>2</id>
     <valueType>
