@@ -46,7 +46,7 @@
   </configurationInformationAddress>
   <compatibilityMode>8.3.10</compatibilityMode>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
-  <commonPictures>CommonPicture.OPI_Лого</commonPictures>
+  <commonPictures>CommonPicture.OPI_Logo</commonPictures>
   <sessionParameters>SessionParameter.OPI_НастройкиРасширенногоВызова</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
