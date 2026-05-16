@@ -48,6 +48,7 @@
 #Use "../../../tools/http"
 #Use "../../yandex"
 
+
 #Region Public
 
 #Region Authorization
@@ -515,8 +516,10 @@ Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
     URL     = "https://cloud-api.yandex.net/v1/disk/resources/upload";
 
+    EncodedURL = OPI_Tools.GetEncodedString(Address, "URLencoding");
+
     Parameters = New Structure;
-    Parameters.Insert("url" , EncodeString(Address, StringEncodingMethod.URLencoding));
+    Parameters.Insert("url" , EncodedURL);
     Parameters.Insert("path", Path);
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
@@ -683,7 +686,7 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
     Href    = "href";
 
     Parameters = New Structure;
-    Parameters.Insert("public_key", EncodeString(URL, StringEncodingMethod.URLencoding));
+    Parameters.Insert("public_key", OPI_Tools.GetEncodedString(URL, "URLencoding"));
 
     If ValueIsFilled(From) Then
         Parameters.Insert("path", From);
@@ -744,6 +747,8 @@ Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
 EndFunction
 
 #EndRegion
+
+
 
 #Region Alternate
 

@@ -71,6 +71,7 @@
 // #Use asserts
 // #Use "internal"
 
+#If Not WebClient Then // !OPI
 
 // For YAxUnit
 
@@ -590,6 +591,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     ImagePath = "C:\pic.png";
 
     Image = FunctionParameters["Picture"]; // SKIP
+
     TFN   = GetTempFileName("png"); // SKIP
     FileCopy(Image, TFN); // SKIP
     Image = TFN; // SKIP
@@ -1459,3 +1461,5 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
+#EndIf // !OPI

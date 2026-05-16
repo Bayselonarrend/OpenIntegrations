@@ -49,7 +49,7 @@
 // #Использовать "../../../tools/http"
 
 #Если Не ВебКлиент Тогда // !OPI
-	
+
 #Область ПрограммныйИнтерфейс
 
 #Область ОсновныеМетоды
@@ -445,7 +445,7 @@
                 // BSLLS:MissingTemporaryFileDeletion-off
 
                 //@skip-check missing-temporary-file-deletion
-	            ИВФ = ПолучитьИмяВременногоФайла();
+                ИВФ = ПолучитьИмяВременногоФайла();
 
                 // BSLLS:MissingTemporaryFileDeletion-on
 

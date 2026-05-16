@@ -6,6 +6,7 @@
     <value>Slack (OpenIntegrations)</value>
   </synonym>
   <comment>Slack Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

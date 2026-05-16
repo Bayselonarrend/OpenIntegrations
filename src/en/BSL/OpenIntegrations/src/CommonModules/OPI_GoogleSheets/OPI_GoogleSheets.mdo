@@ -10,6 +10,7 @@
     <value>Google Sheets (OpenIntegrations)</value>
   </synonym>
   <comment>Google Sheets Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

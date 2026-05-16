@@ -41,29 +41,41 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
+//@skip-check server-execution-safe-mode
 
 #Use "./internal"
+
 
 #Region Internal
 
 #Region Main
 
-Function GetAddIn(Val AddInName, Val Class = "Main") Export
+Function GetAddIn(Val AddInName, Val Class = "Main", Val Reattach = False) Export
 
     AddIn     = Undefined;
     Error     = "";
-    AddInName = StrTemplate("OPI_%1", AddInName);
+    AddInName = ?(StrStartsWith(AddInName, "OPI_")
+        , AddInName
+        , StrTemplate("OPI_%1", AddInName));
 
     CallSettings   = OPI_AdvancedCall.GetCurrentSettings();
     ConnectionMode = OPI_Tools.GetOr(CallSettings, "addin_mode", Undefined);
 
-    If ValueIsFilled(ConnectionMode) Or Not InitializeAddIn(AddInName, Class, AddIn) Then
+    If Not InitializeAddIn(AddInName, Class, AddIn)
+        Or ValueIsFilled(ConnectionMode)
+        Or Reattach Then
 
         Error = Undefined;
-        AddIn = AttachAddInOnServer(AddInName, Class, Error, ConnectionMode);
+        AddIn = AttachNewAddIn(AddInName, Class, Error, ConnectionMode);
 
-        If ValueIsFilled(Error) Then
-            FormAddInException(Error);
+        If Error <> Undefined Then
+
+            If Error.Description = "AddInInstallation" Then
+                FormInstallException();
+            Else
+                FormAddInException(DetailErrorDescription(Error));
+            EndIf;
+
         EndIf;
 
     EndIf;
@@ -302,7 +314,7 @@ Function InitializeAddIn(Val AddInName, Val Class, AddIn)
 
 EndFunction
 
-Function AttachAddInOnServer(Val AddInName, Val Class, Error, ConnectionMode)
+Function AttachNewAddIn(Val AddInName, Val Class, Error, ConnectionMode)
 
     If OPI_Tools.IsOneScript() Then
         TemplateName = StrTemplate("%1%2.zip"         , AddInsFolderOS(), AddInName);
@@ -311,12 +323,16 @@ Function AttachAddInOnServer(Val AddInName, Val Class, Error, ConnectionMode)
     EndIf;
 
     Try
+
         AttachAddInWithMode(TemplateName, AddInName, ConnectionMode);
+
         AddIn = New(StrTemplate("AddIn.%1.%2", AddInName, Class));
+
         Error = Undefined;
         Return AddIn;
+
     Except
-        Error = DetailErrorDescription(ErrorInfo());
+        Error = ErrorInfo();
         Return Undefined;
     EndTry;
 
@@ -348,6 +364,59 @@ Function AttachAddInWithMode(TemplateName, AddInName, ConnectionMode)
 
     TypeRequiered = TypeRequieredByVM And TypeRequieredByVersion;
 
+    #If Client Then
+        Result = AttachAddInOnClient(TemplateName, AddInName, ConnectionMode, TypeRequiered);
+    #Else
+        Result = AttachAddInOnServer(TemplateName, AddInName, ConnectionMode, TypeRequiered);
+    #EndIf
+
+    Return Result;
+
+EndFunction
+
+#If Not Client Then
+
+Function AttachAddInOnServer(Val TemplateName, Val AddInName, Val ConnectionMode, Val TypeRequiered)
+
+    Result = ConnectComponent(TemplateName, AddInName, ConnectionMode, TypeRequiered);
+    Return Result;
+
+EndFunction
+
+#EndIf
+
+#If Client Then
+
+Function AttachAddInOnClient(Val TemplateName
+    , Val AddInName
+    , Val ConnectionMode
+    , Val TypeRequiered)
+
+    Result = ConnectComponent(TemplateName, AddInName, ConnectionMode, TypeRequiered);
+
+    If Result Then
+        Return True;
+    EndIf;
+
+    If OPI_ToolsServerCall.ModalityDisabled() Then
+
+        BeginInstallAddIn(Undefined, TemplateName);
+        Raise "AddInInstallation";
+
+    Else
+        InstallAddIn(TemplateName);
+    EndIf;
+
+    Result = ConnectComponent(TemplateName, AddInName, ConnectionMode, TypeRequiered);
+
+    Return Result;
+
+EndFunction
+
+#EndIf
+
+Function ConnectComponent(Val TemplateName, Val AddInName, Val ConnectionMode, Val TypeRequiered)
+
     If Not TypeRequiered Then
 
         Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
@@ -357,13 +426,21 @@ Function AttachAddInWithMode(TemplateName, AddInName, ConnectionMode)
         // BSLLS:UnusedLocalVariable-off
 
         //@skip-check module-unused-local-variable
-        ConnectionType = GetConnectionType(ConnectionMode);
+        AttachIsolated = AttachIsolated(ConnectionMode);
         //@skip-check server-execution-safe-mode
 
         // BSLLS:UnusedLocalVariable-on
 
         // BSLLS:LineLength-off
-        Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
+        Result = Undefined;
+
+        If AttachIsolated Then
+            Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
+        Else
+            ExecutionText = "Result = AttachAddIn(TemplateName, AddInName, AddInType.Native, AddInConnectionType.NotIsolated)";
+            Execute(ExecutionText);
+        EndIf;
+
         // BSLLS:LineLength-on
 
     EndIf;
@@ -386,46 +463,36 @@ Function AddInsFolderOS()
 
 EndFunction
 
-Function GetConnectionType(Val ConnectionMode)
+Function AttachIsolated(Val ConnectionMode)
 
-    If False Then
-        AddInConnectionType = Undefined;
-    EndIf;
-
-    ConnectionType = Undefined;
+    AttachIsolated = Undefined;
 
     If ValueIsFilled(ConnectionMode) Then
 
-        //@skip-check bsl-legacy-check-string-literal
-        If TypeOf(ConnectionMode) = Type("AddInConnectionType") Then
-            ConnectionType = ConnectionMode;
+        ModeLower = Lower(String(ConnectionMode));
+
+        If ModeLower = "isolated" Then
+
+            AttachIsolated = True;
+
+        ElsIf ModeLower = "notisolated" Then
+
+            AttachIsolated = False;
+
         Else
-
-            OPI_TypeConversion.GetLine(ConnectionMode);
-
-            Try
-                ConnectionType = AddInConnectionType[ConnectionMode];
-            Except
-                ConnectionType = Undefined;
-            EndTry;
-
+            AttachIsolated = Undefined;
         EndIf;
 
     EndIf;
 
-    If ConnectionType = Undefined Then
+    If AttachIsolated = Undefined Then
 
         NotIsolatedBySystem = Not OPI_Tools.IsWindows();
-
-        If NotIsolatedBySystem Then
-            ConnectionType = AddInConnectionType.NotIsolated;
-        Else
-            ConnectionType = AddInConnectionType.Isolated;
-        EndIf;
+        AttachIsolated      = Not NotIsolatedBySystem;
 
     EndIf;
 
-    Return ConnectionType;
+    Return AttachIsolated;
 
 EndFunction
 
@@ -453,12 +520,19 @@ Procedure FormAddInException(Val Error)
 
 EndProcedure
 
+Procedure FormInstallException()
+
+    Raise "Initial external component installation has been started. If there are no other error messages, run the function again";
+
+EndProcedure
+
 #EndRegion
+
 
 #Region Alternate
 
-Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main") Export
-    Return GetAddIn(ИмяКомпоненты, Класс);
+Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main", Val Переподключить = False) Export
+    Return GetAddIn(ИмяКомпоненты, Класс, Переподключить);
 EndFunction
 
 Function ЭтоКомпонента(Val Значение) Export

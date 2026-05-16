@@ -49,6 +49,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Account
@@ -1292,3 +1294,6 @@ Function ChatArchivingManagement(Val AccessParameters, Val ChatID, Val Archiving
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI
+

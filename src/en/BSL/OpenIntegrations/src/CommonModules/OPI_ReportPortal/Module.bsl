@@ -51,6 +51,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Authorization
@@ -1226,3 +1228,5 @@ Function GetAuthorizationHeader(Val Token)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

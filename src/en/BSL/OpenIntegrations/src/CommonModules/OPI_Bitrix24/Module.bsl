@@ -47,6 +47,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region SettingsAndAdministartion
@@ -5241,3 +5243,5 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

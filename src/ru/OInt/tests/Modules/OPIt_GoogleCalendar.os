@@ -514,6 +514,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure GC_Authorization() Export

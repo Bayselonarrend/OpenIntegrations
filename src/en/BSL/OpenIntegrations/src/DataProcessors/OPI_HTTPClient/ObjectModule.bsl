@@ -51,9 +51,9 @@
 
 // #Use "../../../../main"
 
-#If Not Client Then
+#If Not Client Then // !OPI
 
-#Region Variables
+#Region Variables // !OPI
 
 // Processor
 
@@ -117,7 +117,7 @@ Var Multipart; // Flag indicating the body is set in Multipart format
 Var Boundary; // Boundary for separating body parts
 Var LineSeparator; // Body line separator
 
-#EndRegion
+#EndRegion // !OPI
 
 #Region Public
 
@@ -1198,8 +1198,8 @@ Function SetHeaders(Val Value, Val FullReplace = False) Export
         If FullReplace Then
             RequestHeaders = Value;
         Else
-            For Each Title In Value Do
-                RequestHeaders.Insert(Title.Key, Title.Value);
+            For Each RequestHeader In Value Do
+                RequestHeaders.Insert(RequestHeader.Key, RequestHeader.Value);
             EndDo;
         EndIf;
 
@@ -1835,7 +1835,7 @@ Function ConvertParameterToString(Val Value)
         Value = StrConcat(Value, ",");
 
         If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+            Value = OPI_Tools.GetEncodedString(Value, "URLInURLEncoding");
         EndIf;
 
         Value = "[" + Value + "]";
@@ -1860,7 +1860,7 @@ Function ConvertParameterToString(Val Value)
         OPI_TypeConversion.GetLine(Value);
 
         If EncodeURL Then
-            Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+            Value = OPI_Tools.GetEncodedString(Value, "URLencoding");
         EndIf;
 
     EndIf;
@@ -2008,6 +2008,7 @@ Function SetAdvancedCallSettings()
         ProxySettings            = OPI_Tools.GetOr(CallSettings, "proxy" , Undefined);
         TimeoutSettings          = OPI_Tools.GetOr(CallSettings, "timeout" , Undefined);
         AdvancedResponseSettings = OPI_Tools.GetOr(CallSettings, "adv_response", Undefined);
+        AttemptSetting           = OPI_Tools.GetOr(CallSettings, "retries" , Undefined);
 
         If ProxySettings <> Undefined Then
 
@@ -2040,6 +2041,11 @@ Function SetAdvancedCallSettings()
         If AdvancedResponseSettings <> Undefined Then
             OPI_TypeConversion.GetBoolean(AdvancedResponseSettings);
             AdvancedResponse = AdvancedResponseSettings;
+        EndIf;
+
+        If AttemptSetting <> Undefined Then
+            OPI_TypeConversion.GetNumber(AttemptSetting);
+            MaxAttempts(AttemptSetting);
         EndIf;
 
         Return ThisObject;
@@ -2169,7 +2175,7 @@ Function SplitArrayAsURLParameters(Val Key, Val Value)
         OPI_TypeConversion.GetLine(CurrentValue);
 
         If GetSetting("URLencoding") Then
-            CurrentValue = EncodeString(CurrentValue, StringEncodingMethod.URLInURLEncoding);
+            CurrentValue = OPI_Tools.GetEncodedString(CurrentValue, "URLInURLEncoding");
         EndIf;
 
         Value.Set(N, KeyArray + CurrentValue);
@@ -2233,8 +2239,8 @@ Function CompleteHeaders()
 
     If TypeOf(RequestHeaders) = Type("Map") Then
 
-        For Each Title In RequestHeaders Do
-            Request.Headers.Insert(Title.Key, Title.Value);
+        For Each RequestHeader In RequestHeaders Do
+            Request.Headers.Insert(RequestHeader.Key, RequestHeader.Value);
         EndDo;
 
     EndIf;
@@ -2913,7 +2919,7 @@ EndFunction
 Function CreateAuthorizationHeader()
 
     AccessKey   = AuthData["AccessKey"];
-    CurrentDate = CurrentUniversalDate();
+    CurrentDate = OPI_Tools.GetCurrentUniversalDate();
 
     Request.Headers.Insert("x-amz-date", OPI_Tools.ISOTimestamp(CurrentDate));
     Request.Headers.Insert("Host"      , Connection.Host);
@@ -2992,7 +2998,7 @@ Function CreateCanonicalRequest()
 
     RequestTemplate = "";
     RequestBody     = GetRequestBodyAsBinaryData();
-    HashSum         = OPI_Cryptography.Hash(RequestBody, HashFunction.SHA256);
+    HashSum         = OPI_Cryptography.Hash(RequestBody, "SHA256");
     PartsAmount     = 6;
 
     Request.Headers.Insert("x-amz-content-sha256", Lower(GetHexStringFromBinaryData(HashSum)));
@@ -3047,7 +3053,7 @@ Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
     PartsAmount    = 4;
 
     CanonicalRequest = GetBinaryDataFromString(CanonicalRequest);
-    CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
+    CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, "SHA256");
     CanonicalRequest = Lower(GetHexStringFromBinaryData(CanonicalRequest));
 
     For N = 1 To PartsAmount Do
@@ -3067,9 +3073,9 @@ Function GetHeadersKeysString()
 
     HeadersList = New ValueList;
 
-    For Each Title In Request.Headers Do
+    For Each RequestHeader In Request.Headers Do
 
-        CurrentKey  = Title.Key;
+        CurrentKey  = RequestHeader.Key;
         CurrentKeyN = Lower(CurrentKey);
 
         If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
@@ -3129,16 +3135,16 @@ Function GetHeadersString()
 
     HeadersList = New ValueList;
 
-    For Each Title In Request.Headers Do
+    For Each RequestHeader In Request.Headers Do
 
-        CurrentKey  = Title.Key;
+        CurrentKey  = RequestHeader.Key;
         CurrentKeyN = Lower(CurrentKey);
 
         If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
             Continue;
         EndIf;
 
-        HeaderString = Lower(CurrentKey) + ":" + Title.Value;
+        HeaderString = Lower(CurrentKey) + ":" + RequestHeader.Value;
         HeadersList.Add(HeaderString);
 
     EndDo;
@@ -3200,9 +3206,7 @@ Function AddOAuthV1Header()
     CurrentUNIXDate = OPI_Tools.UNIXTime(CurrentDate);
     CurrentUNIXDate = OPI_Tools.NumberToString(CurrentUNIXDate);
 
-    ParametersTable = New ValueTable;
-    ParametersTable.Columns.Add("Key");
-    ParametersTable.Columns.Add("Value");
+    DataStructure = New Structure;
 
     If GetSetting("BodyFieldsAtOAuth") Then
 
@@ -3220,9 +3224,7 @@ Function AddOAuthV1Header()
                 OPI_TypeConversion.GetLine(CurrentValue);
             EndIf;
 
-            NewLine       = ParametersTable.Add();
-            NewLine.Key   = Field.Key;
-            NewLine.Value = CurrentValue;
+            DataStructure.Insert(Field.Key, CurrentValue);
 
         EndDo;
     EndIf;
@@ -3233,9 +3235,7 @@ Function AddOAuthV1Header()
 
         For Each URLParameter In RequestURLParams Do
 
-            NewLine       = ParametersTable.Add();
-            NewLine.Key   = URLParameter.Key;
-            NewLine.Value = URLParameter.Value;
+            DataStructure.Insert(URLParameter.Key, URLParameter.Value);
 
         EndDo;
 
@@ -3243,40 +3243,27 @@ Function AddOAuthV1Header()
 
     AddLog("AddOAuthV1Header: updating the signature string with credentials");
 
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_consumer_key";
-    NewLine.Value = OAuthConsumerKey;
+    DataStructure.Insert("oauth_consumer_key"    , OAuthConsumerKey);
+    DataStructure.Insert("oauth_token"           , OAuthToken);
+    DataStructure.Insert("oauth_version"         , OAuthAPIVersion);
+    DataStructure.Insert("oauth_signature_method", HashingMethod);
+    DataStructure.Insert("oauth_timestamp"       , CurrentUNIXDate);
+    DataStructure.Insert("oauth_nonce"           , CurrentUNIXDate);
 
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_token";
-    NewLine.Value = OAuthToken;
+    EncodingDataStructure = New Structure;
 
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_version";
-    NewLine.Value = OAuthAPIVersion;
+    For Each TableRow In DataStructure Do
 
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_signature_method";
-    NewLine.Value = HashingMethod;
+        CurrentKey   = OPI_Tools.GetEncodedString(TableRow.Key, "URLencoding");
+        CurrentValue = OPI_Tools.GetEncodedString(TableRow.Value, "URLencoding");
 
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_timestamp";
-    NewLine.Value = CurrentUNIXDate;
-
-    NewLine       = ParametersTable.Add();
-    NewLine.Key   = "oauth_nonce";
-    NewLine.Value = CurrentUNIXDate;
-
-    For Each TableRow In ParametersTable Do
-
-        TableRow.Key   = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
-        TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
+        EncodingDataStructure.Insert(CurrentKey, CurrentValue);
 
     EndDo;
 
-    ParametersTable.Sort("Key");
+    EncodingDataStructure = OPI_Tools.SortStructureByKey(EncodingDataStructure);
 
-    For Each TableRow In ParametersTable Do
+    For Each TableRow In EncodingDataStructure Do
 
         SignatureString = SignatureString
             + TableRow.Key
@@ -3290,13 +3277,13 @@ Function AddOAuthV1Header()
     SignatureString = Left(SignatureString, StrLen(SignatureString) - 1);
     SignatureString = Upper(RequestMethod)
         + "&"
-        + EncodeString(RequestURL     , StringEncodingMethod.URLencoding)
+        + OPI_Tools.GetEncodedString(RequestURL     , "URLencoding")
         + "&"
-        + EncodeString(SignatureString, StringEncodingMethod.URLencoding);
+        + OPI_Tools.GetEncodedString(SignatureString, "URLencoding");
 
-    Signature = EncodeString(OAuthConsumerSecret, StringEncodingMethod.URLencoding)
+    Signature = OPI_Tools.GetEncodedString(OAuthConsumerSecret, "URLencoding")
         + "&"
-        + EncodeString(OAuthSecret, StringEncodingMethod.URLencoding);
+        + OPI_Tools.GetEncodedString(OAuthSecret, "URLencoding");
 
     SignBD      = GetBinaryDataFromString(Signature);
     SignatureBD = GetBinaryDataFromString(SignatureString);
@@ -3304,7 +3291,7 @@ Function AddOAuthV1Header()
     AddLog("AddOAuthV1Header: ");
 
     Signature = OPI_Cryptography.CreateSignature(SignBD, SignatureBD, OAuthAlgorithm, OAuthHashFunction);
-    Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
+    Signature = OPI_Tools.GetEncodedString(Base64String(Signature), "URLencoding");
 
     Delimiter = """,";
 
@@ -3434,7 +3421,7 @@ Procedure EncodeURLInURL(URL) Export
     Plug = StrTemplate("@#%1#@", String(New UUID));
 
     URL = StrReplace(URL, "&" , Plug);
-    URL = EncodeString(URL, StringEncodingMethod.URLInURLEncoding);
+    URL = OPI_Tools.GetEncodedString(URL, "URLInURLEncoding");
     URL = StrReplace(URL, Plug, "&");
 
 EndProcedure
@@ -3507,4 +3494,4 @@ EndProcedure
 
 #EndRegion
 
-#EndIf
+#EndIf // !OPI

@@ -36,6 +36,8 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
+#If Not WebClient Then // !OPI
+
 #Region Internal
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
@@ -649,3 +651,5 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

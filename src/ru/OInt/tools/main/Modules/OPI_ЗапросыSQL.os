@@ -44,6 +44,7 @@
 
 #Использовать "./internal"
 
+
 #Область СлужебныйПрограммныйИнтерфейс
 
 Функция СоздатьБазуДанных(Знач Модуль, Знач База, Знач Соединение = "", Знач Tls = Неопределено) Экспорт
@@ -1193,9 +1194,10 @@
     // BSLLS:MissingTemporaryFileDeletion-off
 
     //@skip-check missing-temporary-file-deletion
-    ПутьЗаготовок   = ПолучитьИмяВременногоФайла();
+    ПутьЗаготовок = ПолучитьИмяВременногоФайла();
+
     //@skip-check missing-temporary-file-deletion
-    ПутьКлючей      = ПолучитьИмяВременногоФайла();
+    ПутьКлючей = ПолучитьИмяВременногоФайла();
 
     // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -1775,7 +1777,7 @@
         // BSLLS:MissingTemporaryFileDeletion-off
 
         //@skip-check missing-temporary-file-deletion
-        ИВФ     = ПолучитьИмяВременногоФайла();
+        ИВФ = ПолучитьИмяВременногоФайла();
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
@@ -2012,6 +2014,8 @@
 #КонецОбласти
 
 #КонецОбласти
+
+
 
 #Region Alternate
 

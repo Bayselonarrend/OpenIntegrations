@@ -6,6 +6,7 @@
     <value>Advanced call (OPI)</value>
   </synonym>
   <comment>Module for calling methods with advanced parameter set</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -48,6 +48,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -762,3 +764,5 @@ Procedure ProcessListObtainResult(Result, Connection, Val Recursively)
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

@@ -50,6 +50,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 #Region RequestsProcessing
@@ -646,7 +647,7 @@ Function PushBlob(Val URL, Val Data, Val AdditionalHeaders = "") Export
 
     CompleteURL(URL, "api/blobs/sha256:%1");
 
-    Hash = OPI_Cryptography.Hash(Data, HashFunction.SHA256);
+    Hash = OPI_Cryptography.Hash(Data, "SHA256");
     Hash = Lower(GetHexStringFromBinaryData(Hash));
 
     URL = StrTemplate(URL, Hash);
@@ -737,6 +738,8 @@ Procedure HeadersProcessing(AdditionalHeaders)
 EndProcedure
 
 #EndRegion
+
+
 
 #Region Alternate
 

@@ -1852,7 +1852,7 @@
             // BSLLS:MissingTemporaryFileDeletion-off
 
             //@skip-check missing-temporary-file-deletion
-	        ИВФ = ПолучитьИмяВременногоФайла();
+            ИВФ = ПолучитьИмяВременногоФайла();
 
             // BSLLS:MissingTemporaryFileDeletion-on
 

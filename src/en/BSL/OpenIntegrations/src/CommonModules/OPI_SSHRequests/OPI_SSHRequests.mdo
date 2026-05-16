@@ -6,6 +6,7 @@
     <value>SSH (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Common SSH Tools Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -6,6 +6,7 @@
     <value>MS SQL (OpenIntegrations)</value>
   </synonym>
   <comment>MSSQL Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -46,6 +46,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -981,3 +983,5 @@ Function UpdateChatParameters(Val Token, Val ChatID, Val Parameter, Val Value)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

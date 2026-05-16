@@ -67,6 +67,8 @@
 // #Use asserts
 // #Use "internal"
 
+#If Not WebClient Then // !OPI
+
 // For YAxUnit
 
 Procedure ИсполняемыеСценарии() Export
@@ -83,3 +85,4 @@ Function ПолучитьСписокТестов(UnitTesting) Export
 
 EndFunction
 
+#EndIf // !OPI

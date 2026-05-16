@@ -3,9 +3,10 @@
   <name>OPI_OpenAI</name>
   <synonym>
     <key>en</key>
-    <value>Open AI (OpenIntegrations)</value>
+    <value>OpenAI (OPI)</value>
   </synonym>
   <comment>OpenAI API Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

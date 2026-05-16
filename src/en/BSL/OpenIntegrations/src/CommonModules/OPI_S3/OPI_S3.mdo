@@ -6,6 +6,7 @@
     <value>S3 (OpenIntegrations)</value>
   </synonym>
   <comment>S3 Storage Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

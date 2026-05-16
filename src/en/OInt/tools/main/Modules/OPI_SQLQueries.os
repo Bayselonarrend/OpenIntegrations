@@ -44,6 +44,7 @@
 
 #Use "./internal"
 
+
 #Region Internal
 
 Function CreateDatabase(Val Module, Val Base, Val Connection = "", Val Tls = Undefined) Export
@@ -1194,6 +1195,7 @@ Function ProcessRecordsBatch(Val Module
 
     //@skip-check missing-temporary-file-deletion
     BlanksPath = GetTempFileName();
+
     //@skip-check missing-temporary-file-deletion
     KeysPath = GetTempFileName();
 
@@ -2012,6 +2014,8 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
+
 
 #Region Alternate
 

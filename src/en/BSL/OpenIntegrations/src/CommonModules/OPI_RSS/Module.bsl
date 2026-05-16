@@ -47,6 +47,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region RSSMethods
@@ -69,41 +71,11 @@ Function CreateFeedRSS(Val ChannelTitle
     , Val Items
     , Val UpdateDate = Undefined) Export
 
-    UpdateDate = ?(UpdateDate = Undefined
-        , OPI_Tools.GetCurrentDate()
+    Return OPI_LibraryFunctionsServerCall.CreateFeedRSS(ChannelTitle
+        , ChannelDescription
+        , ChannelLink
+        , Items
         , UpdateDate);
-
-    OPI_TypeConversion.GetLine(ChannelTitle);
-    OPI_TypeConversion.GetLine(ChannelDescription);
-    OPI_TypeConversion.GetLine(ChannelLink);
-    OPI_TypeConversion.GetArray(Items);
-    OPI_TypeConversion.GetDate(UpdateDate);
-
-    XMLWriter = New XMLWriter;
-    XMLWriter.SetString("UTF-8");
-
-    XMLWriter.WriteXMLDeclaration();
-    XMLWriter.WriteStartElement("rss");
-    XMLWriter.WriteAttribute("version", "2.0");
-
-    XMLWriter.WriteStartElement("channel");
-    WriteXMLItem(XMLWriter, "title"      , ChannelTitle);
-    WriteXMLItem(XMLWriter, "link"       , ChannelLink);
-    WriteXMLItem(XMLWriter, "description", ChannelDescription);
-
-    DateRFC822 = OPI_Tools.DateRFC822(UpdateDate);
-    WriteXMLItem(XMLWriter, "lastBuildDate", DateRFC822);
-
-    For Each Element In Items Do
-        WriteFeedItem(XMLWriter, Element);
-    EndDo;
-
-    XMLWriter.WriteEndElement();
-    XMLWriter.WriteEndElement();
-
-    Feed = XMLWriter.Close();
-
-    Return Feed;
 
 EndFunction
 
@@ -154,28 +126,7 @@ EndFunction
 Function ParseFeedRSS(Val XMLText) Export
 
     OPI_TypeConversion.GetLine(XMLText, True);
-
-    Channel = New Structure;
-
-    XMLReader = New XMLReader;
-    XMLReader.SetString(XMLText);
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            If XMLReader.Name = "channel" Then
-                Channel       = ReadChannelRSS(XMLReader);
-                Break;
-            EndIf;
-
-        EndIf;
-
-    EndDo;
-
-    XMLReader.Close();
-
-    Return Channel;
+    Return OPI_LibraryFunctionsServerCall.ParseFeedRSS(XMLText);
 
 EndFunction
 
@@ -201,43 +152,11 @@ Function CreateFeedAtom(Val FeedTitle
     , Val Items
     , Val UpdateDate = Undefined) Export
 
-    UpdateDate = ?(UpdateDate = Undefined
-        , OPI_Tools.GetCurrentDate()
+    Return OPI_LibraryFunctionsServerCall.CreateFeedAtom(FeedTitle
+        , FeedLink
+        , FeedID
+        , Items
         , UpdateDate);
-
-    OPI_TypeConversion.GetLine(FeedTitle);
-    OPI_TypeConversion.GetLine(FeedLink);
-    OPI_TypeConversion.GetLine(FeedID);
-    OPI_TypeConversion.GetArray(Items);
-    OPI_TypeConversion.GetDate(UpdateDate);
-
-    XMLWriter = New XMLWriter;
-    XMLWriter.SetString("UTF-8");
-
-    XMLWriter.WriteXMLDeclaration();
-    XMLWriter.WriteStartElement("feed");
-    XMLWriter.WriteAttribute("xmlns", "http://www.w3.org/2005/Atom");
-
-    WriteXMLItem(XMLWriter, "title", FeedTitle);
-    WriteXMLItem(XMLWriter, "id"   , FeedID);
-
-    XMLWriter.WriteStartElement("link");
-    XMLWriter.WriteAttribute("href", FeedLink);
-    XMLWriter.WriteAttribute("rel" , "alternate");
-    XMLWriter.WriteEndElement();
-
-    DateISO8601 = OPI_Tools.DateISO8601(UpdateDate);
-    WriteXMLItem(XMLWriter, "updated", DateISO8601);
-
-    For Each Element In Items Do
-        WriteFeedItemAtom(XMLWriter, Element);
-    EndDo;
-
-    XMLWriter.WriteEndElement(); // feed
-
-    Feed = XMLWriter.Close();
-
-    Return Feed;
 
 EndFunction
 
@@ -290,28 +209,7 @@ EndFunction
 Function ParseFeedAtom(Val XMLText) Export
 
     OPI_TypeConversion.GetLine(XMLText, True);
-
-    Feed = New Structure;
-
-    XMLReader = New XMLReader;
-    XMLReader.SetString(XMLText);
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            If XMLReader.Name = "feed" Then
-                Feed          = ReadFeedAtom(XMLReader);
-                Break;
-            EndIf;
-
-        EndIf;
-
-    EndDo;
-
-    XMLReader.Close();
-
-    Return Feed;
+    Return OPI_LibraryFunctionsServerCall.ParseFeedAtom(XMLText);
 
 EndFunction
 
@@ -319,245 +217,4 @@ EndFunction
 
 #EndRegion
 
-#Region Private
-
-Procedure WriteXMLItem(XMLWriter, ElementName, Value)
-
-    If ValueIsFilled(Value) Then
-        XMLWriter.WriteStartElement(ElementName);
-        XMLWriter.WriteText(Value);
-        XMLWriter.WriteEndElement();
-    EndIf;
-
-EndProcedure
-
-Procedure WriteFeedItem(XMLWriter, Element)
-
-    OPI_TypeConversion.GetKeyValueCollection(Element);
-
-    XMLWriter.WriteStartElement("item");
-
-    For Each DataField In Element Do
-
-        CurrentKey   = DataField.Key;
-        CurrentValue = DataField.Value;
-
-        If TypeOf(CurrentValue) = Type("Date") Then
-            CurrentValue        = OPI_Tools.DateRFC822(CurrentValue);
-        Else
-            OPI_TypeConversion.GetLine(CurrentValue, False);
-        EndIf;
-
-        If CurrentKey = "guid" Then
-            XMLWriter.WriteStartElement("guid");
-            XMLWriter.WriteAttribute("isPermaLink", "false");
-            XMLWriter.WriteText(CurrentValue);
-            XMLWriter.WriteEndElement();
-        Else
-            WriteXMLItem(XMLWriter, CurrentKey, CurrentValue);
-        EndIf;
-
-    EndDo;
-
-    XMLWriter.WriteEndElement();
-
-EndProcedure
-
-Function ReadChannelRSS(XMLReader)
-
-    Channel = New Structure;
-    Items   = New Array;
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            ElementName = XMLReader.Name;
-
-            If ElementName            = "item" Then
-                Element               = ReadItemRSS(XMLReader);
-                Items.Add(Element);
-            Else
-                XMLReader.Read();
-                If XMLReader.NodeType = XMLNodeType.Text Then
-                    Channel.Insert(ElementName, XMLReader.Value);
-                EndIf;
-            EndIf;
-
-        ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "channel" Then
-            Break;
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    Channel.Insert("items", Items);
-
-    Return Channel;
-
-EndFunction
-
-Function ReadItemRSS(XMLReader)
-
-    Element = New Structure;
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            ElementName = XMLReader.Name;
-            XMLReader.Read();
-
-            If XMLReader.NodeType = XMLNodeType.Text Then
-                Element.Insert(ElementName, XMLReader.Value);
-            EndIf;
-
-        ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "item" Then
-            Break;
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    Return Element;
-
-EndFunction
-
-Procedure WriteFeedItemAtom(XMLWriter, Element)
-
-    OPI_TypeConversion.GetKeyValueCollection(Element);
-
-    XMLWriter.WriteStartElement("entry");
-
-    For Each DataField In Element Do
-
-        CurrentKey   = DataField.Key;
-        CurrentValue = DataField.Value;
-
-        If TypeOf(CurrentValue) = Type("Date") Then
-            CurrentValue        = OPI_Tools.DateISO8601(CurrentValue);
-        Else
-            OPI_TypeConversion.GetLine(CurrentValue, False);
-        EndIf;
-
-        If CurrentKey    = "link" Then
-            XMLWriter.WriteStartElement("link");
-            XMLWriter.WriteAttribute("href", CurrentValue);
-            XMLWriter.WriteAttribute("rel" , "alternate");
-            XMLWriter.WriteEndElement();
-        ElsIf CurrentKey = "author" Then
-            XMLWriter.WriteStartElement("author");
-            WriteXMLItem(XMLWriter, "name"    , CurrentValue);
-            XMLWriter.WriteEndElement();
-        ElsIf CurrentKey = "content" Then
-            XMLWriter.WriteStartElement("content");
-            XMLWriter.WriteAttribute("type", "html");
-            XMLWriter.WriteText(CurrentValue);
-            XMLWriter.WriteEndElement();
-        Else
-            WriteXMLItem(XMLWriter, CurrentKey, CurrentValue);
-        EndIf;
-
-    EndDo;
-
-    XMLWriter.WriteEndElement(); // entry
-
-EndProcedure
-
-Function ReadFeedAtom(XMLReader)
-
-    Feed  = New Structure;
-    Items = New Array;
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            ElementName = XMLReader.Name;
-
-            If ElementName            = "entry" Then
-                Element               = ReadItemAtom(XMLReader);
-                Items.Add(Element);
-            ElsIf ElementName         = "link" Then
-                Feed.Insert("link", XMLReader.GetAttribute("href"));
-            Else
-                XMLReader.Read();
-                If XMLReader.NodeType = XMLNodeType.Text Then
-                    Feed.Insert(ElementName, XMLReader.Value);
-                EndIf;
-            EndIf;
-
-        ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "feed" Then
-            Break;
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    Feed.Insert("entries", Items);
-
-    Return Feed;
-
-EndFunction
-
-Function ReadItemAtom(XMLReader)
-
-    Element = New Structure;
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType = XMLNodeType.StartElement Then
-
-            ElementName = XMLReader.Name;
-
-            If ElementName            = "link" Then
-                Element.Insert("link"  , XMLReader.GetAttribute("href"));
-            ElsIf ElementName         = "author" Then
-                AuthorName            = ReadAuthorAtom(XMLReader);
-                Element.Insert("author", AuthorName);
-            Else
-                XMLReader.Read();
-                If XMLReader.NodeType = XMLNodeType.Text Then
-                    Element.Insert(ElementName, XMLReader.Value);
-                EndIf;
-            EndIf;
-
-        ElsIf XMLReader.NodeType = XMLNodeType.EndElement And XMLReader.Name = "entry" Then
-            Break;
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    Return Element;
-
-EndFunction
-
-Function ReadAuthorAtom(XMLReader)
-
-    AuthorName = "";
-
-    While XMLReader.Read() Do
-
-        If XMLReader.NodeType     = XMLNodeType.StartElement And XMLReader.Name = "name" Then
-            XMLReader.Read();
-            If XMLReader.NodeType = XMLNodeType.Text Then
-                AuthorName        = XMLReader.Value;
-            EndIf;
-        ElsIf XMLReader.NodeType  = XMLNodeType.EndElement And XMLReader.Name = "author" Then
-            Break;
-        Else
-            Continue;
-        EndIf;
-
-    EndDo;
-
-    Return AuthorName;
-
-EndFunction
-
-#EndRegion
+#EndIf // !OPI

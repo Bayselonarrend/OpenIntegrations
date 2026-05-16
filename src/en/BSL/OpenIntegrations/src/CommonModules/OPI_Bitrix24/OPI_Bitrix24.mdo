@@ -6,6 +6,7 @@
     <value>Bitrix24 (OpenIntegrations)</value>
   </synonym>
   <comment>Bitrix24 Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

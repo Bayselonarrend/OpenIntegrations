@@ -53,6 +53,8 @@
 // #Use "../../../tools/http"
 // #Use "../../grpc"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -713,8 +715,9 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
     EndIf;
 
     HTTPClient = OPI_HTTPRequests
-        .NewRequest()
-        .Initialize(URL)
+        .NewRequest();
+
+    HTTPClient.Initialize(URL)
         .AddURLParameter("query"         , QueryText , True)
         .AddURLParameter("query_id"      , RequestID , True)
         .AddURLParameter("default_format", DataFormat, True)
@@ -1162,3 +1165,5 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

@@ -48,6 +48,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 #Region DataRetrieving
@@ -96,29 +97,16 @@ Function GetToken(Val Login, Val Password) Export
     OPI_TypeConversion.GetLine(Login);
     OPI_TypeConversion.GetLine(Password);
 
-    URL     = "neocities.org";
-    Timeout = 120;
+    URL = "https://neocities.org/api/key";
 
-    Try
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBasicAuthorization(Login, Password)
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
 
-        SecureConnection = New OpenSSLSecureConnection();
-        SafeConnection   = New HTTPConnection(URL, 443, Login, Password, , Timeout, SecureConnection);
-
-    Except
-
-        URL            = "https://" + URL;
-        SafeConnection = New HTTPConnection(URL, 443, Login, Password, , Timeout);
-
-    EndTry;
-
-    Response = SafeConnection.Get(New HTTPRequest("/api/key"));
-
-    JSONReader = New JSONReader();
-    JSONReader.SetString(Response.GetBodyAsString());
-
-    Response = ReadJSON(JSONReader);
-
-    Return Response;
+    Return Result;
 
 EndFunction
 
@@ -454,6 +442,7 @@ Procedure GetLocalPathsSets(LocalFolder, RemoteFolder, LocalPaths, LocalSubfolde
 EndProcedure
 
 #EndRegion
+
 
 #Region Alternate
 

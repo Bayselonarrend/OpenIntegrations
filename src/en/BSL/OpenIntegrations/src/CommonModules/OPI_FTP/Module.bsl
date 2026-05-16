@@ -48,6 +48,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -722,9 +724,7 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
 
                 //@skip-check missing-temporary-file-deletion
                 TFN = GetTempFileName();
-
                 // BSLLS:MissingTemporaryFileDeletion-on
-
                 File.Write(TFN);
 
                 Result = ProcessingConnection.UploadFile(TFN, Path);
@@ -1148,3 +1148,5 @@ Procedure ProcessObjectList(ObjectList, Val Path, Val Connection, Val Recursivel
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

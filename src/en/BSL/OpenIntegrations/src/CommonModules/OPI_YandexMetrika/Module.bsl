@@ -44,6 +44,8 @@
 // #Use "../../../tools/http"
 // #Use "../../yandex"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region TagsManagement
@@ -590,3 +592,5 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

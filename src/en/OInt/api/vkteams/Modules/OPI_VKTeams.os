@@ -46,6 +46,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 #Region CommonMethods
@@ -981,6 +982,7 @@ Function UpdateChatParameters(Val Token, Val ChatID, Val Parameter, Val Value)
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

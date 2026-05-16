@@ -6,6 +6,7 @@
     <value>PostgreSQL (OpenIntegrations)</value>
   </synonym>
   <comment>PostgreSQL Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

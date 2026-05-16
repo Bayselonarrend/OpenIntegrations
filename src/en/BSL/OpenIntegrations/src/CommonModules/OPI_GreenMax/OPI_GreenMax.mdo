@@ -6,6 +6,7 @@
     <value>GreenAPI Max (OpenIntegrations)</value>
   </synonym>
   <comment>Max via GreenAPI Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

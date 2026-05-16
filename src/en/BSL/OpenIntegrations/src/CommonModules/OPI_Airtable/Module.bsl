@@ -43,6 +43,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region WorkingWithDatabases
@@ -701,3 +703,5 @@ Procedure AddDataDescription(Val Data, Parameters)
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

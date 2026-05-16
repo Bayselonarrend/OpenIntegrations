@@ -6,6 +6,7 @@
     <value>MongoDB (OpenIntegrations)</value>
   </synonym>
   <comment>MongoDB Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

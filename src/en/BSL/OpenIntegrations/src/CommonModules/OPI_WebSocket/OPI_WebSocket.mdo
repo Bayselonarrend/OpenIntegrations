@@ -5,6 +5,8 @@
     <key>en</key>
     <value>WebSocket (OPI)</value>
   </synonym>
+  <comment>Module for work with WebSocket from of set OPI</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

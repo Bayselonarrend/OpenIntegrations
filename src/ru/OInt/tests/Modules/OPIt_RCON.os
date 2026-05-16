@@ -197,6 +197,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure RC_CommandsExecution() Export

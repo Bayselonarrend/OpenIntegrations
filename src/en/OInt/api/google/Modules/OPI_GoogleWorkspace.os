@@ -40,6 +40,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 // Generate code retrieval link
@@ -179,7 +180,7 @@ Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
     SignKey       = Data["private_key"];
     URL           = Data["token_uri"];
 
-    CurrentDate = CurrentUniversalDate();
+    CurrentDate = OPI_Tools.GetCurrentUniversalDate();
     ExpireDate  = CurrentDate + Expire;
 
     UnixTime = OPI_Tools.UnixTime(CurrentDate);
@@ -246,6 +247,8 @@ Function GetPermissionsList(Calendar, Drive, Sheets)
 EndFunction
 
 #EndRegion
+
+
 
 #Region Alternate
 

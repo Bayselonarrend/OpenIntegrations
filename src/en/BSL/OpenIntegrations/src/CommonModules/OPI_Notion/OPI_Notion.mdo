@@ -6,6 +6,7 @@
     <value>Notion (OpenIntegrations)</value>
   </synonym>
   <comment>Notion Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

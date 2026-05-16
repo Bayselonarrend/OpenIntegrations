@@ -42,13 +42,14 @@
 #Use "./internal"
 #Use "../../main"
 
+
 #Region Public
 
 // New request
 // Creates a new object to work with HTTP
 //
 // Returns:
-// DataProcessorObject.OPI_HTTPClient - Processor object
+// DataProcessorObject.OPI_HTTPClient, ClientApplicationForm - Processor object
 Function NewRequest() Export
 
     If OPI_Tools.IsOneScript() Then
@@ -61,7 +62,12 @@ Function NewRequest() Export
         HTTPClient = New(TypeName);
 
     Else
-        HTTPClient = DataProcessors.OPI_HTTPClient.Create();
+
+        #If AtClient Then
+            HTTPClient = GetForm("DataProcessor.OPI_HTTPClient.Form.ClientCallObject");
+        #Else
+        #EndIf
+
     EndIf;
 
     Return HTTPClient;
@@ -368,6 +374,7 @@ Function SplitFileKey(Val FileData, Val ContentType)
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

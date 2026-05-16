@@ -101,7 +101,7 @@ To use it as a library when working via the terminal (command line), specify the
 
 It is also important to note that when using extension functions, especially for handlers with the GET or POST + `form-data` types, values may arrive in unsuitable data types. Melezh does not automatically convert data into the required types, except for those that can be explicitly determined during JSON reading or parsing of `multipart/form-data` (binary or string).
 
-To convert values to the appropriate types, you can use custom converters or those already used in the core functions of the Open Integration Package. They can be found in the module [OPI_TypeConversion](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/en/OInt/tools/Modules/OPI_TypeConversion.os) 
+To convert values to the appropriate types, you can use custom converters or those already used in the core functions of the Open Integration Package. They can be found in the module [OPI_TypeConversion](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/en/OInt/tools/main/Modules/internal/Modules/internal/Modules/OPI_TypeConversion.os) 
 
 :::important
 It is recommended to keep backup copies of extension modules in another location, as in certain cases, updates or removal of Melezh, as well as image rebuilding (if Docker is used), may result in the deletion of these files! You can also specify any third-party directory for storing extensions using the `ext_path` setting (recommended)
@@ -155,3 +155,21 @@ This option is not displayed in the list of arguments within the web interface a
 :::important  
 When implementing custom extensions — particularly those involving `melezhcontext` — it is strongly recommended to use the OneScript version of Melezh during development. This enables running the project in debug mode (e.g., in VSCode) and setting breakpoints to inspect runtime values and context data.
 :::
+
+## Process context
+
+In addition to the Kestrel web server context, extension code can access the global object `Melezh`, which provides several helper APIs in the current Melezh process:
+
++ `CallHandler(Val Path, Val Parameters)` — invokes another configured handler from the handler list by its path key
+
+```bsl
+
+// Same as invoking the handler via HTTP: http://localhost:<port>/myhandler
+
+Result = Melezh.CallHandler("myhandler", New Structure("param1", "value1"));
+
+```
+
++ `WriteToCache(Val Name, Val Value)` — stores a value in the global cache. The value remains until the server restarts or it is removed explicitly
++ `GetFromCache(Val Name)` — returns a value by the name used when writing
++ `DeleteFromCache(Val Name)` — removes a value from the cache by name

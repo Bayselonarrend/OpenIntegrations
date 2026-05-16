@@ -45,6 +45,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region PageManagement
@@ -898,3 +900,5 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

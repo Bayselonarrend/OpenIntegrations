@@ -43,6 +43,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region AccountAndAuthorization
@@ -993,3 +995,5 @@ Function GetOwnAccount(Val Token)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

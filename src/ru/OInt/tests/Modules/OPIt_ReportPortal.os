@@ -826,6 +826,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure RPortal_Authorization() Export

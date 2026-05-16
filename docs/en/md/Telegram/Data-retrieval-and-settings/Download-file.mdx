@@ -37,11 +37,11 @@ import Admonition from '@theme/Admonition';
 
   | Parameter | Description |
   |---|---|
-  | proxy | `InternetProxy` or strуtoтурa toлей `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication` |
+  | proxy | `InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication` |
   | timeout | Request execution timeout |
-  | adv_response | Офoрмляет response in view toлbutй strуtoтуры HTTP-of response with fieldsмand `code`, `body` and `headers` |
-  | retries | Number toпытoto of sending HTTP-of request when codeе `5**` or inнутреннandх oшandбtoaх clienta |
-  | dontwait | Сoздaет фobutinoе forдaнandе and returns еyo Data (only for 1C and OneScript) |
+  | adv_response | Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers` |
+  | retries | Number of HTTP request send attempts on `5**` status codes or internal client errors |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
 
 
   </TabItem>

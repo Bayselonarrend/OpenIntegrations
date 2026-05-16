@@ -71,6 +71,7 @@
 // #Use asserts
 // #Use "internal"
 
+#If Not WebClient Then // !OPI
 
 // For YAxUnit
 
@@ -4386,8 +4387,8 @@ Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
 
     EventStucture.Insert("type"         , "user");
     EventStucture.Insert("ownerId"      , 1);
-    EventStucture.Insert("from"         , XMLString(Tomorrow));
-    EventStucture.Insert("to"           , XMLString(Tomorrow + Hour));
+    EventStucture.Insert("from"         , OPI_Tools.GetXMLString(Tomorrow));
+    EventStucture.Insert("to"           , OPI_Tools.GetXMLString(Tomorrow + Hour));
     EventStucture.Insert("section"      , CalendarID);
     EventStucture.Insert("name"         , "New event");
     EventStucture.Insert("skip_time"    , "N");
@@ -4410,7 +4411,7 @@ Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
     DaysArray.Add("MO");
 
     RepeatabilityStructure.Insert("BYDAY", DaysArray);
-    RepeatabilityStructure.Insert("UNTIL", XMLString(Tomorrow + Hour * 24 * 10));
+    RepeatabilityStructure.Insert("UNTIL", (Tomorrow + Hour * 24 * 10));
 
     EventStucture.Insert("rrule"     , RepeatabilityStructure);
     EventStucture.Insert("is_meeting", "Y");
@@ -4639,3 +4640,5 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
+#EndIf // !OPI

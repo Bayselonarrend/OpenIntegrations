@@ -3,8 +3,9 @@
   <name>OPI_TestDataRetrieval</name>
   <synonym>
     <key>en</key>
-    <value>TestDataRetrieval</value>
+    <value>Data retrieving tests</value>
   </synonym>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

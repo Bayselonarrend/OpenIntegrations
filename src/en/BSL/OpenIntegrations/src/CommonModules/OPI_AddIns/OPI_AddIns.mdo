@@ -6,6 +6,7 @@
     <value>AddIns (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>External Components Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

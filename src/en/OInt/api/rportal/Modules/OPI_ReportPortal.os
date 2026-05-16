@@ -51,6 +51,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 #Region Authorization
@@ -1226,6 +1227,7 @@ Function GetAuthorizationHeader(Val Token)
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

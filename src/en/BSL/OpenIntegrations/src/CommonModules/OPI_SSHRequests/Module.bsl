@@ -44,6 +44,8 @@
 
 // #Use "./internal"
 
+#If Not WebClient Then // !OPI
+
 #Region Internal
 
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
@@ -333,3 +335,5 @@ Function SetProxy(Val Connector, Val Proxy)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI
