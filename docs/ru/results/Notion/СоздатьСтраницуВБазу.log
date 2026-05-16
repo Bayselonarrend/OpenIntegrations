@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "35482aa7-fc4e-81a7-87ea-e0beb7e0bb64",
- "created_time": "2026-05-02T09:31:00Z",
- "last_edited_time": "2026-05-02T09:31:00Z",
+ "id": "36282aa7-fc4e-815b-a51b-f595334ff970",
+ "created_time": "2026-05-16T13:21:00Z",
+ "last_edited_time": "2026-05-16T13:21:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,19 +15,19 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "35482aa7-fc4e-81e8-b764-e7ab104ce707"
+  "database_id": "36282aa7-fc4e-81dd-85fc-e4824a9f42c6"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "%3AyIZ",
-   "type": "checkbox",
-   "checkbox": true
+  "Телефон": {
+   "id": "%40VWA",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Описание": {
-   "id": "CwLQ",
+   "id": "%40rTR",
    "type": "rich_text",
    "rich_text": [
     {
@@ -50,7 +50,7 @@
    ]
   },
   "Почта": {
-   "id": "J%3FxY",
+   "id": "MqxS",
    "type": "rich_text",
    "rich_text": [
     {
@@ -72,8 +72,41 @@
     }
    ]
   },
+  "Активен": {
+   "id": "So%3BH",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Дата создания": {
+   "id": "%5CU%5EC",
+   "type": "date",
+   "date": {
+    "start": "2026-05-16T07:21:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Статус": {
+   "id": "%5D%5E%3Ax",
+   "type": "select",
+   "select": {
+    "id": "6a295c97-6c2b-4824-819a-1a2ba9b74d18",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Пользователь": {
+   "id": "_Mv%60",
+   "type": "people",
+   "people": []
+  },
+  "Номер": {
+   "id": "l%3ETj",
+   "type": "number",
+   "number": 1
+  },
   "Картинка": {
-   "id": "Vw~e",
+   "id": "pxO%5C",
    "type": "files",
    "files": [
     {
@@ -84,39 +117,6 @@
      }
     }
    ]
-  },
-  "Статус": {
-   "id": "bKbG",
-   "type": "select",
-   "select": {
-    "id": "480be338-f4cb-4073-a76b-9ecf80024db7",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Пользователь": {
-   "id": "e%7BB%3E",
-   "type": "people",
-   "people": []
-  },
-  "Номер": {
-   "id": "qqTd",
-   "type": "number",
-   "number": 1
-  },
-  "Телефон": {
-   "id": "t%7CYM",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Дата создания": {
-   "id": "uRXv",
-   "type": "date",
-   "date": {
-    "start": "2026-05-02T09:31:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://www.notion.so/35482aa7fc4e81a787eae0beb7e0bb64",
+ "url": "https://www.notion.so/36282aa7fc4e815ba51bf595334ff970",
  "public_url": null,
  "archived": false,
- "request_id": "a0f0261b-b37f-449c-801b-de88e5da9c7e"
+ "request_id": "21f4c5ac-2370-43a3-aa6c-5611e16263eb"
 }
