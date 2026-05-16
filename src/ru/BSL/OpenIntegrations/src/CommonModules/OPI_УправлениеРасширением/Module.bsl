@@ -34,7 +34,7 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-#Если Не ВебКлиент Тогда
+#Если Не ВебКлиент Тогда // !OPI
 	
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -167,4 +167,4 @@
 
 #КонецОбласти 
 
-#КонецЕсли
+#КонецЕсли // !OPI
