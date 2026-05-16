@@ -6,6 +6,7 @@
 "UTest": "ЮТест",
 "AddTestSet":"ДобавитьТестовыйНабор",
 "AddServerTest":"ДобавитьСерверныйТест",
+"AddClientTest":"ДобавитьКлиентскийТест",
 "Module.ExpectsThat(":"Module.ОжидаетЧто(",
 "Awaiting.What(":"Ожидаем.Что(",
 "Awaiting = TypeOf(Module) = ":"Ожидаем = TypeOf(Module) = ",
