@@ -278,19 +278,7 @@ Function GetFullParamsDescription(MethodData)
 		DescriptionArray = StrSplit(DescriptionText, Chars.LF);
 		CurrentDescription = Undefined;
 		
-		If UseAdaptiveOutput Then
-			CurrentDescription = GetWidthSplittedDescription(DescriptionArray, NewLineTab, NewLineTabLength);
-		EndIf;
-
-		If CurrentDescription = Undefined Then
-
-			If DescriptionArray.Count() = 1 Then
-				CurrentDescription = DescriptionArray[0];
-			Else
-				CurrentDescription = StrConcat(DescriptionArray, Chars.LF + NewLineTab);
-			EndIf;
-
-		EndIf;
+		CurrentDescription = GetWidthSplittedDescription(DescriptionArray, NewLineTab, NewLineTabLength);
 
 		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription);
 		FullDescriptionsArray.Add(CurrentFullDescription);
@@ -309,6 +297,18 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 		DescriptionLinesArray_ = New Array;
 		DescriptionLinesArray_.Add(DescriptionLinesArray);
 		DescriptionLinesArray = DescriptionLinesArray_;
+	EndIf;
+
+	If Not UseAdaptiveOutput Then
+
+		If DescriptionLinesArray.Count() = 1 Then
+			CurrentDescription = DescriptionLinesArray[0];
+		Else
+			CurrentDescription = StrConcat(DescriptionLinesArray, Chars.LF + NewLineTab);
+		EndIf;
+
+		Return CurrentDescription;
+
 	EndIf;
 
 	AvailableStringLength = ConsoleWidth - OffsetLength - 4;
