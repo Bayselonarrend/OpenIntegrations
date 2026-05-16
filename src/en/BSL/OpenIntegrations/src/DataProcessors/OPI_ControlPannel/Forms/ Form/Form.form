@@ -1078,7 +1078,7 @@
   <showTitle>true</showTitle>
   <showCloseButton>true</showCloseButton>
   <attributes>
-    <nmae>Object</name>
+    <name>Object</name>
     <id>1</id>
     <valueType>
       <types>DataProcessorObject.OPI_ControlPannel</types>
