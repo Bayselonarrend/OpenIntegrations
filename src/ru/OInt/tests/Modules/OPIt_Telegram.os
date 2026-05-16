@@ -1189,6 +1189,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure TelegramAPI_GetBotInfo() Export

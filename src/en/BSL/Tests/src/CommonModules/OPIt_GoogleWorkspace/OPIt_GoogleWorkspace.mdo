@@ -5,6 +5,7 @@
     <key>en</key>
     <value>GoogleWorkspace</value>
   </synonym>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -71,6 +71,8 @@
 // #Use asserts
 // #Use "internal"
 
+#If Not WebClient Then // !OPI
+
 // For YAxUnit
 
 Procedure ИсполняемыеСценарии() Export
@@ -483,3 +485,5 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
+#EndIf // !OPI

@@ -6,6 +6,7 @@
     <value>Neocities (OpenIntegrations)</value>
   </synonym>
   <comment>Neocities Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

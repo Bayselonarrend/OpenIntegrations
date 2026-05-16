@@ -10,6 +10,7 @@
     <value>Google Workspace (OpenIntegrations)</value>
   </synonym>
   <comment>Google Workspace Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

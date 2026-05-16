@@ -49,6 +49,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region DataRetrievalAndSettings
@@ -234,8 +236,8 @@ Function ProcessTMAData(Val DataString, Val Token) Export
 
     For Each DataElement In EncodingString Do
 
-        CurrentKey   = DecodeString(DataElement.Key, StringEncodingMethod.URLencoding);
-        CurrentValue = DecodeString(DataElement.Value, StringEncodingMethod.URLencoding);
+        CurrentKey   = OPI_Tools.GetDecodedString(DataElement.Key, "URLencoding");
+        CurrentValue = OPI_Tools.GetDecodedString(DataElement.Value, "URLencoding");
 
         DataStructure.Insert(CurrentKey, CurrentValue);
 
@@ -245,26 +247,13 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     Hash      = "";
     BinaryKey = GetBinaryDataFromString(KeyString);
 
-    Result = OPI_Cryptography.HMAC(BinaryKey, GetBinaryDataFromString(Token), "SHA256");
-
-    TValue = New ValueTable;
-    TValue.Columns.Add("Key");
-    TValue.Columns.Add("Value");
-
-    For Each Data In DataStructure Do
-
-        NewLine       = TValue.Add();
-        NewLine.Key   = Data.Key;
-        NewLine.Value = Data.Value;
-
-    EndDo;
-
-    TValue.Sort("Key");
+    Result        = OPI_Cryptography.HMAC(BinaryKey, GetBinaryDataFromString(Token), "SHA256");
+    DataStructure = OPI_Tools.SortStructureByKey(DataStructure);
 
     ReturnMapping = New Map;
     DCS           = "";
 
-    For Each DataString In TValue Do
+    For Each DataString In DataStructure Do
 
         If DataString.Key <> "hash" And DataString.Key <> "cookie" Then
             DCS = DCS + DataString.Key + "=" + DataString.Value + Chars.LF;
@@ -1577,7 +1566,7 @@ Procedure PrepareString(Text, Markup = "Markdown") Export
     OPI_TypeConversion.GetLine(Text);
     ReplaceSpecialCharacters(Text, Markup);
 
-    Text = DecodeString(Text, StringEncodingMethod.URLInURLEncoding);
+    Text = OPI_Tools.GetDecodedString(Text, "URLInURLEncoding");
 
 EndProcedure
 
@@ -1619,3 +1608,5 @@ Procedure ReplaceSpecialCharacters(Text, Markup) Export
 EndProcedure
 
 #EndRegion
+
+#EndIf // !OPI

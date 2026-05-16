@@ -47,6 +47,8 @@
 // #Use "../../../tools/http"
 // #Use "../../google"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Authorization
@@ -741,3 +743,6 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI
+

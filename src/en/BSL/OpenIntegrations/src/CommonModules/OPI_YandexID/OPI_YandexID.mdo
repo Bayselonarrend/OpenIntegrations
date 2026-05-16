@@ -6,6 +6,7 @@
     <value>YandexID (OpenIntegrations)</value>
   </synonym>
   <comment>YandexID Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

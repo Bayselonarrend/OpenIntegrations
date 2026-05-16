@@ -71,6 +71,7 @@
 // #Use asserts
 // #Use "internal"
 
+#If Not WebClient Then // !OPI
 
 // For YAxUnit
 
@@ -1176,3 +1177,5 @@ EndProcedure
 #EndRegion // AtomicTests
 
 #EndRegion // Private
+
+#EndIf // !OPI

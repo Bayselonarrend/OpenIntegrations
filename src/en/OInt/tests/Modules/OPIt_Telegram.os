@@ -1189,6 +1189,7 @@ EndProcedure
 
 #EndRegion // Private
 
+
 #Region Alternate
 
 Procedure Телеграм_ПолучитьИнформациюБота() Export

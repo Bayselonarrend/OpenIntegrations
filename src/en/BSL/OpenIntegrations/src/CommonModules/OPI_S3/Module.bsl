@@ -50,6 +50,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region CommonMethods
@@ -1298,11 +1300,7 @@ EndFunction
 
 Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Headers)
 
-    AccessKey = DataStructure["AccessKey"];
-    SecretKey = DataStructure["SecretKey"];
-    Region    = DataStructure["Region"];
-    Service   = DataStructure["Service"];
-    URL       = DataStructure["URL"];
+    URL = DataStructure["URL"];
 
     SplitedURL = OPI_Tools.SplitURL(URL);
 
@@ -1312,164 +1310,13 @@ Function CreateURLSignature(Val DataStructure, Val Method, Val Expire, Val Heade
     AdditionalHeaders = New Structure("Host", Domain);
     AddAdditionalHeaders(Headers, AdditionalHeaders);
 
-    CurrentDate = CurrentUniversalDate();
-    SignKey     = GetSignatureKey(SecretKey, Region, Service, CurrentDate);
-    Scope       = CreateScope(Region, Service, CurrentDate);
-    Timestamp   = OPI_Tools.ISOTimestamp(CurrentDate);
-    HeadersKeys = GetHeadersKeysString(Headers);
-    Base        = EncodeString(AccessKey + "/" + Scope, StringEncodingMethod.URLencoding);
-
-    HeadersString = GetHeadersString(Headers);
-    HashString    = "UNSIGNED-PAYLOAD";
-
-    URLParameters = New ValueTable;
-
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Algorithm"    , "AWS4-HMAC-SHA256");
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Credential"   , Base);
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Date"         , Timestamp);
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Expires"      , Expire);
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-SignedHeaders", HeadersKeys);
-
-    ParametersString = OPI_Tools.RequestParametersToString(URLParameters);
-    ParametersString = Right(ParametersString, StrLen(ParametersString) - 1);
-    RequestTemplate  = "";
-    PartsAmount      = 6;
-
-    For N = 1 To PartsAmount Do
-
-        RequestTemplate = RequestTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
-
-    EndDo;
-
-    CanonicalRequest = StrTemplate(RequestTemplate
-        , Method
+    URLSign = OPI_LibraryFunctionsServerCall.GenerateAWSSignature(DataStructure
         , Address
-        , ParametersString
-        , HeadersString
-        , HeadersKeys
-        , HashString);
-
-    StringToSign = CreateSignatureString(CanonicalRequest, Scope, CurrentDate);
-    Signature    = OPI_Cryptography.HMAC(SignKey, StringToSign, "SHA256");
-    Signature    = Lower(GetHexStringFromBinaryData(Signature));
-
-    OPI_Tools.AddKeyValue(URLParameters, "X-Amz-Signature", Signature);
-
-    URLSign = OPI_Tools.RequestParametersToString(URLParameters);
+        , Method
+        , Headers
+        , Expire);
 
     Return URLSign;
-
-EndFunction
-
-Function GetSignatureKey(Val SecretKey, Val Region, Val Service, Val CurrentDate)
-
-    SecretKey  = GetBinaryDataFromString("AWS4" + SecretKey);
-    DateData = GetBinaryDataFromString(Format(CurrentDate, "DF=yyyyMMdd;"));
-    Region     = GetBinaryDataFromString(Region);
-    Service    = GetBinaryDataFromString(Service);
-    AWSRequest = GetBinaryDataFromString("aws4_request");
-    Sha256_    = "SHA256";
-
-    DataKey    = OPI_Cryptography.HMAC(SecretKey, DateData, Sha256_);
-    RegionKey  = OPI_Cryptography.HMAC(DataKey, Region, Sha256_);
-    ServiceKey = OPI_Cryptography.HMAC(RegionKey, Service, Sha256_);
-
-    FinalKey = OPI_Cryptography.HMAC(ServiceKey, AWSRequest, Sha256_);
-
-    Return FinalKey;
-
-EndFunction
-
-Function CreateScope(Val Region, Val Service, Val CurrentDate)
-
-    CommonDate = Format(CurrentDate, "DF=yyyyMMdd;");
-
-    Scope = New Array;
-    Scope.Add(CommonDate);
-    Scope.Add(Region);
-    Scope.Add(Service);
-    Scope.Add("aws4_request");
-
-    ScopeString = StrConcat(Scope, "/");
-
-    Return ScopeString;
-
-EndFunction
-
-Function CreateSignatureString(Val CanonicalRequest, Val Scope, Val CurrentDate)
-
-    StringTemplate = "";
-    Algorithm      = "AWS4-HMAC-SHA256";
-    DateISO        = OPI_Tools.ISOTimestamp(CurrentDate);
-    PartsAmount    = 4;
-
-    CanonicalRequest = GetBinaryDataFromString(CanonicalRequest);
-    CanonicalRequest = OPI_Cryptography.Hash(CanonicalRequest, HashFunction.SHA256);
-    CanonicalRequest = Lower(GetHexStringFromBinaryData(CanonicalRequest));
-
-    For N = 1 To PartsAmount Do
-
-        StringTemplate = StringTemplate + "%" + String(N) + ?(N = PartsAmount, "", Chars.LF);
-
-    EndDo;
-
-    SignatureString = StrTemplate(StringTemplate, Algorithm, DateISO, Scope, CanonicalRequest);
-    SignatureString = GetBinaryDataFromString(SignatureString);
-
-    Return SignatureString;
-
-EndFunction
-
-Function GetHeadersString(Val Headers)
-
-    HeadersList = New ValueList;
-
-    For Each Title In Headers Do
-
-        CurrentKey  = Title.Key;
-        CurrentKeyN = Lower(CurrentKey);
-
-        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
-            Continue;
-        EndIf;
-
-        HeaderString = Lower(CurrentKey) + ":" + Title.Value;
-        HeadersList.Add(HeaderString);
-
-    EndDo;
-
-    HeadersList.SortByValue();
-
-    HeadersString = StrConcat(HeadersList.UnloadValues(), Chars.LF);
-    HeadersString = HeadersString + Chars.LF;
-
-    Return HeadersString;
-
-EndFunction
-
-Function GetHeadersKeysString(Val Headers)
-
-    HeadersList = New ValueList;
-
-    For Each Title In Headers Do
-
-        CurrentKey  = Title.Key;
-        CurrentKeyN = Lower(CurrentKey);
-
-        If Not StrStartWith(CurrentKeyN, "host") And Not StrStartWith(CurrentKeyN, "x-amz") Then
-            Continue;
-        EndIf;
-
-        HeaderString = Lower(CurrentKey);
-        HeadersList.Add(HeaderString);
-
-    EndDo;
-
-    HeadersList.SortByValue();
-
-    HeadersString = StrConcat(HeadersList.UnloadValues(), ";");
-
-    Return HeadersString;
 
 EndFunction
 
@@ -1976,3 +1823,5 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
+#EndIf // !OPI

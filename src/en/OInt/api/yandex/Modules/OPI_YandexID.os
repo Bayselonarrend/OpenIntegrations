@@ -38,6 +38,7 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
+
 #Region Public
 
 // Get confirmation code
@@ -131,6 +132,7 @@ Function GetAuthorizationHeader(Val Token) Export
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

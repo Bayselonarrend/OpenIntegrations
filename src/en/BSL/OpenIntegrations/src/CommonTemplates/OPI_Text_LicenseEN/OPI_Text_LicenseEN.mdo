@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0acc4eed-e278-427e-a0c6-7a5ee4659984">
+  <name>OPI_Text_LicenseEN</name>
+  <synonym>
+    <key>en</key>
+    <value>License text in English (OpenIntegrations)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

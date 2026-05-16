@@ -43,6 +43,8 @@
 
 // #Use "./internal"
 
+#If Not WebClient Then // !OPI
+
 #Region Internal
 
 #Region WebMethods
@@ -186,6 +188,14 @@ Function GetDomain(Val ConnectionString) Export
 
     Return Domain;
 
+EndFunction
+
+Function GetDecodedString(Val Value, Val Way) Export
+    Return OPI_ToolsServerCall.GetDecodedString(Value, Way);
+EndFunction
+
+Function GetEncodedString(Val Value, Val Way) Export
+    Return OPI_ToolsServerCall.GetEncodedString(Value, Way);
 EndFunction
 
 #EndRegion
@@ -359,6 +369,10 @@ Function GetXML(Value, TargetNamespace = "", XMLWriter = Undefined) Export
 
 EndFunction
 
+Function GetXMLString(Val Value) Export
+    Return OPI_ToolsServerCall.GetXMLString(Value);
+EndFunction
+
 #EndRegion
 
 #Region Collections
@@ -379,11 +393,11 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
 
     ElsIf Type = "DateISO" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19);
+        Value  = Left(GetXMLString(Value), 19);
 
     ElsIf Type = "DateISOZ" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = Left(XMLString(Value), 19) + "Z";
+        Value  = Left(GetXMLString(Value), 19) + "Z";
 
     ElsIf Type = "DateWithoutTime" Then
         OPI_TypeConversion.GetDate(Value);
@@ -716,6 +730,47 @@ Function CompareTwoCollections(Val FirstCollection
 
 EndFunction
 
+Function SortStructureByKey(Val Value) Export
+    Return OPI_ToolsServerCall.SortStructureByKey(Value);
+EndFunction
+
+Function ValueTableToArray(Val ValueTable) Export
+
+    ReturnArray  = New Array;
+    ColumnsArray = New Array;
+
+    For Each Column In ValueTable.Columns Do
+        ColumnsArray.Add(Column.Name);
+    EndDo;
+
+    ColumnsString = StrConcat(ColumnsArray, ",");
+
+    For Each String In ValueTable Do
+
+        NewLine = New Structure(ColumnsString);
+        FillPropertyValues(NewLine, String);
+        ReturnArray.Add(NewLine);
+
+    EndDo;
+
+    Return ReturnArray;
+
+EndFunction
+
+Function KeyValueCollectionAsString(Val Value) Export
+
+    JSONParameters = New JSONWriterSettings(JSONLineBreak.None, "");
+
+    JSONWriter = New JSONWriter;
+    JSONWriter.SetString(JSONParameters);
+
+    WriteJSON(JSONWriter, Value);
+    Value = JSONWriter.Close();
+
+    Return Value;
+
+EndFunction
+
 #EndRegion
 
 #Region DateMethods
@@ -730,12 +785,16 @@ Function GetCurrentDate() Export
 
         // !OInt CurrentDate = Undefined;
 
-        CurrentDate = CurrentSessionDate(); // !OPI
+        CurrentDate = OPI_ToolsServerCall.GetCurrentSessionDate(); // !OPI
 
     EndIf;
 
     Return CurrentDate;
 
+EndFunction
+
+Function GetCurrentUniversalDate() Export
+    Return OPI_ToolsServerCall.GetCurrentUniversalDate();
 EndFunction
 
 Function UNIXTime(Val Date) Export
@@ -755,7 +814,7 @@ EndFunction
 
 Function ISOTimestamp(Val Date) Export
 
-    Label = Left(XMLString(Date), 19) + "Z";
+    Label = Left(GetXMLString(Date), 19) + "Z";
     Label = StrReplace(Label, "-", "");
     Label = StrReplace(Label, ":", "");
 
@@ -765,7 +824,7 @@ EndFunction
 
 Function DateISO8601(Val Date) Export
 
-    Return XMLString(Date);
+    Return GetXMLString(Date);
 
 EndFunction
 
@@ -774,7 +833,7 @@ Function DateRFC3339(Val Date, Val Offset = "Z") Export
     OPI_TypeConversion.GetDate(Date);
     OPI_TypeConversion.GetLine(Offset);
 
-    Return XMLString(Date) + Offset;
+    Return GetXMLString(Date) + Offset;
 
 EndFunction
 
@@ -1008,6 +1067,10 @@ Procedure RemoveFileWithTry(Val Path, Val MessageText = "Failed to delete file")
 
 EndProcedure
 
+Procedure SetSessionParameter(Val Name, Val Value) Export
+    OPI_ToolsServerCall.SetSessionParameter(Name, Value);
+EndProcedure
+
 Function NumberToString(Val Value) Export
 
     Return OPI_TypeConversion.NumberToString(Value);
@@ -1058,6 +1121,10 @@ Function CreateStream(Val FilePath = Undefined) Export
 
     Return StreamOfFile;
 
+EndFunction
+
+Function GetSessionParameter(Val Name) Export
+    Return OPI_ToolsServerCall.GetSessionParameter(Name);
 EndFunction
 
 Function IsWindows() Export
@@ -1117,11 +1184,7 @@ Function GetTextTemplate(Val TemplateName) Export
         Value            = GetStringFromBinaryData(New BinaryData(TemplatePath));
 
     Else
-
-        Template = Undefined;
-        Template = GetCommonTemplate(TemplateName); // !OPI
-        Value    = Template.GetText();
-
+        Value = OPI_ToolsServerCall.GetCommonTemplateText(TemplateName);
     EndIf;
 
     Return Value;
@@ -1222,18 +1285,12 @@ Function ConvertParameterToString(Val Value)
         EndDo;
 
         Value = StrConcat(Value, ",");
-        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+        Value = GetEncodedString(Value, "URLInURLEncoding");
         Value = "[" + Value + "]";
 
     ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
 
-        JSONParameters = New JSONWriterSettings(JSONLineBreak.None, "");
-
-        JSONWriter = New JSONWriter;
-        JSONWriter.SetString(JSONParameters);
-
-        WriteJSON(JSONWriter, Value);
-        Value = JSONWriter.Close();
+        Value = KeyValueCollectionAsString(Value);
 
     ElsIf TypeOf(Value) = Type("Boolean") Then
 
@@ -1242,7 +1299,7 @@ Function ConvertParameterToString(Val Value)
     Else
 
         Value = NumberToString(Value);
-        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+        Value = GetEncodedString(Value, "URLInURLEncoding");
 
     EndIf;
 
@@ -1330,3 +1387,5 @@ Function CopyCollectionArray(Val Collection)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

@@ -36,6 +36,7 @@
 
 #Use "./internal"
 
+
 #Region Internal
 
 Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export
@@ -149,10 +150,9 @@ Function HMAC(Val Key, Val Data, Val HashFunc) Export
 
     Twice     = 2;
     BlockSize = 64;
-    HashType  = HashFunction[HashFunc];
 
     If Key.Size() > BlockSize Then
-        Key = Hash(Key, HashType);
+        Key = Hash(Key, HashFunc);
     EndIf;
 
     If Key.Size() <= BlockSize Then
@@ -171,16 +171,13 @@ Function HMAC(Val Key, Val Data, Val HashFunc) Export
     Opad.WriteBitwiseXor(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
 
-    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashType)), HashType);
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc);
 
 EndFunction
 
 Function Hash(BinaryData, Type) Export
 
-    Hashing = New DataHashing(Type);
-    Hashing.Append(BinaryData);
-
-    Return Hashing.HashSum;
+    Return OPI_ToolsServerCall.Hash(BinaryData, Type);
 
 EndFunction
 
@@ -245,6 +242,7 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
 
 #Region Alternate
 

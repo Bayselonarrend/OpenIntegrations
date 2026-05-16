@@ -47,6 +47,7 @@
 #Use "../../../tools/http"
 #Use "../../google"
 
+
 #Region Public
 
 #Region Authorization
@@ -743,6 +744,7 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
 EndProcedure
 
 #EndRegion
+
 
 #Region Alternate
 

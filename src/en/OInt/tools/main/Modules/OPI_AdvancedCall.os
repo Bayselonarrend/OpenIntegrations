@@ -40,6 +40,8 @@
 #Use "./internal/Modules/internal"
 
 Var CurrentSettings;
+
+
 #Region Public
 
 // Call with settings
@@ -60,18 +62,26 @@ Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Und
 
     If OPI_Tools.GetOr(NormalizedSettings, "dontwait", False) Then
 
-        UID = New UUID;
+        #If Client Then
 
-        ResultAddress = Undefined;
+            Raise "Background job execution is not available on the client!";
 
-        JobParameters = New Array;
-        JobParameters.Add(ModuleName);
-        JobParameters.Add(FunctionName);
-        JobParameters.Add(Parameters);
-        JobParameters.Add(NormalizedSettings);
-        JobParameters.Add(ResultAddress);
+        #Else
 
-        Result = BackgroundJobs.Execute(ЭтотОбъект, "CallWithSettingsService", JobParameters);
+            UID = New UUID;
+
+            ResultAddress = Undefined;
+
+            JobParameters = New Array;
+            JobParameters.Add(ModuleName);
+            JobParameters.Add(FunctionName);
+            JobParameters.Add(Parameters);
+            JobParameters.Add(NormalizedSettings);
+            JobParameters.Add(ResultAddress);
+
+            Result = BackgroundJobs.Execute(ЭтотОбъект, "CallWithSettingsService", JobParameters);
+
+        #EndIf
 
     Else
 
@@ -142,7 +152,7 @@ Function CallWithSettingsService(Val ModuleName, Val FunctionName, Val Parameter
 
     Try
         //@skip-check server-execution-safe-mode
-        Execute (CallString);
+        Execute(CallString);
     Except
         DeleteSettings();
         Raise;
@@ -204,7 +214,10 @@ EndFunction
 Function SetSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
+
         CurrentSettings = Settings;
+
+
     EndIf;
 
     Return CurrentSettings;
@@ -264,6 +277,7 @@ Function NormalizeSettings(Val Settings)
 EndFunction
 
 #EndRegion
+
 
 #Region Alternate
 

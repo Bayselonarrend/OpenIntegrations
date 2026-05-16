@@ -1048,6 +1048,7 @@
 
 #КонецОбласти // СлужебныеПроцедурыИФункции
 
+
 #Region Alternate
 
 Procedure GR_CommonMethods() Export

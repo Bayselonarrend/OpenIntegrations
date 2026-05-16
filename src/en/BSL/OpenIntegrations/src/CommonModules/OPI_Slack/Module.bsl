@@ -43,6 +43,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region ManagementAndSettings
@@ -1047,3 +1049,5 @@ Function ExternalFileManagement(Val Token, Val FileID, Val URL)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

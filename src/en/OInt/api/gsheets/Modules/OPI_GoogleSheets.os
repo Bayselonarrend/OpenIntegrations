@@ -47,6 +47,7 @@
 #Use "../../../tools/http"
 #Use "../../google"
 
+
 #Region Public
 
 #Region Authorization
@@ -507,6 +508,7 @@ Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 EndProcedure
 
 #EndRegion
+
 
 #Region Alternate
 

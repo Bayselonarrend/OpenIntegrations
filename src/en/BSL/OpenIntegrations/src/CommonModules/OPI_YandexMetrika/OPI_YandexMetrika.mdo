@@ -6,6 +6,7 @@
     <value>Yandex Metrika (OpenIntegrations)</value>
   </synonym>
   <comment>Yandex Metrika Module of OpenIntegrations</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -3,9 +3,10 @@
   <name>OPI_BuildHash</name>
   <synonym>
     <key>en</key>
-    <value>Build hash (OpenIntegrations</value>
+    <value>Build hash (OpenIntegrations)</value>
   </synonym>
   <comment>Service module that helps determine project relevance to the source code</comment>
+  <clientManagedApplication>true</clientManagedApplication>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

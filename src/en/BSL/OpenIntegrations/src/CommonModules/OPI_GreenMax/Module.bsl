@@ -50,6 +50,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region Account
@@ -1225,3 +1227,5 @@ Function FormURL(AccessParameters, Method, URLField)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI

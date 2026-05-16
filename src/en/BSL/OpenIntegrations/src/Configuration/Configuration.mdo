@@ -46,6 +46,7 @@
   </configurationInformationAddress>
   <compatibilityMode>8.3.10</compatibilityMode>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
+  <commonPictures>CommonPicture.OPI_Logo</commonPictures>
   <sessionParameters>SessionParameter.OPI_AdvancedCallSettings</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
@@ -65,6 +66,8 @@
   <commonTemplates>CommonTemplate.OPI_ZeroMQ</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_ClickHouseProto</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_MethodSettings</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_LicenseRU</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_LicenseEN</commonTemplates>
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_CDEK</commonModules>
@@ -113,6 +116,10 @@
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
   <commonModules>CommonModule.OPI_AdvancedCall</commonModules>
   <commonModules>CommonModule.OPI_GenericServer</commonModules>
+  <commonModules>CommonModule.OPI_ExtensionManagement</commonModules>
+  <commonModules>CommonModule.OPI_ToolsServerCall</commonModules>
+  <commonModules>CommonModule.OPI_LibraryFunctionsServerCall</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPClient</dataProcessors>
+  <dataProcessors>DataProcessor.OPI_ControlPannel</dataProcessors>
 </mdclass:Configuration>

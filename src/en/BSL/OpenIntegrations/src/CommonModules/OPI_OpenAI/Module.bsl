@@ -50,6 +50,8 @@
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
 
+#If Not WebClient Then // !OPI
+
 #Region Public
 
 #Region RequestsProcessing
@@ -778,3 +780,5 @@ Function ConvertKeysToLowerCase(Val Collection)
 EndFunction
 
 #EndRegion
+
+#EndIf // !OPI
