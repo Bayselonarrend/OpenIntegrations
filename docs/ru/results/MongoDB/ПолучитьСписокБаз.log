@@ -9,21 +9,21 @@
    },
    {
     "name": "config",
-    "sizeOnDisk": 73728,
+    "sizeOnDisk": 61440,
     "empty": false
    },
    {
     "name": "local",
-    "sizeOnDisk": 73728,
+    "sizeOnDisk": 77824,
     "empty": false
    },
    {
     "name": "main",
-    "sizeOnDisk": 40960,
+    "sizeOnDisk": 73728,
     "empty": false
    }
   ],
-  "totalSize": 376832,
+  "totalSize": 401408,
   "totalSizeMb": 0,
   "ok": 1
  }

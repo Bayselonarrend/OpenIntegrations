@@ -1,5 +1,8 @@
 ﻿[
  {
+  "invitation_signature": [
+   "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4:6cf273eabc52ef6113b50a8aa8bd3b872d33cdd8"
+  ],
   "member": {
    ".tag": "email",
    "email": "h5bk6ft62s@privaterelay.appleid.com"
@@ -10,9 +13,6 @@
     ".tag": "viewer"
    }
   },
-  "sckey_sha1": "***",
-  "invitation_signature": [
-   "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4:6cf273eabc52ef6113b50a8aa8bd3b872d33cdd8"
-  ]
+  "sckey_sha1": "***"
  }
 ]

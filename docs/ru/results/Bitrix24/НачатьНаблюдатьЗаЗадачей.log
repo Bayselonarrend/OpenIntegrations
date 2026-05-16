@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10460",
+   "id": "10590",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-05-02T09:35:17+00:00",
+   "createdDate": "2026-05-16T16:25:01+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-05-02T09:35:30+00:00",
+   "changedDate": "2026-05-16T16:25:14+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-05-02T09:35:29+00:00",
-   "dateStart": "2026-05-02T09:35:29+00:00",
-   "deadline": "2026-05-03T09:35:00+00:00",
-   "startDatePlan": "2026-05-02T09:35:17+00:00",
-   "endDatePlan": "2026-05-02T21:00:00+00:00",
-   "guid": "{979562e8-96c9-48f2-9713-24cb36b2da8d}",
+   "activityDate": "2026-05-16T16:25:14+03:00",
+   "dateStart": "2026-05-16T16:25:13+03:00",
+   "deadline": "2026-05-17T16:25:00+03:00",
+   "startDatePlan": "2026-05-16T16:25:01+03:00",
+   "endDatePlan": "2026-05-17T00:00:00+03:00",
+   "guid": "{ebc537dd-fcd2-4fd6-af64-1d6fd4414198}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,12 +55,14 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-05-02T09:35:29+00:00",
+   "statusChangedDate": "2026-05-16T16:25:13+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
    "groupId": "0",
-   "auditors": [],
+   "auditors": [
+    "1"
+   ],
    "accomplices": [],
    "checklist": [],
    "group": [],
@@ -79,7 +81,15 @@
     "workPosition": null
    },
    "accomplicesData": [],
-   "auditorsData": [],
+   "auditorsData": {
+    "1": {
+     "id": "1",
+     "name": "Антон Титовец",
+     "link": "/company/personal/user/1/",
+     "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
+     "workPosition": null
+    }
+   },
    "newCommentsCount": 0,
    "action": {
     "accept": false,
@@ -136,13 +146,13 @@
   }
  },
  "time": {
-  "start": 1777714530,
-  "finish": 1777714530.40034,
-  "duration": 0.400337934494019,
+  "start": 1778937914,
+  "finish": 1778937914.85587,
+  "duration": 0.855871915817261,
   "processing": 0,
-  "date_start": "2026-05-02T09:35:30+00:00",
-  "date_finish": "2026-05-02T09:35:30+00:00",
-  "operating_reset_at": 1777715130,
-  "operating": 0.307405233383179
+  "date_start": "2026-05-16T16:25:14+03:00",
+  "date_finish": "2026-05-16T16:25:14+03:00",
+  "operating_reset_at": 1778938514,
+  "operating": 0.146515846252441
  }
 }
