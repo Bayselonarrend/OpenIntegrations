@@ -65,7 +65,7 @@ Function NewRequest() Export
     Else
 
         #If AtClient Then
-            HTTPClient    = GetForm("DataProcessor.OPI_HTTPClient.Form.ClientCallObject");
+            HTTPClient = GetForm("DataProcessor.OPI_HTTPClient.Form.ClientCallObject");
         #Else
             HTTPClient = DataProcessors.OPI_HTTPClient.Create(); // !OPI
         #EndIf

@@ -426,7 +426,7 @@ EndFunction
 
 Function FormYAXTests(Val TestModule) Export
 
-    Module       = GetCommonModule("ЮТТесты");
+    Module    = GetCommonModule("ЮТТесты");
     TestTable = GetTestTable(TestModule);
 
     Set = Module.ДобавитьТестовыйНабор(TestModule);
@@ -442,7 +442,7 @@ EndFunction
 
 Function FormYAXTestsCLI(Val TestModule = "") Export
 
-    Module       = GetCommonModule("ЮТТесты");
+    Module    = GetCommonModule("ЮТТесты");
     TestTable = GetTestTable(TestModule);
 
     Set = Module.ДобавитьТестовыйНабор(TestModule + " (CLI)");
@@ -1344,7 +1344,7 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
 
     #If Not Client Then
 
-        IsOneScript      = OPI_Tools.IsOneScript();
+        IsOneScript   = OPI_Tools.IsOneScript();
         BackgroundJob = Result["BackgroundJob"];
 
         Try
