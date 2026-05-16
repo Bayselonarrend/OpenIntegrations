@@ -784,6 +784,7 @@
           <name>AddInsVersionsBeforeDeleteRow</name>
         </handlers>
         <searchStringAddition>
+          <enabled>false</enabled>
           <name>AddInsVersionsStringSearcha</name>
           <id>11</id>
           <extendedTooltip>
@@ -807,6 +808,7 @@
           </extInfo>
         </searchStringAddition>
         <viewStatusAddition>
+          <enabled>false</enabled>
           <name>AddInsVersionsStateПрowithмoтрa</name>
           <id>14</id>
           <extendedTooltip>
@@ -831,6 +833,7 @@
           </extInfo>
         </viewStatusAddition>
         <searchControlAddition>
+          <enabled>false</enabled>
           <name>AddInsVersionsУпрainленandеSearchoм</name>
           <id>17</id>
           <extendedTooltip>
