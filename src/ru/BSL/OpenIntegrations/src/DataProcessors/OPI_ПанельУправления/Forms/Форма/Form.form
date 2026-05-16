@@ -105,7 +105,7 @@
         <groupVerticalAlign>Top</groupVerticalAlign>
         <extInfo xsi:type="form:PictureDecorationExtInfo">
           <picture xsi:type="core:PictureRef">
-            <picture>CommonPicture.OPI_Лого</picture>
+            <picture>CommonPicture.OPI_Logo</picture>
           </picture>
           <pictureSize>Proportionally</pictureSize>
           <fileDragMode>AsFileRef</fileDragMode>
@@ -784,6 +784,7 @@
           <name>ВерсииКомпонентПередУдалением</name>
         </handlers>
         <searchStringAddition>
+          <enabled>false</enabled>
           <name>ВерсииКомпонентСтрокаПоиска</name>
           <id>11</id>
           <extendedTooltip>
@@ -807,6 +808,7 @@
           </extInfo>
         </searchStringAddition>
         <viewStatusAddition>
+          <enabled>false</enabled>
           <name>ВерсииКомпонентСостояниеПросмотра</name>
           <id>14</id>
           <extendedTooltip>
@@ -831,6 +833,7 @@
           </extInfo>
         </viewStatusAddition>
         <searchControlAddition>
+          <enabled>false</enabled>
           <name>ВерсииКомпонентУправлениеПоиском</name>
           <id>17</id>
           <extendedTooltip>
