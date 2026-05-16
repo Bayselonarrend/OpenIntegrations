@@ -1345,7 +1345,9 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
     #If Not Client Then
 
         IsOneScript   = OPI_Tools.IsOneScript();
-        BackgroundJob = Result["BackgroundJob"];
+        BackgroundJob = ?(IsOneScript
+            , Result
+            , Result["BackgroundJob"]);
 
         Try
             BackgroundJob.WaitForCompletion();
