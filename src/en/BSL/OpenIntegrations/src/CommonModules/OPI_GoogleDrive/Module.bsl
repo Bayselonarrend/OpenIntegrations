@@ -184,6 +184,7 @@ Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = Fal
         Filter.Add("name contains '" + NameContains + "'");
     EndIf;
 
+    // !IRPSkip
     GetObjectsListRecursively(Headers, ArrayOfObjects, Detailed, Filter);
 
     If Detailed Then
@@ -559,9 +560,10 @@ Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = Fals
     EndIf;
 
     Result = OPI_HTTPRequests.Get(URL, Parameters, Headers);
+    Body   = OPI_AdvancedCall.NormalizeIntermediateResult(Result);
 
-    Objects = Result[Files];
-    Page    = Result[NPT];
+    Objects = Body[Files];
+    Page    = Body[NPT];
 
     For Each CurrentObject In Objects Do
          ArrayOfObjects.Add(CurrentObject);
@@ -638,9 +640,11 @@ Function FileManagement(Val Token, Val File = "", Val Description = "", Val Iden
     MimeType = "mimeType";
 
     If ValueIsFilled(Identifier) Then
-        MIME = GetObjectInformation(Token, Identifier)[MimeType];
+        Information = GetObjectInformation(Token, Identifier);
+        Body        = OPI_AdvancedCall.NormalizeIntermediateResult(Information);
+        MIME        = Body[MimeType];
     Else
-        MIME = Description["MIME"];
+        MIME        = Description["MIME"];
     EndIf;
 
     If Not ValueIsFilled(Description) Then
@@ -663,11 +667,13 @@ Function FileManagement(Val Token, Val File = "", Val Description = "", Val Iden
         If Size < ChunkSize And TypeOf(File) = Type("BinaryData") Then
             Response                         = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier);
         Else
+            // !IRPSkip
             Response                         = UploadLargeFile(Description, FileMapping, Headers, Identifier);
         EndIf;
 
     Else
-       Response = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier);
+        // !IRPSkip
+        Response = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier);
     EndIf;
 
     Return Response;
@@ -719,6 +725,7 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
 
     HttpClient = OPI_HTTPRequests.NewRequest().Initialize(URL);
 
+    // !IRPSkip
     Response = HttpClient.SetHeaders(Headers)
         .SetJsonBody(Description)
         .ProcessRequest(Method)
@@ -727,6 +734,7 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
     UploadURL = Response.Headers["Location"];
 
     If Not ValueIsFilled(UploadURL) Then
+        // !IRPSkip
         Return HttpClient.ReturnResponseAsJSONObject(True, True);
     EndIf;
 

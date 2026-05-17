@@ -595,6 +595,7 @@ Function PutObject(Val Name
 
     Else
 
+        // !IRPSkip
         Response = UploadFullObject(Name, Bucket, Entity, BasicData_, Headers, Directory);
 
     EndIf;
@@ -835,7 +836,8 @@ Function HeadObject(Val Name
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
     FillObjectURL(BasicData_, Name, Bucket, Version, Directory);
 
-    Response             = SendRequestWithoutBody("HEAD", BasicData_, , Headers);
+    Response = SendRequestWithoutBody("HEAD", BasicData_, , Headers);
+
     Response["response"] = New Structure;
 
     Return Response;
@@ -870,6 +872,7 @@ Function GetObject(Val Name
     , Val SavePath = ""
     , Val Directory = False) Export
 
+    // !IRPSkip
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
     ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version, , Directory);
 
@@ -898,6 +901,7 @@ Function GetObject(Val Name
 
     Else
 
+        // !IRPSkip
         Response = GetFullObject(BasicData_, Headers, SavePath);
 
     EndIf;
@@ -1370,6 +1374,8 @@ Function SendRequest(Val Method
         , Response.ReturnResponseAsBinaryData(False, True)
         , Response.ReturnResponseAsString(False, True));
 
+    ResponseBody = OPI_AdvancedCall.NormalizeIntermediateResult(ResponseBody);
+
     Response = FormResponse(HTTPResponse, ResponseBody);
 
     Return Response;
@@ -1443,6 +1449,7 @@ Function GetObjectInChunks(Val BasicData
                 SourceHeader.Insert("Range", ChunkHeader);
                 AddAdditionalHeaders(Headers, SourceHeader);
 
+                // !IRPSkip
                 InterimResult = GetFullObject(BasicData, SourceHeader);
                 FileWriter.Write(InterimResult);
 
@@ -1508,6 +1515,7 @@ Function UploadObjectInParts(Val Name
     OPI_TypeConversion.GetBinaryOrStream(Entity);
 
     UploadStart = InitPartsUpload(Name, Bucket, BasicData, Headers, Directory);
+    BodyStart   = OPI_AdvancedCall.NormalizeIntermediateResult(UploadStart);
 
     FieldID    = "response.InitiateMultipartUploadResult.UploadId";
     UploadID   = Undefined;
@@ -1516,7 +1524,7 @@ Function UploadObjectInParts(Val Name
     BytesRead  = 0;
     PartNumber = 1;
 
-    If Not OPI_Tools.CollectionFieldExists(UploadStart, FieldID, UploadID) Then
+    If Not OPI_Tools.CollectionFieldExists(BodyStart, FieldID, UploadID) Then
         Return UploadStart;
     EndIf;
 
@@ -1549,6 +1557,8 @@ Function UploadObjectInParts(Val Name
                     , PartNumber
                     , CurrentData
                     , Directory);
+
+                Response = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
                 If Response["status"] > LastSuccessCode Then
                     Raise "The server returned the status " + String(Response["status"]);
@@ -1599,6 +1609,7 @@ Function UploadObjectInParts(Val Name
     If Error Then
         Response = AbortMultipartUpload(Name, Bucket, BasicData, UploadID, , Directory);
     Else
+        // !IRPSkip
         Response = FinishPartsUpload(Name, Bucket, BasicData, UploadID, TagsArray, , Directory);
     EndIf;
 

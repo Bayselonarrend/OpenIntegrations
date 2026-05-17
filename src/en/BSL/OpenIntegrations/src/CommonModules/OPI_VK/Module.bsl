@@ -136,6 +136,7 @@ Function CreatePost(Val Text
 
     For Each PostImage In ImageArray Do
 
+        // !IRPSkip
         Parameters_ = GetStandardParameters(Parameters);
         ResponseMap = GetImageMap(PostImage, Parameters_, "Post");
 
@@ -249,8 +250,10 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Text = "
     Parameters_.Insert("add_answers", Answers);
     Parameters_.Insert("question"   , Question);
 
-    Poll    = OPI_HTTPRequests.Get("api.vk.com/method/polls.create", Parameters_);
-    PollMap = Poll.Get(Response_);
+    Poll = OPI_HTTPRequests.Get("api.vk.com/method/polls.create", Parameters_);
+    Body = OPI_AdvancedCall.NormalizeIntermediateResult(Poll);
+
+    PollMap = Body.Get(Response_);
 
     If Not ValueIsFilled(PollMap) Then
         Return Poll;
@@ -275,6 +278,7 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Text = "
 
         OPI_TypeConversion.GetBinaryData(Image);
 
+        // !IRPSkip
         ResponseMap = GetImageMap(Image, Parameters_, "Post");
 
         OwnerId  = ResponseMap.Get("owner_id");
@@ -451,8 +455,9 @@ Function UploadVideoToServer(Val Video
     OPI_Tools.AddField("album_id"   , Album       , String_, Parameters);
 
     Response = OPI_HTTPRequests.Get("api.vk.com/method/video.save", Parameters);
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    Result = Response["response"];
+    Result = Body["response"];
 
     If Not ValueIsFilled(Result) Then
         Return Response;
@@ -507,7 +512,8 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     Files.Insert(ImageKey, Image);
 
     Response = OPI_HTTPRequests.Get(Upload, Parameters);
-    Result   = Response[Response_];
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Result   = Body[Response_];
 
     If ValueIsFilled(Result) Then
 
@@ -526,12 +532,13 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     For N = 1 To 5 Do
 
         Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files);
+        Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-        If TypeOf(Response) <> Type("Map") Then
+        If TypeOf(Body) <> Type("Map") Then
             Continue;
         EndIf;
 
-        Success = FillPhotoUploadParameters(Method, Response, Parameters);
+        Success = FillPhotoUploadParameters(Method, Body, Parameters);
 
         If Not Success Then
             Continue;
@@ -772,8 +779,10 @@ Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
             NumbersString = StrConcat(SetsArray, ",");
             Parameters_.Insert("post_ids", NumbersString);
 
-            Statistics      = OPI_HTTPRequests.Get("api.vk.com/method/stats.getPostReach", Parameters_);
-            StatisticsArray = Statistics[Response_];
+            Statistics = OPI_HTTPRequests.Get("api.vk.com/method/stats.getPostReach", Parameters_);
+            Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Statistics);
+
+            StatisticsArray = Body[Response_];
 
             For Each StatisticsItem In StatisticsArray Do
                 AnswersArray.Add(StatisticsItem);
@@ -789,7 +798,8 @@ Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
     Parameters_.Insert("post_ids", NumbersString);
 
     Statistics      = OPI_HTTPRequests.Get("api.vk.com/method/stats.getPostReach", Parameters_);
-    StatisticsArray = Statistics[Response_];
+    Body            = OPI_AdvancedCall.NormalizeIntermediateResult(Statistics);
+    StatisticsArray = Body[Response_];
 
     If TypeOf(StatisticsArray) = Type("Array") Then
         For Each StatisticsItem In StatisticsArray Do
@@ -981,8 +991,10 @@ Function GetProductCategoryList(Val Parameters = "") Export
 
     Response_   = "response";
     Parameters_ = GetStandardParameters(Parameters);
-    Response    = OPI_HTTPRequests.Get("api.vk.com/method/market.getCategories", Parameters_);
-    Result      = Response[Response_];
+
+    Response = OPI_HTTPRequests.Get("api.vk.com/method/market.getCategories", Parameters_);
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Result   = Body[Response_];
 
     If ValueIsFilled(Result) Then
 
@@ -997,8 +1009,10 @@ Function GetProductCategoryList(Val Parameters = "") Export
     EndIf;
 
     Parameters_.Insert("count", Count);
+
     Response = OPI_HTTPRequests.Get("api.vk.com/method/market.getCategories", Parameters_);
-    Result   = Response[Response_];
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Result   = Body[Response_];
 
     If ValueIsFilled(Result) Then
 
@@ -1681,9 +1695,11 @@ Function GetImageID(Val Image, Val Parameters, Val View)
 
     Response_ = "response";
     Response  = UploadPhotoToServer(Image, Parameters, View);
-    Result    = Response[Response_];
+    Body      = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Result    = Body[Response_];
 
     If ValueIsFilled(Result) Then
+
         PhotoID = Result["photo_id"];
 
         If Not ValueIsFilled(PhotoID) Then
@@ -1702,7 +1718,8 @@ EndFunction
 Function GetImageMap(Val Image, Val Parameters, Val View)
 
     Response      = UploadPhotoToServer(Image, Parameters, View);
-    ResponseArray = Response.Get("response");
+    Body          = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    ResponseArray = Body.Get("response");
 
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
         Return Response;
@@ -1720,9 +1737,9 @@ EndFunction
 
 Function GetSelectionArray(Val Selections, Val Parameters = "")
 
-    Response_  = "response";
     Selections = GetSelectionsByID(Selections, Parameters);
-    Result     = Selections[Response_];
+    Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Selections);
+    Result     = Body["response"];
 
     If ValueIsFilled(Result) Then
 
@@ -1819,6 +1836,7 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
 
     Response_ = "response";
 
+    // !IRPSkip
     FillProductRequestFields(ProductDescription, Parameters_);
 
     If ValueIsFilled(ProductID) Then
@@ -1829,7 +1847,8 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
     EndIf;
 
     Response = OPI_HTTPRequests.Get("api.vk.com/method/market." + Method, Parameters_);
-    Result   = Response[Response_];
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Result   = Body[Response_];
 
     If Not ValueIsFilled(ProductID) And ValueIsFilled(Result) Then
 
@@ -1844,6 +1863,7 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
     EndIf;
 
     If ValueIsFilled(Selection) And ValueIsFilled(ProductID) Then
+        // !IRPSkip
         AddProductToCollection(ProductID, Selection, Parameters_);
     EndIf;
 
@@ -1863,8 +1883,9 @@ Function SelectionManagement(Val Name
     OPI_TypeConversion.GetBoolean(Main);
     OPI_TypeConversion.GetBoolean(Hidden);
 
+    // !IRPSkip
     Parameters_ = GetStandardParameters(Parameters);
-    Response    = AddImageParameter(Image, SelectionID, Parameters_);
+    Response = AddImageParameter(Image, SelectionID, Parameters_);
 
     If ValueIsFilled(Response) Then
         Return Response;
@@ -1893,6 +1914,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
 
     If ValueIsFilled(Image) Then
 
+        // !IRPSkip
         PhotoID = GetImageID(Image, Parameters, "Product");
 
         If Not TypeOf(PhotoID) = Type("String") Then
@@ -1905,6 +1927,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
 
         If ValueIsFilled(SelectionID) Then
 
+            // !IRPSkip
             Selections = GetSelectionArray(SelectionID, Parameters);
 
             If Not TypeOf(Selections) = Type("Array") Then
@@ -2014,6 +2037,7 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
     If ValueIsFilled(MainPhoto) Then
 
         Response = UploadPhotoToServer(MainPhoto, Parameters, "Product");
+        Response = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
         Result   = Response[Response_];
 
         If ValueIsFilled(Result) Then
@@ -2091,10 +2115,10 @@ EndProcedure
 
 Procedure GetProductListRecursively(ProductsArray, Parameters, Shift = 0)
 
-    Response_    = "response";
     MaxInRequest = 200;
     Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.get", Parameters);
-    Products     = Response[Response_]["items"];
+    Response     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Products     = Response["response"]["items"];
 
     If Products.Count() = 0 Then
         Return;
@@ -2115,6 +2139,7 @@ Procedure GetAlbumListRecursively(ArrayOfAlbums, Parameters, Shift = 0)
     Response_    = "response";
     MaxInRequest = 100;
     Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.getAlbums", Parameters);
+    Response     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
     Albums       = Response[Response_]["items"];
 
     If Albums.Count() = 0 Then
@@ -2136,6 +2161,7 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
     Response_    = "response";
     MaxInRequest = 50;
     Response     = OPI_HTTPRequests.Get("api.vk.com/method/market.getGroupOrders", Parameters);
+    Response     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
     Orders       = Response[Response_]["items"];
 
     If Orders.Count() = 0 Then

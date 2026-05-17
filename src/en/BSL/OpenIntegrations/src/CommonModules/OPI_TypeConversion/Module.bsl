@@ -59,15 +59,22 @@ Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
             Value = GetBinaryDataFromString(Value);
 
         Else
+
+            // !IRPSkip
             GetLine(Value);
+            // !IRPSkip
             ConvertSourceToValue(Value, TryB64);
+
         EndIf;
 
     Except
 
         If Force Then
+
+            // !IRPSkip
             GetLine(Value);
             Value = GetBinaryDataFromString(Value);
+
         Else
             Raise "Error getting binary data from parameter: " + ErrorDescription();
         EndIf;
@@ -83,11 +90,14 @@ Procedure GetBinaryOrStream(Value) Export
     EndIf;
 
     If TypeOf(Value) <> Type("String") Then
+        // !IRPSkip
         GetBinaryData(Value);
         Return;
     EndIf;
 
     ValueES = Value;
+
+    // !IRPSkip
     RestoreEscapeSequences(ValueES);
 
     File = New File(ValueES);
@@ -127,6 +137,8 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             EndIf;
 
             ValueES = Value;
+
+            // !IRPSkip
             RestoreEscapeSequences(ValueES);
 
             File       = New File(ValueES);
@@ -142,6 +154,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
                 Or StrStartWith(TrimL(ValueES), "https://")) Then
 
                 Value = GetHttpClient().Get(ValueES);
+                Value = OPI_AdvancedCall.NormalizeIntermediateResult(Value);
 
             Else
 
@@ -239,6 +252,8 @@ Procedure GetLine(Value, Val FromSource = False) Export
             EndIf;
 
             ValueES = Value;
+
+            // !IRPSkip
             RestoreEscapeSequences(ValueES);
 
             File = New File(ValueES);
@@ -253,6 +268,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
                 Or StrStartWith(TrimL(ValueES), "https://") Then
 
                 Value = GetHttpClient().Get(ValueES);
+                Value = OPI_AdvancedCall.NormalizeIntermediateResult(Value);
                 GetLine(Value);
 
             Else
@@ -521,6 +537,8 @@ EndFunction
 Procedure ConvertSourceToValue(Value, TryB64)
 
     ValueES = Value;
+
+    // !IRPSkip
     RestoreEscapeSequences(ValueES);
 
     File = New File(ValueES);
@@ -533,6 +551,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
         Or StrStartWith(TrimL(ValueES), "https://") Then
 
         Value = GetHttpClient().Get(ValueES);
+        Value = OPI_AdvancedCall.NormalizeIntermediateResult(Value);
 
     Else
 
@@ -571,14 +590,19 @@ Function GetHttpClient()
     If IsOneScript() Then
 
         Try
+            // !IRPSkip
             // !OInt OPI_HTTPRequests = Undefined;
             Return Undefined; // !OPI
         Except
+            // !IRPSkip
             Return OPI_HTTPRequests;
         EndTry;
 
+        // !IRPSkip
         // !OInt ClientPath = GetHttpClientPath();
         // !OInt Try AttachScript(ClientPath, "OPI_HTTPRequests"); Except EndTry;
+
+        // !IRPSkip
 
         //@skip-check bsl-legacy-check-string-literal
         //@skip-check bsl-legacy-check-method-for-statements-after-return
@@ -586,6 +610,7 @@ Function GetHttpClient()
         Return HttpClient;
 
     Else
+        // !IRPSkip
         Return OPI_HTTPRequests; // !OPI
     EndIf;
 

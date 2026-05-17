@@ -191,6 +191,7 @@ Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export
         URL     = "https://neocities.org/api/upload";
         Headers = CreateRequestHeaders(Token);
 
+        // !IRPSkip
         FinalResponse = OPI_HTTPRequests.PostMultipart(URL
             ,
             , ProcessedMap
@@ -291,8 +292,9 @@ Function SynchronizeFolders(Val Token, Val LocalFolder, Val RemoteFolder = "") E
     EndIf;
 
     RemoteFiles = GetFilesList(Token, RemoteFolder);
+    Body        = OPI_AdvancedCall.NormalizeIntermediateResult(RemoteFiles);
 
-    If Not RemoteFiles["result"] = "success" Then
+    If Not Body["result"] = "success" Then
         //@skip-check constructor-function-return-section
         Return RemoteFiles;
     EndIf;
@@ -367,8 +369,9 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
     If Not ArrayOfDeletions.Count() = 0 Then
 
         Response = DeleteSelectedFiles(Token, ArrayOfDeletions);
+        Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-        If Not Response["result"] = "success" Then
+        If Not Body["result"] = "success" Then
             ErrorsArray.Add(Response);
 
         Else
@@ -391,8 +394,9 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
     For Each LocalPath In LocalPaths Do
 
         Response = UploadFile(Token, LocalPath.Key, LocalPath.Value);
+        Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-        If Not Response["result"] = "success" Then
+        If Not Body["result"] = "success" Then
 
             ErrorsArray.Add(Response);
 

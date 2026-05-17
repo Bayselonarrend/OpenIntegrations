@@ -196,6 +196,7 @@ Function SendFile(Val Token
     If Not ValueIsFilled(Size) Then
 
         Response = OPI_HTTPRequests.Get(URL);
+        Response = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
         Size     = Response.Size();
 
     EndIf;
