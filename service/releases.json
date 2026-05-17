@@ -11,30 +11,36 @@
                 "icon": "media/HTTP.png",
                 "description_ru": "Оптимизирована загрузка по частям в HTTP-клиенте",
                 "description_en": "Optimized chunked upload in the HTTP client"
-            },   
+            },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Все основные модули библиотек в версии для 1С:Предприятие теперь `КлиентСервер`",
                 "description_en": "All main library modules in the 1C:Enterprise version are now `ClientServer`"
-            },              
+            },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Тип подключения внешних компонент добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих компоненты (для 1С версии)",
-                "description_en": "The AddIn connection type has been added to the [advanced call](https://en.openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"
+                "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"
             },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Число попыток повторной отправки запроса при ошибке добавлено в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих HTTP-клиент",
-                "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://en.openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client"
+                "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://e,openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client"
             },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Запуск в фоновом задании добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, не использующих внешние компоненты (для 1С и OneScript версии)",
-                "description_en": "Background job execution has been added to the [advanced call](https://en.openintegrations.dev/docs/Start/Advanced-call) settings for all methods that do not use external AddIns (for the 1C and OneScript versions)"
+                "description_en": "Background job execution has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that do not use external AddIns (for the 1C and OneScript versions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Исправлена обработка настройки `adv_response` расширенного вызова для методов с несколькими HTTP-запросами",
+                "description_en": "Fixed `adv_response` advanced call setting handling for methods with multiple HTTP requests"
             }
         ]
     },
