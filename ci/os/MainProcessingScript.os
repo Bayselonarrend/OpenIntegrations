@@ -15,6 +15,7 @@
 	Обработчик = Новый SpellCheckMethods(ДанныеПроекта);
 	Обработчик = Новый Versioning(ДанныеПроекта);
 	Обработчик = Новый HttpToClientConverter(ДанныеПроекта);
+	Обработчик = Новый IntermediateResultProcessingCheck(ДанныеПроекта);
 	Обработчик = Новый ConversionMethods(ДанныеПроекта);
 	Обработчик = Новый ACIndexGenerator(ДанныеПроекта);
 	Обработчик = Новый LocalizationMethods(ДанныеПроекта);
