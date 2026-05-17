@@ -651,7 +651,8 @@ Function EventManagement(Val Token, Val Calendar, Val EventDescription, Val Even
 
     Headers  = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     Existing = ValueIsFilled(Event);
-    URL      = "https://www.googleapis.com/calendar/v3/calendars/"
+
+    URL = "https://www.googleapis.com/calendar/v3/calendars/"
         + Calendar
         + "/events"
         + ?(Existing, "/" + Event, "");
@@ -680,6 +681,7 @@ Function EventManagement(Val Token, Val Calendar, Val EventDescription, Val Even
 
     OPI_Tools.RemoveEmptyCollectionFields(Parameters);
 
+    // !IRPSkip
     If Existing Then
         Response = OPI_HTTPRequests.PatchWithBody(URL, Parameters, Headers, True);
     Else
@@ -704,8 +706,10 @@ Procedure GetCalendarsListRecursively(Val Headers, ArrayOfCalendars, Page = "")
         , Parameters
         , Headers);
 
-    Calendars = Result[Items];
-    Page      = Result[NPT];
+    Body = OPI_AdvancedCall.NormalizeIntermediateResult(Result);
+
+    Calendars = Body[Items];
+    Page      = Body[NPT];
 
     For Each Calendar In Calendars Do
         ArrayOfCalendars.Add(Calendar);
@@ -731,8 +735,10 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
         , Parameters
         , Headers);
 
-    Events = Result[Items];
-    Page   = Result[NPT];
+    Body = OPI_AdvancedCall.NormalizeIntermediateResult(Result);
+
+    Events = Body[Items];
+    Page   = Body[NPT];
 
     For Each Event In Events Do
         ArrayOfEvents.Add(Event);

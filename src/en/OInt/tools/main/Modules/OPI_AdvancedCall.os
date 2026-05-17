@@ -224,18 +224,20 @@ Function SetSettings(Val Settings) Export
 
 EndFunction
 
-Procedure NormalizeIntermediateResult(Result) Export
+Function NormalizeIntermediateResult(Val Result) Export
 
     NormalizedResult = Undefined;
 
     If OPI_Tools.GetOr(GetCurrentSettings(), "adv_response", False)
         And OPI_Tools.CollectionFieldExists(Result, "body", NormalizedResult) Then
 
-        Result = NormalizedResult;
+        Return NormalizedResult;
 
     EndIf;
 
-EndProcedure
+    Return Result;
+
+EndFunction
 
 Procedure DeleteSettings() Export
 
@@ -309,9 +311,9 @@ Function УстановитьНастройки(Val Настройки) Export
     Return SetSettings(Настройки);
 EndFunction
 
-Procedure НормализоватьПромежуточныйРезультат(Результат) Export
-    NormalizeIntermediateResult(Результат);
-EndProcedure
+Function НормализоватьПромежуточныйРезультат(Val Результат) Export
+    Return NormalizeIntermediateResult(Результат);
+EndFunction
 
 Procedure УдалитьНастройки() Export
     DeleteSettings();

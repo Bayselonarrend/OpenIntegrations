@@ -2649,7 +2649,9 @@ Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token
     OPI_Tools.AddField("id", FolderID, "String", Parameters);
 
     Response = OPI_HTTPRequests.Get(URL, Parameters);
-    Result   = Response["result"];
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+
+    Result = Body["result"];
 
     If ValueIsFilled(Result) Then
 

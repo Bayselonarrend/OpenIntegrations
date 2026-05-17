@@ -233,18 +233,20 @@ Function SetSettings(Val Settings) Export
 
 EndFunction
 
-Procedure NormalizeIntermediateResult(Result) Export
+Function NormalizeIntermediateResult(Val Result) Export
 
     NormalizedResult = Undefined;
 
     If OPI_Tools.GetOr(GetCurrentSettings(), "adv_response", False)
         And OPI_Tools.CollectionFieldExists(Result, "body", NormalizedResult) Then
 
-        Result = NormalizedResult;
+        Return NormalizedResult;
 
     EndIf;
 
-EndProcedure
+    Return Result;
+
+EndFunction
 
 Procedure DeleteSettings() Export
 

@@ -143,8 +143,9 @@ Function CreateFolder(Val Token, Val Path) Export
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_HTTPRequests.PutWithBody(URL + Parameters, , Headers, False);
+    Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    ResponseURL = Response[Href];
+    ResponseURL = Body[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;
@@ -228,8 +229,9 @@ Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = Fal
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
+    Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    ResponseURL = Response[Href];
+    ResponseURL = Body[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;
@@ -305,7 +307,8 @@ Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
     OPI_TypeConversion.GetLine(SavePath);
 
     Response = GetDownloadLink(Token, Path);
-    URL      = Response["href"];
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    URL      = Body["href"];
 
     If Not ValueIsFilled(URL) Then
         Return Response;
@@ -399,7 +402,8 @@ Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Ex
 
     Parameters  = OPI_Tools.RequestParametersToString(Parameters);
     Response    = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
-    ResponseURL = Response[Href];
+    Body        = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    ResponseURL = Body[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;
@@ -430,7 +434,8 @@ Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     File = New Structure("file", File);
 
     Response = GetFileUploadLink(Token, Path, Overwrite);
-    URL      = Response.Get("href");
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    URL      = Body.Get("href");
 
     If Not ValueIsFilled(URL) Then
         Return Response;
@@ -466,7 +471,8 @@ Function UploadFileInParts(Val Token
     ChunkSize = ?(ValueIsFilled(ChunkSize), ChunkSize, 33554432);
 
     Response = GetFileUploadLink(Token, Path, Overwrite);
-    URL      = Response.Get("href");
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    URL      = Body.Get("href");
 
     If Not ValueIsFilled(URL) Then
         Return Response;
@@ -698,8 +704,9 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_HTTPRequests.PostWithBody(Address + Parameters, , Headers, False);
+    Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    ResponseURL = Response[Href];
+    ResponseURL = Body[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;
@@ -733,8 +740,9 @@ Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
 
     Parameters = OPI_Tools.RequestParametersToString(Parameters);
     Response   = OPI_HTTPRequests.PutWithBody(URL + Parameters, , Headers, False);
+    Body       = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    ResponseURL = Response[Href];
+    ResponseURL = Body[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
         Return Response;

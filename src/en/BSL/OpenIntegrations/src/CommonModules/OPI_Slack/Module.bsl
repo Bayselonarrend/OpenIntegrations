@@ -725,9 +725,11 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     OPI_Tools.AddField("filename", FileName, String_, Parameters);
     OPI_Tools.AddField("length"  , Size    , String_, Parameters);
 
-    Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
-    URL        = Response[Upload_url];
-    Identifier = Response[File_id];
+    Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+
+    URL        = Body[Upload_url];
+    Identifier = Body[File_id];
 
     If Not ValueIsFilled(URL) Or Not ValueIsFilled(Identifier) Then
         Return Response;
@@ -736,8 +738,9 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     Files = New Map;
     Files.Insert(FileName, File);
 
-    Response  = OPI_HTTPRequests.PostMultipart(URL, , Files, , Headers);
-    URL       = "https://slack.com/api/files.completeUploadExternal";
+    // !IRPSkip
+    Response = OPI_HTTPRequests.PostMultipart(URL, , Files, , Headers);
+    URL = "https://slack.com/api/files.completeUploadExternal";
     SlackFile = New Structure("id, title", Identifier, Title);
 
     Parameters = New Structure;
@@ -994,10 +997,11 @@ Function DialogManagement(Val Token, Val Channel, Val URL, Val RequestType = "PO
     Parameters = New Structure;
     OPI_Tools.AddField("channel", Channel, "String", Parameters);
 
+    // !IRPSkip
     If RequestType = "POST" Then
-        Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     Else
-        Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
+        Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
     EndIf;
 
     Return Response;
@@ -1012,10 +1016,11 @@ Function FileManagement(Val Token, Val FileID, Val URL, Val RequestType = "POST"
     Parameters = New Structure;
     OPI_Tools.AddField("file", FileID , "String", Parameters);
 
+    // !IRPSkip
     If RequestType = "POST" Then
-        Response   = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
+        Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     Else
-        Response   = OPI_HTTPRequests.Get(URL, Parameters, Headers);
+        Response = OPI_HTTPRequests.Get(URL, Parameters, Headers);
     EndIf;
 
     Return Response;

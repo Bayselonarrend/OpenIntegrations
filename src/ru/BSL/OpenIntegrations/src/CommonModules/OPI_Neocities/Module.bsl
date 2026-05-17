@@ -192,7 +192,7 @@
         URL       = "https://neocities.org/api/upload";
         Заголовки = СоздатьЗаголовкиЗапроса(Токен);
 
-		// !IRPSkip
+        // !IRPSkip
         КонечныйОтвет = OPI_ЗапросыHTTP.PostMultipart(URL
             ,
             , ОбработанноеСоответствие
