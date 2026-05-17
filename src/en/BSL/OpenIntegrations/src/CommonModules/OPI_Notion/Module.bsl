@@ -103,6 +103,7 @@ Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
 
     AddPageParent(Parent, True, Parameters);
 
+    // !IRPSkip
     Properties = FillDataBySchema(Parent, Data, Token);
     Parameters.Insert("properties", Properties);
 
@@ -167,10 +168,14 @@ Function EditPageProperties(Val Token
     Files      = "files";
 
     If ValueIsFilled(Data)
-        And (TypeOf(Data) = Type("Map") Or TypeOf(Data) = Type("Structure")) Then
-        Properties        = FillDataBySchema(Page, Data, Token, False);
+        And (TypeOf(Data) = Type("Map")
+        Or TypeOf(Data)   = Type("Structure")) Then
+
+        // !IRPSkip
+        Properties = FillDataBySchema(Page, Data, Token, False);
+
     Else
-        Properties        = New Map;
+        Properties = New Map;
     EndIf;
 
     If ValueIsFilled(Icon) Then
@@ -354,8 +359,11 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
     ConvertID(Parent);
 
     If TypeOf(Block) = Type("String") Then
+
         ConvertID(Block);
-        Block        = ReturnBlock(Token, Block);
+        Block = ReturnBlock(Token, Block);
+        Block = OPI_AdvancedCall.NormalizeIntermediateResult(Block);
+
     EndIf;
 
     BlockArray = New Array;
@@ -653,6 +661,8 @@ Function FillDataBySchema(Val Scheme, Val Data, Val Token, Val ThisIsBase = True
     Else
         SchemaData = GetPage(Token, Scheme);
     EndIf;
+
+    SchemaData = OPI_AdvancedCall.NormalizeIntermediateResult(SchemaData);
 
     BaseFields = SchemaData["properties"];
     Properties = New Map;

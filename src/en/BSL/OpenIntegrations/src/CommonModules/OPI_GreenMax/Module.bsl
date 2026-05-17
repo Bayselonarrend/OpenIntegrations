@@ -908,7 +908,9 @@ Function GetNotification(Val AccessParameters, Val Timeout = 5, Val Delete = Fal
 
     If Delete Then
 
-        NotificationID = Response["receiptId"];
+        Body = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+
+        NotificationID = Body["receiptId"];
 
         If ValueIsFilled(NotificationID) Then
             Response.Insert("deleting", DeleteNotification(AccessParameters, NotificationID));

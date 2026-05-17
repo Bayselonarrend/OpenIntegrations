@@ -54,6 +54,8 @@ Function NewRequest() Export
 
     If OPI_Tools.IsOneScript() Then
 
+        // !IRPSkip
+
         //@skip-check property-not-writable
         //@skip-check bsl-legacy-check-static-feature-access
         DataProcessors = Undefined;
@@ -64,6 +66,7 @@ Function NewRequest() Export
     Else
 
         #If AtClient Then
+            // !IRPSkip
             HTTPClient = GetForm("DataProcessor.OPI_HTTPClient.Form.ClientCallObject");
         #Else
         #EndIf

@@ -547,20 +547,15 @@ Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
     OPI_TypeConversion.GetLine(UUID);
     OPI_TypeConversion.GetBoolean(GetFile);
 
-    URL     = FormURL("/print/orders/" + UUID, TestAPI);
+    URL     = FormURL(StrTemplate("/print/orders/%1", UUID), TestAPI);
     Headers = CreateRequestHeaders(Token);
 
     Response = OPI_HTTPRequests.Get(URL, , Headers);
 
     If GetFile Then
 
-        Entity = Response["entity"];
-
-        If Not ValueIsFilled(Entity) Then
-            Return Response;
-        EndIf;
-
-        URL = Entity["url"];
+        Body      = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+        URL = OPI_Tools.GetOr(Body, "entity.url", Undefined);
 
         If Not ValueIsFilled(URL) Then
             Return Response;
@@ -651,13 +646,8 @@ Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
 
     If GetFile Then
 
-        Entity = Response["entity"];
-
-        If Not ValueIsFilled(Entity) Then
-            Return Response;
-        EndIf;
-
-        URL = Entity["url"];
+        Body      = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+        URL = OPI_Tools.GetOr(Body, "entity.url", Undefined);
 
         If Not ValueIsFilled(URL) Then
             Return Response;

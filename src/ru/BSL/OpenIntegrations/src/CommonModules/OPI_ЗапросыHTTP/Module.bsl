@@ -55,8 +55,8 @@
 
     Если OPI_Инструменты.ЭтоOneScript() Тогда
 
-		// !IRPSkip
-		
+        // !IRPSkip
+
         //@skip-check property-not-writable
         //@skip-check bsl-legacy-check-static-feature-access
         Обработки  = Неопределено;
@@ -67,7 +67,7 @@
     Иначе
 
         #Если НаКлиенте Тогда
-        	// !IRPSkip
+            // !IRPSkip
             HTTPКлиент = ПолучитьФорму("Обработка.OPI_HTTPКлиент.Форма.ОбъектКлиентскогоВызова");
         #Иначе
             HTTPКлиент = Обработки.OPI_HTTPКлиент.Создать(); // !OPI

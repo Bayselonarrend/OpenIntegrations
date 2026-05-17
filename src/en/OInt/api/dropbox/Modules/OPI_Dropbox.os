@@ -135,6 +135,7 @@ Function GetAccountInformation(Val Token, Val Account = "") Export
     If ValueIsFilled(Account) Then
         Result = GetAccount(Token, Account);
     Else
+        // !IRPSkip
         Result = GetOwnAccount(Token);
     EndIf;
 
@@ -276,6 +277,7 @@ Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
     If Size > Border Then
         Response = UploadLargeFile(Token, File, Path, Mode);
     Else
+        // !IRPSkip
         Response = UploadSmallFile(Token, File, Path, Mode);
     EndIf;
 
@@ -802,6 +804,7 @@ Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
         Headers  = GetRequestHeaders(Token, Parameters);
         Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
     Else
+        // !IRPSkip
         Headers  = GetRequestHeaders(Token);
         Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
     EndIf;
@@ -858,7 +861,9 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
     CurrentPosition = 0;
     BytesRead       = 0;
     TotalSize       = File.Size();
-    Session         = OpenSession(Token);
+
+    // !IRPSkip
+    Session = OpenSession(Token);
 
     If OPI_Tools.ThisIsCollection(Session) Then
         Return Session;
@@ -883,7 +888,8 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
             Break;
         EndIf;
 
-        Response = PostBinary(URL, CurrentData, Headers);
+        // !IRPSkip
+        PostBinary(URL, CurrentData, Headers);
 
         CurrentPosition = NextPosition;
 
@@ -931,8 +937,9 @@ Function OpenSession(Val Token)
     Headers   = GetRequestHeaders(Token);
 
     Response = PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    Session = Response[SessionId];
+    Session = Body[SessionId];
 
     If Session  = Undefined Then
         Session = Response;

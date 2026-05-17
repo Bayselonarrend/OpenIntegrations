@@ -3531,8 +3531,10 @@ EndProcedure
 
 Procedure Bitrix24_CreateUser(FunctionParameters)
 
-    URL   = FunctionParameters["Bitrix24_URL"];
-    Email = String(New UUID) + "@example.org";
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Email = "example@mail.ru";
+    Email = String(New UUID) + "@mail.org"; // SKIP
 
     // The full structure can be obtained with the function GetUserFieldsStructure
 
@@ -3546,7 +3548,8 @@ Procedure Bitrix24_CreateUser(FunctionParameters)
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
-    Email = String(New UUID) + "@example.org";
+
+    Email = String(New UUID) + "@mail.org"; // SKIP
 
     UserStructure = New Structure;
     UserStructure.Insert("EMAIL"          , Email);

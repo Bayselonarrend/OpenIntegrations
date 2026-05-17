@@ -166,8 +166,6 @@ EndFunction
 // BinaryData - file's binary data
 Function DownloadFile(Val Token, Val FileID) Export
 
-    Result = "result";
-
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(FileID);
 
@@ -176,11 +174,11 @@ Function DownloadFile(Val Token, Val FileID) Export
     URL = StrTemplate("api.telegram.org/bot%1/getFile", Token);
 
     Response = OPI_HTTPRequests.Get(URL, Parameters);
-    OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    Response = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
-    Path = Response[Result]["file_path"];
+    Path = Undefined;
 
-    If Not ValueIsFilled(Path) Then
+    If Not OPI_Tools.CollectionFieldExists(Response, "result.file_path", Path) Then
 
         Ready = False;
 
@@ -189,8 +187,9 @@ Function DownloadFile(Val Token, Val FileID) Export
             OPI_Tools.Pause(N);
 
             Response = OPI_HTTPRequests.Get(URL, Parameters);
-            Path     = Response[Result]["file_path"];
+            Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
 
+            Path  = OPI_Tools.GetOr(Body, "result.file_path", Undefined);
             Ready = ValueIsFilled(Path);
 
             If Ready Then
