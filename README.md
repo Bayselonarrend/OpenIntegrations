@@ -92,8 +92,8 @@
 ## Установка и варианты релизов
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
-[![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)](https://sourceforge.net/projects/openintegrations/)
-![Режим совместимости](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10/8.3.15-yellow)
+![1C](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10/8.3.15-yellow)
+![OneScript](https://img.shields.io/badge/OneScript-%3E=2.0.0-blue)
 
 <img src="media/icons.png" align="right">
 
