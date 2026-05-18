@@ -2,7 +2,9 @@
 
 # Open Integrations Package
 
-![Version](https://img.shields.io/badge/1C_version-8.3.10-yellow) [![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
+[![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![Telegram](https://img.shields.io/badge/Telegram-@openintegrations-2CA5E0?logo=Telegram&logoColor=white)](https://t.me/openintegrations) [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
+
+<br>
 
 **OpenIntegrations** is a set of tools for working with external APIs, available as a library (extension) for 1C:Enterprise / OneScript and a cross-platform console application for Windows and Linux. The project provides ready-made methods for performing application tasks (sending messages, creating documents, SQL queries, etc.) across more than 30 services and technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well as various DBMS and exchange protocols.
 
@@ -86,7 +88,8 @@ To save the response in the console, you can use the standard `>` redirect or th
 ## Installation and Release Variants
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
-[![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)](https://sourceforge.net/projects/openintegrations/)
+![1C](https://img.shields.io/badge/1C_version-8.3.10/8.3.15-yellow)
+![OneScript](https://img.shields.io/badge/OneScript-%3E=2.0.0-blue)
 
 <img src="media/icons.png" align="right">
 
