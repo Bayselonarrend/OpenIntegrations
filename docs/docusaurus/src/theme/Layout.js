@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Layout from '@theme-original/Layout';
 import Head from '@docusaurus/Head';
 import { useLocation } from '@docusaurus/router';
+import FeedbackWidget from '@site/src/components/FeedbackWidget';
 
 export default function CustomLayout(props) {
   const location = useLocation();
@@ -64,6 +65,7 @@ export default function CustomLayout(props) {
         <script src="https://yandex.ru/ads/system/context.js" async></script>
       </Head>
       <Layout {...props} />
+      <FeedbackWidget />
     </>
   );
 }
