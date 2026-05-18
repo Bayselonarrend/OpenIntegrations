@@ -14,6 +14,25 @@
   --ifm-tabs-padding-horizontal: 0.75rem;
   --ifm-pagination-nav-color-hover: black;
   --ifm-footer-link-hover-color: black;
+
+  /* Плавающие кнопки: «наверх» и обратная связь */
+  --floating-actions-right: calc(1.3rem + 1rem);
+  --floating-actions-bottom: 1.3rem;
+  --floating-actions-size: 3rem;
+  --floating-actions-gap: 0.5rem;
+}
+
+.theme-back-to-top-button {
+  right: var(--floating-actions-right) !important;
+  bottom: var(--floating-actions-bottom) !important;
+}
+
+/* Как у бургер-меню: на узком экране меньше отступ от края */
+@media (max-width: 996px) {
+  :root {
+    --floating-actions-right: 1.3rem;
+    --floating-actions-bottom: 1.3rem;
+  }
 }
 
 p{
