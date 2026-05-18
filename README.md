@@ -6,7 +6,7 @@
 
 # Открытый пакет интеграций
 
-![Версия](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10-yellow) [![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
+[![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759) [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript) [![Telegram](https://img.shields.io/badge/Telegram-@openintegrations-2CA5E0?logo=Telegram&logoColor=white)](https://t.me/openintegrations) [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
 
 <br>
 
@@ -93,6 +93,7 @@
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 [![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)](https://sourceforge.net/projects/openintegrations/)
+![Режим совместимости](https://img.shields.io/badge/%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F\_1%D0%A1-8.3.10/8.3.15-yellow)
 
 <img src="media/icons.png" align="right">
 
@@ -113,7 +114,7 @@
 
 Варианты для быстрого начала работы:
 
-+ Для начала работы в 1С достаточно [скачать](https://openintegrations.dev/download) CFE файл (или XML выгрузку) расширения и загрузить его в список расширений своей конфигурации <br>
++ Для начала работы в 1С достаточно [скачать](https://openintegrations.dev/download) CFE файл (или XML выгрузку) расширения и загрузить его в список расширений своей конфигурации. Режим совместимости - `8.3.10` (основной) / `8.3.15` (расширения) <br>
 
 + Для начала работы в OneScript необходимо установить пакет
 
