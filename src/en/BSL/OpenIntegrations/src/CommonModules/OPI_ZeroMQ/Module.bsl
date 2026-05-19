@@ -53,19 +53,61 @@
 
 #Region Public
 
+#Region Common
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when creating a connection or opening a port
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves connection log data (when in-memory logging is enabled)
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with an open connection or port               - conn
+// AsString   - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(Connection
+        , AsString
+        , EventCount);
+
+EndFunction
+
+#EndRegion
+
 #Region ConnectionMethods
 
 // Create connection (REQ)
 // Create connection for sending request
 //
 // Parameters:
-// Address - String - Receiver address - addr
+// Address - String                   - Receiver address                         - addr
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function CreateConnectionReq(Val Address) Export
+Function CreateConnectionReq(Val Address, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Address, "ConnectReq");
+    Result = InitializeConnector(Address, "ConnectReq", Logging);
     Return Result;
 
 EndFunction
@@ -74,13 +116,14 @@ EndFunction
 // Create subscriber connection
 //
 // Parameters:
-// Address - String - Receiver address - addr
+// Address - String                   - Receiver address                         - addr
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function CreateConnectionSub(Val Address) Export
+Function CreateConnectionSub(Val Address, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Address, "ConnectSub");
+    Result = InitializeConnector(Address, "ConnectSub", Logging);
     Return Result;
 
 EndFunction
@@ -89,13 +132,14 @@ EndFunction
 // Create connection for sending to pipeline
 //
 // Parameters:
-// Address - String - Receiver address - addr
+// Address - String                   - Receiver address                         - addr
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function CreateConnectionPush(Val Address) Export
+Function CreateConnectionPush(Val Address, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Address, "ConnectPush");
+    Result = InitializeConnector(Address, "ConnectPush", Logging);
     Return Result;
 
 EndFunction
@@ -104,13 +148,14 @@ EndFunction
 // Create connection for reading from pipeline
 //
 // Parameters:
-// Address - String - Receiver address - addr
+// Address - String                   - Receiver address                         - addr
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function CreateConnectionPull(Val Address) Export
+Function CreateConnectionPull(Val Address, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Address, "ConnectPull");
+    Result = InitializeConnector(Address, "ConnectPull", Logging);
     Return Result;
 
 EndFunction
@@ -123,13 +168,14 @@ EndFunction
 // Bind port for incoming requests
 //
 // Parameters:
-// Port - Number - Target port - port
+// Port    - Number                   - Target port                              - port
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function BindPortRep(Val Port) Export
+Function BindPortRep(Val Port, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Port, "BindRep");
+    Result = InitializeConnector(Port, "BindRep", Logging);
     Return Result;
 
 EndFunction
@@ -138,13 +184,14 @@ EndFunction
 // Bind port for subscribers
 //
 // Parameters:
-// Port - Number - Target port - port
+// Port    - Number                   - Target port                              - port
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function BindPortPub(Val Port) Export
+Function BindPortPub(Val Port, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Port, "BindPub");
+    Result = InitializeConnector(Port, "BindPub", Logging);
     Return Result;
 
 EndFunction
@@ -153,13 +200,14 @@ EndFunction
 // Bind pipeline port for sending data
 //
 // Parameters:
-// Port - Number - Target port - port
+// Port    - Number                   - Target port                              - port
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function BindPortPush(Val Port) Export
+Function BindPortPush(Val Port, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Port, "BindPush");
+    Result = InitializeConnector(Port, "BindPush", Logging);
     Return Result;
 
 EndFunction
@@ -168,13 +216,14 @@ EndFunction
 // Bind pipeline port for receiving data
 //
 // Parameters:
-// Port - Number - Target port - port
+// Port    - Number                   - Target port                              - port
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - AddIn object or map  with error information
-Function BindPortPull(Val Port) Export
+Function BindPortPull(Val Port, Val Logging = Undefined) Export
 
-    Result = InitializeConnector(Port, "BindPull");
+    Result = InitializeConnector(Port, "BindPull", Logging);
     Return Result;
 
 EndFunction
@@ -369,7 +418,7 @@ EndFunction
 
 #Region Private
 
-Function InitializeConnector(Val AddressPort, Val View)
+Function InitializeConnector(Val AddressPort, Val View, Val Logging = Undefined)
 
     If StrStartWith(View, "Connect") Then
         OPI_TypeConversion.GetLine(AddressPort);
@@ -379,6 +428,29 @@ Function InitializeConnector(Val AddressPort, Val View)
     EndIf;
 
     ZMQ = OPI_AddIns.GetAddIn("ZeroMQ");
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = ZMQ.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
 
     If View    = "ConnectReq" Then
         Result = ZMQ.ConnectReq(AddressPort);

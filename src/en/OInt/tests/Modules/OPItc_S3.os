@@ -1139,10 +1139,12 @@ Procedure S3_GetObject(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "File", RequiredSize);
 
-    Name   = "bigfile.exe";
-    Bucket = "newbucket2";
+    #If Not Client Then
 
-    BigTempFile = GetTempFileName();
+        Name   = "bigfile.exe";
+        Bucket = "newbucket2";
+
+        BigTempFile = GetTempFileName();
     Options = New Structure;
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
@@ -1151,7 +1153,7 @@ Procedure S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big file", 34432400);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big file", 34432400);
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -1160,10 +1162,13 @@ Procedure S3_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big BD", 34432400);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "S3", "GetObject", "Big BD", 34432400);
 
-    OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!!");
-    OPI_Tools.RemoveFileWithTry(TempFile   , "Failed to delete the temporary file after the test!!");
+        OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!!");
+
+    #EndIf
+
+    OPI_Tools.RemoveFileWithTry(TempFile , "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
