@@ -7,6 +7,24 @@
         "image": "media/Covers/ZeroMQ.png",
         "changes": [
             {
+                "lib": "ZeroMQ",
+                "icon": "media/ZeroMQ.png",
+                "description_ru": "Методы подключения (4 функции)",
+                "description_en": ""
+            },
+            {
+                "lib": "ZeroMQ",
+                "icon": "media/ZeroMQ.png",
+                "description_ru": "Методы ожидания подключений (4 функции)",
+                "description_en": ""
+            },
+            {
+                "lib": "ZeroMQ",
+                "icon": "media/ZeroMQ.png",
+                "description_ru": "Методы обмена (6 функций)",
+                "description_en": ""
+            },
+            {
                 "lib": "All",
                 "icon": "media/HTTP.png",
                 "description_ru": "Оптимизирована загрузка по частям в HTTP-клиенте",
@@ -41,6 +59,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Исправлена обработка настройки `adv_response` расширенного вызова для методов с несколькими HTTP-запросами",
                 "description_en": "Fixed `adv_response` advanced call setting handling for methods with multiple HTTP requests"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Общая оптимизация инструментария",
+                "description_en": "General tooling optimizations"
             }
         ]
     },

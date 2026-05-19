@@ -1,7 +1,9 @@
 use std::sync::mpsc::{self, Sender};
+use std::sync::Arc;
 use std::thread::{self, JoinHandle};
 use std::time::Duration;
 
+use common_logs::{log, Logger};
 use tokio::time::timeout;
 use zeromq::prelude::*;
 use zeromq::{PubSocket, PullSocket, PushSocket, RepSocket, ReqSocket, Socket, SubSocket, ZmqMessage};
@@ -42,6 +44,10 @@ pub enum BackendCommand {
     Close {
         response: Sender<Result<(), String>>,
     },
+    SetLogger {
+        logger: Arc<Logger>,
+        response: Sender<Result<(), String>>,
+    },
     Shutdown,
 }
 
@@ -62,12 +68,29 @@ enum OpenSocket {
 
 struct BackendState {
     socket: OpenSocket,
+    logger: Option<Arc<Logger>>,
 }
 
 impl BackendState {
     fn new() -> Self {
         Self {
             socket: OpenSocket::None,
+            logger: None,
+        }
+    }
+
+    fn log(&self, message: &str) {
+        if let Some(ref logger) = self.logger {
+            log!(logger, "{}", message);
+        }
+    }
+
+    fn scheme_label(scheme: ExchangeScheme) -> &'static str {
+        match scheme {
+            ExchangeScheme::ReqRep => "REQ/REP",
+            ExchangeScheme::PubSub => "PUB/SUB",
+            ExchangeScheme::Push => "PUSH",
+            ExchangeScheme::Pull => "PULL",
         }
     }
 
@@ -76,6 +99,7 @@ impl BackendState {
     }
 
     fn close_async(&mut self, rt: &tokio::runtime::Runtime) {
+        self.log("Closing socket");
         match std::mem::replace(&mut self.socket, OpenSocket::None) {
             OpenSocket::None => {}
             OpenSocket::Req(s) => {
@@ -130,12 +154,6 @@ async fn send_with_timeout<S: SocketSend + Unpin>(
 ) -> Result<(), String> {
     if timeout_ms < 0 {
         sock.send(msg).await.map_err(|e| e.to_string())
-    } else if timeout_ms == 0 {
-        match timeout(Duration::from_millis(0), sock.send(msg)).await {
-            Ok(Ok(())) => Ok(()),
-            Ok(Err(e)) => Err(e.to_string()),
-            Err(_) => Err("Send timed out.".to_owned()),
-        }
     } else {
         match timeout(Duration::from_millis(timeout_ms as u64), sock.send(msg)).await {
             Ok(Ok(())) => Ok(()),
@@ -158,6 +176,11 @@ impl ZeroMqBackend {
                 while let Ok(cmd) = rx.recv() {
                     match cmd {
                         BackendCommand::Connect { scheme, endpoint, response } => {
+                            state.log(&format!(
+                                "Connecting ({}) to {}...",
+                                BackendState::scheme_label(scheme),
+                                endpoint
+                            ));
                             let res = rt.block_on(async {
                                 if state.is_busy() {
                                     return Err("Socket is already connected or bound.".to_owned());
@@ -189,9 +212,27 @@ impl ZeroMqBackend {
                                     }
                                 }
                             });
+                            match &res {
+                                Ok(()) => state.log(&format!(
+                                    "Connected ({}) to {}",
+                                    BackendState::scheme_label(scheme),
+                                    endpoint
+                                )),
+                                Err(e) => state.log(&format!(
+                                    "Connect ({}) to {} failed: {}",
+                                    BackendState::scheme_label(scheme),
+                                    endpoint,
+                                    e
+                                )),
+                            }
                             let _ = response.send(res);
                         }
                         BackendCommand::Bind { scheme, endpoint, response } => {
+                            state.log(&format!(
+                                "Binding ({}) on {}...",
+                                BackendState::scheme_label(scheme),
+                                endpoint
+                            ));
                             let res = rt.block_on(async {
                                 if state.is_busy() {
                                     return Err("Socket is already connected or bound.".to_owned());
@@ -231,9 +272,23 @@ impl ZeroMqBackend {
                                     }
                                 }
                             });
+                            match &res {
+                                Ok(bound) => state.log(&format!(
+                                    "Bound ({}) on {}",
+                                    BackendState::scheme_label(scheme),
+                                    bound
+                                )),
+                                Err(e) => state.log(&format!(
+                                    "Bind ({}) on {} failed: {}",
+                                    BackendState::scheme_label(scheme),
+                                    endpoint,
+                                    e
+                                )),
+                            }
                             let _ = response.send(res);
                         }
                         BackendCommand::Subscribe { prefix, response } => {
+                            state.log(&format!("Subscribing to prefix: {:?}", prefix));
                             let res = rt.block_on(async {
                                 match &mut state.socket {
                                     OpenSocket::Sub(sock) => sock
@@ -250,6 +305,13 @@ impl ZeroMqBackend {
                                     ),
                                 }
                             });
+                            match &res {
+                                Ok(()) => state.log(&format!(
+                                    "Subscribed to prefix: {:?}",
+                                    prefix
+                                )),
+                                Err(e) => state.log(&format!("Subscribe failed: {}", e)),
+                            }
                             let _ = response.send(res);
                         }
                         BackendCommand::Send {
@@ -257,6 +319,11 @@ impl ZeroMqBackend {
                             timeout_ms,
                             response,
                         } => {
+                            let payload_len = payload.len();
+                            state.log(&format!(
+                                "Sending {} bytes (timeout_ms={})...",
+                                payload_len, timeout_ms
+                            ));
                             let res = rt.block_on(async {
                                 match &mut state.socket {
                                     OpenSocket::Req(sock) => {
@@ -295,9 +362,20 @@ impl ZeroMqBackend {
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
                             });
+                            match &res {
+                                Ok(()) => state.log(&format!(
+                                    "Sent {} bytes successfully",
+                                    payload_len
+                                )),
+                                Err(e) => state.log(&format!(
+                                    "Send {} bytes failed: {}",
+                                    payload_len, e
+                                )),
+                            }
                             let _ = response.send(res);
                         }
                         BackendCommand::Recv { timeout_ms, response } => {
+                            state.log(&format!("Receiving (timeout_ms={})...", timeout_ms));
                             let res = rt.block_on(async {
                                 match &mut state.socket {
                                     OpenSocket::Req(sock) => {
@@ -321,11 +399,21 @@ impl ZeroMqBackend {
                                     OpenSocket::None => Err("No open socket.".to_owned()),
                                 }
                             });
+                            match &res {
+                                Ok(buf) => state.log(&format!("Received {} bytes", buf.len())),
+                                Err(e) => state.log(&format!("Receive failed: {}", e)),
+                            }
 
                             let _ = response.send(res);
                         }
                         BackendCommand::Close { response } => {
                             state.close_async(&rt);
+                            state.log("Socket closed");
+                            let _ = response.send(Ok(()));
+                        }
+                        BackendCommand::SetLogger { logger, response } => {
+                            state.logger = Some(logger);
+                            state.log("Logger initialized");
                             let _ = response.send(Ok(()));
                         }
                         BackendCommand::Shutdown => {
@@ -410,6 +498,20 @@ impl ZeroMqBackend {
                 response: response_tx,
             })
             .map_err(|e| format!("Failed to enqueue Recv: {}", e))?;
+
+        response_rx
+            .recv()
+            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+    }
+
+    pub fn set_logger(&self, logger: Arc<Logger>) -> Result<(), String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        self.tx
+            .send(BackendCommand::SetLogger {
+                logger,
+                response: response_tx,
+            })
+            .map_err(|e| format!("Failed to enqueue SetLogger: {}", e))?;
 
         response_rx
             .recv()

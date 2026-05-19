@@ -3,7 +3,8 @@ mod methods;
 
 use common_binary::vault::BinaryVault;
 use common_core::*;
-use common_utils::utils::version;
+use common_logs::Logger;
+use common_utils::utils::{json_error, json_success, version};
 use std::sync::{Arc, Mutex};
 
 impl_addin_exports!(AddIn);
@@ -23,6 +24,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("Recv"),
     name!("Close"),
     name!("RetrieveBinaryFromVault"),
+    name!("SetLogger"),
+    name!("GetLogs"),
     name!("Version"),
 ];
 
@@ -34,7 +37,9 @@ pub fn get_params_amount(num: usize) -> usize {
         10 => 1,    // Recv(timeout_ms)
         11 => 0,    // Close
         12 => 1,    // RetrieveBinaryFromVault
-        13 => 0,    // Version
+        13 => 1,    // SetLogger(logger_config_json)
+        14 => 1,    // GetLogs(count)
+        15 => 0,    // Version
         _ => 0,
     }
 }
@@ -97,7 +102,15 @@ pub fn cal_func(
             let key = params[0].get_string().unwrap_or_default();
             Box::new(obj.retrieve_binary_from_vault(&key))
         },
-        13 => Box::new(version()),
+        13 => {
+            let logger_config = params[0].get_string().unwrap_or_default();
+            Box::new(obj.set_logger(&logger_config))
+        },
+        14 => {
+            let count = params[0].get_i32().unwrap_or(0) as usize;
+            Box::new(obj.get_logs(count))
+        },
+        15 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -107,6 +120,7 @@ pub const PROPS: &[&[u16]] = &[];
 pub struct AddIn {
     vault: BinaryVault,
     backend: Arc<Mutex<backend::ZeroMqBackend>>,
+    logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
@@ -114,6 +128,48 @@ impl AddIn {
         Self {
             vault: BinaryVault::new(),
             backend: Arc::new(Mutex::new(backend::ZeroMqBackend::new())),
+            logger: None,
+        }
+    }
+
+    pub fn set_logger(&mut self, logger_config: &str) -> String {
+        if logger_config.is_empty() {
+            return json_error("Logger config is empty");
+        }
+
+        if self.logger.is_some() {
+            return json_success();
+        }
+
+        match Logger::from_json(logger_config) {
+            Ok(logger) => {
+                let logger_arc = Arc::new(logger);
+                match self.lock_backend().and_then(|g| g.set_logger(logger_arc.clone())) {
+                    Ok(()) => {
+                        self.logger = Some(logger_arc);
+                        json_success()
+                    }
+                    Err(e) => json_error(&e),
+                }
+            }
+            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+        }
+    }
+
+    pub fn get_logs(&self, count: usize) -> String {
+        if let Some(ref logger) = self.logger {
+            let logs = logger.get_last_logs(count);
+            let total = logger.len();
+
+            serde_json::json!({
+                "result": true,
+                "logs": logs,
+                "total": total,
+                "returned": logs.len()
+            })
+            .to_string()
+        } else {
+            json_error("Logger not initialized")
         }
     }
 
