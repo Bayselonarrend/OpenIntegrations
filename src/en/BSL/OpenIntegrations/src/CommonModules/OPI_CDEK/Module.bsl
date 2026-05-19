@@ -555,8 +555,8 @@ Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
 
     If GetFile Then
 
-        Body      = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
-        URL = OPI_Tools.GetOr(Body, "entity.url", Undefined);
+        Body = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+        URL  = OPI_Tools.GetOr(Body, "entity.url", Undefined);
 
         If Not ValueIsFilled(URL) Then
             Return Response;
@@ -647,8 +647,8 @@ Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = Fals
 
     If GetFile Then
 
-        Body      = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
-        URL = OPI_Tools.GetOr(Body, "entity.url", Undefined);
+        Body = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+        URL  = OPI_Tools.GetOr(Body, "entity.url", Undefined);
 
         If Not ValueIsFilled(URL) Then
             Return Response;

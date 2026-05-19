@@ -880,22 +880,8 @@ EndFunction
 
 Function IsOneScript() Export
 
-    Try
-
-        Response = False;
-
-        // BSLLS:UnusedLocalVariable-off
-
-        //@skip-check module-unused-local-variable
-        Check = New OpenSSLSecureConnection;
-
-        // BSLLS:UnusedLocalVariable-on
-
-    Except
-
-        Response = True;
-
-    EndTry;
+    Response       = False; // !OPI
+    // !OInt Response = True;
 
     Return Response;
 
@@ -1016,6 +1002,10 @@ EndProcedure
 #Region Service
 
 Procedure Pause(Val Seconds) Export
+
+    If Seconds = 0 Then
+        Return;
+    EndIf;
 
     Connection = New HTTPConnection("1C.ru", 11111, , , , Seconds);
     Try

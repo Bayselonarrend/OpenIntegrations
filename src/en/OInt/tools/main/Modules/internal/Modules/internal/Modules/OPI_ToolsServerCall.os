@@ -188,4 +188,47 @@ Function GetAddInVersion(Val TemplateName) Export
 
 EndFunction
 
+Function GetHMACHash(Val Key, Val Data, Val HashFunc) Export
+
+    BlockSize = 64;
+
+    Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
+    Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
+
+    Ipad.WriteBitwiseXor(0, Key);
+    Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
+
+    Opad.WriteBitwiseXor(0, Key);
+    Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
+
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc)
+
+EndFunction
+
+#EndRegion
+
+#Region Internal
+
+Function UniteBinaryData(BinaryData1, BinaryData2)
+
+    BinaryDataArray = New Array;
+    BinaryDataArray.Add(BinaryData1);
+    BinaryDataArray.Add(BinaryData2);
+
+    Return ConcatBinaryData(BinaryDataArray);
+
+EndFunction
+
+Function RepeatString(String, Count)
+
+    Parts = New Array(Count);
+
+    For K = 1 To Count Do
+        Parts.Add(String);
+    EndDo;
+
+    Return StrConcat(Parts, "");
+
+EndFunction
+
 #EndRegion

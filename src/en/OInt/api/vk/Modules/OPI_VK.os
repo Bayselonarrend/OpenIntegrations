@@ -528,7 +528,11 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
     Parameters.Insert("upload_url", URL);
 
-    For N = 1 To 5 Do
+    Success = False;
+
+    For N = 0 To 4 Do
+
+        OPI_Tools.Pause(N);
 
         Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files);
         Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
@@ -547,10 +551,16 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
     EndDo;
 
-    Response = OPI_HTTPRequests.Get(Save, Parameters);
+    If Success Then
+        Response = OPI_HTTPRequests.Get(Save, Parameters);
+    EndIf;
 
     If TypeOf(Response) = Type("BinaryData") Then
-        Return GetStringFromBinaryData(Response);
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("error", Response);
+        Return ErrorMap;
+
     EndIf;
 
     Return Response;

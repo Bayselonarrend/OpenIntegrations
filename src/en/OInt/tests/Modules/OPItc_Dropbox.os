@@ -322,11 +322,12 @@ Procedure Dropbox_UploadFile(FunctionParameters)
 
     OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!!");
 
-    If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
+    #If Not Client Then
+        If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
 
-        BigFile = FunctionParameters["Big"];
+            BigFile = FunctionParameters["Big"];
 
-        Path   = "/giant.tmp";
+            Path   = "/giant.tmp";
         Options = New Structure;
         Options.Insert("token", Token);
         Options.Insert("file", BigFile);
@@ -335,9 +336,10 @@ Procedure Dropbox_UploadFile(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
 
-        OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "UploadFile", "Big", Path);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "Dropbox", "UploadFile", "Big", Path);
 
-    EndIf;
+        EndIf;
+    #EndIf
 
 EndProcedure
 

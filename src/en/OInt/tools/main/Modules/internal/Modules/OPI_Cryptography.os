@@ -162,32 +162,15 @@ Function HMAC(Val Key, Val Data, Val HashFunc) Export
 
     Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
 
-    Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
-    Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
+    Result = OPI_ToolsServerCall.GetHMACHash(Key, Data, HashFunc);
 
-    Ipad.WriteBitwiseXor(0, Key);
-    Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
-
-    Opad.WriteBitwiseXor(0, Key);
-    Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
-
-    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc);
+    Return Result;
 
 EndFunction
 
 Function Hash(BinaryData, Type) Export
 
     Return OPI_ToolsServerCall.Hash(BinaryData, Type);
-
-EndFunction
-
-Function UniteBinaryData(BinaryData1, BinaryData2) Export
-
-    BinaryDataArray = New Array;
-    BinaryDataArray.Add(BinaryData1);
-    BinaryDataArray.Add(BinaryData2);
-
-    Return ConcatBinaryData(BinaryDataArray);
 
 EndFunction
 
@@ -252,10 +235,6 @@ EndFunction
 
 Function Хеш(ДвоичныеДанные, Тип) Export
     Return Hash(ДвоичныеДанные, Тип);
-EndFunction
-
-Function СклеитьДвоичныеДанные(ДвоичныеДанные1, ДвоичныеДанные2) Export
-    Return UniteBinaryData(ДвоичныеДанные1, ДвоичныеДанные2);
 EndFunction
 
 Function ПовторитьСтроку(Строка, Количество) Export
