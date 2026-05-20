@@ -33,6 +33,8 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:DeprecatedCurrentDate-off
+// BSLLS:CommentedCode-off
+// BSLLS:LineLength-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
@@ -210,13 +212,13 @@
     Opad.ЗаписатьПобитовоеИсключительноеИли(0, Ключ);
     Okeypad = ПолучитьДвоичныеДанныеИзБуфераДвоичныхДанных(opad);
 
-    Возврат Хеш(СклеитьДвоичныеДанные(okeypad, Хеш(СклеитьДвоичныеДанные(ikeypad, Данные), ФункцияХеша)), ФункцияХеша)
+    Возврат Хеш(СклеитьДвоичныеДанные(okeypad, Хеш(СклеитьДвоичныеДанные(ikeypad, Данные), ФункцияХеша)), ФункцияХеша);
 
 КонецФункции
 
 #КонецОбласти
 
-#Область СлужебныйПрограммныйИнтерфейс
+#Область СлужебныеПроцедурыИФункции
 
 Функция СклеитьДвоичныеДанные(ДвоичныеДанные1, ДвоичныеДанные2)
 
