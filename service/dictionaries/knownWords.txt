@@ -479,3 +479,5 @@ treq
 trep
 dontwait
 неизолированно
+distros
+bitness
