@@ -468,7 +468,6 @@ EndFunction
 // Parameters:
 // ServerObject - Arbitrary - Object of running server component                        - srv
 // Timeout      - Number    - Waiting period for new data if the queue is empty (in ms) - tout
-// MaxSize      - Number    - Maximum size of data to receive                           - msize
 //
 // Returns:
 // Map Of KeyAndValue - Execution result

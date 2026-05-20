@@ -166,15 +166,15 @@
 КонецФункции
 
 Функция ПолучитьПутьКэшаКомпонент() Экспорт
-	
-	// BSLLS:UsingHardcodePath-off
-	
-	Возврат ?(OPI_Инструменты.ЭтоWindows()
+
+    // BSLLS:UsingHardcodePath-off
+
+    Возврат ?(OPI_Инструменты.ЭтоWindows()
         , "%APPDATA%\1C\1Cv8\ExtCompT"
         , "~/.1cv8/1C/1Cv8/ExtCompT/");
-        
+
     // BSLLS:UsingHardcodePath-on
-    
+
 КонецФункции
 
 #КонецОбласти

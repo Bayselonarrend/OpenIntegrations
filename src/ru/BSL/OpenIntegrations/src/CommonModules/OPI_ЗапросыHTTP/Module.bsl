@@ -67,15 +67,15 @@
     Иначе
 
         #Если НаКлиенте Тогда
-        	
-        	// BSLLS:GetFormMethod-off
+
+            // BSLLS:GetFormMethod-off
 
             // !IRPSkip
             HTTPКлиент = ПолучитьФорму("Обработка.OPI_HTTPКлиент.Форма.ОбъектКлиентскогоВызова");
-            
+
             // BSLLS:GetFormMethod-on
-            
-        #Иначе	
+
+        #Иначе
             HTTPКлиент = Обработки.OPI_HTTPКлиент.Создать(); // !OPI
         #КонецЕсли
 

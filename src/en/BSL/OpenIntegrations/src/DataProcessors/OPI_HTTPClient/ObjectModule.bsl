@@ -695,20 +695,7 @@ Function ReturnSettings(Val Filter = Undefined) Export
 
             Else
 
-                FilterList = New ValueList();
-                FilterList.LoadValues(Filter);
-
-                CurrentSettings_ = New Structure;
-
-                For Each Setting In CurrentSettings Do
-
-                    If FilterList.FindByValue(Setting.Key) <> Undefined Then
-                        CurrentSettings_.Insert(Setting.Key, Setting.Value);
-                    EndIf;
-
-                EndDo;
-
-                CurrentSettings = CurrentSettings_;
+                CurrentSettings = GetSettingsWithFilter(CurrentSettings, Filter);
 
             EndIf;
 
@@ -2750,8 +2737,9 @@ Function ReadGZip(CompressedData)
     SizeESD = ZipSizeEOCD();
     SizeLFH = ZipSizeLFH();
 
-    DataReader         = New DataReader(CompressedData);
+    DataReader = New DataReader(CompressedData);
     DataReader.Skip(GZipPrefixSize);
+
     CompressedDataSize = DataReader.SourceStream().Size() - GZipPrefixSize - GZipPostfixSize;
 
     ZipStream = New MemoryStream(SizeLFH + CompressedDataSize + SizeDD + SizeCDH + SizeESD);
@@ -2790,6 +2778,7 @@ Function ReadZip(CompressedData, ErrorText = Undefined)
     ReadingZip.Close();
 
     Result = New BinaryData(Directory + GetPathSeparator() + FileName);
+
     DeleteFiles(Directory);
 
     Return Result;
@@ -3251,11 +3240,12 @@ Function AddOAuthV1Header()
     DataStructure.Insert("oauth_nonce"           , CurrentUNIXDate);
 
     EncodingDataStructure = New Structure;
+    EncodingType          = "URLencoding";
 
     For Each TableRow In DataStructure Do
 
-        CurrentKey   = OPI_Tools.GetEncodedString(TableRow.Key, "URLencoding");
-        CurrentValue = OPI_Tools.GetEncodedString(TableRow.Value, "URLencoding");
+        CurrentKey   = OPI_Tools.GetEncodedString(TableRow.Key, EncodingType);
+        CurrentValue = OPI_Tools.GetEncodedString(TableRow.Value, EncodingType);
 
         EncodingDataStructure.Insert(CurrentKey, CurrentValue);
 
@@ -3277,13 +3267,13 @@ Function AddOAuthV1Header()
     SignatureString = Left(SignatureString, StrLen(SignatureString) - 1);
     SignatureString = Upper(RequestMethod)
         + "&"
-        + OPI_Tools.GetEncodedString(RequestURL     , "URLencoding")
+        + OPI_Tools.GetEncodedString(RequestURL     , EncodingType)
         + "&"
-        + OPI_Tools.GetEncodedString(SignatureString, "URLencoding");
+        + OPI_Tools.GetEncodedString(SignatureString, EncodingType);
 
-    Signature = OPI_Tools.GetEncodedString(OAuthConsumerSecret, "URLencoding")
+    Signature = OPI_Tools.GetEncodedString(OAuthConsumerSecret, EncodingType)
         + "&"
-        + OPI_Tools.GetEncodedString(OAuthSecret, "URLencoding");
+        + OPI_Tools.GetEncodedString(OAuthSecret, EncodingType);
 
     SignBD      = GetBinaryDataFromString(Signature);
     SignatureBD = GetBinaryDataFromString(SignatureString);
@@ -3291,7 +3281,7 @@ Function AddOAuthV1Header()
     AddLog("AddOAuthV1Header: ");
 
     Signature = OPI_Cryptography.CreateSignature(SignBD, SignatureBD, OAuthAlgorithm, OAuthHashFunction);
-    Signature = OPI_Tools.GetEncodedString(Base64String(Signature), "URLencoding");
+    Signature = OPI_Tools.GetEncodedString(Base64String(Signature), EncodingType);
 
     Delimiter = """,";
 
@@ -3393,6 +3383,25 @@ Function ProcessAdvancedResponse(Val Body)
     ResponseStructure.Insert("headers", ResponseHeaders);
 
     Return ResponseStructure;
+
+EndFunction
+
+Function GetSettingsWithFilter(Val CurrentSettings, Val Filter)
+
+    FilterList = New ValueList();
+    FilterList.LoadValues(Filter);
+
+    CurrentSettings_ = New Structure;
+
+    For Each Setting In CurrentSettings Do
+
+        If FilterList.FindByValue(Setting.Key) <> Undefined Then
+            CurrentSettings_.Insert(Setting.Key, Setting.Value);
+        EndIf;
+
+    EndDo;
+
+    Return CurrentSettings_;
 
 EndFunction
 
