@@ -29,5 +29,6 @@ docs/** linguist-vendored
 *.desktop text eol=lf
 *.bat text eol=crlf
 media/** binary
-src/*/OInt/addins/*.zip !text !filter !merge !diff
-src/*/BSL/OpenIntegrations/src/CommonTemplates/**/*.addin !text !filter !merge !diff
+# Аддины: только binary, без eol/text (иначе Git на Windows портит zip при add/commit)
+src/*/OInt/addins/*.zip binary -text -diff -eol
+src/*/BSL/OpenIntegrations/src/CommonTemplates/**/*.addin binary -text -diff -eol
