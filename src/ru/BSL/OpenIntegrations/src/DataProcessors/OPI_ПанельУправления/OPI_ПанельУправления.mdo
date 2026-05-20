@@ -14,10 +14,6 @@
   <defaultForm>DataProcessor.OPI_ПанельУправления.Form.Форма</defaultForm>
   <forms uuid="7db278df-14b8-4752-8cdd-ba389b6a669f">
     <name>Форма</name>
-    <synonym>
-      <key></key>
-      <value>Форма</value>
-    </synonym>
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>

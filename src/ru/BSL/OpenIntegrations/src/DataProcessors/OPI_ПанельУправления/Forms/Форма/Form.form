@@ -528,6 +528,10 @@
         <items xsi:type="form:Button">
           <name>ОткрытьКаталогКэша</name>
           <id>42</id>
+          <title>
+            <key>ru</key>
+            <value>Открыть каталог кэша</value>
+          </title>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
