@@ -28,6 +28,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CognitiveComplexity-off
+// BSLLS:ExternalAppStarting-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -162,9 +163,7 @@ EndProcedure
 &AtClient
 Procedure OpenCacheFolder(Command)
 
-    CachePath = ?(OPI_Tools.IsWindows()
-        , "%APPDATA%\1C\1Cv8\ExtCompT"
-        , "~/.1cv8/1C/1Cv8/ExtCompT/");
+    CachePath = OPI_ExtensionManagement.GetAddInsCachePath();
 
     RunApp(CachePath);
 

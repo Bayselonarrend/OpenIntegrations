@@ -78,6 +78,47 @@ Procedure ConnectComponent(Val AddInName) Export
 
 EndProcedure
 
+Procedure UpdateAddInsOnClient(Val AddInsNames) Export
+
+    #If Client Then
+        For Each AddInName In AddInsNames Do
+
+            ErrInfo = New CallbackDescription("ConnectComponent", ThisObject, AddInName);
+            BeginInstallAddIn(ErrInfo, StrTemplate("CommonTemplate.%1", AddInName));
+
+        EndDo;
+    #EndIf
+
+EndProcedure
+
+Procedure AfterAddInAttach(Val Connected, Val AddInName) Export
+
+    If Connected Then
+
+        ComponentType = StrTemplate("AddIn.%1.Main", AddInName);
+        AddIn         = New (ComponentType);
+
+        Try
+            ClientVersion = AddIn.Version();
+        Except
+            ClientVersion = ErrorDescription();
+        EndTry;
+
+    Else
+        ClientVersion = Undefined;
+    EndIf;
+
+    ConfigVersion = OPI_ToolsServerCall.GetAddInVersion(AddInName);
+
+    CallbackStructure = New Structure();
+    CallbackStructure.Insert("AddInName"     , AddInName);
+    CallbackStructure.Insert("ClientVersion" , ClientVersion);
+    CallbackStructure.Insert("ConfigVersion" , ConfigVersion);
+
+    Notify("OPI_InstallationFinish", CallbackStructure);
+
+EndProcedure
+
 Function GetAddInVersionsList() Export
 
     AddInTemplateList = OPI_ToolsServerCall.GetAddInList();
@@ -124,46 +165,17 @@ Function GetAddInVersionsList() Export
 
 EndFunction
 
-Procedure UpdateAddInsOnClient(Val AddInsNames) Export
+Function GetAddInsCachePath() Export
 
-    #If Client Then
-        For Each AddInName In AddInsNames Do
+    // BSLLS:UsingHardcodePath-off
 
-            ErrInfo = New CallbackDescription("ConnectComponent", ThisObject, AddInName);
-            BeginInstallAddIn(ErrInfo, StrTemplate("CommonTemplate.%1", AddInName));
+    Return ?(OPI_Tools.IsWindows()
+        , "%APPDATA%\1C\1Cv8\ExtCompT"
+        , "~/.1cv8/1C/1Cv8/ExtCompT/");
 
-        EndDo;
-    #EndIf
+    // BSLLS:UsingHardcodePath-on
 
-EndProcedure
-
-Procedure AfterAddInAttach(Val Connected, Val AddInName) Export
-
-    If Connected Then
-
-        ComponentType = StrTemplate("AddIn.%1.Main", AddInName);
-        AddIn         = New (ComponentType);
-
-        Try
-            ClientVersion = AddIn.Version();
-        Except
-            ClientVersion = ErrorDescription();
-        EndTry;
-
-    Else
-        ClientVersion = Undefined;
-    EndIf;
-
-    ConfigVersion = OPI_ToolsServerCall.GetAddInVersion(AddInName);
-
-    CallbackStructure = New Structure();
-    CallbackStructure.Insert("AddInName"     , AddInName);
-    CallbackStructure.Insert("ClientVersion" , ClientVersion);
-    CallbackStructure.Insert("ConfigVersion" , ConfigVersion);
-
-    Notify("OPI_InstallationFinish", CallbackStructure);
-
-EndProcedure
+EndFunction
 
 #EndRegion
 

@@ -668,41 +668,18 @@ Function ProcessServerStream(Val Connection
             EndIf;
         EndIf;
 
-        CurrentMessage = GetMessage(Connector, StreamID);
+        Error = ProcessNextMessage(Connector, StreamID, MessagesArray);
 
-        If Not CurrentMessage["result"] Then
-
-            Error = CurrentMessage["error"];
-
-            ErrorMap = New Map;
-            ErrorMap.Insert("result", False);
-            ErrorMap.Insert("error" , Error);
-            ErrorMap.Insert("data"  , MessagesArray);
-
-            CloseStream(Connector, StreamID);
-
-            If CloseConnection Then
-                CloseConnection(Connector);
-            EndIf;
-
-            Return ErrorMap;
-
-        Else
-
-            MessageData = CurrentMessage["message"];
-            MessagesArray.Add(MessageData);
-
+        If ValueIsFilled(Error) Then
+            FinishTransfer(Connector, StreamID, CloseConnection);
+            Return Error;
         EndIf;
 
         Counter = Counter + 1;
 
     EndDo;
 
-    CloseStream(Connector, StreamID);
-
-    If CloseConnection Then
-        CloseConnection(Connector);
-    EndIf;
+    FinishTransfer(Connector, StreamID, CloseConnection);
 
     ResultMap = New Map;
     ResultMap.Insert("result", True);
@@ -856,11 +833,7 @@ Function ProcessBidirectionalStream(Val Connection
 
         If ActionResult <> Undefined Then
 
-            CloseStream(Connector, StreamID);
-
-            If CloseConnection Then
-                CloseConnection(Connector);
-            EndIf;
+            FinishTransfer(Connector, StreamID, CloseConnection);
 
             Return ActionResult;
 
@@ -1107,6 +1080,44 @@ Function PerformExchangeOperation(Val StreamID, Val Action, Connector, ReceivedA
     Return Undefined;
 
 EndFunction
+
+Function ProcessNextMessage(Val Connector, Val StreamID, MessagesArray)
+
+    CurrentMessage = GetMessage(Connector, StreamID);
+
+    If Not CurrentMessage["result"] Then
+
+        Error = CurrentMessage["error"];
+
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , Error);
+        ErrorMap.Insert("data"  , MessagesArray);
+
+        Result = ErrorMap;
+
+    Else
+
+        MessageData = CurrentMessage["message"];
+        MessagesArray.Add(MessageData);
+
+        Result = Undefined;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Procedure FinishTransfer(Val Connector, Val StreamID, Val CloseConnection)
+
+    CloseStream(Connector, StreamID);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
+
+EndProcedure
 
 #EndRegion
 

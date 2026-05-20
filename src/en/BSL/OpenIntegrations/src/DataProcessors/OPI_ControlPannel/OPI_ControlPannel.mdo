@@ -11,13 +11,9 @@
   </synonym>
   <comment>OpenIntegrations extension control panel</comment>
   <useStandardCommands>true</useStandardCommands>
-  <defaultForm>DataProcessor.OPI_ControlPannel.Form. Form</defaultForm>
+  <defaultForm>DataProcessor.OPI_ControlPannel.Form.Form</defaultForm>
   <forms uuid="7db278df-14b8-4752-8cdd-ba389b6a669f">
-    <name> Form</name>
-    <synonym>
-      <key></key>
-      <value> Form</value>
-    </synonym>
+    <name>Form</name>
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>

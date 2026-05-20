@@ -35,6 +35,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:LineLength-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region

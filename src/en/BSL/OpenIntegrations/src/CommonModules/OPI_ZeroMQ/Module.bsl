@@ -424,7 +424,7 @@ Function InitializeConnector(Val AddressPort, Val View, Val Logging = Undefined)
         OPI_TypeConversion.GetLine(AddressPort);
         OPI_Tools.RestoreEscapeSequences(AddressPort);
     Else
-        OPI_TypeConversion.GetNumber(AddressPort)
+        OPI_TypeConversion.GetNumber(AddressPort);
     EndIf;
 
     ZMQ = OPI_AddIns.GetAddIn("ZeroMQ");
@@ -452,27 +452,37 @@ Function InitializeConnector(Val AddressPort, Val View, Val Logging = Undefined)
 
     EndIf;
 
+    Result = ExecuteInitialization(ZMQ, AddressPort, View);
+
+    Return ?(Result["result"], ZMQ, Result);
+
+EndFunction
+
+Function ExecuteInitialization(Val Connector, Val AddressPort, Val View)
+
     If View    = "ConnectReq" Then
-        Result = ZMQ.ConnectReq(AddressPort);
+        Result = Connector.ConnectReq(AddressPort);
     ElsIf View = "ConnectSub" Then
-        Result = ZMQ.ConnectSub(AddressPort);
+        Result = Connector.ConnectSub(AddressPort);
     ElsIf View = "ConnectPush" Then
-        Result = ZMQ.ConnectPush(AddressPort);
+        Result = Connector.ConnectPush(AddressPort);
     ElsIf View = "ConnectPull" Then
-        Result = ZMQ.ConnectPull(AddressPort);
+        Result = Connector.ConnectPull(AddressPort);
     ElsIf View = "BindRep" Then
-        Result = ZMQ.BindRep(AddressPort);
+        Result = Connector.BindRep(AddressPort);
     ElsIf View = "BindPub" Then
-        Result = ZMQ.BindPub(AddressPort);
+        Result = Connector.BindPub(AddressPort);
     ElsIf View = "BindPush" Then
-        Result = ZMQ.BindPush(AddressPort);
+        Result = Connector.BindPush(AddressPort);
     ElsIf View = "BindPull" Then
-        Result = ZMQ.BindPull(AddressPort);
+        Result = Connector.BindPull(AddressPort);
+    Else
+        Raise "Unsupported ZMQ initialization type!"
     EndIf;
 
     Result = OPI_Tools.JsonToStructure(Result);
 
-    Return ?(Result["result"], ZMQ, Result);
+    Return Result;
 
 EndFunction
 

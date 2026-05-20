@@ -5,7 +5,7 @@
     <id>52</id>
     <title>
       <key>en</key>
-      <value>&lt;fontsize 14>&lt;b>Пanotль упрainленandя extension OPI&lt;/>&lt;/></value>
+      <value>&lt;fontsize 14>&lt;b>OpenIntegrations extension control panel&lt;/>&lt;/></value>
     </title>
     <visible>true</visible>
     <enabled>true</enabled>
@@ -187,7 +187,7 @@
           <id>66</id>
           <title>
             <key>en</key>
-            <value>Лandцензandя (руwithwithtoandй)</value>
+            <value>License (Russian)</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -218,7 +218,7 @@
           <id>68</id>
           <title>
             <key>en</key>
-            <value>Лandцензandя (english)</value>
+            <value>License (English)</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -365,7 +365,7 @@
       </userVisible>
       <title>
         <key></key>
-        <value>Group yлaintoя</value>
+        <value>Group main</value>
       </title>
       <title>
         <key>en</key>
@@ -373,7 +373,7 @@
       </title>
       <toolTip>
         <key></key>
-        <value>Group yлaintoя</value>
+        <value>Group main</value>
       </toolTip>
       <extendedTooltip>
         <name>GroupMainExtendedTooltip</name>
@@ -464,7 +464,7 @@
           <id>38</id>
           <title>
             <key>en</key>
-            <value>Обbutinandть withпandwithto</value>
+            <value>Update list</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -497,7 +497,7 @@
           <id>40</id>
           <title>
             <key>en</key>
-            <value>Set components to clientе</value>
+            <value>Install AddIns OnClient</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -528,6 +528,10 @@
         <items xsi:type="form:Button">
           <name>OpenCacheFolder</name>
           <id>42</id>
+          <title>
+            <key>en</key>
+            <value>Open cache folder</value>
+          </title>
           <visible>true</visible>
           <enabled>true</enabled>
           <userVisible>
@@ -561,7 +565,7 @@
         </userVisible>
         <title>
           <key></key>
-          <value>Group inыделенandе</value>
+          <value>Group selection</value>
         </title>
         <title>
           <key>en</key>
@@ -569,7 +573,7 @@
         </title>
         <toolTip>
           <key></key>
-          <value>Group inыделенandе</value>
+          <value>Group selection</value>
         </toolTip>
         <extendedTooltip>
           <name>GroupCommandsExtendedTooltip</name>
@@ -686,7 +690,7 @@
           <id>26</id>
           <title>
             <key>en</key>
-            <value>Version in toheфandyурaцandand</value>
+            <value>Configuration version</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -731,7 +735,7 @@
           <id>35</id>
           <title>
             <key>en</key>
-            <value>Version clienta</value>
+            <value>Client version</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -822,7 +826,7 @@
             </extInfo>
           </extendedTooltip>
           <contextMenu>
-            <name>AddInsVersionsStateПрowithмoтрaContextMenu</name>
+            <name>AddInsVersionsViewStateContextMenu</name>
             <id>15</id>
             <autoFill>true</autoFill>
           </contextMenu>
@@ -834,10 +838,10 @@
         </viewStatusAddition>
         <searchControlAddition>
           <enabled>false</enabled>
-          <name>AddInsVersionsУпрainленandеSearchoм</name>
+          <name>AddInsVersionsSearchControl</name>
           <id>17</id>
           <extendedTooltip>
-            <name>AddInsVersionsУпрainленandеSearchoмExtendedTooltip</name>
+            <name>AddInsVersionsSearchControlExtendedTooltip</name>
             <id>19</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
@@ -847,7 +851,7 @@
             </extInfo>
           </extendedTooltip>
           <contextMenu>
-            <name>AddInsVersionsУпрainленandеSearchoмContextMenu</name>
+            <name>AddInsVersionsSearchControlContextMenu</name>
             <id>18</id>
             <autoFill>true</autoFill>
           </contextMenu>
@@ -892,7 +896,7 @@
         <rowFilter xsi:type="core:UndefinedValue"/>
       </items>
       <items xsi:type="form:FormGroup">
-        <name>GroupToдwithtoaзtoa</name>
+        <name>GroupTip</name>
         <id>44</id>
         <items xsi:type="form:Decoration">
           <name>ImageAttention</name>
@@ -931,15 +935,15 @@
           </extInfo>
         </items>
         <items xsi:type="form:Decoration">
-          <name>NaдпandwithьToдwithtoaзtoa</name>
+          <name>LabelTip</name>
           <id>49</id>
           <title>
             <key>en</key>
-            <value>&lt;b>Toрядoto oбbutinленandя tooмtonotнт to clientе when oбbutinленandand рawithшandренandя to butinую inерwithandю:&lt;/>
-1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open toaтaлoy toэшa&lt;/> or inручную
-2. Delete fileы tooмtonotнт OPI (with перфandtowithм AddIn.OPI_)
-3. Переlaunch whenлoженandе and inернутwithя in дaнную oбрaбoтtoу
-4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Set components to clientе&lt;/></value>
+            <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
+1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
+3. Restart the application and open this wizard again
+4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
@@ -947,7 +951,7 @@
             <common>true</common>
           </userVisible>
           <extendedTooltip>
-            <name>NaдпandwithьToдwithtoaзtoaExtendedTooltip</name>
+            <name>LabelTipExtendedTooltip</name>
             <id>51</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>
@@ -957,7 +961,7 @@
             </extInfo>
           </extendedTooltip>
           <contextMenu>
-            <name>NaдпandwithьToдwithtoaзtoaContextMenu</name>
+            <name>LabelTipContextMenu</name>
             <id>50</id>
             <autoFill>true</autoFill>
           </contextMenu>
@@ -974,7 +978,7 @@
           <common>true</common>
         </userVisible>
         <extendedTooltip>
-          <name>GroupToдwithtoaзtoaExtendedTooltip</name>
+          <name>GroupTipExtendedTooltip</name>
           <id>45</id>
           <type>Label</type>
           <autoMaxWidth>true</autoMaxWidth>
@@ -999,15 +1003,15 @@
       </userVisible>
       <title>
         <key></key>
-        <value>Group innotшнandе components client</value>
+        <value>Group external AddIns client</value>
       </title>
       <title>
         <key>en</key>
-        <value>External components (client)</value>
+        <value>AddIns (client)</value>
       </title>
       <toolTip>
         <key></key>
-        <value>Group innotшнandе components client</value>
+        <value>Group external AddIns client</value>
       </toolTip>
       <extendedTooltip>
         <name>GroupAddInsClientExtendedTooltip</name>
@@ -1032,11 +1036,11 @@
     </userVisible>
     <title>
       <key></key>
-      <value>Group mainointoя</value>
+      <value>Group main</value>
     </title>
     <toolTip>
       <key></key>
-      <value>Group mainointoя</value>
+      <value>Group main</value>
     </toolTip>
     <extendedTooltip>
       <name>GroupMainExtendedTooltip</name>
@@ -1095,7 +1099,7 @@
     <name>AddInsVersions</name>
     <title>
       <key></key>
-      <value>Inерwithandand tooмtonotнт</value>
+      <value>AddIns versions</value>
     </title>
     <id>2</id>
     <valueType>
@@ -1128,7 +1132,7 @@
       <name>AddInName</name>
       <title>
         <key></key>
-        <value>Name components</value>
+        <value>AddIn name</value>
       </title>
       <id>2</id>
       <valueType>
@@ -1146,7 +1150,7 @@
       <name>ConfigVersion</name>
       <title>
         <key></key>
-        <value>Version toheфandyурaцandand</value>
+        <value>Configuartion version</value>
       </title>
       <id>3</id>
       <valueType>
@@ -1164,7 +1168,7 @@
       <name>ClientVersion</name>
       <title>
         <key></key>
-        <value>Version clienta</value>
+        <value>Client version</value>
       </title>
       <id>4</id>
       <valueType>
@@ -1183,12 +1187,12 @@
     <name>AddInsClientEnableAll</name>
     <title>
       <key></key>
-      <value>External components client enable all</value>
+      <value>AddIns client enable all</value>
     </title>
     <id>1</id>
     <toolTip>
       <key></key>
-      <value>External components client enable all</value>
+      <value>AddIns client enable all</value>
     </toolTip>
     <use>
       <common>true</common>
@@ -1204,12 +1208,12 @@
     <name>AddInsClientDisableAll</name>
     <title>
       <key></key>
-      <value>External components client disable all</value>
+      <value>AddIns client disable all</value>
     </title>
     <id>2</id>
     <toolTip>
       <key></key>
-      <value>External components client disable all</value>
+      <value>AddIns client disable all</value>
     </toolTip>
     <use>
       <common>true</common>

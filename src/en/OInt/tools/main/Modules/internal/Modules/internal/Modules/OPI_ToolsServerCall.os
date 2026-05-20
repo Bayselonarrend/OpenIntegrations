@@ -33,6 +33,8 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:DeprecatedCurrentDate-off
+// BSLLS:CommentedCode-off
+// BSLLS:LineLength-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
@@ -201,13 +203,13 @@ Function GetHMACHash(Val Key, Val Data, Val HashFunc) Export
     Opad.WriteBitwiseXor(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
 
-    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc)
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc);
 
 EndFunction
 
 #EndRegion
 
-#Region Internal
+#Region Private
 
 Function UniteBinaryData(BinaryData1, BinaryData2)
 

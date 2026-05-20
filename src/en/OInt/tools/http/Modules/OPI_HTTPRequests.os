@@ -66,8 +66,14 @@ Function NewRequest() Export
     Else
 
         #If AtClient Then
+
+            // BSLLS:GetFormMethod-off
+
             // !IRPSkip
             HTTPClient = GetForm("DataProcessor.OPI_HTTPClient.Form.ClientCallObject");
+
+            // BSLLS:GetFormMethod-on
+
         #Else
         #EndIf
 
