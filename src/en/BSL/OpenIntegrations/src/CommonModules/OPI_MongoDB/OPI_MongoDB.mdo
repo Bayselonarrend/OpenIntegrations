@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>MongoDB (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>MongoDB (OpenIntegrations)</value>
   </synonym>
   <comment>MongoDB Module of OpenIntegrations</comment>

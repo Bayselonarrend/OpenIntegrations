@@ -8,7 +8,7 @@
   <synonym>
     <key>en</key>
     <value>HTTP Client (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>HTTP Client (OpenIntegrations)</value>
   </synonym>
   <comment>HTTP Client of OpenIntegrations</comment>
@@ -19,7 +19,7 @@
     <synonym>
       <key>en</key>
       <value>Object clientwithtooyo call</value>
-      <key>en</key>
+      <key>ru</key>
       <value>Object clientwithtooyo call</value>
     </synonym>
     <usePurposes>PersonalComputer</usePurposes>

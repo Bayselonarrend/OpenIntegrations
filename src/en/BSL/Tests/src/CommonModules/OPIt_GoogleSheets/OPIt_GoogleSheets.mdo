@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b9ac46d9-471a-44fc-8ba1-fe60f69874ad">
   <name>OPIt_GoogleSheets</name>
   <synonym>
-    <key>en</key>
+    <key>ru</key>
     <value>GoogleSheets</value>
   </synonym>
   <clientManagedApplication>true</clientManagedApplication>

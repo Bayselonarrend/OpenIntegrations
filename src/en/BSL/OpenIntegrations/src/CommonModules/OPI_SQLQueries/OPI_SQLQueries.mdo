@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>SQL (Utility, OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>SQL (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Common SQL Tools Module of OpenIntegrations</comment>

@@ -8,7 +8,7 @@
   <synonym>
     <key>en</key>
     <value>SQLite (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>SQLite (OpenIntegrations)</value>
   </synonym>
   <comment>SQLite Module of OpenIntegrations</comment>

@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>RSS (OPI)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>RSS (OPI)</value>
   </synonym>
   <comment>Module for work with RSS from of set OPI</comment>

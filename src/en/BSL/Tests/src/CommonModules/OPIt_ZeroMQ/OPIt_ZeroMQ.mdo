@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e4fdeef2-4faf-40a3-b21b-83f979404a45">
   <name>OPIt_ZeroMQ</name>
   <synonym>
-    <key>en</key>
+    <key>ru</key>
     <value>ZeroMQ</value>
   </synonym>
   <clientManagedApplication>true</clientManagedApplication>

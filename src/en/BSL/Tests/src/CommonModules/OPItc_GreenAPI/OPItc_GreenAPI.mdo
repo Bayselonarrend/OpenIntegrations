@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="230b2901-b485-4f0b-9fd0-0a36f2098b1b">
   <name>OPItc_GreenAPI</name>
   <synonym>
-    <key>en</key>
+    <key>ru</key>
     <value>GreenAPI</value>
   </synonym>
   <server>true</server>

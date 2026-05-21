@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>OpenIntegrations</value>
-    <key>en</key>
+    <key>ru</key>
     <value>OpenIntegrations</value>
   </synonym>
   <comment>A set of tools for integration with popular APIs and technologies</comment>
@@ -33,25 +33,25 @@
   <detailedInformation>
     <key>en</key>
     <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
-    <key>en</key>
+    <key>ru</key>
     <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
   </detailedInformation>
   <copyright>
     <key>en</key>
     <value>Copyright (c) 2023-2026 Anton Tsitavets</value>
-    <key>en</key>
+    <key>ru</key>
     <value>Copyright (c) 2023-2026 Anton Tsitavets</value>
   </copyright>
   <vendorInformationAddress>
     <key>en</key>
     <value>https://github.com/Bayselonarrend</value>
-    <key>en</key>
+    <key>ru</key>
     <value>https://github.com/Bayselonarrend</value>
   </vendorInformationAddress>
   <configurationInformationAddress>
     <key>en</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
-    <key>en</key>
+    <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
   <compatibilityMode>8.3.10</compatibilityMode>
