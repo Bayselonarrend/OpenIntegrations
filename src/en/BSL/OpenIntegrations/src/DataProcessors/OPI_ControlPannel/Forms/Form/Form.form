@@ -975,16 +975,16 @@
           <title>
             <key>en</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open the external components folder (ExtCompT) using the &quot;Open cache folder&quot; button or manually
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
-4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
+4. Select the required components and click &quot;Install AddIns OnClient&quot;</value>
             <key>ru</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open the external components folder (ExtCompT) using the &quot;Open cache folder&quot; button or manually
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
-4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
+4. Select the required components and click &quot;Install AddIns OnClient&quot;</value>
           </title>
           <visible>true</visible>
           <enabled>true</enabled>
