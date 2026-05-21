@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:DataProcessor xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d28e1c58-e694-490d-9b8a-cf3d8418a465">
   <producedTypes>
     <objectType typeId="f8380b17-fc17-434c-af09-1e256a999b26" valueTypeId="1903aff0-3cae-41d2-9206-534e13cff1a3"/>
@@ -6,8 +6,6 @@
   </producedTypes>
   <name>OPI_HTTPКлиент</name>
   <synonym>
-    <key>en</key>
-    <value>HTTP-клиент (ОПИ)</value>
     <key>ru</key>
     <value>HTTP-клиент (ОПИ)</value>
   </synonym>
@@ -17,8 +15,6 @@
   <forms uuid="d022c24d-3a47-44f1-ad62-c6d4a395aac9">
     <name>ОбъектКлиентскогоВызова</name>
     <synonym>
-      <key>en</key>
-      <value>Объект клиентского вызова</value>
       <key>ru</key>
       <value>Объект клиентского вызова</value>
     </synonym>
