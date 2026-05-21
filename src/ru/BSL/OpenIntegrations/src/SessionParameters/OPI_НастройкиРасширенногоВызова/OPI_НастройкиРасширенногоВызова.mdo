@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:SessionParameter xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b0894aa8-b61d-4bd1-a606-5099b00bce0a">
   <name>OPI_НастройкиРасширенногоВызова</name>
   <synonym>
+    <key>en</key>
+    <value>Настройки расширенного вызова (ОПИ)</value>
     <key>ru</key>
     <value>Настройки расширенного вызова (ОПИ)</value>
   </synonym>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3bf39c90-a263-4300-b800-7fd85f7c6d40">
   <name>OPI_GoogleDrive</name>
   <synonym>
@@ -6,6 +6,8 @@
     <value>OPI google drive</value>
   </synonym>
   <synonym>
+    <key>en</key>
+    <value>Google Drive (ОПИ)</value>
     <key>ru</key>
     <value>Google Drive (ОПИ)</value>
   </synonym>
