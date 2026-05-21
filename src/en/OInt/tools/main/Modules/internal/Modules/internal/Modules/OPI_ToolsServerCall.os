@@ -172,7 +172,7 @@ Function GetAddInList() Export
     For Each Template In Metadata.CommonTemplates Do
 
         If StrStartsWith(Template.Name, "OPI_")
-            And String(Template.TemplateType) = "AddIn" Then
+            And Template.TemplateType = Metadata.ObjectProperties.TemplateType.AddIn Then
 
             TemplatesNameArray.Add(Template.Name);
 
