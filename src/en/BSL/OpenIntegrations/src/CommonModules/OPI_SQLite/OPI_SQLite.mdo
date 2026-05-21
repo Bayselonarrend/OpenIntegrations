@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>SQLite (OpenIntegrations)</value>
+    <key>en</key>
+    <value>SQLite (OpenIntegrations)</value>
   </synonym>
   <comment>SQLite Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

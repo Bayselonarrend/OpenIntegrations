@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>FTP Component (OpenIntegrations)</value>
+    <key>en</key>
+    <value>FTP Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

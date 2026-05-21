@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Ollama (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Ollama (OpenIntegrations)</value>
   </synonym>
   <comment>Ollama Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

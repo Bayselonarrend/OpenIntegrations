@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>OpenAI (OPI)</value>
+    <key>en</key>
+    <value>OpenAI (OPI)</value>
   </synonym>
   <comment>OpenAI API Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

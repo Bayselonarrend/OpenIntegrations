@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>TCP Client Component (OpenIntegrations)</value>
+    <key>en</key>
+    <value>TCP Client Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Advanced call (OPI)</value>
+    <key>en</key>
+    <value>Advanced call (OPI)</value>
   </synonym>
   <comment>Module for calling methods with advanced parameter set</comment>
   <clientManagedApplication>true</clientManagedApplication>

@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Neocities (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Neocities (OpenIntegrations)</value>
   </synonym>
   <comment>Neocities Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

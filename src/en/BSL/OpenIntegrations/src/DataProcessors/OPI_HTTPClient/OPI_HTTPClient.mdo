@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>HTTP Client (OpenIntegrations)</value>
+    <key>en</key>
+    <value>HTTP Client (OpenIntegrations)</value>
   </synonym>
   <comment>HTTP Client of OpenIntegrations</comment>
   <useStandardCommands>true</useStandardCommands>
@@ -15,6 +17,8 @@
   <forms uuid="d022c24d-3a47-44f1-ad62-c6d4a395aac9">
     <name>ClientCallObject</name>
     <synonym>
+      <key>en</key>
+      <value>Object clientwithtooyo call</value>
       <key>en</key>
       <value>Object clientwithtooyo call</value>
     </synonym>

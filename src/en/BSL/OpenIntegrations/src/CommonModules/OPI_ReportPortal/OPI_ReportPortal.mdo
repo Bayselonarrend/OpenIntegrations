@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>ReportPortal (OpenIntegrations)</value>
+    <key>en</key>
+    <value>ReportPortal (OpenIntegrations)</value>
   </synonym>
   <comment>ReportPortal Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

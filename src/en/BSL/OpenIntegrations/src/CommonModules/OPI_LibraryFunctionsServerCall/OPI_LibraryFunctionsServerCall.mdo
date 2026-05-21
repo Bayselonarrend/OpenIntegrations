@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Library functions (server call, utility, OpenIntegrations)</value>
+    <key>en</key>
+    <value>Library functions (server call, utility, OpenIntegrations)</value>
   </synonym>
   <comment>Individual library functions that cannot be implemented on the client side</comment>
   <server>true</server>

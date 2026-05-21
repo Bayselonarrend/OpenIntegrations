@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>YandexID (OpenIntegrations)</value>
+    <key>en</key>
+    <value>YandexID (OpenIntegrations)</value>
   </synonym>
   <comment>YandexID Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

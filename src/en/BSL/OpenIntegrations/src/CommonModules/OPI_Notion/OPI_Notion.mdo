@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Notion (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Notion (OpenIntegrations)</value>
   </synonym>
   <comment>Notion Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>SSH (Utility, OpenIntegrations)</value>
+    <key>en</key>
+    <value>SSH (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Common SSH Tools Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

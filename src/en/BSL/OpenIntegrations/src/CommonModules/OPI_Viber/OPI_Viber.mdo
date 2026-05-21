@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Viber (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Viber (OpenIntegrations)</value>
   </synonym>
   <comment>Viber Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

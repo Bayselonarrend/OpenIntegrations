@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>HTTP (service, OpenIntegrations)</value>
+    <key>en</key>
+    <value>HTTP (service, OpenIntegrations)</value>
   </synonym>
   <comment>Utility HTTP Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

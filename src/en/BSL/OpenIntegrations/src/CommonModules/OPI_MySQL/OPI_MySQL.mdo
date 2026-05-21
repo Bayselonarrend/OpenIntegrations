@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>MySQL (OpenIntegrations)</value>
+    <key>en</key>
+    <value>MySQL (OpenIntegrations)</value>
   </synonym>
   <comment>MySQL Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

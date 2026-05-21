@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Green API (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Green API (OpenIntegrations)</value>
   </synonym>
   <comment>WhatsApp via GreenAPI Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

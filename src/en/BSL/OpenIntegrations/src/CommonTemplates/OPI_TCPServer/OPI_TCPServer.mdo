@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>AddIn TCP-of server (OPI)</value>
+    <key>en</key>
+    <value>AddIn TCP-of server (OPI)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>
