@@ -1351,12 +1351,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьСайт</name>
-    <title>
-      <key>en</key>
-      <value>Открыть сайт</value>
-      <key>ru</key>
-      <value>Открыть сайт</value>
-    </title>
     <id>8</id>
     <use>
       <common>true</common>
@@ -1370,10 +1364,6 @@
   </formCommands>
   <formCommands>
     <name>ОткрытьGitHub</name>
-    <title>
-      <key>ru</key>
-      <value>Открыть git hub</value>
-    </title>
     <id>9</id>
     <use>
       <common>true</common>
