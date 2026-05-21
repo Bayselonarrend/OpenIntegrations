@@ -1,7 +1,7 @@
 ﻿{
  "kind": "calendar#calendarListEntry",
- "etag": "\"1779388909547023\"",
- "id": "4e1df1350e82f02e25fbbf566671fbeebdab2f468ac3ca86c4a1145fc40fed18@group.calendar.google.com",
+ "etag": "\"1779392576644383\"",
+ "id": "57f31e7bace668e14d37aa8e958e471bf1a0472bff9f63088cf129dbf76b0a3d@group.calendar.google.com",
  "summary": "Новое наименование",
  "description": "Новое описание",
  "timeZone": "Europe/Moscow",
@@ -9,6 +9,7 @@
  "colorId": "6",
  "backgroundColor": "#ffd800",
  "foregroundColor": "#000000",
+ "selected": true,
  "accessRole": "owner",
  "defaultReminders": [],
  "conferenceProperties": {

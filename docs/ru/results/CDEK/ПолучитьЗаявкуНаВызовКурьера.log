@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
-  "uuid": "3d00120e-6fd5-499c-84dc-3d3789a7d376",
-  "cdek_number": "1108480540",
-  "order_uuid": "412dd030-d3b3-49b4-896f-15d55240e6ea",
+  "uuid": "758393d5-dc28-4f04-9ba1-374b2bc5bb6d",
+  "cdek_number": "1108480548",
+  "order_uuid": "a5f304d2-6acd-4dc0-b4e1-b49a58e977cd",
   "intake_date": "2026-05-22",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
@@ -41,12 +41,12 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-21T21:54:43+03:00"
+    "date_time": "2026-05-21T19:55:49+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "f04f34ed-9cfa-4745-b5e9-22e9b83cf0d5",
+    "package_id": "62f53060-c897-4090-bba4-b404df632947",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -56,9 +56,9 @@
  },
  "requests": [
   {
-   "request_uuid": "7c817062-a3d1-4543-aa76-6a4fb9cf9fa7",
+   "request_uuid": "21ec2f81-f8ca-4b47-8426-defd72178015",
    "type": "CREATE",
-   "date_time": "2026-05-21T21:54:42+03:00",
+   "date_time": "2026-05-21T19:55:48+00:00",
    "state": "ACCEPTED"
   }
  ]
