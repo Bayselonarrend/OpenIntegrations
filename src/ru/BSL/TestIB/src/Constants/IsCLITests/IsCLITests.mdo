@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:Constant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="30c93373-4a4f-4abd-be22-c29e8dc820cf">
   <producedTypes>
     <managerType typeId="8dcf5bd1-6eef-4959-9d2a-160bf7050821" valueTypeId="e1eae433-df10-4782-bad3-9b2b0e8cbc49"/>
@@ -7,6 +7,8 @@
   </producedTypes>
   <name>IsCLITests</name>
   <synonym>
+    <key>en</key>
+    <value>Is CLITests</value>
     <key>ru</key>
     <value>Is CLITests</value>
   </synonym>

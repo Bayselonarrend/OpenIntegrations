@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="37508495-f1e9-49bd-b3f0-11df8078ca5b">
   <name>OPItc_MSSQL</name>
   <synonym>
+    <key>en</key>
+    <value>MSSQL</value>
     <key>ru</key>
     <value>MSSQL</value>
   </synonym>
