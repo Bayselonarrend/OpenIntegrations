@@ -14,16 +14,16 @@
    },
    {
     "name": "local",
-    "sizeOnDisk": 77824,
+    "sizeOnDisk": 81920,
     "empty": false
    },
    {
     "name": "main",
-    "sizeOnDisk": 73728,
+    "sizeOnDisk": 40960,
     "empty": false
    }
   ],
-  "totalSize": 401408,
+  "totalSize": 372736,
   "totalSizeMb": 0,
   "ok": 1
  }
