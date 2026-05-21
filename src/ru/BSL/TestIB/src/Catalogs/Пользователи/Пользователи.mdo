@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="26384b42-cc9a-4a51-b898-e193e284233d">
   <producedTypes>
     <objectType typeId="338c366a-7cd2-4916-acfb-70824e315cfc" valueTypeId="e29b2b2e-b5e6-44ca-ac5a-ba3b8eb1518d"/>
@@ -9,6 +9,8 @@
   </producedTypes>
   <name>Пользователи</name>
   <synonym>
+    <key>en</key>
+    <value>Пользователи</value>
     <key>ru</key>
     <value>Пользователи</value>
   </synonym>
@@ -33,6 +35,8 @@
   <attributes uuid="05d4c200-45e7-4c8b-b528-a225b4f201bf">
     <name>TelegramID</name>
     <synonym>
+      <key>en</key>
+      <value>Telegram ID</value>
       <key>ru</key>
       <value>Telegram ID</value>
     </synonym>
@@ -53,6 +57,8 @@
   <attributes uuid="654f0cab-3ca3-434e-b61f-535bfca53b6e">
     <name>Статус</name>
     <synonym>
+      <key>en</key>
+      <value>Статус</value>
       <key>ru</key>
       <value>Статус</value>
     </synonym>
