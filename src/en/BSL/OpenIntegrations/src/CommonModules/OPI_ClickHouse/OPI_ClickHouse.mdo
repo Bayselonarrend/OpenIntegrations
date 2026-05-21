@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>ClickHouse (OPI)</value>
+    <key>en</key>
+    <value>ClickHouse (OPI)</value>
   </synonym>
   <comment>Module for work with ClickHouse from of set OPI</comment>
   <clientManagedApplication>true</clientManagedApplication>

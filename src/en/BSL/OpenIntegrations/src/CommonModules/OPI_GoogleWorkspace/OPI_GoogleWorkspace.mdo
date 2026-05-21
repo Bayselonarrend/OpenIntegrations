@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>Google Workspace (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Google Workspace (OpenIntegrations)</value>
   </synonym>
   <comment>Google Workspace Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

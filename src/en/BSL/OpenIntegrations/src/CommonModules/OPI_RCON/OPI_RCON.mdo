@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>RCON (OpenIntegrations)</value>
+    <key>en</key>
+    <value>RCON (OpenIntegrations)</value>
   </synonym>
   <comment>RCON Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

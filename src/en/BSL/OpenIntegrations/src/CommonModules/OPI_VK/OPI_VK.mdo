@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>VK (OpenIntegrations)</value>
+    <key>en</key>
+    <value>VK (OpenIntegrations)</value>
   </synonym>
   <comment>VK Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

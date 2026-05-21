@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Yandex.Disk (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Yandex.Disk (OpenIntegrations)</value>
   </synonym>
   <comment>Yandex.Disk Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

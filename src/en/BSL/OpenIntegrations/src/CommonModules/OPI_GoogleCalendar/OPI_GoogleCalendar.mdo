@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>Google Calendar (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Google Calendar (OpenIntegrations)</value>
   </synonym>
   <comment>Google Calendar Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

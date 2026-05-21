@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Yandex Metrika (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Yandex Metrika (OpenIntegrations)</value>
   </synonym>
   <comment>Yandex Metrika Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

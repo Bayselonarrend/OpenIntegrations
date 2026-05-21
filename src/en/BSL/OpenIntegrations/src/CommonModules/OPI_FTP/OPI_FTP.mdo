@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>FTP (OpenIntegrations)</value>
+    <key>en</key>
+    <value>FTP (OpenIntegrations)</value>
   </synonym>
   <comment>FTP Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

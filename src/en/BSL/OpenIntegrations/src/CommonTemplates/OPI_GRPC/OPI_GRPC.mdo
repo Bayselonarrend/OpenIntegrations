@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>AddIn gRPC (OPI)</value>
+    <key>en</key>
+    <value>AddIn gRPC (OPI)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

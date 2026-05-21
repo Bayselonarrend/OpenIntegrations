@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>ZeroMQ (OPI)</value>
+    <key>en</key>
+    <value>ZeroMQ (OPI)</value>
   </synonym>
   <comment>ZeroMQ Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

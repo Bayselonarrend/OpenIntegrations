@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>PostgreSQL (OpenIntegrations)</value>
+    <key>en</key>
+    <value>PostgreSQL (OpenIntegrations)</value>
   </synonym>
   <comment>PostgreSQL Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

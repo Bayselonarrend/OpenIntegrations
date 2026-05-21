@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>VK Teams (OpenIntegrations)</value>
+    <key>en</key>
+    <value>VK Teams (OpenIntegrations)</value>
   </synonym>
   <comment>VK Teams Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

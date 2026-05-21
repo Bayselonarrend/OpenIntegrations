@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>TCP (OPI)</value>
+    <key>en</key>
+    <value>TCP (OPI)</value>
   </synonym>
   <comment>TCP Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

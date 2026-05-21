@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>ZeroMQ</value>
+    <key>en</key>
+    <value>ZeroMQ</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

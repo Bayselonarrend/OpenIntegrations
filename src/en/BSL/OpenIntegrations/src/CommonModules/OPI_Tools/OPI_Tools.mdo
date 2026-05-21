@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Tools (Utility, OpenIntegrations)</value>
+    <key>en</key>
+    <value>Tools (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Main Tools Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

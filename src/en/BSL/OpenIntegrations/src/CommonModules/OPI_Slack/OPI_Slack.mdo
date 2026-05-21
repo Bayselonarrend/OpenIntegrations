@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Slack (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Slack (OpenIntegrations)</value>
   </synonym>
   <comment>Slack Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

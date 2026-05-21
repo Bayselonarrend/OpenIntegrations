@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Text Proto-file for ClickHouse (OPI)</value>
+    <key>en</key>
+    <value>Text Proto-file for ClickHouse (OPI)</value>
   </synonym>
   <templateType>TextDocument</templateType>
 </mdclass:CommonTemplate>

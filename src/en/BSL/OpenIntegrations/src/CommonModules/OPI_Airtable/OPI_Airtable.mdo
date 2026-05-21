@@ -8,6 +8,8 @@
   <synonym>
     <key>en</key>
     <value>Airtable (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Airtable (OpenIntegrations)</value>
   </synonym>
   <comment>Airtable Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

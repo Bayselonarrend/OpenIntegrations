@@ -4,6 +4,8 @@
   <synonym>
     <key>en</key>
     <value>Extension management (OpenIntegrations)</value>
+    <key>en</key>
+    <value>Extension management (OpenIntegrations)</value>
   </synonym>
   <comment>Methods for managing OpenIntegrations extension settings</comment>
   <clientManagedApplication>true</clientManagedApplication>
