@@ -1,11 +1,11 @@
 ﻿{
  "entity": {
-  "uuid": "6000c674-d255-4f0f-8c05-d8ee96bebf6a",
+  "uuid": "1fb0b70a-65d8-465d-a447-b6a15c4c1444",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1107659122",
-  "number": "77a4a8b1-1ebf-41ac-be04-31d2683427ab",
+  "cdek_number": "1108480537",
+  "number": "9c6ab2f7-1dca-425f-8210-6a50a1b3917b",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -74,16 +74,6 @@
   },
   "services": [
    {
-    "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
-   },
-   {
     "code": "INSURANCE",
     "parameter": "600.00",
     "sum": 4.5,
@@ -92,12 +82,22 @@
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 0.9
+   },
+   {
+    "code": "SECURE_PACKAGE_A2",
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000002426340",
+    "barcode": "000003263385",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -123,21 +123,21 @@
       "cost": 300
      }
     ],
-    "package_id": "7034fd23-9dac-4110-8874-aef75da58fef"
+    "package_id": "75002ca7-f4f0-45c7-9d2c-a8b2a26e3bf5"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-05-16T16:29:54+03:00",
+    "date_time": "2026-05-21T21:53:29+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-16T16:29:53+03:00",
+    "date_time": "2026-05-21T21:53:27+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -158,9 +158,9 @@
  },
  "requests": [
   {
-   "request_uuid": "76bb71f6-e3b3-4a0d-be0d-aede723630b0",
+   "request_uuid": "8fae0c2e-9f8f-4d76-832a-8cac8eb2f7d3",
    "type": "CREATE",
-   "date_time": "2026-05-16T16:29:54+03:00",
+   "date_time": "2026-05-21T21:53:28+03:00",
    "state": "SUCCESSFUL"
   }
  ],

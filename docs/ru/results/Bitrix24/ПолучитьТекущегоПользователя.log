@@ -6,12 +6,12 @@
   "NAME": "Антон",
   "LAST_NAME": "Титовец",
   "EMAIL": "no-reply@bitrix24.com",
-  "LAST_LOGIN": "2026-03-03T19:32:15+03:00",
+  "LAST_LOGIN": "2026-05-17T21:55:11+03:00",
   "DATE_REGISTER": "2024-02-10T03:00:00+03:00",
   "TIME_ZONE": "Europe/Minsk",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "16.05.2026 16:28:03",
-  "LAST_ACTIVITY_DATE": "2026-03-03 19:33:56",
+  "TIMESTAMP_X": "21.05.2026 21:50:35",
+  "LAST_ACTIVITY_DATE": "2026-05-17 23:27:04",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
   "PERSONAL_PHOTO": "https://cdn-ru.bitrix24.by/b28528874/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684ca...",
@@ -22,13 +22,13 @@
   ]
  },
  "time": {
-  "start": 1778938085,
-  "finish": 1778938085.7893,
-  "duration": 0.789299964904785,
+  "start": 1779389437,
+  "finish": 1779389437.32908,
+  "duration": 0.329077005386353,
   "processing": 0,
-  "date_start": "2026-05-16T16:28:05+03:00",
-  "date_finish": "2026-05-16T16:28:05+03:00",
-  "operating_reset_at": 1778938685,
+  "date_start": "2026-05-21T21:50:37+03:00",
+  "date_finish": "2026-05-21T21:50:37+03:00",
+  "operating_reset_at": 1779390037,
   "operating": 0
  }
 }

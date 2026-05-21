@@ -60,7 +60,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630007",
-   "longitude": 82.92912,
+   "longitude": 82.929124,
    "latitude": 55.01591,
    "address": "ул. Кривощековская, 15, корп.1",
    "address_full": "630007, Россия, Новосибирская область, Новосибирск, ул. Кривощековская, 15, корп.1",
@@ -131,8 +131,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630049",
-   "longitude": 82.91155,
-   "latitude": 55.054855,
+   "longitude": 82.9115524,
+   "latitude": 55.0548553,
    "address": "пр-т Красный, 99",
    "address_full": "630049, Россия, Новосибирская область, Новосибирск, пр-т Красный, 99",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -204,8 +204,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630088",
-   "longitude": 82.89883,
-   "latitude": 54.938187,
+   "longitude": 82.8988266,
+   "latitude": 54.9381866,
    "address": "ул. Зорге, 1а",
    "address_full": "630088, Россия, Новосибирская область, Новосибирск, ул. Зорге, 1а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -281,8 +281,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630090",
-   "longitude": 83.09567,
-   "latitude": 54.839066,
+   "longitude": 83.0956726,
+   "latitude": 54.8390656,
    "address": "ул. Ильича, 6",
    "address_full": "630090, Россия, Новосибирская область, Новосибирск, ул. Ильича, 6",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -352,8 +352,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630089",
-   "longitude": 82.97488,
-   "latitude": 55.03591,
+   "longitude": 82.9748764,
+   "latitude": 55.0359116,
    "address": "ул. Бориса Богаткова, 203/1",
    "address_full": "630089, Россия, Новосибирская область, Новосибирск, ул. Бориса Богаткова, 203/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -426,8 +426,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630110",
-   "longitude": 82.96555,
-   "latitude": 55.08216,
+   "longitude": 82.9655533,
+   "latitude": 55.0821609,
    "address": "ул. Богдана Хмельницкого, 63",
    "address_full": "630110, Россия, Новосибирская область, Новосибирск, ул. Богдана Хмельницкого, 63",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -499,8 +499,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630007",
-   "longitude": 82.93568,
-   "latitude": 55.04338,
+   "longitude": 82.9356766,
+   "latitude": 55.0433807,
    "address": "ул. Гоголя, 38",
    "address_full": "630007, Россия, Новосибирская область, Новосибирск, ул. Гоголя, 38",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -574,7 +574,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630102",
-   "longitude": 82.9397,
+   "longitude": 82.9396973,
    "latitude": 55.011837,
    "address": "ул. Восход, 1а, 105",
    "address_full": "630102, Россия, Новосибирская область, Новосибирск, ул. Восход, 1а, 105",
@@ -650,8 +650,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630037",
-   "longitude": 83.09664,
-   "latitude": 54.972446,
+   "longitude": 83.0966415,
+   "latitude": 54.9724464,
    "address": "ул. Героев Революции, 5/2",
    "address_full": "630037, Россия, Новосибирская область, Новосибирск, ул. Героев Революции, 5/2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -724,8 +724,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630088",
-   "longitude": 82.886894,
-   "latitude": 54.951065,
+   "longitude": 82.886895,
+   "latitude": 54.951064,
    "address": "пр. Северный, 3/8",
    "address_full": "630088, Россия, Новосибирская область, Новосибирск, пр. Северный, 3/8",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -799,7 +799,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630126",
-   "longitude": 83.00474,
+   "longitude": 83.004736,
    "latitude": 54.99761,
    "address": "ул. Выборная, 122",
    "address_full": "630126, Россия, Новосибирская область, Новосибирск, ул. Выборная, 122",
@@ -872,8 +872,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630039",
-   "longitude": 83.01152,
-   "latitude": 55.036728,
+   "longitude": 83.011519,
+   "latitude": 55.036726,
    "address": "Гусинобродское ш., 62 к.1",
    "address_full": "630039, Россия, Новосибирская область, Новосибирск, Гусинобродское ш., 62 к.1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -946,8 +946,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630054",
-   "longitude": 82.87821,
-   "latitude": 54.98208,
+   "longitude": 82.878209,
+   "latitude": 54.982079,
    "address": "ул. Титова, 17",
    "address_full": "630054, Россия, Новосибирская область, Новосибирск, ул. Титова, 17",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1021,7 +1021,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630056",
-   "longitude": 82.978455,
+   "longitude": 82.978454,
    "latitude": 54.8584,
    "address": "ул. Молодости, 21",
    "address_full": "630056, Россия, Новосибирская область, Новосибирск, ул. Молодости, 21",
@@ -1095,8 +1095,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630087",
-   "longitude": 82.90798,
-   "latitude": 54.989716,
+   "longitude": 82.907979,
+   "latitude": 54.989714,
    "address": "пр-т Карла Маркса, 24, оф. 1",
    "address_full": "630087, Россия, Новосибирская область, Новосибирск, пр-т Карла Маркса, 24, оф. 1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1171,8 +1171,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630091",
-   "longitude": 82.91501,
-   "latitude": 55.037315,
+   "longitude": 82.915009,
+   "latitude": 55.037317,
    "address": "ул. Советская, 36/1",
    "address_full": "630091, Россия, Новосибирская область, Новосибирск, ул. Советская, 36/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1247,8 +1247,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630099",
-   "longitude": 82.92001,
-   "latitude": 55.024387,
+   "longitude": 82.920016,
+   "latitude": 55.024389,
    "address": "ул. Октябрьская, 42, 110а",
    "address_full": "630099, Россия, Новосибирская область, Новосибирск, ул. Октябрьская, 42, 110а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1321,8 +1321,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630001",
-   "longitude": 82.88536,
-   "latitude": 55.049587,
+   "longitude": 82.885359,
+   "latitude": 55.049586,
    "address": "ул. Холодильная, 13",
    "address_full": "630001, Россия, Новосибирская область, Новосибирск, ул. Холодильная, 13",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1398,8 +1398,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630091",
-   "longitude": 82.918785,
-   "latitude": 55.04105,
+   "longitude": 82.918786,
+   "latitude": 55.041049,
    "address": "ул. Крылова, 7/1, 5а",
    "address_full": "630091, Россия, Новосибирская область, Новосибирск, ул. Крылова, 7/1, 5а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1480,7 +1480,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630051",
-   "longitude": 82.9796,
+   "longitude": 82.979602,
    "latitude": 55.056816,
    "address": "пр-т Дзержинского, 34/1, 105",
    "address_full": "630051, Россия, Новосибирская область, Новосибирск, пр-т Дзержинского, 34/1, 105",
@@ -1517,12 +1517,6 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/9ba140bc-47b5-471d-90ef-cef6a320708..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3e87c42f-68f0-490d-aba0-747d9ae1f33..."
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcaf11cc-c7d9-4f80-b0f9-eb6393db28c..."
    },
    {
@@ -1530,6 +1524,12 @@
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/32075198-b5f4-4dde-b353-53444e9df2b..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/9ba140bc-47b5-471d-90ef-cef6a320708..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3e87c42f-68f0-490d-aba0-747d9ae1f33..."
    }
   ],
   "work_time_list": [
@@ -1570,7 +1570,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630058",
-   "longitude": 83.05066,
+   "longitude": 83.050658,
    "latitude": 54.854942,
    "address": "ул. Балтийская, 29",
    "address_full": "630058, Россия, Новосибирская область, Новосибирск, ул. Балтийская, 29",
@@ -1614,13 +1614,13 @@
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/8449af3e-5a01-45b9-b04b-a784656b0bf..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b094e78e-88ae-418f-afd8-66f4179b7b0..."
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/76bdfa32-1544-4eb2-8e4f-76af58b4809..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/23088921-8838-4a8a-a268-d5dc1d98e0a..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b094e78e-88ae-418f-afd8-66f4179b7b0..."
    }
   ],
   "work_time_list": [
@@ -1661,7 +1661,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630049",
-   "longitude": 82.91611,
+   "longitude": 82.916109,
    "latitude": 55.06141,
    "address": "ул. Дуси Ковальчук, 179а, 3",
    "address_full": "630049, Россия, Новосибирская область, Новосибирск, ул. Дуси Ковальчук, 179а, 3",
@@ -1699,13 +1699,13 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/395ab244-63d0-46ba-a263-5c27110a9de..."
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/f3bb8752-cc6e-4878-8905-137670163a5..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/e32b5936-129a-48d1-8766-215d5ee9216..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/f3bb8752-cc6e-4878-8905-137670163a5..."
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/395ab244-63d0-46ba-a263-5c27110a9de..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/725c3bbe-ace9-4e39-9264-11850f95c61..."
@@ -1751,8 +1751,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630087",
-   "longitude": 82.91296,
-   "latitude": 54.987877,
+   "longitude": 82.912956,
+   "latitude": 54.987875,
    "address": "ул. Немировича – Данченко, 165, 109",
    "address_full": "630087, Россия, Новосибирская область, Новосибирск, ул. Немировича – Данченко, 165, 109",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -1789,6 +1789,12 @@
   "allowed_cod": true,
   "office_image_list": [
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb212..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b97a5e27-43da-4285-9bbb-d1a66733d15..."
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4d1d9fdf-ea93-4fdf-a4fa-48d610459e1..."
    },
    {
@@ -1796,12 +1802,6 @@
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/761ebd60-cf4d-4e68-ab17-5254a50bbfb..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d6595d33-96e9-433a-aba5-f25af6eb212..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b97a5e27-43da-4285-9bbb-d1a66733d15..."
    }
   ],
   "work_time_list": [
@@ -1842,7 +1842,7 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630083",
-   "longitude": 82.964195,
+   "longitude": 82.964196,
    "latitude": 54.99697,
    "address": "ул. Большевистская, 48",
    "address_full": "630083, Россия, Новосибирская область, Новосибирск, ул. Большевистская, 48",
@@ -1880,9 +1880,6 @@
   "allowed_cod": true,
   "office_image_list": [
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2844d6ff-b437-4d52-9e65-47994401827..."
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/906ea4d7-a4a8-425c-b305-a635566864f..."
    },
    {
@@ -1896,6 +1893,9 @@
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/3f319211-09d2-4aff-8cdc-1528d47b191..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2844d6ff-b437-4d52-9e65-47994401827..."
    }
   ],
   "work_time_list": [
@@ -2020,8 +2020,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630128",
-   "longitude": 83.10323,
-   "latitude": 54.859333,
+   "longitude": 83.103235,
+   "latitude": 54.859334,
    "address": "ул. Кутателадзе, 4",
    "address_full": "630128, Россия, Новосибирская область, Новосибирск, ул. Кутателадзе, 4",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2040,10 +2040,10 @@
   "work_time": "Пн-Пт 10:00-20:00, Сб 10:00-16:00, Вс 10:00-16:00",
   "phones": [
    {
-    "number": "+79538851010"
+    "number": "+79529152211"
    },
    {
-    "number": "+79529152211"
+    "number": "+79538851010"
    }
   ],
   "email": "k.lihodienko@cdek.ru",
@@ -2111,8 +2111,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630075",
-   "longitude": 82.933685,
-   "latitude": 55.06642,
+   "longitude": 82.933689,
+   "latitude": 55.066422,
    "address": "ул. Богдана Хмельницкого, 1/1",
    "address_full": "630075, Россия, Новосибирская область, Новосибирск, ул. Богдана Хмельницкого, 1/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2197,7 +2197,7 @@
    "city": "Новосибирск",
    "postal_code": "630008",
    "longitude": 82.952194,
-   "latitude": 55.017265,
+   "latitude": 55.017266,
    "address": "ул. Бориса Богаткова, 68, 106",
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Бориса Богаткова, 68, 106",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2288,8 +2288,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630132",
-   "longitude": 82.90741,
-   "latitude": 55.041172,
+   "longitude": 82.907413,
+   "latitude": 55.041173,
    "address": "ул. Нарымская, 17/2",
    "address_full": "630132, Россия, Новосибирская область, Новосибирск, ул. Нарымская, 17/2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2373,8 +2373,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630120",
-   "longitude": 82.83028,
-   "latitude": 54.980675,
+   "longitude": 82.830279,
+   "latitude": 54.980673,
    "address": "ул. Титова, 198",
    "address_full": "630120, Россия, Новосибирская область, Новосибирск, ул. Титова, 198",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2411,13 +2411,13 @@
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/fdaa6562-903b-4f9b-8cba-bba004e202b..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572d..."
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/6bba5c96-dd38-431f-9516-432cd2e3a95..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/d1d39d64-36de-4410-a31e-9965f58cb3b..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/ffc35363-4cbb-47c0-87ab-3801f4a572d..."
    }
   ],
   "work_time_list": [
@@ -2544,8 +2544,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630008",
-   "longitude": 82.95696,
-   "latitude": 55.01345,
+   "longitude": 82.956964,
+   "latitude": 55.013451,
    "address": "ул. Ленинградская, 102",
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Ленинградская, 102",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2585,13 +2585,13 @@
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40e1df55-0a94-4030-b938-a4673b080e9..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0400dca2-1c56-488d-abc5-2fbe9b21ae1..."
-   },
-   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c9b9c337-4749-4ac7-a98f-16c8bf3d06f..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/48365ffa-f79c-4de9-856a-efcecae05a4..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0400dca2-1c56-488d-abc5-2fbe9b21ae1..."
    }
   ],
   "work_time_list": [
@@ -2632,8 +2632,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630008",
-   "longitude": 82.94318,
-   "latitude": 55.01847,
+   "longitude": 82.943175,
+   "latitude": 55.018471,
    "address": "ул. Московская, 93",
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Московская, 93",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
@@ -2670,28 +2670,28 @@
   "allowed_cod": true,
   "office_image_list": [
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b115381a-fd1f-4665-b972-dd317de6163..."
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/4a295bfa-3f19-4a4e-8d50-8bbd818bdfe..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcfa1378-d3cc-4407-b6f4-f2d4eb4e272..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c1a0b2dc-3944-4e6d-8c45-16a286a2d13..."
-   },
-   {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f625711-0a3b-4724-a87f-7f11c1169dd..."
    },
    {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c61e4136-2a69-4fa4-8336-4edd63bcce6..."
    },
    {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/dcfa1378-d3cc-4407-b6f4-f2d4eb4e272..."
+   },
+   {
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/2f625711-0a3b-4724-a87f-7f11c1169dd..."
+   },
+   {
     "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/0d12c8c8-fc2e-48ac-939f-df096dd7756..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/b115381a-fd1f-4665-b972-dd317de6163..."
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40812a83-da10-4541-9245-49d2cef44b1..."
    },
    {
-    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/40812a83-da10-4541-9245-49d2cef44b1..."
+    "url": "https://gateway.edu.cdek.ru/file-storage/web/object/office-photo/c1a0b2dc-3944-4e6d-8c45-16a286a2d13..."
    }
   ],
   "work_time_list": [
@@ -2734,8 +2734,8 @@
    "city_code": 270,
    "city": "Новосибирск",
    "postal_code": "630082",
-   "longitude": 82.89581,
-   "latitude": 55.0552,
+   "longitude": 82.895816,
+   "latitude": 55.055197,
    "address": "ул. Вавилова, 3, 2",
    "address_full": "630082, Россия, Новосибирская область, Новосибирск, ул. Вавилова, 3, 2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
