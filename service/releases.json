@@ -10,19 +10,19 @@
                 "lib": "ZeroMQ",
                 "icon": "media/ZeroMQ.png",
                 "description_ru": "Методы подключения (4 функции)",
-                "description_en": ""
+                "description_en": "Connection methods (4 functions)"
             },
             {
                 "lib": "ZeroMQ",
                 "icon": "media/ZeroMQ.png",
                 "description_ru": "Методы ожидания подключений (4 функции)",
-                "description_en": ""
+                "description_en": "Connection waiting methods (4 functions)"
             },
             {
                 "lib": "ZeroMQ",
                 "icon": "media/ZeroMQ.png",
                 "description_ru": "Методы обмена (6 функций)",
-                "description_en": ""
+                "description_en": "Messaging methods (6 functions)"
             },
             {
                 "lib": "All",
@@ -46,7 +46,7 @@
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Число попыток повторной отправки запроса при ошибке добавлено в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих HTTP-клиент",
-                "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://e,openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client"
+                "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client"
             },
             {
                 "lib": "All",
