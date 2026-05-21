@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 21384,
+  "message_id": 21402,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,8 +15,8 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1779387463,
-  "edit_date": 1779387467,
+  "date": 1779390940,
+  "edit_date": 1779390944,
   "text": "Строковое значение",
   "reply_markup": {
    "inline_keyboard": [

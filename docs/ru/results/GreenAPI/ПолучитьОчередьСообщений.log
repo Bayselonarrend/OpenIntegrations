@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB0E36DC0A2CAE4EF986D",
+  "messageID": "3EB067182A4A1522B8A0E9",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -17,13 +17,13 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB0CFB0576CF64B3E5BEA",
+   "quotedMessageId": "3EB00C83AC435810E980B4",
    "archive": false,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB08F25B474FCE66B030E",
+  "messageID": "3EB012B7BD596B92814CF2",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -36,11 +36,11 @@
   }
  },
  {
-  "messageID": "3EB0ED6428153F3E372AD4",
+  "messageID": "3EB091696D0F281B50A4C9",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB08F25B474FCE66B030E",
+   "quotedMessageId": "3EB012B7BD596B92814CF2",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "archive": false,
@@ -48,7 +48,7 @@
   }
  },
  {
-  "messageID": "3EB0226621FB4D69AB9A16",
+  "messageID": "3EB03DF14E889FEB172C53",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -64,7 +64,7 @@
   }
  },
  {
-  "messageID": "3EB01D489DC7BC21E4139A",
+  "messageID": "3EB0868D374E713A9AA459",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -72,31 +72,31 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB0226621FB4D69AB9A16",
+   "quotedMessageId": "3EB03DF14E889FEB172C53",
    "archive": false,
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB013E1ED8CBE5747511F"
+   "3EB0AC8FA8EB758F685801"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0A725653DAAFFA84E79"
+    "3EB0A03F1F9CA1F3EA115E"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0B16D8FC9F23C40A91C",
+  "messageID": "3EB08DF571B415EAFABEEE",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0A725653DAAFFA84E79",
+   "idMessage": "3EB0A03F1F9CA1F3EA115E",
    "message": "Новый текст сообщения",
    "linkPreview": true,
    "typingTime": null

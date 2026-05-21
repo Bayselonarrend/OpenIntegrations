@@ -1,13 +1,13 @@
 ﻿{
  "result": true,
  "time": {
-  "start": 1779389445,
-  "finish": 1779389445.52803,
-  "duration": 0.528029918670654,
-  "processing": 0,
-  "date_start": "2026-05-21T21:50:45+03:00",
-  "date_finish": "2026-05-21T21:50:45+03:00",
-  "operating_reset_at": 1779390045,
-  "operating": 0.724042177200317
+  "start": 1779393113,
+  "finish": 1779393114.00558,
+  "duration": 1.00557589530945,
+  "processing": 1,
+  "date_start": "2026-05-21T19:51:53+00:00",
+  "date_finish": "2026-05-21T19:51:54+00:00",
+  "operating_reset_at": 1779393713,
+  "operating": 0.659621000289917
  }
 }
