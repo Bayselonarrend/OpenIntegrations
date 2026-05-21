@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:Configuration xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a92a85a1-a44f-436f-ba05-ba7cf84637af">
   <name>OpenIntegrations</name>
   <synonym>
-    <key>en</key>
-    <value>OpenIntegrations</value>
     <key>ru</key>
     <value>OpenIntegrations</value>
   </synonym>
@@ -35,8 +33,6 @@
   <languages uuid="710c9daf-82ec-48b6-a0ec-af9831dc3195">
     <name>Русский</name>
     <synonym>
-      <key>en</key>
-      <value>Русский</value>
       <key>ru</key>
       <value>Русский</value>
     </synonym>

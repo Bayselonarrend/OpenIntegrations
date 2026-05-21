@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c28eb301-d4b1-4eff-8c33-bf4f73b70b83">
   <name>OPIt_Bitrix24</name>
   <synonym>
-    <key>en</key>
-    <value>Bitrix24</value>
     <key>ru</key>
     <value>Bitrix24</value>
   </synonym>

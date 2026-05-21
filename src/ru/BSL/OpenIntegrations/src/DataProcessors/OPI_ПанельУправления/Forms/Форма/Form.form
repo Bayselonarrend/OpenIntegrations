@@ -1,11 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <form:Form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:form="http://g5.1c.ru/v8/dt/form">
   <items xsi:type="form:Decoration">
     <name>ДекорацияЗаголовок</name>
     <id>52</id>
     <title>
-      <key>en</key>
-      <value>&lt;fontsize 14>&lt;b>Панель управления расширением ОПИ&lt;/>&lt;/></value>
       <key>ru</key>
       <value>&lt;fontsize 14>&lt;b>Панель управления расширением ОПИ&lt;/>&lt;/></value>
     </title>
@@ -40,8 +38,6 @@
     <name>ДекорацияПримечание</name>
     <id>55</id>
     <title>
-      <key>en</key>
-      <value>Основная информация и настройки Открытого пакета интеграций</value>
       <key>ru</key>
       <value>Основная информация и настройки Открытого пакета интеграций</value>
     </title>
@@ -119,8 +115,6 @@
         <name>ДекорацияГлавнаяЗаголовок</name>
         <id>61</id>
         <title>
-          <key>en</key>
-          <value>&lt;fontsize 18>Открытый пакет интеграций&lt;/>
           <key>ru</key>
           <value>&lt;fontsize 18>Открытый пакет интеграций&lt;/>
 &lt;fontsize 18>&lt;fontsize 12>Набор инструментов интеграции с популярными сервисами и технологиями&lt;/>
@@ -162,8 +156,6 @@
           <name>ОткрытьСайт</name>
           <id>70</id>
           <title>
-            <key>en</key>
-            <value>Документация</value>
             <key>ru</key>
             <value>Документация</value>
           </title>
@@ -194,8 +186,6 @@
           <name>ОткрытьЛицензиюRu</name>
           <id>66</id>
           <title>
-            <key>en</key>
-            <value>Лицензия (русский)</value>
             <key>ru</key>
             <value>Лицензия (русский)</value>
           </title>
@@ -227,8 +217,6 @@
           <name>ОткрытьЛицензиюEn</name>
           <id>68</id>
           <title>
-            <key>en</key>
-            <value>Лицензия (english)</value>
             <key>ru</key>
             <value>Лицензия (english)</value>
           </title>
@@ -288,8 +276,6 @@
           <name>ОткрытьGitHub</name>
           <id>74</id>
           <title>
-            <key>en</key>
-            <value>GitHub</value>
             <key>ru</key>
             <value>GitHub</value>
           </title>
@@ -320,8 +306,6 @@
           <name>ОткрытьSourceCraft</name>
           <id>76</id>
           <title>
-            <key>en</key>
-            <value>SourceCraft</value>
             <key>ru</key>
             <value>SourceCraft</value>
           </title>
@@ -384,8 +368,6 @@
         <value>Группа главная</value>
       </title>
       <title>
-        <key>en</key>
-        <value>Главная</value>
         <key>ru</key>
         <value>Главная</value>
       </title>
@@ -481,8 +463,6 @@
           <name>ОбновитьСписокКомпонент</name>
           <id>38</id>
           <title>
-            <key>en</key>
-            <value>Обновить список</value>
             <key>ru</key>
             <value>Обновить список</value>
           </title>
@@ -516,8 +496,6 @@
           <name>ОбновитьКомпонентыНаКлиенте</name>
           <id>40</id>
           <title>
-            <key>en</key>
-            <value>Установить компоненты на клиенте</value>
             <key>ru</key>
             <value>Установить компоненты на клиенте</value>
           </title>
@@ -551,8 +529,6 @@
           <name>ОткрытьКаталогКэша</name>
           <id>42</id>
           <title>
-            <key>en</key>
-            <value>Открыть каталог кэша</value>
             <key>ru</key>
             <value>Открыть каталог кэша</value>
           </title>
@@ -592,8 +568,6 @@
           <value>Группа выделение</value>
         </title>
         <title>
-          <key>en</key>
-          <value>Группа команды</value>
           <key>ru</key>
           <value>Группа команды</value>
         </title>
@@ -670,8 +644,6 @@
           <name>ВерсииКомпонентИмяКомпоненты</name>
           <id>23</id>
           <title>
-            <key>en</key>
-            <value>Имя</value>
             <key>ru</key>
             <value>Имя</value>
           </title>
@@ -717,8 +689,6 @@
           <name>ВерсииКомпонентВерсия</name>
           <id>26</id>
           <title>
-            <key>en</key>
-            <value>Версия в конфигурации</value>
             <key>ru</key>
             <value>Версия в конфигурации</value>
           </title>
@@ -764,8 +734,6 @@
           <name>ВерсииКомпонентВерсияКлиента</name>
           <id>35</id>
           <title>
-            <key>en</key>
-            <value>Версия клиента</value>
             <key>ru</key>
             <value>Версия клиента</value>
           </title>
@@ -970,8 +938,6 @@
           <name>НадписьПодсказка</name>
           <id>49</id>
           <title>
-            <key>en</key>
-            <value>&lt;b>Порядок обновления компонент на клиенте при обновлении расширения на новую версию:&lt;/>
             <key>ru</key>
             <value>&lt;b>Порядок обновления компонент на клиенте при обновлении расширения на новую версию:&lt;/>
 1. Открыть каталог внешних компонент (ExtCompT) при помощи кнопки &lt;i>Открыть каталог кэша&lt;/> или вручную
@@ -1040,8 +1006,6 @@
         <value>Группа внешние компоненты клиент</value>
       </title>
       <title>
-        <key>en</key>
-        <value>Внешние компоненты (клиент)</value>
         <key>ru</key>
         <value>Внешние компоненты (клиент)</value>
       </title>
@@ -1345,8 +1309,6 @@
   <formCommands>
     <name>ОткрытьСайт</name>
     <title>
-      <key>en</key>
-      <value>Открыть сайт</value>
       <key>ru</key>
       <value>Открыть сайт</value>
     </title>

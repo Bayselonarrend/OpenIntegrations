@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b9381371-562d-4418-aea2-8c87d28c6449">
   <name>OPItc_MongoDB</name>
   <synonym>
-    <key>en</key>
-    <value>MongoDB</value>
     <key>ru</key>
     <value>MongoDB</value>
   </synonym>

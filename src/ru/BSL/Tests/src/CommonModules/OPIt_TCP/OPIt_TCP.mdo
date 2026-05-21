@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="053bd057-be24-490f-bf38-90b1b40314b6">
   <name>OPIt_TCP</name>
   <synonym>
-    <key>en</key>
-    <value>TCP</value>
     <key>ru</key>
     <value>TCP</value>
   </synonym>
