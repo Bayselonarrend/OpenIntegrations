@@ -73,7 +73,7 @@
     </extInfo>
   </items>
   <items xsi:type="form:FormGroup">
-    <name>GroupMain</name>
+    <name>GroupPrimary</name>
     <id>1</id>
     <items xsi:type="form:FormGroup">
       <name>GroupMain</name>
@@ -975,13 +975,13 @@
           <title>
             <key>en</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
 4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
             <key>ru</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
 4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
@@ -1086,7 +1086,7 @@
       <value>Group main</value>
     </toolTip>
     <extendedTooltip>
-      <name>GroupMainExtendedTooltip</name>
+      <name>GroupPrimaryExtendedTooltip</name>
       <id>2</id>
       <type>Label</type>
       <autoMaxWidth>true</autoMaxWidth>
