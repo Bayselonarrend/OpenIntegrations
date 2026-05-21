@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>Build hash (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>Build hash (OpenIntegrations)</value>
   </synonym>
   <comment>Service module that helps determine project relevance to the source code</comment>

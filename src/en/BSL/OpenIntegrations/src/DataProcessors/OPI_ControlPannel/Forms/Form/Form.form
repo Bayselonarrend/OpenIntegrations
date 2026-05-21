@@ -6,7 +6,7 @@
     <title>
       <key>en</key>
       <value>&lt;fontsize 14>&lt;b>OpenIntegrations extension control panel&lt;/>&lt;/></value>
-      <key>en</key>
+      <key>ru</key>
       <value>&lt;fontsize 14>&lt;b>OpenIntegrations extension control panel&lt;/>&lt;/></value>
     </title>
     <visible>true</visible>
@@ -42,7 +42,7 @@
     <title>
       <key>en</key>
       <value>Basic information and settings of the OpenIntegrations</value>
-      <key>en</key>
+      <key>ru</key>
       <value>Basic information and settings of the OpenIntegrations</value>
     </title>
     <visible>true</visible>
@@ -124,7 +124,7 @@
 &lt;fontsize 18>&lt;fontsize 12>A set of integration tools for popular services and technologies&lt;/>
 &lt;/>
 &lt;fontsize 12>Version 2.1.0&lt;/></value>
-          <key>en</key>
+          <key>ru</key>
           <value>&lt;fontsize 18>OpenIntegrations&lt;/>
 &lt;fontsize 18>&lt;fontsize 12>A set of integration tools for popular services and technologies&lt;/>
 &lt;/>
@@ -167,7 +167,7 @@
           <title>
             <key>en</key>
             <value>Read the Docs</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Read the Docs</value>
           </title>
           <visible>true</visible>
@@ -199,7 +199,7 @@
           <title>
             <key>en</key>
             <value>License (Russian)</value>
-            <key>en</key>
+            <key>ru</key>
             <value>License (Russian)</value>
           </title>
           <visible>true</visible>
@@ -232,7 +232,7 @@
           <title>
             <key>en</key>
             <value>License (English)</value>
-            <key>en</key>
+            <key>ru</key>
             <value>License (English)</value>
           </title>
           <visible>true</visible>
@@ -293,7 +293,7 @@
           <title>
             <key>en</key>
             <value>GitHub</value>
-            <key>en</key>
+            <key>ru</key>
             <value>GitHub</value>
           </title>
           <visible>true</visible>
@@ -325,7 +325,7 @@
           <title>
             <key>en</key>
             <value>SourceCraft</value>
-            <key>en</key>
+            <key>ru</key>
             <value>SourceCraft</value>
           </title>
           <visible>true</visible>
@@ -389,7 +389,7 @@
       <title>
         <key>en</key>
         <value>Main</value>
-        <key>en</key>
+        <key>ru</key>
         <value>Main</value>
       </title>
       <toolTip>
@@ -486,7 +486,7 @@
           <title>
             <key>en</key>
             <value>Update list</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Update list</value>
           </title>
           <visible>true</visible>
@@ -521,7 +521,7 @@
           <title>
             <key>en</key>
             <value>Install AddIns OnClient</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Install AddIns OnClient</value>
           </title>
           <visible>true</visible>
@@ -556,7 +556,7 @@
           <title>
             <key>en</key>
             <value>Open cache folder</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Open cache folder</value>
           </title>
           <visible>true</visible>
@@ -597,7 +597,7 @@
         <title>
           <key>en</key>
           <value>Group commands</value>
-          <key>en</key>
+          <key>ru</key>
           <value>Group commands</value>
         </title>
         <toolTip>
@@ -675,7 +675,7 @@
           <title>
             <key>en</key>
             <value>Name</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Name</value>
           </title>
           <visible>true</visible>
@@ -722,7 +722,7 @@
           <title>
             <key>en</key>
             <value>Configuration version</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Configuration version</value>
           </title>
           <visible>true</visible>
@@ -769,7 +769,7 @@
           <title>
             <key>en</key>
             <value>Client version</value>
-            <key>en</key>
+            <key>ru</key>
             <value>Client version</value>
           </title>
           <visible>true</visible>
@@ -975,13 +975,13 @@
           <title>
             <key>en</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
 4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
-            <key>en</key>
+            <key>ru</key>
             <value>&lt;b>Sequence for updating components on the client when upgrading the extension to a new version:&lt;/>
-1. Open toaтaлoy innotшнandх tooмпheент (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
+1. Open toaтaлoy innotшнandх tooмtonotнт (ExtCompT) when toмoщand tobutпtoand &lt;i>Open cache folder&lt;/> or inручную
 2. Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)
 3. Restart the application and open this wizard again
 4. Inыделandть notoбхoдandмые components and toжaть &lt;i>Install AddIns OnClient&lt;/></value>
@@ -1049,7 +1049,7 @@
       <title>
         <key>en</key>
         <value>AddIns (client)</value>
-        <key>en</key>
+        <key>ru</key>
         <value>AddIns (client)</value>
       </title>
       <toolTip>

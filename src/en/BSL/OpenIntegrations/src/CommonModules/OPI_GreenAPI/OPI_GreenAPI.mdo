@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>Green API (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>Green API (OpenIntegrations)</value>
   </synonym>
   <comment>WhatsApp via GreenAPI Module of OpenIntegrations</comment>

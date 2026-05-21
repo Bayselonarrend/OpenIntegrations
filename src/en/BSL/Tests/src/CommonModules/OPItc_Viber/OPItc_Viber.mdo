@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="23956664-353a-4552-98da-ab75f9ea9e2f">
   <name>OPItc_Viber</name>
   <synonym>
-    <key>en</key>
+    <key>ru</key>
     <value>Viber</value>
   </synonym>
   <server>true</server>

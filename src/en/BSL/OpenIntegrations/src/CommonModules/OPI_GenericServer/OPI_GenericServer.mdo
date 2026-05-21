@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>Generic server (service, OPI)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>Generic server (service, OPI)</value>
   </synonym>
   <comment>Generic methods for different types of servers</comment>

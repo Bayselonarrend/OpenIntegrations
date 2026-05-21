@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>Extension management (OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>Extension management (OpenIntegrations)</value>
   </synonym>
   <comment>Methods for managing OpenIntegrations extension settings</comment>

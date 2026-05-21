@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>SSH (Utility, OpenIntegrations)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>SSH (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Common SSH Tools Module of OpenIntegrations</comment>

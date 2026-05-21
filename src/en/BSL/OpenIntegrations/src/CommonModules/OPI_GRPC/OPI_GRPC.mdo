@@ -4,7 +4,7 @@
   <synonym>
     <key>en</key>
     <value>gRPC (OPI)</value>
-    <key>en</key>
+    <key>ru</key>
     <value>gRPC (OPI)</value>
   </synonym>
   <comment>Module for work with gRPC from of set OPI</comment>
