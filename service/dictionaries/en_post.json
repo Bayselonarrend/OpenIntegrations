@@ -24,7 +24,6 @@
 "HasLength":"ИмеетДлину",
 "GetTestList":"ПолучитьСписокТестов",
 "RunningScenarios":"ИсполняемыеСценарии",
-"<key>ru</key>":"<key>en</key>",
 "<scriptVariant>Russian</scriptVariant>":"<scriptVariant>English</scriptVariant>",
 "Base-Project: OpenIntegrations":"Base-Project: OpenIntegrations_Eng",
 "(\"https://example.com/path\")": "(\"https://example.com/путь\")",
