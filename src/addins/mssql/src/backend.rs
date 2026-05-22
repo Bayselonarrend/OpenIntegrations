@@ -1,12 +1,11 @@
 use serde_json::{json, Value, Number};
-use tiberius::{Client, Config, EncryptionLevel, ToSql, Row, Column};
+use tiberius::{Client, Config, ToSql, Row, Column};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::mpsc::{self, Sender};
 use std::sync::Arc;
 use std::thread::JoinHandle;
-use std::time::Duration;
-use common_core::{run_worker_command, spawn_tokio_backend_thread};
+use common_core::spawn_tokio_backend_thread;
 use common_logs::{log, Logger};
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime, DateTime, Utc};
 use uuid::Uuid;
@@ -66,30 +65,6 @@ impl BackendState {
         }
     }
 
-    /// Политика как у `common-tcp` rustls (`accept_invalid_certs` / `ca_cert_path`),
-    /// но через API tiberius — `get_rustls_config()` сюда не подключается.
-    fn apply_tls(config: &mut Config, tls: &TlsSettings) -> Result<(), String> {
-        if !tls.use_tls {
-            config.encryption(EncryptionLevel::NotSupported);
-            return Ok(());
-        }
-
-        let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-            if tls.accept_invalid_certs {
-                config.trust_cert();
-            } else if !tls.ca_cert_path.is_empty() {
-                config.trust_cert_ca(&tls.ca_cert_path);
-            }
-        }));
-        match result {
-            Ok(()) => Ok(()),
-            Err(_) => Err(
-                "Invalid TLS settings: conflicting trust options in connection string and SetTLS"
-                    .to_string(),
-            ),
-        }
-    }
-
     fn log_query_preview(query: &str) -> String {
         const MAX_CHARS: usize = 200;
         let trimmed = query.trim();
@@ -114,112 +89,27 @@ impl MSSQLBackend {
             while let Ok(cmd) = rx.recv() {
                 match cmd {
                     BackendCommand::Connect { conn_str, tls, response } => {
-                        let connect_result = run_worker_command(|| {
-                            const CONNECT_TIMEOUT: Duration = Duration::from_secs(120);
+                        state.log("Connecting to MSSQL...");
 
-                            state.log("Connect: start");
+                        let result = rt.block_on(async {
+                            let mut config = Config::from_ado_string(&conn_str)?;
 
-                            state.log("Connect: parsing ADO connection string");
-                            let mut config = match Config::from_ado_string(&conn_str) {
-                                Ok(config) => {
-                                    state.log("Connect: connection string parsed");
-                                    config
-                                }
-                                Err(e) => {
-                                    let message = e.to_string();
-                                    state.log(&format!(
-                                        "Connect: invalid connection string: {}",
-                                        message
-                                    ));
-                                    return Err(message);
-                                }
-                            };
-
-                            match &tls {
-                                Some(tls) if tls.enabled() => {
-                                    state.log("Connect: applying TLS from SetTLS");
+                            if let Some(tls) = &tls {
+                                if tls.enabled() {
                                     if tls.accept_invalid_certs {
-                                        state.log("Connect: TLS trust server certificate");
+                                        config.trust_cert();
                                     } else if !tls.ca_cert_path.is_empty() {
-                                        state.log(&format!(
-                                            "Connect: TLS CA certificate file: {}",
-                                            tls.ca_cert_path
-                                        ));
-                                    }
-                                    if let Err(message) = BackendState::apply_tls(&mut config, tls)
-                                    {
-                                        state.log(&format!("Connect: TLS error: {}", message));
-                                        return Err(message);
-                                    }
-                                    state.log("Connect: TLS settings applied");
-                                }
-                                Some(tls) => {
-                                    state.log("Connect: SetTLS use_tls=false, encryption off");
-                                    if let Err(message) = BackendState::apply_tls(&mut config, tls)
-                                    {
-                                        state.log(&format!("Connect: TLS error: {}", message));
-                                        return Err(message);
+                                        config.trust_cert_ca(&tls.ca_cert_path);
                                     }
                                 }
-                                None => {
-                                    state.log("Connect: SetTLS not set, driver defaults");
-                                }
                             }
-
-                            let addr = config.get_addr();
-                            state.log(&format!("Connect: TCP connect to {}", addr));
-
-                            let tcp = match rt.block_on(async {
-                                tokio::time::timeout(CONNECT_TIMEOUT, TcpStream::connect(&addr))
-                                    .await
-                            }) {
-                                Ok(Ok(stream)) => {
-                                    state.log("Connect: TCP connected");
-                                    stream
-                                }
-                                Ok(Err(e)) => {
-                                    let message = e.to_string();
-                                    state.log(&format!("Connect: TCP error: {}", message));
-                                    return Err(message);
-                                }
-                                Err(_) => {
-                                    state.log("Connect: TCP timed out");
-                                    return Err("Connection timed out (TCP)".to_string());
-                                }
-                            };
-
-                            if let Err(e) = tcp.set_nodelay(true) {
-                                let message = e.to_string();
-                                state.log(&format!("Connect: set_nodelay error: {}", message));
-                                return Err(message);
-                            }
-                            state.log("Connect: TDS prelogin and TLS (tiberius rustls)");
-
-                            match rt.block_on(async {
-                                tokio::time::timeout(
-                                    CONNECT_TIMEOUT,
-                                    Client::connect(config, tcp.compat_write()),
-                                )
-                                .await
-                            }) {
-                                Ok(Ok(client)) => {
-                                    state.log("Connect: TDS handshake complete");
-                                    Ok(client)
-                                }
-                                Ok(Err(e)) => {
-                                    let message = e.to_string();
-                                    state.log(&format!("Connect: TDS error: {}", message));
-                                    Err(message)
-                                }
-                                Err(_) => {
-                                    state.log("Connect: TDS handshake timed out");
-                                    Err("Connection timed out (TDS)".to_string())
-                                }
-                            }
+                            let tcp = TcpStream::connect(config.get_addr()).await?;
+                            tcp.set_nodelay(true)?;
+                            Client::connect(config, tcp.compat_write()).await
                         });
 
-                        state.client = match connect_result {
-                            Ok(Ok(client)) => {
+                        state.client = match result {
+                            Ok(client) => {
                                 let process_info = format!(
                                     "Process: {} (PID: {})\nThread: {:?} (TID: {})",
                                     std::env::current_exe()
@@ -236,14 +126,9 @@ impl MSSQLBackend {
                                 );
                                 Some(client)
                             }
-                            Ok(Err(e)) => {
+                            Err(e) => {
                                 state.log(&format!("Connect failed: {}", e));
-                                let _ = response.send(json_error(&e));
-                                None
-                            }
-                            Err(panic_message) => {
-                                state.log(&format!("Connect panic: {}", panic_message));
-                                let _ = response.send(json_error(&panic_message));
+                                let _ = response.send(json_error(&e.to_string()));
                                 None
                             }
                         };
