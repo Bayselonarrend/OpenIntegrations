@@ -3,7 +3,9 @@ use tiberius::{Client, Config, ToSql, Row, Column};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::mpsc::{self, Sender};
+use std::sync::Arc;
 use std::thread::{self, JoinHandle};
+use common_logs::{log, Logger};
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime, DateTime, Utc};
 use uuid::Uuid;
 use base64::{engine::general_purpose, Engine as _};
@@ -36,7 +38,41 @@ enum BackendCommand {
         force_result: bool,
         response: Sender<Result<Option<Vec<Value>>, String>>,
     },
+    SetLogger {
+        logger: Arc<Logger>,
+        response: Sender<Result<(), String>>,
+    },
     Shutdown,
+}
+
+struct BackendState {
+    client: Option<Client<Compat<TcpStream>>>,
+    logger: Option<Arc<Logger>>,
+}
+
+impl BackendState {
+    fn new() -> Self {
+        Self {
+            client: None,
+            logger: None,
+        }
+    }
+
+    fn log(&self, message: &str) {
+        if let Some(ref logger) = self.logger {
+            log!(logger, "{}", message);
+        }
+    }
+
+    fn log_query_preview(query: &str) -> String {
+        const MAX_LEN: usize = 200;
+        let trimmed = query.trim();
+        if trimmed.len() <= MAX_LEN {
+            trimmed.to_string()
+        } else {
+            format!("{}...", &trimmed[..MAX_LEN])
+        }
+    }
 }
 
 impl MSSQLBackend {
@@ -52,12 +88,13 @@ impl MSSQLBackend {
 
             let rt = tokio::runtime::Runtime::new().unwrap();
 
-            let mut client = None;
+            let mut state = BackendState::new();
 
             while let Ok(cmd) = rx.recv() {
 
                 match cmd {
                     BackendCommand::Connect { conn_str, tls, response } => {
+                        state.log("Connecting to MSSQL...");
 
                         let result = rt.block_on(async {
                             let mut config = Config::from_ado_string(&conn_str)?;
@@ -76,7 +113,7 @@ impl MSSQLBackend {
                             Client::connect(config, tcp.compat_write()).await
                         });
 
-                        client = match result{
+                        state.client = match result{
                             Ok(client) => {
 
                                 let process_info = format!(
@@ -89,10 +126,12 @@ impl MSSQLBackend {
                                     thread_id::get()
                                 );
 
+                                state.log("Connected to MSSQL");
                                 let _ = response.send(json!({"result": true, "thread_id": process_info}).to_string());
                                 Some(client)
                             },
                             Err(e) => {
+                                state.log(&format!("Connect failed: {}", e));
                                 let _ =  response.send(json_error(&e));
                                 None
                             }
@@ -100,7 +139,14 @@ impl MSSQLBackend {
                     }
 
                     BackendCommand::Execute { query, params_json, force_result, response } => {
-                        let result = if let Some(client) = &mut client {
+                        state.log(&format!(
+                            "Execute query (params={}, force_result={}): {}",
+                            params_json.len(),
+                            force_result,
+                            BackendState::log_query_preview(&query)
+                        ));
+
+                        let result = if let Some(client) = &mut state.client {
                             rt.block_on(async {
                                 Self::execute_query_internal(&vault_clone, client, &query, params_json, force_result).await
                             })
@@ -108,9 +154,23 @@ impl MSSQLBackend {
                             Err("Not connected".to_string())
                         };
 
+                        match &result {
+                            Ok(Some(rows)) => state.log(&format!("Query returned {} row(s)", rows.len())),
+                            Ok(None) => state.log("Query executed without result set"),
+                            Err(e) => state.log(&format!("Query failed: {}", e)),
+                        }
+
                         let _ = response.send(result);
                     }
-                    BackendCommand::Shutdown => break,
+                    BackendCommand::SetLogger { logger, response } => {
+                        state.logger = Some(logger);
+                        state.log("Logger initialized");
+                        let _ = response.send(Ok(()));
+                    }
+                    BackendCommand::Shutdown => {
+                        state.log("Shutting down MSSQL backend");
+                        break;
+                    }
                 }
             }
         }).unwrap();
@@ -160,6 +220,20 @@ impl MSSQLBackend {
             Err(error)
         })
 
+    }
+
+    pub fn set_logger(&self, logger: Arc<Logger>) -> Result<(), String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        self.tx
+            .send(BackendCommand::SetLogger {
+                logger,
+                response: response_tx,
+            })
+            .map_err(|e| format!("Failed to enqueue SetLogger: {}", e))?;
+
+        response_rx
+            .recv()
+            .unwrap_or_else(|e| Err(format!("SetLogger response error: {}", e)))
     }
 
     pub fn shutdown(&mut self) {
