@@ -9,6 +9,7 @@
     "contexts": null,
     "paths": null,
     "tests": [
+"OPIt_ZeroMQ.ZMQ_Общие",
 "OPIt_ZeroMQ.ZMQ_МетодыПодключения",
 "OPIt_ZeroMQ.ZMQ_МетодыПрослушивания",
 "OPIt_ZeroMQ.ZMQ_МетодыВзаимодействия"
