@@ -1,5 +1,7 @@
 use std::sync::mpsc::{self, Sender};
-use std::thread::{self, JoinHandle};
+use std::thread::JoinHandle;
+
+use common_core::spawn_tokio_backend_thread;
 
 /// Generic backend that manages async runtime in a separate thread
 /// and processes commands via mpsc channel
@@ -18,26 +20,11 @@ impl<C: Send + 'static> Backend<C> {
     where
         F: FnOnce(tokio::runtime::Runtime, mpsc::Receiver<C>) + Send + 'static,
     {
-        let (tx, rx) = mpsc::channel::<C>();
-
-        let thread_handle = thread::Builder::new()
-            .name(thread_name)
-            .spawn(move || {
-                let rt = match tokio::runtime::Runtime::new() {
-                    Ok(runtime) => runtime,
-                    Err(e) => {
-                        eprintln!("Failed to create tokio runtime: {}", e);
-                        return;
-                    }
-                };
-
-                handler(rt, rx);
-            })
-            .expect("Failed to spawn backend thread");
+        let (tx, thread_handle) = spawn_tokio_backend_thread(thread_name, handler);
 
         Self {
             tx: Some(tx),
-            thread_handle: Some(thread_handle),
+            thread_handle,
         }
     }
 

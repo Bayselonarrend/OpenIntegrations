@@ -6,3 +6,4 @@ edition = "2021"
 
 [dependencies]
 addin1c = "0.5.0"
+tokio = { version = "1.0", features = ["rt-multi-thread"] }
