@@ -158,6 +158,7 @@ name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "tokio",
 ]
 
 [[package]]
@@ -174,6 +175,7 @@ name = "common-server"
 version = "2.1.0"
 dependencies = [
  "common-binary",
+ "common-core",
  "common-logs",
  "common-utils",
  "futures-util",

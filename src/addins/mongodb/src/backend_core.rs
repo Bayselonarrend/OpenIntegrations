@@ -1,6 +1,7 @@
 use serde_json::{json, Value};
-use std::sync::mpsc::{self, Sender};
-use std::thread::{self, JoinHandle};
+use std::sync::mpsc::Sender;
+use std::thread::JoinHandle;
+use common_core::spawn_tokio_backend_thread;
 use common_binary::vault::BinaryVault;
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
@@ -39,18 +40,13 @@ pub enum BackendCommand {
 
 impl MongoBackend {
     pub fn new() -> Self {
-        let (tx, rx) = mpsc::channel();
-
         let binary_vault = BinaryVault::new();
         let vault_clone = binary_vault.clone();
 
-        let thread_handle = thread::Builder::new()
-            .name("opi_mongodb_backend".to_string())
-            .spawn(move || {
-                let rt = tokio::runtime::Runtime::new().unwrap();
-                let mut client: Option<Client> = None;
+        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_mongodb_backend", move |rt, rx| {
+            let mut client: Option<Client> = None;
 
-                while let Ok(cmd) = rx.recv() {
+            while let Ok(cmd) = rx.recv() {
                     match cmd {
                         BackendCommand::Connect { connection_string, response } => {
                             let client_result = rt.block_on(handle_connect(&connection_string));
@@ -97,12 +93,11 @@ impl MongoBackend {
                         BackendCommand::Shutdown => break,
                     }
                 }
-            })
-            .unwrap();
+        });
 
         Self {
             tx,
-            thread_handle: Some(thread_handle),
+            thread_handle,
             binary_vault
         }
     }

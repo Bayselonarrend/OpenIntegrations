@@ -1,6 +1,7 @@
 use std::sync::mpsc::{self, Sender};
 use std::sync::Arc;
-use std::thread::{self, JoinHandle};
+use std::thread::JoinHandle;
+use common_core::spawn_tokio_backend_thread;
 use std::time::Duration;
 
 use common_logs::{log, Logger};
@@ -165,15 +166,10 @@ async fn send_with_timeout<S: SocketSend + Unpin>(
 
 impl ZeroMqBackend {
     pub fn new() -> Self {
-        let (tx, rx) = mpsc::channel();
+        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_zeromq_backend", move |rt, rx| {
+            let mut state = BackendState::new();
 
-        let thread_handle = thread::Builder::new()
-            .name("opi_zeromq_backend".to_string())
-            .spawn(move || {
-                let rt = tokio::runtime::Runtime::new().expect("opi_zeromq tokio Runtime");
-                let mut state = BackendState::new();
-
-                while let Ok(cmd) = rx.recv() {
+            while let Ok(cmd) = rx.recv() {
                     match cmd {
                         BackendCommand::Connect { scheme, endpoint, response } => {
                             state.log(&format!(
@@ -422,12 +418,11 @@ impl ZeroMqBackend {
                         }
                     }
                 }
-            })
-            .expect("opi_zeromq backend thread spawn");
+        });
 
         Self {
             tx,
-            thread_handle: Some(thread_handle),
+            thread_handle,
         }
     }
 
