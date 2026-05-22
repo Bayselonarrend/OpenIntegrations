@@ -65,12 +65,14 @@ impl BackendState {
     }
 
     fn log_query_preview(query: &str) -> String {
-        const MAX_LEN: usize = 200;
+        const MAX_CHARS: usize = 200;
         let trimmed = query.trim();
-        if trimmed.len() <= MAX_LEN {
-            trimmed.to_string()
+        let mut chars = trimmed.chars();
+        let preview: String = chars.by_ref().take(MAX_CHARS).collect();
+        if chars.next().is_some() {
+            format!("{}...", preview)
         } else {
-            format!("{}...", &trimmed[..MAX_LEN])
+            preview
         }
     }
 }

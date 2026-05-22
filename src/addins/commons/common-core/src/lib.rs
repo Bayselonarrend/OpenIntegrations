@@ -5,7 +5,10 @@ pub mod getset;
 pub use addin1c;
 pub use from_variant::FromVariant;
 
-/// Извлекает сообщение об ошибке из panic payload
+pub const CREATE_COMPONENT_SUCCESS: i32 = 1;
+
+pub const CREATE_COMPONENT_ERROR: i32 = 0;
+
 pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> String {
     if let Some(s) = panic_info.downcast_ref::<&str>() {
         s.to_string()
@@ -16,7 +19,38 @@ pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> Stri
     }
 }
 
-/// Макрос для генерации экспортируемых функций Native API
+pub fn catch_panic<F, R>(f: F) -> Result<R, String>
+where
+    F: FnOnce() -> R,
+{
+    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(f)) {
+        Ok(value) => Ok(value),
+        Err(panic_info) => Err(format!(
+            "Internal error (panic): {}",
+            extract_panic_message(&panic_info)
+        )),
+    }
+}
+
+pub fn set_variant_error(val: &mut addin1c::Variant, message: &str) -> bool {
+    let s: Vec<u16> = message.encode_utf16().collect();
+    val.set_str1c(s.as_slice()).is_ok()
+}
+
+pub fn lock_mutex<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T> {
+    mutex
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner())
+}
+
+
+pub fn run_worker_command<F, R>(f: F) -> Result<R, String>
+where
+    F: FnOnce() -> R,
+{
+    catch_panic(f)
+}
+
 #[macro_export]
 macro_rules! impl_addin_exports {
     ($addin_type:ty) => {
@@ -34,14 +68,19 @@ macro_rules! impl_addin_exports {
             _name: *const u16,
             component: *mut *mut c_void,
         ) -> c_long {
-            let addin = <$addin_type>::new();
-            create_component(component, addin)
+            match $crate::catch_panic(|| <$addin_type>::new()) {
+                Ok(addin) => create_component(component, addin),
+                Err(_) => $crate::CREATE_COMPONENT_ERROR as c_long,
+            }
         }
 
         #[allow(non_snake_case)]
         #[no_mangle]
         pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
-            destroy_component(component)
+            match $crate::catch_panic(|| unsafe { destroy_component(component) }) {
+                Ok(code) => code,
+                Err(_) => $crate::CREATE_COMPONENT_ERROR as c_long,
+            }
         }
 
         #[allow(non_snake_case)]
@@ -66,7 +105,6 @@ macro_rules! impl_addin_exports {
     };
 }
 
-/// Макрос для генерации реализации RawAddin с защитой от panic
 #[macro_export]
 macro_rules! impl_raw_addin {
     ($addin_type:ty, $methods:expr, $props:expr, $get_params_amount:expr, $cal_func_fn:expr) => {
@@ -84,18 +122,26 @@ macro_rules! impl_raw_addin {
             }
 
             fn get_prop_name(&mut self, num: usize, _alias: usize) -> Option<&'static [u16]> {
-                $props.get(num).copied()
+                $crate::catch_panic(|| $props.get(num).copied()).unwrap_or(None)
             }
 
             fn get_prop_val(&mut self, num: usize, val: &mut $crate::addin1c::Variant) -> bool {
-                let field: &dyn $crate::getset::ValueType = &self[num];
-                field.get_value(val)
+                match $crate::catch_panic(|| {
+                    let field: &dyn $crate::getset::ValueType = &self[num];
+                    field.get_value(val)
+                }) {
+                    Ok(result) => result,
+                    Err(message) => $crate::set_variant_error(val, &message),
+                }
             }
 
             fn set_prop_val(&mut self, num: usize, val: &$crate::addin1c::Variant) -> bool {
-                let field: &mut dyn $crate::getset::ValueType = &mut self[num];
-                field.set_value(val);
-                true
+                $crate::catch_panic(|| {
+                    let field: &mut dyn $crate::getset::ValueType = &mut self[num];
+                    field.set_value(val);
+                    true
+                })
+                .unwrap_or(false)
             }
 
             fn is_prop_readable(&mut self, _num: usize) -> bool {
@@ -115,11 +161,11 @@ macro_rules! impl_raw_addin {
             }
 
             fn get_method_name(&mut self, num: usize, _alias: usize) -> Option<&'static [u16]> {
-                $methods.get(num).copied()
+                $crate::catch_panic(|| $methods.get(num).copied()).unwrap_or(None)
             }
 
             fn get_n_params(&mut self, num: usize) -> usize {
-                $get_params_amount(num)
+                $crate::catch_panic(|| $get_params_amount(num)).unwrap_or(0)
             }
 
             fn get_param_def_value(
@@ -149,26 +195,12 @@ macro_rules! impl_raw_addin {
                 params: &mut [$crate::addin1c::Variant],
                 ret_value: &mut $crate::addin1c::Variant,
             ) -> bool {
-                // Защита от panic - перехватываем и возвращаем ошибку в 1С
-                let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                    $cal_func_fn(self, num, params)
-                }));
-
-                match result {
-                    Ok(value) => {
-                        // Нормальное выполнение
-                        value.get_value(ret_value)
-                    }
-                    Err(panic_info) => {
-                        // Panic произошёл - извлекаем сообщение и возвращаем как ошибку
-                        let panic_msg = $crate::extract_panic_message(&panic_info);
-                        let error_msg = format!("Internal error (panic): {}", panic_msg);
-
-                        // Возвращаем ошибку как строку в 1С
-                        let s: Vec<u16> = error_msg.encode_utf16().collect();
-                        let _ = ret_value.set_str1c(s.as_slice());
-                        true
-                    }
+                match $crate::catch_panic(|| $cal_func_fn(self, num, params)) {
+                    Ok(value) => match $crate::catch_panic(|| value.get_value(ret_value)) {
+                        Ok(result) => result,
+                        Err(message) => $crate::set_variant_error(ret_value, &message),
+                    },
+                    Err(message) => $crate::set_variant_error(ret_value, &message),
                 }
             }
         }

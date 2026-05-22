@@ -14,7 +14,7 @@ dependencies = [
 
 [[package]]
 name = "common-core"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "addin1c",
 ]
