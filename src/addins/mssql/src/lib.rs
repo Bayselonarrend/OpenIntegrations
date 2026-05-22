@@ -4,6 +4,7 @@ use serde_json::json;
 use std::sync::{Arc, Mutex};
 use common_binary::vault::BinaryInput;
 use common_dataset::dataset::Datasets;
+use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success, version};
 use common_core::*;
@@ -26,6 +27,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("LoadFileToVault"),
     name!("LoadBase64ToVault"),
+    name!("SetLogger"),
+    name!("GetLogs"),
     name!("Version"),
 ];
 
@@ -45,7 +48,9 @@ pub fn get_params_amount(num: usize) -> usize {
         11 => 1,
         12 => 1,
         13 => 1,
-        14 => 0,
+        14 => 1,
+        15 => 1,
+        16 => 0,
         _ => 0,
     }
 }
@@ -176,7 +181,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             Box::new(result)
         },
-        14 => Box::new(version()),
+        14 => {
+            let logger_config = params[0].get_string().unwrap_or_default();
+            Box::new(obj.set_logger(&logger_config))
+        },
+        15 => {
+            let count = params[0].get_i32().unwrap_or(0) as usize;
+            Box::new(obj.get_logs(count))
+        },
+        16 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -191,6 +204,7 @@ pub struct AddIn {
     initialized: bool,
     tls: Option<TlsSettings>,
     datasets: Datasets,
+    logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
@@ -201,6 +215,61 @@ impl AddIn {
             initialized: false,
             tls: None,
             datasets: Datasets::new(),
+            logger: None,
+        }
+    }
+
+    pub fn set_logger(&mut self, logger_config: &str) -> String {
+        if logger_config.is_empty() {
+            return json_error("Logger config is empty");
+        }
+
+        if self.initialized {
+            return json_error("Logger can only be set before the connection is established");
+        }
+
+        if self.logger.is_some() {
+            return json_success();
+        }
+
+        match Logger::from_json(logger_config) {
+            Ok(logger) => {
+                let logger_arc = Arc::new(logger);
+                match self.backend.lock() {
+                    Ok(backend) => match backend.set_logger(logger_arc.clone()) {
+                        Ok(()) => {
+                            self.logger = Some(logger_arc);
+                            json_success()
+                        }
+                        Err(e) => json_error(&e),
+                    },
+                    Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+                }
+            }
+            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+        }
+    }
+
+    pub fn get_logs(&self, count: usize) -> String {
+        if let Some(ref logger) = self.logger {
+            let logs = logger.get_last_logs(count);
+            let total = logger.len();
+
+            json!({
+                "result": true,
+                "logs": logs,
+                "total": total,
+                "returned": logs.len()
+            })
+            .to_string()
+        } else {
+            json_error("Logger not initialized")
+        }
+    }
+
+    fn apply_logger_to_backend(&self) {
+        if let (Some(ref logger), Ok(backend)) = (&self.logger, self.backend.lock()) {
+            let _ = backend.set_logger(logger.clone());
         }
     }
 
@@ -239,6 +308,7 @@ impl AddIn {
         }
 
         self.backend = Arc::new(Mutex::new(backend::MSSQLBackend::new()));
+        self.apply_logger_to_backend();
         self.initialized = false;
         json_success()
     }

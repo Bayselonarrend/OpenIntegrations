@@ -256,6 +256,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-logs"
+version = "2.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "common-tcp"
 version = "2.1.0"
 dependencies = [
@@ -867,6 +876,7 @@ dependencies = [
  "common-binary",
  "common-core",
  "common-dataset",
+ "common-logs",
  "common-tcp",
  "common-utils",
  "dateparser",
