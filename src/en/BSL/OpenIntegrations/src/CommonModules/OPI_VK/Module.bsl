@@ -559,7 +559,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     If TypeOf(Response) = Type("BinaryData") Then
 
         ErrorMap = New Map;
-        ErrorMap.Insert("error", Response);
+        ErrorMap.Insert("error", GetStringFromBinaryData(Response));
         Return ErrorMap;
 
     EndIf;

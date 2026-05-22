@@ -1,0 +1,1 @@
+    Result = OPI_ZeroMQ.GetLoggingSettings(True, 100, GetTempFileName());

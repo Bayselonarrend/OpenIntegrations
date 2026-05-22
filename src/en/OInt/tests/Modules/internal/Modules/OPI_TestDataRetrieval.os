@@ -340,6 +340,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "TC_Client"                           , "TCP Client"                      , TCP);
     NewTest(ArrayOfTests, TestModule, "WS_Client"                           , "WebSocket Client"                , WebSocket);
     NewTest(ArrayOfTests, TestModule, "WS_Server"                           , "WebSocket Server"                , WebSocket);
+    NewTest(ArrayOfTests, TestModule, "ZMQ_Common"                          , "Common"                          , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_ConnectionMethods"               , "Connection"                      , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_ListeningMethods"                , "Listening"                       , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_InteractionMethods"              , "Interaction"                     , ZMQ);
@@ -8224,6 +8225,58 @@ Function Check_WebSocket_GetLoggingSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_ZeroMQ_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_ZeroMQ_CreateConnectionReq(Val Result, Val Option, Message = "")
 
     If Option          = "Check" Then
@@ -9457,7 +9510,7 @@ Function Check_GreenAPI_GetInstanceSettings(Val Result, Val Option, Parameters =
 
 EndFunction
 
-Function Check_GreenAPI_GetAccountInformation(Val Result, Val Option)
+Function Check_GreenAPI_GetAccountInformation(Val Result, Val Option, Parameters = "")
 
     Try
         Result["deviceId"] = "***";
@@ -9468,6 +9521,10 @@ Function Check_GreenAPI_GetAccountInformation(Val Result, Val Option)
 
     ExpectsThat(Result["deviceId"]).Заполнено();
     ExpectsThat(Result["phone"]).Заполнено();
+
+    ChatID = Result["chatId"];
+    WriteParameter("GreenAPI_ChatID", ChatID);
+    OPI_Tools.AddField("GreenAPI_ChatID", ChatID, "String", Parameters);
 
     Return Result;
 

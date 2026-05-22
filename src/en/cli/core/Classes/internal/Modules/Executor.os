@@ -6,8 +6,10 @@ Function GetLastBuildHashSum() Export
 EndFunction
 
 Procedure ExecuteScript(Val Script, Response, Val Configuration = Undefined) Export
-
-	OPI_AdvancedCall.SetSettings(Configuration);
+	
+	NormalizedSettings = OPI_AdvancedCall.NormalizeSettings(Configuration);
+	
+	OPI_AdvancedCall.SetSettings(NormalizedSettings);
 	Execute(Script);
 	OPI_AdvancedCall.DeleteSettings();
 

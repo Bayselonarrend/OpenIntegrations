@@ -95,6 +95,15 @@ EndFunction
 
 #Region ZeroMQ
 
+Procedure ZMQ_Common() Export
+
+    TestParameters = New Structure;
+
+    ZeroMQ_GetLoggingSettings(TestParameters);
+    ZeroMQ_GetLog(TestParameters);
+
+EndProcedure
+
 Procedure ZMQ_ConnectionMethods() Export
 
     TestParameters = New Structure;
@@ -609,6 +618,63 @@ Procedure ZeroMQ_IsConnectorObject(FunctionParameters)
 
 EndProcedure
 
+Procedure ZeroMQ_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_ZeroMQ.GetLoggingSettings(True, 100, LogFile);
+
+    Port         = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Address    = "tcp://127.0.0.1:5555";
+    Connection = OPI_ZeroMQ.CreateConnectionReq(Address, LoggingSettings);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_LOG_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    OPI_ZeroMQ.SendData(Connection, Data, 3000);
+    OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    Result = OPI_ZeroMQ.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLog", , LogFile);
+
+    Result = OPI_ZeroMQ.GetLog(Connection, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLog", "AsString", LogFile);
+
+    OPI_ZeroMQ.CloseConnection(Connection);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_ZeroMQ.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings");
+
+    Result = OPI_ZeroMQ.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings", "File");
+
+    Result = OPI_ZeroMQ.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
 #EndRegion // ZeroMQ
 
 #EndRegion // AtomicTests
@@ -617,6 +683,10 @@ EndProcedure
 
 
 #Region Alternate
+
+Procedure ZMQ_Общие() Export
+    ZMQ_Common();
+EndProcedure
 
 Procedure ZMQ_МетодыПодключения() Export
     ZMQ_ConnectionMethods();
