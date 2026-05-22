@@ -22,7 +22,6 @@ common-dataset = { path = "../commons/common-dataset" }
 common-binary = { path = "../commons/common-binary" }
 common-logs = { path = "../commons/common-logs" }
 
-# rustls вместо native-tls (schannel): TLS внутри Client::connect, не через common-tcp.
 tiberius = { version = "0.12.3", default-features = false, features = ["chrono", "rust_decimal", "rustls", "tds73", "winauth"] }
 tokio = { version = "1.0", features = ["full"] }
 tokio-util = { version = "0.7", features = ["compat"] }
