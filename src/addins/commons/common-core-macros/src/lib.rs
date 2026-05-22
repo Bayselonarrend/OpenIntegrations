@@ -152,9 +152,14 @@ pub fn register_addin_methods(_attr: TokenStream, item: TokenStream) -> TokenStr
                         obj_any: &mut dyn std::any::Any,
                         params: &mut [::addin1c::Variant]
                     ) -> Box<dyn ::common_core::getset::ValueType> {
-                        let obj = obj_any.downcast_mut::<#self_ty>().expect("Invalid type");
-                        #(#param_extractions)*
-                        Box::new(#method_call)
+                        match ::common_core::catch_panic(|| {
+                            let obj = obj_any.downcast_mut::<#self_ty>().expect("Invalid type");
+                            #(#param_extractions)*
+                            #method_call
+                        }) {
+                            Ok(value) => Box::new(value),
+                            Err(message) => Box::new(message),
+                        }
                     }
                     
                     #[linkme::distributed_slice(::common_core::ADDIN_METHODS)]

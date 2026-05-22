@@ -12,5 +12,6 @@ indexmap = "2.7.0"
 futures-util = "0.3"
 
 common-binary = { path = "../common-binary" }
+common-core = { path = "../common-core" }
 common-logs = { path = "../common-logs" }
 common-utils = { path = "../common-utils" }
