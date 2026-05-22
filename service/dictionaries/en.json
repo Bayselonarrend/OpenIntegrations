@@ -11192,6 +11192,7 @@
 "Ozon_ПолучитьДоступныеТоварыАкции(ПараметрыТеста": "Ozon_GetAvailablePromoProducts(TestParameters",
 "Модуль работы с внешними компонентами набора ОПИ": "External Components Module of OpenIntegrations",
 "ВерсииКомпонентСостояниеПросмотраКонтекстноеМеню": "AddInsVersionsViewStateContextMenu",
+"СостояниеПросмотра": "ViewState",
 "Удаление заявки](@api-docs.cdek.ru/29948379.html": "Deleting a courier invitation](@api-docs.cdek.ru/33828880.html",
 "Требуемый префикс (тема) сообщений для получения": "Required prefix (topic) of messages to receive",
 "Модуль для работы с базами MongoDB из набора ОПИ": "MongoDB Module of OpenIntegrations",
