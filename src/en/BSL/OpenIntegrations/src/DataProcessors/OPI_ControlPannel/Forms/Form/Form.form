@@ -848,10 +848,10 @@
         </searchStringAddition>
         <viewStatusAddition>
           <enabled>false</enabled>
-          <name>AddInsVersionsStateПрowithмoтрa</name>
+          <name>AddInsVersionsViewState</name>
           <id>14</id>
           <extendedTooltip>
-            <name>AddInsVersionsStateПрowithмoтрaExtendedTooltip</name>
+            <name>AddInsVersionsViewStateExtendedTooltip</name>
             <id>16</id>
             <type>Label</type>
             <autoMaxWidth>true</autoMaxWidth>

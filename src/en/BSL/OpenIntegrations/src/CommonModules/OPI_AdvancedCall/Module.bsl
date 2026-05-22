@@ -56,8 +56,10 @@
 //
 // Returns:
 // Structure Of KeyAndValue - Call function with settings
-Function CallWithSettings(Val ModuleName, Val FunctionName, Val Parameters = Undefined,
-    Val Settings = Undefined) Export
+Function CallWithSettings(Val ModuleName
+    , Val FunctionName
+    , Val Parameters = Undefined
+    , Val Settings = Undefined) Export
 
     NormalizedSettings = NormalizeSettings(Settings);
 
@@ -131,8 +133,11 @@ EndFunction
 
 #Region Internal
 
-Function CallWithSettingsService(Val ModuleName, Val FunctionName, Val Parameters, Val Settings,
-    Val StorageAddress = Undefined) Export
+Function CallWithSettingsService(Val ModuleName
+    , Val FunctionName
+    , Val Parameters
+    , Val Settings
+    , Val StorageAddress = Undefined) Export
 
     SetSettings(Settings);
 
@@ -248,21 +253,7 @@ Function NormalizeIntermediateResult(Val Result) Export
 
 EndFunction
 
-Procedure DeleteSettings() Export
-
-    //@skip-check module-unused-local-variable
-    CurrentSettings = New Structure;
-
-    OPI_Tools.SetSessionParameter("OPI_AdvancedCallSettings" // !OPI
-        , New FixedStructure); // !OPI
-
-EndProcedure
-
-#EndRegion
-
-#Region Private
-
-Function NormalizeSettings(Val Settings)
+Function NormalizeSettings(Val Settings) Export
 
     If ValueIsFilled(Settings) Then
 
@@ -288,6 +279,16 @@ Function NormalizeSettings(Val Settings)
     Return NormalizedSettings;
 
 EndFunction
+
+Procedure DeleteSettings() Export
+
+    //@skip-check module-unused-local-variable
+    CurrentSettings = New Structure;
+
+    OPI_Tools.SetSessionParameter("OPI_AdvancedCallSettings" // !OPI
+        , New FixedStructure); // !OPI
+
+EndProcedure
 
 #EndRegion
 

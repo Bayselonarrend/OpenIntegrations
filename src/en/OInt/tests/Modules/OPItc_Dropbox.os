@@ -187,9 +187,15 @@ EndProcedure
 Procedure DropboxAPI_AccessManagement() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_OtherUser", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_FileID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_OtherUser"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_FileID"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_SharedFolder", TestParameters);
+
+    Folder = TestParameters["Dropbox_SharedFolder"];
+    Token  = TestParameters["Dropbox_Token"];
+
+    OPI_Dropbox.CancelFolderPublication(Token, Folder);
 
     Dropbox_AddUsersToFile(TestParameters);
     Dropbox_PublishFolder(TestParameters);

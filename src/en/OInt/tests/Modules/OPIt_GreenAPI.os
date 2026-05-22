@@ -129,6 +129,7 @@ Procedure GAPI_GroupManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ChatID"    , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
 
     GreenAPI_CreateGroup(TestParameters);
@@ -275,7 +276,7 @@ Procedure GreenAPI_GetAccountInformation(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetAccountInformation");
+    OPI_TestDataRetrieval.Process(Result, "GreenAPI", "GetAccountInformation", , FunctionParameters);
 
 EndProcedure
 
@@ -427,8 +428,14 @@ Procedure GreenAPI_CreateGroup(FunctionParameters)
 
     Name = "New group";
 
+    Members = New Array;
+    Members.Add("1234567");
+
+    Members.Delete(0); // SKIP
+    Members.Add(FunctionParameters["GreenAPI_ChatID"]); // SKIP
+
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name);
+    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name, Members);
 
     // END
 

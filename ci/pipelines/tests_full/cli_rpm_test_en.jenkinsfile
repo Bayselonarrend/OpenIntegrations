@@ -694,6 +694,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
+						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_Common'],
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_ConnectionMethods'],
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_ListeningMethods'],
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_InteractionMethods'],

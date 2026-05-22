@@ -5,5 +5,8 @@
 
     Name = "New group";
 
+    Members = New Array;
+    Members.Add("1234567");
+
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name);
+    Result           = OPI_GreenAPI.CreateGroup(AccessParameters, Name, Members);

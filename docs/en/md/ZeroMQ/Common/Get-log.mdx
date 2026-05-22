@@ -50,7 +50,32 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_ZeroMQ.GetLoggingSettings(True, 100, LogFile);
 
+    Port         = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Address    = "tcp://127.0.0.1:5555";
+    Connection = OPI_ZeroMQ.CreateConnectionReq(Address, LoggingSettings);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_LOG_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    OPI_ZeroMQ.SendData(Connection, Data, 3000);
+    OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    Result = OPI_ZeroMQ.GetLog(Connection);
+```
  
 
 
