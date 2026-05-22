@@ -63,6 +63,12 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
+                "description_ru": "Исправлено применение настроек расширенного вызова в CLI версии",
+                "description_en": "Fixed application of extended call settings in CLI version"                
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
                 "description_ru": "Общая оптимизация инструментария",
                 "description_en": "General tooling optimizations"
             }
