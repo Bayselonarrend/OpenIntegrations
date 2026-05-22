@@ -1,5 +1,5 @@
 use serde_json::{json, Value, Number};
-use tiberius::{Client, Config, ToSql, Row, Column};
+use tiberius::{Client, Config, EncryptionLevel, ToSql, Row, Column};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::mpsc::{self, Sender};
@@ -66,7 +66,14 @@ impl BackendState {
         }
     }
 
+    /// Политика как у `common-tcp` rustls (`accept_invalid_certs` / `ca_cert_path`),
+    /// но через API tiberius — `get_rustls_config()` сюда не подключается.
     fn apply_tls(config: &mut Config, tls: &TlsSettings) -> Result<(), String> {
+        if !tls.use_tls {
+            config.encryption(EncryptionLevel::NotSupported);
+            return Ok(());
+        }
+
         let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
             if tls.accept_invalid_certs {
                 config.trust_cert();
@@ -146,8 +153,13 @@ impl MSSQLBackend {
                                     }
                                     state.log("Connect: TLS settings applied");
                                 }
-                                Some(_) => {
-                                    state.log("Connect: SetTLS present, use_tls=false");
+                                Some(tls) => {
+                                    state.log("Connect: SetTLS use_tls=false, encryption off");
+                                    if let Err(message) = BackendState::apply_tls(&mut config, tls)
+                                    {
+                                        state.log(&format!("Connect: TLS error: {}", message));
+                                        return Err(message);
+                                    }
                                 }
                                 None => {
                                     state.log("Connect: SetTLS not set, driver defaults");
@@ -181,7 +193,7 @@ impl MSSQLBackend {
                                 state.log(&format!("Connect: set_nodelay error: {}", message));
                                 return Err(message);
                             }
-                            state.log("Connect: starting TDS handshake");
+                            state.log("Connect: TDS prelogin and TLS (tiberius rustls)");
 
                             match rt.block_on(async {
                                 tokio::time::timeout(
