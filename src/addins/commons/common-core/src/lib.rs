@@ -1,8 +1,14 @@
+//! Общая обвязка Native API для внешних компонент 1С.
+//!
+//! Panic на границе с 1С перехватывают макросы `impl_raw_addin!` / `impl_addin_exports!`.
+//! Worker-потоки: [`spawn_tokio_backend_thread`], [`run_worker_command`], [`guard_worker_command!`].
+
+pub mod backend_thread;
 pub mod from_variant;
 pub mod getset;
 
-// Реэкспортируем зависимости
 pub use addin1c;
+pub use backend_thread::{run_worker_command, spawn_tokio_backend_thread};
 pub use from_variant::FromVariant;
 
 pub const CREATE_COMPONENT_SUCCESS: i32 = 1;
@@ -41,14 +47,6 @@ pub fn lock_mutex<T>(mutex: &std::sync::Mutex<T>) -> std::sync::MutexGuard<'_, T
     mutex
         .lock()
         .unwrap_or_else(|poisoned| poisoned.into_inner())
-}
-
-
-pub fn run_worker_command<F, R>(f: F) -> Result<R, String>
-where
-    F: FnOnce() -> R,
-{
-    catch_panic(f)
 }
 
 #[macro_export]

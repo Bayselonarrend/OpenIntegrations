@@ -4,7 +4,8 @@ use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
 use std::sync::mpsc::{self, Sender};
 use std::sync::Arc;
-use std::thread::{self, JoinHandle};
+use std::thread::JoinHandle;
+use common_core::spawn_tokio_backend_thread;
 use common_logs::{log, Logger};
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime, DateTime, Utc};
 use uuid::Uuid;
@@ -79,21 +80,13 @@ impl BackendState {
 
 impl MSSQLBackend {
     pub fn new() -> Self {
-        let (tx, rx) = mpsc::channel();
-
         let binary_vault = BinaryVault::new();
         let vault_clone = binary_vault.clone();
 
-        let thread_handle = thread::Builder::new()
-            .name("opi_mssql_backend".to_string())
-            .spawn(move || {
-
-            let rt = tokio::runtime::Runtime::new().unwrap();
-
+        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_mssql_backend", move |rt, rx| {
             let mut state = BackendState::new();
 
             while let Ok(cmd) = rx.recv() {
-
                 match cmd {
                     BackendCommand::Connect { conn_str, tls, response } => {
                         state.log("Connecting to MSSQL...");
@@ -175,12 +168,12 @@ impl MSSQLBackend {
                     }
                 }
             }
-        }).unwrap();
+        });
 
         Self {
             tx,
-            thread_handle: Some(thread_handle),
-            binary_vault
+            thread_handle,
+            binary_vault,
         }
     }
 

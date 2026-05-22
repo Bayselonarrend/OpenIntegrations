@@ -3,6 +3,16 @@
 version = 4
 
 [[package]]
+name = "addin1c"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ef34e8b7ff4c43e87491a4cc30a4779a9f67c50db43378a36362c7a56246e05b"
+dependencies = [
+ "smallvec",
+ "utf16_lit",
+]
+
+[[package]]
 name = "android_system_properties"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -78,7 +88,7 @@ dependencies = [
 
 [[package]]
 name = "common-binary"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "base64",
  "serde_json",
@@ -86,8 +96,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-core"
+version = "2.1.0"
+dependencies = [
+ "addin1c",
+ "tokio",
+]
+
+[[package]]
 name = "common-logs"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "chrono",
  "serde",
@@ -96,9 +114,10 @@ dependencies = [
 
 [[package]]
 name = "common-server"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "common-binary",
+ "common-core",
  "common-logs",
  "common-utils",
  "futures-util",
@@ -110,7 +129,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
  "serde_json",
 ]
@@ -557,6 +576,12 @@ name = "unicode-xid"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ebc1c04c71510c7f702b52b7c350734c9ff1295c464a03335b00bb84fc54f853"
+
+[[package]]
+name = "utf16_lit"
+version = "2.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "14706d2a800ee8ff38c1d3edb873cd616971ea59eb7c0d046bb44ef59b06a1ae"
 
 [[package]]
 name = "uuid"
