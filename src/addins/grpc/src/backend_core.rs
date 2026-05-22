@@ -1,6 +1,7 @@
 use serde_json::json;
 use std::sync::mpsc::{self, Sender};
-use std::thread::{self, JoinHandle};
+use std::thread::JoinHandle;
+use common_core::spawn_tokio_backend_thread;
 use std::collections::HashMap;
 use common_utils::utils::json_error;
 use common_tcp::tls_settings::TlsSettings;
@@ -91,18 +92,13 @@ pub enum BackendCommand {
 
 impl GrpcBackend {
     pub fn new() -> Self {
-        let (tx, rx) = mpsc::channel();
-        
         let binary_vault = BinaryVault::new();
         let vault_clone = binary_vault.clone();
 
-        let thread_handle = thread::Builder::new()
-            .name("opi_grpc_backend".to_string())
-            .spawn(move || {
-                let rt = tokio::runtime::Runtime::new().unwrap();
-                let mut client_state = ClientState::new();
+        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_grpc_backend", move |rt, rx| {
+            let mut client_state = ClientState::new();
 
-                while let Ok(cmd) = rx.recv() {
+            while let Ok(cmd) = rx.recv() {
                     match cmd {
                         BackendCommand::Connect { address, tls_settings, response } => {
                             let result = rt.block_on(async {
@@ -394,12 +390,11 @@ impl GrpcBackend {
                         BackendCommand::Shutdown => break,
                     }
                 }
-            })
-            .unwrap();
+        });
 
         Self {
             tx,
-            thread_handle: Some(thread_handle),
+            thread_handle,
             binary_vault,
         }
     }

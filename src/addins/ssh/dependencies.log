@@ -1,12 +1,12 @@
 "MAIN ---" 
-	linux-vdso.so.1 (0x00007ffe631d0000)
-	libssl.so.3 => /lib64/libssl.so.3 (0x000076888a600000)
-	libcrypto.so.3 => /lib64/libcrypto.so.3 (0x0000768889e00000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000768889a00000)
-	libc.so.6 => /lib64/libc.so.6 (0x0000768889600000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x0000768889200000)
-	/lib64/ld-linux-x86-64.so.2 (0x000076888aa00000)
-	libz.so.1 => /lib64/libz.so.1 (0x0000768888e00000)
+	linux-vdso.so.1 (0x00007ffd36f8a000)
+	libssl.so.3 => /lib64/libssl.so.3 (0x0000781fff400000)
+	libcrypto.so.3 => /lib64/libcrypto.so.3 (0x0000781ffec00000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000781ffe800000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000781ffe400000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000781ffe000000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000781fff800000)
+	libz.so.1 => /lib64/libz.so.1 (0x0000781ffdc00000)
 GLIBC_2.2.5
 GLIBC_2.3
 GLIBC_2.3.4
