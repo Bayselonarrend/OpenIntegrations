@@ -1,68 +1,36 @@
-use crate::AddIn;
 use base64::{engine::general_purpose, Engine as _};
 use chrono::*;
 use common_binary::vault::{BinaryVault, VaultKey};
-use common_utils::utils::json_error;
 use dateparser::parse;
-use mysql_common::constants::ColumnType;
 use mysql::prelude::Queryable;
+use mysql::PooledConn;
+use mysql_common::constants::ColumnType;
 use mysql_common::packets::Column;
-use serde_json::{json, Value};
+use serde_json::Value;
 use std::collections::HashMap;
 use std::str::FromStr;
 
-impl AddIn {
-    pub fn execute_query(&mut self, key: &str) -> String {
-        let mut conn = match self.get_connection() {
-            Ok(conn) => conn,
-            Err(e) => return json_error(&e),
-        };
+pub fn execute(
+    binary_vault: &BinaryVault,
+    conn: &mut PooledConn,
+    text: &str,
+    mut params: Vec<Value>,
+    force_result: bool,
+) -> Result<Option<Vec<Value>>, String> {
+    let params_array = process_mysql_params(binary_vault, &mut params)?;
 
-        let query = match self.datasets.get_query(key) {
-            Some(q) => q,
-            None => return json_error(format!("No query found by key: {}", key)),
-        };
-
-        let mut params = query.params;
-        let text = query.text;
-        let force_result = query.force_result;
-
-        let params_array = match process_mysql_params(&self.binary_vault, &mut params) {
-            Ok(params_array) => params_array,
-            Err(e) => return json_error(&e),
-        };
-
-        let result =
-            if text.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
-                let mut rows: Vec<mysql::Row> = match conn.exec(text, params_array) {
-                    Ok(rows) => rows,
-                    Err(e) => return json_error(&e),
-                };
-
-                match rows_to_json_array(&mut rows) {
-                    Ok(json) => {
-                        self.datasets.set_results(&key, json);
-                        json!({"result": true, "data": true}).to_string()
-                    }
-                    Err(e) => return json_error(&e),
-                }
-            } else {
-                let exec_result = match params_array.len() == 0 {
-                    true => conn.query_drop(text),
-                    false => conn.exec_drop(text, params_array),
-                };
-
-                match exec_result {
-                    Ok(_) => json!({"result": true, "data": false}).to_string(),
-                    Err(e) => json_error(&e),
-                }
-            };
-
-        match conn.as_mut().ping() {
-            Ok(_) => self.connection = Some(conn),
-            Err(_) => drop(conn),
-        };
-        result
+    if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
+        let mut rows: Vec<mysql::Row> = conn
+            .exec(text, params_array)
+            .map_err(|e| e.to_string())?;
+        Ok(Some(rows_to_json_array(&mut rows)?))
+    } else if params_array.is_empty() {
+        conn.query_drop(text).map_err(|e| e.to_string())?;
+        Ok(None)
+    } else {
+        conn.exec_drop(text, params_array)
+            .map_err(|e| e.to_string())?;
+        Ok(None)
     }
 }
 

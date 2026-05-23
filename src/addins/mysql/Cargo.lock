@@ -133,6 +133,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-backend"
+version = "2.1.0"
+dependencies = [
+ "tokio",
+]
+
+[[package]]
 name = "common-binary"
 version = "2.1.0"
 dependencies = [
@@ -155,6 +162,15 @@ dependencies = [
  "dashmap",
  "serde_json",
  "uuid",
+]
+
+[[package]]
+name = "common-logs"
+version = "2.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -914,9 +930,11 @@ version = "2.1.0"
 dependencies = [
  "base64",
  "chrono",
+ "common-backend",
  "common-binary",
  "common-core",
  "common-dataset",
+ "common-logs",
  "common-tcp",
  "common-utils",
  "dateparser",
@@ -953,6 +971,12 @@ name = "percent-encoding"
 version = "2.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b4f627cb1b25917193a259e49bdad08f671f8d9708acfd5fe0a8c1455d87220"
+
+[[package]]
+name = "pin-project-lite"
+version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a89322df9ebe1c1578d689c92318e070967d1042b512afbe49518723f4e6d5cd"
 
 [[package]]
 name = "pkg-config"
@@ -1370,6 +1394,15 @@ checksum = "42d3e9c45c09de15d06dd8acf5f4e0e399e85927b7f00711024eb7ae10fa4869"
 dependencies = [
  "displaydoc",
  "zerovec",
+]
+
+[[package]]
+name = "tokio"
+version = "1.52.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8fc7f01b389ac15039e4dc9531aa973a135d7a4135281b12d7c1bc79fd57fffe"
+dependencies = [
+ "pin-project-lite",
 ]
 
 [[package]]
