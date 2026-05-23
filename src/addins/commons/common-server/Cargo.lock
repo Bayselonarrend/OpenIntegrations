@@ -87,6 +87,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-backend"
+version = "2.1.0"
+dependencies = [
+ "tokio",
+]
+
+[[package]]
 name = "common-binary"
 version = "2.1.0"
 dependencies = [
@@ -100,7 +107,6 @@ name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
- "tokio",
 ]
 
 [[package]]
@@ -116,6 +122,7 @@ dependencies = [
 name = "common-server"
 version = "2.1.0"
 dependencies = [
+ "common-backend",
  "common-binary",
  "common-core",
  "common-logs",

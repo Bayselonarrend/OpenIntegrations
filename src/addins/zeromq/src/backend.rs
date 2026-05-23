@@ -1,7 +1,6 @@
-use std::sync::mpsc::{self, Sender};
+use std::sync::mpsc::Sender;
 use std::sync::Arc;
-use std::thread::JoinHandle;
-use common_core::spawn_tokio_backend_thread;
+use common_backend::BackendThread;
 use std::time::Duration;
 
 use common_logs::{log, Logger};
@@ -53,8 +52,7 @@ pub enum BackendCommand {
 }
 
 pub struct ZeroMqBackend {
-    pub(crate) tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,
+    thread: BackendThread<BackendCommand>,
 }
 
 enum OpenSocket {
@@ -166,7 +164,7 @@ async fn send_with_timeout<S: SocketSend + Unpin>(
 
 impl ZeroMqBackend {
     pub fn new() -> Self {
-        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_zeromq_backend", move |rt, rx| {
+        let thread = BackendThread::spawn("opi_zeromq_backend", move |rt, rx| {
             let mut state = BackendState::new();
 
             while let Ok(cmd) = rx.recv() {
@@ -418,122 +416,77 @@ impl ZeroMqBackend {
                         }
                     }
                 }
-        });
+        })
+        .expect("failed to start ZeroMQ backend thread");
 
-        Self {
-            tx,
-            thread_handle,
-        }
+        Self { thread }
     }
 
     pub fn connect(&self, scheme: ExchangeScheme, endpoint: &str) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Connect {
+        self.thread
+            .call(|response| BackendCommand::Connect {
                 scheme,
                 endpoint: endpoint.to_string(),
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue Connect: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+            .and_then(|result| result)
     }
 
     pub fn bind(&self, scheme: ExchangeScheme, endpoint: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Bind {
+        self.thread
+            .call(|response| BackendCommand::Bind {
                 scheme,
                 endpoint: endpoint.to_string(),
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue Bind: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+            .and_then(|result| result)
     }
 
     pub fn subscribe(&self, prefix: &str) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Subscribe {
+        self.thread
+            .call(|response| BackendCommand::Subscribe {
                 prefix: prefix.to_string(),
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue Subscribe: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+            .and_then(|result| result)
     }
 
     pub fn send_payload(&self, payload: Vec<u8>, timeout_ms: i32) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Send {
+        self.thread
+            .call(|response| BackendCommand::Send {
                 payload,
                 timeout_ms,
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue Send: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+            .and_then(|result| result)
     }
 
     pub fn recv_payload(&self, timeout_ms: i32) -> Result<Vec<u8>, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Recv {
+        self.thread
+            .call(|response| BackendCommand::Recv {
                 timeout_ms,
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue Recv: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+            .and_then(|result| result)
     }
 
     pub fn set_logger(&self, logger: Arc<Logger>) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::SetLogger {
-                logger,
-                response: response_tx,
-            })
-            .map_err(|e| format!("Failed to enqueue SetLogger: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+        self.thread
+            .call(|response| BackendCommand::SetLogger { logger, response })
+            .and_then(|result| result)
     }
 
     pub fn close_socket(&self) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::Close {
-                response: response_tx,
-            })
-            .map_err(|e| format!("Failed to enqueue Close: {}", e))?;
-
-        response_rx
-            .recv()
-            .map_err(|_| "Backend thread stopped unexpectedly.".to_string())?
+        self.thread
+            .call(|response| BackendCommand::Close { response })
+            .and_then(|result| result)
     }
 }
 
 impl Drop for ZeroMqBackend {
     fn drop(&mut self) {
-        let _ = self.tx.send(BackendCommand::Shutdown);
-        if let Some(handle) = self.thread_handle.take() {
-            if let Err(e) = handle.join() {
-                eprintln!("opi_zeromq backend thread panicked: {:?}", e);
-            }
-        }
+        let _ = self
+            .thread
+            .shutdown(Some(BackendCommand::Shutdown));
     }
 }

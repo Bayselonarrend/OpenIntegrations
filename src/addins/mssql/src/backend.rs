@@ -2,10 +2,9 @@ use serde_json::{json, Value, Number};
 use tiberius::{Client, Config, ToSql, Row, Column};
 use tokio::net::TcpStream;
 use tokio_util::compat::{Compat, TokioAsyncWriteCompatExt};
-use std::sync::mpsc::{self, Sender};
+use std::sync::mpsc::Sender;
 use std::sync::Arc;
-use std::thread::JoinHandle;
-use common_core::spawn_tokio_backend_thread;
+use common_backend::BackendThread;
 use common_logs::{log, Logger};
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime, DateTime, Utc};
 use uuid::Uuid;
@@ -22,9 +21,7 @@ use tiberius::xml::XmlData;
 use dateparser::parse;
 
 pub struct MSSQLBackend {
-    tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,
-    pub(crate) binary_vault: BinaryVault
+    thread: BackendThread<BackendCommand>,
 }
 
 enum BackendCommand {
@@ -67,11 +64,10 @@ impl BackendState {
 }
 
 impl MSSQLBackend {
-    pub fn new() -> Self {
-        let binary_vault = BinaryVault::new();
+    pub fn try_new(binary_vault: BinaryVault) -> Result<Self, String> {
         let vault_clone = binary_vault.clone();
 
-        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_mssql_backend", move |rt, rx| {
+        let thread = BackendThread::spawn("opi_mssql_backend", move |rt, rx| {
             let mut state = BackendState::new();
 
             while let Ok(cmd) = rx.recv() {
@@ -157,76 +153,50 @@ impl MSSQLBackend {
                     }
                 }
             }
-        });
+        })?;
 
-        Self {
-            tx,
-            thread_handle,
-            binary_vault,
-        }
+        Ok(Self { thread })
     }
 
     pub fn connect(&self, conn_str: String, tls: Option<TlsSettings>) -> String {
-
-        let (response_tx, response_rx) = mpsc::channel();
-        let sending = self.tx.send(BackendCommand::Connect {
-            conn_str,
-            tls,
-            response: response_tx,
-        });
-        match sending{
-            Err(e) => {return format!("Sending error: {}", e.to_string())}
-            _ => {}
-        };
-        response_rx.recv().unwrap_or_else(|e| format!("Response receiver error: {}", e.to_string()))
+        self.thread
+            .call(|response| BackendCommand::Connect {
+                conn_str,
+                tls,
+                response,
+            })
+            .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn execute_query(&self, query: String, params_json: Vec<Value>, force_result: bool) -> Result<Option<Vec<Value>>, String> {
-
-        let (response_tx, response_rx) = mpsc::channel::<Result<Option<Vec<Value>>, String>>();
-        let sending = self.tx.send(BackendCommand::Execute {
-            query,
-            params_json,
-            force_result,
-            response: response_tx,
-        });
-
-        match sending {
-            Err(e) => {
-                let error = format!("Sending error: {}", e.to_string());
-                return Err(error)
-            }
-            _ => {}
-        }
-
-        response_rx.recv().unwrap_or_else(|e| {
-            let error = format!("Response receiver error: {}", e.to_string());
-            Err(error)
-        })
-
+    pub fn execute_query(
+        &self,
+        query: String,
+        params_json: Vec<Value>,
+        force_result: bool,
+    ) -> Result<Option<Vec<Value>>, String> {
+        self.thread
+            .call(|response| BackendCommand::Execute {
+                query,
+                params_json,
+                force_result,
+                response,
+            })
+            .and_then(|result| result)
     }
 
     pub fn set_logger(&self, logger: Arc<Logger>) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        self.tx
-            .send(BackendCommand::SetLogger {
+        self.thread
+            .call(|response| BackendCommand::SetLogger {
                 logger,
-                response: response_tx,
+                response,
             })
-            .map_err(|e| format!("Failed to enqueue SetLogger: {}", e))?;
-
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| Err(format!("SetLogger response error: {}", e)))
+            .and_then(|result| result)
     }
 
     pub fn shutdown(&mut self) {
-        let _ = self.tx.send(BackendCommand::Shutdown);
-        if let Some(handle) = self.thread_handle.take() {
-            if let Err(e) = handle.join() {
-                eprintln!("Backend thread panicked during shutdown: {:?}", e);
-            }
-        }
+        let _ = self
+            .thread
+            .shutdown(Some(BackendCommand::Shutdown));
     }
 
     async fn execute_query_internal(
@@ -550,13 +520,8 @@ fn try_get_any_float(row: &Row, index: usize) -> Option<f64> {
 
 impl Drop for MSSQLBackend {
     fn drop(&mut self) {
-
-        let _ = self.tx.send(BackendCommand::Shutdown);
-
-        if let Some(handle) = self.thread_handle.take() {
-            if let Err(e) = handle.join() {
-                eprintln!("Backend thread panicked: {:?}", e);
-            }
-        }
+        let _ = self
+            .thread
+            .shutdown(Some(BackendCommand::Shutdown));
     }
 }

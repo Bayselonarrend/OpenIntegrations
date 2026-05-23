@@ -1,7 +1,6 @@
 use serde_json::json;
-use std::sync::mpsc::{self, Sender};
-use std::thread::JoinHandle;
-use common_core::spawn_tokio_backend_thread;
+use std::sync::mpsc::Sender;
+use common_backend::BackendThread;
 use std::collections::HashMap;
 use common_utils::utils::json_error;
 use common_tcp::tls_settings::TlsSettings;
@@ -13,8 +12,7 @@ use super::grpc_caller::{self, CallParams};
 use super::introspection;
 
 pub struct GrpcBackend {
-    pub(crate) tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,
+    thread: BackendThread<BackendCommand>,
     pub(crate) binary_vault: BinaryVault,
 }
 
@@ -87,7 +85,6 @@ pub enum BackendCommand {
     CloseAllStreams {
         response: Sender<String>,
     },
-    Shutdown,
 }
 
 impl GrpcBackend {
@@ -95,7 +92,7 @@ impl GrpcBackend {
         let binary_vault = BinaryVault::new();
         let vault_clone = binary_vault.clone();
 
-        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_grpc_backend", move |rt, rx| {
+        let thread = BackendThread::spawn("opi_grpc_backend", move |rt, rx| {
             let mut client_state = ClientState::new();
 
             while let Ok(cmd) = rx.recv() {
@@ -387,29 +384,23 @@ impl GrpcBackend {
                             };
                             let _ = response.send(response_msg);
                         }
-                        BackendCommand::Shutdown => break,
                     }
                 }
-        });
+        })
+        .expect("failed to start gRPC backend thread");
 
         Self {
-            tx,
-            thread_handle,
+            thread,
             binary_vault,
         }
     }
 
     pub fn connect(&self, address: &str, tls_settings: &Option<TlsSettings>) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::Connect {
+        let response = self.thread.call(|response| BackendCommand::Connect {
             address: address.to_string(),
             tls_settings: tls_settings.clone(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send connect command: {}", e))?;
-
-        let response = response_rx.recv()
-            .map_err(|e| format!("Failed to receive connect response: {}", e))?;
+            response,
+        })?;
 
         if response.is_empty() {
             Ok(())
@@ -419,15 +410,8 @@ impl GrpcBackend {
     }
 
     pub fn disconnect(&self) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::Disconnect {
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send disconnect command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive disconnect response: {}", e))?;
-
+        self.thread
+            .call(|response| BackendCommand::Disconnect { response })?;
         Ok(())
     }
 
@@ -435,28 +419,18 @@ impl GrpcBackend {
         let params: CallParams = serde_json::from_str(request_json)
             .map_err(|e| format!("Invalid request JSON: {}", e))?;
 
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::Call {
+        self.thread.call(|response| BackendCommand::Call {
             params,
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send call command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive call response: {}", e))
+            response,
+        })
     }
 
     pub fn load_proto(&self, filename: &str, content: &str) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::LoadProto {
+        let response = self.thread.call(|response| BackendCommand::LoadProto {
             filename: filename.to_string(),
             content: content.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send load_proto command: {}", e))?;
-
-        let response = response_rx.recv()
-            .map_err(|e| format!("Failed to receive load_proto response: {}", e))?;
+            response,
+        })?;
 
         if response.is_empty() {
             Ok(())
@@ -466,14 +440,9 @@ impl GrpcBackend {
     }
 
     pub fn compile_protos(&self) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::CompileProtos {
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send compile_protos command: {}", e))?;
-
-        let response = response_rx.recv()
-            .map_err(|e| format!("Failed to receive compile_protos response: {}", e))?;
+        let response = self
+            .thread
+            .call(|response| BackendCommand::CompileProtos { response })?;
 
         if response.is_empty() {
             Ok(())
@@ -483,161 +452,84 @@ impl GrpcBackend {
     }
 
     pub fn set_metadata(&self, metadata: HashMap<String, String>) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::SetMetadata {
-            metadata,
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send set_metadata command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive set_metadata response: {}", e))?;
-
+        self.thread
+            .call(|response| BackendCommand::SetMetadata { metadata, response })?;
         Ok(())
     }
 
     pub fn list_services(&self) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::ListServices {
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send list_services command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive list_services response: {}", e))
+        self.thread
+            .call(|response| BackendCommand::ListServices { response })
     }
 
     pub fn list_methods(&self, service_name: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::ListMethods {
+        self.thread.call(|response| BackendCommand::ListMethods {
             service_name: service_name.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send list_methods command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive list_methods response: {}", e))
+            response,
+        })
     }
 
     pub fn get_method_info(&self, service_name: &str, method_name: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::GetMethodInfo {
+        self.thread.call(|response| BackendCommand::GetMethodInfo {
             service_name: service_name.to_string(),
             method_name: method_name.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send get_method_info command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive get_method_info response: {}", e))
+            response,
+        })
     }
 
     pub fn call_server_stream(&self, params_json: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::CallServerStream {
+        self.thread.call(|response| BackendCommand::CallServerStream {
             params_json: params_json.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send call_server_stream command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive call_server_stream response: {}", e))
+            response,
+        })
     }
 
     pub fn start_client_stream(&self, params_json: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::StartClientStream {
+        self.thread.call(|response| BackendCommand::StartClientStream {
             params_json: params_json.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send start_client_stream command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive start_client_stream response: {}", e))
+            response,
+        })
     }
 
     pub fn start_bidi_stream(&self, params_json: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::StartBidiStream {
+        self.thread.call(|response| BackendCommand::StartBidiStream {
             params_json: params_json.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send start_bidi_stream command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive start_bidi_stream response: {}", e))
+            response,
+        })
     }
 
     pub fn send_message(&self, stream_id: &str, message_json: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::SendMessage {
+        self.thread.call(|response| BackendCommand::SendMessage {
             stream_id: stream_id.to_string(),
             message_json: message_json.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send send_message command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive send_message response: {}", e))
+            response,
+        })
     }
 
     pub fn get_next_message(&self, stream_id: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::GetNextMessage {
+        self.thread.call(|response| BackendCommand::GetNextMessage {
             stream_id: stream_id.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send get_next_message command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive get_next_message response: {}", e))
+            response,
+        })
     }
 
     pub fn finish_sending(&self, stream_id: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::FinishSending {
+        self.thread.call(|response| BackendCommand::FinishSending {
             stream_id: stream_id.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send finish_sending command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive finish_sending response: {}", e))
+            response,
+        })
     }
 
     pub fn close_stream(&self, stream_id: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::CloseStream {
+        self.thread.call(|response| BackendCommand::CloseStream {
             stream_id: stream_id.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send close_stream command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive close_stream response: {}", e))
+            response,
+        })
     }
 
     pub fn close_all_streams(&self) -> Result<(), String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::CloseAllStreams {
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send close_all_streams command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive close_all_streams response: {}", e))?;
-
+        self.thread
+            .call(|response| BackendCommand::CloseAllStreams { response })?;
         Ok(())
-    }
-}
-
-impl Drop for GrpcBackend {
-    fn drop(&mut self) {
-        let _ = self.tx.send(BackendCommand::Shutdown);
-        if let Some(handle) = self.thread_handle.take() {
-            if let Err(e) = handle.join() {
-                eprintln!("gRPC backend thread panicked: {:?}", e);
-            }
-        }
     }
 }
