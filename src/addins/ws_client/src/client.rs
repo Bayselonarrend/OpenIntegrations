@@ -17,6 +17,7 @@ pub struct WebSocketClient {
     pub(crate) headers: Option<Vec<(String, String)>>,
 }
 
+#[allow(dead_code)]
 impl WebSocketClient {
 
     pub fn new(vault: BinaryVault) -> Self {
@@ -40,6 +41,7 @@ impl WebSocketClient {
         self.logger = Some(logger);
     }
 
+    #[allow(dead_code)]
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
         if self.socket.is_some() {
             return json_error("Cannot set TLS while connected");
@@ -55,7 +57,7 @@ impl WebSocketClient {
             return json_error("Cannot set headers while connected");
         }
 
-        match parse_headers_json(headers_json) {
+        match Self::parse_headers_json(headers_json) {
             Ok(headers) => {
                 self.headers = Some(headers);
                 self.log("Headers configured");
@@ -111,6 +113,12 @@ impl WebSocketClient {
         }
     }
 
+}
+
+impl WebSocketClient {
+    pub fn parse_headers_json(headers_json: &str) -> Result<Vec<(String, String)>, String> {
+        parse_headers_json(headers_json)
+    }
 }
 
 fn parse_headers_json(headers_json: &str) -> Result<Vec<(String, String)>, String> {
