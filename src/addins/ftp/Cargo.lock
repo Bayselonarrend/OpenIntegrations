@@ -124,11 +124,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-backend"
+version = "2.1.0"
+dependencies = [
+ "tokio",
+]
+
+[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
- "tokio",
+]
+
+[[package]]
+name = "common-logs"
+version = "2.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -495,7 +510,9 @@ version = "2.1.0"
 dependencies = [
  "base64",
  "chrono",
+ "common-backend",
  "common-core",
+ "common-logs",
  "common-tcp",
  "common-utils",
  "httparse",
