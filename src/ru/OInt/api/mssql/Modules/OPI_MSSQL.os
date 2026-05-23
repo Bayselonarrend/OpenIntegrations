@@ -60,7 +60,7 @@
 // Параметры:
 //  СтрокаПодключения - Строка                     - Строка подключения. См. СформироватьСтрокуПодключения    - string
 //  Tls               - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls - tls
-//  Логирование       - Структура Из КлючИЗначение - Настройки логирования. См. ПолучитьНастройкиЛогирования - log
+//  Логирование       - Структура Из КлючИЗначение - Настройки логирования. См. ПолучитьНастройкиЛогирования  - log
 //
 // Возвращаемое значение:
 //  Произвольный - Объект коннектора или структура с информацией об ошибке
@@ -301,7 +301,7 @@
 // Получает данные лога соединения (при включенном логировании в память)
 //
 // Параметры:
-//  Соединение   - Произвольный - Объект компоненты с открытым соединением           - conn
+//  Соединение   - Произвольный - Объект компоненты с открытым соединением                   - conn
 //  КакСтрока    - Булево       - Истина > возвращает лог одной строкой, Ложь > как массив   - str
 //  ЧислоСобытий - Число        - Число последних событий для получения. 0 > без ограничений - count
 //
@@ -701,14 +701,6 @@
 
 #Region Alternate
 
-Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
-    Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
-EndFunction
-
-Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
-    Return ПолучитьЛог(Connection, AsString, EventCount);
-EndFunction
-
 Function CreateConnection(Val ConnectionString = "", Val Tls = "", Val Logging = Undefined) Export
     Return ОткрытьСоединение(ConnectionString, Tls, Logging);
 EndFunction
@@ -731,6 +723,14 @@ EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
     Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
+    Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
+EndFunction
+
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(Connection, AsString, EventCount);
 EndFunction
 
 Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export

@@ -11460,6 +11460,58 @@ Function Check_MSSQL_GetTLSSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MSSQL_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_MSSQL_CreateDatabase(Val Result, Val Option)
 
     If Option = "Openning" Then
