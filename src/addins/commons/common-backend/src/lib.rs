@@ -1,9 +1,14 @@
-//! Именованный worker-поток с tokio и каналом команд.
+//! Именованные worker-потоки с каналом команд.
 //!
-//! Panic в handler, ошибки runtime и «мёртвый» поток обрабатываются внутри крейта
+//! - [`BackendThread`] — с tokio runtime (async-драйверы).
+//! - [`SyncBackendThread`] — обычный поток без runtime (синхронные клиенты).
+//!
+//! Panic в handler и «мёртвый» поток обрабатываются внутри крейта
 //! (`send` / `call` / `shutdown` возвращают `Err`).
 
 mod panic;
+mod sync_thread;
 mod thread;
 
+pub use sync_thread::SyncBackendThread;
 pub use thread::BackendThread;

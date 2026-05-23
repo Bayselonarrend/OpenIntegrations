@@ -8,14 +8,14 @@ use serde_json::Value;
 
 use crate::worker::{self, WorkerCommand};
 
-pub struct PostgresBackend {
+pub struct MySQLBackend {
     thread: Option<SyncBackendThread<WorkerCommand>>,
     binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     tls: Option<TlsSettings>,
 }
 
-impl PostgresBackend {
+impl MySQLBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
@@ -113,7 +113,7 @@ impl PostgresBackend {
         force_result: bool,
     ) -> Result<Option<Vec<Value>>, String> {
         if !self.is_connected() {
-            return Err("Not connected to PostgreSQL".to_string());
+            return Err("Not connected to MySQL".to_string());
         }
 
         let thread = self
@@ -148,7 +148,7 @@ impl PostgresBackend {
     }
 }
 
-impl Drop for PostgresBackend {
+impl Drop for MySQLBackend {
     fn drop(&mut self) {
         self.close();
     }

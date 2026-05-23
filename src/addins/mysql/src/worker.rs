@@ -1,3 +1,4 @@
+use std::path::PathBuf;
 use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
@@ -5,9 +6,7 @@ use common_backend::SyncBackendThread;
 use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use postgres::Client;
-use postgres_native_tls::MakeTlsConnector;
-use postgres::NoTls;
+use mysql::{Opts, OptsBuilder, Pool, PooledConn, SslOpts};
 use serde_json::Value;
 
 use crate::query;
@@ -37,7 +36,8 @@ pub enum WorkerCommand {
 struct Session {
     binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
-    client: Option<Client>,
+    pool: Option<Pool>,
+    connection: Option<PooledConn>,
 }
 
 impl Session {
@@ -45,7 +45,8 @@ impl Session {
         Self {
             binary_vault,
             logger,
-            client: None,
+            pool: None,
+            connection: None,
         }
     }
 
@@ -54,13 +55,39 @@ impl Session {
             common_logs::log!(logger, "{}", message);
         }
     }
+
+    fn is_connected(&self) -> bool {
+        self.pool.is_some()
+    }
+
+    fn acquire_connection(&mut self) -> Result<PooledConn, String> {
+        if let Some(mut conn) = self.connection.take() {
+            if conn.as_mut().ping().is_ok() {
+                return Ok(conn);
+            }
+        }
+
+        let pool = self
+            .pool
+            .as_mut()
+            .ok_or_else(|| "No connections pool!".to_string())?;
+
+        pool.get_conn().map_err(|e| e.to_string())
+    }
+
+    fn release_connection(&mut self, mut conn: PooledConn) {
+        match conn.as_mut().ping() {
+            Ok(_) => self.connection = Some(conn),
+            Err(_) => {}
+        }
+    }
 }
 
 pub fn spawn_thread(
     binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 ) -> Result<SyncBackendThread<WorkerCommand>, String> {
-    SyncBackendThread::spawn("opi_postgres_backend", move |rx| {
+    SyncBackendThread::spawn("opi_mysql_backend", move |rx| {
         let mut session = Session::new(binary_vault, logger);
 
         while let Ok(cmd) = rx.recv() {
@@ -89,10 +116,12 @@ pub fn spawn_thread(
                     let _ = response.send(Ok(()));
                 }
                 WorkerCommand::IsConnected { response } => {
-                    let _ = response.send(session.client.is_some());
+                    let _ = response.send(session.is_connected());
                 }
                 WorkerCommand::Shutdown => {
-                    session.log("Shutting down PostgreSQL backend");
+                    session.log("Shutting down MySQL backend");
+                    session.pool = None;
+                    session.connection = None;
                     break;
                 }
             }
@@ -100,40 +129,44 @@ pub fn spawn_thread(
     })
 }
 
+fn build_pool(conn_str: &str, tls: &Option<TlsSettings>) -> Result<Pool, String> {
+    let opts = Opts::from_url(conn_str).map_err(|e| e.to_string())?;
+    let mut opts_builder = OptsBuilder::from_opts(opts);
+
+    if let Some(tls) = tls {
+        if tls.enabled() {
+            let mut ssl_opts =
+                SslOpts::default().with_danger_accept_invalid_certs(tls.accept_invalid_certs);
+
+            if !tls.ca_cert_path.is_empty() {
+                ssl_opts = ssl_opts.with_root_cert_path(Some(PathBuf::from(&tls.ca_cert_path)));
+            }
+
+            opts_builder = opts_builder.ssl_opts(ssl_opts);
+        }
+    }
+
+    Pool::new(opts_builder).map_err(|e| e.to_string())
+}
+
 fn handle_connect(
     session: &mut Session,
     conn_str: &str,
     tls: &Option<TlsSettings>,
 ) -> Result<(), String> {
-    session.log("Connecting to PostgreSQL...");
+    session.log("Connecting to MySQL...");
 
-    let tls_connector = if let Some(tls) = tls {
-        if tls.enabled() {
-            let connector = tls
-                .get_connector()
-                .map_err(|e| format!("TLS connector error: {}", e))?;
-            Some(MakeTlsConnector::new(connector))
-        } else {
-            None
-        }
-    } else {
-        None
-    };
-
-    let result = match tls_connector {
-        Some(connector) => Client::connect(conn_str, connector),
-        None => Client::connect(conn_str, NoTls),
-    };
-
-    match result {
-        Ok(client) => {
-            session.log("Connected to PostgreSQL");
-            session.client = Some(client);
+    match build_pool(conn_str, tls) {
+        Ok(pool) => {
+            let conn = pool.get_conn().map_err(|e| e.to_string())?;
+            session.log("Connected to MySQL");
+            session.pool = Some(pool);
+            session.connection = Some(conn);
             Ok(())
         }
         Err(e) => {
             session.log(&format!("Connect failed: {}", e));
-            Err(e.to_string())
+            Err(e)
         }
     }
 }
@@ -151,14 +184,17 @@ fn handle_execute(
         &query
     ));
 
-    let result = if let Some(client) = &mut session.client {
-        query::execute(
+    let result = if session.is_connected() {
+        let mut conn = session.acquire_connection()?;
+        let result = query::execute(
             &session.binary_vault,
-            client,
+            &mut conn,
             &query,
             params_json,
             force_result,
-        )
+        );
+        session.release_connection(conn);
+        result
     } else {
         Err("Not connected".to_string())
     };
