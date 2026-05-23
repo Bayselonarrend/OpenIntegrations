@@ -1,6 +1,7 @@
 use serde_json::json;
 
-pub struct ConnectionSettings{
+#[derive(Clone)]
+pub struct ConnectionSettings {
     pub url: String,
     pub password: String,
     pub read_timeout: i32,

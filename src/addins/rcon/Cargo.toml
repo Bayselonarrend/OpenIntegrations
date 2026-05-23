@@ -15,7 +15,9 @@ strip = true
 opt-level = "z"
 
 [dependencies]
+common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
+common-logs = { path = "../commons/common-logs" }
 common-utils = { path = "../commons/common-utils" }
 
 rcon-client = "0.1.3"
