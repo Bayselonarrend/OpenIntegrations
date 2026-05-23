@@ -894,7 +894,6 @@ dependencies = [
  "dateparser",
  "funty",
  "serde_json",
- "thread-id",
  "tiberius",
  "tokio",
  "tokio-util",
@@ -1521,16 +1520,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.117",
-]
-
-[[package]]
-name = "thread-id"
-version = "5.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2010d27add3f3240c1fef7959f46c814487b216baee662af53be645ba7831c07"
-dependencies = [
- "libc",
- "windows-sys 0.61.2",
 ]
 
 [[package]]
