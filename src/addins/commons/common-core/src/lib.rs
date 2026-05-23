@@ -1,8 +1,3 @@
-//! Общая обвязка Native API для внешних компонент 1С.
-//!
-//! Panic на границе с 1С перехватывают макросы `impl_raw_addin!` / `impl_addin_exports!`.
-//! Worker-потоки: [`spawn_tokio_backend_thread`], [`run_worker_command`], [`guard_worker_command!`].
-
 pub mod backend_thread;
 pub mod from_variant;
 pub mod getset;
@@ -203,7 +198,6 @@ macro_rules! impl_raw_addin {
             }
         }
 
-        // Реализация Index для доступа к полям через []
         impl std::ops::Index<usize> for $addin_type {
             type Output = dyn $crate::getset::ValueType;
 
@@ -212,7 +206,6 @@ macro_rules! impl_raw_addin {
             }
         }
 
-        // Реализация IndexMut для изменения полей через []
         impl std::ops::IndexMut<usize> for $addin_type {
             fn index_mut(&mut self, index: usize) -> &mut Self::Output {
                 unsafe { &mut *self.get_field_ptr_mut(index) }
