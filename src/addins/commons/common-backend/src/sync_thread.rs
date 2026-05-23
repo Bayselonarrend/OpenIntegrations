@@ -3,7 +3,6 @@ use std::thread::{self, JoinHandle};
 
 use crate::panic::catch_panic;
 
-/// Worker thread with a command channel (no async runtime).
 pub struct SyncBackendThread<C: Send + 'static> {
     tx: Option<mpsc::Sender<C>>,
     join: Option<JoinHandle<()>>,
