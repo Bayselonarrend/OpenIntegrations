@@ -17,12 +17,13 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CreateConnection(Val Parameters, Val Tls = Undefined) Export`
+`Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Parameters | - | String | &#x2714; | Connection parameters. See GetConnectionParameters |
   | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
 
 <div className="return-value-note">

@@ -699,8 +699,8 @@
 
 #Region Alternate
 
-Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
-    Return ОткрытьСоединение(ConnectionString, Tls);
+Function CreateConnection(Val ConnectionString = "", Val Tls = "", Val Logging = Undefined) Export
+    Return ОткрытьСоединение(ConnectionString, Tls, Logging);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
@@ -721,6 +721,14 @@ EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
     Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
+    Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
+EndFunction
+
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(Connection, AsString, EventCount);
 EndFunction
 
 Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export

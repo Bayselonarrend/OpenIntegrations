@@ -57,7 +57,7 @@
 // Создает подключение к указанной базе
 //
 // Параметры:
-//  База        - Строка                     - Путь к базе. In memory, если не заполнено - db
+//  База        - Строка                     - Путь к базе. In memory, если не заполнено               - db
 //  Логирование - Структура Из КлючИЗначение - Настройки логирования. См. ПолучитьНастройкиЛогирования - log
 //
 // Возвращаемое значение:
@@ -608,8 +608,8 @@
 
 #Region Alternate
 
-Function CreateConnection(Val Base = "") Export
-    Return ОткрытьСоединение(Base);
+Function CreateConnection(Val Base = "", Val Logging = Undefined) Export
+    Return ОткрытьСоединение(Base, Logging);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
@@ -626,6 +626,14 @@ EndFunction
 
 Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
     Return ПодключитьРасширение(Extension, EntryPoint, Connection);
+EndFunction
+
+Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export
+    Return ПолучитьНастройкиЛогирования(WriteToMemory, MaxEvents, FilePath);
+EndFunction
+
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+    Return ПолучитьЛог(Connection, AsString, EventCount);
 EndFunction
 
 Function GetTableInformation(Val Table, Val Connection = "") Export

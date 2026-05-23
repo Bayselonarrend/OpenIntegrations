@@ -104,6 +104,8 @@ Procedure RC_CommandsExecution() Export
     RCON_CreateConnection(TestParameters);
     RCON_ExecuteCommand(TestParameters);
     RCON_IsConnector(TestParameters);
+    RCON_GetLoggingSettings(TestParameters);
+    RCON_GetLog(TestParameters);
 
 EndProcedure
 
@@ -188,6 +190,58 @@ Procedure RCON_IsConnector(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "RCON", "IsConnector");
+
+EndProcedure
+
+Procedure RCON_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_RCON.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "GetLoggingSettings");
+
+    Result = OPI_RCON.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "GetLoggingSettings", "File");
+
+    Result = OPI_RCON.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure RCON_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams, LoggingSettings);
+
+    If Not OPI_RCON.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "ExecuteCommand", "Select"); // SKIP
+
+    Result = OPI_RCON.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "GetLog", , LogFile);
+
+    Result = OPI_RCON.GetLog(Connection, True);
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "GetLog", "AsString", LogFile);
 
 EndProcedure
 

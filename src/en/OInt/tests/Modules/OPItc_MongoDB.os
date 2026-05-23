@@ -110,6 +110,8 @@ Procedure Mongo_CommonMethods() Export
     MongoDB_CloseConnection(TestParameters);
     MongoDB_IsConnector(TestParameters);
     MongoDB_ExecuteCommand(TestParameters);
+    MongoDB_GetLoggingSettings(TestParameters);
+    MongoDB_GetLog(TestParameters);
 
 EndProcedure
 
@@ -356,6 +358,72 @@ Procedure MongoDB_ExecuteCommand(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "ExecuteCommand");
+
+EndProcedure
+
+Procedure MongoDB_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_MongoDB.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings");
+
+    Result = OPI_MongoDB.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings", "File");
+
+    Result = OPI_MongoDB.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure MongoDB_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MongoDB.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+
+    Connection = OPI_MongoDB.CreateConnection(ConnectionString, LoggingSettings);
+
+    If Not OPI_MongoDB.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("comm", "listDatabases");
+    Options.Insert("data", New Structure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "ExecuteCommand", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "ExecuteCommand", "Select"); // SKIP
+
+    Result = OPI_MongoDB.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLog", , LogFile);
+
+    Result = OPI_MongoDB.GetLog(Connection, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLog", "AsString", LogFile);
+
+    OPI_MongoDB.CloseConnection(Connection);
 
 EndProcedure
 

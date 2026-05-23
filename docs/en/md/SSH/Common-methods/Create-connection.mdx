@@ -17,12 +17,13 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CreateConnection(Val SSHSettings, Val Proxy = "") Export`
+`Function CreateConnection(Val SSHSettings, Val Proxy = "", Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | SSHSettings | - | Structure Of KeyAndValue | &#x2714; | Connection settings structure |
   | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings structure, if necessary |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
 
 <div className="return-value-note">

@@ -1,0 +1,86 @@
+---
+sidebar_position: 8
+sidebar_class_name: doc-no-cli
+description: Get log  and other functions to work with MySQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MySQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get log 
+ Retrieves connection log data (when in-memory logging is enabled)
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | AddIn object with open connection |
+  | AsString | - | Boolean | &#x2716; | True > returns log as a single string, False > as an array |
+  | EventCount | - | Number | &#x2716; | Number of recent events to retrieve. 0 > no limits |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MySQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "";
+
+    TLS = True;
+    Port = 3306;
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MySQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_MySQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_MySQL.GetLog(Connection);
+```
+ 
+
+
+
+

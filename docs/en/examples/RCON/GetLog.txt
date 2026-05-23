@@ -1,0 +1,19 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
+
+    URL          = "127.0.0.1:25565";
+    Password     = "12We...";
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams, LoggingSettings);
+
+    If Not OPI_RCON.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Command = "list";
+    Result  = OPI_RCON.ExecuteCommand(Command, Connection);
+
+    Result = OPI_RCON.GetLog(Connection);

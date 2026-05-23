@@ -1,0 +1,1 @@
+    Result = OPI_FTP.GetLoggingSettings(True, 100, GetTempFileName());

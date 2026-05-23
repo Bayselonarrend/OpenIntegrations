@@ -106,6 +106,8 @@ Procedure MYS_CommonMethods() Export
         MySQL_IsConnector(TestParameters);
         MySQL_ExecuteSQLQuery(TestParameters);
         MySQL_GetTLSSettings(TestParameters);
+        MySQL_GetLoggingSettings(TestParameters);
+        MySQL_GetLog(TestParameters);
 
     EndDo;
 
@@ -986,6 +988,71 @@ Procedure MySQL_GetTLSSettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "MySQL", "GetTLSSettings");
+
+EndProcedure
+
+Procedure MySQL_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_MySQL.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetLoggingSettings");
+
+    Result = OPI_MySQL.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetLoggingSettings", "File");
+
+    Result = OPI_MySQL.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure MySQL_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MySQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    TLS = True;
+    TLS = FunctionParameters["TLS"]; // SKIP
+
+    Port = 3306;
+    Port = ?(TLS, 3307, 3306); // SKIP
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MySQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_MySQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "ExecuteSQLQuery", "Select"); // SKIP
+
+    Result = OPI_MySQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetLog", , LogFile);
+
+    Result = OPI_MySQL.GetLog(Connection, True);
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "GetLog", "AsString", LogFile);
+
+    OPI_MySQL.CloseConnection(Connection);
 
 EndProcedure
 

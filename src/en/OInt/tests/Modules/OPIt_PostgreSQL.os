@@ -106,6 +106,8 @@ Procedure Postgres_CommonMethods() Export
         PostgreSQL_IsConnector(TestParameters);
         PostgreSQL_ExecuteSQLQuery(TestParameters);
         PostgreSQL_GetTLSSettings(TestParameters);
+        PostgreSQL_GetLoggingSettings(TestParameters);
+        PostgreSQL_GetLog(TestParameters);
 
     EndDo;
 
@@ -1105,6 +1107,71 @@ Procedure PostgreSQL_GetTLSSettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetTLSSettings");
+
+EndProcedure
+
+Procedure PostgreSQL_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_PostgreSQL.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetLoggingSettings");
+
+    Result = OPI_PostgreSQL.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetLoggingSettings", "File");
+
+    Result = OPI_PostgreSQL.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure PostgreSQL_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_PostgreSQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "postgres";
+
+    TLS = True;
+    TLS = FunctionParameters["TLS"]; // SKIP
+
+    Port = 5432;
+    Port = ?(TLS, 5433, 5432); // SKIP
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_PostgreSQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Select"); // SKIP
+
+    Result = OPI_PostgreSQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetLog", , LogFile);
+
+    Result = OPI_PostgreSQL.GetLog(Connection, True);
+    OPI_TestDataRetrieval.Process(Result, "PostgreSQL", "GetLog", "AsString", LogFile);
+
+    OPI_PostgreSQL.CloseConnection(Connection);
 
 EndProcedure
 

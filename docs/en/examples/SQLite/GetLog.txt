@@ -1,0 +1,13 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SQLite.GetLoggingSettings(True, 100, LogFile);
+    TFN             = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN, LoggingSettings);
+
+    If Not OPI_SQLite.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_SQLite.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_SQLite.GetLog(Connection);

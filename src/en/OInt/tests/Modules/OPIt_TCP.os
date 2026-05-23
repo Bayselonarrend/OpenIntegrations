@@ -761,7 +761,34 @@ Procedure TCP_GetLog(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLog", , LogFile);
+    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLog", "Host", LogFile);
+
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
+
+    ClientLogFile   = GetTempFileName("txt");
+    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, ClientLogFile);
+    Address         = FunctionParameters["TCP_Address"];
+    Connection      = OPI_TCP.CreateConnection(Address, , , LoggingSettings);
+
+    If Not OPI_TCP.IsClientObject(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Message = "Hello server!" + Chars.LF;
+    Data    = GetBinaryDataFromString(Message);
+
+    OPI_TCP.SendBinaryData(Connection, Data);
+
+    Result = OPI_TCP.GetLog(Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLog", "Client", ClientLogFile);
+
+    Result = OPI_TCP.GetLog(Connection, True);
+
+    OPI_TestDataRetrieval.Process(Result, "TCP", "GetLog", "Client, AsString", ClientLogFile);
+
+    OPI_TCP.CloseConnection(Connection);
 
 EndProcedure
 

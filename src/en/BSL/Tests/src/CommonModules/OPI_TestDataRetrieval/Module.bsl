@@ -7842,8 +7842,18 @@ EndFunction
 
 Function Check_TCP_GetLog(Val Result, Val Option, LogFile = "")
 
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+    If StrFind(Option, "AsString") > 0 Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    EndIf;
 
     LogObject = New File(LogFile);
     ExpectsThat(LogObject.Exists()).Равно(True);
@@ -8693,6 +8703,58 @@ Function Check_SQLite_ClearTable(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SQLite_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_SQLite_ConnectExtension(Val Result, Val Option)
 
     SystemInfo = New SystemInfo;
@@ -9053,6 +9115,58 @@ Function Check_PostgreSQL_GetTLSSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_PostgreSQL_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_PostgreSQL_AddTableColumn(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -9365,6 +9479,58 @@ EndFunction
 Function Check_MySQL_GetTLSSettings(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -10028,6 +10194,58 @@ EndFunction
 Function Check_RCON_IsConnector(Val Result, Val Option)
 
     ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -12004,6 +12222,58 @@ Function Check_FTP_GetTLSSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_FTP_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_FTP_CreateNewDirectory(Val Result, Val Option, Primary = False)
 
     If StrFind(Option, "Deletion") > 0 Then
@@ -12339,6 +12609,58 @@ Function Check_SSH_GetSettingsKI(Val Result, Val Option)
     ExpectsThat(Result["keyboard_responses"]).Заполнено();
 
     Result["keyboard_responses"][1] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -13134,6 +13456,58 @@ Function Check_MongoDB_ExecuteCommand(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_MongoDB_GetDatabase(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -13839,6 +14213,58 @@ Function Check_GRPC_ProcessBidirectionalStream(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data"].Count()).Равно(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
 
     Return Result;
 

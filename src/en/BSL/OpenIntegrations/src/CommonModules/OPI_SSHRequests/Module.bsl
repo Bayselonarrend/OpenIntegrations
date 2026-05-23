@@ -48,7 +48,7 @@
 
 #Region Internal
 
-Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
+Function CreateConnection(Val SSHSettings, Val Proxy = "", Val Logging = Undefined) Export
 
     Result_ = "result";
 
@@ -57,6 +57,29 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
     EndIf;
 
     Connector = OPI_AddIns.GetAddIn("SSH");
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = Connector.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult[Result_] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
 
     ConfigureSetup = SetSettings(Connector, SSHSettings);
 

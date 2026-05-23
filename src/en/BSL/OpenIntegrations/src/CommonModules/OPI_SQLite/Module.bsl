@@ -58,11 +58,12 @@
 // Creates a connection to the specified base
 //
 // Parameters:
-// Base - String - Path to database. In memory, if not filled - db
+// Base    - String                   - Path to database. In memory, if not filled - db
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings   - log
 //
 // Returns:
 // Arbitrary - Connector object or structure with error information
-Function CreateConnection(Val Base = "") Export
+Function CreateConnection(Val Base = "", Val Logging = Undefined) Export
 
     If IsConnector(Base) Then
         Return Base;
@@ -72,6 +73,29 @@ Function CreateConnection(Val Base = "") Export
     OPI_Tools.RestoreEscapeSequences(Base);
 
     Connector = OPI_AddIns.GetAddIn("SQLite");
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = Connector.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
 
     Connector.Database = Base;
 
@@ -235,6 +259,43 @@ Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "
     EndIf;
 
     Return Result;
+
+EndFunction
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when opening a connection
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves connection log data (when in-memory logging is enabled)
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with open connection                          - conn
+// AsString   - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(Connection
+        , AsString
+        , EventCount);
 
 EndFunction
 
