@@ -15,9 +15,11 @@ strip = true
 opt-level = "z"
 
 [dependencies]
+common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
 common-tcp = { path = "../commons/common-tcp", features = ["rustls"], default-features = false }
 common-utils = { path = "../commons/common-utils" }
+common-logs = { path = "../commons/common-logs" }
 
 suppaftp = { version = "8.0.2", features = ["rustls-aws-lc-rs", "secure"] }
 serde_json = "1.0"

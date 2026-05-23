@@ -48,3 +48,131 @@
   - `<ЛюбоеСокращениеИмениМодуляБезПрефикса><ИмяОбласти>`
 - Формат имени функции-проверки:
   - `Проверка_<ИмяАтомарногоТеста>`
+
+## Схема нативных компонент (Rust add-in)
+
+**Обязательный шаблон** для любой новой нативной компоненты и для переработки существующих. Не создавать add-in «с нуля» в монолитном `lib.rs` с `Arc<Mutex<…>>` — сразу закладывать структуру ниже.
+
+Каноничные примеры: `src/addins/postgres`, `mysql`, `sqlite`, `mssql`, `mongodb`, `ftp`, `zeromq`; серверы — `tcp_server`, `http_server`, `ws_server`.
+
+### Два уровня защиты (не путать)
+
+| Уровень | Где | Что ловит |
+|--------|-----|-----------|
+| **FFI** | `common-core`: `call_as_func` → `catch_panic` | Паника в тонкой обёртке addin (JSON, vault, маршрутизация) |
+| **Backend** | `common-backend`: поток worker + `catch_panic` на цикл handler | Паника в драйвере; после фатала — `health`, следующие `call`/`send` → `Err` |
+
+`catch_unwind` только на FFI **не заменяет** worker-поток: не решает `!Send` соединений (SQLite), гонки при параллельных вызовах из 1С, poisoned `Mutex` вокруг драйвера.
+
+**Не защищает** ни один уровень: segfault/abort в C-библиотеке драйвера — падает весь процесс 1С. Изоляция только отдельным процессом (вне этой схемы).
+
+### Структура крейта (клиенты: БД, FTP, ZeroMQ и т.п.)
+
+```
+src/addins/<name>/src/
+  lib.rs      — METHODS, get_params_amount, cal_func, impl_addin_exports
+  addin.rs    — тонкий AddIn: FFI-методы, JSON-ответы, без Mutex вокруг драйвера
+  backend.rs  — *Backend: настройки до connect, ленивый поток, SetLogger, vault
+  worker.rs   — WorkerCommand, Session, spawn_thread, вся работа с драйвером
+  query.rs    — только если есть отдельная логика SQL/запросов (MSSQL, Postgres, …)
+```
+
+**Не использовать** в новом коде:
+
+- `Arc<Mutex<Драйвер>>` на стороне addin;
+- создание backend-потока в `new()` (только **лениво** при первом connect/операции — `ensure_thread`);
+- дублирование логики connect/execute в `lib.rs`.
+
+### Выбор транспорта backend
+
+| Тип драйвера | Крейт | Поток | Примеры |
+|--------------|-------|-------|---------|
+| Синхронный API | `SyncBackendThread` | Обычный `std::thread`, без tokio | `postgres`, `mysql`, `sqlite`, `ftp` |
+| Async / tokio внутри драйвера | `BackendThread` | Поток + `Runtime::new()` в worker | `mssql`, `mongodb`, `zeromq` |
+| Долгоживущий сервер (listen/accept) | `common-server::Backend` | Внутри — `BackendThread` | `tcp_server`, `http_server`, `ws_server` |
+
+`common-server` — тот же канал команд, но свой API (`send_command`, `handle_async_command`); не смешивать с паттерном `addin/backend/worker` без необходимости.
+
+### Общие зависимости (`Cargo.toml`)
+
+- `common-core` — макросы FFI, `catch_panic` на границе.
+- `common-backend` — `BackendThread` / `SyncBackendThread`.
+- `common-logs` — `Logger`, `log!`, `SetLogger` / `GetLogs` на FFI.
+- `common-binary` — `BinaryVault`, `vault_key_json` (если есть бинарные поля).
+- `common-tcp` — TLS, proxy, `create_tcp_connection` (FTP, БД с TLS).
+- `common-dataset` — только где есть пакетные SQL/dataset (MSSQL).
+
+### Паттерн `backend.rs`
+
+- Поля: `thread: Option<…>`, настройки до connect (`tls`, `proxy`, строка подключения), `logger: Option<Arc<Logger>>`, при необходимости `BinaryVault`.
+- `set_logger` / `set_tls` — **только до** установления соединения.
+- `connect` → `ensure_thread()` → `thread.call(WorkerCommand::Connect { … })`.
+- `close` / `Drop` → `shutdown(Some(WorkerCommand::Shutdown))`.
+- `get_logs` — читать из `Logger` на стороне addin/backend (не из worker), если logger хранится в backend.
+
+### Паттерн `worker.rs`
+
+- `enum WorkerCommand` — одна варианта на операцию; ответы через `mpsc::Sender<Result<…>>` или `Sender<String>` для готового JSON.
+- `struct Session` — `client`/`connection`, `logger`, `binary_vault` (клон vault в поток при spawn).
+- `fn log(&self, …)` — `common_logs::log!(logger, …)`.
+- `spawn_thread` — единственное место цикла `while let Ok(cmd) = rx.recv()`.
+- Вся работа с `FtpStream` / `Client` / `Connection` — **только** внутри этого потока.
+
+### FFI: логирование
+
+Добавить в `METHODS` (перед `Version`):
+
+- `SetLogger` — JSON-конфиг (`Logger::from_json`);
+- `GetLogs` — `count`, ответ `{ result, logs, total, returned }`.
+
+Порядок на стороне BSL (`OPI_*`): настройки → `SetLogger` (если передано `Логирование`) → connect/open.
+
+### BSL (`OPI_<Имя>`)
+
+В области основных методов:
+
+- `ПолучитьНастройкиЛогирования` → делегат в `OPI_Компоненты.ПолучитьНастройкиЛогирования`;
+- `ПолучитьЛог` → `OPI_Компоненты.ПолучитьЛог`;
+- в `ОткрытьСоединение` (или аналог) — необязательный параметр `Логирование`, вызов `Коннектор.SetLogger` до `Connect`.
+
+### Тесты (новая и существующая компонента)
+
+1. `OPIt_<Имя>`: области `ЗапускаемыеТесты` / `АтомарныеТесты` по правилам выше.
+2. В запускаемый тест основных методов — `<Модуль>_ПолучитьНастройкиЛогирования`, `<Модуль>_ПолучитьЛог` (по образцу `OPIt_MSSQL`).
+3. Атомарные тесты с `//END` для документации; без выноса повторов в служебные процедуры.
+4. `OPI_ПолучениеДанныхТестов`: регистрация в `ПолучитьТаблицуТестов`, `Проверка_*` (для логирования — ветки `Файл`, `Память`, `КакСтрока`).
+5. Не править `OPItc_*` вручную.
+6. Количество атомарных тестов = количеству экспортных методов `OPI_*`.
+
+### Серверы (отличие от клиентов)
+
+- Логирование часто включается **третьим аргументом `Start`**, а не отдельным `SetLogger` до connect (см. `tcp_server`, `http_server`, `ws_server`).
+- Состояние — accept/handle в `common-server`, не `Session { sql client }`.
+- BSL-тесты логирования — по тому же принципу, но вызов через `Запустить` / параметры старта.
+
+### Чеклист: новая компонента
+
+1. Создать `src/addins/<name>/` с `Cargo.toml` (зависимости из таблицы выше).
+2. Сразу завести `lib.rs`, `addin.rs`, `backend.rs`, `worker.rs` (+ `query.rs` для SQL).
+3. Выбрать `SyncBackendThread` или `BackendThread` (или `common-server` для listen-сервера).
+4. Заложить `SetLogger` / `GetLogs` и `log!` в connect/операциях.
+5. Параллельно: `OPI_<Имя>`, `OPIt_<Имя>`, проверки, шаблон в `CommonTemplates`, при необходимости — зеркало `OInt`.
+6. `cargo check` в каталоге add-in.
+
+### Чеклист: переработка старой компоненты
+
+Те же шаги, что для новой, плюс:
+
+1. Разнести монолитный `lib.rs`; убрать `Arc<Mutex<драйвер>>`.
+2. Перенести клиент в `Session` worker-потока; поток — только ленивый `ensure_thread`.
+3. **Сохранить** совместимость FFI: номера/имена методов, JSON-поля, намеренные побочные эффекты (например задержки в `cal_func`).
+
+### Эталоны для копирования
+
+| Задача | Смотреть |
+|--------|----------|
+| Новая sync-клиент + SQL | `src/addins/postgres` |
+| Новая sync-клиент без SQL | `src/addins/ftp` |
+| Новая async-клиент | `src/addins/mssql`, `mongodb` |
+| BSL + тесты с нуля | `OPI_PostgreSQL`, `OPIt_MSSQL` |
+| Новый сервер | `src/addins/tcp_server` + `commons/common-server` |

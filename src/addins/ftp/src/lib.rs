@@ -1,19 +1,16 @@
-mod ftp_client;
+mod addin;
+mod backend;
 mod configuration;
+mod ftp_client;
 mod passive_establish;
+mod worker;
 
-use serde_json::json;
-use serde::{Deserialize, Serialize};
-use std::sync::{Arc, Mutex, MutexGuard};
 use std::thread::sleep;
 use std::time::Duration;
-use ftp_client::FtpClient;
-use configuration::FtpSettings;
-use common_tcp::proxy_settings::ProxySettings;
-use common_tcp::tcp_establish;
-use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success, version};
+
+use addin::AddIn;
 use common_core::*;
+use common_utils::utils::{json_error, version};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -43,6 +40,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("ChangeCurrentDirectory"),
     name!("GetFeatures"),
     name!("ExecuteStandardCommand"),
+    name!("SetLogger"),
+    name!("GetLogs"),
     name!("Version"),
 ];
 
@@ -72,162 +71,110 @@ pub fn get_params_amount(num: usize) -> usize {
         21 => 1,
         22 => 0,
         23 => 1,
-        24 => 0,
+        24 => 1,
+        25 => 1,
+        26 => 0,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-
     let result: Box<dyn getset::ValueType> = match num {
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
         2 => {
-            let json_string = params[0].get_string().unwrap_or("".to_string());
+            let json_string = params[0].get_string().unwrap_or_default();
             Box::new(obj.update_settings(&json_string))
-        },
+        }
         3 => {
-            let json_string = params[0].get_string().unwrap_or("".to_string());
+            let json_string = params[0].get_string().unwrap_or_default();
             Box::new(obj.update_proxy(&json_string))
-        },
+        }
         4 => {
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
-            let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
+            let ca_cert_path = params[2].get_string().unwrap_or_default();
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
-        },
-        5 => {
-            Box::new(match obj.get_client(){
-                Ok(c) => c.get_welcome_msg(),
-                Err(e) => e.to_string()
-            })
         }
+        5 => Box::new(obj.get_welcome_msg()),
         6 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.make_directory(&path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.make_directory(&path))
+        }
         7 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.remove_directory(&path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.remove_directory(&path))
+        }
         8 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.list_directory(&path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.list_directory(&path))
+        }
         9 => {
-            let data = match params[0].get_blob(){
+            let data = match params[0].get_blob() {
                 Ok(b) => b,
-                Err(e) => return Box::new(json_error(format!("Blob error: {}", e.to_string()).as_str()))
+                Err(e) => {
+                    return Box::new(json_error(format!("Blob error: {}", e).as_str()));
+                }
             };
-            let path = params[1].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.upload_data(&path, data),
-                Err(e) => e.to_string()
-            })
-        },
-
+            let path = params[1].get_string().unwrap_or_default();
+            Box::new(obj.upload_data(&path, data.to_vec()))
+        }
         10 => {
-            let filepath = params[0].get_string().unwrap_or("".to_string());
-            let path = params[1].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.upload_file(&path, &filepath),
-                Err(e) => e.to_string()
-            })
-        },
+            let filepath = params[0].get_string().unwrap_or_default();
+            let path = params[1].get_string().unwrap_or_default();
+            Box::new(obj.upload_file(&path, &filepath))
+        }
         11 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.remove_file(&path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.remove_file(&path))
+        }
         12 => Box::new(obj.get_configurations()),
         13 => Box::new(obj.is_tls()),
         14 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.object_size(&path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.object_size(&path))
+        }
         15 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            let new_path = params[1].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.rename_object(&path, &new_path),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            let new_path = params[1].get_string().unwrap_or_default();
+            Box::new(obj.rename_object(&path, &new_path))
+        }
         16 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            let filepath = params[1].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.download_to_file(&path, &filepath),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            let filepath = params[1].get_string().unwrap_or_default();
+            Box::new(obj.download_to_file(&path, &filepath))
+        }
         17 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            match &mut obj.get_client(){
-                Ok(c) => {
-                    match c.download_to_vec(&path){
-                        Ok(v) => Box::new(v),
-                        Err(e) => Box::new(e)
-                    }
-                },
-                Err(e) => Box::new(e.to_string())
+            let path = params[0].get_string().unwrap_or_default();
+            match obj.download_to_buffer(&path) {
+                Ok(v) => Box::new(v),
+                Err(e) => Box::new(e),
             }
-        },
-        18 => {
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.ping(),
-                Err(_) => false
-            })
-        },
+        }
+        18 => Box::new(obj.ping()),
         19 => {
-            let command = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.execute_command(&command),
-                Err(e) => e.to_string()
-            })
-        },
-        20 => {
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.get_current_directory(),
-                Err(e) => e.to_string()
-            })
-        },
+            let command = params[0].get_string().unwrap_or_default();
+            Box::new(obj.execute_command(&command))
+        }
+        20 => Box::new(obj.get_current_directory()),
         21 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.change_current_directory(&path),
-                Err(e) => e.to_string()
-            })
-        },
-        22 => {
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.get_features(),
-                Err(e) => e.to_string()
-            })
-        },
+            let path = params[0].get_string().unwrap_or_default();
+            Box::new(obj.change_current_directory(&path))
+        }
+        22 => Box::new(obj.get_features()),
         23 => {
-            let command = params[0].get_string().unwrap_or("".to_string());
-
-            Box::new(match &mut obj.get_client(){
-                Ok(c) => c.execute_standard_command(&command),
-                Err(e) => e.to_string()
-            })
-        },
-        24 => Box::new(version()),
+            let command = params[0].get_string().unwrap_or_default();
+            Box::new(obj.execute_standard_command(&command))
+        }
+        24 => {
+            let logger_config = params[0].get_string().unwrap_or_default();
+            Box::new(obj.set_logger(&logger_config))
+        }
+        25 => {
+            let count = params[0].get_i32().unwrap_or(0) as usize;
+            Box::new(obj.get_logs(count))
+        }
+        26 => Box::new(version()),
         _ => Box::new(false),
     };
 
@@ -236,156 +183,3 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 }
 
 pub const PROPS: &[&[u16]] = &[];
-
-#[derive(Clone,Deserialize,Serialize)]
-pub struct AddIn {
-    #[serde(skip)]
-    client: Option<Arc<Mutex<FtpClient>>>,
-    ftp_settings: Option<FtpSettings>,
-    tls_settings: Option<TlsSettings>,
-    proxy_settings: Option<ProxySettings>,
-}
-
-impl AddIn {
-    pub fn new() -> Self {
-        AddIn {
-            client: None,
-            ftp_settings: None,
-            tls_settings: None,
-            proxy_settings: None,
-        }
-    }
-
-    pub fn initialize(&mut self) -> String {
-
-        if self.client.is_some(){
-            return json_error("Client already initialized");
-        }
-
-        let ftp_settings = match &self.ftp_settings{
-            Some(s) => s.clone(),
-            None => return json_error("Address must be initialized")
-        };
-
-        let proxy_settings = &self.proxy_settings;
-        let tls_settings = &self.tls_settings;
-        let host = &ftp_settings.domain;
-        let port = ftp_settings.port;
-
-        let tcp_stream = match tcp_establish::create_tcp_connection(host, port, proxy_settings) {
-            Ok(stream) => stream,
-            Err(e) => return json_error(&e),
-        };
-
-        let w_timeout = Some(Duration::from_secs(ftp_settings.write_timeout));
-        let r_timeout = Some(Duration::from_secs(ftp_settings.read_timeout));
-
-        match tcp_stream.set_write_timeout(w_timeout){
-            Ok(_) => (),
-            Err(e) => return json_error(&e),
-        }
-
-        match tcp_stream.set_read_timeout(r_timeout) {
-            Ok(_) => (),
-            Err(e) => return json_error(&e),
-        }
-
-        let client = match ftp_client::configure_ftp_client(&ftp_settings, Option::from(tls_settings), Option::from(proxy_settings), tcp_stream) {
-            Ok(client) => client,
-            Err(e) => return e,
-        };
-
-        let login: Option<&str> = ftp_settings.login.as_deref();
-        let password: Option<&str> = ftp_settings.password.as_deref();
-
-        self.client = match client.login(login, password) {
-            Ok(auth) => Some(Arc::new(Mutex::new(auth))),
-            Err(e) => return e,
-        };
-
-        json_success()
-    }
-
-    pub fn close_connection(&mut self) -> String {
-        if let Some(client) = self.client.take() {
-            match client.lock() {
-                Ok(mut locked_client) => {
-                    match &mut *locked_client {
-                        FtpClient::Secure(stream) => _ = stream.quit(),
-                        FtpClient::Insecure(stream) => _ = stream.quit(),
-                    }
-                }
-                Err(e) => return json_error(&format!("Failed to lock client: {}", e)),
-            }
-        }
-        json_success()
-    }
-
-    pub fn update_settings(&mut self, json_data: &str) -> String {
-        let json_struct: FtpSettings = match serde_json::from_str(json_data){
-            Ok(s) => s,
-            Err(e) => return json_error(&e),
-        };
-        self.ftp_settings = Some(json_struct.clone());
-
-        json_success()
-    }
-
-    pub fn update_proxy(&mut self, json_data: &str) -> String {
-        let json_struct: ProxySettings = match serde_json::from_str(json_data){
-            Ok(s) => s,
-            Err(e) => return json_error(&e),
-        };
-
-        self.proxy_settings = Some(json_struct.clone());
-        json_success()
-    }
-
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
-
-        if self.client.is_some(){
-            return json_error("TLS settings can only be set before the connection is established");
-        };
-
-        self.tls_settings = Some(TlsSettings{
-            use_tls,
-            accept_invalid_certs,
-            ca_cert_path: ca_cert_path.to_string()
-        });
-
-        json_success()
-    }
-
-    pub fn get_configurations(&self) -> String {
-        json!({"result": true, "data": &self}).to_string()
-    }
-
-    pub fn is_tls(&self) -> bool {
-        match &self.tls_settings {
-            Some(s) => s.use_tls,
-            None => false
-        }
-    }
-
-    fn get_client(&self) -> Result<MutexGuard<'_, FtpClient>, String> {
-        self.client
-            .as_ref()
-            .ok_or_else(|| json_error("FTP client is not initialized"))
-            .and_then(|arc| arc.lock().map_err(|_|  json_error("Failed to lock FTP client mutex")))
-    }
-
-
-    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
-        match index {
-            _ => panic!("Index out of bounds"),
-        }
-    }
-    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
-}
-
-impl Drop for AddIn {
-    fn drop(&mut self) {
-        self.close_connection();
-    }
-}
-
