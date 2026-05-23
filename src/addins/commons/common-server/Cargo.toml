@@ -11,6 +11,7 @@ uuid = { version = "1.17.0", features = ["v4"] }
 indexmap = "2.7.0"
 futures-util = "0.3"
 
+common-backend = { path = "../common-backend" }
 common-binary = { path = "../common-binary" }
 common-core = { path = "../common-core" }
 common-logs = { path = "../common-logs" }

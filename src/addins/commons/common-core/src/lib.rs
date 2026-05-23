@@ -1,9 +1,7 @@
-pub mod backend_thread;
 pub mod from_variant;
 pub mod getset;
 
 pub use addin1c;
-pub use backend_thread::{run_worker_command, spawn_tokio_backend_thread};
 pub use from_variant::FromVariant;
 
 pub const CREATE_COMPONENT_SUCCESS: i32 = 1;

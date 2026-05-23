@@ -15,6 +15,7 @@ strip = true
 opt-level = "z"
 
 [dependencies]
+common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
 common-binary = { path = "../commons/common-binary" }
 common-utils = { path = "../commons/common-utils" }

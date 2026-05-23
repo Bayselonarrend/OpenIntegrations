@@ -1,57 +1,30 @@
-use std::sync::mpsc::{self, Sender};
-use std::thread::JoinHandle;
-
-use common_core::spawn_tokio_backend_thread;
+use common_backend::BackendThread;
 
 /// Generic backend that manages async runtime in a separate thread
-/// and processes commands via mpsc channel
+/// and processes commands via mpsc channel.
 pub struct Backend<C: Send + 'static> {
-    tx: Option<Sender<C>>,
-    thread_handle: Option<JoinHandle<()>>,
+    thread: BackendThread<C>,
 }
 
 impl<C: Send + 'static> Backend<C> {
-    /// Create new backend with custom command handler
-    /// 
-    /// # Arguments
-    /// * `thread_name` - Name for the backend thread
-    /// * `handler` - Function that processes commands in the tokio runtime
-    pub fn new<F>(thread_name: String, handler: F) -> Self
+    /// Create new backend with custom command handler.
+    pub fn new<F>(thread_name: impl AsRef<str>, handler: F) -> Self
     where
-        F: FnOnce(tokio::runtime::Runtime, mpsc::Receiver<C>) + Send + 'static,
+        F: FnOnce(tokio::runtime::Runtime, std::sync::mpsc::Receiver<C>) + Send + 'static,
     {
-        let (tx, thread_handle) = spawn_tokio_backend_thread(thread_name, handler);
-
-        Self {
-            tx: Some(tx),
-            thread_handle,
-        }
+        let thread = BackendThread::spawn(thread_name, handler)
+            .expect("failed to start backend thread");
+        Self { thread }
     }
 
-    /// Send command to backend
+    /// Send command to backend.
     pub fn send(&self, cmd: C) -> Result<(), String> {
-        let tx = self.tx
-            .as_ref()
-            .ok_or_else(|| "Backend is shut down".to_string())?;
-
-        tx.send(cmd)
-            .map_err(|e| format!("Failed to send command: {}", e))
+        self.thread.send(cmd)
     }
 
-    /// Get sender clone for command channel
-    pub fn sender(&self) -> Sender<C> {
-        self.tx
-            .as_ref()
-            .expect("Backend is shut down")
-            .clone()
-    }
-
-    /// Shutdown backend and wait for thread to finish
+    /// Shutdown backend and wait for thread to finish.
     pub fn shutdown(&mut self) {
-        self.tx = None; // Close owned sender
-        if let Some(handle) = self.thread_handle.take() {
-            let _ = handle.join();
-        }
+        let _ = self.thread.shutdown(None);
     }
 }
 

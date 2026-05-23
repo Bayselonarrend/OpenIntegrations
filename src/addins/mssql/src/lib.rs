@@ -1,8 +1,8 @@
 mod backend;
 
 use serde_json::json;
-use std::sync::{Arc, Mutex};
-use common_binary::vault::BinaryInput;
+use std::sync::Arc;
+use common_binary::vault::{BinaryInput, BinaryVault};
 use common_dataset::dataset::Datasets;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
@@ -139,14 +139,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         11 => {
             let binary = params[0].get_blob().unwrap_or(&empty_array);
 
-            let result = match obj.backend.lock() {
-                Ok(lock) => {
-                    match lock.binary_vault.store(BinaryInput::Bytes(Vec::from(binary))){
-                        Ok(key) => json!({"result": true, "key": key}).to_string(),
-                        Err(e) => json_error(&e)
-                    }
-                },
-                Err(e) => json_error(&e)
+            let result = match obj.binary_vault.store(BinaryInput::Bytes(Vec::from(binary))) {
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e),
             };
 
             Box::new(result)
@@ -154,14 +149,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         12 => {
             let file = params[0].get_string().unwrap_or("".to_string());
 
-            let result = match obj.backend.lock() {
-                Ok(lock) => {
-                    match lock.binary_vault.store(BinaryInput::FilePath(file)){
-                        Ok(key) => json!({"result": true, "key": key}).to_string(),
-                        Err(e) => json_error(&e)
-                    }
-                },
-                Err(e) => json_error(&e)
+            let result = match obj.binary_vault.store(BinaryInput::FilePath(file)) {
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e),
             };
 
             Box::new(result)
@@ -169,14 +159,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         13 => {
             let base64 = params[0].get_string().unwrap_or("".to_string());
 
-            let result = match obj.backend.lock() {
-                Ok(lock) => {
-                    match lock.binary_vault.store(BinaryInput::Base64(base64)){
-                        Ok(key) => json!({"result": true, "key": key}).to_string(),
-                        Err(e) => json_error(&e)
-                    }
-                },
-                Err(e) => json_error(&e)
+            let result = match obj.binary_vault.store(BinaryInput::Base64(base64)) {
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e),
             };
 
             Box::new(result)
@@ -200,7 +185,8 @@ pub const PROPS: &[&[u16]] = &[
 
 pub struct AddIn {
     connection_string: String,
-    backend: Arc<Mutex<backend::MSSQLBackend>>,
+    backend: Option<backend::MSSQLBackend>,
+    binary_vault: BinaryVault,
     initialized: bool,
     tls: Option<TlsSettings>,
     datasets: Datasets,
@@ -211,12 +197,26 @@ impl AddIn {
     pub fn new() -> Self {
         Self {
             connection_string: String::new(),
-            backend: Arc::new(Mutex::new(backend::MSSQLBackend::new())),
+            backend: None,
+            binary_vault: BinaryVault::new(),
             initialized: false,
             tls: None,
             datasets: Datasets::new(),
             logger: None,
         }
+    }
+
+    fn ensure_backend(&mut self) -> Result<(), String> {
+        if self.backend.is_some() {
+            return Ok(());
+        }
+
+        let backend = backend::MSSQLBackend::try_new(self.binary_vault.clone())?;
+        if let Some(ref logger) = self.logger {
+            backend.set_logger(logger.clone())?;
+        }
+        self.backend = Some(backend);
+        Ok(())
     }
 
     pub fn set_logger(&mut self, logger_config: &str) -> String {
@@ -235,16 +235,13 @@ impl AddIn {
         match Logger::from_json(logger_config) {
             Ok(logger) => {
                 let logger_arc = Arc::new(logger);
-                match self.backend.lock() {
-                    Ok(backend) => match backend.set_logger(logger_arc.clone()) {
-                        Ok(()) => {
-                            self.logger = Some(logger_arc);
-                            json_success()
-                        }
-                        Err(e) => json_error(&e),
-                    },
-                    Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+                if let Some(ref backend) = self.backend {
+                    if let Err(e) = backend.set_logger(logger_arc.clone()) {
+                        return json_error(&e);
+                    }
                 }
+                self.logger = Some(logger_arc);
+                json_success()
             }
             Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
         }
@@ -267,12 +264,6 @@ impl AddIn {
         }
     }
 
-    fn apply_logger_to_backend(&self) {
-        if let (Some(ref logger), Ok(backend)) = (&self.logger, self.backend.lock()) {
-            let _ = backend.set_logger(logger.clone());
-        }
-    }
-
     pub fn initialize(&mut self) -> String {
         if self.connection_string.is_empty() {
             return json_error("Empty connection string!");
@@ -282,14 +273,15 @@ impl AddIn {
             return json_error("Client already initialized!");
         }
 
-        let result = match self.backend.lock(){
-            Ok(b) => {
-                b.connect(
-                    self.connection_string.clone(),
-                    self.tls.clone(),
-                )},
-            Err(e) => json_error(&e.to_string())
-        };
+        if let Err(e) = self.ensure_backend() {
+            return json_error(&e);
+        }
+
+        let result = self
+            .backend
+            .as_ref()
+            .expect("ensure_backend just succeeded")
+            .connect(self.connection_string.clone(), self.tls.clone());
 
         if result.contains("\"result\":true") {
             self.initialized = true;
@@ -298,47 +290,38 @@ impl AddIn {
     }
 
     pub fn close_connection(&mut self) -> String {
-        match self.backend.lock() {
-            Ok(mut guard) => {
-                guard.shutdown();
-            }
-            Err(e) => {
-                return json_error(format!("Failed to acquire backend lock during close: {}", e));
-            }
+        if let Some(mut backend) = self.backend.take() {
+            backend.shutdown();
         }
-
-        self.backend = Arc::new(Mutex::new(backend::MSSQLBackend::new()));
-        self.apply_logger_to_backend();
         self.initialized = false;
         json_success()
     }
 
     pub fn execute_query(&self, key: &str) -> String {
-        match self.backend.lock(){
-            Ok(backend) => {
-                let query = match self.datasets.get_query(key){
-                    Some(q) => q,
-                    None => return json_error(format!("No query found by key: {}", key)),
-                };
+        if !self.initialized {
+            return json_error("Not connected to MSSQL");
+        }
 
-                let params = query.params;
-                let text = query.text;
-                let force_result = query.force_result;
-                let backend_result = backend.execute_query(text, params, force_result);
+        let backend = match &self.backend {
+            Some(backend) => backend,
+            None => return json_error("Backend is not available"),
+        };
 
-                match backend_result {
-                    Ok(result) => {
-                        match result {
-                            Some(data) => {
-                                self.datasets.set_results(&key, data);
-                                json!({"result": true, "data": true}).to_string()
-                            },
-                            None => json!({"result": true, "data": false}).to_string()
-                        }
-                    },
-                    Err(e) => json_error(&e),
-                }
-            },
+        let query = match self.datasets.get_query(key) {
+            Some(q) => q,
+            None => return json_error(format!("No query found by key: {}", key)),
+        };
+
+        let params = query.params;
+        let text = query.text;
+        let force_result = query.force_result;
+
+        match backend.execute_query(text, params, force_result) {
+            Ok(Some(data)) => {
+                self.datasets.set_results(key, data);
+                json!({"result": true, "data": true}).to_string()
+            }
+            Ok(None) => json!({"result": true, "data": false}).to_string(),
             Err(e) => json_error(&e),
         }
     }

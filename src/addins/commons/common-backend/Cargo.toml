@@ -1,0 +1,8 @@
+[package]
+name = "common-backend"
+version = "2.1.0"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.0", features = ["rt-multi-thread"] }

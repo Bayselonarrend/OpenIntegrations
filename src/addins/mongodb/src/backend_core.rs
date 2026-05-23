@@ -1,7 +1,6 @@
 use serde_json::{json, Value};
 use std::sync::mpsc::Sender;
-use std::thread::JoinHandle;
-use common_core::spawn_tokio_backend_thread;
+use common_backend::BackendThread;
 use common_binary::vault::BinaryVault;
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
@@ -10,9 +9,8 @@ use crate::bson::{bson_to_json_value, json_value_to_bson};
 use crate::format_json_error;
 
 pub struct MongoBackend {
-    pub(crate) tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,
-    pub(crate) binary_vault: BinaryVault
+    pub(crate) thread: BackendThread<BackendCommand>,
+    pub(crate) binary_vault: BinaryVault,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -28,7 +26,6 @@ pub enum BackendCommand {
         connection_string: String,
         response: Sender<String>,
     },
-    Shutdown,
     Execute {
         params: ExecuteParams,
         response: Sender<String>,
@@ -43,7 +40,7 @@ impl MongoBackend {
         let binary_vault = BinaryVault::new();
         let vault_clone = binary_vault.clone();
 
-        let (tx, thread_handle) = spawn_tokio_backend_thread("opi_mongodb_backend", move |rt, rx| {
+        let thread = BackendThread::spawn("opi_mongodb_backend", move |rt, rx| {
             let mut client: Option<Client> = None;
 
             while let Ok(cmd) = rx.recv() {
@@ -90,15 +87,14 @@ impl MongoBackend {
                             client = None;
                             let _ = response.send("Disconnected successfully".to_string());
                         }
-                        BackendCommand::Shutdown => break,
                     }
                 }
-        });
+        })
+        .expect("failed to start MongoDB backend thread");
 
         Self {
-            tx,
-            thread_handle,
-            binary_vault
+            thread,
+            binary_vault,
         }
     }
 }
@@ -154,15 +150,4 @@ async fn execute_operation(
     let json_result = bson_to_json_value(&Bson::Document(result_doc));
     serde_json::to_string(&json_result)
         .map_err(|e| format!("Failed to serialize command result: {}", e))
-}
-
-impl Drop for MongoBackend {
-    fn drop(&mut self) {
-        let _ = self.tx.send(BackendCommand::Shutdown);
-        if let Some(handle) = self.thread_handle.take() {
-            if let Err(e) = handle.join() {
-                eprintln!("Backend thread panicked: {:?}", e);
-            }
-        }
-    }
 }
