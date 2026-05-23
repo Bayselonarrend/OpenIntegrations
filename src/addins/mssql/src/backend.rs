@@ -13,7 +13,6 @@ pub struct MSSQLBackend {
     binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     tls: Option<TlsSettings>,
-    connected: bool,
 }
 
 impl MSSQLBackend {
@@ -23,16 +22,20 @@ impl MSSQLBackend {
             binary_vault: BinaryVault::new(),
             logger: None,
             tls: None,
-            connected: false,
         }
     }
 
     pub fn is_connected(&self) -> bool {
-        self.connected
+        let Some(thread) = &self.thread else {
+            return false;
+        };
+        thread
+            .call(|response| WorkerCommand::IsConnected { response })
+            .unwrap_or(false)
     }
 
     pub fn set_tls(&mut self, settings: TlsSettings) -> Result<(), String> {
-        if self.connected {
+        if self.is_connected() {
             return Err(
                 "TLS settings can only be set before the connection is established".to_string(),
             );
@@ -42,7 +45,7 @@ impl MSSQLBackend {
     }
 
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {
-        if self.connected {
+        if self.is_connected() {
             return Err(
                 "Logger can only be set before the connection is established".to_string(),
             );
@@ -52,7 +55,9 @@ impl MSSQLBackend {
         }
         self.logger = Some(logger.clone());
         if let Some(ref thread) = self.thread {
-            worker::forward_logger(thread, logger)?;
+            thread
+                .call(|response| WorkerCommand::SetLogger { logger, response })
+                .and_then(|result| result)?;
         }
         Ok(())
     }
@@ -72,7 +77,7 @@ impl MSSQLBackend {
     }
 
     pub fn connect(&mut self, conn_str: String) -> Result<(), String> {
-        if self.connected {
+        if self.is_connected() {
             return Err("Client already connected".to_string());
         }
 
@@ -91,7 +96,6 @@ impl MSSQLBackend {
                 response,
             })??;
 
-        self.connected = true;
         Ok(())
     }
 
@@ -101,7 +105,7 @@ impl MSSQLBackend {
         params_json: Vec<Value>,
         force_result: bool,
     ) -> Result<Option<Vec<Value>>, String> {
-        if !self.connected {
+        if !self.is_connected() {
             return Err("Not connected to MSSQL".to_string());
         }
 
@@ -124,7 +128,6 @@ impl MSSQLBackend {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
-        self.connected = false;
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -132,13 +135,7 @@ impl MSSQLBackend {
             return Ok(());
         }
 
-        let pending_logger = self.logger.clone();
-        let thread = worker::spawn_thread(self.binary_vault.clone())?;
-
-        if let Some(logger) = pending_logger {
-            worker::forward_logger(&thread, logger)?;
-        }
-
+        let thread = worker::spawn_thread(self.binary_vault.clone(), self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }
