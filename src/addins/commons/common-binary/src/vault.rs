@@ -131,3 +131,12 @@ impl Drop for BinaryVault {
         }
     }
 }
+
+/// JSON for a successful vault store: `{"result": true, "key": "..."}`.
+pub fn vault_key_json(key: impl Into<VaultKey>) -> String {
+    serde_json::json!({
+        "result": true,
+        "key": key.into(),
+    })
+    .to_string()
+}
