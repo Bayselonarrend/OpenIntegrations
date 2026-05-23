@@ -1,0 +1,60 @@
+---
+sidebar_position: 7
+sidebar_class_name: doc-no-cli
+description: Get logging settings  and other functions to work with MySQL in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MySQL]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get logging settings 
+ Retrieves settings structure for enabling logging when opening a connection
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | WriteToMemory | - | Boolean | &#x2716; | Logging to memory for further retrieval from the addin object |
+  | MaxEvents | - | Number | &#x2716; | Maximum number of events stored in memory |
+  | FilePath | - | String | &#x2716; | Path to file for saving full log, if necessary |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Settings structure
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_MySQL.GetLoggingSettings(True, 100, GetTempFileName());
+```
+ 
+
+
+
+

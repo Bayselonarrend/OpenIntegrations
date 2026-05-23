@@ -17,11 +17,12 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CreateConnection(Val ConnectionString) Export`
+`Function CreateConnection(Val ConnectionString, Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | ConnectionString | - | String | &#x2714; | Connection string |
+  | ConnectionString | - | String | &#x2714; | Connection string. See GenerateConnectionString |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
 
 <div className="return-value-note">

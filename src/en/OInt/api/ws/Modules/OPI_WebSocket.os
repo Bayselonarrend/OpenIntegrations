@@ -137,15 +137,18 @@ Function CreateConnection(Val Address
 
     EndIf;
 
-    If Logging = Undefined Then
-
-        SettingsString = "";
-
-    Else
+    If Logging <> Undefined Then
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
         SettingsString = OPI_Tools.JSONString(Logging);
+
+        LogResult = WSClient.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
 
     EndIf;
 
@@ -164,7 +167,7 @@ Function CreateConnection(Val Address
 
     EndIf;
 
-    Result = WSClient.Connect(Address, SettingsString);
+    Result = WSClient.Connect(Address);
     Result = OPI_Tools.JsonToStructure(Result);
 
     Return ?(Result["result"], WSClient, Result);

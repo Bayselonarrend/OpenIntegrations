@@ -1,0 +1,27 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
+
+    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto";
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyUnary";
+
+    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method);
+
+    Result = OPI_GRPC.GetLog(Connection);

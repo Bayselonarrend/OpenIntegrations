@@ -17,13 +17,14 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export`
+`Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined, Val Logging = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | FTPSettings | - | Structure Of KeyAndValue | &#x2714; | FTP settings. See GetConnectionSettings |
   | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
   | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
 
 
 <div className="return-value-note">

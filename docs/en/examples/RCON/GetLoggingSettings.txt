@@ -1,0 +1,1 @@
+    Result = OPI_RCON.GetLoggingSettings(True, 100, GetTempFileName());

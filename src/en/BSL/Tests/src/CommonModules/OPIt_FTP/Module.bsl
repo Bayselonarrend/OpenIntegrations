@@ -147,6 +147,8 @@ Procedure FT_CommonMethods() Export
         FTP_ExecuteCustomCommand(TestParameters);
         FTP_ExecuteArbitraryCommand(TestParameters);
         FTP_Ping(TestParameters);
+        FTP_GetLoggingSettings(TestParameters);
+        FTP_GetLog(TestParameters);
 
     EndDo;
 
@@ -1453,6 +1455,87 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "FTP", "GetProtocolFeatureList", Postfix);
+
+EndProcedure
+
+Procedure FTP_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_FTP.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "GetLoggingSettings");
+
+    Result = OPI_FTP.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "GetLoggingSettings", "File");
+
+    Result = OPI_FTP.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure FTP_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_FTP.GetLoggingSettings(True, 100, LogFile);
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    UseProxy = True;
+    FTPS     = True;
+
+    ProxySettings = Undefined;
+    TLSSettings   = Undefined;
+
+    UseProxy = FunctionParameters["Proxy"]; // SKIP
+    FTPS     = FunctionParameters["TLS"]; // SKIP
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"];
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    If FTPS Then
+        TLSSettings = OPI_FTP.GetTLSSettings(True);
+    EndIf;
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings, LoggingSettings);
+
+    If Not OPI_FTP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_FTP.Ping(Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "Ping", "Select"); // SKIP
+
+    Result = OPI_FTP.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "GetLog", , LogFile);
+
+    Result = OPI_FTP.GetLog(Connection, True);
+    OPI_TestDataRetrieval.Process(Result, "FTP", "GetLog", "AsString", LogFile);
+
+    OPI_FTP.CloseConnection(Connection);
 
 EndProcedure
 

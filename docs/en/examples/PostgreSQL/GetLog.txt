@@ -1,0 +1,27 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_PostgreSQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "postgres";
+
+    TLS = True;
+    Port = 5432;
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_PostgreSQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_PostgreSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_PostgreSQL.GetLog(Connection);

@@ -53,6 +53,47 @@
 
 #Region Public
 
+#Region Common
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when opening a connection or starting the server
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves server or client log data (with logging to memory enabled)
+//
+// Parameters:
+// AddInObject - Arbitrary - Client or server AddIn object                              - conn
+// AsString    - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount  - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val AddInObject, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(AddInObject
+        , AsString
+        , EventCount);
+
+EndFunction
+
+#EndRegion
+
 #Region ClientMethods
 
 // Create connection !NOCLI
@@ -62,17 +103,42 @@
 // Address - String                   - Address and port                                  - address
 // Tls     - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
 // Proxy   - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Logging - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
-Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "") Export
+Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging = Undefined) Export
 
     OPI_TypeConversion.GetLine(Address);
     OPI_Tools.RestoreEscapeSequences(Address);
 
     TCPClient = OPI_AddIns.GetAddIn("TCPClient");
-    Success   = TCPClient.SetAddress(Address);
-    Success   = OPI_Tools.JsonToStructure(Success);
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = TCPClient.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
+
+    Success = TCPClient.SetAddress(Address);
+    Success = OPI_Tools.JsonToStructure(Success);
 
     If Not Success["result"] Then
         Return Success;
@@ -552,43 +618,6 @@ EndFunction
 Function GetConnectionList(Val ServerObject) Export
 
     Return OPI_GenericServer.GetConnectionList(OPI_TCP, ServerObject);
-
-EndFunction
-
-// Get log !NOCLI
-// Retrieves server log data (with logging to memory enabled)
-//
-// Parameters:
-// ServerObject - Arbitrary - Object of running server component                         - srv
-// AsString     - Boolean   - True > returns log as a single string, False > as an array - str
-// EventCount   - Number    - Number of recent events to retrieve. 0 > no limits         - count
-//
-// Returns:
-// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
-Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Export
-
-    Return OPI_AddIns.GetLog(ServerObject
-        , AsString
-        , EventCount);
-
-EndFunction
-
-// Get logging settings !NOCLI
-// Retrieves settings structure for starting logging on server startup
-//
-// Parameters:
-// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
-// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
-// FilePath      - String  - Path to file for saving full log, if necessary                - path
-//
-// Returns:
-// Structure Of KeyAndValue - Settings structure
-Function GetLoggingSettings(Val WriteToMemory = True
-    , Val MaxEvents = 300
-    , Val FilePath = "") Export
-
-    //@skip-check constructor-function-return-section
-    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
 
 EndFunction
 

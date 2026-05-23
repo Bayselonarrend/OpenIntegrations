@@ -112,6 +112,8 @@ Procedure SShell_CommonMethods() Export
         SSH_GetSettingsViaAgent(TestParameters);
         SSH_GetSettingsKI(TestParameters);
         SSH_GetProxySettings(TestParameters);
+        SSH_GetLoggingSettings(TestParameters);
+        SSH_GetLog(TestParameters);
 
     EndDo;
 
@@ -710,6 +712,127 @@ Procedure SSH_GetProxySettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetProxySettings", Postfix);
+
+EndProcedure
+
+Procedure SSH_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_SSH.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings");
+
+    Result = OPI_SSH.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings", "File");
+
+    Result = OPI_SSH.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure SSH_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsLoginPassword", Options);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = FunctionParameters["SSH_Key"];
+        PublicKey  = FunctionParameters["SSH_Pub"];
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    ElsIf AuthorizationType = "Keyboard interactive" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        AnswersArray = New Array;
+        AnswersArray.Add(Password);
+
+        Port = FunctionParameters["SSH_PortKI"];
+
+        SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"];
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetProxySettings", Options);
+
+    EndIf;
+
+    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings, LoggingSettings);
+
+    If Not OPI_SSH.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("comm", "whoami");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "ExecuteCommand", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "ExecuteCommand", "Select"); // SKIP
+
+    Result = OPI_SSH.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLog", , LogFile);
+
+    Result = OPI_SSH.GetLog(Connection, True);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLog", "AsString", LogFile);
 
 EndProcedure
 

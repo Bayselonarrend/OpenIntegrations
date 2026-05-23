@@ -1,0 +1,1 @@
+    Result = OPI_SQLite.GetLoggingSettings(True, 100, GetTempFileName());

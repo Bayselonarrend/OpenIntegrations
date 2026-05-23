@@ -112,6 +112,8 @@ Procedure SQLL_CommonMethods() Export
     SQLite_ExecuteSQLQuery(TestParameters);
     SQLite_IsConnector(TestParameters);
     SQLite_ConnectExtension(TestParameters);
+    SQLite_GetLoggingSettings(TestParameters);
+    SQLite_GetLog(TestParameters);
 
     OPI_Tools.RemoveFileWithTry(Base, "Database file deletion error");
 
@@ -781,6 +783,55 @@ Procedure SQLite_EnsureTable(FunctionParameters)
     Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureTable", "Check 2", ColoumnsStruct);
+
+EndProcedure
+
+Procedure SQLite_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_SQLite.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetLoggingSettings");
+
+    Result = OPI_SQLite.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetLoggingSettings", "File");
+
+    Result = OPI_SQLite.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure SQLite_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SQLite.GetLoggingSettings(True, 100, LogFile);
+    TFN             = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN, LoggingSettings);
+
+    If Not OPI_SQLite.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_SQLite.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "ExecuteSQLQuery", "Select"); // SKIP
+
+    Result = OPI_SQLite.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetLog", , LogFile);
+
+    Result = OPI_SQLite.GetLog(Connection, True);
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "GetLog", "AsString", LogFile);
+
+    OPI_SQLite.CloseConnection(Connection);
+
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
 EndProcedure
 

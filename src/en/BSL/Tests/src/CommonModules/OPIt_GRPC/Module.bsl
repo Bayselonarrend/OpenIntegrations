@@ -112,6 +112,8 @@ Procedure GR_CommonMethods() Export
     GRPC_ExecuteMethod(TestParameters);
     GRPC_GetTlsSettings(TestParameters);
     GRPC_GetConnectionParameters(TestParameters);
+    GRPC_GetLoggingSettings(TestParameters);
+    GRPC_GetLog(TestParameters);
 
 EndProcedure
 
@@ -396,6 +398,66 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Undefined, , Tls);
 
     OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod", "Meta");
+
+EndProcedure
+
+Procedure GRPC_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_GRPC.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLoggingSettings");
+
+    Result = OPI_GRPC.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLoggingSettings", "File");
+
+    Result = OPI_GRPC.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure GRPC_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyUnary";
+
+    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod", "Select"); // SKIP
+
+    Result = OPI_GRPC.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLog", , LogFile);
+
+    Result = OPI_GRPC.GetLog(Connection, True);
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLog", "AsString", LogFile);
 
 EndProcedure
 

@@ -64,10 +64,11 @@
 // Parameters:
 // Parameters - String                   - Connection parameters. See GetConnectionParameters - params
 // Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings     - tls
+// Logging    - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings           - log
 //
 // Returns:
 // Arbitrary - Client object or map with error information
-Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
+Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Undefined) Export
 
     If IsConnector(Parameters) Then
         Return Parameters;
@@ -87,6 +88,29 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
     Connector.ServerAddress = String(Address);
 
     SaveSettingsAtAddIn(Connector, Parameters);
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = Connector.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
 
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
@@ -303,6 +327,43 @@ EndFunction
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 
     Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+
+EndFunction
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when opening a connection
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves connection log data (when in-memory logging is enabled)
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with open connection                          - conn
+// AsString   - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(Connection
+        , AsString
+        , EventCount);
 
 EndFunction
 
@@ -1124,8 +1185,8 @@ EndProcedure
 
 #Region Alternate
 
-Function ОткрытьСоединение(Val Параметры, Val Tls = Undefined) Export
-    Return CreateConnection(Параметры, Tls);
+Function ОткрытьСоединение(Val Параметры, Val Tls = Undefined, Val Логирование = Undefined) Export
+    Return CreateConnection(Параметры, Tls, Логирование);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
@@ -1150,6 +1211,14 @@ EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
     Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function ПолучитьНастройкиЛогирования(Val ЗаписьВПамять = True, Val МаксимумСобытий = 300, Val ПутьКФайлу = "") Export
+    Return GetLoggingSettings(ЗаписьВПамять, МаксимумСобытий, ПутьКФайлу);
+EndFunction
+
+Function ПолучитьЛог(Val Соединение, Val КакСтрока = False, Val ЧислоСобытий = 100) Export
+    Return GetLog(Соединение, КакСтрока, ЧислоСобытий);
 EndFunction
 
 Function ПолучитьСписокСервисов(Val Соединение, Val Tls = Undefined) Export

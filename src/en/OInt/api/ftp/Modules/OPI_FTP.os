@@ -60,10 +60,11 @@
 // FTPSettings - Structure Of KeyAndValue - FTP settings. See GetConnectionSettings           - set
 // Proxy       - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
 // Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
+// Logging     - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings          - log
 //
 // Returns:
 // Arbitrary - Client object or map with error information
-Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
+Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined, Val Logging = Undefined) Export
 
     Result_ = "result";
 
@@ -89,6 +90,29 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
 
     If Not OPI_Tools.GetOr(SetProxy, Result_, False) Then
         Return SetProxy;
+    EndIf;
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = Connector.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult[Result_] Then
+            Return LogResult;
+        EndIf;
+
     EndIf;
 
     Result = Connector.Connect();
@@ -486,6 +510,43 @@ EndFunction
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 
     Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+
+EndFunction
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when opening a connection
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves connection log data (when in-memory logging is enabled)
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with open connection                          - conn
+// AsString   - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(Connection
+        , AsString
+        , EventCount);
 
 EndFunction
 
@@ -1151,8 +1212,8 @@ EndProcedure
 
 #Region Alternate
 
-Function ОткрытьСоединение(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
-    Return CreateConnection(НастройкиFTP, Прокси, Tls);
+Function ОткрытьСоединение(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined, Val Логирование = Undefined) Export
+    Return CreateConnection(НастройкиFTP, Прокси, Tls, Логирование);
 EndFunction
 
 Function ПолучитьКонфигурациюСоединения(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
@@ -1205,6 +1266,14 @@ EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
     Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+EndFunction
+
+Function ПолучитьНастройкиЛогирования(Val ЗаписьВПамять = True, Val МаксимумСобытий = 300, Val ПутьКФайлу = "") Export
+    Return GetLoggingSettings(ЗаписьВПамять, МаксимумСобытий, ПутьКФайлу);
+EndFunction
+
+Function ПолучитьЛог(Val Соединение, Val КакСтрока = False, Val ЧислоСобытий = 100) Export
+    Return GetLog(Соединение, КакСтрока, ЧислоСобытий);
 EndFunction
 
 Function ПолучитьСписокОбъектов(Val Соединение, Val Путь = "", Val Рекурсивно = False) Export
