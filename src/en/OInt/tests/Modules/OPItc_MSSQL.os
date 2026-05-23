@@ -110,6 +110,8 @@ Procedure MSS_CommonMethods() Export
     MSSQL_IsConnector(TestParameters);
     MSSQL_ExecuteSQLQuery(TestParameters);
     MSSQL_GetTLSSettings(TestParameters);
+    MSSQL_GetLoggingSettings(TestParameters);
+    MSSQL_GetLog(TestParameters);
 
 EndProcedure
 
@@ -379,6 +381,71 @@ Procedure MSSQL_GetTLSSettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetTLSSettings");
+
+EndProcedure
+
+Procedure MSSQL_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_MSSQL.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings");
+
+    Result = OPI_MSSQL.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings", "File");
+
+    Result = OPI_MSSQL.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure MSSQL_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MSSQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("login", Login);
+    Options.Insert("pass", Password);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MSSQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Options = New Structure;
+    Options.Insert("sql", "SELECT 1 AS n");
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "ExecuteSQLQuery", "Select"); // SKIP
+
+    Result = OPI_MSSQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLog", , LogFile);
+
+    Result = OPI_MSSQL.GetLog(Connection, True);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLog", "AsString", LogFile);
+
+    OPI_MSSQL.CloseConnection(Connection);
 
 EndProcedure
 

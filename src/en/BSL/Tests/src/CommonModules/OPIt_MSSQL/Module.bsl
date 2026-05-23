@@ -109,6 +109,8 @@ Procedure MSS_CommonMethods() Export
     MSSQL_IsConnector(TestParameters);
     MSSQL_ExecuteSQLQuery(TestParameters);
     MSSQL_GetTLSSettings(TestParameters);
+    MSSQL_GetLoggingSettings(TestParameters);
+    MSSQL_GetLog(TestParameters);
 
 EndProcedure
 
@@ -320,6 +322,59 @@ Procedure MSSQL_GetTLSSettings(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetTLSSettings");
+
+EndProcedure
+
+Procedure MSSQL_GetLoggingSettings(FunctionParameters)
+
+    Result = OPI_MSSQL.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetLoggingSettings");
+
+    Result = OPI_MSSQL.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetLoggingSettings", "File");
+
+    Result = OPI_MSSQL.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure MSSQL_GetLog(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MSSQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MSSQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_MSSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "ExecuteSQLQuery", "Select"); // SKIP
+
+    Result = OPI_MSSQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetLog", , LogFile);
+
+    Result = OPI_MSSQL.GetLog(Connection, True);
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "GetLog", "AsString", LogFile);
+
+    OPI_MSSQL.CloseConnection(Connection);
 
 EndProcedure
 
