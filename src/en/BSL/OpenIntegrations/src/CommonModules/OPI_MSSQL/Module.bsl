@@ -61,10 +61,11 @@
 // Parameters:
 // ConnectionString - String                   - Connection string. See GenerateConnectionString - string
 // Tls              - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings  - tls
+// Logging          - Structure Of KeyAndValue - Logging settings. See GetLoggingSettings        - log
 //
 // Returns:
 // Arbitrary - Connector object or structure with error information
-Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
+Function CreateConnection(Val ConnectionString = "", Val Tls = "", Val Logging = Undefined) Export
 
     If IsConnector(ConnectionString) Then
         Return ConnectionString;
@@ -74,6 +75,29 @@ Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
     OPI_Tools.RestoreEscapeSequences(ConnectionString);
 
     Connector = OPI_AddIns.GetAddIn("MSSQL");
+
+    If Logging = Undefined Then
+
+        SettingsString = "";
+
+    Else
+
+        ErrorText      = "Incorrect logging settings";
+        OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
+        SettingsString = OPI_Tools.JSONString(Logging);
+
+    EndIf;
+
+    If ValueIsFilled(SettingsString) Then
+
+        LogResult = Connector.SetLogger(SettingsString);
+        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+
+        If Not LogResult["result"] Then
+            Return LogResult;
+        EndIf;
+
+    EndIf;
 
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
@@ -252,6 +276,43 @@ EndFunction
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 
     Return OPI_AddIns.GetTlsSettings(DisableCertVerification, CertFilepath);
+
+EndFunction
+
+// Get logging settings !NOCLI
+// Retrieves settings structure for enabling logging when opening a connection
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves connection log data (when in-memory logging is enabled)
+//
+// Parameters:
+// Connection - Arbitrary - AddIn object with open connection                          - conn
+// AsString   - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(Connection
+        , AsString
+        , EventCount);
 
 EndFunction
 
