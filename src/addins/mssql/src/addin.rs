@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use common_binary::vault::BinaryInput;
+use common_binary::vault::{vault_key_json, BinaryInput};
 use common_dataset::dataset::Datasets;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
@@ -24,27 +24,23 @@ impl AddIn {
         }
     }
 
-    fn vault_key_json(key: String) -> String {
-        json!({"result": true, "key": key}).to_string()
-    }
-
     pub fn load_binary_to_vault(&mut self, data: Vec<u8>) -> String {
         match self.client.store_binary(BinaryInput::Bytes(data)) {
-            Ok(key) => Self::vault_key_json(key),
+            Ok(key) => vault_key_json(key),
             Err(e) => json_error(&e),
         }
     }
 
     pub fn load_file_to_vault(&mut self, path: String) -> String {
         match self.client.store_binary(BinaryInput::FilePath(path)) {
-            Ok(key) => Self::vault_key_json(key),
+            Ok(key) => vault_key_json(key),
             Err(e) => json_error(&e),
         }
     }
 
     pub fn load_base64_to_vault(&mut self, base64: String) -> String {
         match self.client.store_binary(BinaryInput::Base64(base64)) {
-            Ok(key) => Self::vault_key_json(key),
+            Ok(key) => vault_key_json(key),
             Err(e) => json_error(&e),
         }
     }

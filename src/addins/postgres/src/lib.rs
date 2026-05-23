@@ -1,14 +1,12 @@
-mod methods;
+mod addin;
+mod backend;
+mod query;
+mod worker;
 
-use postgres::{Client, NoTls};
-use serde_json::json;
-use postgres_native_tls::MakeTlsConnector;
-use std::sync::{Arc, Mutex};
-use common_binary::vault::{BinaryInput, BinaryVault};
-use common_dataset::dataset::Datasets;
-use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success, version};
+use addin::AddIn;
 use common_core::*;
+use common_utils::utils::{json_error, json_success, version};
+use serde_json::json;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -29,8 +27,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("LoadBinaryToVault"),
     name!("LoadFileToVault"),
     name!("LoadBase64ToVault"),
+    name!("SetLogger"),
+    name!("GetLogs"),
     name!("Version"),
 ];
+
+pub const PROPS: &[&[u16]] = &[name!("ConnectionString")];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
@@ -49,204 +51,112 @@ pub fn get_params_amount(num: usize) -> usize {
         12 => 1,
         13 => 1,
         14 => 1,
-        15 => 0,
+        15 => 1,
+        16 => 1,
+        17 => 0,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-
     let empty_array: [u8; 0] = [];
 
     match num {
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
         2 => {
-            let key = params[0].get_string().unwrap_or("".to_string());
+            let key = params[0].get_string().unwrap_or_default();
             Box::new(obj.execute_query(&key))
-        },
+        }
         3 => {
-            if obj.get_connection().is_some(){
-                return  Box::new(json_error("TLS settings can only be set before the connection is established"));
-            };
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
-            let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
-
-            obj.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, &ca_cert_path));
-            Box::new(json_success())
-        },
+            let ca_cert_path = params[2].get_string().unwrap_or_default();
+            Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
+        }
         4 => {
             let text = params[0].get_string().unwrap_or("".to_string());
             let force = params[1].get_bool().unwrap_or(false);
             let from_file = params[2].get_bool().unwrap_or(false);
-            let result = match obj.datasets.init_query(&text, force, from_file){
+
+            let result = match obj.datasets.init_query(&text, force, from_file) {
                 Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => json_error(&e)
+                Err(e) => json_error(&e),
             };
             Box::new(result)
-        },
+        }
         5 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.result_as_file(&key, &filepath){
+            let result = match obj.datasets.result_as_file(&key, &filepath) {
                 Ok(_) => json_success(),
-                Err(e) => json_error(&e)
+                Err(e) => json_error(&e),
             };
             Box::new(result)
-        },
+        }
         6 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-            let result = obj.datasets.result_as_string(&key)
+            let result = obj
+                .datasets
+                .result_as_string(&key)
                 .unwrap_or_else(|e| json_error(&e));
             Box::new(result)
-        },
+        }
         7 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.params_from_file(&key, &filepath){
-                Ok(_) => json_success(),
-                Err(e) => json_error(&e)
+
+            let result = match obj.datasets.params_from_file(&key, &filepath) {
+                Ok(_) => json!({"result": true}).to_string(),
+                Err(e) => json_error(&e),
             };
             Box::new(result)
-        },
+        }
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let json = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.params_from_string(&key, &json){
+            let result = match obj.datasets.params_from_string(&key, &json) {
                 Ok(_) => json_success(),
-                Err(e) => json_error(&e)
+                Err(e) => json_error(&e),
             };
             Box::new(result)
-        },
+        }
         9 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             obj.datasets.remove(&key);
             Box::new(json_success())
-        },
+        }
         10 => {
             let input = params[0].get_string().unwrap_or("".to_string());
             let output = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.batch_query_init(&input, &output){
+            let result = match obj.datasets.batch_query_init(&input, &output) {
                 Ok(_) => json_success(),
-                Err(e) => json_error(&e)
+                Err(e) => json_error(&e),
             };
             Box::new(result)
-        },
-        11 => {
-            let result = match &obj.tls{
-                Some(tls) => tls.get_settings(),
-                None => "".to_string()
-            };
-            Box::new(result)
-        },
+        }
+        11 => Box::new(obj.get_tls_settings()),
         12 => {
             let binary = params[0].get_blob().unwrap_or(&empty_array);
-            let result = match obj.binary_vault.store(BinaryInput::Bytes(Vec::from(binary))){
-                Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => json_error(&e)
-            };
-            Box::new(result)
-        },
+            Box::new(obj.load_binary_to_vault(Vec::from(binary)))
+        }
         13 => {
             let file = params[0].get_string().unwrap_or("".to_string());
-            let result = match obj.binary_vault.store(BinaryInput::FilePath(file)){
-                Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => json_error(&e)
-            };
-            Box::new(result)
-        },
+            Box::new(obj.load_file_to_vault(file))
+        }
         14 => {
             let base64 = params[0].get_string().unwrap_or("".to_string());
-            let result = match obj.binary_vault.store(BinaryInput::Base64(base64)){
-                Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => json_error(&e)
-            };
-            Box::new(result)
-        },
-        15 => Box::new(version()),
+            Box::new(obj.load_base64_to_vault(base64))
+        }
+        15 => {
+            let logger_config = params[0].get_string().unwrap_or_default();
+            Box::new(obj.set_logger(&logger_config))
+        }
+        16 => {
+            let count = params[0].get_i32().unwrap_or(0) as usize;
+            Box::new(obj.get_logs(count))
+        }
+        17 => Box::new(version()),
         _ => Box::new(false),
     }
-
-}
-
-pub const PROPS: &[&[u16]] = &[
-    name!("ConnectionString"),
-];
-
-
-pub struct AddIn {
-    connection_string: String,
-    client: Option<Arc<Mutex<Client>>>,
-    tls: Option<TlsSettings>,
-    datasets: Datasets,
-    binary_vault: BinaryVault
-}
-
-impl AddIn {
-    /// Создает новый объект
-    pub fn new() -> Self {
-        AddIn {
-            connection_string: String::new(),
-            client: None,
-            tls: None,
-            datasets: Datasets::new(),
-            binary_vault: BinaryVault::new()
-        }
-    }
-
-    pub fn initialize(&mut self) -> String {
-
-        let tls_conn = if let Some(tls) = &self.tls {
-            if tls.enabled(){
-                let tls_connector = match tls.get_connector(){
-                    Ok(connector) => connector,
-                    Err(e) => return json_error(&e)
-                };
-                Some(MakeTlsConnector::new(tls_connector))
-            }else{
-                None
-            }
-        }else{
-            None
-        };
-
-        let result = match tls_conn{
-            Some(t) => Client::connect(&self.connection_string, t),
-            None => Client::connect(&self.connection_string, NoTls),
-        };
-
-        let result_string = match result {
-            Ok(client) => {
-                self.client = Some(Arc::new(Mutex::new(client)));
-                json_success()
-            }
-            Err(e) => json_error(&e),
-        };
-        result_string
-    }
-
-    pub fn get_connection(&mut self) -> Option<Arc<Mutex<Client>>> {
-        self.client.clone()
-    }
-
-    pub fn close_connection(&mut self) -> String {
-        if self.client.take().is_some() {
-            json_success()
-        } else {
-            json_error("Connection closed")
-        }
-    }
-
-    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
-        match index {
-            0 => &self.connection_string as &dyn getset::ValueType as *const _,
-            _ => panic!("Index out of bounds"),
-        }
-    }
-    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
-}
-
-impl Drop for AddIn {
-    fn drop(&mut self) {}
 }
