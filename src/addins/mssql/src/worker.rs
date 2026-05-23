@@ -30,23 +30,28 @@ pub enum WorkerCommand {
         logger: Arc<Logger>,
         response: Sender<Result<(), String>>,
     },
+    IsConnected {
+        response: Sender<bool>,
+    },
     Shutdown,
 }
 
-pub struct Session {
-    client: Option<Client<Compat<TcpStream>>>,
+struct Session {
+    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
+    client: Option<Client<Compat<TcpStream>>>,
 }
 
 impl Session {
-    pub fn new() -> Self {
+    fn new(binary_vault: BinaryVault, logger: Option<Arc<Logger>>) -> Self {
         Self {
+            binary_vault,
+            logger,
             client: None,
-            logger: None,
         }
     }
 
-    pub fn log(&self, message: &str) {
+    fn log(&self, message: &str) {
         if let Some(ref logger) = self.logger {
             common_logs::log!(logger, "{}", message);
         }
@@ -55,11 +60,10 @@ impl Session {
 
 pub fn spawn_thread(
     binary_vault: BinaryVault,
+    logger: Option<Arc<Logger>>,
 ) -> Result<BackendThread<WorkerCommand>, String> {
-    let vault = binary_vault.clone();
-
     BackendThread::spawn("opi_mssql_backend", move |rt, rx| {
-        let mut session = Session::new();
+        let mut session = Session::new(binary_vault, logger);
 
         while let Ok(cmd) = rx.recv() {
             match cmd {
@@ -77,20 +81,17 @@ pub fn spawn_thread(
                     force_result,
                     response,
                 } => {
-                    let result = handle_execute(
-                        &rt,
-                        &mut session,
-                        &vault,
-                        query,
-                        params_json,
-                        force_result,
-                    );
+                    let result =
+                        handle_execute(&rt, &mut session, query, params_json, force_result);
                     let _ = response.send(result);
                 }
                 WorkerCommand::SetLogger { logger, response } => {
                     session.logger = Some(logger);
                     session.log("Logger initialized");
                     let _ = response.send(Ok(()));
+                }
+                WorkerCommand::IsConnected { response } => {
+                    let _ = response.send(session.client.is_some());
                 }
                 WorkerCommand::Shutdown => {
                     session.log("Shutting down MSSQL backend");
@@ -99,15 +100,6 @@ pub fn spawn_thread(
             }
         }
     })
-}
-
-pub fn forward_logger(
-    thread: &BackendThread<WorkerCommand>,
-    logger: Arc<Logger>,
-) -> Result<(), String> {
-    thread
-        .call(|response| WorkerCommand::SetLogger { logger, response })
-        .and_then(|result| result)
 }
 
 fn handle_connect(
@@ -151,7 +143,6 @@ fn handle_connect(
 fn handle_execute(
     rt: &Runtime,
     session: &mut Session,
-    vault: &BinaryVault,
     query: String,
     params_json: Vec<Value>,
     force_result: bool,
@@ -164,7 +155,13 @@ fn handle_execute(
     ));
 
     let result = if let Some(client) = &mut session.client {
-        rt.block_on(query::execute(vault, client, &query, params_json, force_result))
+        rt.block_on(query::execute(
+            &session.binary_vault,
+            client,
+            &query,
+            params_json,
+            force_result,
+        ))
     } else {
         Err("Not connected".to_string())
     };
