@@ -6,7 +6,6 @@ use crate::panic::catch_panic;
 
 const STARTUP_TIMEOUT: Duration = Duration::from_secs(30);
 
-/// Worker thread with tokio runtime and command channel.
 pub struct BackendThread<C: Send + 'static> {
     tx: Option<mpsc::Sender<C>>,
     join: Option<JoinHandle<()>>,
@@ -100,7 +99,6 @@ impl<C: Send + 'static> BackendThread<C> {
         })
     }
 
-    /// Sends a command with a per-request response channel and waits for the result.
     pub fn call<R, F>(&self, build: F) -> Result<R, String>
     where
         R: Send,
@@ -118,7 +116,6 @@ impl<C: Send + 'static> BackendThread<C> {
         })
     }
 
-    /// Sends an optional shutdown command, drops the command sender, and joins the worker.
     pub fn shutdown(&mut self, shutdown_cmd: Option<C>) -> Result<(), String> {
         if let Some(cmd) = shutdown_cmd {
             if self.tx.is_some() {

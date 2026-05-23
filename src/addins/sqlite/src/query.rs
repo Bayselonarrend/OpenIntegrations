@@ -1,96 +1,49 @@
 use std::str::FromStr;
-use rusqlite::{LoadExtensionGuard, types::ValueRef, types::Value as SqlValue, params_from_iter, ParamsFromIter};
-use serde_json::{Value, json, Map};
+
 use base64::{engine::general_purpose, Engine as _};
 use common_binary::vault::{BinaryVault, VaultKey};
-use common_utils::utils::{json_error, json_success};
-use crate::AddIn;
+use rusqlite::{
+    types::Value as SqlValue, types::ValueRef, Connection, LoadExtensionGuard, ParamsFromIter,
+    params_from_iter,
+};
+use serde_json::{json, Map, Value};
 
-impl AddIn{
-    pub fn execute_query(&self, key: &str) -> String {
+pub fn execute(
+    binary_vault: &BinaryVault,
+    conn: &mut Connection,
+    text: &str,
+    params: Vec<Value>,
+    force_result: bool,
+) -> Result<Option<Vec<Value>>, String> {
+    let convert = process_blobs(binary_vault, &params)?;
 
-        let conn_arc = match self.get_connection() {
-            Some(c) => c,
-            None => return json_error("No connection initialized"),
-        };
-
-        let conn = match conn_arc.lock() {
-            Ok(conn) => conn,
-            Err(_) => return json_error("Failed to acquire connection lock"),
-        };
-
-        let query = match self.datasets.get_query(key){
-            Some(q) => q,
-            None => return json_error(format!("No query found by key: {}", key)),
-        };
-
-        let params = query.params;
-        let text = query.text;
-        let force_result = query.force_result;
-
-        let convert = match process_blobs(&self.binary_vault, &params){
-            Ok(v) => v,
-            Err(e) => return json_error(&e)
-        };
-
-        if text.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
-            match conn.prepare(&text) {
-                Ok(mut query_result) => {
-
-                    let cols: Vec<String> = query_result
-                        .column_names()
-                        .iter()
-                        .map(|name| name.to_string())
-                        .collect();
-
-                    match query_result.query(convert){
-                        Ok(mut rows) =>  {
-                            let processed_rows = rows_to_json_array(&mut rows, &cols);
-                            self.datasets.set_results(&key, processed_rows);
-                            json!({"result": true, "data": true}).to_string()
-                        },
-                        Err(e) => json_error(&e)
-                    }
-                }
-                Err(e) => json_error(&e)
-            }
-        } else {
-            match conn.execute(&text, convert) {
-                Ok(_) => json!({"result": true, "data": false}).to_string(),
-                Err(e) => json_error(&e),
-            }
-        }
+    if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
+        let mut query_result = conn.prepare(text).map_err(|e| e.to_string())?;
+        let cols: Vec<String> = query_result
+            .column_names()
+            .iter()
+            .map(|name| name.to_string())
+            .collect();
+        let mut rows = query_result.query(convert).map_err(|e| e.to_string())?;
+        Ok(Some(rows_to_json_array(&mut rows, &cols)))
+    } else {
+        conn.execute(text, convert).map_err(|e| e.to_string())?;
+        Ok(None)
     }
+}
 
-    pub fn load_extension(&mut self, path: String, point: String) -> String {
+pub fn load_extension(conn: &mut Connection, path: String, point: String) -> Result<(), String> {
+    let entry_point = if point.is_empty() {
+        None
+    } else {
+        Some(point.as_str())
+    };
 
-        let conn_arc = match self.get_connection() {
-            Some(c) => c,
-            None => return json_error("No connection initialized"),
-        };
-
-        let conn = match conn_arc.lock() {
-            Ok(conn) => conn,
-            Err(_) => return json_error("Failed to acquire connection lock"),
-        };
-
-        let entry_point = match point.is_empty() {
-            true => None,
-            false => Some(point.as_str())
-        };
-
-        unsafe {
-            let _guard = match LoadExtensionGuard::new(&*conn) {
-                Ok(g) => g,
-                Err(e) => return json_error(&e),
-            };
-            match conn.load_extension(path, entry_point) {
-                Ok(_) => json_success(),
-                Err(e) => json_error(&e)
-            }
-        }
+    unsafe {
+        let _guard = LoadExtensionGuard::new(conn).map_err(|e| e.to_string())?;
+        conn.load_extension(path, entry_point)
+            .map_err(|e| e.to_string())
     }
-
 }
 
 fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<Value> {
