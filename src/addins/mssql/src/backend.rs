@@ -64,18 +64,6 @@ impl BackendState {
             log!(logger, "{}", message);
         }
     }
-
-    fn log_query_preview(query: &str) -> String {
-        const MAX_CHARS: usize = 200;
-        let trimmed = query.trim();
-        let mut chars = trimmed.chars();
-        let preview: String = chars.by_ref().take(MAX_CHARS).collect();
-        if chars.next().is_some() {
-            format!("{}...", preview)
-        } else {
-            preview
-        }
-    }
 }
 
 impl MSSQLBackend {
@@ -139,7 +127,7 @@ impl MSSQLBackend {
                             "Execute query (params={}, force_result={}): {}",
                             params_json.len(),
                             force_result,
-                            BackendState::log_query_preview(&query)
+                            &query
                         ));
 
                         let result = if let Some(client) = &mut state.client {
