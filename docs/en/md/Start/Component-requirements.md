@@ -54,7 +54,11 @@ If there is no such note, the library was implemented **without** external compo
 
 Methods that rely on external components can run on **server** or **client** in the 1C:Enterprise build. On the **server**, AddIns are loaded transparently. On the **client**, they require an **interactive install** on that workstation. The process starts on the **first** call for each AddIn you use: the platform shows a dialog and may raise an exception telling you to call the same function again after installation.
 
-Besides on-demand installation, you can pre-install selected AddIns on a client using the **`Control panel (OPI)`** data processor.
+Besides on-demand installation, you can pre-install selected AddIns on a client using the **`Control panel (OPI)`** data processor
+
+:::warning
+При обновлении Открытого пакета интеграций до новой версии, компоненты на клиенте необходимо установить заново через панель управления (пошаговая инструкция присутствует на форме обработки). В противном случае новые функции, реализованные в коде 1С, могут оказаться несовместимы с функциями компонент, которые остались на клиентской машине после предыдущей установки
+:::
 
 ## FAQ
 
