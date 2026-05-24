@@ -160,8 +160,6 @@ Function HMAC(Val Key, Val Data, Val HashFunc) Export
         Key        = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
 
-    Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
-
     Result = OPI_ToolsServerCall.GetHMACHash(Key, Data, HashFunc);
 
     Return Result;

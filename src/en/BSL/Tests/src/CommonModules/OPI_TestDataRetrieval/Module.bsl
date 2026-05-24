@@ -11007,11 +11007,15 @@ Function Check_HTTP_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsString = "
             Result["origin"]         = "***";
             Result["files"]["file1"] = "...";
         Except
+
             Try
-                Raise Result.GetLog(True);
+                Log = Result.GetLog(True);
             Except
                 Raise GetStringFromBinaryData(Result);
             EndTry;
+
+            Raise Log;
+
         EndTry;
 
         ExpectsThat(StrFind(LogAsString, "adding body fields to the signature string")).Равно(0);

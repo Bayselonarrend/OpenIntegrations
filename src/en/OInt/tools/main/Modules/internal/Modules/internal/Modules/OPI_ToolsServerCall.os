@@ -192,15 +192,21 @@ EndFunction
 
 Function GetHMACHash(Val Key, Val Data, Val HashFunc) Export
 
+    If TypeOf(Key) = Type("String") Then
+        KeyBuffer     = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
+    Else
+        KeyBuffer     = Key;
+    EndIf;
+
     BlockSize = 64;
 
     Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
     Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
 
-    Ipad.WriteBitwiseXor(0, Key);
+    Ipad.WriteBitwiseXor(0, KeyBuffer);
     Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
 
-    Opad.WriteBitwiseXor(0, Key);
+    Opad.WriteBitwiseXor(0, KeyBuffer);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
 
     Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), HashFunc)), HashFunc);

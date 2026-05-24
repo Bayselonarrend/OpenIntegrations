@@ -130,6 +130,7 @@ Procedure TC_Server() Export
     EndIf;
 
     TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
 
     TCP_StartServer(TestParameters);
     TCP_StopServer(TestParameters);
