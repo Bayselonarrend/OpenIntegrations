@@ -202,9 +202,9 @@ EndFunction
 Function GetHMACHash(Val Key, Val Data, Val HashFunc) Export
 
     If TypeOf(Key) = Type("String") Then
-        KeyBuffer     = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
+        KeyBuffer  = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
     Else
-        KeyBuffer     = Key;
+        KeyBuffer  = Key;
     EndIf;
 
     BlockSize = 64;
