@@ -32,6 +32,12 @@
             },
             {
                 "lib": "All",
+                "icon": "media/MSSQL.png",
+                "description_ru": "Изменен механизм создания Tls соединения: улучшена совместимость с разными версиями сервера, наличие OpenSSL более не требуется",
+                "description_en": "Changed TLS connection creation mechanism: improved compatibility with different server versions, OpenSSL is no longer required"
+            },
+            {
+                "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Все основные модули библиотек в версии для 1С:Предприятие теперь `КлиентСервер`",
                 "description_en": "All main library modules in the 1C:Enterprise version are now `ClientServer`"
@@ -65,6 +71,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Исправлено применение настроек расширенного вызова в CLI версии",
                 "description_en": "Fixed application of extended call settings in CLI version"                
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Добавлена возможность включения логирования работы внешних компонент для всех библиотек, которые их используют",
+                "description_en": "Added ability to enable external component logging for all libraries that use them"
             },
             {
                 "lib": "All",

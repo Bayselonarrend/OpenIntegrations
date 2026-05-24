@@ -21,14 +21,6 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 Пожалуйста, ознакомьтесь с разделом ["О внешних компонентах"](/docs/Start/Component-requirements) перед началом работы</div>
 </div>
 
-
-<div class="theme-admonition theme-admonition-caution admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--warning">
-
-<img src={require('../../static/img/lock.png').default} class="tipimage" />
-<div class="addin">Для работы этой библиотеки на Linux необходим **OpenSSL 3.x** <br/>
-Узнать больше: <a href="/docs/Start/Component-requirements#openssl" class="orangelink">"Об использовании OpenSSL во внешних компонентах"</a></div>
-</div>
-
 ## О реализованных методах
 
 Данная библиотека состоит из двух частей: основных методов, вроде подключения и выполнения SQL-запросов, и небольшой ORM для часто встречающихся операций, вроде CREATE, SELECT, INSERT, DELETE и пр. Работа через ORM и через тексты запросов, выполняемые функцией `ВыполнитьЗапросSQL()`, технически не отличается: ORM просто формирует текст SQL-запроса на основе макетов, но далее также выполняет их этой функцией
