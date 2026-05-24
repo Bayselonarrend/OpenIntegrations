@@ -69,8 +69,8 @@
             {
                 "lib": "All",
                 "icon": "media/logo.png",
-                "description_ru": "Общая оптимизация инструментария",
-                "description_en": "General tooling optimizations"
+                "description_ru": "Общая оптимизация инструментария и повышение надежности компонент",
+                "description_en": "General tooling and AddIns optimizations"
             }
         ]
     },
