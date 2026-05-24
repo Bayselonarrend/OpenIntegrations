@@ -1,29 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB067182A4A1522B8A0E9",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": true,
-   "quotedMessageId": "3EB00C83AC435810E980B4",
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB012B7BD596B92814CF2",
+  "messageID": "3EB068BFBE5CFA3C323FA6",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -36,11 +13,11 @@
   }
  },
  {
-  "messageID": "3EB091696D0F281B50A4C9",
+  "messageID": "3EB0B072E39FCAFB6E8092",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB012B7BD596B92814CF2",
+   "quotedMessageId": "3EB068BFBE5CFA3C323FA6",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "archive": false,
@@ -48,7 +25,7 @@
   }
  },
  {
-  "messageID": "3EB03DF14E889FEB172C53",
+  "messageID": "3EB027FCF009E9881815F5",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -64,7 +41,7 @@
   }
  },
  {
-  "messageID": "3EB0868D374E713A9AA459",
+  "messageID": "3EB09B868EE5423ECE54C9",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -72,31 +49,31 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB03DF14E889FEB172C53",
+   "quotedMessageId": "3EB027FCF009E9881815F5",
    "archive": false,
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0AC8FA8EB758F685801"
+   "3EB0FEEBA0F306A6E44334"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0A03F1F9CA1F3EA115E"
+    "3EB06D02A8858BC186C212"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB08DF571B415EAFABEEE",
+  "messageID": "3EB07C340DB043F93931A3",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0A03F1F9CA1F3EA115E",
+   "idMessage": "3EB06D02A8858BC186C212",
    "message": "Новый текст сообщения",
    "linkPreview": true,
    "typingTime": null

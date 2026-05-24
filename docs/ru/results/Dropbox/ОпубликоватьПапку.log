@@ -1,13 +1,17 @@
 ﻿{
  ".tag": "complete",
+ "access_inheritance": {
+  ".tag": "inherit"
+ },
  "access_type": {
   ".tag": "owner"
  },
+ "folder_id": "id:kJU6-a-pT48AAAAAAABzNA",
  "is_inside_team_folder": false,
  "is_team_folder": false,
+ "name": "New",
  "path_display": "/New",
  "path_lower": "/new",
- "name": "New",
  "policy": {
   "acl_update_policy": {
    ".tag": "editors"
@@ -19,11 +23,7 @@
    ".tag": "enabled"
   }
  },
- "preview_url": "https://www.dropbox.com/scl/fo/sxbkrg8gbsq8s3ryy3gwi/h?dl=0",
- "shared_folder_id": "14251366579",
- "time_invited": "***",
- "access_inheritance": {
-  ".tag": "inherit"
- },
- "folder_id": "id:kJU6-a-pT48AAAAAAABxKw"
+ "preview_url": "https://www.dropbox.com/scl/fo/bf37d7cqt77v9y7fmmcj5/h?dl=0",
+ "shared_folder_id": "14435438211",
+ "time_invited": "***"
 }
