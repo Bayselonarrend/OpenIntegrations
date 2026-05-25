@@ -68,7 +68,7 @@ Method at API documentation: [Getting delivery intervals (RU)](https://api-docs.
         ```bash
             oint cdek GetAvailableDeliveryIntervals \
               --token "***" \
-              --uuid "044b29b3-d260-422d-8fbe-2d4317b48126" \
+              --uuid "2d8a39c6-14e2-4655-8808-35855e2a7d51" \
               --testapi "***"
         ```
     </TabItem>
@@ -77,7 +77,7 @@ Method at API documentation: [Getting delivery intervals (RU)](https://api-docs.
         ```batch
             oint cdek GetAvailableDeliveryIntervals ^
               --token "***" ^
-              --uuid "044b29b3-d260-422d-8fbe-2d4317b48126" ^
+              --uuid "2d8a39c6-14e2-4655-8808-35855e2a7d51" ^
               --testapi "***"
         ```
     </TabItem>
@@ -88,7 +88,28 @@ Method at API documentation: [Getting delivery intervals (RU)](https://api-docs.
 {
  "date_intervals": [
   {
-   "date": "2026-05-06",
+   "date": "2026-05-27",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2026-06-03",
    "time_intervals": [
     {
      "start_time": "09:00:00",
