@@ -1,4 +1,4 @@
 oint vkteams UnpinMessage \
   --token "***" \
   --chatid "***" \
-  --messageid "7635265882968577098"
+  --messageid "7643833509500442651"

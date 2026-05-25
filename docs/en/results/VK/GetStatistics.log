@@ -2,31 +2,10 @@
  "response": [
   {
    "activity": {
-    "comments": 10
-   },
-   "period_from": 1777680000,
-   "period_to": 1777766399,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "activity": {
     "comments": 3
    },
-   "period_from": 1777593600,
-   "period_to": 1777679999,
+   "period_from": 1779667200,
+   "period_to": 1779753599,
    "reach": {
     "age": [
      {
@@ -51,7 +30,7 @@
      },
      {
       "value": "30-35",
-      "count": 0
+      "count": 1
      },
      {
       "value": "35-45",
@@ -59,14 +38,14 @@
      },
      {
       "value": "45-100",
-      "count": 1
+      "count": 0
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Тула",
-      "value": 146
+      "name": "Москва",
+      "value": 1
      }
     ],
     "countries": [
@@ -145,7 +124,7 @@
      },
      {
       "value": "m;30-35",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;35-45",
@@ -153,7 +132,151 @@
      },
      {
       "value": "m;45-100",
+      "count": 0
+     }
+    ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "activity": {
+    "comments": 8
+   },
+   "period_from": 1779580800,
+   "period_to": 1779667199,
+   "reach": {
+    "age": [
+     {
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
       "count": 1
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 1
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 1
+     },
+     {
+      "value": "45-100",
+      "count": 1
+     }
+    ],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Волгоград",
+      "value": 10
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 4,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 4,
+    "reach": 4,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 2
+     },
+     {
+      "value": "m",
+      "count": 2
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 1
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 0
+     },
+     {
+      "value": "f;45-100",
+      "count": 1
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 1
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 1
+     },
+     {
+      "value": "m;45-100",
+      "count": 0
      }
     ]
    },

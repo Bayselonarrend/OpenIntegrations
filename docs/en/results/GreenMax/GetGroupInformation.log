@@ -1,13 +1,20 @@
 ﻿{
  "chatId": "***",
+ "type": "group",
  "owner": "39888725",
  "subject": "New group",
  "description": "",
- "creation": 1774450403,
+ "creation": 1779719754,
  "groupInviteLink": "***",
  "allowParticipantsAddMembers": true,
  "allowParticipantsEditGroupSettings": true,
  "allowParticipantsPinMessages": true,
+ "allowParticipantsCopyMessages": true,
+ "allowParticipantsChangeAvatar": true,
+ "allowParticipantsCall": true,
+ "isOfficial": false,
+ "isCommentsEnabled": false,
+ "urlAvatar": "",
  "size": 1,
  "participants": [
   {

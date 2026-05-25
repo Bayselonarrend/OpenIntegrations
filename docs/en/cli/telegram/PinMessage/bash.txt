@@ -1,4 +1,4 @@
 oint telegram PinMessage \
   --token "***" \
   --chat "***" \
-  --message "27233"
+  --message "27785"

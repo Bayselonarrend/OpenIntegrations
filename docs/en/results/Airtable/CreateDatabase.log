@@ -1,28 +1,28 @@
 ﻿{
- "id": "appObiPif61PnRF1Z",
+ "id": "apphzbyHIvPaWtdoL",
  "tables": [
   {
-   "id": "tblYKSRNuOtfBCM53",
+   "id": "tbl18wdfQJ0minriD",
    "name": "TestTable",
-   "primaryFieldId": "fld6pwfkAA9nCVsFL",
+   "primaryFieldId": "fldl7KucMiZLoTj53",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fld6pwfkAA9nCVsFL",
+     "id": "fldl7KucMiZLoTj53",
      "name": "Number"
     },
     {
      "type": "richText",
-     "id": "fldMZYf85Ni1P3Qph",
+     "id": "fldQRvi5RVtIRDhJW",
      "name": "String"
     }
    ],
    "views": [
     {
-     "id": "viwQf13rnOgxIV2UU",
+     "id": "viwtceRjefG8Ylr1d",
      "name": "Grid view",
      "type": "grid"
     }

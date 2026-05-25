@@ -1,0 +1,9 @@
+﻿{
+ "logs": [
+  "[2026-05-25 13:58:50.290] Connecting to RCON server 127.0.0.1:25575",
+  "[2026-05-25 13:58:50.310] Connected to RCON server"
+ ],
+ "result": true,
+ "returned": 2,
+ "total": 2
+}

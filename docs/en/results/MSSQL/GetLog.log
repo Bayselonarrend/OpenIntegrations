@@ -1,0 +1,9 @@
+﻿{
+ "logs": [
+  "[2026-05-25 13:55:21.281] Connecting to MSSQL...",
+  "[2026-05-25 13:55:21.298] Connected to MSSQL"
+ ],
+ "result": true,
+ "returned": 2,
+ "total": 2
+}

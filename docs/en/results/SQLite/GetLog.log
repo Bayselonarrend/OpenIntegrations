@@ -1,0 +1,9 @@
+﻿{
+ "logs": [
+  "[2026-05-25 13:56:18.644] Connecting to SQLite (in_memory=false)",
+  "[2026-05-25 13:56:18.645] Connected to SQLite"
+ ],
+ "result": true,
+ "returned": 2,
+ "total": 2
+}
