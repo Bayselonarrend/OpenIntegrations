@@ -77,7 +77,7 @@ Method at API documentation: [GetMessage](https://green-api.com/v3/docs/api/jour
             oint greenmax GetChatMessage \
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
               --chat "***" \
-              --message "2761480287806"
+              --message "115440372143232131"
         ```
     </TabItem>
   
@@ -88,7 +88,7 @@ Method at API documentation: [GetMessage](https://green-api.com/v3/docs/api/jour
             oint greenmax GetChatMessage ^
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
               --chat "***" ^
-              --message "2761480287806"
+              --message "115440372143232131"
         ```
     </TabItem>
 </Tabs>
@@ -97,20 +97,11 @@ Method at API documentation: [GetMessage](https://green-api.com/v3/docs/api/jour
 ```json title="Result"
 {
  "type": "outgoing",
- "idMessage": "2761480287806",
+ "idMessage": "115440372143232131",
  "timestamp": 1761480287,
- "typeMessage": "extendedTextMessage",
+ "typeMessage": "textMessage",
  "chatId": "***",
  "textMessage": "Тест 5",
- "extendedTextMessage": {
-  "text": "Тест 5",
-  "description": "",
-  "title": "",
-  "previewType": "None",
-  "jpegThumbnail": "",
-  "forwardingScore": 0,
-  "isForwarded": false
- },
  "statusMessage": "delivered",
  "sendByApi": "***",
  "deletedMessageId": "",

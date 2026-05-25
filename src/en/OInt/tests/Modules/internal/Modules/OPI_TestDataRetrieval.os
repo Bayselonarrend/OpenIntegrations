@@ -1374,7 +1374,7 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
         Except
 
             Raise DetailErrorDescription(?(IsOneScript
-                , BackgroundJob.ErrorInfo
+                , BackgroundJob.ExceptionInfo
                 , BackgroundJobs.FindByUUID(BackgroundJob.UUID).ErrorInfo));
 
         EndTry;
