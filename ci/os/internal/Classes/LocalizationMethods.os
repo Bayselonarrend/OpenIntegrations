@@ -283,6 +283,8 @@
 	СоответствиеОшибок.Вставить("MakeCopyFile" , "MakeFileCopy");
 	СоответствиеОшибок.Вставить("StrStartWith" , "StrStartsWith");
 	
+	СоответствиеОшибок.Вставить("BackgroundJob.ErrorInfo", "BackgroundJob.ExceptionInfo");
+	
 	ФайлМодуля = Новый Файл(ПутьКМодулю);
 	
 	Если СтрНайти(ФайлМодуля.Имя, ".os") <> 0 Тогда
