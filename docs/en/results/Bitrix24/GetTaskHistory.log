@@ -2,8 +2,8 @@
  "result": {
   "list": [
    {
-    "id": 129408,
-    "createdDate": "2026-05-02T12:03:32+00:00",
+    "id": 131844,
+    "createdDate": "2026-05-25T14:11:19+00:00",
     "field": "NEW",
     "value": {
      "from": null,
@@ -18,12 +18,12 @@
     }
    },
    {
-    "id": 129410,
-    "createdDate": "2026-05-02T12:03:33+00:00",
+    "id": 131846,
+    "createdDate": "2026-05-25T14:11:20+00:00",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1777723412"
+     "to": "1779718279"
     },
     "user": {
      "id": 1,
@@ -34,12 +34,12 @@
     }
    },
    {
-    "id": 129412,
-    "createdDate": "2026-05-02T12:03:33+00:00",
+    "id": 131848,
+    "createdDate": "2026-05-25T14:11:20+00:00",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1777755600"
+     "to": "1779742800"
     },
     "user": {
      "id": 1,
@@ -50,8 +50,8 @@
     }
    },
    {
-    "id": 129424,
-    "createdDate": "2026-05-02T12:03:39+00:00",
+    "id": 131860,
+    "createdDate": "2026-05-25T14:11:26+00:00",
     "field": "TITLE",
     "value": {
      "from": "New task",
@@ -66,8 +66,8 @@
     }
    },
    {
-    "id": 129426,
-    "createdDate": "2026-05-02T12:03:39+00:00",
+    "id": 131862,
+    "createdDate": "2026-05-25T14:11:26+00:00",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -82,8 +82,8 @@
     }
    },
    {
-    "id": 129428,
-    "createdDate": "2026-05-02T12:03:39+00:00",
+    "id": 131864,
+    "createdDate": "2026-05-25T14:11:26+00:00",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -98,8 +98,8 @@
     }
    },
    {
-    "id": 129432,
-    "createdDate": "2026-05-02T12:03:52+00:00",
+    "id": 131868,
+    "createdDate": "2026-05-25T14:11:37+00:00",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
@@ -114,8 +114,8 @@
     }
    },
    {
-    "id": 129436,
-    "createdDate": "2026-05-02T12:03:54+00:00",
+    "id": 131872,
+    "createdDate": "2026-05-25T14:11:39+00:00",
     "field": "STATUS",
     "value": {
      "from": "2",
@@ -130,8 +130,8 @@
     }
    },
    {
-    "id": 129440,
-    "createdDate": "2026-05-02T12:03:57+00:00",
+    "id": 131876,
+    "createdDate": "2026-05-25T14:11:42+00:00",
     "field": "STATUS",
     "value": {
      "from": "6",
@@ -146,8 +146,8 @@
     }
    },
    {
-    "id": 129444,
-    "createdDate": "2026-05-02T12:04:03+00:00",
+    "id": 131880,
+    "createdDate": "2026-05-25T14:11:47+00:00",
     "field": "STATUS",
     "value": {
      "from": "5",
@@ -162,8 +162,8 @@
     }
    },
    {
-    "id": 129448,
-    "createdDate": "2026-05-02T12:04:06+00:00",
+    "id": 131884,
+    "createdDate": "2026-05-25T14:11:49+00:00",
     "field": "STATUS",
     "value": {
      "from": "2",
@@ -178,8 +178,40 @@
     }
    },
    {
-    "id": 129452,
-    "createdDate": "2026-05-02T12:04:12+00:00",
+    "id": 131888,
+    "createdDate": "2026-05-25T14:11:51+00:00",
+    "field": "AUDITORS",
+    "value": {
+     "from": "",
+     "to": "1"
+    },
+    "user": {
+     "id": 1,
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": "",
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": 131892,
+    "createdDate": "2026-05-25T14:11:53+00:00",
+    "field": "AUDITORS",
+    "value": {
+     "from": "1",
+     "to": ""
+    },
+    "user": {
+     "id": 1,
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": "",
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": 131896,
+    "createdDate": "2026-05-25T14:11:55+00:00",
     "field": "STATUS",
     "value": {
      "from": "3",
@@ -196,13 +228,13 @@
   ]
  },
  "time": {
-  "start": 1777723454,
-  "finish": 1777723454.40446,
-  "duration": 0.404459953308106,
+  "start": 1779718318,
+  "finish": 1779718318.09067,
+  "duration": 0.0906729698181152,
   "processing": 0,
-  "date_start": "2026-05-02T12:04:14+00:00",
-  "date_finish": "2026-05-02T12:04:14+00:00",
-  "operating_reset_at": 1777724054,
+  "date_start": "2026-05-25T14:11:58+00:00",
+  "date_finish": "2026-05-25T14:11:58+00:00",
+  "operating_reset_at": 1779718918,
   "operating": 0
  }
 }

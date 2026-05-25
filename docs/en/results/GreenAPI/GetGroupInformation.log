@@ -1,9 +1,9 @@
 ﻿{
- "groupId": "120363422922409230@g.us",
+ "groupId": "120363427236791411@g.us",
  "owner": "***",
  "subject": "New group",
- "creation": 1774450299,
- "subjectTime": 1774450299,
+ "creation": 1779719669,
+ "subjectTime": 1779719669,
  "subjectOwner": "375447830891@c.us",
  "groupInviteLink": "***",
  "ephemeralExpiration": 0,
@@ -17,6 +17,7 @@
   {
    "id": "***",
    "lid": "78714469634134@lid",
+   "phoneNumber": "***",
    "isAdmin": true,
    "isSuperAdmin": true
   }

@@ -2,19 +2,12 @@
  "ok": true,
  "messages": [
   {
-   "subtype": "channel_leave",
-   "user": "U06UABH3APP",
-   "text": "<@U06UABH3APP> has left the channel",
-   "type": "message",
-   "ts": "1777723157.100239"
-  },
-  {
    "subtype": "channel_join",
    "user": "U06UABH3APP",
    "text": "<@U06UABH3APP> has joined the channel",
    "inviter": "***",
    "type": "message",
-   "ts": "1777723155.927979"
+   "ts": "1779718030.687369"
   },
   {
    "subtype": "channel_purpose",
@@ -22,7 +15,7 @@
    "purpose": "TestGoal",
    "text": "set the channel description: TestGoal",
    "type": "message",
-   "ts": "1777723152.868149"
+   "ts": "1779718028.427219"
   },
   {
    "subtype": "channel_topic",
@@ -30,14 +23,14 @@
    "topic": "TestTopic",
    "text": "set the channel topic: TestTopic",
    "type": "message",
-   "ts": "1777723151.741989"
+   "ts": "1779718027.295839"
   },
   {
    "subtype": "channel_join",
    "user": "U06UG1CAYH2",
    "text": "<@U06UG1CAYH2> has joined the channel",
    "type": "message",
-   "ts": "1777723150.371529"
+   "ts": "1779718026.003619"
   }
  ],
  "has_more": false,

@@ -1,5 +1,5 @@
 oint airtable GetComments \
   --token "***" \
-  --base "appObiPif61PnRF1Z" \
-  --table "tblRMa4KIpkMbxftU" \
-  --record "rec10Tq2RaPBgYzWS"
+  --base "apphzbyHIvPaWtdoL" \
+  --table "tblth2sLd0GjcTxKs" \
+  --record "rec6U5Yls6rbnmulk"
