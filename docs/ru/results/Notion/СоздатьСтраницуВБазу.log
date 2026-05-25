@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "36a82aa7-fc4e-81ea-ba0d-c15da3557d18",
- "created_time": "2026-05-24T16:56:00Z",
- "last_edited_time": "2026-05-24T16:56:00Z",
+ "id": "36b82aa7-fc4e-81df-bcc9-d5bbd6013ba7",
+ "created_time": "2026-05-25T04:02:00Z",
+ "last_edited_time": "2026-05-25T04:02:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,34 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "36a82aa7-fc4e-81f5-8a07-dd0ea6dddbbf"
+  "database_id": "36b82aa7-fc4e-81e4-a8e7-e03fc81072a6"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "Активен": {
+   "id": "B%7Bti",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Пользователь": {
+   "id": "CfuK",
+   "type": "people",
+   "people": []
+  },
+  "Номер": {
+   "id": "GGK~",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "MO%7DK",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
   "Почта": {
-   "id": "%3CJku",
+   "id": "MlH%7B",
    "type": "rich_text",
    "rich_text": [
     {
@@ -44,36 +64,21 @@
     }
    ]
   },
-  "Статус": {
-   "id": "%40b%3DY",
-   "type": "select",
-   "select": {
-    "id": "23edcb73-e67c-46d7-8dee-e10638de08b6",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Дата создания": {
-   "id": "M%7D%3FM",
-   "type": "date",
-   "date": {
-    "start": "2026-05-24T04:56:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Телефон": {
-   "id": "SxNh",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Номер": {
-   "id": "W%3C~b",
-   "type": "number",
-   "number": 1
+  "Картинка": {
+   "id": "NB%5BN",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
   },
   "Описание": {
-   "id": "XfZk",
+   "id": "TqpJ",
    "type": "rich_text",
    "rich_text": [
     {
@@ -95,28 +100,23 @@
     }
    ]
   },
-  "Картинка": {
-   "id": "_%3D%5EP",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Статус": {
+   "id": "%5DYtR",
+   "type": "select",
+   "select": {
+    "id": "2ddd3641-8adb-46bc-9b71-2310768ce9fd",
+    "name": "Новый",
+    "color": "green"
+   }
   },
-  "Пользователь": {
-   "id": "bpM%5E",
-   "type": "people",
-   "people": []
-  },
-  "Активен": {
-   "id": "mLjf",
-   "type": "checkbox",
-   "checkbox": true
+  "Дата создания": {
+   "id": "%7BThO",
+   "type": "date",
+   "date": {
+    "start": "2026-05-25T04:02:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://www.notion.so/36a82aa7fc4e81eaba0dc15da3557d18",
+ "url": "https://www.notion.so/36b82aa7fc4e81dfbcc9d5bbd6013ba7",
  "public_url": null,
  "archived": false,
- "request_id": "59007a72-8aed-496a-9e50-127b851aaaa7"
+ "request_id": "883284d7-a252-4294-9eaa-ad1bc596b839"
 }

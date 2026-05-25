@@ -313,13 +313,13 @@
   "files": []
  },
  "time": {
-  "start": 1779642160,
-  "finish": 1779642160.70478,
-  "duration": 0.704782009124756,
+  "start": 1779682139,
+  "finish": 1779682139.48205,
+  "duration": 0.482045888900757,
   "processing": 0,
-  "date_start": "2026-05-24T17:02:40+00:00",
-  "date_finish": "2026-05-24T17:02:40+00:00",
-  "operating_reset_at": 1779642760,
-  "operating": 0.28226900100708
+  "date_start": "2026-05-25T04:08:59+00:00",
+  "date_finish": "2026-05-25T04:08:59+00:00",
+  "operating_reset_at": 1779682739,
+  "operating": 0
  }
 }
