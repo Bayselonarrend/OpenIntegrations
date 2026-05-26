@@ -1,11 +1,9 @@
 ﻿{
  "logs": [
-  "[2026-05-26 16:20:22.765] Connecting to SQLite (in_memory=false)",
-  "[2026-05-26 16:20:22.766] Connected to SQLite",
-  "[2026-05-26 16:20:22.767] Execute query (params=0, force_result=false): SELECT 1 AS n",
-  "[2026-05-26 16:20:22.767] Query returned 1 row(s)"
+  "[2026-05-26 17:36:02.564] Connecting to SQLite (in_memory=false)",
+  "[2026-05-26 17:36:02.564] Connected to SQLite"
  ],
  "result": true,
- "returned": 4,
- "total": 4
+ "returned": 2,
+ "total": 2
 }

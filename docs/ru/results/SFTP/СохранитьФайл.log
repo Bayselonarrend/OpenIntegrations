@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/r4ahndoc.a1a.bin",
- "result": true
+ "filepath": "/tmp/kgkk3guy.n25.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

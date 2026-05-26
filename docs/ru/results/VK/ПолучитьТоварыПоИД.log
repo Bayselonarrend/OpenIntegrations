@@ -14,7 +14,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 13172253,
+    "id": 13172469,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -58,8 +58,8 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1779811698,
-      "id": 1684,
+      "date": 1779815480,
+      "id": 1702,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -143,8 +143,8 @@
      },
      {
       "album_id": -53,
-      "date": 1779811701,
-      "id": 1685,
+      "date": 1779815483,
+      "id": 1703,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -228,8 +228,8 @@
      },
      {
       "album_id": -53,
-      "date": 1779811703,
-      "id": 1686,
+      "date": 1779815485,
+      "id": 1704,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -237,67 +237,67 @@
         "height": 40,
         "type": "s",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 90,
         "type": "m",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 360,
         "type": "x",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 607,
         "type": "y",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 720,
         "type": "z",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 1080,
         "type": "w",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 61,
         "type": "o",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 135,
         "type": "p",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 202,
         "type": "q",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 304,
         "type": "r",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        },
        {
         "height": 1080,
         "type": "base",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5..."
        }
       ],
       "text": "",
@@ -307,7 +307,7 @@
       "orig_photo": {
        "height": 1080,
        "type": "base",
-       "url": "https://sun9-11.userapi.com/s/v1/ig2/ioHhsKLg9JL8dUGrwVPgtsXOPBg2-7aur93WNaX5ABe9Ujq_tgK1JNCimaIbg5k...",
+       "url": "https://sun9-11.userapi.com/s/v1/ig2/pKXDUDmi9l7WH5_NbCNAcB7ztqjEzwhlz1iLzDHQ4KmLb868oeWdsxqyFl46Pb5...",
        "width": "***"
       }
      }
@@ -330,9 +330,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 11226,
+        "variant_id": 11232,
         "name": "Новое имя варианта",
-        "item_id": 13172253,
+        "item_id": 13172469,
         "is_selected": true
        }
       ]
@@ -351,10 +351,10 @@
     "can_recover": false,
     "can_show_convert_to_service": true,
     "promotion": {
-     "is_available": false
+     "is_available": true
     },
     "labels": [],
-    "date": 1779811703,
+    "date": 1779815485,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -362,37 +362,20 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 11226,
+      "variant_id": 11232,
       "variant_name": "Новое имя варианта",
       "property_name": "Цвет (изм.)"
      }
     ],
     "cart_quantity": 0,
     "sku": "12345",
-    "reject_info": {
-     "title": "Отредактируйте товар, чтобы опубликовать в Маркете ВКонтакте",
-     "description": "Товар отклонён. Чтобы добавить его в «Маркет», укажите реальную цену товара или стоимость оказания у...",
-     "moderation_status": 2,
-     "info_link": "[https://vk.com/faq20323|Правила Маркета ВКонтакте]",
-     "write_to_support_link": "https://vk.com/im?media=&sel=-215808305&ref=ProductId%3D-218861756_13172253",
-     "in_progress": false,
-     "buttons": [
-      {
-       "type": "market_edit",
-       "url": "https://vk.ru/app7702617#owner_id=-218861756&item_id=13172253&type=market"
-      },
-      {
-       "type": "market_delete"
-      }
-     ]
-    },
     "item_rating": {
      "rating": 0,
      "reviews_count": 0,
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-13172253"
+    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-13172469"
    },
    {
     "availability": 0,
@@ -406,7 +389,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 13172254,
+    "id": 13172470,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -450,8 +433,8 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1779811706,
-      "id": 1687,
+      "date": 1779815489,
+      "id": 1705,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -535,8 +518,8 @@
      },
      {
       "album_id": -53,
-      "date": 1779811710,
-      "id": 1688,
+      "date": 1779815492,
+      "id": 1706,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -620,8 +603,8 @@
      },
      {
       "album_id": -53,
-      "date": 1779811711,
-      "id": 1689,
+      "date": 1779815494,
+      "id": 1707,
       "owner_id": -218861756,
       "access_key": "***",
       "sizes": [
@@ -629,67 +612,67 @@
         "height": 40,
         "type": "s",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 90,
         "type": "m",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 360,
         "type": "x",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 607,
         "type": "y",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 720,
         "type": "z",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 1080,
         "type": "w",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 61,
         "type": "o",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 135,
         "type": "p",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 202,
         "type": "q",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 304,
         "type": "r",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        },
        {
         "height": 1080,
         "type": "base",
         "width": "***",
-        "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K..."
+        "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16..."
        }
       ],
       "text": "",
@@ -699,7 +682,7 @@
       "orig_photo": {
        "height": 1080,
        "type": "base",
-       "url": "https://sun9-11.userapi.com/s/v1/ig2/UP-cB1srSZh-niEo7QvKHVL_S8uXPodclfrtNjmcbB4OpbnKU3DIH6HEiEmxE5K...",
+       "url": "https://sun9-11.userapi.com/s/v1/ig2/Oa6zfo7m4FoJlyFNqk6LSFuTJpHnhHyHUFScoLc0My9yrNUry6Ks-o7BWdNEr16...",
        "width": "***"
       }
      }
@@ -722,9 +705,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 11227,
+        "variant_id": 11233,
         "name": "Синий",
-        "item_id": 13172254,
+        "item_id": 13172470,
         "is_selected": true
        }
       ]
@@ -746,7 +729,7 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1779811712,
+    "date": 1779815494,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -754,7 +737,7 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 11227,
+      "variant_id": 11233,
       "variant_name": "Синий",
       "property_name": "Цвет (изм.)"
      }
@@ -767,7 +750,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-13172254"
+    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-13172470"
    }
   ]
  }
