@@ -130,7 +130,7 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint mssql ВыполнитьЗапросSQL \
-              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" \
+              --sql "SELECT 1 AS n" \
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
               --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
@@ -141,7 +141,7 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint mssql ВыполнитьЗапросSQL ^
-              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
+              --sql "SELECT 1 AS n" ^
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
               --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
@@ -154,15 +154,15 @@ import Admonition from '@theme/Admonition';
  "data": [
   {
    "Age": 20,
-   "BirthDate": "2026-05-25",
-   "CreatedAt": "2026-05-25T03:55:30",
+   "BirthDate": "2026-05-26",
+   "CreatedAt": "2026-05-26T17:34:54",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "28f02da5-4a4c-45c8-b251-3daddf9f026b",
+   "RowGuid": "d5aeb742-0e8e-428d-8673-ab460106828c",
    "Salary": 10.3
   }
  ],

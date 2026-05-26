@@ -68,8 +68,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-05-02T00:00:00" \
-              --dateto "2026-05-02T23:59:59" \
+              --datefrom "2026-05-26T00:00:00" \
+              --dateto "2026-05-26T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -79,8 +79,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-05-02T00:00:00" ^
-              --dateto "2026-05-02T23:59:59" ^
+              --datefrom "2026-05-26T00:00:00" ^
+              --dateto "2026-05-26T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -91,8 +91,11 @@ import Admonition from '@theme/Admonition';
 {
  "response": [
   {
-   "period_from": 1779667200,
-   "period_to": 1779753599,
+   "activity": {
+    "comments": 11
+   },
+   "period_from": 1779753600,
+   "period_to": 1779839999,
    "reach": {
     "age": [
      {
@@ -117,7 +120,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "35-45",
@@ -125,14 +128,14 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "45-100",
-      "count": 0
+      "count": 1
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Москва",
-      "value": 1
+      "name": "Выборг",
+      "value": 177
      }
     ],
     "countries": [
@@ -211,7 +214,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "m;30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "m;35-45",
@@ -219,7 +222,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "m;45-100",
-      "count": 0
+      "count": 1
      }
     ]
    },
@@ -233,10 +236,7 @@ import Admonition from '@theme/Admonition';
   },
   {
    "activity": {
-    "comments": 8
+    "comments": 3
    },
-   "period_from": 1779580800,
-   "period_to": 1779667199,
-   "reach": {
 ...
 ```
