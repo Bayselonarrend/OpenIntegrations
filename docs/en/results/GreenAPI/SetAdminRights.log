@@ -1,6 +1,6 @@
 ﻿{
  "statusCode": 400,
- "timestamp": "2026-05-25T14:34:44.288Z",
+ "timestamp": "2026-05-26T09:15:59.41Z",
  "path": "/waInstance7105187566/setGroupAdmin/425010d90e114aa6b78f0969e1e67ec62579d30401c84d5183",
  "message": "Validation failed. Details: 'chatId': invalid phone number",
  "setGroupAdmin": true

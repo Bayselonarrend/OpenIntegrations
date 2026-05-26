@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "58bfa866-1741-4ff9-8d3e-6197bb3975bd",
- "data": "/tmp/132goyoq.qj1.json",
+ "id": "35fe0922-af0b-41b6-a034-2eaea077819d",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {

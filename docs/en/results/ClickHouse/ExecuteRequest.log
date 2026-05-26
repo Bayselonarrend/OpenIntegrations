@@ -24,17 +24,17 @@
   ],
   "rows": 2,
   "statistics": {
-   "elapsed": 0.000649682,
+   "elapsed": 0.001117231,
    "rows_read": 2,
    "bytes_read": 44
   }
  },
  "headers": {
-  "Date": "Mon, 25 May 2026 14:41:56 GMT",
+  "Date": "Tue, 26 May 2026 09:20:36 GMT",
   "Connection": "Keep-Alive",
   "X-ClickHouse-Server-Display-Name": "clickhouse",
   "Transfer-Encoding": "chunked",
-  "X-ClickHouse-Query-Id": "bf31512e-bc72-4d33-830b-448bf8b51799",
+  "X-ClickHouse-Query-Id": "a80b4b84-ce33-49ab-a9a2-32baab4d9ee3",
   "X-ClickHouse-Format": "JSON",
   "X-ClickHouse-Timezone": "Europe/Moscow",
   "Keep-Alive": "timeout=3",
