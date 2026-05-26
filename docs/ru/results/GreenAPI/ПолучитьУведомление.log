@@ -2,47 +2,31 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0831F8FC76909FE95E8",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1779718482,
+  "timestamp": 1779786967,
+  "idMessage": "3EB0E8771BEC4519AB5E6D",
   "senderData": {
    "chatId": "***",
+   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***",
-   "chatName": "***"
+   "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "quotedMessage": {
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    },
-    "stanzaId": "3EB03735669399159EA613",
-    "participant": "1234567890@c.us"
-   },
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "description": "",
-    "title": "",
-    "previewType": "None",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/a00784f7-16e2-47ab-b342-ebbb21f53e02...",
+    "caption": "File description",
+    "fileName": "a00784f7-16e2-47ab-b342-ebbb21f53e02.jpg",
     "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
-    "isForwarded": false,
-    "stanzaId": "3EB03735669399159EA613",
-    "participant": "1234567890@c.us"
+    "isForwarded": false
    }
   }
  }
