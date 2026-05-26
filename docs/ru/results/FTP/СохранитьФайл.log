@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/y1xhhrul.acr.bin",
- "result": true
+ "filepath": "/tmp/b1omkdyj.50z.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

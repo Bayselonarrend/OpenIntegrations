@@ -2,45 +2,31 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB099CC624DC3C5983E51",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1779786971,
+  "timestamp": 1779786974,
+  "idMessage": "3EB0448C11B4EC0DBE67AD",
   "senderData": {
    "chatId": "***",
+   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***",
-   "chatName": "***"
+   "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "videoMessage",
-   "quotedMessage": {
-    "downloadUrl": "",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
     "caption": "File description",
-    "fileName": "",
+    "fileName": "picture.jpg",
     "jpegThumbnail": "",
     "isAnimated": false,
     "mimeType": "image/jpeg",
     "forwardingScore": 0,
-    "isForwarded": false,
-    "typeMessage": "imageMessage",
-    "stanzaId": "3EB0E8771BEC4519AB5E6D",
-    "participant": "1234567890@c.us"
-   },
-   "fileMessageData": {
-    "downloadUrl": "",
-    "caption": "File description",
-    "fileName": "",
-    "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB...",
-    "isAnimated": false,
-    "mimeType": "video/mp4",
-    "forwardingScore": 0,
-    "isForwarded": false,
-    "videoNote": false
+    "isForwarded": false
    }
   }
  }
