@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10740",
+   "id": "10750",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-05-25T14:11:19+00:00",
+   "createdDate": "2026-05-26T08:55:26+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2026-05-25T14:11:26+00:00",
+   "changedDate": "2026-05-26T08:55:30+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-05-25T14:11:26+00:00",
+   "activityDate": "2026-05-26T08:55:30+00:00",
    "dateStart": null,
-   "deadline": "2026-05-26T14:11:00+00:00",
-   "startDatePlan": "2026-05-25T14:11:19+00:00",
-   "endDatePlan": "2026-05-25T21:00:00+00:00",
-   "guid": "{ce05b91b-74b2-4049-8b93-0457edc6108d}",
+   "deadline": "2026-05-27T08:55:00+00:00",
+   "startDatePlan": "2026-05-26T08:55:26+00:00",
+   "endDatePlan": "2026-05-26T21:00:00+00:00",
+   "guid": "{5b8f00bc-ffc2-4526-b9c7-7e23d73f8a22}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-05-25T14:11:26+00:00",
+   "statusChangedDate": "2026-05-26T08:55:30+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1779718286,
-  "finish": 1779718286.35131,
-  "duration": 0.351310968399048,
+  "start": 1779785730,
+  "finish": 1779785730.37916,
+  "duration": 0.379158020019531,
   "processing": 0,
-  "date_start": "2026-05-25T14:11:26+00:00",
-  "date_finish": "2026-05-25T14:11:26+00:00",
-  "operating_reset_at": 1779718886,
-  "operating": 0.171084880828857
+  "date_start": "2026-05-26T08:55:30+00:00",
+  "date_finish": "2026-05-26T08:55:30+00:00",
+  "operating_reset_at": 1779786330,
+  "operating": 0.197366952896118
  }
 }
