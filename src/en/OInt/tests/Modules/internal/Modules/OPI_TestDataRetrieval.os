@@ -1370,7 +1370,7 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
             , Result["BackgroundJob"]);
 
         Try
-            BackgroundJob.WaitForCompletion();
+            BackgroundJob.Wait();
         Except
 
             Raise DetailErrorDescription(?(IsOneScript
