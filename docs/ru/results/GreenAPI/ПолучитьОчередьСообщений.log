@@ -1,51 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB06DFFCE4C1A0B2A7FCC",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": false,
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB03BD3897B39D5039DD8",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": true,
-   "quotedMessageId": "3EB06DFFCE4C1A0B2A7FCC",
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB015FC1F3FD4309765B8",
+  "messageID": "3EB05EAD23167DB9D3DC38",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -58,11 +13,11 @@
   }
  },
  {
-  "messageID": "3EB07F53B206C7CED3E149",
+  "messageID": "3EB007BA5BF9B936BD5033",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB015FC1F3FD4309765B8",
+   "quotedMessageId": "3EB05EAD23167DB9D3DC38",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "archive": false,
@@ -70,7 +25,7 @@
   }
  },
  {
-  "messageID": "3EB0C676D808072DAB2733",
+  "messageID": "3EB084002A260983D77293",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -86,7 +41,7 @@
   }
  },
  {
-  "messageID": "3EB03E8E440856E11DDC35",
+  "messageID": "3EB0EA360B6EFE8A007B2D",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -94,31 +49,31 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB0C676D808072DAB2733",
+   "quotedMessageId": "3EB084002A260983D77293",
    "archive": false,
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB01E3D8B5E3EBCAFCA01"
+   "3EB0AF33E78C89E834AF9B"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB08BE3BC8653D9A4C0B1"
+    "3EB07260FD65849308F6B1"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB01AAF9ED677CCFBA890",
+  "messageID": "3EB0FA3622636E7F647016",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB08BE3BC8653D9A4C0B1",
+   "idMessage": "3EB07260FD65849308F6B1",
    "message": "Новый текст сообщения",
    "linkPreview": true,
    "typingTime": null

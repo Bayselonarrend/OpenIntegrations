@@ -1,6 +1,258 @@
 ﻿[
  {
   "type": "outgoing",
+  "idMessage": "3EB0A7ACC2E0D6C5CD9F09",
+  "timestamp": 1779814476,
+  "typeMessage": "pollMessage",
+  "chatId": "***",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0B3D98CF115933EAA09",
+  "timestamp": 1779814476,
+  "typeMessage": "pollMessage",
+  "chatId": "***",
+  "pollMessageData": {
+   "name": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB064201383D11FEE8692",
+  "timestamp": 1779814475,
+  "typeMessage": "videoMessage",
+  "chatId": "***",
+  "downloadUrl": "",
+  "caption": "Описание файла",
+  "fileName": "",
+  "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB...",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "3EB06359BC68079A5FD1F1",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "",
+   "caption": "Описание файла",
+   "fileName": "",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB06359BC68079A5FD1F1",
+  "timestamp": 1779814472,
+  "typeMessage": "imageMessage",
+  "chatId": "***",
+  "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+  "caption": "Описание файла",
+  "fileName": "picture.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0DFDBBCAAD273321066",
+  "timestamp": 1779814471,
+  "typeMessage": "deletedMessage",
+  "chatId": "***",
+  "deletedMessageData": {
+   "stanzaId": "3EB07260FD65849308F6B1"
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***"
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0E34EC2987AC1866107",
+  "timestamp": 1779814468,
+  "typeMessage": "videoMessage",
+  "chatId": "***",
+  "downloadUrl": "",
+  "caption": "Описание файла",
+  "fileName": "",
+  "jpegThumbnail": "/9j/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB...",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "quotedMessage": {
+   "stanzaId": "3EB0A3DE0C12F5590DC2B0",
+   "participant": "1234567890@c.us",
+   "typeMessage": "imageMessage",
+   "downloadUrl": "",
+   "caption": "Описание файла",
+   "fileName": "",
+   "jpegThumbnail": "",
+   "mimeType": "image/jpeg",
+   "isAnimated": false,
+   "isForwarded": false,
+   "forwardingScore": 0,
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "videoNote": false,
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0A3DE0C12F5590DC2B0",
+  "timestamp": 1779814466,
+  "typeMessage": "imageMessage",
+  "chatId": "***",
+  "downloadUrl": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/44772d4e-40b6-4620-8c40-09b846da5bf5...",
+  "caption": "Описание файла",
+  "fileName": "44772d4e-40b6-4620-8c40-09b846da5bf5.jpg",
+  "jpegThumbnail": "",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0BF850EF97E075248C5",
+  "timestamp": 1779814463,
+  "typeMessage": "quotedMessage",
+  "chatId": "***",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "stanzaId": "3EB07260FD65849308F6B1",
+   "participant": "1234567890@c.us"
+  },
+  "quotedMessage": {
+   "stanzaId": "3EB07260FD65849308F6B1",
+   "participant": "1234567890@c.us",
+   "typeMessage": "extendedTextMessage",
+   "textMessage": "Новое сообщение",
+   "extendedTextMessage": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   },
+   "editedMessageId": "",
+   "deletedMessageId": "",
+   "isEdited": false,
+   "isDeleted": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB07260FD65849308F6B1",
+  "timestamp": 1779814462,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "***",
+  "textMessage": "Новое сообщение",
+  "extendedTextMessage": {
+   "text": "Новое сообщение",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "sent",
+  "sendByApi": "***",
+  "deletedMessageId": "3EB0DFDBBCAAD273321066",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": true
+ },
+ {
+  "type": "outgoing",
   "idMessage": "3EB0771447C3C127BB15CE",
   "timestamp": 1779810001,
   "typeMessage": "videoMessage",
