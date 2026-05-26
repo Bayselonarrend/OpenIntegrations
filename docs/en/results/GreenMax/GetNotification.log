@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1779718652,
-  "idMessage": "1779718651227",
+  "timestamp": 1779794202,
+  "idMessage": "1779794201270",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -20,8 +20,8 @@
   "messageData": {
    "typeMessage": "imageMessage",
    "fileMessageData": {
-    "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/29a6e554-9439-4a71-ac4d-5c01d17d9cf4.jpg",
-    "caption": "Описание файла",
+    "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/294f57b4-33f7-4b55-a019-0b471b2b5084.jpg",
+    "caption": "File description",
     "fileName": "photo.jpg",
     "jpegThumbnail": "UklGRiIBAABXRUJQVlA4IBYBAADQCACdASoyACYAP3Guy2E0rKglqBVZypAuCUAZXgDDgZvlC9W+/2dNt9X9heotrVGtU5fk+sPA...",
     "isAnimated": false,

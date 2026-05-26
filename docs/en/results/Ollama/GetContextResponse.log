@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-05-26T09:18:09.559437Z",
+ "created_at": "2026-05-26T12:41:56.3296831Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to specific information about a particular product or service. However, accordi..."
+  "content": "The first version of 1C:Enterprise was released in 1987. However, it took several years for the soft..."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 2425105700,
- "load_duration": 32465700,
- "prompt_eval_count": 185,
- "prompt_eval_duration": 541018300,
- "eval_count": 120,
- "eval_duration": 1799836700
+ "total_duration": 2222402200,
+ "load_duration": 29933500,
+ "prompt_eval_count": 172,
+ "prompt_eval_duration": 281925500,
+ "eval_count": 115,
+ "eval_duration": 1869200800
 }

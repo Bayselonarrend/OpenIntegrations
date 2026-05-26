@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB064AEDBED3898290291",
+  "messageID": "3EB0AD0C9137D726C58DC2",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -22,7 +22,7 @@
   }
  },
  {
-  "messageID": "3EB00DC7D72285F4160FDC",
+  "messageID": "3EB08C64E86EDE0FAB76DE",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -39,13 +39,13 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB064AEDBED3898290291",
+   "quotedMessageId": "3EB0AD0C9137D726C58DC2",
    "archive": false,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB080BEDC54EC422FFF26",
+  "messageID": "3EB0D925AD7368B90F227C",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -58,11 +58,11 @@
   }
  },
  {
-  "messageID": "3EB075A7CBA8DD25FFD3AF",
+  "messageID": "3EB08D9AF4438BBC24F618",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB080BEDC54EC422FFF26",
+   "quotedMessageId": "3EB0D925AD7368B90F227C",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "archive": false,
@@ -70,7 +70,7 @@
   }
  },
  {
-  "messageID": "3EB04FA1C8A466FA88ED2F",
+  "messageID": "3EB0557731F5B2AFDA986A",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -86,7 +86,7 @@
   }
  },
  {
-  "messageID": "3EB00C7842268F69C8C9BD",
+  "messageID": "3EB0C61DE154CF82D13316",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -94,31 +94,31 @@
     "phoneContact": "***",
     "company": "Bicycle"
    },
-   "quotedMessageId": "3EB04FA1C8A466FA88ED2F",
+   "quotedMessageId": "3EB0557731F5B2AFDA986A",
    "archive": false,
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0D3104FAECB8FD0A0A6"
+   "3EB0163A3EBAF1B5B92C65"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB006A4732C7A61BFA05F"
+    "3EB01379DFAF0B169D51A3"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0772D8C491749E62E86",
+  "messageID": "3EB0FBF2C908CC3364D3E9",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB006A4732C7A61BFA05F",
+   "idMessage": "3EB01379DFAF0B169D51A3",
    "message": "New message text",
    "linkPreview": true,
    "typingTime": null
