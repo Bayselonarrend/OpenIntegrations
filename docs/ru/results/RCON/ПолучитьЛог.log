@@ -1,8 +1,8 @@
 ﻿{
  "logs": [
-  "[2026-05-25 03:56:51.349] Connecting to RCON server 127.0.0.1:25575",
-  "[2026-05-25 03:56:51.360] Connected to RCON server",
-  "[2026-05-25 03:56:51.361] Execute command: list"
+  "[2026-05-26 12:59:45.786] Connecting to RCON server 127.0.0.1:25575",
+  "[2026-05-26 12:59:45.790] Connected to RCON server",
+  "[2026-05-26 12:59:45.791] Execute command: list"
  ],
  "result": true,
  "returned": 3,
