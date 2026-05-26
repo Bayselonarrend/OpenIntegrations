@@ -70,7 +70,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "a437d9ec-44b4-4af9-9386-fa3598882ed2" \
+              --uuid "a0a87b1c-8f4f-4d3c-bbbc-1fa865927847" \
               --testapi "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "a437d9ec-44b4-4af9-9386-fa3598882ed2" ^
+              --uuid "a0a87b1c-8f4f-4d3c-bbbc-1fa865927847" ^
               --testapi "***"
         ```
     </TabItem>
@@ -89,10 +89,11 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "eb3d884a-a0ab-4ba5-99d1-060defe0abb6",
-  "cdek_number": "1108955868",
-  "order_uuid": "c3fa1a77-e630-4c01-8b5b-b0f46a5325db",
-  "intake_date": "2026-05-26",
+  "uuid": "a0a87b1c-8f4f-4d3c-bbbc-1fa865927847",
+  "cdek_number": "1109161931",
+  "order_uuid": "8f96b645-420c-4920-90c1-c9ec9a9bb375",
+  "intake_date": "2026-05-27",
+  "intake_number": "13312120",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -103,10 +104,11 @@ import Admonition from '@theme/Admonition';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -125,17 +127,40 @@ import Admonition from '@theme/Admonition';
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-05-26T18:02:32+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-05-26T18:02:32+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-25T04:13:36+00:00"
+    "date_time": "2026-05-26T18:02:32+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "312957cd-4755-457f-ba1d-9d48fa31b08e",
+    "package_id": "3234992a-d2b6-4588-b082-79bb52683aa8",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,10 +170,10 @@ import Admonition from '@theme/Admonition';
  },
  "requests": [
   {
-   "request_uuid": "da793bff-388c-449a-b766-54bd4df92112",
+   "request_uuid": "25d78dd7-1526-49cd-9fb8-3da1d9bbb89a",
    "type": "CREATE",
-   "date_time": "2026-05-25T04:13:35+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-05-26T18:02:31+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }

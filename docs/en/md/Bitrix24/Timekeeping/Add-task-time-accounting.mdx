@@ -90,11 +90,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 AddTaskTimeAccounting \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "10746" \
+              --task "10806" \
               --amount 7200 \
               --user 10 \
               --text "Time spent on work" \
-              --date "2026-04-25T14:14:00" \
+              --date "2026-04-26T14:12:55" \
               --token "***"
         ```
     </TabItem>
@@ -103,11 +103,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 AddTaskTimeAccounting ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "10746" ^
+              --task "10806" ^
               --amount 7200 ^
               --user 10 ^
               --text "Time spent on work" ^
-              --date "2026-04-25T14:14:00" ^
+              --date "2026-04-26T14:12:55" ^
               --token "***"
         ```
     </TabItem>
@@ -116,16 +116,16 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
- "result": 4006,
+ "result": 4030,
  "time": {
-  "start": 1779718440,
-  "finish": 1779718440.9647,
-  "duration": 0.964699983596802,
+  "start": 1779804775,
+  "finish": 1779804775.71514,
+  "duration": 0.715145111083984,
   "processing": 0,
-  "date_start": "2026-05-25T14:14:00+00:00",
-  "date_finish": "2026-05-25T14:14:00+00:00",
-  "operating_reset_at": 1779719040,
-  "operating": 0
+  "date_start": "2026-05-26T14:12:55+00:00",
+  "date_finish": "2026-05-26T14:12:55+00:00",
+  "operating_reset_at": 1779805375,
+  "operating": 0.113924980163574
  }
 }
 ```
