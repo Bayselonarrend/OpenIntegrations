@@ -49,6 +49,7 @@
   <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/ZeroMQ/"><img src="media/ZeroMQ.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
     <a href="https://openintegrations.dev/docs/Instructions/WebSocket/"><img src="media/WebSocket.png" width="40"></a>
