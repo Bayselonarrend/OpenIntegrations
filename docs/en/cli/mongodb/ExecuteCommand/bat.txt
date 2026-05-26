@@ -1,4 +1,4 @@
 oint mongodb ExecuteCommand ^
   --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
   --comm "listDatabases" ^
-  --data "/tmp/emzdbop4.3yl.json"
+  --data "/tmp/t4qow4nl.ioj.json"

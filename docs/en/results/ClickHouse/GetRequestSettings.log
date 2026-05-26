@@ -1,11 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "d67fed2d-f9bc-4fc6-af6f-eaa54cc95d31",
- "data": {
-  "meta": [],
-  "data": []
- },
+ "id": "1709886d-a89b-4082-8a58-1d95215b9a80",
+ "data": "/tmp/dssxnoni.ase.json",
  "format": "CSV",
  "external_tables": [
   {

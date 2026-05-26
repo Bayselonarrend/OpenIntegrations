@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/5udr50ad.axg.bin",
- "result": true
+ "filepath": "/tmp/rlni04mo.4lw.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

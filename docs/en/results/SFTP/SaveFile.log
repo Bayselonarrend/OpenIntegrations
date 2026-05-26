@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\askydz5w.dbd.bin",
- "result": true
+ "filepath": "/tmp/mj0svjpq.wwn.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

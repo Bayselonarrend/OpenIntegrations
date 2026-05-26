@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3559595211878046\"",
- "id": "kt88paf7si5panma8ah6v5duds",
+ "etag": "\"3559608372255934\"",
+ "id": "1fbgednhburavkoh3qor3mi30c",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=a3Q4OHBhZjdzaTVwYW5tYThhaDZ2NWR1ZHMgZWQwYzM5MGQzZmNhNjk3Zm...",
- "created": "2026-05-26T12:13:25Z",
- "updated": "2026-05-26T12:13:25.939Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=MWZiZ2VkbmhidXJhdmtvaDNxb3IzbWkzMGMgMmUyYTA4OGFmMDVjMWQ4OG...",
+ "created": "2026-05-26T14:03:06Z",
+ "updated": "2026-05-26T14:03:06.127Z",
  "summary": "New event",
  "description": "TestEventDescription",
  "location": "InOffice",
@@ -13,19 +13,19 @@
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "ed0c390d3fca697fa23d3c429a31d6d7cd8a3bb3be27d8632882391b2952c0b6@group.calendar.google.com",
+  "email": "2e2a088af05c1d88f3793172eae35d956b6303f5c1504210c14594fd60e13212@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2026-05-26T18:13:26+03:00",
+  "dateTime": "2026-05-26T14:03:05+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-05-26T19:13:26+03:00",
+  "dateTime": "2026-05-26T15:03:05+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "kt88paf7si5panma8ah6v5duds@google.com",
+ "iCalUID": "1fbgednhburavkoh3qor3mi30c@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true
