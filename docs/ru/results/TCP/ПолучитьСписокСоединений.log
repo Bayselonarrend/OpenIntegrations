@@ -1,16 +1,16 @@
 ﻿{
  "connections": [
   {
-   "address": "127.0.0.1:55032",
+   "address": "127.0.0.1:38264",
    "canRead": true,
    "canWrite": true,
-   "connectionId": "d2c8b618-4393-44ec-9ff3-0e1380f107d9"
+   "connectionId": "88eb3b71-2d12-4f7a-9c98-41e251a6d3b4"
   },
   {
-   "address": "127.0.0.1:55044",
+   "address": "127.0.0.1:38280",
    "canRead": true,
    "canWrite": true,
-   "connectionId": "c897cdbc-20f9-4e58-814f-e48fcb12e0d6"
+   "connectionId": "7a8e376a-7414-4694-a226-a0d0fa31f5bc"
   }
  ],
  "result": true
