@@ -283,7 +283,8 @@
 	СоответствиеОшибок.Вставить("MakeCopyFile" , "MakeFileCopy");
 	СоответствиеОшибок.Вставить("StrStartWith" , "StrStartsWith");
 	
-	СоответствиеОшибок.Вставить("BackgroundJob.ErrorInfo", "BackgroundJob.ExceptionInfo");
+	СоответствиеОшибок.Вставить("BackgroundJob.ErrorInfo"        , "BackgroundJob.ExceptionInfo");
+	СоответствиеОшибок.Вставить("BackgroundJob.WaitForCompletion", "BackgroundJob.Wait");
 	
 	ФайлМодуля = Новый Файл(ПутьКМодулю);
 	
