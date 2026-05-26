@@ -38,5 +38,6 @@
 "GRPC": true,
 "ClickHouse": true,
 "RSS": true,
-"WebSocket": true
+"WebSocket": true,
+"ZeroMQ": true
 }
