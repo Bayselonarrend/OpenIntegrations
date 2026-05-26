@@ -2,27 +2,27 @@
  "title": "Test Atom feed",
  "id": "https://example.com/feed",
  "link": "https://example.com",
- "updated": "2026-05-26T09:20:50",
+ "updated": "2026-05-26T15:44:35",
  "entries": [
   {
    "title": "First record",
    "id": "https://example.com/entry1",
    "link": "https://example.com/entry1",
-   "updated": "2026-05-26T09:20:50",
+   "updated": "2026-05-26T15:44:35",
    "summary": "First record summary",
    "content": "Full content of the first record",
    "author": "First Author",
-   "published": "2026-05-26T09:20:50"
+   "published": "2026-05-26T15:44:35"
   },
   {
    "title": "Second record",
    "id": "https://example.com/entry2",
    "link": "https://example.com/entry2",
-   "updated": "2026-05-26T09:20:50",
+   "updated": "2026-05-26T15:44:35",
    "summary": "Second record summary",
    "content": "Full content of the second record",
    "author": "Second Author",
-   "published": "2026-05-26T09:20:50"
+   "published": "2026-05-26T15:44:35"
   }
  ]
 }

@@ -2,13 +2,13 @@
  "title": "Test RSS channel",
  "link": "https://example.com",
  "description": "Test RSS channel description",
- "lastBuildDate": "Tue, 0,000,000,026 May 2026 09:20:47 +0000",
+ "lastBuildDate": "Tue, 0,000,000,026 May 2026 15:44:32 +0000",
  "items": [
   {
    "title": "First element",
    "description": "First element description",
    "link": "https://example.com/item1",
-   "pubDate": "Tue, 0,000,000,026 May 2026 09:20:47 +0000",
+   "pubDate": "Tue, 0,000,000,026 May 2026 15:44:32 +0000",
    "author": "test@example.com",
    "guid": "item-1"
   },
@@ -16,7 +16,7 @@
    "title": "Second element",
    "description": "Second element description",
    "link": "https://example.com/item2",
-   "pubDate": "Tue, 0,000,000,026 May 2026 09:20:47 +0000",
+   "pubDate": "Tue, 0,000,000,026 May 2026 15:44:32 +0000",
    "author": "test@example.com",
    "guid": "item-2"
   }

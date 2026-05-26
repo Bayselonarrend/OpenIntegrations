@@ -1,85 +1,167 @@
 ﻿{
  "entity": {
-  "uuid": "f9b0860f-84da-49da-8689-cdfc39aa9357",
+  "uuid": "c12e4a91-b054-44fc-9654-2d1fcdebb0a9",
   "type": 1,
-  "number": "8ddab315-8df3-47c4-a0a2-c9d6b88f8849",
+  "is_return": false,
+  "is_reverse": false,
+  "cdek_number": "1109125239",
+  "number": "5babe988-fb9c-45b7-b06b-ffca996f6b34",
   "tariff_code": 139,
   "comment": "New order",
+  "items_cost_currency": "RUB",
+  "recipient_currency": "RUB",
   "delivery_recipient_cost": {
-   "value": 50
+   "value": 50,
+   "vat_sum": 0
   },
   "delivery_recipient_cost_adv": [
    {
     "threshold": 200,
-    "sum": 3000
+    "sum": 3000,
+    "vat_sum": 0
    }
   ],
   "sender": {
-   "name": "Petrov Petr"
+   "company": "Тестирование Интеграции ИМ",
+   "name": "Petrov Petr",
+   "contragent_type": "LEGAL_ENTITY",
+   "phones": [
+    {
+     "number": "79529287654"
+    }
+   ],
+   "passport_requirements_satisfied": "***"
+  },
+  "seller": {
+   "name": "Тестирование Интеграции ИМ"
   },
   "recipient": {
+   "company": "Ivaniv Ivan",
    "name": "Ivaniv Ivan",
    "phones": [
     {
-     "number": "+79134637228"
+     "number": "79134637228"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
-   "city": "Moscow",
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "sub_region": "Москва",
+   "longitude": 37.61556,
+   "latitude": 55.75222,
    "address": "Ave. Leningradsky, 4"
   },
   "to_location": {
    "code": 270,
-   "city": "Novosibirsk",
+   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
+   "city": "Новосибирск",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Новосибирская область",
+   "region_code": 23,
+   "sub_region": "городской округ Новосибирск",
+   "longitude": 82.906928,
+   "latitude": 55.028739,
    "address": "st. Bluchera, 32"
   },
   "services": [
    {
     "code": "SECURE_PACKAGE_A2",
-    "parameter": "10"
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
+    "barcode": "000003909381",
     "weight": 4000,
     "length": 10,
     "width": "***",
+    "weight_volume": 200,
+    "weight_calc": 4000,
     "height": 10,
-    "comment": "Packaging",
+    "comment": "приложена опись",
     "items": [
      {
       "name": "Product",
       "ware_key": "***",
       "payment": {
-       "value": 3000
+       "value": 3000,
+       "vat_sum": 0
       },
       "weight": 700,
+      "weight_gross": 700,
       "amount": 2,
+      "delivery_amount": 0,
       "url": "www.item.ru",
+      "return_item_detail": {},
+      "excise": false,
       "cost": 300
      }
-    ]
+    ],
+    "package_id": "091c38d3-90bb-4e0f-b4f2-72a7570e46b7"
    }
   ],
   "statuses": [
    {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-05-26T15:25:35+03:00",
+    "city": "Офис СДЭК",
+    "deleted": false
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-05-26T09:02:26+00:00",
+    "date_time": "2026-05-26T15:25:34+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
-  ]
+  ],
+  "is_client_return": "***",
+  "delivery_mode": "1",
+  "has_reverse_order": false,
+  "delivery_detail": {
+   "delivery_sum": 1315,
+   "total_sum": 2183.4,
+   "payment_info": [],
+   "delivery_vat_rate": 20,
+   "delivery_vat_sum": 263,
+   "delivery_discount_percent": 0,
+   "delivery_discount_sum": 0
+  },
+  "calls": {}
  },
  "requests": [
   {
-   "request_uuid": "dcb14632-2b3e-43f1-86c6-0b70dfc34716",
+   "request_uuid": "d1896367-d2d0-405a-aff1-edab53ba6541",
    "type": "CREATE",
-   "date_time": "2026-05-26T09:02:26+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-05-26T15:25:35+03:00",
+   "state": "SUCCESSFUL"
   }
  ],
  "related_entities": []
