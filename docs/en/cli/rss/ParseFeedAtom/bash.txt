@@ -1,2 +1,2 @@
 oint rss ParseFeedAtom \
-  --xml "/tmp/e53l2bzl.dwx.xml"
+  --xml "/tmp/4cvlm1a1.cdo.xml"

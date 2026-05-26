@@ -1,3 +1,3 @@
 oint metrika RestoreCounter ^
   --token "***" ^
-  --counter "109408022"
+  --counter "109428007"

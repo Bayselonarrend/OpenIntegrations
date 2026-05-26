@@ -1,2 +1,2 @@
 oint rss ParseFeedRSS \
-  --xml "/tmp/ls4wvw54.5iz.xml"
+  --xml "/tmp/nvhos0ps.2ba.xml"
