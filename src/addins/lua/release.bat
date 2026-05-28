@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set "CARGO_NAME=lyna"
+set "CARGO_NAME=lua"
 set "ADDIN_DIR=%~dp0"
 
 set "LIB_NAME=OPI_Lua54"
