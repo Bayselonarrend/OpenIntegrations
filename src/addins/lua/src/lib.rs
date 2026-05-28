@@ -16,6 +16,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ExecuteBytecode"),
     name!("ExecuteBytecodeFile"),
     name!("CompileToBytecode"),
+    name!("CompileFileToBytecode"),
     name!("CallFunction"),
     name!("SetGlobal"),
     name!("GetGlobal"),
@@ -37,16 +38,17 @@ pub fn get_params_amount(num: usize) -> usize {
         2 => 1,
         3 => 1,
         4 => 1,
-        5 => 2,
+        5 => 1,
         6 => 2,
-        7 => 1,
-        8 => 2,
+        7 => 2,
+        8 => 1,
         9 => 2,
-        10 => 0,
+        10 => 2,
         11 => 0,
-        12 => 1,
+        12 => 0,
         13 => 1,
-        14 => 0,
+        14 => 1,
+        15 => 0,
         _ => 0,
     }
 }
@@ -77,40 +79,47 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             }
         }
         5 => {
+            let path = params[0].get_string().unwrap_or_default();
+            match obj.compile_file_to_bytecode(&path) {
+                Ok(bytecode) => Box::new(bytecode),
+                Err(error) => Box::new(error),
+            }
+        }
+        6 => {
             let function_name = params[0].get_string().unwrap_or_default();
             let args = params[1].get_string().unwrap_or_default();
             Box::new(obj.call_function(&function_name, &args))
         }
-        6 => {
+        7 => {
             let variable_name = params[0].get_string().unwrap_or_default();
             let value = params[1].get_string().unwrap_or_default();
             Box::new(obj.set_global(&variable_name, &value))
         }
-        7 => {
+        8 => {
             let variable_name = params[0].get_string().unwrap_or_default();
             Box::new(obj.get_global(&variable_name))
         }
-        8 => {
+        9 => {
             let package_name = params[0].get_string().unwrap_or_default();
             let code = params[1].get_string().unwrap_or_default();
             Box::new(obj.add_package(package_name, code))
         }
-        9 => {
+        10 => {
             let package_name = params[0].get_string().unwrap_or_default();
             let file_path = params[1].get_string().unwrap_or_default();
             Box::new(obj.load_package_from_file(package_name, file_path))
         }
-        10 => Box::new(obj.get_packages()),
-        11 => Box::new(obj.reset()),
-        12 => {
+        11 => Box::new(obj.get_packages()),
+        12 => Box::new(obj.reset()),
+        13 => {
             let logger_config = params[0].get_string().unwrap_or_default();
             Box::new(obj.set_logger(&logger_config))
         }
-        13 => {
+        14 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        14 => Box::new(version()),
+        15 => Box::new(version()),
         _ => Box::new(false),
     }
 }

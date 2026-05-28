@@ -247,6 +247,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "616ec5685824bcc94416c6d4a7a446eea774a31efd7062c8480ba6fd06d7a6e5"
 
 [[package]]
+name = "lua"
+version = "2.2.0"
+dependencies = [
+ "common-backend",
+ "common-core",
+ "common-logs",
+ "common-utils",
+ "mlua",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "lua-src"
 version = "547.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -263,19 +276,6 @@ checksum = "b3a8e7962a5368d5f264d045a5a255e90f9aa3fc1941ae15a8d2940d42cac671"
 dependencies = [
  "cc",
  "which",
-]
-
-[[package]]
-name = "lyna"
-version = "0.1.0"
-dependencies = [
- "common-backend",
- "common-core",
- "common-logs",
- "common-utils",
- "mlua",
- "serde",
- "serde_json",
 ]
 
 [[package]]

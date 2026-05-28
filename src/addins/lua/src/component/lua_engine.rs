@@ -68,6 +68,11 @@ impl LuaEngine {
         }
     }
 
+    pub fn compile_file_to_bytecode<P: AsRef<Path>>(&self, path: P) -> Result<Vec<u8>, String> {
+        let code = std::fs::read_to_string(path).map_err(|e| format!("Failed to read file: {}", e))?;
+        self.compile_to_bytecode(&code)
+    }
+
     pub fn reset(&mut self) -> Result<(), String> {
         self.lua = create_lua();
         self.packages.clear();

@@ -29,6 +29,10 @@ pub enum WorkerCommand {
         code: String,
         response: Sender<Result<Vec<u8>, String>>,
     },
+    CompileFileToBytecode {
+        path: String,
+        response: Sender<Result<Vec<u8>, String>>,
+    },
     CallFunction {
         function_name: String,
         args_json: String,
@@ -134,6 +138,11 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                 WorkerCommand::CompileToBytecode { code, response } => {
                     session.log("CompileToBytecode called");
                     let result = session.engine.compile_to_bytecode(&code);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::CompileFileToBytecode { path, response } => {
+                    session.log("CompileFileToBytecode called");
+                    let result = session.engine.compile_file_to_bytecode(&path);
                     let _ = response.send(result);
                 }
                 WorkerCommand::CallFunction {

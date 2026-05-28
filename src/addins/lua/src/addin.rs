@@ -37,6 +37,10 @@ impl AddIn {
         self.backend.compile_to_bytecode(code.to_string())
     }
 
+    pub fn compile_file_to_bytecode(&self, path: &str) -> Result<Vec<u8>, String> {
+        self.backend.compile_file_to_bytecode(path.to_string())
+    }
+
     pub fn call_function(&self, function_name: &str, args_json: &str) -> String {
         self.backend
             .call_function(function_name.to_string(), args_json.to_string())

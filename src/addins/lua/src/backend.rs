@@ -42,6 +42,10 @@ impl LynaBackend {
         self.call_binary(|response| WorkerCommand::CompileToBytecode { code, response })
     }
 
+    pub fn compile_file_to_bytecode(&self, path: String) -> Result<Vec<u8>, String> {
+        self.call_binary(|response| WorkerCommand::CompileFileToBytecode { path, response })
+    }
+
     pub fn call_function(&self, function_name: String, args_json: String) -> String {
         self.call_json(|response| WorkerCommand::CallFunction {
             function_name,
