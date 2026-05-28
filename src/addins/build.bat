@@ -3,6 +3,8 @@
 set THIS_DIR=%~dp0
 set "THIS_DIR=%THIS_DIR:\=/%"
 set VCPKG_ROOT=R:\Repos\vcpkg
+if not defined CARGO_EXTRA set "CARGO_EXTRA="
+if not defined WSL_EXTRA_ENV set "WSL_EXTRA_ENV="
 
 :: Перейти в директорию проекта
 cd /d %ADDIN_DIR%
@@ -19,11 +21,11 @@ set OPENSSL_DIR=R:\Repos\vcpkg\installed\x64-windows
 set OPENSSL_LIB_DIR=R:\Repos\vcpkg\installed\x64-windows\lib
 set OPENSSL_INCLUDE_DIR=R:\Repos\vcpkg\installed\x64-windows\include
 
-cargo build --release --target x86_64-pc-windows-msvc
+cargo build --release --target x86_64-pc-windows-msvc %CARGO_EXTRA%
 if errorlevel 1 goto :error
 
 :: Сборка для x86_64-unknown-linux-gnu
-wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib64 OPENSSL_DIR=/usr cargo zigbuild --release --target x86_64-unknown-linux-gnu.2.17
+wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib64 OPENSSL_DIR=/usr %WSL_EXTRA_ENV% cargo zigbuild --release --target x86_64-unknown-linux-gnu.2.17 %CARGO_EXTRA%
 if errorlevel 1 goto :error
 
 :: Сборка для i686-pc-windows-msvc
@@ -32,11 +34,11 @@ set OPENSSL_DIR=R:\Repos\vcpkg\installed\x86-windows
 set OPENSSL_LIB_DIR=R:\Repos\vcpkg\installed\x86-windows\lib
 set OPENSSL_INCLUDE_DIR=R:\Repos\vcpkg\installed\x86-windows\include
 
-cargo build --release --target i686-pc-windows-msvc
+cargo build --release --target i686-pc-windows-msvc %CARGO_EXTRA%
 if errorlevel 1 goto :error
 
 :: Сборка для i686-unknown-linux-gnu
-wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include cargo zigbuild --release --target i686-unknown-linux-gnu.2.17
+wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib OPENSSL_DIR=/usr OPENSSL_LIB_DIR=/usr/lib/ OPENSSL_INCLUDE_DIR=/usr/include %WSL_EXTRA_ENV% cargo zigbuild --release --target i686-unknown-linux-gnu.2.17 %CARGO_EXTRA%
 if errorlevel 1 goto :error
 
 :: Имена файлов в zip — без префикса OPI_; name в манифесте = полный LIB_NAME
