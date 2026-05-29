@@ -1,0 +1,183 @@
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	652	ЗаписатьЗначение(Пара.Значение, ПотокДанных);	4176	0,021792
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	476	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _fixstr() + РазмерДанных);	5177	0,042912
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	209	ПотокДанных.Записать(Буфер, 0, Размер);	18363	0,032957
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	748	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _uint16());	4038	0,032009
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	470	"СтрокаДД     = ПолучитьДвоичныеДанныеИзСтроки(Данные, ""UTF-8"");"	5177	0,029419
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	215	Метка = Новый БуферДвоичныхДанных(РазмерМетки, ПорядокБайтов.BigEndian);	12853	0,028443
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	499	ЗаписатьБуферВПоток(МеткаТипа, РазмерМетки, ПотокДанных);	5177	0,026467
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	500	ЗаписатьБуферВПоток(СтрокаБуфер, РазмерДанных, ПотокДанных);	5177	0,025875
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	103	ЗаписатьЧислоВПоток(Данные, ПотокДанных);	5001	0,025415
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	690	ЗаписатьПоложительноеЦелоеВПоток(Данные, ПотокДанных);	4668	0,024022
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	765	ЗаписатьБуферВПоток(МеткаТипа, РазмерМетки, ПотокДанных);	4668	0,023975
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	651	ЗаписатьСтрокуВПоток(Строка(Пара.Ключ), ПотокДанных);	4176	0,023744
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	595	ЗаписатьЗначение(Элемент, ПотокДанных);	4500	0,022653
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	216	Метка.Установить(0, Байт);	12853	0,019182
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	211	КонецПроцедуры	18363	0,018868
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	735	Если Число <= _posFixintMax() Тогда	4668	0,016103
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	218	Если РазмерДанных <> Неопределено Тогда	12853	0,013372
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	224	КонецФункции	12853	0,012803
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	222	Возврат Метка;	12853	0,01251
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	220	КонецЕсли;	12853	0,011889
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	80	"ИначеЕсли ТипДанных = Тип(""Булево"") Тогда"	8504	0,011611
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	497	СтрокаБуфер = ПолучитьБуферДвоичныхДанныхИзДвоичныхДанных(СтрокаДД);	5177	0,011264
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	624	Для Каждого Пара Из Данные Цикл	5177	0,010918
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	74	ТипДанных = ТипЗнч(Данные);	8677	0,010241
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	96	"ИначеЕсли ТипДанных = Тип(""Структура"")"	6002	0,010146
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	649	Для Каждого Пара Из Данные Цикл	5177	0,010001
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	76	Если Данные = Неопределено Тогда	8677	0,009566
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	84	"ИначеЕсли ТипДанных = Тип(""Строка"") Тогда"	7504	0,009396
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	107	КонецПроцедуры	8677	0,009233
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	88	"ИначеЕсли ТипДанных = Тип(""ДвоичныеДанные"") Тогда"	6503	0,009
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	631	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _fixmap() + КоличествоПар);	1001	0,00859
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	92	"ИначеЕсли ТипДанных = Тип(""Массив"") Тогда"	6503	0,008328
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	594	Для Каждого Элемент Из Данные Цикл	5001	0,008285
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	105	КонецЕсли;	8677	0,008201
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	471	РазмерДанных = СтрокаДД.Размер();	5177	0,007916
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	749	МеткаТипа.ЗаписатьЦелое16(1, Число);	4038	0,006689
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	687	Если Данные = Цел(Данные) Тогда	5001	0,006626
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	101	"ИначеЕсли ТипДанных = Тип(""Число"") Тогда"	5001	0,005931
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	458	МеткаТипа = СоздатьМеткуТипа(1, БайтМетки);	1000	0,00583
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	473	Если РазмерДанных < 32 Тогда	5177	0,005607
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	1001	Возврат 160;	5177	0,005584
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	502	КонецПроцедуры	5177	0,00551
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	412	Буфер.Установить(Индекс, Цел(ОстатокМантиссы / Pow(2, Сдвиг)) % 256);	1998	0,005298
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	689	Если Данные >= 0 Тогда	4668	0,005287
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	460	ЗаписатьБуферВПоток(МеткаТипа, 1, ПотокДанных);	1000	0,005217
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	699	КонецПроцедуры	5001	0,005139
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	1025	Возврат 127;	4668	0,005117
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	647	ЗаписатьБуферВПоток(МеткаТипа, РазмерМетки, ПотокДанных);	1001	0,005096
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	475	РазмерМетки = 1;	5177	0,005083
+Tests ОбщийМодуль.OPIt_MessagePack.Модуль	419	MessagePackДанные = OPI_MessagePack.СериализоватьДанные(Исходное);	1	0,005037
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	86	ЗаписатьСтрокуВПоток(Данные, ПотокДанных);	1001	0,004908
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	740	ИначеЕсли Число < 256 Тогда	4307	0,004873
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	495	КонецЕсли;	5177	0,004863
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	1003	КонецФункции	5177	0,004858
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	767	КонецПроцедуры	4668	0,004783
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	99	ЗаписатьКартуВПоток(Данные, ПотокДанных);	1001	0,004719
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	82	ЗаписатьБулевоВПоток(Данные, ПотокДанных);	1000	0,004661
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	697	КонецЕсли;	5001	0,004608
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	625	КоличествоПар = КоличествоПар + 1;	4176	0,004501
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	693	КонецЕсли;	4668	0,004443
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	911	Возврат 205;	4038	0,004392
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	763	КонецЕсли;	4668	0,004386
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	596	КонецЦикла;	4500	0,004356
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	654	КонецЦикла;	4176	0,004333
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	1027	КонецФункции	4668	0,004325
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	576	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _fixarray() + КоличествоЭлементов);	500	0,004195
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	745	ИначеЕсли Число < 65536 Тогда	4038	0,004117
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	747	РазмерМетки = 3;	4038	0,003971
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	626	КонецЦикла;	4176	0,003887
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	913	КонецФункции	4038	0,003719
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	457	БайтМетки = ?(Данные, _true(), _false());	1000	0,003487
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	333	ЭкспНеСмещ = Цел(Log(Абс) / Log(2));	666	0,003377
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	725	МеткаТипа = СоздатьМеткуТипа(1, _float64());	333	0,002822
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	592	ЗаписатьБуферВПоток(МеткаТипа, РазмерМетки, ПотокДанных);	501	0,002565
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	410	Для Индекс = 2 По 7 Цикл	2331	0,002543
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	411	Сдвиг = (7 - Индекс) * 8;	1998	0,00246
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	708	ЗаписатьВещественное64ВПоток(Число, ПотокДанных);	333	0,002408
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	94	ЗаписатьМассивВПоток(Данные, ПотокДанных);	501	0,002365
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	743	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _uint8(), Число);	269	0,002322
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	696	ЗаписатьВещественноеЧислоВПоток(Данные, ПотокДанных);	333	0,002298
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	726	Тело      = ЗакодироватьFloat64BE(Число);	333	0,002224
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	703	БуферПроверки = ЗакодироватьFloat32BE(Число);	333	0,002197
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	413	КонецЦикла;	1998	0,002051
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	738	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, Число);	361	0,002032
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	399	ЭкспНеСмещ  = ПолучитьНесмещеннуюЭкспонентуIEEE754(Абс);	333	0,001981
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	354	ЭкспНеСмещ = ПолучитьНесмещеннуюЭкспонентуIEEE754(Абс);	333	0,001977
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	728	ЗаписатьБуферВПоток(МеткаТипа, 1, ПотокДанных);	333	0,00192
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	729	ЗаписатьБуферВПоток(Тело, 8, ПотокДанных);	333	0,001735
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	384	Возврат Знак * (1 + Мантисса / ДелительМантиссыFloat32()) * Pow(2, Экспонента - 127);	333	0,001683
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	705	Если ДекодироватьFloat32BE(БуферПроверки) = Число Тогда	333	0,001546
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	356	Мантисса     = (Доля - 1) * ДелительМантиссыFloat32();	333	0,001526
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	446	МеткаТипа = СоздатьМеткуТипа(1, _nil());	173	0,001417
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	401	Мантисса    = (Доля - 1) * ДелительМантиссыFloat64();	333	0,001405
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	406	Буфер.Установить(1, (ЭкспСмещ % 16) * 16 + Цел(МантиссаЦел / Pow(2, 48)));	333	0,001141
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	628	Если КоличествоПар <= 15 Тогда	1001	0,001113
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	335	Пока Абс < Pow(2, ЭкспНеСмещ) Цикл	670	0,001112
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	953	Возврат 128;	1001	0,001112
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	656	КонецПроцедуры	1001	0,001074
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	462	КонецПроцедуры	1000	0,001062
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	622	КоличествоПар = 0;	1001	0,001061
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	378	Мантисса   = (Байт1 % 128) * 65536 + Буфер.Получить(2) * 256 + Буфер.Получить(3);	333	0,001016
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	955	КонецФункции	1001	0,00098
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	630	РазмерМетки = 1;	1001	0,000974
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	645	КонецЕсли;	1001	0,000945
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	361	Буфер.Установить(1, (ЭкспСмещ % 2) * 128 + Цел(МантиссаЦел / 65536));	333	0,000927
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	360	Буфер.Установить(0, Знак * 128 + Цел(ЭкспСмещ / 2));	333	0,000883
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	571	КоличествоЭлементов = Данные.Количество();	501	0,000868
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	447	ЗаписатьБуферВПоток(МеткаТипа, 1, ПотокДанных);	173	0,000862
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	345	Буфер = Новый БуферДвоичныхДанных(4, ПорядокБайтов.BigEndian);	333	0,000798
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	78	ЗаписатьNilВПоток(ПотокДанных);	173	0,000764
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	405	Буфер.Установить(0, Знак * 128 + Цел(ЭкспСмещ / 16));	333	0,000763
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	321	Возврат 8388608;	666	0,000734
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	377	Экспонента = (Байт0 % 128) * 2 + Цел(Байт1 / 128);	333	0,000697
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	373	Байт0 = Буфер.Получить(0);	333	0,000697
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	390	Буфер = Новый БуферДвоичныхДанных(8, ПорядокБайтов.BigEndian);	333	0,000695
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	408	ОстатокМантиссы = МантиссаЦел % Pow(2, 48);	333	0,000684
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	339	Возврат ЭкспНеСмещ;	666	0,000678
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	869	Возврат 195;	583	0,000661
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	341	КонецФункции	666	0,000657
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	355	Доля         = Абс / Pow(2, ЭкспНеСмещ);	333	0,000629
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	323	КонецФункции	666	0,000628
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	364	Буфер.Установить(2, Цел(ОстатокМантиссы / 256));	333	0,000597
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	573	Если КоличествоЭлементов <= 15 Тогда	501	0,000592
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	365	Буфер.Установить(3, ОстатокМантиссы % 256);	333	0,000577
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	400	Доля        = Абс / Pow(2, ЭкспНеСмещ);	333	0,000573
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	871	КонецФункции	583	0,00056
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	965	Возврат 144;	500	0,000545
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	357	МантиссаЦел  = Цел(Окр(Мантисса, 0));	333	0,000536
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	598	КонецПроцедуры	501	0,000535
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	402	МантиссаЦел = Цел(Окр(Мантисса, 0));	333	0,0005
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	575	РазмерМетки = 1;	500	0,000487
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	374	Байт1 = Буфер.Получить(1);	333	0,000487
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	590	КонецЕсли;	501	0,000476
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	967	КонецФункции	500	0,00047
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	863	Возврат 194;	417	0,000455
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	363	ОстатокМантиссы = МантиссаЦел % 65536;	333	0,00045
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	358	ЭкспСмещ     = ЭкспНеСмещ + 127;	333	0,000419
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	403	ЭкспСмещ    = ЭкспНеСмещ + 1023;	333	0,000403
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	376	Знак       = ?(Байт0 >= 128, -1, 1);	333	0,000402
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	711	КонецПроцедуры	333	0,000397
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	865	КонецФункции	417	0,000394
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	380	Если Экспонента = 0 И Мантисса = 0 Тогда	333	0,000389
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	219	Метка.Установить(1, РазмерДанных);	269	0,000388
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	347	Если Число = 0 Тогда	333	0,000384
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	351	Знак = ?(Число < 0, 1, 0);	333	0,000383
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	396	Знак = ?(Число < 0, 1, 0);	333	0,000382
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	737	РазмерМетки = 1;	361	0,000378
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	392	Если Число = 0 Тогда	333	0,000374
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	352	Абс  = ?(Число < 0, -Число, Число);	333	0,000367
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	327	Возврат 4503599627370496;	333	0,000367
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	731	КонецПроцедуры	333	0,000365
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	899	Возврат 203;	333	0,00036
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	397	Абс  = ?(Число < 0, -Число, Число);	333	0,000359
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	386	КонецФункции	333	0,000332
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	417	КонецФункции	333	0,000329
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	367	Возврат Буфер;	333	0,000328
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	415	Возврат Буфер;	333	0,000323
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	349	КонецЕсли;	333	0,000322
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	369	КонецФункции	333	0,000317
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	382	КонецЕсли;	333	0,000315
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	901	КонецФункции	333	0,000311
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	394	КонецЕсли;	333	0,000307
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	709	КонецЕсли;	333	0,000305
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	329	КонецФункции	333	0,000299
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	905	Возврат 204;	269	0,000282
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	742	РазмерМетки = 2;	269	0,00027
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	907	КонецФункции	269	0,000239
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	857	Возврат 192;	173	0,000189
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	449	КонецПроцедуры	173	0,000173
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	859	КонецФункции	173	0,000158
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	50	ПотокДанных = Новый ПотокВПамяти();	1	0,00002
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	581	МеткаТипа   = СоздатьМеткуТипа(РазмерМетки, _array16());	1	0,000009
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	51	ЗаписатьЗначение(Данные, ПотокДанных);	1	0,000008
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	53	СериализованныеДанные = ПотокДанных.ЗакрытьИПолучитьДвоичныеДанные();	1	0,000006
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	336	ЭкспНеСмещ = ЭкспНеСмещ - 1;	4	0,000006
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	582	МеткаТипа.ЗаписатьЦелое16(1, КоличествоЭлементов);	1	0,000005
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	337	КонецЦикла;	4	0,000004
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	57	КонецФункции	1	0,000002
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	55	Возврат СериализованныеДанные;	1	0,000001
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	977	Возврат 220;	1	0,000001
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	578	ИначеЕсли КоличествоЭлементов < 65536 Тогда	1	0,000001
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	580	РазмерМетки = 3;	1	0,000001
+OpenIntegrations ОбщийМодуль.OPI_MessagePack.Модуль	979	КонецФункции	1	0,000001

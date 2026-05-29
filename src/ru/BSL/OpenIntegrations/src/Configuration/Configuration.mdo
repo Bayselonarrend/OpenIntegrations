@@ -83,6 +83,7 @@
   <commonModules>CommonModule.OPI_GreenAPI</commonModules>
   <commonModules>CommonModule.OPI_GreenMax</commonModules>
   <commonModules>CommonModule.OPI_GRPC</commonModules>
+  <commonModules>CommonModule.OPI_Janx</commonModules>
   <commonModules>CommonModule.OPI_Lua</commonModules>
   <commonModules>CommonModule.OPI_MessagePack</commonModules>
   <commonModules>CommonModule.OPI_MongoDB</commonModules>
