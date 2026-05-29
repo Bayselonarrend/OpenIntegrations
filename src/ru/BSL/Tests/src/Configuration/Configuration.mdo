@@ -35,6 +35,7 @@
   <commonModules>CommonModule.OPIt_GreenMax</commonModules>
   <commonModules>CommonModule.OPIt_GRPC</commonModules>
   <commonModules>CommonModule.OPIt_HTTP</commonModules>
+  <commonModules>CommonModule.OPIt_MessagePack</commonModules>
   <commonModules>CommonModule.OPIt_MongoDB</commonModules>
   <commonModules>CommonModule.OPIt_MSSQL</commonModules>
   <commonModules>CommonModule.OPIt_MySQL</commonModules>
