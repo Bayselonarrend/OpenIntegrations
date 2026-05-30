@@ -43,6 +43,8 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
+#Если Не ВебКлиент Тогда // !OPI
+
 #Область ПрограммныйИнтерфейс
 
 Функция СериализоватьДанные(Знач Данные) Экспорт
@@ -1096,3 +1098,5 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#КонецЕсли // !OPI
