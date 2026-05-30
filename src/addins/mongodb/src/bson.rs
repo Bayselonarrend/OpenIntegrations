@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 use std::time::SystemTime;
 
-use common_janx::JanxValue;
+use common_janx::{FromJanx, JanxValue};
 use dateparser::parse;
 use mongodb::bson;
 use mongodb::bson::{Bson, Document};
@@ -11,10 +11,10 @@ use serde_json::Number;
 pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
     let result = match value {
         JanxValue::String(s) => Bson::String(s.clone()),
-        JanxValue::Number(n) => {
-            if let Some(i) = n.as_i64() {
+        JanxValue::Number(_) => {
+            if let Some(i) = value.as_i64() {
                 Bson::Int64(i)
-            } else if let Some(f) = n.as_f64() {
+            } else if let Some(f) = value.as_f64() {
                 Bson::Double(f)
             } else {
                 Bson::Null
@@ -34,37 +34,38 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
         JanxValue::Object(obj) => {
             if let Some(str_value) = obj.get("__OPI_STRING__") {
                 return Ok(Bson::String(
-                    janx_as_str(str_value)
+                    String::from_janx(str_value)
                         .ok_or_else(|| format!("Can't parse STRING: {str_value:?}"))?,
                 ));
             }
 
             if let Some(int32) = obj.get("__OPI_INT32__") {
-                let value = janx_as_i64(int32).ok_or_else(|| format!("Can't parse I64: {int32:?}"))?
-                    as i32;
+                let value = i64::from_janx(int32)
+                    .ok_or_else(|| format!("Can't parse I64: {int32:?}"))? as i32;
                 return Ok(Bson::Int32(value));
             }
 
             if let Some(int64) = obj.get("__OPI_INT64__") {
                 return Ok(Bson::Int64(
-                    janx_as_i64(int64).ok_or_else(|| format!("Can't parse I64: {int64:?}"))?,
+                    i64::from_janx(int64).ok_or_else(|| format!("Can't parse I64: {int64:?}"))?,
                 ));
             }
 
             if let Some(double) = obj.get("__OPI_DOUBLE__") {
                 return Ok(Bson::Double(
-                    janx_as_f64(double).ok_or_else(|| format!("Can't parse Double: {double:?}"))?,
+                    f64::from_janx(double)
+                        .ok_or_else(|| format!("Can't parse Double: {double:?}"))?,
                 ));
             }
 
             if let Some(b) = obj.get("__OPI_BOOLEAN__") {
                 return Ok(Bson::Boolean(
-                    janx_as_bool(b).ok_or_else(|| format!("Can't parse Bool: {b:?}"))?,
+                    bool::from_janx(b).ok_or_else(|| format!("Can't parse Bool: {b:?}"))?,
                 ));
             }
 
             if let Some(datetime) = obj.get("__OPI_DATETIME__") {
-                let dt = janx_as_str(datetime)
+                let dt = String::from_janx(datetime)
                     .ok_or_else(|| format!("Can't parse DateTime: {datetime:?}"))?;
                 let dtp = parse(&dt).map_err(|e| format!("Can't parse DateTime: {dt}: {e}"))?;
                 return Ok(Bson::DateTime(bson::DateTime::from_system_time(
@@ -73,7 +74,7 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
             }
 
             if let Some(timestamp) = obj.get("__OPI_TIMESTAMP__") {
-                let ts = janx_as_str(timestamp)
+                let ts = String::from_janx(timestamp)
                     .ok_or_else(|| format!("Can't parse Timestamp: {timestamp:?}"))?;
                 let dtp = parse(&ts).map_err(|e| format!("Can't parse Timestamp: {ts}: {e}"))?;
                 let bson_ts = bson::Timestamp {
@@ -84,7 +85,7 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
             }
 
             if let Some(oid) = obj.get("__OPI_OBJECTID__") {
-                let oid_str = janx_as_str(oid)
+                let oid_str = String::from_janx(oid)
                     .ok_or_else(|| format!("Can't parse ObjectID: {oid:?}"))?;
                 return oid_str
                     .parse::<bson::oid::ObjectId>()
@@ -93,28 +94,21 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
             }
 
             if let Some(regexp) = obj.get("__OPI_REGEXP__") {
-                let regexp_obj = match regexp {
-                    JanxValue::Object(map) => map,
-                    _ => {
-                        return Err(
-                            "Value of REGEXP must be an object with 'pattern' and 'options'"
-                                .to_string(),
-                        );
-                    }
-                };
+                let regexp_obj = regexp.as_object().ok_or_else(|| {
+                    "Value of REGEXP must be an object with 'pattern' and 'options'".to_string()
+                })?;
 
                 let pattern = regexp_obj
                     .get("pattern")
-                    .and_then(janx_as_str)
-                    .ok_or("Missing or invalid 'pattern' field in REGEXP object")?
-                    .to_string();
+                    .and_then(String::from_janx)
+                    .ok_or_else(|| "Missing or invalid 'pattern' field in REGEXP object".to_string())?;
 
                 StdRegex::new(&pattern)
                     .map_err(|e| format!("Invalid regex pattern '{pattern}': {e}"))?;
 
                 let options = regexp_obj
                     .get("options")
-                    .and_then(janx_as_str)
+                    .and_then(String::from_janx)
                     .unwrap_or_default();
 
                 return Ok(Bson::RegularExpression(bson::Regex { pattern, options }));
@@ -122,14 +116,14 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
 
             if let Some(js_value) = obj.get("__OPI_JS__") {
                 return Ok(Bson::JavaScriptCode(
-                    janx_as_str(js_value)
+                    String::from_janx(js_value)
                         .ok_or_else(|| format!("Can't parse JS: {js_value:?}"))?,
                 ));
             }
 
             if let Some(symbol_value) = obj.get("__OPI_SYMBOL__") {
                 return Ok(Bson::Symbol(
-                    janx_as_str(symbol_value)
+                    String::from_janx(symbol_value)
                         .ok_or_else(|| format!("Can't parse SYMBOL: {symbol_value:?}"))?,
                 ));
             }
@@ -206,33 +200,5 @@ pub fn bson_to_janx_value(bson: &Bson) -> JanxValue {
         }
         Bson::Binary(bin) => JanxValue::binary(bin.bytes.clone()),
         _ => JanxValue::Null,
-    }
-}
-
-fn janx_as_str(value: &JanxValue) -> Option<String> {
-    match value {
-        JanxValue::String(s) => Some(s.clone()),
-        _ => None,
-    }
-}
-
-fn janx_as_i64(value: &JanxValue) -> Option<i64> {
-    match value {
-        JanxValue::Number(n) => n.as_i64(),
-        _ => None,
-    }
-}
-
-fn janx_as_f64(value: &JanxValue) -> Option<f64> {
-    match value {
-        JanxValue::Number(n) => n.as_f64(),
-        _ => None,
-    }
-}
-
-fn janx_as_bool(value: &JanxValue) -> Option<bool> {
-    match value {
-        JanxValue::Bool(b) => Some(*b),
-        _ => None,
     }
 }

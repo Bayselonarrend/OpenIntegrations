@@ -2,7 +2,7 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_janx::JanxValue;
+use common_janx::{FromJanx, JanxValue};
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_success};
 use mongodb::bson::{Bson, Document};
@@ -19,19 +19,19 @@ pub struct ExecuteParams {
 }
 
 pub fn parse_execute_params(value: JanxValue) -> Result<ExecuteParams, String> {
-    let map = match value {
-        JanxValue::Object(map) => map,
-        _ => return Err("Execute params must be a Janx object".to_string()),
-    };
+    use std::collections::BTreeMap;
+
+    let map = BTreeMap::<String, JanxValue>::from_janx(&value)
+        .ok_or_else(|| "Execute params must be a Janx object".to_string())?;
 
     let operation = map
         .get("operation")
-        .and_then(janx_as_str)
-        .ok_or("Missing or invalid 'operation' field")?;
+        .and_then(String::from_janx)
+        .ok_or_else(|| "Missing or invalid 'operation' field".to_string())?;
 
     Ok(ExecuteParams {
         operation,
-        database: map.get("database").and_then(janx_as_str),
+        database: map.get("database").and_then(String::from_janx),
         argument: map.get("argument").cloned(),
         data: map.get("data").cloned(),
     })
@@ -200,11 +200,4 @@ async fn execute_operation(
         .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
 
     Ok(bson_to_janx_value(&Bson::Document(result_doc)))
-}
-
-fn janx_as_str(value: &JanxValue) -> Option<String> {
-    match value {
-        JanxValue::String(s) => Some(s.clone()),
-        _ => None,
-    }
 }
