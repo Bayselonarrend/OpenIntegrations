@@ -1,7 +1,6 @@
-use std::collections::BTreeMap;
 use std::time::Duration;
 
-use common_janx::JanxValue;
+use common_janx::{janx, JanxValue};
 use common_utils::utils::janx_error;
 use tungstenite::stream::MaybeTlsStream;
 use tungstenite::Message;
@@ -35,25 +34,36 @@ impl WebSocketClient {
                     let text_str = text.to_string();
                     let len = text_str.len();
                     self.log(&format!("Received text: {} bytes", len));
-                    Self::janx_ok_message("text", JanxValue::String(text_str))
+                    janx!({
+                        "result": true,
+                        "type": "text",
+                        "data": text_str,
+                    })
                 }
                 Message::Binary(data) => {
                     let len = data.len();
                     self.log(&format!("Received binary: {} bytes", len));
-                    let mut fields = BTreeMap::new();
-                    fields.insert("type".to_string(), JanxValue::String("binary".into()));
-                    fields.insert("data".to_string(), JanxValue::binary(data));
-                    fields.insert("size".to_string(), JanxValue::Number((len as i64).into()));
-                    Self::janx_ok_fields(fields)
+                    janx!({
+                        "result": true,
+                        "type": "binary",
+                        "data": data,
+                        "size": len as i64,
+                    })
                 }
                 Message::Ping(data) => {
                     let _ = socket.send(Message::Pong(data));
                     self.log("Received ping");
-                    Self::janx_ok_message("ping", JanxValue::Null)
+                    janx!({
+                        "result": true,
+                        "type": "ping",
+                    })
                 }
                 Message::Pong(_) => {
                     self.log("Received pong");
-                    Self::janx_ok_message("pong", JanxValue::Null)
+                    janx!({
+                        "result": true,
+                        "type": "pong",
+                    })
                 }
                 Message::Close(frame) => {
                     let code = frame.as_ref().map(|f| f.code.into()).unwrap_or(1000);
@@ -66,11 +76,12 @@ impl WebSocketClient {
                     disconnect = true;
                     self.log("Received close");
 
-                    let mut fields = BTreeMap::new();
-                    fields.insert("type".to_string(), JanxValue::String("close".into()));
-                    fields.insert("code".to_string(), JanxValue::Number((code as i64).into()));
-                    fields.insert("reason".to_string(), JanxValue::String(reason));
-                    Self::janx_ok_fields(fields)
+                    janx!({
+                        "result": true,
+                        "type": "close",
+                        "code": code as i64,
+                        "reason": reason,
+                    })
                 }
                 Message::Frame(_) => janx_error("Unexpected raw frame"),
             },
@@ -86,19 +97,5 @@ impl WebSocketClient {
         }
 
         result
-    }
-
-    fn janx_ok_message(type_name: &str, data: JanxValue) -> JanxValue {
-        let mut fields = BTreeMap::new();
-        fields.insert("type".to_string(), JanxValue::String(type_name.into()));
-        if !matches!(data, JanxValue::Null) {
-            fields.insert("data".to_string(), data);
-        }
-        Self::janx_ok_fields(fields)
-    }
-
-    fn janx_ok_fields(mut fields: BTreeMap<String, JanxValue>) -> JanxValue {
-        fields.insert("result".to_string(), JanxValue::Bool(true));
-        JanxValue::Object(fields)
     }
 }

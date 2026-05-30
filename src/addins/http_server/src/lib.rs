@@ -5,7 +5,6 @@ mod wrapper;
 use std::sync::Arc;
 use common_core::*;
 use common_utils::utils::{json_error, version};
-use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use wrapper::HttpServer;
 
@@ -19,8 +18,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetMessage"),                 // 3
     name!("SendMessage"),                // 4
     name!("ListConnections"),            // 5
-    name!("RetrieveBinaryFromVault"),    // 6
-    name!("GetLogs"),                    // 7
+    name!("GetLogs"),                    // 6
     name!("Version"),
 ];
 
@@ -32,9 +30,8 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 1,  // GetMessage(request_id)
         4 => 3,  // SendMessage(request_id, status_code, body)
         5 => 0,  // ListConnections()
-        6 => 1,  // RetrieveBinaryFromVault(vault_key)
-        7 => 1,  // GetLogs(count)
-        8 => 0,
+        6 => 1,  // GetLogs(count)
+        7 => 0,
         _ => 0,
     }
 }
@@ -80,16 +77,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.server.get_pending_requests())
         },
         6 => {
-            // RetrieveBinaryFromVault(vault_key)
-            let vault_key = params[0].get_string().unwrap_or_default();
-            Box::new(obj.retrieve_binary_from_vault(&vault_key))
-        },
-        7 => {
-            // GetLogs(count)
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
-        8 => Box::new(version()),
+        7 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -98,16 +89,13 @@ pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
     server: HttpServer,
-    vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
-        let vault = BinaryVault::new();
         AddIn {
-            server: HttpServer::new(vault.clone()),
-            vault,
+            server: HttpServer::new(),
             logger: None,
         }
     }
@@ -141,10 +129,6 @@ impl AddIn {
         } else {
             json_error("Logger not initialized")
         }
-    }
-
-    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        self.vault.retrieve(&vault_key.to_string()).unwrap_or_else(|_| Vec::new())
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {

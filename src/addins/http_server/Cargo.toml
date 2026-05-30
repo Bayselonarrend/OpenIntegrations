@@ -16,8 +16,8 @@ opt-level = "z"
 
 [dependencies]
 common-core = { path = "../commons/common-core" }
+common-janx = { path = "../commons/common-janx" }
 common-utils = { path = "../commons/common-utils" }
-common-binary = { path = "../commons/common-binary" }
 common-logs = { path = "../commons/common-logs" }
 common-server = { path = "../commons/common-server" }
 

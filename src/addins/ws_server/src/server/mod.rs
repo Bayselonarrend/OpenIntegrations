@@ -15,8 +15,7 @@ use tokio::sync::mpsc;
 use tokio::sync::oneshot;
 use tokio::task::JoinHandle;
 use futures_util::{StreamExt, SinkExt};
-use common_binary::vault::BinaryVault;
-use common_logs::{Logger, log};
+use common_logs::{log, Logger};
 use common_server::ConnectionManager;
 use common_utils::utils::lock_unpoisoned;
 use serde::{Deserialize, Serialize};
@@ -48,7 +47,6 @@ impl Default for WebSocketServerConfig {
 }
 
 pub struct WebSocketServerState {
-    pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
     pub(crate) manager: Arc<Mutex<ConnectionManager<WebSocketConnection>>>,
     pub(crate) shutdown_tx: Option<oneshot::Sender<()>>,
@@ -80,7 +78,6 @@ impl WebSocketServerState {
     pub async fn start(
         port: u16,
         config_json: &str,
-        vault: BinaryVault,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
 
@@ -98,7 +95,6 @@ impl WebSocketServerState {
         let manager = Arc::new(Mutex::new(ConnectionManager::new(config.max_connections, logger.clone())));
         let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
         let state = Arc::new(tokio::sync::Mutex::new(WebSocketServerState {
-            vault: vault.clone(),
             logger: logger.clone(),
             manager: manager.clone(),
             shutdown_tx: None,
@@ -135,7 +131,6 @@ impl WebSocketServerState {
         });
 
         Ok(WebSocketServerState {
-            vault,
             logger: logger.clone(),
             manager,
             shutdown_tx: Some(shutdown_tx),

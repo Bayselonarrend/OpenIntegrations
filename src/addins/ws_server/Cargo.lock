@@ -164,19 +164,18 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-binary"
-version = "2.1.0"
-dependencies = [
- "base64",
- "serde_json",
- "uuid",
-]
-
-[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
 ]
 
 [[package]]
@@ -193,8 +192,8 @@ name = "common-server"
 version = "2.1.0"
 dependencies = [
  "common-backend",
- "common-binary",
  "common-core",
+ "common-janx",
  "common-logs",
  "common-utils",
  "futures-util",
@@ -208,6 +207,7 @@ dependencies = [
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
@@ -612,8 +612,8 @@ name = "opi_wsserver"
 version = "2.1.0"
 dependencies = [
  "axum",
- "common-binary",
  "common-core",
+ "common-janx",
  "common-logs",
  "common-server",
  "common-utils",

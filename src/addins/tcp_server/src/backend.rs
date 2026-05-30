@@ -1,9 +1,11 @@
 use std::sync::mpsc::Sender;
 use std::sync::Arc;
-use common_utils::utils::{json_error, json_success};
-use common_binary::vault::BinaryVault;
+use common_janx::JanxValue;
 use common_logs::Logger;
-use common_server::{Backend, send_command, handle_async_command, handle_sync_command};
+use common_server::{
+    handle_async_command, handle_async_janx_command, handle_sync_command, send_command, Backend,
+};
+use common_utils::utils::{janx_error, json_error, json_success};
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
@@ -21,13 +23,13 @@ pub enum BackendCommand {
     GetNextMessage {
         timeout_ms: u64,
         max_message_size: usize,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetMessageFromConnection {
         connection_id: String,
         timeout_ms: u64,
         max_message_size: usize,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendMessage {
         connection_id: String,
@@ -56,7 +58,7 @@ pub enum BackendCommand {
 }
 
 impl TcpServerBackend {
-    pub fn new(vault: BinaryVault) -> Self {
+    pub fn new() -> Self {
         let backend = Backend::new(
             "opi_tcpserver_backend".to_string(),
             move |rt, rx| {
@@ -71,7 +73,7 @@ impl TcpServerBackend {
                             }
 
                             let result = rt.block_on(async {
-                                ServerState::start(port, queue_size, vault.clone(), logger).await
+                                ServerState::start(port, queue_size, logger).await
                             });
 
                             match result {
@@ -86,13 +88,13 @@ impl TcpServerBackend {
                         }
 
                         BackendCommand::GetNextMessage { timeout_ms, max_message_size, response } => {
-                            handle_async_command!(server_state, rt, response, |state| 
+                            handle_async_janx_command!(server_state, rt, response, |state|
                                 state.get_next_message(timeout_ms, max_message_size).await
                             );
                         }
 
                         BackendCommand::GetMessageFromConnection { connection_id, timeout_ms, max_message_size, response } => {
-                            handle_async_command!(server_state, rt, response, |state| 
+                            handle_async_janx_command!(server_state, rt, response, |state|
                                 state.get_message_from_connection(&connection_id, timeout_ms, max_message_size).await
                             );
                         }
@@ -166,25 +168,38 @@ impl TcpServerBackend {
         })
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
-        send_command!(self.backend, |response| {
-            BackendCommand::GetNextMessage {
-                timeout_ms,
-                max_message_size,
-                response,
-            }
-        })
+    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> JanxValue {
+        let (response_tx, response_rx) = std::sync::mpsc::channel();
+        if let Err(e) = self.backend.send(BackendCommand::GetNextMessage {
+            timeout_ms,
+            max_message_size,
+            response: response_tx,
+        }) {
+            return janx_error(format!("Failed to send command: {}", e));
+        }
+        response_rx
+            .recv()
+            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
     }
 
-    pub fn get_message_from_connection(&self, connection_id: String, timeout_ms: u64, max_message_size: usize) -> String {
-        send_command!(self.backend, |response| {
-            BackendCommand::GetMessageFromConnection {
-                connection_id,
-                timeout_ms,
-                max_message_size,
-                response,
-            }
-        })
+    pub fn get_message_from_connection(
+        &self,
+        connection_id: String,
+        timeout_ms: u64,
+        max_message_size: usize,
+    ) -> JanxValue {
+        let (response_tx, response_rx) = std::sync::mpsc::channel();
+        if let Err(e) = self.backend.send(BackendCommand::GetMessageFromConnection {
+            connection_id,
+            timeout_ms,
+            max_message_size,
+            response: response_tx,
+        }) {
+            return janx_error(format!("Failed to send command: {}", e));
+        }
+        response_rx
+            .recv()
+            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
     }
 
     pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {

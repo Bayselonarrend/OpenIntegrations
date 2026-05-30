@@ -7,6 +7,18 @@
 /// );
 /// ```
 #[macro_export]
+macro_rules! handle_async_janx_command {
+    ($state:expr, $rt:expr, $response:expr, |$s:ident| $($body:tt)*) => {
+        if let Some(ref mut $s) = $state {
+            let result = $rt.block_on(async { $($body)* });
+            let _ = $response.send(result);
+        } else {
+            let _ = $response.send(common_utils::utils::janx_error("Server not started"));
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! handle_async_command {
     ($state:expr, $rt:expr, $response:expr, |$s:ident| $($body:tt)*) => {
         if let Some(ref mut $s) = $state {

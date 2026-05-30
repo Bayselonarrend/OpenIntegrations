@@ -3,8 +3,7 @@ mod listener;
 
 use std::sync::{Arc, Mutex};
 use common_core::*;
-use common_utils::utils::{json_error, json_success, version};
-use common_binary::vault::BinaryVault;
+use common_utils::utils::{janx_error, json_error, json_success, version};
 use common_logs::Logger;
 use crate::backend::TcpServerBackend;
 
@@ -21,8 +20,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ShutdownRead"),               // 6
     name!("ShutdownWrite"),              // 7
     name!("ListConnections"),            // 8
-    name!("RetrieveBinaryFromVault"),    // 9
-    name!("GetLogs"),                    // 10
+    name!("GetLogs"),                    // 9
     name!("Version"),
 ];
 
@@ -37,9 +35,8 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 1,  // ShutdownRead(connection_id)
         7 => 1,  // ShutdownWrite(connection_id)
         8 => 0,  // GetConnectionsList()
-        9 => 1,  // RetrieveBinaryFromVault()
-        10 => 1, // GetLogs(count)
-        11 => 0,
+        9 => 1,  // GetLogs(count)
+        10 => 0,
         _ => 0,
     }
 }
@@ -89,14 +86,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.get_connections_list())
         },
         9 => {
-            let vault_key = params[0].get_string().unwrap_or_default();
-            Box::new(obj.retrieve_binary_from_vault(&vault_key))
-        },
-        10 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
-        11 => Box::new(version()),
+        10 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -105,17 +98,14 @@ pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
     backend: Arc<Mutex<TcpServerBackend>>,
-    vault: BinaryVault,
     started: bool,
     logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
-        let vault = BinaryVault::new();
         AddIn {
-            backend: Arc::new(Mutex::new(TcpServerBackend::new(vault.clone()))),
-            vault,
+            backend: Arc::new(Mutex::new(TcpServerBackend::new())),
             started: false,
             logger: None,
         }
@@ -198,25 +188,34 @@ impl AddIn {
         }
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> String {
+    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> common_core::JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_next_message(timeout_ms, max_message_size),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_message_from_connection(&self, connection_id: &str, timeout_ms: u64, max_message_size: usize) -> String {
+    pub fn get_message_from_connection(
+        &self,
+        connection_id: &str,
+        timeout_ms: u64,
+        max_message_size: usize,
+    ) -> common_core::JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
-            Ok(backend) => backend.get_message_from_connection(connection_id.to_string(), timeout_ms, max_message_size),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Ok(backend) => backend.get_message_from_connection(
+                connection_id.to_string(),
+                timeout_ms,
+                max_message_size,
+            ),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
@@ -273,10 +272,6 @@ impl AddIn {
             Ok(backend) => backend.get_connections_list(),
             Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
         }
-    }
-
-    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        self.vault.retrieve(&vault_key.to_string()).unwrap_or_else(|_| Vec::new())
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {

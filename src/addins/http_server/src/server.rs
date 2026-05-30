@@ -6,9 +6,10 @@ use axum::{
     response::Response,
 };
 use tokio::sync::Mutex as TokioMutex;
-use common_binary::vault::BinaryVault;
-use common_logs::{Logger, log};
-use common_server::{MessageHandler, AsyncWaiter, ConnectionManager};
+use common_janx::{janx, JanxValue};
+use common_logs::{log, Logger};
+use common_server::{AsyncWaiter, ConnectionManager};
+use common_utils::utils::{janx_error, json_error};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 
@@ -47,7 +48,6 @@ impl Default for HttpServerConfig {
 }
 
 pub struct HttpServerState {
-    vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     manager: ConnectionManager<PendingRequest>,
     config: HttpServerConfig,
@@ -72,7 +72,6 @@ impl HttpServerState {
     pub async fn start(
         port: u16,
         config_json: &str,
-        vault: BinaryVault,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
 
@@ -90,7 +89,6 @@ impl HttpServerState {
         let manager = ConnectionManager::new(config.max_pending_requests, logger.clone());
 
         let state = Arc::new(TokioMutex::new(HttpServerState {
-            vault: vault.clone(),
             logger: logger.clone(),
             manager,
             config: config.clone(),
@@ -121,17 +119,15 @@ impl HttpServerState {
         });
 
         Ok(HttpServerState {
-            vault,
             logger: logger.clone(),
             manager: ConnectionManager::new(config.max_pending_requests, logger),
             config,
         })
     }
 
-    pub async fn handle_request(&mut self, timeout_ms: u64) -> String {
+    pub async fn handle_request(&mut self, timeout_ms: u64) -> JanxValue {
         let waiter = AsyncWaiter::new(timeout_ms);
-        let message_handler = MessageHandler::new(self.vault.clone());
-        
+
         let result = waiter.wait_for(|| {
             // Get request IDs in round-robin order
             let ids = self.manager.get_ids_round_robin();
@@ -157,30 +153,20 @@ impl HttpServerState {
                 if let Some((method, path, query, headers, body)) = request_data {
                     self.log(&format!("Received {} request to {}", method, path));
                     self.manager.set_last_processed(Some(request_id.clone()));
-                    
-                    match message_handler.store_message(body) {
-                        Ok(vault_key) => {
-                            json!({
-                                "result": true,
-                                "requestId": request_id,
-                                "method": method,
-                                "path": path,
-                                "query": query,
-                                "headers": headers,
-                                "body": vault_key
-                            }).to_string()
-                        }
-                        Err(e) => {
-                            // Remove failed request
-                            self.manager.remove(&request_id);
-                            MessageHandler::error_response(&e)
-                        }
-                    }
+                    janx!({
+                        "result": true,
+                        "requestId": request_id,
+                        "method": method,
+                        "path": path,
+                        "query": query,
+                        "headers": headers,
+                        "body": body,
+                    })
                 } else {
-                    MessageHandler::error_response("Request not found")
+                    janx_error("Request not found")
                 }
             }
-            Err(()) => MessageHandler::timeout_response(),
+            Err(()) => janx_error("timeout"),
         }
     }
 
@@ -196,12 +182,10 @@ impl HttpServerState {
                         "message": "Response sent"
                     }).to_string()
                 }
-                Err(_) => {
-                    MessageHandler::error_response("Failed to send response: channel closed")
-                }
+                Err(_) => json_error("Failed to send response: channel closed"),
             }
         } else {
-            MessageHandler::error_response("Request not found or already responded")
+            json_error("Request not found or already responded")
         }
     }
 
@@ -224,38 +208,30 @@ impl HttpServerState {
         }).to_string()
     }
 
-    pub async fn handle_request_by_id(&mut self, request_id: &str) -> String {
-        let message_handler = MessageHandler::new(self.vault.clone());
-        
-        // Extract request data
+    pub async fn handle_request_by_id(&mut self, request_id: &str) -> JanxValue {
         let request_data = self.manager.get_mut(request_id, |req| {
-            (req.method.clone(), req.path.clone(), req.query.clone(), 
-             req.headers.clone(), req.body.clone())
+            (
+                req.method.clone(),
+                req.path.clone(),
+                req.query.clone(),
+                req.headers.clone(),
+                req.body.clone(),
+            )
         });
 
         if let Some((method, path, query, headers, body)) = request_data {
             self.log(&format!("Handling specific {} request to {}", method, path));
-            
-            match message_handler.store_message(body) {
-                Ok(vault_key) => {
-                    json!({
-                        "result": true,
-                        "requestId": request_id,
-                        "method": method,
-                        "path": path,
-                        "query": query,
-                        "headers": headers,
-                        "body": vault_key
-                    }).to_string()
-                }
-                Err(e) => {
-                    // Remove failed request
-                    self.manager.remove(request_id);
-                    MessageHandler::error_response(&e)
-                }
-            }
+            janx!({
+                "result": true,
+                "requestId": request_id,
+                "method": method,
+                "path": path,
+                "query": query,
+                "headers": headers,
+                "body": body,
+            })
         } else {
-            MessageHandler::error_response("Request not found")
+            janx_error("Request not found")
         }
     }
 }

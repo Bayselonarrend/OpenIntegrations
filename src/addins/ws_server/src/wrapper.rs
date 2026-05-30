@@ -1,7 +1,8 @@
 use std::sync::{Arc, Mutex};
 use common_utils::utils::{json_error, json_success};
-use common_binary::vault::BinaryVault;
+use common_core::JanxValue;
 use common_logs::Logger;
+use common_utils::utils::janx_error;
 use crate::backend::WebSocketServerBackend;
 
 pub struct WebSocketServer {
@@ -10,9 +11,9 @@ pub struct WebSocketServer {
 }
 
 impl WebSocketServer {
-    pub fn new(vault: BinaryVault) -> Self {
+    pub fn new() -> Self {
         Self {
-            backend: Arc::new(Mutex::new(WebSocketServerBackend::new(vault))),
+            backend: Arc::new(Mutex::new(WebSocketServerBackend::new())),
             started: false,
         }
     }
@@ -55,25 +56,25 @@ impl WebSocketServer {
         }
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64) -> String {
+    pub fn get_next_message(&self, timeout_ms: u64) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_next_message(timeout_ms),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_message(&self, connection_id: &str, timeout_ms: u64) -> String {
+    pub fn get_message(&self, connection_id: &str, timeout_ms: u64) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_message(connection_id.to_string(), timeout_ms),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 

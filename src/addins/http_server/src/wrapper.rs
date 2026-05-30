@@ -1,7 +1,8 @@
 use std::sync::{Arc, Mutex};
 use common_utils::utils::{json_error, json_success};
-use common_binary::vault::BinaryVault;
+use common_core::JanxValue;
 use common_logs::Logger;
+use common_utils::utils::janx_error;
 use crate::backend::HttpServerBackend;
 
 pub struct HttpServer {
@@ -10,9 +11,9 @@ pub struct HttpServer {
 }
 
 impl HttpServer {
-    pub fn new(vault: BinaryVault) -> Self {
+    pub fn new() -> Self {
         Self {
-            backend: Arc::new(Mutex::new(HttpServerBackend::new(vault))),
+            backend: Arc::new(Mutex::new(HttpServerBackend::new())),
             started: false,
         }
     }
@@ -55,25 +56,25 @@ impl HttpServer {
         }
     }
 
-    pub fn handle_request(&self, timeout_ms: u64) -> String {
+    pub fn handle_request(&self, timeout_ms: u64) -> JanxValue {
         if !self.started {
-            return json_error("HTTP server not started");
+            return janx_error("HTTP server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.handle_request(timeout_ms),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn handle_request_by_id(&self, request_id: &str) -> String {
+    pub fn handle_request_by_id(&self, request_id: &str) -> JanxValue {
         if !self.started {
-            return json_error("HTTP server not started");
+            return janx_error("HTTP server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.handle_request_by_id(request_id.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 

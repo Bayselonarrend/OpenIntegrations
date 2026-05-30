@@ -5,8 +5,7 @@ mod write;
 
 use std::sync::Arc;
 use tokio::net::tcp::{OwnedReadHalf, OwnedWriteHalf};
-use common_binary::vault::BinaryVault;
-use common_logs::{Logger, log};
+use common_logs::{log, Logger};
 use common_server::ConnectionManager;
 use common_utils::utils::lock_unpoisoned;
 
@@ -18,7 +17,6 @@ pub struct TcpConnectionInfo {
 
 pub struct ServerState {
     pub(crate) manager: ConnectionManager<TcpConnectionInfo>,
-    pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
 }
 
@@ -29,7 +27,7 @@ impl ServerState {
         }
     }
 
-    pub async fn start(port: u16, queue_size: usize, vault: BinaryVault, logger: Option<Arc<Logger>>) -> Result<Self, String> {
+    pub async fn start(port: u16, queue_size: usize, logger: Option<Arc<Logger>>) -> Result<Self, String> {
         use tokio::net::TcpListener;
         
         if let Some(ref log) = logger {
@@ -106,7 +104,6 @@ impl ServerState {
 
         Ok(ServerState {
             manager,
-            vault,
             logger,
         })
     }

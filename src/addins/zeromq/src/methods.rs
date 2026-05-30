@@ -1,6 +1,4 @@
-use std::collections::BTreeMap;
-
-use common_janx::JanxValue;
+use common_janx::{janx, JanxValue};
 use common_utils::utils::{janx_error, json_error, json_success};
 
 use crate::backend::ExchangeScheme;
@@ -44,14 +42,11 @@ impl AddIn {
         match self.lock_backend().and_then(|g| g.recv_payload(timeout_ms)) {
             Ok(buf) => {
                 let len = buf.len();
-                let mut map = BTreeMap::new();
-                map.insert("result".to_string(), JanxValue::Bool(true));
-                map.insert("data".to_string(), JanxValue::binary(buf));
-                map.insert(
-                    "size".to_string(),
-                    JanxValue::Number((len as i64).into()),
-                );
-                JanxValue::Object(map)
+                janx!({
+                    "result": true,
+                    "data": buf,
+                    "size": len as i64,
+                })
             }
             Err(e) => janx_error(&e),
         }

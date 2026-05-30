@@ -5,7 +5,6 @@ mod server;
 use std::sync::Arc;
 use common_core::*;
 use common_utils::utils::{json_error, version};
-use common_binary::vault::BinaryVault;
 use common_logs::Logger;
 use wrapper::WebSocketServer;
 
@@ -20,11 +19,10 @@ pub const METHODS: &[&[u16]] = &[
     name!("SendMessage"),                // 4
     name!("CloseConnection"),            // 5
     name!("ListConnections"),            // 6
-    name!("RetrieveBinaryFromVault"),    // 7
-    name!("GetLogs"),                    // 8
-    name!("SendText"),                   // 9
-    name!("SendPing"),                   // 10
-    name!("SendPong"),                   // 11
+    name!("GetLogs"),                    // 7
+    name!("SendText"),                   // 8
+    name!("SendPing"),                   // 9
+    name!("SendPong"),                   // 10
     name!("Version"),
 ];
 
@@ -37,12 +35,11 @@ pub fn get_params_amount(num: usize) -> usize {
         4 => 2,  // SendMessage(connection_id, message)
         5 => 2,  // CloseConnection(connection_id, remove_from_list)
         6 => 0,  // ListConnections()
-        7 => 1,  // RetrieveBinaryFromVault(vault_key)
-        8 => 1,  // GetLogs(count)
-        9 => 2,  // SendText(connection_id, text)
-        10 => 2, // SendPing(connection_id, payload)
-        11 => 2, // SendPong(connection_id, payload)
-        12 => 0,
+        7 => 1,  // GetLogs(count)
+        8 => 2,  // SendText(connection_id, text)
+        9 => 2,  // SendPing(connection_id, payload)
+        10 => 2, // SendPong(connection_id, payload)
+        11 => 0,
         _ => 0,
     }
 }
@@ -87,29 +84,25 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.server.get_connections_list())
         },
         7 => {
-            let vault_key = params[0].get_string().unwrap_or_default();
-            Box::new(obj.retrieve_binary_from_vault(&vault_key))
-        },
-        8 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         },
-        9 => {
+        8 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let text = params[1].get_string().unwrap_or_default();
             Box::new(obj.server.send_text(&connection_id, &text))
         },
-        10 => {
+        9 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let payload = params[1].get_blob().unwrap_or(&empty_array);
             Box::new(obj.server.send_ping(&connection_id, payload.to_vec()))
         },
-        11 => {
+        10 => {
             let connection_id = params[0].get_string().unwrap_or_default();
             let payload = params[1].get_blob().unwrap_or(&empty_array);
             Box::new(obj.server.send_pong(&connection_id, payload.to_vec()))
         },
-        12 => Box::new(version()),
+        11 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -118,16 +111,13 @@ pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
     server: WebSocketServer,
-    vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
-        let vault = BinaryVault::new();
         AddIn {
-            server: WebSocketServer::new(vault.clone()),
-            vault,
+            server: WebSocketServer::new(),
             logger: None,
         }
     }
@@ -161,10 +151,6 @@ impl AddIn {
         } else {
             json_error("Logger not initialized")
         }
-    }
-
-    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        self.vault.retrieve(&vault_key.to_string()).unwrap_or_else(|_| Vec::new())
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {

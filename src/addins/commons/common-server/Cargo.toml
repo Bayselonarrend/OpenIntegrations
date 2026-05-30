@@ -12,7 +12,7 @@ indexmap = "2.7.0"
 futures-util = "0.3"
 
 common-backend = { path = "../common-backend" }
-common-binary = { path = "../common-binary" }
 common-core = { path = "../common-core" }
+common-janx = { path = "../common-janx" }
 common-logs = { path = "../common-logs" }
 common-utils = { path = "../common-utils" }

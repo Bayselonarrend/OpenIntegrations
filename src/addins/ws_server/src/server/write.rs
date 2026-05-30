@@ -1,6 +1,5 @@
 use super::{OutgoingMessage, WebSocketServerState};
-use common_server::MessageHandler;
-use common_utils::utils::lock_unpoisoned;
+use common_utils::utils::{json_error, lock_unpoisoned};
 use serde_json::json;
 
 impl WebSocketServerState {
@@ -54,10 +53,10 @@ impl WebSocketServerState {
                     "result": true
                 }).to_string()
             } else {
-                MessageHandler::error_response("WebSocket connection is closed")
+                json_error("WebSocket connection is closed")
             }
         } else {
-            MessageHandler::error_response("WebSocket connection not found")
+            json_error("WebSocket connection not found")
         }
     }
 }

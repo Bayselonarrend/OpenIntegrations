@@ -1,7 +1,6 @@
-use std::collections::BTreeMap;
 use std::sync::{Mutex, MutexGuard};
 
-use common_janx::JanxValue;
+use common_janx::{janx, JanxValue};
 use serde_json::json;
 
 pub fn json_error<E: ToString>(error: E) -> String {
@@ -14,22 +13,24 @@ pub fn json_success() -> String {
 }
 
 pub fn janx_error<E: ToString>(error: E) -> JanxValue {
-    let mut map = BTreeMap::new();
-    map.insert("result".to_string(), JanxValue::Bool(false));
-    map.insert("error".to_string(), JanxValue::String(error.to_string()));
-    JanxValue::Object(map)
+    janx!({
+        "result": false,
+        "error": error.to_string(),
+    })
 }
 
 pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> JanxValue {
-    let mut map = BTreeMap::new();
-    map.insert("result".to_string(), JanxValue::Bool(true));
-
-    if let Some(payload) = payload {
-        let field_name = field.unwrap_or("data");
-        map.insert(field_name.to_string(), payload);
+    match payload {
+        Some(data) => {
+            let field_name = field.unwrap_or("data");
+            let mut map = janx!({ "result": true });
+            if let JanxValue::Object(ref mut fields) = map {
+                fields.insert(field_name.to_string(), data);
+            }
+            map
+        }
+        None => janx!({ "result": true }),
     }
-
-    JanxValue::Object(map)
 }
 
 pub fn lock_unpoisoned<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
