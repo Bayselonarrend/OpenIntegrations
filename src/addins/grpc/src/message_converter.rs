@@ -1,7 +1,5 @@
 use std::collections::HashMap;
 
-use base64::engine::general_purpose;
-use base64::Engine;
 use common_janx::{janx, JanxValue};
 use prost_reflect::{DynamicMessage, Kind, MessageDescriptor, ReflectMessage, Value as ProstValue};
 
@@ -129,27 +127,12 @@ fn janx_to_prost_value_scalar(
 fn decode_bytes_value(value: &JanxValue) -> Result<ProstValue, String> {
     match value {
         JanxValue::Binary(bytes) => Ok(ProstValue::Bytes(bytes.clone().into())),
-        JanxValue::String(s) => {
-            if let Ok(bytes) = std::fs::read(s) {
-                return Ok(ProstValue::Bytes(bytes.into()));
-            }
-
-            let cleaned_base64 = s.replace(['\n', '\r', ' '], "");
-            let bytes = general_purpose::STANDARD
-                .decode(cleaned_base64)
-                .map_err(|_| format!("'{}' is not a valid file path or base64", s))?;
+        JanxValue::String(path) => {
+            let bytes = std::fs::read(path)
+                .map_err(|e| format!("Failed to read bytes from file '{}': {}", path, e))?;
             Ok(ProstValue::Bytes(bytes.into()))
         }
-        JanxValue::Object(obj) => {
-            if let Some(JanxValue::String(key)) = obj.get("BYTES") {
-                decode_bytes_value(&JanxValue::String(key.clone()))
-            } else if let Some(JanxValue::Binary(bytes)) = obj.get("BYTES") {
-                Ok(ProstValue::Bytes(bytes.clone().into()))
-            } else {
-                Err("Expected binary or {\"BYTES\": ...} for bytes field".to_string())
-            }
-        }
-        _ => Err("Expected binary, string, or {\"BYTES\": ...} for bytes field".to_string()),
+        _ => Err("Expected Janx binary or file path string for bytes field".to_string()),
     }
 }
 

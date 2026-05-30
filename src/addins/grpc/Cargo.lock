@@ -968,7 +968,6 @@ checksum = "7c87def4c32ab89d880effc9e097653c8da5d6ef28e6b539d313baaacfbafcbe"
 name = "opi_grpc"
 version = "2.1.0"
 dependencies = [
- "base64",
  "bytes",
  "common-backend",
  "common-core",

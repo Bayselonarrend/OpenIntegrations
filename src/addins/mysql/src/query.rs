@@ -102,13 +102,68 @@ fn process_bytes(bytes: Vec<u8>, column: &Column) -> JanxValue {
 
 fn is_text_type(column: &Column) -> bool {
     let column_type = column.column_type();
-    match column.column_type() {
+    match column_type {
         ColumnType::MYSQL_TYPE_STRING
         | ColumnType::MYSQL_TYPE_VAR_STRING
-        | ColumnType::MYSQL_TYPE_VARCHAR => true,
-        ColumnType::MYSQL_TYPE_BLOB => column.character_set() != 63,
+        | ColumnType::MYSQL_TYPE_VARCHAR
+        | ColumnType::MYSQL_TYPE_JSON => true,
+        ColumnType::MYSQL_TYPE_TINY_BLOB
+        | ColumnType::MYSQL_TYPE_MEDIUM_BLOB
+        | ColumnType::MYSQL_TYPE_LONG_BLOB
+        | ColumnType::MYSQL_TYPE_BLOB => column.character_set() != 63,
         _ if column_type.is_enum_or_set_type() => true,
         _ => false,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn column(column_type: ColumnType, character_set: u16) -> Column {
+        Column::new(column_type).with_character_set(character_set)
+    }
+
+    #[test]
+    fn text_blob_wire_types_use_charset_not_binary() {
+        assert!(is_text_type(&column(
+            ColumnType::MYSQL_TYPE_LONG_BLOB,
+            mysql_common::constants::UTF8_GENERAL_CI,
+        )));
+        assert!(is_text_type(&column(
+            ColumnType::MYSQL_TYPE_MEDIUM_BLOB,
+            mysql_common::constants::UTF8MB4_GENERAL_CI,
+        )));
+        assert!(!is_text_type(&column(ColumnType::MYSQL_TYPE_MEDIUM_BLOB, 63)));
+        assert!(!is_text_type(&column(ColumnType::MYSQL_TYPE_LONG_BLOB, 63)));
+    }
+
+    #[test]
+    fn varchar_and_json_are_text() {
+        assert!(is_text_type(&column(ColumnType::MYSQL_TYPE_VAR_STRING, 63)));
+        assert!(is_text_type(&column(ColumnType::MYSQL_TYPE_JSON, 63)));
+    }
+
+    #[test]
+    fn process_bytes_returns_string_for_text_blob_columns() {
+        let value = process_bytes(
+            b"mediumtext".to_vec(),
+            &column(
+                ColumnType::MYSQL_TYPE_LONG_BLOB,
+                mysql_common::constants::UTF8_GENERAL_CI,
+            ),
+        );
+        assert_eq!(value, JanxValue::String("mediumtext".into()));
+    }
+
+    #[test]
+    fn process_bytes_returns_binary_for_blob_columns() {
+        let bytes = b"binary payload".to_vec();
+        let value = process_bytes(
+            bytes.clone(),
+            &column(ColumnType::MYSQL_TYPE_MEDIUM_BLOB, 63),
+        );
+        assert_eq!(value, JanxValue::Binary(bytes));
     }
 }
 
