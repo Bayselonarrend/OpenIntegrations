@@ -1,19 +1,4 @@
-/// Builds a [`JanxValue`](crate::JanxValue) from literal or expression syntax (similar to [`serde_json::json!`]).
-///
-/// # Examples
-///
-/// ```no_run
-/// use common_janx::{janx, JanxValue};
-///
-/// let msg = janx!({
-///     "result": true,
-///     "connectionId": "abc",
-///     "message": vec![1u8, 2, 3],
-///     "active": true,
-/// });
-/// assert!(matches!(msg, JanxValue::Object(_)));
-/// ```
-#[macro_export]
+ #[macro_export]
 macro_rules! janx {
     ($($json:tt)+) => {
         $crate::__janx_internal!($($json)+)

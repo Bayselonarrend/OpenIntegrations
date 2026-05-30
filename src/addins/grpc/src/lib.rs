@@ -37,7 +37,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("FinishSending"),
     name!("CloseStream"),
     name!("CompileProtos"),
-    name!("LoadBinaryToVault"),
     name!("GetSettings"),
     name!("StoreSettings"),
     name!("SetLogger"),
@@ -66,26 +65,20 @@ pub fn get_params_amount(num: usize) -> usize {
         14 => 1, // FinishSending
         15 => 1, // CloseStream
         16 => 0, // CompileProtos
-        17 => 1, // LoadBinaryToVault
-        18 => 0, // GetSettings
-        19 => 1, // StoreSettings
-        20 => 1, // SetLogger
-        21 => 1, // GetLogs
-        22 => 0, // Version
+        17 => 0, // GetSettings
+        18 => 1, // StoreSettings
+        19 => 1, // SetLogger
+        20 => 1, // GetLogs
+        21 => 0, // Version
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-    let empty_array: [u8; 0] = [];
-
     match num {
         0 => Box::new(obj.connect()),
         1 => Box::new(obj.disconnect()),
-        2 => {
-            let request_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.call(&request_json))
-        }
+        2 => Box::new(obj.call(&JanxValue::from_variant(&params[0]))),
         3 => {
             let filename = params[0].get_string().unwrap_or("main.proto".to_string());
             let proto_content = params[1].get_string().unwrap_or_default();
@@ -111,22 +104,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let method_name = params[1].get_string().unwrap_or_default();
             Box::new(obj.get_method_info(&service_name, &method_name))
         }
-        9 => {
-            let request_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.call_server_stream(&request_json))
-        }
-        10 => {
-            let request_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.start_client_stream(&request_json))
-        }
-        11 => {
-            let request_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.start_bidi_stream(&request_json))
-        }
+        9 => Box::new(obj.call_server_stream(&JanxValue::from_variant(&params[0]))),
+        10 => Box::new(obj.start_client_stream(&JanxValue::from_variant(&params[0]))),
+        11 => Box::new(obj.start_bidi_stream(&JanxValue::from_variant(&params[0]))),
         12 => {
             let stream_id = params[0].get_string().unwrap_or_default();
-            let message_json = params[1].get_string().unwrap_or_default();
-            Box::new(obj.send_message(&stream_id, &message_json))
+            Box::new(obj.send_message(
+                &stream_id,
+                &JanxValue::from_variant(&params[1]),
+            ))
         }
         13 => {
             let stream_id = params[0].get_string().unwrap_or_default();
@@ -141,24 +127,20 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.close_stream(&stream_id))
         }
         16 => Box::new(obj.compile_protos()),
-        17 => {
-            let bytes = params[0].get_blob().unwrap_or(&empty_array);
-            Box::new(obj.store_bytes(Vec::from(bytes)))
-        }
-        18 => Box::new(obj.get_settings()),
-        19 => {
+        17 => Box::new(obj.get_settings()),
+        18 => {
             let settings = params[0].get_string().unwrap_or_default();
             Box::new(obj.store_settings(settings))
         }
-        20 => {
+        19 => {
             let logger_config = params[0].get_string().unwrap_or_default();
             Box::new(obj.set_logger(&logger_config))
         }
-        21 => {
+        20 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        22 => Box::new(version()),
+        21 => Box::new(version()),
         _ => Box::new(false),
     }
 }

@@ -3,10 +3,10 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_binary::vault::BinaryVault;
+use common_janx::{janx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::json_error;
+use common_utils::utils::{janx_error, json_error};
 use serde_json::json;
 
 use crate::client_state::ClientState;
@@ -25,8 +25,8 @@ pub enum WorkerCommand {
         response: Sender<Result<(), String>>,
     },
     Call {
-        params: CallParams,
-        response: Sender<String>,
+        params_janx: JanxValue,
+        response: Sender<JanxValue>,
     },
     LoadProto {
         filename: String,
@@ -53,25 +53,25 @@ pub enum WorkerCommand {
         response: Sender<String>,
     },
     CallServerStream {
-        params_json: String,
+        params_janx: JanxValue,
         response: Sender<String>,
     },
     StartClientStream {
-        params_json: String,
+        params_janx: JanxValue,
         response: Sender<String>,
     },
     StartBidiStream {
-        params_json: String,
+        params_janx: JanxValue,
         response: Sender<String>,
     },
     SendMessage {
         stream_id: String,
-        message_json: String,
+        message: JanxValue,
         response: Sender<String>,
     },
     GetNextMessage {
         stream_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     FinishSending {
         stream_id: String,
@@ -115,11 +115,8 @@ impl Session {
 }
 
 pub fn spawn_thread(
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 ) -> Result<BackendThread<WorkerCommand>, String> {
-    let vault_clone = binary_vault.clone();
-
     BackendThread::spawn("opi_grpc_backend", move |rt, rx| {
         let mut session = Session::new(logger);
 
@@ -152,7 +149,14 @@ pub fn spawn_thread(
                             session.state.disconnect();
                             let _ = response.send(Ok(()));
                         }
-                        WorkerCommand::Call { params, response } => {
+                        WorkerCommand::Call { params_janx, response } => {
+                            let params = match CallParams::from_janx(&params_janx) {
+                                Ok(p) => p,
+                                Err(e) => {
+                                    let _ = response.send(janx_error(e));
+                                    continue;
+                                }
+                            };
                             session.log(&format!("Call {}/{}", params.service, params.method));
                             let result = if !session.state.connected {
                                 Err("Not connected to gRPC server".to_string())
@@ -160,7 +164,6 @@ pub fn spawn_thread(
                                 (&mut session.state.channel, &session.state.descriptor_pool)
                             {
                                 rt.block_on(grpc_caller::execute_grpc_call(
-                                    &vault_clone,
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
@@ -170,8 +173,8 @@ pub fn spawn_thread(
                                 Err("No active connection or proto files loaded".to_string())
                             };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(data) => janx!({ "result": true, "data": data }),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -253,7 +256,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::CallServerStream { params_json, response } => {
+                        WorkerCommand::CallServerStream { params_janx, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -261,16 +264,15 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&format!("Invalid params: {}", e));
+                                        let response_msg = json_error(&e);
                                         let _ = response.send(response_msg);
                                         continue;
                                     }
                                 };
                                 rt.block_on(streaming_caller::start_server_stream(
-                                    &vault_clone,
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
@@ -289,7 +291,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::StartClientStream { params_json, response } => {
+                        WorkerCommand::StartClientStream { params_janx, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -297,16 +299,15 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&format!("Invalid params: {}", e));
+                                        let response_msg = json_error(&e);
                                         let _ = response.send(response_msg);
                                         continue;
                                     }
                                 };
                                 rt.block_on(streaming_caller::start_client_stream(
-                                    &vault_clone,
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
@@ -325,7 +326,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::StartBidiStream { params_json, response } => {
+                        WorkerCommand::StartBidiStream { params_janx, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -333,16 +334,15 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&format!("Invalid params: {}", e));
+                                        let response_msg = json_error(&e);
                                         let _ = response.send(response_msg);
                                         continue;
                                     }
                                 };
                                 rt.block_on(streaming_caller::start_bidi_stream(
-                                    &vault_clone,
                                     channel,
                                     descriptor_pool,
                                     &session.state.metadata,
@@ -363,28 +363,20 @@ pub fn spawn_thread(
                         }
                         WorkerCommand::SendMessage {
                             stream_id,
-                            message_json,
+                            message,
                             response,
                         } => {
                             use crate::streaming_caller;
 
-                            let result = rt.block_on(async {
-                                let message_value: serde_json::Value =
-                                    serde_json::from_str(&message_json)
-                                        .map_err(|e| format!("Invalid message JSON: {}", e))?;
-
-                                streaming_caller::send_stream_message(
-                                    &vault_clone,
-                                    &session.state.stream_manager,
-                                    &stream_id,
-                                    &message_value,
-                                )
-                                .await
-                            });
+                            let result = rt.block_on(streaming_caller::send_stream_message(
+                                &session.state.stream_manager,
+                                &stream_id,
+                                &message,
+                            ));
 
                             let response_msg = match result {
                                 Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => e,
+                                Err(e) => json_error(&e),
                             };
 
                             let _ = response.send(response_msg);
@@ -393,14 +385,13 @@ pub fn spawn_thread(
                             use crate::streaming_caller;
 
                             let result = rt.block_on(streaming_caller::get_next_message(
-                                &vault_clone,
                                 &session.state.stream_manager,
                                 &stream_id,
                             ));
 
                             let response_msg = match result {
-                                Ok(data) => data.to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(data) => data,
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }

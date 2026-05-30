@@ -18,8 +18,8 @@ opt-level = "z"
 common-utils = { path = "../commons/common-utils" }
 common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
+common-janx = { path = "../commons/common-janx" }
 common-tcp = { path = "../commons/common-tcp", default-features = false, features = ["rustls"] }
-common-binary = { path = "../commons/common-binary" }
 common-logs = { path = "../commons/common-logs" }
 
 serde = { version = "1.0.219", features = ["derive"] }

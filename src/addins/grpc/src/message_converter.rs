@@ -1,206 +1,210 @@
-use serde_json::{json, Value};
-use prost_reflect::{DynamicMessage, MessageDescriptor, ReflectMessage};
-use common_binary::vault::{BinaryVault, VaultKey};
-use std::str::FromStr;
-use base64::Engine;
-use base64::engine::general_purpose;
+use std::collections::HashMap;
 
-pub fn json_to_dynamic_message(binary_vault: &BinaryVault, json_value: &Value, message_desc: &MessageDescriptor) -> Result<DynamicMessage, String> {
+use base64::engine::general_purpose;
+use base64::Engine;
+use common_janx::{janx, JanxValue};
+use prost_reflect::{DynamicMessage, Kind, MessageDescriptor, ReflectMessage, Value as ProstValue};
+
+pub fn janx_to_dynamic_message(
+    json_value: &JanxValue,
+    message_desc: &MessageDescriptor,
+) -> Result<DynamicMessage, String> {
     let mut message = DynamicMessage::new(message_desc.clone());
 
-    if let Value::Object(obj) = json_value {
-        for (field_name, field_value) in obj {
-            if field_value.is_null() {
-                continue;
-            }
+    let Some(obj) = json_value.as_object() else {
+        return Err("Expected object for message".to_string());
+    };
 
-            if let Some(field_desc) = message_desc.get_field_by_name(field_name) {
-                let prost_value = json_value_to_prost_value(binary_vault, field_value, &field_desc)?;
-                message.set_field(&field_desc, prost_value);
-            }
+    for (field_name, field_value) in obj {
+        if matches!(field_value, JanxValue::Null) {
+            continue;
+        }
+
+        if let Some(field_desc) = message_desc.get_field_by_name(field_name) {
+            let prost_value = janx_to_prost_value(field_value, &field_desc)?;
+            message.set_field(&field_desc, prost_value);
         }
     }
 
     Ok(message)
 }
 
-fn json_value_to_prost_value(binary_vault: &BinaryVault, json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
-    use prost_reflect::Value as ProstValue;
-
+fn janx_to_prost_value(
+    value: &JanxValue,
+    field_desc: &prost_reflect::FieldDescriptor,
+) -> Result<ProstValue, String> {
     if field_desc.is_list() {
-        return match json_value {
-            Value::Array(arr) => {
-                let list: Result<Vec<ProstValue>, String> = arr.iter()
-                    .map(|item| json_value_to_prost_value_scalar(binary_vault, item, field_desc))
-                    .collect();
-                Ok(ProstValue::List(list?))
-            },
-            _ => Err(format!("Expected array for repeated field '{}'", field_desc.name())),
+        let Some(arr) = value.as_array() else {
+            return Err(format!(
+                "Expected array for repeated field '{}'",
+                field_desc.name()
+            ));
         };
+        let list: Result<Vec<ProstValue>, String> = arr
+            .iter()
+            .map(|item| janx_to_prost_value_scalar(item, field_desc))
+            .collect();
+        return Ok(ProstValue::List(list?));
     }
 
     if field_desc.is_map() {
-        return match json_value {
-            Value::Object(obj) => {
-                let mut map = std::collections::HashMap::new();
-                for (key, value) in obj {
-                    let val_value = json_value_to_prost_value_scalar(binary_vault, value, field_desc)?;
-                    map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
-                }
-                Ok(ProstValue::Map(map))
-            },
-            _ => Err(format!("Expected object for map field '{}'", field_desc.name())),
+        let Some(obj) = value.as_object() else {
+            return Err(format!(
+                "Expected object for map field '{}'",
+                field_desc.name()
+            ));
         };
+        let mut map = HashMap::new();
+        for (key, item) in obj {
+            let val_value = janx_to_prost_value_scalar(item, field_desc)?;
+            map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
+        }
+        return Ok(ProstValue::Map(map));
     }
 
-    json_value_to_prost_value_scalar(binary_vault, json_value, field_desc)
+    janx_to_prost_value_scalar(value, field_desc)
 }
 
-fn json_value_to_prost_value_scalar(binary_vault: &BinaryVault, json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
-    use prost_reflect::{Value as ProstValue, Kind};
-
+fn janx_to_prost_value_scalar(
+    value: &JanxValue,
+    field_desc: &prost_reflect::FieldDescriptor,
+) -> Result<ProstValue, String> {
     match field_desc.kind() {
-        Kind::Double => match json_value {
-            Value::Number(n) => Ok(ProstValue::F64(n.as_f64().unwrap_or(0.0))),
-            Value::String(s) => Ok(ProstValue::F64(s.parse().unwrap_or(0.0))),
+        Kind::Double => match value {
+            JanxValue::Number(n) => Ok(ProstValue::F64(n.as_f64().unwrap_or(0.0))),
+            JanxValue::String(s) => Ok(ProstValue::F64(s.parse().unwrap_or(0.0))),
             _ => Err("Expected number for double field".to_string()),
         },
-        Kind::Float => match json_value {
-            Value::Number(n) => Ok(ProstValue::F32(n.as_f64().unwrap_or(0.0) as f32)),
-            Value::String(s) => Ok(ProstValue::F32(s.parse().unwrap_or(0.0))),
+        Kind::Float => match value {
+            JanxValue::Number(n) => Ok(ProstValue::F32(n.as_f64().unwrap_or(0.0) as f32)),
+            JanxValue::String(s) => Ok(ProstValue::F32(s.parse().unwrap_or(0.0))),
             _ => Err("Expected number for float field".to_string()),
         },
-        Kind::Int32 | Kind::Sint32 | Kind::Sfixed32 => match json_value {
-            Value::Number(n) => Ok(ProstValue::I32(n.as_i64().unwrap_or(0) as i32)),
+        Kind::Int32 | Kind::Sint32 | Kind::Sfixed32 => match value {
+            JanxValue::Number(n) => Ok(ProstValue::I32(n.as_i64().unwrap_or(0) as i32)),
             _ => Err("Expected number for int32 field".to_string()),
         },
-        Kind::Int64 | Kind::Sint64 | Kind::Sfixed64 => match json_value {
-            Value::Number(n) => Ok(ProstValue::I64(n.as_i64().unwrap_or(0))),
+        Kind::Int64 | Kind::Sint64 | Kind::Sfixed64 => match value {
+            JanxValue::Number(n) => Ok(ProstValue::I64(n.as_i64().unwrap_or(0))),
             _ => Err("Expected number for int64 field".to_string()),
         },
-        Kind::Uint32 | Kind::Fixed32 => match json_value {
-            Value::Number(n) => Ok(ProstValue::U32(n.as_u64().unwrap_or(0) as u32)),
+        Kind::Uint32 | Kind::Fixed32 => match value {
+            JanxValue::Number(n) => Ok(ProstValue::U32(n.as_u64().unwrap_or(0) as u32)),
             _ => Err("Expected number for uint32 field".to_string()),
         },
-        Kind::Uint64 | Kind::Fixed64 => match json_value {
-            Value::Number(n) => Ok(ProstValue::U64(n.as_u64().unwrap_or(0))),
+        Kind::Uint64 | Kind::Fixed64 => match value {
+            JanxValue::Number(n) => Ok(ProstValue::U64(n.as_u64().unwrap_or(0))),
             _ => Err("Expected number for uint64 field".to_string()),
         },
-        Kind::Bool => match json_value {
-            Value::Bool(b) => Ok(ProstValue::Bool(*b)),
+        Kind::Bool => match value {
+            JanxValue::Bool(b) => Ok(ProstValue::Bool(*b)),
             _ => Err("Expected boolean for bool field".to_string()),
         },
-        Kind::String => match json_value {
-            Value::String(s) => Ok(ProstValue::String(s.clone())),
+        Kind::String => match value {
+            JanxValue::String(s) => Ok(ProstValue::String(s.clone())),
             _ => Err("Expected string for string field".to_string()),
         },
-        Kind::Bytes => match json_value {
-            Value::String(s) => {
-
-                if let Ok(bytes) = binary_vault.retrieve(&VaultKey::from_str(s).unwrap_or_default()) {
-                    return Ok(ProstValue::Bytes(bytes.into()))
-                }
-
-                if let Ok(bytes) = std::fs::read(s) {
-                    return Ok(ProstValue::Bytes(bytes.into()));
-                }
-
-                let cleaned_base64 = s
-                    .as_str()
-                    .replace(&['\n', '\r', ' '][..], "");
-
-                let bytes = base64::engine::general_purpose::STANDARD.decode(cleaned_base64)
-                    .map_err(|_| format!("'{}' is not a valid vault key, file path, or base64", s))?;
-                Ok(ProstValue::Bytes(bytes.into()))
-            },
-            Value::Object(obj) => {
-                if let Some(Value::String(key)) = obj.get("BYTES") {
-                    let vault_key = VaultKey::from_str(key).map_err(|e| format!("Invalid vault key: {}", e))?;
-                    let bytes = binary_vault.retrieve(&vault_key).map_err(|e| format!("Failed to retrieve from vault: {}", e))?;
-                    Ok(ProstValue::Bytes(bytes.into()))
-                } else {
-                    Err("Expected {\"BYTES\": \"vault_key\"} for bytes field".to_string())
-                }
-            },
-            _ => Err("Expected base64 string or {\"BYTES\": \"vault_key\"} for bytes field".to_string()),
-        },
-        Kind::Message(msg_desc) => match json_value {
-            Value::Object(_) => {
-                let sub_message = json_to_dynamic_message(binary_vault, json_value, &msg_desc)?;
+        Kind::Bytes => decode_bytes_value(value),
+        Kind::Message(msg_desc) => match value {
+            JanxValue::Object(_) => {
+                let sub_message = janx_to_dynamic_message(value, &msg_desc)?;
                 Ok(ProstValue::Message(sub_message))
-            },
+            }
             _ => Err("Expected object for message field".to_string()),
         },
-        Kind::Enum(enum_desc) => match json_value {
-            Value::String(s) => {
+        Kind::Enum(enum_desc) => match value {
+            JanxValue::String(s) => {
                 if let Some(enum_value) = enum_desc.get_value_by_name(s) {
                     Ok(ProstValue::EnumNumber(enum_value.number()))
                 } else {
                     Err(format!("Unknown enum value: {}", s))
                 }
-            },
-            Value::Number(n) => Ok(ProstValue::EnumNumber(n.as_i64().unwrap_or(0) as i32)),
+            }
+            JanxValue::Number(n) => Ok(ProstValue::EnumNumber(n.as_i64().unwrap_or(0) as i32)),
             _ => Err("Expected string or number for enum field".to_string()),
         },
     }
 }
 
-pub fn dynamic_message_to_json(binary_vault: &BinaryVault, message: &DynamicMessage) -> Result<Value, String> {
-    let mut result = serde_json::Map::new();
+fn decode_bytes_value(value: &JanxValue) -> Result<ProstValue, String> {
+    match value {
+        JanxValue::Binary(bytes) => Ok(ProstValue::Bytes(bytes.clone().into())),
+        JanxValue::String(s) => {
+            if let Ok(bytes) = std::fs::read(s) {
+                return Ok(ProstValue::Bytes(bytes.into()));
+            }
+
+            let cleaned_base64 = s.replace(['\n', '\r', ' '], "");
+            let bytes = general_purpose::STANDARD
+                .decode(cleaned_base64)
+                .map_err(|_| format!("'{}' is not a valid file path or base64", s))?;
+            Ok(ProstValue::Bytes(bytes.into()))
+        }
+        JanxValue::Object(obj) => {
+            if let Some(JanxValue::String(key)) = obj.get("BYTES") {
+                decode_bytes_value(&JanxValue::String(key.clone()))
+            } else if let Some(JanxValue::Binary(bytes)) = obj.get("BYTES") {
+                Ok(ProstValue::Bytes(bytes.clone().into()))
+            } else {
+                Err("Expected binary or {\"BYTES\": ...} for bytes field".to_string())
+            }
+        }
+        _ => Err("Expected binary, string, or {\"BYTES\": ...} for bytes field".to_string()),
+    }
+}
+
+pub fn dynamic_message_to_janx(message: &DynamicMessage) -> Result<JanxValue, String> {
+    let mut fields = std::collections::BTreeMap::new();
 
     for field_desc in message.descriptor().fields() {
         let field_value = message.get_field(&field_desc);
-        let json_value = prost_value_to_json_value(binary_vault, &field_value, &field_desc)?;
-        result.insert(field_desc.name().to_string(), json_value);
+        let janx_value = prost_value_to_janx(&field_value, &field_desc)?;
+        fields.insert(field_desc.name().to_string(), janx_value);
     }
 
-    Ok(Value::Object(result))
+    Ok(JanxValue::Object(fields))
 }
 
-fn prost_value_to_json_value(binary_vault: &BinaryVault, prost_value: &prost_reflect::Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<Value, String> {
-    use prost_reflect::{Value as ProstValue, Kind};
-
+fn prost_value_to_janx(
+    prost_value: &ProstValue,
+    field_desc: &prost_reflect::FieldDescriptor,
+) -> Result<JanxValue, String> {
     match prost_value {
-        ProstValue::Bool(b) => Ok(Value::Bool(*b)),
-        ProstValue::I32(i) => Ok(Value::Number((*i).into())),
-        ProstValue::I64(i) => Ok(Value::Number((*i).into())),
-        ProstValue::U32(u) => Ok(Value::Number((*u).into())),
-        ProstValue::U64(u) => Ok(Value::Number((*u).into())),
-        ProstValue::F32(f) => Ok(json!(f)),
-        ProstValue::F64(f) => Ok(json!(f)),
-        ProstValue::String(s) => Ok(Value::String(s.clone())),
-        ProstValue::Bytes(b) => {
-            let base64_string = general_purpose::STANDARD.encode(b);
-            let mut blob_object = serde_json::Map::new();
-            blob_object.insert("BYTES".to_string(), Value::String(base64_string));
-            Ok(Value::Object(blob_object))
-        },
+        ProstValue::Bool(b) => Ok(JanxValue::Bool(*b)),
+        ProstValue::I32(i) => Ok(JanxValue::Number((*i).into())),
+        ProstValue::I64(i) => Ok(JanxValue::Number((*i).into())),
+        ProstValue::U32(u) => Ok(JanxValue::Number((*u).into())),
+        ProstValue::U64(u) => Ok(JanxValue::Number((*u).into())),
+        ProstValue::F32(f) => Ok(janx!(*f)),
+        ProstValue::F64(f) => Ok(janx!(*f)),
+        ProstValue::String(s) => Ok(JanxValue::String(s.clone())),
+        ProstValue::Bytes(b) => Ok(JanxValue::binary(b.to_vec())),
         ProstValue::EnumNumber(n) => {
             if let Kind::Enum(enum_desc) = field_desc.kind() {
                 if let Some(enum_value) = enum_desc.get_value(*n) {
-                    Ok(Value::String(enum_value.name().to_string()))
+                    Ok(JanxValue::String(enum_value.name().to_string()))
                 } else {
-                    Ok(Value::Number((*n).into()))
+                    Ok(JanxValue::Number((*n).into()))
                 }
             } else {
-                Ok(Value::Number((*n).into()))
+                Ok(JanxValue::Number((*n).into()))
             }
-        },
-        ProstValue::Message(msg) => dynamic_message_to_json(binary_vault, msg),
+        }
+        ProstValue::Message(msg) => dynamic_message_to_janx(msg),
         ProstValue::List(list) => {
-            let json_list: Result<Vec<Value>, String> = list.iter()
-                .map(|item| prost_value_to_json_value(binary_vault, item, field_desc))
+            let items: Result<Vec<JanxValue>, String> = list
+                .iter()
+                .map(|item| prost_value_to_janx(item, field_desc))
                 .collect();
-            Ok(Value::Array(json_list?))
-        },
+            Ok(JanxValue::Array(items?))
+        }
         ProstValue::Map(map) => {
-            let mut json_map = serde_json::Map::new();
+            let mut fields = std::collections::BTreeMap::new();
             for (key, value) in map {
                 let key_str = format!("{:?}", key);
-                let json_value = prost_value_to_json_value(binary_vault, value, field_desc)?;
-                json_map.insert(key_str, json_value);
+                fields.insert(key_str, prost_value_to_janx(value, field_desc)?);
             }
-            Ok(Value::Object(json_map))
-        },
+            Ok(JanxValue::Object(fields))
+        }
     }
 }

@@ -2,16 +2,13 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_binary::vault::{BinaryInput, BinaryVault};
+use common_janx::JanxValue;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
 
-use crate::grpc_caller::CallParams;
 use crate::worker::{self, WorkerCommand};
-
 pub struct GrpcBackend {
     thread: Option<BackendThread<WorkerCommand>>,
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
 
@@ -19,7 +16,6 @@ impl GrpcBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
-            binary_vault: BinaryVault::new(),
             logger: None,
         }
     }
@@ -59,11 +55,11 @@ impl GrpcBackend {
         })
     }
 
-    pub fn store_binary(&mut self, input: BinaryInput) -> Result<String, String> {
-        self.binary_vault.store(input).map_err(|e| e.to_string())
-    }
-
-    pub fn connect(&mut self, address: &str, tls_settings: &Option<TlsSettings>) -> Result<(), String> {
+    pub fn connect(
+        &mut self,
+        address: &str,
+        tls_settings: &Option<TlsSettings>,
+    ) -> Result<(), String> {
         if self.is_connected() {
             return Err("Connection already initialized".to_string());
         }
@@ -99,20 +95,20 @@ impl GrpcBackend {
             .and_then(|result| result)
     }
 
-    pub fn call(&self, request_json: &str) -> Result<String, String> {
+    pub fn call(&self, request: &JanxValue) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
-
-        let params: CallParams = serde_json::from_str(request_json)
-            .map_err(|e| format!("Invalid request JSON: {}", e))?;
 
         let thread = self
             .thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?;
 
-        thread.call(|response| WorkerCommand::Call { params, response })
+        thread.call(|response| WorkerCommand::Call {
+            params_janx: request.clone(),
+            response,
+        })
     }
 
     pub fn load_proto(&mut self, filename: &str, content: &str) -> Result<(), String> {
@@ -193,7 +189,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn call_server_stream(&self, params_json: &str) -> Result<String, String> {
+    pub fn call_server_stream(&self, params: &JanxValue) -> Result<String, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -202,12 +198,12 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::CallServerStream {
-                params_json: params_json.to_string(),
+                params_janx: params.clone(),
                 response,
             })
     }
 
-    pub fn start_client_stream(&self, params_json: &str) -> Result<String, String> {
+    pub fn start_client_stream(&self, params: &JanxValue) -> Result<String, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -216,12 +212,12 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::StartClientStream {
-                params_json: params_json.to_string(),
+                params_janx: params.clone(),
                 response,
             })
     }
 
-    pub fn start_bidi_stream(&self, params_json: &str) -> Result<String, String> {
+    pub fn start_bidi_stream(&self, params: &JanxValue) -> Result<String, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -230,23 +226,23 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::StartBidiStream {
-                params_json: params_json.to_string(),
+                params_janx: params.clone(),
                 response,
             })
     }
 
-    pub fn send_message(&self, stream_id: &str, message_json: &str) -> Result<String, String> {
+    pub fn send_message(&self, stream_id: &str, message: &JanxValue) -> Result<String, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::SendMessage {
                 stream_id: stream_id.to_string(),
-                message_json: message_json.to_string(),
+                message: message.clone(),
                 response,
             })
     }
 
-    pub fn get_next_message(&self, stream_id: &str) -> Result<String, String> {
+    pub fn get_next_message(&self, stream_id: &str) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -297,7 +293,7 @@ impl GrpcBackend {
             return Ok(());
         }
 
-        let thread = worker::spawn_thread(self.binary_vault.clone(), self.logger.clone())?;
+        let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }

@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use common_binary::vault::BinaryInput;
+use common_core::JanxValue;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
@@ -89,10 +89,10 @@ impl AddIn {
         }
     }
 
-    pub fn call(&mut self, request_json: &str) -> String {
+    pub fn call(&mut self, request: &JanxValue) -> JanxValue {
         self.client
-            .call(request_json)
-            .unwrap_or_else(|e| json_error(&e))
+            .call(request)
+            .unwrap_or_else(|e| common_utils::utils::janx_error(&e))
     }
 
     pub fn load_proto(&mut self, filename: &str, proto_content: &str) -> String {
@@ -148,7 +148,12 @@ impl AddIn {
         }
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+    pub fn set_tls(
+        &mut self,
+        use_tls: bool,
+        accept_invalid_certs: bool,
+        ca_cert_path: &str,
+    ) -> String {
         if self.client.is_connected() {
             return json_error(
                 "TLS settings can only be set before the connection is established",
@@ -177,34 +182,34 @@ impl AddIn {
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn call_server_stream(&mut self, request_json: &str) -> String {
+    pub fn call_server_stream(&mut self, request: &JanxValue) -> String {
         self.client
-            .call_server_stream(request_json)
+            .call_server_stream(request)
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn start_client_stream(&mut self, request_json: &str) -> String {
+    pub fn start_client_stream(&mut self, request: &JanxValue) -> String {
         self.client
-            .start_client_stream(request_json)
+            .start_client_stream(request)
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn start_bidi_stream(&mut self, request_json: &str) -> String {
+    pub fn start_bidi_stream(&mut self, request: &JanxValue) -> String {
         self.client
-            .start_bidi_stream(request_json)
+            .start_bidi_stream(request)
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn send_message(&mut self, stream_id: &str, message_json: &str) -> String {
+    pub fn send_message(&mut self, stream_id: &str, message: &JanxValue) -> String {
         self.client
-            .send_message(stream_id, message_json)
+            .send_message(stream_id, message)
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn get_next_message(&mut self, stream_id: &str) -> String {
+    pub fn get_next_message(&mut self, stream_id: &str) -> JanxValue {
         self.client
             .get_next_message(stream_id)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| common_utils::utils::janx_error(&e))
     }
 
     pub fn finish_sending(&mut self, stream_id: &str) -> String {
@@ -217,13 +222,6 @@ impl AddIn {
         self.client
             .close_stream(stream_id)
             .unwrap_or_else(|e| json_error(&e))
-    }
-
-    pub fn store_bytes(&mut self, bytes: Vec<u8>) -> String {
-        match self.client.store_binary(BinaryInput::Bytes(bytes)) {
-            Ok(key) => json!({"result": true, "key": key}).to_string(),
-            Err(e) => json_error(&format!("Failed to store bytes: {}", e)),
-        }
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn common_core::getset::ValueType {

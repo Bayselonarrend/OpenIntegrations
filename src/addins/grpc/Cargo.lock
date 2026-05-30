@@ -208,19 +208,18 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-binary"
-version = "2.1.0"
-dependencies = [
- "base64",
- "serde_json",
- "uuid",
-]
-
-[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
 ]
 
 [[package]]
@@ -252,6 +251,7 @@ dependencies = [
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
@@ -971,8 +971,8 @@ dependencies = [
  "base64",
  "bytes",
  "common-backend",
- "common-binary",
  "common-core",
+ "common-janx",
  "common-logs",
  "common-tcp",
  "common-utils",
