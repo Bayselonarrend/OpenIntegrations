@@ -46,7 +46,7 @@ impl WebSocketClient {
                     janx!({
                         "result": true,
                         "type": "binary",
-                        "data": data,
+                        "data": data.to_vec(),
                         "size": len as i64,
                     })
                 }

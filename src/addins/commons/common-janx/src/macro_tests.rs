@@ -1,7 +1,5 @@
 use crate::{decode, encode, JanxValue};
 
-use crate::janx;
-
 #[test]
 fn janx_object_with_binary_roundtrip() {
     let value = janx!({

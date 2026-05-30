@@ -4,13 +4,6 @@ use serde_json::Number;
 
 use crate::JanxValue;
 
-/// Извлечение типизированного значения из [`JanxValue`].
-///
-/// Аналог [`common_core::FromVariant`]: целевой тип задаётся в Turbofish или через вывод,
-/// при несовпадении варианта Janx возвращается `None`.
-///
-/// Оператор `as` в Rust здесь не используется: он только для примитивов (`i32 as i64` и т.п.).
-/// Для Janx — [`FromJanx::from_janx`], методы [`JanxValue::as_str`] / [`JanxValue::as_i64`], либо стандартный [`TryFrom`].
 pub trait FromJanx: Sized {
     fn from_janx(value: &JanxValue) -> Option<Self>;
 }

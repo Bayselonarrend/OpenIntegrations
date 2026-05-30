@@ -4,7 +4,6 @@ use serde_json::Number;
 
 use crate::JanxValue;
 
-/// Converts Rust values into [`JanxValue`] (used by [`janx!`](crate::janx)).
 pub trait IntoJanx {
     fn into_janx(self) -> JanxValue;
 }
@@ -93,22 +92,33 @@ impl IntoJanx for &[u8] {
     }
 }
 
-/// Element types for Janx arrays (`Vec<u8>` / `&[u8]` are binary, not arrays).
+/// Marks types allowed as elements of Janx arrays (`Vec<u8>` / `&[u8]` are binary, not arrays).
 pub trait JanxSeqElement: IntoJanx {}
-
-impl JanxSeqElement for bool {}
-impl JanxSeqElement for &str {}
-impl JanxSeqElement for String {}
-impl JanxSeqElement for Number {}
-impl JanxSeqElement for JanxValue {}
 
 macro_rules! impl_janx_seq_element {
     ($($ty:ty),+ $(,)?) => {
-        $( impl JanxSeqElement for $ty {} )+
+        $(impl JanxSeqElement for $ty {})+
     };
 }
 
-impl_janx_seq_element!(i8, i16, i32, i64, isize, u16, u32, u64, f32, f64);
+// `u8` is intentionally omitted: byte buffers use `IntoJanx for Vec<u8>`, not array-of-numbers.
+impl_janx_seq_element!(
+    bool,
+    &str,
+    String,
+    Number,
+    JanxValue,
+    i8,
+    i16,
+    i32,
+    i64,
+    isize,
+    u16,
+    u32,
+    u64,
+    f32,
+    f64,
+);
 
 impl<T> IntoJanx for Option<T>
 where
@@ -155,7 +165,6 @@ impl IntoJanx for BTreeMap<String, JanxValue> {
     }
 }
 
-/// HTTP-style header list `[(name, value), …]` → Janx array of `[name, value]` pairs.
 impl IntoJanx for Vec<(String, String)> {
     fn into_janx(self) -> JanxValue {
         JanxValue::Array(

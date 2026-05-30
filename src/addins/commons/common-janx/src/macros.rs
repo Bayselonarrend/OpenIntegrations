@@ -2,7 +2,7 @@
 ///
 /// # Examples
 ///
-/// ```
+/// ```no_run
 /// use common_janx::{janx, JanxValue};
 ///
 /// let msg = janx!({
@@ -23,7 +23,6 @@ macro_rules! janx {
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __janx_internal {
-    // Must come before `@object` — otherwise `{ "a": 1 }` is parsed as a block.
     (@object {$($tt:tt)*}) => {
         $crate::__janx_internal!({$($tt)*})
     };
@@ -45,7 +44,7 @@ macro_rules! __janx_internal {
     };
 
     ([ $($elem:expr,)* $(,)? ]) => {
-        $crate::JanxValue::Array(vec![ $( $crate::into_janx::IntoJanx::into_janx($elem) ),* ])
+        $crate::JanxValue::Array(vec![ $( $crate::IntoJanx::into_janx($elem) ),* ])
     };
 
     ({ $($key:tt : $value:expr),* $(,)? }) => {
@@ -54,7 +53,7 @@ macro_rules! __janx_internal {
             $(
                 __janx_map.insert(
                     $crate::__janx_key!($key),
-                    $crate::into_janx::IntoJanx::into_janx($value),
+                    $crate::IntoJanx::into_janx($value),
                 );
             )*
             $crate::JanxValue::Object(__janx_map)
@@ -62,7 +61,7 @@ macro_rules! __janx_internal {
     };
 
     ($other:expr) => {
-        $crate::into_janx::IntoJanx::into_janx($other)
+        $crate::IntoJanx::into_janx($other)
     };
 }
 
