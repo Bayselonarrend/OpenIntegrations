@@ -16310,8 +16310,6 @@
 #КонецОбласти
 
 #КонецОбласти
-
-
 #Region Alternate
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export

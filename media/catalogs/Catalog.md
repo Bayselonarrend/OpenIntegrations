@@ -12,6 +12,7 @@
 |![GreenAPI (WhatsApp)](../GreenAPI.png)| `GreenAPI (WhatsApp)`| greenapi, whatsapp |
 |![GreenAPI (Max)](../GreenMax.png)| `GreenAPI (Max)`| greenapi, max |
 |![gRPC](../GRPC.png)| `gRPC`| grpc |
+|![Lua (в разработке)](../default.png)| `Lua (в разработке)`| lua |
 |![MongoDB](../MongoDB.png)| `MongoDB`| mongodb, mongo, nosql |
 |![MS SQL](../MSSQL.png)| `MS SQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |

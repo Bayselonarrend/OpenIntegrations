@@ -597,6 +597,7 @@ li > a.menu__link {
 .GreenAPI a::before,
 .GreenMax a::before,
 .GRPC a::before,
+.Lua a::before,
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
@@ -672,6 +673,10 @@ li > a.menu__link {
 
 .GRPC > div > a::before{
   content: url(../../static/img/APIs/small/GRPC.png);
+}
+
+.Lua > div > a::before{
+  content: url(../../static/img/APIs/small/Lua.png);
 }
 
 .MongoDB > div > a::before{

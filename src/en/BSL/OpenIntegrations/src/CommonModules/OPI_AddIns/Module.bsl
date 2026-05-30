@@ -189,64 +189,6 @@ EndFunction
 
 #EndRegion
 
-#Region InternalStorage
-
-Function PutData(Val AddIn, Val Value) Export
-
-    Processed = False;
-
-    If TypeOf(Value) = Type("String") Then
-
-        DataFile = New File(Value);
-
-        If DataFile.Exists() Then
-            Result    = AddIn.LoadFileToVault(DataFile.FullName);
-            Result    = OPI_Tools.JsonToStructure(Result);
-            Processed = True;
-        Else
-            Result    = AddIn.LoadBase64ToVault(Value);
-            Result    = OPI_Tools.JsonToStructure(Result);
-            Processed = Result["result"];
-        EndIf;
-
-    EndIf;
-
-    If Not Processed Then
-
-        OPI_TypeConversion.GetBinaryData(Value, True, True);
-        Result = AddIn.LoadBinaryToVault(Value);
-        Result = OPI_Tools.JsonToStructure(Result);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function ReceiveData(Val AddIn, Val DataKey) Export
-
-    If Not TypeOf(DataKey) = Type("String") Then
-        Return DataKey;
-    EndIf;
-
-    Result = AddIn.RetrieveBinaryFromVault(DataKey);
-
-    If TypeOf(Result) = Type("String") Then
-
-        Try
-            Result = OPI_Tools.JsonToStructure(Result);
-        Except
-            Return Result;
-        EndTry;
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-#EndRegion
-
 #Region Logging
 
 Function GetLoggingSettings(Val WriteToMemory = True

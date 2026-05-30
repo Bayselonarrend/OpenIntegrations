@@ -1,0 +1,62 @@
+{
+ "module": "OPI_Lua",
+ "library": "lua",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": false,
+ "regions": [
+  {
+   "name": "Public",
+   "methods": [
+    "ExecuteCodeFromFile",
+    "ExecuteCodeFromString"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "ExecuteCodeFromString",
+   "id": "EXECUTECODEFROMSTRING",
+   "description": "Executes Lua code from the passed string",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--code",
+     "types": "String",
+     "description": "Code as string",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Public"
+  },
+  {
+   "name": "ExecuteCodeFromFile",
+   "id": "EXECUTECODEFROMFILE",
+   "description": "Executes Lua code from a file on disk",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Script file path",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Public"
+  }
+ ]
+}

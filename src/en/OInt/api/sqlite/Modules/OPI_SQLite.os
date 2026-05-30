@@ -150,7 +150,7 @@ EndFunction
 // Note:
 // Available parameter types: String, Number, Date, Boolean, BinaryData.^^
 // Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned)^^
-// as `{'blob':Base64 string}`
+// as `BinaryData`
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
 // For other queries, `result:true` or `false` with error text is returned
 // When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
@@ -502,9 +502,6 @@ EndFunction
 
 // Get records
 // Gets records from the selected table
-//
-// Note:
-// Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
 //
 // Parameters:
 // Table      - String                   - Table name                                               - table

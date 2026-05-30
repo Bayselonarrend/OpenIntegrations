@@ -43,6 +43,7 @@
 //@skip-check constructor-function-return-section
 
 // #Use "./internal"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -112,9 +113,7 @@ Function GetNextConnectionData(Val Module
 
     EndIf;
 
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    CompleteMessageWithVaultData(ServerObject, Result);
+    Result = OPI_Janx.DeserializeData(Result);
 
     Return Result;
 
@@ -142,9 +141,7 @@ Function GetConnectionData(Val Module
 
     EndIf;
 
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    CompleteMessageWithVaultData(ServerObject, Result);
+    Result = OPI_Janx.DeserializeData(Result);
 
     Return Result;
 
@@ -229,23 +226,6 @@ Function GetConnectionList(Val Module, Val ServerObject) Export
     Return Result;
 
 EndFunction
-
-#EndRegion
-
-#Region Private
-
-Procedure CompleteMessageWithVaultData(Val ServerObject, MessageStructure)
-
-    DataKey = Undefined;
-
-    If OPI_Tools.CollectionFieldExists(MessageStructure, "message", DataKey) And ValueIsFilled(DataKey) Then
-
-        DataBD = OPI_AddIns.ReceiveData(ServerObject, DataKey);
-        MessageStructure.Insert("message", DataBD);
-
-    EndIf;
-
-EndProcedure
 
 #EndRegion
 

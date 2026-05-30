@@ -1,0 +1,2 @@
+    Data   = GetBinaryDataFromHexString("00");
+    Result = OPI_MessagePack.DeserializeData(Data);

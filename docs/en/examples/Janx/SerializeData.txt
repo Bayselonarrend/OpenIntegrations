@@ -1,0 +1,2 @@
+    Original = "Hello";
+    Result   = OPI_Janx.SerializeData(Original);

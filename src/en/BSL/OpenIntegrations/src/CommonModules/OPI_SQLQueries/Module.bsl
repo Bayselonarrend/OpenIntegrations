@@ -43,6 +43,7 @@
 //@skip-check constructor-function-return-section
 
 // #Use "./internal"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -1224,7 +1225,7 @@ Function ProcessRecordsBatch(Val Module
 
     Try
 
-        OPI_Tools.WriteJSONFile(BlanksPath, BlanksArray);
+        OPI_Janx.SerializeData(BlanksArray).Write(BlanksPath);
 
         Initialization = Connection.BatchQuery(BlanksPath, KeysPath);
         Initialization = OPI_Tools.JsonToStructure(Initialization);
@@ -1235,7 +1236,8 @@ Function ProcessRecordsBatch(Val Module
             Raise Initialization["error"];
         EndIf;
 
-        Keys = OPI_Tools.ReadJSONFile(KeysPath, True);
+        JanxBD = New BinaryData(KeysPath);
+        Keys   = OPI_Janx.DeserializeData(JanxBD);
 
         OPI_Tools.RemoveFileWithTry(KeysPath, "Failed to delete key file after initialization");
 
@@ -1811,10 +1813,11 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
         // BSLLS:MissingTemporaryFileDeletion-on
 
         Try
-            OPI_Tools.WriteJSONFile(TFN, Parameters);
+            JanxBD  = OPI_Janx.SerializeData(Parameters);
+            JanxBD.Write(TFN);
         Except
             ErrInfo = ErrorDescription();
-            Raise StrTemplate("JSON parameter array validation error: %1", ErrInfo);
+            Raise StrTemplate("Error serializing request parameters: %1", ErrInfo);
         EndTry;
 
         Adding = Connector.SetParamsFromFile(QueryKey, TFN);
@@ -1822,8 +1825,8 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
         OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query parameters file after execution");
 
     Else
-        Parameters_ = OPI_Tools.JSONString(Parameters);
-        Adding      = Connector.SetParamsFromString(QueryKey, Parameters_);
+        JanxParameters = OPI_Janx.SerializeData(Parameters);
+        Adding         = Connector.SetParamsFromString(QueryKey, JanxParameters);
     EndIf;
 
     Adding = OPI_Tools.JsonToStructure(Adding);
@@ -1860,14 +1863,15 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
             Result = OPI_Tools.JsonToStructure(Result);
 
             If Result["result"] Then
-                Result = OPI_Tools.ReadJSONFile(TFN, True);
+                JanxBD = New BinaryData(TFN);
+                Result = OPI_Janx.DeserializeData(JanxBD);
             EndIf;
 
             OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete result file after execution");
 
         Else
-            Result = Connector.GetResultAsString(QueryKey);
-            Result = OPI_Tools.JsonToStructure(Result);
+            ResultBD = Connector.GetResultAsString(QueryKey);
+            Result   = OPI_Janx.DeserializeData(ResultBD);
         EndIf;
 
         Return Result;
@@ -1883,7 +1887,7 @@ Function ProcessParameter(Val AddIn, CurrentParameter, TypesStructure, AsObject 
 
     If CurrentType = "BinaryData" Then
 
-        CurrentParameter = ProcessBlob(AddIn, CurrentParameter);
+        CurrentParameter = PrepareBinaryData(CurrentParameter);
 
     ElsIf CurrentType = "UUID" Then
 
@@ -1927,15 +1931,27 @@ Function ProcessParameter(Val AddIn, CurrentParameter, TypesStructure, AsObject 
 
 EndFunction
 
-Function ProcessBlob(Val AddIn, Val Value)
+Function PrepareBinaryData(Val Value)
 
-    Result = OPI_AddIns.PutData(AddIn, Value);
+    If TypeOf(Value) = Type("String") Then
 
-    If Not Result["result"] Then
-        Raise StrTemplate("Binary data transfer error: %1", Result["error"]);
+        DataFile = New File(Value);
+
+        If DataFile.Exists() Then
+            Return New BinaryData(DataFile.FullName);
+        EndIf;
+
+        Try
+            Return Base64Value(Value);
+        Except
+            OPI_TypeConversion.GetBinaryData(Value, True, True);
+        EndTry;
+
     EndIf;
 
-    Return Result["key"];
+    OPI_TypeConversion.GetBinaryData(Value, True, True);
+
+    Return Value;
 
 EndFunction
 
@@ -1994,7 +2010,7 @@ Procedure ProcessCollectionParameter(Val AddIn
                 CurrentParameter = CurrentValue;
 
             ElsIf CurrentKey     = BinaryType Then
-                CurrentParameter = ProcessBlob(AddIn, CurrentValue);
+                CurrentParameter = PrepareBinaryData(CurrentValue);
             Else
                 CurrentParameter = ProcessParameter(AddIn, CurrentValue, TypesStructure, False);
             EndIf;

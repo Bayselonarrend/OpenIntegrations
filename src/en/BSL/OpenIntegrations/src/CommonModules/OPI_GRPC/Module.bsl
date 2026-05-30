@@ -52,6 +52,7 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -240,10 +241,10 @@ Function ExecuteMethod(Val Connection
         Return Connector;
     EndIf;
 
-    CallStructureAsString = FormCallString(Connector, Service, Method, Timeout, Request);
-
-    Result = Connector.Call(CallStructureAsString);
-    Result = OPI_Tools.JsonToStructure(Result);
+    CallStructure = FormCallString(Connector, Service, Method, Timeout, Request);
+    BDCall        = OPI_Janx.SerializeData(CallStructure);
+    ResultBD      = Connector.Call(BDCall);
+    Result        = OPI_Janx.DeserializeData(ResultBD);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -573,9 +574,9 @@ Function SendMessage(Val Connection, Val StreamID, Val Request) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     ProcessedRequest = ProcessRequestBeforeSending(Connection, Request);
-    ProcessedRequest = OPI_Tools.JSONString(ProcessedRequest);
+    RequestBD        = OPI_Janx.SerializeData(ProcessedRequest);
 
-    Result = Connection.SendMessage(StreamID, ProcessedRequest);
+    Result = Connection.SendMessage(StreamID, RequestBD);
     Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
@@ -605,8 +606,8 @@ Function GetMessage(Val Connection, Val StreamID) Export
 
     OPI_TypeConversion.GetLine(StreamID);
 
-    Result = Connection.GetNextMessage(StreamID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    ResultBD = Connection.GetNextMessage(StreamID);
+    Result   = OPI_Janx.DeserializeData(ResultBD);
 
     Return Result;
 
@@ -993,9 +994,7 @@ Function FormCallString(Val AddIn
     ProcessedRequest = ProcessRequestBeforeSending(AddIn, Request);
     OPI_Tools.AddField("request", ProcessedRequest, "Current", CallStructure);
 
-    CallStructureAsString = OPI_Tools.JSONString(CallStructure);
-
-    Return CallStructureAsString;
+    Return CallStructure;
 
 EndFunction
 
@@ -1039,14 +1038,15 @@ Function InitializeStream(Val View
 
     EndIf;
 
-    CallStructureAsString = FormCallString(Connection, Service, Method, Timeout, Request);
+    CallStructure = FormCallString(Connection, Service, Method, Timeout, Request);
+    BDCall        = OPI_Janx.SerializeData(CallStructure);
 
     If View    = "client" Then
-        Result = Connection.StartClientStream(CallStructureAsString);
+        Result = Connection.StartClientStream(BDCall);
     ElsIf View = "server" Then
-        Result = Connection.StartServerStream(CallStructureAsString);
+        Result = Connection.StartServerStream(BDCall);
     Else
-        Result = Connection.StartBidiStream(CallStructureAsString);
+        Result = Connection.StartBidiStream(BDCall);
     EndIf;
 
     Result = OPI_Tools.JsonToStructure(Result);
@@ -1083,13 +1083,7 @@ Function ProcessValueForRequest(Val AddIn, Value)
 
     ElsIf TypeOf(Value) = Type("BinaryData") Then
 
-        Result = OPI_AddIns.PutData(AddIn, Value);
-
-        If Not Result["result"] Then
-            Raise StrTemplate("Binary data transfer error: %1", Result["error"]);
-        EndIf;
-
-        ProcessedValue = Result["key"];
+        ProcessedValue = Value;
 
     Else
 

@@ -766,14 +766,6 @@ Function FormatHTTPResponse(HTTPClient, Val DataFormat)
                 ResponseBody = HTTPClient.ReturnResponseAsBinaryData();
             EndIf;
 
-            If OPI_Tools.IsCLI() Then
-
-                ResponseBody = ?(TypeOf(ResponseBody) = Type("BinaryData")
-                    , GetBase64StringFromBinaryData(ResponseBody)
-                    , ResponseBody);
-
-            EndIf;
-
         Else
 
             Result       = False;
@@ -1005,11 +997,11 @@ Function GetGRPCServiceName()
 
 EndFunction
 
-Function ProcessB64Response(Val B64String, Val Format)
+Function ProcessBinaryDataResponse(Val BinaryData, Val Format)
 
     If IsValidJSONFormat(Format) Then
 
-        Value   = GetBinaryDataFromBase64String(B64String);
+        Value   = BinaryData;
         Success = False;
         OPI_TypeConversion.GetCollection(Value, , Success);
 
@@ -1020,8 +1012,7 @@ Function ProcessB64Response(Val B64String, Val Format)
 
     ElsIf IsStringFormat(Format) Then
 
-        Value = GetBinaryDataFromBase64String(B64String);
-        Value = GetStringFromBinaryData(Value);
+        Value = GetStringFromBinaryData(BinaryData);
 
     Else
 
@@ -1147,11 +1138,12 @@ Procedure ProcessGRPCResponse(Response, Val DataField = "data", Val DefaultForma
         EndIf;
     EndIf;
 
-    B64String = "";
+    ResponseBinaryData = Undefined;
 
-    If OPI_Tools.CollectionFieldExists(Response, StrTemplate("%1.output.BYTES", DataField), B64String) Then
+    If OPI_Tools.CollectionFieldExists(Response, StrTemplate("%1.output", DataField), ResponseBinaryData)
+        And TypeOf(ResponseBinaryData) = Type("BinaryData") Then
 
-        Value = ProcessB64Response(B64String, Format);
+        Value = ProcessBinaryDataResponse(ResponseBinaryData, Format);
 
         If Not Value                      = Undefined Then
             Response[DataField]["output"] = Value;

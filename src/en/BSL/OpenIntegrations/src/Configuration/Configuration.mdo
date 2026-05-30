@@ -65,6 +65,8 @@
   <commonTemplates>CommonTemplate.OPI_MongoDB</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MSSQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MySQL</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Lua54</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_LuaJIT</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_PostgreSQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_RCON</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_SQLite</commonTemplates>
@@ -91,6 +93,9 @@
   <commonModules>CommonModule.OPI_GreenAPI</commonModules>
   <commonModules>CommonModule.OPI_GreenMax</commonModules>
   <commonModules>CommonModule.OPI_GRPC</commonModules>
+  <commonModules>CommonModule.OPI_Janx</commonModules>
+  <commonModules>CommonModule.OPI_Lua</commonModules>
+  <commonModules>CommonModule.OPI_MessagePack</commonModules>
   <commonModules>CommonModule.OPI_MongoDB</commonModules>
   <commonModules>CommonModule.OPI_MSSQL</commonModules>
   <commonModules>CommonModule.OPI_MySQL</commonModules>

@@ -1,0 +1,3 @@
+    Original = "Hello";
+    Binary   = OPI_Janx.SerializeData(Original);
+    Result   = OPI_Janx.DeserializeData(Binary);

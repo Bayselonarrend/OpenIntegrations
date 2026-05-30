@@ -16310,8 +16310,6 @@ EndProcedure
 #EndRegion
 
 #EndRegion
-
-
 #Region Alternate
 
 Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export

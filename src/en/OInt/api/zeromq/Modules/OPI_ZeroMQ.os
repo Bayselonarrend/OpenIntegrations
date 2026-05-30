@@ -48,6 +48,7 @@
 
 #Use "../../../tools/main"
 #Use "../../../tools/http"
+#Use "../../../formats/janx"
 
 
 #Region Public
@@ -299,16 +300,9 @@ Function ReceiveData(Val Connection, Val Timeout) Export
         OPI_TypeConversion.GetNumber(Timeout);
     EndIf;
 
-    Result = Connection.Recv(Timeout);
+    ResultBD = Connection.Recv(Timeout);
 
-    Result  = OPI_Tools.JsonToStructure(Result);
-    DataKey = Undefined;
-
-    If OPI_Tools.CollectionFieldExists(Result, "data", DataKey) Then
-        Result["data"] = OPI_AddIns.ReceiveData(Connection, DataKey);
-    EndIf;
-
-    Return Result;
+    Return OPI_Janx.DeserializeData(ResultBD);
 
 EndFunction
 

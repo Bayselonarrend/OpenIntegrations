@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b3a4f790-7415-446a-a2ea-c5e1f8a6640f">
   <name>OPI_Janx</name>
   <synonym>
+    <key>en</key>
+    <value>Janx (ОПИ)</value>
     <key>ru</key>
     <value>Janx (ОПИ)</value>
   </synonym>

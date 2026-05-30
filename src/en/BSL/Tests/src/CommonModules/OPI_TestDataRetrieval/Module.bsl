@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/Modules/OPI_TestDataRetrieval.os
+// OneScript: ./OInt/tests/Modules/internal/Modules/os
 
 // MIT License
 
@@ -167,6 +167,8 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("GRPC"           , 5);
     Sections.Insert("ClickHouse"     , 5);
     Sections.Insert("RSS"            , 5);
+    Sections.Insert("MessagePack"    , 5);
+    Sections.Insert("Janx"           , 5);
 
     Return Sections;
 
@@ -213,6 +215,8 @@ Function GetTestTable(Val TestModule = "") Export
     CHouse    = "ClickHouse";
     RSS       = "RSS";
     ZMQ       = "ZeroMQ";
+    MsgPack   = "MessagePack";
+    Janx      = "Janx";
 
     ArrayOfTests = New Array;
 
@@ -407,6 +411,10 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "CH_GRPC"                             , "GRPC"                            , CHouse);
     NewTest(ArrayOfTests, TestModule, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
     NewTest(ArrayOfTests, TestModule, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
+    NewTest(ArrayOfTests, TestModule, "MP_Data"                             , "Data"                            , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "MP_Benchmark"                        , "Benchmark"                       , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "Jnx_Data"                            , "Data"                            , Janx);
+    NewTest(ArrayOfTests, TestModule, "Jnx_Benchmark"                       , "Benchmark"                       , Janx);
 
     Return ArrayOfTests;
 
@@ -8543,10 +8551,11 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     If Not ValueIsFilled(Option) Then
 
-        Blob                              = Result["data"][0]["data"]["blob"];
-        Result["data"][0]["data"]["blob"] = "Base64";
+        Blob = Result["data"][0]["data"];
 
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        Result["data"][0]["data"] = "Binary";
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     ElsIf Option = "Openning" Then
 
@@ -8930,11 +8939,11 @@ Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["data"]["BYTEA"];
+        Blob = Result["data"][0]["data"];
 
-        Result["data"][0]["data"]["BYTEA"] = "Base64";
+        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -8998,7 +9007,7 @@ Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
+            Result["data"][0]["bytea_field"] = "Binary";
         EndIf;
 
     Else
@@ -9316,11 +9325,11 @@ Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["data"]["BYTES"];
+        Blob = Result["data"][0]["data"];
 
-        Result["data"][0]["data"]["BYTES"] = "Base64";
+        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -9373,8 +9382,7 @@ Function Check_MySQL_GetRecords(Val Result, Val Option)
 
         If ValueIsFilled(Result["data"]) Then
 
-            Result["data"][0]["mediumblob_field"]["BYTES"] =
-                Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "...";
+            Result["data"][0]["mediumblob_field"] = "Binary";
 
         EndIf;
 
@@ -9560,7 +9568,7 @@ Function Check_MySQL_AddTableColumn(Val Result, Val Option)
 
             If Column["COLUMN_NAME"] = "new_field" Then
 
-                CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
+                CurrentType = Column["DATA_TYPE"];
                 ExpectsThat(Lower(CurrentType)).Равно("mediumtext");
                 Found       = True;
             EndIf;
@@ -9608,7 +9616,7 @@ Function Check_MySQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
         For Each Column In Result["data"] Do
-            CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
+            CurrentType = Column["DATA_TYPE"];
             ExpectsThat(Lower(CurrentType)).Равно(Lower(ColoumnsStruct[Column["COLUMN_NAME"]]));
         EndDo;
 
@@ -11666,11 +11674,11 @@ Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["Data"]["BYTES"];
+        Blob = Result["data"][0]["Data"];
 
-        Result["data"][0]["Data"]["BYTES"] = "Base64";
+        Result["data"][0]["Data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -11783,8 +11791,7 @@ Function Check_MSSQL_GetRecords(Val Result, Val Option)
 
         If ValueIsFilled(Result["data"]) Then
 
-            Result["data"][0]["varbinary_field"]["BYTES"] =
-                Left(Result["data"][0]["varbinary_field"]["BYTES"], 10) + "...";
+            Result["data"][0]["varbinary_field"] = "Binary";
 
         EndIf;
 
@@ -14725,6 +14732,554 @@ Function Check_RSS_ParseFeedAtom(Val Result, Val Option)
     ExpectsThat(FirstRecord["link"]).Заполнено();
 
     Return Result;
+
+EndFunction
+
+Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+
+    Hex = Lower(GetHexStringFromBinaryData(Result));
+
+    If Option = "EmptyString" Then
+
+        ExpectsThat(Hex).Равно("a0");
+
+    ElsIf Option = "StringFixstr" Then
+
+        ExpectsThat(Hex).Равно("a161");
+
+    ElsIf Option = "StringUTF8" Then
+
+        ExpectsThat(Restored).Равно("Hello");
+
+    ElsIf Option = "Integer0" Then
+
+        ExpectsThat(Hex).Равно("00");
+
+    ElsIf Option = "Integer127" Then
+
+        ExpectsThat(Hex).Равно("7f");
+
+    ElsIf Option = "Uint8" Then
+
+        ExpectsThat(Hex).Равно("cc80");
+
+    ElsIf Option = "NegativeFixint" Then
+
+        ExpectsThat(Hex).Равно("ff");
+
+    ElsIf Option = "Int8" Then
+
+        ExpectsThat(Hex).Равно("d0df");
+
+    ElsIf Option = "Float" Then
+
+        CheckNumberMessagePack(Restored, InitialValue);
+
+    ElsIf Option = "Nil" Then
+
+        ExpectsThat(Hex).Равно("c0");
+
+    ElsIf Option = "True" Then
+
+        ExpectsThat(Hex).Равно("c3");
+
+    ElsIf Option = "False" Then
+
+        ExpectsThat(Hex).Равно("c2");
+
+    ElsIf Option = "EmptyBinary" Then
+
+        ExpectsThat(Hex).Равно("c400");
+
+    ElsIf Option = "BinaryBin8" Then
+
+        ExpectsThat(Hex).Равно("c403010203");
+
+    ElsIf Option = "EmptyArray" Then
+
+        ExpectsThat(Hex).Равно("90");
+
+    ElsIf Option = "ArrayThreeNumbers" Then
+
+        ExpectsThat(Hex).Равно("93010203");
+
+    ElsIf Option = "EmptyMap" Then
+
+        ExpectsThat(Hex).Равно("80");
+
+    ElsIf Option = "MapOnePair" Then
+
+        ExpectsThat(Hex).Равно("81a16101");
+
+    ElsIf Option = "MapTwoPairs" Then
+
+        ExpectsThat(Restored["x"]).Равно(10);
+        ExpectsThat(Restored["y"]).Равно(20);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MessagePack_DeserializeData(Val Result, Val Option, ExpectedValue = Undefined)
+
+    If Option = "Fixint0" Then
+
+        ExpectsThat(Result).Равно(0);
+
+    ElsIf Option = "StringFixstr" Then
+
+        ExpectsThat(Result).Равно("a");
+
+    ElsIf Option = "Nil" Then
+
+        ExpectsThat(Result = Undefined).Равно(True);
+
+    ElsIf Option = "True" Then
+
+        ExpectsThat(Result).Равно(True);
+
+    ElsIf Option = "False" Then
+
+        ExpectsThat(Result).Равно(False);
+
+    ElsIf Option = "EmptyBinary" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Result.Size()).Равно(0);
+
+    ElsIf Option = "BinaryBin8" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Lower(GetHexStringFromBinaryData(Result))).Равно("010203");
+
+    ElsIf Option = "EmptyArray" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(0);
+
+    ElsIf Option = "ArrayThreeNumbers" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(3);
+        ExpectsThat(Result[0]).Равно(1);
+        ExpectsThat(Result[1]).Равно(2);
+        ExpectsThat(Result[2]).Равно(3);
+
+    ElsIf Option = "ArrayTwoStrings" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(2);
+        ExpectsThat(Result[0]).Равно("a");
+        ExpectsThat(Result[1]).Равно("b");
+
+    ElsIf Option = "EmptyMap" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+        ExpectsThat(Result.Count()).Равно(0);
+
+    ElsIf Option = "MapOnePair" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+        ExpectsThat(Result.Count()).Равно(1);
+        ExpectsThat(Result["a"]).Равно(1);
+
+    ElsIf Option = "RoundTrip" Then
+
+        If TypeOf(ExpectedValue)     = Type("Number") Then
+            CheckNumberMessagePack(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("BinaryData") Then
+            CheckMessagePackBinaryData(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("Array") Then
+            CheckArrayMessagePack(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("Map")
+            Or TypeOf(ExpectedValue) = Type("Structure") Then
+            CheckMapMessagePack(Result, ExpectedValue);
+        Else
+            ExpectsThat(Result).Равно(ExpectedValue);
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Procedure CheckNumberMessagePack(Val Actual, Val Expected)
+
+    Difference = Actual - Expected;
+
+    If Difference < 0 Then
+        Difference = -Difference;
+    EndIf;
+
+    ExpectsThat(Difference < 0.0000001).Равно(True);
+
+EndProcedure
+
+Procedure CheckMessagePackBinaryData(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
+    ExpectsThat(Actual.Size()).Равно(Expected.Size());
+    ExpectsThat(Lower(GetHexStringFromBinaryData(Actual))).Равно(Lower(GetHexStringFromBinaryData(Expected)));
+
+EndProcedure
+
+Procedure CheckArrayMessagePack(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Array"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Index = 0 To Actual.UBound() Do
+
+        ActualItem   = Actual[Index];
+        ExpectedItem = Expected[Index];
+
+        If TypeOf(ActualItem)        = Type("Number") Then
+            CheckNumberMessagePack(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("BinaryData") Then
+            CheckMessagePackBinaryData(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("Array") Then
+            CheckArrayMessagePack(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("Map") Then
+            CheckMapMessagePack(ActualItem, ExpectedItem);
+        ElsIf ActualItem             = Undefined Then
+            ExpectsThat(ExpectedItem = Undefined).Равно(True);
+        Else
+            ExpectsThat(ActualItem).Равно(ExpectedItem);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure CheckMapMessagePack(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Map"));
+
+    PairCount = 0;
+
+    For Each Pair In Expected Do
+
+        Key       = String(Pair.Key);
+        ExpectsThat(MapContainsKeyMessagePack(Actual, Key)).Равно(True);
+        CheckMessagePackValue(Actual[Key], Pair.Value);
+        PairCount = PairCount + 1;
+
+    EndDo;
+
+    ExpectsThat(Actual.Count()).Равно(PairCount);
+
+EndProcedure
+
+Function MapContainsKeyMessagePack(Val Map, Val Key)
+
+    For Each Pair In Map Do
+
+        If String(Pair.Key) = Key Then
+            Return True;
+        EndIf;
+
+    EndDo;
+
+    Return False;
+
+EndFunction
+
+Procedure CheckMessagePackValue(Val Actual, Val Expected)
+
+    If TypeOf(Expected)     = Type("Number") Then
+        CheckNumberMessagePack(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("BinaryData") Then
+        CheckMessagePackBinaryData(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("Array") Then
+        CheckArrayMessagePack(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("Map")
+        Or TypeOf(Expected) = Type("Structure") Then
+        CheckMapMessagePack(Actual, Expected);
+    ElsIf Expected          = Undefined Then
+        ExpectsThat(Actual  = Undefined).Равно(True);
+    Else
+        ExpectsThat(Actual).Равно(Expected);
+    EndIf;
+
+EndProcedure
+
+Function Check_MessagePack_Benchmark(Val Result, Val Option, Original = Undefined)
+
+    CheckMapMessagePack(Result["JsonRestored"]       , Original);
+    CheckMapMessagePack(Result["MessagePackRestored"], Original);
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonSerializationMs"])
+        , "JSON serialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonDeserializationMs"])
+        , "JSON deserialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["MessagePackSerializationMs"])
+        , "MessagePack serialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["MessagePackDeserializationMs"])
+        , "MessagePack deserialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("JSON: %1 characters | MessagePack: %2 bytes"
+            , StrLen(Result["JsonString"])
+            , Result["MessagePackData"].Size())
+        , "Size of serialized data"
+        , "MessagePack");
+
+    Return StrTemplate(
+        "JSON ser %1 ms, des %2 ms | MessagePack ser %3 ms, des %4 ms | JSON %5 chars, MP %6 bytes"
+        , Result["JsonSerializationMs"]
+        , Result["JsonDeserializationMs"]
+        , Result["MessagePackSerializationMs"]
+        , Result["MessagePackDeserializationMs"]
+        , StrLen(Result["JsonString"])
+        , Result["MessagePackData"].Size());
+
+EndFunction
+
+Function Check_Janx_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+
+    If Option = "String" Then
+
+        ExpectsThat(Restored).Равно(InitialValue);
+
+    ElsIf Option = "Number" Then
+
+        ExpectsThat(Restored).Равно(InitialValue);
+
+    ElsIf Option = "EmptyBinary" Then
+
+        CheckBinaryDataJanx(Restored, InitialValue);
+
+    ElsIf Option = "BinaryOne" Then
+
+        CheckBinaryDataJanx(Restored, InitialValue);
+
+    ElsIf Option = "MapWithBinary" Then
+
+        CheckMapJanx(Restored, InitialValue);
+
+    ElsIf Option = "ArrayWithBinary" Then
+
+        CheckArrayJanx(Restored, InitialValue);
+
+    EndIf;
+
+    CheckPrefixJanx(Result);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Janx_DeserializeData(Val Result, Val Option, ExpectedValue = Undefined)
+
+    If Option = "String" Then
+
+        ExpectsThat(Result).Равно(ExpectedValue);
+
+    ElsIf Option = "BinaryOne" Then
+
+        CheckBinaryDataJanx(Result, ExpectedValue);
+
+    ElsIf Option = "MapWithBinary" Then
+
+        CheckMapJanx(Result, ExpectedValue);
+
+    ElsIf Option = "Prefix" Then
+
+        CheckPrefixJanx(ExpectedValue);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Procedure CheckPrefixJanx(Val Data)
+
+    Buffer   = GetBinaryDataBufferFromBinaryData(Data);
+    JSONSize = Buffer.Get(0) * 16777216
+        + Buffer.Get(1) * 65536
+        + Buffer.Get(2) * 256
+        + Buffer.Get(3);
+
+    ExpectsThat(4 + JSONSize <= Data.Size()).Равно(True);
+
+EndProcedure
+
+Procedure CheckBinaryDataJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
+    ExpectsThat(GetHexStringFromBinaryData(Actual)).Равно(GetHexStringFromBinaryData(Expected));
+
+EndProcedure
+
+Procedure CheckArrayJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Array"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Index = 0 To Expected.UBound() Do
+        CheckValueJanx(Actual[Index], Expected[Index]);
+    EndDo;
+
+EndProcedure
+
+Procedure CheckMapJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Map"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Each Pair In Expected Do
+
+        Key = String(Pair.Key);
+        ExpectsThat(MapContainsKeyJanx(Actual, Key)).Равно(True);
+        CheckValueJanx(Actual[Key], Pair.Value);
+
+    EndDo;
+
+EndProcedure
+
+Function MapContainsKeyJanx(Val Map, Val Key)
+
+    For Each Pair In Map Do
+
+        If String(Pair.Key) = Key Then
+            Return True;
+        EndIf;
+
+    EndDo;
+
+    Return False;
+
+EndFunction
+
+Procedure CheckValueJanx(Val Actual, Val Expected)
+
+    If TypeOf(Expected)    = Type("Number") Then
+        CheckNumberJanx(Actual, Expected);
+    ElsIf TypeOf(Expected) = Type("BinaryData") Then
+        CheckBinaryDataJanx(Actual, Expected);
+    ElsIf TypeOf(Expected) = Type("Array") Then
+        CheckArrayJanx(Actual, Expected);
+    ElsIf OPI_Tools.ThisIsCollection(Expected, True) Then
+        CheckMapJanx(Actual, Expected);
+    Else
+        ExpectsThat(Actual).Равно(Expected);
+    EndIf;
+
+EndProcedure
+
+Procedure CheckNumberJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Number"));
+
+    If Actual = Expected Then
+        Return;
+    EndIf;
+
+    Difference = Actual - Expected;
+
+    If Difference < 0 Then
+        Difference = -Difference;
+    EndIf;
+
+    ExpectsThat(Difference <= 0.000000000001).Равно(True);
+
+EndProcedure
+
+Function Check_Janx_Benchmark(Val Result, Val Option, Original = Undefined)
+
+    CheckMapJanx(Result["JsonRestored"], OriginalJsonFromJanxBenchmark(Original));
+    CheckMapJanx(Result["JanxRestored"], Original);
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonSerializationMs"])
+        , "JSON serialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonDeserializationMs"])
+        , "JSON deserialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxSerializationWithoutBinMs"])
+        , "Janx serialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxDeserializationWithoutBinMs"])
+        , "Janx deserialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxSerializationMs"])
+        , "Janx serialization (with bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxDeserializationMs"])
+        , "Janx deserialization (with bin)"
+        , "Janx");
+
+    Return StrTemplate(
+        "JSON ser %1 ms, des %2 ms | Janx ser %3 ms, des %4 ms | JSON %5 chars, Janx %6 B (app %7 B)"
+        , Result["JsonSerializationMs"]
+        , Result["JsonDeserializationMs"]
+        , Result["JanxSerializationMs"]
+        , Result["JanxDeserializationMs"]
+        , StrLen(Result["JsonString"])
+        , Result["JanxData"].Size()
+        , Result["AppendixSize"]);
+
+EndFunction
+
+Function OriginalJsonFromJanxBenchmark(Val Original)
+
+    JsonItems = New Array;
+
+    For Each Element In Original.items Do
+
+        JsonItem = New Structure;
+        JsonItem.Insert("index", Element.index);
+        JsonItem.Insert("flag" , Element.flag);
+        JsonItem.Insert("title", Element.title);
+        JsonItem.Insert("ratio", Element.ratio);
+
+        If Element.Property("note") Then
+            JsonItem.Insert("note", Element.note);
+        EndIf;
+
+        JsonItem.Insert("values", Element.values);
+        JsonItem.Insert("attrs" , Element.attrs);
+        JsonItems.Add(JsonItem);
+
+    EndDo;
+
+    OriginalJson = New Structure;
+    OriginalJson.Insert("version", Original.version);
+    OriginalJson.Insert("label"  , Original.label);
+    OriginalJson.Insert("root"   , Original.root);
+    OriginalJson.Insert("items"  , JsonItems);
+
+    Return OriginalJson;
 
 EndFunction
 

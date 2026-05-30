@@ -48,6 +48,7 @@
 
 #Use "../../../tools/main"
 #Use "../../../tools/http"
+#Use "../../../formats/janx"
 
 
 #Region Public
@@ -282,19 +283,11 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
 
     OPI_TypeConversion.GetNumber(Timeout);
 
-    Result = Connection.ReceiveMessage(Timeout);
-    Result = OPI_Tools.JsonToStructure(Result);
+    ResultBD = Connection.ReceiveMessage(Timeout);
+    Result   = OPI_Janx.DeserializeData(ResultBD);
 
     MessageType = OPI_Tools.GetOr(Result, "type", "");
     Data        = OPI_Tools.GetOr(Result, "data", "");
-
-    If MessageType = "binary" Then
-
-        If ValueIsFilled(Data) Then
-            Result.Insert("data", OPI_AddIns.ReceiveData(Connection, Data));
-        EndIf;
-
-    EndIf;
 
     If MessageType = "text" Then
 

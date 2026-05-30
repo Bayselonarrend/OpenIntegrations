@@ -292,6 +292,46 @@ Procedure DefinePathsTemplates()
 
 EndProcedure
 
+Function PrepareCLIOutput(Val Data)
+
+	If Data = Undefined Then
+		Return Data;
+	EndIf;
+
+	DataType = TypeOf(Data);
+
+	If DataType = Type("BinaryData") Then
+		Return GetBase64StringFromBinaryData(Data);
+	EndIf;
+
+	If DataType = Type("Array") Then
+
+		Result = New Array;
+
+		For Each Element In Data Do
+			Result.Add(PrepareCLIOutput(Element));
+		EndDo;
+
+		Return Result;
+
+	EndIf;
+
+	If DataType = Type("Structure") Or DataType = Type("Map") Then
+
+		Result = New(DataType);
+
+		For Each Pair In Data Do
+			Result.Insert(Pair.Key, PrepareCLIOutput(Pair.Value));
+		EndDo;
+
+		Return Result;
+
+	EndIf;
+
+	Return Data;
+
+EndFunction
+
 Procedure ProcessJSONOutput(Output)
 	
 	If EmptyOutput(Output) Then
@@ -302,7 +342,7 @@ Procedure ProcessJSONOutput(Output)
 		Or TypeOf(Output) = Type("Map")
 		Or TypeOf(Output) = Type("Array") Then
 	
-		Output = JSONString(Output);
+		Output = JSONString(PrepareCLIOutput(Output));
 
 	EndIf;
 

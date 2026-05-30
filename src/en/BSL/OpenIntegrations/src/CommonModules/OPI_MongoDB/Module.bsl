@@ -49,6 +49,7 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -256,19 +257,19 @@ Function ExecuteCommand(Val Connection
     EndIf;
 
     If Argument <> Undefined Then
-        ProcessedArgument = ProcessDataForOperation(Connector, Argument);
+        ProcessedArgument = ProcessDataForOperation(Argument);
         OperationStructure.Insert("argument", ProcessedArgument);
     EndIf;
 
     If Data <> Undefined Then
-        ProcessedData = ProcessDataForOperation(Connector, Data);
+        ProcessedData = ProcessDataForOperation(Data);
         OperationStructure.Insert("data", ProcessedData);
     EndIf;
 
-    OperationsJSON = OPI_Tools.JSONString(OperationStructure);
+    JanxOperation = OPI_Janx.SerializeData(OperationStructure);
 
-    Result = Connector.Execute(OperationsJSON);
-    Result = OPI_Tools.JsonToStructure(Result);
+    ResultBD = Connector.Execute(JanxOperation);
+    Result   = OPI_Janx.DeserializeData(ResultBD);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -1181,13 +1182,13 @@ EndFunction
 
 #Region Private
 
-Function ProcessDataForOperation(Val AddIn, Val Data, Covered = False)
+Function ProcessDataForOperation(Val Data, Covered = False)
 
     Try
 
         ProcessedData = Data;
         OPI_TypeConversion.GetKeyValueCollection(ProcessedData);
-        ProcessedData = ProcessCollectionForOperation(AddIn, ProcessedData);
+        ProcessedData = ProcessCollectionForOperation(ProcessedData);
 
     Except
 
@@ -1196,12 +1197,11 @@ Function ProcessDataForOperation(Val AddIn, Val Data, Covered = False)
 
         If OPI_Tools.ThisIsCollection(ProcessedData) Then
 
-            ProcessedData = ProcessCollectionForOperation(AddIn, ProcessedData);
+            ProcessedData = ProcessCollectionForOperation(ProcessedData);
 
         ElsIf TypeOf(ProcessedData) = Type("BinaryData") Then
 
-            ProcessedData = PutBinaryData(AddIn, ProcessedData);
-            CurrentKey    = "__OPI_BINARY__";
+            CurrentKey = "__OPI_BINARY__";
 
         ElsIf TypeOf(ProcessedData) = Type("Date") Then
 
@@ -1230,7 +1230,7 @@ Function ProcessDataForOperation(Val AddIn, Val Data, Covered = False)
 
 EndFunction
 
-Function ProcessCollectionForOperation(Val AddIn, Val Data)
+Function ProcessCollectionForOperation(Val Data)
 
     ProcessedData = New(TypeOf(Data));
 
@@ -1243,11 +1243,7 @@ Function ProcessCollectionForOperation(Val AddIn, Val Data)
 
             CurrentValue = DataPart.Value;
 
-            If CurrentKey      = "__OPI_BINARY__" Then
-                ProcessedValue = PutBinaryData(AddIn, CurrentValue);
-            Else
-                ProcessedValue = ProcessDataForOperation(AddIn, CurrentValue, Covered);
-            EndIf;
+            ProcessedValue = ProcessDataForOperation(CurrentValue, Covered);
 
             ProcessedData.Insert(CurrentKey, ProcessedValue);
 
@@ -1256,7 +1252,7 @@ Function ProcessCollectionForOperation(Val AddIn, Val Data)
     Else
 
         For Each Element In Data Do
-            ProcessedData.Add(ProcessDataForOperation(AddIn, Element));
+            ProcessedData.Add(ProcessDataForOperation(Element));
         EndDo;
 
     EndIf;
@@ -1358,20 +1354,6 @@ Function GrantRevokeRole(Val DBCommand
 
     Result = ExecuteCommand(Connection, DBCommand, User, Base, Parameters);
     Return Result;
-
-EndFunction
-
-Function PutBinaryData(AddIn, Val Value)
-
-    Result = OPI_AddIns.PutData(AddIn, Value);
-
-    If Not Result["result"] Then
-        Raise StrTemplate("Binary data transfer error: %1", Result["error"]);
-    EndIf;
-
-    ProcessedData = Result["key"];
-
-    Return ProcessedData;
 
 EndFunction
 

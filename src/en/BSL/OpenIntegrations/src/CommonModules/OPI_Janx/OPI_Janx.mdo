@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b3a4f790-7415-446a-a2ea-c5e1f8a6640f">
+  <name>OPI_Janx</name>
+  <synonym>
+    <key>en</key>
+    <value>Janx (OPI)</value>
+    <key>ru</key>
+    <value>Janx (OPI)</value>
+  </synonym>
+  <comment>JSON-Annex Format (Janx-1): JSON UTF-8 with binary appendix</comment>
+  <clientManagedApplication>true</clientManagedApplication>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

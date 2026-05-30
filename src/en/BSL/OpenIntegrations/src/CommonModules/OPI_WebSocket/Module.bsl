@@ -48,6 +48,7 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -283,8 +284,8 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
 
     OPI_TypeConversion.GetNumber(Timeout);
 
-    ResultBinaryData = Connection.ReceiveMessage(Timeout);
-    Result           = OPI_Janx.DeserializeData(ResultBinaryData);
+    ResultBD = Connection.ReceiveMessage(Timeout);
+    Result   = OPI_Janx.DeserializeData(ResultBD);
 
     MessageType = OPI_Tools.GetOr(Result, "type", "");
     Data        = OPI_Tools.GetOr(Result, "data", "");

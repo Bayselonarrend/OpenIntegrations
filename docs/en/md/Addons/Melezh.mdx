@@ -8,13 +8,11 @@ sidebar_class_name: Melezh
 
 # Melezh  
 
-The server version of the Open Integration Package, providing a unified configurable HTTP API for accessing any of its libraries with default value settings, a web console, and built-in request logging.  
+Server platform providing a unified configurable HTTP API for processing requests using arbitrary `.os` code or ready-made functions from the Open Integration Package. The system includes numerous tools for quickly and flexibly building your own service, as well as for its ongoing maintenance and administration
 
-## How it works  
+## How it works
 
-This server is based on oint - the console application of the Open Integrations Package, and allows remote invocation of its methods via HTTP requests from anywhere, just as it would happen in the console on a local machine. Melezh uses the Kestrel server built into OneScript to receive HTTP requests, which are then interpreted into oint commands (or commands of extension modules) for further execution.
-
-The solution features a flexible configuration system, enabling restrictions on available commands/methods and setting default parameter values for command execution. It includes a logging system and a built-in web console for convenient management.  
+The solution lets you create handlers for incoming HTTP requests based on methods from the Open Integration Package or functions from arbitrary OneScript modules. Each handler can be assigned a URL, method (GET, POST with JSON, or POST with form-data), and default parameter values. HTTP parameters map directly to the handler function's parameters without manual HTTP request handling. The system automatically processes data, maps addresses to assigned handlers, rejects requests with unsupported methods or invalid data, and logs all events. For convenient server management and log viewing, Melezh includes a built-in web console  
 
 > **[📘 Go to Melezh Documentation](/docs/Addons/Melezh/Overview)** <br/>  
 > **[🏰 Go to Melezh Repository](https://github.com/Bayselonarrend/Melezh)** 

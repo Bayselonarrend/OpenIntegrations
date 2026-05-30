@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="aad946b2-3b95-471a-94b2-08bf0deedace">
+  <name>OPI_Lua54</name>
+  <synonym>
+    <key>en</key>
+    <value>AddIn Lua 5.4 (OPI)</value>
+    <key>ru</key>
+    <value>AddIn Lua 5.4 (OPI)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

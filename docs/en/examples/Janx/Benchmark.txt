@@ -1,0 +1,103 @@
+    Items     = New Array;
+    JsonItems = New Array;
+
+    For Index = 0 To 499 Do
+
+        Element                          = New Structure;
+        Element.Insert("index"  , Index);
+        Element.Insert("flag"   , Index % 2 = 0);
+        Element.Insert("title"  , "item_" + Index);
+        Element.Insert("ratio"  , Index / 3.0);
+        Element.Insert("payload", GetBinaryDataFromHexString("0102030405060708090A0B0C0D0E0F"));
+
+        If Index % 7 = 0 Then
+            Element.Insert("note", Undefined);
+        EndIf;
+
+        NumberList = New Array;
+
+        For SubIndex = 0 To 7 Do
+            NumberList.Add(Index * 10 + SubIndex);
+        EndDo;
+
+        Element.Insert("values", NumberList);
+
+        Attributes = New Map;
+        Attributes.Insert("group"  , "g" + (Index % 10));
+        Attributes.Insert("enabled", Index % 3 <> 0);
+
+        If Index % 5 = 0 Then
+            Attributes.Insert("extra", Undefined);
+        EndIf;
+
+        Element.Insert("attrs", Attributes);
+        Items.Add(Element);
+
+        JsonItem                          = New Structure;
+        JsonItem.Insert("index", Index);
+        JsonItem.Insert("flag" , Index % 2 = 0);
+        JsonItem.Insert("title", "item_" + Index);
+        JsonItem.Insert("ratio", Index / 3.0);
+
+        If Index % 7 = 0 Then
+            JsonItem.Insert("note", Undefined);
+        EndIf;
+
+        JsonItem.Insert("values", NumberList);
+        JsonItem.Insert("attrs" , Attributes);
+        JsonItems.Add(JsonItem);
+
+    EndDo;
+
+    Original = New Structure;
+    Original.Insert("version", 1);
+    Original.Insert("label"  , "benchmark");
+    Original.Insert("root"   , Undefined);
+    Original.Insert("items"  , Items);
+
+    OriginalJson = New Structure;
+    OriginalJson.Insert("version", 1);
+    OriginalJson.Insert("label"  , "benchmark");
+    OriginalJson.Insert("root"   , Undefined);
+    OriginalJson.Insert("items"  , JsonItems);
+
+    Result = New Structure;
+
+    Start      = CurrentUniversalDateInMilliseconds();
+    JsonString = OPI_Tools.JSONString(OriginalJson, "None", False);
+    Result.Insert("JsonSerializationMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JsonString"         , JsonString);
+
+    Start        = CurrentUniversalDateInMilliseconds();
+    JsonRestored = OPI_Tools.JsonToStructure(JsonString, True);
+    Result.Insert("JsonDeserializationMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JsonRestored"         , JsonRestored);
+
+    Start    = CurrentUniversalDateInMilliseconds();
+    JanxData = OPI_Janx.SerializeData(Original);
+    Result.Insert("JanxSerializationMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JanxData"           , JanxData);
+
+    Start        = CurrentUniversalDateInMilliseconds();
+    JanxRestored = OPI_Janx.DeserializeData(JanxData);
+    Result.Insert("JanxDeserializationMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JanxRestored"         , JanxRestored);
+
+    Start              = CurrentUniversalDateInMilliseconds();
+    JanxDataWithoutBin = OPI_Janx.SerializeData(OriginalJson);
+    Result.Insert("JanxSerializationWithoutBinMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JanxDataWithoutBin"           , JanxData);
+
+    Start                  = CurrentUniversalDateInMilliseconds();
+    JanxRestoredWithoutBin = OPI_Janx.DeserializeData(JanxDataWithoutBin);
+    Result.Insert("JanxDeserializationWithoutBinMs", CurrentUniversalDateInMilliseconds() - Start);
+    Result.Insert("JanxRestoredWithoutBin"         , JanxRestored);
+
+    JanxBuffer   = GetBinaryDataBufferFromBinaryData(JanxData);
+    JSONJanxSize = JanxBuffer.Get(0) * 16777216
+        + JanxBuffer.Get(1) * 65536
+        + JanxBuffer.Get(2) * 256
+        + JanxBuffer.Get(3);
+    Result.Insert("AppendixSize", JanxData.Size() - 4 - JSONJanxSize);
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Benchmark", , Original);
