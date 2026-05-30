@@ -1,4 +1,5 @@
 use addin1c::Variant;
+use common_janx::{decode, JanxValue};
 
 /// Trait для автоматической конвертации из Variant в нужный тип
 ///
@@ -57,6 +58,16 @@ impl FromVariant for f32 {
 impl FromVariant for Vec<u8> {
     fn from_variant(variant: &Variant) -> Self {
         variant.get_blob().unwrap_or_default().to_vec()
+    }
+}
+
+impl FromVariant for JanxValue {
+    fn from_variant(variant: &Variant) -> Self {
+        variant
+            .get_blob()
+            .ok()
+            .and_then(|data| decode(data).ok())
+            .unwrap_or(JanxValue::Null)
     }
 }
 

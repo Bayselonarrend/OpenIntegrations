@@ -3,6 +3,7 @@ use std::sync::Arc;
 
 use common_backend::BackendThread;
 use common_binary::vault::BinaryVault;
+use common_janx::JanxValue;
 use common_logs::Logger;
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
@@ -29,7 +30,7 @@ pub enum WorkerCommand {
     },
     Execute {
         params: ExecuteParams,
-        response: Sender<Vec<u8>>,
+        response: Sender<JanxValue>,
     },
     Disconnect {
         response: Sender<Result<(), String>>,

@@ -184,6 +184,7 @@ name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
 ]
 
 [[package]]

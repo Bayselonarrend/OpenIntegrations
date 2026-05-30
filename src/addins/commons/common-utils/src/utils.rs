@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 use std::sync::{Mutex, MutexGuard};
 
-use common_janx::{encode, JanxValue};
+use common_janx::JanxValue;
 use serde_json::json;
 
 pub fn json_error<E: ToString>(error: E) -> String {
@@ -13,14 +13,14 @@ pub fn json_success() -> String {
     json!({"result": true}).to_string()
 }
 
-pub fn janx_error<E: ToString>(error: E) -> Vec<u8> {
+pub fn janx_error<E: ToString>(error: E) -> JanxValue {
     let mut map = BTreeMap::new();
     map.insert("result".to_string(), JanxValue::Bool(false));
     map.insert("error".to_string(), JanxValue::String(error.to_string()));
-    janx_encode(map).unwrap_or_default()
+    JanxValue::Object(map)
 }
 
-pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> Vec<u8> {
+pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> JanxValue {
     let mut map = BTreeMap::new();
     map.insert("result".to_string(), JanxValue::Bool(true));
 
@@ -29,11 +29,7 @@ pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> Vec<u8> 
         map.insert(field_name.to_string(), payload);
     }
 
-    janx_encode(map).unwrap_or_default()
-}
-
-fn janx_encode(map: BTreeMap<String, JanxValue>) -> Result<Vec<u8>, String> {
-    encode(&JanxValue::Object(map)).map_err(|e| e.to_string())
+    JanxValue::Object(map)
 }
 
 pub fn lock_unpoisoned<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {

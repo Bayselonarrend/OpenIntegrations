@@ -2,6 +2,7 @@ use std::sync::Arc;
 
 use common_backend::BackendThread;
 use common_binary::vault::{BinaryInput, BinaryVault};
+use common_janx::JanxValue;
 use common_logs::Logger;
 
 use crate::worker::{self, ExecuteParams, WorkerCommand};
@@ -98,7 +99,7 @@ impl MongoDBBackend {
             .and_then(|result| result)
     }
 
-    pub fn execute(&self, json_input: &str) -> Result<Vec<u8>, String> {
+    pub fn execute(&self, json_input: &str) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection already closed".to_string());
         }

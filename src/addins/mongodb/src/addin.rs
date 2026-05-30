@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use common_binary::vault::BinaryInput;
+use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, json_error, json_success};
 use serde_json::json;
@@ -90,7 +91,7 @@ impl AddIn {
         }
     }
 
-    pub fn execute(&mut self, json_string: &str) -> Vec<u8> {
+    pub fn execute(&mut self, json_string: &str) -> JanxValue {
         match self.client.execute(json_string) {
             Ok(result) => result,
             Err(e) => janx_error(&e),

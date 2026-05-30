@@ -1,4 +1,5 @@
 use addin1c::{Tm, Variant};
+use common_janx::{decode, encode, JanxValue};
 
 pub trait ValueType {
     fn get_value(&self, val: &mut Variant) -> bool;
@@ -62,6 +63,23 @@ impl ValueType for String {
 
     fn set_value(&mut self, val: &Variant) {
         *self = val.get_string().unwrap_or("".to_string());
+    }
+}
+
+impl ValueType for JanxValue {
+    fn get_value(&self, val: &mut Variant) -> bool {
+        match encode(self) {
+            Ok(bytes) => val.set_blob(bytes.as_slice()).is_ok(),
+            Err(_) => false,
+        }
+    }
+
+    fn set_value(&mut self, val: &Variant) {
+        *self = val
+            .get_blob()
+            .ok()
+            .and_then(|data| decode(data).ok())
+            .unwrap_or(JanxValue::Null);
     }
 }
 

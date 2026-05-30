@@ -2,6 +2,7 @@ pub mod from_variant;
 pub mod getset;
 
 pub use addin1c;
+pub use common_janx::JanxValue;
 pub use from_variant::FromVariant;
 
 pub const CREATE_COMPONENT_SUCCESS: i32 = 1;
