@@ -1,7 +1,6 @@
 mod backend;
 mod methods;
 
-use common_binary::vault::BinaryVault;
 use common_core::*;
 use common_logs::Logger;
 use common_utils::utils::{json_error, json_success, version};
@@ -23,7 +22,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("Send"),
     name!("Recv"),
     name!("Close"),
-    name!("RetrieveBinaryFromVault"),
     name!("SetLogger"),
     name!("GetLogs"),
     name!("Version"),
@@ -36,10 +34,9 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 2,     // Send(data, timeout_ms)
         10 => 1,    // Recv(timeout_ms)
         11 => 0,    // Close
-        12 => 1,    // RetrieveBinaryFromVault
-        13 => 1,    // SetLogger(logger_config_json)
-        14 => 1,    // GetLogs(count)
-        15 => 0,    // Version
+        12 => 1,    // SetLogger(logger_config_json)
+        13 => 1,    // GetLogs(count)
+        14 => 0,    // Version
         _ => 0,
     }
 }
@@ -99,18 +96,14 @@ pub fn cal_func(
         }
         11 => Box::new(obj.close()),
         12 => {
-            let key = params[0].get_string().unwrap_or_default();
-            Box::new(obj.retrieve_binary_from_vault(&key))
-        },
-        13 => {
             let logger_config = params[0].get_string().unwrap_or_default();
             Box::new(obj.set_logger(&logger_config))
-        },
-        14 => {
+        }
+        13 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
-        },
-        15 => Box::new(version()),
+        }
+        14 => Box::new(version()),
         _ => Box::new(false),
     }
 }
@@ -118,7 +111,6 @@ pub fn cal_func(
 pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
-    vault: BinaryVault,
     backend: Arc<Mutex<backend::ZeroMqBackend>>,
     logger: Option<Arc<Logger>>,
 }
@@ -126,7 +118,6 @@ pub struct AddIn {
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            vault: BinaryVault::new(),
             backend: Arc::new(Mutex::new(backend::ZeroMqBackend::new())),
             logger: None,
         }
@@ -174,17 +165,11 @@ impl AddIn {
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {
-        panic!("This add-in exposes no exported properties.")
+        panic!("This add-in exposes no exported properties.");
     }
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType {
         self.get_field_ptr(index) as *mut _
-    }
-
-    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        self.vault
-            .retrieve(&vault_key.to_string())
-            .unwrap_or_else(|_| Vec::new())
     }
 
     pub(crate) fn lock_backend(&self) -> Result<std::sync::MutexGuard<'_, backend::ZeroMqBackend>, String> {
