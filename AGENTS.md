@@ -59,7 +59,7 @@
 
 | Уровень | Где | Что ловит |
 |--------|-----|-----------|
-| **FFI** | `common-core`: `call_as_func` → `catch_panic` | Паника в тонкой обёртке addin (JSON, vault, маршрутизация) |
+| **FFI** | `common-core`: `call_as_func` → `catch_panic` | Паника в тонкой обёртке addin (JSON/Janx, маршрутизация) |
 | **Backend** | `common-backend`: поток worker + `catch_panic` на цикл handler | Паника в драйвере; после фатала — `health`, следующие `call`/`send` → `Err` |
 
 `catch_unwind` только на FFI **не заменяет** worker-поток: не решает `!Send` соединений (SQLite), гонки при параллельных вызовах из 1С, poisoned `Mutex` вокруг драйвера.
@@ -72,7 +72,7 @@
 src/addins/<name>/src/
   lib.rs      — METHODS, get_params_amount, cal_func, impl_addin_exports
   addin.rs    — тонкий AddIn: FFI-методы, JSON-ответы, без Mutex вокруг драйвера
-  backend.rs  — *Backend: настройки до connect, ленивый поток, SetLogger, vault
+  backend.rs  — *Backend: настройки до connect, ленивый поток, SetLogger
   worker.rs   — WorkerCommand, Session, spawn_thread, вся работа с драйвером
   query.rs    — только если есть отдельная логика SQL/запросов (MSSQL, Postgres, …)
 ```
@@ -98,13 +98,13 @@ src/addins/<name>/src/
 - `common-core` — макросы FFI, `catch_panic` на границе.
 - `common-backend` — `BackendThread` / `SyncBackendThread`.
 - `common-logs` — `Logger`, `log!`, `SetLogger` / `GetLogs` на FFI.
-- `common-binary` — `BinaryVault`, `vault_key_json` (если есть бинарные поля).
+- `common-janx` — `JanxValue`, `janx!`, `FromJanx` / `IntoJanx` для бинарных полей и составных ответов.
 - `common-tcp` — TLS, proxy, `create_tcp_connection` (FTP, БД с TLS).
 - `common-dataset` — только где есть пакетные SQL/dataset (MSSQL).
 
 ### Паттерн `backend.rs`
 
-- Поля: `thread: Option<…>`, настройки до connect (`tls`, `proxy`, строка подключения), `logger: Option<Arc<Logger>>`, при необходимости `BinaryVault`.
+- Поля: `thread: Option<…>`, настройки до connect (`tls`, `proxy`, строка подключения), `logger: Option<Arc<Logger>>`.
 - `set_logger` / `set_tls` — **только до** установления соединения.
 - `connect` → `ensure_thread()` → `thread.call(WorkerCommand::Connect { … })`.
 - `close` / `Drop` → `shutdown(Some(WorkerCommand::Shutdown))`.
@@ -113,7 +113,7 @@ src/addins/<name>/src/
 ### Паттерн `worker.rs`
 
 - `enum WorkerCommand` — одна варианта на операцию; ответы через `mpsc::Sender<Result<…>>` или `Sender<String>` для готового JSON.
-- `struct Session` — `client`/`connection`, `logger`, `binary_vault` (клон vault в поток при spawn).
+- `struct Session` — `client`/`connection`, `logger`.
 - `fn log(&self, …)` — `common_logs::log!(logger, …)`.
 - `spawn_thread` — единственное место цикла `while let Ok(cmd) = rx.recv()`.
 - Вся работа с `FtpStream` / `Client` / `Connection` — **только** внутри этого потока.

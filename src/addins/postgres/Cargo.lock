@@ -210,28 +210,29 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-binary"
-version = "2.1.0"
-dependencies = [
- "base64",
- "serde_json",
- "uuid",
-]
-
-[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
 ]
 
 [[package]]
 name = "common-dataset"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
+ "common-utils",
  "dashmap",
  "serde_json",
  "uuid",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
 ]
 
 [[package]]
@@ -260,6 +261,7 @@ dependencies = [
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
@@ -891,10 +893,8 @@ dependencies = [
 name = "opi_postgres"
 version = "2.1.0"
 dependencies = [
- "base64",
  "chrono",
  "common-backend",
- "common-binary",
  "common-core",
  "common-dataset",
  "common-logs",

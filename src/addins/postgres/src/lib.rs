@@ -24,9 +24,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("RemoveQueryDataset"),
     name!("BatchQuery"),
     name!("GetTLSSettings"),
-    name!("LoadBinaryToVault"),
-    name!("LoadFileToVault"),
-    name!("LoadBase64ToVault"),
     name!("SetLogger"),
     name!("GetLogs"),
     name!("Version"),
@@ -50,17 +47,12 @@ pub fn get_params_amount(num: usize) -> usize {
         11 => 0,
         12 => 1,
         13 => 1,
-        14 => 1,
-        15 => 1,
-        16 => 1,
-        17 => 0,
+        14 => 0,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
-    let empty_array: [u8; 0] = [];
-
     match num {
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
@@ -96,26 +88,22 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         }
         6 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-            let result = obj
-                .datasets
-                .result_as_string(&key)
-                .unwrap_or_else(|e| json_error(&e));
-            Box::new(result)
+            Box::new(obj.get_result_as_janx(&key))
         }
         7 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
 
             let result = match obj.datasets.params_from_file(&key, &filepath) {
-                Ok(_) => json!({"result": true}).to_string(),
+                Ok(_) => json_success(),
                 Err(e) => json_error(&e),
             };
             Box::new(result)
         }
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-            let json = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.params_from_string(&key, &json) {
+            let janx_params = JanxValue::from_variant(&params[1]);
+            let result = match obj.datasets.params_from_janx(&key, janx_params) {
                 Ok(_) => json_success(),
                 Err(e) => json_error(&e),
             };
@@ -137,26 +125,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         }
         11 => Box::new(obj.get_tls_settings()),
         12 => {
-            let binary = params[0].get_blob().unwrap_or(&empty_array);
-            Box::new(obj.load_binary_to_vault(Vec::from(binary)))
-        }
-        13 => {
-            let file = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.load_file_to_vault(file))
-        }
-        14 => {
-            let base64 = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.load_base64_to_vault(base64))
-        }
-        15 => {
             let logger_config = params[0].get_string().unwrap_or_default();
             Box::new(obj.set_logger(&logger_config))
         }
-        16 => {
+        13 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        17 => Box::new(version()),
+        14 => Box::new(version()),
         _ => Box::new(false),
     }
 }

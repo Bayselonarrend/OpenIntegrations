@@ -1,16 +1,14 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_binary::vault::{BinaryInput, BinaryVault};
+use common_core::JanxValue;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use serde_json::Value;
 
 use crate::worker::{self, WorkerCommand};
 
 pub struct PostgresBackend {
     thread: Option<SyncBackendThread<WorkerCommand>>,
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     tls: Option<TlsSettings>,
 }
@@ -19,7 +17,6 @@ impl PostgresBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
-            binary_vault: BinaryVault::new(),
             logger: None,
             tls: None,
         }
@@ -77,12 +74,6 @@ impl PostgresBackend {
         })
     }
 
-    pub fn store_binary(&mut self, input: BinaryInput) -> Result<String, String> {
-        self.binary_vault
-            .store(input)
-            .map_err(|e| e.to_string())
-    }
-
     pub fn connect(&mut self, conn_str: String) -> Result<(), String> {
         if self.is_connected() {
             return Err("Client already connected".to_string());
@@ -109,9 +100,9 @@ impl PostgresBackend {
     pub fn execute_query(
         &self,
         query: String,
-        params_json: Vec<Value>,
+        params: Vec<JanxValue>,
         force_result: bool,
-    ) -> Result<Option<Vec<Value>>, String> {
+    ) -> Result<Option<Vec<JanxValue>>, String> {
         if !self.is_connected() {
             return Err("Not connected to PostgreSQL".to_string());
         }
@@ -124,7 +115,7 @@ impl PostgresBackend {
         thread
             .call(|response| WorkerCommand::Execute {
                 query,
-                params_json,
+                params,
                 force_result,
                 response,
             })
@@ -142,7 +133,7 @@ impl PostgresBackend {
             return Ok(());
         }
 
-        let thread = worker::spawn_thread(self.binary_vault.clone(), self.logger.clone())?;
+        let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }

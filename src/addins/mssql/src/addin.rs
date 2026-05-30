@@ -1,10 +1,10 @@
 use std::sync::Arc;
 
-use common_binary::vault::{vault_key_json, BinaryInput};
+use common_core::JanxValue;
 use common_dataset::dataset::Datasets;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{janx_error, json_error, json_success};
 use serde_json::json;
 
 use crate::backend::MSSQLBackend;
@@ -21,27 +21,6 @@ impl AddIn {
             connection_string: String::new(),
             client: MSSQLBackend::new(),
             datasets: Datasets::new(),
-        }
-    }
-
-    pub fn load_binary_to_vault(&mut self, data: Vec<u8>) -> String {
-        match self.client.store_binary(BinaryInput::Bytes(data)) {
-            Ok(key) => vault_key_json(key),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn load_file_to_vault(&mut self, path: String) -> String {
-        match self.client.store_binary(BinaryInput::FilePath(path)) {
-            Ok(key) => vault_key_json(key),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn load_base64_to_vault(&mut self, base64: String) -> String {
-        match self.client.store_binary(BinaryInput::Base64(base64)) {
-            Ok(key) => vault_key_json(key),
-            Err(e) => json_error(&e),
         }
     }
 
@@ -124,6 +103,12 @@ impl AddIn {
             Ok(()) => json_success(),
             Err(e) => json_error(&e),
         }
+    }
+
+    pub fn get_result_as_janx(&self, key: &str) -> JanxValue {
+        self.datasets
+            .result_as_janx(key)
+            .unwrap_or_else(|e| janx_error(&e))
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn common_core::getset::ValueType {

@@ -22,11 +22,28 @@ checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
 name = "common-dataset"
-version = "0.1.0"
+version = "2.1.0"
 dependencies = [
+ "common-janx",
+ "common-utils",
  "dashmap",
  "serde_json",
  "uuid",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
+]
+
+[[package]]
+name = "common-utils"
+version = "2.1.0"
+dependencies = [
+ "common-janx",
+ "serde_json",
 ]
 
 [[package]]

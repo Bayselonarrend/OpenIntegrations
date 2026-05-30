@@ -5,6 +5,8 @@ license = "MIT"
 edition = "2021"
 
 [dependencies]
+common-janx = { path = "../common-janx" }
+common-utils = { path = "../common-utils" }
 dashmap = "7.0.0-rc2"
 serde_json = "1.0.140"
 uuid = { version = "1.17.0", features = ["v4"] }

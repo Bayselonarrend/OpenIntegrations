@@ -2,10 +2,9 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_binary::vault::BinaryVault;
+use common_core::JanxValue;
 use common_logs::Logger;
 use rusqlite::{Connection, OpenFlags};
-use serde_json::Value;
 
 use crate::query;
 
@@ -16,9 +15,9 @@ pub enum WorkerCommand {
     },
     Execute {
         query: String,
-        params_json: Vec<Value>,
+        params: Vec<JanxValue>,
         force_result: bool,
-        response: Sender<Result<Option<Vec<Value>>, String>>,
+        response: Sender<Result<Option<Vec<JanxValue>>, String>>,
     },
     LoadExtension {
         path: String,
@@ -36,15 +35,13 @@ pub enum WorkerCommand {
 }
 
 struct Session {
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     connection: Option<Connection>,
 }
 
 impl Session {
-    fn new(binary_vault: BinaryVault, logger: Option<Arc<Logger>>) -> Self {
+    fn new(logger: Option<Arc<Logger>>) -> Self {
         Self {
-            binary_vault,
             logger,
             connection: None,
         }
@@ -68,11 +65,10 @@ impl Session {
 }
 
 pub fn spawn_thread(
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 ) -> Result<SyncBackendThread<WorkerCommand>, String> {
     SyncBackendThread::spawn("opi_sqlite_backend", move |rx| {
-        let mut session = Session::new(binary_vault, logger);
+        let mut session = Session::new(logger);
 
         while let Ok(cmd) = rx.recv() {
             match cmd {
@@ -82,12 +78,11 @@ pub fn spawn_thread(
                 }
                 WorkerCommand::Execute {
                     query,
-                    params_json,
+                    params,
                     force_result,
                     response,
                 } => {
-                    let result =
-                        handle_execute(&mut session, query, params_json, force_result);
+                    let result = handle_execute(&mut session, query, params, force_result);
                     let _ = response.send(result);
                 }
                 WorkerCommand::LoadExtension {
@@ -158,18 +153,18 @@ fn handle_connect(session: &mut Session, database: &str) -> Result<(), String> {
 fn handle_execute(
     session: &mut Session,
     query: String,
-    params_json: Vec<Value>,
+    params: Vec<JanxValue>,
     force_result: bool,
-) -> Result<Option<Vec<Value>>, String> {
+) -> Result<Option<Vec<JanxValue>>, String> {
     session.log(&format!(
         "Execute query (params={}, force_result={}): {}",
-        params_json.len(),
+        params.len(),
         force_result,
         &query
     ));
 
     let result = if let Some(conn) = session.connection.as_mut() {
-        query::execute(&session.binary_vault, conn, &query, params_json, force_result)
+        query::execute(conn, &query, params, force_result)
     } else {
         Err("Not connected".to_string())
     };

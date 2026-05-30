@@ -20,7 +20,6 @@ common-core = { path = "../commons/common-core" }
 common-tcp = { path = "../commons/common-tcp", default-features = false, features = ["rustls"] }
 common-utils = { path = "../commons/common-utils" }
 common-dataset = { path = "../commons/common-dataset" }
-common-binary = { path = "../commons/common-binary" }
 common-logs = { path = "../commons/common-logs" }
 
 tiberius = { version = "0.12.3", default-features = false, features = ["chrono", "rust_decimal", "rustls", "tds73", "winauth"] }
@@ -28,7 +27,6 @@ tokio = { version = "1.0", features = ["full"] }
 tokio-util = { version = "0.7", features = ["compat"] }
 serde_json = "1.0"
 chrono = "0.4"
-base64 = "0.21"
 uuid = { version = "1.17.0", features = ["v4"] }
 dateparser = "0.2.1"
 # funty 2.1.0 yanked on crates.io; tiberius → rust_decimal → rkyv → bitvec тянет ^2.0

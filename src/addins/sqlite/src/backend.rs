@@ -1,15 +1,13 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_binary::vault::{BinaryInput, BinaryVault};
+use common_core::JanxValue;
 use common_logs::Logger;
-use serde_json::Value;
 
 use crate::worker::{self, WorkerCommand};
 
 pub struct SQLiteBackend {
     thread: Option<SyncBackendThread<WorkerCommand>>,
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
 
@@ -17,7 +15,6 @@ impl SQLiteBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
-            binary_vault: BinaryVault::new(),
             logger: None,
         }
     }
@@ -57,12 +54,6 @@ impl SQLiteBackend {
         })
     }
 
-    pub fn store_binary(&mut self, input: BinaryInput) -> Result<String, String> {
-        self.binary_vault
-            .store(input)
-            .map_err(|e| e.to_string())
-    }
-
     pub fn connect(&mut self, database: String) -> Result<(), String> {
         if self.is_connected() {
             return Err("Client already connected".to_string());
@@ -87,9 +78,9 @@ impl SQLiteBackend {
     pub fn execute_query(
         &self,
         query: String,
-        params_json: Vec<Value>,
+        params: Vec<JanxValue>,
         force_result: bool,
-    ) -> Result<Option<Vec<Value>>, String> {
+    ) -> Result<Option<Vec<JanxValue>>, String> {
         if !self.is_connected() {
             return Err("Not connected to SQLite".to_string());
         }
@@ -102,7 +93,7 @@ impl SQLiteBackend {
         thread
             .call(|response| WorkerCommand::Execute {
                 query,
-                params_json,
+                params,
                 force_result,
                 response,
             })
@@ -139,7 +130,7 @@ impl SQLiteBackend {
             return Ok(());
         }
 
-        let thread = worker::spawn_thread(self.binary_vault.clone(), self.logger.clone())?;
+        let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }

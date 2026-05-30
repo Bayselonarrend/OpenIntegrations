@@ -1,21 +1,18 @@
-use std::str::FromStr;
+use std::collections::BTreeMap;
 
-use base64::{engine::general_purpose, Engine as _};
-use common_binary::vault::{BinaryVault, VaultKey};
+use common_core::{FromJanx, JanxValue};
 use rusqlite::{
     types::Value as SqlValue, types::ValueRef, Connection, LoadExtensionGuard, ParamsFromIter,
     params_from_iter,
 };
-use serde_json::{json, Map, Value};
 
 pub fn execute(
-    binary_vault: &BinaryVault,
     conn: &mut Connection,
     text: &str,
-    params: Vec<Value>,
+    params: Vec<JanxValue>,
     force_result: bool,
-) -> Result<Option<Vec<Value>>, String> {
-    let convert = process_blobs(binary_vault, &params)?;
+) -> Result<Option<Vec<JanxValue>>, String> {
+    let convert = process_params(&params)?;
 
     if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
         let mut query_result = conn.prepare(text).map_err(|e| e.to_string())?;
@@ -25,7 +22,7 @@ pub fn execute(
             .map(|name| name.to_string())
             .collect();
         let mut rows = query_result.query(convert).map_err(|e| e.to_string())?;
-        Ok(Some(rows_to_json_array(&mut rows, &cols)))
+        Ok(Some(rows_to_janx_array(&mut rows, &cols)))
     } else {
         conn.execute(text, convert).map_err(|e| e.to_string())?;
         Ok(None)
@@ -46,55 +43,54 @@ pub fn load_extension(conn: &mut Connection, path: String, point: String) -> Res
     }
 }
 
-fn rows_to_json_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<Value> {
-    let mut json_array = Vec::new();
+fn rows_to_janx_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<JanxValue> {
+    let mut janx_array = Vec::new();
     loop {
-        let mut row_map = Map::new();
+        let mut row_map = BTreeMap::new();
         match rows.next() {
             Ok(Some(row)) => {
                 for i in 0..cols.len() {
                     let key = cols[i].to_string();
                     let val = match row.get_ref(i) {
-                        Ok(v) => from_sql_to_json(v),
-                        Err(e) => json!({"error": e.to_string()})
+                        Ok(v) => from_sql_to_janx(v),
+                        Err(e) => JanxValue::String(e.to_string()),
                     };
                     row_map.insert(key, val);
-                };
+                }
             }
-            Err(e) => { row_map.insert("ROW_ERR".to_string(), Value::String(e.to_string())); },
+            Err(e) => {
+                row_map.insert("ROW_ERR".to_string(), JanxValue::String(e.to_string()));
+            }
             Ok(None) => break,
         }
-        json_array.push(Value::Object(row_map));
+        janx_array.push(JanxValue::Object(row_map));
     }
-    json_array
+    janx_array
 }
 
-fn from_sql_to_json(value: ValueRef) -> Value {
+fn from_sql_to_janx(value: ValueRef) -> JanxValue {
     match value {
-        ValueRef::Null => Value::Null,
-        ValueRef::Integer(i) => Value::Number(i.into()),
+        ValueRef::Null => JanxValue::Null,
+        ValueRef::Integer(i) => JanxValue::Number(i.into()),
         ValueRef::Real(f) => {
-            serde_json::Number::from_f64(f).map(Value::Number).unwrap_or(Value::Null)
+            serde_json::Number::from_f64(f)
+                .map(JanxValue::Number)
+                .unwrap_or(JanxValue::Null)
         }
-        ValueRef::Text(t) => Value::String(String::from_utf8_lossy(t).into_owned()),
-        ValueRef::Blob(b) => {
-            let base64_string = general_purpose::STANDARD.encode(b);
-            let mut blob_object = serde_json::Map::new();
-            blob_object.insert("blob".to_string(), Value::String(base64_string));
-            Value::Object(blob_object)
-        },
+        ValueRef::Text(t) => JanxValue::String(String::from_utf8_lossy(t).into_owned()),
+        ValueRef::Blob(b) => JanxValue::binary(b.to_vec()),
     }
 }
 
-fn process_blobs(binary_vault: &BinaryVault, json_array: &Vec<Value>) -> Result<ParamsFromIter<Vec<SqlValue>>, String> {
+fn process_params(json_array: &[JanxValue]) -> Result<ParamsFromIter<Vec<SqlValue>>, String> {
     let mut result = Vec::new();
 
     for item in json_array.iter() {
         let processed: SqlValue = match item {
-            Value::Null => SqlValue::Null,
-            Value::Bool(b) => SqlValue::from(*b),
-            Value::String(s) => SqlValue::from(s.clone()),
-            Value::Number(num) => {
+            JanxValue::Null => SqlValue::Null,
+            JanxValue::Bool(b) => SqlValue::from(*b),
+            JanxValue::String(s) => SqlValue::from(s.clone()),
+            JanxValue::Number(num) => {
                 if let Some(int_val) = num.as_i64() {
                     SqlValue::from(int_val)
                 } else if let Some(float_val) = num.as_f64() {
@@ -103,44 +99,54 @@ fn process_blobs(binary_vault: &BinaryVault, json_array: &Vec<Value>) -> Result<
                     SqlValue::from(0)
                 }
             }
-            Value::Object(obj) => process_object(binary_vault, obj)?,
-            _ => SqlValue::Null
+            JanxValue::Object(obj) => process_object(obj)?,
+            JanxValue::Binary(_) => {
+                return Err("Binary parameter must be wrapped in a typed object, e.g. {\"BLOB\": ...}".to_string())
+            }
+            JanxValue::Array(_) => {
+                return Err("Array is not supported as a SQL parameter".to_string())
+            }
         };
         result.push(processed);
     }
-   Ok(params_from_iter(result))
+    Ok(params_from_iter(result))
 }
 
-fn process_object(binary_vault: &BinaryVault, object: &Map<String, Value>) -> Result<SqlValue, String> {
+fn process_object(object: &BTreeMap<String, JanxValue>) -> Result<SqlValue, String> {
     if object.len() != 1 {
-        return Err("Object must have exactly one key-value pair specifying the type and value".to_string());
+        return Err(
+            "Object must have exactly one key-value pair specifying the type and value".to_string(),
+        );
     }
 
-    let (key, value) = object.iter().next()
+    let (key, value) = object
+        .iter()
+        .next()
         .ok_or_else(|| "Empty object: expected one key-value pair".to_string())?;
 
     let key_upper = key.as_str().to_uppercase();
     let processed = match key_upper.as_str() {
         "BOOL" => value
             .as_bool()
-            .map(|v| SqlValue::from(v))
+            .map(SqlValue::from)
             .unwrap_or(SqlValue::from(false)),
         "INTEGER" => value
             .as_i64()
-            .map(|v| SqlValue::from(v))
+            .map(SqlValue::from)
             .unwrap_or(SqlValue::from(0)),
         "REAL" => value
             .as_f64()
-            .map(|v| SqlValue::from(v))
+            .map(SqlValue::from)
             .unwrap_or(SqlValue::from(0)),
         "BLOB" => {
-            let key = value.as_str().ok_or("Binary vault ket must be string")?;
-            let binary = binary_vault
-                .retrieve(&VaultKey::from_str(key).unwrap_or_default())
-                .map_err(|_| {"Value not found in binary vault!".to_string() })?;
-            SqlValue::Blob(binary)
-        },
-        _ => SqlValue::from(value.as_str().unwrap_or("").to_string())
+            let bytes = Vec::<u8>::from_janx(value)
+                .ok_or_else(|| "Invalid value for BLOB: expected Janx binary".to_string())?;
+            SqlValue::Blob(bytes)
+        }
+        _ => SqlValue::from(
+            String::from_janx(value)
+                .unwrap_or_default(),
+        ),
     };
     Ok(processed)
 }

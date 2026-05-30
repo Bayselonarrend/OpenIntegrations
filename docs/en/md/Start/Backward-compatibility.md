@@ -41,3 +41,7 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 ### 1.34.0 -> 2.0.0
 
 **Twitter**: The Twitter library has been removed and its support is discontinued, as continued maintenance is not feasible. If you are already using this library in your project, you need to preserve it separately before updating
+
+### 2.1.0 -> 2.2.0
+
+**All distribution types**: Binary values in native add-in results and corresponding library functions are now returned as binary data (`BinaryData` in 1C), not as Base64 strings (including wrappers such as `{'blob': '...'}`, `{'BYTEA': '...'}`, `{'BYTES': '...'}`). This affects, among other things, SQL query results with BLOB/BYTEA/BYTES columns and several components that previously used an internal binary vault (MongoDB, ZeroMQ, WebSocket, gRPC, TCP/HTTP/WS servers, etc.). When updating, review any code that expects Base64 or accesses nested fields named after the binary type

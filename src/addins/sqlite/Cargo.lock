@@ -40,12 +40,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
 
 [[package]]
-name = "base64"
-version = "0.22.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
-
-[[package]]
 name = "bitflags"
 version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -93,28 +87,29 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-binary"
-version = "2.1.0"
-dependencies = [
- "base64",
- "serde_json",
- "uuid",
-]
-
-[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
 ]
 
 [[package]]
 name = "common-dataset"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
+ "common-utils",
  "dashmap",
  "serde_json",
  "uuid",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
 ]
 
 [[package]]
@@ -130,6 +125,7 @@ dependencies = [
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
@@ -311,9 +307,7 @@ checksum = "1261fe7e33c73b354eab43b1273a57c8f967d0391e80353e51f764ac02cf6775"
 name = "opi_sqlite"
 version = "2.1.0"
 dependencies = [
- "base64",
  "common-backend",
- "common-binary",
  "common-core",
  "common-dataset",
  "common-logs",

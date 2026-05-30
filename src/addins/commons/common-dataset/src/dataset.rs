@@ -1,7 +1,9 @@
-use dashmap::DashMap;
-use serde_json::{json, Value};
 use std::fs;
 use std::sync::Arc;
+
+use common_janx::{decode, encode, FromJanx, JanxValue};
+use common_utils::utils::janx_success;
+use dashmap::DashMap;
 use uuid::Uuid;
 
 pub struct Datasets {
@@ -10,8 +12,8 @@ pub struct Datasets {
 
 #[derive(Debug, Clone)]
 pub struct QueryData {
-    pub results: Vec<Value>,
-    pub params: Vec<Value>,
+    pub results: Vec<JanxValue>,
+    pub params: Vec<JanxValue>,
     pub text: String,
     pub force_result: bool,
 }
@@ -45,91 +47,89 @@ impl Datasets {
         self.data.get(key).map(|guard| guard.value().clone())
     }
 
-    pub fn set_results(&self, key: &str, values: Vec<Value>) {
+    pub fn set_results(&self, key: &str, values: Vec<JanxValue>) {
         if let Some(mut entry) = self.data.get_mut(key) {
             entry.results = values;
         }
     }
 
-    pub fn result_as_string(&self, key: &str) -> Result<String, String> {
+    pub fn result_as_janx(&self, key: &str) -> Result<JanxValue, String> {
         let (_, query_data) = self
             .data
             .remove(key)
             .ok_or_else(|| format!("Key '{}' not found", key))?;
 
-        let response = json!({
-            "result": true,
-            "data": query_data.results
-        });
-
-        serde_json::to_string(&response).map_err(|e| format!("Serialization failed: {}", e))
+        Ok(janx_success(
+            Some(JanxValue::Array(query_data.results)),
+            None,
+        ))
     }
 
     pub fn result_as_file(&self, key: &str, filepath: &str) -> Result<(), String> {
-        let json_data = self.result_as_string(key)?;
+        let janx_data = self.result_as_janx(key)?;
+        let encoded = encode(&janx_data).map_err(|e| format!("Janx encoding failed: {}", e))?;
 
-        fs::write(filepath, json_data).map_err(|e| format!("Failed to write file: {}", e))?;
+        fs::write(filepath, encoded).map_err(|e| format!("Failed to write file: {}", e))?;
 
         Ok(())
     }
 
     pub fn params_from_file(&self, key: &str, filepath: &str) -> Result<(), String> {
-        let content = fs::read_to_string(filepath)
-            .map_err(|e| format!("Failed to read file '{}': {}", filepath, e))?;
+        let content =
+            fs::read(filepath).map_err(|e| format!("Failed to read file '{}': {}", filepath, e))?;
 
-        let value = serde_json::from_str(&content)
-            .map_err(|e| format!("Invalid JSON in file '{}': {}", filepath, e))?;
+        let value = decode(&content).map_err(|e| format!("Invalid Janx in file '{}': {}", filepath, e))?;
 
         self.set_params(key, value)
     }
 
-    pub fn params_from_string(&self, key: &str, json_str: &str) -> Result<(), String> {
-        let value =
-            serde_json::from_str(json_str).map_err(|e| format!("Invalid JSON string: {}", e))?;
-
+    pub fn params_from_janx(&self, key: &str, value: JanxValue) -> Result<(), String> {
         self.set_params(key, value)
     }
 
     pub fn batch_query_init(&self, input_file: &str, output_file: &str) -> Result<(), String> {
-        let content = fs::read_to_string(input_file)
+        let content = fs::read(input_file)
             .map_err(|e| format!("Failed to read file '{}': {}", input_file, e))?;
 
-        let queries: Vec<Value> = serde_json::from_str(&content)
-            .map_err(|e| format!("Invalid JSON in file '{}': {}", input_file, e))?;
+        let queries = decode(&content)
+            .map_err(|e| format!("Invalid Janx in file '{}': {}", input_file, e))?;
+
+        let queries = Vec::<JanxValue>::from_janx(&queries)
+            .ok_or_else(|| "Batch file must contain a Janx array of queries".to_string())?;
 
         let mut keys = Vec::new();
 
         for query in queries.into_iter() {
             let obj = query
                 .as_object()
-                .ok_or_else(|| "Each query should be a JSON object".to_string())?;
+                .ok_or_else(|| "Each query should be a Janx object".to_string())?;
 
             let text = obj
                 .get("text")
-                .and_then(Value::as_str)
+                .and_then(String::from_janx)
                 .ok_or_else(|| "Missing or invalid 'text' field".to_string())?;
 
             let force_result = obj
                 .get("force_result")
-                .and_then(Value::as_bool)
+                .and_then(bool::from_janx)
                 .unwrap_or(false);
 
             let params = obj
                 .get("params")
-                .cloned()
-                .unwrap_or_else(|| Value::Array(Vec::new()));
+                .and_then(Vec::<JanxValue>::from_janx)
+                .unwrap_or_default();
 
-            let key = self.init_query(text, force_result, false)?;
+            let key = self.init_query(&text, force_result, false)?;
 
-            self.set_params(&key, params)?;
+            self.set_params(&key, JanxValue::Array(params))?;
 
-            keys.push(key);
+            keys.push(JanxValue::String(key));
         }
 
-        let keys_json =
-            serde_json::to_string(&keys).map_err(|e| format!("Failed to serialize keys: {}", e))?;
+        let keys_janx = JanxValue::Array(keys);
+        let encoded = encode(&keys_janx).map_err(|e| format!("Failed to encode keys: {}", e))?;
 
-        fs::write(output_file, keys_json)
+        fs::write(output_file, encoded)
             .map_err(|e| format!("Failed to write keys to '{}': {}", output_file, e))?;
 
         Ok(())
@@ -151,12 +151,12 @@ impl Datasets {
         }
     }
 
-    fn set_params(&self, key: &str, value: Value) -> Result<(), String> {
+    fn set_params(&self, key: &str, value: JanxValue) -> Result<(), String> {
         if let Some(mut entry) = self.data.get_mut(key) {
             match value {
-                Value::Array(arr) => entry.params = arr,
-                Value::Object(obj) => entry.params = vec![Value::Object(obj)],
-                _ => return Err("Expected JSON array or object".to_string()),
+                JanxValue::Array(arr) => entry.params = arr,
+                JanxValue::Object(obj) => entry.params = vec![JanxValue::Object(obj)],
+                _ => return Err("Expected Janx array or object for query params".to_string()),
             }
             Ok(())
         } else {
