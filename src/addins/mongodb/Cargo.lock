@@ -171,15 +171,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "common-binary"
-version = "2.1.0"
-dependencies = [
- "base64",
- "serde_json",
- "uuid",
-]
-
-[[package]]
 name = "common-core"
 version = "2.1.0"
 dependencies = [
@@ -1097,9 +1088,7 @@ dependencies = [
 name = "opi_mongodb"
 version = "2.1.0"
 dependencies = [
- "base64",
  "common-backend",
- "common-binary",
  "common-core",
  "common-janx",
  "common-logs",
@@ -1107,7 +1096,6 @@ dependencies = [
  "dateparser",
  "mongodb",
  "regex",
- "serde",
  "serde_json",
  "tokio",
 ]

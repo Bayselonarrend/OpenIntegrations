@@ -1,15 +1,13 @@
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_binary::vault::{BinaryInput, BinaryVault};
 use common_janx::JanxValue;
 use common_logs::Logger;
 
-use crate::worker::{self, ExecuteParams, WorkerCommand};
+use crate::worker::{self, parse_execute_params, WorkerCommand};
 
 pub struct MongoDBBackend {
     thread: Option<BackendThread<WorkerCommand>>,
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 }
 
@@ -17,7 +15,6 @@ impl MongoDBBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
-            binary_vault: BinaryVault::new(),
             logger: None,
         }
     }
@@ -57,12 +54,6 @@ impl MongoDBBackend {
         })
     }
 
-    pub fn store_binary(&mut self, input: BinaryInput) -> Result<String, String> {
-        self.binary_vault
-            .store(input)
-            .map_err(|e| e.to_string())
-    }
-
     pub fn connect(&mut self, connection_string: String) -> Result<(), String> {
         if self.is_connected() {
             return Err("Connection already initialized".to_string());
@@ -99,20 +90,22 @@ impl MongoDBBackend {
             .and_then(|result| result)
     }
 
-    pub fn execute(&self, json_input: &str) -> Result<JanxValue, String> {
+    pub fn execute(&self, params: JanxValue) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection already closed".to_string());
         }
 
-        let params: ExecuteParams = serde_json::from_str(json_input)
-            .map_err(|e| format!("Invalid JSON: {}", e))?;
+        let execute_params = parse_execute_params(params)?;
 
         let thread = self
             .thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?;
 
-        thread.call(|response| WorkerCommand::Execute { params, response })
+        thread.call(|response| WorkerCommand::Execute {
+            params: execute_params,
+            response,
+        })
     }
 
     pub fn close(&mut self) {
@@ -126,7 +119,7 @@ impl MongoDBBackend {
             return Ok(());
         }
 
-        let thread = worker::spawn_thread(self.binary_vault.clone(), self.logger.clone())?;
+        let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }

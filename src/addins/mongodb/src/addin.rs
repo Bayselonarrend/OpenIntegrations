@@ -1,6 +1,5 @@
 use std::sync::Arc;
 
-use common_binary::vault::BinaryInput;
 use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, json_error, json_success};
@@ -18,27 +17,6 @@ impl AddIn {
         Self {
             connection_string: String::new(),
             client: MongoDBBackend::new(),
-        }
-    }
-
-    pub fn load_binary_to_vault(&mut self, data: Vec<u8>) -> String {
-        match self.client.store_binary(BinaryInput::Bytes(data)) {
-            Ok(key) => json!({"result": true, "key": key}).to_string(),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn load_file_to_vault(&mut self, path: String) -> String {
-        match self.client.store_binary(BinaryInput::FilePath(path)) {
-            Ok(key) => json!({"result": true, "key": key}).to_string(),
-            Err(e) => json_error(&e),
-        }
-    }
-
-    pub fn load_base64_to_vault(&mut self, base64: String) -> String {
-        match self.client.store_binary(BinaryInput::Base64(base64)) {
-            Ok(key) => json!({"result": true, "key": key}).to_string(),
-            Err(e) => json_error(&e),
         }
     }
 
@@ -91,8 +69,8 @@ impl AddIn {
         }
     }
 
-    pub fn execute(&mut self, json_string: &str) -> JanxValue {
-        match self.client.execute(json_string) {
+    pub fn execute(&mut self, params: JanxValue) -> JanxValue {
+        match self.client.execute(params) {
             Ok(result) => result,
             Err(e) => janx_error(&e),
         }

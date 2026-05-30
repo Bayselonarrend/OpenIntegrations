@@ -1,163 +1,163 @@
 use std::collections::BTreeMap;
-use std::str::FromStr;
 use std::time::SystemTime;
+
 use common_janx::JanxValue;
-use serde_json::{Number, Value};
-use mongodb::bson::{Bson, Document};
-use mongodb::bson;
-use common_binary::vault::{BinaryVault, VaultKey};
 use dateparser::parse;
+use mongodb::bson;
+use mongodb::bson::{Bson, Document};
 use regex::Regex as StdRegex;
+use serde_json::Number;
 
-pub fn json_value_to_bson(binary_vault: &BinaryVault, value: &Value) -> Result<Bson, String> {
+pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
     let result = match value {
-        Value::String(s) => Bson::String(s.clone()),
-        Value::Number(n) if n.is_i64() => Bson::Int64(n.as_i64().unwrap()),
-        Value::Number(n) if n.is_f64() => Bson::Double(n.as_f64().unwrap()),
-        Value::Bool(b) => Bson::Boolean(*b),
-        Value::Null => Bson::Null,
-        Value::Array(arr) => {
-            let converted: Result<Vec<_>, _> = arr.iter()
-                .map(| el| json_value_to_bson(binary_vault, el)).collect();
+        JanxValue::String(s) => Bson::String(s.clone()),
+        JanxValue::Number(n) => {
+            if let Some(i) = n.as_i64() {
+                Bson::Int64(i)
+            } else if let Some(f) = n.as_f64() {
+                Bson::Double(f)
+            } else {
+                Bson::Null
+            }
+        }
+        JanxValue::Bool(b) => Bson::Boolean(*b),
+        JanxValue::Null => Bson::Null,
+        JanxValue::Binary(bytes) => Bson::Binary(bson::Binary {
+            bytes: bytes.clone(),
+            subtype: bson::spec::BinarySubtype::Generic,
+        }),
+        JanxValue::Array(arr) => {
+            let converted: Result<Vec<_>, _> =
+                arr.iter().map(janx_value_to_bson).collect();
             Bson::Array(converted?)
-        },
-        Value::Object(obj) => {
-
+        }
+        JanxValue::Object(obj) => {
             if let Some(str_value) = obj.get("__OPI_STRING__") {
-                return if let Value::String(s) = str_value {
-                    Ok(Bson::String(s.clone()))
-                } else {
-                    Ok(Bson::String(str_value.to_string()))
-                }
+                return Ok(Bson::String(
+                    janx_as_str(str_value)
+                        .ok_or_else(|| format!("Can't parse STRING: {str_value:?}"))?,
+                ));
             }
 
             if let Some(int32) = obj.get("__OPI_INT32__") {
-                let value = match int32.as_i64(){
-                    Some(i) => i as i32,
-                    None => return Err(format!("Can't parse I64: {}", int32))
-                };
-                return Ok(Bson::Int32(value))
+                let value = janx_as_i64(int32).ok_or_else(|| format!("Can't parse I64: {int32:?}"))?
+                    as i32;
+                return Ok(Bson::Int32(value));
             }
 
             if let Some(int64) = obj.get("__OPI_INT64__") {
-                return Ok(Bson::Int64(int64.as_i64().ok_or(format!("Can't parse I64: {}", int64))?))
+                return Ok(Bson::Int64(
+                    janx_as_i64(int64).ok_or_else(|| format!("Can't parse I64: {int64:?}"))?,
+                ));
             }
 
             if let Some(double) = obj.get("__OPI_DOUBLE__") {
-                return Ok(Bson::Double(double.as_f64().ok_or(format!("Can't parse Double: {}", double))?))
+                return Ok(Bson::Double(
+                    janx_as_f64(double).ok_or_else(|| format!("Can't parse Double: {double:?}"))?,
+                ));
             }
 
             if let Some(b) = obj.get("__OPI_BOOLEAN__") {
-                return Ok(Bson::Boolean(b.as_bool().ok_or(format!("Can't parse Bool: {}", b))?))
+                return Ok(Bson::Boolean(
+                    janx_as_bool(b).ok_or_else(|| format!("Can't parse Bool: {b:?}"))?,
+                ));
             }
 
             if let Some(datetime) = obj.get("__OPI_DATETIME__") {
-                return if let Some(dt) = datetime.as_str() {
-                    let dtp = parse(dt).map_err(|e| format!("Can't parse DateTime: {}: {}", dt, e))?;
-                    Ok(Bson::DateTime(bson::DateTime::from_system_time(SystemTime::from(dtp))))
-                } else {
-                    Err(format!("Can't parse DateTime: {}", datetime))
-                }
+                let dt = janx_as_str(datetime)
+                    .ok_or_else(|| format!("Can't parse DateTime: {datetime:?}"))?;
+                let dtp = parse(&dt).map_err(|e| format!("Can't parse DateTime: {dt}: {e}"))?;
+                return Ok(Bson::DateTime(bson::DateTime::from_system_time(
+                    SystemTime::from(dtp),
+                )));
             }
 
             if let Some(timestamp) = obj.get("__OPI_TIMESTAMP__") {
-                return if let Some(ts) = timestamp.as_str() {
-                    let dtp = parse(ts).map_err(|e| format!("Can't parse Timestamp: {}: {}", ts, e))?;
-                    let bson_ts = bson::Timestamp{
-                        time: dtp.timestamp() as u32,
-                        increment: 0,
-                    };
-                    Ok(Bson::Timestamp(bson_ts))
-                } else {
-                    Err(format!("Can't parse Timestamp: {}", timestamp))
-                }
+                let ts = janx_as_str(timestamp)
+                    .ok_or_else(|| format!("Can't parse Timestamp: {timestamp:?}"))?;
+                let dtp = parse(&ts).map_err(|e| format!("Can't parse Timestamp: {ts}: {e}"))?;
+                let bson_ts = bson::Timestamp {
+                    time: dtp.timestamp() as u32,
+                    increment: 0,
+                };
+                return Ok(Bson::Timestamp(bson_ts));
             }
 
             if let Some(oid) = obj.get("__OPI_OBJECTID__") {
-                if let Some(oid_str) = oid.as_str() {
-                    return if let Ok(oid) = oid_str.parse::<bson::oid::ObjectId>() {
-                        Ok(Bson::ObjectId(oid))
-                    } else {
-                        Err(format!("Can't parse ObjectID: {}", oid_str))
-                    }
-                }
+                let oid_str = janx_as_str(oid)
+                    .ok_or_else(|| format!("Can't parse ObjectID: {oid:?}"))?;
+                return oid_str
+                    .parse::<bson::oid::ObjectId>()
+                    .map(Bson::ObjectId)
+                    .map_err(|_| format!("Can't parse ObjectID: {oid_str}"));
             }
 
             if let Some(regexp) = obj.get("__OPI_REGEXP__") {
-                return if let Value::Object(ref regexp_obj) = regexp {
+                let regexp_obj = match regexp {
+                    JanxValue::Object(map) => map,
+                    _ => {
+                        return Err(
+                            "Value of REGEXP must be an object with 'pattern' and 'options'"
+                                .to_string(),
+                        );
+                    }
+                };
 
-                    let pattern = regexp_obj.get("pattern")
-                        .and_then(|v| v.as_str())
-                        .ok_or("Missing or invalid 'pattern' field in REGEXP object")?
-                        .to_string();
+                let pattern = regexp_obj
+                    .get("pattern")
+                    .and_then(janx_as_str)
+                    .ok_or("Missing or invalid 'pattern' field in REGEXP object")?
+                    .to_string();
 
-                    StdRegex::new(&pattern)
-                        .map_err(|e| format!("Invalid regex pattern '{}': {}", pattern, e))?;
+                StdRegex::new(&pattern)
+                    .map_err(|e| format!("Invalid regex pattern '{pattern}': {e}"))?;
 
-                    let options = regexp_obj.get("options")
-                        .and_then(|v| v.as_str())
-                        .unwrap_or("")
-                        .to_string();
+                let options = regexp_obj
+                    .get("options")
+                    .and_then(janx_as_str)
+                    .unwrap_or_default();
 
-                    Ok(Bson::RegularExpression(bson::Regex {
-                        pattern,
-                        options,
-                    }))
-                } else {
-                    Err("Value of REGEXP must be an object with 'pattern' and 'options'".to_string())
-                }
+                return Ok(Bson::RegularExpression(bson::Regex { pattern, options }));
             }
 
             if let Some(js_value) = obj.get("__OPI_JS__") {
-                return if let Value::String(s) = js_value {
-                    Ok(Bson::JavaScriptCode(s.clone()))
-                } else {
-                    Ok(Bson::JavaScriptCode(js_value.to_string()))
-                }
+                return Ok(Bson::JavaScriptCode(
+                    janx_as_str(js_value)
+                        .ok_or_else(|| format!("Can't parse JS: {js_value:?}"))?,
+                ));
             }
 
             if let Some(symbol_value) = obj.get("__OPI_SYMBOL__") {
-                return if let Value::String(s) = symbol_value {
-                    Ok(Bson::Symbol(s.clone()))
-                } else {
-                    Ok(Bson::Symbol(symbol_value.to_string()))
-                }
+                return Ok(Bson::Symbol(
+                    janx_as_str(symbol_value)
+                        .ok_or_else(|| format!("Can't parse SYMBOL: {symbol_value:?}"))?,
+                ));
             }
 
-            if let Some(_) = obj.get("__OPI_MINKEY__") {
-                return Ok(Bson::MinKey)
+            if obj.contains_key("__OPI_MINKEY__") {
+                return Ok(Bson::MinKey);
             }
 
-            if let Some(_) = obj.get("__OPI_MAXKEY__") {
-                return Ok(Bson::MaxKey)
+            if obj.contains_key("__OPI_MAXKEY__") {
+                return Ok(Bson::MaxKey);
             }
 
-            if let Some(_) = obj.get("__OPI_NULL__"){
-                return Ok(Bson::Null)
+            if obj.contains_key("__OPI_NULL__") {
+                return Ok(Bson::Null);
             }
 
-            if let Some(binary) = obj.get("__OPI_BINARY__") {
-                if let Some(key) = binary.as_str() {
-
-                    let bytes = binary_vault
-                        .retrieve(&VaultKey::from_str(key).unwrap_or_default())
-                        .map_err(|e| e.to_string())?;
-
-                    return Ok(Bson::Binary(bson::Binary {
-                        bytes,
-                        subtype: bson::spec::BinarySubtype::Generic
-                    }))
-                }
+            if let Some(inner) = obj.get("__OPI_BINARY__") {
+                return janx_value_to_bson(inner);
             }
 
             let mut doc = Document::new();
-            for (k, v) in obj.iter() {
-                let bson_value = json_value_to_bson(binary_vault, v)?;
+            for (k, v) in obj {
+                let bson_value = janx_value_to_bson(v)?;
 
                 let transformed_key = if k.starts_with("__4") {
-                    match k.strip_prefix("__4"){
+                    match k.strip_prefix("__4") {
                         Some(key) => "$".to_string() + key,
-                        None => k.to_string(),
+                        None => k.clone(),
                     }
                 } else {
                     k.clone()
@@ -167,8 +167,7 @@ pub fn json_value_to_bson(binary_vault: &BinaryVault, value: &Value) -> Result<B
             }
 
             Bson::Document(doc)
-        },
-        _ => Bson::Null,
+        }
     };
 
     Ok(result)
@@ -207,5 +206,33 @@ pub fn bson_to_janx_value(bson: &Bson) -> JanxValue {
         }
         Bson::Binary(bin) => JanxValue::binary(bin.bytes.clone()),
         _ => JanxValue::Null,
+    }
+}
+
+fn janx_as_str(value: &JanxValue) -> Option<String> {
+    match value {
+        JanxValue::String(s) => Some(s.clone()),
+        _ => None,
+    }
+}
+
+fn janx_as_i64(value: &JanxValue) -> Option<i64> {
+    match value {
+        JanxValue::Number(n) => n.as_i64(),
+        _ => None,
+    }
+}
+
+fn janx_as_f64(value: &JanxValue) -> Option<f64> {
+    match value {
+        JanxValue::Number(n) => n.as_f64(),
+        _ => None,
+    }
+}
+
+fn janx_as_bool(value: &JanxValue) -> Option<bool> {
+    match value {
+        JanxValue::Bool(b) => Some(*b),
+        _ => None,
     }
 }

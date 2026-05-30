@@ -2,25 +2,39 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_binary::vault::BinaryVault;
 use common_janx::JanxValue;
 use common_logs::Logger;
+use common_utils::utils::{janx_error, janx_success};
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use tokio::runtime::Runtime;
 
-use common_utils::utils::{janx_error, janx_success};
+use crate::bson::{bson_to_janx_value, janx_value_to_bson};
 
-use crate::bson::{bson_to_janx_value, json_value_to_bson};
-
-#[derive(Serialize, Deserialize)]
 pub struct ExecuteParams {
     pub operation: String,
     pub database: Option<String>,
-    pub argument: Option<Value>,
-    pub data: Option<Value>,
+    pub argument: Option<JanxValue>,
+    pub data: Option<JanxValue>,
+}
+
+pub fn parse_execute_params(value: JanxValue) -> Result<ExecuteParams, String> {
+    let map = match value {
+        JanxValue::Object(map) => map,
+        _ => return Err("Execute params must be a Janx object".to_string()),
+    };
+
+    let operation = map
+        .get("operation")
+        .and_then(janx_as_str)
+        .ok_or("Missing or invalid 'operation' field")?;
+
+    Ok(ExecuteParams {
+        operation,
+        database: map.get("database").and_then(janx_as_str),
+        argument: map.get("argument").cloned(),
+        data: map.get("data").cloned(),
+    })
 }
 
 pub enum WorkerCommand {
@@ -46,15 +60,13 @@ pub enum WorkerCommand {
 }
 
 struct Session {
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     client: Option<Client>,
 }
 
 impl Session {
-    fn new(binary_vault: BinaryVault, logger: Option<Arc<Logger>>) -> Self {
+    fn new(logger: Option<Arc<Logger>>) -> Self {
         Self {
-            binary_vault,
             logger,
             client: None,
         }
@@ -68,11 +80,10 @@ impl Session {
 }
 
 pub fn spawn_thread(
-    binary_vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 ) -> Result<BackendThread<WorkerCommand>, String> {
     BackendThread::spawn("opi_mongodb_backend", move |rt, rx| {
-        let mut session = Session::new(binary_vault, logger);
+        let mut session = Session::new(logger);
 
         while let Ok(cmd) = rx.recv() {
             match cmd {
@@ -88,7 +99,6 @@ pub fn spawn_thread(
                         janx_error("Not connected to MongoDB")
                     } else {
                         let result = rt.block_on(execute_operation(
-                            &session.binary_vault,
                             session.client.as_ref().unwrap(),
                             &params,
                         ));
@@ -158,10 +168,9 @@ fn handle_connect(
 }
 
 async fn execute_operation(
-    binary_vault: &BinaryVault,
     client: &Client,
     params: &ExecuteParams,
-) -> Result<common_janx::JanxValue, String> {
+) -> Result<JanxValue, String> {
     let db = match &params.database {
         Some(d) => client.database(d),
         None => client
@@ -172,18 +181,15 @@ async fn execute_operation(
     let mut command = Document::new();
 
     if let Some(value) = &params.argument {
-        command.insert(
-            &params.operation,
-            json_value_to_bson(binary_vault, value)?,
-        );
+        command.insert(&params.operation, janx_value_to_bson(value)?);
     } else {
         command.insert(&params.operation, 1);
     }
 
-    if let Some(Value::Object(data_map)) = &params.data {
+    if let Some(JanxValue::Object(data_map)) = &params.data {
         for (key, value) in data_map {
             if key != &params.operation {
-                command.insert(key, json_value_to_bson(binary_vault, value)?);
+                command.insert(key, janx_value_to_bson(value)?);
             }
         }
     }
@@ -194,4 +200,11 @@ async fn execute_operation(
         .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
 
     Ok(bson_to_janx_value(&Bson::Document(result_doc)))
+}
+
+fn janx_as_str(value: &JanxValue) -> Option<String> {
+    match value {
+        JanxValue::String(s) => Some(s.clone()),
+        _ => None,
+    }
 }
