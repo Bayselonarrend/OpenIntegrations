@@ -283,19 +283,11 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
 
     OPI_TypeConversion.GetNumber(Timeout);
 
-    Result = Connection.ReceiveMessage(Timeout);
-    Result = OPI_Tools.JsonToStructure(Result);
+    ResultBinaryData = Connection.ReceiveMessage(Timeout);
+    Result           = OPI_Janx.DeserializeData(ResultBinaryData);
 
     MessageType = OPI_Tools.GetOr(Result, "type", "");
     Data        = OPI_Tools.GetOr(Result, "data", "");
-
-    If MessageType = "binary" Then
-
-        If ValueIsFilled(Data) Then
-            Result.Insert("data", OPI_AddIns.ReceiveData(Connection, Data));
-        EndIf;
-
-    EndIf;
 
     If MessageType = "text" Then
 

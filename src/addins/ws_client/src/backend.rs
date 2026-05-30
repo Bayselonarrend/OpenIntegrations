@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_binary::vault::BinaryVault;
+use common_janx::JanxValue;
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
@@ -11,7 +11,6 @@ use crate::worker::{self, WorkerCommand};
 
 pub struct WsClientBackend {
     thread: Option<SyncBackendThread<WorkerCommand>>,
-    vault: BinaryVault,
     logger: Option<Arc<Logger>>,
     tls: Option<TlsSettings>,
     proxy: Option<ProxySettings>,
@@ -22,7 +21,6 @@ impl WsClientBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
-            vault: BinaryVault::new(),
             logger: None,
             tls: None,
             proxy: None,
@@ -126,7 +124,7 @@ impl WsClientBackend {
         self.require_thread()?.call(|response| WorkerCommand::SendBinary { data, response })
     }
 
-    pub fn receive_message(&self, timeout_ms: u64) -> Result<String, String> {
+    pub fn receive_message(&self, timeout_ms: u64) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::ReceiveMessage {
             timeout_ms,
             response,
@@ -149,12 +147,6 @@ impl WsClientBackend {
         })
     }
 
-    pub fn retrieve_binary(&self, vault_key: &str) -> Vec<u8> {
-        self.vault
-            .retrieve(&vault_key.to_string())
-            .unwrap_or_else(|_| Vec::new())
-    }
-
     pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
@@ -175,7 +167,7 @@ impl WsClientBackend {
             return Ok(());
         }
 
-        let thread = worker::spawn_thread(self.vault.clone(), self.logger.clone())?;
+        let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
     }

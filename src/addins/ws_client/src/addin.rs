@@ -1,7 +1,8 @@
 use std::sync::Arc;
 
+use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{janx_error, json_error, json_success};
 use serde_json::json;
 
 use crate::backend::WsClientBackend;
@@ -63,10 +64,10 @@ impl AddIn {
             .unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn receive_message(&self, timeout_ms: u64) -> String {
+    pub fn receive_message(&self, timeout_ms: u64) -> JanxValue {
         self.backend
             .receive_message(timeout_ms)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(&e))
     }
 
     pub fn send_ping(&self) -> String {
@@ -102,10 +103,6 @@ impl AddIn {
             Ok(()) => json_success(),
             Err(e) => json_error(&e),
         }
-    }
-
-    pub fn retrieve_binary_from_vault(&self, vault_key: &str) -> Vec<u8> {
-        self.backend.retrieve_binary(vault_key)
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn common_core::getset::ValueType {

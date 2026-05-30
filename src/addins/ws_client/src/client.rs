@@ -2,15 +2,13 @@ use std::sync::Arc;
 use std::net::TcpStream;
 use tungstenite::WebSocket;
 use tungstenite::stream::MaybeTlsStream;
-use common_binary::vault::BinaryVault;
-use common_logs::{Logger, log};
+use common_logs::{log, Logger};
 use common_tcp::tls_settings::TlsSettings;
 use common_tcp::proxy_settings::ProxySettings;
 use common_utils::utils::{json_error, json_success};
 
 pub struct WebSocketClient {
     pub(crate) socket: Option<WebSocket<MaybeTlsStream<TcpStream>>>,
-    pub(crate) vault: BinaryVault,
     pub(crate) logger: Option<Arc<Logger>>,
     pub(crate) tls_settings: Option<TlsSettings>,
     pub(crate) proxy_settings: Option<ProxySettings>,
@@ -20,10 +18,9 @@ pub struct WebSocketClient {
 #[allow(dead_code)]
 impl WebSocketClient {
 
-    pub fn new(vault: BinaryVault) -> Self {
+    pub fn new() -> Self {
         Self {
             socket: None,
-            vault,
             logger: None,
             tls_settings: None,
             proxy_settings: None,

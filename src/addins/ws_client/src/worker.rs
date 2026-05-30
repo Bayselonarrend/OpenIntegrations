@@ -2,7 +2,7 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_binary::vault::BinaryVault;
+use common_janx::JanxValue;
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
@@ -27,7 +27,7 @@ pub enum WorkerCommand {
     },
     ReceiveMessage {
         timeout_ms: u64,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendPing {
         response: Sender<String>,
@@ -55,9 +55,9 @@ struct Session {
 }
 
 impl Session {
-    fn new(vault: BinaryVault) -> Self {
+    fn new() -> Self {
         Self {
-            client: WebSocketClient::new(vault),
+            client: WebSocketClient::new(),
         }
     }
 
@@ -67,11 +67,10 @@ impl Session {
 }
 
 pub fn spawn_thread(
-    vault: BinaryVault,
     logger: Option<Arc<Logger>>,
 ) -> Result<SyncBackendThread<WorkerCommand>, String> {
     SyncBackendThread::spawn("opi_wsclient_backend", move |rx| {
-        let mut session = Session::new(vault);
+        let mut session = Session::new();
 
         if let Some(logger) = logger {
             session.client.set_logger(logger);
@@ -127,12 +126,7 @@ pub fn spawn_thread(
                 WorkerCommand::IsConnected { response } => {
                     let _ = response.send(session.is_connected());
                 }
-                WorkerCommand::Shutdown => {
-                    if session.is_connected() {
-                        let _ = session.client.close(1000, "");
-                    }
-                    break;
-                }
+                WorkerCommand::Shutdown => break,
             }
         }
     })

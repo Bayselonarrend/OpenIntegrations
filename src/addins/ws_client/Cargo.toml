@@ -18,7 +18,7 @@ opt-level = "z"
 common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
 common-utils = { path = "../commons/common-utils" }
-common-binary = { path = "../commons/common-binary" }
+common-janx = { path = "../commons/common-janx" }
 common-logs = { path = "../commons/common-logs" }
 common-tcp = { path = "../commons/common-tcp", features = ["rustls"] }
 
