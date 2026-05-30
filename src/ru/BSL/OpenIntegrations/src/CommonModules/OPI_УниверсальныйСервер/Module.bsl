@@ -43,6 +43,7 @@
 //@skip-check constructor-function-return-section
 
 // #Использовать "./internal"
+// #Использовать "../../../formats/janx"
 
 #Если Не ВебКлиент Тогда // !OPI
 
