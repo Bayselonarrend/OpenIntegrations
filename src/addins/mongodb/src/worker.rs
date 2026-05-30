@@ -7,10 +7,12 @@ use common_logs::Logger;
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
+use serde_json::Value;
 use tokio::runtime::Runtime;
 
-use crate::bson::{bson_to_json_value, json_value_to_bson};
+use common_utils::utils::{janx_error, janx_success};
+
+use crate::bson::{bson_to_janx_value, json_value_to_bson};
 
 #[derive(Serialize, Deserialize)]
 pub struct ExecuteParams {
@@ -27,7 +29,7 @@ pub enum WorkerCommand {
     },
     Execute {
         params: ExecuteParams,
-        response: Sender<String>,
+        response: Sender<Vec<u8>>,
     },
     Disconnect {
         response: Sender<Result<(), String>>,
@@ -81,8 +83,8 @@ pub fn spawn_thread(
                     let _ = response.send(result);
                 }
                 WorkerCommand::Execute { params, response } => {
-                    let result_string = if session.client.is_none() {
-                        format_json_error("Not connected to MongoDB")
+                    let result_frame = if session.client.is_none() {
+                        janx_error("Not connected to MongoDB")
                     } else {
                         let result = rt.block_on(execute_operation(
                             &session.binary_vault,
@@ -91,19 +93,13 @@ pub fn spawn_thread(
                         ));
 
                         match result {
-                            Ok(data) => {
-                                let result_value = match serde_json::from_str(&data) {
-                                    Ok(value) => value,
-                                    Err(_) => Value::String(data),
-                                };
-                                json!({"result": true, "data": result_value}).to_string()
-                            }
-                            Err(e) => format_json_error(&e),
+                            Ok(data) => janx_success(Some(data), None),
+                            Err(e) => janx_error(&e),
                         }
                     };
 
                     session.log(&format!("Execute operation: {}", params.operation));
-                    let _ = response.send(result_string);
+                    let _ = response.send(result_frame);
                 }
                 WorkerCommand::Disconnect { response } => {
                     session.log("Disconnecting from MongoDB");
@@ -164,7 +160,7 @@ async fn execute_operation(
     binary_vault: &BinaryVault,
     client: &Client,
     params: &ExecuteParams,
-) -> Result<String, String> {
+) -> Result<common_janx::JanxValue, String> {
     let db = match &params.database {
         Some(d) => client.database(d),
         None => client
@@ -196,11 +192,5 @@ async fn execute_operation(
         .await
         .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
 
-    let json_result = bson_to_json_value(&Bson::Document(result_doc));
-    serde_json::to_string(&json_result)
-        .map_err(|e| format!("Failed to serialize command result: {}", e))
-}
-
-fn format_json_error(error: &str) -> String {
-    json!({"result": false, "error": error}).to_string()
+    Ok(bson_to_janx_value(&Bson::Document(result_doc)))
 }

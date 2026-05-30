@@ -20,6 +20,7 @@ common-core = { path = "../commons/common-core" }
 common-binary = { path = "../commons/common-binary" }
 common-utils = { path = "../commons/common-utils" }
 common-logs = { path = "../commons/common-logs" }
+common-janx = { path = "../commons/common-janx" }
 
 mongodb = { version = "3.2.4"}
 serde_json = "1.0.140"

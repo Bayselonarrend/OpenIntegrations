@@ -1,9 +1,10 @@
+use std::collections::BTreeMap;
 use std::str::FromStr;
 use std::time::SystemTime;
+use common_janx::JanxValue;
 use serde_json::{Number, Value};
 use mongodb::bson::{Bson, Document};
 use mongodb::bson;
-use base64::{Engine as _, engine::{general_purpose}};
 use common_binary::vault::{BinaryVault, VaultKey};
 use dateparser::parse;
 use regex::Regex as StdRegex;
@@ -173,45 +174,38 @@ pub fn json_value_to_bson(binary_vault: &BinaryVault, value: &Value) -> Result<B
     Ok(result)
 }
 
-pub fn bson_to_json_value(bson: &Bson) -> Value {
+pub fn bson_to_janx_value(bson: &Bson) -> JanxValue {
     match bson {
-        Bson::String(s) => Value::String(s.clone()),
-        Bson::Int32(n) => Value::Number((*n).into()),
-        Bson::Int64(n) => Value::Number((*n).into()),
-        Bson::Double(n) => Value::Number(Number::from_f64(*n).unwrap_or(0.into())),
-        Bson::Decimal128(n) => Value::String(n.to_string()),
-        Bson::Boolean(b) => Value::Bool(*b),
-        Bson::DateTime(dt) => Value::String(dt.try_to_rfc3339_string().unwrap_or_default()),
-        Bson::ObjectId(oid) => Value::String(oid.to_hex()),
-        Bson::RegularExpression(r) => Value::String(r.to_string()),
-        Bson::JavaScriptCode(js) => Value::String(js.to_string()),
-        Bson::Symbol(s) => Value::String(s.to_string()),
-        Bson::Timestamp(ts) => Value::String(ts.to_string()),
-        Bson::MaxKey => Value::String("<<MaxKey>>".to_string()),
-        Bson::MinKey => Value::String("<<MinKey>>".to_string()),
-        Bson::Null => Value::Null,
-        Bson::Array(arr) => {
-            Value::Array(arr.iter().map(bson_to_json_value).collect())
-        },
+        Bson::String(s) => JanxValue::String(s.clone()),
+        Bson::Int32(n) => JanxValue::Number((*n).into()),
+        Bson::Int64(n) => JanxValue::Number((*n).into()),
+        Bson::Double(n) => JanxValue::Number(Number::from_f64(*n).unwrap_or(0.into())),
+        Bson::Decimal128(n) => JanxValue::String(n.to_string()),
+        Bson::Boolean(b) => JanxValue::Bool(*b),
+        Bson::DateTime(dt) => JanxValue::String(dt.try_to_rfc3339_string().unwrap_or_default()),
+        Bson::ObjectId(oid) => JanxValue::String(oid.to_hex()),
+        Bson::RegularExpression(r) => JanxValue::String(r.to_string()),
+        Bson::JavaScriptCode(js) => JanxValue::String(js.to_string()),
+        Bson::Symbol(s) => JanxValue::String(s.to_string()),
+        Bson::Timestamp(ts) => JanxValue::String(ts.to_string()),
+        Bson::MaxKey => JanxValue::String("<<MaxKey>>".to_string()),
+        Bson::MinKey => JanxValue::String("<<MinKey>>".to_string()),
+        Bson::Null => JanxValue::Null,
+        Bson::Array(arr) => JanxValue::Array(arr.iter().map(bson_to_janx_value).collect()),
         Bson::Document(doc) => {
-            let mut map = serde_json::Map::new();
+            let mut map = BTreeMap::new();
             for (k, v) in doc {
-                map.insert(k.clone(), bson_to_json_value(v));
+                map.insert(k.clone(), bson_to_janx_value(v));
             }
-            Value::Object(map)
-        },
-        Bson::JavaScriptCodeWithScope(jss) => {
-            let mut map = serde_json::Map::new();
-            map.insert("scope".to_string(), Value::String(jss.scope.to_string()));
-            map.insert("code".to_string(), Value::String(jss.code.to_string()));
-            Value::Object(map)
+            JanxValue::Object(map)
         }
-        Bson::Binary(bin) => {
-            let mut map = serde_json::Map::new();
-            let base64 = general_purpose::STANDARD.encode(&bin.bytes);
-            map.insert("__B64_BINARY__".to_string(), Value::String(base64));
-            Value::Object(map)
-        },
-        _ => Value::Null,
+        Bson::JavaScriptCodeWithScope(jss) => {
+            let mut map = BTreeMap::new();
+            map.insert("scope".to_string(), JanxValue::String(jss.scope.to_string()));
+            map.insert("code".to_string(), JanxValue::String(jss.code.to_string()));
+            JanxValue::Object(map)
+        }
+        Bson::Binary(bin) => JanxValue::binary(bin.bytes.clone()),
+        _ => JanxValue::Null,
     }
 }

@@ -98,7 +98,7 @@ impl MongoDBBackend {
             .and_then(|result| result)
     }
 
-    pub fn execute(&self, json_input: &str) -> Result<String, String> {
+    pub fn execute(&self, json_input: &str) -> Result<Vec<u8>, String> {
         if !self.is_connected() {
             return Err("Connection already closed".to_string());
         }

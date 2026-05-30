@@ -3,9 +3,17 @@
 version = 4
 
 [[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
+]
+
+[[package]]
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
