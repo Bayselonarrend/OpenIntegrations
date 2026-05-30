@@ -13272,5 +13272,7 @@
 "ПрочитатьЦелое16": "ReadInt16",
 "ПрочитатьЦелое64": "ReadInt64",
 "ПолучитьСтрокуИзБуфераДвоичныхДанных": "GetStringFromBinaryDataBuffer",
-"ТекущаяУниверсальнаяДатаВМиллисекундах": "CurrentUniversalDateInMilliseconds"
+"ТекущаяУниверсальнаяДатаВМиллисекундах": "CurrentUniversalDateInMilliseconds",
+"JSON-Annex Format (Janx-1): JSON UTF-8 с бинарным appendix": "JSON-Annex Format (Janx-1): JSON UTF-8 with binary appendix",
+"Модуль для работы с форматом MessagePack из набора ОПИ": "MessagePack of OpenIntegrations"
 }
