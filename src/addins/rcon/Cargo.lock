@@ -80,6 +80,14 @@ name = "common-core"
 version = "2.1.0"
 dependencies = [
  "addin1c",
+ "common-janx",
+]
+
+[[package]]
+name = "common-janx"
+version = "2.1.0"
+dependencies = [
+ "serde_json",
 ]
 
 [[package]]
@@ -95,6 +103,7 @@ dependencies = [
 name = "common-utils"
 version = "2.1.0"
 dependencies = [
+ "common-janx",
  "serde_json",
 ]
 
