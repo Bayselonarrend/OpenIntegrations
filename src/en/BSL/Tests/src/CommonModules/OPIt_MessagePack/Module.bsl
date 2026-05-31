@@ -140,9 +140,15 @@ Function MessagePackPackReference(BaseURL, Data)
             .SetDataType("application/json")
             .SetStringBody("null");
 
-    Else
+    ElsIf OPI_Tools.IsCollection(Data, True) Then
 
         Request = Request.SetJsonBody(Data);
+
+    Else
+
+        Request = Request
+            .SetDataType("application/json; charset=utf-8")
+            .SetStringBody(OPI_Tools.JSONString(Data, "None", False));
 
     EndIf;
 
