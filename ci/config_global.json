@@ -1,4 +1,17 @@
 {
+    "primary": {
+        "description": "Primary project data",
+        "value": {
+            "ointCurrentVersion": {
+                "description": "Main Oint lib versions",
+                "value": "2.1.0"
+            },
+            "ointPreviousVersion": {
+                "description": "Main Oint lib previous versions",
+                "value": "2.0.0"
+            }
+        }
+    },
     "local": {
         "description": "Paths and information for processing on local machine",
         "value": {

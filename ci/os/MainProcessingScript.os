@@ -11,6 +11,19 @@
 		CommonTools.СообщитьПроцесс("Dependencies skip...");
 	КонецПопытки;
 
+	КаталогРепозиторияMelezh = "./Melezh";
+	ОбъектКаталогРепозиторияMelezh = Новый Файл(КаталогРепозиторияMelezh);
+	Если ОбъектКаталогРепозиторияMelezh.Существует() Тогда
+		CommonTools.СообщитьПроцесс("Updating Melezh...");
+		CommonTools.ЗапуститьВнешнееПриложение("git fetch --all", КаталогРепозиторияMelezh);
+		CommonTools.ЗапуститьВнешнееПриложение("git reset --hard origin/master", КаталогРепозиторияMelezh);
+	Иначе
+		CommonTools.СообщитьПроцесс("Cloning Melezh...");
+		CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/Melezh.git");
+	КонецЕсли;
+
+	Приостановить(10000);
+
 	Обработчик = Новый DictionariesMethods(ДанныеПроекта);
 	Обработчик = Новый SpellCheckMethods(ДанныеПроекта);
 	Обработчик = Новый Versioning(ДанныеПроекта);
