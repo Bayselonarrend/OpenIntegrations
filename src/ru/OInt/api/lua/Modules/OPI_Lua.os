@@ -206,9 +206,6 @@
 
 #КонецОбласти
 
-#КонецЕсли
-
-
 #Region Alternate
 
 Function CreateVM(Val Version, Val Logging = Undefined) Export
