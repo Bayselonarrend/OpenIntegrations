@@ -1,5 +1,5 @@
-﻿Описание.Имя("oint-cli")
-    .Версия("2.1.0")
+Описание.Имя("oint-cli")
+    .Версия("2.2.0")
     .Автор("bayselonarrend")
     .АдресАвтора("bayselonarrend@gmail.com")
     .Описание("OpenIntegrations-based CLI tool")

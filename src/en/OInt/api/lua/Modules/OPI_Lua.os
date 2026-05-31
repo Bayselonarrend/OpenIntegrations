@@ -184,7 +184,7 @@ Function IsVM(Val Value) Export
     TypeAsString = String(TypeOf(Value));
 
     Return TypeAsString = "AddIn.OPI_LuaJIT.Main"
-        Or TypeAsString    = "AddIn.OPI_Lua54.Main"
+        Or TypeAsString = "AddIn.OPI_Lua54.Main"
 
 EndFunction
 
@@ -206,7 +206,6 @@ EndFunction
 
 #EndRegion
 
-#EndIf
 
 
 #Region Alternate

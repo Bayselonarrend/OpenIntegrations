@@ -202,7 +202,7 @@ Procedure Janx_Benchmark()
 
     For Index = 0 To 499 Do
 
-        Element                          = New Structure;
+        Element                           = New Structure;
         Element.Insert("index"  , Index);
         Element.Insert("flag"   , Index % 2 = 0);
         Element.Insert("title"  , "item_" + Index);
@@ -232,7 +232,7 @@ Procedure Janx_Benchmark()
         Element.Insert("attrs", Attributes);
         Items.Add(Element);
 
-        JsonItem                          = New Structure;
+        JsonItem                           = New Structure;
         JsonItem.Insert("index", Index);
         JsonItem.Insert("flag" , Index % 2 = 0);
         JsonItem.Insert("title", "item_" + Index);

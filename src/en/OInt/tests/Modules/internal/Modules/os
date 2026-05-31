@@ -15006,7 +15006,7 @@ EndProcedure
 
 Function Check_MessagePack_Benchmark(Val Result, Val Option, Original = Undefined)
 
-    CheckMapMessagePack(Result["JsonRestored"], Original);
+    CheckMapMessagePack(Result["JsonRestored"] , Original);
     CheckMapMessagePack(Result["MessagePackRestored"], Original);
 
     LogServiceInformation(
@@ -15224,7 +15224,7 @@ Function Check_Janx_Benchmark(Val Result, Val Option, Original = Undefined)
         StrTemplate("%1 ms", Result["JanxDeserializationWithoutBinMs"])
         , "Janx deserialization (without bin)"
         , "Janx");
-        
+
     LogServiceInformation(
         StrTemplate("%1 ms", Result["JanxSerializationMs"])
         , "Janx serialization (with bin)"
@@ -15255,7 +15255,7 @@ Function OriginalJsonFromJanxBenchmark(Val Original)
 
         JsonItem = New Structure;
         JsonItem.Insert("index", Element.index);
-        JsonItem.Insert("flag", Element.flag);
+        JsonItem.Insert("flag" , Element.flag);
         JsonItem.Insert("title", Element.title);
         JsonItem.Insert("ratio", Element.ratio);
 
@@ -15264,16 +15264,16 @@ Function OriginalJsonFromJanxBenchmark(Val Original)
         EndIf;
 
         JsonItem.Insert("values", Element.values);
-        JsonItem.Insert("attrs", Element.attrs);
+        JsonItem.Insert("attrs" , Element.attrs);
         JsonItems.Add(JsonItem);
 
     EndDo;
 
     OriginalJson = New Structure;
     OriginalJson.Insert("version", Original.version);
-    OriginalJson.Insert("label", Original.label);
-    OriginalJson.Insert("root", Original.root);
-    OriginalJson.Insert("items", JsonItems);
+    OriginalJson.Insert("label" , Original.label);
+    OriginalJson.Insert("root" , Original.root);
+    OriginalJson.Insert("items" , JsonItems);
 
     Return OriginalJson;
 

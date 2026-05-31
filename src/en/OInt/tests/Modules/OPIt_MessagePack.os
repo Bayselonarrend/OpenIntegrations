@@ -368,7 +368,7 @@ Procedure MessagePack_Benchmark()
 
     For Index = 0 To 499 Do
 
-        Element                          = New Structure;
+        Element                           = New Structure;
         Element.Insert("index", Index);
         Element.Insert("flag" , Index % 2 = 0);
         Element.Insert("title", "item_" + Index);

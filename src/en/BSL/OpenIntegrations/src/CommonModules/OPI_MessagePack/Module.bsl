@@ -93,8 +93,8 @@ Procedure WriteValue(Val Data, Context)
 
         WriteArrayToContext(Data, Context);
 
-    ElsIf DataType = Type("Structure")
-        Or DataType   = Type("Map") Then
+    ElsIf DataType  = Type("Structure")
+        Or DataType = Type("Map") Then
 
         WriteMapToContext(Data, Context);
 
@@ -122,17 +122,17 @@ Function ReadValue(Val Buffer, Val Item)
         Return ReadStringFromBuffer(Buffer, Item + 1, Tag - _fixstr());
     EndIf;
 
-    If Tag  = _str8() Then
+    If Tag     = _str8() Then
         Length = Buffer.Get(Item + 1);
         Return ReadStringFromBuffer(Buffer, Item + 2, Length);
     EndIf;
 
-    If Tag         = _str16() Then
+    If Tag            = _str16() Then
         LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
         Return ReadStringFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
 
-    If Tag         = _str32() Then
+    If Tag            = _str32() Then
         LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
         Return ReadStringFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
@@ -149,17 +149,17 @@ Function ReadValue(Val Buffer, Val Item)
         Return ReadingResult(True, Item + 1);
     EndIf;
 
-    If Tag  = _bin8() Then
+    If Tag     = _bin8() Then
         Length = Buffer.Get(Item + 1);
         Return ReadBinaryDataFromBuffer(Buffer, Item + 2, Length);
     EndIf;
 
-    If Tag         = _bin16() Then
+    If Tag            = _bin16() Then
         LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
         Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
 
-    If Tag         = _bin32() Then
+    If Tag            = _bin32() Then
         LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
         Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
@@ -168,12 +168,12 @@ Function ReadValue(Val Buffer, Val Item)
         Return ReadMapFromBuffer(Buffer, Item + 1, Tag - _fixmap());
     EndIf;
 
-    If Tag         = _map16() Then
+    If Tag            = _map16() Then
         LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
         Return ReadMapFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
 
-    If Tag         = _map32() Then
+    If Tag            = _map32() Then
         LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
         Return ReadMapFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
@@ -182,12 +182,12 @@ Function ReadValue(Val Buffer, Val Item)
         Return ReadArrayFromBuffer(Buffer, Item + 1, Tag - _fixarray());
     EndIf;
 
-    If Tag         = _array16() Then
+    If Tag            = _array16() Then
         LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
         Return ReadArrayFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
 
-    If Tag         = _array32() Then
+    If Tag            = _array32() Then
         LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
         Return ReadArrayFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
     EndIf;
@@ -311,7 +311,7 @@ Function ReadSignedInteger8FromBuffer(Val Buffer, Val Item)
     Byte = Buffer.Get(Item);
 
     If Byte >= 128 Then
-        Byte    = Byte - 256;
+        Byte = Byte - 256;
     EndIf;
 
     Return ReadingResult(Byte, Item + 1);
@@ -452,7 +452,7 @@ Function EncodeFloat64BE(Val Number)
     MantissaRemainder = MantissaInt % Pow(2, 48);
 
     For Index = 2 To 7 Do
-        Shift    = (7 - Index) * 8;
+        Shift = (7 - Index) * 8;
         Buffer.Set(Index, Int(MantissaRemainder / Pow(2, Shift)) % 256);
     EndDo;
 
@@ -469,7 +469,7 @@ Function DecodeFloat64BE(Val Buffer)
     Exponent = (Byte0 % 128) * 16 + Int(Byte1 / 16);
     Mantissa = (Byte1 % 16) * Pow(2, 48);
 
-    For Index = 2 To 7 Do
+    For Index    = 2 To 7 Do
         Mantissa = Mantissa + Buffer.Get(Index) * Pow(2, (7 - Index) * 8);
     EndDo;
 
