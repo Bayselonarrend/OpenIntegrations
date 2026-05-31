@@ -23,7 +23,7 @@ pipeline {
 
 		stage('Decrypt Data') {
             steps {
-                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-2.1.0.ospx; del oint-2.1.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-2.2.0.ospx; del oint-2.2.0.ospx'
                 withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
                     bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%GPGKEY%" --output ./data.json ./data.json.gpg'
                 }
@@ -33,7 +33,7 @@ pipeline {
         stage('Remove oint.bat if exists') {
             steps {
                 powershell encoding: 'UTF-8', script: '''
-                    $batFile = "D:/OneScript/oint.bat"
+                    $batFile = "D:/OneScript/bin/oint.bat"
                     if (Test-Path $batFile) {
                         Remove-Item -Path $batFile -Force
                         Write-Host "Файл oint.bat удален."
@@ -44,7 +44,7 @@ pipeline {
 
                 // Проверяем, что файл действительно удален
                 powershell encoding: 'UTF-8', script: '''
-                    $batFile = "D:/OneScript/oint.bat"
+                    $batFile = "D:/OneScript/bin/oint.bat"
                     if (Test-Path $batFile) {
                         Write-Error "Ошибка: Файл oint.bat не удален!"
                         exit 1
@@ -90,7 +90,7 @@ pipeline {
         stage('Download Installer') {
             steps {
                 powershell encoding: 'UTF-8', script: '''
-                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.1.0/oint_2.1.0_installer_en.exe "
+                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.2.0/oint_2.2.0_installer_en.exe "
                     $output = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
                     Invoke-WebRequest -Uri $url -OutFile $output
                     Write-Host "Инсталлер скачан в: $output"
@@ -142,6 +142,22 @@ pipeline {
 				}
 		}
 
+		stage('Testing-Core') {
+            when {
+                expression { return shouldRunStage('Core') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'CheckIBToLastBuildCompliance'],
+						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'ValidateAdvancedCall'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
 		stage('Testing-BuildCheck') {
             when {
                 expression { return shouldRunStage('BuildCheck') }
@@ -152,7 +168,9 @@ pipeline {
 
 					]
 					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
+						}
 					}
 				}
 			}

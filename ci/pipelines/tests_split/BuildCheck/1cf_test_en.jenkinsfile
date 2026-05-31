@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_en\"\";\" /C\"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
@@ -98,7 +98,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Core', './service/yaxunit_conf/ru/Core.json'],
+						['Core', './service/yaxunit_conf/en/Core.json'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +113,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['BuildCheck', './service/yaxunit_conf/ru/BuildCheck.json'],
+						['BuildCheck', './service/yaxunit_conf/en/BuildCheck.json'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

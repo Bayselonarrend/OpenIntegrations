@@ -141,7 +141,8 @@
      "HTTP": true,
      "Core": true,
      "WebSocket": true,
-     "ZeroMQ": true
+     "ZeroMQ": true,
+     "BuildCheck": true
     }
    },
    "testIbPath": {

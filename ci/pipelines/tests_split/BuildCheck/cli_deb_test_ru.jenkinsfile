@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_2.1.0_all_ru.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.1.0/oint_2.1.0_all_ru.deb '
+                    sh 'wget -O oint_2.2.0_all_ru.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.2.0/oint_2.2.0_all_ru.deb '
                 }
             }
         }
@@ -43,14 +43,14 @@ pipeline {
         stage('Install oint package') {
             steps {
                 script {
-                    sh 'dpkg -i oint_2.1.0_all_ru.deb'
+                    sh 'dpkg -i oint_2.2.0_all_ru.deb'
                 }
             }
         }
 
       	stage('Prepare'){
          		steps{
-                    sh 'cd ./src/ru/OInt && opm build && opm install oint-2.1.0.ospx && rm oint-2.1.0.ospx'
+                    sh 'cd ./src/ru/OInt && opm build && opm install oint-2.2.0.ospx && rm oint-2.2.0.ospx'
               		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
               			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
             		}
@@ -62,6 +62,22 @@ pipeline {
 				}
 		}
 
+		stage('Testing-Core') {
+            when {
+                expression { return shouldRunStage('Core') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
 		stage('Testing-BuildCheck') {
             when {
                 expression { return shouldRunStage('BuildCheck') }
@@ -72,7 +88,9 @@ pipeline {
 
 					]
 					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 							runLibraryTest(test[0], test[1])
+						}
 					}
 				}
 			}

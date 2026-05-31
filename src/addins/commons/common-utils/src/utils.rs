@@ -38,5 +38,5 @@ pub fn lock_unpoisoned<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
 }
 
 pub fn version() -> String {
-    "2.1.0".to_string()
+    "2.2.0".to_string()
 }
