@@ -413,6 +413,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
     NewTest(ArrayOfTests, TestModule, "MP_Data"                             , "Data"                            , MsgPack);
     NewTest(ArrayOfTests, TestModule, "MP_Benchmark"                        , "Benchmark"                       , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "MP_Compatibility"                    , "Reference compatibility"         , MsgPack);
     NewTest(ArrayOfTests, TestModule, "Jnx_Data"                            , "Data"                            , Janx);
     NewTest(ArrayOfTests, TestModule, "Jnx_Benchmark"                       , "Benchmark"                       , Janx);
 
@@ -15007,6 +15008,67 @@ Procedure CheckMessagePackValue(Val Actual, Val Expected)
     EndIf;
 
 EndProcedure
+
+Function Check_MessagePack_ReferenceCompatibility(Val Result, Val Option, Original = Undefined)
+
+    If Option = "Health" Then
+
+        ExpectsThat(Result["ok"]).EqualTo(True);
+        ExpectsThat(Result["port"]).Filled();
+
+    ElsIf Option = "OPIPackReferenceUnpack" Then
+
+        Actual = ConvertMessagePackReferenceValue(Result);
+        CheckMessagePackValue(Actual, Original);
+
+    ElsIf Option = "ReferencePackOPIUnpack" Then
+
+        CheckMessagePackValue(Result, Original);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function ConvertMessagePackReferenceValue(Val Value)
+
+    If OPI_Tools.IsCollection(Value, True)
+        And MapContainsKeyMessagePack(Value, "__msgpack_bytes__") Then
+
+        Return Base64Value(Value["__msgpack_bytes__"]);
+
+    ElsIf TypeOf(Value) = Type("Array") Then
+
+        Result = New Array;
+
+        For Each Item In Value Do
+            Result.Add(ConvertMessagePackReferenceValue(Item));
+        EndDo;
+
+        Return Result;
+
+    ElsIf OPI_Tools.IsCollection(Value, True) Then
+
+        Result = New Map;
+
+        For Each Pair In Value Do
+            Result.Insert(Pair.Key, ConvertMessagePackReferenceValue(Pair.Value));
+        EndDo;
+
+        Return Result;
+
+    Else
+
+        If Value = Null Then
+            Return Undefined;
+        EndIf;
+
+        Return Value;
+
+    EndIf;
+
+EndFunction
 
 Function Check_MessagePack_Benchmark(Val Result, Val Option, Original = Undefined)
 
