@@ -15034,6 +15034,10 @@ Function ConvertReferenceValueMessagePack(Val Value)
 
         Return Base64Value(Value["__msgpack_bytes__"]);
 
+    ElsIf IsNodeJSMessagePackBuffer(Value) Then
+
+        Return BinaryDataFromNodeJSMessagePackDataBuffer(Value);
+
     ElsIf TypeOf(Value) = Type("Array") Then
 
         Result = New Array;
@@ -15063,6 +15067,35 @@ Function ConvertReferenceValueMessagePack(Val Value)
         Return Value;
 
     EndIf;
+
+EndFunction
+
+Function IsNodeJSMessagePackBuffer(Val Value)
+
+    If Not OPI_Tools.ThisIsCollection(Value, True) Then
+        Return False;
+    EndIf;
+
+    If Not MapContainsKeyMessagePack(Value, "type")
+        Or Not MapContainsKeyMessagePack(Value, "data") Then
+        Return False;
+    EndIf;
+
+    Return Value["type"] = "Buffer"
+        And TypeOf(Value["data"]) = Type("Array");
+
+EndFunction
+
+Function BinaryDataFromNodeJSMessagePackDataBuffer(Val Value)
+
+    Bytes = Value["data"];
+    Buffer = New BinaryDataBuffer(Bytes.Count());
+
+    For Index = 0 To Bytes.Count() - 1 Do
+        Buffer.Set(Index, Bytes[Index]);
+    EndDo;
+
+    Return GetBinaryDataFromBinaryDataBuffer(Buffer);
 
 EndFunction
 

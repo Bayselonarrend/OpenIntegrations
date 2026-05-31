@@ -15038,9 +15038,9 @@ Function ConvertReferenceValueMessagePack(Val Value)
 
         Return Base64Value(Value["__msgpack_bytes__"]);
 
-    ElsIf IsNodeJSBufferMessagePack(Value) Then
+    ElsIf IsNodeJSMessagePackBuffer(Value) Then
 
-        Return BinaryDataFromNodeJSBufferMessagePack(Value);
+        Return BinaryDataFromNodeJSMessagePackDataBuffer(Value);
 
     ElsIf TypeOf(Value) = Type("Array") Then
 
@@ -15074,7 +15074,7 @@ Function ConvertReferenceValueMessagePack(Val Value)
 
 EndFunction
 
-Function IsNodeJSBufferMessagePack(Val Value)
+Function IsNodeJSMessagePackBuffer(Val Value)
 
     If Not OPI_Tools.ThisIsCollection(Value, True) Then
         Return False;
@@ -15085,12 +15085,12 @@ Function IsNodeJSBufferMessagePack(Val Value)
         Return False;
     EndIf;
 
-    Return Value["type"] = "Buffer"
+    Return Value["type"]          = "Buffer"
         And TypeOf(Value["data"]) = Type("Array");
 
 EndFunction
 
-Function BinaryDataFromNodeJSBufferMessagePack(Val Value)
+Function BinaryDataFromNodeJSMessagePackDataBuffer(Val Value)
 
     Bytes  = Value["data"];
     Buffer = New BinaryDataBuffer(Bytes.Count());

@@ -139,7 +139,7 @@ Function MessagePackPackReference(BaseURL, Data)
             .SetDataType("application/json")
             .SetStringBody("null");
 
-    ElsIf OPI_Tools.IsCollection(Data, True) Then
+    ElsIf OPI_Tools.ThisIsCollection(Data, True) Then
 
         Request = Request.SetJsonBody(Data);
 

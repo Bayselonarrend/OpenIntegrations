@@ -254,24 +254,24 @@ Procedure CDEK_CreateOrder(FunctionParameters)
 
     Package = New Structure;
 
-    Items = New Array;
+    Products = New Array;
 
-    Item = New Structure;
+    Product = New Structure;
 
     Payment = New Structure;
     Payment.Insert("value", 3000);
 
-    Item.Insert("payment" , Payment);
-    Item.Insert("ware_key", "00055");
-    Item.Insert("name"    , "Product");
-    Item.Insert("cost"    , 300);
-    Item.Insert("amount"  , 2);
-    Item.Insert("weight"  , 700);
-    Item.Insert("url"     , "www.item.ru");
+    Product.Insert("payment" , Payment);
+    Product.Insert("ware_key", "00055");
+    Product.Insert("name"    , "Product");
+    Product.Insert("cost"    , 300);
+    Product.Insert("amount"  , 2);
+    Product.Insert("weight"  , 700);
+    Product.Insert("url"     , "www.item.ru");
 
-    Items.Add(Item);
+    Product.Add(Product);
 
-    Package.Insert("items"  , Items);
+    Package.Insert("items"  , Product);
     Package.Insert("number" , "bar-001");
     Package.Insert("comment", "Packaging");
     Package.Insert("height" , 10);

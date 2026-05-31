@@ -305,12 +305,12 @@ Function PackInt32BEJanx(Val Number)
 
 EndFunction
 
-Function ReadInt32BEJanx(Val Buffer, Val Item)
+Function ReadInt32BEJanx(Val Buffer, Val Position)
 
-    Byte0 = Buffer.Get(Item);
-    Byte1 = Buffer.Get(Item + 1);
-    Byte2 = Buffer.Get(Item + 2);
-    Byte3 = Buffer.Get(Item + 3);
+    Byte0 = Buffer.Get(Position);
+    Byte1 = Buffer.Get(Position + 1);
+    Byte2 = Buffer.Get(Position + 2);
+    Byte3 = Buffer.Get(Position + 3);
 
     Return Byte0 * 16777216 + Byte1 * 65536 + Byte2 * 256 + Byte3;
 

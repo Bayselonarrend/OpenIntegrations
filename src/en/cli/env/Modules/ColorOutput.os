@@ -86,7 +86,7 @@ Function ParseString(MessageText, TextColor)
 	Pos = 1;
 	For Each ColorField In tbColoredFields Do
 		If Pos < ColorField.Item Then
-			Text = Mid(MessageText, Pos, ColorField.Item - Pos);
+			Text = Mid(MessageText, Pos, ColorField.Position - Pos);
 			Str = Table.Add();
 			Str.Text = Text;
 			Str.Color = TextColor;
@@ -96,7 +96,7 @@ Function ParseString(MessageText, TextColor)
 		Str.Text = ColorField.Text;
 		Str.Color = ColorField.Color;
 		
-		Pos = ColorField.Item + ColorField.Length;
+		Pos = ColorField.Position + ColorField.Length;
 	EndDo;
 
 	If Pos-1 <= Length Then
@@ -116,7 +116,7 @@ Function ColoredFields(MessageText)
 	Coincidences = RX.Matches(MessageText);
 
 	ColoredFields = New ValueTable;
-	ColoredFields.Columns.Add("Item");
+	ColoredFields.Columns.Add("Position");
 	ColoredFields.Columns.Add("Text");
 	ColoredFields.Columns.Add("Length");
 	ColoredFields.Columns.Add("Color");
@@ -124,14 +124,14 @@ Function ColoredFields(MessageText)
 	For Each Coincidence In Coincidences Do
 		Groups = Coincidence.Groups;
 		str = ColoredFields.Add();
-		str.Item = Coincidence.Index+1;
+		str.Position = Coincidence.Index+1;
 		str.Text = Groups[1].Value;
 		str.Length = Coincidence.Length;
 		ColorName = Groups[2].Value;
 		str.Color = ColorName;
 	EndDo;
 	
-	ColoredFields.Sort("Item");
+	ColoredFields.Sort("Position");
 	
 	Return ColoredFields;
 

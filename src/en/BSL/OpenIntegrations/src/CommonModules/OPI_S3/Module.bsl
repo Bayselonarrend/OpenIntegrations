@@ -1444,7 +1444,7 @@ Function GetObjectInChunks(Val BasicData
             Try
 
                 ChunkHeader     = CurrentSet["Title"];
-                CurrentPosition = CurrentSet["Item"];
+                CurrentPosition = CurrentSet["Position"];
 
                 SourceHeader = New Map();
                 SourceHeader.Insert("Range", ChunkHeader);

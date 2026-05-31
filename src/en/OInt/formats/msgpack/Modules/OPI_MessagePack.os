@@ -105,93 +105,93 @@ Procedure WriteValue(Val Data, Context)
 
 EndProcedure
 
-Function ReadValue(Val Buffer, Val Item)
+Function ReadValue(Val Buffer, Val Position)
 
-    Tag = Buffer.Get(Item);
+    Tag = Buffer.Get(Position);
 
     If Tag <= _posFixintMax() Then
-        Return ReadingResult(Tag, Item + 1);
+        Return ReadingResult(Tag, Position + 1);
     EndIf;
 
     If Tag >= _negFixintMin() Then
-        Return ReadingResult(Tag - 256, Item + 1);
+        Return ReadingResult(Tag - 256, Position + 1);
     EndIf;
 
     If Tag >= _fixstr() And Tag <= _fixstrMax() Then
-        Return ReadStringFromBuffer(Buffer, Item + 1, Tag - _fixstr());
+        Return ReadStringFromBuffer(Buffer, Position + 1, Tag - _fixstr());
     EndIf;
 
     If Tag     = _str8() Then
-        Length = Buffer.Get(Item + 1);
-        Return ReadStringFromBuffer(Buffer, Item + 2, Length);
+        Length = Buffer.Get(Position + 1);
+        Return ReadStringFromBuffer(Buffer, Position + 2, Length);
     EndIf;
 
     If Tag            = _str16() Then
-        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
-        Return ReadStringFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Position + 1);
+        Return ReadStringFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag            = _str32() Then
-        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
-        Return ReadStringFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Position + 1);
+        Return ReadStringFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag = _nil() Then
-        Return ReadingResult(Undefined, Item + 1);
+        Return ReadingResult(Undefined, Position + 1);
     EndIf;
 
     If Tag = _false() Then
-        Return ReadingResult(False, Item + 1);
+        Return ReadingResult(False, Position + 1);
     EndIf;
 
     If Tag = _true() Then
-        Return ReadingResult(True, Item + 1);
+        Return ReadingResult(True, Position + 1);
     EndIf;
 
     If Tag     = _bin8() Then
-        Length = Buffer.Get(Item + 1);
-        Return ReadBinaryDataFromBuffer(Buffer, Item + 2, Length);
+        Length = Buffer.Get(Position + 1);
+        Return ReadBinaryDataFromBuffer(Buffer, Position + 2, Length);
     EndIf;
 
     If Tag            = _bin16() Then
-        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
-        Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Position + 1);
+        Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag            = _bin32() Then
-        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
-        Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Position + 1);
+        Return ReadBinaryDataFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag >= _fixmap() And Tag <= _fixmapMax() Then
-        Return ReadMapFromBuffer(Buffer, Item + 1, Tag - _fixmap());
+        Return ReadMapFromBuffer(Buffer, Position + 1, Tag - _fixmap());
     EndIf;
 
     If Tag            = _map16() Then
-        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
-        Return ReadMapFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Position + 1);
+        Return ReadMapFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag            = _map32() Then
-        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
-        Return ReadMapFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Position + 1);
+        Return ReadMapFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag >= _fixarray() And Tag <= _fixarrayMax() Then
-        Return ReadArrayFromBuffer(Buffer, Item + 1, Tag - _fixarray());
+        Return ReadArrayFromBuffer(Buffer, Position + 1, Tag - _fixarray());
     EndIf;
 
     If Tag            = _array16() Then
-        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
-        Return ReadArrayFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger16FromBuffer(Buffer, Position + 1);
+        Return ReadArrayFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
     If Tag            = _array32() Then
-        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
-        Return ReadArrayFromBuffer(Buffer, LengthReading.Item, LengthReading.Value);
+        LengthReading = ReadUnsignedInteger32FromBuffer(Buffer, Position + 1);
+        Return ReadArrayFromBuffer(Buffer, LengthReading.Position, LengthReading.Value);
     EndIf;
 
-    NumberReading = ReadNumber(Buffer, Item, Tag);
+    NumberReading = ReadNumber(Buffer, Position, Tag);
 
     If NumberReading <> Undefined Then
         Return NumberReading;
@@ -220,20 +220,20 @@ EndFunction
 
 Procedure EnsureContextCapacity(Context, Val NeedByte)
 
-    If NeedByte <= Context.Capacity - Context.Item Then
+    If NeedByte <= Context.Capacity - Context.Position Then
         Return;
     EndIf;
 
     NewCapacity = Context.Capacity;
 
-    While NewCapacity - Context.Item < NeedByte Do
+    While NewCapacity - Context.Position < NeedByte Do
         NewCapacity = NewCapacity * 2;
     EndDo;
 
     NewBuffer = New BinaryDataBuffer(NewCapacity, ByteOrder.BigEndian);
 
-    If Context.Item > 0 Then
-        Fragment = Context.Buffer.Read(0, Context.Item);
+    If Context.Position > 0 Then
+        Fragment = Context.Buffer.Read(0, Context.Position);
         NewBuffer.Write(0, Fragment);
     EndIf;
 
@@ -245,45 +245,45 @@ EndProcedure
 Procedure WriteByteToContext(Context, Val Byte)
 
     EnsureContextCapacity(Context, 1);
-    Context.Buffer.Set(Context.Item, Byte);
-    Context.Item = Context.Item + 1;
+    Context.Buffer.Set(Context.Position, Byte);
+    Context.Position = Context.Position + 1;
 
 EndProcedure
 
 Function GetBinaryDataFromRecordContext(Val Context)
 
-    If Context.Item = 0 Then
+    If Context.Position = 0 Then
         Return GetBinaryDataFromString("");
     EndIf;
 
-    If Context.Item = Context.Capacity Then
+    If Context.Position = Context.Capacity Then
         Return GetBinaryDataFromBinaryDataBuffer(Context.Buffer);
     EndIf;
 
-    Fragment = Context.Buffer.Read(0, Context.Item);
+    Fragment = Context.Buffer.Read(0, Context.Position);
 
     Return GetBinaryDataFromBinaryDataBuffer(Fragment);
 
 EndFunction
 
-Function ReadingResult(Val Value, Val Item)
+Function ReadingResult(Val Value, Val Position)
 
     Return New Structure("Value, Position", Value, Position);
 
 EndFunction
 
-Function ReadUnsignedInteger16FromBuffer(Val Buffer, Val Item)
+Function ReadUnsignedInteger16FromBuffer(Val Buffer, Val Position)
 
-    Byte0 = Buffer.Get(Item);
-    Byte1 = Buffer.Get(Item + 1);
+    Byte0 = Buffer.Get(Position);
+    Byte1 = Buffer.Get(Position + 1);
 
-    Return ReadingResult(Byte0 * 256 + Byte1, Item + 2);
+    Return ReadingResult(Byte0 * 256 + Byte1, Position + 2);
 
 EndFunction
 
-Function ReadUnsignedInteger32FromBuffer(Val Buffer, Val Item)
+Function ReadUnsignedInteger32FromBuffer(Val Buffer, Val Position)
 
-    Value = Buffer.ReadInt32(Item);
+    Value = Buffer.ReadInt32(Position);
 
     If Value < 0 Then
         Value = Value + 4294967296;
@@ -293,9 +293,9 @@ Function ReadUnsignedInteger32FromBuffer(Val Buffer, Val Item)
 
 EndFunction
 
-Function ReadUnsignedInteger64FromBuffer(Val Buffer, Val Item)
+Function ReadUnsignedInteger64FromBuffer(Val Buffer, Val Position)
 
-    Value = Buffer.ReadInt64(Item);
+    Value = Buffer.ReadInt64(Position);
 
     If Value < 0 Then
         Value = Value + 18446744073709551616;
@@ -305,54 +305,54 @@ Function ReadUnsignedInteger64FromBuffer(Val Buffer, Val Item)
 
 EndFunction
 
-Function ReadSignedInteger8FromBuffer(Val Buffer, Val Item)
+Function ReadSignedInteger8FromBuffer(Val Buffer, Val Position)
 
-    Byte = Buffer.Get(Item);
+    Byte = Buffer.Get(Position);
 
     If Byte >= 128 Then
         Byte = Byte - 256;
     EndIf;
 
-    Return ReadingResult(Byte, Item + 1);
+    Return ReadingResult(Byte, Position + 1);
 
 EndFunction
 
-Function ReadSignedInteger16FromBuffer(Val Buffer, Val Item)
+Function ReadSignedInteger16FromBuffer(Val Buffer, Val Position)
 
-    Value = Buffer.ReadInt16(Item);
+    Value = Buffer.ReadInt16(Position);
 
     Return ReadingResult(Value, Position + 2);
 
 EndFunction
 
-Function ReadSignedInteger32FromBuffer(Val Buffer, Val Item)
+Function ReadSignedInteger32FromBuffer(Val Buffer, Val Position)
 
-    Value = Buffer.ReadInt32(Item);
+    Value = Buffer.ReadInt32(Position);
 
     Return ReadingResult(Value, Position + 4);
 
 EndFunction
 
-Function ReadSignedInteger64FromBuffer(Val Buffer, Val Item)
+Function ReadSignedInteger64FromBuffer(Val Buffer, Val Position)
 
-    Value = Buffer.ReadInt64(Item);
+    Value = Buffer.ReadInt64(Position);
 
     Return ReadingResult(Value, Position + 8);
 
 EndFunction
 
-Function ReadFloat32FromBuffer(Val Buffer, Val Item)
+Function ReadFloat32FromBuffer(Val Buffer, Val Position)
 
-    NumberBuffer = Buffer.Read(Item, 4);
+    NumberBuffer = Buffer.Read(Position, 4);
     Value        = DecodeFloat32BE(NumberBuffer);
 
     Return ReadingResult(Value, Position + 4);
 
 EndFunction
 
-Function ReadFloat64FromBuffer(Val Buffer, Val Item)
+Function ReadFloat64FromBuffer(Val Buffer, Val Position)
 
-    NumberBuffer = Buffer.Read(Item, 8);
+    NumberBuffer = Buffer.Read(Position, 8);
     Value        = DecodeFloat64BE(NumberBuffer);
 
     Return ReadingResult(Value, Position + 8);
@@ -513,49 +513,49 @@ Procedure WriteStringToContext(Val Data, Context)
     If DataSize < 32 Then
 
         EnsureContextCapacity(Context, 1 + DataSize);
-        Context.Buffer.Set(Context.Item, _fixstr() + DataSize);
-        Context.Buffer.Write(Context.Item + 1, BufferString);
-        Context.Item = Context.Item + 1 + DataSize;
+        Context.Buffer.Set(Context.Position, _fixstr() + DataSize);
+        Context.Buffer.Write(Context.Position + 1, BufferString);
+        Context.Position = Context.Position + 1 + DataSize;
 
     ElsIf DataSize < 256 Then
 
         EnsureContextCapacity(Context, 2 + DataSize);
-        Context.Buffer.Set(Context.Item    , _str8());
-        Context.Buffer.Set(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 2, BufferString);
-        Context.Item = Context.Item + 2 + DataSize;
+        Context.Buffer.Set(Context.Position    , _str8());
+        Context.Buffer.Set(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 2, BufferString);
+        Context.Position = Context.Position + 2 + DataSize;
 
     ElsIf DataSize < 65536 Then
 
         EnsureContextCapacity(Context, 3 + DataSize);
-        Context.Buffer.Set(Context.Item, _str16());
-        Context.Buffer.WriteInt16(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 3, BufferString);
-        Context.Item = Context.Item + 3 + DataSize;
+        Context.Buffer.Set(Context.Position, _str16());
+        Context.Buffer.WriteInt16(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 3, BufferString);
+        Context.Position = Context.Position + 3 + DataSize;
 
     Else
 
         EnsureContextCapacity(Context, 5 + DataSize);
-        Context.Buffer.Set(Context.Item, _str32());
-        Context.Buffer.WriteInt32(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 5, BufferString);
-        Context.Item = Context.Item + 5 + DataSize;
+        Context.Buffer.Set(Context.Position, _str32());
+        Context.Buffer.WriteInt32(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 5, BufferString);
+        Context.Position = Context.Position + 5 + DataSize;
 
     EndIf;
 
 EndProcedure
 
-Function ReadStringFromBuffer(Val Buffer, Val Item, Val Length)
+Function ReadStringFromBuffer(Val Buffer, Val Position, Val Length)
 
     If Length = 0 Then
-        Return ReadingResult("", Item);
+        Return ReadingResult("", Position);
     EndIf;
 
-    FragmentBuffer = Buffer.Read(Item, Length);
+    FragmentBuffer = Buffer.Read(Position, Length);
     BDFragment     = GetBinaryDataFromBinaryDataBuffer(FragmentBuffer);
     String         = GetStringFromBinaryData(BDFragment, "UTF-8");
 
-    Return ReadingResult(String, Item + Length);
+    Return ReadingResult(String, Position + Length);
 
 EndFunction
 
@@ -571,41 +571,41 @@ Procedure RecordBinaryDataInContext(Val Data, Context)
     If DataSize < 256 Then
 
         EnsureContextCapacity(Context, 2 + DataSize);
-        Context.Buffer.Set(Context.Item    , _bin8());
-        Context.Buffer.Set(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 2, BufferBody);
-        Context.Item = Context.Item + 2 + DataSize;
+        Context.Buffer.Set(Context.Position    , _bin8());
+        Context.Buffer.Set(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 2, BufferBody);
+        Context.Position = Context.Position + 2 + DataSize;
 
     ElsIf DataSize < 65536 Then
 
         EnsureContextCapacity(Context, 3 + DataSize);
-        Context.Buffer.Set(Context.Item, _bin16());
-        Context.Buffer.WriteInt16(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 3, BufferBody);
-        Context.Item = Context.Item + 3 + DataSize;
+        Context.Buffer.Set(Context.Position, _bin16());
+        Context.Buffer.WriteInt16(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 3, BufferBody);
+        Context.Position = Context.Position + 3 + DataSize;
 
     Else
 
         EnsureContextCapacity(Context, 5 + DataSize);
-        Context.Buffer.Set(Context.Item, _bin32());
-        Context.Buffer.WriteInt32(Context.Item + 1, DataSize);
-        Context.Buffer.Write(Context.Item + 5, BufferBody);
-        Context.Item = Context.Item + 5 + DataSize;
+        Context.Buffer.Set(Context.Position, _bin32());
+        Context.Buffer.WriteInt32(Context.Position + 1, DataSize);
+        Context.Buffer.Write(Context.Position + 5, BufferBody);
+        Context.Position = Context.Position + 5 + DataSize;
 
     EndIf;
 
 EndProcedure
 
-Function ReadBinaryDataFromBuffer(Val Buffer, Val Item, Val Length)
+Function ReadBinaryDataFromBuffer(Val Buffer, Val Position, Val Length)
 
     If Length = 0 Then
-        Return ReadingResult(GetBinaryDataFromString(""), Item);
+        Return ReadingResult(GetBinaryDataFromString(""), Position);
     EndIf;
 
-    FragmentBuffer = Buffer.Read(Item, Length);
+    FragmentBuffer = Buffer.Read(Position, Length);
     BDFragment     = GetBinaryDataFromBinaryDataBuffer(FragmentBuffer);
 
-    Return ReadingResult(BDFragment, Item + Length);
+    Return ReadingResult(BDFragment, Position + Length);
 
 EndFunction
 
@@ -624,16 +624,16 @@ Procedure WriteArrayToContext(Val Data, Context)
     ElsIf ItemCount < 65536 Then
 
         EnsureContextCapacity(Context, 3);
-        Context.Buffer.Set(Context.Item, _array16());
-        Context.Buffer.WriteInt16(Context.Item + 1, ItemCount);
-        Context.Item = Context.Item + 3;
+        Context.Buffer.Set(Context.Position, _array16());
+        Context.Buffer.WriteInt16(Context.Position + 1, ItemCount);
+        Context.Position = Context.Position + 3;
 
     Else
 
         EnsureContextCapacity(Context, 5);
-        Context.Buffer.Set(Context.Item, _array32());
-        Context.Buffer.WriteInt32(Context.Item + 1, ItemCount);
-        Context.Item = Context.Item + 5;
+        Context.Buffer.Set(Context.Position, _array32());
+        Context.Buffer.WriteInt32(Context.Position + 1, ItemCount);
+        Context.Position = Context.Position + 5;
 
     EndIf;
 
@@ -643,19 +643,19 @@ Procedure WriteArrayToContext(Val Data, Context)
 
 EndProcedure
 
-Function ReadArrayFromBuffer(Val Buffer, Val Item, Val ItemCount)
+Function ReadArrayFromBuffer(Val Buffer, Val Position, Val ItemCount)
 
     Array = New Array;
 
     For Index = 1 To ItemCount Do
 
-        ItemReading = ReadValue(Buffer, Item);
+        ItemReading = ReadValue(Buffer, Position);
         Array.Add(ItemReading.Value);
-        Item        = ItemReading.Item;
+        Position    = ItemReading.Position;
 
     EndDo;
 
-    Return ReadingResult(Array, Item);
+    Return ReadingResult(Array, Position);
 
 EndFunction
 
@@ -678,16 +678,16 @@ Procedure WriteMapToContext(Val Data, Context)
     ElsIf PairCount < 65536 Then
 
         EnsureContextCapacity(Context, 3);
-        Context.Buffer.Set(Context.Item, _map16());
-        Context.Buffer.WriteInt16(Context.Item + 1, PairCount);
-        Context.Item = Context.Item + 3;
+        Context.Buffer.Set(Context.Position, _map16());
+        Context.Buffer.WriteInt16(Context.Position + 1, PairCount);
+        Context.Position = Context.Position + 3;
 
     Else
 
         EnsureContextCapacity(Context, 5);
-        Context.Buffer.Set(Context.Item, _map32());
-        Context.Buffer.WriteInt32(Context.Item + 1, PairCount);
-        Context.Item = Context.Item + 5;
+        Context.Buffer.Set(Context.Position, _map32());
+        Context.Buffer.WriteInt32(Context.Position + 1, PairCount);
+        Context.Position = Context.Position + 5;
 
     EndIf;
 
@@ -705,26 +705,26 @@ Procedure WriteMapToContext(Val Data, Context)
 
 EndProcedure
 
-Function ReadMapFromBuffer(Val Buffer, Val Item, Val PairCount)
+Function ReadMapFromBuffer(Val Buffer, Val Position, Val PairCount)
 
     Map = New Map;
 
     For Index = 1 To PairCount Do
 
-        KeyReading = ReadValue(Buffer, Item);
-        Item       = KeyReading.Item;
+        KeyReading = ReadValue(Buffer, Position);
+        Position   = KeyReading.Position;
 
         If TypeOf(KeyReading.Value) <> Type("String") Then
             Raise "MessagePack map key must be a string";
         EndIf;
 
-        ValueReading = ReadValue(Buffer, Item);
+        ValueReading = ReadValue(Buffer, Position);
         Map.Insert(KeyReading.Value, ValueReading.Value);
-        Item         = ValueReading.Item;
+        Position     = ValueReading.Position;
 
     EndDo;
 
-    Return ReadingResult(Map, Item);
+    Return ReadingResult(Map, Position);
 
 EndFunction
 
@@ -765,9 +765,9 @@ Procedure RecordFloat32InContext(Val Number, Context)
     Body = EncodeFloat32BE(Number);
 
     EnsureContextCapacity(Context, 5);
-    Context.Buffer.Set(Context.Item, _float32());
-    Context.Buffer.Write(Context.Item + 1, Body);
-    Context.Item = Context.Item + 5;
+    Context.Buffer.Set(Context.Position, _float32());
+    Context.Buffer.Write(Context.Position + 1, Body);
+    Context.Position = Context.Position + 5;
 
 EndProcedure
 
@@ -776,9 +776,9 @@ Procedure RecordFloat64InContext(Val Number, Context)
     Body = EncodeFloat64BE(Number);
 
     EnsureContextCapacity(Context, 9);
-    Context.Buffer.Set(Context.Item, _float64());
-    Context.Buffer.Write(Context.Item + 1, Body);
-    Context.Item = Context.Item + 9;
+    Context.Buffer.Set(Context.Position, _float64());
+    Context.Buffer.Write(Context.Position + 1, Body);
+    Context.Position = Context.Position + 9;
 
 EndProcedure
 
@@ -791,30 +791,30 @@ Procedure RecordPositiveIntegerInContext(Val Number, Context)
     ElsIf Number < 256 Then
 
         EnsureContextCapacity(Context, 2);
-        Context.Buffer.Set(Context.Item    , _uint8());
-        Context.Buffer.Set(Context.Item + 1, Number);
-        Context.Item = Context.Item + 2;
+        Context.Buffer.Set(Context.Position    , _uint8());
+        Context.Buffer.Set(Context.Position + 1, Number);
+        Context.Position = Context.Position + 2;
 
     ElsIf Number < 65536 Then
 
         EnsureContextCapacity(Context, 3);
-        Context.Buffer.Set(Context.Item, _uint16());
-        Context.Buffer.WriteInt16(Context.Item + 1, Number);
-        Context.Item = Context.Item + 3;
+        Context.Buffer.Set(Context.Position, _uint16());
+        Context.Buffer.WriteInt16(Context.Position + 1, Number);
+        Context.Position = Context.Position + 3;
 
     ElsIf Number < 4294967296 Then
 
         EnsureContextCapacity(Context, 5);
-        Context.Buffer.Set(Context.Item, _uint32());
-        Context.Buffer.WriteInt32(Context.Item + 1, Number);
-        Context.Item = Context.Item + 5;
+        Context.Buffer.Set(Context.Position, _uint32());
+        Context.Buffer.WriteInt32(Context.Position + 1, Number);
+        Context.Position = Context.Position + 5;
 
     Else
 
         EnsureContextCapacity(Context, 9);
-        Context.Buffer.Set(Context.Item, _uint64());
-        Context.Buffer.WriteInt64(Context.Item + 1, Number);
-        Context.Item = Context.Item + 9;
+        Context.Buffer.Set(Context.Position, _uint64());
+        Context.Buffer.WriteInt64(Context.Position + 1, Number);
+        Context.Position = Context.Position + 9;
 
     EndIf;
 
@@ -829,75 +829,75 @@ Procedure RecordNegativeIntegerInContext(Val Number, Context)
     ElsIf Number >= -128 Then
 
         EnsureContextCapacity(Context, 2);
-        Context.Buffer.Set(Context.Item    , _int8());
-        Context.Buffer.Set(Context.Item + 1, _negFixintMin() + 32 + Number);
-        Context.Item = Context.Item + 2;
+        Context.Buffer.Set(Context.Position    , _int8());
+        Context.Buffer.Set(Context.Position + 1, _negFixintMin() + 32 + Number);
+        Context.Position = Context.Position + 2;
 
     ElsIf Number >= -32768 Then
 
         EnsureContextCapacity(Context, 3);
-        Context.Buffer.Set(Context.Item, _int16());
-        Context.Buffer.WriteInt16(Context.Item + 1, Number);
-        Context.Item = Context.Item + 3;
+        Context.Buffer.Set(Context.Position, _int16());
+        Context.Buffer.WriteInt16(Context.Position + 1, Number);
+        Context.Position = Context.Position + 3;
 
     ElsIf Number >= -2147483648 Then
 
         EnsureContextCapacity(Context, 5);
-        Context.Buffer.Set(Context.Item, _int32());
-        Context.Buffer.WriteInt32(Context.Item + 1, Number);
-        Context.Item = Context.Item + 5;
+        Context.Buffer.Set(Context.Position, _int32());
+        Context.Buffer.WriteInt32(Context.Position + 1, Number);
+        Context.Position = Context.Position + 5;
 
     Else
 
         EnsureContextCapacity(Context, 9);
-        Context.Buffer.Set(Context.Item, _int64());
-        Context.Buffer.WriteInt64(Context.Item + 1, Number);
-        Context.Item = Context.Item + 9;
+        Context.Buffer.Set(Context.Position, _int64());
+        Context.Buffer.WriteInt64(Context.Position + 1, Number);
+        Context.Position = Context.Position + 9;
 
     EndIf;
 
 EndProcedure
 
-Function ReadNumber(Val Buffer, Val Item, Val Tag)
+Function ReadNumber(Val Buffer, Val Position, Val Tag)
 
     If Tag = _uint8() Then
-        Return ReadingResult(Buffer.Get(Item + 1), Item + 2);
+        Return ReadingResult(Buffer.Get(Position + 1), Position + 2);
     EndIf;
 
     If Tag = _uint16() Then
-        Return ReadUnsignedInteger16FromBuffer(Buffer, Item + 1);
+        Return ReadUnsignedInteger16FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _uint32() Then
-        Return ReadUnsignedInteger32FromBuffer(Buffer, Item + 1);
+        Return ReadUnsignedInteger32FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _uint64() Then
-        Return ReadUnsignedInteger64FromBuffer(Buffer, Item + 1);
+        Return ReadUnsignedInteger64FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _int8() Then
-        Return ReadSignedInteger8FromBuffer(Buffer, Item + 1);
+        Return ReadSignedInteger8FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _int16() Then
-        Return ReadSignedInteger16FromBuffer(Buffer, Item + 1);
+        Return ReadSignedInteger16FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _int32() Then
-        Return ReadSignedInteger32FromBuffer(Buffer, Item + 1);
+        Return ReadSignedInteger32FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _int64() Then
-        Return ReadSignedInteger64FromBuffer(Buffer, Item + 1);
+        Return ReadSignedInteger64FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _float32() Then
-        Return ReadFloat32FromBuffer(Buffer, Item + 1);
+        Return ReadFloat32FromBuffer(Buffer, Position + 1);
     EndIf;
 
     If Tag = _float64() Then
-        Return ReadFloat64FromBuffer(Buffer, Item + 1);
+        Return ReadFloat64FromBuffer(Buffer, Position + 1);
     EndIf;
 
     Return Undefined;
