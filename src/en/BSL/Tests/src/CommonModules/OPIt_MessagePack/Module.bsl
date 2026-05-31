@@ -124,15 +124,15 @@ EndProcedure
 
 #Region MessagePack
 
-Function MessagePackReferenceBaseUrl()
+Function MessagePackBaseReferenceURL()
 
     Return StrTemplate("http://%1:19090", OPI_TestDataRetrieval.GetLocalhost());
 
 EndFunction
 
-Function MessagePackReferencePack(BaseUrl, Data)
+Function MessagePackPackReference(BaseURL, Data)
 
-    Request = OPI_HTTPRequests.NewRequest().Initialize(BaseUrl + "/pack");
+    Request = OPI_HTTPRequests.NewRequest().Initialize(BaseURL + "/pack");
 
     If Data = Undefined Then
 
@@ -150,14 +150,14 @@ Function MessagePackReferencePack(BaseUrl, Data)
 
 EndFunction
 
-Function MessagePackReferenceUnpack(BaseUrl, BinaryData)
+Function MessagePackUnpackReference(BaseURL, Binary)
 
     Return OPI_HTTPRequests.NewRequest()
-        .Initialize(BaseUrl + "/unpack")
+        .Initialize(BaseURL + "/unpack")
         .SetDataType("application/msgpack")
-        .SetBinaryBody(BinaryData)
+        .SetBinaryBody(Binary)
         .ProcessRequest("POST")
-        .ReturnResponseAsJSONCollection();
+        .ReturnResponseAsJSONObject();
 
 EndFunction
 
@@ -477,118 +477,118 @@ EndProcedure
 
 Procedure MessagePack_ReferenceCompatibility()
 
-    BaseUrl = MessagePackReferenceBaseUrl();
+    BaseURL = MessagePackBaseReferenceURL();
 
     Result = OPI_HTTPRequests.NewRequest()
-        .Initialize(BaseUrl + "/health")
+        .Initialize(BaseURL + "/health")
         .ProcessRequest("GET")
-        .ReturnResponseAsJSONCollection();
+        .ReturnResponseAsJSONObject();
 
     // END
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "ReferenceCompatibility", "Health");
 
-    Original = "Hello";
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
+    Original      = "Hello";
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
     OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
 
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = 128;
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = 0.2;
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = True;
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = Undefined;
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = New Array;
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = New Array;
-    Original.Add(1);
-    Original.Add(2);
-    Original.Add(3);
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = New Structure("a", 1);
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    Original = New Map;
-    Original.Insert("name"  , "test");
-    Original.Insert("count" , 2);
-    Original.Insert("active", True);
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
-    OPIResult = OPI_MessagePack.DeserializeData(ReferenceBinary);
-    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
-
-    NestedData = New Array;
-    NestedData.Add(1);
-    Original   = New Structure("items", NestedData);
-    OPIBinary  = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
-    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
-
-    ReferenceBinary = MessagePackReferencePack(BaseUrl, Original);
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
     OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
     OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
 
-    Original  = GetBinaryDataFromHexString("DEADBEEF");
-    OPIBinary = OPI_MessagePack.SerializeData(Original);
-    ReferenceJSON = MessagePackReferenceUnpack(BaseUrl, OPIBinary);
+    Original      = 128;
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = 0.2;
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = True;
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = Undefined;
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = New Array;
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = New Array;
+    Original.Add(1);
+    Original.Add(2);
+    Original.Add(3);
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = New Structure("a", 1);
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = New Map;
+    Original.Insert("name"  , "test");
+    Original.Insert("count" , 2);
+    Original.Insert("active", True);
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    NestedData    = New Array;
+    NestedData.Add(1);
+    Original      = New Structure("items", NestedData);
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
+    OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
+
+    ReferenceBinary = MessagePackPackReference(BaseURL, Original);
+    OPIResult       = OPI_MessagePack.DeserializeData(ReferenceBinary);
+    OPI_TestDataRetrieval.Process(OPIResult, "MessagePack", "ReferenceCompatibility", "ReferencePackOPIUnpack", Original);
+
+    Original      = GetBinaryDataFromHexString("DEADBEEF");
+    OPIBinary     = OPI_MessagePack.SerializeData(Original);
+    ReferenceJSON = MessagePackUnpackReference(BaseURL, OPIBinary);
     OPI_TestDataRetrieval.Process(ReferenceJSON, "MessagePack", "ReferenceCompatibility", "OPIPackReferenceUnpack", Original);
 
 EndProcedure

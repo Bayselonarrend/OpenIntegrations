@@ -15013,12 +15013,12 @@ Function Check_MessagePack_ReferenceCompatibility(Val Result, Val Option, Origin
 
     If Option = "Health" Then
 
-        ExpectsThat(Result["ok"]).EqualTo(True);
-        ExpectsThat(Result["port"]).Filled();
+        ExpectsThat(Result["ok"]).Равно(True);
+        ExpectsThat(Result["port"]).Заполнено();
 
     ElsIf Option = "OPIPackReferenceUnpack" Then
 
-        Actual = ConvertMessagePackReferenceValue(Result);
+        Actual = ConvertReferenceValueMessagePack(Result);
         CheckMessagePackValue(Actual, Original);
 
     ElsIf Option = "ReferencePackOPIUnpack" Then
@@ -15031,9 +15031,9 @@ Function Check_MessagePack_ReferenceCompatibility(Val Result, Val Option, Origin
 
 EndFunction
 
-Function ConvertMessagePackReferenceValue(Val Value)
+Function ConvertReferenceValueMessagePack(Val Value)
 
-    If OPI_Tools.IsCollection(Value, True)
+    If OPI_Tools.ThisIsCollection(Value, True)
         And MapContainsKeyMessagePack(Value, "__msgpack_bytes__") Then
 
         Return Base64Value(Value["__msgpack_bytes__"]);
@@ -15042,18 +15042,18 @@ Function ConvertMessagePackReferenceValue(Val Value)
 
         Result = New Array;
 
-        For Each Item In Value Do
-            Result.Add(ConvertMessagePackReferenceValue(Item));
+        For Each Element In Value Do
+            Result.Add(ConvertReferenceValueMessagePack(Element));
         EndDo;
 
         Return Result;
 
-    ElsIf OPI_Tools.IsCollection(Value, True) Then
+    ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
 
         Result = New Map;
 
         For Each Pair In Value Do
-            Result.Insert(Pair.Key, ConvertMessagePackReferenceValue(Pair.Value));
+            Result.Insert(Pair.Key, ConvertReferenceValueMessagePack(Pair.Value));
         EndDo;
 
         Return Result;

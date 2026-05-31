@@ -1,0 +1,6 @@
+    BaseURL = MessagePackBaseReferenceURL();
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(BaseURL + "/health")
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
