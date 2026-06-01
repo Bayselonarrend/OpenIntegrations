@@ -202,14 +202,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -217,14 +217,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "chrono",
  "serde",
@@ -233,7 +233,7 @@ dependencies = [
 
 [[package]]
 name = "common-tcp"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "base64",
  "httparse",
@@ -249,7 +249,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "common-janx",
  "serde_json",
@@ -966,7 +966,7 @@ checksum = "7c87def4c32ab89d880effc9e097653c8da5d6ef28e6b539d313baaacfbafcbe"
 
 [[package]]
 name = "opi_grpc"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "bytes",
  "common-backend",

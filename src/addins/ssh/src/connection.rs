@@ -1,17 +1,18 @@
 use std::path::Path;
 
+use common_core::JanxValue;
 use common_tcp::tcp_establish::create_tcp_connection;
-use common_utils::utils::json_error;
+use common_utils::utils::janx_error;
 use ssh2::{MethodType, Session};
 
 use crate::connection_response::ConnectionResponse;
 use crate::keyboard_interactive::KeyboardInteractiveHandler;
 use crate::ssh_settings::{SshAuthTypes, SshConf};
 
-pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
+pub fn establish(conf: &SshConf) -> (Option<Session>, JanxValue) {
     let settings = match &conf.set {
         Some(settings) => settings,
-        None => return (None, json_error("No settings found")),
+        None => return (None, janx_error("No settings found")),
     };
 
     let username = &settings.username;
@@ -23,14 +24,14 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
 
     let tcp = match create_tcp_connection(&settings.host, settings.port, proxy) {
         Ok(tcp) => tcp,
-        Err(e) => return (None, json_error(format!("TCP error: {}", e))),
+        Err(e) => return (None, janx_error(format!("TCP error: {}", e))),
     };
 
     ssh2::init();
 
     let mut sess = match Session::new() {
         Ok(sess) => sess,
-        Err(e) => return (None, json_error(format!("Session error: {}", e))),
+        Err(e) => return (None, janx_error(format!("Session error: {}", e))),
     };
 
     sess.set_tcp_stream(tcp);
@@ -41,7 +42,7 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
             None,
             ConnectionResponse::new(false)
                 .with_error(format!("Handshake error: {}", e))
-                .to_json(),
+                .to_janx(),
         );
     }
 
@@ -68,14 +69,14 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
             None => {
                 return (
                     None,
-                    json_error(
+                    janx_error(
                         "No keyboard_responses provided with keyboard_interactive auth type",
                     ),
                 )
             }
         };
         if responses.is_empty() {
-            return (None, json_error("keyboard_responses array is empty"));
+            return (None, janx_error("keyboard_responses array is empty"));
         }
         Some(KeyboardInteractiveHandler::new(responses))
     } else {
@@ -88,7 +89,7 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
         SshAuthTypes::PrivateKey => {
             let path = match key_path {
                 Some(key_path) => key_path.as_ref(),
-                None => return (None, json_error("No key path provided with PK auth type")),
+                None => return (None, janx_error("No key path provided with PK auth type")),
             };
 
             let pub_path = match pub_path {
@@ -147,5 +148,5 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, String) {
         response = response.with_keyboard_info(prompts, cb_count, resp_count);
     }
 
-    (session, response.to_json())
+    (session, response.to_janx())
 }

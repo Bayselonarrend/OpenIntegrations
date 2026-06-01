@@ -1,11 +1,12 @@
+use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::sync::Arc;
 
 use common_core::JanxValue;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
-use serde_json::{json, Value};
+use common_utils::utils::{janx_error, janx_logs, janx_success, json_value_to_janx};
+use serde_json::Value;
 
 use crate::backend::GrpcBackend;
 
@@ -40,111 +41,109 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.client.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => janx_logs(logs, total),
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn connect(&mut self) -> String {
+    pub fn connect(&mut self) -> JanxValue {
         if self.server_address.is_empty() {
-            return json_error("Empty server address!");
+            return janx_error("Empty server address!");
         }
 
         if self.client.is_connected() {
-            return json_error("Connection already initialized!");
+            return janx_error("Connection already initialized!");
         }
 
         match self.client.connect(&self.server_address, &self.tls) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn disconnect(&mut self) -> String {
+    pub fn disconnect(&mut self) -> JanxValue {
         match self.client.disconnect() {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
     pub fn call(&mut self, request: &JanxValue) -> JanxValue {
         self.client
             .call(request)
-            .unwrap_or_else(|e| common_utils::utils::janx_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn load_proto(&mut self, filename: &str, proto_content: &str) -> String {
+    pub fn load_proto(&mut self, filename: &str, proto_content: &str) -> JanxValue {
         match self.client.load_proto(filename, proto_content) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn compile_protos(&mut self) -> String {
+    pub fn compile_protos(&mut self) -> JanxValue {
         match self.client.compile_protos() {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_metadata(&mut self, metadata_json: &str) -> String {
+    pub fn set_metadata(&mut self, metadata_json: &str) -> JanxValue {
         let metadata: HashMap<String, String> = match serde_json::from_str(metadata_json) {
             Ok(map) => map,
-            Err(e) => return json_error(&format!("Invalid metadata JSON: {}", e)),
+            Err(e) => return janx_error(format!("Invalid metadata JSON: {}", e)),
         };
 
         match self.client.set_metadata(metadata.clone()) {
             Ok(()) => {
                 self.stored_settings.metadata = metadata;
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn get_settings(&self) -> String {
+    pub fn get_settings(&self) -> JanxValue {
         let s = &self.stored_settings;
-        if s.metadata.is_empty() {
-            return serde_json::to_string(&s.settings).unwrap_or_else(|_| "{}".to_string());
+        let mut map: BTreeMap<String, JanxValue> = s
+            .settings
+            .iter()
+            .map(|(k, v)| (k.clone(), json_value_to_janx(v.clone())))
+            .collect();
+
+        if !s.metadata.is_empty() {
+            map.insert(
+                "metadata".to_string(),
+                json_value_to_janx(serde_json::to_value(&s.metadata).unwrap_or(Value::Null)),
+            );
         }
 
-        let mut result = s.settings.clone();
-        result.insert(
-            "metadata".to_string(),
-            serde_json::to_value(&s.metadata).unwrap_or(Value::Null),
-        );
-        serde_json::to_string(&result).unwrap_or_else(|_| "{}".to_string())
+        JanxValue::Object(map)
     }
 
-    pub fn store_settings(&mut self, settings: String) -> String {
+    pub fn store_settings(&mut self, settings: String) -> JanxValue {
         match serde_json::from_str::<HashMap<String, Value>>(&settings) {
             Ok(value) => {
                 self.stored_settings.settings = value;
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&format!("Invalid settings JSON: {}", e)),
+            Err(e) => janx_error(format!("Invalid settings JSON: {}", e)),
         }
     }
 
@@ -153,75 +152,75 @@ impl AddIn {
         use_tls: bool,
         accept_invalid_certs: bool,
         ca_cert_path: &str,
-    ) -> String {
+    ) -> JanxValue {
         if self.client.is_connected() {
-            return json_error(
+            return janx_error(
                 "TLS settings can only be set before the connection is established",
             );
         }
 
         self.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
-        json_success()
+        janx_success(None, None)
     }
 
-    pub fn list_services(&mut self) -> String {
+    pub fn list_services(&mut self) -> JanxValue {
         self.client
             .list_services()
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn list_methods(&mut self, service_name: &str) -> String {
+    pub fn list_methods(&mut self, service_name: &str) -> JanxValue {
         self.client
             .list_methods(service_name)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn get_method_info(&mut self, service_name: &str, method_name: &str) -> String {
+    pub fn get_method_info(&mut self, service_name: &str, method_name: &str) -> JanxValue {
         self.client
             .get_method_info(service_name, method_name)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn call_server_stream(&mut self, request: &JanxValue) -> String {
+    pub fn call_server_stream(&mut self, request: &JanxValue) -> JanxValue {
         self.client
             .call_server_stream(request)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn start_client_stream(&mut self, request: &JanxValue) -> String {
+    pub fn start_client_stream(&mut self, request: &JanxValue) -> JanxValue {
         self.client
             .start_client_stream(request)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn start_bidi_stream(&mut self, request: &JanxValue) -> String {
+    pub fn start_bidi_stream(&mut self, request: &JanxValue) -> JanxValue {
         self.client
             .start_bidi_stream(request)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn send_message(&mut self, stream_id: &str, message: &JanxValue) -> String {
+    pub fn send_message(&mut self, stream_id: &str, message: &JanxValue) -> JanxValue {
         self.client
             .send_message(stream_id, message)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_next_message(&mut self, stream_id: &str) -> JanxValue {
         self.client
             .get_next_message(stream_id)
-            .unwrap_or_else(|e| common_utils::utils::janx_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn finish_sending(&mut self, stream_id: &str) -> String {
+    pub fn finish_sending(&mut self, stream_id: &str) -> JanxValue {
         self.client
             .finish_sending(stream_id)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn close_stream(&mut self, stream_id: &str) -> String {
+    pub fn close_stream(&mut self, stream_id: &str) -> JanxValue {
         self.client
             .close_stream(stream_id)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn common_core::getset::ValueType {

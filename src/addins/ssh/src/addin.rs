@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
+use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_logs, janx_success};
 
 use crate::backend::SshBackend;
 
@@ -17,121 +17,115 @@ impl AddIn {
         }
     }
 
-    pub fn set_settings(&mut self, settings: String) -> String {
+    pub fn set_settings(&mut self, settings: String) -> JanxValue {
         match self.backend.set_settings(settings) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_proxy(&mut self, proxy: String) -> String {
+    pub fn set_proxy(&mut self, proxy: String) -> JanxValue {
         match self.backend.set_proxy(proxy) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.backend.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => janx_logs(logs, total),
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn initialize(&mut self) -> String {
+    pub fn initialize(&mut self) -> JanxValue {
         match self.backend.connect() {
             Ok(response) => response,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn execute(&self, command: &str) -> String {
+    pub fn execute(&self, command: &str) -> JanxValue {
         match self.backend.execute(command) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn disconnect(&mut self) -> String {
+    pub fn disconnect(&mut self) -> JanxValue {
         match self.backend.disconnect() {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn get_configuration(&self) -> String {
+    pub fn get_configuration(&self) -> JanxValue {
         match self.backend.get_configuration() {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn make_sftp(&mut self) -> String {
+    pub fn make_sftp(&mut self) -> JanxValue {
         match self.backend.make_sftp() {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn make_directory(&mut self, path: &str, mode: i32) -> String {
+    pub fn make_directory(&mut self, path: &str, mode: i32) -> JanxValue {
         match self.backend.make_directory(path, mode) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn remove_directory(&mut self, path: &str) -> String {
+    pub fn remove_directory(&mut self, path: &str) -> JanxValue {
         match self.backend.remove_directory(path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn list_directory(&mut self, path: &str) -> String {
+    pub fn list_directory(&mut self, path: &str) -> JanxValue {
         match self.backend.list_directory(path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn upload_file(&mut self, file: &str, path: &str) -> String {
+    pub fn upload_file(&mut self, file: &str, path: &str) -> JanxValue {
         match self.backend.upload_file(file, path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn upload_data(&mut self, data: Vec<u8>, path: &str) -> String {
+    pub fn upload_data(&mut self, data: Vec<u8>, path: &str) -> JanxValue {
         match self.backend.upload_data(data, path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn delete_file(&mut self, path: &str) -> String {
+    pub fn delete_file(&mut self, path: &str) -> JanxValue {
         match self.backend.delete_file(path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
@@ -139,10 +133,10 @@ impl AddIn {
         self.backend.is_sftp().unwrap_or(false)
     }
 
-    pub fn download_to_file(&mut self, path: &str, filepath: &str) -> String {
+    pub fn download_to_file(&mut self, path: &str, filepath: &str) -> JanxValue {
         match self.backend.download_to_file(path, filepath) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
@@ -150,17 +144,17 @@ impl AddIn {
         self.backend.download_to_vec(path)
     }
 
-    pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> String {
+    pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> JanxValue {
         match self.backend.rename_object(path, new_path, overwrite) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn get_file_info(&mut self, path: &str) -> String {
+    pub fn get_file_info(&mut self, path: &str) -> JanxValue {
         match self.backend.get_file_info(path) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 

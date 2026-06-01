@@ -3,9 +3,9 @@ use std::sync::Arc;
 use common_janx::JanxValue;
 use common_logs::Logger;
 use common_server::{
-    handle_async_command, handle_async_janx_command, handle_sync_command, send_command, Backend,
+    handle_async_command, handle_sync_command, send_command, Backend,
 };
-use common_utils::utils::{janx_error, json_error, json_success};
+use common_utils::utils::{janx_error, janx_success};
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
@@ -18,7 +18,7 @@ pub enum BackendCommand {
         port: u16,
         queue_size: usize,
         logger: Option<Arc<Logger>>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetNextMessage {
         timeout_ms: u64,
@@ -34,25 +34,25 @@ pub enum BackendCommand {
     SendMessage {
         connection_id: String,
         message: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CloseConnection {
         connection_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CloseAllConnections {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ShutdownRead {
         connection_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ShutdownWrite {
         connection_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetConnectionsList {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     Shutdown,
 }
@@ -68,7 +68,7 @@ impl TcpServerBackend {
                     match cmd {
                         BackendCommand::Start { port, queue_size, logger, response } => {
                             if server_state.is_some() {
-                                let _ = response.send(json_error("Server already started"));
+                                let _ = response.send(janx_error("Server already started"));
                                 continue;
                             }
 
@@ -79,58 +79,58 @@ impl TcpServerBackend {
                             match result {
                                 Ok(state) => {
                                     server_state = Some(state);
-                                    let _ = response.send(json_success());
+                                    let _ = response.send(janx_success(None, None));
                                 }
                                 Err(e) => {
-                                    let _ = response.send(json_error(&e));
+                                    let _ = response.send(janx_error(&e));
                                 }
                             }
                         }
 
                         BackendCommand::GetNextMessage { timeout_ms, max_message_size, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.get_next_message(timeout_ms, max_message_size).await
                             );
                         }
 
                         BackendCommand::GetMessageFromConnection { connection_id, timeout_ms, max_message_size, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.get_message_from_connection(&connection_id, timeout_ms, max_message_size).await
                             );
                         }
 
                         BackendCommand::SendMessage { connection_id, message, response } => {
-                            handle_async_command!(server_state, rt, response, |state| 
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.send_message(&connection_id, message).await
                             );
                         }
 
                         BackendCommand::CloseConnection { connection_id, response } => {
-                            handle_async_command!(server_state, rt, response, |state| 
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.close_connection(&connection_id).await
                             );
                         }
 
                         BackendCommand::CloseAllConnections { response } => {
-                            handle_async_command!(server_state, rt, response, |state| 
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.close_all_connections().await
                             );
                         }
 
                         BackendCommand::ShutdownRead { connection_id, response } => {
-                            handle_sync_command!(server_state, response, |state| 
+                            handle_sync_command!(server_state, response, |state|
                                 state.shutdown_read(&connection_id)
                             );
                         }
 
                         BackendCommand::ShutdownWrite { connection_id, response } => {
-                            handle_sync_command!(server_state, response, |state| 
+                            handle_sync_command!(server_state, response, |state|
                                 state.shutdown_write(&connection_id)
                             );
                         }
 
                         BackendCommand::GetConnectionsList { response } => {
-                            handle_sync_command!(server_state, response, |state| 
+                            handle_sync_command!(server_state, response, |state|
                                 state.get_connections_list()
                             );
                         }
@@ -157,7 +157,7 @@ impl TcpServerBackend {
         self.logger = Some(logger);
     }
 
-    pub fn start(&self, port: u16, queue_size: usize) -> String {
+    pub fn start(&self, port: u16, queue_size: usize) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::Start {
                 port,
@@ -169,17 +169,13 @@ impl TcpServerBackend {
     }
 
     pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(BackendCommand::GetNextMessage {
-            timeout_ms,
-            max_message_size,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::GetNextMessage {
+                timeout_ms,
+                max_message_size,
+                response,
+            }
+        })
     }
 
     pub fn get_message_from_connection(
@@ -188,21 +184,17 @@ impl TcpServerBackend {
         timeout_ms: u64,
         max_message_size: usize,
     ) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(BackendCommand::GetMessageFromConnection {
-            connection_id,
-            timeout_ms,
-            max_message_size,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            BackendCommand::GetMessageFromConnection {
+                connection_id,
+                timeout_ms,
+                max_message_size,
+                response,
+            }
+        })
     }
 
-    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::SendMessage {
                 connection_id,
@@ -212,7 +204,7 @@ impl TcpServerBackend {
         })
     }
 
-    pub fn close_connection(&self, connection_id: String) -> String {
+    pub fn close_connection(&self, connection_id: String) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::CloseConnection {
                 connection_id,
@@ -221,13 +213,13 @@ impl TcpServerBackend {
         })
     }
 
-    pub fn close_all_connections(&self) -> String {
+    pub fn close_all_connections(&self) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::CloseAllConnections { response }
         })
     }
 
-    pub fn shutdown_read(&self, connection_id: String) -> String {
+    pub fn shutdown_read(&self, connection_id: String) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::ShutdownRead {
                 connection_id,
@@ -236,7 +228,7 @@ impl TcpServerBackend {
         })
     }
 
-    pub fn shutdown_write(&self, connection_id: String) -> String {
+    pub fn shutdown_write(&self, connection_id: String) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::ShutdownWrite {
                 connection_id,
@@ -245,7 +237,7 @@ impl TcpServerBackend {
         })
     }
 
-    pub fn get_connections_list(&self) -> String {
+    pub fn get_connections_list(&self) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::GetConnectionsList { response }
         })

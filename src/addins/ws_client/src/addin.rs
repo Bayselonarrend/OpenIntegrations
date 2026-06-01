@@ -2,8 +2,7 @@ use std::sync::Arc;
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_logs, janx_success};
 
 use crate::backend::WsClientBackend;
 
@@ -18,90 +17,84 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.backend.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => janx_logs(logs, total),
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn connect(&mut self, url: &str) -> String {
+    pub fn connect(&mut self, url: &str) -> JanxValue {
         match self.backend.connect(url) {
             Ok(result) => result,
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn send_text(&self, text: &str) -> String {
+    pub fn send_text(&self, text: &str) -> JanxValue {
         self.backend
             .send_text(text)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn send_binary(&self, data: Vec<u8>) -> String {
+    pub fn send_binary(&self, data: Vec<u8>) -> JanxValue {
         self.backend
             .send_binary(data)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn receive_message(&self, timeout_ms: u64) -> JanxValue {
         self.backend
             .receive_message(timeout_ms)
-            .unwrap_or_else(|e| janx_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn send_ping(&self) -> String {
-        self.backend.send_ping().unwrap_or_else(|e| json_error(&e))
+    pub fn send_ping(&self) -> JanxValue {
+        self.backend.send_ping().unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn send_pong(&self) -> String {
-        self.backend.send_pong().unwrap_or_else(|e| json_error(&e))
+    pub fn send_pong(&self) -> JanxValue {
+        self.backend.send_pong().unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn close(&self, code: u16, reason: &str) -> String {
+    pub fn close(&self, code: u16, reason: &str) -> JanxValue {
         self.backend
             .close(code, reason)
-            .unwrap_or_else(|e| json_error(&e))
+            .unwrap_or_else(|e| janx_error(e))
     }
 
-    pub fn set_headers(&mut self, headers_json: &str) -> String {
+    pub fn set_headers(&mut self, headers_json: &str) -> JanxValue {
         match self.backend.set_headers(headers_json) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> JanxValue {
         match self.backend.set_tls(use_tls, accept_invalid_certs, ca_cert_path) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_proxy(&mut self, proxy_json: &str) -> String {
+    pub fn set_proxy(&mut self, proxy_json: &str) -> JanxValue {
         match self.backend.set_proxy(proxy_json) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 

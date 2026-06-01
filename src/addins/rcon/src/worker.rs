@@ -2,10 +2,10 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
+use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::json_error;
+use common_utils::utils::{janx_error, janx_success};
 use rcon_client::{AuthRequest, RCONClient, RCONConfig, RCONRequest};
-use serde_json::json;
 
 use crate::settings::ConnectionSettings;
 
@@ -16,7 +16,7 @@ pub enum WorkerCommand {
     },
     Execute {
         command: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SetLogger {
         logger: Arc<Logger>,
@@ -31,6 +31,7 @@ pub enum WorkerCommand {
 struct Session {
     logger: Option<Arc<Logger>>,
     client: Option<RCONClient>,
+    settings: Option<ConnectionSettings>,
 }
 
 impl Session {
@@ -38,6 +39,7 @@ impl Session {
         Self {
             logger,
             client: None,
+            settings: None,
         }
     }
 
@@ -63,6 +65,7 @@ impl Session {
 
         if auth_result.is_success() {
             self.client = Some(client);
+            self.settings = Some(settings.clone());
             self.log("Connected to RCON server");
             Ok(())
         } else {
@@ -74,16 +77,16 @@ impl Session {
         }
     }
 
-    fn execute(&mut self, command: &str) -> String {
+    fn execute(&mut self, command: &str) -> JanxValue {
         self.log(&format!("Execute command: {}", command));
 
         let Some(client) = &mut self.client else {
-            return json_error("No client found. Initialize connection first");
+            return janx_error("No client found. Initialize connection first");
         };
 
         match client.execute(RCONRequest::new(command.to_string())) {
-            Ok(response) => json!({"result": true, "data": response.body}).to_string(),
-            Err(e) => json_error(&e.to_string()),
+            Ok(response) => janx_success(Some(JanxValue::String(response.body)), Some("data")),
+            Err(e) => janx_error(e.to_string()),
         }
     }
 }

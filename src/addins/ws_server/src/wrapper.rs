@@ -1,8 +1,7 @@
 use std::sync::{Arc, Mutex};
-use common_utils::utils::{json_error, json_success};
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::janx_error;
+use common_utils::utils::{janx_error, janx_result_ok, janx_success};
 use crate::backend::WebSocketServerBackend;
 
 pub struct WebSocketServer {
@@ -24,35 +23,35 @@ impl WebSocketServer {
         }
     }
 
-    pub fn start(&mut self, port: u16, config: &str) -> String {
+    pub fn start(&mut self, port: u16, config: &str) -> JanxValue {
         if self.started {
-            return json_error("WebSocket server already started");
+            return janx_error("WebSocket server already started");
         }
 
         let result = match self.backend.lock() {
             Ok(backend) => backend.start(port, config),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         };
 
-        if result.contains("\"result\":true") {
+        if janx_result_ok(&result) {
             self.started = true;
         }
 
         result
     }
 
-    pub fn stop(&mut self) -> String {
+    pub fn stop(&mut self) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(mut backend) => {
                 backend.shutdown();
                 self.started = false;
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
@@ -78,69 +77,69 @@ impl WebSocketServer {
         }
     }
 
-    pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_message(connection_id.to_string(), message),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn send_text(&self, connection_id: &str, text: &str) -> String {
+    pub fn send_text(&self, connection_id: &str, text: &str) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_text(connection_id.to_string(), text.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn send_ping(&self, connection_id: &str, payload: Vec<u8>) -> String {
+    pub fn send_ping(&self, connection_id: &str, payload: Vec<u8>) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_ping(connection_id.to_string(), payload),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn send_pong(&self, connection_id: &str, payload: Vec<u8>) -> String {
+    pub fn send_pong(&self, connection_id: &str, payload: Vec<u8>) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_pong(connection_id.to_string(), payload),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn close_connection(&self, connection_id: &str, remove_from_list: bool) -> String {
+    pub fn close_connection(&self, connection_id: &str, remove_from_list: bool) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.close_connection(connection_id.to_string(), remove_from_list),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_connections_list(&self) -> String {
+    pub fn get_connections_list(&self) -> JanxValue {
         if !self.started {
-            return json_error("WebSocket server not started");
+            return janx_error("WebSocket server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_connections_list(),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 

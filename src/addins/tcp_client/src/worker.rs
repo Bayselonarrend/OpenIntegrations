@@ -9,7 +9,6 @@ use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::{create_connection, Connection};
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::json_error;
 
 pub enum WorkerCommand {
     Connect {
@@ -70,7 +69,7 @@ impl Session {
     }
 
     fn save_error(&mut self, message: &str) {
-        self.last_error = json_error(message);
+        self.last_error = message.to_string();
     }
 
     fn connect(

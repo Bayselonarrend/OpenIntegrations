@@ -4,7 +4,7 @@ mod wrapper;
 
 use std::sync::Arc;
 use common_core::*;
-use common_utils::utils::{json_error, version};
+use common_utils::utils::{janx_error, janx_logs, version};
 use common_logs::Logger;
 use wrapper::HttpServer;
 
@@ -47,7 +47,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let logger_config = params[2].get_string().unwrap_or_default();
 
             if let Err(e) = obj.init_logger_if_needed(&logger_config) {
-                return Box::new(json_error(&e));
+                return Box::new(janx_error(e));
             };
             Box::new(obj.server.start(port, &config))
         },
@@ -115,19 +115,13 @@ impl AddIn {
         Ok(())
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         if let Some(ref logger) = self.logger {
             let logs = logger.get_last_logs(count);
             let total = logger.len();
-            
-            serde_json::json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            }).to_string()
+            janx_logs(logs, total)
         } else {
-            json_error("Logger not initialized")
+            janx_error("Logger not initialized")
         }
     }
 

@@ -90,7 +90,7 @@
     Если ЗначениеЗаполнено(СтрокаНастроек) Тогда
 
         РезультатЛога = Компонента.SetLogger(СтрокаНастроек);
-        РезультатЛога = OPI_Инструменты.JsonВСтруктуру(РезультатЛога, Ложь);
+        РезультатЛога = OPI_Компоненты.ДесериализоватьJanx(РезультатЛога);
 
         Если Не РезультатЛога["result"] Тогда
             Возврат РезультатЛога;
@@ -196,7 +196,7 @@
 
     OPI_ПреобразованиеТипов.ПолучитьМассив(Аргументы);
 
-    АргументыДД = OPI_Janx.СериализоватьДанные(Аргументы);
+    АргументыДД = OPI_Компоненты.СериализоватьJanx(Аргументы);
     РезультатДД = Компонента.CallFunction(ИмяФункции, АргументыДД);
 
     Возврат РезультатИзJanx(РезультатДД);
@@ -226,7 +226,7 @@
 
 Функция РезультатИзJanx(Знач ДанныеJanx)
 
-    Результат = OPI_Janx.ДесериализоватьДанные(ДанныеJanx);
+    Результат = OPI_Компоненты.ДесериализоватьJanx(ДанныеJanx);
 
     Если Не Результат["result"] Тогда
         ВызватьИсключение Результат["error"];
@@ -236,29 +236,7 @@
 
 КонецФункции
 
-#Region Alternate
-
-Function CreateVM(Val Version, Val Logging = Undefined) Export
-    Return СоздатьVM(Version, Logging);
-EndFunction
-
-Function ExecuteCodeFromString(Val Lua, Val Code) Export
-    Return ВыполнитьКодИзСтроки(Lua, Code);
-EndFunction
-
-Function ExecuteCodeFromFile(Val Lua, Val Path) Export
-    Return ВыполнитьКодИзФайла(Lua, Path);
-EndFunction
-
-Function CallFunction(Val Lua, Val FunctionName, Val Args = Undefined) Export
-    Return ВызватьФункцию(Lua, FunctionName, Args);
-EndFunction
-
-Function IsVM(Val Value) Export
-    Return ЭтоVM(Value);
-EndFunction
-
-#EndRegion
+#КонецОбласти
 
 #КонецЕсли // !OPI
 

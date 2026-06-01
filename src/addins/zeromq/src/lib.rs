@@ -3,7 +3,8 @@ mod methods;
 
 use common_core::*;
 use common_logs::Logger;
-use common_utils::utils::{json_error, json_success, version};
+use common_core::JanxValue;
+use common_utils::utils::{janx_error, janx_logs, janx_success, version};
 use std::sync::{Arc, Mutex};
 
 impl_addin_exports!(AddIn);
@@ -123,13 +124,13 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         if self.logger.is_some() {
-            return json_success();
+            return janx_success(None, None);
         }
 
         match Logger::from_json(logger_config) {
@@ -138,29 +139,22 @@ impl AddIn {
                 match self.lock_backend().and_then(|g| g.set_logger(logger_arc.clone())) {
                     Ok(()) => {
                         self.logger = Some(logger_arc);
-                        json_success()
+                        janx_success(None, None)
                     }
-                    Err(e) => json_error(&e),
+                    Err(e) => janx_error(e),
                 }
             }
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         if let Some(ref logger) = self.logger {
             let logs = logger.get_last_logs(count);
             let total = logger.len();
-
-            serde_json::json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string()
+            janx_logs(logs, total)
         } else {
-            json_error("Logger not initialized")
+            janx_error("Logger not initialized")
         }
     }
 

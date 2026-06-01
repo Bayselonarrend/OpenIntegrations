@@ -1,10 +1,9 @@
 use std::sync::Arc;
 
-use common_core::JanxValue;
+use common_core::{janx, JanxValue};
 use common_dataset::dataset::Datasets;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_success};
 
 use crate::backend::SQLiteBackend;
 
@@ -23,57 +22,59 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(&e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.client.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => {
+                let returned = logs.len();
+                janx!({
+                    "result": true,
+                    "logs": logs,
+                    "total": total,
+                    "returned": returned,
+                })
+            }
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn initialize(&mut self) -> String {
+    pub fn initialize(&mut self) -> JanxValue {
         if self.client.is_connected() {
-            return json_error("Client already initialized!");
+            return janx_error("Client already initialized!");
         }
 
         match self.client.connect(self.database.clone()) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(&e),
         }
     }
 
-    pub fn close_connection(&mut self) -> String {
+    pub fn close_connection(&mut self) -> JanxValue {
         self.client.close();
-        json_success()
+        janx_success(None, None)
     }
 
-    pub fn execute_query(&self, key: &str) -> String {
+    pub fn execute_query(&self, key: &str) -> JanxValue {
         if !self.client.is_connected() {
-            return json_error("Not connected to SQLite");
+            return janx_error("Not connected to SQLite");
         }
 
         let query = match self.datasets.get_query(key) {
             Some(q) => q,
-            None => return json_error(format!("No query found by key: {}", key)),
+            None => return janx_error(format!("No query found by key: {}", key)),
         };
 
         match self
@@ -82,17 +83,17 @@ impl AddIn {
         {
             Ok(Some(data)) => {
                 self.datasets.set_results(key, data);
-                json!({"result": true, "data": true}).to_string()
+                janx!({"result": true, "data": true})
             }
-            Ok(None) => json!({"result": true, "data": false}).to_string(),
-            Err(e) => json_error(&e),
+            Ok(None) => janx!({"result": true, "data": false}),
+            Err(e) => janx_error(&e),
         }
     }
 
-    pub fn load_extension(&self, path: String, point: String) -> String {
+    pub fn load_extension(&self, path: String, point: String) -> JanxValue {
         match self.client.load_extension(path, point) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(&e),
         }
     }
 

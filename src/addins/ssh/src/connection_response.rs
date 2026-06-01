@@ -1,5 +1,8 @@
-use serde::{Serialize, Deserialize};
-use serde_json::json;
+use common_core::JanxValue;
+use common_janx::janx;
+use common_utils::utils::janx_error;
+use serde::{Deserialize, Serialize};
+
 use crate::keyboard_interactive::PromptInfo;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -59,14 +62,50 @@ impl ConnectionResponse {
         self
     }
 
-    pub fn with_keyboard_info(mut self, prompts: Vec<PromptInfo>, callback_count: usize, responses_count: usize) -> Self {
+    pub fn with_keyboard_info(
+        mut self,
+        prompts: Vec<PromptInfo>,
+        callback_count: usize,
+        responses_count: usize,
+    ) -> Self {
         self.keyboard_prompts = Some(prompts);
         self.keyboard_callback_count = Some(callback_count);
         self.keyboard_responses_provided = Some(responses_count);
         self
     }
 
-    pub fn to_json(&self) -> String {
-        json!(self).to_string()
+    pub fn to_janx(&self) -> JanxValue {
+        if !self.result {
+            return janx_error(
+                self.error
+                    .clone()
+                    .unwrap_or_else(|| "Unknown error".to_string()),
+            );
+        }
+
+        let keyboard_prompts = self.keyboard_prompts.as_ref().map(|prompts| {
+            JanxValue::Array(
+                prompts
+                    .iter()
+                    .map(|p| {
+                        janx!({
+                            "text": p.text.clone(),
+                            "echo": p.echo,
+                        })
+                    })
+                    .collect(),
+            )
+        });
+
+        janx!({
+            "result": true,
+            "identities": self.identities.clone(),
+            "methods": self.methods.clone(),
+            "banner": self.banner.clone(),
+            "kex_methods": self.kex_methods.clone(),
+            "keyboard_prompts": keyboard_prompts,
+            "keyboard_callback_count": self.keyboard_callback_count,
+            "keyboard_responses_provided": self.keyboard_responses_provided,
+        })
     }
 }

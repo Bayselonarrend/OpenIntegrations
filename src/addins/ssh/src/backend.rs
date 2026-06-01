@@ -2,7 +2,8 @@ use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
 use common_logs::Logger;
-use serde_json::json;
+use common_core::JanxValue;
+use common_utils::utils::{janx_success, json_value_to_janx};
 
 use crate::ssh_settings::SshConf;
 use crate::worker::{self, WorkerCommand};
@@ -77,7 +78,7 @@ impl SshBackend {
         })
     }
 
-    pub fn connect(&mut self) -> Result<String, String> {
+    pub fn connect(&mut self) -> Result<JanxValue, String> {
         if self.is_connected() {
             return Err("Connection already initialized".to_string());
         }
@@ -116,7 +117,7 @@ impl SshBackend {
             .and_then(|result| result)
     }
 
-    pub fn execute(&self, command: &str) -> Result<String, String> {
+    pub fn execute(&self, command: &str) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("No session".to_string());
         }
@@ -132,58 +133,63 @@ impl SshBackend {
         })
     }
 
-    pub fn get_configuration(&self) -> Result<String, String> {
+    pub fn get_configuration(&self) -> Result<JanxValue, String> {
         let conf = self
             .conf
             .as_ref()
             .ok_or_else(|| "No configuration found".to_string())?;
-        Ok(json!({"result": true, "conf": conf}).to_string())
+        Ok(janx_success(
+            Some(json_value_to_janx(
+                serde_json::to_value(conf).unwrap_or(serde_json::Value::Null),
+            )),
+            Some("conf"),
+        ))
     }
 
-    pub fn make_sftp(&self) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::ToSftp { response })
+    pub fn make_sftp(&self) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::ToSftp { response })
     }
 
-    pub fn make_directory(&self, path: &str, mode: i32) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::MakeDirectory {
+    pub fn make_directory(&self, path: &str, mode: i32) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::MakeDirectory {
             path: path.to_string(),
             mode,
             response,
         })
     }
 
-    pub fn remove_directory(&self, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::RemoveDirectory {
+    pub fn remove_directory(&self, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::RemoveDirectory {
             path: path.to_string(),
             response,
         })
     }
 
-    pub fn list_directory(&self, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::ListDirectory {
+    pub fn list_directory(&self, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::ListDirectory {
             path: path.to_string(),
             response,
         })
     }
 
-    pub fn upload_file(&self, file: &str, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::UploadFile {
+    pub fn upload_file(&self, file: &str, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::UploadFile {
             file: file.to_string(),
             path: path.to_string(),
             response,
         })
     }
 
-    pub fn upload_data(&self, data: Vec<u8>, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::UploadData {
+    pub fn upload_data(&self, data: Vec<u8>, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::UploadData {
             data,
             path: path.to_string(),
             response,
         })
     }
 
-    pub fn delete_file(&self, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::RemoveFile {
+    pub fn delete_file(&self, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::RemoveFile {
             path: path.to_string(),
             response,
         })
@@ -202,8 +208,8 @@ impl SshBackend {
         thread.call(|response| WorkerCommand::IsSftp { response })
     }
 
-    pub fn download_to_file(&self, path: &str, filepath: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::DownloadToFile {
+    pub fn download_to_file(&self, path: &str, filepath: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::DownloadToFile {
             path: path.to_string(),
             filepath: filepath.to_string(),
             response,
@@ -228,8 +234,8 @@ impl SshBackend {
             .and_then(|result| result)
     }
 
-    pub fn rename_object(&self, path: &str, new_path: &str, overwrite: bool) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::RenameObject {
+    pub fn rename_object(&self, path: &str, new_path: &str, overwrite: bool) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::RenameObject {
             path: path.to_string(),
             new_path: new_path.to_string(),
             overwrite,
@@ -237,8 +243,8 @@ impl SshBackend {
         })
     }
 
-    pub fn get_file_info(&self, path: &str) -> Result<String, String> {
-        self.call_string(|response| WorkerCommand::GetFileInfo {
+    pub fn get_file_info(&self, path: &str) -> Result<JanxValue, String> {
+        self.call_janx(|response| WorkerCommand::GetFileInfo {
             path: path.to_string(),
             response,
         })
@@ -250,9 +256,9 @@ impl SshBackend {
         }
     }
 
-    fn call_string<F>(&self, build: F) -> Result<String, String>
+    fn call_janx<F>(&self, build: F) -> Result<JanxValue, String>
     where
-        F: FnOnce(std::sync::mpsc::Sender<String>) -> WorkerCommand,
+        F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {
         if !self.is_connected() {
             return Err("No session".to_string());

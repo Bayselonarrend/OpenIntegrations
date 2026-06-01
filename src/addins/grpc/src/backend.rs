@@ -125,11 +125,7 @@ impl GrpcBackend {
             response,
         })?;
 
-        if response.is_empty() {
-            Ok(())
-        } else {
-            Err(response)
-        }
+        janx_response_to_result(response)
     }
 
     pub fn compile_protos(&mut self) -> Result<(), String> {
@@ -142,11 +138,7 @@ impl GrpcBackend {
 
         let response = thread.call(|response| WorkerCommand::CompileProtos { response })?;
 
-        if response.is_empty() {
-            Ok(())
-        } else {
-            Err(response)
-        }
+        janx_response_to_result(response)
     }
 
     pub fn set_metadata(&mut self, metadata: HashMap<String, String>) -> Result<(), String> {
@@ -157,18 +149,18 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?;
 
-        thread.call(|response| WorkerCommand::SetMetadata { metadata, response })?;
-        Ok(())
+        let response = thread.call(|response| WorkerCommand::SetMetadata { metadata, response })?;
+        janx_response_to_result(response)
     }
 
-    pub fn list_services(&self) -> Result<String, String> {
+    pub fn list_services(&self) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::ListServices { response })
     }
 
-    pub fn list_methods(&self, service_name: &str) -> Result<String, String> {
+    pub fn list_methods(&self, service_name: &str) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -178,7 +170,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn get_method_info(&self, service_name: &str, method_name: &str) -> Result<String, String> {
+    pub fn get_method_info(&self, service_name: &str, method_name: &str) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -189,7 +181,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn call_server_stream(&self, params: &JanxValue) -> Result<String, String> {
+    pub fn call_server_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -203,7 +195,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn start_client_stream(&self, params: &JanxValue) -> Result<String, String> {
+    pub fn start_client_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -217,7 +209,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn start_bidi_stream(&self, params: &JanxValue) -> Result<String, String> {
+    pub fn start_bidi_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("Connection not initialized".to_string());
         }
@@ -231,7 +223,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn send_message(&self, stream_id: &str, message: &JanxValue) -> Result<String, String> {
+    pub fn send_message(&self, stream_id: &str, message: &JanxValue) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -252,7 +244,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn finish_sending(&self, stream_id: &str) -> Result<String, String> {
+    pub fn finish_sending(&self, stream_id: &str) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -262,7 +254,7 @@ impl GrpcBackend {
             })
     }
 
-    pub fn close_stream(&self, stream_id: &str) -> Result<String, String> {
+    pub fn close_stream(&self, stream_id: &str) -> Result<JanxValue, String> {
         self.thread
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
@@ -296,6 +288,23 @@ impl GrpcBackend {
         let thread = worker::spawn_thread(self.logger.clone())?;
         self.thread = Some(thread);
         Ok(())
+    }
+}
+
+fn janx_response_to_result(value: JanxValue) -> Result<(), String> {
+    if common_utils::utils::janx_result_ok(&value) {
+        Ok(())
+    } else {
+        match value {
+            JanxValue::Object(map) => Err(map
+                .get("error")
+                .and_then(|v| match v {
+                    JanxValue::String(s) => Some(s.clone()),
+                    _ => None,
+                })
+                .unwrap_or_else(|| "Unknown error".to_string())),
+            _ => Err("Invalid response".to_string()),
+        }
     }
 }
 

@@ -7,7 +7,21 @@ use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::json_error;
+use common_core::JanxValue;
+use common_utils::utils::janx_error;
+
+fn janx_value_to_error_string(value: JanxValue) -> String {
+    match value {
+        JanxValue::Object(map) => map
+            .get("error")
+            .and_then(|v| match v {
+                JanxValue::String(s) => Some(s.clone()),
+                _ => None,
+            })
+            .unwrap_or_else(|| "FTP client is not initialized".to_string()),
+        _ => "FTP client is not initialized".to_string(),
+    }
+}
 
 use crate::configuration::FtpSettings;
 use crate::ftp_client::{self, FtpClient};
@@ -23,47 +37,47 @@ pub enum WorkerCommand {
         response: Sender<Result<(), String>>,
     },
     GetWelcomeMsg {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     MakeDirectory {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     RemoveDirectory {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ListDirectory {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     UploadData {
         path: String,
         data: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     UploadFile {
         path: String,
         filepath: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     RemoveFile {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ObjectSize {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     RenameObject {
         path: String,
         new_path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     DownloadToFile {
         path: String,
         filepath: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     DownloadToBuffer {
         path: String,
@@ -74,21 +88,21 @@ pub enum WorkerCommand {
     },
     ExecuteCommand {
         command: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetCurrentDirectory {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ChangeCurrentDirectory {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetFeatures {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ExecuteStandardCommand {
         command: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SetLogger {
         logger: Arc<Logger>,
@@ -116,10 +130,10 @@ impl Session {
         }
     }
 
-    fn require_client(&mut self) -> Result<&mut FtpClient, String> {
+    fn require_client(&mut self) -> Result<&mut FtpClient, JanxValue> {
         self.client
             .as_mut()
-            .ok_or_else(|| json_error("FTP client is not initialized"))
+            .ok_or_else(|| janx_error("FTP client is not initialized"))
     }
 
     fn connect(
@@ -291,7 +305,7 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                 WorkerCommand::DownloadToBuffer { path, response } => {
                     let result = match session.require_client() {
                         Ok(c) => c.download_to_vec(&path),
-                        Err(e) => Err(e),
+                        Err(e) => Err(janx_value_to_error_string(e)),
                     };
                     let _ = response.send(result);
                 }

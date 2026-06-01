@@ -4,8 +4,9 @@ use common_backend::SyncBackendThread;
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
+use common_core::JanxValue;
+use common_utils::utils::{janx_success, json_value_to_janx};
 use serde::Serialize;
-use serde_json::json;
 
 use crate::configuration::FtpSettings;
 use crate::worker::{self, WorkerCommand};
@@ -95,13 +96,18 @@ impl FtpBackend {
             .is_some_and(|s| s.use_tls)
     }
 
-    pub fn get_configurations(&self) -> String {
+    pub fn get_configurations(&self) -> JanxValue {
         let data = FtpConfigurationSnapshot {
             ftp_settings: self.ftp_settings.clone(),
             tls_settings: self.tls_settings.clone(),
             proxy_settings: self.proxy_settings.clone(),
         };
-        json!({"result": true, "data": data}).to_string()
+        janx_success(
+            Some(json_value_to_janx(
+                serde_json::to_value(data).unwrap_or(serde_json::Value::Null),
+            )),
+            Some("data"),
+        )
     }
 
     pub fn connect(&mut self) -> Result<(), String> {
@@ -149,9 +155,9 @@ impl FtpBackend {
         Ok(())
     }
 
-    pub fn call_json<F>(&self, build: F) -> Result<String, String>
+    pub fn call_janx<F>(&self, build: F) -> Result<JanxValue, String>
     where
-        F: FnOnce(std::sync::mpsc::Sender<String>) -> WorkerCommand,
+        F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {
         if !self.is_connected() {
             return Err("FTP client is not initialized".to_string());

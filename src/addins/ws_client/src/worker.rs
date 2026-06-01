@@ -15,30 +15,30 @@ pub enum WorkerCommand {
         tls: Option<TlsSettings>,
         proxy: Option<ProxySettings>,
         headers: Option<Vec<(String, String)>>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendText {
         text: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendBinary {
         data: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ReceiveMessage {
         timeout_ms: u64,
         response: Sender<JanxValue>,
     },
     SendPing {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendPong {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     Close {
         code: u16,
         reason: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SetLogger {
         logger: Arc<Logger>,

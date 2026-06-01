@@ -2,8 +2,7 @@ use std::sync::Arc;
 
 use common_janx::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_logs, janx_success};
 
 use crate::backend::LynaBackend;
 
@@ -73,30 +72,24 @@ impl AddIn {
         self.backend.reset()
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.backend.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => janx_logs(logs, total),
+            None => janx_error("Logger not initialized"),
         }
     }
 

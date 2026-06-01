@@ -1,11 +1,10 @@
 use std::sync::Arc;
 
-use common_core::JanxValue;
+use common_core::{janx, JanxValue};
 use common_dataset::dataset::Datasets;
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_success};
 
 use crate::backend::MSSQLBackend;
 
@@ -24,61 +23,63 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(&e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.client.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => {
+                let returned = logs.len();
+                janx!({
+                    "result": true,
+                    "logs": logs,
+                    "total": total,
+                    "returned": returned,
+                })
+            }
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn initialize(&mut self) -> String {
+    pub fn initialize(&mut self) -> JanxValue {
         if self.connection_string.is_empty() {
-            return json_error("Empty connection string!");
+            return janx_error("Empty connection string!");
         }
 
         if self.client.is_connected() {
-            return json_error("Client already initialized!");
+            return janx_error("Client already initialized!");
         }
 
         match self.client.connect(self.connection_string.clone()) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(&e),
         }
     }
 
-    pub fn close_connection(&mut self) -> String {
+    pub fn close_connection(&mut self) -> JanxValue {
         self.client.close();
-        json_success()
+        janx_success(None, None)
     }
 
-    pub fn execute_query(&self, key: &str) -> String {
+    pub fn execute_query(&self, key: &str) -> JanxValue {
         if !self.client.is_connected() {
-            return json_error("Not connected to MSSQL");
+            return janx_error("Not connected to MSSQL");
         }
 
         let query = match self.datasets.get_query(key) {
             Some(q) => q,
-            None => return json_error(format!("No query found by key: {}", key)),
+            None => return janx_error(format!("No query found by key: {}", key)),
         };
 
         match self
@@ -87,21 +88,21 @@ impl AddIn {
         {
             Ok(Some(data)) => {
                 self.datasets.set_results(key, data);
-                json!({"result": true, "data": true}).to_string()
+                janx!({"result": true, "data": true})
             }
-            Ok(None) => json!({"result": true, "data": false}).to_string(),
-            Err(e) => json_error(&e),
+            Ok(None) => janx!({"result": true, "data": false}),
+            Err(e) => janx_error(&e),
         }
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> JanxValue {
         match self.client.set_tls(TlsSettings::new(
             use_tls,
             accept_invalid_certs,
             ca_cert_path,
         )) {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(&e),
         }
     }
 

@@ -1,10 +1,10 @@
 use super::{OutgoingMessage, WebSocketServerState};
-use common_utils::utils::{json_error, lock_unpoisoned};
-use serde_json::json;
+use common_janx::{janx, JanxValue};
+use common_utils::utils::{janx_error, lock_unpoisoned};
 
 impl WebSocketServerState {
     pub(crate) fn close_all_connections_internal(&mut self) {
-        
+
         let mut manager = lock_unpoisoned(&self.manager);
 
         manager.iter_mut(|_, conn| {
@@ -14,7 +14,7 @@ impl WebSocketServerState {
         manager.clear();
     }
 
-    pub fn close_connection(&mut self, connection_id: &str, remove_from_list: bool) -> String {
+    pub fn close_connection(&mut self, connection_id: &str, remove_from_list: bool) -> JanxValue {
         let mut manager = lock_unpoisoned(&self.manager);
 
         if let Some(close_sent) = manager.get_mut(connection_id, |conn| {
@@ -30,32 +30,30 @@ impl WebSocketServerState {
                 connection_id, remove_from_list, close_sent
             ));
 
-            json!({
+            janx!({
                 "result": true,
-                "message": "WebSocket closed"
+                "message": "WebSocket closed",
             })
-            .to_string()
         } else {
-            json_error("WebSocket connection not found")
+            janx_error("WebSocket connection not found")
         }
     }
 
-    pub fn get_connections_list(&mut self) -> String {
-
+    pub fn get_connections_list(&mut self) -> JanxValue {
         let mut connections_list = Vec::new();
         let mut manager = lock_unpoisoned(&self.manager);
 
         manager.iter_mut(|conn_id, conn_info| {
-            connections_list.push(json!({
+            connections_list.push(janx!({
                 "connectionId": conn_id,
-                "address": conn_info.addr,
-                "isActive": !conn_info.is_closed
+                "address": conn_info.addr.clone(),
+                "isActive": !conn_info.is_closed,
             }));
         });
 
-        json!({
+        janx!({
             "result": true,
-            "connections": connections_list
-        }).to_string()
+            "connections": connections_list,
+        })
     }
 }

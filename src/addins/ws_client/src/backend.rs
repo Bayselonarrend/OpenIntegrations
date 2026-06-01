@@ -92,7 +92,7 @@ impl WsClientBackend {
         Ok(())
     }
 
-    pub fn connect(&mut self, url: &str) -> Result<String, String> {
+    pub fn connect(&mut self, url: &str) -> Result<JanxValue, String> {
         if self.is_connected() {
             return Err("Already connected".to_string());
         }
@@ -113,14 +113,14 @@ impl WsClientBackend {
         })
     }
 
-    pub fn send_text(&self, text: &str) -> Result<String, String> {
+    pub fn send_text(&self, text: &str) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::SendText {
             text: text.to_string(),
             response,
         })
     }
 
-    pub fn send_binary(&self, data: Vec<u8>) -> Result<String, String> {
+    pub fn send_binary(&self, data: Vec<u8>) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::SendBinary { data, response })
     }
 
@@ -131,15 +131,15 @@ impl WsClientBackend {
         })
     }
 
-    pub fn send_ping(&self) -> Result<String, String> {
+    pub fn send_ping(&self) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::SendPing { response })
     }
 
-    pub fn send_pong(&self) -> Result<String, String> {
+    pub fn send_pong(&self) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::SendPong { response })
     }
 
-    pub fn close(&self, code: u16, reason: &str) -> Result<String, String> {
+    pub fn close(&self, code: u16, reason: &str) -> Result<JanxValue, String> {
         self.require_thread()?.call(|response| WorkerCommand::Close {
             code,
             reason: reason.to_string(),

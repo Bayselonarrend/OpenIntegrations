@@ -204,14 +204,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -219,7 +219,7 @@ dependencies = [
 
 [[package]]
 name = "common-dataset"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "common-janx",
  "common-utils",
@@ -230,14 +230,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "chrono",
  "serde",
@@ -246,7 +246,7 @@ dependencies = [
 
 [[package]]
 name = "common-tcp"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "base64",
  "httparse",
@@ -259,7 +259,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "common-janx",
  "serde_json",
@@ -891,7 +891,7 @@ dependencies = [
 
 [[package]]
 name = "opi_postgres"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "chrono",
  "common-backend",

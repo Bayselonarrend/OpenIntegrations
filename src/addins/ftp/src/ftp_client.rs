@@ -1,6 +1,7 @@
 use std::io::{copy, BufReader, Cursor, ErrorKind, Read, Write};
 use std::net::{SocketAddr, TcpStream};
-use serde_json::json;
+use common_core::JanxValue;
+use common_janx::{janx, IntoJanx};
 use suppaftp::{FtpError, FtpResult, FtpStream, Mode, RustlsConnector, RustlsFtpStream, Status};
 use suppaftp::list::File;
 use std::str::FromStr;
@@ -13,7 +14,7 @@ use base64::Engine;
 use base64::engine::general_purpose;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{janx_error, janx_success};
 use suppaftp::types::Response;
 use crate::configuration::FtpSettings;
 use crate::passive_establish;
@@ -87,30 +88,30 @@ impl FtpClient {
 
                 match stream.login(user, pass){
                     Ok(_) => Ok(FtpClient::Secure(stream)),
-                    Err(e) => Err(json_error(&e))
+                    Err(e) => Err(e.to_string())
                 }
 
             }
             FtpClient::Insecure(mut stream) => {
                 match stream.login(user, pass){
                     Ok(_) => Ok(FtpClient::Insecure(stream)),
-                    Err(e) => Err(json_error(&e))
+                    Err(e) => Err(e.to_string())
                 }
             }
         }
 
     }
 
-    pub fn get_welcome_msg(&self) -> String {
+    pub fn get_welcome_msg(&self) -> JanxValue {
         let msg = match self {
             FtpClient::Secure(stream) => stream.get_welcome_msg().unwrap_or(""),
             FtpClient::Insecure(stream) => stream.get_welcome_msg().unwrap_or(""),
         };
 
-        json!({"result": true, "data": msg}).to_string()
+        janx_success(Some(msg.into_janx()), Some("data"))
     }
 
-    pub fn make_directory(&mut self, path: &str) -> String {
+    pub fn make_directory(&mut self, path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.mkdir(path),
@@ -118,12 +119,12 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json_success(),
-            Err(e) => json_error(&e)
+            Ok(_) => janx_success(None, None),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn remove_directory(&mut self, path: &str) -> String {
+    pub fn remove_directory(&mut self, path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.rmdir(path),
@@ -131,12 +132,12 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json_success(),
-            Err(e) => json_error(&e)
+            Ok(_) => janx_success(None, None),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn list_directory(&mut self, path: &str) -> String {
+    pub fn list_directory(&mut self, path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.list(Some(path)),
@@ -157,21 +158,26 @@ impl FtpClient {
                         }
                     )
                 }
-                json!({"result": true, "count": count, "data": objects}).to_string()
+                let data: Vec<JanxValue> = objects.iter().map(ftp_object_janx).collect();
+                janx!({
+                    "result": true,
+                    "count": count,
+                    "data": data,
+                })
             },
-            Err(e) => json_error(&e)
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
+    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> JanxValue {
         let mut cursor = Cursor::new(data);
         self.upload_from_reader(path, &mut cursor)
     }
 
-    pub fn upload_file(&mut self, path: &str, filepath: &str) -> String {
+    pub fn upload_file(&mut self, path: &str, filepath: &str) -> JanxValue {
         let file = match std::fs::File::open(filepath) {
             Ok(f) => f,
-            Err(e) => return json_error(format!("File error: {}", e))
+            Err(e) => return janx_error(format!("File error: {}", e))
         };
 
         let mut buf_reader = BufReader::with_capacity(256 * 1024, file);
@@ -179,16 +185,20 @@ impl FtpClient {
 
     }
 
-    pub fn download_to_file(&mut self, path: &str, file_path: &str) -> String {
+    pub fn download_to_file(&mut self, path: &str, file_path: &str) -> JanxValue {
 
         let mut file =  match std::fs::File::create(file_path){
             Ok(f) => f,
-            Err(e) => return json_error(format!("File error: {}", e))
+            Err(e) => return janx_error(format!("File error: {}", e))
         };
 
         match self.download_to_writer(path, &mut file){
-            Ok(b) => json!({"result": true, "bytes": b, "filepath": file_path}).to_string(),
-            Err(e) => e
+            Ok(b) => janx!({
+                "result": true,
+                "bytes": b,
+                "filepath": file_path,
+            }),
+            Err(e) => janx_error(e)
         }
     }
 
@@ -198,7 +208,7 @@ impl FtpClient {
         Ok(buffer)
     }
 
-    pub fn remove_file(&mut self, path: &str) -> String {
+    pub fn remove_file(&mut self, path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.rm(path),
@@ -206,21 +216,24 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json_success(),
-            Err(e) => json_error(&e)
+            Ok(_) => janx_success(None, None),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn object_size(&mut self, path: &str) -> String {
+    pub fn object_size(&mut self, path: &str) -> JanxValue {
 
         match self.get_size(path) {
-            Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-            Err(e) => json_error(&e)
+            Ok(b) => janx!({
+                "result": true,
+                "bytes": b,
+            }),
+            Err(e) => janx_error(e.to_string())
         }
 
     }
 
-    pub fn rename_object(&mut self, path: &str, new_path: &str) -> String {
+    pub fn rename_object(&mut self, path: &str, new_path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.rename(path, new_path),
@@ -228,12 +241,12 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json_success(),
-            Err(e) => json_error(&e)
+            Ok(_) => janx_success(None, None),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn execute_command(&mut self, command: &str) -> String {
+    pub fn execute_command(&mut self, command: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.site(command),
@@ -242,11 +255,11 @@ impl FtpClient {
 
         match result {
             Ok(r) => process_ftp_response(r),
-            Err(e) => json_error(&e)
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn execute_standard_command(&mut self, command: &str) -> String {
+    pub fn execute_standard_command(&mut self, command: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.custom_command(command, all_status_variants().as_slice()),
@@ -255,7 +268,7 @@ impl FtpClient {
 
         match result {
             Ok(r) => process_ftp_response(r),
-            Err(e) => json_error(&e)
+            Err(e) => janx_error(e.to_string())
         }
     }
 
@@ -273,7 +286,7 @@ impl FtpClient {
 
     }
 
-    pub fn get_features(&mut self) -> String {
+    pub fn get_features(&mut self) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.feat(),
@@ -281,25 +294,33 @@ impl FtpClient {
         };
 
         match result {
-            Ok(f) => json!({"result": true, "data": f}).to_string(),
-            Err(e) => json_error(&e)
+            Ok(f) => janx_success(
+                Some(common_utils::utils::json_value_to_janx(
+                    serde_json::to_value(f).unwrap_or(serde_json::Value::Null),
+                )),
+                Some("data"),
+            ),
+            Err(e) => janx_error(e.to_string())
         }
 
     }
 
-    pub fn get_current_directory(&mut self) -> String {
+    pub fn get_current_directory(&mut self) -> JanxValue {
         let result = match self {
             FtpClient::Secure(stream) => stream.pwd(),
             FtpClient::Insecure(stream) => stream.pwd(),
         };
 
         match result {
-            Ok(p) => json!({"result": true, "path": p}).to_string(),
-            Err(e) => json_error(&e)
+            Ok(p) => janx!({
+                "result": true,
+                "path": p,
+            }),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
-    pub fn change_current_directory(&mut self, path: &str) -> String {
+    pub fn change_current_directory(&mut self, path: &str) -> JanxValue {
 
         let result = match self {
             FtpClient::Secure(stream) => stream.cwd(path),
@@ -307,8 +328,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json_success(),
-            Err(e) => json_error(&e)
+            Ok(_) => janx_success(None, None),
+            Err(e) => janx_error(e.to_string())
         }
     }
 
@@ -317,25 +338,25 @@ impl FtpClient {
         &mut self,
         path: &str,
         reader: &mut R
-    ) -> String {
+    ) -> JanxValue {
 
         macro_rules! upload_impl {
             ($stream:expr, $path:expr, $reader:expr) => {{
                 let mut data_stream = match $stream.put_with_stream($path)
                     .map_err(|e| format!("Data stream error: {}", e)){
                     Ok(stream) => stream,
-                    Err(e) => return json_error(e)
+                    Err(e) => return janx_error(e)
                 };
 
                 let bytes = match copy($reader, &mut data_stream) {
                     Ok(b) => {
                         match wait_for_writable(&mut data_stream, Duration::from_secs(5)){
                             Ok(_) => {},
-                            Err(e) => return json_error(e)
+                            Err(e) => return janx_error(e)
                         };
                         b
                     },
-                    Err(e) => return json_error(format!("Upload error: {}", &e.to_string()))
+                    Err(e) => return janx_error(format!("Upload error: {}", &e.to_string()))
                 };
 
                 $stream.finalize_put_stream(data_stream)
@@ -350,8 +371,11 @@ impl FtpClient {
         };
 
         match result {
-            Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-            Err(e) => json_error(&e)
+            Ok(b) => janx!({
+                "result": true,
+                "bytes": b,
+            }),
+            Err(e) => janx_error(e)
         }
     }
 
@@ -376,7 +400,7 @@ impl FtpClient {
 
         match result {
             Ok(b) => Ok(b),
-            Err(e) => Err(json_error(e))
+            Err(e) => Err(e.to_string())
         }
 
     }
@@ -403,19 +427,19 @@ pub fn configure_ftp_client(
     if tls_settings.is_some_and(|s| s.use_tls) {
 
         let tls = tls_settings.unwrap();
-        let config = tls.get_rustls_config().map_err(|e| json_error(&e))?;
+        let config = tls.get_rustls_config().map_err(|e| e.to_string())?;
 
         let tls_connector = RustlsConnector::from(Arc::new(config));
 
         let mut ftp_stream = RustlsFtpStream::connect_with_stream(tcp_stream)
-            .map_err(|e| json_error(&e))?;
+            .map_err(|e| e.to_string())?;
 
         ftp_stream.set_mode(mode);
         ftp_stream.set_passive_nat_workaround(true);
 
         let mut secure_stream = ftp_stream
             .into_secure(tls_connector, &ftp_settings.domain)
-            .map_err(|e| json_error(&e))?;
+            .map_err(|e| e.to_string())?;
 
         if passive_proxy {
             let ftp_settings_clone = ftp_settings.clone();
@@ -430,7 +454,7 @@ pub fn configure_ftp_client(
 
     } else {
         let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
-            .map_err(|e| json_error(e))?;
+            .map_err(|e| e.to_string())?;
 
         ftp_stream.set_mode(mode);
         ftp_stream.set_passive_nat_workaround(true);
@@ -467,23 +491,35 @@ where
     }
 }
 
-pub fn process_ftp_response(response: Response) -> String{
+fn ftp_object_janx(obj: &FtpObject) -> JanxValue {
+    janx!({
+        "name": obj.name.clone(),
+        "is_directory": obj.is_directory,
+        "is_symlink": obj.is_symlink,
+        "symlink_path": obj.symlink_path.clone(),
+        "size": obj.size,
+        "modified": obj.modified.clone(),
+        "list_string": obj.list_string.clone(),
+    })
+}
 
+pub fn process_ftp_response(response: Response) -> JanxValue {
     let code = response.status.code();
     let body = response.body;
 
-    let body_json = match String::from_utf8(body) {
-        Ok(text) => {
-            json!(text)
-        }
+    let body_value = match String::from_utf8(body) {
+        Ok(text) => JanxValue::String(text),
         Err(original_bytes) => {
             let base64 = general_purpose::STANDARD.encode(&original_bytes.into_bytes());
-            json!({ "BYTES": base64 })
+            janx!({ "BYTES": base64 })
         }
     };
 
-    json!({"result": true, "data": body_json, "status": code}).to_string()
-
+    janx!({
+        "result": true,
+        "data": body_value,
+        "status": code,
+    })
 }
 
 pub fn all_status_variants() -> Vec<Status> {

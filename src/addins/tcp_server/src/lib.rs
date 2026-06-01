@@ -3,7 +3,7 @@ mod listener;
 
 use std::sync::{Arc, Mutex};
 use common_core::*;
-use common_utils::utils::{janx_error, json_error, json_success, version};
+use common_utils::utils::{janx_error, janx_logs, janx_result_ok, janx_success, version};
 use common_logs::Logger;
 use crate::backend::TcpServerBackend;
 
@@ -111,25 +111,19 @@ impl AddIn {
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         if let Some(ref logger) = self.logger {
             let logs = logger.get_last_logs(count);
             let total = logger.len();
-            
-            serde_json::json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            }).to_string()
+            janx_logs(logs, total)
         } else {
-            json_error("Logger not initialized")
+            janx_error("Logger not initialized")
         }
     }
 
-    pub fn start_server(&mut self, port: u16, queue_size: usize, logger_config: &str) -> String {
+    pub fn start_server(&mut self, port: u16, queue_size: usize, logger_config: &str) -> JanxValue {
         if self.started {
-            return json_error("Server already started");
+            return janx_error("Server already started");
         }
 
         if !logger_config.is_empty() {
@@ -143,26 +137,26 @@ impl AddIn {
                     }
                 }
                 Err(e) => {
-                    return json_error(&format!("Failed to initialize logger: {}", e));
+                    return janx_error(format!("Failed to initialize logger: {}", e));
                 }
             }
         }
 
         let result = match self.backend.lock() {
             Ok(backend) => backend.start(port, queue_size),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         };
 
-        if result.contains("\"result\":true") {
+        if janx_result_ok(&result) {
             self.started = true;
         }
 
         result
     }
 
-    pub fn stop_server(&mut self) -> String {
+    pub fn stop_server(&mut self) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         let _ = self.close_all_connections();
@@ -171,24 +165,24 @@ impl AddIn {
             Ok(mut backend) => {
                 backend.shutdown();
                 self.started = false;
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn close_all_connections(&self) -> String {
+    pub fn close_all_connections(&self) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.close_all_connections(),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> common_core::JanxValue {
+    pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> JanxValue {
         if !self.started {
             return janx_error("Server not started");
         }
@@ -204,7 +198,7 @@ impl AddIn {
         connection_id: &str,
         timeout_ms: u64,
         max_message_size: usize,
-    ) -> common_core::JanxValue {
+    ) -> JanxValue {
         if !self.started {
             return janx_error("Server not started");
         }
@@ -219,58 +213,58 @@ impl AddIn {
         }
     }
 
-    pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_message(connection_id.to_string(), message),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn close_connection(&self, connection_id: &str) -> String {
+    pub fn close_connection(&self, connection_id: &str) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.close_connection(connection_id.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn shutdown_read(&self, connection_id: &str) -> String {
+    pub fn shutdown_read(&self, connection_id: &str) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.shutdown_read(connection_id.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn shutdown_write(&self, connection_id: &str) -> String {
+    pub fn shutdown_write(&self, connection_id: &str) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.shutdown_write(connection_id.to_string()),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_connections_list(&self) -> String {
+    pub fn get_connections_list(&self) -> JanxValue {
         if !self.started {
-            return json_error("Server not started");
+            return janx_error("Server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_connections_list(),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 

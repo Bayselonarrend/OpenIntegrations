@@ -1,4 +1,5 @@
-use serde_json::json;
+use common_core::JanxValue;
+use common_janx::janx;
 
 #[derive(Clone)]
 pub struct ConnectionSettings {
@@ -18,12 +19,12 @@ impl ConnectionSettings{
         }
     }
 
-    pub fn get_settings(&self) -> String{
-        json!({
-            "url": &self.url,
-            "password": &self.password,
-            "read_timeout": &self.read_timeout,
-            "write_timeout": &self.write_timeout
-        }).to_string()
+    pub fn get_settings(&self) -> JanxValue {
+        janx!({
+            "url": self.url.clone(),
+            "password": self.password.clone(),
+            "read_timeout": self.read_timeout,
+            "write_timeout": self.write_timeout,
+        })
     }
 }

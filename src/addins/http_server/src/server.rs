@@ -9,9 +9,8 @@ use tokio::sync::Mutex as TokioMutex;
 use common_janx::{janx, JanxValue};
 use common_logs::{log, Logger};
 use common_server::{AsyncWaiter, ConnectionManager};
-use common_utils::utils::{janx_error, json_error};
+use common_utils::utils::janx_error;
 use serde::{Deserialize, Serialize};
-use serde_json::json;
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct HttpServerConfig {
@@ -170,42 +169,40 @@ impl HttpServerState {
         }
     }
 
-    pub async fn send_response(&mut self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
+    pub async fn send_response(&mut self, request_id: &str, status_code: u16, body: Vec<u8>) -> JanxValue {
         self.log(&format!("Sending response for request {}: {}", request_id, status_code));
-        
-        // Take the request (removes it and gives us ownership)
+
         if let Some(request) = self.manager.take(request_id) {
             match request.response_tx.send((status_code, body)) {
-                Ok(_) => {
-                    json!({
-                        "result": true,
-                        "message": "Response sent"
-                    }).to_string()
-                }
-                Err(_) => json_error("Failed to send response: channel closed"),
+                Ok(_) => janx!({
+                    "result": true,
+                    "message": "Response sent",
+                }),
+                Err(_) => janx_error("Failed to send response: channel closed"),
             }
         } else {
-            json_error("Request not found or already responded")
+            janx_error("Request not found or already responded")
         }
     }
 
-    pub fn get_pending_requests(&mut self) -> String {
+    pub fn get_pending_requests(&mut self) -> JanxValue {
         let mut requests = Vec::new();
-        
+
         self.manager.iter_mut(|id, req| {
-            requests.push(json!({
+            requests.push(janx!({
                 "requestId": id,
-                "method": req.method,
-                "path": req.path,
-                "query": req.query,
+                "method": req.method.clone(),
+                "path": req.path.clone(),
+                "query": req.query.clone(),
             }));
         });
-        
-        json!({
+
+        let count = requests.len();
+        janx!({
             "result": true,
             "requests": requests,
-            "count": requests.len()
-        }).to_string()
+            "count": count,
+        })
     }
 
     pub async fn handle_request_by_id(&mut self, request_id: &str) -> JanxValue {

@@ -6,7 +6,6 @@ use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::resolve_to_socket_addr;
 use common_tcp::tls_settings::TlsSettings;
-use serde_json::json;
 
 use crate::worker::{self, WorkerCommand};
 
@@ -109,16 +108,14 @@ impl TcpClientBackend {
 
     pub fn connect(&mut self) -> bool {
         if self.is_connected() {
-            self.last_error = json!({"result": false, "error": "Connection already initialized"})
-                .to_string();
+            self.last_error = "Connection already initialized".to_string();
             return false;
         }
 
         let address = match self.address {
             Some(a) => a,
             None => {
-                self.last_error =
-                    json!({"result": false, "error": "No address found!"}).to_string();
+                self.last_error = "No address found!".to_string();
                 return false;
             }
         };
@@ -126,8 +123,7 @@ impl TcpClientBackend {
         self.ensure_thread();
 
         let Some(thread) = &self.thread else {
-            self.last_error = json!({"result": false, "error": "Backend thread is not available"})
-                .to_string();
+            self.last_error = "Backend thread is not available".to_string();
             return false;
         };
 
@@ -166,7 +162,7 @@ impl TcpClientBackend {
 
     pub fn send(&mut self, data: Vec<u8>, timeout_ms: i32) -> bool {
         let Some(thread) = &self.thread else {
-            self.last_error = json!({"result": false, "error": "No connection found!"}).to_string();
+            self.last_error = "No connection found!".to_string();
             return false;
         };
 
@@ -187,7 +183,7 @@ impl TcpClientBackend {
 
     pub fn receive(&mut self, max_data_size: i32, end_marker: Vec<u8>, timeout_ms: i32) -> Vec<u8> {
         let Some(thread) = &self.thread else {
-            self.last_error = json!({"result": false, "error": "No connection found!"}).to_string();
+            self.last_error = "No connection found!".to_string();
             return vec![];
         };
 
@@ -206,7 +202,7 @@ impl TcpClientBackend {
 
     pub fn close_output(&mut self) -> bool {
         let Some(thread) = &self.thread else {
-            self.last_error = json!({"result": false, "error": "No connection found!"}).to_string();
+            self.last_error = "No connection found!".to_string();
             return false;
         };
 

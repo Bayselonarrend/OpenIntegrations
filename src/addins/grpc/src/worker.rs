@@ -3,11 +3,10 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::BackendThread;
-use common_janx::{janx, JanxValue};
+use common_janx::{janx, IntoJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, json_error};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_success, json_value_to_janx};
 
 use crate::client_state::ClientState;
 use crate::connection;
@@ -31,43 +30,43 @@ pub enum WorkerCommand {
     LoadProto {
         filename: String,
         content: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CompileProtos {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SetMetadata {
         metadata: HashMap<String, String>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ListServices {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ListMethods {
         service_name: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetMethodInfo {
         service_name: String,
         method_name: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CallServerStream {
         params_janx: JanxValue,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     StartClientStream {
         params_janx: JanxValue,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     StartBidiStream {
         params_janx: JanxValue,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendMessage {
         stream_id: String,
         message: JanxValue,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetNextMessage {
         stream_id: String,
@@ -75,11 +74,11 @@ pub enum WorkerCommand {
     },
     FinishSending {
         stream_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CloseStream {
         stream_id: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CloseAllStreams {
         response: Sender<Result<(), String>>,
@@ -180,7 +179,7 @@ pub fn spawn_thread(
                         }
                         WorkerCommand::LoadProto { filename, content, response } => {
                             session.state.proto_files.insert(filename, content);
-                            let _ = response.send(String::new());
+                            let _ = response.send(janx_success(None, None));
                         }
                         WorkerCommand::CompileProtos { response } => {
                             let result = if session.state.proto_files.is_empty() {
@@ -197,14 +196,14 @@ pub fn spawn_thread(
                                 }
                             };
                             let response_msg = match result {
-                                Ok(_) => String::new(),
-                                Err(e) => e,
+                                Ok(_) => janx_success(None, None),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
                         WorkerCommand::SetMetadata { metadata, response } => {
                             session.state.set_metadata(metadata);
-                            let _ = response.send(String::new());
+                            let _ = response.send(janx_success(None, None));
                         }
                         WorkerCommand::ListServices { response } => {
                             let result = if let Some(descriptor_pool) =
@@ -215,8 +214,8 @@ pub fn spawn_thread(
                                 Err("No proto files loaded. Call LoadProto first.".to_string())
                             };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(data) => janx_success(Some(data.into_janx()), Some("data")),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -229,8 +228,8 @@ pub fn spawn_thread(
                                 Err("No proto files loaded. Call LoadProto first.".to_string())
                             };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(data) => janx_success(Some(data.into_janx()), Some("data")),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -251,8 +250,8 @@ pub fn spawn_thread(
                                 Err("No proto files loaded. Call LoadProto first.".to_string())
                             };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(data) => janx_success(Some(json_value_to_janx(data)), Some("data")),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -267,8 +266,7 @@ pub fn spawn_thread(
                                 let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&e);
-                                        let _ = response.send(response_msg);
+                                        let _ = response.send(janx_error(e));
                                         continue;
                                     }
                                 };
@@ -284,10 +282,11 @@ pub fn spawn_thread(
                             };
 
                             let response_msg = match result {
-                                Ok(stream_id) => {
-                                    json!({"result": true, "streamId": stream_id}).to_string()
-                                }
-                                Err(e) => json_error(&e),
+                                Ok(stream_id) => janx!({
+                                    "result": true,
+                                    "streamId": stream_id,
+                                }),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -302,8 +301,7 @@ pub fn spawn_thread(
                                 let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&e);
-                                        let _ = response.send(response_msg);
+                                        let _ = response.send(janx_error(e));
                                         continue;
                                     }
                                 };
@@ -319,10 +317,11 @@ pub fn spawn_thread(
                             };
 
                             let response_msg = match result {
-                                Ok(stream_id) => {
-                                    json!({"result": true, "streamId": stream_id}).to_string()
-                                }
-                                Err(e) => json_error(&e),
+                                Ok(stream_id) => janx!({
+                                    "result": true,
+                                    "streamId": stream_id,
+                                }),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -337,8 +336,7 @@ pub fn spawn_thread(
                                 let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
                                     Ok(p) => p,
                                     Err(e) => {
-                                        let response_msg = json_error(&e);
-                                        let _ = response.send(response_msg);
+                                        let _ = response.send(janx_error(e));
                                         continue;
                                     }
                                 };
@@ -354,10 +352,11 @@ pub fn spawn_thread(
                             };
 
                             let response_msg = match result {
-                                Ok(stream_id) => {
-                                    json!({"result": true, "streamId": stream_id}).to_string()
-                                }
-                                Err(e) => json_error(&e),
+                                Ok(stream_id) => janx!({
+                                    "result": true,
+                                    "streamId": stream_id,
+                                }),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -375,8 +374,8 @@ pub fn spawn_thread(
                             ));
 
                             let response_msg = match result {
-                                Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(_) => janx_success(None, None),
+                                Err(e) => janx_error(e),
                             };
 
                             let _ = response.send(response_msg);
@@ -401,8 +400,8 @@ pub fn spawn_thread(
                             );
 
                             let response_msg = match result {
-                                Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(_) => janx_success(None, None),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }
@@ -412,8 +411,8 @@ pub fn spawn_thread(
                             );
 
                             let response_msg = match result {
-                                Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => json_error(&e),
+                                Ok(_) => janx_success(None, None),
+                                Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);
                         }

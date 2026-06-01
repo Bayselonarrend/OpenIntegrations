@@ -1,8 +1,9 @@
 use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
 
-use common_utils::utils::json_error;
-use serde_json::{json, Value};
+use common_core::JanxValue;
+use common_janx::janx;
+use common_utils::utils::janx_error;
 use ssh2::{FileStat, Sftp};
 
 pub fn oct(o: i32) -> Result<i32, String> {
@@ -57,7 +58,7 @@ pub fn download_to_writer<W: Write>(sftp: &Sftp, path: &str, writer: &mut W) -> 
     Ok(total_bytes)
 }
 
-pub fn form_file_info(path: &PathBuf, data: &FileStat) -> Value {
+pub fn form_file_info(path: &PathBuf, data: &FileStat) -> JanxValue {
     let object_path = path.to_str().unwrap_or("").to_string();
     let object_perm = data.perm.unwrap_or(0);
 
@@ -75,7 +76,7 @@ pub fn form_file_info(path: &PathBuf, data: &FileStat) -> Value {
         .unwrap_or("")
         .to_string();
 
-    json!({
+    janx!({
         "uid": data.uid,
         "gid": data.gid,
         "is_directory": is_directory(object_perm),
@@ -96,13 +97,12 @@ fn is_directory(mode: u32) -> bool {
     (mode & S_IFMT) == S_IFDIR
 }
 
-pub fn require_sftp<'a>(sftp: &'a Option<Sftp>) -> Result<&'a Sftp, String> {
-    sftp.as_ref()
-        .ok_or_else(|| json_error("Init SFTP first"))
+pub fn require_sftp<'a>(sftp: &'a Option<Sftp>) -> Result<&'a Sftp, JanxValue> {
+    sftp.as_ref().ok_or_else(|| janx_error("Init SFTP first"))
 }
 
-pub fn require_session<'a>(session: &'a Option<ssh2::Session>) -> Result<&'a ssh2::Session, String> {
+pub fn require_session<'a>(session: &'a Option<ssh2::Session>) -> Result<&'a ssh2::Session, JanxValue> {
     session
         .as_ref()
-        .ok_or_else(|| json_error("Init SSH connection first"))
+        .ok_or_else(|| janx_error("Init SSH connection first"))
 }

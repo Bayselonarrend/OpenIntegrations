@@ -3,9 +3,9 @@ use std::sync::Arc;
 use common_janx::JanxValue;
 use common_logs::Logger;
 use common_server::{
-    handle_async_janx_command, handle_async_command, handle_sync_command, send_command, Backend,
+    handle_async_command, handle_sync_command, send_command, Backend,
 };
-use common_utils::utils::{janx_error, json_error, json_success};
+use common_utils::utils::{janx_error, janx_success};
 use crate::server::WebSocketServerState;
 
 pub struct WebSocketServerBackend {
@@ -18,7 +18,7 @@ pub enum WebSocketCommand {
         port: u16,
         config: String,
         logger: Option<Arc<Logger>>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetNextMessage {
         timeout_ms: u64,
@@ -32,30 +32,30 @@ pub enum WebSocketCommand {
     SendMessage {
         connection_id: String,
         message: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendText {
         connection_id: String,
         text: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendPing {
         connection_id: String,
         payload: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     SendPong {
         connection_id: String,
         payload: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CloseConnection {
         connection_id: String,
         remove_from_list: bool,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetConnectionsList {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     Shutdown,
 }
@@ -71,7 +71,7 @@ impl WebSocketServerBackend {
                     match cmd {
                         WebSocketCommand::Start { port, config, logger, response } => {
                             if server_state.is_some() {
-                                let _ = response.send(json_error("WebSocket server already started"));
+                                let _ = response.send(janx_error("WebSocket server already started"));
                                 continue;
                             }
 
@@ -82,22 +82,22 @@ impl WebSocketServerBackend {
                             match result {
                                 Ok(state) => {
                                     server_state = Some(state);
-                                    let _ = response.send(json_success());
+                                    let _ = response.send(janx_success(None, None));
                                 }
                                 Err(e) => {
-                                    let _ = response.send(json_error(&e));
+                                    let _ = response.send(janx_error(&e));
                                 }
                             }
                         }
 
                         WebSocketCommand::GetNextMessage { timeout_ms, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.get_next_message(timeout_ms).await
                             );
                         }
 
                         WebSocketCommand::GetMessage { connection_id, timeout_ms, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.get_message(&connection_id, timeout_ms).await
                             );
                         }
@@ -161,7 +161,7 @@ impl WebSocketServerBackend {
         self.logger = Some(logger);
     }
 
-    pub fn start(&self, port: u16, config: &str) -> String {
+    pub fn start(&self, port: u16, config: &str) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::Start {
                 port,
@@ -173,33 +173,25 @@ impl WebSocketServerBackend {
     }
 
     pub fn get_next_message(&self, timeout_ms: u64) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(WebSocketCommand::GetNextMessage {
-            timeout_ms,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            WebSocketCommand::GetNextMessage {
+                timeout_ms,
+                response,
+            }
+        })
     }
 
     pub fn get_message(&self, connection_id: String, timeout_ms: u64) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(WebSocketCommand::GetMessage {
-            connection_id,
-            timeout_ms,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            WebSocketCommand::GetMessage {
+                connection_id,
+                timeout_ms,
+                response,
+            }
+        })
     }
 
-    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> String {
+    pub fn send_message(&self, connection_id: String, message: Vec<u8>) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::SendMessage {
                 connection_id,
@@ -209,7 +201,7 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn send_text(&self, connection_id: String, text: String) -> String {
+    pub fn send_text(&self, connection_id: String, text: String) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::SendText {
                 connection_id,
@@ -219,7 +211,7 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn send_ping(&self, connection_id: String, payload: Vec<u8>) -> String {
+    pub fn send_ping(&self, connection_id: String, payload: Vec<u8>) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::SendPing {
                 connection_id,
@@ -229,7 +221,7 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn send_pong(&self, connection_id: String, payload: Vec<u8>) -> String {
+    pub fn send_pong(&self, connection_id: String, payload: Vec<u8>) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::SendPong {
                 connection_id,
@@ -239,7 +231,7 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn close_connection(&self, connection_id: String, remove_from_list: bool) -> String {
+    pub fn close_connection(&self, connection_id: String, remove_from_list: bool) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::CloseConnection {
                 connection_id,
@@ -249,7 +241,7 @@ impl WebSocketServerBackend {
         })
     }
 
-    pub fn get_connections_list(&self) -> String {
+    pub fn get_connections_list(&self) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::GetConnectionsList { response }
         })

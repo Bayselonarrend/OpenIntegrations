@@ -3,9 +3,9 @@ use std::sync::Arc;
 use common_janx::JanxValue;
 use common_logs::Logger;
 use common_server::{
-    handle_async_janx_command, handle_async_command, handle_sync_command, send_command, Backend,
+    handle_async_command, handle_sync_command, send_command, Backend,
 };
-use common_utils::utils::{janx_error, json_error, json_success};
+use common_utils::utils::{janx_error, janx_success};
 use crate::server::HttpServerState;
 
 pub struct HttpServerBackend {
@@ -18,7 +18,7 @@ pub enum HttpCommand {
         port: u16,
         config: String,
         logger: Option<Arc<Logger>>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     HandleRequest {
         timeout_ms: u64,
@@ -32,10 +32,10 @@ pub enum HttpCommand {
         request_id: String,
         status_code: u16,
         body: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetPendingRequests {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     Shutdown,
 }
@@ -51,7 +51,7 @@ impl HttpServerBackend {
                     match cmd {
                         HttpCommand::Start { port, config, logger, response } => {
                             if server_state.is_some() {
-                                let _ = response.send(json_error("HTTP server already started"));
+                                let _ = response.send(janx_error("HTTP server already started"));
                                 continue;
                             }
 
@@ -62,22 +62,22 @@ impl HttpServerBackend {
                             match result {
                                 Ok(state) => {
                                     server_state = Some(state);
-                                    let _ = response.send(json_success());
+                                    let _ = response.send(janx_success(None, None));
                                 }
                                 Err(e) => {
-                                    let _ = response.send(json_error(&e));
+                                    let _ = response.send(janx_error(&e));
                                 }
                             }
                         }
 
                         HttpCommand::HandleRequest { timeout_ms, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.handle_request(timeout_ms).await
                             );
                         }
 
                         HttpCommand::HandleRequestById { request_id, response } => {
-                            handle_async_janx_command!(server_state, rt, response, |state|
+                            handle_async_command!(server_state, rt, response, |state|
                                 state.handle_request_by_id(&request_id).await
                             );
                         }
@@ -116,7 +116,7 @@ impl HttpServerBackend {
         self.logger = Some(logger);
     }
 
-    pub fn start(&self, port: u16, config: &str) -> String {
+    pub fn start(&self, port: u16, config: &str) -> JanxValue {
         send_command!(self.backend, |response| {
             HttpCommand::Start {
                 port,
@@ -128,32 +128,24 @@ impl HttpServerBackend {
     }
 
     pub fn handle_request(&self, timeout_ms: u64) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(HttpCommand::HandleRequest {
-            timeout_ms,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            HttpCommand::HandleRequest {
+                timeout_ms,
+                response,
+            }
+        })
     }
 
     pub fn handle_request_by_id(&self, request_id: String) -> JanxValue {
-        let (response_tx, response_rx) = std::sync::mpsc::channel();
-        if let Err(e) = self.backend.send(HttpCommand::HandleRequestById {
-            request_id,
-            response: response_tx,
-        }) {
-            return janx_error(format!("Failed to send command: {}", e));
-        }
-        response_rx
-            .recv()
-            .unwrap_or_else(|e| janx_error(format!("Failed to receive response: {}", e)))
+        send_command!(self.backend, |response| {
+            HttpCommand::HandleRequestById {
+                request_id,
+                response,
+            }
+        })
     }
 
-    pub fn send_response(&self, request_id: String, status_code: u16, body: Vec<u8>) -> String {
+    pub fn send_response(&self, request_id: String, status_code: u16, body: Vec<u8>) -> JanxValue {
         send_command!(self.backend, |response| {
             HttpCommand::SendResponse {
                 request_id,
@@ -164,7 +156,7 @@ impl HttpServerBackend {
         })
     }
 
-    pub fn get_pending_requests(&self) -> String {
+    pub fn get_pending_requests(&self) -> JanxValue {
         send_command!(self.backend, |response| {
             HttpCommand::GetPendingRequests { response }
         })

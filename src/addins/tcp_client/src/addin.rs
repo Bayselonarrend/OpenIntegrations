@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
+use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{json_error, json_success};
-use serde_json::json;
+use common_utils::utils::{janx_error, janx_logs, janx_success};
 
 use crate::backend::TcpClientBackend;
 
@@ -19,54 +19,48 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> String {
+    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
         if logger_config.is_empty() {
-            return json_error("Logger config is empty");
+            return janx_error("Logger config is empty");
         }
 
         match Logger::from_json(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => json_success(),
-                Err(e) => json_error(&e),
+                Ok(()) => janx_success(None, None),
+                Err(e) => janx_error(e),
             },
-            Err(e) => json_error(&format!("Failed to initialize logger: {}", e)),
+            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
-    pub fn get_logs(&self, count: usize) -> String {
+    pub fn get_logs(&self, count: usize) -> JanxValue {
         match self.backend.get_logs(count) {
-            Some((logs, total)) => json!({
-                "result": true,
-                "logs": logs,
-                "total": total,
-                "returned": logs.len()
-            })
-            .to_string(),
-            None => json_error("Logger not initialized"),
+            Some((logs, total)) => janx_logs(logs, total),
+            None => janx_error("Logger not initialized"),
         }
     }
 
-    pub fn set_address(&mut self, address: &str) -> String {
+    pub fn set_address(&mut self, address: &str) -> JanxValue {
         match self.backend.set_address(address) {
             Ok(()) => {
                 self.address_str = self.backend.address_str().to_string();
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&e),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> JanxValue {
         match self.backend.set_tls(use_tls, accept_invalid_certs, ca_cert_path) {
-            Ok(()) => json!({"result": true}).to_string(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 
-    pub fn set_proxy(&mut self, data: &str) -> String {
+    pub fn set_proxy(&mut self, data: &str) -> JanxValue {
         match self.backend.set_proxy(data) {
-            Ok(()) => json!({"result": true}).to_string(),
-            Err(e) => json_error(&e),
+            Ok(()) => janx_success(None, None),
+            Err(e) => janx_error(e),
         }
     }
 

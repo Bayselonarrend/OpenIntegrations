@@ -19,6 +19,45 @@ pub fn janx_error<E: ToString>(error: E) -> JanxValue {
     })
 }
 
+pub fn janx_result_ok(value: &JanxValue) -> bool {
+    match value {
+        JanxValue::Object(map) => map
+            .get("result")
+            .and_then(|v| match v {
+                JanxValue::Bool(b) => Some(*b),
+                _ => None,
+            })
+            .unwrap_or(false),
+        _ => false,
+    }
+}
+
+pub fn janx_logs(logs: Vec<String>, total: usize) -> JanxValue {
+    let returned = logs.len();
+    janx!({
+        "result": true,
+        "logs": logs,
+        "total": total,
+        "returned": returned,
+    })
+}
+
+pub fn json_value_to_janx(value: serde_json::Value) -> JanxValue {
+    use serde_json::Value;
+    match value {
+        Value::Null => JanxValue::Null,
+        Value::Bool(b) => JanxValue::Bool(b),
+        Value::Number(n) => JanxValue::Number(n),
+        Value::String(s) => JanxValue::String(s),
+        Value::Array(arr) => JanxValue::Array(arr.into_iter().map(json_value_to_janx).collect()),
+        Value::Object(map) => JanxValue::Object(
+            map.into_iter()
+                .map(|(k, v)| (k, json_value_to_janx(v)))
+                .collect(),
+        ),
+    }
+}
+
 pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> JanxValue {
     match payload {
         Some(data) => {

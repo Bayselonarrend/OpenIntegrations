@@ -10,7 +10,7 @@ use std::time::Duration;
 
 use addin::AddIn;
 use common_core::*;
-use common_utils::utils::{json_error, version};
+use common_utils::utils::{janx_error, version};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -113,7 +113,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let data = match params[0].get_blob() {
                 Ok(b) => b,
                 Err(e) => {
-                    return Box::new(json_error(format!("Blob error: {}", e).as_str()));
+                    return Box::new(janx_error(format!("Blob error: {}", e)));
                 }
             };
             let path = params[1].get_string().unwrap_or_default();

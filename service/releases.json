@@ -7,10 +7,10 @@
         "image": "media/Covers/ZeroMQ.png",
         "changes": [
             {
-                "lib": "ZeroMQ",
-                "icon": "media/ZeroMQ.png",
-                "description_ru": "Методы подключения (4 функции)",
-                "description_en": "Connection methods (4 functions)"
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Переработан обмен данными между внешними компонентами и 1С/OS хостом",
+                "description_en": "Overhauled data exchange between AddIns and the 1C/OS host"
             }
         ]
     },
@@ -40,13 +40,13 @@
                 "description_en": "Messaging methods (6 functions)"
             },
             {
-                "lib": "All",
+                "lib": "HTTP",
                 "icon": "media/HTTP.png",
                 "description_ru": "Оптимизирована загрузка по частям в HTTP-клиенте",
                 "description_en": "Optimized chunked upload in the HTTP client"
             },
             {
-                "lib": "All",
+                "lib": "MSSQL",
                 "icon": "media/MSSQL.png",
                 "description_ru": "Изменен механизм создания Tls соединения: улучшена совместимость с разными версиями сервера, наличие OpenSSL более не требуется",
                 "description_en": "Changed TLS connection creation mechanism: improved compatibility with different server versions, OpenSSL is no longer required"

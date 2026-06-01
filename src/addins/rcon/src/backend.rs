@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
+use common_core::JanxValue;
 use common_logs::Logger;
 
 use crate::settings::ConnectionSettings;
@@ -86,7 +87,7 @@ impl RconBackend {
             .and_then(|result| result)
     }
 
-    pub fn execute_command(&self, command: &str) -> Result<String, String> {
+    pub fn execute_command(&self, command: &str) -> Result<JanxValue, String> {
         if !self.is_connected() {
             return Err("No client found. Initialize connection first".to_string());
         }
@@ -102,7 +103,7 @@ impl RconBackend {
         })
     }
 
-    pub fn get_settings(&self) -> Result<String, String> {
+    pub fn get_settings(&self) -> Result<JanxValue, String> {
         self.settings
             .as_ref()
             .map(|settings| settings.get_settings())

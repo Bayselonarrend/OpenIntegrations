@@ -1,8 +1,7 @@
 use std::sync::{Arc, Mutex};
-use common_utils::utils::{json_error, json_success};
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::janx_error;
+use common_utils::utils::{janx_error, janx_result_ok, janx_success};
 use crate::backend::HttpServerBackend;
 
 pub struct HttpServer {
@@ -24,35 +23,35 @@ impl HttpServer {
         }
     }
 
-    pub fn start(&mut self, port: u16, config: &str) -> String {
+    pub fn start(&mut self, port: u16, config: &str) -> JanxValue {
         if self.started {
-            return json_error("HTTP server already started");
+            return janx_error("HTTP server already started");
         }
 
         let result = match self.backend.lock() {
             Ok(backend) => backend.start(port, config),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         };
 
-        if result.contains("\"result\":true") {
+        if janx_result_ok(&result) {
             self.started = true;
         }
 
         result
     }
 
-    pub fn stop(&mut self) -> String {
+    pub fn stop(&mut self) -> JanxValue {
         if !self.started {
-            return json_error("HTTP server not started");
+            return janx_error("HTTP server not started");
         }
 
         match self.backend.lock() {
             Ok(mut backend) => {
                 backend.shutdown();
                 self.started = false;
-                json_success()
+                janx_success(None, None)
             }
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
@@ -78,25 +77,25 @@ impl HttpServer {
         }
     }
 
-    pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> String {
+    pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> JanxValue {
         if !self.started {
-            return json_error("HTTP server not started");
+            return janx_error("HTTP server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.send_response(request_id.to_string(), status_code, body),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 
-    pub fn get_pending_requests(&self) -> String {
+    pub fn get_pending_requests(&self) -> JanxValue {
         if !self.started {
-            return json_error("HTTP server not started");
+            return janx_error("HTTP server not started");
         }
 
         match self.backend.lock() {
             Ok(backend) => backend.get_pending_requests(),
-            Err(e) => json_error(&format!("Failed to lock backend: {}", e)),
+            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
         }
     }
 

@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_core::JanxValue;
+use common_core::{janx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
 
@@ -41,11 +41,15 @@ impl MySQLBackend {
         Ok(())
     }
 
-    pub fn get_tls_settings(&self) -> String {
-        self.tls
-            .as_ref()
-            .map(|tls| tls.get_settings())
-            .unwrap_or_default()
+    pub fn get_tls_settings(&self) -> JanxValue {
+        match &self.tls {
+            Some(tls) => janx!({
+                "use_tls": tls.use_tls,
+                "accept_invalid_certs": tls.accept_invalid_certs,
+                "ca_cert_path": tls.ca_cert_path.clone(),
+            }),
+            None => janx!({}),
+        }
     }
 
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {

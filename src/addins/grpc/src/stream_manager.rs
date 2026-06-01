@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 use std::sync::Arc;
-use common_utils::utils::json_error;
 use tokio::sync::{mpsc, oneshot, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
@@ -77,20 +76,20 @@ impl StreamManager {
 
     pub async fn send_message(&self, stream_id: &str, message: DynamicMessage) -> Result<(), String> {
         let stream = self.get_stream(stream_id).await
-            .ok_or_else(|| json_error(format!("Stream '{}' not found", stream_id)))?;
+            .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
         let (sender, timeout_ms) = {
             let stream_info = stream.lock().await;
 
             let sender = stream_info.sender.as_ref()
-                .ok_or_else(|| json_error(format!("Stream '{}' does not support sending", stream_id)))?
+                .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
                 .clone();
 
             (sender, stream_info.timeout_ms)
         };
 
         if sender.is_closed() {
-            return Err(json_error("Closed".to_string()));
+            return Err("Closed".to_string());
         }
 
         let (ack_tx, ack_rx) = oneshot::channel();
@@ -104,17 +103,17 @@ impl StreamManager {
 
             tokio::time::timeout(duration, sender.reserve())
                 .await
-                .map_err(|_| json_error("Timeout"))?
+                .map_err(|_| "Timeout".to_string())?
                 .map_err(|e| process_close_error(e.to_string()))?;
 
             tokio::time::timeout(duration, sender.send(msg_with_ack))
                 .await
-                .map_err(|_| json_error("Timeout"))?
+                .map_err(|_| "Timeout".to_string())?
                 .map_err(|e| process_close_error(e.to_string()))?;
 
             tokio::time::timeout(duration, ack_rx)
                 .await
-                .map_err(|_| json_error("Timeout"))?
+                .map_err(|_| "Timeout".to_string())?
                 .map_err(|e| process_close_error(e.to_string()))?;
         } else {
 

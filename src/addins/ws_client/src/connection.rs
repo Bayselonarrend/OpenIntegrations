@@ -1,9 +1,10 @@
 use std::net::TcpStream;
 use std::sync::Arc;
+use common_core::JanxValue;
 use common_tcp::tls_settings::TlsSettings;
 use common_tcp::tcp_establish::create_tcp_connection;
 use common_tcp::proxy_settings::ProxySettings;
-use common_utils::utils::{json_error, json_success};
+use common_utils::utils::{janx_error, janx_success};
 use rustls::pki_types::ServerName;
 use tungstenite::{client, ClientRequestBuilder, WebSocket};
 use tungstenite::client::IntoClientRequest;
@@ -14,17 +15,17 @@ use crate::client::WebSocketClient;
 
 impl WebSocketClient {
 
-    pub fn connect(&mut self, url_str: &str) -> String {
+    pub fn connect(&mut self, url_str: &str) -> JanxValue {
 
         if self.socket.is_some() {
-            return json_error("Already connected");
+            return janx_error("Already connected");
         }
 
         self.log(&format!("Connecting to {}", url_str));
 
         let url = match Url::parse(url_str) {
             Ok(u) => u,
-            Err(e) => return json_error(&format!("Invalid URL: {}", e)),
+            Err(e) => return janx_error(format!("Invalid URL: {}", e)),
         };
 
         let custom = self.tls_settings.is_some() || self.proxy_settings.is_some();
@@ -39,11 +40,11 @@ impl WebSocketClient {
             Ok(socket) => {
                 self.socket = Some(socket);
                 self.log("Connected successfully");
-                json_success()
+                janx_success(None, None)
             }
             Err(e) => {
                 self.log(&format!("Connection failed: {}", e));
-                json_error(&format!("Connection failed: {}", e))
+                janx_error(format!("Connection failed: {}", e))
             }
         }
     }
