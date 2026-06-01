@@ -3,6 +3,7 @@ use std::fmt;
 #[derive(Debug)]
 pub enum JanxError {
     TooShort,
+    UnsupportedFormatVersion { version: u32 },
     JsonLengthOutOfBounds,
     AppendixOutOfBounds,
     Json(serde_json::Error),
@@ -12,6 +13,11 @@ impl fmt::Display for JanxError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::TooShort => write!(f, "Janx frame is too short"),
+            Self::UnsupportedFormatVersion { version } => write!(
+                f,
+                "Unsupported Janx format version: {version} (supported: {})",
+                crate::codec::FORMAT_VERSION
+            ),
             Self::JsonLengthOutOfBounds => {
                 write!(f, "Janx JSON length exceeds frame size")
             }

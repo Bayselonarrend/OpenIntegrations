@@ -29,13 +29,21 @@ pub fn encode(value: &JanxValue) -> Result<Vec<u8>, JanxError> {
     let prepared = value_to_json(value, &mut binaries, &mut offset)?;
     let json = serde_json::to_vec(&prepared)?;
     let appendix = concat_appendix(&binaries);
-    Ok(encode_frame(&json, &appendix))
+    let binary_count = binaries.len() as u32;
+    Ok(encode_frame(&json, &appendix, binary_count))
 }
 
 pub fn decode(data: &[u8]) -> Result<JanxValue, JanxError> {
     let frame = decode_frame(data)?;
     let parsed: Value = serde_json::from_slice(frame.json)?;
-    restore_from_json(&parsed, frame.appendix)
+    let mut markers_restored = 0usize;
+    let markers_total = frame.binary_count as usize;
+    restore_from_json(
+        &parsed,
+        frame.appendix,
+        &mut markers_restored,
+        markers_total,
+    )
 }
 
 fn value_to_json(
@@ -72,10 +80,26 @@ fn value_to_json(
     }
 }
 
-fn restore_from_json(value: &Value, appendix: &[u8]) -> Result<JanxValue, JanxError> {
-    if let Some(marker) = parse_marker_json(value) {
-        let bytes = read_appendix(appendix, marker)?;
-        return Ok(JanxValue::Binary(bytes.to_vec()));
+fn should_try_marker(
+    value: &Value,
+    markers_restored: usize,
+    markers_total: usize,
+) -> bool {
+    markers_restored < markers_total && matches!(value, Value::Object(_))
+}
+
+fn restore_from_json(
+    value: &Value,
+    appendix: &[u8],
+    markers_restored: &mut usize,
+    markers_total: usize,
+) -> Result<JanxValue, JanxError> {
+    if should_try_marker(value, *markers_restored, markers_total) {
+        if let Some(marker) = parse_marker_json(value) {
+            let bytes = read_appendix(appendix, marker)?;
+            *markers_restored += 1;
+            return Ok(JanxValue::Binary(bytes.to_vec()));
+        }
     }
 
     match value {
@@ -86,14 +110,22 @@ fn restore_from_json(value: &Value, appendix: &[u8]) -> Result<JanxValue, JanxEr
         Value::Array(items) => {
             let mut out = Vec::with_capacity(items.len());
             for item in items {
-                out.push(restore_from_json(item, appendix)?);
+                out.push(restore_from_json(
+                    item,
+                    appendix,
+                    markers_restored,
+                    markers_total,
+                )?);
             }
             Ok(JanxValue::Array(out))
         }
         Value::Object(map) => {
             let mut out = BTreeMap::new();
             for (key, item) in map {
-                out.insert(key.clone(), restore_from_json(item, appendix)?);
+                out.insert(
+                    key.clone(),
+                    restore_from_json(item, appendix, markers_restored, markers_total)?,
+                );
             }
             Ok(JanxValue::Object(out))
         }
@@ -135,5 +167,12 @@ mod tests {
         let frame = encode(&input).unwrap();
         let restored = decode(&frame).unwrap();
         assert_eq!(restored, input);
+    }
+
+    #[test]
+    fn roundtrip_empty_binary() {
+        let input = JanxValue::binary(Vec::new());
+        let frame = encode(&input).unwrap();
+        assert_eq!(decode(&frame).unwrap(), input);
     }
 }
