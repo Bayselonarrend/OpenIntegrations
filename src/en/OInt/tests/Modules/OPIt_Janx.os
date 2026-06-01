@@ -291,12 +291,12 @@ Procedure Janx_Benchmark()
     Result.Insert("JanxDeserializationWithoutBinMs", CurrentUniversalDateInMilliseconds() - Start);
     Result.Insert("JanxRestoredWithoutBin"         , JanxRestored);
 
-    JanxBuffer   = GetBinaryDataBufferFromBinaryData(JanxData);
-    JSONJanxSize = JanxBuffer.Get(0) * 16777216
-        + JanxBuffer.Get(1) * 65536
-        + JanxBuffer.Get(2) * 256
-        + JanxBuffer.Get(3);
-    Result.Insert("AppendixSize", JanxData.Size() - 4 - JSONJanxSize);
+    JanxReading  = New DataReader(JanxData);
+    JanxReading.ReadInt16(ByteOrder.BigEndian);
+    JSONJanxSize = JanxReading.ReadInt32(ByteOrder.BigEndian);
+    JanxReading.ReadInt32(ByteOrder.BigEndian);
+    JanxReading.Close();
+    Result.Insert("AppendixSize", JanxData.Size() - 10 - JSONJanxSize);
 
     OPI_TestDataRetrieval.Process(Result, "Janx", "Benchmark", , Original);
 

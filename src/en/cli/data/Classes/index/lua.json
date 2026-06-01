@@ -8,6 +8,7 @@
   {
    "name": "Public",
    "methods": [
+    "CallFunction",
     "ExecuteCodeFromFile",
     "ExecuteCodeFromString"
    ]
@@ -54,6 +55,35 @@
      "description": "Script file path",
      "default": null,
      "short": "-p"
+    }
+   ],
+   "region": "Public"
+  },
+  {
+   "name": "CallFunction",
+   "id": "CALLFUNCTION",
+   "description": "Calls a Lua function with arguments passed as an array",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--func",
+     "types": "String",
+     "description": "Function name or path in module.func format",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--args",
+     "types": "Array",
+     "description": "Call arguments (BinaryData allowed))",
+     "default": "Empty value",
+     "short": "-a"
     }
    ],
    "region": "Public"

@@ -91,7 +91,7 @@ Function CreateConnection(Val ConnectionString = "", Val Tls = "", Val Logging =
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -108,7 +108,7 @@ Function CreateConnection(Val ConnectionString = "", Val Tls = "", Val Logging =
     Connector.ConnectionString = ConnectionString;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JsonToStructure(Result, False);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result["result"], Connector, Result);
 
@@ -127,7 +127,7 @@ Function CloseConnection(Val Connection) Export
     If IsConnector(Connection) Then
 
         Result = Connection.Close();
-        Result = OPI_Tools.JsonToStructure(Result, False);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
 

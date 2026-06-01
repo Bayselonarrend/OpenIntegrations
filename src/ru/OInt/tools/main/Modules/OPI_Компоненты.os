@@ -45,6 +45,7 @@
 //@skip-check server-execution-safe-mode
 
 #Использовать "./internal"
+#Использовать "../../../formats/janx"
 
 
 #Область СлужебныйПрограммныйИнтерфейс
@@ -141,7 +142,7 @@
         OPI_ПреобразованиеТипов.ПолучитьСтроку(ПутьКСертификату);
 
         Результат = Компонета.SetTLS(ИспользоватьTls, ОтключитьВалидацию, ПутьКСертификату);
-        Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+        Результат = ДесериализоватьJanx(Результат);
 
     КонецЕсли;
 
@@ -183,6 +184,22 @@
 
     //@skip-check constructor-function-return-section
     Возврат СтруктураНастроек;
+
+КонецФункции
+
+#КонецОбласти
+
+#Область Janx
+
+Функция СериализоватьJanx(Знач Данные) Экспорт
+
+    Возврат OPI_Janx.СериализоватьДанные(Данные);
+
+КонецФункции
+
+Функция ДесериализоватьJanx(Знач Данные) Экспорт
+
+    Возврат OPI_Janx.ДесериализоватьДанные(Данные);
 
 КонецФункции
 
@@ -230,7 +247,7 @@
     OPI_ПреобразованиеТипов.ПолучитьБулево(КакСтрока);
 
     Результат = ОбъектСервера.GetLogs(ЧислоСобытий);
-    Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+    Результат = ДесериализоватьJanx(Результат);
 
     Если КакСтрока И Результат["result"] Тогда
         Результат = СтрСоединить(Результат["logs"], Символы.ПС);
@@ -500,6 +517,14 @@ EndFunction
 
 Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
     Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+EndFunction
+
+Function SerializeJanx(Val Data) Export
+    Return СериализоватьJanx(Data);
+EndFunction
+
+Function DesrializeJanx(Val Data) Export
+    Return ДесериализоватьJanx(Data);
 EndFunction
 
 Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export

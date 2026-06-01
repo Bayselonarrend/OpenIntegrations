@@ -129,7 +129,7 @@ Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging
     If ValueIsFilled(SettingsString) Then
 
         LogResult = TCPClient.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -138,7 +138,7 @@ Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging
     EndIf;
 
     Success = TCPClient.SetAddress(Address);
-    Success = OPI_Tools.JsonToStructure(Success);
+    Success = OPI_AddIns.DesrializeJanx(Success);
 
     If Not Success["result"] Then
         Return Success;
@@ -156,7 +156,7 @@ Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging
         ProxtString = OPI_Tools.JSONString(Proxy);
 
         Setup = TCPClient.SetProxySettings(ProxtString);
-        Setup = OPI_Tools.JsonToStructure(Setup);
+        Setup = OPI_AddIns.DesrializeJanx(Setup);
 
         If Not OPI_Tools.GetOr(Setup, "result", False) Then
             Return Setup;
@@ -394,15 +394,16 @@ EndFunction
 // Map Of KeyAndValue, Undefined - Error information or undefined if there is no error
 Function GetLastError(Val Connection) Export
 
-    Result = Connection.GetLastError();
+    ErrorText = Connection.GetLastError();
 
-    If ValueIsFilled(Result) Then
-        Result = OPI_Tools.JsonToStructure(Result);
-    Else
-        Result = Undefined;
+    If ValueIsFilled(ErrorText) Then
+        Result = New Map;
+        Result.Insert("result", False);
+        Result.Insert("error" , ErrorText);
+        Return Result;
     EndIf;
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 

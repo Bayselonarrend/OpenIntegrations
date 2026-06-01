@@ -73,7 +73,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
     If IsConnector(SSHConnection) Then
         Result = SSHConnection.ToSFTP();
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
     Else
         Return SSHConnection;
     EndIf;
@@ -141,7 +141,7 @@ Function UpdatePath(Val Connection, Val Path, Val NewPath, Val Overwrite = False
         OPI_TypeConversion.GetBoolean(Overwrite);
 
         Result = Connection.RenameObject(Path, NewPath, Overwrite);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -293,7 +293,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.ListDirectory(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
         ProcessListObtainResult(Result, Connection, Recursively);
 
@@ -330,7 +330,7 @@ Function CreateNewDirectory(Val Connection, Val Path, Val Permissions = 700) Exp
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.MakeDirectory(Path, Permissions);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -364,7 +364,7 @@ Function DeleteDirectory(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.RemoveDirectory(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -463,7 +463,7 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
             Result = Connection.UploadFile(File, Path);
         EndIf;
 
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -495,7 +495,7 @@ Function DeleteFile(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.RemoveFile(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -531,7 +531,7 @@ Function SaveFile(Val Connection, Val Path, Val FileName) Export
         OPI_Tools.RestoreEscapeSequences(FileName);
 
         Result = Connection.DownloadToFile(Path, FileName);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -572,7 +572,7 @@ Function GetFileData(Val Connection, Val Path) Export
             // BSLLS:MissingTemporaryFileDeletion-on
 
             Result = Connection.DownloadToFile(Path, TFN);
-            Result = OPI_Tools.JsonToStructure(Result);
+            Result = OPI_AddIns.DesrializeJanx(Result);
 
             If Result["result"] Then
 
@@ -587,7 +587,7 @@ Function GetFileData(Val Connection, Val Path) Export
             Data = Connection.DownloadToBuffer(Path);
 
             If TypeOf(Data) = Type("String") Then
-                Result      = OPI_Tools.JsonToStructure(Data);
+                Result      = OPI_AddIns.DesrializeJanx(Data);
             Else
                 Return Data;
             EndIf;
@@ -624,7 +624,7 @@ Function GetFileInformation(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.GetFileInfo(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -662,7 +662,7 @@ Function CheckCreateConnection(Connection)
     If Not IsSFTP Then
 
         Result     = Connection.ToSFTP();
-        Result     = OPI_Tools.JsonToStructure(Result);
+        Result     = OPI_AddIns.DesrializeJanx(Result);
         Connection = ?(Result["result"], Connection, Result);
 
     EndIf;

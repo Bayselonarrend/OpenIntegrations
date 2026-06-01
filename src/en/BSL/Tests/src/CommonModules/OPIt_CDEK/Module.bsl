@@ -258,9 +258,9 @@ Procedure CDEK_CreateOrder(FunctionParameters)
     Product.Insert("weight"  , 700);
     Product.Insert("url"     , "www.item.ru");
 
-    Product.Add(Product);
+    Products.Add(Product);
 
-    Package.Insert("items"  , Product);
+    Package.Insert("items"  , Products);
     Package.Insert("number" , "bar-001");
     Package.Insert("comment", "Packaging");
     Package.Insert("height" , 10);

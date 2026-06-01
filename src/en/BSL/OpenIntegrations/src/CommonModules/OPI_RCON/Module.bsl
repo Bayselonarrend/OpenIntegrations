@@ -95,7 +95,7 @@ Function CreateConnection(Val ConnectionParams, Val Logging = Undefined) Export
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -114,7 +114,7 @@ Function CreateConnection(Val ConnectionParams, Val Logging = Undefined) Export
     OPI_TypeConversion.GetNumber(WriteTimeout);
 
     Result = Connector.Connect(URL, Password, ReadTimeout, WriteTimeout);
-    Result = OPI_Tools.JsonToStructure(Result, False);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result["result"], Connector, Result);
 
@@ -148,7 +148,7 @@ Function ExecuteCommand(Val Command, Val Connection) Export
     OPI_TypeConversion.GetLine(Command);
 
     Result = Connector.Command(Command);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

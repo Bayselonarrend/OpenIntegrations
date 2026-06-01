@@ -924,7 +924,7 @@ Function ExecuteRequestViaGRPC(Val Connection, Val Request, Val Session)
     If OPI_GRPC.IsConnector(Connection) Then
         CloseConnection    = False;
         Connector          = Connection;
-        ConnectionSettings = OPI_Tools.JsonToStructure(Connector.GetSettings());
+        ConnectionSettings = OPI_AddIns.DesrializeJanx(Connector.GetSettings());
     Else
         CloseConnection    = True;
         Connector          = CreateGRPCConnection(Connection);
@@ -958,7 +958,7 @@ Function FormGRPCRequest(Val Connection, Val Request, Val Session)
     EndIf;
 
     If OPI_GRPC.IsConnector(Connection) Then
-        ConnectionSettings = OPI_Tools.JsonToStructure(Connection.GetSettings());
+        ConnectionSettings = OPI_AddIns.DesrializeJanx(Connection.GetSettings());
     Else
         ConnectionSettings = Connection;
     EndIf;

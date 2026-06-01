@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+
+description: Вызвать функцию и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Lua]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Вызвать функцию
+ Вызывает функцию Lua с аргументами, переданными массивом
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция ВызватьФункцию(Знач Lua, Знач ИмяФункции, Знач Аргументы = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Lua | --lua | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
+  | ИмяФункции | --func | Строка | &#x2714; | Имя функции или путь вида module.func |
+  | Аргументы | --args | Массив | &#x2716; | Аргументы вызова (допускаются ДвоичныеДанные) |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Произвольный - Результат вызова
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Параметр | Описание |
+  |---|---|
+  | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
+  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
+
+
+
+    
+
+
+
+

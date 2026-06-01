@@ -2791,6 +2791,10 @@
   "ExecuteCodeFromFile": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "CallFunction": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
  "OPI_MongoDB": {

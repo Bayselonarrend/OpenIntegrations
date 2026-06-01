@@ -52,7 +52,6 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -106,7 +105,7 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Und
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -121,7 +120,7 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Und
     EndIf;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JSONToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     If Not OPI_Tools.GetOr(Result, "result", False) Then
         Return Result;
@@ -162,7 +161,7 @@ Function CloseConnection(Val Connection) Export
     If IsConnector(Connection) Then
 
         Result = Connection.Disconnect();
-        Result = OPI_Tools.JsonToStructure(Result, False);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
 
@@ -203,7 +202,7 @@ Function SetMetadata(Val Connection, Val Metadata) Export
     MetadataAsString = OPI_Tools.JSONString(Metadata);
 
     Result = Connection.SetMetadata(MetadataAsString);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -242,9 +241,9 @@ Function ExecuteMethod(Val Connection
     EndIf;
 
     CallStructure = FormCallString(Connector, Service, Method, Timeout, Request);
-    BDCall        = OPI_Janx.SerializeData(CallStructure);
+    BDCall        = OPI_AddIns.SerializeJanx(CallStructure);
     ResultBD      = Connector.Call(BDCall);
-    Result        = OPI_Janx.DeserializeData(ResultBD);
+    Result        = OPI_AddIns.DesrializeJanx(ResultBD);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -397,7 +396,7 @@ Function GetServiceList(Val Connection, Val Tls = Undefined) Export
     EndIf;
 
     Result = Connector.ListServices();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -434,7 +433,7 @@ Function GetMethodList(Val Connection, Val Service, Val Tls = Undefined) Export
     OPI_TypeConversion.GetLine(Service);
 
     Result = Connector.ListMethods(Service);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -473,7 +472,7 @@ Function GetMethod(Val Connection, Val Service, Val Method, Val Tls = Undefined)
     OPI_TypeConversion.GetLine(Method);
 
     Result = Connector.GetMethodInfo(Service, Method);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     If CloseConnection Then
         CloseConnection(Connector);
@@ -574,10 +573,10 @@ Function SendMessage(Val Connection, Val StreamID, Val Request) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     ProcessedRequest = ProcessRequestBeforeSending(Connection, Request);
-    RequestBD        = OPI_Janx.SerializeData(ProcessedRequest);
+    RequestBD        = OPI_AddIns.SerializeJanx(ProcessedRequest);
 
     Result = Connection.SendMessage(StreamID, RequestBD);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -607,7 +606,7 @@ Function GetMessage(Val Connection, Val StreamID) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     ResultBD = Connection.GetNextMessage(StreamID);
-    Result   = OPI_Janx.DeserializeData(ResultBD);
+    Result   = OPI_AddIns.DesrializeJanx(ResultBD);
 
     Return Result;
 
@@ -637,7 +636,7 @@ Function CompleteSend(Val Connection, Val StreamID) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     Result = Connection.FinishSending(StreamID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -667,7 +666,7 @@ Function CloseStream(Val Connection, Val StreamID) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     Result = Connection.CloseStream(StreamID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -961,7 +960,7 @@ Function SetProto(Connector, Val Parameters)
             OPI_TypeConversion.GetLine(CurrentContent, True);
 
             Result = Connector.LoadProto(Proto.Key, CurrentContent);
-            Result = OPI_Tools.JSONToStructure(Result);
+            Result = OPI_AddIns.DesrializeJanx(Result);
 
             If Not Result["result"] Then
                 Return Result;
@@ -970,7 +969,7 @@ Function SetProto(Connector, Val Parameters)
         EndDo;
 
         Result = Connector.CompileProtos();
-        Result = OPI_Tools.JSONToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
         Result = New Structure("result", True);
@@ -1039,7 +1038,7 @@ Function InitializeStream(Val View
     EndIf;
 
     CallStructure = FormCallString(Connection, Service, Method, Timeout, Request);
-    BDCall        = OPI_Janx.SerializeData(CallStructure);
+    BDCall        = OPI_AddIns.SerializeJanx(CallStructure);
 
     If View    = "client" Then
         Result = Connection.StartClientStream(BDCall);
@@ -1049,7 +1048,7 @@ Function InitializeStream(Val View
         Result = Connection.StartBidiStream(BDCall);
     EndIf;
 
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

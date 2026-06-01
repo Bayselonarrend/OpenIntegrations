@@ -48,7 +48,6 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -266,7 +265,7 @@ Function SendData(Val Connection, Val Data, Val Timeout = Undefined) Export
     EndIf;
 
     Result = Connection.Send(Data, Timeout);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -303,7 +302,7 @@ Function ReceiveData(Val Connection, Val Timeout) Export
 
     ResultBD = Connection.Recv(Timeout);
 
-    Return OPI_Janx.DeserializeData(ResultBD);
+    Return OPI_AddIns.DesrializeJanx(ResultBD);
 
 EndFunction
 
@@ -359,7 +358,7 @@ Function Subscribe(Val Connection, Val Prefix) Export
     OPI_TypeConversion.GetLine(Prefix);
 
     Result = Connection.Subscribe(Prefix);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -386,7 +385,7 @@ Function CloseConnection(Val Connection) Export
     EndIf;
 
     Result = Connection.Close();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -438,7 +437,7 @@ Function InitializeConnector(Val AddressPort, Val View, Val Logging = Undefined)
     If ValueIsFilled(SettingsString) Then
 
         LogResult = ZMQ.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -474,7 +473,7 @@ Function ExecuteInitialization(Val Connector, Val AddressPort, Val View)
         Raise "Unsupported ZMQ initialization type!"
     EndIf;
 
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

@@ -45,6 +45,7 @@
 //@skip-check server-execution-safe-mode
 
 // #Use "./internal"
+// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -142,7 +143,7 @@ Function SetTls(Val AddIn, Val Tls) Export
         OPI_TypeConversion.GetLine(CertFilepath);
 
         Result = AddIn.SetTLS(UseTls, DisableValidation, CertFilepath);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = DesrializeJanx(Result);
 
     EndIf;
 
@@ -184,6 +185,22 @@ Function GetProxySettings(Val Address
 
     //@skip-check constructor-function-return-section
     Return SettingsStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region Janx
+
+Function SerializeJanx(Val Data) Export
+
+    Return OPI_Janx.SerializeData(Data);
+
+EndFunction
+
+Function DesrializeJanx(Val Data) Export
+
+    Return OPI_Janx.DeserializeData(Data);
 
 EndFunction
 
@@ -231,7 +248,7 @@ Function GetLog(Val ServerObject, Val AsString = False, Val EventCount = 100) Ex
     OPI_TypeConversion.GetBoolean(AsString);
 
     Result = ServerObject.GetLogs(EventCount);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = DesrializeJanx(Result);
 
     If AsString And Result["result"] Then
         Result = StrConcat(Result["logs"], Chars.LF);

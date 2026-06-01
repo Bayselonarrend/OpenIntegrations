@@ -43,7 +43,6 @@
 //@skip-check constructor-function-return-section
 
 // #Use "./internal"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -70,7 +69,7 @@ Function StartServer(Val Module, Val Port, Val PoolSize = 100, Val Logging = Und
     AddIn     = OPI_AddIns.GetAddIn(AddInName);
 
     Result = AddIn.Start(Port, PoolSize, SettingsString);
-    Result = OPI_Tools.JsonToStructure(Result, False);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result["result"], AddIn, Result);
 
@@ -85,7 +84,7 @@ Function StopServer(Val Module, Val ServerObject) Export
     Else
 
         Result = ServerObject.Stop();
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -113,7 +112,7 @@ Function GetNextConnectionData(Val Module
 
     EndIf;
 
-    Result = OPI_Janx.DeserializeData(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -141,7 +140,7 @@ Function GetConnectionData(Val Module
 
     EndIf;
 
-    Result = OPI_Janx.DeserializeData(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -157,7 +156,7 @@ Function SendData(Val Module, Val ServerObject, Val ConnectionID, Val Data) Expo
     OPI_TypeConversion.GetLine(ConnectionID);
 
     Result = ServerObject.SendMessage(ConnectionID, Data);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -178,7 +177,7 @@ Function CloseIncomingConnection(Val Module, Val ServerObject, Val ConnectionID,
         OPI_TypeConversion.GetBoolean(RemoveImmediately);
         Result = ServerObject.CloseConnection(ConnectionID, RemoveImmediately);
     EndIf;
-    Result     = OPI_Tools.JsonToStructure(Result);
+    Result     = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -193,7 +192,7 @@ Function CompleteSend(Val Module, Val ServerObject, Val ConnectionID) Export
     OPI_TypeConversion.GetLine(ConnectionID);
 
     Result = ServerObject.ShutdownWrite(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -208,7 +207,7 @@ Function FinishReceiving(Val Module, Val ServerObject, Val ConnectionID) Export
     OPI_TypeConversion.GetLine(ConnectionID);
 
     Result = ServerObject.ShutdownRead(ConnectionID);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -221,7 +220,7 @@ Function GetConnectionList(Val Module, Val ServerObject) Export
     EndIf;
 
     Result = ServerObject.ListConnections();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

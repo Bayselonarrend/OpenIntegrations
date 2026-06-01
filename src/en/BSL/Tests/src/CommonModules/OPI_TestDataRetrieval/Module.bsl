@@ -15208,13 +15208,17 @@ EndFunction
 
 Procedure CheckPrefixJanx(Val Data)
 
-    Buffer   = GetBinaryDataBufferFromBinaryData(Data);
-    JSONSize = Buffer.Get(0) * 16777216
-        + Buffer.Get(1) * 65536
-        + Buffer.Get(2) * 256
-        + Buffer.Get(3);
+    Reading = New DataReader(Data);
 
-    ExpectsThat(4 + JSONSize <= Data.Size()).Равно(True);
+    ExpectsThat(Reading.ReadInt16(ByteOrder.BigEndian)).Равно(1);
+
+    JSONSize = Reading.ReadInt32(ByteOrder.BigEndian);
+
+    ExpectsThat(Reading.ReadInt32(ByteOrder.BigEndian) >= 0).Равно(True);
+
+    Reading.Close();
+
+    ExpectsThat(10 + JSONSize <= Data.Size()).Равно(True);
 
 EndProcedure
 

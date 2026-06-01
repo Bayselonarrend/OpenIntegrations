@@ -89,7 +89,7 @@ Function CreateVM(Val Version, Val Logging = Undefined) Export
     If ValueIsFilled(SettingsString) Then
 
         LogResult = AddIn.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -123,10 +123,9 @@ Function ExecuteCodeFromString(Val Lua, Val Code) Export
 
      OPI_TypeConversion.GetLine(Code);
 
-    Result = AddIn.ExecuteString(Code);
-    Result = ResultFromJSON(Result);
+    ResultBD = AddIn.ExecuteString(Code);
 
-    Return Result["data"];
+    Return ResultFromJanx(ResultBD);
 
 EndFunction
 
@@ -164,10 +163,42 @@ Function ExecuteCodeFromFile(Val Lua, Val Path) Export
 
      EndIf;
 
-    Result = AddIn.ExecuteFile(ScriptFile.FullName);
-    Result = ResultFromJSON(Result);
+    ResultBD = AddIn.ExecuteFile(ScriptFile.FullName);
 
-    Return Result["data"];
+    Return ResultFromJanx(ResultBD);
+
+EndFunction
+
+// Call function
+// Calls a Lua function with arguments passed as an array
+//
+// Parameters:
+// Lua          - Arbitrary - Lua AddIn or Lua version to run             - lua
+// FunctionName - String    - Function name or path in module.func format - func
+// Arguments    - Array     - Call arguments (BinaryData allowed))        - args
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallFunction(Val Lua, Val FunctionName, Val Arguments = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(FunctionName);
+
+    If Arguments  = Undefined Then
+        Arguments = New Array;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Arguments);
+
+    BDArgs   = OPI_AddIns.SerializeJanx(Arguments);
+    ResultBD = AddIn.CallFunction(FunctionName, BDArgs);
+
+    Return ResultFromJanx(ResultBD);
 
 EndFunction
 
@@ -192,15 +223,15 @@ EndFunction
 
 #Region Internal
 
-Function ResultFromJSON(Val JSONString)
+Function ResultFromJanx(Val JanxData)
 
-    Result = OPI_Tools.JsonToStructure(JSONString);
+    Result = OPI_AddIns.DesrializeJanx(JanxData);
 
     If Not Result["result"] Then
         Raise Result["error"];
     EndIf;
 
-    Return Result;
+    Return Result["data"];
 
 EndFunction
 
@@ -220,6 +251,10 @@ EndFunction
 
 Function ВыполнитьКодИзФайла(Val Lua, Val Путь) Export
     Return ExecuteCodeFromFile(Lua, Путь);
+EndFunction
+
+Function ВызватьФункцию(Val Lua, Val ИмяФункции, Val Аргументы = Undefined) Export
+    Return CallFunction(Lua, ИмяФункции, Аргументы);
 EndFunction
 
 Function ЭтоVM(Val Значение) Export

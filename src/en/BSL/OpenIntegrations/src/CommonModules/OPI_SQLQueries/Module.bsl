@@ -43,7 +43,6 @@
 //@skip-check constructor-function-return-section
 
 // #Use "./internal"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -1225,10 +1224,10 @@ Function ProcessRecordsBatch(Val Module
 
     Try
 
-        OPI_Janx.SerializeData(BlanksArray).Write(BlanksPath);
+        OPI_AddIns.SerializeJanx(BlanksArray).Write(BlanksPath);
 
         Initialization = Connection.BatchQuery(BlanksPath, KeysPath);
-        Initialization = OPI_Tools.JsonToStructure(Initialization);
+        Initialization = OPI_AddIns.DesrializeJanx(Initialization);
 
         OPI_Tools.RemoveFileWithTry(BlanksPath, "Failed to delete query package file after installation");
 
@@ -1237,7 +1236,7 @@ Function ProcessRecordsBatch(Val Module
         EndIf;
 
         JanxBD = New BinaryData(KeysPath);
-        Keys   = OPI_Janx.DeserializeData(JanxBD);
+        Keys   = OPI_AddIns.DesrializeJanx(JanxBD);
 
         OPI_Tools.RemoveFileWithTry(KeysPath, "Failed to delete key file after initialization");
 
@@ -1795,7 +1794,7 @@ Function InitializeQuery(Val Connector, Val QueryText, Val ForceResult)
         QueryKey = Connector.InitQuery(QueryText, ForceResult, False);
     EndIf;
 
-    QueryKey = OPI_Tools.JSONToStructure(QueryKey);
+    QueryKey = OPI_AddIns.DesrializeJanx(QueryKey);
 
     Return QueryKey;
 
@@ -1813,7 +1812,7 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
         // BSLLS:MissingTemporaryFileDeletion-on
 
         Try
-            JanxBD  = OPI_Janx.SerializeData(Parameters);
+            JanxBD  = OPI_AddIns.SerializeJanx(Parameters);
             JanxBD.Write(TFN);
         Except
             ErrInfo = ErrorDescription();
@@ -1825,11 +1824,11 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
         OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query parameters file after execution");
 
     Else
-        JanxParameters = OPI_Janx.SerializeData(Parameters);
+        JanxParameters = OPI_AddIns.SerializeJanx(Parameters);
         Adding         = Connector.SetParamsFromString(QueryKey, JanxParameters);
     EndIf;
 
-    Adding = OPI_Tools.JsonToStructure(Adding);
+    Adding = OPI_AddIns.DesrializeJanx(Adding);
 
     Return Adding;
 
@@ -1837,7 +1836,7 @@ EndFunction
 
 Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
 
-    ExecutionResult = OPI_Tools.JsonToStructure(ExecutionResult);
+    ExecutionResult = OPI_AddIns.DesrializeJanx(ExecutionResult);
 
     If Not ExecutionResult["result"] Then
 
@@ -1860,18 +1859,18 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
             // BSLLS:MissingTemporaryFileDeletion-on
 
             Result = Connector.GetResultAsFile(QueryKey, TFN);
-            Result = OPI_Tools.JsonToStructure(Result);
+            Result = OPI_AddIns.DesrializeJanx(Result);
 
             If Result["result"] Then
                 JanxBD = New BinaryData(TFN);
-                Result = OPI_Janx.DeserializeData(JanxBD);
+                Result = OPI_AddIns.DesrializeJanx(JanxBD);
             EndIf;
 
             OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete result file after execution");
 
         Else
             ResultBD = Connector.GetResultAsString(QueryKey);
-            Result   = OPI_Janx.DeserializeData(ResultBD);
+            Result   = OPI_AddIns.DesrializeJanx(ResultBD);
         EndIf;
 
         Return Result;

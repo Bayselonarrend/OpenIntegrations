@@ -48,7 +48,6 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -131,7 +130,7 @@ Function CreateConnection(Val Address
         ProxtString = OPI_Tools.JSONString(Proxy);
 
         Setup = WSClient.SetProxySettings(ProxtString);
-        Setup = OPI_Tools.JsonToStructure(Setup);
+        Setup = OPI_AddIns.DesrializeJanx(Setup);
 
         If Not OPI_Tools.GetOr(Setup, "result", False) Then
             Return Setup;
@@ -146,7 +145,7 @@ Function CreateConnection(Val Address
         SettingsString = OPI_Tools.JSONString(Logging);
 
         LogResult = WSClient.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -161,7 +160,7 @@ Function CreateConnection(Val Address
 
         HeadersAsString = OPI_Tools.JSONString(Headers);
         Result          = WSClient.SetHeaders(HeadersAsString);
-        Result          = OPI_Tools.JsonToStructure(Result);
+        Result          = OPI_AddIns.DesrializeJanx(Result);
 
         If Not OPI_Tools.GetOr(Result, "result", False) Then
             Return Result;
@@ -170,7 +169,7 @@ Function CreateConnection(Val Address
     EndIf;
 
     Result = WSClient.Connect(Address);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result["result"], WSClient, Result);
 
@@ -194,7 +193,7 @@ Function CloseConnection(Val Connection, Val Code = 1000, Val Reason = "") Expor
         OPI_TypeConversion.GetLine(Reason);
 
         Result = Connection.Close(Code, Reason);
-        Result = OPI_Tools.JsonToStructure(Result, False);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
 
@@ -228,7 +227,7 @@ Function SendPing(Val Connection) Export
     EndIf;
 
     Result = Connection.SendPing();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -255,7 +254,7 @@ Function SendPong(Val Connection) Export
     EndIf;
 
     Result = Connection.SendPong();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -285,7 +284,7 @@ Function GetMessage(Val Connection, Val Timeout = 10000) Export
     OPI_TypeConversion.GetNumber(Timeout);
 
     ResultBD = Connection.ReceiveMessage(Timeout);
-    Result   = OPI_Janx.DeserializeData(ResultBD);
+    Result   = OPI_AddIns.DesrializeJanx(ResultBD);
 
     MessageType = OPI_Tools.GetOr(Result, "type", "");
     Data        = OPI_Tools.GetOr(Result, "data", "");
@@ -333,7 +332,7 @@ Function SendTextMessage(Val Connection, Val Text) Export
     OPI_TypeConversion.GetLine(Text, True);
 
     Result = Connection.SendText(Text);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -363,7 +362,7 @@ Function SendBinaryMessage(Val Connection, Val Data) Export
     OPI_TypeConversion.GetBinaryData(Data, True);
 
     Result = Connection.SendBinary(Data);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

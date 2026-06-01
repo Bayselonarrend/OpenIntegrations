@@ -49,7 +49,6 @@
 
 // #Use "../../../tools/main"
 // #Use "../../../tools/http"
-// #Use "../../../formats/janx"
 
 #If Not WebClient Then // !OPI
 
@@ -92,7 +91,7 @@ Function CreateConnection(Val ConnectionString, Val Logging = Undefined) Export
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult["result"] Then
             Return LogResult;
@@ -103,7 +102,7 @@ Function CreateConnection(Val ConnectionString, Val Logging = Undefined) Export
     Connector.ConnectionString = ConnectionString;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JsonToStructure(Result, False);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result["result"], Connector, Result);
 
@@ -122,7 +121,7 @@ Function CloseConnection(Val Connection) Export
     If IsConnector(Connection) Then
 
         Result = Connection.Disconnect();
-        Result = OPI_Tools.JsonToStructure(Result, False);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
 
@@ -266,10 +265,10 @@ Function ExecuteCommand(Val Connection
         OperationStructure.Insert("data", ProcessedData);
     EndIf;
 
-    JanxOperation = OPI_Janx.SerializeData(OperationStructure);
+    JanxOperation = OPI_AddIns.SerializeJanx(OperationStructure);
 
     ResultBD = Connector.Execute(JanxOperation);
-    Result   = OPI_Janx.DeserializeData(ResultBD);
+    Result   = OPI_AddIns.DesrializeJanx(ResultBD);
 
     If CloseConnection Then
         CloseConnection(Connector);

@@ -73,7 +73,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "", Val Logging = Undefin
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult[Result_] Then
             Return LogResult;
@@ -94,7 +94,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "", Val Logging = Undefin
     EndIf;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result[Result_], Connector, Result);
 
@@ -122,7 +122,7 @@ Function ExecuteCommand(Val Connection, Val Command) Export
         OPI_TypeConversion.GetLine(Command);
 
         Result = Connection.Execute(Command);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
         Output = Result["stdout"];
 
@@ -151,7 +151,7 @@ Function CloseConnection(Val Connection) Export
     EndIf;
 
     Result = Connection.Disconnect();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     //@skip-check constructor-function-return-section
     Return Result;
@@ -323,7 +323,7 @@ Function SetSettings(Val Connector, Val SSHSettings)
     SettingsString = OPI_Tools.JSONString(SSHSettings);
 
     Result = Connector.SetSettings(SettingsString);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -351,7 +351,7 @@ Function SetProxy(Val Connector, Val Proxy)
     ProxyString = OPI_Tools.JSONString(Proxy);
 
     Result = Connector.SetProxy(ProxyString);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 

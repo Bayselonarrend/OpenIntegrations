@@ -108,7 +108,7 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
     If ValueIsFilled(SettingsString) Then
 
         LogResult = Connector.SetLogger(SettingsString);
-        LogResult = OPI_Tools.JsonToStructure(LogResult, False);
+        LogResult = OPI_AddIns.DesrializeJanx(LogResult);
 
         If Not LogResult[Result_] Then
             Return LogResult;
@@ -117,7 +117,7 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
     EndIf;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JSONToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return ?(Result[Result_], Connector, Result);
 
@@ -169,7 +169,7 @@ Function CloseConnection(Val Connection) Export
     EndIf;
 
     Result = Connection.Close();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     //@skip-check constructor-function-return-section
     Return Result;
@@ -192,7 +192,7 @@ Function GetWelcomeMessage(Val Connection) Export
         Return Connection;
     Else
         Result = Connection.GetWelcomeMsg();
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
     EndIf;
 
     If CloseConnection Then
@@ -222,7 +222,7 @@ Function GetProtocolFeatureList(Val Connection) Export
         Return Connection;
     Else
         Result = Connection.GetFeatures();
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
     EndIf;
 
     If CloseConnection Then
@@ -284,7 +284,7 @@ Function ExecuteCustomCommand(Val Connection, Val CommandText) Export
         OPI_TypeConversion.GetLine(CommandText);
 
         Result = Connection.ExecuteCommand(CommandText);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -316,7 +316,7 @@ Function ExecuteArbitraryCommand(Val Connection, Val CommandText) Export
         OPI_TypeConversion.GetLine(CommandText);
 
         Result = Connection.ExecuteStandardCommand(CommandText);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -351,7 +351,7 @@ Function GetObjectSize(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.GetObjectSize(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -389,7 +389,7 @@ Function UpdatePath(Val Connection, Val Path, Val NewPath) Export
         OPI_TypeConversion.GetLine(NewPath);
 
         Result = Connection.RenameObject(Path, NewPath);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -582,7 +582,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
     Path = ?(Path = ".", "", Path);
 
     Result = Connection.ListDirectory(Path);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     If Result["result"] Then
 
@@ -627,7 +627,7 @@ Function CreateNewDirectory(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.MakeDirectory(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -691,7 +691,7 @@ Function GetCurrentDirectory(Val Connection) Export
         Return Connection;
     Else
         Result = Connection.GetCurrentDirectory();
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
     EndIf;
 
     If CloseConnection Then
@@ -725,7 +725,7 @@ Function ChangeCurrentDirectory(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.ChangeCurrentDirectory(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -800,7 +800,7 @@ Function UploadFile(Val Connection, Val File, Val Path) Export
             Result = ProcessingConnection.UploadFile(File, Path);
         EndIf;
 
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -835,7 +835,7 @@ Function DeleteFile(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.RemoveFile(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -874,7 +874,7 @@ Function SaveFile(Val Connection, Val Path, Val FileName) Export
         OPI_Tools.RestoreEscapeSequences(FileName);
 
         Result = Connection.DownloadToFile(Path, FileName);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
 
     EndIf;
 
@@ -918,7 +918,7 @@ Function GetFileData(Val Connection, Val Path) Export
             // BSLLS:MissingTemporaryFileDeletion-on
 
             Result = Connection.DownloadToFile(Path, TFN);
-            Result = OPI_Tools.JsonToStructure(Result);
+            Result = OPI_AddIns.DesrializeJanx(Result);
 
             If Result["result"] Then
 
@@ -933,7 +933,7 @@ Function GetFileData(Val Connection, Val Path) Export
             Data = Connection.DownloadToBuffer(Path);
 
             If TypeOf(Data) = Type("String") Then
-                Result      = OPI_Tools.JsonToStructure(Data);
+                Result      = OPI_AddIns.DesrializeJanx(Data);
             Else
                 Return Data;
             EndIf;
@@ -966,7 +966,7 @@ Function SetFtpSettings(Val Connector, Val FTPSettings)
     EndIf;
 
     Result = Connector.UpdateSettings(Settings);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -988,7 +988,7 @@ Function SetProxySettings(Val Connector, Val ProxySettings)
     EndIf;
 
     Result = Connector.UpdateProxy(Settings);
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -1122,7 +1122,7 @@ Function DeleteDirectoryRecursively(Val Connection, Val Path, Val DeleteCurrent 
 
     If Not Primary Or DeleteCurrent Then
         Result = Connection.RemoveDirectory(Path);
-        Result = OPI_Tools.JsonToStructure(Result);
+        Result = OPI_AddIns.DesrializeJanx(Result);
     Else
         Result = New Map;
         Result.Insert("result", True);
@@ -1158,7 +1158,7 @@ EndFunction
 Function GetConnectionCopy(Val Connection)
 
     Configuration = Connection.GetConfiguration();
-    Configuration = OPI_Tools.JSONToStructure(Configuration);
+    Configuration = OPI_AddIns.DesrializeJanx(Configuration);
 
     If Not Configuration["result"] Then
         Return Configuration;

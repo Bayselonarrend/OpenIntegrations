@@ -53,7 +53,7 @@
 // Data - Arbitrary - Serialization value - value
 //
 // Returns:
-// BinaryData - [u32 BE: JSON UTF-8 length][JSON][appendix: binary blocks]
+// BinaryData - [u16 BE: version][u32 BE: JSON length][u32 BE: markers count][JSON][appendix]
 Function SerializeData(Val Data) Export
 
     ArrayOfBinary = New Array;
@@ -62,12 +62,12 @@ Function SerializeData(Val Data) Export
     JSONBD        = GetBinaryDataFromString(ValueInJSONJanx(Prepared), "UTF-8");
     JSONSize      = JSONBD.Size();
 
-    PrefixBD = PackInt32BEJanx(JSONSize);
-
     DataStream = New MemoryStream();
     Record     = New DataWriter(DataStream);
 
-    Record.Write(PrefixBD);
+    Record.WriteInt16(JanxFormatVersion(), ByteOrder.BigEndian);
+    Record.WriteInt32(JSONSize             , ByteOrder.BigEndian);
+    Record.WriteInt32(ArrayOfBinary.Count(), ByteOrder.BigEndian);
     Record.Write(JSONBD);
 
     For Each Block In ArrayOfBinary Do
@@ -91,26 +91,38 @@ Function DeserializeData(Val Data) Export
 
     TotalSize = Data.Size();
 
-    If TotalSize < PrefixSizeJanx() Then
+    If TotalSize < JanxHeaderSize() Then
         Raise "Incorrect Janx format: data is too short";
     EndIf;
 
-    Buffer = GetBinaryDataBufferFromBinaryData(Data);
+    Reading = New DataReader(Data);
 
-    JSONSize  = ReadInt32BEJanx(Buffer, 0);
-    JSONStart = PrefixSizeJanx();
-    JSONEnd   = JSONStart + JSONSize;
+    Version = Reading.ReadInt16(ByteOrder.BigEndian);
 
-    If JSONEnd > TotalSize Then
+    If Version <> JanxFormatVersion() Then
+        Raise StrTemplate("Invalid Janx format: unsupported version %1", Version);
+    EndIf;
+
+    JSONSize     = Reading.ReadInt32(ByteOrder.BigEndian);
+    MarkersCount = Reading.ReadInt32(ByteOrder.BigEndian);
+
+    If JSONSize > TotalSize - JanxHeaderSize() Then
+        Reading.Close();
         Raise "Incorrect Janx format: JSON length exceeds data boundaries";
     EndIf;
 
-    JSONBuffer = Buffer.Read(JSONStart, JSONSize);
-    JSONString = GetStringFromBinaryDataBuffer(JSONBuffer, "UTF-8");
-    JSONTree   = ReadJSONJanx(JSONString);
-    Result     = RestoreValueFromJSONJanx(JSONTree, Buffer, JSONEnd);
+    JSONData    = Reading.Read(JSONSize);
+    AnnexBuffer = Reading.Read().GetBinaryDataBuffer();
+    Reading.Close();
 
-    Return Result;
+    JSONTree = ReadJSONJanx(JSONData);
+
+    Context = New Structure;
+    Context.Insert("AnnexBuffer"    , AnnexBuffer);
+    Context.Insert("MarkersTotal"   , MarkersCount);
+    Context.Insert("MarkersRestored", 0);
+
+    Return RestoreValueFromJSONJanx(JSONTree, Context);
 
 EndFunction
 
@@ -126,9 +138,21 @@ Function MarkerKeyBinaryJanx()
 
 EndFunction
 
+Function JanxFormatVersion()
+
+    Return 1;
+
+EndFunction
+
 Function PrefixSizeJanx()
 
-    Return 4;
+    Return 2;
+
+EndFunction
+
+Function JanxHeaderSize()
+
+    Return PrefixSizeJanx() + 8;
 
 EndFunction
 
@@ -197,10 +221,13 @@ Function ValueInJSONJanx(Val Data)
 
 EndFunction
 
-Function ReadJSONJanx(Val JSONString)
+Function ReadJSONJanx(Val JSONData)
 
     JSONReader = New JSONReader;
-    JSONReader.SetString(JSONString);
+
+    JSONReader.OpenStream(JSONData.OpenStreamForRead(), "UTF-8"); // !OPI
+    // !OInt JSONReader.SetString(GetStringFromBinaryData(JSONData.GetBinaryData(), "UTF-8"));
+
     Return ReadJSON(JSONReader, True);
 
 EndFunction
@@ -209,13 +236,16 @@ EndFunction
 
 #Region JSONRestoration
 
-Function RestoreValueFromJSONJanx(Val Data, Val Buffer, Val AppendixOffset)
+Function RestoreValueFromJSONJanx(Val Data, Context)
 
-    MarkerValue = Undefined;
-    JanxMarker  = TryGetJanxMarker(Data, MarkerValue);
+    If NeedToSearchJanxMarker(Data, Context) Then
 
-    If JanxMarker Then
-        Return ExtractBinaryByJanxMarker(MarkerValue, Buffer, AppendixOffset);
+        MarkerValue = Undefined;
+
+        If TryGetJanxMarker(Data, MarkerValue) Then
+            Return ExtractBinaryByJanxMarker(MarkerValue, Context);
+        EndIf;
+
     EndIf;
 
     DataType = TypeOf(Data);
@@ -225,7 +255,7 @@ Function RestoreValueFromJSONJanx(Val Data, Val Buffer, Val AppendixOffset)
         Result = New Array;
 
         For Each Element In Data Do
-            Result.Add(RestoreValueFromJSONJanx(Element, Buffer, AppendixOffset));
+            Result.Add(RestoreValueFromJSONJanx(Element, Context));
         EndDo;
 
         Return Result;
@@ -234,10 +264,11 @@ Function RestoreValueFromJSONJanx(Val Data, Val Buffer, Val AppendixOffset)
 
     If DataType = Type("Map") Then
 
-        Result = New Map;
+        Result = New(DataType);
 
         For Each Pair In Data Do
-            RestoredValue = RestoreValueFromJSONJanx(Pair.Value, Buffer, AppendixOffset); Result.Insert(Pair.Key, RestoredValue);
+            RestoredValue = RestoreValueFromJSONJanx(Pair.Value, Context);
+            Result.Insert(Pair.Key, RestoredValue);
         EndDo;
 
         Return Result;
@@ -248,71 +279,38 @@ Function RestoreValueFromJSONJanx(Val Data, Val Buffer, Val AppendixOffset)
 
 EndFunction
 
+Function NeedToSearchJanxMarker(Val Data, Context)
+
+    If Context.MarkersRestored = Context.MarkersTotal Then
+        Return False;
+    EndIf;
+
+    Return TypeOf(Data) = Type("Map");
+
+EndFunction
+
 Function TryGetJanxMarker(Val Data, MarkerValue)
 
-    MarkerValue = Undefined;
-    Key         = MarkerKeyBinaryJanx();
-    DataType    = TypeOf(Data);
-
-    If DataType = Type("Structure") Then
-
-        If Data.Property(Key, MarkerValue) Then
-            Return True;
-        EndIf;
-
-    ElsIf DataType = Type("Map") Then
-
-        If Data.Get(Key) <> Undefined Then
-            MarkerValue = Data[Key];
-            Return True;
-        EndIf;
-
-    EndIf;
-
-    Return False;
+    MarkerValue = Data.Get(MarkerKeyBinaryJanx());
+    Return MarkerValue <> Undefined;
 
 EndFunction
 
-Function ExtractBinaryByJanxMarker(Val Description, Val Buffer, Val AppendixOffset)
+Function ExtractBinaryByJanxMarker(Val Description, Context)
 
-    Start  = AppendixOffset + Description["s"];
+    Start  = Description["s"];
     Length = Description["l"];
 
-    If Length = 0 Then
-        Return GetBinaryDataFromString("");
+    If Length    = 0 Then
+        Result   = GetBinaryDataFromString("");
+    Else
+        Fragment = Context.AnnexBuffer.Read(Start, Length);
+        Result   = GetBinaryDataFromBinaryDataBuffer(Fragment);
     EndIf;
 
-    Fragment = Buffer.Read(Start, Length);
+    Context.MarkersRestored = Context.MarkersRestored + 1;
 
-    Return GetBinaryDataFromBinaryDataBuffer(Fragment);
-
-EndFunction
-
-#EndRegion
-
-#Region BinaryPrefix
-
-Function PackInt32BEJanx(Val Number)
-
-    Buffer = New BinaryDataBuffer(PrefixSizeJanx(), ByteOrder.BigEndian);
-
-    Buffer.Set(0, Int(Number / 16777216) % 256);
-    Buffer.Set(1, Int(Number / 65536) % 256);
-    Buffer.Set(2, Int(Number / 256) % 256);
-    Buffer.Set(3, Number % 256);
-
-    Return GetBinaryDataFromBinaryDataBuffer(Buffer);
-
-EndFunction
-
-Function ReadInt32BEJanx(Val Buffer, Val Position)
-
-    Byte0 = Buffer.Get(Position);
-    Byte1 = Buffer.Get(Position + 1);
-    Byte2 = Buffer.Get(Position + 2);
-    Byte3 = Buffer.Get(Position + 3);
-
-    Return Byte0 * 16777216 + Byte1 * 65536 + Byte2 * 256 + Byte3;
+    Return Result;
 
 EndFunction
 
