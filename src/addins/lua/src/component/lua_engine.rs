@@ -1,14 +1,13 @@
 use std::collections::HashMap;
 use std::path::Path;
+
+use common_janx::JanxValue;
 use mlua::{Lua, LuaOptions, StdLib, Value};
-use serde_json::Value as JsonValue;
 
 #[inline]
 fn default_std_libs() -> StdLib {
     #[cfg(feature = "luajit")]
     {
-        // `FFI` не входит в `ALL_SAFE`; для WinAPI из Lua нужен `require("ffi")`.
-        // Загрузка возможна только в «unsafe» VM — см. `Lua::unsafe_new_with` ниже.
         StdLib::ALL_SAFE | StdLib::FFI
     }
     #[cfg(not(feature = "luajit"))]
@@ -23,7 +22,6 @@ pub struct LuaEngine {
 }
 
 fn create_lua() -> Lua {
-    // `Lua::new()` включает safe mode и блокирует C-модули (`require` к .dll).
     unsafe { Lua::unsafe_new_with(default_std_libs(), LuaOptions::default()) }
 }
 
@@ -35,29 +33,28 @@ impl LuaEngine {
         })
     }
 
-    pub fn execute_string(&self, code: &str) -> Result<JsonValue, String> {
+    pub fn execute_string(&self, code: &str) -> Result<JanxValue, String> {
         match self.lua.load(code).eval::<Value>() {
-            Ok(result) => self.lua_value_to_json(result),
+            Ok(result) => self.lua_value_to_janx(result),
             Err(e) => Err(format!("Lua execution error: {}", e)),
         }
     }
 
-    pub fn execute_file<P: AsRef<Path>>(&self, path: P) -> Result<JsonValue, String> {
+    pub fn execute_file<P: AsRef<Path>>(&self, path: P) -> Result<JanxValue, String> {
         let code = std::fs::read_to_string(path)
             .map_err(|e| format!("Failed to read file: {}", e))?;
         self.execute_string(&code)
     }
 
-    pub fn execute_bytecode(&self, bytecode: &[u8]) -> Result<JsonValue, String> {
+    pub fn execute_bytecode(&self, bytecode: &[u8]) -> Result<JanxValue, String> {
         match self.lua.load(bytecode).eval::<Value>() {
-            Ok(result) => self.lua_value_to_json(result),
+            Ok(result) => self.lua_value_to_janx(result),
             Err(e) => Err(format!("Bytecode execution error: {}", e)),
         }
     }
 
-    pub fn execute_bytecode_file<P: AsRef<Path>>(&self, path: P) -> Result<JsonValue, String> {
-        let code = std::fs::read(path)
-            .map_err(|e| format!("Failed to read file: {}", e))?;
+    pub fn execute_bytecode_file<P: AsRef<Path>>(&self, path: P) -> Result<JanxValue, String> {
+        let code = std::fs::read(path).map_err(|e| format!("Failed to read file: {}", e))?;
         self.execute_bytecode(&code)
     }
 
@@ -69,7 +66,8 @@ impl LuaEngine {
     }
 
     pub fn compile_file_to_bytecode<P: AsRef<Path>>(&self, path: P) -> Result<Vec<u8>, String> {
-        let code = std::fs::read_to_string(path).map_err(|e| format!("Failed to read file: {}", e))?;
+        let code =
+            std::fs::read_to_string(path).map_err(|e| format!("Failed to read file: {}", e))?;
         self.compile_to_bytecode(&code)
     }
 
@@ -78,7 +76,6 @@ impl LuaEngine {
         self.packages.clear();
         Ok(())
     }
-
 }
 
 impl Default for LuaEngine {

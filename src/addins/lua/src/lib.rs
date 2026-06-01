@@ -87,13 +87,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         }
         6 => {
             let function_name = params[0].get_string().unwrap_or_default();
-            let args = params[1].get_string().unwrap_or_default();
-            Box::new(obj.call_function(&function_name, &args))
+            let args = params[1].get_blob().unwrap_or(&[]).to_vec();
+            Box::new(obj.call_function(&function_name, args))
         }
         7 => {
             let variable_name = params[0].get_string().unwrap_or_default();
-            let value = params[1].get_string().unwrap_or_default();
-            Box::new(obj.set_global(&variable_name, &value))
+            let value = params[1].get_blob().unwrap_or(&[]).to_vec();
+            Box::new(obj.set_global(&variable_name, value))
         }
         8 => {
             let variable_name = params[0].get_string().unwrap_or_default();

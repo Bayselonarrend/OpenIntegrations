@@ -1,5 +1,6 @@
 use std::sync::Arc;
 
+use common_janx::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{json_error, json_success};
 use serde_json::json;
@@ -17,19 +18,19 @@ impl AddIn {
         }
     }
 
-    pub fn execute_string(&self, code: &str) -> String {
+    pub fn execute_string(&self, code: &str) -> JanxValue {
         self.backend.execute_string(code.to_string())
     }
 
-    pub fn execute_file(&self, path: &str) -> String {
+    pub fn execute_file(&self, path: &str) -> JanxValue {
         self.backend.execute_file(path.to_string())
     }
 
-    pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> String {
+    pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> JanxValue {
         self.backend.execute_bytecode(bytecode)
     }
 
-    pub fn execute_bytecode_file(&self, path: &str) -> String {
+    pub fn execute_bytecode_file(&self, path: &str) -> JanxValue {
         self.backend.execute_bytecode_file(path.to_string())
     }
 
@@ -41,37 +42,35 @@ impl AddIn {
         self.backend.compile_file_to_bytecode(path.to_string())
     }
 
-    pub fn call_function(&self, function_name: &str, args_json: &str) -> String {
+    pub fn call_function(&self, function_name: &str, args_janx: Vec<u8>) -> JanxValue {
         self.backend
-            .call_function(function_name.to_string(), args_json.to_string())
+            .call_function(function_name.to_string(), args_janx)
     }
 
-    pub fn set_global(&self, variable_name: &str, value_json: &str) -> String {
+    pub fn set_global(&self, variable_name: &str, value_janx: Vec<u8>) -> JanxValue {
         self.backend
-            .set_global(variable_name.to_string(), value_json.to_string())
+            .set_global(variable_name.to_string(), value_janx)
     }
 
-    pub fn get_global(&self, variable_name: &str) -> String {
+    pub fn get_global(&self, variable_name: &str) -> JanxValue {
         self.backend.get_global(variable_name.to_string())
     }
 
-    pub fn add_package(&self, package_name: String, code: String) -> String {
+    pub fn add_package(&self, package_name: String, code: String) -> JanxValue {
         self.backend.add_package(package_name, code)
     }
 
-    pub fn load_package_from_file(&self, package_name: String, file_path: String) -> String {
-        self.backend.load_package_from_file(package_name, file_path)
+    pub fn load_package_from_file(&self, package_name: String, file_path: String) -> JanxValue {
+        self.backend
+            .load_package_from_file(package_name, file_path)
     }
 
-    pub fn get_packages(&self) -> String {
+    pub fn get_packages(&self) -> JanxValue {
         self.backend.get_packages()
     }
 
-    pub fn reset(&self) -> String {
-        match self.backend.reset() {
-            Ok(()) => json_success(),
-            Err(e) => json_error(&e),
-        }
+    pub fn reset(&self) -> JanxValue {
+        self.backend.reset()
     }
 
     pub fn set_logger(&mut self, logger_config: &str) -> String {

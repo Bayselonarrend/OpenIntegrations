@@ -2,8 +2,9 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
+use common_janx::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::json_error;
+use common_utils::utils::janx_error;
 
 use crate::worker::{self, WorkerCommand};
 
@@ -22,20 +23,20 @@ impl LynaBackend {
         }
     }
 
-    pub fn execute_string(&self, code: String) -> String {
-        self.call_json(|response| WorkerCommand::ExecuteString { code, response })
+    pub fn execute_string(&self, code: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::ExecuteString { code, response })
     }
 
-    pub fn execute_file(&self, path: String) -> String {
-        self.call_json(|response| WorkerCommand::ExecuteFile { path, response })
+    pub fn execute_file(&self, path: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::ExecuteFile { path, response })
     }
 
-    pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> String {
-        self.call_json(|response| WorkerCommand::ExecuteBytecode { bytecode, response })
+    pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::ExecuteBytecode { bytecode, response })
     }
 
-    pub fn execute_bytecode_file(&self, path: String) -> String {
-        self.call_json(|response| WorkerCommand::ExecuteBytecodeFile { path, response })
+    pub fn execute_bytecode_file(&self, path: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::ExecuteBytecodeFile { path, response })
     }
 
     pub fn compile_to_bytecode(&self, code: String) -> Result<Vec<u8>, String> {
@@ -46,51 +47,51 @@ impl LynaBackend {
         self.call_binary(|response| WorkerCommand::CompileFileToBytecode { path, response })
     }
 
-    pub fn call_function(&self, function_name: String, args_json: String) -> String {
-        self.call_json(|response| WorkerCommand::CallFunction {
+    pub fn call_function(&self, function_name: String, args_janx: Vec<u8>) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::CallFunction {
             function_name,
-            args_json,
+            args_janx,
             response,
         })
     }
 
-    pub fn set_global(&self, variable_name: String, value_json: String) -> String {
-        self.call_json(|response| WorkerCommand::SetGlobal {
+    pub fn set_global(&self, variable_name: String, value_janx: Vec<u8>) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::SetGlobal {
             variable_name,
-            value_json,
+            value_janx,
             response,
         })
     }
 
-    pub fn get_global(&self, variable_name: String) -> String {
-        self.call_json(|response| WorkerCommand::GetGlobal {
+    pub fn get_global(&self, variable_name: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::GetGlobal {
             variable_name,
             response,
         })
     }
 
-    pub fn add_package(&self, package_name: String, code: String) -> String {
-        self.call_json(|response| WorkerCommand::AddPackage {
+    pub fn add_package(&self, package_name: String, code: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::AddPackage {
             package_name,
             code,
             response,
         })
     }
 
-    pub fn load_package_from_file(&self, package_name: String, file_path: String) -> String {
-        self.call_json(|response| WorkerCommand::LoadPackageFromFile {
+    pub fn load_package_from_file(&self, package_name: String, file_path: String) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::LoadPackageFromFile {
             package_name,
             file_path,
             response,
         })
     }
 
-    pub fn get_packages(&self) -> String {
-        self.call_json(|response| WorkerCommand::GetPackages { response })
+    pub fn get_packages(&self) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::GetPackages { response })
     }
 
-    pub fn reset(&self) -> Result<(), String> {
-        self.call_result(|response| WorkerCommand::Reset { response })
+    pub fn reset(&self) -> JanxValue {
+        self.call_janx(|response| WorkerCommand::Reset { response })
     }
 
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {
@@ -110,13 +111,13 @@ impl LynaBackend {
         })
     }
 
-    fn call_json<F>(&self, build: F) -> String
+    fn call_janx<F>(&self, build: F) -> JanxValue
     where
-        F: FnOnce(Sender<String>) -> WorkerCommand,
+        F: FnOnce(Sender<JanxValue>) -> WorkerCommand,
     {
         match self.call_thread(build) {
-            Ok(json) => json,
-            Err(e) => json_error(&e),
+            Ok(value) => value,
+            Err(error) => janx_error(error),
         }
     }
 
@@ -145,7 +146,6 @@ impl LynaBackend {
             .ok_or_else(|| "Backend thread is not available".to_string())?;
         thread.call(build)
     }
-
 }
 
 impl Drop for LynaBackend {
@@ -155,4 +155,3 @@ impl Drop for LynaBackend {
         }
     }
 }
-

@@ -21,6 +21,7 @@ opt-level = "z"
 [dependencies]
 common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
+common-janx = { path = "../commons/common-janx" }
 common-logs = { path = "../commons/common-logs" }
 common-utils = { path = "../commons/common-utils" }
 mlua = { version = "0.10.5", default-features = false, features = ["vendored", "serialize"] }

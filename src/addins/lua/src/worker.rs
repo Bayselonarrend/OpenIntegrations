@@ -2,28 +2,29 @@ use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
+use common_janx::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::json_error;
-use serde_json::{json, Value as JsonValue};
+use common_utils::utils::{janx_error, janx_success};
 
+use crate::component::janx_convert::{parse_janx_args, parse_janx_payload};
 use crate::component::lua_engine::LuaEngine;
 
 pub enum WorkerCommand {
     ExecuteString {
         code: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ExecuteFile {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ExecuteBytecode {
         bytecode: Vec<u8>,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     ExecuteBytecodeFile {
         path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     CompileToBytecode {
         code: String,
@@ -35,33 +36,33 @@ pub enum WorkerCommand {
     },
     CallFunction {
         function_name: String,
-        args_json: String,
-        response: Sender<String>,
+        args_janx: Vec<u8>,
+        response: Sender<JanxValue>,
     },
     SetGlobal {
         variable_name: String,
-        value_json: String,
-        response: Sender<String>,
+        value_janx: Vec<u8>,
+        response: Sender<JanxValue>,
     },
     GetGlobal {
         variable_name: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     AddPackage {
         package_name: String,
         code: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     LoadPackageFromFile {
         package_name: String,
         file_path: String,
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     GetPackages {
-        response: Sender<String>,
+        response: Sender<JanxValue>,
     },
     Reset {
-        response: Sender<Result<(), String>>,
+        response: Sender<JanxValue>,
     },
     SetLogger {
         logger: Arc<Logger>,
@@ -90,83 +91,71 @@ impl Session {
     }
 }
 
+fn wrap_data(result: Result<JanxValue, String>) -> JanxValue {
+    match result {
+        Ok(data) => janx_success(Some(data), Some("data")),
+        Err(error) => janx_error(error),
+    }
+}
+
 pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
     SyncBackendThread::spawn("opi_lyna_backend", move |rx| {
         let mut session = match Session::new() {
             Ok(session) => session,
-            Err(_) => return,
+            Err(error) => {
+                eprintln!("Failed to initialize Lua backend: {}", error);
+                return;
+            }
         };
 
         while let Ok(cmd) = rx.recv() {
             match cmd {
                 WorkerCommand::ExecuteString { code, response } => {
                     session.log("ExecuteString called");
-                    let result = session
-                        .engine
-                        .execute_string(&code)
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
-                    let _ = response.send(result);
+                    let _ = response.send(wrap_data(session.engine.execute_string(&code)));
                 }
                 WorkerCommand::ExecuteFile { path, response } => {
                     session.log("ExecuteFile called");
-                    let result = session
-                        .engine
-                        .execute_file(&path)
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
-                    let _ = response.send(result);
+                    let _ = response.send(wrap_data(session.engine.execute_file(&path)));
                 }
                 WorkerCommand::ExecuteBytecode { bytecode, response } => {
                     session.log("ExecuteBytecode called");
-                    let result = session
-                        .engine
-                        .execute_bytecode(&bytecode)
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
-                    let _ = response.send(result);
+                    let _ = response.send(wrap_data(session.engine.execute_bytecode(&bytecode)));
                 }
                 WorkerCommand::ExecuteBytecodeFile { path, response } => {
                     session.log("ExecuteBytecodeFile called");
-                    let result = session
-                        .engine
-                        .execute_bytecode_file(&path)
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
-                    let _ = response.send(result);
+                    let _ = response.send(wrap_data(session.engine.execute_bytecode_file(&path)));
                 }
                 WorkerCommand::CompileToBytecode { code, response } => {
                     session.log("CompileToBytecode called");
-                    let result = session.engine.compile_to_bytecode(&code);
-                    let _ = response.send(result);
+                    let _ = response.send(session.engine.compile_to_bytecode(&code));
                 }
                 WorkerCommand::CompileFileToBytecode { path, response } => {
                     session.log("CompileFileToBytecode called");
-                    let result = session.engine.compile_file_to_bytecode(&path);
-                    let _ = response.send(result);
+                    let _ = response.send(session.engine.compile_file_to_bytecode(&path));
                 }
                 WorkerCommand::CallFunction {
                     function_name,
-                    args_json,
+                    args_janx,
                     response,
                 } => {
                     session.log("CallFunction called");
-                    let result = parse_json_array(&args_json)
+                    let result = parse_janx_args(&args_janx)
                         .and_then(|args| session.engine.call_function(&function_name, args))
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
+                        .map(|value| janx_success(Some(value), Some("data")))
+                        .unwrap_or_else(janx_error);
                     let _ = response.send(result);
                 }
                 WorkerCommand::SetGlobal {
                     variable_name,
-                    value_json,
+                    value_janx,
                     response,
                 } => {
                     session.log("SetGlobal called");
-                    let result = parse_data_wrapper(&value_json)
+                    let result = parse_janx_payload(&value_janx)
                         .and_then(|value| session.engine.set_global(&variable_name, value))
-                        .map(|_| json!({"result": true}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
+                        .map(|_| janx_success(None, None))
+                        .unwrap_or_else(janx_error);
                     let _ = response.send(result);
                 }
                 WorkerCommand::GetGlobal {
@@ -177,8 +166,8 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                     let result = session
                         .engine
                         .get_global(&variable_name)
-                        .map(|value| json!({"result": true, "data": value}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
+                        .map(|value| janx_success(Some(value), Some("data")))
+                        .unwrap_or_else(janx_error);
                     let _ = response.send(result);
                 }
                 WorkerCommand::AddPackage {
@@ -190,8 +179,8 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                     let result = session
                         .engine
                         .add_package(package_name, code)
-                        .map(|_| json!({"result": true}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
+                        .map(|_| janx_success(None, None))
+                        .unwrap_or_else(janx_error);
                     let _ = response.send(result);
                 }
                 WorkerCommand::LoadPackageFromFile {
@@ -203,19 +192,25 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                     let result = session
                         .engine
                         .load_package_from_file(package_name, &file_path)
-                        .map(|_| json!({"result": true}).to_string())
-                        .unwrap_or_else(|e| json_error(&e));
+                        .map(|_| janx_success(None, None))
+                        .unwrap_or_else(janx_error);
                     let _ = response.send(result);
                 }
                 WorkerCommand::GetPackages { response } => {
                     session.log("GetPackages called");
-                    let result =
-                        json!({"result": true, "data": session.engine.get_packages()}).to_string();
-                    let _ = response.send(result);
+                    let _ = response.send(janx_success(
+                        Some(session.engine.get_packages()),
+                        Some("data"),
+                    ));
                 }
                 WorkerCommand::Reset { response } => {
                     session.log("Reset called");
-                    let _ = response.send(session.engine.reset());
+                    let result = session
+                        .engine
+                        .reset()
+                        .map(|_| janx_success(None, None))
+                        .unwrap_or_else(janx_error);
+                    let _ = response.send(result);
                 }
                 WorkerCommand::SetLogger { logger, response } => {
                     session.logger = Some(logger);
@@ -229,19 +224,4 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
             }
         }
     })
-}
-
-fn parse_json_array(args_json: &str) -> Result<Vec<JsonValue>, String> {
-    serde_json::from_str(args_json).map_err(|e| format!("Invalid JSON arguments: {}", e))
-}
-
-fn parse_data_wrapper(value_json: &str) -> Result<JsonValue, String> {
-    let value: JsonValue =
-        serde_json::from_str(value_json).map_err(|e| format!("Invalid JSON value: {}", e))?;
-    match value {
-        JsonValue::Object(mut object) => object
-            .remove("data")
-            .ok_or_else(|| "Missing 'data' key in value object".to_string()),
-        _ => Err("Value must be an object with 'data' key".to_string()),
-    }
 }
