@@ -82,14 +82,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -97,14 +97,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "chrono",
  "serde",
@@ -113,7 +113,7 @@ dependencies = [
 
 [[package]]
 name = "common-server"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "common-backend",
  "common-core",
@@ -129,7 +129,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.1.0"
+version = "2.2.0"
 dependencies = [
  "common-janx",
  "serde_json",

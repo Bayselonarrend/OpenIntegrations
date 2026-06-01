@@ -97,9 +97,9 @@ impl AddIn {
         }
     }
 
-    pub fn get_result_as_janx(&self, key: &str) -> JanxValue {
+    pub fn get_result(&self, key: &str) -> JanxValue {
         self.datasets
-            .result_as_janx(key)
+            .result(key)
             .unwrap_or_else(|e| janx_error(&e))
     }
 

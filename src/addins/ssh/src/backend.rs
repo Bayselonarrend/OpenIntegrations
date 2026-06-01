@@ -147,11 +147,11 @@ impl SshBackend {
     }
 
     pub fn make_sftp(&self) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::ToSftp { response })
+        self.call(|response| WorkerCommand::ToSftp { response })
     }
 
     pub fn make_directory(&self, path: &str, mode: i32) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::MakeDirectory {
+        self.call(|response| WorkerCommand::MakeDirectory {
             path: path.to_string(),
             mode,
             response,
@@ -159,21 +159,21 @@ impl SshBackend {
     }
 
     pub fn remove_directory(&self, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::RemoveDirectory {
+        self.call(|response| WorkerCommand::RemoveDirectory {
             path: path.to_string(),
             response,
         })
     }
 
     pub fn list_directory(&self, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::ListDirectory {
+        self.call(|response| WorkerCommand::ListDirectory {
             path: path.to_string(),
             response,
         })
     }
 
     pub fn upload_file(&self, file: &str, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::UploadFile {
+        self.call(|response| WorkerCommand::UploadFile {
             file: file.to_string(),
             path: path.to_string(),
             response,
@@ -181,7 +181,7 @@ impl SshBackend {
     }
 
     pub fn upload_data(&self, data: Vec<u8>, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::UploadData {
+        self.call(|response| WorkerCommand::UploadData {
             data,
             path: path.to_string(),
             response,
@@ -189,7 +189,7 @@ impl SshBackend {
     }
 
     pub fn delete_file(&self, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::RemoveFile {
+        self.call(|response| WorkerCommand::RemoveFile {
             path: path.to_string(),
             response,
         })
@@ -209,7 +209,7 @@ impl SshBackend {
     }
 
     pub fn download_to_file(&self, path: &str, filepath: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::DownloadToFile {
+        self.call(|response| WorkerCommand::DownloadToFile {
             path: path.to_string(),
             filepath: filepath.to_string(),
             response,
@@ -235,7 +235,7 @@ impl SshBackend {
     }
 
     pub fn rename_object(&self, path: &str, new_path: &str, overwrite: bool) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::RenameObject {
+        self.call(|response| WorkerCommand::RenameObject {
             path: path.to_string(),
             new_path: new_path.to_string(),
             overwrite,
@@ -244,7 +244,7 @@ impl SshBackend {
     }
 
     pub fn get_file_info(&self, path: &str) -> Result<JanxValue, String> {
-        self.call_janx(|response| WorkerCommand::GetFileInfo {
+        self.call(|response| WorkerCommand::GetFileInfo {
             path: path.to_string(),
             response,
         })
@@ -256,7 +256,7 @@ impl SshBackend {
         }
     }
 
-    fn call_janx<F>(&self, build: F) -> Result<JanxValue, String>
+    fn call<F>(&self, build: F) -> Result<JanxValue, String>
     where
         F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {

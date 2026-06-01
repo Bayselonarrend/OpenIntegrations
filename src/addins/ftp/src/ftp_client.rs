@@ -158,7 +158,7 @@ impl FtpClient {
                         }
                     )
                 }
-                let data: Vec<JanxValue> = objects.iter().map(ftp_object_janx).collect();
+                let data: Vec<JanxValue> = objects.iter().map(ftp_object_value).collect();
                 janx!({
                     "result": true,
                     "count": count,
@@ -491,7 +491,7 @@ where
     }
 }
 
-fn ftp_object_janx(obj: &FtpObject) -> JanxValue {
+fn ftp_object_value(obj: &FtpObject) -> JanxValue {
     janx!({
         "name": obj.name.clone(),
         "is_directory": obj.is_directory,

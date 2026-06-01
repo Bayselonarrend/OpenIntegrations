@@ -42,7 +42,7 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, JanxValue) {
             None,
             ConnectionResponse::new(false)
                 .with_error(format!("Handshake error: {}", e))
-                .to_janx(),
+                .to_value(),
         );
     }
 
@@ -148,5 +148,5 @@ pub fn establish(conf: &SshConf) -> (Option<Session>, JanxValue) {
         response = response.with_keyboard_info(prompts, cb_count, resp_count);
     }
 
-    (session, response.to_janx())
+    (session, response.to_value())
 }

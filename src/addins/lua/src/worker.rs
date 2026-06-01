@@ -6,7 +6,7 @@ use common_janx::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_success};
 
-use crate::component::janx_convert::{parse_janx_args, parse_janx_payload};
+use crate::component::janx_convert::{parse_args, parse_payload};
 use crate::component::lua_engine::LuaEngine;
 
 pub enum WorkerCommand {
@@ -140,7 +140,7 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                     response,
                 } => {
                     session.log("CallFunction called");
-                    let result = parse_janx_args(&args_janx)
+                    let result = parse_args(&args_janx)
                         .and_then(|args| session.engine.call_function(&function_name, args))
                         .map(|value| janx_success(Some(value), Some("data")))
                         .unwrap_or_else(janx_error);
@@ -152,7 +152,7 @@ pub fn spawn_thread() -> Result<SyncBackendThread<WorkerCommand>, String> {
                     response,
                 } => {
                     session.log("SetGlobal called");
-                    let result = parse_janx_payload(&value_janx)
+                    let result = parse_payload(&value_janx)
                         .and_then(|value| session.engine.set_global(&variable_name, value))
                         .map(|_| janx_success(None, None))
                         .unwrap_or_else(janx_error);

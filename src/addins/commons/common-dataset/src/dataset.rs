@@ -53,7 +53,7 @@ impl Datasets {
         }
     }
 
-    pub fn result_as_janx(&self, key: &str) -> Result<JanxValue, String> {
+    pub fn result(&self, key: &str) -> Result<JanxValue, String> {
         let (_, query_data) = self
             .data
             .remove(key)
@@ -66,7 +66,7 @@ impl Datasets {
     }
 
     pub fn result_as_file(&self, key: &str, filepath: &str) -> Result<(), String> {
-        let janx_data = self.result_as_janx(key)?;
+        let janx_data = self.result(key)?;
         let encoded = encode(&janx_data).map_err(|e| format!("Janx encoding failed: {}", e))?;
 
         fs::write(filepath, encoded).map_err(|e| format!("Failed to write file: {}", e))?;
@@ -83,8 +83,8 @@ impl Datasets {
         self.set_params(key, value)
     }
 
-    pub fn params_from_janx(&self, key: &str, value: JanxValue) -> Result<(), String> {
-        self.set_params(key, value)
+    pub fn set_params(&self, key: &str, value: JanxValue) -> Result<(), String> {
+        self.apply_params(key, value)
     }
 
     pub fn batch_query_init(&self, input_file: &str, output_file: &str) -> Result<(), String> {
@@ -121,7 +121,7 @@ impl Datasets {
 
             let key = self.init_query(&text, force_result, false)?;
 
-            self.set_params(&key, JanxValue::Array(params))?;
+            self.apply_params(&key, JanxValue::Array(params))?;
 
             keys.push(JanxValue::String(key));
         }
@@ -151,7 +151,7 @@ impl Datasets {
         }
     }
 
-    fn set_params(&self, key: &str, value: JanxValue) -> Result<(), String> {
+    fn apply_params(&self, key: &str, value: JanxValue) -> Result<(), String> {
         if let Some(mut entry) = self.data.get_mut(key) {
             match value {
                 JanxValue::Array(arr) => entry.params = arr,

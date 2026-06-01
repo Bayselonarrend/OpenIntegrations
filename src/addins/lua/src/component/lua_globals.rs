@@ -17,6 +17,6 @@ impl LuaEngine {
             .globals()
             .get(name)
             .map_err(|e| format!("Failed to get global '{}': {}", name, e))?;
-        self.lua_value_to_janx(value)
+        self.lua_to_value(value)
     }
 }

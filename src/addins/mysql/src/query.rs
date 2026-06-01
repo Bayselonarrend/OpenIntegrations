@@ -19,7 +19,7 @@ pub fn execute(
         let mut rows: Vec<mysql::Row> = conn
             .exec(text, params_array)
             .map_err(|e| e.to_string())?;
-        Ok(Some(rows_to_janx_array(&mut rows)?))
+        Ok(Some(rows_to_values(&mut rows)?))
     } else if params_array.is_empty() {
         conn.query_drop(text).map_err(|e| e.to_string())?;
         Ok(None)
@@ -30,7 +30,7 @@ pub fn execute(
     }
 }
 
-fn rows_to_janx_array(rows: &mut Vec<mysql::Row>) -> Result<Vec<JanxValue>, String> {
+fn rows_to_values(rows: &mut Vec<mysql::Row>) -> Result<Vec<JanxValue>, String> {
     let mut janx_array = Vec::new();
 
     for row in rows {
@@ -39,7 +39,7 @@ fn rows_to_janx_array(rows: &mut Vec<mysql::Row>) -> Result<Vec<JanxValue>, Stri
             let column_name = column.name_str().to_string();
             let value = match row.get::<Option<mysql::Value>, usize>(i) {
                 Some(mysql_value) => match mysql_value {
-                    Some(value) => from_sql_to_janx(value, column),
+                    Some(value) => from_sql_value(value, column),
                     None => JanxValue::Null,
                 },
                 None => JanxValue::Null,
@@ -51,7 +51,7 @@ fn rows_to_janx_array(rows: &mut Vec<mysql::Row>) -> Result<Vec<JanxValue>, Stri
     Ok(janx_array)
 }
 
-fn from_sql_to_janx(value: mysql::Value, column: &Column) -> JanxValue {
+fn from_sql_value(value: mysql::Value, column: &Column) -> JanxValue {
     match value {
         mysql::Value::NULL => JanxValue::Null,
         mysql::Value::Int(i) => JanxValue::Number(i.into()),
@@ -201,19 +201,19 @@ fn process_mysql_params(json_array: &[JanxValue]) -> Result<Vec<mysql::Value>, S
                             Some(value_str) => mysql::Value::Bytes(value_str.as_bytes().to_vec()),
                             None => mysql::Value::NULL,
                         },
-                        _ => janx_to_mysql_value(item),
+                        _ => value_to_mysql(item),
                     }
                 } else {
                     mysql::Value::NULL
                 }
             }
-            _ => janx_to_mysql_value(item),
+            _ => value_to_mysql(item),
         })
     }
     Ok(result)
 }
 
-fn janx_to_mysql_value(value: &JanxValue) -> mysql::Value {
+fn value_to_mysql(value: &JanxValue) -> mysql::Value {
     match value {
         JanxValue::Null => mysql::Value::NULL,
         JanxValue::Bool(b) => mysql::Value::Int(if *b { 1 } else { 0 }),

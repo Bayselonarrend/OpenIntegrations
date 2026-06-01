@@ -24,7 +24,7 @@ pub enum WorkerCommand {
         response: Sender<Result<(), String>>,
     },
     Call {
-        params_janx: JanxValue,
+        params: JanxValue,
         response: Sender<JanxValue>,
     },
     LoadProto {
@@ -52,15 +52,15 @@ pub enum WorkerCommand {
         response: Sender<JanxValue>,
     },
     CallServerStream {
-        params_janx: JanxValue,
+        params: JanxValue,
         response: Sender<JanxValue>,
     },
     StartClientStream {
-        params_janx: JanxValue,
+        params: JanxValue,
         response: Sender<JanxValue>,
     },
     StartBidiStream {
-        params_janx: JanxValue,
+        params: JanxValue,
         response: Sender<JanxValue>,
     },
     SendMessage {
@@ -148,8 +148,8 @@ pub fn spawn_thread(
                             session.state.disconnect();
                             let _ = response.send(Ok(()));
                         }
-                        WorkerCommand::Call { params_janx, response } => {
-                            let params = match CallParams::from_janx(&params_janx) {
+                        WorkerCommand::Call { params, response } => {
+                            let params = match CallParams::from_value(&params) {
                                 Ok(p) => p,
                                 Err(e) => {
                                     let _ = response.send(janx_error(e));
@@ -255,7 +255,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::CallServerStream { params_janx, response } => {
+                        WorkerCommand::CallServerStream { params, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -263,7 +263,7 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
+                                let params = match streaming_caller::StreamCallParams::from_value(&params) {
                                     Ok(p) => p,
                                     Err(e) => {
                                         let _ = response.send(janx_error(e));
@@ -290,7 +290,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::StartClientStream { params_janx, response } => {
+                        WorkerCommand::StartClientStream { params, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -298,7 +298,7 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
+                                let params = match streaming_caller::StreamCallParams::from_value(&params) {
                                     Ok(p) => p,
                                     Err(e) => {
                                         let _ = response.send(janx_error(e));
@@ -325,7 +325,7 @@ pub fn spawn_thread(
                             };
                             let _ = response.send(response_msg);
                         }
-                        WorkerCommand::StartBidiStream { params_janx, response } => {
+                        WorkerCommand::StartBidiStream { params, response } => {
                             use crate::streaming_caller;
 
                             let result = if !session.state.connected {
@@ -333,7 +333,7 @@ pub fn spawn_thread(
                             } else if let (Some(channel), Some(descriptor_pool)) =
                                 (&session.state.channel, &session.state.descriptor_pool)
                             {
-                                let params = match streaming_caller::StreamCallParams::from_janx(&params_janx) {
+                                let params = match streaming_caller::StreamCallParams::from_value(&params) {
                                     Ok(p) => p,
                                     Err(e) => {
                                         let _ = response.send(janx_error(e));

@@ -35,7 +35,7 @@ impl LuaEngine {
 
     pub fn execute_string(&self, code: &str) -> Result<JanxValue, String> {
         match self.lua.load(code).eval::<Value>() {
-            Ok(result) => self.lua_value_to_janx(result),
+            Ok(result) => self.lua_to_value(result),
             Err(e) => Err(format!("Lua execution error: {}", e)),
         }
     }
@@ -48,7 +48,7 @@ impl LuaEngine {
 
     pub fn execute_bytecode(&self, bytecode: &[u8]) -> Result<JanxValue, String> {
         match self.lua.load(bytecode).eval::<Value>() {
-            Ok(result) => self.lua_value_to_janx(result),
+            Ok(result) => self.lua_to_value(result),
             Err(e) => Err(format!("Bytecode execution error: {}", e)),
         }
     }

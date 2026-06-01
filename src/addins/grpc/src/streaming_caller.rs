@@ -11,7 +11,7 @@ use tonic::{Request, Streaming};
 use crate::ack_stream::AckStream;
 use crate::grpc_caller::{apply_metadata, create_request_message, CallParams};
 use crate::identity_codec::IdentityCodec;
-use crate::message_converter::{dynamic_message_to_janx, janx_to_dynamic_message};
+use crate::message_converter::{dynamic_message_to_value, value_to_dynamic_message};
 use crate::stream_manager::{StreamInfo, StreamManager, StreamMessage};
 
 #[derive(Debug)]
@@ -23,8 +23,8 @@ pub struct StreamCallParams {
 }
 
 impl StreamCallParams {
-    pub fn from_janx(value: &JanxValue) -> Result<Self, String> {
-        CallParams::from_janx(value).map(|p| Self {
+    pub fn from_value(value: &JanxValue) -> Result<Self, String> {
+        CallParams::from_value(value).map(|p| Self {
             service: p.service,
             method: p.method,
             request: p.request,
@@ -297,7 +297,7 @@ pub async fn send_stream_message(
     message: &JanxValue,
 ) -> Result<(), String> {
     let input_descriptor = stream_manager.get_input_descriptor(stream_id).await?;
-    let dynamic_message = janx_to_dynamic_message(message, &input_descriptor)?;
+    let dynamic_message = value_to_dynamic_message(message, &input_descriptor)?;
     stream_manager
         .send_message(stream_id, dynamic_message)
         .await
@@ -309,7 +309,7 @@ pub async fn get_next_message(
 ) -> Result<JanxValue, String> {
     match stream_manager.receive_message(stream_id).await? {
         Some(message) => {
-            let janx_message = dynamic_message_to_janx(&message)?;
+            let janx_message = dynamic_message_to_value(&message)?;
             Ok(janx!({
                 "result": true,
                 "message": janx_message,

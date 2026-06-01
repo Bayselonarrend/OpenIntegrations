@@ -97,35 +97,35 @@ impl AddIn {
 
     pub fn get_welcome_msg(&self) -> JanxValue {
         self.backend
-            .call_janx(|response| WorkerCommand::GetWelcomeMsg { response })
+            .call(|response| WorkerCommand::GetWelcomeMsg { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn make_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::MakeDirectory { path, response })
+            .call(|response| WorkerCommand::MakeDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn remove_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::RemoveDirectory { path, response })
+            .call(|response| WorkerCommand::RemoveDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn list_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::ListDirectory { path, response })
+            .call(|response| WorkerCommand::ListDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn upload_data(&self, path: &str, data: Vec<u8>) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::UploadData {
+            .call(|response| WorkerCommand::UploadData {
                 path,
                 data,
                 response,
@@ -137,7 +137,7 @@ impl AddIn {
         let path = path.to_string();
         let filepath = filepath.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::UploadFile {
+            .call(|response| WorkerCommand::UploadFile {
                 path,
                 filepath,
                 response,
@@ -148,14 +148,14 @@ impl AddIn {
     pub fn remove_file(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::RemoveFile { path, response })
+            .call(|response| WorkerCommand::RemoveFile { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn object_size(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::ObjectSize { path, response })
+            .call(|response| WorkerCommand::ObjectSize { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
@@ -163,7 +163,7 @@ impl AddIn {
         let path = path.to_string();
         let new_path = new_path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::RenameObject {
+            .call(|response| WorkerCommand::RenameObject {
                 path,
                 new_path,
                 response,
@@ -175,7 +175,7 @@ impl AddIn {
         let path = path.to_string();
         let filepath = filepath.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::DownloadToFile {
+            .call(|response| WorkerCommand::DownloadToFile {
                 path,
                 filepath,
                 response,
@@ -194,33 +194,33 @@ impl AddIn {
     pub fn execute_command(&self, command: &str) -> JanxValue {
         let command = command.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::ExecuteCommand { command, response })
+            .call(|response| WorkerCommand::ExecuteCommand { command, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_current_directory(&self) -> JanxValue {
         self.backend
-            .call_janx(|response| WorkerCommand::GetCurrentDirectory { response })
+            .call(|response| WorkerCommand::GetCurrentDirectory { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn change_current_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::ChangeCurrentDirectory { path, response })
+            .call(|response| WorkerCommand::ChangeCurrentDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_features(&self) -> JanxValue {
         self.backend
-            .call_janx(|response| WorkerCommand::GetFeatures { response })
+            .call(|response| WorkerCommand::GetFeatures { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn execute_standard_command(&self, command: &str) -> JanxValue {
         let command = command.to_string();
         self.backend
-            .call_janx(|response| WorkerCommand::ExecuteStandardCommand { command, response })
+            .call(|response| WorkerCommand::ExecuteStandardCommand { command, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 

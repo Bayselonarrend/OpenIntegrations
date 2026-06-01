@@ -9,7 +9,7 @@ use mongodb::bson::{Bson, Document};
 use mongodb::Client;
 use tokio::runtime::Runtime;
 
-use crate::bson::{bson_to_janx_value, janx_value_to_bson};
+use crate::bson::{bson_to_value, value_to_bson};
 
 pub struct ExecuteParams {
     pub operation: String,
@@ -181,7 +181,7 @@ async fn execute_operation(
     let mut command = Document::new();
 
     if let Some(value) = &params.argument {
-        command.insert(&params.operation, janx_value_to_bson(value)?);
+        command.insert(&params.operation, value_to_bson(value)?);
     } else {
         command.insert(&params.operation, 1);
     }
@@ -189,7 +189,7 @@ async fn execute_operation(
     if let Some(JanxValue::Object(data_map)) = &params.data {
         for (key, value) in data_map {
             if key != &params.operation {
-                command.insert(key, janx_value_to_bson(value)?);
+                command.insert(key, value_to_bson(value)?);
             }
         }
     }
@@ -199,5 +199,5 @@ async fn execute_operation(
         .await
         .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
 
-    Ok(bson_to_janx_value(&Bson::Document(result_doc)))
+    Ok(bson_to_value(&Bson::Document(result_doc)))
 }

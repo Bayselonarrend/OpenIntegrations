@@ -22,7 +22,7 @@ pub fn execute(
             .map(|name| name.to_string())
             .collect();
         let mut rows = query_result.query(convert).map_err(|e| e.to_string())?;
-        Ok(Some(rows_to_janx_array(&mut rows, &cols)))
+        Ok(Some(rows_to_values(&mut rows, &cols)))
     } else {
         conn.execute(text, convert).map_err(|e| e.to_string())?;
         Ok(None)
@@ -43,7 +43,7 @@ pub fn load_extension(conn: &mut Connection, path: String, point: String) -> Res
     }
 }
 
-fn rows_to_janx_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<JanxValue> {
+fn rows_to_values(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<JanxValue> {
     let mut janx_array = Vec::new();
     loop {
         let mut row_map = BTreeMap::new();
@@ -52,7 +52,7 @@ fn rows_to_janx_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<Janx
                 for i in 0..cols.len() {
                     let key = cols[i].to_string();
                     let val = match row.get_ref(i) {
-                        Ok(v) => from_sql_to_janx(v),
+                        Ok(v) => from_sql_value(v),
                         Err(e) => JanxValue::String(e.to_string()),
                     };
                     row_map.insert(key, val);
@@ -68,7 +68,7 @@ fn rows_to_janx_array(rows: &mut rusqlite::Rows, cols: &Vec<String>) -> Vec<Janx
     janx_array
 }
 
-fn from_sql_to_janx(value: ValueRef) -> JanxValue {
+fn from_sql_value(value: ValueRef) -> JanxValue {
     match value {
         ValueRef::Null => JanxValue::Null,
         ValueRef::Integer(i) => JanxValue::Number(i.into()),

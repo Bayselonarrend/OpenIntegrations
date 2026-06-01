@@ -7,7 +7,7 @@ use serde_json::Number;
 use crate::component::lua_engine::LuaEngine;
 
 impl LuaEngine {
-    pub(crate) fn lua_value_to_janx(&self, value: Value) -> Result<JanxValue, String> {
+    pub(crate) fn lua_to_value(&self, value: Value) -> Result<JanxValue, String> {
         match value {
             Value::Nil => Ok(JanxValue::Null),
             Value::Boolean(b) => Ok(JanxValue::Bool(b)),
@@ -27,7 +27,7 @@ impl LuaEngine {
                         let element = table
                             .get(index)
                             .map_err(|e| format!("Array read error: {}", e))?;
-                        items.push(self.lua_value_to_janx(element)?);
+                        items.push(self.lua_to_value(element)?);
                     }
                     Ok(JanxValue::Array(items))
                 } else {
@@ -35,7 +35,7 @@ impl LuaEngine {
                     for pair in table.pairs::<Value, Value>() {
                         let (key, item) = pair.map_err(|e| format!("Table iteration error: {}", e))?;
                         let key_str = lua_table_key_to_string(key)?;
-                        map.insert(key_str, self.lua_value_to_janx(item)?);
+                        map.insert(key_str, self.lua_to_value(item)?);
                     }
                     Ok(JanxValue::Object(map))
                 }
@@ -48,7 +48,7 @@ impl LuaEngine {
         match value {
             JanxValue::Null => Ok(Value::Nil),
             JanxValue::Bool(b) => Ok(Value::Boolean(b)),
-            JanxValue::Number(n) => janx_number_to_lua(&self.lua, n),
+            JanxValue::Number(n) => number_to_lua(&self.lua, n),
             JanxValue::String(s) => self
                 .lua
                 .create_string(s.as_str())
@@ -123,7 +123,7 @@ fn lua_table_key_to_string(key: Value) -> Result<String, String> {
     }
 }
 
-fn janx_number_to_lua(_lua: &mlua::Lua, number: Number) -> Result<Value, String> {
+fn number_to_lua(_lua: &mlua::Lua, number: Number) -> Result<Value, String> {
     if let Some(i) = number.as_i64() {
         match Integer::try_from(i) {
             Ok(value) => Ok(Value::Integer(value)),
@@ -136,7 +136,7 @@ fn janx_number_to_lua(_lua: &mlua::Lua, number: Number) -> Result<Value, String>
     }
 }
 
-pub fn parse_janx_args(data: &[u8]) -> Result<Vec<JanxValue>, String> {
+pub fn parse_args(data: &[u8]) -> Result<Vec<JanxValue>, String> {
     let value = common_janx::decode(data).map_err(|e| format!("Invalid Janx arguments: {}", e))?;
     match value {
         JanxValue::Array(items) => Ok(items),
@@ -145,7 +145,7 @@ pub fn parse_janx_args(data: &[u8]) -> Result<Vec<JanxValue>, String> {
     }
 }
 
-pub fn parse_janx_payload(data: &[u8]) -> Result<JanxValue, String> {
+pub fn parse_payload(data: &[u8]) -> Result<JanxValue, String> {
     let value = common_janx::decode(data).map_err(|e| format!("Invalid Janx value: {}", e))?;
     match value {
         JanxValue::Object(mut fields) => fields

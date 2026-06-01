@@ -155,7 +155,7 @@ impl FtpBackend {
         Ok(())
     }
 
-    pub fn call_janx<F>(&self, build: F) -> Result<JanxValue, String>
+    pub fn call<F>(&self, build: F) -> Result<JanxValue, String>
     where
         F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {

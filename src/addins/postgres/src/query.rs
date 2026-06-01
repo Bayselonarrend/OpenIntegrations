@@ -1,5 +1,6 @@
 use chrono::{DateTime, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime};
 use common_core::{FromJanx, JanxValue};
+use common_utils::utils::json_value_to_janx;
 use dateparser::parse;
 use postgres::types::ToSql;
 use postgres::Client;
@@ -22,7 +23,7 @@ pub fn execute(
 
     if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
         match client.query(text, &params_unboxed) {
-            Ok(rows) => Ok(Some(rows_to_janx(rows))),
+            Ok(rows) => Ok(Some(rows_to_values(rows))),
             Err(e) => Err(e.to_string()),
         }
     } else {
@@ -174,7 +175,7 @@ fn process_object(object: &BTreeMap<String, JanxValue>) -> Result<Box<dyn ToSql 
             .ok_or_else(|| "Invalid value for INET".to_string()),
         "JSON" | "JSONB" => {
             if value.as_object().is_some() || value.as_array().is_some() {
-                let json = janx_to_json_value(value)?;
+                let json = value_to_json(value)?;
                 Ok(Box::new(json) as Box<dyn ToSql + Sync>)
             } else if let Some(json_str) = value.as_str() {
                 match serde_json::from_str::<Value>(json_str) {
@@ -211,7 +212,7 @@ fn process_object(object: &BTreeMap<String, JanxValue>) -> Result<Box<dyn ToSql 
     }
 }
 
-fn rows_to_janx(rows: Vec<postgres::Row>) -> Vec<JanxValue> {
+fn rows_to_values(rows: Vec<postgres::Row>) -> Vec<JanxValue> {
     let mut result = Vec::new();
 
     for row in rows {
@@ -394,24 +395,7 @@ fn try_get_unknown_type(column_name: &str, row: &postgres::Row) -> Result<JanxVa
     Err(())
 }
 
-fn json_value_to_janx(value: Value) -> JanxValue {
-    match value {
-        Value::Null => JanxValue::Null,
-        Value::Bool(b) => JanxValue::Bool(b),
-        Value::Number(n) => JanxValue::Number(n),
-        Value::String(s) => JanxValue::String(s),
-        Value::Array(arr) => JanxValue::Array(arr.into_iter().map(json_value_to_janx).collect()),
-        Value::Object(obj) => {
-            let map = obj
-                .into_iter()
-                .map(|(k, v)| (k, json_value_to_janx(v)))
-                .collect();
-            JanxValue::Object(map)
-        }
-    }
-}
-
-fn janx_to_json_value(value: &JanxValue) -> Result<Value, String> {
+fn value_to_json(value: &JanxValue) -> Result<Value, String> {
     match value {
         JanxValue::Null => Ok(Value::Null),
         JanxValue::Bool(b) => Ok(Value::Bool(*b)),
@@ -420,14 +404,14 @@ fn janx_to_json_value(value: &JanxValue) -> Result<Value, String> {
         JanxValue::Array(arr) => {
             let out = arr
                 .iter()
-                .map(janx_to_json_value)
+                .map(value_to_json)
                 .collect::<Result<Vec<_>, _>>()?;
             Ok(Value::Array(out))
         }
         JanxValue::Object(obj) => {
             let mut map = Map::new();
             for (k, v) in obj {
-                map.insert(k.clone(), janx_to_json_value(v)?);
+                map.insert(k.clone(), value_to_json(v)?);
             }
             Ok(Value::Object(map))
         }

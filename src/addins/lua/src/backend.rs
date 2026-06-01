@@ -24,19 +24,19 @@ impl LynaBackend {
     }
 
     pub fn execute_string(&self, code: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::ExecuteString { code, response })
+        self.call(|response| WorkerCommand::ExecuteString { code, response })
     }
 
     pub fn execute_file(&self, path: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::ExecuteFile { path, response })
+        self.call(|response| WorkerCommand::ExecuteFile { path, response })
     }
 
     pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::ExecuteBytecode { bytecode, response })
+        self.call(|response| WorkerCommand::ExecuteBytecode { bytecode, response })
     }
 
     pub fn execute_bytecode_file(&self, path: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::ExecuteBytecodeFile { path, response })
+        self.call(|response| WorkerCommand::ExecuteBytecodeFile { path, response })
     }
 
     pub fn compile_to_bytecode(&self, code: String) -> Result<Vec<u8>, String> {
@@ -48,7 +48,7 @@ impl LynaBackend {
     }
 
     pub fn call_function(&self, function_name: String, args_janx: Vec<u8>) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::CallFunction {
+        self.call(|response| WorkerCommand::CallFunction {
             function_name,
             args_janx,
             response,
@@ -56,7 +56,7 @@ impl LynaBackend {
     }
 
     pub fn set_global(&self, variable_name: String, value_janx: Vec<u8>) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::SetGlobal {
+        self.call(|response| WorkerCommand::SetGlobal {
             variable_name,
             value_janx,
             response,
@@ -64,14 +64,14 @@ impl LynaBackend {
     }
 
     pub fn get_global(&self, variable_name: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::GetGlobal {
+        self.call(|response| WorkerCommand::GetGlobal {
             variable_name,
             response,
         })
     }
 
     pub fn add_package(&self, package_name: String, code: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::AddPackage {
+        self.call(|response| WorkerCommand::AddPackage {
             package_name,
             code,
             response,
@@ -79,7 +79,7 @@ impl LynaBackend {
     }
 
     pub fn load_package_from_file(&self, package_name: String, file_path: String) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::LoadPackageFromFile {
+        self.call(|response| WorkerCommand::LoadPackageFromFile {
             package_name,
             file_path,
             response,
@@ -87,11 +87,11 @@ impl LynaBackend {
     }
 
     pub fn get_packages(&self) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::GetPackages { response })
+        self.call(|response| WorkerCommand::GetPackages { response })
     }
 
     pub fn reset(&self) -> JanxValue {
-        self.call_janx(|response| WorkerCommand::Reset { response })
+        self.call(|response| WorkerCommand::Reset { response })
     }
 
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {
@@ -111,7 +111,7 @@ impl LynaBackend {
         })
     }
 
-    fn call_janx<F>(&self, build: F) -> JanxValue
+    fn call<F>(&self, build: F) -> JanxValue
     where
         F: FnOnce(Sender<JanxValue>) -> WorkerCommand,
     {

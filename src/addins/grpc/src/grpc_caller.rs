@@ -9,7 +9,7 @@ use tonic::transport::Channel;
 use tonic::Request;
 
 use crate::identity_codec::IdentityCodec;
-use crate::message_converter::{dynamic_message_to_janx, janx_to_dynamic_message};
+use crate::message_converter::{dynamic_message_to_value, value_to_dynamic_message};
 
 #[derive(Debug)]
 pub struct CallParams {
@@ -20,7 +20,7 @@ pub struct CallParams {
 }
 
 impl CallParams {
-    pub fn from_janx(value: &JanxValue) -> Result<Self, String> {
+    pub fn from_value(value: &JanxValue) -> Result<Self, String> {
         let map = value
             .as_object()
             .ok_or_else(|| "Expected call params object".to_string())?;
@@ -68,7 +68,7 @@ pub fn create_request_message(
     message_descriptor: &prost_reflect::MessageDescriptor,
 ) -> Result<DynamicMessage, String> {
     if let Some(data) = request_data {
-        janx_to_dynamic_message(data, message_descriptor)
+        value_to_dynamic_message(data, message_descriptor)
     } else {
         Ok(DynamicMessage::new(message_descriptor.clone()))
     }
@@ -125,5 +125,5 @@ pub async fn execute_grpc_call(
     let response_message = DynamicMessage::decode(method.output(), response_bytes.as_ref())
         .map_err(|e| format!("Failed to decode response: {}", e))?;
 
-    dynamic_message_to_janx(&response_message)
+    dynamic_message_to_value(&response_message)
 }

@@ -87,7 +87,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         }
         6 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.get_result_as_janx(&key))
+            Box::new(obj.get_result(&key))
         }
         7 => {
             let key = params[0].get_string().unwrap_or("".to_string());
@@ -102,7 +102,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let janx_params = JanxValue::from_variant(&params[1]);
-            let result = match obj.datasets.params_from_janx(&key, janx_params) {
+            let result = match obj.datasets.set_params(&key, janx_params) {
                 Ok(_) => janx_success(None, None),
                 Err(e) => janx_error(&e),
             };

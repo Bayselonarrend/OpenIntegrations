@@ -106,7 +106,7 @@ impl GrpcBackend {
             .ok_or_else(|| "Backend thread is not available".to_string())?;
 
         thread.call(|response| WorkerCommand::Call {
-            params_janx: request.clone(),
+            params: request.clone(),
             response,
         })
     }
@@ -125,7 +125,7 @@ impl GrpcBackend {
             response,
         })?;
 
-        janx_response_to_result(response)
+        response_to_result(response)
     }
 
     pub fn compile_protos(&mut self) -> Result<(), String> {
@@ -138,7 +138,7 @@ impl GrpcBackend {
 
         let response = thread.call(|response| WorkerCommand::CompileProtos { response })?;
 
-        janx_response_to_result(response)
+        response_to_result(response)
     }
 
     pub fn set_metadata(&mut self, metadata: HashMap<String, String>) -> Result<(), String> {
@@ -150,7 +150,7 @@ impl GrpcBackend {
             .ok_or_else(|| "Backend thread is not available".to_string())?;
 
         let response = thread.call(|response| WorkerCommand::SetMetadata { metadata, response })?;
-        janx_response_to_result(response)
+        response_to_result(response)
     }
 
     pub fn list_services(&self) -> Result<JanxValue, String> {
@@ -190,7 +190,7 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::CallServerStream {
-                params_janx: params.clone(),
+                params: params.clone(),
                 response,
             })
     }
@@ -204,7 +204,7 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::StartClientStream {
-                params_janx: params.clone(),
+                params: params.clone(),
                 response,
             })
     }
@@ -218,7 +218,7 @@ impl GrpcBackend {
             .as_ref()
             .ok_or_else(|| "Backend thread is not available".to_string())?
             .call(|response| WorkerCommand::StartBidiStream {
-                params_janx: params.clone(),
+                params: params.clone(),
                 response,
             })
     }
@@ -291,7 +291,7 @@ impl GrpcBackend {
     }
 }
 
-fn janx_response_to_result(value: JanxValue) -> Result<(), String> {
+fn response_to_result(value: JanxValue) -> Result<(), String> {
     if common_utils::utils::janx_result_ok(&value) {
         Ok(())
     } else {

@@ -8,7 +8,7 @@ use mongodb::bson::{Bson, Document};
 use regex::Regex as StdRegex;
 use serde_json::Number;
 
-pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
+pub fn value_to_bson(value: &JanxValue) -> Result<Bson, String> {
     let result = match value {
         JanxValue::String(s) => Bson::String(s.clone()),
         JanxValue::Number(_) => {
@@ -28,7 +28,7 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
         }),
         JanxValue::Array(arr) => {
             let converted: Result<Vec<_>, _> =
-                arr.iter().map(janx_value_to_bson).collect();
+                arr.iter().map(value_to_bson).collect();
             Bson::Array(converted?)
         }
         JanxValue::Object(obj) => {
@@ -141,12 +141,12 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
             }
 
             if let Some(inner) = obj.get("__OPI_BINARY__") {
-                return janx_value_to_bson(inner);
+                return value_to_bson(inner);
             }
 
             let mut doc = Document::new();
             for (k, v) in obj {
-                let bson_value = janx_value_to_bson(v)?;
+                let bson_value = value_to_bson(v)?;
 
                 let transformed_key = if k.starts_with("__4") {
                     match k.strip_prefix("__4") {
@@ -167,7 +167,7 @@ pub fn janx_value_to_bson(value: &JanxValue) -> Result<Bson, String> {
     Ok(result)
 }
 
-pub fn bson_to_janx_value(bson: &Bson) -> JanxValue {
+pub fn bson_to_value(bson: &Bson) -> JanxValue {
     match bson {
         Bson::String(s) => JanxValue::String(s.clone()),
         Bson::Int32(n) => JanxValue::Number((*n).into()),
@@ -184,11 +184,11 @@ pub fn bson_to_janx_value(bson: &Bson) -> JanxValue {
         Bson::MaxKey => JanxValue::String("<<MaxKey>>".to_string()),
         Bson::MinKey => JanxValue::String("<<MinKey>>".to_string()),
         Bson::Null => JanxValue::Null,
-        Bson::Array(arr) => JanxValue::Array(arr.iter().map(bson_to_janx_value).collect()),
+        Bson::Array(arr) => JanxValue::Array(arr.iter().map(bson_to_value).collect()),
         Bson::Document(doc) => {
             let mut map = BTreeMap::new();
             for (k, v) in doc {
-                map.insert(k.clone(), bson_to_janx_value(v));
+                map.insert(k.clone(), bson_to_value(v));
             }
             JanxValue::Object(map)
         }

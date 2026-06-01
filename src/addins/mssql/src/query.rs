@@ -28,7 +28,7 @@ pub async fn execute(
                     Ok(rows) => rows.into_iter().flatten().collect(),
                     Err(e) => return Err(e.to_string()),
                 };
-                Ok(Some(rows_to_janx(rows)))
+                Ok(Some(rows_to_values(rows)))
             }
             Err(e) => Err(e.to_string()),
         }
@@ -49,14 +49,14 @@ pub async fn execute(
     }
 }
 
-fn rows_to_janx(rows: Vec<Row>) -> Vec<JanxValue> {
+fn rows_to_values(rows: Vec<Row>) -> Vec<JanxValue> {
     let mut janx_array = Vec::new();
 
     for row in rows {
         let mut row_map = BTreeMap::new();
         for (i, column) in row.columns().iter().enumerate() {
             let column_name = column.name().to_string();
-            let value = cell_to_janx(&row, i, column);
+            let value = cell_to_value(&row, i, column);
             row_map.insert(column_name, value);
         }
         janx_array.push(JanxValue::Object(row_map));
@@ -65,7 +65,7 @@ fn rows_to_janx(rows: Vec<Row>) -> Vec<JanxValue> {
     janx_array
 }
 
-fn cell_to_janx(row: &Row, index: usize, column: &Column) -> JanxValue {
+fn cell_to_value(row: &Row, index: usize, column: &Column) -> JanxValue {
     match column.column_type() {
         ColumnType::Null => JanxValue::Null,
         ColumnType::Bit | ColumnType::Bitn => match try_get_any_bit(row, index) {
@@ -129,7 +129,7 @@ fn cell_to_janx(row: &Row, index: usize, column: &Column) -> JanxValue {
             .try_get::<&[u8], _>(index)
             .ok()
             .flatten()
-            .map(bytes_to_janx)
+            .map(bytes_to_value)
             .unwrap_or(JanxValue::Null),
         ColumnType::Guid => row
             .try_get::<Uuid, _>(index)
@@ -280,7 +280,7 @@ fn parse_date_tz(input: &str) -> Result<DateTime<FixedOffset>, String> {
     })
 }
 
-fn bytes_to_janx(bytes: &[u8]) -> JanxValue {
+fn bytes_to_value(bytes: &[u8]) -> JanxValue {
     JanxValue::binary(bytes.to_vec())
 }
 

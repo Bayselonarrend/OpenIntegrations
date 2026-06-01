@@ -10,7 +10,7 @@ use common_tcp::tls_settings::TlsSettings;
 use common_core::JanxValue;
 use common_utils::utils::janx_error;
 
-fn janx_value_to_error_string(value: JanxValue) -> String {
+fn value_to_error_string(value: JanxValue) -> String {
     match value {
         JanxValue::Object(map) => map
             .get("error")
@@ -305,7 +305,7 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                 WorkerCommand::DownloadToBuffer { path, response } => {
                     let result = match session.require_client() {
                         Ok(c) => c.download_to_vec(&path),
-                        Err(e) => Err(janx_value_to_error_string(e)),
+                        Err(e) => Err(value_to_error_string(e)),
                     };
                     let _ = response.send(result);
                 }

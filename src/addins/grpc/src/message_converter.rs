@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use common_janx::{janx, JanxValue};
 use prost_reflect::{DynamicMessage, Kind, MessageDescriptor, ReflectMessage, Value as ProstValue};
 
-pub fn janx_to_dynamic_message(
+pub fn value_to_dynamic_message(
     json_value: &JanxValue,
     message_desc: &MessageDescriptor,
 ) -> Result<DynamicMessage, String> {
@@ -19,7 +19,7 @@ pub fn janx_to_dynamic_message(
         }
 
         if let Some(field_desc) = message_desc.get_field_by_name(field_name) {
-            let prost_value = janx_to_prost_value(field_value, &field_desc)?;
+            let prost_value = value_to_prost_value(field_value, &field_desc)?;
             message.set_field(&field_desc, prost_value);
         }
     }
@@ -27,7 +27,7 @@ pub fn janx_to_dynamic_message(
     Ok(message)
 }
 
-fn janx_to_prost_value(
+fn value_to_prost_value(
     value: &JanxValue,
     field_desc: &prost_reflect::FieldDescriptor,
 ) -> Result<ProstValue, String> {
@@ -40,7 +40,7 @@ fn janx_to_prost_value(
         };
         let list: Result<Vec<ProstValue>, String> = arr
             .iter()
-            .map(|item| janx_to_prost_value_scalar(item, field_desc))
+            .map(|item| value_to_prost_scalar(item, field_desc))
             .collect();
         return Ok(ProstValue::List(list?));
     }
@@ -54,16 +54,16 @@ fn janx_to_prost_value(
         };
         let mut map = HashMap::new();
         for (key, item) in obj {
-            let val_value = janx_to_prost_value_scalar(item, field_desc)?;
+            let val_value = value_to_prost_scalar(item, field_desc)?;
             map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
         }
         return Ok(ProstValue::Map(map));
     }
 
-    janx_to_prost_value_scalar(value, field_desc)
+    value_to_prost_scalar(value, field_desc)
 }
 
-fn janx_to_prost_value_scalar(
+fn value_to_prost_scalar(
     value: &JanxValue,
     field_desc: &prost_reflect::FieldDescriptor,
 ) -> Result<ProstValue, String> {
@@ -105,7 +105,7 @@ fn janx_to_prost_value_scalar(
         Kind::Bytes => decode_bytes_value(value),
         Kind::Message(msg_desc) => match value {
             JanxValue::Object(_) => {
-                let sub_message = janx_to_dynamic_message(value, &msg_desc)?;
+                let sub_message = value_to_dynamic_message(value, &msg_desc)?;
                 Ok(ProstValue::Message(sub_message))
             }
             _ => Err("Expected object for message field".to_string()),
@@ -136,19 +136,19 @@ fn decode_bytes_value(value: &JanxValue) -> Result<ProstValue, String> {
     }
 }
 
-pub fn dynamic_message_to_janx(message: &DynamicMessage) -> Result<JanxValue, String> {
+pub fn dynamic_message_to_value(message: &DynamicMessage) -> Result<JanxValue, String> {
     let mut fields = std::collections::BTreeMap::new();
 
     for field_desc in message.descriptor().fields() {
         let field_value = message.get_field(&field_desc);
-        let janx_value = prost_value_to_janx(&field_value, &field_desc)?;
+        let janx_value = prost_to_value(&field_value, &field_desc)?;
         fields.insert(field_desc.name().to_string(), janx_value);
     }
 
     Ok(JanxValue::Object(fields))
 }
 
-fn prost_value_to_janx(
+fn prost_to_value(
     prost_value: &ProstValue,
     field_desc: &prost_reflect::FieldDescriptor,
 ) -> Result<JanxValue, String> {
@@ -173,11 +173,11 @@ fn prost_value_to_janx(
                 Ok(JanxValue::Number((*n).into()))
             }
         }
-        ProstValue::Message(msg) => dynamic_message_to_janx(msg),
+        ProstValue::Message(msg) => dynamic_message_to_value(msg),
         ProstValue::List(list) => {
             let items: Result<Vec<JanxValue>, String> = list
                 .iter()
-                .map(|item| prost_value_to_janx(item, field_desc))
+                .map(|item| prost_to_value(item, field_desc))
                 .collect();
             Ok(JanxValue::Array(items?))
         }
@@ -185,7 +185,7 @@ fn prost_value_to_janx(
             let mut fields = std::collections::BTreeMap::new();
             for (key, value) in map {
                 let key_str = format!("{:?}", key);
-                fields.insert(key_str, prost_value_to_janx(value, field_desc)?);
+                fields.insert(key_str, prost_to_value(value, field_desc)?);
             }
             Ok(JanxValue::Object(fields))
         }

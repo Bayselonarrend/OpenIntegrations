@@ -16,7 +16,7 @@ impl LuaEngine {
         match func.call::<MultiValue>(multi_args) {
             Ok(result) => {
                 let first_value = result.into_iter().next().unwrap_or(Value::Nil);
-                self.lua_value_to_janx(first_value)
+                self.lua_to_value(first_value)
             }
             Err(e) => Err(format!("Function call error: {}", e)),
         }

@@ -74,7 +74,7 @@ impl ConnectionResponse {
         self
     }
 
-    pub fn to_janx(&self) -> JanxValue {
+    pub fn to_value(&self) -> JanxValue {
         if !self.result {
             return janx_error(
                 self.error
