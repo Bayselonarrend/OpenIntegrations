@@ -4,8 +4,20 @@
         "title": "Version 2.2.0 - 27.06.2026",
         "summary_ru": "Методы работы с Lua",
         "summary_en": "Methods of working with Lua",
-        "image": "media/Covers/ZeroMQ.png",
+        "image": "media/Covers/Lua.png",
         "changes": [
+            {
+                "lib": "MessagePack",
+                "icon": "media/MessagePack.png",
+                "description_ru": "Добавлена сериализация/десериализация для формата MessagePack",
+                "description_en": "Added serialization/deserialization for MessagePack format"
+            },
+            {
+                "lib": "Janx",
+                "icon": "media/Janx.png",
+                "description_ru": "Добавлена сериализация/десериализация для формата Janx",
+                "description_en": "Added serialization/deserialization for Kanx format"
+            },
             {
                 "lib": "All",
                 "icon": "media/logo.png",
@@ -85,7 +97,7 @@
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Исправлено применение настроек расширенного вызова в CLI версии",
-                "description_en": "Fixed application of extended call settings in CLI version"                
+                "description_en": "Fixed application of extended call settings in CLI version"
             },
             {
                 "lib": "All",
