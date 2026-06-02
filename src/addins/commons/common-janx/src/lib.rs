@@ -7,6 +7,8 @@ mod marker;
 mod macros;
 mod value;
 
+pub type JanxNumber = serde_json::Number;
+
 pub use codec::FORMAT_VERSION;
 pub use error::JanxError;
 pub use from_janx::FromJanx;

@@ -1,8 +1,7 @@
 use std::collections::BTreeMap;
 
-use common_janx::JanxValue;
+use common_janx::{JanxNumber, JanxValue};
 use mlua::{Integer, Value};
-use serde_json::Number;
 
 use crate::component::lua_engine::LuaEngine;
 
@@ -11,8 +10,8 @@ impl LuaEngine {
         match value {
             Value::Nil => Ok(JanxValue::Null),
             Value::Boolean(b) => Ok(JanxValue::Bool(b)),
-            Value::Integer(i) => Ok(JanxValue::Number(Number::from(i))),
-            Value::Number(n) => Number::from_f64(n)
+            Value::Integer(i) => Ok(JanxValue::Number(JanxNumber::from(i))),
+            Value::Number(n) => JanxNumber::from_f64(n)
                 .map(JanxValue::Number)
                 .ok_or_else(|| format!("Invalid number: {}", n)),
             Value::String(s) => match s.to_str() {
@@ -123,7 +122,7 @@ fn lua_table_key_to_string(key: Value) -> Result<String, String> {
     }
 }
 
-fn number_to_lua(_lua: &mlua::Lua, number: Number) -> Result<Value, String> {
+fn number_to_lua(_lua: &mlua::Lua, number: JanxNumber) -> Result<Value, String> {
     if let Some(i) = number.as_i64() {
         match Integer::try_from(i) {
             Ok(value) => Ok(Value::Integer(value)),

@@ -16,7 +16,7 @@ pub struct WebSocketServerBackend {
 pub enum WebSocketCommand {
     Start {
         port: u16,
-        config: String,
+        config: JanxValue,
         logger: Option<Arc<Logger>>,
         response: Sender<JanxValue>,
     },
@@ -161,11 +161,11 @@ impl WebSocketServerBackend {
         self.logger = Some(logger);
     }
 
-    pub fn start(&self, port: u16, config: &str) -> JanxValue {
+    pub fn start(&self, port: u16, config: &JanxValue) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::Start {
                 port,
-                config: config.to_string(),
+                config: config.clone(),
                 logger: self.logger.clone(),
                 response,
             }

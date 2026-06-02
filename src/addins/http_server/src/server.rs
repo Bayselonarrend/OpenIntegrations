@@ -6,21 +6,15 @@ use axum::{
     response::Response,
 };
 use tokio::sync::Mutex as TokioMutex;
-use common_janx::{janx, JanxValue};
+use common_janx::{janx, FromJanx, JanxValue};
 use common_logs::{log, Logger};
 use common_server::{AsyncWaiter, ConnectionManager};
 use common_utils::utils::janx_error;
-use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone)]
 pub struct HttpServerConfig {
-    #[serde(default = "default_timeout")]
     pub response_timeout_secs: u64,
-    
-    #[serde(default = "default_routes")]
     pub routes: Vec<String>,
-    
-    #[serde(default = "default_max_pending")]
     pub max_pending_requests: usize,
 }
 
@@ -70,16 +64,11 @@ impl HttpServerState {
 
     pub async fn start(
         port: u16,
-        config_json: &str,
+        config_janx: &JanxValue,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
 
-        let config = if config_json.is_empty() {
-            HttpServerConfig::default()
-        } else {
-            serde_json::from_str::<HttpServerConfig>(config_json)
-                .map_err(|e| format!("Invalid HTTP server config: {}", e))?
-        };
+        let config = HttpServerConfig::from_janx(config_janx).unwrap_or_default();
 
         if let Some(ref log) = logger {
             log!(log, "Starting HTTP server on port {} with config: {:?}", port, config);
@@ -230,6 +219,32 @@ impl HttpServerState {
         } else {
             janx_error("Request not found")
         }
+    }
+}
+
+impl FromJanx for HttpServerConfig {
+    fn from_janx(value: &JanxValue) -> Option<Self> {
+        let routes = value
+            .get("routes")
+            .and_then(|v| v.as_array())
+            .map(|arr| {
+                arr.iter()
+                    .filter_map(String::from_janx)
+                    .collect::<Vec<String>>()
+            })
+            .unwrap_or_else(default_routes);
+
+        Some(Self {
+            response_timeout_secs: value
+                .get("response_timeout_secs")
+                .and_then(i64::from_janx)
+                .unwrap_or(default_timeout() as i64) as u64,
+            routes,
+            max_pending_requests: value
+                .get("max_pending_requests")
+                .and_then(i64::from_janx)
+                .unwrap_or(default_max_pending() as i64) as usize,
+        })
     }
 }
 

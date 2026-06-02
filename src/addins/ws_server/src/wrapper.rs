@@ -23,7 +23,7 @@ impl WebSocketServer {
         }
     }
 
-    pub fn start(&mut self, port: u16, config: &str) -> JanxValue {
+    pub fn start(&mut self, port: u16, config: &JanxValue) -> JanxValue {
         if self.started {
             return janx_error("WebSocket server already started");
         }

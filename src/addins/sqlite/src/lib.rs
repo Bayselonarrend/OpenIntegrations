@@ -118,7 +118,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(result)
         }
         11 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         12 => {

@@ -15,17 +15,14 @@ use tokio::sync::mpsc;
 use tokio::sync::oneshot;
 use tokio::task::JoinHandle;
 use futures_util::{StreamExt, SinkExt};
+use common_janx::{FromJanx, JanxValue};
 use common_logs::{log, Logger};
 use common_server::ConnectionManager;
 use common_utils::utils::lock_unpoisoned;
-use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone)]
 pub struct WebSocketServerConfig {
-    #[serde(default = "default_max_connections")]
     pub max_connections: usize,
-
-    #[serde(default = "default_ws_routes")]
     pub routes: Vec<String>,
 }
 
@@ -77,16 +74,11 @@ impl WebSocketServerState {
 
     pub async fn start(
         port: u16,
-        config_json: &str,
+        config_janx: &JanxValue,
         logger: Option<Arc<Logger>>,
     ) -> Result<Self, String> {
 
-        let config = if config_json.is_empty() {
-            WebSocketServerConfig::default()
-        } else {
-            serde_json::from_str::<WebSocketServerConfig>(config_json)
-                .map_err(|e| format!("Invalid WebSocket server config: {}", e))?
-        };
+        let config = WebSocketServerConfig::from_janx(config_janx).unwrap_or_default();
 
         if let Some(ref log) = logger {
             log!(log, "Starting WebSocket server on port {} with config: {:?}", port, config);
@@ -150,6 +142,28 @@ impl WebSocketServerState {
         }
     }
 
+}
+
+impl FromJanx for WebSocketServerConfig {
+    fn from_janx(value: &JanxValue) -> Option<Self> {
+        let routes = value
+            .get("routes")
+            .and_then(|v| v.as_array())
+            .map(|arr| {
+                arr.iter()
+                    .filter_map(String::from_janx)
+                    .collect::<Vec<String>>()
+            })
+            .unwrap_or_else(default_ws_routes);
+
+        Some(Self {
+            max_connections: value
+                .get("max_connections")
+                .and_then(i64::from_janx)
+                .unwrap_or(default_max_connections() as i64) as usize,
+            routes,
+        })
+    }
 }
 
 async fn ws_handler(

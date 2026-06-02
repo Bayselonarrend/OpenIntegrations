@@ -1,6 +1,6 @@
 use std::collections::BTreeMap;
 
-use common_core::{FromJanx, JanxValue};
+use common_core::{FromJanx, JanxNumber, JanxValue};
 use rusqlite::{
     types::Value as SqlValue, types::ValueRef, Connection, LoadExtensionGuard, ParamsFromIter,
     params_from_iter,
@@ -73,7 +73,7 @@ fn from_sql_value(value: ValueRef) -> JanxValue {
         ValueRef::Null => JanxValue::Null,
         ValueRef::Integer(i) => JanxValue::Number(i.into()),
         ValueRef::Real(f) => {
-            serde_json::Number::from_f64(f)
+            JanxNumber::from_f64(f)
                 .map(JanxValue::Number)
                 .unwrap_or(JanxValue::Null)
         }

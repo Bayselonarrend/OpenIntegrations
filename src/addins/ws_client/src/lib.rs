@@ -78,11 +78,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.close(code, &reason))
         }
         7 => {
-            let headers_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_headers(&headers_json))
+            let headers = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_headers(&headers))
         }
         8 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         9 => {
@@ -96,8 +96,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
         }
         11 => {
-            let proxy_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_proxy(&proxy_json))
+            let proxy = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_proxy(&proxy))
         }
         12 => Box::new(version()),
         _ => Box::new(false),

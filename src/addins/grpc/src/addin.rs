@@ -2,23 +2,22 @@ use std::collections::BTreeMap;
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use common_core::JanxValue;
+use common_core::{FromJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, janx_logs, janx_success, json_value_to_janx};
-use serde_json::Value;
+use common_utils::utils::{janx_error, janx_logs, janx_success};
 
 use crate::backend::GrpcBackend;
 
 pub struct StoredSettings {
-    pub settings: HashMap<String, Value>,
+    pub settings: BTreeMap<String, JanxValue>,
     pub metadata: HashMap<String, String>,
 }
 
 impl Default for StoredSettings {
     fn default() -> Self {
         Self {
-            settings: HashMap::new(),
+            settings: BTreeMap::new(),
             metadata: HashMap::new(),
         }
     }
@@ -41,12 +40,8 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
-        if logger_config.is_empty() {
-            return janx_error("Logger config is empty");
-        }
-
-        match Logger::from_json(logger_config) {
+    pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
+        match Logger::from_janx(logger_config) {
             Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
                 Ok(()) => janx_success(None, None),
                 Err(e) => janx_error(e),
@@ -104,10 +99,13 @@ impl AddIn {
         }
     }
 
-    pub fn set_metadata(&mut self, metadata_json: &str) -> JanxValue {
-        let metadata: HashMap<String, String> = match serde_json::from_str(metadata_json) {
-            Ok(map) => map,
-            Err(e) => return janx_error(format!("Invalid metadata JSON: {}", e)),
+    pub fn set_metadata(&mut self, metadata_janx: &JanxValue) -> JanxValue {
+        let metadata: HashMap<String, String> = match metadata_janx.as_object() {
+            Some(map) => map
+                .iter()
+                .filter_map(|(k, v)| String::from_janx(v).map(|value| (k.clone(), value)))
+                .collect(),
+            None => return janx_error("Invalid metadata Janx object"),
         };
 
         match self.client.set_metadata(metadata.clone()) {
@@ -121,30 +119,27 @@ impl AddIn {
 
     pub fn get_settings(&self) -> JanxValue {
         let s = &self.stored_settings;
-        let mut map: BTreeMap<String, JanxValue> = s
-            .settings
-            .iter()
-            .map(|(k, v)| (k.clone(), json_value_to_janx(v.clone())))
-            .collect();
+        let mut map: BTreeMap<String, JanxValue> = s.settings.clone();
 
         if !s.metadata.is_empty() {
-            map.insert(
-                "metadata".to_string(),
-                json_value_to_janx(serde_json::to_value(&s.metadata).unwrap_or(Value::Null)),
-            );
+            let metadata = s
+                .metadata
+                .iter()
+                .map(|(k, v)| (k.clone(), JanxValue::String(v.clone())))
+                .collect();
+            map.insert("metadata".to_string(), JanxValue::Object(metadata));
         }
 
         JanxValue::Object(map)
     }
 
-    pub fn store_settings(&mut self, settings: String) -> JanxValue {
-        match serde_json::from_str::<HashMap<String, Value>>(&settings) {
-            Ok(value) => {
-                self.stored_settings.settings = value;
-                janx_success(None, None)
-            }
-            Err(e) => janx_error(format!("Invalid settings JSON: {}", e)),
-        }
+    pub fn store_settings(&mut self, settings: &JanxValue) -> JanxValue {
+        let Some(value) = settings.as_object() else {
+            return janx_error("Invalid settings Janx object");
+        };
+
+        self.stored_settings.settings = value.clone();
+        janx_success(None, None)
     }
 
     pub fn set_tls(

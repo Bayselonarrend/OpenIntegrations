@@ -5,7 +5,7 @@ use tungstenite::stream::MaybeTlsStream;
 use common_logs::{log, Logger};
 use common_tcp::tls_settings::TlsSettings;
 use common_tcp::proxy_settings::ProxySettings;
-use common_core::JanxValue;
+use common_core::{FromJanx, JanxValue};
 use common_utils::utils::{janx_error, janx_success};
 
 pub struct WebSocketClient {
@@ -50,12 +50,12 @@ impl WebSocketClient {
         janx_success(None, None)
     }
 
-    pub fn set_headers(&mut self, headers_json: &str) -> JanxValue {
+    pub fn set_headers(&mut self, headers_janx: &JanxValue) -> JanxValue {
         if self.socket.is_some() {
             return janx_error("Cannot set headers while connected");
         }
 
-        match Self::parse_headers_json(headers_json) {
+        match Self::parse_headers_janx(headers_janx) {
             Ok(headers) => {
                 self.headers = Some(headers);
                 self.log("Headers configured");
@@ -65,18 +65,18 @@ impl WebSocketClient {
         }
     }
 
-    pub fn set_proxy(&mut self, proxy_json: &str) -> JanxValue {
+    pub fn set_proxy(&mut self, proxy_janx: &JanxValue) -> JanxValue {
         if self.socket.is_some() {
             return janx_error("Cannot set proxy while connected");
         }
 
-        match ProxySettings::from_json(proxy_json) {
+        match ProxySettings::from_janx(proxy_janx) {
             Ok(proxy) => {
                 self.proxy_settings = Some(proxy);
                 self.log("Proxy settings configured");
                 janx_success(None, None)
             }
-            Err(e) => janx_error(format!("Invalid proxy JSON: {}", e)),
+            Err(e) => janx_error(format!("Invalid proxy Janx payload: {}", e)),
         }
     }
 
@@ -114,30 +114,35 @@ impl WebSocketClient {
 }
 
 impl WebSocketClient {
-    pub fn parse_headers_json(headers_json: &str) -> Result<Vec<(String, String)>, String> {
-        parse_headers_json(headers_json)
+    pub fn parse_headers_janx(headers: &JanxValue) -> Result<Vec<(String, String)>, String> {
+        parse_headers_janx(headers)
     }
 }
 
-fn parse_headers_json(headers_json: &str) -> Result<Vec<(String, String)>, String> {
-    let value: serde_json::Value =
-        serde_json::from_str(headers_json).map_err(|e| format!("Invalid headers JSON: {}", e))?;
-
-    match value {
-        serde_json::Value::Object(map) => Ok(
-            map.into_iter()
-                .map(|(k, v)| {
-                    let val = match v {
-                        serde_json::Value::String(s) => s,
-                        serde_json::Value::Null => String::new(),
-                        other => other.to_string(),
-                    };
-                    (k, val)
-                })
-                .collect(),
-        ),
-        serde_json::Value::Array(_) => serde_json::from_value(value)
-            .map_err(|e| format!("Invalid headers array (expected [[\"key\",\"value\"], ...]): {}", e)),
-        _ => Err("Headers JSON must be an object or an array of [key, value] pairs".to_string()),
+fn parse_headers_janx(headers: &JanxValue) -> Result<Vec<(String, String)>, String> {
+    if let Some(map) = headers.as_object() {
+        return Ok(map
+            .iter()
+            .map(|(k, v)| (k.clone(), String::from_janx(v).unwrap_or_default()))
+            .collect());
     }
+
+    if let Some(arr) = headers.as_array() {
+        let mut out = Vec::with_capacity(arr.len());
+        for entry in arr {
+            let Some(pair) = entry.as_array() else {
+                return Err("Headers Janx array must contain [key, value] pairs".to_string());
+            };
+            if pair.len() != 2 {
+                return Err("Each headers pair must have exactly two elements".to_string());
+            }
+            let key = String::from_janx(&pair[0])
+                .ok_or_else(|| "Header key must be a string".to_string())?;
+            let value = String::from_janx(&pair[1]).unwrap_or_default();
+            out.push((key, value));
+        }
+        return Ok(out);
+    }
+
+    Err("Headers Janx payload must be an object or an array of [key, value] pairs".to_string())
 }

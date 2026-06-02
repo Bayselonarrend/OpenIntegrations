@@ -1,12 +1,11 @@
 use std::collections::BTreeMap;
 use std::time::SystemTime;
 
-use common_janx::{FromJanx, JanxValue};
+use common_janx::{FromJanx, JanxNumber, JanxValue};
 use dateparser::parse;
 use mongodb::bson;
 use mongodb::bson::{Bson, Document};
 use regex::Regex as StdRegex;
-use serde_json::Number;
 
 pub fn value_to_bson(value: &JanxValue) -> Result<Bson, String> {
     let result = match value {
@@ -172,7 +171,7 @@ pub fn bson_to_value(bson: &Bson) -> JanxValue {
         Bson::String(s) => JanxValue::String(s.clone()),
         Bson::Int32(n) => JanxValue::Number((*n).into()),
         Bson::Int64(n) => JanxValue::Number((*n).into()),
-        Bson::Double(n) => JanxValue::Number(Number::from_f64(*n).unwrap_or(0.into())),
+        Bson::Double(n) => JanxValue::Number(JanxNumber::from_f64(*n).unwrap_or(JanxNumber::from(0))),
         Bson::Decimal128(n) => JanxValue::String(n.to_string()),
         Bson::Boolean(b) => JanxValue::Bool(*b),
         Bson::DateTime(dt) => JanxValue::String(dt.try_to_rfc3339_string().unwrap_or_default()),

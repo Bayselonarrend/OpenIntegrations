@@ -6,7 +6,7 @@ use common_backend::BackendThread;
 use common_janx::{janx, IntoJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, janx_success, json_value_to_janx};
+use common_utils::utils::{janx_error, janx_success};
 
 use crate::client_state::ClientState;
 use crate::connection;
@@ -250,7 +250,7 @@ pub fn spawn_thread(
                                 Err("No proto files loaded. Call LoadProto first.".to_string())
                             };
                             let response_msg = match result {
-                                Ok(data) => janx_success(Some(json_value_to_janx(data)), Some("data")),
+                                Ok(data) => janx_success(Some(data), Some("data")),
                                 Err(e) => janx_error(e),
                             };
                             let _ = response.send(response_msg);

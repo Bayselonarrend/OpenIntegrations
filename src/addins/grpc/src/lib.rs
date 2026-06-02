@@ -85,8 +85,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.load_proto(&filename, &proto_content))
         }
         4 => {
-            let metadata_json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_metadata(&metadata_json))
+            let metadata = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_metadata(&metadata))
         }
         5 => {
             let use_tls = params[0].get_bool().unwrap_or(false);
@@ -129,11 +129,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         16 => Box::new(obj.compile_protos()),
         17 => Box::new(obj.get_settings()),
         18 => {
-            let settings = params[0].get_string().unwrap_or_default();
-            Box::new(obj.store_settings(settings))
+            let settings = JanxValue::from_variant(&params[0]);
+            Box::new(obj.store_settings(&settings))
         }
         19 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         20 => {

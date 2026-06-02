@@ -1,9 +1,9 @@
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
-use common_logs::Logger;
 use common_core::JanxValue;
-use common_utils::utils::{janx_success, json_value_to_janx};
+use common_logs::Logger;
+use common_utils::utils::janx_success;
 
 use crate::ssh_settings::SshConf;
 use crate::worker::{self, WorkerCommand};
@@ -32,7 +32,7 @@ impl SshBackend {
             .unwrap_or(false)
     }
 
-    pub fn set_settings(&mut self, settings: String) -> Result<(), String> {
+    pub fn set_settings(&mut self, settings: &JanxValue) -> Result<(), String> {
         if self.is_connected() {
             return Err("Settings can only be set before the connection is established".to_string());
         }
@@ -42,7 +42,7 @@ impl SshBackend {
         Ok(())
     }
 
-    pub fn set_proxy(&mut self, proxy: String) -> Result<(), String> {
+    pub fn set_proxy(&mut self, proxy: &JanxValue) -> Result<(), String> {
         if self.is_connected() {
             return Err("Proxy can only be set before the connection is established".to_string());
         }
@@ -138,10 +138,41 @@ impl SshBackend {
             .conf
             .as_ref()
             .ok_or_else(|| "No configuration found".to_string())?;
+
+        let settings = conf.set.as_ref().map(|s| {
+            common_core::janx!({
+                "host": s.host.clone(),
+                "port": s.port as i64,
+                "auth_type": match s.auth_type {
+                    crate::ssh_settings::SshAuthTypes::Password => "password",
+                    crate::ssh_settings::SshAuthTypes::PrivateKey => "private_key",
+                    crate::ssh_settings::SshAuthTypes::Agent => "agent",
+                    crate::ssh_settings::SshAuthTypes::KeyboardInteractive => "keyboard_interactive",
+                },
+                "username": s.username.clone(),
+                "password": s.password.clone(),
+                "key_path": s.key_path.clone(),
+                "pub_path": s.pub_path.clone(),
+                "passphrase": s.passphrase.clone(),
+                "keyboard_responses": s.keyboard_responses.clone(),
+            })
+        });
+
+        let proxy = conf.proxy.as_ref().map(|p| {
+            common_core::janx!({
+                "server": p.server.clone(),
+                "port": p.port as i64,
+                "proxy_type": p.proxy_type.clone(),
+                "login": p.login.clone(),
+                "password": p.password.clone(),
+            })
+        });
+
         Ok(janx_success(
-            Some(json_value_to_janx(
-                serde_json::to_value(conf).unwrap_or(serde_json::Value::Null),
-            )),
+            Some(common_core::janx!({
+                "set": settings,
+                "proxy": proxy,
+            })),
             Some("conf"),
         ))
     }

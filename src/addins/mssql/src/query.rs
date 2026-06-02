@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 use std::f64;
 
 use chrono::{DateTime, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime, Utc};
-use common_core::{FromJanx, JanxValue};
+use common_core::{FromJanx, JanxNumber, JanxValue};
 use dateparser::parse;
 use tiberius::numeric::Decimal;
 use tiberius::{Client, Column, ColumnType, Row, ToSql};
@@ -85,7 +85,7 @@ fn cell_to_value(row: &Row, index: usize, column: &Column) -> JanxValue {
         | ColumnType::Floatn
         | ColumnType::Money
         | ColumnType::Money4 => match try_get_any_float(row, index) {
-            Some(i) => serde_json::Number::from_f64(i)
+            Some(i) => JanxNumber::from_f64(i)
                 .map(JanxValue::Number)
                 .unwrap_or(JanxValue::Null),
             None => JanxValue::Null,
@@ -95,7 +95,7 @@ fn cell_to_value(row: &Row, index: usize, column: &Column) -> JanxValue {
             .ok()
             .flatten()
             .and_then(|f| {
-                serde_json::Number::from_f64(f64::try_from(f).unwrap_or(0.0)).map(JanxValue::Number)
+                JanxNumber::from_f64(f64::try_from(f).unwrap_or(0.0)).map(JanxValue::Number)
             })
             .unwrap_or(JanxValue::Null),
         ColumnType::Daten => row

@@ -227,8 +227,8 @@ name = "common-logs"
 version = "2.2.0"
 dependencies = [
  "chrono",
+ "common-janx",
  "serde",
- "serde_json",
 ]
 
 [[package]]
@@ -236,12 +236,12 @@ name = "common-tcp"
 version = "2.2.0"
 dependencies = [
  "base64",
+ "common-janx",
  "httparse",
  "rustls",
  "rustls-native-certs",
  "rustls-pemfile",
  "serde",
- "serde_json",
  "socks",
  "url",
  "webpki-roots",
@@ -252,7 +252,6 @@ name = "common-utils"
 version = "2.2.0"
 dependencies = [
  "common-janx",
- "serde_json",
 ]
 
 [[package]]

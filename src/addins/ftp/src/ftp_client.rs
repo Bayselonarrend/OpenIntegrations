@@ -294,12 +294,13 @@ impl FtpClient {
         };
 
         match result {
-            Ok(f) => janx_success(
-                Some(common_utils::utils::json_value_to_janx(
-                    serde_json::to_value(f).unwrap_or(serde_json::Value::Null),
-                )),
-                Some("data"),
-            ),
+            Ok(f) => {
+                let data = f
+                    .into_iter()
+                    .map(|(k, v)| (k, v.map(JanxValue::String).unwrap_or(JanxValue::Null)))
+                    .collect::<std::collections::BTreeMap<String, JanxValue>>();
+                janx_success(Some(JanxValue::Object(data)), Some("data"))
+            }
             Err(e) => janx_error(e.to_string())
         }
 

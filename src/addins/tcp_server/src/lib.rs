@@ -26,7 +26,7 @@ pub const METHODS: &[&[u16]] = &[
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 3,  // Start(port, queue_size, logger_config_json)
+        0 => 3,  // Start(port, queue_size, logger_config)
         1 => 0,  // Stop()
         2 => 2,  // GetNextMessage(timeout_ms, max_message_size)
         3 => 3,  // GetMessage(connection_id, timeout_ms, max_message_size)
@@ -48,7 +48,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         0 => {
             let port = params[0].get_i32().unwrap_or(0) as u16;
             let queue_size = params[1].get_i32().unwrap_or(10) as usize;
-            let logger_config = params[2].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[2]);
             Box::new(obj.start_server(port, queue_size, &logger_config))
         },
         1 => {
@@ -121,24 +121,22 @@ impl AddIn {
         }
     }
 
-    pub fn start_server(&mut self, port: u16, queue_size: usize, logger_config: &str) -> JanxValue {
+    pub fn start_server(&mut self, port: u16, queue_size: usize, logger_config: &JanxValue) -> JanxValue {
         if self.started {
             return janx_error("Server already started");
         }
 
-        if !logger_config.is_empty() {
-            match Logger::from_json(logger_config) {
-                Ok(logger) => {
-                    let logger_arc = Arc::new(logger);
-                    self.logger = Some(logger_arc.clone());
+        match Logger::from_janx(logger_config) {
+            Ok(logger) => {
+                let logger_arc = Arc::new(logger);
+                self.logger = Some(logger_arc.clone());
 
-                    if let Ok(mut backend) = self.backend.lock() {
-                        backend.set_logger(logger_arc);
-                    }
+                if let Ok(mut backend) = self.backend.lock() {
+                    backend.set_logger(logger_arc);
                 }
-                Err(e) => {
-                    return janx_error(format!("Failed to initialize logger: {}", e));
-                }
+            }
+            Err(e) => {
+                return janx_error(format!("Failed to initialize logger: {}", e));
             }
         }
 

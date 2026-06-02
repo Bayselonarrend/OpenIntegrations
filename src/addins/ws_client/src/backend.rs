@@ -76,19 +76,19 @@ impl WsClientBackend {
         Ok(())
     }
 
-    pub fn set_proxy(&mut self, proxy_json: &str) -> Result<(), String> {
+    pub fn set_proxy(&mut self, proxy: &JanxValue) -> Result<(), String> {
         if self.is_connected() {
             return Err("Cannot set proxy while connected".to_string());
         }
-        self.proxy = Some(ProxySettings::from_json(proxy_json)?);
+        self.proxy = Some(ProxySettings::from_janx(proxy)?);
         Ok(())
     }
 
-    pub fn set_headers(&mut self, headers_json: &str) -> Result<(), String> {
+    pub fn set_headers(&mut self, headers: &JanxValue) -> Result<(), String> {
         if self.is_connected() {
             return Err("Cannot set headers while connected".to_string());
         }
-        self.headers = Some(WebSocketClient::parse_headers_json(headers_json)?);
+        self.headers = Some(WebSocketClient::parse_headers_janx(headers)?);
         Ok(())
     }
 

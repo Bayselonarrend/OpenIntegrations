@@ -4,6 +4,8 @@ use std::io::Write;
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use chrono::Local;
+use common_janx::FromJanx;
+use common_janx::JanxValue;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
@@ -39,8 +41,27 @@ impl Logger {
         }
     }
 
-    pub fn from_json(json: &str) -> Result<Self, serde_json::Error> {
-        serde_json::from_str(json)
+    pub fn from_janx(config: &JanxValue) -> Result<Self, String> {
+        let mode = config
+            .get("mode")
+            .and_then(LogMode::from_janx)
+            .ok_or_else(|| "Field 'mode' is required and must be a string".to_string())?;
+
+        let mut logger = Self::new(mode);
+
+        if let Some(max_entries) = config.get("max_entries").and_then(i64::from_janx) {
+            if max_entries >= 0 {
+                logger = logger.with_max_entries(max_entries as usize);
+            }
+        }
+
+        if let Some(file_path) = config.get("file_path").and_then(String::from_janx) {
+            if !file_path.is_empty() {
+                logger = logger.with_file_path(file_path);
+            }
+        }
+
+        Ok(logger)
     }
 
     pub fn with_max_entries(mut self, max: usize) -> Self {
@@ -123,6 +144,17 @@ impl Logger {
 
     pub fn is_empty(&self) -> bool {
         self.len() == 0
+    }
+}
+
+impl FromJanx for LogMode {
+    fn from_janx(value: &JanxValue) -> Option<Self> {
+        match value.as_str()?.to_lowercase().as_str() {
+            "memory" => Some(Self::Memory),
+            "file" => Some(Self::File),
+            "both" => Some(Self::Both),
+            _ => None,
+        }
     }
 }
 

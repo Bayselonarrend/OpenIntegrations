@@ -28,7 +28,7 @@ pub const METHODS: &[&[u16]] = &[
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 3,  // Start(port, config_json, logger_config_json)
+        0 => 3,  // Start(port, config_json, logger_config)
         1 => 0,  // Stop()
         2 => 1,  // GetNextMessage(timeout_ms)
         3 => 2,  // GetMessage(connection_id, timeout_ms)
@@ -50,8 +50,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     match num {
         0 => {
             let port = params[0].get_i32().unwrap_or(8080) as u16;
-            let config = params[1].get_string().unwrap_or_default();
-            let logger_config = params[2].get_string().unwrap_or_default();
+            let config = JanxValue::from_variant(&params[1]);
+            let logger_config = JanxValue::from_variant(&params[2]);
 
             if let Err(e) = obj.init_logger_if_needed(&logger_config) {
                 return Box::new(janx_error(e));
@@ -122,12 +122,12 @@ impl AddIn {
         }
     }
 
-    fn init_logger_if_needed(&mut self, logger_config: &str) -> Result<(), String> {
-        if logger_config.is_empty() || self.logger.is_some() {
+    fn init_logger_if_needed(&mut self, logger_config: &JanxValue) -> Result<(), String> {
+        if self.logger.is_some() {
             return Ok(());
         }
 
-        let logger = Logger::from_json(logger_config)
+        let logger = Logger::from_janx(logger_config)
             .map_err(|e| format!("Failed to initialize logger: {}", e))?;
         
         let logger_arc = Arc::new(logger);

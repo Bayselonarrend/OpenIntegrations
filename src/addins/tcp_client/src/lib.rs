@@ -74,11 +74,11 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.set_address(&addr))
         }
         8 => {
-            let json = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_proxy(&json))
+            let proxy = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_proxy(&proxy))
         }
         9 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         10 => {

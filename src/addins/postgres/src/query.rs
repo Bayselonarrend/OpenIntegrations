@@ -1,6 +1,5 @@
 use chrono::{DateTime, FixedOffset, NaiveDate, NaiveDateTime, NaiveTime};
-use common_core::{FromJanx, JanxValue};
-use common_utils::utils::json_value_to_janx;
+use common_core::{FromJanx, JanxNumber, JanxValue};
 use dateparser::parse;
 use postgres::types::ToSql;
 use postgres::Client;
@@ -264,7 +263,7 @@ fn process_sql_value(
             .map(|v| match v {
                 v if v.is_nan() => JanxValue::String("NaN".to_string()),
                 v if v.is_infinite() => JanxValue::String("Infinity".to_string()),
-                _ => serde_json::Number::from_f64(v as f64)
+                _ => JanxNumber::from_f64(v as f64)
                     .map(JanxValue::Number)
                     .unwrap_or(JanxValue::Null),
             })
@@ -274,7 +273,7 @@ fn process_sql_value(
             .map(|v| match v {
                 v if v.is_nan() => JanxValue::String("NaN".to_string()),
                 v if v.is_infinite() => JanxValue::String("Infinity".to_string()),
-                _ => serde_json::Number::from_f64(v)
+                _ => JanxNumber::from_f64(v)
                     .map(JanxValue::Number)
                     .unwrap_or(JanxValue::Null),
             })
@@ -364,7 +363,7 @@ fn try_get_unknown_type(column_name: &str, row: &postgres::Row) -> Result<JanxVa
     if let Ok(value) = row.try_get::<_, Option<f64>>(column_name) {
         return Ok(value
             .map(|v| {
-                serde_json::Number::from_f64(v)
+                JanxNumber::from_f64(v)
                     .map(JanxValue::Number)
                     .unwrap_or_else(|| JanxValue::String(v.to_string()))
             })
@@ -416,6 +415,21 @@ fn value_to_json(value: &JanxValue) -> Result<Value, String> {
             Ok(Value::Object(map))
         }
         JanxValue::Binary(_) => Err("Binary is not supported as JSON/JSONB parameter".to_string()),
+    }
+}
+
+fn json_value_to_janx(value: Value) -> JanxValue {
+    match value {
+        Value::Null => JanxValue::Null,
+        Value::Bool(b) => JanxValue::Bool(b),
+        Value::Number(n) => JanxValue::Number(n),
+        Value::String(s) => JanxValue::String(s),
+        Value::Array(arr) => JanxValue::Array(arr.into_iter().map(json_value_to_janx).collect()),
+        Value::Object(map) => JanxValue::Object(
+            map.into_iter()
+                .map(|(k, v)| (k, json_value_to_janx(v)))
+                .collect(),
+        ),
     }
 }
 

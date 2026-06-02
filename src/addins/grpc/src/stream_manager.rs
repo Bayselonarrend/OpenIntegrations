@@ -3,7 +3,6 @@ use std::sync::Arc;
 use tokio::sync::{mpsc, oneshot, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
-use serde_json::json;
 use tokio::sync::mpsc::Receiver;
 use uuid::Uuid;
 
@@ -242,5 +241,5 @@ impl StreamManager {
 
 
 fn process_close_error(err: String) -> String {
-    json!({"result": false, "error": "Closed", "info": err}).to_string()
+    format!("Closed: {}", err)
 }

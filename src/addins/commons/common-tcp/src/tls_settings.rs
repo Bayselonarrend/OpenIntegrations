@@ -1,5 +1,5 @@
+use common_janx::{janx, FromJanx, JanxValue};
 use serde::{Deserialize, Serialize};
-use serde_json::json;
 
 #[derive(Deserialize, Serialize, Clone)]
 pub struct TlsSettings {
@@ -17,15 +17,36 @@ impl TlsSettings {
         }
     }
 
-    pub fn from_json(json_str: &str) -> Result<Self, String> {
-        serde_json::from_str(json_str).map_err(|e| format!("Failed to parse TLS setting: {}", e))
+    pub fn from_janx(value: &JanxValue) -> Result<Self, String> {
+        let use_tls = value
+            .get("use_tls")
+            .and_then(bool::from_janx)
+            .ok_or_else(|| "TLS field 'use_tls' is required".to_string())?;
+        let accept_invalid_certs = value
+            .get("accept_invalid_certs")
+            .and_then(bool::from_janx)
+            .unwrap_or(false);
+        let ca_cert_path = value
+            .get("ca_cert_path")
+            .and_then(String::from_janx)
+            .unwrap_or_default();
+
+        Ok(Self {
+            use_tls,
+            accept_invalid_certs,
+            ca_cert_path,
+        })
     }
 
     pub fn enabled(&self) -> bool {
         self.use_tls
     }
 
-    pub fn get_settings(&self) -> String {
-        json!({"use_tls": self.use_tls, "ca_cert_path": self.ca_cert_path, "accept_invalid_certs": self.accept_invalid_certs}).to_string()
+    pub fn get_settings(&self) -> JanxValue {
+        janx!({
+            "use_tls": self.use_tls,
+            "ca_cert_path": self.ca_cert_path.clone(),
+            "accept_invalid_certs": self.accept_invalid_certs
+        })
     }
 }

@@ -72,12 +72,12 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
     match num {
         0 => {
-            let json_string = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_settings(json_string))
+            let settings = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_settings(&settings))
         }
         1 => {
-            let json_string = params[0].get_string().unwrap_or_default();
-            Box::new(obj.set_proxy(json_string))
+            let proxy = JanxValue::from_variant(&params[0]);
+            Box::new(obj.set_proxy(&proxy))
         }
         2 => Box::new(obj.initialize()),
         3 => {
@@ -138,7 +138,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.get_file_info(&path))
         }
         18 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         19 => {

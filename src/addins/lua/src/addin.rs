@@ -72,12 +72,8 @@ impl AddIn {
         self.backend.reset()
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
-        if logger_config.is_empty() {
-            return janx_error("Logger config is empty");
-        }
-
-        match Logger::from_json(logger_config) {
+    pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
+        match Logger::from_janx(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
                 Ok(()) => janx_success(None, None),
                 Err(e) => janx_error(e),

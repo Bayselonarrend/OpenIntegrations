@@ -35,7 +35,7 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 2,     // Send(data, timeout_ms)
         10 => 1,    // Recv(timeout_ms)
         11 => 0,    // Close
-        12 => 1,    // SetLogger(logger_config_json)
+        12 => 1,    // SetLogger(logger_config)
         13 => 1,    // GetLogs(count)
         14 => 0,    // Version
         _ => 0,
@@ -97,7 +97,7 @@ pub fn cal_func(
         }
         11 => Box::new(obj.close()),
         12 => {
-            let logger_config = params[0].get_string().unwrap_or_default();
+            let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
         13 => {
@@ -124,16 +124,12 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
-        if logger_config.is_empty() {
-            return janx_error("Logger config is empty");
-        }
-
+    pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         if self.logger.is_some() {
             return janx_success(None, None);
         }
 
-        match Logger::from_json(logger_config) {
+        match Logger::from_janx(logger_config) {
             Ok(logger) => {
                 let logger_arc = Arc::new(logger);
                 match self.lock_backend().and_then(|g| g.set_logger(logger_arc.clone())) {

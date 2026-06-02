@@ -158,8 +158,8 @@ name = "common-logs"
 version = "2.2.0"
 dependencies = [
  "chrono",
+ "common-janx",
  "serde",
- "serde_json",
 ]
 
 [[package]]
@@ -167,7 +167,6 @@ name = "common-utils"
 version = "2.2.0"
 dependencies = [
  "common-janx",
- "serde_json",
 ]
 
 [[package]]

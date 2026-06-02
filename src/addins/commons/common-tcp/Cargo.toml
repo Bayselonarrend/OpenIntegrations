@@ -10,11 +10,11 @@ native-tls = ["dep:native-tls"]
 rustls = ["dep:rustls", "dep:rustls-pemfile", "dep:webpki-roots", "dep:rustls-native-certs"]
 
 [dependencies]
+common-janx = { path = "../common-janx" }
 serde = { version = "1.0.219", features = ["derive"] }
 socks = "0.3.4"
 base64 = "0.22.1"
 httparse = "1.10.1"
-serde_json = "1.0"
 url = "2.5.4"
 
 native-tls = { version = "0.2.14", optional = true }

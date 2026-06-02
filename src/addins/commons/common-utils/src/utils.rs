@@ -1,16 +1,6 @@
 use std::sync::{Mutex, MutexGuard};
 
 use common_janx::{janx, JanxValue};
-use serde_json::json;
-
-pub fn json_error<E: ToString>(error: E) -> String {
-    let err = error.to_string();
-    json!({"result": false, "error": err}).to_string()
-}
-
-pub fn json_success() -> String {
-    json!({"result": true}).to_string()
-}
 
 pub fn janx_error<E: ToString>(error: E) -> JanxValue {
     janx!({
@@ -40,22 +30,6 @@ pub fn janx_logs(logs: Vec<String>, total: usize) -> JanxValue {
         "total": total,
         "returned": returned,
     })
-}
-
-pub fn json_value_to_janx(value: serde_json::Value) -> JanxValue {
-    use serde_json::Value;
-    match value {
-        Value::Null => JanxValue::Null,
-        Value::Bool(b) => JanxValue::Bool(b),
-        Value::Number(n) => JanxValue::Number(n),
-        Value::String(s) => JanxValue::String(s),
-        Value::Array(arr) => JanxValue::Array(arr.into_iter().map(json_value_to_janx).collect()),
-        Value::Object(map) => JanxValue::Object(
-            map.into_iter()
-                .map(|(k, v)| (k, json_value_to_janx(v)))
-                .collect(),
-        ),
-    }
 }
 
 pub fn janx_success(payload: Option<JanxValue>, field: Option<&str>) -> JanxValue {

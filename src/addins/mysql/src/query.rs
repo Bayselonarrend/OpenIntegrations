@@ -1,5 +1,5 @@
 use chrono::*;
-use common_core::{FromJanx, JanxValue};
+use common_core::{FromJanx, JanxNumber, JanxValue};
 use dateparser::parse;
 use mysql::prelude::Queryable;
 use mysql::PooledConn;
@@ -55,13 +55,13 @@ fn from_sql_value(value: mysql::Value, column: &Column) -> JanxValue {
     match value {
         mysql::Value::NULL => JanxValue::Null,
         mysql::Value::Int(i) => JanxValue::Number(i.into()),
-        mysql::Value::Double(d) => serde_json::Number::from_f64(d)
+        mysql::Value::Double(d) => JanxNumber::from_f64(d)
             .map(JanxValue::Number)
             .unwrap_or(JanxValue::Null),
-        mysql::Value::Float(f) => serde_json::Number::from_f64(f as f64)
+        mysql::Value::Float(f) => JanxNumber::from_f64(f as f64)
             .map(JanxValue::Number)
             .unwrap_or(JanxValue::Null),
-        mysql::Value::UInt(i) => serde_json::Number::from_f64(i as f64)
+        mysql::Value::UInt(i) => JanxNumber::from_f64(i as f64)
             .map(JanxValue::Number)
             .unwrap_or(JanxValue::Null),
         mysql::Value::Bytes(b) => process_bytes(b, column),

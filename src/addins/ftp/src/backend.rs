@@ -5,8 +5,7 @@ use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
 use common_core::JanxValue;
-use common_utils::utils::{janx_success, json_value_to_janx};
-use serde::Serialize;
+use common_utils::utils::janx_success;
 
 use crate::configuration::FtpSettings;
 use crate::worker::{self, WorkerCommand};
@@ -17,13 +16,6 @@ pub struct FtpBackend {
     tls_settings: Option<TlsSettings>,
     proxy_settings: Option<ProxySettings>,
     logger: Option<Arc<Logger>>,
-}
-
-#[derive(Serialize)]
-struct FtpConfigurationSnapshot {
-    ftp_settings: Option<FtpSettings>,
-    tls_settings: Option<TlsSettings>,
-    proxy_settings: Option<ProxySettings>,
 }
 
 impl FtpBackend {
@@ -97,15 +89,31 @@ impl FtpBackend {
     }
 
     pub fn get_configurations(&self) -> JanxValue {
-        let data = FtpConfigurationSnapshot {
-            ftp_settings: self.ftp_settings.clone(),
-            tls_settings: self.tls_settings.clone(),
-            proxy_settings: self.proxy_settings.clone(),
-        };
         janx_success(
-            Some(json_value_to_janx(
-                serde_json::to_value(data).unwrap_or(serde_json::Value::Null),
-            )),
+            Some(common_core::janx!({
+                "ftp_settings": self.ftp_settings.as_ref().map(|s| common_core::janx!({
+                    "domain": s.domain.clone(),
+                    "port": s.port as i64,
+                    "passive": s.passive,
+                    "read_timeout": s.read_timeout as i64,
+                    "write_timeout": s.write_timeout as i64,
+                    "login": s.login.clone(),
+                    "password": s.password.clone(),
+                    "advanced_resolve": s.advanced_resolve,
+                })),
+                "tls_settings": self.tls_settings.as_ref().map(|s| common_core::janx!({
+                    "use_tls": s.use_tls,
+                    "accept_invalid_certs": s.accept_invalid_certs,
+                    "ca_cert_path": s.ca_cert_path.clone(),
+                })),
+                "proxy_settings": self.proxy_settings.as_ref().map(|s| common_core::janx!({
+                    "server": s.server.clone(),
+                    "port": s.port as i64,
+                    "proxy_type": s.proxy_type.clone(),
+                    "login": s.login.clone(),
+                    "password": s.password.clone(),
+                })),
+            })),
             Some("data"),
         )
     }

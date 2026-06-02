@@ -2,6 +2,7 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 
 use common_backend::SyncBackendThread;
+use common_core::JanxValue;
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::resolve_to_socket_addr;
@@ -96,13 +97,13 @@ impl TcpClientBackend {
         Ok(())
     }
 
-    pub fn set_proxy(&mut self, data: &str) -> Result<(), String> {
+    pub fn set_proxy(&mut self, data: &JanxValue) -> Result<(), String> {
         if self.is_connected() {
             return Err(
                 "Proxy settings can only be set before the connection is established".to_string(),
             );
         }
-        self.proxy = Some(ProxySettings::from_json(data)?);
+        self.proxy = Some(ProxySettings::from_janx(data)?);
         Ok(())
     }
 

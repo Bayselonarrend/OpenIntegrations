@@ -1,4 +1,4 @@
-use serde_json::{json, Value};
+use common_janx::{janx, JanxValue};
 use prost_reflect::{DescriptorPool, MessageDescriptor};
 
 pub fn list_services(descriptor_pool: &DescriptorPool) -> Result<Vec<String>, String> {
@@ -27,7 +27,7 @@ pub fn get_method_info(
     descriptor_pool: &DescriptorPool,
     service_name: &str,
     method_name: &str,
-) -> Result<Value, String> {
+) -> Result<JanxValue, String> {
     let service = descriptor_pool
         .get_service_by_name(service_name)
         .ok_or_else(|| format!("Service '{}' not found", service_name))?;
@@ -45,7 +45,7 @@ pub fn get_method_info(
     let input_schema = message_to_json_schema(&input_desc);
     let output_schema = message_to_json_schema(&output_desc);
 
-    Ok(json!({
+    Ok(janx!({
         "request_type": input_type,
         "response_type": output_type,
         "request_schema": input_schema,
@@ -55,8 +55,8 @@ pub fn get_method_info(
     }))
 }
 
-fn message_to_json_schema(message_desc: &MessageDescriptor) -> Value {
-    let mut fields = serde_json::Map::new();
+fn message_to_json_schema(message_desc: &MessageDescriptor) -> JanxValue {
+    let mut fields = std::collections::BTreeMap::new();
     
     for field in message_desc.fields() {
         let field_name = field.name().to_string();
@@ -80,14 +80,14 @@ fn message_to_json_schema(message_desc: &MessageDescriptor) -> Value {
             prost_reflect::Kind::Enum(_) => "enum",
         };
         
-        fields.insert(field_name, json!({
+        fields.insert(field_name, janx!({
             "type": field_type,
             "number": field.number(),
             "required": !field.supports_presence()
         }));
     }
     
-    json!({
+    janx!({
         "type": "object",
         "fields": fields
     })

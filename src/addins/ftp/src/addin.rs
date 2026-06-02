@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use common_core::JanxValue;
+use common_core::{FromJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
@@ -35,23 +35,23 @@ impl AddIn {
         }
     }
 
-    pub fn update_settings(&mut self, json_data: &str) -> JanxValue {
-        match serde_json::from_str::<FtpSettings>(json_data) {
-            Ok(settings) => {
+    pub fn update_settings(&mut self, settings: &JanxValue) -> JanxValue {
+        match FtpSettings::from_janx(settings) {
+            Some(settings) => {
                 self.backend.update_settings(settings);
                 janx_success(None, None)
             }
-            Err(e) => janx_error(e.to_string()),
+            None => janx_error("Invalid FTP settings Janx payload"),
         }
     }
 
-    pub fn update_proxy(&mut self, json_data: &str) -> JanxValue {
-        match serde_json::from_str::<ProxySettings>(json_data) {
+    pub fn update_proxy(&mut self, proxy: &JanxValue) -> JanxValue {
+        match ProxySettings::from_janx(proxy) {
             Ok(settings) => {
                 self.backend.update_proxy(settings);
                 janx_success(None, None)
             }
-            Err(e) => janx_error(e.to_string()),
+            Err(e) => janx_error(e),
         }
     }
 
@@ -66,12 +66,8 @@ impl AddIn {
         }
     }
 
-    pub fn set_logger(&mut self, logger_config: &str) -> JanxValue {
-        if logger_config.is_empty() {
-            return janx_error("Logger config is empty");
-        }
-
-        match Logger::from_json(logger_config) {
+    pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
+        match Logger::from_janx(logger_config) {
             Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
                 Ok(()) => janx_success(None, None),
                 Err(e) => janx_error(e),
