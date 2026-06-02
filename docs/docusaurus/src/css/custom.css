@@ -554,6 +554,10 @@ li > a.menu__link {
   content: url(../../static/img/Categories/info.png);
 }
 
+.Formats > div > a::before{
+  content: url(../../static/img/Categories/Formats.png);
+}
+
 .Addons > a::before{
   content: url(../../static/img/Categories/addons.png);
 }
@@ -577,7 +581,8 @@ li > a.menu__link {
 .Melezh a::before, 
 .CL a::before, 
 .WebUI a::before,
-.Info a::before{
+.Info a::before,
+.Formats a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
