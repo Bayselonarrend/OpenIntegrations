@@ -59,7 +59,6 @@ name = "common-utils"
 version = "2.2.0"
 dependencies = [
  "common-janx",
- "serde_json",
 ]
 
 [[package]]
