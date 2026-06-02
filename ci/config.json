@@ -254,6 +254,7 @@
          "Calendar": "Планирование и управление",
          "AI": "Искусственный интеллект",
          "Exchange": "Протоколы обмена",
+         "Formats": "Форматы данных",
          "Other": "Прочее"
         }
        }
@@ -371,6 +372,7 @@
          "Calendar": "Planning and projects management",
          "AI": "Artificial Intelligence",
          "Exchange": "Exchange protocols",
+         "Formats": "Data formats",
          "Other": "Other"
         }
        }

@@ -1,7 +1,11 @@
 // OneScript: ./OInt/formats/msgpack/Modules/OPI_MessagePack.os
 // Lib: MessagePack
-// CLI: none
+// CLI: msgpack
 // Keywords: msgpack, messagepack
+
+// DocsCategory: Formats
+// DocsNameRU: MessagePack
+// DocsNameEN: MessagePack
 
 // MIT License
 
