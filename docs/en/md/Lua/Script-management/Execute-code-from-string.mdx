@@ -1,7 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 
-description: Call function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Execute code from string and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,27 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Call function
- Calls a Lua function with arguments passed as an array
+# Execute code from string
+ Executes Lua code from the passed string
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CallFunction(Val Lua, Val FunctionName, Val Arguments = Undefined) Export`
+`Function ExecuteCodeFromString(Val Lua, Val Code) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
-  | FunctionName | --func | String | &#x2714; | Function name or path in module.func format |
-  | Arguments | --args | Array | &#x2716; | Call arguments (BinaryData allowed)) |
+  | Code | --code | String | &#x2714; | Code as string |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Returns</div>
   <div className="return-value-note__value">
- Arbitrary - Calling result
+ Arbitrary - Code execution result
   </div>
 </div>
   
@@ -46,7 +45,7 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 :::tip
-Parameters with Binary data type can also accept file paths on disk and URLs
+An error during Lua code execution will throw an exception
 :::
 <br/>
 

@@ -98,7 +98,7 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined, Val Logging = Und
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 
@@ -199,7 +199,7 @@ Function SetMetadata(Val Connection, Val Metadata) Export
 
     OPI_TypeConversion.GetKeyValueCollection(Metadata);
 
-    MetadataAsString = OPI_Tools.JSONString(Metadata);
+    MetadataAsString = OPI_AddIns.SerializeJanx(Metadata);
 
     Result = Connection.SetMetadata(MetadataAsString);
     Result = OPI_AddIns.DesrializeJanx(Result);
@@ -1096,7 +1096,7 @@ EndFunction
 
 Function SaveSettingsAtAddIn(Connector, Val Parameters)
 
-    ParametersString = OPI_Tools.JSONString(Parameters);
+    ParametersString = OPI_AddIns.SerializeJanx(Parameters);
     SettingsSaving   = Connector.StoreSettings(ParametersString);
 
     Return SettingsSaving;

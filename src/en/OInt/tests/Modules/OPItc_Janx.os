@@ -122,45 +122,81 @@ EndProcedure
 Procedure Janx_SerializeData()
 
     Original = "Hello";
-    Result   = OPI_Janx.SerializeData(Original);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
 
     // END
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "String", Restored, Original);
 
     Original = 42;
-    Result   = OPI_Janx.SerializeData(Original);
+    Options = New Structure;
+    Options.Insert("value", Original);
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "Number", Restored, Original);
 
     Original = GetBinaryDataFromString("");
-    Result   = OPI_Janx.SerializeData(Original);
+    Options = New Structure;
+    Options.Insert("value", Original);
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "EmptyBinary", Restored, Original);
 
     Original = GetBinaryDataFromHexString("010203");
-    Result   = OPI_Janx.SerializeData(Original);
+    Options = New Structure;
+    Options.Insert("value", Original);
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "BinaryOne", Restored, Original);
 
     Map    = New Map;
     Map.Insert("name", "test");
     Map.Insert("body", GetBinaryDataFromHexString("DEADBEEF"));
-    Result = OPI_Janx.SerializeData(Map);
+    Options = New Structure;
+    Options.Insert("value", Map);
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "MapWithBinary", Restored, Map);
 
     Array  = New Array;
     Array.Add(1);
     Array.Add(GetBinaryDataFromHexString("0A0B"));
-    Result = OPI_Janx.SerializeData(Array);
+    Options = New Structure;
+    Options.Insert("value", Array);
 
-    Restored = OPI_Janx.DeserializeData(Result);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", "ArrayWithBinary", Restored, Array);
 
 EndProcedure
@@ -168,29 +204,53 @@ EndProcedure
 Procedure Janx_DeserializeData()
 
     Original = "Hello";
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Binary);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", "String", Original);
 
     Original = GetBinaryDataFromHexString("CAFEBABE");
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Binary);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", "BinaryOne", Original);
 
     Original = New Map;
     Original.Insert("a", 1);
     Original.Insert("b", GetBinaryDataFromHexString("FF"));
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Binary);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", "MapWithBinary", Original);
 
-    Binary = OPI_Janx.SerializeData(Original);
-    Result = OPI_Janx.DeserializeData(Binary);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Binary);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", "Prefix", Binary);
 
@@ -274,22 +334,34 @@ Procedure Janx_Benchmark()
     Result.Insert("JsonRestored"         , JsonRestored);
 
     Start    = CurrentUniversalDateInMilliseconds();
-    JanxData = OPI_Janx.SerializeData(Original);
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    JanxData = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
     Result.Insert("JanxSerializationMs", CurrentUniversalDateInMilliseconds() - Start);
     Result.Insert("JanxData"           , JanxData);
 
     Start        = CurrentUniversalDateInMilliseconds();
-    JanxRestored = OPI_Janx.DeserializeData(JanxData);
+    Options = New Structure;
+    Options.Insert("data", JanxData);
+
+    JanxRestored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     Result.Insert("JanxDeserializationMs", CurrentUniversalDateInMilliseconds() - Start);
     Result.Insert("JanxRestored"         , JanxRestored);
 
     Start              = CurrentUniversalDateInMilliseconds();
-    JanxDataWithoutBin = OPI_Janx.SerializeData(OriginalJson);
+    Options = New Structure;
+    Options.Insert("value", OriginalJson);
+
+    JanxDataWithoutBin = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
     Result.Insert("JanxSerializationWithoutBinMs", CurrentUniversalDateInMilliseconds() - Start);
     Result.Insert("JanxDataWithoutBin"           , JanxData);
 
     Start                  = CurrentUniversalDateInMilliseconds();
-    JanxRestoredWithoutBin = OPI_Janx.DeserializeData(JanxDataWithoutBin);
+    Options = New Structure;
+    Options.Insert("data", JanxDataWithoutBin);
+
+    JanxRestoredWithoutBin = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
     Result.Insert("JanxDeserializationWithoutBinMs", CurrentUniversalDateInMilliseconds() - Start);
     Result.Insert("JanxRestoredWithoutBin"         , JanxRestored);
 

@@ -1,7 +1,7 @@
 ---
-sidebar_position: 4
-
-description: Вызвать функцию и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 3
+sidebar_class_name: doc-no-cli
+description: Выполнить байт код  и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Lua]
 ---
 
@@ -9,27 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Вызвать функцию
- Вызывает функцию Lua с аргументами, переданными массивом
+# Выполнить байт код 
+ Выполняет ранее скомпилированный код
 
 
 
 <Tabs>
   <TabItem value="params" label="Параметры" default>
 
-`Функция ВызватьФункцию(Знач Lua, Знач ИмяФункции, Знач Аргументы = Неопределено) Экспорт`
+`Функция ВыполнитьБайтКод(Знач Lua, Знач БайтКод) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
-  | Lua | --lua | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
-  | ИмяФункции | --func | Строка | &#x2714; | Имя функции или путь вида module.func |
-  | Аргументы | --args | Массив | &#x2716; | Аргументы вызова (допускаются ДвоичныеДанные) |
+  | Lua | - | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
+  | БайтКод | - | ДвоичныеДанные | &#x2714; | Байт код для выполнения |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Возвращаемое значение</div>
   <div className="return-value-note__value">
-  Произвольный - Результат вызова
+  Произвольный - Результат выполнения
   </div>
 </div>
   
@@ -39,7 +38,6 @@ import Admonition from '@theme/Admonition';
   | Параметр | Описание |
   |---|---|
   | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
-  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
 
 
   </TabItem>
@@ -48,7 +46,12 @@ import Admonition from '@theme/Admonition';
 :::tip
 Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
 :::
-<br/>
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
 
 
 

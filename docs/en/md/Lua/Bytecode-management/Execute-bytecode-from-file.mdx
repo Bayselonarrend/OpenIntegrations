@@ -1,7 +1,7 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 
-description: Execute code from file and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Execute bytecode from file and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,26 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Execute code from file
- Executes Lua code from a file on disk
+# Execute bytecode from file
+ Executes bytecode from the specified file
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function ExecuteCodeFromFile(Val Lua, Val Path) Export`
+`Function ExecuteBytecodeFromFile(Val Lua, Val Path) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
-  | Path | --path | String | &#x2714; | Script file path |
+  | Path | --path | String | &#x2714; | Path to file with bytecode |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Returns</div>
   <div className="return-value-note__value">
- Arbitrary - Code execution result
+ Arbitrary - Execution result
   </div>
 </div>
   
@@ -44,10 +44,6 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
-:::tip
-An error during Lua code execution will throw an exception
-:::
-<br/>
 
 
 

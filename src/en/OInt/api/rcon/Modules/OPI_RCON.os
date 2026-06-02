@@ -87,7 +87,7 @@ Function CreateConnection(Val ConnectionParams, Val Logging = Undefined) Export
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 

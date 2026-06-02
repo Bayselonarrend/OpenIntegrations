@@ -6,11 +6,19 @@
  "cli_tool": false,
  "regions": [
   {
-   "name": "Public",
+   "name": "Script management",
    "methods": [
     "CallFunction",
     "ExecuteCodeFromFile",
     "ExecuteCodeFromString"
+   ]
+  },
+  {
+   "name": "Bytecode management",
+   "methods": [
+    "CompileCodeFromFile",
+    "CompileCodeFromString",
+    "ExecuteBytecodeFromFile"
    ]
   }
  ],
@@ -35,7 +43,7 @@
      "short": "-c"
     }
    ],
-   "region": "Public"
+   "region": "Script management"
   },
   {
    "name": "ExecuteCodeFromFile",
@@ -57,12 +65,12 @@
      "short": "-p"
     }
    ],
-   "region": "Public"
+   "region": "Script management"
   },
   {
    "name": "CallFunction",
    "id": "CALLFUNCTION",
-   "description": "Calls a Lua function with arguments passed as an array",
+   "description": "Calls a Lua function with the provided parameters",
    "params": [
     {
      "name": "--lua",
@@ -79,14 +87,80 @@
      "short": "-f"
     },
     {
-     "name": "--args",
-     "types": "Array",
-     "description": "Call arguments (BinaryData allowed))",
+     "name": "--params",
+     "types": "Array Of Arbitrary",
+     "description": "Function parameters",
      "default": "Empty value",
-     "short": "-a"
+     "short": "-p"
     }
    ],
-   "region": "Public"
+   "region": "Script management"
+  },
+  {
+   "name": "CompileCodeFromString",
+   "id": "COMPILECODEFROMSTRING",
+   "description": "Converts source code to Lua bytecode",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--code",
+     "types": "String",
+     "description": "Source code for compilation",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Bytecode management"
+  },
+  {
+   "name": "CompileCodeFromFile",
+   "id": "COMPILECODEFROMFILE",
+   "description": "Converts a source code file to Lua bytecode",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Script file path",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Bytecode management"
+  },
+  {
+   "name": "ExecuteBytecodeFromFile",
+   "id": "EXECUTEBYTECODEFROMFILE",
+   "description": "Executes bytecode from the specified file",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file with bytecode",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Bytecode management"
   }
  ]
 }

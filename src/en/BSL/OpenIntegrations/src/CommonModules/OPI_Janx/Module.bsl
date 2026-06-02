@@ -1,7 +1,11 @@
 // OneScript: ./OInt/formats/janx/Modules/OPI_Janx.os
 // Lib: Janx
-// CLI: none
+// CLI: janx
 // Keywords: janx
+
+// DocsCategory: Formats
+// DocsNameRU: Janx
+// DocsNameEN: Janx
 
 // MIT License
 
@@ -50,11 +54,13 @@
 // Serialize data to Janx-1 format
 //
 // Parameters:
-// Data - Arbitrary - Serialization value - value
+// Data - Arbitrary - Collection for serialization - value
 //
 // Returns:
 // BinaryData - [u16 BE: version][u32 BE: JSON length][u32 BE: markers count][JSON][appendix]
 Function SerializeData(Val Data) Export
+
+    OPI_TypeConversion.GetCollection(Data);
 
     ArrayOfBinary = New Array;
     Offset        = 0;
@@ -88,6 +94,8 @@ EndFunction
 // Returns:
 // Arbitrary - Restored value
 Function DeserializeData(Val Data) Export
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
 
     TotalSize = Data.Size();
 

@@ -597,7 +597,9 @@ li > a.menu__link {
 .GreenAPI a::before,
 .GreenMax a::before,
 .GRPC a::before,
+.Janx a::before,
 .Lua a::before,
+.MessagePack a::before,
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
@@ -675,8 +677,16 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/GRPC.png);
 }
 
+.Janx > div > a::before{
+  content: url(../../static/img/APIs/small/Janx.png);
+}
+
 .Lua > div > a::before{
   content: url(../../static/img/APIs/small/Lua.png);
+}
+
+.MessagePack > div > a::before{
+  content: url(../../static/img/APIs/small/MessagePack.png);
 }
 
 .MongoDB > div > a::before{

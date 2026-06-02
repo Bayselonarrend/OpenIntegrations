@@ -66,7 +66,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "", Val Logging = Undefin
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 
@@ -320,7 +320,7 @@ Function SetSettings(Val Connector, Val SSHSettings)
 
     EndTry;
 
-    SettingsString = OPI_Tools.JSONString(SSHSettings);
+    SettingsString = OPI_AddIns.SerializeJanx(SSHSettings);
 
     Result = Connector.SetSettings(SettingsString);
     Result = OPI_AddIns.DesrializeJanx(Result);
@@ -348,7 +348,7 @@ Function SetProxy(Val Connector, Val Proxy)
 
     EndTry;
 
-    ProxyString = OPI_Tools.JSONString(Proxy);
+    ProxyString = OPI_AddIns.SerializeJanx(Proxy);
 
     Result = Connector.SetProxy(ProxyString);
     Result = OPI_AddIns.DesrializeJanx(Result);

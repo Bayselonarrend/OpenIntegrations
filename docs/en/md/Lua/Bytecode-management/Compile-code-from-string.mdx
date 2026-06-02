@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+
+description: Compile code from string and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Compile code from string
+ Converts source code to Lua bytecode
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function CompileCodeFromString(Val Lua, Val Code) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
+  | Code | --code | String | &#x2714; | Source code for compilation |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ BinaryData - Compilation result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+An error during code compilation will throw an exception
+:::
+<br/>
+
+
+
+ 
+
+
+
+

@@ -429,7 +429,7 @@ Function InitializeConnector(Val AddressPort, Val View, Val Logging = Undefined)
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 

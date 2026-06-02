@@ -195,11 +195,13 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Uint8");
 
-    Result = OPI_MessagePack.SerializeData(-1);
+    Data   = -1;
+    Result = OPI_MessagePack.SerializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "NegativeFixint");
 
-    Result = OPI_MessagePack.SerializeData(-33);
+    Data   = -33;
+    Result = OPI_MessagePack.SerializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Int8");
 

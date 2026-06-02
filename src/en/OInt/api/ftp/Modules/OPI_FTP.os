@@ -100,7 +100,7 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 
@@ -958,7 +958,7 @@ EndFunction
 Function SetFtpSettings(Val Connector, Val FTPSettings)
 
     ErrorText = "FTP settings are not a valid key-value structure";
-    Settings  = SettingAsJson(FTPSettings, ErrorText);
+    Settings  = SettingsToJanx(FTPSettings, ErrorText);
 
     If TypeOf(Settings) = Type("Map") Then
         Return Settings;
@@ -980,7 +980,7 @@ Function SetProxySettings(Val Connector, Val ProxySettings)
     EndIf;
 
     ErrorText = "Proxy settings are not a valid key-value structure";
-    Settings  = SettingAsJson(ProxySettings, ErrorText);
+    Settings  = SettingsToJanx(ProxySettings, ErrorText);
 
     If TypeOf(Settings) = Type("Map") Then
         Return Settings;
@@ -993,12 +993,12 @@ Function SetProxySettings(Val Connector, Val ProxySettings)
 
 EndFunction
 
-Function SettingAsJson(Val Collection, Val ErrorText)
+Function SettingsToJanx(Val Collection, Val ErrorText)
 
     OPI_TypeConversion.GetKeyValueCollection(Collection);
 
     Try
-        Result = OPI_Tools.JSONString(Collection);
+        Result = OPI_AddIns.SerializeJanx(Collection);
     Except
 
         Result = New Map;

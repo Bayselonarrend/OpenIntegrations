@@ -1,0 +1,61 @@
+---
+sidebar_position: 3
+
+description: Call function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Call function
+ Calls a Lua function with the provided parameters
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
+  | FunctionName | --func | String | &#x2714; | Function name or path in module.func format |
+  | Parameters | --params | Array Of Arbitrary | &#x2716; | Function parameters |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Arbitrary - Calling result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+Any JSON-compatible types and BinaryData are allowed as function parameters
+
+The function must be pre-defined in the context using one of the code execution methods
+:::
+<br/>
+
+
+
+ 
+
+
+
+

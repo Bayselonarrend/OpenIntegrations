@@ -127,7 +127,7 @@ Function CreateConnection(Val Address
     If ValueIsFilled(Proxy) Then
 
         OPI_TypeConversion.GetKeyValueCollection(Proxy);
-        ProxtString = OPI_Tools.JSONString(Proxy);
+        ProxtString = OPI_AddIns.SerializeJanx(Proxy);
 
         Setup = WSClient.SetProxySettings(ProxtString);
         Setup = OPI_AddIns.DesrializeJanx(Setup);
@@ -142,7 +142,7 @@ Function CreateConnection(Val Address
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
         LogResult = WSClient.SetLogger(SettingsString);
         LogResult = OPI_AddIns.DesrializeJanx(LogResult);
@@ -158,7 +158,7 @@ Function CreateConnection(Val Address
         ErrorText = "Incorrect header structure";
         OPI_TypeConversion.GetKeyValueCollection(Headers, ErrorText);
 
-        HeadersAsString = OPI_Tools.JSONString(Headers);
+        HeadersAsString = OPI_AddIns.SerializeJanx(Headers);
         Result          = WSClient.SetHeaders(HeadersAsString);
         Result          = OPI_AddIns.DesrializeJanx(Result);
 

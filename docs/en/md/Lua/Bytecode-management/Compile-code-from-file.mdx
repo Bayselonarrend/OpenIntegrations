@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 
-description: Execute code from string and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Compile code from file and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,26 +9,26 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Execute code from string
- Executes Lua code from the passed string
+# Compile code from file
+ Converts a source code file to Lua bytecode
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function ExecuteCodeFromString(Val Lua, Val Code) Export`
+`Function CompileCodeFromFile(Val Lua, Val Path) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
-  | Code | --code | String | &#x2714; | Code as string |
+  | Path | --path | String | &#x2714; | Script file path |
 
 
 <div className="return-value-note">
   <div className="return-value-note__title">Returns</div>
   <div className="return-value-note__value">
- Arbitrary - Code execution result
+ BinaryData - Compilation result
   </div>
 </div>
   
@@ -45,7 +45,7 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 :::tip
-An error during Lua code execution will throw an exception
+An error during code compilation will throw an exception
 :::
 <br/>
 

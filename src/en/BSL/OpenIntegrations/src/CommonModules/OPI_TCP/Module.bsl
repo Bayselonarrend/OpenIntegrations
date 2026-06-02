@@ -122,7 +122,7 @@ Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging
 
         ErrorText      = "Incorrect logging settings";
         OPI_TypeConversion.GetKeyValueCollection(Logging, ErrorText);
-        SettingsString = OPI_Tools.JSONString(Logging);
+        SettingsString = OPI_AddIns.SerializeJanx(Logging);
 
     EndIf;
 
@@ -153,7 +153,7 @@ Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "", Val Logging
     If ValueIsFilled(Proxy) Then
 
         OPI_TypeConversion.GetKeyValueCollection(Proxy);
-        ProxtString = OPI_Tools.JSONString(Proxy);
+        ProxtString = OPI_AddIns.SerializeJanx(Proxy);
 
         Setup = TCPClient.SetProxySettings(ProxtString);
         Setup = OPI_AddIns.DesrializeJanx(Setup);
