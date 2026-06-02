@@ -158,6 +158,19 @@ impl JanxValue {
     pub fn get(&self, key: &str) -> Option<&JanxValue> {
         self.as_object()?.get(key)
     }
+
+    /// Значение отсутствует или не несёт данных (null, `""`, `{}`, `[]`, пустой binary).
+    /// Скаляры вроде `false` и `0` не считаются пустыми.
+    pub fn is_empty(&self) -> bool {
+        match self {
+            Self::Null => true,
+            Self::Bool(_) | Self::Number(_) => false,
+            Self::String(s) => s.is_empty(),
+            Self::Array(items) => items.is_empty(),
+            Self::Object(map) => map.is_empty(),
+            Self::Binary(bytes) => bytes.is_empty(),
+        }
+    }
 }
 
 #[cfg(test)]
@@ -190,5 +203,18 @@ mod tests {
 
         assert!(root.get("k").is_some());
         assert!(BTreeMap::<String, JanxValue>::from_janx(&root).is_some());
+    }
+
+    #[test]
+    fn is_empty() {
+        assert!(JanxValue::Null.is_empty());
+        assert!(JanxValue::String(String::new()).is_empty());
+        assert!(JanxValue::Object(BTreeMap::new()).is_empty());
+        assert!(JanxValue::Array(Vec::new()).is_empty());
+        assert!(JanxValue::binary([]).is_empty());
+
+        assert!(!JanxValue::Bool(false).is_empty());
+        assert!(!JanxValue::Number(0.into()).is_empty());
+        assert!(!JanxValue::String("x".into()).is_empty());
     }
 }

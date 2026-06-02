@@ -53,12 +53,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-janx"
+version = "2.2.0"
+dependencies = [
+ "serde_json",
+]
+
+[[package]]
 name = "common-logs"
 version = "2.2.0"
 dependencies = [
  "chrono",
+ "common-janx",
  "serde",
- "serde_json",
 ]
 
 [[package]]

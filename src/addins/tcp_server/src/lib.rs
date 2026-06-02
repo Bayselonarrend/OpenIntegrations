@@ -126,17 +126,19 @@ impl AddIn {
             return janx_error("Server already started");
         }
 
-        match Logger::from_janx(logger_config) {
-            Ok(logger) => {
-                let logger_arc = Arc::new(logger);
-                self.logger = Some(logger_arc.clone());
+        if !logger_config.is_empty() {
+            match Logger::from_janx(logger_config) {
+                Ok(logger) => {
+                    let logger_arc = Arc::new(logger);
+                    self.logger = Some(logger_arc.clone());
 
-                if let Ok(mut backend) = self.backend.lock() {
-                    backend.set_logger(logger_arc);
+                    if let Ok(mut backend) = self.backend.lock() {
+                        backend.set_logger(logger_arc);
+                    }
                 }
-            }
-            Err(e) => {
-                return janx_error(format!("Failed to initialize logger: {}", e));
+                Err(e) => {
+                    return janx_error(format!("Failed to initialize logger: {}", e));
+                }
             }
         }
 

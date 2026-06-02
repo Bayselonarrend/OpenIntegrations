@@ -1,23 +1,9 @@
 use addin1c::Variant;
 use common_janx::{decode, JanxValue};
 
-/// Trait для автоматической конвертации из Variant в нужный тип
-///
-/// # Пример
-///
-/// ```rust
-/// fn my_method(value: impl FromVariant) {
-///     // value автоматически конвертируется из Variant
-/// }
-///
-/// // Вызов:
-/// my_method(&params[0]); // Rust сам выведет тип из сигнатуры
-/// ```
 pub trait FromVariant {
     fn from_variant(variant: &Variant) -> Self;
 }
-
-// Реализации для базовых типов
 
 impl FromVariant for String {
     fn from_variant(variant: &Variant) -> Self {
@@ -62,14 +48,13 @@ impl FromVariant for Vec<u8> {
 }
 
 impl FromVariant for JanxValue {
+
     fn from_variant(variant: &Variant) -> Self {
         variant
             .get_blob()
             .ok()
+            .filter(|data| !data.is_empty())
             .and_then(|data| decode(data).ok())
             .unwrap_or(JanxValue::Null)
     }
 }
-
-// Для &str нужен специальный подход, так как нельзя вернуть заимствование
-// Вместо этого используем String и передаём &str через as_str()

@@ -127,9 +127,13 @@ impl AddIn {
             return Ok(());
         }
 
+        if logger_config.is_empty() {
+            return Ok(());
+        }
+
         let logger = Logger::from_janx(logger_config)
             .map_err(|e| format!("Failed to initialize logger: {}", e))?;
-        
+
         let logger_arc = Arc::new(logger);
         self.logger = Some(logger_arc.clone());
         self.server.set_logger(logger_arc);

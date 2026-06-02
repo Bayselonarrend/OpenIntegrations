@@ -46,7 +46,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let config = JanxValue::from_variant(&params[1]);
             let logger_config = JanxValue::from_variant(&params[2]);
 
-            if let Err(e) = obj.init_logger_if_needed(&logger_config) {
+            if let Err(e) = obj.init_logger(&logger_config) {
                 return Box::new(janx_error(e));
             };
             Box::new(obj.server.start(port, &config))
@@ -100,14 +100,18 @@ impl AddIn {
         }
     }
 
-    fn init_logger_if_needed(&mut self, logger_config: &JanxValue) -> Result<(), String> {
+    fn init_logger(&mut self, logger_config: &JanxValue) -> Result<(), String> {
         if self.logger.is_some() {
+            return Ok(());
+        }
+
+        if logger_config.is_empty() {
             return Ok(());
         }
 
         let logger = Logger::from_janx(logger_config)
             .map_err(|e| format!("Failed to initialize logger: {}", e))?;
-        
+
         let logger_arc = Arc::new(logger);
         self.logger = Some(logger_arc.clone());
         self.server.set_logger(logger_arc);
