@@ -112,6 +112,6 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        self.lock_backend().disconnect();
+        self.lock_backend().close_backend();
     }
 }

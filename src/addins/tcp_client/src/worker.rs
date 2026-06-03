@@ -232,10 +232,16 @@ impl Session {
             }
         };
 
-        match connection {
+        let ok = match connection {
             Connection::Plain(tcp_stream) => tcp_stream.shutdown(Shutdown::Write).is_ok(),
             Connection::Tls(tls_stream) => tls_stream.shutdown().is_ok(),
+        };
+
+        if !ok {
+            self.save_error("Close output failed");
         }
+
+        ok
     }
 }
 

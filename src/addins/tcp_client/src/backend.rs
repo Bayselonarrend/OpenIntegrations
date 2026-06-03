@@ -17,6 +17,7 @@ pub struct TcpClientBackend {
     tls: Option<TlsSettings>,
     proxy: Option<ProxySettings>,
     logger: Option<Arc<Logger>>,
+    /// Ошибки до появления worker-потока и кэш после `GetLastError`.
     last_error: String,
 }
 
@@ -109,23 +110,29 @@ impl TcpClientBackend {
 
     pub fn connect(&mut self) -> bool {
         if self.is_connected() {
-            self.last_error = "Connection already initialized".to_string();
+            self.stash_error("Connection already initialized");
             return false;
         }
 
         let address = match self.address {
             Some(a) => a,
             None => {
-                self.last_error = "No address found!".to_string();
+                self.stash_error("No address found!");
                 return false;
             }
         };
 
-        self.ensure_thread();
-
-        let Some(thread) = &self.thread else {
-            self.last_error = "Backend thread is not available".to_string();
+        if let Err(e) = self.ensure_thread() {
+            self.stash_error(e);
             return false;
+        }
+
+        let thread = match self.thread.as_ref() {
+            Some(t) => t,
+            None => {
+                self.stash_error("Backend thread is not available");
+                return false;
+            }
         };
 
         let tls = self.tls.clone();
@@ -141,7 +148,7 @@ impl TcpClientBackend {
             .unwrap_or(false);
 
         if !ok {
-            self.sync_last_error();
+            self.pull_last_error();
         }
 
         ok
@@ -152,7 +159,7 @@ impl TcpClientBackend {
             return true;
         }
 
-        let Some(thread) = &self.thread else {
+        let Some(thread) = self.thread.as_ref() else {
             return true;
         };
 
@@ -162,9 +169,9 @@ impl TcpClientBackend {
     }
 
     pub fn send(&mut self, data: Vec<u8>, timeout_ms: i32) -> bool {
-        let Some(thread) = &self.thread else {
-            self.last_error = "No connection found!".to_string();
-            return false;
+        let thread = match self.require_connected() {
+            Ok(t) => t,
+            Err(_) => return false,
         };
 
         let ok = thread
@@ -176,16 +183,16 @@ impl TcpClientBackend {
             .unwrap_or(false);
 
         if !ok {
-            self.sync_last_error();
+            self.pull_last_error();
         }
 
         ok
     }
 
     pub fn receive(&mut self, max_data_size: i32, end_marker: Vec<u8>, timeout_ms: i32) -> Vec<u8> {
-        let Some(thread) = &self.thread else {
-            self.last_error = "No connection found!".to_string();
-            return vec![];
+        let thread = match self.require_connected() {
+            Ok(t) => t,
+            Err(_) => return vec![],
         };
 
         let data = thread
@@ -197,14 +204,14 @@ impl TcpClientBackend {
             })
             .unwrap_or_default();
 
-        self.sync_last_error();
+        self.pull_last_error();
         data
     }
 
     pub fn close_output(&mut self) -> bool {
-        let Some(thread) = &self.thread else {
-            self.last_error = "No connection found!".to_string();
-            return false;
+        let thread = match self.require_connected() {
+            Ok(t) => t,
+            Err(_) => return false,
         };
 
         let ok = thread
@@ -212,24 +219,28 @@ impl TcpClientBackend {
             .unwrap_or(false);
 
         if !ok {
-            self.sync_last_error();
+            self.pull_last_error();
         }
 
         ok
     }
 
     pub fn last_error(&mut self) -> String {
-        self.sync_last_error();
+        self.pull_last_error();
         self.last_error.clone()
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
     }
 
-    fn sync_last_error(&mut self) {
+    fn stash_error(&mut self, message: impl Into<String>) {
+        self.last_error = message.into();
+    }
+
+    fn pull_last_error(&mut self) {
         if let Some(ref thread) = self.thread {
             if let Ok(error) = thread.call(|response| WorkerCommand::GetLastError { response }) {
                 if !error.is_empty() {
@@ -239,19 +250,33 @@ impl TcpClientBackend {
         }
     }
 
-    fn ensure_thread(&mut self) {
-        if self.thread.is_some() {
-            return;
+    fn require_connected(&mut self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            self.stash_error("No connection found!");
+            return Err(self.last_error.clone());
         }
 
-        if let Ok(thread) = worker::spawn_thread(self.logger.clone()) {
-            self.thread = Some(thread);
+        if self.thread.is_none() {
+            self.stash_error("Backend thread is not available");
+            return Err(self.last_error.clone());
         }
+
+        Ok(self.thread.as_ref().expect("thread checked above"))
+    }
+
+    fn ensure_thread(&mut self) -> Result<(), String> {
+        if self.thread.is_some() {
+            return Ok(());
+        }
+
+        let thread = worker::spawn_thread(self.logger.clone())?;
+        self.thread = Some(thread);
+        Ok(())
     }
 }
 
 impl Drop for TcpClientBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }

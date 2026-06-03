@@ -497,7 +497,6 @@ dependencies = [
  "common-logs",
  "common-tcp",
  "common-utils",
- "serde_json",
 ]
 
 [[package]]
