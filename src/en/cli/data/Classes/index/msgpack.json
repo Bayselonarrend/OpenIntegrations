@@ -4,6 +4,45 @@
  "self_depend": false,
  "dependencies": null,
  "cli_tool": false,
- "regions": [],
- "methods": []
+ "regions": [
+  {
+   "name": "Public",
+   "methods": [
+    "DeserializeData",
+    "SerializeData"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "SerializeData",
+   "id": "SERIALIZEDATA",
+   "description": "Serializes data into MessagePack format",
+   "params": [
+    {
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Collection for serialization",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Public"
+  },
+  {
+   "name": "DeserializeData",
+   "id": "DESERIALIZEDATA",
+   "description": "Deserializes data from MessagePack format",
+   "params": [
+    {
+     "name": "--data",
+     "types": "BinaryData",
+     "description": "Serialized value",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Public"
+  }
+ ]
 }

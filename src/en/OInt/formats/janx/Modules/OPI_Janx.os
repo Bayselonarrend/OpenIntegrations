@@ -50,16 +50,15 @@
 
 #Region Public
 
-// Serialize data to Janx-1 format
+// Serialize data
+// Serializes data into Janx format
 //
 // Parameters:
 // Data - Arbitrary - Collection for serialization - value
 //
 // Returns:
-// BinaryData - [u16 BE: version][u32 BE: JSON length][u32 BE: markers count][JSON][appendix]
+// BinaryData - Serialized data
 Function SerializeData(Val Data) Export
-
-    OPI_TypeConversion.GetCollection(Data);
 
     ArrayOfBinary = New Array;
     Offset        = 0;
@@ -85,7 +84,8 @@ Function SerializeData(Val Data) Export
 
 EndFunction
 
-// Deserialize Janx-1 format data
+// Deserialize data
+// Deserializes data from Janx format
 //
 // Parameters:
 // Data - BinaryData - Serialized value - data

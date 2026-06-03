@@ -17,7 +17,7 @@
   {
    "name": "SerializeData",
    "id": "SERIALIZEDATA",
-   "description": "",
+   "description": "Serializes data into Janx format",
    "params": [
     {
      "name": "--value",
@@ -32,7 +32,7 @@
   {
    "name": "DeserializeData",
    "id": "DESERIALIZEDATA",
-   "description": "",
+   "description": "Deserializes data from Janx format",
    "params": [
     {
      "name": "--data",

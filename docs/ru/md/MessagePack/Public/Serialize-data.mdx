@@ -1,8 +1,8 @@
 ---
 sidebar_position: 1
 
-description: Сериализовать данные и другие функции для работы с Janx в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Janx]
+description: Сериализовать данные и другие функции для работы с MessagePack в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, MessagePack]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
 # Сериализовать данные
- Сериализует данные в формат Janx
+ Сериализует данные в формат MessagePack
 
 
 
@@ -45,8 +45,7 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Исходное  = "Привет";
-    Результат = OPI_Janx.СериализоватьДанные(Исходное);
+    Результат = OPI_MessagePack.СериализоватьДанные("");
 ```
     
 

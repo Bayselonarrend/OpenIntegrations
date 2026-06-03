@@ -236,8 +236,8 @@ EndFunction
 // An error during code compilation will throw an exception
 //
 // Parameters:
-//     Lua - Arbitrary - Lua AddIn or Lua version to run - lua
-// Code    - String    - Source code for compilation     - code
+// Lua  - Arbitrary - Lua AddIn or Lua version to run - lua
+// Code - String    - Source code for compilation     - code
 //
 // Returns:
 // BinaryData - Compilation result
@@ -268,8 +268,8 @@ EndFunction
 // An error during code compilation will throw an exception
 //
 // Parameters:
-//     Lua - Arbitrary - Lua AddIn or Lua version to run - lua
-// Path    - String    - Script file path                - path
+// Lua  - Arbitrary - Lua AddIn or Lua version to run - lua
+// Path - String    - Script file path                - path
 //
 // Returns:
 // BinaryData - Compilation result

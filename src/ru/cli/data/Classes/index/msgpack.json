@@ -4,6 +4,45 @@
  "self_depend": false,
  "dependencies": null,
  "cli_tool": false,
- "regions": [],
- "methods": []
+ "regions": [
+  {
+   "name": "Программный интерфейс",
+   "methods": [
+    "ДесериализоватьДанные",
+    "СериализоватьДанные"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "СериализоватьДанные",
+   "id": "СЕРИАЛИЗОВАТЬДАННЫЕ",
+   "description": "Сериализует данные в формат MessagePack",
+   "params": [
+    {
+     "name": "--value",
+     "types": "Произвольный",
+     "description": "Коллекция для сериализации",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Программный интерфейс"
+  },
+  {
+   "name": "ДесериализоватьДанные",
+   "id": "ДЕСЕРИАЛИЗОВАТЬДАННЫЕ",
+   "description": "Десериализует данные из формата MessagePack",
+   "params": [
+    {
+     "name": "--data",
+     "types": "ДвоичныеДанные",
+     "description": "Сериализованное значение",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Программный интерфейс"
+  }
+ ]
 }

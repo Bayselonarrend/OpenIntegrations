@@ -311,14 +311,13 @@ Function CreateGRPCConnection(Val ConnectionSettings) Export
 
     If OPI_GRPC.IsConnector(Connection) Then
 
-        ParametersString = OPI_Tools.JSONString(ConnectionSettings);
+        JanxParameters = OPI_AddIns.SerializeJanx(ConnectionSettings);
+        Result         = Connection.StoreSettings(JanxParameters);
+        Result         = OPI_AddIns.DesrializeJanx(Result);
 
-        // BSLLS:UnusedLocalVariable-off
-
-        //@skip-check module-unused-local-variable
-        Result = Connection.StoreSettings(ParametersString);
-
-        // BSLLS:UnusedLocalVariable-on
+        If Not OPI_Tools.GetOr(Result, "result", False) Then
+            Return Result;
+        EndIf;
 
     EndIf;
 

@@ -51,6 +51,14 @@
 
 #Region Public
 
+// Serialize data
+// Serializes data into MessagePack format
+//
+// Parameters:
+// Data - Arbitrary - Collection for serialization - value
+//
+// Returns:
+// BinaryData - Serialized data
 Function SerializeData(Val Data) Export
 
     Context = NewWriteContext();
@@ -60,6 +68,14 @@ Function SerializeData(Val Data) Export
 
 EndFunction
 
+// Deserialize data
+// Deserializes data from MessagePack format
+//
+// Parameters:
+// Data - BinaryData - Serialized value - data
+//
+// Returns:
+// Arbitrary - Restored value
 Function DeserializeData(Val Data) Export
 
     Buffer  = GetBinaryDataBufferFromBinaryData(Data);
