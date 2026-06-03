@@ -61,10 +61,7 @@ impl SQLiteBackend {
 
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -81,14 +78,7 @@ impl SQLiteBackend {
         params: Vec<JanxValue>,
         force_result: bool,
     ) -> Result<Option<Vec<JanxValue>>, String> {
-        if !self.is_connected() {
-            return Err("Not connected to SQLite".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::Execute {
@@ -101,14 +91,7 @@ impl SQLiteBackend {
     }
 
     pub fn load_extension(&self, path: String, entry_point: String) -> Result<(), String> {
-        if !self.is_connected() {
-            return Err("Not connected to SQLite".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::LoadExtension {
@@ -119,10 +102,23 @@ impl SQLiteBackend {
             .and_then(|result| result)
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to SQLite".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -138,6 +134,6 @@ impl SQLiteBackend {
 
 impl Drop for SQLiteBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }

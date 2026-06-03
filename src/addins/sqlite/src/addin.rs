@@ -75,12 +75,12 @@ impl AddIn {
 
     pub fn close_connection(&mut self) -> JanxValue {
         let mut state = self.lock_state();
-        state.client.close();
+        state.client.close_backend();
         janx_success(None, None)
     }
 
     pub fn execute_query(&self, key: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         if !state.client.is_connected() {
             return janx_error("Not connected to SQLite");
         }
@@ -104,7 +104,7 @@ impl AddIn {
     }
 
     pub fn load_extension(&self, path: String, point: String) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         match state.client.load_extension(path, point) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(&e),
@@ -177,5 +177,11 @@ impl AddIn {
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn common_core::getset::ValueType {
         self.get_field_ptr(index) as *mut _
+    }
+}
+
+impl Drop for AddIn {
+    fn drop(&mut self) {
+        self.lock_state().client.close_backend();
     }
 }
