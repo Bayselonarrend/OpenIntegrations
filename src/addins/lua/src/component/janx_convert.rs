@@ -14,10 +14,7 @@ impl LuaEngine {
             Value::Number(n) => JanxNumber::from_f64(n)
                 .map(JanxValue::Number)
                 .ok_or_else(|| format!("Invalid number: {}", n)),
-            Value::String(s) => match s.to_str() {
-                Ok(text) => Ok(JanxValue::String(text.to_string())),
-                Err(_) => Ok(JanxValue::binary(s.as_bytes().to_vec())),
-            },
+            Value::String(s) => Ok(lua_string_to_janx(&s)),
             Value::Table(table) => {
                 if Self::is_array_table(&table)? {
                     let mut items = Vec::new();
@@ -87,26 +84,39 @@ impl LuaEngine {
         }
     }
 
+    /// Lua table is treated as Janx array only when keys are exactly 1..n without gaps.
+    /// An empty table is treated as an object: Lua does not distinguish empty array vs map.
     fn is_array_table(table: &mlua::Table) -> Result<bool, String> {
-        let len = table
-            .len()
-            .map_err(|e| format!("Table length error: {}", e))?
-            as usize;
-        if len == 0 {
-            return Ok(true);
-        }
-
+        let mut max_index = 0usize;
         let mut count = 0usize;
+
         for pair in table.pairs::<Value, Value>() {
             let (key, _) = pair.map_err(|e| format!("Table iteration error: {}", e))?;
             count += 1;
             match key {
-                Value::Integer(i) if i >= 1 && (i as usize) <= len => continue,
+                Value::Integer(i) if i >= 1 => {
+                    max_index = max_index.max(i as usize);
+                }
                 _ => return Ok(false),
             }
         }
 
-        Ok(count == len)
+        if count == 0 {
+            return Ok(false);
+        }
+
+        Ok(count == max_index)
+    }
+}
+
+/// Lua has one string type for both text and raw bytes. On the way back to Janx:
+/// valid UTF-8 → String, otherwise → Binary.
+fn lua_string_to_janx(s: &mlua::String) -> JanxValue {
+    let borrowed = s.as_bytes();
+    let bytes = borrowed.as_ref();
+    match std::str::from_utf8(bytes) {
+        Ok(text) => JanxValue::String(text.to_string()),
+        Err(_) => JanxValue::binary(bytes.to_vec()),
     }
 }
 
