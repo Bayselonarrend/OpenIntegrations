@@ -97,7 +97,7 @@ impl AddIn {
     }
 
     pub fn call(&mut self, request: &JanxValue) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .call(request)
@@ -184,7 +184,7 @@ impl AddIn {
     }
 
     pub fn list_services(&mut self) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .list_services()
@@ -192,7 +192,7 @@ impl AddIn {
     }
 
     pub fn list_methods(&mut self, service_name: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .list_methods(service_name)
@@ -200,7 +200,7 @@ impl AddIn {
     }
 
     pub fn get_method_info(&mut self, service_name: &str, method_name: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .get_method_info(service_name, method_name)
@@ -208,7 +208,7 @@ impl AddIn {
     }
 
     pub fn call_server_stream(&mut self, request: &JanxValue) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .call_server_stream(request)
@@ -216,7 +216,7 @@ impl AddIn {
     }
 
     pub fn start_client_stream(&mut self, request: &JanxValue) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .start_client_stream(request)
@@ -224,7 +224,7 @@ impl AddIn {
     }
 
     pub fn start_bidi_stream(&mut self, request: &JanxValue) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .start_bidi_stream(request)
@@ -232,7 +232,7 @@ impl AddIn {
     }
 
     pub fn send_message(&mut self, stream_id: &str, message: &JanxValue) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .send_message(stream_id, message)
@@ -240,7 +240,7 @@ impl AddIn {
     }
 
     pub fn get_next_message(&mut self, stream_id: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .get_next_message(stream_id)
@@ -248,7 +248,7 @@ impl AddIn {
     }
 
     pub fn finish_sending(&mut self, stream_id: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .finish_sending(stream_id)
@@ -256,7 +256,7 @@ impl AddIn {
     }
 
     pub fn close_stream(&mut self, stream_id: &str) -> JanxValue {
-        let mut state = self.lock_state();
+        let state = self.lock_state();
         state
             .client
             .close_stream(stream_id)
@@ -282,5 +282,6 @@ impl Drop for AddIn {
             let _ = state.client.close_all_streams();
             let _ = state.client.disconnect();
         }
+        state.client.close_backend();
     }
 }

@@ -66,10 +66,7 @@ impl GrpcBackend {
 
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -81,14 +78,7 @@ impl GrpcBackend {
     }
 
     pub fn disconnect(&mut self) -> Result<(), String> {
-        if !self.is_connected() {
-            return Err("Connection already closed".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::Disconnect { response })
@@ -96,14 +86,7 @@ impl GrpcBackend {
     }
 
     pub fn call(&self, request: &JanxValue) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("Connection not initialized".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread.call(|response| WorkerCommand::Call {
             params: request.clone(),
@@ -114,10 +97,7 @@ impl GrpcBackend {
     pub fn load_proto(&mut self, filename: &str, content: &str) -> Result<(), String> {
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         let response = thread.call(|response| WorkerCommand::LoadProto {
             filename: filename.to_string(),
@@ -131,10 +111,7 @@ impl GrpcBackend {
     pub fn compile_protos(&mut self) -> Result<(), String> {
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         let response = thread.call(|response| WorkerCommand::CompileProtos { response })?;
 
@@ -144,37 +121,25 @@ impl GrpcBackend {
     pub fn set_metadata(&mut self, metadata: HashMap<String, String>) -> Result<(), String> {
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         let response = thread.call(|response| WorkerCommand::SetMetadata { metadata, response })?;
         response_to_result(response)
     }
 
     pub fn list_services(&self) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::ListServices { response })
+        self.require_thread()?.call(|response| WorkerCommand::ListServices { response })
     }
 
     pub fn list_methods(&self, service_name: &str) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::ListMethods {
+        self.require_thread()?.call(|response| WorkerCommand::ListMethods {
                 service_name: service_name.to_string(),
                 response,
             })
     }
 
     pub fn get_method_info(&self, service_name: &str, method_name: &str) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::GetMethodInfo {
+        self.require_thread()?.call(|response| WorkerCommand::GetMethodInfo {
                 service_name: service_name.to_string(),
                 method_name: method_name.to_string(),
                 response,
@@ -182,52 +147,28 @@ impl GrpcBackend {
     }
 
     pub fn call_server_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("Connection not initialized".to_string());
-        }
-
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::CallServerStream {
+        self.require_connected()?.call(|response| WorkerCommand::CallServerStream {
                 params: params.clone(),
                 response,
             })
     }
 
     pub fn start_client_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("Connection not initialized".to_string());
-        }
-
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::StartClientStream {
+        self.require_connected()?.call(|response| WorkerCommand::StartClientStream {
                 params: params.clone(),
                 response,
             })
     }
 
     pub fn start_bidi_stream(&self, params: &JanxValue) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("Connection not initialized".to_string());
-        }
-
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::StartBidiStream {
+        self.require_connected()?.call(|response| WorkerCommand::StartBidiStream {
                 params: params.clone(),
                 response,
             })
     }
 
     pub fn send_message(&self, stream_id: &str, message: &JanxValue) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::SendMessage {
+        self.require_thread()?.call(|response| WorkerCommand::SendMessage {
                 stream_id: stream_id.to_string(),
                 message: message.clone(),
                 response,
@@ -235,30 +176,21 @@ impl GrpcBackend {
     }
 
     pub fn get_next_message(&self, stream_id: &str) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::GetNextMessage {
+        self.require_thread()?.call(|response| WorkerCommand::GetNextMessage {
                 stream_id: stream_id.to_string(),
                 response,
             })
     }
 
     pub fn finish_sending(&self, stream_id: &str) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::FinishSending {
+        self.require_thread()?.call(|response| WorkerCommand::FinishSending {
                 stream_id: stream_id.to_string(),
                 response,
             })
     }
 
     pub fn close_stream(&self, stream_id: &str) -> Result<JanxValue, String> {
-        self.thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?
-            .call(|response| WorkerCommand::CloseStream {
+        self.require_thread()?.call(|response| WorkerCommand::CloseStream {
                 stream_id: stream_id.to_string(),
                 response,
             })
@@ -274,10 +206,23 @@ impl GrpcBackend {
             .and_then(|result| result)
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to gRPC server".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -310,6 +255,6 @@ fn response_to_result(value: JanxValue) -> Result<(), String> {
 
 impl Drop for GrpcBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }
