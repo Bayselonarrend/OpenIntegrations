@@ -2,13 +2,12 @@ use std::sync::{Arc, Mutex};
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_result_ok, janx_success, lock_unpoisoned};
+use common_utils::utils::{janx_error, janx_logs, janx_result_ok, lock_unpoisoned};
 
 use crate::backend::WebSocketServerBackend;
 
 struct State {
     backend: WebSocketServerBackend,
-    started: bool,
     logger: Option<Arc<Logger>>,
 }
 
@@ -21,7 +20,6 @@ impl WebSocketServer {
         Self {
             state: Arc::new(Mutex::new(State {
                 backend: WebSocketServerBackend::new(),
-                started: false,
                 logger: None,
             })),
         }
@@ -31,24 +29,14 @@ impl WebSocketServer {
         lock_unpoisoned(&self.state)
     }
 
-    pub fn init_logger(&mut self, logger_config: &JanxValue) -> Result<(), String> {
-        let mut state = self.lock_state();
-        if state.logger.is_some() {
-            return Ok(());
-        }
-
+    fn parse_logger(logger_config: &JanxValue) -> Result<Option<Arc<Logger>>, String> {
         if logger_config.is_empty() {
-            return Ok(());
+            return Ok(None);
         }
 
-        let logger = Logger::from_janx(logger_config)
-            .map_err(|e| format!("Failed to initialize logger: {}", e))?;
-
-        let logger_arc = Arc::new(logger);
-        state.logger = Some(logger_arc.clone());
-        state.backend.set_logger(logger_arc);
-
-        Ok(())
+        Logger::from_janx(logger_config)
+            .map(|logger| Some(Arc::new(logger)))
+            .map_err(|e| format!("Failed to initialize logger: {}", e))
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
@@ -62,127 +50,70 @@ impl WebSocketServer {
         }
     }
 
-    pub fn start(&mut self, port: u16, config: &JanxValue) -> JanxValue {
+    pub fn start(&mut self, port: u16, config: &JanxValue, logger_config: &JanxValue) -> JanxValue {
         let mut state = self.lock_state();
-        if state.started {
-            return janx_error("WebSocket server already started");
-        }
 
-        let result = state.backend.start(port, config);
+        let logger = match Self::parse_logger(logger_config) {
+            Ok(logger) => logger,
+            Err(e) => return janx_error(e),
+        };
+
+        let result = state.backend.start(port, config, logger.clone());
 
         if janx_result_ok(&result) {
-            state.started = true;
+            if let Some(logger) = logger {
+                state.logger = Some(logger);
+            }
         }
 
         result
     }
 
     pub fn stop(&mut self) -> JanxValue {
-        let mut state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state.backend.shutdown();
-        state.started = false;
-        janx_success(None, None)
+        self.lock_state().backend.stop()
     }
 
     pub fn get_next_message(&self, timeout_ms: u64) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state.backend.get_next_message(timeout_ms)
+        self.lock_state().backend.get_next_message(timeout_ms)
     }
 
     pub fn get_message(&self, connection_id: &str, timeout_ms: u64) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .get_message(connection_id.to_string(), timeout_ms)
     }
 
     pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .send_message(connection_id.to_string(), message)
     }
 
     pub fn send_text(&self, connection_id: &str, text: &str) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .send_text(connection_id.to_string(), text.to_string())
     }
 
     pub fn send_ping(&self, connection_id: &str, payload: Vec<u8>) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .send_ping(connection_id.to_string(), payload)
     }
 
     pub fn send_pong(&self, connection_id: &str, payload: Vec<u8>) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .send_pong(connection_id.to_string(), payload)
     }
 
     pub fn close_connection(&self, connection_id: &str, remove_from_list: bool) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .close_connection(connection_id.to_string(), remove_from_list)
     }
 
     pub fn get_connections_list(&self) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("WebSocket server not started");
-        }
-
-        state.backend.get_connections_list()
-    }
-
-    pub fn is_started(&self) -> bool {
-        self.lock_state().started
-    }
-}
-
-impl Drop for WebSocketServer {
-    fn drop(&mut self) {
-        let mut state = lock_unpoisoned(&self.state);
-        if state.started {
-            state.backend.shutdown();
-            state.started = false;
-        }
+        self.lock_state().backend.get_connections_list()
     }
 }

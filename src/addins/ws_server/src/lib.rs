@@ -5,7 +5,7 @@ mod wrapper;
 
 use addin::AddIn;
 use common_core::*;
-use common_utils::utils::{janx_error, version};
+use common_utils::utils::version;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -53,11 +53,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let port = params[0].get_i32().unwrap_or(8080) as u16;
             let config = JanxValue::from_variant(&params[1]);
             let logger_config = JanxValue::from_variant(&params[2]);
-
-            if let Err(e) = obj.init_logger_if_needed(&logger_config) {
-                return Box::new(janx_error(e));
-            }
-            Box::new(obj.server.start(port, &config))
+            Box::new(obj.server.start(port, &config, &logger_config))
         }
         1 => Box::new(obj.server.stop()),
         2 => {

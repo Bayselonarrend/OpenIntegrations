@@ -5,12 +5,11 @@ use common_logs::Logger;
 use common_server::{
     handle_async_command, handle_sync_command, send_command, Backend,
 };
-use common_utils::utils::{janx_error, janx_success};
+use common_utils::utils::{janx_error, janx_result_ok, janx_success};
 use crate::server::WebSocketServerState;
 
 pub struct WebSocketServerBackend {
     backend: Backend<WebSocketCommand>,
-    logger: Option<Arc<Logger>>,
 }
 
 pub enum WebSocketCommand {
@@ -55,6 +54,9 @@ pub enum WebSocketCommand {
         response: Sender<JanxValue>,
     },
     GetConnectionsList {
+        response: Sender<JanxValue>,
+    },
+    Stop {
         response: Sender<JanxValue>,
     },
     Shutdown,
@@ -138,6 +140,17 @@ impl WebSocketServerBackend {
                             );
                         }
 
+                        WebSocketCommand::Stop { response } => {
+                            if let Some(mut state) = server_state.take() {
+                                rt.block_on(async {
+                                    state.shutdown().await;
+                                });
+                                let _ = response.send(janx_success(None, None));
+                                break;
+                            }
+                            let _ = response.send(janx_error("WebSocket server not started"));
+                        }
+
                         WebSocketCommand::Shutdown => {
                             if let Some(mut state) = server_state.take() {
                                 rt.block_on(async {
@@ -151,25 +164,31 @@ impl WebSocketServerBackend {
             },
         );
 
-        Self {
-            backend,
-            logger: None,
-        }
+        Self { backend }
     }
 
-    pub fn set_logger(&mut self, logger: Arc<Logger>) {
-        self.logger = Some(logger);
-    }
-
-    pub fn start(&self, port: u16, config: &JanxValue) -> JanxValue {
+    pub fn start(
+        &self,
+        port: u16,
+        config: &JanxValue,
+        logger: Option<Arc<Logger>>,
+    ) -> JanxValue {
         send_command!(self.backend, |response| {
             WebSocketCommand::Start {
                 port,
                 config: config.clone(),
-                logger: self.logger.clone(),
+                logger,
                 response,
             }
         })
+    }
+
+    pub fn stop(&mut self) -> JanxValue {
+        let result = send_command!(self.backend, |response| WebSocketCommand::Stop { response });
+        if janx_result_ok(&result) {
+            self.shutdown();
+        }
+        result
     }
 
     pub fn get_next_message(&self, timeout_ms: u64) -> JanxValue {

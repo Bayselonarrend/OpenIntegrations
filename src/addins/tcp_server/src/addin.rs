@@ -2,13 +2,12 @@ use std::sync::{Arc, Mutex};
 
 use common_core::{getset, JanxValue};
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_result_ok, janx_success, lock_unpoisoned};
+use common_utils::utils::{janx_error, janx_logs, janx_result_ok, lock_unpoisoned};
 
 use crate::backend::TcpServerBackend;
 
 struct State {
     backend: TcpServerBackend,
-    started: bool,
     logger: Option<Arc<Logger>>,
 }
 
@@ -21,7 +20,6 @@ impl AddIn {
         Self {
             state: Arc::new(Mutex::new(State {
                 backend: TcpServerBackend::new(),
-                started: false,
                 logger: None,
             })),
         }
@@ -29,6 +27,16 @@ impl AddIn {
 
     fn lock_state(&self) -> std::sync::MutexGuard<'_, State> {
         lock_unpoisoned(&self.state)
+    }
+
+    fn parse_logger(logger_config: &JanxValue) -> Result<Option<Arc<Logger>>, String> {
+        if logger_config.is_empty() {
+            return Ok(None);
+        }
+
+        Logger::from_janx(logger_config)
+            .map(|logger| Some(Arc::new(logger)))
+            .map_err(|e| format!("Failed to initialize logger: {}", e))
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
@@ -49,61 +57,29 @@ impl AddIn {
         logger_config: &JanxValue,
     ) -> JanxValue {
         let mut state = self.lock_state();
-        if state.started {
-            return janx_error("Server already started");
-        }
 
-        if !logger_config.is_empty() {
-            match Logger::from_janx(logger_config) {
-                Ok(logger) => {
-                    let logger_arc = Arc::new(logger);
-                    state.logger = Some(logger_arc.clone());
-                    state.backend.set_logger(logger_arc);
-                }
-                Err(e) => {
-                    return janx_error(format!("Failed to initialize logger: {}", e));
-                }
-            }
-        }
+        let logger = match Self::parse_logger(logger_config) {
+            Ok(logger) => logger,
+            Err(e) => return janx_error(e),
+        };
 
-        let result = state.backend.start(port, queue_size);
+        let result = state.backend.start(port, queue_size, logger.clone());
 
         if janx_result_ok(&result) {
-            state.started = true;
+            if let Some(logger) = logger {
+                state.logger = Some(logger);
+            }
         }
 
         result
     }
 
     pub fn stop_server(&mut self) -> JanxValue {
-        let mut state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        let _ = state.backend.close_all_connections();
-
-        state.backend.shutdown();
-        state.started = false;
-        janx_success(None, None)
-    }
-
-    pub fn close_all_connections(&self) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state.backend.close_all_connections()
+        self.lock_state().backend.stop()
     }
 
     pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .get_next_message(timeout_ms, max_message_size)
     }
@@ -114,12 +90,7 @@ impl AddIn {
         timeout_ms: u64,
         max_message_size: usize,
     ) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state.backend.get_message_from_connection(
+        self.lock_state().backend.get_message_from_connection(
             connection_id.to_string(),
             timeout_ms,
             max_message_size,
@@ -127,56 +98,31 @@ impl AddIn {
     }
 
     pub fn send_message(&self, connection_id: &str, message: Vec<u8>) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .send_message(connection_id.to_string(), message)
     }
 
     pub fn close_connection(&self, connection_id: &str) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .close_connection(connection_id.to_string())
     }
 
     pub fn shutdown_read(&self, connection_id: &str) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .shutdown_read(connection_id.to_string())
     }
 
     pub fn shutdown_write(&self, connection_id: &str) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state
+        self.lock_state()
             .backend
             .shutdown_write(connection_id.to_string())
     }
 
     pub fn get_connections_list(&self) -> JanxValue {
-        let state = self.lock_state();
-        if !state.started {
-            return janx_error("Server not started");
-        }
-
-        state.backend.get_connections_list()
+        self.lock_state().backend.get_connections_list()
     }
 
     pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {
@@ -185,16 +131,5 @@ impl AddIn {
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType {
         self.get_field_ptr(index) as *mut _
-    }
-}
-
-impl Drop for AddIn {
-    fn drop(&mut self) {
-        let mut state = lock_unpoisoned(&self.state);
-        if state.started {
-            let _ = state.backend.close_all_connections();
-            state.backend.shutdown();
-            state.started = false;
-        }
     }
 }

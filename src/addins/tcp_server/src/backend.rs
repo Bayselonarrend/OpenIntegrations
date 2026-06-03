@@ -5,12 +5,11 @@ use common_logs::Logger;
 use common_server::{
     handle_async_command, handle_sync_command, send_command, Backend,
 };
-use common_utils::utils::{janx_error, janx_success};
+use common_utils::utils::{janx_error, janx_result_ok, janx_success};
 use crate::listener::ServerState;
 
 pub struct TcpServerBackend {
     backend: Backend<BackendCommand>,
-    logger: Option<Arc<Logger>>,
 }
 
 pub enum BackendCommand {
@@ -40,7 +39,7 @@ pub enum BackendCommand {
         connection_id: String,
         response: Sender<JanxValue>,
     },
-    CloseAllConnections {
+    Stop {
         response: Sender<JanxValue>,
     },
     ShutdownRead {
@@ -111,12 +110,6 @@ impl TcpServerBackend {
                             );
                         }
 
-                        BackendCommand::CloseAllConnections { response } => {
-                            handle_async_command!(server_state, rt, response, |state|
-                                state.close_all_connections().await
-                            );
-                        }
-
                         BackendCommand::ShutdownRead { connection_id, response } => {
                             handle_sync_command!(server_state, response, |state|
                                 state.shutdown_read(&connection_id)
@@ -135,10 +128,18 @@ impl TcpServerBackend {
                             );
                         }
 
+                        BackendCommand::Stop { response } => {
+                            if let Some(mut state) = server_state.take() {
+                                let _ = rt.block_on(async { state.close_all_connections().await });
+                                let _ = response.send(janx_success(None, None));
+                                break;
+                            }
+                            let _ = response.send(janx_error("Server not started"));
+                        }
+
                         BackendCommand::Shutdown => {
-                            #[allow(unused_assignments)]
-                            {
-                                server_state = None;
+                            if let Some(mut state) = server_state.take() {
+                                let _ = rt.block_on(async { state.close_all_connections().await });
                             }
                             break;
                         }
@@ -147,25 +148,31 @@ impl TcpServerBackend {
             },
         );
 
-        Self {
-            backend,
-            logger: None,
-        }
+        Self { backend }
     }
 
-    pub fn set_logger(&mut self, logger: Arc<Logger>) {
-        self.logger = Some(logger);
-    }
-
-    pub fn start(&self, port: u16, queue_size: usize) -> JanxValue {
+    pub fn start(
+        &self,
+        port: u16,
+        queue_size: usize,
+        logger: Option<Arc<Logger>>,
+    ) -> JanxValue {
         send_command!(self.backend, |response| {
             BackendCommand::Start {
                 port,
                 queue_size,
-                logger: self.logger.clone(),
+                logger,
                 response,
             }
         })
+    }
+
+    pub fn stop(&mut self) -> JanxValue {
+        let result = send_command!(self.backend, |response| BackendCommand::Stop { response });
+        if janx_result_ok(&result) {
+            self.shutdown();
+        }
+        result
     }
 
     pub fn get_next_message(&self, timeout_ms: u64, max_message_size: usize) -> JanxValue {
@@ -210,12 +217,6 @@ impl TcpServerBackend {
                 connection_id,
                 response,
             }
-        })
-    }
-
-    pub fn close_all_connections(&self) -> JanxValue {
-        send_command!(self.backend, |response| {
-            BackendCommand::CloseAllConnections { response }
         })
     }
 
