@@ -61,10 +61,7 @@ impl MongoDBBackend {
 
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -76,14 +73,7 @@ impl MongoDBBackend {
     }
 
     pub fn disconnect(&mut self) -> Result<(), String> {
-        if !self.is_connected() {
-            return Err("Connection already closed".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::Disconnect { response })
@@ -91,16 +81,8 @@ impl MongoDBBackend {
     }
 
     pub fn execute(&self, params: JanxValue) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("Connection already closed".to_string());
-        }
-
         let execute_params = parse_execute_params(params)?;
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread.call(|response| WorkerCommand::Execute {
             params: execute_params,
@@ -108,10 +90,23 @@ impl MongoDBBackend {
         })
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to MongoDB".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -127,6 +122,6 @@ impl MongoDBBackend {
 
 impl Drop for MongoDBBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }
