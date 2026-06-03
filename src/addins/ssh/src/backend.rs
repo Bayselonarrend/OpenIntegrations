@@ -107,10 +107,7 @@ impl SshBackend {
             return Err("No session".to_string());
         }
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Disconnect { response })
@@ -118,14 +115,7 @@ impl SshBackend {
     }
 
     pub fn execute(&self, command: &str) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("No session".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread.call(|response| WorkerCommand::Execute {
             command: command.to_string(),
@@ -178,11 +168,11 @@ impl SshBackend {
     }
 
     pub fn make_sftp(&self) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::ToSftp { response })
+        self.call_connected(|response| WorkerCommand::ToSftp { response })
     }
 
     pub fn make_directory(&self, path: &str, mode: i32) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::MakeDirectory {
+        self.call_connected(|response| WorkerCommand::MakeDirectory {
             path: path.to_string(),
             mode,
             response,
@@ -190,21 +180,21 @@ impl SshBackend {
     }
 
     pub fn remove_directory(&self, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::RemoveDirectory {
+        self.call_connected(|response| WorkerCommand::RemoveDirectory {
             path: path.to_string(),
             response,
         })
     }
 
     pub fn list_directory(&self, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::ListDirectory {
+        self.call_connected(|response| WorkerCommand::ListDirectory {
             path: path.to_string(),
             response,
         })
     }
 
     pub fn upload_file(&self, file: &str, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::UploadFile {
+        self.call_connected(|response| WorkerCommand::UploadFile {
             file: file.to_string(),
             path: path.to_string(),
             response,
@@ -212,7 +202,7 @@ impl SshBackend {
     }
 
     pub fn upload_data(&self, data: Vec<u8>, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::UploadData {
+        self.call_connected(|response| WorkerCommand::UploadData {
             data,
             path: path.to_string(),
             response,
@@ -220,7 +210,7 @@ impl SshBackend {
     }
 
     pub fn delete_file(&self, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::RemoveFile {
+        self.call_connected(|response| WorkerCommand::RemoveFile {
             path: path.to_string(),
             response,
         })
@@ -231,16 +221,13 @@ impl SshBackend {
             return Ok(false);
         }
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread.call(|response| WorkerCommand::IsSftp { response })
     }
 
     pub fn download_to_file(&self, path: &str, filepath: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::DownloadToFile {
+        self.call_connected(|response| WorkerCommand::DownloadToFile {
             path: path.to_string(),
             filepath: filepath.to_string(),
             response,
@@ -248,14 +235,7 @@ impl SshBackend {
     }
 
     pub fn download_to_vec(&self, path: &str) -> Result<Vec<u8>, String> {
-        if !self.is_connected() {
-            return Err("No session".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::DownloadToBuffer {
@@ -266,7 +246,7 @@ impl SshBackend {
     }
 
     pub fn rename_object(&self, path: &str, new_path: &str, overwrite: bool) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::RenameObject {
+        self.call_connected(|response| WorkerCommand::RenameObject {
             path: path.to_string(),
             new_path: new_path.to_string(),
             overwrite,
@@ -275,32 +255,37 @@ impl SshBackend {
     }
 
     pub fn get_file_info(&self, path: &str) -> Result<JanxValue, String> {
-        self.call(|response| WorkerCommand::GetFileInfo {
+        self.call_connected(|response| WorkerCommand::GetFileInfo {
             path: path.to_string(),
             response,
         })
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
     }
 
-    fn call<F>(&self, build: F) -> Result<JanxValue, String>
+    fn call_connected<F>(&self, build: F) -> Result<JanxValue, String>
     where
         F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {
+        let thread = self.require_connected()?;
+        thread.call(build)
+    }
+
+    fn require_connected(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
         if !self.is_connected() {
             return Err("No session".to_string());
         }
+        self.require_thread()
+    }
 
-        let thread = self
-            .thread
+    fn require_thread(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        self.thread
             .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
-
-        thread.call(build)
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -316,6 +301,6 @@ impl SshBackend {
 
 impl Drop for SshBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }

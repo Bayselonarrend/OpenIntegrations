@@ -91,7 +91,7 @@ impl AddIn {
     }
 
     pub fn make_sftp(&mut self) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.make_sftp() {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -99,7 +99,7 @@ impl AddIn {
     }
 
     pub fn make_directory(&mut self, path: &str, mode: i32) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.make_directory(path, mode) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -107,7 +107,7 @@ impl AddIn {
     }
 
     pub fn remove_directory(&mut self, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.remove_directory(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -115,7 +115,7 @@ impl AddIn {
     }
 
     pub fn list_directory(&mut self, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.list_directory(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -123,7 +123,7 @@ impl AddIn {
     }
 
     pub fn upload_file(&mut self, file: &str, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.upload_file(file, path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -131,7 +131,7 @@ impl AddIn {
     }
 
     pub fn upload_data(&mut self, data: Vec<u8>, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.upload_data(data, path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -139,7 +139,7 @@ impl AddIn {
     }
 
     pub fn delete_file(&mut self, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.delete_file(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -151,7 +151,7 @@ impl AddIn {
     }
 
     pub fn download_to_file(&mut self, path: &str, filepath: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.download_to_file(path, filepath) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -163,7 +163,7 @@ impl AddIn {
     }
 
     pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.rename_object(path, new_path, overwrite) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -171,7 +171,7 @@ impl AddIn {
     }
 
     pub fn get_file_info(&mut self, path: &str) -> JanxValue {
-        let mut backend = self.lock_backend();
+        let backend = self.lock_backend();
         match backend.get_file_info(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
@@ -186,5 +186,11 @@ impl AddIn {
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn common_core::getset::ValueType {
         self.get_field_ptr(index) as *mut _
+    }
+}
+
+impl Drop for AddIn {
+    fn drop(&mut self) {
+        self.lock_backend().close_backend();
     }
 }
