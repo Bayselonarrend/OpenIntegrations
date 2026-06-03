@@ -120,20 +120,17 @@ impl FtpBackend {
 
     pub fn connect(&mut self) -> Result<(), String> {
         if self.is_connected() {
-            return Err("Client already initialized".to_string());
+            return Err("Client already connected".to_string());
         }
 
         let ftp_settings = self
             .ftp_settings
             .clone()
-            .ok_or_else(|| "Address must be initialized".to_string())?;
+            .ok_or_else(|| "empty address".to_string())?;
 
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -167,27 +164,12 @@ impl FtpBackend {
     where
         F: FnOnce(std::sync::mpsc::Sender<JanxValue>) -> WorkerCommand,
     {
-        if !self.is_connected() {
-            return Err("FTP client is not initialized".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
-
+        let thread = self.require_connected()?;
         thread.call(build)
     }
 
     pub fn download_to_buffer(&self, path: String) -> Result<Vec<u8>, String> {
-        if !self.is_connected() {
-            return Err("FTP client is not initialized".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::DownloadToBuffer { path, response })
@@ -209,10 +191,23 @@ impl FtpBackend {
             .unwrap_or(false)
     }
 
-    pub fn shutdown(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to FTP server".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -228,6 +223,6 @@ impl FtpBackend {
 
 impl Drop for FtpBackend {
     fn drop(&mut self) {
-        self.shutdown();
+        self.close_backend();
     }
 }

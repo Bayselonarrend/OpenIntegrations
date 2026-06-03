@@ -237,6 +237,8 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        let _ = self.lock_backend().close();
+        let mut backend = self.lock_backend();
+        let _ = backend.close();
+        backend.close_backend();
     }
 }
