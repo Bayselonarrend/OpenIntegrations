@@ -56,8 +56,8 @@ impl AddIn {
         }
     }
 
-    pub fn execute_command(&mut self, command: &str) -> JanxValue {
-        let mut client = self.lock_client();
+    pub fn execute_command(&self, command: &str) -> JanxValue {
+        let client = self.lock_client();
         client
             .execute_command(command)
             .unwrap_or_else(|e| janx_error(e))
@@ -78,5 +78,11 @@ impl AddIn {
 
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn common_core::getset::ValueType {
         self.get_field_ptr(index) as *mut _
+    }
+}
+
+impl Drop for AddIn {
+    fn drop(&mut self) {
+        self.lock_client().close_backend();
     }
 }

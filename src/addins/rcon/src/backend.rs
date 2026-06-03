@@ -74,10 +74,7 @@ impl RconBackend {
 
         self.ensure_thread()?;
 
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -88,14 +85,7 @@ impl RconBackend {
     }
 
     pub fn execute_command(&self, command: &str) -> Result<JanxValue, String> {
-        if !self.is_connected() {
-            return Err("No client found. Initialize connection first".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread.call(|response| WorkerCommand::Execute {
             command: command.to_string(),
@@ -110,10 +100,23 @@ impl RconBackend {
             .ok_or_else(|| "No connection settings found".to_string())
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("No client found. Initialize connection first".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -129,6 +132,6 @@ impl RconBackend {
 
 impl Drop for RconBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }
