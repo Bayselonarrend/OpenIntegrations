@@ -1,11 +1,10 @@
+mod addin;
 mod backend;
-mod methods;
 
+use addin::AddIn;
 use common_core::*;
-use common_logs::Logger;
-use common_core::JanxValue;
-use common_utils::utils::{janx_error, janx_logs, janx_success, version};
-use std::sync::{Arc, Mutex};
+use common_utils::utils::version;
+use crate::backend::ExchangeScheme;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -28,6 +27,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("Version"),
 ];
 
+pub const PROPS: &[&[u16]] = &[];
+
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0..=7 => 1, // Connect*/Bind*(endpoint)
@@ -47,40 +48,41 @@ pub fn cal_func(
     num: usize,
     params: &mut [Variant],
 ) -> Box<dyn getset::ValueType> {
+
     let empty: [u8; 0] = [];
 
     match num {
         0 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect(backend::ExchangeScheme::ReqRep, &ep))
+            Box::new(obj.connect(ExchangeScheme::ReqRep, &ep))
         }
         1 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect(backend::ExchangeScheme::PubSub, &ep))
+            Box::new(obj.connect(ExchangeScheme::PubSub, &ep))
         }
         2 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect(backend::ExchangeScheme::Push, &ep))
+            Box::new(obj.connect(ExchangeScheme::Push, &ep))
         }
         3 => {
             let ep = params[0].get_string().unwrap_or_default();
-            Box::new(obj.connect(backend::ExchangeScheme::Pull, &ep))
+            Box::new(obj.connect(ExchangeScheme::Pull, &ep))
         }
         4 => {
             let port = params[0].get_i32().unwrap_or(0);
-            Box::new(obj.bind(backend::ExchangeScheme::ReqRep, port))
+            Box::new(obj.bind(ExchangeScheme::ReqRep, port))
         }
         5 => {
             let port = params[0].get_i32().unwrap_or(0);
-            Box::new(obj.bind(backend::ExchangeScheme::PubSub, port))
+            Box::new(obj.bind(ExchangeScheme::PubSub, port))
         }
         6 => {
             let port = params[0].get_i32().unwrap_or(0);
-            Box::new(obj.bind(backend::ExchangeScheme::Push, port))
+            Box::new(obj.bind(ExchangeScheme::Push, port))
         }
         7 => {
             let port = params[0].get_i32().unwrap_or(0);
-            Box::new(obj.bind(backend::ExchangeScheme::Pull, port))
+            Box::new(obj.bind(ExchangeScheme::Pull, port))
         }
         8 => {
             let prefix = params[0].get_string().unwrap_or_default();
@@ -92,7 +94,7 @@ pub fn cal_func(
             Box::new(obj.send(data, timeout_ms))
         }
         10 => {
-            let timeout_ms = params[0].get_i32().unwrap_or(0);
+            let timeout_ms = params[0].get_i32().unwrap_or(-1);
             Box::new(obj.recv(timeout_ms))
         }
         11 => Box::new(obj.close()),
@@ -106,73 +108,5 @@ pub fn cal_func(
         }
         14 => Box::new(version()),
         _ => Box::new(false),
-    }
-}
-
-pub const PROPS: &[&[u16]] = &[];
-
-pub struct AddIn {
-    backend: Arc<Mutex<backend::ZeroMqBackend>>,
-    logger: Option<Arc<Logger>>,
-}
-
-impl AddIn {
-    pub fn new() -> Self {
-        Self {
-            backend: Arc::new(Mutex::new(backend::ZeroMqBackend::new())),
-            logger: None,
-        }
-    }
-
-    pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
-        if self.logger.is_some() {
-            return janx_success(None, None);
-        }
-
-        match Logger::from_janx(logger_config) {
-            Ok(logger) => {
-                let logger_arc = Arc::new(logger);
-                match self.lock_backend().and_then(|g| g.set_logger(logger_arc.clone())) {
-                    Ok(()) => {
-                        self.logger = Some(logger_arc);
-                        janx_success(None, None)
-                    }
-                    Err(e) => janx_error(e),
-                }
-            }
-            Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
-        }
-    }
-
-    pub fn get_logs(&self, count: usize) -> JanxValue {
-        if let Some(ref logger) = self.logger {
-            let logs = logger.get_last_logs(count);
-            let total = logger.len();
-            janx_logs(logs, total)
-        } else {
-            janx_error("Logger not initialized")
-        }
-    }
-
-    pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {
-        panic!("This add-in exposes no exported properties.");
-    }
-
-    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType {
-        self.get_field_ptr(index) as *mut _
-    }
-
-    pub(crate) fn lock_backend(&self) -> Result<std::sync::MutexGuard<'_, backend::ZeroMqBackend>, String> {
-        self.backend
-            .lock()
-            .map_err(|e| format!("{}", e))
-    }
-}
-
-impl Drop for AddIn {
-    fn drop(&mut self) {
-        if let Ok(guard) = self.backend.lock() {
-            let _ = guard.close_socket();
-        }
     }
 }
