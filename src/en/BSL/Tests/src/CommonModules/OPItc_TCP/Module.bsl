@@ -147,6 +147,27 @@ Procedure TC_Server() Export
 
 EndProcedure
 
+Procedure TC_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(True);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+
+    TCP_Extended_GetDataOfNextTimeout(TestParameters);
+    TCP_Extended_OperationWithoutStart(TestParameters);
+    TCP_Extended_GetLogOnServerStart(TestParameters);
+    TCP_Extended_ReadTimeout(TestParameters);
+    TCP_Extended_OperationWithoutConnection(TestParameters);
+    TCP_Extended_GetLogOnConnectionOpening(TestParameters);
+    TCP_Extended_JanxCollectionExchange(TestParameters);
+
+EndProcedure
+
 #EndRegion // TCP
 
 #EndRegion // RunnableTests
@@ -856,6 +877,186 @@ Procedure TCP_GetLoggingSettings(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure TCP_Extended_GetDataOfNextTimeout(FunctionParameters)
+
+    Port         = 9876;
+    ServerObject = OPI_TCP.StartServer(Port);
+
+    If Not OPI_TCP.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Result = OPI_TCP.GetNextConnectionData(ServerObject, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_GetDataOfNextTimeout");
+    OPI_TCP.StopServer(ServerObject);
+
+EndProcedure
+
+Procedure TCP_Extended_OperationWithoutStart(FunctionParameters)
+
+    ServerObject = OPI_AddIns.GetAddIn(OPI_TCP.AddInName());
+
+    Result = OPI_TCP.GetNextConnectionData(ServerObject, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_OperationWithoutStart");
+
+EndProcedure
+
+Procedure TCP_Extended_GetLogOnServerStart(FunctionParameters)
+
+    Port            = 9876;
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
+    ServerObject    = OPI_TCP.StartServer(Port, , LoggingSettings);
+
+    If Not OPI_TCP.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    ConnectionAddress = "127.0.0.1:9876";
+    ClientObject      = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("TCP_LOG_SRV_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    OPI_TCP.SendLine(ClientObject, Message + Chars.LF);
+    OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+
+    Result = OPI_TCP.GetLog(ServerObject);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_GetLogOnServerStart", , LogFile);
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
+
+EndProcedure
+
+Procedure TCP_Extended_ReadTimeout(FunctionParameters)
+
+    Port              = 9876;
+    ConnectionAddress = "127.0.0.1:9876";
+    ServerObject      = OPI_TCP.StartServer(Port);
+
+    If Not OPI_TCP.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Data = OPI_TCP.ReadBinaryData(ClientObject, , , 300);
+
+    Result                              = New Map;
+    Result.Insert("result", Data.Size() = 0);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_ReadTimeout");
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
+
+EndProcedure
+
+Procedure TCP_Extended_OperationWithoutConnection(FunctionParameters)
+
+    ClientObject = OPI_AddIns.GetAddIn("TCPClient");
+    Data         = GetBinaryDataFromString("x");
+
+    OPI_TCP.SendBinaryData(ClientObject, Data, 300);
+    Result = OPI_TCP.GetLastError(ClientObject);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_OperationWithoutConnection");
+
+EndProcedure
+
+Procedure TCP_Extended_GetLogOnConnectionOpening(FunctionParameters)
+
+    Port              = 9876;
+    ConnectionAddress = "127.0.0.1:9876";
+    LogFile           = GetTempFileName("txt");
+    LoggingSettings   = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
+    ServerObject      = OPI_TCP.StartServer(Port);
+
+    If Not OPI_TCP.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress, , , LoggingSettings);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("TCP_LOG_CLI_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    OPI_TCP.SendLine(ClientObject, Message + Chars.LF);
+    OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+
+    Result = OPI_TCP.GetLog(ClientObject);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "Extended_GetLogOnConnectionOpening", , LogFile);
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
+
+EndProcedure
+
+Procedure TCP_Extended_JanxCollectionExchange(FunctionParameters)
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("MultipleBinaries");
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    JanxData = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+
+    LaunchPort   = 9879;
+    ServerObject = OPI_TCP.StartServer(LaunchPort);
+
+    ConnectionAddress = "127.0.0.1:9879";
+    ClientObject      = OPI_TCP.CreateConnection(ConnectionAddress);
+
+    If Not OPI_TCP.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    OPI_TCP.SendBinaryData(ClientObject, JanxData);
+
+    NextMessage  = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+    ConnectionID = NextMessage["connectionId"];
+
+    OPI_TCP.SendData(ServerObject, ConnectionID, NextMessage["message"]);
+
+    ClientResponse = OPI_TCP.ReadBinaryData(ClientObject, , , 5000);
+    Options = New Structure;
+    Options.Insert("data", ClientResponse);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(ClientResponse, "TCP", "Extended_JanxCollectionExchange", , Restored, Original);
+    OPI_TCP.CloseConnection(ClientObject);
+    OPI_TCP.StopServer(ServerObject);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // TCP
 
 #EndRegion // AtomicTests
@@ -871,6 +1072,10 @@ EndProcedure
 
 Procedure TC_Сервер() Export
     TC_Server();
+EndProcedure
+
+Procedure TC_РасширеннаяПроверка() Export
+    TC_ExtendedCheck();
 EndProcedure
 
 #EndRegion

@@ -114,6 +114,24 @@ Procedure MYS_CommonMethods() Export
 
 EndProcedure
 
+Procedure MYS_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = OPI_TestDataRetrieval.GetMySQLParameterOptions()[0];
+
+    MySQL_Extended_ExecuteQueryWithoutConnection(TestParameters);
+    MySQL_Extended_ConnectionWithoutString(TestParameters);
+    MySQL_Extended_Reconnection(TestParameters);
+    MySQL_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 Procedure MYS_ORM() Export
 
     OptionArray = OPI_TestDataRetrieval.GetMySQLParameterOptions();
@@ -1056,6 +1074,113 @@ Procedure MySQL_GetLog(FunctionParameters)
     OPI_MySQL.CloseConnection(Connection);
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure MySQL_Extended_ExecuteQueryWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MySQL");
+    Result    = OPI_MySQL.ExecuteSQLQuery("SELECT 1", , , Connector);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "Extended_ExecuteQueryWithoutConnection");
+
+EndProcedure
+
+Procedure MySQL_Extended_ConnectionWithoutString(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MySQL");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "Extended_ConnectionWithoutString");
+
+EndProcedure
+
+Procedure MySQL_Extended_Reconnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    TLS  = FunctionParameters["TLS"];
+    Port = FunctionParameters["Port"];
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connector = OPI_AddIns.GetAddIn("MySQL");
+
+    If TLS Then
+        TLSSetup = OPI_AddIns.SetTls(Connector, TLSSettings);
+        If Not OPI_Tools.GetOr(TLSSetup, "result", False) Then
+            Raise OPI_Tools.JSONString(TLSSetup);
+        EndIf;
+    EndIf;
+
+    Connector.ConnectionString = ConnectionString;
+    FirstConnection            = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    If Not FirstConnection["result"] Then
+        Raise OPI_Tools.JSONString(FirstConnection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "Extended_Reconnection");
+    OPI_MySQL.CloseConnection(Connector);
+
+EndProcedure
+
+Procedure MySQL_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MySQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "";
+
+    TLS  = FunctionParameters["TLS"];
+    Port = FunctionParameters["Port"];
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Connection = OPI_MySQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MySQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_MySQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_MySQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MySQL", "Extended_GetLogOnConnection", , LogFile);
+    OPI_MySQL.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 Procedure MySQL_GetTableInformation(FunctionParameters)
 

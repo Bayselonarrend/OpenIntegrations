@@ -114,6 +114,26 @@ Procedure MSS_CommonMethods() Export
 
 EndProcedure
 
+Procedure MSS_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
+
+    MSSQL_Extended_ExecuteQueryWithoutConnection(TestParameters);
+    MSSQL_Extended_ConnectionWithoutString(TestParameters);
+    MSSQL_Extended_Reconnection(TestParameters);
+    MSSQL_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 Procedure MSS_ORM() Export
 
     TestParameters = New Structure;
@@ -377,6 +397,93 @@ Procedure MSSQL_GetLog(FunctionParameters)
     OPI_MSSQL.CloseConnection(Connection);
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure MSSQL_Extended_ExecuteQueryWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MSSQL");
+    Result    = OPI_MSSQL.ExecuteSQLQuery("SELECT 1", , , Connector);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "Extended_ExecuteQueryWithoutConnection");
+
+EndProcedure
+
+Procedure MSSQL_Extended_ConnectionWithoutString(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MSSQL");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "Extended_ConnectionWithoutString");
+
+EndProcedure
+
+Procedure MSSQL_Extended_Reconnection(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+
+    Connector = OPI_AddIns.GetAddIn("MSSQL");
+
+    TLSSetup = OPI_AddIns.SetTls(Connector, TLSSettings);
+    If Not OPI_Tools.GetOr(TLSSetup, "result", False) Then
+        Raise OPI_Tools.JSONString(TLSSetup);
+    EndIf;
+
+    Connector.ConnectionString = ConnectionString;
+    FirstConnection            = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    If Not FirstConnection["result"] Then
+        Raise OPI_Tools.JSONString(FirstConnection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "Extended_Reconnection");
+    OPI_MSSQL.CloseConnection(Connector);
+
+EndProcedure
+
+Procedure MSSQL_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MSSQL.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, , Login, Password);
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+
+    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+
+    If Not OPI_MSSQL.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_MSSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_MSSQL.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MSSQL", "Extended_GetLogOnConnection", , LogFile);
+    OPI_MSSQL.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 Procedure MSSQL_CreateDatabase(FunctionParameters)
 

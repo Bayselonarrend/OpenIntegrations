@@ -53,7 +53,17 @@ import Admonition from '@theme/Admonition';
 <br/>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    VM = OPI_Lua.СоздатьVM("Lua54");
 
+    OPI_Lua.ВыполнитьКодИзСтроки(VM, "function add(a, b) return a + b end");
+
+    Параметры = Новый Массив;
+    Параметры.Добавить(1);
+    Параметры.Добавить(2);
+
+    Результат = OPI_Lua.ВызватьФункцию(VM, "add", Параметры);
+```
     
 
 

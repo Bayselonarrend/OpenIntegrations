@@ -113,6 +113,28 @@ Procedure Mongo_CommonMethods() Export
 
 EndProcedure
 
+Procedure Mongo_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
+
+    MongoDB_Extended_ExecuteCommandWithoutConnection(TestParameters);
+    MongoDB_Extended_ConnectionWithoutString(TestParameters);
+    MongoDB_Extended_Reconnection(TestParameters);
+    MongoDB_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 Procedure Mong_DatabaseManagement() Export
 
     TestParameters = New Structure;
@@ -374,6 +396,93 @@ Procedure MongoDB_GetLog(FunctionParameters)
     OPI_MongoDB.CloseConnection(Connection);
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure MongoDB_Extended_ExecuteCommandWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MongoDB");
+    Result    = OPI_MongoDB.ExecuteCommand(Connector, "listDatabases");
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MongoDB", "Extended_ExecuteCommandWithoutConnection");
+
+EndProcedure
+
+Procedure MongoDB_Extended_ConnectionWithoutString(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("MongoDB");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MongoDB", "Extended_ConnectionWithoutString");
+
+EndProcedure
+
+Procedure MongoDB_Extended_Reconnection(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"];
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+
+    Connector = OPI_AddIns.GetAddIn("MongoDB");
+
+    Connector.ConnectionString = ConnectionString;
+    FirstConnection            = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    If Not FirstConnection["result"] Then
+        Raise OPI_Tools.JSONString(FirstConnection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MongoDB", "Extended_Reconnection");
+    OPI_MongoDB.CloseConnection(Connector);
+
+EndProcedure
+
+Procedure MongoDB_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_MongoDB.GetLoggingSettings(True, 100, LogFile);
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"];
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+
+    Connection = OPI_MongoDB.CreateConnection(ConnectionString, LoggingSettings);
+
+    If Not OPI_MongoDB.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_MongoDB.ExecuteCommand(Connection, "listDatabases", , , New Structure("nameOnly", True));
+
+    Result = OPI_MongoDB.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MongoDB", "Extended_GetLogOnConnection", , LogFile);
+    OPI_MongoDB.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 Procedure MongoDB_GetDatabase(FunctionParameters)
 
@@ -1460,6 +1569,10 @@ EndProcedure
 
 Procedure Mongo_ОсновныеМетоды() Export
     Mongo_CommonMethods();
+EndProcedure
+
+Procedure Mongo_РасширеннаяПроверка() Export
+    Mongo_ExtendedCheck();
 EndProcedure
 
 Procedure Mongo_РаботаСБазами() Export

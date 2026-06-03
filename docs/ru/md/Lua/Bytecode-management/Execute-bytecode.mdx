@@ -54,7 +54,10 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
-
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    БайтКод   = OPI_Lua.СкомпилироватьКодИзСтроки("Lua54", "return 11");
+    Результат = OPI_Lua.ВыполнитьБайтКод("Lua54", БайтКод);
+```
     
 
 

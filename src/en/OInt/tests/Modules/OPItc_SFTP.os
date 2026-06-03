@@ -154,6 +154,26 @@ Procedure SF_FileManagement() Export
 
 EndProcedure
 
+Procedure SF_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(True);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = OPI_TestDataRetrieval.GetSSHParameterOptions()[0];
+
+    SFTP_Extended_GetListWithoutConnection(TestParameters);
+    SFTP_Extended_ConnectionWithoutSettings(TestParameters);
+    SFTP_Extended_Reconnection(TestParameters);
+    SFTP_Extended_GetLogOnConnection(TestParameters);
+
+    OPI_Tools.RemoveFileWithTry(TestParameters["SSH_Key"], "Error deleting file after test");
+
+EndProcedure
+
 #EndRegion // SFTP
 
 #EndRegion // RunnableTests
@@ -1759,6 +1779,100 @@ Procedure SFTP_GetFileInformation(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure SFTP_Extended_GetListWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Options = New Structure;
+    Options.Insert("conn", Connector);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "Extended_GetListWithoutConnection");
+
+EndProcedure
+
+Procedure SFTP_Extended_ConnectionWithoutSettings(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "Extended_ConnectionWithoutSettings");
+
+EndProcedure
+
+Procedure SFTP_Extended_Reconnection(FunctionParameters)
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+    Options.Insert("pass", Password);
+
+    SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings);
+
+    If Not OPI_SFTP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connection.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "Extended_Reconnection");
+    OPI_SFTP.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure SFTP_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+    Options.Insert("pass", Password);
+
+    SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
+
+    Connection = OPI_SSH.CreateConnection(SFTPSettings, , LoggingSettings);
+
+    If Not OPI_SFTP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_SFTP.ListObjects(Connection, "");
+
+    Result = OPI_SSH.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "Extended_GetLogOnConnection", , LogFile);
+    OPI_SFTP.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // SFTP
 
 #EndRegion // AtomicTests
@@ -1778,6 +1892,10 @@ EndProcedure
 
 Procedure SF_РаботаСФайлами() Export
     SF_FileManagement();
+EndProcedure
+
+Procedure SF_РасширеннаяПроверка() Export
+    SF_ExtendedCheck();
 EndProcedure
 
 #EndRegion

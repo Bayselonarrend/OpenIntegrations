@@ -142,7 +142,7 @@ Function ExecuteCodeFromString(Val Lua, Val Code) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -170,7 +170,7 @@ Function ExecuteCodeFromFile(Val Lua, Val Path) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -206,7 +206,7 @@ Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Exp
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -245,7 +245,7 @@ Function CompileCodeFromString(Val Lua, Val Code) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -277,7 +277,7 @@ Function CompileCodeFromFile(Val Lua, Val Path) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -312,7 +312,7 @@ Function ExecuteBytecode(Val Lua, Val Bytecode) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 
@@ -335,7 +335,7 @@ Function ExecuteBytecodeFromFile(Val Lua, Val Path) Export
 
     AddIn = CreateVM(Lua);
 
-    If IsVM(AddIn) Then
+    If Not IsVM(AddIn) Then
         Return AddIn;
     EndIf;
 

@@ -223,7 +223,8 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "False");
 
-    Result = OPI_MessagePack.SerializeData(GetBinaryDataFromHexString(""));
+    Data      = GetBinaryDataFromHexString("");
+    Result = OPI_MessagePack.SerializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary");
 

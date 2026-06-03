@@ -105,6 +105,23 @@ Procedure Jnx_Benchmark() Export
 
 EndProcedure
 
+Procedure Jnx_ExtendedDataCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    Janx_Extended_RoundRobinMultipleBinaryFields();
+    Janx_Extended_RoundRobinBinariesArray();
+    Janx_Extended_RoundRobinMixedArray();
+    Janx_Extended_RoundRobinDeepNesting();
+    Janx_Extended_RoundRobinEmptyAndSpecial();
+
+EndProcedure
+
 #EndRegion // Janx
 
 #EndRegion // RunnableTests
@@ -302,6 +319,70 @@ Procedure Janx_Benchmark()
 
 EndProcedure
 
+#Region ExtendedDataCheck
+
+Procedure Janx_Extended_RoundRobinMultipleBinaryFields()
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("MultipleBinaries");
+    Result   = OPI_Janx.SerializeData(Original);
+    Restored = OPI_Janx.DeserializeData(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Extended_RoundRobin", "MultipleBinaries", Restored, Original);
+
+EndProcedure
+
+Procedure Janx_Extended_RoundRobinBinariesArray()
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("BinariesArray");
+    Result   = OPI_Janx.SerializeData(Original);
+    Restored = OPI_Janx.DeserializeData(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Extended_RoundRobin", "BinariesArray", Restored, Original);
+
+EndProcedure
+
+Procedure Janx_Extended_RoundRobinMixedArray()
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("MixedArray");
+    Result   = OPI_Janx.SerializeData(Original);
+    Restored = OPI_Janx.DeserializeData(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Extended_RoundRobin", "MixedArray", Restored, Original);
+
+EndProcedure
+
+Procedure Janx_Extended_RoundRobinDeepNesting()
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("DeepNesting");
+    Result   = OPI_Janx.SerializeData(Original);
+    Restored = OPI_Janx.DeserializeData(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Extended_RoundRobin", "DeepNesting", Restored, Original);
+
+EndProcedure
+
+Procedure Janx_Extended_RoundRobinEmptyAndSpecial()
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("EmptyAndSpecial");
+    Result   = OPI_Janx.SerializeData(Original);
+    Restored = OPI_Janx.DeserializeData(Result);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "Extended_RoundRobin", "EmptyAndSpecial", Restored, Original);
+
+EndProcedure
+
+#EndRegion // ExtendedDataCheck
+
 #EndRegion // Janx
 
 #EndRegion // AtomicTests
@@ -317,6 +398,10 @@ EndProcedure
 
 Procedure Jnx_Бенчмарк() Export
     Jnx_Benchmark();
+EndProcedure
+
+Procedure Jnx_РасширеннаяПроверкаДанные() Export
+    Jnx_ExtendedDataCheck();
 EndProcedure
 
 #EndRegion

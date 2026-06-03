@@ -118,6 +118,24 @@ Procedure SQLL_CommonMethods() Export
 
 EndProcedure
 
+Procedure SQLL_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+
+    SQLite_Extended_ExecuteQueryWithoutConnection(TestParameters);
+    SQLite_Extended_Reconnection(TestParameters);
+    SQLite_Extended_GetLogOnConnection(TestParameters);
+    SQLite_Extended_RequestWithTwoBlobs(TestParameters);
+
+EndProcedure
+
 Procedure SQLL_ORM() Export
 
     TestParameters = New Structure;
@@ -834,6 +852,101 @@ Procedure SQLite_GetLog(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure SQLite_Extended_ExecuteQueryWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SQLite");
+    Result    = OPI_SQLite.ExecuteSQLQuery("SELECT 1", , , Connector);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "Extended_ExecuteQueryWithoutConnection");
+
+EndProcedure
+
+Procedure SQLite_Extended_Reconnection(FunctionParameters)
+
+    TFN       = GetTempFileName("sqlite");
+    Connector = OPI_AddIns.GetAddIn("SQLite");
+
+    Connector.Database = TFN;
+    FirstConnection    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    If Not FirstConnection["result"] Then
+        Raise OPI_Tools.JSONString(FirstConnection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "Extended_Reconnection");
+    OPI_SQLite.CloseConnection(Connector);
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
+
+EndProcedure
+
+Procedure SQLite_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SQLite.GetLoggingSettings(True, 100, LogFile);
+    TFN             = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN, LoggingSettings);
+
+    If Not OPI_SQLite.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_SQLite.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
+
+    Result = OPI_SQLite.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "Extended_GetLogOnConnection", , LogFile);
+    OPI_SQLite.CloseConnection(Connection);
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
+
+EndProcedure
+
+Procedure SQLite_Extended_RequestWithTwoBlobs(FunctionParameters)
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("MultipleBinaries");
+    TFN      = GetTempFileName("sqlite");
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    If Not OPI_SQLite.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_SQLite.ExecuteSQLQuery("DROP TABLE IF EXISTS janx_blob_test", , , Connection);
+    OPI_SQLite.ExecuteSQLQuery("CREATE TABLE janx_blob_test (
+        |alpha BLOB,
+        |beta BLOB,
+        |inner_blob BLOB)", , , Connection);
+
+    ParameterArray = New Array;
+    ParameterArray.Add(New Structure("blob", Original["alpha"]));
+    ParameterArray.Add(New Structure("blob", Original["beta"]));
+    ParameterArray.Add(New Structure("blob", Original["nested"]["inner"]));
+
+    OPI_SQLite.ExecuteSQLQuery("INSERT INTO janx_blob_test (alpha, beta, inner_blob) VALUES (?, ?, ?)", ParameterArray, , Connection);
+
+    Result = OPI_SQLite.ExecuteSQLQuery("SELECT alpha, beta, inner_blob FROM janx_blob_test", , , Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "Extended_RequestWithTwoBlobs", , Original);
+    OPI_SQLite.CloseConnection(Connection);
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // SQLite
 
 #EndRegion // AtomicTests
@@ -845,6 +958,10 @@ EndProcedure
 
 Procedure SQLL_ОсновныеМетоды() Export
     SQLL_CommonMethods();
+EndProcedure
+
+Procedure SQLL_РасширеннаяПроверка() Export
+    SQLL_ExtendedCheck();
 EndProcedure
 
 #EndRegion

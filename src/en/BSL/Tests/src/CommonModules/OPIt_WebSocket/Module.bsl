@@ -147,6 +147,23 @@ Procedure WS_Server() Export
 
 EndProcedure
 
+Procedure WS_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+
+    WebSocket_Extended_GetDataOfNextTimeout(TestParameters);
+    WebSocket_Extended_OperationWithoutStart(TestParameters);
+    WebSocket_Extended_GetLogOnServerStart(TestParameters);
+
+EndProcedure
+
 #EndRegion // WebSocket
 
 #EndRegion // RunnableTests
@@ -1096,6 +1113,72 @@ Procedure WebSocket_GetLoggingSettings(FunctionParameters)
     OPI_TestDataRetrieval.Process(Result, "WebSocket", "GetLoggingSettings", "Memory");
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure WebSocket_Extended_GetDataOfNextTimeout(FunctionParameters)
+
+    Port         = 9893;
+    ServerObject = OPI_WebSocket.StartServer(Port);
+
+    If Not OPI_WebSocket.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "Extended_GetDataOfNextTimeout");
+    OPI_WebSocket.StopServer(ServerObject);
+
+EndProcedure
+
+Procedure WebSocket_Extended_OperationWithoutStart(FunctionParameters)
+
+    ServerObject = OPI_AddIns.GetAddIn(OPI_WebSocket.AddInName());
+
+    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "Extended_OperationWithoutStart");
+
+EndProcedure
+
+Procedure WebSocket_Extended_GetLogOnServerStart(FunctionParameters)
+
+    Port            = 9893;
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
+    ServerObject    = OPI_WebSocket.StartServer(Port, , LoggingSettings);
+
+    If Not OPI_WebSocket.IsServerObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    ConnectionAddress = "ws://127.0.0.1:9893";
+    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+
+    If Not OPI_WebSocket.IsClientObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("WS_LOG_SRV_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    OPI_WebSocket.SendTextMessage(ClientObject, Message);
+    OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+
+    Result = OPI_WebSocket.GetLog(ServerObject);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "WebSocket", "Extended_GetLogOnServerStart", , LogFile);
+    OPI_WebSocket.CloseConnection(ClientObject);
+    OPI_WebSocket.StopServer(ServerObject);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 #EndRegion // WebSocket
 

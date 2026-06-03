@@ -138,6 +138,17 @@ Procedure ZMQ_InteractionMethods() Export
 
 EndProcedure
 
+Procedure ZMQ_ExtendedCheck() Export
+
+    TestParameters = New Structure;
+
+    ZeroMQ_Extended_GetTimeoutData(TestParameters);
+    ZeroMQ_Extended_HandleTimeoutRequest(TestParameters);
+    ZeroMQ_Extended_GetLogOnPortOpening(TestParameters);
+    ZeroMQ_Extended_JanxCollectionExchange(TestParameters);
+
+EndProcedure
+
 #EndRegion // ZeroMQ
 
 #EndRegion // RunnableTests
@@ -673,6 +684,124 @@ Procedure ZeroMQ_GetLoggingSettings(FunctionParameters)
     OPI_TestDataRetrieval.Process(Result, "ZeroMQ", "GetLoggingSettings", "Memory");
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure ZeroMQ_Extended_GetTimeoutData(FunctionParameters)
+
+    Port         = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Result = OPI_ZeroMQ.ReceiveData(ServerObject, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "ZeroMQ", "Extended_GetTimeoutData");
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_Extended_HandleTimeoutRequest(FunctionParameters)
+
+    Port         = 5555;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Address      = "tcp://127.0.0.1:5555";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Request = StrTemplate("ZMQ_REQ_TO_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    ReqData = GetBinaryDataFromString(Request);
+    Result  = OPI_ZeroMQ.ProcessRequest(ClientObject, ReqData, 3000, 300);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "ZeroMQ", "Extended_HandleTimeoutRequest");
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_Extended_GetLogOnPortOpening(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_ZeroMQ.GetLoggingSettings(True, 100, LogFile);
+    Port            = 5555;
+    Address         = "tcp://127.0.0.1:5555";
+
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port, LoggingSettings);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    Message = StrTemplate("ZMQ_LOG_BIND_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
+    Data = GetBinaryDataFromString(Message);
+
+    OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
+    OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+
+    Result = OPI_ZeroMQ.GetLog(ServerObject);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "ZeroMQ", "Extended_GetLogOnPortOpening", , LogFile);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+Procedure ZeroMQ_Extended_JanxCollectionExchange(FunctionParameters)
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("MultipleBinaries");
+    JanxData = OPI_Janx.SerializeData(Original);
+
+    Port         = 5560;
+    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
+        Raise OPI_Tools.JSONString(ServerObject);
+    EndIf;
+
+    Address      = "tcp://127.0.0.1:5560";
+    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+
+    If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
+        Raise OPI_Tools.JSONString(ClientObject);
+    EndIf;
+
+    OPI_ZeroMQ.SendData(ClientObject, JanxData             , 3000);
+    ServerRequest  = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    OPI_ZeroMQ.SendData(ServerObject, ServerRequest["data"], 3000);
+    ClientResponse = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+    Restored       = OPI_Janx.DeserializeData(ClientResponse["data"]);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(ClientResponse, "ZeroMQ", "Extended_JanxCollectionExchange", , Restored, Original, JanxData);
+    OPI_ZeroMQ.CloseConnection(ClientObject);
+    OPI_ZeroMQ.CloseConnection(ServerObject);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 #EndRegion // ZeroMQ
 

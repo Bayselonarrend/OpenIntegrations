@@ -1,0 +1,1 @@
+    Result = OPI_Lua.CompileCodeFromString("Lua54", "return 1");

@@ -153,6 +153,24 @@ Procedure FT_CommonMethods() Export
 
 EndProcedure
 
+Procedure FT_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = OPI_TestDataRetrieval.GetFTPParameterOptions()[0];
+
+    FTP_Extended_GetGreetingWithoutConnection(TestParameters);
+    FTP_Extended_ConnectionWithoutAddress(TestParameters);
+    FTP_Extended_Reconnection(TestParameters);
+    FTP_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 #EndRegion // FTP
 
 #EndRegion // RunnableTests
@@ -1538,6 +1556,85 @@ Procedure FTP_GetLog(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure FTP_Extended_GetGreetingWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("FTP");
+    Result    = OPI_FTP.GetWelcomeMessage(Connector);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "Extended_GetGreetingWithoutConnection");
+
+EndProcedure
+
+Procedure FTP_Extended_ConnectionWithoutAddress(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("FTP");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "Extended_ConnectionWithoutAddress");
+
+EndProcedure
+
+Procedure FTP_Extended_Reconnection(FunctionParameters)
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings);
+
+    If Not OPI_FTP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connection.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "Extended_Reconnection");
+    OPI_FTP.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure FTP_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_FTP.GetLoggingSettings(True, 100, LogFile);
+
+    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
+
+    FTPSettings = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
+
+    Connection = OPI_FTP.CreateConnection(FTPSettings, , , LoggingSettings);
+
+    If Not OPI_FTP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_FTP.GetWelcomeMessage(Connection);
+
+    Result = OPI_FTP.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "FTP", "Extended_GetLogOnConnection", , LogFile);
+    OPI_FTP.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // FTP
 
 #EndRegion // AtomicTests
@@ -1557,6 +1654,10 @@ EndProcedure
 
 Procedure FT_ОсновныеМетоды() Export
     FT_CommonMethods();
+EndProcedure
+
+Procedure FT_РасширеннаяПроверка() Export
+    FT_ExtendedCheck();
 EndProcedure
 
 #EndRegion

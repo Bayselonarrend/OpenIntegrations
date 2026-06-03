@@ -117,6 +117,30 @@ Procedure GR_CommonMethods() Export
 
 EndProcedure
 
+Procedure GR_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Address"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GRPC_AddressNoTls", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Proto"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoTS"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoImport" , TestParameters);
+
+    GRPC_Extended_CallMethodWithoutConnection(TestParameters);
+    GRPC_Extended_ConnectionWithoutAddress(TestParameters);
+    GRPC_Extended_Reconnection(TestParameters);
+    GRPC_Extended_GetLogOnConnection(TestParameters);
+    GRPC_Extended_CallMethodMultipleBinaryFields(TestParameters);
+
+EndProcedure
+
 Procedure GR_Introspection() Export
 
     TestParameters = New Structure;
@@ -388,7 +412,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod");
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "ExecuteMethod", , Data);
 
     Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Undefined, , Tls);
 
@@ -460,6 +484,127 @@ Procedure GRPC_GetLog(FunctionParameters)
     OPI_TestDataRetrieval.Process(Result, "GRPC", "GetLog", "AsString", LogFile);
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure GRPC_Extended_CallMethodWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("GRPC");
+    Request   = OPI_AddIns.SerializeJanx(New Structure);
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Call(Request));
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_CallMethodWithoutConnection");
+
+EndProcedure
+
+Procedure GRPC_Extended_ConnectionWithoutAddress(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("GRPC");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_ConnectionWithoutAddress");
+
+EndProcedure
+
+Procedure GRPC_Extended_Reconnection(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connection.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_Reconnection");
+    OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure GRPC_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_GRPC.ExecuteMethod(Connection, "grpcbin.GRPCBin", "DummyUnary");
+
+    Result = OPI_GRPC.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_GetLogOnConnection", , LogFile);
+    OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure GRPC_Extended_CallMethodMultipleBinaryFields(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"];
+    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1);
+    Scheme.Insert("my_types.proto", Proto2);
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    BinData = OPI_TestDataRetrieval.GetJanxTestCollection("BinariesArray");
+
+    Data = New Map;
+    Data.Insert("f_string", "janx multi-bin");
+    Data.Insert("f_int32" , 7);
+    Data.Insert("f_bool"  , True);
+    Data.Insert("f_bytes" , BinData["chunks"][0]);
+    Data.Insert("f_bytess", BinData["chunks"]);
+
+    Result = OPI_GRPC.ExecuteMethod(Parameters, "grpcbin.GRPCBin", "DummyUnary", Data, , Tls);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "GRPC", "Extended_CallMethodMultipleBinaryFields", , Data);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 Procedure GRPC_GetServiceList(FunctionParameters)
 

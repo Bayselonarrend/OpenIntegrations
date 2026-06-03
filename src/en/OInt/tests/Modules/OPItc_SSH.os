@@ -121,6 +121,23 @@ Procedure SShell_CommonMethods() Export
 
 EndProcedure
 
+Procedure SShell_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(True);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = OPI_TestDataRetrieval.GetSSHParameterOptions()[0];
+
+    SSH_Extended_ExecuteCommandWithoutConnection(TestParameters);
+    SSH_Extended_ConnectionWithoutSettings(TestParameters);
+    SSH_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 #EndRegion // SSH
 
 #EndRegion // RunnableTests
@@ -836,6 +853,70 @@ Procedure SSH_GetLog(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure SSH_Extended_ExecuteCommandWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Options = New Structure;
+    Options.Insert("conn", Connector);
+    Options.Insert("comm", "whoami");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "ExecuteCommand", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "Extended_ExecuteCommandWithoutConnection");
+
+EndProcedure
+
+Procedure SSH_Extended_ConnectionWithoutSettings(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "Extended_ConnectionWithoutSettings");
+
+EndProcedure
+
+Procedure SSH_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+    Options.Insert("pass", Password);
+
+    SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsLoginPassword", Options);
+    Connection  = OPI_SSH.CreateConnection(SSHSettings, , LoggingSettings);
+
+    If Not OPI_SSH.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_SSH.ExecuteCommand(Connection, "whoami");
+
+    Result = OPI_SSH.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "Extended_GetLogOnConnection", , LogFile);
+    OPI_SSH.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // SSH
 
 #EndRegion // AtomicTests
@@ -847,6 +928,10 @@ EndProcedure
 
 Procedure SShell_ОсновныеМетоды() Export
     SShell_CommonMethods();
+EndProcedure
+
+Procedure SShell_РасширеннаяПроверка() Export
+    SShell_ExtendedCheck();
 EndProcedure
 
 #EndRegion

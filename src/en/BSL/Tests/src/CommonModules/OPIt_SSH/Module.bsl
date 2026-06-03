@@ -120,6 +120,23 @@ Procedure SShell_CommonMethods() Export
 
 EndProcedure
 
+Procedure SShell_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = OPI_TestDataRetrieval.GetSSHParameterOptions()[0];
+
+    SSH_Extended_ExecuteCommandWithoutConnection(TestParameters);
+    SSH_Extended_ConnectionWithoutSettings(TestParameters);
+    SSH_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 #EndRegion // SSH
 
 #EndRegion // RunnableTests
@@ -709,6 +726,60 @@ Procedure SSH_GetLog(FunctionParameters)
     OPI_TestDataRetrieval.Process(Result, "SSH", "GetLog", "AsString", LogFile);
 
 EndProcedure
+
+#Region ExtendedCheck
+
+Procedure SSH_Extended_ExecuteCommandWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Result    = OPI_SSH.ExecuteCommand(Connector, "whoami");
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SSH", "Extended_ExecuteCommandWithoutConnection");
+
+EndProcedure
+
+Procedure SSH_Extended_ConnectionWithoutSettings(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("SSH");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Connect());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SSH", "Extended_ConnectionWithoutSettings");
+
+EndProcedure
+
+Procedure SSH_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+    Connection  = OPI_SSH.CreateConnection(SSHSettings, , LoggingSettings);
+
+    If Not OPI_SSH.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_SSH.ExecuteCommand(Connection, "whoami");
+
+    Result = OPI_SSH.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "SSH", "Extended_GetLogOnConnection", , LogFile);
+    OPI_SSH.CloseConnection(Connection);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
 
 #EndRegion // SSH
 

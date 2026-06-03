@@ -1,0 +1,5 @@
+    VM54 = OPI_Lua.CreateVM("Lua54");
+
+    Result = OPI_Lua.IsVM(VM54);
+
+    Result = OPI_Lua.IsVM("not a vm");

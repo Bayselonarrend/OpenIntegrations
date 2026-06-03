@@ -1,0 +1,2 @@
+    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "return 11");
+    Result   = OPI_Lua.ExecuteBytecode("Lua54", Bytecode);

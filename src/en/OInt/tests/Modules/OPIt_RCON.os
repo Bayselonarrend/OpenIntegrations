@@ -109,6 +109,25 @@ Procedure RC_CommandsExecution() Export
 
 EndProcedure
 
+Procedure RC_ExtendedCheck() Export
+
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
+
+    RCON_Extended_ExecuteCommandWithoutConnection(TestParameters);
+    RCON_Extended_Reconnection(TestParameters);
+    RCON_Extended_GetLogOnConnection(TestParameters);
+
+EndProcedure
+
 #EndRegion // RCON
 
 #EndRegion // RunnableTests
@@ -245,6 +264,70 @@ Procedure RCON_GetLog(FunctionParameters)
 
 EndProcedure
 
+#Region ExtendedCheck
+
+Procedure RCON_Extended_ExecuteCommandWithoutConnection(FunctionParameters)
+
+    Connector = OPI_AddIns.GetAddIn("RCON");
+    Result    = OPI_AddIns.DesrializeJanx(Connector.Command("list"));
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "Extended_ExecuteCommandWithoutConnection");
+
+EndProcedure
+
+Procedure RCON_Extended_Reconnection(FunctionParameters)
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    Connector       = OPI_AddIns.GetAddIn("RCON");
+    FirstConnection = OPI_AddIns.DesrializeJanx(Connector.Connect(URL, Password, ReadTimeout, WriteTimeout));
+
+    If Not FirstConnection["result"] Then
+        Raise OPI_Tools.JSONString(FirstConnection);
+    EndIf;
+
+    Result = OPI_AddIns.DesrializeJanx(Connector.Connect(URL, Password, ReadTimeout, WriteTimeout));
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "Extended_Reconnection");
+
+EndProcedure
+
+Procedure RCON_Extended_GetLogOnConnection(FunctionParameters)
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
+
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
+    WriteTimeout = 20;
+    ReadTimeout  = 20;
+
+    ConnectionParams = OPI_RCON.FormConnectionParameters(URL, Password, ReadTimeout, WriteTimeout);
+    Connection       = OPI_RCON.CreateConnection(ConnectionParams, LoggingSettings);
+
+    If Not OPI_RCON.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    OPI_RCON.ExecuteCommand("list", Connection);
+
+    Result = OPI_RCON.GetLog(Connection);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "RCON", "Extended_GetLogOnConnection", , LogFile);
+
+EndProcedure
+
+#EndRegion // ExtendedCheck
+
 #EndRegion // RCON
 
 #EndRegion // AtomicTests
@@ -256,6 +339,10 @@ EndProcedure
 
 Procedure RC_ВыполнениеКоманд() Export
     RC_CommandsExecution();
+EndProcedure
+
+Procedure RC_РасширеннаяПроверка() Export
+    RC_ExtendedCheck();
 EndProcedure
 
 #EndRegion
