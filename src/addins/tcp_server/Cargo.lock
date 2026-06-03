@@ -152,7 +152,6 @@ dependencies = [
  "common-utils",
  "futures-util",
  "indexmap",
- "serde_json",
  "tokio",
  "uuid",
 ]

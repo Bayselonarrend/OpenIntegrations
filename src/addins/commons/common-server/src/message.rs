@@ -1,4 +1,4 @@
-/// Async wait helper with polling
+
 pub struct AsyncWaiter {
     timeout: std::time::Duration,
     poll_interval: std::time::Duration,
@@ -16,8 +16,7 @@ impl AsyncWaiter {
         self.poll_interval = std::time::Duration::from_millis(interval_ms);
         self
     }
-
-    /// Wait for result with timeout and polling
+    
     pub async fn wait_for<F, T>(&self, mut try_fn: F) -> Result<T, ()>
     where
         F: FnMut() -> Option<T>,

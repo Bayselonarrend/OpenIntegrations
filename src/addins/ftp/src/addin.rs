@@ -1,35 +1,39 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::{FromJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::FtpBackend;
 use crate::configuration::FtpSettings;
 use crate::worker::WorkerCommand;
 
 pub struct AddIn {
-    pub(crate) backend: FtpBackend,
+    backend: Arc<Mutex<FtpBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            backend: FtpBackend::new(),
+            backend: Arc::new(Mutex::new(FtpBackend::new())),
         }
     }
 
+    fn lock_backend(&self) -> std::sync::MutexGuard<'_, FtpBackend> {
+        lock_unpoisoned(&self.backend)
+    }
+
     pub fn initialize(&mut self) -> JanxValue {
-        match self.backend.connect() {
+        match self.lock_backend().connect() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn close_connection(&mut self) -> JanxValue {
-        match self.backend.close() {
+        match self.lock_backend().close() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
@@ -38,7 +42,7 @@ impl AddIn {
     pub fn update_settings(&mut self, settings: &JanxValue) -> JanxValue {
         match FtpSettings::from_janx(settings) {
             Some(settings) => {
-                self.backend.update_settings(settings);
+                self.lock_backend().update_settings(settings);
                 janx_success(None, None)
             }
             None => janx_error("Invalid FTP settings Janx payload"),
@@ -48,7 +52,7 @@ impl AddIn {
     pub fn update_proxy(&mut self, proxy: &JanxValue) -> JanxValue {
         match ProxySettings::from_janx(proxy) {
             Ok(settings) => {
-                self.backend.update_proxy(settings);
+                self.lock_backend().update_proxy(settings);
                 janx_success(None, None)
             }
             Err(e) => janx_error(e),
@@ -56,7 +60,7 @@ impl AddIn {
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> JanxValue {
-        match self.backend.set_tls(TlsSettings {
+        match self.lock_backend().set_tls(TlsSettings {
             use_tls,
             accept_invalid_certs,
             ca_cert_path: ca_cert_path.to_string(),
@@ -68,7 +72,7 @@ impl AddIn {
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
+            Ok(logger) => match self.lock_backend().set_logger(Arc::new(logger)) {
                 Ok(()) => janx_success(None, None),
                 Err(e) => janx_error(e),
             },
@@ -77,50 +81,50 @@ impl AddIn {
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.backend.get_logs(count) {
+        match self.lock_backend().get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
     }
 
     pub fn get_configurations(&self) -> JanxValue {
-        self.backend.get_configurations()
+        self.lock_backend().get_configurations()
     }
 
     pub fn is_tls(&self) -> bool {
-        self.backend.is_tls()
+        self.lock_backend().is_tls()
     }
 
     pub fn get_welcome_msg(&self) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::GetWelcomeMsg { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn make_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::MakeDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn remove_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::RemoveDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn list_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::ListDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn upload_data(&self, path: &str, data: Vec<u8>) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::UploadData {
                 path,
                 data,
@@ -132,7 +136,7 @@ impl AddIn {
     pub fn upload_file(&self, path: &str, filepath: &str) -> JanxValue {
         let path = path.to_string();
         let filepath = filepath.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::UploadFile {
                 path,
                 filepath,
@@ -143,14 +147,14 @@ impl AddIn {
 
     pub fn remove_file(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::RemoveFile { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn object_size(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::ObjectSize { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
@@ -158,7 +162,7 @@ impl AddIn {
     pub fn rename_object(&self, path: &str, new_path: &str) -> JanxValue {
         let path = path.to_string();
         let new_path = new_path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::RenameObject {
                 path,
                 new_path,
@@ -170,7 +174,7 @@ impl AddIn {
     pub fn download_to_file(&self, path: &str, filepath: &str) -> JanxValue {
         let path = path.to_string();
         let filepath = filepath.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::DownloadToFile {
                 path,
                 filepath,
@@ -180,42 +184,42 @@ impl AddIn {
     }
 
     pub fn download_to_buffer(&self, path: &str) -> Result<Vec<u8>, String> {
-        self.backend.download_to_buffer(path.to_string())
+        self.lock_backend().download_to_buffer(path.to_string())
     }
 
     pub fn ping(&self) -> bool {
-        self.backend.ping()
+        self.lock_backend().ping()
     }
 
     pub fn execute_command(&self, command: &str) -> JanxValue {
         let command = command.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::ExecuteCommand { command, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_current_directory(&self) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::GetCurrentDirectory { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn change_current_directory(&self, path: &str) -> JanxValue {
         let path = path.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::ChangeCurrentDirectory { path, response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_features(&self) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::GetFeatures { response })
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn execute_standard_command(&self, command: &str) -> JanxValue {
         let command = command.to_string();
-        self.backend
+        self.lock_backend()
             .call(|response| WorkerCommand::ExecuteStandardCommand { command, response })
             .unwrap_or_else(|e| janx_error(e))
     }
@@ -233,6 +237,6 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        let _ = self.backend.close();
+        let _ = self.lock_backend().close();
     }
 }

@@ -6,7 +6,6 @@ use common_logs::{Logger, log};
 
 pub type ConnectionId = String;
 
-/// Generic connection manager with round-robin message processing
 pub struct ConnectionManager<T> {
     connections: Arc<Mutex<IndexMap<ConnectionId, T>>>,
     last_processed: Option<ConnectionId>,
@@ -28,12 +27,10 @@ impl<T> ConnectionManager<T> {
         }
     }
 
-    /// Generate new unique connection ID
     pub fn generate_id() -> ConnectionId {
         Uuid::new_v4().to_string()
     }
 
-    /// Add new connection, removing oldest if queue is full
     pub fn add(&mut self, id: ConnectionId, connection: T) -> Option<ConnectionId> {
         let mut conns = self.lock_connections();
         
@@ -52,7 +49,6 @@ impl<T> ConnectionManager<T> {
         removed
     }
 
-    /// Remove connection by ID
     pub fn remove(&mut self, id: &str) -> bool {
         let mut conns = self.lock_connections();
         let removed = conns.shift_remove(id).is_some();
@@ -68,7 +64,6 @@ impl<T> ConnectionManager<T> {
         removed
     }
 
-    /// Remove and return connection by ID, taking ownership
     pub fn take(&mut self, id: &str) -> Option<T> {
         let mut conns = self.lock_connections();
         let value = conns.shift_remove(id);
@@ -84,7 +79,6 @@ impl<T> ConnectionManager<T> {
         value
     }
 
-    /// Get mutable reference to connection
     pub fn get_mut<F, R>(&mut self, id: &str, f: F) -> Option<R>
     where
         F: FnOnce(&mut T) -> R,
@@ -93,13 +87,11 @@ impl<T> ConnectionManager<T> {
         conns.get_mut(id).map(f)
     }
 
-    /// Get all connection IDs
     pub fn get_ids(&self) -> Vec<ConnectionId> {
         let conns = self.lock_connections();
         conns.keys().cloned().collect()
     }
 
-    /// Get connection IDs in round-robin order starting from last processed
     pub fn get_ids_round_robin(&self) -> Vec<ConnectionId> {
         let conns = self.lock_connections();
         let mut all_ids: Vec<ConnectionId> = conns.keys().cloned().collect();
@@ -113,23 +105,19 @@ impl<T> ConnectionManager<T> {
         all_ids
     }
 
-    /// Update last processed connection
     pub fn set_last_processed(&mut self, id: Option<ConnectionId>) {
         self.last_processed = id;
     }
 
-    /// Get connection count
     pub fn len(&self) -> usize {
         let conns = self.lock_connections();
         conns.len()
     }
 
-    /// Check if empty
     pub fn is_empty(&self) -> bool {
         self.len() == 0
     }
 
-    /// Clear all connections
     pub fn clear(&mut self) {
         let mut conns = self.lock_connections();
         let count = conns.len();
@@ -140,7 +128,6 @@ impl<T> ConnectionManager<T> {
         self.log(&format!("Cleared all connections ({})", count));
     }
 
-    /// Iterate over connections with mutable access
     pub fn iter_mut<F>(&mut self, mut f: F)
     where
         F: FnMut(&ConnectionId, &mut T),
@@ -151,7 +138,6 @@ impl<T> ConnectionManager<T> {
         }
     }
 
-    /// Filter and remove connections based on predicate
     pub fn retain<F>(&mut self, mut predicate: F) -> Vec<ConnectionId>
     where
         F: FnMut(&ConnectionId, &mut T) -> bool,
@@ -184,17 +170,14 @@ impl<T> ConnectionManager<T> {
         removed
     }
 
-    /// Get shutdown receiver for graceful shutdown
     pub fn subscribe_shutdown(&self) -> broadcast::Receiver<()> {
         self.shutdown_tx.subscribe()
     }
 
-    /// Send shutdown signal
     pub fn shutdown(&self) {
         let _ = self.shutdown_tx.send(());
     }
 
-    /// Get connections Arc for sharing
     pub fn connections_arc(&self) -> Arc<Mutex<IndexMap<ConnectionId, T>>> {
         self.connections.clone()
     }
@@ -210,7 +193,6 @@ impl<T> ConnectionManager<T> {
     }
 }
 
-/// Generic connection info that can be extended
 pub trait ConnectionInfo {
     fn address(&self) -> &str;
     fn is_active(&self) -> bool;

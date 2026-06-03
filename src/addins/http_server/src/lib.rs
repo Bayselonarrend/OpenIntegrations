@@ -1,12 +1,11 @@
+mod addin;
 mod backend;
 mod server;
 mod wrapper;
 
-use std::sync::Arc;
+use addin::AddIn;
 use common_core::*;
-use common_utils::utils::{janx_error, janx_logs, version};
-use common_logs::Logger;
-use wrapper::HttpServer;
+use common_utils::utils::{janx_error, version};
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -21,6 +20,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetLogs"),                    // 6
     name!("Version"),
 ];
+
+pub const PROPS: &[&[u16]] = &[];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
@@ -41,107 +42,36 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
     match num {
         0 => {
-            // Start(port, config, logger_config)
             let port = params[0].get_i32().unwrap_or(8080) as u16;
             let config = JanxValue::from_variant(&params[1]);
             let logger_config = JanxValue::from_variant(&params[2]);
 
             if let Err(e) = obj.init_logger(&logger_config) {
                 return Box::new(janx_error(e));
-            };
+            }
             Box::new(obj.server.start(port, &config))
-        },
-        1 => {
-            // Stop()
-            Box::new(obj.server.stop())
-        },
+        }
+        1 => Box::new(obj.server.stop()),
         2 => {
-            // GetNextMessage(timeout_ms)
             let timeout_ms = params[0].get_i32().unwrap_or(1000) as u64;
             Box::new(obj.server.handle_request(timeout_ms))
-        },
+        }
         3 => {
-            // GetMessage(request_id)
             let request_id = params[0].get_string().unwrap_or_default();
             Box::new(obj.server.handle_request_by_id(&request_id))
-        },
+        }
         4 => {
-            // SendMessage(request_id, status_code, body)
             let request_id = params[0].get_string().unwrap_or_default();
             let status_code = params[1].get_i32().unwrap_or(200) as u16;
             let body = params[2].get_blob().unwrap_or(&empty_array);
             Box::new(obj.server.send_response(&request_id, status_code, body.to_vec()))
-        },
-        5 => {
-            // ListConnections()
-            Box::new(obj.server.get_pending_requests())
-        },
+        }
+        5 => Box::new(obj.server.get_pending_requests()),
         6 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
-        },
+        }
         7 => Box::new(version()),
         _ => Box::new(false),
-    }
-}
-
-pub const PROPS: &[&[u16]] = &[];
-
-pub struct AddIn {
-    server: HttpServer,
-    logger: Option<Arc<Logger>>,
-}
-
-impl AddIn {
-    pub fn new() -> Self {
-        AddIn {
-            server: HttpServer::new(),
-            logger: None,
-        }
-    }
-
-    fn init_logger(&mut self, logger_config: &JanxValue) -> Result<(), String> {
-        if self.logger.is_some() {
-            return Ok(());
-        }
-
-        if logger_config.is_empty() {
-            return Ok(());
-        }
-
-        let logger = Logger::from_janx(logger_config)
-            .map_err(|e| format!("Failed to initialize logger: {}", e))?;
-
-        let logger_arc = Arc::new(logger);
-        self.logger = Some(logger_arc.clone());
-        self.server.set_logger(logger_arc);
-
-        Ok(())
-    }
-
-    pub fn get_logs(&self, count: usize) -> JanxValue {
-        if let Some(ref logger) = self.logger {
-            let logs = logger.get_last_logs(count);
-            let total = logger.len();
-            janx_logs(logs, total)
-        } else {
-            janx_error("Logger not initialized")
-        }
-    }
-
-    pub fn get_field_ptr(&self, _index: usize) -> *const dyn getset::ValueType {
-        panic!("Index out of bounds")
-    }
-
-    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType {
-        self.get_field_ptr(index) as *mut _
-    }
-}
-
-impl Drop for AddIn {
-    fn drop(&mut self) {
-        if self.server.is_started() {
-            let _ = self.server.stop();
-        }
     }
 }
