@@ -81,6 +81,7 @@
   <commonModules>CommonModule.OPItc_GRPC</commonModules>
   <commonModules>CommonModule.OPItc_HTTP</commonModules>
   <commonModules>CommonModule.OPItc_Janx</commonModules>
+  <commonModules>CommonModule.OPItc_Lua</commonModules>
   <commonModules>CommonModule.OPItc_MessagePack</commonModules>
   <commonModules>CommonModule.OPItc_MongoDB</commonModules>
   <commonModules>CommonModule.OPItc_MSSQL</commonModules>
