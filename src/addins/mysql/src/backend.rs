@@ -86,10 +86,7 @@ impl MySQLBackend {
         self.ensure_thread()?;
 
         let tls = self.tls.clone();
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -107,14 +104,7 @@ impl MySQLBackend {
         params: Vec<JanxValue>,
         force_result: bool,
     ) -> Result<Option<Vec<JanxValue>>, String> {
-        if !self.is_connected() {
-            return Err("Not connected to MySQL".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::Execute {
@@ -126,10 +116,23 @@ impl MySQLBackend {
             .and_then(|result| result)
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to MySQL".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&SyncBackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -145,6 +148,6 @@ impl MySQLBackend {
 
 impl Drop for MySQLBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }
