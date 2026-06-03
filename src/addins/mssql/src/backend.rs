@@ -75,10 +75,7 @@ impl MSSQLBackend {
         self.ensure_thread()?;
 
         let tls = self.tls.clone();
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_thread()?;
 
         thread
             .call(|response| WorkerCommand::Connect {
@@ -96,14 +93,7 @@ impl MSSQLBackend {
         params: Vec<JanxValue>,
         force_result: bool,
     ) -> Result<Option<Vec<JanxValue>>, String> {
-        if !self.is_connected() {
-            return Err("Not connected to MSSQL".to_string());
-        }
-
-        let thread = self
-            .thread
-            .as_ref()
-            .ok_or_else(|| "Backend thread is not available".to_string())?;
+        let thread = self.require_connected()?;
 
         thread
             .call(|response| WorkerCommand::Execute {
@@ -115,10 +105,23 @@ impl MSSQLBackend {
             .and_then(|result| result)
     }
 
-    pub fn close(&mut self) {
+    pub fn close_backend(&mut self) {
         if let Some(mut thread) = self.thread.take() {
             let _ = thread.shutdown(Some(WorkerCommand::Shutdown));
         }
+    }
+
+    fn require_connected(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        if !self.is_connected() {
+            return Err("Not connected to MSSQL".to_string());
+        }
+        self.require_thread()
+    }
+
+    fn require_thread(&self) -> Result<&BackendThread<WorkerCommand>, String> {
+        self.thread
+            .as_ref()
+            .ok_or_else(|| "Backend thread is not available".to_string())
     }
 
     fn ensure_thread(&mut self) -> Result<(), String> {
@@ -134,6 +137,6 @@ impl MSSQLBackend {
 
 impl Drop for MSSQLBackend {
     fn drop(&mut self) {
-        self.close();
+        self.close_backend();
     }
 }
