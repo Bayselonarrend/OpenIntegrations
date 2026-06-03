@@ -927,19 +927,16 @@
     OPI_SQLite.ВыполнитьЗапросSQL("CREATE TABLE janx_blob_test (
         |alpha BLOB,
         |beta BLOB,
-        |inner BLOB)", , , Соединение);
+        |inner_blob BLOB)", , , Соединение);
 
     МассивПараметров = Новый Массив;
     МассивПараметров.Добавить(Новый Структура("blob", Исходное["alpha"]));
     МассивПараметров.Добавить(Новый Структура("blob", Исходное["beta"]));
     МассивПараметров.Добавить(Новый Структура("blob", Исходное["nested"]["inner"]));
 
-    Опции = Новый Структура;
-    Опции.Вставить("params", МассивПараметров);
+    OPI_SQLite.ВыполнитьЗапросSQL("INSERT INTO janx_blob_test (alpha, beta, inner_blob) VALUES (?, ?, ?)", МассивПараметров, , Соединение);
 
-    OPI_SQLite.ВыполнитьЗапросSQL("INSERT INTO janx_blob_test (alpha, beta, inner) VALUES (?, ?, ?)", Опции, , Соединение);
-
-    Результат = OPI_SQLite.ВыполнитьЗапросSQL("SELECT alpha, beta, inner FROM janx_blob_test", , , Соединение);
+    Результат = OPI_SQLite.ВыполнитьЗапросSQL("SELECT alpha, beta, inner_blob FROM janx_blob_test", , , Соединение);
 
     // END
 
