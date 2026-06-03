@@ -1,113 +1,144 @@
 use std::sync::{Arc, Mutex};
+
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_result_ok, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_result_ok, janx_success, lock_unpoisoned};
+
 use crate::backend::HttpServerBackend;
 
-pub struct HttpServer {
-    backend: Arc<Mutex<HttpServerBackend>>,
+struct State {
+    backend: HttpServerBackend,
     started: bool,
+    logger: Option<Arc<Logger>>,
+}
+
+pub struct HttpServer {
+    state: Arc<Mutex<State>>,
 }
 
 impl HttpServer {
     pub fn new() -> Self {
         Self {
-            backend: Arc::new(Mutex::new(HttpServerBackend::new())),
-            started: false,
+            state: Arc::new(Mutex::new(State {
+                backend: HttpServerBackend::new(),
+                started: false,
+                logger: None,
+            })),
         }
     }
 
-    pub fn set_logger(&self, logger: Arc<Logger>) {
-        if let Ok(mut backend) = self.backend.lock() {
-            backend.set_logger(logger);
+    fn lock_state(&self) -> std::sync::MutexGuard<'_, State> {
+        lock_unpoisoned(&self.state)
+    }
+
+    pub fn init_logger(&mut self, logger_config: &JanxValue) -> Result<(), String> {
+        let mut state = self.lock_state();
+        if state.logger.is_some() {
+            return Ok(());
+        }
+
+        if logger_config.is_empty() {
+            return Ok(());
+        }
+
+        let logger = Logger::from_janx(logger_config)
+            .map_err(|e| format!("Failed to initialize logger: {}", e))?;
+
+        let logger_arc = Arc::new(logger);
+        state.logger = Some(logger_arc.clone());
+        state.backend.set_logger(logger_arc);
+
+        Ok(())
+    }
+
+    pub fn get_logs(&self, count: usize) -> JanxValue {
+        let state = self.lock_state();
+        if let Some(ref logger) = state.logger {
+            let logs = logger.get_last_logs(count);
+            let total = logger.len();
+            janx_logs(logs, total)
+        } else {
+            janx_error("Logger not initialized")
         }
     }
 
     pub fn start(&mut self, port: u16, config: &JanxValue) -> JanxValue {
-        if self.started {
+        let mut state = self.lock_state();
+        if state.started {
             return janx_error("HTTP server already started");
         }
 
-        let result = match self.backend.lock() {
-            Ok(backend) => backend.start(port, config),
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        };
+        let result = state.backend.start(port, config);
 
         if janx_result_ok(&result) {
-            self.started = true;
+            state.started = true;
         }
 
         result
     }
 
     pub fn stop(&mut self) -> JanxValue {
-        if !self.started {
+        let mut state = self.lock_state();
+        if !state.started {
             return janx_error("HTTP server not started");
         }
 
-        match self.backend.lock() {
-            Ok(mut backend) => {
-                backend.shutdown();
-                self.started = false;
-                janx_success(None, None)
-            }
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        }
+        state.backend.shutdown();
+        state.started = false;
+        janx_success(None, None)
     }
 
     pub fn handle_request(&self, timeout_ms: u64) -> JanxValue {
-        if !self.started {
+        let state = self.lock_state();
+        if !state.started {
             return janx_error("HTTP server not started");
         }
 
-        match self.backend.lock() {
-            Ok(backend) => backend.handle_request(timeout_ms),
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        }
+        state.backend.handle_request(timeout_ms)
     }
 
     pub fn handle_request_by_id(&self, request_id: &str) -> JanxValue {
-        if !self.started {
+        let state = self.lock_state();
+        if !state.started {
             return janx_error("HTTP server not started");
         }
 
-        match self.backend.lock() {
-            Ok(backend) => backend.handle_request_by_id(request_id.to_string()),
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        }
+        state
+            .backend
+            .handle_request_by_id(request_id.to_string())
     }
 
     pub fn send_response(&self, request_id: &str, status_code: u16, body: Vec<u8>) -> JanxValue {
-        if !self.started {
+        let state = self.lock_state();
+        if !state.started {
             return janx_error("HTTP server not started");
         }
 
-        match self.backend.lock() {
-            Ok(backend) => backend.send_response(request_id.to_string(), status_code, body),
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        }
+        state
+            .backend
+            .send_response(request_id.to_string(), status_code, body)
     }
 
     pub fn get_pending_requests(&self) -> JanxValue {
-        if !self.started {
+        let state = self.lock_state();
+        if !state.started {
             return janx_error("HTTP server not started");
         }
 
-        match self.backend.lock() {
-            Ok(backend) => backend.get_pending_requests(),
-            Err(e) => janx_error(format!("Failed to lock backend: {}", e)),
-        }
+        state.backend.get_pending_requests()
     }
 
     pub fn is_started(&self) -> bool {
-        self.started
+        self.lock_state().started
     }
 }
 
 impl Drop for HttpServer {
     fn drop(&mut self) {
-        if self.started {
-            let _ = self.stop();
+        let mut state = lock_unpoisoned(&self.state);
+        if state.started {
+            state.backend.shutdown();
+            state.started = false;
         }
     }
 }

@@ -1,36 +1,44 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::MongoDBBackend;
 
 pub struct AddIn {
     pub(crate) connection_string: String,
-    pub(crate) client: MongoDBBackend,
+    client: Arc<Mutex<MongoDBBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
             connection_string: String::new(),
-            client: MongoDBBackend::new(),
+            client: Arc::new(Mutex::new(MongoDBBackend::new())),
         }
+    }
+
+    fn lock_client(&self) -> std::sync::MutexGuard<'_, MongoDBBackend> {
+        lock_unpoisoned(&self.client)
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut client = self.lock_client();
+                match client.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.client.get_logs(count) {
+        let client = self.lock_client();
+        match client.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
@@ -41,25 +49,28 @@ impl AddIn {
             return janx_error("Empty connection string!");
         }
 
-        if self.client.is_connected() {
+        let mut client = self.lock_client();
+        if client.is_connected() {
             return janx_error("Connection already initialized!");
         }
 
-        match self.client.connect(self.connection_string.clone()) {
+        match client.connect(self.connection_string.clone()) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn disconnect(&mut self) -> JanxValue {
-        match self.client.disconnect() {
+        let mut client = self.lock_client();
+        match client.disconnect() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn execute(&mut self, params: JanxValue) -> JanxValue {
-        match self.client.execute(params) {
+        let mut client = self.lock_client();
+        match client.execute(params) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }

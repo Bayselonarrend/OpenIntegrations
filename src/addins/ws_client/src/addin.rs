@@ -1,94 +1,110 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::WsClientBackend;
 
 pub struct AddIn {
-    pub(crate) backend: WsClientBackend,
+    backend: Arc<Mutex<WsClientBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            backend: WsClientBackend::new(),
+            backend: Arc::new(Mutex::new(WsClientBackend::new())),
         }
+    }
+
+    fn lock_backend(&self) -> std::sync::MutexGuard<'_, WsClientBackend> {
+        lock_unpoisoned(&self.backend)
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut backend = self.lock_backend();
+                match backend.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.backend.get_logs(count) {
+        let backend = self.lock_backend();
+        match backend.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
     }
 
     pub fn connect(&mut self, url: &str) -> JanxValue {
-        match self.backend.connect(url) {
+        let mut backend = self.lock_backend();
+        match backend.connect(url) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn send_text(&self, text: &str) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .send_text(text)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn send_binary(&self, data: Vec<u8>) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .send_binary(data)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn receive_message(&self, timeout_ms: u64) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .receive_message(timeout_ms)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn send_ping(&self) -> JanxValue {
-        self.backend.send_ping().unwrap_or_else(|e| janx_error(e))
+        self.lock_backend()
+            .send_ping()
+            .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn send_pong(&self) -> JanxValue {
-        self.backend.send_pong().unwrap_or_else(|e| janx_error(e))
+        self.lock_backend()
+            .send_pong()
+            .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn close(&self, code: u16, reason: &str) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .close(code, reason)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn set_headers(&mut self, headers: &JanxValue) -> JanxValue {
-        match self.backend.set_headers(headers) {
+        let mut backend = self.lock_backend();
+        match backend.set_headers(headers) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> JanxValue {
-        match self.backend.set_tls(use_tls, accept_invalid_certs, ca_cert_path) {
+        let mut backend = self.lock_backend();
+        match backend.set_tls(use_tls, accept_invalid_certs, ca_cert_path) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn set_proxy(&mut self, proxy: &JanxValue) -> JanxValue {
-        match self.backend.set_proxy(proxy) {
+        let mut backend = self.lock_backend();
+        match backend.set_proxy(proxy) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
@@ -105,6 +121,6 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        self.backend.close_backend();
+        self.lock_backend().close_backend();
     }
 }

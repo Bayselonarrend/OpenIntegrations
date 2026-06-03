@@ -68,12 +68,25 @@
 
 **Не защищает** ни один уровень: segfault/abort в C-библиотеке драйвера — падает весь процесс 1С. Изоляция только отдельным процессом (вне этой схемы).
 
+### Синхронизация FFI-оболочки
+
+Worker-поток сериализует работу с драйвером, но **не** защищает поля и флаги на стороне `AddIn`: `started`, `logger`, `datasets`, вызовы делегата в `backend`/`common-server`. Если платформа держит один экземпляр компоненты и вызывает методы **из разных потоков** (параллельные задания, внешний хостинг, общий кэш объекта), без mutex на оболочке возможны гонки — даже при корректном worker.
+
+**Обязательно** в `addin.rs` (и в server-`wrapper.rs`, где есть обёртка):
+
+- `Arc<Mutex<State>>` — backend-делегат, служебное состояние, logger; все FFI-методы через `common_utils::lock_unpoisoned`;
+- для SQL с dataset — `datasets` внутри того же `State`, не отдельное поле на `AddIn` (в `lib.rs` — тонкие `datasets_*` на `AddIn`).
+
+Свойства getset (`connection_string`, `server_address`, `address` и т.п.) допустимо оставить на `AddIn` **вне** mutex; методы, которые читают их вместе с `State`, берут lock и при необходимости клонируют строку до обращения к backend (см. `grpc` `connect`).
+
+Это **не** отменяет запрет ниже: `Arc<Mutex<соединение/драйвер>>` на addin по-прежнему нельзя — драйвер только в worker/`Session`.
+
 ### Структура крейта (клиенты: БД, FTP, ZeroMQ и т.п.)
 
 ```
 src/addins/<name>/src/
   lib.rs      — METHODS, get_params_amount, cal_func, impl_addin_exports
-  addin.rs    — тонкий AddIn: FFI-методы, JSON-ответы, без Mutex вокруг драйвера
+  addin.rs    — тонкий AddIn: FFI-методы, `Arc<Mutex<State>>` на оболочке, без Mutex вокруг драйвера
   backend.rs  — *Backend: настройки до connect, ленивый поток, SetLogger
   worker.rs   — WorkerCommand, Session, spawn_thread, вся работа с драйвером
   query.rs    — только если есть отдельная логика SQL/запросов (MSSQL, Postgres, …)
@@ -165,7 +178,7 @@ src/addins/<name>/src/
 
 Те же шаги, что для новой, плюс:
 
-1. Разнести монолитный `lib.rs`; убрать `Arc<Mutex<драйвер>>`.
+1. Разнести монолитный `lib.rs`; убрать `Arc<Mutex<драйвер>>`, заложить `Arc<Mutex<State>>` на FFI-оболочку (см. «Синхронизация FFI-оболочки»).
 2. Перенести клиент в `Session` worker-потока; поток — только ленивый `ensure_thread`.
 3. **Сохранить** совместимость FFI: номера/имена методов, JSON-поля, намеренные побочные эффекты (например задержки в `cal_func`).
 

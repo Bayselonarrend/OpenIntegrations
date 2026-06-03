@@ -1,89 +1,100 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_janx::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::LynaBackend;
 
 pub struct AddIn {
-    pub(crate) backend: LynaBackend,
+    backend: Arc<Mutex<LynaBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            backend: LynaBackend::new(),
+            backend: Arc::new(Mutex::new(LynaBackend::new())),
         }
     }
 
+    fn lock_backend(&self) -> std::sync::MutexGuard<'_, LynaBackend> {
+        lock_unpoisoned(&self.backend)
+    }
+
     pub fn execute_string(&self, code: &str) -> JanxValue {
-        self.backend.execute_string(code.to_string())
+        self.lock_backend().execute_string(code.to_string())
     }
 
     pub fn execute_file(&self, path: &str) -> JanxValue {
-        self.backend.execute_file(path.to_string())
+        self.lock_backend().execute_file(path.to_string())
     }
 
     pub fn execute_bytecode(&self, bytecode: Vec<u8>) -> JanxValue {
-        self.backend.execute_bytecode(bytecode)
+        self.lock_backend().execute_bytecode(bytecode)
     }
 
     pub fn execute_bytecode_file(&self, path: &str) -> JanxValue {
-        self.backend.execute_bytecode_file(path.to_string())
+        self.lock_backend()
+            .execute_bytecode_file(path.to_string())
     }
 
     pub fn compile_to_bytecode(&self, code: &str) -> Result<Vec<u8>, String> {
-        self.backend.compile_to_bytecode(code.to_string())
+        self.lock_backend()
+            .compile_to_bytecode(code.to_string())
     }
 
     pub fn compile_file_to_bytecode(&self, path: &str) -> Result<Vec<u8>, String> {
-        self.backend.compile_file_to_bytecode(path.to_string())
+        self.lock_backend()
+            .compile_file_to_bytecode(path.to_string())
     }
 
     pub fn call_function(&self, function_name: &str, args_janx: Vec<u8>) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .call_function(function_name.to_string(), args_janx)
     }
 
     pub fn set_global(&self, variable_name: &str, value_janx: Vec<u8>) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .set_global(variable_name.to_string(), value_janx)
     }
 
     pub fn get_global(&self, variable_name: &str) -> JanxValue {
-        self.backend.get_global(variable_name.to_string())
+        self.lock_backend().get_global(variable_name.to_string())
     }
 
     pub fn add_package(&self, package_name: String, code: String) -> JanxValue {
-        self.backend.add_package(package_name, code)
+        self.lock_backend().add_package(package_name, code)
     }
 
     pub fn load_package_from_file(&self, package_name: String, file_path: String) -> JanxValue {
-        self.backend
+        self.lock_backend()
             .load_package_from_file(package_name, file_path)
     }
 
     pub fn get_packages(&self) -> JanxValue {
-        self.backend.get_packages()
+        self.lock_backend().get_packages()
     }
 
     pub fn reset(&self) -> JanxValue {
-        self.backend.reset()
+        self.lock_backend().reset()
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut backend = self.lock_backend();
+                match backend.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.backend.get_logs(count) {
+        let backend = self.lock_backend();
+        match backend.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }

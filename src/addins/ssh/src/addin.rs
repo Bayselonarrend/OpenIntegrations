@@ -1,31 +1,37 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::SshBackend;
 
 pub struct AddIn {
-    pub(crate) backend: SshBackend,
+    backend: Arc<Mutex<SshBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            backend: SshBackend::new(),
+            backend: Arc::new(Mutex::new(SshBackend::new())),
         }
     }
 
+    fn lock_backend(&self) -> std::sync::MutexGuard<'_, SshBackend> {
+        lock_unpoisoned(&self.backend)
+    }
+
     pub fn set_settings(&mut self, settings: &JanxValue) -> JanxValue {
-        match self.backend.set_settings(settings) {
+        let mut backend = self.lock_backend();
+        match backend.set_settings(settings) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn set_proxy(&mut self, proxy: &JanxValue) -> JanxValue {
-        match self.backend.set_proxy(proxy) {
+        let mut backend = self.lock_backend();
+        match backend.set_proxy(proxy) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
@@ -33,122 +39,140 @@ impl AddIn {
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.backend.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut backend = self.lock_backend();
+                match backend.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.backend.get_logs(count) {
+        let backend = self.lock_backend();
+        match backend.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
     }
 
     pub fn initialize(&mut self) -> JanxValue {
-        match self.backend.connect() {
+        let mut backend = self.lock_backend();
+        match backend.connect() {
             Ok(response) => response,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn execute(&self, command: &str) -> JanxValue {
-        match self.backend.execute(command) {
+        let backend = self.lock_backend();
+        match backend.execute(command) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn disconnect(&mut self) -> JanxValue {
-        match self.backend.disconnect() {
+        let mut backend = self.lock_backend();
+        match backend.disconnect() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn get_configuration(&self) -> JanxValue {
-        match self.backend.get_configuration() {
+        let backend = self.lock_backend();
+        match backend.get_configuration() {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn make_sftp(&mut self) -> JanxValue {
-        match self.backend.make_sftp() {
+        let mut backend = self.lock_backend();
+        match backend.make_sftp() {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn make_directory(&mut self, path: &str, mode: i32) -> JanxValue {
-        match self.backend.make_directory(path, mode) {
+        let mut backend = self.lock_backend();
+        match backend.make_directory(path, mode) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn remove_directory(&mut self, path: &str) -> JanxValue {
-        match self.backend.remove_directory(path) {
+        let mut backend = self.lock_backend();
+        match backend.remove_directory(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn list_directory(&mut self, path: &str) -> JanxValue {
-        match self.backend.list_directory(path) {
+        let mut backend = self.lock_backend();
+        match backend.list_directory(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn upload_file(&mut self, file: &str, path: &str) -> JanxValue {
-        match self.backend.upload_file(file, path) {
+        let mut backend = self.lock_backend();
+        match backend.upload_file(file, path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn upload_data(&mut self, data: Vec<u8>, path: &str) -> JanxValue {
-        match self.backend.upload_data(data, path) {
+        let mut backend = self.lock_backend();
+        match backend.upload_data(data, path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn delete_file(&mut self, path: &str) -> JanxValue {
-        match self.backend.delete_file(path) {
+        let mut backend = self.lock_backend();
+        match backend.delete_file(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn is_sftp(&self) -> bool {
-        self.backend.is_sftp().unwrap_or(false)
+        self.lock_backend().is_sftp().unwrap_or(false)
     }
 
     pub fn download_to_file(&mut self, path: &str, filepath: &str) -> JanxValue {
-        match self.backend.download_to_file(path, filepath) {
+        let mut backend = self.lock_backend();
+        match backend.download_to_file(path, filepath) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn download_to_vec(&mut self, path: &str) -> Result<Vec<u8>, String> {
-        self.backend.download_to_vec(path)
+        self.lock_backend().download_to_vec(path)
     }
 
     pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> JanxValue {
-        match self.backend.rename_object(path, new_path, overwrite) {
+        let mut backend = self.lock_backend();
+        match backend.rename_object(path, new_path, overwrite) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }
     }
 
     pub fn get_file_info(&mut self, path: &str) -> JanxValue {
-        match self.backend.get_file_info(path) {
+        let mut backend = self.lock_backend();
+        match backend.get_file_info(path) {
             Ok(result) => result,
             Err(e) => janx_error(e),
         }

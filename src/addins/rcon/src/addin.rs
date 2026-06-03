@@ -1,34 +1,42 @@
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::JanxValue;
 use common_logs::Logger;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::RconBackend;
 
 pub struct AddIn {
-    pub(crate) client: RconBackend,
+    client: Arc<Mutex<RconBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            client: RconBackend::new(),
+            client: Arc::new(Mutex::new(RconBackend::new())),
         }
+    }
+
+    fn lock_client(&self) -> std::sync::MutexGuard<'_, RconBackend> {
+        lock_unpoisoned(&self.client)
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut client = self.lock_client();
+                match client.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.client.get_logs(count) {
+        let client = self.lock_client();
+        match client.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
@@ -41,20 +49,23 @@ impl AddIn {
         read_timeout: i32,
         write_timeout: i32,
     ) -> JanxValue {
-        match self.client.connect(url, password, read_timeout, write_timeout) {
+        let mut client = self.lock_client();
+        match client.connect(url, password, read_timeout, write_timeout) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn execute_command(&mut self, command: &str) -> JanxValue {
-        self.client
+        let mut client = self.lock_client();
+        client
             .execute_command(command)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_settings(&self) -> JanxValue {
-        self.client
+        let client = self.lock_client();
+        client
             .get_settings()
             .unwrap_or_else(|e| janx_error(e))
     }

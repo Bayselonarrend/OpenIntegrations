@@ -68,7 +68,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let force = params[1].get_bool().unwrap_or(false);
             let from_file = params[2].get_bool().unwrap_or(false);
 
-            let result = match obj.datasets.init_query(&text, force, from_file) {
+            let result = match obj.datasets_init_query(&text, force, from_file) {
                 Ok(key) => janx!({"result": true, "key": key}),
                 Err(e) => janx_error(&e),
             };
@@ -77,7 +77,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         5 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.result_as_file(&key, &filepath) {
+            let result = match obj.datasets_result_as_file(&key, &filepath) {
                 Ok(_) => janx_success(None, None),
                 Err(e) => janx_error(&e),
             };
@@ -91,7 +91,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
 
-            let result = match obj.datasets.params_from_file(&key, &filepath) {
+            let result = match obj.datasets_params_from_file(&key, &filepath) {
                 Ok(_) => janx_success(None, None),
                 Err(e) => janx_error(&e),
             };
@@ -100,7 +100,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let janx_params = JanxValue::from_variant(&params[1]);
-            let result = match obj.datasets.set_params(&key, janx_params) {
+            let result = match obj.datasets_set_params(&key, janx_params) {
                 Ok(_) => janx_success(None, None),
                 Err(e) => janx_error(&e),
             };
@@ -108,13 +108,13 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         }
         9 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-            obj.datasets.remove(&key);
+            obj.datasets_remove(&key);
             Box::new(janx_success(None, None))
         }
         10 => {
             let input = params[0].get_string().unwrap_or("".to_string());
             let output = params[1].get_string().unwrap_or("".to_string());
-            let result = match obj.datasets.batch_query_init(&input, &output) {
+            let result = match obj.datasets_batch_query_init(&input, &output) {
                 Ok(_) => janx_success(None, None),
                 Err(e) => janx_error(&e),
             };

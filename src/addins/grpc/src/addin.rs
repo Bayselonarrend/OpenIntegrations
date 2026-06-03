@@ -1,11 +1,11 @@
 use std::collections::BTreeMap;
 use std::collections::HashMap;
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 
 use common_core::{FromJanx, JanxValue};
 use common_logs::Logger;
 use common_tcp::tls_settings::TlsSettings;
-use common_utils::utils::{janx_error, janx_logs, janx_success};
+use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
 use crate::backend::GrpcBackend;
 
@@ -23,35 +23,49 @@ impl Default for StoredSettings {
     }
 }
 
+struct State {
+    client: GrpcBackend,
+    stored_settings: StoredSettings,
+    tls: Option<TlsSettings>,
+}
+
 pub struct AddIn {
     pub(crate) server_address: String,
-    pub(crate) stored_settings: StoredSettings,
-    pub(crate) tls: Option<TlsSettings>,
-    pub(crate) client: GrpcBackend,
+    state: Arc<Mutex<State>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
             server_address: String::new(),
-            stored_settings: StoredSettings::default(),
-            tls: None,
-            client: GrpcBackend::new(),
+            state: Arc::new(Mutex::new(State {
+                client: GrpcBackend::new(),
+                stored_settings: StoredSettings::default(),
+                tls: None,
+            })),
         }
+    }
+
+    fn lock_state(&self) -> std::sync::MutexGuard<'_, State> {
+        lock_unpoisoned(&self.state)
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
-            Ok(logger) => match self.client.set_logger(Arc::new(logger)) {
-                Ok(()) => janx_success(None, None),
-                Err(e) => janx_error(e),
-            },
+            Ok(logger) => {
+                let mut state = self.lock_state();
+                match state.client.set_logger(Arc::new(logger)) {
+                    Ok(()) => janx_success(None, None),
+                    Err(e) => janx_error(e),
+                }
+            }
             Err(e) => janx_error(format!("Failed to initialize logger: {}", e)),
         }
     }
 
     pub fn get_logs(&self, count: usize) -> JanxValue {
-        match self.client.get_logs(count) {
+        let state = self.lock_state();
+        match state.client.get_logs(count) {
             Some((logs, total)) => janx_logs(logs, total),
             None => janx_error("Logger not initialized"),
         }
@@ -62,38 +76,45 @@ impl AddIn {
             return janx_error("Empty server address!");
         }
 
-        if self.client.is_connected() {
+        let mut state = self.lock_state();
+        if state.client.is_connected() {
             return janx_error("Connection already initialized!");
         }
 
-        match self.client.connect(&self.server_address, &self.tls) {
+        let tls = state.tls.clone();
+        match state.client.connect(&self.server_address, &tls) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn disconnect(&mut self) -> JanxValue {
-        match self.client.disconnect() {
+        let mut state = self.lock_state();
+        match state.client.disconnect() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn call(&mut self, request: &JanxValue) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .call(request)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn load_proto(&mut self, filename: &str, proto_content: &str) -> JanxValue {
-        match self.client.load_proto(filename, proto_content) {
+        let mut state = self.lock_state();
+        match state.client.load_proto(filename, proto_content) {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
     }
 
     pub fn compile_protos(&mut self) -> JanxValue {
-        match self.client.compile_protos() {
+        let mut state = self.lock_state();
+        match state.client.compile_protos() {
             Ok(()) => janx_success(None, None),
             Err(e) => janx_error(e),
         }
@@ -108,9 +129,10 @@ impl AddIn {
             None => return janx_error("Invalid metadata Janx object"),
         };
 
-        match self.client.set_metadata(metadata.clone()) {
+        let mut state = self.lock_state();
+        match state.client.set_metadata(metadata.clone()) {
             Ok(()) => {
-                self.stored_settings.metadata = metadata;
+                state.stored_settings.metadata = metadata;
                 janx_success(None, None)
             }
             Err(e) => janx_error(e),
@@ -118,7 +140,8 @@ impl AddIn {
     }
 
     pub fn get_settings(&self) -> JanxValue {
-        let s = &self.stored_settings;
+        let state = self.lock_state();
+        let s = &state.stored_settings;
         let mut map: BTreeMap<String, JanxValue> = s.settings.clone();
 
         if !s.metadata.is_empty() {
@@ -138,7 +161,8 @@ impl AddIn {
             return janx_error("Invalid settings Janx object");
         };
 
-        self.stored_settings.settings = value.clone();
+        let mut state = self.lock_state();
+        state.stored_settings.settings = value.clone();
         janx_success(None, None)
     }
 
@@ -148,72 +172,93 @@ impl AddIn {
         accept_invalid_certs: bool,
         ca_cert_path: &str,
     ) -> JanxValue {
-        if self.client.is_connected() {
+        let mut state = self.lock_state();
+        if state.client.is_connected() {
             return janx_error(
                 "TLS settings can only be set before the connection is established",
             );
         }
 
-        self.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
+        state.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
         janx_success(None, None)
     }
 
     pub fn list_services(&mut self) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .list_services()
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn list_methods(&mut self, service_name: &str) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .list_methods(service_name)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_method_info(&mut self, service_name: &str, method_name: &str) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .get_method_info(service_name, method_name)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn call_server_stream(&mut self, request: &JanxValue) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .call_server_stream(request)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn start_client_stream(&mut self, request: &JanxValue) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .start_client_stream(request)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn start_bidi_stream(&mut self, request: &JanxValue) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .start_bidi_stream(request)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn send_message(&mut self, stream_id: &str, message: &JanxValue) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .send_message(stream_id, message)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn get_next_message(&mut self, stream_id: &str) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .get_next_message(stream_id)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn finish_sending(&mut self, stream_id: &str) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .finish_sending(stream_id)
             .unwrap_or_else(|e| janx_error(e))
     }
 
     pub fn close_stream(&mut self, stream_id: &str) -> JanxValue {
-        self.client
+        let mut state = self.lock_state();
+        state
+            .client
             .close_stream(stream_id)
             .unwrap_or_else(|e| janx_error(e))
     }
@@ -232,9 +277,10 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        if self.client.is_connected() {
-            let _ = self.client.close_all_streams();
-            let _ = self.client.disconnect();
+        let mut state = lock_unpoisoned(&self.state);
+        if state.client.is_connected() {
+            let _ = state.client.close_all_streams();
+            let _ = state.client.disconnect();
         }
     }
 }
