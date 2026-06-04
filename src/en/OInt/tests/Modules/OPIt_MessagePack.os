@@ -228,7 +228,7 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary");
 
-    Data      = GetBinaryDataFromHexString("010203");
+    Data   = GetBinaryDataFromHexString("010203");
     Result = OPI_MessagePack.SerializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8");
