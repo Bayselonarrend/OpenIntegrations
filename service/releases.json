@@ -19,12 +19,23 @@
                 "description_en": "Added serialization/deserialization for Kanx format"
             },
             {
+                "lib": "MySQL",
+                "icon": "media/MySQL.png",
+                "description_ru": "Добавлена поддержка аутентификации `sha256_password`",
+                "description_en": "Added `sha256_password` authentication support"
+            },
+            {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Переработан обмен данными между внешними компонентами и 1С/OS хостом",
                 "description_en": "Overhauled data exchange between AddIns and the 1C/OS host"
             }
-        ]
+        ],
+        "notes": {
+            "ru": "**Некоторые из изменений данного релиза нарушают обратную совместимость!** Обязательно ознакомьтесь с разделом [Об обратной совместимости](https://openintegrations.dev/docs/Start/Backward-compatibility/) перед обновлением",
+            "en": "**Some changes in this release break backward compatibility!** Be sure to review the [Backward Compatibility](https://en.openintegrations.dev/docs/Start/Backward-compatibility/) section before updating."                
+        }
+        
     },
     {
         "version": "2.1.0",
