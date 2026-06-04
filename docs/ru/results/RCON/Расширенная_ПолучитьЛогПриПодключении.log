@@ -1,0 +1,10 @@
+﻿{
+ "logs": [
+  "[2026-06-04 21:33:53.907] Connecting to RCON server 127.0.0.1:25575",
+  "[2026-06-04 21:33:53.913] Connected to RCON server",
+  "[2026-06-04 21:33:53.914] Execute command: list"
+ ],
+ "result": true,
+ "returned": 3,
+ "total": 3
+}

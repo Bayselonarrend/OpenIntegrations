@@ -1,0 +1,11 @@
+﻿{
+ "logs": [
+  "[2026-06-04 21:31:45.884] Connecting to MySQL...",
+  "[2026-06-04 21:31:45.925] Connected to MySQL",
+  "[2026-06-04 21:31:45.926] Execute query (params=0, force_result=false): SELECT 1 AS n",
+  "[2026-06-04 21:31:45.929] Query returned 1 row(s)"
+ ],
+ "result": true,
+ "returned": 4,
+ "total": 4
+}

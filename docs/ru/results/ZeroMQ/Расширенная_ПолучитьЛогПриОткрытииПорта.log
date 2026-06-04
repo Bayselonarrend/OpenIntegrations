@@ -1,0 +1,11 @@
+﻿{
+ "logs": [
+  "[2026-06-04 22:04:08.488] Binding (REQ/REP) on tcp://0.0.0.0:5555...",
+  "[2026-06-04 22:04:08.489] Bound (REQ/REP) on tcp://0.0.0.0:5555",
+  "[2026-06-04 22:04:08.492] Receiving (timeout_ms=3000)...",
+  "[2026-06-04 22:04:08.493] Received 27 bytes"
+ ],
+ "result": true,
+ "returned": 4,
+ "total": 4
+}

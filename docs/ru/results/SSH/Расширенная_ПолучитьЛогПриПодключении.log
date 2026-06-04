@@ -1,0 +1,10 @@
+﻿{
+ "logs": [
+  "[2026-06-04 21:27:48.170] Connecting to SSH server",
+  "[2026-06-04 21:27:48.194] Connected to SSH server",
+  "[2026-06-04 21:27:48.195] Execute command: whoami"
+ ],
+ "result": true,
+ "returned": 3,
+ "total": 3
+}

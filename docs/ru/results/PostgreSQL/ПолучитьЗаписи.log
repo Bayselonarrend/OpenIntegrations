@@ -4,12 +4,10 @@
    "bigint_field": 9999999,
    "bigserial_field": 9999999,
    "bool_field": true,
-   "bytea_field": {
-    "BYTEA": "/9j/4VTBRX..."
-   },
+   "bytea_field": "Binary",
    "char_field": "A",
    "charn_field": "AAA",
-   "date_field": "2026-05-26",
+   "date_field": "2026-06-04",
    "dp_field": 1.0002,
    "int_field": 100,
    "ip_field": "127.0.0.1",
@@ -30,10 +28,10 @@
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "17:31:16",
-   "ts_field": "2026-05-26T17:31:16",
-   "tswtz_field": "2026-05-26T12:31:16+00:00",
-   "uuid_field": "fc939934-2577-4ae8-b5c0-2a976f8512af",
+   "time_field": "21:31:19",
+   "ts_field": "2026-06-04T21:31:19",
+   "tswtz_field": "2026-06-04T19:31:19+03:00",
+   "uuid_field": "1c319eff-21b1-485d-8405-9099296149fe",
    "varchar_field": "Some varchar"
   }
  ],
