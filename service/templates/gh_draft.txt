@@ -11,7 +11,7 @@
 | API | 🇷🇺 | 🇺🇸 |
 |-|-|-|
 %4
-
+%7
 ## Скачать / Download
 
 >**Не знаете что выбрать?** Посетите [страницу "О релизах"](https://openintegrations.dev/docs/Start/Release-variants)
@@ -32,7 +32,7 @@
 
 | 🪞 Зеркало/Mirror: [SourceCraft/Yandex Disk](https://sourcecraft.dev/bayselonarrend/openintegrations/releases/%1) |
 |-|
-%7
+
 <img src="https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Star.png" alt="Star-Struck" width="30" height="30" align=left />
 
 ## Поддержать проект / Support the project
