@@ -10,7 +10,8 @@
     "paths": null,
     "tests": [
 "OPIt_TCP.TC_Client",
-"OPIt_TCP.TC_Server"
+"OPIt_TCP.TC_Server",
+"OPIt_TCP.TC_ExtendedCheck"
     ]
   },
   "settings": {

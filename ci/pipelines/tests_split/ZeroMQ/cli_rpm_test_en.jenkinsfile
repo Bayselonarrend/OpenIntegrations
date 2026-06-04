@@ -89,6 +89,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_ConnectionMethods'],
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_ListeningMethods'],
 						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_InteractionMethods'],
+						['./src/en/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

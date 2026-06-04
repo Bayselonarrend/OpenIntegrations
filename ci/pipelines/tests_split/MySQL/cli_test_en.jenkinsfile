@@ -166,6 +166,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPItc_MySQL.os', 'MYS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPItc_MySQL.os', 'MYS_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPItc_MySQL.os', 'MYS_ORM'],
 					]
 					for (test in tests) {

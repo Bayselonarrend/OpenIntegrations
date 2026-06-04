@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_MongoDB.Mongo_ОсновныеМетоды",
+"OPIt_MongoDB.Mongo_РасширеннаяПроверка",
 "OPIt_MongoDB.Mongo_РаботаСБазами",
 "OPIt_MongoDB.Mongo_РаботаСКоллекциями",
 "OPIt_MongoDB.Mongo_РаботаСДокументами",

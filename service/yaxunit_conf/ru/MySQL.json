@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_MySQL.MYS_ОсновныеМетоды",
+"OPIt_MySQL.MYS_РасширеннаяПроверка",
 "OPIt_MySQL.MYS_ORM"
     ]
   },

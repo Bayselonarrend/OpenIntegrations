@@ -11,7 +11,8 @@
     "tests": [
 "OPIt_FTP.FT_DirecotryManagement",
 "OPIt_FTP.FT_FileOperations",
-"OPIt_FTP.FT_CommonMethods"
+"OPIt_FTP.FT_CommonMethods",
+"OPIt_FTP.FT_ExtendedCheck"
     ]
   },
   "settings": {

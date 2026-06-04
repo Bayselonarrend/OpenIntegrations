@@ -166,6 +166,9 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("GRPC"           , 5);
     Sections.Insert("ClickHouse"     , 5);
     Sections.Insert("RSS"            , 5);
+    Sections.Insert("MessagePack"    , 5);
+    Sections.Insert("Janx"           , 5);
+    Sections.Insert("Lua"            , 5);
 
     Return Sections;
 
@@ -212,6 +215,9 @@ Function GetTestTable(Val TestModule = "") Export
     CHouse    = "ClickHouse";
     RSS       = "RSS";
     ZMQ       = "ZeroMQ";
+    MsgPack   = "MessagePack";
+    Janx      = "Janx";
+    Lua       = "Lua";
 
     ArrayOfTests = New Array;
 
@@ -340,20 +346,28 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "TC_Client"                           , "TCP Client"                      , TCP);
     NewTest(ArrayOfTests, TestModule, "WS_Client"                           , "WebSocket Client"                , WebSocket);
     NewTest(ArrayOfTests, TestModule, "WS_Server"                           , "WebSocket Server"                , WebSocket);
+    NewTest(ArrayOfTests, TestModule, "WS_ExtendedCheck"                    , "Extended check"                  , WebSocket);
     NewTest(ArrayOfTests, TestModule, "ZMQ_Common"                          , "Common"                          , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_ConnectionMethods"               , "Connection"                      , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_ListeningMethods"                , "Listening"                       , ZMQ);
     NewTest(ArrayOfTests, TestModule, "ZMQ_InteractionMethods"              , "Interaction"                     , ZMQ);
+    NewTest(ArrayOfTests, TestModule, "ZMQ_ExtendedCheck"                   , "Extended check"                  , ZMQ);
     NewTest(ArrayOfTests, TestModule, "TC_Server"                           , "TCP Host"                        , TCP);
+    NewTest(ArrayOfTests, TestModule, "TC_ExtendedCheck"                    , "Extended check"                  , TCP);
     NewTest(ArrayOfTests, TestModule, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
+    NewTest(ArrayOfTests, TestModule, "SQLL_ExtendedCheck"                  , "Extended check"                  , SQLite);
     NewTest(ArrayOfTests, TestModule, "SQLL_ORM"                            , "ORM"                             , SQLite);
     NewTest(ArrayOfTests, TestModule, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
+    NewTest(ArrayOfTests, TestModule, "Postgres_ExtendedCheck"              , "Extended check"                  , Postgres);
     NewTest(ArrayOfTests, TestModule, "Postgres_ORM"                        , "ORM"                             , Postgres);
     NewTest(ArrayOfTests, TestModule, "MYS_CommonMethods"                   , "Common methods"                  , MySQL);
+    NewTest(ArrayOfTests, TestModule, "MYS_ExtendedCheck"                   , "Extended check"                  , MySQL);
     NewTest(ArrayOfTests, TestModule, "MYS_ORM"                             , "ORM"                             , MySQL);
     NewTest(ArrayOfTests, TestModule, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
+    NewTest(ArrayOfTests, TestModule, "MSS_ExtendedCheck"                   , "Extended check"                  , MSSQL);
     NewTest(ArrayOfTests, TestModule, "MSS_ORM"                             , "ORM"                             , MSSQL);
     NewTest(ArrayOfTests, TestModule, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
+    NewTest(ArrayOfTests, TestModule, "Mongo_ExtendedCheck"                 , "Extended check"                  , MongoDB);
     NewTest(ArrayOfTests, TestModule, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
     NewTest(ArrayOfTests, TestModule, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
     NewTest(ArrayOfTests, TestModule, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
@@ -372,6 +386,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "GMax_Queues"                         , "Queues"                          , GreenMax);
     NewTest(ArrayOfTests, TestModule, "GMax_Account"                        , "Account"                         , GreenMax);
     NewTest(ArrayOfTests, TestModule, "RC_CommandsExecution"                , "Commands execution"              , RCON);
+    NewTest(ArrayOfTests, TestModule, "RC_ExtendedCheck"                    , "Extended check"                  , RCON);
     NewTest(ArrayOfTests, TestModule, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
     NewTest(ArrayOfTests, TestModule, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
     NewTest(ArrayOfTests, TestModule, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
@@ -390,22 +405,36 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "FT_DirecotryManagement"              , "Directory management"            , FTP);
     NewTest(ArrayOfTests, TestModule, "FT_FileOperations"                   , "Files management"                , FTP);
     NewTest(ArrayOfTests, TestModule, "FT_CommonMethods"                    , "Common methods"                  , FTP);
+    NewTest(ArrayOfTests, TestModule, "FT_ExtendedCheck"                    , "Extended check"                  , FTP);
     NewTest(ArrayOfTests, TestModule, "RPortal_Authorization"               , "Authorization"                   , RPortal);
     NewTest(ArrayOfTests, TestModule, "RPortal_TestManagement"              , "Test management"                 , RPortal);
     NewTest(ArrayOfTests, TestModule, "RPortal_LogRecording"                , "Log recording"                   , RPortal);
     NewTest(ArrayOfTests, TestModule, "RPortal_ProjectManagement"           , "Project management"              , RPortal);
     NewTest(ArrayOfTests, TestModule, "RPortal_UserManagement"              , "Users management"                , RPortal);
     NewTest(ArrayOfTests, TestModule, "SShell_CommonMethods"                , "Common methods"                  , SSH);
+    NewTest(ArrayOfTests, TestModule, "SShell_ExtendedCheck"                , "Extended check"                  , SSH);
     NewTest(ArrayOfTests, TestModule, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
     NewTest(ArrayOfTests, TestModule, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
     NewTest(ArrayOfTests, TestModule, "SF_FileManagement"                   , "Files management"                , SFTP);
+    NewTest(ArrayOfTests, TestModule, "SF_ExtendedCheck"                    , "Extended check"                  , SFTP);
     NewTest(ArrayOfTests, TestModule, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
+    NewTest(ArrayOfTests, TestModule, "GR_ExtendedCheck"                    , "Extended check"                  , GRPC);
     NewTest(ArrayOfTests, TestModule, "GR_Introspection"                    , "Introspection"                   , GRPC);
     NewTest(ArrayOfTests, TestModule, "GR_Streaming"                        , "Streaming"                       , GRPC);
     NewTest(ArrayOfTests, TestModule, "CH_CommonMethods"                    , "Common methods"                  , CHouse);
     NewTest(ArrayOfTests, TestModule, "CH_GRPC"                             , "GRPC"                            , CHouse);
     NewTest(ArrayOfTests, TestModule, "RSS_RSSMethods"                      , "RSS methods"                     , RSS);
     NewTest(ArrayOfTests, TestModule, "RSS_AtomMethods"                     , "Atom methods"                    , RSS);
+    NewTest(ArrayOfTests, TestModule, "MP_Data"                             , "Data"                            , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "MP_Benchmark"                        , "Benchmark"                       , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "MP_Compatibility"                    , "Reference compatibility"         , MsgPack);
+    NewTest(ArrayOfTests, TestModule, "Jnx_Data"                            , "Data"                            , Janx);
+    NewTest(ArrayOfTests, TestModule, "Jnx_ExtendedDataCheck"               , "Extended data check"             , Janx);
+    NewTest(ArrayOfTests, TestModule, "Jnx_Benchmark"                       , "Benchmark"                       , Janx);
+    NewTest(ArrayOfTests, TestModule, "Lua_CommonMethods"                   , "Common methods"                  , Lua);
+    NewTest(ArrayOfTests, TestModule, "Lua_WorkingWithScripts"              , "Script management"               , Lua);
+    NewTest(ArrayOfTests, TestModule, "Lua_BytecodeManagement"              , "Bytecode management"             , Lua);
+    NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
     Return ArrayOfTests;
 
@@ -1323,6 +1352,132 @@ Function GetTagArray(Index) Export
     EndIf;
 
     Return TagsArray;
+
+EndFunction
+
+Function GetJanxTestCollection(Val Option) Export
+
+    If Option = "MultipleBinaries" Then
+
+        Map = New Map;
+        Map.Insert("alpha", GetBinaryDataFromHexString("010203"));
+        Map.Insert("beta" , GetBinaryDataFromHexString("AABBCCDDEE"));
+        Map.Insert("gamma", GetBinaryDataFromHexString("FF00"));
+
+        Nested = New Map;
+        Nested.Insert("inner", GetBinaryDataFromHexString("DEADBEEF"));
+        Nested.Insert("label", "nested");
+        Map.Insert("nested", Nested);
+
+        Meta = New Array;
+        Meta.Add("x");
+        Meta.Add(42);
+        Map.Insert("meta", Meta);
+
+        Return Map;
+
+    ElsIf Option = "LuaComplexData" Then
+
+        Map = New Map;
+        Map.Insert("alpha", GetBinaryDataFromString("alpha-payload", "UTF-8"));
+        Map.Insert("beta" , GetBinaryDataFromString("beta-payload" , "UTF-8"));
+        Map.Insert("gamma", GetBinaryDataFromString("gamma-payload", "UTF-8"));
+
+        Nested = New Map;
+        Nested.Insert("inner", GetBinaryDataFromString("inner-payload", "UTF-8"));
+        Nested.Insert("label", "nested");
+        Map.Insert("nested", Nested);
+
+        Meta = New Array;
+        Meta.Add("x");
+        Meta.Add(42);
+        Map.Insert("meta", Meta);
+
+        Return Map;
+
+    ElsIf Option = "BinariesArray" Then
+
+        BinaryArray = New Array;
+        BinaryArray.Add(GetBinaryDataFromHexString("01"));
+        BinaryArray.Add(GetBinaryDataFromHexString("020304"));
+        BinaryArray.Add(GetBinaryDataFromHexString("0506070809"));
+
+        Map = New Map;
+        Map.Insert("chunks", BinaryArray);
+        Map.Insert("count" , 3);
+
+        Return Map;
+
+    ElsIf Option = "MixedArray" Then
+
+        Array = New Array;
+        Array.Add(1);
+        Array.Add("text");
+        Array.Add(GetBinaryDataFromHexString("0A0B"));
+
+        NestedMap = New Map;
+        NestedMap.Insert("k"  , "v");
+        NestedMap.Insert("bin", GetBinaryDataFromHexString("112233"));
+        Array.Add(NestedMap);
+
+        NestedArray = New Array;
+        NestedArray.Add(False);
+        NestedArray.Add(GetBinaryDataFromHexString("445566"));
+        Array.Add(NestedArray);
+
+        Return Array;
+
+    ElsIf Option = "LuaMixedArray" Then
+
+        Array = New Array;
+        Array.Add(1);
+        Array.Add("text");
+        Array.Add(GetBinaryDataFromString("item-payload", "UTF-8"));
+
+        NestedMap = New Map;
+        NestedMap.Insert("k"  , "v");
+        NestedMap.Insert("bin", GetBinaryDataFromString("map-payload", "UTF-8"));
+        Array.Add(NestedMap);
+
+        NestedArray = New Array;
+        NestedArray.Add(False);
+        NestedArray.Add(GetBinaryDataFromString("arr-payload", "UTF-8"));
+        Array.Add(NestedArray);
+
+        Return Array;
+
+    ElsIf Option = "DeepNesting" Then
+
+        Level3 = New Map;
+        Level3.Insert("blob", GetBinaryDataFromHexString("CAFEBABE"));
+
+        Level2 = New Map;
+        Level2.Insert("level3", Level3);
+        Level2.Insert("values", New Array);
+        Level2["values"].Add(7);
+        Level2["values"].Add(GetBinaryDataFromHexString("99"));
+
+        Level1 = New Map;
+        Level1.Insert("level2", Level2);
+        Level1.Insert("flag"  , True);
+
+        Return Level1;
+
+    ElsIf Option = "EmptyAndSpecial" Then
+
+        Map = New Map;
+        Map.Insert("empty_str", "");
+        Map.Insert("zero"     , 0);
+        Map.Insert("false"    , False);
+        Map.Insert("empty_bin", GetBinaryDataFromString(""));
+        Map.Insert("list"     , New Array);
+        Map["list"].Add(GetBinaryDataFromHexString("00"));
+
+        Return Map;
+
+    EndIf;
+
+    Raise "Unknown Janx test collection variant: " + Option;
 
 EndFunction
 
@@ -7895,6 +8050,78 @@ Function Check_TCP_IsServerObject(Val Result, Val Option)
 
 EndFunction
 
+Function Check_TCP_Extended_GetDataOfNextTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(Result["error"]).Равно("timeout");
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_OperationWithoutStart(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not started") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_GetLogOnServerStart(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_ReadTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_OperationWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "no connection") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_JanxCollectionExchange(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+    CheckMapJanx(Restored, InitialValue);
+
+    Return Result;
+
+EndFunction
+
+Function Check_TCP_Extended_GetLogOnConnectionOpening(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_WebSocket_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
@@ -8183,6 +8410,38 @@ Function Check_WebSocket_IsServerObject(Val Result, Val Option)
 
 EndFunction
 
+Function Check_WebSocket_Extended_GetDataOfNextTimeout(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(Result["error"]).Равно("timeout");
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_Extended_OperationWithoutStart(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not started") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_WebSocket_Extended_GetLogOnServerStart(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_WebSocket_GetLog(Val Result, Val Option, LogFile = "")
 
     If Option = "AsString" Then
@@ -8441,6 +8700,58 @@ Function Check_ZeroMQ_ReceiveData(Val Result, Val Option, Message = "")
 
 EndFunction
 
+Function Check_ZeroMQ_Extended_GetTimeoutData(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsTimeout = StrFind(ErrorText, "timeout") > 0
+        Or StrFind(ErrorText, "timed out") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsTimeout).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_Extended_HandleTimeoutRequest(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsTimeout = StrFind(ErrorText, "timeout") > 0
+        Or StrFind(ErrorText, "timed out") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsTimeout).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_Extended_JanxCollectionExchange(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined, SentBinaryData = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    CheckBinaryDataJanx(Result["data"], SentBinaryData);
+    CheckMapJanx(Restored, InitialValue);
+    Result["data"] = "<BinaryData>";
+
+    Return Result;
+
+EndFunction
+
+Function Check_ZeroMQ_Extended_GetLogOnPortOpening(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_ZeroMQ_ProcessRequest(Val Result, Val Option, Message = "")
 
     If Option = "ReceivingTimeout" Then
@@ -8539,10 +8850,11 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     If Not ValueIsFilled(Option) Then
 
-        Blob                              = Result["data"][0]["data"]["blob"];
-        Result["data"][0]["data"]["blob"] = "Base64";
+        Blob = Result["data"][0]["data"];
 
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        Result["data"][0]["data"] = "Binary";
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     ElsIf Option = "Openning" Then
 
@@ -8723,6 +9035,60 @@ Function Check_SQLite_GetLoggingSettings(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SQLite_Extended_ExecuteQueryWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_Extended_RequestWithTwoBlobs(Val Result, Val Option, InitialValue = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"].Count()).Равно(1);
+
+    String = Result["data"][0];
+    CheckBinaryDataJanx(String["alpha"]     , InitialValue["alpha"]);
+    CheckBinaryDataJanx(String["beta"]      , InitialValue["beta"]);
+    CheckBinaryDataJanx(String["inner_blob"], InitialValue["nested"]["inner"]);
+
+    Result["data"][0]["alpha"]      = "Binary";
+    Result["data"][0]["beta"]       = "Binary";
+    Result["data"][0]["inner_blob"] = "Binary";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SQLite_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_SQLite_GetLog(Val Result, Val Option, LogFile = "")
 
     If Option = "AsString" Then
@@ -8880,6 +9246,52 @@ Function Check_SQLite_EnsureRecords(Val Result, Val Option)
 
 EndFunction
 
+Function Check_PostgreSQL_Extended_ExecuteQueryWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_Extended_ConnectionWithoutString(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty connection") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_PostgreSQL_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_PostgreSQL_GenerateConnectionString(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -8926,11 +9338,11 @@ Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["data"]["BYTEA"];
+        Blob = Result["data"][0]["data"];
 
-        Result["data"][0]["data"]["BYTEA"] = "Base64";
+        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -8994,7 +9406,7 @@ Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
+            Result["data"][0]["bytea_field"] = "Binary";
         EndIf;
 
     Else
@@ -9266,6 +9678,52 @@ Function Check_PostgreSQL_EnsureRecords(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MySQL_Extended_ExecuteQueryWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_Extended_ConnectionWithoutString(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty connection") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MySQL_GenerateConnectionString(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -9312,11 +9770,11 @@ Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["data"]["BYTES"];
+        Blob = Result["data"][0]["data"];
 
-        Result["data"][0]["data"]["BYTES"] = "Base64";
+        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -9369,8 +9827,7 @@ Function Check_MySQL_GetRecords(Val Result, Val Option)
 
         If ValueIsFilled(Result["data"]) Then
 
-            Result["data"][0]["mediumblob_field"]["BYTES"] =
-                Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "...";
+            Result["data"][0]["mediumblob_field"] = "Binary";
 
         EndIf;
 
@@ -9556,7 +10013,7 @@ Function Check_MySQL_AddTableColumn(Val Result, Val Option)
 
             If Column["COLUMN_NAME"] = "new_field" Then
 
-                CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
+                CurrentType = Column["DATA_TYPE"];
                 ExpectsThat(Lower(CurrentType)).Равно("mediumtext");
                 Found       = True;
             EndIf;
@@ -9604,7 +10061,7 @@ Function Check_MySQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
         For Each Column In Result["data"] Do
-            CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
+            CurrentType = Column["DATA_TYPE"];
             ExpectsThat(Lower(CurrentType)).Равно(Lower(ColoumnsStruct[Column["COLUMN_NAME"]]));
         EndDo;
 
@@ -10154,6 +10611,46 @@ Function Check_GreenAPI_UnarchiveChat(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
         ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_Extended_ExecuteCommandWithoutConnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsError   = StrFind(ErrorText, "no client") > 0
+        Or StrFind(ErrorText, "initialize connection") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsError).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_RCON_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
 
     Return Result;
 
@@ -11616,6 +12113,52 @@ Function Check_OpenAI_GetSystemMessage(Val Result, Val Option, Check = "")
 
 EndFunction
 
+Function Check_MSSQL_Extended_ExecuteQueryWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_Extended_ConnectionWithoutString(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty connection") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MSSQL_GenerateConnectionString(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -11662,11 +12205,11 @@ Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
     Else
 
-        Blob = Result["data"][0]["Data"]["BYTES"];
+        Blob = Result["data"][0]["Data"];
 
-        Result["data"][0]["Data"]["BYTES"] = "Base64";
+        Result["data"][0]["Data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Base64Value(Blob).Size()).Равно(Image.Size());
+        ExpectsThat(Blob.Size()).Равно(Image.Size());
 
     EndIf;
 
@@ -11779,8 +12322,7 @@ Function Check_MSSQL_GetRecords(Val Result, Val Option)
 
         If ValueIsFilled(Result["data"]) Then
 
-            Result["data"][0]["varbinary_field"]["BYTES"] =
-                Left(Result["data"][0]["varbinary_field"]["BYTES"], 10) + "...";
+            Result["data"][0]["varbinary_field"] = "Binary";
 
         EndIf;
 
@@ -11993,6 +12535,52 @@ Function Check_MSSQL_GetRecordsFilterStructure(Val Result, Val Option)
         EndDo;
 
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_Extended_GetGreetingWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_Extended_ConnectionWithoutAddress(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty address") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_FTP_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
 
     Return Result;
 
@@ -12559,6 +13147,42 @@ Function Check_SSH_IsConnector(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SSH_Extended_ExecuteCommandWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "no session") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_Extended_ConnectionWithoutSettings(Val Result, Val Option)
+
+    ErrorText       = Lower(Result["error"]);
+    IsSettingsError = StrFind(ErrorText, "no configuration") > 0
+        Or StrFind(ErrorText, "no settings") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsSettingsError).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_SSH_GetSettingsLoginPassword(Val Result, Val Option)
 
     ExpectsThat(Result["auth_type"]).Равно("password");
@@ -12671,6 +13295,56 @@ Function Check_SSH_GetProxySettings(Val Result, Val Option)
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_Extended_GetListWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "no session") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_Extended_ConnectionWithoutSettings(Val Result, Val Option)
+
+    ErrorText       = Lower(Result["error"]);
+    IsSettingsError = StrFind(ErrorText, "no configuration") > 0
+        Or StrFind(ErrorText, "no settings") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsSettingsError).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
 
     Return Result;
 
@@ -13398,6 +14072,52 @@ Function Check_GreenMax_ClearIncomingNotificationQueue(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_Extended_ExecuteCommandWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "not connected") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_Extended_ConnectionWithoutString(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty connection") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MongoDB_GenerateConnectionString(Val Result, Val Option, Parameters = "")
 
     Address  = "127.0.0.1:1234";
@@ -14009,6 +14729,81 @@ Function Check_MongoDB_GetDocumentDeletionStructure(Val Result, Val Option)
 
 EndFunction
 
+Function Check_GRPC_Extended_CallMethodWithoutConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ErrorText = Lower(Result["error"]);
+    IsError   = StrFind(ErrorText, "not connected") > 0
+        Or StrFind(ErrorText, "connection not initialized") > 0;
+
+    ExpectsThat(IsError).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Extended_ConnectionWithoutAddress(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "empty server") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0
+        Or StrFind(ErrorText, "connected") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Extended_CallMethodMultipleBinaryFields(Val Result, Val Option, SentData = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    ResponseData = Result["data"];
+
+    ExpectsThat(ResponseData["f_string"]).Равно(SentData["f_string"]);
+    ExpectsThat(ResponseData["f_int32"]).Равно(SentData["f_int32"]);
+    ExpectsThat(ResponseData["f_bool"]).Равно(SentData["f_bool"]);
+
+    CheckBinaryDataJanx(ResponseData["f_bytes"], SentData["f_bytes"]);
+
+    ExpectedArray = SentData["f_bytess"];
+    ActualArray   = ResponseData["f_bytess"];
+
+    ExpectsThat(ActualArray.Count()).Равно(ExpectedArray.Count());
+
+    For Index = 0 To ExpectedArray.UBound() Do
+        CheckBinaryDataJanx(ActualArray[Index], ExpectedArray[Index]);
+    EndDo;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_GRPC_CreateConnection(Val Result, Val Option)
 
     If Option    = "Closing" Then
@@ -14083,21 +14878,27 @@ Function Check_GRPC_ExecuteMethod(Val Result, Val Option, Data = Undefined)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Data = "Meta" Then
+    If Option = "Meta" Then
 
         ResultAsString = OPI_Tools.JSONString(Result);
         ExpectsThat(StrFind(ResultAsString, "somekey") > 0).Равно(True);
 
-    ElsIf Data = "Meta 2" Then
+    ElsIf Option = "Meta 2" Then
 
         ResultAsString                                 = OPI_Tools.JSONString(Result);
         ExpectsThat(StrFind(ResultAsString, "somekey") = 0).Равно(True);
         ExpectsThat(StrFind(ResultAsString, "anotherkey") > 0).Равно(True);
 
-    Else
+    ElsIf Option = "Empty" Or Option = "Select" Then
+        // Successful unary only without comparing response body
 
-        FieldList = StrSplit("f_bytes,f_bytess", ",");
-        ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+    ElsIf OPI_Tools.ThisIsCollection(Data, True) Then
+
+        ResponseData = Result["data"];
+        Excluded     = StrSplit("f_bytes,f_bytess,f_float", ",");
+        ExpectsThat(OPI_Tools.CompareTwoCollections(ResponseData, Data                                  , Excluded)).Равно(True);
+        ExpectsThat(Left(String(ResponseData["f_float"])        , 4)).Равно(Left(String(Data["f_float"]), 4));
+        CheckBinaryDataJanx(ResponseData["f_bytes"], Data["f_bytes"]);
 
     EndIf;
 
@@ -14721,6 +15522,816 @@ Function Check_RSS_ParseFeedAtom(Val Result, Val Option)
     ExpectsThat(FirstRecord["link"]).Заполнено();
 
     Return Result;
+
+EndFunction
+
+Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+
+    Hex = Lower(GetHexStringFromBinaryData(Result));
+
+    If Option = "EmptyString" Then
+
+        ExpectsThat(Hex).Равно("a0");
+
+    ElsIf Option = "StringFixstr" Then
+
+        ExpectsThat(Hex).Равно("a161");
+
+    ElsIf Option = "StringUTF8" Then
+
+        ExpectsThat(Restored).Равно("Hello");
+
+    ElsIf Option = "Integer0" Then
+
+        ExpectsThat(Hex).Равно("00");
+
+    ElsIf Option = "Integer127" Then
+
+        ExpectsThat(Hex).Равно("7f");
+
+    ElsIf Option = "Uint8" Then
+
+        ExpectsThat(Hex).Равно("cc80");
+
+    ElsIf Option = "NegativeFixint" Then
+
+        ExpectsThat(Hex).Равно("ff");
+
+    ElsIf Option = "Int8" Then
+
+        ExpectsThat(Hex).Равно("d0df");
+
+    ElsIf Option = "Float" Then
+
+        CheckNumberMessagePack(Restored, InitialValue);
+
+    ElsIf Option = "Nil" Then
+
+        ExpectsThat(Hex).Равно("c0");
+
+    ElsIf Option = "True" Then
+
+        ExpectsThat(Hex).Равно("c3");
+
+    ElsIf Option = "False" Then
+
+        ExpectsThat(Hex).Равно("c2");
+
+    ElsIf Option = "EmptyBinary" Then
+
+        ExpectsThat(Hex).Равно("c400");
+
+    ElsIf Option = "BinaryBin8" Then
+
+        ExpectsThat(Hex).Равно("c403010203");
+
+    ElsIf Option = "EmptyArray" Then
+
+        ExpectsThat(Hex).Равно("90");
+
+    ElsIf Option = "ArrayThreeNumbers" Then
+
+        ExpectsThat(Hex).Равно("93010203");
+
+    ElsIf Option = "EmptyMap" Then
+
+        ExpectsThat(Hex).Равно("80");
+
+    ElsIf Option = "MapOnePair" Then
+
+        ExpectsThat(Hex).Равно("81a16101");
+
+    ElsIf Option = "MapTwoPairs" Then
+
+        ExpectsThat(Restored["x"]).Равно(10);
+        ExpectsThat(Restored["y"]).Равно(20);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MessagePack_DeserializeData(Val Result, Val Option, ExpectedValue = Undefined)
+
+    If Option = "Fixint0" Then
+
+        ExpectsThat(Result).Равно(0);
+
+    ElsIf Option = "StringFixstr" Then
+
+        ExpectsThat(Result).Равно("a");
+
+    ElsIf Option = "Nil" Then
+
+        ExpectsThat(Result = Undefined).Равно(True);
+
+    ElsIf Option = "True" Then
+
+        ExpectsThat(Result).Равно(True);
+
+    ElsIf Option = "False" Then
+
+        ExpectsThat(Result).Равно(False);
+
+    ElsIf Option = "EmptyBinary" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Result.Size()).Равно(0);
+
+    ElsIf Option = "BinaryBin8" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Lower(GetHexStringFromBinaryData(Result))).Равно("010203");
+
+    ElsIf Option = "EmptyArray" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(0);
+
+    ElsIf Option = "ArrayThreeNumbers" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(3);
+        ExpectsThat(Result[0]).Равно(1);
+        ExpectsThat(Result[1]).Равно(2);
+        ExpectsThat(Result[2]).Равно(3);
+
+    ElsIf Option = "ArrayTwoStrings" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(2);
+        ExpectsThat(Result[0]).Равно("a");
+        ExpectsThat(Result[1]).Равно("b");
+
+    ElsIf Option = "EmptyMap" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+        ExpectsThat(Result.Count()).Равно(0);
+
+    ElsIf Option = "MapOnePair" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Map"));
+        ExpectsThat(Result.Count()).Равно(1);
+        ExpectsThat(Result["a"]).Равно(1);
+
+    ElsIf Option = "RoundTrip" Then
+
+        If TypeOf(ExpectedValue)     = Type("Number") Then
+            CheckNumberMessagePack(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("BinaryData") Then
+            CheckMessagePackBinaryData(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("Array") Then
+            CheckArrayMessagePack(Result, ExpectedValue);
+        ElsIf TypeOf(ExpectedValue)  = Type("Map")
+            Or TypeOf(ExpectedValue) = Type("Structure") Then
+            CheckMapMessagePack(Result, ExpectedValue);
+        Else
+            ExpectsThat(Result).Равно(ExpectedValue);
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Procedure CheckNumberMessagePack(Val Actual, Val Expected)
+
+    Difference = Actual - Expected;
+
+    If Difference < 0 Then
+        Difference = -Difference;
+    EndIf;
+
+    ExpectsThat(Difference < 0.0000001).Равно(True);
+
+EndProcedure
+
+Procedure CheckMessagePackBinaryData(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
+    ExpectsThat(Actual.Size()).Равно(Expected.Size());
+    ExpectsThat(Lower(GetHexStringFromBinaryData(Actual))).Равно(Lower(GetHexStringFromBinaryData(Expected)));
+
+EndProcedure
+
+Procedure CheckArrayMessagePack(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Array"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Index = 0 To Actual.UBound() Do
+
+        ActualItem   = Actual[Index];
+        ExpectedItem = Expected[Index];
+
+        If TypeOf(ActualItem)        = Type("Number") Then
+            CheckNumberMessagePack(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("BinaryData") Then
+            CheckMessagePackBinaryData(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("Array") Then
+            CheckArrayMessagePack(ActualItem, ExpectedItem);
+        ElsIf TypeOf(ActualItem)     = Type("Map") Then
+            CheckMapMessagePack(ActualItem, ExpectedItem);
+        ElsIf ActualItem             = Undefined Then
+            ExpectsThat(ExpectedItem = Undefined).Равно(True);
+        Else
+            ExpectsThat(ActualItem).Равно(ExpectedItem);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure CheckMapMessagePack(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Map"));
+
+    PairCount = 0;
+
+    For Each Pair In Expected Do
+
+        Key       = String(Pair.Key);
+        ExpectsThat(MapContainsKeyMessagePack(Actual, Key)).Равно(True);
+        CheckMessagePackValue(Actual[Key], Pair.Value);
+        PairCount = PairCount + 1;
+
+    EndDo;
+
+    ExpectsThat(Actual.Count()).Равно(PairCount);
+
+EndProcedure
+
+Function MapContainsKeyMessagePack(Val Map, Val Key)
+
+    For Each Pair In Map Do
+
+        If String(Pair.Key) = Key Then
+            Return True;
+        EndIf;
+
+    EndDo;
+
+    Return False;
+
+EndFunction
+
+Procedure CheckMessagePackValue(Val Actual, Val Expected)
+
+    If TypeOf(Expected)     = Type("Number") Then
+        CheckNumberMessagePack(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("BinaryData") Then
+        CheckMessagePackBinaryData(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("Array") Then
+        CheckArrayMessagePack(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("Map")
+        Or TypeOf(Expected) = Type("Structure") Then
+        CheckMapMessagePack(Actual, Expected);
+    ElsIf Expected          = Undefined Then
+        ExpectsThat(Actual  = Undefined).Равно(True);
+    Else
+        ExpectsThat(Actual).Равно(Expected);
+    EndIf;
+
+EndProcedure
+
+Function Check_MessagePack_ReferenceCompatibility(Val Result, Val Option, Original = Undefined)
+
+    If Option = "Health" Then
+
+        ExpectsThat(Result["ok"]).Равно(True);
+        ExpectsThat(Result["port"]).Заполнено();
+
+    ElsIf Option = "OPIPackReferenceUnpack" Then
+
+        Actual = ConvertReferenceValueMessagePack(Result);
+        CheckMessagePackValue(Actual, Original);
+
+    ElsIf Option = "ReferencePackOPIUnpack" Then
+
+        CheckMessagePackValue(Result, Original);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function ConvertReferenceValueMessagePack(Val Value)
+
+    If OPI_Tools.ThisIsCollection(Value, True)
+        And MapContainsKeyMessagePack(Value, "__msgpack_bytes__") Then
+
+        Return Base64Value(Value["__msgpack_bytes__"]);
+
+    ElsIf IsNodeJSMessagePackBuffer(Value) Then
+
+        Return BinaryDataFromNodeJSMessagePackDataBuffer(Value);
+
+    ElsIf TypeOf(Value) = Type("Array") Then
+
+        Result = New Array;
+
+        For Each Element In Value Do
+            Result.Add(ConvertReferenceValueMessagePack(Element));
+        EndDo;
+
+        Return Result;
+
+    ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
+
+        Result = New Map;
+
+        For Each Pair In Value Do
+            Result.Insert(Pair.Key, ConvertReferenceValueMessagePack(Pair.Value));
+        EndDo;
+
+        Return Result;
+
+    Else
+
+        If Value = Null Then
+            Return Undefined;
+        EndIf;
+
+        Return Value;
+
+    EndIf;
+
+EndFunction
+
+Function IsNodeJSMessagePackBuffer(Val Value)
+
+    If Not OPI_Tools.ThisIsCollection(Value, True) Then
+        Return False;
+    EndIf;
+
+    If Not MapContainsKeyMessagePack(Value, "type")
+        Or Not MapContainsKeyMessagePack(Value, "data") Then
+        Return False;
+    EndIf;
+
+    Return Value["type"]          = "Buffer"
+        And TypeOf(Value["data"]) = Type("Array");
+
+EndFunction
+
+Function BinaryDataFromNodeJSMessagePackDataBuffer(Val Value)
+
+    Bytes  = Value["data"];
+    Buffer = New BinaryDataBuffer(Bytes.Count());
+
+    For Index = 0 To Bytes.Count() - 1 Do
+        Buffer.Set(Index, Bytes[Index]);
+    EndDo;
+
+    Return GetBinaryDataFromBinaryDataBuffer(Buffer);
+
+EndFunction
+
+Function Check_MessagePack_Benchmark(Val Result, Val Option, Original = Undefined)
+
+    CheckMapMessagePack(Result["JsonRestored"]       , Original);
+    CheckMapMessagePack(Result["MessagePackRestored"], Original);
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonSerializationMs"])
+        , "JSON serialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonDeserializationMs"])
+        , "JSON deserialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["MessagePackSerializationMs"])
+        , "MessagePack serialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["MessagePackDeserializationMs"])
+        , "MessagePack deserialization"
+        , "MessagePack");
+
+    LogServiceInformation(
+        StrTemplate("JSON: %1 characters | MessagePack: %2 bytes"
+            , StrLen(Result["JsonString"])
+            , Result["MessagePackData"].Size())
+        , "Size of serialized data"
+        , "MessagePack");
+
+    Return StrTemplate(
+        "JSON ser %1 ms, des %2 ms | MessagePack ser %3 ms, des %4 ms | JSON %5 chars, MP %6 bytes"
+        , Result["JsonSerializationMs"]
+        , Result["JsonDeserializationMs"]
+        , Result["MessagePackSerializationMs"]
+        , Result["MessagePackDeserializationMs"]
+        , StrLen(Result["JsonString"])
+        , Result["MessagePackData"].Size());
+
+EndFunction
+
+Function Check_Lua_Extended_CodeExecutionError(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_Extended_GetLogWithoutInitialization(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(StrFind(Lower(Result["error"]), "logger not initialized") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_Extended_PassComplexData(Val Result, Val Option, InitialValue = Undefined)
+
+    ExpectsThat(Result["alpha"]).Равно(GetStringFromBinaryData(InitialValue["alpha"], "UTF-8"));
+    ExpectsThat(Result["beta"]).Равно(GetStringFromBinaryData(InitialValue["beta"]  , "UTF-8"));
+    ExpectsThat(Result["gamma"]).Равно(GetStringFromBinaryData(InitialValue["gamma"], "UTF-8"));
+
+    ExpectsThat(Result["nested"]["label"]).Равно(InitialValue["nested"]["label"]);
+    ExpectsThat(Result["nested"]["inner"]).Равно(GetStringFromBinaryData(InitialValue["nested"]["inner"], "UTF-8"));
+
+    CheckArrayJanx(Result["meta"], InitialValue["meta"]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_Extended_PassArrayOfMixedTypes(Val Result, Val Option, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+    ExpectsThat(Result.Count()).Равно(InitialValue.Count());
+
+    ExpectsThat(Result[0]).Равно(1);
+    ExpectsThat(Result[1]).Равно("text");
+    ExpectsThat(Result[2]).Равно(GetStringFromBinaryData(InitialValue[2], "UTF-8"));
+
+    ExpectsThat(Result[3]["k"]).Равно("v");
+    ExpectsThat(Result[3]["bin"]).Равно(GetStringFromBinaryData(InitialValue[3]["bin"], "UTF-8"));
+
+    ExpectsThat(Result[4][0]).Равно(False);
+    ExpectsThat(Result[4][1]).Равно(GetStringFromBinaryData(InitialValue[4][1], "UTF-8"));
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_Extended_GetLogOnExecution(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CreateVM(Val Result, Val Option)
+
+    If Option = "LuaJIT" Then
+        ExpectsThat(String(TypeOf(Result))).Равно("AddIn.OPI_LuaJIT.Main");
+    Else
+        ExpectsThat(String(TypeOf(Result))).Равно("AddIn.OPI_Lua54.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_IsVM(Val Result, Val Option)
+
+    If Option = "Lua54" Then
+        ExpectsThat(Result).Равно(True);
+    Else
+        ExpectsThat(Result).Равно(False);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_ExecuteCodeFromString(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(42);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_ExecuteCodeFromFile(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(7);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CallFunction(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(3);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CompileCodeFromString(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CompileCodeFromFile(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_ExecuteBytecode(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(11);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_ExecuteBytecodeFromFile(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(13);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Janx_Extended_RoundRobin(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+    CheckPrefixJanx(Result);
+
+    If TypeOf(InitialValue) = Type("Array")
+        Or StrFind(Option, "MixedArray") > 0 Then
+        CheckArrayJanx(Restored, InitialValue);
+    Else
+        CheckMapJanx(Restored, InitialValue);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Janx_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+
+    If Option = "String" Then
+
+        ExpectsThat(Restored).Равно(InitialValue);
+
+    ElsIf Option = "Number" Then
+
+        ExpectsThat(Restored).Равно(InitialValue);
+
+    ElsIf Option = "EmptyBinary" Then
+
+        CheckBinaryDataJanx(Restored, InitialValue);
+
+    ElsIf Option = "BinaryOne" Then
+
+        CheckBinaryDataJanx(Restored, InitialValue);
+
+    ElsIf Option = "MapWithBinary" Then
+
+        CheckMapJanx(Restored, InitialValue);
+
+    ElsIf Option = "ArrayWithBinary" Then
+
+        CheckArrayJanx(Restored, InitialValue);
+
+    EndIf;
+
+    CheckPrefixJanx(Result);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Janx_DeserializeData(Val Result, Val Option, ExpectedValue = Undefined)
+
+    If Option = "String" Then
+
+        ExpectsThat(Result).Равно(ExpectedValue);
+
+    ElsIf Option = "BinaryOne" Then
+
+        CheckBinaryDataJanx(Result, ExpectedValue);
+
+    ElsIf Option = "MapWithBinary" Then
+
+        CheckMapJanx(Result, ExpectedValue);
+
+    ElsIf Option = "Prefix" Then
+
+        CheckPrefixJanx(ExpectedValue);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Procedure CheckPrefixJanx(Val Data)
+
+    Reading = New DataReader(Data);
+
+    ExpectsThat(Reading.ReadInt16(ByteOrder.BigEndian)).Равно(1);
+
+    JSONSize = Reading.ReadInt32(ByteOrder.BigEndian);
+
+    ExpectsThat(Reading.ReadInt32(ByteOrder.BigEndian) >= 0).Равно(True);
+
+    Reading.Close();
+
+    ExpectsThat(10 + JSONSize <= Data.Size()).Равно(True);
+
+EndProcedure
+
+Procedure CheckBinaryDataJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
+    ExpectsThat(GetHexStringFromBinaryData(Actual)).Равно(GetHexStringFromBinaryData(Expected));
+
+EndProcedure
+
+Procedure CheckArrayJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Array"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Index = 0 To Expected.UBound() Do
+        CheckValueJanx(Actual[Index], Expected[Index]);
+    EndDo;
+
+EndProcedure
+
+Procedure CheckMapJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Map"));
+    ExpectsThat(Actual.Count()).Равно(Expected.Count());
+
+    For Each Pair In Expected Do
+
+        Key = String(Pair.Key);
+        ExpectsThat(MapContainsKeyJanx(Actual, Key)).Равно(True);
+        CheckValueJanx(Actual[Key], Pair.Value);
+
+    EndDo;
+
+EndProcedure
+
+Function MapContainsKeyJanx(Val Map, Val Key)
+
+    For Each Pair In Map Do
+
+        If String(Pair.Key) = Key Then
+            Return True;
+        EndIf;
+
+    EndDo;
+
+    Return False;
+
+EndFunction
+
+Procedure CheckValueJanx(Val Actual, Val Expected)
+
+    If TypeOf(Expected)    = Type("Number") Then
+        CheckNumberJanx(Actual, Expected);
+    ElsIf TypeOf(Expected) = Type("BinaryData") Then
+        CheckBinaryDataJanx(Actual, Expected);
+    ElsIf TypeOf(Expected) = Type("Array") Then
+        CheckArrayJanx(Actual, Expected);
+    ElsIf OPI_Tools.ThisIsCollection(Expected, True) Then
+        CheckMapJanx(Actual, Expected);
+    Else
+        ExpectsThat(Actual).Равно(Expected);
+    EndIf;
+
+EndProcedure
+
+Procedure CheckNumberJanx(Val Actual, Val Expected)
+
+    ExpectsThat(TypeOf(Actual)).Равно(Type("Number"));
+
+    If Actual = Expected Then
+        Return;
+    EndIf;
+
+    Difference = Actual - Expected;
+
+    If Difference < 0 Then
+        Difference = -Difference;
+    EndIf;
+
+    ExpectsThat(Difference <= 0.000000000001).Равно(True);
+
+EndProcedure
+
+Function Check_Janx_Benchmark(Val Result, Val Option, Original = Undefined)
+
+    CheckMapJanx(Result["JsonRestored"], OriginalJsonFromJanxBenchmark(Original));
+    CheckMapJanx(Result["JanxRestored"], Original);
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonSerializationMs"])
+        , "JSON serialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JsonDeserializationMs"])
+        , "JSON deserialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxSerializationWithoutBinMs"])
+        , "Janx serialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxDeserializationWithoutBinMs"])
+        , "Janx deserialization (without bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxSerializationMs"])
+        , "Janx serialization (with bin)"
+        , "Janx");
+
+    LogServiceInformation(
+        StrTemplate("%1 ms", Result["JanxDeserializationMs"])
+        , "Janx deserialization (with bin)"
+        , "Janx");
+
+    Return StrTemplate(
+        "JSON ser %1 ms, des %2 ms | Janx ser %3 ms, des %4 ms | JSON %5 chars, Janx %6 B (app %7 B)"
+        , Result["JsonSerializationMs"]
+        , Result["JsonDeserializationMs"]
+        , Result["JanxSerializationMs"]
+        , Result["JanxDeserializationMs"]
+        , StrLen(Result["JsonString"])
+        , Result["JanxData"].Size()
+        , Result["AppendixSize"]);
+
+EndFunction
+
+Function OriginalJsonFromJanxBenchmark(Val Original)
+
+    JsonItems = New Array;
+
+    For Each Element In Original.items Do
+
+        JsonItem = New Structure;
+        JsonItem.Insert("index", Element.index);
+        JsonItem.Insert("flag" , Element.flag);
+        JsonItem.Insert("title", Element.title);
+        JsonItem.Insert("ratio", Element.ratio);
+
+        If Element.Property("note") Then
+            JsonItem.Insert("note", Element.note);
+        EndIf;
+
+        JsonItem.Insert("values", Element.values);
+        JsonItem.Insert("attrs" , Element.attrs);
+        JsonItems.Add(JsonItem);
+
+    EndDo;
+
+    OriginalJson = New Structure;
+    OriginalJson.Insert("version", Original.version);
+    OriginalJson.Insert("label"  , Original.label);
+    OriginalJson.Insert("root"   , Original.root);
+    OriginalJson.Insert("items"  , JsonItems);
+
+    Return OriginalJson;
 
 EndFunction
 
@@ -16310,6 +17921,8 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
+
 #Region Alternate
 
 Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export
@@ -16442,6 +18055,10 @@ EndFunction
 
 Function ПолучитьМассивТегов(Индекс) Export
     Return GetTagArray(Индекс);
+EndFunction
+
+Function ПолучитьТестовуюКоллекциюJanx(Val Вариант) Export
+    Return GetJanxTestCollection(Вариант);
 EndFunction
 
 #EndRegion

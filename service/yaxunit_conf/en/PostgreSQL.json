@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_PostgreSQL.Postgres_CommonMethods",
+"OPIt_PostgreSQL.Postgres_ExtendedCheck",
 "OPIt_PostgreSQL.Postgres_ORM"
     ]
   },

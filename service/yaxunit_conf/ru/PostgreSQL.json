@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_PostgreSQL.Postgres_ОсновныеМетоды",
+"OPIt_PostgreSQL.Postgres_РасширеннаяПроверка",
 "OPIt_PostgreSQL.Postgres_ORM"
     ]
   },

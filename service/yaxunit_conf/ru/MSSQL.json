@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_MSSQL.MSS_ОсновныеМетоды",
+"OPIt_MSSQL.MSS_РасширеннаяПроверка",
 "OPIt_MSSQL.MSS_ORM"
     ]
   },

@@ -95,6 +95,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_CommonMethods'],
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_DirectoryManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

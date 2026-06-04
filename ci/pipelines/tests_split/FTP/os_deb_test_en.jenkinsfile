@@ -98,6 +98,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_DirecotryManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_FileOperations'],
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

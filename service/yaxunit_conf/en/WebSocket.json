@@ -10,7 +10,8 @@
     "paths": null,
     "tests": [
 "OPIt_WebSocket.WS_Client",
-"OPIt_WebSocket.WS_Server"
+"OPIt_WebSocket.WS_Server",
+"OPIt_WebSocket.WS_ExtendedCheck"
     ]
   },
   "settings": {

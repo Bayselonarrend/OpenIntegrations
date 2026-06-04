@@ -87,6 +87,7 @@ pipeline {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPItc_TCP.os', 'TC_Client'],
 						['./src/en/OInt/tests/Modules/OPItc_TCP.os', 'TC_Server'],
+						['./src/en/OInt/tests/Modules/OPItc_TCP.os', 'TC_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

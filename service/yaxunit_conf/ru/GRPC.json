@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_GRPC.GR_ОсновныеМетоды",
+"OPIt_GRPC.GR_РасширеннаяПроверка",
 "OPIt_GRPC.GR_Интроспекция",
 "OPIt_GRPC.GR_Стриминг"
     ]

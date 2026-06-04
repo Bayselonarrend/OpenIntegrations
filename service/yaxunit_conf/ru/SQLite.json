@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_SQLite.SQLL_ОсновныеМетоды",
+"OPIt_SQLite.SQLL_РасширеннаяПроверка",
 "OPIt_SQLite.SQLL_ORM"
     ]
   },

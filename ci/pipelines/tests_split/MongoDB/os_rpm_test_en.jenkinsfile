@@ -96,6 +96,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mong_DatabaseManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CollectionManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_DocumentsManagement'],

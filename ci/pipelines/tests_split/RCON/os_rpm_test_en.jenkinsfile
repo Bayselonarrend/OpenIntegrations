@@ -96,6 +96,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_RCON.os', 'RC_CommandsExecution'],
+						['./src/en/OInt/tests/Modules/OPIt_RCON.os', 'RC_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

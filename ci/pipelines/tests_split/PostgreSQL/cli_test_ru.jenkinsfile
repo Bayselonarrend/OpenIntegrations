@@ -166,6 +166,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/OPItc_PostgreSQL.os', 'Postgres_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/OPItc_PostgreSQL.os', 'Postgres_РасширеннаяПроверка'],
 						['./src/ru/OInt/tests/Modules/OPItc_PostgreSQL.os', 'Postgres_ORM'],
 					]
 					for (test in tests) {

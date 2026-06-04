@@ -1,23 +1,5 @@
 #Region Public
 
-Procedure Message(Val MessageText = "", Val pMessageStatus = Undefined) Export
-	
-	If pMessageStatus = MessageStatus.Important Then
-		TextColor = "Red";
-	ElsIf pMessageStatus = MessageStatus.Attention Then
-		TextColor = "Yellow";
-	ElsIf pMessageStatus = MessageStatus.Information Then
-		TextColor = "Green";
-	ElsIf pMessageStatus = MessageStatus.VeryImportant Then
-		TextColor = "Red";
-	Else
-		TextColor = Undefined;
-	EndIf;
-
-	WriteLine(MessageText, TextColor);
-
-EndProcedure
-
 Procedure WriteLine(Val MessageText = "", Val TextColor = Undefined) Export
 
 	Write(MessageText, TextColor);
@@ -145,10 +127,6 @@ EndFunction
 
 #EndRegion
 #Region Alternate
-
-Procedure Сообщить(Val ТекстСообщения = "", Val пСтатусСообщения = Undefined) Export
-    Message(ТекстСообщения, пСтатусСообщения);
-EndProcedure
 
 Procedure ВывестиСтроку(Val ТекстСообщения = "", Val ЦветТекста = Undefined) Export
     WriteLine(ТекстСообщения, ЦветТекста);

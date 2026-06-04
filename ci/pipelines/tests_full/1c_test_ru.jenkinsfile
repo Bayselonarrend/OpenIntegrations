@@ -769,6 +769,57 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-MessagePack') {
+            when {
+                expression { return shouldRunStage('MessagePack') }
+            }
+			steps {
+				script {
+					def tests = [
+						['MessagePack', './service/yaxunit_conf/ru/MessagePack.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Janx') {
+            when {
+                expression { return shouldRunStage('Janx') }
+            }
+			steps {
+				script {
+					def tests = [
+						['Janx', './service/yaxunit_conf/ru/Janx.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Lua') {
+            when {
+                expression { return shouldRunStage('Lua') }
+            }
+			steps {
+				script {
+					def tests = [
+						['Lua', './service/yaxunit_conf/ru/Lua.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 
 	}
 	post{

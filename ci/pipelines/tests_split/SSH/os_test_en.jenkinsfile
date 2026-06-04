@@ -93,6 +93,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_SSH.os', 'SShell_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SSH.os', 'SShell_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

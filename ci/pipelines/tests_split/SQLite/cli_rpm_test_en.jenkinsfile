@@ -86,6 +86,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPItc_SQLite.os', 'SQLL_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPItc_SQLite.os', 'SQLL_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPItc_SQLite.os', 'SQLL_ORM'],
 					]
 					for (test in tests) {

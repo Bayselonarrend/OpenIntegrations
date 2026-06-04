@@ -98,6 +98,7 @@ pipeline {
 						['./src/ru/OInt/tests/Modules/OPIt_FTP.os', 'FT_РаботаСДиректориями'],
 						['./src/ru/OInt/tests/Modules/OPIt_FTP.os', 'FT_РаботаСФайлами'],
 						['./src/ru/OInt/tests/Modules/OPIt_FTP.os', 'FT_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/OPIt_FTP.os', 'FT_РасширеннаяПроверка'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

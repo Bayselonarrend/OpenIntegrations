@@ -166,6 +166,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPItc_GRPC.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPItc_GRPC.os', 'GR_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPItc_GRPC.os', 'GR_Introspection'],
 						['./src/en/OInt/tests/Modules/OPItc_GRPC.os', 'GR_Streaming'],
 					]

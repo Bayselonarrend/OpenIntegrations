@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/Janx.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_Janx.Jnx_Данные",
+"OPIt_Janx.Jnx_РасширеннаяПроверкаДанные",
+"OPIt_Janx.Jnx_Бенчмарк"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Janx.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

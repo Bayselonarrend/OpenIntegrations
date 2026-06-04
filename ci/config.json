@@ -142,7 +142,10 @@
      "Core": true,
      "WebSocket": true,
      "ZeroMQ": true,
-     "BuildCheck": true
+     "BuildCheck": true,
+     "MessagePack": true,
+     "Janx": true,
+     "Lua": true
     }
    },
    "testIbPath": {

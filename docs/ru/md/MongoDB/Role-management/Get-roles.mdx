@@ -94,63 +94,25 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "result": true,
  "data": {
+  "ok": 1,
   "roles": [
    {
     "_id": "admin.newrole",
-    "role": "newrole",
     "db": "admin",
-    "privileges": [
-     {
-      "resource": {
-       "db": "admin",
-       "collection": "new_collection"
-      },
-      "actions": [
-       "find",
-       "insert",
-       "update"
-      ]
-     }
-    ],
-    "roles": [
-     {
-      "role": "userAdmin",
-      "db": "admin"
-     },
-     {
-      "role": "read",
-      "db": "admin"
-     }
-    ],
-    "inheritedRoles": [
-     {
-      "role": "read",
-      "db": "admin"
-     },
-     {
-      "role": "userAdmin",
-      "db": "admin"
-     }
-    ],
     "inheritedPrivileges": [
      {
-      "resource": {
-       "db": "admin",
-       "collection": "new_collection"
-      },
       "actions": [
        "find",
        "insert",
        "update"
-      ]
+      ],
+      "resource": {
+       "collection": "new_collection",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": ""
-      },
       "actions": [
        "changeCustomData",
        "changePassword",
@@ -173,13 +135,13 @@ import Admonition from '@theme/Admonition';
        "setAuthenticationRestriction",
        "viewRole",
        "viewUser"
-      ]
+      ],
+      "resource": {
+       "collection": "",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "system.js"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -191,13 +153,51 @@ import Admonition from '@theme/Admonition';
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.js",
+       "db": "admin"
+      }
      }
     ],
-    "isBuiltin": false
+    "inheritedRoles": [
+     {
+      "db": "admin",
+      "role": "read"
+     },
+     {
+      "db": "admin",
+      "role": "userAdmin"
+     }
+    ],
+    "isBuiltin": false,
+    "privileges": [
+     {
+      "actions": [
+       "find",
+       "insert",
+       "update"
+      ],
+      "resource": {
+       "collection": "new_collection",
+       "db": "admin"
+      }
+     }
+    ],
+    "role": "newrole",
+    "roles": [
+     {
+      "db": "admin",
+      "role": "read"
+     },
+     {
+      "db": "admin",
+      "role": "userAdmin"
+     }
+    ]
    }
-  ],
-  "ok": 1
- }
+  ]
+ },
+ "result": true
 }
 ```

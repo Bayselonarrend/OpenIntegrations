@@ -10,6 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_MongoDB.Mongo_CommonMethods",
+"OPIt_MongoDB.Mongo_ExtendedCheck",
 "OPIt_MongoDB.Mong_DatabaseManagement",
 "OPIt_MongoDB.Mongo_CollectionManagement",
 "OPIt_MongoDB.Mongo_DocumentsManagement",

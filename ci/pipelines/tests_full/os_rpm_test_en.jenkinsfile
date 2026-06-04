@@ -189,6 +189,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_DirecotryManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_FileOperations'],
 						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_FTP.os', 'FT_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -206,6 +207,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_SSH.os', 'SShell_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SSH.os', 'SShell_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -225,6 +227,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_CommonMethods'],
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_DirectoryManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_FileManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_SFTP.os', 'SF_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -242,6 +245,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_PostgreSQL.os', 'Postgres_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_PostgreSQL.os', 'Postgres_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_PostgreSQL.os', 'Postgres_ORM'],
 					]
 					for (test in tests) {
@@ -260,6 +264,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_MySQL.os', 'MYS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MySQL.os', 'MYS_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_MySQL.os', 'MYS_ORM'],
 					]
 					for (test in tests) {
@@ -278,6 +283,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_MSSQL.os', 'MSS_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MSSQL.os', 'MSS_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_MSSQL.os', 'MSS_ORM'],
 					]
 					for (test in tests) {
@@ -296,6 +302,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_SQLite.os', 'SQLL_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_SQLite.os', 'SQLL_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_SQLite.os', 'SQLL_ORM'],
 					]
 					for (test in tests) {
@@ -314,6 +321,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mong_DatabaseManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_CollectionManagement'],
 						['./src/en/OInt/tests/Modules/OPIt_MongoDB.os', 'Mongo_DocumentsManagement'],
@@ -336,6 +344,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_RCON.os', 'RC_CommandsExecution'],
+						['./src/en/OInt/tests/Modules/OPIt_RCON.os', 'RC_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -670,6 +679,7 @@ pipeline {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_TCP.os', 'TC_Client'],
 						['./src/en/OInt/tests/Modules/OPIt_TCP.os', 'TC_Server'],
+						['./src/en/OInt/tests/Modules/OPIt_TCP.os', 'TC_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -688,6 +698,7 @@ pipeline {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_WebSocket.os', 'WS_Client'],
 						['./src/en/OInt/tests/Modules/OPIt_WebSocket.os', 'WS_Server'],
+						['./src/en/OInt/tests/Modules/OPIt_WebSocket.os', 'WS_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -708,6 +719,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ConnectionMethods'],
 						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ListeningMethods'],
 						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_InteractionMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -853,6 +865,7 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_ExtendedCheck'],
 						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_Introspection'],
 						['./src/en/OInt/tests/Modules/OPIt_GRPC.os', 'GR_Streaming'],
 					]
@@ -891,6 +904,64 @@ pipeline {
 					def tests = [
 						['./src/en/OInt/tests/Modules/OPIt_RSS.os', 'RSS_RSSMethods'],
 						['./src/en/OInt/tests/Modules/OPIt_RSS.os', 'RSS_AtomMethods'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-MessagePack') {
+            when {
+                expression { return shouldRunStage('MessagePack') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/OPIt_MessagePack.os', 'MP_Data'],
+						['./src/en/OInt/tests/Modules/OPIt_MessagePack.os', 'MP_Benchmark'],
+						['./src/en/OInt/tests/Modules/OPIt_MessagePack.os', 'MP_Compatibility'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Janx') {
+            when {
+                expression { return shouldRunStage('Janx') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/OPIt_Janx.os', 'Jnx_Data'],
+						['./src/en/OInt/tests/Modules/OPIt_Janx.os', 'Jnx_ExtendedDataCheck'],
+						['./src/en/OInt/tests/Modules/OPIt_Janx.os', 'Jnx_Benchmark'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Lua') {
+            when {
+                expression { return shouldRunStage('Lua') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/OPIt_Lua.os', 'Lua_CommonMethods'],
+						['./src/en/OInt/tests/Modules/OPIt_Lua.os', 'Lua_WorkingWithScripts'],
+						['./src/en/OInt/tests/Modules/OPIt_Lua.os', 'Lua_BytecodeManagement'],
+						['./src/en/OInt/tests/Modules/OPIt_Lua.os', 'Lua_ExtendedCheck'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

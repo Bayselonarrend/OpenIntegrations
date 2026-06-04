@@ -168,6 +168,7 @@ pipeline {
 						['./src/ru/OInt/tests/Modules/OPItc_SFTP.os', 'SF_ОсновныеМетоды'],
 						['./src/ru/OInt/tests/Modules/OPItc_SFTP.os', 'SF_РаботаСДиректориями'],
 						['./src/ru/OInt/tests/Modules/OPItc_SFTP.os', 'SF_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/OPItc_SFTP.os', 'SF_РасширеннаяПроверка'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
