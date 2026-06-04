@@ -275,8 +275,9 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyBinary");
 
+    Data      = GetBinaryDataFromHexString("010203");
     Options = New Structure;
-    Options.Insert("value", GetBinaryDataFromHexString);
+    Options.Insert("value", Data);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
 

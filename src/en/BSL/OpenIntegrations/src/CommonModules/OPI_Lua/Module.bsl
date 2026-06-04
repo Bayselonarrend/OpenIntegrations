@@ -122,6 +122,43 @@ Function IsVM(Val Value) Export
 
 EndFunction
 
+// Get logging settings !NOCLI
+// Retrieves settings structure for starting logging on server startup
+//
+// Parameters:
+// WriteToMemory - Boolean - Logging to memory for further retrieval from the addin object - memory
+// MaxEvents     - Number  - Maximum number of events stored in memory                     - count
+// FilePath      - String  - Path to file for saving full log, if necessary                - path
+//
+// Returns:
+// Structure Of KeyAndValue - Settings structure
+Function GetLoggingSettings(Val WriteToMemory = True
+    , Val MaxEvents = 300
+    , Val FilePath = "") Export
+
+    //@skip-check constructor-function-return-section
+    Return OPI_AddIns.GetLoggingSettings(WriteToMemory, MaxEvents, FilePath);
+
+EndFunction
+
+// Get log !NOCLI
+// Retrieves log data (with logging to memory enabled)
+//
+// Parameters:
+// AddInObject - Arbitrary - VM AddIn object                                            - vm
+// AsString    - Boolean   - True > returns log as a single string, False > as an array - str
+// EventCount  - Number    - Number of recent events to retrieve. 0 > no limits         - count
+//
+// Returns:
+// String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+Function GetLog(Val AddInObject, Val AsString = False, Val EventCount = 100) Export
+
+    Return OPI_AddIns.GetLog(AddInObject
+        , AsString
+        , EventCount);
+
+EndFunction
+
 #EndRegion
 
 #Region ScriptManagement
