@@ -1,1 +1,127 @@
-﻿{}
+﻿[
+ {
+  "messageID": "3EB0E3AB041C38987DB124",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB00C8395EE4E13C6680A",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0E3AB041C38987DB124",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB04CB7083E08B16D2740",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB02B70DC0803112D06D5",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB04CB7083E08B16D2740",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB04E71B9D76C886A10FF",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB08885D47550AFD1F23D",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB04E71B9D76C886A10FF",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0541DA50A0457D54628"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB05AC24FDF3B112FDB13"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB084194167567E17889E",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB05AC24FDF3B112FDB13",
+   "message": "Новый текст сообщения",
+   "linkPreview": true,
+   "typingTime": null
+  }
+ }
+]

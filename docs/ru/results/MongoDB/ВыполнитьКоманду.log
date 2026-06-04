@@ -1,5 +1,4 @@
 ﻿{
- "result": true,
  "data": {
   "databases": [
    {
@@ -16,5 +15,6 @@
    }
   ],
   "ok": 1
- }
+ },
+ "result": true
 }

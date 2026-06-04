@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "36c82aa7-fc4e-814d-af56-fdb3d4712ee0",
- "created_time": "2026-05-26T17:46:00Z",
- "last_edited_time": "2026-05-26T17:46:00Z",
+ "id": "37582aa7-fc4e-81ec-ba49-d3ba5fd4b3f7",
+ "created_time": "2026-06-04T04:04:00Z",
+ "last_edited_time": "2026-06-04T04:04:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,69 +15,24 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "36c82aa7-fc4e-81ce-bf77-da038f46cee4"
+  "database_id": "37582aa7-fc4e-81f4-b633-c788a6b20190"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "%3CiF%5E",
-   "type": "checkbox",
-   "checkbox": true
+  "Номер": {
+   "id": "%3ACTF",
+   "type": "number",
+   "number": 1
   },
-  "Картинка": {
-   "id": "%3FPZL",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "Телефон": {
-   "id": "B%7D~F",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Описание": {
-   "id": "Pfrd",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "Наш первый клиент",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "Наш первый клиент",
-     "href": null
-    }
-   ]
-  },
-  "Статус": {
-   "id": "RLB%3E",
-   "type": "select",
-   "select": {
-    "id": "2d963bf1-115c-4dfa-a442-4104a21f065f",
-    "name": "Новый",
-    "color": "green"
-   }
+  "Пользователь": {
+   "id": "BIj%5D",
+   "type": "people",
+   "people": []
   },
   "Почта": {
-   "id": "U%40DF",
+   "id": "NzGc",
    "type": "rich_text",
    "rich_text": [
     {
@@ -99,24 +54,69 @@
     }
    ]
   },
-  "Пользователь": {
-   "id": "aeoK",
-   "type": "people",
-   "people": []
+  "Телефон": {
+   "id": "T%5EWw",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Статус": {
+   "id": "VW_s",
+   "type": "select",
+   "select": {
+    "id": "7612454d-f116-4b22-b115-7c9fe7fe58ef",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Активен": {
+   "id": "rqFn",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Дата создания": {
-   "id": "p~E%7D",
+   "id": "rqyH",
    "type": "date",
    "date": {
-    "start": "2026-05-26T05:46:00+00:00",
+    "start": "2026-06-04T10:04:00+03:00",
     "end": null,
     "time_zone": null
    }
   },
-  "Номер": {
-   "id": "ut%3A%3A",
-   "type": "number",
-   "number": 1
+  "Описание": {
+   "id": "r%7CJ%3A",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
+  },
+  "Картинка": {
+   "id": "ziZl",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://www.notion.so/36c82aa7fc4e814daf56fdb3d4712ee0",
+ "url": "https://app.notion.com/p/37582aa7fc4e81ecba49d3ba5fd4b3f7",
  "public_url": null,
  "archived": false,
- "request_id": "4b0ca8e0-f003-4986-a634-f8be6d844225"
+ "request_id": "e1fb4133-0e9e-42c3-b0b0-bf59f52fecf9"
 }

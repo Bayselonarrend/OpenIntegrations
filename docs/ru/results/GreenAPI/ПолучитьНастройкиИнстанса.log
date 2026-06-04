@@ -24,6 +24,8 @@
  "outgoingCallWebhook": "no",
  "editedMessageWebhook": "yes",
  "deletedMessageWebhook": "yes",
+ "catalogWebhook": "no",
  "linkPreview": "yes",
- "autoTyping": 0
+ "autoTyping": 0,
+ "version": ""
 }

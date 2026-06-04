@@ -1,8 +1,8 @@
 ﻿{
- "result": true,
  "data": {
   "n": 2,
   "nModified": 2,
   "ok": 1
- }
+ },
+ "result": true
 }
