@@ -39,5 +39,8 @@
 "ClickHouse": true,
 "RSS": true,
 "WebSocket": true,
-"ZeroMQ": true
+"ZeroMQ": true,
+"MessagePack": true,
+"Janx": true,
+"Lua": true
 }
