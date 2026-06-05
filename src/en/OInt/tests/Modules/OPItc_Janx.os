@@ -138,13 +138,43 @@ EndProcedure
 
 Procedure Janx_SerializeData()
 
-    Original = "Hello";
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
     Options = New Structure;
     Options.Insert("value", Original);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
 
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
+
     // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "SerializeData", , Restored, Original);
+
+    Original = "Hello";
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
 
     Options = New Structure;
     Options.Insert("data", Result);
@@ -220,7 +250,24 @@ EndProcedure
 
 Procedure Janx_DeserializeData()
 
-    Original = "Hello";
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
     Options = New Structure;
     Options.Insert("value", Original);
 
@@ -231,6 +278,18 @@ Procedure Janx_DeserializeData()
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", , Original);
+
+    Original = "Hello";
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Binary);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "DeserializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Janx", "DeserializeData", "String", Original);
 

@@ -49,9 +49,26 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Original = "Hello";
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Binary = OPI_Janx.SerializeData(Original);
+    Result = OPI_Janx.DeserializeData(Binary);
 ```
  
 

@@ -170,13 +170,41 @@ EndFunction
 
 Procedure MessagePack_SerializeData()
 
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", , Restored, Original);
+
     Options = New Structure;
     Options.Insert("value", "");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    // END
-
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyString");
 
     Options = New Structure;
@@ -336,13 +364,42 @@ EndProcedure
 
 Procedure MessagePack_DeserializeData()
 
-    Data   = GetBinaryDataFromHexString("00");
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Options = New Structure;
+    Options.Insert("value", Original);
+
+    Data = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
     Options = New Structure;
     Options.Insert("data", Data);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
     // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", , Original);
+
+    Data   = GetBinaryDataFromHexString("00");
+    Options = New Structure;
+    Options.Insert("data", Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Fixint0");
 

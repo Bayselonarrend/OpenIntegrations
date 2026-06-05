@@ -169,10 +169,32 @@ EndFunction
 
 Procedure MessagePack_SerializeData()
 
-    Result = OPI_MessagePack.SerializeData("");
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Result   = OPI_MessagePack.SerializeData(Original);
+    Restored = OPI_MessagePack.DeserializeData(Result);
 
     // END
 
+    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", , Restored, Original);
+
+    Result = OPI_MessagePack.SerializeData("");
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyString");
 
     Result = OPI_MessagePack.SerializeData("a");
@@ -269,10 +291,33 @@ EndProcedure
 
 Procedure MessagePack_DeserializeData()
 
-    Data   = GetBinaryDataFromHexString("00");
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Data   = OPI_MessagePack.SerializeData(Original);
     Result = OPI_MessagePack.DeserializeData(Data);
 
     // END
+
+    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", , Original);
+
+    Data   = GetBinaryDataFromHexString("00");
+    Result = OPI_MessagePack.DeserializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Fixint0");
 

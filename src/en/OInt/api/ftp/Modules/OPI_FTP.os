@@ -1054,7 +1054,19 @@ Function CheckCreateConnection(Connection)
         Check = Connection.Ping();
 
         If Not Check Then
-            Connection = GetConnectionCopy(Connection);
+
+            Configuration = OPI_AddIns.DesrializeJanx(Connection.GetConfiguration());
+
+            If Configuration["result"] Then
+
+                FTPSettings = OPI_Tools.GetOr(Configuration["data"], "ftp_settings", Undefined);
+
+                If ValueIsFilled(FTPSettings) Then
+                    Connection = GetConnectionCopy(Connection);
+                EndIf;
+
+            EndIf;
+
         EndIf;
 
         CloseConnection = False;

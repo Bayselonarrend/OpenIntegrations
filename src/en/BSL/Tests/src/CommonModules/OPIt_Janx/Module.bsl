@@ -137,10 +137,34 @@ EndProcedure
 
 Procedure Janx_SerializeData()
 
-    Original = "Hello";
-    Result   = OPI_Janx.SerializeData(Original);
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Result = OPI_Janx.SerializeData(Original);
+
+    Restored = OPI_Janx.DeserializeData(Result);
 
     // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", , Restored, Original);
+
+    Original = "Hello";
+    Result   = OPI_Janx.SerializeData(Original);
 
     Restored = OPI_Janx.DeserializeData(Result);
     OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "String", Restored, Original);
@@ -183,11 +207,34 @@ EndProcedure
 
 Procedure Janx_DeserializeData()
 
+    Original = New Map;
+    Original.Insert("title"  , "Example");
+    Original.Insert("count"  , 42);
+    Original.Insert("active" , True);
+    Original.Insert("payload", GetBinaryDataFromHexString("DEADBEEF"));
+
+    Nested = New Map;
+    Nested.Insert("label", "nested");
+    Nested.Insert("inner", GetBinaryDataFromHexString("010203"));
+    Original.Insert("nested", Nested);
+
+    Meta = New Array;
+    Meta.Add("tag");
+    Meta.Add(1);
+    Meta.Add(False);
+    Meta.Add(GetBinaryDataFromHexString("0A0B"));
+    Original.Insert("items", Meta);
+
+    Binary = OPI_Janx.SerializeData(Original);
+    Result = OPI_Janx.DeserializeData(Binary);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", , Original);
+
     Original = "Hello";
     Binary   = OPI_Janx.SerializeData(Original);
     Result   = OPI_Janx.DeserializeData(Binary);
-
-    // END
 
     OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "String", Original);
 

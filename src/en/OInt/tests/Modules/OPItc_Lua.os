@@ -64,6 +64,7 @@
 //@skip-check bsl-legacy-check-method-for-statements-after-return
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
+//@skip-check undefined-function
 
 #Use "../../tools/main"
 #Use "../../tools/http"
