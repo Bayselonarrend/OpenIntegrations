@@ -1,6 +1,6 @@
 ﻿{
  "statusCode": 400,
- "timestamp": "2026-06-04T19:04:21.969Z",
+ "timestamp": "2026-06-05T20:21:26.716Z",
  "path": "/waInstance7105187566/removeAdmin/425010d90e114aa6b78f0969e1e67ec62579d30401c84d5183",
  "message": "Validation failed. Details: 'chatId': invalid phone number",
  "removeAdmin": true

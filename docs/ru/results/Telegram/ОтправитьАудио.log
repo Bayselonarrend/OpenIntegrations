@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 22004,
+  "message_id": 22022,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,15 +15,15 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1780596656,
+  "date": 1780687808,
   "audio": {
    "duration": 228,
    "file_name": "audio",
    "mime_type": "audio/mpeg",
    "title": "Dogs",
    "performer": "Motorhead",
-   "file_id": "CQACAgIAAxkDAAJV9Gohv69eDRrHUI_uP4zQb7ravAz3AAL2mQACV2AQSWhr9zDmc5kQOwQ",
-   "file_unique_id": "AgAD9pkAAldgEEk",
+   "file_id": "CQACAgIAAxkDAAJWBmojI8Bv7fUOvtmLMgH_6p8_Xp7GAAKuoAACpAUYSedgJNgPL_MFOwQ",
+   "file_unique_id": "AgADrqAAAqQFGEk",
    "file_size": 9229352
   },
   "caption": "Строковое значение"

@@ -1,0 +1,9 @@
+﻿{
+ "logs": [
+  "[2026-06-05 23:30:01.867] Logger initialized",
+  "[2026-06-05 23:30:01.867] ExecuteString called"
+ ],
+ "result": true,
+ "returned": 2,
+ "total": 2
+}

@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 58690
+  "ID": 58744
  },
  "time": {
-  "start": 1780598816,
-  "finish": 1780598816.24015,
-  "duration": 0.240148067474365,
+  "start": 1780689876,
+  "finish": 1780689876.38031,
+  "duration": 0.380309104919434,
   "processing": 0,
-  "date_start": "2026-06-04T21:46:56+03:00",
-  "date_finish": "2026-06-04T21:46:56+03:00",
-  "operating_reset_at": 1780599416,
+  "date_start": "2026-06-05T23:04:36+03:00",
+  "date_finish": "2026-06-05T23:04:36+03:00",
+  "operating_reset_at": 1780690476,
   "operating": 0
  }
 }

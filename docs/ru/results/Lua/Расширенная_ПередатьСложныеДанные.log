@@ -1,0 +1,13 @@
+﻿{
+ "alpha": "alpha-payload",
+ "beta": "beta-payload",
+ "gamma": "gamma-payload",
+ "meta": [
+  "x",
+  42
+ ],
+ "nested": {
+  "inner": "inner-payload",
+  "label": "nested"
+ }
+}
