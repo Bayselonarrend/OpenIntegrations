@@ -55,6 +55,24 @@ import Admonition from '@theme/Admonition';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint lua СкомпилироватьКодИзСтроки \
+              --lua "Lua54" \
+              --code "return 1"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint lua СкомпилироватьКодИзСтроки ^
+              --lua "Lua54" ^
+              --code "return 1"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

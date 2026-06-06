@@ -153,8 +153,9 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ВыполнитьЗапрос \
-              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','password':'***','user':'bayselonarrend'}" \
-              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+              --conn "{'address':'http://127.0.0.1:8123','transport':'http','auth_type':'basic','user':'bayselonarrend','password':'***'}" \
+              --req "{'query':'SELECT * FROM temp_session_test','format':'JSON'}" \
+              --session "{'id':'4224869f-8ede-4113-b56b-2d48a7dde293','check':true,'timeout':'60'}"
         ```
     </TabItem>
   
@@ -163,8 +164,9 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ВыполнитьЗапрос ^
-              --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','password':'***','user':'bayselonarrend'}" ^
-              --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+              --conn "{'address':'http://127.0.0.1:8123','transport':'http','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+              --req "{'query':'SELECT * FROM temp_session_test','format':'JSON'}" ^
+              --session "{'id':'4224869f-8ede-4113-b56b-2d48a7dde293','check':true,'timeout':'60'}"
         ```
     </TabItem>
 </Tabs>
@@ -197,17 +199,17 @@ import Admonition from '@theme/Admonition';
   ],
   "rows": 2,
   "statistics": {
-   "elapsed": 0.000827091,
+   "elapsed": 0.000771228,
    "rows_read": 2,
    "bytes_read": 44
   }
  },
  "headers": {
-  "Date": "Fri, 05 Jun 2026 20:26:49 GMT",
+  "Date": "Sat, 06 Jun 2026 13:52:44 GMT",
   "Connection": "Keep-Alive",
   "X-ClickHouse-Server-Display-Name": "clickhouse",
   "Transfer-Encoding": "chunked",
-  "X-ClickHouse-Query-Id": "aa98fee2-1113-4b48-ae3a-9eedd6f489de",
+  "X-ClickHouse-Query-Id": "c31a31f2-b91f-4ce0-8914-a08af3fe72e1",
   "X-ClickHouse-Format": "JSON",
   "X-ClickHouse-Timezone": "Europe/Moscow",
   "Keep-Alive": "timeout=3",

@@ -131,9 +131,16 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
         Else
 
             If TypeOf(Value) = Type("BinaryData") Then
-                Value        = GetStringFromBinaryData(Value);
+
+                Try
+                    Value    = OPI_Janx.DeserializeData(Value);
+                    Return;
+                Except
+                    Value = GetStringFromBinaryData(Value);
+                EndTry;
+
             Else
-                Value        = NumberToString(Value);
+                Value = NumberToString(Value);
             EndIf;
 
             ValueES = Value;

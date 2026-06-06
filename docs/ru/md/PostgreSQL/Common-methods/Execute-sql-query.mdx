@@ -143,23 +143,19 @@ import Admonition from '@theme/Admonition';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
             oint postgres ВыполнитьЗапросSQL \
-              --sql "SELECT 1 AS n" \
+              --sql "\nCREATE TABLE test_table (\nid SERIAL PRIMARY KEY,\nname NAME,\nage INT,\nsalary REAL,\nis_active BOOL,\ncreated_at DATE,\ndata BYTEA\n);" \
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
+              --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\12g5v5aj.n5y']"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
             oint postgres ВыполнитьЗапросSQL ^
-              --sql "SELECT 1 AS n" ^
+              --sql "\nCREATE TABLE test_table (\nid SERIAL PRIMARY KEY,\nname NAME,\nage INT,\nsalary REAL,\nis_active BOOL,\ncreated_at DATE,\ndata BYTEA\n);" ^
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
+              --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\12g5v5aj.n5y']"
         ```
     </TabItem>
 </Tabs>

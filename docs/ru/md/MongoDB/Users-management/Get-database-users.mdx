@@ -83,5 +83,28 @@ import Admonition from '@theme/Admonition';
 
 
 ```json title="Результат"
-НЕ JSON: Соответствие
+{
+ "data": {
+  "ok": 1,
+  "users": [
+   {
+    "_id": "main.newuser",
+    "db": "main",
+    "mechanisms": [
+     "SCRAM-SHA-1",
+     "SCRAM-SHA-256"
+    ],
+    "roles": [
+     {
+      "db": "main",
+      "role": "readWrite"
+     }
+    ],
+    "user": "newuser",
+    "userId": "e461NySjRgGN/QgXHoMx1g=="
+   }
+  ]
+ },
+ "result": true
+}
 ```

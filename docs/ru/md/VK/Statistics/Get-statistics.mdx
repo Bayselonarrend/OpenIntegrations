@@ -68,8 +68,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-05-26T00:00:00" \
-              --dateto "2026-05-26T23:59:59" \
+              --datefrom "2026-06-06T00:00:00" \
+              --dateto "2026-06-06T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -79,8 +79,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-05-26T00:00:00" ^
-              --dateto "2026-05-26T23:59:59" ^
+              --datefrom "2026-06-06T00:00:00" ^
+              --dateto "2026-06-06T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -90,6 +90,34 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "response": [
+  {
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1780704000,
+   "period_to": 1780790399,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [
+     {
+      "code": "IN",
+      "count": 1,
+      "name": "Индия",
+      "value": 80
+     }
+    ],
+    "mobile_views": 0,
+    "views": 1,
+    "visitors": 1
+   }
+  },
   {
    "period_from": 1780617600,
    "period_to": 1780703999,
@@ -121,7 +149,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "35-45",
-      "count": 0
+      "count": 2
      },
      {
       "value": "45-100",
@@ -133,18 +161,23 @@ import Admonition from '@theme/Admonition';
       "count": 1,
       "name": "Новосибирск",
       "value": 99
+     },
+     {
+      "count": 1,
+      "name": "Ижевск",
+      "value": 56
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 1,
+      "count": 3,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 3,
+    "reach": 3,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -153,7 +186,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "m",
-      "count": 0
+      "count": 2
      }
     ],
     "sex_age": [
@@ -205,38 +238,5 @@ import Admonition from '@theme/Admonition';
       "value": "m;24-27",
       "count": 0
      },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "activity": {
-    "comments": 3
-   },
-   "period_from": 1780531200,
-   "period_to": 1780617599,
-   "reach": {
 ...
 ```
