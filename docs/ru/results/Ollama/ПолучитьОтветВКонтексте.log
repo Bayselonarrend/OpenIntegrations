@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-06-06T13:49:35.8716046Z",
+ "created_at": "2026-06-06T17:54:27.6574979Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2008. However, it is possible that newer versions..."
+  "content": "1C:Enterprise was re-released in August 2008. However, the first version of 1C:Enterprise was releas..."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 1898780500,
- "load_duration": 30510000,
- "prompt_eval_count": 193,
- "prompt_eval_duration": 472902800,
- "eval_count": 94,
- "eval_duration": 1354664600
+ "total_duration": 2546103300,
+ "load_duration": 31894900,
+ "prompt_eval_count": 195,
+ "prompt_eval_duration": 609257100,
+ "eval_count": 130,
+ "eval_duration": 1859732400
 }

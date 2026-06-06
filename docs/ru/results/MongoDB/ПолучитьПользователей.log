@@ -702,13 +702,13 @@
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "UclrRPHR9wcUvoaSoGcWDw==",
+      "salt": "9Q0lTWk7W/siB3cNDbqQUA==",
       "serverKey": "***",
       "storedKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "xnP9lT71MtGNzGH7o271DjMrWpGxLpmErzmS1A==",
+      "salt": "8NwGbp9fHVBCJKFebrl9tyGkdZuqzdylvxjMfA==",
       "serverKey": "***",
       "storedKey": "***"
      }
@@ -796,7 +796,7 @@
      }
     ],
     "user": "newuser",
-    "userId": "e461NySjRgGN/QgXHoMx1g=="
+    "userId": "qWW6KhxrT0GuwSn1G7kK6Q=="
    }
   ]
  },

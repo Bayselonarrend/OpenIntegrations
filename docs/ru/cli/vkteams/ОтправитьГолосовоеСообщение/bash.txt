@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\uesek0pu.ngv"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\yhzmvyko.apd"

@@ -1,4 +1,4 @@
 oint postgres ВыполнитьЗапросSQL ^
   --sql "\nCREATE TABLE test_table (\nid SERIAL PRIMARY KEY,\nname NAME,\nage INT,\nsalary REAL,\nis_active BOOL,\ncreated_at DATE,\ndata BYTEA\n);" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\12g5v5aj.n5y']"
+  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\fy0elxiw.qai.json"

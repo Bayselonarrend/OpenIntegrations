@@ -1,4 +1,4 @@
 oint postgres СоздатьБазуДанных \
   --base "testbase1" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\dbywyi0g.ss2']"
+  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\ksjkxjbn.4vz.json"

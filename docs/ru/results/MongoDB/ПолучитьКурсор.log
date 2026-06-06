@@ -3,12 +3,12 @@
   "cursor": {
    "firstBatch": [
     {
-     "_id": "6a241c0da363fd76dac57b1a",
+     "_id": "6a24552fa363fd76dac57ea7",
      "arrayField": [
       "A",
       "<<MinKey>>"
      ],
-     "binaryField": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\bied0fk3.34u",
+     "binaryField": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\btbzopoi.dnr",
      "boolField": true,
      "dateField": "2025-11-15T10:55:41Z",
      "docField": {
@@ -26,10 +26,10 @@
      "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
      "stringField": "Текст",
      "symbolField": "Y",
-     "tsField": "Timestamp(1780762172, 0)"
+     "tsField": "Timestamp(1780776798, 0)"
     }
    ],
-   "id": 4940259271587112583,
+   "id": 8845317957919397795,
    "ns": "main.new_collection"
   },
   "ok": 1

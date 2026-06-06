@@ -1,4 +1,4 @@
 oint mysql СоздатьБазуДанных \
   --base "testbase2" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\2mudaeq5.euq']"
+  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\rl3pzxn3.y5y.json"
