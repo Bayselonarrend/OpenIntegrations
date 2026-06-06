@@ -8,20 +8,30 @@ Some tools in the OPI set use **external components (AddIns)** — Rust dynamic 
 
 ## Compatibility
 
-All external components bundled with OPI are built for **x64** and **x86** (**x32**) on **Windows** and **Linux**. They are shipped in ZIP archives with **four** native libraries — one per platform. On Windows this usually works out of the box; on Linux the components assume **`glibc`**, **`gcc`**\* and **`OpenSSL`**\*\* are available.
+All external components bundled with OPI are built for **x64** and **x86** (**x32**) on **Windows** and **Linux**. They are shipped in ZIP archives with **four** native libraries — one per platform. Both platforms have compatibility constraints tied to specific OS versions and system libraries.
+
+### Windows
+
+Release builds of AddIns on Windows use a modern MSVC toolchain. The resulting `.dll` files may reference functions from Windows system libraries (`kernel32`, `bcrypt`, `ws2_32`, and others) that are only available starting with **Windows 8** and **Windows Server 2012**. On older systems — **Windows 7** and **Windows Server 2008 R2** — components from the standard OPI release may fail to load or crash when such functions are called.
+
+For a self-service build targeting Windows 7 / Server 2008 R2, the repository includes [src/addins/legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) with `setup-win7-build-env.bat` and `build-win7-package.bat`. See the directory [README.md](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/legacy-win7/README.md) for details. The build uses nightly Rust with `win7-windows-msvc` targets and can take noticeably longer than a standard release build. Use the resulting ZIP as an AddIn package, or replace the matching archive from the release for your delivery.
+
+### Linux
+
+On Linux the components assume **`glibc`**, **`gcc`**\* and **`OpenSSL`**\*\* are available.
 
 > \* Applies to CLI and OneScript builds
 > \*\* Applies to libraries that use TLS
 
-### glibc
+#### glibc
 
 **glibc** is the C runtime that backs system calls and basics like `open`, `malloc`, `printf`, and so on. It is present on x86 Linux distros, but **version** matters. The minimum supported version for OPI AddIns is **2.18**, roughly matching CENTOS 7, RHEL 7, Fedora 19, Debian 8, and Ubuntu 12.04 (2013–2014 era). Older distros will not run libraries that depend on these components.
 
-### gcc
+#### gcc
 
 The **gcc** toolchain version affects which **`libstdc++.so.6`** is on the system; that library is required for the AddIn engine in **CLI** and **OSPX** OPI builds. Minimum supported **gcc** is **7.5.0** (CentOS 8, RHEL 8, Fedora 28, Debian 10, Ubuntu 20.04, or older distros with **`devtoolset-7`** or equivalent).
 
-### OpenSSL
+#### OpenSSL
 
 Libraries that implement **TLS** link against system **OpenSSL 3.x** — **`libssl.so.3`** and **`libcrypto.so.3`**. That version is the default starting with CENTOS 9, RHEL 9, Fedora 36, Debian 12, and Ubuntu 22.04 (2022–2023). On older distros that ship OpenSSL 1.1 or earlier, you must install or build **OpenSSL 3.x** separately.
 
@@ -66,7 +76,7 @@ Miscellaneous questions about how external components work or are built — not 
 
 **1. Can I rebuild the external components?**
 
-Yes. The Rust sources live under [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Put the built binaries in a ZIP together with the [manifest file](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML), then replace the archive from the release that matches your delivery. The [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat) script in `src/addins` describes how release builds are produced.
+Yes. The Rust sources live under [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Put the built binaries in a ZIP together with the [manifest file](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML), then replace the archive from the release that matches your delivery. The [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat) script in `src/addins` describes how release builds are produced. For Windows 7 / Server 2008 R2, use the separate [legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) directory — see the [Windows](#windows) section above.
 
 **2. Can OpenSSL-dependent components be rebuilt against OpenSSL 1.1 / 1.1.1k?**
 
