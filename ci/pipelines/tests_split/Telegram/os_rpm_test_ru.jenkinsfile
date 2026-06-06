@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPIt_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPIt_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -94,35 +91,30 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ПолучитьИнформациюБота'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ПолучитьОбновления'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_УстановитьWebhook'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьТекстовоеСообщение'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьКартинку'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьВидео'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьАудио'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьДокумент'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьГифку'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьМедиагруппу'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьМестоположение'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьКонтакт'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ОтправитьОпрос'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ПереслатьСообщение'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_БанРазбан'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_СоздатьСсылкуПриглашение'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ЗакрепитьОткрепитьСообщение'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ПолучитьЧислоУчастников'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ПолучитьСписокАватаровФорума'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_СоздатьУдалитьТемуФорума'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_ИзменитьИмяГлавнойТемы'],
-						['./src/ru/OInt/tests/Modules/OPIt_Telegram.os', 'Телеграм_СкрытьПоказатьГлавнуюТему'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_Telegram.os', [
+'Телеграм_ПолучитьИнформациюБота',
+'Телеграм_ПолучитьОбновления',
+'Телеграм_УстановитьWebhook',
+'Телеграм_ОтправитьТекстовоеСообщение',
+'Телеграм_ОтправитьКартинку',
+'Телеграм_ОтправитьВидео',
+'Телеграм_ОтправитьАудио',
+'Телеграм_ОтправитьДокумент',
+'Телеграм_ОтправитьГифку',
+'Телеграм_ОтправитьМедиагруппу',
+'Телеграм_ОтправитьМестоположение',
+'Телеграм_ОтправитьКонтакт',
+'Телеграм_ОтправитьОпрос',
+'Телеграм_ПереслатьСообщение',
+'Телеграм_БанРазбан',
+'Телеграм_СоздатьСсылкуПриглашение',
+'Телеграм_ЗакрепитьОткрепитьСообщение',
+'Телеграм_ПолучитьЧислоУчастников',
+'Телеграм_ПолучитьСписокАватаровФорума',
+'Телеграм_СоздатьУдалитьТемуФорума',
+'Телеграм_ИзменитьИмяГлавнойТемы',
+'Телеграм_СкрытьПоказатьГлавнуюТему',
+					])
 				}
 			}
 		}
@@ -145,6 +137,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

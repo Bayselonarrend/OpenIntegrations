@@ -98,7 +98,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Core', './service/yaxunit_conf/ru/Core.json'],
+						[''Core'', ''./service/yaxunit_conf/ru/Core.json''],
+
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +114,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Telegram', './service/yaxunit_conf/ru/Telegram.json'],
+						[''Telegram'', ''./service/yaxunit_conf/ru/Telegram.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -130,7 +132,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['VK', './service/yaxunit_conf/ru/VK.json'],
+						[''VK'', ''./service/yaxunit_conf/ru/VK.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -147,7 +150,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Viber', './service/yaxunit_conf/ru/Viber.json'],
+						[''Viber'', ''./service/yaxunit_conf/ru/Viber.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -164,7 +168,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['FTP', './service/yaxunit_conf/ru/FTP.json'],
+						[''FTP'', ''./service/yaxunit_conf/ru/FTP.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -181,7 +186,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['SSH', './service/yaxunit_conf/ru/SSH.json'],
+						[''SSH'', ''./service/yaxunit_conf/ru/SSH.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -198,7 +204,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['SFTP', './service/yaxunit_conf/ru/SFTP.json'],
+						[''SFTP'', ''./service/yaxunit_conf/ru/SFTP.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -215,7 +222,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['PostgreSQL', './service/yaxunit_conf/ru/PostgreSQL.json'],
+						[''PostgreSQL'', ''./service/yaxunit_conf/ru/PostgreSQL.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -232,7 +240,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['MySQL', './service/yaxunit_conf/ru/MySQL.json'],
+						[''MySQL'', ''./service/yaxunit_conf/ru/MySQL.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -249,7 +258,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['MSSQL', './service/yaxunit_conf/ru/MSSQL.json'],
+						[''MSSQL'', ''./service/yaxunit_conf/ru/MSSQL.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -266,7 +276,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['SQLite', './service/yaxunit_conf/ru/SQLite.json'],
+						[''SQLite'', ''./service/yaxunit_conf/ru/SQLite.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -283,7 +294,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['MongoDB', './service/yaxunit_conf/ru/MongoDB.json'],
+						[''MongoDB'', ''./service/yaxunit_conf/ru/MongoDB.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -300,7 +312,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['RCON', './service/yaxunit_conf/ru/RCON.json'],
+						[''RCON'', ''./service/yaxunit_conf/ru/RCON.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -317,7 +330,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['YandexDisk', './service/yaxunit_conf/ru/YandexDisk.json'],
+						[''YandexDisk'', ''./service/yaxunit_conf/ru/YandexDisk.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -334,7 +348,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GoogleWorkspace', './service/yaxunit_conf/ru/GoogleWorkspace.json'],
+						[''GoogleWorkspace'', ''./service/yaxunit_conf/ru/GoogleWorkspace.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -351,7 +366,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GoogleCalendar', './service/yaxunit_conf/ru/GoogleCalendar.json'],
+						[''GoogleCalendar'', ''./service/yaxunit_conf/ru/GoogleCalendar.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -368,7 +384,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GoogleDrive', './service/yaxunit_conf/ru/GoogleDrive.json'],
+						[''GoogleDrive'', ''./service/yaxunit_conf/ru/GoogleDrive.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -385,7 +402,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GoogleSheets', './service/yaxunit_conf/ru/GoogleSheets.json'],
+						[''GoogleSheets'', ''./service/yaxunit_conf/ru/GoogleSheets.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -402,7 +420,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Notion', './service/yaxunit_conf/ru/Notion.json'],
+						[''Notion'', ''./service/yaxunit_conf/ru/Notion.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -419,7 +438,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Slack', './service/yaxunit_conf/ru/Slack.json'],
+						[''Slack'', ''./service/yaxunit_conf/ru/Slack.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -436,7 +456,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Airtable', './service/yaxunit_conf/ru/Airtable.json'],
+						[''Airtable'', ''./service/yaxunit_conf/ru/Airtable.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -453,7 +474,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Dropbox', './service/yaxunit_conf/ru/Dropbox.json'],
+						[''Dropbox'', ''./service/yaxunit_conf/ru/Dropbox.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -470,7 +492,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Bitrix24', './service/yaxunit_conf/ru/Bitrix24.json'],
+						[''Bitrix24'', ''./service/yaxunit_conf/ru/Bitrix24.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -487,7 +510,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['VKTeams', './service/yaxunit_conf/ru/VKTeams.json'],
+						[''VKTeams'', ''./service/yaxunit_conf/ru/VKTeams.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -504,7 +528,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Neocities', './service/yaxunit_conf/ru/Neocities.json'],
+						[''Neocities'', ''./service/yaxunit_conf/ru/Neocities.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -521,7 +546,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['CDEK', './service/yaxunit_conf/ru/CDEK.json'],
+						[''CDEK'', ''./service/yaxunit_conf/ru/CDEK.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -538,7 +564,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['YandexMetrika', './service/yaxunit_conf/ru/YandexMetrika.json'],
+						[''YandexMetrika'', ''./service/yaxunit_conf/ru/YandexMetrika.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -555,7 +582,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['S3', './service/yaxunit_conf/ru/S3.json'],
+						[''S3'', ''./service/yaxunit_conf/ru/S3.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -572,7 +600,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['TCP', './service/yaxunit_conf/ru/TCP.json'],
+						[''TCP'', ''./service/yaxunit_conf/ru/TCP.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -589,7 +618,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['WebSocket', './service/yaxunit_conf/ru/WebSocket.json'],
+						[''WebSocket'', ''./service/yaxunit_conf/ru/WebSocket.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -606,7 +636,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['ZeroMQ', './service/yaxunit_conf/ru/ZeroMQ.json'],
+						[''ZeroMQ'', ''./service/yaxunit_conf/ru/ZeroMQ.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -623,7 +654,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GreenAPI', './service/yaxunit_conf/ru/GreenAPI.json'],
+						[''GreenAPI'', ''./service/yaxunit_conf/ru/GreenAPI.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -640,7 +672,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GreenMax', './service/yaxunit_conf/ru/GreenMax.json'],
+						[''GreenMax'', ''./service/yaxunit_conf/ru/GreenMax.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -657,7 +690,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Ollama', './service/yaxunit_conf/ru/Ollama.json'],
+						[''Ollama'', ''./service/yaxunit_conf/ru/Ollama.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -674,7 +708,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['HTTP', './service/yaxunit_conf/ru/HTTP.json'],
+						[''HTTP'', ''./service/yaxunit_conf/ru/HTTP.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -691,7 +726,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['OpenAI', './service/yaxunit_conf/ru/OpenAI.json'],
+						[''OpenAI'', ''./service/yaxunit_conf/ru/OpenAI.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -708,7 +744,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['ReportPortal', './service/yaxunit_conf/ru/ReportPortal.json'],
+						[''ReportPortal'', ''./service/yaxunit_conf/ru/ReportPortal.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -725,7 +762,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GRPC', './service/yaxunit_conf/ru/GRPC.json'],
+						[''GRPC'', ''./service/yaxunit_conf/ru/GRPC.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -742,7 +780,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['ClickHouse', './service/yaxunit_conf/ru/ClickHouse.json'],
+						[''ClickHouse'', ''./service/yaxunit_conf/ru/ClickHouse.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -759,7 +798,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['RSS', './service/yaxunit_conf/ru/RSS.json'],
+						[''RSS'', ''./service/yaxunit_conf/ru/RSS.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -776,7 +816,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['MessagePack', './service/yaxunit_conf/ru/MessagePack.json'],
+						[''MessagePack'', ''./service/yaxunit_conf/ru/MessagePack.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -793,7 +834,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Janx', './service/yaxunit_conf/ru/Janx.json'],
+						[''Janx'', ''./service/yaxunit_conf/ru/Janx.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
@@ -810,7 +852,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Lua', './service/yaxunit_conf/ru/Lua.json'],
+						[''Lua'', ''./service/yaxunit_conf/ru/Lua.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

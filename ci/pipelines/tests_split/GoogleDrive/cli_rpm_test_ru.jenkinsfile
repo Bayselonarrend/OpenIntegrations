@@ -68,13 +68,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -84,18 +81,13 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', 'ГД_Авторизация'],
-						['./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', 'ГД_ПолучитьСписокКаталогов'],
-						['./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', 'ГД_ЗагрузитьУдалитьФайл'],
-						['./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', 'ГД_СоздатьУдалитьКомментарий'],
-						['./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', 'ГД_СоздатьКаталог'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_GoogleDrive.os', [
+'ГД_Авторизация',
+'ГД_ПолучитьСписокКаталогов',
+'ГД_ЗагрузитьУдалитьФайл',
+'ГД_СоздатьУдалитьКомментарий',
+'ГД_СоздатьКаталог',
+					])
 				}
 			}
 		}
@@ -118,6 +110,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

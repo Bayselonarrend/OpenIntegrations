@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -94,29 +91,24 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TokenManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_ServerTime'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_PostsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TaskManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_CommentsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_WorkingWithDrive'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_Kanban'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_Timekeeping'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_ChatManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_NotificationsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_TasksFieldsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_DepartmentsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B2_UsersManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_LeadsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_DealsManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', 'B24_CalendarsManagement'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Bitrix24.os', [
+'B24_TokenManagement',
+'B24_ServerTime',
+'B24_PostsManagement',
+'B24_TaskManagement',
+'B24_CommentsManagement',
+'B24_WorkingWithDrive',
+'B24_Kanban',
+'B24_Timekeeping',
+'B24_ChatManagement',
+'B24_NotificationsManagement',
+'B24_TasksFieldsManagement',
+'B24_DepartmentsManagement',
+'B2_UsersManagement',
+'B24_LeadsManagement',
+'B24_DealsManagement',
+'B24_CalendarsManagement',
+					])
 				}
 			}
 		}
@@ -139,6 +131,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

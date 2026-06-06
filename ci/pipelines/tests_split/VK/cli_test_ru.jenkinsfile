@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -164,32 +161,27 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьСсылкуТокена'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьУдалитьПост'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьСоставнойПост'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьОпрос'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СохранитьУдалитьКартинку'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьИсторию'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ЛайкРепостКоммент'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСтатистику'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСтатистикуПостов'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьРекламнуюКампанию'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ОтправитьСообщение'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьКатегорииТоваров'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьТоварПодборку'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_СоздатьТоварСоСвойствами'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСписокТоваров'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСписокПодборок'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСписокСвойств'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ПолучитьСписокЗаказов'],
-						['./src/ru/OInt/tests/Modules/OPItc_VK.os', 'ВК_ЗагрузитьВидео'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_VK.os', [
+'ВК_СоздатьСсылкуТокена',
+'ВК_СоздатьУдалитьПост',
+'ВК_СоздатьСоставнойПост',
+'ВК_СоздатьОпрос',
+'ВК_СохранитьУдалитьКартинку',
+'ВК_СоздатьИсторию',
+'ВК_ЛайкРепостКоммент',
+'ВК_ПолучитьСтатистику',
+'ВК_ПолучитьСтатистикуПостов',
+'ВК_СоздатьРекламнуюКампанию',
+'ВК_ОтправитьСообщение',
+'ВК_ПолучитьКатегорииТоваров',
+'ВК_СоздатьТоварПодборку',
+'ВК_СоздатьТоварСоСвойствами',
+'ВК_ПолучитьСписокТоваров',
+'ВК_ПолучитьСписокПодборок',
+'ВК_ПолучитьСписокСвойств',
+'ВК_ПолучитьСписокЗаказов',
+'ВК_ЗагрузитьВидео',
+					])
 				}
 			}
 		}
@@ -212,6 +204,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

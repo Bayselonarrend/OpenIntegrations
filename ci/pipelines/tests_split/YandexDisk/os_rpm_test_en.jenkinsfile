@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -94,24 +91,19 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_Authorization'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetDiskInfo'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_CreateFolder'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_UploadByUrlAndGetObject'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_CreateObjectCopy'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetDownloadLink'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetFileList'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_MoveObject'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_PublicObjectActions'],
-						['./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', 'YDisk_GetPublishedList'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_YandexDisk.os', [
+'YDisk_Authorization',
+'YDisk_GetDiskInfo',
+'YDisk_CreateFolder',
+'YDisk_UploadByUrlAndGetObject',
+'YDisk_UploadDeleteFile',
+'YDisk_CreateObjectCopy',
+'YDisk_GetDownloadLink',
+'YDisk_GetFileList',
+'YDisk_MoveObject',
+'YDisk_PublicObjectActions',
+'YDisk_GetPublishedList',
+					])
 				}
 			}
 		}
@@ -134,6 +126,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

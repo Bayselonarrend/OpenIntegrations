@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -164,20 +161,15 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_Initialization'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_BodySet'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_Settings'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_HeadersSetting'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_Authorization'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_RequestProcessing'],
-						['./src/en/OInt/tests/Modules/OPItc_HTTP.os', 'HTTP_ResponseReceiving'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_HTTP.os', [
+'HTTP_Initialization',
+'HTTP_BodySet',
+'HTTP_Settings',
+'HTTP_HeadersSetting',
+'HTTP_Authorization',
+'HTTP_RequestProcessing',
+'HTTP_ResponseReceiving',
+					])
 				}
 			}
 		}
@@ -200,6 +192,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

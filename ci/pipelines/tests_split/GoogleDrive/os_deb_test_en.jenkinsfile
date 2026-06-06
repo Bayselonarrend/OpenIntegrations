@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -94,18 +91,13 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_Authorization'],
-						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_GetCatalogList'],
-						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_UploadDeleteFile'],
-						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_CreateDeleteComment'],
-						['./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', 'GD_CreateCatalog'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_GoogleDrive.os', [
+'GD_Authorization',
+'GD_GetCatalogList',
+'GD_UploadDeleteFile',
+'GD_CreateDeleteComment',
+'GD_CreateCatalog',
+					])
 				}
 			}
 		}
@@ -128,6 +120,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

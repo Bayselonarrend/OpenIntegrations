@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -164,19 +161,14 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_РаботаСГруппами'],
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_ОтправкаСообщений'],
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_Уведомления'],
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_ИсторияСообщений'],
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_Очереди'],
-						['./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', 'GMax_Аккаунт'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_GreenMax.os', [
+'GMax_РаботаСГруппами',
+'GMax_ОтправкаСообщений',
+'GMax_Уведомления',
+'GMax_ИсторияСообщений',
+'GMax_Очереди',
+'GMax_Аккаунт',
+					])
 				}
 			}
 		}
@@ -199,6 +191,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

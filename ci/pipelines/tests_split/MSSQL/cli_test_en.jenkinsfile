@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPItc_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -164,16 +161,11 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPItc_MSSQL.os', 'MSS_CommonMethods'],
-						['./src/en/OInt/tests/Modules/OPItc_MSSQL.os', 'MSS_ExtendedCheck'],
-						['./src/en/OInt/tests/Modules/OPItc_MSSQL.os', 'MSS_ORM'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MSSQL.os', [
+'MSS_CommonMethods',
+'MSS_ExtendedCheck',
+'MSS_ORM',
+					])
 				}
 			}
 		}
@@ -196,6 +188,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

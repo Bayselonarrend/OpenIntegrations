@@ -68,13 +68,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -84,29 +81,24 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСТокеном'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_СерверноеВремя'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСНовостями'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСЗадачами'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСКомментариями'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСДиском'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_Канбан'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_УчетРабочегоВремени'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСЧатами'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСУведомлениями'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСПолямиЗадач'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_УправлениеПодразделениями'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_УправлениеПользователями'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСЛидами'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСоСделками'],
-						['./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', 'Б24_РаботаСКалендарями'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Bitrix24.os', [
+'Б24_РаботаСТокеном',
+'Б24_СерверноеВремя',
+'Б24_РаботаСНовостями',
+'Б24_РаботаСЗадачами',
+'Б24_РаботаСКомментариями',
+'Б24_РаботаСДиском',
+'Б24_Канбан',
+'Б24_УчетРабочегоВремени',
+'Б24_РаботаСЧатами',
+'Б24_РаботаСУведомлениями',
+'Б24_РаботаСПолямиЗадач',
+'Б24_УправлениеПодразделениями',
+'Б24_УправлениеПользователями',
+'Б24_РаботаСЛидами',
+'Б24_РаботаСоСделками',
+'Б24_РаботаСКалендарями',
+					])
 				}
 			}
 		}
@@ -129,6 +121,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

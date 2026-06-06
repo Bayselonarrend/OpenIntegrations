@@ -98,7 +98,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Core', './service/yaxunit_conf/en/Core.json'],
+						[''Core'', ''./service/yaxunit_conf/en/Core.json''],
+
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +114,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['GoogleWorkspace', './service/yaxunit_conf/en/GoogleWorkspace.json'],
+						[''GoogleWorkspace'', ''./service/yaxunit_conf/en/GoogleWorkspace.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

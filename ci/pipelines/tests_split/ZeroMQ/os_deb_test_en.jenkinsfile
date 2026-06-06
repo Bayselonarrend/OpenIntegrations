@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -94,18 +91,13 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_Common'],
-						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ConnectionMethods'],
-						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ListeningMethods'],
-						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_InteractionMethods'],
-						['./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', 'ZMQ_ExtendedCheck'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_ZeroMQ.os', [
+'ZMQ_Common',
+'ZMQ_ConnectionMethods',
+'ZMQ_ListeningMethods',
+'ZMQ_InteractionMethods',
+'ZMQ_ExtendedCheck',
+					])
 				}
 			}
 		}
@@ -128,6 +120,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

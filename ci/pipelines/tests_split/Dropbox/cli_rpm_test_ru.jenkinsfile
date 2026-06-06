@@ -68,13 +68,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -84,21 +81,16 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_ПолучитьОбновитьТокен'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_ЗагрузитьФайл'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_ЗагрузитьФайлПоURL'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_СоздатьКаталог'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_СоздатьУдалитьТег'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_ПолучитьАккаунт'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_РаботаСДоступами'],
-						['./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', 'ДропБокс_ПолучитьСписокФайловПапки'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Dropbox.os', [
+'ДропБокс_ПолучитьОбновитьТокен',
+'ДропБокс_ЗагрузитьФайл',
+'ДропБокс_ЗагрузитьФайлПоURL',
+'ДропБокс_СоздатьКаталог',
+'ДропБокс_СоздатьУдалитьТег',
+'ДропБокс_ПолучитьАккаунт',
+'ДропБокс_РаботаСДоступами',
+'ДропБокс_ПолучитьСписокФайловПапки',
+					])
 				}
 			}
 		}
@@ -121,6 +113,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

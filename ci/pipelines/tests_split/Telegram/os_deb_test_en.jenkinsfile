@@ -78,13 +78,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -94,35 +91,30 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetBotInfo'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetUpdates'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SetWebhook'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendTextMessage'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendImage'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendVideo'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendAudio'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendDocument'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendGIF'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendMediaGroup'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendLocation'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendContact'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_SendPoll'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_ForwardMessage'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_BanUnban'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_CreateInvitationLink'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_PinUnpinMessage'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetMemberCount'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_GetForumAvatarsList'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_CreateDeleteForumTopic'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_ChangeMainTopicName'],
-						['./src/en/OInt/tests/Modules/OPIt_Telegram.os', 'TelegramAPI_HideShowMainTopic'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Telegram.os', [
+'TelegramAPI_GetBotInfo',
+'TelegramAPI_GetUpdates',
+'TelegramAPI_SetWebhook',
+'TelegramAPI_SendTextMessage',
+'TelegramAPI_SendImage',
+'TelegramAPI_SendVideo',
+'TelegramAPI_SendAudio',
+'TelegramAPI_SendDocument',
+'TelegramAPI_SendGIF',
+'TelegramAPI_SendMediaGroup',
+'TelegramAPI_SendLocation',
+'TelegramAPI_SendContact',
+'TelegramAPI_SendPoll',
+'TelegramAPI_ForwardMessage',
+'TelegramAPI_BanUnban',
+'TelegramAPI_CreateInvitationLink',
+'TelegramAPI_PinUnpinMessage',
+'TelegramAPI_GetMemberCount',
+'TelegramAPI_GetForumAvatarsList',
+'TelegramAPI_CreateDeleteForumTopic',
+'TelegramAPI_ChangeMainTopicName',
+'TelegramAPI_HideShowMainTopic',
+					])
 				}
 			}
 		}
@@ -145,6 +137,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

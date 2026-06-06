@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -164,19 +161,14 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_ПолучитьИнформацию'],
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_ОтправитьУдалитьСообщение'],
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_СоздатьАрхивироватьКанал'],
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_ОткрытьЗакрытьДиалог'],
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_ЗагрузитьУдалитьФайл'],
-						['./src/ru/OInt/tests/Modules/OPItc_Slack.os', 'Слак_ЗагрузитьУдалитьВФ'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Slack.os', [
+'Слак_ПолучитьИнформацию',
+'Слак_ОтправитьУдалитьСообщение',
+'Слак_СоздатьАрхивироватьКанал',
+'Слак_ОткрытьЗакрытьДиалог',
+'Слак_ЗагрузитьУдалитьФайл',
+'Слак_ЗагрузитьУдалитьВФ',
+					])
 				}
 			}
 		}
@@ -199,6 +191,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

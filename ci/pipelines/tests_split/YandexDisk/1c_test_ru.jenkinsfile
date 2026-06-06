@@ -98,7 +98,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Core', './service/yaxunit_conf/ru/Core.json'],
+						[''Core'', ''./service/yaxunit_conf/ru/Core.json''],
+
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +114,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['YandexDisk', './service/yaxunit_conf/ru/YandexDisk.json'],
+						[''YandexDisk'', ''./service/yaxunit_conf/ru/YandexDisk.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

@@ -98,7 +98,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Core', './service/yaxunit_conf/ru/Core.json'],
+						[''Core'', ''./service/yaxunit_conf/ru/Core.json''],
+
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +114,8 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Lua', './service/yaxunit_conf/ru/Lua.json'],
+						[''Lua'', ''./service/yaxunit_conf/ru/Lua.json''],
+
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

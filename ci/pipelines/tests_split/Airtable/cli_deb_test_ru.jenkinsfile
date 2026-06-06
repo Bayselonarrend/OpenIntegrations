@@ -68,13 +68,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -84,17 +81,12 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Airtable.os', 'АТ_СоздатьБазу'],
-						['./src/ru/OInt/tests/Modules/OPItc_Airtable.os', 'АТ_СоздатьТаблицу'],
-						['./src/ru/OInt/tests/Modules/OPItc_Airtable.os', 'АТ_СоздатьПоле'],
-						['./src/ru/OInt/tests/Modules/OPItc_Airtable.os', 'АТ_СоздатьУдалитьЗаписи'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Airtable.os', [
+'АТ_СоздатьБазу',
+'АТ_СоздатьТаблицу',
+'АТ_СоздатьПоле',
+'АТ_СоздатьУдалитьЗаписи',
+					])
 				}
 			}
 		}
@@ -117,6 +109,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

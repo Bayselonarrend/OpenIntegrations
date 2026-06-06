@@ -75,13 +75,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'CheckIBToLastBuildCompliance'],
-						['./src/en/OInt/tests/Modules/OPIt_Core.os', 'ValidateAdvancedCall'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
 				}
 			}
 		}
@@ -91,19 +88,14 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_GroupManagement'],
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageSending'],
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_NotificationsReceiving'],
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageQueue'],
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_MessageLogs'],
-						['./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', 'GAPI_Account'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_GreenAPI.os', [
+'GAPI_GroupManagement',
+'GAPI_MessageSending',
+'GAPI_NotificationsReceiving',
+'GAPI_MessageQueue',
+'GAPI_MessageLogs',
+'GAPI_Account',
+					])
 				}
 			}
 		}
@@ -126,6 +118,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

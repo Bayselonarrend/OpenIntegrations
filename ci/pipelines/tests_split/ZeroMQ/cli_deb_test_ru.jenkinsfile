@@ -68,13 +68,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -84,18 +81,13 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_Общие'],
-						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыПодключения'],
-						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыПрослушивания'],
-						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_МетодыВзаимодействия'],
-						['./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', 'ZMQ_РасширеннаяПроверка'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_ZeroMQ.os', [
+'ZMQ_Общие',
+'ZMQ_МетодыПодключения',
+'ZMQ_МетодыПрослушивания',
+'ZMQ_МетодыВзаимодействия',
+'ZMQ_РасширеннаяПроверка',
+					])
 				}
 			}
 		}
@@ -118,6 +110,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {

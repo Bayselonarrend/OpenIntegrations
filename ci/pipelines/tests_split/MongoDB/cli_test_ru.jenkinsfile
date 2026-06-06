@@ -148,13 +148,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
-						['./src/ru/OInt/tests/Modules/OPItc_Core.os', 'ПроверитьРасширенныйВызов'],
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
 				}
 			}
 		}
@@ -164,20 +161,15 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_ОсновныеМетоды'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_РасширеннаяПроверка'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_РаботаСБазами'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_РаботаСКоллекциями'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_РаботаСДокументами'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_УправлениеПользователями'],
-						['./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', 'Mongo_УправлениеРолями'],
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
-					}
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_MongoDB.os', [
+'Mongo_ОсновныеМетоды',
+'Mongo_РасширеннаяПроверка',
+'Mongo_РаботаСБазами',
+'Mongo_РаботаСКоллекциями',
+'Mongo_РаботаСДокументами',
+'Mongo_УправлениеПользователями',
+'Mongo_УправлениеРолями',
+					])
 				}
 			}
 		}
@@ -200,6 +192,18 @@ pipeline {
 			}
 		}
 	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
 }
 
 def shouldRunStage(stageName) {
