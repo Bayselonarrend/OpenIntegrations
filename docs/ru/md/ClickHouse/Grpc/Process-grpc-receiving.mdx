@@ -71,7 +71,7 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ОбработатьПолучениеGRPC \
-              --conn "{'auth_type':'basic','transport':'grpc','password':'***','user':'bayselonarrend','address':'http://127.0.0.1:9101'}" \
+              --conn "{'address':'http://127.0.0.1:9101','auth_type':'basic','password':'***','transport':'grpc','user':'bayselonarrend'}" \
               --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
         ```
     </TabItem>
@@ -81,7 +81,7 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ОбработатьПолучениеGRPC ^
-              --conn "{'auth_type':'basic','transport':'grpc','password':'***','user':'bayselonarrend','address':'http://127.0.0.1:9101'}" ^
+              --conn "{'address':'http://127.0.0.1:9101','auth_type':'basic','password':'***','transport':'grpc','user':'bayselonarrend'}" ^
               --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
         ```
     </TabItem>
@@ -89,5 +89,155 @@ import Admonition from '@theme/Admonition';
 
 
 ```json title="Результат"
-НЕ JSON: Соответствие
+{
+ "stop_message": {
+  "error": "Closed",
+  "result": false
+ },
+ "result": true,
+ "messages": [
+  {
+   "message": {
+    "cancelled": false,
+    "exception": {
+     "code": 0,
+     "display_text": "",
+     "name": "",
+     "stack_trace": ""
+    },
+    "extremes": "",
+    "logs": [],
+    "output": {
+     "meta": [
+      {
+       "name": "id",
+       "type": "UInt64"
+      },
+      {
+       "name": "timestamp",
+       "type": "DateTime"
+      },
+      {
+       "name": "user_id",
+       "type": "UInt32"
+      },
+      {
+       "name": "event_type",
+       "type": "String"
+      },
+      {
+       "name": "payload",
+       "type": "String"
+      }
+     ],
+     "data": [
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "1",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 100,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "2",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 101,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "3",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 102,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+       "user_id": 103,
+       "event_type": "stream_test",
+       "payload": "{}"
+      },
+      {
+       "id": "4",
+       "timestamp": "2026-01-01 10:00:00",
+...
 ```

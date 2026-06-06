@@ -94,14 +94,16 @@ import Admonition from '@theme/Admonition';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint clickhouse ПолучитьНастройкиЗапроса \
-              --query "CREATE TABLE IF NOT EXISTS events_grpc (\n    id UInt64,\n    timestamp DateTime,\n    user_id UInt32,\n    event_type String,\n    payload String\n) ENGINE    = MergeTree()\nORDER BY (timestamp, id)"
+              --query "SELECT * FROM events_stream_test ORDER BY id" \
+              --format "JSON"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint clickhouse ПолучитьНастройкиЗапроса ^
-              --query "CREATE TABLE IF NOT EXISTS events_grpc (\n    id UInt64,\n    timestamp DateTime,\n    user_id UInt32,\n    event_type String,\n    payload String\n) ENGINE    = MergeTree()\nORDER BY (timestamp, id)"
+              --query "SELECT * FROM events_stream_test ORDER BY id" ^
+              --format "JSON"
         ```
     </TabItem>
 </Tabs>
@@ -111,8 +113,8 @@ import Admonition from '@theme/Admonition';
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "748d3281-7cd9-468e-9470-bc9598690b96",
- "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oynqqzxx.mii.json",
+ "id": "40c66e04-1a17-4e0b-9a0e-410719bc2262",
+ "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\1e33st3b.qmr.json",
  "format": "CSV",
  "external_tables": [
   {

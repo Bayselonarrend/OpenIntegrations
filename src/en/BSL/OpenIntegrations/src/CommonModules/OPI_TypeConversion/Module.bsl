@@ -133,7 +133,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             If TypeOf(Value) = Type("BinaryData") Then
 
                 Try
-                    Value    = OPI_Janx.DeserializeData(Value);
+                    Value = OPI_Janx.DeserializeData(Value);
                     Return;
                 Except
                     Value = GetStringFromBinaryData(Value);
@@ -171,7 +171,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
 
             EndIf;
 
-            If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
+            If Not ThisIsCollection(Value) Then
 
                 Success = False;
                 Value   = InitialValue;
