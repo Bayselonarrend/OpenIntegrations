@@ -4,12 +4,7 @@
             }
 			steps {
 				script {
-					def tests = [
 %2
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
 				}
 			}
 		}

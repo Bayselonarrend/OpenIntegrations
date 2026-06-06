@@ -1,0 +1,1 @@
+					runLibraryTest('%1', '%2')

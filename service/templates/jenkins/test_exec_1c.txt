@@ -1,0 +1,3 @@
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('%1', '%2')
+					}
