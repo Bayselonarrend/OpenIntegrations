@@ -97,13 +97,8 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Core'', ''./service/yaxunit_conf/en/Core.json''],
+					runLibraryTest('Core', './service/yaxunit_conf/en/Core.json')
 
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
 				}
 			}
 		}
@@ -113,15 +108,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''YandexMetrika'', ''./service/yaxunit_conf/en/YandexMetrika.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('YandexMetrika', './service/yaxunit_conf/en/YandexMetrika.json')
 					}
+
 				}
 			}
 		}

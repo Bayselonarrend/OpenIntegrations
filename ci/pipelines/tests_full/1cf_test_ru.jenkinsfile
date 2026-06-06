@@ -97,13 +97,8 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Core'', ''./service/yaxunit_conf/ru/Core.json''],
+					runLibraryTest('Core', './service/yaxunit_conf/ru/Core.json')
 
-					]
-					for (test in tests) {
-							runLibraryTest(test[0], test[1])
-					}
 				}
 			}
 		}
@@ -113,15 +108,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Telegram'', ''./service/yaxunit_conf/ru/Telegram.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Telegram', './service/yaxunit_conf/ru/Telegram.json')
 					}
+
 				}
 			}
 		}
@@ -131,15 +121,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''VK'', ''./service/yaxunit_conf/ru/VK.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('VK', './service/yaxunit_conf/ru/VK.json')
 					}
+
 				}
 			}
 		}
@@ -149,15 +134,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Viber'', ''./service/yaxunit_conf/ru/Viber.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Viber', './service/yaxunit_conf/ru/Viber.json')
 					}
+
 				}
 			}
 		}
@@ -167,15 +147,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''FTP'', ''./service/yaxunit_conf/ru/FTP.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('FTP', './service/yaxunit_conf/ru/FTP.json')
 					}
+
 				}
 			}
 		}
@@ -185,15 +160,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''SSH'', ''./service/yaxunit_conf/ru/SSH.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SSH', './service/yaxunit_conf/ru/SSH.json')
 					}
+
 				}
 			}
 		}
@@ -203,15 +173,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''SFTP'', ''./service/yaxunit_conf/ru/SFTP.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SFTP', './service/yaxunit_conf/ru/SFTP.json')
 					}
+
 				}
 			}
 		}
@@ -221,15 +186,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''PostgreSQL'', ''./service/yaxunit_conf/ru/PostgreSQL.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('PostgreSQL', './service/yaxunit_conf/ru/PostgreSQL.json')
 					}
+
 				}
 			}
 		}
@@ -239,15 +199,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''MySQL'', ''./service/yaxunit_conf/ru/MySQL.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MySQL', './service/yaxunit_conf/ru/MySQL.json')
 					}
+
 				}
 			}
 		}
@@ -257,15 +212,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''MSSQL'', ''./service/yaxunit_conf/ru/MSSQL.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MSSQL', './service/yaxunit_conf/ru/MSSQL.json')
 					}
+
 				}
 			}
 		}
@@ -275,15 +225,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''SQLite'', ''./service/yaxunit_conf/ru/SQLite.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SQLite', './service/yaxunit_conf/ru/SQLite.json')
 					}
+
 				}
 			}
 		}
@@ -293,15 +238,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''MongoDB'', ''./service/yaxunit_conf/ru/MongoDB.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MongoDB', './service/yaxunit_conf/ru/MongoDB.json')
 					}
+
 				}
 			}
 		}
@@ -311,15 +251,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''RCON'', ''./service/yaxunit_conf/ru/RCON.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('RCON', './service/yaxunit_conf/ru/RCON.json')
 					}
+
 				}
 			}
 		}
@@ -329,15 +264,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''YandexDisk'', ''./service/yaxunit_conf/ru/YandexDisk.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('YandexDisk', './service/yaxunit_conf/ru/YandexDisk.json')
 					}
+
 				}
 			}
 		}
@@ -347,15 +277,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GoogleWorkspace'', ''./service/yaxunit_conf/ru/GoogleWorkspace.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GoogleWorkspace', './service/yaxunit_conf/ru/GoogleWorkspace.json')
 					}
+
 				}
 			}
 		}
@@ -365,15 +290,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GoogleCalendar'', ''./service/yaxunit_conf/ru/GoogleCalendar.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GoogleCalendar', './service/yaxunit_conf/ru/GoogleCalendar.json')
 					}
+
 				}
 			}
 		}
@@ -383,15 +303,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GoogleDrive'', ''./service/yaxunit_conf/ru/GoogleDrive.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GoogleDrive', './service/yaxunit_conf/ru/GoogleDrive.json')
 					}
+
 				}
 			}
 		}
@@ -401,15 +316,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GoogleSheets'', ''./service/yaxunit_conf/ru/GoogleSheets.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GoogleSheets', './service/yaxunit_conf/ru/GoogleSheets.json')
 					}
+
 				}
 			}
 		}
@@ -419,15 +329,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Notion'', ''./service/yaxunit_conf/ru/Notion.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Notion', './service/yaxunit_conf/ru/Notion.json')
 					}
+
 				}
 			}
 		}
@@ -437,15 +342,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Slack'', ''./service/yaxunit_conf/ru/Slack.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Slack', './service/yaxunit_conf/ru/Slack.json')
 					}
+
 				}
 			}
 		}
@@ -455,15 +355,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Airtable'', ''./service/yaxunit_conf/ru/Airtable.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Airtable', './service/yaxunit_conf/ru/Airtable.json')
 					}
+
 				}
 			}
 		}
@@ -473,15 +368,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Dropbox'', ''./service/yaxunit_conf/ru/Dropbox.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Dropbox', './service/yaxunit_conf/ru/Dropbox.json')
 					}
+
 				}
 			}
 		}
@@ -491,15 +381,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Bitrix24'', ''./service/yaxunit_conf/ru/Bitrix24.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Bitrix24', './service/yaxunit_conf/ru/Bitrix24.json')
 					}
+
 				}
 			}
 		}
@@ -509,15 +394,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''VKTeams'', ''./service/yaxunit_conf/ru/VKTeams.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('VKTeams', './service/yaxunit_conf/ru/VKTeams.json')
 					}
+
 				}
 			}
 		}
@@ -527,15 +407,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Neocities'', ''./service/yaxunit_conf/ru/Neocities.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Neocities', './service/yaxunit_conf/ru/Neocities.json')
 					}
+
 				}
 			}
 		}
@@ -545,15 +420,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''CDEK'', ''./service/yaxunit_conf/ru/CDEK.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('CDEK', './service/yaxunit_conf/ru/CDEK.json')
 					}
+
 				}
 			}
 		}
@@ -563,15 +433,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''YandexMetrika'', ''./service/yaxunit_conf/ru/YandexMetrika.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('YandexMetrika', './service/yaxunit_conf/ru/YandexMetrika.json')
 					}
+
 				}
 			}
 		}
@@ -581,15 +446,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''S3'', ''./service/yaxunit_conf/ru/S3.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('S3', './service/yaxunit_conf/ru/S3.json')
 					}
+
 				}
 			}
 		}
@@ -599,15 +459,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''TCP'', ''./service/yaxunit_conf/ru/TCP.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('TCP', './service/yaxunit_conf/ru/TCP.json')
 					}
+
 				}
 			}
 		}
@@ -617,15 +472,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''WebSocket'', ''./service/yaxunit_conf/ru/WebSocket.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('WebSocket', './service/yaxunit_conf/ru/WebSocket.json')
 					}
+
 				}
 			}
 		}
@@ -635,15 +485,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''ZeroMQ'', ''./service/yaxunit_conf/ru/ZeroMQ.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('ZeroMQ', './service/yaxunit_conf/ru/ZeroMQ.json')
 					}
+
 				}
 			}
 		}
@@ -653,15 +498,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GreenAPI'', ''./service/yaxunit_conf/ru/GreenAPI.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GreenAPI', './service/yaxunit_conf/ru/GreenAPI.json')
 					}
+
 				}
 			}
 		}
@@ -671,15 +511,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GreenMax'', ''./service/yaxunit_conf/ru/GreenMax.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GreenMax', './service/yaxunit_conf/ru/GreenMax.json')
 					}
+
 				}
 			}
 		}
@@ -689,15 +524,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Ollama'', ''./service/yaxunit_conf/ru/Ollama.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Ollama', './service/yaxunit_conf/ru/Ollama.json')
 					}
+
 				}
 			}
 		}
@@ -707,15 +537,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''HTTP'', ''./service/yaxunit_conf/ru/HTTP.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('HTTP', './service/yaxunit_conf/ru/HTTP.json')
 					}
+
 				}
 			}
 		}
@@ -725,15 +550,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''OpenAI'', ''./service/yaxunit_conf/ru/OpenAI.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('OpenAI', './service/yaxunit_conf/ru/OpenAI.json')
 					}
+
 				}
 			}
 		}
@@ -743,15 +563,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''ReportPortal'', ''./service/yaxunit_conf/ru/ReportPortal.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('ReportPortal', './service/yaxunit_conf/ru/ReportPortal.json')
 					}
+
 				}
 			}
 		}
@@ -761,15 +576,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''GRPC'', ''./service/yaxunit_conf/ru/GRPC.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('GRPC', './service/yaxunit_conf/ru/GRPC.json')
 					}
+
 				}
 			}
 		}
@@ -779,15 +589,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''ClickHouse'', ''./service/yaxunit_conf/ru/ClickHouse.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('ClickHouse', './service/yaxunit_conf/ru/ClickHouse.json')
 					}
+
 				}
 			}
 		}
@@ -797,15 +602,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''RSS'', ''./service/yaxunit_conf/ru/RSS.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('RSS', './service/yaxunit_conf/ru/RSS.json')
 					}
+
 				}
 			}
 		}
@@ -815,15 +615,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''MessagePack'', ''./service/yaxunit_conf/ru/MessagePack.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MessagePack', './service/yaxunit_conf/ru/MessagePack.json')
 					}
+
 				}
 			}
 		}
@@ -833,15 +628,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Janx'', ''./service/yaxunit_conf/ru/Janx.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Janx', './service/yaxunit_conf/ru/Janx.json')
 					}
+
 				}
 			}
 		}
@@ -851,15 +641,10 @@ pipeline {
             }
 			steps {
 				script {
-					def tests = [
-						[''Lua'', ''./service/yaxunit_conf/ru/Lua.json''],
-
-					]
-					for (test in tests) {
-						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-							runLibraryTest(test[0], test[1])
-						}
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Lua', './service/yaxunit_conf/ru/Lua.json')
 					}
+
 				}
 			}
 		}
