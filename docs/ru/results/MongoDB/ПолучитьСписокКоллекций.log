@@ -1,1 +1,45 @@
-﻿НЕ JSON: Соответствие
+﻿{
+ "data": {
+  "cursor": {
+   "firstBatch": [
+    {
+     "idIndex": {
+      "key": {
+       "_id": 1
+      },
+      "name": "_id_",
+      "v": 2
+     },
+     "info": {
+      "readOnly": false,
+      "uuid": "anQKfUPvQQ6x4jjaOvOVSQ=="
+     },
+     "name": "test_collection",
+     "options": {
+      "validator": {
+       "$expr": [
+        {
+         "$gte": [
+          "$total",
+          0
+         ]
+        },
+        {
+         "$lte": [
+          "$status",
+          3
+         ]
+        }
+       ]
+      }
+     },
+     "type": "collection"
+    }
+   ],
+   "id": 0,
+   "ns": "test_database.$cmd.listCollections"
+  },
+  "ok": 1
+ },
+ "result": true
+}

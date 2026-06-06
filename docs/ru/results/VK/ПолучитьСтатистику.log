@@ -1,6 +1,34 @@
 ﻿{
  "response": [
   {
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1780704000,
+   "period_to": 1780790399,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [
+     {
+      "code": "IN",
+      "count": 1,
+      "name": "Индия",
+      "value": 80
+     }
+    ],
+    "mobile_views": 0,
+    "views": 1,
+    "visitors": 1
+   }
+  },
+  {
    "period_from": 1780617600,
    "period_to": 1780703999,
    "reach": {
@@ -31,7 +59,7 @@
      },
      {
       "value": "35-45",
-      "count": 0
+      "count": 2
      },
      {
       "value": "45-100",
@@ -43,18 +71,23 @@
       "count": 1,
       "name": "Новосибирск",
       "value": 99
+     },
+     {
+      "count": 1,
+      "name": "Ижевск",
+      "value": 56
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 1,
+      "count": 3,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 3,
+    "reach": 3,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -63,7 +96,7 @@
      },
      {
       "value": "m",
-      "count": 0
+      "count": 2
      }
     ],
     "sex_age": [
@@ -125,7 +158,7 @@
      },
      {
       "value": "m;35-45",
-      "count": 0
+      "count": 2
      },
      {
       "value": "m;45-100",
@@ -139,163 +172,6 @@
     "mobile_views": 0,
     "views": 0,
     "visitors": 0
-   }
-  },
-  {
-   "activity": {
-    "comments": 3
-   },
-   "period_from": 1780531200,
-   "period_to": 1780617599,
-   "reach": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 0
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 0
-     },
-     {
-      "value": "35-45",
-      "count": 1
-     },
-     {
-      "value": "45-100",
-      "count": 0
-     }
-    ],
-    "cities": [
-     {
-      "count": 1,
-      "name": "Ростов-на-Дону",
-      "value": 119
-     }
-    ],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
-    "mobile_reach": 1,
-    "reach": 1,
-    "reach_subscribers": 0,
-    "sex": [
-     {
-      "value": "f",
-      "count": 1
-     },
-     {
-      "value": "m",
-      "count": 0
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 0
-     },
-     {
-      "value": "f;24-27",
-      "count": 0
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 1
-     },
-     {
-      "value": "f;45-100",
-      "count": 0
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 0
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "BR",
-      "count": 2,
-      "name": "Бразилия",
-      "value": 43
-     },
-     {
-      "code": "VN",
-      "count": 1,
-      "name": "Вьетнам",
-      "value": 55
-     }
-    ],
-    "mobile_views": 0,
-    "views": 3,
-    "visitors": 3
    }
   }
  ]

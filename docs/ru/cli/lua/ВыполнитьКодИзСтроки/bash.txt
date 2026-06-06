@@ -1,0 +1,3 @@
+oint lua ВыполнитьКодИзСтроки \
+  --lua "Lua54" \
+  --code "return 42"

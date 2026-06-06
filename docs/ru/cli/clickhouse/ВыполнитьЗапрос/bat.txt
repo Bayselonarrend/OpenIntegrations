@@ -1,5 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint clickhouse ВыполнитьЗапрос ^
-  --conn "{'address':'http://127.0.0.1:9101','transport':'grpc','auth_type':'basic','password':'***','user':'bayselonarrend'}" ^
-  --req "{'query':'SELECT * FROM events_stream_test ORDER BY id','format':'JSON'}"
+  --conn "{'address':'http://127.0.0.1:8123','transport':'http','auth_type':'basic','user':'bayselonarrend','password':'***'}" ^
+  --req "{'query':'SELECT * FROM temp_session_test','format':'JSON'}" ^
+  --session "{'id':'4224869f-8ede-4113-b56b-2d48a7dde293','check':true,'timeout':'60'}"

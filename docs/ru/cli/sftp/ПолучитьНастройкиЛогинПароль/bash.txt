@@ -1,5 +1,5 @@
 oint sftp ПолучитьНастройкиЛогинПароль \
-  --host "172.33.0.13" \
+  --host "127.0.0.1" \
   --port "2222" \
   --user "bayselonarrend" \
   --pass "***"

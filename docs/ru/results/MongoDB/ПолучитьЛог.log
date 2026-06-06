@@ -1,10 +1,9 @@
 ﻿{
  "logs": [
-  "[2026-06-05 22:51:19.070] Connecting to MongoDB...",
-  "[2026-06-05 22:51:19.080] Connected to MongoDB",
-  "[2026-06-05 22:51:19.084] Execute operation: listDatabases"
+  "[2026-06-06 16:09:10.849] Connecting to MongoDB...",
+  "[2026-06-06 16:09:10.861] Connected to MongoDB"
  ],
  "result": true,
- "returned": 3,
- "total": 3
+ "returned": 2,
+ "total": 2
 }

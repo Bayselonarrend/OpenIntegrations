@@ -1,6 +1,4 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
 oint postgres СоздатьБазуДанных \
-  --base "testbase2" \
+  --base "testbase1" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
+  --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\dbywyi0g.ss2']"

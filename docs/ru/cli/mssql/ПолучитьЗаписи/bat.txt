@@ -1,6 +1,10 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint mssql ПолучитьЗаписи ^
-  --table "testtable" ^
+  --table "test_data" ^
+  --fields "['first_name','last_name','email']" ^
+  --filter "[{'field':'gender','type':'=','value':'Male','union':'AND','raw':false},{'field':'id','type':'BETWEEN','value':'20 AND 50','raw':true}]" ^
+  --order "{'ip_address':'DESC'}" ^
+  --limit 5 ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
   --tls "{'use_tls':true,'accept_invalid_certs':true}"

@@ -13,7 +13,7 @@
    "userRole": "ADMINISTRATOR",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1780691149656,
+    "last_login": 1780753849788,
     "attachmentContentType": "image/jpeg"
    },
    "assignedProjects": {
@@ -57,10 +57,10 @@
    }
   },
   {
-   "uuid": "b8ca2243-b100-406f-8672-c751431ceb6d",
+   "uuid": "9eb50a84-56d7-42e7-af09-51000da13477",
    "active": true,
    "loaded": true,
-   "id": 96,
+   "id": 97,
    "userId": "test",
    "email": "test@example.com",
    "fullName": "Test User",
@@ -68,18 +68,18 @@
    "userRole": "USER",
    "photoLoaded": true,
    "metadata": {
-    "last_login": 1780691167180
+    "last_login": 1780753888622
    },
    "assignedProjects": {
-    "test_personal": {
-     "projectId": 189,
-     "projectRole": "PROJECT_MANAGER",
-     "entryType": "PERSONAL"
-    },
     "test": {
      "projectId": 4,
      "projectRole": "MEMBER",
      "entryType": "INTERNAL"
+    },
+    "test_personal": {
+     "projectId": 191,
+     "projectRole": "PROJECT_MANAGER",
+     "entryType": "PERSONAL"
     }
    }
   }

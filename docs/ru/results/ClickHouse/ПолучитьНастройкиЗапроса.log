@@ -1,11 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "1f425bde-18ac-4271-9780-c3e56b09a178",
- "data": {
-  "meta": [],
-  "data": []
- },
+ "id": "748d3281-7cd9-468e-9470-bc9598690b96",
+ "data": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oynqqzxx.mii.json",
  "format": "CSV",
  "external_tables": [
   {

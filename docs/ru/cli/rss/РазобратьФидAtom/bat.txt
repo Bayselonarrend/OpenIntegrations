@@ -1,2 +1,2 @@
 oint rss РазобратьФидAtom ^
-  --xml "/tmp/yhqo0c2z.xyl.xml"
+  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\1ijktmn5.4jc.xml"

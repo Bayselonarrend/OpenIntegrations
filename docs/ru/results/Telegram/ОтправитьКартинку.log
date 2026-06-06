@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 22018,
+  "message_id": 22036,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,39 +15,39 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1780687743,
+  "date": 1780750371,
   "photo": [
    {
-    "file_id": "AgACAgIAAxkDAAJULmoTw3F0g929wxeavL_yMqOtGLNaAAIhIWsbcsGZSLK5DC2W3Y18AQADAgADcwADOwQ",
-    "file_unique_id": "AQADISFrG3LBmUh4",
+    "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADcwADOwQ",
+    "file_unique_id": "AQAD0RlrGyfTIUl4",
     "file_size": 1569,
     "width": "***",
     "height": 67
    },
    {
-    "file_id": "AgACAgIAAxkDAAJULmoTw3F0g929wxeavL_yMqOtGLNaAAIhIWsbcsGZSLK5DC2W3Y18AQADAgADbQADOwQ",
-    "file_unique_id": "AQADISFrG3LBmUhy",
+    "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADbQADOwQ",
+    "file_unique_id": "AQAD0RlrGyfTIUly",
     "file_size": 21511,
     "width": "***",
     "height": 240
    },
    {
-    "file_id": "AgACAgIAAxkDAAJULmoTw3F0g929wxeavL_yMqOtGLNaAAIhIWsbcsGZSLK5DC2W3Y18AQADAgADeAADOwQ",
-    "file_unique_id": "AQADISFrG3LBmUh9",
+    "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADeAADOwQ",
+    "file_unique_id": "AQAD0RlrGyfTIUl9",
     "file_size": 98652,
     "width": "***",
     "height": 600
    },
    {
-    "file_id": "AgACAgIAAxkDAAJULmoTw3F0g929wxeavL_yMqOtGLNaAAIhIWsbcsGZSLK5DC2W3Y18AQADAgADeQADOwQ",
-    "file_unique_id": "AQADISFrG3LBmUh-",
+    "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADeQADOwQ",
+    "file_unique_id": "AQAD0RlrGyfTIUl-",
     "file_size": 217083,
     "width": "***",
     "height": 960
    },
    {
-    "file_id": "AgACAgIAAxkDAAJULmoTw3F0g929wxeavL_yMqOtGLNaAAIhIWsbcsGZSLK5DC2W3Y18AQADAgADdwADOwQ",
-    "file_unique_id": "AQADISFrG3LBmUh8",
+    "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADdwADOwQ",
+    "file_unique_id": "AQAD0RlrGyfTIUl8",
     "file_size": 645868,
     "width": "***",
     "height": 1920
