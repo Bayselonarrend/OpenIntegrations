@@ -93,6 +93,19 @@ fi
 cat <<EOF
 
 Done. git filter-repo removed 'origin' if present — re-add and force-push.
+
+IMPORTANT — push ALL rewritten refs (not only main):
+  git push --force-with-lease origin main
+  git push --force-with-lease origin stable
+  git push --force origin '+refs/tags/*:refs/tags/*'
+
+Verify remote matches local:
+  git rev-parse main stable 'refs/tags/2.1.0^{commit}'
+  git ls-remote origin refs/heads/main refs/heads/stable refs/tags/2.1.0
+
+Bare mirror: force-fetch + gc — see service/git/README.md.
+Orphan .pack without .idx: cleanup — see service/git/README.md.
+
 Backup: $BACKUP_DIR
 See service/git/README.md for symlink / single-path strategies.
 EOF

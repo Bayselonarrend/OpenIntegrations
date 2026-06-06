@@ -168,9 +168,20 @@ Next steps:
   1. Verify tests / EDT load add-ins from restored paths.
   2. Re-add remote if needed:
        git remote add origin <url>
-  3. Force-push rewritten branches (example):
+  3. Force-push ALL rewritten refs (not only main — tags and stable too):
        git push --force-with-lease origin main
-  4. Optional: reduce 4x file copies — see service/git/README.md (symlinks or gitignore + CI copy).
+       git push --force-with-lease origin stable
+       git push --force origin '+refs/tags/*:refs/tags/*'
+     Verify remote matches local:
+       git rev-parse main stable 'refs/tags/2.1.0^{commit}'
+       git ls-remote origin refs/heads/main refs/heads/stable refs/tags/2.1.0
+  4. If you use a bare mirror — force-fetch and gc (see service/git/README.md):
+       git -C <mirror.git> fetch --force --prune origin \
+         '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
+       git -C <mirror.git> gc --prune=now --aggressive
+  5. Remove orphan .pack files without .idx if count-objects shows size-garbage
+     (commands in service/git/README.md).
+  6. Optional: reduce 4x file copies — see service/git/README.md (symlinks or gitignore + CI copy).
 
 Backup kept at: $BackupDir
 "@

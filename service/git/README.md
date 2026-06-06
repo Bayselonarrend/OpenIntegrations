@@ -34,9 +34,7 @@
 ```powershell
 cd R:\Repos\OpenIntegrations
 .\service\git\prune-addin-binaries-from-history.ps1 -BackupDir D:\opi-addin-backup
-# проверить diff, затем:
-git push --force-with-lease origin main
-# и остальные активные ветки по необходимости
+# проверить diff, затем — см. раздел «После переписывания» ниже
 ```
 
 Скрипт:
@@ -48,10 +46,74 @@ git push --force-with-lease origin main
 
 `git filter-repo` **удаляет remote `origin`** — скрипт предлагает команду для повторного добавления.
 
-### После переписывания на GitHub
+### После переписывания (обязательно)
 
-- Размер репозитория на стороне GitHub уменьшится не сразу; иногда нужны тикеты в support или ожидание GC на стороне хостинга.
-- У вас в `.git/objects/pack` есть «битые» pack без `.idx` (~495 MB garbage по `git count-objects`) — после успешного `filter-repo` + `git gc` имеет смысл проверить `git count-objects -vH` ещё раз.
+`git filter-repo` переписывает **все** ветки и теги в локальном клоне. На remote попадает только то, что вы явно force-push'нули. Если отправить только `main`, старые теги и ветки (например `stable`) останутся на GitHub со старыми hash — в pack продолжит жить вся тяжёлая история (старые add-in, `.deb`/`.rpm` и т.д.). Обычный `git clone` по одной ветке будет казаться лёгким, а `git clone --mirror` — нет.
+
+#### 1. Force-push всех активных веток и тегов
+
+```powershell
+cd R:\Repos\OpenIntegrations
+
+# ветки (минимум main и stable; добавьте остальные активные)
+git push --force-with-lease origin main
+git push --force-with-lease origin stable
+
+# все теги — без этого размер mirror/полного клона не уменьшится
+git push --force origin '+refs/tags/*:refs/tags/*'
+```
+
+Проверка, что remote совпал с локальным (hash должны совпасть):
+
+```powershell
+git rev-parse main stable 'refs/tags/2.1.0^{commit}'
+git ls-remote origin refs/heads/main refs/heads/stable refs/tags/2.1.0
+```
+
+#### 2. Обновить bare mirror (если используется)
+
+После force-push на GitHub mirror нужно принудительно подтянуть refs и выбросить недостижимые объекты:
+
+```powershell
+git -C R:\ointMirror\OpenIntegrations.git fetch --force --prune origin `
+  '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
+git -C R:\ointMirror\OpenIntegrations.git gc --prune=now --aggressive
+git -C R:\ointMirror\OpenIntegrations.git count-objects -vH
+```
+
+Для регулярного обновления mirror после любого переписывания истории:
+
+```powershell
+git fetch --force --prune origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
+git gc --prune=now
+```
+
+#### 3. Убрать битые pack-файлы в локальном клоне (Windows)
+
+После `filter-repo` иногда остаются `.pack` без пары `.idx` — `git count-objects -vH` показывает `size-garbage` с предупреждениями `no corresponding .idx`:
+
+```powershell
+cd R:\Repos\OpenIntegrations
+Get-ChildItem .git\objects\pack\pack-*.pack | Where-Object {
+    -not (Test-Path ($_.FullName -replace '\.pack$','.idx'))
+} | Remove-Item
+git gc --prune=now
+git count-objects -vH
+```
+
+На Linux/macOS:
+
+```bash
+cd /path/to/OpenIntegrations
+find .git/objects/pack -name 'pack-*.pack' ! -exec sh -c 'test -f "${1%.pack}.idx"' _ {} \; -print -delete
+git gc --prune=now
+git count-objects -vH
+```
+
+#### 4. GitHub
+
+- Размер на стороне GitHub уменьшится не сразу; иногда нужны тикеты в support или ожидание GC на стороне хостинга.
+- Пока на remote старые теги, `git clone --mirror` будет тянуть тяжёлый pack независимо от того, что `main` уже переписан.
 
 ## Symlink вместо четырёх копий (без LFS)
 
