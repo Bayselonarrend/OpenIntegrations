@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10980",
+   "id": "10990",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-06-06T16:22:58+03:00",
+   "createdDate": "2026-06-06T20:26:33+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-06-06T16:23:16+03:00",
+   "changedDate": "2026-06-06T20:26:52+03:00",
    "statusChangedBy": "1",
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-06-06T16:23:16+03:00",
+   "activityDate": "2026-06-06T20:26:52+03:00",
    "dateStart": null,
-   "deadline": "2026-06-07T16:22:00+03:00",
-   "startDatePlan": "2026-06-06T16:22:58+03:00",
+   "deadline": "2026-06-07T20:26:00+03:00",
+   "startDatePlan": "2026-06-06T20:26:33+03:00",
    "endDatePlan": "2026-06-07T00:00:00+03:00",
-   "guid": "{c6eda29e-4825-47f5-96bf-f9f33603d3cd}",
+   "guid": "{1783e8ec-548f-4bb2-bf6c-a34b24a0be6d}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-06-06T16:23:16+03:00",
+   "statusChangedDate": "2026-06-06T20:26:52+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1780752195,
-  "finish": 1780752196.21915,
-  "duration": 1.21914911270142,
+  "start": 1780766812,
+  "finish": 1780766812.27031,
+  "duration": 0.270308971405029,
   "processing": 0,
-  "date_start": "2026-06-06T16:23:15+03:00",
-  "date_finish": "2026-06-06T16:23:16+03:00",
-  "operating_reset_at": 1780752796,
-  "operating": 0.201395034790039
+  "date_start": "2026-06-06T20:26:52+03:00",
+  "date_finish": "2026-06-06T20:26:52+03:00",
+  "operating_reset_at": 1780767412,
+  "operating": 0.170302152633667
  }
 }

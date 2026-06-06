@@ -1,22 +1,22 @@
 ﻿{
  "result": {
-  "ID": 58788,
+  "ID": 58842,
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": "58776",
+  "PARENT_ID": "58830",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 40576,
+  "FILE_ID": 40614,
   "SIZE": "805191",
-  "CREATE_TIME": "2026-06-06T16:25:04+03:00",
-  "UPDATE_TIME": "2026-06-06T16:25:04+03:00",
+  "CREATE_TIME": "2026-06-06T20:28:45+03:00",
+  "UPDATE_TIME": "2026-06-06T20:28:45+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=222d246a006e9f06006b12e400000001000007ed7654d...",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=3966246a006e9f06006b12e400000001000007b4a3a35...",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Картинка1.jpg"
  }
 }

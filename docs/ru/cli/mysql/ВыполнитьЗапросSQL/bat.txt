@@ -1,4 +1,4 @@
 oint mysql ВыполнитьЗапросSQL ^
   --sql "\nCREATE TABLE test_table (\nid INT AUTO_INCREMENT PRIMARY KEY,\nname VARCHAR(255),\nage INT,\nsalary DOUBLE,\namount FLOAT,\ntype TINYINT UNSIGNED,\ndate DATE,\ntime TIME,\ndata MEDIUMBLOB\n);" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "['C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\fdveaicc.vm5']"
+  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\zmm13z0j.o2z.json"

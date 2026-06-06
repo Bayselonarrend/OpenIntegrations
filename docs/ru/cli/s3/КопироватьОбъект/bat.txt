@@ -4,6 +4,6 @@ oint s3 КопироватьОбъект ^
   --sname "picture.jpg" ^
   --sbucket "newbucket2" ^
   --name "new_picture.jpg" ^
-  --bucket "054125a9" ^
+  --bucket "2faf2467" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --dir true
