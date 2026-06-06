@@ -4,9 +4,14 @@
             }
 			steps {
 				script {
-					runModuleTests('%3', [
+					def tests = [
 %2
-					])
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
 				}
 			}
 		}
