@@ -84,6 +84,18 @@ pipeline {
 	}
 }
 
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
+}
+
 def shouldRunStage(stageName) {
     try {
         if (!env.STAGES_CONFIG) {
