@@ -4,10 +4,10 @@
   {
    "user": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1780766512.198669",
+   "ts": "1780780679.932919",
    "edited": {
     "user": "U06UG1CAYH2",
-    "ts": "1780766524.000000"
+    "ts": "1780780690.000000"
    },
    "bot_id": "B06TZ0MJV5M",
    "app_id": "A06TYNH45RV",
@@ -30,7 +30,7 @@
    "blocks": [
     {
      "type": "rich_text",
-     "block_id": "Au6Za",
+     "block_id": "/u3m",
      "elements": [
       {
        "type": "rich_text_section",

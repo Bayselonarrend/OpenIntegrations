@@ -2,4 +2,4 @@ oint rportal УдалитьЗапуск ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 292
+  --id 295

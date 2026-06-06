@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint postgres ВыполнитьЗапросSQL ^
-  --sql "\nCREATE TABLE test_table (\nid SERIAL PRIMARY KEY,\nname NAME,\nage INT,\nsalary REAL,\nis_active BOOL,\ncreated_at DATE,\ndata BYTEA\n);" ^
+  --sql "SELECT 1 AS n" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\fy0elxiw.qai.json"
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

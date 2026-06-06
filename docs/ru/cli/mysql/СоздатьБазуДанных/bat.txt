@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint mysql СоздатьБазуДанных ^
   --base "testbase2" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\rl3pzxn3.y5y.json"
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
