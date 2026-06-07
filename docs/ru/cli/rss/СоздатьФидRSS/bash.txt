@@ -4,4 +4,4 @@ oint rss СоздатьФидRSS \
   --name "Тестовый RSS канал" \
   --descr "Описание тестового RSS канала" \
   --link "https://example.com" \
-  --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/7/2026 4:22:05 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/7/2026 4:22:05 PM','author':'test@example.com','guid':'item-2'}]"
+  --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/7/2026 9:49:57 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/7/2026 9:49:58 PM','author':'test@example.com','guid':'item-2'}]"

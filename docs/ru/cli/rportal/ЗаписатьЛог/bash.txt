@@ -4,4 +4,4 @@ oint rportal ЗаписатьЛог \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --params "{'launchUuid':'922e1403-f771-406b-a5b2-6f31655d8e83','itemUuid':'446c251a-f5ff-47a0-a824-6c34f8b3e770','time':'1767258010','message':'Some log 1','level':'info'}"
+  --params "{'launchUuid':'e1139eea-9e91-45cd-b611-e8e4efe7069f','itemUuid':'c3569673-406b-4cd0-9e53-13f111e2ea54','time':'1767258010','message':'Some log 1','level':'info'}"

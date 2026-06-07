@@ -1,4 +1,4 @@
 oint telegram ОткрепитьСообщение ^
   --token "***" ^
   --chat "***" ^
-  --message "28379"
+  --message "28401"

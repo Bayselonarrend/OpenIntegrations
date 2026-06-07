@@ -1,5 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СоздатьИсторию \
-  --picture "C:\Users\bayselonarrend\AppData\Local\Temp\t5tdjfat.10b.png" \
+  --picture "C:\Users\bayselonarrend\AppData\Local\Temp\s2j2zknj.lwa" \
+  --url "https://github.com/Bayselonarrend/OpenIntegrations" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
