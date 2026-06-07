@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/mongodb/Modules/OPI_MongoDB.os",
  "regions": [
   {
    "name": "Common methods",

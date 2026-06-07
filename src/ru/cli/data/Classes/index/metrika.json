@@ -6,6 +6,7 @@
   "OPI_YandexID"
  ],
  "cli_tool": false,
+ "path": "api/metrika/Modules/OPI_YandexMetrika.os",
  "regions": [
   {
    "name": "Управление метками",

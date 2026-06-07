@@ -96,7 +96,7 @@ EndFunction
 
 #Region ConnectionMethods
 
-// Create connection (REQ)
+// Create connection (REQ) !NOCLI
 // Create connection for sending request
 //
 // Parameters:
@@ -112,7 +112,7 @@ Function CreateConnectionReq(Val Address, Val Logging = Undefined) Export
 
 EndFunction
 
-// Create connection (SUB)
+// Create connection (SUB) !NOCLI
 // Create subscriber connection
 //
 // Parameters:
@@ -128,7 +128,7 @@ Function CreateConnectionSub(Val Address, Val Logging = Undefined) Export
 
 EndFunction
 
-// Create connection (PUSH)
+// Create connection (PUSH) !NOCLI
 // Create connection for sending to pipeline
 //
 // Parameters:
@@ -144,7 +144,7 @@ Function CreateConnectionPush(Val Address, Val Logging = Undefined) Export
 
 EndFunction
 
-// Create connection (PULL)
+// Create connection (PULL) !NOCLI
 // Create connection for reading from pipeline
 //
 // Parameters:
@@ -164,7 +164,7 @@ EndFunction
 
 #Region ListeningMethods
 
-// Bind port (REP)
+// Bind port (REP) !NOCLI
 // Bind port for incoming requests
 //
 // Parameters:
@@ -180,7 +180,7 @@ Function BindPortRep(Val Port, Val Logging = Undefined) Export
 
 EndFunction
 
-// Bind port (PUB)
+// Bind port (PUB) !NOCLI
 // Bind port for subscribers
 //
 // Parameters:
@@ -212,7 +212,7 @@ Function BindPortPush(Val Port, Val Logging = Undefined) Export
 
 EndFunction
 
-// Bind port (PULL)
+// Bind port (PULL) !NOCLI
 // Bind pipeline port for receiving data
 //
 // Parameters:
@@ -232,7 +232,7 @@ EndFunction
 
 #Region InteractionMethods
 
-// Send data
+// Send data !NOCLI
 // Send data to connection
 //
 // Parameters:
@@ -271,7 +271,7 @@ Function SendData(Val Connection, Val Data, Val Timeout = Undefined) Export
 
 EndFunction
 
-// Receive data
+// Receive data !NOCLI
 // Receive next message from connection
 //
 // Parameters:
@@ -306,7 +306,7 @@ Function ReceiveData(Val Connection, Val Timeout) Export
 
 EndFunction
 
-// Process request
+// Process request !NOCLI
 // Sends a request and waits for a response within the specified time (for the REQ/REP scheme)
 //
 // Parameters:
@@ -334,7 +334,7 @@ Function ProcessRequest(Val Connection
 
 EndFunction
 
-// Subscribe
+// Subscribe !NOCLI
 // Subscribe to a topic in the PUB/SUB scheme
 //
 // Parameters:
@@ -364,7 +364,7 @@ Function Subscribe(Val Connection, Val Prefix) Export
 
 EndFunction
 
-// Close connection
+// Close connection !NOCLI
 // Close previously created connection
 //
 // Parameters:

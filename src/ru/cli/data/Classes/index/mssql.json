@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/mssql/Modules/OPI_MSSQL.os",
  "regions": [
   {
    "name": "Основные методы",

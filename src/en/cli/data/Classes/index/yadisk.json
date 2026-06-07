@@ -6,6 +6,7 @@
   "OPI_YandexID"
  ],
  "cli_tool": false,
+ "path": "api/yadisk/Modules/OPI_YandexDisk.os",
  "regions": [
   {
    "name": "Authorization",

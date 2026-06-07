@@ -6,6 +6,7 @@
   "OPI_GRPC"
  ],
  "cli_tool": false,
+ "path": "api/clickhouse/Modules/OPI_ClickHouse.os",
  "regions": [
   {
    "name": "Common methods",

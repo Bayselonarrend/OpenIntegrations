@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/lua/Modules/OPI_Lua.os",
  "regions": [
   {
    "name": "Работа со скриптами",

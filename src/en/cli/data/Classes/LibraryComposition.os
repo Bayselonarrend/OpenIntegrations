@@ -5,7 +5,6 @@ Var CurrentDirectory;
 Var PackagesDirectory;
 Var ApplicationDirectory;
 
-
 Procedure OnObjectCreate()
     
     CurrentDirectory = CurrentScript().Path;
@@ -210,29 +209,26 @@ EndFunction
 
 Function FormModuleInitializationString(Val CommandData, Val Module)
     
-    If CommandData["cli_tool"] Then
+    RootDirectory = ?(CommandData["cli_tool"]
+        , ApplicationDirectory
+        , StrTemplate("%1/%2", PackagesDirectory, "oint"));
 
-        LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/tools/Modules/%%1.os"", Context);"
-            , ApplicationDirectory);
-
-    Else
-        LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/api/%2/Modules/%%1.os"", Context);"
-            , PackagesDirectory
-            , CommandData["library"])
-
-    EndIf;
+    LoadPath = StrTemplate("%1 = LoadScript(""%2/%3"", Context);"
+        , Module
+        , RootDirectory
+        , CommandData["path"]);
 
     ContextTemplate = "Context.Insert(""%1"", %2);";
     CallArray = New Array;
 
     CallArray.Add("Context = New Structure;");    
     CallArray.Add(StrTemplate(ContextTemplate, Module, "Undefined"));
-    CallArray.Add(StrTemplate(LoadingTemplate , Module));
+    CallArray.Add(LoadPath);
     
     If CommandData["self_depend"] Then
         
         CallArray.Add(StrTemplate(ContextTemplate, Module, Module));
-        CallArray.Add(StrTemplate(LoadingTemplate , Module));
+        CallArray.Add(LoadPath);
         
     EndIf;
     

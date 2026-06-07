@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/tcp/Modules/OPI_TCP.os",
  "regions": [
   {
    "name": "Методы клиента",

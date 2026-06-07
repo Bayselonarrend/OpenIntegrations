@@ -140,6 +140,13 @@ EndProcedure
 
 Procedure ZMQ_ExtendedCheck() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     TestParameters = New Structure;
 
     ZeroMQ_Extended_GetTimeoutData(TestParameters);

@@ -6,6 +6,7 @@
   "OPI_GoogleWorkspace"
  ],
  "cli_tool": false,
+ "path": "api/gsheets/Modules/OPI_GoogleSheets.os",
  "regions": [
   {
    "name": "Authorization",

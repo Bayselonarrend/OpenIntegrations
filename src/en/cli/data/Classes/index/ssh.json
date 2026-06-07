@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/ssh/Modules/OPI_SSH.os",
  "regions": [
   {
    "name": "Common methods",

@@ -4,6 +4,7 @@
  "self_depend": true,
  "dependencies": null,
  "cli_tool": true,
+ "path": "tools/Modules/MCP.os",
  "regions": [
   {
    "name": "Методы mcp",

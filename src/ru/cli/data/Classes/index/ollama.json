@@ -4,6 +4,7 @@
  "self_depend": false,
  "dependencies": null,
  "cli_tool": false,
+ "path": "api/ollama/Modules/OPI_Ollama.os",
  "regions": [
   {
    "name": "Обработка запросов",
