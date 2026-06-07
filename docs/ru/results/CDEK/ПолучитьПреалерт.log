@@ -1,18 +1,18 @@
 ﻿{
  "entity": {
-  "planned_date": "2026-06-07T23:36:34+03:00",
+  "planned_date": "2026-06-08T03:32:28+03:00",
   "shipment_point": "NSK27",
   "orders": [
    {
-    "order_uuid": "98f28b7d-9f69-45c6-81c7-700f4dba9df5"
+    "order_uuid": "b8dbb094-a8ab-4cf6-9d9d-44e942316820"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "040c6c88-850c-4884-9847-c09ed3199965",
+   "request_uuid": "dd1df073-6de6-45c5-ac9a-57f9902ed6d6",
    "type": "CREATE",
-   "date_time": "2026-06-06T20:36:33+03:00",
+   "date_time": "2026-06-07T00:32:27+03:00",
    "state": "ACCEPTED"
   }
  ],

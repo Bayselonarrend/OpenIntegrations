@@ -8856,6 +8856,8 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         Blob = Result["data"][0]["data"];
 
+        OPI_TypeConversion.GetBinaryData(Blob);
+
         Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
@@ -9344,6 +9346,8 @@ Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         Blob = Result["data"][0]["data"];
 
+        OPI_TypeConversion.GetBinaryData(Blob);
+
         Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
@@ -9775,6 +9779,8 @@ Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     Else
 
         Blob = Result["data"][0]["data"];
+
+        OPI_TypeConversion.GetBinaryData(Blob);
 
         Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
@@ -12210,6 +12216,8 @@ Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
     Else
 
         Blob = Result["data"][0]["Data"];
+
+        OPI_TypeConversion.GetBinaryData(Blob);
 
         Result["data"][0]["Data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);

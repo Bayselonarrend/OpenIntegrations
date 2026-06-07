@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint mysql ВыполнитьЗапросSQL \
-  --sql "\nCREATE TABLE test_table (\nid INT AUTO_INCREMENT PRIMARY KEY,\nname VARCHAR(255),\nage INT,\nsalary DOUBLE,\namount FLOAT,\ntype TINYINT UNSIGNED,\ndate DATE,\ntime TIME,\ndata MEDIUMBLOB\n);" \
+  --sql "SELECT 1 AS n" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls "C:\Users\bayselonarrend\AppData\Local\Temp\zmm13z0j.o2z.json"
+  --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

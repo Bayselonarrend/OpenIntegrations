@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 2
+    "comments": 3
    },
    "period_from": 1780704000,
    "period_to": 1780790399,
@@ -22,7 +22,7 @@
      },
      {
       "value": "24-27",
-      "count": 0
+      "count": 1
      },
      {
       "value": "27-30",
@@ -43,7 +43,7 @@
     ],
     "cities": [
      {
-      "count": 1,
+      "count": 2,
       "name": "Ханты-Мансийск",
       "value": 154
      },
@@ -56,18 +56,18 @@
     "countries": [
      {
       "code": "RU",
-      "count": 3,
+      "count": 4,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 3,
-    "reach": 3,
+    "mobile_reach": 4,
+    "reach": 4,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 3
+      "count": 4
      },
      {
       "value": "m",
@@ -89,7 +89,7 @@
      },
      {
       "value": "f;24-27",
-      "count": 0
+      "count": 1
      },
      {
       "value": "f;27-30",
