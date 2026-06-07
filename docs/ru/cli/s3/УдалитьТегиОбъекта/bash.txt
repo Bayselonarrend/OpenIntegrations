@@ -2,6 +2,6 @@
 
 oint s3 УдалитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "d80d4081" \
+  --bucket "66123c24" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true

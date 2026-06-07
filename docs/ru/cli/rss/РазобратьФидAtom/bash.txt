@@ -1,2 +1,2 @@
 oint rss РазобратьФидAtom \
-  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\nz3031xm.pms.xml"
+  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\w0gowsod.ajd.xml"
