@@ -41,6 +41,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("StoreSettings"),
     name!("SetLogger"),
     name!("GetLogs"),
+    name!("GetTLSSettings"),
     name!("Version"),
 ];
 
@@ -69,7 +70,8 @@ pub fn get_params_amount(num: usize) -> usize {
         18 => 1, // StoreSettings
         19 => 1, // SetLogger
         20 => 1, // GetLogs
-        21 => 0, // Version
+        21 => 0, // GetTLSSettings
+        22 => 0, // Version
         _ => 0,
     }
 }
@@ -140,7 +142,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        21 => Box::new(version()),
+        21 => Box::new(obj.get_tls_settings()),
+        22 => Box::new(version()),
         _ => Box::new(false),
     }
 }

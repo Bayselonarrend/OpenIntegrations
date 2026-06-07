@@ -156,6 +156,26 @@ impl AddIn {
         JanxValue::Object(map)
     }
 
+    pub fn get_tls_settings(&self) -> JanxValue {
+        let state = self.lock_state();
+        match &state.tls {
+            Some(tls) => {
+                let mut map = BTreeMap::new();
+                map.insert("use_tls".to_string(), JanxValue::Bool(tls.use_tls));
+                map.insert(
+                    "accept_invalid_certs".to_string(),
+                    JanxValue::Bool(tls.accept_invalid_certs),
+                );
+                map.insert(
+                    "ca_cert_path".to_string(),
+                    JanxValue::String(tls.ca_cert_path.clone()),
+                );
+                JanxValue::Object(map)
+            }
+            None => JanxValue::Object(BTreeMap::new()),
+        }
+    }
+
     pub fn store_settings(&mut self, settings: &JanxValue) -> JanxValue {
         let Some(value) = settings.as_object() else {
             return janx_error("Invalid settings Janx object");
