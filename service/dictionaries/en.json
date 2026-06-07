@@ -13483,5 +13483,6 @@
 "Создать соединение (REQ) !NOCLI": "Create connection (REQ) !NOCLI",
 "Создать соединение (SUB) !NOCLI": "Create connection (SUB) !NOCLI",
 "Создать соединение (PUSH) !NOCLI": "Create connection (PUSH) !NOCLI",
-"Создать соединение (PULL) !NOCLI": "Create connection (PULL) !NOCLI"
+"Создать соединение (PULL) !NOCLI": "Create connection (PULL) !NOCLI",
+"КорневойКаталог": "RootDirectory"
 }
