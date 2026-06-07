@@ -16186,7 +16186,7 @@ EndProcedure
 Procedure CheckBinaryDataJanx(Val Actual, Val Expected)
 
     If TypeOf(Actual) = Type("String") Then
-        Actual           = GetBinaryDataFromBase64String(Actual);
+        Actual        = GetBinaryDataFromBase64String(Actual);
     EndIf;
 
     ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
@@ -17492,9 +17492,11 @@ Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Un
 
 EndFunction
 
-Function TestResultAsText(Val Result)
+Function TestResultAsText(Val Result, Val ForFile = False)
 
-    Result = PrepareJSONData(Result);
+    If ForFile Then
+        Result = PrepareJSONData(Result);
+    EndIf;
 
     Try
         Data = OPI_Tools.JSONString(Result);
@@ -17788,7 +17790,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
 
         EndIf;
 
-        DataText = TestResultAsText(Data);
+        DataText = TestResultAsText(Data, True);
 
         LogDocument = New TextDocument;
         LogDocument.SetText(DataText);
