@@ -131,19 +131,23 @@ import Admonition from '@theme/Admonition';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ВыполнитьЗапросSQL \
-              --sql "\nCREATE TABLE test_table (\nid INT AUTO_INCREMENT PRIMARY KEY,\nname VARCHAR(255),\nage INT,\nsalary DOUBLE,\namount FLOAT,\ntype TINYINT UNSIGNED,\ndate DATE,\ntime TIME,\ndata MEDIUMBLOB\n);" \
+              --sql "SELECT 1 AS n" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls "C:\Users\bayselonarrend\AppData\Local\Temp\zmm13z0j.o2z.json"
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ВыполнитьЗапросSQL ^
-              --sql "\nCREATE TABLE test_table (\nid INT AUTO_INCREMENT PRIMARY KEY,\nname VARCHAR(255),\nage INT,\nsalary DOUBLE,\namount FLOAT,\ntype TINYINT UNSIGNED,\ndate DATE,\ntime TIME,\ndata MEDIUMBLOB\n);" ^
+              --sql "SELECT 1 AS n" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls "C:\Users\bayselonarrend\AppData\Local\Temp\zmm13z0j.o2z.json"
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
 </Tabs>
@@ -156,10 +160,10 @@ import Admonition from '@theme/Admonition';
    "age": 25,
    "amount": 1000.11999511719,
    "data": "Binary",
-   "date": "2026-06-05T03:00:00+03:00",
+   "date": "2026-06-07T03:00:00+03:00",
    "name": "Vitaly",
    "salary": 1000.12,
-   "time": "1970-01-02T00:49:29+02:00",
+   "time": "1970-01-01T02:04:36+02:00",
    "type": 1
   }
  ],

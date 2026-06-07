@@ -98,8 +98,8 @@ import Admonition from '@theme/Admonition';
             
             oint clickhouse ОбработатьОтправкуGRPC \
               --conn "{'address':'http://127.0.0.1:9101','auth_type':'basic','password':'***','transport':'grpc','user':'bayselonarrend'}" \
-              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" \
-              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':{}},'format':'JSON'}" \
+              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':{}},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':{}},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':{}},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':{}}]"
         ```
     </TabItem>
   
@@ -109,8 +109,8 @@ import Admonition from '@theme/Admonition';
             
             oint clickhouse ОбработатьОтправкуGRPC ^
               --conn "{'address':'http://127.0.0.1:9101','auth_type':'basic','password':'***','transport':'grpc','user':'bayselonarrend'}" ^
-              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':'{}'},'format':'JSON'}" ^
-              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':'{}'},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':'{}'},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':'{}'},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':'{}'}]"
+              --req "{'query':'INSERT INTO events_stream_test FORMAT JSONEachRow','database':'default','data':{'id':'1','timestamp':'1/1/2026 10:00:00 AM','user_id':'100','event_type':'stream_test','payload':{}},'format':'JSON'}" ^
+              --data "[{'id':'2','timestamp':'1/1/2026 10:00:00 AM','user_id':'101','event_type':'stream_test','payload':{}},{'id':'3','timestamp':'1/1/2026 10:00:00 AM','user_id':'102','event_type':'stream_test','payload':{}},{'id':'4','timestamp':'1/1/2026 10:00:00 AM','user_id':'103','event_type':'stream_test','payload':{}},{'id':'5','timestamp':'1/1/2026 10:00:00 AM','user_id':'104','event_type':'stream_test','payload':{}}]"
         ```
     </TabItem>
 </Tabs>
@@ -157,7 +157,7 @@ import Admonition from '@theme/Admonition';
     "written_bytes": 235,
     "written_rows": 5
    },
-   "query_id": "04b1550d-35a5-4394-8ad3-20a988c3b17e",
+   "query_id": "8267c041-bbde-4496-9fcd-aa11c81846f1",
    "stats": {
     "allocated_bytes": 0,
     "applied_aggregation": false,

@@ -16185,6 +16185,10 @@ EndProcedure
 
 Procedure CheckBinaryDataJanx(Val Actual, Val Expected)
 
+    If TypeOf(Actual) = Type("String") Then
+        Actual           = GetBinaryDataFromBase64String(Actual);
+    EndIf;
+
     ExpectsThat(TypeOf(Actual)).Равно(Type("BinaryData"));
     ExpectsThat(GetHexStringFromBinaryData(Actual)).Равно(GetHexStringFromBinaryData(Expected));
 
@@ -17036,7 +17040,7 @@ Procedure ProcessTestingResult(Val Result
 
         Text = PrintLog(Result, LogsMethod, Library);
 
-        If Not ValueIsFilled(Option) Then
+        If Not ValueIsFilled(Option) And Not IsCLITest() Then
 
             ResultString = TypeOf(CheckResult) = Type("String");
             Overwrite    = Not ?(ResultString, CheckResult = "", CheckResult = Undefined);
@@ -17490,6 +17494,8 @@ EndFunction
 
 Function TestResultAsText(Val Result)
 
+    Result = PrepareJSONData(Result);
+
     Try
         Data = OPI_Tools.JSONString(Result);
     Except
@@ -17539,8 +17545,6 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
 
             EndIf;
 
-            TruncateString(CurrentValue, 100);
-
             Value_.Insert(CurrentKey, CurrentValue);
 
         EndDo;
@@ -17552,8 +17556,6 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
         Else
             Value_ = Value;
         EndIf;
-
-        TruncateString(Value_, 100);
 
     EndIf;
 
@@ -17807,6 +17809,48 @@ Procedure TruncateString(Value, Val SymbolCount)
     EndIf;
 
 EndProcedure
+
+Function PrepareJSONData(Data)
+
+    If Data = Undefined Then
+        Return Data;
+    EndIf;
+
+    DataType = TypeOf(Data);
+
+    If DataType = Type("BinaryData") Then
+        Return "<Binary data>";
+    EndIf;
+
+    If DataType = Type("Array") Then
+
+        Result = New Array;
+
+        For Each Element In Data Do
+            Result.Add(PrepareJSONData(Element));
+        EndDo;
+
+        Return Result;
+
+    EndIf;
+
+    If DataType = Type("Structure") Or DataType = Type("Map") Then
+
+        Result = New(DataType);
+
+        For Each Pair In Data Do
+            Result.Insert(Pair.Key, PrepareJSONData(Pair.Value));
+        EndDo;
+
+        Return Result;
+
+    EndIf;
+
+    TruncateString(Data, 100);
+
+    Return Data;
+
+EndFunction
 
 Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
