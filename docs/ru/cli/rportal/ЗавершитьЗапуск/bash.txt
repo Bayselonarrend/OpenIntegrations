@@ -4,5 +4,5 @@ oint rportal ЗавершитьЗапуск \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "e1139eea-9e91-45cd-b611-e8e4efe7069f" \
+  --uuid "d36a8f86-c178-43ac-a907-b3aa0ce8da56" \
   --params "{'endTime':'1/1/2026 8:00:00 PM','status':'passed','description':'Updated launch description'}"

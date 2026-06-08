@@ -1,2 +1,2 @@
 oint msgpack СериализоватьДанные ^
-  --value "Привет"
+  --value true

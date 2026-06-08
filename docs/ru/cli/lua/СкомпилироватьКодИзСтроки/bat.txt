@@ -1,3 +1,3 @@
 oint lua СкомпилироватьКодИзСтроки ^
   --lua "Lua54" ^
-  --code "return 1"
+  --code "return 11"
