@@ -109,8 +109,13 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     TemplateES = "OPI_Tools.ReplaceEscapeSequences(%1);";
     
     If Dynamically Then
+
+        CallTemplate = "Response = Attached_%1.%2(%3)";
         InitializationString = FormModuleInitializationString(CommandData, Module);
         StingsArray.Add(InitializationString);
+
+    Else
+        CallTemplate = "Response = %1.%2(%3)";
     EndIf;
       
     For Each RequiredParameter In MethodParameters Do
@@ -153,7 +158,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         
     EndDo;
     
-    CallString = StrTemplate("Response = Attached_%1.%2(%3)", Module, Method, StrConcat(CallArray, ","));
+    CallString = StrTemplate(CallTemplate, Module, Method, StrConcat(CallArray, ","));
     StingsArray.Add(CallString);
     
     ExecutionText = StrConcat(StingsArray, Chars.LF);
