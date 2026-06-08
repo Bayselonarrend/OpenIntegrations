@@ -104,6 +104,135 @@ Function CreateVM(Val Version, Val Logging = Undefined) Export
 
 EndFunction
 
+// Call function !NOCLI
+// Calls a Lua function with the provided parameters
+//
+// Note:
+// Any JSON-compatible types and BinaryData are allowed as function parameters
+// The function must be pre-defined in the context using one of the code execution methods
+//
+// Parameters:
+// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
+// FunctionName - String             - Function name or path in module.func format - func
+// Parameters   - Array Of Arbitrary - Function parameters                         - params
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(FunctionName);
+
+    If Parameters  = Undefined Then
+        Parameters = New Array;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Parameters);
+
+    BDArgs   = OPI_AddIns.SerializeJanx(Parameters);
+    ResultBD = AddIn.CallFunction(FunctionName, BDArgs);
+
+    Return ResultFromJanx(ResultBD);
+
+EndFunction
+
+// Call script function
+// Executes Lua code from a string or file and calls the specified function
+//
+// Note:
+// Similar to separate calls to `ExecuteCodeFromString`, `SetGlobalVariable`, and `CallFunction`
+//
+// Parameters:
+// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
+// Script       - String             - Lua code or file path                       - script
+// FunctionName - String             - Function name or path in module.func format - func
+// Parameters   - Map Of KeyAndValue - Function parameters, if necessary           - params
+// Variables    - Map Of KeyAndValue - Module global variables, if necessary       - globals
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallScriptFunction(Val Lua
+    , Val Script
+    , Val FunctionName
+    , Val Parameters = Undefined
+    , Val Variables = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Script, True);
+    ExecuteCodeFromString(Lua, Script);
+
+    If Variables <> Undefined Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Variables);
+
+        For Each KeyValue In Variables Do
+            SetGlobalVariable(Lua, KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Result = CallFunction(Lua, FunctionName, Parameters);
+
+    Return Result;
+
+EndFunction
+
+// Call byte code function
+// Executes bytecode and calls the specified function
+//
+// Note:
+// Similar to separate calls to `ExecuteByteCode`, `SetGlobalVariable`, and `CallFunction`
+//
+// Parameters:
+// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
+// Bytecode     - String, BinaryData - Byte code or file path                      - code
+// FunctionName - String             - Function name or path in module.func format - func
+// Parameters   - Map Of KeyAndValue - Function parameters, if necessary           - params
+// Variables    - Map Of KeyAndValue - Module global variables, if necessary       - globals
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallByteCodeFunction(Val Lua
+    , Val Bytecode
+    , Val FunctionName
+    , Val Parameters = Undefined
+    , Val Variables = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Bytecode, True);
+    ExecuteBytecode(Lua, Bytecode);
+
+    If Variables <> Undefined Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Variables);
+
+        For Each KeyValue In Variables Do
+            SetGlobalVariable(Lua, KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Result = CallFunction(Lua, FunctionName, Parameters);
+
+    Return Result;
+
+EndFunction
+
 // Is VM !NOCLI
 // Checks that the value is an object of a Lua AddIn
 //
@@ -162,7 +291,7 @@ EndFunction
 
 #Region ScriptManagement
 
-// Execute code from string
+// Execute code from string !NOCLI
 // Executes Lua code from the passed string
 //
 // Note:
@@ -190,7 +319,7 @@ Function ExecuteCodeFromString(Val Lua, Val Code) Export
 
 EndFunction
 
-// Execute code from file
+// Execute code from file !NOCLI
 // Executes Lua code from a file on disk
 //
 // Note:
@@ -219,43 +348,6 @@ Function ExecuteCodeFromFile(Val Lua, Val Path) Export
     EndIf;
 
     ResultBD = AddIn.ExecuteFile(ScriptFile.FullName);
-
-    Return ResultFromJanx(ResultBD);
-
-EndFunction
-
-// Call function
-// Calls a Lua function with the provided parameters
-//
-// Note:
-// Any JSON-compatible types and BinaryData are allowed as function parameters
-// The function must be pre-defined in the context using one of the code execution methods
-//
-// Parameters:
-// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
-// FunctionName - String             - Function name or path in module.func format - func
-// Parameters   - Array Of Arbitrary - Function parameters                         - params
-//
-// Returns:
-// Arbitrary - Calling result
-Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Export
-
-    AddIn = CreateVM(Lua);
-
-    If Not IsVM(AddIn) Then
-        Return AddIn;
-    EndIf;
-
-    OPI_TypeConversion.GetLine(FunctionName);
-
-    If Parameters  = Undefined Then
-        Parameters = New Array;
-    EndIf;
-
-    OPI_TypeConversion.GetArray(Parameters);
-
-    BDArgs   = OPI_AddIns.SerializeJanx(Parameters);
-    ResultBD = AddIn.CallFunction(FunctionName, BDArgs);
 
     Return ResultFromJanx(ResultBD);
 
@@ -352,13 +444,14 @@ Function ExecuteBytecode(Val Lua, Val Bytecode) Export
         Return AddIn;
     EndIf;
 
+    OPI_TypeConversion.GetBinaryData(Bytecode, True);
     Result = AddIn.ExecuteBytecode(Bytecode);
 
     Return ResultFromJanx(Result);
 
 EndFunction
 
-// Execute bytecode from file
+// Execute bytecode from file !NOCLI
 // Executes bytecode from the specified file
 //
 // Parameters:
@@ -384,6 +477,68 @@ Function ExecuteBytecodeFromFile(Val Lua, Val Path) Export
     Result = AddIn.ExecuteBytecodeFile(Path);
 
     Return ResultFromJanx(Result);
+
+EndFunction
+
+#EndRegion
+
+#Region GlobalVariables
+
+// Set global variable !NOCLI
+// Sets the value of a global variable in the context
+//
+// Parameters:
+// Lua   - Arbitrary - Lua AddIn or Lua version to run - lua
+// Name  - String    - Variable name                   - name
+// Value - Arbitrary - Variable value                  - value
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function SetGlobalVariable(Val Lua, Val Name, Val Value) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Data     = New Structure("data", Value);
+    JanxData = OPI_AddIns.SerializeJanx(Data);
+
+    Result = Lua.SetGlobal(Name, JanxData);
+
+    Data = ResultFromJanx(Result);
+
+    Return Data;
+
+EndFunction
+
+// Get global variable !NOCLI
+// Gets the value of a global variable in the context
+//
+// Parameters:
+// Lua  - Arbitrary - Lua AddIn or Lua version to run - lua
+// Name - String    - Variable name                   - name
+//
+// Returns:
+// Arbitrary - Variable value
+Function GetGlobalVariable(Val Lua, Val Name) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Name);
+
+    Result = Lua.GetGlobal(Name);
+
+    Data = ResultFromJanx(Result);
+
+    Return Data;
 
 EndFunction
 
@@ -415,6 +570,18 @@ Function СоздатьVM(Val Версия, Val Логирование = Undefin
     Return CreateVM(Версия, Логирование);
 EndFunction
 
+Function ВызватьФункцию(Val Lua, Val ИмяФункции, Val Параметры = Undefined) Export
+    Return CallFunction(Lua, ИмяФункции, Параметры);
+EndFunction
+
+Function ВызватьФункциюСкрипта(Val Lua, Val Скрипт, Val ИмяФункции, Val Параметры = Undefined, Val Переменные = Undefined) Export
+    Return CallScriptFunction(Lua, Скрипт, ИмяФункции, Параметры, Переменные);
+EndFunction
+
+Function ВызватьФункциюБайтКода(Val Lua, Val БайтКод, Val ИмяФункции, Val Параметры = Undefined, Val Переменные = Undefined) Export
+    Return CallByteCodeFunction(Lua, БайтКод, ИмяФункции, Параметры, Переменные);
+EndFunction
+
 Function ЭтоVM(Val Значение) Export
     Return IsVM(Значение);
 EndFunction
@@ -435,10 +602,6 @@ Function ВыполнитьКодИзФайла(Val Lua, Val Путь) Export
     Return ExecuteCodeFromFile(Lua, Путь);
 EndFunction
 
-Function ВызватьФункцию(Val Lua, Val ИмяФункции, Val Параметры = Undefined) Export
-    Return CallFunction(Lua, ИмяФункции, Параметры);
-EndFunction
-
 Function СкомпилироватьКодИзСтроки(Val Lua, Val Код) Export
     Return CompileCodeFromString(Lua, Код);
 EndFunction
@@ -453,6 +616,14 @@ EndFunction
 
 Function ВыполнитьБайтКодФайла(Val Lua, Val Путь) Export
     Return ExecuteBytecodeFromFile(Lua, Путь);
+EndFunction
+
+Function УстановитьГлобальнуюПеременную(Val Lua, Val Имя, Val Значение) Export
+    Return SetGlobalVariable(Lua, Имя, Значение);
+EndFunction
+
+Function ПолучитьГлобальнуюПеременную(Val Lua, Val Имя) Export
+    Return GetGlobalVariable(Lua, Имя);
 EndFunction
 
 #EndRegion

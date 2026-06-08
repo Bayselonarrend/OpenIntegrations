@@ -180,11 +180,7 @@ EndProcedure
 
 Procedure Lua_ExecuteCodeFromString()
 
-    Options = New Structure;
-    Options.Insert("lua", "Lua54");
-    Options.Insert("code", "return 42");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteCodeFromString", Options);
+    Result = OPI_Lua.ExecuteCodeFromString("Lua54", "return 42");
 
     // END
 
@@ -197,11 +193,7 @@ Procedure Lua_ExecuteCodeFromFile()
     ScriptFile = GetTempFileName("lua");
     GetBinaryDataFromString("return 7").Write(ScriptFile);
 
-    Options = New Structure;
-    Options.Insert("lua", "Lua54");
-    Options.Insert("path", ScriptFile);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteCodeFromFile", Options);
+    Result = OPI_Lua.ExecuteCodeFromFile("Lua54", ScriptFile);
 
     OPI_Tools.RemoveFileWithTry(ScriptFile, "Failed to delete the temporary file after the test!!");
 
@@ -221,12 +213,7 @@ Procedure Lua_CallFunction()
     Parameters.Add(1);
     Parameters.Add(2);
 
-    Options = New Structure;
-    Options.Insert("lua", VM);
-    Options.Insert("func", "add");
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
+    Result = OPI_Lua.CallFunction(VM, "add", Parameters);
 
     // END
 
@@ -295,11 +282,7 @@ Procedure Lua_ExecuteBytecodeFromFile()
     Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromFile", Options);
     Bytecode.Write(BytecodeFile);
 
-    Options = New Structure;
-    Options.Insert("lua", "Lua54");
-    Options.Insert("path", BytecodeFile);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteBytecodeFromFile", Options);
+    Result = OPI_Lua.ExecuteBytecodeFromFile("Lua54", BytecodeFile);
 
     OPI_Tools.RemoveFileWithTry(ScriptFile  , "Failed to delete the temporary file after the test!!");
     OPI_Tools.RemoveFileWithTry(BytecodeFile, "Failed to delete the temporary file after the test!!");
@@ -362,12 +345,7 @@ Procedure Lua_Extended_PassComplexData()
     Parameters = New Array;
     Parameters.Add(Original);
 
-    Options = New Structure;
-    Options.Insert("lua", VM);
-    Options.Insert("func", "echo");
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
+    Result = OPI_Lua.CallFunction(VM, "echo", Parameters);
 
     // END
 
@@ -386,12 +364,7 @@ Procedure Lua_Extended_PassArrayOfMixedTypes()
     Parameters = New Array;
     Parameters.Add(Original);
 
-    Options = New Structure;
-    Options.Insert("lua", VM);
-    Options.Insert("func", "echo");
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
+    Result = OPI_Lua.CallFunction(VM, "echo", Parameters);
 
     // END
 

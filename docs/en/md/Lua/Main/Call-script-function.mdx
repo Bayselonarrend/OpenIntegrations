@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 
-description: Call function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Call script function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,21 +9,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Call function
- Calls a Lua function with the provided parameters
+# Call script function
+ Executes Lua code from a string or file and calls the specified function
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Export`
+`Function CallScriptFunction(Val Lua, Val Script, Val FunctionName, Val Parameters = Undefined, Val Variables = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
+  | Script | --script | String | &#x2714; | Lua code or file path |
   | FunctionName | --func | String | &#x2714; | Function name or path in module.func format |
-  | Parameters | --params | Array Of Arbitrary | &#x2716; | Function parameters |
+  | Parameters | --params | Map Of KeyAndValue | &#x2716; | Function parameters, if necessary |
+  | Variables | --globals | Map Of KeyAndValue | &#x2716; | Module global variables, if necessary |
 
 
 <div className="return-value-note">
@@ -46,24 +48,12 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 :::tip
-Any JSON-compatible types and BinaryData are allowed as function parameters
-
-The function must be pre-defined in the context using one of the code execution methods
+Similar to separate calls to `ExecuteCodeFromString`, `SetGlobalVariable`, and `CallFunction`
 :::
 <br/>
 
 
-```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.ExecuteCodeFromString(VM, "function add(a, b) return a + b end");
-
-    Parameters = New Array;
-    Parameters.Add(1);
-    Parameters.Add(2);
-
-    Result = OPI_Lua.CallFunction(VM, "add", Parameters);
-```
  
 
 

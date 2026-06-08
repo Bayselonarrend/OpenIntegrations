@@ -65,7 +65,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint grpc ПолучитьСписокСервисов \
-              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}"
+              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" \
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
   
@@ -74,7 +75,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint grpc ПолучитьСписокСервисов ^
-              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}"
+              --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" ^
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
 </Tabs>

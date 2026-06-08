@@ -89,7 +89,7 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый RSS канал" \
               --descr "Описание тестового RSS канала" \
               --link "https://example.com" \
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/7/2026 9:49:57 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/7/2026 9:49:58 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/8/2026 4:44:46 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/8/2026 4:44:47 PM','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
   
@@ -101,12 +101,12 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый RSS канал" ^
               --descr "Описание тестового RSS канала" ^
               --link "https://example.com" ^
-              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/7/2026 9:49:57 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/7/2026 9:49:58 PM','author':'test@example.com','guid':'item-2'}]"
+              --items "[{'title':'Первый элемент','description':'Описание первого элемента','link':'https://example.com/item1','pubDate':'6/8/2026 4:44:46 PM','author':'test@example.com','guid':'item-1'},{'title':'Второй элемент','description':'Описание второго элемента','link':'https://example.com/item2','pubDate':'6/8/2026 4:44:47 PM','author':'test@example.com','guid':'item-2'}]"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Тестовый RSS канал</title>\r\n        <link>https://example.com</link>\r\n        <description>Описание тестового RSS канала</description>\r\n        <lastBuildDate>Sun, 07 Jun 2026 00:53:01 +0000</lastBuildDate>\r\n        <item>\r\n            <title>Первый элемент</title>\r\n            <description>Описание первого элемента</description>\r\n            <link>https://example.com/item1</link>\r\n            <pubDate>Sun, 07 Jun 2026 00:53:00 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-1</guid>\r\n        </item>\r\n        <item>\r\n            <title>Второй элемент</title>\r\n            <description>Описание второго элемента</description>\r\n            <link>https://example.com/item2</link>\r\n            <pubDate>Sun, 07 Jun 2026 00:53:00 +0000</pubDate>\r\n            <author>test@example.com</author>\r\n            <guid isPermaLink=\"false\">item-2</guid>\r\n        </item>\r\n    </channel>\r\n</rss>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<rss version=\"2.0\">\r\n    <channel>\r\n        <title>Тестовый ..."
 ```

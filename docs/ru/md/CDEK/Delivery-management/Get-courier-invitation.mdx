@@ -70,7 +70,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "536cc3be-2c2e-4ede-9ed3-8cc0a7ff9551" \
+              --uuid "5d5223ad-9896-42f7-9fc4-8a63c41a67c7" \
               --testapi "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "536cc3be-2c2e-4ede-9ed3-8cc0a7ff9551" ^
+              --uuid "5d5223ad-9896-42f7-9fc4-8a63c41a67c7" ^
               --testapi "***"
         ```
     </TabItem>
@@ -89,11 +89,10 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "90ecd909-9a8b-4275-9233-c6dab51196bd",
-  "cdek_number": "1109904791",
-  "order_uuid": "caeae288-19d8-41d9-9fa9-124b06ecf3e3",
-  "intake_date": "2026-06-08",
-  "intake_number": "13312215",
+  "uuid": "40f80f38-2184-47c8-a43d-8357389fccb9",
+  "cdek_number": "1109905189",
+  "order_uuid": "1d80d314-3437-45c2-b2d1-bca6701e88b7",
+  "intake_date": "2026-06-09",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -104,12 +103,8 @@ import Admonition from '@theme/Admonition';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Компания",
-   "contragent_type": "LEGAL_ENTITY",
+   "name": "Иванов Иван",
    "phones": [
-    {
-     "number": "79589441654"
-    },
     {
      "number": "+79589441654"
     }
@@ -130,40 +125,17 @@ import Admonition from '@theme/Admonition';
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
-  "to_location": {
-   "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "longitude": 37.831928,
-   "latitude": 55.644399,
-   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
-   "postal_code": "140091"
-  },
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2026-06-07T00:33:22+03:00"
-   },
-   {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2026-06-07T00:33:22+03:00"
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-06-07T00:33:22+03:00"
+    "date_time": "2026-06-08T18:01:47+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "e8a58829-5060-4775-b382-cbfbd1531a0e",
+    "package_id": "55b4abf2-ffe3-4e2f-8ede-e368243a3a73",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -173,10 +145,10 @@ import Admonition from '@theme/Admonition';
  },
  "requests": [
   {
-   "request_uuid": "0aacee08-8f4c-45d6-b407-7e10c6122b68",
+   "request_uuid": "4ff61b0e-65b8-4796-a24b-1da8ae4185da",
    "type": "CREATE",
-   "date_time": "2026-06-07T00:33:21+03:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-06-08T18:01:47+03:00",
+   "state": "ACCEPTED"
   }
  ]
 }

@@ -68,8 +68,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-06-07T00:00:00" \
-              --dateto "2026-06-07T23:59:59" \
+              --datefrom "2026-06-08T00:00:00" \
+              --dateto "2026-06-08T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -79,8 +79,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-06-07T00:00:00" ^
-              --dateto "2026-06-07T23:59:59" ^
+              --datefrom "2026-06-08T00:00:00" ^
+              --dateto "2026-06-08T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -92,10 +92,38 @@ import Admonition from '@theme/Admonition';
  "response": [
   {
    "activity": {
-    "comments": 3
+    "comments": 2
    },
-   "period_from": 1780704000,
-   "period_to": 1780790399,
+   "period_from": 1780876800,
+   "period_to": 1780963199,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [
+     {
+      "code": "BR",
+      "count": 1,
+      "name": "Бразилия",
+      "value": 43
+     }
+    ],
+    "mobile_views": 0,
+    "views": 1,
+    "visitors": 1
+   }
+  },
+  {
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1780790400,
+   "period_to": 1780876799,
    "reach": {
     "age": [
      {
@@ -112,7 +140,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "24-27",
-      "count": 1
+      "count": 0
      },
      {
       "value": "27-30",
@@ -124,40 +152,35 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "35-45",
-      "count": 1
+      "count": 0
      },
      {
       "value": "45-100",
-      "count": 2
+      "count": 1
      }
     ],
     "cities": [
      {
-      "count": 2,
-      "name": "Ханты-Мансийск",
-      "value": 154
-     },
-     {
       "count": 1,
-      "name": "Североморск",
-      "value": 172
+      "name": "Воркута",
+      "value": 190
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 4,
+      "count": 1,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 4,
-    "reach": 4,
+    "mobile_reach": 1,
+    "reach": 1,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 4
+      "count": 1
      },
      {
       "value": "m",
@@ -179,7 +202,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "f;24-27",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;27-30",
@@ -191,11 +214,11 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "f;35-45",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;45-100",
-      "count": 2
+      "count": 1
      },
      {
       "value": "m;12-18",
@@ -215,28 +238,5 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "IN",
-      "count": 1,
-      "name": "Индия",
 ...
 ```

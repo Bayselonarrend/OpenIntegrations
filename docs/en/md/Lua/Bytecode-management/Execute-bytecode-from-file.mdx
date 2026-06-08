@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
-
-description: Execute bytecode from file and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_class_name: doc-no-cli
+description: Execute bytecode from file  and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Execute bytecode from file
+# Execute bytecode from file 
  Executes bytecode from the specified file
 
 
@@ -21,8 +21,8 @@ import Admonition from '@theme/Admonition';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
-  | Path | --path | String | &#x2714; | Path to file with bytecode |
+  | Lua | - | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
+  | Path | - | String | &#x2714; | Path to file with bytecode |
 
 
 <div className="return-value-note">
@@ -38,12 +38,17 @@ import Admonition from '@theme/Admonition';
   | Parameter | Description |
   |---|---|
   | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
-  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
 
 
   </TabItem>
 </Tabs>
 
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"

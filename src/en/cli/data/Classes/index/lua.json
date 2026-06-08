@@ -7,27 +7,25 @@
  "path": "api/lua/Modules/OPI_Lua.os",
  "regions": [
   {
-   "name": "Script management",
+   "name": "Main",
    "methods": [
-    "CallFunction",
-    "ExecuteCodeFromFile",
-    "ExecuteCodeFromString"
+    "CallByteCodeFunction",
+    "CallScriptFunction"
    ]
   },
   {
    "name": "Bytecode management",
    "methods": [
     "CompileCodeFromFile",
-    "CompileCodeFromString",
-    "ExecuteBytecodeFromFile"
+    "CompileCodeFromString"
    ]
   }
  ],
  "methods": [
   {
-   "name": "ExecuteCodeFromString",
-   "id": "EXECUTECODEFROMSTRING",
-   "description": "Executes Lua code from the passed string",
+   "name": "CallScriptFunction",
+   "id": "CALLSCRIPTFUNCTION",
+   "description": "Executes Lua code from a string or file and calls the specified function",
    "params": [
     {
      "name": "--lua",
@@ -37,48 +35,11 @@
      "short": "-l"
     },
     {
-     "name": "--code",
+     "name": "--script",
      "types": "String",
-     "description": "Code as string",
+     "description": "Lua code or file path",
      "default": null,
-     "short": "-c"
-    }
-   ],
-   "region": "Script management"
-  },
-  {
-   "name": "ExecuteCodeFromFile",
-   "id": "EXECUTECODEFROMFILE",
-   "description": "Executes Lua code from a file on disk",
-   "params": [
-    {
-     "name": "--lua",
-     "types": "Arbitrary",
-     "description": "Lua AddIn or Lua version to run",
-     "default": null,
-     "short": "-l"
-    },
-    {
-     "name": "--path",
-     "types": "String",
-     "description": "Script file path",
-     "default": null,
-     "short": "-p"
-    }
-   ],
-   "region": "Script management"
-  },
-  {
-   "name": "CallFunction",
-   "id": "CALLFUNCTION",
-   "description": "Calls a Lua function with the provided parameters",
-   "params": [
-    {
-     "name": "--lua",
-     "types": "Arbitrary",
-     "description": "Lua AddIn or Lua version to run",
-     "default": null,
-     "short": "-l"
+     "short": "-s"
     },
     {
      "name": "--func",
@@ -89,13 +50,63 @@
     },
     {
      "name": "--params",
-     "types": "Array Of Arbitrary",
-     "description": "Function parameters",
+     "types": "Map Of KeyAndValue",
+     "description": "Function parameters, if necessary",
      "default": "Empty value",
      "short": "-p"
+    },
+    {
+     "name": "--globals",
+     "types": "Map Of KeyAndValue",
+     "description": "Module global variables, if necessary",
+     "default": "Empty value",
+     "short": "-g"
     }
    ],
-   "region": "Script management"
+   "region": "Main"
+  },
+  {
+   "name": "CallByteCodeFunction",
+   "id": "CALLBYTECODEFUNCTION",
+   "description": "Executes bytecode and calls the specified function",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--code",
+     "types": "String, BinaryData",
+     "description": "Byte code or file path",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--func",
+     "types": "String",
+     "description": "Function name or path in module.func format",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--params",
+     "types": "Map Of KeyAndValue",
+     "description": "Function parameters, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--globals",
+     "types": "Map Of KeyAndValue",
+     "description": "Module global variables, if necessary",
+     "default": "Empty value",
+     "short": "-g"
+    }
+   ],
+   "region": "Main"
   },
   {
    "name": "CompileCodeFromString",
@@ -135,28 +146,6 @@
      "name": "--path",
      "types": "String",
      "description": "Script file path",
-     "default": null,
-     "short": "-p"
-    }
-   ],
-   "region": "Bytecode management"
-  },
-  {
-   "name": "ExecuteBytecodeFromFile",
-   "id": "EXECUTEBYTECODEFROMFILE",
-   "description": "Executes bytecode from the specified file",
-   "params": [
-    {
-     "name": "--lua",
-     "types": "Arbitrary",
-     "description": "Lua AddIn or Lua version to run",
-     "default": null,
-     "short": "-l"
-    },
-    {
-     "name": "--path",
-     "types": "String",
-     "description": "Path to file with bytecode",
      "default": null,
      "short": "-p"
     }

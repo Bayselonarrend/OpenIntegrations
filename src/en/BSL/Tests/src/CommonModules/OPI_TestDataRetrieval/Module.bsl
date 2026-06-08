@@ -17306,16 +17306,21 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
     ElsIf AddInName = "OPI_GRPC" Then
 
-        TLS = Value.GetTLSSettings();
-
-        If ValueIsFilled(TLS) Then
-            OPI_TypeConversion.GetCollection(TLS);
-            AddOptions.Insert("tls", TLS);
-        EndIf;
-
+        TLS   = Value.GetTLSSettings();
         Value = Value.GetSettings();
 
         OPI_TypeConversion.GetKeyValueCollection(Value);
+
+        If Not OPI_Tools.CollectionFieldExists(Value, "transport") Then
+
+            OPI_TypeConversion.GetCollection(TLS);
+
+            If OPI_Tools.GetOr(TLS, "use_tls", False) Then
+                AddOptions.Insert("tls", TLS);
+            EndIf;
+
+        EndIf;
+
         TFN = GetTempFileName();
         OPI_Tools.WriteJSONFile(TFN, Value);
 
@@ -17355,6 +17360,14 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
         OPI_Tools.WriteJSONFile(TFN, Value);
 
         Value = TFN;
+
+    ElsIf AddInName = "OPI_Lua54" Then
+
+        Value = "Lua54";
+
+    ElsIf AddInName = "OPI_LuaJIT" Then
+
+        Value = "LuaJIT";
 
     Else
         Raise "Invalid type " + ValeType;
@@ -17483,9 +17496,23 @@ Function ReadCLIResponse(Val ResultFile)
 
             If Result.Size() < 10000 Then
 
-                Text = GetStringFromBinaryData(Result);
+                Text             = GetStringFromBinaryData(Result);
+                ContainsNullByte = False;
+                DataReader       = New DataReader(Result);
 
-                If GetBinaryDataFromString(Text).Size() = Result.Size() Then
+                While Not DataReader.ReadCompleted Do
+
+                    If DataReader.ReadByte() = 0 Then
+                        ContainsNullByte     = True;
+                        Break;
+                    EndIf;
+
+                EndDo;
+
+                DataReader.Close();
+
+                If Not ContainsNullByte
+                    And GetBinaryDataFromString(Text).Size() = Result.Size() Then
 
                     Result = Text;
 

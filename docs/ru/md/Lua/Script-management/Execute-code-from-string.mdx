@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-
-description: Выполнить код из строки и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_class_name: doc-no-cli
+description: Выполнить код из строки  и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Lua]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Выполнить код из строки
+# Выполнить код из строки 
  Выполняет Lua скрипт из переданной строки
 
 
@@ -21,8 +21,8 @@ import Admonition from '@theme/Admonition';
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
-  | Lua | --lua | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
-  | Код | --code | Строка | &#x2714; | Код строкой |
+  | Lua | - | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
+  | Код | - | Строка | &#x2714; | Код строкой |
 
 
 <div className="return-value-note">
@@ -38,7 +38,6 @@ import Admonition from '@theme/Admonition';
   | Параметр | Описание |
   |---|---|
   | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
-  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
 
 
   </TabItem>
@@ -47,7 +46,12 @@ import Admonition from '@theme/Admonition';
 :::tip
 Ошибка при выполнении Lua кода вызовет исключение
 :::
-<br/>
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
@@ -55,24 +59,6 @@ import Admonition from '@theme/Admonition';
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            oint lua ВыполнитьКодИзСтроки \
-              --lua "Lua54" \
-              --code "return 42"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            oint lua ВыполнитьКодИзСтроки ^
-              --lua "Lua54" ^
-              --code "return 42"
-        ```
-    </TabItem>
-</Tabs>
 
 
 ```json title="Результат"

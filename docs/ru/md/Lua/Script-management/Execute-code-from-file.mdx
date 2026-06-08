@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
-
-description: Выполнить код из файла и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_class_name: doc-no-cli
+description: Выполнить код из файла  и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Lua]
 ---
 
@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Выполнить код из файла
+# Выполнить код из файла 
  Выполняет Lua скрипт на диске
 
 
@@ -21,8 +21,8 @@ import Admonition from '@theme/Admonition';
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
-  | Lua | --lua | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
-  | Путь | --path | Строка | &#x2714; | Путь к файлу скрипта |
+  | Lua | - | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
+  | Путь | - | Строка | &#x2714; | Путь к файлу скрипта |
 
 
 <div className="return-value-note">
@@ -38,7 +38,6 @@ import Admonition from '@theme/Admonition';
   | Параметр | Описание |
   |---|---|
   | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
-  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
 
 
   </TabItem>
@@ -47,7 +46,12 @@ import Admonition from '@theme/Admonition';
 :::tip
 Ошибка при выполнении Lua кода вызовет исключение
 :::
-<br/>
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
@@ -60,24 +64,6 @@ import Admonition from '@theme/Admonition';
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            oint lua ВыполнитьКодИзФайла \
-              --lua "Lua54" \
-              --path "C:\Users\bayselonarrend\AppData\Local\Temp\byhkavaw.dm3.lua"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            oint lua ВыполнитьКодИзФайла ^
-              --lua "Lua54" ^
-              --path "C:\Users\bayselonarrend\AppData\Local\Temp\byhkavaw.dm3.lua"
-        ```
-    </TabItem>
-</Tabs>
 
 
 ```json title="Результат"

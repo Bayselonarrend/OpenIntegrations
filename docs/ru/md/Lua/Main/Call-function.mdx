@@ -1,0 +1,77 @@
+---
+sidebar_position: 2
+sidebar_class_name: doc-no-cli
+description: Вызвать функцию  и другие функции для работы с Lua в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Lua]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Вызвать функцию 
+ Вызывает функцию Lua с переданными параметрами
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция ВызватьФункцию(Знач Lua, Знач ИмяФункции, Знач Параметры = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Lua | - | Произвольный | &#x2714; | Компонента Lua или версия Lua для запуска |
+  | ИмяФункции | - | Строка | &#x2714; | Имя функции или путь вида module.func |
+  | Параметры | - | Массив Из Произвольный | &#x2716; | Параметры функции |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Произвольный - Результат вызова
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Параметр | Описание |
+  |---|---|
+  | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+В качестве параметров функции допускаются любые JSON-совместимые типы и ДвоичныеДанные
+
+Функция должна быть предварительно определена в контексте при помощи одного из методов выполнения кода
+:::
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    VM = OPI_Lua.СоздатьVM("Lua54");
+
+    OPI_Lua.ВыполнитьКодИзСтроки(VM, "function add(a, b) return a + b end");
+
+    Параметры = Новый Массив;
+    Параметры.Добавить(1);
+    Параметры.Добавить(2);
+
+    Результат = OPI_Lua.ВызватьФункцию(VM, "add", Параметры);
+```
+    
+
+
+
+```json title="Результат"
+3
+```

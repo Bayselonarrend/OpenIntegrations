@@ -93,7 +93,7 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый Atom фид" \
               --link "https://example.com" \
               --id "https://example.com/feed" \
-              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'6/7/2026 9:50:03 PM','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'6/7/2026 9:50:03 PM'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'6/7/2026 9:50:04 PM','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'6/7/2026 9:50:04 PM'}]"
+              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'6/8/2026 4:44:53 PM','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'6/8/2026 4:44:53 PM'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'6/8/2026 4:44:54 PM','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'6/8/2026 4:44:54 PM'}]"
         ```
     </TabItem>
   
@@ -105,12 +105,12 @@ import Admonition from '@theme/Admonition';
               --name "Тестовый Atom фид" ^
               --link "https://example.com" ^
               --id "https://example.com/feed" ^
-              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'6/7/2026 9:50:03 PM','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'6/7/2026 9:50:03 PM'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'6/7/2026 9:50:04 PM','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'6/7/2026 9:50:04 PM'}]"
+              --items "[{'title':'Первая запись','id':'https://example.com/entry1','link':'https://example.com/entry1','updated':'6/8/2026 4:44:53 PM','summary':'Краткое описание первой записи','content':'Полное содержимое первой записи','author':'Автор Первый','published':'6/8/2026 4:44:53 PM'},{'title':'Вторая запись','id':'https://example.com/entry2','link':'https://example.com/entry2','updated':'6/8/2026 4:44:54 PM','summary':'Краткое описание второй записи','content':'Полное содержимое второй записи','author':'Автор Второй','published':'6/8/2026 4:44:54 PM'}]"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\r\n    <title>Тестовый Atom фид</title>\r\n    <id>https://example.com/feed</id>\r\n    <link href=\"https://example.com\" rel=\"alternate\"/>\r\n    <updated>2026-06-07T00:53:07</updated>\r\n    <entry>\r\n        <title>Первая запись</title>\r\n        <id>https://example.com/entry1</id>\r\n        <link href=\"https://example.com/entry1\" rel=\"alternate\"/>\r\n        <updated>2026-06-07T00:53:06</updated>\r\n        <summary>Краткое описание первой записи</summary>\r\n        <content type=\"html\">Полное содержимое первой записи</content>\r\n        <author>\r\n            <name>Автор Первый</name>\r\n        </author>\r\n        <published>2026-06-07T00:53:06</published>\r\n    </entry>\r\n    <entry>\r\n        <title>Вторая запись</title>\r\n        <id>https://example.com/entry2</id>\r\n        <link href=\"https://example.com/entry2\" rel=\"alternate\"/>\r\n        <updated>2026-06-07T00:53:06</updated>\r\n        <summary>Краткое описание второй записи</summary>\r\n        <content type=\"html\">Полное содержимое второй записи</content>\r\n        <author>\r\n            <name>Автор Второй</name>\r\n        </author>\r\n        <published>2026-06-07T00:53:06</published>\r\n    </entry>\r\n</feed>"
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<feed xmlns=\"http://www.w3.org/2005/Atom\">\r\n    <title>Тесто..."
 ```
