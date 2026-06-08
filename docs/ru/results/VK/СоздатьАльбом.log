@@ -1,6 +1,6 @@
 ﻿{
  "response": {
-  "id": 312740986,
+  "id": 312743359,
   "owner_id": -218861756,
   "size": 0,
   "title": "Альбом из автотеста",
@@ -8,10 +8,10 @@
   "feed_has_pinned": 0,
   "can_upload": 1,
   "comments_disabled": 0,
-  "created": 1780928977,
+  "created": 1780946806,
   "description": "Новый альбом из автотеста",
   "thumb_id": 0,
-  "updated": 1780928977,
+  "updated": 1780946806,
   "upload_by_admins_only": 1
  }
 }

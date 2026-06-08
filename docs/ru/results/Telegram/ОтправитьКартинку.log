@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 22144,
+  "message_id": 22162,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1780928623,
+  "date": 1780946442,
   "photo": [
    {
     "file_id": "AgACAgIAAxkDAAJWFGokGCMz9dsT-HPmjjaquXMY2AhCAALRGWsbJ9MhSQoZbwNMRf17AQADAgADcwADOwQ",

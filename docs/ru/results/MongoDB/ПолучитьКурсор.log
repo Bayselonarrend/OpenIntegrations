@@ -3,7 +3,7 @@
   "cursor": {
    "firstBatch": [
     {
-     "_id": "6a26d543a363fd76dac593a9",
+     "_id": "6a271a91a363fd76dac595a8",
      "arrayField": [
       "A",
       "<<MinKey>>"
@@ -26,10 +26,10 @@
      "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
      "stringField": "Текст",
      "symbolField": "Y",
-     "tsField": "Timestamp(1780940659, 0)"
+     "tsField": "Timestamp(1780958401, 0)"
     }
    ],
-   "id": 7788114417544853429,
+   "id": 8953687675927330978,
    "ns": "main.new_collection"
   },
   "ok": 1
