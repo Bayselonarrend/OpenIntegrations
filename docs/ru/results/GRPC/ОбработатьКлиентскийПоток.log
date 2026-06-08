@@ -2,7 +2,7 @@
  "message": {
   "f_bool": true,
   "f_bools": [],
-  "f_bytes": "",
+  "f_bytes": "<Двоичные данные>",
   "f_bytess": [],
   "f_enum": "ENUM_0",
   "f_enums": [],

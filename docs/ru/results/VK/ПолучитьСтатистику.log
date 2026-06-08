@@ -2,153 +2,25 @@
  "response": [
   {
    "activity": {
-    "comments": 3
+    "comments": 2
    },
-   "period_from": 1780704000,
-   "period_to": 1780790399,
+   "period_from": 1780876800,
+   "period_to": 1780963199,
    "reach": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 1
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 0
-     },
-     {
-      "value": "35-45",
-      "count": 1
-     },
-     {
-      "value": "45-100",
-      "count": 2
-     }
-    ],
-    "cities": [
-     {
-      "count": 2,
-      "name": "Ханты-Мансийск",
-      "value": 154
-     },
-     {
-      "count": 1,
-      "name": "Североморск",
-      "value": 172
-     }
-    ],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 4,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
-    "mobile_reach": 4,
-    "reach": 4,
-    "reach_subscribers": 0,
-    "sex": [
-     {
-      "value": "f",
-      "count": 4
-     },
-     {
-      "value": "m",
-      "count": 0
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 0
-     },
-     {
-      "value": "f;24-27",
-      "count": 1
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 1
-     },
-     {
-      "value": "f;45-100",
-      "count": 2
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 0
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],
     "countries": [
      {
-      "code": "IN",
+      "code": "BR",
       "count": 1,
-      "name": "Индия",
-      "value": 80
+      "name": "Бразилия",
+      "value": 43
      }
     ],
     "mobile_views": 0,
@@ -157,8 +29,11 @@
    }
   },
   {
-   "period_from": 1780617600,
-   "period_to": 1780703999,
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1780790400,
+   "period_to": 1780876799,
    "reach": {
     "age": [
      {
@@ -183,39 +58,34 @@
      },
      {
       "value": "30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "35-45",
-      "count": 2
+      "count": 0
      },
      {
       "value": "45-100",
-      "count": 0
+      "count": 1
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Новосибирск",
-      "value": 99
-     },
-     {
-      "count": 1,
-      "name": "Ижевск",
-      "value": 56
+      "name": "Воркута",
+      "value": 190
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 3,
+      "count": 1,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 3,
-    "reach": 3,
+    "mobile_reach": 1,
+    "reach": 1,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -224,7 +94,7 @@
      },
      {
       "value": "m",
-      "count": 2
+      "count": 0
      }
     ],
     "sex_age": [
@@ -250,7 +120,7 @@
      },
      {
       "value": "f;30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;35-45",
@@ -258,7 +128,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;12-18",
@@ -286,7 +156,7 @@
      },
      {
       "value": "m;35-45",
-      "count": 2
+      "count": 0
      },
      {
       "value": "m;45-100",
@@ -296,10 +166,17 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "BR",
+      "count": 1,
+      "name": "Бразилия",
+      "value": 43
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   }
  ]

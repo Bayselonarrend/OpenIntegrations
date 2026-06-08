@@ -1,19 +1,19 @@
 ﻿{
  "records": [
   {
-   "id": "recXb6AwbCdHZv3wI",
-   "createdTime": "2026-06-06T21:19:26Z",
+   "id": "recgmW8m4Ss5pZ3xL",
+   "createdTime": "2026-06-08T14:52:03Z",
    "fields": {
-    "Номер": 10,
-    "Строковое": "Привет\n"
+    "Строковое": "Привет\n",
+    "Номер": 10
    }
   },
   {
-   "id": "recAAkMDPBTiOpyMV",
-   "createdTime": "2026-06-06T21:19:26Z",
+   "id": "rec9t61kC3hixVmGU",
+   "createdTime": "2026-06-08T14:52:03Z",
    "fields": {
-    "Номер": 10,
-    "Строковое": "Привет\n"
+    "Строковое": "Привет\n",
+    "Номер": 10
    }
   }
  ]

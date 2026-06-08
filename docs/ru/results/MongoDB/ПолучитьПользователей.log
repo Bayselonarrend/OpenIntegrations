@@ -695,20 +695,20 @@
      }
     ],
     "user": "bayselonarrend",
-    "userId": "EjWtfR/yQgGol18zZoi5HA=="
+    "userId": "<Двоичные данные>"
    },
    {
     "_id": "main.newuser",
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "AbMa3muJ51/ca3fSkIm+5g==",
+      "salt": "gyxkVbLiJXPf6RHtZCHvJA==",
       "serverKey": "***",
       "storedKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "dPVLdw9l6OzIC5XUuvZ3G/YPou+nWe2YCtelcA==",
+      "salt": "A6HPm7tWETz/Pif7iYaDrPrG9kHn3m3U/KSrRQ==",
       "serverKey": "***",
       "storedKey": "***"
      }
@@ -796,7 +796,7 @@
      }
     ],
     "user": "newuser",
-    "userId": "xaO7dpR+RtGtQQsTpjjlkg=="
+    "userId": "<Двоичные данные>"
    }
   ]
  },

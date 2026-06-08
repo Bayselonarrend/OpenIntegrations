@@ -2,12 +2,12 @@
  "result": true,
  "data": [
   {
-   "_id": "6a248c87a363fd76dac58228",
+   "_id": "6a26d543a363fd76dac593a9",
    "arrayField": [
     "A",
     "<<MinKey>>"
    ],
-   "binaryField": "C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\42pzql5a.nz4",
+   "binaryField": "<Двоичные данные>",
    "boolField": true,
    "dateField": "2025-11-15T10:55:41Z",
    "docField": {
@@ -25,16 +25,16 @@
    "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
    "stringField": "Текст",
    "symbolField": "Y",
-   "tsField": "Timestamp(1780790967, 0)"
+   "tsField": "Timestamp(1780940659, 0)"
   },
   {
-   "_id": "6a248c87a363fd76dac58227",
+   "_id": "6a26d543a363fd76dac593a8",
    "arrayField": [
     "Значение1",
     "Значение2"
    ],
    "boolField": true,
-   "dateField": "2026-06-07T00:09:27Z",
+   "dateField": "2026-06-08T17:44:19Z",
    "docField": {
     "number": 10,
     "text": "Текст"

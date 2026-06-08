@@ -1,9 +1,11 @@
 ﻿{
  "logs": [
-  "[2026-06-07 00:02:33.238] Connecting to PostgreSQL...",
-  "[2026-06-07 00:02:33.254] Connected to PostgreSQL"
+  "[2026-06-08 17:41:51.423] Connecting to PostgreSQL...",
+  "[2026-06-08 17:41:51.440] Connected to PostgreSQL",
+  "[2026-06-08 17:41:51.442] Execute query (params=0, force_result=false): SELECT 1 AS n",
+  "[2026-06-08 17:41:51.445] Query returned 1 row(s)"
  ],
  "result": true,
- "returned": 2,
- "total": 2
+ "returned": 4,
+ "total": 4
 }
