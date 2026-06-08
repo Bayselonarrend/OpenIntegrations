@@ -153,7 +153,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         
     EndDo;
     
-    CallString = StrTemplate("Response = %1.%2(%3)", Module, Method, StrConcat(CallArray, ","));
+    CallString = StrTemplate("Response = Attached_%1.%2(%3)", Module, Method, StrConcat(CallArray, ","));
     StingsArray.Add(CallString);
     
     ExecutionText = StrConcat(StingsArray, Chars.LF);
@@ -212,8 +212,10 @@ Function FormModuleInitializationString(Val CommandData, Val Module)
     RootDirectory = ?(CommandData["cli_tool"]
         , ApplicationDirectory
         , StrTemplate("%1/%2", PackagesDirectory, "oint"));
+        
+    LoadingTemplate = "Attached_%1 = LoadScript(""%2/%3"", Context);";
 
-    LoadPath = StrTemplate("%1 = LoadScript(""%2/%3"", Context);"
+    LoadPath = StrTemplate(LoadingTemplate
         , Module
         , RootDirectory
         , CommandData["path"]);
@@ -227,7 +229,7 @@ Function FormModuleInitializationString(Val CommandData, Val Module)
     
     If CommandData["self_depend"] Then
         
-        CallArray.Add(StrTemplate(ContextTemplate, Module, Module));
+        CallArray.Add(StrTemplate(ContextTemplate, Module, StrTemplate("Attached_%1", Module)));
         CallArray.Add(LoadPath);
         
     EndIf;

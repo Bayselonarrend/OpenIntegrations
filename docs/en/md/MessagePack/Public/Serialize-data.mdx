@@ -17,11 +17,12 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function SerializeData(Val Data) Export`
+`Function SerializeData(Val Data, Val FromSource = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Data | --value | Arbitrary | &#x2714; | Collection for serialization |
+  | FromSource | --raw | Boolean | &#x2716; | The data is a JSON string or a file on disk |
 
 
 <div className="return-value-note">

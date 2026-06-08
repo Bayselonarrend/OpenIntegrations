@@ -55,11 +55,25 @@
 // Serializes data into MessagePack format
 //
 // Parameters:
-// Data - Arbitrary - Collection for serialization - value
+// Data       - Arbitrary - Collection for serialization                - value
+// FromSource - Boolean   - The data is a JSON string or a file on disk - raw
 //
 // Returns:
 // BinaryData - Serialized data
-Function SerializeData(Val Data) Export
+Function SerializeData(Val Data, Val FromSource = False) Export
+
+    OPI_TypeConversion.GetBoolean(FromSource);
+
+    If FromSource Then
+
+        Success = False;
+        OPI_TypeConversion.GetCollection(Data, , Success);
+
+        If Not Success Then
+            Data = Data[0];
+        EndIf;
+
+    EndIf;
 
     Context = NewWriteContext();
     WriteValue(Data, Context);
@@ -77,6 +91,8 @@ EndFunction
 // Returns:
 // Arbitrary - Restored value
 Function DeserializeData(Val Data) Export
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
 
     Buffer  = GetBinaryDataBufferFromBinaryData(Data);
     Reading = ReadValue(Buffer, 0);

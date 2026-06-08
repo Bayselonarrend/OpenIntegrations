@@ -15616,6 +15616,11 @@ Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Unde
         ExpectsThat(Restored["x"]).Равно(10);
         ExpectsThat(Restored["y"]).Равно(20);
 
+    ElsIf Option = "FromFile" Then
+
+        ExpectsThat(Restored["title"]).Равно(InitialValue["title"]);
+        ExpectsThat(Restored["count"]).Равно(InitialValue["count"]);
+
     EndIf;
 
     Return Result;
@@ -17285,11 +17290,26 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value["Address"];
 
-    ElsIf AddInName = "OPI_RCON" Or AddInName = "OPI_GRPC" Then
+    ElsIf AddInName = "OPI_RCON" Then
 
         Value = Value.GetSettings();
 
-        Message(Value);
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+        TFN = GetTempFileName();
+        OPI_Tools.WriteJSONFile(TFN, Value);
+
+        Value = TFN;
+
+    ElsIf AddInName = "OPI_GRPC" Then
+
+        TLS = Value.GetTLSSettings();
+
+        If ValueIsFilled(TLS) Then
+            OPI_TypeConversion.GetCollection(TLS);
+            AddOptions.Insert("tls", TLS);
+        EndIf;
+
+        Value = Value.GetSettings();
 
         OPI_TypeConversion.GetKeyValueCollection(Value);
         TFN = GetTempFileName();
@@ -17458,7 +17478,15 @@ Function ReadCLIResponse(Val ResultFile)
             Result = New BinaryData(ResultFile);
 
             If Result.Size() < 10000 Then
-                Result = GetStringFromBinaryData(Result);
+
+                Text = GetStringFromBinaryData(Result);
+
+                If GetBinaryDataFromString(Text).Size() = Result.Size() Then
+
+                    Result = Text;
+
+                EndIf;
+
             EndIf;
 
         Except

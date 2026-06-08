@@ -26,6 +26,13 @@
      "description": "Collection for serialization",
      "default": null,
      "short": "-v"
+    },
+    {
+     "name": "--raw",
+     "types": "Boolean",
+     "description": "The data is a JSON string or a file on disk",
+     "default": "false",
+     "short": "-r"
     }
    ],
    "region": "Public"

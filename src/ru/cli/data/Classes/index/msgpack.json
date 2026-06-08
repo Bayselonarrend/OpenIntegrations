@@ -26,6 +26,13 @@
      "description": "Коллекция для сериализации",
      "default": null,
      "short": "-v"
+    },
+    {
+     "name": "--raw",
+     "types": "Булево",
+     "description": "Данные являются JSON строкой или файлом на диске",
+     "default": "false",
+     "short": "-r"
     }
    ],
    "region": "Программный интерфейс"

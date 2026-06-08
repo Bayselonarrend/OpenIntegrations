@@ -193,6 +193,23 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", , Restored, Original);
 
+    DataFile = GetTempFileName("json");
+    OPI_Tools.WriteJSONFile(DataFile, Original);
+
+    DataObject = New File(DataFile);
+    If Not DataObject.Exists() Then
+        Raise "Data file not found!";
+    EndIf;
+
+    Result   = OPI_MessagePack.SerializeData(DataFile, True);
+    Restored = OPI_MessagePack.DeserializeData(Result);
+
+    OPI_Tools.RemoveFileWithTry(DataFile, "Failed to delete the temporary file after the test!!");
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "FromFile", Restored, Original);
+
     Result = OPI_MessagePack.SerializeData("");
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyString");
 
