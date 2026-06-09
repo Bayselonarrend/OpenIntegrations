@@ -2,6 +2,9 @@ pipeline {
 	agent {
 		label 'windows'
 	}
+	parameters {
+		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
+	}
 
     stages {
         stage('OpenIntegrations - Build') {
@@ -27,7 +30,10 @@ pipeline {
         stage('OpenIntegrations - Release') {
             steps {
                 echo 'Release (OpenIntegrations)'
-                build job: 'OpiBuild/OpiRelease', wait: true
+                build job: 'OpiBuild/OpiRelease', wait: true,
+                    parameters: [
+                        [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: params.UPLOAD_ARTIFACTS]
+                    ]
             }
         }
         stage('Melezh - Docker') {

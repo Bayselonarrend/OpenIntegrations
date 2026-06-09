@@ -2,12 +2,15 @@ pipeline {
     agent {
         label 'windows'
     }
+    parameters {
+        booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
+    }
     stages {
         stage('Release') {
             steps {
                 powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'
-                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {   
-                    bat 'oscript ./ci/os/internal/Classes/ReleaseFactory.os'
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+                    bat "oscript ./ci/os/internal/Classes/ReleaseFactory.os ${params.UPLOAD_ARTIFACTS ? '1' : '0'}"
                 }
             }
         }
