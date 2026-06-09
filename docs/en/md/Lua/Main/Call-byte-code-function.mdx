@@ -55,7 +55,15 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "function sub(a, b) return a - b end");
 
+    Parameters = New Array;
+    Parameters.Add(10);
+    Parameters.Add(3);
+
+    Result = OPI_Lua.CallByteCodeFunction("Lua54", Bytecode, "sub", Parameters);
+```
  
 
 

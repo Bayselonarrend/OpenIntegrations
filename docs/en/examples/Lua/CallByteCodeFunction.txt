@@ -1,0 +1,7 @@
+    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "function sub(a, b) return a - b end");
+
+    Parameters = New Array;
+    Parameters.Add(10);
+    Parameters.Add(3);
+
+    Result = OPI_Lua.CallByteCodeFunction("Lua54", Bytecode, "sub", Parameters);

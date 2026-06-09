@@ -97,6 +97,8 @@ Procedure Lua_CommonMethods() Export
 
     Lua_CreateVM();
     Lua_IsVM();
+    Lua_GetLoggingSettings();
+    Lua_GetLog();
 
 EndProcedure
 
@@ -105,6 +107,7 @@ Procedure Lua_WorkingWithScripts() Export
     Lua_ExecuteCodeFromString();
     Lua_ExecuteCodeFromFile();
     Lua_CallFunction();
+    Lua_CallScriptFunction();
 
 EndProcedure
 
@@ -114,6 +117,14 @@ Procedure Lua_BytecodeManagement() Export
     Lua_CompileCodeFromFile();
     Lua_ExecuteBytecode();
     Lua_ExecuteBytecodeFromFile();
+    Lua_CallByteCodeFunction();
+
+EndProcedure
+
+Procedure Lua_GlobalVariables() Export
+
+    Lua_SetGlobalVariable();
+    Lua_GetGlobalVariable();
 
 EndProcedure
 
@@ -219,6 +230,72 @@ Procedure Lua_CallFunction()
 
 EndProcedure
 
+Procedure Lua_CallScriptFunction()
+
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
+
+    Result = OPI_Lua.CallScriptFunction("Lua54", "function mul(a, b) return a * b end", "mul", Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallScriptFunction");
+
+    ScriptFile = GetTempFileName("lua");
+    GetBinaryDataFromString("function div(a, b) return a / b end").Write(ScriptFile);
+
+    Parameters = New Array;
+    Parameters.Add(20);
+    Parameters.Add(4);
+
+    Result = OPI_Lua.CallScriptFunction("Lua54", ScriptFile, "div", Parameters);
+
+    OPI_Tools.RemoveFileWithTry(ScriptFile, "Failed to delete the temporary file after the test!!");
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallScriptFunction", "File");
+
+EndProcedure
+
+Procedure Lua_GetLoggingSettings()
+
+    Result = OPI_Lua.GetLoggingSettings(True, 100, GetTempFileName());
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetLoggingSettings");
+
+    Result = OPI_Lua.GetLoggingSettings(False, , GetTempFileName());
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetLoggingSettings", "File");
+
+    Result = OPI_Lua.GetLoggingSettings(True);
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetLoggingSettings", "Memory");
+
+EndProcedure
+
+Procedure Lua_GetLog()
+
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_Lua.GetLoggingSettings(True, 100, LogFile);
+
+    VM = OPI_Lua.CreateVM("Lua54", LoggingSettings);
+
+    OPI_Lua.ExecuteCodeFromString(VM, "return 1");
+
+    Result = OPI_Lua.GetLog(VM);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetLog", , LogFile);
+
+    Result = OPI_Lua.GetLog(VM, True);
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetLog", "AsString", LogFile);
+
+EndProcedure
+
 Procedure Lua_CompileCodeFromString()
 
     Result = OPI_Lua.CompileCodeFromString("Lua54", "return 1");
@@ -272,6 +349,93 @@ Procedure Lua_ExecuteBytecodeFromFile()
     // END
 
     OPI_TestDataRetrieval.Process(Result, "Lua", "ExecuteBytecodeFromFile");
+
+EndProcedure
+
+Procedure Lua_CallByteCodeFunction()
+
+    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "function sub(a, b) return a - b end");
+
+    Parameters = New Array;
+    Parameters.Add(10);
+    Parameters.Add(3);
+
+    Result = OPI_Lua.CallByteCodeFunction("Lua54", Bytecode, "sub", Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallByteCodeFunction");
+
+    ScriptFile = GetTempFileName("lua");
+    GetBinaryDataFromString("function add(a, b) return a + b end").Write(ScriptFile);
+
+    BytecodeFile = GetTempFileName("bin");
+    Bytecode     = OPI_Lua.CompileCodeFromFile("Lua54", ScriptFile);
+    Bytecode.Write(BytecodeFile);
+
+    Parameters = New Array;
+    Parameters.Add(8);
+    Parameters.Add(5);
+
+    Result = OPI_Lua.CallByteCodeFunction("Lua54", BytecodeFile, "add", Parameters);
+
+    OPI_Tools.RemoveFileWithTry(ScriptFile  , "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(BytecodeFile, "Failed to delete the temporary file after the test!!");
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallByteCodeFunction", "File");
+
+EndProcedure
+
+Procedure Lua_SetGlobalVariable()
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    Original = 99;
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", , Original);
+
+    Original = "lua-text";
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", "String", Original);
+
+    Original = True;
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", "Boolean", Original);
+
+    Original = GetBinaryDataFromString("binary-payload", "UTF-8");
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", "BinaryOne", Original);
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("LuaComplexData");
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", "ComplexData", Original);
+
+    Original = OPI_TestDataRetrieval.GetJanxTestCollection("LuaMixedArray");
+    OPI_Lua.SetGlobalVariable(VM, "test_var", Original);
+    Result   = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "SetGlobalVariable", "MixedArray", Original);
+
+EndProcedure
+
+Procedure Lua_GetGlobalVariable()
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.SetGlobalVariable(VM, "test_var", 99);
+
+    Result = OPI_Lua.GetGlobalVariable(VM, "test_var");
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "GetGlobalVariable");
 
 EndProcedure
 
@@ -375,6 +539,10 @@ EndProcedure
 
 Procedure Lua_РаботаСБайткодом() Export
     Lua_BytecodeManagement();
+EndProcedure
+
+Procedure Lua_ГлобальныеПеременные() Export
+    Lua_GlobalVariables();
 EndProcedure
 
 Procedure Lua_РасширеннаяПроверка() Export

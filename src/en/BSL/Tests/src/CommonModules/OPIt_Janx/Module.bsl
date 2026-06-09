@@ -102,6 +102,13 @@ EndProcedure
 
 Procedure Jnx_Benchmark() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     Janx_Benchmark();
 
 EndProcedure
@@ -238,24 +245,28 @@ Procedure Janx_DeserializeData()
 
     OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "String", Original);
 
-    Original = GetBinaryDataFromHexString("CAFEBABE");
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "BinaryOne", Original);
+        Original = GetBinaryDataFromHexString("CAFEBABE");
+        Binary   = OPI_Janx.SerializeData(Original);
+        Result   = OPI_Janx.DeserializeData(Binary);
 
-    Original = New Map;
-    Original.Insert("a", 1);
-    Original.Insert("b", GetBinaryDataFromHexString("FF"));
-    Binary   = OPI_Janx.SerializeData(Original);
-    Result   = OPI_Janx.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "BinaryOne", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "MapWithBinary", Original);
+        Original = New Map;
+        Original.Insert("a", 1);
+        Original.Insert("b", GetBinaryDataFromHexString("FF"));
+        Binary   = OPI_Janx.SerializeData(Original);
+        Result   = OPI_Janx.DeserializeData(Binary);
 
-    Binary = OPI_Janx.SerializeData(Original);
-    Result = OPI_Janx.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "MapWithBinary", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "Prefix", Binary);
+        Binary = OPI_Janx.SerializeData(Original);
+        Result = OPI_Janx.DeserializeData(Binary);
+
+        OPI_TestDataRetrieval.Process(Result, "Janx", "DeserializeData", "Prefix", Binary);
+
+    EndIf;
 
 EndProcedure
 

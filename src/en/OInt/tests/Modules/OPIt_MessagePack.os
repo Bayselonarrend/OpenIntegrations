@@ -101,6 +101,13 @@ EndProcedure
 
 Procedure MP_Benchmark() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     MessagePack_Benchmark();
 
 EndProcedure
@@ -214,9 +221,6 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "FromFile", Restored, Original);
 
-    Result = OPI_MessagePack.SerializeData("");
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyString");
-
     Result = OPI_MessagePack.SerializeData("a");
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "StringFixstr");
@@ -254,10 +258,6 @@ Procedure MessagePack_SerializeData()
     Restored = OPI_MessagePack.DeserializeData(Result);
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
 
-    Result = OPI_MessagePack.SerializeData(Undefined);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Nil");
-
     Result = OPI_MessagePack.SerializeData(True);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "True");
@@ -266,20 +266,10 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "False");
 
-    Data   = GetBinaryDataFromHexString("");
-    Result = OPI_MessagePack.SerializeData(Data);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary");
-
     Data   = GetBinaryDataFromHexString("010203");
     Result = OPI_MessagePack.SerializeData(Data);
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8");
-
-    Array  = New Array;
-    Result = OPI_MessagePack.SerializeData(Array);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyArray");
 
     Array  = New Array;
     Array.Add(1);
@@ -306,6 +296,27 @@ Procedure MessagePack_SerializeData()
 
     Restored = OPI_MessagePack.DeserializeData(Result);
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
+
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
+
+        Result = OPI_MessagePack.SerializeData("");
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyString");
+
+        Array  = New Array;
+        Result = OPI_MessagePack.SerializeData(Array);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyArray");
+
+        Data   = GetBinaryDataFromHexString("");
+        Result = OPI_MessagePack.SerializeData(Data);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary");
+
+        Result = OPI_MessagePack.SerializeData(Undefined);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Nil");
+
+    EndIf;
 
 EndProcedure
 

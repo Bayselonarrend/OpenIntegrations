@@ -53,7 +53,13 @@ Similar to separate calls to `ExecuteCodeFromString`, `SetGlobalVariable`, and `
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
 
+    Result = OPI_Lua.CallScriptFunction("Lua54", "function mul(a, b) return a * b end", "mul", Parameters);
+```
  
 
 

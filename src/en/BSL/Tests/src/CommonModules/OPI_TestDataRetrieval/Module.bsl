@@ -169,7 +169,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("RSS"            , 5);
     Sections.Insert("MessagePack"    , 5);
     Sections.Insert("Janx"           , 5);
-    Sections.Insert("Lua"            , 5);
+    Sections.Insert("Lua"            , 6);
 
     Return Sections;
 
@@ -435,6 +435,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_CommonMethods"                   , "Common methods"                  , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_WorkingWithScripts"              , "Script management"               , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_BytecodeManagement"              , "Bytecode management"             , Lua);
+    NewTest(ArrayOfTests, TestModule, "Lua_GlobalVariables"                 , "Global variables"                , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
     Return ArrayOfTests;
@@ -16061,6 +16062,132 @@ EndFunction
 Function Check_Lua_CallFunction(Val Result, Val Option)
 
     ExpectsThat(Result).Равно(3);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CallScriptFunction(Val Result, Val Option)
+
+    If Option = "File" Then
+        ExpectsThat(Result).Равно(5);
+    Else
+        ExpectsThat(Result).Равно(42);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_CallByteCodeFunction(Val Result, Val Option)
+
+    If Option = "File" Then
+        ExpectsThat(Result).Равно(13);
+    Else
+        ExpectsThat(Result).Равно(7);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_SetGlobalVariable(Val Result, Val Option, InitialValue = Undefined)
+
+    If Option = "ComplexData" Then
+
+        ExpectsThat(Result["alpha"]).Равно(GetStringFromBinaryData(InitialValue["alpha"], "UTF-8"));
+        ExpectsThat(Result["beta"]).Равно(GetStringFromBinaryData(InitialValue["beta"]  , "UTF-8"));
+        ExpectsThat(Result["gamma"]).Равно(GetStringFromBinaryData(InitialValue["gamma"], "UTF-8"));
+
+        ExpectsThat(Result["nested"]["label"]).Равно(InitialValue["nested"]["label"]);
+        ExpectsThat(Result["nested"]["inner"]).Равно(GetStringFromBinaryData(InitialValue["nested"]["inner"], "UTF-8"));
+
+        CheckArrayJanx(Result["meta"], InitialValue["meta"]);
+
+    ElsIf Option = "MixedArray" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+        ExpectsThat(Result.Count()).Равно(InitialValue.Count());
+
+        ExpectsThat(Result[0]).Равно(1);
+        ExpectsThat(Result[1]).Равно("text");
+        ExpectsThat(Result[2]).Равно(GetStringFromBinaryData(InitialValue[2], "UTF-8"));
+
+        ExpectsThat(Result[3]["k"]).Равно("v");
+        ExpectsThat(Result[3]["bin"]).Равно(GetStringFromBinaryData(InitialValue[3]["bin"], "UTF-8"));
+
+        ExpectsThat(Result[4][0]).Равно(False);
+        ExpectsThat(Result[4][1]).Равно(GetStringFromBinaryData(InitialValue[4][1], "UTF-8"));
+
+    ElsIf Option = "BinaryOne" Then
+
+        ExpectsThat(Result).Равно(GetStringFromBinaryData(InitialValue, "UTF-8"));
+
+    Else
+
+        ExpectsThat(Result).Равно(InitialValue);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_GetGlobalVariable(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(99);
 
     Return Result;
 

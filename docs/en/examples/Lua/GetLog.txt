@@ -1,0 +1,8 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_Lua.GetLoggingSettings(True, 100, LogFile);
+
+    VM = OPI_Lua.CreateVM("Lua54", LoggingSettings);
+
+    OPI_Lua.ExecuteCodeFromString(VM, "return 1");
+
+    Result = OPI_Lua.GetLog(VM);

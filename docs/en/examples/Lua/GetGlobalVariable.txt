@@ -1,0 +1,5 @@
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.SetGlobalVariable(VM, "test_var", 99);
+
+    Result = OPI_Lua.GetGlobalVariable(VM, "test_var");

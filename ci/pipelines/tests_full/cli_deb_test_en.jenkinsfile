@@ -778,6 +778,7 @@ pipeline {
 'Lua_CommonMethods',
 'Lua_WorkingWithScripts',
 'Lua_BytecodeManagement',
+'Lua_GlobalVariables',
 'Lua_ExtendedCheck',
 					])
 				}

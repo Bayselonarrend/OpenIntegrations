@@ -52,7 +52,13 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    VM = OPI_Lua.СоздатьVM("Lua54");
 
+    Исходное  = 99;
+    OPI_Lua.УстановитьГлобальнуюПеременную(VM, "test_var", Исходное);
+    Результат = OPI_Lua.ПолучитьГлобальнуюПеременную(VM, "test_var");
+```
     
 
 

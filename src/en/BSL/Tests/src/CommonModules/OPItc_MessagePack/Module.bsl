@@ -103,6 +103,13 @@ EndProcedure
 
 Procedure MP_Benchmark() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(True);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     MessagePack_Benchmark();
 
 EndProcedure
@@ -230,12 +237,6 @@ Procedure MessagePack_SerializeData()
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "FromFile", Restored, Original);
 
     Options = New Structure;
-    Options.Insert("value", "");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyString");
-
-    Options = New Structure;
     Options.Insert("value", "a");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
@@ -303,13 +304,6 @@ Procedure MessagePack_SerializeData()
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
 
     Options = New Structure;
-    Options.Insert("value", Неопределено);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Nil");
-
-    Options = New Structure;
     Options.Insert("value", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
@@ -323,14 +317,6 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "False");
 
-    Data   = GetBinaryDataFromHexString("");
-    Options = New Structure;
-    Options.Insert("value", Data);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyBinary");
-
     Data   = GetBinaryDataFromHexString("010203");
     Options = New Structure;
     Options.Insert("value", Data);
@@ -338,14 +324,6 @@ Procedure MessagePack_SerializeData()
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "BinaryBin8");
-
-    Array  = New Array;
-    Options = New Structure;
-    Options.Insert("value", Array);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyArray");
 
     Array  = New Array;
     Array.Add(1);
@@ -387,6 +365,39 @@ Procedure MessagePack_SerializeData()
 
     Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
+
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
+
+        Options = New Structure;
+        Options.Insert("value", "");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyString");
+
+        Array  = New Array;
+        Options = New Structure;
+        Options.Insert("value", Array);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyArray");
+
+        Data   = GetBinaryDataFromHexString("");
+        Options = New Structure;
+        Options.Insert("value", Data);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyBinary");
+
+        Options = New Structure;
+        Options.Insert("value", Неопределено);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Nil");
+
+    EndIf;
 
 EndProcedure
 

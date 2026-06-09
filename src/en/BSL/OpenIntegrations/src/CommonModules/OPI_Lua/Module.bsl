@@ -170,19 +170,19 @@ Function CallScriptFunction(Val Lua
     EndIf;
 
     OPI_TypeConversion.GetLine(Script, True);
-    ExecuteCodeFromString(Lua, Script);
+    ExecuteCodeFromString(AddIn, Script);
 
     If Variables <> Undefined Then
 
         OPI_TypeConversion.GetKeyValueCollection(Variables);
 
         For Each KeyValue In Variables Do
-            SetGlobalVariable(Lua, KeyValue.Key, KeyValue.Value);
+            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
         EndDo;
 
     EndIf;
 
-    Result = CallFunction(Lua, FunctionName, Parameters);
+    Result = CallFunction(AddIn, FunctionName, Parameters);
 
     Return Result;
 
@@ -216,19 +216,19 @@ Function CallByteCodeFunction(Val Lua
     EndIf;
 
     OPI_TypeConversion.GetBinaryData(Bytecode, True);
-    ExecuteBytecode(Lua, Bytecode);
+    ExecuteBytecode(AddIn, Bytecode);
 
     If Variables <> Undefined Then
 
         OPI_TypeConversion.GetKeyValueCollection(Variables);
 
         For Each KeyValue In Variables Do
-            SetGlobalVariable(Lua, KeyValue.Key, KeyValue.Value);
+            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
         EndDo;
 
     EndIf;
 
-    Result = CallFunction(Lua, FunctionName, Parameters);
+    Result = CallFunction(AddIn, FunctionName, Parameters);
 
     Return Result;
 
@@ -508,7 +508,7 @@ Function SetGlobalVariable(Val Lua, Val Name, Val Value) Export
     Data     = New Structure("data", Value);
     JanxData = OPI_AddIns.SerializeJanx(Data);
 
-    Result = Lua.SetGlobal(Name, JanxData);
+    Result = AddIn.SetGlobal(Name, JanxData);
 
     Data = ResultFromJanx(Result);
 
@@ -535,7 +535,7 @@ Function GetGlobalVariable(Val Lua, Val Name) Export
 
     OPI_TypeConversion.GetLine(Name);
 
-    Result = Lua.GetGlobal(Name);
+    Result = AddIn.GetGlobal(Name);
 
     Data = ResultFromJanx(Result);
 

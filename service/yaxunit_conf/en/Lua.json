@@ -12,6 +12,7 @@
 "OPIt_Lua.Lua_CommonMethods",
 "OPIt_Lua.Lua_WorkingWithScripts",
 "OPIt_Lua.Lua_BytecodeManagement",
+"OPIt_Lua.Lua_GlobalVariables",
 "OPIt_Lua.Lua_ExtendedCheck"
     ]
   },
