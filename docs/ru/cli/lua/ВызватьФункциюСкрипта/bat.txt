@@ -1,0 +1,5 @@
+oint lua ВызватьФункциюСкрипта ^
+  --lua "Lua54" ^
+  --script "C:\Users\bayselonarrend\AppData\Local\Temp\hz1muqq2.wdt.lua" ^
+  --func "div" ^
+  --params "['20','4']"
