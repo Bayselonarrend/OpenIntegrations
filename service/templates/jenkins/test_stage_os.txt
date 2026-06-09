@@ -1,6 +1,6 @@
 		stage('Testing-%1') {
             when {
-                expression { return shouldRunStage('%1') }
+                expression { return params['%1'] }
             }
 			steps {
 				script {

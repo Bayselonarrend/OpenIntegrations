@@ -10,16 +10,11 @@ pipeline {
 	agent {
 		label 'windows'
 	}
+	parameters {
+		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
+		booleanParam(name: 'GoogleDrive', defaultValue: true, description: 'Run GoogleDrive tests')
+	}
 	stages {
-
-        stage('Read stages config') {
-            steps {
-                script {
-                    def configText = readFile './service/tests_config.json'
-                    env.STAGES_CONFIG = configText
-                }
-            }
-        }
 
 		stage('Remove OInt from OneScript Lib') {
 			steps {
@@ -71,7 +66,7 @@ pipeline {
 
 		stage('Testing-Core') {
             when {
-                expression { return shouldRunStage('Core') }
+                expression { return params['Core'] }
             }
 			steps {
 				script {
@@ -84,7 +79,7 @@ pipeline {
 		}
 		stage('Testing-GoogleDrive') {
             when {
-                expression { return shouldRunStage('GoogleDrive') }
+                expression { return params['GoogleDrive'] }
             }
 			steps {
 				script {
@@ -128,27 +123,6 @@ def runModuleTests(String modulePath, List methods, boolean fatal = false) {
                 runLibraryTest(modulePath, method)
             }
         }
-    }
-}
-
-def shouldRunStage(stageName) {
-    try {
-        if (!env.STAGES_CONFIG) {
-            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
-            return true
-        }
-        def config = readJSON text: env.STAGES_CONFIG
-        def value = config[stageName]
-        if (value == null) {
-            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
-            return false
-        }
-        return value == true
-    } catch (Exception e) {
-        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
-        echo "Raw config: ${env.STAGES_CONFIG}"
-        // Решите: включать stage по умолчанию или нет?
-        return false // или true — по вашему усмотрению
     }
 }
 
