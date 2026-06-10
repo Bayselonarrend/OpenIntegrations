@@ -96,6 +96,16 @@
 
 Процедура ПодготовитьКурсыДляRU(Знач КаталогDocusaurus, Знач КаталогРепозиторияКурсов)
 
+	ОбъектКаталогРепозиторияКурсов = Новый Файл(КаталогРепозиторияКурсов);
+	Если ОбъектКаталогРепозиторияКурсов.Существует() Тогда
+		CommonTools.СообщитьПроцесс("Updating OpenIntegrations-Courses...");
+		CommonTools.ЗапуститьВнешнееПриложение("git fetch --all", КаталогРепозиторияКурсов);
+		CommonTools.ЗапуститьВнешнееПриложение("git reset --hard origin/master", КаталогРепозиторияКурсов);
+	Иначе
+		CommonTools.СообщитьПроцесс("Cloning OpenIntegrations-Courses...");
+		CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/OpenIntegrations-Courses.git");
+	КонецЕсли;
+
 	КаталогКурсовDocusaurus = КаталогDocusaurus + "courses";
 	КаталогDataDocusaurus   = КаталогDocusaurus + "data";
 	КаталогPagesDocusaurus  = КаталогDocusaurus + "src/pages";
@@ -116,16 +126,6 @@
 	ОбъектКаталогКартинокКурсовDocusaurus = Новый Файл(КаталогКартинокКурсовDocusaurus);
 	Если ОбъектКаталогКартинокКурсовDocusaurus.Существует() Тогда
 		УдалитьФайлы(КаталогКартинокКурсовDocusaurus, "*");
-	КонецЕсли;
-
-	ОбъектКаталогРепозиторияКурсов = Новый Файл(КаталогРепозиторияКурсов);
-	Если ОбъектКаталогРепозиторияКурсов.Существует() Тогда
-		CommonTools.СообщитьПроцесс("Updating OpenIntegrations-Courses...");
-		CommonTools.ЗапуститьВнешнееПриложение("git fetch --all", КаталогРепозиторияКурсов);
-		CommonTools.ЗапуститьВнешнееПриложение("git reset --hard origin/master", КаталогРепозиторияКурсов);
-	Иначе
-		CommonTools.СообщитьПроцесс("Cloning OpenIntegrations-Courses...");
-		CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/OpenIntegrations-Courses.git");
 	КонецЕсли;
 
 	Приостановить(10000);
