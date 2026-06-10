@@ -1,0 +1,10 @@
+    VM = OPI_Lua.СоздатьVM("Lua54");
+
+    OPI_Lua.ДобавитьПакетИзСтроки(VM, "calc", "local M = {} function M.double(x) return x * 2 end return M");
+
+    OPI_Lua.ВыполнитьКодИзСтроки(VM, "calc = require('calc')");
+
+    Параметры = Новый Массив;
+    Параметры.Добавить(5);
+
+    Результат = OPI_Lua.ВызватьФункцию(VM, "calc.double", Параметры);

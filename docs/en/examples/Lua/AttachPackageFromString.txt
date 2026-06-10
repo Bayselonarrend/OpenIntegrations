@@ -1,0 +1,10 @@
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.AttachPackageFromString(VM, "calc", "local M = {} function M.double(x) return x * 2 end return M");
+
+    OPI_Lua.ExecuteCodeFromString(VM, "calc = require('calc')");
+
+    Parameters = New Array;
+    Parameters.Add(5);
+
+    Result = OPI_Lua.CallFunction(VM, "calc.double", Parameters);

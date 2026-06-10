@@ -1,0 +1,6 @@
+    VM = OPI_Lua.СоздатьVM("Lua54");
+
+    OPI_Lua.ДобавитьПакетИзСтроки(VM, "tmp_pkg", "local M = {} function M.ping() return ""pong"" end return M");
+    OPI_Lua.Перезапустить(VM);
+
+    Результат = OPI_Lua.ПолучитьСписокПакетов(VM);

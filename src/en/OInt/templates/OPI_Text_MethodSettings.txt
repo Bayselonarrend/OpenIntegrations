@@ -2784,22 +2784,21 @@
   "CreateVM": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
-  "CallFunction": {
+  "Restart": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
-  "CallScriptFunction": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "CallByteCodeFunction": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  "CallFunction": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteCodeFromString": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "ExecuteCodeFromFile": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "CallScriptFunction": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "CompileCodeFromString": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
@@ -2815,10 +2814,23 @@
   "ExecuteBytecodeFromFile": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
+  "CallByteCodeFunction": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "SetGlobalVariable": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   },
   "GetGlobalVariable": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AttachPackageFromString": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "AttachPackageFromFile": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "GetPackagesList": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },

@@ -98,6 +98,7 @@ EndFunction
 Procedure Lua_CommonMethods() Export
 
     Lua_CreateVM();
+    Lua_Restart();
     Lua_IsVM();
     Lua_GetLoggingSettings();
     Lua_GetLog();
@@ -127,6 +128,14 @@ Procedure Lua_GlobalVariables() Export
 
     Lua_SetGlobalVariable();
     Lua_GetGlobalVariable();
+
+EndProcedure
+
+Procedure Lua_PackageManagement() Export
+
+    Lua_AttachPackageFromString();
+    Lua_AttachPackageFromFile();
+    Lua_GetPackagesList();
 
 EndProcedure
 
@@ -170,6 +179,21 @@ Procedure Lua_CreateVM()
     Result = OPI_Lua.CreateVM("LuaJIT");
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CreateVM", "LuaJIT");
+
+EndProcedure
+
+Procedure Lua_Restart()
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.AttachPackageFromString(VM, "tmp_pkg", "local M = {} function M.ping() return ""pong"" end return M");
+    OPI_Lua.Restart(VM);
+
+    Result = OPI_Lua.GetPackagesList(VM);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "Restart");
 
 EndProcedure
 
@@ -268,6 +292,45 @@ Procedure Lua_CallScriptFunction()
     OPI_Tools.RemoveFileWithTry(ScriptFile, "Failed to delete the temporary file after the test!!");
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallScriptFunction", "File");
+
+    Packages = New Map;
+    Packages.Insert("calc", "local M = {} function M.double(x) return x * 2 end return M");
+
+    Parameters = New Array;
+    Parameters.Add(5);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("script", "function run(x) return calc.double(x) end");
+    Options.Insert("func", "run");
+    Options.Insert("params", Parameters);
+    Options.Insert("packages", Packages);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallScriptFunction", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallScriptFunction", "Packages");
+
+    PackageFile = GetTempFileName("lua");
+    GetBinaryDataFromString("local M = {} function M.triple(x) return x * 3 end return M").Write(PackageFile);
+
+    Packages = New Map;
+    Packages.Insert("calc_file", PackageFile);
+
+    Parameters = New Array;
+    Parameters.Add(4);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("script", "function run(x) return calc_file.triple(x) end");
+    Options.Insert("func", "run");
+    Options.Insert("params", Parameters);
+    Options.Insert("packages", Packages);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallScriptFunction", Options);
+
+    OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallScriptFunction", "FilePackages");
 
 EndProcedure
 
@@ -434,6 +497,57 @@ Procedure Lua_CallByteCodeFunction()
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallByteCodeFunction", "File");
 
+    Packages = New Map;
+    Packages.Insert("calc", "local M = {} function M.double(x) return x * 2 end return M");
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", "function run(x) return calc.double(x) end");
+
+    Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromString", Options);
+
+    Parameters = New Array;
+    Parameters.Add(5);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", Bytecode);
+    Options.Insert("func", "run");
+    Options.Insert("params", Parameters);
+    Options.Insert("packages", Packages);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallByteCodeFunction", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallByteCodeFunction", "Packages");
+
+    PackageFile = GetTempFileName("lua");
+    GetBinaryDataFromString("local M = {} function M.triple(x) return x * 3 end return M").Write(PackageFile);
+
+    Packages = New Map;
+    Packages.Insert("calc_file", PackageFile);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", "function run(x) return calc_file.triple(x) end");
+
+    Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromString", Options);
+
+    Parameters = New Array;
+    Parameters.Add(4);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", Bytecode);
+    Options.Insert("func", "run");
+    Options.Insert("params", Parameters);
+    Options.Insert("packages", Packages);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallByteCodeFunction", Options);
+
+    OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallByteCodeFunction", "FilePackages");
+
 EndProcedure
 
 Procedure Lua_SetGlobalVariable()
@@ -486,6 +600,64 @@ Procedure Lua_GetGlobalVariable()
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetGlobalVariable");
+
+EndProcedure
+
+Procedure Lua_AttachPackageFromString()
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.AttachPackageFromString(VM, "calc", "local M = {} function M.double(x) return x * 2 end return M");
+
+    OPI_Lua.ExecuteCodeFromString(VM, "calc = require('calc')");
+
+    Parameters = New Array;
+    Parameters.Add(5);
+
+    Result = OPI_Lua.CallFunction(VM, "calc.double", Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "AttachPackageFromString");
+
+EndProcedure
+
+Procedure Lua_AttachPackageFromFile()
+
+    PackageFile = GetTempFileName("lua");
+    GetBinaryDataFromString("local M = {} function M.triple(x) return x * 3 end return M").Write(PackageFile);
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.AttachPackageFromFile(VM, "calc_file", PackageFile);
+
+    OPI_Lua.ExecuteCodeFromString(VM, "calc_file = require('calc_file')");
+
+    Parameters = New Array;
+    Parameters.Add(4);
+
+    Result = OPI_Lua.CallFunction(VM, "calc_file.triple", Parameters);
+
+    OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "AttachPackageFromFile");
+
+EndProcedure
+
+Procedure Lua_GetPackagesList()
+
+    VM = OPI_Lua.CreateVM("Lua54");
+
+    OPI_Lua.AttachPackageFromString(VM, "alpha", "local M = {} function M.one() return 1 end return M");
+    OPI_Lua.AttachPackageFromString(VM, "beta" , "local M = {} function M.two() return 2 end return M");
+
+    Result = OPI_Lua.GetPackagesList(VM);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetPackagesList");
 
 EndProcedure
 
@@ -593,6 +765,10 @@ EndProcedure
 
 Procedure Lua_ГлобальныеПеременные() Export
     Lua_GlobalVariables();
+EndProcedure
+
+Procedure Lua_УправлениеПакетами() Export
+    Lua_PackageManagement();
 EndProcedure
 
 Procedure Lua_РасширеннаяПроверка() Export

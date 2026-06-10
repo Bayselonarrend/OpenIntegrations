@@ -80,6 +80,7 @@ pipeline {
 'Lua_WorkingWithScripts',
 'Lua_BytecodeManagement',
 'Lua_GlobalVariables',
+'Lua_PackageManagement',
 'Lua_ExtendedCheck',
 					])
 				}

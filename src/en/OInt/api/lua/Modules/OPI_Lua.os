@@ -104,6 +104,28 @@ Function CreateVM(Val Version, Val Logging = Undefined) Export
 
 EndFunction
 
+// Restart !NOCLI
+// Restarts Lua VM
+//
+// Parameters:
+// Lua - Arbitrary - Lua AddIn or Lua version to run - lua
+//
+// Returns:
+// Map Of KeyAndValue - Execution result
+Function Restart(Val Lua) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    Result = AddIn.Reset();
+
+    Return ResultFromJanx(Result);
+
+EndFunction
+
 // Call function !NOCLI
 // Calls a Lua function with the provided parameters
 //
@@ -138,98 +160,6 @@ Function CallFunction(Val Lua, Val FunctionName, Val Parameters = Undefined) Exp
     ResultBD = AddIn.CallFunction(FunctionName, BDArgs);
 
     Return ResultFromJanx(ResultBD);
-
-EndFunction
-
-// Call script function
-// Executes Lua code from a string or file and calls the specified function
-//
-// Note:
-// Similar to separate calls to `ExecuteCodeFromString`, `SetGlobalVariable`, and `CallFunction`
-//
-// Parameters:
-// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
-// Script       - String             - Lua code or file path                       - script
-// FunctionName - String             - Function name or path in module.func format - func
-// Parameters   - Map Of KeyAndValue - Function parameters, if necessary           - params
-// Variables    - Map Of KeyAndValue - Module global variables, if necessary       - globals
-//
-// Returns:
-// Arbitrary - Calling result
-Function CallScriptFunction(Val Lua
-    , Val Script
-    , Val FunctionName
-    , Val Parameters = Undefined
-    , Val Variables = Undefined) Export
-
-    AddIn = CreateVM(Lua);
-
-    If Not IsVM(AddIn) Then
-        Return AddIn;
-    EndIf;
-
-    OPI_TypeConversion.GetLine(Script, True);
-    ExecuteCodeFromString(AddIn, Script);
-
-    If Variables <> Undefined Then
-
-        OPI_TypeConversion.GetKeyValueCollection(Variables);
-
-        For Each KeyValue In Variables Do
-            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
-        EndDo;
-
-    EndIf;
-
-    Result = CallFunction(AddIn, FunctionName, Parameters);
-
-    Return Result;
-
-EndFunction
-
-// Call byte code function
-// Executes bytecode and calls the specified function
-//
-// Note:
-// Similar to separate calls to `ExecuteByteCode`, `SetGlobalVariable`, and `CallFunction`
-//
-// Parameters:
-// Lua          - Arbitrary          - Lua AddIn or Lua version to run             - lua
-// Bytecode     - String, BinaryData - Byte code or file path                      - code
-// FunctionName - String             - Function name or path in module.func format - func
-// Parameters   - Map Of KeyAndValue - Function parameters, if necessary           - params
-// Variables    - Map Of KeyAndValue - Module global variables, if necessary       - globals
-//
-// Returns:
-// Arbitrary - Calling result
-Function CallByteCodeFunction(Val Lua
-    , Val Bytecode
-    , Val FunctionName
-    , Val Parameters = Undefined
-    , Val Variables = Undefined) Export
-
-    AddIn = CreateVM(Lua);
-
-    If Not IsVM(AddIn) Then
-        Return AddIn;
-    EndIf;
-
-    OPI_TypeConversion.GetBinaryData(Bytecode, True);
-    ExecuteBytecode(AddIn, Bytecode);
-
-    If Variables <> Undefined Then
-
-        OPI_TypeConversion.GetKeyValueCollection(Variables);
-
-        For Each KeyValue In Variables Do
-            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
-        EndDo;
-
-    EndIf;
-
-    Result = CallFunction(AddIn, FunctionName, Parameters);
-
-    Return Result;
 
 EndFunction
 
@@ -350,6 +280,58 @@ Function ExecuteCodeFromFile(Val Lua, Val Path) Export
     ResultBD = AddIn.ExecuteFile(ScriptFile.FullName);
 
     Return ResultFromJanx(ResultBD);
+
+EndFunction
+
+// Call script function
+// Executes Lua code from a string or file and calls the specified function
+//
+// Note:
+// Similarly to separate calls of `ExecuteCodeFromString`, `AttachPackageFromString`, `SetGlobalVariable`, and `CallFunction`
+//
+// Parameters:
+// Lua          - Arbitrary          - Lua AddIn or Lua version to run                 - lua
+// Script       - String             - Lua code or file path                           - script
+// FunctionName - String             - Function name or path in module.func format     - func
+// Parameters   - Map Of KeyAndValue - Function parameters, if necessary               - params
+// Packages     - Map Of KeyAndValue - Packages: key > name, value > code or file path - packages
+// Variables    - Map Of KeyAndValue - Module global variables, if necessary           - globals
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallScriptFunction(Val Lua
+    , Val Script
+    , Val FunctionName
+    , Val Parameters = Undefined
+    , Val Packages = Undefined
+    , Val Variables = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Script, True);
+    ExecuteCodeFromString(AddIn, Script);
+
+    If Packages <> Undefined Then
+        AttachPackages(AddIn, Packages);
+    EndIf;
+
+    If Variables <> Undefined Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Variables);
+
+        For Each KeyValue In Variables Do
+            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Result = CallFunction(AddIn, FunctionName, Parameters);
+
+    Return Result;
 
 EndFunction
 
@@ -480,6 +462,58 @@ Function ExecuteBytecodeFromFile(Val Lua, Val Path) Export
 
 EndFunction
 
+// Call byte code function
+// Executes bytecode and calls the specified function
+//
+// Note:
+// Similarly to separate calls of `ExecuteByteCode`, `AttachPackageFromString`, `SetGlobalVariable`, and `CallFunction`
+//
+// Parameters:
+// Lua          - Arbitrary          - Lua AddIn or Lua version to run                 - lua
+// Bytecode     - String, BinaryData - Byte code or file path                          - code
+// FunctionName - String             - Function name or path in module.func format     - func
+// Parameters   - Map Of KeyAndValue - Function parameters, if necessary               - params
+// Packages     - Map Of KeyAndValue - Packages: key > name, value > code or file path - packages
+// Variables    - Map Of KeyAndValue - Module global variables, if necessary           - globals
+//
+// Returns:
+// Arbitrary - Calling result
+Function CallByteCodeFunction(Val Lua
+    , Val Bytecode
+    , Val FunctionName
+    , Val Parameters = Undefined
+    , Val Packages = Undefined
+    , Val Variables = Undefined) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(Bytecode, True);
+    ExecuteBytecode(AddIn, Bytecode);
+
+    If Packages <> Undefined Then
+        AttachPackages(AddIn, Packages);
+    EndIf;
+
+    If Variables <> Undefined Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Variables);
+
+        For Each KeyValue In Variables Do
+            SetGlobalVariable(AddIn, KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Result = CallFunction(AddIn, FunctionName, Parameters);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region GlobalVariables
@@ -544,9 +578,122 @@ EndFunction
 
 #EndRegion
 
+#Region PackageManagement
+
+// Attach package from string !NOCLI
+// Adds code from a string as a package with the specified name
+//
+// Parameters:
+// Lua         - Arbitrary - Lua AddIn or Lua version to run                                    - lua
+// PackageName - String    - The name of the package by which it will be available after adding - name
+// Code        - String    - Package code                                                       - code
+//
+// Returns:
+// Map Of KeyAndValue - Add result
+Function AttachPackageFromString(Val Lua, Val PackageName, Val Code) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(PackageName);
+    OPI_TypeConversion.GetLine(Code);
+
+    Result = AddIn.AddPackage(PackageName, Code);
+
+    Return ResultFromJanx(Result);
+
+EndFunction
+
+// Attach package from file !NOCLI
+// Adds code from a file as a package with the specified name
+//
+// Parameters:
+// Lua         - Arbitrary - Lua AddIn or Lua version to run                                    - lua
+// PackageName - String    - The name of the package by which it will be available after adding - name
+// Path        - String    - Path to code file                                                  - filepath
+//
+// Returns:
+// Map Of KeyAndValue - Add result
+Function AttachPackageFromFile(Val Lua, Val PackageName, Val Path) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetLine(PackageName);
+
+    ScriptFile = New File(Path);
+
+    If Not ScriptFile.Exists() Then
+        Raise "File not found";
+    EndIf;
+
+    Result = AddIn.LoadPackageFromFile(PackageName, Path);
+
+    Return ResultFromJanx(Result);
+
+EndFunction
+
+// Get packages list !NOCLI
+// Gets a list of packages added to the environment
+//
+// Parameters:
+// Lua - Arbitrary - Lua AddIn or Lua version to run - lua
+//
+// Returns:
+// Array Of String - Execution result
+Function GetPackagesList(Val Lua) Export
+
+    AddIn = CreateVM(Lua);
+
+    If Not IsVM(AddIn) Then
+        Return AddIn;
+    EndIf;
+
+    Result = AddIn.GetPackages();
+
+    Return ResultFromJanx(Result);
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Internal
+
+Procedure AttachPackages(Val AddIn, Val Packages)
+
+    OPI_TypeConversion.GetKeyValueCollection(Packages);
+
+    For Each Package In Packages Do
+
+        PackageName = Package.Key;
+        Source      = Package.Value;
+
+        OPI_TypeConversion.GetLine(PackageName);
+        OPI_TypeConversion.GetLine(Source);
+
+        PackageFile = New File(Source);
+
+        If PackageFile.Exists() Then
+            AttachPackageFromFile(AddIn, PackageName, Source);
+        Else
+            OPI_TypeConversion.GetLine(Source, True);
+            AttachPackageFromString(AddIn, PackageName, Source);
+        EndIf;
+
+        ExecuteCodeFromString(AddIn, StrTemplate("%1 = require('%2')", PackageName, PackageName));
+
+    EndDo;
+
+EndProcedure
 
 Function ResultFromJanx(Val JanxData)
 
@@ -570,16 +717,12 @@ Function СоздатьVM(Val Версия, Val Логирование = Undefin
     Return CreateVM(Версия, Логирование);
 EndFunction
 
+Function Перезапустить(Val Lua) Export
+    Return Restart(Lua);
+EndFunction
+
 Function ВызватьФункцию(Val Lua, Val ИмяФункции, Val Параметры = Undefined) Export
     Return CallFunction(Lua, ИмяФункции, Параметры);
-EndFunction
-
-Function ВызватьФункциюСкрипта(Val Lua, Val Скрипт, Val ИмяФункции, Val Параметры = Undefined, Val Переменные = Undefined) Export
-    Return CallScriptFunction(Lua, Скрипт, ИмяФункции, Параметры, Переменные);
-EndFunction
-
-Function ВызватьФункциюБайтКода(Val Lua, Val БайтКод, Val ИмяФункции, Val Параметры = Undefined, Val Переменные = Undefined) Export
-    Return CallByteCodeFunction(Lua, БайтКод, ИмяФункции, Параметры, Переменные);
 EndFunction
 
 Function ЭтоVM(Val Значение) Export
@@ -602,6 +745,10 @@ Function ВыполнитьКодИзФайла(Val Lua, Val Путь) Export
     Return ExecuteCodeFromFile(Lua, Путь);
 EndFunction
 
+Function ВызватьФункциюСкрипта(Val Lua, Val Скрипт, Val ИмяФункции, Val Параметры = Undefined, Val Пакеты = Undefined, Val Переменные = Undefined) Export
+    Return CallScriptFunction(Lua, Скрипт, ИмяФункции, Параметры, Пакеты, Переменные);
+EndFunction
+
 Function СкомпилироватьКодИзСтроки(Val Lua, Val Код) Export
     Return CompileCodeFromString(Lua, Код);
 EndFunction
@@ -618,12 +765,28 @@ Function ВыполнитьБайтКодФайла(Val Lua, Val Путь) Expor
     Return ExecuteBytecodeFromFile(Lua, Путь);
 EndFunction
 
+Function ВызватьФункциюБайтКода(Val Lua, Val БайтКод, Val ИмяФункции, Val Параметры = Undefined, Val Пакеты = Undefined, Val Переменные = Undefined) Export
+    Return CallByteCodeFunction(Lua, БайтКод, ИмяФункции, Параметры, Пакеты, Переменные);
+EndFunction
+
 Function УстановитьГлобальнуюПеременную(Val Lua, Val Имя, Val Значение) Export
     Return SetGlobalVariable(Lua, Имя, Значение);
 EndFunction
 
 Function ПолучитьГлобальнуюПеременную(Val Lua, Val Имя) Export
     Return GetGlobalVariable(Lua, Имя);
+EndFunction
+
+Function ДобавитьПакетИзСтроки(Val Lua, Val ИмяПакета, Val Код) Export
+    Return AttachPackageFromString(Lua, ИмяПакета, Код);
+EndFunction
+
+Function ДобавитьПакетИзФайла(Val Lua, Val ИмяПакета, Val Путь) Export
+    Return AttachPackageFromFile(Lua, ИмяПакета, Путь);
+EndFunction
+
+Function ПолучитьСписокПакетов(Val Lua) Export
+    Return GetPackagesList(Lua);
 EndFunction
 
 #EndRegion

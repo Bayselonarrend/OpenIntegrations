@@ -1,7 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 
-description: Call byte code function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Call script function and other functions to work with Lua in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Lua]
 ---
 
@@ -9,22 +9,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
-# Call byte code function
- Executes bytecode and calls the specified function
+# Call script function
+ Executes Lua code from a string or file and calls the specified function
 
 
 
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function CallByteCodeFunction(Val Lua, Val Bytecode, Val FunctionName, Val Parameters = Undefined, Val Variables = Undefined) Export`
+`Function CallScriptFunction(Val Lua, Val Script, Val FunctionName, Val Parameters = Undefined, Val Packages = Undefined, Val Variables = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Lua | --lua | Arbitrary | &#x2714; | Lua AddIn or Lua version to run |
-  | Bytecode | --code | String, BinaryData | &#x2714; | Byte code or file path |
+  | Script | --script | String | &#x2714; | Lua code or file path |
   | FunctionName | --func | String | &#x2714; | Function name or path in module.func format |
   | Parameters | --params | Map Of KeyAndValue | &#x2716; | Function parameters, if necessary |
+  | Packages | --packages | Map Of KeyAndValue | &#x2716; | Packages: key > name, value > code or file path |
   | Variables | --globals | Map Of KeyAndValue | &#x2716; | Module global variables, if necessary |
 
 
@@ -48,21 +49,17 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 :::tip
-Similar to separate calls to `ExecuteByteCode`, `SetGlobalVariable`, and `CallFunction`
-
-Parameters with Binary data type can also accept file paths on disk and URLs
+Similarly to separate calls of `ExecuteCodeFromString`, `AttachPackageFromString`, `SetGlobalVariable`, and `CallFunction`
 :::
 <br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "function sub(a, b) return a - b end");
-
     Parameters = New Array;
-    Parameters.Add(10);
-    Parameters.Add(3);
+    Parameters.Add(6);
+    Parameters.Add(7);
 
-    Result = OPI_Lua.CallByteCodeFunction("Lua54", Bytecode, "sub", Parameters);
+    Result = OPI_Lua.CallScriptFunction("Lua54", "function mul(a, b) return a * b end", "mul", Parameters);
 ```
  
 

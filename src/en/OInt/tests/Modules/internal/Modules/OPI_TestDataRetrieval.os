@@ -168,7 +168,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("RSS"            , 5);
     Sections.Insert("MessagePack"    , 5);
     Sections.Insert("Janx"           , 5);
-    Sections.Insert("Lua"            , 6);
+    Sections.Insert("Lua"            , 7);
 
     Return Sections;
 
@@ -435,6 +435,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_WorkingWithScripts"              , "Script management"               , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_BytecodeManagement"              , "Bytecode management"             , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_GlobalVariables"                 , "Global variables"                , Lua);
+    NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
     Return ArrayOfTests;
@@ -15560,11 +15561,11 @@ Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Unde
 
     ElsIf Option = "EmptyBinary" Then
 
-        ExpectsThat(Hex).Равно("c400");
+        CheckHexMessagePackEmptyBinary(Hex, Result);
 
     ElsIf Option = "BinaryBin8" Then
 
-        ExpectsThat(Hex).Равно("c403010203");
+        CheckHexMessagePackBinary(Hex, Result, "c403010203", GetBinaryDataFromHexString("010203"));
 
     ElsIf Option = "EmptyArray" Then
 
@@ -15663,24 +15664,73 @@ Function Check_MessagePack_DeserializeData(Val Result, Val Option, ExpectedValue
 
     ElsIf Option = "RoundTrip" Then
 
-        If TypeOf(ExpectedValue)     = Type("Number") Then
-            CheckNumberMessagePack(Result, ExpectedValue);
-        ElsIf TypeOf(ExpectedValue)  = Type("BinaryData") Then
-            CheckMessagePackBinaryData(Result, ExpectedValue);
-        ElsIf TypeOf(ExpectedValue)  = Type("Array") Then
-            CheckArrayMessagePack(Result, ExpectedValue);
-        ElsIf TypeOf(ExpectedValue)  = Type("Map")
-            Or TypeOf(ExpectedValue) = Type("Structure") Then
-            CheckMapMessagePack(Result, ExpectedValue);
-        Else
-            ExpectsThat(Result).Равно(ExpectedValue);
-        EndIf;
+        CheckMessagePackValue(Result, ExpectedValue);
 
     EndIf;
 
     Return Result;
 
 EndFunction
+
+Procedure CheckHexMessagePackEmptyBinary(Val ActualHex, Val SerializationResult)
+
+    If ActualHex = "c400" Then
+        Return;
+    EndIf;
+
+    Deserialized = OPI_MessagePack.DeserializeData(SerializationResult);
+
+    If TypeOf(Deserialized) = Type("String") Then
+
+        File = New File(Deserialized);
+
+        If File.Exists() Then
+            BinaryDataFromSource = New BinaryData(Deserialized);
+        Else
+            BinaryDataFromSource = GetBinaryDataFromString(Deserialized);
+        EndIf;
+
+        ExpectsThat(BinaryDataFromSource.Size()).Равно(0);
+
+    ElsIf TypeOf(Deserialized) = Type("BinaryData") Then
+        ExpectsThat(Deserialized.Size()).Равно(0);
+    Else
+        ExpectsThat(ActualHex).Равно("c400");
+    EndIf;
+
+EndProcedure
+
+Procedure CheckHexMessagePackBinary(Val ActualHex, Val SerializationResult, Val ExpectedBinaryHex, Val ExpectedData)
+
+    If ActualHex = ExpectedBinaryHex Then
+        Return;
+    EndIf;
+
+    Deserialized = OPI_MessagePack.DeserializeData(SerializationResult);
+
+    If TypeOf(Deserialized) = Type("String") Then
+
+        File = New File(Deserialized);
+
+        If File.Exists() Then
+            BinaryDataFromSource = New BinaryData(Deserialized);
+        Else
+            BinaryDataFromSource = GetBinaryDataFromString(Deserialized);
+        EndIf;
+
+        CheckMessagePackBinaryData(BinaryDataFromSource, ExpectedData);
+
+    ElsIf TypeOf(Deserialized) = Type("BinaryData") Then
+
+        CheckMessagePackBinaryData(Deserialized, ExpectedData);
+
+    Else
+
+        ExpectsThat(ActualHex).Равно(ExpectedBinaryHex);
+
+    EndIf;
+
+EndProcedure
 
 Procedure ExpectsThatMessagePackHex(Val ActualHex, Val ExpectedHex, Val ExpectedStringHex = "")
 
@@ -15692,7 +15742,27 @@ Procedure ExpectsThatMessagePackHex(Val ActualHex, Val ExpectedHex, Val Expected
 
 EndProcedure
 
+Procedure CheckBooleanMessagePack(Val Actual, Val Expected)
+
+    If TypeOf(Actual)    = Type("Boolean") Then
+        ExpectsThat(Actual).Равно(Expected);
+    ElsIf TypeOf(Actual) = Type("String") Then
+        If Expected Then
+            ExpectsThat(Lower(Actual)).Равно("true");
+        Else
+            ExpectsThat(Lower(Actual)).Равно("false");
+        EndIf;
+    Else
+        ExpectsThat(Actual).Равно(Expected);
+    EndIf;
+
+EndProcedure
+
 Procedure CheckNumberMessagePack(Val Actual, Val Expected)
+
+    If TypeOf(Actual) = Type("String") Then
+        Actual        = Number(Actual);
+    EndIf;
 
     Difference = Actual - Expected;
 
@@ -15718,24 +15788,7 @@ Procedure CheckArrayMessagePack(Val Actual, Val Expected)
     ExpectsThat(Actual.Count()).Равно(Expected.Count());
 
     For Index = 0 To Actual.UBound() Do
-
-        ActualItem   = Actual[Index];
-        ExpectedItem = Expected[Index];
-
-        If TypeOf(ActualItem)        = Type("Number") Then
-            CheckNumberMessagePack(ActualItem, ExpectedItem);
-        ElsIf TypeOf(ActualItem)     = Type("BinaryData") Then
-            CheckMessagePackBinaryData(ActualItem, ExpectedItem);
-        ElsIf TypeOf(ActualItem)     = Type("Array") Then
-            CheckArrayMessagePack(ActualItem, ExpectedItem);
-        ElsIf TypeOf(ActualItem)     = Type("Map") Then
-            CheckMapMessagePack(ActualItem, ExpectedItem);
-        ElsIf ActualItem             = Undefined Then
-            ExpectsThat(ExpectedItem = Undefined).Равно(True);
-        Else
-            ExpectsThat(ActualItem).Равно(ExpectedItem);
-        EndIf;
-
+        CheckMessagePackValue(Actual[Index], Expected[Index]);
     EndDo;
 
 EndProcedure
@@ -15777,6 +15830,8 @@ Procedure CheckMessagePackValue(Val Actual, Val Expected)
 
     If TypeOf(Expected)     = Type("Number") Then
         CheckNumberMessagePack(Actual, Expected);
+    ElsIf TypeOf(Expected)  = Type("Boolean") Then
+        CheckBooleanMessagePack(Actual, Expected);
     ElsIf TypeOf(Expected)  = Type("BinaryData") Then
         CheckMessagePackBinaryData(Actual, Expected);
     ElsIf TypeOf(Expected)  = Type("Array") Then
@@ -15995,6 +16050,42 @@ Function Check_Lua_Extended_GetLogOnExecution(Val Result, Val Option, LogFile = 
 
 EndFunction
 
+Function Check_Lua_Restart(Val Result, Val Option)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+    ExpectsThat(Result.Count()).Равно(0);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_AttachPackageFromString(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_AttachPackageFromFile(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(12);
+
+    Return Result;
+
+EndFunction
+
+Function Check_Lua_GetPackagesList(Val Result, Val Option)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+    ExpectsThat(Result.Count()).Равно(2);
+    ExpectsThat(Result.Find("alpha") <> Undefined).Равно(True);
+    ExpectsThat(Result.Find("beta") <> Undefined).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_Lua_CreateVM(Val Result, Val Option)
 
     If Option = "LuaJIT" Then
@@ -16045,8 +16136,12 @@ EndFunction
 
 Function Check_Lua_CallScriptFunction(Val Result, Val Option)
 
-    If Option = "File" Then
+    If Option    = "File" Then
         ExpectsThat(Result).Равно(5);
+    ElsIf Option = "Packages" Then
+        ExpectsThat(Result).Равно(10);
+    ElsIf Option = "FilePackages" Then
+        ExpectsThat(Result).Равно(12);
     Else
         ExpectsThat(Result).Равно(42);
     EndIf;
@@ -16057,8 +16152,12 @@ EndFunction
 
 Function Check_Lua_CallByteCodeFunction(Val Result, Val Option)
 
-    If Option = "File" Then
+    If Option    = "File" Then
         ExpectsThat(Result).Равно(13);
+    ElsIf Option = "Packages" Then
+        ExpectsThat(Result).Равно(10);
+    ElsIf Option = "FilePackages" Then
+        ExpectsThat(Result).Равно(12);
     Else
         ExpectsThat(Result).Равно(7);
     EndIf;

@@ -7,15 +7,15 @@
  "path": "api/lua/Modules/OPI_Lua.os",
  "regions": [
   {
-   "name": "Main",
+   "name": "Script management",
    "methods": [
-    "CallByteCodeFunction",
     "CallScriptFunction"
    ]
   },
   {
    "name": "Bytecode management",
    "methods": [
+    "CallByteCodeFunction",
     "CompileCodeFromFile",
     "CompileCodeFromString"
    ]
@@ -56,49 +56,13 @@
      "short": "-p"
     },
     {
-     "name": "--globals",
+     "name": "--packages",
      "types": "Map Of KeyAndValue",
-     "description": "Module global variables, if necessary",
+     "description": "Packages: key > name, value > code or file path",
      "default": "Empty value",
-     "short": "-g"
-    }
-   ],
-   "region": "Main"
-  },
-  {
-   "name": "CallByteCodeFunction",
-   "id": "CALLBYTECODEFUNCTION",
-   "description": "Executes bytecode and calls the specified function",
-   "params": [
-    {
-     "name": "--lua",
-     "types": "Arbitrary",
-     "description": "Lua AddIn or Lua version to run",
-     "default": null,
-     "short": "-l"
-    },
-    {
-     "name": "--code",
-     "types": "String, BinaryData",
-     "description": "Byte code or file path",
-     "default": null,
      "short": "-c"
     },
     {
-     "name": "--func",
-     "types": "String",
-     "description": "Function name or path in module.func format",
-     "default": null,
-     "short": "-f"
-    },
-    {
-     "name": "--params",
-     "types": "Map Of KeyAndValue",
-     "description": "Function parameters, if necessary",
-     "default": "Empty value",
-     "short": "-p"
-    },
-    {
      "name": "--globals",
      "types": "Map Of KeyAndValue",
      "description": "Module global variables, if necessary",
@@ -106,7 +70,7 @@
      "short": "-g"
     }
    ],
-   "region": "Main"
+   "region": "Script management"
   },
   {
    "name": "CompileCodeFromString",
@@ -148,6 +112,56 @@
      "description": "Script file path",
      "default": null,
      "short": "-p"
+    }
+   ],
+   "region": "Bytecode management"
+  },
+  {
+   "name": "CallByteCodeFunction",
+   "id": "CALLBYTECODEFUNCTION",
+   "description": "Executes bytecode and calls the specified function",
+   "params": [
+    {
+     "name": "--lua",
+     "types": "Arbitrary",
+     "description": "Lua AddIn or Lua version to run",
+     "default": null,
+     "short": "-l"
+    },
+    {
+     "name": "--code",
+     "types": "String, BinaryData",
+     "description": "Byte code or file path",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--func",
+     "types": "String",
+     "description": "Function name or path in module.func format",
+     "default": null,
+     "short": "-f"
+    },
+    {
+     "name": "--params",
+     "types": "Map Of KeyAndValue",
+     "description": "Function parameters, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--packages",
+     "types": "Map Of KeyAndValue",
+     "description": "Packages: key > name, value > code or file path",
+     "default": "Empty value",
+     "short": "-k"
+    },
+    {
+     "name": "--globals",
+     "types": "Map Of KeyAndValue",
+     "description": "Module global variables, if necessary",
+     "default": "Empty value",
+     "short": "-g"
     }
    ],
    "region": "Bytecode management"
