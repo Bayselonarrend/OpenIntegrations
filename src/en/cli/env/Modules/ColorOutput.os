@@ -67,7 +67,7 @@ Function ParseString(MessageText, TextColor)
 
 	Pos = 1;
 	For Each ColorField In tbColoredFields Do
-		If Pos < ColorField.Item Then
+		If Pos < ColorField.Position Then
 			Text = Mid(MessageText, Pos, ColorField.Position - Pos);
 			Str = Table.Add();
 			Str.Text = Text;
