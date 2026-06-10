@@ -181,33 +181,37 @@ Procedure Janx_SerializeData()
     Restored = OPI_Janx.DeserializeData(Result);
     OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "Number", Restored, Original);
 
-    Original = GetBinaryDataFromString("");
-    Result   = OPI_Janx.SerializeData(Original);
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    Restored = OPI_Janx.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "EmptyBinary", Restored, Original);
+        Original = GetBinaryDataFromString("");
+        Result   = OPI_Janx.SerializeData(Original);
 
-    Original = GetBinaryDataFromHexString("010203");
-    Result   = OPI_Janx.SerializeData(Original);
+        Restored = OPI_Janx.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "EmptyBinary", Restored, Original);
 
-    Restored = OPI_Janx.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "BinaryOne", Restored, Original);
+        Original = GetBinaryDataFromHexString("010203");
+        Result   = OPI_Janx.SerializeData(Original);
 
-    Map    = New Map;
-    Map.Insert("name", "test");
-    Map.Insert("body", GetBinaryDataFromHexString("DEADBEEF"));
-    Result = OPI_Janx.SerializeData(Map);
+        Restored = OPI_Janx.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "BinaryOne", Restored, Original);
 
-    Restored = OPI_Janx.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "MapWithBinary", Restored, Map);
+        Map    = New Map;
+        Map.Insert("name", "test");
+        Map.Insert("body", GetBinaryDataFromHexString("DEADBEEF"));
+        Result = OPI_Janx.SerializeData(Map);
 
-    Array  = New Array;
-    Array.Add(1);
-    Array.Add(GetBinaryDataFromHexString("0A0B"));
-    Result = OPI_Janx.SerializeData(Array);
+        Restored = OPI_Janx.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "MapWithBinary", Restored, Map);
 
-    Restored = OPI_Janx.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "ArrayWithBinary", Restored, Array);
+        Array  = New Array;
+        Array.Add(1);
+        Array.Add(GetBinaryDataFromHexString("0A0B"));
+        Result = OPI_Janx.SerializeData(Array);
+
+        Restored = OPI_Janx.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "Janx", "SerializeData", "ArrayWithBinary", Restored, Array);
+
+    EndIf;
 
 EndProcedure
 

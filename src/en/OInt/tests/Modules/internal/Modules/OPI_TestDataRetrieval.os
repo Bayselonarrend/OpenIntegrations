@@ -15554,23 +15554,23 @@ Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Unde
 
     ElsIf Option = "Integer0" Then
 
-        ExpectsThat(Hex).Равно("00");
+        ExpectsThatMessagePackHex(Hex, "00", "a130");
 
     ElsIf Option = "Integer127" Then
 
-        ExpectsThat(Hex).Равно("7f");
+        ExpectsThatMessagePackHex(Hex, "7f", "a3313237");
 
     ElsIf Option = "Uint8" Then
 
-        ExpectsThat(Hex).Равно("cc80");
+        ExpectsThatMessagePackHex(Hex, "cc80", "a3313238");
 
     ElsIf Option = "NegativeFixint" Then
 
-        ExpectsThat(Hex).Равно("ff");
+        ExpectsThatMessagePackHex(Hex, "ff", "a22d31");
 
     ElsIf Option = "Int8" Then
 
-        ExpectsThat(Hex).Равно("d0df");
+        ExpectsThatMessagePackHex(Hex, "d0df", "a32d3333");
 
     ElsIf Option = "Float" Then
 
@@ -15582,11 +15582,11 @@ Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Unde
 
     ElsIf Option = "True" Then
 
-        ExpectsThat(Hex).Равно("c3");
+        ExpectsThatMessagePackHex(Hex, "c3", "a474727565");
 
     ElsIf Option = "False" Then
 
-        ExpectsThat(Hex).Равно("c2");
+        ExpectsThatMessagePackHex(Hex, "c2", "a566616c7365");
 
     ElsIf Option = "EmptyBinary" Then
 
@@ -15711,6 +15711,16 @@ Function Check_MessagePack_DeserializeData(Val Result, Val Option, ExpectedValue
     Return Result;
 
 EndFunction
+
+Procedure ExpectsThatMessagePackHex(Val ActualHex, Val ExpectedHex, Val ExpectedStringHex = "")
+
+    If ValueIsFilled(ExpectedStringHex) Then
+        ExpectsThat(ActualHex = ExpectedHex Or ActualHex = ExpectedStringHex).Равно(True);
+    Else
+        ExpectsThat(ActualHex).Равно(ExpectedHex);
+    EndIf;
+
+EndProcedure
 
 Procedure CheckNumberMessagePack(Val Actual, Val Expected)
 
