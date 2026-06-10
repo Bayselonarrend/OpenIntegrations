@@ -4,6 +4,7 @@ pipeline {
 	}
 	parameters {
 		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
+		booleanParam(name: 'RUN_MELEZH', defaultValue: true, description: 'Run Melezh build, Docker and tests')
 	}
 
     stages {
@@ -18,6 +19,9 @@ pipeline {
             }
         }
         stage('Melezh - Main + Release') {
+            when {
+                expression { return params.RUN_MELEZH }
+            }
             steps {
                 build job: 'Melezh/MelezhRelease', wait: true
             }
@@ -37,6 +41,9 @@ pipeline {
             }
         }
         stage('Melezh - Docker') {
+            when {
+                expression { return params.RUN_MELEZH }
+            }
             steps {
                 build job: 'Melezh/MelezhDocker', wait: true,
                     parameters: [
@@ -47,6 +54,9 @@ pipeline {
         }
 
         stage('Melezh - Test') {
+            when {
+                expression { return params.RUN_MELEZH }
+            }
             steps {
                 build job: 'Melezh/MelezhTests', wait: true
             }
