@@ -15561,11 +15561,11 @@ Function Check_MessagePack_SerializeData(Val Result, Val Option, Restored = Unde
 
     ElsIf Option = "EmptyBinary" Then
 
-        CheckHexMessagePackEmptyBinary(Hex, Result);
+        CheckHexMessagePackEmptyBinary(Hex, Restored);
 
     ElsIf Option = "BinaryBin8" Then
 
-        CheckHexMessagePackBinary(Hex, Result, "c403010203", GetBinaryDataFromHexString("010203"));
+        CheckHexMessagePackBinary(Hex, Restored, "c403010203", GetBinaryDataFromHexString("010203"));
 
     ElsIf Option = "EmptyArray" Then
 
@@ -15672,13 +15672,16 @@ Function Check_MessagePack_DeserializeData(Val Result, Val Option, ExpectedValue
 
 EndFunction
 
-Procedure CheckHexMessagePackEmptyBinary(Val ActualHex, Val SerializationResult)
+Procedure CheckHexMessagePackEmptyBinary(Val ActualHex, Val Deserialized)
 
     If ActualHex = "c400" Then
         Return;
     EndIf;
 
-    Deserialized = OPI_MessagePack.DeserializeData(SerializationResult);
+    If Deserialized = Undefined Then
+        ExpectsThat(ActualHex).Равно("c400");
+        Return;
+    EndIf;
 
     If TypeOf(Deserialized) = Type("String") Then
 
@@ -15700,13 +15703,16 @@ Procedure CheckHexMessagePackEmptyBinary(Val ActualHex, Val SerializationResult)
 
 EndProcedure
 
-Procedure CheckHexMessagePackBinary(Val ActualHex, Val SerializationResult, Val ExpectedBinaryHex, Val ExpectedData)
+Procedure CheckHexMessagePackBinary(Val ActualHex, Val Deserialized, Val ExpectedBinaryHex, Val ExpectedData)
 
     If ActualHex = ExpectedBinaryHex Then
         Return;
     EndIf;
 
-    Deserialized = OPI_MessagePack.DeserializeData(SerializationResult);
+    If Deserialized = Undefined Then
+        ExpectsThat(ActualHex).Равно(ExpectedBinaryHex);
+        Return;
+    EndIf;
 
     If TypeOf(Deserialized) = Type("String") Then
 
