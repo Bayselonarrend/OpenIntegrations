@@ -1,4 +1,2 @@
-:: JSON данные также могут быть переданы как путь к файлу .json
-
 oint janx ДесериализоватьДанные ^
-  --data "\nНепредвиденная ошибка!: {Модуль {C:\Program Files (x86)\OInt\share\oint\lib\oint-cli\core\Classes\internal\Modules\Executor.os}:13:<exec> / Error in line: 4 / Too few arguments were passed}\nОтвет = Attached_OPI_Janx.СериализоватьДанные()\n\n"
+  --data "C:\Users\bayselonarrend\AppData\Local\Temp\0utr2ynz.unc"

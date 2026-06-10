@@ -1,5 +1,5 @@
 oint lua ВызватьФункциюСкрипта \
   --lua "Lua54" \
-  --script "C:\Users\bayselonarrend\AppData\Local\Temp\hz1muqq2.wdt.lua" \
+  --script "C:\Users\bayselonarrend\AppData\Local\Temp\4qx0i0g4.hfb.lua" \
   --func "div" \
   --params "['20','4']"

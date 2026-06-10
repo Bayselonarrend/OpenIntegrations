@@ -1,5 +1,5 @@
 oint lua ВызватьФункциюБайтКода \
   --lua "Lua54" \
-  --code "C:\Users\bayselonarrend\AppData\Local\Temp\14bg1ri2.jfn.bin" \
+  --code "C:\Users\bayselonarrend\AppData\Local\Temp\gzpin4a4.4yq.bin" \
   --func "add" \
   --params "['8','5']"
