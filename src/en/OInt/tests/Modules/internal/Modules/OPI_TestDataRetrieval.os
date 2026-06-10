@@ -8855,7 +8855,6 @@ Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         OPI_TypeConversion.GetBinaryData(Blob);
 
-        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
 
@@ -9069,10 +9068,6 @@ Function Check_SQLite_Extended_RequestWithTwoBlobs(Val Result, Val Option, Initi
     CheckBinaryDataJanx(String["alpha"]     , InitialValue["alpha"]);
     CheckBinaryDataJanx(String["beta"]      , InitialValue["beta"]);
     CheckBinaryDataJanx(String["inner_blob"], InitialValue["nested"]["inner"]);
-
-    Result["data"][0]["alpha"]      = "Binary";
-    Result["data"][0]["beta"]       = "Binary";
-    Result["data"][0]["inner_blob"] = "Binary";
 
     Return Result;
 
@@ -9345,7 +9340,6 @@ Function Check_PostgreSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         OPI_TypeConversion.GetBinaryData(Blob);
 
-        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
 
@@ -9408,13 +9402,7 @@ Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Not ValueIsFilled(Option) Then
-
-        If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["bytea_field"] = "Binary";
-        EndIf;
-
-    Else
+    If ValueIsFilled(Option) Then
         ExpectsThat(Result["data"].Count()).Равно(5);
     EndIf;
 
@@ -9779,7 +9767,6 @@ Function Check_MySQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         OPI_TypeConversion.GetBinaryData(Blob);
 
-        Result["data"][0]["data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
 
@@ -9830,15 +9817,7 @@ Function Check_MySQL_GetRecords(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Not ValueIsFilled(Option) Then
-
-        If ValueIsFilled(Result["data"]) Then
-
-            Result["data"][0]["mediumblob_field"] = "Binary";
-
-        EndIf;
-
-    Else
+    If ValueIsFilled(Option) Then
         ExpectsThat(Result["data"].Count()).Равно(5);
     EndIf;
 
@@ -12216,7 +12195,6 @@ Function Check_MSSQL_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
         OPI_TypeConversion.GetBinaryData(Blob);
 
-        Result["data"][0]["Data"] = "Binary";
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Blob.Size()).Равно(Image.Size());
 
@@ -12327,15 +12305,7 @@ Function Check_MSSQL_GetRecords(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    If Not ValueIsFilled(Option) Then
-
-        If ValueIsFilled(Result["data"]) Then
-
-            Result["data"][0]["varbinary_field"] = "Binary";
-
-        EndIf;
-
-    Else
+    If ValueIsFilled(Option) Then
         ExpectsThat(Result["data"].Count()).Равно(5);
     EndIf;
 
