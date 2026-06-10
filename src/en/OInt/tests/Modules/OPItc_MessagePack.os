@@ -323,7 +323,11 @@ Procedure MessagePack_SerializeData()
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "BinaryBin8");
+    Options = New Structure;
+    Options.Insert("data", Result);
+
+    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
 
     Array  = New Array;
     Array.Add(1);
@@ -388,7 +392,11 @@ Procedure MessagePack_SerializeData()
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
 
-        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyBinary");
+        Options = New Structure;
+        Options.Insert("data", Result);
+
+        Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyBinary", Restored);
 
         Options = New Structure;
         Options.Insert("value", Неопределено);

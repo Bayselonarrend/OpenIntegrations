@@ -269,7 +269,8 @@ Procedure MessagePack_SerializeData()
     Data   = GetBinaryDataFromHexString("010203");
     Result = OPI_MessagePack.SerializeData(Data);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8");
+    Restored = OPI_MessagePack.DeserializeData(Result);
+    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
 
     Array  = New Array;
     Array.Add(1);
@@ -310,7 +311,8 @@ Procedure MessagePack_SerializeData()
         Data   = GetBinaryDataFromHexString("");
         Result = OPI_MessagePack.SerializeData(Data);
 
-        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary");
+        Restored = OPI_MessagePack.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyBinary", Restored);
 
         Result = OPI_MessagePack.SerializeData(Undefined);
 
