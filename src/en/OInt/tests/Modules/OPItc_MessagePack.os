@@ -116,6 +116,13 @@ EndProcedure
 
 Procedure MP_Compatibility() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(True);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     MessagePack_ReferenceCompatibility();
 
 EndProcedure
@@ -236,141 +243,121 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "FromFile", Restored, Original);
 
-    Options = New Structure;
-    Options.Insert("value", "a");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "StringFixstr");
-
-    Options = New Structure;
-    Options.Insert("value", "Hello");
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    Options = New Structure;
-    Options.Insert("data", Result);
-
-    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "StringUTF8", Restored);
-
-    Options = New Structure;
-    Options.Insert("value", 0);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Integer0");
-
-    Options = New Structure;
-    Options.Insert("value", 127);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Integer127");
-
-    Options = New Structure;
-    Options.Insert("value", 128);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Uint8");
-
-    Data   = -1;
-    Options = New Structure;
-    Options.Insert("value", Data);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "NegativeFixint");
-
-    Data   = -33;
-    Options = New Structure;
-    Options.Insert("value", Data);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Int8");
-
-    Original = 0.2;
-    Options = New Structure;
-    Options.Insert("value", Original);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    Options = New Structure;
-    Options.Insert("data", Result);
-
-    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
-
-    Options = New Structure;
-    Options.Insert("value", Истина);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "True");
-
-    Options = New Structure;
-    Options.Insert("value", Ложь);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "False");
-
-    Data   = GetBinaryDataFromHexString("010203");
-    Options = New Structure;
-    Options.Insert("value", Data);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    Options = New Structure;
-    Options.Insert("data", Result);
-
-    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
-
-    Array  = New Array;
-    Array.Add(1);
-    Array.Add(2);
-    Array.Add(3);
-    Options = New Structure;
-    Options.Insert("value", Array);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "ArrayThreeNumbers");
-
-    Map    = New Map;
-    Options = New Structure;
-    Options.Insert("value", Map);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyMap");
-
-    Structure = New Structure("a", 1);
-    Options = New Structure;
-    Options.Insert("value", Structure);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "MapOnePair");
-
-    Map    = New Map;
-    Map.Insert("x", 10);
-    Map.Insert("y", 20);
-    Options = New Structure;
-    Options.Insert("value", Map);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-
-    Options = New Structure;
-    Options.Insert("data", Result);
-
-    Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
-
     If Not OPI_TestDataRetrieval.IsCLITest() Then
+
+        Options = New Structure;
+        Options.Insert("value", "a");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "StringFixstr");
+
+        Options = New Structure;
+        Options.Insert("value", "Hello");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        Options = New Structure;
+        Options.Insert("data", Result);
+
+        Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "StringUTF8", Restored);
+
+        Options = New Structure;
+        Options.Insert("value", 0);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Integer0");
+
+        Options = New Structure;
+        Options.Insert("value", 127);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Integer127");
+
+        Options = New Structure;
+        Options.Insert("value", 128);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Uint8");
+
+        Data   = -1;
+        Options = New Structure;
+        Options.Insert("value", Data);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "NegativeFixint");
+
+        Data   = -33;
+        Options = New Structure;
+        Options.Insert("value", Data);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Int8");
+
+        Options = New Structure;
+        Options.Insert("value", Истина);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "True");
+
+        Options = New Structure;
+        Options.Insert("value", Ложь);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "False");
+
+        Data   = GetBinaryDataFromHexString("010203");
+        Options = New Structure;
+        Options.Insert("value", Data);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        Options = New Structure;
+        Options.Insert("data", Result);
+
+        Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
+
+        Array  = New Array;
+        Array.Add(1);
+        Array.Add(2);
+        Array.Add(3);
+        Options = New Structure;
+        Options.Insert("value", Array);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "ArrayThreeNumbers");
+
+        Structure = New Structure("a", 1);
+        Options = New Structure;
+        Options.Insert("value", Structure);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "MapOnePair");
+
+        Map    = New Map;
+        Map.Insert("x", 10);
+        Map.Insert("y", 20);
+        Options = New Structure;
+        Options.Insert("value", Map);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        Options = New Structure;
+        Options.Insert("data", Result);
+
+        Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
 
         Options = New Structure;
         Options.Insert("value", "");
@@ -404,6 +391,26 @@ Procedure MessagePack_SerializeData()
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
 
         OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Nil");
+
+        Original = 0.2;
+        Options = New Structure;
+        Options.Insert("value", Original);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        Options = New Structure;
+        Options.Insert("data", Result);
+
+        Restored = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
+
+        Map    = New Map;
+        Options = New Structure;
+        Options.Insert("value", Map);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "SerializeData", "EmptyMap");
 
     EndIf;
 
@@ -442,256 +449,260 @@ Procedure MessagePack_DeserializeData()
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", , Original);
 
-    Data   = GetBinaryDataFromHexString("00");
-    Options = New Structure;
-    Options.Insert("data", Data);
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("00");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Fixint0");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("A161");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Fixint0");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("A161");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "StringFixstr");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = 128;
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "StringFixstr");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = 128;
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = -33;
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = -33;
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = "Hello";
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = "Hello";
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = 0.2;
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = 0.2;
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("C0");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("C0");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Nil");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("C2");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Nil");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("C2");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "False");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("C3");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "False");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("C3");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "True");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Options = New Structure;
-    Options.Insert("value", Неопределено);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "True");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Options = New Structure;
+        Options.Insert("value", Неопределено);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Nil");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = True;
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "Nil");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = True;
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = False;
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = False;
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("C400");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("C400");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyBinary");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("C403010203");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyBinary");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("C403010203");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "BinaryBin8");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = GetBinaryDataFromHexString("DEADBEEF");
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "BinaryBin8");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = GetBinaryDataFromHexString("DEADBEEF");
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("90");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("90");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyArray");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("93010203");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyArray");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("93010203");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "ArrayThreeNumbers");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("92A161A162");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "ArrayThreeNumbers");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("92A161A162");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "ArrayTwoStrings");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = New Array;
-    Original.Add(1);
-    Original.Add("a");
-    Original.Add(True);
-    Original.Add(Undefined);
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "ArrayTwoStrings");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = New Array;
+        Original.Add(1);
+        Original.Add("a");
+        Original.Add(True);
+        Original.Add(Undefined);
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Embedded = New Array;
-    Embedded.Add(42);
-    Original = New Array;
-    Original.Add(Embedded);
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Embedded = New Array;
+        Embedded.Add(42);
+        Original = New Array;
+        Original.Add(Embedded);
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("80");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("80");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyMap");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Data   = GetBinaryDataFromHexString("81A16101");
-    Options = New Structure;
-    Options.Insert("data", Data);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "EmptyMap");
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Data   = GetBinaryDataFromHexString("81A16101");
+        Options = New Structure;
+        Options.Insert("data", Data);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "MapOnePair");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    Original = New Map;
-    Original.Insert("name"  , "test");
-    Original.Insert("count" , 2);
-    Original.Insert("active", True);
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "MapOnePair");
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        Original = New Map;
+        Original.Insert("name"  , "test");
+        Original.Insert("count" , 2);
+        Original.Insert("active", True);
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
 
-    NestedData = New Array;
-    NestedData.Add(1);
-    Original   = New Structure("items", NestedData);
-    Options = New Structure;
-    Options.Insert("value", Original);
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
-    Options = New Structure;
-    Options.Insert("data", Binary);
+        NestedData = New Array;
+        NestedData.Add(1);
+        Original   = New Structure("items", NestedData);
+        Options = New Structure;
+        Options.Insert("value", Original);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+        Binary = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+        Options = New Structure;
+        Options.Insert("data", Binary);
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "DeserializeData", Options);
+
+        OPI_TestDataRetrieval.ProcessCLI(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+
+    EndIf;
 
 EndProcedure
 

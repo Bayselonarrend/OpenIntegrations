@@ -115,6 +115,13 @@ EndProcedure
 
 Procedure MP_Compatibility() Export
 
+    OPI_TestDataRetrieval.SetCLITestFlag(False);
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI SKIP");
+        Return;
+    EndIf;
+
     MessagePack_ReferenceCompatibility();
 
 EndProcedure
@@ -222,84 +229,73 @@ Procedure MessagePack_SerializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "FromFile", Restored, Original);
 
-    Result = OPI_MessagePack.SerializeData("a");
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "StringFixstr");
-
-    Result = OPI_MessagePack.SerializeData("Hello");
-
-    Restored = OPI_MessagePack.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "StringUTF8", Restored);
-
-    Result = OPI_MessagePack.SerializeData(0);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Integer0");
-
-    Result = OPI_MessagePack.SerializeData(127);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Integer127");
-
-    Result = OPI_MessagePack.SerializeData(128);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Uint8");
-
-    Data   = -1;
-    Result = OPI_MessagePack.SerializeData(Data);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "NegativeFixint");
-
-    Data   = -33;
-    Result = OPI_MessagePack.SerializeData(Data);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Int8");
-
-    Original = 0.2;
-    Result   = OPI_MessagePack.SerializeData(Original);
-
-    Restored = OPI_MessagePack.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
-
-    Result = OPI_MessagePack.SerializeData(True);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "True");
-
-    Result = OPI_MessagePack.SerializeData(False);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "False");
-
-    Data   = GetBinaryDataFromHexString("010203");
-    Result = OPI_MessagePack.SerializeData(Data);
-
-    Restored = OPI_MessagePack.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
-
-    Array  = New Array;
-    Array.Add(1);
-    Array.Add(2);
-    Array.Add(3);
-    Result = OPI_MessagePack.SerializeData(Array);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "ArrayThreeNumbers");
-
-    Map    = New Map;
-    Result = OPI_MessagePack.SerializeData(Map);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyMap");
-
-    Structure = New Structure("a", 1);
-    Result    = OPI_MessagePack.SerializeData(Structure);
-
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "MapOnePair");
-
-    Map    = New Map;
-    Map.Insert("x", 10);
-    Map.Insert("y", 20);
-    Result = OPI_MessagePack.SerializeData(Map);
-
-    Restored = OPI_MessagePack.DeserializeData(Result);
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
-
     If Not OPI_TestDataRetrieval.IsCLITest() Then
+
+        Result = OPI_MessagePack.SerializeData("a");
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "StringFixstr");
+
+        Result = OPI_MessagePack.SerializeData("Hello");
+
+        Restored = OPI_MessagePack.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "StringUTF8", Restored);
+
+        Result = OPI_MessagePack.SerializeData(0);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Integer0");
+
+        Result = OPI_MessagePack.SerializeData(127);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Integer127");
+
+        Result = OPI_MessagePack.SerializeData(128);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Uint8");
+
+        Data   = -1;
+        Result = OPI_MessagePack.SerializeData(Data);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "NegativeFixint");
+
+        Data   = -33;
+        Result = OPI_MessagePack.SerializeData(Data);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Int8");
+
+        Result = OPI_MessagePack.SerializeData(True);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "True");
+
+        Result = OPI_MessagePack.SerializeData(False);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "False");
+
+        Data   = GetBinaryDataFromHexString("010203");
+        Result = OPI_MessagePack.SerializeData(Data);
+
+        Restored = OPI_MessagePack.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "BinaryBin8", Restored);
+
+        Array  = New Array;
+        Array.Add(1);
+        Array.Add(2);
+        Array.Add(3);
+        Result = OPI_MessagePack.SerializeData(Array);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "ArrayThreeNumbers");
+
+        Structure = New Structure("a", 1);
+        Result    = OPI_MessagePack.SerializeData(Structure);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "MapOnePair");
+
+        Map    = New Map;
+        Map.Insert("x", 10);
+        Map.Insert("y", 20);
+        Result = OPI_MessagePack.SerializeData(Map);
+
+        Restored = OPI_MessagePack.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "MapTwoPairs", Restored);
 
         Result = OPI_MessagePack.SerializeData("");
         OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyString");
@@ -318,6 +314,17 @@ Procedure MessagePack_SerializeData()
         Result = OPI_MessagePack.SerializeData(Undefined);
 
         OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Nil");
+
+        Original = 0.2;
+        Result   = OPI_MessagePack.SerializeData(Original);
+
+        Restored = OPI_MessagePack.DeserializeData(Result);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "Float", Restored, Original);
+
+        Map    = New Map;
+        Result = OPI_MessagePack.SerializeData(Map);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "SerializeData", "EmptyMap");
 
     EndIf;
 
@@ -350,148 +357,152 @@ Procedure MessagePack_DeserializeData()
 
     OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", , Original);
 
-    Data   = GetBinaryDataFromHexString("00");
-    Result = OPI_MessagePack.DeserializeData(Data);
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Fixint0");
+        Data   = GetBinaryDataFromHexString("00");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("A161");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Fixint0");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "StringFixstr");
+        Data   = GetBinaryDataFromHexString("A161");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Original = 128;
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "StringFixstr");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = 128;
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Original = -33;
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = -33;
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Original = "Hello";
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = "Hello";
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Original = 0.2;
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = 0.2;
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Data   = GetBinaryDataFromHexString("C0");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Nil");
+        Data   = GetBinaryDataFromHexString("C0");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("C2");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Nil");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "False");
+        Data   = GetBinaryDataFromHexString("C2");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("C3");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "False");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "True");
+        Data   = GetBinaryDataFromHexString("C3");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Binary = OPI_MessagePack.SerializeData(Undefined);
-    Result = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "True");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Nil");
+        Binary = OPI_MessagePack.SerializeData(Undefined);
+        Result = OPI_MessagePack.DeserializeData(Binary);
 
-    Original = True;
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "Nil");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = True;
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Original = False;
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = False;
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Data   = GetBinaryDataFromHexString("C400");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyBinary");
+        Data   = GetBinaryDataFromHexString("C400");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("C403010203");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyBinary");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "BinaryBin8");
+        Data   = GetBinaryDataFromHexString("C403010203");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Original = GetBinaryDataFromHexString("DEADBEEF");
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "BinaryBin8");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = GetBinaryDataFromHexString("DEADBEEF");
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Data   = GetBinaryDataFromHexString("90");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyArray");
+        Data   = GetBinaryDataFromHexString("90");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("93010203");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyArray");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "ArrayThreeNumbers");
+        Data   = GetBinaryDataFromHexString("93010203");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("92A161A162");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "ArrayThreeNumbers");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "ArrayTwoStrings");
+        Data   = GetBinaryDataFromHexString("92A161A162");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Original = New Array;
-    Original.Add(1);
-    Original.Add("a");
-    Original.Add(True);
-    Original.Add(Undefined);
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "ArrayTwoStrings");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = New Array;
+        Original.Add(1);
+        Original.Add("a");
+        Original.Add(True);
+        Original.Add(Undefined);
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Embedded = New Array;
-    Embedded.Add(42);
-    Original = New Array;
-    Original.Add(Embedded);
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Embedded = New Array;
+        Embedded.Add(42);
+        Original = New Array;
+        Original.Add(Embedded);
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    Data   = GetBinaryDataFromHexString("80");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyMap");
+        Data   = GetBinaryDataFromHexString("80");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Data   = GetBinaryDataFromHexString("81A16101");
-    Result = OPI_MessagePack.DeserializeData(Data);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "EmptyMap");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "MapOnePair");
+        Data   = GetBinaryDataFromHexString("81A16101");
+        Result = OPI_MessagePack.DeserializeData(Data);
 
-    Original = New Map;
-    Original.Insert("name"  , "test");
-    Original.Insert("count" , 2);
-    Original.Insert("active", True);
-    Binary   = OPI_MessagePack.SerializeData(Original);
-    Result   = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "MapOnePair");
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        Original = New Map;
+        Original.Insert("name"  , "test");
+        Original.Insert("count" , 2);
+        Original.Insert("active", True);
+        Binary   = OPI_MessagePack.SerializeData(Original);
+        Result   = OPI_MessagePack.DeserializeData(Binary);
 
-    NestedData = New Array;
-    NestedData.Add(1);
-    Original   = New Structure("items", NestedData);
-    Binary     = OPI_MessagePack.SerializeData(Original);
-    Result     = OPI_MessagePack.DeserializeData(Binary);
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
 
-    OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+        NestedData = New Array;
+        NestedData.Add(1);
+        Original   = New Structure("items", NestedData);
+        Binary     = OPI_MessagePack.SerializeData(Original);
+        Result     = OPI_MessagePack.DeserializeData(Binary);
+
+        OPI_TestDataRetrieval.Process(Result, "MessagePack", "DeserializeData", "RoundTrip", Original);
+
+    EndIf;
 
 EndProcedure
 
