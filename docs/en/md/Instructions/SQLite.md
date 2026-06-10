@@ -28,4 +28,4 @@ By default, all SELECT queries return an array of selected data, while other que
 
 ## "BLOB" type fields
 
-This library can process fields of type BLOB (Binary Data). To place a value in a field of this type during INSERT or UPDATE, it can be passed either as a variable of type `BinaryData` (in 1C and OneScript) or as a structure of type `{"blob":File Path}` (in 1C, OneScript and CLI versions). Binary data is always returned as `{"blob":Base64 string}`.
+This library can process fields of type BLOB (Binary Data). To write a value, pass `BinaryData` or a `{"blob": ...}` structure with a file path, URL, or binary data. On read, values are returned as `BinaryData`. In the CLI, binary values in JSON output are encoded as Base64 strings.

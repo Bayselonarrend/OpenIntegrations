@@ -53,7 +53,7 @@ The MySQL connector supports the use of positional parameters. All values passed
 
 ## Retrieving Binary Data
 
-Binary data retrieved from the database will be represented as an object (structure) of the form `{"BYTES": "Base64 string"}` and must be manually converted from Base64
+BLOB/BINARY columns are returned as `BinaryData`. In the CLI, binary values in JSON output are encoded as Base64 strings
 
 ## TLS
 

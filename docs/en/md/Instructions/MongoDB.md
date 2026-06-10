@@ -89,7 +89,7 @@ For convenience, some additional features were also implemented during the libra
     Filter    = New Structure("stringField,doubleField", "Text", Example);
 ```
 
-- Data of type `Binary` when retrieved from MongoDB is returned as structures of the form `{"__B64_BINARY__": <Base64 string value>}`
+- `Binary` values are returned as `BinaryData` on read. To write, pass the value in a `{"__OPI_BINARY__": ...}` structure. In the CLI, binary values in JSON output are encoded as Base64 strings
 
 - Data of types `MaxKey` and `MinKey` when retrieved from MongoDB is returned as strings `<<MaxKey>>` and `<<MinKey>>` respectively
 

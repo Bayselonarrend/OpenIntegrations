@@ -118,7 +118,7 @@ The library supports various response formats:
 
 - **JSON** formats (JSON, JSONCompact, JSONColumns, etc.) — returned as a collection
 - **String** formats (CSV, TSV, Pretty, etc.) — returned as a string
-- **Other** formats — returned as binary data
+- **Other** formats — returned as binary data; in the CLI, encoded as Base64 in JSON output
 
 ```bsl
 Query = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");

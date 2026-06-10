@@ -67,7 +67,7 @@ The PostgreSQL connector supports the use of positional parameters. All values p
   | TIMESTAMP WITH TIME ZONE | 🟢 | TIMESTAMP_WITH_TIME_ZONE | Date (the time zone will be specified as UTC), String (RFC 3339) |
   | DATE | 🟢 | - | Date (any time part), String (ISO 8601, RFC 3339) |
   | TIME | 🟢 | - | Date (any date part), String (ISO 8601, RFC 3339) |
-  | BYTEA | 🟢 | - | BinaryData, File path, Base64 String (all converted to a Base64 string) |
+  | BYTEA | 🟢 | - | BinaryData, file path, URL, Base64 |
   | JSON | 🟢 | - | Array, Structure, Map, String (JSON) |
   | JSONB | 🟢 | - | Array, Structure, Map, String (JSON) |
   | LTREE | 🟡 | - | String |
@@ -79,7 +79,7 @@ A similar list of types is also available to retrieve as query results from Post
 
 ## Retrieving Binary Data
 
-Binary data retrieved from the database will be represented as an object (structure) of the form `{"BYTES": "Base64 string"}` and must be manually converted from Base64
+BYTEA columns are returned as `BinaryData`. In the CLI, binary values in JSON output are encoded as Base64 strings
 
 ## TLS
 
