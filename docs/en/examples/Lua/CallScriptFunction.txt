@@ -2,4 +2,7 @@
     Parameters.Add(6);
     Parameters.Add(7);
 
-    Result = OPI_Lua.CallScriptFunction("Lua54", "function mul(a, b) return a * b end", "mul", Parameters);
+    Result = OPI_Lua.CallScriptFunction("Lua54"
+        , "function mul(a, b) return a * b end"
+        , "mul"
+        , Parameters);

@@ -53,16 +53,16 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    VM = OPI_Lua.СоздатьVM("Lua54");
+    Lua = OPI_Lua.СоздатьVM("Lua54");
 
-    OPI_Lua.ДобавитьПакетИзСтроки(VM, "calc", "local M = {} function M.double(x) return x * 2 end return M");
+    OPI_Lua.ДобавитьПакетИзСтроки(Lua, "calc", "local M = {} function M.double(x) return x * 2 end return M");
 
-    OPI_Lua.ВыполнитьКодИзСтроки(VM, "calc = require('calc')");
+    OPI_Lua.ВыполнитьКодИзСтроки(Lua, "calc = require('calc')");
 
     Параметры = Новый Массив;
     Параметры.Добавить(5);
 
-    Результат = OPI_Lua.ВызватьФункцию(VM, "calc.double", Параметры);
+    Результат = OPI_Lua.ВызватьФункцию(Lua, "calc.double", Параметры);
 ```
     
 

@@ -6,6 +6,3 @@
     Bytecode.Write(BytecodeFile);
 
     Result = OPI_Lua.ExecuteBytecodeFromFile("Lua54", BytecodeFile);
-
-    OPI_Tools.RemoveFileWithTry(ScriptFile  , "Failed to delete the temporary file after the test!!");
-    OPI_Tools.RemoveFileWithTry(BytecodeFile, "Failed to delete the temporary file after the test!!");

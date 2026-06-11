@@ -2,5 +2,3 @@
     GetBinaryDataFromString("return 7").Write(ScriptFile);
 
     Result = OPI_Lua.ExecuteCodeFromFile("Lua54", ScriptFile);
-
-    OPI_Tools.RemoveFileWithTry(ScriptFile, "Failed to delete the temporary file after the test!!");

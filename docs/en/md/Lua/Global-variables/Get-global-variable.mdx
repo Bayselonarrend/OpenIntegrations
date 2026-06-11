@@ -52,11 +52,11 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.SetGlobalVariable(VM, "test_var", 99);
+    OPI_Lua.SetGlobalVariable(Lua, "test_var", 99);
 
-    Result = OPI_Lua.GetGlobalVariable(VM, "test_var");
+    Result = OPI_Lua.GetGlobalVariable(Lua, "test_var");
 ```
  
 

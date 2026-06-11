@@ -49,11 +49,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    VM54 = OPI_Lua.СоздатьVM("Lua54");
+    Lua = OPI_Lua.СоздатьVM("Lua54");
 
-    Результат = OPI_Lua.ЭтоVM(VM54);
-
-    Результат = OPI_Lua.ЭтоVM("not a vm");
+    Результат = OPI_Lua.ЭтоVM(Lua);
 ```
     
 

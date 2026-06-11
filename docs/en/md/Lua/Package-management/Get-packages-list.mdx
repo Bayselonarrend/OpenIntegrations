@@ -51,12 +51,12 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.AttachPackageFromString(VM, "alpha", "local M = {} function M.one() return 1 end return M");
-    OPI_Lua.AttachPackageFromString(VM, "beta" , "local M = {} function M.two() return 2 end return M");
+    OPI_Lua.AttachPackageFromString(Lua, "alpha", "local M = {} function M.one() return 1 end return M");
+    OPI_Lua.AttachPackageFromString(Lua, "beta" , "local M = {} function M.two() return 2 end return M");
 
-    Result = OPI_Lua.GetPackagesList(VM);
+    Result = OPI_Lua.GetPackagesList(Lua);
 ```
  
 

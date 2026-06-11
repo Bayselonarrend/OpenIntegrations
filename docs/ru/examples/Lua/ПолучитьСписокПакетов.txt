@@ -1,6 +1,6 @@
-    VM = OPI_Lua.СоздатьVM("Lua54");
+    Lua = OPI_Lua.СоздатьVM("Lua54");
 
-    OPI_Lua.ДобавитьПакетИзСтроки(VM, "alpha", "local M = {} function M.one() return 1 end return M");
-    OPI_Lua.ДобавитьПакетИзСтроки(VM, "beta" , "local M = {} function M.two() return 2 end return M");
+    OPI_Lua.ДобавитьПакетИзСтроки(Lua, "alpha", "local M = {} function M.one() return 1 end return M");
+    OPI_Lua.ДобавитьПакетИзСтроки(Lua, "beta" , "local M = {} function M.two() return 2 end return M");
 
-    Результат = OPI_Lua.ПолучитьСписокПакетов(VM);
+    Результат = OPI_Lua.ПолучитьСписокПакетов(Lua);

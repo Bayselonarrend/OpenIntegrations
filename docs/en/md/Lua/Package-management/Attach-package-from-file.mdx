@@ -56,18 +56,16 @@ import Admonition from '@theme/Admonition';
     PackageFile = GetTempFileName("lua");
     GetBinaryDataFromString("local M = {} function M.triple(x) return x * 3 end return M").Write(PackageFile);
 
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.AttachPackageFromFile(VM, "calc_file", PackageFile);
+    OPI_Lua.AttachPackageFromFile(Lua, "calc_file", PackageFile);
 
-    OPI_Lua.ExecuteCodeFromString(VM, "calc_file = require('calc_file')");
+    OPI_Lua.ExecuteCodeFromString(Lua, "calc_file = require('calc_file')");
 
     Parameters = New Array;
     Parameters.Add(4);
 
-    Result = OPI_Lua.CallFunction(VM, "calc_file.triple", Parameters);
-
-    OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
+    Result = OPI_Lua.CallFunction(Lua, "calc_file.triple", Parameters);
 ```
  
 

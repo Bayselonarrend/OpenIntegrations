@@ -53,16 +53,16 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.AttachPackageFromString(VM, "calc", "local M = {} function M.double(x) return x * 2 end return M");
+    OPI_Lua.AttachPackageFromString(Lua, "calc", "local M = {} function M.double(x) return x * 2 end return M");
 
-    OPI_Lua.ExecuteCodeFromString(VM, "calc = require('calc')");
+    OPI_Lua.ExecuteCodeFromString(Lua, "calc = require('calc')");
 
     Parameters = New Array;
     Parameters.Add(5);
 
-    Result = OPI_Lua.CallFunction(VM, "calc.double", Parameters);
+    Result = OPI_Lua.CallFunction(Lua, "calc.double", Parameters);
 ```
  
 

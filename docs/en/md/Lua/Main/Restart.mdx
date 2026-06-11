@@ -51,12 +51,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.AttachPackageFromString(VM, "tmp_pkg", "local M = {} function M.ping() return ""pong"" end return M");
-    OPI_Lua.Restart(VM);
-
-    Result = OPI_Lua.GetPackagesList(VM);
+    OPI_Lua.Restart(Lua);
 ```
  
 

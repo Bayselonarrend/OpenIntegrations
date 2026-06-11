@@ -49,11 +49,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM54 = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    Result = OPI_Lua.IsVM(VM54);
-
-    Result = OPI_Lua.IsVM("not a vm");
+    Result = OPI_Lua.IsVM(Lua);
 ```
  
 

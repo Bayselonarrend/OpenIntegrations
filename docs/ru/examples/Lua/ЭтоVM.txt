@@ -1,5 +1,3 @@
-    VM54 = OPI_Lua.СоздатьVM("Lua54");
+    Lua = OPI_Lua.СоздатьVM("Lua54");
 
-    Результат = OPI_Lua.ЭтоVM(VM54);
-
-    Результат = OPI_Lua.ЭтоVM("not a vm");
+    Результат = OPI_Lua.ЭтоVM(Lua);

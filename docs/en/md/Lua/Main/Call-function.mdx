@@ -58,15 +58,15 @@ The function must be pre-defined in the context using one of the code execution 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    VM = OPI_Lua.CreateVM("Lua54");
+    Lua = OPI_Lua.CreateVM("Lua54");
 
-    OPI_Lua.ExecuteCodeFromString(VM, "function add(a, b) return a + b end");
+    OPI_Lua.ExecuteCodeFromString(Lua, "function add(a, b) return a + b end");
 
     Parameters = New Array;
     Parameters.Add(1);
     Parameters.Add(2);
 
-    Result = OPI_Lua.CallFunction(VM, "add", Parameters);
+    Result = OPI_Lua.CallFunction(Lua, "add", Parameters);
 ```
  
 
