@@ -7,6 +7,36 @@
         "image": "media/Covers/Lua.png",
         "changes": [
             {
+                "lib": "Lua",
+                "icon": "media/Lua.png",
+                "description_ru": "Основные методы (6 функций)",
+                "description_en": "Core methods (6 functions)"
+            },
+            {
+                "lib": "Lua",
+                "icon": "media/Lua.png",
+                "description_ru": "Работа со скриптами (3 функции)",
+                "description_en": "Script handling (3 functions)"
+            },
+            {
+                "lib": "Lua",
+                "icon": "media/Lua.png",
+                "description_ru": "Работа со байткодом (5 функций)",
+                "description_en": "Bytecode handling (5 functions)"
+            },
+            {
+                "lib": "Lua",
+                "icon": "media/Lua.png",
+                "description_ru": "Работа с глобальными переменными (2 функции)",
+                "description_en": "Global variable handling (2 functions)"
+            },
+            {
+                "lib": "Lua",
+                "icon": "media/Lua.png",
+                "description_ru": "Управление пакетами (3 функции)",
+                "description_en": "Package management (3 functions)"
+            },
+            {
                 "lib": "MessagePack",
                 "icon": "media/MessagePack.png",
                 "description_ru": "Добавлена сериализация/десериализация для формата MessagePack",
@@ -16,7 +46,7 @@
                 "lib": "Janx",
                 "icon": "media/Janx.png",
                 "description_ru": "Добавлена сериализация/десериализация для формата Janx",
-                "description_en": "Added serialization/deserialization for Kanx format"
+                "description_en": "Added serialization/deserialization for Janx format"
             },
             {
                 "lib": "MySQL",
@@ -33,9 +63,8 @@
         ],
         "notes": {
             "ru": "**Некоторые из изменений данного релиза нарушают обратную совместимость!** Обязательно ознакомьтесь с разделом [Об обратной совместимости](https://openintegrations.dev/docs/Start/Backward-compatibility/) перед обновлением",
-            "en": "**Some changes in this release break backward compatibility!** Be sure to review the [Backward Compatibility](https://en.openintegrations.dev/docs/Start/Backward-compatibility/) section before updating."                
+            "en": "**Some changes in this release break backward compatibility!** Be sure to review the [Backward Compatibility](https://en.openintegrations.dev/docs/Start/Backward-compatibility/) section before updating."
         }
-        
     },
     {
         "version": "2.1.0",
