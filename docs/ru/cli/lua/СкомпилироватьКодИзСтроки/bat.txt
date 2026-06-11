@@ -1,3 +1,3 @@
 oint lua СкомпилироватьКодИзСтроки ^
   --lua "Lua54" ^
-  --code "function sub(a, b) return a - b end"
+  --code "function run(x) return calc_file.triple(x) end"

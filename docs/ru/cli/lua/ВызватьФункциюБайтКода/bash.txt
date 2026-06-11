@@ -1,5 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint lua ВызватьФункциюБайтКода \
   --lua "Lua54" \
-  --code "C:\Users\bayselonarrend\AppData\Local\Temp\gzpin4a4.4yq.bin" \
-  --func "add" \
-  --params "['8','5']"
+  --code "C:\Users\bayselonarrend\AppData\Local\Temp\eqv5ilms.s3v" \
+  --func "run" \
+  --params "['4']" \
+  --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\a2lg4skt.own.lua'}"

@@ -1,5 +1,5 @@
 oint bitrix24 ПереименоватьФайл ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fileid 59254 ^
+  --fileid 59362 ^
   --title "Новое имя файла.jpg" ^
   --token "***"

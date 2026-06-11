@@ -1,5 +1,5 @@
 oint rportal ПолучитьСтруктуруЛога ^
-  --launch "0ceeddda-f4c3-4484-8d26-6a291868d763" ^
-  --id "c15f556c-c888-4f3e-9aba-527b909e9430" ^
+  --launch "53a836b0-9917-40db-a10f-0b6639389c51" ^
+  --id "791b0d1a-9fd2-41f0-8e0d-e65a77afabbc" ^
   --time "2026-01-01T10:00:10" ^
   --text "Some log"
