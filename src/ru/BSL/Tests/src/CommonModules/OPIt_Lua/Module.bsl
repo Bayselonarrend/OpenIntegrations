@@ -525,7 +525,7 @@
 
 Процедура Lua_ДобавитьПакетИзСтроки()
 
-    Lua = OPI_Lua.СоздатьLua("Lua54");
+    Lua = OPI_Lua.СоздатьVM("Lua54");
 
     OPI_Lua.ДобавитьПакетИзСтроки(Lua, "calc", "local M = {} function M.double(x) return x * 2 end return M");
 
