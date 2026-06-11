@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "37982aa7-fc4e-8166-8662-ef6f3f12d97c",
- "created_time": "2026-06-08T19:46:00Z",
- "last_edited_time": "2026-06-08T19:46:00Z",
+ "id": "37c82aa7-fc4e-818e-abec-ebbb9428b22b",
+ "created_time": "2026-06-11T07:43:00Z",
+ "last_edited_time": "2026-06-11T07:43:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,24 +15,23 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "37982aa7-fc4e-811f-9ebb-dc0e964fe5e9"
+  "database_id": "37c82aa7-fc4e-813a-a5dd-e54497650ff4"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "%3BwP%7D",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Телефон": {
-   "id": "C%7C%5Dz",
-   "type": "phone_number",
-   "phone_number": "***"
+  "Статус": {
+   "id": "%3BW%3Fm",
+   "type": "select",
+   "select": {
+    "id": "4bad32a5-81c6-46cc-8a08-ed61a2a6ecb4",
+    "name": "Новый",
+    "color": "green"
+   }
   },
   "Почта": {
-   "id": "N%3EAB",
+   "id": "%3E%3BbB",
    "type": "rich_text",
    "rich_text": [
     {
@@ -54,13 +53,22 @@
     }
    ]
   },
-  "Номер": {
-   "id": "Zaz%40",
-   "type": "number",
-   "number": 1
+  "Дата создания": {
+   "id": "C%40jc",
+   "type": "date",
+   "date": {
+    "start": "2026-06-11T13:43:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Пользователь": {
+   "id": "SgJc",
+   "type": "people",
+   "people": []
   },
   "Описание": {
-   "id": "bxgt",
+   "id": "ap%3Co",
    "type": "rich_text",
    "rich_text": [
     {
@@ -82,8 +90,13 @@
     }
    ]
   },
+  "Телефон": {
+   "id": "gmtx",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
   "Картинка": {
-   "id": "b%7C%7Ct",
+   "id": "yaef",
    "type": "files",
    "files": [
     {
@@ -95,28 +108,15 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "kDNS",
-   "type": "date",
-   "date": {
-    "start": "2026-06-08T13:46:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
+  "Активен": {
+   "id": "%7BmxE",
+   "type": "checkbox",
+   "checkbox": true
   },
-  "Пользователь": {
-   "id": "ok%3Av",
-   "type": "people",
-   "people": []
-  },
-  "Статус": {
-   "id": "~i%7CQ",
-   "type": "select",
-   "select": {
-    "id": "8da1cd17-fc40-461a-920f-ef2a9ffd718a",
-    "name": "Новый",
-    "color": "green"
-   }
+  "Номер": {
+   "id": "~%5Es%60",
+   "type": "number",
+   "number": 1
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/37982aa7fc4e81668662ef6f3f12d97c",
+ "url": "https://app.notion.com/p/37c82aa7fc4e818eabecebbb9428b22b",
  "public_url": null,
  "archived": false,
- "request_id": "43a4a950-aa99-44d7-aaa8-bf91f8275ffb"
+ "request_id": "0cce4342-2977-4f31-98e2-61eda0e91991"
 }

@@ -1,9 +1,9 @@
 ﻿{
  "data": [
   {
-   "alpha": "Binary",
-   "beta": "Binary",
-   "inner_blob": "Binary"
+   "alpha": "<Двоичные данные>",
+   "beta": "<Двоичные данные>",
+   "inner_blob": "<Двоичные данные>"
   }
  ],
  "result": true

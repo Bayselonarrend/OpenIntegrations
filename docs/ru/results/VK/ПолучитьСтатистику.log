@@ -1,39 +1,8 @@
 ﻿{
  "response": [
   {
-   "activity": {
-    "comments": 3
-   },
-   "period_from": 1780876800,
-   "period_to": 1780963199,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "BR",
-      "count": 1,
-      "name": "Бразилия",
-      "value": 43
-     }
-    ],
-    "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
-   }
-  },
-  {
-   "activity": {
-    "comments": 1
-   },
-   "period_from": 1780790400,
-   "period_to": 1780876799,
+   "period_from": 1781136000,
+   "period_to": 1781222399,
    "reach": {
     "age": [
      {
@@ -72,8 +41,8 @@
     "cities": [
      {
       "count": 1,
-      "name": "Воркута",
-      "value": 190
+      "name": "Северодвинск",
+      "value": 11
      }
     ],
     "countries": [
@@ -90,11 +59,11 @@
     "sex": [
      {
       "value": "f",
-      "count": 1
+      "count": 0
      },
      {
       "value": "m",
-      "count": 0
+      "count": 1
      }
     ],
     "sex_age": [
@@ -128,7 +97,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 1
+      "count": 0
      },
      {
       "value": "m;12-18",
@@ -160,7 +129,171 @@
      },
      {
       "value": "m;45-100",
+      "count": 1
+     }
+    ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "activity": {
+    "comments": 1
+   },
+   "period_from": 1781049600,
+   "period_to": 1781135999,
+   "reach": {
+    "age": [
+     {
+      "value": "12-18",
       "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 0
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 1
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 3
+     },
+     {
+      "value": "45-100",
+      "count": 5
+     }
+    ],
+    "cities": [
+     {
+      "count": 2,
+      "name": "Санкт-Петербург",
+      "value": 2
+     },
+     {
+      "count": 1,
+      "name": "Воткинск",
+      "value": 1100
+     },
+     {
+      "count": 1,
+      "name": "Северодвинск",
+      "value": 11
+     },
+     {
+      "count": 1,
+      "name": "Долгопрудный",
+      "value": 857
+     },
+     {
+      "count": 1,
+      "name": "Кострома",
+      "value": 71
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 9,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 9,
+    "reach": 9,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 7
+     },
+     {
+      "value": "m",
+      "count": 2
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 3
+     },
+     {
+      "value": "f;45-100",
+      "count": 4
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 1
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 0
+     },
+     {
+      "value": "m;45-100",
+      "count": 1
      }
     ]
    },
@@ -168,10 +301,10 @@
     "cities": [],
     "countries": [
      {
-      "code": "BR",
+      "code": "IN",
       "count": 1,
-      "name": "Бразилия",
-      "value": 43
+      "name": "Индия",
+      "value": 80
      }
     ],
     "mobile_views": 0,
