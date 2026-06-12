@@ -57,6 +57,18 @@ pipeline {
 	}
 	stages {
 
+		stage('Sync add-ins') {
+			steps {
+				script {
+					if (isUnix()) {
+						sh 'bash src/addins/sync-addins.sh'
+					} else {
+						bat 'call src\\addins\\sync-addins.bat'
+					}
+				}
+			}
+		}
+
 		stage('Decrypt Data') {
             steps {
                 powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-2.2.0.ospx; del oint-2.2.0.ospx'

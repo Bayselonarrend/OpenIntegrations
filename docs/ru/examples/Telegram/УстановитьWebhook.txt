@@ -1,4 +1,4 @@
     Токен = "6129457865:AAFyzNYOAFbu...";
-    URL   = "https://hut.openintegrations.dev";
+    URL   = "https://openintegrations.dev";
 
     Результат = OPI_Telegram.УстановитьWebhook(Токен, URL);

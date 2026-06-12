@@ -3,7 +3,7 @@
     IdInstance       = "31003...";
     ApiTokenInstance = "17915d8e0b4b4975a183478da...";
 
-    NotificationID = "1";
+    NotificationID = "2";
 
     AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenMax.DeleteNotification(AccessParameters, NotificationID);

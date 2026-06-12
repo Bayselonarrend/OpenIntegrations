@@ -57,6 +57,18 @@ pipeline {
 	}
 	stages {
 
+        stage('Sync add-ins') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'bash src/addins/sync-addins.sh'
+                    } else {
+                        bat 'call src\\addins\\sync-addins.bat'
+                    }
+                }
+            }
+        }
+
         stage('Remove oint') {
             steps {
                 script {
