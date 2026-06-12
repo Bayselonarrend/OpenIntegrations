@@ -6,7 +6,7 @@ pipeline {
 
         stage('Sync add-ins') {
             steps {
-                bat 'git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .'
+                bat 'call src\\addins\\sync-addins.bat'
             }
         }
 

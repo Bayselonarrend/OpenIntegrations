@@ -47,7 +47,11 @@ pipeline {
 		stage('Sync add-ins') {
 			steps {
 				script {
-					runCommand('git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .')
+					if (isUnix()) {
+						sh 'bash src/addins/sync-addins.sh'
+					} else {
+						bat 'call src\\addins\\sync-addins.bat'
+					}
 				}
 			}
 		}
