@@ -508,7 +508,7 @@ Procedure Ollama_GetEmbeddings(FunctionParameters)
     StingsArray.Add("Why is the sky blue?");
     StingsArray.Add("Why is the grass green?");
 
-    Model = "tinyllama";
+    Model = "nomic-embed-text-v2-moe";
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));

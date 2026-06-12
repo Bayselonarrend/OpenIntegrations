@@ -70,24 +70,32 @@ import Admonition from '@theme/Admonition';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint lua ВызватьФункциюСкрипта \
               --lua "Lua54" \
-              --script "C:\Users\bayselonarrend\AppData\Local\Temp\4qx0i0g4.hfb.lua" \
-              --func "div" \
-              --params "['20','4']"
+              --script "function run(x) return calc_file.triple(x) end" \
+              --func "run" \
+              --params "['4']" \
+              --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oasdrp1q.n5v.lua'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint lua ВызватьФункциюСкрипта ^
               --lua "Lua54" ^
-              --script "C:\Users\bayselonarrend\AppData\Local\Temp\4qx0i0g4.hfb.lua" ^
-              --func "div" ^
-              --params "['20','4']"
+              --script "function run(x) return calc_file.triple(x) end" ^
+              --func "run" ^
+              --params "['4']" ^
+              --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oasdrp1q.n5v.lua'}"
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Результат"
+42
+```

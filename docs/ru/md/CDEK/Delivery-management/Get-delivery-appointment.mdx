@@ -70,7 +70,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьДоговоренностьОДоставке \
               --token "***" \
-              --uuid "965b029e-ebdf-4fd1-b86d-7a6cd5d1b481" \
+              --uuid "6e3867d5-af05-4f02-a94a-d2c79a689b17" \
               --testapi "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьДоговоренностьОДоставке ^
               --token "***" ^
-              --uuid "965b029e-ebdf-4fd1-b86d-7a6cd5d1b481" ^
+              --uuid "6e3867d5-af05-4f02-a94a-d2c79a689b17" ^
               --testapi "***"
         ```
     </TabItem>
@@ -90,8 +90,8 @@ import Admonition from '@theme/Admonition';
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "cb4d7d14-21cf-4a16-bf18-d5b4d45a8084",
-  "date": "2026-06-22",
+  "order_uuid": "0ec8d25b-9154-4fc2-94b4-410600327528",
+  "date": "2026-06-25",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -108,31 +108,30 @@ import Admonition from '@theme/Admonition';
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "01f2c7fa-cc04-4949-8afc-3b157ec7965e",
+  "uuid": "15a37286-a45d-4fb2-bbf9-456a787f7d0e",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-06-08T22:58:01+03:00"
+    "date_time": "2026-06-11T10:54:42+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-06-08T22:58:00+03:00"
+    "date_time": "2026-06-11T10:54:41+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "b9c3e0b1-9558-41c8-a429-7f63f56d2d77",
+   "request_uuid": "7b21b0fe-c53a-439f-b715-bbf89a75dd4f",
    "type": "CREATE",
-   "date_time": "2026-06-08T22:58:00+03:00",
+   "date_time": "2026-06-11T10:54:41+03:00",
    "state": "INVALID",
    "errors": [
     {
-     "code": "delivery_date_too_late",
-     "additional_code": "0x1E0EBE20",
-     "message": "Указанная дата доставки не может быть позднее 2026-06-19"
+     "code": "delivery_date_forbidden",
+     "message": "Доставка в указанную дату не осуществляется"
     }
    ]
   }

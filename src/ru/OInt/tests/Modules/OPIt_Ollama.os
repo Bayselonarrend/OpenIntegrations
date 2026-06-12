@@ -507,7 +507,7 @@
     МассивСтрок.Добавить("Why is the sky blue?");
     МассивСтрок.Добавить("Why is the grass green?");
 
-    Модель = "tinyllama";
+    Модель = "nomic-embed-text-v2-moe";
 
     ДопЗаголовки = Новый Соответствие;
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
