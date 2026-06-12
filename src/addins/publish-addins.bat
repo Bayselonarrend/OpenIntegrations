@@ -1,4 +1,5 @@
 @echo off
+setlocal EnableDelayedExpansion
 cd /d "%~dp0..\.."
 
 git rev-parse --abbrev-ref HEAD | findstr /i /x "addins" >nul && (
@@ -11,13 +12,25 @@ if not exist "src\ru\OInt\addins\*.zip" (
     exit /b 1
 )
 
-git checkout --orphan addins
-git reset
+for /f "delims=" %%B in ('git rev-parse --abbrev-ref HEAD') do set "SAVED_BRANCH=%%B"
 
-git add src/ru/OInt/addins/*.zip
-git add src/en/OInt/addins/*.zip
-git add src/ru/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin
-git add src/en/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin
+git branch -D addins 2>nul
+git checkout --orphan addins
+if errorlevel 1 goto :fail
+
+git reset
+if errorlevel 1 goto :fail
+
+git add -f src/ru/OInt/addins/*.zip
+git add -f src/en/OInt/addins/*.zip
+if errorlevel 1 goto :fail
+
+for /d %%D in (src\ru\BSL\OpenIntegrations\src\CommonTemplates\*) do (
+    if exist "%%D\Template.addin" git add -f "%%D/Template.addin"
+)
+for /d %%D in (src\en\BSL\OpenIntegrations\src\CommonTemplates\*) do (
+    if exist "%%D\Template.addin" git add -f "%%D/Template.addin"
+)
 
 git commit -m "addins: publish"
 if errorlevel 1 goto :fail
@@ -25,13 +38,15 @@ if errorlevel 1 goto :fail
 git push --force origin addins
 if errorlevel 1 goto :fail
 
-git clean -fd
-git checkout main
+git checkout -f "%SAVED_BRANCH%"
+if errorlevel 1 goto :fail
+
+git branch -D addins 2>nul
 
 echo Published to origin/addins.
 exit /b 0
 
 :fail
-git clean -fd 2>nul
-git checkout main 2>nul
+git checkout -f "%SAVED_BRANCH%" 2>nul
+git branch -D addins 2>nul
 exit /b 1
