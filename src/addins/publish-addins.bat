@@ -43,10 +43,14 @@ if errorlevel 1 goto :fail
 
 git branch -D addins 2>nul
 
+call "%~dp0sync-addins.bat"
+if errorlevel 1 goto :fail
+
 echo Published to origin/addins.
 exit /b 0
 
 :fail
 git checkout -f "%SAVED_BRANCH%" 2>nul
 git branch -D addins 2>nul
+call "%~dp0sync-addins.bat" 2>nul
 exit /b 1
