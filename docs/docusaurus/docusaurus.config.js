@@ -46,13 +46,17 @@ if (hasCoursesContent) {
   ]);
 }
 
-basePlugins.push(
-  [
+if (process.env.NODE_ENV === 'production') {
+  basePlugins.push([
     'docusaurus-plugin-yandex-metrica',
     {
       counterID: '97292922',
+      enableInProdOnly: true,
     },
-  ],
+  ]);
+}
+
+basePlugins.push(
   [require.resolve('docusaurus-lunr-search'), {
     languages: ['en', 'ru'], // language codes
   }],
