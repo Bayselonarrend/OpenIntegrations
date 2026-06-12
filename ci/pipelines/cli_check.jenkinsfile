@@ -3,6 +3,12 @@ pipeline {
         label 'windows'
     }
     stages {
+        stage('Sync add-ins') {
+            steps {
+                bat 'git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .'
+            }
+        }
+
         stage('Check') {
             steps {
                 bat 'oscript ./ci/os/internal/Classes/CLIOutputInspector.os'

@@ -6,6 +6,12 @@ pipeline {
         booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
     }
     stages {
+        stage('Sync add-ins') {
+            steps {
+                bat 'git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .'
+            }
+        }
+
         stage('Release') {
             steps {
                 powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'

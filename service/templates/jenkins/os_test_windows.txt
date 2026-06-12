@@ -15,6 +15,14 @@ pipeline {
 	}
 	stages {
 
+		stage('Sync add-ins') {
+			steps {
+				script {
+					runCommand('git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .')
+				}
+			}
+		}
+
 		stage('Remove OInt from OneScript Lib') {
 			steps {
 				script {

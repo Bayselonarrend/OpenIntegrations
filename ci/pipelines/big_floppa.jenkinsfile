@@ -8,6 +8,12 @@ pipeline {
 	}
 
     stages {
+        stage('Sync add-ins') {
+            steps {
+                bat 'git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .'
+            }
+        }
+
         stage('OpenIntegrations - Build') {
             steps {
                 build job: 'OpiBuild/OpiMain', wait: true

@@ -3,6 +3,12 @@ pipeline {
         label 'windows'
     }
     stages {
+        stage('Sync add-ins') {
+            steps {
+                bat 'git fetch origin addins --depth=1 && git restore --source=origin/addins --worktree -- .'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 bat encoding: 'UTF-8', script:'oscript ./ci/os/DocsDeployScript.os test en'
