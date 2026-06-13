@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Remove all historical versions of add-in zips and Template.addin, restore current tree once.
+# Remove add-in binaries from main/stable/tags history (not branch addins).
 # Requires: git-filter-repo. See README.md in this directory.
 set -euo pipefail
 
 REPO_ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
 
-BACKUP_DIR="${1:-${TMPDIR:-/tmp}/opi-addin-prune-$(date +%Y%m%d-%H%M%S)}"
+BACKUP_DIR="${1:-}"
 DRY_RUN="${DRY_RUN:-0}"
 SKIP_GC="${SKIP_GC:-0}"
 
@@ -23,8 +23,8 @@ if ! command -v git-filter-repo >/dev/null 2>&1; then
 fi
 
 PATH_GLOBS=(
-  'src/ru/OInt/addins/*.zip'
-  'src/en/OInt/addins/*.zip'
+  'src/ru/OInt/addins/*'
+  'src/en/OInt/addins/*'
   'src/ru/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin'
   'src/en/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin'
 )
@@ -36,26 +36,58 @@ if [[ -n "$(git status --porcelain)" ]]; then
   [[ "${ans,,}" == y ]] || exit 1
 fi
 
-mkdir -p "$BACKUP_DIR"
-backed=0
-for g in "${PATH_GLOBS[@]}"; do
-  # shellcheck disable=SC2086
-  for f in $g; do
-    [[ -f "$f" ]] || continue
-    dest="$BACKUP_DIR/$f"
-    mkdir -p "$(dirname "$dest")"
-    cp -f "$f" "$dest"
-    backed=$((backed + 1))
-  done
+git fetch origin --tags --prune 2>/dev/null || true
+
+REWRITE_REFS=()
+for name in main stable; do
+  if git show-ref --verify --quiet "refs/heads/$name"; then
+    REWRITE_REFS+=("refs/heads/$name")
+  elif git show-ref --verify --quiet "refs/remotes/origin/$name"; then
+    git branch -f "$name" "refs/remotes/origin/$name" 2>/dev/null || true
+    if git show-ref --verify --quiet "refs/heads/$name"; then
+      REWRITE_REFS+=("refs/heads/$name")
+    fi
+  fi
 done
-echo "Backed up $backed files to: $BACKUP_DIR"
+
+while IFS= read -r tag; do
+  [[ -n "$tag" ]] && REWRITE_REFS+=("$tag")
+done < <(git for-each-ref --format='%(refname)' refs/tags)
+
+if [[ ${#REWRITE_REFS[@]} -eq 0 ]]; then
+  echo "No refs to rewrite." >&2
+  exit 1
+fi
+
+echo "Refs to rewrite (addins excluded):"
+printf '  %s\n' "${REWRITE_REFS[@]}"
+
+if [[ -n "$BACKUP_DIR" ]]; then
+  mkdir -p "$BACKUP_DIR"
+  backed=0
+  for g in "${PATH_GLOBS[@]}"; do
+    # shellcheck disable=SC2086
+    for f in $g; do
+      [[ -f "$f" ]] || continue
+      dest="$BACKUP_DIR/$f"
+      mkdir -p "$(dirname "$dest")"
+      if [[ "$DRY_RUN" != 1 ]]; then
+        cp -f "$f" "$dest"
+      else
+        echo "  would backup: $f"
+      fi
+      backed=$((backed + 1))
+    done
+  done
+  echo "Backed up $backed working-tree files to: $BACKUP_DIR"
+fi
 
 if [[ "$DRY_RUN" == 1 ]]; then
-  echo "Dry run. Would run: git filter-repo --force --invert-paths with path globs above."
+  echo "Dry run. Would run git filter-repo --invert-paths with path globs above."
   exit 0
 fi
 
-args=(--force --invert-paths)
+args=(--force --invert-paths --refs "${REWRITE_REFS[@]}")
 for g in "${PATH_GLOBS[@]}"; do
   args+=(--path-glob "$g")
 done
@@ -63,26 +95,13 @@ done
 echo "Rewriting history..."
 "${FILTER_REPO[@]}" "${args[@]}"
 
-echo "Restoring files from backup..."
-find "$BACKUP_DIR" -type f | while read -r bf; do
-  rel="${bf#"$BACKUP_DIR"/}"
-  mkdir -p "$(dirname "$rel")"
-  cp -f "$bf" "$rel"
-done
-
-git add \
-  src/ru/OInt/addins/*.zip \
-  src/en/OInt/addins/*.zip \
-  src/ru/BSL/OpenIntegrations/src/CommonTemplates \
-  src/en/BSL/OpenIntegrations/src/CommonTemplates
-
-if git diff --cached --quiet; then
-  echo "Warning: nothing staged after restore." >&2
-else
-  git commit -m "chore: restore add-in binaries after history prune
-
-Removed all prior versions of OInt zips and Template.addin from Git history
-via git-filter-repo; only current tree restored from backup."
+if [[ -n "$BACKUP_DIR" && -d "$BACKUP_DIR" ]]; then
+  echo "Restoring working-tree copies from backup (not staged)..."
+  find "$BACKUP_DIR" -type f | while read -r bf; do
+    rel="${bf#"$BACKUP_DIR"/}"
+    mkdir -p "$(dirname "$rel")"
+    cp -f "$bf" "$rel"
+  done
 fi
 
 if [[ "$SKIP_GC" != 1 ]]; then
@@ -90,22 +109,12 @@ if [[ "$SKIP_GC" != 1 ]]; then
   git count-objects -vH
 fi
 
-cat <<EOF
+cat <<'EOF'
 
-Done. git filter-repo removed 'origin' if present — re-add and force-push.
+Done. Branch addins was not rewritten.
 
-IMPORTANT — push ALL rewritten refs (not only main):
-  git push --force-with-lease origin main
-  git push --force-with-lease origin stable
-  git push --force origin '+refs/tags/*:refs/tags/*'
+Re-add origin if removed, force-push main/stable/tags (not addins).
+Restore working-tree binaries: bash src/addins/sync-addins.sh
 
-Verify remote matches local:
-  git rev-parse main stable 'refs/tags/2.1.0^{commit}'
-  git ls-remote origin refs/heads/main refs/heads/stable refs/tags/2.1.0
-
-Bare mirror: force-fetch + gc — see service/git/README.md.
-Orphan .pack without .idx: cleanup — see service/git/README.md.
-
-Backup: $BACKUP_DIR
-See service/git/README.md for symlink / single-path strategies.
+See service/git/README.md for details.
 EOF
