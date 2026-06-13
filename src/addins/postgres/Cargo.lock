@@ -269,6 +269,7 @@ dependencies = [
  "common-janx",
  "httparse",
  "native-tls",
+ "openssl",
  "serde",
  "socks",
  "url",
