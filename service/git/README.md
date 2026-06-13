@@ -9,6 +9,20 @@
 | Макет 1С RU | `src/ru/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin` |
 | Макет 1С EN | `src/en/BSL/OpenIntegrations/src/CommonTemplates/*/Template.addin` |
 
+## Текущая схема (ветка `addins`)
+
+С **2026** собранные бинарники **не коммитятся в `main`/`stable`**. Они хранятся в orphan-ветке [`addins`](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins) (один коммит с zip и `Template.addin`), а в `.gitignore` основных веток перечислены те же пути.
+
+| Скрипт | Назначение |
+|--------|------------|
+| `src/addins/sync-addins.bat` / `sync-addins.sh` | Подтянуть бинарники с `origin/addins` в рабочий каталог (без staging) |
+| `src/addins/publish-addins.bat` | Собрать коммит в `addins` и force-push на `origin` |
+| `src/addins/build.bat` | Локальная сборка и раскладка zip в четыре каталога |
+
+CI и Jenkins перед сборкой/тестами вызывают `sync-addins`. После `publish-addins.bat` sync вызывается автоматически — иначе при возврате на `main` git удаляет бинарники из рабочего каталога.
+
+Клон `main`/`stable` **не содержит** zip/addin в истории. Для `main` — `sync-addins`; для `stable` бинарники с `addins` могут не подойти — сборка из `src/addins` на коммите ветки или архивы из релиза.
+
 ## Что уже делает Git
 
 В **одном коммите** одинаковые байты хранятся **одним blob** (проверка: `git ls-tree HEAD` для всех четырёх путей одного компонента даёт один и тот же hash). Четыре копии раздувают рабочий каталог и checkout (~240 MB), но не умножают объект в pack для текущей ревизии.
@@ -134,13 +148,13 @@ src/ru/BSL/.../OPI_MySQL/Template.addin -> ../../../../../../ru/OInt/addins/OPI_
 
 ## Альтернатива symlink: не хранить дубликаты в Git
 
-Более надёжно для смешанной Windows/Linux команды:
+Реализовано через **отдельную ветку `addins` + `.gitignore` на `main`/`stable`** (см. [Текущая схема](#текущая-схема-ветка-addins)):
 
-1. В `.gitignore` добавить `src/en/OInt/addins/*.zip` и `**/CommonTemplates/*/Template.addin`.
-2. Оставить в репозитории только `src/ru/OInt/addins/*.zip`.
-3. В `build.bat` и CI перед тестами копировать zip в три остальных места (как уже делает сборка add-in).
+1. В `.gitignore` перечислены `src/ru/OInt/addins/*.zip`, `src/en/OInt/addins/*.zip` и `**/CommonTemplates/*/Template.addin`.
+2. Актуальные файлы публикуются в ветку `addins` (`publish-addins.bat`).
+3. Перед сборкой/тестами `sync-addins` копирует их в рабочий каталог; `build.bat` раскладывает свежую сборку в те же четыре места.
 
-Тогда в истории остаётся **один путь** на компонент; `filter-repo` проще. Минус: клон без шага CI/сборки не получит макеты 1С до копирования.
+В истории `main` бинарников нет; `filter-repo` ниже — для **очистки старой истории**, если тяжёлые blob ещё остались в pack до перехода на ветку `addins`.
 
 ## Почему не LFS
 

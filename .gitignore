@@ -47,7 +47,7 @@ private.key
 /cfe2cf
 **/addins/legacy-win7/artifacts
 
-# Native add-in binaries (tracked on branch dll-branch)
+# Native add-in binaries (tracked on branch addins, not main/stable)
 src/ru/OInt/addins/*.zip
 src/en/OInt/addins/*.zip
 **/CommonTemplates/*/Template.addin

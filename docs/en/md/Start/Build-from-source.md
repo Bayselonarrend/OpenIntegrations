@@ -10,6 +10,8 @@ When a new version of the Open Integration Package is released, you can obtain p
 
 The project repository has two main branches - `main` and `stable`. The `main` branch contains the main, current development of the project. This means it may contain both current fixes and improvements, as well as various unfinished changes or features in development. The `stable` branch, in turn, always contains the current codebase of the latest published release and is updated only with the release of the next stable version of the package.
 
+Built external component binaries (ZIP archives and `Template.addin` layouts) are stored separately — on the orphan branch [`addins`](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins), not on `main`/`stable`. After cloning `main`, pull them with `src/addins/sync-addins.bat` (Windows) or `src/addins/sync-addins.sh` (Linux/macOS). For `stable`, binaries from `addins` may not match — build components from `src/addins` at that branch’s commit or use archives from the release. See [About external components](/docs/Start/Component-requirements#repository-storage) for details.
+
 Depending on the tasks at hand, you can use code from one of these branches during the build process:
 
 ```bash

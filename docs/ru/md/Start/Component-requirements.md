@@ -10,6 +10,22 @@ sidebar_position: 6
 
 Все внешние компоненты, добавляемые в ОПИ, собираются под x64 и x32 версии Windows и Linux. Они хранятся в специальных zip-архивах, состоящих из четырех файлов библиотек - по одному для каждой из платформ соответственно. Однако на обеих платформах присутствуют свои ограничения по совместимости с конкретными версиями ОС и системными библиотеками
 
+### Хранение в репозитории
+
+Собранные zip-архивы и макеты `Template.addin` для 1С **не хранятся в истории веток `main` и `stable`** — они вынесены в orphan-ветку [`addins`](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins), чтобы не раздувать основную историю Git.
+
+В этой ветке лежит одна актуальная сборка под текущую разработку в `main`. После клонирования `main` файлы по прежним путям (`src/ru/OInt/addins/*.zip`, `src/en/OInt/addins/*.zip`, `**/CommonTemplates/*/Template.addin`) в рабочем каталоге отсутствуют. Подтянуть их:
+
+```bash
+# Windows
+src\addins\sync-addins.bat
+
+# Linux / macOS / CI
+bash src/addins/sync-addins.sh
+```
+
+Ветка `stable` содержит код **последнего опубликованного** релиза. Бинарники с `addins` рассчитаны на `main` и для `stable` **могут не подойти** (расхождение BSL-обёрток и нативного API). Работая со `stable`, соберите компоненты из `src/addins` на коммите этой ветки ([`build.bat`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat)) или возьмите архивы из [соответствующего релиза](https://github.com/Bayselonarrend/OpenIntegrations/releases).
+
 ### Windows
 
 Релизные сборки компонент на Windows выполняются актуальным инструментарием MSVC. При этом в результирующие `.dll` могут попадать ссылки на функции системных библиотек Windows (`kernel32`, `bcrypt`, `ws2_32` и др.), доступные только начиная с **Windows 8** и **Windows Server 2012**. На более старых системах компоненты из стандартного релиза ОПИ могут не загружаться или завершаться с ошибкой при обращении к таким функциям
@@ -76,7 +92,7 @@ sidebar_position: 6
 
 **1. Можно ли пересобрать внешние компоненты?**
 
-Можно. Исходный код на Rust лежит в репозитории по пути [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Собранные компоненты должны быть помещены в zip-архив с [файлом манифеста](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML). Далее можно произвести замену архива из релиза в зависимости от используемой поставки. Также в src/addins есть файл [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat), описывающий процесс сборки релизных версий компонент. Для Windows 7 / Server 2008 R2 используйте отдельный каталог [legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) — см. раздел [Windows](#windows) выше
+Можно. Исходный код на Rust лежит в репозитории по пути [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Собранные компоненты должны быть помещены в zip-архив с [файлом манифеста](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML). Скрипт [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat) кладёт архивы в четыре рабочих каталога и описывает процесс релизной сборки. Чтобы опубликовать результат в ветку `addins`, используйте `src/addins/publish-addins.bat`; для получения уже опубликованных бинарников после клонирования `main` — `sync-addins.bat` / `sync-addins.sh` (см. [Хранение в репозитории](#хранение-в-репозитории)). Для поставки конечному пользователю можно также заменить архив из релиза. Для Windows 7 / Server 2008 R2 используйте отдельный каталог [legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) — см. раздел [Windows](#windows) вышесм. раздел [Windows](#windows) выше
 
 **2. Можно ли пересобрать внешние компоненты, зависимые от OpenSSL, под OpenSSL 1.1/1.1.1k?**
 
