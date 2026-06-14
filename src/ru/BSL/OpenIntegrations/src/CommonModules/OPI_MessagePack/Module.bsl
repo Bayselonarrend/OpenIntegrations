@@ -40,6 +40,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:MagicNumber-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -138,10 +139,17 @@
     ИначеЕсли ТипДанных = Тип("Число") Тогда
 
         ЗаписатьЧислоВКонтекст(Данные, Контекст);
+        
+    Иначе
+    	
+    	OPI_ПреобразованиеТипов.ПолучитьСтроку(Данные);
+    	ЗаписатьСтрокуВКонтекст(Данные, Контекст);
 
     КонецЕсли;
 
 КонецПроцедуры
+
+// BSLLS:CognitiveComplexity-off
 
 Функция ПрочитатьЗначение(Знач Буфер, Знач Позиция)
 
@@ -238,6 +246,8 @@
     ВызватьИсключение "Неподдерживаемый тег MessagePack: " + Формат(Тег, "ЧН=0; ЧГ=");
 
 КонецФункции
+
+// BSLLS:CognitiveComplexity-on
 
 #Область Общее
 
