@@ -25,6 +25,7 @@
 // BSLLS:CommonModuleMissingAPI-off
 // BSLLS:CodeOutOfRegion-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:CommonModuleNameClientServer-off
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
