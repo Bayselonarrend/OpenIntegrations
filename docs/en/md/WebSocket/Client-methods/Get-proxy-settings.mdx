@@ -49,12 +49,12 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ProxyType = "http";
+    ProxyType = FunctionParameters["Proxy_Type"];
 
-    ProxyAddress  = "127.0.0.1";
-    ProxyPort     = "8071";
-    ProxyLogin    = "proxyuser";
-    ProxyPassword = "12we...";
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
 
     Result = OPI_WebSocket.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 ```

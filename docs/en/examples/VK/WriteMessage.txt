@@ -1,8 +1,8 @@
     Parameters = GetVKParameters();
 
     Text           = "Message from autotest";
-    UserID         = "657846756";
-    Communitytoken = "vk1.a.phxjN1ZbTM9Lt-4F_i8d-LvqA9mOQH20qMstHTeytoRzDphTXA7aKpd57CJTn56Apn1ZHKPOpcrLDca43LFrKijMAtOYMwD4spRCAAuh...";
+    UserID         = FunctionParameters["VK_UserID"];
+    Communitytoken = FunctionParameters["VK_CommunityToken"];
 
     ButtonArray = New Array;
     ButtonArray.Add("Button 1");

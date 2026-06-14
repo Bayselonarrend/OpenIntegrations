@@ -52,8 +52,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
-    URL   = "https://yadi.sk/d/n0QfpfP48V7piQ";
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
 
     Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
 ```

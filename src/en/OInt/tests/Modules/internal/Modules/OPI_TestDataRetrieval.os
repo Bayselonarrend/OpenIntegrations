@@ -64,6 +64,7 @@
 #Use "../../../../tools/http"
 #Use "../../../../api/openai"
 #Use "../../../../api/rportal"
+#Use "../../../../api/sqlite"
 #Use asserts
 
 
@@ -9213,7 +9214,7 @@ EndFunction
 
 Function Check_SQLite_EnsureRecords(Val Result, Val Option)
 
-    If Option = "Insertion" Or Option = "Updating" Then
+    If Not ValueIsFilled(Option) Or Option = "Updating" Then
 
         ExpectsThat(Result["result"]).Равно(True);
 
@@ -17293,14 +17294,40 @@ EndProcedure
 
 Function GetValueFromFile(Parameter, Path)
 
-    Values = OPI_Tools.ReadJSONFile(Path);
-    Return ?(Values.Property(Parameter), Values[Parameter], "");
+    PathRO = StrTemplate("file:%1?mode=ro", Path);
+
+    Filter = New Structure();
+    Filter.Insert("field", "key");
+    Filter.Insert("type" , "=");
+    Filter.Insert("value", Parameter);
+
+    Table = "test_params";
+
+    Result = OPI_SQLite.GetRecords(Table, , Filter, , , PathRO);
+
+    If Not Result["result"] = True Then
+        Raise Result["error"];
+    EndIf;
+
+    Data = Result["data"];
+
+    If Data.Count() > 0 Then
+
+        Value    = Data[0]["value"];
+        ValeType = Data[0]["type"];
+
+        Value = ?(ValeType = "Number", Number(Value), String(Value));
+
+    Else
+        Value = "";
+    EndIf;
+
+    Return Value;
 
 EndFunction
 
 Function DataFilePath()
 
-    Path          = "";
     PossiblePaths = New Array;
     PossiblePaths.Add("./data.sqlite");
     PossiblePaths.Add("C:\GDrive\My Drive\data.sqlite");
@@ -17311,13 +17338,12 @@ Function DataFilePath()
         RepositoryFile = New File(PossiblePath);
 
         If RepositoryFile.Exists() Then
-            Path = PossiblePath;
-            Break;
+            Return PossiblePath;
         EndIf;
 
     EndDo;
 
-    Return Path;
+    Raise "data.sqlite not found!";
 
 EndFunction
 
@@ -17941,34 +17967,35 @@ EndProcedure
 
 Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
 
-    Attempts = 10;
+    Attempts = 20;
 
     For N = 1 To Attempts Do
 
-        Try
+        Data               = New Structure("key,value,type"
+            , Parameter
+            , OPI_Tools.NumberToString(Value)
+            , ?(TypeOf(Value) = Type("Number"), "Number", "String"));
 
-            Values = OPI_Tools.ReadJSONFile(Path);
-            Values.Insert(Parameter, Value);
+        Result = OPI_SQLite.EnsureRecords("test_params", Data, "key", , Path);
 
-            // BSLLS:ExternalAppStarting-off
-            Record = New JSONWriter;
-            JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
-            Record.OpenFile(Path, , , JSONWriterSettings);
-            WriteJSON(Record, Values);
-            Record.Close();
-            // BSLLS:ExternalAppStarting-on
+        If Result["result"] Then
+            Return;
+        Else
 
-        Except
+            Error = Result["errors"][0]["error"];
 
-            If N < Attempts Then
+            If Error = "database is locked" Then
                 OPI_Tools.Pause(N);
+                Continue;
             Else
-                Raise;
+                Break;
             EndIf;
 
-        EndTry;
+        EndIf;
 
     EndDo;
+
+    Raise Error;
 
 EndProcedure
 

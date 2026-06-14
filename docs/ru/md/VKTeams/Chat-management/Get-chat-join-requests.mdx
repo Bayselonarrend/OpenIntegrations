@@ -56,8 +56,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен  = "001.3501506236.091...";
-    IDЧата = "AoLI0egLWBSLR1Ngn2w";
+    Токен  = ПараметрыФункции["VKTeams_Token"];
+    IDЧата = ПараметрыФункции["VKTeams_ChatID"];
 
     Результат = OPI_VKTeams.ПолучитьЗапросыВступленияЧата(Токен, IDЧата);
 ```

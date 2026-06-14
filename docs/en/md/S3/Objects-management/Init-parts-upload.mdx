@@ -59,9 +59,9 @@ This is a service method. A `PutObject` method is intended for the common scenar
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = "s3.openintegrations.dev";
-    AccessKey = "bayselo...";
-    SecretKey = "12we34...";
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
@@ -69,8 +69,8 @@ This is a service method. A `PutObject` method is intended for the common scenar
     Name = "fileChunked.mp3";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "w567hjy1";
-    Entity = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Path or Binary data
+    Bucket = FunctionParameters["S3_DB"];
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary data
     Entity = OPI_HTTPRequests.Get(Entity);
 
     Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);

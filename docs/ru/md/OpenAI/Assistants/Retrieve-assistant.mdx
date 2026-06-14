@@ -56,10 +56,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We34...";
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
-    IDАссистента = "asst_2";
+    IDАссистента = ПараметрыФункции["OpenAI_Assistant"];
 
     Результат = OPI_OpenAI.ПолучитьАссистента(URL, Токен, IDАссистента);
 ```

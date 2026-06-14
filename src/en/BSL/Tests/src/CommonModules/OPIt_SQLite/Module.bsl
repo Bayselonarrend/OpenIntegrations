@@ -614,7 +614,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureRecords", "Insertion");
+    OPI_TestDataRetrieval.Process(Result, "SQLite", "EnsureRecords");
 
     Check = OPI_SQLite.GetRecords(Table, "*", , , , Base);
     OPI_TestDataRetrieval.Process(Check, "SQLite", "EnsureRecords", "Insertion check");

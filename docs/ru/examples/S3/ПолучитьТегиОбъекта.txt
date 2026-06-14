@@ -1,6 +1,6 @@
-    URL       = "s3.openintegrations.dev";
-    AccessKey = "bayselo...";
-    SecretKey = "12we34...";
+    URL       = ПараметрыФункции["S3_URL"];
+    AccessKey = ПараметрыФункции["S3_AccessKey"];
+    SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
@@ -8,5 +8,5 @@
     Наименование = "picture.jpg";
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "w567hjy1";
+    Бакет = ПараметрыФункции["S3_DB"];
     Результат = OPI_S3.ПолучитьТегиОбъекта(Наименование, Бакет, ОсновныеДанные, , , Каталог);

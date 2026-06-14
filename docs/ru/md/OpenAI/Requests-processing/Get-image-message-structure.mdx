@@ -47,9 +47,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL      = "https://hut.openintegrations.dev/localai/";
-    Токен    = "12We34...";
-    Картинка = "file-3";
+    URL      = ПараметрыФункции["OpenAI_URL"];
+    Токен    = ПараметрыФункции["OpenAI_Token"];
+    Картинка = ПараметрыФункции["OpenAI_File"];
 
     Результат = OPI_OpenAI.ПолучитьСтруктуруСообщенияКартинки("user", Картинка, "What is in this image?");
 ```

@@ -1,6 +1,6 @@
     Parameters = GetVKParameters();
 
-    Product = "12115889";
+    Product = FunctionParameters["VK_MarketItemID"];
 
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");

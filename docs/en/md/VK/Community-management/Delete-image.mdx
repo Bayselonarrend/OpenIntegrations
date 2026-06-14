@@ -51,7 +51,7 @@ import Admonition from '@theme/Admonition';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
-    ImageID    = "457260557";
+    ImageID    = FunctionParameters["VK_PictureID"];
 
     Result = OPI_VK.DeleteImage(ImageID, Parameters);
 ```

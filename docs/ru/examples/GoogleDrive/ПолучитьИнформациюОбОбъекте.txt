@@ -1,4 +1,4 @@
-    Токен         = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
-    Идентификатор = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
+    Токен         = ПараметрыФункции["Google_Token"];
+    Идентификатор = ПараметрыФункции["GD_Catalog"];
 
     Результат = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);

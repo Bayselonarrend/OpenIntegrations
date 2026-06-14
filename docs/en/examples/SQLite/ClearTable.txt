@@ -1,4 +1,4 @@
-    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
     Result = OPI_SQLite.ClearTable(Table, Base);

@@ -52,10 +52,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Адрес = "https://grpcb.in:9001";
+    Адрес = ПараметрыФункции["GRPC_Address"];
 
-    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // Строка, путь к файлу или URL
-    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";     // Строка, путь к файлу или URL
+    Proto1 = ПараметрыФункции["GRPC_ProtoImport"]; // Строка, путь к файлу или URL
+    Proto2 = ПараметрыФункции["GRPC_ProtoTS"];     // Строка, путь к файлу или URL
 
     Схемы = Новый Соответствие;
     Схемы.Вставить("main.proto"    , Proto1); // Основной

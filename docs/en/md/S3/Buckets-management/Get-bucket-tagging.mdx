@@ -56,15 +56,15 @@ Method at AWS documentation: [GetBucketTagging](https://docs.aws.amazon.com/Amaz
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = "s3.openintegrations.dev";
-    AccessKey = "bayselo...";
-    SecretKey = "12we34...";
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Name = "w567hjy1";
+    Name = FunctionParameters["S3_DB"];
     Result = OPI_S3.GetBucketTagging(Name, BasicData, Directory);
 ```
  

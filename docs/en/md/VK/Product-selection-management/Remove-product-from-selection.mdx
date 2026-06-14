@@ -53,8 +53,8 @@ import Admonition from '@theme/Admonition';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
 
-    Product   = "12115889";
-    Selection = "144";
+    Product   = FunctionParameters["VK_MarketItemID"];
+    Selection = FunctionParameters["VK_MarketAlbumID"];
 
     Result = OPI_VK.RemoveProductFromSelection(Product, Selection, Parameters);
 ```

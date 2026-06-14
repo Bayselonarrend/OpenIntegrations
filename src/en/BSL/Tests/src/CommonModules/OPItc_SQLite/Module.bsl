@@ -730,7 +730,7 @@ Procedure SQLite_EnsureRecords(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureRecords", "Insertion");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "EnsureRecords");
 
     Options = New Structure;
     Options.Insert("table", Table);

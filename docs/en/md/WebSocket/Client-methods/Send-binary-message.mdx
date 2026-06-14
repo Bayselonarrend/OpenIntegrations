@@ -66,12 +66,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     If NeedProxy Then
 
-        ProxyAddress = "127.0.0.1";
-        ProxyPort    = "8071";
-        ProxyType    = "http";
+        ProxyAddress = FunctionParameters["Proxy_IP"];
+        ProxyPort    = FunctionParameters["Proxy_Port"];
+        ProxyType    = FunctionParameters["Proxy_Type"];
 
-        ProxtUser     = "proxyuser";
-        ProxyPassword = "12we...";
+        ProxtUser     = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
 
         ProxySettings = OPI_AddIns.GetProxySettings(ProxyAddress
             , ProxyPort

@@ -1,6 +1,6 @@
     Parameters = GetVKParameters();
 
-    Product   = "12115889";
-    Selection = "144";
+    Product   = FunctionParameters["VK_MarketItemID"];
+    Selection = FunctionParameters["VK_MarketAlbumID"];
 
     Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);

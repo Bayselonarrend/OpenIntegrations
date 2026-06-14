@@ -51,9 +51,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base   = "29d82aa7-fc4e-8173-83c3-eef87a456cc4";
-    Image_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary data or File path
+    Token  = FunctionParameters["Notion_Token"];
+    Base   = FunctionParameters["Notion_Base"];
+    Image_ = FunctionParameters["Picture"]; // URL, Binary data or File path
 
     Image = New Map;
     Image.Insert("Logo", Image_);

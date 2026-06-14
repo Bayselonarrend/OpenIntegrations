@@ -53,9 +53,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address  = "127.0.0.1";
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
-    Password = "12we...";
+    Password = FunctionParameters["PG_Password"];
     Base     = "postgres";
 
     TLS = True;

@@ -1,2 +1,2 @@
-    Token  = "y0__xCOranuBRj1uTsgs8z_iRV...";
+    Token  = FunctionParameters["YandexDisk_Token"];
     Result = OPI_YandexDisk.GetDiskInformation(Token);

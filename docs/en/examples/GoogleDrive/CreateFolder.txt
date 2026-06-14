@@ -1,5 +1,5 @@
-    Token     = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
-    Directory = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
+    Token     = FunctionParameters["Google_Token"];
+    Directory = FunctionParameters["GD_Catalog"];
     Name      = "TestFolder";
 
     Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);

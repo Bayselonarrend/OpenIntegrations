@@ -1,8 +1,8 @@
     // Connection settings
 
     URL = "http://localhost:8123";
-    Login    = "bayselonarrend";
-    Password = "12we...";
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
 
     Authorization = New Structure(Login, Password);
 

@@ -1,10 +1,10 @@
     If OPI_Tools.IsWindows() Then
-        Extension = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary data
+        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary data
     Else
-        Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary data
+        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary data
     EndIf;
 
-    Base       = "/tmp/vnnmoosn.qqb.sqlite";
+    Base       = FunctionParameters["SQLite_DB"];
     EntryPoint = "sqlite3_uuid_init";
 
     Connection = OPI_SQLite.CreateConnection(Base);

@@ -1,4 +1,4 @@
-    Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
-    Path  = "/c20d5eca-8524-41ce-aa92-521e71dd6b17.png";
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
 
     Result = OPI_YandexDisk.GetDownloadLink(Token, Path);

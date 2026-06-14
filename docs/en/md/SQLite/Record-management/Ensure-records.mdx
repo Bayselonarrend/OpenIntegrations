@@ -54,7 +54,7 @@ UNIQUE and PRIMARY KEY fields can be specified as key fields. If fields are not 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Base  = FunctionParameters["SQLite_DB"];
     Table = "test_merge";
 
     DataArray = New Array;

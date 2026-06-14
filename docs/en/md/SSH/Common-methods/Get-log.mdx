@@ -54,8 +54,8 @@ import Admonition from '@theme/Admonition';
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
 
-    Host = "172.33.0.13";
-    Port = "2222";
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
 
     UseProxy          = True;
     ProxySettings     = Undefined;
@@ -63,46 +63,46 @@ import Admonition from '@theme/Admonition';
 
     If AuthorizationType = "By login and password" Then
 
-        Login    = "bayselonarrend";
-        Password = "12we...";
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
 
         SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
-        Login      = "bayselonarrend";
-        PrivateKey = "https://hut.openintegrations.d...";
-        PublicKey  = "https://hut.openintegrations.dev/test_data/ssh_key.pub";
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = FunctionParameters["SSH_Key"];
+        PublicKey  = FunctionParameters["SSH_Pub"];
 
         SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     ElsIf AuthorizationType = "Keyboard interactive" Then
 
-        Login    = "bayselonarrend";
-        Password = "12we...";
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
 
         AnswersArray = New Array;
         AnswersArray.Add(Password);
 
-        Port = "2223";
+        Port = FunctionParameters["SSH_PortKI"];
 
         SSHSettings = OPI_SSH.GetSettingsKI(Host, Port, Login, AnswersArray);
 
     Else
 
-        Login       = "bayselonarrend";
+        Login       = FunctionParameters["SSH_User"];
         SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
     If UseProxy Then
 
-        ProxyType = "http";
+        ProxyType = FunctionParameters["Proxy_Type"];
 
-        ProxyAddress  = "127.0.0.1";
-        ProxyPort     = "8071";
-        ProxyLogin    = "proxyuser";
-        ProxyPassword = "12we...";
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
 
         ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 

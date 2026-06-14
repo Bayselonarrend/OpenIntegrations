@@ -58,8 +58,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We34...";
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
     // Текстовые сообщения
 
@@ -75,7 +75,7 @@ import Admonition from '@theme/Admonition';
     // Картинки
 
     Модель     = "moondream2-20250414";
-    Файл       = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Файл       = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
     ИмяФайла   = СтрШаблон("%1.png", Строка(Новый УникальныйИдентификатор()));
     Назначение = "user_data";
 

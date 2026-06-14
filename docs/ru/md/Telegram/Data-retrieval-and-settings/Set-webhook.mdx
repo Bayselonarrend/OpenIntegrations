@@ -54,8 +54,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "6129457865:AAFyzNYOAFbu...";
-    URL   = "https://hut.openintegrations.dev";
+    Токен = ПараметрыФункции["Telegram_Token"];
+    URL   = ПараметрыФункции["Telegram_URL"];
 
     Результат = OPI_Telegram.УстановитьWebhook(Токен, URL);
 ```

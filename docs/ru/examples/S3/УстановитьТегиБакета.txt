@@ -1,6 +1,6 @@
-    URL       = "s3.openintegrations.dev";
-    AccessKey = "bayselo...";
-    SecretKey = "12we34...";
+    URL       = ПараметрыФункции["S3_URL"];
+    AccessKey = ПараметрыФункции["S3_AccessKey"];
+    SecretKey = ПараметрыФункции["S3_SecretKey"];
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
@@ -10,5 +10,5 @@
     СтруктураТегов.Вставить("MyTag2", "AnotherOne");
 
     Каталог = Истина; // Формирование URL в path-style
-    Наименование = "w567hjy1";
+    Наименование = ПараметрыФункции["S3_DB"];
     Результат = OPI_S3.УстановитьТегиБакета(Наименование, ОсновныеДанные, СтруктураТегов);

@@ -54,8 +54,8 @@ import Admonition from '@theme/Admonition';
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
 
-    URL          = "127.0.0.1:25565";
-    Password     = "12We...";
+    URL          = FunctionParameters["RCON_URL"];
+    Password     = FunctionParameters["RCON_Password"];
     WriteTimeout = 20;
     ReadTimeout  = 20;
 

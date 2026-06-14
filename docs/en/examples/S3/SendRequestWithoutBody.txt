@@ -1,6 +1,6 @@
-    URL       = "s3.openintegrations.dev" + "/opi-newbucket2";
-    AccessKey = "bayselo...";
-    SecretKey = "12we34...";
+    URL       = FunctionParameters["S3_URL"] + "/opi-newbucket2";
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
