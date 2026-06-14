@@ -1,6 +1,6 @@
 oint vkteams ОтправитьФайл \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\nrtt5of0.zck" \
+  --file "/tmp/avimcjgo.bl1" \
   --text "Подпись к файлу" \
   --filename "ВажныйДокумент.docx"

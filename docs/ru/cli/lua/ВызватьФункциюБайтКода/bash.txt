@@ -2,7 +2,7 @@
 
 oint lua ВызватьФункциюБайтКода \
   --lua "Lua54" \
-  --code "C:\Users\bayselonarrend\AppData\Local\Temp\hsaaqu2l.pgn" \
-  --func "run" \
-  --params "['4']" \
-  --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\jy1emdiw.woz.lua'}"
+  --code "/tmp/4bubexcc.bug" \
+  --func "mul" \
+  --params "['6','7']" \
+  --globals "{'bonus':'2'}"
