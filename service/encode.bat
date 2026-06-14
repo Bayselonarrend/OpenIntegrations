@@ -1,1 +1,1 @@
-gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json
+gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.sqlite

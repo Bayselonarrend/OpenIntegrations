@@ -57,7 +57,7 @@
    },
    "secretDataSrc": {
     "description": "File with credentials",
-    "value": "./data.json"
+    "value": "./data.sqlite"
    }
   }
  },

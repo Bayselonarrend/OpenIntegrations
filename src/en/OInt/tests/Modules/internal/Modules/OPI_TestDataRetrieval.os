@@ -17302,9 +17302,9 @@ Function DataFilePath()
 
     Path          = "";
     PossiblePaths = New Array;
-    PossiblePaths.Add("./data.json");
-    PossiblePaths.Add("C:\GDrive\My Drive\data.json");
-    PossiblePaths.Add("G:\My Drive\data.json");
+    PossiblePaths.Add("./data.sqlite");
+    PossiblePaths.Add("C:\GDrive\My Drive\data.sqlite");
+    PossiblePaths.Add("G:\My Drive\data.sqlite");
 
     For Each PossiblePath In PossiblePaths Do
 

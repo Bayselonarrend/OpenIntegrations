@@ -217,7 +217,7 @@
 		ВызватьИсключение "No GPG key passed";
 	КонецЕсли;
 	
-	СтрокаЗапускаРасшифровки = СтрШаблон("gpg --quiet --batch --yes --decrypt --passphrase=""%1"" --output ./data.json ./data.json.gpg", КлючРасшифровки);
+	СтрокаЗапускаРасшифровки = СтрШаблон("gpg --quiet --batch --yes --decrypt --passphrase=""%1"" --output ./data.sqlite ./data.sqlite.gpg", КлючРасшифровки);
 
 	Успех = Ложь;
 	Для Н = 1 По 3 Цикл

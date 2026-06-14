@@ -5,6 +5,7 @@ OInt/coverage/coverage.xml
 OInt/coverage/stat.json
 *.ospx
 data.json
+data.sqlite
 *.exe
 *.rpm
 *.deb
