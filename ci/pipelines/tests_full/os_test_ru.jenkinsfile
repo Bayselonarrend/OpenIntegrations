@@ -130,6 +130,8 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing') {
+			parallel {
 		stage('Testing-Telegram') {
             when {
                 expression { return params['Telegram'] }
@@ -805,6 +807,9 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
 
 	}
 	post{

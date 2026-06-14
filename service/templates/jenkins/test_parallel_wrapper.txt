@@ -1,0 +1,5 @@
+		stage('Testing') {
+			parallel {
+%1
+			}
+		}
