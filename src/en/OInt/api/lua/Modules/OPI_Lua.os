@@ -37,6 +37,8 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:MagicNumber-off
+// BSLLS:LineLength-off
 
 //@skip-check method-too-many-params
 //@skip-check module-structure-top-region
@@ -177,7 +179,7 @@ Function IsVM(Val Value) Export
     TypeAsString = String(TypeOf(Value));
 
     Return TypeAsString = "AddIn.OPI_LuaJIT.Main"
-        Or TypeAsString = "AddIn.OPI_Lua54.Main"
+        Or TypeAsString = "AddIn.OPI_Lua54.Main";
 
 EndFunction
 
@@ -667,7 +669,7 @@ EndFunction
 
 #EndRegion
 
-#Region Internal
+#Region Private
 
 Procedure AttachPackages(Val AddIn, Val Packages)
 
@@ -709,7 +711,6 @@ Function ResultFromJanx(Val JanxData)
 EndFunction
 
 #EndRegion
-
 
 
 #Region Alternate

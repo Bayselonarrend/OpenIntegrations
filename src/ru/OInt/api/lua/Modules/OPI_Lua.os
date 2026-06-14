@@ -37,6 +37,8 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:MagicNumber-off
+// BSLLS:LineLength-off
 
 //@skip-check method-too-many-params
 //@skip-check module-structure-top-region
@@ -177,7 +179,7 @@
     ТипСтрокой = Строка(ТипЗнч(Значение));
 
     Возврат ТипСтрокой = "AddIn.OPI_LuaJIT.Main"
-        Или ТипСтрокой = "AddIn.OPI_Lua54.Main"
+        Или ТипСтрокой = "AddIn.OPI_Lua54.Main";
 
 КонецФункции
 
@@ -667,7 +669,7 @@
 
 #КонецОбласти
 
-#Область СлужебныйПрограммныйИнтерфейс
+#Область СлужебныеПроцедурыИФункции
 
 Процедура ПодключитьПакеты(Знач Компонента, Знач Пакеты)
 
@@ -709,7 +711,6 @@
 КонецФункции
 
 #КонецОбласти
-
 
 
 #Region Alternate

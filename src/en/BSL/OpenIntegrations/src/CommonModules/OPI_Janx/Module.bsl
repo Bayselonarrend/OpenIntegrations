@@ -161,7 +161,9 @@ EndFunction
 
 Function JanxHeaderSize()
 
-    Return PrefixSizeJanx() + 8;
+    Postfix = 8;
+
+    Return PrefixSizeJanx() + Postfix;
 
 EndFunction
 
@@ -217,7 +219,10 @@ Function CreateBinaryMarkerJanx(Val BinaryData, DataArray, Offset)
     DataArray.Add(BinaryData);
     Offset = Offset + Length;
 
-    Return New Structure(MarkerKeyBinaryJanx(), New Structure("s, l", Start, Length));
+    MarkerKey   = MarkerKeyBinaryJanx();
+    Coordinates = New Structure("s, l", Start, Length);
+
+    Return New Structure(MarkerKey, Coordinates);
 
 EndFunction
 

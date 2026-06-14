@@ -40,6 +40,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:MagicNumber-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -138,9 +139,16 @@ Procedure WriteValue(Val Data, Context)
 
         WriteNumberToContext(Data, Context);
 
+    Else
+
+        OPI_TypeConversion.GetLine(Data);
+        WriteStringToContext(Data, Context);
+
     EndIf;
 
 EndProcedure
+
+// BSLLS:CognitiveComplexity-off
 
 Function ReadValue(Val Buffer, Val Position)
 
@@ -237,6 +245,8 @@ Function ReadValue(Val Buffer, Val Position)
     Raise "Unsupported MessagePack tag: " + Format(Tag, "NZ=0; NG=");
 
 EndFunction
+
+// BSLLS:CognitiveComplexity-on
 
 #Region Common
 
