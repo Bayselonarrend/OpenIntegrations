@@ -20,10 +20,15 @@
     "empty": false,
     "name": "main",
     "sizeOnDisk": 40960
+   },
+   {
+    "empty": false,
+    "name": "test_database",
+    "sizeOnDisk": 8192
    }
   ],
   "ok": 1,
-  "totalSize": 372736,
+  "totalSize": 380928,
   "totalSizeMb": 0
  },
  "result": true
