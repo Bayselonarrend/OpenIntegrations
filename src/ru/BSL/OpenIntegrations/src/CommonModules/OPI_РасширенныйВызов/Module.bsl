@@ -162,8 +162,14 @@
     Результат = Неопределено;
 
     Попытка
+    	
+    	// BSLLS:ExecuteExternalCodeInCommonModule-off
+    	
         //@skip-check server-execution-safe-mode
         Выполнить(СтрокаВызова);
+        
+        // BSLLS:ExecuteExternalCodeInCommonModule-on
+                
     Исключение
         УдалитьНастройки();
         ВызватьИсключение;
