@@ -52,7 +52,7 @@ Structure for cluster: `{ cluster : true }`
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "main";
     Resource = New Structure("db,collection", Base, "new_collection");
     Actions  = New Array;
 

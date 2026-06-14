@@ -53,10 +53,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
-    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
-    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
-    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ПолучитьОчередьСообщений(ПараметрыДоступа);
@@ -86,131 +86,5 @@ import Admonition from '@theme/Admonition';
 
 
 ```json title="Результат"
-[
- {
-  "messageID": "3EB0F2BA0B4635DFEABAEE",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": false,
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB041B9E879BE8238D51C",
-  "type": "sendPoll",
-  "body": {
-   "chatId": "***",
-   "message": "Какой ваш любимый цвет?",
-   "options": [
-    {
-     "optionName": "Красный"
-    },
-    {
-     "optionName": "Желтый"
-    },
-    {
-     "optionName": "Зеленый"
-    }
-   ],
-   "multipleAnswers": true,
-   "quotedMessageId": "3EB0F2BA0B4635DFEABAEE",
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB05203D445D6362A7A0B",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "***",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "address": "Площадь Победы, Минск",
-   "nameLocation": "пл. Победы",
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB06406EB9B29236CE195",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "***",
-   "quotedMessageId": "3EB05203D445D6362A7A0B",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0E32E640E166FF3BE4F",
-  "type": "sendContact",
-  "body": {
-   "chatId": "***",
-   "contact": {
-    "phoneContact": "***",
-    "firstName": "Артем",
-    "middleName": "Евпаторийский",
-    "lastName": "Петрович",
-    "company": "Велосипед"
-   },
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0931EBA71D9CF82E4A9",
-  "type": "sendContact",
-  "body": {
-   "chatId": "***",
-   "contact": {
-    "phoneContact": "***",
-    "company": "Велосипед"
-   },
-   "quotedMessageId": "3EB0E32E640E166FF3BE4F",
-   "archive": false,
-   "typingTime": null
-  }
- },
- {
-  "messagesIDs": [
-   "3EB0B62CAADC24CA19BA5F"
-  ],
-  "type": "ForwardMessages",
-  "body": {
-   "chatId": "***",
-   "chatIdFrom": "***",
-   "messages": [
-    "3EB0DE9499CB5869C5BBD3"
-   ],
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB02BF5F21F45A936087F",
-  "type": "editMessage",
-  "body": {
-   "chatId": "***",
-   "idMessage": "3EB0DE9499CB5869C5BBD3",
-   "message": "Новый текст сообщения",
-   "linkPreview": true,
-   "typingTime": null
-  }
- }
-]
+[]
 ```

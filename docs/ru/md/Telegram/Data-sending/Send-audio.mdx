@@ -60,11 +60,11 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Аудио    = ПараметрыФункции["Audio"];
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Аудио    = "https://hut.openintegrations.dev/test_data/song.mp3";
 
     АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
     КопироватьФайл(Аудио, АудиоПуть);
@@ -110,7 +110,7 @@ import Admonition from '@theme/Admonition';
 {
  "ok": true,
  "result": {
-  "message_id": 22220,
+  "message_id": 22354,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -124,15 +124,15 @@ import Admonition from '@theme/Admonition';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1781162256,
+  "date": 1781462617,
   "audio": {
    "duration": 228,
    "file_name": "audio",
    "mime_type": "audio/mpeg",
    "title": "Dogs",
    "performer": "Motorhead",
-   "file_id": "CQACAgIAAxkDAAJWzGoqYRD6IfGTDKqAkw1JYXZ3dlIHAAIsowACNVJQSQxgcm2kQrSgOwQ",
-   "file_unique_id": "AgADLKMAAjVSUEk",
+   "file_id": "CQACAgIAAxkDAAJXUmou9lmE7LMTHNalAAHMOdBtcsZirQACXqEAArYJeUnXbK8nQ9ArETwE",
+   "file_unique_id": "AgADXqEAArYJeUk",
    "file_size": 9229352
   },
   "caption": "Строковое значение"

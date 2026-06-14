@@ -1,10 +1,10 @@
-    URL       = FunctionParameters["S3_URL"];
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Name = FunctionParameters["S3_DB"];
+    Name = "w567hjy1";
     Result = OPI_S3.CreateBucket(Name, BasicData, Directory);

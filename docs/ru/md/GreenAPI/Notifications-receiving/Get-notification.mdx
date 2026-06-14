@@ -56,10 +56,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
-    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
-    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
-    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ПолучитьУведомление(ПараметрыДоступа);
@@ -93,28 +93,29 @@ import Admonition from '@theme/Admonition';
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0DE9499CB5869C5BBD3",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781165176,
+  "timestamp": 1781386239,
+  "idMessage": "3EB08498D1C7A26B96460F",
   "senderData": {
    "chatId": "***",
+   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***",
-   "chatName": "***"
+   "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "description": "",
-    "title": "",
-    "previewType": "None",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "caption": "Описание файла",
+    "fileName": "picture.jpg",
     "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }

@@ -1,7 +1,7 @@
-    Address = FunctionParameters["GRPC_Address"];
+    Address = "https://grpcb.in:9001";
 
-    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
-    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
 
     Scheme = New Map;
     Scheme.Insert("main.proto"    , Proto1); // Primary
@@ -32,7 +32,7 @@
     BoolArray.Add(True);
     BoolArray.Add(False);
 
-    File = FunctionParameters["Document"];
+    File = "https://hut.openintegrations.dev/test_data/document.docx";
     OPI_TypeConversion.GetBinaryData(File);
 
     TFN = GetTempFileName();

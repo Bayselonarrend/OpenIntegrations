@@ -52,10 +52,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL            = ПараметрыФункции["RPortal_URL"];
-    Токен          = ПараметрыФункции["RPortal_TestApiKey"];
-    IDПользователя = ПараметрыФункции["RPortal_UserID"];
-    IDКлюча        = ПараметрыФункции["RPortal_TestKeyID"];
+    URL            = "tests.openintegrations.dev";
+    Токен          = "test-key_uTk4iLOTRU2XN217ku-ATdmUoqQ...";
+    IDПользователя = "1";
+    IDКлюча        = "1...";
 
     Результат = OPI_ReportPortal.УдалитьПостоянныйТокен(URL, Токен, IDПользователя, IDКлюча);
 ```
@@ -87,6 +87,6 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "message": "Api key with ID = '105' was successfully deleted."
+ "message": "Api key with ID = '113' was successfully deleted."
 }
 ```

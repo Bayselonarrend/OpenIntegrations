@@ -56,9 +56,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Адрес  = ПараметрыФункции["PG_IP"];
+    Адрес  = "127.0.0.1";
     Логин  = "SA";
-    Пароль = ПараметрыФункции["PG_Password"];
+    Пароль = "12we...";
     База   = "testbase1";
 
     НастройкиTLS      = OPI_MSSQL.ПолучитьНастройкиTLS(Истина);
@@ -67,7 +67,7 @@ import Admonition from '@theme/Admonition';
     Таблица       = "testtable";
     МассивЗаписей = Новый Массив;
 
-    Картинка = ПараметрыФункции["Picture"];
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
 
     XML = "<?xml version=""1.0""?><root>

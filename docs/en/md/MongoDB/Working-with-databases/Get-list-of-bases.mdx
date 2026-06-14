@@ -47,8 +47,8 @@ import Admonition from '@theme/Admonition';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
     ConnectionParams = New Structure("authSource", "admin");
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);

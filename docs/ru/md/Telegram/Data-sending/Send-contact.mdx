@@ -58,12 +58,12 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Имя      = ПараметрыФункции["Name"];
-    Фамилия  = ПараметрыФункции["Surname"];
-    Телефон  = ПараметрыФункции["Phone"];
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Имя      = "Петр";
+    Фамилия  = "Петров";
+    Телефон  = "88005553535";
 
     Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDЧата, Имя, Фамилия, Телефон);
 
@@ -101,7 +101,7 @@ import Admonition from '@theme/Admonition';
 {
  "ok": true,
  "result": {
-  "message_id": 22227,
+  "message_id": 22361,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -115,7 +115,7 @@ import Admonition from '@theme/Admonition';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1781162336,
+  "date": 1781462699,
   "contact": {
    "phone_number": "***",
    "first_name": "Петр",

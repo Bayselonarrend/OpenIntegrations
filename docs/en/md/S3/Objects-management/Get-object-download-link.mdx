@@ -56,9 +56,9 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = FunctionParameters["S3_URL"];
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
@@ -66,7 +66,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
-    Bucket = FunctionParameters["S3_DB"];
+    Bucket = "w567hjy1";
     Result = OPI_S3.GetObjectDownloadLink(Name, Bucket, BasicData, 7200, , Directory);
 ```
  

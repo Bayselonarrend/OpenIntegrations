@@ -61,11 +61,11 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Документ = ПараметрыФункции["Document"];
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Документ = "https://hut.openintegrations.dev/test_data/document.docx";
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);
@@ -116,7 +116,7 @@ import Admonition from '@theme/Admonition';
 {
  "ok": true,
  "result": {
-  "message_id": 22221,
+  "message_id": 22355,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -130,12 +130,12 @@ import Admonition from '@theme/Admonition';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1781162296,
+  "date": 1781462655,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAJWzWoqYTgIaMQgiE9fYfbYRvGY_GJsAAIuowACNVJQSRthT9f87mEnOwQ",
-   "file_unique_id": "AgADLqMAAjVSUEk",
+   "file_id": "BQACAgIAAxkDAAJXU2ou9n-8xhoG_MAmDmWqDrmRc_l9AAJgoQACtgl5SSUaz3EDqUY7PAQ",
+   "file_unique_id": "AgADYKEAArYJeUk",
    "file_size": 24069
   },
   "caption": "Строковое значение"

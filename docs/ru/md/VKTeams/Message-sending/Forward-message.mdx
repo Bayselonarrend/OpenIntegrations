@@ -59,10 +59,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен           = ПараметрыФункции["VKTeams_Token"];
-    IDЧата          = ПараметрыФункции["VKTeams_ChatID"];
-    IDЧатаИсточника = ПараметрыФункции["VKTeams_ChatID2"];
-    IDСообщения     = ПараметрыФункции["VKTeams_MessageID"];
+    Токен           = "001.3501506236.091...";
+    IDЧата          = "AoLI0egLWBSLR1Ngn2w";
+    IDЧатаИсточника = "689203963@chat.agent";
+    IDСообщения     = "7567354422724936211";
 
     Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата);
 
@@ -100,7 +100,7 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "msgId": "7650042490317194629",
+ "msgId": "7651323292514535040",
  "ok": true
 }
 ```

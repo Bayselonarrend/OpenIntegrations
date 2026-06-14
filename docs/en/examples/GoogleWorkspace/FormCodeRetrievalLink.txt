@@ -1,2 +1,2 @@
-    ClientID = FunctionParameters["Google_ClientID"];
+    ClientID = "";
     Result   = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID);

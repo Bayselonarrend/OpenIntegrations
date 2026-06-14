@@ -57,8 +57,8 @@ import Admonition from '@theme/Admonition';
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary data
-    Video = FunctionParameters["Video"]; // URL, Path or Binary data
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
+    Video = "https://hut.openintegrations.dev/test_data/video.mp4"; // URL, Path or Binary data
 
     TFN = GetTempFileName("png");
     CopyFile(Image, TFN);

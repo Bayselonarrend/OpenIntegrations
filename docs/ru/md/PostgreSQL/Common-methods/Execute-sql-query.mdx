@@ -56,12 +56,12 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Картинка = ПараметрыФункции["Picture"];
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
 
-    Адрес  = ПараметрыФункции["PG_IP"];
+    Адрес  = "127.0.0.1";
     Логин  = "bayselonarrend";
-    Пароль = ПараметрыФункции["PG_Password"];
+    Пароль = "12we...";
     База   = "test_data";
 
     TLS = Истина;
@@ -131,7 +131,7 @@ import Admonition from '@theme/Admonition';
 
     // SQL запрос из файла
 
-    ФайлSQL = ПараметрыФункции["SQL"]; // Двоичные данные, URL или путь к файлу
+    ФайлSQL = "https://hut.openintegrations.dev/test_data/TEST_DATA.sql"; // Двоичные данные, URL или путь к файлу
 
     Результат = OPI_PostgreSQL.ВыполнитьЗапросSQL(ФайлSQL, , , Соединение);
 
@@ -170,7 +170,7 @@ import Admonition from '@theme/Admonition';
  "data": [
   {
    "age": 25,
-   "created_at": "2026-06-11",
+   "created_at": "2026-06-14",
    "data": "<Двоичные данные>",
    "id": 1,
    "is_active": true,

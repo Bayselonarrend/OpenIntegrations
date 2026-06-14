@@ -55,12 +55,12 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
-    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
-    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
-    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDГруппы       = ПараметрыФункции["GreenAPI_GroupID"];
+    IDГруппы       = "120363421084000163@g.us";
     IDПользователя = "123123123@c.us";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
@@ -97,7 +97,7 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "statusCode": 400,
- "timestamp": "2026-06-11T08:06:12.768Z",
+ "timestamp": "2026-06-14T18:41:01.978Z",
  "path": "/waInstance7105187566/setGroupAdmin/425010d90e114aa6b78f0969e1e67ec62579d30401c84d5183",
  "message": "Validation failed. Details: 'chatId': invalid phone number",
  "setGroupAdmin": true

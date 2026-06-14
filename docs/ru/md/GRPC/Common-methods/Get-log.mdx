@@ -54,10 +54,10 @@ import Admonition from '@theme/Admonition';
     ФайлЛога             = ПолучитьИмяВременногоФайла("txt");
     НастройкиЛогирования = OPI_GRPC.ПолучитьНастройкиЛогирования(Истина, 100, ФайлЛога);
 
-    Адрес = ПараметрыФункции["GRPC_Address"];
+    Адрес = "https://grpcb.in:9001";
 
-    Proto1 = ПараметрыФункции["GRPC_ProtoImport"];
-    Proto2 = ПараметрыФункции["GRPC_ProtoTS"];
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto";
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";
 
     Схемы = Новый Соответствие;
     Схемы.Вставить("main.proto"    , Proto1);

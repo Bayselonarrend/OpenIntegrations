@@ -52,9 +52,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL          = ПараметрыФункции["RPortal_URL"];
-    Токен        = ПараметрыФункции["RPortal_TempToken"];
-    UUIDЭлемента = ПараметрыФункции["RPortal_TestItem"];
+    URL          = "tests.openintegrations.dev";
+    Токен        = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    UUIDЭлемента = "";
     Проект       = "Test";
 
     Результат = OPI_ReportPortal.ПолучитьЭлемент(URL, Токен, Проект, UUIDЭлемента);
@@ -87,8 +87,8 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "id": 238602,
- "uuid": "35aeea90-cf5e-424d-88dd-2db7bd6c663b",
+ "id": 254625,
+ "uuid": "1fd7c483-461b-4ac8-825b-08fc06771775",
  "name": "Test",
  "description": "Test launch",
  "parameters": [],
@@ -103,16 +103,16 @@ import Admonition from '@theme/Admonition';
  "pathNames": {
   "launchPathName": {
    "name": "Test",
-   "number": 205
+   "number": 221
   }
  },
  "hasChildren": false,
  "hasStats": true,
- "launchId": 320,
+ "launchId": 344,
  "uniqueId": "auto:293897e9b3e0f4d39b111586ac4a3985",
  "testCaseHash": 1545806777,
  "patternTemplates": [],
- "path": "238602",
+ "path": "254625",
  "hasNestedSteps": false
 }
 ```

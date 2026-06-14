@@ -1,10 +1,10 @@
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_FTP.GetLoggingSettings(True, 100, LogFile);
 
-    Host     = FunctionParameters["FTP_IP"];
-    Port     = FunctionParameters["FTP_Port"];
-    Login    = FunctionParameters["FTP_User"];
-    Password = FunctionParameters["FTP_Password"];
+    Host     = "172.33.0.10";
+    Port     = "21";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
     UseProxy = True;
     FTPS     = True;
@@ -16,12 +16,12 @@
 
     If UseProxy Then
 
-        ProxyType = FunctionParameters["Proxy_Type"];
+        ProxyType = "http";
 
-        ProxyAddress  = FunctionParameters["Proxy_IP"];
-        ProxyPort     = FunctionParameters["Proxy_Port"];
-        ProxyLogin    = FunctionParameters["Proxy_User"];
-        ProxyPassword = FunctionParameters["Proxy_Password"];
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
 
         ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 

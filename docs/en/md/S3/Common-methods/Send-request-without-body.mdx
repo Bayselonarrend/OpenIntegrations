@@ -52,9 +52,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = FunctionParameters["S3_URL"] + "/opi-newbucket2";
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev" + "/opi-newbucket2";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);

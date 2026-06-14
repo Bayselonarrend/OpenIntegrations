@@ -1,4 +1,4 @@
-    Address    = FunctionParameters["TCP_Address"];
+    Address    = "45.79.112.203:4242";
     Connection = OPI_TCP.CreateConnection(Address);
 
     OPI_TCP.CloseConnection(Connection);
@@ -6,10 +6,10 @@
     Address = "tcpbin.com:4243";
     Tls     = OPI_TCP.GetTLSSettings(True);
 
-    ProxtUser     = FunctionParameters["Proxy_User"];
-    ProxyPassword = FunctionParameters["Proxy_Password"];
-    ProxyAddress  = FunctionParameters["Socks5_IP"];
-    ProxyPort     = FunctionParameters["Socks5_Port"];
+    ProxtUser     = "proxyuser";
+    ProxyPassword = "12we...";
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "1080";
 
     Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
     Tls   = OPI_TCP.GetTLSSettings(True);

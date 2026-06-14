@@ -47,8 +47,8 @@ import Admonition from '@theme/Admonition';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1:1234";
-    Логин  = ПараметрыФункции["MongoDB_User"];
-    Пароль = ПараметрыФункции["MongoDB_Password"];
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
 
     ПараметрыПодключения = Новый Структура("authSource", "admin");
     СтрокаПодключения    = OPI_MongoDB.СформироватьСтрокуПодключения(Адрес, , Логин, Пароль, ПараметрыПодключения);
@@ -99,10 +99,15 @@ import Admonition from '@theme/Admonition';
     "empty": false,
     "name": "main",
     "sizeOnDisk": 40960
+   },
+   {
+    "empty": false,
+    "name": "test_database",
+    "sizeOnDisk": 8192
    }
   ],
   "ok": 1,
-  "totalSize": 372736,
+  "totalSize": 380928,
   "totalSizeMb": 0
  },
  "result": true

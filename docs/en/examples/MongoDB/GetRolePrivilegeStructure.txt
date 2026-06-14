@@ -1,4 +1,4 @@
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "main";
     Resource = New Structure("db,collection", Base, "new_collection");
     Actions  = New Array;
 

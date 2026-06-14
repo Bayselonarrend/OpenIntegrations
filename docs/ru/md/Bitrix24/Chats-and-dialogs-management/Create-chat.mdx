@@ -55,7 +55,7 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Картинка = ПараметрыФункции["Picture"];
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка);
 
     B64Картинка = ПолучитьBase64СтрокуИзДвоичныхДанных(Картинка);
@@ -74,12 +74,12 @@ import Admonition from '@theme/Admonition';
     СтруктураЧата.Вставить("AVATAR"     , B64Картинка);
     СтруктураЧата.Вставить("OWNER_ID"   , 1);
 
-    URL = ПараметрыФункции["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
     Результат = OPI_Bitrix24.СоздатьЧат(URL, СтруктураЧата);
 
-    URL   = ПараметрыФункции["Bitrix24_Domain"];
-    Токен = ПараметрыФункции["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "a5b00469006e9f06006b12e400000001000...";
 
     СтруктураЧата = Новый Структура;
     СтруктураЧата.Вставить("TYPE" , "CHAT");

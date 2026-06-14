@@ -53,10 +53,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Адрес = ПараметрыФункции["GRPC_Address"];
+    Адрес = "https://grpcb.in:9001";
 
-    Proto1 = ПараметрыФункции["GRPC_ProtoImport"]; // Строка, путь к файлу или URL
-    Proto2 = ПараметрыФункции["GRPC_ProtoTS"];     // Строка, путь к файлу или URL
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // Строка, путь к файлу или URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";     // Строка, путь к файлу или URL
 
     Схемы = Новый Соответствие;
     Схемы.Вставить("main.proto"    , Proto1); // Основной
@@ -131,6 +131,6 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "result": true,
- "streamId": "47c52185-ac92-4f77-95e4-639b0e34c571"
+ "streamId": "03320bb5-f1d6-4878-a515-28863c18f003"
 }
 ```

@@ -55,9 +55,9 @@ The user can be specified in one of the following formats:<br/>String: `name of 
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);

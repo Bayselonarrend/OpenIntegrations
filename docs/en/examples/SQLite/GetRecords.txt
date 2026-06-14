@@ -1,4 +1,4 @@
-    Base  = FunctionParameters["SQLite_DB"];
+    Base  = "/tmp/vnnmoosn.qqb.sqlite";
     Table = "test";
 
     Fields = New Array;

@@ -47,8 +47,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Адрес = ПараметрыФункции["GRPC_Address"];
-    Схема = ПараметрыФункции["GRPC_Proto"]; // Строка, путь к файлу или URL
+    Адрес = "https://grpcb.in:9001";
+    Схема = "https://hut.openintegrations.dev/test_data/grpcbin.proto"; // Строка, путь к файлу или URL
 
     Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схема);
     Tls       = OPI_GRPC.ПолучитьНастройкиTls(Истина);

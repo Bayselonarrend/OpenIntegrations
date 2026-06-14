@@ -61,9 +61,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL       = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
@@ -71,8 +71,8 @@ import Admonition from '@theme/Admonition';
     Наименование = "fileChunked.mp3";
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = ПараметрыФункции["S3_DB"];
-    Содержимое = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
+    Бакет = "w567hjy1";
+    Содержимое = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
 
     Результат = OPI_S3.ИнициализироватьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные, , Каталог);

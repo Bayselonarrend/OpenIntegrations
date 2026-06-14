@@ -1,5 +1,5 @@
-    ClientID     = FunctionParameters["Google_ClientID"];
-    ClientSecret = FunctionParameters["Google_ClientSecret"];
-    Code         = FunctionParameters["Google_Code"];
+    ClientID     = "";
+    ClientSecret = "GOCSPX-v--MJyEjtV...";
+    Code         = "4/0AeaYSHBDZAbAtChyjMxPKa0DXIilJYYcVCgKYzA_CPmCPSt1mg_KqxI4w5CP3lTlYibpGg";
 
     Result = OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code);

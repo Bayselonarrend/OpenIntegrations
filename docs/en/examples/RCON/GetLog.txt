@@ -1,8 +1,8 @@
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
 
-    URL          = FunctionParameters["RCON_URL"];
-    Password     = FunctionParameters["RCON_Password"];
+    URL          = "127.0.0.1:25565";
+    Password     = "12We...";
     WriteTimeout = 20;
     ReadTimeout  = 20;
 

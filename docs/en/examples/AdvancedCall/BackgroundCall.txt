@@ -1,7 +1,7 @@
     #If Not Client Then
 
-        Token  = FunctionParameters["Telegram_Token"];
-        FileID = FunctionParameters["Telegram_FileID"];
+        Token  = "6129457865:AAFyzNYOAFbu...";
+        FileID = "CQACAgIAAx0EcNsaZQACWBFpBJl6nDHeih2m1CcGUJUTUMBewwACt4IAAmBxKUhCDKl_dJD1TjYE";
 
         Parameters = New Array;
         Parameters.Add(Token);

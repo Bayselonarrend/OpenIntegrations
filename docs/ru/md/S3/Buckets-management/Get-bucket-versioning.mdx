@@ -56,15 +56,15 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL       = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Каталог = Истина; // Формирование URL в path-style
-    Наименование = ПараметрыФункции["S3_DB"];
+    Наименование = "w567hjy1";
     Результат = OPI_S3.ПолучитьНастройкиВерсионированияБакета(Наименование, ОсновныеДанные);
 ```
     

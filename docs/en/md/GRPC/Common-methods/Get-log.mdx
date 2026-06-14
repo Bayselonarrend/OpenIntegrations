@@ -54,10 +54,10 @@ import Admonition from '@theme/Admonition';
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
 
-    Address = FunctionParameters["GRPC_Address"];
+    Address = "https://grpcb.in:9001";
 
-    Proto1 = FunctionParameters["GRPC_ProtoImport"];
-    Proto2 = FunctionParameters["GRPC_ProtoTS"];
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto";
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";
 
     Scheme = New Map;
     Scheme.Insert("main.proto"    , Proto1);

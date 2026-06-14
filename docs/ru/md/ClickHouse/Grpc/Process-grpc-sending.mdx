@@ -50,8 +50,8 @@ import Admonition from '@theme/Admonition';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL = "http://localhost:9101";
-    Логин  = ПараметрыФункции["ClickHouse_User"];
-    Пароль = ПараметрыФункции["ClickHouse_Password"];
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
 
     Авторизация         = Новый Структура(Логин, Пароль);
     НастройкиСоединения = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация);

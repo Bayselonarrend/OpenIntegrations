@@ -54,8 +54,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL   = ПараметрыФункции["Ollama_URL"];
-    Токен = ПараметрыФункции["Ollama_Token"]; // Авторизация - не часть API Ollama
+    URL   = "https://hut.openintegrations.dev/ollama";
+    Токен = "12We34..."; // Авторизация - не часть API Ollama
 
     ДопЗаголовки = Новый Соответствие;
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));
@@ -106,9 +106,28 @@ import Admonition from '@theme/Admonition';
     "parameter_size": "1.1B",
     "quantization_level": "Q4_0"
    },
-   "expires_at": "2026-06-11T11:14:00.8135069+03:00",
+   "expires_at": "2026-06-14T21:47:24.9253453+03:00",
    "size_vram": 0,
    "context_length": 2048
+  },
+  {
+   "name": "nomic-embed-text-v2-moe:latest",
+   "model": "nomic-embed-text-v2-moe:latest",
+   "size": 972837353,
+   "digest": "ff9c2f10ef5e3722623a1b396e1e04efc27a93112c83e9b7b7b9ca1d05620965",
+   "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "nomic-bert-moe",
+    "families": [
+     "nomic-bert-moe"
+    ],
+    "parameter_size": "475.29M",
+    "quantization_level": "F16"
+   },
+   "expires_at": "2026-06-14T21:46:54.864058+03:00",
+   "size_vram": 0,
+   "context_length": 512
   }
  ]
 }

@@ -1,6 +1,6 @@
-    Токен    = ПараметрыФункции["Google_Token"];
-    Каталог  = ПараметрыФункции["GD_Catalog"];
-    Картинка = ПараметрыФункции["Picture"];      // URL, Двоичные данные или Путь к файлу
+    Токен    = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
+    Каталог  = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";      // URL, Двоичные данные или Путь к файлу
 
     Пустая   = Ложь;
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла(Пустая);

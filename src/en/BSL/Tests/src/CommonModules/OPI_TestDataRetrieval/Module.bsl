@@ -707,8 +707,6 @@ Function CreateReportPortalLaunch(Val Platform = "") Export
     LaunchStructure.Insert("startTime", CurrentDate);
     LaunchStructure.Insert("uuid"     , UUID);
 
-    WriteParameter("RPortal_MainLaunch", UUID);
-
     Result = ReportPortal().CreateLaunch(URL, Token, Project, LaunchStructure);
     UID    = Result["id"];
 
@@ -17122,14 +17120,11 @@ EndProcedure
 
 Procedure WriteLaunchFile(Val Data)
 
-    LaunchFile = GetParameter("RPortal_MainLaunch");
-    OPI_Tools.WriteJSONFile(LaunchFile, Data);
+    WriteParameter("RPortal_MainLaunch", OPI_Tools.JSONString(Data));
 
 EndProcedure
 
 Procedure CreateLaunchFile(Val UUID)
-
-    TFN = GetTempFileName();
 
     DataStructure = New Structure;
     DataStructure.Insert("id"    , UUID);
@@ -17138,8 +17133,7 @@ Procedure CreateLaunchFile(Val UUID)
     DataStructure.Insert("tests" , New Array);
     DataStructure.Insert("items" , New Map);
 
-    OPI_Tools.WriteJSONFile(TFN, DataStructure);
-    WriteParameter("RPortal_MainLaunch", TFN);
+    WriteLaunchFile(DataStructure);
 
 EndProcedure
 
@@ -17168,16 +17162,13 @@ EndFunction
 
 Function ReadLaunchFile()
 
-    LaunchFile = GetParameter("RPortal_MainLaunch");
+    JSONText = GetParameter("RPortal_MainLaunch");
 
-    LaunchObject = New File(LaunchFile);
-
-    If Not ValueIsFilled(LaunchFile) Or Not LaunchObject.Exists() Then
+    If Not ValueIsFilled(JSONText) Then
         Return New Map;
     EndIf;
 
-    Data = OPI_Tools.ReadJSONFile(LaunchFile, True);
-    Return Data;
+    Return OPI_Tools.JsonToStructure(JSONText);
 
 EndFunction
 
@@ -17975,7 +17966,7 @@ Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
 
     For N = 1 To Attempts Do
 
-        Data               = New Structure("key,value,type"
+        Data                  = New Structure("key,value,type"
             , Parameter
             , OPI_Tools.NumberToString(Value)
             , ?(TypeOf(Value) = Type("Number"), "Number", "String"));

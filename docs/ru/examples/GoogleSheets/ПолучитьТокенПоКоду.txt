@@ -1,5 +1,5 @@
-    ClientID     = ПараметрыФункции["Google_ClientID"];
-    ClientSecret = ПараметрыФункции["Google_ClientSecret"];
-    Code         = ПараметрыФункции["Google_Code"];
+    ClientID     = "";
+    ClientSecret = "GOCSPX-v--MJyEjtV...";
+    Code         = "4/0AeaYSHBDZAbAtChyjMxPKa0DXIilJYYcVCgKYzA_CPmCPSt1mg_KqxI4w5CP3lTlYibpGg";
 
     Результат = OPI_GoogleSheets.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);

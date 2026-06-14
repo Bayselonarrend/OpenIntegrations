@@ -1,2 +1,2 @@
-    ClientID  = ПараметрыФункции["Google_ClientID"];
+    ClientID  = "";
     Результат = OPI_GoogleCalendar.СформироватьСсылкуПолученияКода(ClientID);

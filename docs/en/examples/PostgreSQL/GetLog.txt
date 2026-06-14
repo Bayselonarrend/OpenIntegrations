@@ -1,9 +1,9 @@
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_PostgreSQL.GetLoggingSettings(True, 100, LogFile);
 
-    Address  = FunctionParameters["PG_IP"];
+    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
     Base     = "postgres";
 
     TLS = True;

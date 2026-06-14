@@ -1,8 +1,8 @@
-    URL = FunctionParameters["HTTP_URL"];
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/put";
 
     ChunkSize = 524288;
-    Image     = FunctionParameters["Picture"]; // URL, Path or Binary data
+    Image     = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)

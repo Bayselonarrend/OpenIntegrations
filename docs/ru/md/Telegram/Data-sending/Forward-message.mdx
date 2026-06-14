@@ -56,10 +56,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDЧата      = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDЧата      = "461699897";
+    IDКанала    = "@testsichee";
+    IDСообщения = "22536";
 
     Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
 ```
@@ -93,7 +93,7 @@ import Admonition from '@theme/Admonition';
 {
  "ok": true,
  "result": {
-  "message_id": 22229,
+  "message_id": 22363,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -107,7 +107,7 @@ import Admonition from '@theme/Admonition';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1781162377,
+  "date": 1781462740,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -116,8 +116,8 @@ import Admonition from '@theme/Admonition';
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 28533,
-   "date": 1781162176
+   "message_id": 28704,
+   "date": 1781462538
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -125,16 +125,9 @@ import Admonition from '@theme/Admonition';
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 28533,
-  "forward_date": 1781162176,
-  "text": "Полужирный текст",
-  "entities": [
-   {
-    "offset": 0,
-    "length": 16,
-    "type": "bold"
-   }
-  ]
+  "forward_from_message_id": 28704,
+  "forward_date": 1781462538,
+  "text": "Строковое значение"
  }
 }
 ```

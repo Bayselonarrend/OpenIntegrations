@@ -49,10 +49,10 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL        = ПараметрыФункции["RPortal_URL"];
-    Токен      = ПараметрыФункции["RPortal_TempToken"];
-    IDЗапуска  = ПараметрыФункции["RPortal_TestLaunch"];
-    IDЭлемента = ПараметрыФункции["RPortal_TestItem"];
+    URL        = "tests.openintegrations.dev";
+    Токен      = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    IDЗапуска  = "";
+    IDЭлемента = "";
     Проект     = "Test";
     Время      = Дата("20260101100010");
     Текст      = "Some log";
@@ -87,8 +87,8 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "launchUuid": "5bcaece5-9bdf-485b-a392-49a347b28421",
- "itemUuid": "8823a365-1563-425e-926f-d5bdeb610ae8",
+ "launchUuid": "53e9079a-9180-4d4f-891d-c63fd678000d",
+ "itemUuid": "0a53ff36-6abb-46ad-aa5b-5e0cdfed5a6c",
  "time": "1767258010",
  "message": "Some log",
  "level": "info"

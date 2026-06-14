@@ -52,9 +52,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL     = FunctionParameters["RPortal_URL"];
-    Token   = FunctionParameters["RPortal_TempToken"];
-    LogUUID = FunctionParameters["RPortal_TestLog"];
+    URL     = "tests.openintegrations.dev";
+    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
+    LogUUID = "";
     Project = "Test";
 
     Result = OPI_ReportPortal.GetLog(URL, Token, Project, LogUUID);

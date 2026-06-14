@@ -57,8 +57,8 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен  = ПараметрыФункции["NC_Token"];
-    Данные = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
+    Токен  = "f1e616e20ab5893b...";
+    Данные = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
     Путь   = "testfolder/test_pic.png";
 
     Результат = OPI_Neocities.ЗагрузитьФайл(Токен, Путь, Данные);
@@ -90,6 +90,6 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "result": "success",
- "message": "your file(s) have been successfully uploaded"
+ "message": "no changes, files already up to date"
 }
 ```

@@ -61,9 +61,9 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = FunctionParameters["S3_URL"];
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+    URL       = "s3.openintegrations.dev";
+    AccessKey = "bayselo...";
+    SecretKey = "12we34...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
@@ -71,7 +71,7 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
-    Bucket = FunctionParameters["S3_DB"];
+    Bucket = "w567hjy1";
     Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , , Directory);
 
     TempFile = GetTempFileName();

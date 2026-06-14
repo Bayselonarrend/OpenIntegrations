@@ -1,7 +1,7 @@
     #Если Не Клиент Тогда
 
-        Токен   = ПараметрыФункции["Telegram_Token"];
-        IDФайла = ПараметрыФункции["Telegram_FileID"];
+        Токен   = "6129457865:AAFyzNYOAFbu...";
+        IDФайла = "CQACAgIAAx0EcNsaZQACWBFpBJl6nDHeih2m1CcGUJUTUMBewwACt4IAAmBxKUhCDKl_dJD1TjYE";
 
         Параметры = Новый Массив;
         Параметры.Добавить(Токен);

@@ -51,10 +51,10 @@ import Admonition from '@theme/Admonition';
 ```bsl title="1C:Enterprise/OneScript code example"
     ProxyType = "socks5"; // http, socks5, socks4
 
-    ProxyAddress  = FunctionParameters["Socks5_IP"];
-    ProxyPort     = FunctionParameters["Socks5_Port"];
-    ProxyLogin    = FunctionParameters["Proxy_User"];
-    ProxyPassword = FunctionParameters["Proxy_Password"];
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "1080";
+    ProxyLogin    = "proxyuser";
+    ProxyPassword = "12we...";
 
     Result = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 ```

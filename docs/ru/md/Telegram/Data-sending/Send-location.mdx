@@ -57,11 +57,11 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Ширина   = ПараметрыФункции["Lat"];
-    Долгота  = ПараметрыФункции["Long"];
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Ширина   = "48.87373649724122";
+    Долгота  = "48.87373649724122";
 
     Результат = OPI_Telegram.ОтправитьМестоположение(Токен, IDЧата, Ширина, Долгота);
 
@@ -97,7 +97,7 @@ import Admonition from '@theme/Admonition';
 {
  "ok": true,
  "result": {
-  "message_id": 22226,
+  "message_id": 22360,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -111,7 +111,7 @@ import Admonition from '@theme/Admonition';
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1781162329,
+  "date": 1781462692,
   "location": {
    "latitude": 48.873739,
    "longitude": 48.873733
