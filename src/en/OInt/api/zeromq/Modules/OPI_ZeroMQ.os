@@ -470,7 +470,7 @@ Function ExecuteInitialization(Val Connector, Val AddressPort, Val View)
     ElsIf View = "BindPull" Then
         Result = Connector.BindPull(AddressPort);
     Else
-        Raise "Unsupported ZMQ initialization type!"
+        Raise "Unsupported ZMQ initialization type!";
     EndIf;
 
     Result = OPI_AddIns.DesrializeJanx(Result);

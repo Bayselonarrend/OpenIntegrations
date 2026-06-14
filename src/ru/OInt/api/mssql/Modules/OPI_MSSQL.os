@@ -38,6 +38,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:DuplicateStringLiteral-off
 // BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-structure-top-region
@@ -46,6 +47,7 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
+// BSLLS:MagicNumber-off
 
 #Использовать "../../../tools/main"
 #Использовать "../../../tools/http"

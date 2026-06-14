@@ -366,7 +366,11 @@ Function AttachAddInOnClient(Val TemplateName
         Raise "AddInInstallation";
 
     Else
+
+        // BSLLS:UsingModalWindows-off
         InstallAddIn(TemplateName);
+        // BSLLS:UsingModalWindows-on
+
     EndIf;
 
     Result = ConnectComponent(TemplateName, AddInName, ConnectionMode, TypeRequiered);

@@ -39,6 +39,7 @@
 // BSLLS:LineLength-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:DuplicateStringLiteral-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -666,4 +667,3 @@ EndFunction
 #EndRegion
 
 #EndIf // !OPI
-

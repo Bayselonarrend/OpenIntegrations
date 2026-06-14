@@ -576,7 +576,6 @@
 #КонецОбласти
 
 
-
 #Region Alternate
 
 Function GetLoggingSettings(Val WriteToMemory = True, Val MaxEvents = 300, Val FilePath = "") Export

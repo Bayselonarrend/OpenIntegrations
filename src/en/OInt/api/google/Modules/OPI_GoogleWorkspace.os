@@ -250,7 +250,6 @@ EndFunction
 #EndRegion
 
 
-
 #Region Alternate
 
 Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export

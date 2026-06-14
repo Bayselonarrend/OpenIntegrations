@@ -1080,10 +1080,6 @@ Function ProcessValueForRequest(Val AddIn, Value)
 
         EndDo;
 
-    ElsIf TypeOf(Value) = Type("BinaryData") Then
-
-        ProcessedValue = Value;
-
     Else
 
         ProcessedValue = Value;

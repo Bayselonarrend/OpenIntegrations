@@ -576,7 +576,6 @@ EndFunction
 #EndRegion
 
 
-
 #Region Alternate
 
 Function ПолучитьНастройкиЛогирования(Val ЗаписьВПамять = True, Val МаксимумСобытий = 300, Val ПутьКФайлу = "") Export

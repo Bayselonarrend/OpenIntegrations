@@ -41,6 +41,7 @@
 // BSLLS:OneStatementPerLine-off
 // BSLLS:MagicNumber-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:NonStandardRegion-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions

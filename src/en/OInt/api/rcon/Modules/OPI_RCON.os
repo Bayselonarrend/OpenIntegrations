@@ -233,7 +233,6 @@ EndFunction
 #EndRegion
 
 
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val ПараметрыСоединения, Val Логирование = Undefined) Export
