@@ -7,7 +7,7 @@
  "path": "formats/janx/Modules/OPI_Janx.os",
  "regions": [
   {
-   "name": "Public",
+   "name": "Common methods",
    "methods": [
     "DeserializeData",
     "SerializeData"
@@ -28,7 +28,7 @@
      "short": "-v"
     }
    ],
-   "region": "Public"
+   "region": "Common methods"
   },
   {
    "name": "DeserializeData",
@@ -43,7 +43,7 @@
      "short": "-d"
     }
    ],
-   "region": "Public"
+   "region": "Common methods"
   }
  ]
 }

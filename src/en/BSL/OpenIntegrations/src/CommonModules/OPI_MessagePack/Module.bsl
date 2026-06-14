@@ -53,6 +53,8 @@
 
 #Region Public
 
+#Region CommonMethods
+
 // Serialize data
 // Serializes data into MessagePack format
 //
@@ -102,6 +104,8 @@ Function DeserializeData(Val Data) Export
     Return Reading.Value;
 
 EndFunction
+
+#EndRegion
 
 #EndRegion
 
@@ -695,6 +699,8 @@ Function ReadArrayFromBuffer(Val Buffer, Val Position, Val ItemCount)
 
     Array = New Array;
 
+    // BSLLS:UnusedLocalVariable-off
+
     For Index = 1 To ItemCount Do
 
         ItemReading = ReadValue(Buffer, Position);
@@ -702,6 +708,8 @@ Function ReadArrayFromBuffer(Val Buffer, Val Position, Val ItemCount)
         Position    = ItemReading.Position;
 
     EndDo;
+
+    // BSLLS:UnusedLocalVariable-on
 
     Return ReadingResult(Array, Position);
 
@@ -713,11 +721,7 @@ EndFunction
 
 Procedure WriteMapToContext(Val Data, Context)
 
-    PairCount = 0;
-
-    For Each Pair In Data Do
-        PairCount = PairCount + 1;
-    EndDo;
+    PairCount = Data.Count();
 
     If PairCount <= 15 Then
 
@@ -757,6 +761,8 @@ Function ReadMapFromBuffer(Val Buffer, Val Position, Val PairCount)
 
     Map = New Map;
 
+    // BSLLS:UnusedLocalVariable-off
+
     For Index = 1 To PairCount Do
 
         KeyReading = ReadValue(Buffer, Position);
@@ -771,6 +777,8 @@ Function ReadMapFromBuffer(Val Buffer, Val Position, Val PairCount)
         Position     = ValueReading.Position;
 
     EndDo;
+
+    // BSLLS:UnusedLocalVariable-on
 
     Return ReadingResult(Map, Position);
 

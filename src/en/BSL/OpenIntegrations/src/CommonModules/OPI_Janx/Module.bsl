@@ -52,6 +52,8 @@
 
 #Region Public
 
+#Region CommonMethods
+
 // Serialize data
 // Serializes data into Janx format
 //
@@ -134,6 +136,8 @@ Function DeserializeData(Val Data) Export
     Return RestoreValueFromJSONJanx(JSONTree, Context);
 
 EndFunction
+
+#EndRegion
 
 #EndRegion
 

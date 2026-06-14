@@ -172,7 +172,7 @@ Procedure Lua_CreateVM()
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Lua", "CreateVM", "Lua54");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CreateVM");
 
     Result = OPI_Lua.CreateVM("LuaJIT");
 
@@ -203,7 +203,7 @@ Procedure Lua_IsVM()
 
     // END
 
-    OPI_TestDataRetrieval.Process(Result, "Lua", "IsVM", "Lua54");
+    OPI_TestDataRetrieval.Process(Result, "Lua", "IsVM");
 
     Result = OPI_Lua.IsVM("not a vm");
 
@@ -306,6 +306,17 @@ Procedure Lua_CallScriptFunction()
     OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
 
     OPI_TestDataRetrieval.Process(Result, "Lua", "CallScriptFunction", "FilePackages");
+
+    Variables = New Map;
+    Variables.Insert("bonus", 2);
+
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
+
+    Result = OPI_Lua.CallScriptFunction("Lua54", "function mul(a, b) return a * b + bonus end", "mul", Parameters, , Variables);
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallScriptFunction", "Variables");
 
 EndProcedure
 
@@ -464,6 +475,19 @@ Procedure Lua_CallByteCodeFunction()
     OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
 
     OPI_TestDataRetrieval.Process(Result, "Lua", "CallByteCodeFunction", "FilePackages");
+
+    Bytecode = OPI_Lua.CompileCodeFromString("Lua54", "function mul(a, b) return a * b + bonus end");
+
+    Variables = New Map;
+    Variables.Insert("bonus", 2);
+
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
+
+    Result = OPI_Lua.CallByteCodeFunction("Lua54", Bytecode, "mul", Parameters, , Variables);
+
+    OPI_TestDataRetrieval.Process(Result, "Lua", "CallByteCodeFunction", "Variables");
 
 EndProcedure
 

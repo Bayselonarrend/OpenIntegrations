@@ -16148,6 +16148,8 @@ Function Check_Lua_CallScriptFunction(Val Result, Val Option)
         ExpectsThat(Result).Равно(10);
     ElsIf Option = "FilePackages" Then
         ExpectsThat(Result).Равно(12);
+    ElsIf Option = "Variables" Then
+        ExpectsThat(Result).Равно(44);
     Else
         ExpectsThat(Result).Равно(42);
     EndIf;
@@ -16164,6 +16166,8 @@ Function Check_Lua_CallByteCodeFunction(Val Result, Val Option)
         ExpectsThat(Result).Равно(10);
     ElsIf Option = "FilePackages" Then
         ExpectsThat(Result).Равно(12);
+    ElsIf Option = "Variables" Then
+        ExpectsThat(Result).Равно(44);
     Else
         ExpectsThat(Result).Равно(7);
     EndIf;

@@ -174,7 +174,7 @@ Procedure Lua_CreateVM()
 
     // END
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CreateVM", "Lua54");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CreateVM");
 
     Result = OPI_Lua.CreateVM("LuaJIT");
 
@@ -205,7 +205,7 @@ Procedure Lua_IsVM()
 
     // END
 
-    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "IsVM", "Lua54");
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "IsVM");
 
     Result = OPI_Lua.IsVM("not a vm");
 
@@ -331,6 +331,24 @@ Procedure Lua_CallScriptFunction()
     OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallScriptFunction", "FilePackages");
+
+    Variables = New Map;
+    Variables.Insert("bonus", 2);
+
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("script", "function mul(a, b) return a * b + bonus end");
+    Options.Insert("func", "mul");
+    Options.Insert("params", Parameters);
+    Options.Insert("globals", Variables);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallScriptFunction", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallScriptFunction", "Variables");
 
 EndProcedure
 
@@ -547,6 +565,30 @@ Procedure Lua_CallByteCodeFunction()
     OPI_Tools.RemoveFileWithTry(PackageFile, "Failed to delete the temporary file after the test!!");
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallByteCodeFunction", "FilePackages");
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", "function mul(a, b) return a * b + bonus end");
+
+    Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromString", Options);
+
+    Variables = New Map;
+    Variables.Insert("bonus", 2);
+
+    Parameters = New Array;
+    Parameters.Add(6);
+    Parameters.Add(7);
+
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", Bytecode);
+    Options.Insert("func", "mul");
+    Options.Insert("params", Parameters);
+    Options.Insert("globals", Variables);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallByteCodeFunction", Options);
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CallByteCodeFunction", "Variables");
 
 EndProcedure
 

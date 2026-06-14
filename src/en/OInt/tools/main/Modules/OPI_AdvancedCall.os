@@ -157,8 +157,14 @@ Function CallWithSettingsService(Val ModuleName
     Result = Undefined;
 
     Try
+
+        // BSLLS:ExecuteExternalCodeInCommonModule-off
+
         //@skip-check server-execution-safe-mode
         Execute(CallString);
+
+        // BSLLS:ExecuteExternalCodeInCommonModule-on
+
     Except
         DeleteSettings();
         Raise;

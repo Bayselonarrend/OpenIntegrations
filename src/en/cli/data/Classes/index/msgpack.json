@@ -7,7 +7,7 @@
  "path": "formats/msgpack/Modules/OPI_MessagePack.os",
  "regions": [
   {
-   "name": "Public",
+   "name": "Common methods",
    "methods": [
     "DeserializeData",
     "SerializeData"
@@ -35,7 +35,7 @@
      "short": "-r"
     }
    ],
-   "region": "Public"
+   "region": "Common methods"
   },
   {
    "name": "DeserializeData",
@@ -50,7 +50,7 @@
      "short": "-d"
     }
    ],
-   "region": "Public"
+   "region": "Common methods"
   }
  ]
 }
