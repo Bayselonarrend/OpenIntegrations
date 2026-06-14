@@ -42,6 +42,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:LineLength-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check method-too-many-params
 //@skip-check wrong-string-literal-content

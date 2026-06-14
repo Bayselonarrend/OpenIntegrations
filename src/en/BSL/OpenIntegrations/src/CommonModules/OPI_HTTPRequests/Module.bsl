@@ -31,6 +31,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params

@@ -33,6 +33,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:DeprecatedCurrentDate-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params

@@ -41,6 +41,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:MagicNumber-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions

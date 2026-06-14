@@ -35,6 +35,7 @@
 // BSLLS:DeprecatedCurrentDate-off
 // BSLLS:CommentedCode-off
 // BSLLS:LineLength-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params

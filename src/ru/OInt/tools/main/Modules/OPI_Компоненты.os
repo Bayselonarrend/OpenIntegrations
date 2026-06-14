@@ -36,6 +36,7 @@
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:LineLength-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region

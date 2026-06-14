@@ -42,6 +42,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:MissingParameterDescription-off
 // BSLLS:MissingReturnedValueDescription-off
+// BSLLS:CommonModuleNameClientServer-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
