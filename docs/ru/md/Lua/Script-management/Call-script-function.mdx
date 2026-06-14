@@ -74,10 +74,10 @@ import Admonition from '@theme/Admonition';
             
             oint lua ВызватьФункциюСкрипта \
               --lua "Lua54" \
-              --script "function run(x) return calc_file.triple(x) end" \
-              --func "run" \
-              --params "['4']" \
-              --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\gz01xc1a.0kz.lua'}"
+              --script "function mul(a, b) return a * b + bonus end" \
+              --func "mul" \
+              --params "['6','7']" \
+              --globals "{'bonus':'2'}"
         ```
     </TabItem>
   
@@ -87,10 +87,10 @@ import Admonition from '@theme/Admonition';
             
             oint lua ВызватьФункциюСкрипта ^
               --lua "Lua54" ^
-              --script "function run(x) return calc_file.triple(x) end" ^
-              --func "run" ^
-              --params "['4']" ^
-              --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\gz01xc1a.0kz.lua'}"
+              --script "function mul(a, b) return a * b + bonus end" ^
+              --func "mul" ^
+              --params "['6','7']" ^
+              --globals "{'bonus':'2'}"
         ```
     </TabItem>
 </Tabs>

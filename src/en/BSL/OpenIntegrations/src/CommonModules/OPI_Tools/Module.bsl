@@ -1008,12 +1008,19 @@ Procedure Pause(Val Seconds) Export
         Return;
     EndIf;
 
-    Connection = New HTTPConnection("1C.ru", 11111, , , , Seconds);
-    Try
-        Connection.Get(New HTTPRequest(""));
-    Except
+    If IsOneScript() Then
+        // !OInt Sleep(Seconds * 1000);
         Return;
-    EndTry;
+    Else
+
+        Connection = New HTTPConnection("1C.ru", 11111, , , , Seconds);
+        Try
+            Connection.Get(New HTTPRequest(""));
+        Except
+            Return;
+        EndTry;
+
+    EndIf;
 
 EndProcedure
 

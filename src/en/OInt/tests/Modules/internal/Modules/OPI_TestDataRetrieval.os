@@ -16106,10 +16106,10 @@ EndFunction
 
 Function Check_Lua_IsVM(Val Result, Val Option)
 
-    If Option = "Lua54" Then
-        ExpectsThat(Result).Равно(True);
-    Else
+    If Option = "False" Then
         ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
     EndIf;
 
     Return Result;
@@ -16433,19 +16433,19 @@ Procedure CheckMapJanx(Val Actual, Val Expected)
 
     For Each Pair In Expected Do
 
-        Key = String(Pair.Key);
-        ExpectsThat(MapContainsKeyJanx(Actual, Key)).Равно(True);
-        CheckValueJanx(Actual[Key], Pair.Value);
+        CurrentKey = String(Pair.Key);
+        ExpectsThat(MapContainsKeyJanx(Actual, CurrentKey)).Равно(True);
+        CheckValueJanx(Actual[CurrentKey], Pair.Value);
 
     EndDo;
 
 EndProcedure
 
-Function MapContainsKeyJanx(Val Map, Val Key)
+Function MapContainsKeyJanx(Val Map, Val CurrentKey)
 
     For Each Pair In Map Do
 
-        If String(Pair.Key) = Key Then
+        If String(Pair.Key) = CurrentKey Then
             Return True;
         EndIf;
 
@@ -17941,16 +17941,34 @@ EndProcedure
 
 Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
 
-    Values = OPI_Tools.ReadJSONFile(Path);
-    Values.Insert(Parameter, Value);
+    Attempts = 10;
 
-    // BSLLS:ExternalAppStarting-off
-    Record = New JSONWriter;
-    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
-    Record.OpenFile(Path, , , JSONWriterSettings);
-    WriteJSON(Record, Values);
-    Record.Close();
-    // BSLLS:ExternalAppStarting-on
+    For N = 1 To Attempts Do
+
+        Try
+
+            Values = OPI_Tools.ReadJSONFile(Path);
+            Values.Insert(Parameter, Value);
+
+            // BSLLS:ExternalAppStarting-off
+            Record = New JSONWriter;
+            JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
+            Record.OpenFile(Path, , , JSONWriterSettings);
+            WriteJSON(Record, Values);
+            Record.Close();
+            // BSLLS:ExternalAppStarting-on
+
+        Except
+
+            If N < Attempts Then
+                OPI_Tools.Pause(N);
+            Else
+                Raise;
+            EndIf;
+
+        EndTry;
+
+    EndDo;
 
 EndProcedure
 
