@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\2numxiy0.luf"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\njkou2tu.z20"

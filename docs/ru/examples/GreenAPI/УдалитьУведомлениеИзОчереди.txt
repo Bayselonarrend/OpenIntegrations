@@ -3,7 +3,7 @@
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDДоставки = "2";
+    IDДоставки = "1";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.УдалитьУведомлениеИзОчереди(ПараметрыДоступа, IDДоставки);

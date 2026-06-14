@@ -5,4 +5,4 @@ oint lua ВызватьФункциюСкрипта \
   --script "function run(x) return calc_file.triple(x) end" \
   --func "run" \
   --params "['4']" \
-  --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oasdrp1q.n5v.lua'}"
+  --packages "{'calc_file':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\gz01xc1a.0kz.lua'}"
