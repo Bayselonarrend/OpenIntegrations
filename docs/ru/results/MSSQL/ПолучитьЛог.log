@@ -1,9 +1,9 @@
 ﻿{
  "logs": [
-  "[2026-06-15 14:00:11.432] Connecting to MSSQL...",
-  "[2026-06-15 14:00:11.455] Connected to MSSQL",
-  "[2026-06-15 14:00:11.457] Execute query (params=0, force_result=false): SELECT 1 AS n",
-  "[2026-06-15 14:00:11.463] Query returned 1 row(s)"
+  "[2026-06-15 16:49:06.638] Connecting to MSSQL...",
+  "[2026-06-15 16:49:06.679] Connected to MSSQL",
+  "[2026-06-15 16:49:06.681] Execute query (params=0, force_result=false): SELECT 1 AS n",
+  "[2026-06-15 16:49:06.705] Query returned 1 row(s)"
  ],
  "result": true,
  "returned": 4,

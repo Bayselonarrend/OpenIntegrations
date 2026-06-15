@@ -15,7 +15,7 @@
      },
      {
       "value": "21-24",
-      "count": 3
+      "count": 4
      },
      {
       "value": "24-27",
@@ -118,7 +118,7 @@
     "countries": [
      {
       "code": "RU",
-      "count": 31,
+      "count": 32,
       "name": "Россия",
       "value": 1
      },
@@ -129,13 +129,13 @@
       "value": 4
      }
     ],
-    "mobile_reach": 34,
-    "reach": 32,
+    "mobile_reach": 35,
+    "reach": 33,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 21
+      "count": 22
      },
      {
       "value": "m",
@@ -153,7 +153,7 @@
      },
      {
       "value": "f;21-24",
-      "count": 1
+      "count": 2
      },
      {
       "value": "f;24-27",

@@ -1,10 +1,10 @@
 ﻿{
  "logs": [
-  "[2026-06-15 14:04:09.104] Starting WebSocket server on port 9894 with config: WebSocketServerConfig ...",
-  "[2026-06-15 14:04:09.105] Adding WebSocket route: /",
-  "[2026-06-15 14:04:09.106] WebSocket server listening on 0.0.0.0:9894",
-  "[2026-06-15 14:04:09.109] Connection added: 67aa9f50-9e46-430d-a255-7072115e3a11",
-  "[2026-06-15 14:04:09.110] WebSocket connected: 67aa9f50-9e46-430d-a255-7072115e3a11"
+  "[2026-06-15 16:52:04.446] Starting WebSocket server on port 9894 with config: WebSocketServerConfig ...",
+  "[2026-06-15 16:52:04.447] Adding WebSocket route: /",
+  "[2026-06-15 16:52:04.450] WebSocket server listening on 0.0.0.0:9894",
+  "[2026-06-15 16:52:04.454] Connection added: cca15dd7-9ff6-442f-955f-40569e46121c",
+  "[2026-06-15 16:52:04.454] WebSocket connected: cca15dd7-9ff6-442f-955f-40569e46121c"
  ],
  "result": true,
  "returned": 5,
