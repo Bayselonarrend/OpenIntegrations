@@ -2,4 +2,4 @@ oint rportal GetLog ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --uuid "9edca3c1-c439-4960-9fbd-0c87da98b93c"
+  --uuid "a435dff5-0646-4351-b0fe-d8c65f30a53a"

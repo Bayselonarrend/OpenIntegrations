@@ -3,5 +3,5 @@
 oint greenapi EditMessageText \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "***" \
-  --message "3EB0A87C3B950A919AD2EB" \
+  --message "3EB08DC40EE40C9C1F6B53" \
   --text "New message text"

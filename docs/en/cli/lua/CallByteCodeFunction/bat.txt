@@ -2,7 +2,7 @@
 
 oint lua CallByteCodeFunction ^
   --lua "Lua54" ^
-  --code "/tmp/4p3sjgvd.g4i" ^
+  --code "/tmp/pt2vanuj.wzr" ^
   --func "mul" ^
   --params "['6','7']" ^
   --globals "{'bonus':'2'}"

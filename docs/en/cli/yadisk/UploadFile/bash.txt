@@ -1,5 +1,5 @@
 oint yadisk UploadFile \
   --token "***" \
-  --path "/28cff137-699a-42b2-9ce4-db4cd97d5dbc.png" \
-  --file "/tmp/tkfkw5yr.zts.png" \
+  --path "/09def3b8-c2f1-455d-99a2-3c275ae47f27.png" \
+  --file "/tmp/cmsaddnp.wp1.png" \
   --rewrite true

@@ -1,4 +1,4 @@
 oint gsheets AddSheet ^
   --token "***" ^
-  --spreadsheet "1_hSIVq_VKstpEHaCbn1HunN9ZsvgET0z0ieq_EKmy9Y" ^
+  --spreadsheet "17qX9u1CEGRcG5UnnTHcRHmgtpgpgyVphCnGlwJXOpGg" ^
   --title "TestSheet"

@@ -1,3 +1,3 @@
 oint airtable GetDatabaseTables \
   --token "***" \
-  --base "appNaTsvK8Uousapd"
+  --base "appqD0VJlOEXwKFbI"
