@@ -89,10 +89,11 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "60ebbb42-3edc-46a8-8a36-c64d86b35e27",
-  "cdek_number": "1109906460",
-  "order_uuid": "821a27f3-976f-4394-b834-6994e51462e8",
-  "intake_date": "2026-06-12",
+  "uuid": "a4f89e65-15e0-4ce5-b533-85824e247fff",
+  "cdek_number": "1109907318",
+  "order_uuid": "5f5a4bc5-eb7b-430c-9ead-746e62b751cf",
+  "intake_date": "2026-06-16",
+  "intake_number": "13312307",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -103,10 +104,11 @@ import Admonition from '@theme/Admonition';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -125,17 +127,40 @@ import Admonition from '@theme/Admonition';
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2026-06-15T11:58:48+03:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-06-15T11:58:48+03:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-06-11T10:54:38+03:00"
+    "date_time": "2026-06-15T11:58:48+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "a2ba05da-468e-4f75-bc45-e474589174f2",
+    "package_id": "dda0d6e4-7e33-41c5-ad7c-cd1c921db58f",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,10 +170,10 @@ import Admonition from '@theme/Admonition';
  },
  "requests": [
   {
-   "request_uuid": "4cd6a6f0-a544-44ae-949b-eea24426a0f4",
+   "request_uuid": "1c36e79c-5266-494b-8e24-0385b8b60534",
    "type": "CREATE",
-   "date_time": "2026-06-11T10:54:37+03:00",
-   "state": "ACCEPTED"
+   "date_time": "2026-06-15T11:58:47+03:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }

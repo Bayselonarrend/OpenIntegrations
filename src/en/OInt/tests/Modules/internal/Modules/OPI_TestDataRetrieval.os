@@ -735,14 +735,6 @@ Function CreateLaunchSet(Val Name) Export
     URL     = GetParameter("RPortal_URL");
 
     CurrentDate = GetLaunchTime();
-    LastSet     = Data["last_suite"];
-
-    If ValueIsFilled(LastSet) Then
-
-        FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-        ReportPortal().FinishItem(URL, Token, Project, LastSet, FinishStructure);
-
-    EndIf;
 
     UUID = String(New UUID);
 
@@ -757,8 +749,7 @@ Function CreateLaunchSet(Val Name) Export
 
     ExistingSets.Insert(Name, UUID);
 
-    Data.Insert("suites"    , ExistingSets);
-    Data.Insert("last_suite", UUID);
+    Data.Insert("suites", ExistingSets);
 
     WriteLaunchFile(Data);
 
@@ -838,12 +829,16 @@ Procedure FinishLaunch() Export
 
     If ValueIsFilled(ExistingLaunch) Then
 
-        LastSet = ExistingLaunch["last_suite"];
+        Sets = ExistingLaunch["suites"];
 
-        If ValueIsFilled(LastSet) Then
+        If Sets <> Undefined Then
 
-            FinishStructure = New Structure("endTime,launchUuid", CurrentDate, LastSet);
-            ReportPortal().FinishItem(URL, Token, Project, LastSet, FinishStructure);
+            For Each Set In Sets Do
+
+                FinishStructure = New Structure("endTime,launchUuid", CurrentDate, Set.Value);
+                ReportPortal().FinishItem(URL, Token, Project, Set.Value, FinishStructure);
+
+            EndDo;
 
         EndIf;
 
@@ -17116,9 +17111,65 @@ EndProcedure
 
 Procedure WriteLaunchFile(Val Data)
 
+    Actual = ReadLaunchFile();
+
+    If Actual.Count() > 0 Then
+        Data = MergeStartupState(Actual, Data);
+    EndIf;
+
     WriteParameter("RPortal_MainLaunch", OPI_Tools.JSONString(Data));
 
 EndProcedure
+
+Function MergeStartupState(Val Base, Val Changes)
+
+    If Base = Undefined Or Base.Count() = 0 Then
+        Return Changes;
+    EndIf;
+
+    Result = OPI_Tools.CopyCollection(Base);
+
+    Sets = Changes["suites"];
+
+    If Sets <> Undefined Then
+
+        For Each KeyValue In Sets Do
+            Result["suites"].Insert(KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Items = Changes["items"];
+
+    If Items <> Undefined Then
+
+        For Each KeyValue In Items Do
+            Result["items"].Insert(KeyValue.Key, KeyValue.Value);
+        EndDo;
+
+    EndIf;
+
+    Tests = Changes["tests"];
+
+    If Tests <> Undefined Then
+
+        For Each Test In Tests Do
+
+            If Result["tests"].Find(Test) = Undefined Then
+                Result["tests"].Add(Test);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    If Changes["ended"] = True Then
+        Result.Insert("ended", True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
 
 Procedure CreateLaunchFile(Val UUID)
 
@@ -17304,9 +17355,9 @@ Function GetValueFromFile(Parameter, Path)
     PathRO = StrTemplate("file:%1?mode=ro", Path);
 
     Filter = New Structure();
-    Filter.Insert("field", "key");
+    Filter.Insert("field", "lower(key)");
     Filter.Insert("type" , "=");
-    Filter.Insert("value", Parameter);
+    Filter.Insert("value", Lower(Parameter));
 
     Table = "test_params";
 
@@ -17978,10 +18029,12 @@ Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
 
     For N = 1 To Attempts Do
 
-        Data                  = New Structure("key,value,type"
+        RecordType = ?(TypeOf(Value) = Type("Number"), "Number", "String");
+
+        Data = New Structure("key,value,type"
             , Parameter
             , OPI_Tools.NumberToString(Value)
-            , ?(TypeOf(Value) = Type("Number"), "Number", "String"));
+            , RecordType);
 
         Result = OPI_SQLite.EnsureRecords("test_params", Data, "key", , Path);
 
