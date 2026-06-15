@@ -1,13 +1,13 @@
 ﻿{
  "connections": [
   {
-   "address": "127.0.0.1:56118",
-   "connectionId": "a2dbe09f-5154-44e4-bda5-b297642f7d5a",
+   "address": "127.0.0.1:43300",
+   "connectionId": "19496802-3285-4812-96da-fafe9ab8a2e2",
    "isActive": true
   },
   {
-   "address": "127.0.0.1:56119",
-   "connectionId": "36aaa3cd-8fc3-45b1-97f6-1287f95d0a58",
+   "address": "127.0.0.1:43304",
+   "connectionId": "75a58f30-77ca-4afc-8e4b-fe94f46cc029",
    "isActive": true
   }
  ],

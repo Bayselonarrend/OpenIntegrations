@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 60100
+  "ID": 60208
  },
  "time": {
-  "start": 1781546831,
-  "finish": 1781546831.32514,
-  "duration": 0.325143098831177,
+  "start": 1781548856,
+  "finish": 1781548856.41951,
+  "duration": 0.41950798034668,
   "processing": 0,
-  "date_start": "2026-06-15T21:07:11+03:00",
-  "date_finish": "2026-06-15T21:07:11+03:00",
-  "operating_reset_at": 1781547431,
+  "date_start": "2026-06-15T18:40:56+00:00",
+  "date_finish": "2026-06-15T18:40:56+00:00",
+  "operating_reset_at": 1781549456,
   "operating": 0
  }
 }
