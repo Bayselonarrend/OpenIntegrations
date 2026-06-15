@@ -1,9 +1,145 @@
 ﻿[
  {
   "kind": "drive#file",
+  "fileExtension": "sqlite",
+  "copyRequiresWriterPermission": false,
+  "md5Checksum": "a0ea3086ac89a4190999d29f5c48e6cc",
+  "writersCanShare": true,
+  "viewedByMe": true,
+  "mimeType": "application/octet-stream",
+  "parents": [
+   "0AN2vrbrhqfJrUk9PVA"
+  ],
+  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/octet-stream",
+  "shared": false,
+  "lastModifyingUser": {
+   "displayName": "Антон Титовец",
+   "kind": "drive#user",
+   "me": true,
+   "permissionId": "07468399490707249352",
+   "emailAddress": "bayselonarrend@gmail.com",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+  },
+  "owners": [
+   {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   }
+  ],
+  "headRevisionId": "0B92vrbrhqfJrbXZUaVpsODBIYVVzK3ZlRC8xalRaNE00Y0ZJPQ",
+  "webViewLink": "https://drive.google.com/file/d/1X-gPtS0ONJ2OdDqUGXvFK4tYIeAnYHaW/view?usp=drivesdk",
+  "webContentLink": "https://drive.google.com/uc?id=1X-gPtS0ONJ2OdDqUGXvFK4tYIeAnYHaW&export=download",
+  "size": "45056",
+  "viewersCanCopyContent": true,
+  "permissions": [
+   {
+    "id": "07468399490707249352",
+    "displayName": "Антон Титовец",
+    "type": "user",
+    "kind": "drive#permission",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "role": "owner",
+    "deleted": false,
+    "pendingOwner": false
+   }
+  ],
+  "hasThumbnail": false,
+  "spaces": [
+   "drive"
+  ],
+  "id": "1X-gPtS0ONJ2OdDqUGXvFK4tYIeAnYHaW",
+  "name": "data.sqlite",
+  "starred": false,
+  "trashed": false,
+  "explicitlyTrashed": false,
+  "createdTime": "2026-06-14T16:29:56.543Z",
+  "modifiedTime": "2026-06-15T09:58:10.221Z",
+  "modifiedByMeTime": "2026-06-15T09:58:10.221Z",
+  "viewedByMeTime": "2026-06-15T09:58:10.221Z",
+  "quotaBytesUsed": "45056",
+  "version": "8",
+  "originalFilename": "***",
+  "ownedByMe": true,
+  "fullFileExtension": "sqlite",
+  "isAppAuthorized": false,
+  "capabilities": {
+   "canChangeViewersCanCopyContent": true,
+   "canEdit": true,
+   "canCopy": true,
+   "canComment": true,
+   "canAddChildren": false,
+   "canDelete": true,
+   "canDownload": true,
+   "canListChildren": false,
+   "canRemoveChildren": false,
+   "canRename": true,
+   "canTrash": true,
+   "canReadRevisions": true,
+   "canChangeCopyRequiresWriterPermission": true,
+   "canMoveItemIntoTeamDrive": true,
+   "canUntrash": true,
+   "canModifyContent": true,
+   "canMoveItemOutOfDrive": true,
+   "canAddMyDriveParent": false,
+   "canRemoveMyDriveParent": true,
+   "canMoveItemWithinDrive": true,
+   "canShare": true,
+   "canMoveChildrenWithinDrive": false,
+   "canModifyContentRestriction": true,
+   "canChangeSecurityUpdateEnabled": false,
+   "canAcceptOwnership": false,
+   "canReadLabels": false,
+   "canModifyLabels": false,
+   "canModifyEditorContentRestriction": true,
+   "canModifyOwnerContentRestriction": true,
+   "canRemoveContentRestriction": false,
+   "canDisableInheritedPermissions": false,
+   "canEnableInheritedPermissions": true,
+   "canChangeItemDownloadRestriction": true,
+   "canStartApproval": false
+  },
+  "thumbnailVersion": "0",
+  "modifiedByMe": true,
+  "permissionIds": [
+   "07468399490707249352"
+  ],
+  "linkShareMetadata": {
+   "securityUpdateEligible": false,
+   "securityUpdateEnabled": true
+  },
+  "sha1Checksum": "386f2751ce4469c552cf36aa42f72ddc2033dd79",
+  "sha256Checksum": "66ad950f022528cf3426e7340441546bc0864064e54a877b69151467bc518197",
+  "inheritedPermissionsDisabled": false,
+  "downloadRestrictions": {
+   "itemDownloadRestriction": {
+    "restrictedForReaders": false,
+    "restrictedForWriters": false
+   },
+   "effectiveDownloadRestrictionWithContext": {
+    "restrictedForReaders": false,
+    "restrictedForWriters": false
+   }
+  },
+  "clientEncryptionDetails": {
+   "decryptionMetadata": {
+    "wrappedKey": "***",
+    "kaclsId": "0",
+    "aes256GcmChunkSize": "unset",
+    "keyFormat": "***",
+    "encryptionResourceKeyHash": "***"
+   }
+  }
+ },
+ {
+  "kind": "drive#file",
   "fileExtension": "json",
   "copyRequiresWriterPermission": false,
-  "md5Checksum": "9dacb5b29b96dad766d8f82dc6bf891f",
+  "md5Checksum": "425537776d67821cd1c1d26dce51265e",
   "writersCanShare": true,
   "viewedByMe": true,
   "mimeType": "application/json",
@@ -30,10 +166,10 @@
     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
    }
   ],
-  "headRevisionId": "0B92vrbrhqfJrOUZ2NWlDYlZpeVd4Sit6YlFFSldPN2N5dlVrPQ",
+  "headRevisionId": "0B92vrbrhqfJrd1IxYTRTWkZTRW1XcXFUMU1qek5hQUtDTHNvPQ",
   "webViewLink": "https://drive.google.com/file/d/1NKMmj4SJh3WUw74nhLuMofW7dfpUR520/view?usp=drivesdk",
   "webContentLink": "https://drive.google.com/uc?id=1NKMmj4SJh3WUw74nhLuMofW7dfpUR520&export=download",
-  "size": "23715",
+  "size": "23714",
   "viewersCanCopyContent": true,
   "permissions": [
    {
@@ -53,16 +189,16 @@
    "drive"
   ],
   "id": "1NKMmj4SJh3WUw74nhLuMofW7dfpUR520",
-  "name": "data.sqlite",
+  "name": "data.json",
   "starred": false,
   "trashed": false,
   "explicitlyTrashed": false,
   "createdTime": "2024-02-29T19:22:49.616Z",
-  "modifiedTime": "2026-06-08T05:54:12.432Z",
-  "modifiedByMeTime": "2026-06-08T05:54:12.432Z",
-  "viewedByMeTime": "2026-06-08T05:54:12.432Z",
-  "quotaBytesUsed": "23715",
-  "version": "27979",
+  "modifiedTime": "2026-06-14T13:39:12.704Z",
+  "modifiedByMeTime": "2026-06-14T13:39:12.704Z",
+  "viewedByMeTime": "2026-06-14T13:39:12.704Z",
+  "quotaBytesUsed": "23714",
+  "version": "28251",
   "originalFilename": "***",
   "ownedByMe": true,
   "fullFileExtension": "json",
@@ -112,8 +248,8 @@
    "securityUpdateEligible": false,
    "securityUpdateEnabled": true
   },
-  "sha1Checksum": "8101e2e78ffc3392706f37921ff72e8bdc10f6e5",
-  "sha256Checksum": "e9ba5dc6f109cd519dd75e946d1a5e0337c49fc1040fe1204cc765f6d1dd6318",
+  "sha1Checksum": "f64d0d3fb23d3f369736f1d165b55338b43e89e0",
+  "sha256Checksum": "3b069c78ac7e0bb213c1edad95534d7d1a7837d738a34277abc7ee44b4a1571c",
   "inheritedPermissionsDisabled": false,
   "downloadRestrictions": {
    "itemDownloadRestriction": {

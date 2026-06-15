@@ -1,7 +1,7 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "277e87c2-1105-4cee-95d5-bd4fdd8bf5c7",
+  "order_uuid": "5a1548bf-6ee8-4a57-80a2-9d4e2d39e9e4",
   "date": "2026-06-29",
   "time_from": "10:00",
   "time_to": "17:00",
@@ -19,30 +19,29 @@
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "2238a1ad-1a3e-44b5-9e03-8801680061a8",
+  "uuid": "d69154f0-5cff-44ec-a482-e8f3bc8f8ee8",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-06-15T11:58:53+03:00"
+    "date_time": "2026-06-15T14:02:58+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-06-15T11:58:52+03:00"
+    "date_time": "2026-06-15T14:02:57+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "6dd45f9f-523e-4bd2-9f56-5c04a0cf0021",
+   "request_uuid": "181720ff-30c9-4dfd-945c-f04be3edce69",
    "type": "CREATE",
-   "date_time": "2026-06-15T11:58:52+03:00",
+   "date_time": "2026-06-15T14:02:57+03:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_forbidden",
-     "additional_code": "0x1E0EBE20",
      "message": "Доставка в указанную дату не осуществляется"
     }
    ]
