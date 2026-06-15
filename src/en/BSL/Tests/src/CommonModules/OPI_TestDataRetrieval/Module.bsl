@@ -17168,7 +17168,23 @@ Function ReadLaunchFile()
         Return New Map;
     EndIf;
 
-    Return OPI_Tools.JsonToStructure(JSONText);
+    If Not StrStartWith(TrimAll(JSONText), "{") Then
+
+        LaunchObject = New File(JSONText);
+
+        If LaunchObject.Exists() Then
+            Return OPI_Tools.ReadJSONFile(JSONText, True);
+        EndIf;
+
+        Return New Map;
+
+    EndIf;
+
+    Try
+        Return OPI_Tools.JsonToStructure(JSONText);
+    Except
+        Return New Map;
+    EndTry;
 
 EndFunction
 
