@@ -1,8 +1,8 @@
 ﻿{
- "result": true,
  "data": {
   "nIndexesWas": 1,
   "ns": "test_database.test_collection",
   "ok": 1
- }
+ },
+ "result": true
 }

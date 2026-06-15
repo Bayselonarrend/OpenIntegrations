@@ -1,0 +1,13 @@
+﻿[
+ 1,
+ "text",
+ "item-payload",
+ {
+  "bin": "map-payload",
+  "k": "v"
+ },
+ [
+  false,
+  "arr-payload"
+ ]
+]

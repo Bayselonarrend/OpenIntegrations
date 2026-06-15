@@ -7,9 +7,7 @@
    "name": "",
    "stack_trace": ""
   },
-  "extremes": {
-   "BYTES": ""
-  },
+  "extremes": "<Binary data>",
   "logs": [],
   "output": {
    "meta": [
@@ -34,7 +32,7 @@
    ],
    "rows": 2,
    "statistics": {
-    "elapsed": 0.001120989,
+    "elapsed": 0.003710591,
     "rows_read": 0,
     "bytes_read": 0
    }
@@ -48,7 +46,7 @@
    "written_bytes": 0,
    "written_rows": 0
   },
-  "query_id": "ac421539-2376-4349-a2f2-c190e742a634",
+  "query_id": "0f43daf5-e46e-481a-abe2-dea9efecb43c",
   "stats": {
    "allocated_bytes": 8448,
    "applied_aggregation": false,
@@ -59,9 +57,7 @@
    "rows_before_limit": 0
   },
   "time_zone": "Europe/Moscow",
-  "totals": {
-   "BYTES": ""
-  }
+  "totals": "<Binary data>"
  },
  "result": true
 }

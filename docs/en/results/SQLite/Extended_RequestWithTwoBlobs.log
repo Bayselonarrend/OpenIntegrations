@@ -1,0 +1,10 @@
+﻿{
+ "data": [
+  {
+   "alpha": "<Binary data>",
+   "beta": "<Binary data>",
+   "inner_blob": "<Binary data>"
+  }
+ ],
+ "result": true
+}

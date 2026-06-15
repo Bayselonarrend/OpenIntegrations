@@ -1,0 +1,27 @@
+﻿{
+ "data": {
+  "f_bool": true,
+  "f_bools": [],
+  "f_bytes": "<Binary data>",
+  "f_bytess": [
+   "<Binary data>",
+   "<Binary data>",
+   "<Binary data>"
+  ],
+  "f_enum": "ENUM_0",
+  "f_enums": [],
+  "f_float": 0,
+  "f_floats": [],
+  "f_int32": 7,
+  "f_int32s": [],
+  "f_int64": 0,
+  "f_int64s": [],
+  "f_string": "janx multi-bin",
+  "f_strings": [],
+  "f_sub": {
+   "f_string": ""
+  },
+  "f_subs": []
+ },
+ "result": true
+}

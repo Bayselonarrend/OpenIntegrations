@@ -1,29 +1,29 @@
 ﻿{
- "result": true,
  "data": {
   "cursor": {
+   "id": 0,
    "nextBatch": [
     {
-     "_id": "6a15a6be6edd1cf4d2a504a5",
-     "stringField": "Text",
-     "intField": 200,
-     "doubleField": 123.456,
-     "boolField": true,
+     "_id": "6a300ce7866d3abb86473112",
      "arrayField": [
       "Value1",
       "Value2"
      ],
+     "boolField": true,
+     "dateField": "2026-06-15T17:32:07Z",
      "docField": {
-      "text": "Text",
-      "number": 10
+      "number": 10,
+      "text": "Text"
      },
-     "dateField": "2026-05-26T13:57:18Z",
-     "nullField": null
+     "doubleField": 123.456,
+     "intField": 200,
+     "nullField": null,
+     "stringField": "Text"
     }
    ],
-   "id": 0,
    "ns": "main.new_collection"
   },
   "ok": 1
- }
+ },
+ "result": true
 }

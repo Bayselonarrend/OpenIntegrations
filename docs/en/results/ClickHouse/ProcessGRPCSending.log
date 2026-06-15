@@ -26,13 +26,9 @@
     "name": "",
     "stack_trace": ""
    },
-   "extremes": {
-    "BYTES": ""
-   },
+   "extremes": "<Binary data>",
    "logs": [],
-   "output": {
-    "BYTES": ""
-   },
+   "output": "<Binary data>",
    "output_columns": [],
    "output_format": "",
    "progress": {
@@ -42,7 +38,7 @@
     "written_bytes": 235,
     "written_rows": 5
    },
-   "query_id": "8e1a2a7a-8d9f-4346-807a-0bf28c7b23d0",
+   "query_id": "4a8ed2f6-21e8-4a52-b29c-2c5c47f41aab",
    "stats": {
     "allocated_bytes": 0,
     "applied_aggregation": false,
@@ -53,9 +49,7 @@
     "rows_before_limit": 0
    },
    "time_zone": "Europe/Moscow",
-   "totals": {
-    "BYTES": ""
-   }
+   "totals": "<Binary data>"
   },
   "result": true
  },

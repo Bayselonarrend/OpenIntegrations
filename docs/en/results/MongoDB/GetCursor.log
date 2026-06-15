@@ -1,40 +1,38 @@
 ﻿{
- "result": true,
  "data": {
   "cursor": {
    "firstBatch": [
     {
-     "_id": "6a15a6be6edd1cf4d2a504a6",
-     "stringField": "Text",
-     "oidField": "63ceed18f71dda7d8cf21e8e",
-     "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
-     "symbolField": "Y",
-     "int32Field": 10,
-     "int64Field": 1000,
-     "doubleField": 124.456,
+     "_id": "6a300ce7866d3abb86473113",
+     "arrayField": [
+      "A",
+      "<<MinKey>>"
+     ],
+     "binaryField": "<Binary data>",
      "boolField": true,
      "dateField": "2025-11-15T10:55:41Z",
-     "tsField": "Timestamp(1779803838, 0)",
-     "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
-     "binaryField": {
-      "__B64_BINARY__": "VGV4dA=="
-     },
-     "nullField": null,
-     "minkeyField": "***",
-     "maxkeyField": "***",
      "docField": {
       "code": "const result = 1",
       "number": 10
      },
-     "arrayField": [
-      "A",
-      "<<MinKey>>"
-     ]
+     "doubleField": 124.456,
+     "int32Field": 10,
+     "int64Field": 1000,
+     "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
+     "maxkeyField": "***",
+     "minkeyField": "***",
+     "nullField": null,
+     "oidField": "63ceed18f71dda7d8cf21e8e",
+     "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
+     "stringField": "Text",
+     "symbolField": "Y",
+     "tsField": "Timestamp(1781544727, 0)"
     }
    ],
-   "id": 3532714966087247162,
+   "id": 1375101777449301492,
    "ns": "main.new_collection"
   },
   "ok": 1
- }
+ },
+ "result": true
 }

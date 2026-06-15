@@ -1,32 +1,8 @@
 ﻿{
  "response": [
   {
-   "activity": {
-    "comments": 7
-   },
-   "period_from": 1779753600,
-   "period_to": 1779839999,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "activity": {
-    "comments": 3
-   },
-   "period_from": 1779667200,
-   "period_to": 1779753599,
+   "period_from": 1781481600,
+   "period_to": 1781567999,
    "reach": {
     "age": [
      {
@@ -35,59 +11,135 @@
      },
      {
       "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 0
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
       "count": 1
      },
      {
-      "value": "35-45",
+      "value": "21-24",
+      "count": 4
+     },
+     {
+      "value": "24-27",
+      "count": 1
+     },
+     {
+      "value": "27-30",
+      "count": 1
+     },
+     {
+      "value": "30-35",
       "count": 0
      },
      {
+      "value": "35-45",
+      "count": 10
+     },
+     {
       "value": "45-100",
-      "count": 0
+      "count": 16
      }
     ],
     "cities": [
      {
-      "count": 1,
+      "count": 4,
       "name": "Москва",
       "value": 1
+     },
+     {
+      "count": 3,
+      "name": "Кимры",
+      "value": 1769
+     },
+     {
+      "count": 2,
+      "name": "Северодвинск",
+      "value": 11
+     },
+     {
+      "count": 2,
+      "name": "Санкт-Петербург",
+      "value": 2
+     },
+     {
+      "count": 1,
+      "name": "Сурское",
+      "value": 1111960
+     },
+     {
+      "count": 1,
+      "name": "Балаково",
+      "value": 9930
+     },
+     {
+      "count": 1,
+      "name": "Тверь",
+      "value": 141
+     },
+     {
+      "count": 1,
+      "name": "Зеленоград",
+      "value": 1463
+     },
+     {
+      "count": 1,
+      "name": "Долгопрудный",
+      "value": 857
+     },
+     {
+      "count": 1,
+      "name": "Воткинск",
+      "value": 1100
+     },
+     {
+      "count": 1,
+      "name": "Краснодар",
+      "value": 72
+     },
+     {
+      "count": 1,
+      "name": "Кострома",
+      "value": 71
+     },
+     {
+      "count": 1,
+      "name": "Кизляр",
+      "value": 18300
+     },
+     {
+      "count": 1,
+      "name": "Воронеж",
+      "value": 42
+     },
+     {
+      "count": 1,
+      "name": "Самара",
+      "value": 123
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 1,
+      "count": 32,
       "name": "Россия",
       "value": 1
+     },
+     {
+      "code": "KZ",
+      "count": 1,
+      "name": "Казахстан",
+      "value": 4
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 35,
+    "reach": 33,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 0
+      "count": 22
      },
      {
       "value": "m",
-      "count": 1
+      "count": 11
      }
     ],
     "sex_age": [
@@ -101,11 +153,11 @@
      },
      {
       "value": "f;21-24",
-      "count": 0
+      "count": 2
      },
      {
       "value": "f;24-27",
-      "count": 0
+      "count": 1
      },
      {
       "value": "f;27-30",
@@ -117,11 +169,11 @@
      },
      {
       "value": "f;35-45",
-      "count": 0
+      "count": 9
      },
      {
       "value": "f;45-100",
-      "count": 0
+      "count": 10
      },
      {
       "value": "m;12-18",
@@ -129,11 +181,11 @@
      },
      {
       "value": "m;18-21",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;21-24",
-      "count": 0
+      "count": 2
      },
      {
       "value": "m;24-27",
@@ -141,21 +193,39 @@
      },
      {
       "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
       "count": 1
      },
      {
-      "value": "m;35-45",
+      "value": "m;30-35",
       "count": 0
      },
      {
+      "value": "m;35-45",
+      "count": 1
+     },
+     {
       "value": "m;45-100",
-      "count": 0
+      "count": 6
      }
     ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "period_from": 1781395200,
+   "period_to": 1781481599,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],

@@ -1,0 +1,13 @@
+﻿{
+ "logs": [
+  "[2026-06-15 17:33:45.493] Starting WebSocket server on port 9893 with config: WebSocketServerConfig ...",
+  "[2026-06-15 17:33:45.494] Adding WebSocket route: /",
+  "[2026-06-15 17:33:45.494] WebSocket server listening on 0.0.0.0:9893",
+  "[2026-06-15 17:33:45.601] Connection added: f9326238-c67b-4049-9c9d-a08ff160e30c",
+  "[2026-06-15 17:33:45.602] WebSocket connected: f9326238-c67b-4049-9c9d-a08ff160e30c",
+  "[2026-06-15 17:33:45.603] Received 25 bytes from WebSocket f9326238-c67b-4049-9c9d-a08ff160e30c"
+ ],
+ "result": true,
+ "returned": 6,
+ "total": 6
+}

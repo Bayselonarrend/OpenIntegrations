@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "1c5ca566-5928-4668-bdb9-b5288f9bacce",
-  "date": "2026-06-09",
+  "order_uuid": "02534496-b554-4877-bcad-50fa69614c01",
+  "date": "2026-06-29",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Group office",
@@ -19,30 +19,30 @@
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "8f80b892-cbf6-4b55-a77a-49c8fb0d2dd4",
+  "uuid": "0a94e7f8-c4e5-4aec-9c7a-31eb05d36f91",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-05-26T14:20:42+00:00"
+    "date_time": "2026-06-15T17:32:57+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-05-26T14:20:41+00:00"
+    "date_time": "2026-06-15T17:32:56+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "af96d165-093f-4780-9d3e-982f0dece251",
+   "request_uuid": "0fe866a7-a510-43c6-830e-8e5df0706ad1",
    "type": "CREATE",
-   "date_time": "2026-05-26T14:20:41+00:00",
+   "date_time": "2026-06-15T17:32:56+03:00",
    "state": "INVALID",
    "errors": [
     {
-     "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2026-06-05"
+     "code": "delivery_date_forbidden",
+     "message": "Доставка в указанную дату не осуществляется"
     }
    ]
   }

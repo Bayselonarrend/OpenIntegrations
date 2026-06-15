@@ -1,49 +1,27 @@
 ﻿{
- "result": true,
  "data": {
+  "ok": 1,
   "users": [
    {
     "_id": "admin.bayselonarrend",
-    "userId": {
-     "__B64_BINARY__": "EjWtfR/yQgGol18zZoi5HA=="
-    },
-    "user": "bayselonarrend",
-    "db": "admin",
-    "mechanisms": [
-     "SCRAM-SHA-1",
-     "SCRAM-SHA-256"
-    ],
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
       "salt": "Qav4apyB+3UkB53eZtIiEA==",
-      "storedKey": "***",
-      "serverKey": "***"
+      "serverKey": "***",
+      "storedKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
       "salt": "nLO0xnlSs9iMSpmKP3tEv0hCiwk7helxkaomuQ==",
-      "storedKey": "***",
-      "serverKey": "***"
+      "serverKey": "***",
+      "storedKey": "***"
      }
     },
-    "roles": [
-     {
-      "role": "root",
-      "db": "admin"
-     }
-    ],
-    "inheritedRoles": [
-     {
-      "role": "root",
-      "db": "admin"
-     }
-    ],
+    "db": "admin",
+    "inheritedAuthenticationRestrictions": [],
     "inheritedPrivileges": [
      {
-      "resource": {
-       "cluster": true
-      },
       "actions": [
        "addShard",
        "allCollectionStats",
@@ -106,13 +84,12 @@
        "useUUID",
        "viewUser",
        "applyOps"
-      ]
+      ],
+      "resource": {
+       "cluster": true
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": ""
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeCustomData",
@@ -169,13 +146,13 @@
        "validate",
        "viewRole",
        "viewUser"
-      ]
+      ],
+      "resource": {
+       "collection": "",
+       "db": ""
+      }
      },
      {
-      "resource": {
-       "db": "config",
-       "collection": ""
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeCustomData",
@@ -219,26 +196,26 @@
        "updateSearchIndex",
        "viewRole",
        "viewUser"
-      ]
+      ],
+      "resource": {
+       "collection": "",
+       "db": "config"
+      }
      },
      {
-      "resource": {
-       "db": "config",
-       "collection": "system.sessions"
-      },
       "actions": [
        "collStats",
        "dbStats",
        "getDatabaseVersion",
        "getShardVersion",
        "indexStats"
-      ]
+      ],
+      "resource": {
+       "collection": "system.sessions",
+       "db": "config"
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": ""
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeCustomData",
@@ -282,13 +259,13 @@
        "updateSearchIndex",
        "viewRole",
        "viewUser"
-      ]
+      ],
+      "resource": {
+       "collection": "",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "config",
-       "collection": "system.js"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -300,13 +277,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.js",
+       "db": "config"
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": "system.js"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -318,13 +295,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.js",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": "system.replset"
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -345,13 +322,13 @@
        "listSearchIndexes",
        "planCacheRead",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.replset",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": "replset.election"
-      },
       "actions": [
        "bypassDocumentValidation",
        "collMod",
@@ -365,13 +342,13 @@
        "remove",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "replset.election",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": "replset.minvalid"
-      },
       "actions": [
        "bypassDocumentValidation",
        "collMod",
@@ -385,13 +362,13 @@
        "remove",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "replset.minvalid",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": "system.profile"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -406,12 +383,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.profile",
+       "db": ""
+      }
      },
      {
-      "resource": {
-       "system_buckets": ""
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -453,12 +431,12 @@
        "update",
        "updateSearchIndex",
        "validate"
-      ]
+      ],
+      "resource": {
+       "system_buckets": ""
+      }
      },
      {
-      "resource": {
-       "anyResource": true
-      },
       "actions": [
        "collStats",
        "dbCheck",
@@ -468,13 +446,12 @@
        "listIndexes",
        "listSearchIndexes",
        "validate"
-      ]
+      ],
+      "resource": {
+       "anyResource": true
+      }
      },
      {
-      "resource": {
-       "db": "local",
-       "collection": "system.healthlog"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -486,13 +463,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.healthlog",
+       "db": "local"
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": "system.users"
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -515,13 +492,13 @@
        "remove",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.users",
+       "db": ""
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "system.users"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -537,13 +514,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.users",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "system.roles"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -559,13 +536,13 @@
        "listIndexes",
        "listSearchIndexes",
        "planCacheRead"
-      ]
+      ],
+      "resource": {
+       "collection": "system.roles",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "system.version"
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -586,13 +563,13 @@
        "listSearchIndexes",
        "planCacheRead",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.version",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "system.backup_users"
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -613,13 +590,13 @@
        "listSearchIndexes",
        "planCacheRead",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.backup_users",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": "system.js"
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeStream",
@@ -646,102 +623,100 @@
        "renameCollectionSameDB",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.js",
+       "db": ""
+      }
      },
      {
-      "resource": {
-       "db": "config",
-       "collection": "settings"
-      },
       "actions": [
        "find",
        "insert",
        "update"
-      ]
+      ],
+      "resource": {
+       "collection": "settings",
+       "db": "config"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "tempusers"
-      },
       "actions": [
        "find"
-      ]
+      ],
+      "resource": {
+       "collection": "tempusers",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "admin",
-       "collection": "temproles"
-      },
       "actions": [
        "find"
-      ]
+      ],
+      "resource": {
+       "collection": "temproles",
+       "db": "admin"
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": "system.views"
-      },
       "actions": [
        "dropCollection"
-      ]
+      ],
+      "resource": {
+       "collection": "system.views",
+       "db": ""
+      }
      },
      {
-      "resource": {
-       "db": "config",
-       "collection": "system.preimages"
-      },
       "actions": [
        "find",
        "remove"
-      ]
-     }
-    ],
-    "inheritedAuthenticationRestrictions": []
-   },
-   {
-    "_id": "main.newuser",
-    "userId": {
-     "__B64_BINARY__": "L8cl+NvyTamlIXmw6fkjeA=="
-    },
-    "user": "newuser",
-    "db": "main",
-    "mechanisms": [
-     "SCRAM-SHA-1",
-     "SCRAM-SHA-256"
-    ],
-    "credentials": {
-     "SCRAM-SHA-1": {
-      "iterationCount": 10000,
-      "salt": "UkvlHoHtLZg1e3lj+sOwMw==",
-      "storedKey": "***",
-      "serverKey": "***"
-     },
-     "SCRAM-SHA-256": {
-      "iterationCount": 15000,
-      "salt": "vpHnms8ecd+uoMwtma1nemsqfGuLA5zd2ctVBA==",
-      "storedKey": "***",
-      "serverKey": "***"
-     }
-    },
-    "roles": [
-     {
-      "role": "readWrite",
-      "db": "main"
+      ],
+      "resource": {
+       "collection": "system.preimages",
+       "db": "config"
+      }
      }
     ],
     "inheritedRoles": [
      {
-      "role": "readWrite",
-      "db": "main"
+      "db": "admin",
+      "role": "root"
      }
     ],
+    "mechanisms": [
+     "SCRAM-SHA-1",
+     "SCRAM-SHA-256"
+    ],
+    "roles": [
+     {
+      "db": "admin",
+      "role": "root"
+     }
+    ],
+    "user": "bayselonarrend",
+    "userId": "<Binary data>"
+   },
+   {
+    "_id": "main.newuser",
+    "credentials": {
+     "SCRAM-SHA-1": {
+      "iterationCount": 10000,
+      "salt": "GsDkFYWa+CdZ7CTgqDfPOQ==",
+      "serverKey": "***",
+      "storedKey": "***"
+     },
+     "SCRAM-SHA-256": {
+      "iterationCount": 15000,
+      "salt": "cbQAV5BF2RC0NnmjcsFvBHNB/DqOGN+zZXjNLA==",
+      "serverKey": "***",
+      "storedKey": "***"
+     }
+    },
+    "db": "main",
+    "inheritedAuthenticationRestrictions": [],
     "inheritedPrivileges": [
      {
-      "resource": {
-       "db": "main",
-       "collection": ""
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -766,13 +741,13 @@
        "renameCollectionSameDB",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "",
+       "db": "main"
+      }
      },
      {
-      "resource": {
-       "db": "main",
-       "collection": "system.js"
-      },
       "actions": [
        "changeStream",
        "collStats",
@@ -797,12 +772,33 @@
        "renameCollectionSameDB",
        "update",
        "updateSearchIndex"
-      ]
+      ],
+      "resource": {
+       "collection": "system.js",
+       "db": "main"
+      }
      }
     ],
-    "inheritedAuthenticationRestrictions": []
+    "inheritedRoles": [
+     {
+      "db": "main",
+      "role": "readWrite"
+     }
+    ],
+    "mechanisms": [
+     "SCRAM-SHA-1",
+     "SCRAM-SHA-256"
+    ],
+    "roles": [
+     {
+      "db": "main",
+      "role": "readWrite"
+     }
+    ],
+    "user": "newuser",
+    "userId": "<Binary data>"
    }
-  ],
-  "ok": 1
- }
+  ]
+ },
+ "result": true
 }

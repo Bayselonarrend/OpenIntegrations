@@ -1,0 +1,16 @@
+﻿{
+ "title": "Example",
+ "count": 42,
+ "active": true,
+ "payload": "<Binary data>",
+ "nested": {
+  "label": "nested",
+  "inner": "<Binary data>"
+ },
+ "items": [
+  "tag",
+  1,
+  false,
+  "<Binary data>"
+ ]
+}

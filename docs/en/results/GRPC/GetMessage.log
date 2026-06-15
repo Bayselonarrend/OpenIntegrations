@@ -2,16 +2,10 @@
  "message": {
   "f_bool": true,
   "f_bools": [],
-  "f_bytes": {
-   "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
-  },
+  "f_bytes": "<Binary data>",
   "f_bytess": [
-   {
-    "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
-   },
-   {
-    "BYTES": "UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAA..."
-   }
+   "<Binary data>",
+   "<Binary data>"
   ],
   "f_enum": "ENUM_1",
   "f_enums": [],

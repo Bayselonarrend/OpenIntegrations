@@ -4,9 +4,7 @@
   {
    "f_bool": true,
    "f_bools": [],
-   "f_bytes": {
-    "BYTES": ""
-   },
+   "f_bytes": "<Binary data>",
    "f_bytess": [],
    "f_enum": "ENUM_0",
    "f_enums": [],
@@ -26,9 +24,7 @@
   {
    "f_bool": true,
    "f_bools": [],
-   "f_bytes": {
-    "BYTES": ""
-   },
+   "f_bytes": "<Binary data>",
    "f_bytess": [],
    "f_enum": "ENUM_0",
    "f_enums": [],
@@ -48,9 +44,7 @@
   {
    "f_bool": true,
    "f_bools": [],
-   "f_bytes": {
-    "BYTES": ""
-   },
+   "f_bytes": "<Binary data>",
    "f_bytess": [],
    "f_enum": "ENUM_0",
    "f_enums": [],
