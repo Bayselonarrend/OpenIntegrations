@@ -1,0 +1,8 @@
+# JSON data can also be passed as a path to a .json file
+
+oint lua CallScriptFunction \
+  --lua "Lua54" \
+  --script "function mul(a, b) return a * b + bonus end" \
+  --func "mul" \
+  --params "['6','7']" \
+  --globals "{'bonus':'2'}"

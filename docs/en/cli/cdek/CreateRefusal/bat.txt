@@ -1,4 +1,4 @@
 oint cdek CreateRefusal ^
   --token "***" ^
-  --uuid "ecb7f2d5-89ec-4eb7-acff-e7c350818aaa" ^
+  --uuid "28af197f-b926-4bc5-a3bf-7aec7b190857" ^
   --testapi "***"

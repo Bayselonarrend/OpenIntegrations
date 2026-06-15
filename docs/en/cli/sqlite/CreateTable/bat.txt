@@ -3,4 +3,4 @@
 oint sqlite CreateTable ^
   --table "test1" ^
   --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" ^
-  --db "/tmp/v3fibjxn.cs0.sqlite"
+  --db "C:\Users\bayselonarrend\AppData\Local\Temp\42vgs4s0.ipt.sqlite"

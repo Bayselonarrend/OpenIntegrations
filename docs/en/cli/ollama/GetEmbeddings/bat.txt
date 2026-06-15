@@ -2,6 +2,6 @@
 
 oint ollama GetEmbeddings ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --model "tinyllama" ^
+  --model "nomic-embed-text-v2-moe" ^
   --input "['Why is the sky blue?','Why is the grass green?']" ^
   --headers "{'Authorization':'***'}"

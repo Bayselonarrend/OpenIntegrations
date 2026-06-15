@@ -1,0 +1,3 @@
+oint lua CompileCodeFromFile \
+  --lua "Lua54" \
+  --path "C:\Users\bayselonarrend\AppData\Local\Temp\iti5vfn2.30m.lua"

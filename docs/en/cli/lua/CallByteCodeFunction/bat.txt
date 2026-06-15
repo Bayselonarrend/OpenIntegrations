@@ -1,0 +1,8 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint lua CallByteCodeFunction ^
+  --lua "Lua54" ^
+  --code "C:\Users\bayselonarrend\AppData\Local\Temp\2ecndgte.45c" ^
+  --func "mul" ^
+  --params "['6','7']" ^
+  --globals "{'bonus':'2'}"
