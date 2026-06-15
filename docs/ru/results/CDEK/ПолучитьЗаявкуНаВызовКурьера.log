@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "c5b2fbed-08e1-4edd-9318-2eccd8030c0b",
-  "cdek_number": "1109907610",
-  "order_uuid": "48521e28-9538-4512-980b-27af48d516b5",
+  "uuid": "ebe682e0-79e0-4cb0-bc9b-4725d91d9716",
+  "cdek_number": "1109907694",
+  "order_uuid": "6db6fb24-4c3b-4e62-9a4e-b810b666e95b",
   "intake_date": "2026-06-16",
-  "intake_number": "13312309",
+  "intake_number": "13312316",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -20,6 +20,9 @@
    "phones": [
     {
      "number": "79589441654"
+    },
+    {
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -56,22 +59,22 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2026-06-15T16:51:12+03:00"
+    "date_time": "2026-06-15T21:03:48+03:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-06-15T16:51:12+03:00"
+    "date_time": "2026-06-15T21:03:48+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-06-15T16:51:12+03:00"
+    "date_time": "2026-06-15T21:03:48+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "6b381767-4f30-4fc5-822a-f0a82956d4ed",
+    "package_id": "0a58e00c-8a1c-4cb6-83f7-b6574a144ab1",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -81,9 +84,9 @@
  },
  "requests": [
   {
-   "request_uuid": "efd51975-d288-4571-9f0a-e01c76b2c496",
+   "request_uuid": "54999ac1-5b10-44aa-b3c0-9916b2f140d6",
    "type": "CREATE",
-   "date_time": "2026-06-15T16:51:11+03:00",
+   "date_time": "2026-06-15T21:03:47+03:00",
    "state": "SUCCESSFUL"
   }
  ]
