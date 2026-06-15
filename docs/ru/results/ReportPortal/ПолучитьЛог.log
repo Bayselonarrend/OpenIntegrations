@@ -1,8 +1,8 @@
 ﻿{
- "id": 235098,
- "uuid": "b35646d8-a403-4bf0-9a05-474ed8aa59bb",
+ "id": 251967,
+ "uuid": "f902c0f2-18f9-4572-87dc-b31d5dc3e3a8",
  "time": "1970-01-21T10:54:18.01Z",
  "message": "Some log 1",
  "level": "INFO",
- "itemId": 238620
+ "itemId": 256338
 }

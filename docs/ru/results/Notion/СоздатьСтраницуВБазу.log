@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "37c82aa7-fc4e-818e-abec-ebbb9428b22b",
- "created_time": "2026-06-11T07:43:00Z",
- "last_edited_time": "2026-06-11T07:43:00Z",
+ "id": "38082aa7-fc4e-818d-867e-d697bf6cda62",
+ "created_time": "2026-06-15T08:56:00Z",
+ "last_edited_time": "2026-06-15T08:56:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,60 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "37c82aa7-fc4e-813a-a5dd-e54497650ff4"
+  "database_id": "38082aa7-fc4e-8117-a626-fb3cbf011094"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Статус": {
-   "id": "%3BW%3Fm",
-   "type": "select",
-   "select": {
-    "id": "4bad32a5-81c6-46cc-8a08-ed61a2a6ecb4",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Почта": {
-   "id": "%3E%3BbB",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
-    }
-   ]
-  },
-  "Дата создания": {
-   "id": "C%40jc",
-   "type": "date",
-   "date": {
-    "start": "2026-06-11T13:43:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Пользователь": {
-   "id": "SgJc",
-   "type": "people",
-   "people": []
-  },
   "Описание": {
-   "id": "ap%3Co",
+   "id": "%3FewE",
    "type": "rich_text",
    "rich_text": [
     {
@@ -90,13 +44,64 @@
     }
    ]
   },
+  "Номер": {
+   "id": "Ap%7Cq",
+   "type": "number",
+   "number": 1
+  },
+  "Почта": {
+   "id": "HB%5Bq",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
+  },
+  "Статус": {
+   "id": "HL_Y",
+   "type": "select",
+   "select": {
+    "id": "c94292b8-0f53-4842-a6b4-73995806c57e",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Дата создания": {
+   "id": "IPHC",
+   "type": "date",
+   "date": {
+    "start": "2026-06-15T14:56:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Телефон": {
-   "id": "gmtx",
+   "id": "Iy%3DW",
    "type": "phone_number",
    "phone_number": "***"
   },
+  "Активен": {
+   "id": "JC_T",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Картинка": {
-   "id": "yaef",
+   "id": "d%5C%40%7B",
    "type": "files",
    "files": [
     {
@@ -108,15 +113,10 @@
     }
    ]
   },
-  "Активен": {
-   "id": "%7BmxE",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Номер": {
-   "id": "~%5Es%60",
-   "type": "number",
-   "number": 1
+  "Пользователь": {
+   "id": "tsuS",
+   "type": "people",
+   "people": []
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/37c82aa7fc4e818eabecebbb9428b22b",
+ "url": "https://app.notion.com/p/38082aa7fc4e818d867ed697bf6cda62",
  "public_url": null,
  "archived": false,
- "request_id": "0cce4342-2977-4f31-98e2-61eda0e91991"
+ "request_id": "a169ca31-ed36-4a5a-ad17-b4158f932cea"
 }

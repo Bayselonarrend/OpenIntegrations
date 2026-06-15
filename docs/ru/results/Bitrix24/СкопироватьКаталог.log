@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 59320,
+  "ID": 59706,
   "NAME": "Новый подкаталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 59320,
-  "PARENT_ID": "59316",
+  "REAL_OBJECT_ID": 59706,
+  "PARENT_ID": "59702",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2026-06-11T10:48:35+03:00",
-  "UPDATE_TIME": "2026-06-11T10:48:35+03:00",
+  "CREATE_TIME": "2026-06-15T11:59:56+03:00",
+  "UPDATE_TIME": "2026-06-15T11:59:56+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -17,13 +17,13 @@
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог/Новый подкаталог 2/Новый подкаталог"
  },
  "time": {
-  "start": 1781164115,
-  "finish": 1781164115.89498,
-  "duration": 0.894984006881714,
+  "start": 1781513996,
+  "finish": 1781513996.23668,
+  "duration": 0.236681938171387,
   "processing": 0,
-  "date_start": "2026-06-11T10:48:35+03:00",
-  "date_finish": "2026-06-11T10:48:35+03:00",
-  "operating_reset_at": 1781164715,
+  "date_start": "2026-06-15T11:59:56+03:00",
+  "date_finish": "2026-06-15T11:59:56+03:00",
+  "operating_reset_at": 1781514596,
   "operating": 0
  }
 }

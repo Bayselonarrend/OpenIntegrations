@@ -1,11 +1,11 @@
 ﻿{
  "records": [
   {
-   "id": "recDr00mus40i0n4r",
-   "createdTime": "2026-06-11T07:44:43Z",
+   "id": "recBzkGwEDFdbTqTt",
+   "createdTime": "2026-06-15T08:57:38Z",
    "fields": {
-    "Строковое": "Привет\n",
-    "Номер": 10
+    "Номер": 10,
+    "Строковое": "Привет\n"
    }
   }
  ]
