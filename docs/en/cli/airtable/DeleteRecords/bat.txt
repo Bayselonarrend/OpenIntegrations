@@ -1,5 +1,5 @@
 oint airtable DeleteRecords ^
   --token "***" ^
-  --base "appYreCeNNLE1AQGu" ^
-  --table "tbl7eGkXTUm33Hqrx" ^
-  --records "rechjp5530hQfsSGo"
+  --base "appNaTsvK8Uousapd" ^
+  --table "tblNLnHcjD8S7o7Xt" ^
+  --records "recMFvAT7dDGg6nrd"

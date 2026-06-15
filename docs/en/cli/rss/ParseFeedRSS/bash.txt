@@ -1,2 +1,2 @@
 oint rss ParseFeedRSS \
-  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\tnnjemck.45i.xml"
+  --xml "/tmp/0r1ti20i.eup.xml"

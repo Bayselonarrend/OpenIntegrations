@@ -1,4 +1,4 @@
 oint vkteams ChangeChatPicture \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\l3xk0p2v.sok"
+  --file "/tmp/idfgmsbc.fkk"

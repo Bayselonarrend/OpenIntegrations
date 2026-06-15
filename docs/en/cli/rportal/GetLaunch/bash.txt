@@ -2,4 +2,4 @@ oint rportal GetLaunch \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "17740905-0c83-4dd1-b8cf-10b2e8161f76"
+  --uuid "f784f8ce-80b9-47b8-82cd-17342c1dfc71"

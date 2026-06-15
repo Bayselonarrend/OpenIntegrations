@@ -4,4 +4,4 @@ oint rss CreateFeedRSS ^
   --name "Test RSS channel" ^
   --descr "Test RSS channel description" ^
   --link "https://example.com" ^
-  --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'6/15/2026 8:21:00 PM','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'6/15/2026 8:21:07 PM','author':'test@example.com','guid':'item-2'}]"
+  --items "[{'title':'First element','description':'First element description','link':'https://example.com/item1','pubDate':'06/15/2026 17:38:19','author':'test@example.com','guid':'item-1'},{'title':'Second element','description':'Second element description','link':'https://example.com/item2','pubDate':'06/15/2026 17:38:23','author':'test@example.com','guid':'item-2'}]"

@@ -1,5 +1,5 @@
 oint bitrix24 RenewTasksChecklistElement ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "11212" ^
-  --element 8130 ^
+  --task "11222" ^
+  --element 8138 ^
   --token "***"

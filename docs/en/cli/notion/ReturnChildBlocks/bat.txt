@@ -1,3 +1,3 @@
 oint notion ReturnChildBlocks ^
   --token "***" ^
-  --block "38082aa7-fc4e-81a1-a85a-cb50f45cbfe0"
+  --block "38082aa7-fc4e-8119-ae0e-fcda520f3f7f"

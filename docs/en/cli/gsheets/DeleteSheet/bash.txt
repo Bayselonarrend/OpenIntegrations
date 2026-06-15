@@ -1,4 +1,4 @@
 oint gsheets DeleteSheet \
   --token "***" \
-  --spreadsheet "1_1wlwUHS-R7vOUvXyfUCRYJuscBPok0CmiQGH0dEIBA" \
-  --sheet "1137674535"
+  --spreadsheet "1_hSIVq_VKstpEHaCbn1HunN9ZsvgET0z0ieq_EKmy9Y" \
+  --sheet "1428597001"

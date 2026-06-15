@@ -1,4 +1,4 @@
 oint vkteams SendVoice \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\t4vyul4v.3hn"
+  --file "/tmp/zoyjevzq.s5y"

@@ -2,4 +2,4 @@ oint rportal DeleteItem \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --id 269212
+  --id 271613

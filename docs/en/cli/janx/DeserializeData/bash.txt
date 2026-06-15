@@ -1,2 +1,2 @@
 oint janx DeserializeData \
-  --data "C:\Users\bayselonarrend\AppData\Local\Temp\01rmel4g.j3g"
+  --data "/tmp/qndxwndg.q0y"
