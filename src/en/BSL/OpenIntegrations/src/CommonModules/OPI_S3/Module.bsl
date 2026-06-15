@@ -1420,7 +1420,7 @@ Function GetObjectInChunks(Val BasicData
         EndStr   = OPI_Tools.NumberToString(ChunkEnd);
 
         Title = StrTemplate(HeaderTemplate, StartStr, EndStr);
-        HeadersArray.Add(New Structure("Title,Item", Title, EndStr));
+        HeadersArray.Add(New Structure("Title,Position", Title, EndStr));
 
         ChunkStart = ChunkEnd + 1;
 
@@ -1430,7 +1430,7 @@ Function GetObjectInChunks(Val BasicData
 
         Title = "bytes=" + OPI_Tools.NumberToString(ChunkStart) + "-";
 
-        DataStructure = New Structure("Title,Item", Title, TotalSize);
+        DataStructure = New Structure("Title,Position", Title, TotalSize);
         HeadersArray.Add(DataStructure);
 
     EndIf;

@@ -107,51 +107,29 @@ The user can be specified in one of the following formats:<br/>String: `name of 
 
 ```json title="Result"
 {
- "result": true,
  "data": {
+  "ok": 1,
   "users": [
    {
     "_id": "admin.bayselonarrend",
-    "userId": {
-     "__B64_BINARY__": "EjWtfR/yQgGol18zZoi5HA=="
-    },
-    "user": "bayselonarrend",
-    "db": "admin",
-    "mechanisms": [
-     "SCRAM-SHA-1",
-     "SCRAM-SHA-256"
-    ],
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
       "salt": "Qav4apyB+3UkB53eZtIiEA==",
-      "storedKey": "***",
-      "serverKey": "***"
+      "serverKey": "***",
+      "storedKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
       "salt": "nLO0xnlSs9iMSpmKP3tEv0hCiwk7helxkaomuQ==",
-      "storedKey": "***",
-      "serverKey": "***"
+      "serverKey": "***",
+      "storedKey": "***"
      }
     },
-    "roles": [
-     {
-      "role": "root",
-      "db": "admin"
-     }
-    ],
-    "inheritedRoles": [
-     {
-      "role": "root",
-      "db": "admin"
-     }
-    ],
+    "db": "admin",
+    "inheritedAuthenticationRestrictions": [],
     "inheritedPrivileges": [
      {
-      "resource": {
-       "cluster": true
-      },
       "actions": [
        "addShard",
        "allCollectionStats",
@@ -214,13 +192,12 @@ The user can be specified in one of the following formats:<br/>String: `name of 
        "useUUID",
        "viewUser",
        "applyOps"
-      ]
+      ],
+      "resource": {
+       "cluster": true
+      }
      },
      {
-      "resource": {
-       "db": "",
-       "collection": ""
-      },
       "actions": [
        "bypassDocumentValidation",
        "changeCustomData",
@@ -256,5 +233,28 @@ The user can be specified in one of the following formats:<br/>String: `name of 
        "killCursors",
        "listCachedAndActiveUsers",
        "listCollections",
+       "listIndexes",
+       "listSearchIndexes",
+       "moveChunk",
+       "planCacheIndexFilter",
+       "planCacheRead",
+       "planCacheWrite",
+       "refineCollectionShardKey",
+       "reIndex",
+       "remove",
+       "renameCollectionSameDB",
+       "reshardCollection",
+       "revokeRole",
+       "setAuthenticationRestriction",
+       "splitChunk",
+       "splitVector",
+       "storageDetails",
+       "update",
+       "updateSearchIndex",
+       "validate",
+       "viewRole",
+       "viewUser"
+      ],
+      "resource": {
 ...
 ```

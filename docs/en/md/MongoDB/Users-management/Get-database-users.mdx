@@ -84,29 +84,27 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Result"
 {
- "result": true,
  "data": {
+  "ok": 1,
   "users": [
    {
     "_id": "main.newuser",
-    "userId": {
-     "__B64_BINARY__": "L8cl+NvyTamlIXmw6fkjeA=="
-    },
-    "user": "newuser",
     "db": "main",
-    "roles": [
-     {
-      "role": "readWrite",
-      "db": "main"
-     }
-    ],
     "mechanisms": [
      "SCRAM-SHA-1",
      "SCRAM-SHA-256"
-    ]
+    ],
+    "roles": [
+     {
+      "db": "main",
+      "role": "readWrite"
+     }
+    ],
+    "user": "newuser",
+    "userId": "<Binary data>"
    }
-  ],
-  "ok": 1
- }
+  ]
+ },
+ "result": true
 }
 ```
