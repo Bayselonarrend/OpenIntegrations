@@ -23,15 +23,21 @@ def echoVrunnerLog(String libraryName, String logFile) {
 }
 
 def stopIbsrv() {
-    // убиваем только ibsrv, слушающий нужный порт
-    bat(script: "@echo off\r\nfor /f \"tokens=5\" %%a in ('netstat -aon ^| findstr :8314 ^| findstr LISTENING') do taskkill /F /PID %%a 2>nul", returnStatus: true)
+    powershell(returnStatus: true, script: 'Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')
+}
+
+def waitForIbsrv() {
+    timeout(time: 2, unit: 'MINUTES') {
+        waitUntil(quiet: true, initialRecurrencePeriod: 2) {
+            return powershell(returnStatus: true, script: 'if (Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }') == 0
+        }
+    }
 }
 
 def startIbsrv() {
     stopIbsrv()
-    def ibData = "D:/TEST_IB/OpenIntegrationsIB_en"
-    bat(script: "@echo off\r\nstart \"\" /B \"\"C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe\"\" --data=\"${ibData}\" --disable-direct --db-path=\"./\" -p 8314")
-    sleep(time: 10, unit: 'SECONDS')
+    powershell(returnStatus: true, script: 'Start-Process -FilePath "C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe" -ArgumentList "--data=D:/TEST_IB/OpenIntegrationsIB_en","--disable-direct","--db-path=./","-p","8314" -WindowStyle Hidden')
+    waitForIbsrv()
 }
 
 def runLibraryTest(String libraryName, String configPath) {

@@ -23,15 +23,21 @@ def echoVrunnerLog(String libraryName, String logFile) {
 }
 
 def stopIbsrv() {
-    // убиваем только ibsrv, слушающий нужный порт
-    bat(script: "@echo off\r\nfor /f \"tokens=5\" %%%%a in ('netstat -aon ^| findstr :%7 ^| findstr LISTENING') do taskkill /F /PID %%%%a 2>nul", returnStatus: true)
+    powershell(returnStatus: true, script: 'Get-NetTCPConnection -LocalPort %7 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')
+}
+
+def waitForIbsrv() {
+    timeout(time: 2, unit: 'MINUTES') {
+        waitUntil(quiet: true, initialRecurrencePeriod: 2) {
+            return powershell(returnStatus: true, script: 'if (Get-NetTCPConnection -LocalPort %7 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }') == 0
+        }
+    }
 }
 
 def startIbsrv() {
     stopIbsrv()
-    def ibData = "%5OpenIntegrationsIB_%3"
-    bat(script: "@echo off\r\nstart \"\" /B \"\"%6\"\" --data=\"${ibData}\" --disable-direct --db-path=\"./\" -p %7")
-    sleep(time: 10, unit: 'SECONDS')
+    powershell(returnStatus: true, script: 'Start-Process -FilePath "%6" -ArgumentList "--data=%5OpenIntegrationsIB_%3","--disable-direct","--db-path=./","-p","%7" -WindowStyle Hidden')
+    waitForIbsrv()
 }
 
 def runLibraryTest(String libraryName, String configPath) {
