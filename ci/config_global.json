@@ -39,6 +39,10 @@
     "description": "1C:Enterprise client exe path",
     "value": "C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe"
    },
+   "vrunnerPath": {
+    "description": "vanessa-runner (vrunner) executable path",
+    "value": "D:/OneScript/vrunner.bat"
+   },
    "osPath": {
     "description": "OneScript exe path",
     "value": "D:/OneScript"

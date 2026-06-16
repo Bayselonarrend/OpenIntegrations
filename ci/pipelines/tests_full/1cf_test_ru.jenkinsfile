@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"C:/Program Files (x86)/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_ru\"\";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"D:/OneScript/vrunner.bat\" run --ibsrv --nocacheuse --ibconnection \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_ru\"\";\" --command \"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
@@ -128,6 +128,8 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing') {
+			parallel {
 		stage('Testing-Telegram') {
             when {
                 expression { return params['Telegram'] }
@@ -674,6 +676,9 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
 
 	}
 	post{
