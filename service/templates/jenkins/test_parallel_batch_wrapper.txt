@@ -1,5 +1,0 @@
-		stage('Testing-%1') {
-			parallel {
-%2
-			}
-		}

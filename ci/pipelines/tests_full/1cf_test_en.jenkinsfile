@@ -6,22 +6,6 @@ def runCommand(String command) {
     }
 }
 
-def vrunnerLogIndicatesFailure(String logContent) {
-    return (logContent.contains('Ошибка HTTP при обращении к серверу') || logContent.contains('Не могу установить соединение'))
-}
-
-def echoVrunnerLog(String libraryName, String logFile) {
-    if (fileExists(logFile)) {
-        def logContent = readFile(logFile)
-        echo "=== vrunner log (${libraryName}) ==="
-        echo logContent
-        echo "===================================="
-        return logContent
-    }
-    echo "WARNING: vrunner log file not found: ${logFile}"
-    return ''
-}
-
 def stopIbsrv() {
     powershell(returnStatus: true, script: 'Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')
 }
@@ -48,44 +32,12 @@ def startIbsrv() {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            def logFile = "./test_results/${libraryName}.vrunner.log"
-            def codeFile = "./test_results/${libraryName}.code"
-            def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --ibsrv --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_en --command \"RunUnitTests=${configPath}\""
+            runCommand("\"C:/Program Files/1cv8/8.3.26.1656/bin/1cv8c.exe\" /WS\"http://localhost:8314\" /C\"RunUnitTests=${configPath}\"")
 
-            echo "=== Starting ${libraryName} tests ==="
-            echo "Command: ${vrunnerCmd}"
-
-            def exitCode = bat(
-                script: "chcp 65001\r\n${vrunnerCmd}",
-                returnStatus: true
-            )
-
-            def logContent = fileExists(logFile) ? echoVrunnerLog(libraryName, logFile) : ''
-
-            if (vrunnerLogIndicatesFailure(logContent)) {
-                error "vrunner failed for ${libraryName}: see log above"
-            }
-
-            if (exitCode != 0) {
-                error "vrunner exited with code ${exitCode} for ${libraryName}"
-            }
-
-            if (!fileExists(codeFile)) {
-                try {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        waitUntil(quiet: true, initialRecurrencePeriod: 3) {
-                            fileExists(codeFile)
-                        }
-                    }
-                } catch (Exception ignored) {
-                    echoVrunnerLog(libraryName, logFile)
-                    error "Test result file not found for ${libraryName} after vrunner completed"
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
                 }
-            }
-
-            if (!fileExists(codeFile)) {
-                echoVrunnerLog(libraryName, logFile)
-                error "Test result file not found for ${libraryName}"
             }
 
             if (fileExists("./test_results/${libraryName}.report")) {
@@ -97,10 +49,10 @@ def runLibraryTest(String libraryName, String configPath) {
                 echo "WARNING: ${libraryName}.report file not found"
             }
 
-            def testExitCode = readFile(codeFile).trim().replaceAll("[^0-9]", "")
-            echo "Exit code for ${libraryName}: ${testExitCode}"
-            if (testExitCode != "0") {
-                error "Tests ${libraryName} failed with exit code: ${testExitCode}"
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
             }
         }
     }
@@ -207,7 +159,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-1') {
+		stage('Testing') {
 			parallel {
 		stage('Testing-Telegram') {
             when {
@@ -339,11 +291,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-2') {
-			parallel {
 		stage('Testing-MongoDB') {
             when {
                 expression { return params['MongoDB'] }
@@ -474,11 +421,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-3') {
-			parallel {
 		stage('Testing-Dropbox') {
             when {
                 expression { return params['Dropbox'] }
@@ -609,11 +551,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-4') {
-			parallel {
 		stage('Testing-GreenAPI') {
             when {
                 expression { return params['GreenAPI'] }
@@ -744,11 +681,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-5') {
-			parallel {
 		stage('Testing-Janx') {
             when {
                 expression { return params['Janx'] }
@@ -783,7 +715,7 @@ pipeline {
 	post{
 		always{
 			script {
-				catchError() {   
+				catchError() {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
 				catchError() {
