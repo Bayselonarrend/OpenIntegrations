@@ -17392,8 +17392,7 @@ Function DataFilePath()
 
     PossiblePaths = New Array;
     PossiblePaths.Add("./data.sqlite");
-    PossiblePaths.Add("C:\GDrive\My Drive\data.sqlite");
-    PossiblePaths.Add("G:\My Drive\data.sqlite");
+    PossiblePaths.Add("D:\Important\data.sqlite");
 
     For Each PossiblePath In PossiblePaths Do
 
