@@ -35,9 +35,14 @@ def waitForIbsrv() {
 }
 
 def startIbsrv() {
+    echo 'Stopping previous ibsrv on port 8314 (if any)...'
     stopIbsrv()
+    echo 'Starting ibsrv: C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe --data=D:/TEST_IB/OpenIntegrationsIB_ru --disable-direct --db-path=./ -p 8314'
     powershell(returnStatus: true, script: 'Start-Process -FilePath "C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe" -ArgumentList "--data=D:/TEST_IB/OpenIntegrationsIB_ru","--disable-direct","--db-path=./","-p","8314" -WindowStyle Hidden')
+    echo 'Waiting for ibsrv port 8314...'
     waitForIbsrv()
+    echo 'ibsrv is ready, warmup pause before tests...'
+    sleep(time: 15, unit: 'SECONDS')
 }
 
 def runLibraryTest(String libraryName, String configPath) {
@@ -47,12 +52,15 @@ def runLibraryTest(String libraryName, String configPath) {
             def codeFile = "./test_results/${libraryName}.code"
             def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --ibsrv --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_ru --command \"RunUnitTests=${configPath}\""
 
+            echo "=== Starting ${libraryName} tests ==="
+            echo "Command: ${vrunnerCmd}"
+
             def exitCode = bat(
-                script: "@echo off\r\nchcp 65001 >nul\r\n${vrunnerCmd} > \"${logFile}\" 2>&1",
+                script: "chcp 65001\r\n${vrunnerCmd}",
                 returnStatus: true
             )
 
-            def logContent = echoVrunnerLog(libraryName, logFile)
+            def logContent = fileExists(logFile) ? echoVrunnerLog(libraryName, logFile) : ''
 
             if (vrunnerLogIndicatesFailure(logContent)) {
                 error "vrunner failed for ${libraryName}: see log above"
