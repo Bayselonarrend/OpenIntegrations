@@ -43,6 +43,14 @@
     "description": "vanessa-runner (vrunner) executable path",
     "value": "D:/OneScript/bin/vrunner.bat"
    },
+   "ibsrvPath": {
+    "description": "1C autonomous server (ibsrv) executable path",
+    "value": "C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe"
+   },
+   "ibsrvPort": {
+    "description": "1C autonomous server HTTP port",
+    "value": "8314"
+   },
    "osPath": {
     "description": "OneScript exe path",
     "value": "D:/OneScript"
