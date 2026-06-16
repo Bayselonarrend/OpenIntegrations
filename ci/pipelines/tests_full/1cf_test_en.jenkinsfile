@@ -182,7 +182,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing') {
+		stage('Testing-1') {
 			parallel {
 		stage('Testing-Telegram') {
             when {
@@ -314,6 +314,11 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
+		stage('Testing-2') {
+			parallel {
 		stage('Testing-MongoDB') {
             when {
                 expression { return params['MongoDB'] }
@@ -444,6 +449,11 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
+		stage('Testing-3') {
+			parallel {
 		stage('Testing-Dropbox') {
             when {
                 expression { return params['Dropbox'] }
@@ -574,6 +584,11 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
+		stage('Testing-4') {
+			parallel {
 		stage('Testing-GreenAPI') {
             when {
                 expression { return params['GreenAPI'] }
@@ -704,6 +719,11 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
+		stage('Testing-5') {
+			parallel {
 		stage('Testing-Janx') {
             when {
                 expression { return params['Janx'] }
