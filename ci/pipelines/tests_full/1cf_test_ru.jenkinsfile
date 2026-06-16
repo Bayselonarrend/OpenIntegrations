@@ -7,8 +7,7 @@ def runCommand(String command) {
 }
 
 def vrunnerLogIndicatesFailure(String logContent) {
-    return logContent.contains('Ошибка HTTP при обращении к серверу')
-        || logContent.contains('Не могу установить соединение')
+    return (logContent.contains('Ошибка HTTP при обращении к серверу') || logContent.contains('Не могу установить соединение'))
 }
 
 def echoVrunnerLog(String libraryName, String logFile) {
@@ -25,7 +24,7 @@ def echoVrunnerLog(String libraryName, String logFile) {
 
 def stopIbsrv() {
     // убиваем только ibsrv, слушающий нужный порт
-    bat(script: "@echo off\r\nfor /f \"tokens=5\" %a in ('netstat -aon ^| findstr :8314 ^| findstr LISTENING') do taskkill /F /PID %a 2>nul", returnStatus: true)
+    bat(script: "@echo off\r\nfor /f \"tokens=5\" %%a in ('netstat -aon ^| findstr :8314 ^| findstr LISTENING') do taskkill /F /PID %%a 2>nul", returnStatus: true)
 }
 
 def startIbsrv() {
