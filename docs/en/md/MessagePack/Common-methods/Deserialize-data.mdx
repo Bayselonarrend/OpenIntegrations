@@ -72,6 +72,22 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint msgpack DeserializeData \
+              --data "/tmp/3hmehfw4.etb"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint msgpack DeserializeData ^
+              --data "/tmp/3hmehfw4.etb"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

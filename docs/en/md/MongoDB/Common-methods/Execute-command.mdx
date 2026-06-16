@@ -70,19 +70,23 @@ import Admonition from '@theme/Admonition';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mongodb ExecuteCommand \
               --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
               --comm "listDatabases" \
-              --data "/tmp/t4qow4nl.ioj.json"
+              --data "{}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mongodb ExecuteCommand ^
               --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
               --comm "listDatabases" ^
-              --data "/tmp/t4qow4nl.ioj.json"
+              --data "{}"
         ```
     </TabItem>
 </Tabs>

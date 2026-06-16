@@ -55,6 +55,24 @@ An error during code compilation will throw an exception
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint lua CompileCodeFromString \
+              --lua "Lua54" \
+              --code "function mul(a, b) return a * b + bonus end"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint lua CompileCodeFromString ^
+              --lua "Lua54" ^
+              --code "function mul(a, b) return a * b + bonus end"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

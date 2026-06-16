@@ -67,6 +67,34 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint lua CallByteCodeFunction \
+              --lua "Lua54" \
+              --code "/tmp/pt2vanuj.wzr" \
+              --func "mul" \
+              --params "['6','7']" \
+              --globals "{'bonus':'2'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint lua CallByteCodeFunction ^
+              --lua "Lua54" ^
+              --code "/tmp/pt2vanuj.wzr" ^
+              --func "mul" ^
+              --params "['6','7']" ^
+              --globals "{'bonus':'2'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
