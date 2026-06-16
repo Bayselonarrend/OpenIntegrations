@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"D:/OneScript/vrunner.bat\" run --ibsrv --nocacheuse --ibconnection \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_ru\"\";\" --command \"RunUnitTests=${configPath}\"")
+            runCommand("\"D:/OneScript/bin/vrunner.bat\" run --ibsrv --nocacheuse --ibconnection \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_ru\"\";\" --command \"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
