@@ -41,7 +41,7 @@
    },
    "vrunnerPath": {
     "description": "vanessa-runner (vrunner) executable path",
-    "value": "D:/OneScript/vrunner.bat"
+    "value": "D:/OneScript/bin/vrunner.bat"
    },
    "osPath": {
     "description": "OneScript exe path",
