@@ -6,15 +6,37 @@ def runCommand(String command) {
     }
 }
 
+def echoOneCLog(String libraryName) {
+    def logFile = "./test_results/${libraryName}.1c.log"
+    if (fileExists(logFile)) {
+        echo "=== 1C log (${libraryName}) ==="
+        echo readFile(logFile)
+        echo "=============================="
+        return
+    }
+    echo "WARNING: 1C log file not found: ${logFile}"
+}
+
+def stopOneCClients() {
+    echo 'Stopping lingering 1C client processes (session 0)...'
+    powershell(returnStatus: true, script: 'Get-Process -Name 1cv8,1cv8c -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq 0 } | Stop-Process -Force -ErrorAction SilentlyContinue')
+}
+
 def runLibraryTest(String libraryName, String configPath) {
-    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            runCommand("\"%2\" /IBConnectionString \"Srvr=\"\"%3\"\";Ref=\"\"%4\"\";\" /C\"RunUnitTests=${configPath}\"")
-        
-            timeout(time: 60, unit: 'MINUTES') {
-                waitUntil {
-                    fileExists "./test_results/${libraryName}.code"
+            def logFile = ".\\test_results\\${libraryName}.1c.log"
+            runCommand("\"%2\" /IBConnectionString \"Srvr=\"\"%3\"\";Ref=\"\"%4\"\";\" /DisableStartupDialogs /DisableStartupMessages /Out\"${logFile}\" -NoTruncate /C\"RunUnitTests=${configPath}\"")
+
+            try {
+                timeout(time: 60, unit: 'MINUTES') {
+                    waitUntil {
+                        fileExists "./test_results/${libraryName}.code"
+                    }
                 }
+            } catch (Exception ignored) {
+                echoOneCLog(libraryName)
+                error "Test result file not found for ${libraryName}"
             }
 
             if (fileExists("./test_results/${libraryName}.report")) {
@@ -29,6 +51,7 @@ def runLibraryTest(String libraryName, String configPath) {
             def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
             echo "Exit code for ${libraryName}: ${exitCode}"
             if (exitCode != "0") {
+                echoOneCLog(libraryName)
                 error "Tests ${libraryName} failed with exit code: ${exitCode}"
             }
         }
@@ -81,9 +104,12 @@ pipeline {
 	post{
 		always{
 			script {
-				catchError() {   
+				catchError() {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
-			    }	
+			    }
+				catchError() {
+				    stopOneCClients()
+				}
 			}
 		}
 	}
