@@ -6,63 +6,15 @@ def runCommand(String command) {
     }
 }
 
-def vrunnerLogIndicatesFailure(String logContent) {
-    return (logContent.contains('Ошибка HTTP при обращении к серверу') || logContent.contains('Не могу установить соединение'))
-}
-
-def echoVrunnerLog(String libraryName, String logFile) {
-    if (fileExists(logFile)) {
-        def logContent = readFile(logFile)
-        echo "=== vrunner log (${libraryName}) ==="
-        echo logContent
-        echo "===================================="
-        return logContent
-    }
-    echo "WARNING: vrunner log file not found: ${logFile}"
-    return ''
-}
-
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            def logFile = "./test_results/${libraryName}.vrunner.log"
-            def codeFile = "./test_results/${libraryName}.code"
-            def vrunnerCmd = "\"%2\" run enterprise --nocacheuse --ibconnection /F%5OpenIntegrationsIB_%3 --command \"RunUnitTests=${configPath}\""
+            runCommand("\"%2\" /IBConnectionString \"File=\"\"%5OpenIntegrationsIB_%3\"\";\" /C\"RunUnitTests=${configPath}\"")
 
-            echo "=== Starting ${libraryName} tests ==="
-            echo "Command: ${vrunnerCmd}"
-
-            def exitCode = bat(
-                script: "chcp 65001\r\n${vrunnerCmd}",
-                returnStatus: true
-            )
-
-            def logContent = fileExists(logFile) ? echoVrunnerLog(libraryName, logFile) : ''
-
-            if (vrunnerLogIndicatesFailure(logContent)) {
-                error "vrunner failed for ${libraryName}: see log above"
-            }
-
-            if (exitCode != 0) {
-                error "vrunner exited with code ${exitCode} for ${libraryName}"
-            }
-
-            if (!fileExists(codeFile)) {
-                try {
-                    timeout(time: 5, unit: 'MINUTES') {
-                        waitUntil(quiet: true, initialRecurrencePeriod: 3) {
-                            fileExists(codeFile)
-                        }
-                    }
-                } catch (Exception ignored) {
-                    echoVrunnerLog(libraryName, logFile)
-                    error "Test result file not found for ${libraryName} after vrunner completed"
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
                 }
-            }
-
-            if (!fileExists(codeFile)) {
-                echoVrunnerLog(libraryName, logFile)
-                error "Test result file not found for ${libraryName}"
             }
 
             if (fileExists("./test_results/${libraryName}.report")) {
@@ -74,10 +26,10 @@ def runLibraryTest(String libraryName, String configPath) {
                 echo "WARNING: ${libraryName}.report file not found"
             }
 
-            def testExitCode = readFile(codeFile).trim().replaceAll("[^0-9]", "")
-            echo "Exit code for ${libraryName}: ${testExitCode}"
-            if (testExitCode != "0") {
-                error "Tests ${libraryName} failed with exit code: ${testExitCode}"
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
             }
         }
     }
