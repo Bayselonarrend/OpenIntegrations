@@ -6,24 +6,47 @@ def runCommand(String command) {
     }
 }
 
-def vrunnerLogIndicatesFailure(String logContent) {
-    return (logContent.contains('Ошибка HTTP при обращении к серверу') || logContent.contains('Не могу установить соединение'))
-}
-
-def vrunnerLogIndicatesLicenseLimit(String logContent) {
-    return logContent.contains('Операция не может быть выполнена с текущим составом лицензий')
-}
-
-def echoVrunnerLog(String libraryName, String logFile) {
-    if (fileExists(logFile)) {
-        def logContent = readFile(logFile)
-        echo "=== vrunner log (${libraryName}) ==="
-        echo logContent
-        echo "===================================="
-        return logContent
+def vrunnerLogHasPattern(String logFile, String pattern) {
+    if (!fileExists(logFile)) {
+        return false
     }
-    echo "WARNING: vrunner log file not found: ${logFile}"
-    return ''
+
+    def psPath = logFile.replace("'", "''")
+    def psPattern = pattern.replace("'", "''")
+
+    return bat(
+        script: "powershell -NoProfile -Command \"if (Select-String -Path '${psPath}' -SimpleMatch -Pattern '${psPattern}' -Encoding UTF8 -Quiet) { exit 0 } else { exit 1 }\"",
+        returnStatus: true
+    ) == 0
+}
+
+def vrunnerLogIndicatesFailure(String logFile) {
+    return vrunnerLogHasPattern(logFile, 'Ошибка HTTP при обращении к серверу')
+        || vrunnerLogHasPattern(logFile, 'Не могу установить соединение')
+}
+
+def vrunnerLogIndicatesLicenseLimit(String logFile) {
+    if (vrunnerLogHasPattern(logFile, 'Операция не может быть выполнена с текущим составом лицензий')) {
+        return true
+    }
+
+    if (vrunnerLogHasPattern(logFile, 'Сеанс отсутствует или удален')) {
+        return true
+    }
+
+    def enterpriseStarted = vrunnerLogHasPattern(logFile, 'Выполняю команду/действие в режиме 1С:Предприятие')
+    def enterpriseFinished = vrunnerLogHasPattern(logFile, '1С:Предприятие завершено')
+    def hasPlatformOutput = vrunnerLogHasPattern(logFile, 'Вывод платформы:')
+
+    return enterpriseStarted && enterpriseFinished && !hasPlatformOutput
+}
+
+def noteVrunnerLog(String libraryName, String logFile) {
+    if (fileExists(logFile)) {
+        echo "vrunner log for ${libraryName}: ${logFile} (file kept on agent, not loaded into Jenkins console)"
+    } else {
+        echo "WARNING: vrunner log file not found: ${logFile}"
+    }
 }
 
 def runLibraryTest(String libraryName, String configPath) {
@@ -34,7 +57,6 @@ def runLibraryTest(String libraryName, String configPath) {
             def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_ru --command \"RunUnitTests=${configPath}\""
             def maxLaunchAttempts = 60
             def exitCode = 0
-            def logContent = ''
             def licenseLimited = false
 
             echo "=== Starting ${libraryName} tests ==="
@@ -42,7 +64,7 @@ def runLibraryTest(String libraryName, String configPath) {
 
             for (int attempt = 1; attempt <= maxLaunchAttempts; attempt++) {
                 if (attempt > 1) {
-                    echo "${libraryName}: retry ${attempt}/${maxLaunchAttempts} after 60s pause (license limit in vrunner log)"
+                    echo "${libraryName}: retry ${attempt}/${maxLaunchAttempts} after 60s pause (license/session issue in vrunner log)"
                     sleep(time: 60, unit: 'SECONDS')
                 } else {
                     echo "${libraryName}: launch attempt 1/${maxLaunchAttempts}"
@@ -53,25 +75,24 @@ def runLibraryTest(String libraryName, String configPath) {
                     returnStatus: true
                 )
 
-                logContent = fileExists(logFile) ? readFile(logFile) : ''
-                echoVrunnerLog(libraryName, logFile)
+                noteVrunnerLog(libraryName, logFile)
 
-                licenseLimited = vrunnerLogIndicatesLicenseLimit(logContent)
+                licenseLimited = vrunnerLogIndicatesLicenseLimit(logFile)
 
                 if (!licenseLimited) {
-                    echo "${libraryName}: vrunner completed without license limit on attempt ${attempt}"
+                    echo "${libraryName}: vrunner log looks healthy on attempt ${attempt}"
                     break
                 }
 
-                echo "${libraryName}: license limit detected on attempt ${attempt}"
+                echo "${libraryName}: license/session issue detected on attempt ${attempt}"
             }
 
             if (licenseLimited) {
-                error "${libraryName}: vrunner blocked by license limit after ${maxLaunchAttempts} attempts"
+                error "${libraryName}: vrunner blocked by license/session issue after ${maxLaunchAttempts} attempts"
             }
 
-            if (vrunnerLogIndicatesFailure(logContent)) {
-                error "vrunner failed for ${libraryName}: see log above"
+            if (vrunnerLogIndicatesFailure(logFile)) {
+                error "vrunner failed for ${libraryName}: see ${logFile} on agent"
             }
 
             if (exitCode != 0) {
@@ -86,13 +107,13 @@ def runLibraryTest(String libraryName, String configPath) {
                         }
                     }
                 } catch (Exception ignored) {
-                    echoVrunnerLog(libraryName, logFile)
+                    noteVrunnerLog(libraryName, logFile)
                     error "Test result file not found for ${libraryName} after vrunner completed"
                 }
             }
 
             if (!fileExists(codeFile)) {
-                echoVrunnerLog(libraryName, logFile)
+                noteVrunnerLog(libraryName, logFile)
                 error "Test result file not found for ${libraryName}"
             }
 
