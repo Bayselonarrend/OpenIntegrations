@@ -37,8 +37,8 @@ def waitForIbsrv() {
 def startIbsrv() {
     echo 'Stopping previous ibsrv on port %7 (if any)...'
     stopIbsrv()
-    echo 'Starting ibsrv: %6 --data=%5OpenIntegrationsIB_%3 --disable-direct --db-path=./ -p %7'
-    powershell(returnStatus: true, script: 'Start-Process -FilePath "%6" -ArgumentList "--data=%5OpenIntegrationsIB_%3","--disable-direct","--db-path=./","-p","%7" -WindowStyle Hidden')
+    echo 'Starting ibsrv: %6 --data=%5OpenIntegrationsIB_%3 --db-path=./ --direct-regport 8341 --log-data=D:/IBSRV -p %7'
+    powershell(returnStatus: true, script: 'Start-Process -FilePath "%6" -ArgumentList "--data=%5OpenIntegrationsIB_%3","--db-path=./","--direct-regport","8341","--log-data=D:/IBSRV","-p","%7" -WindowStyle Hidden')
     echo 'Waiting for ibsrv port %7...'
     waitForIbsrv()
     echo 'ibsrv is ready, warmup pause before tests...'
