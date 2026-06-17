@@ -6,36 +6,120 @@ def runCommand(String command) {
     }
 }
 
-def echoOneCLog(String libraryName) {
-    def logFile = "./test_results/${libraryName}.1c.log"
-    if (fileExists(logFile)) {
-        echo "=== 1C log (${libraryName}) ==="
-        echo readFile(logFile)
-        echo "=============================="
-        return
+def vrunnerLogHasPattern(String logFile, String pattern) {
+    if (!fileExists(logFile)) {
+        return false
     }
-    echo "WARNING: 1C log file not found: ${logFile}"
+
+    def psPath = logFile.replace("'", "''")
+    def psPattern = pattern.replace("'", "''")
+
+    return bat(
+        script: "powershell -NoProfile -Command \"if (Select-String -Path '${psPath}' -SimpleMatch -Pattern '${psPattern}' -Encoding UTF8 -Quiet) { exit 0 } else { exit 1 }\"",
+        returnStatus: true
+    ) == 0
 }
 
-def stopOneCClients() {
-    echo 'Stopping lingering 1C client processes (session 0)...'
-    powershell(returnStatus: true, script: 'Get-Process -Name 1cv8,1cv8c -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq 0 } | Stop-Process -Force -ErrorAction SilentlyContinue')
+def vrunnerLogIndicatesFailure(String logFile) {
+    if (vrunnerLogHasPattern(logFile, 'Ошибка HTTP при обращении к серверу')) {
+        return true
+    }
+    return vrunnerLogHasPattern(logFile, 'Не могу установить соединение')
+}
+
+def vrunnerLogIndicatesLicenseLimit(String logFile) {
+    if (vrunnerLogHasPattern(logFile, 'Операция не может быть выполнена с текущим составом лицензий')) {
+        return true
+    }
+
+    if (vrunnerLogHasPattern(logFile, 'Сеанс отсутствует или удален')) {
+        return true
+    }
+
+    def enterpriseStarted = vrunnerLogHasPattern(logFile, 'Выполняю команду/действие в режиме 1С:Предприятие')
+    def enterpriseFinished = vrunnerLogHasPattern(logFile, '1С:Предприятие завершено')
+    def hasPlatformOutput = vrunnerLogHasPattern(logFile, 'Вывод платформы:')
+
+    if (enterpriseStarted && enterpriseFinished && !hasPlatformOutput) {
+        return true
+    }
+
+    return false
+}
+
+def noteVrunnerLog(String libraryName, String logFile) {
+    if (fileExists(logFile)) {
+        echo "vrunner log for ${libraryName}: ${logFile} (file kept on agent, not loaded into Jenkins console)"
+    } else {
+        echo "WARNING: vrunner log file not found: ${logFile}"
+    }
 }
 
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            def logFile = ".\\test_results\\${libraryName}.1c.log"
-            runCommand("\"C:/Program Files/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /DisableStartupDialogs /DisableStartupMessages /Out\"${logFile}\" -NoTruncate /C\"RunUnitTests=${configPath}\"")
+            def logFile = "./test_results/${libraryName}.vrunner.log"
+            def codeFile = "./test_results/${libraryName}.code"
+            def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --nocacheuse --ibconnection /SDEVSRV\OpenIntegrations --command \"RunUnitTests=${configPath}\""
+            def maxLaunchAttempts = 60
+            def exitCode = 0
+            def licenseLimited = false
 
-            try {
-                timeout(time: 60, unit: 'MINUTES') {
-                    waitUntil {
-                        fileExists "./test_results/${libraryName}.code"
-                    }
+            echo "=== Starting ${libraryName} tests ==="
+            echo "Command: ${vrunnerCmd}"
+
+            for (int attempt = 1; attempt <= maxLaunchAttempts; attempt++) {
+                if (attempt > 1) {
+                    echo "${libraryName}: retry ${attempt}/${maxLaunchAttempts} after 60s pause (license/session issue in vrunner log)"
+                    sleep(time: 60, unit: 'SECONDS')
+                } else {
+                    echo "${libraryName}: launch attempt 1/${maxLaunchAttempts}"
                 }
-            } catch (Exception ignored) {
-                echoOneCLog(libraryName)
+
+                exitCode = bat(
+                    script: "chcp 65001 >nul\r\n${vrunnerCmd} > \"${logFile}\" 2>&1",
+                    returnStatus: true
+                )
+
+                noteVrunnerLog(libraryName, logFile)
+
+                licenseLimited = vrunnerLogIndicatesLicenseLimit(logFile)
+
+                if (!licenseLimited) {
+                    echo "${libraryName}: vrunner log looks healthy on attempt ${attempt}"
+                    break
+                }
+
+                echo "${libraryName}: license/session issue detected on attempt ${attempt}"
+            }
+
+            if (licenseLimited) {
+                error "${libraryName}: vrunner blocked by license/session issue after ${maxLaunchAttempts} attempts"
+            }
+
+            if (vrunnerLogIndicatesFailure(logFile)) {
+                error "vrunner failed for ${libraryName}: see ${logFile} on agent"
+            }
+
+            if (exitCode != 0) {
+                error "vrunner exited with code ${exitCode} for ${libraryName}"
+            }
+
+            if (!fileExists(codeFile)) {
+                try {
+                    timeout(time: 5, unit: 'MINUTES') {
+                        waitUntil(quiet: true, initialRecurrencePeriod: 3) {
+                            fileExists(codeFile)
+                        }
+                    }
+                } catch (Exception ignored) {
+                    noteVrunnerLog(libraryName, logFile)
+                    error "Test result file not found for ${libraryName} after vrunner completed"
+                }
+            }
+
+            if (!fileExists(codeFile)) {
+                noteVrunnerLog(libraryName, logFile)
                 error "Test result file not found for ${libraryName}"
             }
 
@@ -48,11 +132,10 @@ def runLibraryTest(String libraryName, String configPath) {
                 echo "WARNING: ${libraryName}.report file not found"
             }
 
-            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
-            echo "Exit code for ${libraryName}: ${exitCode}"
-            if (exitCode != "0") {
-                echoOneCLog(libraryName)
-                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            def testExitCode = readFile(codeFile).trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${testExitCode}"
+            if (testExitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${testExitCode}"
             }
         }
     }
@@ -151,6 +234,8 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing') {
+			parallel {
 		stage('Testing-Telegram') {
             when {
                 expression { return params['Telegram'] }
@@ -697,6 +782,9 @@ pipeline {
 				}
 			}
 		}
+			}
+		}
+
 
 	}
 	post{
@@ -705,9 +793,6 @@ pipeline {
 				catchError() {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
-				catchError() {
-				    stopOneCClients()
-				}
 			}
 		}
 	}

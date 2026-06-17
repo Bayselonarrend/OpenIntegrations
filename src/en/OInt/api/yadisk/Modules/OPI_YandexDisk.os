@@ -152,9 +152,7 @@ Function CreateFolder(Val Token, Val Path) Export
         Return Response;
     EndIf;
 
-    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
-
-    Return Response;
+    Return GetDiskOperationResult(Headers, ResponseURL);
 
 EndFunction
 
@@ -238,9 +236,7 @@ Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = Fal
         Return Response;
     EndIf;
 
-    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
-
-    Return Response;
+    Return GetDiskOperationResult(Headers, ResponseURL);
 
 EndFunction
 
@@ -410,9 +406,7 @@ Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Ex
         Return Response;
     EndIf;
 
-    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
-
-    Return Response;
+    Return GetDiskOperationResult(Headers, ResponseURL);
 
 EndFunction
 
@@ -713,9 +707,7 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
         Return Response;
     EndIf;
 
-    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
-
-    Return Response;
+    Return GetDiskOperationResult(Headers, ResponseURL);
 
 EndFunction
 
@@ -749,7 +741,47 @@ Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess)
         Return Response;
     EndIf;
 
-    Response = OPI_HTTPRequests.Get(ResponseURL, , Headers);
+    Return GetDiskOperationResult(Headers, ResponseURL);
+
+EndFunction
+
+Function GetDiskOperationResult(Headers, OperationURL)
+
+    MaxAttempts = 60;
+    Response    = Undefined;
+
+    For AttemptNumber = 1 To MaxAttempts Do
+
+        Response = OPI_HTTPRequests.Get(OperationURL, , Headers);
+        Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+
+        Status = Undefined;
+
+        If OPI_Tools.CollectionFieldExists(Body, "status", Status) Then
+
+            Status = Lower(String(Status));
+
+            If Status    = "in-progress" Then
+                OPI_Tools.Pause(1);
+            ElsIf Status = "success" Then
+
+                Resource = Undefined;
+
+                If OPI_Tools.CollectionFieldExists(Body, "body", Resource) Then
+                    Return Resource;
+                Else
+                    Return Response;
+                EndIf;
+
+            Else
+                Return Response;
+            EndIf;
+
+        Else
+            Return Response;
+        EndIf;
+
+    EndDo;
 
     Return Response;
 

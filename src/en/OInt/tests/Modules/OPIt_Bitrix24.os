@@ -218,13 +218,60 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetAppStorage(TestParameters);
     Bitrix24_RenameStorage(TestParameters);
     Bitrix24_GetStorage(TestParameters);
+
+    URL       = TestParameters["Bitrix24_URL"];
+    StorageID = 3;
+
+    FileID = OPI_TestDataRetrieval.GetParameter("Bitrix24_HookFileID");
+
+    If ValueIsFilled(FileID) Then
+        OPI_Bitrix24.DeleteFile(URL, FileID);
+    EndIf;
+
+    FileID = OPI_TestDataRetrieval.GetParameter("Bitrix24_FileID");
+
+    If ValueIsFilled(FileID) Then
+        OPI_Bitrix24.DeleteFile(TestParameters["Bitrix24_Domain"], FileID, TestParameters["Bitrix24_Token"]);
+    EndIf;
+
+    FileNames = New Array;
+    FileNames.Add("Picture1.jpg");
+    FileNames.Add("Picture2.jpg");
+    FileNames.Add("New file name.jpg");
+    FileNames.Add("New file name 2.jpg");
+    DeleteStorageFilesByName(TestParameters, FileNames);
+
     Bitrix24_UploadFileToStorage(TestParameters);
     Bitrix24_GetStorageObjects(TestParameters);
     Bitrix24_GetFileInformation(TestParameters);
     Bitrix24_GetFileExternalLink(TestParameters);
+
+    FileNames = New Array;
+    FileNames.Add("New file name.jpg");
+    FileNames.Add("New file name 2.jpg");
+    DeleteStorageFilesByName(TestParameters, FileNames);
+
     Bitrix24_RenameFile(TestParameters);
     Bitrix24_MarkFileAsDeleted(TestParameters);
     Bitrix24_RestoreFile(TestParameters);
+
+    FolderID = OPI_TestDataRetrieval.GetParameter("Bitrix24_HookFolderID");
+
+    If ValueIsFilled(FolderID) Then
+        OPI_Bitrix24.DeleteFolder(URL, FolderID);
+    EndIf;
+
+    FolderID = OPI_TestDataRetrieval.GetParameter("Bitrix24_FolderID");
+
+    If ValueIsFilled(FolderID) Then
+        OPI_Bitrix24.DeleteFolder(TestParameters["Bitrix24_Domain"], FolderID, TestParameters["Bitrix24_Token"]);
+    EndIf;
+
+    DirectoriesName = New Array;
+    DirectoriesName.Add("New catalog");
+    DirectoriesName.Add("New folder 2");
+    DeleteStorageDirectoriesByName(TestParameters, DirectoriesName);
+
     Bitrix24_CreateStorageFolder(TestParameters);
     Bitrix24_RenameFolder(TestParameters);
     Bitrix24_GetFolderInformation(TestParameters);
@@ -562,6 +609,48 @@ EndProcedure
 #EndRegion // Internal
 
 #Region Private
+
+Procedure DeleteStorageFilesByName(TestParameters, FileNames)
+
+    URL       = TestParameters["Bitrix24_URL"];
+    StorageID = 3;
+
+    Entity = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
+
+    If TypeOf(Entity["result"]) = Type("Array") Then
+
+        For Each Element In Entity["result"] Do
+
+            If Element["TYPE"] = "file" And FileNames.Find(Element["NAME"]) <> Undefined Then
+                OPI_Bitrix24.DeleteFile(URL, Element["ID"]);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+EndProcedure
+
+Procedure DeleteStorageDirectoriesByName(TestParameters, DirectoriesName)
+
+    URL       = TestParameters["Bitrix24_URL"];
+    StorageID = 3;
+
+    Entity = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
+
+    If TypeOf(Entity["result"]) = Type("Array") Then
+
+        For Each Element In Entity["result"] Do
+
+            If Element["TYPE"] = "folder" And DirectoriesName.Find(Element["NAME"]) <> Undefined Then
+                OPI_Bitrix24.DeleteFolder(URL, Element["ID"]);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+EndProcedure
 
 #Region AtomicTests
 

@@ -21,8 +21,10 @@ def vrunnerLogHasPattern(String logFile, String pattern) {
 }
 
 def vrunnerLogIndicatesFailure(String logFile) {
-    return vrunnerLogHasPattern(logFile, 'Ошибка HTTP при обращении к серверу')
-        || vrunnerLogHasPattern(logFile, 'Не могу установить соединение')
+    if (vrunnerLogHasPattern(logFile, 'Ошибка HTTP при обращении к серверу')) {
+        return true
+    }
+    return vrunnerLogHasPattern(logFile, 'Не могу установить соединение')
 }
 
 def vrunnerLogIndicatesLicenseLimit(String logFile) {
@@ -38,7 +40,11 @@ def vrunnerLogIndicatesLicenseLimit(String logFile) {
     def enterpriseFinished = vrunnerLogHasPattern(logFile, '1С:Предприятие завершено')
     def hasPlatformOutput = vrunnerLogHasPattern(logFile, 'Вывод платформы:')
 
-    return enterpriseStarted && enterpriseFinished && !hasPlatformOutput
+    if (enterpriseStarted && enterpriseFinished && !hasPlatformOutput) {
+        return true
+    }
+
+    return false
 }
 
 def noteVrunnerLog(String libraryName, String logFile) {

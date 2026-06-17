@@ -1782,6 +1782,18 @@ EndFunction
 Function Check_Telegram_SendContact(Val Result, Val Option, Name = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    If Result.Get("error_code") = 429 Then
+        Return Undefined;
+    EndIf;
+
+    ErrorDescription = Result.Get("description");
+
+    If TypeOf(ErrorDescription) = Type("String")
+        And StrFind(Upper(ErrorDescription), "TOO MANY REQUESTS") > 0 Then
+        Return Undefined;
+    EndIf;
+
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["result"]["contact"]["first_name"]).Равно(Name);
@@ -3843,6 +3855,11 @@ EndFunction
 Function Check_Slack_GetUserList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    If Result.Get("error") = "ratelimited" Then
+        Return Undefined;
+    EndIf;
+
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["members"]).ИмеетТип("Array");
 
@@ -17180,7 +17197,7 @@ Procedure CreateLaunchFile(Val UUID)
     DataStructure.Insert("tests" , New Array);
     DataStructure.Insert("items" , New Map);
 
-    WriteLaunchFile(DataStructure);
+    WriteParameter("RPortal_MainLaunch", OPI_Tools.JSONString(DataStructure));
 
 EndProcedure
 
