@@ -22,29 +22,6 @@ def echoVrunnerLog(String libraryName, String logFile) {
     return ''
 }
 
-def stopIbsrv() {
-    powershell(returnStatus: true, script: 'Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')
-}
-
-def waitForIbsrv() {
-    timeout(time: 2, unit: 'MINUTES') {
-        waitUntil(quiet: true, initialRecurrencePeriod: 2) {
-            return powershell(returnStatus: true, script: 'if (Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }') == 0
-        }
-    }
-}
-
-def startIbsrv() {
-    echo 'Stopping previous ibsrv on port 8314 (if any)...'
-    stopIbsrv()
-    echo 'Starting ibsrv: C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe --data=D:/TEST_IB/OpenIntegrationsIB_ru --db-path=./ --direct-regport 8341 --log-data=D:/IBSRV -p 8314'
-    powershell(returnStatus: true, script: 'Start-Process -FilePath "C:/Program Files/1cv8/8.3.26.1656/bin/ibsrv.exe" -ArgumentList "--data=D:/TEST_IB/OpenIntegrationsIB_ru","--db-path=./","--direct-regport","8341","--log-data=D:/IBSRV","-p","8314" -WindowStyle Hidden')
-    echo 'Waiting for ibsrv port 8314...'
-    waitForIbsrv()
-    echo 'ibsrv is ready, warmup pause before tests...'
-    sleep(time: 15, unit: 'SECONDS')
-}
-
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
@@ -146,14 +123,6 @@ pipeline {
 				}
 		}
 
-		stage('Start ibsrv') {
-			steps {
-				script {
-					startIbsrv()
-				}
-			}
-		}
-
 		stage('Testing-Core') {
             when {
                 expression { return params['Core'] }
@@ -173,9 +142,6 @@ pipeline {
 				catchError() {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
-				catchError() {
-				    stopIbsrv()
-				}
 			}
 		}
 	}
