@@ -55,6 +55,12 @@
                 "description_en": "Added `sha256_password` authentication support"
             },
             {
+                "lib": "YandexDisk",
+                "icon": "media/YandexDisk.png",
+                "description_ru": "Добавлено ожидание завершения асинхронных операций API при копировании, перемещении, создании папок и публикации объектов",
+                "description_en": "Added polling for API async operation completion when copying, moving, creating folders, and publishing objects"
+            },
+            {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Переработан обмен данными между внешними компонентами и 1С/OS хостом",
