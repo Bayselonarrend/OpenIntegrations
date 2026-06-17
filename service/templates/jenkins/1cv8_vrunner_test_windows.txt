@@ -60,7 +60,8 @@ def runLibraryTest(String libraryName, String configPath) {
         script {
             def logFile = "./test_results/${libraryName}.vrunner.log"
             def codeFile = "./test_results/${libraryName}.code"
-            def vrunnerCmd = "\"%2\" run enterprise --nocacheuse --ibconnection %3 --command \"RunUnitTests=${configPath}\""
+            def ibConnection = '%3'
+            def vrunnerCmd = "\"%2\" run enterprise --nocacheuse --ibconnection ${ibConnection} --command \"RunUnitTests=${configPath}\""
             def maxLaunchAttempts = 60
             def exitCode = 0
             def licenseLimited = false
