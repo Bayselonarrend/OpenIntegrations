@@ -1,4 +1,4 @@
-﻿def runCommand(String command) {
+def runCommand(String command) {
     if (isUnix()) {
         sh(script: command)
     } else {
