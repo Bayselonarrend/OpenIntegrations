@@ -50,7 +50,7 @@ def runLibraryTest(String libraryName, String configPath) {
         script {
             def logFile = "./test_results/${libraryName}.vrunner.log"
             def codeFile = "./test_results/${libraryName}.code"
-            def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --ibsrv --ibsrv-port 8341 --ibsrv-attach --ibsrv-direct --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_ru --command \"RunUnitTests=${configPath}\""
+            def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_ru --command \"RunUnitTests=${configPath}\""
 
             echo "=== Starting ${libraryName} tests ==="
             echo "Command: ${vrunnerCmd}"
