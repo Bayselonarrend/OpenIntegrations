@@ -6,24 +6,24 @@ def runCommand(String command) {
     }
 }
 
-def echoOneCLog(String libraryName) {
-    def logFile = "./test_results/${libraryName}.1c.log"
+def vrunnerLogIndicatesFailure(String logContent) {
+    return (logContent.contains('Ошибка HTTP при обращении к серверу') || logContent.contains('Не могу установить соединение'))
+}
+
+def echoVrunnerLog(String libraryName, String logFile) {
     if (fileExists(logFile)) {
-        echo "=== 1C log (${libraryName}) ==="
-        echo readFile(logFile)
-        echo "=============================="
-        return
+        def logContent = readFile(logFile)
+        echo "=== vrunner log (${libraryName}) ==="
+        echo logContent
+        echo "===================================="
+        return logContent
     }
-    echo "WARNING: 1C log file not found: ${logFile}"
+    echo "WARNING: vrunner log file not found: ${logFile}"
+    return ''
 }
 
 def stopIbsrv() {
     powershell(returnStatus: true, script: 'Get-NetTCPConnection -LocalPort 8314 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')
-}
-
-def stopOneCClients() {
-    echo 'Stopping lingering 1C client processes (session 0)...'
-    powershell(returnStatus: true, script: 'Get-Process -Name 1cv8,1cv8c -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -eq 0 } | Stop-Process -Force -ErrorAction SilentlyContinue')
 }
 
 def waitForIbsrv() {
@@ -48,17 +48,43 @@ def startIbsrv() {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            def logFile = ".\\test_results\\${libraryName}.1c.log"
-            runCommand("\"C:/Program Files/1cv8/8.3.26.1656/bin/1cv8c.exe\" /WS\"http://localhost:8314\" /DisableStartupDialogs /DisableStartupMessages /Out\"${logFile}\" -NoTruncate /C\"RunUnitTests=${configPath}\"")
+            def logFile = "./test_results/${libraryName}.vrunner.log"
+            def codeFile = "./test_results/${libraryName}.code"
+            def vrunnerCmd = "\"D:/OneScript/bin/vrunner.bat\" run enterprise --ibsrv --nocacheuse --ibconnection /FD:/TEST_IB/OpenIntegrationsIB_ru --command \"RunUnitTests=${configPath}\""
 
-            try {
-                timeout(time: 60, unit: 'MINUTES') {
-                    waitUntil {
-                        fileExists "./test_results/${libraryName}.code"
+            echo "=== Starting ${libraryName} tests ==="
+            echo "Command: ${vrunnerCmd}"
+
+            def exitCode = bat(
+                script: "chcp 65001\r\n${vrunnerCmd}",
+                returnStatus: true
+            )
+
+            def logContent = fileExists(logFile) ? echoVrunnerLog(libraryName, logFile) : ''
+
+            if (vrunnerLogIndicatesFailure(logContent)) {
+                error "vrunner failed for ${libraryName}: see log above"
+            }
+
+            if (exitCode != 0) {
+                error "vrunner exited with code ${exitCode} for ${libraryName}"
+            }
+
+            if (!fileExists(codeFile)) {
+                try {
+                    timeout(time: 5, unit: 'MINUTES') {
+                        waitUntil(quiet: true, initialRecurrencePeriod: 3) {
+                            fileExists(codeFile)
+                        }
                     }
+                } catch (Exception ignored) {
+                    echoVrunnerLog(libraryName, logFile)
+                    error "Test result file not found for ${libraryName} after vrunner completed"
                 }
-            } catch (Exception ignored) {
-                echoOneCLog(libraryName)
+            }
+
+            if (!fileExists(codeFile)) {
+                echoVrunnerLog(libraryName, logFile)
                 error "Test result file not found for ${libraryName}"
             }
 
@@ -71,11 +97,10 @@ def runLibraryTest(String libraryName, String configPath) {
                 echo "WARNING: ${libraryName}.report file not found"
             }
 
-            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
-            echo "Exit code for ${libraryName}: ${exitCode}"
-            if (exitCode != "0") {
-                echoOneCLog(libraryName)
-                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            def testExitCode = readFile(codeFile).trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${testExitCode}"
+            if (testExitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${testExitCode}"
             }
         }
     }
@@ -182,7 +207,7 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-1') {
+		stage('Testing') {
 			parallel {
 		stage('Testing-Telegram') {
             when {
@@ -314,11 +339,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-2') {
-			parallel {
 		stage('Testing-MongoDB') {
             when {
                 expression { return params['MongoDB'] }
@@ -449,11 +469,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-3') {
-			parallel {
 		stage('Testing-Dropbox') {
             when {
                 expression { return params['Dropbox'] }
@@ -584,11 +599,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-4') {
-			parallel {
 		stage('Testing-GreenAPI') {
             when {
                 expression { return params['GreenAPI'] }
@@ -719,11 +729,6 @@ pipeline {
 				}
 			}
 		}
-			}
-		}
-
-		stage('Testing-5') {
-			parallel {
 		stage('Testing-Janx') {
             when {
                 expression { return params['Janx'] }
@@ -761,9 +766,6 @@ pipeline {
 				catchError() {
 				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
-				catchError() {
-				    stopOneCClients()
-				}
 				catchError() {
 				    stopIbsrv()
 				}
