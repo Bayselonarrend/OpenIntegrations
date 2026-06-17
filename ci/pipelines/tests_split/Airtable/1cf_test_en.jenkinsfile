@@ -9,7 +9,31 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            runCommand("\"C:/Program Files/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_en\"\";\" /C\"RunUnitTests=${configPath}\"")
+            def oneCCommand = "\"C:/Program Files/1cv8/8.3.26.1656/bin/1cv8c.exe\" /IBConnectionString \"File=\"\"D:/TEST_IB/OpenIntegrationsIB_en\"\";\" /C\"RunUnitTests=${configPath}\""
+            def maxLaunchAttempts = 60
+            def launchExitCode = 1
+
+            for (int attempt = 1; attempt <= maxLaunchAttempts; attempt++) {
+                if (attempt > 1) {
+                    echo "${libraryName}: retry ${attempt}/${maxLaunchAttempts} after 60s pause (previous exit code: ${launchExitCode})"
+                    sleep(time: 60, unit: 'SECONDS')
+                } else {
+                    echo "${libraryName}: launch attempt 1/${maxLaunchAttempts}"
+                }
+
+                launchExitCode = bat(script: oneCCommand, returnStatus: true)
+
+                if (launchExitCode == 0) {
+                    echo "${libraryName}: 1cv8c exited with code 0 on attempt ${attempt}"
+                    break
+                }
+
+                echo "${libraryName}: 1cv8c failed with exit code ${launchExitCode} on attempt ${attempt}"
+            }
+
+            if (launchExitCode != 0) {
+                error "${libraryName}: 1cv8c failed after ${maxLaunchAttempts} launch attempts, last exit code: ${launchExitCode}"
+            }
 
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
