@@ -1,16 +1,16 @@
 ﻿{
  "records": [
   {
-   "id": "recjWBC8bhMTwn5kM",
-   "createdTime": "2026-06-15T18:36:10Z",
+   "id": "recHHj9JpmzcBD2vg",
+   "createdTime": "2026-06-18T14:31:58Z",
    "fields": {
     "Строковое": "Привет\n",
     "Номер": 10
    }
   },
   {
-   "id": "recqROj6BtawJiLxt",
-   "createdTime": "2026-06-15T18:36:10Z",
+   "id": "recsg4htGgJFpkwcR",
+   "createdTime": "2026-06-18T14:31:58Z",
    "fields": {
     "Строковое": "Привет\n",
     "Номер": 10

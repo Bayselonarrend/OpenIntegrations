@@ -1,5 +1,5 @@
 ﻿{
- "projectId": 246,
+ "projectId": 324,
  "projectName": "testproject",
  "entryType": "INTERNAL",
  "configuration": {
@@ -93,5 +93,5 @@
  "integrations": [],
  "organization": null,
  "allocatedStorage": 0,
- "creationDate": "2026-06-15T18:36:28.015077Z"
+ "creationDate": "2026-06-18T14:32:06.745602Z"
 }

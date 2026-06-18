@@ -2,13 +2,13 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB064C3AE35A769E46110",
+  "idMessage": "3EB041C3CE86EAE0DEF13A",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781513811,
+  "timestamp": 1781714882,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -17,32 +17,21 @@
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "quotedMessage": {
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    },
-    "stanzaId": "3EB0BEAA54DDF795470234",
-    "participant": "1234567890@c.us"
-   },
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "description": "",
-    "title": "",
-    "previewType": "None",
-    "jpegThumbnail": "",
-    "forwardingScore": 0,
-    "isForwarded": false,
-    "stanzaId": "3EB0BEAA54DDF795470234",
-    "participant": "1234567890@c.us"
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "Какой ваш любимый цвет?",
+    "options": [
+     {
+      "optionName": "Красный"
+     },
+     {
+      "optionName": "Желтый"
+     },
+     {
+      "optionName": "Зеленый"
+     }
+    ],
+    "multipleAnswers": true
    }
   }
  }

@@ -1,1 +1,69 @@
-﻿[]
+﻿[
+ {
+  "messageID": "3EB0FF95D2E17F48FC9533",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB0EEF99C0A087AFDEAA2",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB005F3D4A7DB9751F3A1",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0A0FC5D94CFA43FA52D",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB005F3D4A7DB9751F3A1",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0E592CC7E878956329C"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0912AA64B5B89D3F478"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB09704B1AD8EC0E972D6",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0912AA64B5B89D3F478",
+   "message": "Новый текст сообщения",
+   "linkPreview": true,
+   "typingTime": null
+  }
+ }
+]
