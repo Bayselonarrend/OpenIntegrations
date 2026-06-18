@@ -1,11 +1,11 @@
 ﻿{
  "entity": {
-  "uuid": "dfa3e052-e912-4d42-b83e-b640cccc17db",
+  "uuid": "07d022b3-7a71-4c38-9c29-e957754c9164",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1109910057",
-  "number": "18aa8e9d-c71e-4954-8684-f616874a3dac",
+  "cdek_number": "1109910090",
+  "number": "e8eed9b5-2175-4330-a3f9-28c6288e47a0",
   "tariff_code": 139,
   "comment": "New order",
   "items_cost_currency": "RUB",
@@ -74,16 +74,6 @@
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
     "parameter": "10",
     "sum": 500,
@@ -92,12 +82,22 @@
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000004728862",
+    "barcode": "000004728895",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -123,21 +123,21 @@
       "cost": 300
      }
     ],
-    "package_id": "9a186b5b-21de-47a4-957a-4b032cff5fa7"
+    "package_id": "13dac07b-126f-469e-9ec7-6b9496beb4c6"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-06-18T19:39:34+03:00",
+    "date_time": "2026-06-18T17:25:26+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-06-18T19:39:33+03:00",
+    "date_time": "2026-06-18T17:25:25+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -158,9 +158,9 @@
  },
  "requests": [
   {
-   "request_uuid": "9d2a212b-be71-494e-ba1f-17abfc9a3e15",
+   "request_uuid": "a004534d-2ca9-48d9-bb72-faef441a8ded",
    "type": "CREATE",
-   "date_time": "2026-06-18T19:39:34+03:00",
+   "date_time": "2026-06-18T17:25:26+00:00",
    "state": "SUCCESSFUL"
   }
  ],

@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 17
+    "comments": 19
    },
    "period_from": 1781740800,
    "period_to": 1781827199,
@@ -38,7 +38,7 @@
      },
      {
       "value": "45-100",
-      "count": 12
+      "count": 13
      }
     ],
     "cities": [
@@ -86,18 +86,23 @@
       "count": 1,
       "name": "Энгельс",
       "value": 1469
+     },
+     {
+      "count": 1,
+      "name": "Тольятти",
+      "value": 143
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 21,
+      "count": 22,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 20,
-    "reach": 21,
+    "mobile_reach": 21,
+    "reach": 22,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -106,7 +111,7 @@
      },
      {
       "value": "m",
-      "count": 5
+      "count": 6
      }
     ],
     "sex_age": [
@@ -172,7 +177,7 @@
      },
      {
       "value": "m;45-100",
-      "count": 2
+      "count": 3
      }
     ]
    },

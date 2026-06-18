@@ -2,13 +2,13 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0832C5AB0AD76A051F9",
+  "idMessage": "3EB0C42270608639BA37BA",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781714925,
+  "timestamp": 1781720686,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -20,9 +20,9 @@
    "typeMessage": "quotedMessage",
    "quotedMessage": {
     "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
+    "textMessage": "New message",
     "extendedTextMessage": {
-     "text": "Новое сообщение",
+     "text": "New message",
      "description": "",
      "title": "",
      "previewType": "None",
@@ -30,18 +30,18 @@
      "forwardingScore": 0,
      "isForwarded": false
     },
-    "stanzaId": "3EB04718D43B9D220831F1",
+    "stanzaId": "3EB071E5D0CE10C7AD23AF",
     "participant": "1234567890@c.us"
    },
    "extendedTextMessageData": {
-    "text": "Новое сообщение",
+    "text": "New message",
     "description": "",
     "title": "",
     "previewType": "None",
     "jpegThumbnail": "",
     "forwardingScore": 0,
     "isForwarded": false,
-    "stanzaId": "3EB04718D43B9D220831F1",
+    "stanzaId": "3EB071E5D0CE10C7AD23AF",
     "participant": "1234567890@c.us"
    }
   }
