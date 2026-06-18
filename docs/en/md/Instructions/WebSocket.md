@@ -14,6 +14,13 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 This section covers the WebSocket library for 1C:Enterprise, OneScript, and CLI. It provides an overview of the main module capabilities and core usage principles.
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 ## Getting Started
 
 WebSocket provides bidirectional communication over a single TCP connection. The library supports two operating modes:

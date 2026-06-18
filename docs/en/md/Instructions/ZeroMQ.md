@@ -14,6 +14,13 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 This section is dedicated to the library for working with ZeroMQ in 1C:Enterprise and OneScript. This page describes all the actions necessary to get started
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 ## Getting Started
 
 ZeroMQ is a high-performance asynchronous messaging library that provides sockets operating over various transports (TCP, IPC, in-process). The library supports several messaging patterns.

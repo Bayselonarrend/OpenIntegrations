@@ -14,6 +14,13 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 This section is dedicated to the library for working with Lua in 1C:Enterprise and OneScript. This page describes all the actions necessary for a full-fledged start of work
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 ## Getting Started
 
 The library allows embedding and executing Lua scripts directly in 1C:Enterprise and OneScript. Two versions of Lua VM are supported:
@@ -21,9 +28,7 @@ The library allows embedding and executing Lua scripts directly in 1C:Enterprise
 - **Lua54** - standard version of Lua 5.4
 - **LuaJIT** - Just-In-Time Lua compiler for enhanced performance
 
-### Creating a Virtual Machine
-
-To start working, you need to create an instance of the Lua virtual machine:
+To reuse the same Lua context (global variables, loaded packages, declared functions), create a VM instance and pass it to subsequent calls:
 
 ```bsl
 // Creating Lua 5.4 VM
@@ -31,32 +36,20 @@ VM = OPI_Lua.СоздатьVM("Lua54");
 
 // Creating LuaJIT VM
 VM = OPI_Lua.СоздатьVM("LuaJIT");
-```
 
-### Executing Lua Code
-
-After creating the VM, you can execute Lua code from a string or file:
-
-```bsl
 // Executing code from a string
 КодLua = "return 2 + 2";
 Результат = OPI_Lua.ВыполнитьКодИзСтроки(VM, КодLua);
 
 // Executing code from a file
 Результат = OPI_Lua.ВыполнитьКодИзФайла(VM, "C:\Scripts\script.lua");
-```
 
-### Calling Lua Functions
-
-You can define functions in Lua and call them with parameters:
-
-```bsl
 // Defining a function
 КодLua = "
-function sum(a, b)
-    return a + b
-end
-";
+ |function sum(a, b)
+ |    return a + b
+ |end
+ |";
 OPI_Lua.ВыполнитьКодИзСтроки(VM, КодLua);
 
 // Calling a function with parameters
@@ -66,6 +59,23 @@ OPI_Lua.ВыполнитьКодИзСтроки(VM, КодLua);
 
 Результат = OPI_Lua.ВызватьФункцию(VM, "sum", Параметры); // Returns 8
 ```
+
+For a one-off call without keeping VM state, use `CallScriptFunction`:
+
+```bsl
+Параметры = Новый Массив;
+Параметры.Добавить(6);
+Параметры.Добавить(7);
+
+Результат = OPI_Lua.ВызватьФункциюСкрипта("Lua54"
+    , "function mul(a, b) return a * b end"
+    , "mul"
+    , Параметры);
+```
+
+:::note
+Errors during Lua code execution cause exceptions in 1C. It is recommended to use the `Try...Except` construct to handle possible errors
+:::
 
 ### Working with Global Variables
 
@@ -86,28 +96,29 @@ You can add Lua modules as packages for reuse:
 ```bsl
 // Adding a package from a string
 КодПакета = "
-local M = {}
-function M.hello(name)
-    return 'Hello, ' .. name
-end
-return M
-";
+ |local M = {}
+ |function M.hello(name)
+ |    return 'Hello, ' .. name
+ |end
+ |return M
+ |";
 OPI_Lua.ДобавитьПакетИзСтроки(VM, "mymodule", КодПакета);
 
 // Adding a package from a file
 OPI_Lua.ДобавитьПакетИзФайла(VM, "mymodule", "C:\Scripts\module.lua");
 
 // Using the package
-КодLua = "
-mymodule = require('mymodule')
-return mymodule.hello('World')
-";
-Результат = OPI_Lua.ВыполнитьКодИзСтроки(VM, КодLua);
+OPI_Lua.ВыполнитьКодИзСтроки(VM, "calc = require('mymodule')");
+
+Параметры = Новый Массив;
+Параметры.Добавить("World");
+
+Результат = OPI_Lua.ВызватьФункцию(VM, "calc.hello", Параметры);
 ```
 
 ### Working with Bytecode
 
-For improved performance, you can pre-compile Lua code to bytecode:
+For improved performance, you can pre-compile Lua code to bytecode. Compilation is also available in CLI; executing compiled bytecode is available only in 1C and OneScript:
 
 ```bsl
 // Compiling code to bytecode
@@ -146,12 +157,8 @@ To clear the virtual machine state, you can perform a restart:
 
 :::important
 Supported data types for exchange between 1C and Lua:
-- Primitive types: string, number, boolean, null
+- Primitive types: string, number, boolean, `Null`
 - Structures and maps (as Lua tables)
 - Arrays (as Lua tables)
 - BinaryData (for transferring binary data)
-:::
-
-:::note
-Errors during Lua code execution cause exceptions in 1C. It is recommended to use the Try...Except construct to handle possible errors
 :::

@@ -15,6 +15,13 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 This section covers the library for working with gRPC in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 
 ## Getting Started
 

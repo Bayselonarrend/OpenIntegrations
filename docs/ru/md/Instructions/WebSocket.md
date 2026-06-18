@@ -14,6 +14,13 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 Этот раздел посвящен библиотеке для работы с WebSocket в 1С:Предприятие, OneScript и CLI. На странице собраны ключевые возможности модуля и базовые принципы его использования.
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">Для реализации некоторых функции в этой библиотеке используется внешняя компонента <br/>
+Пожалуйста, ознакомьтесь с разделом ["О внешних компонентах"](/docs/Start/Component-requirements) перед началом работы</div>
+</div>
+
 ## Начало работы
 
 WebSocket обеспечивает двусторонний обмен данными поверх одного TCP-соединения. В библиотеке доступны два режима работы:
