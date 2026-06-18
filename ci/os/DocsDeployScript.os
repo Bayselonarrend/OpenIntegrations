@@ -61,6 +61,9 @@
 			КаталогХостинга    = ДанныеПроекта.ПолучитьЗначениеНастройкиЛокализации("remoteDocsSrc", Язык);
 
 			ВызовДеплоя = СтрШаблон("rclone sync ""%1"" %2:%3 --progress"
+				+ " --sftp-set-modtime=false"
+				+ " --sftp-disable-concurrent-writes=true"
+				+ " --transfers 4"
 				, КаталогСборки
 				, КонфигурацияRclone
 				, КаталогХостинга);
