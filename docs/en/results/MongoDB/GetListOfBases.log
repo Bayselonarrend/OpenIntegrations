@@ -4,7 +4,7 @@
    {
     "empty": false,
     "name": "admin",
-    "sizeOnDisk": 188416
+    "sizeOnDisk": 225280
    },
    {
     "empty": false,
@@ -23,7 +23,7 @@
    }
   ],
   "ok": 1,
-  "totalSize": 454656,
+  "totalSize": 491520,
   "totalSizeMb": 0
  },
  "result": true

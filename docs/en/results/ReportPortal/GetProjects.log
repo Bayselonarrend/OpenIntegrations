@@ -4,11 +4,11 @@
    "id": 1,
    "projectName": "superadmin_personal",
    "usersQuantity": 1,
-   "launchesQuantity": 125,
+   "launchesQuantity": 151,
    "launchesPerUser": null,
    "uniqueTickets": null,
    "launchesPerWeek": null,
-   "lastRun": "2026-06-15T14:05:58Z",
+   "lastRun": "2026-06-18T16:09:03Z",
    "creationDate": "2026-03-18T09:44:43.417341Z",
    "entryType": "PERSONAL",
    "organization": null
@@ -17,7 +17,7 @@
    "id": 4,
    "projectName": "test",
    "usersQuantity": 2,
-   "launchesQuantity": 5,
+   "launchesQuantity": 17,
    "launchesPerUser": null,
    "uniqueTickets": null,
    "launchesPerWeek": null,
@@ -40,7 +40,7 @@
    "organization": null
   },
   {
-   "id": 236,
+   "id": 332,
    "projectName": "testproject",
    "usersQuantity": 1,
    "launchesQuantity": 0,
@@ -48,7 +48,7 @@
    "uniqueTickets": null,
    "launchesPerWeek": null,
    "lastRun": null,
-   "creationDate": "2026-06-15T14:32:20.554242Z",
+   "creationDate": "2026-06-18T16:41:19.326352Z",
    "entryType": "INTERNAL",
    "organization": null
   }

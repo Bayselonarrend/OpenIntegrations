@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "38082aa7-fc4e-816f-9999-df3a382fa524",
+ "id": "38382aa7-fc4e-8195-abd8-d85331de52c6",
  "cover": null,
  "icon": null,
- "created_time": "2026-06-15T14:30:00Z",
+ "created_time": "2026-06-18T16:39:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-06-15T14:30:00Z",
+ "last_edited_time": "2026-06-18T16:39:00Z",
  "title": [
   {
    "type": "text",
@@ -53,78 +53,22 @@
  ],
  "is_inline": false,
  "properties": {
-  "CreationDate": {
-   "id": "%3EFP%3B",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Status": {
-   "id": "DbIH",
-   "name": "Status",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "feab5ca8-644a-43c1-88c1-0eff03e9f16a",
-      "name": "New",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "b589e96b-e254-485a-8f80-f5a8690107aa",
-      "name": "InProgress",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "9e16f724-d78a-4b4c-be58-db415cd1ee37",
-      "name": "Remote",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
-  "Phone": {
-   "id": "NcvO",
-   "name": "Phone",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Email": {
-   "id": "Wv%3Cc",
-   "name": "Email",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Active": {
-   "id": "%5C%3BbR",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Image": {
-   "id": "b%5CaW",
-   "name": "Image",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
   "User": {
-   "id": "fEH%7D",
+   "id": "%3DbOu",
    "name": "User",
    "description": null,
    "type": "people",
    "people": {}
   },
+  "Phone": {
+   "id": "Bmu%5E",
+   "name": "Phone",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
+  },
   "Number": {
-   "id": "sGmi",
+   "id": "PzM_",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -132,9 +76,65 @@
     "format": "number"
    }
   },
+  "Status": {
+   "id": "__An",
+   "name": "Status",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "0cb1179a-78a7-4a17-ad77-006dc9dc4c4d",
+      "name": "New",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "40907e95-20a2-45b0-b58b-ded1cc9d2488",
+      "name": "InProgress",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "7ab363c3-a3e5-4586-9a99-04436e3e3f2f",
+      "name": "Remote",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
+  "Active": {
+   "id": "b%5D%3Bl",
+   "name": "Active",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "CreationDate": {
+   "id": "bzdZ",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Image": {
+   "id": "jQRH",
+   "name": "Image",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
   "Description": {
-   "id": "wNqC",
+   "id": "s%3E~%3F",
    "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Email": {
+   "id": "s%3FV%3A",
+   "name": "Email",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
@@ -151,9 +151,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://app.notion.com/p/38082aa7fc4e816f9999df3a382fa524",
+ "url": "https://app.notion.com/p/38382aa7fc4e8195abd8d85331de52c6",
  "public_url": null,
  "in_trash": false,
  "archived": false,
- "request_id": "2237d320-5295-4759-829f-bc2dd6033b81"
+ "request_id": "67226117-9eb2-4f18-be88-2a6df49ab31a"
 }
