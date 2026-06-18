@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 18
+    "comments": 22
    },
    "period_from": 1781740800,
    "period_to": 1781827199,
@@ -252,13 +252,13 @@
      },
      {
       "count": 1,
-      "name": "Сердобск",
-      "value": 16746
+      "name": "Первоуральск",
+      "value": 2001
      },
      {
       "count": 1,
-      "name": "Первоуральск",
-      "value": 2001
+      "name": "Сердобск",
+      "value": 16746
      },
      {
       "count": 1,
