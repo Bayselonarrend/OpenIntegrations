@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 13
+    "comments": 18
    },
    "period_from": 1781740800,
    "period_to": 1781827199,
@@ -34,14 +34,24 @@
      },
      {
       "value": "35-45",
-      "count": 3
+      "count": 5
      },
      {
       "value": "45-100",
-      "count": 9
+      "count": 13
      }
     ],
     "cities": [
+     {
+      "count": 2,
+      "name": "Москва",
+      "value": 1
+     },
+     {
+      "count": 2,
+      "name": "Пермь",
+      "value": 110
+     },
      {
       "count": 1,
       "name": "Саранск",
@@ -51,16 +61,6 @@
       "count": 1,
       "name": "Инта",
       "value": 255
-     },
-     {
-      "count": 1,
-      "name": "Пермь",
-      "value": 110
-     },
-     {
-      "count": 1,
-      "name": "Москва",
-      "value": 1
      },
      {
       "count": 1,
@@ -81,27 +81,37 @@
       "count": 1,
       "name": "Кировск",
       "value": 248
+     },
+     {
+      "count": 1,
+      "name": "Энгельс",
+      "value": 1469
+     },
+     {
+      "count": 1,
+      "name": "Тольятти",
+      "value": 143
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 16,
+      "count": 22,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 16,
-    "reach": 16,
+    "mobile_reach": 21,
+    "reach": 22,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 14
+      "count": 16
      },
      {
       "value": "m",
-      "count": 2
+      "count": 6
      }
     ],
     "sex_age": [
@@ -135,7 +145,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 8
+      "count": 10
      },
      {
       "value": "m;12-18",
@@ -163,11 +173,11 @@
      },
      {
       "value": "m;35-45",
-      "count": 0
+      "count": 2
      },
      {
       "value": "m;45-100",
-      "count": 1
+      "count": 3
      }
     ]
    },
@@ -193,7 +203,7 @@
     "age": [
      {
       "value": "12-18",
-      "count": 1
+      "count": 0
      },
      {
       "value": "18-21",
@@ -213,7 +223,7 @@
      },
      {
       "value": "30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "35-45",
@@ -221,24 +231,14 @@
      },
      {
       "value": "45-100",
-      "count": 3
+      "count": 6
      }
     ],
     "cities": [
      {
-      "count": 2,
+      "count": 1,
       "name": "Курск",
       "value": 75
-     },
-     {
-      "count": 2,
-      "name": "Киров",
-      "value": 66
-     },
-     {
-      "count": 1,
-      "name": "Нововоронеж",
-      "value": 18239
      },
      {
       "count": 1,
@@ -247,31 +247,55 @@
      },
      {
       "count": 1,
-      "name": "Магнитогорск",
-      "value": 82
+      "name": "Киров",
+      "value": 66
      },
      {
       "count": 1,
-      "name": "Мда",
-      "value": 1070131
+      "name": "Сердобск",
+      "value": 16746
+     },
+     {
+      "count": 1,
+      "name": "Первоуральск",
+      "value": 2001
+     },
+     {
+      "count": 1,
+      "name": "Серов",
+      "value": 668
+     },
+     {
+      "count": 1,
+      "name": "Смоленск",
+      "value": 130
+     },
+     {
+      "count": 1,
+      "name": "Дедовичи",
+      "value": 9046
+     },
+     {
+      "count": 1,
+      "name": "Самара",
+      "value": 123
+     },
+     {
+      "count": 1,
+      "name": "Нижний Новгород",
+      "value": 95
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 11,
+      "count": 13,
       "name": "Россия",
       "value": 1
-     },
-     {
-      "code": "GR",
-      "count": 1,
-      "name": "Греция",
-      "value": 71
      }
     ],
     "mobile_reach": 12,
-    "reach": 12,
+    "reach": 13,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -280,13 +304,13 @@
      },
      {
       "value": "m",
-      "count": 4
+      "count": 5
      }
     ],
     "sex_age": [
      {
       "value": "f;12-18",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;18-21",
@@ -314,7 +338,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 2
+      "count": 3
      },
      {
       "value": "m;12-18",
@@ -338,7 +362,7 @@
      },
      {
       "value": "m;30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "m;35-45",
@@ -346,7 +370,7 @@
      },
      {
       "value": "m;45-100",
-      "count": 1
+      "count": 3
      }
     ]
    },

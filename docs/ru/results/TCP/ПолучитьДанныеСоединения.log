@@ -1,7 +1,7 @@
 ﻿{
  "active": true,
- "address": "127.0.0.1:60150",
- "connectionId": "e3029dba-d905-4dcc-9611-6d0e1700b205",
+ "address": "127.0.0.1:43312",
+ "connectionId": "f447471d-1c7a-41a3-b87e-308ce0ddebb0",
  "message": "<ДвоичныеДанные>",
  "result": true
 }

@@ -2,13 +2,13 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB041C3CE86EAE0DEF13A",
+  "idMessage": "3EB071E5D0CE10C7AD23AF",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781714882,
+  "timestamp": 1781720685,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -17,21 +17,15 @@
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "pollMessage",
-   "pollMessageData": {
-    "name": "Какой ваш любимый цвет?",
-    "options": [
-     {
-      "optionName": "Красный"
-     },
-     {
-      "optionName": "Желтый"
-     },
-     {
-      "optionName": "Зеленый"
-     }
-    ],
-    "multipleAnswers": true
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }

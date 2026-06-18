@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "38382aa7-fc4e-8123-a4fe-e1e56cbb06f2",
- "created_time": "2026-06-18T14:30:00Z",
- "last_edited_time": "2026-06-18T14:30:00Z",
+ "id": "38382aa7-fc4e-8143-8e2d-d8e2d04053f3",
+ "created_time": "2026-06-18T16:58:00Z",
+ "last_edited_time": "2026-06-18T16:58:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,24 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "38382aa7-fc4e-81b3-b2ad-e83c91b52d06"
+  "database_id": "38382aa7-fc4e-8101-b4af-d94e6bf8b072"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "Номер": {
+   "id": "%3Eb%7CJ",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "WpbF",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
   "Картинка": {
-   "id": "FQvu",
+   "id": "%60bVZ",
    "type": "files",
    "files": [
     {
@@ -34,41 +44,27 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "V%3EE%3E",
-   "type": "date",
-   "date": {
-    "start": "2026-06-18T08:30:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Пользователь": {
-   "id": "ixja",
-   "type": "people",
-   "people": []
-  },
   "Статус": {
-   "id": "lx%5Bv",
+   "id": "bs%3A%5B",
    "type": "select",
    "select": {
-    "id": "8e69b7ec-ee61-4baa-81b2-60b151fe7fb4",
+    "id": "0e34df44-408f-41bc-91cf-d2fec453fffa",
     "name": "Новый",
     "color": "green"
    }
   },
-  "Телефон": {
-   "id": "mI%7CM",
-   "type": "phone_number",
-   "phone_number": "***"
+  "Пользователь": {
+   "id": "eW%5E%3A",
+   "type": "people",
+   "people": []
   },
   "Активен": {
-   "id": "t%3BW%7B",
+   "id": "k%3B%5Dd",
    "type": "checkbox",
    "checkbox": true
   },
   "Почта": {
-   "id": "uI%60n",
+   "id": "pqV~",
    "type": "rich_text",
    "rich_text": [
     {
@@ -90,13 +86,8 @@
     }
    ]
   },
-  "Номер": {
-   "id": "ujcn",
-   "type": "number",
-   "number": 1
-  },
   "Описание": {
-   "id": "wnAX",
+   "id": "tFFN",
    "type": "rich_text",
    "rich_text": [
     {
@@ -117,6 +108,15 @@
      "href": null
     }
    ]
+  },
+  "Дата создания": {
+   "id": "u%3F%3DZ",
+   "type": "date",
+   "date": {
+    "start": "2026-06-18T04:58:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/38382aa7fc4e8123a4fee1e56cbb06f2",
+ "url": "https://app.notion.com/p/38382aa7fc4e81438e2dd8e2d04053f3",
  "public_url": null,
  "archived": false,
- "request_id": "2b53fc87-e0ea-4b09-a5bd-7a7b91ecefd4"
+ "request_id": "e6aea006-2a0d-485c-b56c-e1ba45ead8fd"
 }

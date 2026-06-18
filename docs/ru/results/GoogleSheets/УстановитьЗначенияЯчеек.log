@@ -1,61 +1,61 @@
 ﻿{
- "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+ "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,
  "totalUpdatedCells": 8,
  "totalUpdatedSheets": 1,
  "responses": [
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!A1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!A2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!B2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!B3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!A3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!A4",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!B1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1bws2U7B3PLtpWDrK08zAd6IQbXC929oRG4aY5ReUef4",
+   "spreadsheetId": "1mbrJ5iZZgU7_sJiyE-ruagMCq4zAESbPlrFNUe5J9kY",
    "updatedRange": "'Лист2'!B4",
    "updatedRows": 1,
    "updatedColumns": 1,
