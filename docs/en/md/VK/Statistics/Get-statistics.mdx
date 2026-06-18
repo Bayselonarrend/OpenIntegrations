@@ -68,8 +68,8 @@ import Admonition from '@theme/Admonition';
             # JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics \
-              --datefrom "2026-06-15T00:00:00" \
-              --dateto "2026-06-15T23:59:59" \
+              --datefrom "2026-06-18T00:00:00" \
+              --dateto "2026-06-18T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -79,8 +79,8 @@ import Admonition from '@theme/Admonition';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk GetStatistics ^
-              --datefrom "2026-06-15T00:00:00" ^
-              --dateto "2026-06-15T23:59:59" ^
+              --datefrom "2026-06-18T00:00:00" ^
+              --dateto "2026-06-18T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -91,8 +91,11 @@ import Admonition from '@theme/Admonition';
 {
  "response": [
   {
-   "period_from": 1781481600,
-   "period_to": 1781567999,
+   "activity": {
+    "comments": 20
+   },
+   "period_from": 1781740800,
+   "period_to": 1781827199,
    "reach": {
     "age": [
      {
@@ -101,141 +104,138 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "18-21",
-      "count": 1
-     },
-     {
-      "value": "21-24",
-      "count": 4
-     },
-     {
-      "value": "24-27",
-      "count": 1
-     },
-     {
-      "value": "27-30",
-      "count": 1
-     },
-     {
-      "value": "30-35",
       "count": 0
      },
      {
+      "value": "21-24",
+      "count": 1
+     },
+     {
+      "value": "24-27",
+      "count": 2
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 1
+     },
+     {
       "value": "35-45",
-      "count": 10
+      "count": 5
      },
      {
       "value": "45-100",
-      "count": 16
+      "count": 13
      }
     ],
     "cities": [
      {
-      "count": 4,
+      "count": 2,
+      "name": "Пермь",
+      "value": 110
+     },
+     {
+      "count": 2,
       "name": "Москва",
       "value": 1
      },
      {
-      "count": 3,
-      "name": "Кимры",
-      "value": 1769
-     },
-     {
-      "count": 2,
-      "name": "Северодвинск",
-      "value": 11
-     },
-     {
-      "count": 2,
-      "name": "Санкт-Петербург",
-      "value": 2
+      "count": 1,
+      "name": "Саранск",
+      "value": 124
      },
      {
       "count": 1,
-      "name": "Сурское",
-      "value": 1111960
+      "name": "Инта",
+      "value": 255
      },
      {
       "count": 1,
-      "name": "Балаково",
-      "value": 9930
+      "name": "Тольятти",
+      "value": 143
      },
      {
       "count": 1,
-      "name": "Тверь",
-      "value": 141
+      "name": "Торжок",
+      "value": 334
      },
      {
       "count": 1,
-      "name": "Зеленоград",
-      "value": 1463
+      "name": "Торопец",
+      "value": 2132
      },
      {
       "count": 1,
-      "name": "Долгопрудный",
-      "value": 857
+      "name": "Мончегорск",
+      "value": 187
      },
      {
       "count": 1,
-      "name": "Воткинск",
-      "value": 1100
+      "name": "Кировск",
+      "value": 248
      },
      {
       "count": 1,
-      "name": "Краснодар",
-      "value": 72
-     },
-     {
-      "count": 1,
-      "name": "Кострома",
-      "value": 71
-     },
-     {
-      "count": 1,
-      "name": "Кизляр",
-      "value": 18300
-     },
-     {
-      "count": 1,
-      "name": "Воронеж",
-      "value": 42
-     },
-     {
-      "count": 1,
-      "name": "Самара",
-      "value": 123
+      "name": "Энгельс",
+      "value": 1469
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 32,
+      "count": 22,
       "name": "Россия",
       "value": 1
-     },
-     {
-      "code": "KZ",
-      "count": 1,
-      "name": "Казахстан",
-      "value": 4
      }
     ],
-    "mobile_reach": 35,
-    "reach": 33,
+    "mobile_reach": 21,
+    "reach": 22,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 22
+      "count": 16
      },
      {
       "value": "m",
-      "count": 11
+      "count": 6
      }
     ],
     "sex_age": [
      {
       "value": "f;12-18",
       "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 1
+     },
+     {
+      "value": "f;24-27",
+      "count": 2
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 3
+     },
+     {
+      "value": "f;45-100",
+      "count": 10
      },
      {
 ...

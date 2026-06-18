@@ -82,8 +82,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion СоздатьСтраницуВБазу \
               --token "***" \
-              --base "38082aa7-fc4e-81ff-80b8-fef64884b9c0" \
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'06/15/2026 14:07:27','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "38382aa7-fc4e-8145-b8ba-ecac552ec4ff" \
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'06/18/2026 19:02:24','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
   
@@ -93,8 +93,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion СоздатьСтраницуВБазу ^
               --token "***" ^
-              --base "38082aa7-fc4e-81ff-80b8-fef64884b9c0" ^
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'06/15/2026 14:07:27','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "38382aa7-fc4e-8145-b8ba-ecac552ec4ff" ^
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'06/18/2026 19:02:24','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
 </Tabs>
@@ -103,9 +103,9 @@ import Admonition from '@theme/Admonition';
 ```json title="Результат"
 {
  "object": "page",
- "id": "38082aa7-fc4e-814e-8606-cfd56e69e9bf",
- "created_time": "2026-06-15T18:34:00Z",
- "last_edited_time": "2026-06-15T18:34:00Z",
+ "id": "38382aa7-fc4e-81d6-87a2-e0eb72283ae6",
+ "created_time": "2026-06-18T18:17:00Z",
+ "last_edited_time": "2026-06-18T18:17:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -118,14 +118,37 @@ import Admonition from '@theme/Admonition';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "38082aa7-fc4e-81a2-ac1a-facaf22f001d"
+  "database_id": "38382aa7-fc4e-8185-99d6-d7c2c6b17562"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "Пользователь": {
+   "id": "%3AQ%5EB",
+   "type": "people",
+   "people": []
+  },
+  "Статус": {
+   "id": "BCer",
+   "type": "select",
+   "select": {
+    "id": "dc262348-9c3b-4122-acde-877e6611fc95",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Дата создания": {
+   "id": "SpJA",
+   "type": "date",
+   "date": {
+    "start": "2026-06-18T06:17:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Описание": {
-   "id": "%40~v%5D",
+   "id": "%5B%5BaY",
    "type": "rich_text",
    "rich_text": [
     {
@@ -147,13 +170,23 @@ import Admonition from '@theme/Admonition';
     }
    ]
   },
+  "Телефон": {
+   "id": "%5ECKL",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Активен": {
+   "id": "nxw%7B",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Номер": {
-   "id": "Dpej",
+   "id": "qna%5E",
    "type": "number",
    "number": 1
   },
   "Почта": {
-   "id": "K%5D%40K",
+   "id": "yftE",
    "type": "rich_text",
    "rich_text": [
     {
@@ -175,36 +208,8 @@ import Admonition from '@theme/Admonition';
     }
    ]
   },
-  "Телефон": {
-   "id": "j%7B%5EL",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Статус": {
-   "id": "lWt%3D",
-   "type": "select",
-   "select": {
-    "id": "0feda4e8-7538-42b3-bce4-444d3a14d7be",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Дата создания": {
-   "id": "n%3FtH",
-   "type": "date",
-   "date": {
-    "start": "2026-06-15T06:34:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Активен": {
-   "id": "r%5B%3Fb",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Картинка": {
-   "id": "tDuv",
+   "id": "%7BB%3BB",
    "type": "files",
    "files": [
     {
@@ -215,11 +220,6 @@ import Admonition from '@theme/Admonition';
      }
     }
    ]
-  },
-  "Пользователь": {
-   "id": "%7De%7Bx",
-   "type": "people",
-   "people": []
   },
   "Имя": {
    "id": "title",
@@ -245,9 +245,9 @@ import Admonition from '@theme/Admonition';
    ]
   }
  },
- "url": "https://app.notion.com/p/38082aa7fc4e814e8606cfd56e69e9bf",
+ "url": "https://app.notion.com/p/38382aa7fc4e81d687a2e0eb72283ae6",
  "public_url": null,
  "archived": false,
- "request_id": "1de99bc4-7aaf-429c-84c9-a37054143305"
+ "request_id": "3ba16cc7-5ca0-4c6c-a059-494df496fd4f"
 }
 ```

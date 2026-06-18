@@ -93,13 +93,13 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0C4BC7A0C3E38706799",
+  "idMessage": "3EB0C42270608639BA37BA",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1779719690,
+  "timestamp": 1781720686,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -108,7 +108,22 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
+   "typeMessage": "quotedMessage",
+   "quotedMessage": {
+    "typeMessage": "extendedTextMessage",
+    "textMessage": "New message",
+    "extendedTextMessage": {
+     "text": "New message",
+     "description": "",
+     "title": "",
+     "previewType": "None",
+     "jpegThumbnail": "",
+     "forwardingScore": 0,
+     "isForwarded": false
+    },
+    "stanzaId": "3EB071E5D0CE10C7AD23AF",
+    "participant": "1234567890@c.us"
+   },
    "extendedTextMessageData": {
     "text": "New message",
     "description": "",
@@ -116,7 +131,9 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
     "previewType": "None",
     "jpegThumbnail": "",
     "forwardingScore": 0,
-    "isForwarded": false
+    "isForwarded": false,
+    "stanzaId": "3EB071E5D0CE10C7AD23AF",
+    "participant": "1234567890@c.us"
    }
   }
  }

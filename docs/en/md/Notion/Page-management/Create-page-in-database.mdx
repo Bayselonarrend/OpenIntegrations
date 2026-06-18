@@ -82,8 +82,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion CreatePageInDatabase \
               --token "***" \
-              --base "38082aa7-fc4e-81ca-8713-e54bf78142f1" \
-              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'06/15/2026 18:15:22','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --base "38382aa7-fc4e-8185-88db-cd18179f16e8" \
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'06/18/2026 16:10:26','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
   
@@ -93,8 +93,8 @@ import Admonition from '@theme/Admonition';
             
             oint notion CreatePageInDatabase ^
               --token "***" ^
-              --base "38082aa7-fc4e-81ca-8713-e54bf78142f1" ^
-              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'06/15/2026 18:15:22','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+              --base "38382aa7-fc4e-8185-88db-cd18179f16e8" ^
+              --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'06/18/2026 16:10:26','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
 </Tabs>
@@ -103,9 +103,9 @@ import Admonition from '@theme/Admonition';
 ```json title="Result"
 {
  "object": "page",
- "id": "38082aa7-fc4e-81ef-987a-def48aba8050",
- "created_time": "2026-06-15T14:30:00Z",
- "last_edited_time": "2026-06-15T14:30:00Z",
+ "id": "38382aa7-fc4e-813f-81e2-dfb96bcc585f",
+ "created_time": "2026-06-18T17:39:00Z",
+ "last_edited_time": "2026-06-18T17:39:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -118,37 +118,61 @@ import Admonition from '@theme/Admonition';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "38082aa7-fc4e-816f-9999-df3a382fa524"
+  "database_id": "38382aa7-fc4e-8179-90ea-f13459ce219c"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "CreationDate": {
-   "id": "%3EFP%3B",
-   "type": "date",
-   "date": {
-    "start": "2026-06-15T08:30:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
+  "Active": {
+   "id": "Iq%3DM",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Number": {
+   "id": "OE_t",
+   "type": "number",
+   "number": 1
+  },
+  "Phone": {
+   "id": "Yvth",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Status": {
-   "id": "DbIH",
+   "id": "cOp%7D",
    "type": "select",
    "select": {
-    "id": "feab5ca8-644a-43c1-88c1-0eff03e9f16a",
+    "id": "df905083-b4e4-4f83-acfb-4d64c81b9930",
     "name": "New",
     "color": "green"
    }
   },
-  "Phone": {
-   "id": "NcvO",
-   "type": "phone_number",
-   "phone_number": "***"
+  "Description": {
+   "id": "lT%3CO",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "OurFirstClient",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "OurFirstClient",
+     "href": null
+    }
+   ]
   },
   "Email": {
-   "id": "Wv%3Cc",
+   "id": "nJF_",
    "type": "rich_text",
    "rich_text": [
     {
@@ -170,13 +194,22 @@ import Admonition from '@theme/Admonition';
     }
    ]
   },
-  "Active": {
-   "id": "%5C%3BbR",
-   "type": "checkbox",
-   "checkbox": true
+  "CreationDate": {
+   "id": "q%3Ftm",
+   "type": "date",
+   "date": {
+    "start": "2026-06-18T05:39:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "User": {
+   "id": "qbbF",
+   "type": "people",
+   "people": []
   },
   "Image": {
-   "id": "b%5CaW",
+   "id": "%7CtKw",
    "type": "files",
    "files": [
     {
@@ -185,39 +218,6 @@ import Admonition from '@theme/Admonition';
      "external": {
       "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
      }
-    }
-   ]
-  },
-  "User": {
-   "id": "fEH%7D",
-   "type": "people",
-   "people": []
-  },
-  "Number": {
-   "id": "sGmi",
-   "type": "number",
-   "number": 1
-  },
-  "Description": {
-   "id": "wNqC",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "OurFirstClient",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "OurFirstClient",
-     "href": null
     }
    ]
   },
@@ -245,9 +245,9 @@ import Admonition from '@theme/Admonition';
    ]
   }
  },
- "url": "https://app.notion.com/p/LLC-Vector-38082aa7fc4e81ef987adef48aba8050",
+ "url": "https://app.notion.com/p/LLC-Vector-38382aa7fc4e813f81e2dfb96bcc585f",
  "public_url": null,
  "archived": false,
- "request_id": "dd89b4d5-9b75-48af-849d-a9b8a3b74fec"
+ "request_id": "43160ae8-3a04-4031-b3f1-6900aff7e679"
 }
 ```
