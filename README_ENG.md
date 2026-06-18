@@ -14,47 +14,53 @@ The project code is organized as a set of independent modules, each responsible 
 
 📋 Currently implemented methods for working with the following services ([list](/media/catalogs/Catalog.md))
 <br>
+
   <div>
-  <a href="https://en.openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>  
   <a href="https://en.openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/VK/"><img src="media/VK.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/VKTeams/"><img src="media/VKTeams.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Viber/"><img src="media/Viber.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/GreenMax/"><img src="media/GreenMax.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/GreenAPI/"><img src="media/GreenAPI.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/GreenMax/"><img src="media/GreenMax.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/GreenAPI/"><img src="media/GreenAPI.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/S3/"><img src="media/S3.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/ClickHouse/"><img src="media/ClickHouse.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/PostgreSQL/"><img src="media/PostgreSQL.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/ClickHouse/"><img src="media/ClickHouse.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/PostgreSQL/"><img src="media/PostgreSQL.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/SQLite/"><img src="media/SQLite.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/MSSQL/"><img src="media/MSSQL.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/MySQL/"><img src="media/MySQL.png" width="40"></a>
-     <a href="https://en.openintegrations.dev/docs/Instructions/MongoDB/"><img src="media/MongoDB.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/MSSQL/"><img src="media/MSSQL.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/MySQL/"><img src="media/MySQL.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/MongoDB/"><img src="media/MongoDB.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Notion/"><img src="media/Notion.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/YandexDisk/"><img src="media/YandexDisk.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/GoogleCalendar/"><img src="media/GoogleCalendar.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/GoogleDrive/"><img src="media/GoogleDrive.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/GoogleSheets/"><img src="media/GoogleSheets.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/OpenAI/"><img src="media/OpenAI.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/Ollama/"><img src="media/Ollama.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/OpenAI/"><img src="media/OpenAI.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/Ollama/"><img src="media/Ollama.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Slack/"><img src="media/Slack.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Airtable/"><img src="media/Airtable.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/ReportPortal/"><img src="media/ReportPortal.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/ReportPortal/"><img src="media/ReportPortal.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/ZeroMQ/"><img src="media/ZeroMQ.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/ZeroMQ/"><img src="media/ZeroMQ.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/WebSocket/"><img src="media/WebSocket.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
-    <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
-       
-   
-</div>
+   <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png" width="40"></a>
+   <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/Lua.png" width="40"></a>
+
+Форматы данных:
+
+   <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/Janx.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
+  <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/MessagePack.png" width="40"></a>
+
+</div> 
 <br>
 
 ## Usage Example
