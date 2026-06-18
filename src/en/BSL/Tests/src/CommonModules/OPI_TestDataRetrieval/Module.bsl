@@ -15822,10 +15822,10 @@ Procedure CheckMapMessagePack(Val Actual, Val Expected)
 
     For Each Pair In Expected Do
 
-        Key       = String(Pair.Key);
-        ExpectsThat(MapContainsKeyMessagePack(Actual, Key)).Равно(True);
-        CheckMessagePackValue(Actual[Key], Pair.Value);
-        PairCount = PairCount + 1;
+        CurrentKey = String(Pair.Key);
+        ExpectsThat(MapContainsKeyMessagePack(Actual, CurrentKey)).Равно(True);
+        CheckMessagePackValue(Actual[CurrentKey], Pair.Value);
+        PairCount  = PairCount + 1;
 
     EndDo;
 
@@ -15833,11 +15833,11 @@ Procedure CheckMapMessagePack(Val Actual, Val Expected)
 
 EndProcedure
 
-Function MapContainsKeyMessagePack(Val Map, Val Key)
+Function MapContainsKeyMessagePack(Val Map, Val CurrentKey)
 
     For Each Pair In Map Do
 
-        If String(Pair.Key) = Key Then
+        If String(Pair.Key) = CurrentKey Then
             Return True;
         EndIf;
 
