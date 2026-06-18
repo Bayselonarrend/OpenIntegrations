@@ -439,6 +439,9 @@ Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
 
     Response = OPI_HTTPRequests.PutMultipart(URL, New Structure(), File, "multipart", Headers);
 
+    // !IRPSkip
+    WaitDiskObject(Token, Path);
+
     Return Response;
 
 EndFunction
@@ -496,6 +499,9 @@ Function UploadFileInParts(Val Token
 
     EndIf;
 
+    // !IRPSkip
+    WaitDiskObject(Token, Path);
+
     Return Response;
 
 EndFunction
@@ -524,10 +530,16 @@ Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     Parameters.Insert("url" , EncodedURL);
     Parameters.Insert("path", Path);
 
-    Parameters = OPI_Tools.RequestParametersToString(Parameters);
-    Response   = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
+    Parameters  = OPI_Tools.RequestParametersToString(Parameters);
+    Response    = OPI_HTTPRequests.PostWithBody(URL + Parameters, , Headers, False);
+    Body        = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+    ResponseURL = Body["href"];
 
-    Return Response;
+    If Not ValueIsFilled(ResponseURL) Then
+        Return Response;
+    EndIf;
+
+    Return GetDiskOperationResult(Headers, ResponseURL);
 
 EndFunction
 
@@ -781,6 +793,31 @@ Function GetDiskOperationResult(Headers, OperationURL)
         Else
             Return Response;
         EndIf;
+
+    EndDo;
+
+    Return Response;
+
+EndFunction
+
+Function WaitDiskObject(Val Token, Val Path)
+
+    MaxAttempts = 60;
+    Response    = Undefined;
+
+    For AttemptNumber = 1 To MaxAttempts Do
+
+        Response = GetObject(Token, Path);
+        Body     = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
+
+        ObjectType = Undefined;
+
+        If OPI_Tools.CollectionFieldExists(Body, "type", ObjectType)
+            And ValueIsFilled(ObjectType) Then
+            Return Response;
+        EndIf;
+
+        OPI_Tools.Pause(1);
 
     EndDo;
 
