@@ -2,8 +2,8 @@
 
 oint s3 FinishPartsUpload \
   --name "fileChunked.mp3" \
-  --bucket "6e45cb58" \
+  --bucket "3ece41e4" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --upload "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLmU4MzA3M2E2LTc1MzItNGM4Ny1iMWJiLTg2ODQzMjhlNzQ4NXgxNzgxNzkwNjkwNjMxNjQzNjU1" \
-  --tags "['\"566e2d464b39b91eb8b5d89fb9f1a318\"','\"adb76a9a9ff8226ed08fb6f343102908\"']" \
+  --upload "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLjJjZDIzYmFkLTUwMjAtNGI5NC1hMzk1LTdkNmNkMDRkZDA5ZngxNzgxNzk5NjQ2MDgyMDQ5NDI5" \
+  --tags "['\"'"566e2d464b39b91eb8b5d89fb9f1a318\"'"','\"'"adb76a9a9ff8226ed08fb6f343102908\"'"']" \
   --dir true

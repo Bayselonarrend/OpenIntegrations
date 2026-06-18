@@ -2,5 +2,5 @@
 
 oint bitrix24 CreateUser ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fields "{'EMAIL':'f45b5c7e-14f4-4898-a7aa-dfd70bf78b44@mail.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
+  --fields "{'EMAIL':'f01d279a-4a68-404d-995d-e5805ede3322@mail.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
   --token "***"

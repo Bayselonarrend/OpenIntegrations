@@ -1,6 +1,6 @@
 oint bitrix24 UpdateDepartment \
   --url "b24-ar17wx.bitrix24.by" \
-  --depid 4102 \
+  --depid 4122 \
   --title "New department" \
   --parentid 1 \
   --headid 10 \

@@ -2,5 +2,5 @@ oint rportal GetLaunchReport ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 488 ^
+  --id 508 ^
   --format "html"

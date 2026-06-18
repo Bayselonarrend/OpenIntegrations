@@ -1,7 +1,7 @@
 oint airtable EditComment ^
   --token "***" ^
-  --base "apphpI4jOifnNG2WR" ^
-  --table "tbl3tVRYm38Ujnmcm" ^
-  --record "recuJUg9BSHqPFucP" ^
-  --comment "com9Svh6v1wnXDXpE" ^
+  --base "appZ3bojJFizsjQto" ^
+  --table "tblrDlifP8zqwLc5l" ^
+  --record "recGyT6kqoBRX5C1Q" ^
+  --comment "comS8M6Pjz7Hqb6x3" ^
   --text "Test comment (change.)"

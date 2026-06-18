@@ -1,2 +1,2 @@
 oint rss ParseFeedAtom \
-  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\zdhe1rg4.qpw.xml"
+  --xml "/tmp/z5knkgnu.vne.xml"

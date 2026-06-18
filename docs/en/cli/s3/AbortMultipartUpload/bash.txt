@@ -2,7 +2,7 @@
 
 oint s3 AbortMultipartUpload \
   --name "fileChunked.mp3" \
-  --bucket "6e45cb58" \
+  --bucket "3ece41e4" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --upload "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLjg3ZDY2NmIyLTk1NWMtNDU3YS1hNmExLTFjNzQxZWU0OGQyMHgxNzgxNzkwNjk2NDE0NzI5MjM3" \
+  --upload "MGI2Y2U2YTAtMDYxZC00NzkwLTk3YmEtOTM0NDY2MWFjZGYwLjE0ZjY1YTA5LTNmYzUtNGRiNi1hZjIwLTE0MjRhMzgzNTBkN3gxNzgxNzk5NjUwODkwNjkxMTM0" \
   --dir true

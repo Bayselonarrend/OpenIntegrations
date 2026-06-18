@@ -1,4 +1,4 @@
 oint bitrix24 DeleteDeal ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --deal 7750 ^
+  --deal 7790 ^
   --token "***"
