@@ -1,2 +1,2 @@
 oint janx ДесериализоватьДанные \
-  --data "/tmp/mxxmicni.ihu"
+  --data "C:\Users\bayselonarrend\AppData\Local\Temp\5kc3r1us.df1"
