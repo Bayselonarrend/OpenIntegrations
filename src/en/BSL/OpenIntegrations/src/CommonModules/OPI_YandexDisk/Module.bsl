@@ -535,11 +535,13 @@ Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     Body        = OPI_AdvancedCall.NormalizeIntermediateResult(Response);
     ResponseURL = Body["href"];
 
-    If Not ValueIsFilled(ResponseURL) Then
-        Return Response;
+    If ValueIsFilled(ResponseURL) Then
+        GetDiskOperationResult(Headers, ResponseURL);
+        // !IRPSkip
+        WaitDiskObject(Token, Path);
     EndIf;
 
-    Return GetDiskOperationResult(Headers, ResponseURL);
+    Return Response;
 
 EndFunction
 

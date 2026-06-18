@@ -2717,8 +2717,8 @@ EndFunction
 Function Check_YandexDisk_UploadFileByURL(Val Result, Val Option, Parameters = "", Path = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["type"]).Равно("file");
-    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    ExpectsThat(Result["href"]).Заполнено();
+    ExpectsThat(Result["method"]).Заполнено();
 
     WriteParameter("YandexDisk_FileByURLPath", Path);
     Parameters.Insert("YandexDisk_FileByURLPath", Path);
