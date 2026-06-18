@@ -2,7 +2,7 @@
  "response": [
   {
    "activity": {
-    "comments": 19
+    "comments": 20
    },
    "period_from": 1781740800,
    "period_to": 1781827199,
@@ -44,13 +44,13 @@
     "cities": [
      {
       "count": 2,
-      "name": "Москва",
-      "value": 1
+      "name": "Пермь",
+      "value": 110
      },
      {
       "count": 2,
-      "name": "Пермь",
-      "value": 110
+      "name": "Москва",
+      "value": 1
      },
      {
       "count": 1,
@@ -64,8 +64,13 @@
      },
      {
       "count": 1,
-      "name": "Мончегорск",
-      "value": 187
+      "name": "Тольятти",
+      "value": 143
+     },
+     {
+      "count": 1,
+      "name": "Торжок",
+      "value": 334
      },
      {
       "count": 1,
@@ -74,8 +79,8 @@
      },
      {
       "count": 1,
-      "name": "Торжок",
-      "value": 334
+      "name": "Мончегорск",
+      "value": 187
      },
      {
       "count": 1,
@@ -86,11 +91,6 @@
       "count": 1,
       "name": "Энгельс",
       "value": 1469
-     },
-     {
-      "count": 1,
-      "name": "Тольятти",
-      "value": 143
      }
     ],
     "countries": [

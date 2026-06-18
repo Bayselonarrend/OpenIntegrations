@@ -1,16 +1,15 @@
 ﻿{
  "metadata": {
   ".tag": "file",
-  "client_modified": "***",
-  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492",
-  "id": "id:kJU6-a-pT48AAAAAAAB9ig",
-  "is_downloadable": true,
   "name": "pic_copy.png",
-  "path_display": "/New/pic_copy.png",
   "path_lower": "/new/pic_copy.png",
-  "property_groups": [],
-  "rev": "6548a7839db2abd841553",
-  "server_modified": "2026-06-18T17:25:59Z",
-  "size": 2114023
+  "path_display": "/New/pic_copy.png",
+  "id": "id:kJU6-a-pT48AAAAAAAB9pQ",
+  "client_modified": "***",
+  "server_modified": "2026-06-18T17:40:25Z",
+  "rev": "6548aabd8118fbd841553",
+  "size": 2114023,
+  "is_downloadable": true,
+  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
  }
 }
