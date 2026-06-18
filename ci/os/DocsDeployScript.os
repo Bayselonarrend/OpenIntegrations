@@ -60,15 +60,7 @@
 			КонфигурацияRclone = ДанныеПроекта.ПолучитьЗначениеНастройки("local.rcloneConf");
 			КаталогХостинга    = ДанныеПроекта.ПолучитьЗначениеНастройкиЛокализации("remoteDocsSrc", Язык);
 
-			ВызовДеплоя = СтрШаблон("rclone sync ""%1"" %2:%3 --progress"
-				+ " --sftp-set-modtime=false"
-				+ " --sftp-disable-concurrent-writes=true"
-				+ " --transfers 4"
-				, КаталогСборки
-				, КонфигурацияRclone
-				, КаталогХостинга);
-
-			CommonTools.ЗапуститьВнешнееПриложение(ВызовДеплоя);
+			ВыложитьДокументациюНаХостинг(КаталогСборки, КонфигурацияRclone, КаталогХостинга);
 
 		КонецЕсли;
 
@@ -94,6 +86,49 @@
 	Если Не Успех Тогда
 		ЗавершитьРаботу(1);
 	КонецЕсли;
+
+КонецПроцедуры
+
+Функция ПолучитьФлагиRcloneДляSftp()
+
+	// Shared SFTP (hoster.by) часто падает при >2 одновременных SSH/SFTP-сессиях и SetModTime на каталогах
+	Возврат " --progress"
+		+ " --sftp-set-modtime=false"
+		+ " --sftp-disable-concurrent-reads=true"
+		+ " --sftp-disable-concurrent-writes=true"
+		+ " --sftp-concurrency 1"
+		+ " --checkers 1"
+		+ " --transfers 1"
+		+ " --retries 3"
+		+ " --low-level-retries 10"
+		+ " --ignore-errors";
+
+КонецФункции
+
+Процедура ВыложитьДокументациюНаХостинг(Знач КаталогСборки, Знач КонфигурацияRclone, Знач КаталогХостинга)
+
+	Флаги        = ПолучитьФлагиRcloneДляSftp();
+	УдаленныйПуть = СтрШаблон("%1:%2", КонфигурацияRclone, КаталогХостинга);
+
+	CommonTools.СообщитьПроцесс("Uploading docs to remote...");
+	CommonTools.ЗапуститьВнешнееПриложение(СтрШаблон("rclone copy ""%1"" %2%3"
+		, КаталогСборки
+		, УдаленныйПуть
+		, Флаги));
+
+	// После copy даём хостингу закрыть SFTP-сессии перед финальным list/delete
+	CommonTools.СообщитьПроцесс("Removing obsolete remote files...");
+	Приостановить(5000);
+
+	Попытка
+		CommonTools.ЗапуститьВнешнееПриложение(СтрШаблон("rclone sync ""%1"" %2%3"
+			, КаталогСборки
+			, УдаленныйПуть
+			, Флаги));
+	Исключение
+		CommonTools.СообщитьПроцесс("Warning: remote cleanup failed, uploaded files are already on the server");
+		CommonTools.СообщитьПроцесс(ОписаниеОшибки());
+	КонецПопытки;
 
 КонецПроцедуры
 
