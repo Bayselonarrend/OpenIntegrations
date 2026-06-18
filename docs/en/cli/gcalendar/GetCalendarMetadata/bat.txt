@@ -1,3 +1,3 @@
 oint gcalendar GetCalendarMetadata ^
   --token "***" ^
-  --calendar "d1dc1f3ecac64d806ea609d232412acc26d527f572a8ffbf9c3ef8585a7272c9@group.calendar.google.com"
+  --calendar "237bd121b2083ac7096af4c50231d1aab9c09270f0862ef0b3cb738ec2a545aa@group.calendar.google.com"

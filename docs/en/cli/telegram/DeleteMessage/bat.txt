@@ -1,4 +1,4 @@
 oint telegram DeleteMessage ^
   --token "***" ^
   --chat "***" ^
-  --message "28899"
+  --message "30053"

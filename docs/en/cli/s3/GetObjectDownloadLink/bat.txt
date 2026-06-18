@@ -2,7 +2,7 @@
 
 oint s3 GetObjectDownloadLink ^
   --name "picture.jpg" ^
-  --bucket "68128311" ^
+  --bucket "6e45cb58" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --expires 7200 ^
   --dir true

@@ -3,4 +3,4 @@
 oint sqlite DeleteRecords \
   --table "test" \
   --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
-  --db "/tmp/zi5f0r1z.sdj.sqlite"
+  --db "C:\Users\bayselonarrend\AppData\Local\Temp\hdftbv3h.ph2.sqlite"

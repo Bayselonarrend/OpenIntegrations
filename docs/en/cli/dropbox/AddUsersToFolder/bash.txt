@@ -1,5 +1,5 @@
 oint dropbox AddUsersToFolder \
   --token "***" \
-  --folder "13646303073" \
+  --folder "14487029715" \
   --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
   --readonly true

@@ -2,5 +2,5 @@
 
 oint gcalendar CreateEvent ^
   --token "***" ^
-  --calendar "db76defbf8a38baac02a2216c07f60c04aef6db4a66282cc8430077d97319722@group.calendar.google.com" ^
-  --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'06/15/2026 18:17:00','EndDate':'06/15/2026 19:17:00','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+  --calendar "310741423afa7b606314c55339bc03a0082c4a49111d60a57da31e755450462b@group.calendar.google.com" ^
+  --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'6/18/2026 4:44:11 PM','EndDate':'6/18/2026 5:44:11 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
