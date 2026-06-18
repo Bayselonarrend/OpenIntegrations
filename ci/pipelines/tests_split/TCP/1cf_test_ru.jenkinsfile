@@ -36,6 +36,10 @@ def vrunnerLogIndicatesLicenseLimit(String logFile) {
         return true
     }
 
+    if (vrunnerLogHasPattern(logFile, 'Не найдена лицензия')) {
+        return true
+    }
+
     def enterpriseStarted = vrunnerLogHasPattern(logFile, 'Выполняю команду/действие в режиме 1С:Предприятие')
     def enterpriseFinished = vrunnerLogHasPattern(logFile, '1С:Предприятие завершено')
     def hasPlatformOutput = vrunnerLogHasPattern(logFile, 'Вывод платформы:')
