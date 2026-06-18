@@ -186,7 +186,7 @@
        },
        "remoteDocsSrc": {
         "description": "Docs directory on remote server (hosting)",
-        "value": "public_html"
+        "value": "/www/openintegrations.dev/"
        },
        "namesTranslation": {
         "description": "Modules names localization",
@@ -293,7 +293,7 @@
        },
        "remoteDocsSrc": {
         "description": "Docs directory on remote server (hosting)",
-        "value": "public_html_en"
+        "value": "/www/en.openintegrations.dev/"
        },
        "namesTranslation": {
         "description": "Modules names localization",
