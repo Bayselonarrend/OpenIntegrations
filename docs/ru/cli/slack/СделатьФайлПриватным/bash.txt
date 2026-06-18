@@ -1,3 +1,3 @@
 oint slack СделатьФайлПриватным \
   --token "***" \
-  --fileid "F0BBNJ3MKU1"
+  --fileid "F0BBQNV67M2"
