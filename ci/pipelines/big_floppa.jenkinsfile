@@ -53,7 +53,7 @@ pipeline {
             steps {
                 build job: 'Melezh/MelezhDocker', wait: true,
                     parameters: [
-                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '2.2.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '2.3.0'],
                             [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild']
                     ]
             }
