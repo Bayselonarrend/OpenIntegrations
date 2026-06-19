@@ -3,7 +3,7 @@
         "version": "2.3.0",
         "summary_ru": "Методы работы с архивами",
         "summary_en": "Methods of working with archives",
-        "image": "media/Covers/Lua.png",
+        "image": "media/Covers/Archives.png",
         "changes": [
             {
                 "lib": "Lua",
