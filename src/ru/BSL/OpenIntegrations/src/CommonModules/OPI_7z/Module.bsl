@@ -3,9 +3,9 @@
 // CLI: 7z
 // Keywords: 7z, 7-Zip
 
-// DocsCategory: Database
-// DocsNameRU: Airtable
-// DocsNameEN: Airtable
+// DocsCategory: Formats
+// DocsNameRU: 7z
+// DocsNameEN: 7z
 
 // MIT License
 
@@ -111,7 +111,7 @@
     СтруктураНастроек.Вставить("chunk_size"       , "<размер чанка при threads > 1>");
     СтруктураНастроек.Вставить("dictionary_size"  , "<размер словаря LZMA2>");
     СтруктураНастроек.Вставить("ppmd_order "      , "<порядок модели (для Ppmd)>");
-    СтруктураНастроек.Вставить("ppmd_memory "     , "<память в байтаз (для Ppmd)>");
+    СтруктураНастроек.Вставить("ppmd_memory "     , "<память в байтах (для Ppmd)>");
     СтруктураНастроек.Вставить("filters"          , "<массив фильтров: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>");
     СтруктураНастроек.Вставить("delta_distance"   , "<расстояние для филтьтра DELTA, если используется (по ум. 1)>");
 

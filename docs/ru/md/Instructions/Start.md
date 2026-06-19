@@ -57,6 +57,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
  
 Форматы данных:
 <div>
+<a href="/docs/Instructions/7z/"><img src={require('../../static/img/APIs/7z.png').default} width="32" class="wp_logo"/></a>
 <a href="/docs/Instructions/Janx/"><img src={require('../../static/img/APIs/Janx.png').default} width="32" class="wp_logo"/></a>
 <a href="/docs/Instructions/RSS/"><img src={require('../../static/img/APIs/RSS.png').default} width="32" class="wp_logo"/></a>
 <a href="/docs/Instructions/MessagePack/"><img src={require('../../static/img/APIs/MessagePack.png').default} width="32" class="wp_logo"/></a>
