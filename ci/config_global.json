@@ -4,11 +4,11 @@
   "value": {
    "ointCurrentVersion": {
     "description": "Main Oint lib versions",
-    "value": "2.2.0"
+    "value": "2.3.0"
    },
    "ointPreviousVersion": {
     "description": "Main Oint lib previous versions",
-    "value": "2.1.0"
+    "value": "2.2.0"
    }
   }
  },
