@@ -1,6 +1,7 @@
+use std::collections::BTreeMap;
 use std::path::Path;
 
-use common_core::{FromJanx, JanxValue};
+use common_core::{FromJanx, JanxValue, janx};
 
 #[derive(Debug, Clone)]
 pub struct ArchiveDescription {
@@ -42,6 +43,29 @@ impl ArchiveDescription {
         let entries = parse_entries(entries_value)?;
 
         Ok(Self { password, entries })
+    }
+
+    pub fn from_flat_entries(
+        password: String,
+        entries: &[(String, bool, Option<Vec<u8>>)],
+    ) -> Self {
+        let mut tree = TreeDir::default();
+
+        for (path, is_directory, data) in entries {
+            tree.insert(path, *is_directory, data.clone());
+        }
+
+        Self {
+            password,
+            entries: tree.into_nodes(),
+        }
+    }
+
+    pub fn to_janx(&self) -> JanxValue {
+        janx!({
+            "password": self.password.clone(),
+            "entries": nodes_to_janx(&self.entries),
+        })
     }
 }
 
@@ -117,5 +141,83 @@ pub fn join_archive_path(prefix: &str, name: &str) -> String {
         name
     } else {
         format!("{}/{}", prefix.trim_end_matches('/'), name)
+    }
+}
+
+fn nodes_to_janx(nodes: &[ArchiveNode]) -> JanxValue {
+    JanxValue::Array(nodes.iter().map(node_to_janx).collect())
+}
+
+fn node_to_janx(node: &ArchiveNode) -> JanxValue {
+    match node {
+        ArchiveNode::Directory { name, entries } => janx!({
+            "name": name.clone(),
+            "directory": true,
+            "entries": nodes_to_janx(entries),
+        }),
+        ArchiveNode::FileFromPath { name, .. } => janx!({
+            "name": name.clone(),
+            "directory": false,
+            "from_path": true,
+            "path": String::new(),
+        }),
+        ArchiveNode::FileFromData { name, data } => janx!({
+            "name": name.clone(),
+            "directory": false,
+            "from_path": false,
+            "data": JanxValue::binary(data.clone()),
+        }),
+    }
+}
+
+#[derive(Default)]
+struct TreeDir {
+    subdirs: BTreeMap<String, TreeDir>,
+    files: BTreeMap<String, Vec<u8>>,
+}
+
+impl TreeDir {
+    fn insert(&mut self, path: &str, is_directory: bool, data: Option<Vec<u8>>) {
+        let path = path.trim_matches('/').replace('\\', "/");
+        if path.is_empty() {
+            return;
+        }
+
+        let parts: Vec<&str> = path.split('/').collect();
+        self.insert_parts(&parts, is_directory, data);
+    }
+
+    fn insert_parts(&mut self, parts: &[&str], is_directory: bool, data: Option<Vec<u8>>) {
+        if parts.len() == 1 {
+            if is_directory {
+                self.subdirs.entry(parts[0].to_string()).or_default();
+            } else {
+                self.files
+                    .insert(parts[0].to_string(), data.unwrap_or_default());
+            }
+            return;
+        }
+
+        self.subdirs
+            .entry(parts[0].to_string())
+            .or_default()
+            .insert_parts(&parts[1..], is_directory, data);
+    }
+
+    fn into_nodes(self) -> Vec<ArchiveNode> {
+        let mut nodes = Vec::new();
+
+        for (name, subdir) in self.subdirs {
+            nodes.push(ArchiveNode::Directory {
+                name,
+                entries: subdir.into_nodes(),
+            });
+        }
+
+        for (name, data) in self.files {
+            nodes.push(ArchiveNode::FileFromData { name, data });
+        }
+
+        nodes
     }
 }

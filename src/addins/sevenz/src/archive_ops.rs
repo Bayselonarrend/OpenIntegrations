@@ -2,9 +2,10 @@ use std::fs::{self, File};
 use std::io::{Cursor, Seek, Write};
 use std::path::Path;
 
+use common_core::JanxValue;
 use sevenz_rust2::{
     compress, compress_encrypted, decompress, decompress_with_password, encoder_options::AesEncoderOptions,
-    ArchiveEntry, ArchiveWriter, EncoderMethod, Password,
+    ArchiveEntry, ArchiveReader, ArchiveWriter, EncoderMethod, Password,
 };
 
 use crate::archive_description::{join_archive_path, ArchiveDescription, ArchiveNode};
@@ -80,6 +81,39 @@ pub fn pack_description_to_file(
 
     fs::write(archive_path, archive_data)
         .map_err(|error| format!("Failed to write archive file: {}", error))
+}
+
+pub fn unpack_buffer_to_description(
+    archive_data: &[u8],
+    password: &str,
+) -> Result<JanxValue, String> {
+    if archive_data.is_empty() {
+        return Err("Archive data is empty".to_string());
+    }
+
+    let mut reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
+        .map_err(|error| error.to_string())?;
+
+    let file_list: Vec<(String, bool)> = reader
+        .archive()
+        .files
+        .iter()
+        .map(|entry| (entry.name().to_string(), entry.is_directory()))
+        .collect();
+
+    let mut collected = Vec::with_capacity(file_list.len());
+    for (name, is_directory) in file_list {
+        if is_directory {
+            collected.push((name, true, None));
+        } else {
+            let data = reader
+                .read_file(&name)
+                .map_err(|error| error.to_string())?;
+            collected.push((name, false, Some(data)));
+        }
+    }
+
+    Ok(ArchiveDescription::from_flat_entries(password.to_string(), &collected).to_janx())
 }
 
 fn push_nodes<W: Write + Seek>(

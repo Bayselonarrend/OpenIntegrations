@@ -18,6 +18,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("UnpackFromBuffer"),
     name!("PackFromDescription"),
     name!("PackFromDescriptionToFile"),
+    name!("UnpackToDescription"),
     name!("SetLogger"),
     name!("GetLogs"),
     name!("Version"),
@@ -33,9 +34,10 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 3,
         4 => 1,
         5 => 2,
-        6 => 1,
+        6 => 2,
         7 => 1,
-        8 => 0,
+        8 => 1,
+        9 => 0,
         _ => 0,
     }
 }
@@ -43,6 +45,13 @@ pub fn get_params_amount(num: usize) -> usize {
 fn box_blob_result(result: Result<Vec<u8>, String>) -> Box<dyn getset::ValueType> {
     match result {
         Ok(data) => Box::new(data),
+        Err(error) => Box::new(error),
+    }
+}
+
+fn box_janx_result(result: Result<JanxValue, String>) -> Box<dyn getset::ValueType> {
+    match result {
+        Ok(value) => Box::new(value),
         Err(error) => Box::new(error),
     }
 }
@@ -82,14 +91,19 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.pack_from_description_to_file(&description, &archive_path))
         }
         6 => {
+            let archive_data = params[0].get_blob().unwrap_or_default().to_vec();
+            let password = params[1].get_string().unwrap_or_default();
+            box_janx_result(obj.unpack_to_description(&archive_data, &password))
+        }
+        7 => {
             let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
-        7 => {
+        8 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        8 => Box::new(version()),
+        9 => Box::new(version()),
         _ => Box::new(false),
     }
 }

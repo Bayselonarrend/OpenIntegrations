@@ -66,6 +66,15 @@ impl AddIn {
             .pack_from_description_to_file(description, archive_path)
     }
 
+    pub fn unpack_to_description(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .unpack_to_description(archive_data, password)
+    }
+
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
             Ok(logger) => match self.lock_backend().set_logger(Arc::new(logger)) {

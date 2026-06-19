@@ -102,6 +102,20 @@ impl SevenZBackend {
         })
     }
 
+    pub fn unpack_to_description(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_data = archive_data.to_vec();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::UnpackToDescription {
+            archive_data,
+            password,
+            response,
+        })
+    }
+
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {
         if self.logger.is_some() {
             return Ok(());
@@ -138,6 +152,13 @@ impl SevenZBackend {
     fn call_binary<F>(&mut self, build: F) -> Result<Vec<u8>, String>
     where
         F: FnOnce(Sender<Result<Vec<u8>, String>>) -> WorkerCommand,
+    {
+        self.call_thread(build).and_then(|result| result)
+    }
+
+    fn call_janx<F>(&mut self, build: F) -> Result<JanxValue, String>
+    where
+        F: FnOnce(Sender<Result<JanxValue, String>>) -> WorkerCommand,
     {
         self.call_thread(build).and_then(|result| result)
     }

@@ -46,6 +46,11 @@ pub enum WorkerCommand {
         archive_path: String,
         response: Sender<JanxValue>,
     },
+    UnpackToDescription {
+        archive_data: Vec<u8>,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
     SetLogger {
         logger: Arc<Logger>,
         response: Sender<Result<(), String>>,
@@ -144,6 +149,15 @@ impl Session {
             Err(error) => janx_error(error),
         }
     }
+
+    fn unpack_to_description(
+        &self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log("UnpackToDescription");
+        archive_ops::unpack_buffer_to_description(archive_data, password)
+    }
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
@@ -198,6 +212,14 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                     response,
                 } => {
                     let result = session.pack_from_description_to_file(&description, &archive_path);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackToDescription {
+                    archive_data,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_to_description(&archive_data, &password);
                     let _ = response.send(result);
                 }
                 WorkerCommand::SetLogger { logger, response } => {
