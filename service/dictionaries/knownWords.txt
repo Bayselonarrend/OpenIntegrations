@@ -512,3 +512,6 @@ mymodule
 логированием
 релизной
 коммите
+Lzma
+Ppmd
+RISCV
