@@ -3,9 +3,9 @@
   <name>OPI_GenericServer</name>
   <synonym>
     <key>en</key>
-    <value>Generic server (service, OPI)</value>
+    <value>Generic server (Utility, OPI)</value>
     <key>ru</key>
-    <value>Generic server (service, OPI)</value>
+    <value>Generic server (Utility, OPI)</value>
   </synonym>
   <comment>Generic methods for different types of servers</comment>
   <clientManagedApplication>true</clientManagedApplication>

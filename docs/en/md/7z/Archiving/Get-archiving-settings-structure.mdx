@@ -1,0 +1,53 @@
+---
+sidebar_position: 3
+
+description: Get archiving settings structure and other functions to work with 7z in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, 7z]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get archiving settings structure
+ Gets a structure with additional data archiving settings
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+  | AsMap | --map | Boolean | &#x2716; | True > returns the filter fields as a map |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Fields structure
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+
+ 
+
+
+
+

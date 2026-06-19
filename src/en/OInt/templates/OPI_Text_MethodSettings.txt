@@ -5542,6 +5542,17 @@
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
   }
  },
+ "OPI_7z": {
+  "ArchiveDirectory": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "UnarchiveDirectory": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetArchivingSettingsStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  }
+ },
  "OPI_Janx": {
   "SerializeData": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"

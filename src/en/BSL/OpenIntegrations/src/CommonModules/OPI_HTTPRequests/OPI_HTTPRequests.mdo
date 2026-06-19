@@ -3,9 +3,9 @@
   <name>OPI_HTTPRequests</name>
   <synonym>
     <key>en</key>
-    <value>HTTP (service, OpenIntegrations)</value>
+    <value>HTTP (Utility, OpenIntegrations)</value>
     <key>ru</key>
-    <value>HTTP (service, OpenIntegrations)</value>
+    <value>HTTP (Utility, OpenIntegrations)</value>
   </synonym>
   <comment>Utility HTTP Module of OpenIntegrations</comment>
   <clientManagedApplication>true</clientManagedApplication>

@@ -1,5 +1,6 @@
 |  | Наименование | Ключевые слова |
 |-|-|-|
+|![7z](../7z.png)| `7z`| 7z, 7-Zip |
 |![Airtable](../Airtable.png)| `Airtable`| airtable |
 |![Bitrix24](../Bitrix24.png)| `Bitrix24`| bitrix24, b24, bitrix |
 |![CDEK](../CDEK.png)| `CDEK`| cdek |

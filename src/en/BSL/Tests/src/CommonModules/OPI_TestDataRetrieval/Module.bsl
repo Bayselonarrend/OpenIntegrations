@@ -220,6 +220,7 @@ Function GetTestTable(Val TestModule = "") Export
     MsgPack   = "MessagePack";
     Janx      = "Janx";
     Lua       = "Lua";
+    SevenZ    = "7z";
 
     ArrayOfTests = New Array;
 
@@ -439,6 +440,7 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_GlobalVariables"                 , "Global variables"                , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
+    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"                        , "Archiving"                       , SevenZ);
 
     Return ArrayOfTests;
 
@@ -15515,6 +15517,98 @@ Function Check_RSS_ParseFeedAtom(Val Result, Val Option)
     ExpectsThat(FirstRecord["title"]).Заполнено();
     ExpectsThat(FirstRecord["id"]).Заполнено();
     ExpectsThat(FirstRecord["link"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_GetArchivingSettingsStructure(Val Result, Val Option)
+
+    If Option = "AsMap" Then
+
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["password"] <> Undefined).Равно(True);
+        ExpectsThat(Result["method"] <> Undefined).Равно(True);
+        ExpectsThat(Result["filters"] <> Undefined).Равно(True);
+
+    Else
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
+        ExpectsThat(Result.Property("password")).Равно(True);
+        ExpectsThat(Result.Property("method")).Равно(True);
+        ExpectsThat(Result.Property("level")).Равно(True);
+        ExpectsThat(Result.Property("filters")).Равно(True);
+
+    EndIf;
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(StrFind(String(Result.method), "Lzma") > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
+
+    If Option = "ToMemory" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Result.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ArchiveFile = New File(ArchivePath);
+        ExpectsThat(ArchiveFile.Exists()).Равно(True);
+        ExpectsThat(ArchiveFile.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    For Each Pair In ExpectedFiles Do
+
+        FilePath = DestinationDirectory + "\" + StrReplace(Pair.Key, "/", "\");
+        File     = New File(FilePath);
+
+        ExpectsThat(File.Exists()).Равно(True);
+
+        If TypeOf(Pair.Value) = Type("Structure") And Pair.Value.Property("binary") Then
+
+            ExpectedData = GetBinaryDataFromHexString(Pair.Value.hex);
+            ActualData   = New BinaryData(FilePath);
+            ExpectsThat(ActualData.Size()).Равно(ExpectedData.Size());
+
+        Else
+
+            Reading = New TextReader(FilePath, TextEncoding.UTF8);
+            Text    = Reading.Read();
+            Reading.Close();
+            ExpectsThat(Text).Равно(Pair.Value);
+
+        EndIf;
+
+    EndDo;
 
     Return Result;
 

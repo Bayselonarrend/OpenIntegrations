@@ -1133,6 +1133,19 @@ Function IsWindows() Export
 
 EndFunction
 
+Function IsDirectory(Path) Export
+
+    If TypeOf(Path) = Type("File") Then
+        File           = Path;
+    Else
+        OPI_TypeConversion.GetLine(Path);
+        File           = New File(Path);
+    EndIf;
+
+    Return File.Exists() And File.IsDirectory();
+
+EndFunction
+
 Function MergeData(Val Data, Val Addition) Export
 
     Stream = New MemoryStream();
@@ -1576,6 +1589,10 @@ EndFunction
 
 Function ЭтоWindows() Export
     Return IsWindows();
+EndFunction
+
+Function ЭтоКаталог(Путь) Export
+    Return IsDirectory(Путь);
 EndFunction
 
 Function СклеитьДанные(Val Данные, Val Дополнение) Export
