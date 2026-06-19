@@ -21,14 +21,19 @@ impl SevenZBackend {
         }
     }
 
-    pub fn pack(&mut self, source_path: &str, archive_path: &str, password: &str) -> JanxValue {
+    pub fn pack(
+        &mut self,
+        source_path: &str,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
         let source_path = source_path.to_string();
         let archive_path = archive_path.to_string();
-        let password = password.to_string();
+        let settings = settings.clone();
         self.call(|response| WorkerCommand::Pack {
             source_path,
             archive_path,
-            password,
+            settings,
             response,
         })
     }
@@ -50,12 +55,16 @@ impl SevenZBackend {
         })
     }
 
-    pub fn pack_to_buffer(&mut self, source_path: &str, password: &str) -> Result<Vec<u8>, String> {
+    pub fn pack_to_buffer(
+        &mut self,
+        source_path: &str,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
         let source_path = source_path.to_string();
-        let password = password.to_string();
+        let settings = settings.clone();
         self.call_binary(|response| WorkerCommand::PackToBuffer {
             source_path,
-            password,
+            settings,
             response,
         })
     }
@@ -80,10 +89,13 @@ impl SevenZBackend {
     pub fn pack_from_description(
         &mut self,
         description: &JanxValue,
+        settings: &JanxValue,
     ) -> Result<Vec<u8>, String> {
         let description = description.clone();
+        let settings = settings.clone();
         self.call_binary(|response| WorkerCommand::PackFromDescription {
             description,
+            settings,
             response,
         })
     }
@@ -92,12 +104,15 @@ impl SevenZBackend {
         &mut self,
         description: &JanxValue,
         archive_path: &str,
+        settings: &JanxValue,
     ) -> JanxValue {
         let description = description.clone();
         let archive_path = archive_path.to_string();
+        let settings = settings.clone();
         self.call(|response| WorkerCommand::PackFromDescriptionToFile {
             description,
             archive_path,
+            settings,
             response,
         })
     }
@@ -111,6 +126,62 @@ impl SevenZBackend {
         let password = password.to_string();
         self.call_janx(|response| WorkerCommand::UnpackToDescription {
             archive_data,
+            password,
+            response,
+        })
+    }
+
+    pub fn list_to_description_from_buffer(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_data = archive_data.to_vec();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::ListToDescriptionFromBuffer {
+            archive_data,
+            password,
+            response,
+        })
+    }
+
+    pub fn list_to_description_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_path = archive_path.to_string();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::ListToDescriptionFromFile {
+            archive_path,
+            password,
+            response,
+        })
+    }
+
+    pub fn get_metadata_from_buffer(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_data = archive_data.to_vec();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::GetMetadataFromBuffer {
+            archive_data,
+            password,
+            response,
+        })
+    }
+
+    pub fn get_metadata_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_path = archive_path.to_string();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::GetMetadataFromFile {
+            archive_path,
             password,
             response,
         })

@@ -6,18 +6,18 @@ use common_backend::SyncBackendThread;
 use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_success};
-use sevenz_rust2::{
-    compress_to_path, compress_to_path_encrypted, decompress_file, decompress_file_with_password,
-};
+use sevenz_rust2::{decompress_file, decompress_file_with_password};
 
 use crate::archive_description::ArchiveDescription;
+use crate::archive_info;
 use crate::archive_ops;
+use crate::archive_settings::PackSettings;
 
 pub enum WorkerCommand {
     Pack {
         source_path: String,
         archive_path: String,
-        password: String,
+        settings: JanxValue,
         response: Sender<JanxValue>,
     },
     Unpack {
@@ -28,7 +28,7 @@ pub enum WorkerCommand {
     },
     PackToBuffer {
         source_path: String,
-        password: String,
+        settings: JanxValue,
         response: Sender<Result<Vec<u8>, String>>,
     },
     UnpackFromBuffer {
@@ -39,15 +39,37 @@ pub enum WorkerCommand {
     },
     PackFromDescription {
         description: JanxValue,
+        settings: JanxValue,
         response: Sender<Result<Vec<u8>, String>>,
     },
     PackFromDescriptionToFile {
         description: JanxValue,
         archive_path: String,
+        settings: JanxValue,
         response: Sender<JanxValue>,
     },
     UnpackToDescription {
         archive_data: Vec<u8>,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    ListToDescriptionFromBuffer {
+        archive_data: Vec<u8>,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    ListToDescriptionFromFile {
+        archive_path: String,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    GetMetadataFromBuffer {
+        archive_data: Vec<u8>,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    GetMetadataFromFile {
+        archive_path: String,
         password: String,
         response: Sender<Result<JanxValue, String>>,
     },
@@ -73,22 +95,22 @@ impl Session {
         }
     }
 
-    fn pack(&self, source_path: &str, archive_path: &str, password: &str) -> JanxValue {
+    fn pack(
+        &self,
+        source_path: &str,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
         self.log(&format!("Pack {} -> {}", source_path, archive_path));
 
-        if !Path::new(source_path).exists() {
-            return janx_error(format!("Source path not found: {}", source_path));
-        }
-
-        let result = if password.is_empty() {
-            compress_to_path(source_path, archive_path)
-        } else {
-            compress_to_path_encrypted(source_path, archive_path, password.into())
+        let settings = match PackSettings::from_janx(settings) {
+            Ok(settings) => settings,
+            Err(error) => return janx_error(error),
         };
 
-        match result {
+        match archive_ops::pack_path_to_file(source_path, archive_path, &settings) {
             Ok(()) => janx_success(None, None),
-            Err(error) => janx_error(error.to_string()),
+            Err(error) => janx_error(error),
         }
     }
 
@@ -111,9 +133,10 @@ impl Session {
         }
     }
 
-    fn pack_to_buffer(&self, source_path: &str, password: &str) -> Result<Vec<u8>, String> {
+    fn pack_to_buffer(&self, source_path: &str, settings: &JanxValue) -> Result<Vec<u8>, String> {
         self.log(&format!("PackToBuffer {}", source_path));
-        archive_ops::pack_path_to_buffer(source_path, password)
+        let settings = PackSettings::from_janx(settings)?;
+        archive_ops::pack_path_to_buffer(source_path, &settings)
     }
 
     fn unpack_from_buffer(
@@ -129,21 +152,32 @@ impl Session {
         }
     }
 
-    fn pack_from_description(&self, description: &JanxValue) -> Result<Vec<u8>, String> {
+    fn pack_from_description(
+        &self,
+        description: &JanxValue,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
         self.log("PackFromDescription");
         let parsed = ArchiveDescription::from_janx(description)?;
-        archive_ops::pack_description_to_buffer(&parsed)
+        let settings = PackSettings::from_janx(settings)?;
+        archive_ops::pack_description_to_buffer(&parsed, &settings)
     }
 
     fn pack_from_description_to_file(
         &self,
         description: &JanxValue,
         archive_path: &str,
+        settings: &JanxValue,
     ) -> JanxValue {
         self.log(&format!("PackFromDescriptionToFile -> {}", archive_path));
         match ArchiveDescription::from_janx(description) {
-            Ok(parsed) => match archive_ops::pack_description_to_file(&parsed, archive_path) {
-                Ok(()) => janx_success(None, None),
+            Ok(parsed) => match PackSettings::from_janx(settings) {
+                Ok(settings) => {
+                    match archive_ops::pack_description_to_file(&parsed, archive_path, &settings) {
+                        Ok(()) => janx_success(None, None),
+                        Err(error) => janx_error(error),
+                    }
+                }
                 Err(error) => janx_error(error),
             },
             Err(error) => janx_error(error),
@@ -158,6 +192,42 @@ impl Session {
         self.log("UnpackToDescription");
         archive_ops::unpack_buffer_to_description(archive_data, password)
     }
+
+    fn list_to_description_from_buffer(
+        &self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log("ListToDescriptionFromBuffer");
+        archive_info::list_from_buffer(archive_data, password)
+    }
+
+    fn list_to_description_from_file(
+        &self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log(&format!("ListToDescriptionFromFile {}", archive_path));
+        archive_info::list_from_file(archive_path, password)
+    }
+
+    fn get_metadata_from_buffer(
+        &self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log("GetMetadataFromBuffer");
+        archive_info::metadata_from_buffer(archive_data, password)
+    }
+
+    fn get_metadata_from_file(
+        &self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log(&format!("GetMetadataFromFile {}", archive_path));
+        archive_info::metadata_from_file(archive_path, password)
+    }
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
@@ -169,10 +239,10 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                 WorkerCommand::Pack {
                     source_path,
                     archive_path,
-                    password,
+                    settings,
                     response,
                 } => {
-                    let result = session.pack(&source_path, &archive_path, &password);
+                    let result = session.pack(&source_path, &archive_path, &settings);
                     let _ = response.send(result);
                 }
                 WorkerCommand::Unpack {
@@ -186,10 +256,10 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                 }
                 WorkerCommand::PackToBuffer {
                     source_path,
-                    password,
+                    settings,
                     response,
                 } => {
-                    let result = session.pack_to_buffer(&source_path, &password);
+                    let result = session.pack_to_buffer(&source_path, &settings);
                     let _ = response.send(result);
                 }
                 WorkerCommand::UnpackFromBuffer {
@@ -202,16 +272,22 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                         session.unpack_from_buffer(&archive_data, &destination_path, &password);
                     let _ = response.send(result);
                 }
-                WorkerCommand::PackFromDescription { description, response } => {
-                    let result = session.pack_from_description(&description);
+                WorkerCommand::PackFromDescription {
+                    description,
+                    settings,
+                    response,
+                } => {
+                    let result = session.pack_from_description(&description, &settings);
                     let _ = response.send(result);
                 }
                 WorkerCommand::PackFromDescriptionToFile {
                     description,
                     archive_path,
+                    settings,
                     response,
                 } => {
-                    let result = session.pack_from_description_to_file(&description, &archive_path);
+                    let result =
+                        session.pack_from_description_to_file(&description, &archive_path, &settings);
                     let _ = response.send(result);
                 }
                 WorkerCommand::UnpackToDescription {
@@ -220,6 +296,38 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                     response,
                 } => {
                     let result = session.unpack_to_description(&archive_data, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::ListToDescriptionFromBuffer {
+                    archive_data,
+                    password,
+                    response,
+                } => {
+                    let result = session.list_to_description_from_buffer(&archive_data, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::ListToDescriptionFromFile {
+                    archive_path,
+                    password,
+                    response,
+                } => {
+                    let result = session.list_to_description_from_file(&archive_path, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::GetMetadataFromBuffer {
+                    archive_data,
+                    password,
+                    response,
+                } => {
+                    let result = session.get_metadata_from_buffer(&archive_data, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::GetMetadataFromFile {
+                    archive_path,
+                    password,
+                    response,
+                } => {
+                    let result = session.get_metadata_from_file(&archive_path, &password);
                     let _ = response.send(result);
                 }
                 WorkerCommand::SetLogger { logger, response } => {

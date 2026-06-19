@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="46978034-c299-4f34-9b03-745fca92c895">
+  <name>OPI_7z</name>
+  <synonym>
+    <key>ru</key>
+    <value>7z (ОПИ)</value>
+  </synonym>
+  <comment>Модуль для работы с 7z-архивами из набора ОПИ</comment>
+  <clientManagedApplication>true</clientManagedApplication>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

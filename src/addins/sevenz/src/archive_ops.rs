@@ -3,27 +3,50 @@ use std::io::{Cursor, Seek, Write};
 use std::path::Path;
 
 use common_core::JanxValue;
-use sevenz_rust2::{
-    compress, compress_encrypted, decompress, decompress_with_password, encoder_options::AesEncoderOptions,
-    ArchiveEntry, ArchiveReader, ArchiveWriter, EncoderMethod, Password,
-};
+use sevenz_rust2::{decompress, decompress_with_password, ArchiveEntry, ArchiveReader, ArchiveWriter};
 
 use crate::archive_description::{join_archive_path, ArchiveDescription, ArchiveNode};
+use crate::archive_settings::PackSettings;
 
-pub fn pack_path_to_buffer(source_path: &str, password: &str) -> Result<Vec<u8>, String> {
+pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
     if !Path::new(source_path).exists() {
         return Err(format!("Source path not found: {}", source_path));
     }
 
-    let writer = Cursor::new(Vec::new());
-    let writer = if password.is_empty() {
-        compress(source_path, writer).map_err(|error| error.to_string())?
-    } else {
-        compress_encrypted(source_path, writer, password.into())
-            .map_err(|error| error.to_string())?
-    };
+    let mut archive_writer =
+        ArchiveWriter::new(Cursor::new(Vec::new())).map_err(|error| error.to_string())?;
+    settings.apply_to_writer(&mut archive_writer);
+    pack_source_path(&mut archive_writer, source_path, settings.solid)?;
 
-    Ok(writer.into_inner())
+    archive_writer
+        .finish()
+        .map(|writer| writer.into_inner())
+        .map_err(|error| error.to_string())
+}
+
+pub fn pack_path_to_file(
+    source_path: &str,
+    archive_path: &str,
+    settings: &PackSettings,
+) -> Result<(), String> {
+    if !Path::new(source_path).exists() {
+        return Err(format!("Source path not found: {}", source_path));
+    }
+
+    if let Some(parent) = Path::new(archive_path).parent() {
+        if !parent.as_os_str().is_empty() {
+            fs::create_dir_all(parent)
+                .map_err(|error| format!("Failed to create archive directory: {}", error))?;
+        }
+    }
+
+    let file = File::create(archive_path)
+        .map_err(|error| format!("Failed to create archive file: {}", error))?;
+    let mut archive_writer = ArchiveWriter::new(file).map_err(|error| error.to_string())?;
+    settings.apply_to_writer(&mut archive_writer);
+    pack_source_path(&mut archive_writer, source_path, settings.solid)?;
+    archive_writer.finish().map_err(|error| error.to_string())?;
+    Ok(())
 }
 
 pub fn unpack_buffer_to_path(
@@ -47,19 +70,14 @@ pub fn unpack_buffer_to_path(
     }
 }
 
-pub fn pack_description_to_buffer(description: &ArchiveDescription) -> Result<Vec<u8>, String> {
-    let writer = Cursor::new(Vec::new());
-    let mut archive_writer = ArchiveWriter::new(writer).map_err(|error| error.to_string())?;
-
-    if !description.password.is_empty() {
-        archive_writer.set_content_methods(vec![
-            AesEncoderOptions::new(Password::new(&description.password)).into(),
-            EncoderMethod::LZMA2.into(),
-        ]);
-    }
-
+pub fn pack_description_to_buffer(
+    description: &ArchiveDescription,
+    settings: &PackSettings,
+) -> Result<Vec<u8>, String> {
+    let mut archive_writer =
+        ArchiveWriter::new(Cursor::new(Vec::new())).map_err(|error| error.to_string())?;
+    settings.apply_to_writer(&mut archive_writer);
     push_nodes(&description.entries, "", &mut archive_writer)?;
-
     archive_writer
         .finish()
         .map(|writer| writer.into_inner())
@@ -69,8 +87,9 @@ pub fn pack_description_to_buffer(description: &ArchiveDescription) -> Result<Ve
 pub fn pack_description_to_file(
     description: &ArchiveDescription,
     archive_path: &str,
+    settings: &PackSettings,
 ) -> Result<(), String> {
-    let archive_data = pack_description_to_buffer(description)?;
+    let archive_data = pack_description_to_buffer(description, settings)?;
 
     if let Some(parent) = Path::new(archive_path).parent() {
         if !parent.as_os_str().is_empty() {
@@ -113,7 +132,25 @@ pub fn unpack_buffer_to_description(
         }
     }
 
-    Ok(ArchiveDescription::from_flat_entries(password.to_string(), &collected).to_janx())
+    Ok(ArchiveDescription::from_flat_entries(&collected).to_janx())
+}
+
+fn pack_source_path<W: Write + Seek>(
+    archive_writer: &mut ArchiveWriter<W>,
+    source_path: &str,
+    solid: bool,
+) -> Result<(), String> {
+    if solid {
+        archive_writer
+            .push_source_path(source_path, |_| true)
+            .map_err(|error| error.to_string())?;
+    } else {
+        archive_writer
+            .push_source_path_non_solid(source_path, |_| true)
+            .map_err(|error| error.to_string())?;
+    }
+
+    Ok(())
 }
 
 fn push_nodes<W: Write + Seek>(

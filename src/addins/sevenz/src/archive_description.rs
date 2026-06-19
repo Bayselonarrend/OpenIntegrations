@@ -3,9 +3,10 @@ use std::path::Path;
 
 use common_core::{FromJanx, JanxValue, janx};
 
+use crate::archive_info::EntryInfo;
+
 #[derive(Debug, Clone)]
 pub struct ArchiveDescription {
-    pub password: String,
     pub entries: Vec<ArchiveNode>,
 }
 
@@ -31,24 +32,16 @@ impl ArchiveDescription {
             .as_object()
             .ok_or_else(|| "Archive description must be a Janx object".to_string())?;
 
-        let password = object
-            .get("password")
-            .and_then(String::from_janx)
-            .unwrap_or_default();
-
         let entries_value = object
             .get("entries")
             .ok_or_else(|| "Archive description must contain 'entries'".to_string())?;
 
         let entries = parse_entries(entries_value)?;
 
-        Ok(Self { password, entries })
+        Ok(Self { entries })
     }
 
-    pub fn from_flat_entries(
-        password: String,
-        entries: &[(String, bool, Option<Vec<u8>>)],
-    ) -> Self {
+    pub fn from_flat_entries(entries: &[(String, bool, Option<Vec<u8>>)]) -> Self {
         let mut tree = TreeDir::default();
 
         for (path, is_directory, data) in entries {
@@ -56,17 +49,27 @@ impl ArchiveDescription {
         }
 
         Self {
-            password,
             entries: tree.into_nodes(),
         }
     }
 
     pub fn to_janx(&self) -> JanxValue {
         janx!({
-            "password": self.password.clone(),
             "entries": nodes_to_janx(&self.entries),
         })
     }
+}
+
+pub fn build_list_description(entries: &[EntryInfo]) -> JanxValue {
+    let mut tree = TreeListDir::default();
+
+    for entry in entries {
+        tree.insert(entry);
+    }
+
+    janx!({
+        "entries": tree.into_janx(),
+    })
 }
 
 fn parse_entries(value: &JanxValue) -> Result<Vec<ArchiveNode>, String> {
@@ -219,5 +222,74 @@ impl TreeDir {
         }
 
         nodes
+    }
+}
+
+#[derive(Default)]
+struct TreeListDir {
+    subdirs: BTreeMap<String, TreeListDir>,
+    files: BTreeMap<String, ListFileMeta>,
+}
+
+#[derive(Clone)]
+struct ListFileMeta {
+    size: u64,
+    compressed_size: u64,
+}
+
+impl TreeListDir {
+    fn insert(&mut self, entry: &EntryInfo) {
+        let path = entry.path.trim_matches('/').replace('\\', "/");
+        if path.is_empty() {
+            return;
+        }
+
+        let parts: Vec<&str> = path.split('/').collect();
+        self.insert_parts(&parts, entry);
+    }
+
+    fn insert_parts(&mut self, parts: &[&str], entry: &EntryInfo) {
+        if parts.len() == 1 {
+            if entry.is_directory {
+                self.subdirs.entry(parts[0].to_string()).or_default();
+            } else {
+                self.files.insert(
+                    parts[0].to_string(),
+                    ListFileMeta {
+                        size: entry.size,
+                        compressed_size: entry.compressed_size,
+                    },
+                );
+            }
+            return;
+        }
+
+        self.subdirs
+            .entry(parts[0].to_string())
+            .or_default()
+            .insert_parts(&parts[1..], entry);
+    }
+
+    fn into_janx(self) -> JanxValue {
+        let mut nodes = Vec::new();
+
+        for (name, subdir) in self.subdirs {
+            nodes.push(janx!({
+                "name": name,
+                "directory": true,
+                "entries": subdir.into_janx(),
+            }));
+        }
+
+        for (name, meta) in self.files {
+            nodes.push(janx!({
+                "name": name,
+                "directory": false,
+                "size": meta.size,
+                "compressed_size": meta.compressed_size,
+            }));
+        }
+
+        JanxValue::Array(nodes)
     }
 }

@@ -21,9 +21,14 @@ impl AddIn {
         lock_unpoisoned(&self.backend)
     }
 
-    pub fn pack(&mut self, source_path: &str, archive_path: &str, password: &str) -> JanxValue {
+    pub fn pack(
+        &mut self,
+        source_path: &str,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
         self.lock_backend()
-            .pack(source_path, archive_path, password)
+            .pack(source_path, archive_path, settings)
     }
 
     pub fn unpack(
@@ -36,8 +41,12 @@ impl AddIn {
             .unpack(archive_path, destination_path, password)
     }
 
-    pub fn pack_to_buffer(&mut self, source_path: &str, password: &str) -> Result<Vec<u8>, String> {
-        self.lock_backend().pack_to_buffer(source_path, password)
+    pub fn pack_to_buffer(
+        &mut self,
+        source_path: &str,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        self.lock_backend().pack_to_buffer(source_path, settings)
     }
 
     pub fn unpack_from_buffer(
@@ -53,17 +62,20 @@ impl AddIn {
     pub fn pack_from_description(
         &mut self,
         description: &JanxValue,
+        settings: &JanxValue,
     ) -> Result<Vec<u8>, String> {
-        self.lock_backend().pack_from_description(description)
+        self.lock_backend()
+            .pack_from_description(description, settings)
     }
 
     pub fn pack_from_description_to_file(
         &mut self,
         description: &JanxValue,
         archive_path: &str,
+        settings: &JanxValue,
     ) -> JanxValue {
         self.lock_backend()
-            .pack_from_description_to_file(description, archive_path)
+            .pack_from_description_to_file(description, archive_path, settings)
     }
 
     pub fn unpack_to_description(
@@ -73,6 +85,42 @@ impl AddIn {
     ) -> Result<JanxValue, String> {
         self.lock_backend()
             .unpack_to_description(archive_data, password)
+    }
+
+    pub fn list_to_description_from_buffer(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .list_to_description_from_buffer(archive_data, password)
+    }
+
+    pub fn list_to_description_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .list_to_description_from_file(archive_path, password)
+    }
+
+    pub fn get_metadata_from_buffer(
+        &mut self,
+        archive_data: &[u8],
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .get_metadata_from_buffer(archive_data, password)
+    }
+
+    pub fn get_metadata_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .get_metadata_from_file(archive_path, password)
     }
 
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
