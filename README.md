@@ -60,9 +60,9 @@
 
 Форматы данных:
 
-   <a href="https://openintegrations.dev/docs/Instructions/RSS/"><img src="media/Janx.png" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/Janx/"><img src="media/Janx.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
-  <a href="https://openintegrations.dev/docs/Instructions/RSS/"><img src="media/MessagePack.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/MessagePack/"><img src="media/MessagePack.png" width="40"></a>
 
 </div> 
 <br>
