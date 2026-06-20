@@ -150,15 +150,3 @@
 
 #КонецОбласти
 
-
-#Region Alternate
-
-Function ArchiveDirectory(Val Archiver, Val Directory, Val ArchivePath = "", Val Settings = Undefined) Export
-    Return АрхивироватьКаталог(Archiver, Directory, ArchivePath, Settings);
-EndFunction
-
-Function UnarchiveDirectory(Val Archiver, Val ArchivePath, Val DestinationDirectory, Val Password = "") Export
-    Return РазархивироватьКаталог(Archiver, ArchivePath, DestinationDirectory, Password);
-EndFunction
-
-#EndRegion

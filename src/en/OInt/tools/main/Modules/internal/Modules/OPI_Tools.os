@@ -1136,10 +1136,10 @@ EndFunction
 Function IsDirectory(Path) Export
 
     If TypeOf(Path) = Type("File") Then
-        File           = Path;
+        File        = Path;
     Else
         OPI_TypeConversion.GetLine(Path);
-        File           = New File(Path);
+        File        = New File(Path);
     EndIf;
 
     Return File.Exists() And File.IsDirectory();

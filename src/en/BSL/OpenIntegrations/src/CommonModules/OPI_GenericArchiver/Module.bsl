@@ -43,8 +43,9 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-#Use "./internal"
+// #Use "./internal"
 
+#If Not WebClient Then // !OPI
 
 #Region Internal
 
@@ -138,8 +139,8 @@ EndFunction
 
 Function CreateArchiver(Val View)
 
-    If View = "7z" Then
-        AddIn  = OPI_AddIns.GetAddIn(View);
+    If View   = "7z" Then
+        AddIn = OPI_AddIns.GetAddIn(View);
     Else
         Raise StrTemplate("Unsupported archiver %1", View);
     EndIf;
@@ -150,15 +151,4 @@ EndFunction
 
 #EndRegion
 
-
-#Region Alternate
-
-Function АрхивироватьКаталог(Val Архиватор, Val Каталог, Val ПутьАрхива = "", Val Настройки = Undefined) Export
-    Return ArchiveDirectory(Архиватор, Каталог, ПутьАрхива, Настройки);
-EndFunction
-
-Function РазархивироватьКаталог(Val Архиватор, Val ПутьАрхива, Val КаталогНазначения, Val Пароль = "") Export
-    Return UnarchiveDirectory(Архиватор, ПутьАрхива, КаталогНазначения, Пароль);
-EndFunction
-
-#EndRegion
+#EndIf // !OPI

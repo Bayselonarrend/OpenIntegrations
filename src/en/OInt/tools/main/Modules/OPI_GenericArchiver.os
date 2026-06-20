@@ -43,9 +43,8 @@
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
 
-// #Use "./internal"
+#Use "./internal"
 
-#If Not WebClient Then // !OPI
 
 #Region Internal
 
@@ -139,8 +138,8 @@ EndFunction
 
 Function CreateArchiver(Val View)
 
-    If View = "7z" Then
-        AddIn  = OPI_AddIns.GetAddIn(View);
+    If View   = "7z" Then
+        AddIn = OPI_AddIns.GetAddIn(View);
     Else
         Raise StrTemplate("Unsupported archiver %1", View);
     EndIf;
@@ -151,4 +150,3 @@ EndFunction
 
 #EndRegion
 
-#EndIf // !OPI
