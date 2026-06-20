@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="86c261d7-2729-405f-9d39-5d9104a56bd1">
   <name>OPI_Интеграция</name>
   <synonym>
+    <key>en</key>
+    <value>Интеграция (ОПИ)</value>
     <key>ru</key>
     <value>Интеграция (ОПИ)</value>
   </synonym>

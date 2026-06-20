@@ -25,13 +25,15 @@ Procedure DisplayStartPage() Export
 
 	Version = OPIObject.GetVersion();
 	ModuleCommandMapping = OPIObject.GetCommandModuleMapping();
-	CommandArray = New Array;
+	ComandNameList = New ValueList;
 	
 	For Each Command In ModuleCommandMapping Do
-		CommandArray.Add(Command.Key)
+		ComandNameList.Add(Command.Key)
 	EndDo;
-
-	CommandList = StrConcat(CommandArray, ", ");
+	
+	ComandNameList.SortByValue();
+	
+	CommandList = StrConcat(ComandNameList.UnloadValues(), ", ");
 
 	OffsetLength = 11;
 	NewLineTab = "           ";

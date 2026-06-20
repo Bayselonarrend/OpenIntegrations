@@ -41,7 +41,6 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
-
 #Region Public
 
 // Generate code retrieval link

@@ -67,7 +67,6 @@
 #Use "../../../../api/sqlite"
 #Use asserts
 
-
 #Region Internal
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
@@ -569,7 +568,6 @@ Function IsCLITest() Export
     Try
 
         Data = GetEnvironmentVariable("OINT_TESTS_CLI");
-
 
     Except
         Return False;

@@ -425,8 +425,18 @@ Procedure ReportResult(Val Text, Val Status = "")
 	EndIf;
 
 	If ValueIsFilled(OutputFile) Then
+		
+		OutputFileNormalized = TrimAll(String(OutputFile));
+		
+		If OutputFileNormalized = "<base64>" Or OutputFileNormalized = "<hex>" Then
+			
+			Text = GetBinaryDataRepresentation(Text, OutputFile);
+			
+		Else
+			
+			Text = WriteValueToFile(Text, OutputFileNormalized);
 
-		Text = WriteValueToFile(Text, OutputFile);
+		EndIf;
 
 	ElsIf TypeOf(Text) = Type("BinaryData") Then
 
@@ -478,6 +488,20 @@ Procedure PrepareRecord(Value, Path)
 	EndIf;
 
 EndProcedure
+
+Function GetBinaryDataRepresentation(Val Text, Val OutputFile)
+
+	Value = ?(TypeOf(Text) = Type("BinaryData"), Text, GetBinaryDataFromString(String(Text)));
+	
+	If OutputFile = "<base64>" Then
+		Representation = GetBase64StringFromBinaryData(Value);
+	Else
+		Representation = GetHexStringFromBinaryData(Value);
+	EndIf;
+	
+	Return Representation;
+	
+EndFunction
 
 #EndRegion
 

@@ -57,6 +57,7 @@
   <compatibilityMode>8.3.10</compatibilityMode>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
   <commonPictures>CommonPicture.OPI_Logo</commonPictures>
+  <commonPictures>CommonPicture.OPI_Icon</commonPictures>
   <sessionParameters>SessionParameter.OPI_AdvancedCallSettings</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_7z</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>

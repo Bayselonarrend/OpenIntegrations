@@ -42,7 +42,6 @@
 
 Var CurrentSettings;
 
-
 #Region Public
 
 // Call with settings
@@ -229,7 +228,6 @@ Function SetSettings(Val Settings) Export
 
         CurrentSettings = Settings;
 
-
     EndIf;
 
     Return CurrentSettings;
@@ -282,7 +280,6 @@ Procedure DeleteSettings() Export
 
     //@skip-check module-unused-local-variable
     CurrentSettings = New Structure;
-
 
 EndProcedure
 

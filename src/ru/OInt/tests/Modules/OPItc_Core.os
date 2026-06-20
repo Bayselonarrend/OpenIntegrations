@@ -141,7 +141,6 @@
 #КонецОбласти
 
 
-
 #Region Alternate
 
 Procedure CheckIBToLastBuildCompliance() Export

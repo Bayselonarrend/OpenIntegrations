@@ -141,7 +141,6 @@ EndProcedure
 #EndRegion
 
 
-
 #Region Alternate
 
 Procedure ПроверитьСоответствиеИБПоследнейСборке() Export

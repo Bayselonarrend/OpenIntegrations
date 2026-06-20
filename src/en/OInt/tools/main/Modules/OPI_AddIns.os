@@ -48,7 +48,6 @@
 #Use "./internal"
 #Use "../../../formats/janx"
 
-
 #Region Internal
 
 #Region Main

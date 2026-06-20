@@ -70,7 +70,6 @@
 #Use asserts
 #Use "internal"
 
-
 // For YAxUnit
 
 Procedure ИсполняемыеСценарии() Export

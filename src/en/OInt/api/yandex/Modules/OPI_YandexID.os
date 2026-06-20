@@ -39,7 +39,6 @@
 #Use "../../../tools/main"
 #Use "../../../tools/http"
 
-
 #Region Public
 
 // Get confirmation code

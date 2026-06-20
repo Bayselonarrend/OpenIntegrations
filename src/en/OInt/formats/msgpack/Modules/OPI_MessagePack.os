@@ -49,7 +49,6 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-
 #Region Public
 
 #Region CommonMethods

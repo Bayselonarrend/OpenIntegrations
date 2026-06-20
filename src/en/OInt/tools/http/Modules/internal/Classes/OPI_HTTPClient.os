@@ -53,8 +53,6 @@
 
 #Use "../../../../main"
 
-
-
 // Processor
 
 Var Initialized; // Flag indicating that the mandatory Initialize() function was called
@@ -116,7 +114,6 @@ Var AdvancedResponse; // Include code and headers in structure of response
 Var Multipart; // Flag indicating the body is set in Multipart format
 Var Boundary; // Boundary for separating body parts
 Var LineSeparator; // Body line separator
-
 
 #Region Public
 

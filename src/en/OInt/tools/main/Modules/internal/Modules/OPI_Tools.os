@@ -44,7 +44,6 @@
 
 #Use "./internal"
 
-
 #Region Internal
 
 #Region WebMethods
@@ -784,7 +783,6 @@ Function GetCurrentDate() Export
     Else
 
         CurrentDate = Undefined;
-
 
     EndIf;
 

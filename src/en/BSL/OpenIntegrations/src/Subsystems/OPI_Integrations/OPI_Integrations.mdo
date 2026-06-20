@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:Subsystem xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="86c261d7-2729-405f-9d39-5d9104a56bd1">
+<mdclass:Subsystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="86c261d7-2729-405f-9d39-5d9104a56bd1">
   <name>OPI_Integrations</name>
   <synonym>
     <key>en</key>
-    <value>Integrations</value>
+    <value>Integration (OpenIntegrations)</value>
     <key>ru</key>
-    <value>Integrations</value>
+    <value>Integration (OpenIntegrations)</value>
   </synonym>
+  <extension xsi:type="mdclassExtension:SubsystemExtension">
+    <commandInterface>Extended</commandInterface>
+  </extension>
   <includeHelpInContents>true</includeHelpInContents>
+  <includeInCommandInterface>true</includeInCommandInterface>
+  <picture xsi:type="core:PictureRef">
+    <picture>CommonPicture.OPI_Icon</picture>
+  </picture>
   <content>CommonModule.OPI_Tools</content>
   <content>CommonModule.OPI_Cryptography</content>
   <content>CommonModule.OPI_TypeConversion</content>
@@ -23,4 +30,5 @@
   <content>CommonModule.OPI_GoogleSheets</content>
   <content>CommonModule.OPI_Slack</content>
   <content>CommonModule.OPI_Airtable</content>
+  <content>DataProcessor.OPI_ControlPannel</content>
 </mdclass:Subsystem>

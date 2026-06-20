@@ -37,7 +37,6 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-
 #Область СлужебныйПрограммныйИнтерфейс
 
 Процедура ПолучитьДвоичныеДанные(Значение, Знач Безусловно = Ложь, Знач ПопыткаB64 = Истина) Экспорт
