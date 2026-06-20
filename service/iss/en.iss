@@ -189,7 +189,7 @@ begin
   AddonDescription.WordWrap := True;
   AddonDescription.Width := 350;
   AddonDescription.Height := 120; 
-  AddonDescription.Top := 85;
+  AddonDescription.Top := 75;
   AddonDescription.AutoSize := True;
     
   AddonCheckBox := TNewCheckBox.Create(WizardForm);
