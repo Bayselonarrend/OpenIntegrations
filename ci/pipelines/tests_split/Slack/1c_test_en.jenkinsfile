@@ -52,8 +52,7 @@ def noteVrunnerLog(String libraryName, String logFile) {
 }
 
 def runLibraryTest(String libraryName, String configPath) {
-    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-        script {
+    script {
             def logFile = "./test_results/${libraryName}.vrunner.log"
             def codeFile = "./test_results/${libraryName}.code"
             def ibConnection = '/SDEVSRV/OpenIntegrationsEng'
@@ -134,7 +133,6 @@ def runLibraryTest(String libraryName, String configPath) {
             if (testExitCode != "0") {
                 error "Tests ${libraryName} failed with exit code: ${testExitCode}"
             }
-        }
     }
 }
 
