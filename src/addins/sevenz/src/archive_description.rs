@@ -167,7 +167,6 @@ fn node_to_janx(node: &ArchiveNode) -> JanxValue {
         ArchiveNode::FileFromData { name, data } => janx!({
             "name": name.clone(),
             "directory": false,
-            "from_path": false,
             "data": JanxValue::binary(data.clone()),
         }),
     }
