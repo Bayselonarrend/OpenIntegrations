@@ -39,6 +39,27 @@ After executing the requested action, the program outputs the result and termina
 
 ![demo](../img/3.gif)
 
+## Binary data representation
+
+In addition to a file path, the `--out` parameter accepts special values for printing the result to the console as a text representation. Names are lowercase and wrapped with `_` on both sides:
+
+| `--out` value | Description |
+|---------------|-------------|
+| `_hex_` | hexadecimal string (HEX) |
+| `_base64_` | Base64 string |
+| `_utf8_` | UTF-8 text |
+
+Representation mode applies to binary data returned by a method. If a method returns a string, it is first converted to an internal binary form and then printed in the selected format.
+
+```powershell
+oint msgpack SerializeData --value "{'a': 'b'}" --raw true --out _hex_
+oint hashsum --out _utf8_
+```
+
+When a file path is specified (for example, `--out result.bin`), data is written to the file in its original binary form. Special values `_hex_`, `_base64_`, and `_utf8_` are intended for console output only and do not create a file with that name.
+
+
+
 ## Control Sequences
 
 The use of standard control sequences is allowed in passed parameters: `\n`, `\r`, `\v`, and `\f`. They are converted to line feed, carriage return, vertical tab, and form feed characters respectively, in all arguments except:

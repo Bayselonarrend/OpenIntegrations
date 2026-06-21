@@ -10,6 +10,12 @@
                 "icon": "media/Lua.png",
                 "description_ru": "Основные методы (6 функций)",
                 "description_en": "Core methods (6 functions)"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "В CLI добавлены специальные значения `--out` (`_hex_`, `_base64_`, `_utf8_`) для вывода двоичных данных и строк в консоль в текстовом виде",
+                "description_en": "CLI now supports special `--out` values (`_hex_`, `_base64_`, `_utf8_`) to print binary data and strings to the console as text"
             }
         ]
     },
