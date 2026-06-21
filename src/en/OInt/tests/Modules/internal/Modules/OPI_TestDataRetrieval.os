@@ -18404,7 +18404,12 @@ Procedure TruncateString(Value, Val SymbolCount)
 
     If TypeOf(Value) = Type("String") Then
         If StrLen(Value) > SymbolCount Then
-            Value    = Left(Value, SymbolCount) + "...";
+
+            Try
+                Value = Left(Value, SymbolCount) + "...";
+            Except
+            EndTry;
+
         EndIf;
     EndIf;
 
@@ -18446,7 +18451,7 @@ Function PrepareJSONData(Data)
 
     EndIf;
 
-    TruncateString(Data, 100);
+    TruncateString(Data, 1000);
 
     Return Data;
 
