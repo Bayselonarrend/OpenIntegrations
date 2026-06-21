@@ -1,5 +1,5 @@
 use std::fs::{self, File};
-use std::io::{Cursor, Seek, Write};
+use std::io::{Cursor, Read, Seek, Write};
 use std::path::Path;
 
 use common_core::JanxValue;
@@ -113,6 +113,26 @@ pub fn unpack_buffer_to_description(
     let mut reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
         .map_err(|error| error.to_string())?;
 
+    unpack_reader_to_description(&mut reader)
+}
+
+pub fn unpack_file_to_description(
+    archive_path: &str,
+    password: &str,
+) -> Result<JanxValue, String> {
+    if !Path::new(archive_path).exists() {
+        return Err(format!("Archive not found: {}", archive_path));
+    }
+
+    let mut reader = ArchiveReader::open(archive_path, password.into())
+        .map_err(|error| error.to_string())?;
+
+    unpack_reader_to_description(&mut reader)
+}
+
+fn unpack_reader_to_description<R: Read + Seek>(
+    reader: &mut ArchiveReader<R>,
+) -> Result<JanxValue, String> {
     let file_list: Vec<(String, bool)> = reader
         .archive()
         .files

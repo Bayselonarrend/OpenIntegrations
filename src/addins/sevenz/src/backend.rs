@@ -21,7 +21,7 @@ impl SevenZBackend {
         }
     }
 
-    pub fn pack(
+    pub fn pack_to_file_from_file(
         &mut self,
         source_path: &str,
         archive_path: &str,
@@ -30,7 +30,7 @@ impl SevenZBackend {
         let source_path = source_path.to_string();
         let archive_path = archive_path.to_string();
         let settings = settings.clone();
-        self.call(|response| WorkerCommand::Pack {
+        self.call(|response| WorkerCommand::PackToFileFromFile {
             source_path,
             archive_path,
             settings,
@@ -38,7 +38,52 @@ impl SevenZBackend {
         })
     }
 
-    pub fn unpack(
+    pub fn pack_to_buffer_from_file(
+        &mut self,
+        source_path: &str,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        let source_path = source_path.to_string();
+        let settings = settings.clone();
+        self.call_binary(|response| WorkerCommand::PackToBufferFromFile {
+            source_path,
+            settings,
+            response,
+        })
+    }
+
+    pub fn pack_to_buffer_from_description(
+        &mut self,
+        description: &JanxValue,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        let description = description.clone();
+        let settings = settings.clone();
+        self.call_binary(|response| WorkerCommand::PackToBufferFromDescription {
+            description,
+            settings,
+            response,
+        })
+    }
+
+    pub fn pack_to_file_from_description(
+        &mut self,
+        description: &JanxValue,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
+        let description = description.clone();
+        let archive_path = archive_path.to_string();
+        let settings = settings.clone();
+        self.call(|response| WorkerCommand::PackToFileFromDescription {
+            description,
+            archive_path,
+            settings,
+            response,
+        })
+    }
+
+    pub fn unpack_to_file_from_file(
         &mut self,
         archive_path: &str,
         destination_path: &str,
@@ -47,7 +92,7 @@ impl SevenZBackend {
         let archive_path = archive_path.to_string();
         let destination_path = destination_path.to_string();
         let password = password.to_string();
-        self.call(|response| WorkerCommand::Unpack {
+        self.call(|response| WorkerCommand::UnpackToFileFromFile {
             archive_path,
             destination_path,
             password,
@@ -55,21 +100,7 @@ impl SevenZBackend {
         })
     }
 
-    pub fn pack_to_buffer(
-        &mut self,
-        source_path: &str,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        let source_path = source_path.to_string();
-        let settings = settings.clone();
-        self.call_binary(|response| WorkerCommand::PackToBuffer {
-            source_path,
-            settings,
-            response,
-        })
-    }
-
-    pub fn unpack_from_buffer(
+    pub fn unpack_to_file_from_buffer(
         &mut self,
         archive_data: &[u8],
         destination_path: &str,
@@ -78,7 +109,7 @@ impl SevenZBackend {
         let archive_data = archive_data.to_vec();
         let destination_path = destination_path.to_string();
         let password = password.to_string();
-        self.call(|response| WorkerCommand::UnpackFromBuffer {
+        self.call(|response| WorkerCommand::UnpackToFileFromBuffer {
             archive_data,
             destination_path,
             password,
@@ -86,46 +117,29 @@ impl SevenZBackend {
         })
     }
 
-    pub fn pack_from_description(
-        &mut self,
-        description: &JanxValue,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        let description = description.clone();
-        let settings = settings.clone();
-        self.call_binary(|response| WorkerCommand::PackFromDescription {
-            description,
-            settings,
-            response,
-        })
-    }
-
-    pub fn pack_from_description_to_file(
-        &mut self,
-        description: &JanxValue,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        let description = description.clone();
-        let archive_path = archive_path.to_string();
-        let settings = settings.clone();
-        self.call(|response| WorkerCommand::PackFromDescriptionToFile {
-            description,
-            archive_path,
-            settings,
-            response,
-        })
-    }
-
-    pub fn unpack_to_description(
+    pub fn unpack_to_description_from_buffer(
         &mut self,
         archive_data: &[u8],
         password: &str,
     ) -> Result<JanxValue, String> {
         let archive_data = archive_data.to_vec();
         let password = password.to_string();
-        self.call_janx(|response| WorkerCommand::UnpackToDescription {
+        self.call_janx(|response| WorkerCommand::UnpackToDescriptionFromBuffer {
             archive_data,
+            password,
+            response,
+        })
+    }
+
+    pub fn unpack_to_description_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        let archive_path = archive_path.to_string();
+        let password = password.to_string();
+        self.call_janx(|response| WorkerCommand::UnpackToDescriptionFromFile {
+            archive_path,
             password,
             response,
         })

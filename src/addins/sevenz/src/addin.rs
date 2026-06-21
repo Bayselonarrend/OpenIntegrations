@@ -21,70 +21,80 @@ impl AddIn {
         lock_unpoisoned(&self.backend)
     }
 
-    pub fn pack(
+    pub fn pack_to_file_from_file(
         &mut self,
         source_path: &str,
         archive_path: &str,
         settings: &JanxValue,
     ) -> JanxValue {
         self.lock_backend()
-            .pack(source_path, archive_path, settings)
+            .pack_to_file_from_file(source_path, archive_path, settings)
     }
 
-    pub fn unpack(
+    pub fn pack_to_buffer_from_file(
+        &mut self,
+        source_path: &str,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        self.lock_backend()
+            .pack_to_buffer_from_file(source_path, settings)
+    }
+
+    pub fn pack_to_buffer_from_description(
+        &mut self,
+        description: &JanxValue,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        self.lock_backend()
+            .pack_to_buffer_from_description(description, settings)
+    }
+
+    pub fn pack_to_file_from_description(
+        &mut self,
+        description: &JanxValue,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
+        self.lock_backend()
+            .pack_to_file_from_description(description, archive_path, settings)
+    }
+
+    pub fn unpack_to_file_from_file(
         &mut self,
         archive_path: &str,
         destination_path: &str,
         password: &str,
     ) -> JanxValue {
         self.lock_backend()
-            .unpack(archive_path, destination_path, password)
+            .unpack_to_file_from_file(archive_path, destination_path, password)
     }
 
-    pub fn pack_to_buffer(
-        &mut self,
-        source_path: &str,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        self.lock_backend().pack_to_buffer(source_path, settings)
-    }
-
-    pub fn unpack_from_buffer(
+    pub fn unpack_to_file_from_buffer(
         &mut self,
         archive_data: &[u8],
         destination_path: &str,
         password: &str,
     ) -> JanxValue {
         self.lock_backend()
-            .unpack_from_buffer(archive_data, destination_path, password)
+            .unpack_to_file_from_buffer(archive_data, destination_path, password)
     }
 
-    pub fn pack_from_description(
-        &mut self,
-        description: &JanxValue,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        self.lock_backend()
-            .pack_from_description(description, settings)
-    }
-
-    pub fn pack_from_description_to_file(
-        &mut self,
-        description: &JanxValue,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        self.lock_backend()
-            .pack_from_description_to_file(description, archive_path, settings)
-    }
-
-    pub fn unpack_to_description(
+    pub fn unpack_to_description_from_buffer(
         &mut self,
         archive_data: &[u8],
         password: &str,
     ) -> Result<JanxValue, String> {
         self.lock_backend()
-            .unpack_to_description(archive_data, password)
+            .unpack_to_description_from_buffer(archive_data, password)
+    }
+
+    pub fn unpack_to_description_from_file(
+        &mut self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.lock_backend()
+            .unpack_to_description_from_file(archive_path, password)
     }
 
     pub fn list_to_description_from_buffer(

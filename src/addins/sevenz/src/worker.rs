@@ -14,42 +14,47 @@ use crate::archive_ops;
 use crate::archive_settings::PackSettings;
 
 pub enum WorkerCommand {
-    Pack {
+    PackToFileFromFile {
         source_path: String,
         archive_path: String,
         settings: JanxValue,
         response: Sender<JanxValue>,
     },
-    Unpack {
-        archive_path: String,
-        destination_path: String,
-        password: String,
-        response: Sender<JanxValue>,
-    },
-    PackToBuffer {
+    PackToBufferFromFile {
         source_path: String,
         settings: JanxValue,
         response: Sender<Result<Vec<u8>, String>>,
     },
-    UnpackFromBuffer {
-        archive_data: Vec<u8>,
-        destination_path: String,
-        password: String,
-        response: Sender<JanxValue>,
-    },
-    PackFromDescription {
+    PackToBufferFromDescription {
         description: JanxValue,
         settings: JanxValue,
         response: Sender<Result<Vec<u8>, String>>,
     },
-    PackFromDescriptionToFile {
+    PackToFileFromDescription {
         description: JanxValue,
         archive_path: String,
         settings: JanxValue,
         response: Sender<JanxValue>,
     },
-    UnpackToDescription {
+    UnpackToFileFromFile {
+        archive_path: String,
+        destination_path: String,
+        password: String,
+        response: Sender<JanxValue>,
+    },
+    UnpackToFileFromBuffer {
         archive_data: Vec<u8>,
+        destination_path: String,
+        password: String,
+        response: Sender<JanxValue>,
+    },
+    UnpackToDescriptionFromBuffer {
+        archive_data: Vec<u8>,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    UnpackToDescriptionFromFile {
+        archive_path: String,
         password: String,
         response: Sender<Result<JanxValue, String>>,
     },
@@ -95,13 +100,16 @@ impl Session {
         }
     }
 
-    fn pack(
+    fn pack_to_file_from_file(
         &self,
         source_path: &str,
         archive_path: &str,
         settings: &JanxValue,
     ) -> JanxValue {
-        self.log(&format!("Pack {} -> {}", source_path, archive_path));
+        self.log(&format!(
+            "PackToFileFromFile {} -> {}",
+            source_path, archive_path
+        ));
 
         let settings = match PackSettings::from_janx(settings) {
             Ok(settings) => settings,
@@ -114,8 +122,58 @@ impl Session {
         }
     }
 
-    fn unpack(&self, archive_path: &str, destination_path: &str, password: &str) -> JanxValue {
-        self.log(&format!("Unpack {} -> {}", archive_path, destination_path));
+    fn pack_to_buffer_from_file(
+        &self,
+        source_path: &str,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        self.log(&format!("PackToBufferFromFile {}", source_path));
+        let settings = PackSettings::from_janx(settings)?;
+        archive_ops::pack_path_to_buffer(source_path, &settings)
+    }
+
+    fn pack_to_buffer_from_description(
+        &self,
+        description: &JanxValue,
+        settings: &JanxValue,
+    ) -> Result<Vec<u8>, String> {
+        self.log("PackToBufferFromDescription");
+        let parsed = ArchiveDescription::from_janx(description)?;
+        let settings = PackSettings::from_janx(settings)?;
+        archive_ops::pack_description_to_buffer(&parsed, &settings)
+    }
+
+    fn pack_to_file_from_description(
+        &self,
+        description: &JanxValue,
+        archive_path: &str,
+        settings: &JanxValue,
+    ) -> JanxValue {
+        self.log(&format!("PackToFileFromDescription -> {}", archive_path));
+        match ArchiveDescription::from_janx(description) {
+            Ok(parsed) => match PackSettings::from_janx(settings) {
+                Ok(settings) => {
+                    match archive_ops::pack_description_to_file(&parsed, archive_path, &settings) {
+                        Ok(()) => janx_success(None, None),
+                        Err(error) => janx_error(error),
+                    }
+                }
+                Err(error) => janx_error(error),
+            },
+            Err(error) => janx_error(error),
+        }
+    }
+
+    fn unpack_to_file_from_file(
+        &self,
+        archive_path: &str,
+        destination_path: &str,
+        password: &str,
+    ) -> JanxValue {
+        self.log(&format!(
+            "UnpackToFileFromFile {} -> {}",
+            archive_path, destination_path
+        ));
 
         if !Path::new(archive_path).exists() {
             return janx_error(format!("Archive not found: {}", archive_path));
@@ -133,64 +191,35 @@ impl Session {
         }
     }
 
-    fn pack_to_buffer(&self, source_path: &str, settings: &JanxValue) -> Result<Vec<u8>, String> {
-        self.log(&format!("PackToBuffer {}", source_path));
-        let settings = PackSettings::from_janx(settings)?;
-        archive_ops::pack_path_to_buffer(source_path, &settings)
-    }
-
-    fn unpack_from_buffer(
+    fn unpack_to_file_from_buffer(
         &self,
         archive_data: &[u8],
         destination_path: &str,
         password: &str,
     ) -> JanxValue {
-        self.log(&format!("UnpackFromBuffer -> {}", destination_path));
+        self.log(&format!("UnpackToFileFromBuffer -> {}", destination_path));
         match archive_ops::unpack_buffer_to_path(archive_data, destination_path, password) {
             Ok(()) => janx_success(None, None),
             Err(error) => janx_error(error),
         }
     }
 
-    fn pack_from_description(
-        &self,
-        description: &JanxValue,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        self.log("PackFromDescription");
-        let parsed = ArchiveDescription::from_janx(description)?;
-        let settings = PackSettings::from_janx(settings)?;
-        archive_ops::pack_description_to_buffer(&parsed, &settings)
-    }
-
-    fn pack_from_description_to_file(
-        &self,
-        description: &JanxValue,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        self.log(&format!("PackFromDescriptionToFile -> {}", archive_path));
-        match ArchiveDescription::from_janx(description) {
-            Ok(parsed) => match PackSettings::from_janx(settings) {
-                Ok(settings) => {
-                    match archive_ops::pack_description_to_file(&parsed, archive_path, &settings) {
-                        Ok(()) => janx_success(None, None),
-                        Err(error) => janx_error(error),
-                    }
-                }
-                Err(error) => janx_error(error),
-            },
-            Err(error) => janx_error(error),
-        }
-    }
-
-    fn unpack_to_description(
+    fn unpack_to_description_from_buffer(
         &self,
         archive_data: &[u8],
         password: &str,
     ) -> Result<JanxValue, String> {
-        self.log("UnpackToDescription");
+        self.log("UnpackToDescriptionFromBuffer");
         archive_ops::unpack_buffer_to_description(archive_data, password)
+    }
+
+    fn unpack_to_description_from_file(
+        &self,
+        archive_path: &str,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log(&format!("UnpackToDescriptionFromFile {}", archive_path));
+        archive_ops::unpack_file_to_description(archive_path, password)
     }
 
     fn list_to_description_from_buffer(
@@ -236,66 +265,88 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
 
         while let Ok(cmd) = rx.recv() {
             match cmd {
-                WorkerCommand::Pack {
+                WorkerCommand::PackToFileFromFile {
                     source_path,
                     archive_path,
                     settings,
                     response,
                 } => {
-                    let result = session.pack(&source_path, &archive_path, &settings);
+                    let result =
+                        session.pack_to_file_from_file(&source_path, &archive_path, &settings);
                     let _ = response.send(result);
                 }
-                WorkerCommand::Unpack {
-                    archive_path,
-                    destination_path,
-                    password,
-                    response,
-                } => {
-                    let result = session.unpack(&archive_path, &destination_path, &password);
-                    let _ = response.send(result);
-                }
-                WorkerCommand::PackToBuffer {
+                WorkerCommand::PackToBufferFromFile {
                     source_path,
                     settings,
                     response,
                 } => {
-                    let result = session.pack_to_buffer(&source_path, &settings);
+                    let result = session.pack_to_buffer_from_file(&source_path, &settings);
                     let _ = response.send(result);
                 }
-                WorkerCommand::UnpackFromBuffer {
-                    archive_data,
-                    destination_path,
-                    password,
-                    response,
-                } => {
-                    let result =
-                        session.unpack_from_buffer(&archive_data, &destination_path, &password);
-                    let _ = response.send(result);
-                }
-                WorkerCommand::PackFromDescription {
+                WorkerCommand::PackToBufferFromDescription {
                     description,
                     settings,
                     response,
                 } => {
-                    let result = session.pack_from_description(&description, &settings);
+                    let result =
+                        session.pack_to_buffer_from_description(&description, &settings);
                     let _ = response.send(result);
                 }
-                WorkerCommand::PackFromDescriptionToFile {
+                WorkerCommand::PackToFileFromDescription {
                     description,
                     archive_path,
                     settings,
                     response,
                 } => {
-                    let result =
-                        session.pack_from_description_to_file(&description, &archive_path, &settings);
+                    let result = session.pack_to_file_from_description(
+                        &description,
+                        &archive_path,
+                        &settings,
+                    );
                     let _ = response.send(result);
                 }
-                WorkerCommand::UnpackToDescription {
+                WorkerCommand::UnpackToFileFromFile {
+                    archive_path,
+                    destination_path,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_to_file_from_file(
+                        &archive_path,
+                        &destination_path,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackToFileFromBuffer {
+                    archive_data,
+                    destination_path,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_to_file_from_buffer(
+                        &archive_data,
+                        &destination_path,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackToDescriptionFromBuffer {
                     archive_data,
                     password,
                     response,
                 } => {
-                    let result = session.unpack_to_description(&archive_data, &password);
+                    let result =
+                        session.unpack_to_description_from_buffer(&archive_data, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackToDescriptionFromFile {
+                    archive_path,
+                    password,
+                    response,
+                } => {
+                    let result =
+                        session.unpack_to_description_from_file(&archive_path, &password);
                     let _ = response.send(result);
                 }
                 WorkerCommand::ListToDescriptionFromBuffer {
@@ -332,11 +383,11 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                 }
                 WorkerCommand::SetLogger { logger, response } => {
                     session.logger = Some(logger);
-                    session.log("Logger initialized");
+                    session.log("SetLogger");
                     let _ = response.send(Ok(()));
                 }
                 WorkerCommand::Shutdown => {
-                    session.log("Shutting down SevenZ backend");
+                    session.log("Shutdown");
                     break;
                 }
             }
