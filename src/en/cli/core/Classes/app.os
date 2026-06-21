@@ -427,10 +427,13 @@ Procedure ReportResult(Val Text, Val Status = "")
 	If ValueIsFilled(OutputFile) Then
 		
 		OutputFileNormalized = TrimAll(String(OutputFile));
+
+		AsRepresentation = StrStartsWith(OutputFileNormalized, "_") 
+			And StrEndsWith(OutputFileNormalized, "_");
 		
-		If OutputFileNormalized = "<base64>" Or OutputFileNormalized = "<hex>" Then
+		If AsRepresentation Then
 			
-			Text = GetBinaryDataRepresentation(Text, OutputFile);
+			Text = GetBinaryDataRepresentation(Text, OutputFileNormalized);
 			
 		Else
 			
@@ -493,10 +496,14 @@ Function GetBinaryDataRepresentation(Val Text, Val OutputFile)
 
 	Value = ?(TypeOf(Text) = Type("BinaryData"), Text, GetBinaryDataFromString(String(Text)));
 	
-	If OutputFile = "<base64>" Then
+	If OutputFile = "_base64_" Then
 		Representation = GetBase64StringFromBinaryData(Value);
-	Else
+	ElsIf OutputFile = "_utf8_" Then
+		Representation = GetStringFromBinaryData(Value);
+	ElsIf OutputFile = "_hex_" Then
 		Representation = GetHexStringFromBinaryData(Value);
+	Else
+		Representation = WriteValueToFile(Value, OutputFile);
 	EndIf;
 	
 	Return Representation;

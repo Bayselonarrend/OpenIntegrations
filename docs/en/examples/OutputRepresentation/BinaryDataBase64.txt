@@ -1,0 +1,14 @@
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected       = OPI_MessagePack.SerializeData(Data);
+    ExpectedBase64 = GetBase64StringFromBinaryData(Expected);
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_base64_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataBase64", , ExpectedBase64);

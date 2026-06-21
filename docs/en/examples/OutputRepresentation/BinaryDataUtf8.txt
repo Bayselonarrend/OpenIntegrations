@@ -1,0 +1,14 @@
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected     = OPI_MessagePack.SerializeData(Data);
+    ExpectedUtf8 = GetStringFromBinaryData(Expected);
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_utf8_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataUtf8", , ExpectedUtf8);

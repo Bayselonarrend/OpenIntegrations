@@ -1,0 +1,9 @@
+    ExpectedString = OPI_Tools.GetLastBuildHashSum();
+    ExpectedHex    = Upper(GetHexStringFromBinaryData(GetBinaryDataFromString(ExpectedString)));
+
+    Options = New Structure;
+    Options.Insert("out", "_hex_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "HexString", , ExpectedHex);

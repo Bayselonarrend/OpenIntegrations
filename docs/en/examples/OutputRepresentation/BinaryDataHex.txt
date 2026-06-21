@@ -1,0 +1,14 @@
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected    = OPI_MessagePack.SerializeData(Data);
+    ExpectedHex = Upper(GetHexStringFromBinaryData(Expected));
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_hex_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataHex", , ExpectedHex);

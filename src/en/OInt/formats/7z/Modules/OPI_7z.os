@@ -52,15 +52,15 @@
 // Packs files from the specified directory into an archive
 //
 // Parameters:
-// Directory   - String             - Path to directory for archiving                        - src
-// ArchivePath - String             - Path to save the archive. As binary data if not filled - dest
+// Directory   - String             - Path to the directory or data description for packing  - src
+// ArchivePath - String             - Path to save the archive. To binary data if not filled - dest
 // Settings    - Map Of KeyAndValue - Additional settings. See GetArchivingSettingsStructure - settings
 //
 // Returns:
 // BinaryData, Map Of KeyAndValue - Execution information or binary archive data
 Function ArchiveDirectory(Val Directory, Val ArchivePath = "", Val Settings = Undefined) Export
 
-    Return OPI_GenericArchiver.ArchiveDirectory("7z", Directory, ArchivePath, Settings);
+    Return OPI_GenericArchiver.Archive("7z", Directory, ArchivePath, Settings);
 
 EndFunction
 
@@ -68,15 +68,15 @@ EndFunction
 // Unpacks 7z archive to the specified directory
 //
 // Parameters:
-// ArchivePath          - String - Path to archive               - src
-// DestinationDirectory - String - Path to unpacking directory   - dest
-// Password             - String - archive password, if required - password
+// Archive              - String - Path to the archive on disk or binary data                 - src
+// DestinationDirectory - String - Directory path for unpacking. To binary data if not filled - dest
+// Password             - String - archive password, if required                              - password
 //
 // Returns:
 // Map Of KeyAndValue - Execution information
-Function UnarchiveDirectory(Val ArchivePath, Val DestinationDirectory, Val Password = "") Export
+Function UnarchiveDirectory(Val Archive, Val DestinationDirectory = "", Val Password = "") Export
 
-    Return OPI_GenericArchiver.UnarchiveDirectory("7z", ArchivePath, DestinationDirectory, Password);
+    Return OPI_GenericArchiver.Unzip("7z", Archive, DestinationDirectory, Password);
 
 EndFunction
 
@@ -133,8 +133,8 @@ Function АрхивироватьКаталог(Val Каталог, Val Путь
     Return ArchiveDirectory(Каталог, ПутьАрхива, Настройки);
 EndFunction
 
-Function РазархивироватьКаталог(Val ПутьАрхива, Val КаталогНазначения, Val Пароль = "") Export
-    Return UnarchiveDirectory(ПутьАрхива, КаталогНазначения, Пароль);
+Function РазархивироватьКаталог(Val Архив, Val КаталогНазначения = "", Val Пароль = "") Export
+    Return UnarchiveDirectory(Архив, КаталогНазначения, Пароль);
 EndFunction
 
 Function ПолучитьСтруктуруНастроекАрхивации(Val Пустая = False, Val КакСоответствие = False) Export

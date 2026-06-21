@@ -24,14 +24,14 @@
     {
      "name": "--src",
      "types": "String",
-     "description": "Path to directory for archiving",
+     "description": "Path to the directory or data description for packing",
      "default": null,
      "short": "-s"
     },
     {
      "name": "--dest",
      "types": "String",
-     "description": "Path to save the archive. As binary data if not filled",
+     "description": "Path to save the archive. To binary data if not filled",
      "default": "Empty value",
      "short": "-d"
     },
@@ -53,15 +53,15 @@
     {
      "name": "--src",
      "types": "String",
-     "description": "Path to archive",
+     "description": "Path to the archive on disk or binary data",
      "default": null,
      "short": "-s"
     },
     {
      "name": "--dest",
      "types": "String",
-     "description": "Path to unpacking directory",
-     "default": null,
+     "description": "Directory path for unpacking. To binary data if not filled",
+     "default": "Empty value",
      "short": "-d"
     },
     {

@@ -103,11 +103,15 @@ Procedure Z7_Archiving() Export
 
     CreateDirectory(BaseDirectory);
 
-    SourceDirectory    = Path7z(BaseDirectory, "src");
-    DestinateDirectory = Path7z(BaseDirectory, "out");
-    ArchivePath        = Path7z(BaseDirectory, "archive.7z");
+    SourceDirectory            = Path7z(BaseDirectory, "src");
+    DestinateDirectory         = Path7z(BaseDirectory, "out");
+    DestinationDirectoryBuffer = Path7z(BaseDirectory, "out_buffer");
+    ArchivePath                = Path7z(BaseDirectory, "archive.7z");
+    ArchivePathDescription     = Path7z(BaseDirectory, "archive_desc.7z");
 
     CreateDirectory(SourceDirectory);
+    CreateDirectory(DestinateDirectory);
+    CreateDirectory(DestinationDirectoryBuffer);
 
     ExpectedFiles = New Map;
 
@@ -127,12 +131,75 @@ Procedure Z7_Archiving() Export
     ExpectedFiles.Insert("config\settings.json", "{""enabled"": true}");
     GetBinaryDataFromString("{""enabled"": true}", "UTF-8").Write(Path7z(SourceDirectory, "config\settings.json"));
 
+    DescriptionRecords = New Array;
+
+    ReadmeItem = New Map;
+    ReadmeItem.Insert("name"      , "readme.txt");
+    ReadmeItem.Insert("directory" , False);
+    ReadmeItem.Insert("from_path" , True);
+    ReadmeItem.Insert("path"      , Path7z(SourceDirectory, "readme.txt"));
+    DescriptionRecords.Add(ReadmeItem);
+
+    DocsRecords = New Array;
+    NoteItem    = New Map;
+    NoteItem.Insert("name"      , "note.txt");
+    NoteItem.Insert("directory" , False);
+    NoteItem.Insert("from_path" , True);
+    NoteItem.Insert("path"      , Path7z(SourceDirectory, "docs\note.txt"));
+    DocsRecords.Add(NoteItem);
+
+    DocsItem = New Map;
+    DocsItem.Insert("name"      , "docs");
+    DocsItem.Insert("directory" , True);
+    DocsItem.Insert("entries"   , DocsRecords);
+    DescriptionRecords.Add(DocsItem);
+
+    DataRecords = New Array;
+    PayloadItem = New Map;
+    PayloadItem.Insert("name"      , "payload.bin");
+    PayloadItem.Insert("directory" , False);
+    PayloadItem.Insert("from_path" , True);
+    PayloadItem.Insert("path"      , Path7z(SourceDirectory, "data\nested\payload.bin"));
+    DataRecords.Add(PayloadItem);
+
+    DataItem      = New Map;
+    DataItem.Insert("name"      , "data");
+    DataItem.Insert("directory" , True);
+    NestedRecords = New Array;
+    NestedItem    = New Map;
+    NestedItem.Insert("name"      , "nested");
+    NestedItem.Insert("directory" , True);
+    NestedItem.Insert("entries"   , DataRecords);
+    NestedRecords.Add(NestedItem);
+    DataItem.Insert("entries"   , NestedRecords);
+    DescriptionRecords.Add(DataItem);
+
+    ConfigRecords = New Array;
+    SettingsItem  = New Map;
+    SettingsItem.Insert("name"      , "settings.json");
+    SettingsItem.Insert("directory" , False);
+    SettingsItem.Insert("from_path" , True);
+    SettingsItem.Insert("path"      , Path7z(SourceDirectory, "config\settings.json"));
+    ConfigRecords.Add(SettingsItem);
+
+    ConfigItem = New Map;
+    ConfigItem.Insert("name"      , "config");
+    ConfigItem.Insert("directory" , True);
+    ConfigItem.Insert("entries"   , ConfigRecords);
+    DescriptionRecords.Add(ConfigItem);
+
+    ArchiveDescription = New Map;
+    ArchiveDescription.Insert("entries", DescriptionRecords);
+
     Parameters = New Structure;
-    Parameters.Insert("SevenZ_BaseDir"      , BaseDirectory);
-    Parameters.Insert("SevenZ_SourceDir"    , SourceDirectory);
-    Parameters.Insert("SevenZ_ArchivePath"  , ArchivePath);
-    Parameters.Insert("SevenZ_DestDir"      , DestinateDirectory);
-    Parameters.Insert("SevenZ_ExpectedFiles", ExpectedFiles);
+    Parameters.Insert("SevenZ_BaseDir"        , BaseDirectory);
+    Parameters.Insert("SevenZ_SourceDir"      , SourceDirectory);
+    Parameters.Insert("SevenZ_ArchivePath"    , ArchivePath);
+    Parameters.Insert("SevenZ_ArchiveDescPath", ArchivePathDescription);
+    Parameters.Insert("SevenZ_DestDir"        , DestinateDirectory);
+    Parameters.Insert("SevenZ_DestBufferDir"  , DestinationDirectoryBuffer);
+    Parameters.Insert("SevenZ_Description"    , ArchiveDescription);
+    Parameters.Insert("SevenZ_ExpectedFiles"  , ExpectedFiles);
 
     Write7zParameters(Parameters);
 
@@ -185,19 +252,40 @@ Procedure Z7_ArchiveDirectory(Parameters)
     Result = OPI_7z.ArchiveDirectory(SourceDirectory);
     OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "ToMemory");
 
+    Description     = Parameters["SevenZ_Description"];
+    ArchivePathDesc = Parameters["SevenZ_ArchiveDescPath"];
+
+    Result = OPI_7z.ArchiveDirectory(Description, ArchivePathDesc);
+    OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "FromDescription", ArchivePathDesc);
+
+    Result = OPI_7z.ArchiveDirectory(Description);
+    OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "FromDescriptionToMemory");
+
 EndProcedure
 
 Procedure Z7_UnarchiveDirectory(Parameters)
 
-    ArchivePath        = Parameters["SevenZ_ArchivePath"];
-    DestinateDirectory = Parameters["SevenZ_DestDir"];
-    ExpectedFiles      = Parameters["SevenZ_ExpectedFiles"];
+    ArchivePath                = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory         = Parameters["SevenZ_DestDir"];
+    DestinationDirectoryBuffer = Parameters["SevenZ_DestBufferDir"];
+    ExpectedFiles              = Parameters["SevenZ_ExpectedFiles"];
 
     Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);
 
     // END
 
     OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", , DestinateDirectory, ExpectedFiles);
+
+    Result = OPI_7z.UnarchiveDirectory(ArchivePath);
+    OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", "ToDescription", "", ExpectedFiles);
+
+    ArchiveBinary = New BinaryData(ArchivePath);
+
+    Result = OPI_7z.UnarchiveDirectory(ArchiveBinary, DestinationDirectoryBuffer);
+    OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", "FromMemory", DestinationDirectoryBuffer, ExpectedFiles);
+
+    Result = OPI_7z.UnarchiveDirectory(ArchiveBinary);
+    OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", "ToDescriptionFromMemory", "", ExpectedFiles);
 
 EndProcedure
 

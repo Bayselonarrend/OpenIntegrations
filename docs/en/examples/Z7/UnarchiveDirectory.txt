@@ -1,5 +1,6 @@
-    ArchivePath        = Parameters["SevenZ_ArchivePath"];
-    DestinateDirectory = Parameters["SevenZ_DestDir"];
-    ExpectedFiles      = Parameters["SevenZ_ExpectedFiles"];
+    ArchivePath                = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory         = Parameters["SevenZ_DestDir"];
+    DestinationDirectoryBuffer = Parameters["SevenZ_DestBufferDir"];
+    ExpectedFiles              = Parameters["SevenZ_ExpectedFiles"];
 
     Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);

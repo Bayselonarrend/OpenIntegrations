@@ -17,12 +17,12 @@ import Admonition from '@theme/Admonition';
 <Tabs>
   <TabItem value="params" label="Parameters" default>
 
-`Function UnarchiveDirectory(Val ArchivePath, Val DestinationDirectory, Val Password = "") Export`
+`Function UnarchiveDirectory(Val Archive, Val DestinationDirectory = "", Val Password = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | ArchivePath | --src | String | &#x2714; | Path to archive |
-  | DestinationDirectory | --dest | String | &#x2714; | Path to unpacking directory |
+  | Archive | --src | String | &#x2714; | Path to the archive on disk or binary data |
+  | DestinationDirectory | --dest | String | &#x2716; | Directory path for unpacking. To binary data if not filled |
   | Password | --password | String | &#x2716; | archive password, if required |
 
 

@@ -107,11 +107,11 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
     EndDo;
 
-    // BSLLS:ExternalAppStarting-off
-    RunApp(LaunchString + " --out """ + ResultFile + """ --debug", , True);
-    // BSLLS:ExternalAppStarting-on
-
-    Result = ReadCLIResponse(ResultFile);
+    If IsCLIOutputRepresentation(Options) Then
+        Result = ExecuteCLITestWithOutputRepresentation(LaunchString, ResultFile);
+    Else
+        Result = ExecuteCLITestWithOutputToFile(LaunchString, ResultFile);
+    EndIf;
 
     If Record Then
         WriteCLICall(Library, Method, WriteOptions);
@@ -15557,7 +15557,7 @@ EndFunction
 
 Function Check_7z_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
 
-    If Option = "ToMemory" Then
+    If Option = "ToMemory" Or Option = "FromDescriptionToMemory" Then
 
         ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
         ExpectsThat(Result.Size() > 0).Равно(True);
@@ -15565,6 +15565,10 @@ Function Check_7z_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
     Else
 
         ExpectsThat(Result["result"]).Равно(True);
+
+        If Not ValueIsFilled(ArchivePath) Then
+            Return Result;
+        EndIf;
 
         ArchiveFile = New File(ArchivePath);
         ExpectsThat(ArchiveFile.Exists()).Равно(True);
@@ -15578,7 +15582,25 @@ EndFunction
 
 Function Check_7z_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If Option = "ToDescription" Or Option = "ToDescriptionFromMemory" Then
+
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+        ExpectsThat(Result["entries"] <> Undefined).Равно(True);
+        ExpectsThat(ExpectedFiles <> Undefined).Равно(True);
+        Check7zArchiveDescriptionContent(Result["entries"], ExpectedFiles);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+        Check7zArchiveFilesOnDisk(DestinationDirectory, ExpectedFiles);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check7zArchiveFilesOnDisk(DestinationDirectory, ExpectedFiles)
 
     For Each Pair In ExpectedFiles Do
 
@@ -15604,7 +15626,49 @@ Function Check_7z_UnarchiveDirectory(Val Result, Val Option, DestinationDirector
 
     EndDo;
 
-    Return Result;
+    Return True;
+
+EndFunction
+
+Function Check7zArchiveDescriptionContent(Records, ExpectedFiles, Prefix = "")
+
+    For Each Record In Records Do
+
+        If Record["directory"] Then
+
+            DirectoryName = Record["name"];
+            NewPrefix     = Prefix + DirectoryName + "\";
+            Check7zArchiveDescriptionContent(Record["entries"], ExpectedFiles, NewPrefix);
+
+        Else
+
+            RelativePath = Prefix + Record["name"];
+            Expected     = Undefined;
+
+            If OPI_Tools.ThisIsCollection(ExpectedFiles) Then
+                Expected = ExpectedFiles.Get(RelativePath);
+            EndIf;
+
+            ExpectsThat(Expected <> Undefined).Равно(True);
+            ExpectsThat(TypeOf(Record["data"])).Равно(Type("BinaryData"));
+
+            If TypeOf(Expected) = Type("Structure") And Expected.Property("binary") Then
+
+                ExpectedData = GetBinaryDataFromHexString(Expected.hex);
+                ExpectsThat(Record["data"].Size()).Равно(ExpectedData.Size());
+
+            Else
+
+                Text = GetStringFromBinaryData(Record["data"], "UTF-8");
+                ExpectsThat(Text).Равно(Expected);
+
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    Return True;
 
 EndFunction
 
@@ -17880,6 +17944,58 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
 EndFunction
 
+Function IsCLIOutputRepresentation(Val Options)
+
+    OutValue = Undefined;
+
+    If TypeOf(Options) = Type("Structure") Or TypeOf(Options) = Type("Map") Then
+
+        If Not Options.Property("out", OutValue) Then
+            Return False;
+        EndIf;
+
+    Else
+        Return False;
+    EndIf;
+
+    If Not ValueIsFilled(OutValue) Then
+        Return False;
+    EndIf;
+
+    OutString = TrimAll(String(OutValue));
+
+    Return StrStartsWith(OutString, "_") And StrEndsWith(OutString, "_");
+
+EndFunction
+
+Function ExecuteCLITestWithOutputRepresentation(Val LaunchString, Val ResultFile)
+
+    System = New SystemInfo;
+
+    If Find(Upper(System.OSVersion), "WINDOWS") > 0 Then
+        LaunchCommand = StrTemplate("cmd /c ""%1> %2 2>&1""", LaunchString, ResultFile);
+    Else
+        LaunchCommand = LaunchString + StrTemplate(" > %1 2>&1", ResultFile);
+    EndIf;
+
+    // BSLLS:ExternalAppStarting-off
+    RunApp(LaunchCommand, , True);
+    // BSLLS:ExternalAppStarting-on
+
+    Return TrimAll(GetStringFromBinaryData(New BinaryData(ResultFile)));
+
+EndFunction
+
+Function ExecuteCLITestWithOutputToFile(Val LaunchString, Val ResultFile)
+
+    // BSLLS:ExternalAppStarting-off
+    RunApp(LaunchString + " --out """ + ResultFile + """ --debug", , True);
+    // BSLLS:ExternalAppStarting-on
+
+    Return ReadCLIResponse(ResultFile);
+
+EndFunction
+
 Function ReadCLIResponse(Val ResultFile)
 
     Try
@@ -17957,9 +18073,7 @@ EndFunction
 
 Function TestResultAsText(Val Result, Val ForFile = False)
 
-    If ForFile Then
-        Result = PrepareJSONData(Result);
-    EndIf;
+    Result = PrepareJSONData(Result);
 
     Try
         Data = OPI_Tools.JSONString(Result);
@@ -18274,7 +18388,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
 
         EndIf;
 
-        DataText = TestResultAsText(Data, True);
+        DataText = TestResultAsText(Data);
 
         LogDocument = New TextDocument;
         LogDocument.SetText(DataText);

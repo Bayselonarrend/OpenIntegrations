@@ -51,24 +51,11 @@
 
 #Region Archiving
 
-Function ArchiveDirectory(Val Archiver, Val Directory, Val ArchivePath = "", Val Settings = Undefined) Export
+Function Archive(Val Archiver, Val Data, Val ArchivePath = "", Val Settings = Undefined) Export
 
-    OPI_TypeConversion.GetLine(Directory);
+    DataIsDescription = NormalizeArchivingData(Data);
 
-    DirectoryFile = New File(Directory);
-
-    If Not OPI_Tools.IsDirectory(DirectoryFile) Then
-
-        ErrorMap = New Map;
-        ErrorMap.Insert("result", False);
-        ErrorMap.Insert("error" , "Source directory not found!");
-        Return ErrorMap;
-
-    Else
-        Directory = DirectoryFile.FullName;
-    EndIf;
-
-    Archiver = CreateArchiver(Archiver);
+    ArchiverObject = CreateArchiver(Archiver);
 
     If Settings <> Undefined Then
 
@@ -79,15 +66,31 @@ Function ArchiveDirectory(Val Archiver, Val Directory, Val ArchivePath = "", Val
 
     JanxSettings = OPI_AddIns.SerializeJanx(Settings);
 
+    If DataIsDescription Then
+        SerializedData = OPI_AddIns.SerializeJanx(Data);
+    Else
+        SerializedData = Data;
+    EndIf;
+
     If ValueIsFilled(ArchivePath) Then
 
         OPI_TypeConversion.GetLine(ArchivePath);
-        Result = Archiver.Pack(Directory, ArchivePath, JanxSettings);
+
+        If DataIsDescription Then
+            Result = ArchiverObject.PackToFileFromDescription(SerializedData, ArchivePath, JanxSettings);
+        Else
+            Result = ArchiverObject.PackToFileFromFile(SerializedData, ArchivePath, JanxSettings);
+        EndIf;
+
         Result = OPI_AddIns.DesrializeJanx(Result);
 
     Else
 
-        Result = Archiver.PackToBuffer(Directory, JanxSettings);
+        If DataIsDescription Then
+            Result = ArchiverObject.PackToBufferFromDescription(SerializedData, JanxSettings);
+        Else
+            Result = ArchiverObject.PackToBufferFromFile(SerializedData, JanxSettings);
+        EndIf;
 
         If TypeOf(Result) = Type("BinaryData") Then
             Return Result;
@@ -104,28 +107,63 @@ Function ArchiveDirectory(Val Archiver, Val Directory, Val ArchivePath = "", Val
 
 EndFunction
 
-Function UnarchiveDirectory(Val Archiver, Val ArchivePath, Val DestinationDirectory, Val Password = "") Export
+Function Unzip(Val Archiver, Val Archive, Val DestinationDirectory = "", Val Password = "") Export
 
-    OPI_TypeConversion.GetLine(ArchivePath);
-    OPI_TypeConversion.GetLine(DestinationDirectory);
     OPI_TypeConversion.GetLine(Password);
 
-    ArchiveFile = New File(ArchivePath);
+    ArchiveAsBinary = TypeOf(Archive) = Type("BinaryData");
 
-    If Not ArchiveFile.Exists() Then
+    If Not ArchiveAsBinary Then
+
+        OPI_TypeConversion.GetLine(Archive);
+
+        ArchiveFile = New File(Archive);
+
+        If Not ArchiveFile.Exists() Then
+
+            ErrorMap = New Map;
+            ErrorMap.Insert("result", False);
+            ErrorMap.Insert("error" , "Archive file not found!");
+            Return ErrorMap;
+
+        Else
+            Archive = ArchiveFile.FullName;
+        EndIf;
+
+    EndIf;
+
+    ArchiverObject = CreateArchiver(Archiver);
+
+    If ValueIsFilled(DestinationDirectory) Then
+
+        OPI_TypeConversion.GetLine(DestinationDirectory);
+
+        If ArchiveAsBinary Then
+            Result = ArchiverObject.UnpackToFileFromBuffer(Archive, DestinationDirectory, Password);
+        Else
+            Result = ArchiverObject.UnpackToFileFromFile(Archive, DestinationDirectory, Password);
+        EndIf;
+
+    Else
+
+        If ArchiveAsBinary Then
+            Result = ArchiverObject.UnpackToDescriptionFromBuffer(Archive, Password);
+        Else
+            Result = ArchiverObject.UnpackToDescriptionFromFile(Archive, Password);
+        EndIf;
+
+    EndIf;
+
+    If TypeOf(Result) = Type("String") Then
 
         ErrorMap = New Map;
         ErrorMap.Insert("result", False);
-        ErrorMap.Insert("error" , "Archive file not found!");
+        ErrorMap.Insert("error" , Result);
         Return ErrorMap;
 
-    Else
-        ArchivePath = ArchiveFile.FullName;
     EndIf;
 
-    Archiver = CreateArchiver(Archiver);
-    Result   = Archiver.Unpack(ArchivePath, DestinationDirectory, Password);
-    Result   = OPI_AddIns.DesrializeJanx(Result);
+    Result = OPI_AddIns.DesrializeJanx(Result);
 
     Return Result;
 
@@ -146,6 +184,26 @@ Function CreateArchiver(Val View)
     EndIf;
 
     Return AddIn;
+
+EndFunction
+
+Function NormalizeArchivingData(Data)
+
+    If TypeOf(Data) = Type("String") Then
+
+        DataOnDisk = New File(Data);
+
+        If DataOnDisk.Exists() And DataOnDisk.IsDirectory() Then
+            Data = DataOnDisk.FullName;
+            Return False;
+        EndIf;
+
+    EndIf;
+
+    ErrorText = "Data for archiving should be represented as a path to a directory on disk or as a collection";
+    OPI_TypeConversion.GetKeyValueCollection(Data, ErrorText);
+
+    Return True;
 
 EndFunction
 

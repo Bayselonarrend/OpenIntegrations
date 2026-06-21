@@ -1,0 +1,8 @@
+    Expected = OPI_Tools.GetLastBuildHashSum();
+
+    Options = New Structure;
+    Options.Insert("out", "_utf8_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "Utf8String", , Expected);

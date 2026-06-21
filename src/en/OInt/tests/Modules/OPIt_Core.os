@@ -115,6 +115,22 @@ Procedure ValidateAdvancedCall() Export
 
 EndProcedure
 
+Procedure CheckCLIOutputRepresentation() Export
+
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
+        Message("CLI ONLY");
+        Return;
+    EndIf;
+
+    OutputRepresentation_BinaryDataHex();
+    OutputRepresentation_BinaryDataBase64();
+    OutputRepresentation_BinaryDataUtf8();
+    OutputRepresentation_HexString();
+    OutputRepresentation_Base64String();
+    OutputRepresentation_Utf8String();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -198,6 +214,106 @@ Procedure AdvancedCall_BackgroundCall(FunctionParameters)
 
 EndProcedure
 
+Procedure OutputRepresentation_BinaryDataHex()
+
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected    = OPI_MessagePack.SerializeData(Data);
+    ExpectedHex = Upper(GetHexStringFromBinaryData(Expected));
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_hex_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataHex", , ExpectedHex);
+
+    //END
+
+EndProcedure
+
+Procedure OutputRepresentation_BinaryDataBase64()
+
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected       = OPI_MessagePack.SerializeData(Data);
+    ExpectedBase64 = GetBase64StringFromBinaryData(Expected);
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_base64_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataBase64", , ExpectedBase64);
+
+EndProcedure
+
+Procedure OutputRepresentation_BinaryDataUtf8()
+
+    Data = New Map;
+    Data.Insert("a", "b");
+
+    Expected     = OPI_MessagePack.SerializeData(Data);
+    ExpectedUtf8 = GetStringFromBinaryData(Expected);
+
+    Options = New Structure;
+    Options.Insert("value", OPI_Tools.JSONString(Data));
+    Options.Insert("raw"  , "true");
+    Options.Insert("out"  , "_utf8_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("msgpack", "SerializeData", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "BinaryDataUtf8", , ExpectedUtf8);
+
+EndProcedure
+
+Procedure OutputRepresentation_HexString()
+
+    ExpectedString = OPI_Tools.GetLastBuildHashSum();
+    ExpectedHex    = Upper(GetHexStringFromBinaryData(GetBinaryDataFromString(ExpectedString)));
+
+    Options = New Structure;
+    Options.Insert("out", "_hex_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "HexString", , ExpectedHex);
+
+EndProcedure
+
+Procedure OutputRepresentation_Base64String()
+
+    ExpectedString = OPI_Tools.GetLastBuildHashSum();
+    ExpectedBase64 = GetBase64StringFromBinaryData(GetBinaryDataFromString(ExpectedString));
+
+    Options = New Structure;
+    Options.Insert("out", "_base64_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "Base64String", , ExpectedBase64);
+
+EndProcedure
+
+Procedure OutputRepresentation_Utf8String()
+
+    Expected = OPI_Tools.GetLastBuildHashSum();
+
+    Options = New Structure;
+    Options.Insert("out", "_utf8_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "Utf8String", , Expected);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -211,6 +327,10 @@ EndProcedure
 
 Procedure ПроверитьРасширенныйВызов() Export
     ValidateAdvancedCall();
+EndProcedure
+
+Procedure ПроверитьРепрезентациюВыводаCLI() Export
+    CheckCLIOutputRepresentation();
 EndProcedure
 
 #EndRegion

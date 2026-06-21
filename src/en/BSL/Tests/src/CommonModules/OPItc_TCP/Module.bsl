@@ -737,6 +737,7 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     // END
 
+    OPI_Tools.Pause(5);
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionList");
 
     OPI_TCP.CloseConnection(Client1);

@@ -1,0 +1,9 @@
+    ExpectedString = OPI_Tools.GetLastBuildHashSum();
+    ExpectedBase64 = GetBase64StringFromBinaryData(GetBinaryDataFromString(ExpectedString));
+
+    Options = New Structure;
+    Options.Insert("out", "_base64_");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", Options);
+
+    OPI_TestDataRetrieval.Process(Result, "Core", "Base64String", , ExpectedBase64);
