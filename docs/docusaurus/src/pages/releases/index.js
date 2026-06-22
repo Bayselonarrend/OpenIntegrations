@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
-import archive from '@site/data/releases-archive.json';
+import archive from '@site/archive/releases-archive.json';
 import styles from './releases.module.css';
 
 const ReleasesIndexPage = () => {

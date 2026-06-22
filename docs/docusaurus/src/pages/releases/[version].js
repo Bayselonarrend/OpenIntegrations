@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useParams } from '@docusaurus/router';
-import archive from '@site/data/releases-archive.json';
+import archive from '@site/archive/releases-archive.json';
 import styles from './releases.module.css';
 
 const langLabels = {

@@ -459,7 +459,7 @@
    },
    "archiveJsonPath": {
     "description": "Generated releases archive JSON for Docusaurus",
-    "value": "./docs/docusaurus/data/releases-archive.json"
+    "value": "./docs/docusaurus/archive/releases-archive.json"
    },
    "artifacts": {
     "description": "Release artifact filename templates. Placeholders: {version}, {lang}, {langUpper}",
