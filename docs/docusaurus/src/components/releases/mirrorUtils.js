@@ -91,6 +91,22 @@ export function buildMirrorPageLinks(archive, version, icons) {
   return links;
 }
 
+function getDownloadMirrorLabel(id, locale) {
+  if (id === 's3') {
+    return locale === 'en' ? 'Archive (S3)' : 'Архив (S3)';
+  }
+
+  if (id === 'github') {
+    return 'GitHub';
+  }
+
+  if (id === 'yandex') {
+    return 'Yandex.Disk';
+  }
+
+  return id;
+}
+
 export function buildDownloadMirrors({
   archive,
   version,
@@ -112,7 +128,7 @@ export function buildDownloadMirrors({
   if (availableIds.has('github') && artifact.githubUrl) {
     items.push({
       id: 'github',
-      label: 'GitHub',
+      label: getDownloadMirrorLabel('github', locale),
       hint: locale === 'en' ? 'Recommended' : 'Рекомендуется',
       icon: icons.github,
       url: artifact.githubUrl,
@@ -122,7 +138,7 @@ export function buildDownloadMirrors({
   if (availableIds.has('s3') && artifact.s3Url) {
     items.push({
       id: 's3',
-      label: 'S3',
+      label: getDownloadMirrorLabel('s3', locale),
       icon: icons.s3,
       url: artifact.s3Url,
     });
@@ -131,7 +147,7 @@ export function buildDownloadMirrors({
   if (availableIds.has('yandex') && yandexWebUrl) {
     items.push({
       id: 'yandex',
-      label: 'Yandex.Disk',
+      label: getDownloadMirrorLabel('yandex', locale),
       icon: icons.yandex,
       url: yandexWebUrl,
       opensWebUi: true,

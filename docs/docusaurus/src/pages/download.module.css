@@ -29,12 +29,12 @@
 .versionLink {
   color: #004943;
   font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
+  text-decoration: none;
 }
 
 .versionLink:hover {
   color: #003530;
+  text-decoration: none;
 }
 
 .downloadGroup {
@@ -213,8 +213,48 @@
 .cliTabs {
   display: flex;
   gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.cliInstallControls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
   margin-left: auto;
   flex-shrink: 0;
+}
+
+.cliMirrorTabs {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.cliMirrorTabButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: 1px solid #cfd8dc;
+  border-radius: 16px;
+  background: white;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.cliMirrorTabButton:hover {
+  background: #f3f4f6;
+}
+
+.cliMirrorTabButtonActive {
+  border-color: #004943;
+  background: #eef7f6;
+}
+
+.cliMirrorTabIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
 }
 
 .cliTabButton {
@@ -222,8 +262,9 @@
   border: 1px solid #cfd8dc;
   border-radius: 16px;
   background: white;
-  padding: 6px 14px;
+  padding: 8px 14px;
   font-size: 0.9rem;
+  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -408,5 +449,11 @@
 
   .cliInstallTopRow {
     flex-direction: column;
+  }
+
+  .cliInstallControls {
+    align-items: flex-start;
+    margin-left: 0;
+    flex-wrap: wrap;
   }
 }

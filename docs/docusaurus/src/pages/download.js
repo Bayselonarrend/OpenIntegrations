@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useMemo, useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
@@ -30,47 +30,79 @@ const cliInstallTabs = [
   { key: 'en', label: '🇬🇧 English' },
 ];
 
-const cliInstallByOs = [
-  {
-    os: 'Debian / Ubuntu',
-    commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint_2.3.0_all_ru.deb
-sudo apt install -y ./oint_2.3.0_all_ru.deb`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint_2.3.0_all_en.deb
-sudo apt install -y ./oint_2.3.0_all_en.deb`,
-    },
-  },
-  {
-    os: 'Fedora / RHEL',
-    commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint-2.3.0-1.noarch_ru.rpm
-sudo rpm -i oint-2.3.0-1.noarch_ru.rpm`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint-2.3.0-1.noarch_en.rpm
-sudo rpm -i oint-2.3.0-1.noarch_en.rpm`,
-    },
-  },
-  {
-    os: 'Linux (AppImage)',
-    commands: {
-      ru: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint-2.3.0_ru-x86_64.AppImage
-chmod +x ./oint-2.3.0_ru-x86_64.AppImage
-./oint-2.3.0_ru-x86_64.AppImage`,
-      en: `wget https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.3.0/oint-2.3.0_en-x86_64.AppImage
-chmod +x ./oint-2.3.0_en-x86_64.AppImage
-./oint-2.3.0_en-x86_64.AppImage`,
-    },
-  },
+const cliMirrorOptions = [
+  { key: 'github', label: 'GitHub' },
+  { key: 's3', label: 'S3' },
 ];
+
+function buildCliInstallByOs(version) {
+  return [
+    {
+      os: 'Debian / Ubuntu',
+      files: {
+        ru: `oint_${version}_all_ru.deb`,
+        en: `oint_${version}_all_en.deb`,
+      },
+      buildScript: (url, filename) => `wget ${url}\nsudo apt install -y ./${filename}`,
+    },
+    {
+      os: 'Fedora / RHEL',
+      files: {
+        ru: `oint-${version}-1.noarch_ru.rpm`,
+        en: `oint-${version}-1.noarch_en.rpm`,
+      },
+      buildScript: (url, filename) => `wget ${url}\nsudo rpm -i ${filename}`,
+    },
+    {
+      os: 'Linux (AppImage)',
+      files: {
+        ru: `oint-${version}_ru-x86_64.AppImage`,
+        en: `oint-${version}_en-x86_64.AppImage`,
+      },
+      buildScript: (url, filename) => `wget ${url}\nchmod +x ./${filename}\n./${filename}`,
+    },
+  ];
+}
+
+function getCliMirrorBaseUrl(mirror, version) {
+  if (mirror === 's3') {
+    return `${archive.s3BaseUrl}/versions/${version}`;
+  }
+
+  return `${archive.githubDownloadBase}/${version}`;
+}
 
 const DownloadPage = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mirrorSelection, setMirrorSelection] = useState(null);
   const [cliTab, setCliTab] = useState('ru');
+  const [cliMirror, setCliMirror] = useState('github');
   const thankYouClosed = useRef(false); // флаг: пользователь закрыл окно
   const iconBase = useBaseUrl('/img/releases/icons/');
+  const githubIcon = useBaseUrl('/img/github-logo.svg');
+  const s3Icon = useBaseUrl('/img/APIs/S3.png');
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
+  const availableMirrorIds = useMemo(
+    () => getAvailableMirrorIds(archive, currentVersion),
+    [],
+  );
+  const cliMirrorTabs = useMemo(
+    () => cliMirrorOptions.filter((option) => availableMirrorIds.has(option.key)),
+    [availableMirrorIds],
+  );
+  const cliInstallCommands = useMemo(() => {
+    const baseUrl = getCliMirrorBaseUrl(cliMirror, currentVersion);
+
+    return buildCliInstallByOs(currentVersion).map((osInfo) => ({
+      os: osInfo.os,
+      commands: {
+        ru: osInfo.buildScript(`${baseUrl}/${osInfo.files.ru}`, osInfo.files.ru),
+        en: osInfo.buildScript(`${baseUrl}/${osInfo.files.en}`, osInfo.files.en),
+      },
+    }));
+  }, [cliMirror]);
 
   const downloadItems = [
     {
@@ -281,21 +313,44 @@ const DownloadPage = () => {
                     <h3>Установка из консоли</h3>
                     <p>Быстрая установка через консоль для разных операционных систем</p>
                   </div>
-                  <div className={styles.cliTabs}>
-                    {cliInstallTabs.map((tab) => (
-                      <button
-                        key={tab.key}
-                        className={`${styles.cliTabButton} ${cliTab === tab.key ? styles.cliTabButtonActive : ''}`}
-                        onClick={() => setCliTab(tab.key)}
-                      >
-                        {tab.label}
-                      </button>
-                    ))}
+                  <div className={styles.cliInstallControls}>
+                    {cliMirrorTabs.length > 1 && (
+                      <div className={styles.cliMirrorTabs} role="group" aria-label="Download mirror">
+                        {cliMirrorTabs.map((mirror) => (
+                          <button
+                            key={mirror.key}
+                            type="button"
+                            className={`${styles.cliMirrorTabButton} ${cliMirror === mirror.key ? styles.cliMirrorTabButtonActive : ''}`}
+                            onClick={() => setCliMirror(mirror.key)}
+                            aria-label={mirror.label}
+                            title={mirror.label}
+                          >
+                            <img
+                              src={mirror.key === 'github' ? githubIcon : s3Icon}
+                              alt=""
+                              className={styles.cliMirrorTabIcon}
+                              loading="lazy"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    <div className={styles.cliTabs}>
+                      {cliInstallTabs.map((tab) => (
+                        <button
+                          key={tab.key}
+                          type="button"
+                          className={`${styles.cliTabButton} ${cliTab === tab.key ? styles.cliTabButtonActive : ''}`}
+                          onClick={() => setCliTab(tab.key)}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <div className={styles.cliInstallOsGrid}>
-                  {cliInstallByOs.map((osInfo) => {
-                    return (
+                  {cliInstallCommands.map((osInfo) => (
                     <div key={osInfo.os} className={styles.cliInstallCard}>
                       <div className={styles.cliCardHeader}>
                         <h4>{osInfo.os}</h4>
@@ -304,8 +359,7 @@ const DownloadPage = () => {
                         {osInfo.commands[cliTab]}
                       </CodeBlock>
                     </div>
-                    );
-                  })}
+                  ))}
                 </div>
               </div>
             )}
