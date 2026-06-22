@@ -65,10 +65,17 @@
 Function SerializeData(Val Data) Export
 
     ArrayOfBinary = New Array;
-    Offset        = 0;
-    Prepared      = PrepareValueForJSONJanx(Data, ArrayOfBinary, Offset);
-    JSONBD        = GetBinaryDataFromString(ValueInJSONJanx(Prepared), "UTF-8");
-    JSONSize      = JSONBD.Size();
+
+    Try
+        JSONString = ValueInJSONJanx(Data);
+    Except
+        Offset     = 0;
+        Data       = PrepareValueForJSONJanx(Data, ArrayOfBinary, Offset);
+        JSONString = ValueInJSONJanx(Data);
+    EndTry;
+
+    JSONBD   = GetBinaryDataFromString(JSONString, "UTF-8");
+    JSONSize = JSONBD.Size();
 
     DataStream = New MemoryStream();
     Record     = New DataWriter(DataStream);
