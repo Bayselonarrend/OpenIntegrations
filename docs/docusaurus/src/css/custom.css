@@ -636,7 +636,7 @@ li > a.menu__link {
 }
 
 .a7z > div > a::before{
-  content: url(../../static/img/APIs/small/a7z.png);
+  content: url(../../static/img/APIs/small/7z.png);
 }
 
 .Airtable > div > a::before{
