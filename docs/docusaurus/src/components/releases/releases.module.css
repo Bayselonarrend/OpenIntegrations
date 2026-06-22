@@ -1,7 +1,7 @@
 .pageHeader {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.7rem;
   margin-bottom: 1.5rem;
 }
 
@@ -11,7 +11,6 @@
   flex-shrink: 0;
   color: #004943;
   margin-top: 0.31rem;
-  margin-right: 10px;
 }
 
 .pageTitle {

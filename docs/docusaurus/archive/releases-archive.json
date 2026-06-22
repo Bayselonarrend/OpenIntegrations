@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-22T16:53:06",
+ "generatedAt": "2026-06-22T17:10:13",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -422,7 +422,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_2.2.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/OpenIntegrations_2.2.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/OpenIntegrations_2.2.0_en.cfe"
     },
     {
@@ -435,7 +434,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_2.2.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/OpenIntegrations_2.2.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/OpenIntegrations_2.2.0_ru.cfe"
     },
     {
@@ -448,7 +446,6 @@
      "icon": "cf",
      "lang": "en",
      "filename": "OpenIntegrations_2.2.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/OpenIntegrations_2.2.0_en.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/OpenIntegrations_2.2.0_en.cf"
     },
     {
@@ -461,7 +458,6 @@
      "icon": "cf",
      "lang": "ru",
      "filename": "OpenIntegrations_2.2.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/OpenIntegrations_2.2.0_ru.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/OpenIntegrations_2.2.0_ru.cf"
     },
     {
@@ -474,7 +470,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/XML_EN.zip"
     },
     {
@@ -487,7 +482,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/XML_RU.zip"
     },
     {
@@ -500,7 +494,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/EDT_EN.zip"
     },
     {
@@ -513,7 +506,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/EDT_RU.zip"
     },
     {
@@ -526,7 +518,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-2.2.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0_en.ospx"
     },
     {
@@ -539,7 +530,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-2.2.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0_ru.ospx"
     },
     {
@@ -552,7 +542,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-2.2.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-cli-2.2.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-cli-2.2.0_en.ospx"
     },
     {
@@ -565,7 +554,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-2.2.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-cli-2.2.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-cli-2.2.0_ru.ospx"
     },
     {
@@ -578,7 +566,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_2.2.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint_2.2.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint_2.2.0_installer_en.exe"
     },
     {
@@ -591,7 +578,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_2.2.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint_2.2.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint_2.2.0_installer_ru.exe"
     },
     {
@@ -604,7 +590,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_2.2.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint_2.2.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint_2.2.0_all_en.deb"
     },
     {
@@ -617,7 +602,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_2.2.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint_2.2.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint_2.2.0_all_ru.deb"
     },
     {
@@ -630,7 +614,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-2.2.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0-1.noarch_en.rpm"
     },
     {
@@ -643,7 +626,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-2.2.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0-1.noarch_ru.rpm"
     },
     {
@@ -656,7 +638,6 @@
      "icon": "appimage",
      "lang": "en",
      "filename": "oint-2.2.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0_en-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0_en-x86_64.AppImage"
     },
     {
@@ -669,7 +650,6 @@
      "icon": "appimage",
      "lang": "ru",
      "filename": "oint-2.2.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.2.0/oint-2.2.0_ru-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.2.0/oint-2.2.0_ru-x86_64.AppImage"
     }
    ]
@@ -784,7 +764,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_2.1.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/OpenIntegrations_2.1.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/OpenIntegrations_2.1.0_en.cfe"
     },
     {
@@ -797,7 +776,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_2.1.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/OpenIntegrations_2.1.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/OpenIntegrations_2.1.0_ru.cfe"
     },
     {
@@ -810,7 +788,6 @@
      "icon": "cf",
      "lang": "en",
      "filename": "OpenIntegrations_2.1.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/OpenIntegrations_2.1.0_en.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/OpenIntegrations_2.1.0_en.cf"
     },
     {
@@ -823,7 +800,6 @@
      "icon": "cf",
      "lang": "ru",
      "filename": "OpenIntegrations_2.1.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/OpenIntegrations_2.1.0_ru.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/OpenIntegrations_2.1.0_ru.cf"
     },
     {
@@ -836,7 +812,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/XML_EN.zip"
     },
     {
@@ -849,7 +824,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/XML_RU.zip"
     },
     {
@@ -862,7 +836,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/EDT_EN.zip"
     },
     {
@@ -875,7 +848,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/EDT_RU.zip"
     },
     {
@@ -888,7 +860,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-2.1.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_en.ospx"
     },
     {
@@ -901,7 +872,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-2.1.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_ru.ospx"
     },
     {
@@ -914,7 +884,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-2.1.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-cli-2.1.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-cli-2.1.0_en.ospx"
     },
     {
@@ -927,7 +896,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-2.1.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-cli-2.1.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-cli-2.1.0_ru.ospx"
     },
     {
@@ -940,7 +908,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_2.1.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint_2.1.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_installer_en.exe"
     },
     {
@@ -953,7 +920,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_2.1.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint_2.1.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_installer_ru.exe"
     },
     {
@@ -966,7 +932,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_2.1.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint_2.1.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_all_en.deb"
     },
     {
@@ -979,7 +944,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_2.1.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint_2.1.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint_2.1.0_all_ru.deb"
     },
     {
@@ -992,7 +956,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-2.1.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0-1.noarch_en.rpm"
     },
     {
@@ -1005,7 +968,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-2.1.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0-1.noarch_ru.rpm"
     },
     {
@@ -1018,7 +980,6 @@
      "icon": "appimage",
      "lang": "en",
      "filename": "oint-2.1.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0_en-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_en-x86_64.AppImage"
     },
     {
@@ -1031,7 +992,6 @@
      "icon": "appimage",
      "lang": "ru",
      "filename": "oint-2.1.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.1.0/oint-2.1.0_ru-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.1.0/oint-2.1.0_ru-x86_64.AppImage"
     }
    ]
@@ -1153,7 +1113,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_2.0.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/OpenIntegrations_2.0.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/OpenIntegrations_2.0.0_en.cfe"
     },
     {
@@ -1166,7 +1125,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_2.0.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/OpenIntegrations_2.0.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/OpenIntegrations_2.0.0_ru.cfe"
     },
     {
@@ -1179,7 +1137,6 @@
      "icon": "cf",
      "lang": "en",
      "filename": "OpenIntegrations_2.0.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/OpenIntegrations_2.0.0_en.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/OpenIntegrations_2.0.0_en.cf"
     },
     {
@@ -1192,7 +1149,6 @@
      "icon": "cf",
      "lang": "ru",
      "filename": "OpenIntegrations_2.0.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/OpenIntegrations_2.0.0_ru.cf",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/OpenIntegrations_2.0.0_ru.cf"
     },
     {
@@ -1205,7 +1161,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/XML_EN.zip"
     },
     {
@@ -1218,7 +1173,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/XML_RU.zip"
     },
     {
@@ -1231,7 +1185,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/EDT_EN.zip"
     },
     {
@@ -1244,7 +1197,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/EDT_RU.zip"
     },
     {
@@ -1257,7 +1209,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-2.0.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_en.ospx"
     },
     {
@@ -1270,7 +1221,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-2.0.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_ru.ospx"
     },
     {
@@ -1283,7 +1233,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-2.0.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-cli-2.0.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-cli-2.0.0_en.ospx"
     },
     {
@@ -1296,7 +1245,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-2.0.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-cli-2.0.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-cli-2.0.0_ru.ospx"
     },
     {
@@ -1309,7 +1257,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_2.0.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint_2.0.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_installer_en.exe"
     },
     {
@@ -1322,7 +1269,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_2.0.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint_2.0.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_installer_ru.exe"
     },
     {
@@ -1335,7 +1281,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_2.0.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint_2.0.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_en.deb"
     },
     {
@@ -1348,7 +1293,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_2.0.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint_2.0.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint_2.0.0_all_ru.deb"
     },
     {
@@ -1361,7 +1305,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-2.0.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_en.rpm"
     },
     {
@@ -1374,7 +1317,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-2.0.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0-1.noarch_ru.rpm"
     },
     {
@@ -1387,7 +1329,6 @@
      "icon": "appimage",
      "lang": "en",
      "filename": "oint-2.0.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0_en-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_en-x86_64.AppImage"
     },
     {
@@ -1400,7 +1341,6 @@
      "icon": "appimage",
      "lang": "ru",
      "filename": "oint-2.0.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/2.0.0/oint-2.0.0_ru-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/2.0.0/oint-2.0.0_ru-x86_64.AppImage"
     }
    ]
@@ -1459,7 +1399,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.34.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/OpenIntegrations_1.34.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/OpenIntegrations_1.34.0_en.cfe"
     },
     {
@@ -1472,7 +1411,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.34.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/OpenIntegrations_1.34.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/OpenIntegrations_1.34.0_ru.cfe"
     },
     {
@@ -1485,7 +1423,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/XML_EN.zip"
     },
     {
@@ -1498,7 +1435,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/XML_RU.zip"
     },
     {
@@ -1511,7 +1447,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/EDT_EN.zip"
     },
     {
@@ -1524,7 +1459,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/EDT_RU.zip"
     },
     {
@@ -1537,7 +1471,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.34.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0_en.ospx"
     },
     {
@@ -1550,7 +1483,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.34.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0_ru.ospx"
     },
     {
@@ -1563,7 +1495,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.34.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-cli-1.34.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-cli-1.34.0_en.ospx"
     },
     {
@@ -1576,7 +1507,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.34.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-cli-1.34.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-cli-1.34.0_ru.ospx"
     },
     {
@@ -1589,7 +1519,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.34.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint_1.34.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint_1.34.0_installer_en.exe"
     },
     {
@@ -1602,7 +1531,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.34.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint_1.34.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint_1.34.0_installer_ru.exe"
     },
     {
@@ -1615,7 +1543,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.34.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint_1.34.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint_1.34.0_all_en.deb"
     },
     {
@@ -1628,7 +1555,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.34.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint_1.34.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint_1.34.0_all_ru.deb"
     },
     {
@@ -1641,7 +1567,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.34.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0-1.noarch_en.rpm"
     },
     {
@@ -1654,7 +1579,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.34.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0-1.noarch_ru.rpm"
     },
     {
@@ -1667,7 +1591,6 @@
      "icon": "appimage",
      "lang": "en",
      "filename": "oint-1.34.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0_en-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0_en-x86_64.AppImage"
     },
     {
@@ -1680,7 +1603,6 @@
      "icon": "appimage",
      "lang": "ru",
      "filename": "oint-1.34.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/oint-1.34.0_ru-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/oint-1.34.0_ru-x86_64.AppImage"
     }
    ]
@@ -1760,7 +1682,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.33.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/OpenIntegrations_1.33.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/OpenIntegrations_1.33.0_en.cfe"
     },
     {
@@ -1773,7 +1694,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.33.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/OpenIntegrations_1.33.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/OpenIntegrations_1.33.0_ru.cfe"
     },
     {
@@ -1786,7 +1706,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/XML_EN.zip"
     },
     {
@@ -1799,7 +1718,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/XML_RU.zip"
     },
     {
@@ -1812,7 +1730,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/EDT_EN.zip"
     },
     {
@@ -1825,7 +1742,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/EDT_RU.zip"
     },
     {
@@ -1838,7 +1754,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.33.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0_en.ospx"
     },
     {
@@ -1851,7 +1766,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.33.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0_ru.ospx"
     },
     {
@@ -1864,7 +1778,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.33.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-cli-1.33.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-cli-1.33.0_en.ospx"
     },
     {
@@ -1877,7 +1790,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.33.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-cli-1.33.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-cli-1.33.0_ru.ospx"
     },
     {
@@ -1890,7 +1802,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.33.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint_1.33.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint_1.33.0_installer_en.exe"
     },
     {
@@ -1903,7 +1814,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.33.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint_1.33.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint_1.33.0_installer_ru.exe"
     },
     {
@@ -1916,7 +1826,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.33.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint_1.33.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint_1.33.0_all_en.deb"
     },
     {
@@ -1929,7 +1838,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.33.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint_1.33.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint_1.33.0_all_ru.deb"
     },
     {
@@ -1942,7 +1850,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.33.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0-1.noarch_en.rpm"
     },
     {
@@ -1955,7 +1862,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.33.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0-1.noarch_ru.rpm"
     },
     {
@@ -1968,7 +1874,6 @@
      "icon": "appimage",
      "lang": "en",
      "filename": "oint-1.33.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0_en-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0_en-x86_64.AppImage"
     },
     {
@@ -1981,7 +1886,6 @@
      "icon": "appimage",
      "lang": "ru",
      "filename": "oint-1.33.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/oint-1.33.0_ru-x86_64.AppImage",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/oint-1.33.0_ru-x86_64.AppImage"
     }
    ]
@@ -2068,7 +1972,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.32.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/OpenIntegrations_1.32.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/OpenIntegrations_1.32.0_en.cfe"
     },
     {
@@ -2081,7 +1984,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.32.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/OpenIntegrations_1.32.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/OpenIntegrations_1.32.0_ru.cfe"
     },
     {
@@ -2094,7 +1996,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/XML_EN.zip"
     },
     {
@@ -2107,7 +2008,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/XML_RU.zip"
     },
     {
@@ -2120,7 +2020,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/EDT_EN.zip"
     },
     {
@@ -2133,7 +2032,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/EDT_RU.zip"
     },
     {
@@ -2146,7 +2044,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.32.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0_en.ospx"
     },
     {
@@ -2159,7 +2056,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.32.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0_ru.ospx"
     },
     {
@@ -2172,7 +2068,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.32.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-cli-1.32.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-cli-1.32.0_en.ospx"
     },
     {
@@ -2185,7 +2080,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.32.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-cli-1.32.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-cli-1.32.0_ru.ospx"
     },
     {
@@ -2198,7 +2092,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.32.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint_1.32.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint_1.32.0_installer_en.exe"
     },
     {
@@ -2211,7 +2104,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.32.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint_1.32.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint_1.32.0_installer_ru.exe"
     },
     {
@@ -2224,7 +2116,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.32.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint_1.32.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint_1.32.0_all_en.deb"
     },
     {
@@ -2237,7 +2128,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.32.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint_1.32.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint_1.32.0_all_ru.deb"
     },
     {
@@ -2250,7 +2140,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.32.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0-1.noarch_en.rpm"
     },
     {
@@ -2263,7 +2152,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.32.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0-1.noarch_ru.rpm"
     }
    ]
@@ -2336,7 +2224,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.31.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/OpenIntegrations_1.31.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/OpenIntegrations_1.31.0_en.cfe"
     },
     {
@@ -2349,7 +2236,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.31.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/OpenIntegrations_1.31.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/OpenIntegrations_1.31.0_ru.cfe"
     },
     {
@@ -2362,7 +2248,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/XML_EN.zip"
     },
     {
@@ -2375,7 +2260,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/XML_RU.zip"
     },
     {
@@ -2388,7 +2272,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/EDT_EN.zip"
     },
     {
@@ -2401,7 +2284,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/EDT_RU.zip"
     },
     {
@@ -2414,7 +2296,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.31.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0_en.ospx"
     },
     {
@@ -2427,7 +2308,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.31.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0_ru.ospx"
     },
     {
@@ -2440,7 +2320,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.31.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-cli-1.31.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-cli-1.31.0_en.ospx"
     },
     {
@@ -2453,7 +2332,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.31.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-cli-1.31.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-cli-1.31.0_ru.ospx"
     },
     {
@@ -2466,7 +2344,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.31.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint_1.31.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint_1.31.0_installer_en.exe"
     },
     {
@@ -2479,7 +2356,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.31.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint_1.31.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint_1.31.0_installer_ru.exe"
     },
     {
@@ -2492,7 +2368,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.31.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint_1.31.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint_1.31.0_all_en.deb"
     },
     {
@@ -2505,7 +2380,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.31.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint_1.31.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint_1.31.0_all_ru.deb"
     },
     {
@@ -2518,7 +2392,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.31.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0-1.noarch_en.rpm"
     },
     {
@@ -2531,7 +2404,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.31.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0-1.noarch_ru.rpm"
     }
    ]
@@ -2667,7 +2539,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.30.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/OpenIntegrations_1.30.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/OpenIntegrations_1.30.0_en.cfe"
     },
     {
@@ -2680,7 +2551,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.30.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/OpenIntegrations_1.30.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/OpenIntegrations_1.30.0_ru.cfe"
     },
     {
@@ -2693,7 +2563,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/XML_EN.zip"
     },
     {
@@ -2706,7 +2575,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/XML_RU.zip"
     },
     {
@@ -2719,7 +2587,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/EDT_EN.zip"
     },
     {
@@ -2732,7 +2599,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/EDT_RU.zip"
     },
     {
@@ -2745,7 +2611,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.30.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0_en.ospx"
     },
     {
@@ -2758,7 +2623,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.30.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0_ru.ospx"
     },
     {
@@ -2771,7 +2635,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.30.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-cli-1.30.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-cli-1.30.0_en.ospx"
     },
     {
@@ -2784,7 +2647,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.30.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-cli-1.30.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-cli-1.30.0_ru.ospx"
     },
     {
@@ -2797,7 +2659,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.30.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint_1.30.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint_1.30.0_installer_en.exe"
     },
     {
@@ -2810,7 +2671,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.30.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint_1.30.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint_1.30.0_installer_ru.exe"
     },
     {
@@ -2823,7 +2683,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.30.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint_1.30.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint_1.30.0_all_en.deb"
     },
     {
@@ -2836,7 +2695,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.30.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint_1.30.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint_1.30.0_all_ru.deb"
     },
     {
@@ -2849,7 +2707,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.30.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0-1.noarch_en.rpm"
     },
     {
@@ -2862,7 +2719,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.30.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0-1.noarch_ru.rpm"
     }
    ]
@@ -2942,7 +2798,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.29.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/OpenIntegrations_1.29.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/OpenIntegrations_1.29.0_en.cfe"
     },
     {
@@ -2955,7 +2810,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.29.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/OpenIntegrations_1.29.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/OpenIntegrations_1.29.0_ru.cfe"
     },
     {
@@ -2968,7 +2822,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/XML_EN.zip"
     },
     {
@@ -2981,7 +2834,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/XML_RU.zip"
     },
     {
@@ -2994,7 +2846,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/EDT_EN.zip"
     },
     {
@@ -3007,7 +2858,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/EDT_RU.zip"
     },
     {
@@ -3020,7 +2870,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.29.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0_en.ospx"
     },
     {
@@ -3033,7 +2882,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.29.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0_ru.ospx"
     },
     {
@@ -3046,7 +2894,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.29.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-cli-1.29.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-cli-1.29.0_en.ospx"
     },
     {
@@ -3059,7 +2906,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.29.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-cli-1.29.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-cli-1.29.0_ru.ospx"
     },
     {
@@ -3072,7 +2918,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.29.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint_1.29.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint_1.29.0_installer_en.exe"
     },
     {
@@ -3085,7 +2930,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.29.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint_1.29.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint_1.29.0_installer_ru.exe"
     },
     {
@@ -3098,7 +2942,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.29.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint_1.29.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint_1.29.0_all_en.deb"
     },
     {
@@ -3111,7 +2954,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.29.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint_1.29.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint_1.29.0_all_ru.deb"
     },
     {
@@ -3124,7 +2966,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.29.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0-1.noarch_en.rpm"
     },
     {
@@ -3137,7 +2978,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.29.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0-1.noarch_ru.rpm"
     }
    ]
@@ -3196,7 +3036,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.28.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/OpenIntegrations_1.28.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/OpenIntegrations_1.28.0_en.cfe"
     },
     {
@@ -3209,7 +3048,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.28.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/OpenIntegrations_1.28.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/OpenIntegrations_1.28.0_ru.cfe"
     },
     {
@@ -3222,7 +3060,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/XML_EN.zip"
     },
     {
@@ -3235,7 +3072,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/XML_RU.zip"
     },
     {
@@ -3248,7 +3084,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/EDT_EN.zip"
     },
     {
@@ -3261,7 +3096,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/EDT_RU.zip"
     },
     {
@@ -3274,7 +3108,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.28.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0_en.ospx"
     },
     {
@@ -3287,7 +3120,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.28.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0_ru.ospx"
     },
     {
@@ -3300,7 +3132,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.28.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-cli-1.28.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-cli-1.28.0_en.ospx"
     },
     {
@@ -3313,7 +3144,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.28.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-cli-1.28.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-cli-1.28.0_ru.ospx"
     },
     {
@@ -3326,7 +3156,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.28.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint_1.28.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint_1.28.0_installer_en.exe"
     },
     {
@@ -3339,7 +3168,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.28.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint_1.28.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint_1.28.0_installer_ru.exe"
     },
     {
@@ -3352,7 +3180,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.28.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint_1.28.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint_1.28.0_all_en.deb"
     },
     {
@@ -3365,7 +3192,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.28.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint_1.28.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint_1.28.0_all_ru.deb"
     },
     {
@@ -3378,7 +3204,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.28.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0-1.noarch_en.rpm"
     },
     {
@@ -3391,7 +3216,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.28.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0-1.noarch_ru.rpm"
     }
    ]
@@ -3471,7 +3295,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.27.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/OpenIntegrations_1.27.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/OpenIntegrations_1.27.0_en.cfe"
     },
     {
@@ -3484,7 +3307,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.27.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/OpenIntegrations_1.27.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/OpenIntegrations_1.27.0_ru.cfe"
     },
     {
@@ -3497,7 +3319,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/XML_EN.zip"
     },
     {
@@ -3510,7 +3331,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/XML_RU.zip"
     },
     {
@@ -3523,7 +3343,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/EDT_EN.zip"
     },
     {
@@ -3536,7 +3355,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/EDT_RU.zip"
     },
     {
@@ -3549,7 +3367,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.27.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0_en.ospx"
     },
     {
@@ -3562,7 +3379,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.27.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0_ru.ospx"
     },
     {
@@ -3575,7 +3391,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.27.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-cli-1.27.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-cli-1.27.0_en.ospx"
     },
     {
@@ -3588,7 +3403,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.27.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-cli-1.27.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-cli-1.27.0_ru.ospx"
     },
     {
@@ -3601,7 +3415,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.27.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint_1.27.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint_1.27.0_installer_en.exe"
     },
     {
@@ -3614,7 +3427,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.27.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint_1.27.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint_1.27.0_installer_ru.exe"
     },
     {
@@ -3627,7 +3439,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.27.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint_1.27.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint_1.27.0_all_en.deb"
     },
     {
@@ -3640,7 +3451,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.27.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint_1.27.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint_1.27.0_all_ru.deb"
     },
     {
@@ -3653,7 +3463,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.27.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0-1.noarch_en.rpm"
     },
     {
@@ -3666,7 +3475,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.27.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0-1.noarch_ru.rpm"
     }
    ]
@@ -3725,7 +3533,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.26.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/OpenIntegrations_1.26.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/OpenIntegrations_1.26.0_en.cfe"
     },
     {
@@ -3738,7 +3545,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.26.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/OpenIntegrations_1.26.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/OpenIntegrations_1.26.0_ru.cfe"
     },
     {
@@ -3751,7 +3557,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/XML_EN.zip"
     },
     {
@@ -3764,7 +3569,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/XML_RU.zip"
     },
     {
@@ -3777,7 +3581,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/EDT_EN.zip"
     },
     {
@@ -3790,7 +3593,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/EDT_RU.zip"
     },
     {
@@ -3803,7 +3605,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.26.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0_en.ospx"
     },
     {
@@ -3816,7 +3617,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.26.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0_ru.ospx"
     },
     {
@@ -3829,7 +3629,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.26.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-cli-1.26.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-cli-1.26.0_en.ospx"
     },
     {
@@ -3842,7 +3641,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.26.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-cli-1.26.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-cli-1.26.0_ru.ospx"
     },
     {
@@ -3855,7 +3653,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.26.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint_1.26.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint_1.26.0_installer_en.exe"
     },
     {
@@ -3868,7 +3665,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.26.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint_1.26.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint_1.26.0_installer_ru.exe"
     },
     {
@@ -3881,7 +3677,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.26.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint_1.26.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint_1.26.0_all_en.deb"
     },
     {
@@ -3894,7 +3689,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.26.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint_1.26.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint_1.26.0_all_ru.deb"
     },
     {
@@ -3907,7 +3701,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.26.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0-1.noarch_en.rpm"
     },
     {
@@ -3920,7 +3713,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.26.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0-1.noarch_ru.rpm"
     }
    ]
@@ -4007,7 +3799,6 @@
      "icon": "cfe",
      "lang": "en",
      "filename": "OpenIntegrations_1.25.0_en.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/OpenIntegrations_1.25.0_en.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/OpenIntegrations_1.25.0_en.cfe"
     },
     {
@@ -4020,7 +3811,6 @@
      "icon": "cfe",
      "lang": "ru",
      "filename": "OpenIntegrations_1.25.0_ru.cfe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/OpenIntegrations_1.25.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/OpenIntegrations_1.25.0_ru.cfe"
     },
     {
@@ -4033,7 +3823,6 @@
      "icon": "xml",
      "lang": "en",
      "filename": "XML_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/XML_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/XML_EN.zip"
     },
     {
@@ -4046,7 +3835,6 @@
      "icon": "xml",
      "lang": "ru",
      "filename": "XML_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/XML_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/XML_RU.zip"
     },
     {
@@ -4059,7 +3847,6 @@
      "icon": "edt",
      "lang": "en",
      "filename": "EDT_EN.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/EDT_EN.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/EDT_EN.zip"
     },
     {
@@ -4072,7 +3859,6 @@
      "icon": "edt",
      "lang": "ru",
      "filename": "EDT_RU.zip",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/EDT_RU.zip",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/EDT_RU.zip"
     },
     {
@@ -4085,7 +3871,6 @@
      "icon": "ospx",
      "lang": "en",
      "filename": "oint-1.25.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0_en.ospx"
     },
     {
@@ -4098,7 +3883,6 @@
      "icon": "ospx",
      "lang": "ru",
      "filename": "oint-1.25.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0_ru.ospx"
     },
     {
@@ -4111,7 +3895,6 @@
      "icon": "ospx-cli",
      "lang": "en",
      "filename": "oint-cli-1.25.0_en.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-cli-1.25.0_en.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-cli-1.25.0_en.ospx"
     },
     {
@@ -4124,7 +3907,6 @@
      "icon": "ospx-cli",
      "lang": "ru",
      "filename": "oint-cli-1.25.0_ru.ospx",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-cli-1.25.0_ru.ospx",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-cli-1.25.0_ru.ospx"
     },
     {
@@ -4137,7 +3919,6 @@
      "icon": "exe",
      "lang": "en",
      "filename": "oint_1.25.0_installer_en.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint_1.25.0_installer_en.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint_1.25.0_installer_en.exe"
     },
     {
@@ -4150,7 +3931,6 @@
      "icon": "exe",
      "lang": "ru",
      "filename": "oint_1.25.0_installer_ru.exe",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint_1.25.0_installer_ru.exe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint_1.25.0_installer_ru.exe"
     },
     {
@@ -4163,7 +3943,6 @@
      "icon": "deb",
      "lang": "en",
      "filename": "oint_1.25.0_all_en.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint_1.25.0_all_en.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint_1.25.0_all_en.deb"
     },
     {
@@ -4176,7 +3955,6 @@
      "icon": "deb",
      "lang": "ru",
      "filename": "oint_1.25.0_all_ru.deb",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint_1.25.0_all_ru.deb",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint_1.25.0_all_ru.deb"
     },
     {
@@ -4189,7 +3967,6 @@
      "icon": "rpm",
      "lang": "en",
      "filename": "oint-1.25.0-1.noarch_en.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0-1.noarch_en.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0-1.noarch_en.rpm"
     },
     {
@@ -4202,7 +3979,6 @@
      "icon": "rpm",
      "lang": "ru",
      "filename": "oint-1.25.0-1.noarch_ru.rpm",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0-1.noarch_ru.rpm"
     }
    ]
