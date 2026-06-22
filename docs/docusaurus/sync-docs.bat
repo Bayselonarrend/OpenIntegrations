@@ -21,4 +21,15 @@ if %ERRORLEVEL% GEQ 8 (
 )
 
 echo Docs sync completed.
+
+pushd "%SCRIPT_DIR%..\.."
+echo Generating releases archive...
+oscript "ci\os\internal\Classes\ReleasesArchiveGenerator.os"
+set "GEN_EXIT=%ERRORLEVEL%"
+popd
+if %GEN_EXIT% GEQ 1 (
+  echo [ERROR] Failed to generate releases archive.
+  exit /b %GEN_EXIT%
+)
+
 exit /b 0

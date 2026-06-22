@@ -2,9 +2,10 @@ import React, { useMemo } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { useParams } from '@docusaurus/router';
 import archive from '@site/archive/releases-archive.json';
-import styles from './releases.module.css';
+import CoverImage from '@site/src/components/releases/CoverImage';
+import useReleaseVersion from '@site/src/components/releases/useReleaseVersion';
+import styles from '@site/src/components/releases/releases.module.css';
 
 const langLabels = {
   ru: '🇷🇺 Русская',
@@ -46,8 +47,8 @@ function groupArtifacts(artifacts, groups) {
   }));
 }
 
-const ReleaseDetailPage = () => {
-  const { version } = useParams();
+export default function ReleaseDetail() {
+  const version = useReleaseVersion();
   const iconBase = useBaseUrl('/img/releases/icons/');
 
   const release = useMemo(
@@ -115,9 +116,8 @@ const ReleaseDetailPage = () => {
               </a>
             </div>
           </div>
-          <img
-            src={release.coverUrl}
-            alt=""
+          <CoverImage
+            release={release}
             className={styles.detailCover}
             loading="lazy"
           />
@@ -202,6 +202,4 @@ const ReleaseDetailPage = () => {
       </main>
     </Layout>
   );
-};
-
-export default ReleaseDetailPage;
+}

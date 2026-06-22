@@ -32,6 +32,7 @@ const navbarCoursesItem = hasCoursesContent
 const basePlugins = [
   './plugins/api-icons-plugin',
   './plugins/translation-path-sync-plugin',
+  './plugins/releases-routes-plugin',
 ];
 
 if (hasCoursesContent) {
