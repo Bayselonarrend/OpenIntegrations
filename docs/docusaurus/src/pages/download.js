@@ -6,17 +6,23 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import archive from '@site/archive/releases-archive.json';
 import MirrorSelectModal from '@site/src/components/releases/MirrorSelectModal';
+import { getAvailableMirrorIds } from '@site/src/components/releases/mirrorUtils';
 import styles from './download.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const currentVersion = '2.3.0';
 
 function buildArtifact(filename) {
-  return {
+  const artifact = {
     filename,
     githubUrl: `${archive.githubDownloadBase}/${currentVersion}/${filename}`,
-    s3Url: `${archive.s3BaseUrl}/versions/${currentVersion}/${filename}`,
   };
+
+  if (getAvailableMirrorIds(archive, currentVersion).has('s3')) {
+    artifact.s3Url = `${archive.s3BaseUrl}/versions/${currentVersion}/${filename}`;
+  }
+
+  return artifact;
 }
 
 const cliInstallTabs = [

@@ -469,6 +469,26 @@
     "description": "Public URL of the published OpenIntegrations folder on Yandex.Disk (for archive mirror links)",
     "value": "https://yadi.sk/d/_paRtkfzIV-wGQ"
    },
+   "mirrors": {
+    "description": "Release download mirrors. Optional minVersion — first release available on the mirror.",
+    "value": [
+     {
+      "id": "github"
+     },
+     {
+      "id": "sourcecraft",
+      "minVersion": "1.34.0"
+     },
+     {
+      "id": "yandex",
+      "minVersion": "1.31.0"
+     },
+     {
+      "id": "s3",
+      "minVersion": "2.3.0"
+     }
+    ]
+   },
    "archiveJsonPath": {
     "description": "Generated releases archive JSON for Docusaurus",
     "value": "./docs/docusaurus/archive/releases-archive.json"

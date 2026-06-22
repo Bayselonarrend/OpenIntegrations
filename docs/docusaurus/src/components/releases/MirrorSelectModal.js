@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { buildYandexDiskWebUrl } from '@site/src/components/releases/yandexDiskLinks';
+import { buildDownloadMirrors } from '@site/src/components/releases/mirrorUtils';
 import styles from './mirrorSelect.module.css';
 
 function triggerDownload(url, filename) {
@@ -39,44 +39,20 @@ export default function MirrorSelectModal({
     [locale],
   );
 
-  const mirrors = useMemo(() => {
-    if (!artifact) {
-      return [];
-    }
-
-    const yandexPublicKey = archive?.yandexDiskPublicKey?.trim();
-    const yandexWebUrl = yandexPublicKey
-      ? buildYandexDiskWebUrl(yandexPublicKey, version, artifact.filename)
-      : null;
-
-    const items = [
-      {
-        id: 'github',
-        label: 'GitHub',
-        hint: locale === 'en' ? 'Recommended' : 'Рекомендуется',
-        icon: githubIcon,
-        url: artifact.githubUrl,
+  const mirrors = useMemo(
+    () => buildDownloadMirrors({
+      archive,
+      version,
+      artifact,
+      locale,
+      icons: {
+        github: githubIcon,
+        s3: s3Icon,
+        yandex: yandexIcon,
       },
-      {
-        id: 's3',
-        label: 'S3',
-        icon: s3Icon,
-        url: artifact.s3Url,
-      },
-    ];
-
-    if (yandexWebUrl) {
-      items.push({
-        id: 'yandex',
-        label: 'Yandex.Disk',
-        icon: yandexIcon,
-        url: yandexWebUrl,
-        opensWebUi: true,
-      });
-    }
-
-    return items;
-  }, [artifact, archive?.yandexDiskPublicKey, githubIcon, s3Icon, version, yandexIcon, locale]);
+    }),
+    [artifact, archive, githubIcon, locale, s3Icon, version, yandexIcon],
+  );
 
   useEffect(() => {
     if (!open) {

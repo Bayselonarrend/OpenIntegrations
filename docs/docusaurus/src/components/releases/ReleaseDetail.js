@@ -8,7 +8,7 @@ import CoverImage from '@site/src/components/releases/CoverImage';
 import ChangelogText from '@site/src/components/releases/ChangelogText';
 import useReleaseVersion from '@site/src/components/releases/useReleaseVersion';
 import MirrorSelectModal from '@site/src/components/releases/MirrorSelectModal';
-import { buildYandexDiskWebUrl } from '@site/src/components/releases/yandexDiskLinks';
+import { buildMirrorPageLinks } from '@site/src/components/releases/mirrorUtils';
 import styles from '@site/src/components/releases/releases.module.css';
 import downloadStyles from '@site/src/pages/download.module.css';
 
@@ -60,45 +60,17 @@ export default function ReleaseDetail() {
   const s3Icon = useBaseUrl('/img/APIs/S3.png');
   const yandexIcon = useBaseUrl('/img/APIs/YandexDisk.png');
   const sourcecraftIcon = useBaseUrl('/img/sourcecraft_c.svg');
-  const yandexPublicKey = archive.yandexDiskPublicKey?.trim();
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
 
   const mirrorLinks = useMemo(
-    () => {
-      const links = [
-        {
-          id: 'github',
-          href: `${archive.githubReleaseBase}/${version}`,
-          icon: githubIcon,
-          label: 'GitHub',
-        },
-        {
-          id: 'sourcecraft',
-          href: `${archive.sourcecraftReleaseBase}/${version}`,
-          icon: sourcecraftIcon,
-          label: 'SourceCraft',
-        },
-        {
-          id: 's3',
-          href: `${archive.s3BaseUrl}/versions/${version}`,
-          icon: s3Icon,
-          label: 'S3',
-        },
-      ];
-
-      if (yandexPublicKey) {
-        links.push({
-          id: 'yandex',
-          href: buildYandexDiskWebUrl(yandexPublicKey, version),
-          icon: yandexIcon,
-          label: 'Yandex.Disk',
-        });
-      }
-
-      return links;
-    },
-    [version, githubIcon, s3Icon, yandexIcon, sourcecraftIcon, yandexPublicKey],
+    () => buildMirrorPageLinks(archive, version, {
+      github: githubIcon,
+      sourcecraft: sourcecraftIcon,
+      s3: s3Icon,
+      yandex: yandexIcon,
+    }),
+    [version, githubIcon, s3Icon, yandexIcon, sourcecraftIcon],
   );
 
   const release = useMemo(

@@ -1,11 +1,28 @@
 {
- "generatedAt": "2026-06-22T15:40:05",
+ "generatedAt": "2026-06-22T16:53:06",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
  "sourcecraftReleaseBase": "https://sourcecraft.dev/bayselonarrend/openintegrations/releases",
  "githubContentBase": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/",
  "yandexDiskPublicKey": "https://yadi.sk/d/_paRtkfzIV-wGQ",
+ "mirrors": [
+  {
+   "id": "github"
+  },
+  {
+   "id": "sourcecraft",
+   "minVersion": "1.34.0"
+  },
+  {
+   "id": "yandex",
+   "minVersion": "1.31.0"
+  },
+  {
+   "id": "s3",
+   "minVersion": "2.3.0"
+  }
+ ],
  "groups": [
   {
    "id": "1c",
@@ -1459,32 +1476,6 @@
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/OpenIntegrations_1.34.0_ru.cfe"
     },
     {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.34.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/OpenIntegrations_1.34.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/OpenIntegrations_1.34.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.34.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.34.0/OpenIntegrations_1.34.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.34.0/OpenIntegrations_1.34.0_ru.cf"
-    },
-    {
      "id": "xml",
      "group": "1c",
      "label_ru": "XML (выгрузка)",
@@ -1784,32 +1775,6 @@
      "filename": "OpenIntegrations_1.33.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/OpenIntegrations_1.33.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/OpenIntegrations_1.33.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.33.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/OpenIntegrations_1.33.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/OpenIntegrations_1.33.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.33.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.33.0/OpenIntegrations_1.33.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.33.0/OpenIntegrations_1.33.0_ru.cf"
     },
     {
      "id": "xml",
@@ -2120,32 +2085,6 @@
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/OpenIntegrations_1.32.0_ru.cfe"
     },
     {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.32.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/OpenIntegrations_1.32.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/OpenIntegrations_1.32.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.32.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/OpenIntegrations_1.32.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/OpenIntegrations_1.32.0_ru.cf"
-    },
-    {
      "id": "xml",
      "group": "1c",
      "label_ru": "XML (выгрузка)",
@@ -2326,32 +2265,6 @@
      "filename": "oint-1.32.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.32.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.32.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.32.0/oint-1.32.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.32.0/oint-1.32.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -2438,32 +2351,6 @@
      "filename": "OpenIntegrations_1.31.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/OpenIntegrations_1.31.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/OpenIntegrations_1.31.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.31.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/OpenIntegrations_1.31.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/OpenIntegrations_1.31.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.31.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/OpenIntegrations_1.31.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/OpenIntegrations_1.31.0_ru.cf"
     },
     {
      "id": "xml",
@@ -2646,32 +2533,6 @@
      "filename": "oint-1.31.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.31.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.31.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.31.0/oint-1.31.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.31.0/oint-1.31.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -2821,32 +2682,6 @@
      "filename": "OpenIntegrations_1.30.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/OpenIntegrations_1.30.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/OpenIntegrations_1.30.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.30.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/OpenIntegrations_1.30.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/OpenIntegrations_1.30.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.30.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/OpenIntegrations_1.30.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/OpenIntegrations_1.30.0_ru.cf"
     },
     {
      "id": "xml",
@@ -3029,32 +2864,6 @@
      "filename": "oint-1.30.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.30.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.30.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.30.0/oint-1.30.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.30.0/oint-1.30.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -3148,32 +2957,6 @@
      "filename": "OpenIntegrations_1.29.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/OpenIntegrations_1.29.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/OpenIntegrations_1.29.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.29.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/OpenIntegrations_1.29.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/OpenIntegrations_1.29.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.29.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/OpenIntegrations_1.29.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/OpenIntegrations_1.29.0_ru.cf"
     },
     {
      "id": "xml",
@@ -3356,32 +3139,6 @@
      "filename": "oint-1.29.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.29.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.29.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.29.0/oint-1.29.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.29.0/oint-1.29.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -3454,32 +3211,6 @@
      "filename": "OpenIntegrations_1.28.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/OpenIntegrations_1.28.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/OpenIntegrations_1.28.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.28.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/OpenIntegrations_1.28.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/OpenIntegrations_1.28.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.28.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/OpenIntegrations_1.28.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/OpenIntegrations_1.28.0_ru.cf"
     },
     {
      "id": "xml",
@@ -3662,32 +3393,6 @@
      "filename": "oint-1.28.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.28.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.28.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.28.0/oint-1.28.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.28.0/oint-1.28.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -3781,32 +3486,6 @@
      "filename": "OpenIntegrations_1.27.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/OpenIntegrations_1.27.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/OpenIntegrations_1.27.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.27.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/OpenIntegrations_1.27.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/OpenIntegrations_1.27.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.27.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/OpenIntegrations_1.27.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/OpenIntegrations_1.27.0_ru.cf"
     },
     {
      "id": "xml",
@@ -3989,32 +3668,6 @@
      "filename": "oint-1.27.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.27.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.27.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.27.0/oint-1.27.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.27.0/oint-1.27.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -4087,32 +3740,6 @@
      "filename": "OpenIntegrations_1.26.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/OpenIntegrations_1.26.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/OpenIntegrations_1.26.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.26.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/OpenIntegrations_1.26.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/OpenIntegrations_1.26.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.26.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/OpenIntegrations_1.26.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/OpenIntegrations_1.26.0_ru.cf"
     },
     {
      "id": "xml",
@@ -4295,32 +3922,6 @@
      "filename": "oint-1.26.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.26.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.26.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.26.0/oint-1.26.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.26.0/oint-1.26.0_ru-x86_64.AppImage"
     }
    ]
   },
@@ -4421,32 +4022,6 @@
      "filename": "OpenIntegrations_1.25.0_ru.cfe",
      "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/OpenIntegrations_1.25.0_ru.cfe",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/OpenIntegrations_1.25.0_ru.cfe"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "en",
-     "filename": "OpenIntegrations_1.25.0_en.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/OpenIntegrations_1.25.0_en.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/OpenIntegrations_1.25.0_en.cf"
-    },
-    {
-     "id": "cf",
-     "group": "1c",
-     "label_ru": "CF (конфигурация)",
-     "label_en": "CF (configuration)",
-     "desc_ru": "Файл конфигурации 1С в формате .cf",
-     "desc_en": "1C configuration file (.cf)",
-     "icon": "cf",
-     "lang": "ru",
-     "filename": "OpenIntegrations_1.25.0_ru.cf",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/OpenIntegrations_1.25.0_ru.cf",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/OpenIntegrations_1.25.0_ru.cf"
     },
     {
      "id": "xml",
@@ -4629,32 +4204,6 @@
      "filename": "oint-1.25.0-1.noarch_ru.rpm",
      "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0-1.noarch_ru.rpm",
      "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0-1.noarch_ru.rpm"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "en",
-     "filename": "oint-1.25.0_en-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0_en-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0_en-x86_64.AppImage"
-    },
-    {
-     "id": "appimage",
-     "group": "cli",
-     "label_ru": "Linux (.AppImage)",
-     "label_en": "Linux (.AppImage)",
-     "desc_ru": "Единый исполняемый файл CLI формата AppImage",
-     "desc_en": "Single-file CLI AppImage",
-     "icon": "appimage",
-     "lang": "ru",
-     "filename": "oint-1.25.0_ru-x86_64.AppImage",
-     "s3Url": "https://releases.openintegrations.dev/versions/1.25.0/oint-1.25.0_ru-x86_64.AppImage",
-     "githubUrl": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download/1.25.0/oint-1.25.0_ru-x86_64.AppImage"
     }
    ]
   }
