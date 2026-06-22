@@ -1,12 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import CodeBlock from '@theme/CodeBlock';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import archive from '@site/archive/releases-archive.json';
+import MirrorSelectModal from '@site/src/components/releases/MirrorSelectModal';
 import styles from './download.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const currentVersion = '2.3.0';
+
+function buildArtifact(filename) {
+  return {
+    filename,
+    githubUrl: `${archive.githubDownloadBase}/${currentVersion}/${filename}`,
+    s3Url: `${archive.s3BaseUrl}/versions/${currentVersion}/${filename}`,
+  };
+}
 
 const cliInstallTabs = [
   { key: 'ru', label: '🇷🇺 Русская' },
@@ -48,9 +59,12 @@ chmod +x ./oint-2.3.0_en-x86_64.AppImage
 const DownloadPage = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [mirrorSelection, setMirrorSelection] = useState(null);
   const [cliTab, setCliTab] = useState('ru');
   const thankYouClosed = useRef(false); // флаг: пользователь закрыл окно
   const iconBase = useBaseUrl('/img/releases/icons/');
+  const { i18n } = useDocusaurusContext();
+  const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
 
   const downloadItems = [
     {
@@ -160,24 +174,14 @@ const DownloadPage = () => {
     },
   ];
 
-  const triggerDownload = (filename) => {
-    const cleanFilename = filename.trim();
-    const url = `https://github.com/Bayselonarrend/OpenIntegrations/releases/latest/download/${cleanFilename}`;
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('target', '_self');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = (filename) => {
+    setMirrorSelection({ file: buildArtifact(filename) });
   };
 
-  const handleDownload = (filename) => {
+  const handleMirrorDownloadComplete = () => {
     if (thankYouClosed.current) {
-      triggerDownload(filename);
       return;
     }
-
-    triggerDownload(filename);
 
     setShowThankYou(true);
     setTimeout(() => {
@@ -304,6 +308,16 @@ const DownloadPage = () => {
           </Link>
         </div>
       </main>
+
+      <MirrorSelectModal
+        open={Boolean(mirrorSelection)}
+        onClose={() => setMirrorSelection(null)}
+        onDownloadComplete={handleMirrorDownloadComplete}
+        artifact={mirrorSelection?.file}
+        version={currentVersion}
+        archive={archive}
+        locale={locale}
+      />
 
       {showThankYou && (
         <div

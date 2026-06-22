@@ -1,8 +1,11 @@
 {
- "generatedAt": "2026-06-22T14:38:30",
+ "generatedAt": "2026-06-22T15:40:05",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
+ "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
+ "sourcecraftReleaseBase": "https://sourcecraft.dev/bayselonarrend/openintegrations/releases",
  "githubContentBase": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/",
+ "yandexDiskPublicKey": "https://yadi.sk/d/_paRtkfzIV-wGQ",
  "groups": [
   {
    "id": "1c",

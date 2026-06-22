@@ -6,11 +6,12 @@
 }
 
 .pageIcon {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
   flex-shrink: 0;
   color: #004943;
-  margin-top: 0.2rem;
+  margin-top: 0.31rem;
+  margin-right: 10px;
 }
 
 .pageTitle {

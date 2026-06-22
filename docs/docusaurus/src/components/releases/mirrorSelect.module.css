@@ -1,0 +1,144 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.overlayVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0;
+  padding: 1.6rem 1.6rem 1.15rem;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.overlayVisible .dialog {
+  transform: translateY(-1vh);
+  opacity: 1;
+}
+
+.title {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #004943;
+}
+
+.subtitle {
+  margin: 0 0 1.15rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #555;
+  word-break: break-word;
+}
+
+.mirrorList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.mirrorOption {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 12px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.mirrorOption:hover:not(:disabled) {
+  border-color: #004943;
+  background: #f7fbfb;
+  box-shadow: 0 2px 6px rgba(0, 73, 67, 0.08);
+}
+
+.mirrorOption:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.mirrorIcon {
+  width: 1.85rem;
+  height: 1.85rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.mirrorLabel {
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+.mirrorLabelWrap {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.mirrorHint {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #888;
+  line-height: 1.2;
+}
+
+.mirrorArrow {
+  color: #888;
+  font-size: 1.05rem;
+}
+
+.error {
+  margin: 0.75rem 0 0;
+  font-size: 0.88rem;
+  color: #b42318;
+}
+
+.closeButton {
+  display: block;
+  width: 100%;
+  margin-top: 1.15rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: none;
+  color: #888;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: #555;
+  background: #f9f9f9;
+}

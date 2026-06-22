@@ -457,6 +457,18 @@
     "description": "GitHub release download base URL (no trailing slash)",
     "value": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download"
    },
+   "githubReleaseBase": {
+    "description": "GitHub release page base URL (no trailing slash), e.g. .../releases/tag",
+    "value": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag"
+   },
+   "sourcecraftReleaseBase": {
+    "description": "SourceCraft release page base URL (no trailing slash)",
+    "value": "https://sourcecraft.dev/bayselonarrend/openintegrations/releases"
+   },
+   "yandexDiskPublicKey": {
+    "description": "Public URL of the published OpenIntegrations folder on Yandex.Disk (for archive mirror links)",
+    "value": "https://yadi.sk/d/_paRtkfzIV-wGQ"
+   },
    "archiveJsonPath": {
     "description": "Generated releases archive JSON for Docusaurus",
     "value": "./docs/docusaurus/archive/releases-archive.json"
@@ -466,7 +478,7 @@
     "value": "1.25.0"
    },
    "artifacts": {
-    "description": "Release artifact filename templates. Placeholders: {version}, {lang}, {langUpper}",
+    "description": "Release artifact filename templates. Placeholders: {version}, {lang}, {langUpper}. Optional minVersion — first release that includes the artifact.",
     "value": [
      {
       "id": "cfe",
@@ -490,6 +502,7 @@
       "desc_ru": "Файл конфигурации 1С в формате .cf",
       "desc_en": "1C configuration file (.cf)",
       "icon": "cf",
+      "minVersion": "2.0.0",
       "filename": "OpenIntegrations_{version}_{lang}.cf"
      },
      {
@@ -588,6 +601,7 @@
       "desc_ru": "Единый исполняемый файл CLI формата AppImage",
       "desc_en": "Single-file CLI AppImage",
       "icon": "appimage",
+      "minVersion": "1.33.0",
       "filename": "oint-{version}_{lang}-x86_64.AppImage"
      }
     ]

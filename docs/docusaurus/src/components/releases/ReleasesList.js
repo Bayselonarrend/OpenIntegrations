@@ -19,13 +19,15 @@ export default function ReleasesList() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className={styles.pageIcon}
+            aria-hidden="true"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-            />
+            <path d="M4.5 3h11c.83 0 1.5.67 1.5 1.5v15c0 .83-.67 1.5-1.5 1.5h-11c-.83 0-1.5-.67-1.5-1.5V4.5c0-.83.67-1.5 1.5-1.5z" />
+            <path d="M8 9h6.5" />
+            <path d="M8 12h6.5" />
+            <path d="M8 15h4.5" />
           </svg>
           <div>
             <Heading as="h1" className={styles.pageTitle}>

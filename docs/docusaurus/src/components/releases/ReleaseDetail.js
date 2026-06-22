@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -7,6 +7,8 @@ import archive from '@site/archive/releases-archive.json';
 import CoverImage from '@site/src/components/releases/CoverImage';
 import ChangelogText from '@site/src/components/releases/ChangelogText';
 import useReleaseVersion from '@site/src/components/releases/useReleaseVersion';
+import MirrorSelectModal from '@site/src/components/releases/MirrorSelectModal';
+import { buildYandexDiskWebUrl } from '@site/src/components/releases/yandexDiskLinks';
 import styles from '@site/src/components/releases/releases.module.css';
 import downloadStyles from '@site/src/pages/download.module.css';
 
@@ -52,35 +54,51 @@ function groupArtifacts(artifacts, groups) {
 
 export default function ReleaseDetail() {
   const version = useReleaseVersion();
+  const [mirrorSelection, setMirrorSelection] = useState(null);
   const iconBase = useBaseUrl('/img/releases/icons/');
   const githubIcon = useBaseUrl('/img/github-logo.svg');
   const s3Icon = useBaseUrl('/img/APIs/S3.png');
-  const sourcecraftIcon = useBaseUrl('/img/sourcecraft.svg');
+  const yandexIcon = useBaseUrl('/img/APIs/YandexDisk.png');
+  const sourcecraftIcon = useBaseUrl('/img/sourcecraft_c.svg');
+  const yandexPublicKey = archive.yandexDiskPublicKey?.trim();
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
 
   const mirrorLinks = useMemo(
-    () => [
-      {
-        id: 'github',
-        href: `${archive.githubDownloadBase}/${version}/`,
-        icon: githubIcon,
-        label: 'GitHub',
-      },
-      {
-        id: 's3',
-        href: `${archive.s3BaseUrl}/versions/${version}`,
-        icon: s3Icon,
-        label: 'S3',
-      },
-      {
-        id: 'sourcecraft',
-        href: 'https://sourcecraft.dev/bayselonarrend/openintegrations/releases',
-        icon: sourcecraftIcon,
-        label: 'SourceCraft',
-      },
-    ],
-    [version, githubIcon, s3Icon, sourcecraftIcon],
+    () => {
+      const links = [
+        {
+          id: 'github',
+          href: `${archive.githubReleaseBase}/${version}`,
+          icon: githubIcon,
+          label: 'GitHub',
+        },
+        {
+          id: 'sourcecraft',
+          href: `${archive.sourcecraftReleaseBase}/${version}`,
+          icon: sourcecraftIcon,
+          label: 'SourceCraft',
+        },
+        {
+          id: 's3',
+          href: `${archive.s3BaseUrl}/versions/${version}`,
+          icon: s3Icon,
+          label: 'S3',
+        },
+      ];
+
+      if (yandexPublicKey) {
+        links.push({
+          id: 'yandex',
+          href: buildYandexDiskWebUrl(yandexPublicKey, version),
+          icon: yandexIcon,
+          label: 'Yandex.Disk',
+        });
+      }
+
+      return links;
+    },
+    [version, githubIcon, s3Icon, yandexIcon, sourcecraftIcon, yandexPublicKey],
   );
 
   const release = useMemo(
@@ -207,14 +225,14 @@ export default function ReleaseDetail() {
                     <p>{locale === 'en' ? item.desc_en : item.desc_ru}</p>
                     <div className={downloadStyles.langButtons}>
                       {Object.entries(item.files).map(([lang, file]) => (
-                        <a
+                        <button
                           key={lang}
+                          type="button"
                           className={downloadStyles.downloadButton}
-                          href={file.s3Url}
-                          download={file.filename}
+                          onClick={() => setMirrorSelection({ file, lang })}
                         >
                           {langLabels[lang] ?? lang}
-                        </a>
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -223,6 +241,15 @@ export default function ReleaseDetail() {
             </div>
           ))}
         </section>
+
+        <MirrorSelectModal
+          open={Boolean(mirrorSelection)}
+          onClose={() => setMirrorSelection(null)}
+          artifact={mirrorSelection?.file}
+          version={version}
+          archive={archive}
+          locale={locale}
+        />
       </main>
     </Layout>
   );
