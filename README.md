@@ -65,7 +65,6 @@
   <a href="https://openintegrations.dev/docs/Instructions/MessagePack/"><img src="media/MessagePack.png" width="40"></a>
 
 </div> 
-<br>
 
 ## Пример работы
 

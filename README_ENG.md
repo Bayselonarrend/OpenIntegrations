@@ -61,7 +61,6 @@ The project code is organized as a set of independent modules, each responsible 
   <a href="https://en.openintegrations.dev/docs/Instructions/MessagePack/"><img src="media/MessagePack.png" width="40"></a>
 
 </div> 
-<br>
 
 ## Usage Example
 

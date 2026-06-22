@@ -37,8 +37,8 @@
 
 <br>
 
-| 🪞 Зеркало/Mirror: [GitHub](https://github.com/Bayselonarrend/OpenIntegrations/releases/tag/%1) |
-|-|
+| 🪞 Зеркало/Mirror: [GitHub](https://github.com/Bayselonarrend/OpenIntegrations/releases/tag/%1) | 🗄️ S3: [releases.openintegrations.dev](https://releases.openintegrations.dev/versions/%1/) |
+|-|-|
 
 <hr>
 <br>
