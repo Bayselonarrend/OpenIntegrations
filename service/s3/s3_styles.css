@@ -1,0 +1,263 @@
+/* OpenIntegrations — S3 web listing (Docusaurus-aligned) */
+
+:root {
+  --opi-accent: #004943;
+  --opi-accent-hover: #00302a;
+  --opi-text: #333;
+  --opi-muted: #555;
+  --opi-border: #ddd;
+  --opi-bg: #f6f8f8;
+  --opi-card: #ffffff;
+  --opi-radius: 12px;
+  --opi-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  --opi-icon-size: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 1.25rem;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--opi-text);
+  background: var(--opi-bg);
+}
+
+body::before {
+  content: "Открытый пакет интеграций";
+  display: block;
+  max-width: 960px;
+  margin: 0 auto 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 390;
+  color: var(--opi-text);
+}
+
+body::after {
+  content: "Файлы релизов";
+  display: block;
+  max-width: 960px;
+  margin: 0 auto 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--opi-muted);
+}
+
+h1 {
+  max-width: 960px;
+  margin: 0 auto 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--opi-accent);
+  background: var(--opi-card);
+  border: 1px solid var(--opi-border);
+  border-radius: var(--opi-radius);
+  box-shadow: var(--opi-shadow);
+}
+
+h1:first-line {
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--opi-card);
+  border: 1px solid var(--opi-border);
+  border-radius: var(--opi-radius);
+  box-shadow: var(--opi-shadow);
+  overflow: hidden;
+}
+
+thead th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--opi-muted);
+  background: #fafbfb;
+  border-bottom: 1px solid var(--opi-border);
+}
+
+tbody td {
+  padding: 1rem 1.15rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+tbody td:first-child a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover td {
+  background: #f3f7f7;
+}
+
+a {
+  color: var(--opi-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--opi-accent-hover);
+  text-decoration: underline;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+  width: 7rem;
+  white-space: nowrap;
+  color: var(--opi-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+td:nth-child(3),
+th:nth-child(3) {
+  width: 12rem;
+  white-space: nowrap;
+  color: var(--opi-muted);
+  font-size: 0.88rem;
+}
+
+/* Selectel: 4-я ячейка — размер в байтах (дублирует Size), заголовка нет */
+thead th:nth-child(n + 4),
+tbody td:nth-child(n + 4) {
+  display: none;
+}
+
+/* Иконки: эмодзи для папок и прочих файлов; PNG — типы релизов (gh_draft.txt) */
+tbody td:first-child a::before {
+  display: inline-block;
+  flex-shrink: 0;
+  opacity: 0.92;
+  line-height: 1;
+}
+
+tbody td:first-child a[href$="/"]::before {
+  content: "📁 ";
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 1.35rem;
+}
+
+tbody td:first-child a:not([href$="/"])::before {
+  content: "📄 ";
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 1.25rem;
+  opacity: 0.7;
+}
+
+tbody td:first-child a[href*="EDT_" i]::before,
+tbody td:first-child a[href*="XML_" i]::before,
+tbody td:first-child a[href*="oint-cli" i][href$=".ospx" i]::before,
+tbody td:first-child a[href$=".cfe" i]::before,
+tbody td:first-child a[href$=".cf" i]::before,
+tbody td:first-child a[href$=".exe" i]::before,
+tbody td:first-child a[href$=".deb" i]::before,
+tbody td:first-child a[href$=".rpm" i]::before,
+tbody td:first-child a[href$=".appimage" i]::before,
+tbody td:first-child a[href$=".ospx" i]::before {
+  content: "";
+  width: var(--opi-icon-size);
+  height: var(--opi-icon-size);
+  opacity: 0.92;
+  background: center / contain no-repeat;
+}
+
+tbody td:first-child a[href*="EDT_" i]::before {
+  background-image: url("icons/edt.png");
+}
+
+tbody td:first-child a[href*="XML_" i]::before {
+  background-image: url("icons/xml.png");
+}
+
+tbody td:first-child a[href*="oint-cli" i][href$=".ospx" i]::before {
+  background-image: url("icons/ospx-cli.png");
+}
+
+tbody td:first-child a[href$=".cfe" i]::before {
+  background-image: url("icons/cfe.png");
+}
+
+tbody td:first-child a[href$=".cf" i]::before {
+  background-image: url("icons/cf.png");
+}
+
+tbody td:first-child a[href$=".exe" i]::before {
+  background-image: url("icons/exe.png");
+}
+
+tbody td:first-child a[href$=".deb" i]::before {
+  background-image: url("icons/deb.png");
+}
+
+tbody td:first-child a[href$=".rpm" i]::before {
+  background-image: url("icons/rpm.png");
+}
+
+tbody td:first-child a[href$=".appimage" i]::before {
+  background-image: url("icons/appimage.png");
+}
+
+tbody td:first-child a[href$=".ospx" i]::before {
+  background-image: url("icons/ospx.png");
+}
+
+@media (min-width: 996px) {
+  body {
+    padding: 2rem;
+  }
+
+  h1,
+  table {
+    border-radius: var(--opi-radius);
+    box-shadow:
+      inset 0 1px 3px rgba(255, 255, 255, 0.7),
+      0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 0.75rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  td:nth-child(3),
+  th:nth-child(3) {
+    display: none;
+  }
+}

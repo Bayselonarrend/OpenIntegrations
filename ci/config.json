@@ -424,6 +424,30 @@
    "artifactsCount": {
     "description": "Release artifacts (files) count",
     "value": 20
+   },
+   "s3UrlField": {
+    "description": "S3 API URL field key at secret data file",
+    "value": "ReleasesS3_URL"
+   },
+   "s3KeyField": {
+    "description": "S3 access key field at secret data file",
+    "value": "ReleasesS3_Key"
+   },
+   "s3SecretField": {
+    "description": "S3 secret key field at secret data file",
+    "value": "ReleasesS3_Secret"
+   },
+   "s3Bucket": {
+    "description": "S3 bucket name for release artifacts",
+    "value": "openintegrations"
+   },
+   "s3Region": {
+    "description": "S3 region for request signing (Selectel pool, e.g. ru-7)",
+    "value": "ru-7"
+   },
+   "s3PathStyle": {
+    "description": "Use path-style S3 URLs",
+    "value": true
    }
   }
  }
