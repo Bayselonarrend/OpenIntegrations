@@ -244,6 +244,16 @@
   color: inherit;
 }
 
+.changelogTable a {
+  color: #004943;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.changelogTable a:hover {
+  color: #003530;
+}
+
 .libCell {
   display: flex;
   align-items: center;
