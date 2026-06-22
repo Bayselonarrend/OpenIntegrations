@@ -37,8 +37,8 @@
 
 <br>
 
-| 🪞 Зеркала / Mirrors | [openintegrations.dev/releases/%1](https://openintegrations.dev/releases/%1) · [en.openintegrations.dev/releases/%1](https://en.openintegrations.dev/releases/%1) |
-|-|-|
+| 🪞 Зеркала / Mirrors | 🇷🇺 [Русский](https://openintegrations.dev/releases/%1) | 🇺🇸 [English](https://en.openintegrations.dev/releases/%1) |
+|-|-|-|
 
 <hr>
 <br>

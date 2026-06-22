@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -55,6 +55,9 @@ function groupArtifacts(artifacts, groups) {
 export default function ReleaseDetail() {
   const version = useReleaseVersion();
   const [mirrorSelection, setMirrorSelection] = useState(null);
+  const handleCloseMirrorModal = useCallback(() => {
+    setMirrorSelection(null);
+  }, []);
   const iconBase = useBaseUrl('/img/releases/icons/');
   const githubIcon = useBaseUrl('/img/github-logo.svg');
   const s3Icon = useBaseUrl('/img/APIs/S3.png');
@@ -216,7 +219,7 @@ export default function ReleaseDetail() {
 
         <MirrorSelectModal
           open={Boolean(mirrorSelection)}
-          onClose={() => setMirrorSelection(null)}
+          onClose={handleCloseMirrorModal}
           artifact={mirrorSelection?.file}
           version={version}
           archive={archive}

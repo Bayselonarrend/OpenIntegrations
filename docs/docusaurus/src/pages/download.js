@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
@@ -180,6 +180,10 @@ const DownloadPage = () => {
     },
   ];
 
+  const handleCloseMirrorModal = useCallback(() => {
+    setMirrorSelection(null);
+  }, []);
+
   const handleDownload = (filename) => {
     setMirrorSelection({ file: buildArtifact(filename) });
   };
@@ -253,12 +257,14 @@ const DownloadPage = () => {
                   <p>{item.desc}</p>
                   <div className={styles.langButtons}>
                     <button
+                      type="button"
                       className={styles.downloadButton}
                       onClick={() => handleDownload(item.files.ru)}
                     >
                       🇷🇺 Русская
                     </button>
                     <button
+                      type="button"
                       className={styles.downloadButton}
                       onClick={() => handleDownload(item.files.en)}
                     >
@@ -317,7 +323,7 @@ const DownloadPage = () => {
 
       <MirrorSelectModal
         open={Boolean(mirrorSelection)}
-        onClose={() => setMirrorSelection(null)}
+        onClose={handleCloseMirrorModal}
         onDownloadComplete={handleMirrorDownloadComplete}
         artifact={mirrorSelection?.file}
         version={currentVersion}

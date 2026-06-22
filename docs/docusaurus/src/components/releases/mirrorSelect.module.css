@@ -10,12 +10,14 @@
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .overlayVisible {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -27,14 +29,6 @@
   border-radius: 16px;
   background: #fff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transform: translateY(16px);
-  opacity: 0;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.overlayVisible .dialog {
-  transform: translateY(-1vh);
-  opacity: 1;
 }
 
 .title {

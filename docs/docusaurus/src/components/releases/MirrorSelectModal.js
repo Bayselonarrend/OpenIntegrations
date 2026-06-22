@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { buildDownloadMirrors } from '@site/src/components/releases/mirrorUtils';
 import styles from './mirrorSelect.module.css';
@@ -26,7 +27,6 @@ export default function MirrorSelectModal({
   const githubIcon = useBaseUrl('/img/github-logo.svg');
   const s3Icon = useBaseUrl('/img/APIs/S3.png');
   const yandexIcon = useBaseUrl('/img/APIs/YandexDisk.png');
-  const [visible, setVisible] = useState(false);
   const [loadingMirror, setLoadingMirror] = useState(null);
   const [error, setError] = useState('');
 
@@ -35,6 +35,9 @@ export default function MirrorSelectModal({
       title: locale === 'en' ? 'Choose download mirror' : 'Выберите зеркало для скачивания',
       cancel: locale === 'en' ? 'Cancel' : 'Отмена',
       loading: locale === 'en' ? 'Preparing download…' : 'Подготовка скачивания…',
+      empty: locale === 'en'
+        ? 'No download mirrors are available for this version.'
+        : 'Для этой версии нет доступных зеркал скачивания.',
     }),
     [locale],
   );
@@ -56,15 +59,10 @@ export default function MirrorSelectModal({
 
   useEffect(() => {
     if (!open) {
-      setVisible(false);
       setLoadingMirror(null);
       setError('');
       return undefined;
     }
-
-    const frame = requestAnimationFrame(() => {
-      setVisible(true);
-    });
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape' && !loadingMirror) {
@@ -75,12 +73,11 @@ export default function MirrorSelectModal({
     window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      cancelAnimationFrame(frame);
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [loadingMirror, onClose, open]);
 
-  if (!open || !artifact) {
+  if (!open || !artifact || typeof document === 'undefined') {
     return null;
   }
 
@@ -108,9 +105,9 @@ export default function MirrorSelectModal({
     }
   };
 
-  return (
+  return createPortal(
     <div
-      className={`${styles.overlay} ${visible ? styles.overlayVisible : ''}`}
+      className={`${styles.overlay} ${styles.overlayVisible}`}
       onClick={loadingMirror ? undefined : onClose}
       role="presentation"
     >
@@ -126,28 +123,32 @@ export default function MirrorSelectModal({
         </h2>
         <p className={styles.subtitle}>{artifact.filename}</p>
 
-        <div className={styles.mirrorList}>
-          {mirrors.map((mirror) => (
-            <button
-              key={mirror.id}
-              type="button"
-              className={styles.mirrorOption}
-              disabled={Boolean(loadingMirror)}
-              onClick={() => handleMirrorClick(mirror)}
-            >
-              <img src={mirror.icon} alt="" className={styles.mirrorIcon} loading="lazy" />
-              <span className={styles.mirrorLabelWrap}>
-                <span className={styles.mirrorLabel}>
-                  {loadingMirror === mirror.id ? labels.loading : mirror.label}
+        {mirrors.length > 0 ? (
+          <div className={styles.mirrorList}>
+            {mirrors.map((mirror) => (
+              <button
+                key={mirror.id}
+                type="button"
+                className={styles.mirrorOption}
+                disabled={Boolean(loadingMirror)}
+                onClick={() => handleMirrorClick(mirror)}
+              >
+                <img src={mirror.icon} alt="" className={styles.mirrorIcon} loading="lazy" />
+                <span className={styles.mirrorLabelWrap}>
+                  <span className={styles.mirrorLabel}>
+                    {loadingMirror === mirror.id ? labels.loading : mirror.label}
+                  </span>
+                  {mirror.hint && loadingMirror !== mirror.id ? (
+                    <span className={styles.mirrorHint}>{mirror.hint}</span>
+                  ) : null}
                 </span>
-                {mirror.hint && loadingMirror !== mirror.id ? (
-                  <span className={styles.mirrorHint}>{mirror.hint}</span>
-                ) : null}
-              </span>
-              <span className={styles.mirrorArrow}>→</span>
-            </button>
-          ))}
-        </div>
+                <span className={styles.mirrorArrow}>→</span>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.error}>{labels.empty}</p>
+        )}
 
         {error ? <p className={styles.error}>{error}</p> : null}
 
@@ -160,6 +161,7 @@ export default function MirrorSelectModal({
           {labels.cancel}
         </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

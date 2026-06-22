@@ -30,8 +30,8 @@
 |<img src="https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/pins/4.png" width="32"/>| OSPX (OneScript) | [oint-%1_ru.ospx](https://github.com/Bayselonarrend/OpenIntegrations/releases/download/%1/oint-%1_ru.ospx) | [oint-%1_en.ospx](https://github.com/Bayselonarrend/OpenIntegrations/releases/download/%1/oint-%1_en.ospx) | 
 |<img src="https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/pins/9.png" width="32"/>| OInt CLI OSPX (OneScript) | [oint-cli-%1_ru.ospx](https://github.com/Bayselonarrend/OpenIntegrations/releases/download/%1/oint-cli-%1_ru.ospx) | [oint-cli-%1_en.ospx](https://github.com/Bayselonarrend/OpenIntegrations/releases/download/%1/oint-cli-%1_en.ospx) | 
 
-| 🪞 Зеркала / Mirrors | [openintegrations.dev/releases/%1](https://openintegrations.dev/releases/%1) · [en.openintegrations.dev/releases/%1](https://en.openintegrations.dev/releases/%1) |
-|-|-|
+| 🪞 Зеркала / Mirrors | 🇷🇺 [Русский](https://openintegrations.dev/releases/%1) | 🇺🇸 [English](https://en.openintegrations.dev/releases/%1) |
+|-|-|-|
 
 <img src="https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Star.png" alt="Star-Struck" width="30" height="30" align=left />
 
