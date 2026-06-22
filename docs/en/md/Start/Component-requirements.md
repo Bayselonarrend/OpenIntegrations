@@ -86,6 +86,28 @@ Besides on-demand installation, you can pre-install selected AddIns on a client 
 При обновлении Открытого пакета интеграций до новой версии, компоненты на клиенте необходимо установить заново через панель управления (пошаговая инструкция присутствует на форме обработки). В противном случае новые функции, реализованные в коде 1С, могут оказаться несовместимы с функциями компонент, которые остались на клиентской машине после предыдущей установки
 :::
 
+## Troubleshooting common issues
+
+The most common cause of problems when working with external components in **1C:Enterprise** is unstable behavior of the **`Isolated`** connection mode. How reliably this mode works can vary between platform versions and operating systems.
+
+If you run into errors related to external components, **first** try connecting the AddIn in **`NotIsolated`** mode:
+
+1. **Via [advanced call](/docs/Start/Advanced-call)**. For a method that creates an external component object, pass `addin_mode` with the value `NotIsolated` in the extended-call settings (the parameter is documented on the **Advanced call** tab for methods that use external components):
+
+```bsl
+Settings = New Structure;
+Settings.Insert("addin_mode", "NotIsolated");
+
+Result = OPI_AdvancedCall.CallWithSettings("OPI_MSSQL"
+    , "CreateConnection"
+    , Parameters
+    , Settings);
+```
+
+2. **Manually**. In the `AttachIsolated` function of the `OPI_AddIns` module, change the default mode selection logic.
+
+If switching the mode does not help, describe the issue in [Issues](https://github.com/Bayselonarrend/OpenIntegrations/issues) or ask for help in the [project Telegram chat](https://t.me/openintegrations).
+
 ## FAQ
 
 Miscellaneous questions about how external components work or are built — not specific to day-to-day OPI usage.
