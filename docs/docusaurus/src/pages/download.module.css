@@ -26,6 +26,17 @@
   color: #555;
 }
 
+.versionLink {
+  color: #004943;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.versionLink:hover {
+  color: #003530;
+}
+
 .downloadGroup {
   margin-bottom: 2.5rem;
 }
@@ -42,9 +53,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.2rem;
+  align-items: stretch;
 }
 
 .downloadItem {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -63,10 +78,31 @@
   font-size: 1rem;
 }
 
+.downloadItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.downloadItemHeader h3 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.fileIcon {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .downloadItem p {
   font-size: 0.95rem;
   color: #555;
-  margin-bottom: 1rem;
+  margin: 0 0 0.75rem;
+  flex: 1;
 }
 
 .downloadButton {
@@ -90,13 +126,16 @@
 .langButtons {
   display: flex;
   gap: 0.6rem;
-  margin-top: 0.8rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
 }
 
 .langButtons .downloadButton {
   flex: 1;
   min-width: 0;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .otherVersions {

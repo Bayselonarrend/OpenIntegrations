@@ -2,10 +2,13 @@ import React, { useMemo } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import archive from '@site/archive/releases-archive.json';
 import CoverImage from '@site/src/components/releases/CoverImage';
+import ChangelogText from '@site/src/components/releases/ChangelogText';
 import useReleaseVersion from '@site/src/components/releases/useReleaseVersion';
 import styles from '@site/src/components/releases/releases.module.css';
+import downloadStyles from '@site/src/pages/download.module.css';
 
 const langLabels = {
   ru: '🇷🇺 Русская',
@@ -50,6 +53,35 @@ function groupArtifacts(artifacts, groups) {
 export default function ReleaseDetail() {
   const version = useReleaseVersion();
   const iconBase = useBaseUrl('/img/releases/icons/');
+  const githubIcon = useBaseUrl('/img/github-logo.svg');
+  const s3Icon = useBaseUrl('/img/APIs/S3.png');
+  const sourcecraftIcon = useBaseUrl('/img/sourcecraft.svg');
+  const { i18n } = useDocusaurusContext();
+  const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
+
+  const mirrorLinks = useMemo(
+    () => [
+      {
+        id: 'github',
+        href: `${archive.githubDownloadBase}/${version}/`,
+        icon: githubIcon,
+        label: 'GitHub',
+      },
+      {
+        id: 's3',
+        href: `${archive.s3BaseUrl}/versions/${version}`,
+        icon: s3Icon,
+        label: 'S3',
+      },
+      {
+        id: 'sourcecraft',
+        href: 'https://sourcecraft.dev/bayselonarrend/openintegrations/releases',
+        icon: sourcecraftIcon,
+        label: 'SourceCraft',
+      },
+    ],
+    [version, githubIcon, s3Icon, sourcecraftIcon],
+  );
 
   const release = useMemo(
     () => archive.versions?.find((item) => item.version === version),
@@ -64,7 +96,7 @@ export default function ReleaseDetail() {
   if (!release) {
     return (
       <Layout title="Релиз не найден">
-        <main className="container margin-vert--lg">
+        <main className={`container margin-vert--lg ${styles.releasesPage}`}>
           <Link className={styles.backLink} to="/releases">
             ← К архиву версий
           </Link>
@@ -74,12 +106,11 @@ export default function ReleaseDetail() {
     );
   }
 
+  const summary = locale === 'en' ? release.summary_en : release.summary_ru;
+
   return (
-    <Layout
-      title={`Версия ${release.version}`}
-      description={`${release.summary_ru} / ${release.summary_en}`}
-    >
-      <main className="container margin-vert--lg">
+    <Layout title={`Версия ${release.version}`} description={summary}>
+      <main className={`container margin-vert--lg ${styles.releasesPage}`}>
         <Link className={styles.backLink} to="/releases">
           ← К архиву версий
         </Link>
@@ -87,33 +118,27 @@ export default function ReleaseDetail() {
         <section className={styles.detailHero}>
           <div className={styles.detailHeroText}>
             <h1>{release.version}</h1>
-            <p className={styles.detailSummaryRu}>🇷🇺 {release.summary_ru}</p>
-            <p className={styles.detailSummaryEn}>🇺🇸 {release.summary_en}</p>
+            <p className={styles.detailSummary}>{summary}</p>
             <div className={styles.mirrorLinks}>
-              <a
-                className={styles.mirrorLink}
-                href={`${archive.githubDownloadBase}/${release.version}/`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub →
-              </a>
-              <a
-                className={styles.mirrorLink}
-                href={`${archive.s3BaseUrl}/versions/${release.version}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                S3 →
-              </a>
-              <a
-                className={styles.mirrorLink}
-                href="https://sourcecraft.dev/bayselonarrend/openintegrations/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SourceCraft →
-              </a>
+              {mirrorLinks.map((mirror) => (
+                <a
+                  key={mirror.id}
+                  className={styles.mirrorLink}
+                  href={mirror.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={mirror.label}
+                  title={mirror.label}
+                >
+                  <img
+                    src={mirror.icon}
+                    alt=""
+                    className={styles.mirrorIcon}
+                    loading="lazy"
+                  />
+                  <span>{mirror.label} →</span>
+                </a>
+              ))}
             </div>
           </div>
           <CoverImage
@@ -147,45 +172,44 @@ export default function ReleaseDetail() {
                       <span>{change.lib}</span>
                     </div>
                   </td>
-                  <td>{change.description_ru}</td>
-                  <td>{change.description_en}</td>
+                  <td>
+                    <ChangelogText>{change.description_ru}</ChangelogText>
+                  </td>
+                  <td>
+                    <ChangelogText>{change.description_en}</ChangelogText>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
 
+        <hr />
+
         <section className={styles.downloadSection}>
-          <h2>Скачать / Download</h2>
           {downloadGroups.map((group) => (
-            <div key={group.id} className={styles.downloadGroup}>
-              <h3>
-                {group.label_ru} / {group.label_en}
-              </h3>
-              <div className={styles.itemsGrid}>
+            <div key={group.id} className={downloadStyles.downloadGroup}>
+              <h2>{locale === 'en' ? group.label_en : group.label_ru}</h2>
+              <div className={downloadStyles.itemsGrid}>
                 {group.items.map((item) => (
-                  <div key={item.id} className={styles.downloadItem}>
-                    <div className={styles.downloadItemHeader}>
+                  <div key={item.id} className={downloadStyles.downloadItem}>
+                    <div className={downloadStyles.downloadItemHeader}>
                       <img
                         src={`${iconBase}${item.icon}.png`}
                         alt=""
-                        className={styles.fileIcon}
+                        className={downloadStyles.fileIcon}
                         loading="lazy"
                       />
-                      <h4>
-                        {item.label_ru} / {item.label_en}
-                      </h4>
+                      <h3>
+                        {locale === 'en' ? item.label_en : item.label_ru}
+                      </h3>
                     </div>
-                    <p>
-                      {item.desc_ru}
-                      <br />
-                      {item.desc_en}
-                    </p>
-                    <div className={styles.langButtons}>
+                    <p>{locale === 'en' ? item.desc_en : item.desc_ru}</p>
+                    <div className={downloadStyles.langButtons}>
                       {Object.entries(item.files).map(([lang, file]) => (
                         <a
                           key={lang}
-                          className={styles.downloadButton}
+                          className={downloadStyles.downloadButton}
                           href={file.s3Url}
                           download={file.filename}
                         >

@@ -6,6 +6,8 @@ import CodeBlock from '@theme/CodeBlock';
 import styles from './download.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+const currentVersion = '2.3.0';
+
 const cliInstallTabs = [
   { key: 'ru', label: '🇷🇺 Русская' },
   { key: 'en', label: '🇬🇧 English' },
@@ -48,6 +50,7 @@ const DownloadPage = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [cliTab, setCliTab] = useState('ru');
   const thankYouClosed = useRef(false); // флаг: пользователь закрыл окно
+  const iconBase = useBaseUrl('/img/releases/icons/');
 
   const downloadItems = [
     {
@@ -55,6 +58,7 @@ const DownloadPage = () => {
       items: [
         {
           name: 'CFE (расширение)',
+          icon: 'cfe',
           files: {
             ru: 'OpenIntegrations_2.3.0_ru.cfe',
             en: 'OpenIntegrations_2.3.0_en.cfe',
@@ -63,6 +67,7 @@ const DownloadPage = () => {
         },
         {
           name: 'CF (конфигурация)',
+          icon: 'cf',
           files: {
             ru: 'OpenIntegrations_2.3.0_ru.cf',
             en: 'OpenIntegrations_2.3.0_en.cf',
@@ -71,6 +76,7 @@ const DownloadPage = () => {
         },
         {
           name: 'XML (выгрузка)',
+          icon: 'xml',
           files: {
             ru: 'XML_RU.zip',
             en: 'XML_EN.zip',
@@ -79,6 +85,7 @@ const DownloadPage = () => {
         },
         {
           name: 'EDT (проект)',
+          icon: 'edt',
           files: {
             ru: 'EDT_RU.zip',
             en: 'EDT_EN.zip',
@@ -92,6 +99,7 @@ const DownloadPage = () => {
       items: [
         {
           name: 'Пакет oint (.ospx)',
+          icon: 'ospx',
           files: {
             ru: 'oint-2.3.0_ru.ospx',
             en: 'oint-2.3.0_en.ospx',
@@ -100,6 +108,7 @@ const DownloadPage = () => {
         },
         {
           name: 'Пакет oint-cli (.ospx)',
+          icon: 'ospx-cli',
           files: {
             ru: 'oint-cli-2.3.0_ru.ospx',
             en: 'oint-cli-2.3.0_en.ospx',
@@ -113,6 +122,7 @@ const DownloadPage = () => {
       items: [
         {
           name: 'Windows Installer',
+          icon: 'exe',
           files: {
             ru: 'oint_2.3.0_installer_ru.exe',
             en: 'oint_2.3.0_installer_en.exe',
@@ -121,6 +131,7 @@ const DownloadPage = () => {
         },
         {
           name: 'Debian / Ubuntu (.deb)',
+          icon: 'deb',
           files: {
             ru: 'oint_2.3.0_all_ru.deb',
             en: 'oint_2.3.0_all_en.deb',
@@ -129,6 +140,7 @@ const DownloadPage = () => {
         },
         {
           name: 'Fedora / RHEL (.rpm)',
+          icon: 'rpm',
           files: {
             ru: 'oint-2.3.0-1.noarch_ru.rpm',
             en: 'oint-2.3.0-1.noarch_en.rpm',
@@ -137,6 +149,7 @@ const DownloadPage = () => {
         },
         {
           name: 'Linux (.AppImage)',
+          icon: 'appimage',
           files: {
             ru: 'oint-2.3.0_ru-x86_64.AppImage',
             en: 'oint-2.3.0_en-x86_64.AppImage',
@@ -201,7 +214,11 @@ const DownloadPage = () => {
               Скачать последнюю версию
             </Heading>
             <p className={styles.downloadSubtitle}>
-              Текущая версия: 2.3.0 | Выберите подходящий язык и вариант поставки
+              Текущая версия:{' '}
+              <Link className={styles.versionLink} to={`/releases/${currentVersion}`}>
+                {currentVersion}
+              </Link>
+              {' '}| Выберите подходящий язык и вариант поставки
             </p>
           </div>
         </div>
@@ -214,7 +231,15 @@ const DownloadPage = () => {
             <div className={styles.itemsGrid}>
               {group.items.map((item, i) => (
                 <div key={i} className={styles.downloadItem}>
-                  <h3>{item.name}</h3>
+                  <div className={styles.downloadItemHeader}>
+                    <img
+                      src={`${iconBase}${item.icon}.png`}
+                      alt=""
+                      className={styles.fileIcon}
+                      loading="lazy"
+                    />
+                    <h3>{item.name}</h3>
+                  </div>
                   <p>{item.desc}</p>
                   <div className={styles.langButtons}>
                     <button
@@ -275,13 +300,7 @@ const DownloadPage = () => {
 
         <div className={styles.otherVersions}>
           <Link className={styles.otherVersionsButton} to="/releases">
-            Архив версий (сайт) →
-          </Link>
-          <Link className={styles.otherVersionsButton} to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
-            Архив версий (GitHub) →
-          </Link>
-          <Link className={styles.otherVersionsButton} to="https://sourcecraft.dev/bayselonarrend/openintegrations/releases">
-            Архив версий (SourceCraft) →
+            Архив версий →
           </Link>
         </div>
       </main>

@@ -461,6 +461,10 @@
     "description": "Generated releases archive JSON for Docusaurus",
     "value": "./docs/docusaurus/archive/releases-archive.json"
    },
+   "archiveMinVersion": {
+    "description": "Oldest release version included in docs archive index",
+    "value": "1.25.0"
+   },
    "artifacts": {
     "description": "Release artifact filename templates. Placeholders: {version}, {lang}, {langUpper}",
     "value": [

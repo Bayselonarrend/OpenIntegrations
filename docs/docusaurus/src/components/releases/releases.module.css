@@ -30,18 +30,22 @@
   gap: 1rem;
 }
 
+.releasesPage:global(.container) {
+  max-width: 1280px;
+}
+
 .releaseCard {
   display: grid;
-  grid-template-columns: 7rem 1fr minmax(10rem, 14rem);
-  gap: 1.25rem;
+  grid-template-columns: 7rem 1fr minmax(18rem, 40%);
   align-items: center;
-  padding: 1.25rem 1.5rem;
+  padding: 0;
   border: 1px solid #ddd;
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   text-decoration: none;
   color: inherit;
+  overflow: hidden;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -52,16 +56,27 @@
   color: inherit;
 }
 
+.releaseCardMain {
+  display: contents;
+}
+
 .versionNumber {
-  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  font-size: 2.15rem;
   font-weight: 500;
   line-height: 1;
   color: #004943;
   letter-spacing: -0.02em;
+  padding: 1.1rem 0 1.1rem 1.35rem;
 }
 
 .summaryBlock {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.1rem 1rem;
 }
 
 .summaryRu,
@@ -82,19 +97,36 @@
 }
 
 .coverWrap {
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  background-color: #004943;
+  overflow: hidden;
+}
+
+.coverTone {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  min-height: 5rem;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #004943;
+  isolation: isolate;
+  line-height: 0;
 }
 
 .coverImage {
-  max-height: 5.5rem;
-  width: auto;
-  max-width: 14rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  filter: grayscale(100%);
+  mix-blend-mode: screen;
+  transition: filter 0.35s ease, mix-blend-mode 0.35s ease;
+}
+
+.releaseCard:hover .coverImage {
+  filter: none;
+  mix-blend-mode: normal;
 }
 
 .detailHero {
@@ -118,7 +150,8 @@
 }
 
 .detailSummaryRu,
-.detailSummaryEn {
+.detailSummaryEn,
+.detailSummary {
   margin: 0;
   line-height: 1.5;
 }
@@ -130,6 +163,11 @@
 .detailSummaryEn {
   color: #666;
   font-weight: 300;
+}
+
+.detailSummary {
+  color: #333;
+  font-size: 1.05rem;
 }
 
 .detailCover {
@@ -159,8 +197,7 @@
   margin-bottom: 2.5rem;
 }
 
-.changelogSection h2,
-.downloadSection h2 {
+.changelogSection h2 {
   margin: 0 0 1rem;
   font-size: 1.25rem;
   font-weight: 400;
@@ -198,6 +235,15 @@
   background: #fafbfb;
 }
 
+.changelogTable code {
+  font-size: 0.88em;
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: inherit;
+}
+
 .libCell {
   display: flex;
   align-items: center;
@@ -216,112 +262,64 @@
   margin-bottom: 2rem;
 }
 
-.downloadGroup {
-  margin-bottom: 2rem;
-}
-
-.downloadGroup h3 {
-  margin: 0 0 1rem;
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: #004943;
-}
-
-.itemsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.2rem;
-}
-
-.downloadItem {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.downloadItemHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 0.5rem;
-}
-
-.fileIcon {
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-}
-
-.downloadItem h4 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.downloadItem p {
-  margin: 0 0 1rem;
-  font-size: 0.92rem;
-  color: #555;
-}
-
-.langButtons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.downloadButton {
-  appearance: none;
-  background-color: white;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 16px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-  color: #24292e;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 6px 14px;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.downloadButton:hover {
-  background-color: #f6f8fa;
-  text-decoration: none;
-  color: #24292e;
-}
-
 .mirrorLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.6rem;
   margin-top: 1rem;
 }
 
 .mirrorLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.65rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 12px;
+  background: #fff;
   color: #004943;
   font-weight: 500;
+  font-size: 0.92rem;
   text-decoration: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mirrorLink:hover {
-  text-decoration: underline;
+  background: #f3f4f6;
+  text-decoration: none;
+  color: #004943;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.mirrorIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
   .releaseCard {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+    grid-template-columns: 5.5rem 1fr minmax(9rem, 38%);
   }
 
   .versionNumber {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    padding: 1rem 0 1rem 0.9rem;
+  }
+
+  .summaryBlock {
+    padding: 1rem 0.8rem;
+  }
+
+  .summaryRu,
+  .summaryEn {
+    font-size: 0.9rem;
   }
 
   .coverWrap {
-    justify-content: flex-start;
-    height: auto;
+    min-height: 0;
   }
 
   .detailHero {

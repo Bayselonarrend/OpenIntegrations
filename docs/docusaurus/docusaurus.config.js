@@ -182,12 +182,6 @@ window.yaContextCb.push(() => {
             'aria-label': 'Download',
           },
           {
-            to: '/releases',
-            label: 'Архив',
-            position: 'left',
-            'aria-label': 'Releases archive',
-          },
-          {
             type: 'dropdown',
             label: 'Translation',
             position: 'right',

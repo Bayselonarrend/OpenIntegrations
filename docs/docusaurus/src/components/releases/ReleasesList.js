@@ -11,7 +11,7 @@ export default function ReleasesList() {
 
   return (
     <Layout title="Архив версий" description="Архив релизов OpenIntegrations">
-      <main className="container margin-vert--lg">
+      <main className={`container margin-vert--lg ${styles.releasesPage}`}>
         <div className={styles.pageHeader}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,17 +44,21 @@ export default function ReleasesList() {
               className={styles.releaseCard}
               to={`/releases/${release.version}`}
             >
-              <div className={styles.versionNumber}>{release.version}</div>
-              <div className={styles.summaryBlock}>
-                <p className={styles.summaryRu}>🇷🇺 {release.summary_ru}</p>
-                <p className={styles.summaryEn}>🇺🇸 {release.summary_en}</p>
+              <div className={styles.releaseCardMain}>
+                <div className={styles.versionNumber}>{release.version}</div>
+                <div className={styles.summaryBlock}>
+                  <p className={styles.summaryRu}>🇷🇺 {release.summary_ru}</p>
+                  <p className={styles.summaryEn}>🇺🇸 {release.summary_en}</p>
+                </div>
               </div>
               <div className={styles.coverWrap}>
-                <CoverImage
-                  release={release}
-                  className={styles.coverImage}
-                  loading="lazy"
-                />
+                <div className={styles.coverTone}>
+                  <CoverImage
+                    release={release}
+                    className={styles.coverImage}
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </Link>
           ))}

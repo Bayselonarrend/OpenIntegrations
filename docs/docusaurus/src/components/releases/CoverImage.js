@@ -13,15 +13,15 @@ export default function CoverImage({ release, className, ...props }) {
   const logo = useBaseUrl('/img/logo.png');
   const local = useBaseUrl(`/img/releases/covers/${coverFileName(release?.cover)}`);
   const remote = release?.coverUrl;
-  const [src, setSrc] = useState(local);
+  const [src, setSrc] = useState(remote || local);
 
   useEffect(() => {
-    setSrc(local);
-  }, [local, release?.version]);
+    setSrc(remote || local);
+  }, [local, remote, release?.version]);
 
   const handleError = () => {
-    if (src === local && remote) {
-      setSrc(remote);
+    if (remote && src === remote) {
+      setSrc(local);
       return;
     }
 
