@@ -1,0 +1,353 @@
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pageIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  color: #004943;
+  margin-top: 0.2rem;
+}
+
+.pageTitle {
+  margin: 0;
+  font-weight: 350;
+}
+
+.pageSubtitle {
+  margin: 0.35rem 0 0;
+  font-weight: 300;
+  color: #555;
+}
+
+.releaseList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.releaseCard {
+  display: grid;
+  grid-template-columns: 7rem 1fr 7.5rem;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.releaseCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.versionNumber {
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1;
+  color: #004943;
+  letter-spacing: -0.02em;
+}
+
+.summaryBlock {
+  min-width: 0;
+}
+
+.summaryRu,
+.summaryEn {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.summaryRu {
+  margin-bottom: 0.35rem;
+  color: #333;
+}
+
+.summaryEn {
+  color: #666;
+  font-weight: 300;
+}
+
+.coverWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 7.5rem;
+  overflow: hidden;
+}
+
+.coverImage {
+  height: 9rem;
+  width: auto;
+  max-width: none;
+  transform: rotate(90deg);
+  transform-origin: center center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  object-fit: cover;
+}
+
+.detailHero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.detailHeroText h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #004943;
+}
+
+.detailSummaryRu,
+.detailSummaryEn {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.detailSummaryRu {
+  margin-bottom: 0.35rem;
+}
+
+.detailSummaryEn {
+  color: #666;
+  font-weight: 300;
+}
+
+.detailCover {
+  height: 10rem;
+  width: auto;
+  transform: rotate(90deg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  color: #004943;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.changelogSection {
+  max-width: 960px;
+  margin: 0 auto 2.5rem;
+}
+
+.changelogSection h2,
+.downloadSection h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #004943;
+}
+
+.changelogTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.changelogTable th,
+.changelogTable td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.changelogTable tr:last-child td {
+  border-bottom: none;
+}
+
+.changelogTable th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #555;
+  background: #fafbfb;
+}
+
+.libCell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 8rem;
+  font-weight: 500;
+}
+
+.libIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+}
+
+.downloadSection {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+}
+
+.downloadGroup {
+  margin-bottom: 2rem;
+}
+
+.downloadGroup h3 {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #004943;
+}
+
+.itemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.downloadItem {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.downloadItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.fileIcon {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.downloadItem h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.downloadItem p {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  color: #555;
+}
+
+.langButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.downloadButton {
+  appearance: none;
+  background-color: white;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 16px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  color: #24292e;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 14px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.downloadButton:hover {
+  background-color: #f6f8fa;
+  text-decoration: none;
+  color: #24292e;
+}
+
+.mirrorLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.mirrorLink {
+  color: #004943;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mirrorLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .releaseCard {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .versionNumber {
+    font-size: 1.8rem;
+  }
+
+  .coverWrap {
+    justify-content: flex-start;
+    height: auto;
+  }
+
+  .detailHero {
+    grid-template-columns: 1fr;
+  }
+
+  .changelogTable thead {
+    display: none;
+  }
+
+  .changelogTable tr {
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 0.75rem 0;
+  }
+
+  .changelogTable td {
+    display: block;
+    border: none;
+    padding: 0.25rem 1rem;
+  }
+}

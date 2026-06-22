@@ -45,6 +45,7 @@
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
 	Обработчик = Новый SonarQubeMethods(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator(ДанныеПроекта);
+	Обработчик = Новый ReleasesArchiveGenerator(ДанныеПроекта);
 	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
 	Обработчик = Новый LocalUpdater(ДанныеПроекта);
 	Обработчик = Новый DraftMethods(ДанныеПроекта);

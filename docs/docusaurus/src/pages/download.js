@@ -274,6 +274,9 @@ const DownloadPage = () => {
         <hr />
 
         <div className={styles.otherVersions}>
+          <Link className={styles.otherVersionsButton} to="/releases">
+            Архив версий (сайт) →
+          </Link>
           <Link className={styles.otherVersionsButton} to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
             Архив версий (GitHub) →
           </Link>

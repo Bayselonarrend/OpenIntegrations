@@ -448,6 +448,145 @@
    "s3PathStyle": {
     "description": "Use path-style S3 URLs",
     "value": true
+   },
+   "s3PublicBase": {
+    "description": "Public S3 mirror base URL (no trailing slash)",
+    "value": "https://releases.openintegrations.dev"
+   },
+   "githubDownloadBase": {
+    "description": "GitHub release download base URL (no trailing slash)",
+    "value": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download"
+   },
+   "archiveJsonPath": {
+    "description": "Generated releases archive JSON for Docusaurus",
+    "value": "./docs/docusaurus/data/releases-archive.json"
+   },
+   "artifacts": {
+    "description": "Release artifact filename templates. Placeholders: {version}, {lang}, {langUpper}",
+    "value": [
+     {
+      "id": "cfe",
+      "group": "1c",
+      "group_ru": "Для 1С:Enterprise",
+      "group_en": "For 1C:Enterprise",
+      "label_ru": "CFE (расширение)",
+      "label_en": "CFE (extension)",
+      "desc_ru": "Файл расширения 1С в формате .cfe",
+      "desc_en": "1C extension package (.cfe)",
+      "icon": "cfe",
+      "filename": "OpenIntegrations_{version}_{lang}.cfe"
+     },
+     {
+      "id": "cf",
+      "group": "1c",
+      "group_ru": "Для 1С:Enterprise",
+      "group_en": "For 1C:Enterprise",
+      "label_ru": "CF (конфигурация)",
+      "label_en": "CF (configuration)",
+      "desc_ru": "Файл конфигурации 1С в формате .cf",
+      "desc_en": "1C configuration file (.cf)",
+      "icon": "cf",
+      "filename": "OpenIntegrations_{version}_{lang}.cf"
+     },
+     {
+      "id": "xml",
+      "group": "1c",
+      "group_ru": "Для 1С:Enterprise",
+      "group_en": "For 1C:Enterprise",
+      "label_ru": "XML (выгрузка)",
+      "label_en": "XML (export)",
+      "desc_ru": "Выгрузка расширения 1С в формате XML",
+      "desc_en": "1C extension XML export",
+      "icon": "xml",
+      "filename": "XML_{langUpper}.zip"
+     },
+     {
+      "id": "edt",
+      "group": "1c",
+      "group_ru": "Для 1С:Enterprise",
+      "group_en": "For 1C:Enterprise",
+      "label_ru": "EDT (проект)",
+      "label_en": "EDT (project)",
+      "desc_ru": "Файлы расширения 1С в формате EDT",
+      "desc_en": "1C extension EDT project",
+      "icon": "edt",
+      "filename": "EDT_{langUpper}.zip"
+     },
+     {
+      "id": "oint-ospx",
+      "group": "onescript",
+      "group_ru": "Для OneScript",
+      "group_en": "For OneScript",
+      "label_ru": "Пакет oint (.ospx)",
+      "label_en": "oint package (.ospx)",
+      "desc_ru": "Пакет библиотеки для OneScript",
+      "desc_en": "OneScript library package",
+      "icon": "ospx",
+      "opmPackage": "oint",
+      "filename": "oint-{version}_{lang}.ospx"
+     },
+     {
+      "id": "oint-cli-ospx",
+      "group": "onescript",
+      "group_ru": "Для OneScript",
+      "group_en": "For OneScript",
+      "label_ru": "Пакет oint-cli (.ospx)",
+      "label_en": "oint-cli package (.ospx)",
+      "desc_ru": "Пакет CLI-приложения для OneScript",
+      "desc_en": "OneScript CLI application package",
+      "icon": "ospx-cli",
+      "opmPackage": "oint-cli",
+      "filename": "oint-cli-{version}_{lang}.ospx"
+     },
+     {
+      "id": "installer",
+      "group": "cli",
+      "group_ru": "Консольное приложение (OInt CLI)",
+      "group_en": "Console application (OInt CLI)",
+      "label_ru": "Windows Installer",
+      "label_en": "Windows Installer",
+      "desc_ru": "Windows установщик CLI приложения с аддоном Melezh",
+      "desc_en": "Windows installer for CLI with Melezh addon",
+      "icon": "exe",
+      "filename": "oint_{version}_installer_{lang}.exe"
+     },
+     {
+      "id": "deb",
+      "group": "cli",
+      "group_ru": "Консольное приложение (OInt CLI)",
+      "group_en": "Console application (OInt CLI)",
+      "label_ru": "Debian / Ubuntu (.deb)",
+      "label_en": "Debian / Ubuntu (.deb)",
+      "desc_ru": "Пакет CLI приложения для систем на базе Debian",
+      "desc_en": "CLI package for Debian-based systems",
+      "icon": "deb",
+      "filename": "oint_{version}_all_{lang}.deb"
+     },
+     {
+      "id": "rpm",
+      "group": "cli",
+      "group_ru": "Консольное приложение (OInt CLI)",
+      "group_en": "Console application (OInt CLI)",
+      "label_ru": "Fedora / RHEL (.rpm)",
+      "label_en": "Fedora / RHEL (.rpm)",
+      "desc_ru": "Пакет CLI приложения для систем на базе RHEL",
+      "desc_en": "CLI package for RHEL-based systems",
+      "icon": "rpm",
+      "filename": "oint-{version}-1.noarch_{lang}.rpm"
+     },
+     {
+      "id": "appimage",
+      "group": "cli",
+      "group_ru": "Консольное приложение (OInt CLI)",
+      "group_en": "Console application (OInt CLI)",
+      "label_ru": "Linux (.AppImage)",
+      "label_en": "Linux (.AppImage)",
+      "desc_ru": "Единый исполняемый файл CLI формата AppImage",
+      "desc_en": "Single-file CLI AppImage",
+      "icon": "appimage",
+      "filename": "oint-{version}_{lang}-x86_64.AppImage"
+     }
+    ]
    }
   }
  }
