@@ -34,8 +34,8 @@
     <showInFooter>true</showInFooter>
     <extInfo xsi:type="form:HtmlFieldExtInfo">
       <handlers>
-        <event>DocumentComplete</event>
-        <name>HTMLДокументСформирован</name>
+        <event>OnClick</event>
+        <name>HTMLПриНажатии</name>
       </handlers>
       <width>50</width>
       <autoMaxWidth>true</autoMaxWidth>
