@@ -21,7 +21,7 @@
     <name>ФормаПанели</name>
     <synonym>
       <key>ru</key>
-      <value>Форма панели</value>
+      <value>Панель управления (ОПИ)</value>
     </synonym>
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>

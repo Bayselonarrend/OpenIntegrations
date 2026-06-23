@@ -175,6 +175,40 @@
       </edit>
     </columns>
   </attributes>
+  <attributes>
+    <name>ХранилищеФормы</name>
+    <title>
+      <key>ru</key>
+      <value>Хранилище формы</value>
+    </title>
+    <id>2</id>
+    <valueType>
+      <types>DataProcessorObject.OPI_HTMLФорма</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
+  <attributes>
+    <name>ТемнаяТема</name>
+    <title>
+      <key>ru</key>
+      <value>Темная тема</value>
+    </title>
+    <id>3</id>
+    <valueType>
+      <types>Boolean</types>
+    </valueType>
+    <view>
+      <common>true</common>
+    </view>
+    <edit>
+      <common>true</common>
+    </edit>
+  </attributes>
   <commandInterface>
     <navigationPanel/>
     <commandBar/>

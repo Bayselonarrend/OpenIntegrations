@@ -20,6 +20,8 @@
 &НаСервере
 Процедура ПриСозданииНаСервере(Отказ, СтандартнаяОбработка)
 
+	ФормаHTML = Обработки.OPI_HTMLФорма.Создать().Инициализировать();
+	
 	ПересобратьHTMLПанелиНаСервере(Истина);
 
 КонецПроцедуры
@@ -88,11 +90,15 @@
 		Если ТипСобытия = "click" Тогда
 			
 			Если IDОбъекта = "opi-btn-docs" Тогда
-				ОткрытьСайт();
 			ИначеЕсли IDОбъекта = "opi-btn-github" Тогда
 				ОткрытьGitHub();
 			ИначеЕсли IDОбъекта = "opi-btn-sourcecraft" Тогда
 				ОткрытьSourceCraft();
+			ИначеЕсли IDОбъекта = "opi-addins-check-all" Тогда
+				
+				Установлен = ДанныеСобытия["Element"]["checked"];				
+				ОбработатьОбщуюОтметку(Установлен);
+				
 			ИначеЕсли СтрНачинаетсяС(IDОбъекта, "opi-addin-OPI_") Тогда
 				ОбработатьФлажокКомпоненты(IDОбъекта);
 			Иначе
@@ -140,26 +146,6 @@
 
 КонецФункции
 
-&НаСервере
-Функция ПолучитьЛоготипSVG()
-
-	ЛогоДвоичные = БиблиотекаКартинок.OPI_Logo.ПолучитьДвоичныеДанные();
-
-	Возврат ПолучитьСтрокуИзДвоичныхДанных(ЛогоДвоичные);
-
-КонецФункции
-
-&НаСервере
-Функция ПредставлениеЗначенияКомпоненты(Знач Значение)
-
-	Если Значение = Неопределено Тогда
-		Возврат "";
-	КонецЕсли;
-
-	Возврат Строка(Значение);
-
-КонецФункции
-
 &НаКлиенте
 Процедура ОткрытьSourceCraft()
     ЗапуститьПриложение("https://sourcecraft.dev/bayselonarrend/openintegrations");
@@ -191,9 +177,54 @@
 			ФормаHTML.УдалитьАтрибут("checked", "checked", IDОбъекта);
 		КонецЕсли;
 		
+		HTML = ФормаHTML.СгенерироватьHTML();
+		
 	КонецЕсли;
 	
 КонецПроцедуры
+
+&НаСервере
+Процедура ОбработатьОбщуюОтметку(Знач Активно)
+	
+	ШаблонID   = "opi-addin-%1";
+	
+	Для Каждого Компонента Из ВерсииКомпонент Цикл
+		
+		Компонента.Отметка = Активно;
+		
+		IDЭлемента = СтрШаблон(ШаблонID, Компонента.ИмяКомпоненты);
+		
+		Если Активно Тогда
+			ФормаHTML.УстановитьАтрибут("checked", "checked", IDЭлемента);	
+		Иначе
+			ФормаHTML.УдалитьАтрибут("checked", "checked", IDЭлемента);	 
+		КонецЕсли;
+		
+	КонецЦикла;
+	
+	HTML = ФормаHTML.СгенерироватьHTML();
+	
+КонецПроцедуры
+
+&НаСервере
+Функция ПолучитьЛоготипSVG()
+
+	ЛогоДвоичные = БиблиотекаКартинок.OPI_Logo.ПолучитьДвоичныеДанные();
+
+	Возврат ПолучитьСтрокуИзДвоичныхДанных(ЛогоДвоичные);
+
+КонецФункции
+
+&НаСервере
+Функция ПредставлениеЗначенияКомпоненты(Знач Значение)
+
+	Если Значение = Неопределено Тогда
+		Возврат "";
+	КонецЕсли;
+
+	Возврат Строка(Значение);
+
+КонецФункции
 
 #Область Верстка
 
@@ -202,14 +233,12 @@
 
 	ЛогоSVG = ПолучитьЛоготипSVG();
 
-	ФормаHTML = Обработки.OPI_HTMLФорма.Создать().Инициализировать();
 	ПодключитьСтилиПанели(ФормаHTML);
 	СобратьHTMLПанели(ФормаHTML, ЛогоSVG, ПоказыватьЗагрузку);
 
 	HTML = ФормаHTML.СгенерироватьHTML();
 
 КонецПроцедуры
-
 
 &НаСервере
 Процедура СобратьHTMLПанели(ФормаHTML, ЛогоSVG, ПоказыватьЗагрузку = Ложь)
@@ -337,8 +366,6 @@
 			.ВставитьДочернийЭлемент("opi-addins-toolbar", "div")
 				.ДобавитьКласс("opi-toolbar");
 
-	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-select-all", "Выделить все");
-	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-deselect-all", "Снять все");
 	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-refresh-list", "Обновить список");
 	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-install-addins", "Установить компоненты на клиенте");
 	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-open-cache", "Открыть каталог кэша");
@@ -460,11 +487,105 @@
 КонецФункции
 
 &НаСервере
+Функция ИспользуетсяТемнаяТема()
+
+	Если Не ТемнаяТема = Неопределено Тогда
+		Возврат ТемнаяТема;	
+	КонецЕсли;
+	
+	ТемнаяТема = Ложь;
+
+	Попытка
+
+		КлючНастроек = "Общее/НастройкиКлиентскогоПриложения";
+		Настройки    = ХранилищеСистемныхНастроек.Загрузить(КлючНастроек);
+
+		Если Настройки <> Неопределено Тогда
+			ТемнаяТема = Строка(Настройки.ТемаКлиентскогоПриложения) = "Темная";
+		КонецЕсли;
+
+	Исключение
+		ТемнаяТема = Ложь;
+	КонецПопытки;
+
+	Возврат ТемнаяТема;
+
+КонецФункции
+
+&НаСервере
+Процедура УстановитьПалитруПанели(ФормаHTML)
+
+	Если ИспользуетсяТемнаяТема() Тогда
+
+		КлассПанели = "opi-panel opi-panel--dark";
+
+		ФормаHTML
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-bg", "#1A1A1A")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface", "#1A1A1A")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-elevated", "#202020")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-muted", "#262626")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-accent", "#1e3330")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-gradient-start", "#243330")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-gradient-end", "#2a2a2a")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-border", "rgba(255, 255, 255, 0.1)")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-border", "#404040")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-divider", "#404040")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-divider-strong", "#404040")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-border-control", "#505050")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text", "#C7C7C7")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-strong", "#C7C7C7")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-secondary", "#999999")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-muted", "#999999")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-table-header", "#999999")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-button-text", "#C7C7C7")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-accent", "#3d9e94")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-checkbox-bg", "#2a2a2a")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-checkbox-hover-bg", "#333333")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-row-hover", "#262626")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-shell-shadow", "0 4px 12px rgba(0, 0, 0, 0.35)");
+
+	Иначе
+
+		КлассПанели = "opi-panel";
+
+		ФормаHTML
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-bg", "#ffffff")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface", "#ffffff")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-elevated", "#fafbfc")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-muted", "#f3f4f6")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-surface-accent", "#f0f7f6")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-gradient-start", "#f0f7f6")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-gradient-end", "#ffffff")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-logo-border", "rgba(0, 73, 67, 0.12)")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-border", "#dddddd")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-divider", "rgba(27, 31, 35, 0.08)")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-divider-strong", "rgba(27, 31, 35, 0.12)")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-border-control", "rgba(27, 31, 35, 0.15)")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text", "#333333")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-strong", "#000000")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-secondary", "#666666")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-muted", "#555555")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-text-table-header", "#4b5563")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-button-text", "#24292e")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-accent", "#004943")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-checkbox-bg", "#ffffff")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-checkbox-hover-bg", "#f6f8fa")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-row-hover", "#fafbfc")
+			.УстановитьСвойствоКласса(".opi-panel", "--opi-shell-shadow", "inset 0 1px 3px rgba(255, 255, 255, 0.7), 0 4px 8px rgba(0, 0, 0, 0.1)");
+
+	КонецЕсли;
+
+	ФормаHTML.УстановитьАтрибутBody("class", КлассПанели);
+
+КонецПроцедуры
+
+&НаСервере
 Процедура ПодключитьСтилиПанели(ФормаHTML)
+
+	УстановитьПалитруПанели(ФормаHTML);
 
 	ФормаHTML
 		.УстановитьАтрибутHtml("lang", "ru")
-		.УстановитьАтрибутBody("class", "opi-panel")
 		.УстановитьСвойствоКласса(".opi-panel", "margin", "0")
 		.УстановитьСвойствоКласса(".opi-loading", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-loading", "flex-direction", "column")
@@ -476,53 +597,53 @@
 		.УстановитьСвойствоКласса(".opi-loading__icon", "width", "3rem")
 		.УстановитьСвойствоКласса(".opi-loading__icon", "height", "3rem")
 		.УстановитьСвойствоКласса(".opi-loading__icon", "display", "block")
-		.УстановитьСвойствоКласса(".opi-loading__icon", "color", "#004943")
+		.УстановитьСвойствоКласса(".opi-loading__icon", "color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-loading__title", "margin", "20px 0 6px")
 		.УстановитьСвойствоКласса(".opi-loading__title", "font-size", "1.1rem")
 		.УстановитьСвойствоКласса(".opi-loading__title", "font-weight", "400")
-		.УстановитьСвойствоКласса(".opi-loading__title", "color", "#000000")
+		.УстановитьСвойствоКласса(".opi-loading__title", "color", "var(--opi-text-strong)")
 		.УстановитьСвойствоКласса(".opi-loading__hint", "margin", "0")
 		.УстановитьСвойствоКласса(".opi-loading__hint", "font-size", "0.9rem")
 		.УстановитьСвойствоКласса(".opi-loading__hint", "font-weight", "300")
-		.УстановитьСвойствоКласса(".opi-loading__hint", "color", "#666666")
+		.УстановитьСвойствоКласса(".opi-loading__hint", "color", "var(--opi-text-secondary)")
 		.УстановитьСвойствоКласса(".opi-panel", "padding", "12px")
 		.УстановитьСвойствоКласса(".opi-panel", "font-family", "-apple-system, system-ui, ""Segoe UI"", Helvetica, Arial, sans-serif")
 		.УстановитьСвойствоКласса(".opi-panel", "font-size", "14px")
 		.УстановитьСвойствоКласса(".opi-panel", "line-height", "1.5")
-		.УстановитьСвойствоКласса(".opi-panel", "color", "#333333")
-		.УстановитьСвойствоКласса(".opi-panel", "background", "#ffffff")
+		.УстановитьСвойствоКласса(".opi-panel", "color", "var(--opi-text)")
+		.УстановитьСвойствоКласса(".opi-panel", "background", "var(--opi-bg)")
 		.УстановитьСвойствоКласса(".opi-panel", "box-sizing", "border-box")
 		.УстановитьСвойствоКласса(".opi-panel *, .opi-panel *::before, .opi-panel *::after", "box-sizing", "border-box")
 		.УстановитьСвойствоКласса(".opi-shell", "max-width", "960px")
 		.УстановитьСвойствоКласса(".opi-shell", "margin", "0 auto")
-		.УстановитьСвойствоКласса(".opi-shell", "background", "#ffffff")
-		.УстановитьСвойствоКласса(".opi-shell", "border", "1px solid #dddddd")
+		.УстановитьСвойствоКласса(".opi-shell", "background", "var(--opi-surface)")
+		.УстановитьСвойствоКласса(".opi-shell", "border", "1px solid var(--opi-border)")
 		.УстановитьСвойствоКласса(".opi-shell", "border-radius", "12px")
-		.УстановитьСвойствоКласса(".opi-shell", "box-shadow", "inset 0 1px 3px rgba(255, 255, 255, 0.7), 0 4px 8px rgba(0, 0, 0, 0.1)")
+		.УстановитьСвойствоКласса(".opi-shell", "box-shadow", "var(--opi-shell-shadow)")
 		.УстановитьСвойствоКласса(".opi-shell", "overflow", "hidden")
 		.УстановитьСвойствоКласса(".opi-header", "padding", "20px 24px 16px")
-		.УстановитьСвойствоКласса(".opi-header", "border-bottom", "1px solid rgba(27, 31, 35, 0.08)")
+		.УстановитьСвойствоКласса(".opi-header", "border-bottom", "1px solid var(--opi-divider)")
 		.УстановитьСвойствоКласса(".opi-header__wrap", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-header__wrap", "align-items", "flex-start")
 		.УстановитьСвойствоКласса(".opi-header__icon", "width", "3.4rem")
 		.УстановитьСвойствоКласса(".opi-header__icon", "height", "3.4rem")
 		.УстановитьСвойствоКласса(".opi-header__icon", "flex-shrink", "0")
-		.УстановитьСвойствоКласса(".opi-header__icon", "color", "#004943")
+		.УстановитьСвойствоКласса(".opi-header__icon", "color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-header__icon", "margin-right", "1.5rem")
 		.УстановитьСвойствоКласса(".opi-header__title", "margin", "0")
 		.УстановитьСвойствоКласса(".opi-header__title", "font-size", "1.5rem")
 		.УстановитьСвойствоКласса(".opi-header__title", "font-weight", "350")
-		.УстановитьСвойствоКласса(".opi-header__title", "color", "#000000")
+		.УстановитьСвойствоКласса(".opi-header__title", "color", "var(--opi-text-strong)")
 		.УстановитьСвойствоКласса(".opi-header__title", "line-height", "1.2")
 		.УстановитьСвойствоКласса(".opi-header__subtitle", "margin", "0.1rem 0 0")
 		.УстановитьСвойствоКласса(".opi-header__subtitle", "font-size", "13px")
 		.УстановитьСвойствоКласса(".opi-header__subtitle", "font-weight", "300")
-		.УстановитьСвойствоКласса(".opi-header__subtitle", "color", "#555555")
+		.УстановитьСвойствоКласса(".opi-header__subtitle", "color", "var(--opi-text-muted)")
 		.УстановитьСвойствоКласса(".opi-header__subtitle", "line-height", "1.35")
 		.УстановитьСвойствоКласса(".opi-tabs", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-tabs", "padding", "0 16px")
-		.УстановитьСвойствоКласса(".opi-tabs", "border-bottom", "2px solid rgba(27, 31, 35, 0.12)")
-		.УстановитьСвойствоКласса(".opi-tabs", "background", "#ffffff")
+		.УстановитьСвойствоКласса(".opi-tabs", "border-bottom", "2px solid var(--opi-divider-strong)")
+		.УстановитьСвойствоКласса(".opi-tabs", "background", "var(--opi-surface)")
 		.УстановитьСвойствоКласса(".opi-tab", "display", "inline-flex")
 		.УстановитьСвойствоКласса(".opi-tab", "align-items", "center")
 		.УстановитьСвойствоКласса(".opi-tab", "padding", "0.62rem 0.9rem")
@@ -530,11 +651,11 @@
 		.УстановитьСвойствоКласса(".opi-tab", "border", "none")
 		.УстановитьСвойствоКласса(".opi-tab", "border-bottom", "2px solid transparent")
 		.УстановитьСвойствоКласса(".opi-tab", "background", "transparent")
-		.УстановитьСвойствоКласса(".opi-tab", "color", "#555555")
+		.УстановитьСвойствоКласса(".opi-tab", "color", "var(--opi-text-muted)")
 		.УстановитьСвойствоКласса(".opi-tab", "font-weight", "400")
 		.УстановитьСвойствоКласса(".opi-tab", "font-size", "0.95rem")
 		.УстановитьСвойствоКласса(".opi-tab", "cursor", "pointer")
-		.УстановитьСвойствоКласса(".opi-tab:hover", "color", "#004943")
+		.УстановитьСвойствоКласса(".opi-tab:hover", "color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-tab-input", "position", "absolute")
 		.УстановитьСвойствоКласса(".opi-tab-input", "opacity", "0")
 		.УстановитьСвойствоКласса(".opi-tab-input", "pointer-events", "none")
@@ -545,11 +666,11 @@
 		.УстановитьСвойствоКласса(".opi-tab-panel", "width", "100%")
 		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-main .opi-tab-panel[data-tab=""main""]", "display", "block")
 		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-main .opi-tab-panel[data-tab=""addins""]", "display", "block")
-		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-tabs label[for=""opi-tab-main""]", "color", "#004943")
-		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-tabs label[for=""opi-tab-main""]", "border-bottom-color", "#004943")
+		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-tabs label[for=""opi-tab-main""]", "color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-tabs label[for=""opi-tab-main""]", "border-bottom-color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса("#opi-tab-main:checked ~ .opi-tabs label[for=""opi-tab-main""]", "font-weight", "500")
-		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-tabs label[for=""opi-tab-addins""]", "color", "#004943")
-		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-tabs label[for=""opi-tab-addins""]", "border-bottom-color", "#004943")
+		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-tabs label[for=""opi-tab-addins""]", "color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-tabs label[for=""opi-tab-addins""]", "border-bottom-color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса("#opi-tab-addins:checked ~ .opi-tabs label[for=""opi-tab-addins""]", "font-weight", "500")
 		.УстановитьСвойствоКласса(".opi-hero", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-hero", "flex-direction", "column")
@@ -560,8 +681,8 @@
 		.УстановитьСвойствоКласса(".opi-logo", "width", "112px")
 		.УстановитьСвойствоКласса(".opi-logo", "height", "112px")
 		.УстановитьСвойствоКласса(".opi-logo", "border-radius", "22px")
-		.УстановитьСвойствоКласса(".opi-logo", "background", "linear-gradient(145deg, #f0f7f6, #ffffff)")
-		.УстановитьСвойствоКласса(".opi-logo", "border", "1px solid rgba(0, 73, 67, 0.12)")
+		.УстановитьСвойствоКласса(".opi-logo", "background", "linear-gradient(145deg, var(--opi-logo-gradient-start), var(--opi-logo-gradient-end))")
+		.УстановитьСвойствоКласса(".opi-logo", "border", "1px solid var(--opi-logo-border)")
 		.УстановитьСвойствоКласса(".opi-logo", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-logo", "align-items", "center")
 		.УстановитьСвойствоКласса(".opi-logo", "justify-content", "center")
@@ -572,18 +693,18 @@
 		.УстановитьСвойствоКласса(".opi-hero__title", "margin", "8px 0 20px")
 		.УстановитьСвойствоКласса(".opi-hero__title", "font-size", "1.65rem")
 		.УстановитьСвойствоКласса(".opi-hero__title", "font-weight", "350")
-		.УстановитьСвойствоКласса(".opi-hero__title", "color", "#000000")
+		.УстановитьСвойствоКласса(".opi-hero__title", "color", "var(--opi-text-strong)")
 		.УстановитьСвойствоКласса(".opi-hero__tagline", "margin", "0 0 20px")
 		.УстановитьСвойствоКласса(".opi-hero__tagline", "max-width", "520px")
 		.УстановитьСвойствоКласса(".opi-hero__tagline", "font-size", "0.95rem")
 		.УстановитьСвойствоКласса(".opi-hero__tagline", "font-weight", "300")
-		.УстановитьСвойствоКласса(".opi-hero__tagline", "color", "#666666")
+		.УстановитьСвойствоКласса(".opi-hero__tagline", "color", "var(--opi-text-secondary)")
 		.УстановитьСвойствоКласса(".opi-version-badge", "display", "inline-block")
 		.УстановитьСвойствоКласса(".opi-version-badge", "margin-top", "0")
 		.УстановитьСвойствоКласса(".opi-version-badge", "padding", "4px 10px")
-		.УстановитьСвойствоКласса(".opi-version-badge", "border", "1px solid #004943")
+		.УстановитьСвойствоКласса(".opi-version-badge", "border", "1px solid var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-version-badge", "border-radius", "16px")
-		.УстановитьСвойствоКласса(".opi-version-badge", "background", "#ffffff")
+		.УстановитьСвойствоКласса(".opi-version-badge", "background", "var(--opi-surface-elevated)")
 		.УстановитьСвойствоКласса(".opi-version-badge", "font-size", "0.85rem")
 		.УстановитьСвойствоКласса(".opi-version-badge", "font-weight", "400")
 		.УстановитьСвойствоКласса(".opi-version-badge", "white-space", "nowrap")
@@ -598,16 +719,16 @@
 		.УстановитьСвойствоКласса(".opi-button", "justify-content", "center")
 		.УстановитьСвойствоКласса(".opi-button", "min-height", "34px")
 		.УстановитьСвойствоКласса(".opi-button", "padding", "6px 16px")
-		.УстановитьСвойствоКласса(".opi-button", "border", "1px solid rgba(27, 31, 35, 0.15)")
+		.УстановитьСвойствоКласса(".opi-button", "border", "1px solid var(--opi-border-control)")
 		.УстановитьСвойствоКласса(".opi-button", "border-radius", "16px")
-		.УстановитьСвойствоКласса(".opi-button", "background", "#ffffff")
-		.УстановитьСвойствоКласса(".opi-button", "color", "#24292e")
+		.УстановитьСвойствоКласса(".opi-button", "background", "var(--opi-surface-elevated)")
+		.УстановитьСвойствоКласса(".opi-button", "color", "var(--opi-button-text)")
 		.УстановитьСвойствоКласса(".opi-button", "font-size", "14px")
 		.УстановитьСвойствоКласса(".opi-button", "font-weight", "400")
 		.УстановитьСвойствоКласса(".opi-button", "line-height", "20px")
 		.УстановитьСвойствоКласса(".opi-button", "cursor", "pointer")
 		.УстановитьСвойствоКласса(".opi-button", "white-space", "nowrap")
-		.УстановитьСвойствоКласса(".opi-button:hover", "background", "#f3f4f6")
+		.УстановитьСвойствоКласса(".opi-button:hover", "background", "var(--opi-surface-muted)")
 		.УстановитьСвойствоКласса(".opi-button:hover", "text-decoration", "none")
 		.УстановитьСвойствоКласса(".opi-licenses", "margin-top", "20px")
 		.УстановитьСвойствоКласса(".opi-licenses", "display", "flex")
@@ -619,13 +740,13 @@
 		.УстановитьСвойствоКласса(".opi-license-block__title", "margin", "0 0 8px")
 		.УстановитьСвойствоКласса(".opi-license-block__title", "font-size", "1rem")
 		.УстановитьСвойствоКласса(".opi-license-block__title", "font-weight", "400")
-		.УстановитьСвойствоКласса(".opi-license-block__title", "color", "#000000")
+		.УстановитьСвойствоКласса(".opi-license-block__title", "color", "var(--opi-text-strong)")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "margin", "0")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "width", "100%")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "padding", "14px 16px")
-		.УстановитьСвойствоКласса(".opi-license-block__text", "border", "1px solid rgba(27, 31, 35, 0.12)")
+		.УстановитьСвойствоКласса(".opi-license-block__text", "border", "1px solid var(--opi-divider-strong)")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "border-radius", "8px")
-		.УстановитьСвойствоКласса(".opi-license-block__text", "background", "#fafbfc")
+		.УстановитьСвойствоКласса(".opi-license-block__text", "background", "var(--opi-surface-elevated)")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "font-family", "inherit")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "font-size", "12px")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "line-height", "1.45")
@@ -635,10 +756,10 @@
 		.УстановитьСвойствоКласса(".opi-license-block__text", "max-width", "100%")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "box-sizing", "border-box")
 		.УстановитьСвойствоКласса(".opi-license-block__text", "overflow", "visible")
-		.УстановитьСвойствоКласса(".opi-button--primary", "border-color", "#004943")
-		.УстановитьСвойствоКласса(".opi-button--primary", "color", "#004943")
-		.УстановитьСвойствоКласса(".opi-button--primary:hover", "background", "#f0f7f6")
-		.УстановитьСвойствоКласса(".opi-button--primary:hover", "color", "#004943")
+		.УстановитьСвойствоКласса(".opi-button--primary", "border-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-button--primary", "color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-button--primary:hover", "background", "var(--opi-surface-accent)")
+		.УстановитьСвойствоКласса(".opi-button--primary:hover", "color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-section", "margin-top", "24px")
 		.УстановитьСвойствоКласса(".opi-toolbar", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-toolbar", "flex-wrap", "wrap")
@@ -649,7 +770,7 @@
 		.УстановитьСвойствоКласса(".opi-table-wrap", "width", "100%")
 		.УстановитьСвойствоКласса(".opi-table-wrap", "max-width", "100%")
 		.УстановитьСвойствоКласса(".opi-table-wrap", "overflow", "auto")
-		.УстановитьСвойствоКласса(".opi-table-wrap", "border", "1px solid rgba(27, 31, 35, 0.15)")
+		.УстановитьСвойствоКласса(".opi-table-wrap", "border", "1px solid var(--opi-border-control)")
 		.УстановитьСвойствоКласса(".opi-table-wrap", "border-radius", "8px")
 		.УстановитьСвойствоКласса(".opi-table", "width", "100%")
 		.УстановитьСвойствоКласса(".opi-table", "max-width", "100%")
@@ -657,23 +778,46 @@
 		.УстановитьСвойствоКласса(".opi-table", "border-collapse", "collapse")
 		.УстановитьСвойствоКласса(".opi-table", "font-size", "13px")
 		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "padding", "10px 12px")
-		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "border-bottom", "1px solid rgba(27, 31, 35, 0.08)")
+		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "border-bottom", "1px solid var(--opi-divider)")
 		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "text-align", "left")
 		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "vertical-align", "middle")
 		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "word-wrap", "break-word")
 		.УстановитьСвойствоКласса(".opi-table th, .opi-table td", "overflow-wrap", "break-word")
-		.УстановитьСвойствоКласса(".opi-table th", "background", "#fafbfc")
+		.УстановитьСвойствоКласса(".opi-table th", "background", "var(--opi-surface-elevated)")
 		.УстановитьСвойствоКласса(".opi-table th", "font-weight", "500")
-		.УстановитьСвойствоКласса(".opi-table th", "color", "#4b5563")
+		.УстановитьСвойствоКласса(".opi-table th", "color", "var(--opi-text-table-header)")
 		.УстановитьСвойствоКласса(".opi-table tr:last-child td", "border-bottom", "none")
-		.УстановитьСвойствоКласса(".opi-table tr:hover td", "background", "#fafbfc")
+		.УстановитьСвойствоКласса(".opi-table tr:hover td", "background", "var(--opi-row-hover)")
 		.УстановитьСвойствоКласса(".opi-col-check", "width", "44px")
 		.УстановитьСвойствоКласса(".opi-col-check", "text-align", "center")
 		.УстановитьСвойствоКласса(".opi-table th.opi-col-check, .opi-table td.opi-col-check", "padding-left", "10px")
 		.УстановитьСвойствоКласса(".opi-table th.opi-col-check, .opi-table td.opi-col-check", "padding-right", "10px")
+		.УстановитьСвойствоКласса(".opi-checkbox", "-webkit-appearance", "none")
+		.УстановитьСвойствоКласса(".opi-checkbox", "appearance", "none")
+		.УстановитьСвойствоКласса(".opi-checkbox", "box-sizing", "border-box")
 		.УстановитьСвойствоКласса(".opi-checkbox", "width", "16px")
 		.УстановитьСвойствоКласса(".opi-checkbox", "height", "16px")
-		.УстановитьСвойствоКласса(".opi-checkbox", "accent-color", "#004943")
+		.УстановитьСвойствоКласса(".opi-checkbox", "margin", "0")
+		.УстановитьСвойствоКласса(".opi-checkbox", "padding", "0")
+		.УстановитьСвойствоКласса(".opi-checkbox", "cursor", "pointer")
+		.УстановитьСвойствоКласса(".opi-checkbox", "vertical-align", "middle")
+		.УстановитьСвойствоКласса(".opi-checkbox", "flex-shrink", "0")
+		.УстановитьСвойствоКласса(".opi-checkbox", "border", "1px solid var(--opi-border-control)")
+		.УстановитьСвойствоКласса(".opi-checkbox", "border-radius", "4px")
+		.УстановитьСвойствоКласса(".opi-checkbox", "background-color", "var(--opi-checkbox-bg)")
+		.УстановитьСвойствоКласса(".opi-checkbox", "background-repeat", "no-repeat")
+		.УстановитьСвойствоКласса(".opi-checkbox", "background-position", "center")
+		.УстановитьСвойствоКласса(".opi-checkbox", "background-size", "11px 11px")
+		.УстановитьСвойствоКласса(".opi-checkbox", "accent-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:hover", "border-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:hover", "background-color", "var(--opi-checkbox-hover-bg)")
+		.УстановитьСвойствоКласса(".opi-checkbox:focus", "outline", "2px solid var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:focus", "outline-offset", "1px")
+		.УстановитьСвойствоКласса(".opi-checkbox:checked", "background-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:checked", "border-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:checked", "background-image", "url(""data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5L6.5 11.5L12.5 4.5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"")")
+		.УстановитьСвойствоКласса(".opi-checkbox:checked:hover", "background-color", "var(--opi-accent)")
+		.УстановитьСвойствоКласса(".opi-checkbox:checked:hover", "border-color", "var(--opi-accent)")
 		.УстановитьСвойствоКласса(".opi-alert", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-alert", "flex-wrap", "wrap")
 		.УстановитьСвойствоКласса(".opi-alert", "width", "100%")
@@ -681,9 +825,9 @@
 		.УстановитьСвойствоКласса(".opi-alert", "align-items", "flex-start")
 		.УстановитьСвойствоКласса(".opi-alert", "margin", "12px 0 16px")
 		.УстановитьСвойствоКласса(".opi-alert", "padding", "12px 14px")
-		.УстановитьСвойствоКласса(".opi-alert", "border", "1px solid rgba(27, 31, 35, 0.12)")
+		.УстановитьСвойствоКласса(".opi-alert", "border", "1px solid var(--opi-divider-strong)")
 		.УстановитьСвойствоКласса(".opi-alert", "border-radius", "8px")
-		.УстановитьСвойствоКласса(".opi-alert", "background", "#fafbfc")
+		.УстановитьСвойствоКласса(".opi-alert", "background", "var(--opi-surface-elevated)")
 		.УстановитьСвойствоКласса(".opi-alert--warning", "border-left", "4px solid #e6a700")
 		.УстановитьСвойствоКласса(".opi-alert__icon", "width", "2rem")
 		.УстановитьСвойствоКласса(".opi-alert__icon", "height", "2rem")
@@ -694,7 +838,7 @@
 		.УстановитьСвойствоКласса(".opi-alert__text", "flex", "1 1 0")
 		.УстановитьСвойствоКласса(".opi-alert__text", "min-width", "0")
 		.УстановитьСвойствоКласса(".opi-alert__text", "font-weight", "300")
-		.УстановитьСвойствоКласса(".opi-alert__text", "color", "#333333")
+		.УстановитьСвойствоКласса(".opi-alert__text", "color", "var(--opi-text)")
 		.УстановитьСвойствоКласса(".opi-alert__title", "margin", "0 0 0.5rem")
 		.УстановитьСвойствоКласса(".opi-alert__title", "font-weight", "500")
 		.УстановитьСвойствоКласса(".opi-alert__steps", "margin", "0")
