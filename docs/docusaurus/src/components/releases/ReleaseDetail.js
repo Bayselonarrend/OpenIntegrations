@@ -5,6 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import archive from '@site/archive/releases-archive.json';
 import CoverImage from '@site/src/components/releases/CoverImage';
+import ChangelogIcon from '@site/src/components/releases/ChangelogIcon';
 import ChangelogText from '@site/src/components/releases/ChangelogText';
 import useReleaseVersion from '@site/src/components/releases/useReleaseVersion';
 import MirrorSelectModal from '@site/src/components/releases/MirrorSelectModal';
@@ -156,9 +157,8 @@ export default function ReleaseDetail() {
                 <tr key={`${change.lib}-${index}`}>
                   <td>
                     <div className={styles.libCell}>
-                      <img
-                        src={change.iconUrl}
-                        alt=""
+                      <ChangelogIcon
+                        icon={change.icon}
                         className={styles.libIcon}
                         loading="lazy"
                       />

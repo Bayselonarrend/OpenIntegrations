@@ -1,30 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-function coverFileName(coverPath) {
-  if (!coverPath) {
-    return 'logo.png';
-  }
-
-  return coverPath.split('/').pop();
-}
+import { releaseCoverPath } from '@site/src/components/releases/releaseImageUtils';
 
 export default function CoverImage({ release, className, ...props }) {
   const logo = useBaseUrl('/img/logo.png');
-  const local = useBaseUrl(`/img/releases/covers/${coverFileName(release?.cover)}`);
-  const remote = release?.coverUrl;
-  const [src, setSrc] = useState(remote || local);
+  const primary = useBaseUrl(releaseCoverPath(release?.cover));
+  const [src, setSrc] = useState(primary);
 
   useEffect(() => {
-    setSrc(remote || local);
-  }, [local, remote, release?.version]);
+    setSrc(primary);
+  }, [primary, release?.version]);
 
   const handleError = () => {
-    if (remote && src === remote) {
-      setSrc(local);
-      return;
-    }
-
     if (src !== logo) {
       setSrc(logo);
     }

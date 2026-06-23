@@ -497,6 +497,10 @@
     "description": "Max size for release cover copies on docs site (ImageMagick geometry, e.g. 1200x400>)",
     "value": "1200x400>"
    },
+   "iconResizeMax": {
+    "description": "Max size for changelog API icon copies on docs site (ImageMagick geometry, e.g. 64x64>)",
+    "value": "64x64>"
+   },
    "imageMagickCommand": {
     "description": "ImageMagick CLI command (magick on PATH, or full path to executable)",
     "value": "magick"
