@@ -493,6 +493,14 @@
     "description": "Generated releases archive JSON for Docusaurus",
     "value": "./docs/docusaurus/archive/releases-archive.json"
    },
+   "coverResizeMax": {
+    "description": "Max size for release cover copies on docs site (ImageMagick geometry, e.g. 1200x400>)",
+    "value": "1200x400>"
+   },
+   "imageMagickCommand": {
+    "description": "ImageMagick CLI command (magick on PATH, or full path to executable)",
+    "value": "magick"
+   },
    "archiveMinVersion": {
     "description": "Oldest release version included in docs archive index",
     "value": "1.25.0"
