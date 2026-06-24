@@ -185,20 +185,49 @@
     }
   }
 
-  function bindChecks() {
-    var all = document.getElementById("opi-addins-check-all");
-    if (all) {
-      all.addEventListener("change", function () {
-        onCheckAllChange(this);
-      });
+  function pruneChecks() {
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+    var existing = {};
+    var changed = false;
+    var key;
+    var i;
+
+    for (i = 0; i < boxes.length; i++) {
+      existing[componentNameFromId(boxes[i].id)] = true;
     }
 
-    var boxes = getRowCheckboxes();
-    for (var i = 0; i < boxes.length; i++) {
-      boxes[i].addEventListener("change", function () {
-        onRowCheckChange(this);
-      });
+    for (key in map) {
+      if (map.hasOwnProperty(key) && !existing[key]) {
+        delete map[key];
+        changed = true;
+      }
     }
+
+    if (changed) {
+      saveChecks(map);
+    }
+  }
+
+  function bindChecks() {
+    var table = document.getElementById("opi-addins-table");
+    if (!table || table.getAttribute("data-opi-checks-bound") === "1") {
+      return;
+    }
+
+    table.setAttribute("data-opi-checks-bound", "1");
+    table.addEventListener("change", function (e) {
+      var el = e.target;
+      if (!el || el.tagName !== "INPUT" || el.type !== "checkbox") {
+        return;
+      }
+
+      if (el.id === "opi-addins-check-all") {
+        onCheckAllChange(el);
+      } else if (el.id && el.id.indexOf("opi-addin-") === 0) {
+        onRowCheckChange(el);
+      }
+    });
   }
 
   function bindScroll() {
@@ -233,6 +262,11 @@
     }
 
     return result;
+  };
+
+  window.OPI_PANEL_afterAddinsSync = function () {
+    pruneChecks();
+    applyStoredChecks();
   };
 
   if (document.readyState === "loading") {
