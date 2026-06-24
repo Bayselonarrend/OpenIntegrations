@@ -618,7 +618,7 @@
 &НаСервере
 Функция ПолучитьURLАрхиваРелизов()
 
-	Возврат "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/docs/docusaurus/archive/releases-archive.json";
+	Возврат "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/docs/docusaurus/archive/releases-archive.json"; 
 	//"https://openintegrations.dev/archive/releases-archive.json";
 
 КонецФункции
@@ -628,7 +628,14 @@
 
 	Попытка
 
-		Ответ = OPI_ЗапросыHTTP.Get(ПолучитьURLАрхиваРелизов());
+		URL = ПолучитьURLАрхиваРелизов();
+
+		Ответ = OPI_ЗапросыHTTP.НовыйЗапрос()
+			.Инициализировать()
+			.УстановитьURL(URL)
+			.УстановитьТаймаут(35)
+			.ОбработатьЗапрос("GET")
+			.ВернутьОтветКакJSONКоллекцию();
 
 		Если АрхивРелизовЗагружен(Ответ) Тогда
 			Возврат Ответ;
@@ -1161,7 +1168,7 @@
 			.ВставитьДочернийЭлемент("updates-unavailable", "div")
 				.ДобавитьКласс("opi-updates-empty")
 				.ВставитьДочернийЭлемент("updates-unavailable-text", "p", Истина, , , ,
-					"Не удалось загрузить архив релизов. Проверьте подключение к интернету и повторите открытие панели.");
+					"Не удалось загрузить архив релизов. Проверьте подключение к интернету и откройте панель заново");
 
 		Возврат;
 
@@ -1504,10 +1511,6 @@
 &НаСервере
 Функция ИспользуетсяТемнаяТема()
 
-	Если Не ТемнаяТема = Неопределено Тогда
-		Возврат ТемнаяТема;	
-	КонецЕсли;
-	
 	ТемнаяТема = Ложь;
 
 	Попытка
