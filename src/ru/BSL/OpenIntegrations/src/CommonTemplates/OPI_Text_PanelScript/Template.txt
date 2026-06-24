@@ -1,0 +1,243 @@
+(function () {
+  var STORAGE_TAB = "opi-panel-tab";
+  var STORAGE_SCROLL = "opi-panel-scroll";
+  var STORAGE_CHECKS = "opi-panel-checks";
+
+  function readJson(key, fallback) {
+    try {
+      var raw = sessionStorage.getItem(key);
+      if (!raw) {
+        return fallback;
+      }
+      return JSON.parse(raw);
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function writeJson(key, value) {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {}
+  }
+
+  function writeText(key, value) {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  function readText(key) {
+    try {
+      return sessionStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getChecks() {
+    return readJson(STORAGE_CHECKS, {});
+  }
+
+  function saveChecks(map) {
+    writeJson(STORAGE_CHECKS, map);
+  }
+
+  function componentNameFromId(id) {
+    return id.replace("opi-addin-", "");
+  }
+
+  function getRowCheckboxes() {
+    var body = document.getElementById("opi-addins-body");
+    if (!body) {
+      return [];
+    }
+    return body.querySelectorAll('input.opi-checkbox[id^="opi-addin-OPI_"]');
+  }
+
+  function updateCheckAllState() {
+    var all = document.getElementById("opi-addins-check-all");
+    if (!all) {
+      return;
+    }
+
+    var boxes = getRowCheckboxes();
+    if (!boxes.length) {
+      all.checked = false;
+      all.indeterminate = false;
+      return;
+    }
+
+    var checked = 0;
+    for (var i = 0; i < boxes.length; i++) {
+      if (boxes[i].checked) {
+        checked++;
+      }
+    }
+
+    all.checked = checked === boxes.length;
+    all.indeterminate = checked > 0 && checked < boxes.length;
+  }
+
+  function applyStoredChecks() {
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+    var hasStored = false;
+    var key;
+
+    for (key in map) {
+      if (map.hasOwnProperty(key)) {
+        hasStored = true;
+        break;
+      }
+    }
+
+    for (var i = 0; i < boxes.length; i++) {
+      var name = componentNameFromId(boxes[i].id);
+      if (hasStored && map.hasOwnProperty(name)) {
+        boxes[i].checked = !!map[name];
+      } else {
+        map[name] = boxes[i].checked;
+      }
+    }
+
+    if (!hasStored) {
+      saveChecks(map);
+    }
+
+    updateCheckAllState();
+  }
+
+  function onRowCheckChange(el) {
+    var map = getChecks();
+    map[componentNameFromId(el.id)] = el.checked;
+    saveChecks(map);
+    updateCheckAllState();
+  }
+
+  function onCheckAllChange(el) {
+    var checked = el.checked;
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].checked = checked;
+      map[componentNameFromId(boxes[i].id)] = checked;
+    }
+
+    saveChecks(map);
+    el.indeterminate = false;
+  }
+
+  function saveScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (wrap) {
+      writeText(STORAGE_SCROLL, String(wrap.scrollTop));
+    }
+  }
+
+  function restoreScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (!wrap) {
+      return;
+    }
+
+    var value = readText(STORAGE_SCROLL);
+    if (value !== null) {
+      wrap.scrollTop = parseInt(value, 10) || 0;
+    }
+  }
+
+  function saveTab(id) {
+    writeText(STORAGE_TAB, id);
+  }
+
+  function restoreTab() {
+    var tabId = readText(STORAGE_TAB);
+    if (!tabId) {
+      return;
+    }
+
+    var input = document.getElementById(tabId);
+    if (input) {
+      input.checked = true;
+    }
+  }
+
+  function bindTabs() {
+    var labels = document.querySelectorAll(".opi-tabs label.opi-tab");
+    for (var i = 0; i < labels.length; i++) {
+      labels[i].addEventListener("click", function () {
+        var forId = this.getAttribute("for");
+        if (forId) {
+          saveTab(forId);
+        }
+      });
+    }
+
+    var radios = document.querySelectorAll('input.opi-tab-input[name="opi-tab"]');
+    for (var j = 0; j < radios.length; j++) {
+      radios[j].addEventListener("change", function () {
+        if (this.checked) {
+          saveTab(this.id);
+        }
+      });
+    }
+  }
+
+  function bindChecks() {
+    var all = document.getElementById("opi-addins-check-all");
+    if (all) {
+      all.addEventListener("change", function () {
+        onCheckAllChange(this);
+      });
+    }
+
+    var boxes = getRowCheckboxes();
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].addEventListener("change", function () {
+        onRowCheckChange(this);
+      });
+    }
+  }
+
+  function bindScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (!wrap) {
+      return;
+    }
+
+    wrap.addEventListener("scroll", function () {
+      saveScroll();
+    });
+  }
+
+  function init() {
+    restoreTab();
+    applyStoredChecks();
+    bindTabs();
+    bindChecks();
+    bindScroll();
+    restoreScroll();
+  }
+
+  window.OPI_PANEL_getSelectedComponents = function () {
+    var map = getChecks();
+    var result = [];
+    var key;
+
+    for (key in map) {
+      if (map.hasOwnProperty(key) && map[key]) {
+        result.push(key);
+      }
+    }
+
+    return result;
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
