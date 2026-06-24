@@ -19,7 +19,7 @@
 📋 На сегодняшний день реализованы методы для работы со следующими сервисами ([список](/media/catalogs/Catalog.md))
 <br>
 
-  <div>
+<div>
   <a href="https://openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>  
   <a href="https://openintegrations.dev/docs/Instructions/Bitrix24/"><img src="media/Bitrix24.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/CDEK/"><img src="media/CDEK.png" width="40"></a>
@@ -57,16 +57,14 @@
    <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Lua/"><img src="media/Lua.png" width="40"></a>
-
-</div> <br>
-
-<div> 
+</div>
+  
 Форматы данных:
 
-   <a href="https://openintegrations.dev/docs/Instructions/Janx/"><img src="media/Janx.png" width="40"></a>
+<div> 
+  <a href="https://openintegrations.dev/docs/Instructions/Janx/"><img src="media/Janx.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/MessagePack/"><img src="media/MessagePack.png" width="40"></a>
-
 </div> 
 
 ## Пример работы
