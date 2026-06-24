@@ -192,39 +192,6 @@
       <common>true</common>
     </edit>
   </attributes>
-  <attributes>
-    <name>ХранилищеФормы</name>
-    <title>
-      <key>ru</key>
-      <value>Хранилище формы</value>
-    </title>
-    <id>6</id>
-    <valueType>
-      <types>DataProcessorObject.OPI_HTMLФорма</types>
-    </valueType>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-    <savedData>true</savedData>
-  </attributes>
-  <attributes>
-    <name>ДанныеФормы</name>
-    <title>
-      <key>ru</key>
-      <value>Данные формы</value>
-    </title>
-    <id>7</id>
-    <valueType/>
-    <view>
-      <common>true</common>
-    </view>
-    <edit>
-      <common>true</common>
-    </edit>
-  </attributes>
   <commandInterface>
     <navigationPanel/>
     <commandBar/>
