@@ -241,6 +241,97 @@
     });
   }
 
+  function getActiveTabName() {
+    var checked = document.querySelector('input.opi-tab-input[name="opi-tab"]:checked');
+    if (!checked) {
+      return "main";
+    }
+    if (checked.id === "opi-tab-addins") {
+      return "addins";
+    }
+    if (checked.id === "opi-tab-updates") {
+      return "updates";
+    }
+    return "main";
+  }
+
+  function isArchiveUnavailableMode() {
+    var panel = document.getElementById("panel-updates");
+    return !!(panel && panel.className.indexOf("opi-tab-panel--archive-unavailable") >= 0);
+  }
+
+  function syncArchiveUnavailableTabs() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var active = getActiveTabName();
+    var panels = document.querySelectorAll(".opi-main .opi-tab-panel");
+    var i;
+    var panel;
+
+    for (i = 0; i < panels.length; i++) {
+      panel = panels[i];
+      if (panel.getAttribute("data-tab") === active) {
+        panel.style.display = "block";
+        panel.style.width = "100%";
+        panel.style.cssFloat = "none";
+        panel.style.clear = "both";
+      } else {
+        panel.style.display = "none";
+      }
+    }
+  }
+
+  function fixArchiveUnavailableLayout() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var panel = document.getElementById("panel-updates");
+    var error = document.getElementById("updates-archive-error");
+    var content = document.querySelector(".opi-updates-archive-error__content");
+
+    if (panel) {
+      panel.style.width = "100%";
+      panel.style.textAlign = "center";
+      panel.style.cssFloat = "none";
+      panel.style.clear = "both";
+    }
+
+    if (error) {
+      error.style.display = "block";
+      error.style.width = "100%";
+      error.style.textAlign = "center";
+      error.style.cssFloat = "none";
+      error.style.clear = "both";
+    }
+
+    if (content) {
+      content.style.display = "block";
+      content.style.width = "100%";
+      content.style.maxWidth = "640px";
+      content.style.marginLeft = "auto";
+      content.style.marginRight = "auto";
+      content.style.textAlign = "center";
+    }
+
+    syncArchiveUnavailableTabs();
+  }
+
+  function bindArchiveUnavailableLayout() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var radios = document.querySelectorAll('input.opi-tab-input[name="opi-tab"]');
+    var i;
+
+    for (i = 0; i < radios.length; i++) {
+      radios[i].addEventListener("change", syncArchiveUnavailableTabs);
+    }
+  }
+
   var STORAGE_RELEASE_VERSION = "opi-panel-release-version";
   var STORAGE_MIRROR = "opi-panel-mirror";
 
@@ -569,6 +660,8 @@
     bindChecks();
     bindScroll();
     restoreScroll();
+    fixArchiveUnavailableLayout();
+    bindArchiveUnavailableLayout();
     initUpdates();
   }
 

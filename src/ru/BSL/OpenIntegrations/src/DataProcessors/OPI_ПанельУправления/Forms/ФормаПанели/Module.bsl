@@ -122,6 +122,8 @@
 			УстановитьCFE(ДанныеСобытия["Document"]);
 		ИначеЕсли IDОбъекта = "opi-btn-releases" Тогда
 			ОткрытьАрхивРелизов(ДанныеСобытия["Document"]);
+		ИначеЕсли IDОбъекта = "opi-btn-retry-archive" Тогда
+			ПовторитьЗагрузкуАрхиваРелизов();
 
 		Иначе
 			Возврат;
@@ -136,6 +138,13 @@
 #КонецОбласти
 
 #Область СлужебныеПроцедурыИФункции
+
+&НаКлиенте
+Процедура ПовторитьЗагрузкуАрхиваРелизов()
+
+	СформироватьHTMLПанелиНаСервере();
+
+КонецПроцедуры
 
 &НаКлиенте
 Процедура СкачатьАртефактРелиза(Знач IDАртефакта, Документ = Неопределено)
@@ -1351,11 +1360,10 @@
 	Если Не АрхивРелизовЗагружен(АрхивРелизов) Тогда
 
 		ФормаHTML
-			.ВставитьДочернийЭлемент("updates-unavailable", "div")
-				.ДобавитьКласс("opi-updates-empty")
-				.ВставитьДочернийЭлемент("updates-unavailable-text", "p", Истина, , , ,
-					"Не удалось загрузить архив релизов. Проверьте подключение к интернету и откройте панель заново");
+			.ДобавитьКласс("opi-tab-panel--archive-unavailable", "panel-updates")
+			.УстановитьАтрибут("style", "width:100%;box-sizing:border-box;text-align:center", "panel-updates");
 
+		СобратьСтраницуОшибкиАрхива(ФормаHTML, ПолучитьURLАрхиваРелизов());
 		Возврат;
 
 	КонецЕсли;
@@ -1393,10 +1401,41 @@
 		.УстановитьТекущийЭлемент("opi-updates-footer")
 		.ВставитьДочернийЭлемент("opi-updates-mirror", "div")
 			.ДобавитьКласс("opi-updates-mirror")
-			.ВставитьДочернийБезСмещения("opi-updates-mirror-label", "span", Истина, , , , "Зеркало")
+			.ВставитьДочернийБезСмещения("opi-updates-mirror-label", "span", Истина, , , , "Зеркало: ")
 				.ДобавитьКласс("opi-updates-mirror__label");
 
 	СобратьГруппуЗеркалРелиза(ФормаHTML, АрхивРелизов, ВыбраннаяВерсия);
+
+КонецПроцедуры
+
+&НаСервере
+Процедура СобратьСтраницуОшибкиАрхива(ФормаHTML, Знач URL)
+
+	ФормаHTML
+		.ВставитьДочернийЭлемент("updates-archive-error", "div")
+			.ДобавитьКласс("opi-updates-archive-error")
+			.УстановитьАтрибут("style", "width:100%;display:block;box-sizing:border-box;text-align:center")
+			.ВставитьДочернийЭлемент("updates-archive-error-content", "div")
+				.ДобавитьКласс("opi-updates-archive-error__content")
+				.ВставитьСыройДочернийБезСмещения("updates-archive-error-icon", ТекстИконкиОшибкиАрхива())
+				.ВставитьДочернийЭлемент("updates-archive-error-title", "div", Истина, , , , "Не удалось загрузить архив релизов")
+					.ДобавитьКласс("opi-updates-archive-error__title")
+				.НаУровеньВыше()
+				.ВставитьДочернийБезСмещения("updates-archive-error-hint", "div", Истина, , , ,
+					"Проверьте подключение к интернету или повторите попытку позже")
+					.ДобавитьКласс("opi-updates-archive-error__hint")
+				.ВставитьДочернийЭлемент("updates-archive-error-url-wrap", "div")
+					.ДобавитьКласс("opi-updates-archive-error__url-wrap")
+					.ВставитьДочернийБезСмещения("updates-archive-error-url-label", "div", Истина, , , , "Ссылка")
+						.ДобавитьКласс("opi-updates-archive-error__url-label")
+					.ВставитьДочернийБезСмещения("updates-archive-error-url", "div", Истина, , , , URL)
+						.ДобавитьКласс("opi-updates-archive-error__url")
+				.НаУровеньВыше()
+				.ВставитьДочернийЭлемент("updates-archive-error-actions", "div")
+					.ДобавитьКласс("opi-updates-archive-error__actions");
+
+	ВставитьКнопкуПанели(ФормаHTML, "opi-btn-retry-archive", "Попробовать ещё раз");
+	ФормаHTML.НаУровеньВыше(3);
 
 КонецПроцедуры
 
@@ -1670,6 +1709,13 @@
 Функция ТекстИконкиШестерни()
 
 	Возврат "<svg class=""opi-header__icon"" xmlns=""http://www.w3.org/2000/svg"" fill=""none"" viewBox=""0 0 24 24"" stroke-width=""1.5"" stroke=""currentColor"" stroke-linecap=""round"" stroke-linejoin=""round"" aria-hidden=""true""><path d=""M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 0 1 0 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 0 1 0-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281Z""/><path d=""M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z""/></svg>";
+
+КонецФункции
+
+&НаСервере
+Функция ТекстИконкиОшибкиАрхива()
+
+	Возврат "<svg class=""opi-updates-archive-error__icon"" xmlns=""http://www.w3.org/2000/svg"" fill=""none"" viewBox=""0 0 24 24"" stroke-width=""1.5"" stroke=""currentColor"" stroke-linecap=""round"" stroke-linejoin=""round"" aria-hidden=""true""><path d=""M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z""/></svg>";
 
 КонецФункции
 
@@ -2003,8 +2049,64 @@
 		.УстановитьСвойствоКласса(".opi-updates-mirror__label", "margin-right", "0")
 		.УстановитьСвойствоКласса(".opi-updates-mirror__label", "border-right", "1px solid var(--opi-divider)")
 		.УстановитьСвойствоКласса(".opi-updates-mirror .opi-mirror-group", "padding-left", "16px")
-		.УстановитьСвойствоКласса(".opi-updates-empty", "padding", "16px 0")
-		.УстановитьСвойствоКласса(".opi-updates-empty", "color", "var(--opi-text-secondary)")
+		.УстановитьСвойствоКласса(".opi-tab-panel--archive-unavailable", "width", "100%")
+		.УстановитьСвойствоКласса(".opi-tab-panel--archive-unavailable", "box-sizing", "border-box")
+		.УстановитьСвойствоКласса(".opi-tab-panel--archive-unavailable", "text-align", "center")
+		.УстановитьСвойствоКласса(".opi-tab-panel--archive-unavailable", "float", "none")
+		.УстановитьСвойствоКласса(".opi-tab-panel--archive-unavailable", "clear", "both")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "display", "block")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "width", "100%")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "box-sizing", "border-box")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "float", "none")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "clear", "both")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "min-height", "360px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "padding", "48px 24px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error", "text-align", "center")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "display", "block")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "width", "100%")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "max-width", "640px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "margin-left", "auto")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "margin-right", "auto")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__content", "text-align", "center")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "display", "block")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "width", "3rem")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "height", "3rem")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "margin-left", "auto")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "margin-right", "auto")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__icon", "color", "#e6a700")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__title", "margin", "20px 0 8px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__title", "text-align", "center")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__title", "font-size", "1.1rem")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__title", "font-weight", "500")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__title", "color", "var(--opi-text-strong)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "margin", "0 auto")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "max-width", "420px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "font-size", "0.9rem")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "font-weight", "300")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "line-height", "1.45")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__hint", "color", "var(--opi-text-secondary)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-wrap", "width", "100%")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-wrap", "margin-top", "20px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-wrap", "text-align", "left")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-wrap", "text-transform", "none")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-label", "margin", "0 0 6px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-label", "text-align", "center")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-label", "font-size", "12px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-label", "font-weight", "500")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url-label", "color", "var(--opi-text-table-header)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "display", "block")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "text-transform", "none")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "padding", "10px 12px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "border", "1px solid var(--opi-divider-strong)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "border-radius", "8px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "background", "var(--opi-surface-elevated)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "font-family", "Consolas, 'Courier New', monospace")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "font-size", "12px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "line-height", "1.45")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "word-break", "break-all")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__url", "color", "var(--opi-text-strong)")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__actions", "margin-top", "24px")
+		.УстановитьСвойствоКласса(".opi-updates-archive-error__actions", "text-align", "center")
 		.УстановитьСвойствоКласса(".opi-lib-cell", "display", "flex")
 		.УстановитьСвойствоКласса(".opi-lib-cell", "align-items", "center")
 		.УстановитьСвойствоКласса(".opi-lib-icon", "width", "20px")
