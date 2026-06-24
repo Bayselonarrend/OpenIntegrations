@@ -58,6 +58,9 @@
   <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Lua/"><img src="media/Lua.png" width="40"></a>
 
+</div> <br>
+
+<div> 
 Форматы данных:
 
    <a href="https://openintegrations.dev/docs/Instructions/Janx/"><img src="media/Janx.png" width="40"></a>
