@@ -10,22 +10,6 @@ Some tools in the OPI set use **external components (AddIns)** — Rust dynamic 
 
 All external components bundled with OPI are built for **x64** and **x86** (**x32**) on **Windows** and **Linux**. They are shipped in ZIP archives with **four** native libraries — one per platform. Both platforms have compatibility constraints tied to specific OS versions and system libraries.
 
-### Repository storage
-
-Built ZIP archives and 1C `Template.addin` layouts are **not stored in the `main` or `stable` branch history** — they live on a separate orphan branch, [`addins`](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins), so the main Git history stays lean.
-
-That branch holds a single current build for ongoing development on `main`. After cloning `main`, files at the usual paths (`src/ru/OInt/addins/*.zip`, `src/en/OInt/addins/*.zip`, `**/CommonTemplates/*/Template.addin`) are missing from the working tree. Pull them with:
-
-```bash
-# Windows
-src\addins\sync-addins.bat
-
-# Linux / macOS / CI
-bash src/addins/sync-addins.sh
-```
-
-The `stable` branch contains the **last published** release codebase. Binaries from `addins` target `main` and **may not work** with `stable` (BSL wrappers and native API can diverge). When working on `stable`, build components from `src/addins` at that branch’s commit ([`build.bat`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat)) or use archives from the [matching release](https://github.com/Bayselonarrend/OpenIntegrations/releases).
-
 ### Windows
 
 Release builds of AddIns on Windows use a modern MSVC toolchain. The resulting `.dll` files may reference functions from Windows system libraries (`kernel32`, `bcrypt`, `ws2_32`, and others) that are only available starting with **Windows 8** and **Windows Server 2012**. On older systems — **Windows 7** and **Windows Server 2008 R2** — components from the standard OPI release may fail to load or crash when such functions are called.
