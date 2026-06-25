@@ -14037,5 +14037,9 @@
 "Экран загрузки панели (ОПИ)": "Panel loading screen (OpenIntegrations)",
 "Строка changelog (ОПИ)": "Changelog row (OpenIntegrations)",
 "Опция версии релиза (ОПИ)": "Release version option (OpenIntegrations)",
-"Строка таблицы компонент (ОПИ)": "Component table row (OpenIntegrations)"
+"Строка таблицы компонент (ОПИ)": "Component table row (OpenIntegrations)",
+"ФормаПанели": "PanelForm",
+"Темная тема": "Dark theme",
+"Шаблонизатор HTML": "HTML template generator",
+"служебный": "service"
 }
