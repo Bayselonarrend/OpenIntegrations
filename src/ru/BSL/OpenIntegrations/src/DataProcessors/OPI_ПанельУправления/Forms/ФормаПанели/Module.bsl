@@ -1,3 +1,35 @@
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UnusedLocalVariable-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:CognitiveComplexity-off
+// BSLLS:CommonModuleNameClientServer-off
+
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
@@ -858,18 +890,6 @@
 КонецФункции
 
 &НаСервере
-Функция ЭкранироватьТекстHTML(Текст)
-
-	Результат = Текст;
-	Результат = СтрЗаменить(Результат, "&", "&amp;");
-	Результат = СтрЗаменить(Результат, "<", "&lt;");
-	Результат = СтрЗаменить(Результат, ">", "&gt;");
-
-	Возврат Результат;
-
-КонецФункции
-
-&НаСервере
 Функция ПредставлениеТекстаЧенджлогаСоСсылками(Текст)
 
 	Если Не ЗначениеЗаполнено(Текст) Тогда
@@ -884,17 +904,17 @@
 		НачалоСсылки = СтрНайти(Остаток, "[");
 
 		Если НачалоСсылки = 0 Тогда
-			Результат = Результат + ЭкранироватьТекстHTML(Остаток);
+			Результат = Результат + OPI_ШаблонизаторHTML.ЭкранироватьHTML(Остаток);
 			Прервать;
 		КонецЕсли;
 
-		Результат = Результат + ЭкранироватьТекстHTML(Лев(Остаток, НачалоСсылки - 1));
+		Результат = Результат + OPI_ШаблонизаторHTML.ЭкранироватьHTML(Лев(Остаток, НачалоСсылки - 1));
 		Остаток   = Сред(Остаток, НачалоСсылки + 1);
 
 		КонецПодписи = СтрНайти(Остаток, "]");
 
 		Если КонецПодписи = 0 Тогда
-			Результат = Результат + ЭкранироватьТекстHTML("[" + Остаток);
+			Результат = Результат + OPI_ШаблонизаторHTML.ЭкранироватьHTML("[" + Остаток);
 			Прервать;
 		КонецЕсли;
 
@@ -902,7 +922,7 @@
 		Остаток  = Сред(Остаток, КонецПодписи + 1);
 
 		Если Лев(Остаток, 1) <> "(" Тогда
-			Результат = Результат + ЭкранироватьТекстHTML("[" + Подпись + "]" + Остаток);
+			Результат = Результат + OPI_ШаблонизаторHTML.ЭкранироватьHTML("[" + Подпись + "]" + Остаток);
 			Прервать;
 		КонецЕсли;
 
@@ -910,7 +930,7 @@
 		КонецURL = СтрНайти(Остаток, ")");
 
 		Если КонецURL = 0 Тогда
-			Результат = Результат + ЭкранироватьТекстHTML("[" + Подпись + "](" + Остаток);
+			Результат = Результат + OPI_ШаблонизаторHTML.ЭкранироватьHTML("[" + Подпись + "](" + Остаток);
 			Прервать;
 		КонецЕсли;
 
@@ -919,8 +939,8 @@
 
 		Результат = Результат + СтрШаблон(
 			"<a href=""%1"" target=""_blank"" rel=""noopener noreferrer"">%2</a>"
-			, ЭкранироватьТекстHTML(URL)
-			, ЭкранироватьТекстHTML(Подпись));
+			, OPI_ШаблонизаторHTML.ЭкранироватьHTML(URL)
+			, OPI_ШаблонизаторHTML.ЭкранироватьHTML(Подпись));
 
 	КонецЦикла;
 
@@ -941,7 +961,7 @@
 	Для Индекс = 0 По Части.ВГраница() Цикл
 
 		Если Индекс % 2 = 1 Тогда
-			Результат = Результат + "<code>" + ЭкранироватьТекстHTML(Части[Индекс]) + "</code>";
+			Результат = Результат + "<code>" + OPI_ШаблонизаторHTML.ЭкранироватьHTML(Части[Индекс]) + "</code>";
 		Иначе
 			Результат = Результат + ПредставлениеТекстаЧенджлогаСоСсылками(Части[Индекс]);
 		КонецЕсли;
@@ -991,7 +1011,7 @@
 	Если ПоказыватьЗагрузку Тогда
 
 		КонтекстЗагрузки = Новый Структура("loadingIcon", ТекстИконкиЗагрузки());
-		КонтекстДокумента.Вставить("body", OPI_ШаблонHTML.РендерМакета("OPI_Text_PanelLoading", КонтекстЗагрузки));
+		КонтекстДокумента.Вставить("body", OPI_ШаблонизаторHTML.РендерМакета("OPI_Text_PanelLoading", КонтекстЗагрузки));
 
 	Иначе
 
@@ -999,7 +1019,7 @@
 
 	КонецЕсли;
 
-	Возврат OPI_ШаблонHTML.РендерМакета("OPI_Text_PanelDocument", КонтекстДокумента);
+	Возврат OPI_ШаблонизаторHTML.РендерМакета("OPI_Text_PanelDocument", КонтекстДокумента);
 
 КонецФункции
 
@@ -1022,7 +1042,7 @@
 		Контекст.Вставить(КлючИЗначение.Ключ, КлючИЗначение.Значение);
 	КонецЦикла;
 
-	Возврат OPI_ШаблонHTML.РендерМакета("OPI_Text_PanelShell", Контекст);
+	Возврат OPI_ШаблонизаторHTML.РендерМакета("OPI_Text_PanelShell", Контекст);
 
 КонецФункции
 
