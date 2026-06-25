@@ -311,16 +311,8 @@ Function AttachAddInWithMode(TemplateName, AddInName, ConnectionMode)
 
     Else
 
-        SystemInfo = New SystemInfo();
-
-        Version1C = SystemInfo.AppVersion;
-        Version1C = StrSplit(Version1C, ".");
-
-        Part1 = Number(Version1C[0]);
-        Part2 = Number(Version1C[1]);
-        Part3 = Number(Version1C[2]);
-
-        TypeRequieredByVersion = Part1 > 8 Or Part2 > 3 Or Part3 > 20;
+        Version1C                    = GetPartsOf1CVersion();
+        TypeRequieredByVersion = Version1C[0] > 8 Or Version1C[1] > 3 Or Version1C[2] > 20;
 
     EndIf;
 
@@ -429,6 +421,21 @@ Function AddInsFolderOS()
 
 EndFunction
 
+Function GetPartsOf1CVersion()
+
+    SystemInfo = New SystemInfo();
+
+    Version1C = SystemInfo.AppVersion;
+    Version1C = StrSplit(Version1C, ".");
+
+    For N         = 0 To Version1C.UBound() Do
+        Version1C[N] = Number(Version1C[N]);
+    EndDo;
+
+    Return Version1C;
+
+EndFunction
+
 Function AttachIsolated(Val ConnectionMode)
 
     AttachIsolated = Undefined;
@@ -454,7 +461,9 @@ Function AttachIsolated(Val ConnectionMode)
     If AttachIsolated = Undefined Then
 
         NotIsolatedBySystem = Not OPI_Tools.IsWindows();
-        AttachIsolated      = Not NotIsolatedBySystem;
+        NotIsolatedByVersion      = GetPartsOf1CVersion()[1] > 4;
+
+        AttachIsolated = Not NotIsolatedBySystem And Not NotIsolatedByVersion;
 
     EndIf;
 

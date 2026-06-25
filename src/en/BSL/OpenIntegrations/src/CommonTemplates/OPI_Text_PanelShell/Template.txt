@@ -1,0 +1,36 @@
+<div class="opi-shell" id="shell"><header class="opi-header" id="header"><div class="opi-header__wrap" id="header-wrap"><svg class="opi-header__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 0 1 0 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 0 1 0-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+<div id="header-text"><h1 class="opi-header__title" id="header-title">OpenIntegrations extension control panel</h1>
+<p class="opi-header__subtitle" id="header-subtitle">Basic information and settings of the OpenIntegrations</p></div></div></header>
+<input checked="checked" name="opi-tab" type="radio" class="opi-tab-input" id="opi-tab-main"/>
+<input name="opi-tab" type="radio" class="opi-tab-input" id="opi-tab-addins"/>
+<input name="opi-tab" type="radio" class="opi-tab-input" id="opi-tab-updates"/>
+<nav aria-label="Panel sections" class="opi-tabs" id="tabs"><label for="opi-tab-main" class="opi-tab" id="tab-label-main">Main</label>
+<label for="opi-tab-addins" class="opi-tab" id="tab-label-addins">AddIns</label>
+<label for="opi-tab-updates" class="opi-tab" id="tab-label-updates">{{tabUpdatesLabel}}</label></nav>
+<main class="opi-main" id="main"><section data-tab="main" class="opi-tab-panel" id="panel-main"><div class="opi-hero" id="hero"><div class="opi-logo" id="opi-logo">{{{logoSvg}}}</div>
+<h2 class="opi-hero__title" id="hero-title">OpenIntegrations</h2>
+<p class="opi-hero__tagline" id="hero-tagline">A set of integration tools for popular services and technologies</p>
+<span class="opi-version-badge" id="opi-version">{{versionLabel}}</span></div>
+<div class="opi-actions" id="opi-main-actions"><button type="button" class="opi-button" id="opi-btn-docs">Read the Docs</button>
+<button type="button" class="opi-button" id="opi-btn-github">GitHub</button>
+<button type="button" class="opi-button" id="opi-btn-sourcecraft">SourceCraft</button>
+<button type="button" class="opi-button" id="opi-btn-boosty">Support us</button></div>
+<div class="opi-licenses" id="opi-licenses"><div class="opi-license-block" id="license-ru"><h3 class="opi-license-block__title" id="license-ru-title">License (MIT)</h3>
+<pre class="opi-license-block__text" id="license-ru-text">{{{licenseRu}}}</pre></div>
+<div class="opi-license-block" id="license-en"><h3 class="opi-license-block__title" id="license-en-title">License (MIT)</h3>
+<pre class="opi-license-block__text" id="license-en-text">{{{licenseEn}}}</pre></div></div></section>
+<section data-tab="addins" class="opi-tab-panel" id="panel-addins"><div class="opi-toolbar" id="opi-addins-toolbar"><button type="button" class="opi-button" id="opi-btn-refresh-list">Update list</button>
+<button type="button" class="opi-button" id="opi-btn-install-addins">Install AddIns OnClient</button>
+<button type="button" class="opi-button" id="opi-btn-open-cache">Open cache folder</button></div>
+<div class="opi-alert opi-alert--warning" id="addins-alert"><svg class="opi-alert__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"/></svg>
+<div class="opi-alert__text" id="addins-alert-text"><p class="opi-alert__title" id="addins-alert-title">Sequence for updating components on the client when upgrading the extension to a new version:</p>
+<ol class="opi-alert__steps" id="addins-alert-steps"><li id="addins-step-1">Open the external components folder (ExtCompT) using the «Open cache folder» button or manually</li>
+<li id="addins-step-2">Delete OpenIntegrations component files (with the AddIn.OPI_ prefix)</li>
+<li id="addins-step-3">Restart the application and open this wizard again</li>
+<li id="addins-step-4">Select the required components and click «Install AddIns OnClient»</li></ol></div></div>
+<div style="width:100%;display:block" class="opi-table-wrap" id="addins-table-wrap"><table width="100%" class="opi-table" id="opi-addins-table"><thead id="addins-thead"><tr id="addins-head-row"><th class="opi-col-check"><input type="checkbox" class="opi-checkbox" id="opi-addins-check-all" aria-label="Select all"></th>
+<th id="addins-head-name">Name</th>
+<th id="addins-head-cfg">Configuration version</th>
+<th id="addins-head-client">Client version</th></tr></thead>
+<tbody id="opi-addins-body">{{#addinRows}}{{>OPI_Text_PanelRowAddin}}{{/addinRows}}</tbody></table></div></section>
+{{>OPI_Text_PanelUpdates}}</main></div>

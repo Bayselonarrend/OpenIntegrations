@@ -13,9 +13,15 @@
   </synonym>
   <comment>OpenIntegrations extension control panel</comment>
   <useStandardCommands>true</useStandardCommands>
-  <defaultForm>DataProcessor.OPI_ControlPannel.Form.Form</defaultForm>
-  <forms uuid="7db278df-14b8-4752-8cdd-ba389b6a669f">
-    <name>Form</name>
+  <defaultForm>DataProcessor.OPI_ControlPannel.Form.PanelForm</defaultForm>
+  <forms uuid="9030fa91-d270-4241-b7d7-97808d051468">
+    <name>PanelForm</name>
+    <synonym>
+      <key>en</key>
+      <value>Panel management (OPI)</value>
+      <key>ru</key>
+      <value>Panel management (OPI)</value>
+    </synonym>
     <usePurposes>PersonalComputer</usePurposes>
     <usePurposes>MobileDevice</usePurposes>
   </forms>

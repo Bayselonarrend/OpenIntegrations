@@ -1,0 +1,692 @@
+(function () {
+  var STORAGE_TAB = "opi-panel-tab";
+  var STORAGE_SCROLL = "opi-panel-scroll";
+  var STORAGE_CHECKS = "opi-panel-checks";
+
+  function readJson(key, fallback) {
+    try {
+      var raw = sessionStorage.getItem(key);
+      if (!raw) {
+        return fallback;
+      }
+      return JSON.parse(raw);
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function writeJson(key, value) {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {}
+  }
+
+  function writeText(key, value) {
+    try {
+      sessionStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  function readText(key) {
+    try {
+      return sessionStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getChecks() {
+    return readJson(STORAGE_CHECKS, {});
+  }
+
+  function saveChecks(map) {
+    writeJson(STORAGE_CHECKS, map);
+  }
+
+  function componentNameFromId(id) {
+    return id.replace("opi-addin-", "");
+  }
+
+  function getRowCheckboxes() {
+    var body = document.getElementById("opi-addins-body");
+    if (!body) {
+      return [];
+    }
+    return body.querySelectorAll('input.opi-checkbox[id^="opi-addin-OPI_"]');
+  }
+
+  function updateCheckAllState() {
+    var all = document.getElementById("opi-addins-check-all");
+    if (!all) {
+      return;
+    }
+
+    var boxes = getRowCheckboxes();
+    if (!boxes.length) {
+      all.checked = false;
+      all.indeterminate = false;
+      return;
+    }
+
+    var checked = 0;
+    for (var i = 0; i < boxes.length; i++) {
+      if (boxes[i].checked) {
+        checked++;
+      }
+    }
+
+    all.checked = checked === boxes.length;
+    all.indeterminate = checked > 0 && checked < boxes.length;
+  }
+
+  function applyStoredChecks() {
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+    var hasStored = false;
+    var key;
+
+    for (key in map) {
+      if (map.hasOwnProperty(key)) {
+        hasStored = true;
+        break;
+      }
+    }
+
+    for (var i = 0; i < boxes.length; i++) {
+      var name = componentNameFromId(boxes[i].id);
+      if (hasStored && map.hasOwnProperty(name)) {
+        boxes[i].checked = !!map[name];
+      } else {
+        map[name] = boxes[i].checked;
+      }
+    }
+
+    if (!hasStored) {
+      saveChecks(map);
+    }
+
+    updateCheckAllState();
+  }
+
+  function onRowCheckChange(el) {
+    var map = getChecks();
+    map[componentNameFromId(el.id)] = el.checked;
+    saveChecks(map);
+    updateCheckAllState();
+  }
+
+  function onCheckAllChange(el) {
+    var checked = el.checked;
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].checked = checked;
+      map[componentNameFromId(boxes[i].id)] = checked;
+    }
+
+    saveChecks(map);
+    el.indeterminate = false;
+  }
+
+  function saveScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (wrap) {
+      writeText(STORAGE_SCROLL, String(wrap.scrollTop));
+    }
+  }
+
+  function restoreScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (!wrap) {
+      return;
+    }
+
+    var value = readText(STORAGE_SCROLL);
+    if (value !== null) {
+      wrap.scrollTop = parseInt(value, 10) || 0;
+    }
+  }
+
+  function saveTab(id) {
+    writeText(STORAGE_TAB, id);
+  }
+
+  function restoreTab() {
+    var tabId = readText(STORAGE_TAB);
+    if (!tabId) {
+      return;
+    }
+
+    var input = document.getElementById(tabId);
+    if (input) {
+      input.checked = true;
+    }
+  }
+
+  function bindTabs() {
+    var labels = document.querySelectorAll(".opi-tabs label.opi-tab");
+    for (var i = 0; i < labels.length; i++) {
+      labels[i].addEventListener("click", function () {
+        var forId = this.getAttribute("for");
+        if (forId) {
+          saveTab(forId);
+        }
+      });
+    }
+
+    var radios = document.querySelectorAll('input.opi-tab-input[name="opi-tab"]');
+    for (var j = 0; j < radios.length; j++) {
+      radios[j].addEventListener("change", function () {
+        if (this.checked) {
+          saveTab(this.id);
+        }
+      });
+    }
+  }
+
+  function pruneChecks() {
+    var map = getChecks();
+    var boxes = getRowCheckboxes();
+    var existing = {};
+    var changed = false;
+    var key;
+    var i;
+
+    for (i = 0; i < boxes.length; i++) {
+      existing[componentNameFromId(boxes[i].id)] = true;
+    }
+
+    for (key in map) {
+      if (map.hasOwnProperty(key) && !existing[key]) {
+        delete map[key];
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      saveChecks(map);
+    }
+  }
+
+  function bindChecks() {
+    var table = document.getElementById("opi-addins-table");
+    if (!table || table.getAttribute("data-opi-checks-bound") === "1") {
+      return;
+    }
+
+    table.setAttribute("data-opi-checks-bound", "1");
+    table.addEventListener("change", function (e) {
+      var el = e.target;
+      if (!el || el.tagName !== "INPUT" || el.type !== "checkbox") {
+        return;
+      }
+
+      if (el.id === "opi-addins-check-all") {
+        onCheckAllChange(el);
+      } else if (el.id && el.id.indexOf("opi-addin-") === 0) {
+        onRowCheckChange(el);
+      }
+    });
+  }
+
+  function bindScroll() {
+    var wrap = document.getElementById("addins-table-wrap");
+    if (!wrap) {
+      return;
+    }
+
+    wrap.addEventListener("scroll", function () {
+      saveScroll();
+    });
+  }
+
+  function getActiveTabName() {
+    var checked = document.querySelector('input.opi-tab-input[name="opi-tab"]:checked');
+    if (!checked) {
+      return "main";
+    }
+    if (checked.id === "opi-tab-addins") {
+      return "addins";
+    }
+    if (checked.id === "opi-tab-updates") {
+      return "updates";
+    }
+    return "main";
+  }
+
+  function isArchiveUnavailableMode() {
+    var panel = document.getElementById("panel-updates");
+    return !!(panel && panel.className.indexOf("opi-tab-panel--archive-unavailable") >= 0);
+  }
+
+  function syncArchiveUnavailableTabs() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var active = getActiveTabName();
+    var panels = document.querySelectorAll(".opi-main .opi-tab-panel");
+    var i;
+    var panel;
+
+    for (i = 0; i < panels.length; i++) {
+      panel = panels[i];
+      if (panel.getAttribute("data-tab") === active) {
+        panel.style.display = "block";
+        panel.style.width = "100%";
+        panel.style.cssFloat = "none";
+        panel.style.clear = "both";
+      } else {
+        panel.style.display = "none";
+      }
+    }
+  }
+
+  function fixArchiveUnavailableLayout() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var panel = document.getElementById("panel-updates");
+    var error = document.getElementById("updates-archive-error");
+    var content = document.querySelector(".opi-updates-archive-error__content");
+
+    if (panel) {
+      panel.style.width = "100%";
+      panel.style.textAlign = "center";
+      panel.style.cssFloat = "none";
+      panel.style.clear = "both";
+    }
+
+    if (error) {
+      error.style.display = "block";
+      error.style.width = "100%";
+      error.style.textAlign = "center";
+      error.style.cssFloat = "none";
+      error.style.clear = "both";
+    }
+
+    if (content) {
+      content.style.display = "block";
+      content.style.width = "100%";
+      content.style.maxWidth = "640px";
+      content.style.marginLeft = "auto";
+      content.style.marginRight = "auto";
+      content.style.textAlign = "center";
+    }
+
+    syncArchiveUnavailableTabs();
+  }
+
+  function bindArchiveUnavailableLayout() {
+    if (!isArchiveUnavailableMode()) {
+      return;
+    }
+
+    var radios = document.querySelectorAll('input.opi-tab-input[name="opi-tab"]');
+    var i;
+
+    for (i = 0; i < radios.length; i++) {
+      radios[i].addEventListener("change", syncArchiveUnavailableTabs);
+    }
+  }
+
+  var STORAGE_RELEASE_VERSION = "opi-panel-release-version";
+  var STORAGE_MIRROR = "opi-panel-mirror";
+
+  function getArchive() {
+    return window.OPI_RELEASES_ARCHIVE || null;
+  }
+
+  function compareVersions(version1, version2) {
+    var parts1 = String(version1).trim().split(".");
+    var parts2 = String(version2).trim().split(".");
+    var maxIndex = Math.max(parts1.length, parts2.length) - 1;
+    var index;
+
+    for (index = 0; index <= maxIndex; index += 1) {
+      var number1 = index < parts1.length ? Number(parts1[index]) : 0;
+      var number2 = index < parts2.length ? Number(parts2[index]) : 0;
+
+      if (number1 > number2) {
+        return 1;
+      }
+      if (number1 < number2) {
+        return -1;
+      }
+    }
+
+    return 0;
+  }
+
+  function findRelease(version) {
+    var archive = getArchive();
+    var i;
+
+    if (!archive || !archive.versions) {
+      return null;
+    }
+
+    for (i = 0; i < archive.versions.length; i += 1) {
+      if (archive.versions[i].version === version) {
+        return archive.versions[i];
+      }
+    }
+
+    return null;
+  }
+
+  function isMirrorAvailable(mirror, version) {
+    if (!mirror || !mirror.id) {
+      return false;
+    }
+
+    if (!mirror.minVersion) {
+      return true;
+    }
+
+    return compareVersions(version, mirror.minVersion) >= 0;
+  }
+
+  function mirrorAvailableForVersion(mirrorId, version) {
+    var archive = getArchive();
+    var i;
+
+    if (!archive || !archive.mirrors) {
+      return mirrorId === "github";
+    }
+
+    for (i = 0; i < archive.mirrors.length; i += 1) {
+      if (archive.mirrors[i].id === mirrorId) {
+        return isMirrorAvailable(archive.mirrors[i], version);
+      }
+    }
+
+    return false;
+  }
+
+  function escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function renderTextWithLinks(text) {
+    var result = "";
+    var remainder = String(text);
+    var start;
+    var endLabel;
+    var label;
+    var endUrl;
+    var href;
+
+    while (remainder.length > 0) {
+      start = remainder.indexOf("[");
+
+      if (start < 0) {
+        result += escapeHtml(remainder);
+        break;
+      }
+
+      if (start > 0) {
+        result += escapeHtml(remainder.slice(0, start));
+      }
+
+      remainder = remainder.slice(start + 1);
+      endLabel = remainder.indexOf("]");
+
+      if (endLabel < 0) {
+        result += escapeHtml("[" + remainder);
+        break;
+      }
+
+      label = remainder.slice(0, endLabel);
+      remainder = remainder.slice(endLabel + 1);
+
+      if (remainder.charAt(0) !== "(") {
+        result += escapeHtml("[" + label + "]" + remainder);
+        break;
+      }
+
+      remainder = remainder.slice(1);
+      endUrl = remainder.indexOf(")");
+
+      if (endUrl < 0) {
+        result += escapeHtml("[" + label + "](" + remainder);
+        break;
+      }
+
+      href = remainder.slice(0, endUrl);
+      remainder = remainder.slice(endUrl + 1);
+      result += '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + "</a>";
+    }
+
+    return result;
+  }
+
+  function formatChangelogDescription(text) {
+    var parts;
+    var i;
+    var result = "";
+
+    if (!text) {
+      return "";
+    }
+
+    parts = String(text).split("`");
+
+    for (i = 0; i < parts.length; i += 1) {
+      if (i % 2 === 1) {
+        result += "<code>" + escapeHtml(parts[i]) + "</code>";
+      } else {
+        result += renderTextWithLinks(parts[i]);
+      }
+    }
+
+    return result;
+  }
+
+  function getIconUrl(change, archive) {
+    if (change.iconUrl) {
+      return change.iconUrl;
+    }
+
+    if (change.icon && archive && archive.githubContentBase) {
+      return archive.githubContentBase + change.icon;
+    }
+
+    return "";
+  }
+
+  function renderChangelog(version) {
+    var release = findRelease(version);
+    var tbody = document.getElementById("opi-changelog-body");
+    var summary = document.getElementById("opi-release-summary");
+    var archive = getArchive();
+    var html = "";
+    var changes;
+    var i;
+    var ch;
+    var iconUrl;
+    var iconHtml;
+
+    if (!tbody) {
+      return;
+    }
+
+    if (!release) {
+      tbody.innerHTML = "";
+      if (summary) {
+        summary.textContent = "";
+      }
+      return;
+    }
+
+    if (summary) {
+      summary.textContent = release.summary_ru || "";
+    }
+
+    changes = release.changes || [];
+
+    for (i = 0; i < changes.length; i += 1) {
+      ch = changes[i];
+      iconUrl = getIconUrl(ch, archive);
+      iconHtml = iconUrl
+        ? '<img src="' + iconUrl + '" class="opi-lib-icon" width="20" height="20" alt="">'
+        : "";
+      html += '<tr><td><div class="opi-lib-cell">' + iconHtml + "<span>" + escapeHtml(ch.lib || "") + "</span></div></td>";
+      html += "<td>" + formatChangelogDescription(ch.description_ru || "") + "</td></tr>";
+    }
+
+    tbody.innerHTML = html;
+  }
+
+  function updateMirrorVisibility(version) {
+    var options = document.querySelectorAll(".opi-mirror-option");
+    var firstVisible = null;
+    var i;
+    var item;
+    var mirrorId;
+    var input;
+    var available;
+
+    for (i = 0; i < options.length; i += 1) {
+      item = options[i];
+      mirrorId = item.getAttribute("data-mirror");
+      available = mirrorAvailableForVersion(mirrorId, version);
+      item.style.display = available ? "" : "none";
+
+      if (available && !firstVisible) {
+        firstVisible = item;
+      }
+    }
+
+    if (!firstVisible) {
+      return;
+    }
+
+    input = firstVisible.querySelector('input[name="opi-mirror"]');
+
+    if (input && !input.checked) {
+      var checkedVisible = false;
+      for (i = 0; i < options.length; i += 1) {
+        item = options[i];
+        if (item.style.display === "none") {
+          continue;
+        }
+        input = item.querySelector('input[name="opi-mirror"]');
+        if (input && input.checked) {
+          checkedVisible = true;
+          break;
+        }
+      }
+
+      if (!checkedVisible) {
+        input = firstVisible.querySelector('input[name="opi-mirror"]');
+        if (input) {
+          input.checked = true;
+          writeText(STORAGE_MIRROR, input.value);
+        }
+      }
+    }
+  }
+
+  function restoreMirrorSelection() {
+    var stored = readText(STORAGE_MIRROR);
+    var input;
+
+    if (!stored) {
+      return;
+    }
+
+    input = document.querySelector('input[name="opi-mirror"][value="' + stored + '"]');
+
+    if (input && input.parentNode && input.parentNode.style.display !== "none") {
+      input.checked = true;
+    }
+  }
+
+  function bindUpdates() {
+    var select = document.getElementById("opi-release-version");
+    var mirrorGroup = document.getElementById("opi-mirror-group");
+
+    if (select) {
+      select.addEventListener("change", function () {
+        var version = this.value;
+        writeText(STORAGE_RELEASE_VERSION, version);
+        renderChangelog(version);
+        updateMirrorVisibility(version);
+      });
+    }
+
+    if (mirrorGroup) {
+      mirrorGroup.addEventListener("change", function (e) {
+        var el = e.target;
+        if (el && el.name === "opi-mirror" && el.checked) {
+          writeText(STORAGE_MIRROR, el.value);
+        }
+      });
+    }
+  }
+
+  function initUpdates() {
+    var select = document.getElementById("opi-release-version");
+    var storedVersion;
+    var version;
+
+    if (!getArchive() || !select) {
+      return;
+    }
+
+    storedVersion = readText(STORAGE_RELEASE_VERSION);
+
+    if (storedVersion) {
+      select.value = storedVersion;
+    }
+
+    version = select.value;
+    renderChangelog(version);
+    updateMirrorVisibility(version);
+    restoreMirrorSelection();
+    bindUpdates();
+  }
+
+  function init() {
+    restoreTab();
+    applyStoredChecks();
+    bindTabs();
+    bindChecks();
+    bindScroll();
+    restoreScroll();
+    fixArchiveUnavailableLayout();
+    bindArchiveUnavailableLayout();
+    initUpdates();
+  }
+
+  window.OPI_PANEL_getSelectedComponents = function () {
+    var map = getChecks();
+    var result = [];
+    var key;
+
+    for (key in map) {
+      if (map.hasOwnProperty(key) && map[key]) {
+        result.push(key);
+      }
+    }
+
+    return result;
+  };
+
+  window.OPI_PANEL_afterAddinsSync = function () {
+    pruneChecks();
+    applyStoredChecks();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();

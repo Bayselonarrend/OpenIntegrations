@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f4e8a1c2-3b5d-4e9f-a7c6-1d2e3f4a5b6c">
+  <name>OPI_HTMLTemplateProcessor</name>
+  <synonym>
+    <key>en</key>
+    <value>HTML template generator (OPI, service)</value>
+    <key>ru</key>
+    <value>HTML template generator (OPI, service)</value>
+  </synonym>
+  <comment>HTML template generator from of set OPI</comment>
+  <clientManagedApplication>true</clientManagedApplication>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

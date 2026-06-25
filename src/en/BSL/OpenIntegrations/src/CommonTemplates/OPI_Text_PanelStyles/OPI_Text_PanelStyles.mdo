@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b7c4d2e1-8f3a-4b6c-9d0e-1a2b3c4d5e6f">
+  <name>OPI_Text_PanelStyles</name>
+  <synonym>
+    <key>en</key>
+    <value>Control panel CSS (OPI)</value>
+    <key>ru</key>
+    <value>Control panel CSS (OpenIntegrations)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

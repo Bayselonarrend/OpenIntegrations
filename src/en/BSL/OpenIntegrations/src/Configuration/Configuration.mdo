@@ -82,6 +82,18 @@
   <commonTemplates>CommonTemplate.OPI_Text_MethodSettings</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_LicenseRU</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Text_LicenseEN</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelDocument</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelScript</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelShell</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelStyles</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelThemeDark</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelUpdates</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelArchiveError</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelLoading</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelMirrorOption</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelReleaseOption</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelRowChangelog</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_Text_PanelRowAddin</commonTemplates>
   <commonModules>CommonModule.OPI_7z</commonModules>
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
@@ -136,6 +148,7 @@
   <commonModules>CommonModule.OPI_GenericArchiver</commonModules>
   <commonModules>CommonModule.OPI_GenericServer</commonModules>
   <commonModules>CommonModule.OPI_ExtensionManagement</commonModules>
+  <commonModules>CommonModule.OPI_HTMLTemplateProcessor</commonModules>
   <commonModules>CommonModule.OPI_ToolsServerCall</commonModules>
   <commonModules>CommonModule.OPI_LibraryFunctionsServerCall</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>

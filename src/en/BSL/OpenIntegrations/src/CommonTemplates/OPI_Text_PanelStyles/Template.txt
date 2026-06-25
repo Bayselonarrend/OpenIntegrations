@@ -1,0 +1,713 @@
+.opi-alert__steps li {
+margin: 0.2rem 0;
+}
+.opi-alert__steps {
+padding-left: 1.25rem;
+margin: 0;
+}
+.opi-alert__title {
+font-weight: 500;
+line-height: 1.35;
+margin: 0 0 0.5rem;
+}
+.opi-alert__text {
+font-weight: 300;
+min-width: 0;
+color: var(--opi-text);
+flex: 1 1 0;
+padding-top: 1px;
+margin: 0;
+}
+.opi-alert__icon {
+color: #e6a700;
+margin-right: 16px;
+flex-shrink: 0;
+display: block;
+height: 2rem;
+width: 2rem;
+}
+.opi-alert {
+border: 1px solid var(--opi-divider-strong);
+margin: 12px 0 16px;
+align-items: flex-start;
+background: var(--opi-surface-elevated);
+border-radius: 8px;
+width: 100%;
+flex-wrap: wrap;
+padding: 12px 14px;
+display: flex;
+}
+.opi-radio:checked:hover {
+border-color: var(--opi-accent);
+background-color: var(--opi-accent);
+}
+.opi-radio:hover {
+background-color: var(--opi-checkbox-hover-bg);
+border-color: var(--opi-accent);
+}
+.opi-radio {
+background-repeat: no-repeat;
+background-position: center;
+background-color: var(--opi-checkbox-bg);
+border: 1px solid var(--opi-border-control);
+background-size: 8px 8px;
+vertical-align: middle;
+margin: 0;
+height: 16px;
+border-radius: 50%;
+width: 16px;
+box-sizing: border-box;
+cursor: pointer;
+padding: 0;
+appearance: none;
+flex-shrink: 0;
+-webkit-appearance: none;
+}
+.opi-checkbox:checked:hover {
+border-color: var(--opi-accent);
+background-color: var(--opi-accent);
+}
+.opi-checkbox {
+accent-color: var(--opi-accent);
+background-repeat: no-repeat;
+background-position: center;
+background-color: var(--opi-checkbox-bg);
+border: 1px solid var(--opi-border-control);
+vertical-align: middle;
+background-size: 11px 11px;
+margin: 0;
+height: 16px;
+width: 16px;
+border-radius: 4px;
+box-sizing: border-box;
+appearance: none;
+padding: 0;
+cursor: pointer;
+-webkit-appearance: none;
+flex-shrink: 0;
+}
+.opi-col-check {
+text-align: center;
+width: 44px;
+}
+.opi-table tr:last-child td {
+border-bottom: none;
+}
+.opi-table th {
+color: var(--opi-text-table-header);
+font-weight: 500;
+background: var(--opi-surface-elevated);
+}
+.opi-table th, .opi-table td {
+word-wrap: break-word;
+vertical-align: middle;
+text-align: left;
+border-bottom: 1px solid var(--opi-divider);
+overflow-wrap: break-word;
+padding: 10px 12px;
+}
+.opi-table {
+font-size: 13px;
+border-collapse: collapse;
+table-layout: fixed;
+max-width: 100%;
+width: 100%;
+}
+.opi-button--primary:hover {
+color: var(--opi-accent);
+background: var(--opi-surface-accent);
+}
+.opi-license-block__title {
+color: var(--opi-text-strong);
+font-weight: 400;
+font-size: 1rem;
+margin: 0 0 8px;
+}
+#license-en {
+margin-top: 36px;
+}
+.opi-license-block {
+box-sizing: border-box;
+max-width: 100%;
+width: 100%;
+}
+.opi-licenses {
+display: flex;
+flex-direction: column;
+margin-top: 20px;
+}
+.opi-button:hover {
+text-decoration: none;
+background: var(--opi-surface-muted);
+}
+.opi-actions {
+margin-top: 16px;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
+display: flex;
+}
+.opi-version-badge {
+white-space: nowrap;
+font-weight: 400;
+font-size: 0.85rem;
+border: 1px solid var(--opi-accent);
+background: var(--opi-surface-elevated);
+border-radius: 16px;
+margin-top: 0;
+padding: 4px 10px;
+display: inline-block;
+}
+.opi-logo {
+overflow: hidden;
+justify-content: center;
+align-items: center;
+display: flex;
+border: 1px solid var(--opi-logo-border);
+height: 112px;
+background: linear-gradient(145deg, var(--opi-logo-gradient-start), var(--opi-logo-gradient-end));
+border-radius: 22px;
+width: 112px;
+}
+.opi-lib-icon {
+margin-right: 8px;
+height: 20px;
+width: 20px;
+}
+.opi-updates-archive-error__actions {
+text-align: center;
+margin-top: 24px;
+}
+.opi-updates-archive-error__content {
+text-align: center;
+margin-right: auto;
+margin-left: auto;
+max-width: 640px;
+width: 100%;
+display: block;
+}
+.opi-checkbox:checked {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.5 8.5L6.5 11.5L12.5 4.5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+border-color: var(--opi-accent);
+background-color: var(--opi-accent);
+}
+.opi-updates-archive-error {
+text-align: center;
+min-height: 360px;
+clear: both;
+float: none;
+box-sizing: border-box;
+width: 100%;
+padding: 48px 24px;
+display: block;
+}
+.opi-tab-panel--archive-unavailable {
+clear: both;
+float: none;
+text-align: center;
+box-sizing: border-box;
+width: 100%;
+}
+.opi-updates-mirror__label {
+border-right: 1px solid var(--opi-divider);
+margin-right: 0;
+padding-right: 16px;
+white-space: nowrap;
+color: var(--opi-text-secondary);
+font-size: 13px;
+}
+.opi-updates-footer {
+margin-top: 16px;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+display: flex;
+}
+.opi-updates-mirror {
+margin-left: auto;
+align-items: center;
+flex-wrap: wrap;
+display: flex;
+}
+.opi-table-wrap {
+border: 1px solid var(--opi-border-control);
+overflow: auto;
+max-width: 100%;
+border-radius: 8px;
+width: 100%;
+display: block;
+}
+.opi-updates-actions {
+margin-top: 0;
+flex-wrap: wrap;
+gap: 8px;
+display: flex;
+}
+.opi-table code {
+background: var(--opi-surface-muted);
+border-radius: 4px;
+padding: 1px 5px;
+font-size: 12px;
+}
+.opi-updates-mirror .opi-mirror-group {
+padding-left: 16px;
+}
+.opi-updates-changelog {
+margin-top: 4px;
+}
+.opi-hero__title {
+color: var(--opi-text-strong);
+font-weight: 350;
+font-size: 1.65rem;
+margin: 8px 0 20px;
+}
+.opi-updates-summary {
+line-height: 1.35;
+font-weight: 500;
+font-size: 1.05rem;
+min-width: 0;
+color: var(--opi-text-strong);
+flex: 1 1 0;
+margin: 0;
+}
+.opi-updates-archive-error__hint {
+color: var(--opi-text-secondary);
+line-height: 1.45;
+font-weight: 300;
+font-size: 0.9rem;
+max-width: 420px;
+margin: 0 auto;
+}
+.opi-mirror-option {
+white-space: nowrap;
+line-height: 20px;
+font-size: 13px;
+margin-bottom: 0;
+margin-right: 16px;
+align-items: center;
+cursor: pointer;
+display: inline-flex;
+}
+.opi-mirror-group {
+align-items: center;
+flex-wrap: wrap;
+display: flex;
+}
+.opi-select {
+color: var(--opi-text);
+background: var(--opi-surface);
+border-radius: 6px;
+border: 1px solid var(--opi-border-control);
+padding: 6px 10px;
+min-width: 140px;
+}
+.opi-field__label {
+color: var(--opi-text-secondary);
+font-size: 13px;
+margin-bottom: 6px;
+}
+.opi-hero__tagline {
+color: var(--opi-text-secondary);
+font-weight: 300;
+font-size: 0.95rem;
+max-width: 520px;
+margin: 0 0 20px;
+}
+.opi-updates-version-select {
+min-width: 120px;
+}
+.opi-updates-archive-error__url-label {
+font-weight: 500;
+font-size: 12px;
+color: var(--opi-text-table-header);
+text-align: center;
+margin: 0 0 6px;
+}
+.opi-updates-changelog__title {
+color: var(--opi-text-table-header);
+font-weight: 500;
+font-size: 0.95rem;
+margin: 0 0 8px;
+}
+.opi-updates-version {
+flex-shrink: 0;
+}
+.opi-updates-release-header {
+margin-top: 4px;
+margin-bottom: 12px;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+display: flex;
+}
+.opi-updates-archive-error__url-wrap {
+text-transform: none;
+text-align: left;
+margin-top: 20px;
+width: 100%;
+}
+.opi-updates-status__title {
+line-height: 1.2;
+color: var(--opi-text-strong);
+font-weight: 500;
+font-size: 1.05rem;
+margin: 0;
+padding: 0;
+display: block;
+}
+.opi-updates-status--available .opi-updates-status__icon {
+color: #e6a700;
+}
+.opi-updates-actions .opi-button {
+border-radius: 14px;
+line-height: 18px;
+font-size: 13px;
+padding: 4px 12px;
+min-height: 30px;
+}
+.opi-updates-status--current .opi-updates-status__icon {
+color: var(--opi-accent);
+}
+.opi-updates-status__icon {
+margin: 0 14px 0 0;
+height: 2.25rem;
+width: 2.25rem;
+flex-shrink: 0;
+display: block;
+}
+#opi-tab-updates:checked ~ .opi-tabs label[for="opi-tab-updates"] {
+font-weight: 500;
+border-bottom-color: var(--opi-accent);
+color: var(--opi-accent);
+}
+.opi-table tr:hover td {
+background: var(--opi-row-hover);
+}
+#opi-tab-addins:checked ~ .opi-tabs label[for="opi-tab-addins"] {
+font-weight: 500;
+border-bottom-color: var(--opi-accent);
+color: var(--opi-accent);
+}
+.opi-radio:focus {
+outline-offset: 1px;
+outline: 2px solid var(--opi-accent);
+}
+#opi-tab-updates:checked ~ .opi-main .opi-tab-panel[data-tab="updates"] {
+display: block;
+}
+.opi-updates-status {
+border: 1px solid var(--opi-divider-strong);
+background: var(--opi-surface-elevated);
+border-radius: 8px;
+margin-bottom: 24px;
+align-items: center;
+padding: 7px 14px 10px;
+display: flex;
+}
+.opi-lib-cell span {
+font-weight: 500;
+}
+#opi-tab-addins:checked ~ .opi-main .opi-tab-panel[data-tab="addins"] {
+display: block;
+}
+.opi-tab:hover {
+color: var(--opi-accent);
+}
+.opi-updates-archive-error__url {
+color: var(--opi-text-strong);
+word-break: break-all;
+line-height: 1.45;
+font-family: Consolas, 'Courier New', monospace;
+background: var(--opi-surface-elevated);
+border-radius: 8px;
+border: 1px solid var(--opi-divider-strong);
+font-size: 12px;
+text-transform: none;
+padding: 10px 12px;
+display: block;
+}
+.opi-toolbar {
+margin-bottom: 12px;
+align-items: center;
+flex-wrap: wrap;
+gap: 8px;
+display: flex;
+}
+.opi-tabs {
+background: var(--opi-surface);
+border-bottom: 2px solid var(--opi-divider-strong);
+padding: 0 16px;
+display: flex;
+}
+.opi-changelog-table-wrap {
+margin-top: 0;
+max-height: 320px;
+}
+.opi-table a:hover {
+text-decoration: underline;
+}
+.opi-button--primary {
+color: var(--opi-accent);
+border-color: var(--opi-accent);
+}
+.opi-tab-input {
+pointer-events: none;
+opacity: 0;
+position: absolute;
+}
+.opi-header__subtitle {
+line-height: 1.35;
+color: var(--opi-text-muted);
+font-weight: 300;
+font-size: 13px;
+margin: 0.1rem 0 0;
+}
+.opi-field {
+margin-bottom: 8px;
+margin-right: 20px;
+flex-direction: column;
+display: flex;
+}
+.opi-header__title {
+line-height: 1.2;
+color: var(--opi-text-strong);
+font-weight: 350;
+font-size: 1.5rem;
+margin: 0;
+}
+.opi-alert--warning {
+border-left: 4px solid #e6a700;
+}
+.opi-checkbox:focus {
+outline-offset: 1px;
+outline: 2px solid var(--opi-accent);
+}
+.opi-header__wrap {
+align-items: flex-start;
+display: flex;
+}
+.opi-logo svg {
+display: block;
+height: 86px;
+width: 86px;
+}
+.opi-header {
+border-bottom: 1px solid var(--opi-divider);
+padding: 20px 24px 16px;
+}
+.opi-tab {
+font-size: 0.95rem;
+font-weight: 400;
+background: transparent;
+color: var(--opi-text-muted);
+border-bottom: 2px solid transparent;
+border: none;
+margin: 0 0 -2px;
+align-items: center;
+cursor: pointer;
+padding: 0.62rem 0.9rem;
+display: inline-flex;
+}
+.opi-updates-archive-error__title {
+font-weight: 500;
+font-size: 1.1rem;
+color: var(--opi-text-strong);
+text-align: center;
+margin: 20px 0 8px;
+}
+.opi-updates-status--available {
+border-left: 4px solid #e6a700;
+}
+.opi-updates-archive-error__icon {
+color: #e6a700;
+margin-right: auto;
+margin-left: auto;
+height: 3rem;
+width: 3rem;
+display: block;
+}
+.opi-hero {
+text-align: center;
+align-items: center;
+flex-direction: column;
+padding: 8px 0 20px;
+gap: 8px;
+display: flex;
+}
+.opi-shell {
+box-shadow: var(--opi-shell-shadow);
+border: 1px solid var(--opi-border);
+border-radius: 12px;
+background: var(--opi-surface);
+overflow: hidden;
+margin: 0 auto;
+max-width: 960px;
+}
+#opi-tab-main:checked ~ .opi-main .opi-tab-panel[data-tab="main"] {
+display: block;
+}
+.opi-updates-status__body {
+flex: 1 1 0;
+padding: 0;
+min-width: 0;
+display: block;
+}
+.opi-updates-status__hint {
+line-height: 1.2;
+color: var(--opi-text-secondary);
+font-weight: 300;
+font-size: 12px;
+margin: 1px 0 0;
+padding: 0;
+display: block;
+}
+.opi-radio:checked {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23ffffff'/%3E%3C/svg%3E");
+border-color: var(--opi-accent);
+background-color: var(--opi-accent);
+}
+#opi-tab-main:checked ~ .opi-tabs label[for="opi-tab-main"] {
+font-weight: 500;
+border-bottom-color: var(--opi-accent);
+color: var(--opi-accent);
+}
+.opi-loading__hint {
+color: var(--opi-text-secondary);
+font-weight: 300;
+font-size: 0.9rem;
+margin: 0;
+}
+.opi-updates-status--current {
+border-left: 4px solid var(--opi-accent);
+}
+.opi-loading__title {
+color: var(--opi-text-strong);
+font-weight: 400;
+font-size: 1.1rem;
+margin: 20px 0 6px;
+}
+.opi-table th.opi-col-check, .opi-table td.opi-col-check {
+padding-right: 10px;
+padding-left: 10px;
+}
+.opi-button {
+white-space: nowrap;
+line-height: 20px;
+font-weight: 400;
+font-size: 14px;
+color: var(--opi-button-text);
+background: var(--opi-surface-elevated);
+border-radius: 16px;
+border: 1px solid var(--opi-border-control);
+min-height: 34px;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+padding: 6px 16px;
+display: inline-flex;
+appearance: none;
+}
+.opi-panel *, .opi-panel *::before, .opi-panel *::after {
+box-sizing: border-box;
+}
+.opi-main {
+width: 100%;
+min-height: 320px;
+padding: 24px;
+}
+.opi-license-block__text {
+box-sizing: border-box;
+max-width: 100%;
+line-height: 1.45;
+font-size: 12px;
+word-wrap: break-word;
+border: 1px solid var(--opi-divider-strong);
+overflow-wrap: break-word;
+padding: 14px 16px;
+font-family: inherit;
+background: var(--opi-surface-elevated);
+border-radius: 8px;
+width: 100%;
+overflow: visible;
+white-space: pre-wrap;
+margin: 0;
+}
+.opi-tab-panel {
+width: 100%;
+display: none;
+}
+.opi-section {
+margin-top: 24px;
+}
+.opi-loading__icon {
+color: var(--opi-accent);
+display: block;
+height: 3rem;
+width: 3rem;
+}
+.opi-mirror-option input {
+margin-right: 8px;
+}
+.opi-checkbox:hover {
+background-color: var(--opi-checkbox-hover-bg);
+border-color: var(--opi-accent);
+}
+.opi-loading {
+text-align: center;
+min-height: 360px;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 48px 24px;
+display: flex;
+}
+.opi-header__icon {
+margin-right: 1.5rem;
+color: var(--opi-accent);
+flex-shrink: 0;
+height: 3.4rem;
+width: 3.4rem;
+}
+.opi-table a {
+text-decoration: none;
+color: var(--opi-accent);
+}
+.opi-lib-cell {
+align-items: center;
+display: flex;
+}
+.opi-panel {
+line-height: 1.5;
+font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+margin: 0;
+--opi-shell-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.7), 0 4px 8px rgba(0, 0, 0, 0.1);
+--opi-row-hover: #fafbfc;
+--opi-checkbox-bg: #ffffff;
+--opi-accent: #004943;
+background: var(--opi-bg);
+--opi-text-table-header: #4b5563;
+--opi-text-muted: #555555;
+box-sizing: border-box;
+--opi-text-strong: #000000;
+--opi-text-secondary: #666666;
+--opi-border-control: rgba(27, 31, 35, 0.15);
+--opi-divider: rgba(27, 31, 35, 0.08);
+--opi-checkbox-hover-bg: #f6f8fa;
+--opi-border: #dddddd;
+--opi-divider-strong: rgba(27, 31, 35, 0.12);
+--opi-logo-border: rgba(0, 73, 67, 0.12);
+padding: 12px;
+--opi-surface-accent: #f0f7f6;
+--opi-logo-gradient-start: #f0f7f6;
+--opi-surface-muted: #f3f4f6;
+color: var(--opi-text);
+--opi-button-text: #24292e;
+--opi-surface-elevated: #fafbfc;
+--opi-logo-gradient-end: #ffffff;
+--opi-text: #333333;
+font-size: 14px;
+--opi-surface: #ffffff;
+--opi-bg: #ffffff;
+}

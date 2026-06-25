@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-22T23:16:03",
+ "generatedAt": "2026-06-25T16:33:25",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -46,28 +46,30 @@
    "summary_ru": "Методы работы с архивами",
    "summary_en": "Methods of working with archives",
    "cover": "media/Covers/Archives.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/Archives.png",
    "changes": [
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Основные методы (6 функций)",
-     "description_en": "Core methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Core methods (6 functions)"
     },
     {
      "lib": "Janx",
      "icon": "media/Janx.png",
      "description_ru": "Оптимизирована сериализация данных без двоичных полей",
-     "description_en": "Optimized serialization for data without binary fields",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Janx.png"
+     "description_en": "Optimized serialization for data without binary fields"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "В CLI добавлены специальные значения `--out` (`_hex_`, `_base64_`, `_utf8_`) для вывода двоичных данных и строк в консоль в текстовом виде",
-     "description_en": "CLI now supports special `--out` values (`_hex_`, `_base64_`, `_utf8_`) to print binary data and strings to the console as text",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "CLI now supports special `--out` values (`_hex_`, `_base64_`, `_utf8_`) to print binary data and strings to the console as text"
+    },
+    {
+     "lib": "All",
+     "icon": "media/logo.png",
+     "description_ru": "Улучшена панель управления расширением в 1С, добавлен раздел обновлений",
+     "description_en": "Improved 1C extension management panel, added extension updates section"
     }
    ],
    "artifacts": [
@@ -338,77 +340,66 @@
    "summary_ru": "Методы работы с Lua",
    "summary_en": "Methods of working with Lua",
    "cover": "media/Covers/Lua.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/Lua.png",
    "changes": [
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Основные методы (6 функций)",
-     "description_en": "Core methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Core methods (6 functions)"
     },
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Работа со скриптами (3 функции)",
-     "description_en": "Script handling (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Script handling (3 functions)"
     },
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Работа со байткодом (5 функций)",
-     "description_en": "Bytecode handling (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Bytecode handling (5 functions)"
     },
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Работа с глобальными переменными (2 функции)",
-     "description_en": "Global variable handling (2 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Global variable handling (2 functions)"
     },
     {
      "lib": "Lua",
      "icon": "media/Lua.png",
      "description_ru": "Управление пакетами (3 функции)",
-     "description_en": "Package management (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Lua.png"
+     "description_en": "Package management (3 functions)"
     },
     {
      "lib": "MessagePack",
      "icon": "media/MessagePack.png",
      "description_ru": "Добавлена сериализация/десериализация для формата MessagePack",
-     "description_en": "Added serialization/deserialization for MessagePack format",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MessagePack.png"
+     "description_en": "Added serialization/deserialization for MessagePack format"
     },
     {
      "lib": "Janx",
      "icon": "media/Janx.png",
      "description_ru": "Добавлена сериализация/десериализация для формата Janx",
-     "description_en": "Added serialization/deserialization for Janx format",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Janx.png"
+     "description_en": "Added serialization/deserialization for Janx format"
     },
     {
      "lib": "MySQL",
      "icon": "media/MySQL.png",
      "description_ru": "Добавлена поддержка аутентификации `sha256_password`",
-     "description_en": "Added `sha256_password` authentication support",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MySQL.png"
+     "description_en": "Added `sha256_password` authentication support"
     },
     {
      "lib": "YandexDisk",
      "icon": "media/YandexDisk.png",
      "description_ru": "Добавлено ожидание завершения асинхронных операций API при копировании, перемещении, создании папок и публикации объектов",
-     "description_en": "Added polling for API async operation completion when copying, moving, creating folders, and publishing objects",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/YandexDisk.png"
+     "description_en": "Added polling for API async operation completion when copying, moving, creating folders, and publishing objects"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Переработан обмен данными между внешними компонентами и 1С/OS хостом",
-     "description_en": "Overhauled data exchange between AddIns and the 1C/OS host",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Overhauled data exchange between AddIns and the 1C/OS host"
     }
    ],
    "artifacts": [
@@ -659,98 +650,84 @@
    "summary_ru": "Методы работы с ZeroMQ",
    "summary_en": "Methods of working with ZeroMQ",
    "cover": "media/Covers/ZeroMQ.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/ZeroMQ.png",
    "changes": [
     {
      "lib": "ZeroMQ",
      "icon": "media/ZeroMQ.png",
      "description_ru": "Методы подключения (4 функции)",
-     "description_en": "Connection methods (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ZeroMQ.png"
+     "description_en": "Connection methods (4 functions)"
     },
     {
      "lib": "ZeroMQ",
      "icon": "media/ZeroMQ.png",
      "description_ru": "Методы ожидания подключений (4 функции)",
-     "description_en": "Connection waiting methods (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ZeroMQ.png"
+     "description_en": "Connection waiting methods (4 functions)"
     },
     {
      "lib": "ZeroMQ",
      "icon": "media/ZeroMQ.png",
      "description_ru": "Методы обмена (6 функций)",
-     "description_en": "Messaging methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ZeroMQ.png"
+     "description_en": "Messaging methods (6 functions)"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Оптимизирована загрузка по частям в HTTP-клиенте",
-     "description_en": "Optimized chunked upload in the HTTP client",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Optimized chunked upload in the HTTP client"
     },
     {
      "lib": "MSSQL",
      "icon": "media/MSSQL.png",
      "description_ru": "Изменен механизм создания Tls соединения: улучшена совместимость с разными версиями сервера, наличие OpenSSL более не требуется",
-     "description_en": "Changed TLS connection creation mechanism: improved compatibility with different server versions, OpenSSL is no longer required",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MSSQL.png"
+     "description_en": "Changed TLS connection creation mechanism: improved compatibility with different server versions, OpenSSL is no longer required"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Все основные модули библиотек в версии для 1С:Предприятие теперь `КлиентСервер`",
-     "description_en": "All main library modules in the 1C:Enterprise version are now `ClientServer`",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "All main library modules in the 1C:Enterprise version are now `ClientServer`"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Тип подключения внешних компонент добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих компоненты (для 1С версии)",
-     "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "The AddIn connection type has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use AddIns (for the 1C version)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Число попыток повторной отправки запроса при ошибке добавлено в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, использующих HTTP-клиент",
-     "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "The number of request retry attempts on error has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that use the HTTP client"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Запуск в фоновом задании добавлен в настройки [расширенного вызова](https://openintegrations.dev/docs/Start/Advanced-call) для всех методов, не использующих внешние компоненты (для 1С и OneScript версии)",
-     "description_en": "Background job execution has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that do not use external AddIns (for the 1C and OneScript versions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Background job execution has been added to the [advanced call](https://openintegrations.dev/docs/Start/Advanced-call) settings for all methods that do not use external AddIns (for the 1C and OneScript versions)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлена обработка настройки `adv_response` расширенного вызова для методов с несколькими HTTP-запросами",
-     "description_en": "Fixed `adv_response` advanced call setting handling for methods with multiple HTTP requests",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed `adv_response` advanced call setting handling for methods with multiple HTTP requests"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлено применение настроек расширенного вызова в CLI версии",
-     "description_en": "Fixed application of extended call settings in CLI version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed application of extended call settings in CLI version"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлена возможность включения логирования работы внешних компонент для всех библиотек, которые их используют",
-     "description_en": "Added ability to enable external component logging for all libraries that use them",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added ability to enable external component logging for all libraries that use them"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Общая оптимизация инструментария и повышение надежности компонент",
-     "description_en": "General tooling and AddIns optimizations",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "General tooling and AddIns optimizations"
     }
    ],
    "artifacts": [
@@ -1001,105 +978,90 @@
    "summary_ru": "Методы работы с Websocket",
    "summary_en": "Methods of working with Websocket",
    "cover": "media/Covers/WebSocket.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/WebSocket.png",
    "changes": [
     {
      "lib": "WebSocket",
      "icon": "media/WebSocket.png",
      "description_ru": "Общие методы (2 функции)",
-     "description_en": "Common methods (2 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/WebSocket.png"
+     "description_en": "Common methods (2 functions)"
     },
     {
      "lib": "WebSocket",
      "icon": "media/WebSocket.png",
      "description_ru": "Методы клиента (10 функции)",
-     "description_en": "Client methods (10 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/WebSocket.png"
+     "description_en": "Client methods (10 functions)"
     },
     {
      "lib": "WebSocket",
      "icon": "media/WebSocket.png",
      "description_ru": "Методы сервера (8 функции)",
-     "description_en": "Server methods (8 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/WebSocket.png"
+     "description_en": "Server methods (8 functions)"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Исправлено неполное переформирование запроса при повторных попытка отправки запроса в версии для OneScript",
-     "description_en": "Fixed incomplete request regeneration when retrying request sending in OneScript version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Fixed incomplete request regeneration when retrying request sending in OneScript version"
     },
     {
      "lib": "GRPC",
      "icon": "media/GRPC.png",
      "description_ru": "Исправлено формирование результата при ошибке в функциях упрощенной обработки потоков",
-     "description_en": "Fixed result generation on error in simplified stream processing functions",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GRPC.png"
+     "description_en": "Fixed result generation on error in simplified stream processing functions"
     },
     {
      "lib": "RSS",
      "icon": "media/RSS.png",
      "description_ru": "Добавлена возможность передачи файла в функции `РазобратьФидRSS` и `РазобратьФидAtom`",
-     "description_en": "Added ability to pass a file to `ParseFeedRSS` and `ParseFeedAtom` functions",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/RSS.png"
+     "description_en": "Added ability to pass a file to `ParseFeedRSS` and `ParseFeedAtom` functions"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлен новый вариант релиза для 1С:Предприятие - `.CF` (8.3.10)",
-     "description_en": "Added new release variant for 1C:Enterprise - `.CF` (8.3.10)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added new release variant for 1C:Enterprise - `.CF` (8.3.10)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Библиотека работы с Twitter удалена из пакета",
-     "description_en": "Twitter library has been removed from the package",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Twitter library has been removed from the package"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлена возможность вызова функций библиотеки с [переопределением настроек](https://openintegrations.dev/docs/Start/Advanced-call) HTTP-клиента",
-     "description_en": "Added ability to call library functions with HTTP client [settings override](https://en.openintegrations.dev/docs/Start/Advanced-call)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added ability to call library functions with HTTP client [settings override](https://en.openintegrations.dev/docs/Start/Advanced-call)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Поднят режим совместимости расширения для 1С:Предприятия до версии 8.3.15 (расширения) / 8.3.10 (основной, режим \"Предупреждать\")",
-     "description_en": "1C:Enterprise extension compatibility mode upgraded to 8.3.15 (extension) / 8.3.10 (main, \"Notify\" mode)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "1C:Enterprise extension compatibility mode upgraded to 8.3.15 (extension) / 8.3.10 (main, \"Notify\" mode)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлена ошибка при вызове методов `tools` в CLI версии",
-     "description_en": "Fixed error when calling `tools` methods in CLI version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed error when calling `tools` methods in CLI version"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлен [встроенный MCP-сервер (stdio)](https://openintegrations.dev/docs/Start/CLI-version/mcp-server) в CLI версию",
-     "description_en": "Added [built-in MCP server (stdio)](https://en.openintegrations.dev/docs/Start/CLI-version/mcp-server) to CLI version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added [built-in MCP server (stdio)](https://en.openintegrations.dev/docs/Start/CLI-version/mcp-server) to CLI version"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Включено использование двойных кавычек вместо одиночных при выводе JSON в CLI версии",
-     "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON in CLI version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Enabled use of double quotes instead of single quotes when outputting JSON in CLI version"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Доработана документация: изменена структура разделов, добавлены таблицы расширенного вызова, улучшен UI/UX",
-     "description_en": "Documentation updated: section structure revised, extended call tables added, improved UI/UX design",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Documentation updated: section structure revised, extended call tables added, improved UI/UX design"
     }
    ],
    "artifacts": [
@@ -1350,42 +1312,36 @@
    "summary_ru": "Методы работы с RSS",
    "summary_en": "Methods of working with RSS",
    "cover": "media/Covers/RSS.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/RSS.png",
    "changes": [
     {
      "lib": "RSS",
      "icon": "media/RSS.png",
      "description_ru": "Методы формирования RSS (3 функции)",
-     "description_en": "RSS generation methods (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/RSS.png"
+     "description_en": "RSS generation methods (3 functions)"
     },
     {
      "lib": "RSS",
      "icon": "media/RSS.png",
      "description_ru": "Методы формирования Atom (3 функции)",
-     "description_en": "Atom generation methods (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/RSS.png"
+     "description_en": "Atom generation methods (3 functions)"
     },
     {
      "lib": "SSH",
      "icon": "media/SSH.png",
      "description_ru": "Добавлена keyboard interactive авторизация #97",
-     "description_en": "Added keyboard-interactive authentication #97",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SSH.png"
+     "description_en": "Added keyboard-interactive authentication #97"
     },
     {
      "lib": "TCP",
      "icon": "media/TCP.png",
      "description_ru": "Добавлен функционал TCP-сервера",
-     "description_en": "Added TCP server functionality",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/TCP.png"
+     "description_en": "Added TCP server functionality"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлен баг вывода справки CLI для `tcp` и `ssh`",
-     "description_en": "Fixed CLI help output bug for `tcp` and `ssh`",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed CLI help output bug for `tcp` and `ssh`"
     }
    ],
    "artifacts": [
@@ -1612,63 +1568,54 @@
    "summary_ru": "Методы работы с ReportPortal",
    "summary_en": "Methods of working with ReportPortal",
    "cover": "media/Covers/ReportPortal.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/ReportPortal.png",
    "changes": [
     {
      "lib": "ReportPortal",
      "icon": "media/ReportPortal.png",
      "description_ru": "Авторизация (4 функции)",
-     "description_en": "Authorization (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ReportPortal.png"
+     "description_en": "Authorization (4 functions)"
     },
     {
      "lib": "ReportPortal",
      "icon": "media/ReportPortal.png",
      "description_ru": "Управление пользователями (8 функций)",
-     "description_en": "Users management (8 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ReportPortal.png"
+     "description_en": "Users management (8 functions)"
     },
     {
      "lib": "ReportPortal",
      "icon": "media/ReportPortal.png",
      "description_ru": "Управление проектами (6 функций)",
-     "description_en": "Project management (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ReportPortal.png"
+     "description_en": "Project management (6 functions)"
     },
     {
      "lib": "ReportPortal",
      "icon": "media/ReportPortal.png",
      "description_ru": "Управление тестами (16 функций)",
-     "description_en": "Test management (16 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ReportPortal.png"
+     "description_en": "Test management (16 functions)"
     },
     {
      "lib": "ReportPortal",
      "icon": "media/ReportPortal.png",
      "description_ru": "Запись логов (5 функций)",
-     "description_en": "Log recording (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ReportPortal.png"
+     "description_en": "Log recording (5 functions)"
     },
     {
      "lib": "SFTP",
      "icon": "media/SFTP.png",
      "description_ru": "Оптимизирована загрузка и скачивание больших файлов",
-     "description_en": "Optimized uploading and downloading of large files",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SFTP.png"
+     "description_en": "Optimized uploading and downloading of large files"
     },
     {
      "lib": "SSH",
      "icon": "media/SSH.png",
      "description_ru": "Исправлен процесс авторизации, который мог приводить к ошибке при подключении к некоторым серверам",
-     "description_en": "Fixed authorization process that could lead to an error when connecting to some servers",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SSH.png"
+     "description_en": "Fixed authorization process that could lead to an error when connecting to some servers"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлен новый вариант релиза CLI приложения - `AppImage`",
-     "description_en": "Added new release variant for CLI application - `AppImage`",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added new release variant for CLI application - `AppImage`"
     }
    ],
    "artifacts": [
@@ -1895,70 +1842,60 @@
    "summary_ru": "Методы работы с ClickHouse",
    "summary_en": "Methods of working with ClickHouse",
    "cover": "media/Covers/ClickHouse.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/ClickHouse.png",
    "changes": [
     {
      "lib": "ClickHouse",
      "icon": "media/ClickHouse.png",
      "description_ru": "Основные методы (5 функций)",
-     "description_en": "Common methods (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ClickHouse.png"
+     "description_en": "Common methods (5 functions)"
     },
     {
      "lib": "ClickHouse",
      "icon": "media/ClickHouse.png",
      "description_ru": "Функции работы через gRPC (11 функций)",
-     "description_en": "gRPC functions (11 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/ClickHouse.png"
+     "description_en": "gRPC functions (11 functions)"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Улучшена стабильность, добавлена обработка внутренних ошибок клиента",
-     "description_en": "Improved stability, added handling of internal client errors",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Improved stability, added handling of internal client errors"
     },
     {
      "lib": "VK",
      "icon": "media/VK.png",
      "description_ru": "Удалены функции `ПоставитьЛайк` и все функции раздела \"Работа с обсуждениями\" в связи с их удалением из VK API",
-     "description_en": "Removed `Like` function and all functions from the \"Discussion management\" section due to their removal from the VK API",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/VK.png"
+     "description_en": "Removed `Like` function and all functions from the \"Discussion management\" section due to their removal from the VK API"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлен метод `ГаранитроватьЗаписи` (`ON DUPLICATE UPDATE` / `MERGE`) во все библиотеки СУБД #87",
-     "description_en": "Added `EnsureRecords` method (`ON DUPLICATE UPDATE` / `MERGE`) to all DBMS libraries #87",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added `EnsureRecords` method (`ON DUPLICATE UPDATE` / `MERGE`) to all DBMS libraries #87"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Улучшен вывод справки, проведена оптимизация CLI версии",
-     "description_en": "Improved help output, optimized CLI version",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Improved help output, optimized CLI version"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлена возможность подключать библиотеки по одной в версии для OneScript (например `#Использовать oint/api/telegram`)",
-     "description_en": "Added ability to include libraries individually in OneScript version (e.g. `#Use oint/api/telegram`)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added ability to include libraries individually in OneScript version (e.g. `#Use oint/api/telegram`)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлены ошибки `MissedImport` при отладке OneScript",
-     "description_en": "Fixed `MissedImport` errors when debugging OneScript",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed `MissedImport` errors when debugging OneScript"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлены множественные опечатки в описании и именах функций",
-     "description_en": "Fixed multiple typos in descriptions and function names",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed multiple typos in descriptions and function names"
     }
    ],
    "artifacts": [
@@ -2161,56 +2098,48 @@
    "summary_ru": "Методы работы с gRPC",
    "summary_en": "Methods of working with gRPC",
    "cover": "media/Covers/GRPC.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/GRPC.png",
    "changes": [
     {
      "lib": "GRPC",
      "icon": "media/GRPC.png",
      "description_ru": "Основные методы (7 функций)",
-     "description_en": "Common methods (7 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GRPC.png"
+     "description_en": "Common methods (7 functions)"
     },
     {
      "lib": "GRPC",
      "icon": "media/GRPC.png",
      "description_ru": "Функции интроспекции (3 функций)",
-     "description_en": "Introspection functions (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GRPC.png"
+     "description_en": "Introspection functions (3 functions)"
     },
     {
      "lib": "GRPC",
      "icon": "media/GRPC.png",
      "description_ru": "Функции стриминга (10 функций)",
-     "description_en": "Streaming functions (10 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GRPC.png"
+     "description_en": "Streaming functions (10 functions)"
     },
     {
      "lib": "VK",
      "icon": "media/VK.png",
      "description_ru": "Улучшен механизм загрузки фото на сервер",
-     "description_en": "Improved photo upload mechanism",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/VK.png"
+     "description_en": "Improved photo upload mechanism"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Добавлена возможность установки максимального числа переадресаций и попыток при коде `5**`",
-     "description_en": "Added support for setting maximum number of redirects and retries for `5**` status codes",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Added support for setting maximum number of redirects and retries for `5**` status codes"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Добавлен полный сброс объекта обработки при повторной инициализации",
-     "description_en": "Complete handler object reset implemented for reinitialization",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Complete handler object reset implemented for reinitialization"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Оптимизирована передача двоичных данных во внешние компоненты во всех библиотеках СУБД",
-     "description_en": "Optimized binary data transfer to the AddIn across all DBMS libraries",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Optimized binary data transfer to the AddIn across all DBMS libraries"
     }
    ],
    "artifacts": [
@@ -2413,119 +2342,102 @@
    "summary_ru": "Методы работы с MongoDB",
    "summary_en": "Methods of working with MongoDB",
    "cover": "media/Covers/MongoDB.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/MongoDB.png",
    "changes": [
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Основные методы (5 функций)",
-     "description_en": "Common methods (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "Common methods (5 functions)"
     },
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Методы работы с базами данных (3 функции)",
-     "description_en": "Database management methods (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "Database management methods (3 functions)"
     },
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Методы работы с коллекциями (3 функции)",
-     "description_en": "Collection manipulation methods (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "Collection manipulation methods (3 functions)"
     },
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Методы работы с документами (8 функций)",
-     "description_en": "Document processing methods (8 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "Document processing methods (8 functions)"
     },
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Методы управления пользователями (5 функций)",
-     "description_en": "User management methods (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "User management methods (5 functions)"
     },
     {
      "lib": "MongoDB",
      "icon": "media/MongoDB.png",
      "description_ru": "Методы управления ролями (7 функций)",
-     "description_en": "Role management methods (7 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MongoDB.png"
+     "description_en": "Role management methods (7 functions)"
     },
     {
      "lib": "YandexDisk",
      "icon": "media/YandexDisk.png",
      "description_ru": "Добавлены методы загрузки файлов по частям и полчения ссылки для ручной загрузки",
-     "description_en": "Added methods for partial file upload and generating links for manual upload",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/YandexDisk.png"
+     "description_en": "Added methods for partial file upload and generating links for manual upload"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Добавлены методы порционной отправки тела в нескольких запросах через `Content-Range`",
-     "description_en": "Added methods for partial data sending across multiple requests using `Content-Range`",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Added methods for partial data sending across multiple requests using `Content-Range`"
     },
     {
      "lib": "TCP",
      "icon": "media/TCP.png",
      "description_ru": "Добавлена возможность подключения через прокси-сервер",
-     "description_en": "Added ability to connect via proxy server",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/TCP.png"
+     "description_en": "Added ability to connect via proxy server"
     },
     {
      "lib": "PostgreSQL",
      "icon": "media/PostgreSQL.png",
      "description_ru": "Добавлена поддержка типа NUMERIC/DECIMAL #79",
-     "description_en": "Added support for NUMERIC/DECIMAL data type #79",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/PostgreSQL.png"
+     "description_en": "Added support for NUMERIC/DECIMAL data type #79"
     },
     {
      "lib": "MSSQL",
      "icon": "media/MSSQL.png",
      "description_ru": "Добавлена обертка пароля в двойные кавычки при формировании строки подключения #81 @zeratulayuris",
-     "description_en": "Added password wrapping in double quotes when forming connection strings #81 @zeratulayuris",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MSSQL.png"
+     "description_en": "Added password wrapping in double quotes when forming connection strings #81 @zeratulayuris"
     },
     {
      "lib": "Telegram",
      "icon": "media/Telegram.png",
      "description_ru": "Исправлена и унифицирована обработка раскодирования строки и замены спец. символов для всех видов сообщений",
-     "description_en": "Fixed and unified string decoding and special character replacement processing for all message types",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Telegram.png"
+     "description_en": "Fixed and unified string decoding and special character replacement processing for all message types"
     },
     {
      "lib": "Telegram",
      "icon": "media/Telegram.png",
      "description_ru": "Исправлена синтаксическая ошибка при установке ID чата #82",
-     "description_en": "Fixed syntax error when setting chat ID #82",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Telegram.png"
+     "description_en": "Fixed syntax error when setting chat ID #82"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Методы авторизации продублированны в основные модули сервисов Yandex и Google",
-     "description_en": "Authorization methods have been duplicated into the main service modules for Yandex and Google",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Authorization methods have been duplicated into the main service modules for Yandex and Google"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлены сокращенные варианты опций для команд в консольном приложении",
-     "description_en": "Added shortened option variants for console application commands",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added shortened option variants for console application commands"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлена обработка параметров `Неопределено` в библиотеки СУБД",
-     "description_en": "Added handling of `Undefined` parameters in DBMS libraries",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added handling of `Undefined` parameters in DBMS libraries"
     }
    ],
    "artifacts": [
@@ -2728,63 +2640,54 @@
    "summary_ru": "Методы работы с мессенджером Max через GreenAPI",
    "summary_en": "Methods of working with Max messenger via GreenAPI",
    "cover": "media/Covers/GreenMax.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/GreenMax.png",
    "changes": [
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Управление аккаунтом (16 функций)",
-     "description_en": "Account management (16 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Account management (16 functions)"
     },
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Работа с группами (11 функций)",
-     "description_en": "Group management (11 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Group management (11 functions)"
     },
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Отправка сообщений (3 функции)",
-     "description_en": "Message sending (3 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Message sending (3 functions)"
     },
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Работа с уведомлениями (2 функции)",
-     "description_en": "Notification handling (2 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Notification handling (2 functions)"
     },
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Работа с историей сообщений (5 функций)",
-     "description_en": "Message history management (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Message history management (5 functions)"
     },
     {
      "lib": "GreenMax",
      "icon": "media/GreenMax.png",
      "description_ru": "Работа с очередями (5 функций)",
-     "description_en": "Queue management (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/GreenMax.png"
+     "description_en": "Queue management (5 functions)"
     },
     {
      "lib": "Ozon",
      "icon": "media/Ozon.png",
      "description_ru": "Удален модуль для работы Ozon",
-     "description_en": "The Ozon module has been removed",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Ozon.png"
+     "description_en": "The Ozon module has been removed"
     },
     {
      "lib": "S3",
      "icon": "media/S3.png",
      "description_ru": "Добавлена обработка `gzip` при получении сжатых XML данных",
-     "description_en": "Added `gzip` processing for receiving compressed XML data",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/S3.png"
+     "description_en": "Added `gzip` processing for receiving compressed XML data"
     }
    ],
    "artifacts": [
@@ -2987,42 +2890,36 @@
    "summary_ru": "Методы работы с SSH и SFTP",
    "summary_en": "Methods of working with SSH and SFTP",
    "cover": "media/Covers/SSH.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/SSH.png",
    "changes": [
     {
      "lib": "SSH",
      "icon": "media/SSH.png",
      "description_ru": "Основные методы SSH (9 функций)",
-     "description_en": "SSH common methods (9 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SSH.png"
+     "description_en": "SSH common methods (9 functions)"
     },
     {
      "lib": "SFTP",
      "icon": "media/SFTP.png",
      "description_ru": "Основные методы SFTP (9 функций)",
-     "description_en": "SFTP common methods (9 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SFTP.png"
+     "description_en": "SFTP common methods (9 functions)"
     },
     {
      "lib": "SFTP",
      "icon": "media/SFTP.png",
      "description_ru": "Методы работы с директориями (4 функции)",
-     "description_en": "Directory management methods (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SFTP.png"
+     "description_en": "Directory management methods (4 functions)"
     },
     {
      "lib": "SFTP",
      "icon": "media/SFTP.png",
      "description_ru": "Методы работы с файлами (5 функции)",
-     "description_en": "File management methods (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/SFTP.png"
+     "description_en": "File management methods (5 functions)"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлен баг с режимом `НеИзолированно` при подключении компонент",
-     "description_en": "Resolved an issue with AddIn connection in `NotIsolated` mode",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Resolved an issue with AddIn connection in `NotIsolated` mode"
     }
    ],
    "artifacts": [
@@ -3225,63 +3122,54 @@
    "summary_ru": "Методы работы с протоколом FTP",
    "summary_en": "Methods of working with FTP protocol",
    "cover": "media/Covers/FTP.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/FTP.png",
    "changes": [
     {
      "lib": "FTP",
      "icon": "media/FTP.png",
      "description_ru": "Основные методы FTP(s) (14 функций)",
-     "description_en": "FTP(s) common methods (14 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/FTP.png"
+     "description_en": "FTP(s) common methods (14 functions)"
     },
     {
      "lib": "FTP",
      "icon": "media/FTP.png",
      "description_ru": "Методы работы с директориями (6 функции)",
-     "description_en": "Directory management methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/FTP.png"
+     "description_en": "Directory management methods (6 functions)"
     },
     {
      "lib": "FTP",
      "icon": "media/FTP.png",
      "description_ru": "Методы работы с файлами (4 функции)",
-     "description_en": "File management methods (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/FTP.png"
+     "description_en": "File management methods (4 functions)"
     },
     {
      "lib": "Telegram",
      "icon": "media/Telegram.png",
      "description_ru": "Исправлен неоднозначный перевод \"Тема\" как \"Thread\" и \"Topic\" в английской версии функций форума. Теперь используется только \"Topic\"",
-     "description_en": "Ambiguous usage of \"Thread\" and \"Topic\" in forum methods has been corrected; Only \"Topic\" is now used",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Telegram.png"
+     "description_en": "Ambiguous usage of \"Thread\" and \"Topic\" in forum methods has been corrected; Only \"Topic\" is now used"
     },
     {
      "lib": "S3",
      "icon": "media/S3.png",
      "description_ru": "Добавлена возможность использования path-style URL в функциях работы с объектами  #73",
-     "description_en": "Added support for using path-style URL in object processing functions #73",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/S3.png"
+     "description_en": "Added support for using path-style URL in object processing functions #73"
     },
     {
      "lib": "VK",
      "icon": "media/VK.png",
      "description_ru": "Обновлен метод `СоздатьОпрос` в связи с [изменениями API](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed)",
-     "description_en": "The `CreatePoll` method has been updated in accordance with [API changes](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/VK.png"
+     "description_en": "The `CreatePoll` method has been updated in accordance with [API changes](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed)"
     },
     {
      "lib": "VKTeams",
      "icon": "media/VKTeams.png",
      "description_ru": "Добавлен параметр `ТипКонтента` для функции `ОтправитьФайл` #74 @yuschkof",
-     "description_en": "Added the `ContentType` parameter to the `SendFile` function #74 @yuschkof",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/VKTeams.png"
+     "description_en": "Added the `ContentType` parameter to the `SendFile` function #74 @yuschkof"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Исправлен баг аварийного завершения при передаче больших данных в/из ВК на Linux #72",
-     "description_en": "Fixed a bug causing abrupt termination when transferring large amounts of data to/from AddIn on Linux #72",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Fixed a bug causing abrupt termination when transferring large amounts of data to/from AddIn on Linux #72"
     }
    ],
    "artifacts": [
@@ -3484,42 +3372,36 @@
    "summary_ru": "Методы работы с MS SQL",
    "summary_en": "Methods of working with MS SQL",
    "cover": "media/Covers/MSSQL.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/MSSQL.png",
    "changes": [
     {
      "lib": "MSSQL",
      "icon": "media/MSSQL.png",
      "description_ru": "Основные методы MSSQL (6 функций)",
-     "description_en": "MSSQL common methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MSSQL.png"
+     "description_en": "MSSQL common methods (6 functions)"
     },
     {
      "lib": "MSSQL",
      "icon": "media/MSSQL.png",
      "description_ru": "Методы ORM (10 функций)",
-     "description_en": "ORM methods (10 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/MSSQL.png"
+     "description_en": "ORM methods (10 functions)"
     },
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Добавлены сокращенные функции формирования сообщений контекста",
-     "description_en": "Added shortened functions for generating context messages",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Added shortened functions for generating context messages"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Проведена оптимизация CLI версии, увеличина скорость выполнения операций",
-     "description_en": "The CLI version has been optimized to increase the speed of operation execution",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "The CLI version has been optimized to increase the speed of operation execution"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлен универсальный обработчик даты в разных форматах для позиционных параметров во все библиотеки СУБД",
-     "description_en": "Added a universal date handler in various formats for positional parameters to all database libraries",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added a universal date handler in various formats for positional parameters to all database libraries"
     }
    ],
    "artifacts": [
@@ -3722,70 +3604,60 @@
    "summary_ru": "Методы работы с OpenAI API",
    "summary_en": "Methods of working with OpenAI API",
    "cover": "media/Covers/OpenAI.png",
-   "coverUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/Covers/OpenAI.png",
    "changes": [
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Методы обработки запросов (6 функций)",
-     "description_en": "Request processing methods (6 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Request processing methods (6 functions)"
     },
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Методы управления ассистентами (4 функции)",
-     "description_en": "Assistant management methods (4 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Assistant management methods (4 functions)"
     },
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Методы работы с файлами (5 функций)",
-     "description_en": "Methods for working with files (5 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Methods for working with files (5 functions)"
     },
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Методы работы с аудио (2 функции)",
-     "description_en": "Methods for working with audio (2 functions)",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Methods for working with audio (2 functions)"
     },
     {
      "lib": "OpenAI",
      "icon": "media/OpenAI.png",
      "description_ru": "Функция получения списка доступных моделей",
-     "description_en": "Function for obtaining a list of available models",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/OpenAI.png"
+     "description_en": "Function for obtaining a list of available models"
     },
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
      "description_ru": "Добавлена функция установки таймаута",
-     "description_en": "Added timeout setting function",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/HTTP.png"
+     "description_en": "Added timeout setting function"
     },
     {
      "lib": "PostgreSQL",
      "icon": "media/PostgreSQL.png",
      "description_ru": "Изменен формат представления даты и времени на ISO 8061-совместимый при получении значений из базы",
-     "description_en": "Changed the date and time format to ISO 8061-compatible for values retrieved from the database",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/PostgreSQL.png"
+     "description_en": "Changed the date and time format to ISO 8061-compatible for values retrieved from the database"
     },
     {
      "lib": "VK",
      "icon": "media/VK.png",
      "description_ru": "Исправлена ошибка получения списка товаров по массиву ID",
-     "description_en": "Fixed a bug in retrieving a list of products by ID array",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/VK.png"
+     "description_en": "Fixed a bug in retrieving a list of products by ID array"
     },
     {
      "lib": "All",
      "icon": "media/logo.png",
      "description_ru": "Добавлены методы создания и удаления колонок существующих таблиц для SQLite, PostgreSQL и MySQL",
-     "description_en": "Added methods for creating and deleting columns in existing tables for SQLite, PostgreSQL, and MySQL",
-     "iconUrl": "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/media/logo.png"
+     "description_en": "Added methods for creating and deleting columns in existing tables for SQLite, PostgreSQL, and MySQL"
     }
    ],
    "artifacts": [

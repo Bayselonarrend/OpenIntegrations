@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e826be3c-3f3f-4bd5-b0d9-6a1159fcab4b">
+  <name>OPI_Text_PanelRowAddin</name>
+  <synonym>
+    <key>en</key>
+    <value>Add-in table row (OPI)</value>
+    <key>ru</key>
+    <value>Component table row (OpenIntegrations)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>
