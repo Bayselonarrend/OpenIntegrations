@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="2c1495a3-333a-4373-af8d-26dcaf4a88b9">
+  <name>OPI_Text_PanelUpdates</name>
+  <synonym>
+    <key>en</key>
+    <value>Panel updates tab (OPI)</value>
+    <key>ru</key>
+    <value>Вкладка обновлений панели (ОПИ)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

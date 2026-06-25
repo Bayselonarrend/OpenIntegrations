@@ -1,0 +1,1 @@
+<tr id="changelog-row-{{rowIndex}}"><td>{{{libCell}}}</td><td>{{{description}}}</td></tr>

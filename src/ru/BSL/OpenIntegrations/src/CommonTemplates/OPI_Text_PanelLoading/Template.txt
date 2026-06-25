@@ -1,0 +1,1 @@
+<div class="opi-loading" id="loading-screen">{{{loadingIcon}}}<p class="opi-loading__title" id="loading-title">Актуализация данных</p><p class="opi-loading__hint" id="loading-hint">Пожалуйста, подождите</p></div>

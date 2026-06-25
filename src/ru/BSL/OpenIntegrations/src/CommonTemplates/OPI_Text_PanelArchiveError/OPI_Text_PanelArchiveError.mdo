@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6f790ffd-dcb4-44dd-b255-6796157887fb">
+  <name>OPI_Text_PanelArchiveError</name>
+  <synonym>
+    <key>en</key>
+    <value>Releases archive error (OPI)</value>
+    <key>ru</key>
+    <value>Ошибка архива релизов (ОПИ)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

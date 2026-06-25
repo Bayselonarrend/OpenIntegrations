@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="9d9d3527-0768-46ef-8420-5c80b2b80b83">
+  <name>OPI_Text_PanelThemeDark</name>
+  <synonym>
+    <key>en</key>
+    <value>Panel dark theme (OPI)</value>
+    <key>ru</key>
+    <value>Тёмная тема панели (ОПИ)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

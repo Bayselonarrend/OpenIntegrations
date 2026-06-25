@@ -1,0 +1,1 @@
+<label data-mirror="{{mirrorId}}" class="opi-mirror-option" id="opi-mirror-{{mirrorId}}-wrap"{{#hidden}} style="display:none"{{/hidden}}><input{{#checked}} checked="checked"{{/checked}} value="{{mirrorId}}" name="opi-mirror" type="radio" class="opi-radio" id="opi-mirror-{{mirrorId}}"/><span id="opi-mirror-{{mirrorId}}-text">{{mirrorLabel}}</span></label>

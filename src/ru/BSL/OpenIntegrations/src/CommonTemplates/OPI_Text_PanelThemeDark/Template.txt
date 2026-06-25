@@ -1,0 +1,25 @@
+.opi-panel.opi-panel--dark {
+  --opi-bg: #1A1A1A;
+  --opi-surface: #1A1A1A;
+  --opi-surface-elevated: #202020;
+  --opi-surface-muted: #262626;
+  --opi-surface-accent: #1e3330;
+  --opi-logo-gradient-start: #243330;
+  --opi-logo-gradient-end: #2a2a2a;
+  --opi-logo-border: rgba(255, 255, 255, 0.1);
+  --opi-border: #404040;
+  --opi-divider: #404040;
+  --opi-divider-strong: #404040;
+  --opi-border-control: #505050;
+  --opi-text: #C7C7C7;
+  --opi-text-strong: #C7C7C7;
+  --opi-text-secondary: #999999;
+  --opi-text-muted: #999999;
+  --opi-text-table-header: #999999;
+  --opi-button-text: #C7C7C7;
+  --opi-accent: #3d9e94;
+  --opi-checkbox-bg: #2a2a2a;
+  --opi-checkbox-hover-bg: #333333;
+  --opi-row-hover: #262626;
+  --opi-shell-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
