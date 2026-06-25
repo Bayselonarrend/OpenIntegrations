@@ -90,7 +90,7 @@ Function ProcessFragment(Val Template, ContextStack, PartialTemplates)
         StartTag = StrFind(Template, "{{", , Position);
 
         If StartTag = 0 Then
-            Result     = Result + Mid(Template, Position);
+            Result  = Result + Mid(Template, Position);
             Break;
         EndIf;
 
@@ -195,7 +195,7 @@ Function FindSectionEnd(Val Template, Val Start, Val SectionName)
         InversionPosition = StrFind(Template, Inversion, , Position);
         ClosingPosition   = StrFind(Template, Closing, , Position);
 
-        If ClosingPosition    = 0
+        If ClosingPosition       = 0
             And (OpeningPosition = 0 And InversionPosition = 0) Then
             Raise StrTemplate("Section closing not found {{/%1}}", SectionName);
         EndIf;
@@ -217,9 +217,9 @@ Function FindSectionEnd(Val Template, Val Start, Val SectionName)
         EndIf;
 
         If TagType = "close" Then
-            Depth     = Depth - 1;
+            Depth  = Depth - 1;
 
-            If Depth      = 0 Then
+            If Depth         = 0 Then
                 Result.Start = ClosingPosition;
                 Result.End   = ClosingPosition + StrLen(Closing) - 1;
                 Break;
@@ -266,7 +266,7 @@ Function ProcessSection(Val Name, Val Inversion, Val Internal, ContextStack, Par
 
     EndIf;
 
-    If TypeOf(Value)  = Type("Structure")
+    If TypeOf(Value)     = Type("Structure")
         Or TypeOf(Value) = Type("Map") Then
 
         ContextStack.Add(Value);
@@ -317,7 +317,7 @@ Function GetValueFromCollection(Val Collection, Val Name)
             Return Collection[Name];
         EndIf;
     ElsIf CollectionType = Type("Map") Then
-        Value               = Collection.Get(Name);
+        Value            = Collection.Get(Name);
         If Value <> Undefined Then
             Return Value;
         EndIf;
@@ -345,7 +345,7 @@ Function ValueIsTrue(Val Value)
         Return Value.Count() > 0;
     EndIf;
 
-    If TypeOf(Value)  = Type("Structure")
+    If TypeOf(Value)     = Type("Structure")
         Or TypeOf(Value) = Type("Map") Then
         Return True;
     EndIf;

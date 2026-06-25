@@ -101,7 +101,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 
         ExpectedComponent = ExpectedComponent - 1;
 
-        If ExpectedComponent       = 0 And ExpectedLoadingCompletion Then
+        If ExpectedComponent          = 0 And ExpectedLoadingCompletion Then
             ExpectedLoadingCompletion = False;
             BuildPanelHTMLOnServer();
         EndIf;
@@ -407,8 +407,8 @@ EndProcedure
 &AtClient
 Function GetSelectedMirrorFromDocument(Document)
 
-    If Document = Undefined Then
-        Document   = Items.HTML.Document;
+    If Document  = Undefined Then
+        Document = Items.HTML.Document;
     EndIf;
 
     If Document = Undefined Then
@@ -476,8 +476,8 @@ EndFunction
 &AtClient
 Function GetSelectedReleaseVersionFromDocument(Document)
 
-    If Document = Undefined Then
-        Document   = Items.HTML.Document;
+    If Document  = Undefined Then
+        Document = Items.HTML.Document;
     EndIf;
 
     If Document = Undefined Then
@@ -672,9 +672,9 @@ Function UploadReleasesArchive()
         If TypeOf(Response) = Type("Structure") Or TypeOf(Response) = Type("Map") Then
 
             If Response["result"] = True Then
-                ResponseData         = Response["data"];
+                ResponseData      = Response["data"];
             Else
-                ResponseData         = Response;
+                ResponseData      = Response;
             EndIf;
 
         EndIf;
@@ -904,7 +904,7 @@ Function ChangeLogTextWithLinksView(Text)
         StartLink = StrFind(Residue, "[");
 
         If StartLink = 0 Then
-            Result      = Result + OPI_HTMLTemplateProcessor.EscapeHTML(Residue);
+            Result   = Result + OPI_HTMLTemplateProcessor.EscapeHTML(Residue);
             Break;
         EndIf;
 
@@ -914,7 +914,7 @@ Function ChangeLogTextWithLinksView(Text)
         EndSignature = StrFind(Residue, "]");
 
         If EndSignature = 0 Then
-            Result         = Result + OPI_HTMLTemplateProcessor.EscapeHTML("[" + Residue);
+            Result      = Result + OPI_HTMLTemplateProcessor.EscapeHTML("[" + Residue);
             Break;
         EndIf;
 
@@ -929,8 +929,8 @@ Function ChangeLogTextWithLinksView(Text)
         Residue = Mid(Residue, 2);
         EndURL  = StrFind(Residue, ")");
 
-        If EndURL = 0 Then
-            Result   = Result + OPI_HTMLTemplateProcessor.EscapeHTML("[" + Signature + "](" + Residue);
+        If EndURL  = 0 Then
+            Result = Result + OPI_HTMLTemplateProcessor.EscapeHTML("[" + Signature + "](" + Residue);
             Break;
         EndIf;
 
@@ -961,9 +961,9 @@ Function ChangeLogDescriptionView(Description)
     For Index = 0 To Parts.UBound() Do
 
         If Index % 2 = 1 Then
-            Result      = Result + "<code>" + OPI_HTMLTemplateProcessor.EscapeHTML(Parts[Index]) + "</code>";
+            Result   = Result + "<code>" + OPI_HTMLTemplateProcessor.EscapeHTML(Parts[Index]) + "</code>";
         Else
-            Result      = Result + ChangeLogTextWithLinksView(Parts[Index]);
+            Result   = Result + ChangeLogTextWithLinksView(Parts[Index]);
         EndIf;
 
     EndDo;
@@ -1236,10 +1236,10 @@ Procedure SetHTMLNodeText(Node, Val Text)
     EndIf;
 
     Try
-        Node.textContent = String(Text);
+        Node.textContent   = String(Text);
     Except
         Try
-            Node.innerText  = String(Text);
+            Node.innerText = String(Text);
         Except
             Return;
         EndTry;
