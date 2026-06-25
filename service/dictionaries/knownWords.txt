@@ -516,3 +516,10 @@ Lzma
 Ppmd
 RISCV
 предобработки
+sourcecraft
+Селект
+Ченджлога
+noopener
+noreferrer
+linecap
+linejoin
