@@ -220,6 +220,10 @@ fn parse_compression_method(value: &JanxValue) -> Result<CompressionMethod, Stri
     let method = String::from_janx(value)
         .ok_or_else(|| "Compression method must be a string".to_string())?;
 
+    if method.is_empty() {
+        return Ok(CompressionMethod::default());
+    }
+
     match method.to_ascii_uppercase().as_str() {
         "LZMA2" => Ok(CompressionMethod::Lzma2),
         "LZMA" => Ok(CompressionMethod::Lzma),
@@ -233,6 +237,10 @@ fn parse_compression_method(value: &JanxValue) -> Result<CompressionMethod, Stri
 fn parse_filter(value: &JanxValue) -> Result<FilterMethod, String> {
     let filter = String::from_janx(value)
         .ok_or_else(|| "Filter name must be a string".to_string())?;
+
+    if filter.is_empty() {
+        return Err("Filter name must not be empty".to_string());
+    }
 
     match filter.to_ascii_uppercase().as_str() {
         "BCJ_X86" | "BCJ X86" | "X86" => Ok(FilterMethod::BcjX86),
@@ -249,10 +257,18 @@ fn parse_filter(value: &JanxValue) -> Result<FilterMethod, String> {
 }
 
 fn parse_filters(value: &JanxValue) -> Result<Vec<FilterMethod>, String> {
+    if value.is_empty() {
+        return Ok(Vec::new());
+    }
+
     let items = Vec::<JanxValue>::from_janx(value)
         .ok_or_else(|| "'filters' must be an array".to_string())?;
 
-    items.iter().map(parse_filter).collect()
+    items
+        .iter()
+        .filter(|item| !item.is_empty())
+        .map(parse_filter)
+        .collect()
 }
 
 fn parse_u32(value: &JanxValue) -> Option<u32> {
