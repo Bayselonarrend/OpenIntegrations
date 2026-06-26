@@ -92,6 +92,10 @@ Result = OPI_AdvancedCall.CallWithSettings("OPI_MSSQL"
 
 If switching the mode does not help, describe the issue in [Issues](https://github.com/Bayselonarrend/OpenIntegrations/issues) or ask for help in the [project Telegram chat](https://t.me/openintegrations).
 
+:::tip
+The `NotIsolated` mode is set by default for all 1C versions on Linux and for all OS starting from version 8.5
+:::
+
 ## FAQ
 
 Miscellaneous questions about how external components work or are built — not specific to day-to-day OPI usage.
