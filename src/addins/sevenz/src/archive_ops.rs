@@ -1,11 +1,19 @@
+use std::collections::{BTreeMap, HashSet};
 use std::fs::{self, File};
 use std::io::{Cursor, Read, Seek, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use common_core::JanxValue;
-use sevenz_rust2::{decompress, decompress_with_password, ArchiveEntry, ArchiveReader, ArchiveWriter};
+use sevenz_rust2::{
+    decompress, decompress_with_extract_fn, decompress_with_extract_fn_and_password,
+    decompress_with_password, default_entry_extract_fn, ArchiveEntry, ArchiveReader,
+    ArchiveWriter,
+};
 
-use crate::archive_description::{join_archive_path, ArchiveDescription, ArchiveNode};
+use crate::archive_description::{
+    join_archive_path, normalize_archive_path, parse_additions_map, parse_path_list,
+    ArchiveDescription, ArchiveNode,
+};
 use crate::archive_settings::PackSettings;
 
 pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
@@ -218,4 +226,252 @@ fn push_node<W: Write + Seek>(
             Ok(())
         }
     }
+}
+
+pub fn unpack_partial_file_to_path(
+    archive_path: &str,
+    destination_path: &str,
+    paths: &JanxValue,
+    password: &str,
+) -> Result<(), String> {
+    if !Path::new(archive_path).exists() {
+        return Err(format!("Archive not found: {}", archive_path));
+    }
+
+    let selected = parse_path_list(paths)?;
+    if selected.is_empty() {
+        return Err("Paths list must not be empty".to_string());
+    }
+
+    let file = File::open(archive_path)
+        .map_err(|error| format!("Failed to open archive '{}': {}", archive_path, error))?;
+
+    unpack_reader_to_path(file, destination_path, &selected, password)
+}
+
+pub fn unpack_partial_buffer_to_path(
+    archive_data: &[u8],
+    destination_path: &str,
+    paths: &JanxValue,
+    password: &str,
+) -> Result<(), String> {
+    if archive_data.is_empty() {
+        return Err("Archive data is empty".to_string());
+    }
+
+    let selected = parse_path_list(paths)?;
+    if selected.is_empty() {
+        return Err("Paths list must not be empty".to_string());
+    }
+
+    unpack_reader_to_path(
+        Cursor::new(archive_data.to_vec()),
+        destination_path,
+        &selected,
+        password,
+    )
+}
+
+pub fn unpack_partial_file_to_description(
+    archive_path: &str,
+    paths: &JanxValue,
+    password: &str,
+) -> Result<JanxValue, String> {
+    if !Path::new(archive_path).exists() {
+        return Err(format!("Archive not found: {}", archive_path));
+    }
+
+    let selected = parse_path_list(paths)?;
+    if selected.is_empty() {
+        return Err("Paths list must not be empty".to_string());
+    }
+
+    let mut reader = ArchiveReader::open(archive_path, password.into())
+        .map_err(|error| error.to_string())?;
+
+    unpack_reader_to_partial_description(&mut reader, &selected)
+}
+
+pub fn unpack_partial_buffer_to_description(
+    archive_data: &[u8],
+    paths: &JanxValue,
+    password: &str,
+) -> Result<JanxValue, String> {
+    if archive_data.is_empty() {
+        return Err("Archive data is empty".to_string());
+    }
+
+    let selected = parse_path_list(paths)?;
+    if selected.is_empty() {
+        return Err("Paths list must not be empty".to_string());
+    }
+
+    let mut reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
+        .map_err(|error| error.to_string())?;
+
+    unpack_reader_to_partial_description(&mut reader, &selected)
+}
+
+pub fn modify_file_inplace(
+    archive_path: &str,
+    additions: &JanxValue,
+    deletions: &JanxValue,
+    settings: &PackSettings,
+    password: &str,
+) -> Result<(), String> {
+    if !Path::new(archive_path).exists() {
+        return Err(format!("Archive not found: {}", archive_path));
+    }
+
+    let archive_data = fs::read(archive_path)
+        .map_err(|error| format!("Failed to read archive '{}': {}", archive_path, error))?;
+    let modified = modify_archive_buffer(&archive_data, additions, deletions, settings, password)?;
+    write_archive_bytes(archive_path, &modified)
+}
+
+pub fn modify_buffer(
+    archive_data: &[u8],
+    additions: &JanxValue,
+    deletions: &JanxValue,
+    settings: &PackSettings,
+    password: &str,
+) -> Result<Vec<u8>, String> {
+    if archive_data.is_empty() {
+        return Err("Archive data is empty".to_string());
+    }
+
+    modify_archive_buffer(archive_data, additions, deletions, settings, password)
+}
+
+fn modify_archive_buffer(
+    archive_data: &[u8],
+    additions: &JanxValue,
+    deletions: &JanxValue,
+    settings: &PackSettings,
+    password: &str,
+) -> Result<Vec<u8>, String> {
+    let description_value = unpack_buffer_to_description(archive_data, password)?;
+    let description = ArchiveDescription::from_janx(&description_value)?;
+    let mut file_map = description.flatten_to_file_map()?;
+
+    for path in parse_path_list(deletions)? {
+        file_map.remove(&path);
+    }
+
+    for (path, data) in parse_additions_map(additions)? {
+        file_map.insert(path, data);
+    }
+
+    if file_map.is_empty() {
+        return Err("Archive must contain at least one file after modification".to_string());
+    }
+
+    let new_description = ArchiveDescription::from_file_map(&file_map);
+    pack_description_to_buffer(&new_description, settings)
+}
+
+fn write_archive_bytes(archive_path: &str, data: &[u8]) -> Result<(), String> {
+    if let Some(parent) = Path::new(archive_path).parent() {
+        if !parent.as_os_str().is_empty() {
+            fs::create_dir_all(parent)
+                .map_err(|error| format!("Failed to create archive directory: {}", error))?;
+        }
+    }
+
+    let temp_path = format!("{}.tmp", archive_path);
+    fs::write(&temp_path, data).map_err(|error| {
+        format!(
+            "Failed to write temporary archive '{}': {}",
+            temp_path, error
+        )
+    })?;
+    fs::rename(&temp_path, archive_path).map_err(|error| {
+        format!(
+            "Failed to replace archive '{}': {}",
+            archive_path, error
+        )
+    })?;
+
+    Ok(())
+}
+
+fn unpack_reader_to_path<R: Read + Seek>(
+    reader: R,
+    destination_path: &str,
+    selected_paths: &[String],
+    password: &str,
+) -> Result<(), String> {
+    fs::create_dir_all(destination_path)
+        .map_err(|error| format!("Failed to create destination directory: {}", error))?;
+
+    let selected = build_selected_paths_set(selected_paths);
+
+    let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
+        let entry_path = normalize_archive_path(entry.name());
+        if selected.contains(&entry_path) {
+            default_entry_extract_fn(entry, reader, dest)
+        } else {
+            Ok(false)
+        }
+    };
+
+    if password.is_empty() {
+        decompress_with_extract_fn(reader, destination_path, extract)
+            .map_err(|error| error.to_string())
+    } else {
+        decompress_with_extract_fn_and_password(
+            reader,
+            destination_path,
+            password.into(),
+            extract,
+        )
+        .map_err(|error| error.to_string())
+    }
+}
+
+fn unpack_reader_to_partial_description<R: Read + Seek>(
+    reader: &mut ArchiveReader<R>,
+    selected_paths: &[String],
+) -> Result<JanxValue, String> {
+    let resolved = resolve_archive_entry_names(reader, selected_paths)?;
+    let mut collected = Vec::with_capacity(resolved.len());
+
+    for name in resolved {
+        let data = reader
+            .read_file(&name)
+            .map_err(|error| error.to_string())?;
+        collected.push((normalize_archive_path(&name), false, Some(data)));
+    }
+
+    Ok(ArchiveDescription::from_flat_entries(&collected).to_janx())
+}
+
+fn build_selected_paths_set(selected_paths: &[String]) -> HashSet<String> {
+    selected_paths
+        .iter()
+        .map(|path| normalize_archive_path(path))
+        .collect()
+}
+
+fn resolve_archive_entry_names<R: Read + Seek>(
+    reader: &ArchiveReader<R>,
+    selected_paths: &[String],
+) -> Result<Vec<String>, String> {
+    let mut name_map = BTreeMap::new();
+
+    for entry in &reader.archive().files {
+        if !entry.is_directory() {
+            name_map.insert(normalize_archive_path(entry.name()), entry.name().to_string());
+        }
+    }
+
+    selected_paths
+        .iter()
+        .map(|path| {
+            let normalized = normalize_archive_path(path);
+            name_map.get(&normalized).cloned().ok_or_else(|| {
+                format!("Archive entry not found: {}", path)
+            })
+        })
+        .collect()
 }

@@ -26,6 +26,12 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListToDescriptionFromFile"),
     name!("GetMetadataFromBuffer"),
     name!("GetMetadataFromFile"),
+    name!("UnpackPartialToFileFromFile"),
+    name!("UnpackPartialToFileFromBuffer"),
+    name!("UnpackPartialToDescriptionFromFile"),
+    name!("UnpackPartialToDescriptionFromBuffer"),
+    name!("ModifyFromFile"),
+    name!("ModifyFromBuffer"),
     name!("SetLogger"),
     name!("GetLogs"),
     name!("Version"),
@@ -47,9 +53,15 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 2,
         10 => 2,
         11 => 2,
-        12 => 1,
-        13 => 1,
-        14 => 0,
+        12 => 4,
+        13 => 4,
+        14 => 3,
+        15 => 3,
+        16 => 5,
+        17 => 5,
+        18 => 1,
+        19 => 1,
+        20 => 0,
         _ => 0,
     }
 }
@@ -151,14 +163,86 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             box_janx_result(obj.get_metadata_from_file(&archive_path, &password))
         }
         12 => {
+            let archive_path = params[0].get_string().unwrap_or_default();
+            let destination_path = params[1].get_string().unwrap_or_default();
+            let paths = JanxValue::from_variant(&params[2]);
+            let password = params[3].get_string().unwrap_or_default();
+            Box::new(obj.unpack_partial_to_file_from_file(
+                &archive_path,
+                &destination_path,
+                &paths,
+                &password,
+            ))
+        }
+        13 => {
+            let archive_data = params[0].get_blob().unwrap_or_default().to_vec();
+            let destination_path = params[1].get_string().unwrap_or_default();
+            let paths = JanxValue::from_variant(&params[2]);
+            let password = params[3].get_string().unwrap_or_default();
+            Box::new(obj.unpack_partial_to_file_from_buffer(
+                &archive_data,
+                &destination_path,
+                &paths,
+                &password,
+            ))
+        }
+        14 => {
+            let archive_path = params[0].get_string().unwrap_or_default();
+            let paths = JanxValue::from_variant(&params[1]);
+            let password = params[2].get_string().unwrap_or_default();
+            box_janx_result(obj.unpack_partial_to_description_from_file(
+                &archive_path,
+                &paths,
+                &password,
+            ))
+        }
+        15 => {
+            let archive_data = params[0].get_blob().unwrap_or_default().to_vec();
+            let paths = JanxValue::from_variant(&params[1]);
+            let password = params[2].get_string().unwrap_or_default();
+            box_janx_result(obj.unpack_partial_to_description_from_buffer(
+                &archive_data,
+                &paths,
+                &password,
+            ))
+        }
+        16 => {
+            let archive_path = params[0].get_string().unwrap_or_default();
+            let additions = JanxValue::from_variant(&params[1]);
+            let deletions = JanxValue::from_variant(&params[2]);
+            let settings = JanxValue::from_variant(&params[3]);
+            let password = params[4].get_string().unwrap_or_default();
+            Box::new(obj.modify_from_file(
+                &archive_path,
+                &additions,
+                &deletions,
+                &settings,
+                &password,
+            ))
+        }
+        17 => {
+            let archive_data = params[0].get_blob().unwrap_or_default().to_vec();
+            let additions = JanxValue::from_variant(&params[1]);
+            let deletions = JanxValue::from_variant(&params[2]);
+            let settings = JanxValue::from_variant(&params[3]);
+            let password = params[4].get_string().unwrap_or_default();
+            box_blob_result(obj.modify_from_buffer(
+                &archive_data,
+                &additions,
+                &deletions,
+                &settings,
+                &password,
+            ))
+        }
+        18 => {
             let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
-        13 => {
+        19 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        14 => Box::new(version()),
+        20 => Box::new(version()),
         _ => Box::new(false),
     }
 }

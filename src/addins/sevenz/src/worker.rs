@@ -78,6 +78,48 @@ pub enum WorkerCommand {
         password: String,
         response: Sender<Result<JanxValue, String>>,
     },
+    UnpackPartialToFileFromFile {
+        archive_path: String,
+        destination_path: String,
+        paths: JanxValue,
+        password: String,
+        response: Sender<JanxValue>,
+    },
+    UnpackPartialToFileFromBuffer {
+        archive_data: Vec<u8>,
+        destination_path: String,
+        paths: JanxValue,
+        password: String,
+        response: Sender<JanxValue>,
+    },
+    UnpackPartialToDescriptionFromFile {
+        archive_path: String,
+        paths: JanxValue,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    UnpackPartialToDescriptionFromBuffer {
+        archive_data: Vec<u8>,
+        paths: JanxValue,
+        password: String,
+        response: Sender<Result<JanxValue, String>>,
+    },
+    ModifyFromFile {
+        archive_path: String,
+        additions: JanxValue,
+        deletions: JanxValue,
+        settings: JanxValue,
+        password: String,
+        response: Sender<JanxValue>,
+    },
+    ModifyFromBuffer {
+        archive_data: Vec<u8>,
+        additions: JanxValue,
+        deletions: JanxValue,
+        settings: JanxValue,
+        password: String,
+        response: Sender<Result<Vec<u8>, String>>,
+    },
     SetLogger {
         logger: Arc<Logger>,
         response: Sender<Result<(), String>>,
@@ -257,6 +299,105 @@ impl Session {
         self.log(&format!("GetMetadataFromFile {}", archive_path));
         archive_info::metadata_from_file(archive_path, password)
     }
+
+    fn unpack_partial_to_file_from_file(
+        &self,
+        archive_path: &str,
+        destination_path: &str,
+        paths: &JanxValue,
+        password: &str,
+    ) -> JanxValue {
+        self.log(&format!(
+            "UnpackPartialToFileFromFile {} -> {}",
+            archive_path, destination_path
+        ));
+        match archive_ops::unpack_partial_file_to_path(
+            archive_path,
+            destination_path,
+            paths,
+            password,
+        ) {
+            Ok(()) => janx_success(None, None),
+            Err(error) => janx_error(error),
+        }
+    }
+
+    fn unpack_partial_to_file_from_buffer(
+        &self,
+        archive_data: &[u8],
+        destination_path: &str,
+        paths: &JanxValue,
+        password: &str,
+    ) -> JanxValue {
+        self.log(&format!("UnpackPartialToFileFromBuffer -> {}", destination_path));
+        match archive_ops::unpack_partial_buffer_to_path(
+            archive_data,
+            destination_path,
+            paths,
+            password,
+        ) {
+            Ok(()) => janx_success(None, None),
+            Err(error) => janx_error(error),
+        }
+    }
+
+    fn unpack_partial_to_description_from_file(
+        &self,
+        archive_path: &str,
+        paths: &JanxValue,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log(&format!("UnpackPartialToDescriptionFromFile {}", archive_path));
+        archive_ops::unpack_partial_file_to_description(archive_path, paths, password)
+    }
+
+    fn unpack_partial_to_description_from_buffer(
+        &self,
+        archive_data: &[u8],
+        paths: &JanxValue,
+        password: &str,
+    ) -> Result<JanxValue, String> {
+        self.log("UnpackPartialToDescriptionFromBuffer");
+        archive_ops::unpack_partial_buffer_to_description(archive_data, paths, password)
+    }
+
+    fn modify_from_file(
+        &self,
+        archive_path: &str,
+        additions: &JanxValue,
+        deletions: &JanxValue,
+        settings: &JanxValue,
+        password: &str,
+    ) -> JanxValue {
+        self.log(&format!("ModifyFromFile {}", archive_path));
+        let settings = match PackSettings::from_janx(settings) {
+            Ok(settings) => settings,
+            Err(error) => return janx_error(error),
+        };
+        match archive_ops::modify_file_inplace(
+            archive_path,
+            additions,
+            deletions,
+            &settings,
+            password,
+        ) {
+            Ok(()) => janx_success(None, None),
+            Err(error) => janx_error(error),
+        }
+    }
+
+    fn modify_from_buffer(
+        &self,
+        archive_data: &[u8],
+        additions: &JanxValue,
+        deletions: &JanxValue,
+        settings: &JanxValue,
+        password: &str,
+    ) -> Result<Vec<u8>, String> {
+        self.log("ModifyFromBuffer");
+        let settings = PackSettings::from_janx(settings)?;
+        archive_ops::modify_buffer(archive_data, additions, deletions, &settings, password)
+    }
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
@@ -379,6 +520,96 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                     response,
                 } => {
                     let result = session.get_metadata_from_file(&archive_path, &password);
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackPartialToFileFromFile {
+                    archive_path,
+                    destination_path,
+                    paths,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_partial_to_file_from_file(
+                        &archive_path,
+                        &destination_path,
+                        &paths,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackPartialToFileFromBuffer {
+                    archive_data,
+                    destination_path,
+                    paths,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_partial_to_file_from_buffer(
+                        &archive_data,
+                        &destination_path,
+                        &paths,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackPartialToDescriptionFromFile {
+                    archive_path,
+                    paths,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_partial_to_description_from_file(
+                        &archive_path,
+                        &paths,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::UnpackPartialToDescriptionFromBuffer {
+                    archive_data,
+                    paths,
+                    password,
+                    response,
+                } => {
+                    let result = session.unpack_partial_to_description_from_buffer(
+                        &archive_data,
+                        &paths,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::ModifyFromFile {
+                    archive_path,
+                    additions,
+                    deletions,
+                    settings,
+                    password,
+                    response,
+                } => {
+                    let result = session.modify_from_file(
+                        &archive_path,
+                        &additions,
+                        &deletions,
+                        &settings,
+                        &password,
+                    );
+                    let _ = response.send(result);
+                }
+                WorkerCommand::ModifyFromBuffer {
+                    archive_data,
+                    additions,
+                    deletions,
+                    settings,
+                    password,
+                    response,
+                } => {
+                    let result = session.modify_from_buffer(
+                        &archive_data,
+                        &additions,
+                        &deletions,
+                        &settings,
+                        &password,
+                    );
                     let _ = response.send(result);
                 }
                 WorkerCommand::SetLogger { logger, response } => {
