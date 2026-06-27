@@ -101,7 +101,8 @@
    "canDisableInheritedPermissions": false,
    "canEnableInheritedPermissions": true,
    "canChangeItemDownloadRestriction": true,
-   "canStartApproval": false
+   "canStartApproval": false,
+   "canAccessViaGenAi": true
   },
   "thumbnailVersion": "0",
   "modifiedByMe": true,
@@ -237,7 +238,8 @@
    "canDisableInheritedPermissions": false,
    "canEnableInheritedPermissions": true,
    "canChangeItemDownloadRestriction": true,
-   "canStartApproval": false
+   "canStartApproval": false,
+   "canAccessViaGenAi": true
   },
   "thumbnailVersion": "0",
   "modifiedByMe": true,
@@ -373,7 +375,8 @@
    "canDisableInheritedPermissions": false,
    "canEnableInheritedPermissions": true,
    "canChangeItemDownloadRestriction": true,
-   "canStartApproval": false
+   "canStartApproval": false,
+   "canAccessViaGenAi": false
   },
   "thumbnailVersion": "0",
   "modifiedByMe": true,
@@ -509,7 +512,8 @@
    "canDisableInheritedPermissions": false,
    "canEnableInheritedPermissions": true,
    "canChangeItemDownloadRestriction": true,
-   "canStartApproval": false
+   "canStartApproval": false,
+   "canAccessViaGenAi": false
   },
   "thumbnailVersion": "0",
   "modifiedByMe": true,
@@ -645,7 +649,8 @@
    "canDisableInheritedPermissions": false,
    "canEnableInheritedPermissions": true,
    "canChangeItemDownloadRestriction": true,
-   "canStartApproval": false
+   "canStartApproval": false,
+   "canAccessViaGenAi": true
   },
   "thumbnailVersion": "0",
   "modifiedByMe": true,

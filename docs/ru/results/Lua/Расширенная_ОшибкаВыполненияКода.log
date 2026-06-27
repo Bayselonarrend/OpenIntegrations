@@ -1,4 +1,4 @@
 ﻿{
- "error": "Lua execution error: syntax error: [string \"src\\component\\lua_engine.rs:37:24\"]:1: syntax error near...",
+ "error": "Lua execution error: syntax error: [string \"src\\component\\lua_engine.rs:37:24\"]:1: syntax error near 'error'",
  "result": false
 }

@@ -284,8 +284,8 @@
     "last_name": "Титовец",
     "work_position": null,
     "color": "#df532d",
-    "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99...",
-    "avatar_hr": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99...",
+    "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+    "avatar_hr": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
     "gender": "M",
     "birthday": "",
     "extranet": false,
@@ -313,13 +313,13 @@
   "files": []
  },
  "time": {
-  "start": 1780781197,
-  "finish": 1780781197.554,
-  "duration": 0.553997993469238,
+  "start": 1782582124,
+  "finish": 1782582124.64568,
+  "duration": 0.645678043365478,
   "processing": 0,
-  "date_start": "2026-06-07T00:26:37+03:00",
-  "date_finish": "2026-06-07T00:26:37+03:00",
-  "operating_reset_at": 1780781797,
+  "date_start": "2026-06-27T20:42:04+03:00",
+  "date_finish": "2026-06-27T20:42:04+03:00",
+  "operating_reset_at": 1782582724,
   "operating": 0
  }
 }

@@ -55,6 +55,7 @@
  },
  "capabilities": {
   "canAcceptOwnership": false,
+  "canAccessViaGenAi": true,
   "canAddChildren": true,
   "canAddMyDriveParent": false,
   "canChangeCopyRequiresWriterPermission": false,

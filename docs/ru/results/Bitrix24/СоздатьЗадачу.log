@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "11000",
+   "id": "11738",
    "parentId": null,
    "title": "Новая задача",
    "description": "Новое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-06-07T00:22:40+03:00",
+   "createdDate": "2026-06-27T20:38:05+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2026-06-07T00:22:40+03:00",
+   "changedDate": "2026-06-27T20:38:05+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-06-07T00:22:40+03:00",
+   "activityDate": "2026-06-27T20:38:05+03:00",
    "dateStart": null,
-   "deadline": "2026-06-08T00:22:00+03:00",
+   "deadline": "2026-06-28T20:38:00+03:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{6edb844f-4e6d-49e4-80be-1a0d457c53ba}",
+   "guid": "{a09a0e9a-1bf4-4c96-82e9-8da5e21443c5}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-06-07T00:22:40+03:00",
+   "statusChangedDate": "2026-06-27T20:38:05+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -68,14 +68,14 @@
     "id": "1",
     "name": "Антон Титовец",
     "link": "/company/personal/user/1/",
-    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
     "workPosition": null
    },
    "responsible": {
     "id": "1",
     "name": "Антон Титовец",
     "link": "/company/personal/user/1/",
-    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
     "workPosition": null
    },
    "accomplicesData": [],
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1780780959,
-  "finish": 1780780960.15629,
-  "duration": 1.15628910064697,
-  "processing": 1,
-  "date_start": "2026-06-07T00:22:39+03:00",
-  "date_finish": "2026-06-07T00:22:40+03:00",
-  "operating_reset_at": 1780781559,
-  "operating": 0.164432048797607
+  "start": 1782581885,
+  "finish": 1782581885.25447,
+  "duration": 0.25446891784668,
+  "processing": 0,
+  "date_start": "2026-06-27T20:38:05+03:00",
+  "date_finish": "2026-06-27T20:38:05+03:00",
+  "operating_reset_at": 1782582485,
+  "operating": 0.197472095489502
  }
 }

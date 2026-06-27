@@ -1,23 +1,23 @@
 ﻿{
- "path": "disk:/0ab8f77d-f064-4698-84c5-2ad66cd78111.png",
+ "path": "disk:/d1ff5c19-914e-4e89-bebb-f43f9bd25755.png",
  "type": "file",
- "name": "0ab8f77d-f064-4698-84c5-2ad66cd78111.png",
- "created": "2026-06-07T00:13:31+03:00",
- "modified": "2026-06-07T00:13:31+03:00",
+ "name": "d1ff5c19-914e-4e89-bebb-f43f9bd25755.png",
+ "created": "2026-06-27T20:41:16+03:00",
+ "modified": "2026-06-27T20:41:16+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "public_key": "***",
- "public_url": "https://yadi.sk/d/XVWYWh4Qd9NutA",
+ "public_url": "https://yadi.sk/d/MtI_kH-pM-bT3A",
  "media_type": "image",
- "resource_id": "1573541518:e9b6e24d3397f549dc9d571d4eeec3566cf2bf566e16cf087b4467dc82b60420",
- "revision": 1780780430636401,
+ "resource_id": "1573541518:9a09387e5a1d232f349d95cb8e2a195eef009bbfc1a97fcc095cba3e645b03f9",
+ "revision": 1782582112582028,
  "comment_ids": {
-  "public_resource": "1573541518:e9b6e24d3397f549dc9d571d4eeec3566cf2bf566e16cf087b4467dc82b60420",
-  "private_resource": "1573541518:e9b6e24d3397f549dc9d571d4eeec3566cf2bf566e16cf087b4467dc82b60420"
+  "public_resource": "1573541518:9a09387e5a1d232f349d95cb8e2a195eef009bbfc1a97fcc095cba3e645b03f9",
+  "private_resource": "1573541518:9a09387e5a1d232f349d95cb8e2a195eef009bbfc1a97fcc095cba3e645b03f9"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/45cac3dbc0a18150e44401121b76d5e281055f62baeb7161b2736917e0479..."
+ "file": "https://downloader.disk.yandex.ru/disk/4754c0310b3d7749815bd8f30e09ec57857b50acd4cc809c5ab3e0ae62b5c4ef/6a4043a0/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=d1ff5c19-914e-4e89-bebb-f43f9bd25755.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=9e0176f87f6565a22f78e0f9b39a4d78"
 }
