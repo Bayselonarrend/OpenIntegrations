@@ -10,8 +10,18 @@
    "name": "Archiving",
    "methods": [
     "ArchiveDirectory",
+    "GetArchiveModificationStructure",
     "GetArchivingSettingsStructure",
-    "UnarchiveDirectory"
+    "ModifyArchive",
+    "UnarchiveDirectory",
+    "UnpackFiles"
+   ]
+  },
+  {
+   "name": "Getting metadata",
+   "methods": [
+    "GetFilesList",
+    "GetMetadata"
    ]
   }
  ],
@@ -23,7 +33,7 @@
    "params": [
     {
      "name": "--src",
-     "types": "String",
+     "types": "String, BinaryData",
      "description": "Path to the directory or data description for packing",
      "default": null,
      "short": "-s"
@@ -52,7 +62,7 @@
    "params": [
     {
      "name": "--src",
-     "types": "String",
+     "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
      "default": null,
      "short": "-s"
@@ -70,6 +80,100 @@
      "description": "archive password, if required",
      "default": "Empty value",
      "short": "-p"
+    }
+   ],
+   "region": "Archiving"
+  },
+  {
+   "name": "UnpackFiles",
+   "id": "UNPACKFILES",
+   "description": "Unpacks selected files from a 7z archive by a list of paths",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--paths",
+     "types": "Array Of String",
+     "description": "Full paths of files inside the archive",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--dest",
+     "types": "String",
+     "description": "Directory path for unpacking. To binary data if not filled",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-w"
+    }
+   ],
+   "region": "Archiving"
+  },
+  {
+   "name": "ModifyArchive",
+   "id": "MODIFYARCHIVE",
+   "description": "Adds, replaces and deletes files in an existing 7z archive",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--additions",
+     "types": "Map Of KeyAndValue",
+     "description": "Key: archive path; value: file path or binary data",
+     "default": "Empty value",
+     "short": "-a"
+    },
+    {
+     "name": "--deletions",
+     "types": "Array Of String",
+     "description": "Paths of files in the archive for deletion",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--settings",
+     "types": "Map Of KeyAndValue",
+     "description": "Modification settings. See GetArchiveModificationStructure",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Archiving"
+  },
+  {
+   "name": "GetArchiveModificationStructure",
+   "id": "GETARCHIVEMODIFICATIONSTRUCTURE",
+   "description": "Gets the structure of archive modification settings: unpacking and packing passwords and compression parameters",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    },
+    {
+     "name": "--map",
+     "types": "Boolean",
+     "description": "True > returns fields as map",
+     "default": "false",
+     "short": "-m"
     }
    ],
    "region": "Archiving"
@@ -95,6 +199,50 @@
     }
    ],
    "region": "Archiving"
+  },
+  {
+   "name": "GetFilesList",
+   "id": "GETFILESLIST",
+   "description": "Gets a hierarchical list of files and directories in the archive",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Getting metadata"
+  },
+  {
+   "name": "GetMetadata",
+   "id": "GETMETADATA",
+   "description": "Gets metadata and a flat list of archive files",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Getting metadata"
   }
  ]
 }

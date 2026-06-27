@@ -21,7 +21,7 @@ import Admonition from '@theme/Admonition';
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | Archive | --src | String | &#x2714; | Path to the archive on disk or binary data |
+  | Archive | --src | String, BinaryData | &#x2714; | Path to the archive on disk or binary data |
   | DestinationDirectory | --dest | String | &#x2716; | Directory path for unpacking. To binary data if not filled |
   | Password | --password | String | &#x2716; | archive password, if required |
 
@@ -44,6 +44,10 @@ import Admonition from '@theme/Admonition';
   </TabItem>
 </Tabs>
 
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
 
 
 

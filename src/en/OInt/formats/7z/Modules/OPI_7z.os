@@ -52,7 +52,7 @@
 // Packs files from the specified directory into an archive
 //
 // Parameters:
-// Directory   - String             - Path to the directory or data description for packing  - src
+// Directory   - String, BinaryData - Path to the directory or data description for packing  - src
 // ArchivePath - String             - Path to save the archive. To binary data if not filled - dest
 // Settings    - Map Of KeyAndValue - Additional settings. See GetArchivingSettingsStructure - settings
 //
@@ -68,15 +68,80 @@ EndFunction
 // Unpacks 7z archive to the specified directory
 //
 // Parameters:
-// Archive              - String - Path to the archive on disk or binary data                 - src
-// DestinationDirectory - String - Directory path for unpacking. To binary data if not filled - dest
-// Password             - String - archive password, if required                              - password
+// Archive              - String, BinaryData - Path to the archive on disk or binary data                 - src
+// DestinationDirectory - String             - Directory path for unpacking. To binary data if not filled - dest
+// Password             - String             - archive password, if required                              - password
 //
 // Returns:
 // Map Of KeyAndValue - Execution information
 Function UnarchiveDirectory(Val Archive, Val DestinationDirectory = "", Val Password = "") Export
 
     Return OPI_GenericArchiver.Unzip("7z", Archive, DestinationDirectory, Password);
+
+EndFunction
+
+// Unpack files
+// Unpacks selected files from a 7z archive by a list of paths
+//
+// Parameters:
+// Archive              - String, BinaryData - Path to the archive on disk or binary data                 - src
+// Paths                - Array Of String    - Full paths of files inside the archive                     - paths
+// DestinationDirectory - String             - Directory path for unpacking. To binary data if not filled - dest
+// Password             - String             - archive password, if required                              - password
+//
+// Returns:
+// Map Of KeyAndValue - Information about the execution or description of selected files
+Function UnpackFiles(Val Archive, Val Paths, Val DestinationDirectory = "", Val Password = "") Export
+
+    Return OPI_GenericArchiver.UnpackFiles("7z", Archive, Paths, DestinationDirectory, Password);
+
+EndFunction
+
+// Modify archive
+// Adds, replaces and deletes files in an existing 7z archive
+//
+// Parameters:
+// Archive        - String, BinaryData - Path to the archive on disk or binary data                 - src
+// AddableFiles   - Map Of KeyAndValue - Key: archive path; value: file path or binary data         - additions
+// DeletablePaths - Array Of String    - Paths of files in the archive for deletion                 - deletions
+// Settings       - Map Of KeyAndValue - Modification settings. See GetArchiveModificationStructure - settings
+//
+// Returns:
+// BinaryData, Map Of KeyAndValue - Result of the operation for the archive on the disk or new binary data of the archive
+//
+// Note:
+// The archive on the disk is modified in place. The unpacking and packing passwords are set in Settings.
+Function ModifyArchive(Val Archive, Val AddableFiles = Undefined, Val DeletablePaths = Undefined, Val Settings = Undefined) Export
+
+    Return OPI_GenericArchiver.ModifyArchive("7z", Archive, AddableFiles, DeletablePaths, Settings);
+
+EndFunction
+
+// Get archive modification structure
+// Gets the structure of archive modification settings: unpacking and packing passwords and compression parameters
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns fields as map                                             - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetArchiveModificationStructure(Val Clear = False, Val AsMap = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(AsMap);
+
+    SettingsStructure = GetArchivingSettingsStructure(Clear, AsMap);
+
+    SettingsStructure.Insert("unpack_password", "<original archive password when unpacking, if necessary>");
+    SettingsStructure.Insert("password"       , "<new archive password when packing, if necessary>");
+
+    If Clear Then
+        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
 
 EndFunction
 
@@ -108,8 +173,8 @@ Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Exp
     SettingsStructure.Insert("threads"         , "<number of threads for LZMA2 (by default 1)>");
     SettingsStructure.Insert("chunk_size"      , "<chunk size when threads > 1>");
     SettingsStructure.Insert("dictionary_size" , "<LZMA2 dictionary size>");
-    SettingsStructure.Insert("ppmd_order "     , "<model order (for Ppmd)>");
-    SettingsStructure.Insert("ppmd_memory "    , "<memory in bytes (for Ppmd)>");
+    SettingsStructure.Insert("ppmd_order"      , "<model order (for Ppmd)>");
+    SettingsStructure.Insert("ppmd_memory"     , "<memory in bytes (for Ppmd)>");
     SettingsStructure.Insert("filters"         , "<array of filters: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>");
     SettingsStructure.Insert("delta_distance"  , "<distance for DELTA filter, if used (by default 1)>");
 
@@ -119,6 +184,40 @@ Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Exp
 
     //@skip-check constructor-function-return-section
     Return SettingsStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region GettingMetadata
+
+// Get list of files
+// Gets a hierarchical list of files and directories in the archive
+//
+// Parameters:
+// Archive  - String, BinaryData - Path to the archive on disk or binary data - src
+// Password - String             - archive password, if required              - password
+//
+// Returns:
+// Map Of KeyAndValue - Information about files in the archive
+Function GetFilesList(Val Archive, Val Password = "") Export
+
+    Return OPI_GenericArchiver.GetFilesList("7z", Archive, Password);
+
+EndFunction
+
+// Get metadata
+// Gets metadata and a flat list of archive files
+//
+// Parameters:
+// Archive  - String, BinaryData - Path to the archive on disk or binary data - src
+// Password - String             - archive password, if required              - password
+//
+// Returns:
+// Map Of KeyAndValue - Archive information
+Function GetMetadata(Val Archive, Val Password = "") Export
+
+    Return OPI_GenericArchiver.GetMetadata("7z", Archive, Password);
 
 EndFunction
 
@@ -137,8 +236,28 @@ Function РазархивироватьКаталог(Val Архив, Val Кат
     Return UnarchiveDirectory(Архив, КаталогНазначения, Пароль);
 EndFunction
 
+Function РазархивироватьФайлы(Val Архив, Val Пути, Val КаталогНазначения = "", Val Пароль = "") Export
+    Return UnpackFiles(Архив, Пути, КаталогНазначения, Пароль);
+EndFunction
+
+Function ИзменитьАрхив(Val Архив, Val ДобавляемыеФайлы = Undefined, Val УдаляемыеПути = Undefined, Val Настройки = Undefined) Export
+    Return ModifyArchive(Архив, ДобавляемыеФайлы, УдаляемыеПути, Настройки);
+EndFunction
+
+Function ПолучитьСтруктуруИзмененияАрхива(Val Пустая = False, Val КакСоответствие = False) Export
+    Return GetArchiveModificationStructure(Пустая, КакСоответствие);
+EndFunction
+
 Function ПолучитьСтруктуруНастроекАрхивации(Val Пустая = False, Val КакСоответствие = False) Export
     Return GetArchivingSettingsStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСписокФайлов(Val Архив, Val Пароль = "") Export
+    Return GetFilesList(Архив, Пароль);
+EndFunction
+
+Function ПолучитьМетаданные(Val Архив, Val Пароль = "") Export
+    Return GetMetadata(Архив, Пароль);
 EndFunction
 
 #EndRegion

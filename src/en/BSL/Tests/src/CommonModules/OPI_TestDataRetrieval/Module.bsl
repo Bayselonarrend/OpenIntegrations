@@ -441,6 +441,10 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
     NewTest(ArrayOfTests, TestModule, "Z7_Archiving"                        , "Archiving"                       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"            , "Archiving with a password"       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"                  , "Metadata extraction"             , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"                 , "Partial unpacking"               , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"              , "Archive modification"            , SevenZ);
 
     Return ArrayOfTests;
 
@@ -15561,6 +15565,44 @@ Function Check_7z_GetArchivingSettingsStructure(Val Result, Val Option)
 
 EndFunction
 
+Function Check_7z_GetArchiveModificationStructure(Val Result, Val Option)
+
+    If Option = "AsMap" Then
+
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["password"] <> Undefined).Равно(True);
+        ExpectsThat(Result["unpack_password"] <> Undefined).Равно(True);
+        ExpectsThat(Result["method"] <> Undefined).Равно(True);
+
+    Else
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
+        ExpectsThat(Result.Property("password")).Равно(True);
+        ExpectsThat(Result.Property("unpack_password")).Равно(True);
+        ExpectsThat(Result.Property("method")).Равно(True);
+
+    EndIf;
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(StrFind(String(Result.unpack_password), "password") > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_7z_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
 
     If Option = "ToMemory" Or Option = "FromDescriptionToMemory" Then
@@ -15588,7 +15630,7 @@ EndFunction
 
 Function Check_7z_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
 
-    If Option = "ToDescription" Or Option = "ToDescriptionFromMemory" Then
+    If Option = "ToDescription" Or Option = "ToDescriptionFromMemory" Or Option = "InDescriptionWithPassword" Then
 
         ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
         ExpectsThat(Result["entries"] <> Undefined).Равно(True);
@@ -15671,6 +15713,146 @@ Function Check7zArchiveDescriptionContent(Records, ExpectedFiles, Prefix = "")
             EndIf;
 
         EndIf;
+
+    EndDo;
+
+    Return True;
+
+EndFunction
+
+Function Check_7z_GetFilesList(Val Result, Val Option, ExpectedFiles = Undefined)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+    ExpectsThat(Result["entries"] <> Undefined).Равно(True);
+    ExpectsThat(ExpectedFiles <> Undefined).Равно(True);
+
+    FoundFiles = New Array;
+    CheckListOfFilesInArchive7z(Result["entries"], ExpectedFiles, "", FoundFiles);
+    ExpectsThat(FoundFiles.Count()).Равно(ExpectedFiles.Count());
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_GetMetadata(Val Result, Val Option, ExpectedFiles = Undefined, ExpectedMetadata = Undefined)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+    ExpectsThat(Result["archive_size"] > 0).Равно(True);
+    ExpectsThat(Result["file_count"] > 0).Равно(True);
+    ExpectsThat(Result["entries"] <> Undefined).Равно(True);
+    ExpectsThat(ExpectedFiles <> Undefined).Равно(True);
+    ExpectsThat(Result["file_count"]).Равно(ExpectedFiles.Count());
+
+    CheckMetadataRecordsInArchive7z(Result["entries"], ExpectedFiles);
+
+    If Option = "WithSettings" Then
+
+        ExpectsThat(TypeOf(ExpectedMetadata)).Равно(Type("Structure"));
+        ExpectsThat(Result["solid"]).Равно(ExpectedMetadata.solid);
+        ExpectsThat(Result["packed_size"] < ExpectedMetadata.packed_less_than).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_UnpackFiles(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    If Option = "ToDescription" Or Option = "ToDescriptionFromMemory" Then
+
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+        ExpectsThat(Result["entries"] <> Undefined).Равно(True);
+        ExpectsThat(ExpectedFiles <> Undefined).Равно(True);
+        Check7zArchiveDescriptionContent(Result["entries"], ExpectedFiles);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+        Check7zArchiveFilesOnDisk(DestinationDirectory, ExpectedFiles);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_7z_ModifyArchive(Val Result, Val Option, ArchivePath = "")
+
+    If Option = "FromMemory" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
+        ExpectsThat(Result.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        If Not ValueIsFilled(ArchivePath) Then
+            Return Result;
+        EndIf;
+
+        ArchiveFile = New File(ArchivePath);
+        ExpectsThat(ArchiveFile.Exists()).Равно(True);
+        ExpectsThat(ArchiveFile.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function CheckListOfFilesInArchive7z(Records, ExpectedFiles, Prefix = "", FoundFiles = Undefined)
+
+    For Each Record In Records Do
+
+        If Record["directory"] Then
+
+            DirectoryName = Record["name"];
+            NewPrefix     = Prefix + DirectoryName + "\";
+            CheckListOfFilesInArchive7z(Record["entries"], ExpectedFiles, NewPrefix, FoundFiles);
+
+        Else
+
+            RelativePath = Prefix + Record["name"];
+            Expected     = Undefined;
+
+            If OPI_Tools.ThisIsCollection(ExpectedFiles) Then
+                Expected = ExpectedFiles.Get(RelativePath);
+            EndIf;
+
+            ExpectsThat(Expected <> Undefined).Равно(True);
+            ExpectsThat(Record["size"] > 0).Равно(True);
+
+            If FoundFiles <> Undefined Then
+                FoundFiles.Add(RelativePath);
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    Return True;
+
+EndFunction
+
+Function CheckMetadataRecordsInArchive7z(Records, ExpectedFiles)
+
+    For Each Record In Records Do
+
+        If Record["directory"] Then
+            Continue;
+        EndIf;
+
+        RelativePath = StrReplace(Record["name"], "/", "\");
+        Expected     = Undefined;
+
+        If OPI_Tools.ThisIsCollection(ExpectedFiles) Then
+            Expected = ExpectedFiles.Get(RelativePath);
+        EndIf;
+
+        ExpectsThat(Expected <> Undefined).Равно(True);
+        ExpectsThat(Record["size"] > 0).Равно(True);
 
     EndDo;
 

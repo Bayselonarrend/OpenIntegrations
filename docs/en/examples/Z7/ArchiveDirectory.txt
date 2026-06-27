@@ -1,4 +1,6 @@
-    SourceDirectory = Parameters["SevenZ_SourceDir"];
-    ArchivePath     = Parameters["SevenZ_ArchivePath"];
+    If Parameters.Property("SevenZ_SourceDir") And Parameters.Property("SevenZ_ArchivePath") Then
 
-    Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePath);
+        SourceDirectory = Parameters["SevenZ_SourceDir"];
+        ArchivePath     = Parameters["SevenZ_ArchivePath"];
+
+        Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePath);

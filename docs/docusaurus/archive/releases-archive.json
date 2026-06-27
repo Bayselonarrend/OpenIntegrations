@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-25T20:47:30",
+ "generatedAt": "2026-06-27T17:39:29",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -70,6 +70,12 @@
      "icon": "media/logo.png",
      "description_ru": "Улучшена панель управления расширением в 1С, добавлен раздел обновлений",
      "description_en": "Improved 1C extension management panel, added extension updates section"
+    },
+    {
+     "lib": "7z",
+     "icon": "media/7z.png",
+     "description_ru": "Частичная распаковка и изменение архива (2 функции)",
+     "description_en": "Partial unpack and archive modification (2 functions)"
     }
    ],
    "artifacts": [

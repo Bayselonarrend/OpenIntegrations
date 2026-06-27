@@ -1,0 +1,7 @@
+    ArchivePath                = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory         = Parameters["SevenZ_DestDir"];
+    DestinationDirectoryBuffer = Parameters["SevenZ_DestBufferDir"];
+    PartialPaths               = Parameters["SevenZ_PartialPaths"];
+    ExpectedFiles              = Parameters["SevenZ_PartialExpected"];
+
+    Result = OPI_7z.UnpackFiles(ArchivePath, PartialPaths, DestinateDirectory);
