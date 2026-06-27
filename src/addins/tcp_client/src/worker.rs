@@ -204,7 +204,14 @@ impl Session {
                         break;
                     }
                 }
-                Err(ref e) if e.kind() == std::io::ErrorKind::WouldBlock => continue,
+                Err(ref e)
+                    if matches!(
+                        e.kind(),
+                        std::io::ErrorKind::WouldBlock | std::io::ErrorKind::TimedOut
+                    ) =>
+                {
+                    continue
+                }
                 Err(e) => {
                     self.save_error(&e.to_string());
                     break;
