@@ -30,8 +30,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("UnpackPartialToFileFromBuffer"),
     name!("UnpackPartialToDescriptionFromFile"),
     name!("UnpackPartialToDescriptionFromBuffer"),
-    name!("ModifyFromFile"),
-    name!("ModifyFromBuffer"),
     name!("SetLogger"),
     name!("GetLogs"),
     name!("Version"),
@@ -57,11 +55,9 @@ pub fn get_params_amount(num: usize) -> usize {
         13 => 4,
         14 => 3,
         15 => 3,
-        16 => 5,
-        17 => 5,
-        18 => 1,
-        19 => 1,
-        20 => 0,
+        16 => 1,
+        17 => 1,
+        18 => 0,
         _ => 0,
     }
 }
@@ -207,42 +203,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             ))
         }
         16 => {
-            let archive_path = params[0].get_string().unwrap_or_default();
-            let additions = JanxValue::from_variant(&params[1]);
-            let deletions = JanxValue::from_variant(&params[2]);
-            let settings = JanxValue::from_variant(&params[3]);
-            let password = params[4].get_string().unwrap_or_default();
-            Box::new(obj.modify_from_file(
-                &archive_path,
-                &additions,
-                &deletions,
-                &settings,
-                &password,
-            ))
-        }
-        17 => {
-            let archive_data = params[0].get_blob().unwrap_or_default().to_vec();
-            let additions = JanxValue::from_variant(&params[1]);
-            let deletions = JanxValue::from_variant(&params[2]);
-            let settings = JanxValue::from_variant(&params[3]);
-            let password = params[4].get_string().unwrap_or_default();
-            box_blob_result(obj.modify_from_buffer(
-                &archive_data,
-                &additions,
-                &deletions,
-                &settings,
-                &password,
-            ))
-        }
-        18 => {
             let logger_config = JanxValue::from_variant(&params[0]);
             Box::new(obj.set_logger(&logger_config))
         }
-        19 => {
+        17 => {
             let count = params[0].get_i32().unwrap_or(0) as usize;
             Box::new(obj.get_logs(count))
         }
-        20 => Box::new(version()),
+        18 => Box::new(version()),
         _ => Box::new(false),
     }
 }

@@ -104,22 +104,6 @@ pub enum WorkerCommand {
         password: String,
         response: Sender<Result<JanxValue, String>>,
     },
-    ModifyFromFile {
-        archive_path: String,
-        additions: JanxValue,
-        deletions: JanxValue,
-        settings: JanxValue,
-        password: String,
-        response: Sender<JanxValue>,
-    },
-    ModifyFromBuffer {
-        archive_data: Vec<u8>,
-        additions: JanxValue,
-        deletions: JanxValue,
-        settings: JanxValue,
-        password: String,
-        response: Sender<Result<Vec<u8>, String>>,
-    },
     SetLogger {
         logger: Arc<Logger>,
         response: Sender<Result<(), String>>,
@@ -360,44 +344,6 @@ impl Session {
         self.log("UnpackPartialToDescriptionFromBuffer");
         archive_ops::unpack_partial_buffer_to_description(archive_data, paths, password)
     }
-
-    fn modify_from_file(
-        &self,
-        archive_path: &str,
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> JanxValue {
-        self.log(&format!("ModifyFromFile {}", archive_path));
-        let settings = match PackSettings::from_janx(settings) {
-            Ok(settings) => settings,
-            Err(error) => return janx_error(error),
-        };
-        match archive_ops::modify_file_inplace(
-            archive_path,
-            additions,
-            deletions,
-            &settings,
-            password,
-        ) {
-            Ok(()) => janx_success(None, None),
-            Err(error) => janx_error(error),
-        }
-    }
-
-    fn modify_from_buffer(
-        &self,
-        archive_data: &[u8],
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> Result<Vec<u8>, String> {
-        self.log("ModifyFromBuffer");
-        let settings = PackSettings::from_janx(settings)?;
-        archive_ops::modify_buffer(archive_data, additions, deletions, &settings, password)
-    }
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
@@ -574,40 +520,6 @@ pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<Wor
                     let result = session.unpack_partial_to_description_from_buffer(
                         &archive_data,
                         &paths,
-                        &password,
-                    );
-                    let _ = response.send(result);
-                }
-                WorkerCommand::ModifyFromFile {
-                    archive_path,
-                    additions,
-                    deletions,
-                    settings,
-                    password,
-                    response,
-                } => {
-                    let result = session.modify_from_file(
-                        &archive_path,
-                        &additions,
-                        &deletions,
-                        &settings,
-                        &password,
-                    );
-                    let _ = response.send(result);
-                }
-                WorkerCommand::ModifyFromBuffer {
-                    archive_data,
-                    additions,
-                    deletions,
-                    settings,
-                    password,
-                    response,
-                } => {
-                    let result = session.modify_from_buffer(
-                        &archive_data,
-                        &additions,
-                        &deletions,
-                        &settings,
                         &password,
                     );
                     let _ = response.send(result);

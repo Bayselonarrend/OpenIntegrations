@@ -1,5 +1,4 @@
 use std::collections::BTreeMap;
-use std::fs;
 use std::path::Path;
 
 use common_core::{FromJanx, JanxValue, janx};
@@ -58,21 +57,6 @@ impl ArchiveDescription {
         janx!({
             "entries": nodes_to_janx(&self.entries),
         })
-    }
-
-    pub fn flatten_to_file_map(&self) -> Result<BTreeMap<String, Vec<u8>>, String> {
-        let mut map = BTreeMap::new();
-        flatten_nodes_to_map(&self.entries, "", &mut map)?;
-        Ok(map)
-    }
-
-    pub fn from_file_map(map: &BTreeMap<String, Vec<u8>>) -> Self {
-        let entries: Vec<(String, bool, Option<Vec<u8>>)> = map
-            .iter()
-            .map(|(path, data)| (path.clone(), false, Some(data.clone())))
-            .collect();
-
-        Self::from_flat_entries(&entries)
     }
 }
 
@@ -184,73 +168,6 @@ pub fn parse_path_list(value: &JanxValue) -> Result<Vec<String>, String> {
                 .ok_or_else(|| "Each path must be a non-empty string".to_string())
         })
         .collect()
-}
-
-pub fn parse_additions_map(value: &JanxValue) -> Result<BTreeMap<String, Vec<u8>>, String> {
-    if value.is_empty() {
-        return Ok(BTreeMap::new());
-    }
-
-    let object = value
-        .as_object()
-        .ok_or_else(|| "Additions must be a Janx object".to_string())?;
-
-    let mut map = BTreeMap::new();
-
-    for (key, item_value) in object {
-        let path = normalize_archive_path(key);
-        if path.is_empty() {
-            continue;
-        }
-
-        let data = if let Some(bytes) = Vec::<u8>::from_janx(item_value) {
-            bytes
-        } else if let Some(file_path) = String::from_janx(item_value) {
-            if file_path.is_empty() {
-                return Err(format!("Source path for '{}' must not be empty", path));
-            }
-            if !Path::new(&file_path).exists() {
-                return Err(format!("Source file not found: {}", file_path));
-            }
-            fs::read(&file_path)
-                .map_err(|error| format!("Failed to read source file '{}': {}", file_path, error))?
-        } else {
-            return Err(format!(
-                "Addition '{}' must be a file path string or binary data",
-                path
-            ));
-        };
-
-        map.insert(path, data);
-    }
-
-    Ok(map)
-}
-
-fn flatten_nodes_to_map(
-    nodes: &[ArchiveNode],
-    prefix: &str,
-    map: &mut BTreeMap<String, Vec<u8>>,
-) -> Result<(), String> {
-    for node in nodes {
-        match node {
-            ArchiveNode::Directory { name, entries } => {
-                flatten_nodes_to_map(entries, &join_archive_path(prefix, name), map)?;
-            }
-            ArchiveNode::FileFromPath { name, path } => {
-                let archive_path = normalize_archive_path(&join_archive_path(prefix, name));
-                let data = fs::read(path)
-                    .map_err(|error| format!("Failed to read source file '{}': {}", path, error))?;
-                map.insert(archive_path, data);
-            }
-            ArchiveNode::FileFromData { name, data } => {
-                let archive_path = normalize_archive_path(&join_archive_path(prefix, name));
-                map.insert(archive_path, data.clone());
-            }
-        }
-    }
-
-    Ok(())
 }
 
 fn nodes_to_janx(nodes: &[ArchiveNode]) -> JanxValue {

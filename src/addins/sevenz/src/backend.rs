@@ -275,52 +275,6 @@ impl SevenZBackend {
         })
     }
 
-    pub fn modify_from_file(
-        &mut self,
-        archive_path: &str,
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> JanxValue {
-        let archive_path = archive_path.to_string();
-        let additions = additions.clone();
-        let deletions = deletions.clone();
-        let settings = settings.clone();
-        let password = password.to_string();
-        self.call(|response| WorkerCommand::ModifyFromFile {
-            archive_path,
-            additions,
-            deletions,
-            settings,
-            password,
-            response,
-        })
-    }
-
-    pub fn modify_from_buffer(
-        &mut self,
-        archive_data: &[u8],
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> Result<Vec<u8>, String> {
-        let archive_data = archive_data.to_vec();
-        let additions = additions.clone();
-        let deletions = deletions.clone();
-        let settings = settings.clone();
-        let password = password.to_string();
-        self.call_binary(|response| WorkerCommand::ModifyFromBuffer {
-            archive_data,
-            additions,
-            deletions,
-            settings,
-            password,
-            response,
-        })
-    }
-
     pub fn set_logger(&mut self, logger: Arc<Logger>) -> Result<(), String> {
         if self.logger.is_some() {
             return Ok(());

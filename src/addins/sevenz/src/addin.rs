@@ -183,40 +183,6 @@ impl AddIn {
             .unpack_partial_to_description_from_file(archive_path, paths, password)
     }
 
-    pub fn modify_from_file(
-        &mut self,
-        archive_path: &str,
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> JanxValue {
-        self.lock_backend().modify_from_file(
-            archive_path,
-            additions,
-            deletions,
-            settings,
-            password,
-        )
-    }
-
-    pub fn modify_from_buffer(
-        &mut self,
-        archive_data: &[u8],
-        additions: &JanxValue,
-        deletions: &JanxValue,
-        settings: &JanxValue,
-        password: &str,
-    ) -> Result<Vec<u8>, String> {
-        self.lock_backend().modify_from_buffer(
-            archive_data,
-            additions,
-            deletions,
-            settings,
-            password,
-        )
-    }
-
     pub fn set_logger(&mut self, logger_config: &JanxValue) -> JanxValue {
         match Logger::from_janx(logger_config) {
             Ok(logger) => match self.lock_backend().set_logger(Arc::new(logger)) {
