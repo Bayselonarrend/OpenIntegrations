@@ -97,14 +97,7 @@ EndFunction
 
 Procedure GR_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Address"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_AddressNoTls", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Proto"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoTS"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoImport" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GRPC_CreateConnection(TestParameters);
     GRPC_CloseConnection(TestParameters);
     GRPC_IsConnector(TestParameters);
@@ -126,13 +119,7 @@ Procedure GR_ExtendedCheck() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Address"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_AddressNoTls", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Proto"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoTS"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoImport" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GRPC_Extended_CallMethodWithoutConnection(TestParameters);
     GRPC_Extended_ConnectionWithoutAddress(TestParameters);
     GRPC_Extended_Reconnection(TestParameters);
@@ -143,11 +130,7 @@ EndProcedure
 
 Procedure GR_Introspection() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Address"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Proto"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoImport", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GRPC_GetServiceList(TestParameters);
     GRPC_GetMethodList(TestParameters);
     GRPC_GetMethod(TestParameters);
@@ -156,14 +139,7 @@ EndProcedure
 
 Procedure GR_Streaming() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Address"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_AddressNoTls", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_Proto"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoTS"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GRPC_ProtoImport" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GRPC_InitializeServerStream(TestParameters);
     GRPC_InitializeClientStream(TestParameters);
     GRPC_InitializeBidirectionalStream(TestParameters);

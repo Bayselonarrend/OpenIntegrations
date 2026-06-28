@@ -97,10 +97,7 @@ EndFunction
 
 Procedure Viber_DataRetrieval() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Return;
 
     //@skip-check unreachable-statements
@@ -117,14 +114,7 @@ EndProcedure
 
 Procedure Viber_MessagesSending() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_Token"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Viber_UserID"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"            , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Viber_CreateKeyboardFromArrayButton(TestParameters);
 
     Return;

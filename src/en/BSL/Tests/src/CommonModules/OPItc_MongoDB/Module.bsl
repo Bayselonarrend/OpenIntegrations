@@ -97,13 +97,7 @@ EndFunction
 
 Procedure Mongo_CommonMethods() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_GenerateConnectionString(TestParameters);
     MongoDB_CreateConnection(TestParameters);
     MongoDB_CloseConnection(TestParameters);
@@ -123,12 +117,7 @@ Procedure Mongo_ExtendedCheck() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_Extended_ExecuteCommandWithoutConnection(TestParameters);
     MongoDB_Extended_ConnectionWithoutString(TestParameters);
     MongoDB_Extended_Reconnection(TestParameters);
@@ -138,13 +127,7 @@ EndProcedure
 
 Procedure Mong_DatabaseManagement() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_GetDatabase(TestParameters);
     MongoDB_GetListOfBases(TestParameters);
     MongoDB_DeleteDatabase(TestParameters);
@@ -153,13 +136,7 @@ EndProcedure
 
 Procedure Mongo_CollectionManagement() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_CreateCollection(TestParameters);
     MongoDB_GetCollectionList(TestParameters);
     MongoDB_DeleteCollection(TestParameters);
@@ -168,14 +145,7 @@ EndProcedure
 
 Procedure Mongo_DocumentsManagement() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_InsertDocuments(TestParameters);
     MongoDB_GetDocuments(TestParameters);
     MongoDB_GetCursor(TestParameters);
@@ -189,13 +159,7 @@ EndProcedure
 
 Procedure Mongo_UserManagement() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_CreateUser(TestParameters);
     MongoDB_UpdateUser(TestParameters);
     MongoDB_GetUsers(TestParameters);
@@ -206,13 +170,7 @@ EndProcedure
 
 Procedure Mongo_RoleManagement() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MongoDB_CreateRole(TestParameters);
     MongoDB_GetRoles(TestParameters);
     MongoDB_GrantRoles(TestParameters);

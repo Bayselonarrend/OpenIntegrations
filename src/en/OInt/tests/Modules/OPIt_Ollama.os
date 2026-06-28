@@ -95,10 +95,7 @@ EndFunction
 
 Procedure OLLM_RequestsProcessing() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Ollama_PullModel(TestParameters);
     Ollama_GetVersion(TestParameters);
     Ollama_GetResponse(TestParameters);
@@ -113,10 +110,7 @@ EndProcedure
 
 Procedure OLLM_ModelsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Ollama_PullModel(TestParameters);
     Ollama_LoadModelToMemory(TestParameters);
     Ollama_UnloadModelFromMemory(TestParameters);
@@ -133,11 +127,7 @@ EndProcedure
 
 Procedure OLLM_WorkingWithBlob() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_URL"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ollama_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Ollama_PushBlob(TestParameters);
     Ollama_CheckBlob(TestParameters);
 

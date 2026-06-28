@@ -95,14 +95,7 @@ EndFunction
 
 Procedure OAI_RequestsProcessing() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token2" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL2"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_File"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     OpenAI_GetResponse(TestParameters);
     OpenAI_GetEmbeddings(TestParameters);
     OpenAI_GetMessageStructure(TestParameters);
@@ -116,10 +109,7 @@ EndProcedure
 
 Procedure OAI_Assistants() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     OpenAI_CreateAssistant(TestParameters);
     OpenAI_RetrieveAssistant(TestParameters);
     OpenAI_GetAssistantsList(TestParameters);
@@ -129,11 +119,7 @@ EndProcedure
 
 Procedure OAI_FileManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     OpenAI_UploadFile(TestParameters);
     OpenAI_GetFileInformation(TestParameters);
     OpenAI_GetFilesList(TestParameters);
@@ -144,10 +130,7 @@ EndProcedure
 
 Procedure OAI_AudioProcessing() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     OpenAI_GenerateSpeech(TestParameters);
     OpenAI_CreateTranscription(TestParameters);
 
@@ -155,10 +138,7 @@ EndProcedure
 
 Procedure OAI_ModelsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("OpenAI_URL"   , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     OpenAI_GetModelList(TestParameters);
 
 EndProcedure

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-27T17:39:29",
+ "generatedAt": "2026-06-28T15:54:49",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -52,6 +52,12 @@
      "icon": "media/Lua.png",
      "description_ru": "Основные методы (6 функций)",
      "description_en": "Core methods (6 functions)"
+    },
+    {
+     "lib": "NativeAPI",
+     "icon": "media/logo.png",
+     "description_ru": "Модуль анализа и вызова Native API компонент 1С (12 функций)",
+     "description_en": "Native API component inspection and invocation module (12 functions)"
     },
     {
      "lib": "Janx",

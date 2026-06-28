@@ -14,21 +14,12 @@ pipeline {
 		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
 		booleanParam(name: 'Telegram', defaultValue: true, description: 'Run Telegram tests')
 		booleanParam(name: 'VK', defaultValue: true, description: 'Run VK tests')
-		booleanParam(name: 'Viber', defaultValue: true, description: 'Run Viber tests')
-		booleanParam(name: 'FTP', defaultValue: true, description: 'Run FTP tests')
-		booleanParam(name: 'SSH', defaultValue: true, description: 'Run SSH tests')
-		booleanParam(name: 'SFTP', defaultValue: true, description: 'Run SFTP tests')
-		booleanParam(name: 'PostgreSQL', defaultValue: true, description: 'Run PostgreSQL tests')
-		booleanParam(name: 'MySQL', defaultValue: true, description: 'Run MySQL tests')
-		booleanParam(name: 'MSSQL', defaultValue: true, description: 'Run MSSQL tests')
-		booleanParam(name: 'SQLite', defaultValue: true, description: 'Run SQLite tests')
-		booleanParam(name: 'MongoDB', defaultValue: true, description: 'Run MongoDB tests')
-		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
 		booleanParam(name: 'YandexDisk', defaultValue: true, description: 'Run YandexDisk tests')
 		booleanParam(name: 'GoogleWorkspace', defaultValue: true, description: 'Run GoogleWorkspace tests')
 		booleanParam(name: 'GoogleCalendar', defaultValue: true, description: 'Run GoogleCalendar tests')
 		booleanParam(name: 'GoogleDrive', defaultValue: true, description: 'Run GoogleDrive tests')
 		booleanParam(name: 'GoogleSheets', defaultValue: true, description: 'Run GoogleSheets tests')
+		booleanParam(name: 'Viber', defaultValue: true, description: 'Run Viber tests')
 		booleanParam(name: 'Notion', defaultValue: true, description: 'Run Notion tests')
 		booleanParam(name: 'Slack', defaultValue: true, description: 'Run Slack tests')
 		booleanParam(name: 'Airtable', defaultValue: true, description: 'Run Airtable tests')
@@ -42,18 +33,29 @@ pipeline {
 		booleanParam(name: 'TCP', defaultValue: true, description: 'Run TCP tests')
 		booleanParam(name: 'WebSocket', defaultValue: true, description: 'Run WebSocket tests')
 		booleanParam(name: 'ZeroMQ', defaultValue: true, description: 'Run ZeroMQ tests')
+		booleanParam(name: 'SQLite', defaultValue: true, description: 'Run SQLite tests')
+		booleanParam(name: 'PostgreSQL', defaultValue: true, description: 'Run PostgreSQL tests')
+		booleanParam(name: 'MySQL', defaultValue: true, description: 'Run MySQL tests')
+		booleanParam(name: 'MSSQL', defaultValue: true, description: 'Run MSSQL tests')
+		booleanParam(name: 'MongoDB', defaultValue: true, description: 'Run MongoDB tests')
 		booleanParam(name: 'GreenAPI', defaultValue: true, description: 'Run GreenAPI tests')
 		booleanParam(name: 'GreenMax', defaultValue: true, description: 'Run GreenMax tests')
+		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
 		booleanParam(name: 'Ollama', defaultValue: true, description: 'Run Ollama tests')
 		booleanParam(name: 'HTTP', defaultValue: true, description: 'Run HTTP tests')
 		booleanParam(name: 'OpenAI', defaultValue: true, description: 'Run OpenAI tests')
+		booleanParam(name: 'FTP', defaultValue: true, description: 'Run FTP tests')
 		booleanParam(name: 'ReportPortal', defaultValue: true, description: 'Run ReportPortal tests')
+		booleanParam(name: 'SSH', defaultValue: true, description: 'Run SSH tests')
+		booleanParam(name: 'SFTP', defaultValue: true, description: 'Run SFTP tests')
 		booleanParam(name: 'GRPC', defaultValue: true, description: 'Run GRPC tests')
 		booleanParam(name: 'ClickHouse', defaultValue: true, description: 'Run ClickHouse tests')
 		booleanParam(name: 'RSS', defaultValue: true, description: 'Run RSS tests')
 		booleanParam(name: 'MessagePack', defaultValue: true, description: 'Run MessagePack tests')
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
+		booleanParam(name: 'NativeAPI', defaultValue: true, description: 'Run NativeAPI tests')
+		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 	}
 	stages {
 
@@ -188,149 +190,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-Viber') {
-            when {
-                expression { return params['Viber'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Viber.os', [
-'Viber_DataRetrieval',
-'Viber_MessagesSending',
-					])
-				}
-			}
-		}
-		stage('Testing-FTP') {
-            when {
-                expression { return params['FTP'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_FTP.os', [
-'FT_DirecotryManagement',
-'FT_FileOperations',
-'FT_CommonMethods',
-'FT_ExtendedCheck',
-					])
-				}
-			}
-		}
-		stage('Testing-SSH') {
-            when {
-                expression { return params['SSH'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SSH.os', [
-'SShell_CommonMethods',
-'SShell_ExtendedCheck',
-					])
-				}
-			}
-		}
-		stage('Testing-SFTP') {
-            when {
-                expression { return params['SFTP'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SFTP.os', [
-'SF_CommonMethods',
-'SF_DirectoryManagement',
-'SF_FileManagement',
-'SF_ExtendedCheck',
-					])
-				}
-			}
-		}
-		stage('Testing-PostgreSQL') {
-            when {
-                expression { return params['PostgreSQL'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_PostgreSQL.os', [
-'Postgres_CommonMethods',
-'Postgres_ExtendedCheck',
-'Postgres_ORM',
-					])
-				}
-			}
-		}
-		stage('Testing-MySQL') {
-            when {
-                expression { return params['MySQL'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MySQL.os', [
-'MYS_CommonMethods',
-'MYS_ExtendedCheck',
-'MYS_ORM',
-					])
-				}
-			}
-		}
-		stage('Testing-MSSQL') {
-            when {
-                expression { return params['MSSQL'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MSSQL.os', [
-'MSS_CommonMethods',
-'MSS_ExtendedCheck',
-'MSS_ORM',
-					])
-				}
-			}
-		}
-		stage('Testing-SQLite') {
-            when {
-                expression { return params['SQLite'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SQLite.os', [
-'SQLL_CommonMethods',
-'SQLL_ExtendedCheck',
-'SQLL_ORM',
-					])
-				}
-			}
-		}
-		stage('Testing-MongoDB') {
-            when {
-                expression { return params['MongoDB'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MongoDB.os', [
-'Mongo_CommonMethods',
-'Mongo_ExtendedCheck',
-'Mong_DatabaseManagement',
-'Mongo_CollectionManagement',
-'Mongo_DocumentsManagement',
-'Mongo_UserManagement',
-'Mongo_RoleManagement',
-					])
-				}
-			}
-		}
-		stage('Testing-RCON') {
-            when {
-                expression { return params['RCON'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPItc_RCON.os', [
-'RC_CommandsExecution',
-'RC_ExtendedCheck',
-					])
-				}
-			}
-		}
 		stage('Testing-YandexDisk') {
             when {
                 expression { return params['YandexDisk'] }
@@ -406,6 +265,19 @@ pipeline {
 'GT_Authorization',
 'GT_CreateTable',
 'GT_FillClearCells',
+					])
+				}
+			}
+		}
+		stage('Testing-Viber') {
+            when {
+                expression { return params['Viber'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Viber.os', [
+'Viber_DataRetrieval',
+'Viber_MessagesSending',
 					])
 				}
 			}
@@ -616,6 +488,80 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-SQLite') {
+            when {
+                expression { return params['SQLite'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SQLite.os', [
+'SQLL_CommonMethods',
+'SQLL_ExtendedCheck',
+'SQLL_ORM',
+					])
+				}
+			}
+		}
+		stage('Testing-PostgreSQL') {
+            when {
+                expression { return params['PostgreSQL'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_PostgreSQL.os', [
+'Postgres_CommonMethods',
+'Postgres_ExtendedCheck',
+'Postgres_ORM',
+					])
+				}
+			}
+		}
+		stage('Testing-MySQL') {
+            when {
+                expression { return params['MySQL'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MySQL.os', [
+'MYS_CommonMethods',
+'MYS_ExtendedCheck',
+'MYS_ORM',
+					])
+				}
+			}
+		}
+		stage('Testing-MSSQL') {
+            when {
+                expression { return params['MSSQL'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MSSQL.os', [
+'MSS_CommonMethods',
+'MSS_ExtendedCheck',
+'MSS_ORM',
+					])
+				}
+			}
+		}
+		stage('Testing-MongoDB') {
+            when {
+                expression { return params['MongoDB'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_MongoDB.os', [
+'Mongo_CommonMethods',
+'Mongo_ExtendedCheck',
+'Mong_DatabaseManagement',
+'Mongo_CollectionManagement',
+'Mongo_DocumentsManagement',
+'Mongo_UserManagement',
+'Mongo_RoleManagement',
+					])
+				}
+			}
+		}
 		stage('Testing-GreenAPI') {
             when {
                 expression { return params['GreenAPI'] }
@@ -646,6 +592,19 @@ pipeline {
 'GMax_MessageHistory',
 'GMax_Queues',
 'GMax_Account',
+					])
+				}
+			}
+		}
+		stage('Testing-RCON') {
+            when {
+                expression { return params['RCON'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_RCON.os', [
+'RC_CommandsExecution',
+'RC_ExtendedCheck',
 					])
 				}
 			}
@@ -698,6 +657,21 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-FTP') {
+            when {
+                expression { return params['FTP'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_FTP.os', [
+'FT_DirecotryManagement',
+'FT_FileOperations',
+'FT_CommonMethods',
+'FT_ExtendedCheck',
+					])
+				}
+			}
+		}
 		stage('Testing-ReportPortal') {
             when {
                 expression { return params['ReportPortal'] }
@@ -710,6 +684,34 @@ pipeline {
 'RPortal_LogRecording',
 'RPortal_ProjectManagement',
 'RPortal_UserManagement',
+					])
+				}
+			}
+		}
+		stage('Testing-SSH') {
+            when {
+                expression { return params['SSH'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SSH.os', [
+'SShell_CommonMethods',
+'SShell_ExtendedCheck',
+					])
+				}
+			}
+		}
+		stage('Testing-SFTP') {
+            when {
+                expression { return params['SFTP'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_SFTP.os', [
+'SF_CommonMethods',
+'SF_DirectoryManagement',
+'SF_FileManagement',
+'SF_ExtendedCheck',
 					])
 				}
 			}
@@ -796,6 +798,36 @@ pipeline {
 'Lua_GlobalVariables',
 'Lua_PackageManagement',
 'Lua_ExtendedCheck',
+					])
+				}
+			}
+		}
+		stage('Testing-NativeAPI') {
+            when {
+                expression { return params['NativeAPI'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_NativeAPI.os', [
+'NativeAPI_CommonMethods',
+'NativeAPI_WorkWithLibrary',
+'NativeAPI_WorkWithInstance',
+					])
+				}
+			}
+		}
+		stage('Testing-7z') {
+            when {
+                expression { return params['7z'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_7z.os', [
+'Z7_Archiving',
+'Z7_ArchivingWithPassword',
+'Z7_GettingMetadata',
+'Z7_PartialUnpacking',
+'Z7_ArchiveModification',
 					])
 				}
 			}

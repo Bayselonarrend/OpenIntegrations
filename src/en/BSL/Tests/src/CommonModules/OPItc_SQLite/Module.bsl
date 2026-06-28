@@ -97,15 +97,11 @@ EndFunction
 
 Procedure SQLL_CommonMethods() Export
 
-    TestParameters = New Structure;
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Base = GetTempFileName("sqlite");
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
-
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQLite_Ext"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQLite_ExtLinux", TestParameters);
 
     SQLite_CreateConnection(TestParameters);
     SQLite_CloseConnection(TestParameters);
@@ -139,14 +135,12 @@ EndProcedure
 
 Procedure SQLL_ORM() Export
 
-    TestParameters = New Structure;
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Base = GetTempFileName("sqlite");
 
     Connection = OPI_SQLite.CreateConnection(Base);
     TestParameters.Insert("SQLite_DB", Connection);
-
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
 
     SQLite_CreateTable(TestParameters);
     SQLite_AddRecords(TestParameters);

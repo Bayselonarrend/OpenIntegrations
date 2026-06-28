@@ -95,9 +95,7 @@ EndFunction
 
 Procedure SlackGetData() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_GetBotInformation(TestParameters);
     Slack_GetUserList(TestParameters);
     Slack_GetWorkspaceList(TestParameters);
@@ -106,12 +104,7 @@ EndProcedure
 
 Procedure Slack_SendDeleteMessage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"   , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_SendMessage(TestParameters);
     Slack_EditMessage(TestParameters);
     Slack_GetMessageReplyList(TestParameters);
@@ -125,10 +118,7 @@ EndProcedure
 
 Procedure Slack_CreateArchiveChannel() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_User" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_CreateChannel(TestParameters);
     Slack_SetChannelTopic(TestParameters);
     Slack_SetChannelGoal(TestParameters);
@@ -147,10 +137,7 @@ EndProcedure
 
 Procedure Slack_OpenCloseDialog() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_User" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_OpenDialog(TestParameters);
     Slack_CloseDialog(TestParameters);
 
@@ -158,11 +145,7 @@ EndProcedure
 
 Procedure Slack_UploadDeleteFile() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_GetFilesList(TestParameters);
     Slack_UploadFile(TestParameters);
     Slack_MakeFilePublic(TestParameters);
@@ -174,11 +157,7 @@ EndProcedure
 
 Procedure Slack_UploadDeleteExternalFile() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Slack_GetExternalFileList(TestParameters);
     Slack_AddExternalFile(TestParameters);
     Slack_GetExternalFile(TestParameters);

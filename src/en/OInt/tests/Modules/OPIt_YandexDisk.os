@@ -95,12 +95,7 @@ EndFunction
 
 Procedure YDisk_Authorization() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_ClientID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_ClientSecret", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_RefreshToken", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_GetConfirmationCode(TestParameters);
     YandexDisk_ConvertCodeToToken(TestParameters);
     YandexDisk_RefreshToken(TestParameters);
@@ -109,28 +104,21 @@ EndProcedure
 
 Procedure YDisk_GetDiskInfo() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_GetDiskInformation(TestParameters);
 
 EndProcedure
 
 Procedure YDisk_CreateFolder() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_CreateFolder(TestParameters);
 
 EndProcedure
 
 Procedure YDisk_UploadByUrlAndGetObject() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_UploadFileByURL(TestParameters);
     YandexDisk_GetObject(TestParameters);
     YandexDisk_DeleteObject(TestParameters);
@@ -139,11 +127,7 @@ EndProcedure
 
 Procedure YDisk_UploadDeleteFile() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Audio"           , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_UploadFileInParts(TestParameters);
     YandexDisk_UploadFile(TestParameters);
 
@@ -151,12 +135,9 @@ EndProcedure
 
 Procedure YDisk_CreateObjectCopy() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
-    Token = TestParameters["YandexDisk_Token"];
-    URL   = TestParameters["Picture"];
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    Token          = TestParameters["YandexDisk_Token"];
+    URL            = TestParameters["Picture"];
 
     OriginalPath = "/" + String(New UUID) + ".png";
 
@@ -179,12 +160,9 @@ EndProcedure
 
 Procedure YDisk_GetDownloadLink() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
-    Token = TestParameters["YandexDisk_Token"];
-    URL   = TestParameters["Picture"];
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    Token          = TestParameters["YandexDisk_Token"];
+    URL            = TestParameters["Picture"];
 
     Path = "/" + String(New UUID) + ".png";
 
@@ -203,21 +181,16 @@ EndProcedure
 
 Procedure YDisk_GetFileList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_GetFilesList(TestParameters);
 
 EndProcedure
 
 Procedure YDisk_MoveObject() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
-    Token = TestParameters["YandexDisk_Token"];
-    URL   = TestParameters["Picture"];
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    Token          = TestParameters["YandexDisk_Token"];
+    URL            = TestParameters["Picture"];
 
     OriginalPath = "/" + String(New UUID) + ".png";
 
@@ -240,12 +213,9 @@ EndProcedure
 
 Procedure YDisk_PublicObjectActions() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-
-    Token = TestParameters["YandexDisk_Token"];
-    URL   = TestParameters["Picture"];
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    Token          = TestParameters["YandexDisk_Token"];
+    URL            = TestParameters["Picture"];
 
     OriginalPath = "/" + String(New UUID) + ".png";
 
@@ -269,9 +239,7 @@ EndProcedure
 
 Procedure YDisk_GetPublishedList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexDisk_GetPublishedObjectsList(TestParameters);
 
 EndProcedure
