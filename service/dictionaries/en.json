@@ -6466,7 +6466,7 @@
 "200000).Равно(Истина": "200000).Equal(True",
 "ПодключениеБезСтроки": "ConnectionWithoutString",
 "Работа с библиотекой": "Work with library",
-"ПолучитьИменаКлассов": "Get class names",
+"ПолучитьИменаКлассов": "GetClassNames",
 "Работа с экземпляром": "Work with instance",
 "СоответствиеКартинки": "PictureMap",
 "URL к внешнему файлу": "URL to external file",
