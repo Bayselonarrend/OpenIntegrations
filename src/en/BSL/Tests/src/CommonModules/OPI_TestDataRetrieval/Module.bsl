@@ -502,13 +502,13 @@ Function GetTestData() Export
 
     For Each String In Result["data"] Do
 
-        Key      = String["key"];
-        Value    = String["value"];
-        ValeType = String["type"];
+        CurrentKey = String["key"];
+        Value      = String["value"];
+        ValeType   = String["type"];
 
         Value = ?(ValeType = "Number", Number(Value), String(Value));
 
-        Collection.Insert(Key, Value);
+        Collection.Insert(CurrentKey, Value);
 
     EndDo;
 
