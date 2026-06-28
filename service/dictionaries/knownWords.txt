@@ -523,3 +523,4 @@ noopener
 noreferrer
 linecap
 linejoin
+nativeapi
