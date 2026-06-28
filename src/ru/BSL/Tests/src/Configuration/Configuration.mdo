@@ -89,6 +89,7 @@
   <commonModules>CommonModule.OPItc_MongoDB</commonModules>
   <commonModules>CommonModule.OPItc_MSSQL</commonModules>
   <commonModules>CommonModule.OPItc_MySQL</commonModules>
+  <commonModules>CommonModule.OPItc_NativeAPI</commonModules>
   <commonModules>CommonModule.OPItc_Neocities</commonModules>
   <commonModules>CommonModule.OPItc_Notion</commonModules>
   <commonModules>CommonModule.OPItc_Ollama</commonModules>
