@@ -21,7 +21,6 @@
   "mongodb": "OPI_MongoDB",
   "mssql": "OPI_MSSQL",
   "mysql": "OPI_MySQL",
-  "nativeapi": "OPI_NativeAPI",
   "neocities": "OPI_Neocities",
   "notion": "OPI_Notion",
   "ollama": "OPI_Ollama",

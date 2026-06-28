@@ -188,7 +188,6 @@ Function GetTestTable(Val TestModule = "") Export
     MsgPack   = "MessagePack";
     Janx      = "Janx";
     Lua       = "Lua";
-    NativeAPI = "NativeAPI";
     SevenZ    = "7z";
 
     ArrayOfTests = New Array;
@@ -410,9 +409,6 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_CommonMethods"    , "Common methods"            , NativeAPI);
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithLibrary"  , "Work with library"         , NativeAPI);
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithInstance" , "Work with instance"        , NativeAPI);
     NewTest(ArrayOfTests, TestModule, "Z7_Archiving"               , "Archiving"                 , SevenZ);
     NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"   , "Archiving with a password" , SevenZ);
     NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"         , "Metadata extraction"       , SevenZ);
@@ -16623,161 +16619,6 @@ Function Check_Janx_Extended_RoundRobin(Val Result, Val Option, Restored = Undef
 
 EndFunction
 
-Function Check_NativeAPI_GetLoggingSettings(Val Result, Val Option)
-
-    If Option = "File" Then
-
-        ExpectsThat(Result["mode"]).Равно("file");
-        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
-
-    ElsIf Option = "Memory" Then
-
-        ExpectsThat(Result["mode"]).Равно("memory");
-        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
-
-    Else
-
-        ExpectsThat(Result["mode"]).Равно("both");
-        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
-        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_CreateHost(Val Result, Val Option)
-
-    ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_NativeAPI.Main").Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_IsHost(Val Result, Val Option)
-
-    If Option = "False" Then
-        ExpectsThat(Result).Равно(False);
-    Else
-        ExpectsThat(Result).Равно(True);
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetLog(Val Result, Val Option, LogFile = "")
-
-    If Option = "AsString" Then
-
-        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
-        ExpectsThat(StrFind(Result, "OpenLibrary") > 0).Равно(True);
-
-    Else
-
-        ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetClassNames(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["classes"].Count() > 0).Равно(True);
-    ExpectsThat(Result["classes"].Find("Main") > 0).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_CreateInstance(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(ValueIsFilled(Result["instance_id"])).Равно(True);
-    ExpectsThat(StrLen(Result["instance_id"]) = 36).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_DestroyInstance(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetMetadata(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["metadata"]["methods"].Count() > 0).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetProperties(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(TypeOf(Result["properties"])).Равно(Type("Map"));
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_ExecuteMethod(Val Result, Val Option, AddParam1 = Undefined)
-
-    Data = Result["data"];
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(TypeOf(Data["properties"])).Равно(Type("Map"));
-
-    If Option = "SQLite" Then
-
-        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
-        ExpectsThat(Data["properties"]["Database"]["value"]).Равно(AddParam1);
-
-    ElsIf Option = "SQLiteRequest" Then
-
-        ExpectsThat(ValueIsFilled(Data["value"])).Равно(True);
-        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
-
-    ElsIf Option  = "Version"
-        Or Option = "ClassName"
-        Or Option = "WithoutParameters" Then
-        ExpectsThat(Data["value"]["type"]).Равно("string");
-    Else
-        ExpectsThat(Data["value"]["type"]).Равно("blob");
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetProperty(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(False);
-    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_SetProperty(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(False);
-    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
-
-    Return Result;
-
-EndFunction
-
 Function Check_Janx_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
 
     ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
@@ -18093,10 +17934,6 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     ElsIf AddInName = "OPI_Lua54" Then
 
         Value = "Lua54";
-
-    ElsIf AddInName = "OPI_NativeAPI" Then
-
-        Value = "";
 
     ElsIf AddInName = "OPI_LuaJIT" Then
 

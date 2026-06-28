@@ -60,12 +60,14 @@
 //@skip-check bsl-legacy-check-expression-type
 //@skip-check undefined-variable
 
-#Использовать "../../../../tools/main"
-#Использовать "../../../../tools/http"
-#Использовать "../../../../api/openai"
-#Использовать "../../../../api/rportal"
-#Использовать "../../../../api/sqlite"
-#Использовать asserts
+// #Использовать "../../../../tools/main"
+// #Использовать "../../../../tools/http"
+// #Использовать "../../../../api/openai"
+// #Использовать "../../../../api/rportal"
+// #Использовать "../../../../api/sqlite"
+// #Использовать asserts
+
+#Если Не ВебКлиент Тогда // !OPI
 
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -186,7 +188,6 @@
     MsgPack   = "MessagePack";
     Janx      = "Janx";
     Lua       = "Lua";
-    NativeAPI = "NativeAPI";
     SevenZ    = "7z";
 
     МассивТестов = Новый Массив;
@@ -408,9 +409,6 @@
     НовыйТест(МассивТестов, МодульТестов, "Lua_УправлениеПакетами"               , "Управление пакетами"             , Lua);
     НовыйТест(МассивТестов, МодульТестов, "Lua_РасширеннаяПроверка"              , "Расширенная проверка"            , Lua);
 
-    НовыйТест(МассивТестов, МодульТестов, "NativeAPI_ОсновныеМетоды"             , "Основные методы"                 , NativeAPI);
-    НовыйТест(МассивТестов, МодульТестов, "NativeAPI_РаботаСБиблиотекой"         , "Работа с библиотекой"            , NativeAPI);
-    НовыйТест(МассивТестов, МодульТестов, "NativeAPI_РаботаСЭкземпляром"         , "Работа с экземпляром"            , NativeAPI);
     НовыйТест(МассивТестов, МодульТестов, "Z7_Архивация"                         , "Архивация"                       , SevenZ);
     НовыйТест(МассивТестов, МодульТестов, "Z7_АрхивацияСПаролем"                 , "Архивация с паролем"             , SevenZ);
     НовыйТест(МассивТестов, МодульТестов, "Z7_ПолучениеМетаданных"               , "Получение метаданных"            , SevenZ);
@@ -573,7 +571,9 @@
 
     Попытка
 
-        Данные = ПолучитьПеременнуюСреды("OINT_TESTS_CLI");
+        // !OInt Данные = ПолучитьПеременнуюСреды("OINT_TESTS_CLI");
+
+        Данные = OPI_ИнструментыВызовСервера.ПолучитьКонстанту("IsCLITests"); // !OPI
 
     Исключение
         Возврат Ложь;
@@ -659,7 +659,8 @@
     //@skip-check empty-except-statement
     Попытка
 
-        УстановитьПеременнуюСреды("OINT_TESTS_CLI", CLITestsMark);
+        OPI_ИнструментыВызовСервера.УстановитьКонстанту("IsCLITests", CLITestsMark); // !OPI
+        // !OInt УстановитьПеременнуюСреды("OINT_TESTS_CLI", CLITestsMark);
 
     Исключение КонецПопытки;
 
@@ -1483,6 +1484,7 @@
         Если ЭтоOneScript Тогда
             ДанныеРезультата = ФоновоеЗадание.Результат;
         Иначе
+            ДанныеРезультата = ПолучитьИзВременногоХранилища(Результат["Адрес"]); // !OPI
         КонецЕсли;
 
         Если Не ЗначениеЗаполнено(Вариант) Тогда
@@ -16617,161 +16619,6 @@
 
 КонецФункции
 
-Функция Проверка_NativeAPI_ПолучитьНастройкиЛогирования(Знач Результат, Знач Вариант)
-
-    Если Вариант = "Файл" Тогда
-
-        ОжидаетЧто(Результат["mode"]).Равно("file");
-        ОжидаетЧто(ЗначениеЗаполнено(Результат["file_path"])).Равно(Истина);
-
-    ИначеЕсли Вариант = "Память" Тогда
-
-        ОжидаетЧто(Результат["mode"]).Равно("memory");
-        ОжидаетЧто(ЗначениеЗаполнено(Результат["max_entries"])).Равно(Истина);
-
-    Иначе
-
-        ОжидаетЧто(Результат["mode"]).Равно("both");
-        ОжидаетЧто(ЗначениеЗаполнено(Результат["file_path"])).Равно(Истина);
-        ОжидаетЧто(ЗначениеЗаполнено(Результат["max_entries"])).Равно(Истина);
-
-    КонецЕсли;
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_СоздатьХост(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Строка(ТипЗнч(Результат)) = "AddIn.OPI_NativeAPI.Main").Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ЭтоХост(Знач Результат, Знач Вариант)
-
-    Если Вариант = "Ложь" Тогда
-        ОжидаетЧто(Результат).Равно(Ложь);
-    Иначе
-        ОжидаетЧто(Результат).Равно(Истина);
-    КонецЕсли;
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ПолучитьЛог(Знач Результат, Знач Вариант, ФайлЛога = "")
-
-    Если Вариант = "КакСтрока" Тогда
-
-        ОжидаетЧто(ТипЗнч(Результат)).Равно(Тип("Строка"));
-        ОжидаетЧто(СтрНайти(Результат, "OpenLibrary") > 0).Равно(Истина);
-
-    Иначе
-
-        ОжидаетЧто(Результат["result"]).Равно(Истина);
-        ОжидаетЧто(Результат["logs"].Количество() > 0).Равно(Истина);
-
-    КонецЕсли;
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ПолучитьИменаКлассов(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-    ОжидаетЧто(Результат["classes"].Количество() > 0).Равно(Истина);
-    ОжидаетЧто(Результат["classes"].Найти("Main") > 0).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_СоздатьЭкземпляр(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-    ОжидаетЧто(ЗначениеЗаполнено(Результат["instance_id"])).Равно(Истина);
-    ОжидаетЧто(СтрДлина(Результат["instance_id"]) = 36).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_УничтожитьЭкземпляр(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ПолучитьМетаданные(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-    ОжидаетЧто(Результат["metadata"]["methods"].Количество() > 0).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ПолучитьСвойства(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-    ОжидаетЧто(ТипЗнч(Результат["properties"])).Равно(Тип("Соответствие"));
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ВызватьМетод(Знач Результат, Знач Вариант, ДопПараметр1 = Неопределено)
-
-    Данные = Результат["data"];
-
-    ОжидаетЧто(Результат["result"]).Равно(Истина);
-    ОжидаетЧто(ТипЗнч(Данные["properties"])).Равно(Тип("Соответствие"));
-
-    Если Вариант = "SQLite" Тогда
-
-        ОжидаетЧто(Данные["properties"]["Database"]["type"]).Равно("string");
-        ОжидаетЧто(Данные["properties"]["Database"]["value"]).Равно(ДопПараметр1);
-
-    ИначеЕсли Вариант = "SQLiteЗапрос" Тогда
-
-        ОжидаетЧто(ЗначениеЗаполнено(Данные["value"])).Равно(Истина);
-        ОжидаетЧто(Данные["properties"]["Database"]["type"]).Равно("string");
-
-    ИначеЕсли Вариант = "Version"
-        Или Вариант = "ИмяКласса"
-        Или Вариант = "БезПараметров" Тогда
-        ОжидаетЧто(Данные["value"]["type"]).Равно("string");
-    Иначе
-        ОжидаетЧто(Данные["value"]["type"]).Равно("blob");
-    КонецЕсли;
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_ПолучитьСвойство(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Ложь);
-    ОжидаетЧто(ЗначениеЗаполнено(Результат["error"])).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
-Функция Проверка_NativeAPI_УстановитьСвойство(Знач Результат, Знач Вариант)
-
-    ОжидаетЧто(Результат["result"]).Равно(Ложь);
-    ОжидаетЧто(ЗначениеЗаполнено(Результат["error"])).Равно(Истина);
-
-    Возврат Результат;
-
-КонецФункции
-
 Функция Проверка_Janx_СериализоватьДанные(Знач Результат, Знач Вариант, Восстановленное = Неопределено, ИсходноеЗначение = Неопределено)
 
     ОжидаетЧто(ТипЗнч(Результат)).Равно(Тип("ДвоичныеДанные"));
@@ -17697,15 +17544,15 @@
 
         // BSLLS:CommonModuleAssign-on
 
-        ТекущийКаталог   = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
-        МассивПути       = СтрРазделить(ТекущийКаталог, "/");
-        МассивПути.Удалить(МассивПути.ВГраница());
-        МассивПути.Удалить(МассивПути.ВГраница());
-        МассивПути.Добавить("api");
-        МассивПути.Добавить("Modules");
-        МассивПути.Добавить("OPI_ReportPortal.os");
-        ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
-        OPI_ReportPortal = Новый("ReportPortal");
+        // !OInt ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+        // !OInt МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+        // !OInt МассивПути.Удалить(МассивПути.ВГраница());
+        // !OInt МассивПути.Удалить(МассивПути.ВГраница());
+        // !OInt МассивПути.Добавить("api");
+        // !OInt МассивПути.Добавить("Modules");
+        // !OInt МассивПути.Добавить("OPI_ReportPortal.os");
+        // !OInt ПодключитьСценарий(СтрСоединить(МассивПути, "/"), "ReportPortal");
+        // !OInt OPI_ReportPortal = Новый("ReportPortal");
 
         Возврат OPI_ReportPortal;
 
@@ -18087,10 +17934,6 @@
     ИначеЕсли ИмяКомпоненты = "OPI_Lua54" Тогда
 
         Значение = "Lua54";
-
-    ИначеЕсли ИмяКомпоненты = "OPI_NativeAPI" Тогда
-
-        Значение = "";
 
     ИначеЕсли ИмяКомпоненты = "OPI_LuaJIT" Тогда
 
@@ -18838,147 +18681,4 @@
 
 #КонецОбласти
 
-
-#Region Alternate
-
-Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
-    Return ВыполнитьТестCLI(Library, Method, Options, Record);
-EndFunction
-
-Function GetTestingSectionMapping() Export
-    Return ПолучитьСоответствиеРазделовТестирования();
-EndFunction
-
-Function GetTestTable(Val TestModule = "") Export
-    Return ПолучитьТаблицуТестов(TestModule);
-EndFunction
-
-Function ExpectsThat(Value) Export
-    Return ОжидаетЧто(Value);
-EndFunction
-
-Function FormYAXTests(Val TestModule) Export
-    Return СформироватьТестыЯкс(TestModule);
-EndFunction
-
-Function FormYAXTestsCLI(Val TestModule = "") Export
-    Return СформироватьТестыЯксCLI(TestModule);
-EndFunction
-
-Function FormAssertsTests(Val TestModule = "") Export
-    Return СформироватьТестыАссертс(TestModule);
-EndFunction
-
-Function FormAssertsTestsCLI(Val TestModule = "") Export
-    Return СформироватьТестыАссертсCLI(TestModule);
-EndFunction
-
-Function GetTestData() Export
-    Return ПолучитьТестовыеДанные();
-EndFunction
-
-Function GetParameter(Parameter) Export
-    Return ПолучитьПараметр(Parameter);
-EndFunction
-
-Function GetBinary(Parameter) Export
-    Return ПолучитьДвоичные(Parameter);
-EndFunction
-
-Function GetFilePath(Val Path) Export
-    Return ПолучитьФайлПути(Path);
-EndFunction
-
-Function GetLocalhost() Export
-    Return ПолучитьLocalhost();
-EndFunction
-
-Function IsCLITest() Export
-    Return ЭтоТестCLI();
-EndFunction
-
-Procedure ParameterToCollection(Parameter, Collection) Export
-    ПараметрВКоллекцию(Parameter, Collection);
-EndProcedure
-
-Procedure BinaryToCollection(Parameter, Collection) Export
-    ДвоичныеВКоллекцию(Parameter, Collection);
-EndProcedure
-
-Procedure WriteParameter(Parameter, Value) Export
-    ЗаписатьПараметр(Parameter, Value);
-EndProcedure
-
-Procedure Process(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
-    Обработать(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
-EndProcedure
-
-Procedure ProcessCLI(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
-    ОбработатьCLI(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
-EndProcedure
-
-Procedure SetCLITestFlag(Val Value) Export
-    УстановитьПризнакТестаCLI(Value);
-EndProcedure
-
-Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
-    ВывестиСлужебнуюИнформацию(Text, Note, Library);
-EndProcedure
-
-Function CreateReportPortalLaunch(Val Platform = "") Export
-    Return СоздатьЗапускReportPortal(Platform);
-EndFunction
-
-Function CreateLaunchSet(Val Name) Export
-    Return СоздатьНаборЗапуска(Name);
-EndFunction
-
-Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
-    Return СоздатьТестовыйЭлемент(Set, Library, Method, Option);
-EndFunction
-
-Procedure FinishLaunch() Export
-    ЗавершитьЗапуск();
-EndProcedure
-
-Function GetExecutedTestsList() Export
-    Return ПолучитьСписокВыполненныхТестов();
-EndFunction
-
-Function GetFullTestList() Export
-    Return ПолучитьПолныйСписокТестов();
-EndFunction
-
-Function GetFTPParameterOptions() Export
-    Return ПолучитьВариантыПараметровFTP();
-EndFunction
-
-Function GetWebSocketParametersOptions() Export
-    Return ПолучитьВариантыПараметровWebSocket();
-EndFunction
-
-Function GetSSHParameterOptions() Export
-    Return ПолучитьВариантыПараметровSSH();
-EndFunction
-
-Function GetS3ParameterOptions() Export
-    Return ПолучитьВариантыПараметровS3();
-EndFunction
-
-Function GetPostgresParameterOptions() Export
-    Return ПолучитьВариантыПараметровPostgres();
-EndFunction
-
-Function GetMySQLParameterOptions() Export
-    Return ПолучитьВариантыПараметровMySQL();
-EndFunction
-
-Function GetTagArray(Index) Export
-    Return ПолучитьМассивТегов(Index);
-EndFunction
-
-Function GetJanxTestCollection(Val Option) Export
-    Return ПолучитьТестовуюКоллекциюJanx(Option);
-EndFunction
-
-#EndRegion
+#КонецЕсли // !OPI

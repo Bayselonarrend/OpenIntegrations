@@ -60,12 +60,14 @@
 //@skip-check bsl-legacy-check-expression-type
 //@skip-check undefined-variable
 
-#Use "../../../../tools/main"
-#Use "../../../../tools/http"
-#Use "../../../../api/openai"
-#Use "../../../../api/rportal"
-#Use "../../../../api/sqlite"
-#Use asserts
+// #Use "../../../../tools/main"
+// #Use "../../../../tools/http"
+// #Use "../../../../api/openai"
+// #Use "../../../../api/rportal"
+// #Use "../../../../api/sqlite"
+// #Use asserts
+
+#If Not WebClient Then // !OPI
 
 #Region Internal
 
@@ -186,7 +188,6 @@ Function GetTestTable(Val TestModule = "") Export
     MsgPack   = "MessagePack";
     Janx      = "Janx";
     Lua       = "Lua";
-    NativeAPI = "NativeAPI";
     SevenZ    = "7z";
 
     ArrayOfTests = New Array;
@@ -408,9 +409,6 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_CommonMethods"    , "Common methods"            , NativeAPI);
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithLibrary"  , "Work with library"         , NativeAPI);
-    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithInstance" , "Work with instance"        , NativeAPI);
     NewTest(ArrayOfTests, TestModule, "Z7_Archiving"               , "Archiving"                 , SevenZ);
     NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"   , "Archiving with a password" , SevenZ);
     NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"         , "Metadata extraction"       , SevenZ);
@@ -541,7 +539,7 @@ Function GetFilePath(Val Path) Export
     If StrFind(Path, "http") > 0 Or StrFind(Path, "www") > 0 Then
 
         TFN    = GetTempFileName();
-        CopyFile(Path, TFN);
+        FileCopy(Path, TFN);
         Path   = TFN;
         Binary = New BinaryData(Path);
 
@@ -573,7 +571,9 @@ Function IsCLITest() Export
 
     Try
 
-        Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+        // !OInt Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+
+        Data = OPI_ToolsServerCall.GetConstant("IsCLITests"); // !OPI
 
     Except
         Return False;
@@ -659,7 +659,8 @@ Procedure SetCLITestFlag(Val Value) Export
     //@skip-check empty-except-statement
     Try
 
-        SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
+        OPI_ToolsServerCall.SetConstant("IsCLITests", CLITestsMark); // !OPI
+        // !OInt SetEnvironmentVariable("OINT_TESTS_CLI", CLITestsMark);
 
     Except EndTry;
 
@@ -1465,11 +1466,11 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
             , Result["BackgroundJob"]);
 
         Try
-            BackgroundJob.Wait();
+            BackgroundJob.WaitForCompletion();
         Except
 
             Raise DetailErrorDescription(?(IsOneScript
-                , BackgroundJob.ExceptionInfo
+                , BackgroundJob.ErrorInfo
                 , BackgroundJobs.FindByUUID(BackgroundJob.UUID).ErrorInfo));
 
         EndTry;
@@ -1483,6 +1484,7 @@ Function Check_Core_BackgroundCall(Val Result, Val Option)
         If IsOneScript Then
             ResultData = BackgroundJob.Result;
         Else
+            ResultData = GetFromTempStorage(Result["Address"]); // !OPI
         EndIf;
 
         If Not ValueIsFilled(Option) Then
@@ -2030,7 +2032,7 @@ Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://oauth.vk.com")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://oauth.vk.com")).Равно(True);
 
     Return Result;
 
@@ -3048,7 +3050,7 @@ Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -3104,7 +3106,7 @@ Function Check_GoogleCalendar_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -3351,7 +3353,7 @@ Function Check_GoogleDrive_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -3605,7 +3607,7 @@ Function Check_GoogleSheets_FormCodeRetrievalLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
 
     WriteParameter("Google_Link", Result);
 
@@ -4586,7 +4588,7 @@ Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
-    ExpectsThat(StrStartsWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
+    ExpectsThat(StrStartWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
 
     Return Result;
 
@@ -11267,7 +11269,7 @@ Function Check_HTTP_StartMultipartBody(Val Result, Val Option, Image = "")
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -11295,7 +11297,7 @@ Function Check_HTTP_AddMultipartFormDataFile(Val Result, Val Option, Image = "")
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -11323,7 +11325,7 @@ Function Check_HTTP_AddMultipartFormDataField(Val Result, Val Option, Image = ""
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     OPI_TypeConversion.GetBinaryData(Image);
     TextB64 = "data:image/png;base64," + Base64String(Image);
@@ -11349,7 +11351,7 @@ Function Check_HTTP_AddDataAsRelated(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Content-Type"], "multipart/")).Равно(True);
 
     Return Result;
 
@@ -11575,7 +11577,7 @@ Function Check_HTTP_AddAWS4Authorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "AWS4")).Равно(True);
     ExpectsThat(Result["headers"]["X-Amz-Content-Sha256"] = Undefined).Равно(False);
 
     Return Result;
@@ -11594,7 +11596,7 @@ Function Check_HTTP_AddOAuthV1Authorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
 
     Return Result;
 
@@ -11612,7 +11614,7 @@ Function Check_HTTP_SetOAuthV1Algorithm(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(StrStartsWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
+    ExpectsThat(StrStartWith(Result["headers"]["Authorization"], "OAuth")).Равно(True);
 
     Return Result;
 
@@ -16617,161 +16619,6 @@ Function Check_Janx_Extended_RoundRobin(Val Result, Val Option, Restored = Undef
 
 EndFunction
 
-Function Check_NativeAPI_GetLoggingSettings(Val Result, Val Option)
-
-    If Option = "File" Then
-
-        ExpectsThat(Result["mode"]).Равно("file");
-        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
-
-    ElsIf Option = "Memory" Then
-
-        ExpectsThat(Result["mode"]).Равно("memory");
-        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
-
-    Else
-
-        ExpectsThat(Result["mode"]).Равно("both");
-        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
-        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_CreateHost(Val Result, Val Option)
-
-    ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_NativeAPI.Main").Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_IsHost(Val Result, Val Option)
-
-    If Option = "False" Then
-        ExpectsThat(Result).Равно(False);
-    Else
-        ExpectsThat(Result).Равно(True);
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetLog(Val Result, Val Option, LogFile = "")
-
-    If Option = "AsString" Then
-
-        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
-        ExpectsThat(StrFind(Result, "OpenLibrary") > 0).Равно(True);
-
-    Else
-
-        ExpectsThat(Result["result"]).Равно(True);
-        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetClassNames(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["classes"].Count() > 0).Равно(True);
-    ExpectsThat(Result["classes"].Find("Main") > 0).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_CreateInstance(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(ValueIsFilled(Result["instance_id"])).Равно(True);
-    ExpectsThat(StrLen(Result["instance_id"]) = 36).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_DestroyInstance(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetMetadata(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["metadata"]["methods"].Count() > 0).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetProperties(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(TypeOf(Result["properties"])).Равно(Type("Map"));
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_ExecuteMethod(Val Result, Val Option, AddParam1 = Undefined)
-
-    Data = Result["data"];
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(TypeOf(Data["properties"])).Равно(Type("Map"));
-
-    If Option = "SQLite" Then
-
-        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
-        ExpectsThat(Data["properties"]["Database"]["value"]).Равно(AddParam1);
-
-    ElsIf Option = "SQLiteRequest" Then
-
-        ExpectsThat(ValueIsFilled(Data["value"])).Равно(True);
-        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
-
-    ElsIf Option  = "Version"
-        Or Option = "ClassName"
-        Or Option = "WithoutParameters" Then
-        ExpectsThat(Data["value"]["type"]).Равно("string");
-    Else
-        ExpectsThat(Data["value"]["type"]).Равно("blob");
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_GetProperty(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(False);
-    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_NativeAPI_SetProperty(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(False);
-    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
-
-    Return Result;
-
-EndFunction
-
 Function Check_Janx_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
 
     ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
@@ -17665,7 +17512,7 @@ Function ReadLaunchFile()
         Return New Map;
     EndIf;
 
-    If Not StrStartsWith(TrimAll(JSONText), "{") Then
+    If Not StrStartWith(TrimAll(JSONText), "{") Then
 
         LaunchObject = New File(JSONText);
 
@@ -17697,15 +17544,15 @@ Function ReportPortal()
 
         // BSLLS:CommonModuleAssign-on
 
-        CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
-        PathArray        = StrSplit(CurrentDirectory, "/");
-        PathArray.Delete(PathArray.UBound());
-        PathArray.Delete(PathArray.UBound());
-        PathArray.Add("api");
-        PathArray.Add("Modules");
-        PathArray.Add("OPI_ReportPortal.os");
-        AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
-        OPI_ReportPortal = New("ReportPortal");
+        // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
+        // !OInt PathArray = StrSplit(CurrentDirectory, "/");
+        // !OInt PathArray.Delete(PathArray.UBound());
+        // !OInt PathArray.Delete(PathArray.UBound());
+        // !OInt PathArray.Add("api");
+        // !OInt PathArray.Add("Modules");
+        // !OInt PathArray.Add("OPI_ReportPortal.os");
+        // !OInt AttachScript(StrConcat(PathArray, "/"), "ReportPortal");
+        // !OInt OPI_ReportPortal = New("ReportPortal");
 
         Return OPI_ReportPortal;
 
@@ -17954,7 +17801,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         // BSLLS:MissingTemporaryFileDeletion-on
 
-    ElsIf StrStartsWith(CurrentTypeString, "AddIn") Then
+    ElsIf StrStartWith(CurrentTypeString, "AddIn") Then
 
         Value = ProcessAddInParamCLI(Value, CurrentTypeString, AddOptions);
         Cover = Not Embedded;
@@ -18088,10 +17935,6 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = "Lua54";
 
-    ElsIf AddInName = "OPI_NativeAPI" Then
-
-        Value = "";
-
     ElsIf AddInName = "OPI_LuaJIT" Then
 
         Value = "LuaJIT";
@@ -18136,7 +17979,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         ValueAsString = Value;
 
-        If Not Embedded And StrStartsWith(ValueAsString, """") And StrEndsWith(ValueAsString, """") Then
+        If Not Embedded And StrStartWith(ValueAsString, """") And StrEndsWith(ValueAsString, """") Then
 
             ValueAsString = Left(ValueAsString, StrLen(ValueAsString) - 1);
             ValueAsString = Right(ValueAsString, StrLen(ValueAsString) - 1);
@@ -18223,7 +18066,7 @@ Function IsCLIOutputRepresentation(Val Options)
 
     OutString = TrimAll(String(OutValue));
 
-    Return StrStartsWith(OutString, "_") And StrEndsWith(OutString, "_");
+    Return StrStartWith(OutString, "_") And StrEndsWith(OutString, "_");
 
 EndFunction
 
@@ -18838,147 +18681,4 @@ EndProcedure
 
 #EndRegion
 
-
-#Region Alternate
-
-Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export
-    Return ExecuteTestCLI(Библиотека, Метод, Опции, Записывать);
-EndFunction
-
-Function ПолучитьСоответствиеРазделовТестирования() Export
-    Return GetTestingSectionMapping();
-EndFunction
-
-Function ПолучитьТаблицуТестов(Val МодульТестов = "") Export
-    Return GetTestTable(МодульТестов);
-EndFunction
-
-Function ОжидаетЧто(Значение) Export
-    Return ExpectsThat(Значение);
-EndFunction
-
-Function СформироватьТестыЯкс(Val МодульТестов) Export
-    Return FormYAXTests(МодульТестов);
-EndFunction
-
-Function СформироватьТестыЯксCLI(Val МодульТестов = "") Export
-    Return FormYAXTestsCLI(МодульТестов);
-EndFunction
-
-Function СформироватьТестыАссертс(Val МодульТестов = "") Export
-    Return FormAssertsTests(МодульТестов);
-EndFunction
-
-Function СформироватьТестыАссертсCLI(Val МодульТестов = "") Export
-    Return FormAssertsTestsCLI(МодульТестов);
-EndFunction
-
-Function ПолучитьТестовыеДанные() Export
-    Return GetTestData();
-EndFunction
-
-Function ПолучитьПараметр(Параметр) Export
-    Return GetParameter(Параметр);
-EndFunction
-
-Function ПолучитьДвоичные(Параметр) Export
-    Return GetBinary(Параметр);
-EndFunction
-
-Function ПолучитьФайлПути(Val Путь) Export
-    Return GetFilePath(Путь);
-EndFunction
-
-Function ПолучитьLocalhost() Export
-    Return GetLocalhost();
-EndFunction
-
-Function ЭтоТестCLI() Export
-    Return IsCLITest();
-EndFunction
-
-Procedure ПараметрВКоллекцию(Параметр, Коллекция) Export
-    ParameterToCollection(Параметр, Коллекция);
-EndProcedure
-
-Procedure ДвоичныеВКоллекцию(Параметр, Коллекция) Export
-    BinaryToCollection(Параметр, Коллекция);
-EndProcedure
-
-Procedure ЗаписатьПараметр(Параметр, Значение) Export
-    WriteParameter(Параметр, Значение);
-EndProcedure
-
-Procedure Обработать(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
-    Process(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
-EndProcedure
-
-Procedure ОбработатьCLI(Val Результат, Val Библиотека, Val Метод, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
-    ProcessCLI(Результат, Библиотека, Метод, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
-EndProcedure
-
-Procedure УстановитьПризнакТестаCLI(Val Значение) Export
-    SetCLITestFlag(Значение);
-EndProcedure
-
-Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export
-    LogServiceInformation(Текст, Примечание, Библиотека);
-EndProcedure
-
-Function СоздатьЗапускReportPortal(Val Платформа = "") Export
-    Return CreateReportPortalLaunch(Платформа);
-EndFunction
-
-Function СоздатьНаборЗапуска(Val Наименование) Export
-    Return CreateLaunchSet(Наименование);
-EndFunction
-
-Function СоздатьТестовыйЭлемент(Val Набор, Val Библиотека, Val Метод, Val Вариант) Export
-    Return CreateTestElement(Набор, Библиотека, Метод, Вариант);
-EndFunction
-
-Procedure ЗавершитьЗапуск() Export
-    FinishLaunch();
-EndProcedure
-
-Function ПолучитьСписокВыполненныхТестов() Export
-    Return GetExecutedTestsList();
-EndFunction
-
-Function ПолучитьПолныйСписокТестов() Export
-    Return GetFullTestList();
-EndFunction
-
-Function ПолучитьВариантыПараметровFTP() Export
-    Return GetFTPParameterOptions();
-EndFunction
-
-Function ПолучитьВариантыПараметровWebSocket() Export
-    Return GetWebSocketParametersOptions();
-EndFunction
-
-Function ПолучитьВариантыПараметровSSH() Export
-    Return GetSSHParameterOptions();
-EndFunction
-
-Function ПолучитьВариантыПараметровS3() Export
-    Return GetS3ParameterOptions();
-EndFunction
-
-Function ПолучитьВариантыПараметровPostgres() Export
-    Return GetPostgresParameterOptions();
-EndFunction
-
-Function ПолучитьВариантыПараметровMySQL() Export
-    Return GetMySQLParameterOptions();
-EndFunction
-
-Function ПолучитьМассивТегов(Индекс) Export
-    Return GetTagArray(Индекс);
-EndFunction
-
-Function ПолучитьТестовуюКоллекциюJanx(Val Вариант) Export
-    Return GetJanxTestCollection(Вариант);
-EndFunction
-
-#EndRegion
+#EndIf // !OPI

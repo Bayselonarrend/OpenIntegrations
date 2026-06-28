@@ -54,7 +54,6 @@ pipeline {
 		booleanParam(name: 'MessagePack', defaultValue: true, description: 'Run MessagePack tests')
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
-		booleanParam(name: 'NativeAPI', defaultValue: true, description: 'Run NativeAPI tests')
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 	}
 	stages {
@@ -809,20 +808,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-NativeAPI') {
-            when {
-                expression { return params['NativeAPI'] }
-            }
-			steps {
-				script {
-					runModuleTests('./src/en/OInt/tests/Modules/OPIt_NativeAPI.os', [
-'NativeAPI_CommonMethods',
-'NativeAPI_WorkWithLibrary',
-'NativeAPI_WorkWithInstance',
-					])
-				}
-			}
-		}
 		stage('Testing-7z') {
             when {
                 expression { return params['7z'] }
@@ -837,8 +822,6 @@ pipeline {
 'Z7_ArchiveModification',
 					])
 				}
-			}
-		}
 			}
 		}
 

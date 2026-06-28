@@ -3107,43 +3107,6 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
- "OPI_NativeAPI": {
-  "CreateHost": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
-  },
-  "GetLog": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
-  },
-  "GetClassNames": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "CreateInstance": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
-  },
-  "DestroyInstance": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
-  },
-  "GetMetadata": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "ExecuteMethod": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "GetProperties": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "GetProperty": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
-  "SetProperty": {
-   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
-  }
- },
  "OPI_Neocities": {
   "GetSiteData": {
    "proxy": "`InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication`",

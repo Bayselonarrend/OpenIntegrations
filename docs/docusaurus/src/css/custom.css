@@ -609,7 +609,6 @@ li > a.menu__link {
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
-.NativeAPI a::before,
 .Neocities a::before,
 .Notion a::before,
 .Ollama a::before,
@@ -710,10 +709,6 @@ li > a.menu__link {
 
 .MySQL > div > a::before{
   content: url(../../static/img/APIs/small/MySQL.png);
-}
-
-.NativeAPI > div > a::before{
-  content: url(../../static/img/APIs/small/NativeAPI.png);
 }
 
 .Neocities > div > a::before{

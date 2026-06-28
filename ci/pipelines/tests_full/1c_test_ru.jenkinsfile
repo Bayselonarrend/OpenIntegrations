@@ -184,7 +184,6 @@ pipeline {
 		booleanParam(name: 'MessagePack', defaultValue: true, description: 'Run MessagePack tests')
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
-		booleanParam(name: 'NativeAPI', defaultValue: true, description: 'Run NativeAPI tests')
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 	}
 	stages {
@@ -777,19 +776,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-NativeAPI') {
-            when {
-                expression { return params['NativeAPI'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('NativeAPI', './service/yaxunit_conf/ru/NativeAPI.json')
-					}
-
-				}
-			}
-		}
 		stage('Testing-7z') {
             when {
                 expression { return params['7z'] }
@@ -801,8 +787,6 @@ pipeline {
 					}
 
 				}
-			}
-		}
 			}
 		}
 
