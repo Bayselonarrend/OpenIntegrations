@@ -12,6 +12,12 @@
                 "description_en": "Core methods (6 functions)"
             },
             {
+                "lib": "NativeAPI",
+                "icon": "media/logo.png",
+                "description_ru": "Модуль анализа и вызова Native API компонент 1С (12 функций)",
+                "description_en": "Native API component inspection and invocation module (12 functions)"
+            },
+            {
                 "lib": "Janx",
                 "icon": "media/Janx.png",
                 "description_ru": "Оптимизирована сериализация данных без двоичных полей",

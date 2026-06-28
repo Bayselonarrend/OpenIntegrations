@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="a1b2c3d4-e5f6-4789-a012-3456789abcde">
+  <name>OPI_NativeAPI</name>
+  <synonym>
+    <key>en</key>
+    <value>Компонента Native API (ОПИ)</value>
+    <key>ru</key>
+    <value>Компонента Native API (ОПИ)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>
