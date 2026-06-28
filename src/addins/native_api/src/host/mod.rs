@@ -33,7 +33,6 @@ pub struct ComponentInstance {
     component: *mut c_void,
     refs: ComponentRefs,
     destroy_object: DestroyObjectFn,
-    class_name: String,
 }
 
 pub struct HostState {
@@ -243,7 +242,6 @@ impl HostState {
                 component,
                 refs,
                 destroy_object,
-                class_name: class_name.to_string(),
             })
         }
     }
