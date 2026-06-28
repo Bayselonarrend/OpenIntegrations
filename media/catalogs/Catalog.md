@@ -19,6 +19,7 @@
 |![MongoDB](../MongoDB.png)| `MongoDB`| mongodb, mongo, nosql |
 |![MS SQL](../MSSQL.png)| `MS SQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
+|![Native API (в разработке)](../default.png)| `Native API (в разработке)`| native api, addin, component, ffi |
 |![Neocities](../Neocities.png)| `Neocities`| neocities |
 |![Notion](../Notion.png)| `Notion`| notion |
 |![Ollama](../Ollama.png)| `Ollama`| ollama, ai llm |

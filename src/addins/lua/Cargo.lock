@@ -80,14 +80,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -95,14 +95,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "chrono",
  "common-janx",
@@ -111,7 +111,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
 ]
@@ -256,7 +256,7 @@ checksum = "616ec5685824bcc94416c6d4a7a446eea774a31efd7062c8480ba6fd06d7a6e5"
 
 [[package]]
 name = "lua"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-backend",
  "common-core",

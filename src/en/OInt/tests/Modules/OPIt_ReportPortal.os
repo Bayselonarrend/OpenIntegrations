@@ -95,12 +95,7 @@ EndFunction
 
 Procedure RPortal_Authorization() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Login"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_UserID"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ReportPortal_GetTemporaryToken(TestParameters);
     ReportPortal_GetPermanentToken(TestParameters);
     ReportPortal_DeletePermanentToken(TestParameters);
@@ -110,10 +105,7 @@ EndProcedure
 
 Procedure RPortal_TestManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ReportPortal_CreateLaunch(TestParameters);
     ReportPortal_GetLaunch(TestParameters);
     ReportPortal_GetLaunchItems(TestParameters);
@@ -136,10 +128,7 @@ EndProcedure
 
 Procedure RPortal_LogRecording() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ReportPortal_CreateLaunch(TestParameters);
     ReportPortal_CreateItem(TestParameters);
 
@@ -155,10 +144,7 @@ EndProcedure
 
 Procedure RPortal_ProjectManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ReportPortal_CreateProject(TestParameters);
     ReportPortal_GetProject(TestParameters);
     ReportPortal_GetProjects(TestParameters);
@@ -170,10 +156,7 @@ EndProcedure
 
 Procedure RPortal_UserManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_TempToken", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RPortal_URL"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ReportPortal_CreateUser(TestParameters);
     ReportPortal_GetCurrentUser(TestParameters);
     ReportPortal_GetUser(TestParameters);

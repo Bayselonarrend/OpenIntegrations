@@ -81,14 +81,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -96,7 +96,7 @@ dependencies = [
 
 [[package]]
 name = "common-dataset"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
  "common-utils",
@@ -107,14 +107,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "chrono",
  "common-janx",
@@ -123,7 +123,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
 ]
@@ -304,7 +304,7 @@ checksum = "1261fe7e33c73b354eab43b1273a57c8f967d0391e80353e51f764ac02cf6775"
 
 [[package]]
 name = "opi_sqlite"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-backend",
  "common-core",

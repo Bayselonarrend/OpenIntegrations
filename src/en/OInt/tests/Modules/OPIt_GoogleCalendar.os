@@ -95,14 +95,7 @@ EndFunction
 
 Procedure GC_Authorization() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleCalendar_FormCodeRetrievalLink(TestParameters);
     GoogleCalendar_GetTokenByCode(TestParameters);
     GoogleCalendar_RefreshToken(TestParameters);
@@ -112,18 +105,14 @@ EndProcedure
 
 Procedure GC_GetCalendarList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleCalendar_GetCalendarList(TestParameters);
 
 EndProcedure
 
 Procedure GC_CreateDeleteCalendar() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleCalendar_CreateCalendar(TestParameters);
     GoogleCalendar_EditCalendarMetadata(TestParameters);
     GoogleCalendar_GetCalendarMetadata(TestParameters);
@@ -140,13 +129,7 @@ EndProcedure
 
 Procedure GC_CreateDeleteEvent() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_NewCalendarID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_CalendarID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"            , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleCalendar_CreateCalendar(TestParameters);
     GoogleCalendar_CreateEvent(TestParameters);
     GoogleCalendar_EditEvent(TestParameters);

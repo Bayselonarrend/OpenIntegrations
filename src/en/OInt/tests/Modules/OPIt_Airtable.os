@@ -95,10 +95,7 @@ EndFunction
 
 Procedure AT_CreateDatabase() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Workspace", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Airtable_CreateDatabase(TestParameters);
     Airtable_GetDatabaseTables(TestParameters);
     Airtable_GetListOfBases(TestParameters);
@@ -107,10 +104,7 @@ EndProcedure
 
 Procedure AT_CreateTable() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Airtable_GetNumberField(TestParameters);
     Airtable_GetStringField(TestParameters);
     Airtable_GetAttachmentField(TestParameters);
@@ -126,11 +120,7 @@ EndProcedure
 
 Procedure AT_CreateField() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Airtable_CreateField(TestParameters);
     Airtable_ModifyField(TestParameters);
 
@@ -138,11 +128,7 @@ EndProcedure
 
 Procedure AT_CreateDeleteRecords() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Airtable_CreatePosts(TestParameters);
     Airtable_GetRecord(TestParameters);
     Airtable_CreateComment(TestParameters);

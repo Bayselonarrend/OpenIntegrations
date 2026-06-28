@@ -97,15 +97,8 @@ EndFunction
 
 Procedure GMax_Account() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     //OPI_TestDataRetrieval.ParameterToCollection("GreenMax_TestGroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
 
     GreenMax_FormAccessParameters(TestParameters);
     // !DISABLED! GreenMax_LogoutInstance(TestParameters);
@@ -128,17 +121,7 @@ EndProcedure
 
 Procedure GMax_GroupManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture3"            , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenMax_GetContactList(TestParameters);
     OPI_Tools.Pause(1);
     GreenMax_CreateGroup(TestParameters);
@@ -166,16 +149,7 @@ EndProcedure
 
 Procedure GMax_MessageSending() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenMax_GetContactList(TestParameters);
     OPI_Tools.Pause(1);
     GreenMax_CreateGroup(TestParameters);
@@ -195,14 +169,7 @@ EndProcedure
 
 Procedure GMax_Notifications() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenMax_GetNotification(TestParameters);
     GreenMax_DeleteNotification(TestParameters);
 
@@ -210,15 +177,7 @@ EndProcedure
 
 Procedure GMax_MessageHistory() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenMax_MarkMessagesAsRead(TestParameters);
     OPI_Tools.Pause(1);
     GreenMax_GetChatMessageHistory(TestParameters);
@@ -234,15 +193,7 @@ EndProcedure
 
 Procedure GMax_Queues() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenMax_GetOutgoingMessageCount(TestParameters);
     OPI_Tools.Pause(1);
     GreenMax_GetOutgoingMessageQueue(TestParameters);

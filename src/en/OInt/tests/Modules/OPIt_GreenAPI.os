@@ -95,15 +95,7 @@ EndFunction
 
 Procedure GAPI_Account() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_ArchiveChat(TestParameters);
     GreenAPI_UnarchiveChat(TestParameters);
     GreenAPI_FormAccessParameters(TestParameters);
@@ -122,15 +114,7 @@ EndProcedure
 
 Procedure GAPI_GroupManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ChatID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"            , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_CreateGroup(TestParameters);
     GreenAPI_GetGroupInformation(TestParameters);
     GreenAPI_UpdateGroupName(TestParameters);
@@ -145,16 +129,7 @@ EndProcedure
 
 Procedure GAPI_MessageSending() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_SendTextMessage(TestParameters);
     GreenAPI_SendFile(TestParameters);
     GreenAPI_SendFileByURL(TestParameters);
@@ -171,16 +146,7 @@ EndProcedure
 
 Procedure GAPI_NotificationsReceiving() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"           , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_FileMessageID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_DownloadMessageID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_GetNotification(TestParameters);
     GreenAPI_SetReadMark(TestParameters);
     // !DISABLED! GreenAPI_DownloadMessageFile(TestParameters);
@@ -190,13 +156,7 @@ EndProcedure
 
 Procedure GAPI_MessageQueue() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_GetMessageQueue(TestParameters);
     GreenAPI_ClearMessageQueue(TestParameters);
 
@@ -204,15 +164,7 @@ EndProcedure
 
 Procedure GAPI_MessageLogs() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_ApiURL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MediaURL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_IdInstance" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_Token"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_TestGroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_AccountID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GreenAPI_MessageID"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GreenAPI_GetChatHistory(TestParameters);
     GreenAPI_GetMessage(TestParameters);
     GreenAPI_GetIncomingMessageLog(TestParameters);

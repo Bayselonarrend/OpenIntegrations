@@ -105,9 +105,7 @@ Procedure HTTP_Initialization() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_Initialize(TestParameters);
     HTTP_SetURL(TestParameters);
     HTTP_SetURLParams(TestParameters);
@@ -128,10 +126,7 @@ Procedure HTTP_BodySet() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_SetBinaryBody(TestParameters);
     HTTP_SetStringBody(TestParameters);
     HTTP_SetJsonBody(TestParameters);
@@ -152,10 +147,7 @@ Procedure HTTP_Settings() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_UseEncoding(TestParameters);
     HTTP_UseGzipCompression(TestParameters);
     HTTP_UseBodyFiledsAtOAuth(TestParameters);
@@ -176,9 +168,7 @@ Procedure HTTP_HeadersSetting() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_SetHeaders(TestParameters);
     HTTP_AddHeader(TestParameters);
 
@@ -193,9 +183,7 @@ Procedure HTTP_Authorization() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_AddBasicAuthorization(TestParameters);
     HTTP_AddBearerAuthorization(TestParameters);
     HTTP_AddAWS4Authorization(TestParameters);
@@ -213,10 +201,7 @@ Procedure HTTP_RequestProcessing() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_ProcessRequest(TestParameters);
     HTTP_ExecuteRequest(TestParameters);
     HTTP_ReturnRequest(TestParameters);
@@ -235,10 +220,7 @@ Procedure HTTP_ResponseReceiving() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_ReturnResponse(TestParameters);
     HTTP_ReturnResponseAsJSONObject(TestParameters);
     HTTP_ReturnResponseAsBinaryData(TestParameters);

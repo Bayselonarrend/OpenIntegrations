@@ -95,18 +95,14 @@ EndFunction
 
 Procedure TelegramAPI_GetBotInfo() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_GetBotInformation(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_GetUpdates() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_DeleteWebhook(TestParameters);
     Telegram_GetUpdates(TestParameters);
 
@@ -114,10 +110,7 @@ EndProcedure
 
 Procedure TelegramAPI_SetWebhook() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_URL"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SetWebhook(TestParameters);
     Telegram_DeleteWebhook(TestParameters);
 
@@ -125,12 +118,7 @@ EndProcedure
 
 Procedure TelegramAPI_SendTextMessage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendTextMessage(TestParameters);
     Telegram_ReplaceMessageText(TestParameters);
     Telegram_ReplaceMessageKeyboard(TestParameters);
@@ -140,13 +128,7 @@ EndProcedure
 
 Procedure TelegramAPI_SendImage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendImage(TestParameters);
     Telegram_ReplaceMessageCaption(TestParameters);
     Telegram_DownloadFile(TestParameters);
@@ -155,13 +137,7 @@ EndProcedure
 
 Procedure TelegramAPI_SendVideo() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendVideo(TestParameters);
     Telegram_DownloadFile(TestParameters);
 
@@ -169,13 +145,7 @@ EndProcedure
 
 Procedure TelegramAPI_SendAudio() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Audio"             , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendAudio(TestParameters);
     Telegram_DownloadFile(TestParameters);
 
@@ -183,102 +153,56 @@ EndProcedure
 
 Procedure TelegramAPI_SendDocument() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"          , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendDocument(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendGIF() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GIF"               , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendGif(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendMediaGroup() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"          , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendMediaGroup(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendLocation() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Long"              , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Lat"               , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendLocation(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendContact() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Name"              , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Surname"           , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Phone"             , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendContact(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendPoll() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_SendPoll(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_ForwardMessage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"           , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"          , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_ForwardMessage(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_BanUnban() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_Ban(TestParameters);
     Telegram_Unban(TestParameters);
 
@@ -286,21 +210,14 @@ EndProcedure
 
 Procedure TelegramAPI_CreateInvitationLink() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_CreateInvitationLink(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_PinUnpinMessage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"           , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_PinMessage(TestParameters);
     Telegram_UnpinMessage(TestParameters);
     Telegram_DeleteMessage(TestParameters);
@@ -309,31 +226,21 @@ EndProcedure
 
 Procedure TelegramAPI_GetMemberCount() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_GetParticipantCount(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_GetForumAvatarsList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_GetAvatarIconList(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_CreateDeleteForumTopic() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("String"          , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_CreateForumTopic(TestParameters);
     Telegram_EditForumTopic(TestParameters);
     Telegram_CloseForumTopic(TestParameters);
@@ -345,10 +252,7 @@ EndProcedure
 
 Procedure TelegramAPI_HideShowMainTopic() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_HideMainForumTopic(TestParameters);
     Telegram_ShowMainForumTopic(TestParameters);
 
@@ -356,10 +260,7 @@ EndProcedure
 
 Procedure TelegramAPI_ChangeMainTopicName() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Telegram_EditMainForumTopicName(TestParameters);
 
 EndProcedure

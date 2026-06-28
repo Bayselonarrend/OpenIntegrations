@@ -221,14 +221,14 @@ checksum = "0c9ea0ac24bc397ab3c98583a3c9ba74fa56b09a4449bbe172b9b1ddb016027a"
 
 [[package]]
 name = "common-backend"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -236,7 +236,7 @@ dependencies = [
 
 [[package]]
 name = "common-dataset"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
  "common-utils",
@@ -247,14 +247,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "chrono",
  "common-janx",
@@ -263,7 +263,7 @@ dependencies = [
 
 [[package]]
 name = "common-tcp"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "base64",
  "common-janx",
@@ -277,7 +277,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
 ]
@@ -914,7 +914,7 @@ dependencies = [
 
 [[package]]
 name = "opi_postgres"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "chrono",
  "common-backend",

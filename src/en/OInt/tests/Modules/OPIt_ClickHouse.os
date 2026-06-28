@@ -95,12 +95,7 @@ EndFunction
 
 Procedure CH_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Port"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_PortGRPC" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ClickHouse_ExecuteRequest(TestParameters);
     ClickHouse_GetHTTPConnectionSettings(TestParameters);
     ClickHouse_GetGRPCConnectionSettings(TestParameters);
@@ -112,11 +107,7 @@ EndProcedure
 
 Procedure CH_GRPC() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_PortGRPC" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     ClickHouse_CreateGRPCConnection(TestParameters);
     ClickHouse_GetTlsSettings(TestParameters);
 

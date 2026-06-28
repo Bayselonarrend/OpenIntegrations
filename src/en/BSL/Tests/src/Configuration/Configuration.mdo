@@ -42,6 +42,7 @@
   <commonModules>CommonModule.OPIt_MongoDB</commonModules>
   <commonModules>CommonModule.OPIt_MSSQL</commonModules>
   <commonModules>CommonModule.OPIt_MySQL</commonModules>
+  <commonModules>CommonModule.OPIt_NativeAPI</commonModules>
   <commonModules>CommonModule.OPIt_Neocities</commonModules>
   <commonModules>CommonModule.OPIt_Notion</commonModules>
   <commonModules>CommonModule.OPIt_Ollama</commonModules>
@@ -88,6 +89,7 @@
   <commonModules>CommonModule.OPItc_MongoDB</commonModules>
   <commonModules>CommonModule.OPItc_MSSQL</commonModules>
   <commonModules>CommonModule.OPItc_MySQL</commonModules>
+  <commonModules>CommonModule.OPItc_NativeAPI</commonModules>
   <commonModules>CommonModule.OPItc_Neocities</commonModules>
   <commonModules>CommonModule.OPItc_Notion</commonModules>
   <commonModules>CommonModule.OPItc_Ollama</commonModules>

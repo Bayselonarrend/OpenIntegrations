@@ -98,14 +98,7 @@ EndFunction
 
 Procedure TC_Client() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("TCP_AddressTLS", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Proxy_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Socks5_IP"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Socks5_Port"   , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     TCP_CreateConnection(TestParameters);
     TCP_CloseConnection(TestParameters);
     TCP_ReadBinaryData(TestParameters);
@@ -128,9 +121,7 @@ Procedure TC_Server() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("TCP_Address", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     TCP_StartServer(TestParameters);
     TCP_StopServer(TestParameters);
     TCP_GetNextConnectionData(TestParameters);

@@ -97,18 +97,14 @@ EndFunction
 
 Procedure B24_TokenManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientSecret", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetAppAuthLink(TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Code", TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Bitrix24_GetToken(TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Refresh", TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Bitrix24_RefreshToken(TestParameters);
 
@@ -116,24 +112,14 @@ EndProcedure
 
 Procedure B24_ServerTime() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_ServerTime(TestParameters);
 
 EndProcedure
 
 Procedure B24_PostsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_CreatePost(TestParameters);
     Bitrix24_UpdatePost(TestParameters);
     Bitrix24_GetImportantPostViewers(TestParameters);
@@ -146,13 +132,7 @@ EndProcedure
 
 Procedure B24_TaskManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_UserID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetTaskFieldsStructure(TestParameters);
     Bitrix24_CreateTask(TestParameters);
     Bitrix24_CreateTasksDependencies(TestParameters);
@@ -208,13 +188,7 @@ EndProcedure
 
 Procedure B24_WorkingWithDrive() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetStoragesList(TestParameters);
     Bitrix24_GetAppStorage(TestParameters);
     Bitrix24_RenameStorage(TestParameters);
@@ -294,15 +268,11 @@ EndProcedure
 
 Procedure B24_CommentsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
-    CurrentDate = OPI_Tools.GetCurrentDate();
-    Hour        = 3600;
-    Day         = 24;
-    Responsible = 1;
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    CurrentDate    = OPI_Tools.GetCurrentDate();
+    Hour           = 3600;
+    Day            = 24;
+    Responsible    = 1;
 
     TaskData = New Structure;
     TaskData.Insert("TITLE"         , "New task");
@@ -335,15 +305,11 @@ EndProcedure
 
 Procedure B24_Timekeeping() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
-    CurrentDate = OPI_Tools.GetCurrentDate();
-    Hour        = 3600;
-    Day         = 24;
-    Responsible = 1;
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    CurrentDate    = OPI_Tools.GetCurrentDate();
+    Hour           = 3600;
+    Day            = 24;
+    Responsible    = 1;
 
     TaskData = New Structure;
     TaskData.Insert("TITLE"         , "New task");
@@ -377,15 +343,11 @@ EndProcedure
 
 Procedure B24_Kanban() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
-    CurrentDate = OPI_Tools.GetCurrentDate();
-    Hour        = 3600;
-    Day         = 24;
-    Responsible = 1;
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    CurrentDate    = OPI_Tools.GetCurrentDate();
+    Hour           = 3600;
+    Day            = 24;
+    Responsible    = 1;
 
     TaskData = New Structure;
     TaskData.Insert("TITLE"         , "New task");
@@ -415,14 +377,7 @@ EndProcedure
 
 Procedure B24_ChatManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetUserStatus(TestParameters);
     Bitrix24_SetUserStatus(TestParameters);
     Bitrix24_GetUsers(TestParameters);
@@ -477,14 +432,7 @@ EndProcedure
 
 Procedure B24_NotificationsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_CreatePersonalNotification(TestParameters);
     Bitrix24_CreateSystemNotification(TestParameters);
     Bitrix24_DeleteNotification(TestParameters);
@@ -493,13 +441,7 @@ EndProcedure
 
 Procedure B24_TasksFieldsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"            , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"          , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_HookTaskFieldID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_TaskFieldID"    , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_AddCustomTaskField(TestParameters);
     Bitrix24_UpdateCustomTaskField(TestParameters);
     Bitrix24_GetCustomTaskField(TestParameters);
@@ -510,11 +452,7 @@ EndProcedure
 
 Procedure B24_DepartmentsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_CreateDepartment(TestParameters);
     Bitrix24_GetDepartments(TestParameters);
     Bitrix24_UpdateDepartment(TestParameters);
@@ -524,11 +462,7 @@ EndProcedure
 
 Procedure B2_UsersManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetCurrentUser(TestParameters);
     Bitrix24_GetUserFieldsStructure(TestParameters);
     Bitrix24_CreateUser(TestParameters);
@@ -542,11 +476,7 @@ EndProcedure
 
 Procedure B24_LeadsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetLeadsList(TestParameters);
     Bitrix24_GetLeadFilterStructure(TestParameters);
     Bitrix24_GetLeadStructure(TestParameters);
@@ -559,11 +489,7 @@ EndProcedure
 
 Procedure B24_DealsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_GetDealsFilterStructure(TestParameters);
     Bitrix24_GetDealStructure(TestParameters);
     Bitrix24_CreateDeal(TestParameters);
@@ -576,11 +502,7 @@ EndProcedure
 
 Procedure B24_CalendarsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Bitrix24_CreateCalendar(TestParameters);
     Bitrix24_UpdateCalendar(TestParameters);
     Bitrix24_GetCalendarList(TestParameters);

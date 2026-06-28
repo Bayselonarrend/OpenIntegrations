@@ -1,0 +1,158 @@
+{
+ "module": "OPI_NativeAPI",
+ "library": "nativeapi",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "api/nativeapi/Modules/OPI_NativeAPI.os",
+ "regions": [
+  {
+   "name": "Work with library",
+   "methods": [
+    "GetClassNames"
+   ]
+  },
+  {
+   "name": "Work with instance",
+   "methods": [
+    "ExecuteMethod",
+    "GetMetadata",
+    "GetProperties",
+    "GetProperty"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "GetClassNames",
+   "id": "GETCLASSNAMES",
+   "description": "Returns a list of classes declared in the AddIn",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String, Arbitrary",
+     "description": "Host object or path to the AddIn. See CreateHost",
+     "default": null,
+     "short": "-h"
+    }
+   ],
+   "region": "Work with library"
+  },
+  {
+   "name": "GetMetadata",
+   "id": "GETMETADATA",
+   "description": "Returns the description of the instance methods and properties of the AddIn",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String, Arbitrary",
+     "description": "Host object or path to the AddIn. See CreateHost",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--class",
+     "types": "String",
+     "description": "Instance UUID or class name",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Work with instance"
+  },
+  {
+   "name": "ExecuteMethod",
+   "id": "EXECUTEMETHOD",
+   "description": "Calls the instance method of the AddIn by name or number",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String, Arbitrary",
+     "description": "Host object or path to the AddIn. See CreateHost",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--class",
+     "types": "String",
+     "description": "Instance UUID or class name for temporary instance",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--method",
+     "types": "String",
+     "description": "Method name",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "name": "--params",
+     "types": "Array Of Arbitrary",
+     "description": "Parameters of the called function",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--props",
+     "types": "Map Of KeyAndValue",
+     "description": "Values for setting instance properties before calling",
+     "default": "Empty value",
+     "short": "-r"
+    }
+   ],
+   "region": "Work with instance"
+  },
+  {
+   "name": "GetProperties",
+   "id": "GETPROPERTIES",
+   "description": "Returns the values of all readable instance properties of the AddIn",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String, Arbitrary",
+     "description": "Host object or path to the AddIn. See CreateHost",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--class",
+     "types": "String",
+     "description": "Instance UUID or class name for temporary instance",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Work with instance"
+  },
+  {
+   "name": "GetProperty",
+   "id": "GETPROPERTY",
+   "description": "Reads the value of the instance property of the AddIn",
+   "params": [
+    {
+     "name": "--host",
+     "types": "String, Arbitrary",
+     "description": "Host object or path to the AddIn. See CreateHost",
+     "default": null,
+     "short": "-h"
+    },
+    {
+     "name": "--class",
+     "types": "String",
+     "description": "Instance UUID or class name for temporary instance",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--prop",
+     "types": "String, Number",
+     "description": "PropertyName",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Work with instance"
+  }
+ ]
+}

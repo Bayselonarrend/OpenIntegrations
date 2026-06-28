@@ -1,0 +1,32 @@
+{
+  "reportPath": "./test_results/7z.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_7z.Z7_Архивация",
+"OPIt_7z.Z7_АрхивацияСПаролем",
+"OPIt_7z.Z7_ПолучениеМетаданных",
+"OPIt_7z.Z7_ЧастичнаяРаспаковка",
+"OPIt_7z.Z7_ИзменениеАрхива"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/7z.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

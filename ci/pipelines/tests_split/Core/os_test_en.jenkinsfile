@@ -12,6 +12,7 @@ pipeline {
 	}
 	parameters {
 		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
+		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
 	}
 	stages {
 
@@ -75,6 +76,19 @@ pipeline {
 				}
 		}
 
+		stage('Testing-Core') {
+            when {
+                expression { return params['Core'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
+				}
+			}
+		}
 		stage('Testing-Core') {
             when {
                 expression { return params['Core'] }

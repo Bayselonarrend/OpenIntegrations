@@ -125,52 +125,20 @@ EndFunction
 
 Function GetTestingSectionMapping() Export
 
-    Sections = New Structure;
-    Sections.Insert("Core"           , 1);
-    Sections.Insert("Telegram"       , 5);
-    Sections.Insert("VK"             , 5);
-    Sections.Insert("Viber"          , 5);
-    Sections.Insert("FTP"            , 5);
-    Sections.Insert("SSH"            , 5);
-    Sections.Insert("SFTP"           , 5);
-    Sections.Insert("PostgreSQL"     , 5);
-    Sections.Insert("MySQL"          , 5);
-    Sections.Insert("MSSQL"          , 5);
-    Sections.Insert("SQLite"         , 5);
-    Sections.Insert("MongoDB"        , 5);
-    Sections.Insert("RCON"           , 5);
-    Sections.Insert("YandexDisk"     , 5);
-    Sections.Insert("GoogleWorkspace", 2);
-    Sections.Insert("GoogleCalendar" , 5);
-    Sections.Insert("GoogleDrive"    , 5);
-    Sections.Insert("GoogleSheets"   , 5);
-    Sections.Insert("Notion"         , 5);
-    Sections.Insert("Slack"          , 5);
-    Sections.Insert("Airtable"       , 5);
-    Sections.Insert("Dropbox"        , 5);
-    Sections.Insert("Bitrix24"       , 5);
-    Sections.Insert("VKTeams"        , 5);
-    Sections.Insert("Neocities"      , 5);
-    Sections.Insert("CDEK"           , 5);
-    Sections.Insert("YandexMetrika"  , 5);
-    Sections.Insert("S3"             , 5);
-    Sections.Insert("TCP"            , 5);
-    Sections.Insert("WebSocket"      , 5);
-    Sections.Insert("ZeroMQ"         , 5);
-    Sections.Insert("GreenAPI"       , 5);
-    Sections.Insert("GreenMax"       , 5);
-    Sections.Insert("Ollama"         , 5);
-    Sections.Insert("HTTP"           , 5);
-    Sections.Insert("OpenAI"         , 5);
-    Sections.Insert("ReportPortal"   , 5);
-    Sections.Insert("GRPC"           , 5);
-    Sections.Insert("ClickHouse"     , 5);
-    Sections.Insert("RSS"            , 5);
-    Sections.Insert("MessagePack"    , 5);
-    Sections.Insert("Janx"           , 5);
-    Sections.Insert("Lua"            , 7);
+    TestTable   = GetTestTable();
+    SectionList = New Array;
 
-    Return Sections;
+    For Each Test In TestTable Do
+
+        Section = Test["Section"];
+
+        If SectionList.Find(Section) = Undefined Then
+            SectionList.Add(Section);
+        EndIf;
+
+    EndDo;
+
+    Return SectionList;
 
 EndFunction
 
@@ -218,6 +186,7 @@ Function GetTestTable(Val TestModule = "") Export
     MsgPack   = "MessagePack";
     Janx      = "Janx";
     Lua       = "Lua";
+    NativeAPI = "NativeAPI";
     SevenZ    = "7z";
 
     ArrayOfTests = New Array;
@@ -438,11 +407,15 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_GlobalVariables"                 , "Global variables"                , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
-    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"                        , "Archiving"                       , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"            , "Archiving with a password"       , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"                  , "Metadata extraction"             , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"                 , "Partial unpacking"               , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"              , "Archive modification"            , SevenZ);
+
+    NewTest(ArrayOfTests, TestModule, "NativeAPI_CommonMethods"    , "Common methods"            , NativeAPI);
+    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithLibrary"  , "Work with library"         , NativeAPI);
+    NewTest(ArrayOfTests, TestModule, "NativeAPI_WorkWithInstance" , "Work with instance"        , NativeAPI);
+    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"               , "Archiving"                 , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"   , "Archiving with a password" , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"         , "Metadata extraction"       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"        , "Partial unpacking"         , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"     , "Archive modification"      , SevenZ);
 
     Return ArrayOfTests;
 
@@ -512,17 +485,46 @@ Function FormAssertsTestsCLI(Val TestModule = "") Export
 
 EndFunction
 
-Function GetParameter(Parameter) Export
+Function GetTestData() Export
 
     Path = DataFilePath();
-    Return GetValueFromFile(Parameter, Path);
+    PathRO = StrTemplate("file:%1?mode=ro", Path);
+
+    Result = OPI_SQLite.GetRecords("test_params", , , , , PathRO);
+
+    If Not Result["result"] = True Then
+        Raise Result["error"];
+    EndIf;
+
+    Collection = New Structure;
+
+    For Each String In Result["data"] Do
+
+        CurrentKey = String["key"];
+        Value      = String["value"];
+        ValeType   = String["type"];
+
+        Value = ?(ValeType = "Number", Number(Value), String(Value));
+
+        Collection.Insert(CurrentKey, Value);
+
+    EndDo;
+
+    Return Collection;
+
+EndFunction
+
+Function GetParameter(Parameter) Export
+
+    Data = GetTestData();
+
+    Return ParameterValueFromCollection(Parameter, Data);
 
 EndFunction
 
 Function GetBinary(Parameter) Export
 
-    Path  = DataFilePath();
-    Value = GetValueFromFile(Parameter, Path);
+    Value = GetParameter(Parameter);
 
     If TypeOf(Value) = Type("String") Then
 
@@ -891,23 +893,8 @@ Function GetFTPParameterOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("FTP_IP"        , TestParametersMain);
-    ParameterToCollection("FTP_Port"      , TestParametersMain);
-    ParameterToCollection("FTPS_IP"       , TestParametersMain);
-    ParameterToCollection("FTPS_Port"     , TestParametersMain);
-    ParameterToCollection("FTP_User"      , TestParametersMain);
-    ParameterToCollection("FTP_Password"  , TestParametersMain);
-    ParameterToCollection("Proxy_User"    , TestParametersMain);
-    ParameterToCollection("Proxy_Password", TestParametersMain);
-    ParameterToCollection("Socks5_IP"     , TestParametersMain);
-    ParameterToCollection("Socks5_Port"   , TestParametersMain);
-    ParameterToCollection("Proxy_IP"      , TestParametersMain);
-    ParameterToCollection("Proxy_Port"    , TestParametersMain);
-    ParameterToCollection("Picture"       , TestParametersMain);
-    ParameterToCollection("Big"           , TestParametersMain);
-
-    Localhost = GetLocalhost();
+    TestParametersMain = GetTestData();
+    Localhost          = GetLocalhost();
 
     Socks5IP                        = TestParametersMain["Socks5_IP"];
     TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
@@ -1035,21 +1022,8 @@ Function GetWebSocketParametersOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("WS_IP"           , TestParametersMain);
-    ParameterToCollection("WS_Port"         , TestParametersMain);
-    ParameterToCollection("WS_InternalPort" , TestParametersMain);
-    ParameterToCollection("WSS_IP"          , TestParametersMain);
-    ParameterToCollection("WSS_Port"        , TestParametersMain);
-    ParameterToCollection("WSS_InternalPort", TestParametersMain);
-    ParameterToCollection("Proxy_User"      , TestParametersMain);
-    ParameterToCollection("Proxy_Password"  , TestParametersMain);
-    ParameterToCollection("Proxy_IP"        , TestParametersMain);
-    ParameterToCollection("Proxy_Port"      , TestParametersMain);
-    ParameterToCollection("Socks5_IP"       , TestParametersMain);
-    ParameterToCollection("Socks5_Port"     , TestParametersMain);
-
-    Localhost = GetLocalhost();
+    TestParametersMain = GetTestData();
+    Localhost          = GetLocalhost();
 
     Socks5IP                        = TestParametersMain["Socks5_IP"];
     TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
@@ -1149,26 +1123,8 @@ Function GetSSHParameterOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("Picture"       , TestParametersMain);
-    ParameterToCollection("Big"           , TestParametersMain);
-    ParameterToCollection("SSH_Host"      , TestParametersMain);
-    ParameterToCollection("SSH_HostKI"    , TestParametersMain);
-    ParameterToCollection("SSH_Port"      , TestParametersMain);
-    ParameterToCollection("SSH_PortKI"    , TestParametersMain);
-    ParameterToCollection("SSH_User"      , TestParametersMain);
-    ParameterToCollection("SSH_Password"  , TestParametersMain);
-    ParameterToCollection("SSH_Key"       , TestParametersMain);
-    ParameterToCollection("SSH_Pub"       , TestParametersMain);
-    ParameterToCollection("Proxy_User"    , TestParametersMain);
-    ParameterToCollection("Proxy_Password", TestParametersMain);
-    ParameterToCollection("Socks5_IP"     , TestParametersMain);
-    ParameterToCollection("Socks5_Port"   , TestParametersMain);
-    ParameterToCollection("Proxy_IP"      , TestParametersMain);
-    ParameterToCollection("Proxy_Port"    , TestParametersMain);
-    ParameterToCollection("Access_Token"  , TestParametersMain);
-
-    Localhost = GetLocalhost();
+    TestParametersMain = GetTestData();
+    Localhost          = GetLocalhost();
 
     Socks5IP                        = TestParametersMain["Socks5_IP"];
     TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
@@ -1253,13 +1209,7 @@ Function GetS3ParameterOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("S3_AccessKey", TestParametersMain);
-    ParameterToCollection("S3_SecretKey", TestParametersMain);
-    ParameterToCollection("S3_URL"      , TestParametersMain);
-    ParameterToCollection("Picture"     , TestParametersMain);
-    ParameterToCollection("Audio"       , TestParametersMain);
-
+    TestParametersMain = GetTestData();
     TestParametersMain.Insert("S3_GPB", GpBucket);
     TestParametersMain.Insert("S3_DB" , DirBucket);
 
@@ -1279,13 +1229,8 @@ Function GetPostgresParameterOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("PG_IP"      , TestParametersMain);
-    ParameterToCollection("PG_Password", TestParametersMain);
-    ParameterToCollection("Picture"    , TestParametersMain);
-    ParameterToCollection("SQL"        , TestParametersMain);
-
-    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParametersMain = GetTestData();
+    TestParameters     = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 5432);
@@ -1307,13 +1252,8 @@ Function GetMySQLParameterOptions() Export
 
     OptionArray = New Array;
 
-    TestParametersMain = New Structure;
-    ParameterToCollection("PG_IP"      , TestParametersMain);
-    ParameterToCollection("PG_Password", TestParametersMain);
-    ParameterToCollection("Picture"    , TestParametersMain);
-    ParameterToCollection("SQL2"       , TestParametersMain);
-
-    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParametersMain = GetTestData();
+    TestParameters     = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 3306);
@@ -16677,6 +16617,161 @@ Function Check_Janx_Extended_RoundRobin(Val Result, Val Option, Restored = Undef
 
 EndFunction
 
+Function Check_NativeAPI_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_CreateHost(Val Result, Val Option)
+
+    ExpectsThat(String(TypeOf(Result)) = "AddIn.OPI_NativeAPI.Main").Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_IsHost(Val Result, Val Option)
+
+    If Option = "False" Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrFind(Result, "OpenLibrary") > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_GetClassNames(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["classes"].Count() > 0).Равно(True);
+    ExpectsThat(Result["classes"].Find("Main") > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_CreateInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(ValueIsFilled(Result["instance_id"])).Равно(True);
+    ExpectsThat(StrLen(Result["instance_id"]) = 36).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_DestroyInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_GetMetadata(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["metadata"]["methods"].Count() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_GetProperties(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(TypeOf(Result["properties"])).Равно(Type("Map"));
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_ExecuteMethod(Val Result, Val Option, AddParam1 = Undefined)
+
+    Data = Result["data"];
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(TypeOf(Data["properties"])).Равно(Type("Map"));
+
+    If Option = "SQLite" Then
+
+        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
+        ExpectsThat(Data["properties"]["Database"]["value"]).Равно(AddParam1);
+
+    ElsIf Option = "SQLiteRequest" Then
+
+        ExpectsThat(ValueIsFilled(Data["value"])).Равно(True);
+        ExpectsThat(Data["properties"]["Database"]["type"]).Равно("string");
+
+    ElsIf Option  = "Version"
+        Or Option = "ClassName"
+        Or Option = "WithoutParameters" Then
+        ExpectsThat(Data["value"]["type"]).Равно("string");
+    Else
+        ExpectsThat(Data["value"]["type"]).Равно("blob");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_GetProperty(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_NativeAPI_SetProperty(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(ValueIsFilled(Result["error"])).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_Janx_SerializeData(Val Result, Val Option, Restored = Undefined, InitialValue = Undefined)
 
     ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
@@ -17705,37 +17800,15 @@ Procedure ProcessTestingResult(Val Result
 
 EndProcedure
 
-Function GetValueFromFile(Parameter, Path)
+Function ParameterValueFromCollection(Parameter, Data)
 
-    PathRO = StrTemplate("file:%1?mode=ro", Path);
+    Value = Undefined;
 
-    Filter = New Structure();
-    Filter.Insert("field", "lower(key)");
-    Filter.Insert("type" , "=");
-    Filter.Insert("value", Lower(Parameter));
-
-    Table = "test_params";
-
-    Result = OPI_SQLite.GetRecords(Table, , Filter, , , PathRO);
-
-    If Not Result["result"] = True Then
-        Raise Result["error"];
+    If OPI_Tools.CollectionFieldExists(Data, Parameter, Value) Then
+        Return Value;
     EndIf;
 
-    Data = Result["data"];
-
-    If Data.Count() > 0 Then
-
-        Value    = Data[0]["value"];
-        ValeType = Data[0]["type"];
-
-        Value = ?(ValeType = "Number", Number(Value), String(Value));
-
-    Else
-        Value = "";
-    EndIf;
-
-    Return Value;
+    Return "";
 
 EndFunction
 
@@ -18014,6 +18087,10 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     ElsIf AddInName = "OPI_Lua54" Then
 
         Value = "Lua54";
+
+    ElsIf AddInName = "OPI_NativeAPI" Then
+
+        Value = "";
 
     ElsIf AddInName = "OPI_LuaJIT" Then
 
@@ -18794,6 +18871,10 @@ EndFunction
 
 Function СформироватьТестыАссертсCLI(Val МодульТестов = "") Export
     Return FormAssertsTestsCLI(МодульТестов);
+EndFunction
+
+Function ПолучитьТестовыеДанные() Export
+    Return GetTestData();
 EndFunction
 
 Function ПолучитьПараметр(Параметр) Export

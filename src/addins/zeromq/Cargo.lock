@@ -133,14 +133,14 @@ dependencies = [
 
 [[package]]
 name = "common-backend"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "tokio",
 ]
 
 [[package]]
 name = "common-core"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "addin1c",
  "common-janx",
@@ -148,14 +148,14 @@ dependencies = [
 
 [[package]]
 name = "common-janx"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "serde_json",
 ]
 
 [[package]]
 name = "common-logs"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "chrono",
  "common-janx",
@@ -164,7 +164,7 @@ dependencies = [
 
 [[package]]
 name = "common-utils"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-janx",
 ]
@@ -504,7 +504,7 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
 name = "opi_zeromq"
-version = "2.2.0"
+version = "2.3.0"
 dependencies = [
  "common-backend",
  "common-core",

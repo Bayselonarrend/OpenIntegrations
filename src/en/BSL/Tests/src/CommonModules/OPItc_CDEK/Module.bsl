@@ -97,10 +97,7 @@ EndFunction
 
 Procedure CdekAPI_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Account" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     CDEK_GetToken(TestParameters);
     CDEK_GetCashboxChecksByDate(TestParameters);
     CDEK_GetDeliveryCashRegistry(TestParameters);
@@ -113,9 +110,7 @@ EndProcedure
 
 Procedure CDEKAPI_OrdersManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     CDEK_GetOrderDescription(TestParameters);
     CDEK_CreateOrder(TestParameters);
 
@@ -143,9 +138,7 @@ EndProcedure
 
 Procedure CdekAPI_CourierInvitationsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     CDEK_CreateOrder(TestParameters);
 
     OPI_Tools.Pause(25);

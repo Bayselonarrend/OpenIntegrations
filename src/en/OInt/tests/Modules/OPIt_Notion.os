@@ -95,12 +95,7 @@ EndFunction
 
 Procedure NotionAPI_CreatePage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Notion_CreatePage(TestParameters);
     Notion_GetPage(TestParameters);
     Notion_EditPageProperties(TestParameters);
@@ -109,11 +104,7 @@ EndProcedure
 
 Procedure NotionAPI_CreateUpdateBase() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Notion_CreateDatabase(TestParameters);
     Notion_EditDatabaseProperties(TestParameters);
     Notion_GetDatabase(TestParameters);
@@ -123,11 +114,7 @@ EndProcedure
 
 Procedure NotionAPI_CreateDeleteBlock() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Block" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Notion_ReturnBlock(TestParameters);
     Notion_CreateBlock(TestParameters);
     Notion_ReturnChildBlocks(TestParameters);
@@ -137,10 +124,7 @@ EndProcedure
 
 Procedure NotionAPI_GetUsers() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Notion_User" , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Notion_UserList(TestParameters);
     Notion_GetUserData(TestParameters);
 

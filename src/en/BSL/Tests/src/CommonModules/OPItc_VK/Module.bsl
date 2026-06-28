@@ -97,11 +97,7 @@ EndFunction
 
 Procedure VKAPI_CreateTokenLink() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VK_AppID"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VK_GroupID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VK_Token"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreateTokenRetrievalLink(TestParameters);
     VK_GetAuthParameters(TestParameters);
 
@@ -109,10 +105,7 @@ EndProcedure
 
 Procedure VKAPI_CreateDeletePost() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreatePost(TestParameters);
     VK_DeletePost(TestParameters);
 
@@ -120,28 +113,21 @@ EndProcedure
 
 Procedure VKAPI_CreateCompositePost() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Video"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreateCompositePost(TestParameters);
 
 EndProcedure
 
 Procedure VKAPI_CreatePoll() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreatePoll(TestParameters);
 
 EndProcedure
 
 Procedure VKAPI_SaveDeleteImage() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreateAlbum(TestParameters);
     VK_SaveImageToAlbum(TestParameters);
     VK_DeleteImage(TestParameters);
@@ -152,24 +138,21 @@ EndProcedure
 
 Procedure VKAPI_CreateStory() Export
 
-    TestParameters = New Map;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreateStory(TestParameters);
 
 EndProcedure
 
 Procedure VKAPI_LikeRepostComment() Export
 
-    TestParameters = New Structure;
-    Parameters     = GetVKParameters();
-    Text           = "Post from autotest";
+    Parameters = GetVKParameters();
+    Text       = "Post from autotest";
 
     Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);
     PostID = Result["response"]["post_id"];
 
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
-    OPI_TestDataRetrieval.ParameterToCollection("VK_PostID", TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     VK_MakeRepost(TestParameters);
     VK_WriteComment(TestParameters);
@@ -212,10 +195,7 @@ Procedure VKAPI_CreateAdCampaign() Export
 
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VK_AdsCabinetID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VK_PostID"      , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     // !DISABLED! VK_CreateAdvertisingCampaign(TestParameters);
     // !DISABLED! VK_CreateAd(TestParameters);
     // !DISABLED! VK_PauseAdvertising(TestParameters);
@@ -229,11 +209,7 @@ EndProcedure
 
 Procedure VKAPI_SendMessage() Export
 
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("VK_UserID"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VK_CommunityToken", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_FormKeyboard(TestParameters);
     VK_WriteMessage(TestParameters);
 
@@ -253,10 +229,7 @@ EndProcedure
 
 Procedure VKAPI_CreateProductSelection() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_CreateProductCollection(TestParameters);
     VK_EditProductCollection(TestParameters);
     VK_GetSelectionsByID(TestParameters);
@@ -275,10 +248,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
 
     Parameters = GetVKParameters();
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_GetProductDescription(TestParameters);
     VK_CreateProductProperty(TestParameters);
     VK_EditProductProperty(TestParameters);
@@ -330,9 +300,7 @@ EndProcedure
 
 Procedure VKAPI_UploadVideo() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Video", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VK_UploadVideoToServer(TestParameters);
 
 EndProcedure
