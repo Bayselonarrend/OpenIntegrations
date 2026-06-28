@@ -95,14 +95,7 @@ EndFunction
 
 Procedure GT_Authorization() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleSheets_FormCodeRetrievalLink(TestParameters);
     GoogleSheets_GetTokenByCode(TestParameters);
     GoogleSheets_RefreshToken(TestParameters);
@@ -112,9 +105,7 @@ EndProcedure
 
 Procedure GT_CreateTable() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleSheets_CreateSpreadsheet(TestParameters);
     GoogleSheets_GetSpreadsheet(TestParameters);
     GoogleSheets_CopySheet(TestParameters);
@@ -130,9 +121,7 @@ EndProcedure
 
 Procedure GT_FillClearCells() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleSheets_CreateSpreadsheet(TestParameters);
     GoogleSheets_SetCellValues(TestParameters);
     GoogleSheets_GetCellValues(TestParameters);

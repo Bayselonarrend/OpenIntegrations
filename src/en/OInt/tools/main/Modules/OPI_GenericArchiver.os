@@ -54,7 +54,7 @@ Function Archive(Val Archiver, Val Data, Val ArchivePath = "", Val Settings = Un
     Try
         DataIsDescription = NormalizeArchivingData(Data);
     Except
-        ErrorMap       = New Map;
+        ErrorMap          = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;
@@ -119,7 +119,7 @@ Function Unzip(Val Archiver, Val Archive, Val DestinationDirectory = "", Val Pas
     Try
         ArchiveAsBinary = NormalizeArchive(Archive);
     Except
-        ErrorMap     = New Map;
+        ErrorMap        = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;
@@ -169,7 +169,7 @@ Function GetFilesList(Val Archiver, Val Archive, Val Password = "") Export
     Try
         ArchiveAsBinary = NormalizeArchive(Archive);
     Except
-        ErrorMap     = New Map;
+        ErrorMap        = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;
@@ -196,7 +196,7 @@ Function GetMetadata(Val Archiver, Val Archive, Val Password = "") Export
     Try
         ArchiveAsBinary = NormalizeArchive(Archive);
     Except
-        ErrorMap     = New Map;
+        ErrorMap        = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;
@@ -224,7 +224,7 @@ Function UnpackFiles(Val Archiver, Val Archive, Val Paths, Val DestinationDirect
     Try
         ArchiveAsBinary = NormalizeArchive(Archive);
     Except
-        ErrorMap     = New Map;
+        ErrorMap        = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;
@@ -277,7 +277,7 @@ Function ModifyArchive(Val Archiver
     Try
         ArchiveAsBinary = NormalizeArchive(Archive);
     Except
-        ErrorMap     = New Map;
+        ErrorMap        = New Map;
         ErrorMap.Insert("result", False);
         ErrorMap.Insert("error" , BriefErrorDescription(ErrorInfo()));
         Return ErrorMap;

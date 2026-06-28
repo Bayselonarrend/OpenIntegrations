@@ -95,17 +95,14 @@ EndFunction
 
 Procedure DropboxAPI_GetUpdateToken() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Appkey"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Appsecret", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_GetAuthorizationLink(TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Code", TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Dropbox_GetToken(TestParameters);
 
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Refresh", TestParameters);
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
 
     Dropbox_RefreshToken(TestParameters);
 
@@ -113,11 +110,7 @@ EndProcedure
 
 Procedure DropboxAPI_UploadFile() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Big"          , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_UploadFile(TestParameters);
     Dropbox_GetObjectInformation(TestParameters);
     Dropbox_GetObjectVersionList(TestParameters);
@@ -132,9 +125,7 @@ EndProcedure
 
 Procedure DropboxAPI_CreateFolder() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_CreateFolder(TestParameters);
     Dropbox_DownloadFolder(TestParameters);
 
@@ -142,19 +133,14 @@ EndProcedure
 
 Procedure DropboxAPI_GetFolderFileList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_GetListOfFolderFiles(TestParameters);
 
 EndProcedure
 
 Procedure DropboxAPI_UploadFileByURL() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_UploadFileByURL(TestParameters);
     Dropbox_GetUploadStatusByURL(TestParameters);
 
@@ -162,9 +148,7 @@ EndProcedure
 
 Procedure DropboxAPI_CreateDeleteTag() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_AddTag(TestParameters);
     Dropbox_GetTagList(TestParameters);
     Dropbox_DeleteTag(TestParameters);
@@ -173,9 +157,7 @@ EndProcedure
 
 Procedure DropboxAPI_GetAccount() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Dropbox_GetAccountInformation(TestParameters);
     Dropbox_GetSpaceUsageData(TestParameters);
 
@@ -183,14 +165,9 @@ EndProcedure
 
 Procedure DropboxAPI_AccessManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_OtherUser"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_FileID"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_SharedFolder", TestParameters);
-
-    Folder = TestParameters["Dropbox_SharedFolder"];
-    Token  = TestParameters["Dropbox_Token"];
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
+    Folder         = TestParameters["Dropbox_SharedFolder"];
+    Token          = TestParameters["Dropbox_Token"];
 
     OPI_Dropbox.CancelFolderPublication(Token, Folder);
 

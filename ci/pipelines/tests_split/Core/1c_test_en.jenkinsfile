@@ -142,6 +142,7 @@ pipeline {
 	}
 	parameters {
 		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
+		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
 	}
 	stages {
 
@@ -174,6 +175,17 @@ pipeline {
 				}
 		}
 
+		stage('Testing-Core') {
+            when {
+                expression { return params['Core'] }
+            }
+			steps {
+				script {
+					runLibraryTest('Core', './service/yaxunit_conf/en/Core.json')
+
+				}
+			}
+		}
 		stage('Testing-Core') {
             when {
                 expression { return params['Core'] }

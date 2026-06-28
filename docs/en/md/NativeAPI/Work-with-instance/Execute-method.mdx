@@ -1,0 +1,57 @@
+---
+sidebar_position: 4
+
+description: Invoke method and other functions to work with NativeAPI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, NativeAPI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Invoke method
+ Calls the instance method of the AddIn by name or number
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function ExecuteMethod(Val Host, Val Instance, Val Method, Val Parameters = Undefined, Val Properties = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Host | --host | String, Arbitrary | &#x2714; | Host object or path to the AddIn. See CreateHost |
+  | Instance | --class | String | &#x2714; | Instance UUID or class name for temporary instance |
+  | Method | --method | String | &#x2714; | Method name |
+  | Parameters | --params | Array Of Arbitrary | &#x2716; | Parameters of the called function |
+  | Properties | --props | Map Of KeyAndValue | &#x2716; | Values for setting instance properties before calling |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Result of the call, method value and all instance properties
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+
+ 
+
+
+
+

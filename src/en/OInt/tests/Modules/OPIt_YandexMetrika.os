@@ -95,9 +95,7 @@ EndFunction
 
 Procedure YaMetrika_TagsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexMetrika_CreateTag(TestParameters);
     YandexMetrika_GetTagsList(TestParameters);
     YandexMetrika_UpdateTag(TestParameters);
@@ -108,9 +106,7 @@ EndProcedure
 
 Procedure YaMetrika_CountersManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexMetrika_GetCounterStructure(TestParameters);
     YandexMetrika_CreateCounter(TestParameters);
     YandexMetrika_GetCounter(TestParameters);
@@ -124,9 +120,7 @@ EndProcedure
 
 Procedure YaMetrika_ActionsManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Metrika_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     YandexMetrika_CreateCounter(TestParameters);
     YandexMetrika_GetActionsList(TestParameters);
     YandexMetrika_DeleteCounter(TestParameters);

@@ -132,6 +132,15 @@ Function GetCommonTemplateText(Val TemplateName) Export
 
 EndFunction
 
+Function GetBinaryTemplate(Val TemplateName) Export
+
+    Template = Undefined;
+    Template = GetCommonTemplate(TemplateName); // !OPI
+
+    Return Template;
+
+EndFunction
+
 Function GetSessionParameter(Val Name) Export
 
     Try

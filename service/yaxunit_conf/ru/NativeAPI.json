@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-      "OPIt_NativeAPI.NativeAPI_ОсновныеМетоды",
-      "OPIt_NativeAPI.NativeAPI_РаботаСБиблиотекой",
-      "OPIt_NativeAPI.NativeAPI_РаботаСЭкземпляром"
+"OPIt_NativeAPI.NativeAPI_ОсновныеМетоды",
+"OPIt_NativeAPI.NativeAPI_РаботаСБиблиотекой",
+"OPIt_NativeAPI.NativeAPI_РаботаСЭкземпляром"
     ]
   },
   "settings": {

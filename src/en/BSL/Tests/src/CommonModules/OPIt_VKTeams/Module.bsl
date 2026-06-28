@@ -97,10 +97,7 @@ EndFunction
 
 Procedure VKT_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_FileID", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VKTeams_CheckToken(TestParameters);
     VKTeams_GetEvents(TestParameters);
     VKTeams_GetFileInformation(TestParameters);
@@ -109,14 +106,7 @@ EndProcedure
 
 Procedure VKT_MessagesSending() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID2"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_MessageID", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Audio2"           , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VKTeams_SendTextMessage(TestParameters);
     OPI_Tools.Pause(60);
 
@@ -136,12 +126,7 @@ EndProcedure
 
 Procedure VKT_ChatManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_Token"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VKTeams_ChatID2", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture3"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     VKTeams_RemoveChatMembers(TestParameters);
     VKTeams_ChangeChatPicture(TestParameters);
     VKTeams_GetChatInfo(TestParameters);

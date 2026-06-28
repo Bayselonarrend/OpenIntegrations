@@ -1197,6 +1197,23 @@ Function GetTextTemplate(Val TemplateName) Export
 
 EndFunction
 
+Function GetAddInTemplate(Val TemplateName) Export
+
+    If IsOneScript() Then
+
+        LibraryDirectory = GetLibraryDirectory();
+        FileName         = StrTemplate("%1.txt", TemplateName);
+        TemplatePath     = StrTemplate("%1/%2/%3", LibraryDirectory, "templates", FileName);
+        Value            = New BinaryData(TemplatePath);
+
+    Else
+        Value = OPI_ToolsServerCall.GetCommonTemplateText(TemplateName);
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Function GetLastBuildHashSum() Export
 
     Return OPI_BuildHash.GetHashSum();
@@ -1607,6 +1624,10 @@ EndFunction
 
 Function ПолучитьТекстовыйМакет(Val ИмяМакета) Export
     Return GetTextTemplate(ИмяМакета);
+EndFunction
+
+Function ПолучитьМакетКомпоненты(Val ИмяМакета) Export
+    Return GetAddInTemplate(ИмяМакета);
 EndFunction
 
 Function ПолучитьХешСуммуПоследнейСборки() Export

@@ -107,9 +107,7 @@ EndProcedure
 
 Procedure ValidateAdvancedCall() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     AdvancedCall_CallWithSettings(TestParameters);
 
 EndProcedure

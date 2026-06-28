@@ -97,12 +97,7 @@ EndFunction
 
 Procedure NC_FilesManagement() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("NC_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Gif"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Neocities_UploadFile(TestParameters);
     Neocities_UploadFiles(TestParameters);
     Neocities_GetFilesList(TestParameters);
@@ -113,11 +108,7 @@ EndProcedure
 
 Procedure NC_DataRetrieving() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("NC_Token"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("NC_Login"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("NC_Password", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     Neocities_GetSiteData(TestParameters);
     Neocities_GetToken(TestParameters);
 

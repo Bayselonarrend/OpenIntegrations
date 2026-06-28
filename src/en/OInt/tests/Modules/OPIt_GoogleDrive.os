@@ -95,14 +95,7 @@ EndFunction
 
 Procedure GD_Authorization() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleDrive_FormCodeRetrievalLink(TestParameters);
     GoogleDrive_GetTokenByCode(TestParameters);
     GoogleDrive_RefreshToken(TestParameters);
@@ -112,9 +105,7 @@ EndProcedure
 
 Procedure GD_GetCatalogList() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleDrive_GetDirectoriesList(TestParameters);
     GoogleDrive_GetObjectInformation(TestParameters);
 
@@ -122,13 +113,7 @@ EndProcedure
 
 Procedure GD_UploadDeleteFile() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture2"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Big"         , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     TestParameters.Insert("ArrayOfDeletions", New Array);
 
     GoogleDrive_UploadFile(TestParameters);
@@ -145,11 +130,7 @@ EndProcedure
 
 Procedure GD_CreateDeleteComment() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     TestParameters.Insert("ArrayOfDeletions", New Array);
 
     GoogleDrive_UploadFile(TestParameters);
@@ -165,10 +146,7 @@ EndProcedure
 
 Procedure GD_CreateCatalog() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     GoogleDrive_CreateFolder(TestParameters);
 
 EndProcedure

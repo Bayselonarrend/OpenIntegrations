@@ -144,21 +144,12 @@ pipeline {
 		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
 		booleanParam(name: 'Telegram', defaultValue: true, description: 'Run Telegram tests')
 		booleanParam(name: 'VK', defaultValue: true, description: 'Run VK tests')
-		booleanParam(name: 'Viber', defaultValue: true, description: 'Run Viber tests')
-		booleanParam(name: 'FTP', defaultValue: true, description: 'Run FTP tests')
-		booleanParam(name: 'SSH', defaultValue: true, description: 'Run SSH tests')
-		booleanParam(name: 'SFTP', defaultValue: true, description: 'Run SFTP tests')
-		booleanParam(name: 'PostgreSQL', defaultValue: true, description: 'Run PostgreSQL tests')
-		booleanParam(name: 'MySQL', defaultValue: true, description: 'Run MySQL tests')
-		booleanParam(name: 'MSSQL', defaultValue: true, description: 'Run MSSQL tests')
-		booleanParam(name: 'SQLite', defaultValue: true, description: 'Run SQLite tests')
-		booleanParam(name: 'MongoDB', defaultValue: true, description: 'Run MongoDB tests')
-		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
 		booleanParam(name: 'YandexDisk', defaultValue: true, description: 'Run YandexDisk tests')
 		booleanParam(name: 'GoogleWorkspace', defaultValue: true, description: 'Run GoogleWorkspace tests')
 		booleanParam(name: 'GoogleCalendar', defaultValue: true, description: 'Run GoogleCalendar tests')
 		booleanParam(name: 'GoogleDrive', defaultValue: true, description: 'Run GoogleDrive tests')
 		booleanParam(name: 'GoogleSheets', defaultValue: true, description: 'Run GoogleSheets tests')
+		booleanParam(name: 'Viber', defaultValue: true, description: 'Run Viber tests')
 		booleanParam(name: 'Notion', defaultValue: true, description: 'Run Notion tests')
 		booleanParam(name: 'Slack', defaultValue: true, description: 'Run Slack tests')
 		booleanParam(name: 'Airtable', defaultValue: true, description: 'Run Airtable tests')
@@ -172,18 +163,29 @@ pipeline {
 		booleanParam(name: 'TCP', defaultValue: true, description: 'Run TCP tests')
 		booleanParam(name: 'WebSocket', defaultValue: true, description: 'Run WebSocket tests')
 		booleanParam(name: 'ZeroMQ', defaultValue: true, description: 'Run ZeroMQ tests')
+		booleanParam(name: 'SQLite', defaultValue: true, description: 'Run SQLite tests')
+		booleanParam(name: 'PostgreSQL', defaultValue: true, description: 'Run PostgreSQL tests')
+		booleanParam(name: 'MySQL', defaultValue: true, description: 'Run MySQL tests')
+		booleanParam(name: 'MSSQL', defaultValue: true, description: 'Run MSSQL tests')
+		booleanParam(name: 'MongoDB', defaultValue: true, description: 'Run MongoDB tests')
 		booleanParam(name: 'GreenAPI', defaultValue: true, description: 'Run GreenAPI tests')
 		booleanParam(name: 'GreenMax', defaultValue: true, description: 'Run GreenMax tests')
+		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
 		booleanParam(name: 'Ollama', defaultValue: true, description: 'Run Ollama tests')
 		booleanParam(name: 'HTTP', defaultValue: true, description: 'Run HTTP tests')
 		booleanParam(name: 'OpenAI', defaultValue: true, description: 'Run OpenAI tests')
+		booleanParam(name: 'FTP', defaultValue: true, description: 'Run FTP tests')
 		booleanParam(name: 'ReportPortal', defaultValue: true, description: 'Run ReportPortal tests')
+		booleanParam(name: 'SSH', defaultValue: true, description: 'Run SSH tests')
+		booleanParam(name: 'SFTP', defaultValue: true, description: 'Run SFTP tests')
 		booleanParam(name: 'GRPC', defaultValue: true, description: 'Run GRPC tests')
 		booleanParam(name: 'ClickHouse', defaultValue: true, description: 'Run ClickHouse tests')
 		booleanParam(name: 'RSS', defaultValue: true, description: 'Run RSS tests')
 		booleanParam(name: 'MessagePack', defaultValue: true, description: 'Run MessagePack tests')
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
+		booleanParam(name: 'NativeAPI', defaultValue: true, description: 'Run NativeAPI tests')
+		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 	}
 	stages {
 
@@ -255,136 +257,6 @@ pipeline {
 				}
 			}
 		}
-		stage('Testing-Viber') {
-            when {
-                expression { return params['Viber'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('Viber', './service/yaxunit_conf/ru/Viber.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-FTP') {
-            when {
-                expression { return params['FTP'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('FTP', './service/yaxunit_conf/ru/FTP.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-SSH') {
-            when {
-                expression { return params['SSH'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('SSH', './service/yaxunit_conf/ru/SSH.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-SFTP') {
-            when {
-                expression { return params['SFTP'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('SFTP', './service/yaxunit_conf/ru/SFTP.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-PostgreSQL') {
-            when {
-                expression { return params['PostgreSQL'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('PostgreSQL', './service/yaxunit_conf/ru/PostgreSQL.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-MySQL') {
-            when {
-                expression { return params['MySQL'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('MySQL', './service/yaxunit_conf/ru/MySQL.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-MSSQL') {
-            when {
-                expression { return params['MSSQL'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('MSSQL', './service/yaxunit_conf/ru/MSSQL.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-SQLite') {
-            when {
-                expression { return params['SQLite'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('SQLite', './service/yaxunit_conf/ru/SQLite.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-MongoDB') {
-            when {
-                expression { return params['MongoDB'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('MongoDB', './service/yaxunit_conf/ru/MongoDB.json')
-					}
-
-				}
-			}
-		}
-		stage('Testing-RCON') {
-            when {
-                expression { return params['RCON'] }
-            }
-			steps {
-				script {
-					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-						runLibraryTest('RCON', './service/yaxunit_conf/ru/RCON.json')
-					}
-
-				}
-			}
-		}
 		stage('Testing-YandexDisk') {
             when {
                 expression { return params['YandexDisk'] }
@@ -445,6 +317,19 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('GoogleSheets', './service/yaxunit_conf/ru/GoogleSheets.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-Viber') {
+            when {
+                expression { return params['Viber'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Viber', './service/yaxunit_conf/ru/Viber.json')
 					}
 
 				}
@@ -619,6 +504,71 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-SQLite') {
+            when {
+                expression { return params['SQLite'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SQLite', './service/yaxunit_conf/ru/SQLite.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-PostgreSQL') {
+            when {
+                expression { return params['PostgreSQL'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('PostgreSQL', './service/yaxunit_conf/ru/PostgreSQL.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-MySQL') {
+            when {
+                expression { return params['MySQL'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MySQL', './service/yaxunit_conf/ru/MySQL.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-MSSQL') {
+            when {
+                expression { return params['MSSQL'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MSSQL', './service/yaxunit_conf/ru/MSSQL.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-MongoDB') {
+            when {
+                expression { return params['MongoDB'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('MongoDB', './service/yaxunit_conf/ru/MongoDB.json')
+					}
+
+				}
+			}
+		}
 		stage('Testing-GreenAPI') {
             when {
                 expression { return params['GreenAPI'] }
@@ -640,6 +590,19 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('GreenMax', './service/yaxunit_conf/ru/GreenMax.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-RCON') {
+            when {
+                expression { return params['RCON'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('RCON', './service/yaxunit_conf/ru/RCON.json')
 					}
 
 				}
@@ -684,6 +647,19 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-FTP') {
+            when {
+                expression { return params['FTP'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('FTP', './service/yaxunit_conf/ru/FTP.json')
+					}
+
+				}
+			}
+		}
 		stage('Testing-ReportPortal') {
             when {
                 expression { return params['ReportPortal'] }
@@ -692,6 +668,32 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('ReportPortal', './service/yaxunit_conf/ru/ReportPortal.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-SSH') {
+            when {
+                expression { return params['SSH'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SSH', './service/yaxunit_conf/ru/SSH.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-SFTP') {
+            when {
+                expression { return params['SFTP'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('SFTP', './service/yaxunit_conf/ru/SFTP.json')
 					}
 
 				}
@@ -770,6 +772,32 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('Lua', './service/yaxunit_conf/ru/Lua.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-NativeAPI') {
+            when {
+                expression { return params['NativeAPI'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('NativeAPI', './service/yaxunit_conf/ru/NativeAPI.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-7z') {
+            when {
+                expression { return params['7z'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('7z', './service/yaxunit_conf/ru/7z.json')
 					}
 
 				}

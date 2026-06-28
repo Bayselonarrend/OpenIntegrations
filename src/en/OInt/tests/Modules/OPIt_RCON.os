@@ -95,10 +95,7 @@ EndFunction
 
 Procedure RC_CommandsExecution() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     RCON_FormConnectionParameters(TestParameters);
     RCON_CreateConnection(TestParameters);
     RCON_ExecuteCommand(TestParameters);
@@ -117,10 +114,7 @@ Procedure RC_ExtendedCheck() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("RCON_URL"     , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("RCON_Password", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     RCON_Extended_ExecuteCommandWithoutConnection(TestParameters);
     RCON_Extended_Reconnection(TestParameters);
     RCON_Extended_GetLogOnConnection(TestParameters);

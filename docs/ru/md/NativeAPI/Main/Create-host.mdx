@@ -1,0 +1,59 @@
+---
+sidebar_position: 2
+sidebar_class_name: doc-no-cli
+description: Создать хост  и другие функции для работы с NativeAPI в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, NativeAPI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Создать хост 
+ Создаёт объект прослойки Native API и загружает указанную DLL/SO
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция СоздатьХост(Знач Путь, Знач Логирование = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | Путь | - | Строка | &#x2714; | Полный путь к файлу анализируемой библиотеки |
+  | Логирование | - | Структура Из КлючИЗначение | &#x2716; | Настройки логирования. См. [`ПолучитьНастройкиЛогирования`](/docs/NativeAPI/Main/Get-logging-settings) |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Произвольный - Объект хоста или структура с информацией об ошибке
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Параметр | Описание |
+  |---|---|
+  | addin_mode | Ручной выбор режима подключения внешней компоненты (для 1С): Изолированно, НеИзолированно |
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
+
+
+
+    
+
+
+
+

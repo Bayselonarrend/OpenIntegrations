@@ -97,12 +97,7 @@ EndFunction
 
 Procedure MSS_CommonMethods() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("SQL2"       , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MSSQL_GenerateConnectionString(TestParameters);
     MSSQL_CreateConnection(TestParameters);
     MSSQL_CloseConnection(TestParameters);
@@ -123,10 +118,7 @@ Procedure MSS_ExtendedCheck() Export
         Return;
     EndIf;
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MSSQL_Extended_ExecuteQueryWithoutConnection(TestParameters);
     MSSQL_Extended_ConnectionWithoutString(TestParameters);
     MSSQL_Extended_Reconnection(TestParameters);
@@ -136,11 +128,7 @@ EndProcedure
 
 Procedure MSS_ORM() Export
 
-    TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("PG_IP"      , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("PG_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Picture"    , TestParameters);
-
+    TestParameters = OPI_TestDataRetrieval.GetTestData();
     MSSQL_CreateDatabase(TestParameters);
     MSSQL_CreateTable(TestParameters);
     MSSQL_AddRecords(TestParameters);
