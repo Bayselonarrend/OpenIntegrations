@@ -131,11 +131,22 @@ pub fn normalize_archive_path(path: &str) -> String {
     path.replace('\\', "/").trim_matches('/').to_string()
 }
 
-pub fn should_skip_symlink_entry(entry_name: &str) -> bool {
+pub fn should_skip_unsafe_entry(entry_name: &str) -> bool {
     let normalized = normalize_archive_path(entry_name);
     
     normalized.contains("..") || 
     normalized.starts_with('/') ||
     normalized.starts_with('\\') ||
     (normalized.len() > 1 && normalized.chars().nth(1) == Some(':'))
+}
+
+pub fn is_safe_path_component(name: &str) -> bool {
+    !name.is_empty()
+        && !name.contains('\0')
+        && name != "."
+        && name != ".."
+        && !name.starts_with('/')
+        && !name.starts_with('\\')
+        && !name.contains("://")
+        && !(name.len() > 1 && name.chars().nth(1) == Some(':'))
 }

@@ -4,7 +4,6 @@ mod archive_info;
 mod archive_ops;
 mod archive_settings;
 mod backend;
-mod path_security;
 mod worker;
 
 use addin::AddIn;

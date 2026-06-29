@@ -4,15 +4,14 @@ use std::io::{Cursor, Read, Seek, Write};
 use std::path::{Path, PathBuf};
 
 use common_core::JanxValue;
+use common_archives::{normalize_archive_path, validate_archive_entry_path, should_skip_unsafe_entry, check_symlink_escape};
 use sevenz_rust2::{decompress_with_extract_fn, decompress_with_extract_fn_and_password,
     default_entry_extract_fn, ArchiveEntry, ArchiveReader, ArchiveWriter
 };
 
-use crate::archive_description::{
-    join_archive_path, normalize_archive_path, parse_path_list, ArchiveDescription, ArchiveNode,
-};
+use crate::archive_description::ArchiveDescription;
 use crate::archive_settings::PackSettings;
-use crate::path_security::{validate_archive_entry_path, should_skip_symlink_entry, check_symlink_escape};
+use common_archives::{join_archive_path, parse_path_list, ArchiveNode};
 
 pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
     if !Path::new(source_path).exists() {
@@ -74,7 +73,7 @@ pub fn unpack_buffer_to_path(
     let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
         let entry_name = entry.name();
         
-        if should_skip_symlink_entry(entry_name) {
+        if should_skip_unsafe_entry(entry_name) {
             return Ok(false);
         }
         
@@ -365,7 +364,7 @@ fn unpack_reader_to_path<R: Read + Seek>(
             return Ok(false);
         }
         
-        if should_skip_symlink_entry(entry.name()) {
+        if should_skip_unsafe_entry(entry.name()) {
             return Ok(false);
         }
         

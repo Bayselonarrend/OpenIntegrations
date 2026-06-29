@@ -20,5 +20,6 @@ common-core = { path = "../commons/common-core" }
 common-janx = { path = "../commons/common-janx" }
 common-logs = { path = "../commons/common-logs" }
 common-utils = { path = "../commons/common-utils" }
+common-archives = { path = "../commons/common-archives" }
 
 sevenz-rust2 = { version = "0.20.2", features = ["aes256"] }

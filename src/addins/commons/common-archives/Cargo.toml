@@ -1,0 +1,16 @@
+[package]
+name = "common-archives"
+version = "2.3.0"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+common-core = { path = "../common-core" }
+common-janx = { path = "../common-janx" }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
+opt-level = "z"
