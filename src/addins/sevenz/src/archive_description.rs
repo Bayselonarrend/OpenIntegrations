@@ -1,9 +1,8 @@
 use std::collections::BTreeMap;
-use std::path::Path;
-
 use common_core::{FromJanx, JanxValue, janx};
 
 use crate::archive_info::EntryInfo;
+pub(crate) use crate::path_security::normalize_archive_path;
 
 #[derive(Debug, Clone)]
 pub struct ArchiveDescription {
@@ -90,6 +89,10 @@ fn parse_entry(value: &JanxValue) -> Result<ArchiveNode, String> {
         .filter(|value| !value.is_empty())
         .ok_or_else(|| "Archive entry must contain non-empty 'name'".to_string())?;
 
+    if !is_safe_path_component(&name) {
+        return Err(format!("Archive entry name '{}' contains unsafe path characters", name));
+    }
+
     let is_directory = object
         .get("directory")
         .and_then(bool::from_janx)
@@ -117,11 +120,14 @@ fn parse_entry(value: &JanxValue) -> Result<ArchiveNode, String> {
                 .filter(|value| !value.is_empty())
                 .ok_or_else(|| format!("File '{}' with from_path=true must contain 'path'", name))?;
 
-            if !Path::new(&path).exists() {
+            let canonical_path = std::fs::canonicalize(&path)
+                .map_err(|error| format!("Failed to resolve path '{}': {}", path, error))?;
+            
+            if !canonical_path.exists() {
                 return Err(format!("Source file not found: {}", path));
             }
 
-            Ok(ArchiveNode::FileFromPath { name, path })
+            Ok(ArchiveNode::FileFromPath { name, path: canonical_path.to_string_lossy().to_string() })
         } else {
             let data = object
                 .get("data")
@@ -147,8 +153,15 @@ pub fn join_archive_path(prefix: &str, name: &str) -> String {
     }
 }
 
-pub fn normalize_archive_path(path: &str) -> String {
-    path.replace('\\', "/").trim_matches('/').to_string()
+pub fn is_safe_path_component(name: &str) -> bool {
+    !name.is_empty()
+        && !name.contains('\0')
+        && name != "."
+        && name != ".."
+        && !name.starts_with('/')
+        && !name.starts_with('\\')
+        && !name.contains("://")
+        && !(name.len() > 1 && name.chars().nth(1) == Some(':'))
 }
 
 pub fn parse_path_list(value: &JanxValue) -> Result<Vec<String>, String> {

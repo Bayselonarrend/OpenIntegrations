@@ -4,16 +4,15 @@ use std::io::{Cursor, Read, Seek, Write};
 use std::path::{Path, PathBuf};
 
 use common_core::JanxValue;
-use sevenz_rust2::{
-    decompress, decompress_with_extract_fn, decompress_with_extract_fn_and_password,
-    decompress_with_password, default_entry_extract_fn, ArchiveEntry, ArchiveReader,
-    ArchiveWriter,
+use sevenz_rust2::{decompress_with_extract_fn, decompress_with_extract_fn_and_password,
+    default_entry_extract_fn, ArchiveEntry, ArchiveReader, ArchiveWriter
 };
 
 use crate::archive_description::{
     join_archive_path, normalize_archive_path, parse_path_list, ArchiveDescription, ArchiveNode,
 };
 use crate::archive_settings::PackSettings;
+use crate::path_security::{validate_archive_entry_path, should_skip_symlink_entry, check_symlink_escape};
 
 pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
     if !Path::new(source_path).exists() {
@@ -65,15 +64,50 @@ pub fn unpack_buffer_to_path(
         return Err("Archive data is empty".to_string());
     }
 
-    fs::create_dir_all(destination_path)
+    let dest_path = Path::new(destination_path);
+    fs::create_dir_all(dest_path)
         .map_err(|error| format!("Failed to create destination directory: {}", error))?;
 
     let reader = Cursor::new(archive_data.to_vec());
+    
+    let dest_for_closure = dest_path.to_path_buf();
+    let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
+        let entry_name = entry.name();
+        
+        if should_skip_symlink_entry(entry_name) {
+            return Ok(false);
+        }
+        
+        match validate_archive_entry_path(entry_name, &dest_for_closure) {
+            Ok(resolved_dest) => {
+                if dest.exists() {
+                    if let Err(e) = check_symlink_escape(dest, &dest_for_closure) {
+                        eprintln!("Skipping symlink that escapes destination: {}", e);
+                        return Ok(false);
+                    }
+                }
+                
+                let adjusted_dest = PathBuf::from(resolved_dest);
+                default_entry_extract_fn(entry, reader, &adjusted_dest)
+            }
+            Err(e) => {
+                eprintln!("Skipping unsafe entry '{}': {}", entry_name, e);
+                Ok(false)
+            }
+        }
+    };
+
     if password.is_empty() {
-        decompress(reader, destination_path).map_err(|error| error.to_string())
-    } else {
-        decompress_with_password(reader, destination_path, password.into())
+        decompress_with_extract_fn(reader, destination_path, extract)
             .map_err(|error| error.to_string())
+    } else {
+        decompress_with_extract_fn_and_password(
+            reader,
+            destination_path,
+            password.into(),
+            extract,
+        )
+        .map_err(|error| error.to_string())
     }
 }
 
@@ -317,17 +351,40 @@ fn unpack_reader_to_path<R: Read + Seek>(
     selected_paths: &[String],
     password: &str,
 ) -> Result<(), String> {
-    fs::create_dir_all(destination_path)
+    let dest_path = Path::new(destination_path);
+    fs::create_dir_all(dest_path)
         .map_err(|error| format!("Failed to create destination directory: {}", error))?;
 
     let selected = build_selected_paths_set(selected_paths);
 
+    let dest_for_closure = dest_path.to_path_buf();
     let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
         let entry_path = normalize_archive_path(entry.name());
-        if selected.contains(&entry_path) {
-            default_entry_extract_fn(entry, reader, dest)
-        } else {
-            Ok(false)
+        
+        if !selected.contains(&entry_path) {
+            return Ok(false);
+        }
+        
+        if should_skip_symlink_entry(entry.name()) {
+            return Ok(false);
+        }
+        
+        match validate_archive_entry_path(entry.name(), &dest_for_closure) {
+            Ok(resolved_dest) => {
+                if dest.exists() {
+                    if let Err(e) = check_symlink_escape(dest, &dest_for_closure) {
+                        eprintln!("Skipping symlink that escapes destination: {}", e);
+                        return Ok(false);
+                    }
+                }
+                
+                let adjusted_dest = PathBuf::from(resolved_dest);
+                default_entry_extract_fn(entry, reader, &adjusted_dest)
+            }
+            Err(e) => {
+                eprintln!("Skipping unsafe entry '{}': {}", entry.name(), e);
+                Ok(false)
+            }
         }
     };
 

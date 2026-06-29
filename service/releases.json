@@ -6,10 +6,16 @@
         "image": "media/Covers/Archives.png",
         "changes": [
             {
-                "lib": "Lua",
-                "icon": "media/Lua.png",
-                "description_ru": "Основные методы (6 функций)",
-                "description_en": "Core methods (6 functions)"
+                "lib": "7z",
+                "icon": "media/7z.png",
+                "description_ru": "Функции архивации/разархивации (6 функции)",
+                "description_en": "PArchive/Extract functions (6 functions)"
+            },
+            {
+                "lib": "7z",
+                "icon": "media/7z.png",
+                "description_ru": "Функции получения метаданных (2 функции)",
+                "description_en": "Metadata retrieval functions (2 functions)"
             },
             {
                 "lib": "Janx",
@@ -28,12 +34,6 @@
                 "icon": "media/logo.png",
                 "description_ru": "Улучшена панель управления расширением в 1С, добавлен раздел обновлений",
                 "description_en": "Improved 1C extension management panel, added extension updates section"
-            },
-            {
-                "lib": "7z",
-                "icon": "media/7z.png",
-                "description_ru": "Частичная распаковка и изменение архива (2 функции)",
-                "description_en": "Partial unpack and archive modification (2 functions)"
             }
         ]
     },
