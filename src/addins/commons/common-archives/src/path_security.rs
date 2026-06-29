@@ -35,7 +35,7 @@ pub fn validate_archive_entry_path(entry_name: &str, destination: &Path) -> Resu
         .canonicalize()
         .unwrap_or_else(|_| destination.to_path_buf());
 
-    let canonical_resolved = canonicalize_safe(&resolved, &canonical_dest)?;
+    let canonical_resolved = canonicalize_safe(Path::new(&normalized), &canonical_dest)?;
     
     if !canonical_resolved.starts_with(&canonical_dest) {
         return Err(format!(
@@ -52,7 +52,21 @@ pub fn check_symlink_escape(path: &Path, destination: &Path) -> Result<(), Strin
         .canonicalize()
         .unwrap_or_else(|_| destination.to_path_buf());
 
-    let canonical_path = canonicalize_safe(path, &canonical_dest)?;
+    let relative = path
+        .strip_prefix(destination)
+        .or_else(|_| path.strip_prefix(&canonical_dest))
+        .map_err(|_| {
+            format!(
+                "Path '{}' is outside destination directory",
+                path.display()
+            )
+        })?;
+
+    let canonical_path = if relative.as_os_str().is_empty() {
+        canonical_dest.clone()
+    } else {
+        canonicalize_safe(relative, &canonical_dest)?
+    };
     
     if !canonical_path.starts_with(&canonical_dest) {
         return Err(format!(
@@ -149,4 +163,50 @@ pub fn is_safe_path_component(name: &str) -> bool {
         && !name.starts_with('\\')
         && !name.contains("://")
         && !(name.len() > 1 && name.chars().nth(1) == Some(':'))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+    fn temp_destination_dir() -> PathBuf {
+        let nanos = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .expect("time")
+            .as_nanos();
+        let path = std::env::temp_dir().join(format!("common-archives-test-{}", nanos));
+        fs::create_dir_all(&path).expect("create temp dir");
+        path
+    }
+
+    #[test]
+    fn validate_entry_path_allows_nested_relative_entries() {
+        let destination = temp_destination_dir();
+
+        let resolved = validate_archive_entry_path("docs/note.txt", &destination)
+            .expect("nested entry should be accepted");
+
+        assert_eq!(resolved, destination.join("docs/note.txt"));
+    }
+
+    #[test]
+    fn validate_entry_path_rejects_parent_traversal() {
+        let destination = temp_destination_dir();
+
+        let error = validate_archive_entry_path("../escape.txt", &destination)
+            .expect_err("parent traversal must be rejected");
+
+        assert!(error.contains("path traversal"), "unexpected error: {error}");
+    }
+
+    #[test]
+    fn check_symlink_escape_accepts_path_under_destination() {
+        let destination = temp_destination_dir();
+        let file_path = destination.join("readme.txt");
+        fs::write(&file_path, b"ok").expect("write file");
+
+        check_symlink_escape(&file_path, &destination).expect("file under destination");
+    }
 }
