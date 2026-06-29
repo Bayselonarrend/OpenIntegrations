@@ -1,10 +1,10 @@
 ﻿{
  "logs": [
-  "[2026-06-27 20:38:23.949] Binding to port 9876...",
-  "[2026-06-27 20:38:23.956] Successfully bound to port 9876",
-  "[2026-06-27 20:38:23.960] Listener task started",
-  "[2026-06-27 20:38:24.183] New connection accepted: 6113a9c9-e627-42fb-9209-7e15e1ac6783 from 127.0.0.1:63805",
-  "[2026-06-27 20:38:24.187] Message received from 6113a9c9-e627-42fb-9209-7e15e1ac6783: 27 bytes, active: true"
+  "[2026-06-29 22:51:57.439] Binding to port 9876...",
+  "[2026-06-29 22:51:57.441] Successfully bound to port 9876",
+  "[2026-06-29 22:51:57.442] Listener task started",
+  "[2026-06-29 22:51:57.570] New connection accepted: a4f0bd2a-159e-4087-8a1c-10188cc91301 from 127.0.0.1:59610",
+  "[2026-06-29 22:51:57.573] Message received from a4f0bd2a-159e-4087-8a1c-10188cc91301: 27 bytes, active: true"
  ],
  "result": true,
  "returned": 5,

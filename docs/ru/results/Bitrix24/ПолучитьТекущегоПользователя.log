@@ -10,7 +10,7 @@
   "DATE_REGISTER": "2024-02-10T03:00:00+03:00",
   "TIME_ZONE": "Europe/Minsk",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "27.06.2026 20:42:50",
+  "TIMESTAMP_X": "29.06.2026 22:55:56",
   "LAST_ACTIVITY_DATE": "2026-05-17 23:27:04",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
@@ -22,13 +22,13 @@
   ]
  },
  "time": {
-  "start": 1782582173,
-  "finish": 1782582173.59531,
-  "duration": 0.595307111740112,
-  "processing": 0,
-  "date_start": "2026-06-27T20:42:53+03:00",
-  "date_finish": "2026-06-27T20:42:53+03:00",
-  "operating_reset_at": 1782582773,
-  "operating": 0
+  "start": 1782762959,
+  "finish": 1782762960.41716,
+  "duration": 1.41716003417969,
+  "processing": 1,
+  "date_start": "2026-06-29T22:55:59+03:00",
+  "date_finish": "2026-06-29T22:56:00+03:00",
+  "operating_reset_at": 1782763559,
+  "operating": 0.586305856704712
  }
 }

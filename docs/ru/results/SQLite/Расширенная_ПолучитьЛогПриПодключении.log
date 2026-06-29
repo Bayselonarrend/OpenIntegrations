@@ -1,9 +1,9 @@
 ﻿{
  "logs": [
-  "[2026-06-27 20:37:54.389] Connecting to SQLite (in_memory=false)",
-  "[2026-06-27 20:37:54.400] Connected to SQLite",
-  "[2026-06-27 20:37:54.402] Execute query (params=0, force_result=false): SELECT 1 AS n",
-  "[2026-06-27 20:37:54.406] Query returned 1 row(s)"
+  "[2026-06-29 22:49:59.112] Connecting to SQLite (in_memory=false)",
+  "[2026-06-29 22:49:59.122] Connected to SQLite",
+  "[2026-06-29 22:49:59.134] Execute query (params=0, force_result=false): SELECT 1 AS n",
+  "[2026-06-29 22:49:59.145] Query returned 1 row(s)"
  ],
  "result": true,
  "returned": 4,

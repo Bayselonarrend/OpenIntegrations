@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-06-27T17:37:39.6006774Z",
+ "created_at": "2026-06-29T19:49:37.9855066Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to specific information about when the first version of 1c:enterprise was released. However, 1c:enterprise is a widely used enterprise resource planning (erp) software that has been around for many years and undergone significant updates, releases, and improvements over time. The current version may have new features, functionalities, and capabilities compared to the previous versions."
+  "content": "The first version of 1C:Enterprise was released in November 2008. It has since been updated several times to include new features, improvements, and bug fixes. The latest version available as of May 2021 is 9.6, which contains significant changes and updates to the software."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 2779423900,
- "load_duration": 93046700,
- "prompt_eval_count": 195,
- "prompt_eval_duration": 322650000,
- "eval_count": 85,
- "eval_duration": 2352337000
+ "total_duration": 2959690200,
+ "load_duration": 97799700,
+ "prompt_eval_count": 402,
+ "prompt_eval_duration": 695849000,
+ "eval_count": 67,
+ "eval_duration": 2154730000
 }

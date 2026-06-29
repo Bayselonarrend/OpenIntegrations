@@ -2,29 +2,28 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB0E7D538E754A3C9F6E6",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781720698,
-  "idMessage": "3EB0D91A5BF499E6F3310E",
+  "timestamp": 1782762567,
   "senderData": {
    "chatId": "***",
-   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***"
+   "senderContactName": "***",
+   "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
-    "caption": "File description",
-    "fileName": "picture.jpg",
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Новое сообщение",
+    "description": "",
+    "title": "",
+    "previewType": "None",
     "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }

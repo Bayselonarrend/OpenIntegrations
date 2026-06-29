@@ -1,0 +1,15 @@
+﻿{
+ "password": "***",
+ "method": "<метод сжатия: Lzma2 (по ум.), Lzma, Bzip2, Ppmd, Copy>",
+ "level": "<уровень сжатия: 0-9 (6 по ум.)>",
+ "solid": "<сжатие одним потоком: Истина/Ложь (по ум.)>",
+ "encrypt_header": "<шифровать заголовок: Истина (по ум., при наличии пароля)/Ложь>",
+ "threads": "<число потоков LZMA2 (по ум. 1)>",
+ "chunk_size": "<размер чанка при threads > 1>",
+ "dictionary_size": "<размер словаря LZMA2>",
+ "ppmd_order": "<порядок модели (для Ppmd)>",
+ "ppmd_memory": "<память в байтах (для Ppmd)>",
+ "filters": "<массив фильтров: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>",
+ "delta_distance": "<расстояние для фильтра DELTA, если используется (по ум. 1)>",
+ "unpack_password": "***"
+}
