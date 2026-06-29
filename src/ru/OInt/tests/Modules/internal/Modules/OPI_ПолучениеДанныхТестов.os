@@ -17538,8 +17538,8 @@
 
         // BSLLS:CommonModuleAssign-on
 
-        ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
-        МассивПути     = СтрРазделить(ТекущийКаталог, "/");
+        ТекущийКаталог   = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
+        МассивПути       = СтрРазделить(ТекущийКаталог, "/");
         МассивПути.Удалить(МассивПути.ВГраница());
         МассивПути.Удалить(МассивПути.ВГраница());
         МассивПути.Добавить("api");
@@ -18674,3 +18674,148 @@
 #КонецОбласти
 
 #КонецОбласти
+
+
+#Region Alternate
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
+    Return ВыполнитьТестCLI(Library, Method, Options, Record);
+EndFunction
+
+Function GetTestingSectionMapping() Export
+    Return ПолучитьСоответствиеРазделовТестирования();
+EndFunction
+
+Function GetTestTable(Val TestModule = "") Export
+    Return ПолучитьТаблицуТестов(TestModule);
+EndFunction
+
+Function ExpectsThat(Value) Export
+    Return ОжидаетЧто(Value);
+EndFunction
+
+Function FormYAXTests(Val TestModule) Export
+    Return СформироватьТестыЯкс(TestModule);
+EndFunction
+
+Function FormYAXTestsCLI(Val TestModule = "") Export
+    Return СформироватьТестыЯксCLI(TestModule);
+EndFunction
+
+Function FormAssertsTests(Val TestModule = "") Export
+    Return СформироватьТестыАссертс(TestModule);
+EndFunction
+
+Function FormAssertsTestsCLI(Val TestModule = "") Export
+    Return СформироватьТестыАссертсCLI(TestModule);
+EndFunction
+
+Function GetTestData() Export
+    Return ПолучитьТестовыеДанные();
+EndFunction
+
+Function GetParameter(Parameter) Export
+    Return ПолучитьПараметр(Parameter);
+EndFunction
+
+Function GetBinary(Parameter) Export
+    Return ПолучитьДвоичные(Parameter);
+EndFunction
+
+Function GetFilePath(Val Path) Export
+    Return ПолучитьФайлПути(Path);
+EndFunction
+
+Function GetLocalhost() Export
+    Return ПолучитьLocalhost();
+EndFunction
+
+Function IsCLITest() Export
+    Return ЭтоТестCLI();
+EndFunction
+
+Procedure ParameterToCollection(Parameter, Collection) Export
+    ПараметрВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure BinaryToCollection(Parameter, Collection) Export
+    ДвоичныеВКоллекцию(Parameter, Collection);
+EndProcedure
+
+Procedure WriteParameter(Parameter, Value) Export
+    ЗаписатьПараметр(Parameter, Value);
+EndProcedure
+
+Procedure Process(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+    Обработать(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
+EndProcedure
+
+Procedure ProcessCLI(Val Result, Val Library, Val Method, Val Option = "", AddParam1 = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+    ОбработатьCLI(Result, Library, Method, Option, AddParam1, AddParam2, AddParam3);
+EndProcedure
+
+Procedure SetCLITestFlag(Val Value) Export
+    УстановитьПризнакТестаCLI(Value);
+EndProcedure
+
+Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
+    ВывестиСлужебнуюИнформацию(Text, Note, Library);
+EndProcedure
+
+Function CreateReportPortalLaunch(Val Platform = "") Export
+    Return СоздатьЗапускReportPortal(Platform);
+EndFunction
+
+Function CreateLaunchSet(Val Name) Export
+    Return СоздатьНаборЗапуска(Name);
+EndFunction
+
+Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
+    Return СоздатьТестовыйЭлемент(Set, Library, Method, Option);
+EndFunction
+
+Procedure FinishLaunch() Export
+    ЗавершитьЗапуск();
+EndProcedure
+
+Function GetExecutedTestsList() Export
+    Return ПолучитьСписокВыполненныхТестов();
+EndFunction
+
+Function GetFullTestList() Export
+    Return ПолучитьПолныйСписокТестов();
+EndFunction
+
+Function GetFTPParameterOptions() Export
+    Return ПолучитьВариантыПараметровFTP();
+EndFunction
+
+Function GetWebSocketParametersOptions() Export
+    Return ПолучитьВариантыПараметровWebSocket();
+EndFunction
+
+Function GetSSHParameterOptions() Export
+    Return ПолучитьВариантыПараметровSSH();
+EndFunction
+
+Function GetS3ParameterOptions() Export
+    Return ПолучитьВариантыПараметровS3();
+EndFunction
+
+Function GetPostgresParameterOptions() Export
+    Return ПолучитьВариантыПараметровPostgres();
+EndFunction
+
+Function GetMySQLParameterOptions() Export
+    Return ПолучитьВариантыПараметровMySQL();
+EndFunction
+
+Function GetTagArray(Index) Export
+    Return ПолучитьМассивТегов(Index);
+EndFunction
+
+Function GetJanxTestCollection(Val Option) Export
+    Return ПолучитьТестовуюКоллекциюJanx(Option);
+EndFunction
+
+#EndRegion

@@ -409,11 +409,11 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
 
-    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"               , "Archiving"                 , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"   , "Archiving with a password" , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"         , "Metadata extraction"       , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"        , "Partial unpacking"         , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"     , "Archive modification"      , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"             , "Archiving"                 , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword" , "Archiving with a password" , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"       , "Metadata extraction"       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"      , "Partial unpacking"         , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"   , "Archive modification"      , SevenZ);
 
     Return ArrayOfTests;
 
