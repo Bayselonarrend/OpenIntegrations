@@ -14267,7 +14267,7 @@
 "ДобавитьЗначение: место добавления не найдено": "AddValue: place to add not found",
 "ОбработатьDigest: не удалось создать заголовок": "ProcessDigest: failed to create header",
 "Добавляет значение в массив Form или Json тела": "Adds a value to the Form or Json body array",
-"СформироватьЗаголовокDigest: алогритм не найден": "FormDigestHeader: algorithm not found",
+"СформироватьЗаголовокDigest: алгоритм не найден": "FormDigestHeader: algorithm not found",
 "Имя типа для попытки автоматического приведения": "Type name for automatic conversion attempt",
 "Ключ поля массив. Пустой для вставки в корень тела": "Array field key. Empty for insertion at the root of the body",
 "Вставляет новое поле в коллекцию Form или Json тела": "Inserts a new field into the Form or Json body collection",
