@@ -24,6 +24,12 @@
                 "description_en": "Optimized serialization for data without binary fields"
             },
             {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Добавлена `Digest` авторизация",
+                "description_en": "Added `Digest` authentication"
+            },
+            {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "В CLI добавлены специальные значения `--out` (`_hex_`, `_base64_`, `_utf8_`) для вывода двоичных данных и строк в консоль в текстовом виде",
