@@ -376,70 +376,31 @@ EndFunction
 
 #Region Collections
 
-// BSLLS:CognitiveComplexity-off
+Procedure AddField(Val Name, Val Value, Val Type, Collection, Val InsertEmpty = False) Export
 
-Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
+    If Not InsertEmpty Then
 
-    Filled = ValueIsFilled(Value);
+        Filled = ValueIsFilled(Value);
 
-    If Not Filled Then
-        Return;
-    EndIf;
-
-    If Type   = "Date" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value = UNIXTime(Value);
-
-    ElsIf Type = "DateISO" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value  = Left(GetXMLString(Value), 19);
-
-    ElsIf Type = "DateISOZ" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value  = Left(GetXMLString(Value), 19) + "Z";
-
-    ElsIf Type = "DateWithoutTime" Then
-        OPI_TypeConversion.GetDate(Value);
-        Value = Format(Value, "DF=yyyy-MM-dd");
-
-    ElsIf Type = "Collection" Then
-        OPI_TypeConversion.GetCollection(Value);
-
-    ElsIf Type = "KeyAndValue" Then
-        OPI_TypeConversion.GetKeyValueCollection(Value);
-
-    ElsIf Type = "Boolean" Then
-        OPI_TypeConversion.GetBoolean(Value);
-
-    ElsIf Type = "FileString" Then
-        OPI_TypeConversion.GetLine(Value, True);
-
-    ElsIf Type = "Array" Then
-        OPI_TypeConversion.GetArray(Value);
-
-    ElsIf Type = "BinaryData" Then
-        OPI_TypeConversion.GetBinaryData(Value);
-
-    ElsIf Type = "Number" Then
-        OPI_TypeConversion.GetNumber(Value);
-
-    ElsIf Type = "UUID" Then
-        OPI_TypeConversion.GetLine(Value);
-        Value  = New UUID(Value);
-
-    Else
-
-        If Not Type = "Current" Then
-            OPI_TypeConversion.GetLine(Value);
+        If Not Filled Then
+            Return;
         EndIf;
 
     EndIf;
+
+    ConvertCollectionElementType(Value, Type);
 
     Collection.Insert(Name, Value);
 
 EndProcedure
 
-// BSLLS:CognitiveComplexity-on
+Procedure AddElement(Val Value, Val Type, Collection) Export
+
+    ConvertCollectionElementType(Value, Type);
+
+    Collection.Add(Value);
+
+EndProcedure
 
 Procedure AddKeyValue(Table, Val Key, Val Value) Export
 
@@ -1299,6 +1260,59 @@ Procedure WriteOnCurrentLine(Val Text, Val Color = "", Val ToStart = False) Expo
 
 EndProcedure
 
+Procedure ConvertCollectionElementType(Value, Val Type)
+
+    If Type   = "Date" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = UNIXTime(Value);
+
+    ElsIf Type = "DateISO" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value  = Left(GetXMLString(Value), 19);
+
+    ElsIf Type = "DateISOZ" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value  = Left(GetXMLString(Value), 19) + "Z";
+
+    ElsIf Type = "DateWithoutTime" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = Format(Value, "DF=yyyy-MM-dd");
+
+    ElsIf Type = "Collection" Then
+        OPI_TypeConversion.GetCollection(Value);
+
+    ElsIf Type = "KeyAndValue" Then
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+
+    ElsIf Type = "Boolean" Then
+        OPI_TypeConversion.GetBoolean(Value);
+
+    ElsIf Type = "FileString" Then
+        OPI_TypeConversion.GetLine(Value, True);
+
+    ElsIf Type = "Array" Then
+        OPI_TypeConversion.GetArray(Value);
+
+    ElsIf Type = "BinaryData" Then
+        OPI_TypeConversion.GetBinaryData(Value);
+
+    ElsIf Type = "Number" Then
+        OPI_TypeConversion.GetNumber(Value);
+
+    ElsIf Type = "UUID" Then
+        OPI_TypeConversion.GetLine(Value);
+        Value  = New UUID(Value);
+
+    Else
+
+        If Not Type = "Current" And Not Type = Undefined Then
+            OPI_TypeConversion.GetLine(Value);
+        EndIf;
+
+    EndIf;
+
+EndProcedure
+
 Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
@@ -1466,8 +1480,12 @@ Function ПолучитьXMLСтроку(Val Значение) Export
     Return GetXMLString(Значение);
 EndFunction
 
-Procedure ДобавитьПоле(Val Имя, Val Значение, Val Тип, Коллекция) Export
-    AddField(Имя, Значение, Тип, Коллекция);
+Procedure ДобавитьПоле(Val Имя, Val Значение, Val Тип, Коллекция, Val ВставлятьПустое = False) Export
+    AddField(Имя, Значение, Тип, Коллекция, ВставлятьПустое);
+EndProcedure
+
+Procedure ДобавитьЭлемент(Val Значение, Val Тип, Коллекция) Export
+    AddElement(Значение, Тип, Коллекция);
 EndProcedure
 
 Procedure ДобавитьКлючЗначение(Таблица, Val Ключ, Val Значение) Export

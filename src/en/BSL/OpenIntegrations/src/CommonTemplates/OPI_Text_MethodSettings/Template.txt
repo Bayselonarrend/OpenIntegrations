@@ -5588,6 +5588,9 @@
   "ReturnSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "AddValue": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "EncodeURLInURL": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }

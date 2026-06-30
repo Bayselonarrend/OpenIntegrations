@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-06-29T19:29:57",
+ "generatedAt": "2026-06-30T20:27:46",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -64,6 +64,12 @@
      "icon": "media/Janx.png",
      "description_ru": "Оптимизирована сериализация данных без двоичных полей",
      "description_en": "Optimized serialization for data without binary fields"
+    },
+    {
+     "lib": "HTTP",
+     "icon": "media/HTTP.png",
+     "description_ru": "Добавлена `Digest` авторизация",
+     "description_en": "Added `Digest` authentication"
     },
     {
      "lib": "All",

@@ -1,0 +1,54 @@
+---
+sidebar_position: 8
+
+description: Добавить значение и другие функции для работы с HTTP в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, HTTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Добавить значение
+ Добавляет значение в массив Form или Json тела
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция ДобавитьЗначение(Знач КлючПоля, Знач ЗначениеЭлемента, Знач ТипЗначения = Неопределено) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | КлючПоля | --key | Строка | &#x2714; | Ключ поля массив. Пустой для вставки в корень тела |
+  | ЗначениеЭлемента | --value | Произвольный | &#x2714; | Значение для добавления в конец массива |
+  | ТипЗначения | --type | Строка | &#x2716; | Имя типа для попытки автоматического приведения |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Параметр | Описание |
+  |---|---|
+  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+
+    
+
+
+
+

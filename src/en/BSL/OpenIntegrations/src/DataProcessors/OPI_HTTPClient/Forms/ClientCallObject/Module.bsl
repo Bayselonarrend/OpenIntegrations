@@ -77,6 +77,8 @@ Var RequestPort; // Port from the request URL or default
 &AtClient
 Var RequestAdress; // Path from the request URL
 &AtClient
+Var RequestUri; // Path with parameters without sections
+&AtClient
 Var RequestAdressFull; // Path with parameters and section from the request URL
 &AtClient
 Var RequestSection; // Section in the URL if present
@@ -122,6 +124,8 @@ Var RequestDataReader; // Reading request body data
 &AtClient
 Var RequestDataType; // MIME type for Content-Type
 &AtClient
+Var RequestCollectionProcessing; // View forming of body from RequestBodyCollection
+&AtClient
 Var RequestTypeSetManualy; // Flag to disable automatic Content-Type detection
 &AtClient
 Var RequestPartSize; // Part size for partial upload
@@ -134,6 +138,14 @@ Var BodyTemporaryFile; // Flag to delete the body file if it was created automat
 Var AuthType; // View authorization
 &AtClient
 Var AuthData; // Credentials structure
+&AtClient
+Var AuthUser; // User authorization
+&AtClient
+Var AuthPassword; // Password authorization
+&AtClient
+Var AuthNonceCount; // nonce count for Digest
+&AtClient
+Var AuthLastNonce; // last nonce for Digest
 
 // Response
 
@@ -187,14 +199,18 @@ Function Initialize(Val URL = "") Export
     Initialized = True;
     Error       = False;
 
-    RequestURLParams      = New Structure;
-    RequestBody           = Undefined;
-    RequestBodyCollection = New Structure;
-    RequestHeaders        = New Map;
-    RequestTimeout        = 3600;
-    RequestPartSize       = 5242880;
-    RequestReadControl    = 0;
-    Repeats               = 0;
+    RequestURLParams            = New Structure;
+    RequestBody                 = Undefined;
+    RequestCollectionProcessing = Undefined;
+    RequestBodyCollection       = New Structure;
+    RequestHeaders              = New Map;
+    RequestTimeout              = 3600;
+    RequestPartSize             = 5242880;
+    RequestReadControl          = 0;
+    Repeats                     = 0;
+
+    AuthNonceCount = 1;
+    AuthLastNonce  = "";
 
     RequestTypeSetManualy = False;
 
@@ -806,6 +822,8 @@ Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
             SetBodyFromBinaryData(Data);
             AddLog(StrTemplate("SetBinaryBody: body set, size %1", RequestBody.Size()));
 
+            RequestCollectionProcessing = Undefined;
+
         Else
             AddLog("SetBinaryBody: an empty body has been passed - skip");
         EndIf;
@@ -853,6 +871,8 @@ Function SetStringBody(Val Data, Val WriteBOM = False) Export
         SetBodyFromString(Data, WriteBOM);
         AddLog(StrTemplate("SetStringBody: body set, size %1", RequestBody.Size()));
 
+        RequestCollectionProcessing = Undefined;
+
         Return ThisObject;
 
     Except
@@ -883,23 +903,23 @@ Function SetJsonBody(Val Data) Export
             Return ThisObject;
         EndIf;
 
-        If Not RequestTypeSetManualy Then
-          RequestDataType = "application/json; charset=utf-8";
-        EndIf;
-
         AddLog("SetJsonBody: beginning of body setting");
 
-        If Not TypeOf(Data) = Type("BinaryData") Then
+        Success = False;
+        OPI_TypeConversion.GetCollection(Data, , Success);
 
-            OPI_TypeConversion.GetCollection(Data);
-
-            If Not TypeOf(Data)       = Type("Array") Then
-                RequestBodyCollection = OPI_Tools.CopyCollection(Data);
-            EndIf;
-
+        If Success Then
+            RequestBody              = Undefined;
+            RequestBodyCollection = OPI_Tools.CopyCollection(Data);
+        Else
+            Return Error("SetJsonBody: the provided data is not valid JSON");
         EndIf;
 
-        SetBodyFromString(Data);
+        If Not RequestTypeSetManualy Then
+            RequestDataType = "application/json; charset=utf-8";
+        EndIf;
+
+        RequestCollectionProcessing = "json";
 
         AddLog(StrTemplate("SetJsonBody: body set, size %1", RequestBody.Size()));
 
@@ -933,11 +953,11 @@ Function SetFormBody(Val Data) Export
             Return ThisObject;
         EndIf;
 
+        AddLog("SetFormBody: beginning of body setting");
+
         If Not RequestTypeSetManualy Then
           RequestDataType = "application/x-www-form-urlencoded; charset=utf-8";
         EndIf;
-
-        AddLog("SetFormBody: beginning of body setting");
 
         OPI_TypeConversion.GetCollection(Data);
 
@@ -949,17 +969,216 @@ Function SetFormBody(Val Data) Export
                 OPI_TypeConversion.GetLine(Data);
             EndIf;
 
+            SetBodyFromString(Data);
+
         Else
 
-            RequestBodyCollection = OPI_Tools.CopyCollection(Data);
-            Data                  = RequestParametersToString(Data);
+            RequestBody                       = Undefined;
+            RequestBodyCollection    = OPI_Tools.CopyCollection(Data);
+            RequestCollectionProcessing = "form";
 
         EndIf;
 
-        SetBodyFromString(Data);
         SetSetting("BodyFieldsAtOAuth", True);
 
         AddLog(StrTemplate("SetFormBody: body set, size %1", RequestBody.Size()));
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Initialize JSON body !NOCLI
+// Initializes the body with an empty JSON collection for further population
+//
+// Parameters:
+// RootType - String - Type of root: Map, Structure, Array - type
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+&AtClient
+Function InitializeJsonBody(Val RootType = "Map") Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        OPI_TypeConversion.GetLine(RootType);
+
+        If RootType <> "Map"
+            And RootType <> "Structure"
+            And RootType <> "Array" Then
+
+            Return Error("InitializeJsonBody: only Map, Structure, and Array types are available as values");
+
+        EndIf;
+
+        CancelMultipartBody();
+
+        If Not RequestTypeSetManualy Then
+            RequestDataType = "application/json; charset=utf-8";
+        EndIf;
+
+        AddLog("InitializeJsonBody: setting the root");
+
+        RequestBody                 = Undefined;
+        RequestBodyCollection       = New(RootType);
+        RequestCollectionProcessing = "json";
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Initialize Form body !NOCLI
+// Initializes the body with an empty x-www-form-urlencoded collection for further population
+//
+// Parameters:
+// RootType - String - Type of root: Map, Structure - type
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+&AtClient
+Function InitializeFormBody(Val RootType = "Map") Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        OPI_TypeConversion.GetLine(RootType);
+
+        If RootType <> "Map"
+            And RootType <> "Structure" Then
+
+            Return Error("InitializeFormBody: only Map, Structure, and Array types are available as values");
+
+        EndIf;
+
+        CancelMultipartBody();
+
+        If Not RequestTypeSetManualy Then
+            RequestDataType = "application/x-www-form-urlencoded; charset=utf-8";
+        EndIf;
+
+        AddLog("InitializeFormBody: setting the root");
+
+        RequestBody                       = Undefined;
+        RequestBodyCollection             = New(RootType);
+        RequestCollectionProcessing = "form";
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Insert body field !NOCLI
+// Inserts a new field into the Form or Json body collection
+//
+// Parameters:
+// FieldKey - String - Key of the inserted field - key
+// FieldValue - Arbitrary - Field value - value
+// ValeType - String - Type name for automatic conversion attempt - type
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+&AtClient
+Function InsertBodyField(Val FieldKey, Val FieldValue, Val ValeType = Undefined) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        If Not ValueIsFilled(RequestCollectionProcessing) Then
+            Return Error("InsertBodyField: collection root was not initialized");
+        EndIf;
+
+        OPI_TypeConversion.GetLine(FieldKey);
+
+        If StrFind(FieldKey, ".") > 0 Then
+
+            FieldRoot  = StrSplit(FieldKey, ".", False);
+            CurrentKey = FieldRoot[FieldRoot.UBound()];
+
+            FieldRoot.Delete(FieldRoot.UBound());
+            FieldRoot = StrConcat(FieldRoot, ".");
+
+            CurrentCollection = Undefined;
+
+            RootExists = OPI_Tools.CollectionFieldExists(RequestBodyCollection, FieldRoot, CurrentCollection);
+
+            If Not RootExists Or Not OPI_Tools.ThisIsCollection(CurrentCollection, True) Then
+                Return Error("InsertBodyField: place to insert not found or not a collection of key and value");
+            EndIf;
+
+        Else
+            CurrentCollection = RequestBodyCollection;
+            CurrentKey        = FieldKey;
+        EndIf;
+
+        AddLog("InsertBodyField: adding a value");
+
+        OPI_Tools.AddField(CurrentKey, FieldValue, ValeType, CurrentCollection, True);
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Add value
+// Adds a value to the Form or Json body array
+//
+// Parameters:
+// FieldKey - String - Array field key. Empty for insertion at the root of the body - key
+// ElementValue - Arbitrary - Value to be added to the end of the array - value
+// ValeType - String - Type name for automatic conversion attempt - type
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+&AtClient
+Function AddValue(Val FieldKey, Val ElementValue, Val ValeType = Undefined) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        If Not ValueIsFilled(RequestCollectionProcessing) Then
+            Return Error("AddValue: collection root was not initialized");
+        EndIf;
+
+        OPI_TypeConversion.GetLine(FieldKey);
+
+        If StrFind(FieldKey, ".") > 0 Then
+
+            CurrentCollection = Undefined;
+            RootExists        = OPI_Tools.CollectionFieldExists(RequestBodyCollection, FieldKey, CurrentCollection);
+
+            If Not RootExists Then
+                Return Error("AddValue: place to add not found");
+            EndIf;
+
+        Else
+            CurrentCollection = RequestBodyCollection;
+        EndIf;
+
+        If TypeOf(CurrentCollection) <> Type("Array") Then
+            Return Error("AddValue: place to add is not an array");
+        EndIf;
+
+        AddLog("AddValue: adding a value");
+
+        OPI_Tools.AddElement(ElementValue, ValeType, CurrentCollection);
 
         Return ThisObject;
 
@@ -995,7 +1214,9 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
         Boundary      = StrReplace(String(New UUID), "-", "");
         LineSeparator = Chars.CR + Chars.LF;
         Encoding      = GetSetting("EncodeRequestBody");
+
         RequestDataType = StrTemplate("multipart/%1; boundary=%2", View, Boundary);
+        RequestCollectionProcessing = Undefined;
 
         RequestBodyCollection = New Structure;
 
@@ -1336,6 +1557,37 @@ Function AddBasicAuthorization(Val User, Val Password) Export
 
 EndFunction
 
+// Add Digest authorization !NOCLI
+// Adds Digest authorization by user and password
+//
+// Parameters:
+// User - String - Users name - user
+// Password - String - Password - pwd
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+&AtClient
+Function AddDigestAuthorization(Val User, Val Password) Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        OPI_TypeConversion.GetLine(User);
+        OPI_TypeConversion.GetLine(Password);
+
+        AuthType           = "digest";
+        AuthUser     = User;
+        AuthPassword = Password;
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
 // Add Bearer authorization
 // Adds a request header for Bearer authorization
 //
@@ -1495,7 +1747,7 @@ Function ProcessRequest(Val Method, Val Start = True) Export
 
     Try
 
-        If StopExecution() Then Return ThisObject; EndIf;
+        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
 
         OPI_TypeConversion.GetLine(Method);
         OPI_TypeConversion.GetBoolean(Start);
@@ -1563,7 +1815,7 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject; EndIf;
+        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
 
         If TypeOf(RequestBody) <> Type("BinaryData") Then
             Raise "Body not set";
@@ -1615,7 +1867,7 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
 
     Try
 
-        If StopExecution() Then Return ThisObject; EndIf;
+        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
 
         If TypeOf(RequestBody) <> Type("BinaryData") Then
             Raise "Body not set";
@@ -2197,7 +2449,8 @@ Function CompleteURLWithParameters()
         FirstSymbol = "?";
     EndIf;
 
-    RequestAdressFull = RequestAdress + FirstSymbol + RequestParametersToString(RequestURLParams) + RequestSection;
+    RequestUri           = RequestAdress + FirstSymbol + RequestParametersToString(RequestURLParams);
+    RequestAdressFull = RequestUri + RequestSection;
 
     Return ThisObject;
 
@@ -2452,7 +2705,7 @@ EndFunction
 &AtClient
 Function CheckResendNecessity(RedirectCount, ErrorCount)
 
-    If ThisIsRedirection(Response) Then
+    If ThisIsRedirection() Then
 
         MaximumNumberOfRedirects = GetSetting("MaxRedirects");
 
@@ -2492,8 +2745,8 @@ Function CheckResendNecessity(RedirectCount, ErrorCount)
 
     EndIf;
 
-    ThisIsServerError = ThisIsServerError(Response);
-    IsInternalError   = IsInternalError(Response);
+    ThisIsServerError = ThisIsServerError();
+    IsInternalError   = IsInternalError();
 
     If ThisIsServerError Or IsInternalError Then
 
@@ -2523,6 +2776,10 @@ Function CheckResendNecessity(RedirectCount, ErrorCount)
             Return False;
         EndIf;
 
+    EndIf;
+
+    If IsAuthorizationError() And AuthType = "digest" Then
+        Return ProcessDigest();
     EndIf;
 
     Return False;
@@ -2565,7 +2822,7 @@ Function GetResponseBody()
 EndFunction
 
 &AtClient
-Function ThisIsRedirection(Val Response)
+Function ThisIsRedirection()
 
     If Response = Undefined Then
         Return False;
@@ -2583,7 +2840,7 @@ Function ThisIsRedirection(Val Response)
 EndFunction
 
 &AtClient
-Function ThisIsServerError(Val Response)
+Function ThisIsServerError()
 
     If Response = Undefined Then
         Return False;
@@ -2598,11 +2855,26 @@ Function ThisIsServerError(Val Response)
 EndFunction
 
 &AtClient
-Function IsInternalError(Val Response)
+Function IsInternalError()
 
     IsInternalError = Response = Undefined;
 
     Return IsInternalError;
+
+EndFunction
+
+&AtClient
+Function IsAuthorizationError()
+
+    If Response = Undefined Then
+        Return False;
+    EndIf;
+
+    AuthorizationError = 401;
+
+    IsAuthorizationError = Response.StatusCode = AuthorizationError;
+
+    Return IsAuthorizationError;
 
 EndFunction
 
@@ -3445,6 +3717,191 @@ EndFunction
 
 #EndRegion
 
+#Region Digest
+
+&AtClient
+Function ProcessDigest()
+
+    ExpectedDigest = Lower(Response.Headers.Get("Authorization")) = "digest";
+
+    If Not ExpectedDigest Then
+        AddLog("ProcessDigest: Digest was declared but not returned by the server");
+        Return False;
+    EndIf;
+
+    MainHeader = Response.Headers.Get("WWW-Authenticate");
+
+    If Not ValueIsFilled(MainHeader) Then
+        AddLog("ProcessDigest: WWW-Authenticate header not found");
+        Return False;
+    EndIf;
+
+    MainHeader  = Right(MainHeader, StrLen(MainHeader) - 6);
+    HeaderParts = StrSplit(MainHeader, ",", False);
+    KeyMap      = New Map;
+
+    For Each Part In HeaderParts Do
+
+        ItemParts = StrSplit(Part, "=");
+
+        If ItemParts.Count() < 2 Then
+            Continue;
+        EndIf;
+
+        LeftPart = TrimAll(ItemParts[0]);
+
+        If StrStartWith(LeftPart, """") Then
+            LeftPart = Right(LeftPart, StrLen(LeftPart) - 1);
+        EndIf;
+
+        If StrEndsWith(LeftPart, """") Then
+            LeftPart = Left(LeftPart, StrLen(LeftPart) - 1);
+        EndIf;
+
+        ItemParts.Delete(0);
+
+        RightPart = TrimAll(StrConcat(ItemParts, "="));
+
+        KeyMap.Insert(LeftPart, RightPart);
+
+    EndDo;
+
+    DigestHeader = FormDigestHeader(KeyMap);
+
+    If DigestHeader = Undefined Then
+        AddLog("ProcessDigest: failed to create header");
+        Return False;
+    EndIf;
+
+    RequestHeaders.Insert("Authorization", DigestHeader);
+    Request.Headers.Insert("Authorization", DigestHeader);
+
+    Return True;
+
+EndFunction
+
+&AtClient
+Function FormDigestHeader(Val KeyMap)
+
+    FullAlgorithm = KeyMap.Get("algorithm");
+
+    If FullAlgorithm = Undefined Then
+        AddLog("FormDigestHeader: algorithm not found");
+    EndIf;
+
+    Algorithm = Lower(FullAlgorithm);
+
+    If StrEndsWith(Algorithm, "-sess") Then
+        Algorithm = Left(Algorithm, StrLen(Algorithm) - 5);
+        SESS      = True;
+    Else
+        SESS      = False;
+    EndIf;
+
+    If Algorithm = "sha" Or Algorithm = "sha-1" Then
+
+        HashFunc = "SHA1";
+
+    ElsIf Algorithm = "sha-256" Then
+
+        HashFunc = "SHA256";
+
+    ElsIf Algorithm = "md5" Then
+
+        HashFunc = "MD5";
+
+    Else
+         AddLog(StrTemplate("FormDigestHeader: hash function not supported - %1", Algorithm));
+         Return False;
+    EndIf;
+
+    Realm  = KeyMap.Get("realm");
+    Nonce  = KeyMap.Get("nonce");
+    Qop    = KeyMap.Get("qop");
+    Opaque = KeyMap.Get("opaque");
+
+    NonceCount = Format(AuthNonceCount, "ND=10; NLZ=; NG=");
+    Cnonce = Left(StrReplace(Lower(New UUID), "-", ""), 16);
+
+    SA1 = StrTemplate("%1:%2:%3", AuthUser, Realm, AuthPassword);
+
+    If SESS Then
+
+        BB1 = OPI_ToolsServerCall.Hash(GetBinaryDataFromString(SA1), HashFunc);
+        SB1 = Lower(GetHexStringFromBinaryData(BB1));
+
+        SA1 = StrTemplate("%1:%2:%3", SB1, Nonce, Cnonce);
+
+    EndIf;
+
+    If Qop = "auth-int" Then
+
+        BodySignature     = OPI_ToolsServerCall.Hash(GetRequestBodyAsBinaryData(), HashFunc);
+        SignatureAsString = Lower(GetHexStringFromBinaryData(BodySignature));
+
+        SA2 = StrTemplate("%1:%2:%3", RequestMethod, RequestUri, SignatureAsString);
+
+    Else
+        SA2 = StrTemplate("%1:%2", RequestMethod, RequestUri);
+    EndIf;
+
+    BHA1 = OPI_ToolsServerCall.Hash(GetBinaryDataFromString(SA1), HashFunc);
+    BHA2 = OPI_ToolsServerCall.Hash(GetBinaryDataFromString(SA2), HashFunc);
+
+    SHA1 = Lower(GetHexStringFromBinaryData(BHA1));
+    SHA2 = Lower(GetHexStringFromBinaryData(BHA2));
+
+    If Nonce        = AuthLastNonce Then
+        AuthNonceCount = AuthNonceCount + 1;
+    Else
+        AuthLastNonce  = Nonce;
+        AuthNonceCount = 1;
+    EndIf;
+
+    If Not ValueIsFilled(Qop) Then
+
+        SResponse = StrTemplate("%1:%2:%3", SHA1, Nonce, SHA2);
+
+    Else
+
+        SResponse = StrTemplate("%1:%2:%3:%4:%5:%6"
+            , SHA1
+            , Nonce
+            , NonceCount
+            , Cnonce
+            , Qop
+            , SHA2);
+
+    EndIf;
+
+    BResponse = OPI_ToolsServerCall.Hash(GetBinaryDataFromString(SResponse), HashFunc);
+    Signature = Lower(GetHexStringFromBinaryData(BResponse));
+
+    Base = StrTemplate("username=""%1"", realm=""%2"", nonce=""%3"", uri=""%4"", response=""%5"", algorithm=%6"
+        , AuthUser
+        , Realm
+        , Nonce
+        , RequestUri
+        , Signature
+        , Upper(FullAlgorithm));
+
+    Strings = New Array;
+    Strings.Add(Base);
+
+    If ValueIsFilled(Opaque) Then
+        Strings.Add(StrTemplate(", opaque=""%1""", Opaque));
+    EndIf;
+
+    If ValueIsFilled(Qop) Then
+        Strings.Add(StrTemplate(", qop=""%1"", nc=%2, cnonce=""%3""", Qop, NonceCount, Nonce));
+    EndIf;
+
+    Return StrTemplate("Digest %1", StrConcat(Strings, ""));
+
+EndFunction
+
+#EndRegion
+
 #Region Auxiliary
 
 &AtClient
@@ -3543,6 +4000,27 @@ Function GetSettingsWithFilter(Val CurrentSettings, Val Filter)
     EndDo;
 
     Return CurrentSettings_;
+
+EndFunction
+
+&AtClient
+Function FormBodyFromCollection()
+
+    If StopExecution() Then Return ThisObject; EndIf;
+
+    If RequestCollectionProcessing = Undefined Or RequestBody <> Undefined Then
+        Return ThisObject;
+    EndIf;
+
+    If RequestCollectionProcessing    = "json" Then
+        SetBodyFromString(RequestBodyCollection);
+    ElsIf RequestCollectionProcessing = "form" Then
+        SetBodyFromString(RequestParametersToString(RequestBodyCollection));
+    Else
+        Return Error(StrTemplate("FormBodyFromCollection: body processing type error %1", RequestCollectionProcessing));
+    EndIf;
+
+    Return ThisObject;
 
 EndFunction
 

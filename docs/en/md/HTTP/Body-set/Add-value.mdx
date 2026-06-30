@@ -1,0 +1,54 @@
+---
+sidebar_position: 8
+
+description: Add value and other functions to work with HTTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Add value
+ Adds a value to the Form or Json body array
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function AddValue(Val FieldKey, Val ElementValue, Val ValeType = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | FieldKey | --key | String | &#x2714; | Array field key. Empty for insertion at the root of the body |
+  | ElementValue | --value | Arbitrary | &#x2714; | Value to be added to the end of the array |
+  | ValeType | --type | String | &#x2716; | Type name for automatic conversion attempt |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ DataProcessorObject.OPI_HTTPClient - This processor object
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+
+ 
+
+
+
+
