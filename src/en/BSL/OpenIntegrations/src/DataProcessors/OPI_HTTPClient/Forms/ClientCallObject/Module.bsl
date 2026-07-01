@@ -909,7 +909,7 @@ Function SetJsonBody(Val Data) Export
         OPI_TypeConversion.GetCollection(Data, , Success);
 
         If Success Then
-            RequestBody              = Undefined;
+            RequestBody           = Undefined;
             RequestBodyCollection = OPI_Tools.CopyCollection(Data);
         Else
             Return Error("SetJsonBody: the provided data is not valid JSON");
@@ -921,7 +921,7 @@ Function SetJsonBody(Val Data) Export
 
         RequestCollectionProcessing = "json";
 
-        AddLog(StrTemplate("SetJsonBody: body set, size %1", RequestBody.Size()));
+        AddLog("SetJsonBody: body set");
 
         Return ThisObject;
 
@@ -973,15 +973,15 @@ Function SetFormBody(Val Data) Export
 
         Else
 
-            RequestBody                       = Undefined;
-            RequestBodyCollection    = OPI_Tools.CopyCollection(Data);
+            RequestBody                 = Undefined;
+            RequestBodyCollection       = OPI_Tools.CopyCollection(Data);
             RequestCollectionProcessing = "form";
 
         EndIf;
 
         SetSetting("BodyFieldsAtOAuth", True);
 
-        AddLog(StrTemplate("SetFormBody: body set, size %1", RequestBody.Size()));
+        AddLog("SetFormBody: body set");
 
         Return ThisObject;
 
@@ -1068,8 +1068,8 @@ Function InitializeFormBody(Val RootType = "Map") Export
 
         AddLog("InitializeFormBody: setting the root");
 
-        RequestBody                       = Undefined;
-        RequestBodyCollection             = New(RootType);
+        RequestBody                 = Undefined;
+        RequestBodyCollection       = New(RootType);
         RequestCollectionProcessing = "form";
 
         Return ThisObject;
@@ -1576,7 +1576,7 @@ Function AddDigestAuthorization(Val User, Val Password) Export
         OPI_TypeConversion.GetLine(User);
         OPI_TypeConversion.GetLine(Password);
 
-        AuthType           = "digest";
+        AuthType     = "digest";
         AuthUser     = User;
         AuthPassword = Password;
 
@@ -1747,7 +1747,8 @@ Function ProcessRequest(Val Method, Val Start = True) Export
 
     Try
 
-        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
+        FormBodyFromCollection();
+        If StopExecution() Then Return ThisObject; EndIf;
 
         OPI_TypeConversion.GetLine(Method);
         OPI_TypeConversion.GetBoolean(Start);
@@ -1815,7 +1816,8 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
 
     Try
 
-        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
+        FormBodyFromCollection();
+        If StopExecution() Then Return ThisObject; EndIf;
 
         If TypeOf(RequestBody) <> Type("BinaryData") Then
             Raise "Body not set";
@@ -1867,7 +1869,8 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
 
     Try
 
-        If FormBodyFromCollection().StopExecution() Then Return ThisObject; EndIf;
+        FormBodyFromCollection();
+        If StopExecution() Then Return ThisObject; EndIf;
 
         If TypeOf(RequestBody) <> Type("BinaryData") Then
             Raise "Body not set";
@@ -2449,7 +2452,7 @@ Function CompleteURLWithParameters()
         FirstSymbol = "?";
     EndIf;
 
-    RequestUri           = RequestAdress + FirstSymbol + RequestParametersToString(RequestURLParams);
+    RequestUri        = RequestAdress + FirstSymbol + RequestParametersToString(RequestURLParams);
     RequestAdressFull = RequestUri + RequestSection;
 
     Return ThisObject;
@@ -3851,7 +3854,7 @@ Function FormDigestHeader(Val KeyMap)
     SHA1 = Lower(GetHexStringFromBinaryData(BHA1));
     SHA2 = Lower(GetHexStringFromBinaryData(BHA2));
 
-    If Nonce        = AuthLastNonce Then
+    If Nonce           = AuthLastNonce Then
         AuthNonceCount = AuthNonceCount + 1;
     Else
         AuthLastNonce  = Nonce;
