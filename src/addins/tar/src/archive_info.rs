@@ -140,6 +140,12 @@ fn entry_info_to_janx(entry: &EntryInfo) -> JanxValue {
         if let Some(timestamp) = entry.modified_date {
             fields.insert("modified_time".to_string(), JanxValue::Number(timestamp.into()));
         }
+        if let Some(uid) = entry.uid {
+            fields.insert("uid".to_string(), JanxValue::Number(uid.into()));
+        }
+        if let Some(gid) = entry.gid {
+            fields.insert("gid".to_string(), JanxValue::Number(gid.into()));
+        }
     }
 
     object
