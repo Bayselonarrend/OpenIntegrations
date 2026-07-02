@@ -4,20 +4,20 @@ use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_logs, janx_success, lock_unpoisoned};
 
-use crate::backend::SevenZBackend;
+use crate::backend::TarBackend;
 
 pub struct AddIn {
-    backend: Arc<Mutex<SevenZBackend>>,
+    backend: Arc<Mutex<TarBackend>>,
 }
 
 impl AddIn {
     pub fn new() -> Self {
         Self {
-            backend: Arc::new(Mutex::new(SevenZBackend::new())),
+            backend: Arc::new(Mutex::new(TarBackend::new())),
         }
     }
 
-    fn lock_backend(&self) -> std::sync::MutexGuard<'_, SevenZBackend> {
+    fn lock_backend(&self) -> std::sync::MutexGuard<'_, TarBackend> {
         lock_unpoisoned(&self.backend)
     }
 

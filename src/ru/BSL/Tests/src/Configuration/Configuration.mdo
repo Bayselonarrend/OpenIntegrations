@@ -21,6 +21,7 @@
   <scriptVariant>Russian</scriptVariant>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
   <commonModules>CommonModule.OPIt_7z</commonModules>
+  <commonModules>CommonModule.OPIt_Tar</commonModules>
   <commonModules>CommonModule.OPIt_Airtable</commonModules>
   <commonModules>CommonModule.OPIt_Bitrix24</commonModules>
   <commonModules>CommonModule.OPIt_CDEK</commonModules>

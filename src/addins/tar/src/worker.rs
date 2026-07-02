@@ -6,7 +6,6 @@ use common_backend::SyncBackendThread;
 use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_success};
-use sevenz_rust2::{decompress_file, decompress_file_with_password};
 
 use crate::archive_description::ArchiveDescription;
 use crate::archive_info;
@@ -205,15 +204,9 @@ impl Session {
             return janx_error(format!("Archive not found: {}", archive_path));
         }
 
-        let result = if password.is_empty() {
-            decompress_file(archive_path, destination_path)
-        } else {
-            decompress_file_with_password(archive_path, destination_path, password.into())
-        };
-
-        match result {
+        match archive_ops::unpack_file_to_path(archive_path, destination_path, password) {
             Ok(()) => janx_success(None, None),
-            Err(error) => janx_error(error.to_string()),
+            Err(error) => janx_error(error),
         }
     }
 
@@ -251,37 +244,37 @@ impl Session {
     fn list_to_description_from_buffer(
         &self,
         archive_data: &[u8],
-        password: &str,
+        _password: &str,
     ) -> Result<JanxValue, String> {
         self.log("ListToDescriptionFromBuffer");
-        archive_info::list_from_buffer(archive_data, password)
+        archive_info::list_from_buffer(archive_data)
     }
 
     fn list_to_description_from_file(
         &self,
         archive_path: &str,
-        password: &str,
+        _password: &str,
     ) -> Result<JanxValue, String> {
         self.log(&format!("ListToDescriptionFromFile {}", archive_path));
-        archive_info::list_from_file(archive_path, password)
+        archive_info::list_from_file(archive_path)
     }
 
     fn get_metadata_from_buffer(
         &self,
         archive_data: &[u8],
-        password: &str,
+        _password: &str,
     ) -> Result<JanxValue, String> {
         self.log("GetMetadataFromBuffer");
-        archive_info::metadata_from_buffer(archive_data, password)
+        archive_info::metadata_from_buffer(archive_data)
     }
 
     fn get_metadata_from_file(
         &self,
         archive_path: &str,
-        password: &str,
+        _password: &str,
     ) -> Result<JanxValue, String> {
         self.log(&format!("GetMetadataFromFile {}", archive_path));
-        archive_info::metadata_from_file(archive_path, password)
+        archive_info::metadata_from_file(archive_path)
     }
 
     fn unpack_partial_to_file_from_file(
@@ -347,7 +340,7 @@ impl Session {
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
-    SyncBackendThread::spawn("opi_sevenz_backend", move |rx| {
+    SyncBackendThread::spawn("opi_tar_backend", move |rx| {
         let mut session = Session::new(logger);
 
         while let Ok(cmd) = rx.recv() {

@@ -8,12 +8,12 @@ use common_utils::utils::janx_error;
 
 use crate::worker::{self, WorkerCommand};
 
-pub struct SevenZBackend {
+pub struct TarBackend {
     thread: Option<SyncBackendThread<WorkerCommand>>,
     logger: Option<Arc<Logger>>,
 }
 
-impl SevenZBackend {
+impl TarBackend {
     pub fn new() -> Self {
         Self {
             thread: None,
@@ -361,7 +361,7 @@ impl SevenZBackend {
     }
 }
 
-impl Drop for SevenZBackend {
+impl Drop for TarBackend {
     fn drop(&mut self) {
         self.close_backend();
     }

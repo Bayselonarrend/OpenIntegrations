@@ -1,32 +1,41 @@
 use std::collections::{BTreeMap, HashSet};
 use std::fs::{self, File};
-use std::io::{Cursor, Read, Seek, Write};
-use std::path::{Path, PathBuf};
+use std::io::{Cursor, Read, Write};
+use std::path::Path;
 
-use common_core::JanxValue;
-use common_archives::{normalize_archive_path, validate_archive_entry_path, should_skip_unsafe_entry, check_symlink_escape};
-use sevenz_rust2::{decompress_with_extract_fn, decompress_with_extract_fn_and_password,
-    default_entry_extract_fn, ArchiveEntry, ArchiveReader, ArchiveWriter
+use common_archives::{
+    join_archive_path, normalize_archive_path, parse_path_list, should_skip_unsafe_entry,
+    validate_archive_entry_path, ArchiveDescription, ArchiveNode,
 };
+use common_core::JanxValue;
+use flate2::read::GzDecoder;
+use flate2::write::GzEncoder;
+use tar::{Archive, Builder, EntryType};
 
-use crate::archive_description::ArchiveDescription;
 use crate::archive_settings::PackSettings;
-use common_archives::{join_archive_path, parse_path_list, ArchiveNode};
 
 pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
     if !Path::new(source_path).exists() {
         return Err(format!("Source path not found: {}", source_path));
     }
 
-    let mut archive_writer =
-        ArchiveWriter::new(Cursor::new(Vec::new())).map_err(|error| error.to_string())?;
-    settings.apply_to_writer(&mut archive_writer);
-    pack_source_path(&mut archive_writer, source_path, settings.solid)?;
+    let buffer = Vec::new();
 
-    archive_writer
-        .finish()
-        .map(|writer| writer.into_inner())
-        .map_err(|error| error.to_string())
+    if settings.gzip {
+        let encoder = GzEncoder::new(buffer, settings.gzip_compression());
+        let mut builder = Builder::new(encoder);
+        append_source_path(&mut builder, source_path)?;
+        let encoder = builder
+            .into_inner()
+            .map_err(|error| error.to_string())?;
+        encoder.finish().map_err(|error| error.to_string())
+    } else {
+        let mut builder = Builder::new(buffer);
+        append_source_path(&mut builder, source_path)?;
+        Ok(builder
+            .into_inner()
+            .map_err(|error| error.to_string())?)
+    }
 }
 
 pub fn pack_path_to_file(
@@ -47,81 +56,48 @@ pub fn pack_path_to_file(
 
     let file = File::create(archive_path)
         .map_err(|error| format!("Failed to create archive file: {}", error))?;
-    let mut archive_writer = ArchiveWriter::new(file).map_err(|error| error.to_string())?;
-    settings.apply_to_writer(&mut archive_writer);
-    pack_source_path(&mut archive_writer, source_path, settings.solid)?;
-    archive_writer.finish().map_err(|error| error.to_string())?;
-    Ok(())
-}
 
-pub fn unpack_buffer_to_path(
-    archive_data: &[u8],
-    destination_path: &str,
-    password: &str,
-) -> Result<(), String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
-
-    let dest_path = Path::new(destination_path);
-    fs::create_dir_all(dest_path)
-        .map_err(|error| format!("Failed to create destination directory: {}", error))?;
-
-    let reader = Cursor::new(archive_data.to_vec());
-    
-    let dest_for_closure = dest_path.to_path_buf();
-    let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
-        let entry_name = entry.name();
-        
-        if should_skip_unsafe_entry(entry_name) {
-            return Ok(false);
-        }
-        
-        match validate_archive_entry_path(entry_name, &dest_for_closure) {
-            Ok(resolved_dest) => {
-                if dest.exists() {
-                    if let Err(e) = check_symlink_escape(dest, &dest_for_closure) {
-                        eprintln!("Skipping symlink that escapes destination: {}", e);
-                        return Ok(false);
-                    }
-                }
-                
-                let adjusted_dest = PathBuf::from(resolved_dest);
-                default_entry_extract_fn(entry, reader, &adjusted_dest)
-            }
-            Err(e) => {
-                eprintln!("Skipping unsafe entry '{}': {}", entry_name, e);
-                Ok(false)
-            }
-        }
-    };
-
-    if password.is_empty() {
-        decompress_with_extract_fn(reader, destination_path, extract)
-            .map_err(|error| error.to_string())
+    if settings.gzip {
+        let encoder = GzEncoder::new(file, settings.gzip_compression());
+        let mut builder = Builder::new(encoder);
+        append_source_path(&mut builder, source_path)?;
+        builder
+            .into_inner()
+            .map_err(|error| error.to_string())?
+            .finish()
+            .map_err(|error| error.to_string())?;
     } else {
-        decompress_with_extract_fn_and_password(
-            reader,
-            destination_path,
-            password.into(),
-            extract,
-        )
-        .map_err(|error| error.to_string())
+        let mut builder = Builder::new(file);
+        append_source_path(&mut builder, source_path)?;
+        builder
+            .into_inner()
+            .map_err(|error| error.to_string())?;
     }
+
+    Ok(())
 }
 
 pub fn pack_description_to_buffer(
     description: &ArchiveDescription,
     settings: &PackSettings,
 ) -> Result<Vec<u8>, String> {
-    let mut archive_writer =
-        ArchiveWriter::new(Cursor::new(Vec::new())).map_err(|error| error.to_string())?;
-    settings.apply_to_writer(&mut archive_writer);
-    push_nodes(&description.entries, "", &mut archive_writer)?;
-    archive_writer
-        .finish()
-        .map(|writer| writer.into_inner())
-        .map_err(|error| error.to_string())
+    let buffer = Vec::new();
+
+    if settings.gzip {
+        let encoder = GzEncoder::new(buffer, settings.gzip_compression());
+        let mut builder = Builder::new(encoder);
+        push_nodes(&description.entries, "", &mut builder)?;
+        let encoder = builder
+            .into_inner()
+            .map_err(|error| error.to_string())?;
+        encoder.finish().map_err(|error| error.to_string())
+    } else {
+        let mut builder = Builder::new(buffer);
+        push_nodes(&description.entries, "", &mut builder)?;
+        Ok(builder
+            .into_inner()
+            .map_err(|error| error.to_string())?)
+    }
 }
 
 pub fn pack_description_to_file(
@@ -142,277 +118,338 @@ pub fn pack_description_to_file(
         .map_err(|error| format!("Failed to write archive file: {}", error))
 }
 
+pub fn unpack_buffer_to_path(
+    archive_data: &[u8],
+    destination_path: &str,
+    _password: &str,
+) -> Result<(), String> {
+    if archive_data.is_empty() {
+        return Err("Archive data is empty".to_string());
+    }
+
+    let archive = open_archive_from_bytes(archive_data.to_vec())?;
+    extract_archive_to_path(archive, destination_path, None)
+}
+
+pub fn unpack_file_to_path(
+    archive_path: &str,
+    destination_path: &str,
+    _password: &str,
+) -> Result<(), String> {
+    if !Path::new(archive_path).exists() {
+        return Err(format!("Archive not found: {}", archive_path));
+    }
+
+    let archive = open_archive_from_file(archive_path)?;
+    extract_archive_to_path(archive, destination_path, None)
+}
+
 pub fn unpack_buffer_to_description(
     archive_data: &[u8],
-    password: &str,
+    _password: &str,
 ) -> Result<JanxValue, String> {
     if archive_data.is_empty() {
         return Err("Archive data is empty".to_string());
     }
 
-    let mut reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
-        .map_err(|error| error.to_string())?;
-
-    unpack_reader_to_description(&mut reader)
+    let archive = open_archive_from_bytes(archive_data.to_vec())?;
+    collect_description(archive, None)
 }
 
 pub fn unpack_file_to_description(
     archive_path: &str,
-    password: &str,
+    _password: &str,
 ) -> Result<JanxValue, String> {
     if !Path::new(archive_path).exists() {
         return Err(format!("Archive not found: {}", archive_path));
     }
 
-    let mut reader = ArchiveReader::open(archive_path, password.into())
-        .map_err(|error| error.to_string())?;
-
-    unpack_reader_to_description(&mut reader)
-}
-
-fn unpack_reader_to_description<R: Read + Seek>(
-    reader: &mut ArchiveReader<R>,
-) -> Result<JanxValue, String> {
-    let file_list: Vec<(String, bool)> = reader
-        .archive()
-        .files
-        .iter()
-        .map(|entry| (entry.name().to_string(), entry.is_directory()))
-        .collect();
-
-    let mut collected = Vec::with_capacity(file_list.len());
-    for (name, is_directory) in file_list {
-        if is_directory {
-            collected.push((name, true, None));
-        } else {
-            let data = reader
-                .read_file(&name)
-                .map_err(|error| error.to_string())?;
-            collected.push((name, false, Some(data)));
-        }
-    }
-
-    Ok(ArchiveDescription::from_flat_entries(&collected).to_janx())
-}
-
-fn pack_source_path<W: Write + Seek>(
-    archive_writer: &mut ArchiveWriter<W>,
-    source_path: &str,
-    solid: bool,
-) -> Result<(), String> {
-    if solid {
-        archive_writer
-            .push_source_path(source_path, |_| true)
-            .map_err(|error| error.to_string())?;
-    } else {
-        archive_writer
-            .push_source_path_non_solid(source_path, |_| true)
-            .map_err(|error| error.to_string())?;
-    }
-
-    Ok(())
-}
-
-fn push_nodes<W: Write + Seek>(
-    nodes: &[ArchiveNode],
-    prefix: &str,
-    archive_writer: &mut ArchiveWriter<W>,
-) -> Result<(), String> {
-    for node in nodes {
-        push_node(node, prefix, archive_writer)?;
-    }
-    Ok(())
-}
-
-fn push_node<W: Write + Seek>(
-    node: &ArchiveNode,
-    prefix: &str,
-    archive_writer: &mut ArchiveWriter<W>,
-) -> Result<(), String> {
-    match node {
-        ArchiveNode::Directory { name, entries } => {
-            let archive_name = join_archive_path(prefix, name);
-            let entry = ArchiveEntry::new_directory(&archive_name);
-            archive_writer
-                .push_archive_entry::<&[u8]>(entry, None)
-                .map_err(|error| error.to_string())?;
-            push_nodes(entries, &archive_name, archive_writer)
-        }
-        ArchiveNode::FileFromPath { name, path } => {
-            let archive_name = join_archive_path(prefix, name);
-            let entry = ArchiveEntry::from_path(path, archive_name);
-            let file = File::open(path).map_err(|error| {
-                format!("Failed to open source file '{}': {}", path, error)
-            })?;
-            archive_writer
-                .push_archive_entry(entry, Some(file))
-                .map_err(|error| error.to_string())?;
-            Ok(())
-        }
-        ArchiveNode::FileFromData { name, data } => {
-            let archive_name = join_archive_path(prefix, name);
-            let entry = ArchiveEntry::new_file(&archive_name);
-            archive_writer
-                .push_archive_entry(entry, Some(Cursor::new(data.clone())))
-                .map_err(|error| error.to_string())?;
-            Ok(())
-        }
-    }
+    let archive = open_archive_from_file(archive_path)?;
+    collect_description(archive, None)
 }
 
 pub fn unpack_partial_file_to_path(
     archive_path: &str,
     destination_path: &str,
     paths: &JanxValue,
-    password: &str,
+    _password: &str,
 ) -> Result<(), String> {
     if !Path::new(archive_path).exists() {
         return Err(format!("Archive not found: {}", archive_path));
     }
 
-    let selected = parse_path_list(paths)?;
+    let selected = build_selected_paths_set(&parse_path_list(paths)?);
     if selected.is_empty() {
         return Err("Paths list must not be empty".to_string());
     }
 
-    let file = File::open(archive_path)
-        .map_err(|error| format!("Failed to open archive '{}': {}", archive_path, error))?;
-
-    unpack_reader_to_path(file, destination_path, &selected, password)
+    let archive = open_archive_from_file(archive_path)?;
+    extract_archive_to_path(archive, destination_path, Some(&selected))
 }
 
 pub fn unpack_partial_buffer_to_path(
     archive_data: &[u8],
     destination_path: &str,
     paths: &JanxValue,
-    password: &str,
+    _password: &str,
 ) -> Result<(), String> {
     if archive_data.is_empty() {
         return Err("Archive data is empty".to_string());
     }
 
-    let selected = parse_path_list(paths)?;
+    let selected = build_selected_paths_set(&parse_path_list(paths)?);
     if selected.is_empty() {
         return Err("Paths list must not be empty".to_string());
     }
 
-    unpack_reader_to_path(
-        Cursor::new(archive_data.to_vec()),
-        destination_path,
-        &selected,
-        password,
-    )
+    let archive = open_archive_from_bytes(archive_data.to_vec())?;
+    extract_archive_to_path(archive, destination_path, Some(&selected))
 }
 
 pub fn unpack_partial_file_to_description(
     archive_path: &str,
     paths: &JanxValue,
-    password: &str,
+    _password: &str,
 ) -> Result<JanxValue, String> {
     if !Path::new(archive_path).exists() {
         return Err(format!("Archive not found: {}", archive_path));
     }
 
-    let selected = parse_path_list(paths)?;
+    let selected = build_selected_paths_set(&parse_path_list(paths)?);
     if selected.is_empty() {
         return Err("Paths list must not be empty".to_string());
     }
 
-    let mut reader = ArchiveReader::open(archive_path, password.into())
-        .map_err(|error| error.to_string())?;
-
-    unpack_reader_to_partial_description(&mut reader, &selected)
+    let resolved = resolve_archive_entry_names_from_file(archive_path, &selected)?;
+    let archive = open_archive_from_file(archive_path)?;
+    collect_description(archive, Some(&resolved))
 }
 
 pub fn unpack_partial_buffer_to_description(
     archive_data: &[u8],
     paths: &JanxValue,
-    password: &str,
+    _password: &str,
 ) -> Result<JanxValue, String> {
     if archive_data.is_empty() {
         return Err("Archive data is empty".to_string());
     }
 
-    let selected = parse_path_list(paths)?;
+    let selected = build_selected_paths_set(&parse_path_list(paths)?);
     if selected.is_empty() {
         return Err("Paths list must not be empty".to_string());
     }
 
-    let mut reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
-        .map_err(|error| error.to_string())?;
-
-    unpack_reader_to_partial_description(&mut reader, &selected)
+    let resolved = resolve_archive_entry_names_from_bytes(archive_data, &selected)?;
+    let archive = open_archive_from_bytes(archive_data.to_vec())?;
+    collect_description(archive, Some(&resolved))
 }
 
-fn unpack_reader_to_path<R: Read + Seek>(
-    reader: R,
-    destination_path: &str,
-    selected_paths: &[String],
-    password: &str,
-) -> Result<(), String> {
-    let dest_path = Path::new(destination_path);
-    fs::create_dir_all(dest_path)
-        .map_err(|error| format!("Failed to create destination directory: {}", error))?;
+fn is_gzip(data: &[u8]) -> bool {
+    data.len() >= 2 && data[0] == 0x1f && data[1] == 0x8b
+}
 
-    let selected = build_selected_paths_set(selected_paths);
+fn looks_gzip_path(path: &str) -> bool {
+    let lower = path.to_ascii_lowercase();
+    lower.ends_with(".tar.gz") || lower.ends_with(".tgz") || lower.ends_with(".gz")
+}
 
-    let dest_for_closure = dest_path.to_path_buf();
-    let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
-        let entry_path = normalize_archive_path(entry.name());
-        
-        if !selected.contains(&entry_path) {
-            return Ok(false);
-        }
-        
-        if should_skip_unsafe_entry(entry.name()) {
-            return Ok(false);
-        }
-        
-        match validate_archive_entry_path(entry.name(), &dest_for_closure) {
-            Ok(resolved_dest) => {
-                if dest.exists() {
-                    if let Err(e) = check_symlink_escape(dest, &dest_for_closure) {
-                        eprintln!("Skipping symlink that escapes destination: {}", e);
-                        return Ok(false);
-                    }
-                }
-                
-                let adjusted_dest = PathBuf::from(resolved_dest);
-                default_entry_extract_fn(entry, reader, &adjusted_dest)
-            }
-            Err(e) => {
-                eprintln!("Skipping unsafe entry '{}': {}", entry.name(), e);
-                Ok(false)
-            }
-        }
-    };
-
-    if password.is_empty() {
-        decompress_with_extract_fn(reader, destination_path, extract)
-            .map_err(|error| error.to_string())
+fn open_archive_from_bytes(data: Vec<u8>) -> Result<Archive<Box<dyn Read>>, String> {
+    if is_gzip(&data) {
+        Ok(Archive::new(Box::new(GzDecoder::new(Cursor::new(data))) as Box<dyn Read>))
     } else {
-        decompress_with_extract_fn_and_password(
-            reader,
-            destination_path,
-            password.into(),
-            extract,
-        )
-        .map_err(|error| error.to_string())
+        Ok(Archive::new(Box::new(Cursor::new(data)) as Box<dyn Read>))
     }
 }
 
-fn unpack_reader_to_partial_description<R: Read + Seek>(
-    reader: &mut ArchiveReader<R>,
-    selected_paths: &[String],
-) -> Result<JanxValue, String> {
-    let resolved = resolve_archive_entry_names(reader, selected_paths)?;
-    let mut collected = Vec::with_capacity(resolved.len());
+fn open_archive_from_file(archive_path: &str) -> Result<Archive<Box<dyn Read>>, String> {
+    let file = File::open(archive_path)
+        .map_err(|error| format!("Failed to open archive '{}': {}", archive_path, error))?;
 
-    for name in resolved {
-        let data = reader
-            .read_file(&name)
+    if looks_gzip_path(archive_path) {
+        Ok(Archive::new(
+            Box::new(GzDecoder::new(file)) as Box<dyn Read>
+        ))
+    } else {
+        Ok(Archive::new(Box::new(file) as Box<dyn Read>))
+    }
+}
+
+fn append_source_path<W: Write>(builder: &mut Builder<W>, source_path: &str) -> Result<(), String> {
+    let source = Path::new(source_path);
+
+    if source.is_file() {
+        let name = source
+            .file_name()
+            .ok_or_else(|| format!("Invalid source file path: {}", source_path))?
+            .to_string_lossy();
+        builder
+            .append_path_with_name(source, name.as_ref())
             .map_err(|error| error.to_string())?;
-        collected.push((normalize_archive_path(&name), false, Some(data)));
+        return Ok(());
+    }
+
+    if source.is_dir() {
+        for entry in fs::read_dir(source).map_err(|error| error.to_string())? {
+            let entry = entry.map_err(|error| error.to_string())?;
+            let path = entry.path();
+            let name = entry.file_name().to_string_lossy().to_string();
+            append_fs_entry(builder, &path, &name)?;
+        }
+        return Ok(());
+    }
+
+    Err(format!("Source path not found: {}", source_path))
+}
+
+fn append_fs_entry<W: Write>(
+    builder: &mut Builder<W>,
+    path: &Path,
+    archive_name: &str,
+) -> Result<(), String> {
+    if path.is_dir() {
+        for entry in fs::read_dir(path).map_err(|error| error.to_string())? {
+            let entry = entry.map_err(|error| error.to_string())?;
+            let child_path = entry.path();
+            let child_name = join_archive_path(
+                archive_name,
+                &entry.file_name().to_string_lossy(),
+            );
+            append_fs_entry(builder, &child_path, &child_name)?;
+        }
+        Ok(())
+    } else if path.is_file() {
+        builder
+            .append_path_with_name(path, archive_name)
+            .map_err(|error| error.to_string())
+    } else {
+        Ok(())
+    }
+}
+
+fn push_nodes<W: Write>(
+    nodes: &[ArchiveNode],
+    prefix: &str,
+    builder: &mut Builder<W>,
+) -> Result<(), String> {
+    for node in nodes {
+        push_node(node, prefix, builder)?;
+    }
+    Ok(())
+}
+
+fn push_node<W: Write>(
+    node: &ArchiveNode,
+    prefix: &str,
+    builder: &mut Builder<W>,
+) -> Result<(), String> {
+    match node {
+        ArchiveNode::Directory { name, entries } => {
+            let archive_name = join_archive_path(prefix, name);
+            if entries.is_empty() {
+                let mut header = tar::Header::new_gnu();
+                header.set_entry_type(EntryType::Directory);
+                header.set_size(0);
+                header.set_mode(0o755);
+                header.set_cksum();
+                builder
+                    .append_data(&mut header, archive_name, &[][..])
+                    .map_err(|error| error.to_string())?;
+            } else {
+                push_nodes(entries, &archive_name, builder)?;
+            }
+            Ok(())
+        }
+        ArchiveNode::FileFromPath { name, path } => {
+            let archive_name = join_archive_path(prefix, name);
+            builder
+                .append_path_with_name(path, archive_name)
+                .map_err(|error| error.to_string())
+        }
+        ArchiveNode::FileFromData { name, data } => {
+            let archive_name = join_archive_path(prefix, name);
+            let mut header = tar::Header::new_gnu();
+            header.set_size(data.len() as u64);
+            header.set_mode(0o644);
+            header.set_cksum();
+            builder
+                .append_data(&mut header, archive_name, &data[..])
+                .map_err(|error| error.to_string())
+        }
+    }
+}
+
+fn extract_archive_to_path<R: Read>(
+    mut archive: Archive<R>,
+    destination_path: &str,
+    selected: Option<&HashSet<String>>,
+) -> Result<(), String> {
+    let dest = Path::new(destination_path);
+    fs::create_dir_all(dest)
+        .map_err(|error| format!("Failed to create destination directory: {}", error))?;
+
+    for entry_result in archive.entries().map_err(|error| error.to_string())? {
+        let mut entry = entry_result.map_err(|error| error.to_string())?;
+        let entry_path = entry.path().map_err(|error| error.to_string())?;
+        let normalized = normalize_archive_path(&entry_path.to_string_lossy());
+
+        if normalized.is_empty() || should_skip_unsafe_entry(&normalized) {
+            continue;
+        }
+
+        if let Some(selected_paths) = selected {
+            if !selected_paths.contains(&normalized) {
+                continue;
+            }
+        }
+
+        validate_archive_entry_path(&normalized, dest)?;
+
+        if matches!(
+            entry.header().entry_type(),
+            EntryType::Symlink | EntryType::Link
+        ) {
+            continue;
+        }
+
+        entry
+            .unpack_in(dest)
+            .map_err(|error| format!("Failed to unpack entry '{}': {}", normalized, error))?;
+    }
+
+    Ok(())
+}
+
+fn collect_description<R: Read>(
+    mut archive: Archive<R>,
+    selected: Option<&HashSet<String>>,
+) -> Result<JanxValue, String> {
+    let mut collected = Vec::new();
+
+    for entry_result in archive.entries().map_err(|error| error.to_string())? {
+        let mut entry = entry_result.map_err(|error| error.to_string())?;
+        let entry_path = entry.path().map_err(|error| error.to_string())?;
+        let normalized = normalize_archive_path(&entry_path.to_string_lossy());
+
+        if normalized.is_empty() || should_skip_unsafe_entry(&normalized) {
+            continue;
+        }
+
+        if let Some(selected_paths) = selected {
+            if !selected_paths.contains(&normalized) {
+                continue;
+            }
+        }
+
+        let entry_type = entry.header().entry_type();
+        if entry_type.is_dir() {
+            collected.push((normalized, true, None));
+        } else if entry_type.is_file() {
+            let mut data = Vec::new();
+            entry
+                .read_to_end(&mut data)
+                .map_err(|error| error.to_string())?;
+            collected.push((normalized, false, Some(data)));
+        }
     }
 
     Ok(ArchiveDescription::from_flat_entries(&collected).to_janx())
@@ -425,25 +462,42 @@ fn build_selected_paths_set(selected_paths: &[String]) -> HashSet<String> {
         .collect()
 }
 
-fn resolve_archive_entry_names<R: Read + Seek>(
-    reader: &ArchiveReader<R>,
-    selected_paths: &[String],
-) -> Result<Vec<String>, String> {
+fn resolve_archive_entry_names_from_file(
+    archive_path: &str,
+    selected_paths: &HashSet<String>,
+) -> Result<HashSet<String>, String> {
+    let archive = open_archive_from_file(archive_path)?;
+    resolve_archive_entry_names(archive, selected_paths)
+}
+
+fn resolve_archive_entry_names_from_bytes(
+    archive_data: &[u8],
+    selected_paths: &HashSet<String>,
+) -> Result<HashSet<String>, String> {
+    let archive = open_archive_from_bytes(archive_data.to_vec())?;
+    resolve_archive_entry_names(archive, selected_paths)
+}
+
+fn resolve_archive_entry_names<R: Read>(
+    mut archive: Archive<R>,
+    selected_paths: &HashSet<String>,
+) -> Result<HashSet<String>, String> {
     let mut name_map = BTreeMap::new();
 
-    for entry in &reader.archive().files {
-        if !entry.is_directory() {
-            name_map.insert(normalize_archive_path(entry.name()), entry.name().to_string());
+    for entry_result in archive.entries().map_err(|error| error.to_string())? {
+        let entry = entry_result.map_err(|error| error.to_string())?;
+        if entry.header().entry_type().is_file() {
+            let path = entry.path().map_err(|error| error.to_string())?;
+            let normalized = normalize_archive_path(&path.to_string_lossy());
+            name_map.insert(normalized, ());
         }
     }
 
-    selected_paths
-        .iter()
-        .map(|path| {
-            let normalized = normalize_archive_path(path);
-            name_map.get(&normalized).cloned().ok_or_else(|| {
-                format!("Archive entry not found: {}", path)
-            })
-        })
-        .collect()
+    for path in selected_paths {
+        if !name_map.contains_key(path) {
+            return Err(format!("Archive entry not found: {}", path));
+        }
+    }
+
+    Ok(selected_paths.clone())
 }

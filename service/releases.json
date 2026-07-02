@@ -18,6 +18,18 @@
                 "description_en": "Metadata retrieval functions (2 functions)"
             },
             {
+                "lib": "tar",
+                "icon": "media/TAR.png",
+                "description_ru": "Функции архивации/разархивации tar и tar.gz (6 функций)",
+                "description_en": "tar and tar.gz archive/extract functions (6 functions)"
+            },
+            {
+                "lib": "tar",
+                "icon": "media/TAR.png",
+                "description_ru": "Функции получения метаданных tar (2 функции)",
+                "description_en": "tar metadata retrieval functions (2 functions)"
+            },
+            {
                 "lib": "Janx",
                 "icon": "media/Janx.png",
                 "description_ru": "Оптимизирована сериализация данных без двоичных полей",
