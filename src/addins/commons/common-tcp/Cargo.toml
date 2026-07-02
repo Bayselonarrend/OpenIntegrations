@@ -8,6 +8,7 @@ edition = "2021"
 default = ["native-tls"]
 native-tls = ["dep:native-tls"]
 rustls = ["dep:rustls", "dep:rustls-pemfile", "dep:webpki-roots", "dep:rustls-native-certs"]
+vendored-openssl = ["openssl/vendored"]
 
 [dependencies]
 common-janx = { path = "../common-janx" }

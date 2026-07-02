@@ -14,6 +14,9 @@ panic = "unwind"
 strip = true
 opt-level = "z"
 
+[features]
+vendored-openssl = ["common-tcp/vendored-openssl"]
+
 [dependencies]
 common-backend = { path = "../commons/common-backend" }
 common-core = { path = "../commons/common-core" }
