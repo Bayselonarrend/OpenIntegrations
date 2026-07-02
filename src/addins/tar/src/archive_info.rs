@@ -1,11 +1,9 @@
 use std::fs::File;
 use std::io::{Cursor, Read};
-use std::path::Path;
 
 use common_core::{janx, JanxValue};
+use common_archives::{build_list_description, ListEntry, require_archive_file, require_nonempty_buffer};
 use tar::{Archive, Entry, EntryType};
-
-use crate::archive_description::build_list_description;
 
 #[derive(Debug, Clone)]
 pub struct EntryInfo {
@@ -37,10 +35,24 @@ where
     }
 }
 
-pub fn list_from_buffer(archive_data: &[u8]) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
+impl ListEntry for EntryInfo {
+    fn path(&self) -> &str {
+        &self.path
     }
+
+    fn is_directory(&self) -> bool {
+        self.is_directory
+    }
+
+    fn list_file_fields(&self) -> JanxValue {
+        janx!({
+            "size": self.size,
+        })
+    }
+}
+
+pub fn list_from_buffer(archive_data: &[u8]) -> Result<JanxValue, String> {
+    require_nonempty_buffer(archive_data)?;
 
     let mut archive = open_archive_from_bytes(archive_data)?;
     let entries = collect_entry_infos(&mut archive)?;
@@ -49,11 +61,7 @@ pub fn list_from_buffer(archive_data: &[u8]) -> Result<JanxValue, String> {
 }
 
 pub fn list_from_file(archive_path: &str) -> Result<JanxValue, String> {
-    let path = Path::new(archive_path);
-
-    if !path.exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let mut archive = open_archive_from_file(archive_path)?;
     let entries = collect_entry_infos(&mut archive)?;
@@ -62,9 +70,7 @@ pub fn list_from_file(archive_path: &str) -> Result<JanxValue, String> {
 }
 
 pub fn metadata_from_buffer(archive_data: &[u8]) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
     let mut archive = open_archive_from_bytes(archive_data)?;
     let entries = collect_entry_infos(&mut archive)?;
@@ -76,11 +82,7 @@ pub fn metadata_from_buffer(archive_data: &[u8]) -> Result<JanxValue, String> {
 }
 
 pub fn metadata_from_file(archive_path: &str) -> Result<JanxValue, String> {
-    let path = Path::new(archive_path);
-
-    if !path.exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let archive_size = fs_metadata_len(archive_path)?;
     let mut archive = open_archive_from_file(archive_path)?;

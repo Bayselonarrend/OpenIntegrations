@@ -1,11 +1,12 @@
-use std::collections::{BTreeMap, HashSet};
+use std::collections::HashSet;
 use std::fs::{self, File};
 use std::io::{Cursor, Read, Write};
 use std::path::Path;
 
 use common_archives::{
-    join_archive_path, normalize_archive_path, parse_path_list, should_skip_unsafe_entry,
-    validate_archive_entry_path, ArchiveDescription, ArchiveNode,
+    ensure_parent_dir, ensure_selected_entries_exist, join_archive_path, normalize_archive_path,
+    parse_selected_paths_set, require_archive_file, require_nonempty_buffer, require_source_path,
+    should_skip_unsafe_entry, validate_archive_entry_path, ArchiveDescription, ArchiveNode,
 };
 use common_core::JanxValue;
 use flate2::read::GzDecoder;
@@ -15,9 +16,7 @@ use tar::{Archive, Builder, EntryType};
 use crate::archive_settings::PackSettings;
 
 pub fn pack_path_to_buffer(source_path: &str, settings: &PackSettings) -> Result<Vec<u8>, String> {
-    if !Path::new(source_path).exists() {
-        return Err(format!("Source path not found: {}", source_path));
-    }
+    require_source_path(source_path)?;
 
     let buffer = Vec::new();
 
@@ -43,16 +42,9 @@ pub fn pack_path_to_file(
     archive_path: &str,
     settings: &PackSettings,
 ) -> Result<(), String> {
-    if !Path::new(source_path).exists() {
-        return Err(format!("Source path not found: {}", source_path));
-    }
+    require_source_path(source_path)?;
 
-    if let Some(parent) = Path::new(archive_path).parent() {
-        if !parent.as_os_str().is_empty() {
-            fs::create_dir_all(parent)
-                .map_err(|error| format!("Failed to create archive directory: {}", error))?;
-        }
-    }
+    ensure_parent_dir(archive_path)?;
 
     let file = File::create(archive_path)
         .map_err(|error| format!("Failed to create archive file: {}", error))?;
@@ -107,12 +99,7 @@ pub fn pack_description_to_file(
 ) -> Result<(), String> {
     let archive_data = pack_description_to_buffer(description, settings)?;
 
-    if let Some(parent) = Path::new(archive_path).parent() {
-        if !parent.as_os_str().is_empty() {
-            fs::create_dir_all(parent)
-                .map_err(|error| format!("Failed to create archive directory: {}", error))?;
-        }
-    }
+    ensure_parent_dir(archive_path)?;
 
     fs::write(archive_path, archive_data)
         .map_err(|error| format!("Failed to write archive file: {}", error))
@@ -123,9 +110,7 @@ pub fn unpack_buffer_to_path(
     destination_path: &str,
     _password: &str,
 ) -> Result<(), String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
     let archive = open_archive_from_bytes(archive_data.to_vec())?;
     extract_archive_to_path(archive, destination_path, None)
@@ -136,9 +121,7 @@ pub fn unpack_file_to_path(
     destination_path: &str,
     _password: &str,
 ) -> Result<(), String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let archive = open_archive_from_file(archive_path)?;
     extract_archive_to_path(archive, destination_path, None)
@@ -148,9 +131,7 @@ pub fn unpack_buffer_to_description(
     archive_data: &[u8],
     _password: &str,
 ) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
     let archive = open_archive_from_bytes(archive_data.to_vec())?;
     collect_description(archive, None)
@@ -160,9 +141,7 @@ pub fn unpack_file_to_description(
     archive_path: &str,
     _password: &str,
 ) -> Result<JanxValue, String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let archive = open_archive_from_file(archive_path)?;
     collect_description(archive, None)
@@ -174,14 +153,9 @@ pub fn unpack_partial_file_to_path(
     paths: &JanxValue,
     _password: &str,
 ) -> Result<(), String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
-    let selected = build_selected_paths_set(&parse_path_list(paths)?);
-    if selected.is_empty() {
-        return Err("Paths list must not be empty".to_string());
-    }
+    let selected = parse_selected_paths_set(paths)?;
 
     let archive = open_archive_from_file(archive_path)?;
     extract_archive_to_path(archive, destination_path, Some(&selected))
@@ -193,14 +167,9 @@ pub fn unpack_partial_buffer_to_path(
     paths: &JanxValue,
     _password: &str,
 ) -> Result<(), String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
-    let selected = build_selected_paths_set(&parse_path_list(paths)?);
-    if selected.is_empty() {
-        return Err("Paths list must not be empty".to_string());
-    }
+    let selected = parse_selected_paths_set(paths)?;
 
     let archive = open_archive_from_bytes(archive_data.to_vec())?;
     extract_archive_to_path(archive, destination_path, Some(&selected))
@@ -211,14 +180,9 @@ pub fn unpack_partial_file_to_description(
     paths: &JanxValue,
     _password: &str,
 ) -> Result<JanxValue, String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
-    let selected = build_selected_paths_set(&parse_path_list(paths)?);
-    if selected.is_empty() {
-        return Err("Paths list must not be empty".to_string());
-    }
+    let selected = parse_selected_paths_set(paths)?;
 
     let resolved = resolve_archive_entry_names_from_file(archive_path, &selected)?;
     let archive = open_archive_from_file(archive_path)?;
@@ -230,14 +194,9 @@ pub fn unpack_partial_buffer_to_description(
     paths: &JanxValue,
     _password: &str,
 ) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
-    let selected = build_selected_paths_set(&parse_path_list(paths)?);
-    if selected.is_empty() {
-        return Err("Paths list must not be empty".to_string());
-    }
+    let selected = parse_selected_paths_set(paths)?;
 
     let resolved = resolve_archive_entry_names_from_bytes(archive_data, &selected)?;
     let archive = open_archive_from_bytes(archive_data.to_vec())?;
@@ -455,13 +414,6 @@ fn collect_description<R: Read>(
     Ok(ArchiveDescription::from_flat_entries(&collected).to_janx())
 }
 
-fn build_selected_paths_set(selected_paths: &[String]) -> HashSet<String> {
-    selected_paths
-        .iter()
-        .map(|path| normalize_archive_path(path))
-        .collect()
-}
-
 fn resolve_archive_entry_names_from_file(
     archive_path: &str,
     selected_paths: &HashSet<String>,
@@ -482,22 +434,18 @@ fn resolve_archive_entry_names<R: Read>(
     mut archive: Archive<R>,
     selected_paths: &HashSet<String>,
 ) -> Result<HashSet<String>, String> {
-    let mut name_map = BTreeMap::new();
+    let mut name_map = HashSet::new();
 
     for entry_result in archive.entries().map_err(|error| error.to_string())? {
         let entry = entry_result.map_err(|error| error.to_string())?;
         if entry.header().entry_type().is_file() {
             let path = entry.path().map_err(|error| error.to_string())?;
             let normalized = normalize_archive_path(&path.to_string_lossy());
-            name_map.insert(normalized, ());
+            name_map.insert(normalized);
         }
     }
 
-    for path in selected_paths {
-        if !name_map.contains_key(path) {
-            return Err(format!("Archive entry not found: {}", path));
-        }
-    }
+    ensure_selected_entries_exist(selected_paths, &name_map)?;
 
     Ok(selected_paths.clone())
 }

@@ -1,11 +1,9 @@
 use std::io::Cursor;
-use std::path::Path;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use common_core::{janx, JanxValue};
+use common_archives::{build_list_description, ListEntry, require_archive_file, require_nonempty_buffer};
 use sevenz_rust2::{Archive, ArchiveEntry, ArchiveReader, NtTime};
-
-use crate::archive_description::build_list_description;
 
 #[derive(Debug, Clone)]
 pub struct EntryInfo {
@@ -48,10 +46,25 @@ impl From<&ArchiveEntry> for EntryInfo {
     }
 }
 
-pub fn list_from_buffer(archive_data: &[u8], password: &str) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
+impl ListEntry for EntryInfo {
+    fn path(&self) -> &str {
+        &self.path
     }
+
+    fn is_directory(&self) -> bool {
+        self.is_directory
+    }
+
+    fn list_file_fields(&self) -> JanxValue {
+        janx!({
+            "size": self.size,
+            "compressed_size": self.compressed_size,
+        })
+    }
+}
+
+pub fn list_from_buffer(archive_data: &[u8], password: &str) -> Result<JanxValue, String> {
+    require_nonempty_buffer(archive_data)?;
 
     let reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
         .map_err(|error| error.to_string())?;
@@ -61,9 +74,7 @@ pub fn list_from_buffer(archive_data: &[u8], password: &str) -> Result<JanxValue
 }
 
 pub fn list_from_file(archive_path: &str, password: &str) -> Result<JanxValue, String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let reader = ArchiveReader::open(archive_path, password.into())
         .map_err(|error| error.to_string())?;
@@ -73,9 +84,7 @@ pub fn list_from_file(archive_path: &str, password: &str) -> Result<JanxValue, S
 }
 
 pub fn metadata_from_buffer(archive_data: &[u8], password: &str) -> Result<JanxValue, String> {
-    if archive_data.is_empty() {
-        return Err("Archive data is empty".to_string());
-    }
+    require_nonempty_buffer(archive_data)?;
 
     let reader = ArchiveReader::new(Cursor::new(archive_data.to_vec()), password.into())
         .map_err(|error| error.to_string())?;
@@ -88,9 +97,7 @@ pub fn metadata_from_buffer(archive_data: &[u8], password: &str) -> Result<JanxV
 }
 
 pub fn metadata_from_file(archive_path: &str, password: &str) -> Result<JanxValue, String> {
-    if !Path::new(archive_path).exists() {
-        return Err(format!("Archive not found: {}", archive_path));
-    }
+    require_archive_file(archive_path)?;
 
     let archive_size = fs_metadata_len(archive_path)?;
     let reader = ArchiveReader::open(archive_path, password.into())

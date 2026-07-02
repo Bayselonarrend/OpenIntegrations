@@ -20,8 +20,8 @@
             {
                 "lib": "tar",
                 "icon": "media/TAR.png",
-                "description_ru": "Функции архивации/разархивации tar и tar.gz (6 функций)",
-                "description_en": "tar and tar.gz archive/extract functions (6 functions)"
+                "description_ru": "Функции архивации/разархивации tar и tar.gz (5 функций)",
+                "description_en": "tar and tar.gz archive/extract functions (5 functions)"
             },
             {
                 "lib": "tar",
