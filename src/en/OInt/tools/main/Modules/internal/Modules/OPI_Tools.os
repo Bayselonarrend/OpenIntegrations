@@ -1031,6 +1031,20 @@ Function NumberToString(Val Value) Export
 
 EndFunction
 
+Function RemoveQuotes(Val Value) Export
+
+    If StrStartsWith(Value, """") Then
+        Value = Right(Value, StrLen(Value) - 1);
+    EndIf;
+
+    If StrEndsWith(Value, """") Then
+        Value = Left(Value, StrLen(Value) - 1);
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;
@@ -1606,6 +1620,10 @@ EndProcedure
 
 Function ЧислоВСтроку(Val Значение) Export
     Return NumberToString(Значение);
+EndFunction
+
+Function УбратьКавычки(Val Значение) Export
+    Return RemoveQuotes(Значение);
 EndFunction
 
 Function ПреобразоватьДанныеСПолучениемРазмера(Данные, Val МинимальныйРазмерДляПотока = 0) Export

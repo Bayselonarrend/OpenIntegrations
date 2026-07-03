@@ -55,6 +55,7 @@
   <commonModules>CommonModule.OPIt_Slack</commonModules>
   <commonModules>CommonModule.OPIt_SQLite</commonModules>
   <commonModules>CommonModule.OPIt_SSH</commonModules>
+  <commonModules>CommonModule.OPIt_Tar</commonModules>
   <commonModules>CommonModule.OPIt_TCP</commonModules>
   <commonModules>CommonModule.OPIt_Telegram</commonModules>
   <commonModules>CommonModule.OPIt_Viber</commonModules>
@@ -101,6 +102,7 @@
   <commonModules>CommonModule.OPItc_Slack</commonModules>
   <commonModules>CommonModule.OPItc_SQLite</commonModules>
   <commonModules>CommonModule.OPItc_SSH</commonModules>
+  <commonModules>CommonModule.OPItc_Tar</commonModules>
   <commonModules>CommonModule.OPItc_TCP</commonModules>
   <commonModules>CommonModule.OPItc_Telegram</commonModules>
   <commonModules>CommonModule.OPItc_Viber</commonModules>

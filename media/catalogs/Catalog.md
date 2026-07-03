@@ -32,6 +32,7 @@
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
 |![SSH](../SSH.png)| `SSH`| ssh, shell |
+|![tar](../tar.png)| `tar`| tar, tgz, tar.gz |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Viber](../Viber.png)| `Viber`| viber |

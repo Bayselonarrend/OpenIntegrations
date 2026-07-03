@@ -1,0 +1,217 @@
+// OneScript: ./OInt/formats/tar/Modules/OPI_Tar.os
+// Lib: tar
+// CLI: tar
+// Keywords: tar, tgz, tar.gz
+
+// DocsCategory: Formats
+// DocsNameRU: tar
+// DocsNameEN: tar
+
+// MIT License
+
+// Copyright (c) 2023-2026 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:LineLength-off
+// BSLLS:CommonModuleNameClientServer-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
+#Использовать "../../../tools/main"
+#Использовать "../../../tools/http"
+
+#Область ПрограммныйИнтерфейс
+
+#Область Архивация
+
+// Архивировать каталог
+// Запаковывает файлы указанного каталога в tar-архив
+//
+// Параметры:
+//  Каталог    - Строка, ДвоичныеДанные        - Путь к каталогу или описание данных для запаковки            - src
+//  ПутьАрхива - Строка                        - Путь сохранения архива. В двоичные данные, если не заполнено - dest
+//  Настройки  - Соответствие Из КлючИЗначение - Доп. настройки. См. ПолучитьСтруктуруНастроекАрхивации       - settings
+//
+// Возвращаемое значение:
+//  ДвоичныеДанные, Соответствие Из КлючИЗначение - Информация о выполнении или двоичные данные архива
+Функция АрхивироватьКаталог(Знач Каталог, Знач ПутьАрхива = "", Знач Настройки = Неопределено) Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.Архивировать("tar", Каталог, ПутьАрхива, Настройки);
+
+КонецФункции
+
+// Разархивировать каталог
+// Распаковывает tar-архив в указанный каталог
+//
+// Параметры:
+//  Архив             - Строка, ДвоичныеДанные - Путь к архиву на диске или двоичные данные                      - src
+//  КаталогНазначения - Строка                 - Путь каталога для распаковки. В соответствие, если не заполнено - dest
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Информация о выполнении
+Функция РазархивироватьКаталог(Знач Архив, Знач КаталогНазначения = "") Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.Разархивировать("tar", Архив, КаталогНазначения);
+
+КонецФункции
+
+// Разархивировать файлы
+// Распаковывает выбранные файлы из tar-архива по списку путей
+//
+// Параметры:
+//  Архив             - Строка, ДвоичныеДанные - Путь к архиву на диске или двоичные данные                      - src
+//  Пути              - Массив Из Строка       - Полные пути файлов внутри архива                                - paths
+//  КаталогНазначения - Строка                 - Путь каталога для распаковки. В соответствие, если не заполнено - dest
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Информация о выполнении или описание выбранных файлов
+Функция РазархивироватьФайлы(Знач Архив, Знач Пути, Знач КаталогНазначения = "") Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.РазархивироватьФайлы("tar", Архив, Пути, КаталогНазначения);
+
+КонецФункции
+
+// Изменить архив
+// Добавляет, заменяет и удаляет файлы в существующем tar-архиве
+//
+// Параметры:
+//  Архив            - Строка, ДвоичныеДанные        - Путь к архиву на диске или двоичные данные                      - src
+//  ДобавляемыеФайлы - Соответствие Из КлючИЗначение - Ключ: путь в архиве; значение: путь к файлу или двоичные данные - additions
+//  УдаляемыеПути    - Массив Из Строка              - Пути файлов в архиве для удаления                               - deletions
+//  Настройки        - Соответствие Из КлючИЗначение - Настройки изменения. См. ПолучитьСтруктуруНастроекАрхивации     - settings
+//
+// Возвращаемое значение:
+//  ДвоичныеДанные, Соответствие Из КлючИЗначение - Результат операции для архива на диске или новые двоичные данные архива
+//
+// Примечание:
+//  Архив на диске изменяется на месте. Параметры gzip задаются в Настройки.
+Функция ИзменитьАрхив(Знач Архив, Знач ДобавляемыеФайлы = Неопределено, Знач УдаляемыеПути = Неопределено, Знач Настройки = Неопределено) Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.ИзменитьАрхив("tar", Архив, ДобавляемыеФайлы, УдаляемыеПути, Настройки);
+
+КонецФункции
+
+// Получить структуру настроек архивации
+// Получает структуру с дополнительными настройками архивации данных
+//
+// Параметры:
+//  Пустая          - Булево - Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей - empty
+//  КакСоответствие - Булево - Истина > возвращает поля фильтра как соответствие                                - map
+//
+// Возвращаемое значение:
+//  Структура Из КлючИЗначение - Структура полей
+Функция ПолучитьСтруктуруНастроекАрхивации(Знач Пустая = Ложь, Знач КакСоответствие = Ложь) Экспорт
+
+    OPI_ПреобразованиеТипов.ПолучитьБулево(Пустая);
+    OPI_ПреобразованиеТипов.ПолучитьБулево(КакСоответствие);
+
+    Если КакСоответствие Тогда
+        СтруктураНастроек = Новый Соответствие;
+    Иначе
+        СтруктураНастроек = Новый Структура;
+    КонецЕсли;
+
+    СтруктураНастроек.Вставить("gzip"      , "<сжимать gzip: Истина/Ложь (по ум. Ложь)>");
+    СтруктураНастроек.Вставить("gzip_level", "<уровень gzip: 0-9 (6 по ум.)>");
+
+    Если Пустая Тогда
+        СтруктураНастроек = OPI_Инструменты.ОчиститьКоллекциюРекурсивно(СтруктураНастроек);
+    КонецЕсли;
+
+    //@skip-check constructor-function-return-section
+    Возврат СтруктураНастроек;
+
+КонецФункции
+
+#КонецОбласти
+
+#Область ПолучениеМетаданных
+
+// Получить список файлов
+// Получает иерархический список файлов и каталогов архива
+//
+// Параметры:
+//  Архив - Строка, ДвоичныеДанные - Путь к архиву на диске или двоичные данные - src
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Информация о файлах в архиве
+Функция ПолучитьСписокФайлов(Знач Архив) Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.ПолучитьСписокФайлов("tar", Архив);
+
+КонецФункции
+
+// Получить метаданные
+// Получает метаданные и плоский список файлов архива
+//
+// Параметры:
+//  Архив - Строка, ДвоичныеДанные - Путь к архиву на диске или двоичные данные - src
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - Информация об архиве
+Функция ПолучитьМетаданные(Знач Архив) Экспорт
+
+    Возврат OPI_УниверсальныйАрхиватор.ПолучитьМетаданные("tar", Архив);
+
+КонецФункции
+
+#КонецОбласти
+
+#КонецОбласти
+
+
+#Region Alternate
+
+Function ArchiveDirectory(Val Directory, Val ArchivePath = "", Val Settings = Undefined) Export
+    Return АрхивироватьКаталог(Directory, ArchivePath, Settings);
+EndFunction
+
+Function UnarchiveDirectory(Val Archive, Val DestinationDirectory = "") Export
+    Return РазархивироватьКаталог(Archive, DestinationDirectory);
+EndFunction
+
+Function UnpackFiles(Val Archive, Val Paths, Val DestinationDirectory = "") Export
+    Return РазархивироватьФайлы(Archive, Paths, DestinationDirectory);
+EndFunction
+
+Function ModifyArchive(Val Archive, Val AddableFiles = Undefined, Val DeletablePaths = Undefined, Val Settings = Undefined) Export
+    Return ИзменитьАрхив(Archive, AddableFiles, DeletablePaths, Settings);
+EndFunction
+
+Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Export
+    Return ПолучитьСтруктуруНастроекАрхивации(Clear, AsMap);
+EndFunction
+
+Function GetFilesList(Val Archive) Export
+    Return ПолучитьСписокФайлов(Archive);
+EndFunction
+
+Function GetMetadata(Val Archive) Export
+    Return ПолучитьМетаданные(Archive);
+EndFunction
+
+#EndRegion

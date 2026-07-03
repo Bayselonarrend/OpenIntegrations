@@ -1,0 +1,142 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Deb-Agent'  // Имя или метка агента
+    }
+	parameters {
+		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
+		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
+	}
+	stages {
+
+        stage('Sync add-ins') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'bash src/addins/sync-addins.sh'
+                    } else {
+                        bat 'call src\\addins\\sync-addins.bat'
+                    }
+                }
+            }
+        }
+
+        stage('Remove oint') {
+            steps {
+                script {
+                    // Удаляем oint, если он установлен
+                    sh 'dpkg -r oint || echo "oint not installed"'
+                }
+            }
+        }
+
+        stage('Download oint package') {
+            steps {
+                script {
+                    // Скачиваем новый deb-пакет oint
+                    sh 'wget -O oint_2.3.0_all_ru.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.3.0/oint_2.3.0_all_ru.deb '
+                }
+            }
+        }
+
+        stage('Install oint package') {
+            steps {
+                script {
+                    sh 'dpkg -i oint_2.3.0_all_ru.deb'
+                }
+            }
+        }
+
+      	stage('Prepare'){
+         		steps{
+                    sh 'cd ./src/ru/OInt && opm build && opm install oint-2.3.0.ospx && rm oint-2.3.0.ospx'
+              		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.sqlite ./data.sqlite.gpg'
+            		}
+         		}
+      	}
+        stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "CLI"'
+				}
+		}
+
+		stage('Testing-Core') {
+            when {
+                expression { return params['Core'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Core.os', [
+'ПроверитьСоответствиеИБПоследнейСборке',
+'ПроверитьРасширенныйВызов',
+					], true)
+				}
+			}
+		}
+		stage('Testing-Tar') {
+            when {
+                expression { return params['Tar'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/ru/OInt/tests/Modules/OPItc_Tar.os', [
+'ZTar_Архивация',
+'ZTar_АрхивацияСGzip',
+'ZTar_ПолучениеМетаданных',
+'ZTar_ЧастичнаяРаспаковка',
+'ZTar_ИзменениеАрхива',
+					])
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+                catchError() {   
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}

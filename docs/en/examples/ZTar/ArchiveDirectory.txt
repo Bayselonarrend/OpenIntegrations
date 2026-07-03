@@ -1,0 +1,11 @@
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "Tar");
+
+    If Parameters.Property("Tar_SourceDir")
+        And Parameters.Property("Tar_ArchivePath")
+        And NOT Parameters.Property("Tar_SourceDirCompress")
+        And NOT (Parameters.Property("Tar_ArchiveGzipPath") And NOT Parameters.Property("Tar_Description")) Then
+
+        SourceDirectory = Parameters["Tar_SourceDir"];
+        ArchivePath     = Parameters["Tar_ArchivePath"];
+
+        Result = OPI_Tar.ArchiveDirectory(SourceDirectory, ArchivePath);

@@ -46,7 +46,24 @@ import Admonition from '@theme/Admonition';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/post";
 
+    ExpectedArray = New Array;
+    ExpectedArray.Add("A");
+    ExpectedArray.Add("B");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody()
+        .InsertBodyField("Field1", 10)
+        .InsertBodyField("Field3", New Array)
+        .AddValue("Field3", "A") // <---
+        .AddValue("Field3", "B")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+```
  
 
 

@@ -201,7 +201,7 @@ Procedure Z7_Archiving() Export
     Parameters.Insert("SevenZ_Description"    , ArchiveDescription);
     Parameters.Insert("SevenZ_ExpectedFiles"  , ExpectedFiles);
 
-    Write7zParameters(Parameters);
+    OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
 
     Z7_ArchiveDirectory(Parameters);
     Z7_UnarchiveDirectory(Parameters);
@@ -241,6 +241,8 @@ Procedure Z7_ArchivingWithPassword() Export
     Parameters.Insert("SevenZ_DestBufferDir"      , DestinationDirectoryBuffer);
     Parameters.Insert("SevenZ_ExpectedFiles"      , ExpectedFiles);
     Parameters.Insert("SevenZ_Password"           , Password);
+
+    OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
 
     Z7_ArchiveDirectory(Parameters);
     Z7_UnarchiveDirectory(Parameters);
@@ -482,7 +484,12 @@ EndProcedure
 
 Procedure Z7_ArchiveDirectory(Parameters)
 
-    If Parameters.Property("SevenZ_SourceDir") And Parameters.Property("SevenZ_ArchivePath") Then
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "SevenZ");
+
+    If Parameters.Property("SevenZ_SourceDir")
+        And Parameters.Property("SevenZ_ArchivePath")
+        And NOT Parameters.Property("SevenZ_SourceDirCompress")
+        And NOT (Parameters.Property("SevenZ_ArchivePasswordPath") And NOT Parameters.Property("SevenZ_Description")) Then
 
         SourceDirectory = Parameters["SevenZ_SourceDir"];
         ArchivePath     = Parameters["SevenZ_ArchivePath"];
@@ -503,25 +510,31 @@ Procedure Z7_ArchiveDirectory(Parameters)
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ArchiveDirectory", Options);
         OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ArchiveDirectory", "ToMemory");
 
-        Description     = Parameters["SevenZ_Description"];
-        ArchivePathDesc = Parameters["SevenZ_ArchiveDescPath"];
+        If Parameters.Property("SevenZ_Description") And Parameters.Property("SevenZ_ArchiveDescPath") Then
 
-        Options = New Structure;
-        Options.Insert("src", Description);
-        Options.Insert("dest", ArchivePathDesc);
+            Description     = Parameters["SevenZ_Description"];
+            ArchivePathDesc = Parameters["SevenZ_ArchiveDescPath"];
 
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ArchiveDirectory", Options);
-        OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ArchiveDirectory", "FromDescription", ArchivePathDesc);
+            Options = New Structure;
+            Options.Insert("src", Description);
+            Options.Insert("dest", ArchivePathDesc);
 
-        Options = New Structure;
-        Options.Insert("src", Description);
+            Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ArchiveDirectory", Options);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ArchiveDirectory", "FromDescription", ArchivePathDesc);
 
-        Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ArchiveDirectory", Options);
-        OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ArchiveDirectory", "FromDescriptionToMemory");
+            Options = New Structure;
+            Options.Insert("src", Description);
+
+            Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ArchiveDirectory", Options);
+            OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ArchiveDirectory", "FromDescriptionToMemory");
+
+        EndIf;
 
     EndIf;
 
-    If Parameters.Property("SevenZ_Password") Then
+    If Parameters.Property("SevenZ_Password")
+        And Parameters.Property("SevenZ_ArchivePasswordPath")
+        And NOT Parameters.Property("SevenZ_Description") Then
 
         SourceDirectory         = Parameters["SevenZ_SourceDir"];
         Password                = Parameters["SevenZ_Password"];
@@ -923,15 +936,6 @@ EndProcedure
 #EndRegion // ArchiveModification
 
 #EndRegion // AtomicTests
-
-Procedure Write7zParameters(Parameters)
-
-    OPI_TestDataRetrieval.WriteParameter("SevenZ_BaseDir"    , Parameters["SevenZ_BaseDir"]);
-    OPI_TestDataRetrieval.WriteParameter("SevenZ_SourceDir"  , Parameters["SevenZ_SourceDir"]);
-    OPI_TestDataRetrieval.WriteParameter("SevenZ_ArchivePath", Parameters["SevenZ_ArchivePath"]);
-    OPI_TestDataRetrieval.WriteParameter("SevenZ_DestDir"    , Parameters["SevenZ_DestDir"]);
-
-EndProcedure
 
 Function Path7z(BaseDirectory, RelativePath)
 

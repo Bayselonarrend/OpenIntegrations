@@ -1,0 +1,32 @@
+{
+  "reportPath": "./test_results/Tar.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_Tar.ZTar_Архивация",
+"OPIt_Tar.ZTar_АрхивацияСGzip",
+"OPIt_Tar.ZTar_ПолучениеМетаданных",
+"OPIt_Tar.ZTar_ЧастичнаяРаспаковка",
+"OPIt_Tar.ZTar_ИзменениеАрхива"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Tar.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

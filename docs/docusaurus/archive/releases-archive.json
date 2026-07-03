@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-01T08:24:44",
+ "generatedAt": "2026-07-03T10:02:01",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -58,6 +58,18 @@
      "icon": "media/7z.png",
      "description_ru": "Функции получения метаданных (2 функции)",
      "description_en": "Metadata retrieval functions (2 functions)"
+    },
+    {
+     "lib": "tar",
+     "icon": "media/TAR.png",
+     "description_ru": "Функции архивации/разархивации tar и tar.gz (5 функций)",
+     "description_en": "tar and tar.gz archive/extract functions (5 functions)"
+    },
+    {
+     "lib": "tar",
+     "icon": "media/TAR.png",
+     "description_ru": "Функции получения метаданных tar (2 функции)",
+     "description_en": "tar metadata retrieval functions (2 functions)"
     },
     {
      "lib": "Janx",

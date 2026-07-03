@@ -1,0 +1,153 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Rpm-Agent'  // Имя или метка агента
+    }
+	parameters {
+		booleanParam(name: 'Core', defaultValue: true, description: 'Run Core tests')
+		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
+	}
+	stages {
+
+		stage('Sync add-ins') {
+			steps {
+				script {
+					if (isUnix()) {
+						sh 'bash src/addins/sync-addins.sh'
+					} else {
+						bat 'call src\\addins\\sync-addins.bat'
+					}
+				}
+			}
+		}
+
+		stage('Remove OInt from OneScript Lib') {
+			steps {
+				script {
+					try {
+						// Удаление каталога /opt/onescript/lib/oint, если существует
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Каталог oint найден. Удаляем..."
+								rm -rf "$DIR_PATH"
+								echo "Каталог oint успешно удален."
+							else
+								echo "Каталог oint не найден. Пропускаем удаление."
+							fi
+						'''
+
+						// Проверяем, что каталог действительно удален
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
+								exit 1
+							else
+								echo "Проверка: Каталог oint отсутствует после удаления."
+							fi
+						'''
+					} catch (Exception e) {
+						echo "Произошла ошибка при удалении каталога oint: ${e.getMessage()}"
+						currentBuild.result = 'FAILURE'
+						error("Удаление каталога oint завершено с ошибкой.")
+					}
+				}
+			}
+		}
+
+      	stage('Prepare'){
+         		steps{
+					sh 'cd ./src/en/OInt && opm build && opm install oint-2.3.0.ospx && rm oint-2.3.0.ospx'
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.sqlite ./data.sqlite.gpg'
+            		}
+         		}
+      	}
+		stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "OneScript"'
+				}
+		}
+
+		stage('Testing-Core') {
+            when {
+                expression { return params['Core'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Core.os', [
+'CheckIBToLastBuildCompliance',
+'ValidateAdvancedCall',
+					], true)
+				}
+			}
+		}
+		stage('Testing-Tar') {
+            when {
+                expression { return params['Tar'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Tar.os', [
+'ZTar_Archive',
+'ZTar_ArchiveWithGzip',
+'ZTar_GetMetadata',
+'ZTar_PartialUnpack',
+'ZTar_ChangeArchive',
+					])
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def runModuleTests(String modulePath, List methods, boolean fatal = false) {
+    for (method in methods) {
+        if (fatal) {
+            runLibraryTest(modulePath, method)
+        } else {
+            catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                runLibraryTest(modulePath, method)
+            }
+        }
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}

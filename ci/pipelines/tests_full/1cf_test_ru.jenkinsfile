@@ -185,6 +185,7 @@ pipeline {
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
+		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
 	}
 	stages {
 
@@ -784,6 +785,19 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('7z', './service/yaxunit_conf/ru/7z.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-Tar') {
+            when {
+                expression { return params['Tar'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Tar', './service/yaxunit_conf/ru/Tar.json')
 					}
 
 				}

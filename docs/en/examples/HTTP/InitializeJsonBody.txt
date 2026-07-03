@@ -1,0 +1,16 @@
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody() // <---
+        .InsertBodyField("Field1", 10)
+        .InsertBodyField("Field2", "Text")
+        .InsertBodyField("Field3", RandomArray)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();

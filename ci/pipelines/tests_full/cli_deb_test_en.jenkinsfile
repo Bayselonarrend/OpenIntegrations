@@ -55,6 +55,7 @@ pipeline {
 		booleanParam(name: 'Janx', defaultValue: true, description: 'Run Janx tests')
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
+		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
 	}
 	stages {
 
@@ -812,6 +813,22 @@ pipeline {
 'Z7_GettingMetadata',
 'Z7_PartialUnpacking',
 'Z7_ArchiveModification',
+					])
+				}
+			}
+		}
+		stage('Testing-Tar') {
+            when {
+                expression { return params['Tar'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Tar.os', [
+'ZTar_Archive',
+'ZTar_ArchiveWithGzip',
+'ZTar_GetMetadata',
+'ZTar_PartialUnpack',
+'ZTar_ChangeArchive',
 					])
 				}
 			}

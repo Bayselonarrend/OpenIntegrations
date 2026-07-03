@@ -303,7 +303,7 @@ Function ModifyArchive(Val Archiver
 
     EndIf;
 
-    ModificationParameters = ParseArchiveModificationSettings(Settings);
+    ModificationParameters = ParseArchiveModificationSettings(Archiver, Settings);
 
     ModificationStructure = New Structure;
     ModificationStructure.Insert("UnpackPassword"  , ModificationParameters.UnpackPassword);
@@ -324,8 +324,10 @@ EndFunction
 
 Function CreateArchiver(Val View)
 
-    If View   = "7z" Then
-        AddIn = OPI_AddIns.GetAddIn(View);
+    If View    = "7z" Then
+        AddIn  = OPI_AddIns.GetAddIn(View);
+    ElsIf View = "tar" Then
+        AddIn  = OPI_AddIns.GetAddIn("Tar");
     Else
         Raise StrTemplate("Unsupported archiver %1", View);
     EndIf;
@@ -600,21 +602,23 @@ Function NormalizeArchivePath(Path)
 
 EndFunction
 
-Function ParseArchiveModificationSettings(Settings)
+Function ParseArchiveModificationSettings(Archiver, Settings)
 
-    UnpackPassword  = "";
-    PackingSettings = Undefined;
+    ChangingSettings = New Structure;
 
     If Settings <> Undefined Then
 
-        UnpackPassword  = OPI_Tools.GetOr(Settings, "unpack_password", "");
-        PackingSettings = Settings;
+        UnpackPassword = OPI_Tools.GetOr(Settings, "unpack_password", "");
 
+        OPI_Tools.AddField("UnpackPassword" , UnpackPassword, "String"    , ChangingSettings, True);
+        OPI_Tools.AddField("PackingSettings", Settings      , "Collection", ChangingSettings);
+
+    Else
+        ChangingSettings.Insert("UnpackPassword" , "");
+        ChangingSettings.Insert("PackingSettings", New Structure);
     EndIf;
 
-    OPI_TypeConversion.GetLine(UnpackPassword);
-
-    Return New Structure("UnpackPassword, PackingSettings", UnpackPassword, PackingSettings);
+    Return ChangingSettings;
 
 EndFunction
 

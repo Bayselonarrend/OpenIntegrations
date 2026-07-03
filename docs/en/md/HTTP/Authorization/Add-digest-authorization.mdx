@@ -49,7 +49,17 @@ import Admonition from '@theme/Admonition';
 </Admonition>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/digest-auth/auth/user/passwd";
 
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("user", "passwd") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+```
  
 
 

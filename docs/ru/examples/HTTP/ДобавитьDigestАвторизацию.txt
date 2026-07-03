@@ -1,0 +1,9 @@
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/digest-auth/auth/user/passwd";
+
+    Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать()
+        .УстановитьURL(URL)
+        .ДобавитьDigestАвторизацию("user", "passwd") // <---
+        .ОбработатьЗапрос("GET")
+        .ВернутьОтветКакJSONКоллекцию();

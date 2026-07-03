@@ -1,0 +1,12 @@
+    ArchivePath = Undefined;
+
+    If Parameters.Property("Tar_ArchivePath") Then
+        ArchivePath = Parameters["Tar_ArchivePath"];
+    ElsIf Parameters.Property("Tar_ArchiveGzipPath") Then
+        ArchivePath = Parameters["Tar_ArchiveGzipPath"];
+    EndIf;
+
+    If ArchivePath <> Undefined Then
+        ExpectedFiles = Parameters["Tar_ExpectedFiles"];
+
+        Result = OPI_Tar.GetFilesList(ArchivePath);

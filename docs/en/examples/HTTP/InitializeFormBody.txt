@@ -1,0 +1,10 @@
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/post";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeFormBody() // <---
+        .InsertBodyField("Field1", "10")
+        .InsertBodyField("Field2", "Text")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();

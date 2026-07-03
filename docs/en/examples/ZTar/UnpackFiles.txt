@@ -1,0 +1,9 @@
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "Tar");
+
+    ArchivePath                = Parameters["Tar_ArchivePath"];
+    DestinateDirectory         = Parameters["Tar_DestDir"];
+    DestinationDirectoryBuffer = Parameters["Tar_DestBufferDir"];
+    PartialPaths               = Parameters["Tar_PartialPaths"];
+    ExpectedFiles              = Parameters["Tar_PartialExpected"];
+
+    Result = OPI_Tar.UnpackFiles(ArchivePath, PartialPaths, DestinateDirectory);

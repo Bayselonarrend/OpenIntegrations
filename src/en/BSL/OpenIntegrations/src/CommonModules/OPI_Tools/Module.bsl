@@ -1036,6 +1036,20 @@ Function NumberToString(Val Value) Export
 
 EndFunction
 
+Function RemoveQuotes(Val Value) Export
+
+    If StrStartWith(Value, """") Then
+        Value = Right(Value, StrLen(Value) - 1);
+    EndIf;
+
+    If StrEndsWith(Value, """") Then
+        Value = Left(Value, StrLen(Value) - 1);
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
     Size = 0;

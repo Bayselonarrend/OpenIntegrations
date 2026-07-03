@@ -189,6 +189,7 @@ Function GetTestTable(Val TestModule = "") Export
     Janx      = "Janx";
     Lua       = "Lua";
     SevenZ    = "7z";
+    Tar       = "Tar";
 
     ArrayOfTests = New Array;
 
@@ -408,12 +409,16 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_GlobalVariables"                 , "Global variables"                , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
-
-    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"             , "Archiving"                 , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword" , "Archiving with a password" , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"       , "Metadata extraction"       , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"      , "Partial unpacking"         , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"   , "Archive modification"      , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_Archiving"                        , "Archiving"                       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"            , "Archiving with a password"       , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"                  , "Metadata extraction"             , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"                 , "Partial unpacking"               , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"              , "Archive modification"            , SevenZ);
+    NewTest(ArrayOfTests, TestModule, "ZTar_Archive"                        , "Archiving"                       , Tar);
+    NewTest(ArrayOfTests, TestModule, "ZTar_ArchiveWithGzip"                , "Archive with gzip"               , Tar);
+    NewTest(ArrayOfTests, TestModule, "ZTar_GetMetadata"                    , "Metadata extraction"             , Tar);
+    NewTest(ArrayOfTests, TestModule, "ZTar_PartialUnpack"                  , "Partial unpacking"               , Tar);
+    NewTest(ArrayOfTests, TestModule, "ZTar_ChangeArchive"                  , "Archive modification"            , Tar);
 
     Return ArrayOfTests;
 
@@ -607,6 +612,94 @@ Procedure WriteParameter(Parameter, Value) Export
 
     Path = DataFilePath();
     WriteParameterToFile(Parameter, Value, Path);
+
+EndProcedure
+
+Procedure WriteArchiveParameters(Parameters) Export
+
+    WriteArchiveParameterFromCollection(Parameters, "BaseDir");
+    WriteArchiveParameterFromCollection(Parameters, "SourceDir");
+    WriteArchiveParameterFromCollection(Parameters, "ArchivePath");
+    WriteArchiveParameterFromCollection(Parameters, "DestDir");
+    WriteArchiveParameterFromCollection(Parameters, "DestBufferDir");
+    WriteArchiveParameterFromCollection(Parameters, "ArchiveDescPath");
+    WriteArchiveParameterFromCollection(Parameters, "ArchiveGzipPath");
+
+EndProcedure
+
+Procedure AddArchiveParameters(Parameters, Prefix) Export
+
+    ParameterNames = New Array;
+    ParameterNames.Add("BaseDir");
+    ParameterNames.Add("SourceDir");
+    ParameterNames.Add("ArchivePath");
+    ParameterNames.Add("DestDir");
+    ParameterNames.Add("DestBufferDir");
+    ParameterNames.Add("ArchiveDescPath");
+    ParameterNames.Add("ArchiveGzipPath");
+
+    For Each Name In ParameterNames Do
+
+        FormatKey = Prefix + "_" + Name;
+
+        If Parameters.Property(FormatKey) Then
+            Continue;
+        EndIf;
+
+        If Name = "ArchivePath" And HasSpecialArchivePath(Parameters, Prefix) Then
+            Continue;
+        EndIf;
+
+        Value = GetParameter("Archive_" + Name);
+
+        If ValueIsFilled(Value) Then
+            Parameters.Insert(FormatKey, Value);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Function HasSpecialArchivePath(Parameters, Prefix)
+
+    SpecialNames = New Array;
+    SpecialNames.Add("ArchiveGzipPath");
+    SpecialNames.Add("ArchivePlainPath");
+    SpecialNames.Add("ArchivePasswordPath");
+    SpecialNames.Add("ArchiveCopyPath");
+    SpecialNames.Add("ArchiveLzmaPath");
+
+    For Each Name In SpecialNames Do
+
+        If Parameters.Property(Prefix + "_" + Name) Then
+            Return True;
+        EndIf;
+
+    EndDo;
+
+    Return False;
+
+EndFunction
+
+Procedure WriteArchiveParameterFromCollection(Parameters, Name)
+
+    Prefixes = New Array;
+    Prefixes.Add("Archive");
+    Prefixes.Add("Tar");
+    Prefixes.Add("SevenZ");
+
+    For Each Prefix In Prefixes Do
+
+        Key = Prefix + "_" + Name;
+
+        If OPI_Tools.CollectionFieldExists(Parameters, Key) Then
+
+            WriteParameter("Archive_" + Name, Parameters[Key]);
+            Return;
+
+        EndIf;
+
+    EndDo;
 
 EndProcedure
 
@@ -11255,6 +11348,136 @@ Function Check_HTTP_SetFormBody(Val Result, Val Option, Data = "")
 
 EndFunction
 
+Function Check_HTTP_InitializeJsonBody(Val Result, Val Option, JSONOriginal = "")
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+
+    JSONResult = Result["json"];
+
+    ExpectsThat(JSONResult["Field1"]).Равно(JSONOriginal["Field1"]);
+    ExpectsThat(JSONResult["Field2"]).Равно(JSONOriginal["Field2"]);
+    ExpectsThat(JSONResult["Field3"][0]).Равно(JSONOriginal["Field3"][0]);
+    ExpectsThat(JSONResult["Field3"][1]).Равно(JSONOriginal["Field3"][1]);
+    ExpectsThat(JSONResult["Field3"][2]).Равно(JSONOriginal["Field3"][2]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTP_InitializeFormBody(Val Result, Val Option, Data = "")
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise GetStringFromBinaryData(Result);
+        EndTry;
+    EndTry;
+
+    ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/x-www-form-urlencoded; charset=utf-8");
+
+    ExpectsThat(Result["form"]["Field1"]).Равно(Data["Field1"]);
+    ExpectsThat(Result["form"]["Field2"]).Равно(Data["Field2"]);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTP_InsertBodyField(Val Result, Val Option, Data = "")
+
+    If Option = "Without initialization" Then
+
+        ExpectsThat(StrFind(Result, "root collection was not initialized") > 0).Равно(True);
+
+        Return Result;
+
+    EndIf;
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise String(Result);
+        EndTry;
+    EndTry;
+
+    If Option = "Nested key" Then
+
+        ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+        ExpectsThat(Result["json"]["collection"]["nested"]["nested2"]).Равно("value");
+
+    ElsIf Option = "InitializeFormBody" Or Option = "SetFormBody" Then
+
+        ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/x-www-form-urlencoded; charset=utf-8");
+        ExpectsThat(Result["form"]["Field1"]).Равно(Data["Field1"]);
+        ExpectsThat(Result["form"]["Field2"]).Равно(Data["Field2"]);
+
+    Else
+
+        ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+        ExpectsThat(Result["json"]["Field1"]).Равно(Data["Field1"]);
+        ExpectsThat(Result["json"]["Field2"]).Равно(Data["Field2"]);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTP_AddValue(Val Result, Val Option, Data = "")
+
+    If Option = "Without initialization" Then
+
+        ExpectsThat(StrFind(Result, "root collection was not initialized") > 0).Равно(True);
+
+        Return Result;
+
+    EndIf;
+
+    Try
+        Result["origin"] = "***";
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise String(Result);
+        EndTry;
+    EndTry;
+
+    If Option = "InitializeFormBody" Or Option = "SetFormBody" Then
+
+        ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/x-www-form-urlencoded; charset=utf-8");
+
+        ExpectedValue = "[" + StrConcat(Data, ",") + "]";
+        ExpectsThat(Result["form"]["arr"]).Равно(ExpectedValue);
+
+    Else
+
+        ExpectsThat(Result["headers"]["Content-Type"]).Равно("application/json; charset=utf-8");
+        ExpectsThat(Result["json"]["Field1"]).Равно(Data["Field1"]);
+        ExpectsThat(Result["json"]["Field3"][0]).Равно(Data["Field3"][0]);
+        ExpectsThat(Result["json"]["Field3"][1]).Равно(Data["Field3"][1]);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_HTTP_StartMultipartBody(Val Result, Val Option, Image = "")
 
     Try
@@ -11542,6 +11765,33 @@ Function Check_HTTP_AddBasicAuthorization(Val Result, Val Option)
     Data  = GetBinaryDataFromString("user:password");
     Basic = "Basic " + Base64String(Data);
     ExpectsThat(Result["headers"]["Authorization"]).Равно(Basic);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTP_AddDigestAuthorization(Val Result, Val Option)
+
+    If Option = "Invalid password" Or Option = "No authorization" Then
+
+        ExpectsThat(Result).Равно(401);
+
+        Return Result;
+
+    EndIf;
+
+    User = ?(Option = "Other user", "testuser", "user");
+
+    Try
+        ExpectsThat(Result["authenticated"]).Равно(True);
+        ExpectsThat(Result["user"]).Равно(User);
+    Except
+        Try
+            Raise Result.GetLog(True);
+        Except
+            Raise String(Result);
+        EndTry;
+    EndTry;
 
     Return Result;
 
@@ -15793,6 +16043,94 @@ Function CheckMetadataRecordsInArchive7z(Records, ExpectedFiles)
     EndDo;
 
     Return True;
+
+EndFunction
+
+Function Check_Tar_GetArchivingSettingsStructure(Val Result, Val Option)
+
+    If Option = "AsMap" Then
+
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["gzip"] <> Undefined).Равно(True);
+        ExpectsThat(Result["gzip_level"] <> Undefined).Равно(True);
+
+    Else
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
+        ExpectsThat(Result.Property("gzip")).Равно(True);
+        ExpectsThat(Result.Property("gzip_level")).Равно(True);
+
+    EndIf;
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(StrFind(String(Result.gzip), "gzip") > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Tar_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
+
+    Return Check_7z_ArchiveDirectory(Result, Option, ArchivePath);
+
+EndFunction
+
+Function Check_Tar_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    Return Check_7z_UnarchiveDirectory(Result, Option, DestinationDirectory, ExpectedFiles);
+
+EndFunction
+
+Function Check_Tar_GetFilesList(Val Result, Val Option, ExpectedFiles = Undefined)
+
+    Return Check_7z_GetFilesList(Result, Option, ExpectedFiles);
+
+EndFunction
+
+Function Check_Tar_GetMetadata(Val Result, Val Option, ExpectedFiles = Undefined, ExpectedMetadata = Undefined)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+    ExpectsThat(Result["archive_size"] > 0).Равно(True);
+    ExpectsThat(Result["file_count"] > 0).Равно(True);
+    ExpectsThat(Result["entries"] <> Undefined).Равно(True);
+    ExpectsThat(ExpectedFiles <> Undefined).Равно(True);
+    ExpectsThat(Result["file_count"]).Равно(ExpectedFiles.Count());
+
+    CheckMetadataRecordsInArchive7z(Result["entries"], ExpectedFiles);
+
+    If Option = "WithGzip" Then
+
+        ExpectsThat(TypeOf(ExpectedMetadata)).Равно(Type("Structure"));
+        ExpectsThat(Result["archive_size"] < ExpectedMetadata.archive_less_than).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Tar_UnpackFiles(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    Return Check_7z_UnpackFiles(Result, Option, DestinationDirectory, ExpectedFiles);
+
+EndFunction
+
+Function Check_Tar_ModifyArchive(Val Result, Val Option, ArchivePath = "")
+
+    Return Check_7z_ModifyArchive(Result, Option, ArchivePath);
 
 EndFunction
 

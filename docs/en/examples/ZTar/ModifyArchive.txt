@@ -1,0 +1,17 @@
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "Tar");
+
+    ArchivePath        = Parameters["Tar_ArchivePath"];
+    ArchiveBufferPath  = Parameters["Tar_ArchiveBufferPath"];
+    DestinateDirectory = Parameters["Tar_DestDir"];
+    NewFilePath        = Parameters["Tar_NewFilePath"];
+    ExpectedFiles      = Parameters["Tar_ExpectedAfterModify"];
+
+    AddableFiles = New Map;
+    AddableFiles.Insert("extra/info.txt", NewFilePath);
+    AddableFiles.Insert("readme.txt"    , GetBinaryDataFromString("Replaced readme content", "UTF-8"));
+
+    DeletablePaths = New Array;
+    DeletablePaths.Add("config/settings.json");
+    DeletablePaths.Add("missing/path.txt");
+
+    Result = OPI_Tar.ModifyArchive(ArchivePath, AddableFiles, DeletablePaths);

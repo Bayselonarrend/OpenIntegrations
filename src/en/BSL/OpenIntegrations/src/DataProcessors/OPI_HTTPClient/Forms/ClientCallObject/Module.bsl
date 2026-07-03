@@ -146,6 +146,8 @@ Var AuthPassword; // Password authorization
 Var AuthNonceCount; // nonce count for Digest
 &AtClient
 Var AuthLastNonce; // last nonce for Digest
+&AtClient
+Var AuthDigestRepeat; // Repeat of request after Digest challenge alreadt completed
 
 // Response
 
@@ -209,8 +211,9 @@ Function Initialize(Val URL = "") Export
     RequestReadControl          = 0;
     Repeats                     = 0;
 
-    AuthNonceCount = 1;
-    AuthLastNonce  = "";
+    AuthNonceCount   = 1;
+    AuthLastNonce    = "";
+    AuthDigestRepeat = False;
 
     RequestTypeSetManualy = False;
 
@@ -1576,9 +1579,10 @@ Function AddDigestAuthorization(Val User, Val Password) Export
         OPI_TypeConversion.GetLine(User);
         OPI_TypeConversion.GetLine(Password);
 
-        AuthType     = "digest";
-        AuthUser     = User;
-        AuthPassword = Password;
+        AuthType         = "digest";
+        AuthUser         = User;
+        AuthPassword     = Password;
+        AuthDigestRepeat = False;
 
         Return ThisObject;
 
@@ -2781,8 +2785,13 @@ Function CheckResendNecessity(RedirectCount, ErrorCount)
 
     EndIf;
 
-    If IsAuthorizationError() And AuthType = "digest" Then
-        Return ProcessDigest();
+    If IsAuthorizationError() And AuthType = "digest" And Not AuthDigestRepeat Then
+
+        If ProcessDigest() Then
+            AuthDigestRepeat = True;
+            Return True;
+        EndIf;
+
     EndIf;
 
     Return False;
@@ -3725,17 +3734,15 @@ EndFunction
 &AtClient
 Function ProcessDigest()
 
-    ExpectedDigest = Lower(Response.Headers.Get("Authorization")) = "digest";
-
-    If Not ExpectedDigest Then
-        AddLog("ProcessDigest: Digest was declared but not returned by the server");
-        Return False;
-    EndIf;
-
     MainHeader = Response.Headers.Get("WWW-Authenticate");
 
     If Not ValueIsFilled(MainHeader) Then
         AddLog("ProcessDigest: WWW-Authenticate header not found");
+        Return False;
+    EndIf;
+
+    If Not StrStartWith(Lower(TrimAll(MainHeader)), "digest") Then
+        AddLog("ProcessDigest: server did not request Digest authorization");
         Return False;
     EndIf;
 
@@ -3751,19 +3758,11 @@ Function ProcessDigest()
             Continue;
         EndIf;
 
-        LeftPart = TrimAll(ItemParts[0]);
-
-        If StrStartWith(LeftPart, """") Then
-            LeftPart = Right(LeftPart, StrLen(LeftPart) - 1);
-        EndIf;
-
-        If StrEndsWith(LeftPart, """") Then
-            LeftPart = Left(LeftPart, StrLen(LeftPart) - 1);
-        EndIf;
+        LeftPart = OPI_Tools.RemoveQuotes(TrimAll(ItemParts[0]));
 
         ItemParts.Delete(0);
 
-        RightPart = TrimAll(StrConcat(ItemParts, "="));
+        RightPart = OPI_Tools.RemoveQuotes(TrimAll(StrConcat(ItemParts, "=")));
 
         KeyMap.Insert(LeftPart, RightPart);
 
@@ -3771,7 +3770,7 @@ Function ProcessDigest()
 
     DigestHeader = FormDigestHeader(KeyMap);
 
-    If DigestHeader = Undefined Then
+    If DigestHeader = Undefined Or DigestHeader = False Then
         AddLog("ProcessDigest: failed to create header");
         Return False;
     EndIf;
@@ -3823,6 +3822,13 @@ Function FormDigestHeader(Val KeyMap)
     Qop    = KeyMap.Get("qop");
     Opaque = KeyMap.Get("opaque");
 
+    If Nonce           = AuthLastNonce Then
+        AuthNonceCount = AuthNonceCount + 1;
+    Else
+        AuthLastNonce  = Nonce;
+        AuthNonceCount = 1;
+    EndIf;
+
     NonceCount = Format(AuthNonceCount, "ND=10; NLZ=; NG=");
     Cnonce = Left(StrReplace(Lower(New UUID), "-", ""), 16);
 
@@ -3853,13 +3859,6 @@ Function FormDigestHeader(Val KeyMap)
 
     SHA1 = Lower(GetHexStringFromBinaryData(BHA1));
     SHA2 = Lower(GetHexStringFromBinaryData(BHA2));
-
-    If Nonce           = AuthLastNonce Then
-        AuthNonceCount = AuthNonceCount + 1;
-    Else
-        AuthLastNonce  = Nonce;
-        AuthNonceCount = 1;
-    EndIf;
 
     If Not ValueIsFilled(Qop) Then
 
@@ -3896,7 +3895,7 @@ Function FormDigestHeader(Val KeyMap)
     EndIf;
 
     If ValueIsFilled(Qop) Then
-        Strings.Add(StrTemplate(", qop=""%1"", nc=%2, cnonce=""%3""", Qop, NonceCount, Nonce));
+        Strings.Add(StrTemplate(", qop=""%1"", nc=%2, cnonce=""%3""", Qop, NonceCount, Cnonce));
     EndIf;
 
     Return StrTemplate("Digest %1", StrConcat(Strings, ""));

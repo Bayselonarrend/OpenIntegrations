@@ -5584,6 +5584,29 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
+ "OPI_Tar": {
+  "ArchiveDirectory": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "UnarchiveDirectory": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "UnpackFiles": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "ModifyArchive": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetArchivingSettingsStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetFilesList": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetMetadata": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  }
+ },
  "OPI_HTTPClient": {
   "ReturnSettings": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"

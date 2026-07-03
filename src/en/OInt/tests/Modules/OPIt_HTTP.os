@@ -129,6 +129,10 @@ Procedure HTTP_BodySet() Export
     HTTP_SetStringBody(TestParameters);
     HTTP_SetJsonBody(TestParameters);
     HTTP_SetFormBody(TestParameters);
+    HTTP_InitializeJsonBody(TestParameters);
+    HTTP_InitializeFormBody(TestParameters);
+    HTTP_InsertBodyField(TestParameters);
+    HTTP_AddValue(TestParameters);
     HTTP_StartMultipartBody(TestParameters);
     HTTP_AddMultipartFormDataField(TestParameters);
     HTTP_AddMultipartFormDataFile(TestParameters);
@@ -183,6 +187,7 @@ Procedure HTTP_Authorization() Export
 
     TestParameters = OPI_TestDataRetrieval.GetTestData();
     HTTP_AddBasicAuthorization(TestParameters);
+    HTTP_AddDigestAuthorization(TestParameters);
     HTTP_AddBearerAuthorization(TestParameters);
     HTTP_AddAWS4Authorization(TestParameters);
     HTTP_AddOAuthV1Authorization(TestParameters);
@@ -587,6 +592,206 @@ Procedure HTTP_SetFormBody(FunctionParameters)
 
 EndProcedure
 
+Procedure HTTP_InitializeJsonBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    RandomArray = New Array;
+    RandomArray.Add("A");
+    RandomArray.Add("B");
+    RandomArray.Add("C");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody() // <---
+        .InsertBodyField("Field1", 10)
+        .InsertBodyField("Field2", "Text")
+        .InsertBodyField("Field3", RandomArray)
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Data = New Structure("Field1,Field2,Field3", 10, "Text", RandomArray);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InitializeJsonBody", , Data);
+
+EndProcedure
+
+Procedure HTTP_InitializeFormBody(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeFormBody() // <---
+        .InsertBodyField("Field1", "10")
+        .InsertBodyField("Field2", "Text")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InitializeFormBody", , Data);
+
+EndProcedure
+
+Procedure HTTP_InsertBodyField(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody()
+        .InsertBodyField("Field1", 10) // <---
+        .InsertBodyField("Field2", "Text")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Data = New Structure("Field1,Field2", 10, "Text");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InsertBodyField", , Data);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeFormBody()
+        .InsertBodyField("Field1", "10")
+        .InsertBodyField("Field2", "Text")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    Data = New Structure("Field1,Field2", "10", "Text");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InsertBodyField", "InitializeFormBody", Data);
+
+    Data = New Structure("Field1", 10);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(Data)
+        .InsertBodyField("Field2", "Addition")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    Expected = New Structure("Field1,Field2", 10, "Addition");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InsertBodyField", "SetJsonBody", Expected);
+
+    Data = New Structure("Field1", "10");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(Data)
+        .InsertBodyField("Field2", "Addition")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    Expected = New Structure("Field1,Field2", "10", "Addition");
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InsertBodyField", "SetFormBody", Expected);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody()
+        .InsertBodyField("collection"               , New Map)
+        .InsertBodyField("collection.nested"        , New Map)
+        .InsertBodyField("collection.nested.nested2", "value")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "InsertBodyField", "Nested key");
+
+    Log = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InsertBodyField("Field1", 10)
+        .GetLog(True);
+
+    OPI_TestDataRetrieval.Process(Log, "HTTP", "InsertBodyField", "Without initialization");
+
+EndProcedure
+
+Procedure HTTP_AddValue(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/post";
+
+    ExpectedArray = New Array;
+    ExpectedArray.Add("A");
+    ExpectedArray.Add("B");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeJsonBody()
+        .InsertBodyField("Field1", 10)
+        .InsertBodyField("Field3", New Array)
+        .AddValue("Field3", "A") // <---
+        .AddValue("Field3", "B")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Data = New Structure("Field1,Field3", 10, ExpectedArray);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddValue", , Data);
+
+    FormArray = New Array;
+    FormArray.Add("one");
+    FormArray.Add("two");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .InitializeFormBody()
+        .InsertBodyField("arr", New Array)
+        .AddValue("arr", "one")
+        .AddValue("arr", "two")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddValue", "InitializeFormBody", FormArray);
+
+    ExpectedJsonArray = New Array;
+    ExpectedJsonArray.Add("X");
+    ExpectedJsonArray.Add("Y");
+
+    OutputData = New Structure("Field1,Field3", 10, New Array);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetJsonBody(OutputData)
+        .AddValue("Field3", "X")
+        .AddValue("Field3", "Y")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    Data = New Structure("Field1,Field3", 10, ExpectedJsonArray);
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddValue", "SetJsonBody", Data);
+
+    ExpectedFormArray = New Array;
+    ExpectedFormArray.Add("val1");
+    ExpectedFormArray.Add("val2");
+
+    OutputData = New Structure("arr", New Array);
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetFormBody(OutputData)
+        .AddValue("arr", "val1")
+        .AddValue("arr", "val2")
+        .ProcessRequest("POST")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddValue", "SetFormBody", ExpectedFormArray);
+
+    Log = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .AddValue("Field3", "A")
+        .GetLog(True);
+
+    OPI_TestDataRetrieval.Process(Log, "HTTP", "AddValue", "Without initialization");
+
+EndProcedure
+
 Procedure HTTP_StartMultipartBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
@@ -868,6 +1073,85 @@ Procedure HTTP_AddBasicAuthorization(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.Process(Result, "HTTP", "AddBasicAuthorization");
+
+EndProcedure
+
+Procedure HTTP_AddDigestAuthorization(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth/user/passwd";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("user", "passwd") // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDigestAuthorization");
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth/user/passwd/MD5";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("user", "passwd")
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDigestAuthorization", "MD5");
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth/testuser/testpass";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("testuser", "testpass")
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDigestAuthorization", "Other user");
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth-int/user/passwd";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("user", "passwd")
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "AddDigestAuthorization", "auth-int");
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth/user/passwd";
+
+    StatusCode = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddDigestAuthorization("user", "wrong")
+        .ProcessRequest("GET")
+        .ReturnResponse()
+        .StatusCode;
+
+    OPI_TestDataRetrieval.Process(StatusCode, "HTTP", "AddDigestAuthorization", "Invalid password");
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/digest-auth/auth/user/passwd";
+
+    StatusCode = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .ProcessRequest("GET")
+        .ReturnResponse()
+        .StatusCode;
+
+    OPI_TestDataRetrieval.Process(StatusCode, "HTTP", "AddDigestAuthorization", "No authorization");
 
 EndProcedure
 

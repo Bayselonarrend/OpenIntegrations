@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b7d1f4a2-8e6c-4d9b-a531-6c2f0e8b5d19">
+  <name>OPI_Tar</name>
+  <synonym>
+    <key>en</key>
+    <value>AddIn Tar (OPI)</value>
+    <key>ru</key>
+    <value>AddIn Tar (OPI)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>

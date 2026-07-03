@@ -43,6 +43,7 @@
   "yandex": "OPI_YandexID",
   "7z": "OPI_7z",
   "janx": "OPI_Janx",
-  "msgpack": "OPI_MessagePack"
+  "msgpack": "OPI_MessagePack",
+  "tar": "OPI_Tar"
  }
 }
