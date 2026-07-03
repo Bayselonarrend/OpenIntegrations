@@ -1,2 +1,2 @@
 oint janx ДесериализоватьДанные \
-  --data "/tmp/tktsczan.weg"
+  --data "C:\Users\bayselonarrend\AppData\Local\Temp\mkyvol0d.z2v"

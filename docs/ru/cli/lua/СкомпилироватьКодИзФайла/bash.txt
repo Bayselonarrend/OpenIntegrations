@@ -1,3 +1,3 @@
 oint lua СкомпилироватьКодИзФайла \
   --lua "Lua54" \
-  --path "/tmp/ovg1f4k3.0t4.lua"
+  --path "C:\Users\bayselonarrend\AppData\Local\Temp\rui5aixt.zgq.lua"
