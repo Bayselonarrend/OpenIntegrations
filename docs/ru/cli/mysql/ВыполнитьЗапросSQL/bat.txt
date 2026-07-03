@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint mysql ВыполнитьЗапросSQL ^
-  --sql "SELECT name, age, salary, amount, type, date, time, data FROM test_table;" ^
+  --sql "SELECT 1 AS n" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
   --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"

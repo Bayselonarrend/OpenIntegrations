@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ssh ВыполнитьКоманду ^
-  --conn "{'set':{'auth_type':'password','host':'172.33.0.13','port':'2222','username':'bayselonarrend','password':'***'},'proxy':{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}}" ^
+  --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" ^
   --comm "whoami"

@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\jl2hyngm.vm0"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\dfxmdqso.421"

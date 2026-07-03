@@ -2,6 +2,6 @@
 
 oint cdek ИзменитьЗаказ \
   --token "***" \
-  --uuid "dc8f0020-343c-4efb-ade4-b1dae119f8aa" \
+  --uuid "ce69eff9-bee3-4f3c-9fc2-bede2a51e450" \
   --order "{'comment':'Новый комментарий'}" \
   --testapi "***"
