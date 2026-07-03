@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/po0ggwmt.noj"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\jl2hyngm.vm0"

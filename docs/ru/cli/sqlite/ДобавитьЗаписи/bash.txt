@@ -3,4 +3,4 @@
 oint sqlite ДобавитьЗаписи \
   --table "test1" \
   --rows "{'[Непонятная колонка]':'yo'}" \
-  --db "/tmp/aam1mb1m.vug.sqlite"
+  --db "C:\Users\bayselonarrend\AppData\Local\Temp\b5kj0byx.jm0.sqlite"

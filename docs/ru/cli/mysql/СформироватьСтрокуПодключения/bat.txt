@@ -1,5 +1,6 @@
 oint mysql СформироватьСтрокуПодключения ^
   --addr "127.0.0.1" ^
+  --db "test_data" ^
   --login "bayselonarrend" ^
   --pass "***" ^
   --port 3307
