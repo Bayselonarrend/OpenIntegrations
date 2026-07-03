@@ -488,30 +488,7 @@ EndFunction
 
 Function GetTestData() Export
 
-    Path = DataFilePath();
-    PathRO = StrTemplate("file:%1?mode=ro", Path);
-
-    Result = OPI_SQLite.GetRecords("test_params", , , , , PathRO);
-
-    If Not Result["result"] = True Then
-        Raise Result["error"];
-    EndIf;
-
-    Collection = New Structure;
-
-    For Each String In Result["data"] Do
-
-        CurrentKey = String["key"];
-        Value      = String["value"];
-        ValeType   = String["type"];
-
-        Value = ?(ValeType = "Number", Number(Value), String(Value));
-
-        Collection.Insert(CurrentKey, Value);
-
-    EndDo;
-
-    Return Collection;
+    Return LoadTestDataFromFile();
 
 EndFunction
 
@@ -634,6 +611,8 @@ Procedure AddArchiveParameters(Parameters, Prefix) Export
     ParameterNames.Add("ArchiveDescPath");
     ParameterNames.Add("ArchiveGzipPath");
 
+    TestsData = GetTestData();
+
     For Each Name In ParameterNames Do
 
         FormatKey = Prefix + "_" + Name;
@@ -646,7 +625,7 @@ Procedure AddArchiveParameters(Parameters, Prefix) Export
             Continue;
         EndIf;
 
-        Value = GetParameter("Archive_" + Name);
+        Value = ParameterValueFromCollection("Archive_" + Name, TestsData);
 
         If ValueIsFilled(Value) Then
             Parameters.Insert(FormatKey, Value);
@@ -17988,6 +17967,70 @@ Function ParameterValueFromCollection(Parameter, Data)
     EndIf;
 
     Return "";
+
+EndFunction
+
+Function LoadTestDataFromFile()
+
+    Path     = DataFilePath();
+    PathRO = StrTemplate("file:%1?mode=ro", Path);
+    Attempts = 20;
+    Error    = "";
+
+    For N = 1 To Attempts Do
+
+        Result = OPI_SQLite.GetRecords("test_params", , , , , PathRO);
+
+        If Result["result"] = True Then
+
+            Collection = New Structure;
+
+            For Each String In Result["data"] Do
+
+                CurrentKey = String["key"];
+                Value      = String["value"];
+                ValeType   = String["type"];
+
+                Value = ?(ValeType = "Number", Number(Value), String(Value));
+
+                Collection.Insert(CurrentKey, Value);
+
+            EndDo;
+
+            Return Collection;
+
+        Else
+
+            Error = SQLErrorText(Result);
+
+            If Error = "database is locked" Then
+                OPI_Tools.Pause(N);
+                Continue;
+            Else
+                Break;
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    Raise Error;
+
+EndFunction
+
+Function SQLErrorText(Result)
+
+    If OPI_Tools.ThisIsCollection(Result) And Result.Property("error") Then
+        Return Result["error"];
+    EndIf;
+
+    If OPI_Tools.ThisIsCollection(Result)
+        And Result.Property("errors")
+        And Result["errors"].Count() > 0 Then
+        Return Result["errors"][0]["error"];
+    EndIf;
+
+    Return "Unknown SQLite error";
 
 EndFunction
 
