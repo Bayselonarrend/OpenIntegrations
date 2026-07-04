@@ -15740,12 +15740,23 @@ Function Check_7z_GetArchiveModificationStructure(Val Result, Val Option)
 
 EndFunction
 
+Function NormalizeCLIBinaryData(Val Value)
+
+    If TypeOf(Value) = Type("String") Then
+        Value        = GetBinaryDataFromBase64String(Value);
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Function Check_7z_ArchiveDirectory(Val Result, Val Option, ArchivePath = "")
 
     If Option = "ToMemory" Or Option = "FromDescriptionToMemory" Then
 
-        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
-        ExpectsThat(Result.Size() > 0).Равно(True);
+        Data = NormalizeCLIBinaryData(Result);
+        ExpectsThat(TypeOf(Data)).Равно(Type("BinaryData"));
+        ExpectsThat(Data.Size() > 0).Равно(True);
 
     Else
 
@@ -15835,16 +15846,18 @@ Function Check7zArchiveDescriptionContent(Records, ExpectedFiles, Prefix = "")
             EndIf;
 
             ExpectsThat(Expected <> Undefined).Равно(True);
-            ExpectsThat(TypeOf(Record["data"])).Равно(Type("BinaryData"));
+
+            FileData = NormalizeCLIBinaryData(Record["data"]);
+            ExpectsThat(TypeOf(FileData)).Равно(Type("BinaryData"));
 
             If TypeOf(Expected) = Type("Structure") And Expected.Property("binary") Then
 
                 ExpectedData = GetBinaryDataFromHexString(Expected.hex);
-                ExpectsThat(Record["data"].Size()).Равно(ExpectedData.Size());
+                ExpectsThat(FileData.Size()).Равно(ExpectedData.Size());
 
             Else
 
-                Text = GetStringFromBinaryData(Record["data"], "UTF-8");
+                Text = GetStringFromBinaryData(FileData, "UTF-8");
                 ExpectsThat(Text).Равно(Expected);
 
             EndIf;
@@ -15918,8 +15931,9 @@ Function Check_7z_ModifyArchive(Val Result, Val Option, ArchivePath = "")
 
     If Option = "FromMemory" Then
 
-        ExpectsThat(TypeOf(Result)).Равно(Type("BinaryData"));
-        ExpectsThat(Result.Size() > 0).Равно(True);
+        Data = NormalizeCLIBinaryData(Result);
+        ExpectsThat(TypeOf(Data)).Равно(Type("BinaryData"));
+        ExpectsThat(Data.Size() > 0).Равно(True);
 
     Else
 
