@@ -71,6 +71,7 @@
 #Use "../../tools/main"
 #Use "../../tools/http"
 #Use "../../api"
+#Use "../../formats"
 #Use asserts
 #Use "internal"
 
