@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint 7z АрхивироватьКаталог \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918770296613/src_compress" \
-  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918770296613/archive_lzma.7z" \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918786700531/src_compress" \
+  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918786700531/archive_lzma.7z" \
   --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"

@@ -2,4 +2,4 @@ oint rportal ПолучитьЗапуск \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "7314e767-c717-48ca-ba49-6d3b56e53f9c"
+  --uuid "b792f8b0-7aa7-441a-917b-36d874250f02"
