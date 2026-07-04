@@ -15693,22 +15693,11 @@ EndFunction
 
 Function Check_7z_GetArchivingSettingsStructure(Val Result, Val Option)
 
-    If Option = "AsMap" Then
-
-        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-        ExpectsThat(Result["password"] <> Undefined).Равно(True);
-        ExpectsThat(Result["method"] <> Undefined).Равно(True);
-        ExpectsThat(Result["filters"] <> Undefined).Равно(True);
-
-    Else
-
-        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
-        ExpectsThat(Result.Property("password")).Равно(True);
-        ExpectsThat(Result.Property("method")).Равно(True);
-        ExpectsThat(Result.Property("level")).Равно(True);
-        ExpectsThat(Result.Property("filters")).Равно(True);
-
-    EndIf;
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "method")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "level")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "filters")).Равно(True);
 
     If Option = "Clear" Then
 
@@ -15722,7 +15711,7 @@ Function Check_7z_GetArchivingSettingsStructure(Val Result, Val Option)
 
     ElsIf Not ValueIsFilled(Option) Then
 
-        ExpectsThat(StrFind(String(Result.method), "Lzma") > 0).Равно(True);
+        ExpectsThat(StrFind(String(Result["method"]), "Lzma") > 0).Равно(True);
 
     EndIf;
 
@@ -15732,21 +15721,10 @@ EndFunction
 
 Function Check_7z_GetArchiveModificationStructure(Val Result, Val Option)
 
-    If Option = "AsMap" Then
-
-        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-        ExpectsThat(Result["password"] <> Undefined).Равно(True);
-        ExpectsThat(Result["unpack_password"] <> Undefined).Равно(True);
-        ExpectsThat(Result["method"] <> Undefined).Равно(True);
-
-    Else
-
-        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
-        ExpectsThat(Result.Property("password")).Равно(True);
-        ExpectsThat(Result.Property("unpack_password")).Равно(True);
-        ExpectsThat(Result.Property("method")).Равно(True);
-
-    EndIf;
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "unpack_password")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "method")).Равно(True);
 
     If Option = "Clear" Then
 
@@ -15760,7 +15738,7 @@ Function Check_7z_GetArchiveModificationStructure(Val Result, Val Option)
 
     ElsIf Not ValueIsFilled(Option) Then
 
-        ExpectsThat(StrFind(String(Result.unpack_password), "password") > 0).Равно(True);
+        ExpectsThat(StrFind(String(Result["unpack_password"]), "password") > 0).Равно(True);
 
     EndIf;
 
@@ -16027,19 +16005,9 @@ EndFunction
 
 Function Check_Tar_GetArchivingSettingsStructure(Val Result, Val Option)
 
-    If Option = "AsMap" Then
-
-        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-        ExpectsThat(Result["gzip"] <> Undefined).Равно(True);
-        ExpectsThat(Result["gzip_level"] <> Undefined).Равно(True);
-
-    Else
-
-        ExpectsThat(TypeOf(Result)).Равно(Type("Structure"));
-        ExpectsThat(Result.Property("gzip")).Равно(True);
-        ExpectsThat(Result.Property("gzip_level")).Равно(True);
-
-    EndIf;
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "gzip")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "gzip_level")).Равно(True);
 
     If Option = "Clear" Then
 
@@ -16053,7 +16021,7 @@ Function Check_Tar_GetArchivingSettingsStructure(Val Result, Val Option)
 
     ElsIf Not ValueIsFilled(Option) Then
 
-        ExpectsThat(StrFind(String(Result.gzip), "gzip") > 0).Равно(True);
+        ExpectsThat(StrFind(String(Result["gzip"]), "gzip") > 0).Равно(True);
 
     EndIf;
 

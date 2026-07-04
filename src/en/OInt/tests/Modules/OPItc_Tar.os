@@ -532,14 +532,14 @@ Procedure ZTar_ArchiveDirectory(Parameters)
         And Parameters.Property("Tar_SourceDir")
         And NOT Parameters.Property("Tar_SourceDirCompress") Then
 
-        SourceDirectory     = Parameters["Tar_SourceDir"];
-        GzipArchivePath     = Parameters["Tar_ArchiveGzipPath"];
+        SourceDirectory        = Parameters["Tar_SourceDir"];
+        GzipArchivePath        = Parameters["Tar_ArchiveGzipPath"];
         Options = New Structure;
         Options.Insert("empty", Истина);
 
         Settings = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetArchivingSettingsStructure", Options);
-        Settings.gzip       = True;
-        Settings.gzip_level = 9;
+        Settings["gzip"]       = True;
+        Settings["gzip_level"] = 9;
 
         Options = New Structure;
         Options.Insert("src", SourceDirectory);
@@ -568,8 +568,8 @@ Procedure ZTar_ArchiveDirectory(Parameters)
         Options.Insert("empty", Истина);
 
         GzipSettings = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetArchivingSettingsStructure", Options);
-        GzipSettings.gzip       = True;
-        GzipSettings.gzip_level = 9;
+        GzipSettings["gzip"]       = True;
+        GzipSettings["gzip_level"] = 9;
 
         Options = New Structure;
         Options.Insert("src", CompressionDirectory);
