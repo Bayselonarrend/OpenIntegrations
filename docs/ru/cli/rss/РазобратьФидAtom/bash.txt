@@ -1,2 +1,2 @@
 oint rss РазобратьФидAtom \
-  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\fl5rcrck.zgj.xml"
+  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\zolkamtr.apu.xml"

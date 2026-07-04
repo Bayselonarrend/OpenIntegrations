@@ -1,0 +1,3 @@
+oint 7z РазархивироватьКаталог \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_modify_63918770396891/archive.7z" \
+  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_modify_63918770396891/out"

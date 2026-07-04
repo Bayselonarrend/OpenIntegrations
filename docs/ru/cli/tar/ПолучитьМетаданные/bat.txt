@@ -1,2 +1,2 @@
 oint tar ПолучитьМетаданные ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\frfe3hek.wi2"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\v3jiowv5.wkh"
