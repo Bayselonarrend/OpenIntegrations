@@ -55,6 +55,30 @@ import Admonition from '@theme/Admonition';
 
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint 7z ИзменитьАрхив \
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\l1qkpmcm.rlf" \
+              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_sevenz_modify_63918770396891/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oxhb4y3s.xe3'}" \
+              --deletions "['config/settings.json','missing/path.txt']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint 7z ИзменитьАрхив ^
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\l1qkpmcm.rlf" ^
+              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_sevenz_modify_63918770396891/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oxhb4y3s.xe3'}" ^
+              --deletions "['config/settings.json','missing/path.txt']"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

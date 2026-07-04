@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint 7z ИзменитьАрхив ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\l1qkpmcm.rlf" ^
-  --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_sevenz_modify_63918770396891/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\oxhb4y3s.xe3'}" ^
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\jyyprbwd.fqn" ^
+  --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_sevenz_modify_63918786809429/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\tlhz2nba.4ob'}" ^
   --deletions "['config/settings.json','missing/path.txt']"
