@@ -720,7 +720,17 @@ Procedure ZTar_ModifyArchive(Parameters)
     Result = OPI_Tar.ModifyArchive(ArchiveBinary, AddableFiles, DeletablePaths);
     OPI_TestDataRetrieval.Process(Result, "Tar", "ModifyArchive", "FromMemory");
 
-    FileList = OPI_Tar.GetFilesList(Result);
+    ArchiveForList = Result;
+
+    If OPI_Tools.ThisIsCollection(Result, True)
+        And OPI_Tools.CollectionFieldExists(Result, "result")
+        And Result["result"] = True Then
+
+        ArchiveForList = ArchiveBufferPath;
+
+    EndIf;
+
+    FileList = OPI_Tar.GetFilesList(ArchiveForList);
     OPI_TestDataRetrieval.Process(FileList, "Tar", "GetFilesList", "AfterModificationFromMemory", ExpectedFiles);
 
 EndProcedure

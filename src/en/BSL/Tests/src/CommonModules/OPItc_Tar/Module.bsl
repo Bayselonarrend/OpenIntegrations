@@ -833,8 +833,18 @@ Procedure ZTar_ModifyArchive(Parameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "ModifyArchive", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "ModifyArchive", "FromMemory");
 
+    ArchiveForList = Result;
+
+    If OPI_Tools.ThisIsCollection(Result, True)
+        And OPI_Tools.CollectionFieldExists(Result, "result")
+        And Result["result"] = True Then
+
+        ArchiveForList = ArchiveBufferPath;
+
+    EndIf;
+
     Options = New Structure;
-    Options.Insert("src", Result);
+    Options.Insert("src", ArchiveForList);
 
     FileList = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetFilesList", Options);
     OPI_TestDataRetrieval.ProcessCLI(FileList, "Tar", "GetFilesList", "AfterModificationFromMemory", ExpectedFiles);

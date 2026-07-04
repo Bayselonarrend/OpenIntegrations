@@ -926,8 +926,18 @@ Procedure Z7_ModifyArchive(Parameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "ModifyArchive", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "7z", "ModifyArchive", "FromMemory");
 
+    ArchiveForList = Result;
+
+    If OPI_Tools.ThisIsCollection(Result, True)
+        And OPI_Tools.CollectionFieldExists(Result, "result")
+        And Result["result"] = True Then
+
+        ArchiveForList = ArchiveBufferPath;
+
+    EndIf;
+
     Options = New Structure;
-    Options.Insert("src", Result);
+    Options.Insert("src", ArchiveForList);
 
     FileList = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "GetFilesList", Options);
     OPI_TestDataRetrieval.ProcessCLI(FileList, "7z", "GetFilesList", "AfterModificationFromMemory", ExpectedFiles);

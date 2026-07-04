@@ -774,7 +774,17 @@ Procedure Z7_ModifyArchive(Parameters)
     Result = OPI_7z.ModifyArchive(ArchiveBinary, AddableFiles, DeletablePaths);
     OPI_TestDataRetrieval.Process(Result, "7z", "ModifyArchive", "FromMemory");
 
-    FileList = OPI_7z.GetFilesList(Result);
+    ArchiveForList = Result;
+
+    If OPI_Tools.ThisIsCollection(Result, True)
+        And OPI_Tools.CollectionFieldExists(Result, "result")
+        And Result["result"] = True Then
+
+        ArchiveForList = ArchiveBufferPath;
+
+    EndIf;
+
+    FileList = OPI_7z.GetFilesList(ArchiveForList);
     OPI_TestDataRetrieval.Process(FileList, "7z", "GetFilesList", "AfterModificationFromMemory", ExpectedFiles);
 
 EndProcedure
