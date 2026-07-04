@@ -1,6 +1,6 @@
 oint bitrix24 ЗавершитьУчетВремени ^
   --url "b24-ar17wx.bitrix24.by" ^
   --userid 1 ^
-  --time "2026-07-04T09:32:09" ^
+  --time "2026-07-04T17:05:29" ^
   --report "Отгул" ^
   --token "***"

@@ -2,4 +2,4 @@ oint rportal ПолучитьЭлемент \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "30b1562a-9eef-4c7a-9f44-a5f20204da64"
+  --uuid "675b59e8-fbc4-4f9e-ae44-d4411d80f62f"

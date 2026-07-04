@@ -513,12 +513,12 @@ Procedure Z7_ArchiveDirectory(Parameters)
         And Parameters.Property("SevenZ_ArchivePasswordPath")
         And NOT Parameters.Property("SevenZ_Description") Then
 
-        SourceDirectory         = Parameters["SevenZ_SourceDir"];
-        Password                = Parameters["SevenZ_Password"];
-        ArchivePasswordPath     = Parameters["SevenZ_ArchivePasswordPath"];
-        Settings                = OPI_7z.GetArchivingSettingsStructure(True);
-        Settings.password       = Password;
-        Settings.encrypt_header = True;
+        SourceDirectory            = Parameters["SevenZ_SourceDir"];
+        Password                   = Parameters["SevenZ_Password"];
+        ArchivePasswordPath        = Parameters["SevenZ_ArchivePasswordPath"];
+        Settings                   = OPI_7z.GetArchivingSettingsStructure(True);
+        Settings["password"]       = Password;
+        Settings["encrypt_header"] = True;
 
         Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePasswordPath, Settings);
         OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "WithPassword", ArchivePasswordPath);
@@ -531,16 +531,16 @@ Procedure Z7_ArchiveDirectory(Parameters)
         ArchivePathCopy      = Parameters["SevenZ_ArchiveCopyPath"];
         ArchivePathLzma      = Parameters["SevenZ_ArchiveLzmaPath"];
 
-        CopySettings        = OPI_7z.GetArchivingSettingsStructure(True);
-        CopySettings.method = "Copy";
+        CopySettings           = OPI_7z.GetArchivingSettingsStructure(True);
+        CopySettings["method"] = "Copy";
 
         Result = OPI_7z.ArchiveDirectory(CompressionDirectory, ArchivePathCopy, CopySettings);
         OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "Copy", ArchivePathCopy);
 
-        LzmaSettings        = OPI_7z.GetArchivingSettingsStructure(True);
-        LzmaSettings.method = "Lzma2";
-        LzmaSettings.level  = 9;
-        LzmaSettings.solid  = True;
+        LzmaSettings           = OPI_7z.GetArchivingSettingsStructure(True);
+        LzmaSettings["method"] = "Lzma2";
+        LzmaSettings["level"]  = 9;
+        LzmaSettings["solid"]  = True;
 
         Result = OPI_7z.ArchiveDirectory(CompressionDirectory, ArchivePathLzma, LzmaSettings);
         OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "Lzma2Solid", ArchivePathLzma);

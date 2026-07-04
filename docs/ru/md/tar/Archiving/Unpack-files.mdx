@@ -53,6 +53,24 @@ import Admonition from '@theme/Admonition';
 
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tar РазархивироватьФайлы \
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_partial_63918743073205/archive.tar" \
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tar РазархивироватьФайлы ^
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_partial_63918743073205/archive.tar" ^
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

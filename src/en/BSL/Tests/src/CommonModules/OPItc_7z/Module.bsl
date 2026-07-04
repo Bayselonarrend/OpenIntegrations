@@ -537,15 +537,15 @@ Procedure Z7_ArchiveDirectory(Parameters)
         And Parameters.Property("SevenZ_ArchivePasswordPath")
         And NOT Parameters.Property("SevenZ_Description") Then
 
-        SourceDirectory         = Parameters["SevenZ_SourceDir"];
-        Password                = Parameters["SevenZ_Password"];
-        ArchivePasswordPath     = Parameters["SevenZ_ArchivePasswordPath"];
+        SourceDirectory            = Parameters["SevenZ_SourceDir"];
+        Password                   = Parameters["SevenZ_Password"];
+        ArchivePasswordPath        = Parameters["SevenZ_ArchivePasswordPath"];
         Options = New Structure;
         Options.Insert("empty", Истина);
 
         Settings = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "GetArchivingSettingsStructure", Options);
-        Settings.password       = Password;
-        Settings.encrypt_header = True;
+        Settings["password"]       = Password;
+        Settings["encrypt_header"] = True;
 
         Options = New Structure;
         Options.Insert("src", SourceDirectory);
@@ -567,7 +567,7 @@ Procedure Z7_ArchiveDirectory(Parameters)
         Options.Insert("empty", Истина);
 
         CopySettings = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "GetArchivingSettingsStructure", Options);
-        CopySettings.method = "Copy";
+        CopySettings["method"] = "Copy";
 
         Options = New Structure;
         Options.Insert("src", CompressionDirectory);
@@ -581,9 +581,9 @@ Procedure Z7_ArchiveDirectory(Parameters)
         Options.Insert("empty", Истина);
 
         LzmaSettings = OPI_TestDataRetrieval.ExecuteTestCLI("7z", "GetArchivingSettingsStructure", Options);
-        LzmaSettings.method = "Lzma2";
-        LzmaSettings.level  = 9;
-        LzmaSettings.solid  = True;
+        LzmaSettings["method"] = "Lzma2";
+        LzmaSettings["level"]  = 9;
+        LzmaSettings["solid"]  = True;
 
         Options = New Structure;
         Options.Insert("src", CompressionDirectory);

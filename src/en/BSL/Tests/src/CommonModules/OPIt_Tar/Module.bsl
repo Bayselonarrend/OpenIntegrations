@@ -508,11 +508,11 @@ Procedure ZTar_ArchiveDirectory(Parameters)
         And Parameters.Property("Tar_SourceDir")
         And NOT Parameters.Property("Tar_SourceDirCompress") Then
 
-        SourceDirectory     = Parameters["Tar_SourceDir"];
-        GzipArchivePath     = Parameters["Tar_ArchiveGzipPath"];
-        Settings            = OPI_Tar.GetArchivingSettingsStructure(True);
-        Settings.gzip       = True;
-        Settings.gzip_level = 9;
+        SourceDirectory        = Parameters["Tar_SourceDir"];
+        GzipArchivePath        = Parameters["Tar_ArchiveGzipPath"];
+        Settings               = OPI_Tar.GetArchivingSettingsStructure(True);
+        Settings["gzip"]       = True;
+        Settings["gzip_level"] = 9;
 
         Result = OPI_Tar.ArchiveDirectory(SourceDirectory, GzipArchivePath, Settings);
         OPI_TestDataRetrieval.Process(Result, "Tar", "ArchiveDirectory", "WithGzip", GzipArchivePath);
@@ -528,9 +528,9 @@ Procedure ZTar_ArchiveDirectory(Parameters)
         Result = OPI_Tar.ArchiveDirectory(CompressionDirectory, PlainArchivePath);
         OPI_TestDataRetrieval.Process(Result, "Tar", "ArchiveDirectory", "WithoutGzip", PlainArchivePath);
 
-        GzipSettings            = OPI_Tar.GetArchivingSettingsStructure(True);
-        GzipSettings.gzip       = True;
-        GzipSettings.gzip_level = 9;
+        GzipSettings               = OPI_Tar.GetArchivingSettingsStructure(True);
+        GzipSettings["gzip"]       = True;
+        GzipSettings["gzip_level"] = 9;
 
         Result = OPI_Tar.ArchiveDirectory(CompressionDirectory, GzipArchivePath, GzipSettings);
         OPI_TestDataRetrieval.Process(Result, "Tar", "ArchiveDirectory", "WithGzip", GzipArchivePath);

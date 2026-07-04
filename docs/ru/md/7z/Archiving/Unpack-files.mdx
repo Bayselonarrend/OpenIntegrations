@@ -54,6 +54,24 @@ import Admonition from '@theme/Admonition';
 
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint 7z РазархивироватьФайлы \
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_partial_63918743077292/archive.7z" \
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint 7z РазархивироватьФайлы ^
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_partial_63918743077292/archive.7z" ^
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
