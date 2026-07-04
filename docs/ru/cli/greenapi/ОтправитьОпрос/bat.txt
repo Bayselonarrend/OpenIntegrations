@@ -6,4 +6,4 @@ oint greenapi ОтправитьОпрос ^
   --text "Какой ваш любимый цвет?" ^
   --options "['Красный','Желтый','Зеленый']" ^
   --multi true ^
-  --quoted "3EB0E2AE6FD065A553A659"
+  --quoted "3EB086668C34AED5FCDD51"

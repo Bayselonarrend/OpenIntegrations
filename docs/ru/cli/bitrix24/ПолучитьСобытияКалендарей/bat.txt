@@ -4,5 +4,5 @@ oint bitrix24 ПолучитьСобытияКалендарей ^
   --url "b24-ar17wx.bitrix24.by" ^
   --owner 1 ^
   --type "user" ^
-  --filter "{'from':'7/4/2026 8:46:35 PM','to':'7/5/2026 8:46:35 PM','section':['2854','2856']}" ^
+  --filter "{'from':'7/5/2026 9:37:09 AM','to':'7/6/2026 9:37:09 AM','section':['2858','2860']}" ^
   --token "***"

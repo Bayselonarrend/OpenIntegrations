@@ -1,0 +1,2 @@
+oint 7z ПолучитьМетаданные \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\msnv10eb.fgu"
