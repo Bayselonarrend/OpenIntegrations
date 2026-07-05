@@ -4,5 +4,5 @@ oint rportal ЗавершитьЭлемент ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --uuid "a29fe35e-3d13-4a9d-a449-10d9896d39b0" ^
+  --uuid "a2499f00-d999-41f6-86ce-3630d31d95ea" ^
   --params "{'endTime':'1/1/2026 8:00:00 PM','status':'passed'}"

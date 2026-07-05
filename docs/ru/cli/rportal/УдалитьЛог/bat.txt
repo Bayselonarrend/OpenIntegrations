@@ -2,4 +2,4 @@ oint rportal УдалитьЛог ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 376851
+  --id 379402

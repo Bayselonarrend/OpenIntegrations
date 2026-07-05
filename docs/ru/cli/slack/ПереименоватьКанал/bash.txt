@@ -1,4 +1,4 @@
 oint slack ПереименоватьКанал \
   --token "***" \
-  --channel "C0BFA7BLGG1" \
-  --title "testconv01cd18c0-a6d7-4e53-8248-7df55f4ade35"
+  --channel "C0BF6DVE6F8" \
+  --title "testconvb598f6e2-1688-4973-9328-6775c6e9291c"

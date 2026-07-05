@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint tar АрхивироватьКаталог \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918850341337/src_compress" \
-  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918850341337/archive_gzip.tar.gz" \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/src_compress" \
+  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/archive_gzip.tar.gz" \
   --settings "{'gzip':true,'gzip_level':'9'}"
