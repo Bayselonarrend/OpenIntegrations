@@ -207,11 +207,6 @@ fn is_gzip(data: &[u8]) -> bool {
     data.len() >= 2 && data[0] == 0x1f && data[1] == 0x8b
 }
 
-fn looks_gzip_path(path: &str) -> bool {
-    let lower = path.to_ascii_lowercase();
-    lower.ends_with(".tar.gz") || lower.ends_with(".tgz") || lower.ends_with(".gz")
-}
-
 fn open_archive_from_bytes(data: Vec<u8>) -> Result<Archive<Box<dyn Read>>, String> {
     if is_gzip(&data) {
         Ok(Archive::new(Box::new(GzDecoder::new(Cursor::new(data))) as Box<dyn Read>))
@@ -221,16 +216,9 @@ fn open_archive_from_bytes(data: Vec<u8>) -> Result<Archive<Box<dyn Read>>, Stri
 }
 
 fn open_archive_from_file(archive_path: &str) -> Result<Archive<Box<dyn Read>>, String> {
-    let file = File::open(archive_path)
-        .map_err(|error| format!("Failed to open archive '{}': {}", archive_path, error))?;
-
-    if looks_gzip_path(archive_path) {
-        Ok(Archive::new(
-            Box::new(GzDecoder::new(file)) as Box<dyn Read>
-        ))
-    } else {
-        Ok(Archive::new(Box::new(file) as Box<dyn Read>))
-    }
+    let data = fs::read(archive_path)
+        .map_err(|error| format!("Failed to read archive '{}': {}", archive_path, error))?;
+    open_archive_from_bytes(data)
 }
 
 fn append_source_path<W: Write>(builder: &mut Builder<W>, source_path: &str) -> Result<(), String> {
