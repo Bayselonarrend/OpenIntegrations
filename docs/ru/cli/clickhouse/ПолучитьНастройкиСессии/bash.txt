@@ -1,4 +1,4 @@
 oint clickhouse ПолучитьНастройкиСессии \
-  --id "8fac5192-36d8-4cd6-bcc1-2f24a96c9043" \
+  --id "40f0e041-a9a5-4e9f-9240-abe58cfc2175" \
   --check true \
   --timeout 120

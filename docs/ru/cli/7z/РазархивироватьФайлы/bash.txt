@@ -1,3 +1,3 @@
 oint 7z РазархивироватьФайлы \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\5crv404c.pyw" \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\bhhnwynk.g5m" \
   --paths "['readme.txt','docs/note.txt']"
