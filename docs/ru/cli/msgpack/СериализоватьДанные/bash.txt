@@ -1,4 +1,4 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint msgpack СериализоватьДанные \
-  --value "{'title':'Пример','count':'42','active':true,'payload':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\pkvjxzv5.a5e','nested':{'label':'nested','inner':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\2piddbjf.i3p'},'items':['tag','1',false,'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\jcgvva5v.nkv']}"
+  --value "{'title':'Пример','count':'42','active':true,'payload':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\wti0kmjo.ecp','nested':{'label':'nested','inner':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\syds1amh.fwt'},'items':['tag','1',false,'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\eftscc40.al5']}"

@@ -2,7 +2,7 @@
 
 oint lua ВызватьФункциюБайтКода ^
   --lua "Lua54" ^
-  --code "C:\Users\bayselonarrend\AppData\Local\Temp\vzeoyszx.4fx" ^
+  --code "C:\Users\bayselonarrend\AppData\Local\Temp\gogfuv0e.535" ^
   --func "mul" ^
   --params "['6','7']" ^
   --globals "{'bonus':'2'}"

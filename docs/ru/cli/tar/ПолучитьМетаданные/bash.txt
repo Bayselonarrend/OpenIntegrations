@@ -1,2 +1,2 @@
 oint tar ПолучитьМетаданные \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\kjumu2so.pir"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\ls4zs0vd.mc5"
