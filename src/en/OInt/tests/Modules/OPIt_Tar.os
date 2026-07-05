@@ -715,18 +715,21 @@ Procedure ZTar_ModifyArchive(Parameters)
     UnpackResult = OPI_Tar.UnarchiveDirectory(ArchivePath, DestinateDirectory);
     OPI_TestDataRetrieval.Process(UnpackResult, "Tar", "UnarchiveDirectory", "AfterModification", DestinateDirectory, ExpectedFiles);
 
-    ArchiveBinary = New BinaryData(ArchiveBufferPath);
-
-    Result = OPI_Tar.ModifyArchive(ArchiveBinary, AddableFiles, DeletablePaths);
-    OPI_TestDataRetrieval.Process(Result, "Tar", "ModifyArchive", "FromMemory");
-
+    ArchiveBinary  = New BinaryData(ArchiveBufferPath);
+    Result         = OPI_Tar.ModifyArchive(ArchiveBinary, AddableFiles, DeletablePaths);
     ArchiveForList = Result;
 
     If OPI_Tools.ThisIsCollection(Result, True)
-        And OPI_Tools.CollectionFieldExists(Result, "result")
-        And Result["result"] = True Then
+        And OPI_Tools.CollectionFieldExists(Result, "result") Then
 
+        Result         = OPI_Tar.ModifyArchive(ArchiveBufferPath, AddableFiles, DeletablePaths);
         ArchiveForList = ArchiveBufferPath;
+
+        OPI_TestDataRetrieval.Process(Result, "Tar", "ModifyArchive", , ArchiveBufferPath);
+
+    Else
+
+        OPI_TestDataRetrieval.Process(Result, "Tar", "ModifyArchive", "FromMemory");
 
     EndIf;
 

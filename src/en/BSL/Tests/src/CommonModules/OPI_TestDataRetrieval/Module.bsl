@@ -15937,18 +15937,9 @@ Function Check_7z_ModifyArchive(Val Result, Val Option, ArchivePath = "")
 
     If Option = "FromMemory" Then
 
-        If OPI_Tools.ThisIsCollection(Result, True)
-            And OPI_Tools.CollectionFieldExists(Result, "result") Then
-
-            ExpectsThat(Result["result"]).Равно(True);
-
-        Else
-
-            Data = NormalizeCLIBinaryData(Result);
-            ExpectsThat(TypeOf(Data)).Равно(Type("BinaryData"));
-            ExpectsThat(Data.Size() > 0).Равно(True);
-
-        EndIf;
+        Data = NormalizeCLIBinaryData(Result);
+        ExpectsThat(TypeOf(Data)).Равно(Type("BinaryData"));
+        ExpectsThat(Data.Size() > 0).Равно(True);
 
     Else
 
