@@ -1,2 +1,2 @@
 oint 7z ПолучитьМетаданные ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918786700531/archive_lzma.7z"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63918825333013/archive_lzma.7z"

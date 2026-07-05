@@ -4,4 +4,4 @@ oint rportal СоздатьЭлемент \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --params "{'name':'Test','startTime':'1/1/2026 10:00:00 AM','type':'test','description':'Test launch','launchUuid':'cb39bfb8-46d9-46d8-a417-9f0f7fb959d8'}"
+  --params "{'name':'Test','startTime':'1/1/2026 10:00:00 AM','type':'test','description':'Test launch','launchUuid':'d5c1db90-8e92-45e2-aee0-d6db58aa4e62'}"

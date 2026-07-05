@@ -1,2 +1,2 @@
 oint tar ПолучитьСписокФайлов \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918786804018/archive.tar"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918825412342/archive_buffer.tar"
