@@ -1,0 +1,25 @@
+[package]
+name = "opi_rar"
+version = "2.3.0"
+license = "MIT"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
+opt-level = "z"
+
+[dependencies]
+common-backend = { path = "../commons/common-backend" }
+common-core = { path = "../commons/common-core" }
+common-janx = { path = "../commons/common-janx" }
+common-logs = { path = "../commons/common-logs" }
+common-utils = { path = "../commons/common-utils" }
+common-archives = { path = "../commons/common-archives" }
+
+unrar = "0.5.8"

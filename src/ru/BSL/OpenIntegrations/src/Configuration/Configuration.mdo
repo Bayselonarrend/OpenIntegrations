@@ -61,6 +61,7 @@
   <sessionParameters>SessionParameter.OPI_НастройкиРасширенногоВызова</sessionParameters>
   <commonTemplates>CommonTemplate.OPI_7z</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Tar</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_RAR</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_GRPC</commonTemplates>
@@ -129,6 +130,7 @@
   <commonModules>CommonModule.OPI_SSH</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>
   <commonModules>CommonModule.OPI_Tar</commonModules>
+  <commonModules>CommonModule.OPI_RAR</commonModules>
   <commonModules>CommonModule.OPI_TCP</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
