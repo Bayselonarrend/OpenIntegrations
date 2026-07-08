@@ -23,3 +23,6 @@ common-utils = { path = "../commons/common-utils" }
 common-archives = { path = "../commons/common-archives" }
 
 unrar = "0.5.8"
+
+[patch.crates-io]
+unrar_sys = { path = "unrar_sys" }
