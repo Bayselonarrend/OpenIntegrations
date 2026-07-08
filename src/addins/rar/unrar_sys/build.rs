@@ -25,8 +25,8 @@ fn main() {
 
     if !vendor_unrar.join("archive.cpp").exists() {
         ensure_vendor_sources(&manifest_dir).expect("failed to prepare unrar vendor sources");
-        patch_os_hpp(&vendor_unrar.join("os.hpp")).expect("failed to patch vendor/unrar/os.hpp");
     }
+    patch_os_hpp(&vendor_unrar.join("os.hpp")).expect("failed to patch vendor/unrar/os.hpp");
 
     let files: Vec<String> = [
         "strlist",
@@ -82,6 +82,16 @@ fn main() {
     .collect();
 
     let mut build = cc::Build::new();
+    if uses_zig_toolchain() {
+        // cargo-zigbuild routes the C/C++ driver through zig wrappers that reject `.2.17` targets.
+        // UnRAR only needs a PIC-enabled host toolchain here; Rust still links via zigbuild.
+        if std::env::var("CARGO_CFG_TARGET_ARCH").as_deref() == Ok("x86") {
+            build.compiler("g++");
+            build.flag("-m32");
+        } else {
+            build.compiler("c++");
+        }
+    }
     build
         .cpp(true)
         .pic(true)
@@ -114,6 +124,19 @@ fn main() {
     }
 
     build.files(&files).compile("libunrar.a");
+}
+
+fn uses_zig_toolchain() -> bool {
+    for key in ["CXX", "CC", "RUSTC_LINKER"] {
+        if std::env::var(key)
+            .map(|value| value.contains("zig"))
+            .unwrap_or(false)
+        {
+            return true;
+        }
+    }
+
+    false
 }
 
 fn ensure_vendor_sources(manifest_dir: &Path) -> Result<(), String> {

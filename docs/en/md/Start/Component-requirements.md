@@ -14,7 +14,7 @@ All external components bundled with OPI are built for **x64** and **x86** (**x3
 
 Release builds of AddIns on Windows use a modern MSVC toolchain. The resulting `.dll` files may reference functions from Windows system libraries (`kernel32`, `bcrypt`, `ws2_32`, and others) that are only available starting with **Windows 8** and **Windows Server 2012**. On older systems — **Windows 7** and **Windows Server 2008 R2** — components from the standard OPI release may fail to load or crash when such functions are called.
 
-For a self-service build targeting Windows 7 / Server 2008 R2, the repository includes [src/addins/legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) with `setup-win7-build-env.bat` and `build-win7-package.bat`. See the directory [README.md](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/legacy-win7/README.md) for details. The build uses nightly Rust with `win7-windows-msvc` targets and can take noticeably longer than a standard release build. Use the resulting ZIP as an AddIn package, or replace the matching archive from the release for your delivery.
+For **Windows 7** and **Windows Server 2008 R2**, ready-made AddIns are published in the separate [`addins-special` branch](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins-special) — ZIP files with the `_win7` suffix (for example, `OPI_SSH_win7.zip`). Install them as an AddIn package, or replace the matching archive from the standard OPI release. If a build you need is not there, you can compile it yourself: sources and scripts live under [src/addins/special](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/special) (see the [README](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/special/README.md)); the build uses nightly Rust with `win7-windows-msvc` targets and takes noticeably longer than a standard release build.
 
 ### Linux
 
@@ -33,7 +33,7 @@ The **gcc** toolchain version affects which **`libstdc++.so.6`** is on the syste
 
 #### OpenSSL
 
-Libraries that implement **TLS** link against system **OpenSSL 3.x** — **`libssl.so.3`** and **`libcrypto.so.3`**. That version is the default starting with CENTOS 9, RHEL 9, Fedora 36, Debian 12, and Ubuntu 22.04 (2022–2023). On older distros that ship OpenSSL 1.1 or earlier, you must install or build **OpenSSL 3.x** separately.
+Libraries that implement **TLS** link against system **OpenSSL 3.x** — **`libssl.so.3`** and **`libcrypto.so.3`**. That version is the default starting with CENTOS 9, RHEL 9, Fedora 36, Debian 12, and Ubuntu 22.04 (2022–2023). On older distros that ship OpenSSL 1.1 or earlier, you must install or build **OpenSSL 3.x** separately. Alternatively, ready-made `*_static-openssl.zip` archives for TLS-enabled components (SSH, PostgreSQL, MySQL, TCP client) are available in the [`addins-special` branch](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins-special): OpenSSL 3.x is embedded in the `.so` and does not need to be installed on the system. You can also build that variant yourself — see [src/addins/special](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/special).
 
 ## Usage hints in the docs
 
@@ -102,7 +102,7 @@ Miscellaneous questions about how external components work or are built — not 
 
 **1. Can I rebuild the external components?**
 
-Yes. The Rust sources live under [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Put the built binaries in a ZIP together with the [manifest file](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML). The [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat) script in `src/addins` places archives in the four working-tree locations and describes the release build flow. To publish the result to the `addins` branch, use `src/addins/publish-addins.bat`; to fetch already published binaries after cloning `main`, use `sync-addins.bat` / `sync-addins.sh` (see [Repository storage](#repository-storage)). You can also replace the archive from a release that matches your delivery. For Windows 7 / Server 2008 R2, use the separate [legacy-win7](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins/legacy-win7) directory — see the [Windows](#windows) section above.
+Yes. The Rust sources live under [src/addins](https://github.com/Bayselonarrend/OpenIntegrations/tree/main/src/addins). Put the built binaries in a ZIP together with the [manifest file](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/MANIFEST.XML). The [build.bat](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/src/addins/build.bat) script in `src/addins` places archives in the four working-tree locations and describes the release build flow. To publish the result to the `addins` branch, use `src/addins/publish-addins.bat`; to fetch already published binaries after cloning `main`, use `sync-addins.bat` / `sync-addins.sh` (see [Repository storage](#repository-storage)). You can also replace the archive from a release that matches your delivery. Special builds for Windows 7 and Linux with static OpenSSL are covered in the [Windows](#windows) and [OpenSSL](#openssl) sections above.
 
 **2. Can OpenSSL-dependent components be rebuilt against OpenSSL 1.1 / 1.1.1k?**
 
@@ -110,7 +110,7 @@ I was not able to get this working: even with a successful link to `libssl.so.1.
 
 **3. Why is OpenSSL linked dynamically instead of statically?**
 
-Static linking (embedding OpenSSL inside each `.so`) causes many problems: clashes when several such libraries share process-wide state (`ERR_STATE`, `/dev/random`, etc.), much larger binaries because every component ships its own copy, and no way to upgrade OpenSSL without rebuilding everything. For those reasons we use **dynamic** linking.
+Static linking (embedding OpenSSL inside each `.so`) causes many problems: clashes when several such libraries share process-wide state (`ERR_STATE`, `/dev/random`, etc.), much larger binaries because every component ships its own copy, and no way to upgrade OpenSSL without rebuilding everything. For those reasons **standard** release builds use **dynamic** linking. For older distros without OpenSSL 3.x, ready-made `*_static-openssl.zip` packages are available in the [`addins-special` branch](https://github.com/Bayselonarrend/OpenIntegrations/tree/addins-special) — see the [OpenSSL](#openssl) section above.
 
 **4. Can I see the full dependency list for a given component?**
 

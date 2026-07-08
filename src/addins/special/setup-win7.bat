@@ -1,18 +1,11 @@
 @echo off
 setlocal
 
-:: One-time setup for building addins compatible with Windows 7 / Server 2008 R2.
-:: Run this script once on the build machine (Windows 10/11 recommended).
+:: One-time setup for Windows 7 / Server 2008 R2 special builds.
 
 where rustup >nul 2>&1
 if errorlevel 1 (
     echo [ERROR] rustup not found in PATH. Install Rust from https://rustup.rs/
-    exit /b 1
-)
-
-where powershell >nul 2>&1
-if errorlevel 1 (
-    echo [ERROR] PowerShell not found in PATH.
     exit /b 1
 )
 
@@ -34,8 +27,7 @@ if errorlevel 1 (
 )
 
 echo.
-echo Setup completed.
-echo Next step: run build-win7-package.bat from this directory.
+echo Setup completed. Next: build-win7.bat or build_all.bat
 exit /b 0
 
 :error

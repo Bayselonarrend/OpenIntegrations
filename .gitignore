@@ -47,8 +47,7 @@ src/addins/sqlite/OPI_SQLite.zip
 *.db3
 private.key
 /cfe2cf
-**/addins/legacy-win7/artifacts
-**/addins/static-openssl/artifacts
+src/addins/special/output/
 
 # Native add-in binaries (tracked on branch addins, not main/stable)
 src/ru/OInt/addins/*.zip

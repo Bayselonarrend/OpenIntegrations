@@ -23,6 +23,22 @@ CI и Jenkins перед сборкой/тестами вызывают `sync-ad
 
 Клон `main`/`stable` **не содержит** zip/addin в истории. Для `main` — `sync-addins`; для `stable` бинарники с `addins` могут не подойти — сборка из `src/addins` на коммите ветки или архивы из релиза.
 
+## Специальные сборки (ветка `addins-special`)
+
+Альтернативные варианты (Windows 7, Linux со статическим OpenSSL) публикуются отдельно:
+
+| Назначение | Путь |
+|------------|------|
+| Win7 / static-openssl zip | `src/addins/special/output/*.zip` |
+
+| Скрипт | Назначение |
+|--------|------------|
+| `src/addins/special/build_all.bat` | Собрать все специальные zip (режим `both`) |
+| `src/addins/special/sync-special-addins.bat` / `.sh` | Подтянуть zip с `origin/addins-special` |
+| `src/addins/special/publish-special-addins.bat` | Опубликовать `output/*.zip` в `addins-special` |
+
+Суффиксы имён: `*_win7.zip`, `*_static-openssl.zip`. Подробнее — `src/addins/special/README.md`.
+
 ## Что уже делает Git
 
 В **одном коммите** одинаковые байты хранятся **одним blob** (проверка: `git ls-tree HEAD` для всех четырёх путей одного компонента даёт один и тот же hash). Четыре копии раздувают рабочий каталог и checkout (~240 MB), но не умножают объект в pack для текущей ревизии.

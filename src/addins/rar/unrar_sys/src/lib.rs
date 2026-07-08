@@ -204,46 +204,60 @@ pub struct OpenArchiveDataEx {
 
 // ----------------- BINDINGS ----------------- //
 
-#[link(name = "unrar", kind = "static")]
-#[cfg_attr(all(windows, target_env = "gnu"), link(name = "stdc++", kind = "static", modifiers = "-bundle"))]
-#[cfg_attr(target_os = "macos", link(name = "c++"))]
-#[cfg_attr(any(target_os = "freebsd", target_os = "openbsd"), link(name = "c++"))]
-#[cfg_attr(any(target_os = "linux", target_os = "netbsd"), link(name = "stdc++"))]
-extern "C" {
-    pub fn RAROpenArchive(data: *const OpenArchiveData) -> *const Handle;
+macro_rules! rar_ffi {
+    ($abi:literal) => {
+        #[link(name = "unrar", kind = "static")]
+        #[cfg_attr(all(windows, target_env = "gnu"), link(name = "stdc++", kind = "static", modifiers = "-bundle"))]
+        #[cfg_attr(target_os = "macos", link(name = "c++"))]
+        #[cfg_attr(any(target_os = "freebsd", target_os = "openbsd"), link(name = "c++"))]
+        #[cfg_attr(any(target_os = "linux", target_os = "netbsd"), link(name = "stdc++"))]
+        extern $abi {
+            pub fn RAROpenArchive(data: *const OpenArchiveData) -> *const Handle;
 
-    pub fn RAROpenArchiveEx(data: *const OpenArchiveDataEx) -> *const Handle;
+            pub fn RAROpenArchiveEx(data: *const OpenArchiveDataEx) -> *const Handle;
 
-    pub fn RARCloseArchive(handle: *const Handle) -> c_int;
+            pub fn RARCloseArchive(handle: *const Handle) -> c_int;
 
-    pub fn RARReadHeader(handle: *const Handle, header_data: *const HeaderData) -> c_int;
+            pub fn RARReadHeader(handle: *const Handle, header_data: *const HeaderData) -> c_int;
 
-    pub fn RARReadHeaderEx(handle: *const Handle, header_data: *const HeaderDataEx) -> c_int;
+            pub fn RARReadHeaderEx(handle: *const Handle, header_data: *const HeaderDataEx) -> c_int;
 
-    pub fn RARProcessFile(
-        handle: *const Handle,
-        operation: c_int,
-        dest_path: *const c_char,
-        dest_name: *const c_char,
-    ) -> c_int;
+            pub fn RARProcessFile(
+                handle: *const Handle,
+                operation: c_int,
+                dest_path: *const c_char,
+                dest_name: *const c_char,
+            ) -> c_int;
 
-    pub fn RARProcessFileW(
-        handle: *const Handle,
-        operation: c_int,
-        dest_path: *const wchar_t,
-        dest_name: *const wchar_t,
-    ) -> c_int;
+            pub fn RARProcessFileW(
+                handle: *const Handle,
+                operation: c_int,
+                dest_path: *const wchar_t,
+                dest_name: *const wchar_t,
+            ) -> c_int;
 
-    pub fn RARSetCallback(handle: *const Handle, callback: Option<Callback>, user_data: LPARAM);
+            pub fn RARSetCallback(handle: *const Handle, callback: Option<Callback>, user_data: LPARAM);
 
-    pub fn RARSetChangeVolProc(handle: *const Handle, change_vol_proc: Option<ChangeVolProc>);
+            pub fn RARSetChangeVolProc(handle: *const Handle, change_vol_proc: Option<ChangeVolProc>);
 
-    pub fn RARSetProcessDataProc(handle: *const Handle, process_data_proc: Option<ProcessDataProc>);
+            pub fn RARSetProcessDataProc(
+                handle: *const Handle,
+                process_data_proc: Option<ProcessDataProc>,
+            );
 
-    pub fn RARSetPassword(handle: *const Handle, password: *const c_char);
+            pub fn RARSetPassword(handle: *const Handle, password: *const c_char);
 
-    pub fn RARGetDllVersion() -> c_int;
+            pub fn RARGetDllVersion() -> c_int;
+        }
+    };
 }
+
+// UnRAR DLL API uses PASCAL (__stdcall) on 32-bit Windows.
+#[cfg(all(windows, target_pointer_width = "32"))]
+rar_ffi!("system");
+
+#[cfg(not(all(windows, target_pointer_width = "32")))]
+rar_ffi!("C");
 
 // ----------------- MINIMAL ABSTRACTIONS ----------------- //
 
