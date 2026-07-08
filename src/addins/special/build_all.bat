@@ -2,18 +2,18 @@
 setlocal EnableDelayedExpansion
 
 set "SCRIPT_DIR=%~dp0"
-for %%I in ("%SCRIPT_DIR%..") do set "ADDINS_DIR=%%~fI"
-set "OPI_SPECIAL_OUTPUT=%SCRIPT_DIR%output"
+for %%I in ("!SCRIPT_DIR!..") do set "ADDINS_DIR=%%~fI"
+set "OPI_SPECIAL_OUTPUT=!SCRIPT_DIR!output"
 set "ARCH=both"
 
-if not exist "%OPI_SPECIAL_OUTPUT%" mkdir "%OPI_SPECIAL_OUTPUT%"
+if not exist "!OPI_SPECIAL_OUTPUT!" mkdir "!OPI_SPECIAL_OUTPUT!"
 
 echo ========================================
 echo Special add-ins: win7 (all components)
-echo Output: %OPI_SPECIAL_OUTPUT%
+echo Output: !OPI_SPECIAL_OUTPUT!
 echo ========================================
 
-for /d %%D in ("%ADDINS_DIR%\*") do (
+for /d %%D in ("!ADDINS_DIR!\*") do (
     set "DIR_NAME=%%~nxD"
     if /I not "!DIR_NAME!"=="commons" if /I not "!DIR_NAME!"=="special" if /I not "!DIR_NAME!"=="legacy-win7" if /I not "!DIR_NAME!"=="static-openssl" (
         if exist "%%D\release.bat" (
@@ -22,13 +22,13 @@ for /d %%D in ("%ADDINS_DIR%\*") do (
 
             echo.
             echo --- Win7: !LIB_NAME! ^(!DIR_NAME!^) ---
-            call "%SCRIPT_DIR%build-win7.bat" "!DIR_NAME!" "!CARGO_NAME!" "!LIB_NAME!" "%ARCH%"
+            call :build_win7_one "!DIR_NAME!" "!CARGO_NAME!" "!LIB_NAME!"
             if errorlevel 1 goto :fail
 
             if /I "!DIR_NAME!"=="lua" (
                 echo.
                 echo --- Win7: OPI_LuaJIT ^(lua^) ---
-                call "%SCRIPT_DIR%build-win7.bat" lua lua OPI_LuaJIT "%ARCH%" --no-default-features --features luajit
+                call :build_win7_one lua lua OPI_LuaJIT --no-default-features --features luajit
                 if errorlevel 1 goto :fail
             )
         )
@@ -52,32 +52,42 @@ if errorlevel 1 goto :fail
 echo.
 echo ========================================
 echo All special builds completed.
-echo Archives: %OPI_SPECIAL_OUTPUT%\*_win7.zip, *_static-openssl.zip
+echo Archives: !OPI_SPECIAL_OUTPUT!\*_win7.zip, *_static-openssl.zip
 echo ========================================
 exit /b 0
+
+:build_win7_one
+if "%~4"=="" (
+    call "!SCRIPT_DIR!build-win7.bat" "%~1" "%~2" "%~3" "!ARCH!"
+) else (
+    call "!SCRIPT_DIR!build-win7.bat" "%~1" "%~2" "%~3" "!ARCH!" %4 %5 %6 %7 %8
+)
+exit /b !errorlevel!
 
 :build_static_openssl
 echo.
 echo --- Static OpenSSL: %~3 ^(%~1^) ---
-call "%SCRIPT_DIR%build-static-openssl.bat" %1 %2 %3 "%ARCH%"
-exit /b %errorlevel%
+call "!SCRIPT_DIR!build-static-openssl.bat" "%~1" "%~2" "%~3" "!ARCH!"
+exit /b !errorlevel!
 
 :read_release_names
 set "RELEASE_BAT=%~1\release.bat"
 set "CARGO_NAME="
 set "LIB_NAME="
-for /f "usebackq tokens=1,* delims==" %%A in (`findstr /b /r "set CARGO_NAME=" "%RELEASE_BAT%"`) do set "CARGO_NAME=%%B"
-for /f "usebackq tokens=1,* delims==" %%A in (`findstr /b /r "set LIB_NAME=" "%RELEASE_BAT%"`) do (
-    set "LIB_NAME=%%B"
+for /f "usebackq tokens=2 delims==" %%A in (`findstr /i /c:"CARGO_NAME=" "!RELEASE_BAT!"`) do set "CARGO_NAME=%%~A"
+for /f "usebackq tokens=2 delims==" %%A in (`findstr /i /c:"LIB_NAME=" "!RELEASE_BAT!"`) do (
+    set "LIB_NAME=%%~A"
     goto :read_release_names_done
 )
 :read_release_names_done
+if defined CARGO_NAME set "CARGO_NAME=!CARGO_NAME:"=!"
+if defined LIB_NAME set "LIB_NAME=!LIB_NAME:"=!"
 if not defined CARGO_NAME (
-    echo [ERROR] CARGO_NAME not found in %RELEASE_BAT%
+    echo [ERROR] CARGO_NAME not found in !RELEASE_BAT!
     exit /b 1
 )
 if not defined LIB_NAME (
-    echo [ERROR] LIB_NAME not found in %RELEASE_BAT%
+    echo [ERROR] LIB_NAME not found in !RELEASE_BAT!
     exit /b 1
 )
 exit /b 0
