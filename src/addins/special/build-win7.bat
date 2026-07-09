@@ -18,14 +18,16 @@ for %%I in ("!SCRIPT_DIR!..") do set "ADDINS_DIR=%%~fI"
 set "COMPONENT_PATH=!ADDINS_DIR!\!COMPONENT_DIR!"
 set "CARGO_TOML=!COMPONENT_PATH!\Cargo.toml"
 
-call "!SCRIPT_DIR!lib.bat" :validate_arch "!ARCH!"
+call "!SCRIPT_DIR!lib.bat" validate_arch "!ARCH!"
 if errorlevel 1 exit /b !errorlevel!
-call "!SCRIPT_DIR!lib.bat" :require_cargo
+call "!SCRIPT_DIR!lib.bat" require_cargo
 if errorlevel 1 exit /b 1
-call "!SCRIPT_DIR!lib.bat" :require_powershell
+call "!SCRIPT_DIR!lib.bat" require_powershell
 if errorlevel 1 exit /b 1
-call "!SCRIPT_DIR!lib.bat" :ensure_output_dir
+call "!SCRIPT_DIR!lib.bat" ensure_output_dir
 if errorlevel 1 exit /b 1
+if not defined OPI_SPECIAL_OUTPUT set "OPI_SPECIAL_OUTPUT=!SCRIPT_DIR!output"
+if not exist "!OPI_SPECIAL_OUTPUT!" mkdir "!OPI_SPECIAL_OUTPUT!" >nul 2>&1
 
 if not exist "!CARGO_TOML!" (
     echo [ERROR] Cargo.toml not found: !CARGO_TOML!
@@ -48,9 +50,15 @@ if /I "!ARCH!"=="both" call :build_x86
 if errorlevel 1 goto :error
 
 set "PLATFORM=win7"
-call "!SCRIPT_DIR!lib.bat" :write_manifest
+set "BUNDLE_DIR=!BUNDLE_DIR!"
+set "ZIP_PATH=!ZIP_PATH!"
+set "LIB_NAME=!LIB_NAME!"
+set "HAS_X64=!HAS_X64!"
+set "HAS_X86=!HAS_X86!"
+set "OPI_SPECIAL_OUTPUT=!OPI_SPECIAL_OUTPUT!"
+call "!SCRIPT_DIR!lib.bat" write_manifest
 if errorlevel 1 goto :error
-call "!SCRIPT_DIR!lib.bat" :pack_zip
+call "!SCRIPT_DIR!lib.bat" pack_zip
 if errorlevel 1 goto :error
 
 rmdir /S /Q "!BUNDLE_DIR!" >nul 2>&1
