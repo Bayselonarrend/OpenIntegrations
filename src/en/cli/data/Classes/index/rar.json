@@ -1,0 +1,158 @@
+{
+ "module": "OPI_RAR",
+ "library": "rar",
+ "self_depend": false,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "formats/rar/Modules/OPI_RAR.os",
+ "regions": [
+  {
+   "name": "Unarchiving",
+   "methods": [
+    "GetArchivingSettingsStructure",
+    "UnarchiveDirectory",
+    "UnpackFiles"
+   ]
+  },
+  {
+   "name": "Getting metadata",
+   "methods": [
+    "GetFilesList",
+    "GetMetadata"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "UnarchiveDirectory",
+   "id": "UNARCHIVEDIRECTORY",
+   "description": "Extracts RAR archive to the specified directory",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--dest",
+     "types": "String",
+     "description": "Directory path for unpacking. To binary data if not filled",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Unarchiving"
+  },
+  {
+   "name": "UnpackFiles",
+   "id": "UNPACKFILES",
+   "description": "Extracts selected files from the RAR archive by the list of paths",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--paths",
+     "types": "Array Of String",
+     "description": "Full paths of files inside the archive",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "name": "--dest",
+     "types": "String",
+     "description": "Directory path for unpacking. To binary data if not filled",
+     "default": "Empty value",
+     "short": "-d"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-w"
+    }
+   ],
+   "region": "Unarchiving"
+  },
+  {
+   "name": "GetArchivingSettingsStructure",
+   "id": "GETARCHIVINGSETTINGSSTRUCTURE",
+   "description": "Gets a structure with additional unpacking settings",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    },
+    {
+     "name": "--map",
+     "types": "Boolean",
+     "description": "True > returns the filter fields as a map",
+     "default": "false",
+     "short": "-m"
+    }
+   ],
+   "region": "Unarchiving"
+  },
+  {
+   "name": "GetFilesList",
+   "id": "GETFILESLIST",
+   "description": "Gets a hierarchical list of files and directories in the archive",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Getting metadata"
+  },
+  {
+   "name": "GetMetadata",
+   "id": "GETMETADATA",
+   "description": "Gets metadata and a flat list of archive files",
+   "params": [
+    {
+     "name": "--src",
+     "types": "String, BinaryData",
+     "description": "Path to the archive on disk or binary data",
+     "default": null,
+     "short": "-s"
+    },
+    {
+     "name": "--password",
+     "types": "String",
+     "description": "archive password, if required",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Getting metadata"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f3a8c2d1-7e4b-4f9a-b621-8d5e2c1a9f04">
+  <name>OPI_RAR</name>
+  <synonym>
+    <key>en</key>
+    <value>RAR (OPI)</value>
+    <key>ru</key>
+    <value>RAR (OPI)</value>
+  </synonym>
+  <comment>Module for work with RAR-archives from of set OPI</comment>
+  <clientManagedApplication>true</clientManagedApplication>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

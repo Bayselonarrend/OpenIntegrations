@@ -614,6 +614,7 @@ li > a.menu__link {
 .Ollama a::before,
 .OpenAI a::before,
 .PostgreSQL a::before,
+.rar a::before,
 .RCON a::before,
 .ReportPortal a::before,
 .RSS a::before,
@@ -732,6 +733,10 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/PostgreSQL.png);
 }
 
+.rar > div > a::before{
+  content: url(../../static/img/APIs/small/rar.png);
+}
+
 .RCON > div > a::before{
   content: url(../../static/img/APIs/small/RCON.png);
 }
@@ -765,7 +770,7 @@ li > a.menu__link {
 }
 
 .Tar > div > a::before{
-  content: url(../../static/img/APIs/small/tar.png);
+  content: url(../../static/img/APIs/small/Tar.png);
 }
 
 .TCP > div > a::before{

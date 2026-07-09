@@ -328,6 +328,8 @@ Function CreateArchiver(Val View)
         AddIn  = OPI_AddIns.GetAddIn(View);
     ElsIf View = "tar" Then
         AddIn  = OPI_AddIns.GetAddIn("Tar");
+    ElsIf View = "rar" Then
+        AddIn  = OPI_AddIns.GetAddIn("RAR");
     Else
         Raise StrTemplate("Unsupported archiver %1", View);
     EndIf;

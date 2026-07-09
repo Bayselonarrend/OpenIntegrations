@@ -56,6 +56,7 @@ pipeline {
 		booleanParam(name: 'Lua', defaultValue: true, description: 'Run Lua tests')
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
+		booleanParam(name: 'RAR', defaultValue: true, description: 'Run RAR tests')
 	}
 	stages {
 
@@ -837,6 +838,20 @@ pipeline {
 'ZTar_GetMetadata',
 'ZTar_PartialUnpack',
 'ZTar_ChangeArchive',
+					])
+				}
+			}
+		}
+		stage('Testing-RAR') {
+            when {
+                expression { return params['RAR'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPIt_RAR.os', [
+'ZRAR_Unarchiving',
+'ZRAR_GetMetadata',
+'ZRAR_PartialUnpacking',
 					])
 				}
 			}

@@ -1,0 +1,57 @@
+---
+sidebar_position: 1
+
+description: Get list of files and other functions to work with rar in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, rar]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get list of files
+ Gets a hierarchical list of files and directories in the archive
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetFilesList(Val Archive, Val Password = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Archive | --src | String, BinaryData | &#x2714; | Path to the archive on disk or binary data |
+  | Password | --password | String | &#x2716; | archive password, if required |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Information about files in the archive
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+
+ 
+
+
+
+

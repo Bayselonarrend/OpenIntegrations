@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/RAR.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_RAR.ZRAR_Unarchiving",
+"OPIt_RAR.ZRAR_GetMetadata",
+"OPIt_RAR.ZRAR_PartialUnpacking"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/RAR.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

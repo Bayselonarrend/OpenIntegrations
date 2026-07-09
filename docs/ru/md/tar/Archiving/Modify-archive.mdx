@@ -1,8 +1,8 @@
 ---
 sidebar_position: 4
 
-description: Изменить архив и другие функции для работы с tar в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, tar]
+description: Изменить архив и другие функции для работы с Tar в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Tar]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -24,7 +24,7 @@ import Admonition from '@theme/Admonition';
   | Архив | --src | Строка, ДвоичныеДанные | &#x2714; | Путь к архиву на диске или двоичные данные |
   | ДобавляемыеФайлы | --additions | Соответствие Из КлючИЗначение | &#x2716; | Ключ: путь в архиве; значение: путь к файлу или двоичные данные |
   | УдаляемыеПути | --deletions | Массив Из Строка | &#x2716; | Пути файлов в архиве для удаления |
-  | Настройки | --settings | Соответствие Из КлючИЗначение | &#x2716; | Настройки изменения. См. [`ПолучитьСтруктуруНастроекАрхивации`](/docs/tar/Archiving/Get-archiving-settings-structure) |
+  | Настройки | --settings | Соответствие Из КлючИЗначение | &#x2716; | Настройки изменения. См. [`ПолучитьСтруктуруНастроекАрхивации`](/docs/Tar/Archiving/Get-archiving-settings-structure) |
 
 
 <div className="return-value-note">
@@ -62,8 +62,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint tar ИзменитьАрхив \
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918850434483/archive_buffer.tar" \
-              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_modify_63918850434483/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\1dbq4ldk.xzb'}" \
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918854116310/archive_buffer.tar" \
+              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_modify_63918854116310/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\jvn04mgu.5iy'}" \
               --deletions "['config/settings.json','missing/path.txt']"
         ```
     </TabItem>
@@ -73,8 +73,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint tar ИзменитьАрхив ^
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918850434483/archive_buffer.tar" ^
-              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_modify_63918850434483/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\1dbq4ldk.xzb'}" ^
+              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918854116310/archive_buffer.tar" ^
+              --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_modify_63918854116310/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\jvn04mgu.5iy'}" ^
               --deletions "['config/settings.json','missing/path.txt']"
         ```
     </TabItem>

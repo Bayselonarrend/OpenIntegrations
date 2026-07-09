@@ -188,6 +188,7 @@ Function GetTestTable(Val TestModule = "") Export
     Lua       = "Lua";
     SevenZ    = "7z";
     Tar       = "Tar";
+    RAR       = "RAR";
 
     ArrayOfTests = New Array;
 
@@ -417,6 +418,9 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "ZTar_GetMetadata"                    , "Metadata extraction"             , Tar);
     NewTest(ArrayOfTests, TestModule, "ZTar_PartialUnpack"                  , "Partial unpacking"               , Tar);
     NewTest(ArrayOfTests, TestModule, "ZTar_ChangeArchive"                  , "Archive modification"            , Tar);
+    NewTest(ArrayOfTests, TestModule, "ZRAR_Unarchiving"                    , "Unarchiving"                     , RAR);
+    NewTest(ArrayOfTests, TestModule, "ZRAR_GetMetadata"                    , "Metadata extraction"             , RAR);
+    NewTest(ArrayOfTests, TestModule, "ZRAR_PartialUnpacking"               , "Partial unpacking"               , RAR);
 
     Return ArrayOfTests;
 
@@ -661,6 +665,7 @@ Procedure WriteArchiveParameterFromCollection(Parameters, Name)
     Prefixes = New Array;
     Prefixes.Add("Archive");
     Prefixes.Add("Tar");
+    Prefixes.Add("RAR");
     Prefixes.Add("SevenZ");
 
     For Each Prefix In Prefixes Do
@@ -16086,6 +16091,55 @@ EndFunction
 Function Check_Tar_ModifyArchive(Val Result, Val Option, ArchivePath = "")
 
     Return Check_7z_ModifyArchive(Result, Option, ArchivePath);
+
+EndFunction
+
+Function Check_RAR_GetArchivingSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(StrFind(String(Result["password"]), "password") > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_RAR_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    Return Check_7z_UnarchiveDirectory(Result, Option, DestinationDirectory, ExpectedFiles);
+
+EndFunction
+
+Function Check_RAR_GetFilesList(Val Result, Val Option, ExpectedFiles = Undefined)
+
+    Return Check_7z_GetFilesList(Result, Option, ExpectedFiles);
+
+EndFunction
+
+Function Check_RAR_GetMetadata(Val Result, Val Option, ExpectedFiles = Undefined, ExpectedMetadata = Undefined)
+
+    Return Check_7z_GetMetadata(Result, Option, ExpectedFiles, ExpectedMetadata);
+
+EndFunction
+
+Function Check_RAR_UnpackFiles(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
+
+    Return Check_7z_UnpackFiles(Result, Option, DestinationDirectory, ExpectedFiles);
 
 EndFunction
 

@@ -24,6 +24,7 @@
 |![Ollama](../Ollama.png)| `Ollama`| ollama, ai llm |
 |![OpenAI](../OpenAI.png)| `OpenAI`| openai, localai, ai llm |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
+|![rar](../rar.png)| `rar`| rar, unrar |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
 |![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![RSS/Atom](../RSS.png)| `RSS/Atom`| rss, atom, feed |
@@ -32,7 +33,7 @@
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
 |![SSH](../SSH.png)| `SSH`| ssh, shell |
-|![tar](../tar.png)| `tar`| tar, tgz, tar.gz |
+|![Tar](../Tar.png)| `Tar`| tar, tgz, tar.gz |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Viber](../Viber.png)| `Viber`| viber |

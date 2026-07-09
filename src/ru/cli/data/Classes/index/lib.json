@@ -44,6 +44,7 @@
   "7z": "OPI_7z",
   "janx": "OPI_Janx",
   "msgpack": "OPI_MessagePack",
+  "rar": "OPI_RAR",
   "tar": "OPI_Tar"
  }
 }
