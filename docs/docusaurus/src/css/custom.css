@@ -622,7 +622,7 @@ li > a.menu__link {
 .Slack a::before,
 .SQLite a::before,
 .SSH a::before,
-.tar a::before,
+.Tar a::before,
 .TCP a::before,
 .Telegram a::before,
 .Viber a::before,
@@ -764,7 +764,7 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/SSH.png);
 }
 
-.tar > div > a::before{
+.Tar > div > a::before{
   content: url(../../static/img/APIs/small/tar.png);
 }
 

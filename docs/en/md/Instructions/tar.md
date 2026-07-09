@@ -1,12 +1,12 @@
 ---
-id: tar
-sidebar_class_name: tar
+id: Tar
+sidebar_class_name: Tar
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, tar]
 ---
 
-<img src={require('../../static/img/APIs/tar.png').default} width='64px' />
+<img src={require('../../static/img/APIs/Tar.png').default} width='64px' />
 
-# tar
+# Tar
 
 import LibraryIntro from '@site/src/components/LibraryIntro';
 

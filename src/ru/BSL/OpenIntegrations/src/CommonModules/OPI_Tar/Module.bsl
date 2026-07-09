@@ -1,11 +1,11 @@
 // OneScript: ./OInt/formats/tar/Modules/OPI_Tar.os
-// Lib: tar
+// Lib: Tar
 // CLI: tar
 // Keywords: tar, tgz, tar.gz
 
 // DocsCategory: Formats
-// DocsNameRU: tar
-// DocsNameEN: tar
+// DocsNameRU: Tar
+// DocsNameEN: Tar
 
 // MIT License
 
