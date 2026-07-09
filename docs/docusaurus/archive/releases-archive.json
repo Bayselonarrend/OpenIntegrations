@@ -60,14 +60,14 @@
      "description_en": "Metadata retrieval functions (2 functions)"
     },
     {
-     "lib": "tar",
-     "icon": "media/TAR.png",
+     "lib": "Tar",
+     "icon": "media/Tar.png",
      "description_ru": "Функции архивации/разархивации tar и tar.gz (5 функций)",
      "description_en": "tar and tar.gz archive/extract functions (5 functions)"
     },
     {
-     "lib": "tar",
-     "icon": "media/TAR.png",
+     "lib": "Tar",
+     "icon": "media/Tar.png",
      "description_ru": "Функции получения метаданных tar (2 функции)",
      "description_en": "tar metadata retrieval functions (2 functions)"
     },
