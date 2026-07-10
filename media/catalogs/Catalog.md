@@ -24,7 +24,7 @@
 |![Ollama](../Ollama.png)| `Ollama`| ollama, ai llm |
 |![OpenAI](../OpenAI.png)| `OpenAI`| openai, localai, ai llm |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
-|![rar](../rar.png)| `rar`| rar, unrar |
+|![RAR](../RAR.png)| `RAR`| rar, unrar |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
 |![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![RSS/Atom](../RSS.png)| `RSS/Atom`| rss, atom, feed |
