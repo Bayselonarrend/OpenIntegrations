@@ -72,13 +72,13 @@
      "description_en": "tar metadata retrieval functions (2 functions)"
     },
     {
-     "lib": "rar",
+     "lib": "RAR",
      "icon": "media/RAR.png",
      "description_ru": "Функции разархивации RAR (3 функции)",
      "description_en": "RAR extract functions (3 functions)"
     },
     {
-     "lib": "rar",
+     "lib": "RAR",
      "icon": "media/RAR.png",
      "description_ru": "Функции получения метаданных RAR (2 функции)",
      "description_en": "RAR metadata retrieval functions (2 functions)"

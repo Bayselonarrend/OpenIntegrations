@@ -1,12 +1,12 @@
 ---
-id: rar
-sidebar_class_name: rar
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, rar]
+id: RAR
+sidebar_class_name: RAR
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, RAR]
 ---
 
-<img src={require('../../static/img/APIs/rar.png').default} width='64px' />
+<img src={require('../../static/img/APIs/RAR.png').default} width='64px' />
 
-# rar
+# RAR
 
 import LibraryIntro from '@site/src/components/LibraryIntro';
 

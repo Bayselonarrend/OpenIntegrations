@@ -1,11 +1,11 @@
 // OneScript: ./OInt/formats/rar/Modules/OPI_RAR.os
-// Lib: rar
+// Lib: RAR
 // CLI: rar
 // Keywords: rar, unrar
 
 // DocsCategory: Formats
-// DocsNameRU: rar
-// DocsNameEN: rar
+// DocsNameRU: RAR
+// DocsNameEN: RAR
 
 // MIT License
 
