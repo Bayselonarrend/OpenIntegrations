@@ -1,1 +1,0 @@
-    Result = OPI_RAR.GetArchivingSettingsStructure();

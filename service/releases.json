@@ -32,8 +32,8 @@
             {
                 "lib": "RAR",
                 "icon": "media/RAR.png",
-                "description_ru": "Функции разархивации RAR (3 функции)",
-                "description_en": "RAR extract functions (3 functions)"
+                "description_ru": "Функции разархивации RAR (2 функции)",
+                "description_en": "RAR extract functions (2 functions)"
             },
             {
                 "lib": "RAR",

@@ -12,102 +12,111 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 <LibraryIntro module="OPI_RAR" cli="rar" use="oint/formats/rar" lang="en"/>
 
-This section is dedicated to the library for working with RAR archives in 1C:Enterprise, OneScript and CLI. This page describes all the actions necessary to get started
-
-## Getting Started
-
-The library provides capabilities for working with RAR format archives: unpacking existing archives, working with password protection, obtaining file lists and archive metadata.
+The `OPI_RAR` library is for **reading and unpacking** existing RAR archives in 1C:Enterprise, OneScript and CLI. This page gives a short overview and typical workflows; see child sections for full method signatures and examples.
 
 :::important
-This library is intended only for **unpacking** RAR archives. Creating RAR archives is not supported
+**Creating or modifying** RAR archives is not supported.
 :::
 
-### Main Features
+## Capabilities
 
-**Unpacking Archives**
+| Task | Method |
+|------|--------|
+| Unpack the whole archive to a directory | [`РазархивироватьКаталог`](/docs/RAR/Unarchiving/Unarchive-directory) |
+| Extract selected files only | [`РазархивироватьФайлы`](/docs/RAR/Unarchiving/Unpack-files) |
+| Get a tree of files and folders | [`ПолучитьСписокФайлов`](/docs/RAR/Getting-metadata/Get-files-list) |
+| Get metadata and a flat file list | [`ПолучитьМетаданные`](/docs/RAR/Getting-metadata/Get-metadata) |
 
-The `РазархивироватьКаталог` function allows you to unpack a RAR archive to a specified directory. Working with password-protected archives is supported.
+Where applicable, the archive can be passed as a **file path** or **binary data**. For password-protected archives, use the `Пароль` parameter (CLI: `--password`).
+
+## Typical workflow
+
+A common flow:
+
+1. Inspect the archive — `ПолучитьСписокФайлов` or `ПолучитьМетаданные`.
+2. Unpack everything — `РазархивироватьКаталог`, or only chosen paths — `РазархивироватьФайлы`.
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.rar";
-КаталогНазначения = "C:\Распаковка";
-Пароль = "МойПароль123";
+ПутьАрхива = "C:\Inbox\package.rar";
 
-Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения, Пароль);
+// 1. Paths inside the archive
+Список = OPI_RAR.ПолучитьСписокФайлов(ПутьАрхива);
+
+// 2. Unpack to a folder
+Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, "C:\Unpack");
 ```
 
-**Selective File Unpacking**
+## Unpacking
 
-The `РазархивироватьФайлы` function allows you to unpack only specific files from the archive based on a list of their paths inside the archive.
+### Full archive
+
+`РазархивироватьКаталог` extracts all entries into the target directory. Pass the password as the third argument when needed.
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.rar";
-КаталогНазначения = "C:\Распаковка";
+ПутьАрхива = "C:\Archives\archive.rar";
+КаталогНазначения = "C:\Unpack";
 
-МассивПутей = Новый Массив;
-МассивПутей.Добавить("Документы/отчет.docx");
-МассивПутей.Добавить("Изображения/фото.jpg");
+Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения);
 
-Результат = OPI_RAR.РазархивироватьФайлы(ПутьАрхива, МассивПутей, КаталогНазначения);
+// Password-protected archive
+Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения, "MyPassword123");
 ```
 
-### Getting Archive Information
+### Selected files
 
-**File List**
-
-The `ПолучитьСписокФайлов` function returns a hierarchical list of files and directories contained in the archive.
+`РазархивироватьФайлы` takes an array of **full paths inside the archive** — the same strings you get from listing methods.
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.rar";
-Пароль = "МойПароль123";
+ПутьАрхива = "C:\Archives\archive.rar";
+КаталогНазначения = "C:\Unpack";
 
-СписокФайлов = OPI_RAR.ПолучитьСписокФайлов(ПутьАрхива, Пароль);
-```
+Пути = Новый Массив;
+Пути.Добавить("readme.txt");
+Пути.Добавить("docs\note.txt");
 
-**Archive Metadata**
-
-The `ПолучитьМетаданные` function returns archive metadata and a flat list of all files with their characteristics.
-
-```bsl
-ПутьАрхива = "C:\Архивы\архив.rar";
-
-Метаданные = OPI_RAR.ПолучитьМетаданные(ПутьАрхива);
-```
-
-### Archive Settings
-
-The `ПолучитьСтруктуруНастроекАрхивации` function returns a structure with additional settings for working with the archive:
-
-- **password** — password for working with a protected archive
-
-**Example of using settings:**
-
-```bsl
-Настройки = OPI_RAR.ПолучитьСтруктуруНастроекАрхивации(Истина);
-Настройки["password"] = "СекретныйПароль";
-
-Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения, Настройки["password"]);
-```
-
-### Working with Binary Data
-
-The library supports working not only with files on disk, but also with archive binary data in memory:
-
-```bsl
-// Чтение архива в память
-ДвоичныеДанные = Новый ДвоичныеДанные("C:\Архивы\архив.rar");
-
-// Распаковка из памяти
-Результат = OPI_RAR.РазархивироватьКаталог(ДвоичныеДанные, "C:\Распаковка");
-
-// Получение списка файлов из памяти
-СписокФайлов = OPI_RAR.ПолучитьСписокФайлов(ДвоичныеДанные);
+Результат = OPI_RAR.РазархивироватьФайлы(ПутьАрхива, Пути, КаталогНазначения);
 ```
 
 :::tip
-When working with large archives, it is recommended to use file paths on disk instead of binary data to optimize memory usage
+Internal paths depend on how the archive was built. Before partial unpack, call `ПолучитьСписокФайлов` or `ПолучитьМетаданные` and reuse paths from the response.
+:::
+
+## Inspecting contents
+
+**`ПолучитьСписокФайлов`** — hierarchical tree of folders and files. Best when you need structure or paths for `РазархивироватьФайлы`.
+
+**`ПолучитьМетаданные`** — archive summary and a **flat** file list with attributes (size, dates, etc.). Best for analysis without walking a tree.
+
+```bsl
+ПутьАрхива = "C:\Archives\archive.rar";
+Пароль = "MyPassword123";
+
+Дерево = OPI_RAR.ПолучитьСписокФайлов(ПутьАрхива, Пароль);
+Метаданные = OPI_RAR.ПолучитьМетаданные(ПутьАрхива, Пароль);
+```
+
+## File path vs binary data
+
+The first argument (`Архив`) is either a path to a `.rar` file or `ДвоичныеДанные` in memory.
+
+```bsl
+ДвоичныеДанные = Новый ДвоичныеДанные("C:\Archives\archive.rar");
+
+Список = OPI_RAR.ПолучитьСписокФайлов(ДвоичныеДанные);
+Результат = OPI_RAR.РазархивироватьКаталог(ДвоичныеДанные, "C:\Unpack");
+```
+
+If you **omit** the destination directory when unpacking, the result is a map of paths to binary data (or a content description) — useful for small archives and in-memory workflows.
+
+```bsl
+// Archive contents as a map, without writing to disk
+Описание = OPI_RAR.РазархивироватьКаталог(ДвоичныеДанные);
+```
+
+:::tip
+For large archives, prefer a file path on disk: lower memory use and no need to load the whole archive into `ДвоичныеДанные` upfront.
 :::
 
 :::note
-When unpacking without specifying a destination directory, the result will be returned as a map with file names and their binary data
+Response fields, CLI options and sample outputs are documented on each method page under [Unarchiving](/docs/RAR/Unarchiving/Unarchive-directory) and [Getting metadata](/docs/RAR/Getting-metadata/Get-files-list).
 :::
