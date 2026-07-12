@@ -5591,9 +5591,6 @@
   "UnpackFiles": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
-  "GetArchivingSettingsStructure": {
-   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
-  },
   "GetFilesList": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },

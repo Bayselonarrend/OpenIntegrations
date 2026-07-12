@@ -16100,31 +16100,6 @@ Function Check_Tar_ModifyArchive(Val Result, Val Option, ArchivePath = "")
 
 EndFunction
 
-Function Check_RAR_GetArchivingSettingsStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
-    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
-
-    If Option = "Clear" Then
-
-        For Each Element In Result Do
-
-            If OPI_Tools.IsPrimitiveType(Element.Value) Then
-                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
-            EndIf;
-
-        EndDo;
-
-    ElsIf Not ValueIsFilled(Option) Then
-
-        ExpectsThat(StrFind(String(Result["password"]), "password") > 0).Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
 Function Check_RAR_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
 
     Return Check_7z_UnarchiveDirectory(Result, Option, DestinationDirectory, ExpectedFiles);

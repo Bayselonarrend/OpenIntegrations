@@ -108,7 +108,6 @@ Procedure ZRAR_Unarchiving() Export
     Parameters.Insert("RAR_DestBufferDir", DestinationDirectoryBuffer);
     Parameters.Insert("RAR_ExpectedFiles", ExpectedFiles);
 
-    ZRAR_GetArchivingSettingsStructure();
     ZRAR_UnarchiveDirectory(Parameters);
 
     OPI_Tools.RemoveFileWithTry(BaseDirectory, "Failed to delete test rar directory");
@@ -197,31 +196,6 @@ EndProcedure
 #Region AtomicTests
 
 #Region Unarchiving
-
-Procedure ZRAR_GetArchivingSettingsStructure()
-
-    Options = New Structure;
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rar", "GetArchivingSettingsStructure", Options);
-
-    // END
-
-    OPI_TestDataRetrieval.ProcessCLI(Result, "RAR", "GetArchivingSettingsStructure");
-
-    Options = New Structure;
-    Options.Insert("empty", Истина);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rar", "GetArchivingSettingsStructure", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "RAR", "GetArchivingSettingsStructure", "Clear");
-
-    Options = New Structure;
-    Options.Insert("empty", Ложь);
-    Options.Insert("map", Истина);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rar", "GetArchivingSettingsStructure", Options);
-    OPI_TestDataRetrieval.ProcessCLI(Result, "RAR", "GetArchivingSettingsStructure", "AsMap");
-
-EndProcedure
 
 Procedure ZRAR_UnarchiveDirectory(Parameters)
 

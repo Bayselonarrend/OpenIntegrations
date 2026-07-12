@@ -78,37 +78,6 @@ Function UnpackFiles(Val Archive, Val Paths, Val DestinationDirectory = "", Val 
 
 EndFunction
 
-// Get archiving settings structure
-// Gets a structure with additional unpacking settings
-//
-// Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns the filter fields as a map                                - map
-//
-// Returns:
-// Structure Of KeyAndValue - Fields structure
-Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Export
-
-    OPI_TypeConversion.GetBoolean(Clear);
-    OPI_TypeConversion.GetBoolean(AsMap);
-
-    If AsMap Then
-        SettingsStructure = New Map;
-    Else
-        SettingsStructure = New Structure;
-    EndIf;
-
-    SettingsStructure.Insert("password", "<archive password, if necessary>");
-
-    If Clear Then
-        SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return SettingsStructure;
-
-EndFunction
-
 #EndRegion
 
 #Region GettingMetadata
@@ -156,10 +125,6 @@ EndFunction
 
 Function РазархивироватьФайлы(Val Архив, Val Пути, Val КаталогНазначения = "", Val Пароль = "") Export
     Return UnpackFiles(Архив, Пути, КаталогНазначения, Пароль);
-EndFunction
-
-Function ПолучитьСтруктуруНастроекАрхивации(Val Пустая = False, Val КакСоответствие = False) Export
-    Return GetArchivingSettingsStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСписокФайлов(Val Архив, Val Пароль = "") Export
