@@ -1,1 +1,140 @@
-﻿[]
+﻿[
+ {
+  "messageID": "3EB08B2073ED3E9767C29B",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "3EB004ECDF8D8FDC2FB0F3",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0D76C4B0B109F7F06F0",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB03F70B390FB54911231",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0D76C4B0B109F7F06F0",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0192B0B1277E3BE8E47",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0F997F73CCA51F9BF28",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB0192B0B1277E3BE8E47",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB02FD132E4AD1DD78D78",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB08342A8A3571F76310D",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB02FD132E4AD1DD78D78",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0ED3720E2920FCA01D4"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0DFD80F119FC49E74E0"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB00DDE5397E63CA0C4F5",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0DFD80F119FC49E74E0",
+   "message": "Новый текст сообщения",
+   "linkPreview": true,
+   "typingTime": null
+  }
+ }
+]

@@ -1,8 +1,8 @@
 ﻿{
  "logs": [
-  "[2026-06-29 22:55:38.415] Connecting to FTP...",
-  "[2026-06-29 22:55:38.438] Connected to FTP",
-  "[2026-06-29 22:55:39.047] Closing FTP connection"
+  "[2026-07-13 08:32:30.282] Connecting to FTP...",
+  "[2026-07-13 08:32:30.316] Connected to FTP",
+  "[2026-07-13 08:32:30.926] Closing FTP connection"
  ],
  "result": true,
  "returned": 3,
