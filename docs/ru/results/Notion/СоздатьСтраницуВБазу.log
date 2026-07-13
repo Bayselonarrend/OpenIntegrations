@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "39c82aa7-fc4e-81ed-ac6a-c308ca4b8e96",
- "created_time": "2026-07-13T12:03:00Z",
- "last_edited_time": "2026-07-13T12:03:00Z",
+ "id": "39c82aa7-fc4e-81e1-a0d0-e2df977b780e",
+ "created_time": "2026-07-13T16:14:00Z",
+ "last_edited_time": "2026-07-13T16:14:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,28 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "39c82aa7-fc4e-814d-9bd1-e326258e0652"
+  "database_id": "39c82aa7-fc4e-81b7-b2fe-d7c05654e592"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "Активен": {
+   "id": "BY%60Z",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Дата создания": {
+   "id": "FVe%7D",
+   "type": "date",
+   "date": {
+    "start": "2026-07-13T10:14:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Картинка": {
-   "id": "%3DJ%3E%40",
+   "id": "Fpm%3D",
    "type": "files",
    "files": [
     {
@@ -34,13 +48,8 @@
     }
    ]
   },
-  "Пользователь": {
-   "id": "FQ~M",
-   "type": "people",
-   "people": []
-  },
   "Почта": {
-   "id": "KC%40p",
+   "id": "Qisc",
    "type": "rich_text",
    "rich_text": [
     {
@@ -62,22 +71,32 @@
     }
    ]
   },
-  "Номер": {
-   "id": "S%3ECA",
-   "type": "number",
-   "number": 1
+  "Пользователь": {
+   "id": "X%5EvE",
+   "type": "people",
+   "people": []
   },
   "Статус": {
-   "id": "TPuH",
+   "id": "dxg%3B",
    "type": "select",
    "select": {
-    "id": "9b82365b-c2ea-4e4a-aa81-f9fa9aa57d53",
+    "id": "b7239d1a-a96a-454b-bdc3-27f5d03df283",
     "name": "Новый",
     "color": "green"
    }
   },
+  "Телефон": {
+   "id": "ojL%3E",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Номер": {
+   "id": "wbAD",
+   "type": "number",
+   "number": 1
+  },
   "Описание": {
-   "id": "Tn%5Bv",
+   "id": "xv%3Cu",
    "type": "rich_text",
    "rich_text": [
     {
@@ -98,25 +117,6 @@
      "href": null
     }
    ]
-  },
-  "Телефон": {
-   "id": "VDHZ",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Активен": {
-   "id": "XH%3D%3C",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Дата создания": {
-   "id": "%60Qim",
-   "type": "date",
-   "date": {
-    "start": "2026-07-13T12:03:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/39c82aa7fc4e81edac6ac308ca4b8e96",
+ "url": "https://app.notion.com/p/39c82aa7fc4e81e1a0d0e2df977b780e",
  "public_url": null,
  "archived": false,
- "request_id": "a4059eb1-550b-4ad5-8cb2-d06172060c33"
+ "request_id": "aebac16b-d05c-4db0-84bd-0d124274651c"
 }

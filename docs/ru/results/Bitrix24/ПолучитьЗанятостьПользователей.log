@@ -2,12 +2,12 @@
  "result": {
   "1": [
    {
-    "ID": "5512",
+    "ID": "5520",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "14.07.2026 12:12:00",
-    "DATE_TO": "14.07.2026 13:12:00",
-    "DATE_FROM_TS_UTC": "1784009520",
-    "DATE_TO_TS_UTC": "1786615920",
+    "DATE_FROM": "14.07.2026 19:23:00",
+    "DATE_TO": "14.07.2026 20:23:00",
+    "DATE_FROM_TS_UTC": "1784035380",
+    "DATE_TO_TS_UTC": "1786641780",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -18,12 +18,12 @@
     "EVENT_TYPE": null
    },
    {
-    "ID": "5516",
+    "ID": "5524",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "14.07.2026 12:12:00",
-    "DATE_TO": "14.07.2026 13:12:00",
-    "DATE_FROM_TS_UTC": "1784009520",
-    "DATE_TO_TS_UTC": "1786615920",
+    "DATE_FROM": "14.07.2026 19:23:00",
+    "DATE_TO": "14.07.2026 20:23:00",
+    "DATE_FROM_TS_UTC": "1784035380",
+    "DATE_TO_TS_UTC": "1786641780",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -36,13 +36,13 @@
   ]
  },
  "time": {
-  "start": 1783944713,
-  "finish": 1783944713.54023,
-  "duration": 0.540226936340332,
+  "start": 1783959761,
+  "finish": 1783959761.98797,
+  "duration": 0.987973928451538,
   "processing": 0,
-  "date_start": "2026-07-13T12:11:53+00:00",
-  "date_finish": "2026-07-13T12:11:53+00:00",
-  "operating_reset_at": 1783945313,
+  "date_start": "2026-07-13T19:22:41+03:00",
+  "date_finish": "2026-07-13T19:22:41+03:00",
+  "operating_reset_at": 1783960361,
   "operating": 0
  }
 }

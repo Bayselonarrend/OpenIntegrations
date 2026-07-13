@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 63200
+  "ID": 63254
  },
  "time": {
-  "start": 1783944623,
-  "finish": 1783944623.59872,
-  "duration": 0.598721027374268,
+  "start": 1783959674,
+  "finish": 1783959674.07259,
+  "duration": 0.07259202003479,
   "processing": 0,
-  "date_start": "2026-07-13T12:10:23+00:00",
-  "date_finish": "2026-07-13T12:10:23+00:00",
-  "operating_reset_at": 1783945223,
+  "date_start": "2026-07-13T19:21:14+03:00",
+  "date_finish": "2026-07-13T19:21:14+03:00",
+  "operating_reset_at": 1783960274,
   "operating": 0
  }
 }

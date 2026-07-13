@@ -2,7 +2,7 @@
  "result": true,
  "data": [
   {
-   "_id": "6a54d4a6302a9efb3a9bbadb",
+   "_id": "6a550f89302a9efb3a9bbce6",
    "arrayField": [
     "A",
     "<<MinKey>>"
@@ -25,16 +25,16 @@
    "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
    "stringField": "Текст",
    "symbolField": "Y",
-   "tsField": "Timestamp(1783944358, 0)"
+   "tsField": "Timestamp(1783970233, 0)"
   },
   {
-   "_id": "6a54d4a6302a9efb3a9bbada",
+   "_id": "6a550f89302a9efb3a9bbce5",
    "arrayField": [
     "Значение1",
     "Значение2"
    ],
    "boolField": true,
-   "dateField": "2026-07-13T12:05:58Z",
+   "dateField": "2026-07-13T19:17:13Z",
    "docField": {
     "number": 10,
     "text": "Текст"

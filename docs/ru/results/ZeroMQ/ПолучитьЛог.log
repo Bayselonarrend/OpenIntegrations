@@ -1,9 +1,9 @@
 ﻿{
  "logs": [
-  "[2026-07-13 12:02:44.890] Connecting (REQ/REP) to tcp://127.0.0.1:5555...",
-  "[2026-07-13 12:02:44.909] Connected (REQ/REP) to tcp://127.0.0.1:5555",
-  "[2026-07-13 12:02:44.913] Sending 22 bytes (timeout_ms=3000)...",
-  "[2026-07-13 12:02:44.913] Sent 22 bytes successfully"
+  "[2026-07-13 19:13:30.868] Connecting (REQ/REP) to tcp://127.0.0.1:5555...",
+  "[2026-07-13 19:13:30.872] Connected (REQ/REP) to tcp://127.0.0.1:5555",
+  "[2026-07-13 19:13:30.875] Sending 22 bytes (timeout_ms=3000)...",
+  "[2026-07-13 19:13:30.876] Sent 22 bytes successfully"
  ],
  "result": true,
  "returned": 4,

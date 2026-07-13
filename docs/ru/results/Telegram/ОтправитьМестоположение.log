@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 23836,
+  "message_id": 23854,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1783944457,
+  "date": 1783959569,
   "location": {
    "latitude": 48.873739,
    "longitude": 48.873733

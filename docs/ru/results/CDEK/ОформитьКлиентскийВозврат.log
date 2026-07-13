@@ -1,12 +1,12 @@
 ﻿{
  "entity": {
-  "uuid": "c7152d93-10be-49f4-93d3-727a80c513b2"
+  "uuid": "668af336-aab5-4e33-a0c1-c207c4b1875d"
  },
  "requests": [
   {
-   "request_uuid": "f7783cef-00d5-44df-bdda-dfa5868eff5c",
+   "request_uuid": "4ca4e6bb-be19-4e21-978f-4836b2673fdb",
    "type": "CREATE_CLIENT_RETURN",
-   "date_time": "2026-07-13T12:04:57+00:00",
+   "date_time": "2026-07-13T19:15:51+03:00",
    "state": "ACCEPTED"
   }
  ],
