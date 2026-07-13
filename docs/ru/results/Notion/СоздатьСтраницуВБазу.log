@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "38e82aa7-fc4e-815d-8755-ff6529c65636",
- "created_time": "2026-06-29T19:48:00Z",
- "last_edited_time": "2026-06-29T19:48:00Z",
+ "id": "39c82aa7-fc4e-81e7-b6c0-f50d625082d2",
+ "created_time": "2026-07-13T06:44:00Z",
+ "last_edited_time": "2026-07-13T06:44:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,19 +15,37 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "38e82aa7-fc4e-810e-905e-ff09ca63fe75"
+  "database_id": "39c82aa7-fc4e-81d5-a5c2-cbbcf19b022a"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Пользователь": {
-   "id": "%3Al%3BH",
-   "type": "people",
-   "people": []
+  "Номер": {
+   "id": "%3Cige",
+   "type": "number",
+   "number": 1
+  },
+  "Картинка": {
+   "id": "%3Cv~%3A",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Телефон": {
+   "id": "Ddnv",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Почта": {
-   "id": "%3BkLG",
+   "id": "IkpW",
    "type": "rich_text",
    "rich_text": [
     {
@@ -49,18 +67,22 @@
     }
    ]
   },
-  "Номер": {
-   "id": "%40ovz",
-   "type": "number",
-   "number": 1
-  },
   "Активен": {
-   "id": "HTvY",
+   "id": "e_Sw",
    "type": "checkbox",
    "checkbox": true
   },
+  "Дата создания": {
+   "id": "f%5EL%3D",
+   "type": "date",
+   "date": {
+    "start": "2026-07-13T06:44:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Описание": {
-   "id": "KjYy",
+   "id": "o%3FFN",
    "type": "rich_text",
    "rich_text": [
     {
@@ -82,41 +104,19 @@
     }
    ]
   },
-  "Картинка": {
-   "id": "U%7B%60W",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "Дата создания": {
-   "id": "gU%3BJ",
-   "type": "date",
-   "date": {
-    "start": "2026-06-29T13:48:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Телефон": {
-   "id": "gw%5B%3C",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "Статус": {
-   "id": "i%7B%60L",
+   "id": "%7CNuv",
    "type": "select",
    "select": {
-    "id": "da0cb21d-35da-4d1d-b88d-28b6876d016d",
+    "id": "0e7def8f-6978-4925-b59f-50d49e095229",
     "name": "Новый",
     "color": "green"
    }
+  },
+  "Пользователь": {
+   "id": "%7C~Ea",
+   "type": "people",
+   "people": []
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/38e82aa7fc4e815d8755ff6529c65636",
+ "url": "https://app.notion.com/p/39c82aa7fc4e81e7b6c0f50d625082d2",
  "public_url": null,
  "archived": false,
- "request_id": "5d496a78-3ec9-4dc9-bd03-227be81f0d27"
+ "request_id": "c955e332-b4ba-4bcf-aad8-a127752e0625"
 }

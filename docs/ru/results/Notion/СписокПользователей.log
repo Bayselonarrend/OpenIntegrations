@@ -8,7 +8,8 @@
    "avatar_url": null,
    "type": "person",
    "person": {
-    "email": "iscript13@gmail.com"
+    "email": "iscript13@gmail.com",
+    "email_verified": true
    }
   },
   {
@@ -34,5 +35,5 @@
  "has_more": false,
  "type": "user",
  "user": {},
- "request_id": "00b03b1a-2c7a-4e92-9232-221ce0ce8392"
+ "request_id": "f457147d-bf02-4d12-88c4-061b4434f536"
 }

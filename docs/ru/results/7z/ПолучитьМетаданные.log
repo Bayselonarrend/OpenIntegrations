@@ -1,27 +1,27 @@
 ﻿{
- "archive_size": 227,
+ "archive_size": 221,
  "block_count": 2,
  "directory_count": 0,
  "entries": [
   {
-   "access_time": 1782762615,
+   "access_time": 1783925123,
    "compressed_size": 15,
    "crc": 531809357,
-   "creation_time": 1782762615,
+   "creation_time": 1783925123,
    "directory": false,
    "has_stream": true,
-   "modified_time": 1782762615,
-   "name": "docs/note.txt",
+   "modified_time": 1783925123,
+   "name": "docs\\note.txt",
    "size": 11
   },
   {
-   "access_time": 1782762615,
+   "access_time": 1783925123,
    "compressed_size": 20,
    "crc": 992350456,
-   "creation_time": 1782762615,
+   "creation_time": 1783925123,
    "directory": false,
    "has_stream": true,
-   "modified_time": 1782762615,
+   "modified_time": 1783925123,
    "name": "readme.txt",
    "size": 16
   }

@@ -27,5 +27,5 @@
  "catalogWebhook": "no",
  "linkPreview": "yes",
  "autoTyping": 0,
- "version": ""
+ "enableLidMode": "no"
 }

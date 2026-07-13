@@ -1,21 +1,9 @@
 ﻿{
- "groupId": "120363428432558486@g.us",
+ "groupId": "120363429529233072@g.us",
  "owner": "***",
  "subject": "New group",
  "description": "",
- "creation": 1782762472,
- "subjectTime": 1782762472,
- "subjectOwner": "375447830891@c.us",
- "groupInviteLink": "***",
- "ephemeralExpiration": 0,
- "allowParticipantsEditGroupSettings": true,
- "allowParticipantsSendMessages": true,
- "allowParticipantsAddMembers": false,
- "allowParticipantsSendInviteLink": "***",
- "allowParticipantsSendMessageHistory": true,
- "isCommunity": false,
- "isCommunityAnnounce": false,
- "size": 1,
+ "creation": 1783925047,
  "participants": [
   {
    "id": "***",
@@ -24,5 +12,17 @@
    "isAdmin": true,
    "isSuperAdmin": true
   }
- ]
+ ],
+ "subjectTime": 1783925047,
+ "subjectOwner": "375447830891@c.us",
+ "groupInviteLink": "***",
+ "allowParticipantsSendMessages": true,
+ "size": 1,
+ "ephemeralExpiration": 0,
+ "allowParticipantsEditGroupSettings": true,
+ "allowParticipantsAddMembers": false,
+ "isCommunity": false,
+ "isCommunityAnnounce": false,
+ "allowParticipantsSendInviteLink": "***",
+ "allowParticipantsSendMessageHistory": true
 }
