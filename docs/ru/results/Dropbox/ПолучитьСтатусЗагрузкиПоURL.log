@@ -2,13 +2,13 @@
  ".tag": "complete",
  "client_modified": "***",
  "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c",
- "id": "id:kJU6-a-pT48AAAAAAAB_dg",
+ "id": "id:kJU6-a-pT48AAAAAAAB_kQ",
  "is_downloadable": true,
  "name": "url_doc.docx",
  "path_display": "/New/url_doc.docx",
  "path_lower": "/new/url_doc.docx",
  "property_groups": [],
- "rev": "6567a3820ae6fbd841553",
- "server_modified": "2026-07-13T08:53:07Z",
+ "rev": "6567ce5c35048bd841553",
+ "server_modified": "2026-07-13T12:04:50Z",
  "size": 24069
 }

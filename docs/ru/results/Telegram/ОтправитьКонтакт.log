@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 23819,
+  "message_id": 23837,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1783932978,
+  "date": 1783944468,
   "contact": {
    "phone_number": "***",
    "first_name": "Петр",

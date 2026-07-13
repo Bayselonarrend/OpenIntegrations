@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "39c82aa7-fc4e-81ab-8cd4-d4c16fb7b600",
- "created_time": "2026-07-13T08:51:00Z",
- "last_edited_time": "2026-07-13T08:51:00Z",
+ "id": "39c82aa7-fc4e-81ed-ac6a-c308ca4b8e96",
+ "created_time": "2026-07-13T12:03:00Z",
+ "last_edited_time": "2026-07-13T12:03:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,19 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "39c82aa7-fc4e-8161-8f23-f44b032c03f3"
+  "database_id": "39c82aa7-fc4e-814d-9bd1-e326258e0652"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Пользователь": {
-   "id": "%3FXPB",
-   "type": "people",
-   "people": []
-  },
   "Картинка": {
-   "id": "CY%3Ei",
+   "id": "%3DJ%3E%40",
    "type": "files",
    "files": [
     {
@@ -39,22 +34,13 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "CgmF",
-   "type": "date",
-   "date": {
-    "start": "2026-07-13T08:51:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Номер": {
-   "id": "%5DVrz",
-   "type": "number",
-   "number": 1
+  "Пользователь": {
+   "id": "FQ~M",
+   "type": "people",
+   "people": []
   },
   "Почта": {
-   "id": "ctzG",
+   "id": "KC%40p",
    "type": "rich_text",
    "rich_text": [
     {
@@ -76,22 +62,22 @@
     }
    ]
   },
+  "Номер": {
+   "id": "S%3ECA",
+   "type": "number",
+   "number": 1
+  },
   "Статус": {
-   "id": "e%3Cv%60",
+   "id": "TPuH",
    "type": "select",
    "select": {
-    "id": "f1fdf268-243a-4f8f-910c-38843e055f8c",
+    "id": "9b82365b-c2ea-4e4a-aa81-f9fa9aa57d53",
     "name": "Новый",
     "color": "green"
    }
   },
-  "Активен": {
-   "id": "fLBR",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Описание": {
-   "id": "h%5BW%5D",
+   "id": "Tn%5Bv",
    "type": "rich_text",
    "rich_text": [
     {
@@ -114,9 +100,23 @@
    ]
   },
   "Телефон": {
-   "id": "vQWC",
+   "id": "VDHZ",
    "type": "phone_number",
    "phone_number": "***"
+  },
+  "Активен": {
+   "id": "XH%3D%3C",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Дата создания": {
+   "id": "%60Qim",
+   "type": "date",
+   "date": {
+    "start": "2026-07-13T12:03:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/39c82aa7fc4e81ab8cd4d4c16fb7b600",
+ "url": "https://app.notion.com/p/39c82aa7fc4e81edac6ac308ca4b8e96",
  "public_url": null,
  "archived": false,
- "request_id": "8afa4dcb-b6f5-41f9-a71b-f9b249765826"
+ "request_id": "a4059eb1-550b-4ad5-8cb2-d06172060c33"
 }
