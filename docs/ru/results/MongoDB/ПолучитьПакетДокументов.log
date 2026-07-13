@@ -4,13 +4,13 @@
    "id": 0,
    "nextBatch": [
     {
-     "_id": "6a54a17c302a9efb3a9bb759",
+     "_id": "6a54a7a8302a9efb3a9bb8e9",
      "arrayField": [
       "Значение1",
       "Значение2"
      ],
      "boolField": true,
-     "dateField": "2026-07-13T08:27:40Z",
+     "dateField": "2026-07-13T08:54:00Z",
      "docField": {
       "number": 10,
       "text": "Текст"

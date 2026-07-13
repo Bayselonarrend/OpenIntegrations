@@ -702,13 +702,13 @@
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "sDuz61sUI7hatZ7SwDkXpQ==",
+      "salt": "/i1Uh0U5sFsDK9Yijk0wFg==",
       "serverKey": "***",
       "storedKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "qHga4/mszTqFWlgwQFzz2lYotp1/T6PzSBflZg==",
+      "salt": "G5DChiuVnzxYXewCF7/cBmmQnSej3syy+kwDXQ==",
       "serverKey": "***",
       "storedKey": "***"
      }

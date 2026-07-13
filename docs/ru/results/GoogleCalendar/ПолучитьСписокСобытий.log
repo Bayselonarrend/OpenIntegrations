@@ -1,12 +1,12 @@
 ﻿[
  {
   "kind": "calendar#event",
-  "etag": "\"3567862519268158\"",
-  "id": "dhcrshtc0c28o8sek0sbs7heik",
+  "etag": "\"3567865599695070\"",
+  "id": "fcsjsf62ih9n9mi5rbkbsed7sg",
   "status": "confirmed",
-  "htmlLink": "https://www.google.com/calendar/event?eid=ZGhjcnNodGMwYzI4bzhzZWswc2JzN2hlaWsgMTBhYzdiNWQ2ODY4YjFiYWE4MDU2MmI5YjYyZjU3MzQ0N2ExNjk0M2ZjMWRkMTczZmEyNjg5MDhmNGEzZDhkYkBn",
-  "created": "2026-07-13T08:27:21Z",
-  "updated": "2026-07-13T08:27:39.634Z",
+  "htmlLink": "https://www.google.com/calendar/event?eid=ZmNzanNmNjJpaDluOW1pNXJia2JzZWQ3c2cgNDczMGU3Y2YzZjg3MTQ0ZTA1ZGQxODQzZDQxZDEzMDZhMGVlN2I2Y2FkZGYwYjMxYTVjZWEwZTk0NjFhMWU5MUBn",
+  "created": "2026-07-13T08:53:04Z",
+  "updated": "2026-07-13T08:53:19.847Z",
   "summary": "Новое событие",
   "description": "Новое описание события",
   "location": "В офисе",
@@ -14,31 +14,31 @@
    "email": "bayselonarrend@gmail.com"
   },
   "organizer": {
-   "email": "10ac7b5d6868b1baa80562b9b62f573447a16943fc1dd173fa268908f4a3d8db@group.calendar.google.com",
+   "email": "4730e7cf3f87144e05dd1843d41d1306a0ee7b6caddf0b31a5cea0e9461a1e91@group.calendar.google.com",
    "displayName": "Тестовый календарь",
    "self": true
   },
   "start": {
-   "dateTime": "2026-07-13T08:27:21+00:00",
+   "dateTime": "2026-07-13T08:53:05+00:00",
    "timeZone": "Europe/Moscow"
   },
   "end": {
-   "dateTime": "2026-07-13T09:27:21+00:00",
+   "dateTime": "2026-07-13T09:53:05+00:00",
    "timeZone": "Europe/Moscow"
   },
-  "iCalUID": "dhcrshtc0c28o8sek0sbs7heik@google.com",
+  "iCalUID": "fcsjsf62ih9n9mi5rbkbsed7sg@google.com",
   "sequence": 0,
   "reminders": {
    "useDefault": true
   },
   "attachments": [
    {
-    "fileUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "fileUrl": "https://releases.openintegrations.dev/test_data/picture.jpg",
     "title": "Картинка1",
     "iconLink": ""
    },
    {
-    "fileUrl": "https://hut.openintegrations.dev/test_data/picture2.jpg",
+    "fileUrl": "https://releases.openintegrations.dev/test_data/picture2.jpg",
     "title": "Картинка2",
     "iconLink": ""
    }

@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 23797,
+  "message_id": 23815,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1783931379,
+  "date": 1783932938,
   "animation": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
@@ -23,42 +23,42 @@
    "width": "***",
    "height": 220,
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAlz1alSh8-GsFmw3c_5gw7gd-VXPMKAAAsGZAAJvKKlK1pFD8jIihOcBAAdtAAM8BA",
-    "file_unique_id": "AQADwZkAAm8oqUpy",
+    "file_id": "AAMCAgADGQMAAl0HalSoCrRDCFelsAb53l58RHg1fsUAAgmaAAJvKKlK_0y8J2gtH_UBAAdtAAM8BA",
+    "file_unique_id": "AQADCZoAAm8oqUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAlz1alSh8-GsFmw3c_5gw7gd-VXPMKAAAsGZAAJvKKlK1pFD8jIihOcBAAdtAAM8BA",
-    "file_unique_id": "AQADwZkAAm8oqUpy",
+    "file_id": "AAMCAgADGQMAAl0HalSoCrRDCFelsAb53l58RHg1fsUAAgmaAAJvKKlK_0y8J2gtH_UBAAdtAAM8BA",
+    "file_unique_id": "AQADCZoAAm8oqUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAJc9WpUofPhrBZsN3P-YMO4HflVzzCgAALBmQACbyipStaRQ_IyIoTnPAQ",
-   "file_unique_id": "AgADwZkAAm8oqUo",
+   "file_id": "CgACAgIAAxkDAAJdB2pUqAq0QwhXpbAG-d5efER4NX7FAAIJmgACbyipSv9MvCdoLR_1PAQ",
+   "file_unique_id": "AgADCZoAAm8oqUo",
    "file_size": 84979
   },
   "document": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAlz1alSh8-GsFmw3c_5gw7gd-VXPMKAAAsGZAAJvKKlK1pFD8jIihOcBAAdtAAM8BA",
-    "file_unique_id": "AQADwZkAAm8oqUpy",
+    "file_id": "AAMCAgADGQMAAl0HalSoCrRDCFelsAb53l58RHg1fsUAAgmaAAJvKKlK_0y8J2gtH_UBAAdtAAM8BA",
+    "file_unique_id": "AQADCZoAAm8oqUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAlz1alSh8-GsFmw3c_5gw7gd-VXPMKAAAsGZAAJvKKlK1pFD8jIihOcBAAdtAAM8BA",
-    "file_unique_id": "AQADwZkAAm8oqUpy",
+    "file_id": "AAMCAgADGQMAAl0HalSoCrRDCFelsAb53l58RHg1fsUAAgmaAAJvKKlK_0y8J2gtH_UBAAdtAAM8BA",
+    "file_unique_id": "AQADCZoAAm8oqUpy",
     "file_size": 11342,
     "width": "***",
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAJc9WpUofPhrBZsN3P-YMO4HflVzzCgAALBmQACbyipStaRQ_IyIoTnPAQ",
-   "file_unique_id": "AgADwZkAAm8oqUo",
+   "file_id": "CgACAgIAAxkDAAJdB2pUqAq0QwhXpbAG-d5efER4NX7FAAIJmgACbyipSv9MvCdoLR_1PAQ",
+   "file_unique_id": "AgADCZoAAm8oqUo",
    "file_size": 84979
   },
   "caption": "Строковое значение"
