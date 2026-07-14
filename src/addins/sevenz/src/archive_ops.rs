@@ -62,15 +62,39 @@ pub fn unpack_buffer_to_path(
         .map_err(|error| format!("Failed to create destination directory: {}", error))?;
 
     let reader = Cursor::new(archive_data.to_vec());
-    
+    unpack_reader_to_path_full(reader, destination_path, password)
+}
+
+pub fn unpack_file_to_path(
+    archive_path: &str,
+    destination_path: &str,
+    password: &str,
+) -> Result<(), String> {
+    require_archive_file(archive_path)?;
+
+    let dest_path = Path::new(destination_path);
+    fs::create_dir_all(dest_path)
+        .map_err(|error| format!("Failed to create destination directory: {}", error))?;
+
+    let file = File::open(archive_path)
+        .map_err(|error| format!("Failed to open archive '{}': {}", archive_path, error))?;
+    unpack_reader_to_path_full(file, destination_path, password)
+}
+
+fn unpack_reader_to_path_full<R: Read + Seek>(
+    reader: R,
+    destination_path: &str,
+    password: &str,
+) -> Result<(), String> {
+    let dest_path = Path::new(destination_path);
     let dest_for_closure = dest_path.to_path_buf();
     let extract = |entry: &ArchiveEntry, reader: &mut dyn Read, dest: &PathBuf| {
         let entry_name = entry.name();
-        
+
         if should_skip_unsafe_entry(entry_name) {
             return Ok(false);
         }
-        
+
         match validate_archive_entry_path(entry_name, &dest_for_closure) {
             Ok(resolved_dest) => {
                 if dest.exists() {
@@ -79,7 +103,7 @@ pub fn unpack_buffer_to_path(
                         return Ok(false);
                     }
                 }
-                
+
                 let adjusted_dest = PathBuf::from(resolved_dest);
                 default_entry_extract_fn(entry, reader, &adjusted_dest)
             }

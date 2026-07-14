@@ -1,4 +1,3 @@
-use std::path::Path;
 use std::sync::mpsc::Sender;
 use std::sync::Arc;
 
@@ -6,7 +5,6 @@ use common_backend::SyncBackendThread;
 use common_core::JanxValue;
 use common_logs::Logger;
 use common_utils::utils::{janx_error, janx_success};
-use sevenz_rust2::{decompress_file, decompress_file_with_password};
 
 use crate::archive_description::ArchiveDescription;
 use crate::archive_info;
@@ -201,19 +199,9 @@ impl Session {
             archive_path, destination_path
         ));
 
-        if !Path::new(archive_path).exists() {
-            return janx_error(format!("Archive not found: {}", archive_path));
-        }
-
-        let result = if password.is_empty() {
-            decompress_file(archive_path, destination_path)
-        } else {
-            decompress_file_with_password(archive_path, destination_path, password.into())
-        };
-
-        match result {
+        match archive_ops::unpack_file_to_path(archive_path, destination_path, password) {
             Ok(()) => janx_success(None, None),
-            Err(error) => janx_error(error.to_string()),
+            Err(error) => janx_error(error),
         }
     }
 
