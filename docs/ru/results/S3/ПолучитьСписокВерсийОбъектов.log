@@ -2,7 +2,7 @@
  "status": 200,
  "response": {
   "ListVersionsResult": {
-   "Name": "ab901d3d",
+   "Name": "f03d2e19",
    "Prefix": "pic",
    "KeyMarker": {},
    "NextVersionIdMarker": {},
@@ -11,9 +11,9 @@
    "IsTruncated": "false",
    "Version": {
     "Key": "***",
-    "LastModified": "2026-06-29T19:55:37.592Z",
-    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
-    "Size": "2114023",
+    "LastModified": "2026-07-14T06:05:17.957Z",
+    "ETag": "\"67932d4b695e1d6b19dfc2e3610761ff\"",
+    "Size": "315",
     "Owner": {
      "ID": "02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4",
      "DisplayName": "minio"
@@ -30,14 +30,14 @@
   "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "18BDA57879FF057F",
+  "X-Amz-Request-Id": "18C212D9BF2878A4",
   "X-Content-Type-Options": "nosniff",
-  "X-Ratelimit-Limit": "6126",
-  "X-Ratelimit-Remaining": "6126",
+  "X-Ratelimit-Limit": "6329",
+  "X-Ratelimit-Remaining": "6329",
   "X-XSS-Protection": "1; mode=block",
   "X-Powered-By": "ARR/3.0",
-  "Date": "Mon, 29 Jun 2026 19:56:03 GMT",
+  "Date": "Tue, 14 Jul 2026 06:05:28 GMT",
   "Content-Type": "application/xml",
-  "Content-Length": "702"
+  "Content-Length": "698"
  }
 }

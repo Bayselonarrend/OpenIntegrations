@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-07-13T16:15:04.3916915Z",
+ "created_at": "2026-07-14T05:59:20.5185374Z",
  "message": {
   "role": "assistant",
-  "content": "I don't have access to specific product information or release dates. However, it's possible that the first version of 1c:enterprise was released sometime in the past few years. The latest version might be available for download now and can be purchased from the manufacturer's website or third-party vendors like amazon, apple, or google play store."
+  "content": "I don't have access to specific information about when the first version of 1c:enterprise was released. However, as an overview, the initial release of 1c:enterprise was likely in late 2004 or early 2005. This would be consistent with its popularity at the time and the fact that it has been continuously updated and expanded since then."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 2551403300,
- "load_duration": 96935000,
- "prompt_eval_count": 220,
- "prompt_eval_duration": 439660000,
- "eval_count": 78,
- "eval_duration": 2005485000
+ "total_duration": 4889207500,
+ "load_duration": 175952100,
+ "prompt_eval_count": 501,
+ "prompt_eval_duration": 1394873000,
+ "eval_count": 85,
+ "eval_duration": 3294183000
 }

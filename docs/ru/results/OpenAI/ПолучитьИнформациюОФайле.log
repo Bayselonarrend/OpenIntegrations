@@ -1,8 +1,8 @@
 ﻿{
- "id": "file-8",
+ "id": "file-2",
  "object": "file",
- "bytes": 2114025,
- "created_at": "2026-07-13T16:15:41.700352328Z",
- "filename": "0660ebed-801f-4148-ab3e-92abaaa7e5b3.png",
+ "bytes": 317,
+ "created_at": "2026-07-14T06:00:18.674441574Z",
+ "filename": "1e642415-7588-4f6d-ba7c-29f6cd8a500b.png",
  "purpose": "assistants"
 }
