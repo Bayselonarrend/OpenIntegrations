@@ -29,7 +29,7 @@
     NumberArray.Add(10);
     NumberArray.Add(100);
 
-    File = "https://hut.openintegrations.dev/test_data/document.docx";
+    File = "https://releases.openintegrations.dev/test_data/document.docx";
     OPI_TypeConversion.GetBinaryData(File);
 
     TFN = GetTempFileName();

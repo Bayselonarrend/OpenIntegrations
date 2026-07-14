@@ -1,6 +1,6 @@
     Токен         = "ya29.a0AT3oNZ89Gfvy6_DUg_tviJJnmBXSmGRrPL6Vym5gPCsPQEa3F606plSWJttyabLz5gHJY63An6XG9wKNlbVK4fkTSF_KNhqT5M6IGUm8THO6IWF0iGzg5z2SO...";
     НовоеИмя      = "Обновленный файл.jpg";
     Идентификатор = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
-    Файл          = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Файл          = "https://releases.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

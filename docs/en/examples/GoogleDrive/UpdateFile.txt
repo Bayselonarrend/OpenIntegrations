@@ -1,6 +1,6 @@
     Token      = "ya29.a0AT3oNZ89Gfvy6_DUg_tviJJnmBXSmGRrPL6Vym5gPCsPQEa3F606plSWJttyabLz5gHJY63An6XG9wKNlbVK4fkTSF_KNhqT5M6IGUm8THO6IWF0iGzg5z2SO...";
     NewName    = "UpdatedFile.jpg";
     Identifier = "1oUMoSImbl8NKBVWQE9zkBdJ0QIPrkhtb";
-    File       = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary data or File path
+    File       = "https://releases.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary data or File path
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);

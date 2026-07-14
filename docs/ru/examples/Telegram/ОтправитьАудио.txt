@@ -2,7 +2,7 @@
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Аудио    = "https://hut.openintegrations.dev/test_data/song.mp3";
+    Аудио    = "https://releases.openintegrations.dev/test_data/song.mp3";
 
     АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
     КопироватьФайл(Аудио, АудиоПуть);

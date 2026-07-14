@@ -1,7 +1,7 @@
     Параметры = ПолучитьПараметрыВК();
 
-    Картинка1        = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Картинка2        = "https://hut.openintegrations.dev/test_data/picture2.jpg";
+    Картинка1        = "https://releases.openintegrations.dev/test_data/picture.jpg";
+    Картинка2        = "https://releases.openintegrations.dev/test_data/picture2.jpg";
     ВариантСвойства1 = "8944";
     ВариантСвойства2 = "8945";
 

@@ -65,6 +65,13 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
+#Use "../../tools/main"
+#Use "../../tools/http"
+#Use "../../api"
+#Use "../../formats"
+#Use asserts
+#Use "internal"
+
 Procedure ИсполняемыеСценарии() Export
 
     OPI_TestDataRetrieval.FormYAXTestsCLI("RAR");

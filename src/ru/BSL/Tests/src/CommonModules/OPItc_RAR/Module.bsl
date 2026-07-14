@@ -65,6 +65,13 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
+//#Использовать "../../tools/main"
+//#Использовать "../../tools/http"
+//#Использовать "../../api"
+//#Использовать "../../formats"
+//#Использовать asserts
+//#Использовать "internal"
+
 Процедура ИсполняемыеСценарии() Экспорт
 
     OPI_ПолучениеДанныхТестов.СформироватьТестыЯксCLI("RAR");

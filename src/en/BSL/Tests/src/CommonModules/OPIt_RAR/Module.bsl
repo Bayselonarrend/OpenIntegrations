@@ -65,6 +65,10 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
+// #Use oint
+// #Use asserts
+// #Use "internal"
+
 #If Not WebClient Then // !OPI
 
 Procedure ИсполняемыеСценарии() Export

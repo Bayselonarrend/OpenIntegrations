@@ -700,6 +700,8 @@ Procedure TCP_GetConnectionList(FunctionParameters)
     OPI_TCP.CloseConnection(Client3);
     OPI_TCP.CloseConnection(Client4);
 
+    OPI_Tools.Pause(1); // SKIP
+
     Result = OPI_TCP.GetConnectionList(ServerObject);
 
     OPI_TestDataRetrieval.Process(Result, "TCP", "GetConnectionList", "Closing");

@@ -1,4 +1,4 @@
     Name = "Image";
-    URL  = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    URL  = "https://releases.openintegrations.dev/test_data/picture.jpg";
 
     Result = OPI_Bitrix24.GetPictureBlock(Name, URL);

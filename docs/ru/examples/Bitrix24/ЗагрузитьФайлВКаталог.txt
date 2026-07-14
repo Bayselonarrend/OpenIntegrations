@@ -1,8 +1,8 @@
     Наименование2 = "Картинка2.jpg";
     Наименование  = "Картинка1.jpg";
 
-    Картинка2 = "https://hut.openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
-    Картинка  = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
+    Картинка2 = "https://releases.openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
+    Картинка  = "https://releases.openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
 
     IDПриемника = "46678";
 

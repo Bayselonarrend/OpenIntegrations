@@ -2,7 +2,7 @@
     IDЧата        = "689203963@chat.agent";
     IDЦитируемого = "7567354422724936211";
 
-    Файл     = "https://hut.openintegrations.dev/test_data/song.m4a";        // URL
+    Файл     = "https://releases.openintegrations.dev/test_data/song.m4a";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

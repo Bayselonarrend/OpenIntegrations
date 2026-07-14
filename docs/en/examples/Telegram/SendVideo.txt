@@ -2,7 +2,7 @@
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Video     = "https://hut.openintegrations.dev/test_data/video.mp4";
+    Video     = "https://releases.openintegrations.dev/test_data/video.mp4";
 
     VideoPath = GetTempFileName("mp4");
     CopyFile(Video, VideoPath);
