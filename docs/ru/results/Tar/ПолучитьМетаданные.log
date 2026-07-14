@@ -1,11 +1,11 @@
 ﻿{
- "archive_size": 333,
+ "archive_size": 332,
  "directory_count": 0,
  "entries": [
   {
    "directory": false,
    "gid": 0,
-   "modified_time": 1784018810,
+   "modified_time": 1784025367,
    "name": "compressible.txt",
    "size": 32000,
    "uid": 0
@@ -13,7 +13,7 @@
   {
    "directory": false,
    "gid": 0,
-   "modified_time": 1784018810,
+   "modified_time": 1784025367,
    "name": "compressible2.txt",
    "size": 32000,
    "uid": 0

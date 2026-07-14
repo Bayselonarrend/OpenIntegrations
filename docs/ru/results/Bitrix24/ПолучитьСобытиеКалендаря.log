@@ -1,26 +1,26 @@
 ﻿{
  "result": {
-  "ID": "5548",
-  "PARENT_ID": "5548",
+  "ID": "5556",
+  "PARENT_ID": "5556",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "Новое событие",
-  "DATE_FROM": "15.07.2026 08:55:00",
-  "DATE_TO": "15.07.2026 09:55:00",
+  "DATE_FROM": "15.07.2026 10:44:00",
+  "DATE_TO": "15.07.2026 11:44:00",
   "ORIGINAL_DATE_FROM": "***",
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1784084070",
-  "DATE_TO_TS_UTC": "1786690500",
+  "DATE_FROM_TS_UTC": "1784090631",
+  "DATE_TO_TS_UTC": "1786697040",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "14.07.2026 11:54:31",
-  "TIMESTAMP_X": "14.07.2026 11:54:31",
+  "DATE_CREATE": "14.07.2026 13:43:51",
+  "TIMESTAMP_X": "14.07.2026 13:43:51",
   "DESCRIPTION": "Описание события",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -55,7 +55,7 @@
    "UNTIL_TS": 1784937600
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20260715T055500Z-f4cd295931e12a55463cfa01cb3e89de@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20260715T074400Z-cf8874e73b4a28fb1cdb5a29bf5dc672@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
@@ -66,25 +66,25 @@
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "2912",
+  "SECTION_ID": "2916",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": null,
   "UF_WEBDAV_CAL_EVENT": null,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Wed Jul 15 2026 08:55:00",
-  "DATE_TO_FORMATTED": "Wed Jul 15 2026 09:55:00",
+  "DATE_FROM_FORMATTED": "Wed Jul 15 2026 10:44:00",
+  "DATE_TO_FORMATTED": "Wed Jul 15 2026 11:44:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "2912",
+  "SECT_ID": "2916",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "5548",
+    "entryId": "5556",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "5550",
+    "entryId": "5558",
     "status": "Q"
    }
   ],
@@ -105,13 +105,13 @@
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1784019275,
-  "finish": 1784019275.53985,
-  "duration": 0.539851903915405,
+  "start": 1784025835,
+  "finish": 1784025835.66402,
+  "duration": 0.664016962051392,
   "processing": 0,
-  "date_start": "2026-07-14T08:54:35+00:00",
-  "date_finish": "2026-07-14T08:54:35+00:00",
-  "operating_reset_at": 1784019875,
-  "operating": 0.136990070343018
+  "date_start": "2026-07-14T10:43:55+00:00",
+  "date_finish": "2026-07-14T10:43:55+00:00",
+  "operating_reset_at": 1784026435,
+  "operating": 0
  }
 }
