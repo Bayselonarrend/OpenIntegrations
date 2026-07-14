@@ -1,9 +1,7 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="aa51f610-7ed3-4091-8908-8ecccf0aaf0f">
   <name>OpenIntegrations</name>
   <synonym>
-    <key>en</key>
-    <value>Открытый пакет интеграций</value>
     <key>ru</key>
     <value>Открытый пакет интеграций</value>
   </synonym>
@@ -31,26 +29,18 @@
   <vendor>https://github.com/Bayselonarrend</vendor>
   <version>2.3.0</version>
   <detailedInformation>
-    <key>en</key>
-    <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
     <key>ru</key>
     <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
   </detailedInformation>
   <copyright>
-    <key>en</key>
-    <value>Copyright (c) 2023-2026 Anton Tsitavets</value>
     <key>ru</key>
     <value>Copyright (c) 2023-2026 Anton Tsitavets</value>
   </copyright>
   <vendorInformationAddress>
-    <key>en</key>
-    <value>https://github.com/Bayselonarrend</value>
     <key>ru</key>
     <value>https://github.com/Bayselonarrend</value>
   </vendorInformationAddress>
   <configurationInformationAddress>
-    <key>en</key>
-    <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
@@ -123,6 +113,7 @@
   <commonModules>CommonModule.OPI_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPI_RCON</commonModules>
   <commonModules>CommonModule.OPI_ReportPortal</commonModules>
+  <commonModules>CommonModule.OPI_RAR</commonModules>
   <commonModules>CommonModule.OPI_RSS</commonModules>
   <commonModules>CommonModule.OPI_SFTP</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
@@ -130,7 +121,6 @@
   <commonModules>CommonModule.OPI_SSH</commonModules>
   <commonModules>CommonModule.OPI_S3</commonModules>
   <commonModules>CommonModule.OPI_Tar</commonModules>
-  <commonModules>CommonModule.OPI_RAR</commonModules>
   <commonModules>CommonModule.OPI_TCP</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>

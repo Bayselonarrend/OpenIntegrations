@@ -65,6 +65,10 @@
 //@skip-check missing-temporary-file-deletion
 //@skip-check module-unused-method
 
+// #Использовать oint
+// #Использовать asserts
+// #Использовать "internal"
+
 #Если Не ВебКлиент Тогда // !OPI
 
 Процедура ИсполняемыеСценарии() Экспорт
