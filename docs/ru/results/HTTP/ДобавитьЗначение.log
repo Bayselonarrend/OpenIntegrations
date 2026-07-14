@@ -1,27 +1,30 @@
 ﻿{
  "args": {},
- "data": "",
+ "data": "{\r\n \"Поле1\": 10,\r\n \"Поле3\": [\r\n  \"A\",\r\n  \"B\"\r\n ]\r\n}",
  "files": {},
- "form": {
-  "Поле1": "10",
-  "Поле2": "Текст"
- },
+ "form": {},
  "headers": {
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
   "Connection": "Keep-Alive",
-  "Content-Length": "53",
-  "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+  "Content-Length": "59",
+  "Content-Type": "application/json; charset=utf-8",
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.1.0",
-  "X-Arr-Log-Id": "5a608bd3-cfdc-4a1b-b62c-254f1ebf31fd",
+  "X-Arr-Log-Id": "db331d43-a997-40e4-8033-100cd596184e",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"
  },
- "json": null,
+ "json": {
+  "Поле1": 10,
+  "Поле3": [
+   "A",
+   "B"
+  ]
+ },
  "origin": "***",
  "url": "https://bin.openintegrations.dev/post"
 }
