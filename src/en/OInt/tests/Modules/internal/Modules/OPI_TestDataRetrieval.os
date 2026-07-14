@@ -15803,10 +15803,15 @@ EndFunction
 
 Function Check7zArchiveFilesOnDisk(DestinationDirectory, ExpectedFiles)
 
+    Delimiter = GetPathSeparator();
+
     For Each Pair In ExpectedFiles Do
 
-        FilePath = DestinationDirectory + "\" + StrReplace(Pair.Key, "/", "\");
-        File     = New File(FilePath);
+        RelativePath = StrReplace(Pair.Key, "\", "/");
+        FilePath     = DestinationDirectory
+            + Delimiter
+            + StrReplace(RelativePath, "/", Delimiter);
+        File         = New File(FilePath);
 
         ExpectsThat(File.Exists()).Равно(True);
 

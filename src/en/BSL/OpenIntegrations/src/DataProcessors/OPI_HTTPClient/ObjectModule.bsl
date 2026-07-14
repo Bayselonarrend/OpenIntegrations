@@ -1094,7 +1094,11 @@ Function AddValue(Val FieldKey, Val ElementValue, Val ValeType = Undefined) Expo
 
         OPI_TypeConversion.GetLine(FieldKey);
 
-        If StrFind(FieldKey, ".") > 0 Then
+        If Not ValueIsFilled(FieldKey) Then
+
+            CurrentCollection = RequestBodyCollection;
+
+        Else
 
             CurrentCollection = Undefined;
             RootExists        = OPI_Tools.CollectionFieldExists(RequestBodyCollection, FieldKey, CurrentCollection);
@@ -1103,8 +1107,6 @@ Function AddValue(Val FieldKey, Val ElementValue, Val ValeType = Undefined) Expo
                 Return Error("AddValue: place to add not found");
             EndIf;
 
-        Else
-            CurrentCollection = RequestBodyCollection;
         EndIf;
 
         If TypeOf(CurrentCollection) <> Type("Array") Then

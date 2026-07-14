@@ -725,11 +725,12 @@ Procedure TCP_GetConnectionList(FunctionParameters)
         Raise OPI_Tools.JSONString(Client2);
     EndIf;
 
+    OPI_Tools.Pause(1); // SKIP
+
     Result = OPI_TCP.GetConnectionList(ServerObject);
 
     // END
 
-    OPI_Tools.Pause(5);
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionList");
 
     OPI_TCP.CloseConnection(Client1);

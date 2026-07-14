@@ -88,7 +88,8 @@ EndFunction
 Procedure ZRAR_Unarchiving() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_rar_"
+        + GetPathSeparator()
+        + "opi_rar_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -123,7 +124,8 @@ EndProcedure
 Procedure ZRAR_GetMetadata() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_rar_meta_"
+        + GetPathSeparator()
+        + "opi_rar_meta_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -152,7 +154,8 @@ EndProcedure
 Procedure ZRAR_PartialUnpacking() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_rar_partial_"
+        + GetPathSeparator()
+        + "opi_rar_partial_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -306,7 +309,8 @@ EndProcedure
 
 Function RARPath(BaseDirectory, Name)
 
-    Return BaseDirectory + "\" + Name;
+    Name = StrReplace(Name, "\", "/");
+    Return StrTemplate("%1/%2", BaseDirectory, Name);
 
 EndFunction
 

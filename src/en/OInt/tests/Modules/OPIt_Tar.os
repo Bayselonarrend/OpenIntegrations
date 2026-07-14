@@ -96,7 +96,8 @@ Procedure ZTar_Archive() Export
     ZTar_GetArchivingSettingsStructure();
 
     BaseDirectory = TempFilesDir()
-        + "\opi_tar_"
+        + GetPathSeparator()
+        + "opi_tar_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -211,7 +212,8 @@ EndProcedure
 Procedure ZTar_ArchiveWithGzip() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_tar_gzip_"
+        + GetPathSeparator()
+        + "opi_tar_gzip_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -255,7 +257,8 @@ EndProcedure
 Procedure ZTar_GetMetadata() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_tar_meta_"
+        + GetPathSeparator()
+        + "opi_tar_meta_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -324,7 +327,8 @@ EndProcedure
 Procedure ZTar_PartialUnpack() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_tar_partial_"
+        + GetPathSeparator()
+        + "opi_tar_partial_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -382,7 +386,8 @@ EndProcedure
 Procedure ZTar_ChangeArchive() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_tar_modify_"
+        + GetPathSeparator()
+        + "opi_tar_modify_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -744,6 +749,7 @@ EndProcedure
 
 Function TarPath(BaseDirectory, RelativePath)
 
+    RelativePath = StrReplace(RelativePath, "\", "/");
     Return StrTemplate("%1/%2", BaseDirectory, RelativePath);
 
 EndFunction

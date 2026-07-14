@@ -99,7 +99,8 @@ Procedure Z7_Archiving() Export
     Z7_GetArchivingSettingsStructure();
 
     BaseDirectory = TempFilesDir()
-        + "\opi_sevenz_"
+        + GetPathSeparator()
+        + "opi_sevenz_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -214,7 +215,8 @@ EndProcedure
 Procedure Z7_ArchivingWithPassword() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_sevenz_pwd_"
+        + GetPathSeparator()
+        + "opi_sevenz_pwd_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -261,7 +263,8 @@ EndProcedure
 Procedure Z7_GettingMetadata() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_sevenz_meta_"
+        + GetPathSeparator()
+        + "opi_sevenz_meta_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -330,7 +333,8 @@ EndProcedure
 Procedure Z7_PartialUnpacking() Export
 
     BaseDirectory = TempFilesDir()
-        + "\opi_sevenz_partial_"
+        + GetPathSeparator()
+        + "opi_sevenz_partial_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -390,7 +394,8 @@ Procedure Z7_ArchiveModification() Export
     Z7_GetArchiveModificationStructure();
 
     BaseDirectory = TempFilesDir()
-        + "\opi_sevenz_modify_"
+        + GetPathSeparator()
+        + "opi_sevenz_modify_"
         + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
 
     CreateDirectory(BaseDirectory);
@@ -958,6 +963,7 @@ EndProcedure
 
 Function Path7z(BaseDirectory, RelativePath)
 
+    RelativePath = StrReplace(RelativePath, "\", "/");
     Return StrTemplate("%1/%2", BaseDirectory, RelativePath);
 
 EndFunction
