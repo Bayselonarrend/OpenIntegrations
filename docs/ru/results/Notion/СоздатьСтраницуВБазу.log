@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "39d82aa7-fc4e-812c-a79d-ecca89b60695",
- "created_time": "2026-07-14T05:58:00Z",
- "last_edited_time": "2026-07-14T05:58:00Z",
+ "id": "39d82aa7-fc4e-811a-9102-ff297edc83ba",
+ "created_time": "2026-07-14T06:10:00Z",
+ "last_edited_time": "2026-07-14T06:10:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,19 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "39d82aa7-fc4e-8184-ba6f-ca413fd62fc8"
+  "database_id": "39d82aa7-fc4e-817d-8ed3-f41a8111b6d0"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "%3Azd%7B",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Описание": {
-   "id": "%3EGiF",
+   "id": "%40R%3Dv",
    "type": "rich_text",
    "rich_text": [
     {
@@ -50,40 +45,30 @@
    ]
   },
   "Телефон": {
-   "id": "K%7ChT",
+   "id": "AUcR",
    "type": "phone_number",
    "phone_number": "***"
   },
-  "Статус": {
-   "id": "LPmJ",
-   "type": "select",
-   "select": {
-    "id": "2bdaf9dd-42c0-4eb3-af31-245fa570f111",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Дата создания": {
-   "id": "RnoQ",
-   "type": "date",
-   "date": {
-    "start": "2026-07-14T05:58:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Номер": {
-   "id": "WpYa",
+   "id": "PRYz",
    "type": "number",
    "number": 1
   },
-  "Пользователь": {
-   "id": "atLJ",
-   "type": "people",
-   "people": []
+  "Картинка": {
+   "id": "VLXB",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
   },
   "Почта": {
-   "id": "hc%7Di",
+   "id": "%60VaE",
    "type": "rich_text",
    "rich_text": [
     {
@@ -105,18 +90,33 @@
     }
    ]
   },
-  "Картинка": {
-   "id": "jU%7Bp",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Пользователь": {
+   "id": "lBB%40",
+   "type": "people",
+   "people": []
+  },
+  "Дата создания": {
+   "id": "m%5Dp%3D",
+   "type": "date",
+   "date": {
+    "start": "2026-07-14T06:10:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Статус": {
+   "id": "p%5BTe",
+   "type": "select",
+   "select": {
+    "id": "c2c33a74-7b06-4ed8-8e29-3905bede8973",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Активен": {
+   "id": "xBgy",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/39d82aa7fc4e812ca79decca89b60695",
+ "url": "https://app.notion.com/p/39d82aa7fc4e811a9102ff297edc83ba",
  "public_url": null,
  "archived": false,
- "request_id": "cc43e8b9-8282-4e8e-a199-c32fd4338526"
+ "request_id": "39f5961a-a6c4-40a5-a30f-6ddf4e4eb086"
 }

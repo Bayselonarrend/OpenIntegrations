@@ -1,21 +1,21 @@
 ﻿{
- "path": "disk:/b0e52ec1-d323-4e71-a858-20b03c56fd85.png",
+ "path": "disk:/5965edcc-9444-4f0c-9e46-76509578a6e6.png",
  "type": "file",
- "name": "b0e52ec1-d323-4e71-a858-20b03c56fd85.png",
- "created": "2026-07-14T06:04:07+00:00",
- "modified": "2026-07-14T06:04:43+00:00",
+ "name": "5965edcc-9444-4f0c-9e46-76509578a6e6.png",
+ "created": "2026-07-14T06:16:08+00:00",
+ "modified": "2026-07-14T06:16:45+00:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "media_type": "image",
- "resource_id": "1573541518:67aab8ab43b6f461fc7a78b445995ced7fde74e55ce1b17f5a47528fc1e3d693",
- "revision": 1784009083770621,
+ "resource_id": "1573541518:8c2d6bbe9a9f554e44c031b2e33a8bb76ce5500616737e79bf3627c2060a7ce0",
+ "revision": 1784009805930661,
  "comment_ids": {
-  "public_resource": "1573541518:67aab8ab43b6f461fc7a78b445995ced7fde74e55ce1b17f5a47528fc1e3d693",
-  "private_resource": "1573541518:67aab8ab43b6f461fc7a78b445995ced7fde74e55ce1b17f5a47528fc1e3d693"
+  "public_resource": "1573541518:8c2d6bbe9a9f554e44c031b2e33a8bb76ce5500616737e79bf3627c2060a7ce0",
+  "private_resource": "1573541518:8c2d6bbe9a9f554e44c031b2e33a8bb76ce5500616737e79bf3627c2060a7ce0"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/c35e52453e71d639929bc13a121f71b0391b8022cb2e1c2f7b3c66d4c907c5f1/6a5609bc/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=b0e52ec1-d323-4e71-a858-20b03c56fd85.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=9e0176f87f6565a22f78e0f9b39a4d78"
+ "file": "https://downloader.disk.yandex.ru/disk/1295f2f69cee8f7767412fa2b847f7670697a18acba32e2e614ee0128a3da718/6a560c8e/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=5965edcc-9444-4f0c-9e46-76509578a6e6.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=9e0176f87f6565a22f78e0f9b39a4d78"
 }
