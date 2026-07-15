@@ -1265,14 +1265,18 @@ Function GetSSHParameterOptions() Export
         TestProxyParameters.Insert("Proxy_Port", TestProxyParameters["Socks5_Port"]);
         OptionArray.Add(TestProxyParameters);
 
-        TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
+        If OPI_Tools.IsWindows() Then
 
-        TestProxyParameters.Insert("SSH_Host"  , CurrentAddress);
-        TestProxyParameters.Insert("Proxy"     , True);
-        TestProxyParameters.Insert("Proxy_Type", "http");
-        TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
+            TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
 
-        OptionArray.Add(TestProxyParameters);
+            TestProxyParameters.Insert("SSH_Host"  , CurrentAddress);
+            TestProxyParameters.Insert("Proxy"     , True);
+            TestProxyParameters.Insert("Proxy_Type", "http");
+            TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
+
+            OptionArray.Add(TestProxyParameters);
+
+        EndIf;
 
     EndDo;
 
