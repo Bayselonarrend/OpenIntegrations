@@ -83,13 +83,6 @@
    "is_member": true,
    "num_members": 2,
    "properties": {
-    "tabs": [
-     {
-      "id": "files",
-      "label": "",
-      "type": "files"
-     }
-    ],
     "tabz": [
      {
       "type": "files"

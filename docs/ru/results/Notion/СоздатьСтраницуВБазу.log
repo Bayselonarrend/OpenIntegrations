@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "39e82aa7-fc4e-816a-8e1d-c338a60c2110",
- "created_time": "2026-07-15T05:39:00Z",
- "last_edited_time": "2026-07-15T05:39:00Z",
+ "id": "39e82aa7-fc4e-81ba-983e-ec833fb9829e",
+ "created_time": "2026-07-15T17:46:00Z",
+ "last_edited_time": "2026-07-15T17:46:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,33 +15,29 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "39e82aa7-fc4e-811c-a327-c9d0e8a7b323"
+  "database_id": "39e82aa7-fc4e-81ea-9f11-d01e7e8effed"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
-  "Дата создания": {
-   "id": "%40%3EMn",
-   "type": "date",
-   "date": {
-    "start": "2026-07-15T05:38:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Номер": {
-   "id": "HtLq",
-   "type": "number",
-   "number": 1
+  "Телефон": {
+   "id": "%3E%3EeP",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Пользователь": {
-   "id": "Qn%5DR",
+   "id": "%3E%3Eo%5B",
    "type": "people",
    "people": []
   },
+  "Активен": {
+   "id": "DiGb",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Картинка": {
-   "id": "WuLP",
+   "id": "OXwV",
    "type": "files",
    "files": [
     {
@@ -53,17 +49,8 @@
     }
    ]
   },
-  "Статус": {
-   "id": "qCY%5B",
-   "type": "select",
-   "select": {
-    "id": "a5a28e99-78a6-41bf-80a4-79628b4ff169",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
   "Почта": {
-   "id": "w%5E%40%3E",
+   "id": "SBOp",
    "type": "rich_text",
    "rich_text": [
     {
@@ -85,13 +72,8 @@
     }
    ]
   },
-  "Телефон": {
-   "id": "xTc%3D",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "Описание": {
-   "id": "yDf%5E",
+   "id": "ZiW%5C",
    "type": "rich_text",
    "rich_text": [
     {
@@ -113,10 +95,28 @@
     }
    ]
   },
-  "Активен": {
-   "id": "%7B%7C%7Bz",
-   "type": "checkbox",
-   "checkbox": true
+  "Статус": {
+   "id": "%5BNHl",
+   "type": "select",
+   "select": {
+    "id": "d303a8fb-778e-4bce-9904-230022734a0b",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Номер": {
+   "id": "%5CI%3B%3B",
+   "type": "number",
+   "number": 1
+  },
+  "Дата создания": {
+   "id": "%5COx%3B",
+   "type": "date",
+   "date": {
+    "start": "2026-07-15T05:46:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/39e82aa7fc4e816a8e1dc338a60c2110",
+ "url": "https://app.notion.com/p/39e82aa7fc4e81ba983eec833fb9829e",
  "public_url": null,
  "archived": false,
- "request_id": "44732596-b7d0-4fdd-b607-ad9311543794"
+ "request_id": "1e36e81b-1ed6-4de1-9902-5adf02e85fc5"
 }

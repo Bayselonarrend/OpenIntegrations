@@ -4,11 +4,139 @@
    "period_from": 1784073600,
    "period_to": 1784159999,
    "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
+    "age": [
+     {
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 0
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 2
+     },
+     {
+      "value": "35-45",
+      "count": 2
+     },
+     {
+      "value": "45-100",
+      "count": 0
+     }
+    ],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Санкт-Петербург",
+      "value": 2
+     },
+     {
+      "count": 1,
+      "name": "Балаково",
+      "value": 9930
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 4,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 4,
+    "reach": 4,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 3
+     },
+     {
+      "value": "m",
+      "count": 1
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 1
+     },
+     {
+      "value": "f;35-45",
+      "count": 2
+     },
+     {
+      "value": "f;45-100",
+      "count": 0
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 1
+     },
+     {
+      "value": "m;35-45",
+      "count": 0
+     },
+     {
+      "value": "m;45-100",
+      "count": 0
+     }
+    ]
    },
    "visitors": {
     "cities": [],
@@ -20,7 +148,7 @@
   },
   {
    "activity": {
-    "comments": 2
+    "comments": 3
    },
    "period_from": 1783987200,
    "period_to": 1784073599,
