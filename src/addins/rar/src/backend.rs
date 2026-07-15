@@ -21,68 +21,6 @@ impl RarBackend {
         }
     }
 
-    pub fn pack_to_file_from_file(
-        &mut self,
-        source_path: &str,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        let source_path = source_path.to_string();
-        let archive_path = archive_path.to_string();
-        let settings = settings.clone();
-        self.call(|response| WorkerCommand::PackToFileFromFile {
-            source_path,
-            archive_path,
-            settings,
-            response,
-        })
-    }
-
-    pub fn pack_to_buffer_from_file(
-        &mut self,
-        source_path: &str,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        let source_path = source_path.to_string();
-        let settings = settings.clone();
-        self.call_binary(|response| WorkerCommand::PackToBufferFromFile {
-            source_path,
-            settings,
-            response,
-        })
-    }
-
-    pub fn pack_to_buffer_from_description(
-        &mut self,
-        description: &JanxValue,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        let description = description.clone();
-        let settings = settings.clone();
-        self.call_binary(|response| WorkerCommand::PackToBufferFromDescription {
-            description,
-            settings,
-            response,
-        })
-    }
-
-    pub fn pack_to_file_from_description(
-        &mut self,
-        description: &JanxValue,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        let description = description.clone();
-        let archive_path = archive_path.to_string();
-        let settings = settings.clone();
-        self.call(|response| WorkerCommand::PackToFileFromDescription {
-            description,
-            archive_path,
-            settings,
-            response,
-        })
-    }
-
     pub fn unpack_to_file_from_file(
         &mut self,
         archive_path: &str,
@@ -306,13 +244,6 @@ impl RarBackend {
         F: FnOnce(Sender<JanxValue>) -> WorkerCommand,
     {
         self.call_thread(build).unwrap_or_else(|error| janx_error(error))
-    }
-
-    fn call_binary<F>(&mut self, build: F) -> Result<Vec<u8>, String>
-    where
-        F: FnOnce(Sender<Result<Vec<u8>, String>>) -> WorkerCommand,
-    {
-        self.call_thread(build).and_then(|result| result)
     }
 
     fn call_janx<F>(&mut self, build: F) -> Result<JanxValue, String>

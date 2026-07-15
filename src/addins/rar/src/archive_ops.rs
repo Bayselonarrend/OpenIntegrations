@@ -10,10 +10,6 @@ use common_archives::{
 use common_core::{janx, JanxValue};
 use unrar::Archive;
 
-use crate::archive_settings::PackSettings;
-
-const PACK_UNSUPPORTED: &str = "RAR archive creation is not supported";
-
 #[derive(Debug, Clone)]
 pub struct EntryInfo {
     pub path: String,
@@ -35,33 +31,6 @@ impl ListEntry for EntryInfo {
             "size": self.size,
         })
     }
-}
-
-pub fn pack_path_to_buffer(_source_path: &str, _settings: &PackSettings) -> Result<Vec<u8>, String> {
-    Err(PACK_UNSUPPORTED.to_string())
-}
-
-pub fn pack_path_to_file(
-    _source_path: &str,
-    _archive_path: &str,
-    _settings: &PackSettings,
-) -> Result<(), String> {
-    Err(PACK_UNSUPPORTED.to_string())
-}
-
-pub fn pack_description_to_buffer(
-    _description: &ArchiveDescription,
-    _settings: &PackSettings,
-) -> Result<Vec<u8>, String> {
-    Err(PACK_UNSUPPORTED.to_string())
-}
-
-pub fn pack_description_to_file(
-    _description: &ArchiveDescription,
-    _archive_path: &str,
-    _settings: &PackSettings,
-) -> Result<(), String> {
-    Err(PACK_UNSUPPORTED.to_string())
 }
 
 pub fn unpack_buffer_to_path(

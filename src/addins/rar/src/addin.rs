@@ -21,44 +21,6 @@ impl AddIn {
         lock_unpoisoned(&self.backend)
     }
 
-    pub fn pack_to_file_from_file(
-        &mut self,
-        source_path: &str,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        self.lock_backend()
-            .pack_to_file_from_file(source_path, archive_path, settings)
-    }
-
-    pub fn pack_to_buffer_from_file(
-        &mut self,
-        source_path: &str,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        self.lock_backend()
-            .pack_to_buffer_from_file(source_path, settings)
-    }
-
-    pub fn pack_to_buffer_from_description(
-        &mut self,
-        description: &JanxValue,
-        settings: &JanxValue,
-    ) -> Result<Vec<u8>, String> {
-        self.lock_backend()
-            .pack_to_buffer_from_description(description, settings)
-    }
-
-    pub fn pack_to_file_from_description(
-        &mut self,
-        description: &JanxValue,
-        archive_path: &str,
-        settings: &JanxValue,
-    ) -> JanxValue {
-        self.lock_backend()
-            .pack_to_file_from_description(description, archive_path, settings)
-    }
-
     pub fn unpack_to_file_from_file(
         &mut self,
         archive_path: &str,
