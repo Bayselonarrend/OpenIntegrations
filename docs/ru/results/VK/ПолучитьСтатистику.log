@@ -1,8 +1,26 @@
 ﻿{
  "response": [
   {
+   "period_from": 1784073600,
+   "period_to": 1784159999,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
    "activity": {
-    "comments": 1
+    "comments": 2
    },
    "period_from": 1783987200,
    "period_to": 1784073599,
@@ -38,25 +56,31 @@
      },
      {
       "value": "45-100",
-      "count": 0
+      "count": 1
      }
     ],
-    "cities": [],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Екатеринбург",
+      "value": 49
+     }
+    ],
     "countries": [
      {
       "code": "RU",
-      "count": 1,
+      "count": 2,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 2,
+    "reach": 2,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m",
@@ -94,7 +118,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;12-18",
@@ -138,29 +162,17 @@
       "count": 1,
       "name": "Бразилия",
       "value": 43
+     },
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
      }
     ],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
-   }
-  },
-  {
-   "period_from": 1783900800,
-   "period_to": 1783987199,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 2,
+    "visitors": 2
    }
   }
  ]
