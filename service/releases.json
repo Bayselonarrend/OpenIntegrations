@@ -9,7 +9,7 @@
                 "lib": "7z",
                 "icon": "media/7z.png",
                 "description_ru": "Функции архивации/разархивации (6 функции)",
-                "description_en": "PArchive/Extract functions (6 functions)"
+                "description_en": "Archive/Extract functions (6 functions)"
             },
             {
                 "lib": "7z",
