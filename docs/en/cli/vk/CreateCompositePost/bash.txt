@@ -2,7 +2,7 @@
 
 oint vk CreateCompositePost \
   --text "Post from autotest" \
-  --objects "['photo657846756_457251058','video-218861756_456241527']" \
+  --objects "['photo657846756_457251235','video-218861756_456241587']" \
   --ad false \
   --url "https://github.com/Bayselonarrend/OpenIntegrations" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

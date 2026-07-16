@@ -1,4 +1,4 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint msgpack SerializeData ^
-  --value "{'title':'Example','count':'42','active':true,'payload':'/tmp/svybt5ki.jzu','nested':{'label':'nested','inner':'/tmp/qxbyx521.rb0'},'items':['tag','1',false,'/tmp/q4zhluv0.kmh']}"
+  --value "{'title':'Example','count':'42','active':true,'payload':'/tmp/kzhmzbr4.ebk','nested':{'label':'nested','inner':'/tmp/qvz52czd.qsb'},'items':['tag','1',false,'/tmp/zp10zwg3.ynr']}"

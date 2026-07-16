@@ -1,0 +1,2 @@
+oint 7z GetMetadata ^
+  --src "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z"

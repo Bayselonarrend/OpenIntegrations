@@ -1,4 +1,4 @@
 oint slack KickUserFromChannel ^
   --token "***" ^
-  --channel "C0BBMKUBKKK" ^
+  --channel "C0BJJC3DK5W" ^
   --user "U06UABH3APP"

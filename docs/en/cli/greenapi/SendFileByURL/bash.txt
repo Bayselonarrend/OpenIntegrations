@@ -3,7 +3,7 @@
 oint greenapi SendFileByURL \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "***" \
-  --url "https://hut.openintegrations.dev/test_data/video.mp4" \
+  --url "https://releases.openintegrations.dev/test_data/video.mp4" \
   --filename "vid.mp4" \
   --caption "File description" \
-  --quoted "3EB0D53DDCA1E19F6A4392"
+  --quoted "3EB034BC682E405779790D"
