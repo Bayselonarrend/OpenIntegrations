@@ -1,0 +1,2 @@
+oint rar РазархивироватьКаталог ^
+  --src "/tmp/cy1tf4ms.lg4"

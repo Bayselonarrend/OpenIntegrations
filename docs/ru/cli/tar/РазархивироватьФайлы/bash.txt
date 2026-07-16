@@ -1,3 +1,3 @@
 oint tar РазархивироватьФайлы \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\dlawdu2j.zoj" \
+  --src "/tmp/r5z3osfr.y4w" \
   --paths "['readme.txt','docs/note.txt']"

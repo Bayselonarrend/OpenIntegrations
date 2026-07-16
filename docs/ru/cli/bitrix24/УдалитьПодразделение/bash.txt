@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьПодразделение \
   --url "b24-ar17wx.bitrix24.by" \
-  --depid 4192 \
+  --depid 4244 \
   --token "***"

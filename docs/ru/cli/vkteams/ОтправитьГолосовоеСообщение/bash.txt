@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\hal1uf5k.mdt"
+  --file "/tmp/241gatfs.0ir"

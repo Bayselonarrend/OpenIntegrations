@@ -1,2 +1,2 @@
 oint janx ДесериализоватьДанные ^
-  --data "C:\Users\bayselonarrend\AppData\Local\Temp\lqldsbdy.01j"
+  --data "/tmp/zpjhmoib.spn"

@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint tar ИзменитьАрхив ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_modify_63918854116310/archive_buffer.tar" ^
-  --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_modify_63918854116310/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\jvn04mgu.5iy'}" ^
-  --deletions "['config/settings.json','missing/path.txt']"
+  --src "/tmp//opi_tar_63919791611070/archive_buffer.tar" ^
+  --additions "{'extra/info.txt':'/tmp//opi_tar_63919791611070/extra_info.txt','readme.txt':'/tmp/xoc0i25f.qoe'}" ^
+  --deletions "['config/settings.json']"

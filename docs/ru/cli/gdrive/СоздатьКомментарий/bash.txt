@@ -1,4 +1,4 @@
 oint gdrive СоздатьКомментарий \
   --token "***" \
-  --object "1K-87V5WW_zV8ZwFliXP2Ctra4499uczb" \
+  --object "1DGdVxhqfRlVXoJ-BoBXiLgxhJO-YLwNZ" \
   --text "Текст комментария"

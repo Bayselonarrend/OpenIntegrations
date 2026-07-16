@@ -1,0 +1,2 @@
+oint rar ПолучитьМетаданные \
+  --src "/tmp/01jhofg0.pgc"

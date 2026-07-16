@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayselonarrend\AppData\Local\Temp\uph5glxi.dga"
+  --file "/tmp/wkdjg0sb.lmd"
