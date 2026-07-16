@@ -1,0 +1,3 @@
+oint 7z GetArchiveModificationStructure ^
+  --empty false ^
+  --map true

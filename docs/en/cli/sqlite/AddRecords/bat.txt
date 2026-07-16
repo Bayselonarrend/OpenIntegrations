@@ -3,4 +3,4 @@
 oint sqlite AddRecords ^
   --table "test1" ^
   --rows "{'[An obscure column]':'yo'}" ^
-  --db "/tmp/l2qwi2gp.ocq.sqlite"
+  --db "/tmp/0vvzqhdu.qtk.sqlite"

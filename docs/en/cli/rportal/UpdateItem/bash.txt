@@ -4,5 +4,5 @@ oint rportal UpdateItem \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --id 339230 \
+  --id 416715 \
   --params "{'description':'New description'}"
