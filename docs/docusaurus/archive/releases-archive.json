@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-15T21:27:53",
+ "generatedAt": "2026-07-16T11:43:33",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -51,7 +51,7 @@
      "lib": "7z",
      "icon": "media/7z.png",
      "description_ru": "Функции архивации/разархивации (6 функции)",
-     "description_en": "PArchive/Extract functions (6 functions)"
+     "description_en": "Archive/Extract functions (6 functions)"
     },
     {
      "lib": "7z",

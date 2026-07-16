@@ -1,6 +1,3 @@
-    If Parameters.Property("SevenZ_ArchivePath") Then
+    ArchivePath = Parameters["SevenZ_ArchivePath"];
 
-        ArchivePath   = Parameters["SevenZ_ArchivePath"];
-        ExpectedFiles = Parameters["SevenZ_ExpectedFiles"];
-
-        Result = OPI_7z.GetMetadata(ArchivePath);
+    Result = OPI_7z.GetMetadata(ArchivePath);

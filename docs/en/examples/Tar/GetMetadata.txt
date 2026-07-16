@@ -1,0 +1,3 @@
+    ArchivePath = Parameters["Tar_ArchivePath"];
+
+    Result = OPI_Tar.GetMetadata(ArchivePath);

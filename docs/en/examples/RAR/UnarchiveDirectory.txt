@@ -1,0 +1,4 @@
+    ArchivePath        = Parameters["RAR_ArchivePath"];
+    DestinateDirectory = Parameters["RAR_DestDir"];
+
+    Result = OPI_RAR.UnarchiveDirectory(ArchivePath, DestinateDirectory);

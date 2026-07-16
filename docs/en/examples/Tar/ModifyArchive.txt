@@ -1,0 +1,11 @@
+    ArchivePath = Parameters["Tar_ArchivePath"];
+    NewFilePath = Parameters["Tar_NewFilePath"];
+
+    AddableFiles = New Map;
+    AddableFiles.Insert("extra/info.txt", NewFilePath);
+    AddableFiles.Insert("readme.txt"    , GetBinaryDataFromString("Replaced readme content", "UTF-8"));
+
+    DeletablePaths = New Array;
+    DeletablePaths.Add("config/settings.json");
+
+    Result = OPI_Tar.ModifyArchive(ArchivePath, AddableFiles, DeletablePaths);

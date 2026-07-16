@@ -71,21 +71,25 @@ Method at API documentation: [List assistants](https://platform.openai.com/docs/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint openai GetAssistantsList \
-             --url "https://hut.openintegrations.dev/localai/" \
-             --token "***" \
-             --limit 2 \
-             --options "{'after':'asst_2','order':'desc'}"
+              --url "https://hut.openintegrations.dev/localai/" \
+              --token "***" \
+              --limit 2 \
+              --options "{'after':'asst_2','order':'desc'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint openai GetAssistantsList ^
-             --url "https://hut.openintegrations.dev/localai/" ^
-             --token "***" ^
-             --limit 2 ^
-             --options "{'after':'asst_2','order':'desc'}"
+              --url "https://hut.openintegrations.dev/localai/" ^
+              --token "***" ^
+              --limit 2 ^
+              --options "{'after':'asst_2','order':'desc'}"
         ```
     </TabItem>
 </Tabs>

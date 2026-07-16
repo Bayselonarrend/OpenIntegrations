@@ -411,18 +411,11 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Lua_PackageManagement"               , "Package management"              , Lua);
     NewTest(ArrayOfTests, TestModule, "Lua_ExtendedCheck"                   , "Extended check"                  , Lua);
     NewTest(ArrayOfTests, TestModule, "Z7_Archiving"                        , "Archiving"                       , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchivingWithPassword"            , "Archiving with a password"       , SevenZ);
     NewTest(ArrayOfTests, TestModule, "Z7_GettingMetadata"                  , "Metadata extraction"             , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_PartialUnpacking"                 , "Partial unpacking"               , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "Z7_ArchiveModification"              , "Archive modification"            , SevenZ);
-    NewTest(ArrayOfTests, TestModule, "ZTar_Archive"                        , "Archiving"                       , Tar);
-    NewTest(ArrayOfTests, TestModule, "ZTar_ArchiveWithGzip"                , "Archive with gzip"               , Tar);
-    NewTest(ArrayOfTests, TestModule, "ZTar_GetMetadata"                    , "Metadata extraction"             , Tar);
-    NewTest(ArrayOfTests, TestModule, "ZTar_PartialUnpack"                  , "Partial unpacking"               , Tar);
-    NewTest(ArrayOfTests, TestModule, "ZTar_ChangeArchive"                  , "Archive modification"            , Tar);
-    NewTest(ArrayOfTests, TestModule, "ZRAR_Unarchiving"                    , "Unarchiving"                     , RAR);
-    NewTest(ArrayOfTests, TestModule, "ZRAR_GetMetadata"                    , "Metadata extraction"             , RAR);
-    NewTest(ArrayOfTests, TestModule, "ZRAR_PartialUnpacking"               , "Partial unpacking"               , RAR);
+    NewTest(ArrayOfTests, TestModule, "Tar_Archiving"                       , "Archiving"                       , Tar);
+    NewTest(ArrayOfTests, TestModule, "Tar_GettingMetadata"                 , "Metadata extraction"             , Tar);
+    NewTest(ArrayOfTests, TestModule, "RAR_Unarchiving"                     , "Unarchiving"                     , RAR);
+    NewTest(ArrayOfTests, TestModule, "RAR_GettingMetadata"                 , "Metadata extraction"             , RAR);
 
     Return ArrayOfTests;
 

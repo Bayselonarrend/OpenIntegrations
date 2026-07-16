@@ -85,9 +85,7 @@ EndFunction
 
 #Region RunnableTests
 
-#Region Unarchiving
-
-Procedure ZRAR_Unarchiving() Export
+Procedure RAR_Unarchiving() Export
 
     BaseDirectory = TempFilesDir()
         + GetPathSeparator()
@@ -107,23 +105,33 @@ Procedure ZRAR_Unarchiving() Export
 
     ExpectedFiles = ExpectedFilesTestArchiveRAR();
 
-    Parameters = New Structure;
-    Parameters.Insert("RAR_ArchivePath"  , ArchivePath);
-    Parameters.Insert("RAR_DestDir"      , DestinateDirectory);
-    Parameters.Insert("RAR_DestBufferDir", DestinationDirectoryBuffer);
-    Parameters.Insert("RAR_ExpectedFiles", ExpectedFiles);
+    ExpectedPartial = New Map;
+    ExpectedPartial.Insert("readme.txt"   , "OpenIntegrations root");
+    ExpectedPartial.Insert("docs\note.txt", "Nested documentation");
 
-    ZRAR_UnarchiveDirectory(Parameters);
+    PartialPaths = New Array;
+    PartialPaths.Add("readme.txt");
+    PartialPaths.Add("docs/note.txt");
+
+    Parameters = New Structure;
+    Parameters.Insert("RAR_BaseDir"         , BaseDirectory);
+    Parameters.Insert("RAR_ArchivePath"     , ArchivePath);
+    Parameters.Insert("RAR_DestDir"         , DestinateDirectory);
+    Parameters.Insert("RAR_DestBufferDir"   , DestinationDirectoryBuffer);
+    Parameters.Insert("RAR_ExpectedFiles"   , ExpectedFiles);
+    Parameters.Insert("RAR_PartialPaths"    , PartialPaths);
+    Parameters.Insert("RAR_PartialExpected" , ExpectedPartial);
+
+    OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
+
+    RAR_UnarchiveDirectory(Parameters);
+    RAR_UnpackFiles(Parameters);
 
     OPI_Tools.RemoveFileWithTry(BaseDirectory, "Failed to delete test rar directory");
 
 EndProcedure
 
-#EndRegion // Unarchiving
-
-#Region GettingMetadata
-
-Procedure ZRAR_GetMetadata() Export
+Procedure RAR_GettingMetadata() Export
 
     BaseDirectory = TempFilesDir()
         + GetPathSeparator()
@@ -139,60 +147,18 @@ Procedure ZRAR_GetMetadata() Export
     ExpectedFiles = ExpectedFilesTestArchiveRAR();
 
     Parameters = New Structure;
-    Parameters.Insert("RAR_ArchivePath"  , ArchivePath);
-    Parameters.Insert("RAR_ExpectedFiles", ExpectedFiles);
+    Parameters.Insert("RAR_BaseDir"       , BaseDirectory);
+    Parameters.Insert("RAR_ArchivePath"   , ArchivePath);
+    Parameters.Insert("RAR_ExpectedFiles" , ExpectedFiles);
 
-    ZRAR_GetFilesList(Parameters);
-    ZRAR_GetMetadata(Parameters);
+    OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
 
-    OPI_Tools.RemoveFileWithTry(BaseDirectory, "Failed to delete test rar directory");
-
-EndProcedure
-
-#EndRegion // GettingMetadata
-
-#Region PartialUnpacking
-
-Procedure ZRAR_PartialUnpacking() Export
-
-    BaseDirectory = TempFilesDir()
-        + GetPathSeparator()
-        + "opi_rar_partial_"
-        + Format(CurrentUniversalDateInMilliseconds(), "NG=0");
-
-    CreateDirectory(BaseDirectory);
-
-    DestinateDirectory         = RARPath(BaseDirectory, "out");
-    DestinationDirectoryBuffer = RARPath(BaseDirectory, "out_buffer");
-    ArchivePath                = RARPath(BaseDirectory, "archive.rar");
-
-    CreateDirectory(DestinateDirectory);
-    CreateDirectory(DestinationDirectoryBuffer);
-
-    WriteTestArchiveRAR(ArchivePath);
-
-    ExpectedPartial = New Map;
-    ExpectedPartial.Insert("readme.txt"   , "OpenIntegrations root");
-    ExpectedPartial.Insert("docs\note.txt", "Nested documentation");
-
-    PartialPaths = New Array;
-    PartialPaths.Add("readme.txt");
-    PartialPaths.Add("docs/note.txt");
-
-    Parameters = New Structure;
-    Parameters.Insert("RAR_ArchivePath"     , ArchivePath);
-    Parameters.Insert("RAR_DestDir"         , DestinateDirectory);
-    Parameters.Insert("RAR_DestBufferDir"   , DestinationDirectoryBuffer);
-    Parameters.Insert("RAR_PartialPaths"    , PartialPaths);
-    Parameters.Insert("RAR_PartialExpected" , ExpectedPartial);
-
-    ZRAR_UnpackFiles(Parameters);
+    RAR_GetFilesList(Parameters);
+    RAR_GetMetadata(Parameters);
 
     OPI_Tools.RemoveFileWithTry(BaseDirectory, "Failed to delete test rar directory");
 
 EndProcedure
-
-#EndRegion // PartialUnpacking
 
 #EndRegion // RunnableTests
 
@@ -202,48 +168,86 @@ EndProcedure
 
 #Region AtomicTests
 
-#Region Unarchiving
+Procedure RAR_UnarchiveDirectory(Parameters)
 
-Procedure ZRAR_UnarchiveDirectory(Parameters)
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR"); // SKIP
 
-    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR");
-
-    ArchivePath                = Parameters["RAR_ArchivePath"];
-    DestinateDirectory         = Parameters["RAR_DestDir"];
-    DestinationDirectoryBuffer = Parameters["RAR_DestBufferDir"];
-    ExpectedFiles              = Parameters["RAR_ExpectedFiles"];
+    ArchivePath        = Parameters["RAR_ArchivePath"];
+    DestinateDirectory = Parameters["RAR_DestDir"];
 
     Result = OPI_RAR.UnarchiveDirectory(ArchivePath, DestinateDirectory);
 
     // END
+
+    ExpectedFiles = Parameters["RAR_ExpectedFiles"];
 
     OPI_TestDataRetrieval.Process(Result, "RAR", "UnarchiveDirectory", , DestinateDirectory, ExpectedFiles);
 
     Result = OPI_RAR.UnarchiveDirectory(ArchivePath);
     OPI_TestDataRetrieval.Process(Result, "RAR", "UnarchiveDirectory", "ToDescription", "", ExpectedFiles);
 
-    ArchiveBinary = New BinaryData(ArchivePath);
+    DestinationDirectoryBuffer = Parameters["RAR_DestBufferDir"];
+    ArchiveBinary              = New BinaryData(ArchivePath);
 
     Result = OPI_RAR.UnarchiveDirectory(ArchiveBinary, DestinationDirectoryBuffer);
-    OPI_TestDataRetrieval.Process(Result, "RAR", "UnarchiveDirectory", "FromMemory", DestinationDirectoryBuffer, ExpectedFiles);
+    OPI_TestDataRetrieval.Process(Result
+        , "RAR"
+        , "UnarchiveDirectory"
+        , "FromMemory"
+        , DestinationDirectoryBuffer
+        , ExpectedFiles);
 
     Result = OPI_RAR.UnarchiveDirectory(ArchiveBinary);
     OPI_TestDataRetrieval.Process(Result, "RAR", "UnarchiveDirectory", "ToDescriptionFromMemory", "", ExpectedFiles);
 
 EndProcedure
 
-#EndRegion // Unarchiving
+Procedure RAR_UnpackFiles(Parameters)
 
-#Region GettingMetadata
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR"); // SKIP
 
-Procedure ZRAR_GetFilesList(Parameters)
+    ArchivePath        = Parameters["RAR_ArchivePath"];
+    DestinateDirectory = Parameters["RAR_DestDir"];
+    Paths              = Parameters["RAR_PartialPaths"];
 
-    ArchivePath   = Parameters["RAR_ArchivePath"];
-    ExpectedFiles = Parameters["RAR_ExpectedFiles"];
+    Result = OPI_RAR.UnpackFiles(ArchivePath, Paths, DestinateDirectory);
+
+    // END
+
+    ExpectedFiles = Parameters["RAR_PartialExpected"];
+
+    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", , DestinateDirectory, ExpectedFiles);
+
+    Result = OPI_RAR.UnpackFiles(ArchivePath, Paths);
+    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", "ToDescription", "", ExpectedFiles);
+
+    DestinationDirectoryBuffer = Parameters["RAR_DestBufferDir"];
+    ArchiveBinary              = New BinaryData(ArchivePath);
+
+    Result = OPI_RAR.UnpackFiles(ArchiveBinary, Paths, DestinationDirectoryBuffer);
+    OPI_TestDataRetrieval.Process(Result
+        , "RAR"
+        , "UnpackFiles"
+        , "FromMemory"
+        , DestinationDirectoryBuffer
+        , ExpectedFiles);
+
+    Result = OPI_RAR.UnpackFiles(ArchiveBinary, Paths);
+    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", "ToDescriptionFromMemory", "", ExpectedFiles);
+
+EndProcedure
+
+Procedure RAR_GetFilesList(Parameters)
+
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR"); // SKIP
+
+    ArchivePath = Parameters["RAR_ArchivePath"];
 
     Result = OPI_RAR.GetFilesList(ArchivePath);
 
     // END
+
+    ExpectedFiles = Parameters["RAR_ExpectedFiles"];
 
     OPI_TestDataRetrieval.Process(Result, "RAR", "GetFilesList", , ExpectedFiles);
 
@@ -254,14 +258,17 @@ Procedure ZRAR_GetFilesList(Parameters)
 
 EndProcedure
 
-Procedure ZRAR_GetMetadata(Parameters)
+Procedure RAR_GetMetadata(Parameters)
 
-    ArchivePath   = Parameters["RAR_ArchivePath"];
-    ExpectedFiles = Parameters["RAR_ExpectedFiles"];
+    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR"); // SKIP
+
+    ArchivePath = Parameters["RAR_ArchivePath"];
 
     Result = OPI_RAR.GetMetadata(ArchivePath);
 
     // END
+
+    ExpectedFiles = Parameters["RAR_ExpectedFiles"];
 
     OPI_TestDataRetrieval.Process(Result, "RAR", "GetMetadata", , ExpectedFiles);
 
@@ -271,41 +278,6 @@ Procedure ZRAR_GetMetadata(Parameters)
     OPI_TestDataRetrieval.Process(Result, "RAR", "GetMetadata", "FromMemory", ExpectedFiles);
 
 EndProcedure
-
-#EndRegion // GettingMetadata
-
-#Region PartialUnpacking
-
-Procedure ZRAR_UnpackFiles(Parameters)
-
-    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "RAR");
-
-    ArchivePath                = Parameters["RAR_ArchivePath"];
-    DestinateDirectory         = Parameters["RAR_DestDir"];
-    DestinationDirectoryBuffer = Parameters["RAR_DestBufferDir"];
-    PartialPaths               = Parameters["RAR_PartialPaths"];
-    ExpectedFiles              = Parameters["RAR_PartialExpected"];
-
-    Result = OPI_RAR.UnpackFiles(ArchivePath, PartialPaths, DestinateDirectory);
-
-    // END
-
-    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", , DestinateDirectory, ExpectedFiles);
-
-    Result = OPI_RAR.UnpackFiles(ArchivePath, PartialPaths);
-    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", "ToDescription", "", ExpectedFiles);
-
-    ArchiveBinary = New BinaryData(ArchivePath);
-
-    Result = OPI_RAR.UnpackFiles(ArchiveBinary, PartialPaths, DestinationDirectoryBuffer);
-    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", "FromMemory", DestinationDirectoryBuffer, ExpectedFiles);
-
-    Result = OPI_RAR.UnpackFiles(ArchiveBinary, PartialPaths);
-    OPI_TestDataRetrieval.Process(Result, "RAR", "UnpackFiles", "ToDescriptionFromMemory", "", ExpectedFiles);
-
-EndProcedure
-
-#EndRegion // PartialUnpacking
 
 #EndRegion // AtomicTests
 
@@ -345,16 +317,12 @@ EndFunction
 
 #Region Alternate
 
-Procedure ZRAR_Разархивирование() Export
-    ZRAR_Unarchiving();
+Procedure RAR_Разархивирование() Export
+    RAR_Unarchiving();
 EndProcedure
 
-Procedure ZRAR_ПолучениеМетаданных() Export
-    ZRAR_GetMetadata();
-EndProcedure
-
-Procedure ZRAR_ЧастичнаяРаспаковка() Export
-    ZRAR_PartialUnpacking();
+Procedure RAR_ПолучениеМетаданных() Export
+    RAR_GettingMetadata();
 EndProcedure
 
 #EndRegion

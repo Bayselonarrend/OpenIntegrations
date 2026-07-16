@@ -818,10 +818,7 @@ pipeline {
 				script {
 					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_7z.os', [
 'Z7_Архивация',
-'Z7_АрхивацияСПаролем',
 'Z7_ПолучениеМетаданных',
-'Z7_ЧастичнаяРаспаковка',
-'Z7_ИзменениеАрхива',
 					])
 				}
 			}
@@ -833,11 +830,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_Tar.os', [
-'ZTar_Архивация',
-'ZTar_АрхивацияСGzip',
-'ZTar_ПолучениеМетаданных',
-'ZTar_ЧастичнаяРаспаковка',
-'ZTar_ИзменениеАрхива',
+'Tar_Архивация',
+'Tar_ПолучениеМетаданных',
 					])
 				}
 			}
@@ -849,9 +843,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_RAR.os', [
-'ZRAR_Разархивирование',
-'ZRAR_ПолучениеМетаданных',
-'ZRAR_ЧастичнаяРаспаковка',
+'RAR_Разархивирование',
+'RAR_ПолучениеМетаданных',
 					])
 				}
 			}

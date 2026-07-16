@@ -88,11 +88,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Tar.os', [
-'ZTar_Archive',
-'ZTar_ArchiveWithGzip',
-'ZTar_GetMetadata',
-'ZTar_PartialUnpack',
-'ZTar_ChangeArchive',
+'Tar_Archiving',
+'Tar_GettingMetadata',
 					])
 				}
 			}

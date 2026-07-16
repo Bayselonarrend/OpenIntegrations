@@ -10,10 +10,7 @@
     "paths": null,
     "tests": [
 "OPIt_7z.Z7_Archiving",
-"OPIt_7z.Z7_ArchivingWithPassword",
-"OPIt_7z.Z7_GettingMetadata",
-"OPIt_7z.Z7_PartialUnpacking",
-"OPIt_7z.Z7_ArchiveModification"
+"OPIt_7z.Z7_GettingMetadata"
     ]
   },
   "settings": {

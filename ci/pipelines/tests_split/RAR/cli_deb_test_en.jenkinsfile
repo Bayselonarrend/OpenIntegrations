@@ -88,9 +88,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPItc_RAR.os', [
-'ZRAR_Unarchiving',
-'ZRAR_GetMetadata',
-'ZRAR_PartialUnpacking',
+'RAR_Unarchiving',
+'RAR_GettingMetadata',
 					])
 				}
 			}

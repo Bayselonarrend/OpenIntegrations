@@ -1,0 +1,4 @@
+    ArchivePath        = Parameters["Tar_ArchivePath"];
+    DestinateDirectory = Parameters["Tar_DestDir"];
+
+    Result = OPI_Tar.UnarchiveDirectory(ArchivePath, DestinateDirectory);

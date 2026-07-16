@@ -9,11 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPIt_Tar.ZTar_Archive",
-"OPIt_Tar.ZTar_ArchiveWithGzip",
-"OPIt_Tar.ZTar_GetMetadata",
-"OPIt_Tar.ZTar_PartialUnpack",
-"OPIt_Tar.ZTar_ChangeArchive"
+"OPIt_Tar.Tar_Archiving",
+"OPIt_Tar.Tar_GettingMetadata"
     ]
   },
   "settings": {

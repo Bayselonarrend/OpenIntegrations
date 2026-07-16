@@ -1,8 +1,5 @@
-    ArchivePath        = Parameters["SevenZ_ArchivePath"];
-    ArchiveBufferPath  = Parameters["SevenZ_ArchiveBufferPath"];
-    DestinateDirectory = Parameters["SevenZ_DestDir"];
-    NewFilePath        = Parameters["SevenZ_NewFilePath"];
-    ExpectedFiles      = Parameters["SevenZ_ExpectedAfterModify"];
+    ArchivePath = Parameters["SevenZ_ArchivePath"];
+    NewFilePath = Parameters["SevenZ_NewFilePath"];
 
     AddableFiles = New Map;
     AddableFiles.Insert("extra/info.txt", NewFilePath);

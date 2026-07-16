@@ -9,9 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPIt_RAR.ZRAR_Разархивирование",
-"OPIt_RAR.ZRAR_ПолучениеМетаданных",
-"OPIt_RAR.ZRAR_ЧастичнаяРаспаковка"
+"OPIt_RAR.RAR_Разархивирование",
+"OPIt_RAR.RAR_ПолучениеМетаданных"
     ]
   },
   "settings": {

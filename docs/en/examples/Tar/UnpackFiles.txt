@@ -1,0 +1,5 @@
+    ArchivePath        = Parameters["Tar_ArchivePath"];
+    DestinateDirectory = Parameters["Tar_DestDir"];
+    Paths              = Parameters["Tar_PartialPaths"];
+
+    Result = OPI_Tar.UnpackFiles(ArchivePath, Paths, DestinateDirectory);

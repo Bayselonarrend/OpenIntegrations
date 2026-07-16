@@ -1,0 +1,5 @@
+    ArchivePath        = Parameters["RAR_ArchivePath"];
+    DestinateDirectory = Parameters["RAR_DestDir"];
+    Paths              = Parameters["RAR_PartialPaths"];
+
+    Result = OPI_RAR.UnpackFiles(ArchivePath, Paths, DestinateDirectory);

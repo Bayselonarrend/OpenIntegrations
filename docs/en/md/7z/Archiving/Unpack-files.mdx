@@ -54,6 +54,24 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint 7z UnpackFiles \
+              --src "/tmp/tcwkd5qk.ik3" \
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint 7z UnpackFiles ^
+              --src "/tmp/tcwkd5qk.ik3" ^
+              --paths "['readme.txt','docs/note.txt']"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

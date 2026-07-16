@@ -90,10 +90,7 @@ pipeline {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPItc_7z.os', [
 'Z7_Archiving',
-'Z7_ArchivingWithPassword',
 'Z7_GettingMetadata',
-'Z7_PartialUnpacking',
-'Z7_ArchiveModification',
 					])
 				}
 			}

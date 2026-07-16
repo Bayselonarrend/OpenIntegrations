@@ -821,10 +821,7 @@ pipeline {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPIt_7z.os', [
 'Z7_Archiving',
-'Z7_ArchivingWithPassword',
 'Z7_GettingMetadata',
-'Z7_PartialUnpacking',
-'Z7_ArchiveModification',
 					])
 				}
 			}
@@ -836,11 +833,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPIt_Tar.os', [
-'ZTar_Archive',
-'ZTar_ArchiveWithGzip',
-'ZTar_GetMetadata',
-'ZTar_PartialUnpack',
-'ZTar_ChangeArchive',
+'Tar_Archiving',
+'Tar_GettingMetadata',
 					])
 				}
 			}
@@ -852,9 +846,8 @@ pipeline {
 			steps {
 				script {
 					runModuleTests('./src/en/OInt/tests/Modules/OPIt_RAR.os', [
-'ZRAR_Unarchiving',
-'ZRAR_GetMetadata',
-'ZRAR_PartialUnpacking',
+'RAR_Unarchiving',
+'RAR_GettingMetadata',
 					])
 				}
 			}

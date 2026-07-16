@@ -53,6 +53,30 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint 7z ArchiveDirectory \
+              --src "/tmp//opi_sevenz_meta_63919777060590/src_compress" \
+              --dest "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z" \
+              --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint 7z ArchiveDirectory ^
+              --src "/tmp//opi_sevenz_meta_63919777060590/src_compress" ^
+              --dest "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z" ^
+              --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

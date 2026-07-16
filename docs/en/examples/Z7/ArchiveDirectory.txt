@@ -1,11 +1,4 @@
-    OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "SevenZ");
+    SourceDirectory = Parameters["SevenZ_SourceDir"];
+    ArchivePath     = Parameters["SevenZ_ArchivePath"];
 
-    If Parameters.Property("SevenZ_SourceDir")
-        And Parameters.Property("SevenZ_ArchivePath")
-        And NOT Parameters.Property("SevenZ_SourceDirCompress")
-        And NOT (Parameters.Property("SevenZ_ArchivePasswordPath") And NOT Parameters.Property("SevenZ_Description")) Then
-
-        SourceDirectory = Parameters["SevenZ_SourceDir"];
-        ArchivePath     = Parameters["SevenZ_ArchivePath"];
-
-        Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePath);
+    Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePath);

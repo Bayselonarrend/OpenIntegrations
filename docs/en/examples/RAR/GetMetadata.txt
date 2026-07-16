@@ -1,0 +1,3 @@
+    ArchivePath = Parameters["RAR_ArchivePath"];
+
+    Result = OPI_RAR.GetMetadata(ArchivePath);

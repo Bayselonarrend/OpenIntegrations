@@ -9,11 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPIt_Tar.ZTar_Архивация",
-"OPIt_Tar.ZTar_АрхивацияСGzip",
-"OPIt_Tar.ZTar_ПолучениеМетаданных",
-"OPIt_Tar.ZTar_ЧастичнаяРаспаковка",
-"OPIt_Tar.ZTar_ИзменениеАрхива"
+"OPIt_Tar.Tar_Архивация",
+"OPIt_Tar.Tar_ПолучениеМетаданных"
     ]
   },
   "settings": {

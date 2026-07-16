@@ -51,7 +51,13 @@ import Admonition from '@theme/Admonition';
 <br/>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ПутьАрхива        = Параметры["RAR_ArchivePath"];
+    КаталогНазначение = Параметры["RAR_DestDir"];
+    Пути              = Параметры["RAR_PartialPaths"];
 
+    Результат = OPI_RAR.РазархивироватьФайлы(ПутьАрхива, Пути, КаталогНазначение);
+```
     
 
 

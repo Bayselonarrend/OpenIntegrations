@@ -49,7 +49,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    ArchivePath        = Parameters["Tar_ArchivePath"];
+    DestinateDirectory = Parameters["Tar_DestDir"];
 
+    Result = OPI_Tar.UnarchiveDirectory(ArchivePath, DestinateDirectory);
+```
  
 
 

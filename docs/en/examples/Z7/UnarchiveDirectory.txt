@@ -1,8 +1,4 @@
-    If Parameters.Property("SevenZ_ArchivePath") Then
+    ArchivePath        = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory = Parameters["SevenZ_DestDir"];
 
-        ArchivePath                = Parameters["SevenZ_ArchivePath"];
-        DestinateDirectory         = Parameters["SevenZ_DestDir"];
-        DestinationDirectoryBuffer = Parameters["SevenZ_DestBufferDir"];
-        ExpectedFiles              = Parameters["SevenZ_ExpectedFiles"];
-
-        Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);
+    Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);

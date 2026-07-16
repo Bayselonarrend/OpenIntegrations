@@ -1,0 +1,4 @@
+    SourceDirectory = Parameters["Tar_SourceDir"];
+    ArchivePath     = Parameters["Tar_ArchivePath"];
+
+    Result = OPI_Tar.ArchiveDirectory(SourceDirectory, ArchivePath);

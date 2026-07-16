@@ -1,8 +1,5 @@
-    ПутьАрхива        = Параметры["SevenZ_ArchivePath"];
-    ПутьАрхиваБуфер   = Параметры["SevenZ_ArchiveBufferPath"];
-    КаталогНазначение = Параметры["SevenZ_DestDir"];
-    ПутьНовогоФайла   = Параметры["SevenZ_NewFilePath"];
-    ОжидаемыеФайлы    = Параметры["SevenZ_ExpectedAfterModify"];
+    ПутьАрхива      = Параметры["SevenZ_ArchivePath"];
+    ПутьНовогоФайла = Параметры["SevenZ_NewFilePath"];
 
     ДобавляемыеФайлы = Новый Соответствие;
     ДобавляемыеФайлы.Вставить("extra/info.txt", ПутьНовогоФайла);

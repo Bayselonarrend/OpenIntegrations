@@ -50,7 +50,13 @@ import Admonition from '@theme/Admonition';
 <br/>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ПутьАрхива        = Параметры["Tar_ArchivePath"];
+    КаталогНазначение = Параметры["Tar_DestDir"];
+    Пути              = Параметры["Tar_PartialPaths"];
 
+    Результат = OPI_Tar.РазархивироватьФайлы(ПутьАрхива, Пути, КаталогНазначение);
+```
     
 
  <Tabs>
