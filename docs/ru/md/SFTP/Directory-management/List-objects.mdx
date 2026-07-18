@@ -120,7 +120,7 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp ПолучитьСписокОбъектов \
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" \
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" \
               --path "files_folder" \
               --rcv true
         ```
@@ -131,7 +131,7 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp ПолучитьСписокОбъектов ^
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" ^
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'},'set':{'auth_type':'keyboard_interactive','host':'172.33.0.34','key_path':null,'keyboard_responses':['12we3456!2154'],'passphrase':null,'password':null,'port':'2223','pub_path':null,'username':'bayselonarrend'}}" ^
               --path "files_folder" ^
               --rcv true
         ```
@@ -143,14 +143,14 @@ import Admonition from '@theme/Admonition';
 {
  "data": [
   {
-   "accessed": 1784137760,
+   "accessed": 1784360054,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
    "is_symlink": false,
    "modified": 1773778601,
    "name": "test_folder2",
-   "path": "test_folder/test_folder2",
+   "path": "test_folder\\test_folder2",
    "permissions": "40777",
    "size": 4096,
    "uid": 1000,
@@ -163,20 +163,20 @@ import Admonition from '@theme/Admonition';
      "is_symlink": false,
      "modified": 1773778601,
      "name": "3.txt",
-     "path": "test_folder/test_folder2/3.txt",
+     "path": "test_folder\\test_folder2\\3.txt",
      "permissions": "100777",
      "size": 0,
      "uid": 1000
     },
     {
-     "accessed": 1784137760,
+     "accessed": 1784360054,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1773778601,
      "name": "test_folder3",
-     "path": "test_folder/test_folder2/test_folder3",
+     "path": "test_folder\\test_folder2\\test_folder3",
      "permissions": "40777",
      "size": 4096,
      "uid": 1000,
@@ -189,7 +189,7 @@ import Admonition from '@theme/Admonition';
        "is_symlink": false,
        "modified": 1773778601,
        "name": "4.txt",
-       "path": "test_folder/test_folder2/test_folder3/4.txt",
+       "path": "test_folder\\test_folder2\\test_folder3\\4.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -197,14 +197,14 @@ import Admonition from '@theme/Admonition';
      ]
     },
     {
-     "accessed": 1784137760,
+     "accessed": 1784360054,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1773778601,
      "name": "test_folder4",
-     "path": "test_folder/test_folder2/test_folder4",
+     "path": "test_folder\\test_folder2\\test_folder4",
      "permissions": "40777",
      "size": 4096,
      "uid": 1000,
@@ -217,7 +217,7 @@ import Admonition from '@theme/Admonition';
        "is_symlink": false,
        "modified": 1773778601,
        "name": "1.txt",
-       "path": "test_folder/test_folder2/test_folder4/1.txt",
+       "path": "test_folder\\test_folder2\\test_folder4\\1.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -230,7 +230,7 @@ import Admonition from '@theme/Admonition';
        "is_symlink": false,
        "modified": 1773778601,
        "name": "2.txt",
-       "path": "test_folder/test_folder2/test_folder4/2.txt",
+       "path": "test_folder\\test_folder2\\test_folder4\\2.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000

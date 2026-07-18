@@ -65,9 +65,7 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint tar АрхивироватьКаталог \
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/src_compress" \
-              --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/archive_gzip.tar.gz" \
-              --settings "{'gzip':true,'gzip_level':'9'}"
+              --src "{'entries':[{'name':'readme.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/readme.txt'},{'name':'docs','directory':true,'entries':[{'name':'note.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/docs/note.txt'}]}]}"
         ```
     </TabItem>
   
@@ -76,9 +74,7 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint tar АрхивироватьКаталог ^
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/src_compress" ^
-              --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/archive_gzip.tar.gz" ^
-              --settings "{'gzip':true,'gzip_level':'9'}"
+              --src "{'entries':[{'name':'readme.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/readme.txt'},{'name':'docs','directory':true,'entries':[{'name':'note.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/docs/note.txt'}]}]}"
         ```
     </TabItem>
 </Tabs>

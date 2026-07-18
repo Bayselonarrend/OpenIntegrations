@@ -60,14 +60,14 @@ import Admonition from '@theme/Admonition';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint tar ПолучитьМетаданные \
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/archive_gzip.tar.gz"
+              --src "/tmp//opi_tar_meta_63919791818923/archive_gzip.tar.gz"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint tar ПолучитьМетаданные ^
-              --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63918854048832/archive_gzip.tar.gz"
+              --src "/tmp//opi_tar_meta_63919791818923/archive_gzip.tar.gz"
         ```
     </TabItem>
 </Tabs>
@@ -75,28 +75,28 @@ import Admonition from '@theme/Admonition';
 
 ```json title="Результат"
 {
- "archive_size": 332,
+ "archive_size": 3072,
  "directory_count": 0,
  "entries": [
   {
    "directory": false,
    "gid": 0,
-   "modified_time": 1784137740,
-   "name": "compressible.txt",
-   "size": 32000,
+   "modified_time": 1784359988,
+   "name": "docs/note.txt",
+   "size": 11,
    "uid": 0
   },
   {
    "directory": false,
    "gid": 0,
-   "modified_time": 1784137740,
-   "name": "compressible2.txt",
-   "size": 32000,
+   "modified_time": 1784359988,
+   "name": "readme.txt",
+   "size": 17,
    "uid": 0
   }
  ],
  "entry_count": 2,
  "file_count": 2,
- "unpacked_size": 64000
+ "unpacked_size": 28
 }
 ```

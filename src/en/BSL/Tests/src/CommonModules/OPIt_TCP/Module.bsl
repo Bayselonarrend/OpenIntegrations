@@ -198,6 +198,8 @@ Procedure TCP_CreateConnection(FunctionParameters)
 
     OPI_TestDataRetrieval.Process(Connection, "TCP", "CreateConnection", "TLS");
 
+    OPI_TCP.CloseConnection(Connection); // SKIP
+
 EndProcedure
 
 Procedure TCP_CloseConnection(FunctionParameters)

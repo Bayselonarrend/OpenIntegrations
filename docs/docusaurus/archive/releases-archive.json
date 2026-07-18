@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-16T11:43:33",
+ "generatedAt": "2026-07-18T16:14:13",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -106,6 +106,12 @@
      "icon": "media/logo.png",
      "description_ru": "Улучшена панель управления расширением в 1С, добавлен раздел обновлений",
      "description_en": "Improved 1C extension management panel, added extension updates section"
+    },
+    {
+     "lib": "TCP",
+     "icon": "media/TCP.png",
+     "description_ru": "Исправлено периодическое получение пустого ответа при чтении с маркером на Windows (таймаут сокета / публичный echo)",
+     "description_en": "Fixed intermittent empty reads with an end marker on Windows (socket timeout / public echo)"
     }
    ],
    "artifacts": [

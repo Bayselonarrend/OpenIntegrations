@@ -70,7 +70,7 @@ import Admonition from '@theme/Admonition';
         ```bash
             oint cdek ПолучитьДоговоренностьОДоставке \
               --token "***" \
-              --uuid "38e6f857-0d41-445b-bfce-7b4a24f1f35b" \
+              --uuid "471ed096-ba18-4d99-b44e-326d8d8becd1" \
               --testapi "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ import Admonition from '@theme/Admonition';
         ```batch
             oint cdek ПолучитьДоговоренностьОДоставке ^
               --token "***" ^
-              --uuid "38e6f857-0d41-445b-bfce-7b4a24f1f35b" ^
+              --uuid "471ed096-ba18-4d99-b44e-326d8d8becd1" ^
               --testapi "***"
         ```
     </TabItem>
@@ -90,8 +90,8 @@ import Admonition from '@theme/Admonition';
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "592957ee-3d0a-411a-b7ee-ce20a95eede4",
-  "date": "2026-07-29",
+  "order_uuid": "03f0ea6a-3d1a-47f8-a0e1-798ae08d925b",
+  "date": "2026-08-03",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -108,30 +108,30 @@ import Admonition from '@theme/Admonition';
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "4505ae1f-9203-45aa-b33b-d15f03a61ade",
+  "uuid": "c5757991-8ef6-447d-af25-ea1a9605d727",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-07-15T17:49:59+00:00"
+    "date_time": "2026-07-18T10:35:18+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-07-15T17:49:58+00:00"
+    "date_time": "2026-07-18T10:35:17+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "bd94ed5a-133e-4194-ad69-62e216eed193",
+   "request_uuid": "c20553bb-e689-42a7-a2ae-0e622564d5c6",
    "type": "CREATE",
-   "date_time": "2026-07-15T17:49:58+00:00",
+   "date_time": "2026-07-18T10:35:17+03:00",
    "state": "INVALID",
    "errors": [
     {
-     "code": "agreement_disabled_third_party_logistic",
-     "message": "Заказ доставляется компанией-партнером. Согласование доставки запрещено"
+     "code": "delivery_date_forbidden",
+     "message": "Доставка в указанную дату не осуществляется"
     }
    ]
   }

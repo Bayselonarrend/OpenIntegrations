@@ -116,7 +116,7 @@ import Admonition from '@theme/Admonition';
             
             oint ssh ПолучитьКонфигурациюСоединения \
               --set "{'auth_type':'keyboard_interactive','host':'172.33.0.34','port':'2223','username':'bayselonarrend','keyboard_responses':['12we3456!2154']}" \
-              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
+              --proxy "{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
   
@@ -126,7 +126,7 @@ import Admonition from '@theme/Admonition';
             
             oint ssh ПолучитьКонфигурациюСоединения ^
               --set "{'auth_type':'keyboard_interactive','host':'172.33.0.34','port':'2223','username':'bayselonarrend','keyboard_responses':['12we3456!2154']}" ^
-              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
+              --proxy "{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
 </Tabs>
@@ -142,7 +142,7 @@ import Admonition from '@theme/Admonition';
   "password": "***"
  },
  "proxy": {
-  "server": "host.docker.internal",
+  "server": "127.0.0.1",
   "port": 1080,
   "proxy_type": "socks5",
   "login": "proxyuser",
