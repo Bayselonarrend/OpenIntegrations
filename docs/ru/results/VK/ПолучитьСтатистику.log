@@ -20,7 +20,7 @@
   },
   {
    "activity": {
-    "comments": 5
+    "comments": 6
    },
    "period_from": 1784246400,
    "period_to": 1784332799,
@@ -36,11 +36,11 @@
      },
      {
       "value": "21-24",
-      "count": 1
+      "count": 0
      },
      {
       "value": "24-27",
-      "count": 1
+      "count": 0
      },
      {
       "value": "27-30",
@@ -52,54 +52,54 @@
      },
      {
       "value": "35-45",
-      "count": 2
+      "count": 3
      },
      {
       "value": "45-100",
-      "count": 4
+      "count": 6
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Кирово-Чепецк",
-      "value": 346
+      "name": "Ижевск",
+      "value": 56
      },
      {
       "count": 1,
-      "name": "Вышний Волочек",
-      "value": 460
+      "name": "Екатеринбург",
+      "value": 49
      },
      {
       "count": 1,
-      "name": "Донецк",
-      "value": 223
+      "name": "Смоленск",
+      "value": 130
      },
      {
       "count": 1,
-      "name": "Чебоксары",
-      "value": 157
+      "name": "Брянск",
+      "value": 33
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 9,
+      "count": 10,
       "name": "Россия",
       "value": 1
      }
     ],
     "mobile_reach": 9,
-    "reach": 9,
+    "reach": 10,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 5
+      "count": 4
      },
      {
       "value": "m",
-      "count": 4
+      "count": 6
      }
     ],
     "sex_age": [
@@ -113,11 +113,11 @@
      },
      {
       "value": "f;21-24",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;24-27",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;27-30",
@@ -125,7 +125,7 @@
      },
      {
       "value": "f;30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;35-45",
@@ -133,7 +133,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 0
+      "count": 2
      },
      {
       "value": "m;12-18",
@@ -157,11 +157,11 @@
      },
      {
       "value": "m;30-35",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;35-45",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;45-100",

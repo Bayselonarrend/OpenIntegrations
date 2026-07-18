@@ -6,8 +6,8 @@
    "path": "disk:/OpenIntegrations",
    "type": "dir",
    "name": "OpenIntegrations",
-   "created": "2026-03-12T08:49:24+00:00",
-   "modified": "2026-03-12T08:49:24+00:00",
+   "created": "2026-03-12T11:49:24+03:00",
+   "modified": "2026-03-12T11:49:24+03:00",
    "public_key": "***",
    "public_url": "https://yadi.sk/d/_paRtkfzIV-wGQ",
    "resource_id": "1573541518:2fbe9407e86db710692960dae5780ebc0fd64015b5bdb7b9f00a285f05109dbe",
@@ -22,8 +22,8 @@
    "path": "disk:/058005a9-ab90-44b8-981c-a8b08da247d5.png",
    "type": "file",
    "name": "058005a9-ab90-44b8-981c-a8b08da247d5.png",
-   "created": "2026-05-16T17:02:44+00:00",
-   "modified": "2026-05-16T17:02:44+00:00",
+   "created": "2026-05-16T20:02:44+03:00",
+   "modified": "2026-05-16T20:02:44+03:00",
    "size": 2114023,
    "mime_type": "multipart",
    "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
@@ -39,7 +39,7 @@
    },
    "exif": {},
    "antivirus_status": "clean",
-   "file": "https://downloader.disk.yandex.ru/disk/b5d81188b2b4d6234e4786bdd547641744bd19d55d556691aea5ae4e600ef11b/6a5b6281/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=058005a9-ab90-44b8-981c-a8b08da247d5.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=9e0176f87f6565a22f78e0f9b39a4d78"
+   "file": "https://downloader.disk.yandex.ru/disk/5c66451b17aea3518b4b87bbbc02b66031b602284b1d52f6ebb7461b5758572b/6a5b65e5/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=058005a9-ab90-44b8-981c-a8b08da247d5.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&is_direct_zip_experiment=1&etag=9e0176f87f6565a22f78e0f9b39a4d78"
   }
  ]
 }

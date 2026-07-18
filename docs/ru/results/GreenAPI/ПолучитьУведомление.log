@@ -1,26 +1,17 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0D52D3BBAFE43051969",
+  "typeWebhook": "outgoingMessageStatus",
+  "chatId": "***",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1784304926,
-  "senderData": {
-   "chatId": "***",
-   "sender": "***",
-   "senderName": "***",
-   "senderContactName": "***",
-   "chatName": "***"
-  },
-  "messageData": {
-   "typeMessage": "deletedMessage",
-   "deletedMessageData": {
-    "stanzaId": "3EB036FF4589ABCCC9545C"
-   }
-  }
+  "timestamp": 1784305076,
+  "idMessage": "3EB0E903A4B6963CC72EA1",
+  "sendByApi": "***",
+  "status": "failed",
+  "description": "failed to send message with file"
  }
 }

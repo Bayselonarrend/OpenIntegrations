@@ -2,13 +2,13 @@
  "title": "Тестовый RSS канал",
  "link": "https://example.com",
  "description": "Описание тестового RSS канала",
- "lastBuildDate": "Sat, 18 Jul 2026 07:18:24 +0000",
+ "lastBuildDate": "Sat, 18 Jul 2026 10:32:08 +0000",
  "items": [
   {
    "title": "Первый элемент",
    "description": "Описание первого элемента",
    "link": "https://example.com/item1",
-   "pubDate": "Sat, 18 Jul 2026 07:18:24 +0000",
+   "pubDate": "Sat, 18 Jul 2026 10:32:08 +0000",
    "author": "test@example.com",
    "guid": "item-1"
   },
@@ -16,7 +16,7 @@
    "title": "Второй элемент",
    "description": "Описание второго элемента",
    "link": "https://example.com/item2",
-   "pubDate": "Sat, 18 Jul 2026 07:18:24 +0000",
+   "pubDate": "Sat, 18 Jul 2026 10:32:08 +0000",
    "author": "test@example.com",
    "guid": "item-2"
   }
