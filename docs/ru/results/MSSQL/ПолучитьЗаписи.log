@@ -3,18 +3,18 @@
   {
    "bigint_field": 20000000000,
    "bit_field": 1,
-   "date_field": "2026-07-15",
-   "datetime_field": "2026-07-15T17:49:12",
-   "dto_field": "2026-07-15T07:49:12+00:00",
+   "date_field": "2026-07-18",
+   "datetime_field": "2026-07-18T07:20:28",
+   "dto_field": "2026-07-17T21:20:28+00:00",
    "float24_field": 10.1234569549561,
    "float53_field": 10.1234567891235,
    "int_field": 200000,
    "numeric_field": 5.333,
    "nvarchar_field": "Some text",
    "smallint_field": 2000,
-   "time_field": "17:49:12",
+   "time_field": "07:20:28",
    "tinyint_field": 5,
-   "uid_field": "56dcb745-bcaa-4d92-9003-cec3e9a05bc4",
+   "uid_field": "ad8f0757-73a9-4927-8080-63b79512a3b3",
    "varbinary_field": "<Двоичные данные>",
    "xml_field": "<root><element><name>Пример</name><value>123</value></element><element><name>Тест</name><value>456</value></element></root>"
   }

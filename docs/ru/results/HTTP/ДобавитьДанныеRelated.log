@@ -1,6 +1,6 @@
 ﻿{
  "args": {},
- "data": "--fd6f58c8c8074d2dac6475084ed6c0d8\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{\r\n \"Поле1\": 10,\r\n \"Поле2\": \"Текст\",\r\n \"Поле3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}\r\n\r\n--fd6f58c8c8074d2dac6475084ed6c0d8--\r\n",
+ "data": "--0a88fbec24a34be09d191a29d644b70d\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{\r\n \"Поле1\": 10,\r\n \"Поле2\": \"Текст\",\r\n \"Поле3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}\r\n\r\n--0a88fbec24a34be09d191a29d644b70d--\r\n",
  "files": {},
  "form": {},
  "headers": {
@@ -9,11 +9,11 @@
   "Accept-Encoding": "gzip",
   "Connection": "Keep-Alive",
   "Content-Length": "223",
-  "Content-Type": "multipart/related; boundary=fd6f58c8c8074d2dac6475084ed6c0d8",
+  "Content-Type": "multipart/related; boundary=0a88fbec24a34be09d191a29d644b70d",
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.1.0",
-  "X-Arr-Log-Id": "ce0b7a66-4a3f-4a30-a84f-f83f10648ce7",
+  "X-Arr-Log-Id": "e0eb0f87-22c8-4817-b42c-f561fa0974f4",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

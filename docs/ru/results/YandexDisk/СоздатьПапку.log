@@ -1,22 +1,22 @@
 ﻿{
- "path": "disk:/464d05d5-c95e-48fe-a76f-a42110b96be6",
+ "path": "disk:/8dc1e031-85c3-4996-b6f1-9e9df4b24dee",
  "type": "dir",
- "name": "464d05d5-c95e-48fe-a76f-a42110b96be6",
- "created": "2026-07-15T17:46:43+00:00",
- "modified": "2026-07-15T17:46:43+00:00",
+ "name": "8dc1e031-85c3-4996-b6f1-9e9df4b24dee",
+ "created": "2026-07-18T07:18:55+00:00",
+ "modified": "2026-07-18T07:18:55+00:00",
  "_embedded": {
-  "path": "disk:/464d05d5-c95e-48fe-a76f-a42110b96be6",
+  "path": "disk:/8dc1e031-85c3-4996-b6f1-9e9df4b24dee",
   "limit": 20,
   "offset": 0,
   "sort": "",
   "total": 0,
   "items": []
  },
- "resource_id": "1573541518:9a863b9a449920fb3783db1f3bf524c6f7e2fcc02f5757f1e89450411dab1f5e",
- "revision": 1784137603010534,
+ "resource_id": "1573541518:7e58b45c30ebdaf7ce30d26e89b22fa9d81627bd03ae2e1d283ed008dbc424e4",
+ "revision": 1784359135464160,
  "comment_ids": {
-  "public_resource": "1573541518:9a863b9a449920fb3783db1f3bf524c6f7e2fcc02f5757f1e89450411dab1f5e",
-  "private_resource": "1573541518:9a863b9a449920fb3783db1f3bf524c6f7e2fcc02f5757f1e89450411dab1f5e"
+  "public_resource": "1573541518:7e58b45c30ebdaf7ce30d26e89b22fa9d81627bd03ae2e1d283ed008dbc424e4",
+  "private_resource": "1573541518:7e58b45c30ebdaf7ce30d26e89b22fa9d81627bd03ae2e1d283ed008dbc424e4"
  },
  "exif": {}
 }

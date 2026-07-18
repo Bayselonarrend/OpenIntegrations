@@ -486,5 +486,62 @@
     "title": "Красный"
    }
   ]
+ },
+ {
+  "id": 5913,
+  "title": "Color (change.)",
+  "type": "text",
+  "variants": [
+   {
+    "id": 11400,
+    "title": "New variant name"
+   },
+   {
+    "id": 11401,
+    "title": "Blue"
+   },
+   {
+    "id": 11402,
+    "title": "Red"
+   }
+  ]
+ },
+ {
+  "id": 5914,
+  "title": "Цвет (изм.)",
+  "type": "text",
+  "variants": [
+   {
+    "id": 11403,
+    "title": "Новое имя варианта"
+   },
+   {
+    "id": 11404,
+    "title": "Синий"
+   },
+   {
+    "id": 11405,
+    "title": "Красный"
+   }
+  ]
+ },
+ {
+  "id": 5915,
+  "title": "Color (change.)",
+  "type": "text",
+  "variants": [
+   {
+    "id": 11406,
+    "title": "New variant name"
+   },
+   {
+    "id": 11407,
+    "title": "Blue"
+   },
+   {
+    "id": 11408,
+    "title": "Red"
+   }
+  ]
  }
 ]

@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3568275402614526\"",
- "id": "bnis12oj650001hpdcc95jaipg",
+ "etag": "\"3568718426248798\"",
+ "id": "k1q5kt6vldpus0omlvt26kn2l8",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=Ym5pczEyb2o2NTAwMDFocGRjYzk1amFpcGcgMzgwMjc1YjE3OTViNWVmZjc5MTM5OGY4MDk0OTc5NmE0NTMxMTBmZDIxZGUxZmQ5MzYwZGFhNTdkNTdiNTUxNEBn",
- "created": "2026-07-15T17:48:21Z",
- "updated": "2026-07-15T17:48:21.307Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=azFxNWt0NnZsZHB1czBvbWx2dDI2a24ybDggNDAwNWQxOWRjY2JiMDRiNzhkMGVmOTFiYTY0YWJjZGZiMjlmODY3YzU5ZGJmOWI1MzgxMzc2YzUwZTY0NzhiMEBn",
+ "created": "2026-07-18T07:20:12Z",
+ "updated": "2026-07-18T07:20:13.124Z",
  "summary": "Новое событие",
  "description": "Описание тестового события",
  "location": "В офисе",
@@ -13,19 +13,19 @@
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "380275b1795b5eff791398f80949796a453110fd21de1fd9360daa57d57b5514@group.calendar.google.com",
+  "email": "4005d19dccbb04b78d0ef91ba64abcdfb29f867c59dbf9b5381376c50e6478b0@group.calendar.google.com",
   "displayName": "Тестовый календарь",
   "self": true
  },
  "start": {
-  "dateTime": "2026-07-15T17:48:21+00:00",
+  "dateTime": "2026-07-18T07:20:13+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-07-15T18:48:21+00:00",
+  "dateTime": "2026-07-18T08:20:13+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "bnis12oj650001hpdcc95jaipg@google.com",
+ "iCalUID": "k1q5kt6vldpus0omlvt26kn2l8@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

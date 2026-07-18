@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "592957ee-3d0a-411a-b7ee-ce20a95eede4",
-  "date": "2026-07-29",
+  "order_uuid": "3e65da6d-15c4-4b59-aa8a-6a6dccb5450f",
+  "date": "2026-08-03",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -19,30 +19,30 @@
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "4505ae1f-9203-45aa-b33b-d15f03a61ade",
+  "uuid": "a3cd8da1-711a-4b14-9752-a53b30744fcd",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-07-15T17:49:59+00:00"
+    "date_time": "2026-07-18T07:22:15+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-07-15T17:49:58+00:00"
+    "date_time": "2026-07-18T07:22:14+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "bd94ed5a-133e-4194-ad69-62e216eed193",
+   "request_uuid": "503bf32b-1a47-498f-9919-3b543d606d91",
    "type": "CREATE",
-   "date_time": "2026-07-15T17:49:58+00:00",
+   "date_time": "2026-07-18T07:22:14+00:00",
    "state": "INVALID",
    "errors": [
     {
-     "code": "agreement_disabled_third_party_logistic",
-     "message": "Заказ доставляется компанией-партнером. Согласование доставки запрещено"
+     "code": "delivery_date_forbidden",
+     "message": "Доставка в указанную дату не осуществляется"
     }
    ]
   }
