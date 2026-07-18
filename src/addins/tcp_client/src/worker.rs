@@ -126,15 +126,15 @@ impl Session {
         }
 
         let ok = match connection {
-            Connection::Plain(tcp_stream) => match tcp_stream.write(&data) {
-                Ok(_) => tcp_stream.flush().is_ok(),
+            Connection::Plain(tcp_stream) => match tcp_stream.write_all(&data) {
+                Ok(()) => tcp_stream.flush().is_ok(),
                 Err(e) => {
                     self.save_error(&e.to_string());
                     false
                 }
             },
-            Connection::Tls(tls_stream) => match tls_stream.write(&data) {
-                Ok(_) => tls_stream.flush().is_ok(),
+            Connection::Tls(tls_stream) => match tls_stream.write_all(&data) {
+                Ok(()) => tls_stream.flush().is_ok(),
                 Err(e) => {
                     self.save_error(&e.to_string());
                     false
@@ -161,25 +161,16 @@ impl Session {
         };
 
         const BUFFER_SIZE: usize = 1024;
-        const MIN_READ_TIMEOUT_MS: u64 = 200;
+        // Chunk wait must be above typical RTT to public echo hosts (tcpbin ~150–250ms).
+        // On Windows SO_RCVTIMEO surfaces as TimedOut (not WouldBlock).
+        const MAX_READ_SLICE_MS: u64 = 1000;
 
         let mut result = Vec::new();
         let mut buffer = vec![0u8; BUFFER_SIZE];
 
         let total_timeout = Duration::from_millis(timeout_ms.max(0) as u64);
         let start_time = Instant::now();
-        let min_read_timeout = Duration::from_millis(MIN_READ_TIMEOUT_MS);
         let marker_exists = !end_marker.is_empty();
-
-        let connection_result = match connection {
-            Connection::Plain(tcp_stream) => tcp_stream.set_read_timeout(Some(min_read_timeout)),
-            Connection::Tls(tls_stream) => tls_stream.get_ref().set_read_timeout(Some(min_read_timeout)),
-        };
-
-        if let Err(e) = connection_result {
-            self.save_error(&e.to_string());
-            return vec![];
-        }
 
         loop {
             if timeout_ms > 0 && start_time.elapsed() >= total_timeout {
@@ -187,7 +178,30 @@ impl Session {
             }
 
             if max_data_size > 0 && result.len() >= max_data_size as usize {
+                result.truncate(max_data_size as usize);
                 break;
+            }
+
+            let read_timeout = if timeout_ms > 0 {
+                let remaining = total_timeout.saturating_sub(start_time.elapsed());
+                if remaining.is_zero() {
+                    break;
+                }
+                remaining.min(Duration::from_millis(MAX_READ_SLICE_MS))
+            } else {
+                Duration::from_millis(MAX_READ_SLICE_MS)
+            };
+
+            let connection_result = match connection {
+                Connection::Plain(tcp_stream) => tcp_stream.set_read_timeout(Some(read_timeout)),
+                Connection::Tls(tls_stream) => {
+                    tls_stream.get_ref().set_read_timeout(Some(read_timeout))
+                }
+            };
+
+            if let Err(e) = connection_result {
+                self.save_error(&e.to_string());
+                return result;
             }
 
             let read_result = match connection {
@@ -200,14 +214,24 @@ impl Session {
                 Ok(size) => {
                     result.extend_from_slice(&buffer[..size]);
 
-                    if marker_exists && result.ends_with(&end_marker) {
+                    if max_data_size > 0 && result.len() > max_data_size as usize {
+                        result.truncate(max_data_size as usize);
                         break;
+                    }
+
+                    if marker_exists {
+                        if let Some(pos) = find_subsequence(&result, &end_marker) {
+                            result.truncate(pos + end_marker.len());
+                            break;
+                        }
                     }
                 }
                 Err(ref e)
                     if matches!(
                         e.kind(),
-                        std::io::ErrorKind::WouldBlock | std::io::ErrorKind::TimedOut
+                        std::io::ErrorKind::WouldBlock
+                            | std::io::ErrorKind::TimedOut
+                            | std::io::ErrorKind::Interrupted
                     ) =>
                 {
                     continue
@@ -250,6 +274,13 @@ impl Session {
 
         ok
     }
+}
+
+fn find_subsequence(haystack: &[u8], needle: &[u8]) -> Option<usize> {
+    if needle.is_empty() || haystack.len() < needle.len() {
+        return None;
+    }
+    haystack.windows(needle.len()).position(|window| window == needle)
 }
 
 pub fn spawn_thread(logger: Option<Arc<Logger>>) -> Result<SyncBackendThread<WorkerCommand>, String> {
