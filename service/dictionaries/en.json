@@ -11654,7 +11654,7 @@
 "УстановитьТипДанных: установка значения": "SetDataType: setting the value",
 "Обновляет данные документов в коллекции": "Updates document data in the collection",
 "Выберите пункт **Локальное приложение**": "Select **Local Application**",
-"корень коллекции не был инициализирован": "root collection was not initialized",
+"корень коллекции не был инициализирован": "collection root was not initialized",
 "Возвращает объект текущего HTTP запроса": "Returns the object of the current HTTP request",
 "Сериализует данные в формат MessagePack": "Serializes data into MessagePack format",
 "device_code из ПолучитьКодПодтверждения": "device_code from GetConfirmationCode",

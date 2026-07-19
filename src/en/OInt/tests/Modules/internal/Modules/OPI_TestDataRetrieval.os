@@ -11374,7 +11374,7 @@ Function Check_HTTP_InsertBodyField(Val Result, Val Option, Data = "")
 
     If Option = "Without initialization" Then
 
-        ExpectsThat(StrFind(Result, "root collection was not initialized") > 0).Равно(True);
+        ExpectsThat(StrFind(Result, "collection root was not initialized") > 0).Равно(True);
 
         Return Result;
 
@@ -11417,7 +11417,7 @@ Function Check_HTTP_AddValue(Val Result, Val Option, Data = "")
 
     If Option = "Without initialization" Then
 
-        ExpectsThat(StrFind(Result, "root collection was not initialized") > 0).Равно(True);
+        ExpectsThat(StrFind(Result, "collection root was not initialized") > 0).Равно(True);
 
         Return Result;
 
