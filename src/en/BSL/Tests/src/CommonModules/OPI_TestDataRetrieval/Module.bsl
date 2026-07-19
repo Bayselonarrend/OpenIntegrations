@@ -667,11 +667,11 @@ Procedure WriteArchiveParameterFromCollection(Parameters, Name)
 
     For Each Prefix In Prefixes Do
 
-        Key = Prefix + "_" + Name;
+        CurrentKey = Prefix + "_" + Name;
 
-        If OPI_Tools.CollectionFieldExists(Parameters, Key) Then
+        If OPI_Tools.CollectionFieldExists(Parameters, CurrentKey) Then
 
-            WriteParameter("Archive_" + Name, Parameters[Key]);
+            WriteParameter("Archive_" + Name, Parameters[CurrentKey]);
             Return;
 
         EndIf;
