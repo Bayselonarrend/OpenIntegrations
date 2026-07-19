@@ -1,3 +1,3 @@
 oint slack GetExternalFile ^
   --token "***" ^
-  --fileid "F0BHS0E2KFB"
+  --fileid "F0BJFGLFRD2"

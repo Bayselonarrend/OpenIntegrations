@@ -2,7 +2,7 @@
 
 oint s3 PutObject ^
   --name "fileChunked.mp3" ^
-  --bucket "9e8ebe51" ^
+  --bucket "f59f0da0" ^
   --data "https://releases.openintegrations.dev/test_data/song.mp3" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
   --dir true

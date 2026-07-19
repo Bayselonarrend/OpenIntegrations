@@ -2,4 +2,4 @@ oint rportal GetItemLogs \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --item 416715
+  --item 468752

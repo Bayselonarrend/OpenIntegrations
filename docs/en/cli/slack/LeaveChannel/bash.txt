@@ -1,3 +1,3 @@
 oint slack LeaveChannel \
   --token "***" \
-  --channel "C0BJJC3DK5W"
+  --channel "C0BJ9R2N3U6"

@@ -2,4 +2,4 @@ oint telegram SendVideo \
   --token "***" \
   --chat "***" \
   --text "Строковое значение" \
-  --video "/tmp/kcdbpeax.aqk"
+  --video "C:\Users\bayselonarrend\AppData\Local\Temp\se4vrumb.1on"

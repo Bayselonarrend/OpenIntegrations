@@ -2,4 +2,4 @@ oint rportal DeleteLog \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --id 409700
+  --id 461019

@@ -1,5 +1,5 @@
 oint rportal GetLogStructure \
-  --launch "4cab2367-5806-4e07-b08e-8cd1d83151a0" \
-  --id "6f428fd5-fbbd-40cf-aadf-a9698552f7da" \
+  --launch "fcd0bb40-ab4b-40a0-b411-9d6b65d6083b" \
+  --id "a9f89a19-0d78-4fea-bc05-ab988dd39e33" \
   --time "2026-01-01T10:00:10" \
   --text "Some log"

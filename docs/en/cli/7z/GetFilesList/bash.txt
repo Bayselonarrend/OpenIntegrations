@@ -1,2 +1,3 @@
 oint 7z GetFilesList \
-  --src "/tmp//opi_sevenz_modify_63919777209116/archive_buffer.7z"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\4c4vskbi.str" \
+  --password "***"

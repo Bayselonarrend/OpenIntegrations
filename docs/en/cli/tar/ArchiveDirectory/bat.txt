@@ -1,0 +1,4 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint tar ArchiveDirectory ^
+  --src "{'entries':[{'name':'readme.txt','directory':false,'from_path':true,'path':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_63920076451619/src/readme.txt'},{'name':'docs','directory':true,'entries':[{'name':'note.txt','directory':false,'from_path':true,'path':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_tar_63920076451619/src/docs/note.txt'}]}]}"

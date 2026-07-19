@@ -1,0 +1,3 @@
+oint tar UnpackFiles \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\x1vinsnf.02c" \
+  --paths "['readme.txt','docs/note.txt']"

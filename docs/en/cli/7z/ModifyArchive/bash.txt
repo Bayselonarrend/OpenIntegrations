@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint 7z ModifyArchive \
-  --src "/tmp//opi_sevenz_modify_63919777209116/archive_buffer.7z" \
-  --additions "{'extra/info.txt':'/tmp//opi_sevenz_modify_63919777209116/extra_info.txt','readme.txt':'/tmp/x4jjs4eh.cvp'}" \
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_63920076453048/archive_buffer.7z" \
+  --additions "{'extra/info.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\\\opi_sevenz_63920076453048/extra_info.txt','readme.txt':'C:\\Users\\bayselonarrend\\AppData\\Local\\Temp\\m5f1pxsc.l5l'}" \
   --deletions "['config/settings.json','missing/path.txt']"

@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint s3 DeleteBucketTagging \
-  --name "722a064c" \
+  --name "62b1b1ea" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"

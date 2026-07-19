@@ -1,2 +1,2 @@
 oint 7z GetMetadata \
-  --src "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_meta_63920076661968/archive_lzma.7z"

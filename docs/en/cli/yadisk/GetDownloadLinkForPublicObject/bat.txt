@@ -1,3 +1,3 @@
 oint yadisk GetDownloadLinkForPublicObject ^
   --token "***" ^
-  --url "https://yadi.sk/d/Qi9nkL3eztyslw"
+  --url "https://yadi.sk/d/13BMkiZp0yqHVA"

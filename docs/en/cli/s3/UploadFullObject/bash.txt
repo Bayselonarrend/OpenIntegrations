@@ -2,7 +2,7 @@
 
 oint s3 UploadFullObject \
   --name "pictureSmall.jpg" \
-  --bucket "9e8ebe51" \
+  --bucket "f59f0da0" \
   --data "https://releases.openintegrations.dev/test_data/picture.jpg" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true

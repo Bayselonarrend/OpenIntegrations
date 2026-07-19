@@ -1,4 +1,4 @@
 oint cdek GetPrealert ^
   --token "***" ^
-  --uuid "6d6e9196-35c0-498f-8cad-acd3ee58aafb" ^
+  --uuid "00c65167-35d5-4d09-b6be-bff70fe36ee4" ^
   --testapi "***"
