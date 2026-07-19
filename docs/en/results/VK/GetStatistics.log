@@ -7,7 +7,7 @@
     "age": [
      {
       "value": "12-18",
-      "count": 0
+      "count": 1
      },
      {
       "value": "18-21",
@@ -35,7 +35,7 @@
      },
      {
       "value": "45-100",
-      "count": 2
+      "count": 3
      }
     ],
     "cities": [
@@ -53,18 +53,23 @@
       "count": 1,
       "name": "Москва",
       "value": 1
+     },
+     {
+      "count": 1,
+      "name": "Челябинск",
+      "value": 158
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 6,
+      "count": 8,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 5,
-    "reach": 6,
+    "mobile_reach": 7,
+    "reach": 8,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -73,7 +78,7 @@
      },
      {
       "value": "m",
-      "count": 2
+      "count": 4
      }
     ],
     "sex_age": [
@@ -111,7 +116,7 @@
      },
      {
       "value": "m;12-18",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;18-21",
@@ -139,7 +144,7 @@
      },
      {
       "value": "m;45-100",
-      "count": 1
+      "count": 2
      }
     ]
    },

@@ -1,9 +1,9 @@
 ﻿{
- "groupId": "120363412339072196@g.us",
+ "groupId": "120363428266553117@g.us",
  "owner": "***",
  "subject": "New group",
  "description": "",
- "creation": 1784478468,
+ "creation": 1784480752,
  "participants": [
   {
    "id": "***",
@@ -13,7 +13,7 @@
    "isSuperAdmin": true
   }
  ],
- "subjectTime": 1784478468,
+ "subjectTime": 1784480752,
  "subjectOwner": "375447830891@c.us",
  "groupInviteLink": "***",
  "allowParticipantsSendMessages": true,

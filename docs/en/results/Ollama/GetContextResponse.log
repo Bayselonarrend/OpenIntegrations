@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-07-19T16:30:53.8312287Z",
+ "created_at": "2026-07-19T17:08:32.3894884Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2002. It was later updated, known as 1C:2012, with enhanced features and capabilities. In 2014, 1C:2019 was released which included new design, functionality, and performance improvements. In 2021, Microsoft released the latest version of 1C:Enterprise, 1C:2022, which offers enhanced features and capabilities to address modern business needs. The latest version is also known as 1C:2022. As per Microsoft's official website, the current version of 1C:Enterprise is 1C:2022."
+  "content": "1C:Enterprise has been continuously enhanced and released since its original launch in the mid-2000s. The most recent version of the software, known as 1C:Enterprise 15, was released in 2017. At this time, it includes numerous improvements and updates, including new features, enhancements to existing ones, and bug fixes.\n\nRegarding the exact release date, the official release dates of 1C:Enterprise software are as follows:\n\n- 1C:3D - Version 4.6 (April 2008)\n- 1C:3D - Version 5.2 (September 2009)\n- 1C:3D - Version 5.4 (March 2011)\n- 1C:3D - Version 6.0 (June 2012)\n- 1C:3D - Version 6.1 (November 2013)\n- 1C:3D - Version 6.2 (January 2014)\n- 1C:3D - Version 7.0 (October 2015)\n- 1C:3D - Version 8.0 (February 2016)\n- 1C:3D - Version 8.1 (July 2016)\n- 1C:3D - Version 9.0 (August 2017)\n\nThe latest version of 1C:Enterprise is 15, which was released in 2017."
  },
  "done": true,
  "done_reason": "stop",
- "total_duration": 8000664800,
- "load_duration": 119492000,
- "prompt_eval_count": 447,
- "prompt_eval_duration": 1313817000,
- "eval_count": 157,
- "eval_duration": 6545603000
+ "total_duration": 12637744000,
+ "load_duration": 111482200,
+ "prompt_eval_count": 319,
+ "prompt_eval_duration": 805372000,
+ "eval_count": 367,
+ "eval_duration": 11696134000
 }

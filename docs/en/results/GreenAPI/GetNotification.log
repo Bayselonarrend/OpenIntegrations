@@ -2,31 +2,36 @@
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB0EA1FA48B0D2E9D965A",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1784455838,
-  "idMessage": "3EB0D4CF68C602DE3E5008",
+  "timestamp": 1784455842,
   "senderData": {
    "chatId": "***",
-   "chatName": "***",
    "sender": "***",
    "senderName": "***",
-   "senderContactName": "***"
+   "senderContactName": "***",
+   "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://releases.openintegrations.dev/test_data/picture.jpg",
-    "caption": "Описание файла",
-    "fileName": "picture.jpg",
-    "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
-    "forwardingScore": 0,
-    "isForwarded": false
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "Какой ваш любимый цвет?",
+    "options": [
+     {
+      "optionName": "Красный"
+     },
+     {
+      "optionName": "Желтый"
+     },
+     {
+      "optionName": "Зеленый"
+     }
+    ],
+    "multipleAnswers": false
    }
   }
  }

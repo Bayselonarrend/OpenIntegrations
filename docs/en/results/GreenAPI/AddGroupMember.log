@@ -1,6 +1,6 @@
 ﻿{
  "statusCode": 400,
- "timestamp": "2026-07-19T16:28:23.077Z",
+ "timestamp": "2026-07-19T17:06:20.804Z",
  "path": "/waInstance7105187566/addGroupParticipant/425010d90e114aa6b78f0969e1e67ec62579d30401c84d5183",
  "message": "Validation failed. Details: 'chatId': invalid phone number",
  "addParticipant": true

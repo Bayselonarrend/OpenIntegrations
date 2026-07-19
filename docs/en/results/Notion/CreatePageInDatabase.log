@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "3a282aa7-fc4e-81ad-a1e4-f80f3f56e8a0",
- "created_time": "2026-07-19T16:28:00Z",
- "last_edited_time": "2026-07-19T16:28:00Z",
+ "id": "3a282aa7-fc4e-81b7-9a8f-c9e9485d48ee",
+ "created_time": "2026-07-19T17:06:00Z",
+ "last_edited_time": "2026-07-19T17:06:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,29 +15,79 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "3a282aa7-fc4e-81c6-a4a4-fba062ee99da"
+  "database_id": "3a282aa7-fc4e-814d-a05a-e2ff2b9f48fc"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
+  "CreationDate": {
+   "id": "%3EDQ%5C",
+   "type": "date",
+   "date": {
+    "start": "2026-07-19T05:06:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Description": {
+   "id": "LYZe",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "OurFirstClient",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "OurFirstClient",
+     "href": null
+    }
+   ]
+  },
   "Active": {
-   "id": "%3Ai%3Bb",
+   "id": "N%5EfF",
    "type": "checkbox",
    "checkbox": true
   },
-  "Phone": {
-   "id": "%3BeQs",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
   "User": {
-   "id": "Ae%5CP",
+   "id": "ZRkY",
    "type": "people",
    "people": []
   },
+  "Phone": {
+   "id": "aZI%7D",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Number": {
+   "id": "ih%7Dc",
+   "type": "number",
+   "number": 1
+  },
+  "Image": {
+   "id": "r%60%3BN",
+   "type": "files",
+   "files": [
+    {
+     "name": "Logo",
+     "type": "external",
+     "external": {
+      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
   "Email": {
-   "id": "V%7CW%60",
+   "id": "tU%60X",
    "type": "rich_text",
    "rich_text": [
     {
@@ -59,64 +109,14 @@
     }
    ]
   },
-  "Number": {
-   "id": "%5BrX%60",
-   "type": "number",
-   "number": 1
-  },
-  "CreationDate": {
-   "id": "oehk",
-   "type": "date",
-   "date": {
-    "start": "2026-07-19T04:28:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Image": {
-   "id": "p%3F%3Cc",
-   "type": "files",
-   "files": [
-    {
-     "name": "Logo",
-     "type": "external",
-     "external": {
-      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
   "Status": {
-   "id": "w~wD",
+   "id": "~%3FnD",
    "type": "select",
    "select": {
-    "id": "74be6484-29a1-4ab6-8a83-1bd669e5a0f2",
+    "id": "f11467f6-1ebf-4f1d-9bde-f20ada8fb1d8",
     "name": "New",
     "color": "green"
    }
-  },
-  "Description": {
-   "id": "zFC%3D",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "OurFirstClient",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "OurFirstClient",
-     "href": null
-    }
-   ]
   },
   "Name": {
    "id": "title",
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/LLC-Vector-3a282aa7fc4e81ada1e4f80f3f56e8a0",
+ "url": "https://app.notion.com/p/LLC-Vector-3a282aa7fc4e81b79a8fc9e9485d48ee",
  "public_url": null,
  "archived": false,
- "request_id": "b49f7a46-892a-44d1-bd07-f5faa129cd9a"
+ "request_id": "d7f61665-404e-4327-ba59-5cda0553804b"
 }

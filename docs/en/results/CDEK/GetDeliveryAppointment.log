@@ -1,7 +1,7 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "12b6084f-4bea-404c-84e4-1863565a51ee",
+  "order_uuid": "a28547e4-7d39-4c56-9a84-51bf30619ed5",
   "date": "2026-08-03",
   "time_from": "10:00",
   "time_to": "17:00",
@@ -19,29 +19,30 @@
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "a9e68130-89a9-4bd3-a346-5dee58a5d7be",
+  "uuid": "e93d7a40-548a-436e-ab4a-52034fa4a62a",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-07-19T16:31:31+00:00"
+    "date_time": "2026-07-19T17:09:26+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-07-19T16:31:30+00:00"
+    "date_time": "2026-07-19T17:09:25+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "bc20c932-42ab-4686-8747-90bb7159a839",
+   "request_uuid": "e298e093-1c09-42d6-993e-30d6fa95e33b",
    "type": "CREATE",
-   "date_time": "2026-07-19T16:31:30+00:00",
+   "date_time": "2026-07-19T17:09:25+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_forbidden",
+     "additional_code": "0x7B234F39",
      "message": "Доставка в указанную дату не осуществляется"
     }
    ]

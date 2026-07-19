@@ -1,7 +1,7 @@
 ﻿{
  "kind": "calendar#calendar",
- "etag": "\"kHZPdLXyW3U4ZEKrM8c4VfiQOss\"",
- "id": "63c5720924a29ddd877db3f18332586202d11381593713cd9ad11d69d9cccd56@group.calendar.google.com",
+ "etag": "\"F7RewzS8c4CN1ZjxJEpiu8bsMVw\"",
+ "id": "0efbbb7a8a8bf8f8f0fcf5d979d968532ed27d4c9cb8611b63aeecf450a6e7b3@group.calendar.google.com",
  "summary": "New name",
  "description": "New description",
  "timeZone": "Europe/Moscow",
@@ -14,100 +14,100 @@
  "labelProperties": {
   "eventLabels": [
    {
-    "id": "0922a534-dd40-414e-93de-83bb1a9e223b",
-    "backgroundColor": "#33b679"
-   },
-   {
-    "id": "25e17c02-9d72-47bc-b820-ed719f3d9ad5",
-    "backgroundColor": "#4285f4"
-   },
-   {
-    "id": "330c0416-db03-400f-aa6f-ae102e16b953",
-    "backgroundColor": "#7986cb"
-   },
-   {
-    "id": "410ae836-4ae2-463d-8f4f-ebffc85258bc",
-    "backgroundColor": "#d81b60"
-   },
-   {
-    "id": "4e3dd900-6743-4f1e-8ded-ab434e1c309b",
-    "backgroundColor": "#f4511e"
-   },
-   {
-    "id": "542eb52f-8531-4d93-955f-bea680dcc466",
-    "backgroundColor": "#f6bf26"
-   },
-   {
-    "id": "686d23c3-5bb7-4483-b996-e87a4aa62180",
-    "backgroundColor": "#795548"
-   },
-   {
-    "id": "6b027eb0-71aa-40f9-8102-d6b6750ba38d",
-    "backgroundColor": "#a79b8e"
-   },
-   {
-    "id": "73f25b65-aac0-4391-8847-c3eb355cbf52",
-    "backgroundColor": "#f09300"
-   },
-   {
-    "id": "7e0d5c2d-2e48-4a17-b396-946e3bb2f031",
-    "backgroundColor": "#d50000"
-   },
-   {
-    "id": "8c478154-6bd3-4701-96ac-d430e6a8f4dd",
-    "backgroundColor": "#e4c441"
-   },
-   {
-    "id": "91427018-1aa4-409c-9b5e-b578269c0361",
-    "backgroundColor": "#009688"
-   },
-   {
-    "id": "99860ef4-3ad5-4a4c-bf33-3111f52abd5e",
-    "backgroundColor": "#039be5"
-   },
-   {
-    "id": "b6a57c1b-4f7f-4420-80c9-d868b9c80bf6",
-    "backgroundColor": "#0b8043"
-   },
-   {
-    "id": "b914f177-bb90-4430-9644-334166a1f8a3",
+    "id": "05592985-4783-431d-8297-e72c89a90754",
     "backgroundColor": "#7cb342"
    },
    {
-    "id": "c1a0eddd-effc-4771-92ba-0648cbbc19f0",
-    "backgroundColor": "#3f51b5"
+    "id": "058ea2c8-5487-43db-99a9-407f5a51d760",
+    "backgroundColor": "#4285f4"
    },
    {
-    "id": "d02dce00-b90c-4426-9597-f8457de0eb1a",
-    "backgroundColor": "#ad1457"
-   },
-   {
-    "id": "d32625f3-ff72-4cd6-84b8-6680131f6769",
-    "backgroundColor": "#e67c73"
-   },
-   {
-    "id": "d603a3ec-1242-4290-a5f4-2884062a1fed",
-    "backgroundColor": "#c0ca33"
-   },
-   {
-    "id": "d6538da4-0bc8-46f5-a343-57eb9a7353bd",
-    "backgroundColor": "#8e24aa"
-   },
-   {
-    "id": "e6992856-badb-4398-b940-e3f5ef5df87d",
-    "backgroundColor": "#9e69af"
-   },
-   {
-    "id": "e817dda9-bc29-46f8-a9cd-04e927f52d78",
-    "backgroundColor": "#616161"
-   },
-   {
-    "id": "e9f80b28-91a3-4860-a0c2-d4e23115dfb2",
+    "id": "09d16bbd-e1c7-435e-805f-f9474ed08dce",
     "backgroundColor": "#ef6c00"
    },
    {
-    "id": "fe95f539-700a-4759-97dd-c0325b03fde2",
+    "id": "11860c4e-7c2e-4137-8fde-52103075324f",
+    "backgroundColor": "#039be5"
+   },
+   {
+    "id": "18a262b9-c44e-4212-92fb-73cadddb6447",
+    "backgroundColor": "#7986cb"
+   },
+   {
+    "id": "299a479f-8d9c-4329-afec-53e83c243160",
+    "backgroundColor": "#33b679"
+   },
+   {
+    "id": "2b7edc04-e478-4229-9481-73e436ce5cfa",
+    "backgroundColor": "#f09300"
+   },
+   {
+    "id": "3bcf5dc6-3a04-4a29-ab59-ecff92df6248",
+    "backgroundColor": "#616161"
+   },
+   {
+    "id": "40e5597e-9960-4304-8efa-c50e910709c5",
+    "backgroundColor": "#8e24aa"
+   },
+   {
+    "id": "459d1aef-4a4a-4dbf-acd9-21408cc92a58",
+    "backgroundColor": "#ad1457"
+   },
+   {
+    "id": "5a6a2a92-ba2b-4945-8478-294615a42f0a",
+    "backgroundColor": "#d50000"
+   },
+   {
+    "id": "684eb260-c258-45e4-acfd-f7f629382552",
+    "backgroundColor": "#e4c441"
+   },
+   {
+    "id": "7787541c-42a2-482e-a9ca-e9276c52cf8d",
+    "backgroundColor": "#009688"
+   },
+   {
+    "id": "9cfb2d9c-e9ef-453a-a339-36940657b152",
+    "backgroundColor": "#a79b8e"
+   },
+   {
+    "id": "a08bcb5f-c9c6-4074-9ce3-85a270015bc7",
+    "backgroundColor": "#e67c73"
+   },
+   {
+    "id": "a63aa1d4-9199-419e-8d29-b4bf11d599fb",
+    "backgroundColor": "#0b8043"
+   },
+   {
+    "id": "bb2be267-d074-4d14-825f-b77374b17131",
+    "backgroundColor": "#3f51b5"
+   },
+   {
+    "id": "c830f1af-5566-4097-aad7-2f8b41672351",
     "backgroundColor": "#b39ddb"
+   },
+   {
+    "id": "d0505815-e7f7-42ab-9ca9-93bce79c56c1",
+    "backgroundColor": "#f4511e"
+   },
+   {
+    "id": "d2576127-a7dc-4de2-9518-f69d53067005",
+    "backgroundColor": "#9e69af"
+   },
+   {
+    "id": "d3870621-004c-4af6-95a6-2d89dea789e2",
+    "backgroundColor": "#d81b60"
+   },
+   {
+    "id": "db3c41ea-19ee-47f2-a2a8-c13701f9ec16",
+    "backgroundColor": "#795548"
+   },
+   {
+    "id": "f4c2b839-cebe-4521-afed-aadc422c77fc",
+    "backgroundColor": "#c0ca33"
+   },
+   {
+    "id": "f8922523-1e15-48e8-8b8a-895c8555ab7d",
+    "backgroundColor": "#f6bf26"
    }
   ]
  }

@@ -3,14 +3,14 @@
   ".tag": "file",
   "client_modified": "***",
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492",
-  "id": "id:kJU6-a-pT48AAAAAAACClg",
+  "id": "id:kJU6-a-pT48AAAAAAACCzg",
   "is_downloadable": true,
   "name": "pic_copy.png",
   "path_display": "/New/pic_copy.png",
   "path_lower": "/new/pic_copy.png",
   "property_groups": [],
-  "rev": "656f949885f37bd841553",
-  "server_modified": "2026-07-19T16:29:00Z",
+  "rev": "656f9d1cc3072bd841553",
+  "server_modified": "2026-07-19T17:07:06Z",
   "size": 2114023
  }
 }
