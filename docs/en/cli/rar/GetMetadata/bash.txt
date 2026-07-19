@@ -1,2 +1,2 @@
 oint rar GetMetadata \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\z5bxiryr.04p"
+  --src "/tmp/vvz2puf5.zqk"

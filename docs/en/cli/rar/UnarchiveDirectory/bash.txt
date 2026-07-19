@@ -1,2 +1,2 @@
 oint rar UnarchiveDirectory \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\xl33gg1p.ypj"
+  --src "/tmp/ap2eotv3.v4g"

@@ -1,3 +1,3 @@
 oint 7z GetFilesList ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\4c4vskbi.str" ^
+  --src "/tmp/1jxe04za.q5m" ^
   --password "***"

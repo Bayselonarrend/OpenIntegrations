@@ -1,2 +1,2 @@
 oint rar GetFilesList \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\y01rwjdg.rw4"
+  --src "/tmp/jpo1dq3i.lwb"

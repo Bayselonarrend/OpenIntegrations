@@ -1,2 +1,2 @@
 oint tar GetMetadata \
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_meta_63920076606909/archive_gzip.tar.gz"
+  --src "/tmp//opi_tar_meta_63920080138492/archive_gzip.tar.gz"

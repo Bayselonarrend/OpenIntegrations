@@ -2,5 +2,5 @@
 
 oint gcalendar CreateEvent \
   --token "***" \
-  --calendar "87dbc9c2b642f02eec995ff53bde3fa2e38e1a709bcccfd4c1bd0c038e6653ee@group.calendar.google.com" \
-  --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'7/19/2026 7:50:18 PM','EndDate':'7/19/2026 8:50:18 PM','ArrayOfAttachmentURLs':{'Image1':'https://releases.openintegrations.dev/test_data/picture.jpg','Image2':'https://releases.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+  --calendar "5a2feaca8bffbf05781542d3858fed284c660923e9b1d69ef69a81d92569538d@group.calendar.google.com" \
+  --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'07/19/2026 17:50:09','EndDate':'07/19/2026 18:50:09','ArrayOfAttachmentURLs':{'Image1':'https://releases.openintegrations.dev/test_data/picture.jpg','Image2':'https://releases.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"

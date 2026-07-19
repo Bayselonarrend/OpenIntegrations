@@ -1,4 +1,4 @@
 oint yadisk UploadFileByURL \
   --token "***" \
-  --path "/61775565-1900-4112-9544-ce660f693431.png" \
+  --path "/c307c787-5771-458d-b519-7f27984fdaa9.png" \
   --url "https://releases.openintegrations.dev/test_data/picture.jpg"

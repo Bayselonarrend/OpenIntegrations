@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint s3 GetBucketVersioning \
-  --name "62b1b1ea" \
+  --name "47a63aa6" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"

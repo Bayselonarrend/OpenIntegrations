@@ -2,5 +2,5 @@ oint bitrix24 UploadFileToFolder \
   --url "b24-ar17wx.bitrix24.by" \
   --title "Imortant doc.docx" \
   --file "https://releases.openintegrations.dev/test_data/document.docx" \
-  --folderid 64758 \
+  --folderid 64974 \
   --token "***"

@@ -1,3 +1,3 @@
 oint tar UnpackFiles ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\x1vinsnf.02c" ^
+  --src "/tmp/qcndyrb1.h2f" ^
   --paths "['readme.txt','docs/note.txt']"

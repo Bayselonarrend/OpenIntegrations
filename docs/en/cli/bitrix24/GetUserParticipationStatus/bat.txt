@@ -1,4 +1,4 @@
 oint bitrix24 GetUserParticipationStatus ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --event 5748 ^
+  --event 5780 ^
   --token "***"

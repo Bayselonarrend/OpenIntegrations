@@ -1,3 +1,3 @@
 oint rar UnpackFiles ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\xmlyouvu.5yb" ^
+  --src "/tmp/yt0geqvv.imf" ^
   --paths "['readme.txt','docs/note.txt']"

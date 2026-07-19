@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 CreateBucket ^
-  --name "f59f0da0" ^
+  --name "d9cbb690" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --dir true

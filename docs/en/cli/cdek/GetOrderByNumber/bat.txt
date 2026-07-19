@@ -1,5 +1,5 @@
 oint cdek GetOrderByNumber ^
   --token "***" ^
-  --number "c9f5dcd3-350b-455d-9c1d-5fc5509f9aef" ^
+  --number "1ac8f0ba-0fd6-40d6-8cc1-356889de1a66" ^
   --internal true ^
   --testapi "***"

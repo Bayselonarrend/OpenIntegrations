@@ -1,3 +1,3 @@
 oint sqlite GetRecords ^
   --table "test" ^
-  --db "C:\Users\bayselonarrend\AppData\Local\Temp\g1bnzfpw.5cx.sqlite"
+  --db "/tmp/e4mb0cy2.cjq.sqlite"

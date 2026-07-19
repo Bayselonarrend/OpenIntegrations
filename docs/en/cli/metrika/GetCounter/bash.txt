@@ -1,3 +1,3 @@
 oint metrika GetCounter \
   --token "***" \
-  --counter "110866762"
+  --counter "110867595"

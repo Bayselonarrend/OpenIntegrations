@@ -1,7 +1,7 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint s3 PutBucketEncryption ^
-  --name "62b1b1ea" ^
+  --name "47a63aa6" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-  --conf "C:\Users\bayselonarrend\AppData\Local\Temp\0axgy2jt.fuv.xml" ^
+  --conf "/tmp/51ngpoix.hbv.xml" ^
   --dir true

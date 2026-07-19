@@ -1,6 +1,6 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint 7z ArchiveDirectory ^
-  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_63920076453048/src_compress" ^
-  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_sevenz_63920076453048/archive_lzma.7z" ^
+  --src "/tmp//opi_sevenz_63920079973933/src_compress" ^
+  --dest "/tmp//opi_sevenz_63920079973933/archive_lzma.7z" ^
   --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"

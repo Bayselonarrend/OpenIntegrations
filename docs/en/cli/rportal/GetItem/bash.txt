@@ -2,4 +2,4 @@ oint rportal GetItem \
   --url "tests.openintegrations.dev" \
   --token "***" \
   --proj "Test" \
-  --uuid "b386754d-4328-4e53-8635-d412cbd81f33"
+  --uuid "a018f051-cbad-4f8d-9fe0-78436e772d50"

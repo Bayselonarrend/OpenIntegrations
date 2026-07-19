@@ -1,3 +1,3 @@
 oint sqlite ExecuteSQLQuery ^
   --sql "SELECT 1 AS n" ^
-  --db "C:\Users\bayselonarrend\AppData\Local\Temp\bzjec4fe.fi0.sqlite"
+  --db "/tmp/any3pns5.mrr.sqlite"

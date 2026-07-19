@@ -1,4 +1,4 @@
 oint openai GetFileInformation \
   --url "https://hut.openintegrations.dev/localai/" \
   --token "***" \
-  --id "file-32"
+  --id "file-40"
