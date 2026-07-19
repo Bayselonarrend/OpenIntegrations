@@ -1,8 +1,8 @@
 ﻿{
- "id": "recFqhI8VUT7LqwIi",
- "createdTime": "2026-07-19T17:18:19Z",
+ "id": "recl2KdGKa9ifJSQk",
+ "createdTime": "2026-07-19T19:09:54Z",
  "fields": {
-  "Номер": 10,
-  "Строковое": "Привет\n"
+  "Строковое": "Привет\n",
+  "Номер": 10
  }
 }

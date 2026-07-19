@@ -1,14 +1,14 @@
 ﻿{
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1784481407.084249",
+ "ts": "1784488124.063839",
  "text": "Тестовое сообщение 2",
  "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
   "edited": {
    "user": "U06UG1CAYH2",
-   "ts": "1784481418.000000"
+   "ts": "1784488135.000000"
   },
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
@@ -31,7 +31,7 @@
   "blocks": [
    {
     "type": "rich_text",
-    "block_id": "Z1y4",
+    "block_id": "o0A",
     "elements": [
      {
       "type": "rich_text_section",

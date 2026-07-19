@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "3a282aa7-fc4e-816f-9b0f-e9c9e9e6d0f9",
+ "id": "3a282aa7-fc4e-8172-b3ae-d54f88ac74ad",
  "cover": null,
  "icon": null,
- "created_time": "2026-07-19T17:16:00Z",
+ "created_time": "2026-07-19T19:08:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-07-19T17:16:00Z",
+ "last_edited_time": "2026-07-19T19:08:00Z",
  "title": [
   {
    "type": "text",
@@ -53,71 +53,15 @@
  ],
  "is_inline": false,
  "properties": {
-  "Описание": {
-   "id": "%3Ap%3D%3B",
-   "name": "Описание",
+  "Пользователь": {
+   "id": "%3D%60sO",
+   "name": "Пользователь",
    "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Почта": {
-   "id": "ArIp",
-   "name": "Почта",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Телефон": {
-   "id": "RjUy",
-   "name": "Телефон",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Картинка": {
-   "id": "U%60%3EV",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Активен": {
-   "id": "epcJ",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Статус": {
-   "id": "gm%5DH",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "c6b3a8d3-6992-4e67-9753-47f492787143",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "fae5c957-3d56-4f40-89e6-ce647893dfce",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "6a92d300-99fd-4968-a09f-7cbcf12244e8",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
+   "type": "people",
+   "people": {}
   },
   "Номер": {
-   "id": "nBJ%5D",
+   "id": "%3FM%3D%7D",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -125,15 +69,71 @@
     "format": "number"
    }
   },
-  "Пользователь": {
-   "id": "riJ%5B",
-   "name": "Пользователь",
+  "Телефон": {
+   "id": "B%3CmB",
+   "name": "Телефон",
    "description": null,
-   "type": "people",
-   "people": {}
+   "type": "phone_number",
+   "phone_number": {}
+  },
+  "Картинка": {
+   "id": "M%7C%3A%7C",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Почта": {
+   "id": "SV%7Dz",
+   "name": "Почта",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Активен": {
+   "id": "%5Bu%7C%3F",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Статус": {
+   "id": "_%3FfQ",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "aeaf2a94-e2f2-4501-8ea6-52f4656e8320",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "9cf5f965-f299-46a1-aa53-bf75e8498608",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "9d35e27e-8065-4ace-afae-bde79f750d0d",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
+  "Описание": {
+   "id": "h%3Ee%7B",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
   },
   "Дата создания": {
-   "id": "wzmW",
+   "id": "mLqK",
    "name": "Дата создания",
    "description": null,
    "type": "date",
@@ -151,9 +151,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://app.notion.com/p/3a282aa7fc4e816f9b0fe9c9e9e6d0f9",
+ "url": "https://app.notion.com/p/3a282aa7fc4e8172b3aed54f88ac74ad",
  "public_url": null,
  "in_trash": false,
  "archived": false,
- "request_id": "57505d4f-da10-49a9-86b4-68c775eeee0c"
+ "request_id": "0ecf62ab-9acd-4054-b52b-bcf3f2b69536"
 }

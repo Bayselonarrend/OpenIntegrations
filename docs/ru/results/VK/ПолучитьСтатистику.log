@@ -31,11 +31,11 @@
      },
      {
       "value": "35-45",
-      "count": 4
+      "count": 5
      },
      {
       "value": "45-100",
-      "count": 3
+      "count": 5
      }
     ],
     "cities": [
@@ -56,6 +56,21 @@
      },
      {
       "count": 1,
+      "name": "Саратов",
+      "value": 125
+     },
+     {
+      "count": 1,
+      "name": "Петрозаводск",
+      "value": 112
+     },
+     {
+      "count": 1,
+      "name": "Оренбург",
+      "value": 106
+     },
+     {
+      "count": 1,
       "name": "Челябинск",
       "value": 158
      }
@@ -63,22 +78,22 @@
     "countries": [
      {
       "code": "RU",
-      "count": 8,
+      "count": 11,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 7,
-    "reach": 8,
+    "mobile_reach": 10,
+    "reach": 11,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 4
+      "count": 5
      },
      {
       "value": "m",
-      "count": 4
+      "count": 6
      }
     ],
     "sex_age": [
@@ -112,7 +127,7 @@
      },
      {
       "value": "f;45-100",
-      "count": 1
+      "count": 2
      },
      {
       "value": "m;12-18",
@@ -140,11 +155,11 @@
      },
      {
       "value": "m;35-45",
-      "count": 1
+      "count": 2
      },
      {
       "value": "m;45-100",
-      "count": 2
+      "count": 3
      }
     ]
    },

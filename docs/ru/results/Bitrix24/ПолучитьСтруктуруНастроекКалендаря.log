@@ -31,13 +31,13 @@
   "path_to_type_location": ""
  },
  "time": {
-  "start": 1784481994,
-  "finish": 1784481994.13331,
-  "duration": 0.133311986923218,
+  "start": 1784488681,
+  "finish": 1784488681.93851,
+  "duration": 0.938507080078125,
   "processing": 0,
-  "date_start": "2026-07-19T17:26:34+00:00",
-  "date_finish": "2026-07-19T17:26:34+00:00",
-  "operating_reset_at": 1784482594,
+  "date_start": "2026-07-19T22:18:01+03:00",
+  "date_finish": "2026-07-19T22:18:01+03:00",
+  "operating_reset_at": 1784489281,
   "operating": 0
  }
 }
