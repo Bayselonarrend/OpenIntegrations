@@ -1,0 +1,3 @@
+    ArchivePath = Parameters["SevenZ_ArchivePath"];
+
+    Result = OPI_7z.GetMetadata(ArchivePath);

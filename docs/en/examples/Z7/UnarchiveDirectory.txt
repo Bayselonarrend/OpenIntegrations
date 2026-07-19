@@ -1,0 +1,4 @@
+    ArchivePath        = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory = Parameters["SevenZ_DestDir"];
+
+    Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);

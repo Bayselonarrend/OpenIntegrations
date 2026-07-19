@@ -1,0 +1,4 @@
+    SourceDirectory = Parameters["SevenZ_SourceDir"];
+    ArchivePath     = Parameters["SevenZ_ArchivePath"];
+
+    Result = OPI_7z.ArchiveDirectory(SourceDirectory, ArchivePath);

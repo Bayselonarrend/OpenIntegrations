@@ -52,7 +52,20 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    ArchivePath = Parameters["SevenZ_ArchivePath"];
+    NewFilePath = Parameters["SevenZ_NewFilePath"];
 
+    AddableFiles = New Map;
+    AddableFiles.Insert("extra/info.txt", NewFilePath);
+    AddableFiles.Insert("readme.txt"    , GetBinaryDataFromString("Replaced readme content", "UTF-8"));
+
+    DeletablePaths = New Array;
+    DeletablePaths.Add("config/settings.json");
+    DeletablePaths.Add("missing/path.txt");
+
+    Result = OPI_7z.ModifyArchive(ArchivePath, AddableFiles, DeletablePaths);
+```
  
 
  <Tabs>

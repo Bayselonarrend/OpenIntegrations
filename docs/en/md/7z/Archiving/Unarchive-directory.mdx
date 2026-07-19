@@ -50,7 +50,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    ArchivePath        = Parameters["SevenZ_ArchivePath"];
+    DestinateDirectory = Parameters["SevenZ_DestDir"];
 
+    Result = OPI_7z.UnarchiveDirectory(ArchivePath, DestinateDirectory);
+```
  
 
  <Tabs>

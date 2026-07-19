@@ -49,7 +49,11 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    ArchivePath = Parameters["SevenZ_ArchivePath"];
 
+    Result = OPI_7z.GetMetadata(ArchivePath);
+```
  
 
  <Tabs>

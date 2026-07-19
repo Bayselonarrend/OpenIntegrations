@@ -50,7 +50,12 @@ import Admonition from '@theme/Admonition';
 <br/>
 
 
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ПутьАрхива        = Параметры["SevenZ_ArchivePath"];
+    КаталогНазначение = Параметры["SevenZ_DestDir"];
 
+    Результат = OPI_7z.РазархивироватьКаталог(ПутьАрхива, КаталогНазначение);
+```
     
 
  <Tabs>
