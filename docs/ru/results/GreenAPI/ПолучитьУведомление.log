@@ -1,17 +1,38 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingMessageStatus",
-  "chatId": "***",
+  "typeWebhook": "outgoingAPIMessageReceived",
+  "idMessage": "3EB0BD877D0777BD37848D",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1784305076,
-  "idMessage": "3EB0E903A4B6963CC72EA1",
-  "sendByApi": "***",
-  "status": "failed",
-  "description": "failed to send message with file"
+  "timestamp": 1784455844,
+  "senderData": {
+   "chatId": "***",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***",
+   "chatName": "***"
+  },
+  "messageData": {
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "Какой ваш любимый цвет?",
+    "options": [
+     {
+      "optionName": "Красный"
+     },
+     {
+      "optionName": "Желтый"
+     },
+     {
+      "optionName": "Зеленый"
+     }
+    ],
+    "multipleAnswers": true
+   }
+  }
  }
 }

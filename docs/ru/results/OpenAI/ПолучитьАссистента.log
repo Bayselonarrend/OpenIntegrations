@@ -1,7 +1,7 @@
 ﻿{
- "id": "asst_3",
+ "id": "asst_35",
  "object": "assistant",
- "created": 1784359986,
+ "created": 1784481460,
  "model": "smolvlm-256m-instruct",
  "name": "Math tutor",
  "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question."

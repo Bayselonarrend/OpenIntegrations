@@ -1,14 +1,152 @@
 ﻿{
  "response": [
   {
-   "period_from": 1784332800,
-   "period_to": 1784419199,
+   "period_from": 1784419200,
+   "period_to": 1784505599,
    "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
+    "age": [
+     {
+      "value": "12-18",
+      "count": 1
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 0
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 4
+     },
+     {
+      "value": "45-100",
+      "count": 3
+     }
+    ],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Уссурийск",
+      "value": 150
+     },
+     {
+      "count": 1,
+      "name": "Великий Новгород",
+      "value": 35
+     },
+     {
+      "count": 1,
+      "name": "Москва",
+      "value": 1
+     },
+     {
+      "count": 1,
+      "name": "Челябинск",
+      "value": 158
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 8,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 7,
+    "reach": 8,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 4
+     },
+     {
+      "value": "m",
+      "count": 4
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 3
+     },
+     {
+      "value": "f;45-100",
+      "count": 1
+     },
+     {
+      "value": "m;12-18",
+      "count": 1
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 1
+     },
+     {
+      "value": "m;45-100",
+      "count": 2
+     }
+    ]
    },
    "visitors": {
     "cities": [],
@@ -19,11 +157,8 @@
    }
   },
   {
-   "activity": {
-    "comments": 6
-   },
-   "period_from": 1784246400,
-   "period_to": 1784332799,
+   "period_from": 1784332800,
+   "period_to": 1784419199,
    "reach": {
     "age": [
      {
@@ -32,15 +167,15 @@
      },
      {
       "value": "18-21",
-      "count": 0
+      "count": 1
      },
      {
       "value": "21-24",
-      "count": 0
+      "count": 1
      },
      {
       "value": "24-27",
-      "count": 0
+      "count": 1
      },
      {
       "value": "27-30",
@@ -52,45 +187,40 @@
      },
      {
       "value": "35-45",
-      "count": 3
+      "count": 0
      },
      {
       "value": "45-100",
-      "count": 6
+      "count": 2
      }
     ],
     "cities": [
      {
-      "count": 1,
-      "name": "Ижевск",
-      "value": 56
+      "count": 2,
+      "name": "Тверь",
+      "value": 141
      },
      {
       "count": 1,
-      "name": "Екатеринбург",
-      "value": 49
+      "name": "Волгоград",
+      "value": 10
      },
      {
       "count": 1,
-      "name": "Смоленск",
-      "value": 130
-     },
-     {
-      "count": 1,
-      "name": "Брянск",
-      "value": 33
+      "name": "Валдай",
+      "value": 527
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 10,
+      "count": 6,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 9,
-    "reach": 10,
+    "mobile_reach": 6,
+    "reach": 6,
     "reach_subscribers": 0,
     "sex": [
      {
@@ -99,7 +229,7 @@
      },
      {
       "value": "m",
-      "count": 6
+      "count": 2
      }
     ],
     "sex_age": [
@@ -109,7 +239,7 @@
      },
      {
       "value": "f;18-21",
-      "count": 0
+      "count": 1
      },
      {
       "value": "f;21-24",
@@ -117,7 +247,7 @@
      },
      {
       "value": "f;24-27",
-      "count": 0
+      "count": 1
      },
      {
       "value": "f;27-30",
@@ -129,7 +259,7 @@
      },
      {
       "value": "f;35-45",
-      "count": 2
+      "count": 0
      },
      {
       "value": "f;45-100",
@@ -145,7 +275,7 @@
      },
      {
       "value": "m;21-24",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;24-27",
@@ -161,137 +291,20 @@
      },
      {
       "value": "m;35-45",
-      "count": 1
+      "count": 0
      },
      {
       "value": "m;45-100",
-      "count": 4
+      "count": 0
      }
     ]
    },
    "visitors": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 0
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 0
-     },
-     {
-      "value": "35-45",
-      "count": 0
-     },
-     {
-      "value": "45-100",
-      "count": 1
-     }
-    ],
     "cities": [],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
-    "mobile_views": 1,
-    "sex": [
-     {
-      "value": "f",
-      "count": 0
-     },
-     {
-      "value": "m",
-      "count": 1
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 0
-     },
-     {
-      "value": "f;24-27",
-      "count": 0
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 0
-     },
-     {
-      "value": "f;45-100",
-      "count": 0
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 0
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 1
-     }
-    ],
-    "views": 1,
-    "visitors": 1
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
    }
   }
  ]
