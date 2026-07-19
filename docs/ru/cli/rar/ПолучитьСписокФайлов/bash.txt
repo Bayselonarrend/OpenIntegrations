@@ -1,2 +1,2 @@
 oint rar ПолучитьСписокФайлов \
-  --src "/tmp/zzyl54kd.1v2"
+  --src "/tmp/z1ceiul4.v2v"

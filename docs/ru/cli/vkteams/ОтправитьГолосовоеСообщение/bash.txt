@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/241gatfs.0ir"
+  --file "/tmp/use0d4wu.xhc"

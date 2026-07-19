@@ -1,2 +1,2 @@
 oint msgpack ДесериализоватьДанные \
-  --data "/tmp/5att05qw.1ra"
+  --data "/tmp/bf4ctz21.fi5"

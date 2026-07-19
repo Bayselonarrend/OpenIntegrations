@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/wkdjg0sb.lmd"
+  --file "/tmp/p2mtifad.tjs"

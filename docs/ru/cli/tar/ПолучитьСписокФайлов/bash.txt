@@ -1,2 +1,2 @@
 oint tar ПолучитьСписокФайлов \
-  --src "/tmp/zujvdtci.wk2"
+  --src "/tmp/2nnx23rh.ryk"

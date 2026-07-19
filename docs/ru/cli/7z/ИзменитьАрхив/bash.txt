@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint 7z ИзменитьАрхив \
-  --src "/tmp//opi_sevenz_63919791610935/archive_buffer.7z" \
-  --additions "{'extra/info.txt':'/tmp//opi_sevenz_63919791610935/extra_info.txt','readme.txt':'/tmp/pfrrszvz.j1o'}" \
+  --src "/tmp//opi_sevenz_63920078918220/archive_buffer.7z" \
+  --additions "{'extra/info.txt':'/tmp//opi_sevenz_63920078918220/extra_info.txt','readme.txt':'/tmp/krcxf1qz.o4l'}" \
   --deletions "['config/settings.json','missing/path.txt']"

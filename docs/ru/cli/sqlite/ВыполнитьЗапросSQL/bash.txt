@@ -1,3 +1,3 @@
 oint sqlite ВыполнитьЗапросSQL \
   --sql "SELECT 1 AS n" \
-  --db "/tmp/4gqrltxv.vjc.sqlite"
+  --db "/tmp/yruwrj1p.x4c.sqlite"

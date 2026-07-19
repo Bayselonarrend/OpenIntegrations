@@ -1,2 +1,2 @@
 oint rss РазобратьФидRSS ^
-  --xml "/tmp/hcy15cgw.apd.xml"
+  --xml "/tmp/deqv2mar.hrs.xml"

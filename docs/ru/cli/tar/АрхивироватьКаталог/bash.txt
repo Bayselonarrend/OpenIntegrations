@@ -1,4 +1,4 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint tar АрхивироватьКаталог \
-  --src "{'entries':[{'name':'readme.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/readme.txt'},{'name':'docs','directory':true,'entries':[{'name':'note.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63919791611070/src/docs/note.txt'}]}]}"
+  --src "{'entries':[{'name':'readme.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63920078912849/src/readme.txt'},{'name':'docs','directory':true,'entries':[{'name':'note.txt','directory':false,'from_path':true,'path':'/tmp//opi_tar_63920078912849/src/docs/note.txt'}]}]}"
