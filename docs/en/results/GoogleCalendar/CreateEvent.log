@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3559608372255934\"",
- "id": "1fbgednhburavkoh3qor3mi30c",
+ "etag": "\"3568957170282174\"",
+ "id": "is3l83ou69n29eepm28jop2cr4",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=MWZiZ2VkbmhidXJhdmtvaDNxb3IzbWkzMGMgMmUyYTA4OGFmMDVjMWQ4OG...",
- "created": "2026-05-26T14:03:06Z",
- "updated": "2026-05-26T14:03:06.127Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=aXMzbDgzb3U2OW4yOWVlcG0yOGpvcDJjcjQgNzc5NTFkZWVhY2JiZTUyNzU1MWYyYjBjMjU0N2E4MTZjMWY4NWUzMDQzM2Y3YjllMjMzYzZkOTkzMmVjMjNmNEBn",
+ "created": "2026-07-19T16:29:44Z",
+ "updated": "2026-07-19T16:29:45.141Z",
  "summary": "New event",
  "description": "TestEventDescription",
  "location": "InOffice",
@@ -13,31 +13,31 @@
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "2e2a088af05c1d88f3793172eae35d956b6303f5c1504210c14594fd60e13212@group.calendar.google.com",
+  "email": "77951deeacbbe527551f2b0c2547a816c1f85e30433f7b9e233c6d9932ec23f4@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2026-05-26T14:03:05+00:00",
+  "dateTime": "2026-07-19T16:29:45+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-05-26T15:03:05+00:00",
+  "dateTime": "2026-07-19T17:29:45+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "1fbgednhburavkoh3qor3mi30c@google.com",
+ "iCalUID": "is3l83ou69n29eepm28jop2cr4@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true
  },
  "attachments": [
   {
-   "fileUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileUrl": "https://releases.openintegrations.dev/test_data/picture.jpg",
    "title": "Image1",
    "iconLink": ""
   },
   {
-   "fileUrl": "https://hut.openintegrations.dev/test_data/picture2.jpg",
+   "fileUrl": "https://releases.openintegrations.dev/test_data/picture2.jpg",
    "title": "Image2",
    "iconLink": ""
   }

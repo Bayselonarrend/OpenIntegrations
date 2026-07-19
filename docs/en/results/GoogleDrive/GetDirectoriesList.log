@@ -94,7 +94,8 @@
   "canDisableInheritedPermissions": true,
   "canEnableInheritedPermissions": true,
   "canChangeItemDownloadRestriction": false,
-  "canStartApproval": false
+  "canStartApproval": false,
+  "canAccessViaGenAi": true
  },
  "thumbnailVersion": "0",
  "modifiedByMe": true,

@@ -10,11 +10,11 @@
   "DATE_REGISTER": "2024-02-10T00:00:00+00:00",
   "TIME_ZONE": "Europe/Minsk",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "26.05.2026 17:15:24",
+  "TIMESTAMP_X": "19.07.2026 19:37:05",
   "LAST_ACTIVITY_DATE": "2026-05-17 23:27:04",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
-  "PERSONAL_PHOTO": "https://cdn-ru.bitrix24.by/b28528874/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684ca...",
+  "PERSONAL_PHOTO": "https://cdn-ru.bitrix24.by/b28528874/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
   "UF_EMPLOYMENT_DATE": "",
   "UF_DEPARTMENT": [
    1,
@@ -22,13 +22,13 @@
   ]
  },
  "time": {
-  "start": 1779804929,
-  "finish": 1779804929.57669,
-  "duration": 0.576685905456543,
+  "start": 1784479030,
+  "finish": 1784479030.15335,
+  "duration": 0.153348922729492,
   "processing": 0,
-  "date_start": "2026-05-26T14:15:29+00:00",
-  "date_finish": "2026-05-26T14:15:29+00:00",
-  "operating_reset_at": 1779805529,
+  "date_start": "2026-07-19T16:37:10+00:00",
+  "date_finish": "2026-07-19T16:37:10+00:00",
+  "operating_reset_at": 1784479630,
   "operating": 0
  }
 }

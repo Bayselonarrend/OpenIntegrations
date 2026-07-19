@@ -1,0 +1,4 @@
+﻿{
+ "gzip": "<compress gzip: True/False (by default False)>",
+ "gzip_level": "<Gzip level: 0-9 (6 by default.)>"
+}

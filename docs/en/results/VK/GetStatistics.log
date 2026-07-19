@@ -1,11 +1,8 @@
 ﻿{
  "response": [
   {
-   "activity": {
-    "comments": 20
-   },
-   "period_from": 1781740800,
-   "period_to": 1781827199,
+   "period_from": 1784419200,
+   "period_to": 1784505599,
    "reach": {
     "age": [
      {
@@ -18,208 +15,15 @@
      },
      {
       "value": "21-24",
-      "count": 1
+      "count": 0
      },
      {
       "value": "24-27",
-      "count": 2
+      "count": 0
      },
      {
       "value": "27-30",
       "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 1
-     },
-     {
-      "value": "35-45",
-      "count": 5
-     },
-     {
-      "value": "45-100",
-      "count": 13
-     }
-    ],
-    "cities": [
-     {
-      "count": 2,
-      "name": "Пермь",
-      "value": 110
-     },
-     {
-      "count": 2,
-      "name": "Москва",
-      "value": 1
-     },
-     {
-      "count": 1,
-      "name": "Саранск",
-      "value": 124
-     },
-     {
-      "count": 1,
-      "name": "Инта",
-      "value": 255
-     },
-     {
-      "count": 1,
-      "name": "Тольятти",
-      "value": 143
-     },
-     {
-      "count": 1,
-      "name": "Торжок",
-      "value": 334
-     },
-     {
-      "count": 1,
-      "name": "Торопец",
-      "value": 2132
-     },
-     {
-      "count": 1,
-      "name": "Мончегорск",
-      "value": 187
-     },
-     {
-      "count": 1,
-      "name": "Кировск",
-      "value": 248
-     },
-     {
-      "count": 1,
-      "name": "Энгельс",
-      "value": 1469
-     }
-    ],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 22,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
-    "mobile_reach": 21,
-    "reach": 22,
-    "reach_subscribers": 0,
-    "sex": [
-     {
-      "value": "f",
-      "count": 16
-     },
-     {
-      "value": "m",
-      "count": 6
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 1
-     },
-     {
-      "value": "f;24-27",
-      "count": 2
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 3
-     },
-     {
-      "value": "f;45-100",
-      "count": 10
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 0
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 1
-     },
-     {
-      "value": "m;35-45",
-      "count": 2
-     },
-     {
-      "value": "m;45-100",
-      "count": 3
-     }
-    ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "BR",
-      "count": 1,
-      "name": "Бразилия",
-      "value": 43
-     }
-    ],
-    "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
-   }
-  },
-  {
-   "period_from": 1781654400,
-   "period_to": 1781740799,
-   "reach": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 1
-     },
-     {
-      "value": "24-27",
-      "count": 1
-     },
-     {
-      "value": "27-30",
-      "count": 1
      },
      {
       "value": "30-35",
@@ -231,80 +35,45 @@
      },
      {
       "value": "45-100",
-      "count": 6
+      "count": 2
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Курск",
-      "value": 75
+      "name": "Уссурийск",
+      "value": 150
      },
      {
       "count": 1,
-      "name": "Красноярск",
-      "value": 73
+      "name": "Великий Новгород",
+      "value": 35
      },
      {
       "count": 1,
-      "name": "Киров",
-      "value": 66
-     },
-     {
-      "count": 1,
-      "name": "Сердобск",
-      "value": 16746
-     },
-     {
-      "count": 1,
-      "name": "Первоуральск",
-      "value": 2001
-     },
-     {
-      "count": 1,
-      "name": "Серов",
-      "value": 668
-     },
-     {
-      "count": 1,
-      "name": "Смоленск",
-      "value": 130
-     },
-     {
-      "count": 1,
-      "name": "Дедовичи",
-      "value": 9046
-     },
-     {
-      "count": 1,
-      "name": "Самара",
-      "value": 123
-     },
-     {
-      "count": 1,
-      "name": "Нижний Новгород",
-      "value": 95
+      "name": "Москва",
+      "value": 1
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 13,
+      "count": 6,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 12,
-    "reach": 13,
+    "mobile_reach": 5,
+    "reach": 6,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 8
+      "count": 4
      },
      {
       "value": "m",
-      "count": 5
+      "count": 2
      }
     ],
     "sex_age": [
@@ -322,11 +91,11 @@
      },
      {
       "value": "f;24-27",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;27-30",
-      "count": 1
+      "count": 0
      },
      {
       "value": "f;30-35",
@@ -338,7 +107,178 @@
      },
      {
       "value": "f;45-100",
+      "count": 1
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 1
+     },
+     {
+      "value": "m;45-100",
+      "count": 1
+     }
+    ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "period_from": 1784332800,
+   "period_to": 1784419199,
+   "reach": {
+    "age": [
+     {
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 1
+     },
+     {
+      "value": "21-24",
+      "count": 2
+     },
+     {
+      "value": "24-27",
+      "count": 2
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 2
+     },
+     {
+      "value": "35-45",
+      "count": 1
+     },
+     {
+      "value": "45-100",
       "count": 3
+     }
+    ],
+    "cities": [
+     {
+      "count": 2,
+      "name": "Тверь",
+      "value": 141
+     },
+     {
+      "count": 1,
+      "name": "Вышний Волочек",
+      "value": 460
+     },
+     {
+      "count": 1,
+      "name": "Кирово-Чепецк",
+      "value": 346
+     },
+     {
+      "count": 1,
+      "name": "Донецк",
+      "value": 223
+     },
+     {
+      "count": 1,
+      "name": "Чебоксары",
+      "value": 157
+     },
+     {
+      "count": 1,
+      "name": "Волгоград",
+      "value": 10
+     },
+     {
+      "count": 1,
+      "name": "Валдай",
+      "value": 527
+     }
+    ],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 11,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_reach": 11,
+    "reach": 11,
+    "reach_subscribers": 0,
+    "sex": [
+     {
+      "value": "f",
+      "count": 8
+     },
+     {
+      "value": "m",
+      "count": 3
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 1
+     },
+     {
+      "value": "f;21-24",
+      "count": 1
+     },
+     {
+      "value": "f;24-27",
+      "count": 2
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 1
+     },
+     {
+      "value": "f;35-45",
+      "count": 1
+     },
+     {
+      "value": "f;45-100",
+      "count": 2
      },
      {
       "value": "m;12-18",
@@ -362,31 +302,24 @@
      },
      {
       "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
       "count": 1
      },
      {
+      "value": "m;35-45",
+      "count": 0
+     },
+     {
       "value": "m;45-100",
-      "count": 3
+      "count": 1
      }
     ]
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   }
  ]

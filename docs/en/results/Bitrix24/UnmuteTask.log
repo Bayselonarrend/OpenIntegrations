@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "10800",
+   "id": "12148",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-05-26T14:10:24+00:00",
+   "createdDate": "2026-07-19T16:30:03+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2026-05-26T14:10:31+00:00",
+   "changedDate": "2026-07-19T16:30:23+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-05-26T14:10:31+00:00",
+   "activityDate": "2026-07-19T16:30:23+00:00",
    "dateStart": null,
-   "deadline": "2026-05-27T14:10:00+00:00",
-   "startDatePlan": "2026-05-26T14:10:24+00:00",
-   "endDatePlan": "2026-05-26T21:00:00+00:00",
-   "guid": "{ec992a33-a880-4aa7-9961-637a6d38a6f7}",
+   "deadline": "2026-07-20T16:30:00+00:00",
+   "startDatePlan": "2026-07-19T16:30:03+00:00",
+   "endDatePlan": "2026-07-19T21:00:00+00:00",
+   "guid": "{6f9ad1b2-3ada-4eae-8352-2b6dcc80e95e}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-05-26T14:10:31+00:00",
+   "statusChangedDate": "2026-07-19T16:30:23+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -68,14 +68,14 @@
     "id": "1",
     "name": "Антон Титовец",
     "link": "/company/personal/user/1/",
-    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
     "workPosition": null
    },
    "responsible": {
     "id": "1",
     "name": "Антон Титовец",
     "link": "/company/personal/user/1/",
-    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d...",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
     "workPosition": null
    },
    "accomplicesData": [],
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1779804636,
-  "finish": 1779804637.02575,
-  "duration": 1.0257511138916,
-  "processing": 1,
-  "date_start": "2026-05-26T14:10:36+00:00",
-  "date_finish": "2026-05-26T14:10:37+00:00",
-  "operating_reset_at": 1779805236,
+  "start": 1784478644,
+  "finish": 1784478644.70579,
+  "duration": 0.705789089202881,
+  "processing": 0,
+  "date_start": "2026-07-19T16:30:44+00:00",
+  "date_finish": "2026-07-19T16:30:44+00:00",
+  "operating_reset_at": 1784479244,
   "operating": 0
  }
 }

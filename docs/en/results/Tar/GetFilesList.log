@@ -1,0 +1,20 @@
+﻿{
+ "entries": [
+  {
+   "directory": true,
+   "entries": [
+    {
+     "directory": false,
+     "name": "note.txt",
+     "size": 11
+    }
+   ],
+   "name": "docs"
+  },
+  {
+   "directory": false,
+   "name": "readme.txt",
+   "size": 17
+  }
+ ]
+}

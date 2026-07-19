@@ -1,0 +1,34 @@
+﻿{
+ "archive_size": 221,
+ "block_count": 2,
+ "directory_count": 0,
+ "entries": [
+  {
+   "access_time": 1784478579,
+   "compressed_size": 15,
+   "crc": 531809357,
+   "creation_time": 1784478579,
+   "directory": false,
+   "has_stream": true,
+   "modified_time": 1784478579,
+   "name": "docs/note.txt",
+   "size": 11
+  },
+  {
+   "access_time": 1784478579,
+   "compressed_size": 20,
+   "crc": 992350456,
+   "creation_time": 1784478579,
+   "directory": false,
+   "has_stream": true,
+   "modified_time": 1784478579,
+   "name": "readme.txt",
+   "size": 16
+  }
+ ],
+ "entry_count": 2,
+ "file_count": 2,
+ "packed_size": 35,
+ "solid": false,
+ "unpacked_size": 27
+}

@@ -1,8 +1,8 @@
 ﻿{
- "uuid": "0b53b2ae-bcf1-4454-9421-6c1cb7414bbd",
+ "uuid": "6454b28b-ce9d-4eee-8a69-cd700299599a",
  "active": true,
  "loaded": true,
- "id": 171,
+ "id": 216,
  "userId": "test",
  "email": "test@example.com",
  "fullName": "Test User",
@@ -10,11 +10,11 @@
  "userRole": "USER",
  "photoLoaded": true,
  "metadata": {
-  "last_login": 1781804533389
+  "last_login": 1784478671231
  },
  "assignedProjects": {
   "test_personal": {
-   "projectId": 339,
+   "projectId": 429,
    "projectRole": "PROJECT_MANAGER",
    "entryType": "PERSONAL"
   },

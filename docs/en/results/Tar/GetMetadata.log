@@ -1,0 +1,25 @@
+﻿{
+ "archive_size": 3072,
+ "directory_count": 0,
+ "entries": [
+  {
+   "directory": false,
+   "gid": 0,
+   "modified_time": 1784478562,
+   "name": "docs/note.txt",
+   "size": 11,
+   "uid": 0
+  },
+  {
+   "directory": false,
+   "gid": 0,
+   "modified_time": 1784478562,
+   "name": "readme.txt",
+   "size": 17,
+   "uid": 0
+  }
+ ],
+ "entry_count": 2,
+ "file_count": 2,
+ "unpacked_size": 28
+}

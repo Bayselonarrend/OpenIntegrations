@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "38382aa7-fc4e-813f-81e2-dfb96bcc585f",
- "created_time": "2026-06-18T17:39:00Z",
- "last_edited_time": "2026-06-18T17:39:00Z",
+ "id": "3a282aa7-fc4e-81ad-a1e4-f80f3f56e8a0",
+ "created_time": "2026-07-19T16:28:00Z",
+ "last_edited_time": "2026-07-19T16:28:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,61 +15,29 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "38382aa7-fc4e-8179-90ea-f13459ce219c"
+  "database_id": "3a282aa7-fc4e-81c6-a4a4-fba062ee99da"
  },
  "in_trash": false,
  "is_archived": false,
  "is_locked": false,
  "properties": {
   "Active": {
-   "id": "Iq%3DM",
+   "id": "%3Ai%3Bb",
    "type": "checkbox",
    "checkbox": true
   },
-  "Number": {
-   "id": "OE_t",
-   "type": "number",
-   "number": 1
-  },
   "Phone": {
-   "id": "Yvth",
+   "id": "%3BeQs",
    "type": "phone_number",
    "phone_number": "***"
   },
-  "Status": {
-   "id": "cOp%7D",
-   "type": "select",
-   "select": {
-    "id": "df905083-b4e4-4f83-acfb-4d64c81b9930",
-    "name": "New",
-    "color": "green"
-   }
-  },
-  "Description": {
-   "id": "lT%3CO",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "OurFirstClient",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "OurFirstClient",
-     "href": null
-    }
-   ]
+  "User": {
+   "id": "Ae%5CP",
+   "type": "people",
+   "people": []
   },
   "Email": {
-   "id": "nJF_",
+   "id": "V%7CW%60",
    "type": "rich_text",
    "rich_text": [
     {
@@ -91,30 +59,62 @@
     }
    ]
   },
+  "Number": {
+   "id": "%5BrX%60",
+   "type": "number",
+   "number": 1
+  },
   "CreationDate": {
-   "id": "q%3Ftm",
+   "id": "oehk",
    "type": "date",
    "date": {
-    "start": "2026-06-18T05:39:00+00:00",
+    "start": "2026-07-19T04:28:00+00:00",
     "end": null,
     "time_zone": null
    }
   },
-  "User": {
-   "id": "qbbF",
-   "type": "people",
-   "people": []
-  },
   "Image": {
-   "id": "%7CtKw",
+   "id": "p%3F%3Cc",
    "type": "files",
    "files": [
     {
      "name": "Logo",
      "type": "external",
      "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+      "url": "https://releases.openintegrations.dev/test_data/picture.jpg"
      }
+    }
+   ]
+  },
+  "Status": {
+   "id": "w~wD",
+   "type": "select",
+   "select": {
+    "id": "74be6484-29a1-4ab6-8a83-1bd669e5a0f2",
+    "name": "New",
+    "color": "green"
+   }
+  },
+  "Description": {
+   "id": "zFC%3D",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "OurFirstClient",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "OurFirstClient",
+     "href": null
     }
    ]
   },
@@ -142,8 +142,8 @@
    ]
   }
  },
- "url": "https://app.notion.com/p/LLC-Vector-38382aa7fc4e813f81e2dfb96bcc585f",
+ "url": "https://app.notion.com/p/LLC-Vector-3a282aa7fc4e81ada1e4f80f3f56e8a0",
  "public_url": null,
  "archived": false,
- "request_id": "43160ae8-3a04-4031-b3f1-6900aff7e679"
+ "request_id": "b49f7a46-892a-44d1-bd07-f5faa129cd9a"
 }

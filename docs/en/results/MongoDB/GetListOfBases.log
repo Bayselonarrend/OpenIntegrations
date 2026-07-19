@@ -14,7 +14,7 @@
    {
     "empty": false,
     "name": "local",
-    "sizeOnDisk": 81920
+    "sizeOnDisk": 90112
    },
    {
     "empty": false,
@@ -23,7 +23,7 @@
    }
   ],
   "ok": 1,
-  "totalSize": 454656,
+  "totalSize": 462848,
   "totalSizeMb": 0
  },
  "result": true
