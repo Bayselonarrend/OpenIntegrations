@@ -1,5 +1,5 @@
 oint dropbox ЗагрузитьФайл ^
   --token "***" ^
-  --file "/tmp/ilz0v5wn.02z.png" ^
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\y03v2vie.tfl.png" ^
   --path "/New/pic.png" ^
   --overwrite true

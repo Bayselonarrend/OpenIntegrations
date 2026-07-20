@@ -1,2 +1,2 @@
 oint rss РазобратьФидRSS ^
-  --xml "/tmp/deqv2mar.hrs.xml"
+  --xml "C:\Users\bayselonarrend\AppData\Local\Temp\3z5u5rwe.nop.xml"

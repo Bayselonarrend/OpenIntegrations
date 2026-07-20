@@ -1,2 +1,2 @@
 oint msgpack ДесериализоватьДанные \
-  --data "/tmp/bf4ctz21.fi5"
+  --data "C:\Users\bayselonarrend\AppData\Local\Temp\zfd11tkt.qln"

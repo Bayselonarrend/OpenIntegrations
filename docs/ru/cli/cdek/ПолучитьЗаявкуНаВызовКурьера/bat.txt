@@ -1,4 +1,4 @@
 oint cdek ПолучитьЗаявкуНаВызовКурьера ^
   --token "***" ^
-  --uuid "e7bf4516-0c90-4bd2-9b7a-7bda9b887678" ^
+  --uuid "7b5ea9f5-f1e4-46e2-b73e-286eaf929a36" ^
   --testapi "***"

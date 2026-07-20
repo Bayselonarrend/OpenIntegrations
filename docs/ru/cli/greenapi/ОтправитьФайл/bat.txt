@@ -6,4 +6,4 @@ oint greenapi ОтправитьФайл ^
   --file "https://releases.openintegrations.dev/test_data/video.mp4" ^
   --filename "vid.mp4" ^
   --caption "Описание файла" ^
-  --quoted "3EB0D40512758BBD741138"
+  --quoted "3EB07C93384E6330793DFB"

@@ -2,5 +2,5 @@ oint rportal ПолучитьОтчетЗапуска ^
   --url "tests.openintegrations.dev" ^
   --token "***" ^
   --proj "Test" ^
-  --id 666 ^
+  --id 685 ^
   --format "html"

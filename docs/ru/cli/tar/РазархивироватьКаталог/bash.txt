@@ -1,3 +1,3 @@
 oint tar РазархивироватьКаталог \
-  --src "/tmp//opi_tar_63920078912849/archive.tar" \
-  --dest "/tmp//opi_tar_63920078912849/out"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_63920122775894/archive.tar" \
+  --dest "C:\Users\bayselonarrend\AppData\Local\Temp\\opi_tar_63920122775894/out"

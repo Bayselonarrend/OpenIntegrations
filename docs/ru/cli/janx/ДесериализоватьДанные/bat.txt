@@ -1,2 +1,2 @@
 oint janx ДесериализоватьДанные ^
-  --data "/tmp/4hdmzqav.vpu"
+  --data "C:\Users\bayselonarrend\AppData\Local\Temp\nzenf5fs.bb0"

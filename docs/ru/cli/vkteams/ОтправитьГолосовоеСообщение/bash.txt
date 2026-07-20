@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/use0d4wu.xhc"
+  --file "C:\Users\bayselonarrend\AppData\Local\Temp\cko5yqbc.uve"

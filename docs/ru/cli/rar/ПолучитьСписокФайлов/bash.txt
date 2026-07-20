@@ -1,2 +1,2 @@
 oint rar ПолучитьСписокФайлов \
-  --src "/tmp/z1ceiul4.v2v"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\kvafzmj0.1r1"

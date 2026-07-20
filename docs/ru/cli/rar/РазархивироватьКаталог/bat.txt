@@ -1,2 +1,2 @@
 oint rar РазархивироватьКаталог ^
-  --src "/tmp/egv0zhd4.rbn"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\kj4opquk.oh5"

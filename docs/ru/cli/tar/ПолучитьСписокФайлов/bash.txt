@@ -1,2 +1,2 @@
 oint tar ПолучитьСписокФайлов \
-  --src "/tmp/2nnx23rh.ryk"
+  --src "C:\Users\bayselonarrend\AppData\Local\Temp\nbbliats.xcd"
