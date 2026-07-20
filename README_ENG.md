@@ -61,6 +61,9 @@ Data formats:
   <a href="https://en.openintegrations.dev/docs/Instructions/Janx/"><img src="media/Janx.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/RSS/"><img src="media/RSS.png" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/MessagePack/"><img src="media/MessagePack.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/7z/"><img src="media/7z.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/RAR/"><img src="media/RAR.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Instructions/Tar/"><img src="media/Tar.png" width="40"></a>
 </div> 
 
 ## Usage Example
