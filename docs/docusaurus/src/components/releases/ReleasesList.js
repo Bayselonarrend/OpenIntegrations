@@ -2,15 +2,32 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import archive from '@site/archive/releases-archive.json';
 import CoverImage from '@site/src/components/releases/CoverImage';
 import styles from '@site/src/components/releases/releases.module.css';
 
+const PAGE_LABELS = {
+  ru: {
+    title: 'Архив версий',
+    description: 'Архив релизов OpenIntegrations',
+    subtitle: 'Все релизы OpenIntegrations с описанием изменений и файлами для скачивания',
+  },
+  en: {
+    title: 'Version archive',
+    description: 'OpenIntegrations release archive',
+    subtitle: 'All OpenIntegrations releases with changelogs and download files',
+  },
+};
+
 export default function ReleasesList() {
+  const { i18n } = useDocusaurusContext();
+  const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
+  const labels = PAGE_LABELS[locale];
   const versions = archive.versions ?? [];
 
   return (
-    <Layout title="Архив версий" description="Архив релизов OpenIntegrations">
+    <Layout title={labels.title} description={labels.description}>
       <main className={`container margin-vert--lg ${styles.releasesPage}`}>
         <div className={styles.pageHeader}>
           <svg
@@ -31,10 +48,10 @@ export default function ReleasesList() {
           </svg>
           <div>
             <Heading as="h1" className={styles.pageTitle}>
-              Архив версий
+              {labels.title}
             </Heading>
             <p className={styles.pageSubtitle}>
-              Все релизы OpenIntegrations с описанием изменений и файлами для скачивания
+              {labels.subtitle}
             </p>
           </div>
         </div>

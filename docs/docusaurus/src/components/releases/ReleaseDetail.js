@@ -18,6 +18,23 @@ const langLabels = {
   en: '🇬🇧 English',
 };
 
+const PAGE_LABELS = {
+  ru: {
+    releaseNotFound: 'Релиз не найден',
+    backToArchive: '← К архиву версий',
+    releaseNotFoundText: (version) => `Релиз ${version} не найден.`,
+    versionTitle: (version) => `Версия ${version}`,
+    changelogHeading: 'Новые функции / New features',
+  },
+  en: {
+    releaseNotFound: 'Release not found',
+    backToArchive: '← Back to version archive',
+    releaseNotFoundText: (version) => `Release ${version} was not found.`,
+    versionTitle: (version) => `Version ${version}`,
+    changelogHeading: 'Новые функции / New features',
+  },
+};
+
 function groupArtifacts(artifacts, groups) {
   const grouped = new Map();
 
@@ -66,6 +83,7 @@ export default function ReleaseDetail() {
   const sourcecraftIcon = useBaseUrl('/img/sourcecraft_c.svg');
   const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale === 'en' ? 'en' : 'ru';
+  const labels = PAGE_LABELS[locale];
 
   const mirrorLinks = useMemo(
     () => buildMirrorPageLinks(archive, version, {
@@ -89,12 +107,12 @@ export default function ReleaseDetail() {
 
   if (!release) {
     return (
-      <Layout title="Релиз не найден">
+      <Layout title={labels.releaseNotFound}>
         <main className={`container margin-vert--lg ${styles.releasesPage}`}>
           <Link className={styles.backLink} to="/releases">
-            ← К архиву версий
+            {labels.backToArchive}
           </Link>
-          <p>Релиз {version} не найден.</p>
+          <p>{labels.releaseNotFoundText(version)}</p>
         </main>
       </Layout>
     );
@@ -103,10 +121,10 @@ export default function ReleaseDetail() {
   const summary = locale === 'en' ? release.summary_en : release.summary_ru;
 
   return (
-    <Layout title={`Версия ${release.version}`} description={summary}>
+    <Layout title={labels.versionTitle(release.version)} description={summary}>
       <main className={`container margin-vert--lg ${styles.releasesPage}`}>
         <Link className={styles.backLink} to="/releases">
-          ← К архиву версий
+          {labels.backToArchive}
         </Link>
 
         <section className={styles.detailHero}>
@@ -143,7 +161,7 @@ export default function ReleaseDetail() {
         </section>
 
         <section className={styles.changelogSection}>
-          <h2>Новые функции / New functions</h2>
+          <h2>{labels.changelogHeading}</h2>
           <table className={styles.changelogTable}>
             <thead>
               <tr>
