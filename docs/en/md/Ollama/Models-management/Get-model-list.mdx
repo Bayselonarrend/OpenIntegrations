@@ -94,24 +94,29 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
   {
    "name": "mario:latest",
    "model": "mario:latest",
-   "modified_at": "2026-05-26T14:37:20.3461722+00:00",
+   "modified_at": "2026-07-19T17:10:25.2558968+00:00",
    "size": 637700145,
    "digest": "83472d32997e219d78e3e480763e7b72beca170aaa02f3f2e2dbf613c248dee4",
    "details": {
-    "parent_model": "",
+    "parent_model": "tinyllama:latest",
     "format": "gguf",
     "family": "llama",
     "families": [
      "llama"
     ],
     "parameter_size": "1.1B",
-    "quantization_level": "Q4_0"
-   }
+    "quantization_level": "Q4_0",
+    "context_length": 2048,
+    "embedding_length": 2048
+   },
+   "capabilities": [
+    "completion"
+   ]
   },
   {
    "name": "bayselonarrend/tinyllama:latest",
    "model": "bayselonarrend/tinyllama:latest",
-   "modified_at": "2026-05-26T14:37:17.9129986+00:00",
+   "modified_at": "2026-07-19T17:10:21.6250222+00:00",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
@@ -122,13 +127,18 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
      "llama"
     ],
     "parameter_size": "1B",
-    "quantization_level": "Q4_0"
-   }
+    "quantization_level": "Q4_0",
+    "context_length": 2048,
+    "embedding_length": 2048
+   },
+   "capabilities": [
+    "completion"
+   ]
   },
   {
    "name": "tinyllama:latest",
    "model": "tinyllama:latest",
-   "modified_at": "2026-05-26T14:37:16.4725598+00:00",
+   "modified_at": "2026-07-19T17:10:18.8112322+00:00",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
@@ -139,8 +149,13 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
      "llama"
     ],
     "parameter_size": "1B",
-    "quantization_level": "Q4_0"
-   }
+    "quantization_level": "Q4_0",
+    "context_length": 2048,
+    "embedding_length": 2048
+   },
+   "capabilities": [
+    "completion"
+   ]
   },
   {
    "name": "qwen2.5-coder:7b",
@@ -156,8 +171,15 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
      "qwen2"
     ],
     "parameter_size": "7.6B",
-    "quantization_level": "Q4_K_M"
-   }
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 3584
+   },
+   "capabilities": [
+    "completion",
+    "tools",
+    "insert"
+   ]
   },
   {
    "name": "bge-m3:latest",
@@ -173,8 +195,13 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
      "bert"
     ],
     "parameter_size": "566.70M",
-    "quantization_level": "F16"
-   }
+    "quantization_level": "F16",
+    "context_length": 8192,
+    "embedding_length": 1024
+   },
+   "capabilities": [
+    "embedding"
+   ]
   },
   {
    "name": "qwen2.5:7b",
@@ -190,8 +217,14 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
      "qwen2"
     ],
     "parameter_size": "7.6B",
-    "quantization_level": "Q4_K_M"
-   }
+    "quantization_level": "Q4_K_M",
+    "context_length": 32768,
+    "embedding_length": 3584
+   },
+   "capabilities": [
+    "completion",
+    "tools"
+   ]
   },
   {
    "name": "nomic-embed-text-v2-moe:latest",
@@ -200,16 +233,11 @@ Method at API documentation: [List Local Models](https://github.com/ollama/ollam
    "size": 957680763,
    "digest": "ff9c2f10ef5e3722623a1b396e1e04efc27a93112c83e9b7b7b9ca1d05620965",
    "details": {
-    "parent_model": "",
+    "parent_model": "/Users/nicole/.ollama/models/blobs/sha256-a5db3381f2e514d3490a3a31fe70eb1a65e95016c85c6c2c23223b810806594f",
     "format": "gguf",
     "family": "nomic-bert-moe",
     "families": [
      "nomic-bert-moe"
     ],
-    "parameter_size": "475.29M",
-    "quantization_level": "F16"
-   }
-  }
- ]
-}
+...
 ```

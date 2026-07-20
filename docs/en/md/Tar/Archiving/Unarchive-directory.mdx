@@ -57,6 +57,28 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tar UnarchiveDirectory \
+              --src "/tmp//opi_tar_63920079983725/archive.tar" \
+              --dest "/tmp//opi_tar_63920079983725/out"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tar UnarchiveDirectory ^
+              --src "/tmp//opi_tar_63920079983725/archive.tar" ^
+              --dest "/tmp//opi_tar_63920079983725/out"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

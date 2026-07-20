@@ -65,8 +65,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint 7z ArchiveDirectory \
-              --src "/tmp//opi_sevenz_meta_63919777060590/src_compress" \
-              --dest "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z" \
+              --src "/tmp//opi_sevenz_63920079973933/src_compress" \
+              --dest "/tmp//opi_sevenz_63920079973933/archive_lzma.7z" \
               --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"
         ```
     </TabItem>
@@ -76,12 +76,16 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint 7z ArchiveDirectory ^
-              --src "/tmp//opi_sevenz_meta_63919777060590/src_compress" ^
-              --dest "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z" ^
+              --src "/tmp//opi_sevenz_63920079973933/src_compress" ^
+              --dest "/tmp//opi_sevenz_63920079973933/archive_lzma.7z" ^
               --settings "{'password':'***','method':'Lzma2','level':'9','solid':true,'encrypt_header':'','threads':'','chunk_size':'','dictionary_size':'','ppmd_order':'','ppmd_memory':'','filters':'','delta_distance':''}"
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

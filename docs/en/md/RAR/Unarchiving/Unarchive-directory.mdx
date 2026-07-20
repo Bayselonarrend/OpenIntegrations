@@ -58,6 +58,26 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rar UnarchiveDirectory \
+              --src "/tmp/ap2eotv3.v4g"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rar UnarchiveDirectory ^
+              --src "/tmp/ap2eotv3.v4g"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

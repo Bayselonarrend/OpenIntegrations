@@ -61,17 +61,52 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint 7z GetMetadata \
-              --src "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z"
+              --src "/tmp//opi_sevenz_meta_63920080162613/archive_lzma.7z"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint 7z GetMetadata ^
-              --src "/tmp//opi_sevenz_meta_63919777060590/archive_lzma.7z"
+              --src "/tmp//opi_sevenz_meta_63920080162613/archive_lzma.7z"
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Result"
+{
+ "archive_size": 218,
+ "block_count": 2,
+ "directory_count": 0,
+ "entries": [
+  {
+   "access_time": 1784480868,
+   "compressed_size": 15,
+   "crc": 531809357,
+   "creation_time": 1784480868,
+   "directory": false,
+   "has_stream": true,
+   "modified_time": 1784480868,
+   "name": "docs/note.txt",
+   "size": 11
+  },
+  {
+   "access_time": 1784480868,
+   "compressed_size": 20,
+   "crc": 992350456,
+   "creation_time": 1784480868,
+   "directory": false,
+   "has_stream": true,
+   "modified_time": 1784480868,
+   "name": "readme.txt",
+   "size": 16
+  }
+ ],
+ "entry_count": 2,
+ "file_count": 2,
+ "packed_size": 35,
+ "solid": false,
+ "unpacked_size": 27
+}
+```

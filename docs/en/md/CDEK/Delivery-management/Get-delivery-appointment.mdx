@@ -70,7 +70,7 @@ Method at API documentation: [Information about delivery appointment](https://ap
         ```bash
             oint cdek GetDeliveryAppointment \
               --token "***" \
-              --uuid "c1a61cf4-4ca4-4e84-abc8-8d5fe238df16" \
+              --uuid "80d249a3-206f-42a1-97ca-a95a1cb171b4" \
               --testapi "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ Method at API documentation: [Information about delivery appointment](https://ap
         ```batch
             oint cdek GetDeliveryAppointment ^
               --token "***" ^
-              --uuid "c1a61cf4-4ca4-4e84-abc8-8d5fe238df16" ^
+              --uuid "80d249a3-206f-42a1-97ca-a95a1cb171b4" ^
               --testapi "***"
         ```
     </TabItem>
@@ -90,8 +90,8 @@ Method at API documentation: [Information about delivery appointment](https://ap
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "88f4902d-3bdf-482e-9d5c-48035fffbb37",
-  "date": "2026-07-02",
+  "order_uuid": "a28547e4-7d39-4c56-9a84-51bf30619ed5",
+  "date": "2026-08-03",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Group office",
@@ -108,29 +108,30 @@ Method at API documentation: [Information about delivery appointment](https://ap
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "cccef456-7291-4db3-be4f-9eca57db1e2d",
+  "uuid": "e93d7a40-548a-436e-ab4a-52034fa4a62a",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2026-06-18T17:42:27+00:00"
+    "date_time": "2026-07-19T17:09:26+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2026-06-18T17:42:26+00:00"
+    "date_time": "2026-07-19T17:09:25+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "fb02be91-1d79-4cf1-9d6e-4433a1b6a846",
+   "request_uuid": "e298e093-1c09-42d6-993e-30d6fa95e33b",
    "type": "CREATE",
-   "date_time": "2026-06-18T17:42:26+00:00",
+   "date_time": "2026-07-19T17:09:25+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_forbidden",
+     "additional_code": "0x7B234F39",
      "message": "Доставка в указанную дату не осуществляется"
     }
    ]

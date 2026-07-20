@@ -55,6 +55,48 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tar GetMetadata \
+              --src "/tmp//opi_tar_meta_63920080138492/archive_gzip.tar.gz"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tar GetMetadata ^
+              --src "/tmp//opi_tar_meta_63920080138492/archive_gzip.tar.gz"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "archive_size": 3072,
+ "directory_count": 0,
+ "entries": [
+  {
+   "directory": false,
+   "gid": 0,
+   "modified_time": 1784480864,
+   "name": "docs/note.txt",
+   "size": 11,
+   "uid": 0
+  },
+  {
+   "directory": false,
+   "gid": 0,
+   "modified_time": 1784480864,
+   "name": "readme.txt",
+   "size": 17,
+   "uid": 0
+  }
+ ],
+ "entry_count": 2,
+ "file_count": 2,
+ "unpacked_size": 28
+}
+```

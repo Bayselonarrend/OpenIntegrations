@@ -70,4 +70,20 @@ import Admonition from '@theme/Admonition';
 </Tabs>
 
 
-
+```json title="Result"
+{
+ "password": "***",
+ "method": "<compression method: Lzma2 (by default), Lzma, Bzip2, Ppmd, Copy>",
+ "level": "<compression level: 0-9 (6 by default.)>",
+ "solid": "<single-threaded compression: True/False (by default.)>",
+ "encrypt_header": "<encrypt header: True (by default, if password is present)/False>",
+ "threads": "<number of threads for LZMA2 (by default 1)>",
+ "chunk_size": "<chunk size when threads > 1>",
+ "dictionary_size": "<LZMA2 dictionary size>",
+ "ppmd_order": "<model order (for Ppmd)>",
+ "ppmd_memory": "<memory in bytes (for Ppmd)>",
+ "filters": "<array of filters: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>",
+ "delta_distance": "<distance for DELTA filter, if used (by default 1)>",
+ "unpack_password": "***"
+}
+```

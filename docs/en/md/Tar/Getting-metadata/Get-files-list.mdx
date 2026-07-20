@@ -55,6 +55,43 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tar GetFilesList \
+              --src "/tmp/lgta4lg1.1f0"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tar GetFilesList ^
+              --src "/tmp/lgta4lg1.1f0"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "entries": [
+  {
+   "directory": true,
+   "entries": [
+    {
+     "directory": false,
+     "name": "note.txt",
+     "size": 11
+    }
+   ],
+   "name": "docs"
+  },
+  {
+   "directory": false,
+   "name": "readme.txt",
+   "size": 17
+  }
+ ]
+}
+```

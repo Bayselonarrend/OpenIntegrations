@@ -68,8 +68,8 @@ import Admonition from '@theme/Admonition';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-07-16T00:00:00" \
-              --dateto "2026-07-16T23:59:59" \
+              --datefrom "2026-07-20T00:00:00" \
+              --dateto "2026-07-20T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -79,8 +79,8 @@ import Admonition from '@theme/Admonition';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-07-16T00:00:00" ^
-              --dateto "2026-07-16T23:59:59" ^
+              --datefrom "2026-07-20T00:00:00" ^
+              --dateto "2026-07-20T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -91,34 +91,13 @@ import Admonition from '@theme/Admonition';
 {
  "response": [
   {
-   "period_from": 1784332800,
-   "period_to": 1784419199,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "activity": {
-    "comments": 6
-   },
-   "period_from": 1784246400,
-   "period_to": 1784332799,
+   "period_from": 1784419200,
+   "period_to": 1784505599,
    "reach": {
     "age": [
      {
       "value": "12-18",
-      "count": 0
+      "count": 1
      },
      {
       "value": "18-21",
@@ -138,54 +117,69 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "30-35",
-      "count": 1
+      "count": 0
      },
      {
       "value": "35-45",
-      "count": 3
+      "count": 5
      },
      {
       "value": "45-100",
-      "count": 6
+      "count": 5
      }
     ],
     "cities": [
      {
       "count": 1,
-      "name": "Ижевск",
-      "value": 56
+      "name": "Уссурийск",
+      "value": 150
      },
      {
       "count": 1,
-      "name": "Екатеринбург",
-      "value": 49
+      "name": "Великий Новгород",
+      "value": 35
      },
      {
       "count": 1,
-      "name": "Смоленск",
-      "value": 130
+      "name": "Москва",
+      "value": 1
      },
      {
       "count": 1,
-      "name": "Брянск",
-      "value": 33
+      "name": "Саратов",
+      "value": 125
+     },
+     {
+      "count": 1,
+      "name": "Петрозаводск",
+      "value": 112
+     },
+     {
+      "count": 1,
+      "name": "Оренбург",
+      "value": 106
+     },
+     {
+      "count": 1,
+      "name": "Челябинск",
+      "value": 158
      }
     ],
     "countries": [
      {
       "code": "RU",
-      "count": 10,
+      "count": 11,
       "name": "Россия",
       "value": 1
      }
     ],
-    "mobile_reach": 9,
-    "reach": 10,
+    "mobile_reach": 10,
+    "reach": 11,
     "reach_subscribers": 0,
     "sex": [
      {
       "value": "f",
-      "count": 4
+      "count": 5
      },
      {
       "value": "m",
@@ -219,7 +213,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "f;35-45",
-      "count": 2
+      "count": 3
      },
      {
       "value": "f;45-100",
@@ -227,7 +221,7 @@ import Admonition from '@theme/Admonition';
      },
      {
       "value": "m;12-18",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m;18-21",
@@ -238,5 +232,11 @@ import Admonition from '@theme/Admonition';
       "count": 0
      },
      {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
 ...
 ```

@@ -93,13 +93,13 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
  "receiptId": 1,
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
-  "idMessage": "3EB0C42270608639BA37BA",
+  "idMessage": "3EB0EA1FA48B0D2E9D965A",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1781720686,
+  "timestamp": 1784455842,
   "senderData": {
    "chatId": "***",
    "sender": "***",
@@ -108,32 +108,21 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "chatName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "quotedMessage": {
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "New message",
-    "extendedTextMessage": {
-     "text": "New message",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    },
-    "stanzaId": "3EB071E5D0CE10C7AD23AF",
-    "participant": "1234567890@c.us"
-   },
-   "extendedTextMessageData": {
-    "text": "New message",
-    "description": "",
-    "title": "",
-    "previewType": "None",
-    "jpegThumbnail": "",
-    "forwardingScore": 0,
-    "isForwarded": false,
-    "stanzaId": "3EB071E5D0CE10C7AD23AF",
-    "participant": "1234567890@c.us"
+   "typeMessage": "pollMessage",
+   "pollMessageData": {
+    "name": "Какой ваш любимый цвет?",
+    "options": [
+     {
+      "optionName": "Красный"
+     },
+     {
+      "optionName": "Желтый"
+     },
+     {
+      "optionName": "Зеленый"
+     }
+    ],
+    "multipleAnswers": false
    }
   }
  }

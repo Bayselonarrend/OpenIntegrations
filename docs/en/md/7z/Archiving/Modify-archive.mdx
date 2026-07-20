@@ -75,8 +75,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint 7z ModifyArchive \
-              --src "/tmp//opi_sevenz_modify_63919777209116/archive_buffer.7z" \
-              --additions "{'extra/info.txt':'/tmp//opi_sevenz_modify_63919777209116/extra_info.txt','readme.txt':'/tmp/x4jjs4eh.cvp'}" \
+              --src "/tmp//opi_sevenz_63920079973933/archive_buffer.7z" \
+              --additions "{'extra/info.txt':'/tmp//opi_sevenz_63920079973933/extra_info.txt','readme.txt':'/tmp/0pu3uq4c.pcr'}" \
               --deletions "['config/settings.json','missing/path.txt']"
         ```
     </TabItem>
@@ -86,12 +86,16 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint 7z ModifyArchive ^
-              --src "/tmp//opi_sevenz_modify_63919777209116/archive_buffer.7z" ^
-              --additions "{'extra/info.txt':'/tmp//opi_sevenz_modify_63919777209116/extra_info.txt','readme.txt':'/tmp/x4jjs4eh.cvp'}" ^
+              --src "/tmp//opi_sevenz_63920079973933/archive_buffer.7z" ^
+              --additions "{'extra/info.txt':'/tmp//opi_sevenz_63920079973933/extra_info.txt','readme.txt':'/tmp/0pu3uq4c.pcr'}" ^
               --deletions "['config/settings.json','missing/path.txt']"
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

@@ -79,7 +79,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink \
               --name "picture.jpg" \
-              --bucket "9e8ebe51" \
+              --bucket "d9cbb690" \
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --expires 7200 \
               --dir true
@@ -92,7 +92,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink ^
               --name "picture.jpg" ^
-              --bucket "9e8ebe51" ^
+              --bucket "d9cbb690" ^
               --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --expires 7200 ^
               --dir true
@@ -102,5 +102,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"s3.openintegrations.dev/5da34d1e/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayse..."
+"s3.openintegrations.dev/f106d890/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260719%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260719T171447Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=71109dd364d3bc1cacc448b70cc1603b3e06ec02c2f9ebb06268aee919f15cc1"
 ```

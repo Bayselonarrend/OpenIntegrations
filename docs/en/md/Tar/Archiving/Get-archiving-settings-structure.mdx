@@ -50,6 +50,27 @@ import Admonition from '@theme/Admonition';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint tar GetArchivingSettingsStructure \
+              --empty true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint tar GetArchivingSettingsStructure ^
+              --empty true
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "gzip": "<compress gzip: True/False (by default False)>",
+ "gzip_level": "<Gzip level: 0-9 (6 by default.)>"
+}
+```
