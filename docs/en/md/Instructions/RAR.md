@@ -22,99 +22,99 @@ The `OPI_RAR` library is for **reading and unpacking** existing RAR archives in 
 
 | Task | Method |
 |------|--------|
-| Unpack the whole archive to a directory | [`РазархивироватьКаталог`](/docs/RAR/Unarchiving/Unarchive-directory) |
-| Extract selected files only | [`РазархивироватьФайлы`](/docs/RAR/Unarchiving/Unpack-files) |
-| Get a tree of files and folders | [`ПолучитьСписокФайлов`](/docs/RAR/Getting-metadata/Get-files-list) |
-| Get metadata and a flat file list | [`ПолучитьМетаданные`](/docs/RAR/Getting-metadata/Get-metadata) |
+| Unpack the whole archive to a directory | [`UnarchiveDirectory`](/docs/RAR/Unarchiving/Unarchive-directory) |
+| Extract selected files only | [`UnpackFiles`](/docs/RAR/Unarchiving/Unpack-files) |
+| Get a tree of files and folders | [`GetFilesList`](/docs/RAR/Getting-metadata/Get-files-list) |
+| Get metadata and a flat file list | [`GetMetadata`](/docs/RAR/Getting-metadata/Get-metadata) |
 
-Where applicable, the archive can be passed as a **file path** or **binary data**. For password-protected archives, use the `Пароль` parameter (CLI: `--password`).
+Where applicable, the archive can be passed as a **file path** or **binary data**. For password-protected archives, use the `Password` parameter (CLI: `--password`).
 
 ## Typical workflow
 
 A common flow:
 
-1. Inspect the archive — `ПолучитьСписокФайлов` or `ПолучитьМетаданные`.
-2. Unpack everything — `РазархивироватьКаталог`, or only chosen paths — `РазархивироватьФайлы`.
+1. Inspect the archive — `GetFilesList` or `GetMetadata`.
+2. Unpack everything — `UnarchiveDirectory`, or only chosen paths — `UnpackFiles`.
 
 ```bsl
-ПутьАрхива = "C:\Inbox\package.rar";
+ArchivePath = "C:\Inbox\package.rar";
 
 // 1. Paths inside the archive
-Список = OPI_RAR.ПолучитьСписокФайлов(ПутьАрхива);
+FileList = OPI_RAR.GetFilesList(ArchivePath);
 
 // 2. Unpack to a folder
-Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, "C:\Unpack");
+Result = OPI_RAR.UnarchiveDirectory(ArchivePath, "C:\Unpack");
 ```
 
 ## Unpacking
 
 ### Full archive
 
-`РазархивироватьКаталог` extracts all entries into the target directory. Pass the password as the third argument when needed.
+`UnarchiveDirectory` extracts all entries into the target directory. Pass the password as the third argument when needed.
 
 ```bsl
-ПутьАрхива = "C:\Archives\archive.rar";
-КаталогНазначения = "C:\Unpack";
+ArchivePath          = "C:\Archives\archive.rar";
+DestinationDirectory = "C:\Unpack";
 
-Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения);
+Result = OPI_RAR.UnarchiveDirectory(ArchivePath, DestinationDirectory);
 
 // Password-protected archive
-Результат = OPI_RAR.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения, "MyPassword123");
+Result = OPI_RAR.UnarchiveDirectory(ArchivePath, DestinationDirectory, "MyPassword123");
 ```
 
 ### Selected files
 
-`РазархивироватьФайлы` takes an array of **full paths inside the archive** — the same strings you get from listing methods.
+`UnpackFiles` takes an array of **full paths inside the archive** — the same strings you get from listing methods.
 
 ```bsl
-ПутьАрхива = "C:\Archives\archive.rar";
-КаталогНазначения = "C:\Unpack";
+ArchivePath          = "C:\Archives\archive.rar";
+DestinationDirectory = "C:\Unpack";
 
-Пути = Новый Массив;
-Пути.Добавить("readme.txt");
-Пути.Добавить("docs\note.txt");
+Paths = New Array;
+Paths.Add("readme.txt");
+Paths.Add("docs\note.txt");
 
-Результат = OPI_RAR.РазархивироватьФайлы(ПутьАрхива, Пути, КаталогНазначения);
+Result = OPI_RAR.UnpackFiles(ArchivePath, Paths, DestinationDirectory);
 ```
 
 :::tip
-Internal paths depend on how the archive was built. Before partial unpack, call `ПолучитьСписокФайлов` or `ПолучитьМетаданные` and reuse paths from the response.
+Internal paths depend on how the archive was built. Before partial unpack, call `GetFilesList` or `GetMetadata` and reuse paths from the response.
 :::
 
 ## Inspecting contents
 
-**`ПолучитьСписокФайлов`** — hierarchical tree of folders and files. Best when you need structure or paths for `РазархивироватьФайлы`.
+**`GetFilesList`** — hierarchical tree of folders and files. Best when you need structure or paths for `UnpackFiles`.
 
-**`ПолучитьМетаданные`** — archive summary and a **flat** file list with attributes (size, dates, etc.). Best for analysis without walking a tree.
+**`GetMetadata`** — archive summary and a **flat** file list with attributes (size, dates, etc.). Best for analysis without walking a tree.
 
 ```bsl
-ПутьАрхива = "C:\Archives\archive.rar";
-Пароль = "MyPassword123";
+ArchivePath = "C:\Archives\archive.rar";
+Password    = "MyPassword123";
 
-Дерево = OPI_RAR.ПолучитьСписокФайлов(ПутьАрхива, Пароль);
-Метаданные = OPI_RAR.ПолучитьМетаданные(ПутьАрхива, Пароль);
+Tree     = OPI_RAR.GetFilesList(ArchivePath, Password);
+Metadata = OPI_RAR.GetMetadata(ArchivePath, Password);
 ```
 
 ## File path vs binary data
 
-The first argument (`Архив`) is either a path to a `.rar` file or `ДвоичныеДанные` in memory.
+The first argument (`Archive`) is either a path to a `.rar` file or `BinaryData` in memory.
 
 ```bsl
-ДвоичныеДанные = Новый ДвоичныеДанные("C:\Archives\archive.rar");
+BinaryData = New BinaryData("C:\Archives\archive.rar");
 
-Список = OPI_RAR.ПолучитьСписокФайлов(ДвоичныеДанные);
-Результат = OPI_RAR.РазархивироватьКаталог(ДвоичныеДанные, "C:\Unpack");
+FileList = OPI_RAR.GetFilesList(BinaryData);
+Result   = OPI_RAR.UnarchiveDirectory(BinaryData, "C:\Unpack");
 ```
 
 If you **omit** the destination directory when unpacking, the result is a map of paths to binary data (or a content description) — useful for small archives and in-memory workflows.
 
 ```bsl
 // Archive contents as a map, without writing to disk
-Описание = OPI_RAR.РазархивироватьКаталог(ДвоичныеДанные);
+Description = OPI_RAR.UnarchiveDirectory(BinaryData);
 ```
 
 :::tip
-For large archives, prefer a file path on disk: lower memory use and no need to load the whole archive into `ДвоичныеДанные` upfront.
+For large archives, prefer a file path on disk: lower memory use and no need to load the whole archive into `BinaryData` upfront.
 :::
 
 :::note

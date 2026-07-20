@@ -1,7 +1,7 @@
 ---
 id: Tar
 sidebar_class_name: Tar
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, tar]
+keywords: [1C, 1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, tar]
 ---
 
 <img src={require('../../static/img/APIs/Tar.png').default} width='64px' />
@@ -12,115 +12,160 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 <LibraryIntro module="OPI_Tar" cli="tar" use="oint/formats/tar" lang="en"/>
 
-This section is dedicated to the library for working with tar archives in 1C:Enterprise, OneScript and CLI. This page describes all the actions necessary for a complete start of work
+The `OPI_Tar` library is for **creating, unpacking and modifying** tar archives (including `.tar.gz`) in 1C:Enterprise, OneScript and CLI. This page gives a short overview and typical workflows; see child sections for full method signatures and examples.
 
-## Getting Started
+## Capabilities
 
-The library provides capabilities for working with tar format archives: creating archives, unpacking, extracting individual files, modifying existing archives and working with gzip compression.
+| Task | Method |
+|------|--------|
+| Pack a directory into tar/tar.gz | [`ArchiveDirectory`](/docs/Tar/Archiving/Archive-directory) |
+| Unpack the whole archive to a directory | [`UnarchiveDirectory`](/docs/Tar/Archiving/Unarchive-directory) |
+| Extract selected files only | [`UnpackFiles`](/docs/Tar/Archiving/Unpack-files) |
+| Add, replace or delete files | [`ModifyArchive`](/docs/Tar/Archiving/Modify-archive) |
+| Get a settings template (gzip, etc.) | [`GetArchivingSettingsStructure`](/docs/Tar/Archiving/Get-archiving-settings-structure) |
+| Get a tree of files and folders | [`GetFilesList`](/docs/Tar/Getting-metadata/Get-files-list) |
+| Get metadata and a flat file list | [`GetMetadata`](/docs/Tar/Getting-metadata/Get-metadata) |
 
-### Main Features
+The archive and source directory can be passed as a **file/folder path on disk** or **binary data**. If you omit the save path when archiving or the destination directory when unpacking, the result is returned in memory (binary data or a map).
 
-**Archiving Directories**
+## Typical workflow
 
-The `АрхивироватьКаталог` function allows you to pack files from the specified directory into a tar archive. You can specify a path to save the archive or get it as binary data.
+A common flow:
+
+1. Pack a directory — `ArchiveDirectory` (with gzip via `Settings` when needed).
+2. Inspect the archive — `GetFilesList` or `GetMetadata`.
+3. Unpack everything — `UnarchiveDirectory`, or modify in place — `ModifyArchive`.
 
 ```bsl
-Каталог = "C:\МойКаталог";
-ПутьАрхива = "C:\Архивы\архив.tar";
+SourceDirectory = "C:\Data\project";
+ArchivePath     = "C:\Archives\project.tar.gz";
 
-Результат = OPI_Tar.АрхивироватьКаталог(Каталог, ПутьАрхива);
+// 1. Create tar.gz
+Settings = OPI_Tar.GetArchivingSettingsStructure(True);
+Settings["gzip"]       = True;
+Settings["gzip_level"] = 6;
+
+Result = OPI_Tar.ArchiveDirectory(SourceDirectory, ArchivePath, Settings);
+
+// 2. Inspect contents
+FileList = OPI_Tar.GetFilesList(ArchivePath);
 ```
 
-**Unpacking Archives**
+## Archiving
 
-The `РазархивироватьКаталог` function allows you to unpack a tar archive to a specified directory.
+`ArchiveDirectory` packs files from the specified directory. The second argument is the save path; if omitted, the archive is returned as `BinaryData`.
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.tar";
-КаталогНазначения = "C:\Распаковка";
+SourceDirectory = "C:\MyFolder";
+ArchivePath     = "C:\Archives\archive.tar";
 
-Результат = OPI_Tar.РазархивироватьКаталог(ПутьАрхива, КаталогНазначения);
+Result = OPI_Tar.ArchiveDirectory(SourceDirectory, ArchivePath);
 ```
 
-**Unpacking Individual Files**
+### gzip settings
 
-The `РазархивироватьФайлы` function allows you to extract only selected files from the archive by a list of their paths inside the archive.
+`GetArchivingSettingsStructure` returns a structure of optional parameters:
 
-```bsl
-ПутьАрхива = "C:\Архивы\архив.tar";
-Пути = Новый Массив;
-Пути.Добавить("docs/readme.txt");
-Пути.Добавить("config/settings.json");
-
-КаталогНазначения = "C:\Распаковка";
-
-Результат = OPI_Tar.РазархивироватьФайлы(ПутьАрхива, Пути, КаталогНазначения);
-```
-
-**Modifying Archives**
-
-The `ИзменитьАрхив` function allows you to add new files, replace or delete existing files in a tar archive without complete repacking.
+- **gzip** — apply gzip compression: `True`/`False` (default `False`)
+- **gzip_level** — compression level from 0 to 9 (default 6)
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.tar";
+Settings = OPI_Tar.GetArchivingSettingsStructure(True);
+Settings["gzip"]       = True;
+Settings["gzip_level"] = 9;
 
-// Files to add or replace
-ДобавляемыеФайлы = Новый Соответствие;
-ДобавляемыеФайлы.Вставить("docs/new.txt", "C:\Файлы\новый.txt");
-
-// Files to delete
-УдаляемыеПути = Новый Массив;
-УдаляемыеПути.Добавить("old/obsolete.txt");
-
-Результат = OPI_Tar.ИзменитьАрхив(ПутьАрхива, ДобавляемыеФайлы, УдаляемыеПути);
-```
-
-### Archive Settings
-
-The `ПолучитьСтруктуруНастроекАрхивации` function returns a structure with additional settings for creating an archive:
-
-- **gzip** — apply gzip compression to the archive: `Истина`/`Ложь` (default `Ложь`)
-- **gzip_level** — gzip compression level from 0 to 9 (default 6, where 0 is no compression, 9 is maximum compression)
-
-**Example of using settings:**
-
-```bsl
-Настройки = OPI_Tar.ПолучитьСтруктуруНастроекАрхивации(Истина);
-Настройки["gzip"] = Истина;
-Настройки["gzip_level"] = 9;
-
-Каталог = "C:\МойКаталог";
-ПутьАрхива = "C:\Архивы\архив.tar.gz";
-
-Результат = OPI_Tar.АрхивироватьКаталог(Каталог, ПутьАрхива, Настройки);
+Result = OPI_Tar.ArchiveDirectory(SourceDirectory, "C:\Archives\archive.tar.gz", Settings);
 ```
 
 :::tip
-Using gzip compression allows you to significantly reduce the archive size. For maximum compression use `gzip_level = 9`, for faster archive creation — lower values (for example, 1-3)
+Use `gzip_level = 9` for maximum compression; lower values (e.g. 1–3) for faster archive creation.
 :::
+
+## Unpacking
+
+### Full archive
+
+`UnarchiveDirectory` extracts all entries into the target directory.
+
+```bsl
+ArchivePath             = "C:\Archives\archive.tar";
+DestinationDirectory    = "C:\Unpack";
+
+Result = OPI_Tar.UnarchiveDirectory(ArchivePath, DestinationDirectory);
+```
+
+### Selected files
+
+`UnpackFiles` takes an array of **full paths inside the archive**.
+
+```bsl
+Paths = New Array;
+Paths.Add("docs/readme.txt");
+Paths.Add("config/settings.json");
+
+Result = OPI_Tar.UnpackFiles(ArchivePath, Paths, DestinationDirectory);
+```
+
+:::tip
+Paths inside tar usually use forward slashes (`/`). Before partial unpack, call `GetFilesList` or `GetMetadata` and reuse paths from the response.
+:::
+
+## Modifying archives
+
+`ModifyArchive` adds, replaces or deletes files in an existing archive. An on-disk archive is modified **in place**; gzip options go in `Settings`.
+
+```bsl
+ArchivePath = "C:\Archives\archive.tar";
+
+Additions = New Map;
+Additions.Insert("docs/new.txt", "C:\Files\new.txt");
+
+Deletions = New Array;
+Deletions.Add("old/obsolete.txt");
+
+Result = OPI_Tar.ModifyArchive(ArchivePath, Additions, Deletions);
+```
 
 :::important
-When modifying an existing archive on disk, gzip parameters must be specified in the Settings structure. The archive on disk is modified directly in place
+When modifying an on-disk archive, gzip parameters must be set in the `Settings` structure (see [`GetArchivingSettingsStructure`](/docs/Tar/Archiving/Get-archiving-settings-structure)).
 :::
 
-### Getting Archive Information
+## Inspecting contents
 
-**Getting File List**
+**`GetFilesList`** — hierarchical tree of folders and files.
 
-The `ПолучитьСписокФайлов` function returns a hierarchical list of all files and directories in the archive.
-
-```bsl
-ПутьАрхива = "C:\Архивы\архив.tar";
-
-СписокФайлов = OPI_Tar.ПолучитьСписокФайлов(ПутьАрхива);
-```
-
-**Getting Metadata**
-
-The `ПолучитьМетаданные` function returns archive metadata and a flat list of all files with detailed information.
+**`GetMetadata`** — archive summary and a **flat** file list with attributes.
 
 ```bsl
-ПутьАрхива = "C:\Архивы\архив.tar";
-
-Метаданные = OPI_Tar.ПолучитьМетаданные(ПутьАрхива);
+Tree     = OPI_Tar.GetFilesList(ArchivePath);
+Metadata = OPI_Tar.GetMetadata(ArchivePath);
 ```
+
+## File path vs binary data
+
+The `Archive` and directory arguments accept a disk path or `BinaryData`.
+
+```bsl
+BinaryData = New BinaryData("C:\Archives\archive.tar.gz");
+
+FileList = OPI_Tar.GetFilesList(BinaryData);
+Result   = OPI_Tar.UnarchiveDirectory(BinaryData, "C:\Unpack");
+```
+
+If you **omit** the destination directory when unpacking, the result is a map of paths to binary data. When archiving without a save path, you get `BinaryData` of the archive.
+
+```bsl
+// Archive contents as a map, without writing to disk
+Description = OPI_Tar.UnarchiveDirectory(BinaryData);
+
+// Archive in memory, without writing to disk
+ArchiveInMemory = OPI_Tar.ArchiveDirectory(SourceDirectory);
+```
+
+:::tip
+For large archives, prefer a file path on disk: lower memory use.
+:::
+
+:::note
+Response fields, CLI options and sample outputs are documented on each method page under [Archiving](/docs/Tar/Archiving/Archive-directory) and [Getting metadata](/docs/Tar/Getting-metadata/Get-files-list).
+:::
