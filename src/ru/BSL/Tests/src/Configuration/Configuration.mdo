@@ -46,6 +46,7 @@
   <commonModules>CommonModule.OPIt_Notion</commonModules>
   <commonModules>CommonModule.OPIt_Ollama</commonModules>
   <commonModules>CommonModule.OPIt_OpenAI</commonModules>
+  <commonModules>CommonModule.OPIt_OpenAPI</commonModules>
   <commonModules>CommonModule.OPIt_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPIt_RAR</commonModules>
   <commonModules>CommonModule.OPIt_RCON</commonModules>
@@ -94,6 +95,7 @@
   <commonModules>CommonModule.OPItc_Notion</commonModules>
   <commonModules>CommonModule.OPItc_Ollama</commonModules>
   <commonModules>CommonModule.OPItc_OpenAI</commonModules>
+  <commonModules>CommonModule.OPItc_OpenAPI</commonModules>
   <commonModules>CommonModule.OPItc_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPItc_RAR</commonModules>
   <commonModules>CommonModule.OPItc_RCON</commonModules>
