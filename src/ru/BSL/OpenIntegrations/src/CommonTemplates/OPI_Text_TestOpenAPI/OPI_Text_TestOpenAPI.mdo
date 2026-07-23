@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="48ea15c1-e094-4938-b632-929641247e4b">
+  <name>OPI_Text_TestOpenAPI</name>
+  <synonym>
+    <key>ru</key>
+    <value>Тестовая конфигурация OpenAPI (ОПИ)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>

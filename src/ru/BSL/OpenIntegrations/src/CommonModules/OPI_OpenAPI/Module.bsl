@@ -3,7 +3,7 @@
 // CLI: openapi
 // Keywords: openapi, swagger
 
-// DocsCategory: Tools
+// DocsCategory: Formats
 // DocsNameRU: OpenAPI
 // DocsNameEN: OpenAPI
 

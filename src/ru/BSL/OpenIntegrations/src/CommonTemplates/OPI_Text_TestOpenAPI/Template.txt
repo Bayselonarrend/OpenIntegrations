@@ -1,0 +1,2053 @@
+openapi: 3.0.3
+info:
+  title: OPI Kitchen Sink API
+  description: |
+    Комплексная тестовая спецификация для проверки генерации HTTP-клиента
+    из OpenAPI и контрактного мокинга через Prism.
+
+    Покрывает типичные «ловушки» codegen:
+    - параметры path/query/header/cookie и стили сериализации;
+    - requestBody JSON / form / multipart / binary / text;
+    - схемы allOf / oneOf / anyOf, discriminator, additionalProperties;
+    - несколько content-type, коды ответов, заголовки ответа;
+    - security schemes, callbacks, links, servers variables, $ref.
+  version: 1.0.0
+  termsOfService: https://example.com/terms
+  contact:
+    name: OpenIntegrations
+    url: https://github.com/Bayselonarrend/OpenIntegrations
+    email: test@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-opi-purpose: client-generation-stress-test
+
+externalDocs:
+  description: Prism mock server
+  url: https://stoplight.io/open-source/prism
+
+servers:
+  - url: http://127.0.0.1:{port}/v1
+    description: Локальный Prism mock
+    variables:
+      port:
+        default: "4010"
+        enum:
+          - "4010"
+          - "8080"
+  - url: https://{environment}.example.com/api/{basePath}
+    description: Удалённый стенд с переменными сервера
+    variables:
+      environment:
+        default: sandbox
+        enum:
+          - sandbox
+          - staging
+          - production
+      basePath:
+        default: v1
+
+tags:
+  - name: System
+    description: Служебные операции без авторизации
+  - name: Users
+    description: CRUD пользователей
+  - name: Catalog
+    description: Каталог с полиморфными сущностями
+  - name: Media
+    description: Загрузка и скачивание файлов
+  - name: Search
+    description: Поиск и сложные query-параметры
+  - name: Security
+    description: Разные схемы аутентификации
+  - name: Advanced
+    description: Callbacks, links, edge-cases
+
+security:
+  - ApiKeyHeader: []
+  - BearerAuth: []
+
+paths:
+  /health:
+    get:
+      tags: [System]
+      operationId: getHealth
+      summary: Проверка доступности
+      description: Публичный endpoint без security.
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/XRequestId"
+      responses:
+        "200":
+          description: Сервис доступен
+          headers:
+            X-Request-Id:
+              $ref: "#/components/headers/XRequestId"
+            X-Server-Time:
+              description: Время сервера (RFC3339)
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+              examples:
+                ok:
+                  $ref: "#/components/examples/HealthOk"
+        default:
+          $ref: "#/components/responses/Error"
+
+  /echo:
+    get:
+      tags: [System]
+      operationId: echoGet
+      summary: Echo GET с параметрами всех локаций
+      security: []
+      parameters:
+        - name: message
+          in: query
+          required: true
+          description: Обязательное строковое сообщение
+          schema:
+            type: string
+            minLength: 1
+            maxLength: 256
+          example: hello
+        - name: count
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            maximum: 100
+            default: 1
+        - name: flag
+          in: query
+          schema:
+            type: boolean
+            default: false
+        - name: X-Client-Name
+          in: header
+          required: false
+          schema:
+            type: string
+            pattern: "^[A-Za-z0-9._-]{1,64}$"
+        - name: session
+          in: cookie
+          required: false
+          schema:
+            type: string
+        - $ref: "#/components/parameters/XRequestId"
+      responses:
+        "200":
+          description: Эхо запроса
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EchoResponse"
+        "400":
+          $ref: "#/components/responses/Error"
+    post:
+      tags: [System]
+      operationId: echoPost
+      summary: Echo POST с JSON-телом
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EchoRequest"
+            examples:
+              basic:
+                value:
+                  message: ping
+                  meta:
+                    source: test
+                    attempt: 1
+      responses:
+        "200":
+          description: Эхо тела
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EchoResponse"
+        "400":
+          $ref: "#/components/responses/Error"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /users:
+    get:
+      tags: [Users]
+      operationId: listUsers
+      summary: Список пользователей с пагинацией и фильтрами
+      parameters:
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+        - name: status
+          in: query
+          description: Фильтр по статусу (form + explode)
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/UserStatus"
+        - name: tags
+          in: query
+          description: Теги через pipeDelimited
+          style: pipeDelimited
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: roles
+          in: query
+          description: Роли через spaceDelimited
+          style: spaceDelimited
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: filter
+          in: query
+          description: deepObject фильтр
+          style: deepObject
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          example:
+            email: "*@example.com"
+            country: RU
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [created_at, updated_at, email, -created_at, -email]
+            default: created_at
+        - $ref: "#/components/parameters/AcceptLanguage"
+      responses:
+        "200":
+          description: Страница пользователей
+          headers:
+            X-Total-Count:
+              schema:
+                type: integer
+                format: int64
+              example: 42
+            Link:
+              description: RFC 5988 pagination links
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPage"
+        "400":
+          $ref: "#/components/responses/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+    post:
+      tags: [Users]
+      operationId: createUser
+      summary: Создание пользователя
+      requestBody:
+        $ref: "#/components/requestBodies/UserCreate"
+      responses:
+        "201":
+          description: Пользователь создан
+          headers:
+            Location:
+              description: URI созданного ресурса
+              schema:
+                type: string
+                format: uri
+            X-Request-Id:
+              $ref: "#/components/headers/XRequestId"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          $ref: "#/components/responses/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          description: Конфликт (email занят)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /users/{userId}:
+    parameters:
+      - $ref: "#/components/parameters/UserId"
+      - $ref: "#/components/parameters/XRequestId"
+    get:
+      tags: [Users]
+      operationId: getUser
+      summary: Получение пользователя
+      responses:
+        "200":
+          description: Найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              examples:
+                active:
+                  $ref: "#/components/examples/UserActive"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/User"
+          links:
+            userOrders:
+              operationId: listUserOrders
+              parameters:
+                userId: "$response.body#/id"
+              description: Заказы этого пользователя
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+    put:
+      tags: [Users]
+      operationId: replaceUser
+      summary: Полная замена пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserReplace"
+      responses:
+        "200":
+          description: Заменён
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+    patch:
+      tags: [Users]
+      operationId: patchUser
+      summary: Частичное обновление (JSON Merge Patch)
+      requestBody:
+        required: true
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: "#/components/schemas/UserPatch"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserPatch"
+      responses:
+        "200":
+          description: Обновлён
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+    delete:
+      tags: [Users]
+      operationId: deleteUser
+      summary: Удаление пользователя
+      parameters:
+        - name: force
+          in: query
+          schema:
+            type: boolean
+            default: false
+      responses:
+        "204":
+          description: Удалён (без тела)
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Нельзя удалить
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /users/{userId}/orders:
+    get:
+      tags: [Users]
+      operationId: listUserOrders
+      summary: Заказы пользователя (вложенный path)
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+      responses:
+        "200":
+          description: Список заказов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderPage"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /users/{userId}/orders/{orderId}:
+    get:
+      tags: [Users]
+      operationId: getUserOrder
+      summary: Один заказ (два path-параметра)
+      parameters:
+        - $ref: "#/components/parameters/UserId"
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Заказ
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /path-styles/{simpleId}/{labelId}/{matrixId}:
+    get:
+      tags: [Advanced]
+      operationId: getPathStyles
+      summary: Стили path-параметров (simple / label / matrix)
+      description: |
+        Проверяет генерацию сериализации path-параметров по OpenAPI Style Values.
+        В шаблоне пути всегда `{name}`; префиксы `.` / `;` добавляет style при expand:
+        - simple → `abc`
+        - label → `.lbl`
+        - matrix → `;matrixId=mtx` (explode=false) или `;mtx` (explode=true)
+        Пример запроса клиента: `/v1/path-styles/abc/.lbl/;matrixId=mtx`
+      security: []
+      parameters:
+        - name: simpleId
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+          example: abc
+        - name: labelId
+          in: path
+          required: true
+          style: label
+          explode: false
+          schema:
+            type: string
+          example: lbl
+        - name: matrixId
+          in: path
+          required: true
+          style: matrix
+          explode: false
+          schema:
+            type: string
+          example: mtx
+      responses:
+        "200":
+          description: Разобранные path-параметры
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [simpleId, labelId, matrixId]
+                properties:
+                  simpleId:
+                    type: string
+                  labelId:
+                    type: string
+                  matrixId:
+                    type: string
+
+  /search:
+    get:
+      tags: [Search]
+      operationId: searchEntities
+      summary: Универсальный поиск
+      parameters:
+        - name: q
+          in: query
+          required: true
+          allowEmptyValue: true
+          schema:
+            type: string
+        - name: ids
+          in: query
+          description: CSV-массив (form, explode=false)
+          style: form
+          explode: false
+          schema:
+            type: array
+            minItems: 1
+            maxItems: 50
+            items:
+              type: string
+              format: uuid
+        - name: created_from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: created_to
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: amount_min
+          in: query
+          schema:
+            type: number
+            format: double
+            minimum: 0
+            exclusiveMinimum: true
+        - name: amount_max
+          in: query
+          schema:
+            type: number
+            format: double
+        - name: include_deleted
+          in: query
+          allowReserved: true
+          schema:
+            type: boolean
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PageSize"
+      responses:
+        "200":
+          description: Результаты поиска
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResult"
+        "400":
+          $ref: "#/components/responses/Error"
+
+  /catalog/items:
+    get:
+      tags: [Catalog]
+      operationId: listCatalogItems
+      summary: Полиморфный список (discriminator)
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [book, gadget, service]
+      responses:
+        "200":
+          description: Список элементов каталога
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CatalogItem"
+    post:
+      tags: [Catalog]
+      operationId: createCatalogItem
+      summary: Создание элемента каталога (oneOf + discriminator)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CatalogItem"
+            examples:
+              book:
+                value:
+                  type: book
+                  name: Clean Code
+                  isbn: "9780132350884"
+                  pages: 464
+              gadget:
+                value:
+                  type: gadget
+                  name: Sensor X
+                  sku: GX-100
+                  wattage: 12.5
+      responses:
+        "201":
+          description: Создан
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogItem"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /catalog/items/{itemId}:
+    get:
+      tags: [Catalog]
+      operationId: getCatalogItem
+      summary: Элемент каталога
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Найден
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogItem"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /schemas/kitchen-sink:
+    get:
+      tags: [Advanced]
+      operationId: getKitchenSinkSchema
+      summary: Ответ со всеми базовыми типами и форматами
+      security: []
+      responses:
+        "200":
+          description: Набор скаляров и коллекций
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KitchenSink"
+    post:
+      tags: [Advanced]
+      operationId: postKitchenSinkSchema
+      summary: Приём kitchen-sink тела (allOf/anyOf/nullable/map)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/KitchenSinkInput"
+      responses:
+        "200":
+          description: Принято
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KitchenSink"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /media/upload:
+    post:
+      tags: [Media]
+      operationId: uploadMedia
+      summary: Multipart загрузка файла и метаданных
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, title]
+              properties:
+                title:
+                  type: string
+                  maxLength: 200
+                description:
+                  type: string
+                  nullable: true
+                tags:
+                  type: array
+                  items:
+                    type: string
+                file:
+                  type: string
+                  format: binary
+                meta:
+                  type: object
+                  additionalProperties: true
+                  description: Произвольные метаданные (JSON part)
+            encoding:
+              file:
+                contentType: application/octet-stream, image/png, image/jpeg, application/pdf
+              meta:
+                contentType: application/json
+      responses:
+        "201":
+          description: Файл принят
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaObject"
+        "400":
+          $ref: "#/components/responses/Error"
+        "413":
+          description: Слишком большой файл
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /media/form:
+    post:
+      tags: [Media]
+      operationId: submitMediaForm
+      summary: application/x-www-form-urlencoded
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [name, kind]
+              properties:
+                name:
+                  type: string
+                kind:
+                  type: string
+                  enum: [image, document, other]
+                public:
+                  type: boolean
+                  default: false
+                labels:
+                  type: array
+                  items:
+                    type: string
+            encoding:
+              labels:
+                style: form
+                explode: true
+      responses:
+        "200":
+          description: Форма принята
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [accepted]
+                properties:
+                  accepted:
+                    type: boolean
+                  name:
+                    type: string
+                  kind:
+                    type: string
+
+  /media/{fileId}:
+    get:
+      tags: [Media]
+      operationId: downloadMedia
+      summary: Скачивание binary / JSON по Accept
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: Accept
+          in: header
+          schema:
+            type: string
+            enum:
+              - application/octet-stream
+              - application/json
+              - image/png
+      responses:
+        "200":
+          description: Содержимое файла
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+              example: attachment; filename="report.bin"
+            ETag:
+              schema:
+                type: string
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaObject"
+            image/png:
+              schema:
+                type: string
+                format: binary
+        "304":
+          description: Not Modified
+        "404":
+          $ref: "#/components/responses/NotFound"
+    head:
+      tags: [Media]
+      operationId: headMedia
+      summary: HEAD метаданные файла
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Есть
+          headers:
+            Content-Length:
+              schema:
+                type: integer
+                format: int64
+            Content-Type:
+              schema:
+                type: string
+            ETag:
+              schema:
+                type: string
+        "404":
+          description: Не найден
+
+  /text/plain-echo:
+    post:
+      tags: [Advanced]
+      operationId: echoPlainText
+      summary: text/plain request/response
+      security: []
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+            example: hello plain
+      responses:
+        "200":
+          description: Тот же текст
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+
+  /batch/users:
+    post:
+      tags: [Users]
+      operationId: batchCreateUsers
+      summary: Массив в теле запроса
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              minItems: 1
+              maxItems: 100
+              items:
+                $ref: "#/components/schemas/UserCreate"
+      responses:
+        "200":
+          description: Результат пакетной операции
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BatchResult"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /status/{code}:
+    get:
+      tags: [Advanced]
+      operationId: getByStatusCode
+      summary: Выбор ответа по path-коду (и Prefer в Prism)
+      description: |
+        Для Prism также можно форсировать код через заголовок Prefer: code=404.
+      security: []
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: integer
+            enum: [200, 201, 204, 400, 401, 403, 404, 409, 422, 429, 500]
+        - name: Prefer
+          in: header
+          required: false
+          schema:
+            type: string
+          example: code=404
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusPayload"
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StatusPayload"
+        "204":
+          description: No Content
+        "400":
+          $ref: "#/components/responses/Error"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+        "429":
+          description: Rate limit
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "500":
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /headers/demo:
+    get:
+      tags: [Advanced]
+      operationId: headersDemo
+      summary: Обязательные и опциональные header-параметры
+      security: []
+      parameters:
+        - name: X-Correlation-Id
+          in: header
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-Debug
+          in: header
+          required: false
+          schema:
+            type: boolean
+        - name: Accept-Language
+          in: header
+          schema:
+            type: string
+            default: ru-RU
+      responses:
+        "200":
+          description: Заголовки отражены в теле и ответе
+          headers:
+            X-Correlation-Id:
+              schema:
+                type: string
+                format: uuid
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  correlationId:
+                    type: string
+                    format: uuid
+                  debug:
+                    type: boolean
+                    nullable: true
+                  language:
+                    type: string
+
+  /cookies/demo:
+    get:
+      tags: [Advanced]
+      operationId: cookiesDemo
+      summary: Cookie-параметры
+      security: []
+      parameters:
+        - name: session_id
+          in: cookie
+          required: true
+          schema:
+            type: string
+            minLength: 8
+        - name: theme
+          in: cookie
+          required: false
+          schema:
+            type: string
+            enum: [light, dark]
+            default: light
+      responses:
+        "200":
+          description: Cookie приняты
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              example: session_id=abc12345; Path=/; HttpOnly
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session_id:
+                    type: string
+                  theme:
+                    type: string
+
+  /security/api-key:
+    get:
+      tags: [Security]
+      operationId: securityApiKey
+      summary: Только API Key
+      security:
+        - ApiKeyHeader: []
+        - ApiKeyQuery: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityProbe"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /security/bearer:
+    get:
+      tags: [Security]
+      operationId: securityBearer
+      summary: Только Bearer JWT
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityProbe"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /security/basic:
+    get:
+      tags: [Security]
+      operationId: securityBasic
+      summary: HTTP Basic
+      security:
+        - BasicAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityProbe"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /security/oauth:
+    get:
+      tags: [Security]
+      operationId: securityOAuth
+      summary: OAuth2 clientCredentials + scopes
+      security:
+        - OAuth2:
+            - users:read
+            - users:write
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityProbe"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          description: Недостаточно scope
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /security/multi:
+    get:
+      tags: [Security]
+      operationId: securityMulti
+      summary: AND-комбинация (apiKey + bearer)
+      security:
+        - ApiKeyHeader: []
+          BearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecurityProbe"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /webhooks/subscribe:
+    post:
+      tags: [Advanced]
+      operationId: subscribeWebhook
+      summary: Подписка с callback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WebhookSubscription"
+      responses:
+        "201":
+          description: Подписка создана
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WebhookSubscriptionResult"
+      callbacks:
+        onEvent:
+          "{$request.body#/callbackUrl}":
+            post:
+              operationId: webhookOnEvent
+              summary: Доставка события на callbackUrl клиента
+              requestBody:
+                required: true
+                content:
+                  application/json:
+                    schema:
+                      $ref: "#/components/schemas/WebhookEvent"
+              responses:
+                "200":
+                  description: Клиент принял событие
+                "204":
+                  description: Принято без тела
+
+  /legacy/report:
+    get:
+      tags: [Advanced]
+      operationId: getLegacyReport
+      summary: Устаревшая операция
+      deprecated: true
+      description: Оставлена для проверки флага deprecated в codegen.
+      parameters:
+        - name: format
+          in: query
+          deprecated: true
+          schema:
+            type: string
+            enum: [csv, xml]
+      responses:
+        "200":
+          description: Отчёт
+          content:
+            text/csv:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+
+  /options-probe:
+    options:
+      tags: [System]
+      operationId: optionsProbe
+      summary: OPTIONS preflight
+      security: []
+      responses:
+        "204":
+          description: No Content
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+              example: "*"
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+              example: GET, POST, PUT, PATCH, DELETE, OPTIONS
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+              example: Authorization, Content-Type, X-API-Key, X-Request-Id
+
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API-ключ в заголовке
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API-ключ в query
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    BasicAuth:
+      type: http
+      scheme: basic
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/oauth/token
+          scopes:
+            users:read: Чтение пользователей
+            users:write: Изменение пользователей
+            media:write: Загрузка медиа
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          tokenUrl: https://example.com/oauth/token
+          refreshUrl: https://example.com/oauth/refresh
+          scopes:
+            users:read: Чтение пользователей
+            users:write: Изменение пользователей
+
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      description: Идентификатор пользователя
+      schema:
+        type: string
+        format: uuid
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+    PageSize:
+      name: page_size
+      in: query
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 100
+        default: 20
+    XRequestId:
+      name: X-Request-Id
+      in: header
+      required: false
+      schema:
+        type: string
+        format: uuid
+    AcceptLanguage:
+      name: Accept-Language
+      in: header
+      required: false
+      schema:
+        type: string
+        example: ru-RU,ru;q=0.9,en;q=0.8
+
+  headers:
+    XRequestId:
+      description: Корреляция запроса
+      schema:
+        type: string
+        format: uuid
+
+  requestBodies:
+    UserCreate:
+      required: true
+      description: Данные нового пользователя
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/UserCreate"
+          examples:
+            minimal:
+              value:
+                email: user@example.com
+                display_name: Test User
+            full:
+              value:
+                email: full@example.com
+                display_name: Full User
+                phone: "+79001234567"
+                status: active
+                roles: [admin, editor]
+                profile:
+                  age: 30
+                  country: RU
+                  preferences:
+                    theme: dark
+                    locale: ru-RU
+
+  responses:
+    Error:
+      description: Ошибка
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            generic:
+              $ref: "#/components/examples/ErrorGeneric"
+    ValidationError:
+      description: Ошибка валидации
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ValidationError"
+    Unauthorized:
+      description: Требуется аутентификация
+      headers:
+        WWW-Authenticate:
+          schema:
+            type: string
+          example: Bearer
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: not_found
+            message: Resource not found
+
+  examples:
+    HealthOk:
+      summary: Здоровый сервис
+      value:
+        status: ok
+        version: 1.0.0
+        uptime_sec: 3600
+    UserActive:
+      summary: Активный пользователь
+      value:
+        id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        email: user@example.com
+        display_name: Test User
+        status: active
+        roles: [viewer]
+        created_at: "2024-01-15T10:00:00Z"
+        updated_at: "2024-06-01T12:30:00Z"
+        profile:
+          age: 25
+          country: RU
+          preferences:
+            theme: light
+            locale: ru-RU
+    ErrorGeneric:
+      summary: Общая ошибка
+      value:
+        code: bad_request
+        message: Invalid request
+        details:
+          - field: email
+            issue: invalid format
+
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status, version]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded, down]
+        version:
+          type: string
+          example: 1.0.0
+        uptime_sec:
+          type: integer
+          format: int64
+          minimum: 0
+        checks:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              ok:
+                type: boolean
+              latency_ms:
+                type: number
+                format: float
+
+    EchoRequest:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+        meta:
+          type: object
+          additionalProperties: true
+          nullable: true
+
+    EchoResponse:
+      type: object
+      required: [message, received_at]
+      properties:
+        message:
+          type: string
+        count:
+          type: integer
+        flag:
+          type: boolean
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        cookies:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: object
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/EchoRequest"
+        received_at:
+          type: string
+          format: date-time
+
+    UserStatus:
+      type: string
+      enum: [active, blocked, pending, deleted]
+
+    User:
+      type: object
+      required: [id, email, display_name, status, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        email:
+          type: string
+          format: email
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+          nullable: true
+          pattern: "^\\+?[0-9]{10,15}$"
+        status:
+          $ref: "#/components/schemas/UserStatus"
+        roles:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            enum: [admin, editor, viewer, guest]
+        profile:
+          $ref: "#/components/schemas/UserProfile"
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+
+    UserCreate:
+      type: object
+      required: [email, display_name]
+      properties:
+        email:
+          type: string
+          format: email
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+          nullable: true
+        status:
+          $ref: "#/components/schemas/UserStatus"
+          default: pending
+        roles:
+          type: array
+          items:
+            type: string
+            enum: [admin, editor, viewer, guest]
+          default: [viewer]
+        profile:
+          $ref: "#/components/schemas/UserProfile"
+
+    UserReplace:
+      allOf:
+        - $ref: "#/components/schemas/UserCreate"
+        - type: object
+          required: [status]
+          properties:
+            status:
+              $ref: "#/components/schemas/UserStatus"
+
+    UserPatch:
+      type: object
+      properties:
+        display_name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+          nullable: true
+        status:
+          $ref: "#/components/schemas/UserStatus"
+        roles:
+          type: array
+          items:
+            type: string
+        profile:
+          $ref: "#/components/schemas/UserProfile"
+      additionalProperties: false
+
+    UserProfile:
+      type: object
+      properties:
+        age:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 150
+          nullable: true
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+          description: ISO 3166-1 alpha-2
+        preferences:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            theme: dark
+            locale: ru-RU
+        scores:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+
+    UserPage:
+      type: object
+      required: [items, page, page_size, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total:
+          type: integer
+          format: int64
+
+    OrderStatus:
+      type: string
+      enum: [draft, paid, shipped, cancelled]
+
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: string
+          description: Decimal as string to avoid float issues
+          pattern: "^[0-9]+(\\.[0-9]{1,4})?$"
+          example: "19.9900"
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+          example: RUB
+
+    Order:
+      type: object
+      required: [id, user_id, status, total, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        status:
+          $ref: "#/components/schemas/OrderStatus"
+        total:
+          $ref: "#/components/schemas/Money"
+        items:
+          type: array
+          items:
+            type: object
+            required: [sku, qty]
+            properties:
+              sku:
+                type: string
+              qty:
+                type: integer
+                minimum: 1
+              price:
+                $ref: "#/components/schemas/Money"
+        created_at:
+          type: string
+          format: date-time
+
+    OrderPage:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Order"
+        next_cursor:
+          type: string
+          nullable: true
+
+    CatalogItem:
+      oneOf:
+        - $ref: "#/components/schemas/BookItem"
+        - $ref: "#/components/schemas/GadgetItem"
+        - $ref: "#/components/schemas/ServiceItem"
+      discriminator:
+        propertyName: type
+        mapping:
+          book: "#/components/schemas/BookItem"
+          gadget: "#/components/schemas/GadgetItem"
+          service: "#/components/schemas/ServiceItem"
+
+    CatalogItemBase:
+      type: object
+      required: [type, name]
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+          nullable: true
+
+    BookItem:
+      allOf:
+        - $ref: "#/components/schemas/CatalogItemBase"
+        - type: object
+          required: [isbn]
+          properties:
+            type:
+              type: string
+              enum: [book]
+            isbn:
+              type: string
+              pattern: "^(97(8|9))?\\d{9}(\\d|X)$"
+            pages:
+              type: integer
+              minimum: 1
+
+    GadgetItem:
+      allOf:
+        - $ref: "#/components/schemas/CatalogItemBase"
+        - type: object
+          required: [sku]
+          properties:
+            type:
+              type: string
+              enum: [gadget]
+            sku:
+              type: string
+            wattage:
+              type: number
+              format: float
+              nullable: true
+
+    ServiceItem:
+      allOf:
+        - $ref: "#/components/schemas/CatalogItemBase"
+        - type: object
+          required: [duration_days]
+          properties:
+            type:
+              type: string
+              enum: [service]
+            duration_days:
+              type: integer
+              minimum: 1
+            recurring:
+              type: boolean
+              default: false
+
+    KitchenSink:
+      type: object
+      required: [string_field, int_field, bool_field]
+      properties:
+        string_field:
+          type: string
+        int_field:
+          type: integer
+          format: int32
+        long_field:
+          type: integer
+          format: int64
+        float_field:
+          type: number
+          format: float
+        double_field:
+          type: number
+          format: double
+        bool_field:
+          type: boolean
+        date_field:
+          type: string
+          format: date
+        date_time_field:
+          type: string
+          format: date-time
+        byte_field:
+          type: string
+          format: byte
+        binary_field:
+          type: string
+          format: binary
+        uuid_field:
+          type: string
+          format: uuid
+        uri_field:
+          type: string
+          format: uri
+        email_field:
+          type: string
+          format: email
+        password_field:
+          type: string
+          format: password
+          writeOnly: true
+        nullable_string:
+          type: string
+          nullable: true
+        enum_field:
+          type: string
+          enum: [alpha, beta, gamma]
+        array_of_strings:
+          type: array
+          items:
+            type: string
+        array_of_objects:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: integer
+        map_string_string:
+          type: object
+          additionalProperties:
+            type: string
+        map_string_any:
+          type: object
+          additionalProperties: true
+        nested:
+          $ref: "#/components/schemas/UserProfile"
+        any_of_value:
+          anyOf:
+            - type: string
+            - type: integer
+            - type: boolean
+        not_empty_object:
+          not:
+            type: array
+
+    KitchenSinkInput:
+      allOf:
+        - $ref: "#/components/schemas/KitchenSink"
+        - type: object
+          properties:
+            extra_flag:
+              type: boolean
+              default: false
+
+    SearchResult:
+      type: object
+      required: [query, hits]
+      properties:
+        query:
+          type: string
+        hits:
+          type: array
+          items:
+            type: object
+            required: [id, score]
+            properties:
+              id:
+                type: string
+                format: uuid
+              score:
+                type: number
+                format: float
+              snippet:
+                type: string
+                nullable: true
+              entity:
+                oneOf:
+                  - $ref: "#/components/schemas/User"
+                  - $ref: "#/components/schemas/Order"
+                  - $ref: "#/components/schemas/CatalogItem"
+        page:
+          type: integer
+        page_size:
+          type: integer
+
+    MediaObject:
+      type: object
+      required: [id, title, content_type, size, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        content_type:
+          type: string
+          example: application/pdf
+        size:
+          type: integer
+          format: int64
+          minimum: 0
+        checksum_sha256:
+          type: string
+          pattern: "^[a-f0-9]{64}$"
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        meta:
+          type: object
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+
+    BatchResult:
+      type: object
+      required: [succeeded, failed]
+      properties:
+        succeeded:
+          type: array
+          items:
+            $ref: "#/components/schemas/User"
+        failed:
+          type: array
+          items:
+            type: object
+            required: [index, error]
+            properties:
+              index:
+                type: integer
+                minimum: 0
+              error:
+                $ref: "#/components/schemas/Error"
+
+    StatusPayload:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+
+    SecurityProbe:
+      type: object
+      required: [ok, scheme]
+      properties:
+        ok:
+          type: boolean
+        scheme:
+          type: string
+        subject:
+          type: string
+          nullable: true
+        scopes:
+          type: array
+          items:
+            type: string
+
+    WebhookSubscription:
+      type: object
+      required: [callbackUrl, events]
+      properties:
+        callbackUrl:
+          type: string
+          format: uri
+        events:
+          type: array
+          minItems: 1
+          items:
+            type: string
+            enum: [user.created, user.updated, order.paid, media.uploaded]
+        secret:
+          type: string
+          format: password
+          writeOnly: true
+
+    WebhookSubscriptionResult:
+      allOf:
+        - $ref: "#/components/schemas/WebhookSubscription"
+        - type: object
+          required: [id, created_at]
+          properties:
+            id:
+              type: string
+              format: uuid
+              readOnly: true
+            created_at:
+              type: string
+              format: date-time
+              readOnly: true
+            secret:
+              type: string
+              writeOnly: true
+              nullable: true
+
+    WebhookEvent:
+      type: object
+      required: [id, type, occurred_at, payload]
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+        occurred_at:
+          type: string
+          format: date-time
+        payload:
+          type: object
+          additionalProperties: true
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+          example: bad_request
+        message:
+          type: string
+        request_id:
+          type: string
+          format: uuid
+          nullable: true
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              issue:
+                type: string
+
+    ValidationError:
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            code:
+              type: string
+              enum: [validation_error]
+            details:
+              type: array
+              minItems: 1
+              items:
+                type: object
+                required: [field, issue]
+                properties:
+                  field:
+                    type: string
+                    description: JSON Pointer или имя параметра
+                    example: /email
+                  issue:
+                    type: string
+                  rejected_value:
+                    description: Отклонённое значение любого типа (любой JSON)
+                    oneOf:
+                      - type: string
+                        nullable: true
+                      - type: number
+                      - type: boolean
+                      - type: object
+                        additionalProperties: true
+                      - type: array
+                        items: {}
