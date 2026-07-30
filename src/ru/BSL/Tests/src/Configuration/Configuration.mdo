@@ -95,7 +95,6 @@
   <commonModules>CommonModule.OPItc_Notion</commonModules>
   <commonModules>CommonModule.OPItc_Ollama</commonModules>
   <commonModules>CommonModule.OPItc_OpenAI</commonModules>
-  <commonModules>CommonModule.OPItc_OpenAPI</commonModules>
   <commonModules>CommonModule.OPItc_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPItc_RAR</commonModules>
   <commonModules>CommonModule.OPItc_RCON</commonModules>
