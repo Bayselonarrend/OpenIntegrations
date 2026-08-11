@@ -1,5 +1,19 @@
 [
     {
+        "version": "2.4.0",
+        "summary_ru": "Методы работы с ntfy",
+        "summary_en": "Methods of working with ntfy",
+        "image": "media/Covers/Ntfy.png",
+        "changes": [
+            {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `Digest` авторизации",
+                "description_en": "Fixed special character handling when calculating the `Digest` authentication signature"
+            }
+        ]
+    },
+    {
         "version": "2.3.0",
         "summary_ru": "Методы работы с архивами",
         "summary_en": "Methods of working with archives",
