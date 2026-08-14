@@ -1,10 +1,16 @@
 [
     {
         "version": "2.4.0",
-        "summary_ru": "Методы работы с ntfy",
-        "summary_en": "Methods of working with ntfy",
+        "summary_ru": "Методы работы с Ntfy",
+        "summary_en": "Methods of working with Ntfy",
         "image": "media/Covers/Ntfy.png",
         "changes": [
+            {
+                "lib": "Ntfy",
+                "icon": "media/Ntfy.png",
+                "description_ru": "Методы публикации, получения и удаления уведомлений (5 функций)",
+                "description_en": "Notification publish, retrieve and delete methods (5 functions)"
+            },
             {
                 "lib": "HTTP",
                 "icon": "media/HTTP.png",

@@ -108,6 +108,7 @@
   <commonModules>CommonModule.OPI_MySQL</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
+  <commonModules>CommonModule.OPI_Ntfy</commonModules>
   <commonModules>CommonModule.OPI_Ollama</commonModules>
   <commonModules>CommonModule.OPI_OpenAI</commonModules>
   <commonModules>CommonModule.OPI_PostgreSQL</commonModules>
