@@ -14433,5 +14433,6 @@
 "Доп. параметры. См. ПолучитьСтруктуруПараметровСообщения": "Additional parameters. See GetMessageParametersStructure",
 "Для удаления топик должен быть защищён и доступен по токену": "To delete a topic, it must be protected and accessible by token",
 "Получает структуру параметров для получения сообщений из топика": "Get structure of parameters for getting messages from topic",
-"Получает структуру дополнительных параметров для отправки уведомления": "Get structure of additional parameters for sending notification"
+"Получает структуру дополнительных параметров для отправки уведомления": "Get structure of additional parameters for sending notification",
+"кнопки действий в формате ntfy": "actions in ntfy format"
 }
