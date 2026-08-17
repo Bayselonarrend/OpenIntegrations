@@ -47,7 +47,6 @@
   <commonModules>CommonModule.OPIt_Ntfy</commonModules>
   <commonModules>CommonModule.OPIt_Ollama</commonModules>
   <commonModules>CommonModule.OPIt_OpenAI</commonModules>
-  <commonModules>CommonModule.OPIt_OpenAPI</commonModules>
   <commonModules>CommonModule.OPIt_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPIt_RAR</commonModules>
   <commonModules>CommonModule.OPIt_RCON</commonModules>
