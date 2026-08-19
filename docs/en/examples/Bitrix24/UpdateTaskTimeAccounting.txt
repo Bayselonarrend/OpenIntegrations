@@ -1,6 +1,6 @@
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
-    TaskID   = "12254";
-    RecordID = "4604";
+    TaskID   = "8726";
+    RecordID = "3202";
 
     Text = "The text I forgot last time";
     Time = 4800;
@@ -8,8 +8,8 @@
     Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "92345d6a006e9f06006b12e400000001000...";
-    RecordID = "4606";
+    Token    = "a5b00469006e9f06006b12e400000001000...";
+    RecordID = "3204";
 
     Text      = "New time record";
     Time      = 4800;

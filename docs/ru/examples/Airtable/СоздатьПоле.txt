@@ -1,6 +1,6 @@
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appxKRlB5clfelDah";
-    Таблица = "tblxh6z17MN8ufZ8U";
+    База    = "appJiRrCJhRhnaVAo";
+    Таблица = "tblFGmvh2eldM8MuJ";
     Имя     = Строка(Новый УникальныйИдентификатор);
 
     Поле      = OPI_Airtable.ПолучитьПолеНомера(Имя);

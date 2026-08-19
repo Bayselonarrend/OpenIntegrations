@@ -1,6 +1,6 @@
     URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We34...";
 
-    AssistantID = "asst_49";
+    AssistantID = "asst_2";
 
     Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);

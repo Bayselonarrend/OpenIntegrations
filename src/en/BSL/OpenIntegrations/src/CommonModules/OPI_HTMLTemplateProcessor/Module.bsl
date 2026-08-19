@@ -114,7 +114,7 @@ Function ProcessFragment(Val Template, ContextStack, PartialTemplates)
             Closing  = FindSectionEnd(Template, Tag.End + 1, Tag.Name);
             Internal = Mid(Template, Tag.End + 1, Closing.Start - Tag.End - 1);
 
-            Result                               = Result
+            Result                                  = Result
                 + ProcessSection(Tag.Name, Tag.Type = "inverted", Internal, ContextStack, PartialTemplates);
 
             Position = Closing.End + 1;
