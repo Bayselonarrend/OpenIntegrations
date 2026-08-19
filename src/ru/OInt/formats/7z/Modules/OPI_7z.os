@@ -36,6 +36,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:LineLength-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:Typo-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -133,8 +134,12 @@
 
     СтруктураНастроек = ПолучитьСтруктуруНастроекАрхивации(Пустая, КакСоответствие);
 
+    // BSLLS:UsingHardcodeSecretInformation-off
+
     СтруктураНастроек.Вставить("unpack_password", "<пароль исходного архива при распаковке, если необходимо>");
     СтруктураНастроек.Вставить("password"       , "<пароль нового архива при запаковке, если необходимо>");
+
+    // BSLLS:UsingHardcodeSecretInformation-on
 
     Если Пустая Тогда
         СтруктураНастроек = OPI_Инструменты.ОчиститьКоллекциюРекурсивно(СтруктураНастроек);
@@ -165,6 +170,8 @@
         СтруктураНастроек = Новый Структура;
     КонецЕсли;
 
+    // BSLLS:UsingHardcodeSecretInformation-off
+
     СтруктураНастроек.Вставить("password"         , "<пароль архива, если необходимо>");
     СтруктураНастроек.Вставить("method"           , "<метод сжатия: Lzma2 (по ум.), Lzma, Bzip2, Ppmd, Copy>");
     СтруктураНастроек.Вставить("level"            , "<уровень сжатия: 0-9 (6 по ум.)>");
@@ -177,6 +184,8 @@
     СтруктураНастроек.Вставить("ppmd_memory"      , "<память в байтах (для Ppmd)>");
     СтруктураНастроек.Вставить("filters"          , "<массив фильтров: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>");
     СтруктураНастроек.Вставить("delta_distance"   , "<расстояние для фильтра DELTA, если используется (по ум. 1)>");
+
+    // BSLLS:UsingHardcodeSecretInformation-on
 
     Если Пустая Тогда
         СтруктураНастроек = OPI_Инструменты.ОчиститьКоллекциюРекурсивно(СтруктураНастроек);

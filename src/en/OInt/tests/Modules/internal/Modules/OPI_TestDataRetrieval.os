@@ -189,6 +189,7 @@ Function GetTestTable(Val TestModule = "") Export
     SevenZ    = "7z";
     Tar       = "Tar";
     RAR       = "RAR";
+    Ntfy      = "Ntfy";
 
     ArrayOfTests = New Array;
 
@@ -414,6 +415,8 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "Tar_GettingMetadata"                 , "Metadata extraction"             , Tar);
     NewTest(ArrayOfTests, TestModule, "RAR_Unarchiving"                     , "Unarchiving"                     , RAR);
     NewTest(ArrayOfTests, TestModule, "RAR_GettingMetadata"                 , "Metadata extraction"             , RAR);
+    NewTest(ArrayOfTests, TestModule, "Ntfy_Publication"                    , "Publication"                     , Ntfy);
+    NewTest(ArrayOfTests, TestModule, "Ntfy_ManagementAndRetrieval"         , "Management and retrieval"        , Ntfy);
 
     Return ArrayOfTests;
 
@@ -16117,6 +16120,77 @@ EndFunction
 Function Check_RAR_UnpackFiles(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
 
     Return Check_7z_UnpackFiles(Result, Option, DestinationDirectory, ExpectedFiles);
+
+EndFunction
+
+Function Check_Ntfy_GetMessageParametersStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "Title")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "Priority")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "Tags")).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ntfy_SendMessage(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "id")).Равно(True);
+    ExpectsThat(Result["event"]).Равно("message");
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ntfy_GetFilterParametersStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "since")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "poll")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "limit")).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ntfy_GetMessages(Val Result, Val Option)
+
+    ExpectsThat(TypeOf(Result)).Равно(Type("Array"));
+
+    Return Result;
+
+EndFunction
+
+Function Check_Ntfy_DeleteMessage(Val Result, Val Option)
+
+    ExpectsThat(Result["success"]).Равно(True);
+
+    Return Result;
 
 EndFunction
 

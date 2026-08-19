@@ -1,0 +1,10 @@
+    URL   = "";
+    Topic = "";
+    Token = "...";
+
+    Filter       = OPI_Ntfy.GetFilterParametersStructure(True);
+    Filter.limit = "5";
+
+    Result = OPI_Ntfy.GetMessages(URL, Topic, Token, Filter);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "GetMessages");

@@ -1,6 +1,6 @@
     Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = "310586206";
+    AlbumID          = "313026063";
 
     Image = "https://releases.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary data
 

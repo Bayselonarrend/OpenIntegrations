@@ -1,0 +1,13 @@
+    URL   = "";
+    Topic = "";
+    Token = "...";
+    Text  = "OpenIntegrations test message";
+
+    Parameters          = OPI_Ntfy.GetMessageParametersStructure(True);
+    Parameters.Title    = "OpenIntegrations";
+    Parameters.Priority = "default";
+    Parameters.Tags     = "white_check_mark";
+
+    Result = OPI_Ntfy.SendMessage(URL, Topic, Text, Token, Parameters);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "SendMessage");

@@ -10,7 +10,7 @@ import { getAvailableMirrorIds } from '@site/src/components/releases/mirrorUtils
 import styles from './download.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-const currentVersion = '2.3.0';
+const currentVersion = '2.4.0';
 
 function buildArtifact(filename) {
   const artifact = {
@@ -112,8 +112,8 @@ const DownloadPage = () => {
           name: 'CFE (расширение)',
           icon: 'cfe',
           files: {
-            ru: 'OpenIntegrations_2.3.0_ru.cfe',
-            en: 'OpenIntegrations_2.3.0_en.cfe',
+            ru: 'OpenIntegrations_2.4.0_ru.cfe',
+            en: 'OpenIntegrations_2.4.0_en.cfe',
           },
           desc: 'Файл расширения 1С в формате .cfe',
         },
@@ -121,8 +121,8 @@ const DownloadPage = () => {
           name: 'CF (конфигурация)',
           icon: 'cf',
           files: {
-            ru: 'OpenIntegrations_2.3.0_ru.cf',
-            en: 'OpenIntegrations_2.3.0_en.cf',
+            ru: 'OpenIntegrations_2.4.0_ru.cf',
+            en: 'OpenIntegrations_2.4.0_en.cf',
           },
           desc: 'Файл конфигурации 1С в формате .cf',
         },
@@ -153,8 +153,8 @@ const DownloadPage = () => {
           name: 'Пакет oint (.ospx)',
           icon: 'ospx',
           files: {
-            ru: 'oint-2.3.0_ru.ospx',
-            en: 'oint-2.3.0_en.ospx',
+            ru: 'oint-2.4.0_ru.ospx',
+            en: 'oint-2.4.0_en.ospx',
           },
           desc: 'Пакет библиотеки для OneScript',
         },
@@ -162,8 +162,8 @@ const DownloadPage = () => {
           name: 'Пакет oint-cli (.ospx)',
           icon: 'ospx-cli',
           files: {
-            ru: 'oint-cli-2.3.0_ru.ospx',
-            en: 'oint-cli-2.3.0_en.ospx',
+            ru: 'oint-cli-2.4.0_ru.ospx',
+            en: 'oint-cli-2.4.0_en.ospx',
           },
           desc: 'Пакет CLI-приложения для OneScript',
         },
@@ -176,8 +176,8 @@ const DownloadPage = () => {
           name: 'Windows Installer',
           icon: 'exe',
           files: {
-            ru: 'oint_2.3.0_installer_ru.exe',
-            en: 'oint_2.3.0_installer_en.exe',
+            ru: 'oint_2.4.0_installer_ru.exe',
+            en: 'oint_2.4.0_installer_en.exe',
           },
           desc: 'Windows установщик CLI приложения с аддоном Melezh',
         },
@@ -185,8 +185,8 @@ const DownloadPage = () => {
           name: 'Debian / Ubuntu (.deb)',
           icon: 'deb',
           files: {
-            ru: 'oint_2.3.0_all_ru.deb',
-            en: 'oint_2.3.0_all_en.deb',
+            ru: 'oint_2.4.0_all_ru.deb',
+            en: 'oint_2.4.0_all_en.deb',
           },
           desc: 'Пакет CLI приложения для систем на базе Debian',
         },
@@ -194,8 +194,8 @@ const DownloadPage = () => {
           name: 'Fedora / RHEL (.rpm)',
           icon: 'rpm',
           files: {
-            ru: 'oint-2.3.0-1.noarch_ru.rpm',
-            en: 'oint-2.3.0-1.noarch_en.rpm',
+            ru: 'oint-2.4.0-1.noarch_ru.rpm',
+            en: 'oint-2.4.0-1.noarch_en.rpm',
           },
           desc: 'Пакет CLI приложения для систем на базе RHEL',
         },
@@ -203,8 +203,8 @@ const DownloadPage = () => {
           name: 'Linux (.AppImage)',
           icon: 'appimage',
           files: {
-            ru: 'oint-2.3.0_ru-x86_64.AppImage',
-            en: 'oint-2.3.0_en-x86_64.AppImage',
+            ru: 'oint-2.4.0_ru-x86_64.AppImage',
+            en: 'oint-2.4.0_en-x86_64.AppImage',
           },
           desc: 'Единый исполняемый файл CLI формата AppImage',
         },

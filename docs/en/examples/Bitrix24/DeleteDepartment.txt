@@ -1,10 +1,10 @@
     URL          = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
-    DepartmentID = "2964";
+    DepartmentID = "4362";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
 
     URL          = "b24-ar17wx.bitrix24.by";
-    Token        = "a5b00469006e9f06006b12e400000001000...";
-    DepartmentID = "2962";
+    Token        = "92345d6a006e9f06006b12e400000001000...";
+    DepartmentID = "4360";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);

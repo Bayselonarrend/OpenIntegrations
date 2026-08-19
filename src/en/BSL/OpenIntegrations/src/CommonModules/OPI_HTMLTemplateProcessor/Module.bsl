@@ -29,6 +29,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CognitiveComplexity-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:MagicNumber-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -112,7 +113,10 @@ Function ProcessFragment(Val Template, ContextStack, PartialTemplates)
 
             Closing  = FindSectionEnd(Template, Tag.End + 1, Tag.Name);
             Internal = Mid(Template, Tag.End + 1, Closing.Start - Tag.End - 1);
-            Result   = Result + ProcessSection(Tag.Name, Tag.Type = "inverted", Internal, ContextStack, PartialTemplates);
+
+            Result                               = Result
+                + ProcessSection(Tag.Name, Tag.Type = "inverted", Internal, ContextStack, PartialTemplates);
+
             Position = Closing.End + 1;
 
         ElsIf Tag.Type = "partial" Then
@@ -133,8 +137,11 @@ EndFunction
 
 Function ParseTag(Val Template, Val Start)
 
-    //@skip-check structure-consructor-too-many-keys
-    Tag = New Structure("Type, Name, Start, End", "", "", Start, 0);
+    Tag = New Structure;
+    Tag.Insert("Type" , "");
+    Tag.Insert("Name" , "");
+    Tag.Insert("Start", Start);
+    Tag.Insert("End"  , 0);
 
     If Mid(Template, Start, 3) = "{{{" Then
 

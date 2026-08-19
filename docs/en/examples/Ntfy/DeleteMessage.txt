@@ -1,0 +1,11 @@
+    URL   = "";
+    Topic = "";
+    Token = "...";
+    Text  = "OpenIntegrations delete test";
+
+    Sending = OPI_Ntfy.SendMessage(URL, Topic, Text, Token);
+    ID      = Sending["id"];
+
+    Result = OPI_Ntfy.DeleteMessage(URL, Topic, ID, Token);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "DeleteMessage");

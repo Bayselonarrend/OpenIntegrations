@@ -44,6 +44,7 @@
   <commonModules>CommonModule.OPIt_MySQL</commonModules>
   <commonModules>CommonModule.OPIt_Neocities</commonModules>
   <commonModules>CommonModule.OPIt_Notion</commonModules>
+  <commonModules>CommonModule.OPIt_Ntfy</commonModules>
   <commonModules>CommonModule.OPIt_Ollama</commonModules>
   <commonModules>CommonModule.OPIt_OpenAI</commonModules>
   <commonModules>CommonModule.OPIt_PostgreSQL</commonModules>
@@ -92,6 +93,7 @@
   <commonModules>CommonModule.OPItc_MySQL</commonModules>
   <commonModules>CommonModule.OPItc_Neocities</commonModules>
   <commonModules>CommonModule.OPItc_Notion</commonModules>
+  <commonModules>CommonModule.OPItc_Ntfy</commonModules>
   <commonModules>CommonModule.OPItc_Ollama</commonModules>
   <commonModules>CommonModule.OPItc_OpenAI</commonModules>
   <commonModules>CommonModule.OPItc_PostgreSQL</commonModules>

@@ -399,14 +399,16 @@ Function ModifyArchiveThroughDescription(Val Archiver, Val Archive, Val Modifica
         ErrorMap.Insert("error" , "Failed to unpack archive to description");
         Return ErrorMap;
 
-    EndIf;
-
-    ApplyModificationToArchiveDescription(Description, AddableFiles, DeletablePaths);
-
-    If ArchiveAsBinary Then
-        Return Archive(Archiver, Description, "", PackingSettings);
     Else
-        Return PackArchiveInPlace(Archiver, Description, Archive, PackingSettings);
+
+        ApplyModificationToArchiveDescription(Description, AddableFiles, DeletablePaths);
+
+        If ArchiveAsBinary Then
+            Return Archive(Archiver, Description, "", PackingSettings);
+        Else
+            Return PackArchiveInPlace(Archiver, Description, Archive, PackingSettings);
+        EndIf;
+
     EndIf;
 
 EndFunction

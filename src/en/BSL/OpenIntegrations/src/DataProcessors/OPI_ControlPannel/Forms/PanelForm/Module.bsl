@@ -29,6 +29,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:CognitiveComplexity-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:Typo-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -203,8 +204,13 @@ Procedure DownloadReleaseArtifact(Val ArtifactID, Document = Undefined)
             Return;
         EndIf;
 
-        AdditionalParameters  = New Structure("VersionNumber, ArtifactID, MirrorID", VersionNumber, ArtifactID, MirrorID);
-        ErrInfo               = New CallbackDescription("AfterPathSelectionForArtifactDownload", ThisObject, AdditionalParameters);
+        AdditionalParameters = New Structure("VersionNumber, ArtifactID, MirrorID"
+            , VersionNumber
+            , ArtifactID
+            , MirrorID);
+
+        ErrInfo = New CallbackDescription("AfterPathSelectionForArtifactDownload", ThisObject, AdditionalParameters);
+
         Dialog                = New FileDialog(FileDialogMode.Save);
         Dialog.FullFileName   = FileName;
         Dialog.MultipleSelect = False;
@@ -356,22 +362,38 @@ EndProcedure
 
 &AtClient
 Procedure OpenSourceCraft()
+
+    // BSLLS:ExternalAppStarting-off
     RunApp("https://sourcecraft.dev/bayselonarrend/openintegrations");
+    // BSLLS:ExternalAppStarting-on
+
 EndProcedure
 
 &AtClient
 Procedure OpenBoosty()
+
+    // BSLLS:ExternalAppStarting-off
     RunApp("https://boosty.to/bayselonarrend");
+    // BSLLS:ExternalAppStarting-on
+
 EndProcedure
 
 &AtClient
 Procedure OpenGitHub()
+
+    // BSLLS:ExternalAppStarting-off
     RunApp("https://github.com/Bayselonarrend/OpenIntegrations");
+    // BSLLS:ExternalAppStarting-on
+
 EndProcedure
 
 &AtClient
 Procedure OpenSite()
+
+    // BSLLS:ExternalAppStarting-off
     RunApp("https://openintegrations.dev");
+    // BSLLS:ExternalAppStarting-on
+
 EndProcedure
 
 &AtClient
@@ -384,7 +406,9 @@ Procedure OpenReleasesArchive(Document = Undefined)
         PageAddress = PageAddress + "/" + ReleaseVersion;
     EndIf;
 
+    // BSLLS:ExternalAppStarting-off
     RunApp(PageAddress);
+    // BSLLS:ExternalAppStarting-on
 
 EndProcedure
 
@@ -392,8 +416,12 @@ EndProcedure
 Procedure OpenCacheFolder()
 
     #If Not WebClient Then
+
+        // BSLLS:ExternalAppStarting-off
         CachePath = OPI_ExtensionManagement.GetAddInsCachePath();
         RunApp(CachePath);
+        // BSLLS:ExternalAppStarting-on
+
     #Else
         Raise "File operations are not available in the web client!";
     #EndIf
@@ -411,8 +439,10 @@ Function GetSelectedMirrorFromDocument(Document)
         Document = Items.HTML.Document;
     EndIf;
 
+    DefaultMirror = "github";
+
     If Document = Undefined Then
-        Return "github";
+        Return DefaultMirror;
     EndIf;
 
     Try
@@ -434,10 +464,10 @@ Function GetSelectedMirrorFromDocument(Document)
         EndDo;
 
     Except
-        Return "github";
+        Return DefaultMirror;
     EndTry;
 
-    Return "github";
+    Return DefaultMirror;
 
 EndFunction
 
@@ -486,13 +516,13 @@ Function GetSelectedReleaseVersionFromDocument(Document)
 
     Try
 
-        SelectVersion = Document.getElementById("opi-release-version");
+        VersionSelection = Document.getElementById("opi-release-version");
 
-        If SelectVersion = Undefined Then
+        If VersionSelection = Undefined Then
             Return "";
         EndIf;
 
-        Return SelectVersion.value;
+        Return VersionSelection.value;
 
     Except
         Return "";
@@ -569,19 +599,21 @@ Procedure UpdateComponentRowInDocument(Val AddInData)
         Return;
     EndIf;
 
-    SetHTMLNodeText(Document.getElementById(StringPrefix + "-cfg"), AddInData["ConfigVersion"]);
+    ElementCfg = Document.getElementById(StringPrefix + "-cfg");
+    SetHTMLNodeText(ElementCfg, AddInData["ConfigVersion"]);
 
-    SetHTMLNodeText(Document.getElementById(StringPrefix + "-client")
-        , ClientVersionComponentsViewOnClient(AddInData["ClientVersion"]
-            , AddInData["ConfigVersion"]));
+    ElementClient         = Document.getElementById(StringPrefix + "-client");
+    VersionRepresentation = ClientVersionComponentsViewOnClient(AddInData["ClientVersion"]
+        , AddInData["ConfigVersion"]);
+
+    SetHTMLNodeText(ElementClient, VersionRepresentation);
 
 EndProcedure
 
 &AtClient
 Function AddInsVersionsDifferOnClient(Val ClientVersion, Val ConfigVersion)
 
-    Return String(ClientVersion)
-        <> String(ConfigVersion);
+    Return String(ClientVersion) <> String(ConfigVersion);
 
 EndFunction
 
@@ -644,8 +676,7 @@ EndFunction
 &AtServer
 Function GetReleasesArchiveURL()
 
-    Return "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/docs/docusaurus/archive/releases-archive.json";
-    //"https://openintegrations.dev/archive/releases-archive.json";
+    Return "https://openintegrations.dev/archive/releases-archive.json";
 
 EndFunction
 
@@ -656,10 +687,12 @@ Function UploadReleasesArchive()
 
         URL = GetReleasesArchiveURL();
 
+        Timeout = 35;
+
         Response = OPI_HTTPRequests.NewRequest()
             .Initialize()
             .SetURL(URL)
-            .SetTimeout(35)
+            .SetTimeout(Timeout)
             .ProcessRequest("GET")
             .ReturnResponseAsJSONObject();
 
@@ -746,6 +779,8 @@ Function CompareReleaseVersions(Val Version1, Val Version2)
             Return 1;
         ElsIf Number1 < Number2 Then
             Return -1;
+        Else
+            Continue;
         EndIf;
 
     EndDo;
@@ -978,11 +1013,15 @@ Function LibraryChangeLogCellText(ReleasesArchive, Change)
     IconURL     = ReleaseChangeIconURL(ReleasesArchive, Change);
     LibraryName = Change["lib"];
 
+    // BSLLS:LineLength-off
+
     If ValueIsFilled(IconURL) Then
         Return StrTemplate("<div class=""opi-lib-cell""><img src=""%1"" class=""opi-lib-icon"" width=""20"" height=""20"" alt=""""><span>%2</span></div>"
             , IconURL
             , LibraryName);
     EndIf;
+
+    // BSLLS:LineLength-on
 
     Return StrTemplate("<div class=""opi-lib-cell""><span>%1</span></div>", LibraryName);
 
@@ -993,7 +1032,7 @@ EndFunction
 #Region Markup
 
 &AtServer
-Procedure BuildPanelHTMLOnServer(ShowLoading = False)
+Procedure BuildPanelHTMLOnServer(Val ShowLoading = False)
 
     ReleasesArchive = UploadReleasesArchive();
     HTML            = BuildPanelHTMLTemplate(ShowLoading, ReleasesArchive);
@@ -1053,11 +1092,14 @@ Function BuildComponentStringsForTemplate()
 
     For Each AddInString In AddInsVersions Do
 
+        VersionRepresentation = ClientVersionComponentsView(AddInString.ClientVersion
+            , AddInString.ConfigVersion);
+
         ContextString = New Structure;
         ContextString.Insert("componentId"  , AddInString.AddInName);
         ContextString.Insert("name"         , ComponentValueView(AddInString.AddInName));
         ContextString.Insert("cfgVersion"   , ComponentValueView(AddInString.ConfigVersion));
-        ContextString.Insert("clientVersion", ClientVersionComponentsView(AddInString.ClientVersion, AddInString.ConfigVersion));
+        ContextString.Insert("clientVersion", VersionRepresentation);
 
         If AddInString.Timestamp Then
             ContextString.Insert("checked", True);
@@ -1100,10 +1142,14 @@ Function BuildUpdateContext(ReleasesArchive, CurrentVersion)
 
     If HasUpdate Then
 
+        VersionText = StrTemplate("Installed version: %1. Last available version: %2"
+            , CurrentVersion
+            , LastVersion);
+
         Context.Insert("statusClass", "opi-updates-status--available");
         Context.Insert("statusIcon" , UpdateStatusIconText());
         Context.Insert("statusTitle", "Update available");
-        Context.Insert("statusHint" , StrTemplate("Installed version: %1. Last available version: %2", CurrentVersion, LastVersion));
+        Context.Insert("statusHint" , VersionText);
 
     Else
 
@@ -1268,6 +1314,30 @@ Function GetLogoSVG()
 EndFunction
 
 &AtServer
+Function UsingDarkTheme()
+
+    DarkTheme = False;
+
+    Try
+
+        SettingsKey = "Common/ClientApplicationSettings";
+        Settings    = SystemSettingsStorage.Upload(SettingsKey);
+
+        If Settings <> Undefined Then
+            DarkTheme = String(Settings.ClientApplicationTheme) = "Dark";
+        EndIf;
+
+    Except
+        DarkTheme = False;
+    EndTry;
+
+    Return DarkTheme;
+
+EndFunction
+
+// BSLLS:LineLength-off
+
+&AtServer
 Function LoadingIconText()
 
     Return "<svg class=""opi-loading__icon"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 23.612 23.612"" aria-hidden=""true""><g><path fill=""currentColor"" d=""M16.192,5.224V4.487h-8.77v0.737c0,0,1.334,3.713,3.838,5.428v1.785c0,0-2.761,2.686-3.838,5.775v0.842h8.77v-0.842c-1.399-3.41-3.837-5.775-3.837-5.775v-1.785C15.759,7.726,16.192,5.224,16.192,5.224z""/><path fill=""currentColor"" d=""M19.353,3.856V2.529h1.258V0H3.002v2.529h1.259v1.327c0,2.025,3.634,7.555,3.804,7.955c-0.167,0.397-3.804,5.929-3.804,7.946v1.325H3.002v2.53h17.609v-2.53h-1.258v-1.325c0-2.025-3.635-7.521-3.829-7.951C15.718,11.376,19.353,5.88,19.353,3.856z M18.096,19.757v1.325H5.519v-1.325c0-1.455,3.854-7.222,3.854-7.951s-3.854-6.495-3.854-7.95V2.529h12.578v1.327c0,1.455-3.886,7.221-3.886,7.95C14.21,12.535,18.096,18.302,18.096,19.757z""/></g></svg>";
@@ -1295,27 +1365,7 @@ Function UpdateStatusIconText()
 
 EndFunction
 
-&AtServer
-Function UsingDarkTheme()
-
-    DarkTheme = False;
-
-    Try
-
-        SettingsKey = "Common/ClientApplicationSettings";
-        Settings    = SystemSettingsStorage.Upload(SettingsKey);
-
-        If Settings <> Undefined Then
-            DarkTheme = String(Settings.ClientApplicationTheme) = "Dark";
-        EndIf;
-
-    Except
-        DarkTheme = False;
-    EndTry;
-
-    Return DarkTheme;
-
-EndFunction
+// BSLLS:LineLength-on
 
 #EndRegion
 

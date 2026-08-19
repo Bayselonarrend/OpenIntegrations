@@ -187,6 +187,7 @@ pipeline {
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
 		booleanParam(name: 'RAR', defaultValue: true, description: 'Run RAR tests')
+		booleanParam(name: 'Ntfy', defaultValue: true, description: 'Run Ntfy tests')
 	}
 	stages {
 
@@ -812,6 +813,19 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('RAR', './service/yaxunit_conf/en/RAR.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-Ntfy') {
+            when {
+                expression { return params['Ntfy'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('Ntfy', './service/yaxunit_conf/en/Ntfy.json')
 					}
 
 				}

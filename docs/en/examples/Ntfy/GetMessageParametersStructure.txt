@@ -1,0 +1,3 @@
+    Result = OPI_Ntfy.GetMessageParametersStructure();
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "GetMessageParametersStructure");

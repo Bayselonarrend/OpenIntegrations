@@ -1,7 +1,7 @@
     URL       = "tests.openintegrations.dev";
-    Token     = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MjAwMDI3NiwiaWF0IjoxNzYxOTEzODc2LCJqdGkiOiI0NTI3YTc5OS0wN2...";
-    LaunchID  = "";
-    ElementID = "";
+    Token     = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiYXVkIjoicmVwb3J0cG9ydGFsIiwibmJmIjoxNzg0NDg4OTAyLCJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwiaXNzIjoiaHR0cDovL3JlcG9ydHBvcnRhbC5pbnRlcm5hbCIsInNjb3BlcyI6WyJ1aSJdLCJleHAiOjE3ODQ1NzUzM...";
+    LaunchID  = "cb951f92-5e40-481c-93b2-c55cea50a183";
+    ElementID = "4bbce754-bed3-41e2-818d-8a49cde22773";
     Project   = "Test";
     Time      = Date("20260101100010");
     Text      = "Some log";

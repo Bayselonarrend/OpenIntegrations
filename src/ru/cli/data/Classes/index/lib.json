@@ -1,5 +1,5 @@
 {
- "version": "2.3.0",
+ "version": "2.4.0",
  "modules": {
   "mcp": "MCP",
   "tools": "Utils",
@@ -23,6 +23,7 @@
   "mysql": "OPI_MySQL",
   "neocities": "OPI_Neocities",
   "notion": "OPI_Notion",
+  "ntfy": "OPI_Ntfy",
   "ollama": "OPI_Ollama",
   "openai": "OPI_OpenAI",
   "postgres": "OPI_PostgreSQL",

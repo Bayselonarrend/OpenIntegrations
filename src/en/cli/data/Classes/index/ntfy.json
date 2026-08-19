@@ -1,0 +1,177 @@
+{
+ "module": "OPI_Ntfy",
+ "library": "ntfy",
+ "self_depend": false,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "api/ntfy/Modules/OPI_Ntfy.os",
+ "regions": [
+  {
+   "name": "Publication",
+   "methods": [
+    "GetMessageParametersStructure",
+    "SendMessage"
+   ]
+  },
+  {
+   "name": "Obtaining",
+   "methods": [
+    "GetFilterParametersStructure",
+    "GetMessages"
+   ]
+  },
+  {
+   "name": "Management",
+   "methods": [
+    "DeleteMessage"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "GetMessageParametersStructure",
+   "id": "GETMESSAGEPARAMETERSSTRUCTURE",
+   "description": "Get structure of additional parameters for sending notification",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    }
+   ],
+   "region": "Publication"
+  },
+  {
+   "name": "SendMessage",
+   "id": "SENDMESSAGE",
+   "description": "Publish notification to the specified topic",
+   "params": [
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Ntfy server URL. `ntfy.sh`, if not filled",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--topic",
+     "types": "String",
+     "description": "Topic Name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--message",
+     "types": "String",
+     "description": "Notification text",
+     "default": null,
+     "short": "-m"
+    },
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Topic access token, if required",
+     "default": "Empty value",
+     "short": "-k"
+    },
+    {
+     "name": "--options",
+     "types": "Structure Of KeyAndValue",
+     "description": "Additional parameters. See GetMessageParametersStructure",
+     "default": "Empty value",
+     "short": "-o"
+    }
+   ],
+   "region": "Publication"
+  },
+  {
+   "name": "GetFilterParametersStructure",
+   "id": "GETFILTERPARAMETERSSTRUCTURE",
+   "description": "Get structure of parameters for getting messages from topic",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    }
+   ],
+   "region": "Obtaining"
+  },
+  {
+   "name": "GetMessages",
+   "id": "GETMESSAGES",
+   "description": "Get messages from topic in JSON format",
+   "params": [
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Ntfy server URL. `ntfy.sh`, if not filled",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--topic",
+     "types": "String",
+     "description": "Topic Name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Topic access token, if required",
+     "default": "Empty value",
+     "short": "-k"
+    },
+    {
+     "name": "--filter",
+     "types": "Structure Of KeyAndValue",
+     "description": "Filter parameters. See GetFilterParametersStructure",
+     "default": "Empty value",
+     "short": "-f"
+    }
+   ],
+   "region": "Obtaining"
+  },
+  {
+   "name": "DeleteMessage",
+   "id": "DELETEMESSAGE",
+   "description": "Delete message from topic by ID",
+   "params": [
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Ntfy server URL. `ntfy.sh`, if not filled",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--topic",
+     "types": "String",
+     "description": "Topic Name",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--id",
+     "types": "String",
+     "description": "ID of message to delete",
+     "default": null,
+     "short": "-i"
+    },
+    {
+     "name": "--token",
+     "types": "String",
+     "description": "Topic access token",
+     "default": "Empty value",
+     "short": "-k"
+    }
+   ],
+   "region": "Management"
+  }
+ ]
+}

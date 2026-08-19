@@ -36,6 +36,7 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:LineLength-off
 // BSLLS:CommonModuleNameClientServer-off
+// BSLLS:Typo-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -135,8 +136,12 @@ Function GetArchiveModificationStructure(Val Clear = False, Val AsMap = False) E
 
     SettingsStructure = GetArchivingSettingsStructure(Clear, AsMap);
 
+    // BSLLS:UsingHardcodeSecretInformation-off
+
     SettingsStructure.Insert("unpack_password", "<original archive password when unpacking, if necessary>");
     SettingsStructure.Insert("password"       , "<new archive password when packing, if necessary>");
+
+    // BSLLS:UsingHardcodeSecretInformation-on
 
     If Clear Then
         SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);
@@ -167,6 +172,8 @@ Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Exp
         SettingsStructure = New Structure;
     EndIf;
 
+    // BSLLS:UsingHardcodeSecretInformation-off
+
     SettingsStructure.Insert("password"        , "<archive password, if necessary>");
     SettingsStructure.Insert("method"          , "<compression method: Lzma2 (by default), Lzma, Bzip2, Ppmd, Copy>");
     SettingsStructure.Insert("level"           , "<compression level: 0-9 (6 by default.)>");
@@ -179,6 +186,8 @@ Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Exp
     SettingsStructure.Insert("ppmd_memory"     , "<memory in bytes (for Ppmd)>");
     SettingsStructure.Insert("filters"         , "<array of filters: X86, PPC, IA64, ARM, ARM64, ARM_THUMB, SPARC, RISCV, DELTA>");
     SettingsStructure.Insert("delta_distance"  , "<distance for DELTA filter, if used (by default 1)>");
+
+    // BSLLS:UsingHardcodeSecretInformation-on
 
     If Clear Then
         SettingsStructure = OPI_Tools.ClearCollectionRecursively(SettingsStructure);

@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+
+description: Delete message and other functions to work with Ntfy in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Ntfy]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Delete message
+ Delete message from topic by ID
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function DeleteMessage(Val URL, Val Topic, Val MessageID, Val Token = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ntfy server URL. `ntfy.sh`, if not filled |
+  | Topic | --topic | String | &#x2714; | Topic Name |
+  | MessageID | --id | String | &#x2714; | ID of message to delete |
+  | Token | --token | String | &#x2716; | Topic access token |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from ntfy
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | `InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication` |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers` |
+  | retries | Number of HTTP request send attempts on `5**` status codes or internal client errors |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+ntfy API Documentation: [docs.ntfy.sh/subscribe/api](https://docs.ntfy.sh/subscribe/api)
+
+To delete a topic, it must be protected and accessible by token
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "";
+    Topic = "";
+    Token = "...";
+    Text  = "OpenIntegrations delete test";
+
+    Sending = OPI_Ntfy.SendMessage(URL, Topic, Text, Token);
+    ID      = Sending["id"];
+
+    Result = OPI_Ntfy.DeleteMessage(URL, Topic, ID, Token);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "DeleteMessage");
+```
+ 
+
+
+
+

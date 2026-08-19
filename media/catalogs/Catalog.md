@@ -21,6 +21,7 @@
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
 |![Neocities](../Neocities.png)| `Neocities`| neocities |
 |![Notion](../Notion.png)| `Notion`| notion |
+|![Ntfy (в разработке)](../default.png)| `Ntfy (в разработке)`| ntfy, push, notifications |
 |![Ollama](../Ollama.png)| `Ollama`| ollama, ai llm |
 |![OpenAI](../OpenAI.png)| `OpenAI`| openai, localai, ai llm |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |

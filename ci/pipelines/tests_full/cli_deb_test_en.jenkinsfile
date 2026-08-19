@@ -57,6 +57,7 @@ pipeline {
 		booleanParam(name: '7z', defaultValue: true, description: 'Run 7z tests')
 		booleanParam(name: 'Tar', defaultValue: true, description: 'Run Tar tests')
 		booleanParam(name: 'RAR', defaultValue: true, description: 'Run RAR tests')
+		booleanParam(name: 'Ntfy', defaultValue: true, description: 'Run Ntfy tests')
 	}
 	stages {
 
@@ -85,7 +86,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_2.3.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.3.0/oint_2.3.0_all_en.deb '
+                    sh 'wget -O oint_2.4.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/2.4.0/oint_2.4.0_all_en.deb '
                 }
             }
         }
@@ -93,14 +94,14 @@ pipeline {
         stage('Install oint package') {
             steps {
                 script {
-                    sh 'dpkg -i oint_2.3.0_all_en.deb'
+                    sh 'dpkg -i oint_2.4.0_all_en.deb'
                 }
             }
         }
 
       	stage('Prepare'){
          		steps{
-                    sh 'cd ./src/en/OInt && opm build && opm install oint-2.3.0.ospx && rm oint-2.3.0.ospx'
+                    sh 'cd ./src/en/OInt && opm build && opm install oint-2.4.0.ospx && rm oint-2.4.0.ospx'
               		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
               			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.sqlite ./data.sqlite.gpg'
             		}
@@ -837,6 +838,19 @@ pipeline {
 					runModuleTests('./src/en/OInt/tests/Modules/OPItc_RAR.os', [
 'RAR_Unarchiving',
 'RAR_GettingMetadata',
+					])
+				}
+			}
+		}
+		stage('Testing-Ntfy') {
+            when {
+                expression { return params['Ntfy'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/en/OInt/tests/Modules/OPItc_Ntfy.os', [
+'Ntfy_Publication',
+'Ntfy_ManagementAndRetrieval',
 					])
 				}
 			}

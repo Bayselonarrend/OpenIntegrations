@@ -1,0 +1,74 @@
+---
+sidebar_position: 2
+
+description: Get messages and other functions to work with Ntfy in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Ntfy]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get messages
+ Get messages from topic in JSON format
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetMessages(Val URL, Val Topic, Val Token = "", Val Filter = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ntfy server URL. `ntfy.sh`, if not filled |
+  | Topic | --topic | String | &#x2714; | Topic Name |
+  | Token | --token | String | &#x2716; | Topic access token, if required |
+  | Filter | --filter | Structure Of KeyAndValue | &#x2716; | Filter parameters. See GetFilterParametersStructure |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Array - topic messages list
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | `InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication` |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers` |
+  | retries | Number of HTTP request send attempts on `5**` status codes or internal client errors |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+ntfy API Documentation: [docs.ntfy.sh/subscribe/api](https://docs.ntfy.sh/subscribe/api)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "";
+    Topic = "";
+    Token = "...";
+
+    Filter       = OPI_Ntfy.GetFilterParametersStructure(True);
+    Filter.limit = "5";
+
+    Result = OPI_Ntfy.GetMessages(URL, Topic, Token, Filter);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "GetMessages");
+```
+ 
+
+
+
+

@@ -1,5 +1,5 @@
-    Токен    = "ya29.a0AT3oNZ89Gfvy6_DUg_tviJJnmBXSmGRrPL6Vym5gPCsPQEa3F606plSWJttyabLz5gHJY63An6XG9wKNlbVK4fkTSF_KNhqT5M6IGUm8THO6IWF0iGzg5z2SO...";
-    Каталог  = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
+    Токен    = "ya29.a0ARGnu0Y7FI_iLae4hsQPXE2gzjwkd37dPk8jzLb6v-gaPu4PRFb0FTjZiJnI5DXlOMS5DFGfgcT2ZkeVgEo0cMuh3OdPO1vvo0LB-qaEv5mcxfvTR49-TOuCP...";
+    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
     Картинка = "https://releases.openintegrations.dev/test_data/picture.jpg";      // URL, Двоичные данные или Путь к файлу
 
     Пустая   = Ложь;

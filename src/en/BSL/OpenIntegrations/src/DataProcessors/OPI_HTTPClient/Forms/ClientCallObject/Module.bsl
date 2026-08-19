@@ -3583,6 +3583,15 @@ Procedure ProcessRequestParametersString(ParameterString)
             ParameterArray[N] = QueryParameter + "=";
         EndIf;
 
+        ParameterParts = StrSplit(ParameterArray[N], "=");
+        LeftPart = ParameterParts[0];
+        ParameterParts.Delete(0);
+        RightPart = StrConcat(ParameterParts, "=");
+
+        ParameterArray[N] = StrTemplate("%1=%2"
+            , OPI_ToolsServerCall.GetEncodedString(LeftPart, "URLencoding")
+            , OPI_ToolsServerCall.GetEncodedString(RightPart, "URLencoding"));
+
     EndDo;
 
     ParameterString = StrConcat(ParameterArray, "&");

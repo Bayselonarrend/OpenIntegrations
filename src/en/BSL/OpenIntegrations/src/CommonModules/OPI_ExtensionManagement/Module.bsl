@@ -171,7 +171,7 @@ Procedure AfterAddInAttach(Val Connected, Val AddInName) Export
 
 EndProcedure
 
-Procedure NotifyAboutComponentConnection(Val AddInName, Val AddIn = Undefined)
+Procedure NotifyAboutComponentConnection(Val AddInName, Val AddIn = Undefined) Export
 
     If AddIn <> Undefined Then
 
@@ -212,7 +212,11 @@ Function GetArtifactLanguage() Export
 
 EndFunction
 
-Function GetArtifactFileName(ReleasesArchive, Val VersionNumber, Val ArtifactID, Val MirrorID, Val Lang = "") Export
+Function GetArtifactFileName(ReleasesArchive
+    , Val VersionNumber
+    , Val ArtifactID
+    , Val MirrorID
+    , Val Lang = "") Export
 
     If Not ValueIsFilled(Lang) Then
         Lang = GetArtifactLanguage();
@@ -221,7 +225,7 @@ Function GetArtifactFileName(ReleasesArchive, Val VersionNumber, Val ArtifactID,
     Try
         Artifact = GetReleaseArtifact(ReleasesArchive, VersionNumber, ArtifactID, Lang);
     Except
-        Raise "Error getting release artifact. Please try again later!"
+        Raise "Error getting release artifact. Please try again later!";
     EndTry;
 
     If Artifact = Undefined Then
@@ -264,26 +268,28 @@ Function GetArtifactDownloadURL(ReleasesArchive
         Raise StrTemplate("Artifact %1 (%2) not found for version %3", ArtifactID, Lang, VersionNumber);
     EndIf;
 
+    FileName = Artifact["filename"];
+
     If MirrorID = "s3" Then
 
         URL = Artifact["s3Url"];
 
         If Not ValueIsFilled(URL) Then
-            URL = StrTemplate("%1/versions/%2/%3", ReleasesArchive["s3BaseUrl"], VersionNumber, Artifact["filename"]);
+            URL = StrTemplate("%1/versions/%2/%3", ReleasesArchive["s3BaseUrl"], VersionNumber, FileName);
         EndIf;
 
         Return URL;
 
     ElsIf MirrorID = "yandex" Then
 
-        Return GetYandexDiskDownloadURL(ReleasesArchive, VersionNumber, Artifact["filename"]);
+        Return GetYandexDiskDownloadURL(ReleasesArchive, VersionNumber, FileName);
 
     Else
 
         URL = Artifact["githubUrl"];
 
         If Not ValueIsFilled(URL) Then
-            URL = StrTemplate("%1/%2/%3", ReleasesArchive["githubDownloadBase"], VersionNumber, Artifact["filename"]);
+            URL = StrTemplate("%1/%2/%3", ReleasesArchive["githubDownloadBase"], VersionNumber, FileName);
         EndIf;
 
         Return URL;
@@ -315,6 +321,22 @@ EndFunction
 #EndRegion
 
 #Region Private
+
+Procedure DownloadFileByURL(Val URL, Val SavePath)
+
+    OPI_TypeConversion.GetLine(URL);
+    OPI_TypeConversion.GetLine(SavePath);
+
+    Timeout = 300;
+
+    OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetTimeout(Timeout)
+        .SetResponseFile(SavePath)
+        .ProcessRequest("GET")
+        .ReturnResponse(, True);
+
+EndProcedure
 
 Function GetReleaseArtifact(ReleasesArchive, Val VersionNumber, Val ArtifactID, Val Lang)
 
@@ -370,6 +392,8 @@ Function GetYandexDiskDownloadURL(ReleasesArchive, Val VersionNumber, Val FileNa
         Raise "The public key for Yandex.Disk is not specified in the releases archive";
     EndIf;
 
+    Timeout = 60;
+
     Parameters = New Structure;
     Parameters.Insert("public_key", PublicKey);
     Parameters.Insert("path"      , StrTemplate("/%1/%2", VersionNumber, FileName));
@@ -377,7 +401,7 @@ Function GetYandexDiskDownloadURL(ReleasesArchive, Val VersionNumber, Val FileNa
     Response = OPI_HTTPRequests.NewRequest()
         .Initialize("https://cloud-api.yandex.net/v1/disk/public/resources/download")
         .SetURLParams(Parameters)
-        .SetTimeout(60)
+        .SetTimeout(Timeout)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject(True, True);
 
@@ -411,27 +435,15 @@ Function GetYandexDiskDownloadURL(ReleasesArchive, Val VersionNumber, Val FileNa
 
 EndFunction
 
-Procedure DownloadFileByURL(Val URL, Val SavePath)
-
-    OPI_TypeConversion.GetLine(URL);
-    OPI_TypeConversion.GetLine(SavePath);
-
-    OPI_HTTPRequests.NewRequest()
-        .Initialize(URL)
-        .SetTimeout(300)
-        .SetResponseFile(SavePath)
-        .ProcessRequest("GET")
-        .ReturnResponse(, True);
-
-EndProcedure
-
 Function GetBinaryDataByURL(Val URL)
 
     OPI_TypeConversion.GetLine(URL);
 
+    Timeout = 300;
+
     Return OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .SetTimeout(300)
+        .SetTimeout(Timeout)
         .ProcessRequest("GET")
         .ReturnResponseAsBinaryData(, True);
 
@@ -450,7 +462,11 @@ Function ApplyBinaryExtensionData(Val Binary)
     IsNew        = ExtensionOPI = Undefined;
 
     If IsNew Then
+
+        // BSLLS:UsingExternalCodeTools-off
         ExtensionOPI = ConfigurationExtensions.Create();
+        // BSLLS:UsingExternalCodeTools-on
+
     EndIf;
 
     CheckExtensionApplication(Binary, ExtensionOPI);

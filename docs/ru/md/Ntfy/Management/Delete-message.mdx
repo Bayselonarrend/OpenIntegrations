@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+
+description: Удалить сообщение и другие функции для работы с Ntfy в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Ntfy]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Удалить сообщение
+ Удаляет сообщение из топика по ID
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция УдалитьСообщение(Знач URL, Знач Топик, Знач IDСообщения, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | URL | --url | Строка | &#x2714; | URL сервера Ntfy. `ntfy.sh`, если не заполнено |
+  | Топик | --topic | Строка | &#x2714; | Имя топика |
+  | IDСообщения | --id | Строка | &#x2714; | ID удаляемого сообщения |
+  | Токен | --token | Строка | &#x2716; | Токен доступа к топику |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  Соответствие Из КлючИЗначение - сериализованный JSON ответа от ntfy
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Параметр | Описание |
+  |---|---|
+  | proxy | `ИнтернетПрокси` или структура полей `Протокол`, `Сервер`, `Порт`, `Пользователь`, `Пароль`, `ИспользоватьАутентификациюОС` |
+  | timeout | Таймаут выполнения запроса |
+  | adv_response | Оформляет ответ в виде полной структуры HTTP-ответа с полями `code`, `body` и `headers` |
+  | retries | Число попыток отправки HTTP-запроса при коде `5**` или внутренних ошибках клиента |
+  | dontwait | Создает фоновое задание и возвращает его данные (только для 1С и OneScript) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+Документация ntfy API: [docs.ntfy.sh/subscribe/api](https://docs.ntfy.sh/subscribe/api)
+
+Для удаления топик должен быть защищён и доступен по токену
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL   = "";
+    Топик = "";
+    Токен = "...";
+    Текст = "OpenIntegrations delete test";
+
+    Отправка = OPI_Ntfy.ОтправитьСообщение(URL, Топик, Текст, Токен);
+    ID       = Отправка["id"];
+
+    Результат = OPI_Ntfy.УдалитьСообщение(URL, Топик, ID, Токен);
+
+    OPI_ПолучениеДанныхТестов.Обработать(Результат, "Ntfy", "УдалитьСообщение");
+```
+    
+
+
+
+

@@ -3251,6 +3251,35 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
+ "OPI_Ntfy": {
+  "SendMessage": {
+   "proxy": "`InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication`",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers`",
+   "retries": "Number of HTTP request send attempts on `5**` status codes or internal client errors",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetMessages": {
+   "proxy": "`InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication`",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers`",
+   "retries": "Number of HTTP request send attempts on `5**` status codes or internal client errors",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "DeleteMessage": {
+   "proxy": "`InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication`",
+   "timeout": "Request execution timeout",
+   "adv_response": "Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers`",
+   "retries": "Number of HTTP request send attempts on `5**` status codes or internal client errors",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetMessageParametersStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetFilterParametersStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  }
+ },
  "OPI_Ollama": {
   "GetVersion": {
    "proxy": "`InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication`",

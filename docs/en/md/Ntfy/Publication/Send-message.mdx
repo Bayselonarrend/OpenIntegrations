@@ -1,0 +1,78 @@
+---
+sidebar_position: 2
+
+description: Send message and other functions to work with Ntfy in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Ntfy]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Send message
+ Publish notification to the specified topic
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function SendMessage(Val URL, Val Topic, Val Message, Val Token = "", Val Parameters = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Ntfy server URL. `ntfy.sh`, if not filled |
+  | Topic | --topic | String | &#x2714; | Topic Name |
+  | Message | --message | String | &#x2714; | Notification text |
+  | Token | --token | String | &#x2716; | Topic access token, if required |
+  | Parameters | --options | Structure Of KeyAndValue | &#x2716; | Additional parameters. See GetMessageParametersStructure |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - serialized JSON response from ntfy
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | proxy | `InternetProxy` or a structure with fields `Protocol`, `Host`, `Port`, `User`, `Password`, `UseOSAuthentication` |
+  | timeout | Request execution timeout |
+  | adv_response | Formats the response as a complete HTTP structure with fields `code`, `body`, and `headers` |
+  | retries | Number of HTTP request send attempts on `5**` status codes or internal client errors |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+:::tip
+ntfy API Documentation: [docs.ntfy.sh/publish](https://docs.ntfy.sh/publish)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL   = "";
+    Topic = "";
+    Token = "...";
+    Text  = "OpenIntegrations test message";
+
+    Parameters          = OPI_Ntfy.GetMessageParametersStructure(True);
+    Parameters.Title    = "OpenIntegrations";
+    Parameters.Priority = "default";
+    Parameters.Tags     = "white_check_mark";
+
+    Result = OPI_Ntfy.SendMessage(URL, Topic, Text, Token, Parameters);
+
+    OPI_TestDataRetrieval.Process(Result, "Ntfy", "SendMessage");
+```
+ 
+
+
+
+

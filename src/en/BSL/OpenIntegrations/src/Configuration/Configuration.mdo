@@ -29,7 +29,7 @@
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>English</scriptVariant>
   <vendor>https://github.com/Bayselonarrend</vendor>
-  <version>2.3.0</version>
+  <version>2.4.0</version>
   <detailedInformation>
     <key>en</key>
     <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
@@ -118,6 +118,7 @@
   <commonModules>CommonModule.OPI_MySQL</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
+  <commonModules>CommonModule.OPI_Ntfy</commonModules>
   <commonModules>CommonModule.OPI_Ollama</commonModules>
   <commonModules>CommonModule.OPI_OpenAI</commonModules>
   <commonModules>CommonModule.OPI_PostgreSQL</commonModules>
