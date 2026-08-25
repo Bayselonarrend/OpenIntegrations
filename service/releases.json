@@ -14,8 +14,14 @@
             {
                 "lib": "HTTP",
                 "icon": "media/HTTP.png",
-                "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `Digest` авторизации",
-                "description_en": "Fixed special character handling when calculating the `Digest` authentication signature"
+                "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `AWS4` авторизации",
+                "description_en": "Fixed special character handling when calculating the `AWS4` authentication signature"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Убрана проверка режима совместимости в расширении для более простого обновления через панель управления в версии для 1С:Предприятие",
+                "description_en": "Removed compatibility mode check in the extension to simplify updating via the control panel in the 1C:Enterprise version"
             }
         ]
     },
