@@ -1091,7 +1091,7 @@
  },
  {
   "kind": "calendar#calendarListEntry",
-  "etag": "\"1781625335127327\"",
+  "etag": "\"1785081837995887\"",
   "id": "70a8852f6a751b50a48ffe63fec3a92e8a7fd141be560e07f55b45dabe411d48@group.calendar.google.com",
   "summary": "Тестовый календарь",
   "timeZone": "Europe/Moscow",

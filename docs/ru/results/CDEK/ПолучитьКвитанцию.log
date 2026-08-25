@@ -1,38 +1,44 @@
 ﻿{
  "entity": {
-  "uuid": "164729dc-ccc4-4d88-8fe5-12f3e7417e39",
+  "uuid": "51d11d2d-e279-43e0-986a-da1822c418ae",
   "orders": [
    {
-    "order_uuid": "d8e86a19-5f94-49f8-8dda-9b8d6a38c5bf"
+    "order_uuid": "beb37e75-4bb5-4b2c-99bf-bad4caaa796a"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/164729dc-ccc4-4d88-8fe5-12f3e7417e39.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-07-19T22:09:39+03:00"
+    "date_time": "2026-08-25T10:47:01+03:00"
    },
    {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2026-07-19T22:09:39+03:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2026-07-19T22:09:39+03:00"
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2026-08-25T10:47:02+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "023d3a46-baae-48dd-bd67-d10e05619c4c",
+   "request_uuid": "f3bdd57b-799c-4a57-bfdc-86e86d85c2db",
    "type": "CREATE",
-   "date_time": "2026-07-19T22:09:39+03:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2026-08-25T10:47:01+03:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid beb37e75-4bb5-4b2c-99bf-bad4caaa796a"
+    }
+   ]
   }
  ],
  "related_entities": []

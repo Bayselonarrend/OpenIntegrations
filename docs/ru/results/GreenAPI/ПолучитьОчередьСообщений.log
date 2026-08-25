@@ -1,1 +1,204 @@
-﻿[]
+﻿[
+ {
+  "messageID": "3EB0879E3179830637A791",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "***",
+   "message": "Новое сообщение",
+   "archive": false,
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "3EB065361CB4D29572BBB4",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "***",
+   "message": "Новое сообщение",
+   "quotedMessageId": "3EB0879E3179830637A791",
+   "archive": false,
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "3EB026A797CAB4FAAEC772",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "photo.jpg",
+   "chatId": "***",
+   "caption": "Описание файла",
+   "archive": false,
+   "typingType": "recording",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/2a737301-5cdf-440f-b348-91c1d0a6029d.jpg",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB015039E707D9F87BCDB",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "vid.mp4",
+   "chatId": "***",
+   "quotedMessageId": "3EB026A797CAB4FAAEC772",
+   "caption": "Описание файла",
+   "archive": false,
+   "typingType": "recording",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/9922216a-55e1-4d64-83ff-8c0ed85122f5.mp4",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0E88BC5D37E325D5E35",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://releases.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "Описание файла",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB01BE742A978E02F5631",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://releases.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "3EB0E88BC5D37E325D5E35",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0227F14AB36006E6A4E",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0871DB42CF2D71736B0",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0227F14AB36006E6A4E",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0E19028B21DDD62BDC9",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0C6C450B30BA40E1623",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB0E19028B21DDD62BDC9",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB00AFD809838DF0F0422",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0F57533ACB31FDC9C06",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB00AFD809838DF0F0422",
+   "archive": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB06ADB2E3EA5B14E7C1E"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0879E3179830637A791"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB011008E1859944A14AB",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0879E3179830637A791",
+   "message": "Новый текст сообщения",
+   "linkPreview": true,
+   "typingTime": null
+  }
+ }
+]
