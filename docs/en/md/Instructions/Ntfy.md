@@ -14,16 +14,6 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 
 The `OPI_Ntfy` library is designed for **sending and receiving push notifications** via the Ntfy service in 1C:Enterprise, OneScript, and CLI. This page provides a brief overview of capabilities and typical scenarios; for detailed method signatures, see the child sections of the documentation.
 
-## Capabilities
-
-| Task | Method |
-|--------|-------|
-| Get message parameters template | [`GetMessageParametersStructure`](/docs/Ntfy/Publishing/Get-message-parameters-structure) |
-| Send notification to topic | [`SendMessage`](/docs/Ntfy/Publishing/Send-message) |
-| Get filter parameters template | [`GetFilterParametersStructure`](/docs/Ntfy/Getting/Get-filter-parameters-structure) |
-| Get messages from topic | [`GetMessages`](/docs/Ntfy/Getting/Get-messages) |
-| Delete message from topic | [`DeleteMessage`](/docs/Ntfy/Management/Delete-message) |
-
 ## Getting Started
 
 Ntfy is a simple service for sending notifications to phones, web browsers, and other devices. You can use:
@@ -216,7 +206,3 @@ For Each Message In Messages Do
     EndIf;
 EndDo;
 ```
-
-:::note
-For details on response fields, CLI options, and result examples — see the method pages in the [Publishing](/docs/Ntfy/Publishing/Send-message), [Getting](/docs/Ntfy/Getting/Get-messages), and [Management](/docs/Ntfy/Management/Delete-message) sections.
-:::
