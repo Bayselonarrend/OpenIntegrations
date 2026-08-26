@@ -18,6 +18,12 @@
                 "description_en": "Fixed special character handling when calculating the `AWS4` authentication signature"
             },
             {
+                "lib": "HTTP",
+                "icon": "media/HTTP.png",
+                "description_ru": "Исправлено указание пользовательской кодировки в `Content-Type`",
+                "description_en": "Fixed custom encoding specification in `Content-Type`"
+            },
+            {
                 "lib": "All",
                 "icon": "media/logo.png",
                 "description_ru": "Убрана проверка режима совместимости в расширении для более простого обновления через панель управления в версии для 1С:Предприятие",
