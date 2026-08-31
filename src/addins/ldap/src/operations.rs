@@ -42,13 +42,11 @@ pub fn parse_search_params(value: &JanxValue) -> Result<(String, Scope, String, 
         return Err("Invalid search parameters".to_string());
     };
 
-    let base = map
-        .get("base")
-        .and_then(|v| match v {
-            JanxValue::String(s) => Some(s.clone()),
-            _ => None,
-        })
-        .ok_or_else(|| "Search parameter 'base' is required".to_string())?;
+    let base = match map.get("base") {
+        Some(JanxValue::String(value)) => value.clone(),
+        None => String::new(),
+        _ => return Err("Search parameter 'base' must be a string".to_string()),
+    };
 
     let filter = map
         .get("filter")
