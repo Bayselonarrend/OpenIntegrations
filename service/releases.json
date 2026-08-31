@@ -28,6 +28,12 @@
                 "icon": "media/logo.png",
                 "description_ru": "Убрана проверка режима совместимости в расширении для более простого обновления через панель управления в версии для 1С:Предприятие",
                 "description_en": "Removed compatibility mode check in the extension to simplify updating via the control panel in the 1C:Enterprise version"
+            },
+            {
+                "lib": "All",
+                "icon": "media/logo.png",
+                "description_ru": "Полный отказ от режима подключения `Изолированно` при работе с внешними компонентами",
+                "description_en": "Full deprecation of `Isolated` connection mode when working with AddIns"
             }
         ]
     },

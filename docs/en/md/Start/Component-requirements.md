@@ -72,6 +72,10 @@ Besides on-demand installation, you can pre-install selected AddIns on a client 
 
 ## Troubleshooting common issues
 
+:::info
+Starting with version **2.4.0**, the **`Isolated`** connection mode is **no longer used**: OPI always connects external components in **`NotIsolated`** mode.
+:::
+
 The most common cause of problems when working with external components in **1C:Enterprise** is unstable behavior of the **`Isolated`** connection mode. How reliably this mode works can vary between platform versions and operating systems.
 
 If you run into errors related to external components, **first** try connecting the AddIn in **`NotIsolated`** mode:
