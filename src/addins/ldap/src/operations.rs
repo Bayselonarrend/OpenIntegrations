@@ -90,7 +90,8 @@ pub fn parse_add_params(value: &JanxValue) -> Result<(String, Vec<(String, Vec<S
     let attributes = map
         .get("attributes")
         .map(parse_attributes_map)
-        .ok_or_else(|| "Add parameter 'attributes' is required".to_string())?;
+        .filter(|attributes| !attributes.is_empty())
+        .ok_or_else(|| "Add parameter 'attributes' must be a non-empty object".to_string())?;
 
     Ok((dn, attributes))
 }
