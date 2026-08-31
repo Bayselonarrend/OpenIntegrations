@@ -8,8 +8,14 @@
             {
                 "lib": "LDAP",
                 "icon": "media/LDAP.png",
-                "description_ru": "Нативная компонента и методы работы с LDAP (13 функций)",
-                "description_en": "Native component and LDAP methods (13 functions)"
+                "description_ru": "Основные методы LDAP (8 функций)",
+                "description_en": "LDAP common methods (8 functions)"
+            },
+            {
+                "lib": "LDAP",
+                "icon": "media/LDAP.png",
+                "description_ru": "Методы работы с каталогом (5 функций)",
+                "description_en": "Directory operations methods (5 functions)"
             },
             {
                 "lib": "Ntfy",
