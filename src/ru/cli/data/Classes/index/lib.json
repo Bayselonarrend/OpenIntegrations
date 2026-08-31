@@ -16,6 +16,7 @@
   "greenmax": "OPI_GreenMax",
   "grpc": "OPI_GRPC",
   "gsheets": "OPI_GoogleSheets",
+  "ldap": "OPI_LDAP",
   "lua": "OPI_Lua",
   "metrika": "OPI_YandexMetrika",
   "mongodb": "OPI_MongoDB",

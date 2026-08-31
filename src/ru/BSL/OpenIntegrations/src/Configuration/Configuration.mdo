@@ -54,6 +54,7 @@
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_GRPC</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_HTTPServer</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_LDAP</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MongoDB</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MSSQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MySQL</commonTemplates>
@@ -99,6 +100,7 @@
   <commonModules>CommonModule.OPI_GreenMax</commonModules>
   <commonModules>CommonModule.OPI_GRPC</commonModules>
   <commonModules>CommonModule.OPI_Janx</commonModules>
+  <commonModules>CommonModule.OPI_LDAP</commonModules>
   <commonModules>CommonModule.OPI_Lua</commonModules>
   <commonModules>CommonModule.OPI_MessagePack</commonModules>
   <commonModules>CommonModule.OPI_MongoDB</commonModules>

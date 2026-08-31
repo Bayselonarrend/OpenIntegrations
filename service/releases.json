@@ -6,6 +6,12 @@
         "image": "media/Covers/Ntfy.png",
         "changes": [
             {
+                "lib": "LDAP",
+                "icon": "media/LDAP.png",
+                "description_ru": "Нативная компонента и методы работы с LDAP (13 функций)",
+                "description_en": "Native component and LDAP methods (13 functions)"
+            },
+            {
                 "lib": "Ntfy",
                 "icon": "media/Ntfy.png",
                 "description_ru": "Методы публикации, получения и удаления уведомлений (5 функций)",
