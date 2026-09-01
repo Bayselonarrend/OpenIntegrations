@@ -379,7 +379,7 @@ Function ConnectComponent(Val TemplateName, Val AddInName, Val ConnectionMode, V
 
     Else
 
-        ExecutionText = "Result = AttachAddIn(TemplateName, AddInName, AddInType.Native, AddInConnectionType.NotIsolated)";
+        ExecutionText = "Result = AttachAddIn(TemplateName, AddInName, AddInType.Native, AddInAttachmentType.NotIsolated)";
         Execute(ExecutionText);
 
     EndIf;
