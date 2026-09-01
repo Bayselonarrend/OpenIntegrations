@@ -121,7 +121,7 @@
     {
      "name": "--filter",
      "types": "String",
-     "description": "LDAP filter",
+     "description": "LDAP",
      "default": "(objectClass=*)",
      "short": "-f"
     },

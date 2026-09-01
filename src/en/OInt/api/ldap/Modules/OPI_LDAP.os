@@ -279,7 +279,7 @@ EndFunction
 // Parameters:
 // Connection - Arbitrary, Structure Of KeyAndValue - Connection or connection parameters - conn
 // Base       - String                              - Base search DN                      - base
-// Filter     - String                              - LDAP filter                         - filter
+// Filter     - String                              - LDAP                                - filter
 // Attributes - Array of String, Undefined          - List of attributes for selection    - attrs
 // Region     - String                              - Scope: base, one, subtree           - scope
 //

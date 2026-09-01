@@ -109,7 +109,7 @@ Function SendMessage(Val URL, Val Topic, Val Message, Val Token = "", Val Parame
     OPI_TypeConversion.GetLine(Topic);
     OPI_TypeConversion.GetLine(Message);
 
-    URL = GetURL(URL);
+    URL = GetServerURL(URL);
     CompleteURL(URL, Topic);
 
     Headers = CreateHeaders(Token, Parameters);
@@ -170,7 +170,7 @@ Function GetMessages(Val URL, Val Topic, Val Token = "", Val Filter = "") Export
 
     OPI_TypeConversion.GetLine(Topic);
 
-    URL = GetURL(URL);
+    URL = GetServerURL(URL);
     CompleteURL(URL, Topic + "/json");
 
     RequestParameters = CreateFilterParameters(Filter);
@@ -206,7 +206,7 @@ Function DeleteMessage(Val URL, Val Topic, Val MessageID, Val Token = "") Export
     OPI_TypeConversion.GetLine(Topic);
     OPI_TypeConversion.GetLine(MessageID);
 
-    URL = GetURL(URL);
+    URL = GetServerURL(URL);
     CompleteURL(URL, Topic + "/" + MessageID);
 
     Headers = CreateHeaders(Token);
@@ -223,7 +223,7 @@ EndFunction
 
 #Region Private
 
-Function GetURL(Val URL)
+Function GetServerURL(Val URL)
 
     If Not ValueIsFilled(URL) Then
         URL = "https://ntfy.sh";
