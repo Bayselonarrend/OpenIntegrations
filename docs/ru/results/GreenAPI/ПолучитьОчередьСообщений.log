@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB0BB3FCD566C917DB126",
+  "messageID": "3EB0A925807B98A2937ADC",
   "type": "sendMessage",
   "body": {
    "chatId": "***",
@@ -12,12 +12,12 @@
   }
  },
  {
-  "messageID": "3EB0B6B25659285CB652F5",
+  "messageID": "3EB083150700D9A0379EBD",
   "type": "sendMessage",
   "body": {
    "chatId": "***",
    "message": "Новое сообщение",
-   "quotedMessageId": "3EB0BB3FCD566C917DB126",
+   "quotedMessageId": "3EB0A925807B98A2937ADC",
    "archive": false,
    "linkPreview": true,
    "typingTime": null,
@@ -25,7 +25,7 @@
   }
  },
  {
-  "messageID": "3EB0FB42B4FAC616829439",
+  "messageID": "3EB093AD48957DE6D78BAC",
   "type": "sendFileByUrl",
   "body": {
    "fileName": "photo.jpg",
@@ -33,26 +33,26 @@
    "caption": "Описание файла",
    "archive": false,
    "typingType": "recording",
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/9f1eb2e2-a5e7-4490-be4c-5ce5c3f017b4.jpg",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/2539de30-9461-4242-a6a0-0559070da5f2.jpg",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0E5E3D786F4291A0D48",
+  "messageID": "3EB020C9380ACFE8C18306",
   "type": "sendFileByUrl",
   "body": {
    "fileName": "vid.mp4",
    "chatId": "***",
-   "quotedMessageId": "3EB0FB42B4FAC616829439",
+   "quotedMessageId": "3EB093AD48957DE6D78BAC",
    "caption": "Описание файла",
    "archive": false,
    "typingType": "recording",
-   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/f5a89532-8889-4545-9903-912226f91c80.mp4",
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/19e5252c-a9cb-47bc-83fe-ee7aba895784.mp4",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0753690E6E557C5771A",
+  "messageID": "3EB0EC66CFEEF91EAE043D",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "***",
@@ -64,20 +64,20 @@
   }
  },
  {
-  "messageID": "3EB0407EA908E47A4B15FA",
+  "messageID": "3EB097F4C4E280B2B1E00A",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "***",
    "urlFile": "https://releases.openintegrations.dev/test_data/video.mp4",
    "fileName": "vid.mp4",
    "caption": "Описание файла",
-   "quotedMessageId": "3EB0753690E6E557C5771A",
+   "quotedMessageId": "3EB0EC66CFEEF91EAE043D",
    "typingTime": null,
    "typingType": "composing"
   }
  },
  {
-  "messageID": "3EB00B8B0AE1BB31B76467",
+  "messageID": "3EB0084D32FA61EB71F54A",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -99,7 +99,7 @@
   }
  },
  {
-  "messageID": "3EB067E42956E10E12D156",
+  "messageID": "3EB0A0F811CC08CA503FC7",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -116,13 +116,13 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB00B8B0AE1BB31B76467",
+   "quotedMessageId": "3EB0084D32FA61EB71F54A",
    "archive": false,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB03D42FE1864DCBF21C1",
+  "messageID": "3EB0B77881A45CD96D55BC",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -135,11 +135,11 @@
   }
  },
  {
-  "messageID": "3EB010FDC1FAF10650D396",
+  "messageID": "3EB04BE1172980A2E6283F",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB03D42FE1864DCBF21C1",
+   "quotedMessageId": "3EB0B77881A45CD96D55BC",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "archive": false,
@@ -147,7 +147,7 @@
   }
  },
  {
-  "messageID": "3EB02403DE1CAD0E839D8F",
+  "messageID": "3EB0E964DD122ED97603FD",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -163,7 +163,7 @@
   }
  },
  {
-  "messageID": "3EB06036A48CC9F2044B0F",
+  "messageID": "3EB056275FE72A1C8F08CC",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -171,31 +171,31 @@
     "phoneContact": "***",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB02403DE1CAD0E839D8F",
+   "quotedMessageId": "3EB0E964DD122ED97603FD",
    "archive": false,
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0A3CE1450A72DFDDFD7"
+   "3EB0DFB546641568FEA600"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0BB3FCD566C917DB126"
+    "3EB0A925807B98A2937ADC"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0842ADABD690D2D8DEF",
+  "messageID": "3EB0F7A2EE5380A38E0E21",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0BB3FCD566C917DB126",
+   "idMessage": "3EB0A925807B98A2937ADC",
    "message": "Новый текст сообщения",
    "linkPreview": true,
    "typingTime": null

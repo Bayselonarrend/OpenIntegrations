@@ -1,11 +1,11 @@
 ﻿{
  "data": [
   {
-   "id": "file-4",
+   "id": "file-2",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2026-08-25T09:16:18.209439312Z",
-   "filename": "3a405fed-2f43-47bd-b477-f6e09406f765.png",
+   "created_at": "2026-09-01T17:13:16.223713466Z",
+   "filename": "3e014947-64f9-4be2-959e-e4cb5fac9624.png",
    "purpose": "assistants"
   }
  ],
