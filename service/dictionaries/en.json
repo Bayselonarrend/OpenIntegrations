@@ -14502,7 +14502,7 @@
 "Список атрибутов для выборки": "List of attributes for selection",
 "полный путь к файлу на диске": "full path to file on disk",
 "ВыполнитьПоискБезПодключения": "PerformSearchWithoutConnection",
-"URL сервера (ldap:// или ldaps": "Server URL (ldap:// or ldaps",
+"URL сервера (ldap: или ldaps": "Server URL (ldap: or ldaps",
 "Массив Из Строка, Неопределено": "Array of String, Undefined",
 "ПолучитьСтруктуруОписанияАрхива": "GetArchiveDescriptionStructure",
 "Удаляет запись из каталога LDAP": "Delete record from LDAP directory",
