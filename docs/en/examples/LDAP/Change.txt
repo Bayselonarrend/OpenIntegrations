@@ -1,0 +1,21 @@
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    DN = "cn=OPI Test User,dc=example,dc=org";
+
+    EmailValues = New Array;
+    EmailValues.Add("test@example.org");
+
+    Change = New Structure;
+    Change.Insert("operation", "replace");
+    Change.Insert("attribute", "mail");
+    Change.Insert("values"   , EmailValues);
+
+    Changes = New Array;
+    Changes.Add(Change);
+
+    Result = OPI_LDAP.Change(Connection, DN, Changes);

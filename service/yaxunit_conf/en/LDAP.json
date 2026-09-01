@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/LDAP.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPIt_LDAP.LDAP_CommonMethods",
+"OPIt_LDAP.LDAP_WorkWithDirectory",
+"OPIt_LDAP.LDAP_AdvancedCheck"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/LDAP.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

@@ -856,7 +856,8 @@ Function SetJsonBody(Val Data) Export
         EndIf;
 
         If Not RequestTypeSetManualy Then
-            RequestDataType = "application/json; charset=utf-8";
+            Encoding = GetSetting("EncodeRequestBody");
+            RequestDataType = StrTemplate("application/json; charset=%1", Encoding);
         EndIf;
 
         RequestCollectionProcessing = "json";
@@ -895,7 +896,10 @@ Function SetFormBody(Val Data) Export
         AddLog("SetFormBody: beginning of body setting");
 
         If Not RequestTypeSetManualy Then
-          RequestDataType = "application/x-www-form-urlencoded; charset=utf-8";
+
+            Encoding = GetSetting("EncodeRequestBody");
+            RequestDataType = StrTemplate("application/x-www-form-urlencoded; charset=%1", Encoding);
+
         EndIf;
 
         OPI_TypeConversion.GetCollection(Data);
@@ -957,7 +961,10 @@ Function InitializeJsonBody(Val RootType = "Map") Export
         CancelMultipartBody();
 
         If Not RequestTypeSetManualy Then
-            RequestDataType = "application/json; charset=utf-8";
+
+            Encoding = GetSetting("EncodeRequestBody");
+            RequestDataType = StrTemplate("application/json; charset=%1", Encoding);
+
         EndIf;
 
         AddLog("InitializeJsonBody: setting the root");
@@ -1000,7 +1007,10 @@ Function InitializeFormBody(Val RootType = "Map") Export
         CancelMultipartBody();
 
         If Not RequestTypeSetManualy Then
-            RequestDataType = "application/x-www-form-urlencoded; charset=utf-8";
+
+            Encoding = GetSetting("EncodeRequestBody");
+            RequestDataType = StrTemplate("application/x-www-form-urlencoded; charset=%1", Encoding);
+
         EndIf;
 
         AddLog("InitializeFormBody: setting the root");
@@ -1726,6 +1736,39 @@ Function ExecuteRequest(Forced = False) Export
 
 EndFunction
 
+// Get part !NOCLI
+// Sends a request to retrieve data with the Range header
+//
+// Parameters:
+// StartPosition - Number - Position from which to retrieve data  - start
+// ByteCount     - Number - Size of the data to retrieve in bytes - bytes
+// Method        - String - Request HTTP method                   - method
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function GetPart(Val StartPosition, Val ByteCount, Val Method = "GET") Export
+
+    Try
+
+        FormBodyFromCollection();
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        OPI_TypeConversion.GetLine(Method);
+        OPI_TypeConversion.GetNumber(StartPosition);
+        OPI_TypeConversion.GetNumber(ByteCount);
+
+        EndPosition = StartPosition + ByteCount - 1;
+
+        SetRange(StartPosition, EndPosition).ProcessRequest(Method, True);
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
 // Send data in parts !NOCLI
 // Sends the body in multiple requests with the Content-Range header
 //
@@ -1823,12 +1866,10 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
 
         EndPosition = StartPosition + CurrentSize - 1;
 
-        StreamHeader = "bytes "
-            + OPI_Tools.NumberToString(StartPosition)
-            + "-"
-            + OPI_Tools.NumberToString(EndPosition)
-            + "/"
-            + OPI_Tools.NumberToString(RequestBody.Size());
+        StreamHeader = StrTemplate("bytes %1-%2/%3"
+            , OPI_Tools.NumberToString(StartPosition)
+            , OPI_Tools.NumberToString(EndPosition)
+            , OPI_Tools.NumberToString(RequestBody.Size()));
 
         AdditionalHeaders = New Map;
         AdditionalHeaders.Insert("Content-Length", OPI_Tools.NumberToString(CurrentSize));
@@ -2870,6 +2911,19 @@ Function CheckPartUpload()
 
 EndFunction
 
+Function SetRange(Val StartPosition, Val EndPosition)
+
+    StreamHeader = StrTemplate("bytes=%1-%2"
+        , OPI_Tools.NumberToString(StartPosition)
+        , OPI_Tools.NumberToString(EndPosition));
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("Range", StreamHeader);
+
+    Return SetHeaders(AdditionalHeaders);
+
+EndFunction
+
 Procedure CancelMultipartBody()
 
     If Not Multipart Then
@@ -3895,7 +3949,7 @@ Procedure SetDefaultSettings()
     Settings.Insert("SplitArrayParams"     , False);
     Settings.Insert("ArraysSquareBrackets" , False);
     Settings.Insert("URLencoding"          , True);
-    Settings.Insert("EncodeRequestBody"    , "UTF-8");
+    Settings.Insert("EncodeRequestBody"    , "utf-8");
     Settings.Insert("BodyFieldsAtOAuth"    , False);
     Settings.Insert("MaxAttempts"          , 0);
     Settings.Insert("MaxRedirects"         , 5);

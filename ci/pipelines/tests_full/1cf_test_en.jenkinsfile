@@ -171,6 +171,7 @@ pipeline {
 		booleanParam(name: 'GreenAPI', defaultValue: true, description: 'Run GreenAPI tests')
 		booleanParam(name: 'GreenMax', defaultValue: true, description: 'Run GreenMax tests')
 		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
+		booleanParam(name: 'LDAP', defaultValue: true, description: 'Run LDAP tests')
 		booleanParam(name: 'Ollama', defaultValue: true, description: 'Run Ollama tests')
 		booleanParam(name: 'HTTP', defaultValue: true, description: 'Run HTTP tests')
 		booleanParam(name: 'OpenAI', defaultValue: true, description: 'Run OpenAI tests')
@@ -605,6 +606,19 @@ pipeline {
 				script {
 					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
 						runLibraryTest('RCON', './service/yaxunit_conf/en/RCON.json')
+					}
+
+				}
+			}
+		}
+		stage('Testing-LDAP') {
+            when {
+                expression { return params['LDAP'] }
+            }
+			steps {
+				script {
+					catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+						runLibraryTest('LDAP', './service/yaxunit_conf/en/LDAP.json')
 					}
 
 				}

@@ -168,6 +168,7 @@ Function GetTestTable(Val TestModule = "") Export
     Postgres  = "PostgreSQL";
     MongoDB   = "MongoDB";
     GreenAPI  = "GreenAPI";
+    LDAP      = "LDAP";
     RCON      = "RCON";
     MySQL     = "MySQL";
     Ollama    = "Ollama";
@@ -359,6 +360,9 @@ Function GetTestTable(Val TestModule = "") Export
     NewTest(ArrayOfTests, TestModule, "GMax_Account"                        , "Account"                         , GreenMax);
     NewTest(ArrayOfTests, TestModule, "RC_CommandsExecution"                , "Commands execution"              , RCON);
     NewTest(ArrayOfTests, TestModule, "RC_ExtendedCheck"                    , "Extended check"                  , RCON);
+    NewTest(ArrayOfTests, TestModule, "LDAP_CommonMethods"                  , "Common methods"                  , LDAP);
+    NewTest(ArrayOfTests, TestModule, "LDAP_WorkWithDirectory"              , "Work with directory"             , LDAP);
+    NewTest(ArrayOfTests, TestModule, "LDAP_AdvancedCheck"                  , "Extended check"                  , LDAP);
     NewTest(ArrayOfTests, TestModule, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
     NewTest(ArrayOfTests, TestModule, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
     NewTest(ArrayOfTests, TestModule, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
@@ -10759,6 +10763,248 @@ Function Check_RCON_GetLog(Val Result, Val Option, LogFile = "")
 
 EndFunction
 
+Function LDAPAttributeValue(Record, AttributeName)
+
+    Attributes = Record["attributes"];
+
+    If Not OPI_Tools.ThisIsCollection(Attributes) Then
+        Return "";
+    EndIf;
+
+    For Each Pair In Attributes Do
+
+        If Lower(Pair.Key) = Lower(AttributeName) Then
+
+            Values = Pair.Value;
+
+            If TypeOf(Values)    = Type("Array") And Values.Count() > 0 Then
+                Return Values[0];
+            ElsIf TypeOf(Values) = Type("String") Then
+                Return Values;
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    Return "";
+
+EndFunction
+
+Function Check_LDAP_Advanced_PerformSearchWithoutConnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsError   = StrFind(ErrorText, "not connected") > 0
+        Or StrFind(ErrorText, "initialize connection") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsError).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Extended_Reconnection(Val Result, Val Option)
+
+    ErrorText = Lower(Result["error"]);
+    IsRetry   = StrFind(ErrorText, "already") > 0
+        Or StrFind(ErrorText, "initialized") > 0;
+
+    ExpectsThat(Result["result"]).Равно(False);
+    ExpectsThat(IsRetry).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Extended_GetLogOnConnection(Val Result, Val Option, LogFile = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["logs"]).ИмеетТип("Array");
+    ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+    LogObject = New File(LogFile);
+    ExpectsThat(LogObject.Exists()).Равно(True);
+    ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_FormConnectionParameters(Val Result, Val Option)
+
+    Result["password"] = "***";
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_LDAP.Main");
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_GetConnectionConfiguration(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result["data"], True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_GetTlsSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["use_tls"]).Равно(True);
+    ExpectsThat(Result["accept_invalid_certs"]).Равно(False);
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_GetLoggingSettings(Val Result, Val Option)
+
+    If Option = "File" Then
+
+        ExpectsThat(Result["mode"]).Равно("file");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+
+    ElsIf Option = "Memory" Then
+
+        ExpectsThat(Result["mode"]).Равно("memory");
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["mode"]).Равно("both");
+        ExpectsThat(ValueIsFilled(Result["file_path"])).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["max_entries"])).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_GetLog(Val Result, Val Option, LogFile = "")
+
+    If Option = "AsString" Then
+
+        ExpectsThat(TypeOf(Result)).Равно(Type("String"));
+        ExpectsThat(StrLen(Result) > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        ExpectsThat(Result["logs"]).ИмеетТип("Array");
+        ExpectsThat(Result["logs"].Count() > 0).Равно(True);
+
+        LogObject = New File(LogFile);
+        ExpectsThat(LogObject.Exists()).Равно(True);
+        ExpectsThat(LogObject.Size() > 0).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_PerformSearch(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).ИмеетТип("Array");
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Add(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(1);
+
+        Record = Result["data"][0];
+
+        ExpectsThat(Lower(Record["dn"])).Равно(Lower("cn=OPI Test User,dc=example,dc=org"));
+        ExpectsThat(LDAPAttributeValue(Record, "uid")).Равно("opitest");
+        ExpectsThat(LDAPAttributeValue(Record, "cn")).Равно("OPI Test User");
+        ExpectsThat(LDAPAttributeValue(Record, "sn")).Равно("User");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Change(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(1);
+
+        Record = Result["data"][0];
+
+        ExpectsThat(LDAPAttributeValue(Record, "mail")).Равно("test@example.org");
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Delete(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(0);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_LDAP_Compare(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_Ollama_GetResponse(Val Result, Val Option)
 
     ExpectsThat(Result["model"]).Заполнено();
@@ -12056,6 +12302,26 @@ Function Check_HTTP_SplitArraysInURL(Val Result, Val Option)
     Result = StrTemplate("No separation: %1;
                           |Separation: %2
                           |Separation (php): %3", NoSeparation, Separation, SeparationPhp);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTP_GetPart(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("HTTPResponse");
+    ExpectsThat(Result.StatusCode).Равно(206);
+
+    Body = Result.GetBodyAsBinaryData();
+    ExpectsThat(Body.Size()).Равно(10);
+
+    RangeHeader = Result.Headers.Get("Content-Range");
+
+    If Not ValueIsFilled(RangeHeader) Then
+        RangeHeader = Result.Headers.Get("content-range");
+    EndIf;
+
+    ExpectsThat(RangeHeader).Равно("bytes 0-9/100");
 
     Return Result;
 
@@ -15718,6 +15984,34 @@ Function Check_7z_GetArchivingSettingsStructure(Val Result, Val Option)
 
 EndFunction
 
+Function Check_7z_GetArchiveDescriptionStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "entries")).Равно(True);
+    ExpectsThat(TypeOf(Result["entries"])).Равно(Type("Array"));
+    ExpectsThat(Result["entries"].Count() > 0).Равно(True);
+
+    FirestElement = Result["entries"][0];
+    ExpectsThat(OPI_Tools.ThisIsCollection(FirestElement     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(FirestElement, "name")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(FirestElement, "directory")).Равно(True);
+
+    If Option = "Clear" Then
+
+        ExpectsThat(ValueIsFilled(FirestElement["name"])).Равно(False);
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(StrFind(String(FirestElement["name"])        , "name") > 0).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(FirestElement, "from_path")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(FirestElement, "path")).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_7z_GetArchiveModificationStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
@@ -15783,7 +16077,10 @@ EndFunction
 
 Function Check_7z_UnarchiveDirectory(Val Result, Val Option, DestinationDirectory = "", ExpectedFiles = Undefined)
 
-    If Option = "ToDescription" Or Option = "ToDescriptionFromMemory" Or Option = "InDescriptionWithPassword" Then
+    If Option     = "ToDescription"
+        Or Option = "ToDescriptionFromMemory"
+        Or Option = "InDescriptionWithPassword"
+        Or Option = "FromDescriptionToDescription" Then
 
         ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
         ExpectsThat(Result["entries"] <> Undefined).Равно(True);
@@ -16044,6 +16341,12 @@ Function Check_Tar_GetArchivingSettingsStructure(Val Result, Val Option)
     EndIf;
 
     Return Result;
+
+EndFunction
+
+Function Check_Tar_GetArchiveDescriptionStructure(Val Result, Val Option)
+
+    Return Check_7z_GetArchiveDescriptionStructure(Result, Option);
 
 EndFunction
 
@@ -18329,6 +18632,16 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     ElsIf AddInName = "OPI_RCON" Then
 
         Value = Value.GetSettings();
+
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+        TFN = GetTempFileName();
+        OPI_Tools.WriteJSONFile(TFN, Value);
+
+        Value = TFN;
+
+    ElsIf AddInName = "OPI_LDAP" Then
+
+        Value = Value.GetConfiguration();
 
         OPI_TypeConversion.GetKeyValueCollection(Value);
         TFN = GetTempFileName();

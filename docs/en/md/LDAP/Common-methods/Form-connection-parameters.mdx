@@ -1,0 +1,63 @@
+---
+sidebar_position: 3
+
+description: Form connection parameters and other functions to work with LDAP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, LDAP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Form connection parameters
+ Form LDAP connection parameters collection
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function FormConnectionParameters(Val URL, Val BindDN = "", Val Password = "", Val Timeout = 30) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | Server URL (ldap: or ldaps:) |
+  | BindDN | --bind | String | &#x2716; | DN for bind |
+  | Password | --pass | String | &#x2716; | Password for bind |
+  | Timeout | --tout | Number | &#x2716; | Timeout of operations in seconds |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Structure Of KeyAndValue - Structure of connection parameters
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    Result = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+```
+ 
+
+
+
+

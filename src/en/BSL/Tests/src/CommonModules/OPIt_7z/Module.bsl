@@ -106,11 +106,14 @@ Procedure Z7_Archiving() Export
     DestinationDirectoryPassword = Path7z(BaseDirectory, "out_pwd");
     ArchivePath                  = Path7z(BaseDirectory, "archive.7z");
     ArchivePathDescription       = Path7z(BaseDirectory, "archive_desc.7z");
+    ArchivePathRoundTrip         = Path7z(BaseDirectory, "archive_roundtrip.7z");
     ArchivePasswordPath          = Path7z(BaseDirectory, "archive_pwd.7z");
     ArchiveBufferPath            = Path7z(BaseDirectory, "archive_buffer.7z");
     ArchivePathCopy              = Path7z(BaseDirectory, "archive_copy.7z");
     ArchivePathLzma              = Path7z(BaseDirectory, "archive_lzma.7z");
     NewFilePath                  = Path7z(BaseDirectory, "extra_info.txt");
+    DestinationDirectoryDesc     = Path7z(BaseDirectory, "out_desc");
+    DestinationPathRT            = Path7z(BaseDirectory, "out_roundtrip");
 
     CreateDirectory(BaseDirectory);
     CreateDirectory(SourceDirectory);
@@ -119,6 +122,8 @@ Procedure Z7_Archiving() Export
     CreateDirectory(DestinateDirectory);
     CreateDirectory(DestinationDirectoryBuffer);
     CreateDirectory(DestinationDirectoryPassword);
+    CreateDirectory(DestinationDirectoryDesc);
+    CreateDirectory(DestinationPathRT);
 
     GetBinaryDataFromString("OpenIntegrations root", "UTF-8").Write(Path7z(SourceDirectory, "readme.txt"));
 
@@ -229,36 +234,55 @@ Procedure Z7_Archiving() Export
     ConfigItem.Insert("entries"  , ConfigRecords);
     DescriptionRecords.Add(ConfigItem);
 
+    ElementMemory = New Map;
+    ElementMemory.Insert("name"     , "memory.txt");
+    ElementMemory.Insert("directory", False);
+    ElementMemory.Insert("from_path", False);
+    ElementMemory.Insert("data"     , GetBinaryDataFromString("From memory data", "UTF-8"));
+    DescriptionRecords.Add(ElementMemory);
+
     ArchiveDescription = New Map;
     ArchiveDescription.Insert("entries", DescriptionRecords);
 
+    ExpectedDesc = New Map;
+    ExpectedDesc.Insert("readme.txt"             , "OpenIntegrations root");
+    ExpectedDesc.Insert("docs\note.txt"          , "Nested documentation");
+    ExpectedDesc.Insert("data\nested\payload.bin", BinaryDescription);
+    ExpectedDesc.Insert("config\settings.json"   , "{""enabled"": true}");
+    ExpectedDesc.Insert("memory.txt"             , "From memory data");
+
     Parameters = New Structure;
-    Parameters.Insert("SevenZ_BaseDir"             , BaseDirectory);
-    Parameters.Insert("SevenZ_SourceDir"           , SourceDirectory);
-    Parameters.Insert("SevenZ_SourceDirPassword"   , SourceDirectoryPassword);
-    Parameters.Insert("SevenZ_SourceDirCompress"   , SourceDirectoryCompression);
-    Parameters.Insert("SevenZ_ArchivePath"         , ArchivePath);
-    Parameters.Insert("SevenZ_ArchiveDescPath"     , ArchivePathDescription);
-    Parameters.Insert("SevenZ_ArchivePasswordPath" , ArchivePasswordPath);
-    Parameters.Insert("SevenZ_ArchiveBufferPath"   , ArchiveBufferPath);
-    Parameters.Insert("SevenZ_ArchiveCopyPath"     , ArchivePathCopy);
-    Parameters.Insert("SevenZ_ArchiveLzmaPath"     , ArchivePathLzma);
-    Parameters.Insert("SevenZ_DestDir"             , DestinateDirectory);
-    Parameters.Insert("SevenZ_DestBufferDir"       , DestinationDirectoryBuffer);
-    Parameters.Insert("SevenZ_DestPasswordDir"     , DestinationDirectoryPassword);
-    Parameters.Insert("SevenZ_NewFilePath"         , NewFilePath);
-    Parameters.Insert("SevenZ_Description"         , ArchiveDescription);
-    Parameters.Insert("SevenZ_Password"            , "OPI_Test7zPwd");
-    Parameters.Insert("SevenZ_ExpectedFiles"       , ExpectedFiles);
-    Parameters.Insert("SevenZ_ExpectedPassword"    , ExpectedPassword);
-    Parameters.Insert("SevenZ_ExpectedCompress"    , ExpectedCompression);
-    Parameters.Insert("SevenZ_PartialPaths"        , PartialPaths);
-    Parameters.Insert("SevenZ_PartialExpected"     , ExpectedPartial);
-    Parameters.Insert("SevenZ_ExpectedAfterModify" , ExpectedAfterModification);
+    Parameters.Insert("SevenZ_BaseDir"              , BaseDirectory);
+    Parameters.Insert("SevenZ_SourceDir"            , SourceDirectory);
+    Parameters.Insert("SevenZ_SourceDirPassword"    , SourceDirectoryPassword);
+    Parameters.Insert("SevenZ_SourceDirCompress"    , SourceDirectoryCompression);
+    Parameters.Insert("SevenZ_ArchivePath"          , ArchivePath);
+    Parameters.Insert("SevenZ_ArchiveDescPath"      , ArchivePathDescription);
+    Parameters.Insert("SevenZ_ArchiveRoundTripPath" , ArchivePathRoundTrip);
+    Parameters.Insert("SevenZ_ArchivePasswordPath"  , ArchivePasswordPath);
+    Parameters.Insert("SevenZ_ArchiveBufferPath"    , ArchiveBufferPath);
+    Parameters.Insert("SevenZ_ArchiveCopyPath"      , ArchivePathCopy);
+    Parameters.Insert("SevenZ_ArchiveLzmaPath"      , ArchivePathLzma);
+    Parameters.Insert("SevenZ_DestDir"              , DestinateDirectory);
+    Parameters.Insert("SevenZ_DestBufferDir"        , DestinationDirectoryBuffer);
+    Parameters.Insert("SevenZ_DestPasswordDir"      , DestinationDirectoryPassword);
+    Parameters.Insert("SevenZ_DestDescDir"          , DestinationDirectoryDesc);
+    Parameters.Insert("SevenZ_DestRoundTripDir"     , DestinationPathRT);
+    Parameters.Insert("SevenZ_NewFilePath"          , NewFilePath);
+    Parameters.Insert("SevenZ_Description"          , ArchiveDescription);
+    Parameters.Insert("SevenZ_Password"             , "OPI_Test7zPwd");
+    Parameters.Insert("SevenZ_ExpectedFiles"        , ExpectedFiles);
+    Parameters.Insert("SevenZ_ExpectedDescFiles"    , ExpectedDesc);
+    Parameters.Insert("SevenZ_ExpectedPassword"     , ExpectedPassword);
+    Parameters.Insert("SevenZ_ExpectedCompress"     , ExpectedCompression);
+    Parameters.Insert("SevenZ_PartialPaths"         , PartialPaths);
+    Parameters.Insert("SevenZ_PartialExpected"      , ExpectedPartial);
+    Parameters.Insert("SevenZ_ExpectedAfterModify"  , ExpectedAfterModification);
 
     OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
 
     Z7_GetArchivingSettingsStructure();
+    Z7_GetArchiveDescriptionStructure();
     Z7_GetArchiveModificationStructure();
     Z7_ArchiveDirectory(Parameters);
     Z7_UnarchiveDirectory(Parameters);
@@ -381,6 +405,22 @@ Procedure Z7_GetArchivingSettingsStructure()
 
 EndProcedure
 
+Procedure Z7_GetArchiveDescriptionStructure()
+
+    Result = OPI_7z.GetArchiveDescriptionStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "7z", "GetArchiveDescriptionStructure");
+
+    Result = OPI_7z.GetArchiveDescriptionStructure(True);
+    OPI_TestDataRetrieval.Process(Result, "7z", "GetArchiveDescriptionStructure", "Clear");
+
+    Result = OPI_7z.GetArchiveDescriptionStructure(False, True);
+    OPI_TestDataRetrieval.Process(Result, "7z", "GetArchiveDescriptionStructure", "AsMap");
+
+EndProcedure
+
 Procedure Z7_GetArchiveModificationStructure()
 
     Result = OPI_7z.GetArchiveModificationStructure();
@@ -421,6 +461,12 @@ Procedure Z7_ArchiveDirectory(Parameters)
 
     Result = OPI_7z.ArchiveDirectory(Description);
     OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "FromDescriptionToMemory");
+
+    UnpackingDescription = OPI_7z.UnarchiveDirectory(ArchivePath);
+    ArchivePathRT        = Parameters["SevenZ_ArchiveRoundTripPath"];
+
+    Result = OPI_7z.ArchiveDirectory(UnpackingDescription, ArchivePathRT);
+    OPI_TestDataRetrieval.Process(Result, "7z", "ArchiveDirectory", "FromDescriptionRoundTrip", ArchivePathRT);
 
     DirectoryPassword          = Parameters["SevenZ_SourceDirPassword"];
     ArchivePasswordPath        = Parameters["SevenZ_ArchivePasswordPath"];
@@ -496,6 +542,32 @@ Procedure Z7_UnarchiveDirectory(Parameters)
 
     Result = OPI_7z.UnarchiveDirectory(ArchivePassword, "", Password);
     OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", "InDescriptionWithPassword", "", ExpectedPassword);
+
+    ArchivePathDesc          = Parameters["SevenZ_ArchiveDescPath"];
+    DestinationDirectoryDesc = Parameters["SevenZ_DestDescDir"];
+    ExpectedDesc             = Parameters["SevenZ_ExpectedDescFiles"];
+
+    Result = OPI_7z.UnarchiveDirectory(ArchivePathDesc, DestinationDirectoryDesc);
+    OPI_TestDataRetrieval.Process(Result
+        , "7z"
+        , "UnarchiveDirectory"
+        , "FromDescription"
+        , DestinationDirectoryDesc
+        , ExpectedDesc);
+
+    Result = OPI_7z.UnarchiveDirectory(ArchivePathDesc);
+    OPI_TestDataRetrieval.Process(Result, "7z", "UnarchiveDirectory", "FromDescriptionToDescription", "", ExpectedDesc);
+
+    ArchivePathRT     = Parameters["SevenZ_ArchiveRoundTripPath"];
+    DestinationPathRT = Parameters["SevenZ_DestRoundTripDir"];
+
+    Result = OPI_7z.UnarchiveDirectory(ArchivePathRT, DestinationPathRT);
+    OPI_TestDataRetrieval.Process(Result
+        , "7z"
+        , "UnarchiveDirectory"
+        , "RoundTrip"
+        , DestinationPathRT
+        , ExpectedFiles);
 
 EndProcedure
 

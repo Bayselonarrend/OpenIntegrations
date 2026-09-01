@@ -1,0 +1,262 @@
+{
+ "module": "OPI_LDAP",
+ "library": "ldap",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "api/ldap/Modules/OPI_LDAP.os",
+ "regions": [
+  {
+   "name": "Common methods",
+   "methods": [
+    "FormConnectionParameters",
+    "GetConnectionConfiguration",
+    "GetTlsSettings"
+   ]
+  },
+  {
+   "name": "Work with catalog",
+   "methods": [
+    "Add",
+    "Change",
+    "Compare",
+    "Delete",
+    "PerformSearch"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "FormConnectionParameters",
+   "id": "FORMCONNECTIONPARAMETERS",
+   "description": "Form LDAP connection parameters collection",
+   "params": [
+    {
+     "name": "--url",
+     "types": "String",
+     "description": "Server URL (ldap: or ldaps:)",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--bind",
+     "types": "String",
+     "description": "DN for bind",
+     "default": "Empty value",
+     "short": "-b"
+    },
+    {
+     "name": "--pass",
+     "types": "String",
+     "description": "Password for bind",
+     "default": "Empty value",
+     "short": "-p"
+    },
+    {
+     "name": "--tout",
+     "types": "Number",
+     "description": "Timeout of operations in seconds",
+     "default": 30,
+     "short": "-t"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "GetConnectionConfiguration",
+   "id": "GETCONNECTIONCONFIGURATION",
+   "description": "Return current connection settings",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "GetTlsSettings",
+   "id": "GETTLSSETTINGS",
+   "description": "Form TLS connection settings structure for LDAP connection",
+   "params": [
+    {
+     "name": "--trust",
+     "types": "Boolean",
+     "description": "Allows to work with invalid certificates, including self signed",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cert",
+     "types": "String",
+     "description": "Path to the root PEM file of the certificate if it is not in the system repository",
+     "default": "Empty value",
+     "short": "-c"
+    }
+   ],
+   "region": "Common methods"
+  },
+  {
+   "name": "PerformSearch",
+   "id": "PERFORMSEARCH",
+   "description": "Perform LDAP search",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary, Structure Of KeyAndValue",
+     "description": "Connection or connection parameters",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--base",
+     "types": "String",
+     "description": "Base search DN",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--filter",
+     "types": "String",
+     "description": "LDAP filter",
+     "default": "(objectClass=*)",
+     "short": "-f"
+    },
+    {
+     "name": "--attrs",
+     "types": "Array of String, Undefined",
+     "description": "List of attributes for selection",
+     "default": "Empty value",
+     "short": "-a"
+    },
+    {
+     "name": "--scope",
+     "types": "String",
+     "description": "Scope: base, one, subtree",
+     "default": "subtree",
+     "short": "-s"
+    }
+   ],
+   "region": "Work with catalog"
+  },
+  {
+   "name": "Add",
+   "id": "ADD",
+   "description": "Add record to LDAP directory",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary, Structure Of KeyAndValue",
+     "description": "Connection or connection parameters",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "String",
+     "description": "DN of added record",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--attrs",
+     "types": "Structure Of KeyAndValue",
+     "description": "Record attributes",
+     "default": null,
+     "short": "-a"
+    }
+   ],
+   "region": "Work with catalog"
+  },
+  {
+   "name": "Change",
+   "id": "CHANGE",
+   "description": "Modify record in LDAP directory",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary, Structure Of KeyAndValue",
+     "description": "Connection or connection parameters",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "String",
+     "description": "DN of modified record",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--changes",
+     "types": "Array of Structure",
+     "description": "List of attribute changes",
+     "default": null,
+     "short": "-h"
+    }
+   ],
+   "region": "Work with catalog"
+  },
+  {
+   "name": "Delete",
+   "id": "DELETE",
+   "description": "Delete record from LDAP directory",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary, Structure Of KeyAndValue",
+     "description": "Connection or connection parameters",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "String",
+     "description": "DN of deleted record",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Work with catalog"
+  },
+  {
+   "name": "Compare",
+   "id": "COMPARE",
+   "description": "Compare LDAP record attribute value",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Arbitrary, Structure Of KeyAndValue",
+     "description": "Connection or connection parameters",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "String",
+     "description": "DN record",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--attr",
+     "types": "String",
+     "description": "AttributeName",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--value",
+     "types": "String",
+     "description": "Expected value",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Work with catalog"
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+---
+sidebar_position: 3
+sidebar_class_name: doc-no-cli
+description: Получить часть  и другие функции для работы с HTTP в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, HTTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Получить часть 
+ Отправляет запрос на получение данных с заголовком Range
+
+
+
+<Tabs>
+  <TabItem value="params" label="Параметры" default>
+
+`Функция ПолучитьЧасть(Знач ПозицияНачала, Знач КоличествоБайт, Знач Метод = "GET") Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПозицияНачала | - | Число | &#x2714; | Позиция, с которой необходимо получить данные |
+  | КоличествоБайт | - | Число | &#x2714; | Размер получаемых данных в байтах |
+  | Метод | - | Строка | &#x2716; | HTTP метод запроса |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Возвращаемое значение</div>
+  <div className="return-value-note__value">
+  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Расширенный вызов{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="Справка о расширенном вызове" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*Для текущего метода нет дополнительных параметров расширенного вызова.*
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Предупреждение" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> данный метод недоступен для использования в CLI версии
+</div>
+</Admonition>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/range/100";
+
+    // Получаем байты 0-9
+    НачальнаяПозиция = 0;
+    ЧислоБайт        = 10;
+
+    Результат = OPI_ЗапросыHTTP.НовыйЗапрос()
+        .Инициализировать(URL)
+        .ПолучитьЧасть(НачальнаяПозиция, ЧислоБайт) // <---
+        .ВернутьОтвет();
+```
+    
+
+
+
+

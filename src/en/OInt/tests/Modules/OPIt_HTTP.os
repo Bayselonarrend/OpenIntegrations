@@ -209,6 +209,7 @@ Procedure HTTP_RequestProcessing() Export
     HTTP_ExecuteRequest(TestParameters);
     HTTP_ReturnRequest(TestParameters);
     HTTP_ReturnConnection(TestParameters);
+    HTTP_GetPart(TestParameters);
     HTTP_SendDataInParts(TestParameters);
     HTTP_SendPart(TestParameters);
 
@@ -1558,6 +1559,26 @@ Procedure HTTP_SplitArraysInURL(FunctionParameters)
     Result.Insert("PHP"          , SeparationPhp);
 
     OPI_TestDataRetrieval.Process(Result, "HTTP", "SplitArraysInURL");
+
+EndProcedure
+
+Procedure HTTP_GetPart(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/range/100";
+
+    // Get bytes 0-9
+    StartPosition = 0;
+    Bytes = 10;
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .GetPart(StartPosition, Bytes) // <---
+        .ReturnResponse();
+
+    // END
+
+    OPI_TestDataRetrieval.Process(Result, "HTTP", "GetPart");
 
 EndProcedure
 

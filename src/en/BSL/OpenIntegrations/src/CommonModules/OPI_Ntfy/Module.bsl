@@ -143,7 +143,6 @@ Function GetFilterParametersStructure(Val Clear = False) Export
 
     FieldsStructure = New Structure;
     FieldsStructure.Insert("since", "<Message ID starting from which to get the history>");
-    FieldsStructure.Insert("poll" , "<true > long polling until new message appears>");
     FieldsStructure.Insert("limit", "<maximum number of returned messages>");
 
     If Clear Then
@@ -277,6 +276,10 @@ Function CreateHeaders(Val Token, Val Parameters = "")
 
     For Each Parameter In Parameters Do
 
+        If Not ValueIsFilled(Parameter.Value) Then
+            Continue;
+        EndIf;
+
         HeaderName = HeaderCorrespondence[Parameter.Key];
 
         If HeaderName = Undefined Then
@@ -285,11 +288,15 @@ Function CreateHeaders(Val Token, Val Parameters = "")
 
         HeaderValue = Parameter.Value;
 
-        If Parameter.Key    = "Tags" Then
-            HeaderValue     = GetStringTags(HeaderValue);
+        If Parameter.Key = "Tags" Then
+
+            HeaderValue = GetStringTags(HeaderValue);
+
         ElsIf Parameter.Key = "Markdown" Then
+
             OPI_TypeConversion.GetBoolean(HeaderValue);
-            HeaderValue     = ?(HeaderValue, "yes", "no");
+            HeaderValue = ?(HeaderValue, "yes", "no");
+
         EndIf;
 
         OPI_Tools.AddField(HeaderName, HeaderValue, "String", Headers);
@@ -325,12 +332,7 @@ Function CreateFilterParameters(Val Filter)
 
     OPI_Tools.AddField("since", Filter["since"], "String", RequestParameters);
     OPI_Tools.AddField("limit", Filter["limit"], "String", RequestParameters);
-
-    If Filter.Property("poll") Then
-        PollValue = Filter["poll"];
-        OPI_TypeConversion.GetBoolean(PollValue);
-        OPI_Tools.AddField("poll", ?(PollValue, "1", "0"), "String", RequestParameters);
-    EndIf;
+    OPI_Tools.AddField("poll" , "1"            , "String", RequestParameters);
 
     Return RequestParameters;
 

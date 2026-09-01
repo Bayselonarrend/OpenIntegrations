@@ -1,0 +1,11 @@
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Base = "dc=example,dc=org";
+    Filter = "(objectClass=*)";
+
+    Result = OPI_LDAP.PerformSearch(Connection, Base, Filter);

@@ -3,7 +3,7 @@
 // CLI: rss
 // Keywords: rss, atom, feed
 
-// DocsCategory: Other
+// DocsCategory: Formats
 // DocsNameRU: RSS/Atom
 // DocsNameEN: RSS/Atom
 

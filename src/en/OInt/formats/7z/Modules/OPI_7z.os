@@ -53,9 +53,9 @@
 // Packs files from the specified directory into an archive
 //
 // Parameters:
-// Directory   - String, BinaryData - Path to the directory or data description for packing  - src
-// ArchivePath - String             - Path to save the archive. To binary data if not filled - dest
-// Settings    - Map Of KeyAndValue - Additional settings. See GetArchivingSettingsStructure - settings
+// Directory   - String, Map Of KeyAndValue - Path to directory or description. See GetArchiveDescriptionStructure - src
+// ArchivePath - String                     - Path to save the archive. To binary data if not filled               - dest
+// Settings    - Map Of KeyAndValue         - Additional settings. See GetArchivingSettingsStructure               - settings
 //
 // Returns:
 // BinaryData, Map Of KeyAndValue - Execution information or binary archive data
@@ -196,6 +196,72 @@ Function GetArchivingSettingsStructure(Val Clear = False, Val AsMap = False) Exp
 
 EndFunction
 
+// Get archive description structure
+// Get example structure of data description for packing without a directory on disk
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns fields as map                                             - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetArchiveDescriptionStructure(Val Clear = False, Val AsMap = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(AsMap);
+
+    If AsMap Then
+        DescriptionStructure = New Map;
+        ElementFromPath      = New Map;
+        ElementFromData      = New Map;
+        DirectoryElement     = New Map;
+        NestedElement        = New Map;
+    Else
+        DescriptionStructure = New Structure;
+        ElementFromPath      = New Structure;
+        ElementFromData      = New Structure;
+        DirectoryElement     = New Structure;
+        NestedElement        = New Structure;
+    EndIf;
+
+    ElementFromPath.Insert("name"     , "<file name in archive>");
+    ElementFromPath.Insert("directory", "<False for file>");
+    ElementFromPath.Insert("from_path", "<True - take content from disk>");
+    ElementFromPath.Insert("path"     , "<full path to file on disk>");
+
+    ElementFromData.Insert("name"     , "<file name in archive>");
+    ElementFromData.Insert("directory", "<False for file>");
+    ElementFromData.Insert("from_path", "<False - take content from data>");
+    ElementFromData.Insert("data"     , "<binary data of the file>");
+
+    NestedElement.Insert("name"     , "<file name inside directory>");
+    NestedElement.Insert("directory", "<False for file>");
+    NestedElement.Insert("from_path", "<False - take content from data>");
+    NestedElement.Insert("data"     , "<binary data of the file>");
+
+    NestedArray = New Array;
+    NestedArray.Add(NestedElement);
+
+    DirectoryElement.Insert("name"     , "<directory name in archive>");
+    DirectoryElement.Insert("directory", "<True for directory>");
+    DirectoryElement.Insert("entries"  , NestedArray);
+
+    ItemsArray = New Array;
+    ItemsArray.Add(ElementFromPath);
+    ItemsArray.Add(ElementFromData);
+    ItemsArray.Add(DirectoryElement);
+
+    DescriptionStructure.Insert("entries", ItemsArray);
+
+    If Clear Then
+        DescriptionStructure = OPI_Tools.ClearCollectionRecursively(DescriptionStructure);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return DescriptionStructure;
+
+EndFunction
+
 #EndRegion
 
 #Region GettingMetadata
@@ -259,6 +325,10 @@ EndFunction
 
 Function ПолучитьСтруктуруНастроекАрхивации(Val Пустая = False, Val КакСоответствие = False) Export
     Return GetArchivingSettingsStructure(Пустая, КакСоответствие);
+EndFunction
+
+Function ПолучитьСтруктуруОписанияАрхива(Val Пустая = False, Val КакСоответствие = False) Export
+    Return GetArchiveDescriptionStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСписокФайлов(Val Архив, Val Пароль = "") Export

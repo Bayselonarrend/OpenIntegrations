@@ -10,6 +10,7 @@
    "name": "Archiving",
    "methods": [
     "ArchiveDirectory",
+    "GetArchiveDescriptionStructure",
     "GetArchiveModificationStructure",
     "GetArchivingSettingsStructure",
     "ModifyArchive",
@@ -33,8 +34,8 @@
    "params": [
     {
      "name": "--src",
-     "types": "String, BinaryData",
-     "description": "Path to the directory or data description for packing",
+     "types": "String, Map Of KeyAndValue",
+     "description": "Path to directory or description. See GetArchiveDescriptionStructure",
      "default": null,
      "short": "-s"
     },
@@ -194,6 +195,28 @@
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
+     "default": "false",
+     "short": "-m"
+    }
+   ],
+   "region": "Archiving"
+  },
+  {
+   "name": "GetArchiveDescriptionStructure",
+   "id": "GETARCHIVEDESCRIPTIONSTRUCTURE",
+   "description": "Get example structure of data description for packing without a directory on disk",
+   "params": [
+    {
+     "name": "--empty",
+     "types": "Boolean",
+     "description": "True > structure with empty valuse, False > field descriptions at values",
+     "default": "false",
+     "short": "-e"
+    },
+    {
+     "name": "--map",
+     "types": "Boolean",
+     "description": "True > returns fields as map",
      "default": "false",
      "short": "-m"
     }

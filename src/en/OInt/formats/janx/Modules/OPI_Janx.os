@@ -78,7 +78,7 @@ Function SerializeData(Val Data) Export
     DataStream = New MemoryStream();
     Record     = New DataWriter(DataStream);
 
-    Record.WriteInt16(JanxFormatVersion(), ByteOrder.BigEndian);
+    Record.WriteInt16(JanxFormatVersion() , ByteOrder.BigEndian);
     Record.WriteInt32(JSONSize             , ByteOrder.BigEndian);
     Record.WriteInt32(ArrayOfBinary.Count(), ByteOrder.BigEndian);
     Record.Write(JSONBD);

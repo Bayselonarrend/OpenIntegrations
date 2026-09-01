@@ -1,0 +1,262 @@
+{
+ "module": "OPI_LDAP",
+ "library": "ldap",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "api/ldap/Modules/OPI_LDAP.os",
+ "regions": [
+  {
+   "name": "Основные методы",
+   "methods": [
+    "ПолучитьКонфигурациюСоединения",
+    "ПолучитьНастройкиTls",
+    "СформироватьПараметрыСоединения"
+   ]
+  },
+  {
+   "name": "Работа с каталогом",
+   "methods": [
+    "ВыполнитьПоиск",
+    "Добавить",
+    "Изменить",
+    "Сравнить",
+    "Удалить"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "СформироватьПараметрыСоединения",
+   "id": "СФОРМИРОВАТЬПАРАМЕТРЫСОЕДИНЕНИЯ",
+   "description": "Формирует коллекцию параметров LDAP-соединения",
+   "params": [
+    {
+     "name": "--url",
+     "types": "Строка",
+     "description": "URL сервера (ldap: или ldaps:)",
+     "default": null,
+     "short": "-u"
+    },
+    {
+     "name": "--bind",
+     "types": "Строка",
+     "description": "DN для bind",
+     "default": "Пустое значение",
+     "short": "-b"
+    },
+    {
+     "name": "--pass",
+     "types": "Строка",
+     "description": "Пароль для bind",
+     "default": "Пустое значение",
+     "short": "-p"
+    },
+    {
+     "name": "--tout",
+     "types": "Число",
+     "description": "Таймаут операций в секундах",
+     "default": 30,
+     "short": "-t"
+    }
+   ],
+   "region": "Основные методы"
+  },
+  {
+   "name": "ПолучитьКонфигурациюСоединения",
+   "id": "ПОЛУЧИТЬКОНФИГУРАЦИЮСОЕДИНЕНИЯ",
+   "description": "Возвращает текущие настройки открытого соединения",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный",
+     "description": "Объект компоненты с открытым соединением",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Основные методы"
+  },
+  {
+   "name": "ПолучитьНастройкиTls",
+   "id": "ПОЛУЧИТЬНАСТРОЙКИTLS",
+   "description": "Формирует структуру настроек TLS для LDAP-соединения",
+   "params": [
+    {
+     "name": "--trust",
+     "types": "Булево",
+     "description": "Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными",
+     "default": null,
+     "short": "-t"
+    },
+    {
+     "name": "--cert",
+     "types": "Строка",
+     "description": "Путь к корневому PEM файлу сертификата, если его нет в системном хранилище",
+     "default": "Пустое значение",
+     "short": "-c"
+    }
+   ],
+   "region": "Основные методы"
+  },
+  {
+   "name": "ВыполнитьПоиск",
+   "id": "ВЫПОЛНИТЬПОИСК",
+   "description": "Выполняет LDAP-поиск\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--base",
+     "types": "Строка",
+     "description": "Базовый DN поиска",
+     "default": null,
+     "short": "-b"
+    },
+    {
+     "name": "--фильтр",
+     "types": "Строка",
+     "description": "LDAP",
+     "default": "(objectClass=*)",
+     "short": "-ф"
+    },
+    {
+     "name": "--attrs",
+     "types": "Массив Из Строка, Неопределено",
+     "description": "Список атрибутов для выборки",
+     "default": "Пустое значение",
+     "short": "-a"
+    },
+    {
+     "name": "--scope",
+     "types": "Строка",
+     "description": "Область: base, one, subtree",
+     "default": "subtree",
+     "short": "-s"
+    }
+   ],
+   "region": "Работа с каталогом"
+  },
+  {
+   "name": "Добавить",
+   "id": "ДОБАВИТЬ",
+   "description": "Добавляет запись в каталог LDAP",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "Строка",
+     "description": "DN добавляемой записи",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--attrs",
+     "types": "Структура Из КлючИЗначение",
+     "description": "Атрибуты записи",
+     "default": null,
+     "short": "-a"
+    }
+   ],
+   "region": "Работа с каталогом"
+  },
+  {
+   "name": "Изменить",
+   "id": "ИЗМЕНИТЬ",
+   "description": "Изменяет запись в каталоге LDAP\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "Строка",
+     "description": "DN изменяемой записи",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--changes",
+     "types": "Массив Из Структура",
+     "description": "Список изменений атрибутов",
+     "default": null,
+     "short": "-h"
+    }
+   ],
+   "region": "Работа с каталогом"
+  },
+  {
+   "name": "Удалить",
+   "id": "УДАЛИТЬ",
+   "description": "Удаляет запись из каталога LDAP",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "Строка",
+     "description": "DN удаляемой записи",
+     "default": null,
+     "short": "-d"
+    }
+   ],
+   "region": "Работа с каталогом"
+  },
+  {
+   "name": "Сравнить",
+   "id": "СРАВНИТЬ",
+   "description": "Сравнивает значение атрибута записи LDAP",
+   "params": [
+    {
+     "name": "--conn",
+     "types": "Произвольный, Структура Из КлючИЗначение",
+     "description": "Соединение или параметры соединения",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "name": "--dn",
+     "types": "Строка",
+     "description": "DN записи",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "name": "--attr",
+     "types": "Строка",
+     "description": "Имя атрибута",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "name": "--value",
+     "types": "Строка",
+     "description": "Ожидаемое значение",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Работа с каталогом"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+sidebar_class_name: doc-no-cli
+description: Create connection  and other functions to work with LDAP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, LDAP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Create connection 
+ Open LDAP connection and perform bind
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function CreateConnection(Val ConnectionParams, Val Tls = Undefined, Val Logging = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ConnectionParams | - | Structure Of KeyAndValue | &#x2714; | Connection parameters. See FormConnectionParameters |
+  | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Logging | - | Structure Of KeyAndValue | &#x2716; | Logging settings. See GetLoggingSettings |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Arbitrary - Connector object or structure with error information
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Result           = OPI_LDAP.CreateConnection(ConnectionParams);
+```
+ 
+
+
+
+

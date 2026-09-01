@@ -104,14 +104,19 @@ Procedure Tar_Archiving() Export
     DestinationDirectoryBuffer = TarPath(BaseDirectory, "out_buffer");
     ArchivePath                = TarPath(BaseDirectory, "archive.tar");
     ArchivePathDescription     = TarPath(BaseDirectory, "archive_desc.tar");
+    ArchivePathRoundTrip       = TarPath(BaseDirectory, "archive_roundtrip.tar");
     GzipArchivePath            = TarPath(BaseDirectory, "archive.tar.gz");
     ArchiveBufferPath          = TarPath(BaseDirectory, "archive_buffer.tar");
     NewFilePath                = TarPath(BaseDirectory, "extra_info.txt");
+    DestinationDirectoryDesc   = TarPath(BaseDirectory, "out_desc");
+    DestinationPathRT          = TarPath(BaseDirectory, "out_roundtrip");
 
     CreateDirectory(BaseDirectory);
     CreateDirectory(SourceDirectory);
     CreateDirectory(DestinateDirectory);
     CreateDirectory(DestinationDirectoryBuffer);
+    CreateDirectory(DestinationDirectoryDesc);
+    CreateDirectory(DestinationPathRT);
 
     GetBinaryDataFromString("OpenIntegrations root", "UTF-8").Write(TarPath(SourceDirectory, "readme.txt"));
 
@@ -164,28 +169,60 @@ Procedure Tar_Archiving() Export
     DocsItem.Insert("entries"  , DocsRecords);
     DescriptionRecords.Add(DocsItem);
 
+    ConfigRecords = New Array;
+    SettingsItem  = New Map;
+    SettingsItem.Insert("name"     , "settings.json");
+    SettingsItem.Insert("directory", False);
+    SettingsItem.Insert("from_path", True);
+    SettingsItem.Insert("path"     , TarPath(SourceDirectory, "config\settings.json"));
+    ConfigRecords.Add(SettingsItem);
+
+    ConfigItem = New Map;
+    ConfigItem.Insert("name"     , "config");
+    ConfigItem.Insert("directory", True);
+    ConfigItem.Insert("entries"  , ConfigRecords);
+    DescriptionRecords.Add(ConfigItem);
+
+    ElementMemory = New Map;
+    ElementMemory.Insert("name"     , "memory.txt");
+    ElementMemory.Insert("directory", False);
+    ElementMemory.Insert("from_path", False);
+    ElementMemory.Insert("data"     , GetBinaryDataFromString("From memory data", "UTF-8"));
+    DescriptionRecords.Add(ElementMemory);
+
     ArchiveDescription = New Map;
     ArchiveDescription.Insert("entries", DescriptionRecords);
 
+    ExpectedDesc = New Map;
+    ExpectedDesc.Insert("readme.txt"          , "OpenIntegrations root");
+    ExpectedDesc.Insert("docs\note.txt"       , "Nested documentation");
+    ExpectedDesc.Insert("config\settings.json", "{""enabled"": true}");
+    ExpectedDesc.Insert("memory.txt"          , "From memory data");
+
     Parameters = New Structure;
-    Parameters.Insert("Tar_BaseDir"             , BaseDirectory);
-    Parameters.Insert("Tar_SourceDir"           , SourceDirectory);
-    Parameters.Insert("Tar_ArchivePath"         , ArchivePath);
-    Parameters.Insert("Tar_ArchiveDescPath"     , ArchivePathDescription);
-    Parameters.Insert("Tar_ArchiveGzipPath"     , GzipArchivePath);
-    Parameters.Insert("Tar_ArchiveBufferPath"   , ArchiveBufferPath);
-    Parameters.Insert("Tar_DestDir"             , DestinateDirectory);
-    Parameters.Insert("Tar_DestBufferDir"       , DestinationDirectoryBuffer);
-    Parameters.Insert("Tar_NewFilePath"         , NewFilePath);
-    Parameters.Insert("Tar_Description"         , ArchiveDescription);
-    Parameters.Insert("Tar_ExpectedFiles"       , ExpectedFiles);
-    Parameters.Insert("Tar_PartialPaths"        , PartialPaths);
-    Parameters.Insert("Tar_PartialExpected"     , ExpectedPartial);
-    Parameters.Insert("Tar_ExpectedAfterModify" , ExpectedAfterModification);
+    Parameters.Insert("Tar_BaseDir"              , BaseDirectory);
+    Parameters.Insert("Tar_SourceDir"            , SourceDirectory);
+    Parameters.Insert("Tar_ArchivePath"          , ArchivePath);
+    Parameters.Insert("Tar_ArchiveDescPath"      , ArchivePathDescription);
+    Parameters.Insert("Tar_ArchiveRoundTripPath" , ArchivePathRoundTrip);
+    Parameters.Insert("Tar_ArchiveGzipPath"      , GzipArchivePath);
+    Parameters.Insert("Tar_ArchiveBufferPath"    , ArchiveBufferPath);
+    Parameters.Insert("Tar_DestDir"              , DestinateDirectory);
+    Parameters.Insert("Tar_DestBufferDir"        , DestinationDirectoryBuffer);
+    Parameters.Insert("Tar_DestDescDir"          , DestinationDirectoryDesc);
+    Parameters.Insert("Tar_DestRoundTripDir"     , DestinationPathRT);
+    Parameters.Insert("Tar_NewFilePath"          , NewFilePath);
+    Parameters.Insert("Tar_Description"          , ArchiveDescription);
+    Parameters.Insert("Tar_ExpectedFiles"        , ExpectedFiles);
+    Parameters.Insert("Tar_ExpectedDescFiles"    , ExpectedDesc);
+    Parameters.Insert("Tar_PartialPaths"         , PartialPaths);
+    Parameters.Insert("Tar_PartialExpected"      , ExpectedPartial);
+    Parameters.Insert("Tar_ExpectedAfterModify"  , ExpectedAfterModification);
 
     OPI_TestDataRetrieval.WriteArchiveParameters(Parameters);
 
     Tar_GetArchivingSettingsStructure();
+    Tar_GetArchiveDescriptionStructure();
     Tar_ArchiveDirectory(Parameters);
     Tar_UnarchiveDirectory(Parameters);
     Tar_UnpackFiles(Parameters);
@@ -297,6 +334,31 @@ Procedure Tar_GetArchivingSettingsStructure()
 
 EndProcedure
 
+Procedure Tar_GetArchiveDescriptionStructure()
+
+    Options = New Structure;
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetArchiveDescriptionStructure", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "GetArchiveDescriptionStructure");
+
+    Options = New Structure;
+    Options.Insert("empty", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetArchiveDescriptionStructure", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "GetArchiveDescriptionStructure", "Clear");
+
+    Options = New Structure;
+    Options.Insert("empty", Ложь);
+    Options.Insert("map", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "GetArchiveDescriptionStructure", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "GetArchiveDescriptionStructure", "AsMap");
+
+EndProcedure
+
 Procedure Tar_ArchiveDirectory(Parameters)
 
     OPI_TestDataRetrieval.AddArchiveParameters(Parameters, "Tar"); // SKIP
@@ -351,6 +413,19 @@ Procedure Tar_ArchiveDirectory(Parameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "ArchiveDirectory", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "ArchiveDirectory", "FromDescriptionToMemory");
+
+    Options = New Structure;
+    Options.Insert("src", ArchivePath);
+
+    UnpackingDescription = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "UnarchiveDirectory", Options);
+    ArchivePathRT        = Parameters["Tar_ArchiveRoundTripPath"];
+
+    Options = New Structure;
+    Options.Insert("src", UnpackingDescription);
+    Options.Insert("dest", ArchivePathRT);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "ArchiveDirectory", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "ArchiveDirectory", "FromDescriptionRoundTrip", ArchivePathRT);
 
 EndProcedure
 
@@ -414,6 +489,43 @@ Procedure Tar_UnarchiveDirectory(Parameters)
         , "UnarchiveDirectory"
         , "WithGzip"
         , DestinationDirectoryGzip
+        , ExpectedFiles);
+
+    ArchivePathDesc          = Parameters["Tar_ArchiveDescPath"];
+    DestinationDirectoryDesc = Parameters["Tar_DestDescDir"];
+    ExpectedDesc             = Parameters["Tar_ExpectedDescFiles"];
+
+    Options = New Structure;
+    Options.Insert("src", ArchivePathDesc);
+    Options.Insert("dest", DestinationDirectoryDesc);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "UnarchiveDirectory", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result
+        , "Tar"
+        , "UnarchiveDirectory"
+        , "FromDescription"
+        , DestinationDirectoryDesc
+        , ExpectedDesc);
+
+    Options = New Structure;
+    Options.Insert("src", ArchivePathDesc);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "UnarchiveDirectory", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result, "Tar", "UnarchiveDirectory", "FromDescriptionToDescription", "", ExpectedDesc);
+
+    ArchivePathRT     = Parameters["Tar_ArchiveRoundTripPath"];
+    DestinationPathRT = Parameters["Tar_DestRoundTripDir"];
+
+    Options = New Structure;
+    Options.Insert("src", ArchivePathRT);
+    Options.Insert("dest", DestinationPathRT);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tar", "UnarchiveDirectory", Options);
+    OPI_TestDataRetrieval.ProcessCLI(Result
+        , "Tar"
+        , "UnarchiveDirectory"
+        , "RoundTrip"
+        , DestinationPathRT
         , ExpectedFiles);
 
 EndProcedure

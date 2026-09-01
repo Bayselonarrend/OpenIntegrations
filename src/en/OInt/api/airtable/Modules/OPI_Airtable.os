@@ -86,7 +86,7 @@ Function GetDatabaseTables(Val Token, Val Base) Export
 
     OPI_TypeConversion.GetLine(Base);
 
-    URL     = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables";
+    URL     = StrTemplate("https://api.airtable.com/v0/meta/bases/%1/tables", Base);
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.Get(URL, , Headers);
@@ -159,7 +159,7 @@ Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Descript
 
     OPI_TypeConversion.GetLine(Base);
 
-    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables";
+    URL        = StrTemplate("https://api.airtable.com/v0/meta/bases/%1/tables", Base);
     Headers    = GetAuthorizationHeader(Token);
     Parameters = GenerateTableDescription(Name, FieldArray, Description);
 
@@ -186,7 +186,7 @@ Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Descript
     OPI_TypeConversion.GetLine(Base);
     OPI_TypeConversion.GetLine(Table);
 
-    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables/" + Table;
+    URL        = StrTemplate("https://api.airtable.com/v0/meta/bases/%1/tables/%2", Base, Table);
     Headers    = GetAuthorizationHeader(Token);
     Parameters = New Structure;
 
@@ -227,7 +227,7 @@ Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
 
     EndIf;
 
-    URL     = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables/" + Table + "/fields";
+    URL     = StrTemplate("https://api.airtable.com/v0/meta/bases/%1/tables/%2/fields", Base, Table);
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.PostWithBody(URL, FieldStructure, Headers);
@@ -255,12 +255,10 @@ Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", V
     OPI_TypeConversion.GetLine(Table);
     OPI_TypeConversion.GetLine(Field);
 
-    URL = "https://api.airtable.com/v0/meta/bases/"
-        + Base
-        + "/tables/"
-        + Table
-        + "/fields/"
-        + Field;
+    URL = StrTemplate("https://api.airtable.com/v0/meta/bases/%1/tables/%2/fields/%3"
+        , Base
+        , Table
+        , Field);
 
     Headers = GetAuthorizationHeader(Token);
 
@@ -414,7 +412,7 @@ Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Expor
     OPI_TypeConversion.GetLine(Base);
     OPI_TypeConversion.GetLine(Table);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table;
+    URL     = StrTemplate("https://api.airtable.com/v0/%1/%2", Base, Table);
     Headers = GetAuthorizationHeader(Token);
 
     Parameters = New Structure();
@@ -443,7 +441,7 @@ Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
     OPI_TypeConversion.GetLine(Table);
     OPI_TypeConversion.GetLine(Record);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record;
+    URL     = StrTemplate("https://api.airtable.com/v0/%1/%2/%3", Base, Table, Record);
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.Get(URL, , Headers);
@@ -472,7 +470,7 @@ Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
     Parameters = New Structure();
     AddDataDescription(Data, Parameters);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table;
+    URL     = StrTemplate("https://api.airtable.com/v0/%1/%2", Base, Table);
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters, Headers);
@@ -507,7 +505,7 @@ Function DeleteRecords(Val Token, Val Base, Val Table, Val Records) Export
             + OPI_Tools.NumberToString(Record);
     EndDo;
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + RecordString;
+    URL     = StrTemplate("https://api.airtable.com/v0/%1/%2%3", Base, Table, RecordString);
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.Delete(URL, , Headers);
@@ -538,7 +536,11 @@ Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = ""
     OPI_TypeConversion.GetLine(Table);
     OPI_TypeConversion.GetLine(Record);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments";
+    URL = StrTemplate("https://api.airtable.com/v0/%1/%2/%3/comments"
+        , Base
+        , Table
+        , Record);
+
     Headers = GetAuthorizationHeader(Token);
 
     Parameters = New Structure();
@@ -568,7 +570,11 @@ Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Exp
     OPI_TypeConversion.GetLine(Table);
     OPI_TypeConversion.GetLine(Record);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments";
+    URL = StrTemplate("https://api.airtable.com/v0/%1/%2/%3/comments"
+        , Base
+        , Table
+        , Record);
+
     Headers = GetAuthorizationHeader(Token);
 
     Parameters = New Structure();
@@ -600,7 +606,12 @@ Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Va
     OPI_TypeConversion.GetLine(Record);
     OPI_TypeConversion.GetLine(Comment);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments/" + Comment;
+    URL = StrTemplate("https://api.airtable.com/v0/%1/%2/%3/comments/%4"
+        , Base
+        , Table
+        , Record
+        , Comment);
+
     Headers = GetAuthorizationHeader(Token);
 
     Parameters = New Structure();
@@ -631,7 +642,12 @@ Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) 
     OPI_TypeConversion.GetLine(Record);
     OPI_TypeConversion.GetLine(Comment);
 
-    URL     = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments/" + Comment;
+    URL = StrTemplate("https://api.airtable.com/v0/%1/%2/%3/comments/%4"
+        , Base
+        , Table
+        , Record
+        , Comment);
+
     Headers = GetAuthorizationHeader(Token);
 
     Response = OPI_HTTPRequests.Delete(URL, , Headers);
@@ -651,7 +667,7 @@ Function GetAuthorizationHeader(Val Token)
     OPI_TypeConversion.GetLine(Token);
 
     Headers = New Map;
-    Headers.Insert("Authorization", "Bearer " + Token);
+    Headers.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
     Return Headers;
 

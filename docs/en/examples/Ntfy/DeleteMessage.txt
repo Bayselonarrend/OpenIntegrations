@@ -1,5 +1,5 @@
-    URL   = "";
-    Topic = "";
+    URL   = "https://ntfy.sh";
+    Topic = "OpenIntegrationsTest";
     Token = "...";
     Text  = "OpenIntegrations delete test";
 

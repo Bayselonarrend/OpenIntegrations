@@ -1,0 +1,78 @@
+---
+sidebar_position: 8
+sidebar_class_name: doc-no-cli
+description: Get log  and other functions to work with LDAP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, LDAP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Get log 
+ Retrieves connection log data (when in-memory logging is enabled)
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function GetLog(Val Connection, Val AsString = False, Val EventCount = 100) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | AddIn object with open connection |
+  | AsString | - | Boolean | &#x2716; | True > returns log as a single string, False > as an array |
+  | EventCount | - | Number | &#x2716; | Number of recent events to retrieve. 0 > no limits |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ String, Map Of KeyAndValue - Log as a string or a map with the full execution result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+*This method has no additional advanced call parameters.*
+
+
+  </TabItem>
+</Tabs>
+
+
+<Admonition type="caution" title="Caution" className="nocli-admonition">
+<div className="addin">
+<strong>NOCLI:</strong> this method is not available in CLI version
+</div>
+</Admonition>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_LDAP.GetLoggingSettings(True, 100, LogFile);
+
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams, , LoggingSettings);
+
+    If Not OPI_LDAP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Base = "dc=example,dc=org";
+    Result = OPI_LDAP.PerformSearch(Connection, Base);
+
+    Result = OPI_LDAP.GetLog(Connection);
+```
+ 
+
+
+
+

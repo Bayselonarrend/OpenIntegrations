@@ -1,5 +1,5 @@
-    URL   = "";
-    Topic = "";
+    URL   = "https://ntfy.sh";
+    Topic = "OpenIntegrationsTest";
     Token = "...";
 
     Filter       = OPI_Ntfy.GetFilterParametersStructure(True);

@@ -604,6 +604,7 @@ li > a.menu__link {
 .GreenMax a::before,
 .GRPC a::before,
 .Janx a::before,
+.LDAP a::before,
 .Lua a::before,
 .MessagePack a::before,
 .MongoDB a::before,
@@ -692,6 +693,10 @@ li > a.menu__link {
 
 .Janx > div > a::before{
   content: url(../../static/img/APIs/small/Janx.png);
+}
+
+.LDAP > div > a::before{
+  content: url(../../static/img/APIs/small/LDAP.png);
 }
 
 .Lua > div > a::before{

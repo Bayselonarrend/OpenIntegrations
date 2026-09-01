@@ -1,0 +1,19 @@
+    LogFile         = GetTempFileName("txt");
+    LoggingSettings = OPI_LDAP.GetLoggingSettings(True, 100, LogFile);
+
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams, , LoggingSettings);
+
+    If Not OPI_LDAP.IsConnector(Connection) Then
+        Raise OPI_Tools.JSONString(Connection);
+    EndIf;
+
+    Base = "dc=example,dc=org";
+    Result = OPI_LDAP.PerformSearch(Connection, Base);
+
+    Result = OPI_LDAP.GetLog(Connection);

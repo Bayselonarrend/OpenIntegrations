@@ -381,25 +381,8 @@ Function ConnectComponent(Val TemplateName, Val AddInName, Val ConnectionMode, V
 
     Else
 
-        // BSLLS:UnusedLocalVariable-off
-
-        //@skip-check module-unused-local-variable
-        AttachIsolated = AttachIsolated(ConnectionMode);
-        //@skip-check server-execution-safe-mode
-
-        // BSLLS:UnusedLocalVariable-on
-
-        // BSLLS:LineLength-off
-        Result = Undefined;
-
-        If AttachIsolated Then
-            Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
-        Else
-            ExecutionText = "Result = AttachAddIn(TemplateName, AddInName, AddInType.Native, AddInConnectionType.NotIsolated)";
-            Execute(ExecutionText);
-        EndIf;
-
-        // BSLLS:LineLength-on
+        ExecutionText = "Result = AttachAddIn(TemplateName, AddInName, AddInType.Native, AddInConnectionType.NotIsolated)";
+        Execute(ExecutionText);
 
     EndIf;
 
@@ -433,41 +416,6 @@ Function GetPartsOf1CVersion()
     EndDo;
 
     Return Version1C;
-
-EndFunction
-
-Function AttachIsolated(Val ConnectionMode)
-
-    AttachIsolated = Undefined;
-
-    If ValueIsFilled(ConnectionMode) Then
-
-        ModeLower = Lower(String(ConnectionMode));
-
-        If ModeLower = "isolated" Then
-
-            AttachIsolated = True;
-
-        ElsIf ModeLower = "notisolated" Then
-
-            AttachIsolated = False;
-
-        Else
-            AttachIsolated = Undefined;
-        EndIf;
-
-    EndIf;
-
-    If AttachIsolated = Undefined Then
-
-        NotIsolatedBySystem  = Not OPI_Tools.IsWindows();
-        NotIsolatedByVersion = GetPartsOf1CVersion()[1] > 4;
-
-        AttachIsolated = Not NotIsolatedBySystem And Not NotIsolatedByVersion;
-
-    EndIf;
-
-    Return AttachIsolated;
 
 EndFunction
 

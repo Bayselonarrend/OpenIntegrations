@@ -1,0 +1,77 @@
+---
+sidebar_position: 3
+
+description: Change and other functions to work with LDAP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, LDAP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+
+# Change
+ Modify record in LDAP directory
+
+
+
+<Tabs>
+  <TabItem value="params" label="Parameters" default>
+
+`Function Change(Val Connection, Val DN, Val Changes) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary, Structure Of KeyAndValue | &#x2714; | Connection or connection parameters |
+  | DN | --dn | String | &#x2714; | DN of modified record |
+  | Changes | --changes | Array of Structure | &#x2714; | List of attribute changes |
+
+
+<div className="return-value-note">
+  <div className="return-value-note__title">Returns</div>
+  <div className="return-value-note__value">
+ Map Of KeyAndValue - Operation result
+  </div>
+</div>
+  
+  </TabItem>
+  <TabItem value="extended" label={<span>Advanced call{' '}<a href="/docs/Start/Advanced-call" target="_blank" rel="noreferrer" title="About advanced call" onClick={(e) => e.stopPropagation()}>?</a></span>}>
+
+  | Parameter | Description |
+  |---|---|
+  | addin_mode | Manual selection of external component connection mode (for 1C): Isolated, NotIsolated |
+  | dontwait | Creates a background job and returns its data (for 1C and OneScript only) |
+
+
+  </TabItem>
+</Tabs>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    DN = "cn=OPI Test User,dc=example,dc=org";
+
+    EmailValues = New Array;
+    EmailValues.Add("test@example.org");
+
+    Change = New Structure;
+    Change.Insert("operation", "replace");
+    Change.Insert("attribute", "mail");
+    Change.Insert("values"   , EmailValues);
+
+    Changes = New Array;
+    Changes.Add(Change);
+
+    Result = OPI_LDAP.Change(Connection, DN, Changes);
+```
+ 
+
+
+
+

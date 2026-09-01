@@ -14,6 +14,7 @@
 |![GreenAPI (Max)](../GreenMax.png)| `GreenAPI (Max)`| greenapi, max |
 |![gRPC](../GRPC.png)| `gRPC`| grpc |
 |![Janx](../Janx.png)| `Janx`| janx |
+|![LDAP](../LDAP.png)| `LDAP`| ldap, active directory, ad |
 |![Lua](../Lua.png)| `Lua`| lua |
 |![MessagePack](../MessagePack.png)| `MessagePack`| msgpack, messagepack |
 |![MongoDB](../MongoDB.png)| `MongoDB`| mongodb, mongo, nosql |
@@ -21,7 +22,7 @@
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
 |![Neocities](../Neocities.png)| `Neocities`| neocities |
 |![Notion](../Notion.png)| `Notion`| notion |
-|![Ntfy (в разработке)](../default.png)| `Ntfy (в разработке)`| ntfy, push, notifications |
+|![Ntfy](../Ntfy.png)| `Ntfy`| ntfy, push, notifications |
 |![Ollama](../Ollama.png)| `Ollama`| ollama, ai llm |
 |![OpenAI](../OpenAI.png)| `OpenAI`| openai, localai, ai llm |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |

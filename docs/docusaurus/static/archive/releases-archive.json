@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-08-19T10:18:54",
+ "generatedAt": "2026-09-01T09:39:34",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -48,6 +48,18 @@
    "cover": "media/Covers/Ntfy.png",
    "changes": [
     {
+     "lib": "LDAP",
+     "icon": "media/LDAP.png",
+     "description_ru": "Основные методы LDAP (8 функций)",
+     "description_en": "LDAP common methods (8 functions)"
+    },
+    {
+     "lib": "LDAP",
+     "icon": "media/LDAP.png",
+     "description_ru": "Методы работы с каталогом (5 функций)",
+     "description_en": "Directory operations methods (5 functions)"
+    },
+    {
      "lib": "Ntfy",
      "icon": "media/Ntfy.png",
      "description_ru": "Методы публикации, получения и удаления уведомлений (5 функций)",
@@ -56,8 +68,26 @@
     {
      "lib": "HTTP",
      "icon": "media/HTTP.png",
-     "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `Digest` авторизации",
-     "description_en": "Fixed special character handling when calculating the `Digest` authentication signature"
+     "description_ru": "Исправлена обработка спецсимволов при расчёте сигнатуры подписи `AWS4` авторизации",
+     "description_en": "Fixed special character handling when calculating the `AWS4` authentication signature"
+    },
+    {
+     "lib": "HTTP",
+     "icon": "media/HTTP.png",
+     "description_ru": "Исправлено указание пользовательской кодировки в `Content-Type`",
+     "description_en": "Fixed custom encoding specification in `Content-Type`"
+    },
+    {
+     "lib": "All",
+     "icon": "media/logo.png",
+     "description_ru": "Убрана проверка режима совместимости в расширении для более простого обновления через панель управления в версии для 1С:Предприятие",
+     "description_en": "Removed compatibility mode check in the extension to simplify updating via the control panel in the 1C:Enterprise version"
+    },
+    {
+     "lib": "All",
+     "icon": "media/logo.png",
+     "description_ru": "Полный отказ от режима подключения `Изолированно` при работе с внешними компонентами",
+     "description_en": "Full deprecation of `Isolated` connection mode when working with AddIns"
     }
    ],
    "artifacts": [

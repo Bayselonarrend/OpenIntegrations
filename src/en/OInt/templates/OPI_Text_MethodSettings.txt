@@ -2780,6 +2780,41 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   }
  },
+ "OPI_LDAP": {
+  "CreateConnection": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
+  },
+  "FormConnectionParameters": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "PerformSearch": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "Add": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "Change": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "Delete": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "Compare": {
+   "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated",
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetConnectionConfiguration": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetTlsSettings": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  }
+ },
  "OPI_Lua": {
   "CreateVM": {
    "addin_mode": "Manual selection of external component connection mode (for 1C): Isolated, NotIsolated"
@@ -5590,6 +5625,9 @@
   "GetArchivingSettingsStructure": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
+  "GetArchiveDescriptionStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
   "GetFilesList": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
@@ -5641,6 +5679,9 @@
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "GetArchivingSettingsStructure": {
+   "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
+  },
+  "GetArchiveDescriptionStructure": {
    "dontwait": "Creates a background job and returns its data (for 1C and OneScript only)"
   },
   "GetFilesList": {

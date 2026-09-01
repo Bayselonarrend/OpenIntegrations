@@ -1,0 +1,31 @@
+    URL      = "ldap://127.0.0.1:389";
+    BindDN = "cn=admin,dc=example,dc=org";
+    Password = "a...";
+    Timeout  = 30;
+
+    ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
+    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    DN = "cn=OPI Test User,dc=example,dc=org";
+
+    ObjectClasses = New Array;
+    ObjectClasses.Add("top");
+    ObjectClasses.Add("person");
+    ObjectClasses.Add("organizationalPerson");
+    ObjectClasses.Add("inetOrgPerson");
+
+    NamesCN = New Array;
+    NamesCN.Add("OPI Test User");
+
+    Surnames = New Array;
+    Surnames.Add("User");
+
+    Identifiers = New Array;
+    Identifiers.Add("opitest");
+
+    Attributes = New Structure;
+    Attributes.Insert("objectClass", ObjectClasses);
+    Attributes.Insert("cn"         , NamesCN);
+    Attributes.Insert("sn"         , Surnames);
+    Attributes.Insert("uid"        , Identifiers);
+
+    Result = OPI_LDAP.Add(Connection, DN, Attributes);

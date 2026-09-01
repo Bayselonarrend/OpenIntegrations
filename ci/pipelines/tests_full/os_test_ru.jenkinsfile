@@ -41,6 +41,7 @@ pipeline {
 		booleanParam(name: 'GreenAPI', defaultValue: true, description: 'Run GreenAPI tests')
 		booleanParam(name: 'GreenMax', defaultValue: true, description: 'Run GreenMax tests')
 		booleanParam(name: 'RCON', defaultValue: true, description: 'Run RCON tests')
+		booleanParam(name: 'LDAP', defaultValue: true, description: 'Run LDAP tests')
 		booleanParam(name: 'Ollama', defaultValue: true, description: 'Run Ollama tests')
 		booleanParam(name: 'HTTP', defaultValue: true, description: 'Run HTTP tests')
 		booleanParam(name: 'OpenAI', defaultValue: true, description: 'Run OpenAI tests')
@@ -614,6 +615,20 @@ pipeline {
 					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_RCON.os', [
 'RC_ВыполнениеКоманд',
 'RC_РасширеннаяПроверка',
+					])
+				}
+			}
+		}
+		stage('Testing-LDAP') {
+            when {
+                expression { return params['LDAP'] }
+            }
+			steps {
+				script {
+					runModuleTests('./src/ru/OInt/tests/Modules/OPIt_LDAP.os', [
+'LDAP_ОсновныеМетоды',
+'LDAP_РаботаСКаталогом',
+'LDAP_РасширеннаяПроверка',
 					])
 				}
 			}
