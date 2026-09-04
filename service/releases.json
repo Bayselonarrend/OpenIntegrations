@@ -1,9 +1,9 @@
 [
     {
         "version": "2.4.0",
-        "summary_ru": "Методы работы с Ntfy",
-        "summary_en": "Methods of working with Ntfy",
-        "image": "media/Covers/Ntfy.png",
+        "summary_ru": "Методы работы с LDAP",
+        "summary_en": "Methods of working with LDAP",
+        "image": "media/Covers/LDAP.png",
         "changes": [
             {
                 "lib": "LDAP",
