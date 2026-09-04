@@ -21,22 +21,6 @@ import LibraryIntro from '@site/src/components/LibraryIntro';
 Пожалуйста, ознакомьтесь с разделом ["О внешних компонентах"](/docs/Start/Component-requirements) перед началом работы</div>
 </div>
 
-## Возможности
-
-| Задача | Метод |
-|--------|-------|
-| Открыть LDAP-соединение | [`ОткрытьСоединение`](/docs/LDAP/Basic-methods/Open-connection) |
-| Закрыть LDAP-соединение | [`ЗакрытьСоединение`](/docs/LDAP/Basic-methods/Close-connection) |
-| Сформировать параметры подключения | [`СформироватьПараметрыСоединения`](/docs/LDAP/Basic-methods/Form-connection-parameters) |
-| Получить конфигурацию соединения | [`ПолучитьКонфигурациюСоединения`](/docs/LDAP/Basic-methods/Get-connection-configuration) |
-| Выполнить поиск в каталоге | [`ВыполнитьПоиск`](/docs/LDAP/Directory-operations/Execute-search) |
-| Добавить запись в каталог | [`Добавить`](/docs/LDAP/Directory-operations/Add) |
-| Изменить запись в каталоге | [`Изменить`](/docs/LDAP/Directory-operations/Modify) |
-| Удалить запись из каталога | [`Удалить`](/docs/LDAP/Directory-operations/Delete) |
-| Сравнить значение атрибута | [`Сравнить`](/docs/LDAP/Directory-operations/Compare) |
-| Настроить TLS | [`ПолучитьНастройкиTls`](/docs/LDAP/Basic-methods/Get-tls-settings) |
-| Настроить логирование | [`ПолучитьНастройкиЛогирования`](/docs/LDAP/Basic-methods/Get-logging-settings) |
-| Получить лог операций | [`ПолучитьЛог`](/docs/LDAP/Basic-methods/Get-log) |
 
 ## Начало работы
 
@@ -286,7 +270,3 @@ DN = "CN=Пользователь,OU=Users,DC=example,DC=com";
 // 5. Закрытие соединения
 OPI_LDAP.ЗакрытьСоединение(Соединение);
 ```
-
-:::note
-Подробное описание параметров, форматов ответов и примеры использования каждого метода доступны на страницах методов в разделах [Основные методы](/docs/LDAP/Basic-methods/Open-connection) и [Операции с каталогом](/docs/LDAP/Directory-operations/Execute-search)
-:::

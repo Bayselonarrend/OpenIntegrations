@@ -21,23 +21,6 @@ This section is dedicated to the library for working with LDAP (Lightweight Dire
 Please refer to the section ["About external components"](/docs/Start/Component-requirements) before starting work</div>
 </div>
 
-## Capabilities
-
-| Task | Method |
-|--------|-------|
-| Open LDAP connection | [`CreateConnection`](/docs/LDAP/Basic-methods/Open-connection) |
-| Close LDAP connection | [`CloseConnection`](/docs/LDAP/Basic-methods/Close-connection) |
-| Form connection parameters | [`FormConnectionParameters`](/docs/LDAP/Basic-methods/Form-connection-parameters) |
-| Get connection configuration | [`GetConnectionConfiguration`](/docs/LDAP/Basic-methods/Get-connection-configuration) |
-| Execute directory search | [`ExecuteSearch`](/docs/LDAP/Directory-operations/Execute-search) |
-| Add entry to directory | [`Add`](/docs/LDAP/Directory-operations/Add) |
-| Modify entry in directory | [`Modify`](/docs/LDAP/Directory-operations/Modify) |
-| Delete entry from directory | [`Delete`](/docs/LDAP/Directory-operations/Delete) |
-| Compare attribute value | [`Compare`](/docs/LDAP/Directory-operations/Compare) |
-| Configure TLS | [`GetTlsSettings`](/docs/LDAP/Basic-methods/Get-tls-settings) |
-| Configure logging | [`GetLoggingSettings`](/docs/LDAP/Basic-methods/Get-logging-settings) |
-| Get operation log | [`GetLog`](/docs/LDAP/Basic-methods/Get-log) |
-
 ## Getting Started
 
 To work with LDAP through the library, you need to:
@@ -286,7 +269,3 @@ EndTry;
 // 5. Closing connection
 OPI_LDAP.CloseConnection(Connection);
 ```
-
-:::note
-Detailed description of parameters, response formats, and usage examples for each method are available on the method pages in the sections [Basic Methods](/docs/LDAP/Basic-methods/Open-connection) and [Directory Operations](/docs/LDAP/Directory-operations/Execute-search)
-:::
