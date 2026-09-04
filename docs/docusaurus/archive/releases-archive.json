@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-01T16:56:53",
+ "generatedAt": "2026-09-04T14:04:04",
  "s3BaseUrl": "https://releases.openintegrations.dev",
  "githubDownloadBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/download",
  "githubReleaseBase": "https://github.com/Bayselonarrend/OpenIntegrations/releases/tag",
@@ -43,9 +43,9 @@
  "versions": [
   {
    "version": "2.4.0",
-   "summary_ru": "Методы работы с Ntfy",
-   "summary_en": "Methods of working with Ntfy",
-   "cover": "media/Covers/Ntfy.png",
+   "summary_ru": "Методы работы с LDAP",
+   "summary_en": "Methods of working with LDAP",
+   "cover": "media/Covers/LDAP.png",
    "changes": [
     {
      "lib": "LDAP",
