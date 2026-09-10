@@ -12746,6 +12746,7 @@
 "Информация о чеке](@api-docs.cdek.ru/68257388.html": "Cashbox check information](@api-docs.cdek.ru/68258028.html",
 "Идентификаторы товаров в системе продавца (Артикул": "Item identifiers in the vendor's system (Article",
 "Windows установщик CLI приложения с аддоном Melezh": "Windows installer for CLI application with Melezh addon",
+"Windows установщик CLI приложения": "Windows installer for CLI application",
 "Завершает запущенный ранее сеанс выполнения тестов": "Ends a previously started test execution session",
 "Код страны производителя товара ISO_3166-1_alpha-2": "Country code of the product manufacturer as ISO_3166-1_alpha-2",
 "строка или список строк текста лицензий для модели": "a string or list of strings of license text for the model",

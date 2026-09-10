@@ -598,8 +598,8 @@
       "group_en": "Console application (OInt CLI)",
       "label_ru": "Windows Installer",
       "label_en": "Windows Installer",
-      "desc_ru": "Windows установщик CLI приложения с аддоном Melezh",
-      "desc_en": "Windows installer for CLI with Melezh addon",
+      "desc_ru": "Windows установщик CLI приложения",
+      "desc_en": "Windows installer for CLI",
       "icon": "exe",
       "filename": "oint_{version}_installer_{lang}.exe"
      },

@@ -29,16 +29,6 @@ pipeline {
             }
         }
 
-        stage('Melezh - Docker') {
-            steps {
-                build job: 'Melezh/MelezhDocker', wait: true,
-                    parameters: [
-                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '2.4.0'],
-                            [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild'],
-                            [$class: 'BooleanParameterValue', name: 'PUSH_TO_STABLE', value: true]
-                    ]
-            }
-        }
         stage('Docs - Primary site update') {
             steps {
                 build job: 'OpiDocs/OpiDocsRu', wait: true
@@ -48,13 +38,11 @@ pipeline {
         stage('Git - Publish releases') {
             steps {        
                 build job: 'OpiBuild/Publish', wait: true
-                build job: 'Melezh/Publish', wait: true
             }
         }
         stage('OPM - Push') {
             steps {
                 build job: 'OpiBuild/OpiOpmPush', wait: true
-                build job: 'Melezh/MelezhOpmPush', wait: true
             }
         }
         stage('SourceForge - Update') {

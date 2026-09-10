@@ -179,7 +179,7 @@ const DownloadPage = () => {
             ru: 'oint_2.4.0_installer_ru.exe',
             en: 'oint_2.4.0_installer_en.exe',
           },
-          desc: 'Windows установщик CLI приложения с аддоном Melezh',
+          desc: 'Windows установщик CLI приложения',
         },
         {
           name: 'Debian / Ubuntu (.deb)',

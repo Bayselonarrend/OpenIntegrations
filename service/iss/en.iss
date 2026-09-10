@@ -5,7 +5,6 @@
 #define MyAppExeName "oint.bat"
 #define Repo "C:\Users\bayselonarrend\AppData\Local\Jenkins\.jenkins\workspace\OpiBuild\OpiRelease"
 #define Engine "C:\engine"
-#define Melezh "C:\Users\bayselonarrend\AppData\Local\Jenkins\.jenkins\workspace\OpiBuild\OpiRelease\Melezh"
 
 [Setup]
 DisableWelcomePage      = no
@@ -38,25 +37,11 @@ Source: "{#Repo}\Media\icons\ex.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\wizard.ico"; DestDir: "{app}\share\oint\icons"
 Source: "{#Repo}\Media\icons\doc.ico"; DestDir: "{app}\share\oint\icons"
 
-; Файлы Melezh (устанавливаются только если выбран чекбокс)
-Source: "{#Melezh}\src\en\*"; DestDir: "{app}\share\oint\lib\melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\src\en\extensions\*"; DestDir: "{app}\share\oint\lib\melezh\extensions"; Flags: recursesubdirs uninsneveruninstall; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh_start.bat"; DestDir: "{app}"; DestName: "melezh_start.bat"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh.bat"; DestDir: "{app}\bin"; DestName: "melezh.bat"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\service\melezh"; DestDir: "{app}\bin"; DestName: "melezh"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Melezh}\media\icons\m_ex.ico"; DestDir: "{app}\share\oint\icons"; DestName: "m_ex.ico"; Flags: recursesubdirs; Check: ShouldInstallAddon
-Source: "{#Repo}\Media\melezh.bmp"; DestDir: "{tmp}"; DestName: "melezh.bmp"; Flags: deleteafterinstall; Check: ShouldInstallAddon
-
-
-
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{app}\share\oint\icons\ex.ico"; Tasks: desktopicon
 Name: "{group}\Uninstall OInt"; Filename: "{uninstallexe}"; IconFilename: "{app}\share\oint\icons\wizard.ico"
 Name: "{group}\Web-documentation"; Filename: "https://www.en.openintegrations.dev/"; IconFilename: "{app}\share\oint\icons\doc.ico"  
-
-Name: "{group}\Melezh"; Filename: "{app}\melezh_start.bat"; IconFilename: "{app}\share\oint\icons\m_ex.ico"; Check: ShouldInstallAddon
-Name: "{userdesktop}\Melezh"; Filename: "{app}\melezh_start.bat"; IconFilename: "{app}\share\oint\icons\m_ex.ico"; Tasks: desktopicon; Check: ShouldInstallAddon 
 
 [Tasks]
 Name: desktopicon; Description: "Create a desktop shortcut"; 
@@ -66,7 +51,6 @@ Type: filesandordirs; Name: "{app}"
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}/bin"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked
-Filename: "{cmd}"; Parameters: "/k ""cd ""{app}/bin"" && melezh.bat"""; Description: "{cm:LaunchProgram,{#StringChange("Melezh", '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked; Check: ShouldInstallAddon 
 Filename: "https://en.openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall unchecked; Description: "Visit documentation en.openintegrations.dev"
 
 [Registry]
@@ -166,39 +150,6 @@ begin
   InterpreterLicenseRejectedRadio.Caption := 'I do not accept the agreement';
   InterpreterLicenseRejectedRadio.Checked := False;
   InterpreterLicenseRejectedRadio.OnClick := @InterpreterLicenseOptionClick;
-
-  AddonTaskPage := CreateCustomPage(InterpreterLicensePage.ID,
-    'Install Melezh', 'Installing the OInt Server Version');
-    
-  ExtractTemporaryFile('melezh.bmp');
-
-  with TBitmapImage.Create(WizardForm) do
-  begin
-    Parent := AddonTaskPage.Surface;
-    Left := WizardForm.Width - 260;
-    Top := 35;
-    Width := 175;
-    Height := 200;
-    Stretch := True;
-    Bitmap.LoadFromFile(ExpandConstant('{tmp}\melezh.bmp'));
-  end;
-
-  AddonDescription := TNewStaticText.Create(WizardForm);
-  AddonDescription.Parent := AddonTaskPage.Surface;
-  AddonDescription.Caption := 'Melezh is a small (~10 MB) server-side add-on for OInt that allows you to run a customizable gateway for any of its methods. Melezh can listen on a port of your choice and interpret incoming HTTP requests as OInt commands for further execution. It features built-in logging and a Web UI for convenient configuration';
-  AddonDescription.WordWrap := True;
-  AddonDescription.Width := 350;
-  AddonDescription.Height := 120; 
-  AddonDescription.Top := 75;
-  AddonDescription.AutoSize := True;
-    
-  AddonCheckBox := TNewCheckBox.Create(WizardForm);
-  AddonCheckBox.Parent := AddonTaskPage.Surface;
-  AddonCheckBox.Left := 2;
-  AddonCheckBox.Top := AddonDescription.Top + AddonDescription.Height + 5; 
-  AddonCheckBox.Width := 300;
-  AddonCheckBox.Caption := 'Install Melezh';
-  AddonCheckBox.Checked := True;
     
 end;
 

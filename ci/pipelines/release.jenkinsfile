@@ -14,7 +14,6 @@ pipeline {
 
         stage('Release') {
             steps {
-                powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'
                 withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
                     bat "oscript ./ci/os/ReleaseFactory.os ${params.UPLOAD_ARTIFACTS ? '1' : '0'}"
                 }

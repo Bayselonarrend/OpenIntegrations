@@ -168,12 +168,6 @@ window.yaContextCb.push(() => {
             position: 'left',
             label: 'Документация',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'addonsSidebar',
-            position: 'left',
-            label: 'Аддоны',
-          },
           ...navbarCoursesItem,
           {
             to: '/download',

@@ -4,7 +4,6 @@ pipeline {
 	}
 	parameters {
 		booleanParam(name: 'UPLOAD_ARTIFACTS', defaultValue: true, description: 'Upload release artifacts to GitHub and YD')
-		booleanParam(name: 'RUN_MELEZH', defaultValue: true, description: 'Run Melezh build, Docker and tests')
 	}
 
     stages {
@@ -24,14 +23,6 @@ pipeline {
                 build job: 'OpiBuild/OpiCliCheck', wait: false
             }
         }
-        stage('Melezh - Main + Release') {
-            when {
-                expression { return params.RUN_MELEZH }
-            }
-            steps {
-                build job: 'Melezh/MelezhRelease', wait: true
-            }
-        }
         stage('OpenIntegrations - 1C DB Update') {
             steps {
                 build job: 'OpiBuild/OpiBaseUpdate', wait: true
@@ -44,34 +35,6 @@ pipeline {
                     parameters: [
                         [$class: 'BooleanParameterValue', name: 'UPLOAD_ARTIFACTS', value: params.UPLOAD_ARTIFACTS]
                     ]
-            }
-        }
-        stage('Melezh - Docker') {
-            when {
-                expression { return params.RUN_MELEZH }
-            }
-            steps {
-                build job: 'Melezh/MelezhDocker', wait: true,
-                    parameters: [
-                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '2.4.0'],
-                            [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild']
-                    ]
-            }
-        }
-
-        stage('Melezh - Test') {
-            when {
-                expression { return params.RUN_MELEZH }
-            }
-            steps {
-                build job: 'Melezh/MelezhTests', wait: true
-            }
-        }
-
-        stage('Docs - Test update') {
-            steps {
-                build job: 'OpiDocs/OpiDocsTestRu', wait: true
-                build job: 'OpiDocs/OpiDocsTestEn', wait: true
             }
         }
     }
