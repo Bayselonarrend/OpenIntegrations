@@ -45,9 +45,9 @@ import Admonition from '@theme/Admonition';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL     = "";
+    URL     = "ldap://127.0.0.1:389";
     BindDN  = "cn=admin,dc=example,dc=org";
-    Пароль  = "...";
+    Пароль  = "a...";
     Таймаут = 30;
 
     ПараметрыСоединения = OPI_LDAP.СформироватьПараметрыСоединения(URL, BindDN, Пароль, Таймаут);

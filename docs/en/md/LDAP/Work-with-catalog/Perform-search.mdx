@@ -54,9 +54,9 @@ When passing connection parameters, a new connection will be created and closed 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL      = "";
+    URL      = "ldap://127.0.0.1:389";
     BindDN = "cn=admin,dc=example,dc=org";
-    Password = "...";
+    Password = "a...";
     Timeout  = 30;
 
     ConnectionParams = OPI_LDAP.FormConnectionParameters(URL, BindDN, Password, Timeout);
