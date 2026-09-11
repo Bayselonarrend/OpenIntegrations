@@ -1,0 +1,33 @@
+{
+ "module": "Server",
+ "library": "server",
+ "self_depend": false,
+ "dependencies": null,
+ "cli_tool": true,
+ "path": "tools/Modules/Server.os",
+ "regions": [
+  {
+   "name": "Методы сервера",
+   "methods": [
+    "STDIO"
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "name": "STDIO",
+   "id": "STDIO",
+   "description": "Запускает сервер для обмена через стандартные потоки ввода вывода",
+   "params": [
+    {
+     "name": "--continue",
+     "types": "Булево",
+     "description": "Продолжать или завершать работу при возникновении ошибки",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Методы сервера"
+  }
+ ]
+}
