@@ -1,0 +1,9 @@
+#требуется ../OpenIntegrations
+
+метод Тест1()
+
+    пер Telegram = OPI_Telegram.Инициализировать("R:/Repos/OpenIntegrations/src/ru/SBSL/OpenIntegrations/internal/config.json")    
+    пер Результат = Telegram.ОтправитьТекстовоеСообщение("", "", "Yo")
+    
+    Консоль.Записать(Результат)
+;

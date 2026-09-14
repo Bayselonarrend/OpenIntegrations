@@ -9,13 +9,13 @@
   {
    "name": "Методы сервера",
    "methods": [
-    "STDIO"
+    "stdio"
    ]
   }
  ],
  "methods": [
   {
-   "name": "STDIO",
+   "name": "stdio",
    "id": "STDIO",
    "description": "Запускает сервер для обмена через стандартные потоки ввода вывода",
    "params": [
@@ -25,6 +25,13 @@
      "description": "Продолжать или завершать работу при возникновении ошибки",
      "default": null,
      "short": "-c"
+    },
+    {
+     "name": "--sprt",
+     "types": "Строка",
+     "description": "Строка, добавляемая в конец ответа от сервера",
+     "default": "\\n-OINT-END-",
+     "short": "-s"
     }
    ],
    "region": "Методы сервера"

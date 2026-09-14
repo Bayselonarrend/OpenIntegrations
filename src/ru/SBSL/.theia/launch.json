@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "sbsl",
+            "name": "Test1.sbsl#Тест1",
+            "stopOnEntry": false,
+            "request": "attach",
+            "scriptFile": "tests/Test1.sbsl",
+            "args": [],
+            "method": "Тест1"
+        }
+    ]
+}
