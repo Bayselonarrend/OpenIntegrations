@@ -3,7 +3,7 @@
 метод Тест1()
 
     пер Telegram = OPI_Telegram.Инициализировать("R:/Repos/OpenIntegrations/src/ru/SBSL/OpenIntegrations/internal/config.json")    
-    пер Результат = Telegram.ОтправитьТекстовоеСообщение("6129457865:AAFyzNYOAFbuhAL5GXqbVidwOjZYFvLFWMU", "461699897", "Yo")
+    пер Результат = Telegram.ОтправитьТекстовоеСообщение("", "", "Yo")
     
     Консоль.Записать(Результат)
 ;
