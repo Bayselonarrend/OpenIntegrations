@@ -49,6 +49,7 @@
    "description": "Returns URL for browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -56,6 +57,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Boolean",
      "description": "Calendar methods permission",
@@ -63,6 +65,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Boolean",
      "description": "Drive methods permission",
@@ -70,6 +73,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Boolean",
      "description": "Sheets methods permission",
@@ -85,6 +89,7 @@
    "description": "Gets token by code from browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -92,6 +97,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -99,6 +105,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from browser",
@@ -114,6 +121,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -121,6 +129,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -128,6 +137,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -143,6 +153,7 @@
    "description": "Gets authorization token by service account data",
    "params": [
     {
+     "title": "Data",
      "name": "--auth",
      "types": "Arbitrary",
      "description": "JSON authorization data as a file, collection or binary data",
@@ -150,6 +161,7 @@
      "short": "-a"
     },
     {
+     "title": "Scope",
      "name": "--scope",
      "types": "Array Of String",
      "description": "Scope or array of scopes",
@@ -157,6 +169,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--exp",
      "types": "Number",
      "description": "Token lifetime in seconds",
@@ -172,6 +185,7 @@
    "description": "Creates a new spreadsheet",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -179,6 +193,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Name",
@@ -186,6 +201,7 @@
      "short": "-l"
     },
     {
+     "title": "ArrayOfSheetNames",
      "name": "--sheets",
      "types": "Array of String",
      "description": "Array of names to add new sheets to the spreadsheet",
@@ -201,6 +217,7 @@
    "description": "Gets information about the spreadsheet by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -208,6 +225,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--spreadsheet",
      "types": "String",
      "description": "Spreadsheet identifier",
@@ -223,6 +241,7 @@
    "description": "Changes the name of the existing spreadsheet",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -230,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "SpreadsheetID",
@@ -237,6 +257,7 @@
      "short": "-s"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New name",
@@ -252,6 +273,7 @@
    "description": "Adds a new sheet to the spreadsheet",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -259,6 +281,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "Spreadsheet identifier",
@@ -266,6 +289,7 @@
      "short": "-s"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "NewSheetName",
@@ -281,6 +305,7 @@
    "description": "Deletes a sheet from the spreadsheet",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -288,6 +313,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "Spreadsheet identifier",
@@ -295,6 +321,7 @@
      "short": "-s"
     },
     {
+     "title": "Sheet",
      "name": "--sheet",
      "types": "String",
      "description": "IdentifierOfSheetToDelete",
@@ -310,6 +337,7 @@
    "description": "Copies a sheet from one spreadsheet to another",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -317,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "From",
      "name": "--from",
      "types": "String",
      "description": "Source spreadsheet ID",
@@ -324,6 +353,7 @@
      "short": "-f"
     },
     {
+     "title": "Target",
      "name": "--to",
      "types": "String",
      "description": "Destination spreadsheet ID",
@@ -331,6 +361,7 @@
      "short": "-o"
     },
     {
+     "title": "Sheet",
      "name": "--sheet",
      "types": "String",
      "description": "CopiedSheetID",
@@ -346,6 +377,7 @@
    "description": "Sets sheet cell values",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -353,6 +385,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "SpreadsheetID",
@@ -360,6 +393,7 @@
      "short": "-s"
     },
     {
+     "title": "ValueMapping",
      "name": "--data",
      "types": "Map Of KeyAndValue",
      "description": "Fill data where the key is the cell name like A1",
@@ -367,6 +401,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheet",
      "name": "--sheetname",
      "types": "String",
      "description": "Sheet name (first sheet by default)",
@@ -374,6 +409,7 @@
      "short": "-h"
     },
     {
+     "title": "MajorDimension",
      "name": "--dim",
      "types": "String",
      "description": "Main dimension when filling the array range",
@@ -389,6 +425,7 @@
    "description": "Clears the value in cells",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -396,6 +433,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "SpreadsheetID",
@@ -403,6 +441,7 @@
      "short": "-s"
     },
     {
+     "title": "CellsArray",
      "name": "--cells",
      "types": "Array of String",
      "description": "Array of cells like A1 to be cleared",
@@ -410,6 +449,7 @@
      "short": "-c"
     },
     {
+     "title": "Sheet",
      "name": "--sheetname",
      "types": "String",
      "description": "Sheet name (first sheet by default)",
@@ -425,6 +465,7 @@
    "description": "Gets cell values of the table",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -432,6 +473,7 @@
      "short": "-t"
     },
     {
+     "title": "Spreadsheet",
      "name": "--spreadsheet",
      "types": "String",
      "description": "SpreadsheetID",
@@ -439,6 +481,7 @@
      "short": "-s"
     },
     {
+     "title": "CellsArray",
      "name": "--cells",
      "types": "Array of String",
      "description": "Array of A1 type cells to get (whole sheet if not filled)",
@@ -446,6 +489,7 @@
      "short": "-c"
     },
     {
+     "title": "Sheet",
      "name": "--sheetname",
      "types": "String",
      "description": "Sheet name (first sheet by default)",

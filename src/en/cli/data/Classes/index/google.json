@@ -23,6 +23,7 @@
    "description": "Returns URL for browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -30,6 +31,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Boolean",
      "description": "Calendar methods permission",
@@ -37,6 +39,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Boolean",
      "description": "Drive methods permission",
@@ -44,6 +47,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Boolean",
      "description": "Sheets methods permission",
@@ -59,6 +63,7 @@
    "description": "Gets token by code from browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -66,6 +71,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -73,6 +79,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from browser",
@@ -88,6 +95,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -95,6 +103,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -102,6 +111,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -117,6 +127,7 @@
    "description": "Gets authorization token by service account data",
    "params": [
     {
+     "title": "Data",
      "name": "--auth",
      "types": "Arbitrary",
      "description": "JSON authorization data as a file, collection or binary data",
@@ -124,6 +135,7 @@
      "short": "-a"
     },
     {
+     "title": "Scope",
      "name": "--scope",
      "types": "Array Of String",
      "description": "Scope or array of scopes",
@@ -131,6 +143,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--exp",
      "types": "Number",
      "description": "Token lifetime in seconds",

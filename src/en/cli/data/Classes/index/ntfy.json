@@ -34,6 +34,7 @@
    "description": "Get structure of additional parameters for sending notification",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -49,6 +50,7 @@
    "description": "Publish notification to the specified topic",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ntfy server URL. `ntfy.sh`, if not filled",
@@ -56,6 +58,7 @@
      "short": "-u"
     },
     {
+     "title": "Topic",
      "name": "--topic",
      "types": "String",
      "description": "Topic Name",
@@ -63,6 +66,7 @@
      "short": "-t"
     },
     {
+     "title": "Message",
      "name": "--message",
      "types": "String",
      "description": "Notification text",
@@ -70,6 +74,7 @@
      "short": "-m"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Topic access token, if required",
@@ -77,6 +82,7 @@
      "short": "-k"
     },
     {
+     "title": "Parameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional parameters. See GetMessageParametersStructure",
@@ -92,6 +98,7 @@
    "description": "Get structure of parameters for getting messages from topic",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -107,6 +114,7 @@
    "description": "Get messages from topic in JSON format",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ntfy server URL. `ntfy.sh`, if not filled",
@@ -114,6 +122,7 @@
      "short": "-u"
     },
     {
+     "title": "Topic",
      "name": "--topic",
      "types": "String",
      "description": "Topic Name",
@@ -121,6 +130,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Topic access token, if required",
@@ -128,6 +138,7 @@
      "short": "-k"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure Of KeyAndValue",
      "description": "Filter parameters. See GetFilterParametersStructure",
@@ -143,6 +154,7 @@
    "description": "Delete message from topic by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ntfy server URL. `ntfy.sh`, if not filled",
@@ -150,6 +162,7 @@
      "short": "-u"
     },
     {
+     "title": "Topic",
      "name": "--topic",
      "types": "String",
      "description": "Topic Name",
@@ -157,6 +170,7 @@
      "short": "-t"
     },
     {
+     "title": "MessageID",
      "name": "--id",
      "types": "String",
      "description": "ID of message to delete",
@@ -164,6 +178,7 @@
      "short": "-i"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Topic access token",

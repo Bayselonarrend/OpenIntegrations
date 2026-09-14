@@ -70,6 +70,7 @@
    "description": "Forms a MongoDB connection string",
    "params": [
     {
+     "title": "Address",
      "name": "--addr",
      "types": "String",
      "description": "Host IP address with port or URL",
@@ -77,6 +78,7 @@
      "short": "-a"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database, if necessary",
@@ -84,6 +86,7 @@
      "short": "-d"
     },
     {
+     "title": "Login",
      "name": "--usr",
      "types": "String",
      "description": "Username for authorization",
@@ -91,6 +94,7 @@
      "short": "-u"
     },
     {
+     "title": "Password",
      "name": "--pwd",
      "types": "String",
      "description": "Password for authorization",
@@ -98,6 +102,7 @@
      "short": "-p"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue, Undefined",
      "description": "Additional connection parameters",
@@ -113,6 +118,7 @@
    "description": "Executes the command according to its description",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -120,6 +126,7 @@
      "short": "-d"
     },
     {
+     "title": "Command",
      "name": "--comm",
      "types": "String",
      "description": "Command name to execute",
@@ -127,6 +134,7 @@
      "short": "-c"
     },
     {
+     "title": "Argument",
      "name": "--arg",
      "types": "Arbitrary",
      "description": "Command argument",
@@ -134,6 +142,7 @@
      "short": "-a"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database in which the operation needs to be performed",
@@ -141,6 +150,7 @@
      "short": "-b"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Structure Of KeyAndValue",
      "description": "Main data fields for performing the operation",
@@ -156,6 +166,7 @@
    "description": "Gets the list of databases",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -171,6 +182,7 @@
    "description": "Gets information about the database",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -178,6 +190,7 @@
      "short": "-d"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -193,6 +206,7 @@
    "description": "Deletes the database",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -200,6 +214,7 @@
      "short": "-d"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -215,6 +230,7 @@
    "description": "Gets a list of database collections",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -222,6 +238,7 @@
      "short": "-d"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -237,6 +254,7 @@
    "description": "Creates a new collection with the specified parameters",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -244,6 +262,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Collection name",
@@ -251,6 +270,7 @@
      "short": "-n"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -258,6 +278,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional creation parameters",
@@ -273,6 +294,7 @@
    "description": "Deletes the selected database collection",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -280,6 +302,7 @@
      "short": "-d"
     },
     {
+     "title": "Collection",
      "name": "--coll",
      "types": "String",
      "description": "Collection name",
@@ -287,6 +310,7 @@
      "short": "-c"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -302,6 +326,7 @@
    "description": "Inserts new documents into the collection",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -309,6 +334,7 @@
      "short": "-d"
     },
     {
+     "title": "Collection",
      "name": "--coll",
      "types": "String",
      "description": "Collection name",
@@ -316,6 +342,7 @@
      "short": "-c"
     },
     {
+     "title": "Values",
      "name": "--docs",
      "types": "Array Of Arbitrary",
      "description": "Array of docs objects",
@@ -323,6 +350,7 @@
      "short": "-s"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -330,6 +358,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional insert options",
@@ -345,6 +374,7 @@
    "description": "Updates document data in the collection",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -352,6 +382,7 @@
      "short": "-d"
     },
     {
+     "title": "Collection",
      "name": "--coll",
      "types": "String",
      "description": "Collection name",
@@ -359,6 +390,7 @@
      "short": "-c"
     },
     {
+     "title": "Updates",
      "name": "--updates",
      "types": "Array of Structure",
      "description": "Update array. See GetDocumentUpdateStructure",
@@ -366,6 +398,7 @@
      "short": "-u"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -373,6 +406,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional insert options",
@@ -388,6 +422,7 @@
    "description": "Gets collection documents",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -395,6 +430,7 @@
      "short": "-d"
     },
     {
+     "title": "Collection",
      "name": "--coll",
      "types": "String",
      "description": "Collection name",
@@ -402,6 +438,7 @@
      "short": "-c"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -409,6 +446,7 @@
      "short": "-b"
     },
     {
+     "title": "Filter",
      "name": "--query",
      "types": "Structure Of KeyAndValue",
      "description": "Document filter",
@@ -416,6 +454,7 @@
      "short": "-q"
     },
     {
+     "title": "Sort",
      "name": "--sort",
      "types": "Structure Of KeyAndValue",
      "description": "Selection sorting",
@@ -423,6 +462,7 @@
      "short": "-s"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional retrieval parameters",
@@ -438,6 +478,7 @@
    "description": "Deletes collection documents",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -445,6 +486,7 @@
      "short": "-d"
     },
     {
+     "title": "Collection",
      "name": "--coll",
      "types": "String",
      "description": "Collection name",
@@ -452,6 +494,7 @@
      "short": "-c"
     },
     {
+     "title": "Deletions",
      "name": "--deletes",
      "types": "Array of Structure",
      "description": "Deletion array. See GetDocumentDeletionStructure",
@@ -459,6 +502,7 @@
      "short": "-l"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -466,6 +510,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional insert options",
@@ -481,6 +526,7 @@
    "description": "Forms data structure for updating documents",
    "params": [
     {
+     "title": "Filter",
      "name": "--query",
      "types": "Structure Of KeyAndValue",
      "description": "Document filter",
@@ -488,6 +534,7 @@
      "short": "-q"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Structure Of KeyAndValue",
      "description": "New document data for update",
@@ -495,6 +542,7 @@
      "short": "-d"
     },
     {
+     "title": "UpdateAll",
      "name": "--multi",
      "types": "Boolean",
      "description": "True > updates all documents by filter, False > only one",
@@ -502,6 +550,7 @@
      "short": "-m"
     },
     {
+     "title": "Insert",
      "name": "--upsert",
      "types": "Boolean",
      "description": "Insert a new document if no document was found",
@@ -509,6 +558,7 @@
      "short": "-u"
     },
     {
+     "title": "Collation",
      "name": "--cltn",
      "types": "Structure Of KeyAndValue",
      "description": "Special field comparison rules",
@@ -524,6 +574,7 @@
    "description": "Forms data structure for update",
    "params": [
     {
+     "title": "Filter",
      "name": "--query",
      "types": "Structure Of KeyAndValue",
      "description": "Document filter",
@@ -531,6 +582,7 @@
      "short": "-q"
     },
     {
+     "title": "Count",
      "name": "--limit",
      "types": "Number",
      "description": "Deletion limit: 1 > first document, 0 > all documents",
@@ -538,6 +590,7 @@
      "short": "-l"
     },
     {
+     "title": "Collation",
      "name": "--cltn",
      "types": "Structure Of KeyAndValue",
      "description": "Special field comparison rules",
@@ -553,6 +606,7 @@
    "description": "Creates a new user",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -560,6 +614,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Users name",
@@ -567,6 +622,7 @@
      "short": "-n"
     },
     {
+     "title": "UserRoles",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Array of roles as strings or structures specifying the DB",
@@ -574,6 +630,7 @@
      "short": "-r"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -581,6 +638,7 @@
      "short": "-b"
     },
     {
+     "title": "Password",
      "name": "--pwd",
      "types": "String",
      "description": "Users password",
@@ -588,6 +646,7 @@
      "short": "-p"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional creation parameters",
@@ -603,6 +662,7 @@
    "description": "Modifies existing user data",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -610,6 +670,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Users name",
@@ -617,6 +678,7 @@
      "short": "-n"
     },
     {
+     "title": "UserRoles",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Array of roles as strings or structures specifying the DB",
@@ -624,6 +686,7 @@
      "short": "-r"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -631,6 +694,7 @@
      "short": "-b"
     },
     {
+     "title": "Password",
      "name": "--pwd",
      "types": "String",
      "description": "Users password",
@@ -638,6 +702,7 @@
      "short": "-p"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional parameters",
@@ -653,6 +718,7 @@
    "description": "Gets data of one or more users",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -660,6 +726,7 @@
      "short": "-d"
     },
     {
+     "title": "Users",
      "name": "--usrs",
      "types": "Arbitrary",
      "description": "Username, structure, or array of user structures",
@@ -667,6 +734,7 @@
      "short": "-u"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -674,6 +742,7 @@
      "short": "-b"
     },
     {
+     "title": "GetPassword",
      "name": "--spwd",
      "types": "Boolean",
      "description": "Adds user password hash to the returned data",
@@ -681,6 +750,7 @@
      "short": "-s"
     },
     {
+     "title": "GetPrivileges",
      "name": "--sprv",
      "types": "Boolean",
      "description": "Adds a list of user privileges to the returned data",
@@ -696,6 +766,7 @@
    "description": "Gets information about all database users",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -703,6 +774,7 @@
      "short": "-d"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -710,6 +782,7 @@
      "short": "-b"
     },
     {
+     "title": "GetPassword",
      "name": "--spwd",
      "types": "Boolean",
      "description": "Adds user password hash to the returned data",
@@ -717,6 +790,7 @@
      "short": "-s"
     },
     {
+     "title": "GetPrivileges",
      "name": "--sprv",
      "types": "Boolean",
      "description": "Adds a list of user privileges to the returned data",
@@ -732,6 +806,7 @@
    "description": "Deletes user by name",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -739,6 +814,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Users name",
@@ -746,6 +822,7 @@
      "short": "-n"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -753,6 +830,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -768,6 +846,7 @@
    "description": "Creates a new role",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -775,6 +854,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Role name",
@@ -782,6 +862,7 @@
      "short": "-n"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -789,6 +870,7 @@
      "short": "-b"
     },
     {
+     "title": "PrivilegesArray",
      "name": "--prvl",
      "types": "Array of Structure",
      "description": "Array of privileges. See GetRolePrivilegeStructure",
@@ -796,6 +878,7 @@
      "short": "-p"
     },
     {
+     "title": "RoleArray",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Array of roles based on strings or structures specifying the database",
@@ -803,6 +886,7 @@
      "short": "-r"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -818,6 +902,7 @@
    "description": "Modifies the data of an existing role",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -825,6 +910,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Role name",
@@ -832,6 +918,7 @@
      "short": "-n"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -839,6 +926,7 @@
      "short": "-b"
     },
     {
+     "title": "PrivilegesArray",
      "name": "--prvl",
      "types": "Array of Structure",
      "description": "Array of privileges. See GetRolePrivilegeStructure",
@@ -846,6 +934,7 @@
      "short": "-p"
     },
     {
+     "title": "RoleArray",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Array of roles based on strings or structures specifying the database",
@@ -853,6 +942,7 @@
      "short": "-r"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -868,6 +958,7 @@
    "description": "Gets information about the specified fields",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -875,6 +966,7 @@
      "short": "-d"
     },
     {
+     "title": "RoleArray",
      "name": "--roles",
      "types": "Arbitrary",
      "description": "Role or list of roles",
@@ -882,6 +974,7 @@
      "short": "-r"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -889,6 +982,7 @@
      "short": "-b"
     },
     {
+     "title": "GetPrivileges",
      "name": "--sprv",
      "types": "Boolean",
      "description": "Adds a list of role privileges to the returned data",
@@ -904,6 +998,7 @@
    "description": "Deletes an existing role",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -911,6 +1006,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Role name",
@@ -918,6 +1014,7 @@
      "short": "-n"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -925,6 +1022,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -940,6 +1038,7 @@
    "description": "Grants selected roles to a user",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -947,6 +1046,7 @@
      "short": "-d"
     },
     {
+     "title": "User",
      "name": "--user",
      "types": "String",
      "description": "Users name",
@@ -954,6 +1054,7 @@
      "short": "-u"
     },
     {
+     "title": "RoleArray",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Role or role array",
@@ -961,6 +1062,7 @@
      "short": "-r"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -968,6 +1070,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -983,6 +1086,7 @@
    "description": "Revokes selected roles from a user",
    "params": [
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -990,6 +1094,7 @@
      "short": "-d"
     },
     {
+     "title": "User",
      "name": "--user",
      "types": "String",
      "description": "Users name",
@@ -997,6 +1102,7 @@
      "short": "-u"
     },
     {
+     "title": "RoleArray",
      "name": "--roles",
      "types": "Array Of Arbitrary",
      "description": "Role or role array",
@@ -1004,6 +1110,7 @@
      "short": "-r"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Database name. Current database if not specified",
@@ -1011,6 +1118,7 @@
      "short": "-b"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Additional deletion parameters",
@@ -1026,6 +1134,7 @@
    "description": "Forms the privilege information structure for use when working with roles",
    "params": [
     {
+     "title": "Resource",
      "name": "--res",
      "types": "Structure Of KeyAndValue",
      "description": "Privilege resource",
@@ -1033,6 +1142,7 @@
      "short": "-r"
     },
     {
+     "title": "ActionsArray",
      "name": "--act",
      "types": "Array Of String",
      "description": "Array of available privilege actions",

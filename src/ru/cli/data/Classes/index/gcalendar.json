@@ -57,6 +57,7 @@
    "description": "Возвращает URL для авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -64,6 +65,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Булево",
      "description": "разрешение на методы Calendar",
@@ -71,6 +73,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Булево",
      "description": "разрешение на методы Drive",
@@ -78,6 +81,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Булево",
      "description": "разрешение на методы Sheets",
@@ -93,6 +97,7 @@
    "description": "Получает токен по коду из авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -100,6 +105,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -107,6 +113,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "Строка",
      "description": "Code из браузера",
@@ -122,6 +129,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -129,6 +137,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -136,6 +145,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",
@@ -151,6 +161,7 @@
    "description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Данные",
      "name": "--auth",
      "types": "Произвольный",
      "description": "JSON данные авторизации как файл, коллекция или двоичные данные",
@@ -158,6 +169,7 @@
      "short": "-a"
     },
     {
+     "title": "ОбластиДействия",
      "name": "--scope",
      "types": "Массив Из Строка",
      "description": "Область действия (scope) или массив областей",
@@ -165,6 +177,7 @@
      "short": "-s"
     },
     {
+     "title": "ВремяЖизни",
      "name": "--exp",
      "types": "Число",
      "description": "Время жизни токена в секундах",
@@ -180,6 +193,7 @@
    "description": "Создает пустой календарь",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -187,6 +201,7 @@
      "short": "-t"
     },
     {
+     "title": "Наименование",
      "name": "--title",
      "types": "Строка",
      "description": "Наименование создаваемого календаря",
@@ -202,6 +217,7 @@
    "description": "Получает информацию о календаре по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -209,6 +225,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -224,6 +241,7 @@
    "description": "Изменяет свойства существующего календаря",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -231,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -238,6 +257,7 @@
      "short": "-c"
     },
     {
+     "title": "Наименование",
      "name": "--title",
      "types": "Строка",
      "description": "Новое наименование",
@@ -245,6 +265,7 @@
      "short": "-l"
     },
     {
+     "title": "Описание",
      "name": "--description",
      "types": "Строка",
      "description": "Новое описание календаря",
@@ -260,6 +281,7 @@
    "description": "Очищает список событий основного календаря",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -275,6 +297,7 @@
    "description": "Удаляет календарь по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -282,6 +305,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -297,6 +321,7 @@
    "description": "Получает массив календарей аккаунта",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -312,6 +337,7 @@
    "description": "Добавляет существующий календарь в список пользователя",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -319,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -334,6 +361,7 @@
    "description": "Получает календарь из списка пользователя по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -341,6 +369,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -356,6 +385,7 @@
    "description": "Удаляет календарь из списка пользователя",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -363,6 +393,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -378,6 +409,7 @@
    "description": "Изменяет свойства календаря из списка пользователей",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -385,6 +417,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -392,6 +425,7 @@
      "short": "-c"
     },
     {
+     "title": "ОсновнойЦвет",
      "name": "--primary",
      "types": "Строка",
      "description": "HEX основного цвета (#ffffff)",
@@ -399,6 +433,7 @@
      "short": "-p"
     },
     {
+     "title": "ДополнительныйЦвет",
      "name": "--secondary",
      "types": "Строка",
      "description": "HEX дополнительного цвета (#ffffff)",
@@ -406,6 +441,7 @@
      "short": "-s"
     },
     {
+     "title": "Скрытый",
      "name": "--hidden",
      "types": "Булево",
      "description": "Скрытый календарь",
@@ -421,6 +457,7 @@
    "description": "Получает пустой макет для создания события",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -436,6 +473,7 @@
    "description": "Получает список всех событий календаря",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -443,6 +481,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -458,6 +497,7 @@
    "description": "Получает событие по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -465,6 +505,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -472,6 +513,7 @@
      "short": "-c"
     },
     {
+     "title": "Событие",
      "name": "--event",
      "types": "Строка",
      "description": "ID события",
@@ -487,6 +529,7 @@
    "description": "Создает новое событие",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -494,6 +537,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -501,6 +545,7 @@
      "short": "-c"
     },
     {
+     "title": "ОписаниеСобытия",
      "name": "--props",
      "types": "Соответствие Из КлючИЗначение",
      "description": "Описание события",
@@ -516,6 +561,7 @@
    "description": "Перемещает событие в другой календарь",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -523,6 +569,7 @@
      "short": "-t"
     },
     {
+     "title": "КалендарьИсточник",
      "name": "--from",
      "types": "Строка",
      "description": "ID календаря источника",
@@ -530,6 +577,7 @@
      "short": "-f"
     },
     {
+     "title": "КалендарьПриемник",
      "name": "--to",
      "types": "Строка",
      "description": "ID календаря приемника",
@@ -537,6 +585,7 @@
      "short": "-o"
     },
     {
+     "title": "Событие",
      "name": "--event",
      "types": "Строка",
      "description": "ID события календаря источника",
@@ -552,6 +601,7 @@
    "description": "Изменяет существующее событие",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -559,6 +609,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -566,6 +617,7 @@
      "short": "-c"
     },
     {
+     "title": "ОписаниеСобытия",
      "name": "--props",
      "types": "Строка",
      "description": "Новое описание события",
@@ -573,6 +625,7 @@
      "short": "-p"
     },
     {
+     "title": "Событие",
      "name": "--event",
      "types": "Строка",
      "description": "ID события",
@@ -588,6 +641,7 @@
    "description": "Удаляет событие по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -595,6 +649,7 @@
      "short": "-t"
     },
     {
+     "title": "Календарь",
      "name": "--calendar",
      "types": "Строка",
      "description": "ID календаря",
@@ -602,6 +657,7 @@
      "short": "-c"
     },
     {
+     "title": "Событие",
      "name": "--event",
      "types": "Строка",
      "description": "ID события",

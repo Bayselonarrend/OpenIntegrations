@@ -86,6 +86,7 @@
    "description": "Forms the structure of basic authorization data",
    "params": [
     {
+     "title": "ApiUrl",
      "name": "--api",
      "types": "String",
      "description": "API host link",
@@ -93,6 +94,7 @@
      "short": "-a"
     },
     {
+     "title": "MediaUrl",
      "name": "--media",
      "types": "String",
      "description": "Link to host API for sending files",
@@ -100,6 +102,7 @@
      "short": "-m"
     },
     {
+     "title": "IdInstance",
      "name": "--id",
      "types": "String",
      "description": "Unique instance number",
@@ -107,6 +110,7 @@
      "short": "-i"
     },
     {
+     "title": "ApiTokenInstance",
      "name": "--token",
      "types": "String",
      "description": "Instance access key",
@@ -122,6 +126,7 @@
    "description": "Gets account information",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -137,6 +142,7 @@
    "description": "Gets the current instance settings",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -152,6 +158,7 @@
    "description": "Sets the instance settings",
    "params": [
     {
+     "title": "Settings",
      "name": "--settings",
      "types": "Structure Of KeyAndValue",
      "description": "Instance settings. See GetInstanceSettingsStructure",
@@ -159,6 +166,7 @@
      "short": "-s"
     },
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -174,6 +182,7 @@
    "description": "Sends an SMS to the specified number to obtain a confirmation code",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -181,6 +190,7 @@
      "short": "-a"
     },
     {
+     "title": "PhoneNumber",
      "name": "--phone",
      "types": "String, Number",
      "description": "Phone number without +",
@@ -196,6 +206,7 @@
    "description": "Authorizes the instance using the access code from SMS",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -203,6 +214,7 @@
      "short": "-a"
     },
     {
+     "title": "AuthCode",
      "name": "--code",
      "types": "String",
      "description": "Authorization code",
@@ -218,6 +230,7 @@
    "description": "Gets instance status",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -233,6 +246,7 @@
    "description": "Sets a new profile picture",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -240,6 +254,7 @@
      "short": "-a"
     },
     {
+     "title": "Image",
      "name": "--picture",
      "types": "BinaryData, String",
      "description": "Profile picture",
@@ -255,6 +270,7 @@
    "description": "Unlogging the instance",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -270,6 +286,7 @@
    "description": "Restarts the instance",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -285,6 +302,7 @@
    "description": "Checks the existence of a Max account by phone number",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -292,6 +310,7 @@
      "short": "-a"
     },
     {
+     "title": "PhoneNumber",
      "name": "--phone",
      "types": "String, Number",
      "description": "Phone number for verification without +",
@@ -299,6 +318,7 @@
      "short": "-p"
     },
     {
+     "title": "IgnoreCache",
      "name": "--force",
      "types": "Boolean",
      "description": "Ignore cache on repeated verification request",
@@ -314,6 +334,7 @@
    "description": "Gets account contact list",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -321,6 +342,7 @@
      "short": "-a"
     },
     {
+     "title": "Count",
      "name": "--count",
      "types": "Number",
      "description": "Contact count to retrieve. All if not specified",
@@ -336,6 +358,7 @@
    "description": "Gets information about the selected contact",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -343,6 +366,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat identifier",
@@ -358,6 +382,7 @@
    "description": "Gets account chat list",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -373,6 +398,7 @@
    "description": "Gets chat image URL",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -380,6 +406,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat identifier",
@@ -395,6 +422,7 @@
    "description": "Gets the structure template for instance settings",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -410,6 +438,7 @@
    "description": "Creates a new group chat with the specified name",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -417,6 +446,7 @@
      "short": "-a"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Group name",
@@ -424,6 +454,7 @@
      "short": "-n"
     },
     {
+     "title": "Members",
      "name": "--members",
      "types": "Array Of String, String",
      "description": "Array of group member IDs or a single ID",
@@ -439,6 +470,7 @@
    "description": "Gets information about the group chat",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -446,6 +478,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -461,6 +494,7 @@
    "description": "Change group chat name",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -468,6 +502,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -475,6 +510,7 @@
      "short": "-c"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "New chat name",
@@ -490,6 +526,7 @@
    "description": "Sets the image as the group chat avatar",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -497,6 +534,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -504,6 +542,7 @@
      "short": "-c"
     },
     {
+     "title": "Image",
      "name": "--picture",
      "types": "String, BinaryData",
      "description": "Image in jpg format",
@@ -519,6 +558,7 @@
    "description": "Changes selected group chat settings",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -526,6 +566,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -533,6 +574,7 @@
      "short": "-c"
     },
     {
+     "title": "Settings",
      "name": "--set",
      "types": "Structure Of KeyAndValue",
      "description": "Group chat settings. See GetGroupSettingsStructure",
@@ -548,6 +590,7 @@
    "description": "Adds a new member to the selected group chat",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -555,6 +598,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -562,6 +606,7 @@
      "short": "-c"
     },
     {
+     "title": "MemberID",
      "name": "--member",
      "types": "String",
      "description": "Member ID for addition",
@@ -577,6 +622,7 @@
    "description": "Removes a member from the selected group chat",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -584,6 +630,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -591,6 +638,7 @@
      "short": "-c"
     },
     {
+     "title": "MemberID",
      "name": "--member",
      "types": "String",
      "description": "Member ID for removal",
@@ -606,6 +654,7 @@
    "description": "Assigns administrator rights to the specified group chat member",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -613,6 +662,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -620,6 +670,7 @@
      "short": "-c"
     },
     {
+     "title": "MemberID",
      "name": "--member",
      "types": "String",
      "description": "Member ID",
@@ -635,6 +686,7 @@
    "description": "Revokes administrator rights from the specified group chat member",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -642,6 +694,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -649,6 +702,7 @@
      "short": "-c"
     },
     {
+     "title": "MemberID",
      "name": "--member",
      "types": "String",
      "description": "Member ID",
@@ -664,6 +718,7 @@
    "description": "Excludes the current account from the specified group",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -671,6 +726,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Group chat ID",
@@ -686,6 +742,7 @@
    "description": "Returns the structure of group chat settings fields",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -693,6 +750,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns settings fields as a mapping",
@@ -708,6 +766,7 @@
    "description": "Sends a text message to the selected chat room",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -715,6 +774,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat identifier",
@@ -722,6 +782,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -729,6 +790,7 @@
      "short": "-t"
     },
     {
+     "title": "TypingTime",
      "name": "--typing",
      "types": "Number",
      "description": "Time to show the typing indicator before sending (in ms.)",
@@ -744,6 +806,7 @@
    "description": "Sends the file to the selected chat room",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -751,6 +814,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat identifier",
@@ -758,6 +822,7 @@
      "short": "-c"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File data or filepath",
@@ -765,6 +830,7 @@
      "short": "-f"
     },
     {
+     "title": "FileName",
      "name": "--filename",
      "types": "String",
      "description": "Name of the file with the extension",
@@ -772,6 +838,7 @@
      "short": "-l"
     },
     {
+     "title": "Description",
      "name": "--caption",
      "types": "String",
      "description": "Message text below the file",
@@ -779,6 +846,7 @@
      "short": "-p"
     },
     {
+     "title": "TypingTime",
      "name": "--typing",
      "types": "Number",
      "description": "Time to show typing indicator before sending (in ms.)",
@@ -786,6 +854,7 @@
      "short": "-t"
     },
     {
+     "title": "TypingType",
      "name": "--ttype",
      "types": "String",
      "description": "Typing type: text, recording, video, image, file",
@@ -801,6 +870,7 @@
    "description": "Sends a file from web to the selected chat room",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -808,6 +878,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat identifier",
@@ -815,6 +886,7 @@
      "short": "-c"
     },
     {
+     "title": "FileURL",
      "name": "--url",
      "types": "String",
      "description": "File URL",
@@ -822,6 +894,7 @@
      "short": "-u"
     },
     {
+     "title": "FileName",
      "name": "--filename",
      "types": "String",
      "description": "Name of the file with the extension",
@@ -829,6 +902,7 @@
      "short": "-f"
     },
     {
+     "title": "Description",
      "name": "--caption",
      "types": "String",
      "description": "Message text below the file",
@@ -836,6 +910,7 @@
      "short": "-p"
     },
     {
+     "title": "TypingTime",
      "name": "--typing",
      "types": "Number",
      "description": "Time to show typing indicator before sending (in ms.)",
@@ -843,6 +918,7 @@
      "short": "-t"
     },
     {
+     "title": "TypingType",
      "name": "--ttype",
      "types": "String",
      "description": "Typing type: text, recording, video, image, file",
@@ -858,6 +934,7 @@
    "description": "Gets the latest notification from the queue",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -865,6 +942,7 @@
      "short": "-a"
     },
     {
+     "title": "Timeout",
      "name": "--timeout",
      "types": "Number",
      "description": "Timeout for waiting for a notification if the queue is empty",
@@ -872,6 +950,7 @@
      "short": "-t"
     },
     {
+     "title": "Delete",
      "name": "--del",
      "types": "Boolean",
      "description": "Delete notification from the queue after retrieval",
@@ -887,6 +966,7 @@
    "description": "Deletes the specified notification from the queue",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -894,6 +974,7 @@
      "short": "-a"
     },
     {
+     "title": "NotificationID",
      "name": "--id",
      "types": "Number",
      "description": "Notification ID",
@@ -909,6 +990,7 @@
    "description": "Gets the latest messages from the chat history",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -916,6 +998,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat ID",
@@ -923,6 +1006,7 @@
      "short": "-c"
     },
     {
+     "title": "Count",
      "name": "--count",
      "types": "Number",
      "description": "Number of messages to receive",
@@ -938,6 +1022,7 @@
    "description": "Gets information about the chat message by ID",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -945,6 +1030,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat ID",
@@ -952,6 +1038,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String",
      "description": "Message ID",
@@ -967,6 +1054,7 @@
    "description": "Gets the latest incoming messages of the instance",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -974,6 +1062,7 @@
      "short": "-a"
     },
     {
+     "title": "Period",
      "name": "--span",
      "types": "Number",
      "description": "Time in minutes for which messages need to be received",
@@ -989,6 +1078,7 @@
    "description": "Gets the latest outgoing messages of the instance",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -996,6 +1086,7 @@
      "short": "-a"
     },
     {
+     "title": "Period",
      "name": "--span",
      "types": "Number",
      "description": "Time in minutes for which messages need to be received",
@@ -1011,6 +1102,7 @@
    "description": "Marks messages in the chat as read",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -1018,6 +1110,7 @@
      "short": "-a"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String",
      "description": "Chat ID",
@@ -1025,6 +1118,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String",
      "description": "Message ID. All messages, unless specified",
@@ -1040,6 +1134,7 @@
    "description": "Gets the number of messages in the outgoing queue",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -1055,6 +1150,7 @@
    "description": "Gets the list of messages to be sent",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -1070,6 +1166,7 @@
    "description": "Clears the list of messages to be sent",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -1085,6 +1182,7 @@
    "description": "Gets the number of notifications in the incoming queue",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",
@@ -1100,6 +1198,7 @@
    "description": "Clears the incoming notification queue",
    "params": [
     {
+     "title": "AccessParameters",
      "name": "--access",
      "types": "Structure Of KeyAndValue",
      "description": "Access parameters. See FormAccessParameters",

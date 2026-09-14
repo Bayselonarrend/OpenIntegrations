@@ -21,6 +21,7 @@
    "description": "Executes the command on the server",
    "params": [
     {
+     "title": "Command",
      "name": "--exec",
      "types": "String",
      "description": "Command text",
@@ -28,6 +29,7 @@
      "short": "-e"
     },
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -43,6 +45,7 @@
    "description": "Forms a collection of connection parameters",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Server URL",
@@ -50,6 +53,7 @@
      "short": "-u"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Password for connection",
@@ -57,6 +61,7 @@
      "short": "-p"
     },
     {
+     "title": "ReadTimeout",
      "name": "--rtout",
      "types": "Number",
      "description": "Response timeout (in seconds)",
@@ -64,6 +69,7 @@
      "short": "-r"
     },
     {
+     "title": "WriteTimeout",
      "name": "--wtout",
      "types": "Number",
      "description": "Request sending timeout (in seconds)",

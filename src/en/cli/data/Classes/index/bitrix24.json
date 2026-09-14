@@ -293,6 +293,7 @@
    "description": "Forms a link for authorization via the browser",
    "params": [
     {
+     "title": "Domain",
      "name": "--domain",
      "types": "String",
      "description": "Current Bitrix URL (like 'portal.bitrix24.com')",
@@ -300,6 +301,7 @@
      "short": "-d"
     },
     {
+     "title": "ClientID",
      "name": "--clientid",
      "types": "String",
      "description": "Client ID from app settings",
@@ -315,6 +317,7 @@
    "description": "Get token by auth code",
    "params": [
     {
+     "title": "ClientID",
      "name": "--clientid",
      "types": "String",
      "description": "Client ID from app settings",
@@ -322,6 +325,7 @@
      "short": "-c"
     },
     {
+     "title": "ClientSecret",
      "name": "--clientsecret",
      "types": "String",
      "description": "Client secret from app settings",
@@ -329,6 +333,7 @@
      "short": "-l"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from browser auth page",
@@ -344,6 +349,7 @@
    "description": "Update token by refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--clientid",
      "types": "String",
      "description": "Client ID from app settings",
@@ -351,6 +357,7 @@
      "short": "-c"
     },
     {
+     "title": "ClientSecret",
      "name": "--clientsecret",
      "types": "String",
      "description": "Client secret from app settings",
@@ -358,6 +365,7 @@
      "short": "-l"
     },
     {
+     "title": "Refresh",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -373,6 +381,7 @@
    "description": "Get current server time",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -380,6 +389,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -395,6 +405,7 @@
    "description": "Create a new post at news feed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -402,6 +413,7 @@
      "short": "-u"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Text of post",
@@ -409,6 +421,7 @@
      "short": "-t"
     },
     {
+     "title": "Visibility",
      "name": "--vision",
      "types": "String",
      "description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
@@ -416,6 +429,7 @@
      "short": "-v"
     },
     {
+     "title": "Files",
      "name": "--files",
      "types": "Map Of KeyAndValue",
      "description": "Key > file name, value > path or binary data",
@@ -423,6 +437,7 @@
      "short": "-f"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Post title",
@@ -430,6 +445,7 @@
      "short": "-l"
     },
     {
+     "title": "Important",
      "name": "--important",
      "types": "Boolean",
      "description": "Mark post as important",
@@ -437,6 +453,7 @@
      "short": "-i"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -452,6 +469,7 @@
    "description": "Change post data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -459,6 +477,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Post ID",
@@ -466,6 +485,7 @@
      "short": "-p"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Text of post",
@@ -473,6 +493,7 @@
      "short": "-t"
     },
     {
+     "title": "Visibility",
      "name": "--vision",
      "types": "String",
      "description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
@@ -480,6 +501,7 @@
      "short": "-v"
     },
     {
+     "title": "Files",
      "name": "--files",
      "types": "Map Of KeyAndValue",
      "description": "Key > file name, value > path or binary data",
@@ -487,6 +509,7 @@
      "short": "-f"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Post title",
@@ -494,6 +517,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -509,6 +533,7 @@
    "description": "Remove post from a news feed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -516,6 +541,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Id of post to remove",
@@ -523,6 +549,7 @@
      "short": "-p"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -538,6 +565,7 @@
    "description": "Return list of important post viewers ids",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -545,6 +573,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Id of important post",
@@ -552,6 +581,7 @@
      "short": "-p"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -567,6 +597,7 @@
    "description": "Gen post or array of post with ID or rights selection",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -574,6 +605,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Id of important post",
@@ -581,6 +613,7 @@
      "short": "-p"
     },
     {
+     "title": "Filter",
      "name": "--sel",
      "types": "String",
      "description": "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group",
@@ -588,6 +621,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -603,6 +637,7 @@
    "description": "Adds a comment to the post",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -610,6 +645,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Post ID",
@@ -617,6 +653,7 @@
      "short": "-p"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -624,6 +661,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -639,6 +677,7 @@
    "description": "Adds new groups or users to the recipients",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -646,6 +685,7 @@
      "short": "-u"
     },
     {
+     "title": "PostID",
      "name": "--postid",
      "types": "String, Number",
      "description": "Post ID",
@@ -653,6 +693,7 @@
      "short": "-p"
     },
     {
+     "title": "Visibility",
      "name": "--vision",
      "types": "String",
      "description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
@@ -660,6 +701,7 @@
      "short": "-v"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -675,6 +717,7 @@
    "description": "Get task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -682,6 +725,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -689,6 +733,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -704,6 +749,7 @@
    "description": "Get tasks list (50 at one response max) with or without filtering",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -711,6 +757,7 @@
      "short": "-u"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure of KeyAndValue",
      "description": "Lead filter structure. See GetLeadFilterStructure",
@@ -718,6 +765,7 @@
      "short": "-f"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "Number, String",
      "description": "Offset of tasks list",
@@ -725,6 +773,7 @@
      "short": "-o"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -732,6 +781,7 @@
      "short": "-t"
     },
     {
+     "title": "Fields",
      "name": "--select",
      "types": "String, Array of String",
      "description": "A list of task fields in the response. All non calculable by default",
@@ -747,6 +797,7 @@
    "description": "Create new task by fields structure",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -754,6 +805,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Task fields structure. See GetTaskFieldsStructure",
@@ -761,6 +813,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -776,6 +829,7 @@
    "description": "Update a task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -783,6 +837,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -790,6 +845,7 @@
      "short": "-t"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Task fields structure",
@@ -797,6 +853,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -812,6 +869,7 @@
    "description": "Delete task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -819,6 +877,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -826,6 +885,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -841,6 +901,7 @@
    "description": "Attaches a file to the selected task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -848,6 +909,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -855,6 +917,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "Number, String",
      "description": "File ID",
@@ -862,6 +925,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -877,6 +941,7 @@
    "description": "Approve task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -884,6 +949,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -891,6 +957,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -906,6 +973,7 @@
    "description": "Disapprove task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -913,6 +981,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -920,6 +989,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -935,6 +1005,7 @@
    "description": "Complete task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -942,6 +1013,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -949,6 +1021,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -964,6 +1037,7 @@
    "description": "Returns a task to work by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -971,6 +1045,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -978,6 +1053,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -993,6 +1069,7 @@
    "description": "Defer task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1000,6 +1077,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1007,6 +1085,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1022,6 +1101,7 @@
    "description": "Pause a task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1029,6 +1109,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1036,6 +1117,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1051,6 +1133,7 @@
    "description": "Start a task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1058,6 +1141,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1065,6 +1149,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1080,6 +1165,7 @@
    "description": "Start watching a task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1087,6 +1173,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1094,6 +1181,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1109,6 +1197,7 @@
    "description": "Stop watching a task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1116,6 +1205,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1123,6 +1213,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1138,6 +1229,7 @@
    "description": "Delegate task to another user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1145,6 +1237,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1152,6 +1245,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "Number, String",
      "description": "ID of responsible user",
@@ -1159,6 +1253,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1174,6 +1269,7 @@
    "description": "Add task to favorites list",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1181,6 +1277,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1188,6 +1285,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1203,6 +1301,7 @@
    "description": "Delete task from favorites list",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1210,6 +1309,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1217,6 +1317,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1232,6 +1333,7 @@
    "description": "Get history of task changing",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1239,6 +1341,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1246,6 +1349,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1261,6 +1365,7 @@
    "description": "Checks the availability of the task for users",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1268,6 +1373,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1275,6 +1381,7 @@
      "short": "-t"
     },
     {
+     "title": "Users",
      "name": "--users",
      "types": "Array of String",
      "description": "User IDs for access checking",
@@ -1282,6 +1389,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1297,6 +1405,7 @@
    "description": "Mute task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1304,6 +1413,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1311,6 +1421,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1326,6 +1437,7 @@
    "description": "Unmute task by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1333,6 +1445,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1340,6 +1453,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1355,6 +1469,7 @@
    "description": "Creates the dependency of one task to another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1362,6 +1477,7 @@
      "short": "-u"
     },
     {
+     "title": "FromID",
      "name": "--taskfrom",
      "types": "String, Number",
      "description": "From task ID",
@@ -1369,6 +1485,7 @@
      "short": "-t"
     },
     {
+     "title": "DestinationID",
      "name": "--taskto",
      "types": "String, Number",
      "description": "To task ID",
@@ -1376,6 +1493,7 @@
      "short": "-s"
     },
     {
+     "title": "LinkType",
      "name": "--linktype",
      "types": "String, Number",
      "description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
@@ -1383,6 +1501,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1398,6 +1517,7 @@
    "description": "Removes the dependency of one task to another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1405,6 +1525,7 @@
      "short": "-u"
     },
     {
+     "title": "FromID",
      "name": "--taskfrom",
      "types": "String, Number",
      "description": "From task ID",
@@ -1412,6 +1533,7 @@
      "short": "-t"
     },
     {
+     "title": "DestinationID",
      "name": "--taskto",
      "types": "String, Number",
      "description": "To task ID",
@@ -1419,6 +1541,7 @@
      "short": "-s"
     },
     {
+     "title": "LinkType",
      "name": "--linktype",
      "types": "String, Number",
      "description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
@@ -1426,6 +1549,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1441,6 +1565,7 @@
    "description": "Gets the task plan for the current users day",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1448,6 +1573,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1463,6 +1589,7 @@
    "description": "Gets a structure with a description of the fields for creating a task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1470,6 +1597,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1485,6 +1613,7 @@
    "description": "Return filter structure for GetTasksList",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -1492,6 +1621,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -1507,6 +1637,7 @@
    "description": "Gets list of custom task fields",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1514,6 +1645,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1529,6 +1661,7 @@
    "description": "Adds a new custom field to be added to the task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1536,6 +1669,7 @@
      "short": "-u"
     },
     {
+     "title": "Type",
      "name": "--type",
      "types": "String",
      "description": "Field type: string, double, date, boolean",
@@ -1543,6 +1677,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--fieldname",
      "types": "String",
      "description": "Text identifier (name) of the field",
@@ -1550,6 +1685,7 @@
      "short": "-f"
     },
     {
+     "title": "ExternalID",
      "name": "--externalid",
      "types": "String",
      "description": "Text identifier for external integration",
@@ -1557,6 +1693,7 @@
      "short": "-e"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Field title",
@@ -1564,6 +1701,7 @@
      "short": "-l"
     },
     {
+     "title": "Signature",
      "name": "--label",
      "types": "Structure Of KeyAndValue",
      "description": "Form label. Key: en or ru, Value: Lable text",
@@ -1571,6 +1709,7 @@
      "short": "-b"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1586,6 +1725,7 @@
    "description": "Updates a custom task field data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1593,6 +1733,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldID",
      "name": "--fieldid",
      "types": "String, Number",
      "description": "Field ID for updating",
@@ -1600,6 +1741,7 @@
      "short": "-f"
     },
     {
+     "title": "ExternalID",
      "name": "--externalid",
      "types": "String",
      "description": "Text identifier for external integration",
@@ -1607,6 +1749,7 @@
      "short": "-e"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Field title",
@@ -1614,6 +1757,7 @@
      "short": "-t"
     },
     {
+     "title": "Signature",
      "name": "--label",
      "types": "Structure Of KeyAndValue",
      "description": "Form label. Key: en or ru, Value: Lable text",
@@ -1621,6 +1765,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1636,6 +1781,7 @@
    "description": "Get custom task field data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1643,6 +1789,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldID",
      "name": "--fieldid",
      "types": "String, Number",
      "description": "Field ID for retrieval",
@@ -1650,6 +1797,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1665,6 +1813,7 @@
    "description": "Deletes a custom task field",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1672,6 +1821,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldID",
      "name": "--fieldid",
      "types": "String, Number",
      "description": "Field ID for deletion",
@@ -1679,6 +1829,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1694,6 +1845,7 @@
    "description": "Adds new element of tasks checklist",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1701,6 +1853,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1708,6 +1861,7 @@
      "short": "-t"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Text (title) of checklist element",
@@ -1715,6 +1869,7 @@
      "short": "-x"
     },
     {
+     "title": "Completed",
      "name": "--complete",
      "types": "Boolean",
      "description": "Mark as completed",
@@ -1722,6 +1877,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1737,6 +1893,7 @@
    "description": "Updates text of element of tasks checklist",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1744,6 +1901,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1751,6 +1909,7 @@
      "short": "-t"
     },
     {
+     "title": "ElementID",
      "name": "--element",
      "types": "Number, String",
      "description": "Checklist element ID",
@@ -1758,6 +1917,7 @@
      "short": "-e"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Text (title) of checklist element",
@@ -1765,6 +1925,7 @@
      "short": "-x"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1780,6 +1941,7 @@
    "description": "Deletes element from tasks checklist",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1787,6 +1949,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1794,6 +1957,7 @@
      "short": "-t"
     },
     {
+     "title": "ElementID",
      "name": "--element",
      "types": "Number, String",
      "description": "ID of deleted element",
@@ -1801,6 +1965,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1816,6 +1981,7 @@
    "description": "Gets the list of elements on the task checklist",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1823,6 +1989,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1830,6 +1997,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1845,6 +2013,7 @@
    "description": "Gets tasks checklist element by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1852,6 +2021,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1859,6 +2029,7 @@
      "short": "-t"
     },
     {
+     "title": "ElementID",
      "name": "--element",
      "types": "Number, String",
      "description": "Element ID",
@@ -1866,6 +2037,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1881,6 +2053,7 @@
    "description": "Mark an element as completed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1888,6 +2061,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1895,6 +2069,7 @@
      "short": "-t"
     },
     {
+     "title": "ElementID",
      "name": "--element",
      "types": "Number, String",
      "description": "Element ID",
@@ -1902,6 +2077,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1917,6 +2093,7 @@
    "description": "Unmark an element as completed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1924,6 +2101,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1931,6 +2109,7 @@
      "short": "-t"
     },
     {
+     "title": "ElementID",
      "name": "--element",
      "types": "Number, String",
      "description": "Element ID",
@@ -1938,6 +2117,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1953,6 +2133,7 @@
    "description": "Get user comments list for a task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1960,6 +2141,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1967,6 +2149,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -1982,6 +2165,7 @@
    "description": "Gets task comment data by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -1989,6 +2173,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -1996,6 +2181,7 @@
      "short": "-t"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "Number, String",
      "description": "CommentID",
@@ -2003,6 +2189,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2018,6 +2205,7 @@
    "description": "Create new comment to the task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2025,6 +2213,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -2032,6 +2221,7 @@
      "short": "-t"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -2039,6 +2229,7 @@
      "short": "-x"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2054,6 +2245,7 @@
    "description": "Changes task comment text",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2061,6 +2253,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -2068,6 +2261,7 @@
      "short": "-t"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "Number, String",
      "description": "CommentID",
@@ -2075,6 +2269,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -2082,6 +2277,7 @@
      "short": "-x"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2097,6 +2293,7 @@
    "description": "Delete task comment by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2104,6 +2301,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -2111,6 +2309,7 @@
      "short": "-t"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "Number, String",
      "description": "ID of comment to remove",
@@ -2118,6 +2317,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2133,6 +2333,7 @@
    "description": "Gets results list for task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2140,6 +2341,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "Number, String",
      "description": "Task ID",
@@ -2147,6 +2349,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2162,6 +2365,7 @@
    "description": "Create task result from comment",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2169,6 +2373,7 @@
      "short": "-u"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "Number, String",
      "description": "CommentID",
@@ -2176,6 +2381,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2191,6 +2397,7 @@
    "description": "Deletes task result, created from a comment",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2198,6 +2405,7 @@
      "short": "-u"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "Number, String",
      "description": "CommentID",
@@ -2205,6 +2413,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2220,6 +2429,7 @@
    "description": "Get comment fields structure",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -2235,6 +2445,7 @@
    "description": "Add new stage of kanban or My Plan",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2242,6 +2453,7 @@
      "short": "-u"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New stage name",
@@ -2249,6 +2461,7 @@
      "short": "-t"
     },
     {
+     "title": "Color",
      "name": "--color",
      "types": "String",
      "description": "HEX of new stage color",
@@ -2256,6 +2469,7 @@
      "short": "-c"
     },
     {
+     "title": "PrevStageID",
      "name": "--prevstage",
      "types": "String, Number",
      "description": "ID of the stage after which a new stage should be inserted (at the beginning by default.)",
@@ -2263,6 +2477,7 @@
      "short": "-p"
     },
     {
+     "title": "EntityID",
      "name": "--entityid",
      "types": "String, Number",
      "description": "ID of kanban owner (group or user)",
@@ -2270,6 +2485,7 @@
      "short": "-e"
     },
     {
+     "title": "AsAdmin",
      "name": "--admin",
      "types": "Boolean",
      "description": "Allows you to add stages without checking permissions (for administrators)",
@@ -2277,6 +2493,7 @@
      "short": "-a"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2292,6 +2509,7 @@
    "description": "Changes the properties of the existing kanban or My plan stage",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2299,6 +2517,7 @@
      "short": "-u"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New stages name",
@@ -2306,6 +2525,7 @@
      "short": "-t"
     },
     {
+     "title": "StageID",
      "name": "--stage",
      "types": "String, Number",
      "description": "Stage ID for change",
@@ -2313,6 +2533,7 @@
      "short": "-s"
     },
     {
+     "title": "Color",
      "name": "--color",
      "types": "String",
      "description": "HEX of new stage color",
@@ -2320,6 +2541,7 @@
      "short": "-c"
     },
     {
+     "title": "PrevStageID",
      "name": "--prevstage",
      "types": "String, Number",
      "description": "Stage ID, after which the selected stage should be inserted",
@@ -2327,6 +2549,7 @@
      "short": "-p"
     },
     {
+     "title": "AsAdmin",
      "name": "--admin",
      "types": "Boolean",
      "description": "Allows you to add stages without checking permissions (for administrators)",
@@ -2334,6 +2557,7 @@
      "short": "-a"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2349,6 +2573,7 @@
    "description": "Removes a kanban (My Plan) stage, provided there are no tasks in it",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2356,6 +2581,7 @@
      "short": "-u"
     },
     {
+     "title": "StageID",
      "name": "--stage",
      "types": "String, Number",
      "description": "ID of stage to dele",
@@ -2363,6 +2589,7 @@
      "short": "-s"
     },
     {
+     "title": "AsAdmin",
      "name": "--admin",
      "types": "Boolean",
      "description": "Allows you to add stages without checking permissions (for administrators)",
@@ -2370,6 +2597,7 @@
      "short": "-a"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2385,6 +2613,7 @@
    "description": "Get kanban (My Plan) stages info",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2392,6 +2621,7 @@
      "short": "-u"
     },
     {
+     "title": "EntityID",
      "name": "--entityid",
      "types": "String, Number",
      "description": "ID of kanban owner (group or user)",
@@ -2399,6 +2629,7 @@
      "short": "-e"
     },
     {
+     "title": "AsAdmin",
      "name": "--admin",
      "types": "Boolean",
      "description": "Allows you to get stages without checking permissions (for administrators)",
@@ -2406,6 +2637,7 @@
      "short": "-a"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2421,6 +2653,7 @@
    "description": "Move task to another kanban stage",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2428,6 +2661,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "ID of task to move",
@@ -2435,6 +2669,7 @@
      "short": "-t"
     },
     {
+     "title": "StageID",
      "name": "--stage",
      "types": "String, Number",
      "description": "Stage ID",
@@ -2442,6 +2677,7 @@
      "short": "-s"
     },
     {
+     "title": "Prev",
      "name": "--before",
      "types": "String, Number",
      "description": "ID of the task to put the selected one in front of (if After not filled)",
@@ -2449,6 +2685,7 @@
      "short": "-b"
     },
     {
+     "title": "After",
      "name": "--after",
      "types": "String, Number",
      "description": "ID of the task to be followed by the selected (if Prev not filled)",
@@ -2456,6 +2693,7 @@
      "short": "-a"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2471,6 +2709,7 @@
    "description": "Adds information about the user's time spent to the task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2478,6 +2717,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "ID of task for time accounting",
@@ -2485,6 +2725,7 @@
      "short": "-t"
     },
     {
+     "title": "Time",
      "name": "--amount",
      "types": "String, Number",
      "description": "Time spent in seconds",
@@ -2492,6 +2733,7 @@
      "short": "-a"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "ID of user for time accounting",
@@ -2499,6 +2741,7 @@
      "short": "-s"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -2506,6 +2749,7 @@
      "short": "-x"
     },
     {
+     "title": "SetupDate",
      "name": "--date",
      "types": "String",
      "description": "Date the record was set",
@@ -2513,6 +2757,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2528,6 +2773,7 @@
    "description": "Deletes record of time accounting",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2535,6 +2781,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "ID of task for time accounting",
@@ -2542,6 +2789,7 @@
      "short": "-t"
     },
     {
+     "title": "RecordID",
      "name": "--record",
      "types": "String, Number",
      "description": "Time record ID",
@@ -2549,6 +2797,7 @@
      "short": "-r"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2564,6 +2813,7 @@
    "description": "Get list of time accounting records for task",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2571,6 +2821,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "Task ID",
@@ -2578,6 +2829,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2593,6 +2845,7 @@
    "description": "Get time accounting record data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2600,6 +2853,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "Task ID",
@@ -2607,6 +2861,7 @@
      "short": "-t"
     },
     {
+     "title": "RecordID",
      "name": "--record",
      "types": "String, Number",
      "description": "Time record ID",
@@ -2614,6 +2869,7 @@
      "short": "-r"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2629,6 +2885,7 @@
    "description": "Update time accounting record data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2636,6 +2893,7 @@
      "short": "-u"
     },
     {
+     "title": "TaskID",
      "name": "--task",
      "types": "String, Number",
      "description": "Task ID",
@@ -2643,6 +2901,7 @@
      "short": "-t"
     },
     {
+     "title": "RecordID",
      "name": "--record",
      "types": "String, Number",
      "description": "Time record ID",
@@ -2650,6 +2909,7 @@
      "short": "-r"
     },
     {
+     "title": "Time",
      "name": "--amount",
      "types": "String, Number",
      "description": "Time spent in seconds",
@@ -2657,6 +2917,7 @@
      "short": "-a"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -2664,6 +2925,7 @@
      "short": "-x"
     },
     {
+     "title": "SetupDate",
      "name": "--date",
      "types": "String",
      "description": "Date the record was set",
@@ -2671,6 +2933,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2686,6 +2949,7 @@
    "description": "Starts user timekeeping",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2693,6 +2957,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "Users ID. Current by default",
@@ -2700,6 +2965,7 @@
      "short": "-s"
     },
     {
+     "title": "Time",
      "name": "--time",
      "types": "Date",
      "description": "Start time. The date must match the current. Current time by default.",
@@ -2707,6 +2973,7 @@
      "short": "-t"
     },
     {
+     "title": "Report",
      "name": "--report",
      "types": "String",
      "description": "Reason for change. Required when Time is specified and free schedule is disabled",
@@ -2714,6 +2981,7 @@
      "short": "-r"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2729,6 +2997,7 @@
    "description": "Stops user timekeeping",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2736,6 +3005,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "Users ID. Current by default",
@@ -2743,6 +3013,7 @@
      "short": "-s"
     },
     {
+     "title": "Time",
      "name": "--time",
      "types": "Date",
      "description": "Stop time. The date must match the current. Current time by default.",
@@ -2750,6 +3021,7 @@
      "short": "-t"
     },
     {
+     "title": "Report",
      "name": "--report",
      "types": "String",
      "description": "Reason for change. Required when Time is specified and free schedule is disabled",
@@ -2757,6 +3029,7 @@
      "short": "-r"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2772,6 +3045,7 @@
    "description": "Pauses user timekeeping",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2779,6 +3053,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "Users ID. Current by default",
@@ -2786,6 +3061,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2801,6 +3077,7 @@
    "description": "Gets user timekeeping status",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2808,6 +3085,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "Users ID. Current by default",
@@ -2815,6 +3093,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2830,6 +3109,7 @@
    "description": "Gets user timekeeping settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2837,6 +3117,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "Users ID. Current by default",
@@ -2844,6 +3125,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2859,6 +3141,7 @@
    "description": "Get list of available files storages",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2866,6 +3149,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2881,6 +3165,7 @@
    "description": "Get information about storage with which the application can work to store its data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2888,6 +3173,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2903,6 +3189,7 @@
    "description": "Get information about storage",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2910,6 +3197,7 @@
      "short": "-u"
     },
     {
+     "title": "StorageID",
      "name": "--storageid",
      "types": "String, Number",
      "description": "Storage ID",
@@ -2917,6 +3205,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2932,6 +3221,7 @@
    "description": "Change storage name (for app storage only, see. GetAppStorage)",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2939,6 +3229,7 @@
      "short": "-u"
     },
     {
+     "title": "StorageID",
      "name": "--storageid",
      "types": "String, Number",
      "description": "Storage ID",
@@ -2946,6 +3237,7 @@
      "short": "-s"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New storage name",
@@ -2953,6 +3245,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2968,6 +3261,7 @@
    "description": "Get a list of files and folders, located at the root of the storage",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -2975,6 +3269,7 @@
      "short": "-u"
     },
     {
+     "title": "StorageID",
      "name": "--storageid",
      "types": "String, Number",
      "description": "Storage ID",
@@ -2982,6 +3277,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -2997,6 +3293,7 @@
    "description": "Create new foldera at the storage",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3004,6 +3301,7 @@
      "short": "-u"
     },
     {
+     "title": "StorageID",
      "name": "--storageid",
      "types": "String",
      "description": "Storage ID",
@@ -3011,6 +3309,7 @@
      "short": "-s"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Folder name",
@@ -3018,6 +3317,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3033,6 +3333,7 @@
    "description": "Get folder information",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3040,6 +3341,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3047,6 +3349,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3062,6 +3365,7 @@
    "description": "Create new folder inside another folder",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3069,6 +3373,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Parent folder identifier",
@@ -3076,6 +3381,7 @@
      "short": "-f"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Name of new folder",
@@ -3083,6 +3389,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3098,6 +3405,7 @@
    "description": "Copy one folder to another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3105,6 +3413,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3112,6 +3421,7 @@
      "short": "-f"
     },
     {
+     "title": "DestinationID",
      "name": "--tagetid",
      "types": "String, Number",
      "description": "ID of target folder",
@@ -3119,6 +3429,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3134,6 +3445,7 @@
    "description": "Moves one folder inside another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3141,6 +3453,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3148,6 +3461,7 @@
      "short": "-f"
     },
     {
+     "title": "DestinationID",
      "name": "--tagetid",
      "types": "String, Number",
      "description": "ID of target folder",
@@ -3155,6 +3469,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3170,6 +3485,7 @@
    "description": "Remove folder with subfolders",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3177,6 +3493,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "ID of folder to be deleted",
@@ -3184,6 +3501,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3199,6 +3517,7 @@
    "description": "Get external link to folder",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3206,6 +3525,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3213,6 +3533,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3228,6 +3549,7 @@
    "description": "Get folder child elements",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3235,6 +3557,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3242,6 +3565,7 @@
      "short": "-f"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure of KeyAndValue",
      "description": "Items filter. See GetFolderFilterStructure",
@@ -3249,6 +3573,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3264,6 +3589,7 @@
    "description": "Move folder to recycle bin",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3271,6 +3597,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3278,6 +3605,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3293,6 +3621,7 @@
    "description": "Resotre folder form recycle bin",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3300,6 +3629,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3307,6 +3637,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3322,6 +3653,7 @@
    "description": "Change folder name",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3329,6 +3661,7 @@
      "short": "-u"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "Folder identifier",
@@ -3336,6 +3669,7 @@
      "short": "-f"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New folders name",
@@ -3343,6 +3677,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3358,6 +3693,7 @@
    "description": "Returns filter structure for child folder items",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3365,6 +3701,7 @@
      "short": "-u"
     },
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty values, False > field types at values",
@@ -3372,6 +3709,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3387,6 +3725,7 @@
    "description": "Upload file to storage root",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3394,6 +3733,7 @@
      "short": "-u"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "File name with extension",
@@ -3401,6 +3741,7 @@
      "short": "-t"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File for upload",
@@ -3408,6 +3749,7 @@
      "short": "-f"
     },
     {
+     "title": "StorageID",
      "name": "--storageid",
      "types": "String",
      "description": "Storage id",
@@ -3415,6 +3757,7 @@
      "short": "-s"
     },
     {
+     "title": "Rights",
      "name": "--rights",
      "types": "String",
      "description": "Rights array if required",
@@ -3422,6 +3765,7 @@
      "short": "-r"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3437,6 +3781,7 @@
    "description": "Upload local file to the folder",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3444,6 +3789,7 @@
      "short": "-u"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "File name with extension",
@@ -3451,6 +3797,7 @@
      "short": "-t"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File for upload",
@@ -3458,6 +3805,7 @@
      "short": "-f"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String",
      "description": "Folder identifier",
@@ -3465,6 +3813,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3480,6 +3829,7 @@
    "description": "Get information about file by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3487,6 +3837,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File identifier",
@@ -3494,6 +3845,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3509,6 +3861,7 @@
    "description": "Delete file by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3516,6 +3869,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "ID of removing file",
@@ -3523,6 +3877,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3538,6 +3893,7 @@
    "description": "Get external link to file",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3545,6 +3901,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File identifier",
@@ -3552,6 +3909,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3567,6 +3925,7 @@
    "description": "Move file to recycle bin",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3574,6 +3933,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File identifier",
@@ -3581,6 +3941,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3596,6 +3957,7 @@
    "description": "Restore file from recycle bin",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3603,6 +3965,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File identifier",
@@ -3610,6 +3973,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3625,6 +3989,7 @@
    "description": "Copy file from one destination to another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3632,6 +3997,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "Original file ID",
@@ -3639,6 +4005,7 @@
      "short": "-f"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "ID of copy destination folder",
@@ -3646,6 +4013,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3661,6 +4029,7 @@
    "description": "Move file from one destination to another",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3668,6 +4037,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File ID",
@@ -3675,6 +4045,7 @@
      "short": "-f"
     },
     {
+     "title": "FolderID",
      "name": "--folderid",
      "types": "String, Number",
      "description": "ID of new destination folder",
@@ -3682,6 +4053,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3697,6 +4069,7 @@
    "description": "Changes the name of an existing file",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3704,6 +4077,7 @@
      "short": "-u"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File identifier",
@@ -3711,6 +4085,7 @@
      "short": "-f"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New folders name",
@@ -3718,6 +4093,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3733,6 +4109,7 @@
    "description": "Creates a new chat based on the field structure",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3740,6 +4117,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Chat fields structure. See GetChatStructure",
@@ -3747,6 +4125,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3762,6 +4141,7 @@
    "description": "Gets the list of chat users by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3769,6 +4149,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3776,6 +4157,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3791,6 +4173,7 @@
    "description": "Removes the current user from the chat room",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3798,6 +4181,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3805,6 +4189,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3820,6 +4205,7 @@
    "description": "Get users information for dialog",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3827,6 +4213,7 @@
      "short": "-u"
     },
     {
+     "title": "UserIDs",
      "name": "--users",
      "types": "Array of String, Number",
      "description": "Usesr ID or array of users IDs",
@@ -3834,6 +4221,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3849,6 +4237,7 @@
    "description": "Adds users to the chat by ID array",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3856,6 +4245,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3863,6 +4253,7 @@
      "short": "-c"
     },
     {
+     "title": "UserIDs",
      "name": "--users",
      "types": "Array of string, number",
      "description": "New members IDs",
@@ -3870,6 +4261,7 @@
      "short": "-s"
     },
     {
+     "title": "HideHistory",
      "name": "--hide",
      "types": "Boolean",
      "description": "Hide old messages from new members",
@@ -3877,6 +4269,7 @@
      "short": "-h"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3892,6 +4285,7 @@
    "description": "Deletes user from chat",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3899,6 +4293,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3906,6 +4301,7 @@
      "short": "-c"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID",
@@ -3913,6 +4309,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3928,6 +4325,7 @@
    "description": "Change text of chat title",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3935,6 +4333,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3942,6 +4341,7 @@
      "short": "-c"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "New title",
@@ -3949,6 +4349,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -3964,6 +4365,7 @@
    "description": "Chat chat color for mobile app",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -3971,6 +4373,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -3978,6 +4381,7 @@
      "short": "-c"
     },
     {
+     "title": "Color",
      "name": "--color",
      "types": "String",
      "description": "New chat color",
@@ -3985,6 +4389,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4000,6 +4405,7 @@
    "description": "Setup new chat picture",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4007,6 +4413,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4014,6 +4421,7 @@
      "short": "-c"
     },
     {
+     "title": "Image",
      "name": "--picture",
      "types": "String, BinaryData",
      "description": "Picture data",
@@ -4021,6 +4429,7 @@
      "short": "-p"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4036,6 +4445,7 @@
    "description": "Change chat owner",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4043,6 +4453,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4050,6 +4461,7 @@
      "short": "-c"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID",
@@ -4057,6 +4469,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4072,6 +4485,7 @@
    "description": "Disable chat notifications",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4079,6 +4493,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4086,6 +4501,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4101,6 +4517,7 @@
    "description": "Enable chat notifications",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4108,6 +4525,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4115,6 +4533,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4130,6 +4549,7 @@
    "description": "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4137,6 +4557,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4144,6 +4565,7 @@
      "short": "-c"
     },
     {
+     "title": "LastID",
      "name": "--last",
      "types": "String, Number",
      "description": "Id of last message",
@@ -4151,6 +4573,7 @@
      "short": "-l"
     },
     {
+     "title": "FirstID",
      "name": "--first",
      "types": "String, Number",
      "description": "ID of first message",
@@ -4158,6 +4581,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4173,6 +4597,7 @@
    "description": "Get chat data by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4180,6 +4605,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4187,6 +4613,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4202,6 +4629,7 @@
    "description": "Get chat members list",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4209,6 +4637,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4216,6 +4645,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4231,6 +4661,7 @@
    "description": "Send Writing... status to dialog...",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4238,6 +4669,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4245,6 +4677,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4260,6 +4693,7 @@
    "description": "Gets the status (online) of the current user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4267,6 +4701,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4282,6 +4717,7 @@
    "description": "Sets the status (online) of the current user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4289,6 +4725,7 @@
      "short": "-u"
     },
     {
+     "title": "Status",
      "name": "--status",
      "types": "String, Number",
      "description": "Status value: online, dnd, away",
@@ -4296,6 +4733,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4311,6 +4749,7 @@
    "description": "Mark all message as readed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4318,6 +4757,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4333,6 +4773,7 @@
    "description": "Get information about folder for chat files",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4340,6 +4781,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4347,6 +4789,7 @@
      "short": "-c"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4362,6 +4805,7 @@
    "description": "Get chat fields structure",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty values, False > field types at values",
@@ -4377,6 +4821,7 @@
    "description": "Send message to dialog",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4384,6 +4829,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4391,6 +4837,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -4398,6 +4845,7 @@
      "short": "-t"
     },
     {
+     "title": "Attachments",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of attachments",
@@ -4405,6 +4853,7 @@
      "short": "-b"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4420,6 +4869,7 @@
    "description": "Edit dialog message content",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4427,6 +4877,7 @@
      "short": "-u"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of the message to be edited",
@@ -4434,6 +4885,7 @@
      "short": "-m"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "New message text",
@@ -4441,6 +4893,7 @@
      "short": "-t"
     },
     {
+     "title": "Attachments",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "New blocks array",
@@ -4448,6 +4901,7 @@
      "short": "-b"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4463,6 +4917,7 @@
    "description": "Set or remove reaction mark on the message",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4470,6 +4925,7 @@
      "short": "-u"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "Message ID",
@@ -4477,6 +4933,7 @@
      "short": "-m"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4492,6 +4949,7 @@
    "description": "Deletes a dialog message",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4499,6 +4957,7 @@
      "short": "-u"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of the message to be deleted",
@@ -4506,6 +4965,7 @@
      "short": "-m"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4521,6 +4981,7 @@
    "description": "Send disk file to chat",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4528,6 +4989,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID",
@@ -4535,6 +4997,7 @@
      "short": "-c"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String, Number",
      "description": "File ID from UploadFileToFolder method",
@@ -4542,6 +5005,7 @@
      "short": "-f"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "File description",
@@ -4549,6 +5013,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4564,6 +5029,7 @@
    "description": "Mark current and all previous messages as readed",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4571,6 +5037,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4578,6 +5045,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "Id of last readed message",
@@ -4585,6 +5053,7 @@
      "short": "-m"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4600,6 +5069,7 @@
    "description": "Mark current and all messages after as unreaded",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4607,6 +5077,7 @@
      "short": "-u"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Chat ID (as chatXXX) or User ID (as XXX)",
@@ -4614,6 +5085,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of last unreaded message",
@@ -4621,6 +5093,7 @@
      "short": "-m"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4636,6 +5109,7 @@
    "description": "Make picture block for SendMessage method",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Picture name",
@@ -4643,6 +5117,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of sending picture",
@@ -4658,6 +5133,7 @@
    "description": "Make file block for SendMessage method",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Picture name",
@@ -4665,6 +5141,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "File URL",
@@ -4680,6 +5157,7 @@
    "description": "Creates a personal notification to the user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4687,6 +5165,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID for sending the notification",
@@ -4694,6 +5173,7 @@
      "short": "-s"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Notification text",
@@ -4701,6 +5181,7 @@
      "short": "-t"
     },
     {
+     "title": "Tag",
      "name": "--tag",
      "types": "String",
      "description": "Uniqueness Tag. If already exist, other notif. will be deleted",
@@ -4708,6 +5189,7 @@
      "short": "-g"
     },
     {
+     "title": "Attachments",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of attachments",
@@ -4715,6 +5197,7 @@
      "short": "-b"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4730,6 +5213,7 @@
    "description": "Creates a system notification to the user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4737,6 +5221,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID for sending the notification",
@@ -4744,6 +5229,7 @@
      "short": "-s"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Notification text",
@@ -4751,6 +5237,7 @@
      "short": "-t"
     },
     {
+     "title": "Tag",
      "name": "--tag",
      "types": "String",
      "description": "Uniqueness Tag. If already exist, other notif. will be deleted",
@@ -4758,6 +5245,7 @@
      "short": "-g"
     },
     {
+     "title": "Attachments",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of attachments",
@@ -4765,6 +5253,7 @@
      "short": "-b"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4780,6 +5269,7 @@
    "description": "Delete notification by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4787,6 +5277,7 @@
      "short": "-u"
     },
     {
+     "title": "NotificationID",
      "name": "--notif",
      "types": "String, Number",
      "description": "Notification ID",
@@ -4794,6 +5285,7 @@
      "short": "-n"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4809,6 +5301,7 @@
    "description": "Creates a new department",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4816,6 +5309,7 @@
      "short": "-u"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Department name",
@@ -4823,6 +5317,7 @@
      "short": "-t"
     },
     {
+     "title": "ParentID",
      "name": "--parentid",
      "types": "String, Number",
      "description": "ID of parent department",
@@ -4830,6 +5325,7 @@
      "short": "-p"
     },
     {
+     "title": "HeadID",
      "name": "--headid",
      "types": "String, Number",
      "description": "ID of department manager",
@@ -4837,6 +5333,7 @@
      "short": "-h"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4852,6 +5349,7 @@
    "description": "Update an existing department",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4859,6 +5357,7 @@
      "short": "-u"
     },
     {
+     "title": "DepartmentID",
      "name": "--depid",
      "types": "String, Number",
      "description": "Department ID",
@@ -4866,6 +5365,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Department name",
@@ -4873,6 +5373,7 @@
      "short": "-t"
     },
     {
+     "title": "ParentID",
      "name": "--parentid",
      "types": "String, Number",
      "description": "ID of parent department",
@@ -4880,6 +5381,7 @@
      "short": "-p"
     },
     {
+     "title": "HeadID",
      "name": "--headid",
      "types": "String, Number",
      "description": "ID of department manager",
@@ -4887,6 +5389,7 @@
      "short": "-h"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4902,6 +5405,7 @@
    "description": "Gets a list of departments by ID or filter",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4909,6 +5413,7 @@
      "short": "-u"
     },
     {
+     "title": "DepartmentID",
      "name": "--depid",
      "types": "String, Number",
      "description": "Selection by department ID",
@@ -4916,6 +5421,7 @@
      "short": "-d"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Filter by name",
@@ -4923,6 +5429,7 @@
      "short": "-t"
     },
     {
+     "title": "ParentID",
      "name": "--parentid",
      "types": "String, Number",
      "description": "Filter by parent ID",
@@ -4930,6 +5437,7 @@
      "short": "-p"
     },
     {
+     "title": "HeadID",
      "name": "--headid",
      "types": "String, Number",
      "description": "Filter by manager ID",
@@ -4937,6 +5445,7 @@
      "short": "-h"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4952,6 +5461,7 @@
    "description": "Delets department by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4959,6 +5469,7 @@
      "short": "-u"
     },
     {
+     "title": "DepartmentID",
      "name": "--depid",
      "types": "String, Number",
      "description": "Department ID for deletion",
@@ -4966,6 +5477,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -4981,6 +5493,7 @@
    "description": "Get current user data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -4988,6 +5501,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5003,6 +5517,7 @@
    "description": "Gets user information by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5010,6 +5525,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "User ID",
@@ -5017,6 +5533,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5032,6 +5549,7 @@
    "description": "Create new user by fields structure",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5039,6 +5557,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "New user data. See. GetUserFieldsStructure",
@@ -5046,6 +5565,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5061,6 +5581,7 @@
    "description": "Updates user data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5068,6 +5589,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "User ID",
@@ -5075,6 +5597,7 @@
      "short": "-s"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "New user data. See. GetUserFieldsStructure",
@@ -5082,6 +5605,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5097,6 +5621,7 @@
    "description": "Activates or deactivates (fire) the selected user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5104,6 +5629,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--userid",
      "types": "String, Number",
      "description": "User ID",
@@ -5111,6 +5637,7 @@
      "short": "-s"
     },
     {
+     "title": "Fire",
      "name": "--fire",
      "types": "Boolean",
      "description": "True > Deactivation, False > Activation",
@@ -5118,6 +5645,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5133,6 +5661,7 @@
    "description": "Gets the list of users according to the specified filter",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5140,6 +5669,7 @@
      "short": "-u"
     },
     {
+     "title": "FilterStructure",
      "name": "--filter",
      "types": "Structure Of KeyAndValue",
      "description": "Filter. See GetUserFilterStructure",
@@ -5147,6 +5677,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5162,6 +5693,7 @@
    "description": "Gets the field structure for creating or modifying user information",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5169,6 +5701,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5184,6 +5717,7 @@
    "description": "Returns the field structure for filtering users in the FindUsers method",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -5199,6 +5733,7 @@
    "description": "Creates a new lead by fields structure",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5206,6 +5741,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Lead fields structure. See GetLeadStructure",
@@ -5213,6 +5749,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5228,6 +5765,7 @@
    "description": "Deletes a lead by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5235,6 +5773,7 @@
      "short": "-u"
     },
     {
+     "title": "LeadID",
      "name": "--lead",
      "types": "Number, String",
      "description": "Lead ID",
@@ -5242,6 +5781,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5257,6 +5797,7 @@
    "description": "Gets a lead by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5264,6 +5805,7 @@
      "short": "-u"
     },
     {
+     "title": "LeadID",
      "name": "--lead",
      "types": "Number, String",
      "description": "Lead ID",
@@ -5271,6 +5813,7 @@
      "short": "-l"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5286,6 +5829,7 @@
    "description": "Gets a list of leads (50 per request max) with or without filtering",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5293,6 +5837,7 @@
      "short": "-u"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure of KeyAndValue",
      "description": "Lead filter structure. See GetLeadFilterStructure",
@@ -5300,6 +5845,7 @@
      "short": "-f"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "Number, String",
      "description": "Offset from the beginning of the list to get leads > 50 recursively",
@@ -5307,6 +5853,7 @@
      "short": "-o"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5322,6 +5869,7 @@
    "description": "Modifies an existing lead",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5329,6 +5877,7 @@
      "short": "-u"
     },
     {
+     "title": "LeadID",
      "name": "--lead",
      "types": "Number, String",
      "description": "Lead ID",
@@ -5336,6 +5885,7 @@
      "short": "-l"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Structure of lead fields",
@@ -5343,6 +5893,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5358,6 +5909,7 @@
    "description": "Gets a structure with field descriptions for creating a lead",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5365,6 +5917,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5380,6 +5933,7 @@
    "description": "Returns the field structure for filtering leads in the GetLeadsList method",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -5395,6 +5949,7 @@
    "description": "Creates a new deal by field structure",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5402,6 +5957,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Deal fields structure. See. GetDealStructure",
@@ -5409,6 +5965,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5424,6 +5981,7 @@
    "description": "Deletes deal by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5431,6 +5989,7 @@
      "short": "-u"
     },
     {
+     "title": "DealID",
      "name": "--deal",
      "types": "Number, String",
      "description": "Deal ID",
@@ -5438,6 +5997,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5453,6 +6013,7 @@
    "description": "Gets deal by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5460,6 +6021,7 @@
      "short": "-u"
     },
     {
+     "title": "DealID",
      "name": "--deal",
      "types": "Number, String",
      "description": "Deal ID",
@@ -5467,6 +6029,7 @@
      "short": "-d"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5482,6 +6045,7 @@
    "description": "Gets the list of deals (50 pcs per query max) with or without filtering",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5489,6 +6053,7 @@
      "short": "-u"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure of KeyAndValue",
      "description": "Deals filter structure. See GetDealsFilterStructure",
@@ -5496,6 +6061,7 @@
      "short": "-f"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "Number, String",
      "description": "Offset from the beginning of the list to retrieve deals > 50 pcs recursively",
@@ -5503,6 +6069,7 @@
      "short": "-o"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5518,6 +6085,7 @@
    "description": "Modifies an existing deal",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5525,6 +6093,7 @@
      "short": "-u"
     },
     {
+     "title": "DealID",
      "name": "--deal",
      "types": "Number, String",
      "description": "Deal ID",
@@ -5532,6 +6101,7 @@
      "short": "-d"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Deal fields structure",
@@ -5539,6 +6109,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5554,6 +6125,7 @@
    "description": "Gets a structure with field descriptions for creating a deal",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5561,6 +6133,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5576,6 +6149,7 @@
    "description": "Returns the field structure for filtering deals in the GetDealsList method",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -5591,6 +6165,7 @@
    "description": "Gets a list of calendars of the specified owner",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5598,6 +6173,7 @@
      "short": "-u"
     },
     {
+     "title": "OwnerID",
      "name": "--owner",
      "types": "String, Number",
      "description": "Calendar owner ID",
@@ -5605,6 +6181,7 @@
      "short": "-o"
     },
     {
+     "title": "Type",
      "name": "--type",
      "types": "String",
      "description": "Calendar type: user, group, company_calendar, location, etc.",
@@ -5612,6 +6189,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5627,6 +6205,7 @@
    "description": "Creates a new calendar",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5634,6 +6213,7 @@
      "short": "-u"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Calendar fields structure. See GetCalendarStructure",
@@ -5641,6 +6221,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5656,6 +6237,7 @@
    "description": "Changes the calendar settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5663,6 +6245,7 @@
      "short": "-u"
     },
     {
+     "title": "CalendarID",
      "name": "--calendar",
      "types": "String, Number",
      "description": "Calendar ID",
@@ -5670,6 +6253,7 @@
      "short": "-c"
     },
     {
+     "title": "FieldsStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Deal fields structure. See. GetDealStructure",
@@ -5677,6 +6261,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5692,6 +6277,7 @@
    "description": "Deletes an existing calendar",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5699,6 +6285,7 @@
      "short": "-u"
     },
     {
+     "title": "CalendarID",
      "name": "--calendar",
      "types": "String, Number",
      "description": "Calendar ID",
@@ -5706,6 +6293,7 @@
      "short": "-c"
     },
     {
+     "title": "OwnerID",
      "name": "--owner",
      "types": "String, Number",
      "description": "Calendar owner ID",
@@ -5713,6 +6301,7 @@
      "short": "-o"
     },
     {
+     "title": "Type",
      "name": "--type",
      "types": "String",
      "description": "Calendar type: user, group",
@@ -5720,6 +6309,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5735,6 +6325,7 @@
    "description": "Gets an array of user events in the specified interval",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5742,6 +6333,7 @@
      "short": "-u"
     },
     {
+     "title": "Users",
      "name": "--users",
      "types": "Number, Array Of Number",
      "description": "IDs of users or a single user",
@@ -5749,6 +6341,7 @@
      "short": "-s"
     },
     {
+     "title": "StartDate",
      "name": "--from",
      "types": "Date",
      "description": "Start date of the period",
@@ -5756,6 +6349,7 @@
      "short": "-f"
     },
     {
+     "title": "EndDate",
      "name": "--to",
      "types": "Date",
      "description": "End date of the period",
@@ -5763,6 +6357,7 @@
      "short": "-t"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5778,6 +6373,7 @@
    "description": "Gets the current users custom calendar settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5785,6 +6381,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5800,6 +6397,7 @@
    "description": "Sets new custom calendar settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5807,6 +6405,7 @@
      "short": "-u"
     },
     {
+     "title": "SettingsStructure",
      "name": "--settings",
      "types": "Structure Of KeyAndValue",
      "description": "Settings structure. See GetCalednarCustomSettingsStructure",
@@ -5814,6 +6413,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5829,6 +6429,7 @@
    "description": "Gets the structure of the default calendar settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5836,6 +6437,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5851,6 +6453,7 @@
    "description": "Gets an empty structure for setting custom calendar settings",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -5866,6 +6469,7 @@
    "description": "Returns the structure of the calendar description fields",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -5881,6 +6485,7 @@
    "description": "Creates a new calendar event",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5888,6 +6493,7 @@
      "short": "-u"
     },
     {
+     "title": "EventDescription",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Event description. See GetCalendarEventsStructure",
@@ -5895,6 +6501,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5910,6 +6517,7 @@
    "description": "Modifies calendar event data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5917,6 +6525,7 @@
      "short": "-u"
     },
     {
+     "title": "EventID",
      "name": "--event",
      "types": "Number",
      "description": "Calednar event ID",
@@ -5924,6 +6533,7 @@
      "short": "-e"
     },
     {
+     "title": "EventDescription",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Event description. See GetCalendarEventsStructure",
@@ -5931,6 +6541,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5946,6 +6557,7 @@
    "description": "Gets a calendar event by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5953,6 +6565,7 @@
      "short": "-u"
     },
     {
+     "title": "EventID",
      "name": "--event",
      "types": "Number",
      "description": "Event ID to retrieve",
@@ -5960,6 +6573,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -5975,6 +6589,7 @@
    "description": "Gets events of calendars with or without filters",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -5982,6 +6597,7 @@
      "short": "-u"
     },
     {
+     "title": "OwnerID",
      "name": "--owner",
      "types": "String, Number",
      "description": "Calendar owner ID",
@@ -5989,6 +6605,7 @@
      "short": "-o"
     },
     {
+     "title": "Type",
      "name": "--type",
      "types": "String",
      "description": "Calendar type: user, group, company_calendar",
@@ -5996,6 +6613,7 @@
      "short": "-t"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure Of KeyAndValue",
      "description": "Events filter. See GetCalendarEventsFilterStructure",
@@ -6003,6 +6621,7 @@
      "short": "-f"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -6018,6 +6637,7 @@
    "description": "Deletes an event from the calendar",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -6025,6 +6645,7 @@
      "short": "-u"
     },
     {
+     "title": "EventID",
      "name": "--event",
      "types": "Number",
      "description": "ID of the event to be deleted",
@@ -6032,6 +6653,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -6047,6 +6669,7 @@
    "description": "Gets the event participation status of the current user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -6054,6 +6677,7 @@
      "short": "-u"
     },
     {
+     "title": "EventID",
      "name": "--event",
      "types": "Number",
      "description": "Calednar event ID",
@@ -6061,6 +6685,7 @@
      "short": "-e"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -6076,6 +6701,7 @@
    "description": "Sets the event participation status for the current user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL of webhook or a Bitrix24 domain, when token used",
@@ -6083,6 +6709,7 @@
      "short": "-u"
     },
     {
+     "title": "EventID",
      "name": "--event",
      "types": "Number",
      "description": "Calednar event ID",
@@ -6090,6 +6717,7 @@
      "short": "-e"
     },
     {
+     "title": "Status",
      "name": "--status",
      "types": "String",
      "description": "Participation status: Y (agreed), N (refused), Q (did not answer)",
@@ -6097,6 +6725,7 @@
      "short": "-s"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token, when app auth method used",
@@ -6112,6 +6741,7 @@
    "description": "Returns the structure of the calendar event fields",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -6127,6 +6757,7 @@
    "description": "Gets the filter structure for the function GetCalendarEvents",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",

@@ -21,6 +21,7 @@
    "description": "Serializes data into MessagePack format",
    "params": [
     {
+     "title": "Data",
      "name": "--value",
      "types": "Arbitrary",
      "description": "Collection for serialization",
@@ -28,6 +29,7 @@
      "short": "-v"
     },
     {
+     "title": "FromSource",
      "name": "--raw",
      "types": "Boolean",
      "description": "The data is a JSON string or a file on disk",
@@ -43,6 +45,7 @@
    "description": "Deserializes data from MessagePack format",
    "params": [
     {
+     "title": "Data",
      "name": "--data",
      "types": "BinaryData",
      "description": "Serialized value",

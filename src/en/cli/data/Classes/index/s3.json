@@ -61,6 +61,7 @@
    "description": "Returns the basic data for request in structured form",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL: domain for common methods or full URL with parameters for direct request sending",
@@ -68,6 +69,7 @@
      "short": "-u"
     },
     {
+     "title": "AccessKey",
      "name": "--access",
      "types": "String",
      "description": "Access key for authorization",
@@ -75,6 +77,7 @@
      "short": "-a"
     },
     {
+     "title": "SecretKey",
      "name": "--secret",
      "types": "String",
      "description": "Secret key for authorization",
@@ -82,6 +85,7 @@
      "short": "-s"
     },
     {
+     "title": "Region",
      "name": "--region",
      "types": "String",
      "description": "Service region",
@@ -89,6 +93,7 @@
      "short": "-r"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Type of service, if different from s3",
@@ -104,6 +109,7 @@
    "description": "Sends a simple http request without a body",
    "params": [
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "HTTP method",
@@ -111,6 +117,7 @@
      "short": "-m"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data (with full URL). See GetBasicDataStructure",
@@ -118,6 +125,7 @@
      "short": "-b"
     },
     {
+     "title": "ExpectedBinary",
      "name": "--binary",
      "types": "Boolean",
      "description": "Disables an attempt to convert the response to JSON",
@@ -125,6 +133,7 @@
      "short": "-n"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -140,6 +149,7 @@
    "description": "Send http request with body",
    "params": [
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "HTTP method",
@@ -147,6 +157,7 @@
      "short": "-m"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data (with full URL). See GetBasicDataStructure",
@@ -154,6 +165,7 @@
      "short": "-b"
     },
     {
+     "title": "Body",
      "name": "--body",
      "types": "String, BinaryData",
      "description": "Binary data or file of request body data",
@@ -161,6 +173,7 @@
      "short": "-d"
     },
     {
+     "title": "ExpectedBinary",
      "name": "--binary",
      "types": "Boolean",
      "description": "Disables an attempt to convert the response to JSON",
@@ -168,6 +181,7 @@
      "short": "-n"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -183,6 +197,7 @@
    "description": "Creates a new bucket with the specified name",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -190,6 +205,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -197,6 +213,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -204,6 +221,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -219,6 +237,7 @@
    "description": "Deletes the bucket by name",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -226,6 +245,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -233,6 +253,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -240,6 +261,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -255,6 +277,7 @@
    "description": "Checks if the bucket is available for the current account or account by ID",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -262,6 +285,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -269,6 +293,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -276,6 +301,7 @@
      "short": "-d"
     },
     {
+     "title": "AccountID",
      "name": "--account",
      "types": "String",
      "description": "Account ID to verify that hes the bucket owner",
@@ -283,6 +309,7 @@
      "short": "-a"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -298,6 +325,7 @@
    "description": "Sets bucket encryption by XML configuration",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -305,6 +333,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -312,6 +341,7 @@
      "short": "-b"
     },
     {
+     "title": "XmlConfig",
      "name": "--conf",
      "types": "String",
      "description": "XML string or file of encryption configuration",
@@ -319,6 +349,7 @@
      "short": "-c"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -326,6 +357,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -341,6 +373,7 @@
    "description": "Gets the previously set bucket encryption configuration",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -348,6 +381,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -355,6 +389,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -362,6 +397,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -377,6 +413,7 @@
    "description": "Deletes the bucket encryption configuration",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -384,6 +421,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -391,6 +429,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -398,6 +437,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -413,6 +453,7 @@
    "description": "Sets the tag set for the bucket",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -420,6 +461,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -427,6 +469,7 @@
      "short": "-b"
     },
     {
+     "title": "Tags",
      "name": "--tagset",
      "types": "Structure Of KeyAndValue",
      "description": "Set of tags (key and value)",
@@ -434,6 +477,7 @@
      "short": "-t"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -441,6 +485,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -456,6 +501,7 @@
    "description": "Gets the bucket tag set",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -463,6 +509,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -470,6 +517,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -477,6 +525,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -492,6 +541,7 @@
    "description": "Deletes the bucket tag set",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -499,6 +549,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -506,6 +557,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -513,6 +565,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -528,6 +581,7 @@
    "description": "Sets the versioning settings for bucket objects",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -535,6 +589,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -542,6 +597,7 @@
      "short": "-b"
     },
     {
+     "title": "Status",
      "name": "--status",
      "types": "Boolean",
      "description": "Enable and disable versioning, if necessary",
@@ -549,6 +605,7 @@
      "short": "-s"
     },
     {
+     "title": "MFADelete",
      "name": "--mfad",
      "types": "Boolean",
      "description": "Enable and disable MFA deletion, if necessary",
@@ -556,6 +613,7 @@
      "short": "-m"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -563,6 +621,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -578,6 +637,7 @@
    "description": "Gets the values of versioning settings of objects in the bucket",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Bucket name",
@@ -585,6 +645,7 @@
      "short": "-n"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -592,6 +653,7 @@
      "short": "-b"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -599,6 +661,7 @@
      "short": "-d"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -614,6 +677,7 @@
    "description": "Gets a list of buckets. It is possible to use filters if they are provided by your service",
    "params": [
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -621,6 +685,7 @@
      "short": "-b"
     },
     {
+     "title": "Prefix",
      "name": "--prefix",
      "types": "String",
      "description": "Filtering by prefix, if necessary",
@@ -628,6 +693,7 @@
      "short": "-p"
     },
     {
+     "title": "Region",
      "name": "--region",
      "types": "String",
      "description": "Selection by bucket region, if necessary",
@@ -635,6 +701,7 @@
      "short": "-r"
     },
     {
+     "title": "PageToken",
      "name": "--ctoken",
      "types": "String",
      "description": "Page token if pagination is used",
@@ -642,6 +709,7 @@
      "short": "-c"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -657,6 +725,7 @@
    "description": "Uploads the file to the bucket",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -664,6 +733,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -671,6 +741,7 @@
      "short": "-b"
     },
     {
+     "title": "Entity",
      "name": "--data",
      "types": "String, BinaryData",
      "description": "File path or binary data of the object",
@@ -678,6 +749,7 @@
      "short": "-d"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -685,6 +757,7 @@
      "short": "-s"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -692,6 +765,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -707,6 +781,7 @@
    "description": "Upload object with single request",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -714,6 +789,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -721,6 +797,7 @@
      "short": "-b"
     },
     {
+     "title": "Entity",
      "name": "--data",
      "types": "String, BinaryData",
      "description": "File path or binary data of the object",
@@ -728,6 +805,7 @@
      "short": "-d"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -735,6 +813,7 @@
      "short": "-s"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -742,6 +821,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -757,6 +837,7 @@
    "description": "Initializes the multipart object uploading",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -764,6 +845,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -771,6 +853,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -778,6 +861,7 @@
      "short": "-s"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -785,6 +869,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -800,6 +885,7 @@
    "description": "Uploads a part of an object for multipart uploading",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -807,6 +893,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -814,6 +901,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -821,6 +909,7 @@
      "short": "-s"
     },
     {
+     "title": "UploadID",
      "name": "--upload",
      "types": "String",
      "description": "Upload ID. See InitPartsUpload",
@@ -828,6 +917,7 @@
      "short": "-u"
     },
     {
+     "title": "PartNumber",
      "name": "--part",
      "types": "Number, String",
      "description": "Number of the object part from 1 to 10000",
@@ -835,6 +925,7 @@
      "short": "-p"
     },
     {
+     "title": "Data",
      "name": "--content",
      "types": "BinaryData, String",
      "description": "Part content for uploading",
@@ -842,6 +933,7 @@
      "short": "-c"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -857,6 +949,7 @@
    "description": "Confirms the multipart uploading finish",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -864,6 +957,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -871,6 +965,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -878,6 +973,7 @@
      "short": "-s"
     },
     {
+     "title": "UploadID",
      "name": "--upload",
      "types": "String",
      "description": "Upload ID. See InitPartsUpload",
@@ -885,6 +981,7 @@
      "short": "-u"
     },
     {
+     "title": "TagsArray",
      "name": "--tags",
      "types": "Array Of String",
      "description": "An array of tags (Etag) from the uploads responses of each part",
@@ -892,6 +989,7 @@
      "short": "-t"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -899,6 +997,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -914,6 +1013,7 @@
    "description": "Aborts the multipart uploading of the object",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -921,6 +1021,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -928,6 +1029,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -935,6 +1037,7 @@
      "short": "-s"
     },
     {
+     "title": "UploadID",
      "name": "--upload",
      "types": "String",
      "description": "Upload ID. See InitPartsUpload",
@@ -942,6 +1045,7 @@
      "short": "-u"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -949,6 +1053,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -964,6 +1069,7 @@
    "description": "Receives information about the properties of the object in the baquette",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -971,6 +1077,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket in which the object is stored",
@@ -978,6 +1085,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -985,6 +1093,7 @@
      "short": "-s"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Token for receiving a specific version of an object",
@@ -992,6 +1101,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -999,6 +1109,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1014,6 +1125,7 @@
    "description": "Gets the contents of the object from the bucket",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -1021,6 +1133,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket in which the object is stored",
@@ -1028,6 +1141,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1035,6 +1149,7 @@
      "short": "-s"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Token for receiving a specific version of an object",
@@ -1042,6 +1157,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1049,6 +1165,7 @@
      "short": "-h"
     },
     {
+     "title": "SavePath",
      "name": "--out",
      "types": "String",
      "description": "Path to directly write a file to disk",
@@ -1056,6 +1173,7 @@
      "short": null
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1071,6 +1189,7 @@
    "description": "Removes the object from the bucket",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -1078,6 +1197,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -1085,6 +1205,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1092,6 +1213,7 @@
      "short": "-s"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Token for deleting a specific version of an object",
@@ -1099,6 +1221,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1106,6 +1229,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1121,6 +1245,7 @@
    "description": "Copies an object from one location to another",
    "params": [
     {
+     "title": "SourcePath",
      "name": "--sname",
      "types": "String",
      "description": "Path (name) in the source bucket",
@@ -1128,6 +1253,7 @@
      "short": "-s"
     },
     {
+     "title": "DestinationBucket",
      "name": "--sbucket",
      "types": "String",
      "description": "Source bucket name",
@@ -1135,6 +1261,7 @@
      "short": "-b"
     },
     {
+     "title": "DestinationPath",
      "name": "--name",
      "types": "String",
      "description": "Path (name) in the destination bucket",
@@ -1142,6 +1269,7 @@
      "short": "-n"
     },
     {
+     "title": "SourceBucket",
      "name": "--bucket",
      "types": "String",
      "description": "Destination bucket name",
@@ -1149,6 +1277,7 @@
      "short": "-c"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1156,6 +1285,7 @@
      "short": "-a"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1163,6 +1293,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1178,6 +1309,7 @@
    "description": "Sets the tag set of the object",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Object name",
@@ -1185,6 +1317,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Bucket name",
@@ -1192,6 +1325,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1199,6 +1333,7 @@
      "short": "-s"
     },
     {
+     "title": "Tags",
      "name": "--tagset",
      "types": "Structure Of KeyAndValue",
      "description": "Set of tags (key and value)",
@@ -1206,6 +1341,7 @@
      "short": "-t"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1213,6 +1349,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1228,6 +1365,7 @@
    "description": "Gets the tag set of the object",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Object name",
@@ -1235,6 +1373,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Bucket name",
@@ -1242,6 +1381,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1249,6 +1389,7 @@
      "short": "-s"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Token for retrieving data of a specific version of an object",
@@ -1256,6 +1397,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1263,6 +1405,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1278,6 +1421,7 @@
    "description": "Deletes an objects tag set",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Object name",
@@ -1285,6 +1429,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Bucket name",
@@ -1292,6 +1437,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1299,6 +1445,7 @@
      "short": "-s"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Token for deleting data of a specific version of an object",
@@ -1306,6 +1453,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1313,6 +1461,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1328,6 +1477,7 @@
    "description": "Gets the list of objects in the selected bucket",
    "params": [
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Bucket name",
@@ -1335,6 +1485,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1342,6 +1493,7 @@
      "short": "-s"
     },
     {
+     "title": "Prefix",
      "name": "--prefix",
      "types": "String",
      "description": "Filtering by prefix, if necessary",
@@ -1349,6 +1501,7 @@
      "short": "-p"
     },
     {
+     "title": "PageToken",
      "name": "--ctoken",
      "types": "String",
      "description": "Page token if pagination is used",
@@ -1356,6 +1509,7 @@
      "short": "-c"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1363,6 +1517,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1378,6 +1533,7 @@
    "description": "Gets a list of all versions of objects in the selected bucket",
    "params": [
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Bucket name",
@@ -1385,6 +1541,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1392,6 +1549,7 @@
      "short": "-s"
     },
     {
+     "title": "Prefix",
      "name": "--prefix",
      "types": "String",
      "description": "Filtering by prefix, if necessary",
@@ -1399,6 +1557,7 @@
      "short": "-p"
     },
     {
+     "title": "Version",
      "name": "--ver",
      "types": "String",
      "description": "Version ID for the beginning of the list",
@@ -1406,6 +1565,7 @@
      "short": "-v"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1413,6 +1573,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1428,6 +1589,7 @@
    "description": "Get presigned link for object retrieving without authorization",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -1435,6 +1597,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -1442,6 +1605,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1449,6 +1613,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--expires",
      "types": "String, Number",
      "description": "Link lifetime in seconds. 604800 max.",
@@ -1456,6 +1621,7 @@
      "short": "-e"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1463,6 +1629,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",
@@ -1478,6 +1645,7 @@
    "description": "Gets a direct link to upload (put) an object without additional authorization",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of the object in the bucket",
@@ -1485,6 +1653,7 @@
      "short": "-n"
     },
     {
+     "title": "Bucket",
      "name": "--bucket",
      "types": "String",
      "description": "Name of the bucket to put the object",
@@ -1492,6 +1661,7 @@
      "short": "-b"
     },
     {
+     "title": "BasicData",
      "name": "--basic",
      "types": "Structure Of KeyAndValue",
      "description": "Basic request data. See GetBasicDataStructure",
@@ -1499,6 +1669,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--expires",
      "types": "String, Number",
      "description": "Link lifetime in seconds. 604800 max.",
@@ -1506,6 +1677,7 @@
      "short": "-e"
     },
     {
+     "title": "Headers",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -1513,6 +1685,7 @@
      "short": "-h"
     },
     {
+     "title": "Directory",
      "name": "--dir",
      "types": "Boolean",
      "description": "True > Path style URL, False > Virtual hosted style URL",

@@ -32,6 +32,7 @@
    "description": "Form LDAP connection parameters collection",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Server URL (ldap: or ldaps:)",
@@ -39,6 +40,7 @@
      "short": "-u"
     },
     {
+     "title": "BindDN",
      "name": "--bind",
      "types": "String",
      "description": "DN for bind",
@@ -46,6 +48,7 @@
      "short": "-b"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Password for bind",
@@ -53,6 +56,7 @@
      "short": "-p"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout of operations in seconds",
@@ -68,6 +72,7 @@
    "description": "Return current connection settings",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "AddIn object with open connection",
@@ -83,6 +88,7 @@
    "description": "Form TLS connection settings structure for LDAP connection",
    "params": [
     {
+     "title": "DisableCertVerification",
      "name": "--trust",
      "types": "Boolean",
      "description": "Allows to work with invalid certificates, including self signed",
@@ -90,6 +96,7 @@
      "short": "-t"
     },
     {
+     "title": "CertFilepath",
      "name": "--cert",
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
@@ -105,6 +112,7 @@
    "description": "Perform LDAP search",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -112,6 +120,7 @@
      "short": "-c"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base search DN",
@@ -119,6 +128,7 @@
      "short": "-b"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "String",
      "description": "LDAP",
@@ -126,6 +136,7 @@
      "short": "-f"
     },
     {
+     "title": "Attributes",
      "name": "--attrs",
      "types": "Array of String, Undefined",
      "description": "List of attributes for selection",
@@ -133,6 +144,7 @@
      "short": "-a"
     },
     {
+     "title": "Region",
      "name": "--scope",
      "types": "String",
      "description": "Scope: base, one, subtree",
@@ -148,6 +160,7 @@
    "description": "Add record to LDAP directory",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -155,6 +168,7 @@
      "short": "-c"
     },
     {
+     "title": "DN",
      "name": "--dn",
      "types": "String",
      "description": "DN of added record",
@@ -162,6 +176,7 @@
      "short": "-d"
     },
     {
+     "title": "Attributes",
      "name": "--attrs",
      "types": "Structure Of KeyAndValue",
      "description": "Record attributes",
@@ -177,6 +192,7 @@
    "description": "Modify record in LDAP directory",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -184,6 +200,7 @@
      "short": "-c"
     },
     {
+     "title": "DN",
      "name": "--dn",
      "types": "String",
      "description": "DN of modified record",
@@ -191,6 +208,7 @@
      "short": "-d"
     },
     {
+     "title": "Changes",
      "name": "--changes",
      "types": "Array of Structure",
      "description": "List of attribute changes",
@@ -206,6 +224,7 @@
    "description": "Delete record from LDAP directory",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -213,6 +232,7 @@
      "short": "-c"
     },
     {
+     "title": "DN",
      "name": "--dn",
      "types": "String",
      "description": "DN of deleted record",
@@ -228,6 +248,7 @@
    "description": "Compare LDAP record attribute value",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary, Structure Of KeyAndValue",
      "description": "Connection or connection parameters",
@@ -235,6 +256,7 @@
      "short": "-c"
     },
     {
+     "title": "DN",
      "name": "--dn",
      "types": "String",
      "description": "DN record",
@@ -242,6 +264,7 @@
      "short": "-d"
     },
     {
+     "title": "Attribute",
      "name": "--attr",
      "types": "String",
      "description": "AttributeName",
@@ -249,6 +272,7 @@
      "short": "-a"
     },
     {
+     "title": "Value",
      "name": "--value",
      "types": "String",
      "description": "Expected value",

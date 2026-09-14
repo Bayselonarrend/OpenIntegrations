@@ -53,6 +53,7 @@
    "description": "Получает код подтверждения и адрес страницы, на которой его необходимо ввести",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -68,6 +69,7 @@
    "description": "Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -75,6 +77,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -82,6 +85,7 @@
      "short": "-s"
     },
     {
+     "title": "КодУстройства",
      "name": "--device",
      "types": "Строка",
      "description": "device_code из ПолучитьКодПодтверждения",
@@ -97,6 +101,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -104,6 +109,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -111,6 +117,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",
@@ -126,6 +133,7 @@
    "description": "Получает информацию о текущем диске",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -141,6 +149,7 @@
    "description": "Создает каталог на диске",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -148,6 +157,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к создаваемой папке",
@@ -163,6 +173,7 @@
    "description": "Получает информацию об объекте диска по заданному пути",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -170,6 +181,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к папке или файлу",
@@ -185,6 +197,7 @@
    "description": "Удаляет объект по заданному пути",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -192,6 +205,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к удаляемой папке или файлу",
@@ -199,6 +213,7 @@
      "short": "-p"
     },
     {
+     "title": "ВКорзину",
      "name": "--can",
      "types": "Булево",
      "description": "В корзину",
@@ -214,6 +229,7 @@
    "description": "Создает копию объекта по заданному пути и пути к оригиналу",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -221,6 +237,7 @@
      "short": "-t"
     },
     {
+     "title": "Оригинал",
      "name": "--from",
      "types": "Строка",
      "description": "Путь к оригинальному файлу или каталогу",
@@ -228,6 +245,7 @@
      "short": "-f"
     },
     {
+     "title": "Путь",
      "name": "--to",
      "types": "Строка",
      "description": "Путь назначения для копии",
@@ -235,6 +253,7 @@
      "short": "-o"
     },
     {
+     "title": "Перезаписывать",
      "name": "--rewrite",
      "types": "Булево",
      "description": "Перезаписывать если файл с таким именем уже существует",
@@ -250,6 +269,7 @@
    "description": "Получает ссылку для скачивания файла",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -257,6 +277,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к файлу для скачивания",
@@ -272,6 +293,7 @@
    "description": "Получает ссылку для ручной загрузки файла на Диск",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -279,6 +301,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь для сохранение файла на Диске",
@@ -286,6 +309,7 @@
      "short": "-p"
     },
     {
+     "title": "Перезаписывать",
      "name": "--rewrite",
      "types": "Булево",
      "description": "Перезаписывать если файл с таким именем уже существует",
@@ -301,6 +325,7 @@
    "description": "Скачивает файл по указанному пути",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -308,6 +333,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к файлу для скачивания",
@@ -315,6 +341,7 @@
      "short": "-p"
     },
     {
+     "title": "ПутьСохранения",
      "name": "--out",
      "types": "Строка",
      "description": "Путь сохранения файла",
@@ -330,6 +357,7 @@
    "description": "Получает список файлов с или без отбора по типу\n\n Список доступных типов: audio, backup, book, compressed, data, development,\n\n                         diskimage, document, encoded, executable, flash, font,\n\n                         mage, settings, spreadsheet, text, unknown, video, web",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -337,6 +365,7 @@
      "short": "-t"
     },
     {
+     "title": "Количество",
      "name": "--amount",
      "types": "Число, Строка",
      "description": "Количество возвращаемых объектов",
@@ -344,6 +373,7 @@
      "short": "-a"
     },
     {
+     "title": "СмещениеОтНачала",
      "name": "--offset",
      "types": "Число",
      "description": "Смещение для получение объектов не из начала списка",
@@ -351,6 +381,7 @@
      "short": "-o"
     },
     {
+     "title": "ОтборПоТипу",
      "name": "--type",
      "types": "Строка",
      "description": "Отбор по типу файла",
@@ -358,6 +389,7 @@
      "short": "-p"
     },
     {
+     "title": "СортироватьПоДате",
      "name": "--datesort",
      "types": "Булево",
      "description": "Истина > сортировать по дате, Ложь > по алфавиту",
@@ -373,6 +405,7 @@
    "description": "Перемещает объект по заданному пути и пути к оригиналу",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -380,6 +413,7 @@
      "short": "-t"
     },
     {
+     "title": "Оригинал",
      "name": "--from",
      "types": "Строка",
      "description": "Путь к оригинальному файлу или папке",
@@ -387,6 +421,7 @@
      "short": "-f"
     },
     {
+     "title": "Путь",
      "name": "--to",
      "types": "Строка",
      "description": "Путь назначение для перемещения",
@@ -394,6 +429,7 @@
      "short": "-o"
     },
     {
+     "title": "Перезаписывать",
      "name": "--rewrite",
      "types": "Булево",
      "description": "Перезаписывать если файл с таким именем уже существует",
@@ -409,6 +445,7 @@
    "description": "Загружает файл на диск по заданному пути",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -416,6 +453,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь для сохранение файла на Диске",
@@ -423,6 +461,7 @@
      "short": "-p"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "Строка, ДвоичныеДанные",
      "description": "Файл для загрузки",
@@ -430,6 +469,7 @@
      "short": "-f"
     },
     {
+     "title": "Перезаписывать",
      "name": "--rewrite",
      "types": "Булево",
      "description": "Перезаписывать, если файл с таким именем уже существует",
@@ -445,6 +485,7 @@
    "description": "Загружает файл на диск по заданному пути частями",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -452,6 +493,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь для сохранение файла на Диске",
@@ -459,6 +501,7 @@
      "short": "-p"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "Строка, ДвоичныеДанные",
      "description": "Файл для загрузки",
@@ -466,6 +509,7 @@
      "short": "-f"
     },
     {
+     "title": "РазмерЧасти",
      "name": "--psize",
      "types": "Число",
      "description": "Размер одной части при загрузке",
@@ -473,6 +517,7 @@
      "short": "-s"
     },
     {
+     "title": "Перезаписывать",
      "name": "--rewrite",
      "types": "Булево",
      "description": "Перезаписывать, если файл с таким именем уже существует",
@@ -488,6 +533,7 @@
    "description": "Загружает файл на диск, забирая его по заданному URL",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -495,6 +541,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь помещения загруженного файла",
@@ -502,6 +549,7 @@
      "short": "-p"
     },
     {
+     "title": "Адрес",
      "name": "--url",
      "types": "Строка",
      "description": "URL файла",
@@ -517,6 +565,7 @@
    "description": "Публикует объект диска в публичный доступ",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -524,6 +573,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к публикуемому объекту",
@@ -539,6 +589,7 @@
    "description": "Отменяет публикацию ранее опубликованного объекта",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -546,6 +597,7 @@
      "short": "-t"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь к опубликованному ранее объекту",
@@ -561,6 +613,7 @@
    "description": "Получает список опубликованных объектов",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -568,6 +621,7 @@
      "short": "-t"
     },
     {
+     "title": "Количество",
      "name": "--amount",
      "types": "Число",
      "description": "Количество возвращаемых объектов",
@@ -575,6 +629,7 @@
      "short": "-a"
     },
     {
+     "title": "СмещениеОтНачала",
      "name": "--offset",
      "types": "Число",
      "description": "Смещение для получение объектов не из начала списка",
@@ -590,6 +645,7 @@
    "description": "Получает информацию об опубликованном объекте по его URL",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -597,6 +653,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "Адрес объекта",
@@ -604,6 +661,7 @@
      "short": "-u"
     },
     {
+     "title": "Количество",
      "name": "--amount",
      "types": "Число",
      "description": "Количество возвращаемых вложенных объектов (для каталога)",
@@ -611,6 +669,7 @@
      "short": "-a"
     },
     {
+     "title": "СмещениеОтНачала",
      "name": "--offset",
      "types": "Число",
      "description": "Смещение для получение вложенных объектов не из начала списка",
@@ -626,6 +685,7 @@
    "description": "Получает прямую ссылку для скачивания публичного объекта",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -633,6 +693,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "Адрес объекта",
@@ -640,6 +701,7 @@
      "short": "-u"
     },
     {
+     "title": "Путь",
      "name": "--path",
      "types": "Строка",
      "description": "Путь внутри объекта",
@@ -655,6 +717,7 @@
    "description": "Сохраняет публичный объект на ваш диск",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -662,6 +725,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "Адрес объекта",
@@ -669,6 +733,7 @@
      "short": "-u"
     },
     {
+     "title": "Откуда",
      "name": "--from",
      "types": "Строка",
      "description": "Путь внутри публичного каталога (только для папок)",
@@ -676,6 +741,7 @@
      "short": "-f"
     },
     {
+     "title": "Куда",
      "name": "--to",
      "types": "Строка",
      "description": "Путь сохранения файла",

@@ -38,6 +38,7 @@
    "description": "Performs a unary request to the selected service",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -45,6 +46,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -52,6 +54,7 @@
      "short": "-s"
     },
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "Method name",
@@ -59,6 +62,7 @@
      "short": "-m"
     },
     {
+     "title": "Request",
      "name": "--data",
      "types": "Structure Of KeyAndValue",
      "description": "Request data",
@@ -66,6 +70,7 @@
      "short": "-d"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout (in ms)",
@@ -73,6 +78,7 @@
      "short": "-t"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -88,6 +94,7 @@
    "description": "Forms a structure of parameters for creating a connection",
    "params": [
     {
+     "title": "Address",
      "name": "--addr",
      "types": "String",
      "description": "Connection address (with protocol)",
@@ -95,6 +102,7 @@
      "short": "-a"
     },
     {
+     "title": "Proto",
      "name": "--proto",
      "types": "Arbitrary",
      "description": "Schema or schema structure: Key > file name (for import), Value > schema as a string or file path",
@@ -102,6 +110,7 @@
      "short": "-p"
     },
     {
+     "title": "Metadata",
      "name": "--meta",
      "types": "Structure Of KeyAndValue",
      "description": "Metadata structure, if necessary",
@@ -117,6 +126,7 @@
    "description": "Forms settings for using TLS",
    "params": [
     {
+     "title": "DisableCertVerification",
      "name": "--trust",
      "types": "Boolean",
      "description": "Allows to work with invalid certificates, including self signed",
@@ -124,6 +134,7 @@
      "short": "-t"
     },
     {
+     "title": "CertFilepath",
      "name": "--cert",
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
@@ -139,6 +150,7 @@
    "description": "Gets a list of available services",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -146,6 +158,7 @@
      "short": "-c"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -161,6 +174,7 @@
    "description": "Gets a list of available methods for the specified service",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -168,6 +182,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -175,6 +190,7 @@
      "short": "-s"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -190,6 +206,7 @@
    "description": "Get method information",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -197,6 +214,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -204,6 +222,7 @@
      "short": "-s"
     },
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "Method name",
@@ -211,6 +230,7 @@
      "short": "-m"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -226,6 +246,7 @@
    "description": "Initializes the server stream and returns an array of received messages",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -233,6 +254,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -240,6 +262,7 @@
      "short": "-s"
     },
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "Method name",
@@ -247,6 +270,7 @@
      "short": "-m"
     },
     {
+     "title": "Request",
      "name": "--data",
      "types": "Structure Of KeyAndValue",
      "description": "First request data",
@@ -254,6 +278,7 @@
      "short": "-d"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout for individual operation (in ms))",
@@ -261,6 +286,7 @@
      "short": "-t"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -268,6 +294,7 @@
      "short": "-l"
     },
     {
+     "title": "MessageCount",
      "name": "--count",
      "types": "Number",
      "description": "Maximum messages to retrieve. Unlimited by default",
@@ -283,6 +310,7 @@
    "description": "Initializes client thread, passes message array, and receives final response",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -290,6 +318,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -297,6 +326,7 @@
      "short": "-s"
     },
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "Method name",
@@ -304,6 +334,7 @@
      "short": "-m"
     },
     {
+     "title": "Requests",
      "name": "--data",
      "types": "Array of Structure",
      "description": "Request data array or single request",
@@ -311,6 +342,7 @@
      "short": "-d"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout for individual operation (in ms))",
@@ -318,6 +350,7 @@
      "short": "-t"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -333,6 +366,7 @@
    "description": "Initializes a bidirectional stream, then passes and sends messages in the specified order",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -340,6 +374,7 @@
      "short": "-c"
     },
     {
+     "title": "Service",
      "name": "--service",
      "types": "String",
      "description": "Service name",
@@ -347,6 +382,7 @@
      "short": "-s"
     },
     {
+     "title": "Method",
      "name": "--method",
      "types": "String",
      "description": "Method name",
@@ -354,6 +390,7 @@
      "short": "-m"
     },
     {
+     "title": "ExchangeOrder",
      "name": "--exch",
      "types": "Array Of Arbitrary",
      "description": "Array of request data and Undefined where retrieval is needed",
@@ -361,6 +398,7 @@
      "short": "-e"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout for individual operation (in ms))",
@@ -368,6 +406,7 @@
      "short": "-t"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -375,6 +414,7 @@
      "short": "-l"
     },
     {
+     "title": "ContinueReceiving",
      "name": "--cnt",
      "types": "Boolean",
      "description": "Continue receiving after processing the exchange order",

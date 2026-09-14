@@ -58,6 +58,7 @@
    "description": "Проверяет работоспособность токена бота",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -73,6 +74,7 @@
    "description": "Получает события бота в Polling режиме",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -80,6 +82,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПоследнего",
      "name": "--last",
      "types": "Строка, Число",
      "description": "ID последнего обработанного до этого события",
@@ -87,6 +90,7 @@
      "short": "-l"
     },
     {
+     "title": "Таймаут",
      "name": "--timeout",
      "types": "Строка, Число",
      "description": "Время удержания соединения для Long Polling",
@@ -102,6 +106,7 @@
    "description": "Получает информацию о файле по его ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -109,6 +114,7 @@
      "short": "-t"
     },
     {
+     "title": "IDФайла",
      "name": "--fileid",
      "types": "Строка, Число",
      "description": "ID Файла",
@@ -124,6 +130,7 @@
    "description": "Отправляет текстовое сообщение в чат\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -131,6 +138,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки сообщения",
@@ -138,6 +146,7 @@
      "short": "-c"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст сообщения",
@@ -145,6 +154,7 @@
      "short": "-x"
     },
     {
+     "title": "IDЦитируемого",
      "name": "--reply",
      "types": "Строка, Число",
      "description": "ID цитируемого сообщения, если необходимо",
@@ -152,6 +162,7 @@
      "short": "-r"
     },
     {
+     "title": "Клавиатура",
      "name": "--keyboard",
      "types": "Массив Из Строка",
      "description": "Кнопки к сообщению, если необходимо",
@@ -159,6 +170,7 @@
      "short": "-k"
     },
     {
+     "title": "Разметка",
      "name": "--parsemod",
      "types": "Строка",
      "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
@@ -174,6 +186,7 @@
    "description": "Отправляет файл в чат",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -181,6 +194,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки файла",
@@ -188,6 +202,7 @@
      "short": "-c"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "ДвоичныеДанные, Строка",
      "description": "Файл для отправки",
@@ -195,6 +210,7 @@
      "short": "-f"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Подпись к файлу",
@@ -202,6 +218,7 @@
      "short": "-x"
     },
     {
+     "title": "ИмяФайла",
      "name": "--filename",
      "types": "Строка",
      "description": "Отображаемое имя файла",
@@ -209,6 +226,7 @@
      "short": "-l"
     },
     {
+     "title": "Разметка",
      "name": "--parsemod",
      "types": "Строка",
      "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
@@ -216,6 +234,7 @@
      "short": "-p"
     },
     {
+     "title": "ТипКонтента",
      "name": "--type",
      "types": "Строка",
      "description": "Тип файла для отправки",
@@ -231,6 +250,7 @@
    "description": "Отправляет аудиофайл в качестве голосового сообщения\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -238,6 +258,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки файла",
@@ -245,6 +266,7 @@
      "short": "-c"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "ДвоичныеДанные, Строка",
      "description": "Файл для отправки",
@@ -252,6 +274,7 @@
      "short": "-f"
     },
     {
+     "title": "ТипФайла",
      "name": "--type",
      "types": "Строка",
      "description": "Тип аудиофайла: aac, ogg или m4a",
@@ -259,6 +282,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЦитируемого",
      "name": "--reply",
      "types": "Строка, Число",
      "description": "ID цитируемого сообщения, если необходимо",
@@ -266,6 +290,7 @@
      "short": "-r"
     },
     {
+     "title": "Клавиатура",
      "name": "--keyboard",
      "types": "Массив Из Строка",
      "description": "Кнопки к сообщению, если необходимо",
@@ -281,6 +306,7 @@
    "description": "Изменяет текст существующего сообщения",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -288,6 +314,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки сообщения",
@@ -295,6 +322,7 @@
      "short": "-c"
     },
     {
+     "title": "IDСообщения",
      "name": "--messageid",
      "types": "Строка, Число",
      "description": "ID сообщения для редактирования",
@@ -302,6 +330,7 @@
      "short": "-m"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Новый текст сообщения",
@@ -309,6 +338,7 @@
      "short": "-x"
     },
     {
+     "title": "Разметка",
      "name": "--parsemod",
      "types": "Строка",
      "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
@@ -324,6 +354,7 @@
    "description": "Удаляет сообщение по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -331,6 +362,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки сообщения",
@@ -338,6 +370,7 @@
      "short": "-c"
     },
     {
+     "title": "IDСообщения",
      "name": "--messageid",
      "types": "Строка, Число",
      "description": "ID сообщения для редактирования",
@@ -353,6 +386,7 @@
    "description": "Отправляет ранее загруженный файл по его ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -360,6 +394,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки файла",
@@ -367,6 +402,7 @@
      "short": "-c"
     },
     {
+     "title": "IDФайла",
      "name": "--fileid",
      "types": "Строка, Число",
      "description": "ID Файла для отправки",
@@ -374,6 +410,7 @@
      "short": "-f"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Подпись к файлу",
@@ -381,6 +418,7 @@
      "short": "-x"
     },
     {
+     "title": "Разметка",
      "name": "--parsemod",
      "types": "Строка",
      "description": "Вид разметки для текста сообщения: MarkdownV2 или HTML",
@@ -396,6 +434,7 @@
    "description": "Отправляет ранее загруженное голосовое сообщение по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -403,6 +442,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки файла",
@@ -410,6 +450,7 @@
      "short": "-c"
     },
     {
+     "title": "IDФайла",
      "name": "--fileid",
      "types": "Строка, Число",
      "description": "ID Файла голосового сообщения",
@@ -425,6 +466,7 @@
    "description": "Пересылает существующее сообщение в текущий диалог",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -432,6 +474,7 @@
      "short": "-t"
     },
     {
+     "title": "IDСообщения",
      "name": "--messageid",
      "types": "Строка, Число",
      "description": "ID оригинального сообщения",
@@ -439,6 +482,7 @@
      "short": "-m"
     },
     {
+     "title": "IDЧатаИсточника",
      "name": "--fromid",
      "types": "Строка, Число",
      "description": "ID чата источника оригинального сообщения",
@@ -446,6 +490,7 @@
      "short": "-f"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата для отправки сообщения",
@@ -453,6 +498,7 @@
      "short": "-c"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Дополнительный текст сообщения",
@@ -468,6 +514,7 @@
    "description": "Закрепляет выбранное сообщение в чате",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -475,6 +522,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -482,6 +530,7 @@
      "short": "-c"
     },
     {
+     "title": "IDСообщения",
      "name": "--messageid",
      "types": "Строка, Число",
      "description": "ID сообщения для закрепления",
@@ -497,6 +546,7 @@
    "description": "Открепляет ранее закрепленное сообщение в чате",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -504,6 +554,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -511,6 +562,7 @@
      "short": "-c"
     },
     {
+     "title": "IDСообщения",
      "name": "--messageid",
      "types": "Строка, Число",
      "description": "ID сообщения для открепления",
@@ -526,6 +578,7 @@
    "description": "Возвращает ответ пользователю при нажатии на кнопку клавиатуры",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -533,6 +586,7 @@
      "short": "-t"
     },
     {
+     "title": "IDСобытия",
      "name": "--queryid",
      "types": "Строка",
      "description": "Идентификатор callback query полученного ботом",
@@ -540,6 +594,7 @@
      "short": "-q"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст ответа",
@@ -547,6 +602,7 @@
      "short": "-x"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL, который будет открыт клиентским приложением",
@@ -554,6 +610,7 @@
      "short": "-u"
     },
     {
+     "title": "ЭтоПредупреждение",
      "name": "--showalert",
      "types": "Булево",
      "description": "Отображать ответ как предупреждение (alert)",
@@ -569,6 +626,7 @@
    "description": "Формирует кнопку действия для клавиатуры сообщения",
    "params": [
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст кнопки",
@@ -576,6 +634,7 @@
      "short": "-t"
     },
     {
+     "title": "Значение",
      "name": "--data",
      "types": "Строка",
      "description": "Значение, возвращаемое в событии нажатия. Только если не заполнено URL",
@@ -583,6 +642,7 @@
      "short": "-d"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL для создания кнопки открытия страницы. Только если не заполнено Значение",
@@ -590,6 +650,7 @@
      "short": "-u"
     },
     {
+     "title": "Стиль",
      "name": "--style",
      "types": "Строка",
      "description": "Стиль кнопки: primary, attention или base",
@@ -605,6 +666,7 @@
    "description": "Исключает пользователей из чата\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -612,6 +674,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -619,6 +682,7 @@
      "short": "-c"
     },
     {
+     "title": "Пользователи",
      "name": "--members",
      "types": "Строка, Число, Массив Из Строка, Число",
      "description": "Пользователь или пользователи чата для удаления",
@@ -634,6 +698,7 @@
    "description": "Изменяет картинку аватар чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -641,6 +706,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -648,6 +714,7 @@
      "short": "-c"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "ДвоичныеДанные, Строка",
      "description": "Файл картинки",
@@ -663,6 +730,7 @@
    "description": "Получает основную информацию о чате",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -670,6 +738,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -685,6 +754,7 @@
    "description": "Получает список администраторов чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -692,6 +762,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -707,6 +778,7 @@
    "description": "Получает список пользователей чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -714,6 +786,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -721,6 +794,7 @@
      "short": "-c"
     },
     {
+     "title": "Курсор",
      "name": "--cursor",
      "types": "Строка",
      "description": "Маркер продолжения списка из предыдущего запроса",
@@ -736,6 +810,7 @@
    "description": "Получает список заблокированных пользователей чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -743,6 +818,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -758,6 +834,7 @@
    "description": "Получает список запросов на вступление в чат",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -765,6 +842,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -780,6 +858,7 @@
    "description": "Блокирует выбранного пользователя в чате",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -787,6 +866,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -794,6 +874,7 @@
      "short": "-c"
     },
     {
+     "title": "IDПользователя",
      "name": "--userid",
      "types": "Строка, Число",
      "description": "ID пользователя для блокировки",
@@ -801,6 +882,7 @@
      "short": "-u"
     },
     {
+     "title": "УдалитьПоследниеСообщения",
      "name": "--dellast",
      "types": "Булево",
      "description": "Удалить последние сообщения перед блокировкой",
@@ -816,6 +898,7 @@
    "description": "Разблокирует ранее заблокированного пользователя в чате",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -823,6 +906,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -830,6 +914,7 @@
      "short": "-c"
     },
     {
+     "title": "IDПользователя",
      "name": "--userid",
      "types": "Строка, Число",
      "description": "ID пользователя",
@@ -845,6 +930,7 @@
    "description": "Подтверждает вступление пользователя в закрытый чат",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -852,6 +938,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -859,6 +946,7 @@
      "short": "-c"
     },
     {
+     "title": "IDПользователя",
      "name": "--userid",
      "types": "Строка, Число",
      "description": "ID пользователя. Ответ на все заявки, если не заполнено",
@@ -874,6 +962,7 @@
    "description": "Отклоняет вступление пользователя в закрытый чат",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -881,6 +970,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -888,6 +978,7 @@
      "short": "-c"
     },
     {
+     "title": "IDПользователя",
      "name": "--userid",
      "types": "Строка, Число",
      "description": "ID пользователя. Ответ на все заявки, если не заполнено",
@@ -903,6 +994,7 @@
    "description": "Устанавливает новый заголовок чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -910,6 +1002,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -917,6 +1010,7 @@
      "short": "-c"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст заголовка",
@@ -932,6 +1026,7 @@
    "description": "Устанавливает новое описание чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -939,6 +1034,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -946,6 +1042,7 @@
      "short": "-c"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст описания",
@@ -961,6 +1058,7 @@
    "description": "Устанавливает новые правила чата",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен бота",
@@ -968,6 +1066,7 @@
      "short": "-t"
     },
     {
+     "title": "IDЧата",
      "name": "--chatid",
      "types": "Строка, Число",
      "description": "ID чата",
@@ -975,6 +1074,7 @@
      "short": "-c"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текст правил",

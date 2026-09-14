@@ -47,6 +47,7 @@
    "description": "Creates a child page above another parent page",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -54,6 +55,7 @@
      "short": "-t"
     },
     {
+     "title": "Parent",
      "name": "--page",
      "types": "String",
      "description": "Parent ID",
@@ -61,6 +63,7 @@
      "short": "-p"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Page title",
@@ -76,6 +79,7 @@
    "description": "Creates a page in the parent database",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -83,6 +87,7 @@
      "short": "-t"
     },
     {
+     "title": "Parent",
      "name": "--base",
      "types": "String",
      "description": "Parent database ID",
@@ -90,6 +95,7 @@
      "short": "-b"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Map Of KeyAndValue",
      "description": "Properties map",
@@ -105,6 +111,7 @@
    "description": "Gets information about the page by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -112,6 +119,7 @@
      "short": "-t"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "String",
      "description": "Page ID",
@@ -127,6 +135,7 @@
    "description": "Changes the properties of an existing page",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -134,6 +143,7 @@
      "short": "-t"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "String",
      "description": "ID of the page being modified",
@@ -141,6 +151,7 @@
      "short": "-p"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Map Of KeyAndValue",
      "description": "Map of editable parameters",
@@ -148,6 +159,7 @@
      "short": "-d"
     },
     {
+     "title": "Icon",
      "name": "--icon",
      "types": "String",
      "description": "URL of the page icon image",
@@ -155,6 +167,7 @@
      "short": "-i"
     },
     {
+     "title": "Cover",
      "name": "--cover",
      "types": "String",
      "description": "URL of the page cover image",
@@ -162,6 +175,7 @@
      "short": "-c"
     },
     {
+     "title": "Archived",
      "name": "--archive",
      "types": "Boolean",
      "description": "Archive page or not (boolean)",
@@ -177,6 +191,7 @@
    "description": "Creates a database",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -184,6 +199,7 @@
      "short": "-t"
     },
     {
+     "title": "Parent",
      "name": "--page",
      "types": "String",
      "description": "Parent page ID",
@@ -191,6 +207,7 @@
      "short": "-p"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Database title",
@@ -198,6 +215,7 @@
      "short": "-l"
     },
     {
+     "title": "Properties",
      "name": "--props",
      "types": "Structure Of String",
      "description": "Database properties",
@@ -213,6 +231,7 @@
    "description": "Get database information",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -220,6 +239,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database ID",
@@ -235,6 +255,7 @@
    "description": "Edits properties of an existing database",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -242,6 +263,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Target database ID",
@@ -249,6 +271,7 @@
      "short": "-b"
     },
     {
+     "title": "Properties",
      "name": "--props",
      "types": "Map of KeyAndValue",
      "description": "New or modified database properties",
@@ -256,6 +279,7 @@
      "short": "-p"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "New database title",
@@ -263,6 +287,7 @@
      "short": "-l"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "New database description",
@@ -278,6 +303,7 @@
    "description": "Creates a new block based on an existing block",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -285,6 +311,7 @@
      "short": "-t"
     },
     {
+     "title": "Parent",
      "name": "--page",
      "types": "String",
      "description": "Parent block or page ID",
@@ -292,6 +319,7 @@
      "short": "-p"
     },
     {
+     "title": "Block",
      "name": "--block",
      "types": "String, Map Of KeyAndValue",
      "description": "Block ID or block sample itself",
@@ -299,6 +327,7 @@
      "short": "-b"
     },
     {
+     "title": "InsertAfter",
      "name": "--prev",
      "types": "String",
      "description": "Block ID after which to insert the new one",
@@ -314,6 +343,7 @@
    "description": "Returns the block structure by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -321,6 +351,7 @@
      "short": "-t"
     },
     {
+     "title": "BlockID",
      "name": "--block",
      "types": "String",
      "description": "Block ID",
@@ -328,6 +359,7 @@
      "short": "-b"
     },
     {
+     "title": "OnlyBase",
      "name": "--core",
      "types": "Boolean",
      "description": "True > service fields are deleted, only the block itself remains",
@@ -343,6 +375,7 @@
    "description": "Returns list of child blocks of parent block",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -350,6 +383,7 @@
      "short": "-t"
     },
     {
+     "title": "BlockID",
      "name": "--block",
      "types": "String",
      "description": "Parent block ID",
@@ -365,6 +399,7 @@
    "description": "Deletes block by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -372,6 +407,7 @@
      "short": "-t"
     },
     {
+     "title": "BlockID",
      "name": "--block",
      "types": "String",
      "description": "Block ID",
@@ -387,6 +423,7 @@
    "description": "Returns a list of workspace users",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -402,6 +439,7 @@
    "description": "Gets user data by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -409,6 +447,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String",
      "description": "Target user ID",

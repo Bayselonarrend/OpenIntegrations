@@ -78,6 +78,7 @@
    "description": "Gets a temporary token based on login and password",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -85,6 +86,7 @@
      "short": "-u"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Users login",
@@ -92,6 +94,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Users password",
@@ -107,6 +110,7 @@
    "description": "Creates a permanent ReportPortal user token",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -114,6 +118,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -121,6 +126,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String",
      "description": "User ID",
@@ -128,6 +134,7 @@
      "short": "-s"
     },
     {
+     "title": "KeyName",
      "name": "--name",
      "types": "String",
      "description": "Token name",
@@ -143,6 +150,7 @@
    "description": "Deletes a previously created user token",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -150,6 +158,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -157,6 +166,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String",
      "description": "User ID",
@@ -164,6 +174,7 @@
      "short": "-s"
     },
     {
+     "title": "KeyID",
      "name": "--id",
      "types": "String",
      "description": "Token ID",
@@ -179,6 +190,7 @@
    "description": "Gets the list of user tokens (API keys)",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -186,6 +198,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -193,6 +206,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String",
      "description": "User ID",
@@ -208,6 +222,7 @@
    "description": "Creates a new user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -215,6 +230,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -222,6 +238,7 @@
      "short": "-t"
     },
     {
+     "title": "UserStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "New user data. See. GetUserFieldsStructure",
@@ -237,6 +254,7 @@
    "description": "Deletes a user by login",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -244,6 +262,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -251,6 +270,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--id",
      "types": "String",
      "description": "User ID",
@@ -266,6 +286,7 @@
    "description": "Changes the data of the selected user",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -273,6 +294,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -280,6 +302,7 @@
      "short": "-t"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Users login",
@@ -287,6 +310,7 @@
      "short": "-l"
     },
     {
+     "title": "UserStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "New user data. See. GetUserFieldsStructure",
@@ -302,6 +326,7 @@
    "description": "Get current user data",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -309,6 +334,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -324,6 +350,7 @@
    "description": "Gets user information by login",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -331,6 +358,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -338,6 +366,7 @@
      "short": "-t"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Users login",
@@ -353,6 +382,7 @@
    "description": "Gets the list of existing users",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -360,6 +390,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -367,6 +398,7 @@
      "short": "-t"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "Number",
      "description": "List page number",
@@ -382,6 +414,7 @@
    "description": "Gets the list of user projects",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -389,6 +422,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -396,6 +430,7 @@
      "short": "-t"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Users login",
@@ -411,6 +446,7 @@
    "description": "Gets the structure of user description fields",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -418,6 +454,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -433,6 +470,7 @@
    "description": "Creates a new project with the specified name",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -440,6 +478,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -447,6 +486,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Project name",
@@ -462,6 +502,7 @@
    "description": "Deletes a project by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -469,6 +510,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -476,6 +518,7 @@
      "short": "-t"
     },
     {
+     "title": "ProjectID",
      "name": "--id",
      "types": "Number",
      "description": "Project ID",
@@ -491,6 +534,7 @@
    "description": "Gets information about a project by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -498,6 +542,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -505,6 +550,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Project name",
@@ -520,6 +566,7 @@
    "description": "Gets a list of existing projects",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -527,6 +574,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -534,6 +582,7 @@
      "short": "-t"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "Number",
      "description": "List page number",
@@ -549,6 +598,7 @@
    "description": "Adds users to the specified project",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -556,6 +606,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -563,6 +614,7 @@
      "short": "-t"
     },
     {
+     "title": "ProjectName",
      "name": "--proj",
      "types": "String",
      "description": "Project name",
@@ -570,6 +622,7 @@
      "short": "-p"
     },
     {
+     "title": "UserList",
      "name": "--users",
      "types": "Map Of KeyAndValue",
      "description": "Users: Key > name, Value > role",
@@ -585,6 +638,7 @@
    "description": "Excludes users from the specified project",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -592,6 +646,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -599,6 +654,7 @@
      "short": "-t"
     },
     {
+     "title": "ProjectName",
      "name": "--proj",
      "types": "String",
      "description": "Project name",
@@ -606,6 +662,7 @@
      "short": "-p"
     },
     {
+     "title": "ArrayOfUsers",
      "name": "--users",
      "types": "Array Of String",
      "description": "Array of usernames",
@@ -621,6 +678,7 @@
    "description": "Starts a new test execution session",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -628,6 +686,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -635,6 +694,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -642,6 +702,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Launch parameters. See GetLaunchStructure",
@@ -657,6 +718,7 @@
    "description": "Gets information about a launch by UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -664,6 +726,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -671,6 +734,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -678,6 +742,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchUUID",
      "name": "--uuid",
      "types": "String",
      "description": "Launch UUID",
@@ -693,6 +758,7 @@
    "description": "Updates data of a test session launch",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -700,6 +766,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -707,6 +774,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -714,6 +782,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchID",
      "name": "--id",
      "types": "Number",
      "description": "Launch ID",
@@ -721,6 +790,7 @@
      "short": "-i"
     },
     {
+     "title": "LaunchStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Launch parameters. See GetLaunchStructure",
@@ -736,6 +806,7 @@
    "description": "Ends a previously started test execution session",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -743,6 +814,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -750,6 +822,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -757,6 +830,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchUUID",
      "name": "--uuid",
      "types": "String",
      "description": "Launch UUID",
@@ -764,6 +838,7 @@
      "short": "-d"
     },
     {
+     "title": "FinishStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Completion parameters. See GetLaunchCompletionStructure",
@@ -779,6 +854,7 @@
    "description": "Deletes a test session by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -786,6 +862,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -793,6 +870,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -800,6 +878,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchID",
      "name": "--id",
      "types": "Number",
      "description": "Launch ID",
@@ -815,6 +894,7 @@
    "description": "Gets report for the selected test session",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -822,6 +902,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -829,6 +910,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -836,6 +918,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchID",
      "name": "--id",
      "types": "Number",
      "description": "Launch ID",
@@ -843,6 +926,7 @@
      "short": "-i"
     },
     {
+     "title": "Format",
      "name": "--format",
      "types": "String",
      "description": "Report format: pdf, xls, html",
@@ -858,6 +942,7 @@
    "description": "Gets the test items of the selected test session",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -865,6 +950,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -872,6 +958,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -879,6 +966,7 @@
      "short": "-p"
     },
     {
+     "title": "LaunchID",
      "name": "--id",
      "types": "Number",
      "description": "Launch ID",
@@ -886,6 +974,7 @@
      "short": "-i"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "Number",
      "description": "List page number",
@@ -901,6 +990,7 @@
    "description": "Creates a new test item",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -908,6 +998,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -915,6 +1006,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -922,6 +1014,7 @@
      "short": "-p"
     },
     {
+     "title": "ElementStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Item parameters. See GetItemStructure",
@@ -929,6 +1022,7 @@
      "short": "-r"
     },
     {
+     "title": "Parent",
      "name": "--parent",
      "types": "String",
      "description": "ID of the parent item, if necessary",
@@ -944,6 +1038,7 @@
    "description": "Gets information about a test item by UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -951,6 +1046,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -958,6 +1054,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -965,6 +1062,7 @@
      "short": "-p"
     },
     {
+     "title": "ItemUUID",
      "name": "--uuid",
      "types": "String",
      "description": "Test item UUID",
@@ -980,6 +1078,7 @@
    "description": "Updates data of a test item by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -987,6 +1086,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -994,6 +1094,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1001,6 +1102,7 @@
      "short": "-p"
     },
     {
+     "title": "ElementID",
      "name": "--id",
      "types": "Number",
      "description": "Test item ID",
@@ -1008,6 +1110,7 @@
      "short": "-i"
     },
     {
+     "title": "ElementStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Item parameters. See GetItemStructure",
@@ -1023,6 +1126,7 @@
    "description": "Ends a previously created test item",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1030,6 +1134,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1037,6 +1142,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1044,6 +1150,7 @@
      "short": "-p"
     },
     {
+     "title": "ItemUUID",
      "name": "--uuid",
      "types": "String",
      "description": "Test item UUID",
@@ -1051,6 +1158,7 @@
      "short": "-d"
     },
     {
+     "title": "FinishStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Completion parameters. See GetItemCompletionStructure",
@@ -1066,6 +1174,7 @@
    "description": "Deletes a test item by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1073,6 +1182,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1080,6 +1190,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1087,6 +1198,7 @@
      "short": "-p"
     },
     {
+     "title": "ElementID",
      "name": "--id",
      "types": "Number",
      "description": "Test item ID",
@@ -1102,6 +1214,7 @@
    "description": "Gets the launch parameters structure",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -1109,6 +1222,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -1124,6 +1238,7 @@
    "description": "Gets the test item parameter structure",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -1131,6 +1246,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -1146,6 +1262,7 @@
    "description": "Gets the parameter structure for completing the test item execution",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -1153,6 +1270,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -1168,6 +1286,7 @@
    "description": "Gets the parameter structure for completing a test session",
    "params": [
     {
+     "title": "Time",
      "name": "--end",
      "types": "Date",
      "description": "Launch end date and time",
@@ -1175,6 +1294,7 @@
      "short": "-e"
     },
     {
+     "title": "Status",
      "name": "--status",
      "types": "String",
      "description": "Completion status: passed, failed, stopped, skipped, interrupted, cancelled",
@@ -1182,6 +1302,7 @@
      "short": "-s"
     },
     {
+     "title": "Description",
      "name": "--descr",
      "types": "String",
      "description": "Launch description. Overwrites the one specified during creation",
@@ -1189,6 +1310,7 @@
      "short": "-d"
     },
     {
+     "title": "Attributes",
      "name": "--attr",
      "types": "String",
      "description": "Launch attributes. Overwrites the one specified during creation",
@@ -1204,6 +1326,7 @@
    "description": "Adds execution information for the test item",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1211,6 +1334,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1218,6 +1342,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1225,6 +1350,7 @@
      "short": "-p"
     },
     {
+     "title": "LogStructure",
      "name": "--params",
      "types": "Structure Of KeyAndValue",
      "description": "Execution information. See GetLogStructure",
@@ -1240,6 +1366,7 @@
    "description": "Gets information about a log by UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1247,6 +1374,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1254,6 +1382,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1261,6 +1390,7 @@
      "short": "-p"
     },
     {
+     "title": "LogUUID",
      "name": "--uuid",
      "types": "String",
      "description": "Log UUID",
@@ -1276,6 +1406,7 @@
    "description": "Gets the logs of the selected test item",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1283,6 +1414,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1290,6 +1422,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1297,6 +1430,7 @@
      "short": "-p"
     },
     {
+     "title": "ElementID",
      "name": "--item",
      "types": "Number",
      "description": "Test item ID",
@@ -1304,6 +1438,7 @@
      "short": "-i"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "Number",
      "description": "List page number",
@@ -1319,6 +1454,7 @@
    "description": "Deletes a log item by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "ReportPortal server URL",
@@ -1326,6 +1462,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Access token",
@@ -1333,6 +1470,7 @@
      "short": "-t"
     },
     {
+     "title": "Project",
      "name": "--proj",
      "types": "String",
      "description": "Project ID",
@@ -1340,6 +1478,7 @@
      "short": "-p"
     },
     {
+     "title": "LogID",
      "name": "--id",
      "types": "Number",
      "description": "Log ID",
@@ -1355,6 +1494,7 @@
    "description": "Gets the parameter structure for log entry",
    "params": [
     {
+     "title": "LaunchID",
      "name": "--launch",
      "types": "String",
      "description": "Launch ID to which the test item belongs",
@@ -1362,6 +1502,7 @@
      "short": "-l"
     },
     {
+     "title": "ElementID",
      "name": "--id",
      "types": "String",
      "description": "Test item ID",
@@ -1369,6 +1510,7 @@
      "short": "-i"
     },
     {
+     "title": "Time",
      "name": "--time",
      "types": "Date",
      "description": "Log entry date and time",
@@ -1376,6 +1518,7 @@
      "short": "-t"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Log text information",
@@ -1383,6 +1526,7 @@
      "short": "-x"
     },
     {
+     "title": "Level",
      "name": "--level",
      "types": "String",
      "description": "Information level: error, warn, info, debug, trace, fatal, unknown",

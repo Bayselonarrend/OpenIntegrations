@@ -49,6 +49,7 @@
    "description": "Возвращает URL для авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -56,6 +57,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Булево",
      "description": "разрешение на методы Calendar",
@@ -63,6 +65,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Булево",
      "description": "разрешение на методы Drive",
@@ -70,6 +73,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Булево",
      "description": "разрешение на методы Sheets",
@@ -85,6 +89,7 @@
    "description": "Получает токен по коду из авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -92,6 +97,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -99,6 +105,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "Строка",
      "description": "Code из браузера",
@@ -114,6 +121,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -121,6 +129,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -128,6 +137,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",
@@ -143,6 +153,7 @@
    "description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Данные",
      "name": "--auth",
      "types": "Произвольный",
      "description": "JSON данные авторизации как файл, коллекция или двоичные данные",
@@ -150,6 +161,7 @@
      "short": "-a"
     },
     {
+     "title": "ОбластиДействия",
      "name": "--scope",
      "types": "Массив Из Строка",
      "description": "Область действия (scope) или массив областей",
@@ -157,6 +169,7 @@
      "short": "-s"
     },
     {
+     "title": "ВремяЖизни",
      "name": "--exp",
      "types": "Число",
      "description": "Время жизни токена в секундах",
@@ -172,6 +185,7 @@
    "description": "Получает информацию о папке или файле по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -179,6 +193,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор файла или каталога",
@@ -194,6 +209,7 @@
    "description": "Получает список каталогов диска",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -201,6 +217,7 @@
      "short": "-t"
     },
     {
+     "title": "ИмяСодержит",
      "name": "--query",
      "types": "Строка",
      "description": "Отбор по имени",
@@ -208,6 +225,7 @@
      "short": "-q"
     },
     {
+     "title": "Подробно",
      "name": "--depth",
      "types": "Булево",
      "description": "Добавляет список файлов к полям каталога",
@@ -223,6 +241,7 @@
    "description": "Получает список файлов",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -230,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "ИмяСодержит",
      "name": "--query",
      "types": "Строка",
      "description": "Отбор по имени",
@@ -237,6 +257,7 @@
      "short": "-q"
     },
     {
+     "title": "Каталог",
      "name": "--catalog",
      "types": "Строка",
      "description": "Отбор по ID каталога родителя",
@@ -252,6 +273,7 @@
    "description": "Загружает файл на диск",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -259,6 +281,7 @@
      "short": "-t"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "ДвоичныеДанные, Строка",
      "description": "Загружаемый файл",
@@ -266,6 +289,7 @@
      "short": "-f"
     },
     {
+     "title": "Описание",
      "name": "--props",
      "types": "Соответствие Из КлючИЗначение",
      "description": "См. ПолучитьОписаниеФайла",
@@ -281,6 +305,7 @@
    "description": "Создает пустой каталог на диске",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -288,6 +313,7 @@
      "short": "-t"
     },
     {
+     "title": "Имя",
      "name": "--title",
      "types": "Строка",
      "description": "Имя папки",
@@ -295,6 +321,7 @@
      "short": "-l"
     },
     {
+     "title": "Родитель",
      "name": "--catalog",
      "types": "Строка",
      "description": "Родитель",
@@ -310,6 +337,7 @@
    "description": "Получает файл по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -317,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор файла",
@@ -324,6 +353,7 @@
      "short": "-o"
     },
     {
+     "title": "ПутьСохранения",
      "name": "--out",
      "types": "Строка",
      "description": "Путь сохранения файла",
@@ -339,6 +369,7 @@
    "description": "Копирует файл или каталог",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -346,6 +377,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор объекта",
@@ -353,6 +385,7 @@
      "short": "-o"
     },
     {
+     "title": "НовоеИмя",
      "name": "--title",
      "types": "Строка",
      "description": "Новое имя объекта",
@@ -360,6 +393,7 @@
      "short": "-l"
     },
     {
+     "title": "НовыйРодитель",
      "name": "--catalog",
      "types": "Строка",
      "description": "Новый каталог размещения",
@@ -375,6 +409,7 @@
    "description": "Обновляет двоичные данные файла",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -382,6 +417,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор обновляемого объекта",
@@ -389,6 +425,7 @@
      "short": "-o"
     },
     {
+     "title": "Файл",
      "name": "--file",
      "types": "ДвоичныеДанные, Строка",
      "description": "Файл источник обновления",
@@ -396,6 +433,7 @@
      "short": "-f"
     },
     {
+     "title": "НовоеИмя",
      "name": "--title",
      "types": "Строка",
      "description": "Новое имя файла (если необходимо)",
@@ -411,6 +449,7 @@
    "description": "Удаляет файл или каталог по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -418,6 +457,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор объекта для удаления",
@@ -433,6 +473,7 @@
    "description": "Получает шаблон пустого описания для загрузки файла",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -448,6 +489,7 @@
    "description": "Создает комментарий к файлу или каталогу",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -455,6 +497,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор объекта, для которого необходим комментарий",
@@ -462,6 +505,7 @@
      "short": "-o"
     },
     {
+     "title": "Комментарий",
      "name": "--text",
      "types": "Строка",
      "description": "Текст комментария",
@@ -477,6 +521,7 @@
    "description": "Получает комментарий по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -484,6 +529,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДОбъекта",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор файла или каталога размещения комментария",
@@ -491,6 +537,7 @@
      "short": "-o"
     },
     {
+     "title": "ИДКомментария",
      "name": "--comment",
      "types": "Строка",
      "description": "Идентификатор комментария",
@@ -506,6 +553,7 @@
    "description": "Получает список всех комментариев объекта",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -513,6 +561,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДОбъекта",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор объекта",
@@ -528,6 +577,7 @@
    "description": "Удаляет комментарий по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -535,6 +585,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДОбъекта",
      "name": "--object",
      "types": "Строка",
      "description": "Идентификатор файла или каталога размещения комментария",
@@ -542,6 +593,7 @@
      "short": "-o"
     },
     {
+     "title": "ИДКомментария",
      "name": "--comment",
      "types": "Строка",
      "description": "Идентификатор комментария",

@@ -35,6 +35,7 @@
    "description": "Executes a request with the specified parameters",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Connection settings or object (for gRPC)",
@@ -42,6 +43,7 @@
      "short": "-c"
     },
     {
+     "title": "Request",
      "name": "--req",
      "types": "Structure Of KeyAndValue",
      "description": "Request data. See GetRequestSettings",
@@ -49,6 +51,7 @@
      "short": "-r"
     },
     {
+     "title": "Session",
      "name": "--session",
      "types": "Structure Of KeyAndValue",
      "description": "Session settings. See GetSessionSettings",
@@ -64,6 +67,7 @@
    "description": "Gets the settings structure for HTTP connection",
    "params": [
     {
+     "title": "Address",
      "name": "--url",
      "types": "String",
      "description": "Connection address with protocol and port",
@@ -71,6 +75,7 @@
      "short": "-u"
     },
     {
+     "title": "Authorization",
      "name": "--auth",
      "types": "String, Structure Of KeyAndValue",
      "description": "Authorization: string for JWT, structure for basic",
@@ -78,6 +83,7 @@
      "short": "-a"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers",
@@ -93,6 +99,7 @@
    "description": "Forms the request description structure",
    "params": [
     {
+     "title": "Text",
      "name": "--query",
      "types": "String",
      "description": "Request text",
@@ -100,6 +107,7 @@
      "short": "-q"
     },
     {
+     "title": "Database",
      "name": "--db",
      "types": "String",
      "description": "Database",
@@ -107,6 +115,7 @@
      "short": "-d"
     },
     {
+     "title": "RequestID",
      "name": "--id",
      "types": "String",
      "description": "Unique request ID, if necessary",
@@ -114,6 +123,7 @@
      "short": "-i"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Arbitrary",
      "description": "String, file, or binary data of the request",
@@ -121,6 +131,7 @@
      "short": "-t"
     },
     {
+     "title": "ResponseFormat",
      "name": "--format",
      "types": "String",
      "description": "Response format: JSON, CSV, TSV, etc..",
@@ -128,6 +139,7 @@
      "short": "-f"
     },
     {
+     "title": "ExternalTables",
      "name": "--ext",
      "types": "Array of Structure",
      "description": "External tables data. See GetExternalTableStructure",
@@ -135,6 +147,7 @@
      "short": "-e"
     },
     {
+     "title": "Settings",
      "name": "--settings",
      "types": "Map Of KeyAndValue",
      "description": "Additional query parameters of the request",
@@ -150,6 +163,7 @@
    "description": "Gets the description structure of the external table of the request",
    "params": [
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Table name",
@@ -157,6 +171,7 @@
      "short": "-n"
     },
     {
+     "title": "ColoumnsStruct",
      "name": "--cols",
      "types": "Structure Of KeyAndValue",
      "description": "Table column structure: Key > name, Value > data type",
@@ -164,6 +179,7 @@
      "short": "-c"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Arbitrary",
      "description": "String, file, or binary data of the table",
@@ -171,6 +187,7 @@
      "short": "-d"
     },
     {
+     "title": "DataFormat",
      "name": "--format",
      "types": "String",
      "description": "Data format: CVS, TVS, JSON, etc..",
@@ -186,6 +203,7 @@
    "description": "Forms the session settings structure for executing the request",
    "params": [
     {
+     "title": "SessionID",
      "name": "--id",
      "types": "String",
      "description": "Session ID. A new unique identifier if not specified (a new session will be created)",
@@ -193,6 +211,7 @@
      "short": "-i"
     },
     {
+     "title": "CheckSession",
      "name": "--check",
      "types": "Boolean",
      "description": "Check for session existence. True when ID is specified and false when not, unless otherwise specified",
@@ -200,6 +219,7 @@
      "short": "-c"
     },
     {
+     "title": "Timeout",
      "name": "--timeout",
      "types": "Number",
      "description": "Session lifetime in seconds",
@@ -215,6 +235,7 @@
    "description": "Gets the settings structure for gRPC connection",
    "params": [
     {
+     "title": "Address",
      "name": "--url",
      "types": "String",
      "description": "Connection address with protocol and port",
@@ -222,6 +243,7 @@
      "short": "-u"
     },
     {
+     "title": "Authorization",
      "name": "--auth",
      "types": "String, Structure Of KeyAndValue",
      "description": "Authorization: string for JWT, structure for basic",
@@ -229,6 +251,7 @@
      "short": "-a"
     },
     {
+     "title": "Meta",
      "name": "--meta",
      "types": "Structure Of KeyAndValue",
      "description": "gRPC metadata structure, if necessary",
@@ -236,6 +259,7 @@
      "short": "-m"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings. See GetTlsSettings",
@@ -251,6 +275,7 @@
    "description": "Initializes the stream, sends the request and a set of data in a specified order, receiving one message upon completion",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -258,6 +283,7 @@
      "short": "-c"
     },
     {
+     "title": "Request",
      "name": "--req",
      "types": "Structure Of KeyAndValue",
      "description": "Request data. See GetRequestSettings",
@@ -265,6 +291,7 @@
      "short": "-r"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Array Of Arbitrary",
      "description": "An array of strings, collections, binary data, or file paths",
@@ -272,6 +299,7 @@
      "short": "-d"
     },
     {
+     "title": "Session",
      "name": "--session",
      "types": "Structure Of KeyAndValue",
      "description": "Session settings. See GetSessionSettings",
@@ -279,6 +307,7 @@
      "short": "-s"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout (in ms)",
@@ -294,6 +323,7 @@
    "description": "Initializes the stream, sends the request, and receives messages until closure or a set limit is reached",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection parameters",
@@ -301,6 +331,7 @@
      "short": "-c"
     },
     {
+     "title": "Request",
      "name": "--req",
      "types": "Structure Of KeyAndValue",
      "description": "Request data. See GetRequestSettings",
@@ -308,6 +339,7 @@
      "short": "-r"
     },
     {
+     "title": "MessageCount",
      "name": "--amount",
      "types": "Number",
      "description": "Maximum number of messages to receive, if necessary",
@@ -315,6 +347,7 @@
      "short": "-a"
     },
     {
+     "title": "Session",
      "name": "--session",
      "types": "Structure Of KeyAndValue",
      "description": "Session settings. See GetSessionSettings",
@@ -322,6 +355,7 @@
      "short": "-s"
     },
     {
+     "title": "Timeout",
      "name": "--tout",
      "types": "Number",
      "description": "Timeout (in ms)",
@@ -337,6 +371,7 @@
    "description": "Forms settings for using TLS",
    "params": [
     {
+     "title": "DisableCertVerification",
      "name": "--trust",
      "types": "Boolean",
      "description": "Allows to work with invalid certificates, including self signed",
@@ -344,6 +379,7 @@
      "short": "-t"
     },
     {
+     "title": "CertFilepath",
      "name": "--cert",
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",

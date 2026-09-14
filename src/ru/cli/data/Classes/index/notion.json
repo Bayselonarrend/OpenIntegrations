@@ -47,6 +47,7 @@
    "description": "Создает дочернюю страницу над другой страницей-родителем",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -54,6 +55,7 @@
      "short": "-t"
     },
     {
+     "title": "Родитель",
      "name": "--page",
      "types": "Строка",
      "description": "ID Родителя",
@@ -61,6 +63,7 @@
      "short": "-p"
     },
     {
+     "title": "Заголовок",
      "name": "--title",
      "types": "Строка",
      "description": "Заголовок страницы",
@@ -76,6 +79,7 @@
    "description": "Создает страницу в базе-родителе",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -83,6 +87,7 @@
      "short": "-t"
     },
     {
+     "title": "Родитель",
      "name": "--base",
      "types": "Строка",
      "description": "ID родительской базы",
@@ -90,6 +95,7 @@
      "short": "-b"
     },
     {
+     "title": "Данные",
      "name": "--data",
      "types": "Соответствие Из КлючИЗначение",
      "description": "Соответствие свойств",
@@ -105,6 +111,7 @@
    "description": "Получает информацию о странице по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -112,6 +119,7 @@
      "short": "-t"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Строка",
      "description": "ID страницы",
@@ -127,6 +135,7 @@
    "description": "Изменяет свойства существующей страницы",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -134,6 +143,7 @@
      "short": "-t"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Строка",
      "description": "ID изменяемой страницы",
@@ -141,6 +151,7 @@
      "short": "-p"
     },
     {
+     "title": "Данные",
      "name": "--data",
      "types": "Соответствие Из КлючИЗначение",
      "description": "Соответствие изменяемых параметров",
@@ -148,6 +159,7 @@
      "short": "-d"
     },
     {
+     "title": "Иконка",
      "name": "--icon",
      "types": "Строка",
      "description": "URL картинки иконки страницы",
@@ -155,6 +167,7 @@
      "short": "-i"
     },
     {
+     "title": "Обложка",
      "name": "--cover",
      "types": "Строка",
      "description": "URL картинки обложки страницы",
@@ -162,6 +175,7 @@
      "short": "-c"
     },
     {
+     "title": "Архивирована",
      "name": "--archive",
      "types": "Булево",
      "description": "Архивировать страницу или нет (булево)",
@@ -177,6 +191,7 @@
    "description": "Создает базу данных",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -184,6 +199,7 @@
      "short": "-t"
     },
     {
+     "title": "Родитель",
      "name": "--page",
      "types": "Строка",
      "description": "ID страницы родителя",
@@ -191,6 +207,7 @@
      "short": "-p"
     },
     {
+     "title": "Заголовок",
      "name": "--title",
      "types": "Строка",
      "description": "Заголовок базы данных",
@@ -198,6 +215,7 @@
      "short": "-l"
     },
     {
+     "title": "Свойства",
      "name": "--props",
      "types": "Структура Из Строка",
      "description": "Свойства базы данных",
@@ -213,6 +231,7 @@
    "description": "Получить данные о базе данных",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -220,6 +239,7 @@
      "short": "-t"
     },
     {
+     "title": "База",
      "name": "--base",
      "types": "Строка",
      "description": "ID базы данных",
@@ -235,6 +255,7 @@
    "description": "Изменяет свойства существующей базы",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -242,6 +263,7 @@
      "short": "-t"
     },
     {
+     "title": "База",
      "name": "--base",
      "types": "Строка",
      "description": "ID целевой базы",
@@ -249,6 +271,7 @@
      "short": "-b"
     },
     {
+     "title": "Свойства",
      "name": "--props",
      "types": "Соответствие из КлючИЗначение",
      "description": "Новые или изменяемые свойства базы данных",
@@ -256,6 +279,7 @@
      "short": "-p"
     },
     {
+     "title": "Заголовок",
      "name": "--title",
      "types": "Строка",
      "description": "Новый заголовок базы",
@@ -263,6 +287,7 @@
      "short": "-l"
     },
     {
+     "title": "Описание",
      "name": "--description",
      "types": "Строка",
      "description": "Новое описание базы",
@@ -278,6 +303,7 @@
    "description": "Создает новый блок на основе существующего блока",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -285,6 +311,7 @@
      "short": "-t"
     },
     {
+     "title": "Родитель",
      "name": "--page",
      "types": "Строка",
      "description": "ID родительского блока или страницы",
@@ -292,6 +319,7 @@
      "short": "-p"
     },
     {
+     "title": "Блок",
      "name": "--block",
      "types": "Строка, Соответствие Из КлючИЗначение",
      "description": "ID блока или сам блок образец",
@@ -299,6 +327,7 @@
      "short": "-b"
     },
     {
+     "title": "ВставитьПосле",
      "name": "--prev",
      "types": "Строка",
      "description": "ID блока, после которого необходимо вставить новый",
@@ -314,6 +343,7 @@
    "description": "Возвращает структуру блока по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -321,6 +351,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДБлока",
      "name": "--block",
      "types": "Строка",
      "description": "ID блока",
@@ -328,6 +359,7 @@
      "short": "-b"
     },
     {
+     "title": "ТолькоОснова",
      "name": "--core",
      "types": "Булево",
      "description": "Истина > служебные поля удаляются, остается только сам блок",
@@ -343,6 +375,7 @@
    "description": "Возвращает список дочерних блоков блока-родителя",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -350,6 +383,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДБлока",
      "name": "--block",
      "types": "Строка",
      "description": "ID блока родителя",
@@ -365,6 +399,7 @@
    "description": "Удаляет блок по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -372,6 +407,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДБлока",
      "name": "--block",
      "types": "Строка",
      "description": "ID блока",
@@ -387,6 +423,7 @@
    "description": "Возвращает список пользователей рабочего пространства",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -402,6 +439,7 @@
    "description": "Получает данные пользователя по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -409,6 +447,7 @@
      "short": "-t"
     },
     {
+     "title": "ИДПользователя",
      "name": "--user",
      "types": "Строка",
      "description": "ID целевого пользователя",

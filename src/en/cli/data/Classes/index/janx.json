@@ -21,6 +21,7 @@
    "description": "Serializes data into Janx format",
    "params": [
     {
+     "title": "Data",
      "name": "--value",
      "types": "Arbitrary",
      "description": "Collection for serialization",
@@ -36,6 +37,7 @@
    "description": "Deserializes data from Janx format",
    "params": [
     {
+     "title": "Data",
      "name": "--data",
      "types": "BinaryData",
      "description": "Serialized value",

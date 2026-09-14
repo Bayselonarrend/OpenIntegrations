@@ -50,6 +50,7 @@
    "description": "Gets a version of Ollama",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -57,6 +58,7 @@
      "short": "-u"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -72,6 +74,7 @@
    "description": "Generates a response for a given text query",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -79,6 +82,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -86,6 +90,7 @@
      "short": "-m"
     },
     {
+     "title": "Question",
      "name": "--prompt",
      "types": "String",
      "description": "Request text",
@@ -93,6 +98,7 @@
      "short": "-p"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional parameters. See GetRequestParametersStructure",
@@ -100,6 +106,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -115,6 +122,7 @@
    "description": "Receives the next response from the model according to the message history",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -122,6 +130,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -129,6 +138,7 @@
      "short": "-m"
     },
     {
+     "title": "Messages",
      "name": "--msgs",
      "types": "Array of Structure",
      "description": "Messages log. See GetContextMessageStructure",
@@ -136,6 +146,7 @@
      "short": "-s"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional parameters. See GetRequestParametersStructure",
@@ -143,6 +154,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -158,6 +170,7 @@
    "description": "Gets the embeddings for the given entries",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -165,6 +178,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -172,6 +186,7 @@
      "short": "-m"
     },
     {
+     "title": "Question",
      "name": "--input",
      "types": "Array Of String",
      "description": "String or array of request strings",
@@ -179,6 +194,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional parameters. See GetEmbeddingsParameterStructure",
@@ -186,6 +202,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -201,6 +218,7 @@
    "description": "Gets the structure of additional parameters for request processing",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -216,6 +234,7 @@
    "description": "Gets the structure of additional parameters for processing embeddings requests",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -231,6 +250,7 @@
    "description": "Gets the structure of additional parameters to process the request in context",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -246,6 +266,7 @@
    "description": "Gets the message structure for a list of request messages in context",
    "params": [
     {
+     "title": "Role",
      "name": "--role",
      "types": "String",
      "description": "Message source: system, user, assistant, tool",
@@ -253,6 +274,7 @@
      "short": "-r"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -260,6 +282,7 @@
      "short": "-t"
     },
     {
+     "title": "Pictures",
      "name": "--images",
      "types": "Array Of String",
      "description": "List of pictures in Base64 format (for multimodal models like llava)",
@@ -267,6 +290,7 @@
      "short": "-i"
     },
     {
+     "title": "Tools",
      "name": "--tools",
      "types": "Array Of String",
      "description": "List of tools in JSON format that the model should use",
@@ -282,6 +306,7 @@
    "description": "Gets a list of local models",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -289,6 +314,7 @@
      "short": "-u"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -304,6 +330,7 @@
    "description": "Gets a list of running models",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -311,6 +338,7 @@
      "short": "-u"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -326,6 +354,7 @@
    "description": "Gets information about the model",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -333,6 +362,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -340,6 +370,7 @@
      "short": "-m"
     },
     {
+     "title": "Detailed",
      "name": "--verbose",
      "types": "Boolean",
      "description": "Return full model information",
@@ -347,6 +378,7 @@
      "short": "-v"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -362,6 +394,7 @@
    "description": "Creates a new model with the specified settings",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -369,6 +402,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -376,6 +410,7 @@
      "short": "-m"
     },
     {
+     "title": "Settings",
      "name": "--settings",
      "types": "Structure Of KeyAndValue",
      "description": "Model settings. See GetModelSettingsStructure",
@@ -383,6 +418,7 @@
      "short": "-s"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -398,6 +434,7 @@
    "description": "Copies an existing model",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -405,6 +442,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Name of existing model",
@@ -412,6 +450,7 @@
      "short": "-m"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "The name of the new model",
@@ -419,6 +458,7 @@
      "short": "-n"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -434,6 +474,7 @@
    "description": "Deletes an existing model",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -441,6 +482,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -448,6 +490,7 @@
      "short": "-m"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -463,6 +506,7 @@
    "description": "Loads the selected model into RAM",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -470,6 +514,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -477,6 +522,7 @@
      "short": "-m"
     },
     {
+     "title": "Period",
      "name": "--keep",
      "types": "Number",
      "description": "Model hold time in seconds",
@@ -484,6 +530,7 @@
      "short": "-k"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -499,6 +546,7 @@
    "description": "Unloads the selected model from memory",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -506,6 +554,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -513,6 +562,7 @@
      "short": "-m"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -528,6 +578,7 @@
    "description": "Uploads the model to the model library",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -535,6 +586,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -542,6 +594,7 @@
      "short": "-m"
     },
     {
+     "title": "Insecure",
      "name": "--insecure",
      "types": "Boolean",
      "description": "Allows an unsecured connection to the library",
@@ -549,6 +602,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -564,6 +618,7 @@
    "description": "Downloads a model from the library",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -571,6 +626,7 @@
      "short": "-u"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -578,6 +634,7 @@
      "short": "-m"
     },
     {
+     "title": "Insecure",
      "name": "--insecure",
      "types": "Boolean",
      "description": "Allows an unsecured connection to the library",
@@ -585,6 +642,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -600,6 +658,7 @@
    "description": "Gets the settings structure for creating a new model",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -615,6 +674,7 @@
    "description": "Sends binary data to the Ollama server",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -622,6 +682,7 @@
      "short": "-u"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "String, BinaryData",
      "description": "File data or filepath",
@@ -629,6 +690,7 @@
      "short": "-d"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -644,6 +706,7 @@
    "description": "Checks the existence of a BLOB by its SHA256 digest",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Ollama server URL",
@@ -651,6 +714,7 @@
      "short": "-u"
     },
     {
+     "title": "SHA256",
      "name": "--digest",
      "types": "String",
      "description": "SHA256 BLOB digest",
@@ -658,6 +722,7 @@
      "short": "-d"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",

@@ -22,6 +22,7 @@
    "description": "Gets the confirmation code and the address of the page where it needs to be entered",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -37,6 +38,7 @@
    "description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -44,6 +46,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -51,6 +54,7 @@
      "short": "-s"
     },
     {
+     "title": "DeviceCode",
      "name": "--device",
      "types": "String",
      "description": "device_code from GetConfirmationCode()",
@@ -66,6 +70,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -73,6 +78,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -80,6 +86,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",

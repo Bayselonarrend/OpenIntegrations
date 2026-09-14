@@ -22,6 +22,7 @@
    "description": "Получает код подтверждения и адрес страницы, на которой его необходимо ввести",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -37,6 +38,7 @@
    "description": "Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -44,6 +46,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -51,6 +54,7 @@
      "short": "-s"
     },
     {
+     "title": "КодУстройства",
      "name": "--device",
      "types": "Строка",
      "description": "device_code из ПолучитьКодПодтверждения()",
@@ -66,6 +70,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "Строка",
      "description": "Client id",
@@ -73,6 +78,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -80,6 +86,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",

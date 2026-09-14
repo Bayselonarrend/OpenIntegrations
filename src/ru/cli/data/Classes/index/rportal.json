@@ -78,6 +78,7 @@
    "description": "Получает временный токен на основе логина и пароля",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -85,6 +86,7 @@
      "short": "-u"
     },
     {
+     "title": "Логин",
      "name": "--login",
      "types": "Строка",
      "description": "Логин пользователя",
@@ -92,6 +94,7 @@
      "short": "-l"
     },
     {
+     "title": "Пароль",
      "name": "--pass",
      "types": "Строка",
      "description": "Пароль пользователя",
@@ -107,6 +110,7 @@
    "description": "Создает постоянный токен пользователя ReportPortal",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -114,6 +118,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -121,6 +126,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПользователя",
      "name": "--user",
      "types": "Строка",
      "description": "ID пользователя",
@@ -128,6 +134,7 @@
      "short": "-s"
     },
     {
+     "title": "ИмяКлюча",
      "name": "--name",
      "types": "Строка",
      "description": "Имя токена",
@@ -143,6 +150,7 @@
    "description": "Удаляет ранее созданный токен пользователя",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -150,6 +158,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -157,6 +166,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПользователя",
      "name": "--user",
      "types": "Строка",
      "description": "ID пользователя",
@@ -164,6 +174,7 @@
      "short": "-s"
     },
     {
+     "title": "IDКлюча",
      "name": "--id",
      "types": "Строка",
      "description": "ID токена",
@@ -179,6 +190,7 @@
    "description": "Получает список токенов (API ключей) пользователя",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -186,6 +198,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -193,6 +206,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПользователя",
      "name": "--user",
      "types": "Строка",
      "description": "ID пользователя",
@@ -208,6 +222,7 @@
    "description": "Создает нового пользователя",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -215,6 +230,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -222,6 +238,7 @@
      "short": "-t"
     },
     {
+     "title": "СтруктураПользователя",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Данные пользователя. См. ПолучитьСтруктуруПользователя",
@@ -237,6 +254,7 @@
    "description": "Удаляет пользователя по логину",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -244,6 +262,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -251,6 +270,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПользователя",
      "name": "--id",
      "types": "Строка",
      "description": "ID пользователя",
@@ -266,6 +286,7 @@
    "description": "Изменяет данные выбранного пользователя",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -273,6 +294,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -280,6 +302,7 @@
      "short": "-t"
     },
     {
+     "title": "Логин",
      "name": "--login",
      "types": "Строка",
      "description": "Логин пользователя",
@@ -287,6 +310,7 @@
      "short": "-l"
     },
     {
+     "title": "СтруктураПользователя",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Данные пользователя. См. ПолучитьСтруктуруПользователя",
@@ -302,6 +326,7 @@
    "description": "Получает информацию о текущем пользователе",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -309,6 +334,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -324,6 +350,7 @@
    "description": "Получает информацию о пользователе по логину",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -331,6 +358,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -338,6 +366,7 @@
      "short": "-t"
     },
     {
+     "title": "Логин",
      "name": "--login",
      "types": "Строка",
      "description": "Логин пользователя",
@@ -353,6 +382,7 @@
    "description": "Получает список существующих пользователей",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -360,6 +390,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -367,6 +398,7 @@
      "short": "-t"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Число",
      "description": "Номер страницы списка",
@@ -382,6 +414,7 @@
    "description": "Получает список проектов пользователя",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -389,6 +422,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -396,6 +430,7 @@
      "short": "-t"
     },
     {
+     "title": "Логин",
      "name": "--login",
      "types": "Строка",
      "description": "Логин пользователя",
@@ -411,6 +446,7 @@
    "description": "Получает структуру полей описания пользователя",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -418,6 +454,7 @@
      "short": "-e"
     },
     {
+     "title": "КакСоответствие",
      "name": "--map",
      "types": "Булево",
      "description": "Истина > возвращает поля фильтра как соответствие",
@@ -433,6 +470,7 @@
    "description": "Создает новый проект с указанным именем",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -440,6 +478,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -447,6 +486,7 @@
      "short": "-t"
     },
     {
+     "title": "Имя",
      "name": "--name",
      "types": "Строка",
      "description": "Имя проекта",
@@ -462,6 +502,7 @@
    "description": "Удаляет проект по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -469,6 +510,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -476,6 +518,7 @@
      "short": "-t"
     },
     {
+     "title": "IDПроекта",
      "name": "--id",
      "types": "Число",
      "description": "ID проекта",
@@ -491,6 +534,7 @@
    "description": "Получает информацию о проекте по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -498,6 +542,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -505,6 +550,7 @@
      "short": "-t"
     },
     {
+     "title": "Имя",
      "name": "--name",
      "types": "Строка",
      "description": "Имя проекта",
@@ -520,6 +566,7 @@
    "description": "Получает список существующих проектов",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -527,6 +574,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -534,6 +582,7 @@
      "short": "-t"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Число",
      "description": "Номер страницы списка",
@@ -549,6 +598,7 @@
    "description": "Добавляет пользователей в указанный проект",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -556,6 +606,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -563,6 +614,7 @@
      "short": "-t"
     },
     {
+     "title": "ИмяПроекта",
      "name": "--proj",
      "types": "Строка",
      "description": "Имя проекта",
@@ -570,6 +622,7 @@
      "short": "-p"
     },
     {
+     "title": "СписокПользователей",
      "name": "--users",
      "types": "Соответствие Из КлючИЗначение",
      "description": "Пользователи: Ключ > имя, Значение > роль",
@@ -585,6 +638,7 @@
    "description": "Исключает пользователей из указанного проекта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -592,6 +646,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -599,6 +654,7 @@
      "short": "-t"
     },
     {
+     "title": "ИмяПроекта",
      "name": "--proj",
      "types": "Строка",
      "description": "Имя проекта",
@@ -606,6 +662,7 @@
      "short": "-p"
     },
     {
+     "title": "МассивПользователей",
      "name": "--users",
      "types": "Массив Из Строка",
      "description": "Массив имен пользователей",
@@ -621,6 +678,7 @@
    "description": "Запускает новый сеанс выполнения тестов",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -628,6 +686,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -635,6 +694,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -642,6 +702,7 @@
      "short": "-p"
     },
     {
+     "title": "СтруктураЗапуска",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры запуска. См. ПолучитьСтруктуруЗапуска",
@@ -657,6 +718,7 @@
    "description": "Получает информацию о запуске по UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -664,6 +726,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -671,6 +734,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -678,6 +742,7 @@
      "short": "-p"
     },
     {
+     "title": "UUIDЗапуска",
      "name": "--uuid",
      "types": "Строка",
      "description": "UUID запуска",
@@ -693,6 +758,7 @@
    "description": "Изменяет данные запуска сеанса тестирования",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -700,6 +766,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -707,6 +774,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -714,6 +782,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЗапуска",
      "name": "--id",
      "types": "Число",
      "description": "ID запуска",
@@ -721,6 +790,7 @@
      "short": "-i"
     },
     {
+     "title": "СтруктураЗапуска",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры запуска. См. ПолучитьСтруктуруЗапуска",
@@ -736,6 +806,7 @@
    "description": "Завершает запущенный ранее сеанс выполнения тестов",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -743,6 +814,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -750,6 +822,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -757,6 +830,7 @@
      "short": "-p"
     },
     {
+     "title": "UUIDЗапуска",
      "name": "--uuid",
      "types": "Строка",
      "description": "UUID запуска",
@@ -764,6 +838,7 @@
      "short": "-d"
     },
     {
+     "title": "СтруктураЗавершения",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЗапуска",
@@ -779,6 +854,7 @@
    "description": "Удаляет сессию тестирования по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -786,6 +862,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -793,6 +870,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -800,6 +878,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЗапуска",
      "name": "--id",
      "types": "Число",
      "description": "ID запуска",
@@ -815,6 +894,7 @@
    "description": "Получает отчет по выбранной тестовой сессии",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -822,6 +902,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -829,6 +910,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -836,6 +918,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЗапуска",
      "name": "--id",
      "types": "Число",
      "description": "ID запуска",
@@ -843,6 +926,7 @@
      "short": "-i"
     },
     {
+     "title": "Формат",
      "name": "--format",
      "types": "Строка",
      "description": "Формат отчета: pdf, xls, html",
@@ -858,6 +942,7 @@
    "description": "Получает тестовые элементы выбранной сессии тестирования",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -865,6 +950,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -872,6 +958,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -879,6 +966,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЗапуска",
      "name": "--id",
      "types": "Число",
      "description": "ID запуска",
@@ -886,6 +974,7 @@
      "short": "-i"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Число",
      "description": "Номер страницы списка",
@@ -901,6 +990,7 @@
    "description": "Создает новый тестовый элемент",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -908,6 +998,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -915,6 +1006,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -922,6 +1014,7 @@
      "short": "-p"
     },
     {
+     "title": "СтруктураЭлемента",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры элемента. См. ПолучитьСтруктуруЭлемента",
@@ -929,6 +1022,7 @@
      "short": "-r"
     },
     {
+     "title": "Родитель",
      "name": "--parent",
      "types": "Строка",
      "description": "ID родительского элемента, если необходимо",
@@ -944,6 +1038,7 @@
    "description": "Получает информацию об тестовом элементе по UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -951,6 +1046,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -958,6 +1054,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -965,6 +1062,7 @@
      "short": "-p"
     },
     {
+     "title": "UUIDЭлемента",
      "name": "--uuid",
      "types": "Строка",
      "description": "UUID тестового элемента",
@@ -980,6 +1078,7 @@
    "description": "Изменяет данные тестового элемента по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -987,6 +1086,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -994,6 +1094,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1001,6 +1102,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЭлемента",
      "name": "--id",
      "types": "Число",
      "description": "ID тестового элемента",
@@ -1008,6 +1110,7 @@
      "short": "-i"
     },
     {
+     "title": "СтруктураЭлемента",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры элемента. См. ПолучитьСтруктуруЭлемента",
@@ -1023,6 +1126,7 @@
    "description": "Завершает работу созданного ранее тестового элемента",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1030,6 +1134,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1037,6 +1142,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1044,6 +1150,7 @@
      "short": "-p"
     },
     {
+     "title": "UUIDЭлемента",
      "name": "--uuid",
      "types": "Строка",
      "description": "UUID тестового элемента",
@@ -1051,6 +1158,7 @@
      "short": "-d"
     },
     {
+     "title": "СтруктураЗавершения",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЭлемента",
@@ -1066,6 +1174,7 @@
    "description": "Удаляет тестовый элемент по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1073,6 +1182,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1080,6 +1190,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1087,6 +1198,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЭлемента",
      "name": "--id",
      "types": "Число",
      "description": "ID тестового элемента",
@@ -1102,6 +1214,7 @@
    "description": "Получает структуру параметров запуска",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -1109,6 +1222,7 @@
      "short": "-e"
     },
     {
+     "title": "КакСоответствие",
      "name": "--map",
      "types": "Булево",
      "description": "Истина > возвращает поля фильтра как соответствие",
@@ -1124,6 +1238,7 @@
    "description": "Получает структуру параметров тестового элемента",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -1131,6 +1246,7 @@
      "short": "-e"
     },
     {
+     "title": "КакСоответствие",
      "name": "--map",
      "types": "Булево",
      "description": "Истина > возвращает поля фильтра как соответствие",
@@ -1146,6 +1262,7 @@
    "description": "Получает структуру параметров завершения выполнения тестового элемента",
    "params": [
     {
+     "title": "Пустая",
      "name": "--empty",
      "types": "Булево",
      "description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
@@ -1153,6 +1270,7 @@
      "short": "-e"
     },
     {
+     "title": "КакСоответствие",
      "name": "--map",
      "types": "Булево",
      "description": "Истина > возвращает поля фильтра как соответствие",
@@ -1168,6 +1286,7 @@
    "description": "Получает структуру параметров завершения тестового сеанса\n\n    Дата указывается в формате ISO 8601:\n    \"2024-04-07\"\n    \"2024-04-07T13:34:42+00:00\" \n    \"2024-04-07T13:34:42Z\"\n",
    "params": [
     {
+     "title": "Время",
      "name": "--end",
      "types": "Дата",
      "description": "Дата и время завершения запуска",
@@ -1175,6 +1294,7 @@
      "short": "-e"
     },
     {
+     "title": "Статус",
      "name": "--status",
      "types": "Строка",
      "description": "Статус завершения: passed, failed, stopped, skipped, interrupted, cancelled",
@@ -1182,6 +1302,7 @@
      "short": "-s"
     },
     {
+     "title": "Описание",
      "name": "--descr",
      "types": "Строка",
      "description": "Описание запуска. Перезаписывает указанное при создании",
@@ -1189,6 +1310,7 @@
      "short": "-d"
     },
     {
+     "title": "Атрибуты",
      "name": "--attr",
      "types": "Строка",
      "description": "Атрибуты запуска. Перезаписывает указанное при создании",
@@ -1204,6 +1326,7 @@
    "description": "Добавляет информацию о выполнении для тестового элемента",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1211,6 +1334,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1218,6 +1342,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1225,6 +1350,7 @@
      "short": "-p"
     },
     {
+     "title": "СтруктураЛога",
      "name": "--params",
      "types": "Структура Из КлючИЗначение",
      "description": "Информация о выполнении. См. ПолучитьСтруктуруЛога",
@@ -1240,6 +1366,7 @@
    "description": "Получает информацию о логе по UUID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1247,6 +1374,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1254,6 +1382,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1261,6 +1390,7 @@
      "short": "-p"
     },
     {
+     "title": "UUIDЛога",
      "name": "--uuid",
      "types": "Строка",
      "description": "UUID лога",
@@ -1276,6 +1406,7 @@
    "description": "Получает логи выбранного тестового элемента",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1283,6 +1414,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1290,6 +1422,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1297,6 +1430,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЭлемента",
      "name": "--item",
      "types": "Число",
      "description": "ID тестового элемента",
@@ -1304,6 +1438,7 @@
      "short": "-i"
     },
     {
+     "title": "Страница",
      "name": "--page",
      "types": "Число",
      "description": "Номер страницы списка",
@@ -1319,6 +1454,7 @@
    "description": "Удаляет элемент лога по ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "Строка",
      "description": "URL сервера ReportPortal",
@@ -1326,6 +1462,7 @@
      "short": "-u"
     },
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен доступа",
@@ -1333,6 +1470,7 @@
      "short": "-t"
     },
     {
+     "title": "Проект",
      "name": "--proj",
      "types": "Строка",
      "description": "ID проекта",
@@ -1340,6 +1478,7 @@
      "short": "-p"
     },
     {
+     "title": "IDЛога",
      "name": "--id",
      "types": "Число",
      "description": "ID лога",
@@ -1355,6 +1494,7 @@
    "description": "Получает структуру параметров для записи лога\n\n    Дата указывается в формате ISO 8601:\n    \"2024-04-07\"\n    \"2024-04-07T13:34:42+00:00\" \n    \"2024-04-07T13:34:42Z\"\n",
    "params": [
     {
+     "title": "IDЗапуска",
      "name": "--launch",
      "types": "Строка",
      "description": "ID запуска, к которому принадлежит тестовый элемент",
@@ -1362,6 +1502,7 @@
      "short": "-l"
     },
     {
+     "title": "IDЭлемента",
      "name": "--id",
      "types": "Строка",
      "description": "ID тестового элемента",
@@ -1369,6 +1510,7 @@
      "short": "-i"
     },
     {
+     "title": "Время",
      "name": "--time",
      "types": "Дата",
      "description": "Дата и время записи лога",
@@ -1376,6 +1518,7 @@
      "short": "-t"
     },
     {
+     "title": "Текст",
      "name": "--text",
      "types": "Строка",
      "description": "Текстовая информация лога",
@@ -1383,6 +1526,7 @@
      "short": "-x"
     },
     {
+     "title": "Уровень",
      "name": "--level",
      "types": "Строка",
      "description": "Уровень информации: error, warn, info, debug, trace, fatal, unknown",

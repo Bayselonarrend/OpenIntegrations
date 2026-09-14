@@ -31,6 +31,7 @@
    "description": "Gets information about a site by its name or token",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -38,6 +39,7 @@
      "short": "-t"
     },
     {
+     "title": "Website",
      "name": "--sitename",
      "types": "String",
      "description": "Site name (login) for information. Current, if not filled in",
@@ -53,6 +55,7 @@
    "description": "Receives authorization token by login and password",
    "params": [
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Users login",
@@ -60,6 +63,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--password",
      "types": "String",
      "description": "Users password",
@@ -75,6 +79,7 @@
    "description": "Upload single file to Neocities",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -82,6 +87,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "File path on Neocities",
@@ -89,6 +95,7 @@
      "short": "-p"
     },
     {
+     "title": "Data",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "URL, path or file data",
@@ -104,6 +111,7 @@
    "description": "Uploads multiple files to Neocities",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -111,6 +119,7 @@
      "short": "-t"
     },
     {
+     "title": "FileMapping",
      "name": "--files",
      "types": "Map Of KeyAndValue",
      "description": "Files: Key > destination path on NC, Value > file",
@@ -118,6 +127,7 @@
      "short": "-f"
     },
     {
+     "title": "Singly",
      "name": "--singly",
      "types": "Boolean",
      "description": "True > sends files in separate requests",
@@ -133,6 +143,7 @@
    "description": "Deletes a file or multiple files from Neocities",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -140,6 +151,7 @@
      "short": "-t"
     },
     {
+     "title": "Paths",
      "name": "--paths",
      "types": "String, Array of String",
      "description": "Path or multiple paths of the files to be deleted",
@@ -155,6 +167,7 @@
    "description": "Gets a list of files with or without directory selection",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -162,6 +175,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Selection of files by catalog. All if not filled in",
@@ -177,6 +191,7 @@
    "description": "Creates a copy of the local directory at the selected path on the Neocities server",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -184,6 +199,7 @@
      "short": "-t"
     },
     {
+     "title": "LocalFolder",
      "name": "--local",
      "types": "String",
      "description": "Local source catalog",
@@ -191,6 +207,7 @@
      "short": "-l"
     },
     {
+     "title": "RemoteFolder",
      "name": "--remote",
      "types": "String",
      "description": "Remote receiver catalog. Root by default",

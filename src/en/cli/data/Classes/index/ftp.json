@@ -48,6 +48,7 @@
    "description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
    "params": [
     {
+     "title": "FTPSettings",
      "name": "--set",
      "types": "Structure Of KeyAndValue",
      "description": "FTP settings. See GetConnectionSettings",
@@ -55,6 +56,7 @@
      "short": "-s"
     },
     {
+     "title": "Proxy",
      "name": "--proxy",
      "types": "Structure Of KeyAndValue",
      "description": "Proxy settings, if required. See GetProxySettings",
@@ -62,6 +64,7 @@
      "short": "-p"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -77,6 +80,7 @@
    "description": "Receives the FTP servers welcome message",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -92,6 +96,7 @@
    "description": "Gets a list of FTP protocol features supported by the server",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -107,6 +112,7 @@
    "description": "Checks the connection activity and resets the timeout until its automatic closure",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -122,6 +128,7 @@
    "description": "Executes a specific (SITE) server command and returns the response",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -129,6 +136,7 @@
      "short": "-c"
     },
     {
+     "title": "CommandText",
      "name": "--cmd",
      "types": "String",
      "description": "Text of the executed command",
@@ -144,6 +152,7 @@
    "description": "Sends an arbitrary text request to the server for processing",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -151,6 +160,7 @@
      "short": "-c"
     },
     {
+     "title": "CommandText",
      "name": "--cmd",
      "types": "String",
      "description": "Text of the executed command",
@@ -166,6 +176,7 @@
    "description": "Get the size of a file or directory if it exists",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -173,6 +184,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object",
@@ -188,6 +200,7 @@
    "description": "Changes the object's path to the specified one",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -195,6 +208,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--old",
      "types": "String",
      "description": "Current path to object",
@@ -202,6 +216,7 @@
      "short": "-o"
     },
     {
+     "title": "NewPath",
      "name": "--new",
      "types": "String",
      "description": "New path to object",
@@ -217,6 +232,7 @@
    "description": "Creates a structure of FTP connection settings",
    "params": [
     {
+     "title": "Host",
      "name": "--host",
      "types": "String",
      "description": "Host address",
@@ -224,6 +240,7 @@
      "short": "-h"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "Server port",
@@ -231,6 +248,7 @@
      "short": "-p"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String, Undefined",
      "description": "Username for authorization, if required",
@@ -238,6 +256,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String, Undefined",
      "description": "User password for authorization, if required",
@@ -245,6 +264,7 @@
      "short": "-s"
     },
     {
+     "title": "Passive",
      "name": "--passive",
      "types": "Boolean",
      "description": "Passive connection mode",
@@ -252,6 +272,7 @@
      "short": "-v"
     },
     {
+     "title": "ReadTimeout",
      "name": "--rtout",
      "types": "Number",
      "description": "Read timeout",
@@ -259,6 +280,7 @@
      "short": "-r"
     },
     {
+     "title": "WriteTimeout",
      "name": "--wtout",
      "types": "Number",
      "description": "Write timeout",
@@ -266,6 +288,7 @@
      "short": "-w"
     },
     {
+     "title": "IPResolve",
      "name": "--ipresl",
      "types": "Boolean",
      "description": "Advanced passive mode address resolution",
@@ -281,6 +304,7 @@
    "description": "Creates a structure of proxy server settings for the connection",
    "params": [
     {
+     "title": "Address",
      "name": "--addr",
      "types": "String",
      "description": "Proxy address",
@@ -288,6 +312,7 @@
      "short": "-a"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "Proxy port",
@@ -295,6 +320,7 @@
      "short": "-p"
     },
     {
+     "title": "View",
      "name": "--type",
      "types": "String",
      "description": "Proxy type: socks5, socks4, http",
@@ -302,6 +328,7 @@
      "short": "-t"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String, Undefined",
      "description": "Authorization login, if required",
@@ -309,6 +336,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String, Undefined",
      "description": "Authorization password, if required",
@@ -324,6 +352,7 @@
    "description": "Forms settings for using TLS",
    "params": [
     {
+     "title": "DisableCertVerification",
      "name": "--trust",
      "types": "Boolean",
      "description": "Allows to work with invalid certificates, including self signed",
@@ -331,6 +360,7 @@
      "short": "-t"
     },
     {
+     "title": "CertFilepath",
      "name": "--cert",
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
@@ -346,6 +376,7 @@
    "description": "Gets information about the contents of a directory at the specified path",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -353,6 +384,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to search directory",
@@ -360,6 +392,7 @@
      "short": "-p"
     },
     {
+     "title": "Recursively",
      "name": "--rcv",
      "types": "Boolean",
      "description": "Get information about objects in nested directories",
@@ -375,6 +408,7 @@
    "description": "Creates a directory at the specified path",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -382,6 +416,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to new directory",
@@ -397,6 +432,7 @@
    "description": "Deletes an existing directory",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -404,6 +440,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to directory to delete",
@@ -419,6 +456,7 @@
    "description": "Deletes all objects in the selected directory",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -426,6 +464,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the directory to be cleaned",
@@ -441,6 +480,7 @@
    "description": "Gets the current directory from which relative paths are calculated",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -456,6 +496,7 @@
    "description": "Uploads a file from disk or binary data to the FTP server",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -463,6 +504,7 @@
      "short": "-c"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File on disk or file data",
@@ -470,6 +512,7 @@
      "short": "-f"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to save file on server",
@@ -485,6 +528,7 @@
    "description": "Delete file from server",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -492,6 +536,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to file on server",
@@ -507,6 +552,7 @@
    "description": "Saves the file from the server to the specified path",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -514,6 +560,7 @@
      "short": "-c"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to file on server",
@@ -521,6 +568,7 @@
      "short": "-p"
     },
     {
+     "title": "FileName",
      "name": "--file",
      "types": "String",
      "description": "Path to save file on disk",

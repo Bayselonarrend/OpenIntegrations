@@ -32,6 +32,7 @@
    "description": "Pack files from the specified directory into a tar archive",
    "params": [
     {
+     "title": "Directory",
      "name": "--src",
      "types": "String, Map Of KeyAndValue",
      "description": "Path to directory or description. See GetArchiveDescriptionStructure",
@@ -39,6 +40,7 @@
      "short": "-s"
     },
     {
+     "title": "ArchivePath",
      "name": "--dest",
      "types": "String",
      "description": "Path to save the archive. To binary data if not filled",
@@ -46,6 +48,7 @@
      "short": "-d"
     },
     {
+     "title": "Settings",
      "name": "--settings",
      "types": "Map Of KeyAndValue",
      "description": "Additional settings. See GetArchivingSettingsStructure",
@@ -61,6 +64,7 @@
    "description": "Extract tar archive to the specified directory",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -68,6 +72,7 @@
      "short": "-s"
     },
     {
+     "title": "DestinationDirectory",
      "name": "--dest",
      "types": "String",
      "description": "Directory path for unpacking. To binary data if not filled",
@@ -83,6 +88,7 @@
    "description": "Extract selected files from the tar archive by the list of paths",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -90,6 +96,7 @@
      "short": "-s"
     },
     {
+     "title": "Paths",
      "name": "--paths",
      "types": "Array Of String",
      "description": "Full paths of files inside the archive",
@@ -97,6 +104,7 @@
      "short": "-p"
     },
     {
+     "title": "DestinationDirectory",
      "name": "--dest",
      "types": "String",
      "description": "Directory path for unpacking. To binary data if not filled",
@@ -112,6 +120,7 @@
    "description": "Add, replace and delete files in an existing tar archive",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -119,6 +128,7 @@
      "short": "-s"
     },
     {
+     "title": "AddableFiles",
      "name": "--additions",
      "types": "Map Of KeyAndValue",
      "description": "Key: archive path; value: file path or binary data",
@@ -126,6 +136,7 @@
      "short": "-a"
     },
     {
+     "title": "DeletablePaths",
      "name": "--deletions",
      "types": "Array Of String",
      "description": "Paths of files in the archive for deletion",
@@ -133,6 +144,7 @@
      "short": "-d"
     },
     {
+     "title": "Settings",
      "name": "--settings",
      "types": "Map Of KeyAndValue",
      "description": "Change settings. See GetArchiveSettingsStructure",
@@ -148,6 +160,7 @@
    "description": "Gets a structure with additional data archiving settings",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -155,6 +168,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns the filter fields as a map",
@@ -170,6 +184,7 @@
    "description": "Get structure of data description for packing without a directory on disk",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -177,6 +192,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns fields as map",
@@ -192,6 +208,7 @@
    "description": "Gets a hierarchical list of files and directories in the archive",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -207,6 +224,7 @@
    "description": "Gets metadata and a flat list of archive files",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",

@@ -60,6 +60,7 @@
    "description": "Generates a response for a given text query",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -67,6 +68,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -74,6 +76,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -81,6 +84,7 @@
      "short": "-m"
     },
     {
+     "title": "Messages",
      "name": "--msgs",
      "types": "Structure, Array of Structure",
      "description": "Conversation messages. See GetMessageStructure",
@@ -88,6 +92,7 @@
      "short": "-s"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -95,6 +100,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -110,6 +116,7 @@
    "description": "Generates images based on the specified description",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -117,6 +124,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -124,6 +132,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -131,6 +140,7 @@
      "short": "-m"
     },
     {
+     "title": "Description",
      "name": "--descr",
      "types": "Structure Of KeyAndValue",
      "description": "Generation parameters. See GetImageDescriptionStructure",
@@ -138,6 +148,7 @@
      "short": "-d"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -153,6 +164,7 @@
    "description": "Gets the embeddings for the given entries",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -160,6 +172,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -167,6 +180,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -174,6 +188,7 @@
      "short": "-m"
     },
     {
+     "title": "Text",
      "name": "--input",
      "types": "Array Of String",
      "description": "String or array of request strings",
@@ -181,6 +196,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -188,6 +204,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -203,6 +220,7 @@
    "description": "Gets the structure of an arbitrary message for the request message list",
    "params": [
     {
+     "title": "Role",
      "name": "--role",
      "types": "String",
      "description": "Source of the message: system, user, assistant, etc..",
@@ -210,6 +228,7 @@
      "short": "-r"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -217,6 +236,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of participant in conversation",
@@ -232,6 +252,7 @@
    "description": "Gets the structure of a message from the user for use in a request",
    "params": [
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -239,6 +260,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Name of participant in conversation",
@@ -254,6 +276,7 @@
    "description": "Gets the structure of a message from the assistant for use in a request",
    "params": [
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -269,6 +292,7 @@
    "description": "Gets the structure of a system message for use in a request",
    "params": [
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -284,6 +308,7 @@
    "description": "Gets the message structure based on the image for the request message list",
    "params": [
     {
+     "title": "Role",
      "name": "--role",
      "types": "String",
      "description": "Message source: system, user, developer",
@@ -291,6 +316,7 @@
      "short": "-r"
     },
     {
+     "title": "FileID",
      "name": "--file",
      "types": "String",
      "description": "Image file ID. See UploadFile",
@@ -298,6 +324,7 @@
      "short": "-f"
     },
     {
+     "title": "Text",
      "name": "--prompt",
      "types": "String",
      "description": "Input text query for image processing",
@@ -313,6 +340,7 @@
    "description": "Get image description structure for generation",
    "params": [
     {
+     "title": "Prompt",
      "name": "--prompt",
      "types": "String",
      "description": "Text description of the image for generation",
@@ -320,6 +348,7 @@
      "short": "-p"
     },
     {
+     "title": "Count",
      "name": "--amount",
      "types": "Number",
      "description": "Number of images to generate",
@@ -327,6 +356,7 @@
      "short": "-a"
     },
     {
+     "title": "Background",
      "name": "--bg",
      "types": "String",
      "description": "Generation background option: transparent, opaque, auto",
@@ -334,6 +364,7 @@
      "short": "-b"
     },
     {
+     "title": "Size",
      "name": "--size",
      "types": "String",
      "description": "Size option for generated images",
@@ -341,6 +372,7 @@
      "short": "-s"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -356,6 +388,7 @@
    "description": "Retrieves a list of assistants with or without filtering",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -363,6 +396,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -370,6 +404,7 @@
      "short": "-t"
     },
     {
+     "title": "Count",
      "name": "--limit",
      "types": "Number",
      "description": "Maximum number of assistants returned",
@@ -377,6 +412,7 @@
      "short": "-l"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -384,6 +420,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -399,6 +436,7 @@
    "description": "Creates an assistant based on the model and instruction",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -406,6 +444,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -413,6 +452,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -420,6 +460,7 @@
      "short": "-m"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Assistant name",
@@ -427,6 +468,7 @@
      "short": "-n"
     },
     {
+     "title": "Instruction",
      "name": "--inst",
      "types": "String",
      "description": "System instruction for the assistant",
@@ -434,6 +476,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -441,6 +484,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -456,6 +500,7 @@
    "description": "Retrieves information about an assistant by ID",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -463,6 +508,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -470,6 +516,7 @@
      "short": "-t"
     },
     {
+     "title": "AssistantID",
      "name": "--id",
      "types": "String",
      "description": "Assistant ID",
@@ -477,6 +524,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -492,6 +540,7 @@
    "description": "Deletes a previously created assistant",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -499,6 +548,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -506,6 +556,7 @@
      "short": "-t"
     },
     {
+     "title": "AssistantID",
      "name": "--id",
      "types": "String",
      "description": "Assistant ID",
@@ -513,6 +564,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -528,6 +580,7 @@
    "description": "Get a list of files with or without filtering",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -535,6 +588,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -542,6 +596,7 @@
      "short": "-t"
     },
     {
+     "title": "Count",
      "name": "--limit",
      "types": "Number",
      "description": "Maximum number of assistants returned",
@@ -549,6 +604,7 @@
      "short": "-l"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -556,6 +612,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -571,6 +628,7 @@
    "description": "Uploads a file for further use in other requests",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -578,6 +636,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -585,6 +644,7 @@
      "short": "-t"
     },
     {
+     "title": "FileName",
      "name": "--name",
      "types": "String",
      "description": "File name with extension",
@@ -592,6 +652,7 @@
      "short": "-n"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "String, BinaryData",
      "description": "Path to file or data",
@@ -599,6 +660,7 @@
      "short": "-d"
     },
     {
+     "title": "Destination",
      "name": "--purpose",
      "types": "String",
      "description": "File purpose: assistants, batch, vision, user_data, evals",
@@ -606,6 +668,7 @@
      "short": "-p"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -621,6 +684,7 @@
    "description": "Gets information about the file",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -628,6 +692,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -635,6 +700,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--id",
      "types": "String",
      "description": "File ID",
@@ -642,6 +708,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -657,6 +724,7 @@
    "description": "Get file data from the server",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -664,6 +732,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -671,6 +740,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--id",
      "types": "String",
      "description": "File ID",
@@ -678,6 +748,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -693,6 +764,7 @@
    "description": "Deletes a previously uploaded file",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -700,6 +772,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -707,6 +780,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--id",
      "types": "String",
      "description": "File ID",
@@ -714,6 +788,7 @@
      "short": "-i"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -729,6 +804,7 @@
    "description": "Generates audio with the specified text for speech synthesis",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -736,6 +812,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -743,6 +820,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -750,6 +828,7 @@
      "short": "-m"
     },
     {
+     "title": "Text",
      "name": "--input",
      "types": "String",
      "description": "Text for speech synthesis",
@@ -757,6 +836,7 @@
      "short": "-i"
     },
     {
+     "title": "Voice",
      "name": "--voice",
      "types": "String",
      "description": "Voice type: alloy, ash, ballad, coral, echo, etc..",
@@ -764,6 +844,7 @@
      "short": "-v"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -771,6 +852,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -786,6 +868,7 @@
    "description": "Creates a text transcription for the selected audio file",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -793,6 +876,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -800,6 +884,7 @@
      "short": "-t"
     },
     {
+     "title": "Model",
      "name": "--model",
      "types": "String",
      "description": "Models name",
@@ -807,6 +892,7 @@
      "short": "-m"
     },
     {
+     "title": "Audio",
      "name": "--audio",
      "types": "String, BinaryData",
      "description": "Audio file",
@@ -814,6 +900,7 @@
      "short": "-a"
     },
     {
+     "title": "MIME",
      "name": "--type",
      "types": "String",
      "description": "MIME type of audio file",
@@ -821,6 +908,7 @@
      "short": "-p"
     },
     {
+     "title": "AdditionalParameters",
      "name": "--options",
      "types": "Structure Of KeyAndValue",
      "description": "Additional request parameters, if necessary",
@@ -828,6 +916,7 @@
      "short": "-o"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",
@@ -843,6 +932,7 @@
    "description": "Receives a list of available models",
    "params": [
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "OpenAI server URL",
@@ -850,6 +940,7 @@
      "short": "-u"
     },
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "OpenAI authorization token",
@@ -857,6 +948,7 @@
      "short": "-t"
     },
     {
+     "title": "AdditionalHeaders",
      "name": "--headers",
      "types": "Map Of KeyAndValue",
      "description": "Additional request headers, if necessary",

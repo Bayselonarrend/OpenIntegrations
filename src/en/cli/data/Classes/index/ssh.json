@@ -26,6 +26,7 @@
    "description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
    "params": [
     {
+     "title": "SSHSettings",
      "name": "--set",
      "types": "Structure Of KeyAndValue",
      "description": "SSH settings",
@@ -33,6 +34,7 @@
      "short": "-s"
     },
     {
+     "title": "Proxy",
      "name": "--proxy",
      "types": "Structure Of KeyAndValue",
      "description": "Proxy settings, if required. See GetProxySettings",
@@ -48,6 +50,7 @@
    "description": "Executes the specified command",
    "params": [
     {
+     "title": "Connection",
      "name": "--conn",
      "types": "Arbitrary",
      "description": "Existing connection or connection configuration",
@@ -55,6 +58,7 @@
      "short": "-c"
     },
     {
+     "title": "Command",
      "name": "--comm",
      "types": "String",
      "description": "Command text",
@@ -70,6 +74,7 @@
    "description": "password)\n\n Gets connection settings with login and password authentication",
    "params": [
     {
+     "title": "Host",
      "name": "--host",
      "types": "String",
      "description": "SSH host",
@@ -77,6 +82,7 @@
      "short": "-h"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "SSH port",
@@ -84,6 +90,7 @@
      "short": "-p"
     },
     {
+     "title": "Login",
      "name": "--user",
      "types": "String",
      "description": "SSH username",
@@ -91,6 +98,7 @@
      "short": "-u"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "SSH user password",
@@ -106,6 +114,7 @@
    "description": "Gets connection settings with private key authentication",
    "params": [
     {
+     "title": "Host",
      "name": "--host",
      "types": "String",
      "description": "SSH host",
@@ -113,6 +122,7 @@
      "short": "-h"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "SSH port",
@@ -120,6 +130,7 @@
      "short": "-p"
     },
     {
+     "title": "Login",
      "name": "--user",
      "types": "String",
      "description": "SSH username",
@@ -127,6 +138,7 @@
      "short": "-u"
     },
     {
+     "title": "Private",
      "name": "--key",
      "types": "String",
      "description": "Path to private key file",
@@ -134,6 +146,7 @@
      "short": "-k"
     },
     {
+     "title": "Public",
      "name": "--pub",
      "types": "String",
      "description": "Path to public key file",
@@ -141,6 +154,7 @@
      "short": "-b"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Private key password (passphrase)",
@@ -156,6 +170,7 @@
    "description": "Gets connection settings with SSH Agent authentication",
    "params": [
     {
+     "title": "Host",
      "name": "--host",
      "types": "String",
      "description": "SSH host",
@@ -163,6 +178,7 @@
      "short": "-h"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "SSH port",
@@ -170,6 +186,7 @@
      "short": "-p"
     },
     {
+     "title": "Login",
      "name": "--user",
      "types": "String",
      "description": "SSH username",
@@ -185,6 +202,7 @@
    "description": "Retrieves connection settings for keyboard-interactive authentication",
    "params": [
     {
+     "title": "Host",
      "name": "--host",
      "types": "String",
      "description": "SSH host",
@@ -192,6 +210,7 @@
      "short": "-h"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "SSH port",
@@ -199,6 +218,7 @@
      "short": "-p"
     },
     {
+     "title": "Login",
      "name": "--user",
      "types": "String",
      "description": "SSH username",
@@ -206,6 +226,7 @@
      "short": "-u"
     },
     {
+     "title": "InputOrder",
      "name": "--prompts",
      "types": "Array Of String",
      "description": "Array of responses to server questions",
@@ -221,6 +242,7 @@
    "description": "Creates a structure of proxy server settings for the connection",
    "params": [
     {
+     "title": "Address",
      "name": "--addr",
      "types": "String",
      "description": "Proxy address",
@@ -228,6 +250,7 @@
      "short": "-a"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "Number",
      "description": "Proxy port",
@@ -235,6 +258,7 @@
      "short": "-p"
     },
     {
+     "title": "View",
      "name": "--type",
      "types": "String",
      "description": "Proxy type: socks5, socks4, http",
@@ -242,6 +266,7 @@
      "short": "-t"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String, Undefined",
      "description": "Authorization login, if required",
@@ -249,6 +274,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String, Undefined",
      "description": "Authorization password, if required",

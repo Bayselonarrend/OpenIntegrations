@@ -60,6 +60,7 @@
    "description": "Gets a token based on account ID and password",
    "params": [
     {
+     "title": "Account",
      "name": "--account",
      "types": "String",
      "description": "Client identifier (Account)",
@@ -67,6 +68,7 @@
      "short": "-a"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Secret key (Password)",
@@ -74,6 +76,7 @@
      "short": "-p"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -89,6 +92,7 @@
    "description": "Gets information about checks for a specified date",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -96,6 +100,7 @@
      "short": "-t"
     },
     {
+     "title": "ReceivingDate",
      "name": "--date",
      "types": "Date",
      "description": "Date for which data should be retrieved",
@@ -103,6 +108,7 @@
      "short": "-d"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -118,6 +124,7 @@
    "description": "Receives registers of imposed payments, for which the client was transferred the payment",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -125,6 +132,7 @@
      "short": "-t"
     },
     {
+     "title": "ReceivingDate",
      "name": "--date",
      "types": "Date",
      "description": "Date for which data should be retrieved",
@@ -132,6 +140,7 @@
      "short": "-d"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -147,6 +156,7 @@
    "description": "Gets information about orders for which cash on delivery was transferred to the online store",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -154,6 +164,7 @@
      "short": "-t"
     },
     {
+     "title": "ReceivingDate",
      "name": "--date",
      "types": "Date",
      "description": "Date for which data should be retrieved",
@@ -161,6 +172,7 @@
      "short": "-d"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -176,6 +188,7 @@
    "description": "Gets a list of offices with or without a filter",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -183,6 +196,7 @@
      "short": "-t"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure Of KeyAndValue",
      "description": "Office filter. See GetOfficeFilterDescription",
@@ -190,6 +204,7 @@
      "short": "-f"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -205,6 +220,7 @@
    "description": "Gets the list of available regions",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -212,6 +228,7 @@
      "short": "-t"
     },
     {
+     "title": "Countrues",
      "name": "--countries",
      "types": "Array Of String",
      "description": "Array of country codes in ISO_31661_alpha2 format for selection",
@@ -219,6 +236,7 @@
      "short": "-c"
     },
     {
+     "title": "Page",
      "name": "--page",
      "types": "Number",
      "description": "Result page",
@@ -226,6 +244,7 @@
      "short": "-p"
     },
     {
+     "title": "Lang",
      "name": "--lang",
      "types": "String",
      "description": "Language: rus, eng, zho",
@@ -233,6 +252,7 @@
      "short": "-l"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -248,6 +268,7 @@
    "description": "Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -263,6 +284,7 @@
    "description": "Creates an order based on field descriptions",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -270,6 +292,7 @@
      "short": "-t"
     },
     {
+     "title": "OrderDescription",
      "name": "--order",
      "types": "Structure Of KeyAndValue",
      "description": "Set of order fields. See GetOrderDescription",
@@ -277,6 +300,7 @@
      "short": "-o"
     },
     {
+     "title": "OnlineStore",
      "name": "--ostore",
      "types": "Boolean",
      "description": "Flag of Online store order type",
@@ -284,6 +308,7 @@
      "short": "-s"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -299,6 +324,7 @@
    "description": "Changes the field values of the selected order",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -306,6 +332,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID for updating",
@@ -313,6 +340,7 @@
      "short": "-u"
     },
     {
+     "title": "OrderDescription",
      "name": "--order",
      "types": "Structure Of KeyAndValue",
      "description": "Set of changing order fields",
@@ -320,6 +348,7 @@
      "short": "-o"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -335,6 +364,7 @@
    "description": "Deletes order by UUID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -342,6 +372,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID for deletion",
@@ -349,6 +380,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -364,6 +396,7 @@
    "description": "Gets the order by UUID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -371,6 +404,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -378,6 +412,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -393,6 +428,7 @@
    "description": "Receives the order by CDEK number or number from customer IB",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -400,6 +436,7 @@
      "short": "-t"
     },
     {
+     "title": "OrderNumber",
      "name": "--number",
      "types": "String",
      "description": "Order number",
@@ -407,6 +444,7 @@
      "short": "-n"
     },
     {
+     "title": "Internal",
      "name": "--internal",
      "types": "Boolean",
      "description": "Type of order number. True > number in the customer base, False > CDEK number",
@@ -414,6 +452,7 @@
      "short": "-i"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -429,6 +468,7 @@
    "description": "Processes customer returns for online store orders",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -436,6 +476,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -443,6 +484,7 @@
      "short": "-u"
     },
     {
+     "title": "Tariff",
      "name": "--tariff",
      "types": "Number",
      "description": "Tariff code (from those available under the contract)",
@@ -450,6 +492,7 @@
      "short": "-r"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -465,6 +508,7 @@
    "description": "Creates an order refusal to return to the online store",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -472,6 +516,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -479,6 +524,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -494,6 +540,7 @@
    "description": "Generates pdf receipts for orders",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -501,6 +548,7 @@
      "short": "-t"
     },
     {
+     "title": "UUIDArray",
      "name": "--uuids",
      "types": "String, Array of String",
      "description": "One or an array of order UUIDs",
@@ -508,6 +556,7 @@
      "short": "-u"
     },
     {
+     "title": "Type",
      "name": "--type",
      "types": "String",
      "description": "Receipt type (language)",
@@ -515,6 +564,7 @@
      "short": "-p"
     },
     {
+     "title": "CopiesPerSheet",
      "name": "--count",
      "types": "Number",
      "description": "Number of copies of one receipt per sheet",
@@ -522,6 +572,7 @@
      "short": "-c"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -537,6 +588,7 @@
    "description": "Gets a receipt for the order",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -544,6 +596,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "UUID of the receipt received during its creation",
@@ -551,6 +604,7 @@
      "short": "-u"
     },
     {
+     "title": "GetFile",
      "name": "--getfile",
      "types": "Boolean",
      "description": "True > PDF file data will be received, False > receives CDEK server response",
@@ -558,6 +612,7 @@
      "short": "-g"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -573,6 +628,7 @@
    "description": "Generates a PDF barcode CP for orders",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -580,6 +636,7 @@
      "short": "-t"
     },
     {
+     "title": "UUIDArray",
      "name": "--uuids",
      "types": "String, Array of String",
      "description": "One or an array of order UUIDs",
@@ -587,6 +644,7 @@
      "short": "-u"
     },
     {
+     "title": "Copies",
      "name": "--count",
      "types": "Number",
      "description": "Number of copies",
@@ -594,6 +652,7 @@
      "short": "-c"
     },
     {
+     "title": "Format",
      "name": "--format",
      "types": "String",
      "description": "Print format: A4, A5, A6, A7",
@@ -601,6 +660,7 @@
      "short": "-f"
     },
     {
+     "title": "Lang",
      "name": "--lang",
      "types": "String",
      "description": "Barcode language: RUS, ENG",
@@ -608,6 +668,7 @@
      "short": "-l"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -623,6 +684,7 @@
    "description": "Gets the barcode CP for the order",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -630,6 +692,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "The UID of the barcode received when the barcode was created",
@@ -637,6 +700,7 @@
      "short": "-u"
     },
     {
+     "title": "GetFile",
      "name": "--getfile",
      "types": "Boolean",
      "description": "True > PDF file data will be received, False > receives CDEK server response",
@@ -644,6 +708,7 @@
      "short": "-g"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -659,6 +724,7 @@
    "description": "Creates a prealert for the order list",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -666,6 +732,7 @@
      "short": "-t"
     },
     {
+     "title": "UUIDArray",
      "name": "--uuids",
      "types": "String, Array of String",
      "description": "One or an array of order UUIDs",
@@ -673,6 +740,7 @@
      "short": "-u"
     },
     {
+     "title": "TransferDate",
      "name": "--date",
      "types": "Date",
      "description": "Planned date of transfer of orders to CDEK",
@@ -680,6 +748,7 @@
      "short": "-d"
     },
     {
+     "title": "Point",
      "name": "--point",
      "types": "String",
      "description": "Code of shipment point to which it is planned to transfer orders",
@@ -687,6 +756,7 @@
      "short": "-p"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -702,6 +772,7 @@
    "description": "Gets a previously created prealert",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -709,6 +780,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Prealert UUID",
@@ -716,6 +788,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -731,6 +804,7 @@
    "description": "Receives information on passport data processing status for international orders",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -738,6 +812,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -745,6 +820,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -760,6 +836,7 @@
    "description": "Receives check information on an order",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -767,6 +844,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -774,6 +852,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -789,6 +868,7 @@
    "description": "Gets the layout of order for the CreateOrder function",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -796,6 +876,7 @@
      "short": "-e"
     },
     {
+     "title": "RequiredOnly",
      "name": "--required",
      "types": "Boolean",
      "description": "True > only required fields will be in the set",
@@ -803,6 +884,7 @@
      "short": "-r"
     },
     {
+     "title": "OnlineStore",
      "name": "--ostore",
      "types": "Boolean",
      "description": "Flag of including fields in the layout exclusively for online store orders",
@@ -818,6 +900,7 @@
    "description": "Gets available delivery intervals for order",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -825,6 +908,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Order UUID",
@@ -832,6 +916,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -847,6 +932,7 @@
    "description": "Creates a new request to call a courier to pick up a shipment",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -854,6 +940,7 @@
      "short": "-t"
     },
     {
+     "title": "InvitationDescription",
      "name": "--intake",
      "types": "Structure Of KeyAndValue",
      "description": "Invitations description. See GetCourierInvitationsDescription",
@@ -861,6 +948,7 @@
      "short": "-i"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -876,6 +964,7 @@
    "description": "Gets withourier invitation by UUID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -883,6 +972,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "UUID of the invitation",
@@ -890,6 +980,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -905,6 +996,7 @@
    "description": "",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -912,6 +1004,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "UUID of the invitation for deletion",
@@ -919,6 +1012,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -934,6 +1028,7 @@
    "description": "Fixes the delivery date, time and address agreed with the customer",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -941,6 +1036,7 @@
      "short": "-t"
     },
     {
+     "title": "Appointment",
      "name": "--appt",
      "types": "Structure Of KeyAndValue",
      "description": "Appointment description. See GetAppointmentDescription",
@@ -948,6 +1044,7 @@
      "short": "-a"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -963,6 +1060,7 @@
    "description": "Receives information about the delivery date, time and address agreed with the customer",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -970,6 +1068,7 @@
      "short": "-t"
     },
     {
+     "title": "UUID",
      "name": "--uuid",
      "types": "String",
      "description": "Appointment UUID",
@@ -977,6 +1076,7 @@
      "short": "-u"
     },
     {
+     "title": "TestAPI",
      "name": "--testapi",
      "types": "Boolean",
      "description": "Flag to use test API for requests",
@@ -992,6 +1092,7 @@
    "description": "Gets the layout for creating a request for courier call in the CreateCourierInvitation function",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -999,6 +1100,7 @@
      "short": "-e"
     },
     {
+     "title": "RequiredOnly",
      "name": "--required",
      "types": "Boolean",
      "description": "True > only required fields will be in the set",
@@ -1014,6 +1116,7 @@
    "description": "Gets the layout to create about delivery in the RegisterDeliveryAppointment function",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -1021,6 +1124,7 @@
      "short": "-e"
     },
     {
+     "title": "RequiredOnly",
      "name": "--required",
      "types": "Boolean",
      "description": "True > only required fields will be in the set",

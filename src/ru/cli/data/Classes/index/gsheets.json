@@ -49,6 +49,7 @@
    "description": "Возвращает URL для авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -56,6 +57,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Булево",
      "description": "разрешение на методы Calendar",
@@ -63,6 +65,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Булево",
      "description": "разрешение на методы Drive",
@@ -70,6 +73,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Булево",
      "description": "разрешение на методы Sheets",
@@ -85,6 +89,7 @@
    "description": "Получает токен по коду из авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -92,6 +97,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -99,6 +105,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "Строка",
      "description": "Code из браузера",
@@ -114,6 +121,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -121,6 +129,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -128,6 +137,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",
@@ -143,6 +153,7 @@
    "description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Данные",
      "name": "--auth",
      "types": "Произвольный",
      "description": "JSON данные авторизации как файл, коллекция или двоичные данные",
@@ -150,6 +161,7 @@
      "short": "-a"
     },
     {
+     "title": "ОбластиДействия",
      "name": "--scope",
      "types": "Массив Из Строка",
      "description": "Область действия (scope) или массив областей",
@@ -157,6 +169,7 @@
      "short": "-s"
     },
     {
+     "title": "ВремяЖизни",
      "name": "--exp",
      "types": "Число",
      "description": "Время жизни токена в секундах",
@@ -172,6 +185,7 @@
    "description": "Создает новую книгу\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -179,6 +193,7 @@
      "short": "-t"
     },
     {
+     "title": "Наименование",
      "name": "--title",
      "types": "Строка",
      "description": "Наименование",
@@ -186,6 +201,7 @@
      "short": "-l"
     },
     {
+     "title": "МассивИменЛистов",
      "name": "--sheets",
      "types": "Массив из Строка",
      "description": "Массив имен для добавления новых листов в книгу",
@@ -201,6 +217,7 @@
    "description": "Получает информацию о книге по ID",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -208,6 +225,7 @@
      "short": "-t"
     },
     {
+     "title": "Идентификатор",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "Идентификатор книги",
@@ -223,6 +241,7 @@
    "description": "Изменяет наименование существующей книги",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -230,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "ID книги",
@@ -237,6 +257,7 @@
      "short": "-s"
     },
     {
+     "title": "Наименование",
      "name": "--title",
      "types": "Строка",
      "description": "Новое наименование",
@@ -252,6 +273,7 @@
    "description": "Добавляет новый лист в книгу",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -259,6 +281,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "Идентификатор книги",
@@ -266,6 +289,7 @@
      "short": "-s"
     },
     {
+     "title": "Наименование",
      "name": "--title",
      "types": "Строка",
      "description": "Наименование нового листа",
@@ -281,6 +305,7 @@
    "description": "Удаляет лист из книги",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -288,6 +313,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "Идентификатор книги",
@@ -295,6 +321,7 @@
      "short": "-s"
     },
     {
+     "title": "Лист",
      "name": "--sheet",
      "types": "Строка",
      "description": "Идентификатор удаляемого листа",
@@ -310,6 +337,7 @@
    "description": "Копирует лист из одной книги в другую",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -317,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "Откуда",
      "name": "--from",
      "types": "Строка",
      "description": "ID книги источника",
@@ -324,6 +353,7 @@
      "short": "-f"
     },
     {
+     "title": "Куда",
      "name": "--to",
      "types": "Строка",
      "description": "ID книги приемника",
@@ -331,6 +361,7 @@
      "short": "-o"
     },
     {
+     "title": "Лист",
      "name": "--sheet",
      "types": "Строка",
      "description": "ID копируемого листа",
@@ -346,6 +377,7 @@
    "description": "Устанавливает значения ячеек листа",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -353,6 +385,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "ID книги",
@@ -360,6 +393,7 @@
      "short": "-s"
     },
     {
+     "title": "СоответствиеЗначений",
      "name": "--data",
      "types": "Соответствие Из КлючИЗначение",
      "description": "Данные заполнения, где ключ это имя ячейки вида A1",
@@ -367,6 +401,7 @@
      "short": "-d"
     },
     {
+     "title": "Лист",
      "name": "--sheetname",
      "types": "Строка",
      "description": "Имя листа (первый лист по умолчанию)",
@@ -374,6 +409,7 @@
      "short": "-h"
     },
     {
+     "title": "ОсновноеИзмерение",
      "name": "--dim",
      "types": "Строка",
      "description": "Основное измерение при заполнении диапазона массивом",
@@ -389,6 +425,7 @@
    "description": "Очищает значение в ячейках\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -396,6 +433,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "ID книги",
@@ -403,6 +441,7 @@
      "short": "-s"
     },
     {
+     "title": "МассивЯчеек",
      "name": "--cells",
      "types": "Массив из Строка",
      "description": "Массив ячеек вида А1 для очистки",
@@ -410,6 +449,7 @@
      "short": "-c"
     },
     {
+     "title": "Лист",
      "name": "--sheetname",
      "types": "Строка",
      "description": "Имя листа (первый лист по умолчанию)",
@@ -425,6 +465,7 @@
    "description": "Получает значения ячеек таблицы\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Токен",
      "name": "--token",
      "types": "Строка",
      "description": "Токен",
@@ -432,6 +473,7 @@
      "short": "-t"
     },
     {
+     "title": "Книга",
      "name": "--spreadsheet",
      "types": "Строка",
      "description": "ID книги",
@@ -439,6 +481,7 @@
      "short": "-s"
     },
     {
+     "title": "МассивЯчеек",
      "name": "--cells",
      "types": "Массив из Строка",
      "description": "Массив ячеек вида А1 для получения (весь лист, если не заполнено)",
@@ -446,6 +489,7 @@
      "short": "-c"
     },
     {
+     "title": "Лист",
      "name": "--sheetname",
      "types": "Строка",
      "description": "Имя листа (первый лист по умолчанию)",

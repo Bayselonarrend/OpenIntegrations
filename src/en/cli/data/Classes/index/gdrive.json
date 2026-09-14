@@ -49,6 +49,7 @@
    "description": "Returns URL for browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -56,6 +57,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Boolean",
      "description": "Calendar methods permission",
@@ -63,6 +65,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Boolean",
      "description": "Drive methods permission",
@@ -70,6 +73,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Boolean",
      "description": "Sheets methods permission",
@@ -85,6 +89,7 @@
    "description": "Gets token by code from browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -92,6 +97,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -99,6 +105,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from browser",
@@ -114,6 +121,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -121,6 +129,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -128,6 +137,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -143,6 +153,7 @@
    "description": "Gets authorization token by service account data",
    "params": [
     {
+     "title": "Data",
      "name": "--auth",
      "types": "Arbitrary",
      "description": "JSON authorization data as a file, collection or binary data",
@@ -150,6 +161,7 @@
      "short": "-a"
     },
     {
+     "title": "Scope",
      "name": "--scope",
      "types": "Array Of String",
      "description": "Scope or array of scopes",
@@ -157,6 +169,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--exp",
      "types": "Number",
      "description": "Token lifetime in seconds",
@@ -172,6 +185,7 @@
    "description": "Gets information about a folder or file by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -179,6 +193,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the file or folder",
@@ -194,6 +209,7 @@
    "description": "Gets the list of drive directories",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -201,6 +217,7 @@
      "short": "-t"
     },
     {
+     "title": "NameContains",
      "name": "--query",
      "types": "String",
      "description": "Filter by name",
@@ -208,6 +225,7 @@
      "short": "-q"
     },
     {
+     "title": "Detailed",
      "name": "--depth",
      "types": "Boolean",
      "description": "Adds a list of files to the directory fields",
@@ -223,6 +241,7 @@
    "description": "Gets the list of files",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -230,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "NameContains",
      "name": "--query",
      "types": "String",
      "description": "Filter by name",
@@ -237,6 +257,7 @@
      "short": "-q"
     },
     {
+     "title": "Directory",
      "name": "--catalog",
      "types": "String",
      "description": "Filter by parent directory ID",
@@ -252,6 +273,7 @@
    "description": "Uploads a file to the drive",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -259,6 +281,7 @@
      "short": "-t"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "BinaryData, String",
      "description": "File to be uploaded",
@@ -266,6 +289,7 @@
      "short": "-f"
     },
     {
+     "title": "Description",
      "name": "--props",
      "types": "Map Of KeyAndValue",
      "description": "See GetFileDescription",
@@ -281,6 +305,7 @@
    "description": "Creates an empty directory on the drive",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -288,6 +313,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Folder name",
@@ -295,6 +321,7 @@
      "short": "-l"
     },
     {
+     "title": "Parent",
      "name": "--catalog",
      "types": "String",
      "description": "Parent",
@@ -310,6 +337,7 @@
    "description": "Gets file by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -317,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "File identifier",
@@ -324,6 +353,7 @@
      "short": "-o"
     },
     {
+     "title": "SavePath",
      "name": "--out",
      "types": "String",
      "description": "File save path",
@@ -339,6 +369,7 @@
    "description": "Copies file or directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -346,6 +377,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "Object identifier",
@@ -353,6 +385,7 @@
      "short": "-o"
     },
     {
+     "title": "NewName",
      "name": "--title",
      "types": "String",
      "description": "New object name",
@@ -360,6 +393,7 @@
      "short": "-l"
     },
     {
+     "title": "NewParent",
      "name": "--catalog",
      "types": "String",
      "description": "New parent directory",
@@ -375,6 +409,7 @@
    "description": "Updates file binary data",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -382,6 +417,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the object to update",
@@ -389,6 +425,7 @@
      "short": "-o"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "BinaryData, String",
      "description": "File source for update",
@@ -396,6 +433,7 @@
      "short": "-f"
     },
     {
+     "title": "NewName",
      "name": "--title",
      "types": "String",
      "description": "New file name (if necessary)",
@@ -411,6 +449,7 @@
    "description": "Deletes file or directory by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -418,6 +457,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the object to delete",
@@ -433,6 +473,7 @@
    "description": "Gets a blank description template for uploading a file",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -448,6 +489,7 @@
    "description": "Creates a comment for a file or directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -455,6 +497,7 @@
      "short": "-t"
     },
     {
+     "title": "Identifier",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the object that needs a comment",
@@ -462,6 +505,7 @@
      "short": "-o"
     },
     {
+     "title": "Comment",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -477,6 +521,7 @@
    "description": "Gets comment by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -484,6 +529,7 @@
      "short": "-t"
     },
     {
+     "title": "ObjectID",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the file or directory where the comment is located",
@@ -491,6 +537,7 @@
      "short": "-o"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "String",
      "description": "Comment identifier",
@@ -506,6 +553,7 @@
    "description": "Gets the list of all comments of the object",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -513,6 +561,7 @@
      "short": "-t"
     },
     {
+     "title": "ObjectID",
      "name": "--object",
      "types": "String",
      "description": "Object identifier",
@@ -528,6 +577,7 @@
    "description": "Deletes comment by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -535,6 +585,7 @@
      "short": "-t"
     },
     {
+     "title": "ObjectID",
      "name": "--object",
      "types": "String",
      "description": "Identifier of the file or directory where the comment is located",
@@ -542,6 +593,7 @@
      "short": "-o"
     },
     {
+     "title": "CommentID",
      "name": "--comment",
      "types": "String",
      "description": "Comment identifier",

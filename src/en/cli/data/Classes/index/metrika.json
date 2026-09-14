@@ -45,6 +45,7 @@
    "description": "Creates a tag with the specified name",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -52,6 +53,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Tag title",
@@ -67,6 +69,7 @@
    "description": "Changes the tag name by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -74,6 +77,7 @@
      "short": "-t"
     },
     {
+     "title": "TagID",
      "name": "--label",
      "types": "String",
      "description": "Tag ID to change",
@@ -81,6 +85,7 @@
      "short": "-l"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New name",
@@ -96,6 +101,7 @@
    "description": "Gets the tag by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -103,6 +109,7 @@
      "short": "-t"
     },
     {
+     "title": "TagID",
      "name": "--label",
      "types": "String",
      "description": "Tag ID",
@@ -118,6 +125,7 @@
    "description": "Deletes a tag by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -125,6 +133,7 @@
      "short": "-t"
     },
     {
+     "title": "TagID",
      "name": "--label",
      "types": "String",
      "description": "ID of the tag to be deleted",
@@ -140,6 +149,7 @@
    "description": "Gets a list of the users tags",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -155,6 +165,7 @@
    "description": "Creates a counter by field description",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -162,6 +173,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Counter structure. See GetCounterStructure",
@@ -177,6 +189,7 @@
    "description": "Changes counter field values by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -184,6 +197,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterID",
      "name": "--counter",
      "types": "String, Number",
      "description": "Counter ID to change",
@@ -191,6 +205,7 @@
      "short": "-c"
     },
     {
+     "title": "CounterStructure",
      "name": "--fields",
      "types": "Structure Of KeyAndValue",
      "description": "Structure of fields to be changed. See GetCounterStructure",
@@ -206,6 +221,7 @@
    "description": "Gets information about the counter by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -213,6 +229,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterID",
      "name": "--counter",
      "types": "String, Number",
      "description": "Counter ID",
@@ -228,6 +245,7 @@
    "description": "Deletes a counter by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -235,6 +253,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterID",
      "name": "--counter",
      "types": "Number, String",
      "description": "Counter ID for deletion",
@@ -250,6 +269,7 @@
    "description": "Restores a previously deleted counter by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -257,6 +277,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterID",
      "name": "--counter",
      "types": "String, Number",
      "description": "Counter ID for restoring",
@@ -272,6 +293,7 @@
    "description": "Gets a list of available counters with or without filtering",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -279,6 +301,7 @@
      "short": "-t"
     },
     {
+     "title": "Filter",
      "name": "--filter",
      "types": "Structure Of KeyAndValue",
      "description": "List filter. See GetCounterFilterStructure",
@@ -294,6 +317,7 @@
    "description": "Gets the structure of standard fields for counter creation",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -309,6 +333,7 @@
    "description": "Gets the structure of filter fields to get the list of counters",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -324,6 +349,7 @@
    "description": "Gets the list of actions of the selected counter",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Auth token",
@@ -331,6 +357,7 @@
      "short": "-t"
     },
     {
+     "title": "CounterID",
      "name": "--counter",
      "types": "String, Number",
      "description": "Counter ID",

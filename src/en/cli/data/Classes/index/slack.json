@@ -86,6 +86,7 @@
    "description": "Gets basic information about the bot",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -101,6 +102,7 @@
    "description": "Gets a list of workspaces where the bot is connected",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -108,6 +110,7 @@
      "short": "-t"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -123,6 +126,7 @@
    "description": "Gets a list of users in the workspace",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -130,6 +134,7 @@
      "short": "-t"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -145,6 +150,7 @@
    "description": "Sends a message at a selected hour",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -152,6 +158,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -159,6 +166,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -166,6 +174,7 @@
      "short": "-x"
     },
     {
+     "title": "SendingDate",
      "name": "--date",
      "types": "Date",
      "description": "Sending date for delayed message",
@@ -173,6 +182,7 @@
      "short": "-d"
     },
     {
+     "title": "Blocks",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of block descriptions",
@@ -188,6 +198,7 @@
    "description": "Sends a message that arrives in the channel but is visible\n\n only to a specific user",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -195,6 +206,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -202,6 +214,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -209,6 +222,7 @@
      "short": "-x"
     },
     {
+     "title": "User",
      "name": "--user",
      "types": "String",
      "description": "User ID",
@@ -216,6 +230,7 @@
      "short": "-u"
     },
     {
+     "title": "Blocks",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of block descriptions",
@@ -231,6 +246,7 @@
    "description": "Edits the content of an existing message",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -238,6 +254,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -245,6 +262,7 @@
      "short": "-c"
     },
     {
+     "title": "Timestamp",
      "name": "--stamp",
      "types": "String",
      "description": "Message timestamp",
@@ -252,6 +270,7 @@
      "short": "-s"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "New message text",
@@ -259,6 +278,7 @@
      "short": "-x"
     },
     {
+     "title": "BlockArray",
      "name": "--blocks",
      "types": "Array of Structure",
      "description": "Array of block descriptions",
@@ -274,6 +294,7 @@
    "description": "Deletes a channel message by timestamp",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -281,6 +302,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -288,6 +310,7 @@
      "short": "-c"
     },
     {
+     "title": "Timestamp",
      "name": "--stamp",
      "types": "String",
      "description": "Timestamp or message ID",
@@ -295,6 +318,7 @@
      "short": "-s"
     },
     {
+     "title": "IsDelayed",
      "name": "--issheduled",
      "types": "Boolean",
      "description": "Indicator of deleting a delayed message",
@@ -310,6 +334,7 @@
    "description": "Gets a list of delayed channel messages",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -317,6 +342,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -324,6 +350,7 @@
      "short": "-c"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -339,6 +366,7 @@
    "description": "Gets a permanent URL to the channel message",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -346,6 +374,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -353,6 +382,7 @@
      "short": "-c"
     },
     {
+     "title": "Timestamp",
      "name": "--stamp",
      "types": "String",
      "description": "Timestamp or message ID",
@@ -368,6 +398,7 @@
    "description": "Gets an array of messages that are replies to the specified",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -375,6 +406,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -382,6 +414,7 @@
      "short": "-c"
     },
     {
+     "title": "Timestamp",
      "name": "--stamp",
      "types": "String",
      "description": "Timestamp or message ID",
@@ -389,6 +422,7 @@
      "short": "-s"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -404,6 +438,7 @@
    "description": "Gets a list of available channels",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -411,6 +446,7 @@
      "short": "-t"
     },
     {
+     "title": "ExcludeArchived",
      "name": "--notarchived",
      "types": "Boolean",
      "description": "Indicator of excluding archived channels",
@@ -418,6 +454,7 @@
      "short": "-n"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -433,6 +470,7 @@
    "description": "Gets a list of users in the specified channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -440,6 +478,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -447,6 +486,7 @@
      "short": "-c"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -462,6 +502,7 @@
    "description": "Creates a new channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -469,6 +510,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Channel name",
@@ -476,6 +518,7 @@
      "short": "-l"
     },
     {
+     "title": "Private",
      "name": "--private",
      "types": "Boolean",
      "description": "Create channel as private",
@@ -491,6 +534,7 @@
    "description": "Archives an active channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -498,6 +542,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -513,6 +558,7 @@
    "description": "Gets information about the channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -520,6 +566,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -535,6 +582,7 @@
    "description": "Gets information about channel events",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -542,6 +590,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -557,6 +606,7 @@
    "description": "Adds specified users to the channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -564,6 +614,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -571,6 +622,7 @@
      "short": "-c"
     },
     {
+     "title": "ArrayOfUsers",
      "name": "--users",
      "types": "Array Of String",
      "description": "User ID Array",
@@ -586,6 +638,7 @@
    "description": "Removes specified user from channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -593,6 +646,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -600,6 +654,7 @@
      "short": "-c"
     },
     {
+     "title": "User",
      "name": "--user",
      "types": "String",
      "description": "User ID",
@@ -615,6 +670,7 @@
    "description": "Adds the current bot to the channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -622,6 +678,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -637,6 +694,7 @@
    "description": "Removes the current bot from the channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -644,6 +702,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -659,6 +718,7 @@
    "description": "Sets the channel topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -666,6 +726,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -673,6 +734,7 @@
      "short": "-c"
     },
     {
+     "title": "Topic",
      "name": "--theme",
      "types": "String",
      "description": "Channel topic",
@@ -688,6 +750,7 @@
    "description": "Sets the channel purpose (description)",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -695,6 +758,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -702,6 +766,7 @@
      "short": "-c"
     },
     {
+     "title": "Purpose",
      "name": "--purpose",
      "types": "String",
      "description": "Channel purpose",
@@ -717,6 +782,7 @@
    "description": "Changes the name of the channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -724,6 +790,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -731,6 +798,7 @@
      "short": "-c"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New channel name",
@@ -746,6 +814,7 @@
    "description": "Opens a new dialog with one or more users",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -753,6 +822,7 @@
      "short": "-t"
     },
     {
+     "title": "ArrayOfUsers",
      "name": "--users",
      "types": "Array of String",
      "description": "User ID Array",
@@ -768,6 +838,7 @@
    "description": "Closes an existing dialog",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -775,6 +846,7 @@
      "short": "-t"
     },
     {
+     "title": "Dialog",
      "name": "--conv",
      "types": "String",
      "description": "Dialog ID",
@@ -790,6 +862,7 @@
    "description": "Gets a list of files of the bot or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -797,6 +870,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel for selection",
@@ -804,6 +878,7 @@
      "short": "-c"
     },
     {
+     "title": "PageNumber",
      "name": "--page",
      "types": "Number, String",
      "description": "Page number",
@@ -819,6 +894,7 @@
    "description": "Uploads a file to Slack servers",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -826,6 +902,7 @@
      "short": "-t"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File for upload",
@@ -833,6 +910,7 @@
      "short": "-f"
     },
     {
+     "title": "FileName",
      "name": "--filename",
      "types": "String",
      "description": "File name with extension",
@@ -840,6 +918,7 @@
      "short": "-l"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "File name in Slack",
@@ -847,6 +926,7 @@
      "short": "-i"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel ID",
@@ -862,6 +942,7 @@
    "description": "Gets information about the file",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -869,6 +950,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -884,6 +966,7 @@
    "description": "Deletes a file on Slack",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -891,6 +974,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -906,6 +990,7 @@
    "description": "Creates a public URL for the file. Requires user token",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "User token",
@@ -913,6 +998,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -928,6 +1014,7 @@
    "description": "Removes the public URL from the file. Requires user token",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "User token",
@@ -935,6 +1022,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -950,6 +1038,7 @@
    "description": "Gets a list of external files of a user or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -957,6 +1046,7 @@
      "short": "-t"
     },
     {
+     "title": "Channel",
      "name": "--channel",
      "types": "String",
      "description": "Channel for selection",
@@ -964,6 +1054,7 @@
      "short": "-c"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Pointer from the previous request, if the result rows > 100",
@@ -979,6 +1070,7 @@
    "description": "Gets information about the external file",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -986,6 +1078,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -1001,6 +1094,7 @@
    "description": "Adds a new external file",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -1008,6 +1102,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL to external file",
@@ -1015,6 +1110,7 @@
      "short": "-u"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "File title for Slack",
@@ -1030,6 +1126,7 @@
    "description": "Sends an external file to a list of channels",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -1037,6 +1134,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -1044,6 +1142,7 @@
      "short": "-f"
     },
     {
+     "title": "ChannelArray",
      "name": "--channels",
      "types": "Array Of String",
      "description": "Array of channels for sending",
@@ -1059,6 +1158,7 @@
    "description": "Deletes an external file from Slack",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -1066,6 +1166,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File identifier",
@@ -1081,6 +1182,7 @@
    "description": "Generates a block with an image to add to the message block array",
    "params": [
     {
+     "title": "URL",
      "name": "--picture",
      "types": "String",
      "description": "Image URL",
@@ -1088,6 +1190,7 @@
      "short": "-p"
     },
     {
+     "title": "AlternateText",
      "name": "--alt",
      "types": "String",
      "description": "Alternate text of the image",

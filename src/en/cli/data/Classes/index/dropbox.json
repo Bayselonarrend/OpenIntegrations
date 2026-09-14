@@ -62,6 +62,7 @@
    "description": "Generates an authorization link for browser transition",
    "params": [
     {
+     "title": "AppKey",
      "name": "--appkey",
      "types": "String",
      "description": "Application key",
@@ -77,6 +78,7 @@
    "description": "Gets token based on the code from the GetAuthorizationLink page",
    "params": [
     {
+     "title": "AppKey",
      "name": "--appkey",
      "types": "String",
      "description": "Application key",
@@ -84,6 +86,7 @@
      "short": "-a"
     },
     {
+     "title": "AppSecret",
      "name": "--appsecret",
      "types": "String",
      "description": "Application secret",
@@ -91,6 +94,7 @@
      "short": "-p"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from the authorization page",
@@ -106,6 +110,7 @@
    "description": "Gets a new token based on the refresh token",
    "params": [
     {
+     "title": "AppKey",
      "name": "--appkey",
      "types": "String",
      "description": "Application key",
@@ -113,6 +118,7 @@
      "short": "-a"
     },
     {
+     "title": "AppSecret",
      "name": "--appsecret",
      "types": "String",
      "description": "Application secret",
@@ -120,6 +126,7 @@
      "short": "-p"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -135,6 +142,7 @@
    "description": "Gets account information",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -142,6 +150,7 @@
      "short": "-t"
     },
     {
+     "title": "Account",
      "name": "--account",
      "types": "String",
      "description": "Account ID. Current token account if not filled",
@@ -157,6 +166,7 @@
    "description": "Gets information on the amount of used disk space",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -172,6 +182,7 @@
    "description": "Gets information about a file or directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -179,6 +190,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object",
@@ -186,6 +198,7 @@
      "short": "-p"
     },
     {
+     "title": "Detailed",
      "name": "--detail",
      "types": "Boolean",
      "description": "Add information fields for mediafiles",
@@ -201,6 +214,7 @@
    "description": "Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -208,6 +222,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the directory. Optional if the cursor is specified",
@@ -215,6 +230,7 @@
      "short": "-p"
     },
     {
+     "title": "Detailed",
      "name": "--detail",
      "types": "Boolean",
      "description": "Add information fields for mediafiles",
@@ -222,6 +238,7 @@
      "short": "-d"
     },
     {
+     "title": "Cursor",
      "name": "--cursor",
      "types": "String",
      "description": "Cursor from the previous request to get the next set of files",
@@ -237,6 +254,7 @@
    "description": "Gets PDF or HTML preview of the object (for documents only)",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -244,6 +262,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object",
@@ -259,6 +278,7 @@
    "description": "Uploads a file to the cloud drive",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -266,6 +286,7 @@
      "short": "-t"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "Data file for upload",
@@ -273,6 +294,7 @@
      "short": "-f"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Save path on Dropbox",
@@ -280,6 +302,7 @@
      "short": "-p"
     },
     {
+     "title": "Overwrite",
      "name": "--overwrite",
      "types": "Boolean",
      "description": "Overwrite file in case of path conflicts",
@@ -295,6 +318,7 @@
    "description": "Uploads a file to the cloud drive by fetching it from the specified URL",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -302,6 +326,7 @@
      "short": "-t"
     },
     {
+     "title": "FileURL",
      "name": "--url",
      "types": "String",
      "description": "URL source of the file",
@@ -309,6 +334,7 @@
      "short": "-u"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Save path on Dropbox",
@@ -324,6 +350,7 @@
    "description": "Gets the upload status of the file by URL",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -331,6 +358,7 @@
      "short": "-t"
     },
     {
+     "title": "JobID",
      "name": "--job",
      "types": "String",
      "description": "ID of async jsob from UploadFileByURL response",
@@ -346,6 +374,7 @@
    "description": "Deletes an object from the cloud drive",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -353,6 +382,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object to delete",
@@ -360,6 +390,7 @@
      "short": "-p"
     },
     {
+     "title": "Irrecoverable",
      "name": "--permanently",
      "types": "String",
      "description": "Delete object without the possibility of recovery",
@@ -375,6 +406,7 @@
    "description": "Copies a file or directory to the selected path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -382,6 +414,7 @@
      "short": "-t"
     },
     {
+     "title": "From",
      "name": "--from",
      "types": "String",
      "description": "Path to the original object",
@@ -389,6 +422,7 @@
      "short": "-f"
     },
     {
+     "title": "Target",
      "name": "--to",
      "types": "String",
      "description": "Target path for the new object",
@@ -404,6 +438,7 @@
    "description": "Moves an object to the selected path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -411,6 +446,7 @@
      "short": "-t"
     },
     {
+     "title": "From",
      "name": "--from",
      "types": "String",
      "description": "Path to the original object",
@@ -418,6 +454,7 @@
      "short": "-f"
     },
     {
+     "title": "Target",
      "name": "--to",
      "types": "String",
      "description": "Target path for the new object",
@@ -433,6 +470,7 @@
    "description": "Creates an empty directory at the selected path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -440,6 +478,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Target path for creating the directory",
@@ -455,6 +494,7 @@
    "description": "Downloads a file by the specified path or ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -462,6 +502,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path or ID of the file",
@@ -477,6 +518,7 @@
    "description": "Downloads a zip archive with the contents of the specified directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -484,6 +526,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path or ID of the directory",
@@ -499,6 +542,7 @@
    "description": "Gets the list of versions (revisions) of the object",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -506,6 +550,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object",
@@ -513,6 +558,7 @@
      "short": "-p"
     },
     {
+     "title": "Count",
      "name": "--amount",
      "types": "String, Number",
      "description": "Number of the latest versions of the object to display",
@@ -528,6 +574,7 @@
    "description": "Restores object state to required version (revision)",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -535,6 +582,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object",
@@ -542,6 +590,7 @@
      "short": "-p"
     },
     {
+     "title": "Version",
      "name": "--rev",
      "types": "String",
      "description": "ID of the version (revision) for restoration",
@@ -557,6 +606,7 @@
    "description": "Gets the list of tags of the selected files",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -564,6 +614,7 @@
      "short": "-t"
     },
     {
+     "title": "Paths",
      "name": "--paths",
      "types": "String, Array of String",
      "description": "Path or set of paths to the files",
@@ -579,6 +630,7 @@
    "description": "Add new tag to file or folder",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -586,6 +638,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object for which the tag needs to be created",
@@ -593,6 +646,7 @@
      "short": "-p"
     },
     {
+     "title": "Tag",
      "name": "--tag",
      "types": "String",
      "description": "Tag text",
@@ -608,6 +662,7 @@
    "description": "Deletes the text tag of a file or directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -615,6 +670,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object whose tag needs to be deleted",
@@ -622,6 +678,7 @@
      "short": "-p"
     },
     {
+     "title": "Tag",
      "name": "--tag",
      "types": "String",
      "description": "Tag text",
@@ -637,6 +694,7 @@
    "description": "Sets the directory to public access mode",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -644,6 +702,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the target directory",
@@ -659,6 +718,7 @@
    "description": "Cancels the public access mode for the directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -666,6 +726,7 @@
      "short": "-t"
     },
     {
+     "title": "FolderID",
      "name": "--folder",
      "types": "String",
      "description": "ID of the public catalog (shared folder ID)",
@@ -681,6 +742,7 @@
    "description": "Defines access to the file for third-party users",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -688,6 +750,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "ID of the file to be accessed",
@@ -695,6 +758,7 @@
      "short": "-f"
     },
     {
+     "title": "EmailAddresses",
      "name": "--emails",
      "types": "String, Array of String",
      "description": "List of email addresses of users being added",
@@ -702,6 +766,7 @@
      "short": "-e"
     },
     {
+     "title": "ViewOnly",
      "name": "--readonly",
      "types": "Boolean",
      "description": "Prohibits file editing for the external user",
@@ -717,6 +782,7 @@
    "description": "Grants external users access to the directory",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -724,6 +790,7 @@
      "short": "-t"
     },
     {
+     "title": "FolderID",
      "name": "--folder",
      "types": "String",
      "description": "ID of the public catalog (shared folder ID)",
@@ -731,6 +798,7 @@
      "short": "-f"
     },
     {
+     "title": "EmailAddresses",
      "name": "--emails",
      "types": "String, Array of String",
      "description": "List of email addresses of users being added",
@@ -738,6 +806,7 @@
      "short": "-e"
     },
     {
+     "title": "ViewOnly",
      "name": "--readonly",
      "types": "Boolean",
      "description": "Prohibits file editing for the external user",
@@ -753,6 +822,7 @@
    "description": "Get async job status for access changes",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -760,6 +830,7 @@
      "short": "-t"
     },
     {
+     "title": "JobID",
      "name": "--job",
      "types": "String",
      "description": "AsynchronousJobID",
@@ -775,6 +846,7 @@
    "description": "Prohibits access to the file for external users",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -782,6 +854,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "ID of the file to be accessed",

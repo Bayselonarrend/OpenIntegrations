@@ -57,6 +57,7 @@
    "description": "Returns URL for browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -64,6 +65,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Boolean",
      "description": "Calendar methods permission",
@@ -71,6 +73,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Boolean",
      "description": "Drive methods permission",
@@ -78,6 +81,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Boolean",
      "description": "Sheets methods permission",
@@ -93,6 +97,7 @@
    "description": "Gets token by code from browser authorization",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -100,6 +105,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -107,6 +113,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Code from browser",
@@ -122,6 +129,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "String",
      "description": "Client ID",
@@ -129,6 +137,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -136,6 +145,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -151,6 +161,7 @@
    "description": "Gets authorization token by service account data",
    "params": [
     {
+     "title": "Data",
      "name": "--auth",
      "types": "Arbitrary",
      "description": "JSON authorization data as a file, collection or binary data",
@@ -158,6 +169,7 @@
      "short": "-a"
     },
     {
+     "title": "Scope",
      "name": "--scope",
      "types": "Array Of String",
      "description": "Scope or array of scopes",
@@ -165,6 +177,7 @@
      "short": "-s"
     },
     {
+     "title": "Expire",
      "name": "--exp",
      "types": "Number",
      "description": "Token lifetime in seconds",
@@ -180,6 +193,7 @@
    "description": "Creates an empty calendar",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -187,6 +201,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Name of the created calendar",
@@ -202,6 +217,7 @@
    "description": "Gets calendar information by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -209,6 +225,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -224,6 +241,7 @@
    "description": "Edits properties of an existing calendar",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -231,6 +249,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -238,6 +257,7 @@
      "short": "-c"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New name",
@@ -245,6 +265,7 @@
      "short": "-l"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "New calendar description",
@@ -260,6 +281,7 @@
    "description": "Clears the event list of the primary calendar",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -275,6 +297,7 @@
    "description": "Deletes a calendar by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -282,6 +305,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -297,6 +321,7 @@
    "description": "Gets an array of account calendars",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -312,6 +337,7 @@
    "description": "Adds an existing calendar to the user's list",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -319,6 +345,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -334,6 +361,7 @@
    "description": "Gets a calendar from the user's list by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -341,6 +369,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -356,6 +385,7 @@
    "description": "Removes a calendar from the user's list",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -363,6 +393,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -378,6 +409,7 @@
    "description": "Edits the properties of a calendar from the user's list",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -385,6 +417,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -392,6 +425,7 @@
      "short": "-c"
     },
     {
+     "title": "PrimaryColor",
      "name": "--primary",
      "types": "String",
      "description": "HEX primary color (#ffffff)",
@@ -399,6 +433,7 @@
      "short": "-p"
     },
     {
+     "title": "SecondaryColor",
      "name": "--secondary",
      "types": "String",
      "description": "HEX secondary color (#ffffff)",
@@ -406,6 +441,7 @@
      "short": "-s"
     },
     {
+     "title": "Hidden",
      "name": "--hidden",
      "types": "Boolean",
      "description": "Hidden calendar",
@@ -421,6 +457,7 @@
    "description": "Gets an empty layout to create the event",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -436,6 +473,7 @@
    "description": "Gets the list of all calendar events",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -443,6 +481,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -458,6 +497,7 @@
    "description": "Gets an event by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -465,6 +505,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -472,6 +513,7 @@
      "short": "-c"
     },
     {
+     "title": "Event",
      "name": "--event",
      "types": "String",
      "description": "Event ID",
@@ -487,6 +529,7 @@
    "description": "Creates a new event",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -494,6 +537,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -501,6 +545,7 @@
      "short": "-c"
     },
     {
+     "title": "EventDescription",
      "name": "--props",
      "types": "Map Of KeyAndValue",
      "description": "Event description",
@@ -516,6 +561,7 @@
    "description": "Moves an event to another calendar",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -523,6 +569,7 @@
      "short": "-t"
     },
     {
+     "title": "SourceCalendar",
      "name": "--from",
      "types": "String",
      "description": "ID of the source calendar",
@@ -530,6 +577,7 @@
      "short": "-f"
     },
     {
+     "title": "TargetCalendar",
      "name": "--to",
      "types": "String",
      "description": "ID of the target calendar",
@@ -537,6 +585,7 @@
      "short": "-o"
     },
     {
+     "title": "Event",
      "name": "--event",
      "types": "String",
      "description": "ID of the source calendar event",
@@ -552,6 +601,7 @@
    "description": "Edits an existing event",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -559,6 +609,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -566,6 +617,7 @@
      "short": "-c"
     },
     {
+     "title": "EventDescription",
      "name": "--props",
      "types": "String",
      "description": "New event description",
@@ -573,6 +625,7 @@
      "short": "-p"
     },
     {
+     "title": "Event",
      "name": "--event",
      "types": "String",
      "description": "Event ID",
@@ -588,6 +641,7 @@
    "description": "Deletes an event by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -595,6 +649,7 @@
      "short": "-t"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "String",
      "description": "Calendar ID",
@@ -602,6 +657,7 @@
      "short": "-c"
     },
     {
+     "title": "Event",
      "name": "--event",
      "types": "String",
      "description": "Event ID",

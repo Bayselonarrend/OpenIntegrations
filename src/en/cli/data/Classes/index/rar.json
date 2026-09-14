@@ -28,6 +28,7 @@
    "description": "Extracts RAR archive to the specified directory",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -35,6 +36,7 @@
      "short": "-s"
     },
     {
+     "title": "DestinationDirectory",
      "name": "--dest",
      "types": "String",
      "description": "Directory path for unpacking. To binary data if not filled",
@@ -42,6 +44,7 @@
      "short": "-d"
     },
     {
+     "title": "Password",
      "name": "--password",
      "types": "String",
      "description": "archive password, if required",
@@ -57,6 +60,7 @@
    "description": "Extracts selected files from the RAR archive by the list of paths",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -64,6 +68,7 @@
      "short": "-s"
     },
     {
+     "title": "Paths",
      "name": "--paths",
      "types": "Array Of String",
      "description": "Full paths of files inside the archive",
@@ -71,6 +76,7 @@
      "short": "-p"
     },
     {
+     "title": "DestinationDirectory",
      "name": "--dest",
      "types": "String",
      "description": "Directory path for unpacking. To binary data if not filled",
@@ -78,6 +84,7 @@
      "short": "-d"
     },
     {
+     "title": "Password",
      "name": "--password",
      "types": "String",
      "description": "archive password, if required",
@@ -93,6 +100,7 @@
    "description": "Gets a hierarchical list of files and directories in the archive",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -100,6 +108,7 @@
      "short": "-s"
     },
     {
+     "title": "Password",
      "name": "--password",
      "types": "String",
      "description": "archive password, if required",
@@ -115,6 +124,7 @@
    "description": "Gets metadata and a flat list of archive files",
    "params": [
     {
+     "title": "Archive",
      "name": "--src",
      "types": "String, BinaryData",
      "description": "Path to the archive on disk or binary data",
@@ -122,6 +132,7 @@
      "short": "-s"
     },
     {
+     "title": "Password",
      "name": "--password",
      "types": "String",
      "description": "archive password, if required",

@@ -28,6 +28,7 @@
    "description": "Executes Lua code from a string or file and calls the specified function",
    "params": [
     {
+     "title": "Lua",
      "name": "--lua",
      "types": "Arbitrary",
      "description": "Lua AddIn or Lua version to run",
@@ -35,6 +36,7 @@
      "short": "-l"
     },
     {
+     "title": "Script",
      "name": "--script",
      "types": "String",
      "description": "Lua code or file path",
@@ -42,6 +44,7 @@
      "short": "-s"
     },
     {
+     "title": "FunctionName",
      "name": "--func",
      "types": "String",
      "description": "Function name or path in module.func format",
@@ -49,6 +52,7 @@
      "short": "-f"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Map Of KeyAndValue",
      "description": "Function parameters, if necessary",
@@ -56,6 +60,7 @@
      "short": "-p"
     },
     {
+     "title": "Packages",
      "name": "--packages",
      "types": "Map Of KeyAndValue",
      "description": "Packages: key > name, value > code or file path",
@@ -63,6 +68,7 @@
      "short": "-c"
     },
     {
+     "title": "Variables",
      "name": "--globals",
      "types": "Map Of KeyAndValue",
      "description": "Module global variables, if necessary",
@@ -78,6 +84,7 @@
    "description": "Converts source code to Lua bytecode",
    "params": [
     {
+     "title": "Lua",
      "name": "--lua",
      "types": "Arbitrary",
      "description": "Lua AddIn or Lua version to run",
@@ -85,6 +92,7 @@
      "short": "-l"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "String",
      "description": "Source code for compilation",
@@ -100,6 +108,7 @@
    "description": "Converts a source code file to Lua bytecode",
    "params": [
     {
+     "title": "Lua",
      "name": "--lua",
      "types": "Arbitrary",
      "description": "Lua AddIn or Lua version to run",
@@ -107,6 +116,7 @@
      "short": "-l"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Script file path",
@@ -122,6 +132,7 @@
    "description": "Executes bytecode and calls the specified function",
    "params": [
     {
+     "title": "Lua",
      "name": "--lua",
      "types": "Arbitrary",
      "description": "Lua AddIn or Lua version to run",
@@ -129,6 +140,7 @@
      "short": "-l"
     },
     {
+     "title": "Bytecode",
      "name": "--code",
      "types": "String, BinaryData",
      "description": "Byte code or file path",
@@ -136,6 +148,7 @@
      "short": "-c"
     },
     {
+     "title": "FunctionName",
      "name": "--func",
      "types": "String",
      "description": "Function name or path in module.func format",
@@ -143,6 +156,7 @@
      "short": "-f"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Map Of KeyAndValue",
      "description": "Function parameters, if necessary",
@@ -150,6 +164,7 @@
      "short": "-p"
     },
     {
+     "title": "Packages",
      "name": "--packages",
      "types": "Map Of KeyAndValue",
      "description": "Packages: key > name, value > code or file path",
@@ -157,6 +172,7 @@
      "short": "-k"
     },
     {
+     "title": "Variables",
      "name": "--globals",
      "types": "Map Of KeyAndValue",
      "description": "Module global variables, if necessary",

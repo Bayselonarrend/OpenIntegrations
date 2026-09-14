@@ -53,6 +53,7 @@
    "description": "Executes an arbitrary SQL query",
    "params": [
     {
+     "title": "QueryText",
      "name": "--sql",
      "types": "String",
      "description": "Database query text",
@@ -60,6 +61,7 @@
      "short": "-s"
     },
     {
+     "title": "Parameters",
      "name": "--params",
      "types": "Array Of Arbitrary",
      "description": "Array of positional parameters of the request",
@@ -67,6 +69,7 @@
      "short": "-p"
     },
     {
+     "title": "ForceResult",
      "name": "--force",
      "types": "Boolean",
      "description": "Includes an attempt to retrieve the result, even for nonSELECT queries",
@@ -74,6 +77,7 @@
      "short": "-f"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -81,6 +85,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -96,6 +101,7 @@
    "description": "Forms a connection string from the passed data",
    "params": [
     {
+     "title": "Address",
      "name": "--addr",
      "types": "String",
      "description": "IP address or domain name of the server",
@@ -103,6 +109,7 @@
      "short": "-a"
     },
     {
+     "title": "Base",
      "name": "--db",
      "types": "String",
      "description": "Name of the database to connect",
@@ -110,6 +117,7 @@
      "short": "-d"
     },
     {
+     "title": "Login",
      "name": "--login",
      "types": "String",
      "description": "Postgres user login",
@@ -117,6 +125,7 @@
      "short": "-l"
     },
     {
+     "title": "Password",
      "name": "--pass",
      "types": "String",
      "description": "Postgres user password",
@@ -124,6 +133,7 @@
      "short": "-p"
     },
     {
+     "title": "Port",
      "name": "--port",
      "types": "String",
      "description": "Connection port",
@@ -139,6 +149,7 @@
    "description": "Forms settings for using TLS",
    "params": [
     {
+     "title": "DisableCertVerification",
      "name": "--trust",
      "types": "Boolean",
      "description": "Allows to work with invalid certificates, including self signed",
@@ -146,6 +157,7 @@
      "short": "-t"
     },
     {
+     "title": "CertFilepath",
      "name": "--cert",
      "types": "String",
      "description": "Path to the root PEM file of the certificate if it is not in the system repository",
@@ -161,6 +173,7 @@
    "description": "Creates a database with the specified name",
    "params": [
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database name",
@@ -168,6 +181,7 @@
      "short": "-b"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -175,6 +189,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -190,6 +205,7 @@
    "description": "Deletes the database",
    "params": [
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database name",
@@ -197,6 +213,7 @@
      "short": "-b"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -204,6 +221,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -219,6 +237,7 @@
    "description": "Terminates all connections to the database except the current one",
    "params": [
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database name",
@@ -226,6 +245,7 @@
      "short": "-b"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -233,6 +253,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -248,6 +269,7 @@
    "description": "Gets information about the table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -255,6 +277,7 @@
      "short": "-t"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -262,6 +285,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -277,6 +301,7 @@
    "description": "Creates an empty table in the database",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -284,6 +309,7 @@
      "short": "-t"
     },
     {
+     "title": "ColoumnsStruct",
      "name": "--cols",
      "types": "Structure Of KeyAndValue",
      "description": "Column structure: Key > Name, Value > Data type",
@@ -291,6 +317,7 @@
      "short": "-c"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -298,6 +325,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -313,6 +341,7 @@
    "description": "Adds a new column to an existing table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -320,6 +349,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Column name",
@@ -327,6 +357,7 @@
      "short": "-n"
     },
     {
+     "title": "DataType",
      "name": "--type",
      "types": "String",
      "description": "Column data type",
@@ -334,6 +365,7 @@
      "short": "-p"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -341,6 +373,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -356,6 +389,7 @@
    "description": "Deletes a column from the table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -363,6 +397,7 @@
      "short": "-t"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Column name",
@@ -370,6 +405,7 @@
      "short": "-n"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -377,6 +413,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -392,6 +429,7 @@
    "description": "Creates a new table if it does not exist or updates the composition of columns in an existing table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -399,6 +437,7 @@
      "short": "-t"
     },
     {
+     "title": "ColoumnsStruct",
      "name": "--cols",
      "types": "Structure Of KeyAndValue",
      "description": "Column structure: Key > Name, Value > Data type",
@@ -406,6 +445,7 @@
      "short": "-c"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Existing connection or database path",
@@ -413,6 +453,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -428,6 +469,7 @@
    "description": "Clears the database table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -435,6 +477,7 @@
      "short": "-t"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -442,6 +485,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -457,6 +501,7 @@
    "description": "Deletes a table from the database",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -464,6 +509,7 @@
      "short": "-t"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -471,6 +517,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -486,6 +533,7 @@
    "description": "Adds new rows to the table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -493,6 +541,7 @@
      "short": "-t"
     },
     {
+     "title": "DataArray",
      "name": "--rows",
      "types": "Array of Structure",
      "description": "An array of string data structures: Key > field, Value > field value",
@@ -500,6 +549,7 @@
      "short": "-r"
     },
     {
+     "title": "Transaction",
      "name": "--trn",
      "types": "Boolean",
      "description": "True > adding records to transactions with rollback on error",
@@ -507,6 +557,7 @@
      "short": "-n"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -514,6 +565,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -529,6 +581,7 @@
    "description": "Updates the value of records by selected criteria",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -536,6 +589,7 @@
      "short": "-t"
     },
     {
+     "title": "ValueStructure",
      "name": "--values",
      "types": "Structure Of KeyAndValue",
      "description": "Values structure: Key > field, Value > field value",
@@ -543,6 +597,7 @@
      "short": "-v"
     },
     {
+     "title": "Filters",
      "name": "--filter",
      "types": "Array of Structure",
      "description": "Filters array. See GetRecordsFilterStructure",
@@ -550,6 +605,7 @@
      "short": "-f"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -557,6 +613,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -572,6 +629,7 @@
    "description": "Adds records or updates data of existing ones when key fields match",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -579,6 +637,7 @@
      "short": "-t"
     },
     {
+     "title": "DataArray",
      "name": "--rows",
      "types": "Array of Structure",
      "description": "An array of string data structures: Key > field, Value > field value",
@@ -586,6 +645,7 @@
      "short": "-r"
     },
     {
+     "title": "KeyFields",
      "name": "--unique",
      "types": "Array Of String",
      "description": "Name or names of key table fields for uniqueness validation",
@@ -593,6 +653,7 @@
      "short": "-u"
     },
     {
+     "title": "Transaction",
      "name": "--trn",
      "types": "Boolean",
      "description": "True > adding records to transactions with rollback on error",
@@ -600,6 +661,7 @@
      "short": "-n"
     },
     {
+     "title": "Connection",
      "name": "--db",
      "types": "String, Arbitrary",
      "description": "Existing connection or database path",
@@ -607,6 +669,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -622,6 +685,7 @@
    "description": "Gets records from the selected table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -629,6 +693,7 @@
      "short": "-t"
     },
     {
+     "title": "Fields",
      "name": "--fields",
      "types": "Array Of String",
      "description": "Fields for selection",
@@ -636,6 +701,7 @@
      "short": "-f"
     },
     {
+     "title": "Filters",
      "name": "--filter",
      "types": "Array of Structure",
      "description": "Filters array. See GetRecordsFilterStructure",
@@ -643,6 +709,7 @@
      "short": "-l"
     },
     {
+     "title": "Sort",
      "name": "--order",
      "types": "Structure Of KeyAndValue",
      "description": "Sorting: Key > field name, Value > direction (ASC, DESC)",
@@ -650,6 +717,7 @@
      "short": "-o"
     },
     {
+     "title": "Count",
      "name": "--limit",
      "types": "Number",
      "description": "Limiting the number of received strings",
@@ -657,6 +725,7 @@
      "short": "-m"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -664,6 +733,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -679,6 +749,7 @@
    "description": "Deletes records from the table",
    "params": [
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table name",
@@ -686,6 +757,7 @@
      "short": "-t"
     },
     {
+     "title": "Filters",
      "name": "--filter",
      "types": "Array of Structure",
      "description": "Filters array. See GetRecordsFilterStructure",
@@ -693,6 +765,7 @@
      "short": "-f"
     },
     {
+     "title": "Connection",
      "name": "--dbc",
      "types": "String, Arbitrary",
      "description": "Connection or connection string",
@@ -700,6 +773,7 @@
      "short": "-d"
     },
     {
+     "title": "Tls",
      "name": "--tls",
      "types": "Structure Of KeyAndValue",
      "description": "TLS settings, if necessary. See GetTlsSettings",
@@ -715,6 +789,7 @@
    "description": "Gets the template structure for filtering records in ORM queries",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",

@@ -21,6 +21,7 @@
    "description": "Сериализует данные в формат MessagePack",
    "params": [
     {
+     "title": "Данные",
      "name": "--value",
      "types": "Произвольный",
      "description": "Коллекция для сериализации",
@@ -28,6 +29,7 @@
      "short": "-v"
     },
     {
+     "title": "ИзИсточника",
      "name": "--raw",
      "types": "Булево",
      "description": "Данные являются JSON строкой или файлом на диске",
@@ -43,6 +45,7 @@
    "description": "Десериализует данные из формата MessagePack",
    "params": [
     {
+     "title": "Данные",
      "name": "--data",
      "types": "ДвоичныеДанные",
      "description": "Сериализованное значение",

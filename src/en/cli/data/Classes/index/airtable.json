@@ -62,6 +62,7 @@
    "description": "Gets the list of available bases",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -69,6 +70,7 @@
      "short": "-t"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "String",
      "description": "Next page identifier of the base list from the previous request",
@@ -84,6 +86,7 @@
    "description": "Gets the schema of base tables",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -91,6 +94,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base identifier",
@@ -106,6 +110,7 @@
    "description": "Creates a new database",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -113,6 +118,7 @@
      "short": "-t"
     },
     {
+     "title": "Workspace",
      "name": "--ws",
      "types": "String",
      "description": "Workspace identifier",
@@ -120,6 +126,7 @@
      "short": "-w"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New base name",
@@ -127,6 +134,7 @@
      "short": "-l"
     },
     {
+     "title": "TableCollection",
      "name": "--tablesdata",
      "types": "Map Of KeyAndValue",
      "description": "Table description: Key > name, Value > array of fields",
@@ -142,6 +150,7 @@
    "description": "Creates a new table in the base",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -149,6 +158,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base identifier",
@@ -156,6 +166,7 @@
      "short": "-b"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New table name",
@@ -163,6 +174,7 @@
      "short": "-l"
     },
     {
+     "title": "FieldArray",
      "name": "--fieldsdata",
      "types": "Array of Structure",
      "description": "Array of field descriptions",
@@ -170,6 +182,7 @@
      "short": "-f"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "Table description",
@@ -185,6 +198,7 @@
    "description": "Changes the name and\nor description of the base",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -192,6 +206,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base identifier",
@@ -199,6 +214,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -206,6 +222,7 @@
      "short": "-l"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New name",
@@ -213,6 +230,7 @@
      "short": "-i"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "New description",
@@ -228,6 +246,7 @@
    "description": "Creates a new field in the table",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -235,6 +254,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base identifier",
@@ -242,6 +262,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -249,6 +270,7 @@
      "short": "-l"
     },
     {
+     "title": "FieldStructure",
      "name": "--fielddata",
      "types": "Structure Of KeyAndValue",
      "description": "Description of the new field",
@@ -264,6 +286,7 @@
    "description": "Changes the name and\nor description of an existing table field",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -271,6 +294,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Base identifier Base",
@@ -278,6 +302,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -285,6 +310,7 @@
      "short": "-l"
     },
     {
+     "title": "Field",
      "name": "--field",
      "types": "String",
      "description": "Field identifier",
@@ -292,6 +318,7 @@
      "short": "-f"
     },
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New name",
@@ -299,6 +326,7 @@
      "short": "-i"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "New description",
@@ -314,6 +342,7 @@
    "description": "Gets the description of a string field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New field name",
@@ -329,6 +358,7 @@
    "description": "Gets the description of a numeric field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "New field name",
@@ -336,6 +366,7 @@
      "short": "-t"
     },
     {
+     "title": "Precision",
      "name": "--precision",
      "types": "Number, String",
      "description": "Number of decimal places",
@@ -351,6 +382,7 @@
    "description": "Gets the description of a file field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -366,6 +398,7 @@
    "description": "Gets the description of a boolean field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -381,6 +414,7 @@
    "description": "Gets the description of a date field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -396,6 +430,7 @@
    "description": "Gets the description of an email field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -411,6 +446,7 @@
    "description": "Gets the description of a phone number field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -426,6 +462,7 @@
    "description": "Gets the description of a URL field",
    "params": [
     {
+     "title": "Name",
      "name": "--title",
      "types": "String",
      "description": "Field name",
@@ -441,6 +478,7 @@
    "description": "Gets the list of records of the selected table",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -448,6 +486,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -455,6 +494,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -462,6 +502,7 @@
      "short": "-l"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "String",
      "description": "Next page identifier of data from the previous request",
@@ -477,6 +518,7 @@
    "description": "Gets row data of the table by identifier",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -484,6 +526,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -491,6 +534,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -498,6 +542,7 @@
      "short": "-l"
     },
     {
+     "title": "Record",
      "name": "--record",
      "types": "String",
      "description": "Record identifier in the table",
@@ -513,6 +558,7 @@
    "description": "Creates one or an array of records by description or an array of field value descriptions",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -520,6 +566,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -527,6 +574,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -534,6 +582,7 @@
      "short": "-l"
     },
     {
+     "title": "Data",
      "name": "--data",
      "types": "Structure, Array of Structure",
      "description": "Set or array of sets of pairs Key : Value > Field : FieldValue",
@@ -549,6 +598,7 @@
    "description": "Deletes one or an array of records by identifiers",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -556,6 +606,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -563,6 +614,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -570,6 +622,7 @@
      "short": "-l"
     },
     {
+     "title": "Records",
      "name": "--records",
      "types": "String, Array of String",
      "description": "Identifier or array of record identifiers",
@@ -585,6 +638,7 @@
    "description": "Gets the list of comments for a record in the table",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -592,6 +646,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -599,6 +654,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -606,6 +662,7 @@
      "short": "-l"
     },
     {
+     "title": "Record",
      "name": "--record",
      "types": "String",
      "description": "Record identifier in the table",
@@ -613,6 +670,7 @@
      "short": "-r"
     },
     {
+     "title": "Indent",
      "name": "--offset",
      "types": "String",
      "description": "Next page identifier of data from the previous request",
@@ -628,6 +686,7 @@
    "description": "Creates a comment for a record in the table",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -635,6 +694,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -642,6 +702,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -649,6 +710,7 @@
      "short": "-l"
     },
     {
+     "title": "Record",
      "name": "--record",
      "types": "String",
      "description": "Record identifier in the table",
@@ -656,6 +718,7 @@
      "short": "-r"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Comment text",
@@ -671,6 +734,7 @@
    "description": "Changes the text of an existing comment",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -678,6 +742,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -685,6 +750,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -692,6 +758,7 @@
      "short": "-l"
     },
     {
+     "title": "Record",
      "name": "--record",
      "types": "String",
      "description": "Record identifier in the table",
@@ -699,6 +766,7 @@
      "short": "-r"
     },
     {
+     "title": "Comment",
      "name": "--comment",
      "types": "String",
      "description": "Comment identifier",
@@ -706,6 +774,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "New comment text",
@@ -721,6 +790,7 @@
    "description": "Deletes a comment for a table record",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -728,6 +798,7 @@
      "short": "-t"
     },
     {
+     "title": "Base",
      "name": "--base",
      "types": "String",
      "description": "Database identifier",
@@ -735,6 +806,7 @@
      "short": "-b"
     },
     {
+     "title": "Table",
      "name": "--table",
      "types": "String",
      "description": "Table identifier",
@@ -742,6 +814,7 @@
      "short": "-l"
     },
     {
+     "title": "Record",
      "name": "--record",
      "types": "String",
      "description": "Record identifier in the table",
@@ -749,6 +822,7 @@
      "short": "-r"
     },
     {
+     "title": "Comment",
      "name": "--comment",
      "types": "String",
      "description": "Comment identifier",

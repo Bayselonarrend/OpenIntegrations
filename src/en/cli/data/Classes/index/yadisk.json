@@ -53,6 +53,7 @@
    "description": "Gets the confirmation code and the address of the page where it needs to be entered",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -68,6 +69,7 @@
    "description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -75,6 +77,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -82,6 +85,7 @@
      "short": "-s"
     },
     {
+     "title": "DeviceCode",
      "name": "--device",
      "types": "String",
      "description": "device_code from GetConfirmationCode",
@@ -97,6 +101,7 @@
    "description": "Updates token by Refresh token",
    "params": [
     {
+     "title": "ClientId",
      "name": "--id",
      "types": "String",
      "description": "Client id",
@@ -104,6 +109,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "String",
      "description": "Client secret",
@@ -111,6 +117,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "String",
      "description": "Refresh token",
@@ -126,6 +133,7 @@
    "description": "Gets information about the current disk",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -141,6 +149,7 @@
    "description": "Creates a directory on the disk",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -148,6 +157,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the created folder",
@@ -163,6 +173,7 @@
    "description": "Gets information about a disk object at the specified path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -170,6 +181,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to folder or file",
@@ -185,6 +197,7 @@
    "description": "Deletes an object at the specified path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -192,6 +205,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the folder or file to be deleted",
@@ -199,6 +213,7 @@
      "short": "-p"
     },
     {
+     "title": "ToCart",
      "name": "--can",
      "types": "Boolean",
      "description": "To cart",
@@ -214,6 +229,7 @@
    "description": "Creates a copy of the object at the specified path and path to the original",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -221,6 +237,7 @@
      "short": "-t"
     },
     {
+     "title": "Original",
      "name": "--from",
      "types": "String",
      "description": "Path to the original file or directory",
@@ -228,6 +245,7 @@
      "short": "-f"
     },
     {
+     "title": "Path",
      "name": "--to",
      "types": "String",
      "description": "Destination path for the copy",
@@ -235,6 +253,7 @@
      "short": "-o"
     },
     {
+     "title": "Overwrite",
      "name": "--rewrite",
      "types": "Boolean",
      "description": "Overwrite if a file with the same name already exists",
@@ -250,6 +269,7 @@
    "description": "Gets a download link for the file",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -257,6 +277,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the file for downloading",
@@ -272,6 +293,7 @@
    "description": "Gets a link for manual file upload to Disk",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -279,6 +301,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path for saving the file to disk",
@@ -286,6 +309,7 @@
      "short": "-p"
     },
     {
+     "title": "Overwrite",
      "name": "--rewrite",
      "types": "Boolean",
      "description": "Overwrite if a file with the same name already exists",
@@ -301,6 +325,7 @@
    "description": "Downloads a file at the specified path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -308,6 +333,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the file for downloading",
@@ -315,6 +341,7 @@
      "short": "-p"
     },
     {
+     "title": "SavePath",
      "name": "--out",
      "types": "String",
      "description": "File save path",
@@ -330,6 +357,7 @@
    "description": "Gets a list of files with or without filtering by type\n\n List of available types: audio, backup, book, compressed, data, development,\n\n diskimage, document, encoded, executable, flash, font,\n\n mage, settings, spreadsheet, text, unknown, video, web",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -337,6 +365,7 @@
      "short": "-t"
     },
     {
+     "title": "Count",
      "name": "--amount",
      "types": "Number, String",
      "description": "Number of returned objects",
@@ -344,6 +373,7 @@
      "short": "-a"
     },
     {
+     "title": "OffsetFromStart",
      "name": "--offset",
      "types": "Number",
      "description": "Offset for getting objects not from the beginning of the list",
@@ -351,6 +381,7 @@
      "short": "-o"
     },
     {
+     "title": "FilterByType",
      "name": "--type",
      "types": "String",
      "description": "Filter by file type",
@@ -358,6 +389,7 @@
      "short": "-p"
     },
     {
+     "title": "SortByDate",
      "name": "--datesort",
      "types": "Boolean",
      "description": "True > sort by date, False > alphabetically",
@@ -373,6 +405,7 @@
    "description": "Moves the object to the specified path and path to the original",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -380,6 +413,7 @@
      "short": "-t"
     },
     {
+     "title": "Original",
      "name": "--from",
      "types": "String",
      "description": "Path to the original file or folder",
@@ -387,6 +421,7 @@
      "short": "-f"
     },
     {
+     "title": "Path",
      "name": "--to",
      "types": "String",
      "description": "Destination path for moving",
@@ -394,6 +429,7 @@
      "short": "-o"
     },
     {
+     "title": "Overwrite",
      "name": "--rewrite",
      "types": "Boolean",
      "description": "Overwrite if a file with the same name already exists",
@@ -409,6 +445,7 @@
    "description": "Uploads a file to disk at the specified path",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -416,6 +453,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path for saving the file to disk",
@@ -423,6 +461,7 @@
      "short": "-p"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File for upload",
@@ -430,6 +469,7 @@
      "short": "-f"
     },
     {
+     "title": "Overwrite",
      "name": "--rewrite",
      "types": "Boolean",
      "description": "Overwrite if a file with the same name already exists",
@@ -445,6 +485,7 @@
    "description": "Uploads a file to disk at the specified path in parts",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -452,6 +493,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path for saving the file to disk",
@@ -459,6 +501,7 @@
      "short": "-p"
     },
     {
+     "title": "File",
      "name": "--file",
      "types": "String, BinaryData",
      "description": "File for upload",
@@ -466,6 +509,7 @@
      "short": "-f"
     },
     {
+     "title": "ChunkSize",
      "name": "--psize",
      "types": "Number",
      "description": "Part size when uploading",
@@ -473,6 +517,7 @@
      "short": "-s"
     },
     {
+     "title": "Overwrite",
      "name": "--rewrite",
      "types": "Boolean",
      "description": "Overwrite if a file with the same name already exists",
@@ -488,6 +533,7 @@
    "description": "Downloads a file to disk from the specified URL",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -495,6 +541,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to place the downloaded file",
@@ -502,6 +549,7 @@
      "short": "-p"
     },
     {
+     "title": "Address",
      "name": "--url",
      "types": "String",
      "description": "File URL",
@@ -517,6 +565,7 @@
    "description": "Publishes the disk object for public access",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -524,6 +573,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the object to be published",
@@ -539,6 +589,7 @@
    "description": "Unpublishes a previously published object",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -546,6 +597,7 @@
      "short": "-t"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path to the previously published object",
@@ -561,6 +613,7 @@
    "description": "Gets a list of published objects",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -568,6 +621,7 @@
      "short": "-t"
     },
     {
+     "title": "Count",
      "name": "--amount",
      "types": "Number",
      "description": "Number of returned objects",
@@ -575,6 +629,7 @@
      "short": "-a"
     },
     {
+     "title": "OffsetFromStart",
      "name": "--offset",
      "types": "Number",
      "description": "Offset for getting objects not from the beginning of the list",
@@ -590,6 +645,7 @@
    "description": "Gets information about the published object by its URL",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -597,6 +653,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Object address",
@@ -604,6 +661,7 @@
      "short": "-u"
     },
     {
+     "title": "Count",
      "name": "--amount",
      "types": "Number",
      "description": "Number of returned nested objects (for catalog)",
@@ -611,6 +669,7 @@
      "short": "-a"
     },
     {
+     "title": "OffsetFromStart",
      "name": "--offset",
      "types": "Number",
      "description": "Offset for getting nested objects not from the beginning of the list",
@@ -626,6 +685,7 @@
    "description": "Gets a direct link to download the public object",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -633,6 +693,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Object address",
@@ -640,6 +701,7 @@
      "short": "-u"
     },
     {
+     "title": "Path",
      "name": "--path",
      "types": "String",
      "description": "Path inside the object",
@@ -655,6 +717,7 @@
    "description": "Saves the public object to your disk",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -662,6 +725,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Object address",
@@ -669,6 +733,7 @@
      "short": "-u"
     },
     {
+     "title": "From",
      "name": "--from",
      "types": "String",
      "description": "Path within public catalog (folders only)",
@@ -676,6 +741,7 @@
      "short": "-f"
     },
     {
+     "title": "Target",
      "name": "--to",
      "types": "String",
      "description": "File save path",

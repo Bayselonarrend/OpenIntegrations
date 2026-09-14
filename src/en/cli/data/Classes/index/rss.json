@@ -30,6 +30,7 @@
    "description": "Creates RSS feed text",
    "params": [
     {
+     "title": "ChannelTitle",
      "name": "--name",
      "types": "String",
      "description": "Channel title",
@@ -37,6 +38,7 @@
      "short": "-n"
     },
     {
+     "title": "ChannelDescription",
      "name": "--descr",
      "types": "String",
      "description": "Channel description",
@@ -44,6 +46,7 @@
      "short": "-d"
     },
     {
+     "title": "ChannelLink",
      "name": "--link",
      "types": "String",
      "description": "Channel link",
@@ -51,6 +54,7 @@
      "short": "-l"
     },
     {
+     "title": "Items",
      "name": "--items",
      "types": "Array of Structure",
      "description": "Feed items. See GetFeedItemStructureRSS",
@@ -58,6 +62,7 @@
      "short": "-i"
     },
     {
+     "title": "UpdateDate",
      "name": "--date",
      "types": "Date, Undefined",
      "description": "Update date. Current if not filled",
@@ -73,6 +78,7 @@
    "description": "Gets the structure of parameters for an RSS feed item",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -80,6 +86,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns fields as map",
@@ -95,6 +102,7 @@
    "description": "Parses the XML of an RSS feed and returns a structure with channel data and items",
    "params": [
     {
+     "title": "XMLText",
      "name": "--xml",
      "types": "String",
      "description": "XML content of RSS feed",
@@ -110,6 +118,7 @@
    "description": "Creates the text of an Atom feed",
    "params": [
     {
+     "title": "FeedTitle",
      "name": "--name",
      "types": "String",
      "description": "Feed title",
@@ -117,6 +126,7 @@
      "short": "-n"
     },
     {
+     "title": "FeedLink",
      "name": "--link",
      "types": "String",
      "description": "Feed URL",
@@ -124,6 +134,7 @@
      "short": "-l"
     },
     {
+     "title": "FeedID",
      "name": "--id",
      "types": "String",
      "description": "Feed unique identifier (usually a URL)",
@@ -131,6 +142,7 @@
      "short": "-i"
     },
     {
+     "title": "Items",
      "name": "--items",
      "types": "Array of Structure",
      "description": "Feed items. See GetFeedItemStructureAtom",
@@ -138,6 +150,7 @@
      "short": "-t"
     },
     {
+     "title": "UpdateDate",
      "name": "--date",
      "types": "Date, Undefined",
      "description": "Update date. Current if not filled",
@@ -153,6 +166,7 @@
    "description": "Gets the structure of parameters of an Atom feed item",
    "params": [
     {
+     "title": "Clear",
      "name": "--empty",
      "types": "Boolean",
      "description": "True > structure with empty valuse, False > field descriptions at values",
@@ -160,6 +174,7 @@
      "short": "-e"
     },
     {
+     "title": "AsMap",
      "name": "--map",
      "types": "Boolean",
      "description": "True > returns fields as map",
@@ -175,6 +190,7 @@
    "description": "Parses the XML of an Atom feed and returns a structure with feed data and items",
    "params": [
     {
+     "title": "XMLText",
      "name": "--xml",
      "types": "String",
      "description": "XML content of Atom feed",

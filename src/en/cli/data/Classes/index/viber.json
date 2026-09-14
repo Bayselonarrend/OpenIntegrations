@@ -35,6 +35,7 @@
    "description": "Sets a webhook to receive messages",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Viber Token",
@@ -42,6 +43,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "URL for setting up Webhook",
@@ -57,6 +59,7 @@
    "description": "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals\n\n The user ID from channel information is not suitable for sending messages through the bot - they are different",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -72,6 +75,7 @@
    "description": "Gets user information by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -79,6 +83,7 @@
      "short": "-t"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "Viber User ID",
@@ -94,6 +99,7 @@
    "description": "Gets the status of a user or multiple users by ID",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Viber Token",
@@ -101,6 +107,7 @@
      "short": "-t"
     },
     {
+     "title": "UserIDs",
      "name": "--users",
      "types": "String, Number, Array of String, Number",
      "description": "Viber User(s) ID",
@@ -116,6 +123,7 @@
    "description": "Sends a text message to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -123,6 +131,7 @@
      "short": "-t"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -130,6 +139,7 @@
      "short": "-x"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -137,6 +147,7 @@
      "short": "-u"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "Boolean",
      "description": "Sending to channel or bot chat",
@@ -144,6 +155,7 @@
      "short": "-i"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "Structure Of String",
      "description": "See CreateKeyboardFromArrayButton",
@@ -159,6 +171,7 @@
    "description": "Sends an image to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -166,6 +179,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--picture",
      "types": "String",
      "description": "Image URL",
@@ -173,6 +187,7 @@
      "short": "-p"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -180,6 +195,7 @@
      "short": "-u"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "boolean",
      "description": "Sending to channel or bot chat",
@@ -187,6 +203,7 @@
      "short": "-i"
     },
     {
+     "title": "Description",
      "name": "--description",
      "types": "String",
      "description": "Image annotation",
@@ -202,6 +219,7 @@
    "description": "Sends a file (document) to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -209,6 +227,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--file",
      "types": "String",
      "description": "File URL",
@@ -216,6 +235,7 @@
      "short": "-f"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -223,6 +243,7 @@
      "short": "-u"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "Boolean",
      "description": "Sending to channel or bot chat",
@@ -230,6 +251,7 @@
      "short": "-i"
     },
     {
+     "title": "Extension",
      "name": "--ext",
      "types": "String",
      "description": "File extension",
@@ -237,6 +259,7 @@
      "short": "-e"
     },
     {
+     "title": "Size",
      "name": "--size",
      "types": "Number",
      "description": "File size. If not filled in > determined automatically by downloading the file",
@@ -252,6 +275,7 @@
    "description": "Sends a contact with a phone number to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -259,6 +283,7 @@
      "short": "-t"
     },
     {
+     "title": "ContactName",
      "name": "--name",
      "types": "String",
      "description": "Contact name",
@@ -266,6 +291,7 @@
      "short": "-n"
     },
     {
+     "title": "PhoneNumber",
      "name": "--phone",
      "types": "String",
      "description": "Phone number",
@@ -273,6 +299,7 @@
      "short": "-p"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -280,6 +307,7 @@
      "short": "-u"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "Boolean",
      "description": "Sending to channel or bot chat",
@@ -295,6 +323,7 @@
    "description": "Sends geographic coordinates to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -302,6 +331,7 @@
      "short": "-t"
     },
     {
+     "title": "Latitude",
      "name": "--lat",
      "types": "String, Number",
      "description": "Geographic latitude",
@@ -309,6 +339,7 @@
      "short": "-l"
     },
     {
+     "title": "Longitude",
      "name": "--long",
      "types": "String, Number",
      "description": "Geographic longitude",
@@ -316,6 +347,7 @@
      "short": "-n"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -323,6 +355,7 @@
      "short": "-u"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "Boolean",
      "description": "Sending to channel or bot chat",
@@ -338,6 +371,7 @@
    "description": "Sends a URL with a preview to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -345,6 +379,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "SentLink",
@@ -352,6 +387,7 @@
      "short": "-u"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "User ID. For channel > administrator, for bot > recipient",
@@ -359,6 +395,7 @@
      "short": "-s"
     },
     {
+     "title": "SendingToChannel",
      "name": "--ischannel",
      "types": "Boolean",
      "description": "Sending to channel or bot chat",
@@ -374,6 +411,7 @@
    "description": "Returns a keyboard structure for messages",
    "params": [
     {
+     "title": "ButtonArray",
      "name": "--buttons",
      "types": "Array of String",
      "description": "Array of buttons",
@@ -381,6 +419,7 @@
      "short": "-b"
     },
     {
+     "title": "ButtonColor",
      "name": "--color",
      "types": "String",
      "description": "HEX color of buttons with # at the beginning",

@@ -71,6 +71,7 @@
    "description": "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -86,6 +87,7 @@
    "description": "Executes a request, returning information about bot events. Used in polling mode",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -93,6 +95,7 @@
      "short": "-t"
     },
     {
+     "title": "Timeout",
      "name": "--timeout",
      "types": "Number",
      "description": "Waiting time for new events",
@@ -100,6 +103,7 @@
      "short": "-m"
     },
     {
+     "title": "Offset",
      "name": "--offset",
      "types": "Number",
      "description": "Offset in the list of received messages",
@@ -115,6 +119,7 @@
    "description": "Set webhook URL for bot event handling in webhook mode",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -122,6 +127,7 @@
      "short": "-t"
     },
     {
+     "title": "URL",
      "name": "--url",
      "types": "String",
      "description": "Request handling address from Telegram (with https:)",
@@ -137,6 +143,7 @@
    "description": "Deletes the bot event handler URL for webhook operation",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -152,6 +159,7 @@
    "description": "Download file from Telegram servers",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -159,6 +167,7 @@
      "short": "-t"
     },
     {
+     "title": "FileID",
      "name": "--fileid",
      "types": "String",
      "description": "File ID for downloading",
@@ -174,6 +183,7 @@
    "description": "Sends a text message to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -181,6 +191,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -188,6 +199,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -195,6 +207,7 @@
      "short": "-x"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -202,6 +215,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -209,6 +223,7 @@
      "short": "-p"
     },
     {
+     "title": "RepliedID",
      "name": "--reply",
      "types": "String, Number",
      "description": "Reply to message ID",
@@ -224,6 +239,7 @@
    "description": "Sends an image to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -231,6 +247,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -238,6 +255,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -245,6 +263,7 @@
      "short": "-x"
     },
     {
+     "title": "Image",
      "name": "--picture",
      "types": "BinaryData, String",
      "description": "Image file",
@@ -252,6 +271,7 @@
      "short": "-p"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -259,6 +279,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -274,6 +295,7 @@
    "description": "Sends a video to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -281,6 +303,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -288,6 +311,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -295,6 +319,7 @@
      "short": "-x"
     },
     {
+     "title": "Video",
      "name": "--video",
      "types": "BinaryData, String",
      "description": "Video file",
@@ -302,6 +327,7 @@
      "short": "-v"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -309,6 +335,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -324,6 +351,7 @@
    "description": "Sends an audio file to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -331,6 +359,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -338,6 +367,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -345,6 +375,7 @@
      "short": "-x"
     },
     {
+     "title": "Audio",
      "name": "--audio",
      "types": "BinaryData, String",
      "description": "Audio file",
@@ -352,6 +383,7 @@
      "short": "-a"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -359,6 +391,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -374,6 +407,7 @@
    "description": "Sends a document to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -381,6 +415,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -388,6 +423,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -395,6 +431,7 @@
      "short": "-x"
     },
     {
+     "title": "Document",
      "name": "--doc",
      "types": "BinaryData, String",
      "description": "Document file",
@@ -402,6 +439,7 @@
      "short": "-d"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -409,6 +447,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -416,6 +455,7 @@
      "short": "-p"
     },
     {
+     "title": "FileName",
      "name": "--filename",
      "types": "String",
      "description": "Custom displayed file name with extension, if necessary",
@@ -431,6 +471,7 @@
    "description": "Sends a GIF to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -438,6 +479,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -445,6 +487,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -452,6 +495,7 @@
      "short": "-x"
     },
     {
+     "title": "GIF",
      "name": "--gif",
      "types": "BinaryData, String",
      "description": "GIF file",
@@ -459,6 +503,7 @@
      "short": "-g"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -466,6 +511,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -481,6 +527,7 @@
    "description": "Sends a set of files to a chat or channel. Media types: audio, document, photo, video",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -488,6 +535,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -495,6 +543,7 @@
      "short": "-c"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "Message text",
@@ -502,6 +551,7 @@
      "short": "-x"
     },
     {
+     "title": "FileMapping",
      "name": "--media",
      "types": "Map of KeyAndValue",
      "description": "File collection: Key > File, Value > Media Type",
@@ -509,6 +559,7 @@
      "short": "-m"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -516,6 +567,7 @@
      "short": "-k"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -531,6 +583,7 @@
    "description": "Sends location by geographic latitude and longitude to a chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -538,6 +591,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -545,6 +599,7 @@
      "short": "-c"
     },
     {
+     "title": "Latitude",
      "name": "--lat",
      "types": "String, Number",
      "description": "Geographic latitude",
@@ -552,6 +607,7 @@
      "short": "-l"
     },
     {
+     "title": "Longitude",
      "name": "--long",
      "types": "String, Number",
      "description": "Geographic longitude",
@@ -559,6 +615,7 @@
      "short": "-n"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -574,6 +631,7 @@
    "description": "Sends a contact with name and phone number",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -581,6 +639,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -588,6 +647,7 @@
      "short": "-c"
     },
     {
+     "title": "Name",
      "name": "--name",
      "types": "String",
      "description": "Contact name",
@@ -595,6 +655,7 @@
      "short": "-n"
     },
     {
+     "title": "LastName",
      "name": "--surname",
      "types": "String",
      "description": "Contact last name",
@@ -602,6 +663,7 @@
      "short": "-s"
     },
     {
+     "title": "Phone",
      "name": "--phone",
      "types": "String",
      "description": "Contact phone number",
@@ -609,6 +671,7 @@
      "short": "-p"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -624,6 +687,7 @@
    "description": "Sends a poll with answer options",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -631,6 +695,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -638,6 +703,7 @@
      "short": "-c"
     },
     {
+     "title": "Question",
      "name": "--question",
      "types": "String",
      "description": "Poll question",
@@ -645,6 +711,7 @@
      "short": "-q"
     },
     {
+     "title": "AnswersArray",
      "name": "--options",
      "types": "Array of String",
      "description": "Array of answer options",
@@ -652,6 +719,7 @@
      "short": "-o"
     },
     {
+     "title": "Anonymous",
      "name": "--anonymous",
      "types": "Boolean",
      "description": "Survey anonymity flag",
@@ -667,6 +735,7 @@
    "description": "Forwards a message between chats or within a chat",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -674,6 +743,7 @@
      "short": "-t"
     },
     {
+     "title": "OriginalID",
      "name": "--message",
      "types": "String, Number",
      "description": "Original message ID",
@@ -681,6 +751,7 @@
      "short": "-m"
     },
     {
+     "title": "FromID",
      "name": "--from",
      "types": "String, Number",
      "description": "Chat ID of the original message",
@@ -688,6 +759,7 @@
      "short": "-f"
     },
     {
+     "title": "ToID",
      "name": "--to",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -703,6 +775,7 @@
    "description": "Delete message from chat or channel",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -710,6 +783,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -717,6 +791,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of message to delete",
@@ -732,6 +807,7 @@
    "description": "Replaces the message keyboard with a new one",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -739,6 +815,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -746,6 +823,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of message to delete",
@@ -753,6 +831,7 @@
      "short": "-m"
     },
     {
+     "title": "Keyboard",
      "name": "--keyboard",
      "types": "String, Structure Of KeyAndValue",
      "description": "Keyboard. See FormKeyboardFromButtonArray",
@@ -768,6 +847,7 @@
    "description": "Replaces the message text with a new one",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -775,6 +855,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -782,6 +863,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of message to delete",
@@ -789,6 +871,7 @@
      "short": "-m"
     },
     {
+     "title": "Text",
      "name": "--text",
      "types": "String",
      "description": "New message text",
@@ -796,6 +879,7 @@
      "short": "-x"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -811,6 +895,7 @@
    "description": "Replaces text in a message with media attachments",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -818,6 +903,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -825,6 +911,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "ID of message to delete",
@@ -832,6 +919,7 @@
      "short": "-m"
     },
     {
+     "title": "Description",
      "name": "--caption",
      "types": "String",
      "description": "New message description",
@@ -839,6 +927,7 @@
      "short": "-p"
     },
     {
+     "title": "Markup",
      "name": "--parsemode",
      "types": "String",
      "description": "Text processing type (HTML, Markdown, MarkdownV2)",
@@ -854,6 +943,7 @@
    "description": "Generates a simple JSON keyboard from an array of buttons for a message or bottom panel",
    "params": [
     {
+     "title": "ButtonArray",
      "name": "--buttons",
      "types": "Array of String",
      "description": "Array of buttons",
@@ -861,6 +951,7 @@
      "short": "-b"
     },
     {
+     "title": "UnderMessage",
      "name": "--under",
      "types": "Boolean",
      "description": "Keyboard under the message or on the bottom panel",
@@ -868,6 +959,7 @@
      "short": "-u"
     },
     {
+     "title": "OneByOne",
      "name": "--column",
      "types": "Boolean",
      "description": "True > buttons are displayed in a column, False > in a row",
@@ -883,6 +975,7 @@
    "description": "Bans a user in the selected chat",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -890,6 +983,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -897,6 +991,7 @@
      "short": "-c"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "Target user ID",
@@ -912,6 +1007,7 @@
    "description": "Unbans a previously banned user",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -919,6 +1015,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -926,6 +1023,7 @@
      "short": "-c"
     },
     {
+     "title": "UserID",
      "name": "--user",
      "types": "String, Number",
      "description": "Target user ID",
@@ -941,6 +1039,7 @@
    "description": "Creates a link for joining a closed chat",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -948,6 +1047,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID or ChatID*TopicID",
@@ -955,6 +1055,7 @@
      "short": "-c"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Invitation title",
@@ -962,6 +1063,7 @@
      "short": "-l"
     },
     {
+     "title": "ExpirationDate",
      "name": "--expire",
      "types": "Date",
      "description": "Link expiration date (permanent if not specified)",
@@ -969,6 +1071,7 @@
      "short": "-e"
     },
     {
+     "title": "UserLimit",
      "name": "--limit",
      "types": "Number",
      "description": "User limit (infinite if not specified)",
@@ -984,6 +1087,7 @@
    "description": "Pins a message in the chat header",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -991,6 +1095,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -998,6 +1103,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "Target message ID",
@@ -1013,6 +1119,7 @@
    "description": "Unpins a message in the chat header",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -1020,6 +1127,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -1027,6 +1135,7 @@
      "short": "-c"
     },
     {
+     "title": "MessageID",
      "name": "--message",
      "types": "String, Number",
      "description": "Target message ID",
@@ -1042,6 +1151,7 @@
    "description": "Gets the total number of chat participants",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Bot token",
@@ -1049,6 +1159,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--chat",
      "types": "String, Number",
      "description": "Target chat ID",
@@ -1064,6 +1175,7 @@
    "description": "Gets the mapping of Emoji IDs for setting as forum theme icons",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1079,6 +1191,7 @@
    "description": "Creates a new topic in the group with theme functionality enabled",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1086,6 +1199,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic creation chat ID",
@@ -1093,6 +1207,7 @@
      "short": "-f"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "Topic title",
@@ -1100,6 +1215,7 @@
      "short": "-l"
     },
     {
+     "title": "IconID",
      "name": "--icon",
      "types": "String",
      "description": "See GetAvatarIconList",
@@ -1115,6 +1231,7 @@
    "description": "Creates a new topic in the group with theme functionality enabled",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1122,6 +1239,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic creation chat ID",
@@ -1129,6 +1247,7 @@
      "short": "-f"
     },
     {
+     "title": "TopicID",
      "name": "--topic",
      "types": "String, Number",
      "description": "Topic ID",
@@ -1136,6 +1255,7 @@
      "short": "-p"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "New title",
@@ -1143,6 +1263,7 @@
      "short": "-l"
     },
     {
+     "title": "IconID",
      "name": "--icon",
      "types": "String",
      "description": "See GetAvatarIconList",
@@ -1158,6 +1279,7 @@
    "description": "Closes the topic for new messages",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1165,6 +1287,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1172,6 +1295,7 @@
      "short": "-f"
     },
     {
+     "title": "TopicID",
      "name": "--topic",
      "types": "String, Number",
      "description": "Topic ID",
@@ -1187,6 +1311,7 @@
    "description": "Reopens a previously closed forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1194,6 +1319,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1201,6 +1327,7 @@
      "short": "-f"
     },
     {
+     "title": "TopicID",
      "name": "--topic",
      "types": "String, Number",
      "description": "Topic ID",
@@ -1216,6 +1343,7 @@
    "description": "Deletes a forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1223,6 +1351,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1230,6 +1359,7 @@
      "short": "-f"
     },
     {
+     "title": "TopicID",
      "name": "--topic",
      "types": "String, Number",
      "description": "Topic ID",
@@ -1245,6 +1375,7 @@
    "description": "Hides the main forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1252,6 +1383,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1267,6 +1399,7 @@
    "description": "Shows a previously hidden main forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1274,6 +1407,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1289,6 +1423,7 @@
    "description": "Edits the name of the main forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1296,6 +1431,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1303,6 +1439,7 @@
      "short": "-f"
     },
     {
+     "title": "Title",
      "name": "--title",
      "types": "String",
      "description": "New main topic name",
@@ -1318,6 +1455,7 @@
    "description": "Clears the list of pinned messages in the forum topic",
    "params": [
     {
+     "title": "Token",
      "name": "--token",
      "types": "String",
      "description": "Token",
@@ -1325,6 +1463,7 @@
      "short": "-t"
     },
     {
+     "title": "ChatID",
      "name": "--forum",
      "types": "String, Number",
      "description": "Topic chat ID",
@@ -1332,6 +1471,7 @@
      "short": "-f"
     },
     {
+     "title": "TopicID",
      "name": "--topic",
      "types": "String, Number",
      "description": "Topic ID. Main if not filled",

@@ -23,6 +23,7 @@
    "description": "Возвращает URL для авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -30,6 +31,7 @@
      "short": "-i"
     },
     {
+     "title": "Calendar",
      "name": "--calendar",
      "types": "Булево",
      "description": "разрешение на методы Calendar",
@@ -37,6 +39,7 @@
      "short": "-c"
     },
     {
+     "title": "Drive",
      "name": "--drive",
      "types": "Булево",
      "description": "разрешение на методы Drive",
@@ -44,6 +47,7 @@
      "short": "-d"
     },
     {
+     "title": "Sheets",
      "name": "--sheets",
      "types": "Булево",
      "description": "разрешение на методы Sheets",
@@ -59,6 +63,7 @@
    "description": "Получает токен по коду из авторизации в браузере",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -66,6 +71,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -73,6 +79,7 @@
      "short": "-s"
     },
     {
+     "title": "Code",
      "name": "--code",
      "types": "Строка",
      "description": "Code из браузера",
@@ -88,6 +95,7 @@
    "description": "Обновляет токен по Refresh token",
    "params": [
     {
+     "title": "ClientID",
      "name": "--id",
      "types": "Строка",
      "description": "Client ID",
@@ -95,6 +103,7 @@
      "short": "-i"
     },
     {
+     "title": "ClientSecret",
      "name": "--secret",
      "types": "Строка",
      "description": "Client secret",
@@ -102,6 +111,7 @@
      "short": "-s"
     },
     {
+     "title": "RefreshToken",
      "name": "--refresh",
      "types": "Строка",
      "description": "Refresh token",
@@ -117,6 +127,7 @@
    "description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
    "params": [
     {
+     "title": "Данные",
      "name": "--auth",
      "types": "Произвольный",
      "description": "JSON данные авторизации как файл, коллекция или двоичные данные",
@@ -124,6 +135,7 @@
      "short": "-a"
     },
     {
+     "title": "ОбластиДействия",
      "name": "--scope",
      "types": "Массив Из Строка",
      "description": "Область действия (scope) или массив областей",
@@ -131,6 +143,7 @@
      "short": "-s"
     },
     {
+     "title": "ВремяЖизни",
      "name": "--exp",
      "types": "Число",
      "description": "Время жизни токена в секундах",

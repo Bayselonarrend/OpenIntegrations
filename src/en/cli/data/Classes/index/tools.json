@@ -21,6 +21,7 @@
    "description": "Shows values that can be extracted from the provided JSON and returns a specific value when a field name is specified",
    "params": [
     {
+     "title": "JSON",
      "name": "--json",
      "types": "String",
      "description": "JSON data",
@@ -28,6 +29,7 @@
      "short": "-j"
     },
     {
+     "title": "MaximumNestingLevel",
      "name": "--nesting",
      "types": "Number",
      "description": "Parsing depth limit. Full depth by default",
@@ -35,6 +37,7 @@
      "short": "-n"
     },
     {
+     "title": "ParameterName",
      "name": "--name",
      "types": "String",
      "description": "Field name to retrieve. Displays the entire list if not specified",
@@ -42,6 +45,7 @@
      "short": "-m"
     },
     {
+     "title": "Encoding",
      "name": "--enc",
      "types": "String",
      "description": "Encoding of JSON Data",
@@ -57,6 +61,7 @@
    "description": "Convert file with Base64 string to binary file",
    "params": [
     {
+     "title": "Entry",
      "name": "--in",
      "types": "String",
      "description": "Base64 File",
