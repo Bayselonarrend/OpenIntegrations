@@ -238,7 +238,12 @@ Procedure FTP_CreateConnection(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     // END
 
@@ -299,7 +304,12 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -442,11 +452,19 @@ Procedure FTP_CloseConnection(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "FTP", "CloseConnection", "Openning, " + Postfix); // SKIP
 
-    Result = OPI_FTP.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CloseConnection", Options);
 
     // END
 
@@ -507,11 +525,19 @@ Procedure FTP_IsConnector(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "FTP", "IsConnector", "Openning, " + Postfix); // SKIP
 
-    Result = OPI_FTP.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "IsConnector", Options);
 
     // END
 
@@ -636,7 +662,12 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
@@ -748,7 +779,12 @@ Procedure FTP_ListObjects(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -841,7 +877,12 @@ Procedure FTP_UploadFile(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
@@ -953,7 +994,12 @@ Procedure FTP_DeleteFile(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1041,7 +1087,12 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1112,7 +1163,12 @@ Procedure FTP_ClearDirectory(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1192,7 +1248,12 @@ Procedure FTP_GetObjectSize(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1271,7 +1332,12 @@ Procedure FTP_UpdatePath(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1404,7 +1470,12 @@ Procedure FTP_SaveFile(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
@@ -1511,12 +1582,21 @@ Procedure FTP_GetFileData(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
         Path   = "new_dir/pic_from_disk.png";
-        Result = OPI_FTP.GetFileData(Connection, Path);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", Path);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetFileData", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -1606,7 +1686,12 @@ Procedure FTP_Ping(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1676,7 +1761,12 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
@@ -1750,7 +1840,12 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
 
@@ -1824,7 +1919,12 @@ Procedure FTP_GetCurrentDirectory(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1896,11 +1996,20 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Path   = "new_dir";
-        Result = OPI_FTP.ChangeCurrentDirectory(Connection, Path);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", Path);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ChangeCurrentDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -1917,7 +2026,11 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", "Check, " + Postfix, Path);
 
     Path   = FunctionParameters["FTP_RootPath"];
-    Result = OPI_FTP.ChangeCurrentDirectory(Connection, Path);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ChangeCurrentDirectory", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "ChangeCurrentDirectory", "Back, " + Postfix);
 
@@ -1983,7 +2096,12 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -2002,17 +2120,29 @@ EndProcedure
 
 Procedure FTP_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_FTP.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetLoggingSettings");
 
-    Result = OPI_FTP.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetLoggingSettings", "File");
 
-    Result = OPI_FTP.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetLoggingSettings", "Memory");
 
@@ -2021,7 +2151,12 @@ EndProcedure
 Procedure FTP_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_FTP.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLoggingSettings", Options);
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
@@ -2074,7 +2209,13 @@ Procedure FTP_GetLog(FunctionParameters)
         TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If Not OPI_FTP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -2087,13 +2228,20 @@ Procedure FTP_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "Ping", "Select"); // SKIP
 
-    Result = OPI_FTP.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetLog", , LogFile);
 
-    Result = OPI_FTP.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "FTP", "GetLog", "AsString", LogFile);
 
     OPI_FTP.CloseConnection(Connection);
@@ -2142,7 +2290,10 @@ Procedure FTP_Extended_Reconnection(FunctionParameters)
 
     FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If Not OPI_FTP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -2160,7 +2311,12 @@ EndProcedure
 Procedure FTP_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_FTP.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLoggingSettings", Options);
 
     Host     = FunctionParameters["FTP_IP"];
     Port     = FunctionParameters["FTP_Port"];
@@ -2175,7 +2331,11 @@ Procedure FTP_Extended_GetLogOnConnection(FunctionParameters)
 
     FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
-    Connection = OPI_FTP.CreateConnection(FTPSettings, , , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("set", FTPSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateConnection", Options);
 
     If Not OPI_FTP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -2183,7 +2343,10 @@ Procedure FTP_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_FTP.GetWelcomeMessage(Connection);
 
-    Result = OPI_FTP.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetLog", Options);
 
     // END
 

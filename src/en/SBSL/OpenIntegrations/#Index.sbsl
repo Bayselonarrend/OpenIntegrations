@@ -43,5 +43,7 @@
 #требуется OPI_Viber.sbsl
 #требуется OPI_VK.sbsl
 #требуется OPI_VKTeams.sbsl
+#требуется OPI_WebSocket.sbsl
 #требуется OPI_YandexDisk.sbsl
 #требуется OPI_YandexID.sbsl
+#требуется OPI_ZeroMQ.sbsl

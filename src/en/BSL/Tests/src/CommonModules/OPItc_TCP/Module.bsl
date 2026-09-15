@@ -174,7 +174,10 @@ EndProcedure
 Procedure TCP_CreateConnection(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "TCP", "CreateConnection"); // SKIP
 
@@ -206,7 +209,12 @@ Procedure TCP_CreateConnection(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
 
-    Connection = OPI_TCP.CreateConnection(Address, TLS, Proxy);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", Tls);
+    Options.Insert("proxy", Proxy);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     // END
 
@@ -219,9 +227,15 @@ EndProcedure
 Procedure TCP_CloseConnection(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
 
-    Result = OPI_TCP.CloseConnection(Connection);
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
+
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CloseConnection", Options);
 
     // END
 
@@ -232,7 +246,10 @@ EndProcedure
 Procedure TCP_ReadBinaryData(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     Message    = "Hello server!" + Chars.LF;
     Data       = GetBinaryDataFromString(Message);
 
@@ -240,7 +257,11 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Result = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("marker", Marker);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     OPI_TCP.CloseConnection(Connection);
@@ -249,10 +270,17 @@ Procedure TCP_ReadBinaryData(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadBinaryData", , Message);
 
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TCP.SendBinaryData(Connection, Data);
-    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("timeout", 50000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -263,16 +291,27 @@ EndProcedure
 Procedure TCP_SendBinaryData(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     Message    = "Hello server!" + Chars.LF;
     Data       = GetBinaryDataFromString(Message);
 
-    Result = OPI_TCP.SendBinaryData(Connection, Data);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("data", Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendBinaryData", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Response = OPI_TCP.ReadBinaryData(Connection, , Marker);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("marker", Marker);
+
+    Response = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -280,10 +319,17 @@ Procedure TCP_SendBinaryData(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Response, "TCP", "SendBinaryData", , Message);
 
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TCP.SendBinaryData(Connection, Data);
-    Result = OPI_TCP.ReadBinaryData(Connection, , , 50000);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("timeout", 50000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -343,14 +389,21 @@ EndProcedure
 Procedure TCP_ReadLine(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     Data       = "Hello server!" + Chars.LF;
 
     OPI_TCP.SendLine(Connection, Data);
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Result = OPI_TCP.ReadLine(Connection, , Marker);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("marker", Marker);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadLine", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     OPI_TCP.CloseConnection(Connection);
@@ -359,10 +412,17 @@ Procedure TCP_ReadLine(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "ReadLine", , Data);
 
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TCP.SendLine(Connection, Data);
-    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("timeout", 50000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadLine", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -373,15 +433,26 @@ EndProcedure
 Procedure TCP_SendLine(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     Data       = "Hello server!" + Chars.LF;
 
-    Result = OPI_TCP.SendLine(Connection, Data);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("data", Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendLine", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // End of message marker to avoid waiting for the end of timeout
     Marker = Chars.LF;
-    Response = OPI_TCP.ReadLine(Connection, , Marker);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("marker", Marker);
+
+    Response = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadLine", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -389,10 +460,17 @@ Procedure TCP_SendLine(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Response, "TCP", "SendLine", , Data);
 
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TCP.SendLine(Connection, Data);
-    Result = OPI_TCP.ReadLine(Connection, , , 50000);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("timeout", 50000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadLine", Options);
 
     OPI_TCP.CloseConnection(Connection);
 
@@ -416,11 +494,21 @@ EndProcedure
 Procedure TCP_GetLastError(FunctionParameters)
 
     Address    = FunctionParameters["TCP_Address"];
-    Connection = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     Data       = "Hello server!" + Chars.LF;
 
-    Sending = OPI_TCP.SendLine(Connection, Data);
-    Result  = OPI_TCP.GetLastError(Connection);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+    Options.Insert("data", Data);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendLine", Options);
+    Options = New Structure;
+    Options.Insert("tcp", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLastError", Options);
 
     // END
 
@@ -457,7 +545,11 @@ Procedure TCP_StartServer(FunctionParameters)
     Port     = 9876;
     PoolSize = 10;
 
-    Result = OPI_TCP.StartServer(Port, PoolSize);
+    Options = New Structure;
+    Options.Insert("port", Port);
+    Options.Insert("psize", PoolSize);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // END
 
@@ -470,22 +562,34 @@ EndProcedure
 Procedure TCP_StopServer(FunctionParameters)
 
     Port = 9877;
-    Host = OPI_TCP.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
 
-    Result = OPI_TCP.StopServer(Host);
+    Host = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
+
+    Options = New Structure;
+    Options.Insert("srv", Host);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StopServer", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "StopServer");
 
-    ListResult = OPI_TCP.GetConnectionList(Host);
+    Options = New Structure;
+    Options.Insert("srv", Host);
+
+    ListResult = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ListResult, "TCP", "StopServer", "List");
 
     OPI_TypeConversion.GetLine(Port);
 
     Address = StrTemplate("127.0.0.1:%1", Port);
-    Client  = OPI_TCP.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    Client = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Client, "TCP", "StopServer", "Connection");
 
@@ -494,11 +598,17 @@ EndProcedure
 Procedure TCP_GetNextConnectionData(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Send message from client
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -508,7 +618,12 @@ Procedure TCP_GetNextConnectionData(FunctionParameters)
     EndIf;
 
     // Receive message on server
-    Result = OPI_TCP.GetNextConnectionData(ServerObject, 5000, 8192);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+    Options.Insert("msize", 8192);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
 
     // END
 
@@ -519,7 +634,12 @@ Procedure TCP_GetNextConnectionData(FunctionParameters)
     OPI_TCP.SendLine(ClientObject, Message);
     OPI_TCP.CloseConnection(ClientObject);
 
-    Result = OPI_TCP.GetNextConnectionData(ServerObject, 5000, 8192);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+    Options.Insert("msize", 8192);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetNextConnectionData", "Closed", Message);
 
@@ -530,11 +650,17 @@ EndProcedure
 Procedure TCP_GetConnectionData(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -543,7 +669,10 @@ Procedure TCP_GetConnectionData(FunctionParameters)
     OPI_Tools.Pause(1); // SKIP
 
     // Receive the list of server connections
-    ConnectionList = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    ConnectionList = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     If Not ConnectionList["result"] Then
         Raise OPI_Tools.JSONString(ConnectionList);
@@ -575,11 +704,20 @@ Procedure TCP_GetConnectionData(FunctionParameters)
 
     OPI_TCP.CloseConnection(ClientObject);
 
-    Result = OPI_TCP.GetConnectionData(ServerObject, ConnectionID, 5000, 8192);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("tout", 5000);
+    Options.Insert("msize", 8192);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionData", "Closed");
 
-    Result = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionData", "EmptyList");
 
@@ -590,11 +728,17 @@ EndProcedure
 Procedure TCP_SendData(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -605,19 +749,32 @@ Procedure TCP_SendData(FunctionParameters)
     OPI_TCP.SendLine(ClientObject, Message);
 
     // Receive message and connection ID
-    NextMessage = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    NextMessage = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
     ConnectionID = NextMessage["connectionId"];
 
     // Send response from server
     ServerResponse = "Response from server!" + Chars.LF;
-    Result = OPI_TCP.SendData(ServerObject, ConnectionID, ServerResponse);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("data", ServerResponse);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendData", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "SendData");
 
     // Check receiving on client
-    ClientResponse = OPI_TCP.ReadLine(ClientObject, , Chars.LF);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+    Options.Insert("marker", Chars);
+
+    ClientResponse = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadLine", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ClientResponse, "TCP", "SendData", "Check", ServerResponse);
 
@@ -629,11 +786,17 @@ EndProcedure
 Procedure TCP_CloseIncomingConnection(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -644,22 +807,37 @@ Procedure TCP_CloseIncomingConnection(FunctionParameters)
     OPI_TCP.SendLine(ClientObject, Message);
 
     // Get connection ID
-    FirstMessage = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    FirstMessage = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
     ConnectionID = FirstMessage["connectionId"];
 
     // Close connection from server side
-    Result = OPI_TCP.CloseIncomingConnection(ServerObject, ConnectionID);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CloseIncomingConnection", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection");
 
-    Result = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection", "EmptyList");
 
     OPI_TCP.SendLine(ClientObject, Message);
-    Result = OPI_TCP.SendLine(ClientObject, Message);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+    Options.Insert("data", Message);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendLine", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CloseIncomingConnection", "SendingToClosed");
 
@@ -670,22 +848,35 @@ EndProcedure
 Procedure TCP_CompleteSend(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    ActiveConnections = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
     ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Finish sending from server
-    Result = OPI_TCP.CompleteSend(ServerObject, ConnectionID);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CompleteSend", Options);
 
     // END
 
@@ -694,12 +885,21 @@ Procedure TCP_CompleteSend(FunctionParameters)
     Message = "Hello" + Chars.LF;
 
     OPI_TCP.SendLine(ClientObject, Message);
-    Result = OPI_TCP.SendLine(ClientObject, Message);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+    Options.Insert("data", Message);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendLine", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CompleteSend", "SendingClient");
 
     ServerResponse = "Response from server!" + Chars.LF;
-    Result         = OPI_TCP.SendData(ServerObject, ConnectionID, ServerResponse);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("data", ServerResponse);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "SendData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "CompleteSend", "SendingServer");
 
@@ -711,13 +911,22 @@ EndProcedure
 Procedure TCP_GetConnectionList(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
 
-    Client1 = OPI_TCP.CreateConnection(ConnectionAddress);
-    Client2 = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client1 = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client2 = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(Client1) Then
         Raise OPI_Tools.JSONString(Client1);
@@ -729,7 +938,10 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     OPI_Tools.Pause(1); // SKIP
 
-    Result = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     // END
 
@@ -738,8 +950,14 @@ Procedure TCP_GetConnectionList(FunctionParameters)
     OPI_TCP.CloseConnection(Client1);
     OPI_TCP.CloseConnection(Client2);
 
-    Client3 = OPI_TCP.CreateConnection(ConnectionAddress);
-    Client4 = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client3 = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client4 = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     OPI_TCP.SendLine(Client3, "Yo" + Chars.LF);
 
@@ -748,7 +966,10 @@ Procedure TCP_GetConnectionList(FunctionParameters)
 
     OPI_Tools.Pause(1); // SKIP
 
-    Result = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetConnectionList", "Closing");
 
@@ -759,22 +980,35 @@ EndProcedure
 Procedure TCP_FinishReceiving(FunctionParameters)
 
     LaunchPort   = 9877;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    ActiveConnections = OPI_TCP.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    ActiveConnections = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetConnectionList", Options);
     ConnectionID      = ActiveConnections["connections"][0]["connectionId"];
 
     // Completing server-side reception
-    Result = OPI_TCP.FinishReceiving(ServerObject, ConnectionID);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "FinishReceiving", Options);
 
     // END
 
@@ -788,9 +1022,15 @@ EndProcedure
 Procedure TCP_IsServerObject(FunctionParameters)
 
     Port = 9884;
-    Host = OPI_TCP.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
 
-    Result = OPI_TCP.IsServerObject(Host);
+    Host = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
+
+    Options = New Structure;
+    Options.Insert("value", Host);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "IsServerObject", Options);
 
     // END
 
@@ -799,7 +1039,10 @@ Procedure TCP_IsServerObject(FunctionParameters)
     OPI_TCP.StopServer(Host);
 
     // Check with wrong object
-    Result = OPI_TCP.IsServerObject("Not a server");
+    Options = New Structure;
+    Options.Insert("value", "Not a server");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "IsServerObject", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "IsServerObject", "False");
 
@@ -809,19 +1052,34 @@ Procedure TCP_GetLog(FunctionParameters)
 
     LaunchPort      = 9877;
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
-    ServerObject    = OPI_TCP.StartServer(LaunchPort, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+    Options.Insert("log", LoggingSettings);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     // Connect to running server
     ConnectionAddress = "127.0.0.1:9877";
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Result = OPI_TCP.GetLog(ServerObject);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLog", Options);
 
     // END
 
@@ -831,9 +1089,18 @@ Procedure TCP_GetLog(FunctionParameters)
     OPI_TCP.StopServer(ServerObject);
 
     ClientLogFile   = GetTempFileName("txt");
-    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, ClientLogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", ClientLogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
     Address         = FunctionParameters["TCP_Address"];
-    Connection      = OPI_TCP.CreateConnection(Address, , , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -844,11 +1111,18 @@ Procedure TCP_GetLog(FunctionParameters)
 
     OPI_TCP.SendBinaryData(Connection, Data);
 
-    Result = OPI_TCP.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLog", "Client", ClientLogFile);
 
-    Result = OPI_TCP.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLog", "Client, AsString", ClientLogFile);
 
@@ -858,17 +1132,29 @@ EndProcedure
 
 Procedure TCP_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_TCP.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings");
 
-    Result = OPI_TCP.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings", "File");
 
-    Result = OPI_TCP.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "TCP", "GetLoggingSettings", "Memory");
 
@@ -879,13 +1165,20 @@ EndProcedure
 Procedure TCP_Extended_GetDataOfNextTimeout(FunctionParameters)
 
     Port         = 9876;
-    ServerObject = OPI_TCP.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     If Not OPI_TCP.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    Result = OPI_TCP.GetNextConnectionData(ServerObject, 300);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
 
     // END
 
@@ -898,7 +1191,11 @@ Procedure TCP_Extended_OperationWithoutStart(FunctionParameters)
 
     ServerObject = OPI_AddIns.GetAddIn(OPI_TCP.AddInName());
 
-    Result = OPI_TCP.GetNextConnectionData(ServerObject, 300);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
 
     // END
 
@@ -910,15 +1207,27 @@ Procedure TCP_Extended_GetLogOnServerStart(FunctionParameters)
 
     Port            = 9876;
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
-    ServerObject    = OPI_TCP.StartServer(Port, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("port", Port);
+    Options.Insert("log", LoggingSettings);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     If Not OPI_TCP.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
     ConnectionAddress = "127.0.0.1:9876";
-    ClientObject      = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -928,7 +1237,10 @@ Procedure TCP_Extended_GetLogOnServerStart(FunctionParameters)
     OPI_TCP.SendLine(ClientObject, Message + Chars.LF);
     OPI_TCP.GetNextConnectionData(ServerObject, 5000);
 
-    Result = OPI_TCP.GetLog(ServerObject);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLog", Options);
 
     // END
 
@@ -942,19 +1254,29 @@ Procedure TCP_Extended_ReadTimeout(FunctionParameters)
 
     Port              = 9876;
     ConnectionAddress = "127.0.0.1:9876";
-    ServerObject      = OPI_TCP.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     If Not OPI_TCP.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
-    Data = OPI_TCP.ReadBinaryData(ClientObject, , , 300);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+    Options.Insert("timeout", 300);
+
+    Data = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
 
     Result                              = New Map;
     Result.Insert("result", Data.Size() = 0);
@@ -973,7 +1295,10 @@ Procedure TCP_Extended_OperationWithoutConnection(FunctionParameters)
     Data         = GetBinaryDataFromString("x");
 
     OPI_TCP.SendBinaryData(ClientObject, Data, 300);
-    Result = OPI_TCP.GetLastError(ClientObject);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLastError", Options);
 
     // END
 
@@ -986,14 +1311,26 @@ Procedure TCP_Extended_GetLogOnConnectionOpening(FunctionParameters)
     Port              = 9876;
     ConnectionAddress = "127.0.0.1:9876";
     LogFile           = GetTempFileName("txt");
-    LoggingSettings   = OPI_TCP.GetLoggingSettings(True, 100, LogFile);
-    ServerObject      = OPI_TCP.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     If Not OPI_TCP.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    ClientObject = OPI_TCP.CreateConnection(ConnectionAddress, , , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+    Options.Insert("log", LoggingSettings);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -1003,7 +1340,10 @@ Procedure TCP_Extended_GetLogOnConnectionOpening(FunctionParameters)
     OPI_TCP.SendLine(ClientObject, Message + Chars.LF);
     OPI_TCP.GetNextConnectionData(ServerObject, 5000);
 
-    Result = OPI_TCP.GetLog(ClientObject);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetLog", Options);
 
     // END
 
@@ -1022,10 +1362,16 @@ Procedure TCP_Extended_JanxCollectionExchange(FunctionParameters)
     JanxData = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
 
     LaunchPort   = 9879;
-    ServerObject = OPI_TCP.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "StartServer", Options);
 
     ConnectionAddress = "127.0.0.1:9879";
-    ClientObject      = OPI_TCP.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "CreateConnection", Options);
 
     If Not OPI_TCP.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -1033,12 +1379,20 @@ Procedure TCP_Extended_JanxCollectionExchange(FunctionParameters)
 
     OPI_TCP.SendBinaryData(ClientObject, JanxData);
 
-    NextMessage  = OPI_TCP.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    NextMessage = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetNextConnectionData", Options);
     ConnectionID = NextMessage["connectionId"];
 
     OPI_TCP.SendData(ServerObject, ConnectionID, NextMessage["message"]);
 
-    ClientResponse = OPI_TCP.ReadBinaryData(ClientObject, , , 5000);
+    Options = New Structure;
+    Options.Insert("tcp", ClientObject);
+    Options.Insert("timeout", 5000);
+
+    ClientResponse = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ReadBinaryData", Options);
     Options = New Structure;
     Options.Insert("data", ClientResponse);
 

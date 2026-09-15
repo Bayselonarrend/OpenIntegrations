@@ -30,15 +30,15 @@
      "nocli": false
     },
     {
+     "name": "ПолучитьНастройкиTls",
+     "nocli": false
+    },
+    {
      "name": "ПолучитьНастройкиПрокси",
      "nocli": false
     },
     {
      "name": "ПолучитьНастройкиСоединения",
-     "nocli": false
-    },
-    {
-     "name": "ПолучитьНастройкиTls",
      "nocli": false
     },
     {

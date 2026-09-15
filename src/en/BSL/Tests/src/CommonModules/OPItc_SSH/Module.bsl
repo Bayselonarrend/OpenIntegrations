@@ -227,7 +227,11 @@ Procedure SSH_CreateConnection(FunctionParameters)
 
     EndIf;
 
-    Result = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     // END
 
@@ -312,7 +316,11 @@ Procedure SSH_ExecuteCommand(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     If OPI_SSH.IsConnector(Connection) Then
         Options = New Structure;
@@ -504,10 +512,17 @@ Procedure SSH_CloseConnection(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     If OPI_SSH.IsConnector(Connection) Then
-        Result = OPI_SSH.CloseConnection(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CloseConnection", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -595,14 +610,24 @@ Procedure SSH_IsConnector(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
-    Result     = OPI_SSH.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "IsConnector", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "IsConnector", Postfix);
 
-    Result = OPI_SSH.IsConnector("a");
+    Options = New Structure;
+    Options.Insert("value", "a");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "IsConnector", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "IsConnector", "Error, " + Postfix);
 
@@ -734,17 +759,29 @@ EndProcedure
 
 Procedure SSH_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_SSH.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings");
 
-    Result = OPI_SSH.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings", "File");
 
-    Result = OPI_SSH.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLoggingSettings", "Memory");
 
@@ -753,7 +790,12 @@ EndProcedure
 Procedure SSH_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
@@ -827,7 +869,12 @@ Procedure SSH_GetLog(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     If Not OPI_SSH.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -841,13 +888,20 @@ Procedure SSH_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "ExecuteCommand", "Select"); // SKIP
 
-    Result = OPI_SSH.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLog", , LogFile);
 
-    Result = OPI_SSH.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SSH", "GetLog", "AsString", LogFile);
 
@@ -884,7 +938,12 @@ EndProcedure
 Procedure SSH_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     Host     = FunctionParameters["SSH_Host"];
     Port     = FunctionParameters["SSH_Port"];
@@ -898,7 +957,11 @@ Procedure SSH_Extended_GetLogOnConnection(FunctionParameters)
     Options.Insert("pass", Password);
 
     SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsLoginPassword", Options);
-    Connection  = OPI_SSH.CreateConnection(SSHSettings, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("set", SSHSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     If Not OPI_SSH.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -906,7 +969,10 @@ Procedure SSH_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_SSH.ExecuteCommand(Connection, "whoami");
 
-    Result = OPI_SSH.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLog", Options);
 
     // END
 

@@ -100,6 +100,10 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         Return New Structure("Error,Result", True, "Method");
     EndIf;
     
+    If MethodData["nocli"] = True Then
+        Return New Structure("Error,Result", True, "NOCLI");    
+    EndIf;
+    
     StingsArray = New Array;
     CallArray = New Array;
     ExecutionText = "";

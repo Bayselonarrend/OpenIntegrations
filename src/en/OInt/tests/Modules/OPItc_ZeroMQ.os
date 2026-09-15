@@ -173,7 +173,10 @@ Procedure ZeroMQ_CreateConnectionReq(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -181,7 +184,10 @@ Procedure ZeroMQ_CreateConnectionReq(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    Result = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
         Raise OPI_Tools.JSONString(Result);
@@ -190,8 +196,17 @@ Procedure ZeroMQ_CreateConnectionReq(FunctionParameters)
     Message = StrTemplate("ZMQ_C_REQ_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(Result, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -207,7 +222,10 @@ Procedure ZeroMQ_CreateConnectionSub(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -215,7 +233,10 @@ Procedure ZeroMQ_CreateConnectionSub(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    Result = OPI_ZeroMQ.CreateConnectionSub(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionSub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
         Raise OPI_Tools.JSONString(Result);
@@ -230,8 +251,17 @@ Procedure ZeroMQ_CreateConnectionSub(FunctionParameters)
     Message = StrTemplate("topic.ZMQ_C_SUB_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "CreateConnectionSub");
     OPI_TestDataRetrieval.ProcessCLI(Check , "ZeroMQ", "CreateConnectionSub", "Check", Message);
@@ -245,7 +275,10 @@ Procedure ZeroMQ_CreateConnectionPush(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPull(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPull", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -253,7 +286,10 @@ Procedure ZeroMQ_CreateConnectionPush(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    Result = OPI_ZeroMQ.CreateConnectionPush(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionPush", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
         Raise OPI_Tools.JSONString(Result);
@@ -262,8 +298,17 @@ Procedure ZeroMQ_CreateConnectionPush(FunctionParameters)
     Message = StrTemplate("ZMQ_C_PUSH_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(Result, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -279,7 +324,10 @@ Procedure ZeroMQ_CreateConnectionPull(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPush(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPush", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -287,7 +335,10 @@ Procedure ZeroMQ_CreateConnectionPull(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    Result = OPI_ZeroMQ.CreateConnectionPull(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionPull", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
         Raise OPI_Tools.JSONString(Result);
@@ -296,8 +347,17 @@ Procedure ZeroMQ_CreateConnectionPull(FunctionParameters)
     Message = StrTemplate("ZMQ_C_PULL_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -313,7 +373,10 @@ Procedure ZeroMQ_BindPortRep(FunctionParameters)
 
     // Host
     Port = 5555;
-    Result = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Result) Then
         Raise OPI_Tools.JSONString(Result);
@@ -321,7 +384,10 @@ Procedure ZeroMQ_BindPortRep(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -330,8 +396,17 @@ Procedure ZeroMQ_BindPortRep(FunctionParameters)
     Message = StrTemplate("ZMQ_C_REP_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(Result, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -347,7 +422,10 @@ Procedure ZeroMQ_BindPortPub(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -355,7 +433,10 @@ Procedure ZeroMQ_BindPortPub(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionSub(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionSub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -369,8 +450,17 @@ Procedure ZeroMQ_BindPortPub(FunctionParameters)
 
     Message = StrTemplate("topic.ZMQ_B_PUB_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data    = GetBinaryDataFromString(Message);
-    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "BindPortPub");
     OPI_TestDataRetrieval.ProcessCLI(Check       , "ZeroMQ", "BindPortPub", "Check", Message);
@@ -383,7 +473,10 @@ Procedure ZeroMQ_BindPortPush(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPush(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPush", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -391,7 +484,10 @@ Procedure ZeroMQ_BindPortPush(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionPull(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionPull", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -400,8 +496,17 @@ Procedure ZeroMQ_BindPortPush(FunctionParameters)
     Message = StrTemplate("ZMQ_B_PUSH_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Sending = OPI_ZeroMQ.SendData(ServerObject, Data, 3000);
-    Check   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("tout", 3000);
+
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -416,7 +521,10 @@ Procedure ZeroMQ_BindPortPull(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPull(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPull", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -424,7 +532,10 @@ Procedure ZeroMQ_BindPortPull(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionPush(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionPush", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -448,7 +559,10 @@ Procedure ZeroMQ_SendData(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -456,7 +570,10 @@ Procedure ZeroMQ_SendData(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -465,7 +582,12 @@ Procedure ZeroMQ_SendData(FunctionParameters)
     Message = StrTemplate("ZMQ_SEND_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data = GetBinaryDataFromString(Message);
 
-    Result    = OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("data", Data);
+    Options.Insert("tout", 3000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
     Receiving = OPI_ZeroMQ.ReceiveData(ServerObject, 3000); // SKIP
 
     // END
@@ -481,7 +603,10 @@ Procedure ZeroMQ_ProcessRequest(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -489,7 +614,10 @@ Procedure ZeroMQ_ProcessRequest(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -501,12 +629,30 @@ Procedure ZeroMQ_ProcessRequest(FunctionParameters)
 
     // END
 
-    SendingResult   = OPI_ZeroMQ.SendData(ClientObject, ReqData, 3000);
-    ServerRequest   = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("data", ReqData);
+    Options.Insert("tout", 3000);
+
+    SendingResult = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 3000);
+
+    ServerRequest = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
     Response = StrTemplate("ZMQ_REP_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     ResponseData    = GetBinaryDataFromString(Response);
-    ResponseSending = OPI_ZeroMQ.SendData(ServerObject, ResponseData, 3000);
-    Result          = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("data", ResponseData);
+    Options.Insert("tout", 3000);
+
+    ResponseSending = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "SendData", Options);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("tout", 3000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ServerRequest, "ZeroMQ", "ProcessRequest", "Response", Request);
     OPI_TestDataRetrieval.ProcessCLI(Result       , "ZeroMQ", "ProcessRequest", "Response", Response);
@@ -520,7 +666,10 @@ Procedure ZeroMQ_ReceiveData(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -528,7 +677,10 @@ Procedure ZeroMQ_ReceiveData(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -538,7 +690,11 @@ Procedure ZeroMQ_ReceiveData(FunctionParameters)
     Data = GetBinaryDataFromString(Message);
 
     Sending = OPI_ZeroMQ.SendData(ClientObject, Data, 3000); // SKIP
-    Result  = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 3000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -552,7 +708,10 @@ Procedure ZeroMQ_Subscribe(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortPub(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortPub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -560,7 +719,10 @@ Procedure ZeroMQ_Subscribe(FunctionParameters)
 
     // Client
     Address = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionSub(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionSub", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -570,7 +732,11 @@ Procedure ZeroMQ_Subscribe(FunctionParameters)
     Message = StrTemplate("%1ZeroMQ_SUB_%2", Prefix, Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     Data   = GetBinaryDataFromString(Message);
 
-    Result      = OPI_ZeroMQ.Subscribe(ClientObject, Prefix);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("prefix", Prefix);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "Subscribe", Options);
     OPI_Tools.Pause(1); // SKIP
     Sending     = OPI_ZeroMQ.SendData(ServerObject, Data, 3000); // SKIP
     Receiving   = OPI_ZeroMQ.ReceiveData(ClientObject, 3000); // SKIP
@@ -593,7 +759,10 @@ Procedure ZeroMQ_CloseConnection(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
@@ -602,7 +771,10 @@ Procedure ZeroMQ_CloseConnection(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(ServerObject, "ZeroMQ", "CloseConnection", "Openning"); // SKIP
 
     If OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
-        Result = OPI_ZeroMQ.CloseConnection(ServerObject);
+        Options = New Structure;
+        Options.Insert("conn", ServerObject);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CloseConnection", Options);
     EndIf;
 
     // END
@@ -615,19 +787,28 @@ Procedure ZeroMQ_IsConnectorObject(FunctionParameters)
 
     // Host
     Port = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    Result = OPI_ZeroMQ.IsConnectorObject(ServerObject);
+    Options = New Structure;
+    Options.Insert("value", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "IsConnectorObject", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "IsConnectorObject");
 
-    Result = OPI_ZeroMQ.IsConnectorObject("not-a-client");
+    Options = New Structure;
+    Options.Insert("value", "not-a-client");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "IsConnectorObject", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "IsConnectorObject", "False");
 
     If OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
@@ -639,17 +820,29 @@ EndProcedure
 Procedure ZeroMQ_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_ZeroMQ.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLoggingSettings", Options);
 
     Port         = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
     Address    = "tcp://127.0.0.1:5555";
-    Connection = OPI_ZeroMQ.CreateConnectionReq(Address, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -661,13 +854,20 @@ Procedure ZeroMQ_GetLog(FunctionParameters)
     OPI_ZeroMQ.SendData(Connection, Data, 3000);
     OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
 
-    Result = OPI_ZeroMQ.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLog", , LogFile);
 
-    Result = OPI_ZeroMQ.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLog", "AsString", LogFile);
 
     OPI_ZeroMQ.CloseConnection(Connection);
@@ -677,17 +877,29 @@ EndProcedure
 
 Procedure ZeroMQ_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_ZeroMQ.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings");
 
-    Result = OPI_ZeroMQ.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings", "File");
 
-    Result = OPI_ZeroMQ.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ZeroMQ", "GetLoggingSettings", "Memory");
 
@@ -698,13 +910,20 @@ EndProcedure
 Procedure ZeroMQ_Extended_GetTimeoutData(FunctionParameters)
 
     Port         = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    Result = OPI_ZeroMQ.ReceiveData(ServerObject, 300);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
 
     // END
 
@@ -716,14 +935,20 @@ EndProcedure
 Procedure ZeroMQ_Extended_HandleTimeoutRequest(FunctionParameters)
 
     Port         = 5555;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
     Address      = "tcp://127.0.0.1:5555";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -731,7 +956,13 @@ Procedure ZeroMQ_Extended_HandleTimeoutRequest(FunctionParameters)
 
     Request = StrTemplate("ZMQ_REQ_TO_%1", Format(CurrentDate(), "DF=yyyyMMddhhmmss"));
     ReqData = GetBinaryDataFromString(Request);
-    Result  = OPI_ZeroMQ.ProcessRequest(ClientObject, ReqData, 3000, 300);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("data", ReqData);
+    Options.Insert("treq", 3000);
+    Options.Insert("trep", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ProcessRequest", Options);
 
     // END
 
@@ -744,17 +975,29 @@ EndProcedure
 Procedure ZeroMQ_Extended_GetLogOnPortOpening(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_ZeroMQ.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLoggingSettings", Options);
     Port            = 5555;
     Address         = "tcp://127.0.0.1:5555";
 
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("port", Port);
+    Options.Insert("log", LoggingSettings);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -766,7 +1009,10 @@ Procedure ZeroMQ_Extended_GetLogOnPortOpening(FunctionParameters)
     OPI_ZeroMQ.SendData(ClientObject, Data, 3000);
     OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
 
-    Result = OPI_ZeroMQ.GetLog(ServerObject);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "GetLog", Options);
 
     // END
 
@@ -785,23 +1031,37 @@ Procedure ZeroMQ_Extended_JanxCollectionExchange(FunctionParameters)
     JanxData = OPI_TestDataRetrieval.ExecuteTestCLI("janx", "SerializeData", Options);
 
     Port         = 5560;
-    ServerObject = OPI_ZeroMQ.BindPortRep(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "BindPortRep", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
     Address      = "tcp://127.0.0.1:5560";
-    ClientObject = OPI_ZeroMQ.CreateConnectionReq(Address);
+    Options = New Structure;
+    Options.Insert("addr", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "CreateConnectionReq", Options);
 
     If Not OPI_ZeroMQ.IsConnectorObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
     EndIf;
 
     OPI_ZeroMQ.SendData(ClientObject, JanxData             , 3000);
-    ServerRequest  = OPI_ZeroMQ.ReceiveData(ServerObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ServerObject);
+    Options.Insert("tout", 3000);
+
+    ServerRequest = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
     OPI_ZeroMQ.SendData(ServerObject, ServerRequest["data"], 3000);
-    ClientResponse = OPI_ZeroMQ.ReceiveData(ClientObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("tout", 3000);
+
+    ClientResponse = OPI_TestDataRetrieval.ExecuteTestCLI("zeromq", "ReceiveData", Options);
     Options = New Structure;
     Options.Insert("data", ClientResponse);
 

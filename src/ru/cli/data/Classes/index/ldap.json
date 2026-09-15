@@ -310,11 +310,11 @@
     },
     {
      "title": "Фильтр",
-     "name": "--фильтр",
+     "name": "--filter",
      "types": "Строка",
      "description": "LDAP",
      "default": "(objectClass=*)",
-     "short": "-ф"
+     "short": "-f"
     },
     {
      "title": "Атрибуты",

@@ -195,7 +195,10 @@ Procedure WebSocket_CreateConnection(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -215,7 +218,13 @@ Procedure WebSocket_CreateConnection(FunctionParameters)
 
     EndIf;
 
-    Result = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     // END
 
@@ -248,7 +257,10 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -268,12 +280,21 @@ Procedure WebSocket_CloseConnection(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "WebSocket", "CloseConnection", "Openning, " + Postfix); // SKIP
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.CloseConnection(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CloseConnection", Options);
     Else
         Result = Connection;
     EndIf;
@@ -302,7 +323,10 @@ Procedure WebSocket_SendPing(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -322,11 +346,20 @@ Procedure WebSocket_SendPing(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
 
-        Result = OPI_WebSocket.SendPing(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendPing", Options);
 
         // Skipping all responses from the server until the last one
         While True Do
@@ -380,7 +413,10 @@ Procedure WebSocket_SendPong(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -400,10 +436,19 @@ Procedure WebSocket_SendPong(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.SendPong(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendPong", Options);
     Else
         Result = Connection;
     EndIf;
@@ -438,7 +483,10 @@ Procedure WebSocket_GetMessage(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -458,14 +506,24 @@ Procedure WebSocket_GetMessage(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
 
     If OPI_WebSocket.IsClientObject(Connection) Then
 
         // Sending a message to the ECHO server
-        Sending = OPI_WebSocket.SendTextMessage(Connection, Message);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("text", Message);
+
+        Sending = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
 
         OPI_TestDataRetrieval.ProcessCLI(Sending, "WebSocket", "GetMessage", "Sending, " + Postfix); // SKIP
 
@@ -516,7 +574,10 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -536,12 +597,22 @@ Procedure WebSocket_SendTextMessage(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     Message = "echo-text-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.SendTextMessage(Connection, Message);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("text", Message);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
     Else
         Result = Connection;
     EndIf;
@@ -590,7 +661,10 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -610,13 +684,23 @@ Procedure WebSocket_SendBinaryMessage(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     SourceLine = "binary-message-" + Format(CurrentDate(), "DF=yyyyMMddhhmmss");
     Data = GetBinaryDataFromString(SourceLine);
 
     If OPI_WebSocket.IsClientObject(Connection) Then
-        Result = OPI_WebSocket.SendBinaryMessage(Connection, Data);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("data", Data);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendBinaryMessage", Options);
     Else
         Result = Connection;
     EndIf;
@@ -646,7 +730,10 @@ EndProcedure
 
 Procedure WebSocket_GetTlsSettings(FunctionParameters)
 
-    Result = OPI_WebSocket.GetTlsSettings(True);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
 
     // END
 
@@ -665,7 +752,14 @@ Procedure WebSocket_GetProxySettings(FunctionParameters)
     ProxyLogin    = FunctionParameters["Proxy_User"];
     ProxyPassword = FunctionParameters["Proxy_Password"];
 
-    Result = OPI_WebSocket.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+    Options = New Structure;
+    Options.Insert("addr", ProxyAddress);
+    Options.Insert("port", ProxyPort);
+    Options.Insert("type", ProxyType);
+    Options.Insert("login", ProxyLogin);
+    Options.Insert("pass", ProxyPassword);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetProxySettings", Options);
 
     // END
 
@@ -688,7 +782,10 @@ Procedure WebSocket_GetClientLog(FunctionParameters)
     NeedTls   = FunctionParameters["TLS"]; // SKIP
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -709,21 +806,40 @@ Procedure WebSocket_GetClientLog(FunctionParameters)
     EndIf;
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
-    Connection      = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Undefined, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Неопределено);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_WebSocket.IsClientObject(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
     EndIf;
 
-    Result = OPI_WebSocket.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("srv", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", , LogFile);
 
-    Result = OPI_WebSocket.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("srv", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", "AsString", LogFile);
 
     OPI_WebSocket.CloseConnection(Connection);
@@ -750,7 +866,10 @@ Procedure WebSocket_IsClientObject(FunctionParameters)
     Headers.Insert("X-Trace-Id", "OPI-WS-TEST");
 
     If NeedTls Then
-        TLSSettings = OPI_WebSocket.GetTlsSettings(True);
+        Options = New Structure;
+        Options.Insert("trust", Истина);
+
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetTlsSettings", Options);
     EndIf;
 
     If NeedProxy Then
@@ -770,14 +889,26 @@ Procedure WebSocket_IsClientObject(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_WebSocket.CreateConnection(Address, TLSSettings, ProxySettings, Headers);
-    Result     = OPI_WebSocket.IsClientObject(Connection);
+    Options = New Structure;
+    Options.Insert("address", Address);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("proxy", ProxySettings);
+    Options.Insert("headers", Headers);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "IsClientObject", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "IsClientObject", Postfix);
 
-    Result = OPI_WebSocket.IsClientObject("not-a-client");
+    Options = New Structure;
+    Options.Insert("value", "not-a-client");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "IsClientObject", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "IsClientObject", "False, " + Postfix);
 
     If OPI_WebSocket.IsClientObject(Result) Then
@@ -791,7 +922,11 @@ Procedure WebSocket_StartServer(FunctionParameters)
     Port     = 9894;
     PoolSize = 10;
 
-    Result = OPI_WebSocket.StartServer(Port, PoolSize);
+    Options = New Structure;
+    Options.Insert("port", Port);
+    Options.Insert("psize", PoolSize);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // END
 
@@ -804,20 +939,32 @@ EndProcedure
 Procedure WebSocket_StopServer(FunctionParameters)
 
     Port         = 9894;
-    ServerObject = OPI_WebSocket.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
 
-    Result = OPI_WebSocket.StopServer(ServerObject);
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
+
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StopServer", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "StopServer");
 
-    ListResult = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    ListResult = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ListResult, "WebSocket", "StopServer", "List");
 
     Address      = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(Address);
+    Options = New Structure;
+    Options.Insert("address", Address);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ClientObject, "WebSocket", "StopServer", "Connection");
 
@@ -827,11 +974,17 @@ Procedure WebSocket_GetNextConnectionData(FunctionParameters)
 
     // Server start
     LaunchPort = 9894;
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -842,7 +995,11 @@ Procedure WebSocket_GetNextConnectionData(FunctionParameters)
     EndIf;
 
     // Server receive
-    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
 
     // END
 
@@ -853,7 +1010,11 @@ Procedure WebSocket_GetNextConnectionData(FunctionParameters)
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
     OPI_WebSocket.CloseConnection(ClientObject);
 
-    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetNextConnectionData", "Closed", Message);
 
@@ -865,11 +1026,17 @@ Procedure WebSocket_GetConnectionData(FunctionParameters)
 
     // Server start
     LaunchPort = 9894;
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -878,7 +1045,10 @@ Procedure WebSocket_GetConnectionData(FunctionParameters)
     OPI_Tools.Pause(1); // SKIP
 
     // Getting a list of active connections on the server
-    ConnectionList = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    ConnectionList = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     If Not ConnectionList["result"] Then
         Raise OPI_Tools.JSONString(ConnectionList);
@@ -908,12 +1078,20 @@ Procedure WebSocket_GetConnectionData(FunctionParameters)
     OPI_WebSocket.SendTextMessage(ClientObject, CurrentMessage);
     OPI_WebSocket.CloseConnection(ClientObject);
 
-    Result = OPI_WebSocket.GetConnectionData(ServerObject, ConnectionID, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("tout", 5000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionData", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetConnectionData", "Closed", CurrentMessage);
 
     OPI_WebSocket.GetConnectionData(ServerObject, ConnectionID, 5000);
-    Result = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetConnectionData", "EmptyList");
 
@@ -925,11 +1103,17 @@ Procedure WebSocket_SendData(FunctionParameters)
 
     // Server start
     LaunchPort = 9894;
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -940,17 +1124,30 @@ Procedure WebSocket_SendData(FunctionParameters)
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
 
     // Receiving the next connection on the server and returning a response
-    NextMessage = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    NextMessage = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
     ConnectionID = NextMessage["connectionId"];
 
     ServerResponse = "Response from server!";
-    Result         = OPI_WebSocket.SendData(ServerObject, ConnectionID, ServerResponse);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("data", ServerResponse);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendData", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "SendData");
 
-    ClientResponse = OPI_WebSocket.GetMessage(ClientObject, 3000);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("tout", 3000);
+
+    ClientResponse = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetMessage", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(ClientResponse, "WebSocket", "SendData", "Check", ServerResponse);
 
@@ -963,11 +1160,17 @@ Procedure WebSocket_CloseIncomingConnection(FunctionParameters)
 
     // Server start
     LaunchPort = 9894;
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -978,21 +1181,37 @@ Procedure WebSocket_CloseIncomingConnection(FunctionParameters)
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
 
     // Receiving and closing connection on the server
-    FirstMessage = OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 5000);
+
+    FirstMessage = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
     ConnectionID = FirstMessage["connectionId"];
 
-    Result = OPI_WebSocket.CloseIncomingConnection(ServerObject, ConnectionID, True);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("id", ConnectionID);
+    Options.Insert("rm", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CloseIncomingConnection", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "CloseIncomingConnection");
 
-    Result = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "CloseIncomingConnection", "EmptyList");
 
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
-    Result = OPI_WebSocket.SendTextMessage(ClientObject, Message);
+    Options = New Structure;
+    Options.Insert("conn", ClientObject);
+    Options.Insert("text", Message);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "SendTextMessage", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "CloseIncomingConnection", "SendingToClosed");
 
@@ -1004,13 +1223,22 @@ Procedure WebSocket_GetConnectionList(FunctionParameters)
 
     // Server start
     LaunchPort = 9894;
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Creating multiple client connections
     ConnectionAddress = "ws://127.0.0.1:9894";
 
-    Client1 = OPI_WebSocket.CreateConnection(ConnectionAddress);
-    Client2 = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client1 = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client2 = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(Client1) Then
         Raise OPI_Tools.JSONString(Client1);
@@ -1021,7 +1249,10 @@ Procedure WebSocket_GetConnectionList(FunctionParameters)
     EndIf;
 
     // Getting a list of active connections on the server
-    Result = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     // END
 
@@ -1030,15 +1261,24 @@ Procedure WebSocket_GetConnectionList(FunctionParameters)
     OPI_WebSocket.CloseConnection(Client1);
     OPI_WebSocket.CloseConnection(Client2);
 
-    Client3 = OPI_WebSocket.CreateConnection(ConnectionAddress);
-    Client4 = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client3 = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    Client4 = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     OPI_WebSocket.SendTextMessage(Client3, "Yo");
 
     OPI_WebSocket.CloseConnection(Client3);
     OPI_WebSocket.CloseConnection(Client4);
 
-    Result = OPI_WebSocket.GetConnectionList(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetConnectionList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetConnectionList", "Closing");
 
@@ -1049,9 +1289,15 @@ EndProcedure
 Procedure WebSocket_IsServerObject(FunctionParameters)
 
     Port = 9894;
-    Host = OPI_WebSocket.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
 
-    Result = OPI_WebSocket.IsServerObject(Host);
+    Host = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
+
+    Options = New Structure;
+    Options.Insert("value", Host);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "IsServerObject", Options);
 
     // END
 
@@ -1059,7 +1305,10 @@ Procedure WebSocket_IsServerObject(FunctionParameters)
 
     OPI_WebSocket.StopServer(Host);
 
-    Result = OPI_WebSocket.IsServerObject("Not a server");
+    Options = New Structure;
+    Options.Insert("value", "Not a server");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "IsServerObject", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "IsServerObject", "False");
 
@@ -1070,12 +1319,24 @@ Procedure WebSocket_GetLog(FunctionParameters)
     // Server start
     LaunchPort = 9894;
     LogFile = GetTempFileName("txt");
-    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
-    ServerObject = OPI_WebSocket.StartServer(LaunchPort, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("port", LaunchPort);
+    Options.Insert("log", LoggingSettings);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     // Client connect to server
     ConnectionAddress = "ws://127.0.0.1:9894";
-    ClientObject = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
     OPI_Tools.Pause(1); // SKIP
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
@@ -1083,13 +1344,20 @@ Procedure WebSocket_GetLog(FunctionParameters)
     EndIf;
 
     // Server log retrieval
-    Result = OPI_WebSocket.GetLog(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", , LogFile);
 
-    Result = OPI_WebSocket.GetLog(ServerObject, True);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLog", "AsString", LogFile);
 
     OPI_WebSocket.CloseConnection(ClientObject);
@@ -1099,17 +1367,29 @@ EndProcedure
 
 Procedure WebSocket_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_WebSocket.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLoggingSettings");
 
-    Result = OPI_WebSocket.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLoggingSettings", "File");
 
-    Result = OPI_WebSocket.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "WebSocket", "GetLoggingSettings", "Memory");
 
@@ -1120,13 +1400,20 @@ EndProcedure
 Procedure WebSocket_Extended_GetDataOfNextTimeout(FunctionParameters)
 
     Port         = 9893;
-    ServerObject = OPI_WebSocket.StartServer(Port);
+    Options = New Structure;
+    Options.Insert("port", Port);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     If Not OPI_WebSocket.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
-    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 300);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
 
     // END
 
@@ -1139,7 +1426,11 @@ Procedure WebSocket_Extended_OperationWithoutStart(FunctionParameters)
 
     ServerObject = OPI_AddIns.GetAddIn(OPI_WebSocket.AddInName());
 
-    Result = OPI_WebSocket.GetNextConnectionData(ServerObject, 300);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+    Options.Insert("tout", 300);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetNextConnectionData", Options);
 
     // END
 
@@ -1151,15 +1442,27 @@ Procedure WebSocket_Extended_GetLogOnServerStart(FunctionParameters)
 
     Port            = 9893;
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_WebSocket.GetLoggingSettings(True, 100, LogFile);
-    ServerObject    = OPI_WebSocket.StartServer(Port, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLoggingSettings", Options);
+    Options = New Structure;
+    Options.Insert("port", Port);
+    Options.Insert("log", LoggingSettings);
+
+    ServerObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "StartServer", Options);
 
     If Not OPI_WebSocket.IsServerObject(ServerObject) Then
         Raise OPI_Tools.JSONString(ServerObject);
     EndIf;
 
     ConnectionAddress = "ws://127.0.0.1:9893";
-    ClientObject      = OPI_WebSocket.CreateConnection(ConnectionAddress);
+    Options = New Structure;
+    Options.Insert("address", ConnectionAddress);
+
+    ClientObject = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "CreateConnection", Options);
 
     If Not OPI_WebSocket.IsClientObject(ClientObject) Then
         Raise OPI_Tools.JSONString(ClientObject);
@@ -1169,7 +1472,10 @@ Procedure WebSocket_Extended_GetLogOnServerStart(FunctionParameters)
     OPI_WebSocket.SendTextMessage(ClientObject, Message);
     OPI_WebSocket.GetNextConnectionData(ServerObject, 5000);
 
-    Result = OPI_WebSocket.GetLog(ServerObject);
+    Options = New Structure;
+    Options.Insert("srv", ServerObject);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ws", "GetLog", Options);
 
     // END
 

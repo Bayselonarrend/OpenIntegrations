@@ -236,13 +236,19 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
-    Result = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateConnection");
 
-    Result = OPI_MongoDB.CloseConnection(Result);
+    Options = New Structure;
+    Options.Insert("dbc", Result);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CloseConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "CreateConnection", "Closing");
 
@@ -267,8 +273,14 @@ Procedure MongoDB_CloseConnection(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
-    Result     = OPI_MongoDB.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CloseConnection", Options);
 
     // END
 
@@ -295,8 +307,14 @@ Procedure MongoDB_IsConnector(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
-    Result     = OPI_MongoDB.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "IsConnector", Options);
 
     // END
 
@@ -324,7 +342,10 @@ Procedure MongoDB_ExecuteCommand(FunctionParameters)
     Command = "listDatabases";
     Data    = New Structure("nameOnly", True);
 
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "MongoDB", "ExecuteCommand", "Connection"); // SKIP
 
@@ -343,17 +364,29 @@ EndProcedure
 
 Procedure MongoDB_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_MongoDB.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings");
 
-    Result = OPI_MongoDB.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings", "File");
 
-    Result = OPI_MongoDB.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLoggingSettings", "Memory");
 
@@ -362,7 +395,12 @@ EndProcedure
 Procedure MongoDB_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_MongoDB.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLoggingSettings", Options);
 
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
@@ -379,7 +417,11 @@ Procedure MongoDB_GetLog(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     If Not OPI_MongoDB.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -394,13 +436,20 @@ Procedure MongoDB_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "ExecuteCommand", "Select"); // SKIP
 
-    Result = OPI_MongoDB.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLog", , LogFile);
 
-    Result = OPI_MongoDB.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetLog", "AsString", LogFile);
 
     OPI_MongoDB.CloseConnection(Connection);
@@ -475,7 +524,12 @@ EndProcedure
 Procedure MongoDB_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_MongoDB.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLoggingSettings", Options);
 
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
@@ -492,7 +546,11 @@ Procedure MongoDB_Extended_GetLogOnConnection(FunctionParameters)
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     If Not OPI_MongoDB.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -500,7 +558,10 @@ Procedure MongoDB_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_MongoDB.ExecuteCommand(Connection, "listDatabases", , , New Structure("nameOnly", True));
 
-    Result = OPI_MongoDB.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetLog", Options);
 
     // END
 
@@ -529,7 +590,10 @@ Procedure MongoDB_GetDatabase(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Base = "test_db";
 
@@ -561,7 +625,10 @@ Procedure MongoDB_GetListOfBases(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -591,7 +658,10 @@ Procedure MongoDB_DeleteDatabase(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -621,7 +691,10 @@ Procedure MongoDB_CreateCollection(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Name = "test_collection";
     Base = "test_database";
@@ -688,7 +761,10 @@ Procedure MongoDB_DeleteCollection(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "test_collection";
     Base       = "test_database";
@@ -722,7 +798,10 @@ Procedure MongoDB_GetCollectionList(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Base = "test_database";
 
@@ -755,7 +834,10 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
     DocsArray  = New Array;
@@ -915,7 +997,10 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
 
@@ -1036,7 +1121,10 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
 
@@ -1044,7 +1132,15 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort       = New Structure("doubleField", -1);
     Parameters = New Structure("limit,batchSize", 2, 1);
 
-    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("db", Base);
+    Options.Insert("query", Filter);
+    Options.Insert("sort", Sort);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
 
     // END
 
@@ -1055,7 +1151,15 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort = New Structure("price", 1);
     Parameters = New Structure("limit,batchSize", 8, 3);
 
-    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("db", Base);
+    Options.Insert("query", Filter);
+    Options.Insert("sort", Sort);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCursor", 1);
 
@@ -1064,7 +1168,15 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort = New Structure("rating", -1);
     Parameters = New Structure("batchSize", 2);
 
-    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("db", Base);
+    Options.Insert("query", Filter);
+    Options.Insert("sort", Sort);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MongoDB", "GetCursor", 2);
 
@@ -1087,7 +1199,10 @@ Procedure MongoDB_GetDocumentBatch(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
 
@@ -1095,7 +1210,15 @@ Procedure MongoDB_GetDocumentBatch(FunctionParameters)
     Sort       = New Structure("doubleField", -1);
     Parameters = New Structure("limit,batchSize", 2, 1);
 
-    Cursor = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("db", Base);
+    Options.Insert("query", Filter);
+    Options.Insert("sort", Sort);
+    Options.Insert("params", Parameters);
+
+    Cursor = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
 
     If Not Cursor["result"] Then
         Raise Cursor["error"];
@@ -1145,7 +1268,10 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
 
@@ -1585,7 +1711,10 @@ Procedure MongoDB_DeleteDocuments(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Collection = "new_collection";
 
@@ -1636,7 +1765,10 @@ Procedure MongoDB_CreateUser(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     RoleArray = New Array;
     RoleArray.Add("read");
@@ -1688,7 +1820,10 @@ Procedure MongoDB_UpdateUser(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     RoleArray = New Array;
     RoleArray.Add("readWrite");
@@ -1741,7 +1876,10 @@ Procedure MongoDB_DeleteUser(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     UserName = "newuser";
 
@@ -1784,7 +1922,10 @@ Procedure MongoDB_GetUsers(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     UserName = "newuser";
 
@@ -1833,7 +1974,10 @@ Procedure MongoDB_GetDatabaseUsers(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Options = New Structure;
     Options.Insert("dbc", Connection);
@@ -1864,7 +2008,10 @@ Procedure MongoDB_CreateRole(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     RoleArray = New Array;
     RoleArray.Add("read");
@@ -1932,7 +2079,10 @@ Procedure MongoDB_UpdateRole(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     RoleArray = New Array;
     RoleArray.Add("read");
@@ -1987,7 +2137,10 @@ Procedure MongoDB_DeleteRole(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     RoleName = "newrole";
 
@@ -2052,7 +2205,10 @@ Procedure MongoDB_GetRoles(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     Role = New Structure("role,db", "newrole", Base);
 
@@ -2087,7 +2243,10 @@ Procedure MongoDB_GrantRoles(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     User = "bayselonarrend";
     Role = New Structure("role,db", "newrole", Base);
@@ -2123,7 +2282,10 @@ Procedure MongoDB_RevokeRoles(FunctionParameters)
     Options.Insert("params", ConnectionParams);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateConnection", Options);
 
     User = "bayselonarrend";
     Role = New Structure("role,db", "newrole", Base);

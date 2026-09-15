@@ -448,7 +448,10 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "ClickHouse", "CreateGRPCConnection", "Openning"); // SKIP
 
@@ -847,7 +850,10 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
 
     Result = OPI_ClickHouse.OpenGRPCStream(Connection); // <---
 
@@ -896,8 +902,16 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
 
     EndDo;
 
-    Completion   = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
-    FinalMessage = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Completion = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CompleteGRPCSending", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    FinalMessage = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCMessage", Options);
 
     OPI_GRPC.CloseConnection(Connection);
 
@@ -906,7 +920,10 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     OPI_TestDataRetrieval.ProcessCLI(Result       , "ClickHouse", "OpenGRPCStream");
     OPI_TestDataRetrieval.ProcessCLI(FinalMessage , "ClickHouse", "OpenGRPCStream", "Final");
 
-    Connection = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
 
     SelectionText   = "SELECT * FROM events_stream_test ORDER BY id";
     Options = New Structure;
@@ -941,9 +958,15 @@ Procedure ClickHouse_SendGRPCMessage(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
 
-    Result = OPI_ClickHouse.OpenGRPCStream(Connection);
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "OpenGRPCStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -994,8 +1017,16 @@ Procedure ClickHouse_SendGRPCMessage(FunctionParameters)
 
     // END
 
-    Completion   = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
-    FinalMessage = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Completion = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CompleteGRPCSending", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    FinalMessage = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCMessage", Options);
 
     OPI_GRPC.CloseConnection(Connection);
 
@@ -1016,9 +1047,15 @@ Procedure ClickHouse_SendGRPCData(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
 
-    Result = OPI_ClickHouse.OpenGRPCStream(Connection);
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "OpenGRPCStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -1069,8 +1106,16 @@ Procedure ClickHouse_SendGRPCData(FunctionParameters)
 
     // END
 
-    Completion   = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
-    FinalMessage = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Completion = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CompleteGRPCSending", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    FinalMessage = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCMessage", Options);
 
     OPI_GRPC.CloseConnection(Connection);
 
@@ -1091,10 +1136,17 @@ Procedure ClickHouse_GetGRPCMessage(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
     Timeout            = 10000;
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("tout", Timeout);
+
+    OpeningResult = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "OpenGRPCStream", Options);
 
     If Not OpeningResult["result"] Then
         Raise OpeningResult["error"];
@@ -1109,7 +1161,12 @@ Procedure ClickHouse_GetGRPCMessage(FunctionParameters)
 
     Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
-    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "SendGRPCMessage", Options);
     OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
 
     Data = "";
@@ -1158,10 +1215,17 @@ Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
     Timeout            = 10000;
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("tout", Timeout);
+
+    OpeningResult = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "OpenGRPCStream", Options);
 
     If Not OpeningResult["result"] Then
         Raise OpeningResult["error"];
@@ -1176,14 +1240,28 @@ Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
 
     Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
 
-    Sending = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
-    Result  = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+    Options.Insert("req", Request);
+
+    Sending = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "SendGRPCMessage", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CompleteGRPCSending", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CompleteGRPCSending");
 
-    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "SendGRPCMessage", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "ClickHouse", "CompleteGRPCSending", "Sending");
 
@@ -1204,10 +1282,17 @@ Procedure ClickHouse_CloseGRPCStream(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
     Timeout            = 10000;
 
-    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("tout", Timeout);
+
+    OpeningResult = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "OpenGRPCStream", Options);
 
     If Not OpeningResult["result"] Then
         Raise OpeningResult["error"];
@@ -1215,7 +1300,11 @@ Procedure ClickHouse_CloseGRPCStream(FunctionParameters)
         StreamID = OpeningResult["streamId"];
     EndIf;
 
-    Result = OPI_ClickHouse.CloseGRPCStream(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CloseGRPCStream", Options);
 
     // END
 
@@ -1239,7 +1328,10 @@ Procedure ClickHouse_ProcessGRPCSending(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
 
     QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
     DataFormat  = "JSON";
@@ -1297,7 +1389,10 @@ Procedure ClickHouse_ProcessGRPCReceiving(FunctionParameters)
     Options.Insert("auth", Authorization);
 
     ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
-    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+    Options = New Structure;
+    Options.Insert("set", ConnectionSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "CreateGRPCConnection", Options);
 
     SelectionText = "SELECT * FROM events_stream_test ORDER BY id";
     Options = New Structure;

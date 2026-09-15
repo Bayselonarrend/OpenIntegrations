@@ -184,7 +184,10 @@ Procedure LDAP_CreateConnection(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Result           = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
 
     // END
 
@@ -206,8 +209,14 @@ Procedure LDAP_CloseConnection(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
-    Result           = OPI_LDAP.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CloseConnection", Options);
 
     // END
 
@@ -229,8 +238,14 @@ Procedure LDAP_IsConnector(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
-    Result           = OPI_LDAP.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "IsConnector", Options);
 
     // END
 
@@ -252,7 +267,10 @@ Procedure LDAP_GetConnectionConfiguration(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     Options = New Structure;
     Options.Insert("conn", Connection);
 
@@ -280,17 +298,29 @@ EndProcedure
 
 Procedure LDAP_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_LDAP.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "GetLoggingSettings");
 
-    Result = OPI_LDAP.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "GetLoggingSettings", "File");
 
-    Result = OPI_LDAP.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "GetLoggingSettings", "Memory");
 
@@ -299,7 +329,12 @@ EndProcedure
 Procedure LDAP_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_LDAP.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLoggingSettings", Options);
 
     URL      = FunctionParameters["LDAP_URL"];
     BindDN = "cn=admin,dc=example,dc=org";
@@ -313,7 +348,11 @@ Procedure LDAP_GetLog(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
 
     If Not OPI_LDAP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -328,13 +367,20 @@ Procedure LDAP_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "PerformSearch", "Select"); // SKIP
 
-    Result = OPI_LDAP.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "GetLog", , LogFile);
 
-    Result = OPI_LDAP.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "LDAP", "GetLog", "AsString", LogFile);
 
@@ -354,7 +400,10 @@ Procedure LDAP_PerformSearch(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     Base = "dc=example,dc=org";
     Filter = "(objectClass=*)";
 
@@ -394,7 +443,10 @@ Procedure LDAP_Add(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     DN = "cn=OPI Test User,dc=example,dc=org";
 
     OPI_LDAP.Delete(Connection, DN); // SKIP
@@ -457,7 +509,10 @@ Procedure LDAP_Change(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     DN = "cn=OPI Test User,dc=example,dc=org";
 
     EmailValues = New Array;
@@ -508,7 +563,10 @@ Procedure LDAP_Delete(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     DN = "cn=OPI Test User,dc=example,dc=org";
 
     Options = New Structure;
@@ -546,7 +604,10 @@ Procedure LDAP_Compare(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
     DN = "cn=OPI Test User,dc=example,dc=org";
     Attribute        = "mail";
     Value            = "test@example.org";
@@ -604,7 +665,12 @@ EndProcedure
 Procedure LDAP_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_LDAP.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLoggingSettings", Options);
 
     URL      = FunctionParameters["LDAP_URL"];
     BindDN = "cn=admin,dc=example,dc=org";
@@ -618,7 +684,11 @@ Procedure LDAP_Extended_GetLogOnConnection(FunctionParameters)
     Options.Insert("tout", Timeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "FormConnectionParameters", Options);
-    Connection       = OPI_LDAP.CreateConnection(ConnectionParams, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "CreateConnection", Options);
 
     If Not OPI_LDAP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -626,7 +696,10 @@ Procedure LDAP_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_LDAP.PerformSearch(Connection, "dc=example,dc=org");
 
-    Result = OPI_LDAP.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ldap", "GetLog", Options);
 
     // END
 

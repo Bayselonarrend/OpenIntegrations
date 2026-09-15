@@ -170,13 +170,19 @@ EndProcedure
 
 Procedure Lua_CreateVM()
 
-    Result = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CreateVM");
 
-    Result = OPI_Lua.CreateVM("LuaJIT");
+    Options = New Structure;
+    Options.Insert("ver", "LuaJIT");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "CreateVM", "LuaJIT");
 
@@ -184,14 +190,20 @@ EndProcedure
 
 Procedure Lua_Restart()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.AttachPackageFromString(Lua, "tmp_pkg", "local M = {} function M.ping() return ""pong"" end return M"); // SKIP
     OPI_Lua.Restart(Lua);
 
     // END
 
-    Result = OPI_Lua.GetPackagesList(Lua);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetPackagesList", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "Restart");
 
@@ -199,15 +211,24 @@ EndProcedure
 
 Procedure Lua_IsVM()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
 
-    Result = OPI_Lua.IsVM(Lua);
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
+
+    Options = New Structure;
+    Options.Insert("value", Lua);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "IsVM", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "IsVM");
 
-    Result = OPI_Lua.IsVM("not a vm");
+    Options = New Structure;
+    Options.Insert("value", "not a vm");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "IsVM", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "IsVM", "False");
 
@@ -215,7 +236,11 @@ EndProcedure
 
 Procedure Lua_ExecuteCodeFromString()
 
-    Result = OPI_Lua.ExecuteCodeFromString("Lua54", "return 42");
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", "return 42");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteCodeFromString", Options);
 
     // END
 
@@ -228,7 +253,11 @@ Procedure Lua_ExecuteCodeFromFile()
     ScriptFile = GetTempFileName("lua");
     GetBinaryDataFromString("return 7").Write(ScriptFile);
 
-    Result = OPI_Lua.ExecuteCodeFromFile("Lua54", ScriptFile);
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("path", ScriptFile);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteCodeFromFile", Options);
 
     // END
 
@@ -240,7 +269,10 @@ EndProcedure
 
 Procedure Lua_CallFunction()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.ExecuteCodeFromString(Lua, "function add(a, b) return a + b end");
 
@@ -248,7 +280,12 @@ Procedure Lua_CallFunction()
     Parameters.Add(1);
     Parameters.Add(2);
 
-    Result = OPI_Lua.CallFunction(Lua, "add", Parameters);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("func", "add");
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
 
     // END
 
@@ -354,17 +391,29 @@ EndProcedure
 
 Procedure Lua_GetLoggingSettings()
 
-    Result = OPI_Lua.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetLoggingSettings");
 
-    Result = OPI_Lua.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetLoggingSettings", "File");
 
-    Result = OPI_Lua.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetLoggingSettings", "Memory");
 
@@ -373,19 +422,35 @@ EndProcedure
 Procedure Lua_GetLog()
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_Lua.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
 
-    Lua = OPI_Lua.CreateVM("Lua54", LoggingSettings);
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLoggingSettings", Options);
+
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+    Options.Insert("log", LoggingSettings);
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.ExecuteCodeFromString(Lua, "return 1");
 
-    Result = OPI_Lua.GetLog(Lua);
+    Options = New Structure;
+    Options.Insert("vm", Lua);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetLog", , LogFile);
 
-    Result = OPI_Lua.GetLog(Lua, True);
+    Options = New Structure;
+    Options.Insert("vm", Lua);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "GetLog", "AsString", LogFile);
 
@@ -431,7 +496,11 @@ Procedure Lua_ExecuteBytecode()
     Options.Insert("code", "return 11");
 
     Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromString", Options);
-    Result   = OPI_Lua.ExecuteBytecode("Lua54", Bytecode);
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("code", Bytecode);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteBytecode", Options);
 
     // END
 
@@ -452,7 +521,11 @@ Procedure Lua_ExecuteBytecodeFromFile()
     Bytecode = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CompileCodeFromFile", Options);
     Bytecode.Write(BytecodeFile);
 
-    Result = OPI_Lua.ExecuteBytecodeFromFile("Lua54", BytecodeFile);
+    Options = New Structure;
+    Options.Insert("lua", "Lua54");
+    Options.Insert("path", BytecodeFile);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "ExecuteBytecodeFromFile", Options);
 
     // END
 
@@ -594,13 +667,20 @@ EndProcedure
 
 Procedure Lua_SetGlobalVariable()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     Original = 99;
 
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
 
-    Result = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
 
     // END
 
@@ -608,38 +688,65 @@ Procedure Lua_SetGlobalVariable()
 
     Original = "lua-text";
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
-    Result   = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "SetGlobalVariable", "String", Original);
 
     Original = True;
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
-    Result   = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "SetGlobalVariable", "Boolean", Original);
 
     Original = GetBinaryDataFromString("binary-payload", "UTF-8");
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
-    Result   = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "SetGlobalVariable", "BinaryOne", Original);
 
     Original = OPI_TestDataRetrieval.GetJanxTestCollection("LuaComplexData");
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
-    Result   = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "SetGlobalVariable", "ComplexData", Original);
 
     Original = OPI_TestDataRetrieval.GetJanxTestCollection("LuaMixedArray");
     OPI_Lua.SetGlobalVariable(Lua, "test_var", Original);
-    Result   = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "Lua", "SetGlobalVariable", "MixedArray", Original);
 
 EndProcedure
 
 Procedure Lua_GetGlobalVariable()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.SetGlobalVariable(Lua, "test_var", 99);
 
-    Result = OPI_Lua.GetGlobalVariable(Lua, "test_var");
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("name", "test_var");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetGlobalVariable", Options);
 
     // END
 
@@ -649,7 +756,10 @@ EndProcedure
 
 Procedure Lua_AttachPackageFromString()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.AttachPackageFromString(Lua, "calc", "local M = {} function M.double(x) return x * 2 end return M");
 
@@ -658,7 +768,12 @@ Procedure Lua_AttachPackageFromString()
     Parameters = New Array;
     Parameters.Add(5);
 
-    Result = OPI_Lua.CallFunction(Lua, "calc.double", Parameters);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("func", "calc.double");
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
 
     // END
 
@@ -671,7 +786,10 @@ Procedure Lua_AttachPackageFromFile()
     PackageFile = GetTempFileName("lua");
     GetBinaryDataFromString("local M = {} function M.triple(x) return x * 3 end return M").Write(PackageFile);
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.AttachPackageFromFile(Lua, "calc_file", PackageFile);
 
@@ -680,7 +798,12 @@ Procedure Lua_AttachPackageFromFile()
     Parameters = New Array;
     Parameters.Add(4);
 
-    Result = OPI_Lua.CallFunction(Lua, "calc_file.triple", Parameters);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("func", "calc_file.triple");
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
 
     // END
 
@@ -692,12 +815,18 @@ EndProcedure
 
 Procedure Lua_GetPackagesList()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.AttachPackageFromString(Lua, "alpha", "local M = {} function M.one() return 1 end return M");
     OPI_Lua.AttachPackageFromString(Lua, "beta" , "local M = {} function M.two() return 2 end return M");
 
-    Result = OPI_Lua.GetPackagesList(Lua);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "GetPackagesList", Options);
 
     // END
 
@@ -720,7 +849,10 @@ EndProcedure
 
 Procedure Lua_Extended_GetLogWithoutInitialization()
 
-    AddIn  = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    AddIn = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
     Result = OPI_AddIns.DesrializeJanx(AddIn.GetLogs(10));
 
     // END
@@ -734,7 +866,11 @@ Procedure Lua_Extended_GetLogOnExecution()
     LogFile         = GetTempFileName("txt");
     LoggingSettings = OPI_AddIns.GetLoggingSettings(True, 100, LogFile);
 
-    Lua = OPI_Lua.CreateVM("Lua54", LoggingSettings);
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+    Options.Insert("log", LoggingSettings);
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.ExecuteCodeFromString(Lua, "return 1");
 
@@ -748,7 +884,10 @@ EndProcedure
 
 Procedure Lua_Extended_PassComplexData()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.ExecuteCodeFromString(Lua, "function echo(v) return v end");
 
@@ -757,7 +896,12 @@ Procedure Lua_Extended_PassComplexData()
     Parameters = New Array;
     Parameters.Add(Original);
 
-    Result = OPI_Lua.CallFunction(Lua, "echo", Parameters);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("func", "echo");
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
 
     // END
 
@@ -767,7 +911,10 @@ EndProcedure
 
 Procedure Lua_Extended_PassArrayOfMixedTypes()
 
-    Lua = OPI_Lua.CreateVM("Lua54");
+    Options = New Structure;
+    Options.Insert("ver", "Lua54");
+
+    Lua = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CreateVM", Options);
 
     OPI_Lua.ExecuteCodeFromString(Lua, "function echo(v) return v end");
 
@@ -776,7 +923,12 @@ Procedure Lua_Extended_PassArrayOfMixedTypes()
     Parameters = New Array;
     Parameters.Add(Original);
 
-    Result = OPI_Lua.CallFunction(Lua, "echo", Parameters);
+    Options = New Structure;
+    Options.Insert("lua", Lua);
+    Options.Insert("func", "echo");
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("lua", "CallFunction", Options);
 
     // END
 

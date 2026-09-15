@@ -199,7 +199,11 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
-    Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     // END
 
@@ -224,8 +228,15 @@ Procedure MSSQL_CloseConnection(FunctionParameters)
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
-    Result     = OPI_MSSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CloseConnection", Options);
 
     // END
 
@@ -252,8 +263,15 @@ Procedure MSSQL_IsConnector(FunctionParameters)
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
-    Result     = OPI_MSSQL.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "IsConnector", Options);
 
     // END
 
@@ -285,7 +303,11 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     Options.Insert("pass", Password);
 
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
-    Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     OPI_MSSQL.DeleteTable("users"     , Connection); // SKIP
     OPI_MSSQL.DeleteTable("test_data" , Connection); // SKIP
@@ -371,7 +393,10 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "ExecuteSQLQuery", "File"); // SKIP
 
-    Closing = OPI_MSSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CloseConnection", Options);
 
     // END
 
@@ -394,17 +419,29 @@ EndProcedure
 
 Procedure MSSQL_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_MSSQL.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings");
 
-    Result = OPI_MSSQL.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings", "File");
 
-    Result = OPI_MSSQL.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLoggingSettings", "Memory");
 
@@ -413,7 +450,12 @@ EndProcedure
 Procedure MSSQL_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_MSSQL.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLoggingSettings", Options);
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "SA";
@@ -430,7 +472,12 @@ Procedure MSSQL_GetLog(FunctionParameters)
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     If Not OPI_MSSQL.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -444,13 +491,20 @@ Procedure MSSQL_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "ExecuteSQLQuery", "Select"); // SKIP
 
-    Result = OPI_MSSQL.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLog", , LogFile);
 
-    Result = OPI_MSSQL.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "GetLog", "AsString", LogFile);
 
     OPI_MSSQL.CloseConnection(Connection);
@@ -528,7 +582,12 @@ EndProcedure
 Procedure MSSQL_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_MSSQL.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLoggingSettings", Options);
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "SA";
@@ -545,7 +604,12 @@ Procedure MSSQL_Extended_GetLogOnConnection(FunctionParameters)
 
     TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     If Not OPI_MSSQL.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -553,7 +617,10 @@ Procedure MSSQL_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_MSSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
 
-    Result = OPI_MSSQL.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetLog", Options);
 
     // END
 
@@ -603,7 +670,11 @@ Procedure MSSQL_CreateDatabase(FunctionParameters)
     Base = "testbase2";
     OPI_MSSQL.DeleteDatabase(Base, ConnectionString, TLSSettings);
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "MSSQL", "CreateDatabase", "Openning");
 
@@ -1118,7 +1189,11 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     Base = "testbase2";
 
-    Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "MSSQL", "DeleteDatabase", "Openning");
 
@@ -1138,7 +1213,10 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "MSSQL", "DeleteDatabase", "Error");
 
-    Closing = OPI_MSSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CloseConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Closing, "MSSQL", "DeleteDatabase", "Closing");
 

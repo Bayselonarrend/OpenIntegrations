@@ -2,6 +2,7 @@
  "version": "2.4.0",
  "modules": {
   "mcp": "MCP",
+  "server": "Server",
   "tools": "Utils",
   "airtable": "OPI_Airtable",
   "bitrix24": "OPI_Bitrix24",
@@ -41,8 +42,10 @@
   "viber": "OPI_Viber",
   "vk": "OPI_VK",
   "vkteams": "OPI_VKTeams",
+  "ws": "OPI_WebSocket",
   "yadisk": "OPI_YandexDisk",
   "yandex": "OPI_YandexID",
+  "zeromq": "OPI_ZeroMQ",
   "7z": "OPI_7z",
   "janx": "OPI_Janx",
   "msgpack": "OPI_MessagePack",

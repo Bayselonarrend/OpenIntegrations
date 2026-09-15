@@ -171,7 +171,10 @@ Procedure RCON_CreateConnection(FunctionParameters)
     Options.Insert("wtout", WriteTimeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
-    Result           = OPI_RCON.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "CreateConnection", Options);
 
     // END
 
@@ -193,7 +196,10 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
     Options.Insert("wtout", WriteTimeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
-    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "CreateConnection", Options);
 
     Command = "list";
     Options = New Structure;
@@ -231,8 +237,14 @@ Procedure RCON_IsConnector(FunctionParameters)
     Options.Insert("wtout", WriteTimeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
-    Connection       = OPI_RCON.CreateConnection(ConnectionParams);
-    Result           = OPI_RCON.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "IsConnector", Options);
 
     // END
 
@@ -242,17 +254,29 @@ EndProcedure
 
 Procedure RCON_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_RCON.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "GetLoggingSettings");
 
-    Result = OPI_RCON.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "GetLoggingSettings", "File");
 
-    Result = OPI_RCON.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "GetLoggingSettings", "Memory");
 
@@ -261,7 +285,12 @@ EndProcedure
 Procedure RCON_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLoggingSettings", Options);
 
     URL          = FunctionParameters["RCON_URL"];
     Password     = FunctionParameters["RCON_Password"];
@@ -275,7 +304,11 @@ Procedure RCON_GetLog(FunctionParameters)
     Options.Insert("wtout", WriteTimeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
-    Connection       = OPI_RCON.CreateConnection(ConnectionParams, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "CreateConnection", Options);
 
     If Not OPI_RCON.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -290,13 +323,20 @@ Procedure RCON_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "ExecuteCommand", "Select"); // SKIP
 
-    Result = OPI_RCON.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "GetLog", , LogFile);
 
-    Result = OPI_RCON.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "RCON", "GetLog", "AsString", LogFile);
 
@@ -340,7 +380,12 @@ EndProcedure
 Procedure RCON_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_RCON.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLoggingSettings", Options);
 
     URL          = FunctionParameters["RCON_URL"];
     Password     = FunctionParameters["RCON_Password"];
@@ -354,7 +399,11 @@ Procedure RCON_Extended_GetLogOnConnection(FunctionParameters)
     Options.Insert("wtout", WriteTimeout);
 
     ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
-    Connection       = OPI_RCON.CreateConnection(ConnectionParams, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", ConnectionParams);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "CreateConnection", Options);
 
     If Not OPI_RCON.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -362,7 +411,10 @@ Procedure RCON_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_RCON.ExecuteCommand("list", Connection);
 
-    Result = OPI_RCON.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "GetLog", Options);
 
     // END
 

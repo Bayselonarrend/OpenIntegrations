@@ -1,0 +1,54 @@
+{
+ "module": "Server",
+ "library": "server",
+ "self_depend": false,
+ "dependencies": null,
+ "cli_tool": true,
+ "path": "tools/Modules/Server.os",
+ "regions": [
+  {
+   "name": "Server methods",
+   "methods": [
+    {
+     "name": "stdio",
+     "nocli": false
+    }
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "nocli": false,
+   "name": "stdio",
+   "id": "STDIO",
+   "description": "Starts a server for exchange via standard input\noutput streams",
+   "params": [
+    {
+     "title": "MessageSeparator",
+     "name": "--sprt",
+     "types": "String",
+     "description": "tring appended to the end of the server response",
+     "default": "Empty value",
+     "short": "-s"
+    },
+    {
+     "title": "SeparateStart",
+     "name": "--bsprt",
+     "types": "Boolean",
+     "description": "Additionally inserts a separator at the beginning of the message",
+     "default": "false",
+     "short": "-b"
+    },
+    {
+     "title": "StreamsEncoding",
+     "name": "--enc",
+     "types": "String",
+     "description": "Use a specific encoding regardless of the shell",
+     "default": "Empty value",
+     "short": "-e"
+    }
+   ],
+   "region": "Server methods"
+  }
+ ]
+}

@@ -189,13 +189,20 @@ Procedure GRPC_CreateConnection(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Result = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection");
 
-    Result = OPI_GRPC.CloseConnection(Result);
+    Options = New Structure;
+    Options.Insert("conn", Result);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CloseConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "Closing");
 
@@ -205,7 +212,10 @@ Procedure GRPC_CreateConnection(FunctionParameters)
     Options.Insert("proto", Scheme);
 
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
-    Result     = OPI_GRPC.CreateConnection(Parameters);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "No TLS");
 
@@ -217,7 +227,10 @@ Procedure GRPC_CreateConnection(FunctionParameters)
     Options.Insert("proto", Scheme);
 
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
-    Result     = OPI_GRPC.CreateConnection(Parameters);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CreateConnection", "Error");
 
@@ -246,8 +259,15 @@ Procedure GRPC_CloseConnection(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
-    Result     = OPI_GRPC.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CloseConnection", Options);
 
     // END
 
@@ -278,8 +298,15 @@ Procedure GRPC_IsConnector(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
-    Result     = OPI_GRPC.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "IsConnector", Options);
 
     // END
 
@@ -346,10 +373,18 @@ Procedure GRPC_SetMetadata(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     Meta   = New Structure("somekey", "somevalue");
-    Result = OPI_GRPC.SetMetadata(Connection, Meta);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("meta", Meta);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "SetMetadata", Options);
 
     // END
 
@@ -487,17 +522,29 @@ EndProcedure
 
 Procedure GRPC_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_GRPC.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetLoggingSettings");
 
-    Result = OPI_GRPC.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetLoggingSettings", "File");
 
-    Result = OPI_GRPC.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetLoggingSettings", "Memory");
 
@@ -506,7 +553,12 @@ EndProcedure
 Procedure GRPC_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLoggingSettings", Options);
 
     Address = FunctionParameters["GRPC_Address"];
 
@@ -527,7 +579,12 @@ Procedure GRPC_GetLog(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -545,13 +602,20 @@ Procedure GRPC_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "ExecuteMethod", "Select"); // SKIP
 
-    Result = OPI_GRPC.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetLog", , LogFile);
 
-    Result = OPI_GRPC.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLog", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "GetLog", "AsString", LogFile);
 
@@ -603,7 +667,11 @@ Procedure GRPC_Extended_Reconnection(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -621,7 +689,12 @@ EndProcedure
 Procedure GRPC_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_GRPC.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLoggingSettings", Options);
 
     Address = FunctionParameters["GRPC_Address"];
 
@@ -642,7 +715,12 @@ Procedure GRPC_Extended_GetLogOnConnection(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -650,7 +728,10 @@ Procedure GRPC_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_GRPC.ExecuteMethod(Connection, "grpcbin.GRPCBin", "DummyUnary");
 
-    Result = OPI_GRPC.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetLog", Options);
 
     // END
 
@@ -721,7 +802,11 @@ Procedure GRPC_GetServiceList(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
     Options = New Structure;
     Options.Insert("conn", Connection);
 
@@ -748,7 +833,11 @@ Procedure GRPC_GetMethodList(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
     Service    = "grpcbin.GRPCBin";
 
     Options = New Structure;
@@ -778,7 +867,11 @@ Procedure GRPC_GetMethod(FunctionParameters)
 
     Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
     Service    = "grpcbin.GRPCBin";
     Method     = "Index";
 
@@ -819,7 +912,11 @@ Procedure GRPC_InitializeServerStream(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyServerStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -906,7 +1003,11 @@ Procedure GRPC_InitializeClientStream(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyClientStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -995,7 +1096,11 @@ Procedure GRPC_InitializeBidirectionalStream(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyBidirectionalStreamStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -1084,7 +1189,11 @@ Procedure GRPC_SendMessage(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyClientStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -1102,7 +1211,12 @@ Procedure GRPC_SendMessage(FunctionParameters)
     Data.Insert("f_strings", StingsArray);
     Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
 
-    Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "InitializeClientStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -1111,7 +1225,11 @@ Procedure GRPC_SendMessage(FunctionParameters)
     EndIf;
 
     Result  = OPI_GRPC.SendMessage(Connection, StreamID, Data); // <---
-    Closing = OPI_GRPC.CloseStream(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CloseStream", Options);
 
     // END
 
@@ -1143,7 +1261,11 @@ Procedure GRPC_GetMessage(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyServerStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -1182,7 +1304,13 @@ Procedure GRPC_GetMessage(FunctionParameters)
     Data.Insert("f_bytess" , BinaryDataArray);
     Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
 
-    Result = OPI_GRPC.InitializeServerStream(Connection, Service, Method, Data);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "InitializeServerStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -1191,7 +1319,11 @@ Procedure GRPC_GetMessage(FunctionParameters)
     EndIf;
 
     Result  = OPI_GRPC.GetMessage(Connection, StreamID); // <---
-    Closing = OPI_GRPC.CloseStream(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CloseStream", Options);
 
     // END
 
@@ -1229,7 +1361,11 @@ Procedure GRPC_CloseStream(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyServerStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
@@ -1247,7 +1383,13 @@ Procedure GRPC_CloseStream(FunctionParameters)
     Data.Insert("f_strings", StingsArray);
     Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
 
-    Result = OPI_GRPC.InitializeServerStream(Connection, Service, Method, Data);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", Data);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "InitializeServerStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -1261,7 +1403,11 @@ Procedure GRPC_CloseStream(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CloseStream");
 
-    Result = OPI_GRPC.GetMessage(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetMessage", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "GRPC", "CloseStream", "Sending");
 
@@ -1460,13 +1606,22 @@ Procedure GRPC_CompleteSend(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyClientStream";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Options = New Structure;
+    Options.Insert("params", Parameters);
+    Options.Insert("tls", Tls);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CreateConnection", Options);
 
     If Not OPI_GRPC.IsConnector(Connection) Then
         Raise Connection["error"];
     EndIf;
 
-    Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "InitializeClientStream", Options);
 
     If Not Result["result"] Then
         Raise Result["error"];
@@ -1474,7 +1629,11 @@ Procedure GRPC_CompleteSend(FunctionParameters)
         StreamID = Result["streamId"];
     EndIf;
 
-    Result = OPI_GRPC.CompleteSend(Connection, StreamID);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("stream", StreamID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "CompleteSend", Options);
 
     // END
 

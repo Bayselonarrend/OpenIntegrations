@@ -194,15 +194,23 @@ Procedure SQLite_CreateConnection(FunctionParameters)
 
     TFN = GetTempFileName("sqlite");
 
-    LocalBase    = OPI_SQLite.CreateConnection(TFN);
-    InMemoryBase = OPI_SQLite.CreateConnection();
+    Options = New Structure;
+    Options.Insert("db", TFN);
+
+    LocalBase = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
+    Options = New Structure;
+
+    InMemoryBase = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(LocalBase   , "SQLite", "CreateConnection");
     OPI_TestDataRetrieval.ProcessCLI(InMemoryBase, "SQLite", "CreateConnection", "IM");
 
-    Closing = OPI_SQLite.CloseConnection(LocalBase);
+    Options = New Structure;
+    Options.Insert("db", LocalBase);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CloseConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Closing, "SQLite", "CreateConnection", "Closing");
 
@@ -214,11 +222,17 @@ Procedure SQLite_CloseConnection(FunctionParameters)
 
     TFN = GetTempFileName("sqlite");
 
-    Connection = OPI_SQLite.CreateConnection(TFN);
+    Options = New Structure;
+    Options.Insert("db", TFN);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "SQLite", "CloseConnection", "Openning"); // SKIP
 
-    Closing = OPI_SQLite.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("db", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CloseConnection", Options);
 
     // END
 
@@ -235,7 +249,10 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    Connection = OPI_SQLite.CreateConnection(TFN);
+    Options = New Structure;
+    Options.Insert("db", TFN);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "SQLite", "ExecuteSQLQuery", "Openning"); // SKIP
 
@@ -340,7 +357,10 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Extension"); // SKIP
 
-    Closing = OPI_SQLite.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("db", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CloseConnection", Options);
 
     // END
 
@@ -352,8 +372,13 @@ EndProcedure
 
 Procedure SQLite_IsConnector(FunctionParameters)
 
-    Connection = OPI_SQLite.CreateConnection();
-    Result     = OPI_SQLite.IsConnector(Connection);
+    Options = New Structure;
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "IsConnector", Options);
 
     // END
 
@@ -859,8 +884,16 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     Base       = FunctionParameters["SQLite_DB"];
     EntryPoint = "sqlite3_uuid_init";
 
-    Connection = OPI_SQLite.CreateConnection(Base);
-    Result     = OPI_SQLite.ConnectExtension(Extension, EntryPoint, Connection);
+    Options = New Structure;
+    Options.Insert("db", Base);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("ext", Extension);
+    Options.Insert("point", EntryPoint);
+    Options.Insert("db", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ConnectExtension", Options);
 
     // END
 
@@ -869,15 +902,28 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     TFN = GetTempFileName("dll");
     CopyFile(Extension, TFN);
 
-    Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
+    Options = New Structure;
+    Options.Insert("ext", TFN);
+    Options.Insert("point", EntryPoint);
+    Options.Insert("db", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ConnectExtension", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ConnectExtension", "Path");
 
-    Result = OPI_SQLite.ConnectExtension(New BinaryData(TFN), EntryPoint, Connection);
+    Options = New Structure;
+    Options.Insert("ext", New BinaryData);
+    Options.Insert("point", EntryPoint);
+    Options.Insert("db", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ConnectExtension", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ConnectExtension", "Binary");
 
-    Result = OPI_SQLite.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("db", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CloseConnection", Options);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Error deleting extension file");
 
@@ -994,17 +1040,29 @@ EndProcedure
 
 Procedure SQLite_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_SQLite.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetLoggingSettings");
 
-    Result = OPI_SQLite.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetLoggingSettings", "File");
 
-    Result = OPI_SQLite.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetLoggingSettings", "Memory");
 
@@ -1013,10 +1071,19 @@ EndProcedure
 Procedure SQLite_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_SQLite.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLoggingSettings", Options);
     TFN             = GetTempFileName("sqlite");
 
-    Connection = OPI_SQLite.CreateConnection(TFN, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("db", TFN);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     If Not OPI_SQLite.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1030,13 +1097,20 @@ Procedure SQLite_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "ExecuteSQLQuery", "Select"); // SKIP
 
-    Result = OPI_SQLite.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetLog", , LogFile);
 
-    Result = OPI_SQLite.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "SQLite", "GetLog", "AsString", LogFile);
 
     OPI_SQLite.CloseConnection(Connection);
@@ -1087,10 +1161,19 @@ EndProcedure
 Procedure SQLite_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_SQLite.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLoggingSettings", Options);
     TFN             = GetTempFileName("sqlite");
 
-    Connection = OPI_SQLite.CreateConnection(TFN, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("db", TFN);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     If Not OPI_SQLite.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1098,7 +1181,10 @@ Procedure SQLite_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_SQLite.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
 
-    Result = OPI_SQLite.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetLog", Options);
 
     // END
 
@@ -1113,7 +1199,10 @@ Procedure SQLite_Extended_RequestWithTwoBlobs(FunctionParameters)
     Original = OPI_TestDataRetrieval.GetJanxTestCollection("MultipleBinaries");
     TFN      = GetTempFileName("sqlite");
 
-    Connection = OPI_SQLite.CreateConnection(TFN);
+    Options = New Structure;
+    Options.Insert("db", TFN);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateConnection", Options);
 
     If Not OPI_SQLite.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);

@@ -1,6 +1,6 @@
 // OneScript: ./OInt/api/ws/Modules/OPI_WebSocket.os
 // Lib: WebSocket
-// CLI: none
+// CLI: ws
 // Keywords: websocket, ws
 
 // DocsCategory: Exchange

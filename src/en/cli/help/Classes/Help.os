@@ -26,14 +26,23 @@ Procedure DisplayStartPage() Export
 	Version = OPIObject.GetVersion();
 	ModuleCommandMapping = OPIObject.GetCommandModuleMapping();
 	ComandNameList = New ValueList;
+	SpecialCommandNameList = New ValueList;
 	
 	For Each Command In ModuleCommandMapping Do
-		ComandNameList.Add(Command.Key)
+
+		If StrStartsWith(Command.Value, "OPI_") Then
+			ComandNameList.Add(Command.Key)
+		Else
+			SpecialCommandNameList.Add(Command.Key)
+		EndIf;
+		
 	EndDo;
 	
 	ComandNameList.SortByValue();
+	SpecialCommandNameList.SortByValue();
 	
 	CommandList = StrConcat(ComandNameList.UnloadValues(), ", ");
+	SpecialCommandList = StrConcat(SpecialCommandNameList.UnloadValues(), ", ");
 
 	OffsetLength = 11;
 	NewLineTab = "           ";
@@ -54,9 +63,10 @@ Procedure DisplayStartPage() Export
 		| (oint|#color=White) (<library>|#color=Cyan) (<method>|#color=Cyan) (--option1|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) (...|#color=White) (--optionN|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) 
 		|
 		| Call libraries without method or method without parameters returns help
-		| List available libraries: (%2|#color=White) 
+		| List available libraries: (%2|#color=Magenta)(, %3|#color=White) 
 		|"
 		, Version
+		, SpecialCommandList
 		, CommandList));
 
 	Console.TextColor = ConsoleColor.White;
@@ -89,7 +99,7 @@ Procedure DisplayMethodHelp(Val Command) Export
 	Console.TextColor = ConsoleColor.White;
 
 	RegionTemplate = "   (■|#color=Yellow) (%1|#color=Cyan)";
-	MethodTemplate = "   (%1|#color=Yellow) %2";
+	MethodTemplate = "   (%1|#color=Yellow) (%2|#color=%3)";
 
 	ColorOutput.WriteLine(StrTemplate("
 	| (■|#color=Green) Library - (%1|#color=Cyan)
@@ -119,7 +129,8 @@ Procedure DisplayMethodHelp(Val Command) Export
 				Label = "  ├─";
 			EndIf;
 			
-			ColorOutput.WriteLine(StrTemplate(MethodTemplate, Label, RegionMethod));
+			CurrentColor = ?(RegionMethod["nocli"], "DarkGray", "White");
+			ColorOutput.WriteLine(StrTemplate(MethodTemplate, Label, RegionMethod["name"], CurrentColor));
 
 			Counter = Counter + 1;
 			First = False;
@@ -145,14 +156,20 @@ Procedure DisplayParameterHelp(Val Command, Val Method) Export
 	MethodName = MethodData["name"];
 	MethodDescription = MethodData["description"];
 	
+	If MethodData["nocli"] = True Then
+		Addition = " ((server only)|#color=DarkGray)";
+	Else
+		Addition = "";
+	EndIf;
+	
 	FullParamsDescription = GetFullParamsDescription(MethodData);
 
 	HelpText = StrTemplate("
-	| (■|#color=Green) Method (%1|#color=Cyan)
+	| (■|#color=Green) Method (%1|#color=Cyan)%4
 	| (■|#color=Green) %2
 	|
 	|%3
-	|", MethodName, MethodDescription, FullParamsDescription); 
+	|", MethodName, MethodDescription, FullParamsDescription, Addition); 
 
 	ColorOutput.WriteLine(HelpText);
 
@@ -190,7 +207,11 @@ Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
 	ElsIf Reason = "Method" Then
 		Text = "Incorrect method! Check input correctness";
 		Code = 2;
-		
+
+	ElsIf Reason = "NOCLI" Then
+		Text = "This method only makes sense in server mode (server command)";
+		Code = 3;
+
 	Else
 		Text = "Unexpected Error!: " + Reason;
 		Code = 99;

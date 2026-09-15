@@ -263,7 +263,11 @@ Procedure SFTP_CreateConnection(FunctionParameters)
 
     EndIf;
 
-    Result = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     // END
 
@@ -348,7 +352,11 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -443,7 +451,11 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -538,7 +550,11 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -632,7 +648,11 @@ Procedure SFTP_ListObjects(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -745,7 +765,11 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
 
@@ -878,7 +902,11 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -990,14 +1018,24 @@ Procedure SFTP_IsConnector(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
-    Result     = OPI_SFTP.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "IsConnector", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "IsConnector", Postfix);
 
-    Result = OPI_SFTP.IsConnector("a");
+    Options = New Structure;
+    Options.Insert("value", "a");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "IsConnector", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "SFTP", "IsConnector", "Error, " + Postfix);
 
@@ -1301,10 +1339,17 @@ Procedure SFTP_CloseConnection(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.CloseConnection(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CloseConnection", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -1392,7 +1437,11 @@ Procedure SFTP_SaveFile(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
 
@@ -1513,12 +1562,20 @@ Procedure SFTP_GetFileData(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
 
         Path   = "pic_from_disk.png";
-        Result = OPI_SFTP.GetFileData(Connection, Path);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", Path);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileData", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -1624,7 +1681,11 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1761,7 +1822,11 @@ Procedure SFTP_GetFileInformation(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("proxy", ProxySettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Options = New Structure;
@@ -1821,7 +1886,10 @@ Procedure SFTP_Extended_Reconnection(FunctionParameters)
 
     SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
-    Connection = OPI_SFTP.CreateConnection(SFTPSettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateConnection", Options);
 
     If Not OPI_SFTP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1839,7 +1907,12 @@ EndProcedure
 Procedure SFTP_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_SSH.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLoggingSettings", Options);
 
     Host     = FunctionParameters["SSH_Host"];
     Port     = FunctionParameters["SSH_Port"];
@@ -1854,7 +1927,11 @@ Procedure SFTP_Extended_GetLogOnConnection(FunctionParameters)
 
     SFTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
-    Connection = OPI_SSH.CreateConnection(SFTPSettings, , LoggingSettings);
+    Options = New Structure;
+    Options.Insert("set", SFTPSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "CreateConnection", Options);
 
     If Not OPI_SFTP.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1862,7 +1939,10 @@ Procedure SFTP_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_SFTP.ListObjects(Connection, "");
 
-    Result = OPI_SSH.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetLog", Options);
 
     // END
 

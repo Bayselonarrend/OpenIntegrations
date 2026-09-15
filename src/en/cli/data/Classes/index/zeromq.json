@@ -1,0 +1,520 @@
+{
+ "module": "OPI_ZeroMQ",
+ "library": "zeromq",
+ "self_depend": true,
+ "dependencies": null,
+ "cli_tool": false,
+ "path": "api/zeromq/Modules/OPI_ZeroMQ.os",
+ "regions": [
+  {
+   "name": "Common",
+   "methods": [
+    {
+     "name": "GetLog",
+     "nocli": true
+    },
+    {
+     "name": "GetLoggingSettings",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Connection methods",
+   "methods": [
+    {
+     "name": "CreateConnectionPull",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnectionPush",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnectionReq",
+     "nocli": true
+    },
+    {
+     "name": "CreateConnectionSub",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Listening methods",
+   "methods": [
+    {
+     "name": "BindPortPush",
+     "nocli": false
+    },
+    {
+     "name": "BindPortPub",
+     "nocli": true
+    },
+    {
+     "name": "BindPortPull",
+     "nocli": true
+    },
+    {
+     "name": "BindPortRep",
+     "nocli": true
+    }
+   ]
+  },
+  {
+   "name": "Interaction methods",
+   "methods": [
+    {
+     "name": "CloseConnection",
+     "nocli": true
+    },
+    {
+     "name": "IsConnectorObject",
+     "nocli": true
+    },
+    {
+     "name": "ProcessRequest",
+     "nocli": true
+    },
+    {
+     "name": "ReceiveData",
+     "nocli": true
+    },
+    {
+     "name": "SendData",
+     "nocli": true
+    },
+    {
+     "name": "Subscribe",
+     "nocli": true
+    }
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "nocli": true,
+   "name": "GetLoggingSettings",
+   "id": "GETLOGGINGSETTINGS",
+   "description": "Retrieves settings structure for enabling logging when creating a connection or opening a port",
+   "params": [
+    {
+     "title": "WriteToMemory",
+     "name": "--memory",
+     "types": "Boolean",
+     "description": "Logging to memory for further retrieval from the addin object",
+     "default": "true",
+     "short": "-m"
+    },
+    {
+     "title": "MaxEvents",
+     "name": "--count",
+     "types": "Number",
+     "description": "Maximum number of events stored in memory",
+     "default": 300,
+     "short": "-c"
+    },
+    {
+     "title": "FilePath",
+     "name": "--path",
+     "types": "String",
+     "description": "Path to file for saving full log, if necessary",
+     "default": "Empty value",
+     "short": "-p"
+    }
+   ],
+   "region": "Common"
+  },
+  {
+   "nocli": true,
+   "name": "GetLog",
+   "id": "GETLOG",
+   "description": "Retrieves connection log data (when in-memory logging is enabled)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with an open connection or port",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "AsString",
+     "name": "--str",
+     "types": "Boolean",
+     "description": "True > returns log as a single string, False > as an array",
+     "default": "false",
+     "short": "-s"
+    },
+    {
+     "title": "EventCount",
+     "name": "--count",
+     "types": "Number",
+     "description": "Number of recent events to retrieve. 0 > no limits",
+     "default": 100,
+     "short": "-n"
+    }
+   ],
+   "region": "Common"
+  },
+  {
+   "nocli": true,
+   "name": "CreateConnectionReq",
+   "id": "CREATECONNECTIONREQ",
+   "description": "Create connection for sending request",
+   "params": [
+    {
+     "title": "Address",
+     "name": "--addr",
+     "types": "String",
+     "description": "Receiver address",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Connection methods"
+  },
+  {
+   "nocli": true,
+   "name": "CreateConnectionSub",
+   "id": "CREATECONNECTIONSUB",
+   "description": "Create subscriber connection",
+   "params": [
+    {
+     "title": "Address",
+     "name": "--addr",
+     "types": "String",
+     "description": "Receiver address",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Connection methods"
+  },
+  {
+   "nocli": true,
+   "name": "CreateConnectionPush",
+   "id": "CREATECONNECTIONPUSH",
+   "description": "Create connection for sending to pipeline",
+   "params": [
+    {
+     "title": "Address",
+     "name": "--addr",
+     "types": "String",
+     "description": "Receiver address",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Connection methods"
+  },
+  {
+   "nocli": true,
+   "name": "CreateConnectionPull",
+   "id": "CREATECONNECTIONPULL",
+   "description": "Create connection for reading from pipeline",
+   "params": [
+    {
+     "title": "Address",
+     "name": "--addr",
+     "types": "String",
+     "description": "Receiver address",
+     "default": null,
+     "short": "-a"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Connection methods"
+  },
+  {
+   "nocli": true,
+   "name": "BindPortRep",
+   "id": "BINDPORTREP",
+   "description": "Bind port for incoming requests",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Target port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Listening methods"
+  },
+  {
+   "nocli": true,
+   "name": "BindPortPub",
+   "id": "BINDPORTPUB",
+   "description": "Bind port for subscribers",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Target port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Listening methods"
+  },
+  {
+   "nocli": false,
+   "name": "BindPortPush",
+   "id": "BINDPORTPUSH",
+   "description": "Bind pipeline port for sending data",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Target port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Listening methods"
+  },
+  {
+   "nocli": true,
+   "name": "BindPortPull",
+   "id": "BINDPORTPULL",
+   "description": "Bind pipeline port for receiving data",
+   "params": [
+    {
+     "title": "Port",
+     "name": "--port",
+     "types": "Number",
+     "description": "Target port",
+     "default": null,
+     "short": "-p"
+    },
+    {
+     "title": "Logging",
+     "name": "--log",
+     "types": "Structure Of KeyAndValue",
+     "description": "Logging settings. See GetLoggingSettings",
+     "default": "Empty value",
+     "short": "-l"
+    }
+   ],
+   "region": "Listening methods"
+  },
+  {
+   "nocli": true,
+   "name": "SendData",
+   "id": "SENDDATA",
+   "description": "Send data to connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with an open connection or port",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "BinaryData",
+     "description": "Sending data",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number, Undefined",
+     "description": "Timeout (in ms). No timeout if undefined",
+     "default": "Empty value",
+     "short": "-t"
+    }
+   ],
+   "region": "Interaction methods"
+  },
+  {
+   "nocli": true,
+   "name": "ReceiveData",
+   "id": "RECEIVEDATA",
+   "description": "Receive next message from connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with an open connection or port",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Timeout",
+     "name": "--tout",
+     "types": "Number, Undefined",
+     "description": "Timeout (in ms). No timeout if undefined",
+     "default": null,
+     "short": "-t"
+    }
+   ],
+   "region": "Interaction methods"
+  },
+  {
+   "nocli": true,
+   "name": "ProcessRequest",
+   "id": "PROCESSREQUEST",
+   "description": "Sends a request and waits for a response within the specified time (for the REQ\nREP scheme)",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with open connection",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Data",
+     "name": "--data",
+     "types": "BinaryData",
+     "description": "Sending data",
+     "default": null,
+     "short": "-d"
+    },
+    {
+     "title": "SendingTimeout",
+     "name": "--treq",
+     "types": "Number, Undefined",
+     "description": "Sending timeout (in ms). No timeout if undefined",
+     "default": "Empty value",
+     "short": "-t"
+    },
+    {
+     "title": "ReceivingTimeout",
+     "name": "--trep",
+     "types": "Number, Undefined",
+     "description": "Receiving timeout (in ms). No timeout if undefined",
+     "default": "Empty value",
+     "short": "-r"
+    }
+   ],
+   "region": "Interaction methods"
+  },
+  {
+   "nocli": true,
+   "name": "Subscribe",
+   "id": "SUBSCRIBE",
+   "description": "Subscribe to a topic in the PUB\nSUB scheme",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with an open connection or port",
+     "default": null,
+     "short": "-c"
+    },
+    {
+     "title": "Prefix",
+     "name": "--prefix",
+     "types": "String",
+     "description": "Required prefix (topic) of messages to receive",
+     "default": null,
+     "short": "-p"
+    }
+   ],
+   "region": "Interaction methods"
+  },
+  {
+   "nocli": true,
+   "name": "CloseConnection",
+   "id": "CLOSECONNECTION",
+   "description": "Close previously created connection",
+   "params": [
+    {
+     "title": "Connection",
+     "name": "--conn",
+     "types": "Arbitrary",
+     "description": "AddIn object with an open connection or port",
+     "default": null,
+     "short": "-c"
+    }
+   ],
+   "region": "Interaction methods"
+  },
+  {
+   "nocli": true,
+   "name": "IsConnectorObject",
+   "id": "ISCONNECTOROBJECT",
+   "description": "Checks that the value is an object of the ZeroMQ AddIn",
+   "params": [
+    {
+     "title": "Value",
+     "name": "--value",
+     "types": "Arbitrary",
+     "description": "Value to check",
+     "default": null,
+     "short": "-v"
+    }
+   ],
+   "region": "Interaction methods"
+  }
+ ]
+}

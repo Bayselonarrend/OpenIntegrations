@@ -227,7 +227,11 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Result = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     // END
 
@@ -268,8 +272,15 @@ Procedure PostgreSQL_CloseConnection(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
-    Result     = OPI_PostgreSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CloseConnection", Options);
 
     // END
 
@@ -308,8 +319,15 @@ Procedure PostgreSQL_IsConnector(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
-    Result     = OPI_PostgreSQL.IsConnector(Connection);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
+    Options = New Structure;
+    Options.Insert("value", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "IsConnector", Options);
 
     OPI_PostgreSQL.CloseConnection(Result);
 
@@ -353,7 +371,11 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     OPI_PostgreSQL.DeleteTable("users"     , Connection); // SKIP
     OPI_PostgreSQL.DeleteTable("test_data" , Connection); // SKIP
@@ -451,7 +473,10 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "File"); // SKIP
 
-    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CloseConnection", Options);
 
     // END
 
@@ -510,7 +535,11 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "CreateDatabase");
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "PostgreSQL", "CreateDatabase", "Openning");
 
@@ -1178,7 +1207,11 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Base = "testbase2";
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Connection, "PostgreSQL", "DeleteDatabase", "Openning");
 
@@ -1206,7 +1239,10 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "DeleteDatabase", "Error");
 
-    Closing = OPI_PostgreSQL.CloseConnection(Connection);
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Closing = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CloseConnection", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Closing, "PostgreSQL", "DeleteDatabase", "Closing");
 
@@ -1480,17 +1516,29 @@ EndProcedure
 
 Procedure PostgreSQL_GetLoggingSettings(FunctionParameters)
 
-    Result = OPI_PostgreSQL.GetLoggingSettings(True, 100, GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLoggingSettings", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetLoggingSettings");
 
-    Result = OPI_PostgreSQL.GetLoggingSettings(False, , GetTempFileName());
+    Options = New Structure;
+    Options.Insert("memory", Ложь);
+    Options.Insert("path", GetTempFileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetLoggingSettings", "File");
 
-    Result = OPI_PostgreSQL.GetLoggingSettings(True);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLoggingSettings", Options);
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetLoggingSettings", "Memory");
 
@@ -1499,7 +1547,12 @@ EndProcedure
 Procedure PostgreSQL_GetLog(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_PostgreSQL.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLoggingSettings", Options);
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
@@ -1530,7 +1583,12 @@ Procedure PostgreSQL_GetLog(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     If Not OPI_PostgreSQL.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1544,13 +1602,20 @@ Procedure PostgreSQL_GetLog(FunctionParameters)
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "ExecuteSQLQuery", "Select"); // SKIP
 
-    Result = OPI_PostgreSQL.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLog", Options);
 
     // END
 
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetLog", , LogFile);
 
-    Result = OPI_PostgreSQL.GetLog(Connection, True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("str", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLog", Options);
     OPI_TestDataRetrieval.ProcessCLI(Result, "PostgreSQL", "GetLog", "AsString", LogFile);
 
     OPI_PostgreSQL.CloseConnection(Connection);
@@ -1641,7 +1706,12 @@ EndProcedure
 Procedure PostgreSQL_Extended_GetLogOnConnection(FunctionParameters)
 
     LogFile         = GetTempFileName("txt");
-    LoggingSettings = OPI_PostgreSQL.GetLoggingSettings(True, 100, LogFile);
+    Options = New Structure;
+    Options.Insert("memory", Истина);
+    Options.Insert("count", 100);
+    Options.Insert("path", LogFile);
+
+    LoggingSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLoggingSettings", Options);
 
     Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
@@ -1669,7 +1739,12 @@ Procedure PostgreSQL_Extended_GetLogOnConnection(FunctionParameters)
         TLSSettings = Undefined;
     EndIf;
 
-    Connection = OPI_PostgreSQL.CreateConnection(ConnectionString, TLSSettings, LoggingSettings);
+    Options = New Structure;
+    Options.Insert("string", ConnectionString);
+    Options.Insert("tls", TLSSettings);
+    Options.Insert("log", LoggingSettings);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateConnection", Options);
 
     If Not OPI_PostgreSQL.IsConnector(Connection) Then
         Raise OPI_Tools.JSONString(Connection);
@@ -1677,7 +1752,10 @@ Procedure PostgreSQL_Extended_GetLogOnConnection(FunctionParameters)
 
     OPI_PostgreSQL.ExecuteSQLQuery("SELECT 1 AS n", , , Connection);
 
-    Result = OPI_PostgreSQL.GetLog(Connection);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetLog", Options);
 
     // END
 

@@ -3,12 +3,12 @@
     "configurations": [
         {
             "type": "sbsl",
-            "name": "Test1.sbsl#Тест1",
+            "name": "Test1.sbsl#Test1",
             "stopOnEntry": false,
             "request": "attach",
             "scriptFile": "tests/Test1.sbsl",
             "args": [],
-            "method": "Тест1"
+            "method": "Test1"
         },
         {
             "type": "sbsl",
